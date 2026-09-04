@@ -210,6 +210,15 @@ Snertu hér til að hlaða niður PotHelper"</string>
 
 Ef þú slökkvir þetta síðar er mælt með því að eyða gögnum appsins til að forðast UI villur."</string>
   <string name="morphe_spoof_app_version_target_title">Markmið breyttrar app útgáfu</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Endurnýjunarhraði apps</string>
+  <string name="morphe_app_refresh_rate_default">Sjálfgefið</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Yfirskrifa endurnýjunarhraða</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Alltaf</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Spilun í lóðréttri stöðu</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Spilun í fullskjá</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Spilun í lóðréttri stöðu og fullskjá</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes eru tímabundið óþægilegt (API tímdi út)</string>

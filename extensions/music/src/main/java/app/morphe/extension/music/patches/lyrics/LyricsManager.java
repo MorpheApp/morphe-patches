@@ -18,10 +18,13 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.album.PlayAlbumSongsPatch;
+import app.morphe.extension.music.patches.album.PlaylistRequest;
 import app.morphe.extension.music.patches.lyrics.requests.KuGouProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LrcLibProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
@@ -58,6 +61,10 @@ public final class LyricsManager {
     @Nullable
     private TrackInfo currentTrack;
 
+    /** Metadata of the current track, kept so it can be read again as the song of an album. */
+    @Nullable
+    private MediaMetadata currentMetadata;
+
     @Nullable
     private Lyrics currentLyrics;
 
@@ -75,6 +82,9 @@ public final class LyricsManager {
     private boolean playing;
 
     private LyricsManager() {
+        PlayAlbumSongsPatch.addSubstitutionListener(
+                (videoId, resolvedVideoId) -> reloadCurrentTrack());
+        VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
     }
 
     public static LyricsManager getInstance() {
@@ -122,7 +132,28 @@ public final class LyricsManager {
      */
     public void onSetMetadata(@Nullable MediaMetadata metadata) {
         Utils.verifyOnMainThread();
-        if (metadata == null || !Settings.LYRICS_ENABLED.get()) {
+        if (metadata == null) {
+            return;
+        }
+        currentMetadata = metadata;
+        loadTrackOf(metadata);
+    }
+
+    /**
+     * The song of an album, and the video id of the app itself, can both land after the metadata
+     * of a track, so the track is read again whenever either of them arrives.
+     */
+    private void reloadCurrentTrack() {
+        Utils.runOnMainThread(() -> {
+            MediaMetadata metadata = currentMetadata;
+            if (metadata != null) {
+                loadTrackOf(metadata);
+            }
+        });
+    }
+
+    private void loadTrackOf(MediaMetadata metadata) {
+        if (!Settings.LYRICS_ENABLED.get()) {
             return;
         }
 
@@ -132,11 +163,23 @@ public final class LyricsManager {
             return;
         }
 
+        int durationSeconds = (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);
+
+        // An album track playing its song version is still described by the app as the music
+        // video, whose title and duration find no lyrics or the lyrics of another version.
+        PlaylistRequest.Song song = PlayAlbumSongsPatch.getSong(VideoInformation.getVideoId());
+        if (song != null) {
+            rawTitle = song.title();
+            if (song.durationSeconds() > 0) {
+                durationSeconds = song.durationSeconds();
+            }
+        }
+
         TrackInfo track = new TrackInfo(
                 MetadataCleaner.cleanTitle(rawTitle),
                 MetadataCleaner.cleanArtist(rawArtist),
                 MetadataCleaner.cleanAlbum(metadata.getString(MediaMetadata.METADATA_KEY_ALBUM)),
-                (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000)
+                durationSeconds
         );
 
         if (track.title().isEmpty() || track.artist().isEmpty()) {
@@ -259,6 +302,12 @@ public final class LyricsManager {
             } catch (Exception ex) {
                 Logger.printException(() -> "Lyrics listener failure", ex);
             }
+        }
+
+        if (newState == State.LOADED) {
+            // A panel is only detected while the app builds its own lyrics into it, which it
+            // never does for a music video, so an open panel is covered from here instead.
+            LyricsPanelInstaller.onLyricsPanelDetected();
         }
     }
 

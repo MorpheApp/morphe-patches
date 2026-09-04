@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">搜尋記錄是空的</string>
   <string name="morphe_settings_search_empty_history_summary">若要儲存搜尋記錄，請輸入搜尋查詢並按下 Enter 鍵</string>
   <string name="morphe_settings_search_history_title">顯示設定搜尋記錄</string>
+  <string name="morphe_settings_name_title">Morphe</string>
+  <string name="morphe_settings_name_default_item">預設</string>
+  <string name="morphe_settings_name_entry_2">額外設定</string>
+  <string name="morphe_settings_name_entry_3">微調</string>
+  <string name="morphe_settings_name_entry_4">變形時間</string>
+  <string name="morphe_settings_name_custom_item">自訂</string>
+  <string name="morphe_settings_name_custom_item_hint">輸入名稱</string>
+  <string name="morphe_settings_name_empty_warning">名稱不可為空</string>
   <string name="morphe_show_menu_icons_title">顯示 Morphe 設定圖示</string>
   <string name="morphe_settings_menu_copy_path">已複製：%s</string>
   <string name="morphe_language_title">Morphe 語言</string>
@@ -109,21 +117,62 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_summary">管理布林功能標記</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">搜尋功能標籤…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">未啟用 (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">已啟用 (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">已封鎖 (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">已強制 (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">自動</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">關閉</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">開啟</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">強制啟用</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">封鎖</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">刪除</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">功能標籤已儲存</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">功能標籤已重設</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">功能標籤已複製到剪貼簿</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">重新啟動應用程式以使用此設定</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">匯出與匯入</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">已匯入 %s 個功能旗標</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">找不到任何功能旗標</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">功能旗標匯出成功</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">匯出功能旗標失敗</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">功能旗標已載入，點選儲存以套用</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">讀取檔案失敗</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">二元搜尋</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"找出是哪個功能旗標導致應用程式行為。
+
+一半的 %s 個旗標會被封鎖，每次重新啟動後請判斷行為是否仍然存在。
+
+開始前請先重現該行為，否則應用程式尚未請求的旗標將不會出現在搜尋中"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">開始</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"沒有可搜尋的功能旗標。
+
+只有應用程式已存取且目前未強制啟用的旗標，才能用於二元搜尋"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"步驟 %1$s
+
+剩餘 %2$s 個旗標，其中 %3$s 個在此步驟被封鎖。
+
+請重新啟動應用程式，檢查行為是否存在，然後在下方回答"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">功能旗標搜尋進行中</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">行為存在</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">行為不存在</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">取消二元搜尋</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">二元搜尋已取消</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"功能旗標 %s 導致此行為。
+
+該旗標現已封鎖"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"找不到功能旗標。
+
+應用程式行為似乎不受功能旗標控制"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"找不到單一功能旗標。
+
+行為在搜尋過程中消失，因此可能涉及多個旗標，或某個答案有誤"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">開啟 MicroG 設定</string>

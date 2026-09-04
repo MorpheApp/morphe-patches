@@ -23,6 +23,7 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.youtube.patches.NavigationBarPatch;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
@@ -360,7 +361,10 @@ public final class AdsFilter extends Filter {
      * Injection point.
      */
     public static String overrideGuideOSName(String osName) {
-        boolean swapButtons = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
-        return SpoofOSNamePatch.getOSName(swapButtons);
+        if (NavigationBarPatch.isPatchIncluded()) {
+            return osName;
+        }
+
+        return SpoofOSNamePatch.getOSName(false);
     }
 }

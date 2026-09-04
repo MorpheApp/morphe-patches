@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Lịch sử tìm kiếm đang trống</string>
   <string name="morphe_settings_search_empty_history_summary">Để lưu lịch sử tìm kiếm, nhập từ khoá tìm kiếm và bấm Enter</string>
   <string name="morphe_settings_search_history_title">Hiện lịch sử tìm kiếm cài đặt</string>
+  <string name="morphe_settings_name_title">Tên cài đặt Morphe</string>
+  <string name="morphe_settings_name_default_item">Mặc định</string>
+  <string name="morphe_settings_name_entry_2">Phần bổ sung</string>
+  <string name="morphe_settings_name_entry_3">Tinh chỉnh</string>
+  <string name="morphe_settings_name_entry_4">Thời gian biến hình</string>
+  <string name="morphe_settings_name_custom_item">Tùy chỉnh</string>
+  <string name="morphe_settings_name_custom_item_hint">Nhập tên</string>
+  <string name="morphe_settings_name_empty_warning">Tên không được để trống</string>
   <string name="morphe_show_menu_icons_title">Hiện biểu tượng cài đặt Morphe</string>
   <string name="morphe_settings_menu_copy_path">Đã sao chép: %s</string>
   <string name="morphe_language_title">Ngôn ngữ thiết lập Morphe</string>
@@ -109,21 +117,62 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Quản lý các cờ tính năng boolean</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Tìm kiếm cờ tính năng…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Không hoạt động (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Hoạt động (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Đã chặn (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Ép buộc (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Tự động</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Tắt</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Bật</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Ép bật</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Chặn</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Xóa</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Đã lưu cờ tính năng</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Đã đặt lại cờ tính năng</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Đã sao chép cờ tính năng vào bảng nhớ tạm</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Khởi động lại ứng dụng để sử dụng cài đặt này</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Xuất và nhập</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Đã nhập %s cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Không tìm thấy cờ tính năng nào</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Đã xuất các cờ tính năng thành công</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Không xuất được cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Đã tải các cờ tính năng, chạm Lưu để áp dụng</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Không đọc được tệp</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Tìm kiếm nhị phân</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Tìm xem cờ tính năng nào gây ra hành vi của ứng dụng.
+
+Một nửa trong số %s cờ tính năng sẽ bị chặn và sau mỗi lần khởi động lại, bạn cho biết hành vi đó có còn xuất hiện hay không.
+
+Hãy tái hiện hành vi đó một lần trước khi bắt đầu, nếu không các cờ tính năng mà ứng dụng chưa yêu cầu sẽ không có trong quá trình tìm kiếm"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Bắt đầu</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Không có cờ tính năng nào để tìm kiếm.
+
+Chỉ các cờ tính năng mà ứng dụng đã yêu cầu và hiện không bị ép bật mới có thể dùng trong tìm kiếm nhị phân"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Bước %1$s
+
+Còn lại %2$s cờ tính năng, %3$s trong số đó bị chặn ở bước này.
+
+Khởi động lại ứng dụng, kiểm tra xem hành vi đó có còn xuất hiện hay không, rồi trả lời bên dưới"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Đang tìm kiếm cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Hành vi vẫn xuất hiện</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Hành vi không còn xuất hiện</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Hủy tìm kiếm nhị phân</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Đã hủy tìm kiếm nhị phân</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Cờ tính năng %s gây ra hành vi này.
+
+Cờ này hiện đã bị chặn"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Không thể tìm thấy cờ tính năng nào.
+
+Hành vi của ứng dụng có vẻ không do một cờ tính năng điều khiển"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Không thể tìm ra một cờ tính năng duy nhất.
+
+Hành vi đã biến mất trước đó trong quá trình tìm kiếm, vì vậy có thể có nhiều cờ liên quan hoặc một trong các câu trả lời đã sai"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Mở cài đặt microG</string>

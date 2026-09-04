@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">O histórico de pesquisa está vazio</string>
   <string name="morphe_settings_search_empty_history_summary">Para salvar o histórico de pesquisa, digite uma consulta de pesquisa e pressione Enter</string>
   <string name="morphe_settings_search_history_title">Mostrar histórico de pesquisa de configurações</string>
+  <string name="morphe_settings_name_title">Nome das configurações do Morphe</string>
+  <string name="morphe_settings_name_default_item">Padrão</string>
+  <string name="morphe_settings_name_entry_2">Extras</string>
+  <string name="morphe_settings_name_entry_3">Ajustes</string>
+  <string name="morphe_settings_name_entry_4">Tempo de morphing</string>
+  <string name="morphe_settings_name_custom_item">Personalizado</string>
+  <string name="morphe_settings_name_custom_item_hint">Digite um nome</string>
+  <string name="morphe_settings_name_empty_warning">O nome não pode estar vazio</string>
   <string name="morphe_show_menu_icons_title">Mostrar ícones de configuração do Morphe</string>
   <string name="morphe_settings_menu_copy_path">Copiado: %s</string>
   <string name="morphe_language_title">Idioma do Morphe</string>
@@ -109,19 +117,62 @@ Não será notificado de quaisquer eventos inesperados."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recurso booleanos</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar funcionalidades…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Inativas (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Ativas (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloqueadas (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Forçadas (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Automático</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Desativada</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Ativada</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forçar ativação</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquear</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Remover</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Sinalizadores de recurso guardados</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Sinalizadores de recurso reiniciados</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Sinalizadores de recurso copiados para a área de transferência</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie a aplicação para usar esta configuração</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exportar e importar</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importadas %s feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nenhuma feature flag encontrada</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Feature flags exportadas com sucesso</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Falha ao exportar feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Feature flags carregadas. Toque em Salvar para aplicar</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Falha ao ler o arquivo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Busca binária</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Descobre qual feature flag causa um comportamento do app.
+
+Metade das %s flags são bloqueadas e, após cada reinício, você informa se o comportamento ainda está presente.
+
+Reproduza o comportamento uma vez antes de começar; caso contrário, as flags que o app ainda não solicitou ficam de fora da busca"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Início</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nenhuma feature flag para buscar.
+
+Somente as flags que o app já solicitou e que não estão com ativação forçada no momento podem ser usadas em uma busca binária"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Etapa %1$s
+
+%2$s flags restantes, %3$s delas bloqueadas para esta etapa.
+
+Reinicie o app, verifique se o comportamento está presente e responda abaixo"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Busca de feature flags em andamento</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">O comportamento está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">O comportamento não está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Cancelar busca binária</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Busca binária cancelada</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"A feature flag %s causa o comportamento.
+
+Ela agora está bloqueada"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Não foi possível encontrar uma feature flag.
+
+O comportamento do app não parece ser controlado por uma feature flag"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Não foi possível encontrar uma única feature flag.
+
+O comportamento desapareceu em um ponto anterior da busca, então mais de uma flag pode estar envolvida ou uma das respostas estava errada"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>

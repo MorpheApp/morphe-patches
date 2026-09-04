@@ -210,6 +210,15 @@ Giúp thay đổi giao diện và tính năng của ứng dụng, nhưng đồng
 
 Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng dụng để tránh vỡ giao diện."</string>
   <string name="morphe_spoof_app_version_target_title">Mục tiêu phiên bản giả mạo</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Tần số quét của ứng dụng</string>
+  <string name="morphe_app_refresh_rate_default">Mặc định</string>
+  <string name="morphe_app_refresh_rate_fps">%s khung hình/giây</string>
+  <string name="morphe_app_refresh_rate_type_title">Ghi đè tần số quét</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Luôn luôn</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Phát lại dọc</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Phát lại toàn màn hình</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Phát lại dọc và toàn màn hình</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Tạm thời không thể tải số lượt không thích (hết thời gian chờ API)</string>

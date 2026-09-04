@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fjern restriktioner for afspilning i baggrunden</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiver baggrundsafspilning</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Auto-pause, når enheden er låst</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Fra</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Pause altid, når enheden er låst</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Pause, medmindre trådløs lyd er tilsluttet</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Deaktiver begrænsning af rullehastighed</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_ask_section_title">Skjul Ask sektionen</string>
   <string name="morphe_hide_attributes_section_title">Skjul Attributes sektionen</string>
   <string name="morphe_hide_attributes_section_summary">Skjuler Fremhævede steder, Spil, Musik og Personer, der nævnes, sektioner</string>
+  <string name="morphe_hide_channel_links_section_title">Skjul sektionen med kanallinks</string>
   <string name="morphe_hide_chapters_section_title">Skjul Chapters sektionen</string>
   <string name="morphe_hide_corrections_section_title">Skjul Corrections sektionen</string>
   <string name="morphe_hide_course_progress_section_title">Skjul sektionen \'Kursusforløb\'</string>
@@ -262,6 +267,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentar preview under videoen inden åbning af hele kommentarsektionen</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul \"Tak\"-knap</string>
   <string name="morphe_hide_comments_timestamp_button_title">Skjul Tidsstempel-knap</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Skjul \'Top fans\'-knappen</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Renser fremhævede søgelinks</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Renser fremhævede søgelinks og efterlader kun den originale tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Nøgleordsfilter</string>
@@ -545,7 +551,6 @@ For at rette dette skal du slå 'Spoof video streams' til og skifte 'Standardkli
   <string name="morphe_swipe_overlay_timeout_summary">Antallet af millisekunder overlejringen er synlig</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Stryg baggrundsgennemsigtighed for overlejring</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Juster gennemsigtighedsniveauet (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Gennemsigtighed skal være mellem 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Stryg farven på lysstyrkeoverlejring</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Skjul \'Stop reklamer\'-knap</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Stryg farven på lydstyrkeoverlejring</string>
@@ -554,7 +559,6 @@ For at rette dette skal du slå 'Spoof video streams' til og skifte 'Standardkli
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Indstil farven på fremskridtslinjen for afspilningshastighedskontrollerne</string>
   <string name="morphe_swipe_text_overlay_size_title">Stryg tekststørrelse på overlejring</string>
   <string name="morphe_swipe_text_overlay_size_summary">Skjul Rapport knap</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Tekststørrelsen skal være mellem 1-30</string>
   <string name="morphe_swipe_threshold_title">Stryg størrelse tærskel</string>
   <string name="morphe_swipe_threshold_summary">Indstil den nødvendige strygedistance, før en justering udløses</string>
   <string name="morphe_swipe_volume_sensitivity_title">Lydstyrke strygefølsomhed</string>
@@ -706,42 +710,44 @@ For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via G
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Udfyldningsmenu</string>
   <string name="morphe_hide_player_flyout_summary">Vælg, hvilke komponenter der vises i flyout-menuen</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Skjul \'Lydspor\'-menuen</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Skjul \'Yderligere indstillinger\' / Mere-menuen</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Skjul \'Ambient mode\'-menuen</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"'Lydspor'-menuen er skjult
 
 For at vise 'Lydspor'-menuen skal du ændre 'Forfalsk videostreams' til enhver klient undtagen 'Android Studio' og 'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Skjul \'Lydspor\'-menuen</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Skjul \'Lydspor\'-menuens sidefod</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Skjul Undertekster-menuen</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Skjul Undertekster-menuens sidefod</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Skjul Undertekster-menuens overskrift</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Skjul \'Yderligere indstillinger\' / Mere-menuen</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Skjul \'Sleep timer\'-menuen</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Skjul \'Loop video\'-menuen</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Skjul \'Ambient mode\'-menuen</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Skjul \'Stabil lydstyrke\'-menuen</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Skjul \'Hjælp &amp; feedback\'-menuen</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Skjul \'Afspilningshastighed\'-menuen</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Skjul \'Låseskærm\'-menuen</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Skjul \'Lyt med YouTube Music\'-menuen</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Skjul \'Se i VR\'-menuen</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Skjul \'Låseskærm\'-menuen</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Skjul \'Loop video\'-menuen</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Skjul \'På farten\'-menuen</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Skjul Kvalitetsmenuen</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Skjul Kvalitetsmenuens sidefod</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Skjul Kvalitetsmenuens overskrift</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Skjul \'Sleep timer\'-menuen</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Skjul \'Afspilningshastighed\'-menuen</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Skjul \'Stabil lydstyrke\'-menuen</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Skjul \'Se i VR\'-menuen</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Skjul forhåndsvisning af autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary">Skjuler det kommende videoforvisning i fuldskærm, før automatisk afspilning starter</string>
@@ -845,6 +851,8 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <string name="morphe_disable_player_popup_panels_title">Slå afspiller pop-up paneler fra</string>
   <string name="morphe_disable_player_popup_panels_summary">Deaktiverer automatisk åbning af playliste- og livechat-paneler</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Deaktiver automatisk afspilning af playlister</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Forhindrer playlister i automatisk at gå videre til næste video</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Afslut fuldskærmstilstand ved videoens afslutning</string>
   <string name="morphe_exit_fullscreen_entry_1">Deaktiveret</string>
@@ -875,7 +883,6 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Spiller overlay gennemsigtighed</string>
   <string name="morphe_player_overlay_opacity_summary">Juster gennemsigtighedsniveauet (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Spiller overlay gennemsigtighed skal være mellem 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Søgefelt</string>
   <string name="morphe_searchbar_type_entry_disabled">Deaktiveret</string>
@@ -890,18 +897,20 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <string name="morphe_change_form_factor_entry_4">Bil</string>
   <string name="morphe_change_form_factor_user_dialog_message">"Ændringer inkluderer:
 
-Tabletlayout
-• Opslag fra community er skjult
-• Afspilning i feeds-indstillingen er ikke tilgængelig
+Tablet layout
+• Fællesskabsindlæg er skjult
+• Afspilning i feed-indstillingen er ikke tilgængelig
 • Remix-knappen og Lyd-knappen er ikke tilgængelige i Shorts
-• Ikke-sammenklappet gammel video-handlingslinje vises
+• 'Flere videoer'-overlayet er måske ikke tilgængeligt
+• Den gamle video-handlingslinje vises, og den er ikke sammenklappet
 
-Layout til bil
+Bil layout
 • Feed er organiseret efter emner og kanaler
-• Afspilning i feeds-indstillingen er ikke tilgængelig
+• Afspilning i feed-indstillingen er ikke tilgængelig
 • Remix-knappen og Lyd-knappen er ikke tilgængelige i Shorts
-• Shorts åbnes i den normale afspiller
-• Ikke-sammenklappet gammel video-handlingslinje vises"</string>
+• 'Flere videoer'-overlayet er måske ikke tilgængeligt
+• Shorts åbnes i den almindelige afspiller
+• Den gamle video-handlingslinje vises, og den er ikke sammenklappet"</string>
   <string name="morphe_tablet_layout_in_player_title">Aktivér tabletlayout i afspilleren</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Gendanner det gamle layout for afspilleren
@@ -993,7 +1002,6 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel størrelse skal være mellem %1$s og %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Overlay uigennemsigtighed</string>
   <string name="morphe_miniplayer_opacity_summary">Juster gennemsigtighedsniveauet (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Miniplayer overlay gennemsigtighed skal være mellem 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tilbageknappen forlader feedet</string>
   <string name="morphe_back_button_always_exits_feed_summary">Tryk på tilbage afslutter altid appen i stedet for at rulle til toppen af feedet</string>
@@ -1146,6 +1154,14 @@ Tryk her for at lære mere om DeArrow"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Gør det muligt at indstille hastighed og tonehøjde uafhængigt, hvilket kan forårsage lydartefakter</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
+  <string name="morphe_force_hdr_video_title">Tving HDR-video</string>
+  <string name="morphe_force_hdr_video_summary">Tvinger appen til at genkende denne enhed som HDR-kompatibel</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Brug dette, hvis HDR-afkodning fungerer, men YouTube ikke tilbyder HDR, f.eks. nogle HyperOS-enheder, der skjuler HLG.
+
+Begrænsninger:
+• Farver kan se forkerte ud, hvis skærmen faktisk ikke kan vise HDR
+• Afspilning kan mislykkes, hvis afkoderen ikke kan håndtere HDR
+• HDR afhænger stadig af spoof-videostreams-klienten"</string>
   <string name="morphe_force_avc_codec_title">Gennemtving AVC (H.264) codec</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Fordele:
 • Kan forbedre batterilevetiden

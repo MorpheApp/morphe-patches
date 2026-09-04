@@ -210,6 +210,15 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
 
 পরে কখনো এটি বন্ধ করলে, অ্যাপের ডিজাইনে কোনো সমস্যা বা বাগ এড়াতে অ্যাপ ডাটা ক্লিয়ার (Clear Data) করার পরামর্শ দেওয়া হচ্ছে।"</string>
   <string name="morphe_spoof_app_version_target_title">যে অ্যাপ ভার্সনে স্পুফ করবেন</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">অ্যাপ রিফ্রেশ রেট</string>
+  <string name="morphe_app_refresh_rate_default">ডিফল্ট</string>
+  <string name="morphe_app_refresh_rate_fps">%s এফপিএস</string>
+  <string name="morphe_app_refresh_rate_type_title">রিফ্রেশ রেট ওভাররাইড করুন</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">সবসময়</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">পোর্ট্রেট প্লেব্যাক</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">ফুলস্ক্রিন প্লেব্যাক</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">পোর্ট্রেট এবং ফুলস্ক্রিন প্লেব্যাক</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">অপছন্দ সাময়িকভাবে উপলভ্য নয় (API সময় শেষ হয়েছে)</string>

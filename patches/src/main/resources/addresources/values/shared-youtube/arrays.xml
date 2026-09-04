@@ -61,6 +61,21 @@
         <item>PLAY</item>
         <item>CUSTOM</item>
     </string-array>
+
+    <!-- misc.framerate.baseAppRefreshRatePatch -->
+    <string-array name="morphe_app_refresh_rate_type_entries">
+        <item>@string/morphe_app_refresh_rate_type_entry_1</item>
+        <item>@string/morphe_app_refresh_rate_type_entry_2</item>
+        <item>@string/morphe_app_refresh_rate_type_entry_3</item>
+        <item>@string/morphe_app_refresh_rate_type_entry_4</item>
+    </string-array>
+    <string-array name="morphe_app_refresh_rate_type_entry_values">
+        <item>ALWAYS</item>
+        <item>PORTRAIT</item>
+        <item>FULLSCREEN</item>
+        <item>PORTRAIT_FULLSCREEN</item>
+    </string-array>
+    
     <!-- layout.theme.baseThemePatch -->
     <string-array name="morphe_theme_color_dark_entries">
         <item>@string/morphe_theme_color_entry_1</item>

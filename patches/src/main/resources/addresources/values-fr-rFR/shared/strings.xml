@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">L\'historique de recherche est vide</string>
   <string name="morphe_settings_search_empty_history_summary">Pour enregistrer l\'historique de recherche, saisissez une recherche et appuyez sur Entrée.</string>
   <string name="morphe_settings_search_history_title">Afficher l\'historique de recherche dans les paramètres</string>
+  <string name="morphe_settings_name_title">Nom des paramètres de Morphe</string>
+  <string name="morphe_settings_name_default_item">Par défaut</string>
+  <string name="morphe_settings_name_entry_2">Suppléments</string>
+  <string name="morphe_settings_name_entry_3">Ajustements</string>
+  <string name="morphe_settings_name_entry_4">L\'heure de la métamorphose</string>
+  <string name="morphe_settings_name_custom_item">Personnalisé</string>
+  <string name="morphe_settings_name_custom_item_hint">Entrez un nom</string>
+  <string name="morphe_settings_name_empty_warning">Le nom ne peut pas être vide</string>
   <string name="morphe_show_menu_icons_title">Afficher les icônes des paramètres de Morphe</string>
   <string name="morphe_settings_menu_copy_path">Copié : %s</string>
   <string name="morphe_language_title">Langue de Morphe</string>
@@ -106,9 +114,9 @@ Vous ne serez plus averti en cas d'événements inattendus."</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Journaux de débogage copiés</string>
   <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux de débogage : %s</string>
   <string name="morphe_debug_logs_clear_toast">Journaux de débogage effacés</string>
-  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de flags de fonctionnalités</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gérer les flags de fonctionnalités booléens</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des flags de fonctionnalités…</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire d\'indicateurs de fonctionnalité</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gérer les indicateurs de fonctionnalité booléens</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des indicateurs de fonctionnalités…</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_inactive">Inactif (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
@@ -123,12 +131,12 @@ Vous ne serez plus averti en cas d'événements inattendus."</string>
   <string name="morphe_debug_feature_flags_manager_state_blocked">Désactivé</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Activé</string>
-  <string name="morphe_debug_feature_flags_manager_action_force_on">Forcer l’activation</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forcer l\'activation</string>
   <string name="morphe_debug_feature_flags_manager_action_force_off">Bloquer</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Retirer</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de fonctionnalités enregistrés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de fonctionnalités réinitialisés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de fonctionnalités copiés dans le presse-papiers</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Indicateurs de fonctionnalités enregistrés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Indicateurs de fonctionnalités réinitialisés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Indicateurs de fonctionnalités copiés dans le presse-papiers</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour appliquer ce paramètre</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Exporter et importer</string>
   <string name="morphe_debug_feature_flags_manager_import_success">%s indicateurs de fonctionnalités importés</string>
@@ -163,6 +171,9 @@ Il est maintenant bloqué"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Impossible de trouver un indicateur de fonctionnalité.
 
 Le comportement de l'application ne semble pas être contrôlé par un indicateur de fonctionnalité"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Impossible de trouver un seul indicateur de fonctionnalité.
+
+Le comportement a disparu plus tôt au cours de la recherche, donc plusieurs indicateurs sont peut-être impliqués ou l'une des réponses était erronée"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ouvrir les paramètres de MicroG</string>

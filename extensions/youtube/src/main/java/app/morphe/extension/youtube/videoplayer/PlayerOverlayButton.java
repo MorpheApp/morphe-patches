@@ -8,8 +8,15 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BlurMaskFilter;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -17,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -35,6 +43,112 @@ import app.morphe.extension.youtube.settings.Settings;
 public class PlayerOverlayButton {
 
     public static final int BUTTON_WIDTH = (int) ResourceUtils.getDimension("controls_overlay_action_button_size");
+
+    private static final int ICON_SHADOW_OFFSET_X;
+    private static final int ICON_SHADOW_OFFSET_Y;
+    private static final int ICON_SHADOW_BLUR_RADIUS;
+    private static final int ICON_SHADOW_COLOR;
+
+    static {
+        int offsetX = 0, offsetY = 0, blurRadius = 0, color = Color.TRANSPARENT;
+        try {
+            // The app has both integer and dimension versions of these. The player controls read
+            // the integers as raw pixels, while only the miniplayer reads the dimensions.
+            offsetX = ResourceUtils.getInteger("shadow_icon_offset_x");
+            offsetY = ResourceUtils.getInteger("shadow_icon_offset_y");
+            blurRadius = ResourceUtils.getInteger("shadow_icon_size");
+            color = Color.argb(ResourceUtils.getInteger("shadow_icon_alpha"), 0, 0, 0);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not resolve player icon shadow resources", ex);
+        }
+        ICON_SHADOW_OFFSET_X = offsetX;
+        ICON_SHADOW_OFFSET_Y = offsetY;
+        ICON_SHADOW_BLUR_RADIUS = blurRadius;
+        ICON_SHADOW_COLOR = color;
+    }
+
+    /**
+     * The app's own player icons carry a soft drop shadow, which is what keeps a white icon
+     * readable over bright video once the circle behind it is made transparent.
+     */
+    private static final class ShadowedIconDrawable extends DrawableWrapper {
+        @Nullable
+        private Bitmap shadow;
+
+        ShadowedIconDrawable(Drawable icon) {
+            super(icon);
+        }
+
+        @Override
+        protected void onBoundsChange(@NonNull Rect bounds) {
+            super.onBoundsChange(bounds);
+            shadow = null;
+        }
+
+        @Override
+        public void draw(@NonNull Canvas canvas) {
+            if (shadow == null) {
+                buildShadow();
+            }
+            if (shadow != null) {
+                Rect bounds = getBounds();
+                canvas.drawBitmap(shadow, bounds.left, bounds.top, null);
+            }
+
+            super.draw(canvas);
+        }
+
+        private void buildShadow() {
+            Drawable icon = getDrawable();
+            Rect bounds = getBounds();
+            if (icon == null || bounds.isEmpty()) return;
+
+            final int width = bounds.width();
+            final int height = bounds.height();
+
+            try {
+                Bitmap rendered = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+                // The wrapper draws the icon at the view bounds, so move it to the bitmap origin
+                // and put it back afterward.
+                Rect iconBounds = new Rect(icon.getBounds());
+                icon.setBounds(0, 0, width, height);
+                icon.draw(new Canvas(rendered));
+                icon.setBounds(iconBounds);
+
+                Bitmap mask = rendered.extractAlpha();
+                rendered.recycle();
+
+                Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                paint.setColor(ICON_SHADOW_COLOR);
+                paint.setMaskFilter(new BlurMaskFilter(
+                        ICON_SHADOW_BLUR_RADIUS, BlurMaskFilter.Blur.NORMAL));
+
+                // Blurring at draw time into a bitmap the size of the icon keeps the shadow
+                // inside the icon box, the way the app builds its own player icon shadows.
+                Bitmap blurred = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+                new Canvas(blurred).drawBitmap(
+                        mask, ICON_SHADOW_OFFSET_X, ICON_SHADOW_OFFSET_Y, paint);
+                mask.recycle();
+
+                shadow = blurred;
+            } catch (Exception ex) {
+                Logger.printException(() -> "Could not build player icon shadow", ex);
+            }
+        }
+    }
+
+    /**
+     * Wraps the current icon so it keeps the shadow after a button swaps its own drawable,
+     * which the mute and video scale buttons do when their state changes.
+     */
+    private static void applyIconShadow(View button) {
+        if (ICON_SHADOW_BLUR_RADIUS <= 0 || !(button instanceof ImageView imageView)) return;
+
+        Drawable icon = imageView.getDrawable();
+        if (icon != null && !(icon instanceof ShadowedIconDrawable)) {
+            imageView.setImageDrawable(new ShadowedIconDrawable(icon));
+        }
+    }
 
     private static boolean skipFirstExceptionLog = true;
 
@@ -218,9 +332,12 @@ public class PlayerOverlayButton {
                 Drawable newBackground = newConstantState != null
                         ? newConstantState.newDrawable().mutate()
                         : sourceButtonBackground;
-                setBackground.setBackground(newBackground);
+                setBackground.setBackground(
+                        HidePlayerOverlayButtonsPatch.applyControlButtonsBackgroundOpacity(newBackground));
                 sourceBackgroundSnapshot = newConstantState;
             }
+
+            applyIconShadow(button);
 
             final float sourceButtonAlpha = source.getAlpha();
             if (button.getAlpha() != sourceButtonAlpha) {
@@ -248,6 +365,29 @@ public class PlayerOverlayButton {
 
     private static WeakReference<View> ytSourceButtonRef = new WeakReference<>(null);
     private static final List<PlayerOverlayButtonController> buttonControllers = new ArrayList<>();
+
+    /** ConstantState of the fullscreen button background the opacity was last applied to. */
+    @Nullable
+    private static Drawable.ConstantState sourceButtonBackgroundSnapshot;
+
+    /**
+     * The app assigns the circle background after the view exists, so this re-checks on every
+     * pre-draw pass and only does work when the drawable is actually replaced.
+     */
+    private static void styleSourceButtonBackground(View sourceButton) {
+        Drawable background = sourceButton.getBackground();
+        if (background == null) return;
+
+        // A null state cannot be tracked, so fall through and rely on mutate() being idempotent.
+        Drawable.ConstantState state = background.getConstantState();
+        if (state != null && state == sourceButtonBackgroundSnapshot) return;
+
+        Drawable styled = HidePlayerOverlayButtonsPatch.applyControlButtonsBackgroundOpacity(background);
+        if (styled != background) {
+            sourceButton.setBackground(styled);
+        }
+        sourceButtonBackgroundSnapshot = styled.getConstantState();
+    }
 
     /**
      * Returns the button width percentage based on the number of extra button slots needed,
@@ -388,6 +528,10 @@ public class PlayerOverlayButton {
         textOverlay.setTextSize(TypedValue.COMPLEX_UNIT_PX, Dim.dp(14));
         textOverlay.setTextColor(0xFFFFFFFF);
         textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
+        if (ICON_SHADOW_BLUR_RADIUS > 0) {
+            textOverlay.setShadowLayer(ICON_SHADOW_BLUR_RADIUS,
+                    ICON_SHADOW_OFFSET_X, ICON_SHADOW_OFFSET_Y, ICON_SHADOW_COLOR);
+        }
         textOverlay.setOnClickListener(onClickListener);
         textOverlay.setOnLongClickListener(onLongClickListener);
         sourceButtonViewGroup.addView(textOverlay);
@@ -398,7 +542,8 @@ public class PlayerOverlayButton {
     }
 
     /**
-     * Unconditionally removes YouTube's native maxWidth restrictions from the chapter title.
+     * Unconditionally removes YouTube's native maxWidth restrictions from the chapter title,
+     * and styles the fullscreen button background that the other overlay buttons copy.
      */
     public static void initializeButton(View controlsViewGroup) {
         Utils.verifyOnMainThread();
@@ -407,6 +552,8 @@ public class PlayerOverlayButton {
             chapterTitleContainer.updateContainerRef(controlsViewGroup);
             controlsViewGroup.getViewTreeObserver().addOnPreDrawListener(() -> {
                 try {
+                    styleSourceButtonBackground(controlsViewGroup);
+
                     final int effectiveCustomButtons = Math.max(0, buttonControllers.size()
                             - (Settings.HIDE_FULLSCREEN_BUTTON.get() ? 1 : 0));
 
@@ -419,12 +566,12 @@ public class PlayerOverlayButton {
                     float spacingPercentage = getButtonWidthPercentage(effectiveCustomButtons, controlsViewGroup);
                     chapterTitleContainer.updateMargin(buttonWidth, effectiveCustomButtons, spacingPercentage);
                 } catch (Exception ex) {
-                    Logger.printDebug(() -> "Could not update chapter title margin", ex);
+                    Logger.printDebug(() -> "Could not update overlay button layout", ex);
                 }
                 return true;
             });
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to unrestrict chapter title", ex);
+            Logger.printException(() -> "Failed to initialize overlay button layout", ex);
         }
     }
 }

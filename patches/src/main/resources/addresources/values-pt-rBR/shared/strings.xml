@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">O histórico de pesquisa está vazio</string>
   <string name="morphe_settings_search_empty_history_summary">Para salvar o histórico de pesquisa, digite uma consulta de pesquisa e pressione Enter</string>
   <string name="morphe_settings_search_history_title">Mostrar histórico de pesquisa das configurações</string>
+  <string name="morphe_settings_name_title">Nome das configurações do Morphe</string>
+  <string name="morphe_settings_name_default_item">Padrão</string>
+  <string name="morphe_settings_name_entry_2">Extras</string>
+  <string name="morphe_settings_name_entry_3">Ajustes</string>
+  <string name="morphe_settings_name_entry_4">Hora de morfar</string>
+  <string name="morphe_settings_name_custom_item">Personalizado</string>
+  <string name="morphe_settings_name_custom_item_hint">Digite um nome</string>
+  <string name="morphe_settings_name_empty_warning">O nome não pode ficar em branco</string>
   <string name="morphe_show_menu_icons_title">Mostrar ícones de configuração do Morphe</string>
   <string name="morphe_settings_menu_copy_path">Copiado: %s</string>
   <string name="morphe_language_title">Idioma do Morphe</string>
@@ -105,8 +113,8 @@ Você não será notificado sobre nenhum evento inesperado."</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Registros de depuração copiados</string>
   <string name="morphe_debug_logs_failed_to_export">Falha ao exportar registros de depuração: %s</string>
   <string name="morphe_debug_logs_clear_toast">Registros de depuração limpos</string>
-  <string name="morphe_debug_feature_flags_manager_title">Gerenciador de sinalizadores de recursos</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recursos booleanos</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gerenciador de flags de recursos</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gerenciar flags de recursos booleanas</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar flags de recursos…</string>
   <!-- Keep short, four of these are shown in one row. -->
   <string name="morphe_debug_feature_flags_manager_filter_inactive">Inativo (%s)</string>
@@ -130,14 +138,41 @@ Você não será notificado sobre nenhum evento inesperado."</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de recurso copiadas para a área de transferência</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o aplicativo para usar esta configuração</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Exportar e importar</string>
-  <string name="morphe_debug_feature_flags_manager_import_success">%s sinalizadores de recursos importados</string>
-  <string name="morphe_debug_feature_flags_manager_import_failed">Nenhum sinalizador de recurso encontrado</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_success">Sinalizadores de recursos exportados com sucesso</string>
-  <string name="morphe_debug_feature_flags_manager_export_file_failed">Falha ao exportar os sinalizadores de recursos</string>
-  <string name="morphe_debug_feature_flags_manager_import_file_success">Sinalizadores de recursos carregados, toque em Salvar para aplicar</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s flags de recursos importadas</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nenhuma flag de recurso encontrada</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Flags de recursos exportadas com sucesso</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Falha ao exportar as flags de recursos</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Flags de recursos carregadas, toque em Salvar para aplicar</string>
   <string name="morphe_debug_feature_flags_manager_import_file_failed">Falha ao ler o arquivo</string>
   <string name="morphe_debug_feature_flags_manager_bisect_title">Busca binária</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Identifica qual flag de recurso causa um comportamento no aplicativo.
+
+Metade das %s flags é bloqueada e, após cada reinicialização, você informa se o comportamento ainda está presente.
+
+Reproduza o comportamento uma vez antes de começar; caso contrário, as flags que o aplicativo ainda não solicitou ficarão ausentes da pesquisa."</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Começo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nenhuma flag de recurso para pesquisar.
+
+Apenas flags que o aplicativo já acionou e que não estão atualmente forçadas podem ser usadas em uma pesquisa binária"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Etapa %1$s
+
+Restam %2$s flags, %3$s delas bloqueadas nesta etapa.
+
+Reinicie o aplicativo, verifique se o comportamento está presente e responda abaixo"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Pesquisa de flags de recurso em andamento</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">O comportamento está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">O comportamento não está presente</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Cancelar pesquisa binária</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Pesquisa binária cancelada</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"A flag de recurso %s causa esse comportamento.
+
+Ela agora está bloqueada"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Não foi possível encontrar uma flag de recurso. 
+
+O comportamento do aplicativo aparentemente não é controlado por uma flag de recurso"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Não foi possível encontrar uma única flag de recurso.
+
+O comportamento desapareceu no início da busca, portanto, mais de uma flag pode estar envolvida ou uma das respostas estava errada"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>

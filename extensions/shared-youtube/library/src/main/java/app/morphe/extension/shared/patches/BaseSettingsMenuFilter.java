@@ -121,6 +121,7 @@ public abstract class BaseSettingsMenuFilter {
      */
     private static Set<String> reservedNeedles() {
         Set<String> result = new HashSet<>();
+        addLoweredIfPresent(result, SettingsNamePatch.getSettingsName());
         addLoweredIfPresent(result, ResourceUtils.getString("morphe_settings_title"));
         addLoweredIfPresent(result, ResourceUtils.getString("morphe_settings_submenu_title"));
         return result;

@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">खोज इतिहास खाली है</string>
   <string name="morphe_settings_search_empty_history_summary">खोज इतिहास को सहेजने के लिए, खोज क्वेरी टाइप करें और एंटर प्रेस करें</string>
   <string name="morphe_settings_search_history_title">सेटिंग्स खोज इतिहास दिखाएं</string>
+  <string name="morphe_settings_name_title">Morphe सेटिंग्स का नाम</string>
+  <string name="morphe_settings_name_default_item">डिफ़ॉल्ट</string>
+  <string name="morphe_settings_name_entry_2">अतिरिक्त</string>
+  <string name="morphe_settings_name_entry_3">ट्वीक्स</string>
+  <string name="morphe_settings_name_entry_4">मॉर्फ़िंग समय</string>
+  <string name="morphe_settings_name_custom_item">कस्टम</string>
+  <string name="morphe_settings_name_custom_item_hint">नाम दर्ज करें</string>
+  <string name="morphe_settings_name_empty_warning">नाम खाली नहीं हो सकता</string>
   <string name="morphe_show_menu_icons_title">Morphe सेटिंग आइकन दिखाएं</string>
   <string name="morphe_settings_menu_copy_path">कॉपी किया गया: %s</string>
   <string name="morphe_language_title">Morphe भाषा</string>
@@ -109,19 +117,62 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_summary">बूलियन फ़ीचर फ़्लैग्स को मैनेज करें</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">फीचर फ़्लैग खोजें…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">निष्क्रिय (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">सक्रिय (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">अवरुद्ध (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">बाध्य (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">स्वचालित</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">बंद</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">चालू</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">जबरन चालू</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">ब्लॉक</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">हटाएं</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">फ़ीचर फ़्लैग सेव किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">फ़ीचर फ़्लैग रीसेट किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">फ़ीचर फ़्लैग क्लिपबोर्ड पर कॉपी किए गए</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">इस सेटिंग का उपयोग करने के लिए ऐप को पुनः आरंभ करें</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">निर्यात और आयात</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">आयातित %s फीचर फ्लैग</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">कोई फीचर फ्लैग नहीं मिला</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">फीचर फ्लैग सफलतापूर्वक निर्यात हुए</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">फीचर फ्लैग निर्यात करने में विफल</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">फीचर फ्लैग लोड हो गए, लागू करने के लिए सहेजें पर टैप करें</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">फ़ाइल पढ़ने में विफल</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">बाइनरी खोज</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"यह पता लगाता है कि कौन सा फीचर फ्लैग ऐप के व्यवहार का कारण है।
+
+आधे %s फ्लैग अवरुद्ध हैं, और प्रत्येक पुनरारंभ के बाद आप बताते हैं कि व्यवहार अभी भी मौजूद है या नहीं।
+
+शुरू करने से पहले एक बार व्यवहार को दोहराएं, अन्यथा ऐप द्वारा अभी तक अनुरोध नहीं किए गए फ्लैग खोज से गायब हैं"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">शुरू करें</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"खोजने के लिए कोई फीचर फ्लैग नहीं।
+
+केवल वे फ्लैग जिन्हें ऐप ने एक्सेस किया है और वर्तमान में जबरन चालू नहीं हैं, बाइनरी खोज में उपयोग किए जा सकते हैं"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"चरण %1$s
+
+%2$s फ्लैग बचे हैं, %3$s उनमें से इस चरण के लिए अवरुद्ध हैं।
+
+ऐप को पुनरारंभ करें, जांचें कि व्यवहार मौजूद है, फिर नीचे उत्तर दें"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">फीचर फ्लैग खोज जारी है</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">व्यवहार मौजूद है</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">व्यवहार मौजूद नहीं है</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">बाइनरी खोज रद्द करें</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">बाइनरी खोज रद्द हो गई</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"फीचर फ्लैग %s व्यवहार का कारण है।
+
+यह अब अवरुद्ध है"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"कोई फीचर फ्लैग नहीं मिला।
+
+ऐप का व्यवहार किसी फीचर फ्लैग द्वारा नियंत्रित नहीं लगता"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"एक भी फीचर फ्लैग नहीं मिला।
+
+व्यवहार खोज में पहले ही गायब हो गया, इसलिए एक से अधिक फ्लैग शामिल हो सकते हैं या कोई एक उत्तर गलत था"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">माइक्रोजी सेटिंग्स खोलें</string>

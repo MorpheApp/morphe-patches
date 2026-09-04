@@ -24,6 +24,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.SettingsNamePatch;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -42,8 +43,6 @@ public abstract class BaseActivityHook extends Activity {
             ResourceUtils.getIdentifierOrThrow(ResourceType.ID, "morphe_toolbar_parent");
     public static final int LAYOUT_MORPHE_SETTINGS_WITH_TOOLBAR =
             ResourceUtils.getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_settings_with_toolbar");
-    private static final int STRING_MORPHE_SETTINGS_TITLE =
-            ResourceUtils.getIdentifierOrThrow(ResourceType.STRING, "morphe_settings_title");
 
     /**
      * Layout parameters for the toolbar, extracted from the dummy toolbar.
@@ -80,7 +79,8 @@ public abstract class BaseActivityHook extends Activity {
                 return;
             }
 
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU && !ENABLE_PREDICTIVE_BACK_ANIMATION) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
+                    && !ENABLE_PREDICTIVE_BACK_ANIMATION) {
                 activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
                         android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
                         activity::finish
@@ -132,7 +132,7 @@ public abstract class BaseActivityHook extends Activity {
         toolbar.setBackgroundColor(getToolbarBackgroundColor());
         toolbar.setNavigationIcon(getNavigationIcon());
         toolbar.setNavigationOnClickListener(getNavigationClickListener(activity));
-        toolbar.setTitle(STRING_MORPHE_SETTINGS_TITLE);
+        toolbar.setTitle(SettingsNamePatch.getSettingsName());
 
         toolbar.setTitleMarginStart(Dim.dp16);
         toolbar.setTitleMarginEnd(Dim.dp16);

@@ -92,7 +92,8 @@ public final class FlyoutUtils {
     );
     private static final List<byte[]> KIDS_VIDEO_ELEMENTS_BYTES = List.of(
             getAsciiBytes("video_metadata_carousel.e"),
-            getAsciiBytes("com.google.android.apps.youtube.kids")
+            getAsciiBytes("com.google.android.apps.youtube.kids"),
+            getAsciiBytes("https://www.youtube.com/myfamily/#mf-compare")
     );
     private static final List<byte[]> VIDEO_ELEMENTS_BYTES = List.of(
             getAsciiBytes("compact_playlist.e"),
@@ -184,7 +185,8 @@ public final class FlyoutUtils {
      */
     public static byte[] onNewElementsLoaded(byte[] bytes) {
         List<Integer> kidsVideoElementsBytesIndexes = byteIndexesOf(bytes, KIDS_VIDEO_ELEMENTS_BYTES);
-        if (!kidsVideoElementsBytesIndexes.isEmpty() && kidsVideoElementsBytesIndexes.size() == KIDS_VIDEO_ELEMENTS_BYTES.size()) {
+        if (!kidsVideoElementsBytesIndexes.isEmpty() &&
+                kidsVideoElementsBytesIndexes.size() == KIDS_VIDEO_ELEMENTS_BYTES.size() - 1) {
             videoMarkedAsForKids = true;
         }
         return bytes;

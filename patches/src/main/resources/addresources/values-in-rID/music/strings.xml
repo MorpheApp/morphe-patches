@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo Header</string>
   <string name="morphe_header_logo_entry_1">Bawaan</string>
   <string name="morphe_header_logo_entry_3">Khusus</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Putar trek audio album</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Putar versi audio saja dari lagu-lagu album alih-alih video musik. Memerlukan \'Palsukan aliran video\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Unduh video musik, podcast, atau lagu dengan aplikasi pengunduh pihak ketiga</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_action_bar_title">Sembunyikan bilah tindakan</string>
   <string name="morphe_music_hide_like_dislike_button_title">Sembunyikan tombol Suka dan Tidak Suka</string>
   <string name="morphe_music_hide_comments_button_title">Sembunyikan tombol Komentar</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Sembunyikan tombol \'Putar ulang live chat\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Sembunyikan tombol Lirik</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Sembunyikan tombol Unduh</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Sembunyikan tombol Mulai radio</string>
+  <string name="morphe_music_hide_radio_button_title">Sembunyikan tombol \'Mulai radio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu flyout</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Pilih komponen mana yang akan ditampilkan di menu flyout dan antrean</string>

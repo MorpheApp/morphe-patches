@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">হেডার লোগো</string>
   <string name="morphe_header_logo_entry_1">ডিফল্ট</string>
   <string name="morphe_header_logo_entry_3">ব্যবহারকারী</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">অ্যালবাম অডিও ট্র্যাক চালান</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">মিউজিক ভিডিওর পরিবর্তে শুধুমাত্র অডিও সংস্করণ চালান। \'স্পুফ ভিডিও স্ট্রিম\' প্রয়োজন।</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">থার্ড-পার্টি ডাউনলোড করার অ্যাপের মাধ্যমে মিউজিক ভিডিও, পডকাস্ট বা গান ডাউনলোড করুন</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_action_bar_title">অ্যাকশন বার লুকান</string>
   <string name="morphe_music_hide_like_dislike_button_title">Like এবং Dislike লুকান</string>
   <string name="morphe_music_hide_comments_button_title">কমেন্টস বোতামটি লুকান</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">\'লাইভ চ্যাট রিপ্লে\' বোতাম লুকান</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">লিরিক্স বোতাম লুকান</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ Second \"item\" text"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">ডাউনলোড বোতাম লুকান</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">\'বিজ্ঞাপন বন্ধ করুন\' বোতাম লুকান</string>
+  <string name="morphe_music_hide_radio_button_title">\'রেডিও শুরু করুন\' বোতাম লুকান</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">ফ্লাইআউট মেনু</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">প্লেয়ার এবং সারি ফ্লাইআউট মেনুতে কোন উপাদানগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>

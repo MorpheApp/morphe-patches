@@ -193,6 +193,21 @@ internal fun spoofVideoStreamsPatch(
                         )
                     }
 
+                // The replacement streams can be of another video, such as an album track played
+                // as its song version, and then the app keeps the timeline of the music video.
+                val videoLengthField = classDefBy(videoDetailsClass).fields
+                    .singleOrNull { field -> field.type == "J" }
+                val overrideVideoLength = if (videoLengthField == null) "nop" else """
+                    invoke-static { v2 }, $EXTENSION_CLASS->getVideoLengthSeconds(Ljava/lang/String;)J
+                    move-result-wide v3
+                    const-wide/16 v6, 0x0
+                    cmp-long v0, v3, v6
+                    if-lez v0, :length_overridden
+                    iput-wide v3, p1, $videoDetailsClass->${videoLengthField.name}:J
+                    :length_overridden
+                    nop
+                """
+
                 val castInstruction = if (castReference.type != buildMethod.definingClass) """
                     check-cast v4, $castReference
                 """ else """
@@ -238,6 +253,9 @@ internal fun spoofVideoStreamsPatch(
                             iget-object v6, v5, $getStreamingDataField
                             if-eqz v6, :disabled
                             iput-object v6, p0, $setStreamingDataField
+
+                            # Set video length.
+                            $overrideVideoLength
 
                             # Get player config.
                             invoke-static { v2 }, $EXTENSION_CLASS->getPlayerConfig(Ljava/lang/String;)[B

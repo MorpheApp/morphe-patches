@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Отстрани го оганичувањето за пуштање видеа во позадина</string>
   <string name="morphe_shorts_disable_background_playback_title">Исклучи пуштање видеа во позадина</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Исклучено</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Исклучи ги ажурирањата на изгледот</string>
@@ -308,7 +309,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_summary">Времетраењето на прекривката во милисекунди</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Непроѕирност на позадина на прекривката</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Прилагодете ја транспарентноста (0 е транспарентно, 100 е непровидно)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Непроѕирноста мора да биде меѓу 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Боја на напредокот на прекривката за светлост</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Поставете ја бојата на лентата за напредок на контролите за осветленост</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Боја на напредокот на прекривката за јачина на звук</string>
@@ -317,7 +317,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Поставете ја бојата на лентата за напредок на контролите за брзина на репродукција</string>
   <string name="morphe_swipe_text_overlay_size_title">Големина на текстот на прекривката</string>
   <string name="morphe_swipe_text_overlay_size_summary">Прилагодете ја големината на текстот на екранот (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Големината на текстот мора да биде меѓу 1-30</string>
   <string name="morphe_swipe_threshold_title">Праг на гестот за повлекување</string>
   <string name="morphe_swipe_threshold_summary">Поставете ја потребната оддалеченост на кликнување пред да се активира прилагодувањето</string>
   <string name="morphe_swipe_volume_sensitivity_title">Осетливост на повлекување за јачина на звук</string>
@@ -460,39 +459,40 @@ Second \"item\" text"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Паѓачки мени</string>
   <string name="morphe_hide_player_flyout_summary">Изберете кои компоненти да се појавуваат во менито што се појавува</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Прикријте го менито \'Additional settings\' / More</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Прикријте го менито \'Ambient mode\'</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Прикријте го менито Audio Track</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Прикријте го подножјето на менито Audio Track</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Прикријте го менито Captions</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Прикријте го подножјето на менито Captions</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Прикријте го насловот на менито Captions</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Прикријте го менито \'Additional settings\' / More</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Прикријте го менито \'Sleep timer\'</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Прикријте го менито \'Loop video\'</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Прикријте го менито \'Ambient mode\'</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Прикријте го менито \'Stable volume\'</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Прикријте го менито \'Помош и повратни информации\'</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Прикријте го менито \'Playback speed\'</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Прикријте го менито \'Lock screen\'</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Прикријте го менито \'Listen with YouTube Music\'</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Прикријте го менито \'Watch in VR\'</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Прикријте го менито \'Lock screen\'</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Прикријте го менито \'Loop video\'</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Прикријте го менито Quality</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Прикријте го подножјето на менито Quality</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Прикријте го насловот на менито Quality</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Прикријте го менито \'Sleep timer\'</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Прикријте го менито \'Playback speed\'</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Прикријте го менито \'Stable volume\'</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Прикријте го менито \'Watch in VR\'</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Скриј преглед за автоматска репродукција</string>
   <string name="morphe_hide_autoplay_preview_summary">Ја прикрива прегледот на следното видео во режим на полн екран пред автоматското прескокнување</string>
@@ -606,7 +606,6 @@ Second \"item\" text"</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Непроѕирност на прекривката на плеер</string>
   <string name="morphe_player_overlay_opacity_summary">Прилагодете ја провидноста (0 е провидно, 100 е непровидно)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Непроѕирноста мора да биде меѓу 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_entry_disabled">Оневозможено</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
@@ -691,7 +690,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Големината на пикселите мора да биде помеѓу %1$s и %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Непровидност на наслагата</string>
   <string name="morphe_miniplayer_opacity_summary">Прилагодете ја транспарентноста (0 е транспарентно, 100 е непровидно)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Непровидноста на наслагата на мини-плеер мора да биде помеѓу 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Вклучи анимиран екран за вчитување</string>

@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Hilbijartina parastina ji bo lîstikê di binê de tunekirin</string>
   <string name="morphe_shorts_disable_background_playback_title">Lêkirina lîstikê paşnavê veqetîne</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Dabe</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Nûvekirinên qeydarê qûldar bike.</string>
@@ -543,7 +544,6 @@ Ji bo çareserkirina vê, 'Sextekirina streamên vîdyoyê' çalak bike û 'clie
   <string name="morphe_swipe_overlay_timeout_summary">Zamanê ku pêşanda bilindtîrî jêre vêjre</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Bax de heya nimûne pêşanda sêwirana dûvekirî</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Astê guhartina ronahiyê (0 ronahiyê, 100 têvjîn)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Nimûne bax di nav 0-100 de be</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Rengê pêşanda sêwirana serdestkirî</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Rengê dîmeniya ronahiyê ronahiyê guherîne</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Rengê pêşanda sêwirana dengê</string>
@@ -552,7 +552,6 @@ Ji bo çareserkirina vê, 'Sextekirina streamên vîdyoyê' çalak bike û 'clie
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Rengê barek pêşdebirina kontrolên lezê yê saz bike</string>
   <string name="morphe_swipe_text_overlay_size_title">Mezinahiya nivîsa pêşanda</string>
   <string name="morphe_swipe_text_overlay_size_summary">Tevahiyê nivîsê li ser ekranê guherîne (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Qasî fontê divê di navbera 1-30 de be</string>
   <string name="morphe_swipe_threshold_title">Astê sêwirîna germê</string>
   <string name="morphe_swipe_threshold_summary">Mesafeya destgîrkirinê ji bo guhertina pêşniyarî</string>
   <string name="morphe_swipe_volume_sensitivity_title">Hêwêdayîya germê</string>
@@ -706,42 +705,43 @@ Ji bo ku derfetên sazkarî pêşero, rêzika 'Settings' zivirînin bi General �
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menûya vexwarinê</string>
   <string name="morphe_hide_player_flyout_summary">Rêbaza desteyê hejmara desteyê kêş dibe</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Butona nivîskê veşêre</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Dîmena sernijêra \'Settingsên Din\' / Bêhtir</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Dîmena sernijêra \'Moda ambiyansê\'</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menûya 'Audio Track' veşartî ye
 
 Ji bo nîşandana menûya 'Audio Track', 'Spoof video streams' biguherîne her clientekî ji bilî 'Android Studio' û 'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Butona nivîskê veşêre</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Butona paşveveşêrî veşêre</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Butona rêjeya deng veşêre</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Butona Nivîskê veşêre</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Dîmena sernijêra Jêkirinan</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Dîmena sernijêra \'Settingsên Din\' / Bêhtir</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Dîmena sernijêra \'Demijêrê xewê\'</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Dîmena sernijêra \'Vîdeyo dubare kirin\'</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Dîmena sernijêra \'Moda ambiyansê\'</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Dîmena sernijêra \'Dengahiya stabîl\'</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Dîmena sernijêra \'Alîkarî &amp; fêdbak\'</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Dîmena sernijêra \'Leza Lîstikê\'</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Dîmena sernijêra \'Ekranê qefilkirin\'</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Dîmena sernijêra \'Bi YouTube Musicê guhdar bike\'</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Dîmena sernijêra \'Li VRê temaşe bike\'</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Dîmena sernijêra \'Ekranê qefilkirin\'</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Dîmena sernijêra \'Vîdeyo dubare kirin\'</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Dîmena sernijêra Kalîteyê</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Dîmena sernijêra jêrî Kalîteyê</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Dîmena sernijêra sernijêra Kalîteyê</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Dîmena sernijêra \'Demijêrê xewê\'</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Dîmena sernijêra \'Leza Lîstikê\'</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Dîmena sernijêra \'Dengahiya stabîl\'</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Dîmena sernijêra \'Li VRê temaşe bike\'</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Pêşdîyê pêşandanê veşêre</string>
   <string name="morphe_hide_autoplay_preview_summary">Hêlîna vîdeoyê ya ku bi serê xwe destpê dike berî ku lîstik dest pê bike vekirin</string>
@@ -875,7 +875,6 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Şewitîya zeviyayê pêşandanê.</string>
   <string name="morphe_player_overlay_opacity_summary">Astê şeffafiyê bistîne (0 şeffaf e, 100 neşeffaf e)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Şewitîya zeviyayê pêşandanê divê di navbera 0-100an de be.</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Bara lêgerînê</string>
   <string name="morphe_searchbar_type_entry_disabled">Vemirandî</string>
@@ -888,20 +887,6 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Tabled</string>
   <string name="morphe_change_form_factor_entry_4">Otomobîl</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Guherîn tê de:
-
-Saziya tabletan
-• Postên Civatê veşartî ne
-• Sazkirina lêkirina di xwarê de nepejirê
-• Butona Remix û Butona Dengê di Shorts de nepejirê
-• Bara kirrûbêja vîdyoya kevin ku nehatibe girtin nîşan dide
-
-Saziya otomobîlan
-• Xwarê li gor navnîşanan û kanalên hatine rêzekirin.
-• Sazkirina lêkirina di xwarê de nepejirê
-• Butona Remix û Butona Dengê di Shorts de nepejirê
-• Shorts di lîstikvanê normal de vekirin
-• Bara kirrûbêja vîdyoya kevin ku nehatibe girtin nîşan dide"</string>
   <string name="morphe_tablet_layout_in_player_title">Rêvekirina sêwirana tabletê di lîstikvan de</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Sêwîna lîstikvanê kevnarî dîsa çê bike
@@ -993,7 +978,6 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_miniplayer_width_dip_invalid_toast">Mezinahiya pîksele divê di navbera %1$s û %2$s de be</string>
   <string name="morphe_miniplayer_opacity_title">Astê dorpelê</string>
   <string name="morphe_miniplayer_opacity_summary">Rengê têkildar ê Sebarê</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Astê dorpelê yê dorpelê divê di navbera 0-100 de be</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Paşxaneya temaya ronî</string>

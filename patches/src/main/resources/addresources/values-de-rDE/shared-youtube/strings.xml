@@ -210,6 +210,15 @@ Dadurch ändert sich das Erscheinungsbild und die Funktionen der App, es können
 
 Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu löschen, um Fehler in der Benutzeroberfläche zu vermeiden."</string>
   <string name="morphe_spoof_app_version_target_title">Angestrebte App-Version</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Bildwiederholrate der App</string>
+  <string name="morphe_app_refresh_rate_default">Standard</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Bildwiederholrate überschreiben</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Immer</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Wiedergabe im Hochformat</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Wiedergabe im Vollbild</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Wiedergabe im Hochformat und Vollbild</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes sind vorübergehend nicht verfügbar (API Timeout)</string>

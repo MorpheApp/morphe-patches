@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nombre de la aplicación</string>
   <!-- layout.theme.baseThemePatch -->
-  <string name="morphe_theme_color_dark_title">Fondo de tema oscuro</string>
+  <string name="morphe_theme_color_dark_title">Fondo del tema oscuro</string>
   <string name="morphe_theme_color_dark_entry_2">Negro puro</string>
   <string name="morphe_theme_color_dark_entry_3">Material You (Negro puro)</string>
   <string name="morphe_theme_color_dark_entry_9">YouTube clásico</string>
@@ -210,6 +210,15 @@ Esto cambiará la apariencia y las características de la aplicación, pero pued
 
 Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación para evitar errores en la interfaz de usuario."</string>
   <string name="morphe_spoof_app_version_target_title">Versión a falsificar de la app</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Tasa de refresco de la aplicación</string>
+  <string name="morphe_app_refresh_rate_default">Predeterminada</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Forzar tasa de refresco</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Siempre</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Reproducción en vertical</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Reproducción en pantalla completa</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Reproducción en vertical y en pantalla completa</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Los \'No me gusta\' no están disponibles temporalmente (la API no responde)</string>

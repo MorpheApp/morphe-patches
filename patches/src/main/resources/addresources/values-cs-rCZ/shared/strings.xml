@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Historie vyhledávání je prázdná</string>
   <string name="morphe_settings_search_empty_history_summary">Chcete-li uložit historii vyhledávání, zadejte vyhledávací dotaz a stiskněte Enter</string>
   <string name="morphe_settings_search_history_title">Zobrazit historii vyhledávání v nastavení</string>
+  <string name="morphe_settings_name_title">Název nastavení Morphe</string>
+  <string name="morphe_settings_name_default_item">Výchozí</string>
+  <string name="morphe_settings_name_entry_2">Doplňky</string>
+  <string name="morphe_settings_name_entry_3">Vylepšení</string>
+  <string name="morphe_settings_name_entry_4">Čas Morphování</string>
+  <string name="morphe_settings_name_custom_item">Vlastní</string>
+  <string name="morphe_settings_name_custom_item_hint">Zadej název</string>
+  <string name="morphe_settings_name_empty_warning">Název nesmí být prázdný</string>
   <string name="morphe_show_menu_icons_title">Zobrazit ikony nastavení Morphe</string>
   <string name="morphe_settings_menu_copy_path">Zkopírováno: %s</string>
   <string name="morphe_language_title">Jazyk Morphe</string>
@@ -109,19 +117,62 @@ Nebudete informováni o žádné neočekávané události."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Spravovat logické příznaky funkcí</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Hledat funkce…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Neaktivní (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktivní (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Zablokováno (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Vynuceno (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Automaticky</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Vypnuto</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Zapnuto</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Vynutit zapnutí</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokovat</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Odstranit</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Příznaky funkcí uloženy</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Příznaky funkcí resetovány</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Příznaky funkcí zkopírovány do schránky</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restartujte aplikaci, abyste použili toto nastavení</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Export a import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importováno %s příznaků funkcí</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nenalezeny žádné příznaky</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Příznaky úspěšně exportovány</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Export příznaků se nezdařil</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Příznaky načteny, klepnutím na Uložit použijte</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Načtení souboru se nezdařilo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binární vyhledávání</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Zjistí, který příznak funkce způsobuje dané chování aplikace.
+
+Polovina z %s příznaků je zablokována a po každém restartu určíte, zda chování stále přetrvává.
+
+Před spuštěním chování jednou vyvolejte, jinak budou ve vyhledávání chybět příznaky, které si aplikace zatím nevyžádala."</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Začít</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Žádné příznaky k hledání.
+
+Pouze příznaky, které aplikace použila a nejsou vynuceně zapnuty, lze použít v binárním vyhledávání."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Krok %1$s
+
+%2$s příznaků zbývá, %3$s blokováno pro tento krok.
+
+Zrestartuj aplikaci, vyzkoušej funkčnost, následně odpověz níže"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Probíhá binární vyhledávání</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Chování je přítomno</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Chování není přítomno</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Zrušit binární vyhledávání</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binární vyhledávání zrušeno</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Příznak %s způsobuje chování.
+
+Nyní je blokován."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nepodařilo se najít žádný příznak.
+
+Chování aplikace pravděpodobně není řízeno žádným příznakem."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Nepodařilo se najít jediný příznak.
+
+Chování zmizelo dříve v průzkumu, takže může být zapojeno více než jeden příznak nebo jedna z odpovědí byla špatná."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otevřte nastavení MicroG</string>

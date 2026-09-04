@@ -48,6 +48,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Qidiruv tarixi bo\'sh</string>
   <string name="morphe_settings_search_empty_history_summary">Qidiruv tarixini saqlash uchun qidiruv so\'rovini yozing va Enter tugmasini bosing</string>
   <string name="morphe_settings_search_history_title">Sozlamalar qidiruv tarixini ko\'rsatish</string>
+  <string name="morphe_settings_name_default_item">Standart</string>
+  <string name="morphe_settings_name_custom_item">Maxsus</string>
   <string name="morphe_show_menu_icons_title">Morphe sozlamalari belgilarini ko\'rsatish</string>
   <string name="morphe_settings_menu_copy_path">Nusxalandi: %s</string>
   <string name="morphe_language_title">Morphe tili</string>
@@ -109,16 +111,62 @@ Siz hech qanday kutilmagan voqealar haqida xabardor qilinmaysiz."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean funksiya bayroqlarini boshqarish</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Funksionalilik xususiyatlarini qidir…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Faol emas (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Faol (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Bloklangan (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Majburiy (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Avto</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">O\'chiq</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Yoniq</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Majburiy yoqish</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Bloklash</string>
+  <string name="morphe_debug_feature_flags_manager_action_remove">O\'chirish</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funksiya bayroqlari saqlandi</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funksiya bayroqlari taqimlandi</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funksiya bayroqlari nusxalab olindi</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ushbu sozlamadan foydalanish uchun ilovani qayta ishga tushiring</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Eksport va import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s ta funksiya bayrog\'i import qilindi</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Funksiya bayroqlari topilmadi</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Funksiya bayroqlari muvaffaqiyatli eksport qilindi</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Funksiya bayroqlarini eksport qilib bo\'lmadi</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Funksiya bayroqlari yuklandi, qo\'llash uchun Saqlashga teging</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Faylni o\'qib bo\'lmadi</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Ikkilik qidiruv</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Qaysi funksiya bayrog'i ilova xatti-harakatiga sabab bo'layotganini aniqlaydi.
+
+%s bayroqlarning yarmi bloklanadi va har bir qayta ishga tushirishdan so'ng xatti-harakat hali ham mavjudligini aytasiz.
+
+Boshlashdan oldin xatti-harakatni bir marta takrorlang, aks holda ilova hali so'ramagan bayroqlar qidiruvda bo'lmaydi"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Boshlash</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Qidirish uchun funksiya bayroqlari yo'q.
+
+Ikkilik qidiruvda faqat ilova duch kelgan va hozircha majburiy yoqilmagan bayroqlardan foydalanish mumkin"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"%1$s-qadam
+
+%2$s ta bayroq qoldi, ularning %3$s tasi ushbu qadam uchun bloklangan.
+
+Ilovani qayta ishga tushiring, xatti-harakat mavjudligini tekshiring va quyida javob bering"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Funksiya bayrog\'i qidiruvi davom etmoqda</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Xatti-harakat mavjud</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Xatti-harakat mavjud emas</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Ikkilik qidiruvni bekor qilish</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Ikkilik qidiruv bekor qilindi</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"%s funksiya bayrog'i xatti-harakatga sabab bo'lmoqda.
+
+u endi bloklangan"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Funksiya bayrog'ini topib bo'lmadi.
+
+Ilova xatti-harakati funksiya bayrog'i tomonidan boshqarilmayotganga o'xshaydi"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Bitta ham funksiya bayrog'ini topib bo'lmadi.
+
+Xatti-harakat qidiruvda avvalroq yo'qolgan edi, shuning uchun bir nechta bayroq ishtirok etgan bo'lishi yoki javoblardan biri noto'g'ri bo'lishi mumkin"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG sozlamalarini ochish</string>

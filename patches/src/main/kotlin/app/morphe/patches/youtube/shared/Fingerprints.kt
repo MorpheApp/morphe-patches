@@ -106,6 +106,18 @@ internal object LayoutConstructorFingerprint : Fingerprint(
     )
 )
 
+internal object ModernRelateVideoOverlayFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45614162L)
+    )
+)
+
+internal object RelateVideoOverlayLayoutParamFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45661108L)
+    )
+)
+
 private object PlayerTypeEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(

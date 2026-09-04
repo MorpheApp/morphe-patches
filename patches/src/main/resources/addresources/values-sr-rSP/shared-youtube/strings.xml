@@ -210,6 +210,15 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
 
 Ако се касније искључи, препоручује се да избришете податке апликације да бисте избегли грешке у корисничком интерфејсу."</string>
   <string name="morphe_spoof_app_version_target_title">Циљна верзија апликације за лажирање</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Брзина освежавања апликације</string>
+  <string name="morphe_app_refresh_rate_default">Подразумеван</string>
+  <string name="morphe_app_refresh_rate_fps">%s ФПС</string>
+  <string name="morphe_app_refresh_rate_type_title">Замени брзину освежавања</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Увек</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Репродукција у портрет режиму</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Репродукција преко целог екрана</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Репродукција у портрет режиму и преко целог екрана</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Несвиђања привремено нису доступна (API је истекао)</string>

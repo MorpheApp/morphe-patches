@@ -210,6 +210,15 @@ Dette vil endre utseendet og funksjonene til appen, men ukjente bivirkninger kan
 
 Hvis du slår det av senere, anbefales det å slette appdataene for å forhindre brukergrensesnittfeil."</string>
   <string name="morphe_spoof_app_version_target_title">Mål for å forfalske app-versjon</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Appens oppdateringsfrekvens</string>
+  <string name="morphe_app_refresh_rate_default">Standard</string>
+  <string name="morphe_app_refresh_rate_fps">%s fps</string>
+  <string name="morphe_app_refresh_rate_type_title">Overstyr oppdateringsfrekvens</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Alltid</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Avspilling i portrettmodus</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Avspilling i fullskjerm</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Avspilling i portrettmodus og fullskjerm</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Misliker er midlertidig ikke tilgjengelige (API-timeout)</string>

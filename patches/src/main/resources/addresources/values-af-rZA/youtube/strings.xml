@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Verwyder agtergrond speel beperkings</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiveer agtergrondweergawe</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Outomatiese onderbreking wanneer toestel gesluit is</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Af</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Onderbreek altyd wanneer toestel gesluit is</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Onderbreek tensy draadlose oudio gekoppel is</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Deaktiveer blaai-spoedlimiet</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Veranderings sluit in:
   <string name="morphe_hide_ask_section_title">Verberg Vra-afdeling</string>
   <string name="morphe_hide_attributes_section_title">Verberg Attributes-afdeling</string>
   <string name="morphe_hide_attributes_section_summary">Verberg Featured plekke, Speletjies, Musiek en People mentioned afdelings</string>
+  <string name="morphe_hide_channel_links_section_title">Versteek kanaalafdeling</string>
   <string name="morphe_hide_chapters_section_title">Verberg Chapters-afdeling</string>
   <string name="morphe_hide_corrections_section_title">Verberg Corrections-afdeling</string>
   <string name="morphe_hide_course_progress_section_title">Verberg \'Course progress\' afdeling</string>
@@ -262,6 +267,7 @@ Veranderings sluit in:
   <string name="morphe_hide_comments_preview_comment_summary">Verberg die kommentaar voorbeskouing onder video voordat die volledige kommentaar afdeling oopmaak</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg Dankie knoppie</string>
   <string name="morphe_hide_comments_timestamp_button_title">Verberg Tydstempel-knoppie</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Versteek die \'Top fans\'-knoppie</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Saniteer uitgeligte soekskakels</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Saniteer uitgeligte soekskakels en laat slegs die oorspronklike platte teks oor</string>
   <string name="morphe_hide_keyword_content_screen_title">Sleutelwoord filter</string>
@@ -545,7 +551,6 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_swipe_overlay_timeout_summary">Die hoeveelheid millisekondes wat die oorleg sigbaar is</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Swiep oorleg agtergrond ondeursigtigheid</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Stel die kleur van die helderheid kontrole vorderingbalk in</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Swiep oorleg ondeursigtigheid moet tussen 0-100 wees</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Swiep oorleg helderheid kleur</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Stel die kleur van die volume kontrole vorderingbalk in</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Swiep oorleg volume kleur</string>
@@ -554,7 +559,6 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Stel die kleur van die vorderingbalk vir die spoedbeheer in</string>
   <string name="morphe_swipe_text_overlay_size_title">Swiep oorleg teks grootte</string>
   <string name="morphe_swipe_text_overlay_size_summary">Stel die vereiste swipe afstand in voordat \'n aanpassing geaktiveer word</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Die teks grootte moet tussen 1-30 wees</string>
   <string name="morphe_swipe_threshold_title">Swiep magnitude drempel</string>
   <string name="morphe_swipe_threshold_summary">Pas hoe die volume tydens \'n swipe verander</string>
   <string name="morphe_swipe_volume_sensitivity_title">Volume swiep sensitiwiteit</string>
@@ -708,42 +712,44 @@ Om Instellings te open, aktiveer die Instellings-knoppie via Algemeen → Toolba
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Vluglysmenu</string>
   <string name="morphe_hide_player_flyout_summary">Hide \'Ambient mode\' menu</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Stable volume\' menu</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Hide Quality menu</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Verberg \'Omgewingsmodus\'-menu</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"'Audio Track'-kieslys is versteek
 
 Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kliënt behalwe 'Android Studio' en 'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Stable volume\' menu</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide \'Playback speed\' menu</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Hide \'Lock screen\' menu</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Hide \'Listen with YouTube Music\' menu</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Hide \'Watch in VR\' menu</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Hide Quality menu</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Verberg \'Slaaptimer\'-menu</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Verberg \'Herhaal video\'-menu</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Verberg \'Omgewingsmodus\'-menu</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Verberg \'Stabiele volume\'-menu</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Verberg \'Hulp &amp; terugvoer\'-menu</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Verberg \'Afspelingspoed\'-menu</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Verberg \'Sluit skerm\'-menu</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Verberg \'Luister met YouTube Music\'-menu</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Verberg \'Kyk in VR\'-menu</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Verberg \'Sluit skerm\'-menu</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Verberg \'Herhaal video\'-menu</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Versteek \'Op pad\'-kieslys</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Verberg Kwaliteitsmenu</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Verberg kwaliteit menu voetskrif</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Verberg kwaliteit menu kop</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Verberg \'Slaaptimer\'-menu</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Verberg \'Afspelingspoed\'-menu</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Verberg \'Stabiele volume\'-menu</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Verberg \'Kyk in VR\'-menu</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Verberg outo-speel voorskou</string>
   <string name="morphe_hide_autoplay_preview_summary">Verberg die komende videovoorskou in volskerm voordat outoplay begin</string>
@@ -758,6 +764,8 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_hide_fullscreen_button_title">Verberg Volskerm-knoppie</string>
   <string name="morphe_hide_player_control_buttons_background_title">Wegspring spelerbeheer knoppie agtergrond</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Verberg die donker skaduwee rondom die videospeler se kontroles</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Agtergronddeursigtigheid van kontroleknoppies</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Pas die deursigtigheid van die sirkel agter die speler se kontroleknoppies aan (0 is onsigbaar, 100 is ondeursigtig)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Verberg Vorige &amp; Volgende knoppies</string>
   <string name="morphe_hide_settings_button_title">Verberg Instellings-knoppie</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -847,6 +855,8 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <string name="morphe_disable_player_popup_panels_title">Deaktiveer speler pop-up panele</string>
   <string name="morphe_disable_player_popup_panels_summary">Deaktiveer lysie- en lewendige kletspannele van outomatiese opening</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Deaktiveer speellys-outoafspeel</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Voorkom dat speellyste outomaties na die volgende video oorgaan</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Verlaat volskermmodus aan die einde van die video</string>
   <string name="morphe_exit_fullscreen_entry_1">Deaktiveer</string>
@@ -877,7 +887,6 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Speler oorlegslaag deursigtigheid</string>
   <string name="morphe_player_overlay_opacity_summary">Pas die deursigtigheidsvlak aan (0 is deursigtig, 100 is ondeursigtig)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Speler oorlegslaag deursigtigheid moet tussen 0-100 wees</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Soekbalk</string>
   <string name="morphe_searchbar_type_entry_disabled">Deaktiveer</string>
@@ -890,20 +899,22 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <string name="morphe_change_form_factor_entry_2">Foon</string>
   <string name="morphe_change_form_factor_entry_3">Tablet</string>
   <string name="morphe_change_form_factor_entry_4">Outomaties</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Veranderings sluit in:
+  <string name="morphe_change_form_factor_user_dialog_message">"Veranderinge sluit in:
 
-Tablet-uitleg
-• Gemeenskap-plasings is weggesteek
-• Afspeel in feeds instelling is nie beskikbaar nie
-• Remix-knoppie en Klank-knoppie is nie beskikbaar in Shorts nie
-• Nie-gekolapseerde ou video aksiebalk word vertoon
+Tabletuitleg
+• Gemeenskapsplasings is versteek
+• Die instelling 'Terugspeel in feeds' is nie beskikbaar nie
+• Remix-knoppie en klankknoppie is nie in Shorts beskikbaar nie
+• Die 'Meer video's'-oorleg mag dalk nie beskikbaar wees nie
+• Die nie-ingeklapte ou video-aksiebalk word gewys
 
-Motor-uitleg
-• Feed is georganiseer volgens onderwerpe en kanale
-• Afspeel in feeds instelling is nie beskikbaar nie
-• Remix-knoppie en Klank-knoppie is nie beskikbaar in Shorts nie
-• Shorts oop in die gewone speler
-• Nie-gekolapseerde ou video aksiebalk word vertoon"</string>
+Motoruitleg
+• Die feed word volgens onderwerpe en kanale georganiseer
+• Die instelling 'Terugspeel in feeds' is nie beskikbaar nie
+• Remix-knoppie en klankknoppie is nie in Shorts beskikbaar nie
+• Die 'Meer video's'-oorleg mag dalk nie beskikbaar wees nie
+• Shorts word in die gewone speler geopen
+• Die nie-ingeklapte ou video-aksiebalk word gewys"</string>
   <string name="morphe_tablet_layout_in_player_title">Aktiveer tablet-uitleg in die speler</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Herstel die ou speleruitleg
@@ -995,7 +1006,6 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel grootte moet tussen %1$s en %2$s wees</string>
   <string name="morphe_miniplayer_opacity_title">Oordekking</string>
   <string name="morphe_miniplayer_opacity_summary">Pas die deursigtigheidsvlak aan (0 is deursigtig, 100 is ondeursigtig)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Oor</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Terugknoppie verlaat die voer</string>
   <string name="morphe_back_button_always_exits_feed_summary">Wanneer jy terug druk, verlaat jy altyd die toepassing in plaas daarvan om na die bokant van die voer te blaai</string>
@@ -1148,6 +1158,14 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Laat toe om spoed en toonhoogte onafhanklik te stel, kan klankartefakte veroorsaak</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiveer HDR-video</string>
+  <string name="morphe_force_hdr_video_title">Dwing HDR-video</string>
+  <string name="morphe_force_hdr_video_summary">Dwing die app om hierdie toestel as HDR-geskik te herken</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Gebruik dit as HDR-dekodering werk maar YouTube bied nie HDR nie, soos sommige HyperOS-toestelle wat HLG verberg.
+
+Beperkings:
+• Kleure kan verkeerd lyk as die skerm nie werklik HDR kan vertoon nie
+• Terugspeeling kan misluk as die dekodeerder nie HDR kan hanteer nie
+• HDR hang steeds af van die spoof-videostrome-kliënt"</string>
   <string name="morphe_force_avc_codec_title">Forseer AVC (H.264) codec</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Voordele:
 • Kan battery lewe verbeter

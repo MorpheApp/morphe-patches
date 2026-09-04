@@ -209,6 +209,15 @@ Ovo će promeniti izgled i funkcije aplikacije, ali se mogu pojaviti i nepoznati
 
 Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da biste sprečili greške u korisničkom interfejsu."</string>
   <string name="morphe_spoof_app_version_target_title">Ciljna verzija aplikacije za lažiranje</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Brzina osvežavanja aplikacije</string>
+  <string name="morphe_app_refresh_rate_default">Podrazumevana</string>
+  <string name="morphe_app_refresh_rate_fps">%s fps</string>
+  <string name="morphe_app_refresh_rate_type_title">Prilagodi brzinu osvežavanja</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Uvek</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Reprodukcija u portretu</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Reprodukcija preko celog ekrana</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Reprodukcija u portretu i preko celog ekrana</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nesviđanja su privremeno nedostupna (API isteklo vreme)</string>

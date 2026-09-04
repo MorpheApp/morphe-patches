@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">A keresési előzmények üresek</string>
   <string name="morphe_settings_search_empty_history_summary">A keresési előzmények mentéséhez írjon be egy keresési lekérdezést, majd nyomja meg az Entert</string>
   <string name="morphe_settings_search_history_title">Beállítások keresési előzményeinek megjelenítése</string>
+  <string name="morphe_settings_name_title">Morphe-beállításnév</string>
+  <string name="morphe_settings_name_default_item">Alapértelmezett</string>
+  <string name="morphe_settings_name_entry_2">Extrák</string>
+  <string name="morphe_settings_name_entry_3">Finomhangolás</string>
+  <string name="morphe_settings_name_entry_4">Morphing idő</string>
+  <string name="morphe_settings_name_custom_item">Egyedi</string>
+  <string name="morphe_settings_name_custom_item_hint">Adjon meg egy nevet</string>
+  <string name="morphe_settings_name_empty_warning">A név nem lehet üres</string>
   <string name="morphe_show_menu_icons_title">Morphe beállításikonok megjelenítése</string>
   <string name="morphe_settings_menu_copy_path">Másolva: %s</string>
   <string name="morphe_language_title">Morphe nyelve</string>
@@ -109,21 +117,62 @@ Nem fog értesülni semmilyen váratlan eseményről."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Logikai funkciójelzők kezelése</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Keresés a funkciójelzőkben…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Nem aktív (%s) — Keine Übersetzung erforderlich? Wait, we need to output JSON exactly as per instruction. I\'ll produce the required JSON array. But note: The instruction says </string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktív (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokkolt (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Kényszerített (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Automatikus</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Ki</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Be</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Kényszerítés be</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Letiltás</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Eltávolítás</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funkciójelzők mentve</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funkciójelzők visszaállítva</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funkciójelzők a vágólapra másolva</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ehhez a beállításnak a beállítást használni az alkalmazás újraindítása</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exportálás és importálás</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importált %s funkciókapcsoló</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nincs funkciókapcsoló</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">A funkciókapcsolók exportálása sikeres</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Nem sikerült a funkciókapcsolók exportálása</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">A funkciókapcsolók betöltve, a mentéshez érintse meg a Mentés gombot</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Nem sikerült a fájl olvasása</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Bináris keresés</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Megkeresi, melyik funkciókapcsoló okozza az alkalmazás viselkedését.
+
+A %s funkciókapcsoló fele blokkolva lesz, és minden újraindítás után megmondhatja, hogy a viselkedés továbbra is jelen van-e.
+
+Reprodukálja a viselkedést egyszer a kezdés előtt, ellenkező esetben azok a jelzők, amelyeket az alkalmazás még nem kért, hiányozni fognak a keresésből."</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Kezdet</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nincs kereshető funkciókapcsoló.
+
+Csak azok a funkciókapcsolók használhatók bináris kereséshez, amelyeket az alkalmazás elért, és amelyek jelenleg nincsenek kényszerítve bekapcsolva."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"%1$s. lépés
+
+%2$s funkciókapcsoló maradt, ebből %3$s blokkolt ehhez a lépéshez.
+
+Indítsa újra az alkalmazást, ellenőrizze, hogy a viselkedés jelen van-e, majd válaszoljon lent."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Funkciókapcsoló-keresés folyamatban</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">A viselkedés jelen van</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">A viselkedés nincs jelen</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Bináris keresés megszakítása</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">A bináris keresés megszakítva</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"A %s funkciókapcsoló okozza a viselkedést.
+
+Mostantól blokkolva van."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nem található funkciókapcsoló.
+
+Az alkalmazás viselkedése úgy tűnik, nem függ funkciókapcsolótól."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Nem található egyetlen funkciókapcsoló sem.
+
+A viselkedés korábban eltűnt a keresés során, így több funkciókapcsoló is érintett lehet, vagy az egyik válasz helytelen volt."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Nyisson a MicroG beállításokat</string>

@@ -210,6 +210,15 @@ Isso alterará a aparência e os recursos do aplicativo, mas podem ocorrer efeit
 
 Se desativado posteriormente, recomenda-se limpar os dados do aplicativo para evitar erros de interface do usuário."</string>
   <string name="morphe_spoof_app_version_target_title">Destaque de versão do app</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Taxa de atualização do app</string>
+  <string name="morphe_app_refresh_rate_default">Padrão</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Substituir taxa de atualização</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Sempre</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Reprodução em retrato</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Reprodução em tela cheia</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Reprodução em retrato e tela cheia</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes temporariamente indisponível (API expirou)</string>

@@ -185,6 +185,9 @@ Tuttavia, l'abilitazione di questa opzione registrerà anche alcuni dati dell'ut
   <string name="morphe_remove_viewer_discretion_dialog_title">Rimuovi il messaggio di avviso per la visione</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Questo non aggira la restrizione di età. Le accetta solo automaticamente</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">Provider di PoToken</string>
+  <string name="morphe_potoken_provider_screen_summary">Configura il provider di PoToken per evitare problemi di riproduzione</string>
+  <string name="morphe_external_potoken_provider_title">Provider esterno di PoToken</string>
   <string name="morphe_external_potoken_provider_summary">"Risolve problemi di riproduzione utilizzando un minter PoToken esterno (Sperimentale)
 
 Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necessaria"</string>
@@ -207,6 +210,15 @@ Questo cambierà l'aspetto e le funzionalità dell'app, ma potrebbero verificars
 
 Se in seguito verrà disattivata, si consiglia di cancellare i dati dell'app per evitare bug dell'interfaccia."</string>
   <string name="morphe_spoof_app_version_target_title">Versione dell\'app di destinazione desiderata</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Frequenza di aggiornamento dell\'app</string>
+  <string name="morphe_app_refresh_rate_default">Predefinita</string>
+  <string name="morphe_app_refresh_rate_fps">%s fps</string>
+  <string name="morphe_app_refresh_rate_type_title">Override della frequenza di aggiornamento</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Sempre</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Riproduzione in verticale</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Riproduzione a schermo intero</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Riproduzione in verticale e a schermo intero</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">I \"Non Mi Piace\" temporaneamente non disponibili (timeout API)</string>

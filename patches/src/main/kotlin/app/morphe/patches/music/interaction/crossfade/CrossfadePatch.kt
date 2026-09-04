@@ -21,7 +21,6 @@ import app.morphe.util.copyResources
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.playservice.is_9_00_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_28_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -189,13 +188,6 @@ val crossfadePatch = bytecodePatch(
 
     execute {
         val log = Logger.getLogger(this::class.java.name)
-        if (!is_9_00_or_greater) {
-            return@execute log.warning(
-                "Crossfade requires YouTube Music 9.00 or newer. " +
-                        "The 8.x ExoPlayer listener architecture is incompatible " +
-                        "with this patch.",
-            )
-        }
         if (is_9_28_or_greater) {
             return@execute log.warning(
                 "Crossfade does not yet support YouTube Music 9.28 or newer. Please patch 9.15 to 9.26."
@@ -510,28 +502,26 @@ val crossfadePatch = bytecodePatch(
         // calling the factory so the new player can attach to the coordinator.
         var guardField: Field? = null
         var guardAbstractType: String? = null
-        if (is_9_00_or_greater) {
-            var current: String? = sharedStateClass.superclass
-            while (current != null && current != "Ljava/lang/Object;") {
-                val cls = try { classDefBy(current) } catch (_: Exception) { null } ?: break
-                if (AccessFlags.ABSTRACT.isSet(cls.accessFlags)) {
-                    val instanceField = cls.fields.firstOrNull {
-                        !AccessFlags.STATIC.isSet(it.accessFlags)
-                    }
-                    if (instanceField != null) {
-                        guardField = instanceField
-                        guardAbstractType = current
-                        break
-                    }
+        var current: String? = sharedStateClass.superclass
+        while (current != null && current != "Ljava/lang/Object;") {
+            val cls = try { classDefBy(current) } catch (_: Exception) { null } ?: break
+            if (AccessFlags.ABSTRACT.isSet(cls.accessFlags)) {
+                val instanceField = cls.fields.firstOrNull {
+                    !AccessFlags.STATIC.isSet(it.accessFlags)
                 }
-                current = cls.superclass
+                if (instanceField != null) {
+                    guardField = instanceField
+                    guardAbstractType = current
+                    break
+                }
             }
-            if (guardField == null) {
-                log.warning(
-                    "9.x guard field not found in ${sharedStateClass.type} superclass chain — " +
-                            "second player creation may fail. Fields searched from superclass of ${sharedStateClass.type}",
-                )
-            }
+            current = cls.superclass
+        }
+        if (guardField == null) {
+            log.warning(
+                "9.x guard field not found in ${sharedStateClass.type} superclass chain — " +
+                        "second player creation may fail. Fields searched from superclass of ${sharedStateClass.type}",
+            )
         }
 
         // Video surface - resolved by finding a class that holds an ExoPlayer field
@@ -575,91 +565,87 @@ val crossfadePatch = bytecodePatch(
         // Removing coordinator_cwh from the outgoing player's crh.h before release prevents the
         // release's isPlayingChanged(false) from propagating to MediaSession via cwh.b.
         var eventDispatchField9x: Field? = null
-        if (is_9_00_or_greater) {
-            // Find coordinator's cwh field (auih.c:Lctr) to identify the Lctr interface type.
-            val playerDelegateTypes = setOf(playerInterfaceType, EXO_PLAYER_TYPE)
-            val looperType = "Landroid/os/Looper;"
-            forwardingPlayerField9x = allFieldsInHierarchy(coordinatorType).firstOrNull { field ->
-                !AccessFlags.STATIC.isSet(field.accessFlags)
-                        && field.type.startsWith("L")
-                        && field.type != coordinatorType
+        // Find coordinator's cwh field (auih.c:Lctr) to identify the Lctr interface type.
+        val playerDelegateTypes = setOf(playerInterfaceType, EXO_PLAYER_TYPE)
+        val looperType = "Landroid/os/Looper;"
+        forwardingPlayerField9x = allFieldsInHierarchy(coordinatorType).firstOrNull { field ->
+            !AccessFlags.STATIC.isSet(field.accessFlags)
+                    && field.type.startsWith("L")
+                    && field.type != coordinatorType
+                    && try {
+                classDefBy(field.type).methods.any { method ->
+                    !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+                            && method.returnType == "V"
+                            && method.parameterTypes.size == 2
+                            && method.parameterTypes[1].toString() == looperType
+                            && method.parameterTypes[0].toString() in playerDelegateTypes
+                }
+            } catch (_: Exception) { false }
+        }.also { f ->
+            if (f == null) log.warning(
+                "9.x: Lctr (cwh interface) field not found on coordinator — crh.j fix skipped"
+            ) else log.fine { "9.x: coordinator cwh field (auih.c) = $f" }
+        }
+
+        val lctrType = forwardingPlayerField9x?.type
+        if (lctrType != null) {
+            // crh.j: Lctr-typed field on ExoPlayer — crb reads this to dispatch events.
+            exoPlayerCwhField9x = exoPlayerImplClass.fields.firstOrNull { f ->
+                !AccessFlags.STATIC.isSet(f.accessFlags) && f.type == lctrType
+            }.also { f ->
+                if (f == null) log.warning("9.x: crh.j (Lctr on ExoPlayer) not found — crh.j fix skipped")
+                else log.fine { "9.x: ExoPlayer cwh field (crh.j) = $f" }
+            }
+
+            // Lctu: listener interface — parameter of Lctr.B(Lctu)V (addListener).
+            cwhListenerType = try {
+                classDefBy(lctrType).methods
+                    .firstOrNull { m -> m.name == "B" && m.parameterTypes.size == 1 && m.returnType == "V" }
+                    ?.parameterTypes?.first()?.toString()
+            } catch (_: Exception) { null }
+            log.fine { "9.x: cwh listener interface (Lctu) = $cwhListenerType" }
+
+            // auih.k: coordinator field of type implementing Lctu (connects cwh to system).
+            if (cwhListenerType != null) {
+                coordinatorCwhListenerField9x = coordinatorClass.fields.firstOrNull { f ->
+                    !AccessFlags.STATIC.isSet(f.accessFlags)
+                            && f.type != exoPlayerField.type
+                            && f.type != lctrType
+                            && try { cwhListenerType in classDefBy(f.type).interfaces } catch (_: Exception) { false }
+                }.also { f ->
+                    if (f == null) log.warning("9.x: coordinator cwh listener field (auih.k) not found — crh.j fix skipped")
+                    else log.fine { "9.x: coordinator cwh listener field (auih.k) = $f" }
+                }
+            }
+
+            // crh.h: the per-player Lcgd event dispatch set.
+            // coordinator_cwh is registered here; we need to remove it before releasing the
+            // outgoing player so its release-time isPlayingChanged(false) doesn't reach
+            // MediaSession via cwh.b.
+            //
+            // Identify Lcgd structurally (avoid relying on R8-obfuscated method names
+            // like "a" / "e" which can drift across major YTM versions): the class wraps a
+            // CopyOnWriteArraySet and has at least two methods of signature (Object):V —
+            // one adds, the other removes.  This is the listener-set wrapper pattern.
+            eventDispatchField9x = exoPlayerImplClass.fields.firstOrNull { f ->
+                !AccessFlags.STATIC.isSet(f.accessFlags)
+                        && f.type != lctrType
+                        && f.type != exoPlayerField.type
+                        && f.type != EXO_PLAYER_TYPE
                         && try {
-                    classDefBy(field.type).methods.any { method ->
-                        !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
-                                && method.returnType == "V"
-                                && method.parameterTypes.size == 2
-                                && method.parameterTypes[1].toString() == looperType
-                                && method.parameterTypes[0].toString() in playerDelegateTypes
+                    val cls = classDefBy(f.type)
+                    val hasCopyOnWriteSet = cls.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
+                    val objectVoidMethodCount = cls.methods.count { m ->
+                        m.parameterTypes.size == 1
+                                && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
+                                && m.returnType == "V"
                     }
+                    hasCopyOnWriteSet && objectVoidMethodCount >= 2
                 } catch (_: Exception) { false }
             }.also { f ->
-                if (f == null) log.warning(
-                    "9.x: Lctr (cwh interface) field not found on coordinator — crh.j fix skipped"
-                ) else log.fine { "9.x: coordinator cwh field (auih.c) = $f" }
+                if (f == null) log.warning("9.x: crh.h (Lcgd event dispatch) not found — detach-cwh fix skipped")
+                else log.fine { "9.x: ExoPlayer event dispatch field (crh.h:Lcgd) = $f" }
             }
-
-            val lctrType = forwardingPlayerField9x?.type
-            if (lctrType != null) {
-                // crh.j: Lctr-typed field on ExoPlayer — crb reads this to dispatch events.
-                exoPlayerCwhField9x = exoPlayerImplClass.fields.firstOrNull { f ->
-                    !AccessFlags.STATIC.isSet(f.accessFlags) && f.type == lctrType
-                }.also { f ->
-                    if (f == null) log.warning("9.x: crh.j (Lctr on ExoPlayer) not found — crh.j fix skipped")
-                    else log.fine { "9.x: ExoPlayer cwh field (crh.j) = $f" }
-                }
-
-                // Lctu: listener interface — parameter of Lctr.B(Lctu)V (addListener).
-                cwhListenerType = try {
-                    classDefBy(lctrType).methods
-                        .firstOrNull { m -> m.name == "B" && m.parameterTypes.size == 1 && m.returnType == "V" }
-                        ?.parameterTypes?.first()?.toString()
-                } catch (_: Exception) { null }
-                log.fine { "9.x: cwh listener interface (Lctu) = $cwhListenerType" }
-
-                // auih.k: coordinator field of type implementing Lctu (connects cwh to system).
-                if (cwhListenerType != null) {
-                    coordinatorCwhListenerField9x = coordinatorClass.fields.firstOrNull { f ->
-                        !AccessFlags.STATIC.isSet(f.accessFlags)
-                                && f.type != exoPlayerField.type
-                                && f.type != lctrType
-                                && try { cwhListenerType in classDefBy(f.type).interfaces } catch (_: Exception) { false }
-                    }.also { f ->
-                        if (f == null) log.warning("9.x: coordinator cwh listener field (auih.k) not found — crh.j fix skipped")
-                        else log.fine { "9.x: coordinator cwh listener field (auih.k) = $f" }
-                    }
-                }
-
-                // crh.h: the per-player Lcgd event dispatch set.
-                // coordinator_cwh is registered here; we need to remove it before releasing the
-                // outgoing player so its release-time isPlayingChanged(false) doesn't reach
-                // MediaSession via cwh.b.
-                //
-                // Identify Lcgd structurally (avoid relying on R8-obfuscated method names
-                // like "a" / "e" which can drift across major YTM versions): the class wraps a
-                // CopyOnWriteArraySet and has at least two methods of signature (Object):V —
-                // one adds, the other removes.  This is the listener-set wrapper pattern.
-                eventDispatchField9x = exoPlayerImplClass.fields.firstOrNull { f ->
-                    !AccessFlags.STATIC.isSet(f.accessFlags)
-                            && f.type != lctrType
-                            && f.type != exoPlayerField.type
-                            && f.type != EXO_PLAYER_TYPE
-                            && try {
-                        val cls = classDefBy(f.type)
-                        val hasCopyOnWriteSet = cls.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
-                        val objectVoidMethodCount = cls.methods.count { m ->
-                            m.parameterTypes.size == 1
-                                    && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
-                                    && m.returnType == "V"
-                        }
-                        hasCopyOnWriteSet && objectVoidMethodCount >= 2
-                    } catch (_: Exception) { false }
-                }.also { f ->
-                    if (f == null) log.warning("9.x: crh.h (Lcgd event dispatch) not found — detach-cwh fix skipped")
-                    else log.fine { "9.x: ExoPlayer event dispatch field (crh.h:Lcgd) = $f" }
-                }
-            }
-        } else {
-            forwardingPlayerField9x = null
         }
 
         // --- Discover ExoPlayer method names from the media3 interfaces ---
@@ -1258,18 +1244,17 @@ val crossfadePatch = bytecodePatch(
         // 9.x: direct listener set (Lcrh.N) — a CopyOnWriteArraySet field directly on
         // ExoPlayerImpl (NOT the cau ListenerHolderSet). The coordinator's b:Lcou listener
         // is registered here via O(Lcou;)V. We need direct access to move it on player swap.
-        val directListenerSetField = if (is_9_00_or_greater) {
+        val directListenerSetField =
             exoImplFields.firstOrNull {
                 it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;"
             }.also { f ->
                 if (f == null) log.warning("9.x: direct listener set field (Lcrh.N) not found on ${exoPlayerImplClass.type}")
                 else log.fine { "9.x: direct listener set field = $f" }
             }
-        } else null
 
         // 9.x: coordinator's Player.Listener field (auge.b:Lcou) — Player.Listener type
         // is the same as cauAddParamType (the type cau.add() accepts).
-        val coordinatorListenerField = if (is_9_00_or_greater && cauAddParamType != null) {
+        val coordinatorListenerField = if (cauAddParamType != null) {
             (coordinatorClass.fields.firstOrNull { it.type == cauAddParamType }
                 ?: coordinatorClass.fields.firstOrNull { field ->
                     field.type.startsWith("L") && try {
@@ -1332,7 +1317,7 @@ val crossfadePatch = bytecodePatch(
 
         // 9.x only: patch_getCoordinatorListener returns coordinator.b:Lcou (Player.Listener)
         // registered into ExoPlayer's direct N set. Not present on 8.x.
-        if (is_9_00_or_greater && coordinatorListenerField != null) {
+        if (coordinatorListenerField != null) {
             coordinatorClass.addFieldGetter("patch_getCoordinatorListener", coordinatorListenerField)
             log.fine { "9.x: injected patch_getCoordinatorListener on ${coordinatorClass.type} (field: $coordinatorListenerField)" }
         }
@@ -1340,7 +1325,7 @@ val crossfadePatch = bytecodePatch(
         // 9.x only: patch_addDirectListener / patch_removeDirectListener operate on Lcrh.N
         // (the direct CopyOnWriteArraySet, bypassing the cau ListenerHolderSet).
         // Used to move the coordinator's b:Lcou listener between players on player swap.
-        if (is_9_00_or_greater && directListenerSetField != null) {
+        if (directListenerSetField != null) {
             exoPlayerImplClass.methods.add(
                 ImmutableMethod(
                     exoPlayerImplClass.type, "patch_addDirectListener",
@@ -1407,7 +1392,7 @@ val crossfadePatch = bytecodePatch(
         // name "e"): among the (Object):V methods on Lcgd, the remove method is the one
         // whose body invokes CopyOnWriteArraySet.remove() on the wrapped set.  This makes
         // the patch resilient to R8 renaming "e" to something else across YTM versions.
-        if (is_9_00_or_greater && eventDispatchField9x != null && exoPlayerCwhField9x != null) {
+        if (eventDispatchField9x != null && exoPlayerCwhField9x != null) {
             val cgdType = eventDispatchField9x.type
             val cgdClass = classDefBy(cgdType)
             val cgdRemoveMethodName = cgdClass.methods.firstOrNull { m ->
@@ -1467,7 +1452,7 @@ val crossfadePatch = bytecodePatch(
         // CrossfadeManager.suppressCwhU flag. releasePlayer() sets it true before
         // calling patch_release() and false in a finally block — synchronously blocking
         // the Runnable from ever being posted, leaving cwh.b intact.
-        if (is_9_00_or_greater && eventDispatchField9x != null && forwardingPlayerField9x != null) {
+        if (eventDispatchField9x != null && forwardingPlayerField9x != null) {
             val cgdType = eventDispatchField9x.type
             val cwhLctrType = forwardingPlayerField9x.type
             try {

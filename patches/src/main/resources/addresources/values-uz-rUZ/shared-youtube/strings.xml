@@ -210,6 +210,8 @@ Bu ilovaning ko'rinishi va xususiyatlarini o'zgartiradi, lekin noma'lum yon ta's
 
 Keyinchalik o'chirilganda, UI xatolarini oldini olish uchun ilova ma'lumotlarini tozalamak tavsiya etiladi."</string>
   <string name="morphe_spoof_app_version_target_title">Ilova versiyasini buzish manzili</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_default">Standart</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes vaqtinchalik mavjud emas (API vaqtini oshirib yubordi)</string>

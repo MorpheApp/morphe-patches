@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">हेडर लोगो</string>
   <string name="morphe_header_logo_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_header_logo_entry_3">कस्टम</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">एल्बम ऑडियो ट्रैक चलाएँ</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">एल्बम के गानों का केवल ऑडियो संस्करण चलाएं, म्यूजिक वीडियो के बजाय। ‘स्पूफ वीडियो स्ट्रीम्स’ की आवश्यकता है</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ऐप्स के साथ संगीत वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_hide_action_bar_title">एक्शन बार छिपाएँ</string>
   <string name="morphe_music_hide_like_dislike_button_title">लाइक और डिसलाइक बटन छिपाएँ</string>
   <string name="morphe_music_hide_comments_button_title">कमेंट बटन छिपाएँ</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">‘लाइव चैट रिप्ले’ बटन छिपाएँ</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">गीत के बोल बटन छिपाएँ</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">डाउनलोड बटन छुपाएं</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">रेडियो शुरू करें बटन छुपाएं</string>
+  <string name="morphe_music_hide_radio_button_title">‘रेडियो प्रारंभ करें’ बटन छिपाएँ</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">फ़्लोटआउट मेनू</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">चुनें कि प्लेयर और क्यू फ़्लोटआउट मेनू में कौन से घटक दिखाई दें</string>

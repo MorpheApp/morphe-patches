@@ -210,6 +210,15 @@ Second \"item\" text"</string>
 
 إذا تم تعطيله لاحقًا، فمن المستحسن مسح بيانات التطبيق لمنع حدوث أخطاء في واجهة المستخدم."</string>
   <string name="morphe_spoof_app_version_target_title">الهدف من تغيير إصدار التطبيق</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">معدل تحديث التطبيق</string>
+  <string name="morphe_app_refresh_rate_default">الوضع الافتراضي</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">تجاوز معدل التحديث</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">دائمًا</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">التشغيل بالوضع الطولي</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">التشغيل بوضع ملء الشاشة</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">التشغيل بالوضع الطولي ووضع ملء الشاشة</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">لم يعجبني غير متاح مؤقتًا (انتهت مهلة API)</string>

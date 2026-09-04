@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Sidehovedlogo</string>
   <string name="morphe_header_logo_entry_1">Standard</string>
   <string name="morphe_header_logo_entry_3">Brugerdefineret</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Afspil albummets numre</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Afspil kun lydversionen af albummets sange i stedet for en musikvideo. Kræver \'Spoof video streams\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download musikvideoer, podcasts eller sange med tredjeparts download-apps</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x – crossfade kører kun på 9.x og nyere"</string>
   <string name="morphe_music_hide_action_bar_title">Skjul statuslinjen</string>
   <string name="morphe_music_hide_like_dislike_button_title">Skjul Like og Dislike knap</string>
   <string name="morphe_music_hide_comments_button_title">Skjul Kommentarer knap</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Skjul \'Live chat genafspilning\' knappen</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Skjul Tekster knap</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x – crossfade kører kun på 9.x og nyere"</string>
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Skjul Download-knappen</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Skjul Start radio-knappen</string>
+  <string name="morphe_music_hide_radio_button_title">Skjul \'Start radio\'-knappen</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Flyout-menu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Vælg hvilke komponenter der vises i afspillerens og køens flyout-menu</string>

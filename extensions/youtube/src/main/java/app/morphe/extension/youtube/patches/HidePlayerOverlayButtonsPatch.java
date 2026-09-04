@@ -7,15 +7,24 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import java.util.function.Consumer;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -25,6 +34,14 @@ public final class HidePlayerOverlayButtonsPatch {
 
     private static final boolean HIDE_AUTOPLAY_BUTTON_ENABLED = Settings.HIDE_AUTOPLAY_BUTTON.get();
     private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
+
+    private static final int CONTROL_BUTTONS_BACKGROUND_OPACITY =
+            SeekBarPreference.clampToRange(Settings.PLAYER_CONTROL_BUTTONS_BACKGROUND_OPACITY);
+
+    /** At the app default the drawables are left untouched, so the stock look stays exact. */
+    private static final boolean CONTROL_BUTTONS_BACKGROUND_OPACITY_CHANGED =
+            CONTROL_BUTTONS_BACKGROUND_OPACITY
+                    != Settings.PLAYER_CONTROL_BUTTONS_BACKGROUND_OPACITY.defaultValue;
 
     /**
      * Injection point.
@@ -160,19 +177,68 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static View hidePlayerControlButtonsBackground(View rootView) {
+    public static View styleControlButtonsBackground(View rootView) {
         try {
-            if (!Settings.HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND.get()) {
-                return rootView;
-            }
-
             // Each button is an ImageView with a background set to another drawable.
-            removeImageViewsBackgroundRecursive(rootView);
+            if (Settings.HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND.get()) {
+                forEachImageViewRecursive(rootView, imageView -> imageView.setBackground(null));
+            } else if (CONTROL_BUTTONS_BACKGROUND_OPACITY_CHANGED) {
+                forEachImageViewRecursive(rootView, imageView -> {
+                    Drawable background = imageView.getBackground();
+                    if (background != null) {
+                        imageView.setBackground(applyControlButtonsBackgroundOpacity(background));
+                    }
+                });
+            }
         } catch (Exception ex) {
-            Logger.printException(() -> "removePlayerControlButtonsBackground failure", ex);
+            Logger.printException(() -> "styleControlButtonsBackground failure", ex);
         }
 
         return rootView;
+    }
+
+    /**
+     * Also used for the bottom overlay buttons, which copy their background from the
+     * fullscreen button instead of declaring one in a layout.
+     *
+     * @return the drawable to use, unchanged if the opacity is left at the app default.
+     */
+    public static Drawable applyControlButtonsBackgroundOpacity(Drawable background) {
+        if (CONTROL_BUTTONS_BACKGROUND_OPACITY_CHANGED
+                && !Settings.HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND.get()) {
+            // Mutate so the color does not leak into the same drawable used elsewhere.
+            background = background.mutate();
+            setSolidColorOpacityRecursive(background);
+        }
+
+        return background;
+    }
+
+    /**
+     * The circle's transparency is baked into its solid color, so the color is replaced.
+     * setAlpha() only scales what is already there and can never exceed the app default.
+     */
+    private static void setSolidColorOpacityRecursive(Drawable drawable) {
+        if (drawable instanceof GradientDrawable gradient) {
+            ColorStateList color = gradient.getColor();
+            if (color != null) {
+                final int rgb = color.getDefaultColor();
+                // Replacing the alpha rather than scaling it keeps this safe to apply twice.
+                gradient.setColor(Color.argb(
+                        CONTROL_BUTTONS_BACKGROUND_OPACITY * 255 / 100,
+                        Color.red(rgb),
+                        Color.green(rgb),
+                        Color.blue(rgb)));
+            }
+        } else if (drawable instanceof LayerDrawable layers) {
+            for (int i = 0, count = layers.getNumberOfLayers(); i < count; i++) {
+                setSolidColorOpacityRecursive(layers.getDrawable(i));
+            }
+        } else if (drawable instanceof DrawableWrapper wrapper) {
+            // The bottom buttons get the circle wrapped in an InsetDrawable, which is not a
+            // LayerDrawable and would otherwise be skipped.
+            setSolidColorOpacityRecursive(wrapper.getDrawable());
+        }
     }
 
     private static void hideView(View parentView, String name) {
@@ -193,14 +259,14 @@ public final class HidePlayerOverlayButtonsPatch {
         });
     }
 
-    private static void removeImageViewsBackgroundRecursive(View currentView) {
+    private static void forEachImageViewRecursive(View currentView, Consumer<ImageView> action) {
         if (currentView instanceof ImageView imageView) {
-            imageView.setBackground(null);
+            action.accept(imageView);
         }
 
         if (currentView instanceof ViewGroup viewGroup) {
             for (int i = 0; i < viewGroup.getChildCount(); i++) {
-                removeImageViewsBackgroundRecursive(viewGroup.getChildAt(i));
+                forEachImageViewRecursive(viewGroup.getChildAt(i), action);
             }
         }
     }

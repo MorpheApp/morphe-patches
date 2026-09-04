@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logotip glave</string>
   <string name="morphe_header_logo_entry_1">Privzeto</string>
   <string name="morphe_header_logo_entry_3">Prilagojeno</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Predvajaj skladbe albuma</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Predvajaj zvočne različice skladb albuma namesto glasbenega videa. Zahteva \'Ponaredi video tokove\'.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Prenesite videe, podkaste ali pesmi z aplikacijami za prenašanje tretje osebe</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x – prehod deluje samo v 9.x in novejših različicah."</strin
   <string name="morphe_music_hide_action_bar_title">Skrij vrstico z ukazi</string>
   <string name="morphe_music_hide_like_dislike_button_title">Skrij gumba \'Všeč mi\' in \'Ni mi všeč\'</string>
   <string name="morphe_music_hide_comments_button_title">Skrij gumb \'Komentarji\'</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Skrij gumb \'Ponovni prikaz klepeta\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Skrij gumb \'Besedila\'</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x – prehod deluje samo v 9.x in novejših različicah."</strin
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Skrij gumb Prenosa</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Skrij gumb Začni radio</string>
+  <string name="morphe_music_hide_radio_button_title">Skrij gumb \'Zaženi radio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Izpovedni meni</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Izberite, kateri elementi se bodo prikazali v menijih predvajalnika in vrste čakalnice</string>

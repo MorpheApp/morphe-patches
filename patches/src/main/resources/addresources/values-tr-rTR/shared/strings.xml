@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Arama geçmişi boş</string>
   <string name="morphe_settings_search_empty_history_summary">Arama geçmişini kaydetmek için bir arama sorgusu yazın ve Enter\'a basın</string>
   <string name="morphe_settings_search_history_title">Ayarlar arama geçmişini göster</string>
+  <string name="morphe_settings_name_title">Morphe ayarları adı</string>
+  <string name="morphe_settings_name_default_item">Varsayılan</string>
+  <string name="morphe_settings_name_entry_2">Ek özellikler</string>
+  <string name="morphe_settings_name_entry_3">İnce ayarlar</string>
+  <string name="morphe_settings_name_entry_4">Morph\'lama zamanı</string>
+  <string name="morphe_settings_name_custom_item">Özel</string>
+  <string name="morphe_settings_name_custom_item_hint">Bir ad gir</string>
+  <string name="morphe_settings_name_empty_warning">Ad boş olamaz</string>
   <string name="morphe_show_menu_icons_title">Morphe ayar simgelerini göster</string>
   <string name="morphe_settings_menu_copy_path">Kopyalandı: %s</string>
   <string name="morphe_language_title">Morphe dili</string>
@@ -109,19 +117,62 @@ Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean özellik işaretçilerini yönet</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Özellik işaretlerini ara…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Pasif (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktif (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Engelli (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Zorunlu (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Oto</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Kapalı</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Açık</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Zorla aç</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Engelle</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Kaldır</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Özellik işaretçileri kaydedildi</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Özellik işaretçileri sıfırlandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Özellik işaretçileri panoya kopyalandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu ayarı kullanmak için uygulamayı yeniden başlatın</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Dışa ve içe aktarma</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s özellik bayrakları içe aktarıldı</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Hiçbir özellik bayrağı bulunamadı</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Özellik bayrakları başarıyla dışa aktarıldı</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Özellik bayraklarının dışa aktarılması başarısız oldu</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Özellik bayrakları yüklendi; uygulamak için Kaydet’e dokun</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Dosya okunamadı</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">İkili arama</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Uygulamanın belirli bir davranışına hangi özellik bayrağının neden olduğunu bulur.
+
+%s bayrağın yarısı engellenir ve her yeniden başlatmanın ardından bu davranışın hâlâ devam edip etmediğini belirtirsin.
+
+Başlamadan önce bu davranışı bir kez yeniden üret; aksi takdirde uygulamanın henüz istemediği bayraklar aramanın dışında kalır."</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Başlangıç</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Aranacak özellik bayrağı yok.
+
+İkili aramada yalnızca uygulamanın eriştiği ve şu anda zorla açılmamış olan bayraklar kullanılabilir."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Adım %1$s
+
+%2$s bayrak kaldı, bu adım için %3$s tanesi engellendi.
+
+Uygulamayı yeniden başlat, bu davranışın devam edip etmediğini kontrol et ve ardından aşağıdan yanıtla."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Özellik bayrağı araması devam ediyor</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Davranış devam ediyor</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Davranış devam etmiyor</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">İkili aramayı iptal et</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">İkili arama iptal edildi</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"%s özellik bayrağı bu davranışa neden oluyor.
+
+Artık engellendi."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Bir özellik bayrağı bulunamadı.
+
+Uygulamanın davranışı bir özellik bayrağı tarafından kontrol edilmiyor gibi görünüyor"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Tek bir özellik bayrağı bulunamadı.
+
+Davranış, aramanın daha önceki bir adımında ortadan kalktı; bu nedenle birden fazla bayrak söz konusu olabilir veya yanıtlardan biri yanlış olabilir."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG ayarlarını açın</string>

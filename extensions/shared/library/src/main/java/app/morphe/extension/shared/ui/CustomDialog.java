@@ -103,6 +103,25 @@ public class CustomDialog {
     }
 
     /**
+     * Creates an EditText styled like the one {@link #create} shows,
+     * for dialogs that build their own content layout.
+     */
+    public static EditText createEditText(Context context) {
+        EditText editText = new EditText(context);
+        editText.setTextSize(16);
+        editText.setTextColor(ThemeUtils.getAppForegroundColor());
+
+        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
+                Dim.roundedCorners(10), null, null));
+        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
+        editText.setPadding(Dim.dp8, Dim.dp8, Dim.dp8, Dim.dp8);
+        editText.setBackground(background);
+        editText.setClipToOutline(true);
+
+        return editText;
+    }
+
+    /**
      * Initializes a custom dialog with the specified parameters.
      *
      * @param context                     Context used to create the dialog.

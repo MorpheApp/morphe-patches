@@ -210,6 +210,15 @@ Athróidh sé seo cuma agus gnéithe na haipe, ach d'fhéadfadh fo-iarsmaí anai
 
 Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtanna comhéadain úsáideora a chosc."</string>
   <string name="morphe_spoof_app_version_target_title">Sprioc leagan aip bréige</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Ráta athnuachana aipeanna</string>
+  <string name="morphe_app_refresh_rate_default">Réamhshocrú</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Sáraigh an ráta athnuachana</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">I gcónaí</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Portráid athsheinm</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Athsheinm lánscáileáin</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Athsheinm portráide agus lánscáileáin</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Níl na \"dí-mhaith\" ar fáil go sealadach (tá an t-am caite ag an API)</string>

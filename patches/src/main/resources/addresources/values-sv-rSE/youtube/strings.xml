@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Ta bort begränsningar för uppspelning i bakgrunden</string>
   <string name="morphe_shorts_disable_background_playback_title">Inaktivera uppspelning i bakgrunden</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Automatisk paus när enheten är låst</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Av</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Pausa alltid när enheten är låst</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Pausa om inte trådlöst ljud är anslutet</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Inaktivera rullningshastighetsgräns</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_ask_section_title">Dölj avsnittet Fråga</string>
   <string name="morphe_hide_attributes_section_title">Dölj avsnittet med attribut</string>
   <string name="morphe_hide_attributes_section_summary">Döljer avsnitten Platser som visas, Spel, Musik och Personer som förekommer</string>
+  <string name="morphe_hide_channel_links_section_title">Dölj avsnittet med kanallänkar</string>
   <string name="morphe_hide_chapters_section_title">Dölj avsnittet Kapitel</string>
   <string name="morphe_hide_corrections_section_title">Dölj avsnittet Korrigeringar</string>
   <string name="morphe_hide_course_progress_section_title">Dölj avsnittet Kursförlopp</string>
@@ -262,6 +267,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_preview_comment_summary">Döljer förhandsvisningen av kommentarer under videon innan det fullständiga kommentarsfältet har öppnats</string>
   <string name="morphe_hide_comments_thanks_button_title">Dölj knappen Thanks</string>
   <string name="morphe_hide_comments_timestamp_button_title">Dölj tidsstämpelknappen</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Dölj knappen \'Toppfans\'</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Rensa markerade söklänkar</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Rensar markerade söklänkar och lämnar bara den ursprungliga vanliga texten</string>
   <string name="morphe_hide_keyword_content_screen_title">Nyckelordsfilter</string>
@@ -545,7 +551,6 @@ För att åtgärda detta, aktivera \"Falska videoströmmar\" och ändra \"Standa
   <string name="morphe_swipe_overlay_timeout_summary">Antalet millisekunder som överlägget är synligt</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Bakgrundsopacitet för svepöverlägg</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Justera genomskinlighetsnivån (0 är genomskinligt, 100 är ogenomskinligt)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Svepöverläggets opacitet måste vara mellan 0 och 100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Färg på svepöverlägg för ljusstyrkegest</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Ange ljusstyrkereglagets färg</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Färg på svepöverlägg för volymgest</string>
@@ -554,7 +559,6 @@ För att åtgärda detta, aktivera \"Falska videoströmmar\" och ändra \"Standa
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Ange färg för hastighetsreglagets förloppsindikator</string>
   <string name="morphe_swipe_text_overlay_size_title">Textstorlek för svepöverlägg</string>
   <string name="morphe_swipe_text_overlay_size_summary">Justera textstorleken på skärmen (1–30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Textstorleken måste vara mellan 1 och 30</string>
   <string name="morphe_swipe_threshold_title">Tröskelvärde för svep</string>
   <string name="morphe_swipe_threshold_summary">Ange det avstånd som krävs för att svepgesten ska utlösa en justering</string>
   <string name="morphe_swipe_volume_sensitivity_title">Svepkänslighet för volymgest</string>
@@ -708,42 +712,44 @@ Om du vill komma åt inställningarna aktiverar du knappen Inställningar via Al
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-meny</string>
   <string name="morphe_hide_player_flyout_summary">Välj vilka komponenter som visas i flyout-menyn</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_audio_track_title">Dölj menyn Ljudspår</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Dölj menyn Fler inställningar/Mer</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Dölj menyn Ambientljus</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menyn 'Ljudspår' är dold
 
 För att visa menyn 'Ljudspår', ändra 'Förfalska videostreamar' till valfri klient utom 'Android Studio' och 'Android VR Downgraded'"</string>
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_audio_track_title">Dölj menyn Ljudspår</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Dölj sidfot för menyn Ljudspår</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Dölj menyn Textning</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Dölj sidfot för menyn Textning</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Dölj sidhuvud för menyn Textning</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Dölj menyn Fler inställningar/Mer</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Dölj menyn Sovtimer</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Dölj menyn Skapa en slinga för video</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Dölj menyn Ambientljus</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Dölj menyn Jämn volym</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Dölj menyn Hjälp och feedback</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Dölj menyn Uppspelningshastighet</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Dölj menyn Lås skärmen</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Dölj menyn Lyssna med YouTube Music</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Dölj menyn Titta i VR</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Dölj menyn Lås skärmen</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Dölj menyn Skapa en slinga för video</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Dölj menyn \'På språket\'</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Dölj menyn Kvalitet</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Dölj sidfot för menyn Kvalitet</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Dölj sidhuvud för menyn Kvalitet</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Dölj menyn Sovtimer</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Dölj menyn Uppspelningshastighet</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Dölj menyn Jämn volym</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Dölj menyn Titta i VR</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Dölj förhandsgranskning för automatisk uppspelning</string>
   <string name="morphe_hide_autoplay_preview_summary">Döljer förhandsgranskningen av nästa video i helskärm innan automatisk uppspelning startar</string>
@@ -758,6 +764,8 @@ För att visa menyn 'Ljudspår', ändra 'Förfalska videostreamar' till valfri k
   <string name="morphe_hide_fullscreen_button_title">Dölj helskärmsknappen</string>
   <string name="morphe_hide_player_control_buttons_background_title">Dölj bakgrunder för uppspelningsknappar</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Döljer den mörka skuggningen runt uppspelningsknapparna</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Bakgrundsopacitet för kontrollknappar</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Justera opaciteten för cirkeln bakom spelarens kontrollknappar (0 är osynlig, 100 är ogenomskinlig)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Dölj knapparna Föregående och Nästa</string>
   <string name="morphe_hide_settings_button_title">Dölj knappen Inställningar</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -847,6 +855,8 @@ Inställningar → Uppspelning (eller Autouppspelning) → Autouppspela nästa v
   <string name="morphe_disable_player_popup_panels_title">Inaktivera popup-paneler i spelaren</string>
   <string name="morphe_disable_player_popup_panels_summary">Inaktiverar att paneler för spellistor och livechatt öppnas automatiskt</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Inaktivera automatisk uppspelning av spellistor</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Förhindrar att spellistor automatiskt går vidare till nästa video</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Avsluta helskärmsläge när videon tar slut</string>
   <string name="morphe_exit_fullscreen_entry_1">Inaktiverat</string>
@@ -855,9 +865,11 @@ Inställningar → Uppspelning (eller Autouppspelning) → Autouppspela nästa v
   <string name="morphe_exit_fullscreen_entry_4">Stående och liggande</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Helskärmsgester</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Spelargester i helskärmsläge</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Inaktivera uppåtsvep i porträttläge</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Inaktivera nedåtsvep i porträttläge</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Inaktivera nedåtsvep i landskapsläge</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Inaktivera nyp-zoom-gester</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Öppna videor i helskärmsläge</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Inaktiverad</string>
@@ -871,10 +883,10 @@ Inställningar → Uppspelning (eller Autouppspelning) → Autouppspela nästa v
   <string name="morphe_fullscreen_video_scale_button_title">Visa videons skalningsknapp</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Tryck för att växla mellan Standard, Töj och Zooma</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Visa ljudavstängningsknappen</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Spelaröverläggets opacitet</string>
   <string name="morphe_player_overlay_opacity_summary">Justera genomskinlighetsnivån (0 är genomskinligt, 100 är ogenomskinligt)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Spelaröverläggets opacitet måste vara mellan 0 och 100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Sökfält</string>
   <string name="morphe_searchbar_type_entry_disabled">Inaktiverad</string>
@@ -887,20 +899,22 @@ Inställningar → Uppspelning (eller Autouppspelning) → Autouppspela nästa v
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Surfplatta</string>
   <string name="morphe_change_form_factor_entry_4">Bil</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Ändringar som ingår:
+  <string name="morphe_change_form_factor_user_dialog_message">"Ändringar inkluderar:
 
-Layout för surfplatta
-• Community-inlägg döljs
-• Inställningen Uppspelning i flöden är inte tillgänglig
-• Knappen Remixa och knappen Ljud är inte tillgängliga i Shorts
-• Åtgärdsfältet för videor är inte komprimerat
+Surfplattelayout
+• Community-inlägg är dolda
+• Inställningen för uppspelning i flöden är inte tillgänglig
+• Remix-knappen och ljudknappen är inte tillgängliga i Shorts
+• Överlägget 'Fler videor' kanske inte är tillgängligt
+• Det gamla, ej komprimerade videoåtgärdsfältet visas
 
 Billayout
-• Flödet sorteras efter ämnen och kanaler
-• Inställningen Uppspelning i flöden är inte tillgänglig
-• Knappen Remixa och knappen Ljud är inte tillgängliga i Shorts
+• Flödet är organiserat efter ämnen och kanaler
+• Inställningen för uppspelning i flöden är inte tillgänglig
+• Remix-knappen och ljudknappen är inte tillgängliga i Shorts
+• Överlägget 'Fler videor' kanske inte är tillgängligt
 • Shorts öppnas i den vanliga spelaren
-• Åtgärdsfältet för videor är inte komprimerat"</string>
+• Det gamla, ej komprimerade videoåtgärdsfältet visas"</string>
   <string name="morphe_tablet_layout_in_player_title">Aktivera surfplattelayout i spelaren</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Återställer den gamla spelarlayouten
@@ -992,7 +1006,6 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixelstorlek måste vara mellan %1$s och %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Överläggets opacitet</string>
   <string name="morphe_miniplayer_opacity_summary">Justera genomskinlighetsnivån (0 är genomskinligt, 100 är ogenomskinligt)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Minispelaröverläggets opacitet måste vara mellan 0 och 100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tillbaka-knappen avslutar flödet</string>
   <string name="morphe_back_button_always_exits_feed_summary">Att trycka på Tillbaka avslutar alltid appen istället för att rulla till toppen av flödet</string>
@@ -1145,6 +1158,14 @@ Tryck här för att öppna DeArrow.ajay.app"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Tillåter att ställa in hastighet och tonhöjd oberoende, kan orsaka ljudartefakter</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Inaktivera HDR-video</string>
+  <string name="morphe_force_hdr_video_title">Tvinga HDR-video</string>
+  <string name="morphe_force_hdr_video_summary">Tvingar appen att känna igen enheten som HDR-kompatibel</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Använd detta om HDR-avkodning fungerar men YouTube inte erbjuder HDR, till exempel vissa HyperOS-enheter som döljer HLG.
+
+Begränsningar:
+• Färger kan se fel ut om skärmen inte faktiskt kan visa HDR
+• Uppspelning kan misslyckas om avkodaren inte kan hantera HDR
+• HDR beror fortfarande på spoofing av videoströmklienten"</string>
   <string name="morphe_force_avc_codec_title">Tvinga AVC (H.264)-kodeken</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Fördelar:
 • Kan förbättra batteritiden

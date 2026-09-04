@@ -210,6 +210,15 @@ Ini akan mengubah tampilan dan fitur aplikasi, tetapi efek samping yang tidak di
 
 Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah kerusakan UI."</string>
   <string name="morphe_spoof_app_version_target_title">Target versi aplikasi yang dipalsukan</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Penyegaran layar aplikasi</string>
+  <string name="morphe_app_refresh_rate_default">Bawaan</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Timpa penyegaran layar</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Selalu</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Pemutaran potret</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Pemutaran layar penuh</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Pemutaran potret dan layar penuh</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike sementara tidak tersedia (waktu API habis)</string>

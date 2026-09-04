@@ -35,21 +35,22 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.41.0-dev.7](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.41.0-dev.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;143 patches total
+> **[v1.42.0-dev.2](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.42.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;145 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;80 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;81 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.35.442 | 🧪&nbsp;21.34.243 | 🧪&nbsp;21.28.208 | 21.04.223 | 20.51.39 | 20.31.42 | 20.21.37 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 🧪&nbsp;21.35.442 | 🧪&nbsp;21.34.243 | 🧪&nbsp;21.28.208 | 21.07.247 | 21.04.223 | 20.51.39 | 20.31.42 | 20.21.37 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
 | [Add to queue](#add-to-queue) | Overrides the feed flyout 'Play next in queue' with the Morphe video queue. |  |
 | [Alternative thumbnails](#alternative-thumbnails) | Adds options to replace video thumbnails using the DeArrow API or image captures from the video. |  |
 | [Ambient mode](#ambient-mode) | Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen. |  |
+| [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
 | [Bypass image region restrictions](#bypass-image-region-restrictions) | Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries. |  |
 | [Bypass link redirects](#bypass-link-redirects) | Adds an option to bypass redirects and open the original link directly. |  |
 | [Captions](#captions) | Adds an option to disable captions from being automatically enabled or to set caption cookies. |  |
@@ -88,7 +89,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide info cards](#hide-info-cards) | Adds an option to hide info cards that creators add in the video player. |  |
 | [Hide layout components](#hide-layout-components) | Adds options to hide general layout components. |  |
 | [Hide player flyout menu components](#hide-player-flyout-menu-components) | Adds options to hide menu components that appear when pressing the gear icon in the video player. |  |
-| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and the player control buttons background. |  |
+| [Hide player overlay buttons](#hide-player-overlay-buttons) | Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background. |  |
 | [Hide related video overlay](#hide-related-video-overlay) | Adds an option to hide the related video overlay shown when swiping up in fullscreen. |  |
 | [Hide related videos](#hide-related-videos) | Adds options to hide related videos. |  |
 | [Hide timestamp](#hide-timestamp) | Adds an option to hide the timestamp in the bottom left of the video player. |  |
@@ -131,16 +132,17 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;41 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;42 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.34.52 | 🧪&nbsp;9.33.52 | 🧪&nbsp;9.32.51 | 9.15.51 |
+| 🧪&nbsp;9.35.54 | 🧪&nbsp;9.34.52 | 🧪&nbsp;9.33.52 | 9.15.51 |
 | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
+| [App refresh rate](#app-refresh-rate) | Adds an option to change the app refresh rate. |  |
 | [Bypass certificate checks](#bypass-certificate-checks) | Bypasses certificate checks which prevent YouTube Music from working on Android Auto. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
 | [Change miniplayer color](#change-miniplayer-color) | Adds an option to change the miniplayer background color to match the fullscreen player. |  |

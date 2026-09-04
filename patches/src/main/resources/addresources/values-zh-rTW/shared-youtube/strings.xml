@@ -185,6 +185,9 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_title">移除觀看分級對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">這並不會繞過年齡限制，只是自動接受它</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken 提供者</string>
+  <string name="morphe_potoken_provider_screen_summary">設定 PoToken 提供者以避免播放問題</string>
+  <string name="morphe_external_potoken_provider_title">外部 PoToken 提供者</string>
   <string name="morphe_external_potoken_provider_summary">"使用外部 PoToken minter 修復播放問題（實驗性）
 
 如果您是 YouTube Premium 用戶，可能不需要此設定"</string>
@@ -207,6 +210,15 @@ Second \"item\" text"</string>
 
 如果之後關閉此設定，建議清除應用程式資料以避免 UI 錯誤。"</string>
   <string name="morphe_spoof_app_version_target_title">應用程式偽裝目標版本</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">應用程式更新頻率</string>
+  <string name="morphe_app_refresh_rate_default">預設</string>
+  <string name="morphe_app_refresh_rate_fps">%s 幀/秒</string>
+  <string name="morphe_app_refresh_rate_type_title">覆寫更新頻率</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">一律</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">直向播放</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">全螢幕播放</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">直向與全螢幕播放</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">暫時無法顯示不喜歡人數（API 逾時）</string>

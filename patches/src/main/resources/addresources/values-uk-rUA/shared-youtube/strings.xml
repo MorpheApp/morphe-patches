@@ -210,6 +210,15 @@ Second \"item\" text"</string>
 
 Якщо пізніше вимкнути, рекомендується очистити дані застосунку, щоб запобігти помилкам інтерфейсу."</string>
   <string name="morphe_spoof_app_version_target_title">Підмінити версію застосунку на</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Частота оновлення застосунку</string>
+  <string name="morphe_app_refresh_rate_default">Типова</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Замінити частоту оновлення</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Завжди</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Портретне відтворення</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Повноекранне відтворення</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Портретне та повноекранне відтворення</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Дизлайки тимчасово недоступні (тайм-аут API)</string>

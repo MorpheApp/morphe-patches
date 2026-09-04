@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Fjarlægja takmarkanir á spilun í bakgrunni</string>
   <string name="morphe_shorts_disable_background_playback_title">Slökkva á spilun í bakgrunni</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Sjálfvirk hlé þegar tæki er læst</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Af</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Alltaf hlé þegar tæki er læst</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Hlé nema þráðlaust hljóð sé tengt</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Slökkva á hraðatakmörkun skrunningar.</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_ask_section_title">Felur Spyrja hluta</string>
   <string name="morphe_hide_attributes_section_title">Felur Eiginleika hluta</string>
   <string name="morphe_hide_attributes_section_summary">Felur sérstaka staði, Leiki, Tónlist og Fólk sem nefnt er</string>
+  <string name="morphe_hide_channel_links_section_title">Fela rásatenglahlutann</string>
   <string name="morphe_hide_chapters_section_title">Felur Kafla hluta</string>
   <string name="morphe_hide_corrections_section_title">Felur Leiðréttingar hluta</string>
   <string name="morphe_hide_course_progress_section_title">Felur \'Námsfylgdar\' hluta</string>
@@ -262,6 +267,7 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_comments_preview_comment_summary">Felur athugasmd forskoðunina undir vídeó áður en full athugasmdakassinn opnast</string>
   <string name="morphe_hide_comments_thanks_button_title">Fela þakknsemishnappinn</string>
   <string name="morphe_hide_comments_timestamp_button_title">Fela Tímalínu hnapp</string>
+  <string name="morphe_hide_comments_top_fans_button_title">Fela \'Topp aðdáendur\' hnappinn</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hreinsa lýst tengla í leit</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Hreinsar lýsta leittengla og skilur eftir aðeins upprunalega textann</string>
   <string name="morphe_hide_keyword_content_screen_title">Hraðvæðir</string>
@@ -543,7 +549,6 @@ Til að laga þetta, skaltu virkja 'Fölsa vídeóstrauma' og breyta 'Sjálfgefi
   <string name="morphe_swipe_overlay_timeout_summary">Uppsetning lobni</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Gestur á lobni</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Stilltu gegnsærastegð (0 er gagnsætt, 100 er ógegnsætt)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Lobni þarf að vera á milli 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Lobni litur sveipa</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Stilltu litinn á birtastigs stjórntækjabálkinn</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Hljóðstyrkur litur sveipa</string>
@@ -552,7 +557,6 @@ Til að laga þetta, skaltu virkja 'Fölsa vídeóstrauma' og breyta 'Sjálfgefi
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Stilltu lit hraðatakkan á leitarstikunni</string>
   <string name="morphe_swipe_text_overlay_size_title">Stærð texta sveipa</string>
   <string name="morphe_swipe_text_overlay_size_summary">Stilltu stærð textans á skjánum (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Textastærðin verður að vera á milli 1-30</string>
   <string name="morphe_swipe_threshold_title">Markmið sveipa</string>
   <string name="morphe_swipe_threshold_summary">Stilltu nauðsynlegt stríðufjarlægð áður en stilling gerist</string>
   <string name="morphe_swipe_volume_sensitivity_title">Hljóðstyrk næmis sveipa</string>
@@ -706,40 +710,42 @@ Til þess að fá access til stillingarinnar skaltu koma á stillinguna í gegnu
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flytandi valmynd</string>
   <string name="morphe_hide_player_flyout_summary">Veldu hvaða þættir birtast í fljótandi glugganum</string>
+  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_additional_settings_title">Felur \'Viðbótaskertur stillingar\' / Meiri valmynd</string>
+  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_ambient_mode_title">Felur \'Umhverfislíkami\' valmynd</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"'Hljóðrás' valmyndin er falin\n\nTil að sýna 'Hljóðrás' valmyndina, breyttu 'Falsa myndstrauma' í hvaða biðlara sem er nema 'Android Studio' og 'Android VR Downgraded'"</string>
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Felur \'Hljóðrás\' valmynd</string>
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"'Hljóðrás' valmyndin er falin\n\nTil að sýna 'Hljóðrás' valmyndina, breyttu 'Falsa myndstrauma' í hvaða biðlara sem er nema 'Android Studio' og 'Android VR Downgraded'"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Felur \'Hljóðrás\' valmyndar fætur</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Felur Undirrita valmynd</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Felur Undirrita valmyndar fætur</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Felur Undirrita valmyndar haus</string>
-  <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_additional_settings_title">Felur \'Viðbótaskertur stillingar\' / Meiri valmynd</string>
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">Felur \'Sofatími\' valmynd</string>
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_loop_video_title">Felur \'Hringrás vídeó\' valmynd</string>
-  <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_ambient_mode_title">Felur \'Umhverfislíkami\' valmynd</string>
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_stable_volume_title">Felur \'Stöðugt hljóðstyrkur\' valmynd</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_help_title">Felur \'Hjálp &amp; endurgjöf\' valmynd</string>
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_speed_title">Felur \'Spilunarhraði\' valmynd</string>
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Felur \'Loka skjá\' valmynd</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Felur \'Hlustar með YouTube tónlist\' valmynd</string>
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">Felur \'Horfa í VR\' valmynd</string>
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_lock_screen_title">Felur \'Loka skjá\' valmynd</string>
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_loop_video_title">Felur \'Hringrás vídeó\' valmynd</string>
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_on_the_go_title">Fela valmyndina \'Á ferðinni\'</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">Felur Gæði valmynd</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Felur Gæði valmyndar fætur</string>
   <string name="morphe_hide_player_flyout_quality_header_title">Felur Gæði valmyndar haus</string>
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_sleep_timer_title">Felur \'Sofatími\' valmynd</string>
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_speed_title">Felur \'Spilunarhraði\' valmynd</string>
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_stable_volume_title">Felur \'Stöðugt hljóðstyrkur\' valmynd</string>
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">Felur \'Horfa í VR\' valmynd</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Fela sjálfspilandi forsýningu</string>
   <string name="morphe_hide_autoplay_preview_summary">Felur fyrirhugaðara vídeó forskoðun í fullskjástillingu áður en sjálfvirkni hefst</string>
@@ -754,6 +760,8 @@ Til þess að fá access til stillingarinnar skaltu koma á stillinguna í gegnu
   <string name="morphe_hide_fullscreen_button_title">Felur Fullskjástilling hnappinn</string>
   <string name="morphe_hide_player_control_buttons_background_title">Fela spilarstýri bakgrunn</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Felur dökkri skuggana um kringum vídeóspilara stjórntækin</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Ógagnsæi bakgrunns stjórnhnappa</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Stilltu ógagnsæi hringsins á bak við stjórnhnappa spilarans (0 er ósýnilegt, 100 er fullkomlega ógagnsætt)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Felur Fyrri &amp; Næsti hnappa</string>
   <string name="morphe_hide_settings_button_title">Felur Stillingar hnappinn</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -843,6 +851,8 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_disable_player_popup_panels_title">Lokað spilandi spilandi spilari flipa</string>
   <string name="morphe_disable_player_popup_panels_summary">Slær af sjálfvirkan spilara opnunarhluta</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <string name="morphe_disable_playlist_autoplay_title">Óvirkja sjálfvirka spilun á spilunarlista</string>
+  <string name="morphe_disable_playlist_autoplay_summary">Kemur í veg fyrir að spilunarlistar fari sjálfkrafa á næsta myndband</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Hættir fullskjástillingu á lok vídeós</string>
   <string name="morphe_exit_fullscreen_entry_1">Gerðu óvirkt </string>
@@ -851,9 +861,11 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_exit_fullscreen_entry_4">Portrait og landscape</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Fullskjárshreyfingar</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Bendingar spilara í fullskjásstillingu</string>
   <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Gerja óvirkt hreyfingu til að draga upp úr fullskjá</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Gerðu portrettsniður snertihreyfinguna óvirkja</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Gerðu landslagsniður snertihreyfinguna óvirkja</string>
+  <string name="morphe_disable_fullscreen_zoom_gesture_title">Óvirkja klíp-stækkunarbending</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Opna myndband í fullskjáhamri</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Gerilt</string>
@@ -867,10 +879,10 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_fullscreen_video_scale_button_title">Sýna hnappinn fyrir myndbandsskala</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Bankaðu til að skipta á milli Sjálfgefið, Teysja og Stækka</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
+  <string name="morphe_mute_video_button_title">Sýna slökkvunarhnapp</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Spilar murargyga </string>
   <string name="morphe_player_overlay_opacity_summary">Stilltu gegnsærastefnu (0 er gagnsætt, 100 er ógegnsætt)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Muragygð skal vera á bilinu 0-100 </string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Leitastika</string>
   <string name="morphe_searchbar_type_entry_disabled">Óvirk</string>
@@ -883,20 +895,21 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_change_form_factor_entry_2">Sími</string>
   <string name="morphe_change_form_factor_entry_3">Tafla</string>
   <string name="morphe_change_form_factor_entry_4">Bíll</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"Breytingar eru:
+  <string name="morphe_change_form_factor_user_dialog_message">"Breytingar fela í sér:
 
-Spjaldtækjastíll
-• Samfélagspóstur eru feldir
-• Stillingin 'Spilun í straumum' er ekki í boði
-• Remix hnappurinn og Hljóð hnappurinn eru ekki í boði í Shorts
-• Gamla aðgerðastika myndbandsins, ekki brotin saman, er sýnd
+Spjaldtölvuútlit
+• Samfélagsfærslur eru falnar
+• Stillingin Spilun í straumum er ekki tiltæk
+• Remix-hnappur og hljóðhnappur eru ekki tiltækir í Shorts
+• Yfirlagið „More videos“ gæti ekki verið tiltækt
+• Gömul myndbandsaðgerðarstika sem er ekki samanfallin er sýnd
 
-Bílstýringastíll
-• Straumurinn er skipulagður eftir þemu og rásum
-• Stillingin 'Spilun í straumum' er ekki í boði
-• Remix hnappurinn og Hljóð hnappurinn eru ekki í boði í Shorts
+Bílaútlit
+• Straumurinn er skipulagður eftir efnum og rásum
+• Stillingin Spilun í straumum er ekki tiltæk
+• Remix-hnappur og hljóðhnappur eru ekki tiltækir í Shorts
 • Shorts opnast í venjulega spilaranum
-• Gamla aðgerðastika myndbandsins, ekki brotin saman, er sýnd"</string>
+• Gömul myndbandsaðgerðarstika sem er ekki samanfallin er sýnd"</string>
   <string name="morphe_tablet_layout_in_player_title">Virkja taflalýsing í spilara</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Endurskipar gamla útlit spilarans
@@ -988,7 +1001,6 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel stærð verður að vera á milli %1$s og %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Yfirborðs opacité</string>
   <string name="morphe_miniplayer_opacity_summary">Stilltu gegnsæisstig (0 er gagnsætt, 100 er ógegnsær)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Opacité miniplayer yfirborðsins verður að vera á milli 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Til baka-hnappur fer út úr straumnum</string>
   <string name="morphe_back_button_always_exits_feed_summary">Að ýta á til baka fer alltaf út úr appinu í stað þess að skrilla upp efst í strauminn</string>
@@ -1141,6 +1153,14 @@ Bankaðu hér til að opna DeArrow.ajay.app"</string>
   <string name="morphe_playback_audio_time_stretching_summary">Leyfir að stilla hraða og tóna sjálfstætt, getur valdið hljóðgáttum</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Lokað HDR myndböndum</string>
+  <string name="morphe_force_hdr_video_title">Þvinga HDR-vídeó</string>
+  <string name="morphe_force_hdr_video_summary">Þvingar forritið til að þekkja þetta tæki sem HDR-hæft</string>
+  <string name="morphe_force_hdr_video_user_dialog_message">"Notaðu þetta ef HDR-afkóðun virkar en YouTube býður ekki upp á HDR, eins og sum HyperOS tæki sem fela HLG.
+
+Takmarkanir:
+• Litir geta litið rangt út ef skjárinn getur ekki raunverulega sýnt HDR
+• Spilun getur mistekist ef afkóðarinn ræður ekki við HDR
+• HDR er enn háð spoof-biðlara fyrir vídeóstrauma"</string>
   <string name="morphe_force_avc_codec_title">Þvinga AVC (H.264) kóðann</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"Ávinningur:
 • Getur bætt rafhlöðuáfköfum

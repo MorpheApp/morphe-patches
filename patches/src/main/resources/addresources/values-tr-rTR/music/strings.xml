@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Başlık logosu</string>
   <string name="morphe_header_logo_entry_1">Varsayılan</string>
   <string name="morphe_header_logo_entry_3">Özel</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Albüm ses parçalarını çal</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Şarkıların yalnızca sesli albüm sürümünü müzik videosu yerine çal. \'Video akışlarını taklit et\' gerektirir</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü taraf indirme uygulamalarıyla müzik videoları, podcast\'ler veya şarkılar indirin</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_hide_action_bar_title">Eylem çubuğunu gizle</string>
   <string name="morphe_music_hide_like_dislike_button_title">Beğenme ve Beğenmeme düğmelerini gizle</string>
   <string name="morphe_music_hide_comments_button_title">Yorumlar düğmesini gizle</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">\'Canlı sohbeti tekrar oynat\' düğmesini gizle</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Şarkı Sözleri düğmesini gizle</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">İndir düğmesini gizle</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Radyoyu başlat düğmesini gizle</string>
+  <string name="morphe_music_hide_radio_button_title">\'Radyoyu başlat\' düğmesini gizle</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Açılır menü</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Oyuncuda ve kuyrukta görünen bileşenleri seçin</string>

@@ -220,11 +220,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_title">स्वाइप ओवरले टाइमआउट</string>
   <string name="morphe_swipe_overlay_timeout_summary">ओवरले दिखाई देने वाले मिलीसेकंड की मात्रा</string>
   <string name="morphe_swipe_overlay_background_opacity_title">स्वाइप ओवरले पृष्ठभूमि अस्पष्टता</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">स्वाइप ओवरले अस्पष्टता 0-100 के बीच होनी चाहिए</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">स्वाइप ओवरले चमक रंग</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">स्वाइप ओवरले वॉल्यूम रंग</string>
   <string name="morphe_swipe_text_overlay_size_title">स्वाइप ओवरले टेक्स्ट आकार</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">टेक्स्ट आकार 1-30 के बीच होना चाहिए</string>
   <string name="morphe_swipe_threshold_title">स्वाइप परिमाण थ्रेशोल्ड</string>
   <string name="morphe_swipe_volume_sensitivity_title">वॉल्यूम स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_overlay_style_title">स्वाइप ओवरले शैली</string>
@@ -298,21 +296,22 @@ Second \"item\" text"</string>
   <string name="morphe_show_toolbar_settings_button_type_title">सेटिङ बटन कार्य</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">फ्लाईआउट मेनु</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ऑटोप्ले पूर्वावलोकन छिपाइ</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
@@ -392,7 +391,6 @@ Second \"item\" text"</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेयर ओभरले अपारदर्शिता</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">प्लेयर ओभरले अपारदर्शिता 0-100 बीचमा हुनुपर्छ</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
@@ -457,7 +455,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओवरले बटन छुपावे</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होखे के चाहिए</string>
   <string name="morphe_miniplayer_opacity_title">ओवरले अपारदर्शिता</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">मिनीप्लेयर ओवरले अपारदर्शिता 0 और 100 के बीच होखे के चहिए</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">सक्षम ग्रेडियेंट लोडिंग स्क्रीन</string>

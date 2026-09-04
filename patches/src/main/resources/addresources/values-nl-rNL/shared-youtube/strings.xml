@@ -204,6 +204,15 @@ Dit zal het uiterlijk en de functies van de app veranderen, maar er kunnen onbek
 
 Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen om UI-fouten te voorkomen."</string>
   <string name="morphe_spoof_app_version_target_title">Doel voor vervalsen app-versie</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Verversingssnelheid van de app</string>
+  <string name="morphe_app_refresh_rate_default">Standaard</string>
+  <string name="morphe_app_refresh_rate_fps">%s fps</string>
+  <string name="morphe_app_refresh_rate_type_title">Vernieuwingsfrequentie overschrijven</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Altijd</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Afspelen in staande modus</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Afspelen op volledig scherm</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Afspelen in staande modus en op volledig scherm</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">\"Dislikes\" zijn tijdelijk niet beschikbaar (API-time-out)</string>

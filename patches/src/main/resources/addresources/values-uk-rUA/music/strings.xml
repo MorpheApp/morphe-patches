@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Логотип заголовка</string>
   <string name="morphe_header_logo_entry_1">Стандартний</string>
   <string name="morphe_header_logo_entry_3">Власний</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Відтворювати аудіоверсію альбому</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Відтворювати лише аудіоверсію треків замість музичного відео. Потребує \"Підміна відеопотоків\"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Завантажувати музичні відео, подкасти або пісні за допомогою сторонніх застосунків для завантаження</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_hide_action_bar_title">Приховати панель дій</string>
   <string name="morphe_music_hide_like_dislike_button_title">Приховати кнопки \"Лайк\" та \"Дизлайк\"</string>
   <string name="morphe_music_hide_comments_button_title">Приховати кнопку \"Коментарі\"</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Приховати кнопку \"Переглянути запис чату\"</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Приховати кнопку \"Текст\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->

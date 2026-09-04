@@ -12,7 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
-import app.morphe.patches.music.misc.playservice.is_8_51_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -133,14 +132,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
         //endregion
 
         // region hide repeat button
-        val repeatFingerprints = if (is_8_51_or_greater) {
-            listOf(
-                OverlayQueueLoopButtonFingerprint,
-                PlaybackQueueLoopButtonFingerprint
-            )
-        } else {
-            listOf(QueueLoopButtonFingerprint)
-        }
+        val repeatFingerprints = listOf(
+            OverlayQueueLoopButtonFingerprint,
+            PlaybackQueueLoopButtonFingerprint
+        )
 
         repeatFingerprints.forEach { fingerprint ->
             fingerprint.matchAllOrNull()?.forEach { match ->
@@ -154,14 +149,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // endregion
 
         // region hide shuffle button
-        val shuffleFingerprints = if (is_8_51_or_greater) {
-            listOf(
-                OverlayQueueShuffleButtonFingerprint,
-                PlaybackQueueShuffleButtonFingerprint
-            )
-        } else {
-            listOf(QueueShuffleButtonFingerprint)
-        }
+        val shuffleFingerprints = listOf(
+            OverlayQueueShuffleButtonFingerprint,
+            PlaybackQueueShuffleButtonFingerprint
+        )
 
         shuffleFingerprints.forEach { fingerprint ->
             fingerprint.matchAllOrNull()?.forEach { match ->

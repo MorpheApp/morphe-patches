@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Istoricul căutărilor este gol</string>
   <string name="morphe_settings_search_empty_history_summary">Pentru a salva istoricul căutărilor, introduceți o interogare de căutare și apăsați Enter</string>
   <string name="morphe_settings_search_history_title">Afișează istoricul căutărilor în setări</string>
+  <string name="morphe_settings_name_title">Nume setări Morphe</string>
+  <string name="morphe_settings_name_default_item">Implicit</string>
+  <string name="morphe_settings_name_entry_2">Suplimentar</string>
+  <string name="morphe_settings_name_entry_3">Ajustări</string>
+  <string name="morphe_settings_name_entry_4">Timp de morfing</string>
+  <string name="morphe_settings_name_custom_item">Personalizat</string>
+  <string name="morphe_settings_name_custom_item_hint">Introduceți un nume</string>
+  <string name="morphe_settings_name_empty_warning">Numele nu poate fi gol</string>
   <string name="morphe_show_menu_icons_title">Afișați pictogramele de setări Morphe</string>
   <string name="morphe_settings_menu_copy_path">Copiat: %s</string>
   <string name="morphe_language_title">Limba Morphe</string>
@@ -109,21 +117,62 @@ Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestionați funcțiile booleene</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Caută funcții experimentale…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Inactiv (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Activ (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blocat (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Forțat (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Automat</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Oprit</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Pornit</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forțează activ</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blochează</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Elimină</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Steagurile au fost salvate</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Steagurile au fost resetați</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Steagurile au fost copiate în clipboard</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Repornește aplicația pentru a utiliza această setare</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Export și import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Flaguri de funcționalitate importate: %s</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nu s-au găsit flaguri</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Flaguri exportate cu succes</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Exportul flagurilor a eșuat</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Flaguri încărcate, atingeți Salvare pentru a aplica</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Nu s-a putut citi fișierul</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Căutare binară</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Găsește ce flag de funcționalitate cauzează un comportament al aplicației.
+
+Jumătate din cele %s flaguri sunt blocate, iar după fiecare repornire spuneți dacă comportamentul este încă prezent.
+
+Reproduceți comportamentul o dată înainte de a începe, altfel flagurile pe care aplicația nu le-a cerut încă lipsesc din căutare"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Pornire</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nu există flaguri de căutat.
+
+Doar flagurile pe care aplicația le-a întâlnit și care nu sunt forțate activ pot fi folosite într-o căutare binară"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Pasul %1$s
+
+%2$s flaguri rămase, %3$s dintre ele blocate pentru acest pas.
+
+Reporniți aplicația, verificați dacă comportamentul este prezent, apoi răspundeți mai jos"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Căutare flag în curs</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Comportamentul este prezent</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Comportamentul nu este prezent</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Anulează căutarea binară</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Căutarea binară a fost anulată</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Flagul %s cauzează comportamentul.
+
+Acum este blocat"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nu s-a găsit niciun flag.
+
+Comportamentul aplicației nu pare să fie controlat de un flag"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Nu s-a găsit niciun flag.
+
+Comportamentul a dispărut mai devreme în căutare, deci poate fi implicat mai mult de un flag sau unul dintre răspunsuri a fost greșit"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Deschide setârii MicroG</string>

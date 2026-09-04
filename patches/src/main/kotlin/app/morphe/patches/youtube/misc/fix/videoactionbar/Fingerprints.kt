@@ -9,22 +9,9 @@ package app.morphe.patches.youtube.misc.fix.videoactionbar
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.literal
 import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriFingerprint
 import app.morphe.patches.youtube.shared.CLIENT_INFO_CLASS
 import com.android.tools.smali.dexlib2.Opcode
-
-internal object ModernRelateVideoOverlayFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45614162L)
-    )
-)
-
-internal object RelateVideoOverlayLayoutParamFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45661108L)
-    )
-)
 
 internal object BuildInnerTubeProtoRequestBodyFingerprint : Fingerprint(
     classFingerprint = BuildInnerTubeProtoRequestUriFingerprint,
@@ -56,5 +43,3 @@ internal fun getConfigInfoFingerprint(configInfoClass: String) = object : Finger
         )
     )
 ) {}
-
-

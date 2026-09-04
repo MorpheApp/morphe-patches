@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">ประวัติการค้นหาว่างเปล่า</string>
   <string name="morphe_settings_search_empty_history_summary">หากต้องการบันทึกประวัติการค้นหา ให้พิมพ์คำค้นหาแล้วกด Enter</string>
   <string name="morphe_settings_search_history_title">แสดงประวัติการค้นหาในการตั้งค่า</string>
+  <string name="morphe_settings_name_title">ชื่อการตั้งค่า Morphe</string>
+  <string name="morphe_settings_name_default_item">ค่าเริ่มต้น</string>
+  <string name="morphe_settings_name_entry_2">เพิ่มเติม</string>
+  <string name="morphe_settings_name_entry_3">การปรับแต่ง</string>
+  <string name="morphe_settings_name_entry_4">เวลาแปลงร่าง</string>
+  <string name="morphe_settings_name_custom_item">กำหนดเอง</string>
+  <string name="morphe_settings_name_custom_item_hint">ป้อนชื่อ</string>
+  <string name="morphe_settings_name_empty_warning">ชื่อต้องไม่ว่างเปล่า</string>
   <string name="morphe_show_menu_icons_title">แสดงไอคอนการตั้งค่า Morphe</string>
   <string name="morphe_settings_menu_copy_path">คัดลอกแล้ว: %s</string>
   <string name="morphe_language_title">ภาษา Morphe</string>
@@ -109,20 +117,62 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_summary">จัดการแฟล็กคุณสมบัติบูลีน</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">ค้นหาแฟล็กคุณสมบัติ…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">ไม่ทำงาน (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">ใช้งานอยู่ (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">ถูกบล็อก (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">ถูกบังคับ (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">อัตโนมัติ</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">ปิด</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">เปิด</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">บังคับเปิด</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">บล็อก</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">นำออก</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กคุณสมบัติแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กคุณสมบัติแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กคุณสมบัติไปยังคลิปบอร์ดแล้ว</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">รีสตาร์ทแอปเพื่อใช้การตั้งค่านี้</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">ส่งออกและนำเข้า</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">นำเข้า %s แฟล็กคุณสมบัติแล้ว</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">ไม่พบแฟล็กคุณสมบัติ</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">ส่งออกแฟล็กคุณสมบัติสำเร็จแล้ว</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">ไม่สามารถส่งออกแฟล็กคุณสมบัติได้</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">โหลดแฟล็กคุณสมบัติแล้ว แตะบันทึกเพื่อใช้งาน</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">ไม่สามารถอ่านไฟล์ได้</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">การค้นหาแบบไบนารี</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"ค้นหาแฟล็กคุณสมบัติที่ทำให้เกิดพฤติกรรมของแอป
+
+ครึ่งหนึ่งของ %s แฟล็กถูกบล็อก และหลังจากรีสตาร์ทแต่ละครั้ง ให้แจ้งว่าพฤติกรรมนั้นยังคงเกิดขึ้นหรือไม่
+
+โปรดทำซ้ำพฤติกรรมดังกล่าวหนึ่งครั้งก่อนเริ่มต้น มิฉะนั้น แฟล็กที่แอปยังไม่ได้ร้องขอจะหายไปจากการค้นหา"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">เริ่มต้น</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"ไม่มีแฟล็กคุณสมบัติให้ค้นหา
+
+สามารถใช้เฉพาะแฟล็กคุณสมบัติที่แอปได้ใช้งานแล้วและไม่ได้ถูกบังคับให้ใช้งานในปัจจุบันในการค้นหาแบบไบนารีได้"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"ขั้นตอนที่ %1$s
+
+เหลือ %2$s แฟล็ก โดย %3$s อันถูกบล็อกสำหรับขั้นตอนนี้
+
+รีสตาร์ทแอป ตรวจสอบว่าพฤติกรรมดังกล่าวปรากฏหรือไม่ จากนั้นตอบคำถามด้านล่าง"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">กำลังค้นหาแฟล็กคุณสมบัติ</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">พฤติกรรมปรากฏอยู่</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">พฤติกรรมไม่ปรากฏ</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">ยกเลิกการค้นหาแบบไบนารี</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">การค้นหาแบบไบนารีถูกยกเลิก</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"แฟล็กคุณสมบัติ %s ทำให้เกิดพฤติกรรมนี้
+
+ขณะนี้ถูกบล็อกแล้ว"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"ไม่พบแฟล็กคุณสมบัติ
+
+พฤติกรรมของแอปดูเหมือนจะไม่ถูกควบคุมโดยแฟล็กคุณสมบัติ"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"ไม่พบแฟล็กคุณสมบัติแม้แต่อันเดียว
+
+พฤติกรรมดังกล่าวหายไปก่อนหน้านี้ในการค้นหา ดังนั้นอาจมีแฟล็กคุณสมบัติมากกว่าหนึ่งอันที่เกี่ยวข้อง หรือคำตอบใดคำตอบหนึ่งอาจผิด"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">เปิดการตั้งค่า MicroG</string>

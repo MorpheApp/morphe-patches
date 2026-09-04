@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">헤더 로고</string>
   <string name="morphe_header_logo_entry_1">기본값</string>
   <string name="morphe_header_logo_entry_3">사용자 정의</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">앨범 오디오 트랙 재생하기</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">뮤직 비디오 대신 앨범 오디오 버전만 재생합니다. \'동영상 스트림 속이기\'가 필요합니다</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 뮤직비디오, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_hide_action_bar_title">작업 버튼 바 숨기기</string>
   <string name="morphe_music_hide_like_dislike_button_title">‘좋아요’ 및 ‘싫어요’ 버튼 숨기기</string>
   <string name="morphe_music_hide_comments_button_title">댓글 버튼 숨기기</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">\'실시간 채팅 다시보기\' 버튼 숨기기</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">가사 버튼 숨기기</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->

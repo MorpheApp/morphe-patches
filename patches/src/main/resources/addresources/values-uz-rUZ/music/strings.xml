@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Sarlavha logotipi</string>
   <string name="morphe_header_logo_entry_1">Standart</string>
   <string name="morphe_header_logo_entry_3">Maxsus</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Albom audio treklarini ijro etish</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Qo\'shiqlarning faqat audio versiyasini musiqiy video o\'rniga ijro eting. \'Video oqimlarini soxtalashtirish\' talab qiladi.</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Uchinchi tomon yuklab olish ilovalari yordamida musiqa videolari, podkastlar yoki qo‘shiqlarni yuklab oling</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <string name="morphe_music_hide_action_bar_title">Amallar panelini yashirish</string>
   <string name="morphe_music_hide_like_dislike_button_title">Yoqtirish va Yoqtirmaslik tugmasini yashirish</string>
   <string name="morphe_music_hide_comments_button_title">Izohlar tugmasini yashirish</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">\'Jonli chat takrori\' tugmasini yashirish</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Qo‘shiq matni tugmasini yashirish</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Yuklab olish tugmasini yashirish</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Radio tugmasini yashirish</string>
+  <string name="morphe_music_hide_radio_button_title">\'Radioni boshlash\' tugmasini yashirish</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Yon menyu</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Pleyer va navbat yon menyularida qaysi elementlar ko‘rinishini tanlang</string>

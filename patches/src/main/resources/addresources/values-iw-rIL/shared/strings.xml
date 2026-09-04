@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">היסטוריית החיפוש ריקה</string>
   <string name="morphe_settings_search_empty_history_summary">כדי לשמור היסטוריית חיפוש, הקלד שאילתת חיפוש ולחץ על Enter</string>
   <string name="morphe_settings_search_history_title">הצג הגדרות היסטוריית חיפוש</string>
+  <string name="morphe_settings_name_title">שם ההגדרות של Morphe</string>
+  <string name="morphe_settings_name_default_item">ברירת מחדל</string>
+  <string name="morphe_settings_name_entry_2">תוספות</string>
+  <string name="morphe_settings_name_entry_3">התאמות</string>
+  <string name="morphe_settings_name_entry_4">זמן מורפינג</string>
+  <string name="morphe_settings_name_custom_item">מותאם אישית</string>
+  <string name="morphe_settings_name_custom_item_hint">הזן שם</string>
+  <string name="morphe_settings_name_empty_warning">השם לא יכול להיות ריק</string>
   <string name="morphe_show_menu_icons_title">הצג סמלי הגדרות Morphe</string>
   <string name="morphe_settings_menu_copy_path">הועתק: %s</string>
   <string name="morphe_language_title">שפת Morphe</string>
@@ -109,21 +117,62 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_summary">נהל דגלי תכונות בוליאניים</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">חפש דגלי תכונה…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">לא פעילים (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">פעילים (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">חסומים (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">כפויים (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">אוטומטי</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">כבוי</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">דלוק</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">הפעל בכוח</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">חסום</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">הסר</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">דגלי תכונות נשמרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">דגלי תכונות הוחזרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">הדגלים הועתקו ללוח</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">הפעל מחדש את האפליקציה כדי להשתמש בהגדרה זו</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">ייצוא וייבוא</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">יובאו %s דגלי תכונה</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">לא נמצאו דגלי תכונה</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">דגלי התכונה יוצאו בהצלחה</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">ייצוא דגלי התכונה נכשל</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">דגלי התכונה נטענו, הקש על שמירה כדי להחיל</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">קריאת הקובץ נכשלה</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">חיפוש בינארי</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"מוצא איזה דגל תכונה גורם להתנהגות של אפליקציה.
+
+חצי מ-%s הדגלים חסומים, ולאחר כל הפעלה מחדש תציין אם ההתנהגות עדיין קיימת.
+
+שחזר את ההתנהגות פעם אחת לפני שתתחיל, אחרת דגלים שהאפליקציה לא ביקשה עדיין חסרים מהחיפוש."</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">התחלה</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"אין דגלי תכונה לחיפוש.
+
+רק דגלים שהאפליקציה נתקלה בהם ואינם מופעלים בכפייה כעת יכולים לשמש בחיפוש בינארי."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"שלב %1$s
+
+נותרו %2$s דגלים, %3$s מהם חסומים לשלב זה.
+
+הפעל מחדש את האפליקציה, בדוק אם ההתנהגות קיימת, וענה למטה."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">חיפוש דגלי תכונה בתהליך</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">ההתנהגות קיימת</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">ההתנהגות אינה קיימת</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">בטל חיפוש בינארי</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">החיפוש הבינארי בוטל</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"דגל התכונה %s גורם להתנהגות.
+
+הוא נחסם כעת."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"לא ניתן היה למצוא דגל תכונה.
+
+נראה שהתנהגות האפליקציה אינה נשלטת על ידי דגל תכונה."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"לא ניתן היה למצוא אפילו דגל תכונה אחד.
+
+ההתנהגות נעלמה מוקדם יותר בחיפוש, כך שייתכן שמעורבים יותר מדגל אחד או שאחת מהתשובות הייתה שגויה."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">פתח את הגדרות MicroG</string>

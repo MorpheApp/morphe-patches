@@ -124,9 +124,9 @@ public class FullscreenVideoScalePatch {
      * Injection point.
      * Records the encoded video size so Stretch/Zoom can map non-16:9 content.
      */
-    public static List<FormatInterface> setVideoAspectRatio(List<FormatInterface> adaptiveFormats) {
+    public static List<FormatInterface> setVideoAspectRatio(@NonNull String videoId, @NonNull List<FormatInterface> adaptiveFormats) {
         if (ShortsPlayerState.isOpen()) {
-            Logger.printDebug(() -> "Ignoring shorts video aspect ratio");
+            Logger.printDebug(() -> "Ignoring shorts video aspect ratio, videoId: " + videoId);
             return adaptiveFormats;
         }
 
@@ -138,7 +138,7 @@ public class FullscreenVideoScalePatch {
                 if (width > 16 && width < 8192 && height > 16 && height < 8192) {
                     final float aspectRation = width / (float) height;
                     videoAspectRatio = aspectRation;
-                    Logger.printDebug(() -> "Video aspect ratio: " + aspectRation);
+                    Logger.printDebug(() -> "Video aspect ratio: " + aspectRation + ", videoId: " + videoId);
                     break;
                 }
             }

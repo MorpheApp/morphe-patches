@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">História vyhľadávania je prázdna</string>
   <string name="morphe_settings_search_empty_history_summary">Pre uloženie do histórie vyhľadávania zadajte vyhľadávací dotaz a stlačte Enter</string>
   <string name="morphe_settings_search_history_title">Zobraziť históriu vyhľadávania v nastaveniach</string>
+  <string name="morphe_settings_name_title">Názov nastavenia Morphe</string>
+  <string name="morphe_settings_name_default_item">Predvolený</string>
+  <string name="morphe_settings_name_entry_2">Rozšírenia</string>
+  <string name="morphe_settings_name_entry_3">Vylepšenia</string>
+  <string name="morphe_settings_name_entry_4">Čas morfovania</string>
+  <string name="morphe_settings_name_custom_item">Vlastná</string>
+  <string name="morphe_settings_name_custom_item_hint">Zadajte názov</string>
+  <string name="morphe_settings_name_empty_warning">Názov nesmie byť prázdny</string>
   <string name="morphe_show_menu_icons_title">Zobraziť ikony nastavení Morphe</string>
   <string name="morphe_settings_menu_copy_path">Kopírované: %s</string>
   <string name="morphe_language_title">Jazyk Morphe</string>
@@ -109,21 +117,62 @@ Nebudete informovaný o žiadnych nečakaných udalostiach."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Spravovať príznaky booleovských funkcií</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Vyhľadávanie v funkciách…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Neaktívne (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktívne (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Zablokované (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Vynútené (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Auto</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Vypnuté</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Zapnuté</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Vynútiť zapnutie</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Zablokovať</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Vymazať</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Príznaky funkcií uložené</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Príznaky funkcií resetované</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Príznaky funkcií skopírované do schránky</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reštartujte aplikáciu, aby ste mohli použiť toto nastavenie</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Export a import</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importovaných %s funkčných prepínačov</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Nenašli sa žiadne funkčné prepínače</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Funkčné prepínače sa úspešne vyexportovali</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Nepodarilo sa vyexportovať funkčné prepínače</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Funkčné prepínače sa načítali, pre použitie ťuknite na Uložiť</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Nepodarilo sa prečítať súbor</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binárne vyhľadávanie</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Zistí, ktorý funkčný prepínač spôsobuje správanie aplikácie.
+
+Polovica z %s prepínačov je zablokovaná a po každom reštartovaní poviete, či je správanie stále prítomné.
+
+Správanie reprodukujte pred spustením, inak v hľadaní chýbajú prepínače, ktoré aplikácia ešte nevyžiadala"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Začiatok</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Žiadne funkčné prepínače na vyhľadávanie.
+
+Pri binárnom vyhľadávaní sa môžu použiť iba prepínače, ktoré aplikácia našla a nie sú momentálne vynútene zapnuté"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Krok %1$s
+
+Prepínačov zostáva: %2$s, z toho je %3$s blokovaných pre tento krok.
+
+Reštartujte aplikáciu, skontrolujte, či je správanie prítomné, a potom odpovedzte nižšie"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Prebieha vyhľadávanie funkčných prepínačov</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Správanie je prítomné</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Správanie nie je prítomné</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Zrušiť binárne vyhľadávanie</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binárne vyhľadávanie bolo zrušené</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Funkčný prepínač %s spôsobuje toto správanie.
+
+Teraz je zablokovaný"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nepodarilo sa nájsť funkčný prepínač.
+
+Zdá sa, že správanie aplikácie nie je riadené žiadnym funkčným prepínačom"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Nepodarilo sa nájsť jediný funkčný prepínač.
+
+Správanie sa počas hľadania stratilo, takže môže byť zapojených viac prepínačov alebo bola jedna z odpovedí nesprávna"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorte nastavenia microG</string>

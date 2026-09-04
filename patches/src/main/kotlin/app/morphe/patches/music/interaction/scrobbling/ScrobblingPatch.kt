@@ -16,6 +16,7 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.music.shared.hookMediaSessionArgument
+import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
@@ -40,7 +41,9 @@ val scrobblingPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch
+        settingsPatch,
+        // The video id tells whether the album patch is playing the song of the track instead.
+        musicVideoInformationPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)

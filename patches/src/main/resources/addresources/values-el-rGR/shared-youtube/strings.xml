@@ -206,6 +206,15 @@ Second \"item\" text"</string>
 
 Εάν αργότερα απενεργοποιηθεί, συνιστάται η εκκαθάριση των δεδομένων της εφαρμογής για την αποφυγή σφαλμάτων διεπαφής χρήστη."</string>
   <string name="morphe_spoof_app_version_target_title">Έκδοση παραποίησης της εφαρμογής</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Ρυθμός ανανέωσης εφαρμογής</string>
+  <string name="morphe_app_refresh_rate_default">Προεπιλογή</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Παράκαμψη ρυθμού ανανέωσης</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Πάντα</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Αναπαραγωγή σε κατακόρυφη λειτουργία</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Αναπαραγωγή σε πλήρη οθόνη</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Αναπαραγωγή σε κατακόρυφη λειτουργία και σε πλήρη οθόνη</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Τα Dislike δεν είναι προσωρινά διαθέσιμα (υπερβολικός χρόνος αναμονής της API)</string>

@@ -19,8 +19,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.playservice.is_9_00_or_greater
-import app.morphe.patches.music.misc.playservice.is_9_03_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -137,22 +135,18 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         // region Hide cold start miniplayer text (R.string.mini_player_default_text)
 
-        (if (is_9_03_or_greater) {
-            Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                parameters = listOf("Ljava/lang/Object;"),
-                returnType = "V",
-                filters = listOf(
-                    opcode(Opcode.IF_NE),
-                    methodCall(
-                        opcode = Opcode.INVOKE_VIRTUAL,
-                        smali = MiniPlayerDefaultTextFingerprint.method.toString()
-                    )
+        Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "V",
+            filters = listOf(
+                opcode(Opcode.IF_NE),
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    smali = MiniPlayerDefaultTextFingerprint.method.toString()
                 )
             )
-        } else {
-            MiniPlayerDefaultTextLegacyFingerprint
-        }).let {
+        ).let {
             it.method.apply {
                 val insertIndex = it.instructionMatches.first().index
                 val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerB
@@ -219,19 +213,17 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
         // region Disable player page motion event
 
-        if (is_9_00_or_greater) {
-            PlayerPageBehaviorFingerprint.method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer()Z
-                    move-result v0
-                    if-eqz v0, :ignore
-                    return-void
-                    :ignore
-                    nop
-                """
-            )
-        }
+        PlayerPageBehaviorFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer()Z
+                move-result v0
+                if-eqz v0, :ignore
+                return-void
+                :ignore
+                nop
+            """
+        )
 
         // endregion
 

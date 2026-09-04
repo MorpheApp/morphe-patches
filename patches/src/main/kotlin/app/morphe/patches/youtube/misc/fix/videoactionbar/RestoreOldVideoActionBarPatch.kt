@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.misc.fix.videoactionbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -21,6 +22,8 @@ import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.ModernRelateVideoOverlayFingerprint
+import app.morphe.patches.youtube.shared.RelateVideoOverlayLayoutParamFingerprint
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.registersUsed
@@ -44,7 +47,8 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
         settingsPatch,
         versionCheckPatch,
         clientContextHookPatch,
-        buildRequestPatch
+        buildRequestPatch,
+        fixProtoLibraryPatch
     )
 
     execute {
@@ -108,12 +112,12 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
                 }
             }
 
-            // If cold config data is overridden, the related video overlay breaks in fullscreen.
-            // As a workaround for this, restore the old related video overlay.
+            // fix: related video overlay is broken due to patch.
             listOf(
                 ModernRelateVideoOverlayFingerprint,
                 RelateVideoOverlayLayoutParamFingerprint
             ).forEach { fingerprint ->
+                fingerprint.clearMatch()
                 fingerprint.matchAll().forEach {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,

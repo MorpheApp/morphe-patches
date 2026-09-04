@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Ylätunnisteen logo</string>
   <string name="morphe_header_logo_entry_1">Oletus</string>
   <string name="morphe_header_logo_entry_3">Mukautettu</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Soita albumin ääniraidat</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Soita albumin kappaleiden pelkkä ääniversio musiikkivideon sijaan. Vaatii \'Videosuoratoistojen väärentämisen\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Lataa musiikkivideoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <string name="morphe_music_hide_action_bar_title">Piilota toimintopalkki</string>
   <string name="morphe_music_hide_like_dislike_button_title">Piilota Tykkää ja En tykkää -painike</string>
   <string name="morphe_music_hide_comments_button_title">Piilota Kommentit-painike</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Piilota \'Livechatin uudelleentoisto\'\' -painike</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Piilota sanoitukset-painike</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Piilota Lataa-painike</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Piilota Aloita radio -painike</string>
+  <string name="morphe_music_hide_radio_button_title">Piilota \'Aloita radio\' -painike</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Ponnahdusvalikko</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Valitse, mitkä komponentit näkyvät soittimen ja jonon ponnahdusvalikoissa</string>

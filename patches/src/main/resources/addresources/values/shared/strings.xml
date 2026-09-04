@@ -48,6 +48,15 @@ Second \"item\" text"</string>
     <string name="morphe_settings_search_empty_history_title">Search history is empty</string>
     <string name="morphe_settings_search_empty_history_summary">To save search history, type a search query and press Enter</string>
     <string name="morphe_settings_search_history_title">Show settings search history</string>
+    <string name="morphe_settings_name_title">Morphe settings name</string>
+    <string name="morphe_settings_name_default_item">Default</string>
+    <string name="morphe_settings_name_entry_1" translatable="false">Premium</string>
+    <string name="morphe_settings_name_entry_2">Extras</string>
+    <string name="morphe_settings_name_entry_3">Tweaks</string>
+    <string name="morphe_settings_name_entry_4">Morphing time</string>
+    <string name="morphe_settings_name_custom_item">Custom</string>
+    <string name="morphe_settings_name_custom_item_hint">Enter a name</string>
+    <string name="morphe_settings_name_empty_warning">Name cannot be empty</string>
     <string name="morphe_show_menu_icons_title">Show Morphe setting icons</string>
     <string name="morphe_settings_menu_copy_path">Copied: %s</string>
     <string name="morphe_language_title">Morphe language</string>

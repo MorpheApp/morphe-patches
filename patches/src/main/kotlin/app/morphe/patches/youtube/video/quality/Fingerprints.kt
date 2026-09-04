@@ -26,9 +26,21 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 internal const val FIXED_RESOLUTION_STRING = ", initialPlaybackVideoQualityFixedResolution="
 
-internal object NewAdvancedQualityMenuStyleFlyout : Fingerprint(
+internal object NewFlyoutMenuFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45712556)
+    )
+)
+
+internal object ShortsQualityChangeObserverPrimaryFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45387052)
+    )
+)
+
+internal object ShortsQualityChangeObserverSecondaryFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45399743)
     )
 )
 

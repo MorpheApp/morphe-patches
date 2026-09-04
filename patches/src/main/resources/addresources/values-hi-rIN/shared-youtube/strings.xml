@@ -185,6 +185,9 @@ Second \"item\" text"</string>
   <string name="morphe_remove_viewer_discretion_dialog_title">देखने वाले के लिए चेतावनी संवाद हटाएँ</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">यह आयु प्रतिबंध को दरकिनार नहीं करता है। यह केवल इसे स्वचालित रूप से स्वीकार करता है</string>
   <!-- misc.potoken.poTokenProviderPatch -->
+  <string name="morphe_potoken_provider_screen_title">PoToken प्रदाता</string>
+  <string name="morphe_potoken_provider_screen_summary">प्लेबैक समस्याओं को रोकने के लिए PoToken प्रदाता को कॉन्फ़िगर करें</string>
+  <string name="morphe_external_potoken_provider_title">बाहरी PoToken प्रदाता</string>
   <string name="morphe_external_potoken_provider_summary">"बाहरी PoToken मिंटर का उपयोग करके प्लेबैक समस्याओं को ठीक करता है (प्रयोगात्मक)
 
 यदि आप YouTube Premium उपयोगकर्ता हैं, तो यह सेटिंग आवश्यक नहीं हो सकती है"</string>
@@ -207,6 +210,15 @@ PotHelper डाउनलोड करने के लिए यहां ट�
 
 यदि बाद में बंद कर दिया जाए, तो यूआई बग को रोकने के लिए ऐप डेटा साफ़ करने की अनुशंसा की जाती है।"</string>
   <string name="morphe_spoof_app_version_target_title">ऐप संस्करण को स्पूफ करने का लक्ष्य</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">ऐप रिफ्रेश दर</string>
+  <string name="morphe_app_refresh_rate_default">डिफ़ॉल्ट</string>
+  <string name="morphe_app_refresh_rate_fps">%s एफपीएस</string>
+  <string name="morphe_app_refresh_rate_type_title">रिफ्रेश दर ओवरराइड करें</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">हमेशा</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">पोर्ट्रेट प्लेबैक</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">पूर्ण स्क्रीन प्लेबैक</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">पोर्ट्रेट और पूर्ण स्क्रीन प्लेबैक</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">अस्थायी रूप से डिसलाइक उपलब्ध नहीं हैं (एपीआई समय समाप्त)</string>

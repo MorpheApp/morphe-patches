@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">検索履歴はありません</string>
   <string name="morphe_settings_search_empty_history_summary">検索履歴を保存するには、検索クエリを入力して Enter キーを押してください</string>
   <string name="morphe_settings_search_history_title">設定の検索履歴を表示</string>
+  <string name="morphe_settings_name_title">Morphe の設定の表示名</string>
+  <string name="morphe_settings_name_default_item">デフォルト</string>
+  <string name="morphe_settings_name_entry_2">追加設定</string>
+  <string name="morphe_settings_name_entry_3">調整</string>
+  <string name="morphe_settings_name_entry_4">変身タイム</string>
+  <string name="morphe_settings_name_custom_item">カスタム</string>
+  <string name="morphe_settings_name_custom_item_hint">表示名を入力してください</string>
+  <string name="morphe_settings_name_empty_warning">表示名は空欄にはできません</string>
   <string name="morphe_show_menu_icons_title">Morphe の設定にアイコンを表示</string>
   <string name="morphe_settings_menu_copy_path">階層をコピーしました (%s)</string>
   <string name="morphe_language_title">Morphe の言語</string>
@@ -137,7 +145,34 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_import_file_success">ファイル入力: [適用] を押して反映</string>
   <string name="morphe_debug_feature_flags_manager_import_file_failed">ファイルの読み込みに失敗しました</string>
   <string name="morphe_debug_feature_flags_manager_bisect_title">二分探索</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"どの機能フラグがアプリの挙動の原因なのかを特定します。
+
+%s 個のフラグを半分ずつブロック (強制オフ) して再起動し、毎回、再起動後にその挙動がまだ現れるかどうかを回答します。
+
+二分探索を開始する前に、一度その挙動を再現してください。再現しないで開始した場合、フラグがアプリに要求されないまま探索を開始する可能性があり、要求されていないフラグは探索の対象外になってしまうためです"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">開始</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"探索対象の機能フラグがありません。
+
+アプリが参照したことがある、かつ現在強制オンに設定されていないフラグのみが二分探索の対象になります"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"ステップ %1$s
+
+このステップでは、残っている %2$s 個のフラグのうち %3$s 個をブロック (強制オフ) します。
+
+アプリを再起動し、挙動が現れているかどうかを確認した上で下の回答欄に入力してください"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">機能フラグを探索中です</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">挙動あり</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">挙動なし</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">二分探索をキャンセル</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">二分探索をキャンセルしました</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"機能フラグ %s がこの挙動の原因です。
+
+現在はブロック (強制オフ) されています"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"機能フラグを特定できませんでした。
+
+アプリのこの挙動は、機能フラグによって制御されていないようです"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"単独で原因となる機能フラグを特定できませんでした。
+
+探索の途中で挙動が現れなくなったため、複数のフラグが関与しているか、回答のいずれかが間違っていた可能性があります"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>

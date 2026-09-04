@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">علامة الشعار</string>
   <string name="morphe_header_logo_entry_1">الافتراضي</string>
   <string name="morphe_header_logo_entry_3">مخصص</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">تشغيل مسارات الألبوم الصوتية</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">تشغيل مسارات الألبوم الصوتية</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">تنزيل مقاطع الفيديو الموسيقية أو البودكاست أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_hide_action_bar_title">إخفاء شريط الإجراءات</string>
   <string name="morphe_music_hide_like_dislike_button_title">إخفاء زر إعجاب وعدم إعجاب</string>
   <string name="morphe_music_hide_comments_button_title">إخفاء زر التعليقات</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">إخفاء زر \'إعادة عرض المحادثة المباشرة\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">إخفاء زر كلمات الأغنية</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">إخفاء زر التنزيل</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">إخفاء زر تشغيل الراديو</string>
+  <string name="morphe_music_hide_radio_button_title">إخفاء زر \'ابدأ الراديو\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">القائمة المنبثقة</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">اختر المكونات التي تظهر في القوائم المنبثقة للمشغل والطابور</string>

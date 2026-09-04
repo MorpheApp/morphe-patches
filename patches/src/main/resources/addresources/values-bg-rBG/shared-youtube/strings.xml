@@ -210,6 +210,15 @@ Second \"item\" text"</string>
 
 Ако по-късно бъде изключено, се препоръчва изчистване на данните на приложението, за да се предотвратят грешки в потребителския интерфейс."</string>
   <string name="morphe_spoof_app_version_target_title">Цел за подмяна на версията на приложението</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Честота на опресняване на приложението</string>
+  <string name="morphe_app_refresh_rate_default">По подразбиране</string>
+  <string name="morphe_app_refresh_rate_fps">%s fps</string>
+  <string name="morphe_app_refresh_rate_type_title">Задаване на честота на опресняване</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Винаги</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Възпроизвеждане в портретен режим</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Възпроизвеждане на цял екран</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Възпроизвеждане в портретен режим и на цял екран</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Временно недостъпни нехаресвания (изтече времето за отговор на API)</string>

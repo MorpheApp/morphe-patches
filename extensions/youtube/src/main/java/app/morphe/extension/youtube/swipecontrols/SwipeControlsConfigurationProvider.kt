@@ -17,6 +17,7 @@ import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.shared.Utils
 import app.morphe.extension.shared.settings.Setting
 import app.morphe.extension.shared.settings.StringSetting
+import app.morphe.extension.shared.settings.preference.SeekBarPreference
 import app.morphe.extension.youtube.settings.Settings
 import app.morphe.extension.youtube.shared.PlayerType
 import app.morphe.extension.youtube.swipecontrols.controller.gesture.ClassicSwipeController
@@ -259,18 +260,10 @@ class SwipeControlsConfigurationProvider {
 
     /**
      * The background opacity of the overlay, converted from a percentage (0-100) to an alpha value (0-255).
-     * Resets to default and shows a toast if the value is out of range.
      */
     val overlayBackgroundOpacity: Int
         get() {
-            var opacity = Settings.SWIPE_OVERLAY_OPACITY.get()
-
-            if (opacity !in 0..100) {
-                Utils.showToastLong(str("morphe_swipe_overlay_background_opacity_invalid_toast"))
-                opacity = Settings.SWIPE_OVERLAY_OPACITY.resetToDefault()
-            }
-
-            opacity = opacity * 255 / 100
+            val opacity = SeekBarPreference.clampToRange(Settings.SWIPE_OVERLAY_OPACITY) * 255 / 100
             return Color.argb(opacity, 0, 0, 0)
         }
 
@@ -321,17 +314,9 @@ class SwipeControlsConfigurationProvider {
 
     /**
      * The text size in the overlay, in density-independent pixels (dp).
-     * Must be between 1 and 30 dp; resets to default and shows a toast if invalid.
      */
     val overlayTextSize: Int
-        get() {
-            val size = Settings.SWIPE_OVERLAY_TEXT_SIZE.get()
-            if (size !in 1..30) {
-                Utils.showToastLong(str("morphe_swipe_text_overlay_size_invalid_toast"))
-                return Settings.SWIPE_OVERLAY_TEXT_SIZE.resetToDefault()
-            }
-            return size
-        }
+        get() = SeekBarPreference.clampToRange(Settings.SWIPE_OVERLAY_TEXT_SIZE)
 
     /**
      * Defines the style of the swipe controls overlay, determining its layout and appearance.

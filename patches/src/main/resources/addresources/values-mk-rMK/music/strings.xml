@@ -21,6 +21,8 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Лого на заглавието</string>
   <string name="morphe_header_logo_entry_1">Стандардно</string>
   <string name="morphe_header_logo_entry_3">По нарачка</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- misc.settings.settingsPatch -->
@@ -76,6 +78,7 @@ Second \"item\" text"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube Music displays for the button. -->

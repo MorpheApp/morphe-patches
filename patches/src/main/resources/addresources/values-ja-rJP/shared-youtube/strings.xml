@@ -210,6 +210,15 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
 
 偽装をオフに戻した際には、UI の不具合を防ぐためにアプリデータを消去することを推奨します。"</string>
   <string name="morphe_spoof_app_version_target_title">アプリバージョンの偽装先</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">アプリのリフレッシュ レート</string>
+  <string name="morphe_app_refresh_rate_default">デフォルト</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">リフレッシュ レートの上書き</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">常に適用</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">縦画面再生時に適用</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">全画面再生時に適用</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">縦画面 &amp; 全画面再生時に適用</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">低評価数表示は一時的に利用できません (API タイムアウト)</string>

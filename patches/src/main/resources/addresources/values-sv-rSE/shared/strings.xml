@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Sökhistoriken är tom</string>
   <string name="morphe_settings_search_empty_history_summary">Om du vill spara sökhistorik, skriv en sökfråga och tryck på Retur</string>
   <string name="morphe_settings_search_history_title">Visa sökhistorik för inställningar</string>
+  <string name="morphe_settings_name_title">Morphe-inställningsnamn</string>
+  <string name="morphe_settings_name_default_item">Standard</string>
+  <string name="morphe_settings_name_entry_2">Extra</string>
+  <string name="morphe_settings_name_entry_3">Finjusteringar</string>
+  <string name="morphe_settings_name_entry_4">Morphningstid</string>
+  <string name="morphe_settings_name_custom_item">Eget</string>
+  <string name="morphe_settings_name_custom_item_hint">Ange ett namn</string>
+  <string name="morphe_settings_name_empty_warning">Namnet får inte vara tomt</string>
   <string name="morphe_show_menu_icons_title">Visa ikoner för Morphe-inställningar</string>
   <string name="morphe_settings_menu_copy_path">Kopierat: %s</string>
   <string name="morphe_language_title">Språk för Morphe</string>
@@ -109,18 +117,62 @@ Du kommer inte att bli meddelad om oväntade händelser."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Hantera booleska funktionsflaggor</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Sök efter funktionsflaggor…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Inaktiva (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktiva (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blockerade (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Forcerade (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Automatiskt</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Av</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">På</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Tvinga på</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blockera</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Ta bort</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflaggorna sparades</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflaggorna återställdes</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflaggorna kopierades till urklipp</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Starta om appen för att använda den här inställningen</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exportera och importera</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importerade %s funktionsflaggor</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Inga funktionsflaggor hittades</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Funktionsflagorna exporterades</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Det gick inte att exportera funktionsflaggor</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Funktionsflaggorna har lästs in, tryck på Spara för att tillämpa</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Det gick inte att läsa filen</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binärsökning</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Tar reda på vilken funktionsflagga som orsakar ett appbeteende.
+
+Hälften av de %s flaggorna är blockerade, och efter varje omstart anger du om beteendet fortfarande finns kvar.
+
+Återskapa beteendet en gång innan du börjar, annars saknas flaggor som appen inte har frågat efter ännu i sökningen"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Starta</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Det finns inga funktionsflaggor att söka bland.
+
+Endast flaggor som appen har stött på och som inte är forcerade på för närvarande kan användas i en binärsökning"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Steg %1$s
+
+%2$s flaggor kvar, %3$s av dem blockerade för det här steget.
+
+Starta om appen, kontrollera om beteendet finns kvar och svara sedan nedan"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Sökning efter funktionsflagga pågår</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Beteendet finns kvar</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Beteendet finns inte kvar</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Avbryt binärsökning</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binärsökning avbröts</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Funktionsflaggan %s orsakar beteendet.
+
+Den är nu blockerad"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Det gick inte att hitta någon funktionsflagga.
+
+Appbeteendet verkar inte styras av en funktionsflagga"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Det gick inte att hitta någon enskild funktionsflagga.
+
+Beteendet försvann tidigare i sökningen, så fler än en flagga kan vara inblandad eller så var något av svaren fel"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Öppna MicroG-inställningarna</string>

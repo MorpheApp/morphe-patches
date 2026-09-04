@@ -77,6 +77,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.SettingsNamePatch;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
@@ -212,7 +213,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         PreferenceScreen root = getPreferenceScreen();
         if (root == null) return null;
         List<CharSequence> path = new ArrayList<>();
-        path.add(str("morphe_settings_title"));
+        path.add(SettingsNamePatch.getSettingsName());
         if (target == root) return path;
         return searchPreferencePath(root, target, path) ? path : null;
     }

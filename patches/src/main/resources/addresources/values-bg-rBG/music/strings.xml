@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Лого на заглавието</string>
   <string name="morphe_header_logo_entry_1">По подразбиране</string>
   <string name="morphe_header_logo_entry_3">По избор</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Пусни аудио песните от албума</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Пусни аудио версията на песните от албума вместо музикално видео. Изисква \'Spoof video streams\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Изтеглете музикални видеа, подкасти или песни с помощта на приложения за изтегляне от трети страни</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_hide_action_bar_title">Скриване на лентата с действия</string>
   <string name="morphe_music_hide_like_dislike_button_title">Скриване на бутона Харесвам и Не харесвам</string>
   <string name="morphe_music_hide_comments_button_title">Скриване на бутона Коментари</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Скрий бутона \'Повторение на чата на живо\'.</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Скриване на бутона Текстове</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Скрий бутона Изтегли</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Скрий бутона Стартирай радио</string>
+  <string name="morphe_music_hide_radio_button_title">Скрий бутона \'Стартиране на радио\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Изскачащо меню</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Изберете кои компоненти да се показват в менютата на плейъра и опашката</string>

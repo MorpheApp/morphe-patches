@@ -210,6 +210,15 @@ To změní vzhled a funkce aplikace, ale mohou se objevit neznámé vedlejší e
 
 Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabránilo chybám uživatelského rozhraní."</string>
   <string name="morphe_spoof_app_version_target_title">Cíl napodobení verze aplikace</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Obnovovací frekvence aplikace</string>
+  <string name="morphe_app_refresh_rate_default">Výchozí</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Přepsat obnovovací frekvenci</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Vždy</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Přehrávání na výšku</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Přehrávání na celou obrazovku</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Přehrávání na výšku a na celou obrazovku</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nelíbí se se dočasně nedají použít (časový limit API)</string>

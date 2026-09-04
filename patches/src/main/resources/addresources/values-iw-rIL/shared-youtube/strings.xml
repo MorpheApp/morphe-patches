@@ -210,6 +210,15 @@ Second \"item\" text"</string>
 
 אם נכבה מאוחר יותר, מומלץ לנקות את נתוני האפליקציה כדי למנוע באגים בממשק המשתמש."</string>
   <string name="morphe_spoof_app_version_target_title">יעד גרסת יישום מזויפת</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">קצב רענון אפליקציה</string>
+  <string name="morphe_app_refresh_rate_default">ברירת מחדל</string>
+  <string name="morphe_app_refresh_rate_fps">%s פריימים לשנייה</string>
+  <string name="morphe_app_refresh_rate_type_title">עקוף קצב רענון</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">תמיד</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">נגינה בפורטרט</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">נגינה במסך מלא</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">נגינה בפורטרט ומסך מלא</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">דיסלייקים אינם זמינים באופן זמני (תם פסק הזמן של ה-API)</string>

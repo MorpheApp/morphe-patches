@@ -210,6 +210,15 @@ Może to zmienić wygląd i funkcje, ale też powodować nieznane błędy.
 
 Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplikacji, aby zapobiec błędom interfejsu."</string>
   <string name="morphe_spoof_app_version_target_title">Docelowa wersja aplikacji</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Częstotliwość odświeżania aplikacji</string>
+  <string name="morphe_app_refresh_rate_default">Domyślna</string>
+  <string name="morphe_app_refresh_rate_fps">%s kl./s</string>
+  <string name="morphe_app_refresh_rate_type_title">Nadpisz częstotliwość odświeżania</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Zawsze</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Odtwarzanie w pionie</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Odtwarzanie na pełnym ekranie</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Odtwarzanie w pionie i na pełnym ekranie</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Łapki w dół są niedostępne (API nie reaguje)</string>

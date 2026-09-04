@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.BaseAppRefreshRatePatch;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -77,6 +78,12 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
 
                             // Fix the system navigation bar color for submenus.
                             setNavigationBarColor(preferenceScreenDialog.getWindow());
+
+                            // Set the refresh rate for submenus.
+                            BaseAppRefreshRatePatch.setWindowRefreshRate(
+                                    childScreen.getContext(),
+                                    preferenceScreenDialog.getWindow()
+                            );
 
                             // Fix edge-to-edge screen with Android 15 and YT 19.45+
                             // https://developer.android.com/develop/ui/views/layout/edge-to-edge#system-bars-insets

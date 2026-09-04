@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.music.layout.hide.settingsmenu
+package app.morphe.patches.music.misc.settings
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
@@ -21,6 +21,9 @@ internal const val SETTINGS_HEADERS_FRAGMENT_CLASS =
 /**
  * YT Music top-level Settings fragment. onCreatePreferences reassigns p0 to the peer object at
  * entry, so the captured iget-object recovers the original fragment from `peer.fragment` at exit.
+ *
+ * Shared by the patches that hook this method. They all insert at the end of it, so the matched
+ * instructions near the method entry keep the indexes cached here.
  */
 internal object SettingsHeadersOnCreatePreferencesFingerprint : Fingerprint(
     definingClass = SETTINGS_HEADERS_FRAGMENT_CLASS,

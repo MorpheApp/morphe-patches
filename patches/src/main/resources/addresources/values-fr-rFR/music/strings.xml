@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo d\'en-tête</string>
   <string name="morphe_header_logo_entry_1">Par défaut</string>
   <string name="morphe_header_logo_entry_3">Personnalisé</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Lire les morceaux audio de l\'album</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Lire la version audio des chansons de l\'album au lieu du clip vidéo. Nécessite \'Falsifier les flux vidéo\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_hide_action_bar_title">Masquer la barre d\'actions</string>
   <string name="morphe_music_hide_like_dislike_button_title">Masquer les boutons \'J\'aime\' et \'Je n\'aime pas\'</string>
   <string name="morphe_music_hide_comments_button_title">Masquer le bouton \'Commentaires\'</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Masquer le bouton \'Rediffusion du chat en direct\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Masquer le bouton \'Paroles\'</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Masquer le bouton \'Télécharger\'</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Masquer le bouton \'Mix\'</string>
+  <string name="morphe_music_hide_radio_button_title">Masquer le menu \'Démarrer le mix\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu déroulant</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Choisissez les composants qui apparaissent dans les menus déroulants du lecteur et de la file d\'attente</string>

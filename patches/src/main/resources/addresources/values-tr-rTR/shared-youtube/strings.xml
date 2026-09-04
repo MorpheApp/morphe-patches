@@ -210,6 +210,15 @@ Bu, uygulamanın görünümünü ve özelliklerini değiştirecektir, ancak bili
 
 Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerinin temizlenmesi önerilir."</string>
   <string name="morphe_spoof_app_version_target_title">Hedef uygulama sürümü taklidi</string>
+  <!-- misc.framerate.baseAppRefreshRatePatch -->
+  <string name="morphe_app_refresh_rate_title">Uygulama yenileme hızı</string>
+  <string name="morphe_app_refresh_rate_default">Varsayılan</string>
+  <string name="morphe_app_refresh_rate_fps">%s FPS</string>
+  <string name="morphe_app_refresh_rate_type_title">Yenileme hızını geçersiz kıl</string>
+  <string name="morphe_app_refresh_rate_type_entry_1">Her zaman</string>
+  <string name="morphe_app_refresh_rate_type_entry_2">Dikey oynatma</string>
+  <string name="morphe_app_refresh_rate_type_entry_3">Tam ekran oynatma</string>
+  <string name="morphe_app_refresh_rate_type_entry_4">Dikey ve tam ekran oynatma</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Beğenmeme sayıları geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>

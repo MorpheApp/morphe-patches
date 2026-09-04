@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Λογότυπο κεφαλίδας</string>
   <string name="morphe_header_logo_entry_1">Προεπιλεγμένο</string>
   <string name="morphe_header_logo_entry_3">Προσαρμοσμένο</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Αναπαραγωγή ηχητικών κομματιών άλμπουμ</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Αναπαραγωγή της έκδοσης μόνο ήχου των τραγουδιών του άλμπουμ αντί για μουσικό βίντεο. Απαιτεί \'Παραποίηση ροών βίντεο\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Λήψη μουσικών βίντεο, podcast ή τραγουδιών με εφαρμογές λήψης τρίτων</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -145,6 +149,8 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_hide_action_bar_title">Απόκρυψη γραμμής ενεργειών</string>
   <string name="morphe_music_hide_like_dislike_button_title">Απόκρυψη κουμπιών μου αρέσει και δεν μου αρέσει</string>
   <string name="morphe_music_hide_comments_button_title">Απόκρυψη κουμπιού σχολίων</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Απόκρυψη κουμπιού \'Επανάληψη ζωντανής συνομιλίας\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Απόκρυψη κουμπιού στίχων</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Απόκρυψη κουμπιού λήψης</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Απόκρυψη κουμπιού έναρξης ραδιοφώνου</string>
+  <string name="morphe_music_hide_radio_button_title">Απόκρυψη κουμπιού \'Έναρξη ραδιοφώνου\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Αναδυόμενο μενού ρυθμίσεων</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Επιλέξτε ποια στοιχεία θα εμφανίζονται στα αναδυόμενα μενού του προγράμματος αναπαραγωγής και της ουράς αναμονής</string>

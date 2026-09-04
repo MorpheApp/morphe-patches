@@ -32,11 +32,11 @@ public final class VideoFormat {
      */
     public static List<FormatInterface> hookAdaptiveFormats(@Nullable String videoId, @NonNull List<FormatInterface> adaptiveFormats) {
         return Utils.isNotEmpty(videoId) && !"zzzzzzzzzzz".equals(videoId) && !adaptiveFormats.isEmpty()
-                ? hookAdaptiveFormats(adaptiveFormats)
+                ? privateHookAdaptiveFormats(videoId, adaptiveFormats)
                 : adaptiveFormats;
     }
 
-    private static List<FormatInterface> hookAdaptiveFormats(List<FormatInterface> adaptiveFormats) {
+    private static List<FormatInterface> privateHookAdaptiveFormats(@NonNull String videoId, @NonNull List<FormatInterface> adaptiveFormats) {
         // Code added during patching.
         return adaptiveFormats;
     }

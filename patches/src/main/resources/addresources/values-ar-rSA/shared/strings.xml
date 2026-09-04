@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">سجل البحث فارغ</string>
   <string name="morphe_settings_search_empty_history_summary">لحفظ سجل البحث، اكتب استعلام بحث واضغط على Enter</string>
   <string name="morphe_settings_search_history_title">عرض سجل بحث الإعدادات</string>
+  <string name="morphe_settings_name_title">اسم إعدادات Morphe</string>
+  <string name="morphe_settings_name_default_item">الافتراضي</string>
+  <string name="morphe_settings_name_entry_2">الإضافات</string>
+  <string name="morphe_settings_name_entry_3">الأدوات</string>
+  <string name="morphe_settings_name_entry_4">Morphing time</string>
+  <string name="morphe_settings_name_custom_item">مخصّص</string>
+  <string name="morphe_settings_name_custom_item_hint">أدخل اسم</string>
+  <string name="morphe_settings_name_empty_warning">خانة الاسم لايمكن ان تكون فارغه</string>
   <string name="morphe_show_menu_icons_title">عرض أيقونات إعدادات Morphe</string>
   <string name="morphe_settings_menu_copy_path">تم نسخ: %s</string>
   <string name="morphe_language_title">لغة Morphe</string>

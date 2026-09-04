@@ -11,6 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
+import app.morphe.patches.music.misc.settings.SETTINGS_HEADERS_FRAGMENT_CLASS
+import app.morphe.patches.music.misc.settings.SettingsHeadersOnCreatePreferencesFingerprint
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference

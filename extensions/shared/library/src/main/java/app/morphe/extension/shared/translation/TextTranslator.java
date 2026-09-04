@@ -43,6 +43,9 @@ public final class TextTranslator {
      */
     public static final int MAXIMUM_BATCH_CHARACTERS = 4_000;
 
+    /** A rate limited response is a whole HTML page, of which only the start is worth logging. */
+    private static final int MAXIMUM_ERROR_CHARACTERS = 200;
+
     private TextTranslator() {
     }
 
@@ -127,9 +130,14 @@ public final class TextTranslator {
 
         final int code = connection.getResponseCode();
         if (code != 200) {
+            // Reading the input stream of a failed response throws instead of returning the body,
+            // which hid the status code the caller reacts to behind a FileNotFoundException.
+            String response = Requester.parseErrorString(connection);
+            String responseStart = response.substring(0,
+                    Math.min(response.length(), MAXIMUM_ERROR_CHARACTERS));
             throw new TranslationHttpException(code, "Translation HTTP status: " + code
                     + " language: " + targetLanguage
-                    + " response: " + Requester.parseString(connection));
+                    + " response: " + responseStart);
         }
 
         // Response: [[["translated","original",...],...],null,"src_lang",...]

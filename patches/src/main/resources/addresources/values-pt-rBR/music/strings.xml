@@ -21,6 +21,10 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_title">Logo do cabeçalho</string>
   <string name="morphe_header_logo_entry_1">Padrão</string>
   <string name="morphe_header_logo_entry_3">Personalizado</string>
+  <!-- misc.album.albumMusicVideoPatch -->
+  <string name="morphe_music_play_album_songs_title">Reproduzir faixas de áudio do álbum</string>
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <string name="morphe_music_play_album_songs_summary">Reproduzir a versão em áudio do álbum das músicas em vez do videoclipe. Requer a opção \"Simular streams de vídeo\".</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Baixe videoclipes, podcasts ou músicas com aplicativos de download de terceiros</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -33,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_0_about_title">Sobre</string>
   <string name="morphe_settings_music_screen_1_ads_title">Anúncios</string>
   <string name="morphe_settings_music_screen_2_feed_title">Feed</string>
-  <string name="morphe_settings_music_screen_3_general_title">General</string>
+  <string name="morphe_settings_music_screen_3_general_title">Gerais</string>
   <string name="morphe_settings_music_screen_4_player_title">Player</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Letras</string>
   <string name="morphe_settings_music_screen_9_misc_title">Diversos</string>
@@ -145,6 +149,8 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_hide_action_bar_title">Ocultar barra de ação</string>
   <string name="morphe_music_hide_like_dislike_button_title">Ocultar botão de Gostei e Não gostei</string>
   <string name="morphe_music_hide_comments_button_title">Ocultar botão Comentários</string>
+  <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
+  <string name="morphe_music_hide_live_chat_replay_button_title">Ocultar botão \"Replay do chat ao vivo\"</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Ocultar botão Letras</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -154,7 +160,7 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Ocultar botão Baixar</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Ocultar botão Iniciar rádio</string>
+  <string name="morphe_music_hide_radio_button_title">Ocultar o botão \"Iniciar rádio\"</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu suspenso</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Escolha quais componentes aparecem nos menus suspostos do player e da fila</string>
@@ -187,7 +193,7 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_hide_flyout_menu_share_title">Ocultar menu Compartilhar</string>
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Ocultar menu \'Reprodução aleatória\'</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Ocultar menu \'Temporizador de suspensão\'</string>
-  <string name="morphe_music_hide_flyout_menu_start_radio_title">Ocultar menu \'Iniciar rádio\'</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">Ocultar o botão \"Iniciar rádio\"</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Ocultar menu \'Estatísticas para nerds\'</string>
   <string name="morphe_music_hide_flyout_menu_subscribe_title">Ocultar menu Inscrever-se</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Ocultar menu \'Remover do discador rápido\'</string>

@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Zgodovina iskanj je prazna</string>
   <string name="morphe_settings_search_empty_history_summary">Če želite shraniti zgodovino iskanj, vnesite iskalno poizvedbo in pritisnite Enter</string>
   <string name="morphe_settings_search_history_title">Prikaži zgodovino iskanj nastavitev</string>
+  <string name="morphe_settings_name_title">Ime nastavitev Morphe</string>
+  <string name="morphe_settings_name_default_item">Privzeto</string>
+  <string name="morphe_settings_name_entry_2">Dodatki</string>
+  <string name="morphe_settings_name_entry_3">Prilagoditve</string>
+  <string name="morphe_settings_name_entry_4">Čas morfiranja</string>
+  <string name="morphe_settings_name_custom_item">Prilagoditve</string>
+  <string name="morphe_settings_name_custom_item_hint">Vnesite ime</string>
+  <string name="morphe_settings_name_empty_warning">Ime ne sme biti prazno</string>
   <string name="morphe_show_menu_icons_title">Prikaži ikone nastavitev Morphe</string>
   <string name="morphe_settings_menu_copy_path">Kopirano: %s</string>
   <string name="morphe_language_title">Jezik Morphe</string>
@@ -109,18 +117,62 @@ Pričakujete dogodke."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Upravljajte logičnimi zastavami funkcij</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Išči funkcije…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Neaktivne (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktivno (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Blokirane (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Prisiljene (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Samodejno</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_blocked">Izklopljeno</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_forced">Vklopljeno</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Prisili vklop</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokiraj</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Odstrani</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funkcije so shranjene</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funkcije so obnovljene</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Funkcije so kopirane v odložišče</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Za uporabo te nastavitve znova zaženite aplikacijo</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Izvoz in uvoz</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Uvoženih %s funkcijskih zastavic</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Ni najdenih funkcijskih zastavic</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Funkcijske zastavice so uspešno izvožene</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Izvoz funkcijskih zastavic ni uspel</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Funkcijske zastavice so naložene, tapnite Shrani, da jih uporabite</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Branje datoteke ni uspelo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binarno iskanje</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Ugotovi, katera funkcijska zastavica povzroča vedenje aplikacije.
+
+Polovica od %s zastavic je blokiranih, po vsakem ponovnem zagonu pa poveste, ali je vedenje še vedno prisotno.
+
+Pred začetkom enkrat poustvarite vedenje, sicer zastavice, ki jih aplikacija še ni zahtevala, manjkajo v iskanju"</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Začetek</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Ni funkcijskih zastavic za iskanje.
+
+V binarnem iskanju se lahko uporabijo samo zastavice, ki jih je aplikacija že zahtevala in ki trenutno niso prisilno vklopljene"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Korak %1$s
+
+Preostalo je %2$s zastavic, od teh je %3$s blokiranih za ta korak.
+
+Znova zaženite aplikacijo, preverite, ali je vedenje prisotno, nato odgovorite spodaj"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Iskanje funkcijske zastavice je v teku</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Vedenje je prisotno</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Vedenje ni prisotno</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Prekliči binarno iskanje</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binarno iskanje je preklicano</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Funkcijska zastavica %s povzroča vedenje.
+
+Zdaj je blokirana"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Ni bilo mogoče najti funkcijske zastavice.
+
+Videti je, da vedenja aplikacije ne nadzoruje nobena funkcijska zastavica"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Ni bilo mogoče najti niti ene funkcijske zastavice.
+
+Vedenje je med iskanjem izginilo že prej, zato je lahko vpletenih več zastavic ali pa je bil eden od odgovorov napačen"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Odprite nastavitve MicroG</string>

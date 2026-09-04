@@ -72,7 +72,7 @@ public final class PlaylistRequest {
     /**
      * An album track as the album itself lists it, rather than as the queue plays it.
      */
-    public record Song(String videoId, String title, String artist) {
+    public record Song(String videoId, String title, String artist, int durationSeconds) {
     }
 
     private static final TimeZone TIME_ZONE = TimeZone.getDefault();
@@ -344,7 +344,23 @@ public final class PlaylistRequest {
             return null;
         }
         return new Song(videoId, parseRuns(renderer, "title"),
-                parseRuns(renderer, "longBylineText"));
+                parseRuns(renderer, "longBylineText"),
+                parseDuration(parseRuns(renderer, "lengthText")));
+    }
+
+    /**
+     * @return Seconds of a "m:ss" or "h:mm:ss" length, or zero if it cannot be read.
+     */
+    private static int parseDuration(@NonNull String lengthText) {
+        int seconds = 0;
+        for (String part : lengthText.split(":")) {
+            try {
+                seconds = seconds * 60 + Integer.parseInt(part.trim());
+            } catch (NumberFormatException ex) {
+                return 0;
+            }
+        }
+        return seconds;
     }
 
     @NonNull

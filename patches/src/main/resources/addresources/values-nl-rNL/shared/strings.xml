@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Zoekgeschiedenis is leeg</string>
   <string name="morphe_settings_search_empty_history_summary">Om zoekgeschiedenis op te slaan, typ een zoekopdracht en druk op Enter</string>
   <string name="morphe_settings_search_history_title">Zoekgeschiedenis instellingen weergeven</string>
+  <string name="morphe_settings_name_title">Naam van Morphe-instellingen</string>
+  <string name="morphe_settings_name_default_item">Standaard</string>
+  <string name="morphe_settings_name_entry_2">Extra\'s</string>
+  <string name="morphe_settings_name_entry_3">Aanpassingen</string>
+  <string name="morphe_settings_name_entry_4">Morphing-tijd</string>
+  <string name="morphe_settings_name_custom_item">Aangepast</string>
+  <string name="morphe_settings_name_custom_item_hint">Voer een na am in</string>
+  <string name="morphe_settings_name_empty_warning">Naam mag niet leeg zijn</string>
   <string name="morphe_show_menu_icons_title">Pictogrammen voor Morphe-instellingen weergeven</string>
   <string name="morphe_settings_menu_copy_path">Gekopieerd: %s</string>
   <string name="morphe_language_title">Morphe-taal</string>
@@ -109,20 +117,62 @@ U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen."</string>
   <string name="morphe_debug_feature_flags_manager_summary">Beheer booleaanse functievlaggen</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Zoek in functie-vlaggen…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Niet actief (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Actief (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Geblokkeerd (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Geforceerd (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_auto">Automatisch</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Uit</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Aan</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forceer aan</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokkeer</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Verwijderen</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Functie-flags opgeslagen</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Functie-flags gereset</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Functie-flags gekopieerd naar klembord</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Start de app opnieuw om deze instelling te gebruiken</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Exporteren en importeren</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s feature flags geïmporteerd</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Geen feature flags gevonden</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Feature flags succesvol geëxporteerd</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Exporteren van feature flags is mislukt</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Feature flags geladen, tik op Opslaan om toe te passen</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Kan het bestand niet lezen</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binair zoeken</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Ontdekt welke feature flag het gedrag van een app veroorzaakt.
+
+De helft van de %s flags is geblokkeerd, en na elke herstart vertel je of het gedrag nog steeds aanwezig is.
+
+Reproduceer het gedrag een keer voordat je begint, anders ontbreken er in de zoektocht flags waar de app nog niet om heeft gevraagd"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Starten</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Geen feature flags om te doorzoeken.
+
+Alleen flags waar de app om heeft gevraagd en die momenteel niet geforceerd aan staan, kunnen worden gebruikt in een binaire zoektocht"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Stap %1$s
+
+%2$s flags over, %3$s daarvan geblokkeerd voor deze stap.
+
+Herstart de app, controleer of het gedrag aanwezig is en antwoord hieronder"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Bezig met zoeken naar feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Gedrag is aanwezig</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Gedrag is niet aanwezig</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Binair zoeken annuleren</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binair zoeken geannuleerd</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Feature flag %s veroorzaakt het gedrag.
+
+Het is nu geblokkeerd"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Kan geen feature flag vinden.
+
+Het app-gedrag lijkt niet door een feature flag te worden bepaald"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Kan geen enkele feature flag vinden.
+
+Het gedrag verdween eerder in de zoektocht, dus er kan meer dan één flag bij betrokken zijn of één van de antwoorden was fout"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Open de MicroG-instellingen</string>

@@ -30,6 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_11_misc_title">تشتەکان</string>
   <string name="morphe_settings_screen_12_video_title">ڤیدێۆ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_auto_pause_on_screen_lock_off">کوژاوە</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_user_dialog_message">"شێوازی ئەپەکە دەگەڕێتەوە بۆ ئەو شێوازەی کە بەکارهاتووە کاتێک بۆ یەکەمجار دامەزراوە.
@@ -199,11 +200,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_summary">خۆڵە دەقەکانی میلیلزە کە پۆشێنیكە زەمان دەربخە</string>
   <string name="morphe_swipe_overlay_background_opacity_title">ناڕوونی لێدانی سەرپۆشی پاشخانی</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">ناڕوونی لێدان دەبێت لە نێوان 0-100 بێت</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">شۆڕکەرەوە ڕەنگی زادە</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">شۆڕکەرەوە ڕەنگی دەربەست</string>
   <string name="morphe_swipe_text_overlay_size_title">لێدانی قەبارەی دەقی سەرپۆش</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">قۆناغی دەبێت لە نێوان 1-30 بێت</string>
   <string name="morphe_swipe_threshold_title">مارگی ڕەهیشەی شۆڕکەرەوە</string>
   <string name="morphe_swipe_volume_sensitivity_title">زیانخۆشی دەربەستە دەربەستە</string>
   <string name="morphe_swipe_overlay_style_title">شووشكە ڕووەکەی پێشێل</string>
@@ -284,21 +283,22 @@ Second \"item\" text"</string>
   <string name="morphe_show_toolbar_settings_button_type_title">کرداری دوگمەی ڕێکخستنەکان</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">خەڵەتە ڕیزكارییەكە</string>
-  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
-          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
+         'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
+  <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'On-the-go' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">پیشۆخێزیی خۆکار قایم بێت</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
@@ -380,7 +380,6 @@ Second \"item\" text"</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">زینەی دەربانەی خەڵاتکار</string>
   <string name="morphe_player_overlay_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">زینەی دەربانەی خەڵاتکار دەبێت لە نێوان 0-100-دا بێت</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_entry_disabled">لەکارخراو</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
@@ -451,7 +450,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">قەرەبایی دەبێت لە نێۆ %1$s و %2$s بێت</string>
   <string name="morphe_miniplayer_opacity_title">شفافی پشتخاڵ</string>
   <string name="morphe_miniplayer_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">زینەی سەرپۆشەکەی مینیپڵەیەر پێویستە لە نێوان 0-100 بێت</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">سکرینی بارکردنێکی فڕکێنەرەوە سازشە</string>

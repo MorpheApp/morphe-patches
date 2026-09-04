@@ -48,6 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Soekgeskiedenis is leeg</string>
   <string name="morphe_settings_search_empty_history_summary">Om soekgeskiedenis te stoor, tik \'n soekversoek en druk Enter</string>
   <string name="morphe_settings_search_history_title">Wys soekgeskiedenis</string>
+  <string name="morphe_settings_name_title">Morphe-instellingsnaam</string>
+  <string name="morphe_settings_name_default_item">Verstek</string>
+  <string name="morphe_settings_name_entry_2">Ekstras</string>
+  <string name="morphe_settings_name_entry_3">Aanpassings</string>
+  <string name="morphe_settings_name_entry_4">Morphing-tyd</string>
+  <string name="morphe_settings_name_custom_item">Pasgemaak</string>
+  <string name="morphe_settings_name_custom_item_hint">Voer \'n naam in</string>
+  <string name="morphe_settings_name_empty_warning">Naam kan nie leeg wees nie</string>
   <string name="morphe_show_menu_icons_title">Wys Morphe instellingsikone</string>
   <string name="morphe_settings_menu_copy_path">Gekopieer: %s</string>
   <string name="morphe_language_title">Morphe taal</string>
@@ -109,20 +117,62 @@ Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie."</string
   <string name="morphe_debug_feature_flags_manager_summary">Bestuur booleaanse kenmerkvlae</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Soek kenmerkvlae</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Nie aktief (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktief (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Geblokkeer (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Geforseer (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Outo</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Af</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Aan</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Forceer aan</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokkeer</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Verwyder</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Kenmerkvlae is gered</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Kenmerkvlae is teruggesit</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kenmerkvlae gekopieer na knipbord</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Herstart die program om hierdie instelling te gebruik</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Uitvoer en invoer</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Geïmporteerde %s kenmerk-vlagte</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Geen kenmerk-vlagte gevind nie</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Kenmerk-vlagte suksesvol uitgevoer</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Kon nie kenmerk-vlagte uitvoer nie</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Kenmerk-vlagte gelaai, tik Stoor om toe te pas</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Kon nie die lêer lees nie</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Binêre soektog</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Vind watter kenmerk-vlag 'n app-gedrag veroorsaak.
+
+Die helfte van die %s kenmerk-vlagte is geblokkeer, en na elke herbegin vertel jy of die gedrag steeds teenwoordig is.
+
+Herproduseer die gedrag een keer voordat jy begin, anders is kenmerk-vlagte wat die app nog nie gevra het nie, nie in die soektog ingesluit nie."</string>
   <string name="morphe_debug_feature_flags_manager_bisect_start_button">Begin</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Geen kenmerk-vlagte om te soek nie.
+
+Slegs kenmerk-vlagte wat die app teëgekom het en nie tans geforseer is nie, kan in 'n binêre soektog gebruik word."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Stap %1$s
+
+%2$s kenmerk-vlagte oor, %3$s van hulle is vir hierdie stap geblokkeer.
+
+Herbegin die app, kyk of die gedrag teenwoordig is, en antwoord dan hieronder."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Kenmerk-vlag soektog besig</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Gedrag is teenwoordig</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Gedrag is nie teenwoordig nie</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Kanselleer binêre soektog</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Binêre soektog gekanselleer</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Kenmerk-vlag %s veroorsaak die gedrag.
+
+Dit is nou geblokkeer."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Kon nie 'n kenmerk-vlag kry nie.
+
+Die app-gedrag blyk nie deur 'n kenmerk-vlag beheer te word nie."</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Kon nie 'n enkele kenmerk-vlag kry nie.
+
+Die gedrag het vroeër in die soektog verdwyn, so meer as een kenmerk-vlag kan betrokke wees of een van die antwoorde was verkeerd."</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Maak MicroG instellings oop</string>
