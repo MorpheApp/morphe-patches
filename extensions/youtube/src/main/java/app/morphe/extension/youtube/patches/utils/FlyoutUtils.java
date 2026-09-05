@@ -26,7 +26,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -154,6 +153,8 @@ public final class FlyoutUtils {
     private static WeakReference<View> senderViewRef = new WeakReference<>(null);
 
     private static Dialog flyoutDialog;
+    private static boolean isDialogShowing;
+    private static boolean isPopupWindowShowing;
     private static PopupWindow flyoutPopupWindow;
     private static String flyoutVideoId = "";
     private static String flyoutPlaylistId = "";
@@ -212,72 +213,53 @@ public final class FlyoutUtils {
      * Injection point.
      */
     public static void setBottomSheetFlyout(Dialog dialog) {
-        try {
-            if (dialog == null) {
-                return;
-            }
-            flyoutDialog = dialog;
-            runFlyoutPanelVisibilityHandler(dialog);
-
-            Window window = dialog.getWindow();
-            if (window == null) {
-                Logger.printDebug(() -> "Cannot set flyout, window is null: " + dialog);
-                return;
-            }
-
-            WeakReference<Dialog> dialogRef = new WeakReference<>(dialog);
-
-            ViewTreeObserver viewTreeObserver = window.getDecorView().getViewTreeObserver();
-            viewTreeObserver.addOnGlobalLayoutListener(
-                    new ViewTreeObserver.OnGlobalLayoutListener() {
-                        private boolean alreadyInjectedButton;
-
-                        @Override
-                        public void onGlobalLayout() {
-                            try {
-                                Dialog dialog = dialogRef.get();
-                                if (dialog == null) {
-                                    Logger.printDebug(() -> "Removing flyout listener");
-                                    viewTreeObserver.removeOnGlobalLayoutListener(this);
-                                    return;
-                                }
-
-                                if (dialog.isShowing()) {
-                                    if (!alreadyInjectedButton) {
-                                        addFlyoutElements(dialog);
-                                        alreadyInjectedButton = true;
-                                    }
-                                    onFlyoutListBound(dialog);
-                                } else {
-                                    alreadyInjectedButton = false;
-                                }
-                            } catch (Exception ex) {
-                                Logger.printException(() -> "setBottomSheetFlyout onGlobalLayout failure", ex);
-                            }
-                        }
-                    }
-            );
-        } catch (Exception ex) {
-            Logger.printException(() -> "setBottomSheetFlyout failure", ex);
+        if (dialog == null) {
+            return;
         }
+        flyoutDialog = dialog;
+
+        runFlyoutVisibilityHandler();
     }
 
     /**
      * Injection point.
      */
     public static void setPopupWindowFlyout(PopupWindow popupWindow) {
-        try {
-            if (popupWindow == null) {
-                return;
-            }
-            flyoutPopupWindow = popupWindow;
-            runFlyoutPanelVisibilityHandler(popupWindow);
-
-            addFlyoutElements(popupWindow);
-            onFlyoutListBound(popupWindow);
-        } catch (Exception ex) {
-            Logger.printException(() -> "setPopupWindowFlyout failure", ex);
+        if (popupWindow == null) {
+            return;
         }
+        flyoutPopupWindow = popupWindow;
+
+        runFlyoutVisibilityHandler();
+    }
+
+    private static void runFlyoutVisibilityHandler() {
+        Handler flyoutVisibilityPollingHandler = new Handler(Looper.getMainLooper());
+        flyoutVisibilityPollingHandler.post(
+            new Runnable() {
+                @Override
+                public void run() {
+                    boolean blockFlyoutVisibilityPollingHandler = false;
+
+                    if (flyoutDialog != null && flyoutDialog.isShowing()) {
+                        isDialogShowing = true;
+                        blockFlyoutVisibilityPollingHandler = true;
+                    }
+                    if (flyoutPopupWindow != null && flyoutPopupWindow.isShowing()) {
+                        isPopupWindowShowing = true;
+                        blockFlyoutVisibilityPollingHandler = true;
+                    }
+
+                    if (blockFlyoutVisibilityPollingHandler) {
+                        runFlyoutIdsResetHandler();
+                        addFlyoutElements(isDialogShowing ? flyoutDialog : flyoutPopupWindow);
+                        onFlyoutListBound(isDialogShowing ? flyoutDialog : flyoutPopupWindow);
+                    } else {
+                        flyoutVisibilityPollingHandler.postDelayed(this, 10);
+                    }
+                }
+            }
+        );
     }
 
     public static void dismissFlyout() {
@@ -288,7 +270,6 @@ public final class FlyoutUtils {
             flyoutDialog.dismiss();
             flyoutDialog = null;
         }
-
         if (flyoutPopupWindow != null) {
             flyoutPopupWindow.dismiss();
             flyoutPopupWindow = null;
@@ -297,7 +278,7 @@ public final class FlyoutUtils {
 
     private static void addFlyoutElements(Object flyoutPanel) {
         // In order to allow the litho filtering to detect the current menu
-        // (before adding the buttons), a 100ms delay has been added.
+        // (before adding the buttons), a slight delay has been added.
         Utils.runOnMainThreadDelayed(
             () -> {
                 int nextButtonIndex = 0;
@@ -389,8 +370,12 @@ public final class FlyoutUtils {
                 if (nextButtonIndex > 0) {
                     addDivider(flyoutPanel, nextButtonIndex);
                 }
+
+                // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
+                // overlay settings, to prevent them from also being added into nested menus.
+                PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
             },
-            100
+            30
         );
     }
 
@@ -639,43 +624,40 @@ public final class FlyoutUtils {
         currentButtonIndex = 0;
     }
 
-    private static void runFlyoutPanelVisibilityHandler(Object flyoutObject) {
-        Handler visibilityHandler = new Handler(Looper.getMainLooper());
-        visibilityHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                final boolean isShowing;
+    private static void runFlyoutIdsResetHandler() {
+        Handler flyoutIdsResetPollingHandler = new Handler(Looper.getMainLooper());
+        flyoutIdsResetPollingHandler.post(
+            new Runnable() {
+                @Override
+                public void run() {
+                    if (flyoutDialog != null && !flyoutDialog.isShowing()) {
+                        isDialogShowing = false;
+                    }
+                    if (flyoutPopupWindow != null && !flyoutPopupWindow.isShowing()) {
+                        isPopupWindowShowing = false;
+                    }
 
-                if (flyoutObject instanceof Dialog flyoutDialogHandler) {
-                    isShowing = flyoutDialogHandler.isShowing();
-                } else if (flyoutObject instanceof PopupWindow flyoutPopupWindowHandler) {
-                    isShowing = flyoutPopupWindowHandler.isShowing();
-                } else {
-                    isShowing = false;
-                }
-
-                if (!isShowing) {
-                    // Do not add the following call into 'runOnMainThreadDelayed'. The field
-                    // 'topFlyoutMenuVisible' must be reset immediately
-                    // after 'isShowing' becomes false.
-                    PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
-
-                    Utils.runOnMainThreadDelayed(
+                    if (!isDialogShowing && !isPopupWindowShowing) {
+                        // Since the system share menu is called faster, do not use a large delay.
+                        Utils.runOnMainThreadDelayed(
                             () -> {
                                 flyoutVideoId = "";
                                 flyoutPlaylistId = "";
                                 flyoutChannelId = "";
                                 flyoutChannelName = "";
                             },
-                            300
-                    );
-
-                    return;
+                            // The delay used to prevent the system share sheet from failing to
+                            // display, sometimes causes the injected buttons to appear in the
+                            // YouTube share sheet. For this reason, the delay is set to zero
+                            // when the setting to display the system share sheet is disabled.
+                            Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 30 : 0
+                        );
+                    } else {
+                        flyoutIdsResetPollingHandler.postDelayed(this, 10);
+                    }
                 }
-
-                visibilityHandler.postDelayed(this, 100);
             }
-        });
+        );
     }
 
     @Nullable
@@ -832,6 +814,7 @@ public final class FlyoutUtils {
             String videoId = videoIdInterface.patch_getVideoId();
             if (videoId != null) {
                 flyoutVideoId = videoId;
+
             }
             return;
         }
@@ -852,7 +835,8 @@ public final class FlyoutUtils {
         // Check whether the buffer contains the specified IDs, within a certain initial
         // range of the buffer, to avoid matching with false positives.
         List<Integer> listItemShareBytesIndexes = byteIndexesOf(flyoutBuffer, LIST_ITEM_SHARE_BYTES);
-        if (!listItemShareBytesIndexes.isEmpty() && listItemShareBytesIndexes.size() == LIST_ITEM_SHARE_BYTES.size()) {
+        if (!listItemShareBytesIndexes.isEmpty() &&
+                listItemShareBytesIndexes.size() == LIST_ITEM_SHARE_BYTES.size()) {
             if (byteIndexInStartRange(listItemShareBytesIndexes.get(0))) {
                 setFlyoutCommentId(flyoutBuffer);
             }
@@ -869,9 +853,10 @@ public final class FlyoutUtils {
                         if (description != null) {
                             setFlyoutPlaylistId(flyoutBuffer);
 
-                            setFlyoutVideoId(flyoutBuffer, description.toString());
+                            String stringDescription = description.toString();
 
-                            setFlyoutChannel(flyoutBuffer, description.toString());
+                            setFlyoutVideoId(flyoutBuffer, stringDescription);
+                            setFlyoutChannel(flyoutBuffer, stringDescription);
                         }
                     }
                     parent = parent.getParent();

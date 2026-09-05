@@ -48,10 +48,13 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
     }
 
-    private final ByteArrayFilterGroup qualityMenuButton = new ByteArrayFilterGroup(
+    private final ByteArrayFilterGroup qualityMenuButtonPrimary = new ByteArrayFilterGroup(
             null,
-            "yt_outline_adjust_",
-            "yt_outline_experimental_adjust_"
+            "overflow_menu_item.e"
+    );
+    private final ByteArrayFilterGroup qualityMenuButtonSecondary = new ByteArrayFilterGroup(
+            null,
+            "quality_sheet_header.e"
     );
     private final StringFilterGroup audioTrackMenuFooter;
     private final StringFilterGroup divider;
@@ -138,6 +141,11 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                         "yt_outline_experimental_headset_"
                 ),
                 new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
+                        "yt_outline_adjust_",
+                        "yt_outline_experimental_adjust_"
+                ),
+                new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_SLEEP_TIMER,
                         "yt_outline_moon_z_",
                         "yt_outline_experimental_sleep_timer_"
@@ -197,10 +205,9 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
             // Verify that the open flyout menu is the first one and not the 'others'
             // one, by checking the filtering of its first button (quality menu).
-            if (qualityMenuButton.check(buffer).isFiltered()) {
+            if (qualityMenuButtonPrimary.check(buffer).isFiltered() &&
+                    qualityMenuButtonSecondary.check(buffer).isFiltered()) {
                 topFlyoutMenuVisible = true;
-
-                return Settings.HIDE_PLAYER_FLYOUT_QUALITY.get();
             }
 
             // 21.x+ fix.
