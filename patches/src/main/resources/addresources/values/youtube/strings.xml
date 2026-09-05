@@ -1331,8 +1331,6 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_remember_livestream_position_title">Remember livestream playback position</string>
     <string name="morphe_remember_livestream_position_summary">For ongoing livestreams, remembers and resumes your playback position instead of seeking to the current live position</string>
     <string name="morphe_remember_livestream_position_user_dialog_message">This feature does not work with 24/7 livestreams and other streams that are 'always on'</string>
-    <string name="morphe_remember_livestream_position_resume_when_live_title">Resume active livestream</string>
-    <string name="morphe_remember_livestream_position_resume_when_live_summary">When reopening a livestream that was watched at the live edge, resume from the last position instead of going to live</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>

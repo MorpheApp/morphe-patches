@@ -44,12 +44,6 @@ public final class RememberLivestreamPositionPatch {
     private static final long LIVESTREAM_DURATION_GROWTH_ON_REOPEN_MS = 1000;
 
     /**
-     * If the saved position is closer than this to the end of the stream at save time,
-     * the livestream was being watched at the live edge.
-     */
-    private static final long LIVE_EDGE_THRESHOLD_MS = 30_000;
-
-    /**
      * How often the playback position is saved while watching an ongoing livestream.
      */
     private static final long SAVE_INTERVAL_MS = 5000;
@@ -125,8 +119,6 @@ public final class RememberLivestreamPositionPatch {
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
         try {
             Utils.verifyOnMainThread();
-            final boolean settingEnabled = Settings.REMEMBER_LIVESTREAM_POSITION.get();
-            final boolean resumeWhenLive = Settings.REMEMBER_LIVESTREAM_POSITION_RESUME_WHEN_LIVE.get();
 
             baselineVideoLength = 0;
             livestreamConfirmed = false;
@@ -135,7 +127,7 @@ public final class RememberLivestreamPositionPatch {
             restorePending = false;
             newVideoGeneration++;
 
-            if (!settingEnabled) {
+            if (!Settings.REMEMBER_LIVESTREAM_POSITION.get()) {
                 return;
             }
 
@@ -231,20 +223,12 @@ public final class RememberLivestreamPositionPatch {
             }
 
             // The stream is still ongoing and advanced since it was last watched.
-            final boolean watchedAtLiveEdge = saved.videoLength() - saved.position() < LIVE_EDGE_THRESHOLD_MS;
             Logger.printDebug(() -> "CheckRestore id: " + videoId
                     + " savedPos: " + saved.position() + " savedLen: " + saved.videoLength()
-                    + " curLen: " + videoLength + " liveEdge: " + watchedAtLiveEdge);
+                    + " curLen: " + videoLength);
 
-            if (!watchedAtLiveEdge || Settings.REMEMBER_LIVESTREAM_POSITION_RESUME_WHEN_LIVE.get()) {
-                // Delete the saved position only after the seek is confirmed (or given up on).
-                attemptRestoreSeek(generation, videoId, saved.position(), 1);
-            } else {
-                // Watched at the live edge and resuming is disabled. Consume the position.
-                Logger.printDebug(() -> "Video was watched live, seeking to the play head");
-                restorePending = false;
-                deletePlaybackPosition(videoId);
-            }
+            // Delete the saved position only after the seek is confirmed (or given up on).
+            attemptRestoreSeek(generation, videoId, saved.position(), 1);
         } catch (Exception ex) {
             restorePending = false;
             Logger.printException(() -> "checkRestore failure", ex);

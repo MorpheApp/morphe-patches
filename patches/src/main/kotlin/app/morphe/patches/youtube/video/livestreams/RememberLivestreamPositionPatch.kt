@@ -39,8 +39,7 @@ val rememberLivestreamPositionPatch = bytecodePatch(
         PreferenceScreen.VIDEO.addPreferences(
             // Keep the preferences organized together.
             noTitleUnsortedPreferenceCategory(
-                SwitchPreference("morphe_remember_livestream_position", summary = true),
-                SwitchPreference("morphe_remember_livestream_position_resume_when_live", summary = true)
+                SwitchPreference("morphe_remember_livestream_position", summary = true)
             )
         )
 
