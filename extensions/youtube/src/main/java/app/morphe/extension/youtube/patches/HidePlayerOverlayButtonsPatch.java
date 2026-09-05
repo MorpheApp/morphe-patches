@@ -228,9 +228,13 @@ public final class HidePlayerOverlayButtonsPatch {
          * and older app targets leave that inner container unnamed.
          */
         private static View pillOf(View view) {
-            return view instanceof ViewGroup group && group.getChildAt(0) instanceof ViewGroup inner
-                    ? inner
-                    : view;
+            if (view instanceof ViewGroup group && group.getChildCount() > 0) {
+                View first = group.getChildAt(0);
+                if (first instanceof ViewGroup inner) {
+                    return inner;
+                }
+            }
+            return view;
         }
 
         void update(View rootView) {
@@ -274,7 +278,7 @@ public final class HidePlayerOverlayButtonsPatch {
         }
 
         PillBackground[] pills = new PillBackground[PILL_BACKGROUND_RESOURCE_NAMES.length];
-        for (int i = 0; i < pills.length; i++) {
+        for (int i = 0, length = pills.length; i < length; i++) {
             pills[i] = new PillBackground(PILL_BACKGROUND_RESOURCE_NAMES[i]);
         }
 
