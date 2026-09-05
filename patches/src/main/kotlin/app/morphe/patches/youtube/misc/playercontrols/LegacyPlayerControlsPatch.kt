@@ -31,6 +31,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -275,7 +276,9 @@ val legacyPlayerControlsPatch = bytecodePatch(
         overrideExploderLayout(PlayerBottomControlsExploderFeatureFlagFingerprint)
 
         // Turn off a/b tests of ugly player buttons that don't match the style of custom player buttons.
-        overrideExploderLayout(PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint)
+        if (!is_21_36_or_greater) {
+            overrideExploderLayout(PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint)
+        }
 
         if (is_20_28_or_greater) {
             overrideExploderLayout(PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint)
