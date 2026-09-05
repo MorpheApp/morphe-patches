@@ -24,6 +24,7 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.layout.hide.general.hideLayoutComponentsPatch
+import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.hidePlayerFlyoutMenuComponentsPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -60,9 +61,6 @@ private const val EXTENSION_UTILS_CLASS =
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ChannelPageFlyoutFilter;"
 
-private const val EXTENSION_PLAYER_OVERFLOW_MENU_FILTER =
-    "Lapp/morphe/extension/youtube/patches/components/PlayerOverflowMenuFilter;"
-
 private const val EXTENSION_FLYOUT_MENU_VIDEO_ID_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/utils/FlyoutUtils$FlyoutMenuVideoIdInterface;"
 
@@ -81,6 +79,7 @@ val addToQueuePatch = bytecodePatch(
         settingsPatch,
         lithoFilterPatch,
         hideLayoutComponentsPatch,
+        hidePlayerFlyoutMenuComponentsPatch,
         versionCheckPatch,
         videoInformationPatch,
         elementProtoParserHookPatch,
@@ -347,7 +346,6 @@ val addToQueuePatch = bytecodePatch(
         }
 
         addLithoFilter(EXTENSION_FILTER)
-        addLithoFilter(EXTENSION_PLAYER_OVERFLOW_MENU_FILTER)
         hookElement("$EXTENSION_UTILS_CLASS->onNewElementsLoaded")
         StartVideoInformerFingerprint.method.addInstruction(
             0,

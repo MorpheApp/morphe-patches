@@ -8,6 +8,7 @@
 package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible;
 import static app.morphe.extension.youtube.patches.utils.PlaylistPatch.QueueManager.OPEN_QUEUE;
 
 import android.annotation.SuppressLint;
@@ -57,7 +58,7 @@ import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.youtube.patches.components.PlayerOverflowMenuFilter;
+import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -295,117 +296,137 @@ public final class FlyoutUtils {
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
-        int nextButtonIndex = 0;
+        // In order to allow the litho filtering to detect the current menu
+        // (before adding the buttons), a 100ms delay has been added.
+        Utils.runOnMainThreadDelayed(
+            () -> {
+                int nextButtonIndex = 0;
 
-        // The items of the menu that is closing are gone, and their typeface is copied
-        // onto whatever this call adds instead.
-        customItemTextRefs.clear();
+                // The items of the menu that is closing are gone, and their typeface is copied
+                // onto whatever this call adds instead.
+                customItemTextRefs.clear();
 
-        // TODO: Add playlists compatibility to Morphe's queue.
-        if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
-                flyoutPlaylistId.isEmpty() &&
-                !flyoutVideoId.isEmpty()) {
-            nextButtonIndex = addFlyoutButton(
-                    flyoutPanel,
-                    queueButtonDrawable,
-                    queueButtonName,
-                    v -> AddToQueuePatch.flyoutButtonClickLogic(
-                            AddToQueuePatch.queueButtonOriginalNames.get(0)
-                    ),
-                    nextButtonIndex
-            );
-        }
+                // Ensure to show the following buttons only for specific flyouts.
+                final String currentFlyoutVideoId = getFlyoutVideoId();
+                final String currentVideoId;
 
-        if (Settings.KIDS_SAVE_TO_WATCH_LATER_BUTTON.get() &&
-                PlayerType.getCurrent().isMaximizedOrFullscreen() &&
-                videoMarkedAsForKids) {
-            nextButtonIndex = addFlyoutButton(
-                    flyoutPanel,
-                    saveToWatchLaterDrawable,
-                    saveToWatchLaterButtonName,
-                    v -> {
-                        SaveToWatchLaterPatch.saveVideo(getFlyoutVideoId());
+                if (!currentFlyoutVideoId.isEmpty()) {
+                    currentVideoId = currentFlyoutVideoId;
+                } else {
+                    if (getTopFlyoutMenuVisible()) {
+                        currentVideoId = VideoInformation.getVideoId();
+                    } else {
+                        currentVideoId = "";
+                    }
+                }
 
-                        dismissFlyout(); // Must dismiss after showing dialog.
-                    },
-                    nextButtonIndex
-            );
-        }
+                if (!currentFlyoutVideoId.isEmpty()) {
+                    // TODO: Add playlists compatibility to Morphe's queue.
+                    if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
+                            flyoutPlaylistId.isEmpty()) {
+                        nextButtonIndex = addFlyoutButton(
+                                flyoutPanel,
+                                queueButtonDrawable,
+                                queueButtonName,
+                                v -> AddToQueuePatch.flyoutButtonClickLogic(
+                                        AddToQueuePatch.queueButtonOriginalNames.get(0)
+                                ),
+                                nextButtonIndex
+                        );
+                    }
 
-        if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
-            String videoId = getSubmittableVideoId();
-            if (!videoId.isEmpty()) {
-                nextButtonIndex = addFlyoutButton(
-                        flyoutPanel,
-                        aiSListSubmitDrawable,
-                        aiSListSubmitButtonName,
-                        v -> {
-                            AiSListSubmitDialog.show(videoId);
+                    if (Settings.KIDS_SAVE_TO_WATCH_LATER_BUTTON.get() &&
+                            PlayerType.getCurrent().isMaximizedOrFullscreen() &&
+                            videoMarkedAsForKids) {
+                        nextButtonIndex = addFlyoutButton(
+                                flyoutPanel,
+                                saveToWatchLaterDrawable,
+                                saveToWatchLaterButtonName,
+                                v -> {
+                                    SaveToWatchLaterPatch.saveVideo(getFlyoutVideoId());
 
-                            dismissFlyout();
-                        },
-                        nextButtonIndex
-                );
-            }
-        }
+                                    dismissFlyout(); // Must dismiss after showing dialog.
+                                },
+                                nextButtonIndex
+                        );
+                    }
+                }
 
-        if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
-            nextButtonIndex = addWhitelistButton(
-                    flyoutPanel, WhitelistType.ADS, adWhitelistDrawable, nextButtonIndex);
-        }
+                if (!currentVideoId.isEmpty()) {
+                    if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
+                        nextButtonIndex = addFlyoutButton(
+                                flyoutPanel,
+                                aiSListSubmitDrawable,
+                                aiSListSubmitButtonName,
+                                v -> {
+                                    AiSListSubmitDialog.show(currentVideoId);
 
-        if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
-            nextButtonIndex = addWhitelistButton(
-                    flyoutPanel, WhitelistType.PLAYBACK_SPEED, playbackSpeedWhitelistDrawable, nextButtonIndex);
-        }
+                                    dismissFlyout();
+                                },
+                                nextButtonIndex
+                        );
+                    }
 
-        if (nextButtonIndex > 0) {
-            addDivider(flyoutPanel, nextButtonIndex);
-        }
+                    if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+                        nextButtonIndex = addWhitelistButton(
+                                flyoutPanel,
+                                WhitelistType.ADS,
+                                adWhitelistDrawable,
+                                nextButtonIndex
+                        );
+                    }
+
+                    if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+                        nextButtonIndex = addWhitelistButton(
+                                flyoutPanel,
+                                WhitelistType.PLAYBACK_SPEED,
+                                playbackSpeedWhitelistDrawable,
+                                nextButtonIndex
+                        );
+                    }
+                }
+
+                if (nextButtonIndex > 0) {
+                    addDivider(flyoutPanel, nextButtonIndex);
+                }
+            },
+            100
+        );
     }
 
-    /**
-     * @return The video the flyout belongs to. The player menu has no feed item to read the id
-     *         from, so the video that is playing is used for it instead.
-     */
-    private static String getSubmittableVideoId() {
-        if (!flyoutVideoId.isEmpty()) {
-            return flyoutVideoId;
-        }
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            return VideoInformation.getVideoId();
-        }
-        return "";
-    }
+    private static int addWhitelistButton(
+        Object flyoutPanel,
+        WhitelistType type,
+        Drawable icon,
+        int index
+    ) {
+        final String currentChannelId =
+                !flyoutChannelId.isEmpty()
+                        ? flyoutChannelId
+                        : VideoInformation.getChannelId();
+        final String currentChannelName =
+                !currentChannelId.isEmpty()
+                        ? flyoutChannelName
+                        : VideoInformation.getChannelName();
 
-    private static int addWhitelistButton(Object flyoutPanel, WhitelistType type,
-                                          Drawable icon, int index) {
-        String channelId = flyoutChannelId;
-        String channelName = flyoutChannelName;
-
-        if (channelId.isEmpty()) {
-            // The player menu belongs to the video being played instead of a list item,
-            // so it carries no element the channel could be read from.
-            if (!PlayerOverflowMenuFilter.isMenuRendered()) {
-                return index;
-            }
-            channelId = VideoInformation.getChannelId();
-            channelName = VideoInformation.getChannelName();
-            if (channelId.isEmpty()) {
-                return index;
-            }
+        if (currentChannelId.isEmpty()) {
+            return index;
         }
 
-        final String whitelistChannelId = channelId;
-        final String whitelistChannelName = channelName;
-        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(type, whitelistChannelId);
-
+        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(
+                type,
+                currentChannelId
+        );
         return addFlyoutButton(
                 flyoutPanel,
                 icon,
                 type.getFlyoutTitle(isWhitelisted),
                 v -> {
-                    ChannelWhitelist.toggleChannel(type, whitelistChannelId, whitelistChannelName);
+                    ChannelWhitelist.toggleChannel(
+                            type,
+                            currentChannelId,
+                            currentChannelName
+                    );
 
                     dismissFlyout();
                 },
@@ -619,10 +640,6 @@ public final class FlyoutUtils {
     }
 
     private static void runFlyoutPanelVisibilityHandler(Object flyoutObject) {
-        if (flyoutObject == null) {
-            return;
-        }
-
         final Handler visibilityHandler = new Handler(Looper.getMainLooper());
         visibilityHandler.post(new Runnable() {
             @Override
@@ -637,20 +654,26 @@ public final class FlyoutUtils {
                     isShowing = false;
                 }
 
-                if (isShowing) {
-                    visibilityHandler.postDelayed(this, 100);
-                } else {
+                if (!isShowing) {
+                    // Do not add the following call into 'runOnMainThreadDelayed'. The field
+                    // 'topFlyoutMenuVisible' must be reset immediately
+                    // after 'isShowing' becomes false.
+                    PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
+
                     Utils.runOnMainThreadDelayed(
                             () -> {
                                 flyoutVideoId = "";
                                 flyoutPlaylistId = "";
                                 flyoutChannelId = "";
                                 flyoutChannelName = "";
-                                PlayerOverflowMenuFilter.resetMenuRendered();
                             },
-                            500
+                            300
                     );
+
+                    return;
                 }
+
+                visibilityHandler.postDelayed(this, 100);
             }
         });
     }

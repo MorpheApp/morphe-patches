@@ -28,6 +28,14 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 @SuppressWarnings("unused")
 public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
+    private static boolean topFlyoutMenuVisible;
+    public static boolean getTopFlyoutMenuVisible() {
+        return topFlyoutMenuVisible;
+    }
+    public static void resetTopFlyoutMenuVisible() {
+        topFlyoutMenuVisible = false;
+    }
+
     public static final class HideAudioFlyoutMenuAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
@@ -40,12 +48,18 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
     }
 
+    private final ByteArrayFilterGroup qualityMenuButton = new ByteArrayFilterGroup(
+            null,
+            "yt_outline_adjust_",
+            "yt_outline_experimental_adjust_"
+    );
     private final StringFilterGroup audioTrackMenuFooter;
     private final StringFilterGroup divider;
     private final StringFilterGroup flyoutMenu;
     private final ByteArrayFilterGroup flyoutLoopVideoMenuBuffer;
     private final ByteArrayFilterGroupList flyoutMenuBufferGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup qualityMenuFooter;
+
 
     public PlayerFlyoutMenuComponentsFilter() {
         audioTrackMenuFooter = new StringFilterGroup(
@@ -124,11 +138,6 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                         "yt_outline_experimental_headset_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
-                        "yt_outline_adjust_",
-                        "yt_outline_experimental_adjust_"
-                ),
-                new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_SLEEP_TIMER,
                         "yt_outline_moon_z_",
                         "yt_outline_experimental_sleep_timer_"
@@ -184,6 +193,14 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
             // Shorts also use this player flyout panel
             if (ShortsPlayerState.isOpen()) {
                 return false;
+            }
+
+            // Verify that the open flyout menu is the first one and not the 'others'
+            // one, by checking the filtering of its first button (quality menu).
+            if (qualityMenuButton.check(buffer).isFiltered()) {
+                topFlyoutMenuVisible = true;
+
+                return Settings.HIDE_PLAYER_FLYOUT_QUALITY.get();
             }
 
             // 21.x+ fix.
