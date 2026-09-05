@@ -18,6 +18,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import androidx.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
 import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
@@ -189,12 +192,102 @@ public final class HidePlayerOverlayButtonsPatch {
                         imageView.setBackground(applyControlButtonsBackgroundOpacity(background));
                     }
                 });
+
+                stylePillBackgrounds(rootView);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "styleControlButtonsBackground failure", ex);
         }
 
         return rootView;
+    }
+
+    /**
+     * Bottom overlay views that carry the same background as the control buttons,
+     * but drawn as a pill instead of a circle.
+     */
+    private static final String[] PILL_BACKGROUND_RESOURCE_NAMES = {
+            "timestamps_container", // Current time and duration.
+            "time_bar_chapter_title",
+            "time_bar_timeline_title",
+    };
+
+    private static class PillBackground {
+        private final int id;
+        private WeakReference<View> viewRef = new WeakReference<>(null);
+        /** ConstantState of the background the opacity was last applied to. */
+        @Nullable
+        private Drawable.ConstantState backgroundSnapshot;
+
+        PillBackground(String resourceName) {
+            id = ResourceUtils.getIdentifier(ResourceType.ID, resourceName);
+        }
+
+        /**
+         * The timestamps pill is a container nested inside the one carrying the id,
+         * and older app targets leave that inner container unnamed.
+         */
+        private static View pillOf(View view) {
+            return view instanceof ViewGroup group && group.getChildAt(0) instanceof ViewGroup inner
+                    ? inner
+                    : view;
+        }
+
+        void update(View rootView) {
+            if (id == 0) return;
+
+            View pill = viewRef.get();
+            if (pill == null || !pill.isAttachedToWindow()) {
+                View container = rootView.findViewById(id);
+                if (container == null) return;
+
+                pill = pillOf(container);
+                viewRef = new WeakReference<>(pill);
+                backgroundSnapshot = null;
+            }
+
+            Drawable background = pill.getBackground();
+            if (background == null) return;
+
+            // A null state cannot be tracked, so fall through and rely on mutate() being idempotent.
+            Drawable.ConstantState state = background.getConstantState();
+            if (state != null && state == backgroundSnapshot) return;
+
+            Drawable styled = applyControlButtonsBackgroundOpacity(background);
+            if (styled != background) {
+                pill.setBackground(styled);
+            }
+            backgroundSnapshot = styled.getConstantState();
+        }
+    }
+
+    /**
+     * The pills live in the bottom overlay container, which is inflated from a stub of its own
+     * and can appear after the control buttons, so they are resolved on a draw pass instead.
+     */
+    private static void stylePillBackgrounds(View controlsView) {
+        // The buttons and the bottom overlay are inflated into the same controls layout,
+        // so the pills are searched for from the shared parent and not from the buttons.
+        if (!(controlsView.getParent() instanceof ViewGroup controlsLayout)) {
+            Logger.printDebug(() -> "Unknown control buttons parent: " + controlsView.getParent());
+            return;
+        }
+
+        PillBackground[] pills = new PillBackground[PILL_BACKGROUND_RESOURCE_NAMES.length];
+        for (int i = 0; i < pills.length; i++) {
+            pills[i] = new PillBackground(PILL_BACKGROUND_RESOURCE_NAMES[i]);
+        }
+
+        controlsView.getViewTreeObserver().addOnPreDrawListener(() -> {
+            try {
+                for (PillBackground pill : pills) {
+                    pill.update(controlsLayout);
+                }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not style player overlay pill background", ex);
+            }
+            return true;
+        });
     }
 
     /**

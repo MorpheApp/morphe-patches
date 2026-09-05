@@ -870,7 +870,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary">Hides the dark shading surrounding the video player controls</string>
     <string name="morphe_player_control_buttons_background_opacity_title">Control buttons background opacity</string>
-    <string name="morphe_player_control_buttons_background_opacity_summary">Adjust the opacity of the circle behind the player control buttons (0 is invisible, 100 is solid)</string>
+    <string name="morphe_player_control_buttons_background_opacity_summary">Adjust the opacity of the background behind the player control buttons and the time bar (0 is invisible, 100 is solid)</string>
     <string name="morphe_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_settings_button_title">Hide Settings button</string>
 
