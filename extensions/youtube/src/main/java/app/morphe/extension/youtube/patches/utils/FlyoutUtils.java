@@ -307,8 +307,8 @@ public final class FlyoutUtils {
                 customItemTextRefs.clear();
 
                 // Ensure to show the following buttons only for specific flyouts.
-                final String currentFlyoutVideoId = getFlyoutVideoId();
-                final String currentVideoId;
+                String currentFlyoutVideoId = getFlyoutVideoId();
+                String currentVideoId;
 
                 if (!currentFlyoutVideoId.isEmpty()) {
                     currentVideoId = currentFlyoutVideoId;
@@ -400,11 +400,11 @@ public final class FlyoutUtils {
         Drawable icon,
         int index
     ) {
-        final String currentChannelId =
+        String currentChannelId =
                 !flyoutChannelId.isEmpty()
                         ? flyoutChannelId
                         : VideoInformation.getChannelId();
-        final String currentChannelName =
+        String currentChannelName =
                 !currentChannelId.isEmpty()
                         ? flyoutChannelName
                         : VideoInformation.getChannelName();
@@ -640,7 +640,7 @@ public final class FlyoutUtils {
     }
 
     private static void runFlyoutPanelVisibilityHandler(Object flyoutObject) {
-        final Handler visibilityHandler = new Handler(Looper.getMainLooper());
+        Handler visibilityHandler = new Handler(Looper.getMainLooper());
         visibilityHandler.post(new Runnable() {
             @Override
             public void run() {
