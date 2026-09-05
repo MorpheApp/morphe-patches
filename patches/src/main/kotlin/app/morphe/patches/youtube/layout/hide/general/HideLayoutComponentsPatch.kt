@@ -47,6 +47,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -993,12 +994,21 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     protoObjectIndex
                 ).reference as FieldReference
 
-                val checkCastIndex = indexOfFirstInstructionOrThrow(protoObjectIndex) {
-                    opcode == Opcode.CHECK_CAST
+                val insertIndex = if (is_21_36_or_greater) {
+                    protoObjectIndex + 1
+                } else {
+                    indexOfFirstInstructionOrThrow(protoObjectIndex) {
+                        opcode == Opcode.CHECK_CAST
+                    } + 1
                 }
 
-                val checkCastRef = getInstruction<ReferenceInstruction>(checkCastIndex).reference
-                val insertIndex = checkCastIndex + 1
+                val checkCastInstruction = if (is_21_36_or_greater) {
+                    ""
+                } else {
+                    val checkCastIndex = insertIndex - 1
+                    val checkCastRef = getInstruction<ReferenceInstruction>(checkCastIndex).reference
+                    "check-cast v$protoRegister, $checkCastRef"
+                }
 
                 addInstructionsWithLabels(
                     insertIndex,
@@ -1011,7 +1021,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         goto :next_iterator
                         :ignore
                         iget-object v$protoRegister, v$auluRegister, $auluFieldRef
-                        check-cast v$protoRegister, $checkCastRef
+                        $checkCastInstruction
                     """,
                     ExternalLabel("next_iterator", getInstruction(iteratorIndex))
                 )
@@ -1019,7 +1029,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 val channelTabBuilderMethod = ChannelTabBuilderLegacyFingerprint.method
                 val targetIndex = indexOfFirstInstructionReversedOrThrow(
                     methodCall(
-                        opcode = Opcode.INVOKE_INTERFACE,
                         returnType = channelTabBuilderMethod.returnType,
                         parameters = channelTabBuilderMethod.parameterTypes.map { it.toString() }
                     )

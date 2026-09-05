@@ -38,7 +38,7 @@ val hideSeekbarPatch = bytecodePatch(
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("morphe_hide_seekbar"),
-            SwitchPreference("morphe_hide_seekbar_thumbnail", summary = true),
+            SwitchPreference("morphe_hide_seekbar_thumbnail", summary = true)
         )
 
         if (is_20_28_or_greater && !is_21_36_or_greater) {
