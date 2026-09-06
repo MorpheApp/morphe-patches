@@ -164,6 +164,7 @@ public final class ShortsFilter extends Filter {
         // Shorts player components.
         StringFilterGroup pausedOverlayButtons = new StringFilterGroup(
                 Settings.HIDE_SHORTS_PAUSED_OVERLAY_BUTTONS,
+                "lens_paused_state",
                 "shorts_paused_state"
         );
 

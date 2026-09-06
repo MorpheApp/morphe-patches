@@ -870,7 +870,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to any client e
     <string name="morphe_hide_player_control_buttons_background_title">Hide player controls background</string>
     <string name="morphe_hide_player_control_buttons_background_summary">Hides the dark shading surrounding the video player controls</string>
     <string name="morphe_player_control_buttons_background_opacity_title">Control buttons background opacity</string>
-    <string name="morphe_player_control_buttons_background_opacity_summary">Adjust the opacity of the circle behind the player control buttons (0 is invisible, 100 is solid)</string>
+    <string name="morphe_player_control_buttons_background_opacity_summary">Adjust the opacity of the background behind the player control buttons and the time bar (0 is invisible, 100 is solid)</string>
     <string name="morphe_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_settings_button_title">Hide Settings button</string>
 
@@ -1326,6 +1326,11 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
     <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
     <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
+
+    <!-- video.livestreams.rememberLivestreamPositionPatch -->
+    <string name="morphe_remember_livestream_position_title">Remember livestream playback position</string>
+    <string name="morphe_remember_livestream_position_summary">For ongoing livestreams, remembers and resumes your playback position instead of seeking to the current live position</string>
+    <string name="morphe_remember_livestream_position_user_dialog_message">This feature does not work with 24/7 livestreams and other streams that are \'always on\'</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>
