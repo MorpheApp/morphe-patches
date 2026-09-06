@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Адреса коју SponsorBlock користи за упућивање позива серверу</string>
   <string name="morphe_sb_channel_whitelist_title">Бела листа канала</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock је искључен за канале на белој листи</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Тренутни канал:</string>
-  <string name="morphe_sb_channel_whitelist_add">Додај на белу листу</string>
-  <string name="morphe_sb_channel_whitelist_remove">Уклони</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Канали на белој листи</string>
-  <string name="morphe_sb_channel_whitelist_empty">Нема канала на белој листи</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Канал је додат на белу листу</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Канал је уклоњен са беле листе</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Обавести о каналу на белој листи</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Приказује обавештење када је SponsorBlock деактивиран за канал на белој листи</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock је деактивиран за овај канал</string>

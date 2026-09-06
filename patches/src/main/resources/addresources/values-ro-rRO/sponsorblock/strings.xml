@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlocul de adresă utilizează pentru a efectua apeluri către server</string>
   <string name="morphe_sb_channel_whitelist_title">Listă albă de canale</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock este dezactivat pentru canalele din lista albă</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Canalul curent:</string>
-  <string name="morphe_sb_channel_whitelist_add">Adăugare la lista albă</string>
-  <string name="morphe_sb_channel_whitelist_remove">Elimină</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Canale din lista albă</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nu există canale în lista albă</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Canal adăugat în lista albă</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Canal eliminat din lista albă</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notifică la canalul din lista albă</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Afișează o notificare atunci când SponsorBlock este dezactivat pentru un canal din lista albă</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock dezactivat pentru acest canal</string>

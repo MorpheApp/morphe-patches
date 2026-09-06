@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Osoite, jota SponsorBlock käyttää kutsujen lähettämiseen palvelimelle</string>
   <string name="morphe_sb_channel_whitelist_title">Kanavien sallittujen listojen luettelo</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock on poistettu käytöstä kanavilta, jotka ovat sallittujen listalla</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Nykyinen kanava:</string>
-  <string name="morphe_sb_channel_whitelist_add">Lisää valkolistalle</string>
-  <string name="morphe_sb_channel_whitelist_remove">Poista</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Valkolistatut kanavat</string>
-  <string name="morphe_sb_channel_whitelist_empty">Kanavia ei ole valkolistattu</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanava lisätty valkolistalle</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanava poistettu valkolistalta</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Ilmoita sallitun kanavan kohdalla</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Näyttää ilmoituksen, kun SponsorBlock on poistettu käytöstä valkolistatulla kanavalla</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock on poistettu käytöstä tässä kanavassa</string>

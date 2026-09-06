@@ -184,6 +184,11 @@ The behavior went away earlier in the search, so more than one flag may be invol
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="gms_core_toast_not_installed_message">MicroG is not installed. Install it.</string>
     <string name="gms_core_dialog_title">Action needed</string>
+    <string name="gms_core_dialog_outdated_message">"Your MicroG v%1s is outdated and may cause issues.
+
+Please update MicroG to the latest version v%2s."</string>
+    <string name="gms_core_dialog_update_text">Update</string>
+    <string name="gms_core_dialog_ignore_text">Ignore</string>
     <!-- "Don't kill my app" should be kept in English and not translated -->
     <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG does not have permission to run in the background.
 

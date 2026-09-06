@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1856
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -10,7 +10,6 @@ package app.morphe.extension.music.patches.scrobbling.listenbrainz;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
@@ -50,26 +49,19 @@ public class ListenBrainz {
 
         final int code = conn.getResponseCode();
         if (code == 200) {
-            try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
-                StringBuilder response = new StringBuilder();
-                char[] buffer = new char[1024];
-                int read;
-                while ((read = reader.read(buffer)) != -1) {
-                    response.append(buffer, 0, read);
-                }
-                JSONObject root = new JSONObject(response.toString());
-                TokenValidation validation = new TokenValidation();
-                validation.valid = root.optBoolean("valid");
-                validation.userName = root.optString("user_name");
-                validation.message = root.optString("message");
-                return validation;
-            }
-        } else {
+            String response = Requester.parseString(conn);
+            JSONObject root = new JSONObject(response);
             TokenValidation validation = new TokenValidation();
-            validation.valid = false;
-            validation.message = "HTTP error " + code;
+            validation.valid = root.optBoolean("valid");
+            validation.userName = root.optString("user_name");
+            validation.message = root.optString("message");
             return validation;
         }
+
+        TokenValidation validation = new TokenValidation();
+        validation.valid = false;
+        validation.message = "HTTP error " + code;
+        return validation;
     }
 
     /**
@@ -84,12 +76,13 @@ public class ListenBrainz {
         }
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = ScrobbleManager.getEffectiveAlbum(artist, track, album);
                 JSONObject req = new JSONObject();
                 req.put("listen_type", "single");
 
                 JSONObject payload = new JSONObject();
                 payload.put("listened_at", timestamp);
-                payload.put("track_metadata", createTrackMetadata(artist, track, songId, album, duration));
+                payload.put("track_metadata", createTrackMetadata(artist, track, songId, effectiveAlbum, duration));
 
                 JSONArray payloadArray = new JSONArray();
                 payloadArray.put(payload);
@@ -117,11 +110,12 @@ public class ListenBrainz {
         }
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = ScrobbleManager.getEffectiveAlbum(artist, track, album);
                 JSONObject req = new JSONObject();
                 req.put("listen_type", "playing_now");
 
                 JSONObject payload = new JSONObject();
-                payload.put("track_metadata", createTrackMetadata(artist, track, songId, album, duration));
+                payload.put("track_metadata", createTrackMetadata(artist, track, songId, effectiveAlbum, duration));
 
                 JSONArray payloadArray = new JSONArray();
                 payloadArray.put(payload);
@@ -181,7 +175,8 @@ public class ListenBrainz {
         if (code == 200) {
             return true;
         }
-        Logger.printException(() -> "ListenBrainz server returned code: " + code);
+        String errResponse = Requester.parseErrorStringAndDisconnect(conn);
+        Logger.printException(() -> "ListenBrainz server returned code: " + code + ". Response: " + errResponse);
         return false;
     }
 }

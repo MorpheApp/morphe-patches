@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Keluarkan sekatan main di latar belakang</string>
   <string name="morphe_shorts_disable_background_playback_title">Lumpuhkan main di latar belakang</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Mati</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Lumpuhkan kemas kini tataletak</string>
@@ -115,6 +116,14 @@ Perubahan termasuk:
   <string name="morphe_hide_about_category_title">Mengenai</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sorokkan iklan video</string>
+  <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">Saluran semasa:</string>
+  <string name="morphe_channel_whitelist_add">Tambahkan ke senarai putih</string>
+  <string name="morphe_channel_whitelist_remove">Keluarkan</string>
+  <string name="morphe_channel_whitelist_channels_header">Saluran dalam senarai putih</string>
+  <string name="morphe_channel_whitelist_empty">Tiada saluran dalam senarai putih</string>
+  <string name="morphe_channel_whitelist_channel_added">Saluran ditambahkan ke senarai putih</string>
+  <string name="morphe_channel_whitelist_channel_removed">Saluran dikeluarkan daripada senarai putih</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Pautan disalin ke papan keratan</string>
@@ -164,7 +173,6 @@ To fix this, turn on 'Spoof video streams' and change the 'Default client' to 'T
   <string name="morphe_swipe_overlay_timeout_summary">Jumlah milisaat tindihan atas akan kelihatan</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Leret kelegapan latar belakang tindihan atas</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Melaraskan tahap kelutsinaran (0 ialah lut sinar, 100 ialah legap)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast"> Kelegapan hendaklah dileretkan di antara 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Leret warna tindihan atas kecerahan</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Tetapkan warna bar kemajuan kawalan kecerahan</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Leret warna tindihan atas kelantangan</string>
@@ -235,10 +243,10 @@ To fix this, turn on 'Spoof video streams' and change the 'Default client' to 'T
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_navigation_bar_title">Sorokkan bar pandu arah</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_navigation_bar_title">Sorokkan bar pandu arah</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
@@ -342,6 +350,7 @@ Automotive layout
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_disable_playback_speed_music_title">Gunakan kelajuan biasa untuk muzik</string>
   <string name="morphe_disable_playback_speed_music_summary">Sentiasa mainkan video muzik pada kelajuan 1.0x</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->

@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Adres, którego SponsorBlock używa do komunikacji z serwerem</string>
   <string name="morphe_sb_channel_whitelist_title">Biała lista kanałów</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock jest wyłączony dla kanałów z białej listy</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Bieżący kanał:</string>
-  <string name="morphe_sb_channel_whitelist_add">Dodaj do białej listy</string>
-  <string name="morphe_sb_channel_whitelist_remove">Usuń</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Kanały na białej liście</string>
-  <string name="morphe_sb_channel_whitelist_empty">Brak kanałów na białej liście</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Dodano kanał do białej listy</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Usunięto kanał z białej listy</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Powiadamiaj o kanałach z białej listy</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Wyświetla powiadomienie, gdy SponsorBlock jest wyłączony dla kanału z białej listy</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock wyłączony dla tego kanału</string>
@@ -234,7 +227,7 @@ Jeśli nie wysyłasz wyróżnienia, dotknij Anuluj i zaznacz drugi punkt"</strin
   <string name="morphe_sb_stats_saved_hour_format">%1$s godzin %2$s minut</string>
   <string name="morphe_sb_stats_saved_minute_format">%1$s minut %2$s sekund</string>
   <string name="morphe_sb_stats_saved_second_format">%s sekund</string>
-  <string name="morphe_sb_color_opacity_label">Przezroczystość:</string>
+  <string name="morphe_sb_color_opacity_label">Krycie:</string>
   <string name="morphe_sb_color_dot_label">Kolor:</string>
   <string name="morphe_sb_about_title">Informacje</string>
   <string name="morphe_sb_about_api_summary">"Dane są dostarczane przez API SponsorBlock

@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock\'un sunucuya çağrı yapmak için kullandığı adres</string>
   <string name="morphe_sb_channel_whitelist_title">Kanal beyaz listesi</string>
   <string name="morphe_sb_channel_whitelist_summary">Beyaz listeye alınmış kanallar için SponsorBlock devre dışıdır</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Şu anki kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Beyaz listeye ekle</string>
-  <string name="morphe_sb_channel_whitelist_remove">Kaldır</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Beyaz listeye alınmış kanallar</string>
-  <string name="morphe_sb_channel_whitelist_empty">Beyaz listeye alınmış kanal yok</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal beyaz listeye eklendi</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal beyaz listeden kaldırıldı</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Beyaz listeye alınmış bir kanalda bildirim yap</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Beyaz listeye alınmış bir kanal için SponsorBlock devre dışı bırakıldığında bildirim gösterir</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock bu kanal için devre dışı bırakıldı</string>

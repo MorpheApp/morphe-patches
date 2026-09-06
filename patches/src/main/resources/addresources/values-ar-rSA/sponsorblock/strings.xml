@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">العنوان الذي يستخدمه SponsorBlock لإجراء اتصالات إلى الخادم</string>
   <string name="morphe_sb_channel_whitelist_title">قائمة القنوات المسموح بها</string>
   <string name="morphe_sb_channel_whitelist_summary">تم تعطيل SponsorBlock للقنوات الموجودة في القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">القناة الحالية:</string>
-  <string name="morphe_sb_channel_whitelist_add">إضافة إلى القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_remove">إزالة</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">القنوات المدرجة في القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_empty">لا توجد قنوات في القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">تمت إضافة القناة إلى القائمة المسموح بها</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">تم إزالة القناة من القائمة المسموح بها</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">إشعار عند وجود قناة في القائمة المسموح بها</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">يعرض إشعارًا عندما يتم تعطيل SponsorBlock لقناة في القائمة المسموح بها</string>
   <string name="morphe_sb_channel_whitelisted_toast">تم تعطيل SponsorBlock لهذه القناة</string>

@@ -118,8 +118,6 @@ fun gmsCoreSupportPatch(
         arrayOf(
             "com.google" to GMS_CORE_VENDOR_GROUP_ID,
             "com.google.android.gms" to "$GMS_CORE_VENDOR_GROUP_ID.android.gms",
-            // No vendor prefix for whatever reason...
-            "subscribedfeeds" to "$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds",
 
             // Package names.
             "$fromPackageName.SuggestionProvider" to "$toPackageName.SuggestionProvider",
@@ -147,12 +145,6 @@ fun gmsCoreSupportPatch(
                             "content://${authority.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)}",
                         )
                     }
-                }
-
-                // gms also has a 'subscribedfeeds' authority, check for that one too
-                val subFeedsUriPrefix = "content://subscribedfeeds"
-                if (str.startsWith(subFeedsUriPrefix)) {
-                    return str.replace(subFeedsUriPrefix, "content://$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds")
                 }
             }
 
@@ -268,7 +260,6 @@ private object Constants {
     val ACTIONS = setOf(
         "com.google.android.c2dm.intent.RECEIVE",
         "com.google.android.c2dm.intent.REGISTER",
-        "com.google.android.c2dm.intent.REGISTRATION",
         "com.google.android.c2dm.intent.UNREGISTER",
         "com.google.android.contextmanager.service.ContextManagerService.START",
         "com.google.android.gcm.intent.SEND",
@@ -285,7 +276,6 @@ private object Constants {
         "com.google.android.gms.ads.service.CONSENT_LOOKUP",
         "com.google.android.gms.ads.service.HTTP",
         "com.google.android.gms.analytics.service.START",
-        "com.google.android.gms.app.settings.GoogleSettingsLink",
         "com.google.android.gms.appstate.service.START",
         "com.google.android.gms.appusage.service.START",
         "com.google.android.gms.asterism.service.START",
@@ -392,6 +382,7 @@ private object Constants {
         "com.google.android.gms.location.reporting.service.START",
         "com.google.android.gms.location.settings.LOCATION_HISTORY",
         "com.google.android.gms.location.settings.LOCATION_REPORTING_SETTINGS",
+        "com.google.android.location.internal.GoogleLocationManagerService",
         "com.google.android.gms.locationsharing.api.START",
         "com.google.android.gms.locationsharingreporter.service.START",
         "com.google.android.gms.lockbox.service.START",
@@ -469,6 +460,7 @@ private object Constants {
         "com.google.android.gms.vehicle.cabin.service.START",
         "com.google.android.gms.vehicle.climate.service.START",
         "com.google.android.gms.vehicle.info.service.START",
+        "com.google.android.gms.wallet.firstparty.ACTION_PURCHASE_MANAGER",
         "com.google.android.gms.wallet.service.BIND",
         "com.google.android.gms.walletp2p.service.firstparty.BIND",
         "com.google.android.gms.walletp2p.service.zeroparty.BIND",
@@ -483,8 +475,6 @@ private object Constants {
         "com.google.android.mdh.service.listener.START",
         "com.google.android.mdh.service.START",
         "com.google.android.mobstore.service.START",
-        "com.google.firebase.auth.api.gms.service.START",
-        "com.google.firebase.dynamiclinks.service.START",
         "com.google.iid.TOKEN_REQUEST",
         "com.google.android.gms.location.places.ui.PICK_PLACE",
     )
@@ -498,6 +488,7 @@ private object Constants {
         "com.google.android.gms.fonts",
         "com.google.android.gms.phenotype",
         "com.google.android.gsf.gservices",
+        "com.google.android.gsf.subscribedfeeds",
         "com.google.settings",
     )
 }

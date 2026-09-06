@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Heitið sem SponsorBlock notar til að gera köll til netþjónsins</string>
   <string name="morphe_sb_channel_whitelist_title">Rásarhvíttlisti</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock er óvirkur fyrir hvítlistaða rásir</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Núverandi rás:</string>
-  <string name="morphe_sb_channel_whitelist_add">Bæta við á hvítlista</string>
-  <string name="morphe_sb_channel_whitelist_remove">Fjarlægja</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Hvítlistaðar rásir</string>
-  <string name="morphe_sb_channel_whitelist_empty">Engar rásir á hvítlista</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Rás bætt við á hvítlista</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Rás fjarlægð úr hvítlista</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Láta vita um hvíttlistu rás</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Sýnir tilkynningu þegar SponsorBlock er óvirkur fyrir hvítlistaða rás</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock óvirkur fyrir þessa rás</string>

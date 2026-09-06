@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Lire les morceaux audio de l\'album</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Lire la version audio des chansons de l’album au lieu du clip vidéo. Nécessite \'Falsifier les flux vidéo\'</string>
+  <string name="morphe_music_play_album_songs_summary">Lire la version audio des chansons de l\'album au lieu du clip vidéo. Nécessite \'Falsifier les flux vidéo\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Téléchargez des vidéos, des podcasts ou des chansons avec des applications de téléchargement tierces</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -297,6 +297,8 @@ YouTube Music 8.x — le fondu enchaîné ne fonctionne que sur les versions 9.x
   <string name="morphe_music_scrobbling_custom_regex_summary">Entrez une expression régulière personnalisée pour supprimer le texte supplémentaire des titres de chansons, des noms d\'artistes ou des albums. Exemple : (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Analyser l\'artiste et le morceau à partir du titre</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Extrait le nom de l\'artiste et le nom du morceau à partir du titre de la vidéo en utilisant le séparateur \" - \". Utile pour les contenus réimportés, où le nom de la chaîne peut être utilisé comme nom de l\'artiste.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Renseigner l\'album manquant</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Lorsque la musique ne contient pas d\'album, recherchez-la sur Last.fm pour compléter votre scrobble</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">À propos du scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

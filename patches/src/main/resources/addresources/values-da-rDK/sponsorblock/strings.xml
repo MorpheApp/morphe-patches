@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Adressen SponsorBlock bruger til at foretage opkald til serveren</string>
   <string name="morphe_sb_channel_whitelist_title">Kanal-hvidliste</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock er deaktiveret for kanaler på hvidlisten</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Aktuel kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Tilføj til hvidliste</string>
-  <string name="morphe_sb_channel_whitelist_remove">Fjern</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Hvidlistede kanaler</string>
-  <string name="morphe_sb_channel_whitelist_empty">Ingen kanaler er hvidlistet</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal tilføjet til hvidliste</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal fjernet fra hvidliste</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notificér ved hvidlistet kanal</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Viser en notifikation, når SponsorBlock er deaktiveret for en hvidlistet kanal</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock deaktiveret for denne kanal</string>

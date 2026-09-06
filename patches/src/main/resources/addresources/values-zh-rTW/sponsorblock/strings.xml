@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock 用來和伺服器互動的位址</string>
   <string name="morphe_sb_channel_whitelist_title">頻道白名單</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock 已為白名單頻道停用</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">目前頻道：</string>
-  <string name="morphe_sb_channel_whitelist_add">加入白名單</string>
-  <string name="morphe_sb_channel_whitelist_remove">刪除</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">已加入白名單的頻道</string>
-  <string name="morphe_sb_channel_whitelist_empty">沒有已加入白名單的頻道</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">頻道已加入白名單</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">頻道已從白名單中移除</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">在白名單頻道上發出通知</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">當為已加入白名單的頻道停用 SponsorBlock 時顯示通知</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock 已為此頻道停用</string>

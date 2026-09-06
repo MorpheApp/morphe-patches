@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Адрес, используемый SponsorBlock для вызовов на сервер</string>
   <string name="morphe_sb_channel_whitelist_title">Белый список каналов</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock отключен для каналов из белого списка</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Текущий канал:</string>
-  <string name="morphe_sb_channel_whitelist_add">Добавить в список разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_remove">Удалить</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Каналы в списке разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_empty">Нет каналов в списке разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Канал добавлен в список разрешенных</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Канал удален из списка разрешенных</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Уведомлять о каналах из белого списка</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Показывать уведомление, когда SponsorBlock отключен для канала в списке разрешенных</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock отключен для этого канала</string>

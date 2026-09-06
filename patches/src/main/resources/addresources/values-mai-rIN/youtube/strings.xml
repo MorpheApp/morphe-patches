@@ -160,6 +160,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">शॉपिंग लिंक छिपाएं</string>
   <string name="morphe_hide_video_ads_title">वीडियो विज्ञापन छिपाएं</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium प्रमोशन छिपाइ</string>
+  <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -220,11 +221,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_title">स्वाइप ओवरले टाइमआउट</string>
   <string name="morphe_swipe_overlay_timeout_summary">ओवरले दिखाई देने वाले मिलीसेकंड की मात्रा</string>
   <string name="morphe_swipe_overlay_background_opacity_title">स्वाइप ओवरले पृष्ठभूमि अस्पष्टता</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">स्वाइप ओवरले अस्पष्टता 0-100 के बीच होनी चाहिए</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">स्वाइप ओवरले चमक रंग</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">स्वाइप ओवरले वॉल्यूम रंग</string>
   <string name="morphe_swipe_text_overlay_size_title">स्वाइप ओवरले टेक्स्ट आकार</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">टेक्स्ट आकार 1-30 के बीच होना चाहिए</string>
   <string name="morphe_swipe_threshold_title">स्वाइप परिमाण थ्रेशोल्ड</string>
   <string name="morphe_swipe_volume_sensitivity_title">वॉल्यूम स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_overlay_style_title">स्वाइप ओवरले शैली</string>
@@ -340,41 +339,41 @@ Second \"item\" text"</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_ai_button_title">एआई बटन लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\'ऑटो-डब\' लेबल छिपाइ</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">\'सुपर धन्यवाद\' बटन छिपाइ</string>
+  <string name="morphe_hide_shorts_channel_bar_title">च्यानल बार लुकाउनुहोस्</string>
+  <string name="morphe_hide_shorts_comments_button_title">टिप्पणी बटन लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_effect_button_title">इफेक्ट बटन लुकाउनुहोस्</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">भिडियो लिङ्क लेबल लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_green_screen_button_title">\'ग्रीन स्क्रीन\' बटन छिपाइ</string>
   <string name="morphe_hide_shorts_hashtag_button_title">ह्यासट्याग बटन लुकाउनुहोस्</string>
+  <string name="morphe_hide_shorts_info_panel_title">जानकारी प्यानल लुकाउनुहोस्</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">जवाइन बटन लुकाउनुहोस्</string>
+  <string name="morphe_hide_shorts_like_button_title">लाइक बटन लुकाउनुहोस्</string>
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">लाइक बटन फाउन्टेशन लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_live_preview_title">लाइव पूर्वावलोकन छिपाइ</string>
   <string name="morphe_hide_shorts_location_label_title">स्थान लेबल लुकाउनुहोस्</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">नेभिगेसन बार लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_new_posts_button_title">\'नया पोस्ट\' बटन छिपाइ</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">पज गरिएका ओभरले बटनहरू लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_preview_comment_title">टिप्पणी पूर्वावलोकन लुकाउनुहोस्</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">रिमिक्स बटन लुकाउनुहोस्</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_save_sound_button_title">\'संगीत सहेज\' बटन छिपाइ</string>
   <string name="morphe_hide_shorts_search_suggestions_title">साउंड बटन देखाइएको छ</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">साझेदारी बटन लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_shop_button_title">सर्च सुझावहरू देखाइका छन्</string>
+  <string name="morphe_hide_shorts_sound_button_title">ध्वनि बटन लुकाउनुहोस्</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">ध्वनि मेटाडाटा लेबल लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_subscribe_button_title">स्टिकरहरू देखाइका छन्</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">\'सुपर धन्यवाद\' बटन छिपाइ</string>
   <string name="morphe_hide_shorts_tagged_products_title">सब्सक्राइब बटन देखाइएको छ</string>
   <string name="morphe_hide_shorts_upcoming_button_title">ट्याग्ड उत्पादनहरू देखाइका छन्</string>
   <string name="morphe_hide_shorts_use_sound_button_title">\'एह ध्वनि क उपयोग करी\' बटन छिपाइ</string>
   <string name="morphe_hide_shorts_use_template_button_title">\'एह टेम्पलेट क उपयोग करी\' बटन छिपाइ</string>
-  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <string name="morphe_hide_shorts_like_fountain_title">लाइक बटन फाउन्टेशन लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_like_button_title">लाइक बटन लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_comments_button_title">टिप्पणी बटन लुकाउनुहोस्</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">साझेदारी बटन लुकाउनुहोस्</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">रिमिक्स बटन लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_sound_button_title">ध्वनि बटन लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_info_panel_title">जानकारी प्यानल लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_channel_bar_title">च्यानल बार लुकाउनुहोस्</string>
   <string name="morphe_hide_shorts_video_title_title">भिडियो शीर्षक लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_sound_metadata_label_title">ध्वनि मेटाडाटा लेबल लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_full_video_link_label_title">भिडियो लिङ्क लेबल लुकाउनुहोस्</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">नेभिगेसन बार लुकाउनुहोस्</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">किनाराको स्क्रिनमा सुझाव भएको भिडियो लुकाउनुहोस्</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
@@ -393,7 +392,6 @@ Second \"item\" text"</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेयर ओभरले अपारदर्शिता</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">प्लेयर ओभरले अपारदर्शिता 0-100 बीचमा हुनुपर्छ</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
@@ -458,7 +456,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओवरले बटन छुपावे</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होखे के चाहिए</string>
   <string name="morphe_miniplayer_opacity_title">ओवरले अपारदर्शिता</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">मिनीप्लेयर ओवरले अपारदर्शिता 0 और 100 के बीच होखे के चहिए</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">सक्षम ग्रेडियेंट लोडिंग स्क्रीन</string>
@@ -531,6 +528,7 @@ Second \"item\" text"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_playback_speed_default_title">डिफ़ॉल्ट प्लेबैक स्पीड</string>
   <string name="morphe_remember_playback_speed_toast">बदलिएको पूर्वनिर्धारित प्लेब्याक गति: %s</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR वीडियो अक्षम करी</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"लाभ:

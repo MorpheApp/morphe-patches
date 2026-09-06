@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">L\'adresse que SponsorBlock utilise pour effectuer des appels au serveur</string>
   <string name="morphe_sb_channel_whitelist_title">Liste blanche des chaînes</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock est désactivé pour les chaînes de la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Chaîne actuelle :</string>
-  <string name="morphe_sb_channel_whitelist_add">Ajouter à la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_remove">Retirer</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Chaînes de la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_empty">Aucune chaîne dans la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Chaîne ajoutée à la liste blanche</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Chaîne retirée de la liste blanche</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Notifier pour les chaînes de la liste blanche</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Affiche une notification lorsque SponsorBlock est désactivé pour une chaîne dans la liste blanche</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock est désactivé pour cette chaîne</string>

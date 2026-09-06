@@ -39,6 +39,8 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
+import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
+import app.morphe.extension.youtube.whitelist.WhitelistType;
 import kotlin.Unit;
 
 /**
@@ -255,10 +257,10 @@ public final class YouTubeSponsorBlockConfig implements Configuration {
 
     private static final ChannelWhitelistAdapter YT_CHANNEL_WHITELIST = new ChannelWhitelistAdapter() {
         @Override public boolean isChannelWhitelisted(@Nullable String channelId) {
-            return channelId != null && SponsorBlockChannelWhitelist.isChannelWhitelisted(channelId);
+            return ChannelWhitelist.isChannelWhitelisted(WhitelistType.SPONSOR_BLOCK, channelId);
         }
         @Override public boolean isCurrentChannelWhitelisted() {
-            return SponsorBlockChannelWhitelist.isCurrentChannelWhitelisted();
+            return ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.SPONSOR_BLOCK);
         }
     };
 }

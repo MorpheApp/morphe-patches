@@ -11,6 +11,7 @@
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.GMS_CORE_IGNORED_VERSION;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -29,6 +30,9 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -57,6 +61,13 @@ public class GmsCoreSupportPatch {
             = "?app=MicroG";
     private static final String BUILD_MANUFACTURER
             = Build.MANUFACTURER.toLowerCase(Locale.ROOT).replace(" ", "-");
+
+    /**
+     * GitHub API URL for the latest stable MicroG-RE release.
+     * The /releases/latest endpoint only returns non-prerelease, non-draft releases.
+     */
+    private static final String MICROG_LATEST_RELEASE_API_URL =
+            "https://api.github.com/repos/MorpheApp/MicroG-RE/releases/latest";
 
     /**
      * If a manufacturer specific page exists on DontKillMyApp.
@@ -168,6 +179,9 @@ public class GmsCoreSupportPatch {
                 return;
             }
 
+            // Check if GmsCore is outdated.
+            checkForMicroGUpdate(context);
+
             // Check if GmsCore is whitelisted from battery optimizations.
             if (isAndroidAutomotive(context)) {
                 // Ignore Android Automotive devices (Google built-in),
@@ -207,6 +221,125 @@ public class GmsCoreSupportPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "checkGmsCore failure", ex);
         }
+    }
+
+    private static void showOutdatedMicroGDialog(Activity context, String installedVersion, String latestVersion) {
+        // Use a delay to allow the activity to finish initializing.
+        // Otherwise, if device is in dark mode the dialog is shown with wrong color scheme.
+        Utils.runOnMainThreadDelayed(() -> {
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    context,
+                    str("gms_core_dialog_title"), // Title.
+                    String.format(Locale.ROOT,
+                            str("gms_core_dialog_outdated_message"), installedVersion, latestVersion), // Message.
+                    null, // No EditText.
+                    str("gms_core_dialog_update_text"), // Update button text.
+                    () -> open(context, getGmsCoreDownload()), // Update action.
+                    null, // No Cancel button.
+                    str("gms_core_dialog_ignore_text"), // Ignore button text.
+                    () -> GMS_CORE_IGNORED_VERSION.save(latestVersion), // Ignore action: persist and dismiss.
+                    true // Dismiss dialog when the Ignore button is clicked.
+            );
+
+            Dialog dialog = dialogPair.first;
+            dialog.setCancelable(true);
+            Utils.showDialog(context, dialog);
+        }, 100);
+    }
+
+    /**
+     * Compares the installed MicroG version against the latest stable version fetched from GitHub,
+     * and shows the update dialog when the installed version is older. Runs in the background.
+     */
+    private static void checkForMicroGUpdate(Activity context) {
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                String installedVersionName = context.getPackageManager()
+                        .getPackageInfo(GMS_CORE_PACKAGE_NAME, 0).versionName;
+                if (installedVersionName == null || parseVersion(installedVersionName) == null) {
+                    // Unknown installed version format, do not nag the user.
+                    Logger.printInfo(() -> "Unknown installed version: " + installedVersionName);
+                    return;
+                }
+
+                String latestVersionName = fetchLatestMicroGVersion();
+                if (latestVersionName == null || compareVersions(installedVersionName, latestVersionName) >= 0) {
+                    // Version could not be fetched, or MicroG is already up to date.
+                    return;
+                }
+
+                String ignoredVersion = GMS_CORE_IGNORED_VERSION.get();
+                if (!ignoredVersion.isEmpty() && compareVersions(latestVersionName, ignoredVersion) <= 0) {
+                    // The user already ignored this version (or a newer one), do not ask again.
+                    return;
+                }
+
+                Logger.printInfo(() -> "MicroG is outdated, installed: " + installedVersionName
+                        + " latest: " + latestVersionName);
+                Utils.runOnMainThread(() -> showOutdatedMicroGDialog(context, installedVersionName, latestVersionName));
+            } catch (Exception ex) {
+                Logger.printInfo(() -> "Could not check MicroG update: " + ex);
+            }
+        });
+    }
+
+    /**
+     * @return The latest stable MicroG version name from the main branch of the MicroG-RE repository,
+     *         or null if it could not be fetched or parsed.
+     */
+    @Nullable
+    private static String fetchLatestMicroGVersion() throws IOException {
+        HttpURLConnection connection = Requester.openConnection(MICROG_LATEST_RELEASE_API_URL);
+        connection.setFixedLengthStreamingMode(0);
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        final int responseCode = connection.getResponseCode();
+        if (responseCode != HttpURLConnection.HTTP_OK) {
+            Logger.printInfo(() -> "Could not fetch release version, response code: " + responseCode);
+            connection.disconnect();
+            return null;
+        }
+        try {
+            // The latest release endpoint returns the newest stable (non-prerelease) tag.
+            return Requester.parseJSONObjectAndDisconnect(connection).optString("tag_name", null);
+        } catch (JSONException ex) {
+            Logger.printInfo(() -> "Could not parse release version", ex);
+            return null;
+        }
+    }
+
+    /**
+     * Compares two MicroG version names such as "7.1.0-dev.2".
+     * @return A negative value if a is older than b, zero if equal, a positive value if newer.
+     */
+    private static int compareVersions(String a, String b) {
+        int[] av = parseVersion(a);
+        int[] bv = parseVersion(b);
+        if (av == null || bv == null) return 0;
+        for (int i = 0; i < 3; i++) {
+            if (av[i] != bv[i]) return Integer.compare(av[i], bv[i]);
+        }
+        return 0;
+    }
+
+    /**
+     * Parses a MicroG version name such as "7.1.0-dev.2" into its numeric parts.
+     * Returns null if the version does not start with a parseable number.
+     */
+    @Nullable
+    private static int[] parseVersion(String versionName) {
+        if (versionName == null) return null;
+        String[] parts = versionName.split("-")[0].split("\\.");
+        int[] parsed = new int[3];
+        for (int i = 0; i < Math.min(3, parts.length); i++) {
+            try {
+                parsed[i] = Integer.parseInt(parts[i]);
+            } catch (NumberFormatException e) {
+                if (i == 0) return null;
+                break;
+            }
+        }
+        return parsed;
     }
 
     @SuppressLint("BatteryLife") // Permission is part of GmsCore

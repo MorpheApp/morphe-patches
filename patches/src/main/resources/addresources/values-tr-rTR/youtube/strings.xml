@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Arka planda oynatma kısıtlamalarını kaldır</string>
   <string name="morphe_shorts_disable_background_playback_title">Arka planda oynatmayı devre dışı bırak</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Cihaz kilitliyken otomatik duraklat</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Kapalı</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Kilitliyken her zaman duraklat</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Kablosuz ses bağlı değilse duraklat</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Kaydırma hız sınırını devre dışı bırak</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_ask_section_title">Soru bölümünü gizle</string>
   <string name="morphe_hide_attributes_section_title">Özellikler bölümünü gizle</string>
   <string name="morphe_hide_attributes_section_summary">Öne çıkan yerler, Oyunlar, Müzik ve Bahsedilen kişiler bölümlerini gizler</string>
+  <string name="morphe_hide_channel_links_section_title">Kanal bağlantıları bölümünü gizle</string>
   <string name="morphe_hide_chapters_section_title">Bölümler kısmını gizle</string>
   <string name="morphe_hide_corrections_section_title">Düzeltmeler bölümünü gizle</string>
   <string name="morphe_hide_course_progress_section_title">\'Kursun ilerleme durumu\' bölümünü gizle</string>
@@ -326,7 +331,37 @@ Sınırlamalar:
   <string name="morphe_hide_aislist_attribution_summary">"Veriler AiSList tarafından sağlanır
 
 AiSlopList.com'u açmak ve diğer platformlar için indirmeleri görmek için buraya dokunun"</string>
+  <string name="morphe_aislist_submit_category_title">Yapay zekâ kanallarını bildir</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">Video menüsüne rapor öğesi ekle</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">Video menüsüne, bir videonun kanalını AiSList\'e bildiren bir öğe ekle</string>
+  <string name="morphe_aislist_submit_username_title">Gönderen adı</string>
+  <string name="morphe_aislist_submit_username_summary">Herkese açık AiSList liderlik tablosunda raporlarınızın yanında görünen ad. Bu alan boşken raporlama kullanılamaz.</string>
+  <string name="morphe_aislist_submit_title">Yapay zekâ kanalını bildir</string>
+  <string name="morphe_aislist_submit_dialog_message">"%s kanalını, bu videoyu kanıt olarak kullanarak AiSList'e bildirmek istiyor musun?
+
+Yalnızca şu kanalları bildir:
+• Ana içerik olarak yapay zekâ sesleri, görselleri, senaryoları veya müziği kullanıyor
+• Yapay zekâ araçlarıyla ve az insan emeğiyle toplu içerik üretiyor
+
+Yalnızca yapay zekâyı tartışan veya videolarının bazı bölümlerinde yapay zekâ kullanan kanalları bildirme.
+
+Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kaldırma işlemi yalnızca GitHub üzerinden bir istekle mümkündür."</string>
+  <string name="morphe_aislist_submit_already_blocklisted">Bu kanal zaten AiSList engel listesinde.</string>
+  <string name="morphe_aislist_submit_already_warnlisted">Bu kanal zaten AiSList uyarı listesinde.</string>
+  <string name="morphe_aislist_submit_dialog_confirm">Bildir</string>
+  <string name="morphe_aislist_submit_no_username">Kanalları bildirmek için yapay zekâ kanal filtresi ayarlarında bir gönderen adı belirleyin.</string>
+  <string name="morphe_aislist_submit_resolving">Kanal aranıyor…</string>
+  <string name="morphe_aislist_submit_failed_channel">Bu videonun kanalı bulunamadı.</string>
+  <string name="morphe_aislist_submit_success">Kanal bildirildi ve inceleme bekleniyor.</string>
+  <string name="morphe_aislist_submit_failed_conflict">AiSList raporu kaydedemedi, lütfen daha sonra tekrar deneyin.</string>
+  <string name="morphe_aislist_submit_failed_rate_limit">Çok fazla rapor gönderildi, lütfen daha sonra tekrar deneyin.</string>
+  <string name="morphe_aislist_submit_failed_rejected">AiSList raporu reddetti.</string>
+  <string name="morphe_aislist_submit_failed">Rapor gönderilemedi, bağlantınızı kontrol edin.</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_ads_channel_whitelist_title">Kanal reklam beyaz listesi</string>
+  <string name="morphe_ads_channel_whitelist_summary">Beyaz listedeki kanalların videoları reklamlarla oynatılır, böylece içerik üreticilerine ödeme yapılır. Diğer tüm kanallarda reklamlar engellenmeye devam eder.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">Kanalı reklam beyaz listesine ekle</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">Kanalı reklam beyaz listesinden kaldır</string>
   <string name="morphe_hide_creator_store_shelf_title">İçerik üretici mağazası rafını gizle</string>
   <string name="morphe_hide_end_screen_store_banner_title">Bitiş ekranındaki mağaza afişini gizle</string>
   <string name="morphe_hide_general_ads_title">Genel reklamları gizle</string>
@@ -337,6 +372,14 @@ AiSlopList.com'u açmak ve diğer platformlar için indirmeleri görmek için bu
   <string name="morphe_hide_shopping_links_title">Alışveriş bağlantılarını gizle</string>
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizle</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium promosyonlarını gizle</string>
+  <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">Şu anki kanal:</string>
+  <string name="morphe_channel_whitelist_add">Beyaz listeye ekle</string>
+  <string name="morphe_channel_whitelist_remove">Kaldır</string>
+  <string name="morphe_channel_whitelist_channels_header">Beyaz listeye alınmış kanallar</string>
+  <string name="morphe_channel_whitelist_empty">Beyaz listeye alınmış kanal yok</string>
+  <string name="morphe_channel_whitelist_channel_added">Kanal beyaz listeye eklendi</string>
+  <string name="morphe_channel_whitelist_channel_removed">Kanal beyaz listeden kaldırıldı</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Bağlantı panoya kopyalandı</string>
@@ -469,6 +512,10 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_queue_override_flyout_menu_summary">YouTube sırası yerine Morphe sırasını açar</string>
   <string name="morphe_queue_add_flyout_menu_title">Akış açılır menüsüne kuyruk menü öğesi ekle</string>
   <string name="morphe_queue_add_flyout_menu_summary">Ek bir açılır menü öğesi ekler. \"Kuyruğa ekle\" gösterilmiyorsa bunu etkinleştirin.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Açılır menüde reklam beyaz listesi</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Bu videonun kanalında reklamların oynatılmasına izin veren bir açılır menü öğesi ekler.</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Açılır menüde hız beyaz listesi</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Bu videonun kanalını her zaman 1.0x hızda oynatan bir açılır menü öğesi ekler.</string>
   <string name="morphe_queue_manager_check_failed_auth">Giriş yapılmadı</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Oynatma listesi kimliği yok</string>
   <string name="morphe_queue_manager_check_failed_queue">Sıra boş</string>
@@ -546,7 +593,6 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini aç ve 'Vars
   <string name="morphe_swipe_overlay_timeout_summary">Panelin görünür olduğu milisaniye miktarı</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Kaydırma paneli arka plan opaklığı</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Şeffaflık seviyesini ayarlayın (0 şeffaf, 100 opak)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Kaydırma opaklığı 0-100 arasında olmalıdır</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Kaydırma katmanı parlaklık rengi</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Parlaklık kontrolleri ilerleme çubuğunun rengini ayarlayın</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Kaydırma katmanı ses rengi</string>
@@ -555,7 +601,6 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini aç ve 'Vars
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Oynatma hızı kontrolleri ilerleme çubuğunun rengini ayarlayın</string>
   <string name="morphe_swipe_text_overlay_size_title">Kaydırma katmanı metin boyutu</string>
   <string name="morphe_swipe_text_overlay_size_summary">Ekrandaki metin boyutunu ayarlayın (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Metin boyutu 1-30 arasında olmalıdır</string>
   <string name="morphe_swipe_threshold_title">Kaydırma büyüklük eşiği</string>
   <string name="morphe_swipe_threshold_summary">Bir ayarlamanın tetiklenmesi için gerekli kaydırma mesafesini ayarlayın</string>
   <string name="morphe_swipe_volume_sensitivity_title">Ses kaydırma hassasiyeti</string>
@@ -761,6 +806,8 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_hide_fullscreen_button_title">Tam ekran düğmesini gizle</string>
   <string name="morphe_hide_player_control_buttons_background_title">Oynatıcı kontrolleri arka planını gizle</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Video oynatıcı kontrollerinin etrafındaki koyu gölgelendirmeyi gizler</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Düğme arka plan opaklığı</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Oynatıcı kontrol düğmelerinin ve zaman çubuğunun arkasındaki arka planın opaklığını ayarlayın (0 görünmez, 100 opaktır).</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Önceki &amp; Sonraki düğmelerini gizle</string>
   <string name="morphe_hide_settings_button_title">Ayarlar düğmesini gizle</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -783,8 +830,6 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_hide_seekbar_thumbnail_summary">Daha önce izlediğiniz videoların kapak resimlerinde gösterilen izleme ilerleme çubuğunu gizler</string>
   <string name="morphe_fullscreen_large_seekbar_title">Tam ekran büyük zaman çubuğunu etkinleştir</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">Shorts oynatıcı</string>
-  <string name="morphe_shorts_player_screen_summary">Shorts oynatıcısında hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_shorts_category_title">Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_channel_title">Kanal sayfasında gizle</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -794,45 +839,48 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_hide_shorts_subscriptions_title">Abonelikler akışında gizle</string>
   <string name="morphe_hide_shorts_video_description_title">Video açıklamasında gizle</string>
   <string name="morphe_hide_shorts_history_title">İzleme geçmişinde gizle</string>
+  <string name="morphe_shorts_player_screen_title">Shorts oynatıcı</string>
+  <string name="morphe_shorts_player_screen_summary">Shorts oynatıcısında hangi bileşenlerin görüneceğini seçin</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Çift dokunarak beğenmeyi devre dışı bırak</string>
   <string name="morphe_hide_shorts_ai_button_title">Yapay zeka düğmesini gizle</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\'Dublajlı\' etiketini gizle</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Süper Teşekkürler düğmesini gizle</string>
+  <string name="morphe_hide_shorts_channel_bar_title">Kanal çubuğunu gizle</string>
+  <string name="morphe_hide_shorts_comments_button_title">Yorumlar düğmesini gizle</string>
   <string name="morphe_hide_shorts_effect_button_title">Efekt düğmesini gizle</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">Video bağlantısı etiketini gizle</string>
+  <string name="morphe_hide_shorts_gesture_hints_title">Hareket ipuçlarını gizle</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Yeşil ekran düğmesini gizle</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Hashtag düğmesini gizle</string>
+  <string name="morphe_hide_shorts_info_panel_title">Bilgi panelini gizle</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">Katıl düğmesini gizle</string>
+  <string name="morphe_hide_shorts_like_button_title">Beğen düğmesini gizle</string>
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">Beğeni düğmesi çeşme animasyonunu gizle</string>
   <string name="morphe_hide_shorts_live_preview_title">Canlı ön izlemesini gizle</string>
   <string name="morphe_hide_shorts_location_label_title">Konum etiketini gizle</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Yeni gönderiler düğmesini gizle</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Duraklama katmanı düğmelerini gizle</string>
   <string name="morphe_hide_shorts_preview_comment_title">Ön izlenen yorumu gizle</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">Remix düğmesini gizle</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Kaydet düğmesini gizle</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Müziği kaydet düğmesini gizle</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Arama önerilerini gizle</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">Paylaş düğmesini gizle</string>
   <string name="morphe_hide_shorts_shop_button_title">Alışveriş düğmesini gizle</string>
+  <string name="morphe_hide_shorts_sound_button_title">Ses düğmesini gizle</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">Ses bilgisi etiketini gizle</string>
   <string name="morphe_hide_shorts_subscribe_button_title">Abone ol düğmesini gizle</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Süper Teşekkürler düğmesini gizle</string>
   <string name="morphe_hide_shorts_tagged_products_title">Etiketli ürünleri gizle</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Gelecek düğmesini gizle</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Bu sesi kullan düğmesini gizle</string>
   <string name="morphe_hide_shorts_use_template_button_title">Bu şablonu kullan düğmesini gizle</string>
-  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <string name="morphe_hide_shorts_like_fountain_title">Beğeni düğmesi çeşme animasyonunu gizle</string>
-  <string name="morphe_hide_shorts_like_button_title">Beğen düğmesini gizle</string>
-  <string name="morphe_hide_shorts_comments_button_title">Yorumlar düğmesini gizle</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Kaydet düğmesini gizle</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Paylaş düğmesini gizle</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Remix düğmesini gizle</string>
-  <string name="morphe_hide_shorts_sound_button_title">Ses düğmesini gizle</string>
-  <string name="morphe_hide_shorts_info_panel_title">Bilgi panelini gizle</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Kanal çubuğunu gizle</string>
   <string name="morphe_hide_shorts_video_title_title">Video başlığını gizle</string>
-  <string name="morphe_hide_shorts_sound_metadata_label_title">Ses bilgisi etiketini gizle</string>
-  <string name="morphe_hide_shorts_full_video_link_label_title">Video bağlantısı etiketini gizle</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">Çift dokunarak beğenmeyi devre dışı bırak</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Bitiş ekranı önerilen videosunu gizle</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Video bittikten sonra görünen önerilen video katmanını gizler
@@ -882,7 +930,6 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Oynatıcı katmanı opaklığı</string>
   <string name="morphe_player_overlay_opacity_summary">Şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Oynatıcı katmanı opaklığı 0-100 arasında olmalıdır</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Arama çubuğu</string>
   <string name="morphe_searchbar_type_entry_disabled">Devre dışı</string>
@@ -1002,7 +1049,6 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_miniplayer_width_dip_invalid_toast">Piksel boyutu %1$s ve %2$s arasında olmalıdır</string>
   <string name="morphe_miniplayer_opacity_title">Katman opaklığı</string>
   <string name="morphe_miniplayer_opacity_summary">Oynatma katmanının şeffaflık düzeyini ayarlayın (0 şeffaf, 100 opak)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Mini oynatıcı katman opaklığı 0-100 arasında olmalıdır</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Geri düğmesi akıştan çıkar</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geri tuşuna basmak, akışın en üstüne kaydırmak yerine her zaman uygulamadan çıkar.  This is a placeholder to ensure validity.</string>
@@ -1148,11 +1194,19 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_remember_playback_speed_toast">Varsayılan oynatma hızı %s olarak değiştirildi</string>
   <string name="morphe_disable_playback_speed_music_title">Müzik için normal hızı kullan</string>
   <string name="morphe_disable_playback_speed_music_summary">Müzik videolarını her zaman 1.0x hızında oynat</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">Kanal hız beyaz listesi</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">Beyaz listedeki kanalların videoları her zaman 1.0x hızda oynar.</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">Hız beyaz listesine kanal ekle</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">Hız beyaz listesinden kanalı kaldır</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">Ses perdesi kontrollerini etkinleştir</string>
   <string name="morphe_playback_audio_pitch_default_title">Varsayılan oynatma ses perdesi</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Varsayılan ses perdesi %s olarak ayarlandı</string>
   <string name="morphe_playback_audio_time_stretching_title">Ses zaman genişletme</string>
   <string name="morphe_playback_audio_time_stretching_summary">Hızın ve perdenin birbirinden bağımsız olarak ayarlanmasına izin verir, ses bozulmalarına neden olabilir</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Canlı yayın oynatma konumunu hatırla</string>
+  <string name="morphe_remember_livestream_position_summary">Devam eden canlı yayınlarda, geçerli canlı konuma atlamak yerine oynatma konumunuzu hatırlar ve kaldığı yerden devam eder.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Bu özellik, 24/7 canlı yayınlar ve her zaman açık olan diğer yayınlarla çalışmaz.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR videoyu devre dışı bırak</string>
   <string name="morphe_force_hdr_video_title">HDR videoyu zorla</string>

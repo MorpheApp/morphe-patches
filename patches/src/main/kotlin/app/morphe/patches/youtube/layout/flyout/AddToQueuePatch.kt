@@ -24,6 +24,7 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.layout.hide.general.hideLayoutComponentsPatch
+import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.hidePlayerFlyoutMenuComponentsPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -78,6 +79,7 @@ val addToQueuePatch = bytecodePatch(
         settingsPatch,
         lithoFilterPatch,
         hideLayoutComponentsPatch,
+        hidePlayerFlyoutMenuComponentsPatch,
         versionCheckPatch,
         videoInformationPatch,
         elementProtoParserHookPatch,
@@ -90,7 +92,9 @@ val addToQueuePatch = bytecodePatch(
         PreferenceScreen.FEED.addPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
-                SwitchPreference("morphe_queue_add_flyout_menu", summary = true)
+                SwitchPreference("morphe_queue_add_flyout_menu", summary = true),
+                SwitchPreference("morphe_ads_channel_whitelist_flyout_menu", summary = true),
+                SwitchPreference("morphe_playback_speed_channel_whitelist_flyout_menu", summary = true)
             )
         )
 

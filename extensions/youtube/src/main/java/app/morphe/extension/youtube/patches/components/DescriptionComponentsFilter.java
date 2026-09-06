@@ -31,6 +31,7 @@ public final class DescriptionComponentsFilter extends Filter {
     private final ByteArrayFilterGroupList featuredSectionGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup hashtagSection;
     private final ByteArrayFilterGroupList hashtagSectionGroupList = new ByteArrayFilterGroupList();
+    private final StringFilterGroup linksSection;
     private final StringFilterGroup macroMarkersCarousel;
     private final ByteArrayFilterGroupList macroMarkersCarouselGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup playlistSection;
@@ -129,6 +130,11 @@ public final class DescriptionComponentsFilter extends Filter {
                 "lens_section.e"
         );
 
+        linksSection = new StringFilterGroup(
+                Settings.HIDE_CHANNEL_LINKS_SECTION,
+                "|ContainerType|ScrollableContainerType|"
+        );
+
         macroMarkersCarousel = new StringFilterGroup(
                 null,
                 "macro_markers_carousel.e"
@@ -205,6 +211,7 @@ public final class DescriptionComponentsFilter extends Filter {
                 hypePoints,
                 infoCardsSection,
                 lensSection,
+                linksSection,
                 macroMarkersCarousel,
                 playlistSection,
                 shortsHowThisWasMadeSection,
@@ -237,6 +244,10 @@ public final class DescriptionComponentsFilter extends Filter {
 
         if (matchedGroup == hashtagSection) {
             return hashtagSectionGroupList.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == linksSection) {
+            return path.startsWith(INFOCARDS_SECTION_PATH) && path.contains("button.e");
         }
 
         if (matchedGroup == macroMarkersCarousel) {

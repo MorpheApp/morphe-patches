@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Het adres dat SponsorBlock gebruikt om oproepen naar de server te doen</string>
   <string name="morphe_sb_channel_whitelist_title">Kanaalwitte lijst</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock is uitgeschakeld voor kanalen op de uitzonderingslijst</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Huidig kanaal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Toevoegen aan de witte lijst</string>
-  <string name="morphe_sb_channel_whitelist_remove">Verwijderen</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Kanaalen op de witte lijst</string>
-  <string name="morphe_sb_channel_whitelist_empty">Geen kanalen op de witte lijst</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanaal toegevoegd aan de witte lijst</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanaal verwijderd van de witte lijst</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Waarschuw bij kanaal op witte lijst</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Toont een melding wanneer SponsorBlock is uitgeschakeld voor een kanaal op de witte lijst</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock uitgeschakeld voor dit kanaal</string>

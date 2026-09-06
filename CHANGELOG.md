@@ -1,3 +1,70 @@
+## [1.42.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.5...v1.42.0-dev.6) (2026-09-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel whitelists:** Hide injected flyout menu buttons from other unrelated menu's  ([#2808](https://github.com/MorpheApp/morphe-patches/issues/2808)) ([5ba4ab4](https://github.com/MorpheApp/morphe-patches/commit/5ba4ab46f1a1ff62a8a733adc1b52a5614208036))
+
+## [1.42.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.4...v1.42.0-dev.5) (2026-09-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - SponsorBlock:** Skip buttons not working on `21.36.45` ([f667d85](https://github.com/MorpheApp/morphe-patches/commit/f667d85352b8165b1680c54bd22e211e81e7f1ce))
+
+## [1.42.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.3...v1.42.0-dev.4) (2026-09-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel whitelists:** Whitelists buttons are visible in some flyouts ([#2802](https://github.com/MorpheApp/morphe-patches/issues/2802)) ([2f482ff](https://github.com/MorpheApp/morphe-patches/commit/2f482ff33e5b0fa59d7877b9e34b7a47aa110397))
+* **YouTube - Hide player overlay buttons:** Apply the control buttons background opacity to the player time bar ([#2805](https://github.com/MorpheApp/morphe-patches/issues/2805)) ([302ab28](https://github.com/MorpheApp/morphe-patches/commit/302ab28ce8c00b2b5a093dcbedeb739706360d67))
+* **YouTube - Hide Shorts components:** Hide new type of paused overlay button ([c958fb6](https://github.com/MorpheApp/morphe-patches/commit/c958fb666cac54aaa3c822b736db85479c4dc6db))
+
+### ✨ New Features
+
+* **YouTube Music - Scrobbling:** Add "Fill in missing album" setting ([#2666](https://github.com/MorpheApp/morphe-patches/issues/2666)) ([c94ecbd](https://github.com/MorpheApp/morphe-patches/commit/c94ecbddec7454d866c05b85926dc6670d3ef648))
+* **YouTube:** Add `Remember livestream playback position` patch ([#2753](https://github.com/MorpheApp/morphe-patches/issues/2753)) ([6252c85](https://github.com/MorpheApp/morphe-patches/commit/6252c85e7ce22ee4030a0a9b9094f467f42fa863))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.36.45` ([#2814](https://github.com/MorpheApp/morphe-patches/issues/2814)) ([07d36c3](https://github.com/MorpheApp/morphe-patches/commit/07d36c334ec9834e671bf1bb97b14f6a20dcdbbe))
+
+## [1.42.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.2...v1.42.0-dev.3) (2026-09-05)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Video quality:** Restore `ShortsPlayerState` check to fix default video quality ([b596375](https://github.com/MorpheApp/morphe-patches/commit/b59637570cc477d09a236cf14582e4b06d1abc37))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Report AI channel" video menu entry ([#2763](https://github.com/MorpheApp/morphe-patches/issues/2763)) ([17d1135](https://github.com/MorpheApp/morphe-patches/commit/17d1135c33d7af159c48198e30d14623ea738aff))
+* **YouTube - Hide Shorts components:** Add "Hide gesture hints" setting ([#2760](https://github.com/MorpheApp/morphe-patches/issues/2760)) ([73df92a](https://github.com/MorpheApp/morphe-patches/commit/73df92adf973775ac42f8d89f938bf17ec7e03b3))
+* **YouTube:** Add channel whitelists for ads and playback speed ([#2334](https://github.com/MorpheApp/morphe-patches/issues/2334)) ([4850003](https://github.com/MorpheApp/morphe-patches/commit/4850003c90948552383f7bead3e185d6085a2b57))
+
+## [1.42.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.1...v1.42.0-dev.2) (2026-09-04)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Theme:** Apply the foreground color to text and icons in more locations ([#2707](https://github.com/MorpheApp/morphe-patches/issues/2707)) ([126a7d7](https://github.com/MorpheApp/morphe-patches/commit/126a7d7baacc3783e88681028612304e54e74608))
+
+### ✨ New Features
+
+* **YouTube - Hide player overlay buttons:** Add option to change the player control buttons background opacity ([#2764](https://github.com/MorpheApp/morphe-patches/issues/2764)) ([4a2d3a4](https://github.com/MorpheApp/morphe-patches/commit/4a2d3a4ddd4006c9aa8efa2546f8d734cf85f28f))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.35.54` ([7e42c2a](https://github.com/MorpheApp/morphe-patches/commit/7e42c2a57aa3838338b02569bce5e69f102457d2))
+
+## [1.42.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0...v1.42.0-dev.1) (2026-09-03)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Hide new type of community posts ([17b13ff](https://github.com/MorpheApp/morphe-patches/commit/17b13fff559866ef733e0b738a3ab7f3ba548200))
+* **YouTube - Hide layout components:** Resolve empty channel tabs when using "Hide channel tab filter" ([#2747](https://github.com/MorpheApp/morphe-patches/issues/2747)) ([8232fa7](https://github.com/MorpheApp/morphe-patches/commit/8232fa7eeeb8d7c6e458e3ac16503fadccfceec4))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide channel links section" setting ([ddcdabe](https://github.com/MorpheApp/morphe-patches/commit/ddcdabe19a50aedb0eb80fa62de68e9d534e3167))
+* **YouTube - Remove background playback restrictions:** Add "Auto pause when device is locked" setting ([#2719](https://github.com/MorpheApp/morphe-patches/issues/2719)) ([f8bc479](https://github.com/MorpheApp/morphe-patches/commit/f8bc479af4e8b53cf1eea71cfaab923ddfb00910))
+
 ## [1.41.0](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0...v1.41.0) (2026-09-01)
 
 ### 🐛 Bug Fixes

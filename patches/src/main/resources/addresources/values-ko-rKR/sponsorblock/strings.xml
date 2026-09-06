@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock이 요청을 보낼 서버 URL입니다</string>
   <string name="morphe_sb_channel_whitelist_title">채널 화이트리스트</string>
   <string name="morphe_sb_channel_whitelist_summary">화이트리스트에 추가된 채널에서 SponsorBlock을 비활성화합니다</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">현재 채널:</string>
-  <string name="morphe_sb_channel_whitelist_add">화이트리스트에 추가</string>
-  <string name="morphe_sb_channel_whitelist_remove">제거</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">화이트리스트 채널</string>
-  <string name="morphe_sb_channel_whitelist_empty">화이트리스트 채널이 없습니다</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">채널을 화이트리스트에 추가하였습니다</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">채널을 화이트리스트에서 제거하였습니다</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">화이트리스트 채널 알림</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">화이트리스트 채널에서 SponsorBlock이 비활성화되었을 경우에 알림을 표시합니다</string>
   <string name="morphe_sb_channel_whitelisted_toast">이 채널에서 SponsorBlock이 비활성화되었습니다</string>

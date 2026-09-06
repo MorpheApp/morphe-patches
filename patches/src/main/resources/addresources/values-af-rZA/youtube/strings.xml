@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Verwyder agtergrond speel beperkings</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiveer agtergrondweergawe</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">Outomatiese onderbreking wanneer toestel gesluit is</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">Af</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">Onderbreek altyd wanneer toestel gesluit is</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">Onderbreek tensy draadlose oudio gekoppel is</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">Deaktiveer blaai-spoedlimiet</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Veranderings sluit in:
   <string name="morphe_hide_ask_section_title">Verberg Vra-afdeling</string>
   <string name="morphe_hide_attributes_section_title">Verberg Attributes-afdeling</string>
   <string name="morphe_hide_attributes_section_summary">Verberg Featured plekke, Speletjies, Musiek en People mentioned afdelings</string>
+  <string name="morphe_hide_channel_links_section_title">Versteek kanaalafdeling</string>
   <string name="morphe_hide_chapters_section_title">Verberg Chapters-afdeling</string>
   <string name="morphe_hide_corrections_section_title">Verberg Corrections-afdeling</string>
   <string name="morphe_hide_course_progress_section_title">Verberg \'Course progress\' afdeling</string>
@@ -326,7 +331,37 @@ Beperkings:
   <string name="morphe_hide_aislist_attribution_summary">"Data word verskaf deur AiSList
 
 Tik hier om AiSlopList.com oop te maak en laai aflaai vir ander platforms"</string>
+  <string name="morphe_aislist_submit_category_title">Rapporteer KI-kanale</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">Voeg \'n rapporteer-inskrywing by die videokieslys</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">Voeg \'n inskrywing by die videokieslys wat die kanaal van \'n video aan AiSList rapporteer</string>
+  <string name="morphe_aislist_submit_username_title">Indiener se naam</string>
+  <string name="morphe_aislist_submit_username_summary">Naam wat langs jou verslae op die openbare AiSList-ranglys gewys word. Rapportering is onbeskikbaar terwyl dit leeg is.</string>
+  <string name="morphe_aislist_submit_title">Rapporteer KI-kanaal</string>
+  <string name="morphe_aislist_submit_dialog_message">"Dien %s by AiSList in, deur hierdie video as bewys te gebruik?
+
+Rapporteer slegs kanale wat:
+• KI-stemme, KI-beeldmateriaal, KI-draaiboeke of KI-musiek as hul hoofinhoud gebruik
+• Inhoud in massa produseer met KI-gereedskap en min menslike werk
+
+Moenie kanale rapporteer wat net KI bespreek of KI vir sommige dele van hul video's gebruik nie.
+
+Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Verwydering is slegs moontlik deur 'n versoek op GitHub"</string>
+  <string name="morphe_aislist_submit_already_blocklisted">Hierdie kanaal is reeds op die AiSList-bloklys</string>
+  <string name="morphe_aislist_submit_already_warnlisted">Hierdie kanaal is reeds op die AiSList-waarskuwingslys</string>
+  <string name="morphe_aislist_submit_dialog_confirm">Rapporteer</string>
+  <string name="morphe_aislist_submit_no_username">Stel \'n indiener se naam in die KI-kanaalfilterinstellings in om kanale te rapporteer</string>
+  <string name="morphe_aislist_submit_resolving">Besig om die kanaal op te soek…</string>
+  <string name="morphe_aislist_submit_failed_channel">Kan nie die kanaal van hierdie video vind nie</string>
+  <string name="morphe_aislist_submit_success">Kanaal is gerapporteer en wag op hersiening</string>
+  <string name="morphe_aislist_submit_failed_conflict">AiSList kon nie die verslag stoor nie, probeer later weer</string>
+  <string name="morphe_aislist_submit_failed_rate_limit">Te veel verslae is gestuur, probeer later weer</string>
+  <string name="morphe_aislist_submit_failed_rejected">AiSList het die verslag verwerp</string>
+  <string name="morphe_aislist_submit_failed">Rapportering het misluk, kontroleer jou verbinding</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_ads_channel_whitelist_title">Kanaal-advertensiewitlys</string>
+  <string name="morphe_ads_channel_whitelist_summary">Video\'s van kanale op die witlys speel met advertensies, sodat hul skeppers betaal word. Advertensies bly op elke ander kanaal geblokkeer.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">Voeg kanaal by advertensiewitlys</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">Verwyder kanaal van advertensiewitlys</string>
   <string name="morphe_hide_creator_store_shelf_title">Verberg skepper se winkelrak</string>
   <string name="morphe_hide_end_screen_store_banner_title">Verberg eindskermwinkelbanier</string>
   <string name="morphe_hide_general_ads_title">Verberg algemene advertensies</string>
@@ -337,6 +372,14 @@ Tik hier om AiSlopList.com oop te maak en laai aflaai vir ander platforms"</stri
   <string name="morphe_hide_shopping_links_title">Verberg winkel skakels</string>
   <string name="morphe_hide_video_ads_title">Verberg video advertensies</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Verberg YouTube Premium-promosies</string>
+  <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">Huidige kanaal:</string>
+  <string name="morphe_channel_whitelist_add">Voeg toe aan witlys</string>
+  <string name="morphe_channel_whitelist_remove">Verwyder</string>
+  <string name="morphe_channel_whitelist_channels_header">Witgelyste kanale</string>
+  <string name="morphe_channel_whitelist_empty">Geen kanale op die witlys</string>
+  <string name="morphe_channel_whitelist_channel_added">Kanaal by witlys gevoeg</string>
+  <string name="morphe_channel_whitelist_channel_removed">Kanaal van witlys verwyder</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Skakel na knipbord gekopieer</string>
@@ -469,6 +512,10 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Oop die Morphe-ry vir die YouTube-ry</string>
   <string name="morphe_queue_add_flyout_menu_title">Voeg voer flyout-tou-menu-item by</string>
   <string name="morphe_queue_add_flyout_menu_summary">Voeg \'n bykomende flyout-item by. Skakel dit aan as \"Voeg by tou\" nie gewys word nie</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Advertensiewitlys in die glykieslys</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Voeg \'n glykieslys-item by wat advertensies op die kanaal van daardie video laat speel</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Spoedwitlys in die glykieslys</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Voeg \'n glykieslys-item by wat altyd die kanaal van daardie video teen 1.0x-spoed speel</string>
   <string name="morphe_queue_manager_check_failed_auth">Nie aangemeld</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Geen spyskaart-ID</string>
   <string name="morphe_queue_manager_check_failed_queue">Waglys is leeg</string>
@@ -546,7 +593,6 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_swipe_overlay_timeout_summary">Die hoeveelheid millisekondes wat die oorleg sigbaar is</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Swiep oorleg agtergrond ondeursigtigheid</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Stel die kleur van die helderheid kontrole vorderingbalk in</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">Swiep oorleg ondeursigtigheid moet tussen 0-100 wees</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Swiep oorleg helderheid kleur</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Stel die kleur van die volume kontrole vorderingbalk in</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Swiep oorleg volume kleur</string>
@@ -555,7 +601,6 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Stel die kleur van die vorderingbalk vir die spoedbeheer in</string>
   <string name="morphe_swipe_text_overlay_size_title">Swiep oorleg teks grootte</string>
   <string name="morphe_swipe_text_overlay_size_summary">Stel die vereiste swipe afstand in voordat \'n aanpassing geaktiveer word</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">Die teks grootte moet tussen 1-30 wees</string>
   <string name="morphe_swipe_threshold_title">Swiep magnitude drempel</string>
   <string name="morphe_swipe_threshold_summary">Pas hoe die volume tydens \'n swipe verander</string>
   <string name="morphe_swipe_volume_sensitivity_title">Volume swiep sensitiwiteit</string>
@@ -761,6 +806,8 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_hide_fullscreen_button_title">Verberg Volskerm-knoppie</string>
   <string name="morphe_hide_player_control_buttons_background_title">Wegspring spelerbeheer knoppie agtergrond</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Verberg die donker skaduwee rondom die videospeler se kontroles</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Agtergronddeursigtigheid van kontroleknoppies</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Pas die opasiteit van die agtergrond agter die speler se beheerknoppies en die tydbalk aan (0 is onsigbaar, 100 is ondeursigtig)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Verberg Vorige &amp; Volgende knoppies</string>
   <string name="morphe_hide_settings_button_title">Verberg Instellings-knoppie</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -783,8 +830,6 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_hide_seekbar_thumbnail_summary">Verberg die kyk vorderingbalk wat op miniatuurbeelde van video\'s wat jy reeds gekyk het gewys word</string>
   <string name="morphe_fullscreen_large_seekbar_title">Aktiveer volskerm groot skyfiebalk</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">Shorts speler</string>
-  <string name="morphe_shorts_player_screen_summary">Kies watter komponente in die Shorts-speler verskyn</string>
   <string name="morphe_hide_shorts_category_title">Verberg Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Verberg op kanaalbladsy</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -794,45 +839,48 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_hide_shorts_subscriptions_title">Verberg in Subscriptions-voer</string>
   <string name="morphe_hide_shorts_video_description_title">Verberg in videobeskrywing</string>
   <string name="morphe_hide_shorts_history_title">Verberg in kykgeskiedenis</string>
+  <string name="morphe_shorts_player_screen_title">Shorts speler</string>
+  <string name="morphe_shorts_player_screen_summary">Kies watter komponente in die Shorts-speler verskyn</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktiveer dubbeltik om te like</string>
   <string name="morphe_hide_shorts_ai_button_title">Versteek AI knoppie</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Verberg \'Auto-dubbed\' etiket</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Verberg \'Koop Super Dankie\' knoppie</string>
+  <string name="morphe_hide_shorts_channel_bar_title">Wegspring kanaalbalk</string>
+  <string name="morphe_hide_shorts_comments_button_title">Wegspring kommentaar knoppie</string>
   <string name="morphe_hide_shorts_effect_button_title">Wegspring effek knoppie</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">Verberg video skakel etiket</string>
+  <string name="morphe_hide_shorts_gesture_hints_title">Versteek gebarewenke</string>
   <string name="morphe_hide_shorts_green_screen_button_title">Verberg \'Groen skerm\' knoppie</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Wegspring hashtag knoppie</string>
+  <string name="morphe_hide_shorts_info_panel_title">Wegspring inligtingpaneel</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">Wegspring Join knoppie</string>
+  <string name="morphe_hide_shorts_like_button_title">Wegspring Like knoppie</string>
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">Wegspring Like-knoppie fontein animasie</string>
   <string name="morphe_hide_shorts_live_preview_title">Verberg lewende voorskou</string>
   <string name="morphe_hide_shorts_location_label_title">Wegspring ligginglabel</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">Verberg navigasiebalk</string>
   <string name="morphe_hide_shorts_new_posts_button_title">Verberg \'Nuwe plasings\' knoppie</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Wegspring gepouseerde oorsaak knoppies</string>
   <string name="morphe_hide_shorts_preview_comment_title">Wegspring voorskou kommentaar</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">Wegspring Remix knoppie</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">Verberg Stoor-knoppie</string>
   <string name="morphe_hide_shorts_save_sound_button_title">Verberg \'Bewaar musiek\' knoppie</string>
   <string name="morphe_hide_shorts_search_suggestions_title">Wegspring soekvoorstelle</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">Wegspring deel knoppie</string>
   <string name="morphe_hide_shorts_shop_button_title">Wegspring winkel knoppie</string>
+  <string name="morphe_hide_shorts_sound_button_title">Wegspring klank knoppie</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">Verberg klankmeta-data-etiket</string>
   <string name="morphe_hide_shorts_subscribe_button_title">Wegspring Subskribeer knoppie</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Verberg \'Koop Super Dankie\' knoppie</string>
   <string name="morphe_hide_shorts_tagged_products_title">Wegspring gekodeerde produkte</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Wegspring komende knoppie</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Verberg \'Gebruik hierdie klank\' knoppie</string>
   <string name="morphe_hide_shorts_use_template_button_title">Verberg \'Gebruik hierdie sjabloon\' knoppie</string>
-  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <string name="morphe_hide_shorts_like_fountain_title">Wegspring Like-knoppie fontein animasie</string>
-  <string name="morphe_hide_shorts_like_button_title">Wegspring Like knoppie</string>
-  <string name="morphe_hide_shorts_comments_button_title">Wegspring kommentaar knoppie</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">Verberg Stoor-knoppie</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">Wegspring deel knoppie</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">Wegspring Remix knoppie</string>
-  <string name="morphe_hide_shorts_sound_button_title">Wegspring klank knoppie</string>
-  <string name="morphe_hide_shorts_info_panel_title">Wegspring inligtingpaneel</string>
-  <string name="morphe_hide_shorts_channel_bar_title">Wegspring kanaalbalk</string>
   <string name="morphe_hide_shorts_video_title_title">Wegspring vide Titel</string>
-  <string name="morphe_hide_shorts_sound_metadata_label_title">Verberg klankmeta-data-etiket</string>
-  <string name="morphe_hide_shorts_full_video_link_label_title">Verberg video skakel etiket</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktiveer dubbeltik om te like</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">Verberg navigasiebalk</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">Verberg einde skerm voorgestelde video</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"Verberg die voorgestelde video-oorleg wat verskyn nadat die video eindig
@@ -882,7 +930,6 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Speler oorlegslaag deursigtigheid</string>
   <string name="morphe_player_overlay_opacity_summary">Pas die deursigtigheidsvlak aan (0 is deursigtig, 100 is ondeursigtig)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">Speler oorlegslaag deursigtigheid moet tussen 0-100 wees</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">Soekbalk</string>
   <string name="morphe_searchbar_type_entry_disabled">Deaktiveer</string>
@@ -1002,7 +1049,6 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel grootte moet tussen %1$s en %2$s wees</string>
   <string name="morphe_miniplayer_opacity_title">Oordekking</string>
   <string name="morphe_miniplayer_opacity_summary">Pas die deursigtigheidsvlak aan (0 is deursigtig, 100 is ondeursigtig)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">Oor</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Terugknoppie verlaat die voer</string>
   <string name="morphe_back_button_always_exits_feed_summary">Wanneer jy terug druk, verlaat jy altyd die toepassing in plaas daarvan om na die bokant van die voer te blaai</string>
@@ -1148,11 +1194,19 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <string name="morphe_remember_playback_speed_toast">Veranderde verstek speelkspoed na: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gebruik normale spoed vir musiek</string>
   <string name="morphe_disable_playback_speed_music_summary">Speel musiekvideo\'s altyd teen 1.0x spoed</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">Kanaalspoedwitlys</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">Video\'s van kanale op die witlys speel altyd teen 1.0x-spoed</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">Voeg kanaal by spoedwitlys</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">Verwyder kanaal van spoedwitlys</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">Aktiveer klanktoonhoogte-beheer</string>
   <string name="morphe_playback_audio_pitch_default_title">Verstek-afspeelklanktoonhoogte</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Verstek-klanktoonhoogte verander na: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Klanktyd-rekking</string>
   <string name="morphe_playback_audio_time_stretching_summary">Laat toe om spoed en toonhoogte onafhanklik te stel, kan klankartefakte veroorsaak</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Onthou regstreekse stroom se speelposisie</string>
+  <string name="morphe_remember_livestream_position_summary">Vir lopende regstreekse strome, onthou en hervat dit jou speelposisie in plaas daarvan om na die huidige regstreekse posisie te soek.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Hierdie funksie werk nie met 24/7-regstreekse strome en ander strome wat altyd aan is nie.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiveer HDR-video</string>
   <string name="morphe_force_hdr_video_title">Dwing HDR-video</string>

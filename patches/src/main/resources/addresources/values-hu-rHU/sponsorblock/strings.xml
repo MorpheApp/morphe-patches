@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Az a cím, amelyet a SponsorBlock a szervere eléréséhez használ</string>
   <string name="morphe_sb_channel_whitelist_title">Csatorna fehérlista</string>
   <string name="morphe_sb_channel_whitelist_summary">A SponsorBlock le van tiltva a fehérlistázott csatornákhoz.</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Jelenlegi csatorna:</string>
-  <string name="morphe_sb_channel_whitelist_add">Hozzáadás a fehérlistához</string>
-  <string name="morphe_sb_channel_whitelist_remove">Eltávolítás</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Fehérlistázott csatornák</string>
-  <string name="morphe_sb_channel_whitelist_empty">Nincs fehérlistázott csatorna</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">A csatorna hozzáadva a fehérlistához</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">A csatorna eltávolítva a fehérlistáról</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Értesítés bekapcsolása fehérlistázott csatornán</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Értesítést jelenít meg, amikor a SponsorBlock deaktiválva van egy fehérlistázott csatornán</string>
   <string name="morphe_sb_channel_whitelisted_toast">A SponsorBlock le van tiltva ezen a csatornán</string>

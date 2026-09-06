@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Η διεύθυνση που χρησιμοποιεί το SponsorBlock για να κάνει κλήσεις στο διακομιστή</string>
   <string name="morphe_sb_channel_whitelist_title">Λίστα επιτρεπόμενων καναλιών</string>
   <string name="morphe_sb_channel_whitelist_summary">Το SponsorBlock είναι απενεργοποιημένο για τα κανάλια στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Τρέχον κανάλι:</string>
-  <string name="morphe_sb_channel_whitelist_add">Προσθήκη στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_remove">Αφαίρεση</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Κανάλια στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_empty">Δεν υπάρχουν κανάλια στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Το κανάλι προστέθηκε στη λίστα επιτρεπόμενων</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Το κανάλι αφαιρέθηκε από τη λίστα επιτρεπόμενων</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Ειδοποίηση για κανάλι στη λίστα επιτρεπόμενων</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Εμφανίζει μια ειδοποίηση όταν το SponsorBlock είναι απενεργοποιημένο για ένα κανάλι στη λίστα επιτρεπόμενων</string>
   <string name="morphe_sb_channel_whitelisted_toast">Το SponsorBlock είναι απενεργοποιημένο για αυτό το κανάλι</string>

@@ -1,4 +1,16 @@
 <resources>
+    <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+    <string-array name="morphe_auto_pause_on_screen_lock_entries">
+        <item>@string/morphe_auto_pause_on_screen_lock_off</item>
+        <item>@string/morphe_auto_pause_on_screen_lock_always</item>
+        <item>@string/morphe_auto_pause_on_screen_lock_except_wireless</item>
+    </string-array>
+    <string-array name="morphe_auto_pause_on_screen_lock_entry_values" translatable="false">
+        <item>OFF</item>
+        <item>ALWAYS</item>
+        <item>EXCEPT_WIRELESS_AUDIO</item>
+    </string-array>
+
     <!-- layout.branding.customBrandingPatch -->
     <string-array name="morphe_custom_branding_name_entries">
         <!-- Original must be first. -->

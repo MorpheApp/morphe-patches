@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">ที่อยู่ที่ SponsorBlock ใช้ในการโทรหาเซิร์ฟเวอร์</string>
   <string name="morphe_sb_channel_whitelist_title">รายการช่องที่อนุญาต</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock ถูกปิดใช้งานสำหรับช่องที่อนุญาตแล้ว</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">ช่องปัจจุบัน:</string>
-  <string name="morphe_sb_channel_whitelist_add">เพิ่มลงในรายการที่อนุญาต</string>
-  <string name="morphe_sb_channel_whitelist_remove">นำออก</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">ช่องที่อนุญาต</string>
-  <string name="morphe_sb_channel_whitelist_empty">ยังไม่มีช่องใดถูกอนุญาต</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">ช่องถูกเพิ่มลงในรายการที่อนุญาตแล้ว</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">ช่องถูกนำออกจากรายการที่อนุญาตแล้ว</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">แจ้งเตือนเมื่ออยู่ในช่องที่อนุญาต</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">แสดงการแจ้งเตือนเมื่อ SponsorBlock ถูกปิดใช้งานสำหรับช่องในรายการที่อนุญาต</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock ถูกปิดใช้งานสำหรับช่องนี้</string>

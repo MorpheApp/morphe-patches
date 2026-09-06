@@ -28,6 +28,37 @@ internal object UseGradientLoadingScreenFingerprint : Fingerprint(
     )
 )
 
+internal object LithoImageColorFilterFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        name = "draw",
+        parameters = listOf("Landroid/graphics/Canvas;"),
+        returnType = "V",
+        filters = listOf(
+            methodCall(
+                smali = $$"Landroid/graphics/BitmapShader;-><init>(Landroid/graphics/Bitmap;Landroid/graphics/Shader$TileMode;Landroid/graphics/Shader$TileMode;)V"
+            ),
+            methodCall(
+                smali = "Landroid/graphics/Canvas;->drawRect(Landroid/graphics/RectF;Landroid/graphics/Paint;)V"
+            )
+        )
+    ),
+    name = "setColorFilter",
+    parameters = listOf("Landroid/graphics/ColorFilter;"),
+    returnType = "V"
+)
+
+internal object LottieLayerColorFingerprint : Fingerprint(
+    parameters = listOf(
+        "Landroid/graphics/Canvas;",
+        "Landroid/graphics/Matrix;",
+        "I"
+    ),
+    returnType = "V",
+    filters = listOf(
+        methodCall(smali = "Landroid/graphics/Paint;->setColor(I)V")
+    )
+)
+
 internal object CarbonColorThemeFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45760313)

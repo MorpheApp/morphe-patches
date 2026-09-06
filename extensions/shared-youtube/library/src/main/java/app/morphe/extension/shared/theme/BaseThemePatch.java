@@ -41,6 +41,13 @@ public abstract class BaseThemePatch {
      */
     @ColorInt
     protected static int processColorValue(int originalValue, int[] darkValues, @Nullable int[] lightValues) {
+        // A Litho component is also given the color the app uses for its own text and icons,
+        // such as the background of the chip that is selected, which is drawn with it.
+        final int foreground = ThemeColorPatch.getForegroundColor(originalValue);
+        if (foreground != originalValue) {
+            return foreground;
+        }
+
         // The values that are replaced here are the backgrounds the app hard codes into its
         // Litho components. They only have to follow along when the app background is changed.
         // With the background of the app itself the app is left alone. Otherwise, a component

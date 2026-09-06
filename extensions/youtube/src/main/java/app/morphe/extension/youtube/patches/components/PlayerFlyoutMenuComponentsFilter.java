@@ -28,6 +28,14 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 @SuppressWarnings("unused")
 public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
+    private static boolean topFlyoutMenuVisible;
+    public static boolean getTopFlyoutMenuVisible() {
+        return topFlyoutMenuVisible;
+    }
+    public static void resetTopFlyoutMenuVisible() {
+        topFlyoutMenuVisible = false;
+    }
+
     public static final class HideAudioFlyoutMenuAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
@@ -40,12 +48,21 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
     }
 
+    private final ByteArrayFilterGroup qualityMenuButtonPrimary = new ByteArrayFilterGroup(
+            null,
+            "overflow_menu_item.e"
+    );
+    private final ByteArrayFilterGroup qualityMenuButtonSecondary = new ByteArrayFilterGroup(
+            null,
+            "quality_sheet_header.e"
+    );
     private final StringFilterGroup audioTrackMenuFooter;
     private final StringFilterGroup divider;
     private final StringFilterGroup flyoutMenu;
     private final ByteArrayFilterGroup flyoutLoopVideoMenuBuffer;
     private final ByteArrayFilterGroupList flyoutMenuBufferGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup qualityMenuFooter;
+
 
     public PlayerFlyoutMenuComponentsFilter() {
         audioTrackMenuFooter = new StringFilterGroup(
@@ -184,6 +201,13 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
             // Shorts also use this player flyout panel
             if (ShortsPlayerState.isOpen()) {
                 return false;
+            }
+
+            // Verify that the open flyout menu is the first one and not the 'others'
+            // one, by checking the filtering of its first button (quality menu).
+            if (qualityMenuButtonPrimary.check(buffer).isFiltered() &&
+                    qualityMenuButtonSecondary.check(buffer).isFiltered()) {
+                topFlyoutMenuVisible = true;
             }
 
             // 21.x+ fix.

@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1856
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -140,7 +140,8 @@ val scrobblingPatch = bytecodePatch(
                 preferences = setOf(
                     SwitchPreference("morphe_music_scrobbling_metadata_cleanup"),
                     TextPreference("morphe_music_scrobbling_custom_regex"),
-                    SwitchPreference("morphe_music_scrobbling_parse_title", summary = true)
+                    SwitchPreference("morphe_music_scrobbling_parse_title", summary = true),
+                    SwitchPreference("morphe_music_scrobbling_guess_album", summary = true)
                 )
             ),
             NonInteractivePreference(

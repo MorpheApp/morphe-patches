@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Die Adresse des SponsorBlocks für Anrufe an den Server</string>
   <string name="morphe_sb_channel_whitelist_title">Kanal-Whitelist</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock ist für whitelisted Kanäle deaktiviert.</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Aktueller Kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Zur Whitelist hinzufügen</string>
-  <string name="morphe_sb_channel_whitelist_remove">Entfernen</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Whitelist-Kanäle</string>
-  <string name="morphe_sb_channel_whitelist_empty">Keine Kanäle auf der Whitelist</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal zur Whitelist hinzugefügt</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal von der Whitelist entfernt</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Bei Kanal auf Whitelist benachrichtigen</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Zeigt eine Benachrichtigung an, wenn SponsorBlock für einen Kanal auf der Whitelist deaktiviert ist.</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock für diesen Kanal deaktiviert</string>

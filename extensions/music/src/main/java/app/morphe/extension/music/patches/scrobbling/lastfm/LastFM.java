@@ -1,16 +1,17 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1856
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.music.patches.scrobbling.lastfm;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
@@ -30,10 +31,33 @@ import app.morphe.extension.shared.requests.Requester;
 
 public class LastFM {
     private static final String BASE_URL = "https://ws.audioscrobbler.com/2.0/";
-    private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion() + " (YTMusic/" + Utils.getAppVersionName() + ")";
+    private static final String USER_AGENT = "Morphe/" + Utils.getPatchesReleaseVersion()
+            + " (YTMusic/" + Utils.getAppVersionName() + ")";
 
     public static final String API_KEY = "986d00852eea80eda8b2930e0abf5c46";
     public static final String SECRET = "1d802c749ccec53103400582fcaebd01";
+
+    private static final Map<String, CacheEntry> albumCache = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(20));
+
+    private static class CacheEntry {
+        private static final long CACHE_HIT_TTL = 24 * 60 * 60 * 1000L;
+        private static final long CACHE_MISS_TTL = 60 * 60 * 1000L;
+
+        @Nullable
+        public final String album;
+        private final long expiry;
+
+        CacheEntry(@Nullable String album) {
+            final boolean nullAlbum = album == null || album.isBlank();
+            this.album = nullAlbum ? null : album;
+            this.expiry = System.currentTimeMillis() + (nullAlbum ? CACHE_MISS_TTL : CACHE_HIT_TTL);
+        }
+
+        boolean isValid() {
+            return System.currentTimeMillis() < expiry;
+        }
+    }
 
     public static class Session {
         public String name;
@@ -112,40 +136,72 @@ public class LastFM {
             os.write(postDataBytes);
         }
 
-        int code = conn.getResponseCode();
+        final int code = conn.getResponseCode();
         Logger.printDebug(() -> "Last.fm: Response code: " + code + " for method: " + method);
 
         if (code >= 200 && code < 300) {
-            try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
-                StringBuilder response = new StringBuilder();
-                char[] buffer = new char[1024];
-                int read;
-                while ((read = reader.read(buffer)) != -1) {
-                    response.append(buffer, 0, read);
-                }
-                return response.toString();
-            }
-        } else {
-            try (InputStreamReader reader = new InputStreamReader(conn.getErrorStream() != null ? conn.getErrorStream() : conn.getInputStream(), StandardCharsets.UTF_8)) {
-                StringBuilder response = new StringBuilder();
-                char[] buffer = new char[1024];
-                int read;
-                while ((read = reader.read(buffer)) != -1) {
-                    response.append(buffer, 0, read);
-                }
-                String errResponse = response.toString();
-                Logger.printInfo(() -> "Last.fm: API error response: " + errResponse + " (HTTP Code: " + code + ")");
-                try {
-                    JSONObject errorObj = new JSONObject(errResponse);
-                    if (errorObj.has("error")) {
-                        throw new LastFMApiException(errorObj.optString("message", "API Error"), errorObj.getInt("error"));
-                    }
-                } catch (LastFMApiException e) {
-                    throw e;
-                } catch (Exception ignored) {}
-                throw new Exception("HTTP error " + code + ": " + errResponse);
+            return Requester.parseString(conn);
+        }
+
+        String errResponse = Requester.parseErrorString(conn);
+        Logger.printInfo(() -> "Last.fm: API error response: " + errResponse + " (HTTP Code: " + code + ")");
+        if (!errResponse.isEmpty()) {
+            JSONObject errorObj = new JSONObject(errResponse);
+            if (errorObj.has("error")) {
+                throw new LastFMApiException(errorObj.optString("message", "API Error"), errorObj.getInt("error"));
             }
         }
+        throw new Exception("HTTP error " + code + (errResponse.isEmpty() ? "" : ": " + errResponse));
+    }
+
+    @Nullable
+    public static String fetchAlbum(String artist, String track) {
+        if (!Settings.SCROBBLING_GUESS_ALBUM.get()) return null;
+        if (artist == null || artist.isBlank() || track == null || track.isBlank()) return null;
+        String key = artist.toLowerCase() + "\u0000" + track.toLowerCase();
+
+        CacheEntry cached = albumCache.get(key);
+        if (cached != null && cached.isValid()) {
+            return cached.album;
+        }
+
+        String fetched = null;
+        try {
+            fetched = fetchAlbumNetwork(artist, track);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Last.fm: Could not fetch album", ex);
+        }
+
+        albumCache.put(key, new CacheEntry(fetched));
+        return fetched;
+    }
+
+    @Nullable
+    private static String fetchAlbumNetwork(String artist, String track) throws Exception {
+        String url = BASE_URL + "?method=track.getInfo&api_key=" + URLEncoder.encode(API_KEY, "UTF-8")
+                + "&artist=" + URLEncoder.encode(artist, "UTF-8")
+                + "&track=" + URLEncoder.encode(track, "UTF-8")
+                + "&autocorrect=1&format=json";
+        HttpURLConnection conn = Requester.openConnection(url);
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("User-Agent", USER_AGENT);
+        conn.setConnectTimeout(5000);
+        conn.setReadTimeout(5000);
+        final int code = conn.getResponseCode();
+        if (code < 200 || code >= 300) {
+            conn.disconnect();
+            return null;
+        }
+        String response = Requester.parseStringAndDisconnect(conn);
+        JSONObject root = new JSONObject(response);
+        if (root.has("error")) return null;
+        if (!root.has("track")) return null;
+        JSONObject trackObj = root.getJSONObject("track");
+        JSONObject albumObj = trackObj.optJSONObject("album");
+        if (albumObj == null) return null;
+        String title = albumObj.optString("title", "");
+        if (title == null || title.isBlank()) return null;
+        return title.trim();
     }
 
     public static Session getMobileSession(String username, String password) throws Exception {
@@ -172,13 +228,14 @@ public class LastFM {
         if (sessionKey == null || sessionKey.isBlank()) return;
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = ScrobbleManager.getEffectiveAlbum(artist, track, album);
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.updateNowPlaying");
                 params.put("api_key", API_KEY);
                 params.put("sk", sessionKey);
                 params.put("artist", artist);
                 params.put("track", track);
-                if (album != null && !album.isBlank()) params.put("album", album);
+                if (effectiveAlbum != null && !effectiveAlbum.isBlank()) params.put("album", effectiveAlbum);
                 if (duration != null && duration > 0) params.put("duration", String.valueOf(duration));
 
                 executePostRequest(params);
@@ -240,6 +297,7 @@ public class LastFM {
         if (sessionKey == null || sessionKey.isBlank()) return;
         ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
+                String effectiveAlbum = ScrobbleManager.getEffectiveAlbum(artist, track, album);
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.scrobble");
                 params.put("api_key", API_KEY);
@@ -247,7 +305,7 @@ public class LastFM {
                 params.put("artist[0]", artist);
                 params.put("track[0]", track);
                 params.put("timestamp[0]", String.valueOf(timestamp));
-                if (album != null && !album.isBlank()) params.put("album[0]", album);
+                if (effectiveAlbum != null && !effectiveAlbum.isBlank()) params.put("album[0]", effectiveAlbum);
                 if (duration != null && duration > 0) params.put("duration[0]", String.valueOf(duration));
 
                 String response = executePostRequest(params);

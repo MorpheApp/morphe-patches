@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Địa chỉ SponsorBlock dùng để gửi yêu cầu đến máy chủ</string>
   <string name="morphe_sb_channel_whitelist_title">Danh sách ngoại lệ</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock sẽ không hoạt động đối với các kênh được thêm vào danh sách ngoại lệ</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Kênh hiện tại:</string>
-  <string name="morphe_sb_channel_whitelist_add">Thêm vào danh sách ngoại lệ</string>
-  <string name="morphe_sb_channel_whitelist_remove">Xóa</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Các kênh ngoại lệ</string>
-  <string name="morphe_sb_channel_whitelist_empty">Chưa thêm kênh nào vào danh sách ngoại lệ</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Đã thêm kênh vào danh sách ngoại lệ</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Đã xóa kênh khỏi danh sách ngoại lệ</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Thông báo khi kênh nằm trong danh sách ngoại lệ</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Hiển thị thông báo khi SponsorBlock không hoạt động trên kênh ngoại lệ</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock không hoạt động đối với kênh này</string>

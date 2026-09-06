@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">백그라운드 재생 제한 제거하기</string>
   <string name="morphe_shorts_disable_background_playback_title">백그라운드 재생 비활성화하기</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">기기 잠금 시 자동 일시 정지</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">사용 안함</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">화면 잠금 시 항상 일시 정지</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">무선 오디오 연결이 끊기면 일시정지</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">스크롤 속도 제한 비활성화하기</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_section_title">질문하기 섹션 숨기기</string>
   <string name="morphe_hide_attributes_section_title">속성 섹션 숨기기</string>
   <string name="morphe_hide_attributes_section_summary">동영상 속 장소, 게임, 음악 그리고 언급된 인물 섹션을 숨깁니다</string>
+  <string name="morphe_hide_channel_links_section_title">채널 링크 섹션 숨기기</string>
   <string name="morphe_hide_chapters_section_title">챕터 섹션 숨기기</string>
   <string name="morphe_hide_corrections_section_title">수정 사항 섹션 숨기기</string>
   <string name="morphe_hide_course_progress_section_title">과정 진행 상황 섹션 숨기기</string>
@@ -326,7 +331,37 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_attribution_summary">"데이터는 AiSList에 의해 제공됩니다
 
 다른 플랫폼용 다운로드를 확인하려면 여기를 탭하여 'AiSlopList.com'으로 이동하세요"</string>
+  <string name="morphe_aislist_submit_category_title">AI 채널 신고하기</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">동영상 메뉴에 신고 항목 추가하기</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">동영상 메뉴에 AiSList에 동영상 채널을 신고하는 항목을 추가합니다</string>
+  <string name="morphe_aislist_submit_username_title">제출자 이름</string>
+  <string name="morphe_aislist_submit_username_summary">공개 AiSList 리더보드에서 신고 내역 옆에 표시되는 이름입니다. 이 필드가 비어 있으면 신고할 수 없습니다</string>
+  <string name="morphe_aislist_submit_title">AI 채널 신고</string>
+  <string name="morphe_aislist_submit_dialog_message">"이 동영상을 증거로 '%s'를 AiSList에 신고하시겠습니까?
+
+다음 조건을 충족하는 채널만 신고하세요:
+• AI 음성, AI 동영상, AI로 작성한 스크립트 또는 AI 음악을 주요 콘텐츠로 사용하는 채널
+• AI 도구를 이용해 콘텐츠를 대량 생산하며, 사람의 직접 적인 작업이 거의 없는 채널
+
+단순히 AI에 대해 이야기하는 채널이나, 동영상의 일부 과정에서만 AI를 사용하는 채널은 신고하지 마세요
+
+신고 내용은 공개되며, 검토를 거친 후 해당 채널이 목록에 추가됩니다. 목록에서 삭제하려면 GitHub를 통해 삭제 요청을 해야 합니다"</string>
+  <string name="morphe_aislist_submit_already_blocklisted">이 채널은 이미 AiSList 차단 목록에 있습니다</string>
+  <string name="morphe_aislist_submit_already_warnlisted">이 채널은 이미 AiSList 경고 목록에 있습니다</string>
+  <string name="morphe_aislist_submit_dialog_confirm">신고</string>
+  <string name="morphe_aislist_submit_no_username">채널을 신고하려면 AI 채널 필터 설정에서 제출자 이름을 설정하세요</string>
+  <string name="morphe_aislist_submit_resolving">채널을 찾는 중…</string>
+  <string name="morphe_aislist_submit_failed_channel">이 동영상의 채널을 찾을 수 없습니다</string>
+  <string name="morphe_aislist_submit_success">채널이 신고되었으며 검토 대기 중입니다</string>
+  <string name="morphe_aislist_submit_failed_conflict">AiSList에서 신고 내역을 저장할 수 없습니다. 나중에 다시 시도하세요</string>
+  <string name="morphe_aislist_submit_failed_rate_limit">신고가 너무 많이 전송되었습니다. 나중에 다시 시도하세요</string>
+  <string name="morphe_aislist_submit_failed_rejected">AiSList에서 신고를 거부하였습니다</string>
+  <string name="morphe_aislist_submit_failed">신고할 수 없습니다. 연결을 확인하세요</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_ads_channel_whitelist_title">채널 광고 화이트리스트</string>
+  <string name="morphe_ads_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상에는 광고가 재생되어 크리에이터에게 수익이 지급됩니다. 다른 모든 채널에서는 광고가 계속 차단됩니다</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">광고 화이트리스트에 채널 추가</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">광고 화이트리스트에서 채널 제거</string>
   <string name="morphe_hide_creator_store_shelf_title">판매자 스토어 선반 숨기기</string>
   <string name="morphe_hide_end_screen_store_banner_title">최종 화면 스토어 배너 숨기기</string>
   <string name="morphe_hide_general_ads_title">일반 레이아웃 광고 숨기기</string>
@@ -337,6 +372,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">쇼핑 링크 숨기기</string>
   <string name="morphe_hide_video_ads_title">동영상 광고 숨기기</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium 프로모션 숨기기</string>
+  <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">현재 채널:</string>
+  <string name="morphe_channel_whitelist_add">화이트리스트에 추가</string>
+  <string name="morphe_channel_whitelist_remove">제거</string>
+  <string name="morphe_channel_whitelist_channels_header">화이트리스트 채널</string>
+  <string name="morphe_channel_whitelist_empty">화이트리스트 채널이 없습니다</string>
+  <string name="morphe_channel_whitelist_channel_added">채널을 화이트리스트에 추가하였습니다</string>
+  <string name="morphe_channel_whitelist_channel_removed">채널을 화이트리스트에서 제거하였습니다</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
@@ -471,6 +514,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_queue_override_flyout_menu_summary">\'현재 재생목록에서 다음 순서로 재생\' 메뉴를 탭하면 YouTube 현재 재생목록 대신 Morphe 현재 재생목록이 실행됩니다</string>
   <string name="morphe_queue_add_flyout_menu_title">\'현재 재생목록\' 피드 메뉴 항목 추가하기</string>
   <string name="morphe_queue_add_flyout_menu_summary">추가적인 메뉴 구성요소 항목을 추가합니다. \'현재 재생목록에서 다음 순서로 재생\' 메뉴가 표시되지 않는 경우에 이 옵션을 활성화하세요</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">메뉴 구성요소의 광고 화이트리스트</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">해당 동영상의 채널에서 광고가 재생되도록 하는 메뉴 구성요소 항목을 추가합니다</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">메뉴 구성요소의 속도 화이트리스트</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">해당 동영상의 채널을 항상 1.0배 속도로 재생하는 메뉴 구성요소 항목을 추가합니다</string>
   <string name="morphe_queue_manager_check_failed_auth">로그인하지 않았습니다</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">재생목록 ID가 없습니다</string>
   <string name="morphe_queue_manager_check_failed_queue">현재 재생목록이 비어 있습니다</string>
@@ -548,7 +595,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_overlay_timeout_summary">오버레이가 표시되는 시간을 설정할 수 있습니다 (밀리초)</string>
   <string name="morphe_swipe_overlay_background_opacity_title">스와이프 오버레이 배경 불투명도</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">투명도를 설정할 수 있습니다 (0: 투명, 100: 불투명)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">스와이프 배경 불투명도 값은 0-100 사이여야 합니다</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">스와이프 오버레이 밝기 조절바 색상</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">밝기 조절 진행률 색상을 설정할 수 있습니다</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">스와이프 오버레이 볼륨 조절바 색상</string>
@@ -557,7 +603,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_overlay_progress_speed_color_summary">속도 조절 진행률 색상을 설정할 수 있습니다</string>
   <string name="morphe_swipe_text_overlay_size_title">스와이프 오버레이 텍스트 크기</string>
   <string name="morphe_swipe_text_overlay_size_summary">화면 텍스트 크기를 설정할 수 있습니다 (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">텍스트 크기는 1-30 사이여야 합니다</string>
   <string name="morphe_swipe_threshold_title">스와이프 한계치</string>
   <string name="morphe_swipe_threshold_summary">제스처 인식을 위해 얼마나 스와이프를 해야 할지를 설정할 수 있습니다</string>
   <string name="morphe_swipe_volume_sensitivity_title">볼륨 스와이프 민감도</string>
@@ -763,6 +808,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_fullscreen_button_title">전체 화면 버튼 숨기기</string>
   <string name="morphe_hide_player_control_buttons_background_title">플레이어 컨트롤 버튼 배경 숨기기</string>
   <string name="morphe_hide_player_control_buttons_background_summary">동영상 플레이어 컨트롤 주변에서 어두운 음영을 숨깁니다</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">컨트롤 버튼 배경 투명도</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">플레이어 컨트롤 버튼과 시간 표시 버튼 뒤 배경의 투명도를 설정할 수 있습니다 (0: 투명, 100: 불투명)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">이전 &amp; 다음 버튼 숨기기</string>
   <string name="morphe_hide_settings_button_title">설정 버튼 숨기기</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -785,8 +832,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_seekbar_thumbnail_summary">이미 시청한 동영상 썸네일에 표시되는 시청 진행률을 숨깁니다</string>
   <string name="morphe_fullscreen_large_seekbar_title">전체 화면 두꺼운 재생바 활성화하기</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">Shorts 플레이어</string>
-  <string name="morphe_shorts_player_screen_summary">Shorts 플레이어에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_shorts_category_title">Shorts 숨기기</string>
   <string name="morphe_hide_shorts_channel_title">채널 페이지에서 숨기기</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -796,45 +841,48 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_shorts_subscriptions_title">구독 피드에서 숨기기</string>
   <string name="morphe_hide_shorts_video_description_title">동영상 설명에서 숨기기</string>
   <string name="morphe_hide_shorts_history_title">시청 기록에서 숨기기</string>
+  <string name="morphe_shorts_player_screen_title">Shorts 플레이어</string>
+  <string name="morphe_shorts_player_screen_summary">Shorts 플레이어에 표시할 구성 요소를 설정할 수 있습니다</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">두 번 탭하여 좋아요 표시 비활성화하기</string>
   <string name="morphe_hide_shorts_ai_button_title">AI 버튼 숨기기</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">자동 더빙 라벨 숨기기</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Super Thanks 구매 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_channel_bar_title">채널바 숨기기</string>
+  <string name="morphe_hide_shorts_comments_button_title">댓글 버튼 숨기기</string>
   <string name="morphe_hide_shorts_effect_button_title">효과 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">동영상 링크 라벨 숨기기</string>
+  <string name="morphe_hide_shorts_gesture_hints_title">제스처 힌트 숨기기</string>
   <string name="morphe_hide_shorts_green_screen_button_title">그린 스크린 버튼 숨기기</string>
   <string name="morphe_hide_shorts_hashtag_button_title">해시태그 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_info_panel_title">정보 패널 숨기기</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">가입 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_like_button_title">좋아요 버튼 숨기기</string>
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">좋아요 버튼 애니메이션을 비활성화하기</string>
   <string name="morphe_hide_shorts_live_preview_title">라이브 미리보기 숨기기</string>
   <string name="morphe_hide_shorts_location_label_title">위치 라벨 숨기기</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">하단바 숨기기</string>
   <string name="morphe_hide_shorts_new_posts_button_title">새로운 게시물 버튼 숨기기</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">일시 중지 오버레이 버튼 숨기기</string>
   <string name="morphe_hide_shorts_preview_comment_title">댓글 미리보기 숨기기</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">리믹스 버튼 숨기기</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">저장 버튼 숨기기</string>
   <string name="morphe_hide_shorts_save_sound_button_title">음악 저장 버튼 숨기기</string>
   <string name="morphe_hide_shorts_search_suggestions_title">검색 추천 숨기기</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">공유 버튼 숨기기</string>
   <string name="morphe_hide_shorts_shop_button_title">쇼핑 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_sound_button_title">사운드 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">사운드 메타데이터 라벨 숨기기</string>
   <string name="morphe_hide_shorts_subscribe_button_title">구독 버튼 숨기기</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Super Thanks 구매 버튼 숨기기</string>
   <string name="morphe_hide_shorts_tagged_products_title">태그된 제품 숨기기</string>
   <string name="morphe_hide_shorts_upcoming_button_title">예정된 라이브 버튼 숨기기</string>
   <string name="morphe_hide_shorts_use_sound_button_title">이 사운드 사용 버튼 숨기기</string>
   <string name="morphe_hide_shorts_use_template_button_title">템플릿 사용 버튼 숨기기</string>
-  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <string name="morphe_hide_shorts_like_fountain_title">좋아요 버튼 애니메이션을 비활성화하기</string>
-  <string name="morphe_hide_shorts_like_button_title">좋아요 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_comments_button_title">댓글 버튼 숨기기</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">저장 버튼 숨기기</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">공유 버튼 숨기기</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">리믹스 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_sound_button_title">사운드 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_info_panel_title">정보 패널 숨기기</string>
-  <string name="morphe_hide_shorts_channel_bar_title">채널바 숨기기</string>
   <string name="morphe_hide_shorts_video_title_title">동영상 제목 숨기기</string>
-  <string name="morphe_hide_shorts_sound_metadata_label_title">사운드 메타데이터 라벨 숨기기</string>
-  <string name="morphe_hide_shorts_full_video_link_label_title">동영상 링크 라벨 숨기기</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">두 번 탭하여 좋아요 표시 비활성화하기</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">하단바 숨기기</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"동영상 종료 후에 표시되는 추천 동영상 오버레이를 숨깁니다
@@ -884,7 +932,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">플레이어 오버레이 불투명도</string>
   <string name="morphe_player_overlay_opacity_summary">투명도를 설정할 수 있습니다 (0: 투명, 100: 불투명)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">플레이어 오버레이 불투명도는 0-100 사이여야 합니다</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">검색창</string>
   <string name="morphe_searchbar_type_entry_disabled">사용 안함</string>
@@ -1004,7 +1051,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_width_dip_invalid_toast">픽셀 크기는 %1$s-%2$s 사이여야 합니다</string>
   <string name="morphe_miniplayer_opacity_title">미니 플레이어 오버레이 불투명도</string>
   <string name="morphe_miniplayer_opacity_summary">투명도를 설정할 수 있습니다 (0: 투명, 100: 불투명)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">미니 플레이어 오버레이 불투명도는 0-100 사이여야 합니다</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">뒤로가기 버튼으로 피드 나가기</string>
   <string name="morphe_back_button_always_exits_feed_summary">뒤로가기 버튼을 탭하면 피드 상단으로 이동하지 않고 항상 앱이 종료됩니다</string>
@@ -1150,11 +1196,19 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_remember_playback_speed_toast">기본 동영상 재생 속도 값을 %s로 변경하였습니다</string>
   <string name="morphe_disable_playback_speed_music_title">음악 일반 동영상 재생 속도 사용하기</string>
   <string name="morphe_disable_playback_speed_music_summary">음악 동영상을 항상 1.0 배속으로 재생합니다</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">채널 속도 화이트리스트</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상은 항상 1.0배 재생 속도로 재생됩니다</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">속도 화이트리스트에 채널 추가</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">속도 화이트리스트에서 채널 제거</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">오디오 피치 컨트롤 활성화하기</string>
   <string name="morphe_playback_audio_pitch_default_title">기본 재생 오디오 피치</string>
   <string name="morphe_remember_playback_audio_pitch_toast">기본 오디오 피치를 %s 로 변경하였습니다</string>
   <string name="morphe_playback_audio_time_stretching_title">오디오 시간 늘리기</string>
   <string name="morphe_playback_audio_time_stretching_summary">속도와 피치를 서로 독립적으로 설정할 수 있습니다. 오디오에 잡음이나 음질 저하 등의 왜곡이 발생할 수 있습니다</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">실시간 스트림 재생 위치 저장하기</string>
+  <string name="morphe_remember_livestream_position_summary">진행 중인 실시간 스트림의 경우 현재 실시간 위치로 이동하는 대신 재생 위치를 기억하고 이어서 재생합니다</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">이 기능은 24/7 실시간 스트림 및 \'항상 켜짐\' 상태인 기타 스트림에서는 작동하지 않습니다</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 동영상 비활성화하기</string>
   <string name="morphe_force_hdr_video_title">HDR 동영상 강제로 활성화하기</string>

@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock 用于向服务器发出调用的地址</string>
   <string name="morphe_sb_channel_whitelist_title">频道白名单</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock已为白名单中的频道禁用</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">当前频道：</string>
-  <string name="morphe_sb_channel_whitelist_add">添加到白名单</string>
-  <string name="morphe_sb_channel_whitelist_remove">移除</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">已白名单的频道</string>
-  <string name="morphe_sb_channel_whitelist_empty">没有添加任何频道到白名单</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">频道已添加到白名单</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">频道已从白名单移除</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">在白名单频道中通知</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">当为白名单频道禁用 SponsorBlock 时，显示通知</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock 已为该频道禁用</string>

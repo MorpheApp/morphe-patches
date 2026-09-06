@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Adresa, kterou SponsorBlock používá k provádění volání na server</string>
   <string name="morphe_sb_channel_whitelist_title">Bílý seznam kanálů</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock je pro kanály na bílém seznamu vypnutý</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Aktuální kanál:</string>
-  <string name="morphe_sb_channel_whitelist_add">Přidat do bílého seznamu</string>
-  <string name="morphe_sb_channel_whitelist_remove">Odstranit</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Kanály na bílém seznamu</string>
-  <string name="morphe_sb_channel_whitelist_empty">Žádné kanály na bílém seznamu</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanál byl přidán do bílého seznamu</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanál byl odebrán z bílého seznamu</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Upozornit na kanál na bílém seznamu</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Zobrazí oznámení, když je SponsorBlock vypnutý pro kanál na bílém seznamu</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock je pro tento kanál vypnutý</string>

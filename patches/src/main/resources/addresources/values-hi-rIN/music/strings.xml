@@ -297,6 +297,8 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_scrobbling_custom_regex_summary">एक कस्टम रेगुलर एक्सप्रेशन दर्ज करें ताकि गाने के शीर्षक, कलाकारों या एल्बम से अतिरिक्त टेक्स्ट हटाया जा सके। उदाहरण: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">शीर्षक से कलाकार और ट्रैक का विश्लेषण करें</string>
   <string name="morphe_music_scrobbling_parse_title_summary">\" - \" विभाजक का उपयोग करके वीडियो शीर्षक से कलाकार और ट्रैक नाम निकालें। उन पुनः अपलोड सामग्री के लिए उपयोगी जहां चैनल नाम को कलाकार के रूप में उपयोग किया जा सकता है।</string>
+  <string name="morphe_music_scrobbling_guess_album_title">लापता एल्बम भरें</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">जब संगीत में एल्बम शामिल न हो, तो उसे Last.fm पर खोजें ताकि आपका scrobble पूरा हो जाए</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">स्क्रबिंग के बारे में</string>
   <!-- 'scrobbling' must be kept untranslated -->

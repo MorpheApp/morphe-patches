@@ -98,3 +98,29 @@ internal object DoubleTapToLikeLogicFingerprint : Fingerprint(
         opcode(Opcode.IF_EQZ, location = MatchAfterWithin(5))
     )
 )
+
+internal object ReelSpeedmasterEduContainerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "reel_speedmaster_edu_stub"),
+        resourceLiteral(ResourceType.ID, "reel_speedmaster_edu_container"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "setInflatedId",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object SpeedmasterIndicatorChipFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "reel_speedmaster_indicator_chip_stub"),
+        resourceLiteral(ResourceType.ID, "speedmaster_indicator_chip"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "setInflatedId",
+            location = MatchAfterWithin(5)
+        )
+    )
+)

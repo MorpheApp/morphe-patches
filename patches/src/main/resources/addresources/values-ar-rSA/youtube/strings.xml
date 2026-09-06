@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">إزالة قيود التشغيل في الخلفية</string>
   <string name="morphe_shorts_disable_background_playback_title">تعطيل التشغيل في الخلفية</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">إيقاف التشغيل تلقائيًا عند قفل الجهاز</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">إيقاف</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">إيقاف التشغيل دائمًا عند القفل</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">إيقاف التشغيل إلا إذا كان الصوت اللاسلكي متصلًا</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">تعطيل تحديد سرعة التمرير</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_section_title">إخفاء قسم طرح سؤال</string>
   <string name="morphe_hide_attributes_section_title">إخفاء قسم السمات</string>
   <string name="morphe_hide_attributes_section_summary">يخفي أقسام الأماكن المميزة، الألعاب، الموسيقى، والأشخاص المذكورين</string>
+  <string name="morphe_hide_channel_links_section_title">إخفاء قسم روابط القناة</string>
   <string name="morphe_hide_chapters_section_title">إخفاء قسم الفصول</string>
   <string name="morphe_hide_corrections_section_title">إخفاء قسم التصحيحات</string>
   <string name="morphe_hide_course_progress_section_title">إخفاء قسم تقدّم الدورة التدريبية</string>
@@ -326,7 +331,37 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_attribution_summary">"يتم توفير البيانات بواسطة AiSList
 
 انقر هنا لفتح AiSlopList.com والاطلاع على التنزيلات للمنصات الأخرى"</string>
+  <string name="morphe_aislist_submit_category_title">الإبلاغ عن قنوات الذكاء الاصطناعي</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">إضافة إدخال إبلاغ إلى قائمة الفيديو</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">إضافة إدخال إلى قائمة الفيديو للإبلاغ عن قناة الفيديو إلى AiSList</string>
+  <string name="morphe_aislist_submit_username_title">اسم المرسل</string>
+  <string name="morphe_aislist_submit_username_summary">الاسم الظاهر بجانب بلاغاتك على لوحة صدارة AiSList العامة. الإبلاغ غير متاح ما دام هذا الحقل فارغًا.</string>
+  <string name="morphe_aislist_submit_title">الإبلاغ عن قناة ذكاء اصطناعي</string>
+  <string name="morphe_aislist_submit_dialog_message">"إرسال %s إلى AiSList باستخدام هذا الفيديو كدليل؟
+
+أبلغ فقط عن القنوات التي:
+• تستخدم أصوات الذكاء الاصطناعي أو المرئيات أو النصوص أو الموسيقى كمحتواها الرئيسي
+• تنتج المحتوى بكميات كبيرة باستخدام أدوات الذكاء الاصطناعي مع القليل من العمل البشري
+
+لا تُبلغ عن القنوات التي تناقش الذكاء الاصطناعي فقط، أو تستخدمه في بعض أجزاء فيديوهاتها.
+
+البلاغات عامة وتتم مراجعتها قبل إضافة القناة إلى القائمة. الإزالة ممكنة فقط عبر طلب على GitHub"</string>
+  <string name="morphe_aislist_submit_already_blocklisted">هذه القناة موجودة بالفعل في قائمة حظر AiSList</string>
+  <string name="morphe_aislist_submit_already_warnlisted">هذه القناة موجودة بالفعل في قائمة تحذير AiSList</string>
+  <string name="morphe_aislist_submit_dialog_confirm">إبلاغ</string>
+  <string name="morphe_aislist_submit_no_username">تعيين اسم المرسل في إعدادات فلتر قنوات الذكاء الاصطناعي للإبلاغ عن القنوات</string>
+  <string name="morphe_aislist_submit_resolving">جارٍ البحث عن القناة…</string>
+  <string name="morphe_aislist_submit_failed_channel">تعذّر العثور على قناة هذا الفيديو</string>
+  <string name="morphe_aislist_submit_success">تم الإبلاغ عن القناة وهي في انتظار المراجعة</string>
+  <string name="morphe_aislist_submit_failed_conflict">تعذّر على AiSList حفظ البلاغ، حاول مرة أخرى لاحقًا</string>
+  <string name="morphe_aislist_submit_failed_rate_limit">تم إرسال عدد كبير جدًا من البلاغات، حاول مرة أخرى لاحقًا</string>
+  <string name="morphe_aislist_submit_failed_rejected">رفض AiSList البلاغ</string>
+  <string name="morphe_aislist_submit_failed">فشل الإبلاغ، تحقق من اتصالك</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_ads_channel_whitelist_title">القائمة المسموح بها لإعلانات القناة</string>
+  <string name="morphe_ads_channel_whitelist_summary">الفيديوهات من القنوات المدرجة في القائمة المسموح بها تُعرض مع الإعلانات، لذا يُدفع لمبدعيها. الإعلانات تبقى محجوبة على باقي القنوات</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">إضافة قناة إلى القائمة المسموح بها للإعلانات</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">إزالة قناة من القائمة المسموح بها للإعلانات</string>
   <string name="morphe_hide_creator_store_shelf_title">إخفاء رف متجر المنشئ</string>
   <string name="morphe_hide_end_screen_store_banner_title">إخفاء لافتة شاشة المتجر النهائية</string>
   <string name="morphe_hide_general_ads_title">إخفاء الإعلانات العامة</string>
@@ -337,6 +372,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">إخفاء روابط التسوق</string>
   <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_youtube_premium_promotions_title">إخفاء عروض ترقية YouTube Premium</string>
+  <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">القناة الحالية:</string>
+  <string name="morphe_channel_whitelist_add">إضافة إلى القائمة المسموح بها</string>
+  <string name="morphe_channel_whitelist_remove">إزالة</string>
+  <string name="morphe_channel_whitelist_channels_header">القنوات المدرجة في القائمة المسموح بها</string>
+  <string name="morphe_channel_whitelist_empty">لا توجد قنوات في القائمة المسموح بها</string>
+  <string name="morphe_channel_whitelist_channel_added">تمت إضافة القناة إلى القائمة المسموح بها</string>
+  <string name="morphe_channel_whitelist_channel_removed">تم إزالة القناة من القائمة المسموح بها</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">تم نسخ الرابط إلى الحافظة</string>
@@ -473,6 +516,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_queue_override_flyout_menu_summary">يفتح قائمة انتظار Morphe بدلًا من قائمة انتظار YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">إضافة خيار قائمة الانتظار إلى قائمة الخلاصة المنبثقة</string>
   <string name="morphe_queue_add_flyout_menu_summary">يضيف خيارًا إضافيًا إلى القائمة المنبثقة. فعّل هذا الخيار إذا لم تظهر \"إضافة إلى قائمة الانتظار\"</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">القائمة المسموح بها للإعلانات في القائمة المنبثقة</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">يضيف عنصرًا في القائمة المنبثقة يتيح تشغيل الإعلانات على قناة ذلك الفيديو</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">القائمة المسموح بها للسرعة في القائمة المنبثقة</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">يضيف عنصرًا في القائمة المنبثقة يُشغّل قناة ذلك الفيديو دائمًا بسرعة 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">تسجيل الدخول غير ممكن</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">لا يوجد معرّف قائمة تشغيل</string>
   <string name="morphe_queue_manager_check_failed_queue">قائمة الانتظار فارغة</string>
@@ -550,7 +597,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_overlay_timeout_summary">مقدار الوقت الذي تظهر فيه واجهة التمرير بعد التغيير بجزء الثانية</string>
   <string name="morphe_swipe_overlay_background_opacity_title">تعتيم خلفية واجهة التمرير</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">ضبط مستوى الشفافية (0 شفاف ، 100 معتم)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">يجب أن تكون شفافية التمرير بين 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">لون نمط إيماءة السطوع</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">تعيين لون شريط تقدم عناصر التحكم في مستوى السطوع</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">لون نمط إيماءة الصوت</string>
@@ -559,7 +605,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_overlay_progress_speed_color_summary">تعيين لون شريط تقدم عناصر التحكم في السرعة</string>
   <string name="morphe_swipe_text_overlay_size_title">حجم نص نمط إيماءة التمرير</string>
   <string name="morphe_swipe_text_overlay_size_summary">ضبط حجم النص على الشاشة (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">يجب أن يكون حجم النص بين 1-30</string>
   <string name="morphe_swipe_threshold_title">مقدار حد التمرير</string>
   <string name="morphe_swipe_threshold_summary">تعيين مسافة التمرير المطلوبة قبل بدء التعديل</string>
   <string name="morphe_swipe_volume_sensitivity_title">حساسية تمرير مستوى الصوت</string>
@@ -766,6 +811,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_fullscreen_button_title">إخفاء زر ملء الشاشة</string>
   <string name="morphe_hide_player_control_buttons_background_title">إخفاء خلفية عناصر التحكم بالمشغل</string>
   <string name="morphe_hide_player_control_buttons_background_summary">يخفي التظليل الداكن المحيط بأزرار التحكم في مشغل الفيديو</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">شفافية خلفية أزرار التحكم</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">ضبط شفافية الخلفية خلف أزرار تحكم المشغل وشريط الوقت (0 غير مرئية، 100 معتمة)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_settings_button_title">إخفاء زر الإعدادات</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -788,8 +835,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_seekbar_thumbnail_summary">يخفي شريط تقدم المشاهدة الذي يظهر على مصغرات الفيديوهات التي شاهدتها بالفعل</string>
   <string name="morphe_fullscreen_large_seekbar_title">تمكين شريط التقدم الكبير بملء الشاشة</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">مشغل Shorts</string>
-  <string name="morphe_shorts_player_screen_summary">اختر المكونات التي تظهر في مشغل Shorts</string>
   <string name="morphe_hide_shorts_category_title">إخفاء Shorts</string>
   <string name="morphe_hide_shorts_channel_title">إخفاء في صفحة القناة</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -799,45 +844,48 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_shorts_subscriptions_title">إخفاء في خلاصة الاشتراكات</string>
   <string name="morphe_hide_shorts_video_description_title">إخفاء في وصف الفيديو</string>
   <string name="morphe_hide_shorts_history_title">إخفاء في السجلّ</string>
+  <string name="morphe_shorts_player_screen_title">مشغل Shorts</string>
+  <string name="morphe_shorts_player_screen_summary">اختر المكونات التي تظهر في مشغل Shorts</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">تعطيل النقر المزدوج للإعجاب في Shorts</string>
   <string name="morphe_hide_shorts_ai_button_title">إخفاء زر الذكاء الاصطناعي</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">إخفاء علامة \'مُدبلج تلقائيًا\'</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">إخفاء زر \'شراء Super Thanks\'</string>
+  <string name="morphe_hide_shorts_channel_bar_title">إخفاء شريط القناة</string>
+  <string name="morphe_hide_shorts_comments_button_title">إخفاء زر التعليقات</string>
   <string name="morphe_hide_shorts_effect_button_title">إخفاء زر التأثير</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">إخفاء تسمية رابط الفيديو</string>
+  <string name="morphe_hide_shorts_gesture_hints_title">إخفاء تلميحات الإيماءات</string>
   <string name="morphe_hide_shorts_green_screen_button_title">إخفاء زر \'الشاشة الخضراء\'</string>
   <string name="morphe_hide_shorts_hashtag_button_title">إخفاء زر هاشتاغ</string>
+  <string name="morphe_hide_shorts_info_panel_title">إخفاء لوحة المعلومات</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">إخفاء زر الانضمام</string>
+  <string name="morphe_hide_shorts_like_button_title">إخفاء زر أعجبني</string>
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">إخفاء التأثير الفوّار لـزر أعجبني</string>
   <string name="morphe_hide_shorts_live_preview_title">إخفاء مشاهدة البث المباشر</string>
   <string name="morphe_hide_shorts_location_label_title">إخفاء تسمية الموقع</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">إخفاء شريط التنقل</string>
   <string name="morphe_hide_shorts_new_posts_button_title">إخفاء زر \'منشورات جديدة\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">إخفاء أزرار واجهة التوقف</string>
   <string name="morphe_hide_shorts_preview_comment_title">إخفاء تعليق المعاينة</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">إخفاء زر ريمكس</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">إخفاء زر حفظ</string>
   <string name="morphe_hide_shorts_save_sound_button_title">إخفاء زر \'حفظ الموسيقى\'</string>
   <string name="morphe_hide_shorts_search_suggestions_title">إخفاء اقتراحات البحث</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">إخفاء زر مشاركة</string>
   <string name="morphe_hide_shorts_shop_button_title">إخفاء زر المتجر</string>
+  <string name="morphe_hide_shorts_sound_button_title">إخفاء زر الصوت</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">إخفاء تسمية بيانات التعريف الصوتية</string>
   <string name="morphe_hide_shorts_subscribe_button_title">إخفاء زر اشتراك</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">إخفاء زر \'شراء Super Thanks\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">إخفاء المنتجات الموسومة</string>
   <string name="morphe_hide_shorts_upcoming_button_title">إخفاء زر الفيديوهات القادمة</string>
   <string name="morphe_hide_shorts_use_sound_button_title">إخفاء زر \'استخدام هذا الصوت\'</string>
   <string name="morphe_hide_shorts_use_template_button_title">إخفاء زر \'استخدام هذا النموذج\'</string>
-  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <string name="morphe_hide_shorts_like_fountain_title">إخفاء التأثير الفوّار لـزر أعجبني</string>
-  <string name="morphe_hide_shorts_like_button_title">إخفاء زر أعجبني</string>
-  <string name="morphe_hide_shorts_comments_button_title">إخفاء زر التعليقات</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">إخفاء زر حفظ</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">إخفاء زر مشاركة</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">إخفاء زر ريمكس</string>
-  <string name="morphe_hide_shorts_sound_button_title">إخفاء زر الصوت</string>
-  <string name="morphe_hide_shorts_info_panel_title">إخفاء لوحة المعلومات</string>
-  <string name="morphe_hide_shorts_channel_bar_title">إخفاء شريط القناة</string>
   <string name="morphe_hide_shorts_video_title_title">إخفاء عنوان الفيديو</string>
-  <string name="morphe_hide_shorts_sound_metadata_label_title">إخفاء تسمية بيانات التعريف الصوتية</string>
-  <string name="morphe_hide_shorts_full_video_link_label_title">إخفاء تسمية رابط الفيديو</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">تعطيل النقر المزدوج للإعجاب في Shorts</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">إخفاء شريط التنقل</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">إخفاء الفيديو المقترح في شاشة النهاية</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"يخفي عنصر الفيديو المقترح الذي يظهر بعد انتهاء الفيديو
@@ -887,7 +935,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">شفافية واجهة المشغل</string>
   <string name="morphe_player_overlay_opacity_summary">ضبط مستوى الشفافية (0 شفاف، 100 معتم)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">شفافية واجهة المشغل يجب أن تكون بين 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">شريط البحث</string>
   <string name="morphe_searchbar_type_entry_disabled">معطّل</string>
@@ -1007,7 +1054,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_width_dip_invalid_toast">حجم البكسل يجب أن يكون بين %1$s و %2$s</string>
   <string name="morphe_miniplayer_opacity_title">شفافية الواجهة</string>
   <string name="morphe_miniplayer_opacity_summary">ضبط مستوى الشفافية (0 شفاف، 100 معتم)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">شفافية واجهة المشغل المصغر يجب أن تكون بين 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">زر الرجوع يخرج من الخلاصة</string>
   <string name="morphe_back_button_always_exits_feed_summary">الضغط على زر الرجوع يؤدي دائمًا إلى الخروج من التطبيق بدلًا من التمرير إلى أعلى الخلاصة</string>
@@ -1153,11 +1199,19 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_remember_playback_speed_toast">تم تغيير سرعة التشغيل الافتراضية إلى: %s</string>
   <string name="morphe_disable_playback_speed_music_title">استخدام السرعة العادية للموسيقى</string>
   <string name="morphe_disable_playback_speed_music_summary">تشغيل فيديوهات الموسيقى دائمًا بسرعة 1.0x</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">القائمة المسموح بها لسرعة القناة</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">الفيديوهات من القنوات المدرجة في القائمة المسموح بها دائمًا تعمل بسرعة 1.0x</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">إضافة قناة إلى القائمة المسموح بها للسرعة</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">إزالة قناة من القائمة المسموح بها للسرعة</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">تمكين التحكم في طبقة الصوت</string>
   <string name="morphe_playback_audio_pitch_default_title">طبقة صوت التشغيل الافتراضية</string>
   <string name="morphe_remember_playback_audio_pitch_toast">تم تغيير طبقة الصوت الافتراضية إلى: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">تمديد زمن الصوت</string>
   <string name="morphe_playback_audio_time_stretching_summary">يتيح ضبط السرعة وطبقة الصوت بشكل مستقل، وقد يسبب تشوهات في الصوت</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">تذكّر موضع تشغيل البث المباشر</string>
+  <string name="morphe_remember_livestream_position_summary">بالنسبة إلى عمليات البث المباشر الجارية، يتم تذكّر موضع التشغيل واستئنافه من عنده بدلًا من الانتقال إلى الموضع المباشر الحالي</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">هذه الميزة لا تعمل مع البث المباشر 24/7 والبثوث الأخرى التي تكون \'دائمة التشغيل\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
   <string name="morphe_force_hdr_video_title">فرض فيديو HDR</string>

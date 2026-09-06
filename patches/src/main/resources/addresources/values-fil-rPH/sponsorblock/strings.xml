@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Ito ang address na ginagamit ng SponsorBlock upang gumawa ng mga tawag sa server</string>
   <string name="morphe_sb_channel_whitelist_title">Listahan ng mga pinahintulutang channel</string>
   <string name="morphe_sb_channel_whitelist_summary">Hindi pinagana ang SponsorBlock para sa mga pinahihintulutang channel</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Kasalukuyang channel:</string>
-  <string name="morphe_sb_channel_whitelist_add">Idagdag sa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_remove">Alisin</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Mga channel na nasa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_empty">Walang channel na nasa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Idinagdag ang channel sa whitelist</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Tinanggal ang channel sa whitelist</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Mag-notify sa pinahintulutang channel</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Nagpapakita ng notification kapag ang SponsorBlock ay hindi pinagana para sa isang whitelisted channel</string>
   <string name="morphe_sb_channel_whitelisted_toast">Hindi pinagana ang SponsorBlock para sa channel na ito</string>

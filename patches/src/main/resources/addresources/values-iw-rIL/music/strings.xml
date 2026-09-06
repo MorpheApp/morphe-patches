@@ -297,6 +297,8 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_scrobbling_custom_regex_summary">הזן ביטוי רגולרי מותאם אישית כדי להסיר טקסט נוסף משמות שירים, אמנים או אלבומים. דוגמה: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">ניתוח שם האמן והשיר מהכותרת</string>
   <string name="morphe_music_scrobbling_parse_title_summary">חילוץ שם האמן והשיר מהכותרת של הסרטון באמצעות מפריד \" - \". שימושי לתוכן שהועלה מחדש שבו שם הערוץ עשוי לשמש כאמן.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">השלם אלבום חסר</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">כאשר המוזיקה אינה כוללת אלבום, חפש אותו ב-Last.fm כדי שה-scrobble שלך יהיה שלם</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">אודות מעקב</string>
   <!-- 'scrobbling' must be kept untranslated -->

@@ -28,11 +28,11 @@ import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.shared.misc.spans.addSpanFilter
 import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
@@ -47,6 +47,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -124,6 +125,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_ai_generated_video_summary_section"),
                     SwitchPreference("morphe_hide_ask_section"),
                     SwitchPreference("morphe_hide_attributes_section", summary = true),
+                    SwitchPreference("morphe_hide_channel_links_section"),
                     SwitchPreference("morphe_hide_chapters_section"),
                     SwitchPreference("morphe_hide_corrections_section"),
                     SwitchPreference("morphe_hide_course_progress_section"),
@@ -299,6 +301,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
                             SwitchPreference(
                                 key = "morphe_hide_aislist_warnlist_search",
                                 titleKey = "morphe_hide_aislist_hide_search_title"
+                            )
+                        )
+                    ),
+                    PreferenceCategory(
+                        key = "morphe_aislist_submit_category",
+                        sorting = Sorting.UNSORTED,
+                        preferences = setOf(
+                            SwitchPreference("morphe_aislist_submit_flyout_menu", summary = true),
+                            TextPreference(
+                                key = "morphe_aislist_submit_username",
+                                inputType = InputType.TEXT
                             )
                         )
                     ),
@@ -940,71 +953,106 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide channel tab
 
-        if (is_21_20_or_greater) {
-            ChannelTabAddFingerprint.method.apply {
-                val channelTabBuilderMethod = if (is_21_25_or_greater)
-                    ChannelTabBuilderFingerprint.method
-                else ChannelTabBuilderLegacyFingerprint.method
+        ChannelTabRendererFingerprint.method.apply {
+            val iteratorIndex = indexOfFirstInstructionReversedOrThrow(
+                methodCall(name = "hasNext")
+            )
+            val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
 
-                val targetIndex = indexOfFirstInstructionReversedOrThrow {
-                    val reference = getReference<MethodReference>()
-                    reference?.returnType == channelTabBuilderMethod.returnType &&
-                            reference.parameterTypes == channelTabBuilderMethod.parameterTypes
-                }
-                val objectIndex = indexOfFirstInstructionReversedOrThrow(
-                    targetIndex,
-                    Opcode.IGET_OBJECT
+            if (is_21_20_or_greater) {
+                val addMethod = ChannelTabAddFingerprint.method
+                val channelTabBuilderMethod =
+                    if (is_21_25_or_greater) ChannelTabBuilderFingerprint.method
+                    else ChannelTabBuilderLegacyFingerprint.method
+
+                val targetIndex = addMethod.indexOfFirstInstructionReversedOrThrow(
+                    methodCall(
+                        returnType = channelTabBuilderMethod.returnType,
+                        parameters = channelTabBuilderMethod.parameterTypes.map { it.toString() }
+                    )
                 )
-                val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
-                val insertIndex = objectIndex + 1
-                val free = findFreeRegister(insertIndex, register)
+
+                val objectIndex = addMethod.indexOfFirstInstructionReversedOrThrow(
+                    targetIndex, Opcode.IGET_OBJECT
+                )
+                val titleStringFieldRef = addMethod.getInstruction<ReferenceInstruction>(
+                    objectIndex
+                ).reference as FieldReference
+                val nextIndex = indexOfFirstInstructionOrThrow(
+                    iteratorIndex,
+                    methodCall(name = "next")
+                )
+
+                val protoObjectIndex = indexOfFirstInstructionOrThrow(nextIndex) {
+                    opcode == Opcode.IGET_OBJECT
+                }
+
+                val protoInstruction = getInstruction<TwoRegisterInstruction>(protoObjectIndex)
+                val protoRegister = protoInstruction.registerA
+                val auluRegister = protoInstruction.registerB
+                val auluFieldRef = getInstruction<ReferenceInstruction>(
+                    protoObjectIndex
+                ).reference as FieldReference
+
+                val insertIndex = if (is_21_36_or_greater) {
+                    protoObjectIndex + 1
+                } else {
+                    indexOfFirstInstructionOrThrow(protoObjectIndex) {
+                        opcode == Opcode.CHECK_CAST
+                    } + 1
+                }
+
+                val checkCastInstruction = if (is_21_36_or_greater) {
+                    ""
+                } else {
+                    val checkCastIndex = insertIndex - 1
+                    val checkCastRef = getInstruction<ReferenceInstruction>(checkCastIndex).reference
+                    "check-cast v$protoRegister, $checkCastRef"
+                }
 
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideChannelTab(Ljava/lang/String;)Z
-                        move-result v$free
-                        if-eqz v$free, :ignore
-                        return-void
+                        iget-object v$protoRegister, v$protoRegister, $titleStringFieldRef
+                        invoke-static { v$protoRegister }, $LAYOUT_COMPONENTS_FILTER->hideChannelTab(Ljava/lang/String;)Z
+                        move-result v$protoRegister
+                        if-eqz v$protoRegister, :ignore
+                        invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
+                        goto :next_iterator
                         :ignore
-                        nop
-                    """
+                        iget-object v$protoRegister, v$auluRegister, $auluFieldRef
+                        $checkCastInstruction
+                    """,
+                    ExternalLabel("next_iterator", getInstruction(iteratorIndex))
                 )
-            }
-        } else {
-            ChannelTabRendererFingerprint.let { match ->
-                match.method.apply {
-                    val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
-                        getReference<MethodReference>()?.name == "hasNext"
-                    }
-
-                    val channelTabBuilderMethod = ChannelTabBuilderLegacyFingerprint.method
-                    val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
-                    val targetIndex = indexOfFirstInstructionReversedOrThrow {
-                        val reference = (this as? ReferenceInstruction)?.reference as? MethodReference
-                        opcode == Opcode.INVOKE_INTERFACE &&
-                                reference?.returnType == channelTabBuilderMethod.returnType &&
-                                reference.parameterTypes == channelTabBuilderMethod.parameterTypes
-                    }
-
-                    val objectIndex = indexOfFirstInstructionReversedOrThrow(targetIndex, Opcode.IGET_OBJECT)
-                    val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
-                    val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
-
-                    addInstructionsWithLabels(
-                        objectIndex + 1,
-                        """
-                            invoke-static { v${objectInstruction.registerA} }, $LAYOUT_COMPONENTS_FILTER->hideChannelTab(Ljava/lang/String;)Z
-                            move-result v${objectInstruction.registerA}
-                            if-eqz v${objectInstruction.registerA}, :ignore
-                            invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
-                            goto :next_iterator
-                            :ignore
-                            iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
-                        """,
-                        ExternalLabel("next_iterator", getInstruction(iteratorIndex))
+            } else {
+                val channelTabBuilderMethod = ChannelTabBuilderLegacyFingerprint.method
+                val targetIndex = indexOfFirstInstructionReversedOrThrow(
+                    methodCall(
+                        returnType = channelTabBuilderMethod.returnType,
+                        parameters = channelTabBuilderMethod.parameterTypes.map { it.toString() }
                     )
-                }
+                )
+
+                val objectIndex = indexOfFirstInstructionReversedOrThrow(
+                    targetIndex, Opcode.IGET_OBJECT
+                )
+                val objectInstruction = getInstruction<TwoRegisterInstruction>(objectIndex)
+                val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
+
+                addInstructionsWithLabels(
+                    objectIndex + 1,
+                    """
+                        invoke-static { v${objectInstruction.registerA} }, $LAYOUT_COMPONENTS_FILTER->hideChannelTab(Ljava/lang/String;)Z
+                        move-result v${objectInstruction.registerA}
+                        if-eqz v${objectInstruction.registerA}, :ignore
+                        invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
+                        goto :next_iterator
+                        :ignore
+                        iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
+                    """,
+                    ExternalLabel("next_iterator", getInstruction(iteratorIndex))
+                )
             }
         }
 
@@ -1012,26 +1060,24 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide search term thumbnails
 
-        CreateSearchSuggestionsFingerprint.let {
-            it.method.apply {
-                val methodCalls = findInstructionIndicesReversedOrThrow {
-                    (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_VIRTUAL) &&
-                            (getReference<MethodReference>()?.parameterTypes == listOf("Landroid/widget/ImageView;", "Landroid/net/Uri;"))
-                }
+        CreateSearchSuggestionsFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(
+                methodCall(
+                    opcodes = listOf(Opcode.INVOKE_INTERFACE, Opcode.INVOKE_VIRTUAL),
+                    parameters = listOf("Landroid/widget/ImageView;", "Landroid/net/Uri;")
+                )
+            ).forEach { insertIndex ->
+                val invokeInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
+                val imageViewRegister = invokeInstruction.registerD
+                val uriRegister = invokeInstruction.registerE
 
-                methodCalls.forEach { insertIndex ->
-                    val invokeInstruction = getInstruction<FiveRegisterInstruction>(insertIndex)
-                    val imageViewRegister = invokeInstruction.registerD
-                    val uriRegister = invokeInstruction.registerE
-
-                    addInstructions(
-                        insertIndex,
-                        """
-                            invoke-static { v$imageViewRegister, v$uriRegister }, $LAYOUT_COMPONENTS_FILTER->hideSearchTermThumbnails(Landroid/view/View;Landroid/net/Uri;)Landroid/net/Uri;
-                            move-result-object v$uriRegister
-                        """
-                    )
-                }
+                addInstructions(
+                    insertIndex,
+                    """
+                        invoke-static { v$imageViewRegister, v$uriRegister }, $LAYOUT_COMPONENTS_FILTER->hideSearchTermThumbnails(Landroid/view/View;Landroid/net/Uri;)Landroid/net/Uri;
+                        move-result-object v$uriRegister
+                    """
+                )
             }
         }
 
@@ -1083,13 +1129,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide account menu
 
         // for you tab
-        AccountListFingerprint.matchOrNull()?.let { match ->
+        AccountListFingerprint.let { match ->
             match.method.apply {
-                val literalIndex = match.instructionMatches.first().index
-                val targetIndex = indexOfFirstInstructionOrThrow(literalIndex) {
-                    opcode == Opcode.INVOKE_VIRTUAL &&
-                            getReference<MethodReference>()?.name == "setText"
-                }
+                val targetIndex = match.instructionMatches.last().index
                 val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
 
                 addInstruction(
@@ -1100,7 +1142,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             }
         }
 
-        AccountMenuFingerprint.matchOrNull()?.let { match ->
+        AccountMenuFingerprint.let { match ->
             match.method.apply {
                 val targetIndex = match.instructionMatches[2].index
                 val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
@@ -1114,7 +1156,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         }
 
         // for you tab bottom items and tablet menus
-        AccountMenuLegacyFingerprint.matchOrNull()?.let { match ->
+        AccountMenuLegacyFingerprint.let { match ->
             match.method.apply {
                 val targetIndex = match.instructionMatches[2].index
                 val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
@@ -1165,7 +1207,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 it.method.apply {
                     addInstruction(
                         it.instructionMatches.first().index + 1,
-                        "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER->handleLegacySnackbar(Landroid/view/View;)V"
+                        "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER->" +
+                                "handleLegacySnackbar(Landroid/view/View;)V"
                     )
                 }
             }

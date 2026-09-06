@@ -30,6 +30,7 @@ import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -1054,12 +1055,16 @@ public final class VideoInformation {
                             : "Video is already the preferred quality: " + quality
                     );
 
-                    // On first load of a new regular video, if the video is already the
-                    // desired quality then the quality flyout will show 'Auto' (ie: Auto (720p)).
+                    // On first load of a new regular video, if the video is already the desired
+                    // quality then the quality flyout will show 'Auto' (ie: Auto (720p)).
                     //
-                    // To prevent user confusion, set the video index even if the
-                    // quality is already correct so the UI picker will not display "Auto".
-                    if (qualityNeedsChange) {
+                    // To prevent user confusion, set the video index even if the quality is already
+                    // correct so the UI picker will not display "Auto".
+                    //
+                    // Only change Shorts quality if the quality actually needs to change, because
+                    // the "Auto" option is not shown in the flyout and setting the same quality
+                    // again can cause the Short to restart.
+                    if (qualityNeedsChange || !ShortsPlayerState.isOpen()) {
                         changeQuality(quality);
                         return i;
                     }

@@ -73,13 +73,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">Adressen SponsorBlock använder för att göra anrop till servern</string>
   <string name="morphe_sb_channel_whitelist_title">Kanalvitlista</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock är inaktiverat för vitlistade kanaler</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">Aktuell kanal:</string>
-  <string name="morphe_sb_channel_whitelist_add">Lägg till i vitlistan</string>
-  <string name="morphe_sb_channel_whitelist_remove">Ta bort</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">Vitlistade kanaler</string>
-  <string name="morphe_sb_channel_whitelist_empty">Inga kanaler är vitlistade</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">Kanal tillagd i vitlistan</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">Kanal borttagen från vitlistan</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">Avisera vid vitlistad kanal</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">Visar ett meddelande när SponsorBlock är inaktiverat för en vitlistad kanal</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock inaktiverat för den här kanalen</string>

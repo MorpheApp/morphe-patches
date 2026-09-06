@@ -72,13 +72,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_api_url_summary">SponsorBlock ले सर्भरमा कल गर्न प्रयोग गर्ने ठेनाना</string>
   <string name="morphe_sb_channel_whitelist_title">च्यानल whitelist</string>
   <string name="morphe_sb_channel_whitelist_summary">SponsorBlock whitelist गरिएका च्यानलहरूको लागि असक्षम गरिएको छ</string>
-  <string name="morphe_sb_channel_whitelist_current_channel">वर्तमान च्यानल:</string>
-  <string name="morphe_sb_channel_whitelist_add">ह्वाइटलिस्टमा थप्नुहोस्</string>
-  <string name="morphe_sb_channel_whitelist_remove">हटाउनुहोस्</string>
-  <string name="morphe_sb_channel_whitelist_channels_header">ह्वाइटलिस्ट गरिएका च्यानलहरू</string>
-  <string name="morphe_sb_channel_whitelist_empty">ह्वाइटलिस्ट गरिएका च्यानलहरू छैनन्</string>
-  <string name="morphe_sb_channel_whitelist_channel_added">च्यानल whitelist मा थपियो</string>
-  <string name="morphe_sb_channel_whitelist_channel_removed">च्यानल whitelist बाट हटाइयो</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_title">ह्वाइटलिस्ट गरिएको च्यानलमा सूचना दिहोस्</string>
   <string name="morphe_sb_toast_on_whitelisted_channel_summary">SponsorBlock whitelist गरिएका च्यानलको लागि असक्षम गरिएको छ भने सूचना देखाउँछ</string>
   <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock यस च्यानलको लागि अक्षम गरिएको छ</string>

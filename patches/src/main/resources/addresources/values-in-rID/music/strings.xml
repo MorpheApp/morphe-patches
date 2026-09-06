@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Putar trek audio album</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
-  <string name="morphe_music_play_album_songs_summary">Putar versi audio saja dari lagu-lagu album alih-alih video musik. Memerlukan \'Memalsukan aliran video\'</string>
+  <string name="morphe_music_play_album_songs_summary">Putar versi audio saja dari lagu-lagu album alih-alih video musik. Memerlukan \'Palsukan aliran video\'</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Unduh video musik, podcast, atau lagu dengan aplikasi pengunduh pihak ketiga</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -297,6 +297,8 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_scrobbling_custom_regex_summary">Masukkan ekspresi reguler khusus untuk menghapus teks tambahan dari judul lagu, artis, atau album. Contoh: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Parsing artis dan trek dari judul</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Ekstrak nama artis dan trek dari judul video menggunakan pemisah \" - \". Berguna untuk konten yang diunggah ulang di mana nama channel dapat digunakan sebagai artis.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Isi album yang hilang</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Jika musik tidak menyertakan album, cari di Last.fm agar scrobble Anda lengkap</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Tentang scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

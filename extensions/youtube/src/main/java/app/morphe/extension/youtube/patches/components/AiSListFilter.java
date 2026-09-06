@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/1972
+ * https://github.com/MorpheApp/morphe-patches/pull/2763
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -28,9 +29,6 @@ import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings({"unused", "unchecked"})
 public final class AiSListFilter extends BufferPhraseFilter {
-
-    /** Refresh the cached list from GitHub raw after this long since last successful fetch. */
-    private static final long REFRESH_CHECK_INTERVAL_MS = 4 * 60 * 60 * 1000L; // 4 hours.
 
     private volatile ByteTrieSearch blocklistSearch;
     private volatile ByteTrieSearch warnlistSearch;
@@ -81,7 +79,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
         final long now = System.currentTimeMillis();
         final long lastCheck = lastRefreshCheckMs.get();
-        if (now - lastCheck > REFRESH_CHECK_INTERVAL_MS
+        if (now - lastCheck > AiSListRequester.REFRESH_CHECK_INTERVAL_MS
                 && lastRefreshCheckMs.compareAndSet(lastCheck, now)) {
             Utils.runOnBackgroundThread(AiSListRequester::fetchAndStore);
         }
@@ -97,6 +95,56 @@ public final class AiSListFilter extends BufferPhraseFilter {
         if (currentWarnlist != lastWarnlistParsed) {
             parseWarnlist(currentWarnlist);
         }
+    }
+
+    /** The list a channel is on. */
+    public enum ListedIn {
+        BLOCKLIST,
+        WARNLIST
+    }
+
+    /**
+     * @return The list the handle is on, or null if it is on neither.
+     *         The cached text is scanned directly because the search tries are only
+     *         built while a scope toggle is on.
+     */
+    @Nullable
+    public static ListedIn listContainingHandle(String handle) {
+        if (containsHandle(Settings.AISLIST_BLOCKLIST_CACHE.get(), handle)) {
+            return ListedIn.BLOCKLIST;
+        }
+        if (containsHandle(Settings.AISLIST_WARNLIST_CACHE.get(), handle)) {
+            return ListedIn.WARNLIST;
+        }
+        return null;
+    }
+
+    private static boolean containsHandle(String list, String handle) {
+        final int handleLength = handle.length();
+        final int listLength = list.length();
+
+        int lineStart = 0;
+        while (lineStart < listLength) {
+            int lineEnd = list.indexOf('\n', lineStart);
+            if (lineEnd < 0) {
+                lineEnd = listLength;
+            }
+
+            int end = lineEnd;
+            while (end > lineStart && Character.isWhitespace(list.charAt(end - 1))) {
+                end--;
+            }
+
+            // Handles are compared without case because YouTube resolves them that way.
+            if (end - lineStart == handleLength
+                    && list.regionMatches(true, lineStart, handle, 0, handleLength)) {
+                return true;
+            }
+
+            lineStart = lineEnd + 1;
+        }
+
+        return false;
     }
 
     private synchronized void parseBlocklist(String raw) {

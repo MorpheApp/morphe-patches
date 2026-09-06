@@ -33,6 +33,10 @@ Second \"item\" text"</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">バックグラウンド再生の制限を解除</string>
   <string name="morphe_shorts_disable_background_playback_title">ショートのバックグラウンド再生を無効化</string>
+  <string name="morphe_auto_pause_on_screen_lock_title">端末の画面ロック時に再生を一時停止</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">オフ</string>
+  <string name="morphe_auto_pause_on_screen_lock_always">常に一時停止</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">ワイヤレス オーディオ機器の接続時を除き一時停止</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <string name="morphe_disable_scrolling_speed_limit_title">スクロールの速度制限を無効化</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -160,6 +164,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_section_title">「質問する」セクションを非表示</string>
   <string name="morphe_hide_attributes_section_title">関連情報を非表示</string>
   <string name="morphe_hide_attributes_section_summary">注目の場所 / ゲーム / 音楽 / 「言及されている人物」セクションを非表示にします</string>
+  <string name="morphe_hide_channel_links_section_title">チャンネル リンク セクションを非表示</string>
   <string name="morphe_hide_chapters_section_title">チャプター セクションを非表示</string>
   <string name="morphe_hide_corrections_section_title">修正セクションを非表示</string>
   <string name="morphe_hide_course_progress_section_title">「コースの進捗状況」セクションを非表示</string>
@@ -326,7 +331,37 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_attribution_summary">"AiSList からデータを取得しています
 
 ここをタップすると AiSlopList.com を開きます。詳細の確認や、他のプラットフォーム版のダウンロードが可能です"</string>
+  <string name="morphe_aislist_submit_category_title">AIチャンネルを報告</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">動画メニューに報告項目を追加</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">動画メニューに、動画のチャンネルをAiSListに報告する項目を追加します</string>
+  <string name="morphe_aislist_submit_username_title">報告者名</string>
+  <string name="morphe_aislist_submit_username_summary">公開されているAiSListのリーダーボードで、あなたの報告の横に表示される名前です。この欄が空の間は報告できません。</string>
+  <string name="morphe_aislist_submit_title">AIチャンネルを報告</string>
+  <string name="morphe_aislist_submit_dialog_message">"この動画を証拠として、%sをAiSListに送信しますか？
+
+報告するチャンネルは次のいずれかに該当するものだけにしてください：
+• AIの音声、映像、スクリプト、または音楽を主なコンテンツとして使用している
+• AIツールで大量のコンテンツを、人の手をほとんど使わずに制作している
+
+AIについて議論するだけのチャンネルや、動画の一部にだけAIを使用しているチャンネルは報告しないでください。
+
+報告は公開され、チャンネルがリストに追加される前に審査されます。削除はGitHubでのリクエストによってのみ可能です。"</string>
+  <string name="morphe_aislist_submit_already_blocklisted">このチャンネルはすでにAiSListのブロックリストに登録されています</string>
+  <string name="morphe_aislist_submit_already_warnlisted">このチャンネルはすでにAiSListの警告リストに登録されています</string>
+  <string name="morphe_aislist_submit_dialog_confirm">報告</string>
+  <string name="morphe_aislist_submit_no_username">チャンネルを報告するには、AIチャンネルフィルターの設定で報告者名を設定してください</string>
+  <string name="morphe_aislist_submit_resolving">チャンネルを検索中…</string>
+  <string name="morphe_aislist_submit_failed_channel">この動画のチャンネルが見つかりません</string>
+  <string name="morphe_aislist_submit_success">チャンネルを報告しました。審査待ちです</string>
+  <string name="morphe_aislist_submit_failed_conflict">AiSListは報告を保存できませんでした。後でもう一度お試しください</string>
+  <string name="morphe_aislist_submit_failed_rate_limit">短時間に送信された報告が多すぎます。後でもう一度お試しください</string>
+  <string name="morphe_aislist_submit_failed_rejected">AiSListは報告を拒否しました</string>
+  <string name="morphe_aislist_submit_failed">報告に失敗しました。接続を確認してください</string>
   <!-- ad.hideAdsPatch -->
+  <string name="morphe_ads_channel_whitelist_title">広告のチャンネル ホワイトリスト</string>
+  <string name="morphe_ads_channel_whitelist_summary">ホワイトリストに登録されたチャンネルの動画では、広告が表示され、投稿者に報酬が支払われます。それ以外のチャンネルの動画では、広告は引き続きブロックされます。</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">チャンネルを広告のホワイトリストに追加</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">チャンネルを広告のホワイトリストから削除</string>
   <string name="morphe_hide_creator_store_shelf_title">「\"チャンネル名\" のストア」欄を非表示</string>
   <string name="morphe_hide_end_screen_store_banner_title">終了画面のストアバナーを非表示</string>
   <string name="morphe_hide_general_ads_title">一般的な広告を非表示</string>
@@ -337,6 +372,14 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">商品へのリンクを非表示</string>
   <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium の広告を非表示</string>
+  <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
+  <string name="morphe_channel_whitelist_current_channel">現在のチャンネル:</string>
+  <string name="morphe_channel_whitelist_add">ホワイトリストに追加</string>
+  <string name="morphe_channel_whitelist_remove">削除</string>
+  <string name="morphe_channel_whitelist_channels_header">ホワイトリストに登録中のチャンネル</string>
+  <string name="morphe_channel_whitelist_empty">ホワイトリストに登録されているチャンネルはありません</string>
+  <string name="morphe_channel_whitelist_channel_added">チャンネルをホワイトリストに追加しました</string>
+  <string name="morphe_channel_whitelist_channel_removed">チャンネルをホワイトリストから削除しました</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
@@ -469,6 +512,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_queue_override_flyout_menu_summary">YouTube のキューの代わりに Morphe のキューを開きます</string>
   <string name="morphe_queue_add_flyout_menu_title">フィードのフライアウト メニューにキューの項目を追加</string>
   <string name="morphe_queue_add_flyout_menu_summary">フィードのフライアウト メニューにキューの項目を追加します。「キューに追加」が表示されない場合に、この機能を有効にしてください</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">フライアウトメニュー内の広告ホワイトリスト</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">その動画のチャンネルで広告を再生できるフライアウト項目を追加します</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">フライアウトメニュー内の再生速度ホワイトリスト</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">その動画のチャンネルの動画を常に1.0倍速で再生するフライアウト項目を追加します</string>
   <string name="morphe_queue_manager_check_failed_auth">ログインしていません</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">プレイリスト ID がありません</string>
   <string name="morphe_queue_manager_check_failed_queue">キューが空です</string>
@@ -546,7 +593,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_overlay_timeout_summary">スワイプ オーバーレイが表示される時間 (ミリ秒)</string>
   <string name="morphe_swipe_overlay_background_opacity_title">オーバーレイの背景の透明度</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">スワイプ オーバーレイの背景の透明度を設定します (0-100: 0が透明)</string>
-  <string name="morphe_swipe_overlay_background_opacity_invalid_toast">スワイプの透明度の範囲: 0-100</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">明るさグラフの色</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">明るさジェスチャー中の現在値を視覚的に表示するグラフの色を設定します</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">音量グラフの色</string>
@@ -555,7 +601,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_overlay_progress_speed_color_summary">再生速度ジェスチャー中の現在値を視覚的に表示するグラフの色を設定します</string>
   <string name="morphe_swipe_text_overlay_size_title">オーバーレイの文字サイズ</string>
   <string name="morphe_swipe_text_overlay_size_summary">スワイプ オーバーレイに表示される文字の大きさを設定します (1-30)</string>
-  <string name="morphe_swipe_text_overlay_size_invalid_toast">文字サイズの範囲は 1-30 です</string>
   <string name="morphe_swipe_threshold_title">スワイプのしきい値</string>
   <string name="morphe_swipe_threshold_summary">ジェスチャーとして判定される最小のスワイプ距離を設定します</string>
   <string name="morphe_swipe_volume_sensitivity_title">音量ジェスチャーのスワイプ感度</string>
@@ -762,6 +807,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_fullscreen_button_title">全画面表示ボタンを非表示</string>
   <string name="morphe_hide_player_control_buttons_background_title">プレーヤーのコントロールの背景を非表示</string>
   <string name="morphe_hide_player_control_buttons_background_summary">動画プレーヤーのコントロール (再生ボタンなど) の周辺に表示される、ふちどりのための影を非表示にします</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">プレーヤーのコントロールの背景の透明度</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">プレイヤーのコントロールボタンとタイムバーの背後にある背景の不透明度を調整します（0は透明、100は不透明）</string>
   <string name="morphe_hide_player_previous_next_buttons_title">前の動画ボタンと次の動画ボタンを非表示</string>
   <string name="morphe_hide_settings_button_title">設定ボタンを非表示</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -784,8 +831,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_seekbar_thumbnail_summary">フィードや検索結果などの視聴済み動画のサムネイルに表示される、視聴の進捗具合を示すプログレスバーを非表示にします</string>
   <string name="morphe_fullscreen_large_seekbar_title">全画面表示のシークバーを拡大</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
-  <string name="morphe_shorts_player_screen_summary">ショート プレーヤーに表示するコンポーネントを設定します</string>
   <string name="morphe_hide_shorts_category_title">ショートを非表示</string>
   <string name="morphe_hide_shorts_channel_title">チャンネル ページで非表示</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -795,45 +840,48 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_shorts_subscriptions_title">登録チャンネル フィードで非表示</string>
   <string name="morphe_hide_shorts_video_description_title">動画の概要欄で非表示</string>
   <string name="morphe_hide_shorts_history_title">再生履歴で非表示</string>
+  <string name="morphe_shorts_player_screen_title">ショート プレーヤー</string>
+  <string name="morphe_shorts_player_screen_summary">ショート プレーヤーに表示するコンポーネントを設定します</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">ダブルタップによる高評価を無効化</string>
   <string name="morphe_hide_shorts_ai_button_title">AI ボタンを非表示</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">「オートダビング」ラベルを非表示</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">「Super Thanks を購入する」ボタンを非表示</string>
+  <string name="morphe_hide_shorts_channel_bar_title">チャンネルバーを非表示</string>
+  <string name="morphe_hide_shorts_comments_button_title">コメントボタンを非表示</string>
   <string name="morphe_hide_shorts_effect_button_title">効果ボタンを非表示</string>
+  <string name="morphe_hide_shorts_full_video_link_label_title">関連動画へのリンクを非表示</string>
+  <string name="morphe_hide_shorts_gesture_hints_title">ジェスチャーヒントを非表示</string>
   <string name="morphe_hide_shorts_green_screen_button_title">「グリーン スクリーン」ボタンを非表示</string>
   <string name="morphe_hide_shorts_hashtag_button_title">ハッシュタグ ボタンを非表示</string>
+  <string name="morphe_hide_shorts_info_panel_title">情報パネルを非表示</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">「メンバーになる」ボタンを非表示</string>
+  <string name="morphe_hide_shorts_like_button_title">高評価ボタンを非表示</string>
+  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
+  <string name="morphe_hide_shorts_like_fountain_title">高評価ボタンの噴水アニメーションを非表示</string>
   <string name="morphe_hide_shorts_live_preview_title">ライブ プレビューを非表示</string>
   <string name="morphe_hide_shorts_location_label_title">位置情報ラベルを非表示</string>
+  <string name="morphe_hide_shorts_navigation_bar_title">ナビゲーション バーを非表示</string>
   <string name="morphe_hide_shorts_new_posts_button_title">「新しい投稿」ボタンを非表示</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">一時停止オーバーレイのボタンを非表示</string>
   <string name="morphe_hide_shorts_preview_comment_title">コメントのプレビューを非表示</string>
+  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_remix_button_title">リミックス ボタンを非表示</string>
+  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_save_button_title">保存ボタンを非表示</string>
   <string name="morphe_hide_shorts_save_sound_button_title">「音楽を保存」ボタンを非表示</string>
   <string name="morphe_hide_shorts_search_suggestions_title">検索候補を非表示</string>
+  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_shorts_share_button_title">共有ボタンを非表示</string>
   <string name="morphe_hide_shorts_shop_button_title">購入ボタンを非表示</string>
+  <string name="morphe_hide_shorts_sound_button_title">サウンドボタンを非表示</string>
+  <string name="morphe_hide_shorts_sound_metadata_label_title">サウンド メタデータ ラベルを非表示</string>
   <string name="morphe_hide_shorts_subscribe_button_title">チャンネル登録ボタンを非表示</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">「Super Thanks を購入する」ボタンを非表示</string>
   <string name="morphe_hide_shorts_tagged_products_title">タグ付けされた商品を非表示</string>
   <string name="morphe_hide_shorts_upcoming_button_title">今後の動画ボタンを非表示</string>
   <string name="morphe_hide_shorts_use_sound_button_title">「このサウンドを使用する」ボタンを非表示</string>
   <string name="morphe_hide_shorts_use_template_button_title">「このテンプレートを使用する」ボタンを非表示</string>
-  <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <string name="morphe_hide_shorts_like_fountain_title">高評価ボタンの噴水アニメーションを非表示</string>
-  <string name="morphe_hide_shorts_like_button_title">高評価ボタンを非表示</string>
-  <string name="morphe_hide_shorts_comments_button_title">コメントボタンを非表示</string>
-  <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_save_button_title">保存ボタンを非表示</string>
-  <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_share_button_title">共有ボタンを非表示</string>
-  <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shorts_remix_button_title">リミックス ボタンを非表示</string>
-  <string name="morphe_hide_shorts_sound_button_title">サウンドボタンを非表示</string>
-  <string name="morphe_hide_shorts_info_panel_title">情報パネルを非表示</string>
-  <string name="morphe_hide_shorts_channel_bar_title">チャンネルバーを非表示</string>
   <string name="morphe_hide_shorts_video_title_title">動画のタイトルを非表示</string>
-  <string name="morphe_hide_shorts_sound_metadata_label_title">サウンド メタデータ ラベルを非表示</string>
-  <string name="morphe_hide_shorts_full_video_link_label_title">関連動画へのリンクを非表示</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">ダブルタップによる高評価を無効化</string>
-  <string name="morphe_hide_shorts_navigation_bar_title">ナビゲーション バーを非表示</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
   <string name="morphe_hide_end_screen_suggested_video_summary">"動画が終了した後に表示される、「関連動画」のオーバーレイを非表示にします
@@ -883,7 +931,6 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">プレーヤー オーバーレイの透明度</string>
   <string name="morphe_player_overlay_opacity_summary">プレーヤー オーバーレイの透明度を設定します (0-100: 0 が透明)</string>
-  <string name="morphe_player_overlay_opacity_invalid_toast">プレーヤーの透明度の範囲: 0-100</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
   <string name="morphe_searchbar_type_title">検索バー</string>
   <string name="morphe_searchbar_type_entry_disabled">無効</string>
@@ -1003,7 +1050,6 @@ Automotive レイアウト
   <string name="morphe_miniplayer_width_dip_invalid_toast">ピクセルサイズの範囲は %1$s-%2$s です</string>
   <string name="morphe_miniplayer_opacity_title">オーバーレイの透明度</string>
   <string name="morphe_miniplayer_opacity_summary">ミニプレーヤー オーバーレイの透明度を設定します (0-100: 0 が透明)</string>
-  <string name="morphe_miniplayer_opacity_invalid_toast">ミニプレーヤーの透明度の範囲: 0-100</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">「戻る」ボタンでアプリを終了</string>
   <string name="morphe_back_button_always_exits_feed_summary">ホームタブで「戻る」ボタンをタップしたときに、ホームフィードの最上部にスクロールせずに常にアプリを終了します</string>
@@ -1147,11 +1193,19 @@ Automotive レイアウト
   <string name="morphe_remember_playback_speed_toast">デフォルトの再生速度の変更: %s</string>
   <string name="morphe_disable_playback_speed_music_title">音楽を通常速度で再生</string>
   <string name="morphe_disable_playback_speed_music_summary">音楽動画を常に 1.0 倍速で再生します</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">チャンネル再生速度ホワイトリスト</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">ホワイトリスト登録されたチャンネルの動画は常に1.0倍速で再生されます</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">チャンネルを再生速度ホワイトリストに追加</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">チャンネルを再生速度ホワイトリストから削除</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">音声ピッチ コントロールを有効化</string>
   <string name="morphe_playback_audio_pitch_default_title">デフォルトの音声ピッチ</string>
   <string name="morphe_remember_playback_audio_pitch_toast">デフォルトの音声ピッチを %s に変更しました</string>
   <string name="morphe_playback_audio_time_stretching_title">タイムストレッチ</string>
   <string name="morphe_playback_audio_time_stretching_summary">再生速度と音声ピッチを個別に設定できますが、音声にノイズなどの副作用が生じる場合があります</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">ライブ配信の再生位置を記憶する</string>
+  <string name="morphe_remember_livestream_position_summary">進行中のライブ配信では、現在のライブ位置にシークする代わりに、再生位置を記憶して再開します。</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">この機能は、24時間365日配信のライブ配信や、その他の「常時オン」の配信では機能しません。</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_hdr_video_title">HDR 動画を強制的に使用</string>

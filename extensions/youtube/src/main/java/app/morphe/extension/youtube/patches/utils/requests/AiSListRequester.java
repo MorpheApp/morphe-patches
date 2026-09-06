@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/1972
+ * https://github.com/MorpheApp/morphe-patches/pull/2763
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -33,11 +34,33 @@ public final class AiSListRequester {
     private static final String WARNLIST_URL =
             "https://raw.githubusercontent.com/Override92/AiSList/main/AiSList/aislist_warnlist.txt";
 
+    /** Refresh the cached list from GitHub raw after this long since last successful fetch. */
+    public static final long REFRESH_CHECK_INTERVAL_MS = 4 * 60 * 60 * 1000L; // 4 hours.
+
     private static final int CONNECT_TIMEOUT_MS = 30_000;
     private static final int READ_TIMEOUT_MS = 30_000;
     private static final int MAX_RESPONSE_BYTES = 5 * 1024 * 1024; // 5 MB safety cap.
 
     private AiSListRequester() {}
+
+    /**
+     * Makes the lists available to a caller that does not run the filters, which are what
+     * normally keep them fresh. Must be called off the main thread.
+     *
+     * <p>Waits for the fetch only when nothing is cached, because there is otherwise
+     * something usable to answer with right away.
+     */
+    public static void fetchIfStale() {
+        Utils.verifyOffMainThread();
+
+        if (Settings.AISLIST_BLOCKLIST_CACHE.get().isEmpty()
+                && Settings.AISLIST_WARNLIST_CACHE.get().isEmpty()) {
+            fetchAndStore();
+        } else if (System.currentTimeMillis() - Settings.AISLIST_LAST_FETCH_MS.get()
+                > REFRESH_CHECK_INTERVAL_MS) {
+            Utils.runOnBackgroundThread(AiSListRequester::fetchAndStore);
+        }
+    }
 
     /**
      * Fetches both lists sequentially. Must be called off the main thread.
