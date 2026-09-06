@@ -114,7 +114,7 @@ public final class FlyoutUtils {
             getAsciiBytes("yt_outline_experimental_share")
     );
 
-    private static final Pattern TITLE_CLEANUP_PATTERN = Pattern.compile("[^\\p{L}\\p{N}\\s_&.'+-]");
+    private static final Pattern TITLE_CLEANUP_PATTERN = Pattern.compile("[^\\p{L}\\p{M}\\p{N}\\s_&'+]");
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s+");
     private static final Pattern COMMENT_ID_CLEANUP_PATTERN = Pattern.compile("[^A-Za-z0-9_.-]");
 
@@ -263,9 +263,6 @@ public final class FlyoutUtils {
     }
 
     public static void dismissFlyout() {
-        visibleFlyoutButtons.clear();
-        currentButtonIndex = 0;
-
         if (flyoutDialog != null) {
             flyoutDialog.dismiss();
             flyoutDialog = null;
@@ -375,7 +372,7 @@ public final class FlyoutUtils {
                 // overlay settings, to prevent them from also being added into nested menus.
                 PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
             },
-            30
+            15
         );
     }
 
@@ -641,6 +638,8 @@ public final class FlyoutUtils {
                         // Since the system share menu is called faster, do not use a large delay.
                         Utils.runOnMainThreadDelayed(
                             () -> {
+                                visibleFlyoutButtons.clear();
+                                currentButtonIndex = 0;
                                 flyoutVideoId = "";
                                 flyoutPlaylistId = "";
                                 flyoutChannelId = "";
@@ -650,7 +649,7 @@ public final class FlyoutUtils {
                             // display, sometimes causes the injected buttons to appear in the
                             // YouTube share sheet. For this reason, the delay is set to zero
                             // when the setting to display the system share sheet is disabled.
-                            Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 30 : 0
+                            Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 50 : 0
                         );
                     } else {
                         flyoutIdsResetPollingHandler.postDelayed(this, 10);
@@ -844,6 +843,8 @@ public final class FlyoutUtils {
         }
 
         if (!byteIndexesOf(flyoutBuffer, VIDEO_ELEMENTS_BYTES).isEmpty()) {
+            setFlyoutPlaylistId(flyoutBuffer);
+
             View senderView = senderViewRef.get();
             if (senderView != null) {
                 ViewParent parent = senderView.getParent();
@@ -851,12 +852,12 @@ public final class FlyoutUtils {
                     if (parent instanceof ComponentHost componentHost) {
                         CharSequence description = componentHost.getContentDescription();
                         if (description != null) {
-                            setFlyoutPlaylistId(flyoutBuffer);
-
                             String stringDescription = description.toString();
 
                             setFlyoutVideoId(flyoutBuffer, stringDescription);
                             setFlyoutChannel(flyoutBuffer, stringDescription);
+
+                            break;
                         }
                     }
                     parent = parent.getParent();
@@ -866,16 +867,13 @@ public final class FlyoutUtils {
     }
 
     private static void setFlyoutVideoId(byte[] buffer, String description) {
-        if (description == null || buffer == null || description.isEmpty()) {
+        if (buffer == null || description == null || description.isEmpty()) {
             return;
         }
 
-        final int separatorIndex = description.indexOf(" - ");
-        String titlePart = separatorIndex == -1 ? description : description.substring(0, separatorIndex);
-        if (titlePart.isEmpty()) {
-            return;
-        }
-        String title = TITLE_CLEANUP_PATTERN.matcher(titlePart.toLowerCase(Locale.ROOT)).replaceAll("");
+        String title = TITLE_CLEANUP_PATTERN.matcher(
+                description.toLowerCase(Locale.ROOT)
+        ).replaceAll("");
         List<byte[]> words = new ArrayList<>();
         for (String word : WHITESPACE_PATTERN.split(title)) {
             if (word.length() > 2) {
