@@ -19,7 +19,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -30,13 +29,13 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import java.io.IOException;
+import org.json.JSONException;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
-import org.json.JSONException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -45,6 +44,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.SharedSettings;
+import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
@@ -63,17 +63,20 @@ public class GmsCoreSupportPatch {
             = Build.MANUFACTURER.toLowerCase(Locale.ROOT).replace(" ", "-");
 
     /**
-     * If a manufacturer specific page exists on DontKillMyApp.
-     */
-    @Nullable
-    private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
-
-    /**
      * GitHub API URL for the latest stable MicroG-RE release.
      * The /releases/latest endpoint only returns non-prerelease, non-draft releases.
      */
     private static final String MICROG_LATEST_RELEASE_API_URL =
             "https://api.github.com/repos/MorpheApp/MicroG-RE/releases/latest";
+
+    private static final StringSetting GMS_CORE_IGNORED_VERSION = new StringSetting(
+            "morphe_gms_core_update_dialog_ignored_version", "", false, false);
+
+    /**
+     * If a manufacturer specific page exists on DontKillMyApp.
+     */
+    @Nullable
+    private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
     private static String getOriginalPackageName() {
         return null; // Modified during patching.
@@ -223,9 +226,6 @@ public class GmsCoreSupportPatch {
         }
     }
 
-    private static final String UPDATE_DIALOG_PREFS = "morphe_gms_core_patch";
-    private static final String UPDATE_DIALOG_IGNORED_VERSION_KEY = "morphe_gms_core_update_dialog_ignored_version";
-
     private static void showOutdatedMicroGDialog(Activity context, String installedVersion, String latestVersion) {
         // Use a delay to allow the activity to finish initializing.
         // Otherwise, if device is in dark mode the dialog is shown with wrong color scheme.
@@ -240,7 +240,7 @@ public class GmsCoreSupportPatch {
                     () -> open(context, getGmsCoreDownload()), // Update action.
                     null, // No Cancel button.
                     str("gms_core_dialog_ignore_text"), // Ignore button text.
-                    () -> setIgnoredUpdateVersion(context, latestVersion), // Ignore action: persist and dismiss.
+                    () -> GMS_CORE_IGNORED_VERSION.save(latestVersion), // Ignore action: persist and dismiss.
                     true // Dismiss dialog when the Ignore button is clicked.
             );
 
@@ -261,20 +261,24 @@ public class GmsCoreSupportPatch {
                         .getPackageInfo(GMS_CORE_PACKAGE_NAME, 0).versionName;
                 if (installedVersionName == null || parseVersion(installedVersionName) == null) {
                     // Unknown installed version format, do not nag the user.
+                    Logger.printInfo(() -> "Unknown installed version: " + installedVersionName);
                     return;
                 }
+
                 String latestVersionName = fetchLatestMicroGVersion();
                 if (latestVersionName == null || compareVersions(installedVersionName, latestVersionName) >= 0) {
                     // Version could not be fetched, or MicroG is already up to date.
                     return;
                 }
-                String ignoredVersion = getIgnoredUpdateVersion(context);
+
+                String ignoredVersion = GMS_CORE_IGNORED_VERSION.get();
                 if (!ignoredVersion.isEmpty() && compareVersions(latestVersionName, ignoredVersion) <= 0) {
                     // The user already ignored this version (or a newer one), do not ask again.
                     return;
                 }
-                Logger.printInfo(() -> "MicroG is outdated. Installed: " + installedVersionName
-                        + ", latest: " + latestVersionName);
+
+                Logger.printInfo(() -> "MicroG is outdated, installed: " + installedVersionName
+                        + " latest: " + latestVersionName);
                 Utils.runOnMainThread(() -> showOutdatedMicroGDialog(context, installedVersionName, latestVersionName));
             } catch (Exception ex) {
                 Logger.printInfo(() -> "Could not check MicroG update: " + ex);
@@ -289,9 +293,12 @@ public class GmsCoreSupportPatch {
     @Nullable
     private static String fetchLatestMicroGVersion() throws IOException {
         HttpURLConnection connection = Requester.openConnection(MICROG_LATEST_RELEASE_API_URL);
+        connection.setFixedLengthStreamingMode(0);
         connection.setConnectTimeout(5000);
         connection.setReadTimeout(5000);
-        if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+        final int responseCode = connection.getResponseCode();
+        if (responseCode != HttpURLConnection.HTTP_OK) {
+            Logger.printInfo(() -> "Could not fetch release version, response code: " + responseCode);
             connection.disconnect();
             return null;
         }
@@ -299,21 +306,9 @@ public class GmsCoreSupportPatch {
             // The latest release endpoint returns the newest stable (non-prerelease) tag.
             return Requester.parseJSONObjectAndDisconnect(connection).optString("tag_name", null);
         } catch (JSONException ex) {
+            Logger.printInfo(() -> "Could not parse release version", ex);
             return null;
         }
-    }
-
-    /**
-     * @return The latest MicroG version the user chose to ignore, or an empty string if never ignored.
-     */
-    private static String getIgnoredUpdateVersion(Context context) {
-        return context.getSharedPreferences(UPDATE_DIALOG_PREFS, Context.MODE_PRIVATE)
-                .getString(UPDATE_DIALOG_IGNORED_VERSION_KEY, "");
-    }
-
-    private static void setIgnoredUpdateVersion(Context context, String version) {
-        context.getSharedPreferences(UPDATE_DIALOG_PREFS, Context.MODE_PRIVATE)
-                .edit().putString(UPDATE_DIALOG_IGNORED_VERSION_KEY, version).apply();
     }
 
     /**
