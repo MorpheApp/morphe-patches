@@ -807,7 +807,7 @@ Om die 'Audio Track'-kieslys te wys, verander 'Vervals videostrome' na enige kli
   <string name="morphe_hide_player_control_buttons_background_title">Wegspring spelerbeheer knoppie agtergrond</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Verberg die donker skaduwee rondom die videospeler se kontroles</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Agtergronddeursigtigheid van kontroleknoppies</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Pas die deursigtigheid van die sirkel agter die speler se kontroleknoppies aan (0 is onsigbaar, 100 is ondeursigtig)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Pas die opasiteit van die agtergrond agter die speler se beheerknoppies en die tydbalk aan (0 is onsigbaar, 100 is ondeursigtig)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Verberg Vorige &amp; Volgende knoppies</string>
   <string name="morphe_hide_settings_button_title">Verberg Instellings-knoppie</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Verstek-klanktoonhoogte verander na: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Klanktyd-rekking</string>
   <string name="morphe_playback_audio_time_stretching_summary">Laat toe om spoed en toonhoogte onafhanklik te stel, kan klankartefakte veroorsaak</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Onthou regstreekse stroom se speelposisie</string>
+  <string name="morphe_remember_livestream_position_summary">Vir lopende regstreekse strome, onthou en hervat dit jou speelposisie in plaas daarvan om na die huidige regstreekse posisie te soek.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Hierdie funksie werk nie met 24/7-regstreekse strome en ander strome wat altyd aan is nie.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiveer HDR-video</string>
   <string name="morphe_force_hdr_video_title">Dwing HDR-video</string>

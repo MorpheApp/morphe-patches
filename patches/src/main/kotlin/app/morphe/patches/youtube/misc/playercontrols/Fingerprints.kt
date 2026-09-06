@@ -90,7 +90,7 @@ internal object PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint : Finger
 
 internal object PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        literal(45686474L)
+        literal(45686474L) // 21.35 and older.
     )
 )
 

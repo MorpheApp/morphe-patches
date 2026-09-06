@@ -807,7 +807,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_player_control_buttons_background_title">प्लेयर नियंत्रण पृष्ठभूमि छिपाएं</string>
   <string name="morphe_hide_player_control_buttons_background_summary">वीडियो प्लेयर नियंत्रणों के चारों ओर डार्क शेडिंग छुपाता है</string>
   <string name="morphe_player_control_buttons_background_opacity_title">नियंत्रण बटनों की पृष्ठभूमि अपारदर्शिता</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">खिलाड़ी नियंत्रण बटनों के पीछे के वृत्त की अपारदर्शिता समायोजित करें (0 अदृश्य है, 100 ठोस है)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">प्लेयर नियंत्रण बटन और टाइम बार के पीछे की पृष्ठभूमि की अपारदर्शिता समायोजित करें (0 अदृश्य है, 100 अपारदर्शी है)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">पिछले और अगले बटन छुपाएं</string>
   <string name="morphe_hide_settings_button_title">सेटिंग्स बटन छुपाएं</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <string name="morphe_remember_playback_audio_pitch_toast">डिफ़ॉल्ट ऑडियो पिच बदलकर: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">ऑडियो समय विस्तारण</string>
   <string name="morphe_playback_audio_time_stretching_summary">गति और पिच को स्वतंत्र रूप से सेट करने की अनुमति देता है, इससे ऑडियो कलाकृतियाँ हो सकती हैं</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">लाइव स्ट्रीम प्लेबैक स्थिति याद रखें</string>
+  <string name="morphe_remember_livestream_position_summary">चालू लाइव स्ट्रीम के लिए, आपकी प्लेबैक स्थिति याद रखता है और उसे फिर से शुरू करता है, बजाय वर्तमान लाइव स्थिति पर जाने के।</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">यह सुविधा 24/7 लाइव स्ट्रीम और उन अन्य स्ट्रीम के साथ काम नहीं करती जो \'हमेशा चालू\' रहती हैं।</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR वीडियो अक्षम करें</string>
   <string name="morphe_force_hdr_video_title">HDR वीडियो जबरन लागू करें</string>

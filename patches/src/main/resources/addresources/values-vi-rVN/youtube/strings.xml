@@ -806,7 +806,7 @@ Cần cung cấp \"Cookie phụ đề\""</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ẩn nền điều khiển trình phát</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Ẩn nền tối xung quanh các nút điều khiển trình phát video</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Độ mờ nền của các nút điều khiển</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Điều chỉnh độ mờ của vòng tròn phía sau các nút điều khiển trình phát (0 là vô hình, 100 là đặc)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Điều chỉnh độ mờ của nền phía sau các nút điều khiển trình phát và thanh thời gian (0 là vô hình, 100 là đặc)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Ẩn các nút Trước &amp; Tiếp theo</string>
   <string name="morphe_hide_settings_button_title">Ẩn nút Cài đặt</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1202,6 +1202,10 @@ Nhấn vào đây để truy cập DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Đã thay đổi cao độ phát mặc định thành: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Kéo dãn thời gian âm thanh</string>
   <string name="morphe_playback_audio_time_stretching_summary">Cho phép thiết lập tốc độ và cao độ một cách độc lập, có thể gây ra nhiễu âm thanh</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Ghi nhớ vị trí phát lại của livestream</string>
+  <string name="morphe_remember_livestream_position_summary">Đối với các livestream đang diễn ra, ghi nhớ và tiếp tục vị trí phát lại của bạn thay vì chuyển đến vị trí trực tiếp hiện tại</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Tính năng này không hoạt động với các livestream 24/7 và các luồng phát khác \'luôn bật\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Vô hiệu hóa video HDR</string>
   <string name="morphe_force_hdr_video_title">Ép phát video HDR</string>

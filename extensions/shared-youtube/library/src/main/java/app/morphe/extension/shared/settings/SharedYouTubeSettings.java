@@ -110,6 +110,7 @@ public class SharedYouTubeSettings extends BaseSettings {
     public static final BooleanSetting RYD_COMPACT_LAYOUT = new BooleanSetting("morphe_ryd_compact_layout", FALSE, true, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_ESTIMATED_LIKE = new BooleanSetting("morphe_ryd_estimated_like", TRUE, true, parent(RYD_ENABLED));
     public static final BooleanSetting RYD_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_ryd_toast_on_connection_error", TRUE, parent(RYD_ENABLED));
+    public static final StringSetting GMS_CORE_IGNORED_VERSION = new StringSetting("morphe_gms_core_update_dialog_ignored_version", "", false, false);
 
     // Migration
     private static final BooleanSetting DEPRECATED_EXTERNAL_DOWNLOADER_FLYOUT_BUTTON = new BooleanSetting("morphe_external_downloader_flyout_button", FALSE);

@@ -809,7 +809,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Скрыть фон кнопок управления плеера</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Скрывает темное затенение вокруг элементов управления видеоплеером</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Прозрачность фона кнопок управления</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Настройте прозрачность круга, расположенного за кнопками управления плеером (0 — прозрачный, 100 — сплошной)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Регулирует непрозрачность фона за кнопками управления плеером и временной шкалой (0 — невидимый, 100 — непрозрачный)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Скрыть кнопки предыдущего и следующего видео</string>
   <string name="morphe_hide_settings_button_title">Скрыть кнопку \"Настройки\"</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1205,6 +1205,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Высота звука по умолчанию изменена на: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Растяжение времени аудио</string>
   <string name="morphe_playback_audio_time_stretching_summary">Позволяет независимо настраивать скорость и высоту звука, что может привести к появлению аудиоартефактов</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Запоминать позицию воспроизведения в прямом эфире</string>
+  <string name="morphe_remember_livestream_position_summary">Для текущих прямых эфиров запоминает и возобновляет вашу позицию воспроизведения вместо перехода к текущей позиции прямого эфира</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Эта функция не работает с круглосуточными прямыми эфирами и другими трансляциями, которые постоянно включены</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Отключить HDR видео</string>
   <string name="morphe_force_hdr_video_title">Принудительное HDR видео</string>

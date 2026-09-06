@@ -807,7 +807,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Скрива тъмното засенчване около контролите на видео плейъра</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Прозрачност на фона на бутоните за управление</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Регулирайте прозрачността на кръга зад бутоните за управление на плейъра (0 е невидим, 100 е плътен)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Регулирайте непрозрачността на фона зад бутоните за управление на плейъра и времевата лента (0 е невидимо, 100 е непрозрачно)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Скрий бутоните „Предишен“ и „Следващ“</string>
   <string name="morphe_hide_settings_button_title">Скрий бутон „Настройки“</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Височината на звука по подразбиране беше променена на: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Времево разтягане на аудиото</string>
   <string name="morphe_playback_audio_time_stretching_summary">Позволява независимо задаване на скоростта и височината, което може да причини аудио артефакти</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Запомняне на позицията на възпроизвеждане на поточно видео</string>
+  <string name="morphe_remember_livestream_position_summary">За текущите потоци на живо запомня и възстановява позицията ви на възпроизвеждане, вместо да преминава към текущата позиция на живо.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Тази функция не работи с 24/7 потоци на живо и други потоци, които са „винаги включени“.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Бутоните за ускоро и назад са скрити</string>
   <string name="morphe_force_hdr_video_title">Принудително HDR видео</string>

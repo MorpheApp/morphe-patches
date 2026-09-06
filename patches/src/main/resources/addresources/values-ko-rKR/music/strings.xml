@@ -297,6 +297,8 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_scrobbling_custom_regex_summary">노래 제목, 아티스트 또는 앨범에서 추가 텍스트를 제거할 사용자 정의 정규식을 입력합니다. 예시: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">제목에서 아티스트와 트랙 파싱하기</string>
   <string name="morphe_music_scrobbling_parse_title_summary">\' - \' 구분자를 사용하여 동영상 제목에서 아티스트와 트랙 이름을 추출합니다. 채널 이름이 아티스트로 사용될 수 있는 재업로드 콘텐츠에 유용합니다</string>
+  <string name="morphe_music_scrobbling_guess_album_title">누락된 앨범 채우기</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">음악에 앨범이 포함되어 있지 않는 경우에 Last.fm에서 검색하여 스크로블을 완료하세요</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">스크로블링에 대한 정보</string>
   <!-- 'scrobbling' must be kept untranslated -->

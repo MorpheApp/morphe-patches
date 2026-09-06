@@ -336,7 +336,7 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">동영상 메뉴에 AiSList에 동영상 채널을 신고하는 항목을 추가합니다</string>
   <string name="morphe_aislist_submit_username_title">제출자 이름</string>
   <string name="morphe_aislist_submit_username_summary">공개 AiSList 리더보드에서 신고 내역 옆에 표시되는 이름입니다. 이 필드가 비어 있으면 신고할 수 없습니다</string>
-  <string name="morphe_aislist_submit_title">AI 채널 신고하기</string>
+  <string name="morphe_aislist_submit_title">AI 채널 신고</string>
   <string name="morphe_aislist_submit_dialog_message">"이 동영상을 증거로 '%s'를 AiSList에 신고하시겠습니까?
 
 다음 조건을 충족하는 채널만 신고하세요:
@@ -353,15 +353,15 @@ Second \"item\" text"</string>
   <string name="morphe_aislist_submit_resolving">채널을 찾는 중…</string>
   <string name="morphe_aislist_submit_failed_channel">이 동영상의 채널을 찾을 수 없습니다</string>
   <string name="morphe_aislist_submit_success">채널이 신고되었으며 검토 대기 중입니다</string>
-  <string name="morphe_aislist_submit_failed_conflict">AiSList에서 신고 내용을 저장할 수 없습니다. 나중에 다시 시도하세요</string>
+  <string name="morphe_aislist_submit_failed_conflict">AiSList에서 신고 내역을 저장할 수 없습니다. 나중에 다시 시도하세요</string>
   <string name="morphe_aislist_submit_failed_rate_limit">신고가 너무 많이 전송되었습니다. 나중에 다시 시도하세요</string>
   <string name="morphe_aislist_submit_failed_rejected">AiSList에서 신고를 거부하였습니다</string>
   <string name="morphe_aislist_submit_failed">신고할 수 없습니다. 연결을 확인하세요</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">채널 광고 화이트리스트</string>
-  <string name="morphe_ads_channel_whitelist_summary">화이트리스트에 등록된된 채널의 동영상에는 광고가 재생되어 크리에이터에게 수익이 지급됩니다. 다른 모든 채널에서는 광고가 계속 차단됩니다</string>
-  <string name="morphe_ads_channel_whitelist_flyout_add">채널을 광고 화이트리스트에 추가</string>
-  <string name="morphe_ads_channel_whitelist_flyout_remove">채널을 광고 화이트리스트에서 제거</string>
+  <string name="morphe_ads_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상에는 광고가 재생되어 크리에이터에게 수익이 지급됩니다. 다른 모든 채널에서는 광고가 계속 차단됩니다</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">광고 화이트리스트에 채널 추가</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">광고 화이트리스트에서 채널 제거</string>
   <string name="morphe_hide_creator_store_shelf_title">판매자 스토어 선반 숨기기</string>
   <string name="morphe_hide_end_screen_store_banner_title">최종 화면 스토어 배너 숨기기</string>
   <string name="morphe_hide_general_ads_title">일반 레이아웃 광고 숨기기</string>
@@ -516,7 +516,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_queue_add_flyout_menu_summary">추가적인 메뉴 구성요소 항목을 추가합니다. \'현재 재생목록에서 다음 순서로 재생\' 메뉴가 표시되지 않는 경우에 이 옵션을 활성화하세요</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">메뉴 구성요소의 광고 화이트리스트</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">해당 동영상의 채널에서 광고가 재생되도록 하는 메뉴 구성요소 항목을 추가합니다</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">메뉴 구성요소의 재생 속도 화이트리스트</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">메뉴 구성요소의 속도 화이트리스트</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">해당 동영상의 채널을 항상 1.0배 속도로 재생하는 메뉴 구성요소 항목을 추가합니다</string>
   <string name="morphe_queue_manager_check_failed_auth">로그인하지 않았습니다</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">재생목록 ID가 없습니다</string>
@@ -809,7 +809,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_player_control_buttons_background_title">플레이어 컨트롤 버튼 배경 숨기기</string>
   <string name="morphe_hide_player_control_buttons_background_summary">동영상 플레이어 컨트롤 주변에서 어두운 음영을 숨깁니다</string>
   <string name="morphe_player_control_buttons_background_opacity_title">컨트롤 버튼 배경 투명도</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">플레이어 컨트롤 버튼 뒤에 있는 원의 투명도를 설정할 수 있습니다 (0: 투명, 100: 불투명)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">플레이어 컨트롤 버튼과 시간 표시 버튼 뒤 배경의 투명도를 설정할 수 있습니다 (0: 투명, 100: 불투명)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">이전 &amp; 다음 버튼 숨기기</string>
   <string name="morphe_hide_settings_button_title">설정 버튼 숨기기</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1196,15 +1196,19 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_remember_playback_speed_toast">기본 동영상 재생 속도 값을 %s로 변경하였습니다</string>
   <string name="morphe_disable_playback_speed_music_title">음악 일반 동영상 재생 속도 사용하기</string>
   <string name="morphe_disable_playback_speed_music_summary">음악 동영상을 항상 1.0 배속으로 재생합니다</string>
-  <string name="morphe_playback_speed_channel_whitelist_title">채널 재생 속도 화이트리스트</string>
-  <string name="morphe_playback_speed_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상은 항상 1.0배 속도로 재생됩니다</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_add">재생 속도 화이트리스트에 채널 추가</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">재생 속도 화이트리스트에서 채널 제거</string>
+  <string name="morphe_playback_speed_channel_whitelist_title">채널 속도 화이트리스트</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상은 항상 1.0배 재생 속도로 재생됩니다</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_add">속도 화이트리스트에 채널 추가</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_remove">속도 화이트리스트에서 채널 제거</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">오디오 피치 컨트롤 활성화하기</string>
   <string name="morphe_playback_audio_pitch_default_title">기본 재생 오디오 피치</string>
   <string name="morphe_remember_playback_audio_pitch_toast">기본 오디오 피치를 %s 로 변경하였습니다</string>
   <string name="morphe_playback_audio_time_stretching_title">오디오 시간 늘리기</string>
   <string name="morphe_playback_audio_time_stretching_summary">속도와 피치를 서로 독립적으로 설정할 수 있습니다. 오디오에 잡음이나 음질 저하 등의 왜곡이 발생할 수 있습니다</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">실시간 스트림 재생 위치 저장하기</string>
+  <string name="morphe_remember_livestream_position_summary">진행 중인 실시간 스트림의 경우 현재 실시간 위치로 이동하는 대신 재생 위치를 기억하고 이어서 재생합니다</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">이 기능은 24/7 실시간 스트림 및 \'항상 켜짐\' 상태인 기타 스트림에서는 작동하지 않습니다</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 동영상 비활성화하기</string>
   <string name="morphe_force_hdr_video_title">HDR 동영상 강제로 활성화하기</string>

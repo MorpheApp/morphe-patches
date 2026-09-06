@@ -805,7 +805,7 @@ Upang ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gen
   <string name="morphe_hide_player_control_buttons_background_title">Itago ang background ng player controls</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Tinatakpan ang madilim na anino sa paligid ng mga kontrol ng video player</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opacity ng background ng mga control button</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Ayusin ang opacity ng bilog sa likod ng mga control button ng player (0 ay transparent, 100 ay opaque)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Ayusin ang opacity ng background sa likod ng mga pindutan ng kontrol ng player at ng time bar (0 ay hindi nakikita, 100 ay solid)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Itago ang Previous at Next na mga button</string>
   <string name="morphe_hide_settings_button_title">Itago ang Settings button</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1201,6 +1201,10 @@ I-tap dito upang buksan ang DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Binago ang default na audio pitch sa: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Pag-unat ng oras ng audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Pinapayagan ang pagtatakda ng bilis at pitch nang hiwalay, maaaring magdulot ng mga artifact sa audio</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Tandaan ang posisyon ng playback ng livestream</string>
+  <string name="morphe_remember_livestream_position_summary">Para sa mga kasalukuyang livestream, naaalala at ipinagpapatuloy ang iyong posisyon ng playback sa halip na lumipat sa kasalukuyang live na posisyon</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Hindi gumagana ang tampok na ito sa mga 24/7 na livestream at iba pang mga stream na \'laging naka-on\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Patayin ang HDR video</string>
   <string name="morphe_force_hdr_video_title">Pilitin ang HDR video</string>

@@ -807,7 +807,7 @@ Pentru a afișa meniul 'Audio Track', schimbă 'Spoof video streams' în orice c
   <string name="morphe_hide_player_control_buttons_background_title">Ascunde fundalul controalelor playerului</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Ascunde umbra întunecată din jurul comenzilor playerului video</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opacitatea fundalului butoanelor de control</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Reglați opacitatea cercului din spatele butoanelor de control ale playerului (0 este invizibil, 100 este opac)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Reglați opacitatea fundalului din spatele butoanelor de control ale playerului și al barei de timp (0 este invizibil, 100 este opac)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Ascunde butoanele Anterior &amp; Următorul</string>
   <string name="morphe_hide_settings_button_title">Ascunde butonul Setări</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Tonalitatea implicită a fost modificată la: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Extinderea temporală a audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Permite setarea vitezei și a tonalității independent, ceea ce poate cauza artefacte audio</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Reține poziția de redare pentru transmisiunile live</string>
+  <string name="morphe_remember_livestream_position_summary">Pentru transmisiunile live în curs, reține și reia poziția de redare, în loc să sară la poziția live curentă</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Această funcție nu funcționează cu transmisiunile live 24/7 și cu alte fluxuri care sunt „întotdeauna active”</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Dezactivați videoclipurile HDR</string>
   <string name="morphe_force_hdr_video_title">Forțează video HDR</string>

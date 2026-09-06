@@ -805,7 +805,7 @@ Chcete-li zobrazit nabídku „Audio Track“, změňte možnost „Spoof video 
   <string name="morphe_hide_player_control_buttons_background_title">Skrýt pozadí ovládacích prvků přehrávače</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Skrývá tmavé stínování obklopující ovládací prvky přehrávače videa</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Neprůhlednost pozadí ovládacích tlačítek</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Upravte neprůhlednost kruhu za ovládacími tlačítky přehrávače (0 je neviditelný, 100 je plný)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Nastavte krytí pozadí za tlačítky ovládání přehrávače a časovou lištou (0 je neviditelné, 100 je plné)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Skrýt předchozí a další tlačítka</string>
   <string name="morphe_hide_settings_button_title">Skrýt tlačítko Nastavení</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1200,6 +1200,10 @@ Klepnutím sem se dozvíte více o DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Výchozí výška zvuku byla změněna na: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Časová dilatace zvuku</string>
   <string name="morphe_playback_audio_time_stretching_summary">Umožňuje nezávisle nastavovat rychlost a výšku zvuku, což může způsobit zvukové artefakty</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Zapamatovat si pozici přehrávání živého vysílání</string>
+  <string name="morphe_remember_livestream_position_summary">U probíhajících živých vysílání si pamatuje a obnovuje vaši pozici přehrávání místo přechodu na aktuální živou pozici.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Tato funkce nefunguje u živých vysílání běžících 24/7 a dalších streamů, které jsou stále aktivní.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Vypnout HDR video</string>
   <string name="morphe_force_hdr_video_title">Vynutit HDR video</string>

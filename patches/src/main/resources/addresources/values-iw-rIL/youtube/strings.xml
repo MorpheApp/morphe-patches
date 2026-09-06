@@ -807,7 +807,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_control_buttons_background_title">הסתר רקע פקדי הנגן</string>
   <string name="morphe_hide_player_control_buttons_background_summary">מסתיר את הצללית הכהה שמסביב לפקדי נגן הווידאו</string>
   <string name="morphe_player_control_buttons_background_opacity_title">אטימות הרקע של כפתורי השליטה</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">התאם את אטימות העיגול שמאחורי כפתורי השליטה של הנגן (0 - בלתי נראה, 100 - אטום)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">כוונן את אטימות הרקע מאחורי כפתורי בקרת הנגן ופס הזמן (0 בלתי נראה, 100 אטום)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">הסתר לחצני הקודם &amp; הבא</string>
   <string name="morphe_hide_settings_button_title">הסתר לחצן הגדרות</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">גובה הצליל (Pitch) ברירת המחדל שונה ל: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">מתיחת זמן אודיו (Audio time stretching)</string>
   <string name="morphe_playback_audio_time_stretching_summary">מאפשר להגדיר מהירות וגובה צליל באופן עצמאי, עשוי לגרום לעיוותים באודיו</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">זכור את מיקום ההשמעה בשידור חי</string>
+  <string name="morphe_remember_livestream_position_summary">עבור שידורים חיים פעילים, התכונה זוכרת ומחדשת את מיקום ההשמעה שלך במקום לדלג למיקום החי הנוכחי</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">תכונה זו אינה פועלת עם שידורים חיים 24/7 ועם שידורים אחרים שהם \'תמיד פעילים\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">השבת סרטון HDR</string>
   <string name="morphe_force_hdr_video_title">אלץ וידאו HDR</string>

@@ -809,7 +809,7 @@ Da biste prikazali izbornik audio zapisa, promijenite 'Parodija video streamova'
   <string name="morphe_hide_player_control_buttons_background_title">Tipka za Cast je skrivena</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Skriva tamno sjenčanje oko kontrola video playera</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Neprozirnost pozadine kontrolnih gumba</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Prilagodite neprozirnost kruga iza kontrolnih gumba playera (0 je nevidljivo, 100 je potpuno neprozirno)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Podesite neprozirnost pozadine iza kontrolnih gumba reproduktora i iza vremenske trake (0 je nevidljiva, 100 je neprozirna).</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Sakrij gumbove Prethodni &amp; Sljedeći</string>
   <string name="morphe_hide_settings_button_title">Sakrij gumb Postavke</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1205,6 +1205,10 @@ Dodirnite ovdje za otvaranje DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Zadana visina tona audia promijenjena u: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Rastezanje vremena audia</string>
   <string name="morphe_playback_audio_time_stretching_summary">Omogućuje neovisno postavljanje brzine i visine tona, može uzrokovati audio artefakte</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Zapamti poziciju reprodukcije prijenosa uživo</string>
+  <string name="morphe_remember_livestream_position_summary">Za prijenose uživo u tijeku, pamti i nastavlja vašu poziciju reprodukcije umjesto da se pomakne na trenutnu poziciju uživo</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Ova značajka ne radi s 24/7 prijenosima uživo i drugim prijenosima koji su \'uvijek uključeni\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogu HDR video</string>
   <string name="morphe_force_hdr_video_title">Nametni HDR video</string>

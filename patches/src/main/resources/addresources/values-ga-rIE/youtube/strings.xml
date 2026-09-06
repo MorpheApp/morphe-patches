@@ -807,7 +807,7 @@ Chun an roghchlár ‘Audio Track’ a thaispeáint, athraigh ‘Spoof video str
   <string name="morphe_hide_player_control_buttons_background_title">Folaigh cúlra rialuithe an imreora</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Folaíonn sé an scáthú dorcha timpeall ar rialuithe an imreora físe</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Teimhneacht chúlra na gcnaipí rialaithe</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Coigeartaigh teimhneacht an chiorcail taobh thiar de chnaipí rialaithe an imreora (is é 0 dofheicthe, is é 100 soladach)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Coigeartaigh teimhneacht an chúlra taobh thiar de na cnaipí rialaithe an tseinnteora agus den bharra ama (0 dofheicthe, 100 soladach)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Folaigh na cnaipí Roimhe Seo &amp; Ar Aghaidh</string>
   <string name="morphe_hide_settings_button_title">Cnaipe Folaigh Socruithe</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Tapáil anseo chun DeArrow.ajay.app a oscailt."</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Athraíodh an pháirc fuaime réamhshocraithe go: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Síneadh ama fuaime</string>
   <string name="morphe_playback_audio_time_stretching_summary">Ceadaíonn sé luas agus páirc a shocrú go neamhspleách, d\'fhéadfadh sé airteagail fuaime a chruthú</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Cuimhnigh ar shuíomh athsheinm srutha bheo</string>
+  <string name="morphe_remember_livestream_position_summary">Maidir le sruthanna beo atá ar siúil, cuimhníonn sé ar do shuíomh athsheinm agus tosaíonn sé arís ann in ionad dul go dtí an suíomh beo reatha</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Ní oibríonn an ghné seo le sruthanna beo 24/7 ná le sruthanna eile atá \'ar siúl i gcónaí\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Díchumasaigh físeán HDR</string>
   <string name="morphe_force_hdr_video_title">Fórsáil físeán HDR</string>

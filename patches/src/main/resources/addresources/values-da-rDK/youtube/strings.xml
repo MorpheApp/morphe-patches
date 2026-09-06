@@ -804,6 +804,7 @@ For at vise 'Lydspor'-menuen skal du ændre 'Forfalsk videostreams' til enhver k
   <string name="morphe_hide_fullscreen_button_title">Skjul Fuldskærm-knap</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skjul baggrund for afspilningsknapper</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Skjuler den mørke skygge omkring videospillerkontrollerne</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Juster opaciteten af baggrunden bag afspillerens kontrolknapper og tidslinjen (0 er usynlig, 100 er uigennemsigtig)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Skjul Forrige &amp; Næste knapper</string>
   <string name="morphe_hide_settings_button_title">Skjul Indstillinger-knappen</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1199,6 +1200,10 @@ Tryk her for at lære mere om DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Ændrede standard tonehøjde til: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Tidsstrækning af lyd</string>
   <string name="morphe_playback_audio_time_stretching_summary">Gør det muligt at indstille hastighed og tonehøjde uafhængigt, hvilket kan forårsage lydartefakter</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Husk afspilningsposition for livestreams</string>
+  <string name="morphe_remember_livestream_position_summary">For igangværende livestreams huskes og genoptages din afspilningsposition i stedet for at søge til den aktuelle liveposition</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Denne funktion fungerer ikke med 24/7-livestreams og andre streams, der er \'altid tændt\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
   <string name="morphe_force_hdr_video_title">Tving HDR-video</string>

@@ -297,6 +297,8 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Ange ett anpassat reguljärt uttryck för att ta bort ytterligare text från låttitlar, artister eller album. Exempel: (?i)\s*\((clean|explicit)\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Extrahera artist och låt från titeln</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Extrahera artist och låttitel från videotiteln med separatorn \" - \". Användbart för omladdat innehåll där kanalnamnet kan användas som artist.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Fyll i saknat album</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">När musiken inte innehåller något album, slå upp det på Last.fm så att din scrobble blir komplett</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Om scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

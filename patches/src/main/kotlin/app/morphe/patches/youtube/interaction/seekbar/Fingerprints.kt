@@ -135,7 +135,7 @@ internal object SlideToSeekFingerprint : Fingerprint(
 
 internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        literal(45691569)
+        literal(45691569) // 20.28 - 21.35
     )
 )
 

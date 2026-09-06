@@ -807,7 +807,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_control_buttons_background_title">隱藏播放器控制背景</string>
   <string name="morphe_hide_player_control_buttons_background_summary">隱藏影片播放器控制按鈕的背景陰影</string>
   <string name="morphe_player_control_buttons_background_opacity_title">控制按鈕背景不透明度</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">調整播放器控制按鈕後方圓圈的不透明度（0 為不可見，100 為完全不透明）</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">調整播放器控制按鈕和時間列後方背景的不透明度（0 為隱形，100 為不透明）</string>
   <string name="morphe_hide_player_previous_next_buttons_title">隱藏「上一部」和「下一部」按鈕</string>
   <string name="morphe_hide_settings_button_title">隱藏「設定」按鈕</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">已將預設音訊音調變更為：%s</string>
   <string name="morphe_playback_audio_time_stretching_title">音訊時間拉伸</string>
   <string name="morphe_playback_audio_time_stretching_summary">允許獨立設定速度和音調，可能會造成音訊失真</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">記住直播播放位置</string>
+  <string name="morphe_remember_livestream_position_summary">對於進行中的直播，會記住並恢復您的播放位置，而不是跳到目前最新的直播位置。</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">此功能不適用於 24/7 全天候直播及其他「永遠在線」的串流。</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">停用 HDR 影片</string>
   <string name="morphe_force_hdr_video_title">強制 HDR 影片</string>

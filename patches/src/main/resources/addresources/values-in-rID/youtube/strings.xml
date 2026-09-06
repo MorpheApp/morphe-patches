@@ -806,7 +806,7 @@ Untuk menampilkan menu 'Trek Audio', ubah 'Palsukan aliran video' ke klien apa p
   <string name="morphe_hide_player_control_buttons_background_title">Sembunyikan latar belakang kontrol pemutar</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Menyembunyikan bayangan gelap di sekitar kontrol pemutar video</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opasitas latar belakang tombol kontrol</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Sesuaikan opasitas lingkaran di belakang tombol kontrol pemutar (0 tidak terlihat, 100 solid)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Sesuaikan opasitas latar belakang di belakang tombol kontrol pemutar dan bilah waktu (0 tidak terlihat, 100 solid)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Sembunyikan tombol Sebelumnya &amp; Berikutnya</string>
   <string name="morphe_hide_settings_button_title">Sembunyikan tombol Pengaturan</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1202,6 +1202,10 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Nada audio bawaan telah diubah menjadi: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Perpanjangan waktu audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Mengizinkan pengaturan kecepatan dan nada secara terpisah, namun dapat menyebabkan gangguan audio</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Ingat posisi pemutaran siaran langsung</string>
+  <string name="morphe_remember_livestream_position_summary">Untuk siaran langsung yang sedang berlangsung, mengingat dan melanjutkan posisi pemutaran Anda alih-alih mencari ke posisi live saat ini</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Fitur ini tidak berfungsi dengan siaran langsung 24/7 dan streaming lain yang \'selalu aktif\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Nonaktifkan video HDR</string>
   <string name="morphe_force_hdr_video_title">Paksa video HDR</string>

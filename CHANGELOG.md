@@ -1,3 +1,20 @@
+## [1.42.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.3...v1.42.0-dev.4) (2026-09-06)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Channel whitelists:** Whitelists buttons are visible in some flyouts ([#2802](https://github.com/MorpheApp/morphe-patches/issues/2802)) ([2f482ff](https://github.com/MorpheApp/morphe-patches/commit/2f482ff33e5b0fa59d7877b9e34b7a47aa110397))
+* **YouTube - Hide player overlay buttons:** Apply the control buttons background opacity to the player time bar ([#2805](https://github.com/MorpheApp/morphe-patches/issues/2805)) ([302ab28](https://github.com/MorpheApp/morphe-patches/commit/302ab28ce8c00b2b5a093dcbedeb739706360d67))
+* **YouTube - Hide Shorts components:** Hide new type of paused overlay button ([c958fb6](https://github.com/MorpheApp/morphe-patches/commit/c958fb666cac54aaa3c822b736db85479c4dc6db))
+
+### ✨ New Features
+
+* **YouTube Music - Scrobbling:** Add "Fill in missing album" setting ([#2666](https://github.com/MorpheApp/morphe-patches/issues/2666)) ([c94ecbd](https://github.com/MorpheApp/morphe-patches/commit/c94ecbddec7454d866c05b85926dc6670d3ef648))
+* **YouTube:** Add `Remember livestream playback position` patch ([#2753](https://github.com/MorpheApp/morphe-patches/issues/2753)) ([6252c85](https://github.com/MorpheApp/morphe-patches/commit/6252c85e7ce22ee4030a0a9b9094f467f42fa863))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.36.45` ([#2814](https://github.com/MorpheApp/morphe-patches/issues/2814)) ([07d36c3](https://github.com/MorpheApp/morphe-patches/commit/07d36c334ec9834e671bf1bb97b14f6a20dcdbbe))
+
 ## [1.42.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.2...v1.42.0-dev.3) (2026-09-05)
 
 ### 🐛 Bug Fixes

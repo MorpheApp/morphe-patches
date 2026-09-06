@@ -11,6 +11,7 @@
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.GMS_CORE_IGNORED_VERSION;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -44,7 +45,6 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.SharedSettings;
-import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
@@ -68,9 +68,6 @@ public class GmsCoreSupportPatch {
      */
     private static final String MICROG_LATEST_RELEASE_API_URL =
             "https://api.github.com/repos/MorpheApp/MicroG-RE/releases/latest";
-
-    private static final StringSetting GMS_CORE_IGNORED_VERSION = new StringSetting(
-            "morphe_gms_core_update_dialog_ignored_version", "", false, false);
 
     /**
      * If a manufacturer specific page exists on DontKillMyApp.

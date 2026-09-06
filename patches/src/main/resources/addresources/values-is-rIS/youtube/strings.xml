@@ -803,7 +803,7 @@ Til þess að fá access til stillingarinnar skaltu koma á stillinguna í gegnu
   <string name="morphe_hide_player_control_buttons_background_title">Fela spilarstýri bakgrunn</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Felur dökkri skuggana um kringum vídeóspilara stjórntækin</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Ógagnsæi bakgrunns stjórnhnappa</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Stilltu ógagnsæi hringsins á bak við stjórnhnappa spilarans (0 er ósýnilegt, 100 er fullkomlega ógagnsætt)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Stilltu ógegnsæi bakgrunnsins fyrir aftan stjórnhnappa spilarans og tímastikuna (0 er ósýnilegt, 100 er ógegnsætt)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Felur Fyrri &amp; Næsti hnappa</string>
   <string name="morphe_hide_settings_button_title">Felur Stillingar hnappinn</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1198,6 +1198,10 @@ Bankaðu hér til að opna DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Breytt hjálpsýni hljóðs í: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Tímapróf hljóðs</string>
   <string name="morphe_playback_audio_time_stretching_summary">Leyfir að stilla hraða og tóna sjálfstætt, getur valdið hljóðgáttum</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Mundu endurspilunarstöðu beinna streyma</string>
+  <string name="morphe_remember_livestream_position_summary">Fyrir bein streymi sem eru í gangi, munar eftir og heldur áfram endurspilunarstöðu þinni í stað þess að fara á núverandi stöðu í beinni útsendingu.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Þessi eiginleiki virkar ekki með 24/7 beinum streymum og öðrum streymum sem eru \'alltaf í gangi\'.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Lokað HDR myndböndum</string>
   <string name="morphe_force_hdr_video_title">Þvinga HDR-vídeó</string>

@@ -807,7 +807,7 @@ Para mostrar o menu 'Faixa de áudio', altera 'Falsificar fluxos de vídeo' para
   <string name="morphe_hide_player_control_buttons_background_title">Ocultar fundo dos controles do player</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Oculta a sombra escura ao redor dos controles do reprodutor de vídeo</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opacidade do fundo dos botões de controle</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Ajuste a opacidade do círculo atrás dos botões de controle do player (0 é invisível, 100 é sólido)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Ajuste a opacidade do fundo atrás dos botões de controle do player e da barra de tempo (0 é invisível, 100 é opaco)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Ocultar botões Anterior &amp; Próximo</string>
   <string name="morphe_hide_settings_button_title">Ocultar botão de configurações</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Toque aqui para aprender mais sobre o DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Tom de áudio predefinido alterado para: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Alongamento de tempo de áudio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Permite definir velocidade e tom independentemente, podendo causar artefactos de áudio</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Lembrar posição de reprodução de transmissão ao vivo</string>
+  <string name="morphe_remember_livestream_position_summary">Para transmissões ao vivo em andamento, lembra e retoma sua posição de reprodução em vez de pular para a posição atual da transmissão ao vivo.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Este recurso não funciona com transmissões ao vivo 24/7 nem com outras transmissões que ficam \'sempre ativas\'.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Desabilitar vídeo HDR</string>
   <string name="morphe_force_hdr_video_title">Forçar vídeo HDR</string>

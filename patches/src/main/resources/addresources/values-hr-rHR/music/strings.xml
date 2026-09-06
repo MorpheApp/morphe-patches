@@ -297,6 +297,8 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Unesite prilagođeni regularni izraz za uklanjanje dodatnog teksta iz naslova pjesama, izvođača ili albuma. Primjer: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Raščlani izvođača i pjesmu iz naslova</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Izdvojite izvođača i naziv pjesme iz naslova videozapisa pomoću razdjelnika \" - \". Korisno za ponovno prenesene sadržaje gdje se naziv kanala može koristiti kao izvođač.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Ispuni nedostajući album</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Kada glazba ne sadrži album, potraži ga na Last.fm kako bi tvoj scrobble bio potpun.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">O scrobblingu</string>
   <!-- 'scrobbling' must be kept untranslated -->

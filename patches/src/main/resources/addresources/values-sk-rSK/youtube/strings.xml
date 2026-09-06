@@ -806,6 +806,7 @@ Ak chcete zobraziť menu 'Audio Track', zmeňte 'Spoofovanie video streamov' na 
   <string name="morphe_hide_fullscreen_button_title">Skryť tlačidlo na celú obrazovku</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skryť pozadie tlačidiel prehrávača</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Skryje tmavé tienenie okolo ovládacích prvkov prehrávača videa</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Upravte nepriehľadnosť pozadia za tlačidlami ovládania prehrávača a za časovou lištou (0 je neviditeľné, 100 je plné)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Skryť tlačidlá Predchádzajúce a Nasledujúce</string>
   <string name="morphe_hide_settings_button_title">Skryť tlačidlo Nastavenia</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1200,6 +1201,10 @@ Ak je povolené, URL adresy videí sa odošlú na server API a neodosielajú sa 
   <string name="morphe_remember_playback_audio_pitch_toast">Predvolená výška zvuku bola zmenená na: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Časové pretiahanie zvuku</string>
   <string name="morphe_playback_audio_time_stretching_summary">Umožňuje nezávisle nastavovať rýchlosť a výšku zvuku, čo môže spôsobiť artefakty zvuku</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Zapamätať si pozíciu prehrávania živého vysielania</string>
+  <string name="morphe_remember_livestream_position_summary">Pri prebiehajúcich živých vysielaniach si zapamätá a obnoví vašu pozíciu prehrávania namiesto presunu na aktuálnu živú pozíciu.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Táto funkcia nefunguje s nepretržitými živými vysielaniami a ďalšími streamami, ktoré sú vždy zapnuté.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Zakázať HDR video</string>
   <string name="morphe_force_hdr_video_title">Vynútiť HDR video</string>

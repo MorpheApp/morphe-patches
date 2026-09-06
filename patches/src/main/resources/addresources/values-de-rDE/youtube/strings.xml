@@ -808,7 +808,7 @@ Um das Menü anzuzeigen, ändern Sie \"Video-Streams fälschen\" in einen belieb
   <string name="morphe_hide_player_control_buttons_background_title">Hintergrund der Player-Steuerelemente ausblenden</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Verbirgt die dunkle Schattierung um die Steuerungselemente des Videoplayers</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Hintergrundtransparenz der Steuertasten</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Hintergrundtransparenz der Steuertasten</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Deckkraft des Hintergrunds hinter den Player-Steuertasten und der Zeitleiste anpassen (0 = unsichtbar, 100 = deckend)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Vorherige &amp; Nächste Tasten ausblenden</string>
   <string name="morphe_hide_settings_button_title">Schaltfläche „Einstellungen“ ausblenden</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1204,6 +1204,10 @@ Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Standard-Tonhöhe geändert zu: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio-Time-Stretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Ermöglicht die unabhängige Einstellung von Geschwindigkeit und Tonhöhe, kann jedoch zu Audioartefakten führen</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Wiedergabeposition für Live-Streams merken</string>
+  <string name="morphe_remember_livestream_position_summary">Bei laufenden Live-Streams wird deine Wiedergabeposition gespeichert und fortgesetzt, anstatt zur aktuellen Live-Position zu springen.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Diese Funktion funktioniert nicht bei 24/7-Livestreams und anderen Streams, die dauerhaft aktiv sind.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiviere HDR-Video</string>
   <string name="morphe_force_hdr_video_title">HDR-Video erzwingen</string>
