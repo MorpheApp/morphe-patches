@@ -297,6 +297,8 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">Voer \'n pasgemaakte regulêre uitdrukking in om ekstra teks uit liedtitels, kunstenaars of albums te verwyder. Voorbeeld: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Ontleed kunstenaar en snit uit titel</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Haal die kunstenaar en snitnaam uit die video se titel met behulp van die \" - \" skeidingsteken. Nuttig vir heropgelaaide inhoud waar die kanaalnaam as die kunstenaar gebruik mag word.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Vul ontbrekende album in</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Wanneer die musiek nie \'n album bevat nie, slaan dit op Last.fm na sodat jou scrobble volledig is</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Oor scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

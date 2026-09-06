@@ -807,7 +807,7 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_hide_player_control_buttons_background_title">Ukryj tło przycisków w odtwarzaczu</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Ukrywa ciemne zacienienie wokół przycisków odtwarzacza</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Krycie tła przycisków sterowania</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Dostosuj krycie koła za przyciskami sterowania odtwarzacza (0 to brak krycia, 100 to pełne krycie)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Dostosuj krycie tła za przyciskami sterowania odtwarzacza i paskiem czasu (0 to brak krycia, 100 to pełne krycie)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Ukryj przyciski Poprzedni i Następny</string>
   <string name="morphe_hide_settings_button_title">Ukryj przycisk Ustawienia</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1202,6 +1202,10 @@ Dotknij tutaj, aby otworzyć DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Zmieniono domyślną tonację dźwięku na: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Rozciąganie dźwięku w czasie</string>
   <string name="morphe_playback_audio_time_stretching_summary">Umożliwia niezależne ustawianie prędkości i tonacji, może powodować zniekształcenia dźwięku</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Zapamiętaj pozycję odtwarzania transmisji na żywo</string>
+  <string name="morphe_remember_livestream_position_summary">Dla trwających transmisji na żywo zapamiętuje i wznawia odtwarzanie od ostatniej pozycji, zamiast przeskakiwać do aktualnego momentu na żywo</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Ta funkcja nie działa w przypadku transmisji 24/7 oraz innych, które są \"zawsze włączone\"</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Wyłącz filmy z HDR</string>
   <string name="morphe_force_hdr_video_title">Wymuś filmy w HDR</string>

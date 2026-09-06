@@ -807,7 +807,7 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_hide_player_control_buttons_background_title">Piilota soittimen ohjainten tausta</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Piilottaa tumman varjostuksen videotoiston säätimien ympäriltä</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Säätöpainikkeiden taustan läpinäkyvyys</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Säädä soittimen säätöpainikkeiden takana olevan ympyrän läpinäkyvyyttä (0 on näkymätön, 100 on kiinteä)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Säädä soittimen ohjauspainikkeiden ja aikapalkin takana olevan taustan peittävyyttä (0 on näkymätön, 100 on peittävä)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Piilota Edellinen ja Seuraava -painikkeeet</string>
   <string name="morphe_hide_settings_button_title">Piilota Asetukset-painike</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Napauta tästä saadaksesi lisätietoja DeArrowista"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Toiston oletusäänenkorkeus muutettiin: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Äänen aikavenytys</string>
   <string name="morphe_playback_audio_time_stretching_summary">Mahdollistaa nopeuden ja äänenkorkeuden säätämisen toisistaan riippumatta, saattaa aiheuttaa äänihäiriöitä</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Muista live-lähetyksen toistokohta</string>
+  <string name="morphe_remember_livestream_position_summary">Käynnissä olevien live-lähetysten toistokohta muistetaan ja toistoa jatketaan siitä sen sijaan, että siirryttäisiin nykyiseen live-kohtaan.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Tämä ominaisuus ei toimi 24/7-livelähetysten eikä muiden aina päällä olevien lähetysten kanssa.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Poista HDR-video käytöstä</string>
   <string name="morphe_force_hdr_video_title">Pakota HDR-video</string>

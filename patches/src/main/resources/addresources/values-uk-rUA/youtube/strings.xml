@@ -807,7 +807,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Приховати фон кнопок керування плеєром</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Приховує темне затемнення навколо елементів керування плеєром</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Прозорість фону кнопок керування</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Налаштуйте прозорість кола за кнопками керування плеєром (0 - невидиме, 100 - суцільне)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Налаштуйте непрозорість фону позаду кнопок керування плеєром і панелі часу (0 — невидимий, 100 — непрозорий)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Приховати кнопки \"Попереднє\" та \"Наступне\"</string>
   <string name="morphe_hide_settings_button_title">Приховати кнопку \"Налаштування\"</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1202,6 +1202,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Змінено типову висоту тону звуку на: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Розтягування звуку в часі</string>
   <string name="morphe_playback_audio_time_stretching_summary">Дозволяє налаштовувати швидкість і висоту тону незалежно, може спричиняти звукові артефакти</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Запам\'ятовувати позицію відтворення прямої трансляції</string>
+  <string name="morphe_remember_livestream_position_summary">Для поточних прямих трансляцій запам\'ятовує та відновлює вашу позицію відтворення замість переходу до поточної позиції ефіру.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Ця функція не працює з цілодобовими прямими трансляціями та іншими потоками, які завжди ввімкнені.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Вимкнути HDR відео</string>
   <string name="morphe_force_hdr_video_title">Примусово вмикати HDR-відео</string>

@@ -806,6 +806,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_hide_fullscreen_button_title">Fullscreen বোতামটি লুকান</string>
   <string name="morphe_hide_player_control_buttons_background_title">প্লেয়ার কন্ট্রোল ব্যাকগ্রাউন্ড লুকান</string>
   <string name="morphe_hide_player_control_buttons_background_summary">ভিডিও প্লেয়ার কন্ট্রোলগুলির চারপাশের গাঢ় ছায়া লুকান</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">প্লেয়ার কন্ট্রোল বাটন এবং টাইম বারের পিছনের ব্যাকগ্রাউন্ডের অস্বচ্ছতা সামঞ্জস্য করুন (0 অদৃশ্য, 100 অস্বচ্ছ)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">পূর্ববর্তী লুকান &amp; পরবর্তী বোতাম</string>
   <string name="morphe_hide_settings_button_title">সেটিংস বোতামটি লুকান</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1186,6 +1187,10 @@ DeArrow.ajay.app ওপেন করতে এখানে ট্যাপ ক�
   <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">লাইভস্ট্রিম প্লেব্যাক অবস্থান মনে রাখুন</string>
+  <string name="morphe_remember_livestream_position_summary">চলমান লাইভস্ট্রিমগুলির জন্য, বর্তমান লাইভ অবস্থানে না গিয়ে আপনার প্লেব্যাক অবস্থান মনে রাখে এবং সেখান থেকে পুনরায় চালু করে</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">এই বৈশিষ্ট্যটি 24/7 লাইভস্ট্রিম এবং অন্যান্য \'সবসময় চালু\' থাকা স্ট্রিমগুলির সাথে কাজ করে না</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR ভিডিও নিষ্ক্রিয় করুন</string>
   <string name="morphe_force_hdr_video_title">HDR ভিডিও জোর করুন</string>

@@ -807,7 +807,7 @@ Az 'Audio Track' menü megjelenítéséhez állítsa a 'Videóstream-ek megtéve
   <string name="morphe_hide_player_control_buttons_background_title">Lejátszóvezérlők hátterének elrejtése</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Rejtse el a sötét árnyékolást a videólejátszó vezérlőgombjai körül.</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Vezérlőgombok hátterének átlátszatlansága</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Állítsd be a lejátszó vezérlőgombjai mögötti kör átlátszatlanságát (0 = láthatatlan, 100 = átlátszatlan)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">A lejátszó vezérlőgombjai és az idővonal mögötti háttér átlátszatlanságának beállítása (0 láthatatlan, 100 átlátszatlan)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Elrejteni a \'Következő\' és \'Előző\' gombokat</string>
   <string name="morphe_hide_settings_button_title">Elrejteni a \'Beállítások\' gombot</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Ha engedélyezve van, akkor a videók URL-jeit elküldjük az API kiszolgálóna
   <string name="morphe_remember_playback_audio_pitch_toast">Alapértelmezett hangmagasság módosítva: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audió időnyújtás</string>
   <string name="morphe_playback_audio_time_stretching_summary">Lehetővé teszi a sebesség és a hangmagasság független beállítását, ami audio artefaktumokat okozhat</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Az élő közvetítés lejátszási pozíciójának megjegyzése</string>
+  <string name="morphe_remember_livestream_position_summary">A folyamatban lévő élő közvetítéseknél megjegyzi a lejátszási pozíciót, és onnan folytatja a lejátszást, ahelyett, hogy az élő közvetítés aktuális pozíciójára ugrana.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Ez a funkció nem működik a 24/7-es élő közvetítéseknél és más, „mindig aktív” streameknél.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Az HDR videó letiltása</string>
   <string name="morphe_force_hdr_video_title">HDR videó kényszerítése</string>

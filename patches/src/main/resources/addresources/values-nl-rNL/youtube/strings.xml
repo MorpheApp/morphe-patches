@@ -805,7 +805,7 @@ Om het 'Audio Track'-menu weer te geven, wijzig 'Spoof video streams' naar elke 
   <string name="morphe_hide_player_control_buttons_background_title">Achtergrond van spelerbediening verbergen</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Verbergt de donkere schaduw rondom de bedieningselementen van de videospeler</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Achtergronddekking bedieningsknoppen</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Pas de dekking van de cirkel achter de bedieningsknoppen van de speler aan (0 is onzichtbaar, 100 is ondoorzichtig)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Pas de dekking van de achtergrond achter de bedieningsknoppen van de speler en de tijdbalk aan (0 is onzichtbaar, 100 is volledig dekkend).</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Verberg Vorige &amp; Volgende knoppen</string>
   <string name="morphe_hide_settings_button_title">Instellingenknop verbergen</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1201,6 +1201,10 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Standaard toonhoogte audio gewijzigd naar: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio tijdstretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Maakt het mogelijk om snelheid en toonhoogte onafhankelijk van elkaar in te stellen, wat audio-artefacten kan veroorzaken</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Onthoud afspeelpositie voor livestreams</string>
+  <string name="morphe_remember_livestream_position_summary">Voor lopende livestreams wordt je afspeelpositie onthouden en hervat in plaats van naar de huidige livepositie te gaan</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Deze functie werkt niet met 24/7-livestreams en andere streams die \'altijd aan\' staan</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR-video uitschakelen</string>
   <string name="morphe_force_hdr_video_title">Forceer HDR-video</string>

@@ -806,6 +806,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_fullscreen_button_title">隐藏全屏按钮</string>
   <string name="morphe_hide_player_control_buttons_background_title">隐藏播放器控件背景</string>
   <string name="morphe_hide_player_control_buttons_background_summary">隐藏播放器控制按钮背景</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">调整播放器控制按钮和时间栏后面背景的不透明度（0为不可见，100为完全不透明）</string>
   <string name="morphe_hide_player_previous_next_buttons_title">隐藏上一曲和下一曲按钮</string>
   <string name="morphe_hide_settings_button_title">隐藏设置按钮</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1201,6 +1202,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">记住直播播放位置</string>
+  <string name="morphe_remember_livestream_position_summary">对于正在进行的直播，将记住并恢复您的播放位置，而不是跳转到当前直播位置。</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">此功能不适用于 24/7 直播和其他“始终在线”的直播流。</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">禁用 HDR 视频</string>
   <string name="morphe_force_hdr_video_title">强制 HDR 视频</string>

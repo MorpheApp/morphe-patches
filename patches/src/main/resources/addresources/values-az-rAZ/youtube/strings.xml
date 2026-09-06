@@ -807,7 +807,7 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alət Cərgəsi→ Tənzimlə
   <string name="morphe_hide_player_control_buttons_background_title">Oynadıcı idarəetmələri fonunu gizlət</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Video oynadıcı tənzimləyiciləri əhatəsində qara kölgələnməni gizlədir</string>
   <string name="morphe_player_control_buttons_background_opacity_title">İdarəetmə düymələrinin fon şəffaflığı</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Oynadıcının idarəetmə düymələrinin arxasındakı çevrənin şəffaflığını tənzimlə (0 görünməzdir, 100 şəffaf olmayandır)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Oynadıcının idarəetmə düymələrinin və vaxt cizgisinin arxasındakı fonun çevrəsinin şəffaflığını tənzimlə (0 görünməzdir, 100 şəffaf olmayandır)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Əvvəlki &amp; Növbəti düymələrini gizlət</string>
   <string name="morphe_hide_settings_button_title">Ayarlar düyməsini gizlət</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ DeArrow.ajay.app 'i açmaq üçün buraya toxun"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">İlkin səs ucalığı %s kimi dəyişdirildi</string>
   <string name="morphe_playback_audio_time_stretching_title">Səs vaxtının uzadılması</string>
   <string name="morphe_playback_audio_time_stretching_summary">Sürəti və ucalığı müstəqil şəkildə təyin etməyə imkan verir, səs təhriflərinə səbəb ola bilər</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Canlı yayımın oynatma mövqeyini xatırla</string>
+  <string name="morphe_remember_livestream_position_summary">Cari canlı mövqeyə keçmək əvəzinə, davam edən canlı yayımlar üçün oynatma mövqeyinizi xatırlayır və davam etdirir</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Bu xüsusiyyət 24/7 canlı yayımlar və \"həmişə aktiv\" olan digər yayımlarla işləmir</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR videonu qapat</string>
   <string name="morphe_force_hdr_video_title">HDR videoya məcbur et</string>

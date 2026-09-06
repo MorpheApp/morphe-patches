@@ -807,7 +807,7 @@ För att visa menyn 'Ljudspår', ändra 'Förfalska videostreamar' till valfri k
   <string name="morphe_hide_player_control_buttons_background_title">Dölj bakgrunder för uppspelningsknappar</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Döljer den mörka skuggningen runt uppspelningsknapparna</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Bakgrundsopacitet för kontrollknappar</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Justera opaciteten för cirkeln bakom spelarens kontrollknappar (0 är osynlig, 100 är ogenomskinlig)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Justera opaciteten för bakgrunden bakom spelarkontrollknapparna och tidsfältet (0 är osynlig, 100 är ogenomskinlig)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Dölj knapparna Föregående och Nästa</string>
   <string name="morphe_hide_settings_button_title">Dölj knappen Inställningar</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Tryck här för att öppna DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Ändrade standardtonhöjden till: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Ljudtidsutsträckning</string>
   <string name="morphe_playback_audio_time_stretching_summary">Tillåter att ställa in hastighet och tonhöjd oberoende, kan orsaka ljudartefakter</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Kom ihåg uppspelningsposition för livestream</string>
+  <string name="morphe_remember_livestream_position_summary">För pågående livestreams kommer appen ihåg och återupptar din uppspelningsposition istället för att hoppa till den aktuella livepositionen.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Den här funktionen fungerar inte med 24/7-livestreams och andra strömmar som är \'alltid på\'.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Inaktivera HDR-video</string>
   <string name="morphe_force_hdr_video_title">Tvinga HDR-video</string>

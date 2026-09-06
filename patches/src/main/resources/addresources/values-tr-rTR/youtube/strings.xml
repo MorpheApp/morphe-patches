@@ -807,7 +807,7 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_hide_player_control_buttons_background_title">Oynatıcı kontrolleri arka planını gizle</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Video oynatıcı kontrollerinin etrafındaki koyu gölgelendirmeyi gizler</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Düğme arka plan opaklığı</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Oynatıcı düğmelerinin arkasındaki döngünün opaklığını ayarlayın (0 görünmez, 100 opak)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Oynatıcı kontrol düğmelerinin ve zaman çubuğunun arkasındaki arka planın opaklığını ayarlayın (0 görünmez, 100 opaktır).</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Önceki &amp; Sonraki düğmelerini gizle</string>
   <string name="morphe_hide_settings_button_title">Ayarlar düğmesini gizle</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Varsayılan ses perdesi %s olarak ayarlandı</string>
   <string name="morphe_playback_audio_time_stretching_title">Ses zaman genişletme</string>
   <string name="morphe_playback_audio_time_stretching_summary">Hızın ve perdenin birbirinden bağımsız olarak ayarlanmasına izin verir, ses bozulmalarına neden olabilir</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Canlı yayın oynatma konumunu hatırla</string>
+  <string name="morphe_remember_livestream_position_summary">Devam eden canlı yayınlarda, geçerli canlı konuma atlamak yerine oynatma konumunuzu hatırlar ve kaldığı yerden devam eder.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Bu özellik, 24/7 canlı yayınlar ve her zaman açık olan diğer yayınlarla çalışmaz.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR videoyu devre dışı bırak</string>
   <string name="morphe_force_hdr_video_title">HDR videoyu zorla</string>

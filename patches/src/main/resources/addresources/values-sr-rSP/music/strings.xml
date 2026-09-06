@@ -297,6 +297,8 @@ YouTube Music 8.x — прелазак ради само на 9.x и новиј�
   <string name="morphe_music_scrobbling_custom_regex_summary">Unesite prilagođeni regularni izraz za uklanjanje dodatnog teksta iz naslova pesama, izvođača ili albuma. Primer: (?i)\s*\((clean|explicit)\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Распознај извођача и песму из наслова</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Извуците име извођача и назив песме из наслова видеа користећи сепаратор \" - \". Корисно за поновно отпремљено садржај где се назив канала може користити као извођач.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Попуни недостајући албум</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Када музика не садржи албум, потражи га на Last.fm да би твој scrobble био потпун</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">О scrobbling-у</string>
   <!-- 'scrobbling' must be kept untranslated -->

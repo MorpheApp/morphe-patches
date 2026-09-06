@@ -297,6 +297,8 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_scrobbling_custom_regex_summary">Введіть власний регулярний вираз для видалення додаткового тексту з назв треків, виконавців або альбомів. Приклад: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Визначати виконавця та трек із назви</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Визначає виконавця та назву треку з заголовка відео за допомогою роздільника \" - \". Корисно для перезавантаженого контенту, де назва каналу може використовуватись як виконавець.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Заповнити відсутній альбом</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Якщо музика не містить альбому, шукати його на Last.fm, щоб scrobble був повним</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Про scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->

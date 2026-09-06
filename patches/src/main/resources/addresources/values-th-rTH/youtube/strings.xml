@@ -807,7 +807,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_control_buttons_background_title">ซ่อนพื้นหลังส่วนควบคุมเครื่องเล่น</string>
   <string name="morphe_hide_player_control_buttons_background_summary">ซ่อนพื้นหลังปุ่มควบคุมเครื่องเล่นวิดีโอ</string>
   <string name="morphe_player_control_buttons_background_opacity_title">ความทึบแสงของพื้นหลังปุ่มควบคุม</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">ปรับความทึบแสงของวงกลมหลังปุ่มควบคุมเครื่องเล่น (0 คือมองไม่เห็น, 100 คือทึบแสง)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">ปรับความทึบแสงของพื้นหลังด้านหลังปุ่มควบคุมเครื่องเล่นและแถบเวลา (0 คือมองไม่เห็น, 100 คือทึบแสง)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">ซ่อนปุ่มก่อนหน้า &amp; ถัดไป</string>
   <string name="morphe_hide_settings_button_title">ซ่อนปุ่มการตั้งค่า</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">เปลี่ยนระดับเสียงเริ่มต้นเป็น: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">การยืดเวลาของเสียง</string>
   <string name="morphe_playback_audio_time_stretching_summary">อนุญาตให้ตั้งค่าความเร็วและระดับเสียงโดยอิสระ อาจทำให้เกิดข้อผิดพลาดด้านเสียง</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">จดจำตำแหน่งการเล่นสตรีมสด</string>
+  <string name="morphe_remember_livestream_position_summary">สำหรับสตรีมสดที่กำลังดำเนินอยู่ จะจดจำตำแหน่งการเล่นของคุณและเล่นต่อจากตำแหน่งนั้น แทนที่จะข้ามไปยังตำแหน่งสดปัจจุบัน</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">ฟีเจอร์นี้ใช้ไม่ได้กับสตรีมสด 24/7 และสตรีมอื่นๆ ที่เปิดตลอดเวลา</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">ปิดใช้งานวิดีโอ HDR</string>
   <string name="morphe_force_hdr_video_title">บังคับวิดีโอ HDR</string>

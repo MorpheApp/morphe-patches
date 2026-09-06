@@ -812,7 +812,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_player_control_buttons_background_title">إخفاء خلفية عناصر التحكم بالمشغل</string>
   <string name="morphe_hide_player_control_buttons_background_summary">يخفي التظليل الداكن المحيط بأزرار التحكم في مشغل الفيديو</string>
   <string name="morphe_player_control_buttons_background_opacity_title">شفافية خلفية أزرار التحكم</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">ضبط شفافية الدائرة خلف أزرار التحكم في المشغل (0 غير مرئية، 100 معتمة)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">ضبط شفافية الخلفية خلف أزرار تحكم المشغل وشريط الوقت (0 غير مرئية، 100 معتمة)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_settings_button_title">إخفاء زر الإعدادات</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1208,6 +1208,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_remember_playback_audio_pitch_toast">تم تغيير طبقة الصوت الافتراضية إلى: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">تمديد زمن الصوت</string>
   <string name="morphe_playback_audio_time_stretching_summary">يتيح ضبط السرعة وطبقة الصوت بشكل مستقل، وقد يسبب تشوهات في الصوت</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">تذكّر موضع تشغيل البث المباشر</string>
+  <string name="morphe_remember_livestream_position_summary">بالنسبة إلى عمليات البث المباشر الجارية، يتم تذكّر موضع التشغيل واستئنافه من عنده بدلًا من الانتقال إلى الموضع المباشر الحالي</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">هذه الميزة لا تعمل مع البث المباشر 24/7 والبثوث الأخرى التي تكون \'دائمة التشغيل\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
   <string name="morphe_force_hdr_video_title">فرض فيديو HDR</string>

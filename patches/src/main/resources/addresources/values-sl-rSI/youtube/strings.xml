@@ -807,7 +807,7 @@ Za prikaz menija 'Audio Track' spremenite 'Spoofanje video tokov' v katerega kol
   <string name="morphe_hide_player_control_buttons_background_title">Skrij ozadje gumbov za nadzor predvajanja</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Skrije temno senčenje okoli gumbov predvajalnika videa</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Prosojnost kontrolnih gumbov</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Prilagodi prosojnost kroga v ozadju gumbov za upravljanje predvajalnika (0 je nevidno, 100 je neprosojno)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Prilagodi motnost ozadja za gumbi za upravljanje predvajalnika in časovno vrstico (0 je nevidno, 100 je neprozorno)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Skrij gumba »Prejšnji« in »Naslednji«</string>
   <string name="morphe_hide_settings_button_title">Skrij gumb za nastavitve</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Tapnite tukaj, da odprete DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Privzeta višina tona zvoka je bila spremenjena v: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Časovno razširjanje zvoka</string>
   <string name="morphe_playback_audio_time_stretching_summary">Omogoča neodvisno nastavitev hitrosti in višine tona, kar lahko povzroči artefakte zvoka</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Zapomni si položaj predvajanja prenosa v živo</string>
+  <string name="morphe_remember_livestream_position_summary">Pri prenosih v živo, ki že potekajo, si zapomni in nadaljuje predvajanje z mesta, kjer se je končalo, namesto da bi se pomaknilo na trenutni položaj v živo.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Ta funkcija ne deluje pri 24/7 prenosih v živo in drugih prenosih, ki so \'vedno vključeni\'.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogoči HDR video</string>
   <string name="morphe_force_hdr_video_title">Vsili HDR video</string>

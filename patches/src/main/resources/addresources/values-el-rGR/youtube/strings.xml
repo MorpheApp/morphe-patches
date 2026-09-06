@@ -807,7 +807,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_control_buttons_background_title">Φόντο κουμπιών ελέγχου οθόνης αναπαραγωγής</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Κρύβει την σκοτεινή σκίαση γύρω από τα στοιχεία ελέγχου του αναπαραγωγέα βίντεο</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Αδιαφάνεια φόντου κουμπιών ελέγχου</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Προσαρμόστε την αδιαφάνεια του κύκλου πίσω από τα κουμπιά ελέγχου του προγράμματος αναπαραγωγής (0 είναι αόρατο, 100 είναι πλήρως αδιαφανές)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Προσαρμόστε την αδιαφάνεια του φόντου πίσω από τα κουμπιά ελέγχου του προγράμματος αναπαραγωγής και τη γραμμή χρόνου (0 είναι αόρατο, 100 είναι αδιαφανές)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Κουμπιά προηγούμενου &amp; επόμενου βίντεο</string>
   <string name="morphe_hide_settings_button_title">Κρύψτε το κουμπί \'Ρυθμίσεις\'</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1188,6 +1188,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Ο προεπιλεγμένος τόνος ήχου άλλαξε σε: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Διάταση χρόνου ήχου</string>
   <string name="morphe_playback_audio_time_stretching_summary">Επιτρέπει τη ρύθμιση της ταχύτητας και του τόνου ανεξάρτητα, κάτι που μπορεί να προκαλέσει παραμορφώσεις στον ήχο</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Απομνημόνευση θέσης αναπαραγωγής ζωντανής μετάδοσης</string>
+  <string name="morphe_remember_livestream_position_summary">Για ζωντανές μεταδόσεις σε εξέλιξη, θυμάται και συνεχίζει από τη θέση αναπαραγωγής σας αντί να μεταβαίνει στην τρέχουσα θέση ζωντανής μετάδοσης.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Αυτή η λειτουργία δεν λειτουργεί με ζωντανές μεταδόσεις 24/7 και άλλες ροές που είναι «πάντα ενεργές».</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Απενεργοποίηση βίντεο HDR</string>
   <string name="morphe_force_hdr_video_title">Επιβολή βίντεο HDR</string>

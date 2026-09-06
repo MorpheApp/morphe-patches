@@ -807,7 +807,7 @@ Da biste prikazali meni 'Audio Track', promenite 'Spoofovanje video tokova' na b
   <string name="morphe_hide_player_control_buttons_background_title">Sakrij pozadinu kontrola plejera</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Sakriva tamnu senku oko kontrolnih dugmadi plejera</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Neprozirnost pozadine kontrolnih dugmadi</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Podesite neprozirnost kruga iza dugmadi za kontrolu plejera (0 je nevidljivo, 100 je potpuno neprozirno)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Podešava neprozirnost pozadine iza kontrolnih dugmića plejera i vremenske trake (0 = nevidljivo, 100 = neprozirno)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Sakrij dugmad „Prethodni” i „Sledeći”</string>
   <string name="morphe_hide_settings_button_title">Sakrij dugme „Podešavanja”</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_remember_playback_audio_pitch_toast">Podrazumevana visina audio tona promenjena na: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Rastegljivanje audio vremena</string>
   <string name="morphe_playback_audio_time_stretching_summary">Omogućava nezavisno podešavanje brzine i visine tona, što može izazvati audio artefakte</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Zapamti poziciju reprodukcije uživog prenosa</string>
+  <string name="morphe_remember_livestream_position_summary">Kod uživih prenosa u toku, pamti poziciju reprodukcije i nastavlja od nje umesto da pređe na trenutnu poziciju uživog prenosa</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Ova funkcija ne radi sa 24/7 uživim prenosima i drugim prenosima koji su uvek uključeni</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogući HDR video</string>
   <string name="morphe_force_hdr_video_title">Forsiraj HDR video</string>

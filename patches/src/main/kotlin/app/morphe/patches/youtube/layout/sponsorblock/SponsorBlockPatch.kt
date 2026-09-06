@@ -28,9 +28,12 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
+import app.morphe.patches.youtube.misc.playercontrols.disableNewPlayerControlsFeatureFlag
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -234,7 +237,8 @@ val sponsorBlockPatch = bytecodePatch(
         videoInformationPatch,
         playerTypeHookPatch,
         legacyPlayerControlsPatch,
-        sponsorBlockResourcePatch
+        sponsorBlockResourcePatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -353,6 +357,12 @@ val sponsorBlockPatch = bytecodePatch(
                     "invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setAdProgressTextVisibility(I)V"
                 )
             }
+        }
+
+        // FIXME: Skip buttons do not show in new player controls layout.
+        //        Skip buttons may need to be added at runtime like other overlay buttons.
+        if (is_21_36_or_greater) {
+            disableNewPlayerControlsFeatureFlag()
         }
     }
 }

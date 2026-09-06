@@ -35,15 +35,15 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.42.0-dev.3](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.42.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;145 patches total
+> **[v1.42.0-dev.5](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.42.0-dev.5)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;146 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;81 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;82 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.35.442 | 🧪&nbsp;21.34.243 | 🧪&nbsp;21.28.208 | 21.07.247 | 21.04.223 | 20.51.39 | 20.31.42 | 20.21.37 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 🧪&nbsp;21.36.45 | 🧪&nbsp;21.35.442 | 🧪&nbsp;21.28.208 | 21.07.247 | 20.31.42 | 20.21.37 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
@@ -111,6 +111,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Playback speed](#playback-speed) | Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player. |  |
 | [PoToken provider](#potoken-provider) | Adds option to get PoToken using an external PoToken minter app. |  |
 | [Reload video](#reload-video) | Adds an option to display reload video button in the video player. |  |
+| [Remember livestream playback position](#remember-livestream-playback-position) | Adds an option to remember the playback position of ongoing livestreams and resume from there when reopening a livestream. |  |
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
 | [Remove viewer discretion dialog](#remove-viewer-discretion-dialog) | Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction. |  |
 | [Return YouTube Dislike](#return-youtube-dislike) | Adds an option to show the dislike count of videos with Return YouTube Dislike. |  |

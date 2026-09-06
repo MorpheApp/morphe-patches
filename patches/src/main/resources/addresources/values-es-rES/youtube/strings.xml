@@ -58,7 +58,7 @@ Los cambios incluyen:
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro del menú desplegable del feed</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Introduce los nombres de los elementos del menú desplegable que quieres filtrar, separados por saltos de línea</string>
   <string name="morphe_hide_account_menu_title">Activar el filtro del menú inferior «Biblioteca / Tú»</string>
-  <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior de \'Biblioteca / Tú\'</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduce los nombres de los elementos del menú inferior «Biblioteca / Tú» que quieres filtrar, separados por saltos de línea</string>
   <string name="morphe_hide_album_cards_title">Ocultar tarjetas de álbum</string>
   <string name="morphe_hide_album_cards_summary">Oculta las tarjetas de álbum debajo de la descripción del artista</string>
@@ -164,7 +164,7 @@ Los cambios incluyen:
   <string name="morphe_hide_ask_section_title">Ocultar sección Preguntar</string>
   <string name="morphe_hide_attributes_section_title">Ocultar sección Atributos</string>
   <string name="morphe_hide_attributes_section_summary">Oculta las secciones Lugares destacados, Juegos, Música y Personas mencionadas</string>
-  <string name="morphe_hide_channel_links_section_title">Ocultar la sección de enlaces del canal</string>
+  <string name="morphe_hide_channel_links_section_title">Ocultar sección de enlaces del canal</string>
   <string name="morphe_hide_chapters_section_title">Ocultar sección Capítulos</string>
   <string name="morphe_hide_corrections_section_title">Ocultar sección Correcciones</string>
   <string name="morphe_hide_course_progress_section_title">Ocultar sección \'Progreso del curso\'</string>
@@ -359,7 +359,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_aislist_submit_failed">Reporte fallido. Comprueba tu conexión</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_ads_channel_whitelist_title">Lista de excepción para anuncios</string>
-  <string name="morphe_ads_channel_whitelist_summary">Los vídeos de canales en la lista de excepción se reproducen con anuncios, para que sus creadores reciban ingresos. En el resto de canales, los anuncios siguen bloqueados</string>
+  <string name="morphe_ads_channel_whitelist_summary">Los vídeos de canales en la lista de excepción se reproducen con anuncios, para que sus creadores reciban ingresos. En el resto de canales los anuncios siguen bloqueados</string>
   <string name="morphe_ads_channel_whitelist_flyout_add">Añadir canal a la lista de excepción para anuncios</string>
   <string name="morphe_ads_channel_whitelist_flyout_remove">Quitar canal de la lista de excepción para anuncios</string>
   <string name="morphe_hide_creator_store_shelf_title">Ocultar sección de tienda del creador</string>
@@ -502,7 +502,7 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_save_to_watch_later_error_toast">No se puede guardar este video en la lista de reproducción \'Ver más tarde\'</string>
   <string name="morphe_save_to_watch_later_flyout_title">Guardar en \'Ver más tarde\'</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en videos infantiles</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite guardar videos infantiles en el menú emergente \'Ver más tarde\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite guardar videos infantiles en el menú desplegable \'Ver más tarde\'</string>
   <string name="morphe_queue_flyout_title">Añadir a la cola de Morphe</string>
   <string name="morphe_queue_restore_title">Mantener la cola entre sesiones</string>
   <string name="morphe_queue_restore_summary">La cola se mantiene después de reiniciar la aplicación</string>
@@ -805,7 +805,7 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_hide_player_control_buttons_background_title">Ocultar fondo de controles del reproductor</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Oculta el sombreado oscuro que rodea los controles del reproductor de vídeo</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opacidad del fondo de los botones de control</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Ajusta la opacidad del círculo detrás de los botones de control del reproductor (0 es invisible, 100 es opaco)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Ajusta la opacidad del fondo detrás de los botones de control del reproductor y la barra de tiempo (0 es invisible, 100 es opaco)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Ocultar botones Anterior y Siguiente</string>
   <string name="morphe_hide_settings_button_title">Ocultar botón de Ajustes</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1201,6 +1201,10 @@ Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Se ha cambiado el tono de audio predeterminado a: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Estiramiento de tiempo de audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Permite ajustar la velocidad y el tono de forma independiente; puede causar artefactos de audio</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Recordar posición de reproducción del directo</string>
+  <string name="morphe_remember_livestream_position_summary">Para directos en curso, recuerda y reanuda tu posición de reproducción en lugar de buscar la posición actual del directo</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Esta función no es compatible con los directos 24/7 ni con otras transmisiones que estén \'siempre activas\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Desactivar vídeo HDR</string>
   <string name="morphe_force_hdr_video_title">Forzar vídeo HDR</string>

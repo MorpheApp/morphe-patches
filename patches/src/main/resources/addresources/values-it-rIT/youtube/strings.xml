@@ -807,7 +807,7 @@ Per mostrare il menu 'Audio Track', cambia 'Falsificazione dei flussi video' in 
   <string name="morphe_hide_player_control_buttons_background_title">Nascondi lo sfondo dei controlli del lettore</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Nasconde l\'ombreggiatura scura che circonda i controlli del lettore video</string>
   <string name="morphe_player_control_buttons_background_opacity_title">Opacità dello sfondo dei pulsanti di controllo</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">Regola l\'opacità del cerchio dietro i pulsanti di controllo del lettore (0 è invisibile, 100 è solido)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">Regola l\'opacità dello sfondo dietro i pulsanti di controllo del player e la barra del tempo (0 è invisibile, 100 è opaco)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Nascondi i pulsanti Precedente e Successivo</string>
   <string name="morphe_hide_settings_button_title">Nascondi il pulsante Impostazioni</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1203,6 +1203,10 @@ Tocca qui per saperne di più su DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Pitch audio predefinito modificato in: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Time stretching audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Consente di impostare velocità e pitch indipendentemente, potrebbe causare artefatti audio</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">Ricorda la posizione di riproduzione delle dirette</string>
+  <string name="morphe_remember_livestream_position_summary">Per le dirette in corso, ricorda e riprende la tua posizione di riproduzione invece di passare alla posizione live attuale.</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">Questa funzione non funziona con le dirette 24/7 e altri streaming \'sempre attivi\'.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Disattiva video in HDR</string>
   <string name="morphe_force_hdr_video_title">Forza video HDR</string>

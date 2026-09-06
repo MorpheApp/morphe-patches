@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-05T08:45:18",
-  "description": "## [1.42.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.2...v1.42.0-dev.3) (2026-09-05)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Video quality:** Restore `ShortsPlayerState` check to fix default video quality ([b596375](https://github.com/MorpheApp/morphe-patches/commit/b59637570cc477d09a236cf14582e4b06d1abc37))\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Report AI channel\" video menu entry ([#2763](https://github.com/MorpheApp/morphe-patches/issues/2763)) ([17d1135](https://github.com/MorpheApp/morphe-patches/commit/17d1135c33d7af159c48198e30d14623ea738aff))\n* **YouTube - Hide Shorts components:** Add \"Hide gesture hints\" setting ([#2760](https://github.com/MorpheApp/morphe-patches/issues/2760)) ([73df92a](https://github.com/MorpheApp/morphe-patches/commit/73df92adf973775ac42f8d89f938bf17ec7e03b3))\n* **YouTube:** Add channel whitelists for ads and playback speed ([#2334](https://github.com/MorpheApp/morphe-patches/issues/2334)) ([4850003](https://github.com/MorpheApp/morphe-patches/commit/4850003c90948552383f7bead3e185d6085a2b57))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.42.0-dev.3/patches-1.42.0-dev.3.mpp",
+  "created_at": "2026-09-06T10:44:06",
+  "description": "## [1.42.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.4...v1.42.0-dev.5) (2026-09-06)\n\n### 🐛 Bug Fixes\n\n* **YouTube - SponsorBlock:** Skip buttons are not show with `21.26.45` ([f667d85](https://github.com/MorpheApp/morphe-patches/commit/f667d85352b8165b1680c54bd22e211e81e7f1ce))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.42.0-dev.5/patches-1.42.0-dev.5.mpp",
   "signature_download_url": "",
-  "version": "1.42.0-dev.3"
+  "version": "1.42.0-dev.5"
 }

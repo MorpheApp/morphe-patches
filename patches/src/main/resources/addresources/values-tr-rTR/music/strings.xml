@@ -297,6 +297,8 @@ YouTube Music 8.x — geçiş yalnızca 9.x ve sonraki sürümlerde çalışır"
   <string name="morphe_music_scrobbling_custom_regex_summary">Şarkı adlarından, sanatçılardan veya albümlerden ek metni kaldırmak için özel bir düzenli ifade girin. Örnek: (?i)\\s*\\((clean|explicit)\\)</string>
   <string name="morphe_music_scrobbling_parse_title_title">Başlıktan sanatçı ve parça adını ayrıştır</string>
   <string name="morphe_music_scrobbling_parse_title_summary">\" - \" ayıracını kullanarak video başlığından sanatçı ve parça adını çıkar. Kanal adı sanatçı olarak kullanılmış yeniden yüklenmiş içerik için kullanışlıdır.</string>
+  <string name="morphe_music_scrobbling_guess_album_title">Eksik albümü tamamla</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">Müzik bir albüm içermiyorsa, scrobble\'ınızın tamamlanması için Last.fm\'de arayın.</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Scrobbling hakkında</string>
   <!-- 'scrobbling' must be kept untranslated -->

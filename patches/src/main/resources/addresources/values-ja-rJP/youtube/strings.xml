@@ -358,10 +358,10 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <string name="morphe_aislist_submit_failed_rejected">AiSListは報告を拒否しました</string>
   <string name="morphe_aislist_submit_failed">報告に失敗しました。接続を確認してください</string>
   <!-- ad.hideAdsPatch -->
-  <string name="morphe_ads_channel_whitelist_title">チャンネルの広告ホワイトリスト</string>
-  <string name="morphe_ads_channel_whitelist_summary">ホワイトリストに登録されたチャンネルの動画は広告付きで再生されるため、クリエイターに収益が支払われます。他のすべてのチャンネルでは広告はブロックされたままです。</string>
-  <string name="morphe_ads_channel_whitelist_flyout_add">チャンネルを広告ホワイトリストに追加</string>
-  <string name="morphe_ads_channel_whitelist_flyout_remove">チャンネルを広告ホワイトリストから削除</string>
+  <string name="morphe_ads_channel_whitelist_title">広告のチャンネル ホワイトリスト</string>
+  <string name="morphe_ads_channel_whitelist_summary">ホワイトリストに登録されたチャンネルの動画では、広告が表示され、投稿者に報酬が支払われます。それ以外のチャンネルの動画では、広告は引き続きブロックされます。</string>
+  <string name="morphe_ads_channel_whitelist_flyout_add">チャンネルを広告のホワイトリストに追加</string>
+  <string name="morphe_ads_channel_whitelist_flyout_remove">チャンネルを広告のホワイトリストから削除</string>
   <string name="morphe_hide_creator_store_shelf_title">「\"チャンネル名\" のストア」欄を非表示</string>
   <string name="morphe_hide_end_screen_store_banner_title">終了画面のストアバナーを非表示</string>
   <string name="morphe_hide_general_ads_title">一般的な広告を非表示</string>
@@ -808,7 +808,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_player_control_buttons_background_title">プレーヤーのコントロールの背景を非表示</string>
   <string name="morphe_hide_player_control_buttons_background_summary">動画プレーヤーのコントロール (再生ボタンなど) の周辺に表示される、ふちどりのための影を非表示にします</string>
   <string name="morphe_player_control_buttons_background_opacity_title">プレーヤーのコントロールの背景の透明度</string>
-  <string name="morphe_player_control_buttons_background_opacity_summary">動画プレーヤーのコントロール (再生ボタンなど) の周辺に表示される、ふちどりのための円形の影の透明度を設定します (0 が完全透明)</string>
+  <string name="morphe_player_control_buttons_background_opacity_summary">プレイヤーのコントロールボタンとタイムバーの背後にある背景の不透明度を調整します（0は透明、100は不透明）</string>
   <string name="morphe_hide_player_previous_next_buttons_title">前の動画ボタンと次の動画ボタンを非表示</string>
   <string name="morphe_hide_settings_button_title">設定ボタンを非表示</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
@@ -1202,6 +1202,10 @@ Automotive レイアウト
   <string name="morphe_remember_playback_audio_pitch_toast">デフォルトの音声ピッチを %s に変更しました</string>
   <string name="morphe_playback_audio_time_stretching_title">タイムストレッチ</string>
   <string name="morphe_playback_audio_time_stretching_summary">再生速度と音声ピッチを個別に設定できますが、音声にノイズなどの副作用が生じる場合があります</string>
+  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <string name="morphe_remember_livestream_position_title">ライブ配信の再生位置を記憶する</string>
+  <string name="morphe_remember_livestream_position_summary">進行中のライブ配信では、現在のライブ位置にシークする代わりに、再生位置を記憶して再開します。</string>
+  <string name="morphe_remember_livestream_position_user_dialog_message">この機能は、24時間365日配信のライブ配信や、その他の「常時オン」の配信では機能しません。</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_hdr_video_title">HDR 動画を強制的に使用</string>
