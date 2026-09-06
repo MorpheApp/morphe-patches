@@ -36,8 +36,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.json.JSONException;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -70,11 +69,11 @@ public class GmsCoreSupportPatch {
     private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
     /**
-     * Raw URL of the MicroG-RE build file on the main (latest stable) branch.
-     * Used to determine the latest stable MicroG version.
+     * GitHub API URL for the latest stable MicroG-RE release.
+     * The /releases/latest endpoint only returns non-prerelease, non-draft releases.
      */
-    private static final String MICROG_VERSION_RAW_URL =
-            "https://raw.githubusercontent.com/MorpheApp/MicroG-RE/main/build.gradle";
+    private static final String MICROG_LATEST_RELEASE_API_URL =
+            "https://api.github.com/repos/MorpheApp/MicroG-RE/releases/latest";
 
     private static String getOriginalPackageName() {
         return null; // Modified during patching.
@@ -289,18 +288,19 @@ public class GmsCoreSupportPatch {
      */
     @Nullable
     private static String fetchLatestMicroGVersion() throws IOException {
-        HttpURLConnection connection = Requester.openConnection(MICROG_VERSION_RAW_URL);
+        HttpURLConnection connection = Requester.openConnection(MICROG_LATEST_RELEASE_API_URL);
         connection.setConnectTimeout(5000);
         connection.setReadTimeout(5000);
-        String body;
-        try {
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) return null;
-            body = Requester.parseString(connection);
-        } finally {
+        if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
             connection.disconnect();
+            return null;
         }
-        Matcher matcher = Pattern.compile("(?m)^\\s*def ourGmsVersionName\\s*=\\s*\"([^\"]+)\"").matcher(body);
-        return matcher.find() ? matcher.group(1) : null;
+        try {
+            // The latest release endpoint returns the newest stable (non-prerelease) tag.
+            return Requester.parseJSONObjectAndDisconnect(connection).optString("tag_name", null);
+        } catch (JSONException ex) {
+            return null;
+        }
     }
 
     /**
