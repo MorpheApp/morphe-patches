@@ -179,6 +179,11 @@ Davranış, aramanın daha önceki bir adımında ortadan kalktı; bu nedenle bi
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG yüklenmemiş. Yükleyin.</string>
   <string name="gms_core_dialog_title">Eylem gerekli</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1s sürümünüz güncel değil ve sorunlara neden olabilir.
+
+Lütfen MicroG'u en son sürüm olan v%2s sürümüne güncelleyin."</string>
+  <string name="gms_core_dialog_update_text">Güncelle</string>
+  <string name="gms_core_dialog_ignore_text">Yoksay</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore'nin arka planda çalışma izni yok.
 

@@ -179,6 +179,11 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">Το MicroG δεν είναι εγκατεστημένο. Εγκαταστήστε το.</string>
   <string name="gms_core_dialog_title">Απαιτείται ενέργεια</string>
+  <string name="gms_core_dialog_outdated_message">"Το MicroG v%1s σας είναι ξεπερασμένο και μπορεί να προκαλέσει προβλήματα.
+
+Παρακαλούμε ενημερώστε το MicroG στην τελευταία έκδοση v%2s."</string>
+  <string name="gms_core_dialog_update_text">Ενημέρωση</string>
+  <string name="gms_core_dialog_ignore_text">Αγνόηση</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Το MicroG δεν έχει άδεια να εκτελείται στο παρασκήνιο.
 

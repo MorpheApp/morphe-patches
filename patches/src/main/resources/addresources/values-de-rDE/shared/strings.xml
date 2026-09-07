@@ -179,6 +179,11 @@ Das Verhalten ist früher in der Suche verschwunden, daher könnte mehr als ein 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ist nicht installiert. Installieren Sie es.</string>
   <string name="gms_core_dialog_title">Aktion notwendig</string>
+  <string name="gms_core_dialog_outdated_message">"Ihre MicroG-Version v%1s ist veraltet und kann Probleme verursachen.
+
+Bitte aktualisieren Sie MicroG auf die neueste Version v%2s."</string>
+  <string name="gms_core_dialog_update_text">Update</string>
+  <string name="gms_core_dialog_ignore_text">Ignorieren</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG hat keine Berechtigung, im Hintergrund zu laufen.
 

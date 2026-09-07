@@ -179,6 +179,11 @@ Comportamentul a dispărut mai devreme în căutare, deci poate fi implicat mai 
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nu este instalat. Instalati-l.</string>
   <string name="gms_core_dialog_title">Acțiune necesară</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG-ul tău v%1s este învechit și poate cauza probleme.
+
+Te rugăm să actualizezi MicroG la cea mai recentă versiune v%2s."</string>
+  <string name="gms_core_dialog_update_text">Actualizează</string>
+  <string name="gms_core_dialog_ignore_text">Ignoră</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nu are permisiunea de a rula în fundal.
 

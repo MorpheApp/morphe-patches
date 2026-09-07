@@ -179,6 +179,11 @@ Die gedrag het vroeër in die soektog verdwyn, so meer as een kenmerk-vlag kan b
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG is nie geïnstalleer nie. Installeer dit.</string>
   <string name="gms_core_dialog_title">Aandag benodig</string>
+  <string name="gms_core_dialog_outdated_message">"Jou MicroG v%1s is verouderd en kan probleme veroorsaak.
+
+Dateer asseblief MicroG op na die nuutste weergawe v%2s."</string>
+  <string name="gms_core_dialog_update_text">Dateer op</string>
+  <string name="gms_core_dialog_ignore_text">Ignoreer</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG het nie toestemming om op die agtergrond te loop nie.
 

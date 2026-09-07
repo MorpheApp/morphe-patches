@@ -517,7 +517,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">메뉴 구성요소의 광고 화이트리스트</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">해당 동영상의 채널에서 광고가 재생되도록 하는 메뉴 구성요소 항목을 추가합니다</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">메뉴 구성요소의 속도 화이트리스트</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">해당 동영상의 채널을 항상 1.0배 속도로 재생하는 메뉴 구성요소 항목을 추가합니다</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">해당 동영상의 채널을 항상 1.0 배속으로 재생하는 메뉴 구성요소 항목을 추가합니다</string>
   <string name="morphe_queue_manager_check_failed_auth">로그인하지 않았습니다</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">재생목록 ID가 없습니다</string>
   <string name="morphe_queue_manager_check_failed_queue">현재 재생목록이 비어 있습니다</string>
@@ -1197,7 +1197,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_disable_playback_speed_music_title">음악 일반 동영상 재생 속도 사용하기</string>
   <string name="morphe_disable_playback_speed_music_summary">음악 동영상을 항상 1.0 배속으로 재생합니다</string>
   <string name="morphe_playback_speed_channel_whitelist_title">채널 속도 화이트리스트</string>
-  <string name="morphe_playback_speed_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상은 항상 1.0배 재생 속도로 재생됩니다</string>
+  <string name="morphe_playback_speed_channel_whitelist_summary">화이트리스트에 등록된 채널의 동영상은 항상 1.0 배속로 재생됩니다</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_add">속도 화이트리스트에 채널 추가</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_remove">속도 화이트리스트에서 채널 제거</string>
   <string name="morphe_enable_playback_audio_pitch_controls_title">오디오 피치 컨트롤 활성화하기</string>
@@ -1207,7 +1207,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_playback_audio_time_stretching_summary">속도와 피치를 서로 독립적으로 설정할 수 있습니다. 오디오에 잡음이나 음질 저하 등의 왜곡이 발생할 수 있습니다</string>
   <!-- video.livestreams.rememberLivestreamPositionPatch -->
   <string name="morphe_remember_livestream_position_title">실시간 스트림 재생 위치 저장하기</string>
-  <string name="morphe_remember_livestream_position_summary">진행 중인 실시간 스트림의 경우 현재 실시간 위치로 이동하는 대신 재생 위치를 기억하고 이어서 재생합니다</string>
+  <string name="morphe_remember_livestream_position_summary">진행 중인 실시간 스트림의 경우 현재 실시간 위치로 이동하는 대신 재생 위치를 저장하고 이어서 재생합니다</string>
   <string name="morphe_remember_livestream_position_user_dialog_message">이 기능은 24/7 실시간 스트림 및 \'항상 켜짐\' 상태인 기타 스트림에서는 작동하지 않습니다</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 동영상 비활성화하기</string>

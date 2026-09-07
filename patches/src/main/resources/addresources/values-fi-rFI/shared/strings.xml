@@ -177,6 +177,11 @@ Toiminta katosi aiemmin haussa, joten mukana voi olla useampi lippu tai jokin va
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG ei ole asennettu. Asenna se.</string>
   <string name="gms_core_dialog_title">Vaatii toimenpiteitä</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG v%1s on vanhentunut ja saattaa aiheuttaa ongelmia.
+
+Päivitä MicroG uusimpaan versioon v%2s."</string>
+  <string name="gms_core_dialog_update_text">Päivitä</string>
+  <string name="gms_core_dialog_ignore_text">Ohita</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG:llä ei ole lupaa toimia taustalla.
 

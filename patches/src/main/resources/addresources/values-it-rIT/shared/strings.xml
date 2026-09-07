@@ -179,6 +179,11 @@ Il comportamento è scomparso in una fase precedente della ricerca, quindi potre
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG non è installato. Installalo.</string>
   <string name="gms_core_dialog_title">Azione necessaria</string>
+  <string name="gms_core_dialog_outdated_message">"La tua MicroG v%1s è obsoleta e potrebbe causare problemi.
+
+Aggiorna MicroG all'ultima versione v%2s."</string>
+  <string name="gms_core_dialog_update_text">Aggiorna</string>
+  <string name="gms_core_dialog_ignore_text">Ignora</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG non ha l'autorizzazione per essere eseguito in background.
 

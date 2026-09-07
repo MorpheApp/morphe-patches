@@ -179,6 +179,11 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG가 설치되어 있지 않습니다. 설치하세요.</string>
   <string name="gms_core_dialog_title">필수 조치</string>
+  <string name="gms_core_dialog_outdated_message">"사용 중인 MicroG v%1s 버전은 오래되었으며 문제가 발생할 수 있습니다.
+
+MicroG를 최신 버전 v%2s로 업데이트하세요."</string>
+  <string name="gms_core_dialog_update_text">업데이트</string>
+  <string name="gms_core_dialog_ignore_text">무시</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG에는 백그라운드에서 실행할 수 있는 권한이 없습니다.
 

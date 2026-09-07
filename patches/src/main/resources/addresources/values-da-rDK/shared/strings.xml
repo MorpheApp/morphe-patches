@@ -179,6 +179,11 @@ Adfærden forsvandt tidligere i søgningen, så mere end ét flag kan være invo
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG er ikke installeret. Installer den.</string>
   <string name="gms_core_dialog_title">Handling påkrævet</string>
+  <string name="gms_core_dialog_outdated_message">"Din MicroG v%1s er forældet og kan forårsage problemer.
+
+Opdater venligst MicroG til den nyeste version v%2s."</string>
+  <string name="gms_core_dialog_update_text">Opdater</string>
+  <string name="gms_core_dialog_ignore_text">Ignorer</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tilladelse til at køre i baggrunden.
 

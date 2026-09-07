@@ -179,6 +179,11 @@ Správanie sa počas hľadania stratilo, takže môže byť zapojených viac pre
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">microG nie je nainštalovaný. Nainštalujte ho.</string>
   <string name="gms_core_dialog_title">Vyžaduje sa akcia</string>
+  <string name="gms_core_dialog_outdated_message">"Vaša MicroG v%1s je zastaraná a môže spôsobovať problémy.
+
+Prosím, aktualizujte MicroG na najnovšiu verziu v%2s."</string>
+  <string name="gms_core_dialog_update_text">Aktualizovať</string>
+  <string name="gms_core_dialog_ignore_text">Ignorovať</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG nemá povolenie spúšťať sa na pozadí.
 

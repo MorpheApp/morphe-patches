@@ -99,7 +99,7 @@ Je gebruikers-ID is als een wachtwoord en mag nooit worden gedeeld."</string>
   <string name="morphe_sb_segments_selfpromo_summary">Vergelijkbaar met Sponsor, behalve voor onbetaalde of zelfpromotie. Inclusief secties over merchandise, donaties of informatie over wie ze hebben samengewerkt</string>
   <string name="morphe_sb_segments_interaction">Interactieherinnering (abonneren)</string>
   <string name="morphe_sb_segments_interaction_summary">Een korte herinnering om te liken, te abonneren of te volgen tussen de inhoud in. Als het lang of iets specifieks is, moet het in plaats daarvan onder zelfpromotie vallen</string>
-  <string name="morphe_sb_segments_highlight">Markeren</string>
+  <string name="morphe_sb_segments_highlight">Hoogtepunt</string>
   <string name="morphe_sb_segments_highlight_summary">Het deel van de video waar de meeste mensen naar op zoek zijn</string>
   <string name="morphe_sb_segments_intro">Pauze/Intro-animatie</string>
   <string name="morphe_sb_segments_intro_summary">Een interval zonder daadwerkelijke inhoud. Kan een pauze, statisch frame of een herhalende animatie zijn. Bevat geen overgangen met informatie</string>
@@ -114,11 +114,11 @@ Je gebruikers-ID is als een wachtwoord en mag nooit worden gedeeld."</string>
   <string name="morphe_sb_segments_nomusic">Muziek: Niet-muziekgedeelte</string>
   <string name="morphe_sb_segments_nomusic_summary">Alleen voor gebruik in muziekvideo’s. Secties van muziekvideo’s zonder muziek die nog niet door een andere categorie worden gedekt</string>
   <string name="morphe_sb_skip_button_compact">Overslaan</string>
-  <string name="morphe_sb_skip_button_compact_highlight">Markeren</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Hoogtepunt</string>
   <string name="morphe_sb_skip_button_sponsor">Sponsor overslaan</string>
   <string name="morphe_sb_skip_button_selfpromo">Promo overslaan</string>
   <string name="morphe_sb_skip_button_interaction">Interactie overslaan</string>
-  <string name="morphe_sb_skip_button_highlight">Naar markering overslaan</string>
+  <string name="morphe_sb_skip_button_highlight">Hoogtepunt bekijken</string>
   <string name="morphe_sb_skip_button_intro_beginning">Intro overslaan</string>
   <string name="morphe_sb_skip_button_intro_middle">Pauze overslaan</string>
   <string name="morphe_sb_skip_button_intro_end">Pauze overslaan</string>
@@ -133,7 +133,7 @@ Je gebruikers-ID is als een wachtwoord en mag nooit worden gedeeld."</string>
   <string name="morphe_sb_skipped_sponsor">Sponsor overgeslagen</string>
   <string name="morphe_sb_skipped_selfpromo">Zelfpromotie overgeslagen</string>
   <string name="morphe_sb_skipped_interaction">Vervelende herinnering overgeslagen</string>
-  <string name="morphe_sb_skipped_highlight">Naar markering overgeslagen</string>
+  <string name="morphe_sb_skipped_highlight">Naar hoogtepunt gesprongen</string>
   <string name="morphe_sb_skipped_intro_beginning">Intro overgeslagen</string>
   <string name="morphe_sb_skipped_intro_middle">Pauze overgeslagen</string>
   <string name="morphe_sb_skipped_intro_end">Pauze overgeslagen</string>
@@ -152,7 +152,7 @@ Je gebruikers-ID is als een wachtwoord en mag nooit worden gedeeld."</string>
   <string name="morphe_sb_skip_seekbaronly">Toon in zoekbalk</string>
   <string name="morphe_sb_skip_ignore">Uitschakelen</string>
   <string name="morphe_sb_submit_failed_invalid">Kan segment niet indienen: %s</string>
-  <string name="morphe_sb_submit_failed_timeout">SponsorBlock is tijdelijk niet beschikbaar</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock is tijdelijk niet bereikbaar</string>
   <string name="morphe_sb_submit_failed_unknown_error">Kan segment niet indienen (status: %1$d %2$s)</string>
   <string name="morphe_sb_submit_failed_rate_limit">Kan segment niet verzenden. Snelheidsbeperking (te veel van dezelfde gebruiker of IP)</string>
   <string name="morphe_sb_submit_failed_forbidden">Kan het segment niet indienen: %s</string>
@@ -185,7 +185,7 @@ Bestaat al"</string>
   <string name="morphe_sb_new_segment_confirm_content">"Het segment is van
 
 %1$s
-naar
+tot
 %2$s
 
 (%3$s)

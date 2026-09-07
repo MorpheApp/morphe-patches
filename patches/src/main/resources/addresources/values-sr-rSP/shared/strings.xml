@@ -179,6 +179,11 @@ Second \"item\" text"</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG nije инсталиран. Инсталируйте га.</string>
   <string name="gms_core_dialog_title">Неопходна радња</string>
+  <string name="gms_core_dialog_outdated_message">"Ваш MicroG v%1s је застарео и може изазвати проблеме.
+
+Молимо ажурирајте MicroG на најновију верзију v%2s."</string>
+  <string name="gms_core_dialog_update_text">Ажурирајте</string>
+  <string name="gms_core_dialog_ignore_text">Игнориши</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG нема дозволу за рад у позадини.
 

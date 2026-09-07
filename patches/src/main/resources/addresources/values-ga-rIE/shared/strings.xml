@@ -179,6 +179,11 @@ D’imigh an t-iompar níos luaithe sa chuardach, mar sin d’fhéadfadh níos m
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">Níl MicroG suiteáilte. Suiteáil é.</string>
   <string name="gms_core_dialog_title">Gníomh ag teastáil</string>
+  <string name="gms_core_dialog_outdated_message">"Tá do MicroG v%1s as dáta agus d'fhéadfadh sé fadhbanna a chruthú.
+
+Nuashonraigh MicroG go dtí an leagan is déanaí v%2s, le do thoil."</string>
+  <string name="gms_core_dialog_update_text">Nuashonrú</string>
+  <string name="gms_core_dialog_ignore_text">Déan neamhaird</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Níl cead ag MicroG rith sa chúlra.
 
