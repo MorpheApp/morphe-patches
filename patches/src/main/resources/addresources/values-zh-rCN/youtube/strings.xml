@@ -94,9 +94,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
   <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">隐藏“通知我”按钮</string>
-  <string name="morphe_hide_notify_me_button_summary">隐藏已安排的直播和首映的提醒按钮</string>
+  <string name="morphe_hide_notify_me_button_summary">隐藏定时直播和首播的提醒按钮</string>
   <string name="morphe_hide_playables_title">隐藏游戏大本营</string>
   <string name="morphe_hide_playables_summary">隐藏允许你玩游戏的功能</string>
   <string name="morphe_hide_search_term_thumbnails_title">隐藏搜索词缩略图</string>
@@ -545,23 +545,23 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">禁用上滑精确定位进度手势</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">禁用在向上拉动进度条时激活的精确搜索模式</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">启用直播 DVR 功能</string>
-  <string name="morphe_livestream_dvr_summary">允许在所有直播中寻求，即使那些通常限制它的直播</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">启用直播 DVR</string>
+  <string name="morphe_live_stream_dvr_summary">允许在所有直播中拖动进度，包括通常禁止拖动进度的直播。</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">启用进度条缩略图</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">拖动进度条时显示视频缩略图</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">播放最多的片段</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"“启用直播 DVR”可能不可用
+  <string name="morphe_live_stream_dvr_not_available">"“启用直播 DVR”可能不可用
 
-要解决此问题，请开启“伪装视频流”，并将“默认客户端”更改为“TV Simply”或“visionOS”"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">扩展直播 DVR 时长</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">允许您将直播回放最多回放 7 天</string>
+要解决此问题，请开启“伪装视频流”并将“默认客户端”更改为“TV Simply”或“visionOS”。"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">扩展直播 DVR 时长</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">允许您回看最多 7 天前的直播。</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"“扩展直播 DVR 时长”可能不可用
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"“扩展直播 DVR 时长”可能不可用
 
-要解决此问题，请开启“伪装视频流”，并将“默认客户端”更改为“TV Simply”或“visionOS”"</string>
+要解决此问题，请开启“伪装视频流”并将“默认客户端”更改为“TV Simply”或“visionOS”。"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">启用滑动拖动进度条</string>
   <string name="morphe_slide_to_seek_summary">启用滑动以定位，而不是按住视频播放器时以 2 倍速度播放</string>
@@ -1202,10 +1202,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">记住直播播放位置</string>
-  <string name="morphe_remember_livestream_position_summary">对于正在进行的直播，将记住并恢复您的播放位置，而不是跳转到当前直播位置。</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">此功能不适用于 24/7 直播和其他“始终在线”的直播流。</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">记住直播播放位置</string>
+  <string name="morphe_remember_live_stream_position_summary">对于正在进行的直播，会记住并恢复您的播放位置，而不是跳转到当前的直播位置。</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">此功能不适用于 24/7 全天候直播以及其他“始终开启”的直播流。</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">禁用 HDR 视频</string>
   <string name="morphe_force_hdr_video_title">强制 HDR 视频</string>

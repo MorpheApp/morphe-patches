@@ -91,9 +91,8 @@ Guherînan têne xistine:
   <string name="morphe_hide_notifications_menu_header_title">Sernavê menûya Agahdariyan veşêre</string>
   <string name="morphe_hide_notifications_menu_header_summary">Dema bişkoka zengilê tê tikandin, sernavê menûya Agahdariyan vedişêre.</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Bi kurtahiya \'Agahdar bikin\' veşêrin</string>
-  <string name="morphe_hide_notify_me_button_summary">Hides the reminder button for scheduled livestreams and premieres</string>
   <string name="morphe_hide_playables_title">Playables veşêrin</string>
   <string name="morphe_hide_playables_summary">Taybeta ku dihêle hûn lîstikên derbas kirin veşêrin</string>
   <string name="morphe_hide_search_term_thumbnails_title">Navê tasgîrên termên lêgerînê veşêre</string>
@@ -504,23 +503,13 @@ Info: May not work on live streams"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tiliyê rovnêr a lêkirinê qut bikin</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Disables the precise seeking mode that activates when pulling up the seekbar</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Stêrkirina DVR-ya pêşandanê serdest bike</string>
-  <string name="morphe_livestream_dvr_summary">Hêlî dibe ku li ser hemû weşînên zindî lêgerînê bike, tewra yên ku normal têkbirinê qedexe dikin</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Mîhengkirina hûrimên şopê ji bo dîtina hêsantirî</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Nîşana vîdyoyê dema ku şopa dîtinê diherikînê da dîmenê</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Herî zêde vekirî</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'DVR-a weşana zindî çalak bike' dibe ku ne berdest be
-
-Ji bo çareserkirina vê, 'Sextekirina streamên vîdyoyê' çalak bike û 'clientê xwerû' biguherîne 'TV Simply' yan jî 'visionOS'."</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Dîmendera destûra rêzê ya DVR-ê zêde bike</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Têde bi tehiye dike da ku hûn pê veşêrin înîsiyatora livestreaman heta 7 rojan paşê veguherînin</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Dirêjkirina dema DVR-a weşana zindî' dibe ku ne berdest be
-
-Ji bo çareserkirina vê, 'Sextekirina streamên vîdyoyê' çalak bike û 'clientê xwerû' biguherîne 'TV Simply' yan jî 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Slide to seek çalak bike</string>
   <string name="morphe_slide_to_seek_summary">Enables slide to seek instead of playing at 2x speed when pressing and holding the video player</string>
@@ -1133,7 +1122,7 @@ Bike li vir da vekirina DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Pîvana dengan ya xwerû hat guherandin: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Dirêjkirina dema dengan</string>
   <string name="morphe_playback_audio_time_stretching_summary">Dihele lez û pîvan bi serbixwe bên danîn, dibe ku qusûrên dengan çêbibin</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Ji vegirtina vîdyoyê ya HDR qut biqevîne</string>
   <string name="morphe_force_avc_codec_title">Koda AVC (H.264) bi zorê bikar bîne</string>

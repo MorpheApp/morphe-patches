@@ -65,7 +65,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_title">मूवी सेक्शन छिपाएं</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'मुझे सूचित करें\' बटन छिपाएं</string>
   <string name="morphe_hide_playables_title">प्लेएबल छिपाएं</string>
   <string name="morphe_hide_search_term_thumbnails_title">खोज शब्द थम्बनेलहरू लुकाउनुहोस्</string>
@@ -201,11 +201,9 @@ Second \"item\" text"</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">सटीक अनुरोध जेस्चर अक्षम करें</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">लाइभस्ट्रिम DVR सक्षम गर्नुहोस्</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_title">लाइभस्ट्रिम DVR अवधिलाई विस्तार गर्नुहोस्</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करी</string>
@@ -528,7 +526,7 @@ Second \"item\" text"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_playback_speed_default_title">डिफ़ॉल्ट प्लेबैक स्पीड</string>
   <string name="morphe_remember_playback_speed_toast">बदलिएको पूर्वनिर्धारित प्लेब्याक गति: %s</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR वीडियो अक्षम करी</string>
   <string name="morphe_force_avc_codec_user_dialog_message">"लाभ:

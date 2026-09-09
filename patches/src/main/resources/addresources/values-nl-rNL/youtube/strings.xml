@@ -94,7 +94,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_notifications_menu_header_title">Verberg de menukop van Meldingen</string>
   <string name="morphe_hide_notifications_menu_header_summary">Verbergt de menukop van Meldingen wanneer je op de belknop klikt</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'Herinnering sturen\' knop verbergen</string>
   <string name="morphe_hide_notify_me_button_summary">Verbergt de herinneringsknop voor geplande livestreams en premières</string>
   <string name="morphe_hide_playables_title">Speelbare items verbergen</string>
@@ -545,23 +545,23 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Precisie-zoekbeweging uitschakelen</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Schakelt de nauwkeurige zoekmodus uit die wordt geactiveerd wanneer je de schuifbalk omhoog trekt</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Livestream DVR inschakelen</string>
-  <string name="morphe_livestream_dvr_summary">Hiermee kan je op alle livestreams zoeken, zelfs op die waar dat normaal gesproken niet mogelijk is</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Livestream-DVR inschakelen</string>
+  <string name="morphe_live_stream_dvr_summary">Maakt spoelen in alle livestreams mogelijk, zelfs in streams die dit normaal beperken</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Activeer zoekbalk miniaturen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Toont een video miniatuur terwijl je de zoekbalk versleept</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Meest bekeken</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Livestream-DVR inschakelen' is mogelijk niet beschikbaar
+  <string name="morphe_live_stream_dvr_not_available">"'Livestream-DVR inschakelen' is mogelijk niet beschikbaar
 
-Om dit op te lossen, schakel je 'Videostreams spoofen' in en wijzig je de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Livestream DVR-duur uitbreiden</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Hiermee kunt u live uitzendingen tot 7 dagen terugspoelen</string>
+Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">DVR-duur van livestreams uitbreiden</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Hiermee kun je live-uitzendingen tot 7 dagen terugspoelen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Livestream-DVR-duur uitbreiden' is mogelijk niet beschikbaar
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'DVR-duur van livestreams uitbreiden' is mogelijk niet beschikbaar
 
-Om dit op te lossen, schakel je 'Video streams spoofen' in en wijzig je de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
+Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaardclient' naar 'TV Simply' of 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Schuiven om te zoeken inschakelen</string>
   <string name="morphe_slide_to_seek_summary">Schakelt \'Schuif om te zoeken\' in in plaats van af te spelen op 2x snelheid wanneer je op de videospeler drukt en vasthoudt</string>
@@ -1201,10 +1201,10 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Standaard toonhoogte audio gewijzigd naar: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio tijdstretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Maakt het mogelijk om snelheid en toonhoogte onafhankelijk van elkaar in te stellen, wat audio-artefacten kan veroorzaken</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Onthoud afspeelpositie voor livestreams</string>
-  <string name="morphe_remember_livestream_position_summary">Voor lopende livestreams wordt je afspeelpositie onthouden en hervat in plaats van naar de huidige livepositie te gaan</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Deze functie werkt niet met 24/7-livestreams en andere streams die \'altijd aan\' staan</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Afspeelpositie van livestreams onthouden</string>
+  <string name="morphe_remember_live_stream_position_summary">Voor lopende livestreams wordt je afspeelpositie onthouden en hervat, in plaats van naar de huidige livepositie te spoelen</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Deze functie werkt niet met 24/7-livestreams en andere streams die \'altijd aan\' staan</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR-video uitschakelen</string>
   <string name="morphe_force_hdr_video_title">Forceer HDR-video</string>

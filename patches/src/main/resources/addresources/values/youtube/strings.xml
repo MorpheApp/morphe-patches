@@ -99,9 +99,9 @@ Changes include:
     <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
     <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
     <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
     <string name="morphe_hide_notify_me_button_title">Hide \'Notify me\' button</string>
-    <string name="morphe_hide_notify_me_button_summary">Hides the reminder button for scheduled livestreams and premieres</string>
+    <string name="morphe_hide_notify_me_button_summary">Hides the reminder button for scheduled live streams and premieres</string>
     <string name="morphe_hide_playables_title">Hide Playables</string>
     <string name="morphe_hide_playables_summary">Hides the feature that allows you to play games</string>
     <string name="morphe_hide_search_term_thumbnails_title">Hide search term thumbnails</string>
@@ -593,21 +593,21 @@ Info: May not work on live streams"</string>
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
     <string name="morphe_disable_precise_seeking_gesture_summary">Disables the precise seeking mode that activates when pulling up the seekbar</string>
 
-    <!-- interaction.seekbar.livestreamDVRPatch -->
-    <string name="morphe_livestream_dvr_title">Enable livestream DVR</string>
-    <string name="morphe_livestream_dvr_summary">Allows seeking on all livestreams, even those that normally restrict it</string>
+    <!-- interaction.seekbar.liveStreamDVRPatch -->
+    <string name="morphe_live_stream_dvr_title">Enable live stream DVR</string>
+    <string name="morphe_live_stream_dvr_summary">Allows seeking on all live streams, even those that normally restrict it</string>
     <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
     <string name="morphe_seekbar_thumbnail_preview_title">Enable seekbar thumbnails</string>
     <string name="morphe_seekbar_thumbnail_preview_summary">Shows a video thumbnail while dragging the seekbar</string>
     <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Most replayed</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_livestream_dvr_not_available">"\'Enable livestream DVR\' may not be available
+    <string name="morphe_live_stream_dvr_not_available">"\'Enable live stream DVR\' may not be available
 
 To fix this, turn on \'Spoof video streams\' and change the \'Default client\' to \'TV Simply\' or \'visionOS\'"</string>
-    <string name="morphe_expand_livestream_dvr_duration_title">Expand livestream DVR duration</string>
-    <string name="morphe_expand_livestream_dvr_duration_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
+    <string name="morphe_expand_live_stream_dvr_duration_title">Expand live stream DVR duration</string>
+    <string name="morphe_expand_live_stream_dvr_duration_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_expand_livestream_dvr_duration_not_available">"\'Expand livestream DVR duration\' may not be available
+    <string name="morphe_expand_live_stream_dvr_duration_not_available">"\'Expand live stream DVR duration\' may not be available
 
 To fix this, turn on \'Spoof video streams\' and change the \'Default client\' to \'TV Simply\' or \'visionOS\'"</string>
 
@@ -1327,10 +1327,10 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
     <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
 
-    <!-- video.livestreams.rememberLivestreamPositionPatch -->
-    <string name="morphe_remember_livestream_position_title">Remember livestream playback position</string>
-    <string name="morphe_remember_livestream_position_summary">For ongoing livestreams, remembers and resumes your playback position instead of seeking to the current live position</string>
-    <string name="morphe_remember_livestream_position_user_dialog_message">This feature does not work with 24/7 livestreams and other streams that are \'always on\'</string>
+    <!-- video.livestream.rememberLiveStreamPositionPatch -->
+    <string name="morphe_remember_live_stream_position_title">Remember live stream playback position</string>
+    <string name="morphe_remember_live_stream_position_summary">For ongoing live streams, remembers and resumes your playback position instead of seeking to the current live position</string>
+    <string name="morphe_remember_live_stream_position_user_dialog_message">This feature does not work with 24/7 live streams and other streams that are \'always on\'</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>

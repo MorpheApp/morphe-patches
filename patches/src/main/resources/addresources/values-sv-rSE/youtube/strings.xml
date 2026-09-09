@@ -94,9 +94,8 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_notifications_menu_header_title">Dölj rubriken för aviseringsmenyn</string>
   <string name="morphe_hide_notifications_menu_header_summary">Döljer rubriken för aviseringsmenyn när du klickar på klockknappen</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Dölj knappen Meddela mig</string>
-  <string name="morphe_hide_notify_me_button_summary">Döljer påminnelseknappen för schemalagda livestreamar och premiärer</string>
   <string name="morphe_hide_playables_title">Dölj Spelhörna</string>
   <string name="morphe_hide_playables_summary">Döljer funktionen som låter dig spela spel</string>
   <string name="morphe_hide_search_term_thumbnails_title">Dölj miniatyrbilder för söktermer</string>
@@ -545,23 +544,14 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Inaktiverar läget för exakt sökning som aktiveras när du drar upp sökfältet</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Aktivera DVR för livestreamar</string>
-  <string name="morphe_livestream_dvr_summary">Gör det möjligt att söka i alla livestreamar, även de som normalt sett begränsar det</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktivera miniatyrer i sökfältet</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Visar en videominiatyr när du drar i sökfältet</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Mest repriserade</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"\"Aktivera livestream-DVR\" kanske inte är tillgängligt
-
-För att åtgärda detta, aktivera \"Falska videoströmmar\" och ändra \"Standardklient\" till \"TV Simply\" eller \"visionOS\""</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Förläng varaktighet för DVR för livestreamar</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Gör det möjligt att spola tillbaka livesändningar upp till 7 dagar bakåt i tiden</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Gör det möjligt att spola tillbaka livesändningar upp till 7 dagar bakåt i tiden</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"\"Utöka varaktighet för livestream-DVR\" kanske inte är tillgängligt
-
-För att åtgärda detta, aktivera \"Falska videoströmmar\" och ändra \"Standardklient\" till \"TV Simply\" eller \"visionOS\""</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivera Dra för att söka</string>
   <string name="morphe_slide_to_seek_summary">Aktiverar svep för att söka istället för att spela upp i 2x hastighet när du trycker och håller på videospelaren</string>
@@ -1203,10 +1193,7 @@ Tryck här för att öppna DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Ändrade standardtonhöjden till: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Ljudtidsutsträckning</string>
   <string name="morphe_playback_audio_time_stretching_summary">Tillåter att ställa in hastighet och tonhöjd oberoende, kan orsaka ljudartefakter</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Kom ihåg uppspelningsposition för livestream</string>
-  <string name="morphe_remember_livestream_position_summary">För pågående livestreams kommer appen ihåg och återupptar din uppspelningsposition istället för att hoppa till den aktuella livepositionen.</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Den här funktionen fungerar inte med 24/7-livestreams och andra strömmar som är \'alltid på\'.</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Inaktivera HDR-video</string>
   <string name="morphe_force_hdr_video_title">Tvinga HDR-video</string>

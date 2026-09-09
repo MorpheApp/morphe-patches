@@ -20,11 +20,11 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LivestreamDVRPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LiveStreamDVRPatch;"
 
 @Suppress("unused")
-val livestreamDVRPatch = bytecodePatch(
-    description = "Enables video seeking on livestreams that have disabled DVR (Digital Video Recorder).",
+val liveStreamDVRPatch = bytecodePatch(
+    description = "Enables video seeking on live streams that have disabled DVR (Digital Video Recorder).",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -35,14 +35,14 @@ val livestreamDVRPatch = bytecodePatch(
         PreferenceScreen.SEEKBAR.addPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference(
-                    key = "morphe_livestream_dvr",
+                    key = "morphe_live_stream_dvr",
                     summary = true,
-                    tag = "app.morphe.extension.youtube.settings.preference.LivestreamDVRPreference"
+                    tag = "app.morphe.extension.youtube.settings.preference.LiveStreamDVRPreference"
                 ),
                 SwitchPreference(
-                    key = "morphe_expand_livestream_dvr_duration",
+                    key = "morphe_expand_live_stream_dvr_duration",
                     summary = true,
-                    tag = "app.morphe.extension.youtube.settings.preference.LivestreamDVRDurationPreference"
+                    tag = "app.morphe.extension.youtube.settings.preference.LiveStreamDVRDurationPreference"
                 )
             )
         )
@@ -54,7 +54,7 @@ val livestreamDVRPatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     returnIndex,
                     """
-                        invoke-static { v$returnRegister }, $EXTENSION_CLASS->enableLivestreamDVR(Z)Z
+                        invoke-static { v$returnRegister }, $EXTENSION_CLASS->enableLiveStreamDVR(Z)Z
                         move-result v$returnRegister
                     """
                 )

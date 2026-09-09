@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches.playback.livestreams;
+package app.morphe.extension.youtube.patches.playback.livestream;
 
 import androidx.annotation.Nullable;
 
@@ -21,30 +21,30 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Remembers the playback position of ongoing livestreams.
+ * Remembers the playback position of an ongoing live stream.
  * <p>
- * An ongoing livestream is detected by its reported duration growing in real time
+ * An ongoing live stream is detected by its reported duration growing in real time
  * (the duration of a regular video never changes while watching). Streams without
  * a growing duration have no DVR seeking available, so restoring is not possible
- * for them anyway. For detected livestreams the last playback position is
- * periodically saved and restored the next time the same livestream is opened.
+ * for them anyway. For a detected live stream, the last playback position is
+ * periodically saved and restored the next time the same live stream is opened.
  */
 @SuppressWarnings("unused")
-public final class RememberLivestreamPositionPatch {
+public final class RememberLiveStreamPositionPatch {
 
     /**
-     * Minimum duration growth to confirm a video is an ongoing livestream while watching.
+     * Minimum duration growth to confirm a video is an ongoing live stream while watching.
      */
-    private static final long LIVESTREAM_DURATION_GROWTH_WHILE_WATCHING_MS = 3000;
+    private static final long LIVE_STREAM_DURATION_GROWTH_WHILE_WATCHING_MS = 3000;
 
     /**
      * Minimum duration growth (compared to the saved value) to confirm the stream
      * is still ongoing when reopening it.
      */
-    private static final long LIVESTREAM_DURATION_GROWTH_ON_REOPEN_MS = 1000;
+    private static final long LIVE_STREAM_DURATION_GROWTH_ON_REOPEN_MS = 1000;
 
     /**
-     * How often the playback position is saved while watching an ongoing livestream.
+     * How often the playback position is saved while watching an ongoing live stream.
      */
     private static final long SAVE_INTERVAL_MS = 5000;
 
@@ -87,9 +87,9 @@ public final class RememberLivestreamPositionPatch {
     private static long baselineVideoLength;
 
     /**
-     * True if the current video was confirmed to be an ongoing livestream.
+     * True if the current video was confirmed to be an ongoing live stream.
      */
-    private static boolean livestreamConfirmed;
+    private static boolean liveStreamConfirmed;
 
     private static long lastSaveTime;
 
@@ -121,13 +121,13 @@ public final class RememberLivestreamPositionPatch {
             Utils.verifyOnMainThread();
 
             baselineVideoLength = 0;
-            livestreamConfirmed = false;
+            liveStreamConfirmed = false;
             lastSaveTime = 0;
             restoreAttempts = 0;
             restorePending = false;
             newVideoGeneration++;
 
-            if (!Settings.REMEMBER_LIVESTREAM_POSITION.get()) {
+            if (!Settings.REMEMBER_LIVE_STREAM_POSITION.get()) {
                 return;
             }
 
@@ -143,7 +143,7 @@ public final class RememberLivestreamPositionPatch {
      */
     public static void videoTimeChanged(long playbackTimeMs) {
         try {
-            if (!Settings.REMEMBER_LIVESTREAM_POSITION.get()) {
+            if (!Settings.REMEMBER_LIVE_STREAM_POSITION.get()) {
                 return;
             }
             if (playbackTimeMs <= 0) {
@@ -166,14 +166,14 @@ public final class RememberLivestreamPositionPatch {
                 return;
             }
 
-            if (!livestreamConfirmed) {
-                // The duration of an ongoing livestream grows in real time,
+            if (!liveStreamConfirmed) {
+                // The duration of an ongoing live stream grows in real time,
                 // while the duration of a regular video never changes.
-                if (videoLength - baselineVideoLength < LIVESTREAM_DURATION_GROWTH_WHILE_WATCHING_MS) {
+                if (videoLength - baselineVideoLength < LIVE_STREAM_DURATION_GROWTH_WHILE_WATCHING_MS) {
                     return;
                 }
-                livestreamConfirmed = true;
-                Logger.printDebug(() -> "Detected ongoing livestream len: " + videoLength
+                liveStreamConfirmed = true;
+                Logger.printDebug(() -> "Detected ongoing live stream len: " + videoLength
                         + " base: " + baselineVideoLength);
             }
 
@@ -215,7 +215,7 @@ public final class RememberLivestreamPositionPatch {
             }
 
             final long videoLength = VideoInformation.getVideoLength();
-            if (videoLength <= 0 || videoLength < saved.videoLength() + LIVESTREAM_DURATION_GROWTH_ON_REOPEN_MS) {
+            if (videoLength <= 0 || videoLength < saved.videoLength() + LIVE_STREAM_DURATION_GROWTH_ON_REOPEN_MS) {
                 // The duration has not yet grown beyond the saved value, so it is not yet
                 // confirmed the stream is still ongoing. Keep checking for a while.
                 rescheduleOrGiveUp(generation);
@@ -252,7 +252,7 @@ public final class RememberLivestreamPositionPatch {
 
             final long currentTime = VideoInformation.getVideoTime();
             if (Math.abs(currentTime - targetPositionMs) <= RESTORE_SEEK_TOLERANCE_MS) {
-                Logger.printDebug(() -> "Restored livestream playback position: " + currentTime);
+                Logger.printDebug(() -> "Restored live stream playback position: " + currentTime);
                 restorePending = false;
                 deletePlaybackPosition(videoId);
                 return;
@@ -290,7 +290,7 @@ public final class RememberLivestreamPositionPatch {
     }
 
     private static Map<String, SavedPosition> loadSavedPositions() {
-        String raw = Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.get();
+        String raw = Settings.REMEMBER_LIVE_STREAM_POSITION_TIMES.get();
         if (raw.isEmpty()) {
             return new HashMap<>();
         }
@@ -313,8 +313,8 @@ public final class RememberLivestreamPositionPatch {
             }
             return map;
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to load livestream positions setting", ex);
-            Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.resetToDefault();
+            Logger.printException(() -> "Failed to load live stream positions setting", ex);
+            Settings.REMEMBER_LIVE_STREAM_POSITION_TIMES.resetToDefault();
             return new HashMap<>();
         }
     }
@@ -334,9 +334,9 @@ public final class RememberLivestreamPositionPatch {
                 entryJson.put("timestamp", pos.timestamp());
                 json.put(entry.getKey(), entryJson);
             }
-            Settings.REMEMBER_LIVESTREAM_POSITION_TIMES.save(json.toString());
+            Settings.REMEMBER_LIVE_STREAM_POSITION_TIMES.save(json.toString());
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to save livestream positions setting", ex);
+            Logger.printException(() -> "Failed to save live stream positions setting", ex);
         }
     }
 

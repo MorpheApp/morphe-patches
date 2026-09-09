@@ -94,9 +94,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_menu_header_title">إخفاء عنوان قائمة الإشعارات</string>
   <string name="morphe_hide_notifications_menu_header_summary">يخفي عنوان قائمة الإشعارات عند النقر على زر الجرس</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">إخفاء زر \'إرسال إشعار إليّ\'</string>
-  <string name="morphe_hide_notify_me_button_summary">يخفي زر التذكير للفيديوهات القادمة والبث المباشر القادم</string>
+  <string name="morphe_hide_notify_me_button_summary">يخفي زر التذكير للفيديوهات القادمة والبثوث المباشرة القادمة</string>
   <string name="morphe_hide_playables_title">إخفاء هيّا نلعب</string>
   <string name="morphe_hide_playables_summary">يخفي الميزة التي تسمح لك بلعب الألعاب</string>
   <string name="morphe_hide_search_term_thumbnails_title">إخفاء مصغرات مصطلحات البحث</string>
@@ -549,21 +549,21 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل التحكّم بدقة بالتمرير</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">يعطّل وضع التنقل بدقّة الذي يتم تنشيطه عند سحب شريط التقدم لأعلى</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">تمكين التنقل في البث المباشر</string>
-  <string name="morphe_livestream_dvr_summary">يسمح بالتنقل في كل البثوث المباشرة، حتى تلك التي تفرض قيودًا عليها عادةً</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">تمكين التنقل في البث المباشر</string>
+  <string name="morphe_live_stream_dvr_summary">يسمح بالتنقل في كل البثوث المباشرة، حتى تلك التي تفرض قيودًا عليها عادةً</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">تمكين مصغرات شريط التقدم</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">يعرض صورة مصغرة للفيديو أثناء سحب شريط التقدم</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">الأكثر إعادة</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"قد لا يكون 'تمكين التنقل في البث المباشر' متاحًا
+  <string name="morphe_live_stream_dvr_not_available">"قد لا يكون 'تمكين التنقل في البث المباشر' متاحًا
 
 لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV Simply' أو 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">زيادة مدة رجوع البث المباشر</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">يسمح لك بإعادة تشغيل البث المباشر لمدة تصل إلى 7 أيام مضت</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">زيادة مدة رجوع البث المباشر</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">يسمح لك بإعادة تشغيل البث المباشر لمدة تصل إلى 7 أيام مضت</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"قد لا يكون 'زيادة مدة رجوع البث المباشر' متاحًا
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"قد لا يكون 'زيادة مدة رجوع البث المباشر' متاحًا
 
 لإصلاح ذلك، قم بتشغيل 'Spoof Video Streams' وغيّر 'العميل الافتراضي' إلى 'TV Simply' أو 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
@@ -1208,10 +1208,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_remember_playback_audio_pitch_toast">تم تغيير طبقة الصوت الافتراضية إلى: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">تمديد زمن الصوت</string>
   <string name="morphe_playback_audio_time_stretching_summary">يتيح ضبط السرعة وطبقة الصوت بشكل مستقل، وقد يسبب تشوهات في الصوت</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">تذكّر موضع تشغيل البث المباشر</string>
-  <string name="morphe_remember_livestream_position_summary">بالنسبة إلى عمليات البث المباشر الجارية، يتم تذكّر موضع التشغيل واستئنافه من عنده بدلًا من الانتقال إلى الموضع المباشر الحالي</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">هذه الميزة لا تعمل مع البث المباشر 24/7 والبثوث الأخرى التي تكون \'دائمة التشغيل\'</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">تذكّر موضع تشغيل البث المباشر</string>
+  <string name="morphe_remember_live_stream_position_summary">بالنسبة إلى عمليات البث المباشر الجارية، يتم تذكّر موضع التشغيل واستئنافه من عنده بدلًا من الانتقال إلى الموضع المباشر الحالي</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">هذه الميزة لا تعمل مع البث المباشر 24/7 والبثوث الأخرى التي تكون \'دائمة التشغيل\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
   <string name="morphe_force_hdr_video_title">فرض فيديو HDR</string>

@@ -3,7 +3,7 @@ package app.morphe.extension.youtube.patches;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class LivestreamDVRPatch {
+public class LiveStreamDVRPatch {
 
     private static final int SEVEN_DAYS_IN_SECONDS = 7 * 24 * 60 * 60;
 
@@ -11,7 +11,7 @@ public class LivestreamDVRPatch {
      * Injection point.
      */
     public static double overrideMaxDVRDurationSeconds(double originalDurationSeconds) {
-        if (!Settings.EXPAND_LIVESTREAM_DVR_DURATION.get()) return originalDurationSeconds;
+        if (!Settings.EXPAND_LIVE_STREAM_DVR_DURATION.get()) return originalDurationSeconds;
         if (originalDurationSeconds <= 0) return originalDurationSeconds;
         return SEVEN_DAYS_IN_SECONDS;
     }
@@ -19,8 +19,8 @@ public class LivestreamDVRPatch {
     /**
      * Injection point.
      */
-    public static boolean enableLivestreamDVR(boolean original) {
-        return original || Settings.LIVESTREAM_DVR.get();
+    public static boolean enableLiveStreamDVR(boolean original) {
+        return original || Settings.LIVE_STREAM_DVR.get();
     }
 
 }

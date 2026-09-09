@@ -359,7 +359,7 @@ internal fun spoofVideoStreamsPatch(
 
         // endregion
 
-        // region Fix iOS livestream current time.
+        // region Fix iOS live stream current time.
 
         HlsCurrentTimeFingerprint.method.apply {
             // Flag can exist in multiple places in the method.

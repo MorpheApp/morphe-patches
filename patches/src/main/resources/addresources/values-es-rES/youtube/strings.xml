@@ -94,9 +94,9 @@ Los cambios incluyen:
   <string name="morphe_hide_notifications_menu_header_title">Ocultar encabezado del menú Notificaciones</string>
   <string name="morphe_hide_notifications_menu_header_summary">Oculta el encabezado del menú Notificaciones al pulsar el botón de la campana</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botón Notificarme</string>
-  <string name="morphe_hide_notify_me_button_summary">Oculta el botón de recordatorio para los próximos directos y estrenos</string>
+  <string name="morphe_hide_notify_me_button_summary">Oculta el botón de recordatorio para los directos y los estrenos programados</string>
   <string name="morphe_hide_playables_title">Ocultar jugables</string>
   <string name="morphe_hide_playables_summary">Oculta la función que te permite jugar juegos</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ocultar miniaturas de términos de búsqueda</string>
@@ -384,7 +384,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Enlace copiado al portapapeles</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Enlace con marca de tiempo copiado al portapapeles</string>
-  <string name="morphe_copy_video_link_button_title">Mostrar botón de copiar enlace del vídeo</string>
+  <string name="morphe_copy_video_link_button_title">Mostrar botón para copiar enlace del vídeo</string>
   <string name="morphe_copy_video_link_button_summary">Pulsa para copiar el enlace del vídeo, toca y mantén pulsado para copiar con la marca de tiempo</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Copia la marca de tiempo por defecto</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Invierte las acciones de tocar y mantener pulsado del botón de copiar enlace del vídeo</string>
@@ -545,23 +545,23 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desactivar gesto de búsqueda precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Desactiva el modo de búsqueda precisa que se activa al arrastrar la barra de búsqueda</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Activar DVR para transmisión en directo</string>
-  <string name="morphe_livestream_dvr_summary">Permite buscar en todas las transmisiones en directo, incluso en aquellas que normalmente restringen esta función</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Activar DVR de directos</string>
+  <string name="morphe_live_stream_dvr_summary">Permite buscar en todos los directos, incluso en aquellos que normalmente lo restringen</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Activar miniaturas de la barra de progreso</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Muestra una miniatura del vídeo mientras se arrastra la barra de progreso</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Más reproducido</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"Es posible que 'Activar DVR para transmisiones en directo' no esté disponible
+  <string name="morphe_live_stream_dvr_not_available">"Es posible que 'Activar DVR de directos' no esté disponible
 
-Para solucionarlo, activa 'Falsificar transmisiones de vídeo' y cambia 'Cliente predeterminado' a 'TV Simply' o 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Expandir duración del DVR de transmisión en directo</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Te permite rebobinar las transmisiones en directo hasta 7 días atrás</string>
+Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Cliente predeterminado' a 'TV Simply' o 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Ampliar duración del DVR de directos</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Te permite rebobinar los directos hasta 7 días atrás</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"Es posible que 'Expandir duración del DVR de transmisión en directo' no esté disponible
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"Es posible que 'Ampliar duración del DVR de directos' no esté disponible
 
-Para solucionarlo, activa 'Falsificar transmisiones de vídeo' y cambia 'Cliente predeterminado' a 'TV Simply' o 'visionOS'"</string>
+Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Cliente predeterminado' a 'TV Simply' o 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activar deslizar para buscar</string>
   <string name="morphe_slide_to_seek_summary">Habilita el deslizamiento para buscar en lugar de reproducir a 2x velocidad al tocar y mantener pulsado el reproductor de vídeo</string>
@@ -1201,10 +1201,10 @@ Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Se ha cambiado el tono de audio predeterminado a: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Estiramiento de tiempo de audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Permite ajustar la velocidad y el tono de forma independiente; puede causar artefactos de audio</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Recordar posición de reproducción del directo</string>
-  <string name="morphe_remember_livestream_position_summary">Para directos en curso, recuerda y reanuda tu posición de reproducción en lugar de buscar la posición actual del directo</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Esta función no es compatible con los directos 24/7 ni con otras transmisiones que estén \'siempre activas\'</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Recordar posición de reproducción del directo</string>
+  <string name="morphe_remember_live_stream_position_summary">Para directos en curso, recuerda y reanuda su posición de reproducción en lugar de buscar la posición actual del directo</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Esta función no es compatible con los directos 24/7 ni con otras transmisiones que estén \'siempre activas\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Desactivar vídeo HDR</string>
   <string name="morphe_force_hdr_video_title">Forzar vídeo HDR</string>

@@ -94,9 +94,8 @@ Promene uključuju:
   <string name="morphe_hide_notifications_menu_header_title">Сакриј заглавље менија Обавештења</string>
   <string name="morphe_hide_notifications_menu_header_summary">Сакрива заглавље менија Обавештења при клику на дугме са звоном</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Сакриј дугме „Обавести ме”</string>
-  <string name="morphe_hide_notify_me_button_summary">Сакрива дугме за подсећање за планиране ливе страмове и премијере</string>
   <string name="morphe_hide_playables_title">Сакриј салу за игру</string>
   <string name="morphe_hide_playables_summary">Саскрива функцију која вам омогућава да играте игре</string>
   <string name="morphe_hide_search_term_thumbnails_title">Скриј мале слике у трази за претрагом</string>
@@ -545,23 +544,13 @@ Promene uključuju:
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Онемогући покрет прецизног премотавања</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Онемогућава прецизан режим тражења који се активира приликом подизања траке за тражење</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Омогућите снимање преко директног преноса</string>
-  <string name="morphe_livestream_dvr_summary">Дозвољава премотавање унапред и уназад на свим преносима уживо, чак и на онима који то обично ограничавају</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Омогући минијатуре на траци за премотавање</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Приказује минијатуру видеа док се премотава трака за премотавање</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Највише репродуковано</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Омогући DVR за уживо стримовање' можда неће бити доступан
-
-Да бисте ово поправили, омогућите „Лажирај видео стримове“ и промените „Подразумевани клијент“ у „TV Simply“ или „visionOS“"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Proširi trajanje DVR-a za striming</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Омогућава вам да премотавате директне преносе уназад до 7 дана</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Прошири трајање DVR-а за уживо стримовање' можда неће бити доступно
-
-Да бисте ово поправили, омогућите „Лажирај видео стримове“ и промените „Подразумевани клијент“ у „TV Simply“ или „visionOS“"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Омогући превлачење за премотавање</string>
   <string name="morphe_slide_to_seek_summary">Омогућава померање за тражење уместо репродукције брзином од 2x када притиснете и задржите плејер видео снимка</string>
@@ -1185,10 +1174,7 @@ Promene uključuju:
   <string name="morphe_remember_playback_audio_pitch_toast">Подразумевана висина тона промењена на: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Временско раширење аудио записа</string>
   <string name="morphe_playback_audio_time_stretching_summary">Омогућава независно подешавање брзине и висине тона, што може проузроковати аудио артефакте</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Запамти позицију репродукције уживо</string>
-  <string name="morphe_remember_livestream_position_summary">За стримове уживо који су у току, памти и наставља позицију репродукције уместо да прелази на тренутну позицију уживо.</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Ова функција не ради са 24/7 стримовима уживо и другим стримовима који су „увек укључени“.</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Онемогући HDR видео</string>
   <string name="morphe_force_hdr_video_title">Форсирај HDR видео</string>

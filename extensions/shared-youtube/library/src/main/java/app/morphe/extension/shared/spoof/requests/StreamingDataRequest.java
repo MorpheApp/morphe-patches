@@ -358,14 +358,14 @@ public class StreamingDataRequest {
                 return null;
             }
 
-            // In YouTube 20.21.37, manifestless livestreams cannot be played using the SABR protocol, or there are playback issues.
+            // In YouTube 20.21.37, manifestless live streams cannot be played using the SABR protocol, or there are playback issues.
             // Until code to assemble the manifestUrl is implemented or code to override the exoPlayerConfig is ready,
-            // TV SABR clients in livestreams will be temporarily fallbacked to TV DASH clients.
+            // TV SABR clients in live streams will be temporarily fallbacked to TV DASH clients.
             //
             // TODO: Override other playerConfigs such as exoPlayerConfig.
             if (clientType.requireSABR && clientType == ClientType.TV_SABR
                     && Utils.containsAny(streamingData.getServerAbrStreamingUrl(), "yt_live_broadcast", "yt_premiere_broadcast")) {
-                Logger.printDebug(() -> "Livestream detected, fallback to TV dash");
+                Logger.printDebug(() -> "Live stream detected, fallback to TV dash");
                 fallbackWithTVDash = true;
                 return null;
             }

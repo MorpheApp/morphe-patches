@@ -83,9 +83,8 @@ Perubahan termasuk:
   <string name="morphe_hide_movies_section_title">Sorokkan bahagian filem</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sorokkan butang \'Beritahu saya\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Menyorokkan butang peringatan bagi penstriman langsung dan tayangan perdana yang dijadualkan</string>
   <string name="morphe_hide_playables_title">Sorokkan \'Boleh main\'</string>
   <string name="morphe_hide_playables_summary">Menyorokkan ciri yang membenarkan anda bermain permainan</string>
   <string name="morphe_hide_search_term_thumbnails_title">Menyorokkan lakaran kecil istilah carian</string>
@@ -147,13 +146,10 @@ Perubahan termasuk:
   <string name="morphe_queue_manager_playlist_title">Baris gilir Morphe</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
-  <!-- interaction.seekbar.livestreamDVRPatch -->
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Expand livestream DVR duration' may not be available
-
-To fix this, turn on 'Spoof video streams' and change the 'Default client' to 'TV Simply' or 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsPatch -->
@@ -350,7 +346,7 @@ Automotive layout
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_disable_playback_speed_music_title">Gunakan kelajuan biasa untuk muzik</string>
   <string name="morphe_disable_playback_speed_music_summary">Sentiasa mainkan video muzik pada kelajuan 1.0x</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->

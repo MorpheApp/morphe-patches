@@ -94,9 +94,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
   <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'আমাকে জানান\' বোতাম লুকান</string>
-  <string name="morphe_hide_notify_me_button_summary">अनुसूचित লাইভস্ট্রিম এবং প্রিমিয়ারের জন্য রিমাইন্ডার বাটন লুকায়।</string>
+  <string name="morphe_hide_notify_me_button_summary">নির্ধারিত লাইভ স্ট্রিম এবং প্রিমিয়ারগুলোর জন্য রিমাইন্ডার বাটনটি লুকিয়ে রাখে</string>
   <string name="morphe_hide_playables_title">খেলার উপযুক্ত লুকান</string>
   <string name="morphe_hide_playables_summary">গেম খেলার সুবিধা দেয় এমন বৈশিষ্ট্যটি লুকিয়ে রাখে</string>
   <string name="morphe_hide_search_term_thumbnails_title">অনুসন্ধান শর্তাবলীর থাম্বনেইল লুকানো</string>
@@ -545,23 +545,23 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ভিডিওর নির্দিষ্ট অংশে যাওয়ার অঙ্গভঙ্গি নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">সীকবার টেনে তোলার সময় সক্রিয় হওয়া নির্ভুল সন্ধান মোড নিষ্ক্রিয় করে।</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">লাইভস্ট্রিম ডিভিআর সক্রিয় করুন</string>
-  <string name="morphe_livestream_dvr_summary">লাইভস্ট্রিমগুলিতে যেগুলি সাধারণত সীমাবদ্ধ, সেগুলিতেও সিকিং করার অনুমতি দেয়</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">লাইভ স্ট্রিম DVR সক্ষম করুন</string>
+  <string name="morphe_live_stream_dvr_summary">সকল লাইভ স্ট্রিমে সিকার করার অনুমতি দেয়, এমনকি যেগুলো সাধারণত সিকার সীমাবদ্ধ রাখে</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">সিকবার থাম্বনেইল সক্ষম করুন</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">সীকবಾರ್ টেনে আনার সময় একটি ভিডিও থাম্বনেইল দেখায়</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">সবচেয়ে বেশি রিপ্লে করা</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'লাইভ স্ট্রিম ডিভিআর সক্রিয় করুন' উপলব্ধ নাও হতে পারে
+  <string name="morphe_live_stream_dvr_not_available">"'লাইভ স্ট্রিম DVR সক্ষম করুন' উপলব্ধ নাও হতে পারে।
 
-এটি ঠিক করতে, 'ভিডিও স্ট্রিম স্পুফ করুন' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' পরিবর্তন করে 'TV Simply' বা 'visionOS' করুন"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">লাইভস্ট্রিম ডিভিআর সময়কাল বাড়ান</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">আপনাকে লাইভ সম্প্রচারগুলি অতীতের ৭ দিন পর্যন্ত रिवाइंड করতে দেয়</string>
+এটি ঠিক করতে, 'ভিডিও স্ট্রিম স্পুফ করুন' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' পরিবর্তন করে 'TV Simply' বা 'visionOS' করুন।"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">লাইভ স্ট্রিম DVR সময়কাল বাড়ান</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">আপনাকে লাইভ সম্প্রচার ৭ দিন পর্যন্ত পিছিয়ে দেখার অনুমতি দেয়</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'লাইভ স্ট্রিম ডিভিআর সময়কাল বাড়ান' উপলব্ধ নাও হতে পারে
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'লাইভ স্ট্রিম DVR সময়কাল বাড়ান' উপলব্ধ নাও হতে পারে।
 
-এটি ঠিক করতে, 'ভিডিও স্ট্রিম স্পুফ করুন' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' পরিবর্তন করে 'TV Simply' বা 'visionOS' করুন"</string>
+এটি ঠিক করতে, 'ভিডিও স্ট্রিম স্পুফ করুন' চালু করুন এবং 'ডিফল্ট ক্লায়েন্ট' পরিবর্তন করে 'TV Simply' বা 'visionOS' করুন।"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করুন</string>
   <string name="morphe_slide_to_seek_summary">ভিডিও প্লেয়ারে প্রেস এবং ধরে রাখলে 2x গতিতে খেলার পরিবর্তে স্লাইড করতে সন্ধান চালু করে।</string>
@@ -1187,10 +1187,10 @@ DeArrow.ajay.app ওপেন করতে এখানে ট্যাপ ক�
   <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">লাইভস্ট্রিম প্লেব্যাক অবস্থান মনে রাখুন</string>
-  <string name="morphe_remember_livestream_position_summary">চলমান লাইভস্ট্রিমগুলির জন্য, বর্তমান লাইভ অবস্থানে না গিয়ে আপনার প্লেব্যাক অবস্থান মনে রাখে এবং সেখান থেকে পুনরায় চালু করে</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">এই বৈশিষ্ট্যটি 24/7 লাইভস্ট্রিম এবং অন্যান্য \'সবসময় চালু\' থাকা স্ট্রিমগুলির সাথে কাজ করে না</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">লাইভ স্ট্রিম প্লেব্যাক অবস্থান মনে রাখুন</string>
+  <string name="morphe_remember_live_stream_position_summary">চলমান লাইভ স্ট্রিমগুলোর জন্য, বর্তমান লাইভ অবস্থানে সিকার করার পরিবর্তে আপনার প্লেব্যাক অবস্থান মনে রাখে এবং সেখান থেকে পুনরায় চালু করে</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">এই বৈশিষ্ট্যটি 24/7 লাইভ স্ট্রিম এবং অন্যান্য \'সবসময় চালু\' থাকা স্ট্রিমগুলোর সাথে কাজ করে না</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR ভিডিও নিষ্ক্রিয় করুন</string>
   <string name="morphe_force_hdr_video_title">HDR ভিডিও জোর করুন</string>

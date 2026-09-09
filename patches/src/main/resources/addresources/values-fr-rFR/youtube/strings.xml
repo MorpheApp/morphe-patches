@@ -94,7 +94,7 @@ Les changements incluent :
   <string name="morphe_hide_notifications_menu_header_title">Masquer l\'en-tête du menu \'Notifications\'</string>
   <string name="morphe_hide_notifications_menu_header_summary">Masque l\'en-tête du menu \'Notifications\' lorsqu\'on clique sur le bouton en forme de cloche</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Masquer le bouton \'M\'avertir\'</string>
   <string name="morphe_hide_notify_me_button_summary">Masque le bouton de rappel pour les diffusions en direct programmées et les premières</string>
   <string name="morphe_hide_playables_title">Masquer \'Jeux intégrés\'</string>
@@ -545,21 +545,21 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Désactiver le geste de barre de progression précise</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Désactive le mode de recherche précise qui s\'active lors d\'un glissement vers le haut sur la barre de progression</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Activer le DVR des diffusions en direct</string>
-  <string name="morphe_livestream_dvr_summary">Permet d\'afficher la barre de progression sur toutes les diffusions en directs, même ceux qui la restreignent normalement</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Activer le DVR des diffusions en direct</string>
+  <string name="morphe_live_stream_dvr_summary">Permet d\'afficher la barre de progression sur toutes les diffusions en directs, même ceux qui la restreignent normalement</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Activer les miniatures sur la barre de progression</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Affiche une miniature de la vidéo lors du déplacement sur la barre de progression</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Le plus revisionné</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Activer le DVR des diffusions en direct' peut ne pas être disponible
+  <string name="morphe_live_stream_dvr_not_available">"'Activer le DVR des diffusions en direct' peut ne pas être disponible
 
 Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client par défaut' en 'TV Simply' ou 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Étendre la durée du DVR des diffusions en direct</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Permet de revenir en arrière dans les diffusions en direct jusqu\'à 7 jours dans le passé</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Étendre la durée du DVR des diffusions en direct</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Permet de revenir en arrière dans les diffusions en direct jusqu\'à 7 jours dans le passé</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Étendre la durée du DVR des diffusions en direct' peut ne pas être disponible
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Étendre la durée du DVR des diffusions en direct' peut ne pas être disponible
 
 Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client par défaut' en 'TV Simply' ou 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
@@ -1204,10 +1204,10 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Hauteur tonale audio par défaut définie sur : %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Étirement temporel audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Permet de régler indépendamment la vitesse et la hauteur tonale, peut provoquer des artefacts audio</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Mémoriser la position de lecture des diffusions en direct</string>
-  <string name="morphe_remember_livestream_position_summary">Pour les diffusions en direct en cours, mémorise et reprend votre position de lecture au lieu de vous faire accéder directement à la position en direct actuelle</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Cette fonctionnalité ne fonctionne pas avec les diffusions en directs 24h/24 et 7j/7 ni avec les autres diffusions qui sont \'toujours en ligne\'</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Mémoriser la position de lecture des diffusions en direct</string>
+  <string name="morphe_remember_live_stream_position_summary">Pour les diffusions en direct en cours, mémorise et reprend votre position de lecture au lieu de vous faire accéder directement à la position en direct actuelle</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Cette fonctionnalité ne fonctionne pas avec les diffusions en directs 24h/24 et 7j/7 ni avec les autres diffusions qui sont \'toujours en ligne\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Désactiver les vidéos HDR</string>
   <string name="morphe_force_hdr_video_title">Forcer la vidéo HDR</string>

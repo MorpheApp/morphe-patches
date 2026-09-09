@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-08T12:44:22",
-  "description": "## [1.42.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.7...v1.42.0-dev.8) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide layout components:** App may crash when 'You may like' section is hidden ([#2852](https://github.com/MorpheApp/morphe-patches/issues/2852)) ([407411d](https://github.com/MorpheApp/morphe-patches/commit/407411db710c8beb6e94e4e5f29fab3dc9060a30))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.42.0-dev.8/patches-1.42.0-dev.8.mpp",
+  "created_at": "2026-09-09T13:20:57",
+  "description": "## [1.42.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.9...v1.42.0-dev.10) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide layout components:** Hide guidelines in live chat ([b7528e0](https://github.com/MorpheApp/morphe-patches/commit/b7528e0e3c63f8d50caa3ebefa6dfd4c6a1859b1))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.42.0-dev.10/patches-1.42.0-dev.10.mpp",
   "signature_download_url": "",
-  "version": "1.42.0-dev.8"
+  "version": "1.42.0-dev.10"
 }

@@ -93,9 +93,8 @@ Ví dụ:
   <string name="morphe_hide_notifications_menu_header_title">Ẩn tiêu đề menu Thông báo</string>
   <string name="morphe_hide_notifications_menu_header_summary">Ẩn tiêu đề menu Thông báo khi nhấp vào nút chuông</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ẩn nút \"Thông báo cho tôi\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Ẩn nút thông báo các buổi phát trực tiếp và video sắp diễn ra</string>
   <string name="morphe_hide_playables_title">Ẩn Chơi game trên Youtube</string>
   <string name="morphe_hide_playables_summary">Ẩn tính năng cho phép bạn chơi trò chơi</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ẩn hình thu nhỏ của từ khóa tìm kiếm</string>
@@ -544,23 +543,14 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tắt cử chỉ tua chính xác</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Tắt chế độ tua chính xác được bật khi vuốt thanh tiến trình lên</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Bật DVR phát trực tiếp</string>
-  <string name="morphe_livestream_dvr_summary">Cho phép tua trên mọi buổi phát trực tiếp, kể cả khi bình thường không được phép</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Bật hình thu nhỏ trên thanh tiến trình</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Hiển thị hình thu nhỏ trong khi vuốt để tua trên thanh tiến trình</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Được phát lại nhiều nhất</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"Việc bật 'DVR phát trực tiếp' có thể không khả dụng
-
-Để khắc phục, hãy bật 'Giả mạo luồng video' và thay đổi 'Máy khách mặc định' thành 'TV Simply' hoặc 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Tăng thời lượng DVR phát trực tiếp</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Cho phép tua lại các buổi phát trực tiếp tối đa 7 ngày trước</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Cho phép tua lại các buổi phát trực tiếp tối đa 7 ngày trước</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Mở rộng thời lượng DVR phát trực tiếp' có thể không khả dụng
-
-Để khắc phục, hãy bật 'Giả mạo luồng video' và thay đổi 'Máy khách mặc định' thành 'TV Simply' hoặc 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Bật vuốt để tua</string>
   <string name="morphe_slide_to_seek_summary">Bật vuốt để tua thay vì phát video 2x khi bấm giữ trong trình phát</string>
@@ -1202,10 +1192,7 @@ Nhấn vào đây để truy cập DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Đã thay đổi cao độ phát mặc định thành: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Kéo dãn thời gian âm thanh</string>
   <string name="morphe_playback_audio_time_stretching_summary">Cho phép thiết lập tốc độ và cao độ một cách độc lập, có thể gây ra nhiễu âm thanh</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Ghi nhớ vị trí phát lại của livestream</string>
-  <string name="morphe_remember_livestream_position_summary">Đối với các livestream đang diễn ra, ghi nhớ và tiếp tục vị trí phát lại của bạn thay vì chuyển đến vị trí trực tiếp hiện tại</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Tính năng này không hoạt động với các livestream 24/7 và các luồng phát khác \'luôn bật\'</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Vô hiệu hóa video HDR</string>
   <string name="morphe_force_hdr_video_title">Ép phát video HDR</string>

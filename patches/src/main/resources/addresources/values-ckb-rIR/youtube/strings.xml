@@ -60,7 +60,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_title">إوحي بورغه رو فيلي</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">پشکنەی \'ئاگادارکردنەوە\' بێکە</string>
   <string name="morphe_hide_playables_title">خاوێن کردنەوەی \'Playables\'</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
@@ -186,11 +186,10 @@ Second \"item\" text"</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_summary">Allows seeking on all livestreams, even those that normally restrict it</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
@@ -521,7 +520,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_playback_speeds_auto">خودکار</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_playback_speed_default_title">کیفیتی پیش‌نیازکراوی پێکهاتە</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_force_avc_codec_user_dialog_message">"خاوەن سودە:
 • دەتوانێ خێرایی خاوێنی زۆرە دەمرێت

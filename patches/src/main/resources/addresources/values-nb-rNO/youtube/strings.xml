@@ -94,9 +94,8 @@ Endringer inkluderer:
   <string name="morphe_hide_notifications_menu_header_title">Hide Notifications menu header</string>
   <string name="morphe_hide_notifications_menu_header_summary">Hides the Notifications menu header when clicking the bell button</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul \'Varsle meg\'-knapp</string>
-  <string name="morphe_hide_notify_me_button_summary">Skjuler påminnelsesknappen for planlagte direktesendinger og premierer</string>
   <string name="morphe_hide_playables_title">Skjul Playables</string>
   <string name="morphe_hide_playables_summary">Skjuler funksjonen som lar deg spille spill</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skjul søketermer miniatyrbilder</string>
@@ -545,23 +544,13 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Deaktiver presis søking med gest</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Deaktiverer den presise søkemodusen som aktiveres når du drar opp søkefeltet</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Aktiver livestream DVR</string>
-  <string name="morphe_livestream_dvr_summary">Lar deg spole på alle direktesendinger, selv de som normalt ikke tillater det</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktiver miniatyrbilder for søkeskjermen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Viser et videominiatyrbilde mens du drar i søkeskjermen</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Mest spilt om igjen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Aktiver DVR for direktesending' kan være utilgjengelig
-
-For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Utvid livestream DVR varighet</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Lar deg spole tilbake direktesendinger opptil 7 dager</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Utvid DVR-varigheten for direktesending' kan være utilgjengelig
-
-For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktiver glidekontroll for søk</string>
   <string name="morphe_slide_to_seek_summary">Aktiverer sveiping for å søke i stedet for å spille med 2x hastighet når du trykker og holder videospilleren</string>
@@ -1201,10 +1190,7 @@ Hvis aktivert, sendes videourler til API-serveren og ingen andre data sendes. Hv
   <string name="morphe_remember_playback_audio_pitch_toast">Changed default audio pitch to: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
   <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Husk avspillingsposisjon for direktesendinger</string>
-  <string name="morphe_remember_livestream_position_summary">For pågående direktesendinger huskes og gjenopptas avspillingsposisjonen din i stedet for å søke til gjeldende live-posisjon</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Denne funksjonen fungerer ikke med 24/7-direktesendinger og andre strømmer som er \'alltid på\'</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
   <string name="morphe_force_hdr_video_title">Tving HDR-video</string>

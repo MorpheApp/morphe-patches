@@ -87,9 +87,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_title">चित्रपट विभाग लपवा</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'मला सूचित करा\' बटण लपवा</string>
-  <string name="morphe_hide_notify_me_button_summary">शेड्यूल केलेल्या लाइव्ह स्ट्रीम आणि प्रीमियरसाठी रिमाइंडर बटण लपवा</string>
   <string name="morphe_hide_playables_title">Playables लपवा</string>
   <string name="morphe_hide_playables_summary">गेम खेळण्याची परवानगी देणारे वैशिष्ट्य लपवते</string>
   <string name="morphe_hide_search_term_thumbnails_title">शोध शब्दांचे थंबनेल लपवा</string>
@@ -480,23 +479,13 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">अचूक शोधण्याची हावभाव अक्षम करा</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">सीकबार (seekbar) वर खेचल्यावर सक्रिय होणारा अचूक शोध मोड अक्षम करा</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">लाइव्हस्ट्रीम DVR सक्षम करा</string>
-  <string name="morphe_livestream_dvr_summary">लाइव्हस्ट्रीममध्ये, सामान्यतः निर्बंध असलेल्या लाइव्हस्ट्रीमवर देखील शोध घेण्यास अनुमती देते.</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">सीकबार थंबनेल सक्षम करा</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">सीकबार ड्रॅग करताना व्हिडिओ थंबनेल दर्शवते</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">सर्वाधिक प्ले केलेले</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'लाइव्हस्ट्रीम DVR सक्षम करा' उपलब्ध असू शकत नाही
-
-हे दुरुस्त करण्यासाठी, 'व्हिडिओ स्ट्रीम्स स्पूफ करा' चालू करा आणि 'डीफॉल्ट क्लायंट' बदलून 'TV Simply' किंवा 'visionOS' करा"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">लाइव्हस्ट्रीम DVR कालावधी वाढवा</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">तुम्हाला लाइव्ह ब्रॉडकास्ट मागील ७ दिवसांपर्यंत मागे घेऊन पाहण्याची परवानगी देते.</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'लाइव्हस्ट्रीम DVR कालावधी विस्तारित करा' उपलब्ध असू शकत नाही
-
-हे दुरुस्त करण्यासाठी, 'व्हिडिओ स्ट्रीम्स स्पूफ करा' चालू करा आणि 'डीफॉल्ट क्लायंट' बदलून 'TV Simply' किंवा 'visionOS' करा"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करा</string>
   <string name="morphe_slide_to_seek_summary">व्हिडिओ प्लेयरवर दाबून धरल्यावर 2x वेगाने प्ले करण्याऐवजी स्लाइड टू सीक सक्षम करा</string>
@@ -1077,7 +1066,7 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
   <string name="morphe_remember_playback_speed_toast">डीफॉल्ट प्लेबॅक स्पीड बदलला: %s</string>
   <string name="morphe_disable_playback_speed_music_title">संगीतासाठी सामान्य गती वापरा</string>
   <string name="morphe_disable_playback_speed_music_summary">संगीत व्हिडिओ नेहमी 1.0x वेगाने प्ले करा</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">एचडीआर व्हिडिओ अक्षम करा</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) कोडेक (Codec) सक्ती करा</string>

@@ -60,7 +60,8 @@ public class CommentsFilter extends Filter {
     public CommentsFilter() {
         var channelGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_CHANNEL_GUIDELINES,
-                "channel_guidelines_entry_banner"
+                "channel_guidelines_entry_banner",
+                "viewer_engagement_message"
         );
 
         var chatSummary = new StringFilterGroup(
@@ -116,7 +117,8 @@ public class CommentsFilter extends Filter {
 
         var communityGuidelines = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_COMMUNITY_GUIDELINES,
-                "community_guidelines"
+                "community_guidelines",
+                "viewer_engagement_message"
         );
 
         var createAShortButton = new StringFilterGroup(

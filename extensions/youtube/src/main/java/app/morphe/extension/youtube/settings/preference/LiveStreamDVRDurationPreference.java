@@ -16,26 +16,26 @@ import android.util.AttributeSet;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
-public class LivestreamDVRDurationPreference extends SwitchPreference {
+public class LiveStreamDVRDurationPreference extends SwitchPreference {
 
     {
-        // Expand livestream DVR duration is not available in SABR playback.
+        // Expand live stream DVR duration is not available in SABR playback.
         String summary = SpoofVideoStreamsPatch.spoofingToClientWithSABROrSpoofingDisabled()
-                ? str("morphe_expand_livestream_dvr_duration_not_available")
-                : str("morphe_expand_livestream_dvr_duration_summary");
+                ? str("morphe_expand_live_stream_dvr_duration_not_available")
+                : str("morphe_expand_live_stream_dvr_duration_summary");
         setSummary(summary);
     }
 
-    public LivestreamDVRDurationPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LiveStreamDVRDurationPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
-    public LivestreamDVRDurationPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LiveStreamDVRDurationPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-    public LivestreamDVRDurationPreference(Context context, AttributeSet attrs) {
+    public LiveStreamDVRDurationPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    public LivestreamDVRDurationPreference(Context context) {
+    public LiveStreamDVRDurationPreference(Context context) {
         super(context);
     }
 }

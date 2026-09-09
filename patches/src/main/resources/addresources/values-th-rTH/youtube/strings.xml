@@ -94,9 +94,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_menu_header_title">ซ่อนส่วนหัวเมนูการแจ้งเตือน</string>
   <string name="morphe_hide_notifications_menu_header_summary">ซ่อนส่วนหัวของเมนูการแจ้งเตือนเมื่อคลิกปุ่มกระดิ่ง</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">ซ่อนปุ่ม \'แจ้งเตือนฉัน\'</string>
-  <string name="morphe_hide_notify_me_button_summary">ซ่อนปุ่มเตือนสำหรับการถ่ายทอดสดและรอบพรีเมียร์ที่กำหนดเวลาไว้</string>
   <string name="morphe_hide_playables_title">ซ่อน Playables</string>
   <string name="morphe_hide_playables_summary">ซ่อนคุณสมบัติที่ช่วยให้คุณเล่นเกมได้</string>
   <string name="morphe_hide_search_term_thumbnails_title">ซ่อนภาพขนาดย่อของคำค้นหา</string>
@@ -545,23 +544,13 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ปิดใช้งานท่าทางการค้นหาแบบแม่นยำ</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">ปิดใช้งานโหมดการค้นหาที่แม่นยำซึ่งเปิดใช้งานเมื่อดึงแถบความคืบหน้า</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">เปิดใช้งาน DVR ไลฟ์สตรีม</string>
-  <string name="morphe_livestream_dvr_summary">ช่วยให้สามารถข้ามไปยังส่วนต่างๆ ของการถ่ายทอดสดได้ทั้งหมด แม้แต่การถ่ายทอดสดที่ปกติแล้วจะจำกัดการทำงานนี้ไว้</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">เปิดใช้งานภาพขนาดย่อของแถบเลื่อน</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">แสดงภาพขนาดย่อของวิดีโอขณะลากแถบเลื่อน</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">เล่นซ้ำมากที่สุด</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'เปิดใช้งาน DVR ไลฟ์สตรีม' อาจไม่สามารถใช้งานได้
-
-หากต้องการแก้ไข โปรดเปิด 'ปลอมแปลงสตรีมวิดีโอ' และเปลี่ยน 'ไคลเอ็นต์เริ่มต้น' เป็น 'TV Simply' หรือ 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">ขยายระยะเวลา DVR ไลฟ์สตรีม</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">ช่วยให้คุณสามารถย้อนกลับการออกอากาศสดได้ถึง 7 วันย้อนหลัง</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'ขยายระยะเวลา DVR ไลฟ์สตรีม' อาจไม่สามารถใช้งานได้
-
-หากต้องการแก้ไข โปรดเปิด 'ปลอมแปลงสตรีมวิดีโอ' และเปลี่ยน 'ไคลเอ็นต์เริ่มต้น' เป็น 'TV Simply' หรือ 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">เปิดใช้งานเลื่อนเพื่อค้นหา</string>
   <string name="morphe_slide_to_seek_summary">เปิดใช้งานการปัดเพื่อค้นหาแทนการเล่นด้วยความเร็ว 2 เท่าเมื่อกดค้างที่เครื่องเล่นวิดีโอ</string>
@@ -1203,10 +1192,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">เปลี่ยนระดับเสียงเริ่มต้นเป็น: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">การยืดเวลาของเสียง</string>
   <string name="morphe_playback_audio_time_stretching_summary">อนุญาตให้ตั้งค่าความเร็วและระดับเสียงโดยอิสระ อาจทำให้เกิดข้อผิดพลาดด้านเสียง</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">จดจำตำแหน่งการเล่นสตรีมสด</string>
-  <string name="morphe_remember_livestream_position_summary">สำหรับสตรีมสดที่กำลังดำเนินอยู่ จะจดจำตำแหน่งการเล่นของคุณและเล่นต่อจากตำแหน่งนั้น แทนที่จะข้ามไปยังตำแหน่งสดปัจจุบัน</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">ฟีเจอร์นี้ใช้ไม่ได้กับสตรีมสด 24/7 และสตรีมอื่นๆ ที่เปิดตลอดเวลา</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">ปิดใช้งานวิดีโอ HDR</string>
   <string name="morphe_force_hdr_video_title">บังคับวิดีโอ HDR</string>

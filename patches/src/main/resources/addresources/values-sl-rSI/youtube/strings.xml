@@ -94,9 +94,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_notifications_menu_header_title">Skrij glavo menija Obvestila</string>
   <string name="morphe_hide_notifications_menu_header_summary">Skrije glavo menija Obvestila ob kliku na gumb zvonček</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skrij gumb \'Obvesti me\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Skrije gumb za opomnik za načrtovane prenose v živo in premiere</string>
   <string name="morphe_hide_playables_title">Skrij Playables</string>
   <string name="morphe_hide_playables_summary">Skrije funkcijo, ki omogoča igranje iger</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skrij sličice iskanih izrazov</string>
@@ -545,23 +544,13 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogoči natančen premik z gesto</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Onemogoči način natančnega iskanja, ki se aktivira, ko povlečete drsnik</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Omogoči DVR za pretočni video</string>
-  <string name="morphe_livestream_dvr_summary">Omogoča predvajanje v živo tudi za prenose, ki sicer to preprečujejo</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Vklopi sličice predogleda na vrstici za iskanje</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Prikazuje sličico videoposnetka med vlečenjem drsnika</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Največkrat predvajano</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Omogoči DVR v živo' morda ne bo na voljo
-
-Če želite to odpraviti, vklopite 'Spoof video streams' in spremenite 'Privzeti odjemalec' v 'TV Simply' ali 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Razširi trajanje DVR za pretočni prenos</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Omogoča vam povratno predvajanje v živo do 7 dni v preteklost</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Razširi trajanje DVR-ja v živo' morda ne bo na voljo
-
-Če želite to odpraviti, vklopite 'Spoof video streams' in spremenite 'Privzeti odjemalec' v 'TV Simply' ali 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Omogoči drsenje za iskanje</string>
   <string name="morphe_slide_to_seek_summary">Omogoči drsanje za iskanje namesto predvajanja pri 2-kratni hitrosti, ko pritisnete in držite predvajalnik videa</string>
@@ -1203,10 +1192,7 @@ Tapnite tukaj, da odprete DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Privzeta višina tona zvoka je bila spremenjena v: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Časovno razširjanje zvoka</string>
   <string name="morphe_playback_audio_time_stretching_summary">Omogoča neodvisno nastavitev hitrosti in višine tona, kar lahko povzroči artefakte zvoka</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Zapomni si položaj predvajanja prenosa v živo</string>
-  <string name="morphe_remember_livestream_position_summary">Pri prenosih v živo, ki že potekajo, si zapomni in nadaljuje predvajanje z mesta, kjer se je končalo, namesto da bi se pomaknilo na trenutni položaj v živo.</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Ta funkcija ne deluje pri 24/7 prenosih v živo in drugih prenosih, ki so \'vedno vključeni\'.</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogoči HDR video</string>
   <string name="morphe_force_hdr_video_title">Vsili HDR video</string>

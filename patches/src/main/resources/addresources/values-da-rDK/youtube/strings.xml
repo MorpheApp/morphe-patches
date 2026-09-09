@@ -94,9 +94,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_notifications_menu_header_title">Skjul overskrift for menuen Notifikationer</string>
   <string name="morphe_hide_notifications_menu_header_summary">Skjuler overskriften for menuen Notifikationer, når der klikkes på klokkeknappen</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skjul knappen \'Underret mig\'</string>
-  <string name="morphe_hide_notify_me_button_summary">Skjuler påmindelsesknappen for planlagte livestreaminger og premieres</string>
+  <string name="morphe_hide_notify_me_button_summary">Skjuler påmindelsesknappen for planlagte live-streams og premierer</string>
   <string name="morphe_hide_playables_title">Skjul Spillehjørnet</string>
   <string name="morphe_hide_playables_summary">Skjuler funktionen, der giver dig mulighed for at spille spil</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skjul miniaturebilleder for søgeord</string>
@@ -545,23 +545,23 @@ Info: Virker muligvis ikke på live streams"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Deaktivér præcis søgemåde</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Deaktiverer den præcise søgetilstand, der aktiveres, når du trækker i søgelinjen op</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Aktivér livestream DVR</string>
-  <string name="morphe_livestream_dvr_summary">Giver mulighed for at spole i alle livestreams, selv dem der normalt begrænser det</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Aktivér DVR til live-streams</string>
+  <string name="morphe_live_stream_dvr_summary">Giver mulighed for at søge i alle live-streams, også dem der normalt begrænser det</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktiver miniaturer på søgelinjen</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Viser et videominiaturebillede, når du trækker i søgelinjen</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Mest genafspillet</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Aktivér livestream DVR' er muligvis ikke tilgængelig
+  <string name="morphe_live_stream_dvr_not_available">"'Aktivér DVR til live-streams' er måske ikke tilgængelig
 
-For at rette dette skal du slå 'Spoof video streams' til og skifte 'Standardklient' til 'TV Simply' eller 'visionOS'."</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Udvid livestream DVR-varighed</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Giver dig mulighed for at spole direkte udsendelser op til 7 dage tilbage i tiden</string>
+For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Udvid DVR-varigheden for live-streams</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Giver dig mulighed for at spole tilbage i live-udsendelser op til 7 dage tilbage i tiden</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Udvid livestream DVR-varighed' er muligvis ikke tilgængelig
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Udvid DVR-varigheden for live-streams' er måske ikke tilgængelig
 
-For at rette dette skal du slå 'Spoof video streams' til og skifte 'Standardklient' til 'TV Simply' eller 'visionOS'."</string>
+For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardklient' til 'TV Simply' eller 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivér dias for at søge</string>
   <string name="morphe_slide_to_seek_summary">Aktiverer strygning for at søge i stedet for at afspille med 2x hastighed, når du trykker og holder på videoplayeren</string>
@@ -1200,10 +1200,10 @@ Tryk her for at lære mere om DeArrow"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Ændrede standard tonehøjde til: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Tidsstrækning af lyd</string>
   <string name="morphe_playback_audio_time_stretching_summary">Gør det muligt at indstille hastighed og tonehøjde uafhængigt, hvilket kan forårsage lydartefakter</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Husk afspilningsposition for livestreams</string>
-  <string name="morphe_remember_livestream_position_summary">For igangværende livestreams huskes og genoptages din afspilningsposition i stedet for at søge til den aktuelle liveposition</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Denne funktion fungerer ikke med 24/7-livestreams og andre streams, der er \'altid tændt\'</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Husk afspilningsposition for live-streams</string>
+  <string name="morphe_remember_live_stream_position_summary">For igangværende live-streams husker og genoptager den din afspilningsposition i stedet for at spole til den aktuelle live-position</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Denne funktion virker ikke med 24/7 live-streams og andre streams, der er \'altid tændt\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
   <string name="morphe_force_hdr_video_title">Tving HDR-video</string>

@@ -80,9 +80,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_title">Скриј ја секцијата со филмови</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Скриј го копчето „Извести ме“</string>
-  <string name="morphe_hide_notify_me_button_summary">Ја крие копчето „Подсети ме“ за планирани ливни преноси и премиери</string>
   <string name="morphe_hide_playables_title">Скриј ги „Плејлистови“</string>
   <string name="morphe_hide_playables_summary">Прикриј функција која овозможува играње игри</string>
   <string name="morphe_hide_search_term_thumbnails_title">Прикриј минијатури за термини за пребарување</string>
@@ -282,11 +281,9 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Оневозможете гест за прецизно премотување</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Ја исклучува прецизната гестикулација за премотување која се активира кога ќе го повлечете лентата за премотување</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Овозможи DVR за пренос во живо</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_title">Прошири ја трајноста на DVR за пренос во живо</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Вклучи премотување со повлекување</string>
@@ -808,7 +805,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Покажува известување кога се зачува нова стандардна брзина на репродукција</string>
   <string name="morphe_playback_speed_default_title">Стандардна брзина на репродукција</string>
   <string name="morphe_remember_playback_speed_toast">Променета е стандардната брзина на репродукција на: %s</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Исклучи HDR видео</string>
   <string name="morphe_force_avc_codec_title">Принуден кодек AVC (H.264)</string>

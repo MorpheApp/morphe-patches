@@ -226,7 +226,7 @@ public class SpoofVideoStreamsPatch {
 
     /**
      * Injection point.
-     * Only invoked when playing a livestream on an Apple client.
+     * Only invoked when playing a live stream on an Apple client.
      */
     public static boolean fixHLSCurrentTime(boolean original) {
         if (SPOOF_VIDEO_STREAMS) {
@@ -317,7 +317,7 @@ public class SpoofVideoStreamsPatch {
 
                 // 'get_drm_license' has no video ID and appears to happen when waiting for a paid video to start.
                 // 'heartbeat' has no video and appears to be only after playback has started.
-                // 'refresh' has no video ID and appears to happen when waiting for a livestream to start.
+                // 'refresh' has no video ID and appears to happen when waiting for a live stream to start.
                 // 'ad_break' has no video ID.
                 if (path.contains("get_drm_license") ||
                         path.contains("heartbeat") ||

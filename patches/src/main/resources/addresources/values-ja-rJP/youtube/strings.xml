@@ -94,7 +94,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_menu_header_title">通知メニューのヘッダーを非表示</string>
   <string name="morphe_hide_notifications_menu_header_summary">鈴アイコンボタン (登録済みボタン) から呼び出される通知メニューのヘッダーを非表示にします</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">「通知を受け取る」ボタンを非表示</string>
   <string name="morphe_hide_notify_me_button_summary">配信予定のライブ配信または公開予定のプレミア公開の動画の通知を予約するボタンを非表示にします</string>
   <string name="morphe_hide_playables_title">ゲームルームを非表示</string>
@@ -545,23 +545,14 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">シークバーを上にスワイプすると有効になる「再生位置の細かい調整」モードを無効にします</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">すべてのライブ配信で DVR を有効化</string>
-  <string name="morphe_livestream_dvr_summary">本来はシーク機能が制限される場合も含め、すべてのライブ配信でシーク機能が利用可能になります</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">シーク位置の映像を縮小表示</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">シークバーをドラッグしてシークしているときに、シーク位置の映像を縮小した画像をシークバーの上に表示します</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">リプレイ回数が最も多い部分</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"[すべてのライブ配信で DVR を有効化] をオンにしたときに正常に動作しない場合があります
-
-この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">ライブ配信の DVR の制限を拡張</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">ライブ配信を最大 7 日前まで巻き戻し可能にします</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">ライブ配信を最大 7 日前まで巻き戻し可能にします</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"[ライブ配信の DVR の制限を拡張] をオンにしたときに正常に動作しない場合があります
-
-この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
   <string name="morphe_slide_to_seek_summary">動画プレーヤーの画面を長押ししたときに倍速再生ではなくスライドによるシークが有効になります。</string>
@@ -1202,10 +1193,7 @@ Automotive レイアウト
   <string name="morphe_remember_playback_audio_pitch_toast">デフォルトの音声ピッチを %s に変更しました</string>
   <string name="morphe_playback_audio_time_stretching_title">タイムストレッチ</string>
   <string name="morphe_playback_audio_time_stretching_summary">再生速度と音声ピッチを個別に設定できますが、音声にノイズなどの副作用が生じる場合があります</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">ライブ配信の再生位置を記憶する</string>
-  <string name="morphe_remember_livestream_position_summary">進行中のライブ配信では、現在のライブ位置にシークする代わりに、再生位置を記憶して再開します。</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">この機能は、24時間365日配信のライブ配信や、その他の「常時オン」の配信では機能しません。</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_hdr_video_title">HDR 動画を強制的に使用</string>

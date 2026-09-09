@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.video.livestreams
+package app.morphe.patches.youtube.video.livestream
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -19,13 +19,13 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/playback/livestreams/RememberLivestreamPositionPatch;"
+    "Lapp/morphe/extension/youtube/patches/playback/livestream/RememberLiveStreamPositionPatch;"
 
 @Suppress("unused")
-val rememberLivestreamPositionPatch = bytecodePatch(
-    name = "Remember livestream playback position",
-    description = "Adds an option to remember the playback position of ongoing livestreams " +
-        "and resume from there when reopening a livestream.",
+val rememberLiveStreamPositionPatch = bytecodePatch(
+    name = "Remember live stream playback position",
+    description = "Adds an option to remember the playback position of an ongoing live stream " +
+        "and resume from there when reopening that live stream.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -39,7 +39,7 @@ val rememberLivestreamPositionPatch = bytecodePatch(
         PreferenceScreen.VIDEO.addPreferences(
             // Keep the preferences organized together.
             noTitleUnsortedPreferenceCategory(
-                SwitchPreference("morphe_remember_livestream_position", summary = true)
+                SwitchPreference("morphe_remember_live_stream_position", summary = true)
             )
         )
 

@@ -94,9 +94,8 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_notifications_menu_header_title">Fela yfirsögn valmyndar fyrir Tilkynningar</string>
   <string name="morphe_hide_notifications_menu_header_summary">Felur yfirsögn valmyndar fyrir Tilkynningar þegar klukka hnappnum er smellið</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Fela \"Láttu mig vita\" hnappinn</string>
-  <string name="morphe_hide_notify_me_button_summary">Hylur áminningahópnappann fyrir áætlaðar lifandi streymur og frumsýningar</string>
   <string name="morphe_hide_playables_title">Fela Playables</string>
   <string name="morphe_hide_playables_summary">Hyl komstu</string>
   <string name="morphe_hide_search_term_thumbnails_title">Fela leitarniðurstöðum</string>
@@ -543,23 +542,13 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Gerðu leitarstikuna nákvæma</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Gerir óvirkt nákvæma leit á þessu sem virkjar þegar þeir draga leitarstikuna</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Vírúð lífvídeós DVR</string>
-  <string name="morphe_livestream_dvr_summary">Leyfir að spila áfram og aftur á öllum streimum, jafnvel þeim sem venjulega takmarka það</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Gera kleift myndataska myndum á dragslá</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Sýnir myndataska mynd á meðan dragð er á dragslá</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Mest endurspilað</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Virkja DVR fyrir beint streymi' kann að vera ekki tiltækt
-
-Til að laga þetta, skaltu virkja 'Fölsa vídeóstrauma' og breyta 'Sjálfgefinn biðlara' í 'TV Simply' eða 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Fjarlægðu lífvídeós DVR tíma</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Leyfir þér að spola áfram beina útsendingu allt að 7 daga til baka</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Stækka lengd DVR fyrir beint streymi' kann að vera ekki tiltækt
-
-Til að laga þetta, skaltu virkja 'Fölsa vídeóstrauma' og breyta 'Sjálfgefinn biðlara' í 'TV Simply' eða 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Vírúð renna til leit</string>
   <string name="morphe_slide_to_seek_summary">Virkar að slá til breytilegrar sem þurfa að vera haldar eða halda vídeó leikmanninum</string>
@@ -1198,10 +1187,7 @@ Bankaðu hér til að opna DeArrow.ajay.app"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Breytt hjálpsýni hljóðs í: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Tímapróf hljóðs</string>
   <string name="morphe_playback_audio_time_stretching_summary">Leyfir að stilla hraða og tóna sjálfstætt, getur valdið hljóðgáttum</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Mundu endurspilunarstöðu beinna streyma</string>
-  <string name="morphe_remember_livestream_position_summary">Fyrir bein streymi sem eru í gangi, munar eftir og heldur áfram endurspilunarstöðu þinni í stað þess að fara á núverandi stöðu í beinni útsendingu.</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Þessi eiginleiki virkar ekki með 24/7 beinum streymum og öðrum streymum sem eru \'alltaf í gangi\'.</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Lokað HDR myndböndum</string>
   <string name="morphe_force_hdr_video_title">Þvinga HDR-vídeó</string>

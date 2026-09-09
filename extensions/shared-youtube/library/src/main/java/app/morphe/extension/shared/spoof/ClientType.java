@@ -164,7 +164,7 @@ public enum ClientType {
             "Android XR Downgraded"
     ),
     /**
-     * Video not playable: Livestream.
+     * Video not playable: Live stream.
      * AV1 codec and HDR codec are not available, and the maximum resolution is 720p.
      */
     // https://dumps.tadiphone.dev/dumps/google/mustang
@@ -214,7 +214,7 @@ public enum ClientType {
     ),
     /**
      * Same as {@code TV_SABR} but supports dash streams.
-     * This client cannot be selected in the settings and is used only for livestreams.
+     * This client cannot be selected in the settings and is used only for live streams.
      */
     TV_DASH(
             TV_SABR.id,

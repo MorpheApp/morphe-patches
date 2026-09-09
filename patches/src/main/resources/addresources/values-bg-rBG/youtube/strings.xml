@@ -94,9 +94,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_menu_header_title">Скрий заглавната част на менюто „Известия“</string>
   <string name="morphe_hide_notifications_menu_header_summary">Скрива заглавната част на менюто „Известия“ при кликване върху бутона с камбаната</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Скриване на бутона \"Уведоми ме\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Скрива бутона за напомняне за насрочени излъчвания на живо и премиери</string>
+  <string name="morphe_hide_notify_me_button_summary">Скрива бутона за напомняне за насрочени потоци на живо и премиери</string>
   <string name="morphe_hide_playables_title">Игри в YouTube</string>
   <string name="morphe_hide_playables_summary">Скрива функцията, която ви позволява да играете игри</string>
   <string name="morphe_hide_search_term_thumbnails_title">Скрий миниатюрите на условията за търсене</string>
@@ -545,23 +545,23 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Полето за външен свалик не може да бъде празно</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Деактивира прецизния режим на търсене, който се активира при издърпване на лентата за търсене</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Активиране на livestream DVR</string>
-  <string name="morphe_livestream_dvr_summary">Позволява превъртане на всички потоци на живо, дори и тези, които обикновено го ограничават</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Активиране на DVR за потоци на живо</string>
+  <string name="morphe_live_stream_dvr_summary">Позволява превъртане във всички потоци на живо, дори тези, които обикновено го ограничават</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Активиране на миниатюри на лентата за търсене</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Показва миниатюра на видеото, докато плъзгате лентата за търсене</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Най-преигравано</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Активиране на DVR за предавания на живо' може да не е налично
+  <string name="morphe_live_stream_dvr_not_available">"„Активиране на DVR за потоци на живо“ може да не е налично
 
-За да отстраните това, включете 'Спуфинг на видео потоци' и сменете 'Клиент по подразбиране' на 'TV Simply' или 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Разширете продължителността на livestream DVR</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Позволява ви да превъртате предавания на живо до 7 дни назад</string>
+За да поправите това, включете „Заместване на видео потоци“ и променете „клиент по подразбиране“ на „TV Simply“ или „visionOS“"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Разширяване на продължителността на DVR за потоци на живо</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Позволява ви да превъртате назад предавания на живо до 7 дни назад</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Увеличаване на продължителността на DVR за предавания на живо' може да не е налично
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"„Разширяване на продължителността на DVR за потоци на живо“ може да не е налично
 
-За да отстраните това, сменете 'Спandri' и сменете 'Клиент по подразбиране' на 'TV Simply' или 'visionOS'"</string>
+За да поправите това, включете „Заместване на видео потоци“ и променете „клиент по подразбиране“ на „TV Simply“ или „visionOS“"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
   <string name="morphe_slide_to_seek_summary">Активира плъзгане за търсене вместо възпроизвеждане със скорост 2x при натискане и задържане на видео плейъра</string>
@@ -1203,10 +1203,10 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Височината на звука по подразбиране беше променена на: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Времево разтягане на аудиото</string>
   <string name="morphe_playback_audio_time_stretching_summary">Позволява независимо задаване на скоростта и височината, което може да причини аудио артефакти</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Запомняне на позицията на възпроизвеждане на поточно видео</string>
-  <string name="morphe_remember_livestream_position_summary">За текущите потоци на живо запомня и възстановява позицията ви на възпроизвеждане, вместо да преминава към текущата позиция на живо.</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Тази функция не работи с 24/7 потоци на живо и други потоци, които са „винаги включени“.</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Запомняне на позицията на възпроизвеждане за потоци на живо</string>
+  <string name="morphe_remember_live_stream_position_summary">За текущи потоци на живо, запомня и възстановява позицията на възпроизвеждане вместо да превърта към текущата позиция на живо</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Тази функция не работи с потоци на живо 24/7 и други потоци, които са „винаги включени“</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Бутоните за ускоро и назад са скрити</string>
   <string name="morphe_force_hdr_video_title">Принудително HDR видео</string>

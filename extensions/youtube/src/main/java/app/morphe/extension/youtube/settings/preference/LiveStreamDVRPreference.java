@@ -16,26 +16,26 @@ import android.util.AttributeSet;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
-public class LivestreamDVRPreference extends SwitchPreference {
+public class LiveStreamDVRPreference extends SwitchPreference {
 
     {
-        // Livestream DVR is not available in SABR playback.
+        // Live stream DVR is not available in SABR playback.
         String summary = SpoofVideoStreamsPatch.spoofingToClientWithSABROrSpoofingDisabled()
-                ? str("morphe_livestream_dvr_not_available")
-                : str("morphe_livestream_dvr_summary");
+                ? str("morphe_live_stream_dvr_not_available")
+                : str("morphe_live_stream_dvr_summary");
         setSummary(summary);
     }
 
-    public LivestreamDVRPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public LiveStreamDVRPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
-    public LivestreamDVRPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+    public LiveStreamDVRPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-    public LivestreamDVRPreference(Context context, AttributeSet attrs) {
+    public LiveStreamDVRPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    public LivestreamDVRPreference(Context context) {
+    public LiveStreamDVRPreference(Context context) {
         super(context);
     }
 }

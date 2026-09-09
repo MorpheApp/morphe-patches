@@ -65,12 +65,12 @@
         <item>VIDEOS_ONLY_WITH_POPULAR_DESCENDING</item>
         <item>SHORTS_ONLY_WITH_TIME_DESCENDING</item>
         <item>SHORTS_ONLY_WITH_POPULAR_DESCENDING</item>
-        <item>LIVESTREAMS_ONLY_WITH_TIME_DESCENDING</item>
-        <item>LIVESTREAMS_ONLY_WITH_POPULAR_DESCENDING</item>
+        <item>LIVE_STREAMS_ONLY_WITH_TIME_DESCENDING</item>
+        <item>LIVE_STREAMS_ONLY_WITH_POPULAR_DESCENDING</item>
         <item>ALL_MEMBERSHIPS_CONTENTS</item>
         <item>MEMBERSHIPS_VIDEOS_ONLY</item>
         <item>MEMBERSHIPS_SHORTS_ONLY</item>
-        <item>MEMBERSHIPS_LIVESTREAMS_ONLY</item>
+        <item>MEMBERSHIPS_LIVE_STREAMS_ONLY</item>
     </string-array>
 
     <!-- layout.buttons.navigation.navigationBarPatch -->

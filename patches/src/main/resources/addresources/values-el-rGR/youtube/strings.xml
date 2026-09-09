@@ -94,9 +94,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_menu_header_title">Απόκρυψη κεφαλίδας μενού Ειδοποιήσεων</string>
   <string name="morphe_hide_notifications_menu_header_summary">Απόκρυψη της κεφαλίδας του μενού Ειδοποιήσεων κατά το κλικ στο κουμπί με την καμπάνα</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
+          This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Απόκρυψη κουμπιού \"Να λαμβάνω ειδοποιήσεις\"</string>
-  <string name="morphe_hide_notify_me_button_summary">Κρύβει το κουμπί υπενθύμισης για προγραμματισμένα ζωντανά βίντεο και πρεμιέρες</string>
   <string name="morphe_hide_playables_title">Απόκρυψη \"Παιχνίδια YouTube\"</string>
   <string name="morphe_hide_playables_summary">Απόκρυψη της λειτουργίας που σας επιτρέπει να παίζετε παιχνίδια</string>
   <string name="morphe_hide_search_term_thumbnails_title">Κρύψτε τις μικρογραφίες των όρων αναζήτησης</string>
@@ -545,23 +544,13 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Απενεργοποιεί τη λειτουργία ακριβούς αναζήτησης που ενεργοποιείται όταν τραβάτε επάνω τη γραμμή αναζήτησης</string>
-  <!-- interaction.seekbar.livestreamDVRPatch -->
-  <string name="morphe_livestream_dvr_title">Ενεργοποίηση εγγραφής ζωντανής μετάδοσης DVR</string>
-  <string name="morphe_livestream_dvr_summary">Επιτρέπει την αναζήτηση σε όλες τις ζωντανές μεταδόσεις, ακόμη και σε αυτές που συνήθως την περιορίζουν</string>
+  <!-- interaction.seekbar.liveStreamDVRPatch -->
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Ενεργοποίηση μικρογραφιών γραμμής αναζήτησης</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Εμφανίζει μια μικρογραφία βίντεο κατά τη μετακίνηση της γραμμής αναζήτησης</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Πιο πολυαναπαραγόμενο</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_not_available">"'Ενεργοποίηση DVR ζωντανής μετάδοσης' μπορεί να μην είναι διαθέσιμη
-
-Για να το διορθώσετε, ενεργοποιήστε το 'Πλαστογράφηση ροών βίντεο' και αλλάξτε το 'Προεπілегμένο πρόγραμμα-πελάτη' σε 'TV Simply' ή 'visionOS'"</string>
-  <string name="morphe_expand_livestream_dvr_duration_title">Επέκταση της διάρκειας του DVR της ζωντανής μετάδοσης</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary">Σας επιτρέπει να επανατυλίγετε ζωντανές εκπομπές έως και 7 ημέρες στο παρελθόν</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_not_available">"'Επέκταση διάρκειας DVR ζωντανής μετάδοσης' μπορεί να μην είναι διαθέσιμη
-
-Για να το διορθώσετε, ενεργοποιήστε το 'Πλαστογράφηση του βίντεο' και αλλάξτε το 'Προεπιλεγμένο πρόγραμμα-πελάτη' σε 'TV Simply' ή 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Χειρονομία συρσίματος για αναζήτηση</string>
   <string name="morphe_slide_to_seek_summary">Ενεργοποιήστε την ολίσθηση για αναζήτηση αντί να παίξετε με ταχύτητα 2x όταν πατάτε και κρατάτε τον πρόγραμμα αναπαραγωγής βίντεο</string>
@@ -1188,10 +1177,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_audio_pitch_toast">Ο προεπιλεγμένος τόνος ήχου άλλαξε σε: %s</string>
   <string name="morphe_playback_audio_time_stretching_title">Διάταση χρόνου ήχου</string>
   <string name="morphe_playback_audio_time_stretching_summary">Επιτρέπει τη ρύθμιση της ταχύτητας και του τόνου ανεξάρτητα, κάτι που μπορεί να προκαλέσει παραμορφώσεις στον ήχο</string>
-  <!-- video.livestreams.rememberLivestreamPositionPatch -->
-  <string name="morphe_remember_livestream_position_title">Απομνημόνευση θέσης αναπαραγωγής ζωντανής μετάδοσης</string>
-  <string name="morphe_remember_livestream_position_summary">Για ζωντανές μεταδόσεις σε εξέλιξη, θυμάται και συνεχίζει από τη θέση αναπαραγωγής σας αντί να μεταβαίνει στην τρέχουσα θέση ζωντανής μετάδοσης.</string>
-  <string name="morphe_remember_livestream_position_user_dialog_message">Αυτή η λειτουργία δεν λειτουργεί με ζωντανές μεταδόσεις 24/7 και άλλες ροές που είναι «πάντα ενεργές».</string>
+  <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Απενεργοποίηση βίντεο HDR</string>
   <string name="morphe_force_hdr_video_title">Επιβολή βίντεο HDR</string>
