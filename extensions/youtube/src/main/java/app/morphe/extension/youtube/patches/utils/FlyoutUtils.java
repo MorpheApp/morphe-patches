@@ -21,6 +21,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Base64;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -153,8 +154,6 @@ public final class FlyoutUtils {
     private static WeakReference<View> senderViewRef = new WeakReference<>(null);
 
     private static Dialog flyoutDialog;
-    private static boolean isDialogShowing;
-    private static boolean isPopupWindowShowing;
     private static PopupWindow flyoutPopupWindow;
     private static String flyoutVideoId = "";
     private static String flyoutPlaylistId = "";
@@ -233,25 +232,37 @@ public final class FlyoutUtils {
         runFlyoutVisibilityHandler();
     }
 
+    public static void dismissFlyout() {
+        if (flyoutDialog != null) {
+            flyoutDialog.dismiss();
+            flyoutDialog = null;
+        }
+        if (flyoutPopupWindow != null) {
+            flyoutPopupWindow.dismiss();
+            flyoutPopupWindow = null;
+        }
+    }
+
     private static void runFlyoutVisibilityHandler() {
         Handler flyoutVisibilityPollingHandler = new Handler(Looper.getMainLooper());
         flyoutVisibilityPollingHandler.post(
             new Runnable() {
+                boolean isDialogShowing;
+                boolean blockFlyoutVisibilityPollingHandler;
+
                 @Override
                 public void run() {
-                    boolean blockFlyoutVisibilityPollingHandler = false;
-
                     if (flyoutDialog != null && flyoutDialog.isShowing()) {
                         isDialogShowing = true;
                         blockFlyoutVisibilityPollingHandler = true;
                     }
                     if (flyoutPopupWindow != null && flyoutPopupWindow.isShowing()) {
-                        isPopupWindowShowing = true;
+                        isDialogShowing = false;
                         blockFlyoutVisibilityPollingHandler = true;
                     }
 
                     if (blockFlyoutVisibilityPollingHandler) {
-                        runFlyoutIdsResetHandler();
+                        runResetFlyoutValuesHandler();
                         addFlyoutElements(isDialogShowing ? flyoutDialog : flyoutPopupWindow);
                         onFlyoutListBound(isDialogShowing ? flyoutDialog : flyoutPopupWindow);
                     } else {
@@ -262,15 +273,55 @@ public final class FlyoutUtils {
         );
     }
 
-    public static void dismissFlyout() {
-        if (flyoutDialog != null) {
-            flyoutDialog.dismiss();
-            flyoutDialog = null;
-        }
-        if (flyoutPopupWindow != null) {
-            flyoutPopupWindow.dismiss();
-            flyoutPopupWindow = null;
-        }
+    private static void runResetFlyoutValuesHandler() {
+        Handler flyoutResetValuesPollingHandler = new Handler(Looper.getMainLooper());
+        flyoutResetValuesPollingHandler.post(
+            new Runnable() {
+                boolean blockFlyoutResetValuesPollingHandler = false;
+
+                @Override
+                public void run() {
+                    if (flyoutDialog != null) {
+                        int currentFlyoutWindowVisibility = 0;
+
+                        Window currentFlyoutDialogWindow = flyoutDialog.getWindow();
+                        if (currentFlyoutDialogWindow != null) {
+                            currentFlyoutWindowVisibility =
+                                    currentFlyoutDialogWindow.getDecorView().getWindowVisibility();
+                        }
+
+                        if (!flyoutDialog.isShowing() || currentFlyoutWindowVisibility == View.GONE) {
+                            blockFlyoutResetValuesPollingHandler = true;
+                        }
+                    }
+
+                    if (flyoutPopupWindow != null && !flyoutPopupWindow.isShowing()) {
+                        blockFlyoutResetValuesPollingHandler = true;
+                    }
+
+                    if (blockFlyoutResetValuesPollingHandler) {
+                        // Provides a slight delay to prevent the system share
+                        // menu from failing to get the flyout videoId.
+                        Utils.runOnMainThreadDelayed(
+                                () -> {
+                                    visibleFlyoutButtons.clear();
+                                    currentButtonIndex = 0;
+                                    flyoutVideoId = "";
+                                    flyoutPlaylistId = "";
+                                    flyoutChannelId = "";
+                                    flyoutChannelName = "";
+                                    PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
+                                },
+                                // To prevent the YT share sheet to display the injected buttons, set
+                                // the delay to zero when the system share sheet feature is disabled.
+                                Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 15 : 0
+                        );
+                    } else {
+                        flyoutResetValuesPollingHandler.postDelayed(this, 10);
+                    }
+                }
+            }
+        );
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
@@ -284,12 +335,12 @@ public final class FlyoutUtils {
                 // onto whatever this call adds instead.
                 customItemTextRefs.clear();
 
-                // Ensure to show the following buttons only for specific flyouts.
-                String currentFlyoutVideoId = getFlyoutVideoId();
-                String currentVideoId;
-
-                if (!currentFlyoutVideoId.isEmpty()) {
-                    currentVideoId = currentFlyoutVideoId;
+                // Ensure to show the injected buttons only for thumbnails flyout
+                // menus and for the player overlay settings flyout menu.
+                String flyoutVideoId = getFlyoutVideoId();
+                final String currentVideoId;
+                if (!flyoutVideoId.isEmpty()) {
+                    currentVideoId = flyoutVideoId;
                 } else {
                     if (getTopFlyoutMenuVisible()) {
                         currentVideoId = VideoInformation.getVideoId();
@@ -298,7 +349,7 @@ public final class FlyoutUtils {
                     }
                 }
 
-                if (!currentFlyoutVideoId.isEmpty()) {
+                if (!currentVideoId.isEmpty()) {
                     // TODO: Add playlists compatibility to Morphe's queue.
                     if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
                             flyoutPlaylistId.isEmpty()) {
@@ -328,9 +379,7 @@ public final class FlyoutUtils {
                                 nextButtonIndex
                         );
                     }
-                }
-
-                if (!currentVideoId.isEmpty()) {
+    
                     if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
                         nextButtonIndex = addFlyoutButton(
                                 flyoutPanel,
@@ -367,52 +416,8 @@ public final class FlyoutUtils {
                 if (nextButtonIndex > 0) {
                     addDivider(flyoutPanel, nextButtonIndex);
                 }
-
-                // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
-                // overlay settings, to prevent them from also being added into nested menus.
-                PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
             },
             15
-        );
-    }
-
-    private static int addWhitelistButton(
-        Object flyoutPanel,
-        WhitelistType type,
-        Drawable icon,
-        int index
-    ) {
-        String currentChannelId =
-                !flyoutChannelId.isEmpty()
-                        ? flyoutChannelId
-                        : VideoInformation.getChannelId();
-        String currentChannelName =
-                !currentChannelId.isEmpty()
-                        ? flyoutChannelName
-                        : VideoInformation.getChannelName();
-
-        if (currentChannelId.isEmpty()) {
-            return index;
-        }
-
-        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(
-                type,
-                currentChannelId
-        );
-        return addFlyoutButton(
-                flyoutPanel,
-                icon,
-                type.getFlyoutTitle(isWhitelisted),
-                v -> {
-                    ChannelWhitelist.toggleChannel(
-                            type,
-                            currentChannelId,
-                            currentChannelName
-                    );
-
-                    dismissFlyout();
-                },
-                index
         );
     }
 
@@ -503,6 +508,46 @@ public final class FlyoutUtils {
         }
 
         return 0;
+    }
+
+    private static int addWhitelistButton(
+            Object flyoutPanel,
+            WhitelistType type,
+            Drawable icon,
+            int index
+    ) {
+        String currentChannelId =
+                !flyoutChannelId.isEmpty()
+                        ? flyoutChannelId
+                        : VideoInformation.getChannelId();
+        String currentChannelName =
+                !currentChannelId.isEmpty()
+                        ? flyoutChannelName
+                        : VideoInformation.getChannelName();
+
+        if (currentChannelId.isEmpty()) {
+            return index;
+        }
+
+        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(
+                type,
+                currentChannelId
+        );
+        return addFlyoutButton(
+                flyoutPanel,
+                icon,
+                type.getFlyoutTitle(isWhitelisted),
+                v -> {
+                    ChannelWhitelist.toggleChannel(
+                            type,
+                            currentChannelId,
+                            currentChannelName
+                    );
+
+                    dismissFlyout();
+                },
+                index
+        );
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -619,44 +664,6 @@ public final class FlyoutUtils {
 
     public static void resetCurrentButtonIndex() {
         currentButtonIndex = 0;
-    }
-
-    private static void runFlyoutIdsResetHandler() {
-        Handler flyoutIdsResetPollingHandler = new Handler(Looper.getMainLooper());
-        flyoutIdsResetPollingHandler.post(
-            new Runnable() {
-                @Override
-                public void run() {
-                    if (flyoutDialog != null && !flyoutDialog.isShowing()) {
-                        isDialogShowing = false;
-                    }
-                    if (flyoutPopupWindow != null && !flyoutPopupWindow.isShowing()) {
-                        isPopupWindowShowing = false;
-                    }
-
-                    if (!isDialogShowing && !isPopupWindowShowing) {
-                        // Since the system share menu is called faster, do not use a large delay.
-                        Utils.runOnMainThreadDelayed(
-                            () -> {
-                                visibleFlyoutButtons.clear();
-                                currentButtonIndex = 0;
-                                flyoutVideoId = "";
-                                flyoutPlaylistId = "";
-                                flyoutChannelId = "";
-                                flyoutChannelName = "";
-                            },
-                            // The delay used to prevent the system share sheet from failing to
-                            // display, sometimes causes the injected buttons to appear in the
-                            // YouTube share sheet. For this reason, the delay is set to zero
-                            // when the setting to display the system share sheet is disabled.
-                            Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 50 : 0
-                        );
-                    } else {
-                        flyoutIdsResetPollingHandler.postDelayed(this, 10);
-                    }
-                }
-            }
-        );
     }
 
     @Nullable
