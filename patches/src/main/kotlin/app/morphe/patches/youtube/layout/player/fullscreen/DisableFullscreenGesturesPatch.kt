@@ -10,16 +10,17 @@
 
 package app.morphe.patches.youtube.layout.player.fullscreen
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -109,7 +110,40 @@ val disableFullscreenGesturesPatch = bytecodePatch(
             """
         )
 
-        if (is_20_40_or_greater) {
+        if (is_21_36_or_greater) {
+            // Native pinch scales inside the 16:9 PlayerView (Nx HUD, side bars
+            // stay). Scale that view with the gesture so the bars are eaten.
+            // Do not force YouTube flag 45698813; that hides the seekbar and is
+            // not required for the view transform.
+            VideoZoomScaleBeginFingerprint.classDef.methods.forEach { method ->
+                when (method.name) {
+                    "onScale" -> method.addInstructions(
+                        0,
+                        "invoke-static { p1 }, $EXTENSION_CLASS->" +
+                            "onPinchScale(Landroid/view/ScaleGestureDetector;)V"
+                    )
+                    "onScaleEnd" -> method.addInstructions(
+                        0,
+                        "invoke-static { p1 }, $EXTENSION_CLASS->" +
+                            "onPinchScaleEnd(Landroid/view/ScaleGestureDetector;)V"
+                    )
+                }
+            }
+            YouTubePlayerViewOnLayoutFingerprint.let {
+                it.method.addInstructionsAtControlFlowLabel(
+                    it.instructionMatches.first().index,
+                    "invoke-static { p0 }, $EXTENSION_CLASS->" +
+                        "onPlayerViewLayout(Landroid/view/View;)V"
+                )
+            }
+            YouTubePlayerOverlaysLayoutConstructorFingerprint.matchAll().forEach {
+                it.method.addInstruction(
+                    it.instructionMatches.first().index,
+                    "invoke-static { p0 }, $EXTENSION_CLASS->" +
+                        "attachPlayerOverlay(Landroid/view/View;)V"
+                )
+            }
+        } else if (is_20_40_or_greater) {
             FullscreenGestureZoomFingerprint.apply {
                 method.apply {
                     val instructionIndex = instructionMatches[9].index
