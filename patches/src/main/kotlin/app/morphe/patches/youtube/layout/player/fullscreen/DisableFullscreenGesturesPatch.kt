@@ -57,7 +57,8 @@ val disableFullscreenGesturesPatch = bytecodePatch(
                     SwitchPreference("morphe_disable_fullscreen_pulled_up_gesture"),
                     SwitchPreference("morphe_disable_fullscreen_dragged_down_gesture"),
                     SwitchPreference("morphe_disable_fullscreen_sliding_down_gesture"),
-                    SwitchPreference("morphe_disable_fullscreen_zoom_gesture")
+                    SwitchPreference("morphe_disable_fullscreen_zoom_gesture"),
+                    SwitchPreference("morphe_restore_pinch_to_zoom", summary = true)
                 )
             )
         )

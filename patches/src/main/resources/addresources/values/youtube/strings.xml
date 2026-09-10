@@ -990,6 +990,8 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Disable portrait swipe-down gesture</string>
     <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Disable landscape swipe-down gesture</string>
     <string name="morphe_disable_fullscreen_zoom_gesture_title">Disable pinch-to-zoom gesture</string>
+    <string name="morphe_restore_pinch_to_zoom_title">Restore pinch to zoom</string>
+    <string name="morphe_restore_pinch_to_zoom_summary">21.36+ only. Native pinch stops at zoom-to-fill; this scales the player view so pinch can crop past fill. Off by default.</string>
 
     <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
     <string name="morphe_open_videos_fullscreen_title">Open videos in fullscreen mode</string>

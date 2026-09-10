@@ -103,6 +103,9 @@ public class DisableFullscreenGesturesPatch {
      * stay applied while pinched.
      */
     public static float getPinchScale() {
+        if (!Settings.RESTORE_PINCH_TO_ZOOM.get()) {
+            return MIN_PINCH_SCALE;
+        }
         return pinchScale < MIN_PINCH_SCALE ? MIN_PINCH_SCALE : pinchScale;
     }
 
@@ -110,7 +113,7 @@ public class DisableFullscreenGesturesPatch {
      * Injection point. {@code ScaleGestureDetector.OnScaleGestureListener.onScale}.
      */
     public static void onPinchScale(ScaleGestureDetector detector) {
-        if (detector == null || disableZoomGesture()) {
+        if (detector == null || disableZoomGesture() || !Settings.RESTORE_PINCH_TO_ZOOM.get()) {
             return;
         }
         pinchScale *= detector.getScaleFactor();
@@ -131,6 +134,9 @@ public class DisableFullscreenGesturesPatch {
     }
 
     private static void applyPinchTransform(@Nullable View preferred) {
+        if (!Settings.RESTORE_PINCH_TO_ZOOM.get()) {
+            pinchScale = MIN_PINCH_SCALE;
+        }
         if (fullscreenScaleOwnsTransform()) {
             pinchOwningView = false;
             detachPreDraw();
