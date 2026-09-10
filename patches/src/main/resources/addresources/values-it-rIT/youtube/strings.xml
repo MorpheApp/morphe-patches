@@ -96,6 +96,7 @@ I cambiamenti riguarderanno:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Nascondi il pulsante \'Avvisami\'</string>
+  <string name="morphe_hide_notify_me_button_summary">Nasconde il pulsante di promemoria per live streaming e anteprime programmati</string>
   <string name="morphe_hide_playables_title">Nascondi Sala Giochi</string>
   <string name="morphe_hide_playables_summary">Nasconde la funzionalità che ti consente di accedere ai giochi</string>
   <string name="morphe_hide_search_term_thumbnails_title">Nascondi le miniature dei termini di ricerca</string>
@@ -545,13 +546,22 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Disabilita il gesto di avanzamento preciso</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Disabilita la modalità di ricerca precisa che si attiva quando si solleva la barra di ricerca</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Abilita il DVR per lo streaming live</string>
+  <string name="morphe_live_stream_dvr_summary">Consente l\'avanzamento su tutti gli streaming live, anche quelli che normalmente lo limitano</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Abilita miniature della barra di avanzamento</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Mostra un\'anteprima in miniatura del video durante il trascinamento della barra di ricerca</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Più riprodotti</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Abilita il DVR per lo streaming live' potrebbe non essere disponibile
+
+Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' in 'TV Simply' o 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Estendi la durata del DVR per lo streaming live</string>
   <string name="morphe_expand_live_stream_dvr_duration_summary">Consente di riavvolgere i video in diretta fino a 7 giorni</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Estendi la durata del DVR per lo streaming live' potrebbe non essere disponibile
+
+Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' in 'TV Simply' o 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Abilita scorri per avanzare</string>
   <string name="morphe_slide_to_seek_summary">Abilita lo scorrimento per la ricerca anziché la riproduzione a velocità 2x quando si preme e si tiene premuto sul lettore video</string>
@@ -1194,6 +1204,9 @@ Tocca qui per saperne di più su DeArrow"</string>
   <string name="morphe_playback_audio_time_stretching_title">Time stretching audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Consente di impostare velocità e pitch indipendentemente, potrebbe causare artefatti audio</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Ricorda la posizione di riproduzione dello streaming live</string>
+  <string name="morphe_remember_live_stream_position_summary">Per gli streaming live in corso, ricorda e riprende la posizione di riproduzione invece di saltare alla posizione live attuale</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Questa funzione non funziona con gli streaming live 24/7 e altri streaming che sono \'sempre attivi\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Disattiva video in HDR</string>
   <string name="morphe_force_hdr_video_title">Forza video HDR</string>

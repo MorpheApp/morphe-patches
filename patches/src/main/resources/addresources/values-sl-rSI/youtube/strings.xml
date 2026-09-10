@@ -96,6 +96,7 @@ Spremembe vključujejo:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skrij gumb \'Obvesti me\'</string>
+  <string name="morphe_hide_notify_me_button_summary">Skrije gumb za opomnik pri načrtovanih prenosih v živo in premierah.</string>
   <string name="morphe_hide_playables_title">Skrij Playables</string>
   <string name="morphe_hide_playables_summary">Skrije funkcijo, ki omogoča igranje iger</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skrij sličice iskanih izrazov</string>
@@ -545,12 +546,22 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogoči natančen premik z gesto</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Onemogoči način natančnega iskanja, ki se aktivira, ko povlečete drsnik</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Omogoči DVR za prenose v živo.</string>
+  <string name="morphe_live_stream_dvr_summary">Omogoča pomikanje po vseh prenosih v živo, tudi tistih, ki to običajno omejujejo.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Vklopi sličice predogleda na vrstici za iskanje</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Prikazuje sličico videoposnetka med vlečenjem drsnika</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Največkrat predvajano</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Omogoči DVR za prenose v živo' morda ni na voljo
+
+Če želite to popraviti, vklopite 'Ponarejanje video tokov' in spremenite 'Privzetega odjemalca' na 'TV Simply' ali 'visionOS'."</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Razširi trajanje DVR za prenose v živo.</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Omogoča vzvratno predvajanje prenosov v živo do 7 dni v preteklost.</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Razširi trajanje DVR za prenose v živo' morda ni na voljo
+
+Če želite to popraviti, vklopite 'Ponarejanje video tokov' in spremenite 'Privzetega odjemalca' na 'TV Simply' ali 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Omogoči drsenje za iskanje</string>
   <string name="morphe_slide_to_seek_summary">Omogoči drsanje za iskanje namesto predvajanja pri 2-kratni hitrosti, ko pritisnete in držite predvajalnik videa</string>
@@ -1193,6 +1204,9 @@ Tapnite tukaj, da odprete DeArrow.ajay.app"</string>
   <string name="morphe_playback_audio_time_stretching_title">Časovno razširjanje zvoka</string>
   <string name="morphe_playback_audio_time_stretching_summary">Omogoča neodvisno nastavitev hitrosti in višine tona, kar lahko povzroči artefakte zvoka</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Zapomni si položaj predvajanja prenosa v živo.</string>
+  <string name="morphe_remember_live_stream_position_summary">Pri tekočih prenosih v živo si zapomni in nadaljuje vaš položaj predvajanja, namesto da bi se pomaknil na trenutni položaj v živo.</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Ta funkcija ne deluje s 24/7 prenosi v živo in drugimi tokovi, ki so \'stalno vklopljeni\'.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogoči HDR video</string>
   <string name="morphe_force_hdr_video_title">Vsili HDR video</string>

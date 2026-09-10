@@ -546,12 +546,22 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Skakel presiese soek gebaar af</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Deaktiveer die presiese soekmodus wat geaktiveer word wanneer jy aan die soekbalk trek</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Aktiveer lewendige stroom DVR</string>
+  <string name="morphe_live_stream_dvr_summary">Laat jou toe om op alle regstreekse strome te spoel, selfs dié wat dit normaalweg beperk.`,`key`:`morphe_live_stream_dvr_summary`</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktiveer seekbar-miniature</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Wys \'n videominiatuur terwyl die seekbar gesleep word</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Meeste herspeel</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Aktiveer DVR vir regstreekse strome' mag nie beskikbaar wees nie
+
+Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkliënt' na 'TV Simply' of 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Brei die DVR-tydsduur van regstreekse strome uit</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Laat jou toe om regstreekse uitsendings tot 7 dae terug te spoel</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Brei die DVR-tydsduur van regstreekse strome uit' is dalk nie beskikbaar nie
+
+Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkliënt' na 'TV Simply' of 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktiveer gly om te soek</string>
   <string name="morphe_slide_to_seek_summary">Aktiveer gly om te soek in plaas daarvan om teen 2x snelheid te speel wanneer jy op die videospeler druk en hou</string>
@@ -1194,6 +1204,9 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <string name="morphe_playback_audio_time_stretching_title">Klanktyd-rekking</string>
   <string name="morphe_playback_audio_time_stretching_summary">Laat toe om spoed en toonhoogte onafhanklik te stel, kan klankartefakte veroorsaak</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Onthou die terugspeelposisie van regstreekse strome</string>
+  <string name="morphe_remember_live_stream_position_summary">Vir lopende regstreekse strome word jou terugspeelposisie onthou en hervat, in plaas daarvan om na die huidige regstreekse posisie te gaan</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Hierdie funksie werk nie met 24/7-regstreekse strome en ander strome wat \'altyd aan\' is nie</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiveer HDR-video</string>
   <string name="morphe_force_hdr_video_title">Dwing HDR-video</string>

@@ -18,23 +18,207 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">تنظیمات</string>
+  <string name="morphe_settings_confirm_user_dialog_title">آیا مطمئنید می‌خواهید ادامه دهید؟</string>
+  <string name="morphe_settings_save">ذخیره</string>
+  <string name="morphe_settings_reset">بازنشانی</string>
+  <string name="morphe_settings_reset_color">بازنشانی رنگ</string>
+  <string name="morphe_settings_color_invalid">رنگ نامعتبر است</string>
+  <string name="morphe_settings_restart_title">راه‌اندازی مجدد لازم است</string>
+  <string name="morphe_settings_restart_dialog_message">برای اعمال این تغییر، برنامه را راه‌اندازی مجدد کنید.</string>
+  <string name="morphe_settings_restart">راه‌اندازی مجدد</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">واردکردن</string>
+  <string name="morphe_settings_import_copy">کپی</string>
+  <string name="morphe_settings_import_reset">تنظیمات Morphe به پیش‌فرض بازنشانی شد</string>
+  <string name="morphe_settings_import_success">%d تنظیم وارد شد</string>
+  <string name="morphe_settings_import_failure_parse">واردکردن ناموفق بود: %s</string>
+  <string name="morphe_settings_search_hint">جست‌وجوی تنظیمات</string>
+  <string name="morphe_settings_search_no_results_title">نتیجه‌ای برای «%s» پیدا نشد</string>
+  <string name="morphe_settings_search_no_results_summary">کلیدواژهٔ دیگری را امتحان کنید</string>
+  <string name="morphe_settings_search_recent_searches">جست‌وجوهای اخیر</string>
+  <string name="morphe_settings_search_remove_message">از سابقهٔ جست‌وجو حذف شود؟</string>
+  <string name="morphe_settings_search_clear_history">پاک‌کردن سابقهٔ جست‌وجو</string>
+  <string name="morphe_settings_search_clear_history_message">آیا مطمئنید می‌خواهید همهٔ سابقهٔ جست‌وجو را پاک کنید؟</string>
+  <string name="morphe_settings_search_tips_title">نکات جست‌وجو</string>
+  <string name="morphe_settings_search_tips_summary">"• برای پیمایش به یک مسیر، روی آن ضربه بزنید
+• برای پیمایش به یک تنظیم، آن را طولانی فشار دهید
+• برای ذخیرهٔ عبارت جست‌وجو در سابقه، Enter را فشار دهید
+• جست‌وجو به بزرگی حروف و نشانه‌گذاری توجه نمی‌کند
+• تنظیمات والد بالاتر از تنظیمات فرزندِ غیرفعال نمایش داده می‌شوند"</string>
+  <string name="morphe_settings_search_empty_history_title">سابقهٔ جست‌وجو خالی است</string>
+  <string name="morphe_settings_search_empty_history_summary">برای ذخیرهٔ سابقهٔ جست‌وجو، یک عبارت جست‌وجو بنویسید و Enter را فشار دهید</string>
+  <string name="morphe_settings_search_history_title">نمایش سابقهٔ جست‌وجوی تنظیمات</string>
+  <string name="morphe_settings_name_title">نام تنظیمات Morphe</string>
+  <string name="morphe_settings_name_default_item">پیش‌فرض</string>
+  <string name="morphe_settings_name_entry_2">موارد اضافی</string>
+  <string name="morphe_settings_name_entry_3">ریزتنظیمات</string>
+  <string name="morphe_settings_name_entry_4">زمان تغییر</string>
+  <string name="morphe_settings_name_custom_item">سفارشی</string>
+  <string name="morphe_settings_name_custom_item_hint">نامی وارد کنید</string>
+  <string name="morphe_settings_name_empty_warning">نام نمی‌تواند خالی باشد</string>
+  <string name="morphe_show_menu_icons_title">نمایش آیکون‌های تنظیمات Morphe</string>
+  <string name="morphe_settings_menu_copy_path">کپی شد: %s</string>
+  <string name="morphe_language_title">زبان Morphe</string>
+  <string name="morphe_language_user_dialog_message">"ترجمهٔ برخی زبان‌ها ممکن است ناقص یا ناتمام باشد.
+
+برای ترجمهٔ زبان‌های جدید یا بهبود ترجمه‌های موجود، به morphe.software/translate بروید"</string>
+  <string name="morphe_language_DEFAULT">زبان برنامه</string>
+  <string name="morphe_pref_import_export_title">واردکردن / صادرکردن</string>
+  <string name="morphe_pref_import_export_summary">تنظیمات Morphe را وارد یا صادر کنید</string>
+  <string name="morphe_settings_import_file">واردکردن از فایل</string>
+  <string name="morphe_settings_import_file_success">تنظیمات با موفقیت وارد شد؛ برای اعمال، روی ذخیره ضربه بزنید</string>
+  <string name="morphe_settings_import_file_failed">واردکردن تنظیمات ناموفق بود</string>
+  <string name="morphe_settings_export_file">صادرکردن به فایل</string>
+  <string name="morphe_settings_export_file_success">تنظیمات با موفقیت صادر شد</string>
+  <string name="morphe_settings_export_file_failed">صادرکردن تنظیمات ناموفق بود</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">شما از جدیدترین نسخهٔ Patches برای Morphe استفاده می‌کنید &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">شما از نسخهٔ Patches برای Morphe &lt;i&gt;%1$s&lt;/i&gt; استفاده می‌کنید&lt;br&gt;&lt;br&gt;&lt;b&gt;به‌روزرسانی موجود است: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;برای به‌روزرسانی پچ‌های خود، از Morphe برای پچ‌کردن دوبارهٔ این برنامه استفاده کنید</string>
+  <string name="morphe_settings_about_links_dev_header">یادداشت</string>
+  <string name="morphe_settings_about_links_dev_body">این نسخه پیش‌انتشار است و ممکن است با مشکلات غیرمنتظره‌ای روبه‌رو شوید</string>
+  <string name="morphe_settings_about_links_header">پیوندهای رسمی</string>
+  <string name="morphe_settings_about_links_website">وب‌سایت</string>
+  <string name="morphe_settings_about_links_donate">کمک مالی</string>
+  <string name="morphe_settings_about_links_translations">ترجمه‌ها</string>
+  <string name="morphe_settings_about_links_credits">دست‌اندرکاران</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">به‌روز است</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">به‌روزرسانی موجود است</string>
+  <string name="morphe_settings_about_contributors_current">توسعهٔ کنونی</string>
+  <string name="morphe_settings_about_contributors_prior">توسعهٔ پیشین</string>
+  <string name="morphe_settings_about_links_morphe">توسعهٔ فعال</string>
+  <string name="morphe_settings_about_links_rvx">۲۰۲۲ ‑ ۲۰۲۵</string>
+  <string name="morphe_settings_about_links_rv">۲۰۲۲ ‑ ۲۰۲۵</string>
+  <string name="morphe_settings_about_links_vanced">۲۰۱۹ ‑ ۲۰۲۲</string>
+  <string name="morphe_settings_about_links_licenses">اعلامیه‌های مجوز</string>
+  <string name="morphe_settings_about_licenses_loading">در حال بارگیری…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">اشکال‌زدایی</string>
+  <string name="morphe_debug_screen_summary">گزینه‌های پیشرفتهٔ توسعه‌دهنده و گزارش‌های تشخیصی را پیکربندی کنید</string>
+  <string name="morphe_debug_title">فعال‌کردن ثبت گزارش اشکال‌زدایی</string>
+  <string name="morphe_debug_stacktrace_title">ردپای پشتهٔ گزارش اشکال‌زدایی</string>
+  <string name="morphe_debug_stacktrace_summary">ردپاهای پشته را در گزارش‌های اشکال‌زدایی قرار می‌دهد تا به شناسایی خطاها کمک کند</string>
+  <string name="morphe_debug_toast_on_error_title">نمایش پیام کوتاه هنگام خطای Morphe</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"خاموش‌کردن پیام‌های کوتاه خطا، همهٔ اعلان‌های خطای Morphe را پنهان می‌کند.
+
+از هیچ رویداد غیرمنتظره‌ای مطلع نخواهید شد."</string>
+  <string name="morphe_debug_export_logs_title">صادرکردن گزارش‌های اشکال‌زدایی</string>
+  <string name="morphe_debug_export_logs_summary">گزارش‌های اشکال‌زدایی Morphe را صادر کنید</string>
+  <string name="morphe_debug_export_logs_file">صادرکردن به فایل</string>
+  <string name="morphe_debug_export_logs_success">گزارش‌های اشکال‌زدایی با موفقیت صادر شدند</string>
+  <string name="morphe_debug_export_logs_failed">صادرکردن گزارش‌های اشکال‌زدایی ناموفق بود</string>
+  <string name="morphe_debug_logs_search_hint">جست‌وجوی گزارش‌های اشکال‌زدایی…</string>
+  <string name="morphe_debug_export_logs_clear">پاک‌کردن</string>
+  <string name="morphe_debug_logs_disabled">ثبت گزارش اشکال‌زدایی غیرفعال است</string>
+  <string name="morphe_debug_logs_none_found">هیچ گزارش اشکال‌زدایی پیدا نشد</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">گزارش‌های اشکال‌زدایی کپی شدند</string>
+  <string name="morphe_debug_logs_failed_to_export">صادرکردن گزارش‌های اشکال‌زدایی ناموفق بود: %s</string>
+  <string name="morphe_debug_logs_clear_toast">گزارش‌های اشکال‌زدایی پاک شدند</string>
+  <string name="morphe_debug_feature_flags_manager_title">مدیر پرچم‌های قابلیت</string>
+  <string name="morphe_debug_feature_flags_manager_summary">پرچم‌های قابلیت بولی را مدیریت کنید</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">جست‌وجوی پرچم‌های قابلیت…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">فعال نیست (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">فعال (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">مسدود (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">اجباری (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">خودکار</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">خاموش</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">روشن</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">اجبار به روشن‌بودن</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">مسدودکردن</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">حذف</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">پرچم‌های قابلیت ذخیره شدند</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">پرچم‌های قابلیت بازنشانی شدند</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">پرچم‌های قابلیت در کلیپ‌بورد کپی شدند</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">برای استفاده از این تنظیم، برنامه را راه‌اندازی مجدد کنید</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">صادرکردن و واردکردن</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">%s پرچم قابلیت وارد شد</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">هیچ پرچم قابلیتی پیدا نشد</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">پرچم‌های قابلیت با موفقیت صادر شدند</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">صادرکردن پرچم‌های قابلیت ناموفق بود</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">پرچم‌های قابلیت بارگیری شدند؛ برای اعمال، روی ذخیره ضربه بزنید</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">خواندن فایل ناموفق بود</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">جست‌وجوی دودویی</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"پیدا می‌کند کدام پرچم قابلیت باعث یک رفتار برنامه می‌شود.
+
+نیمی از %s پرچم مسدود می‌شوند و پس از هر راه‌اندازی مجدد مشخص می‌کنید که آیا رفتار همچنان وجود دارد یا نه.
+
+پیش از شروع، رفتار را یک‌بار بازتولید کنید؛ در غیر این صورت، پرچم‌هایی که برنامه هنوز درخواست نکرده است از جست‌وجو جا می‌مانند"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">شروع</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"پرچم قابلیتی برای جست‌وجو وجود ندارد.
+
+در جست‌وجوی دودویی فقط از پرچم‌هایی می‌توان استفاده کرد که برنامه با آن‌ها روبه‌رو شده و در حال حاضر به‌اجبار روشن نیستند"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"گام %1$s
+
+%2$s پرچم باقی مانده است که %3$s مورد از آن‌ها برای این گام مسدودند.
+
+برنامه را راه‌اندازی مجدد کنید، بررسی کنید آیا رفتار وجود دارد، سپس پاسخ زیر را بدهید"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">جست‌وجوی پرچم قابلیت در حال انجام است</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">رفتار وجود دارد</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">رفتار وجود ندارد</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">لغو جست‌وجوی دودویی</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">جست‌وجوی دودویی لغو شد</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"پرچم قابلیت %s باعث این رفتار می‌شود.
+
+اکنون مسدود شده است"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"نتوانست پرچم قابلیتی پیدا کند.
+
+به نظر نمی‌رسد رفتار برنامه توسط یک پرچم قابلیت کنترل شود"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"نتوانست یک پرچم قابلیت منفرد پیدا کند.
+
+رفتار پیش‌تر در جست‌وجو از بین رفت؛ بنابراین ممکن است بیش از یک پرچم دخیل باشد یا یکی از پاسخ‌ها اشتباه بوده باشد"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">بازکردن تنظیمات MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG نصب نیست. آن را نصب کنید.</string>
+  <string name="gms_core_dialog_title">اقدام لازم است</string>
+  <string name="gms_core_dialog_outdated_message">"MicroG شما، نسخهٔ %1s، قدیمی است و ممکن است مشکل ایجاد کند.
+
+لطفاً MicroG را به جدیدترین نسخهٔ %2s به‌روزرسانی کنید."</string>
+  <string name="gms_core_dialog_update_text">به‌روزرسانی</string>
+  <string name="gms_core_dialog_ignore_text">نادیده‌گرفتن</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG اجازهٔ اجرا در پس‌زمینه را ندارد.
+
+راهنمای «برنامهٔ من را نکش» را برای تلفن خود دنبال کنید و دستورالعمل‌ها را برای نصب MicroG اعمال کنید.
+
+این کار برای کارکرد برنامه لازم است."</string>
+  <string name="gms_core_dialog_open_website_text">بازکردن وب‌سایت</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"برای جلوگیری از مشکلات، بهینه‌سازی‌های باتری MicroG باید غیرفعال شوند.
+
+غیرفعال‌کردن بهینه‌سازی باتری برای MicroG تأثیر منفی بر مصرف باتری نخواهد داشت.
+
+روی دکمهٔ ادامه ضربه بزنید و تغییرات بهینه‌سازی را اجازه دهید."</string>
+  <string name="gms_core_dialog_continue_text">ادامه</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">نمایش گفت‌وگوی بهینه‌سازی باتری MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"با غیرفعال‌کردن این گزینه، پیام بهینه‌سازی باتری MicroG پنهان می‌شود.
+
+اگر بهینه‌سازی‌های باتری تغییر نکنند، ممکن است این مشکلات را تجربه کنید:
+• برنامه ممکن است به‌طور تصادفی بسته شود
+• اعلان‌ها ممکن است کار نکنند
+• پخش در پس‌زمینه ممکن است کار نکند"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">مدیریت پیوندهای برنامه</string>
+  <string name="morphe_link_handling_summary">پیوندها را برای بازشدن در این برنامه پیکربندی کنید</string>
+  <string name="morphe_link_handling_step1_title">گام ۱: غیرفعال‌کردن پیوندهای برنامهٔ اصلی</string>
+  <string name="morphe_link_handling_step1_message">تنظیمات برنامهٔ اصلی را باز کنید و همهٔ پیوندهای دامنه را غیرفعال کنید</string>
+  <string name="morphe_link_handling_step2_title">گام ۲: فعال‌کردن پیوندهای برنامهٔ پچ‌شده</string>
+  <string name="morphe_link_handling_step2_message">تنظیمات برنامهٔ پچ‌شده را باز کنید و همهٔ پیوندهای دامنه را فعال کنید</string>
+  <string name="morphe_link_handling_open">بازکردن تنظیمات</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 هشدار آزمایشی 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"شما از نسخهٔ آزمایشی برنامهٔ ⚠️ &lt;b&gt;%1$s&lt;/b&gt; استفاده می‌کنید
+&lt;br/&gt;&lt;br/&gt;
+🔧 هنگام تنظیم دقیق پچ‌ها برای این نسخهٔ برنامه، انتظار رفتارهای عجیب یا خطاهای ناشناخته را داشته باشید.
+&lt;br/&gt;&lt;br/&gt;
+اگر تجربه‌ای بدون دردسر می‌خواهید، این نسخه را &lt;b&gt;حذف کنید&lt;/b&gt; و نسخهٔ پیشنهادی برنامهٔ ✅ &lt;b&gt;%2$s&lt;/b&gt; را پچ کنید"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ نسخهٔ آزمایشی را می‌خواهم</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ نسخهٔ پایدار را می‌خواهم</string>
 </resources>

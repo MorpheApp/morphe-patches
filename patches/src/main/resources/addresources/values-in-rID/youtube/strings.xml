@@ -95,6 +95,7 @@ Perubahan termasuk:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sembunyikan tombol \'Beri tahu saya\'</string>
+  <string name="morphe_hide_notify_me_button_summary">Menyembunyikan tombol pengingat untuk siaran langsung terjadwal dan penayangan perdana</string>
   <string name="morphe_hide_playables_title">Sembunyikan Permainan</string>
   <string name="morphe_hide_playables_summary">Menyembunyikan fitur yang memungkinkan Anda memainkan game</string>
   <string name="morphe_hide_search_term_thumbnails_title">Sembunyikan thumbnail frasa pencarian</string>
@@ -544,13 +545,22 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Nonaktifkan gerakan pencarian presisi</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Menonaktifkan mode pencarian presisi yang aktif saat menarik bilah pencarian</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Aktifkan siaran langsung DVR</string>
+  <string name="morphe_live_stream_dvr_summary">Mengizinkan pencarian di semua siaran langsung, bahkan yang biasanya membatasinya</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktifkan thumbnail pada bilah geser</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Menampilkan thumbnail video saat menggeser bilah geser</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Paling sering diputar ulang</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Aktifkan siaran langsung DVR' mungkin tidak tersedia
+
+Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' menjadi 'TV Simply' atau 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Perluas durasi siaran langsung DVR</string>
   <string name="morphe_expand_live_stream_dvr_duration_summary">Mengizinkan Anda untuk memutar ulang siaran langsung hingga 7 hari ke masa lalu</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Perluas durasi siaran langsung DVR' mungkin tidak tersedia
+
+Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' menjadi 'TV Simply' atau 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktifkan geser untuk mencari</string>
   <string name="morphe_slide_to_seek_summary">Aktifkan geser untuk mencari daripada memutar pada kecepatan 2x saat menekan dan menahan pemutar video</string>
@@ -1193,6 +1203,9 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <string name="morphe_playback_audio_time_stretching_title">Perpanjangan waktu audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Mengizinkan pengaturan kecepatan dan nada secara terpisah, namun dapat menyebabkan gangguan audio</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Ingat posisi pemutaran siaran langsung</string>
+  <string name="morphe_remember_live_stream_position_summary">Untuk siaran langsung yang sedang berjalan, ini mengingat dan melanjutkan posisi pemutaran Anda daripada melompat ke posisi siaran langsung saat ini</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Fitur ini tidak berfungsi dengan siaran langsung 24/7 dan siaran lain yang \'selalu aktif\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Nonaktifkan video HDR</string>
   <string name="morphe_force_hdr_video_title">Paksa video HDR</string>

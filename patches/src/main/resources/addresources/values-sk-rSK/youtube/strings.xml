@@ -96,6 +96,7 @@ Zmeny zahŕňajú:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Skryť tlačidlo \'Upozorniť ma\'</string>
+  <string name="morphe_hide_notify_me_button_summary">Skryje tlačidlo pripomenutia pre naplánované živé prenosy a premiéry</string>
   <string name="morphe_hide_playables_title">Skryť hracie prvky</string>
   <string name="morphe_hide_playables_summary">Skryje funkciu, ktorá umožňuje hrať hry</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skryť miniatúry vyhľadávaných výrazov</string>
@@ -545,12 +546,22 @@ Poznámka: Možno nebude fungovať na živých prenosoch"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Zakázať presné gesto posúvania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Zakáže režim presného vyhľadávania, ktorý sa aktivuje pri vyťahovaní ukazovateľa vyhľadávania</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Povoliť DVR pre živé prenosy</string>
+  <string name="morphe_live_stream_dvr_summary">Umožňuje pretáčanie v rámci všetkých živých prenosov, dokonca aj tých, ktoré to bežne obmedzujú</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Povoliť miniatúry na posúvači</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Zobrazuje miniatúru videa počas ťahania posúvača</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Najprehrávanejšie</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Povoliť DVR pre živé prenosy' nemusí byť k dispozícii
+
+Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolený klient' na 'TV Simply' alebo 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Predĺžiť trvanie DVR pre živé prenosy</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Umožňuje pretáčať živé prenosy späť až 7 dní do minulosti</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Predĺžiť trvanie DVR pre živé prenosy' nemusí byť k dispozícii
+
+Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolený klient' na 'TV Simply' alebo 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Povoliť posúvanie pre vyhľadávanie</string>
   <string name="morphe_slide_to_seek_summary">Zapne posúvanie na vyhľadávanie namiesto prehrávania 2x rýchlosťou pri podržaní prehrávača videa</string>
@@ -795,6 +806,7 @@ Ak chcete zobraziť menu 'Audio Track', zmeňte 'Spoofovanie video streamov' na 
   <string name="morphe_hide_fullscreen_button_title">Skryť tlačidlo na celú obrazovku</string>
   <string name="morphe_hide_player_control_buttons_background_title">Skryť pozadie tlačidiel prehrávača</string>
   <string name="morphe_hide_player_control_buttons_background_summary">Skryje tmavé tienenie okolo ovládacích prvkov prehrávača videa</string>
+  <string name="morphe_player_control_buttons_background_opacity_title">Priehľadnosť pozadia ovládacích tlačidiel</string>
   <string name="morphe_player_control_buttons_background_opacity_summary">Upravte nepriehľadnosť pozadia za tlačidlami ovládania prehrávača a za časovou lištou (0 je neviditeľné, 100 je plné)</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Skryť tlačidlá Predchádzajúce a Nasledujúce</string>
   <string name="morphe_hide_settings_button_title">Skryť tlačidlo Nastavenia</string>
@@ -1191,6 +1203,9 @@ Ak je povolené, URL adresy videí sa odošlú na server API a neodosielajú sa 
   <string name="morphe_playback_audio_time_stretching_title">Časové pretiahanie zvuku</string>
   <string name="morphe_playback_audio_time_stretching_summary">Umožňuje nezávisle nastavovať rýchlosť a výšku zvuku, čo môže spôsobiť artefakty zvuku</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Zapamätať si pozíciu prehrávania živého prenosu</string>
+  <string name="morphe_remember_live_stream_position_summary">Pri prebiehajúcich živých prenosoch si zapamätá a obnoví vašu pozíciu prehrávania namiesto presunu na aktuálnu pozíciu v živom prenose</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Táto funkcia nefunguje s 24/7 živými prenosmi a inými prenosmi, ktoré sú neustále zapnuté</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Zakázať HDR video</string>
   <string name="morphe_force_hdr_video_title">Vynútiť HDR video</string>

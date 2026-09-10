@@ -16,11 +16,221 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_sb_enabled_title">فعال‌کردن SponsorBlock</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock سامانه‌ای جمع‌سپاری‌شده برای ردکردن بخش‌های آزاردهندهٔ ویدئوهای YouTube است</string>
+  <string name="morphe_sb_appearance_category_title">ظاهر</string>
+  <string name="morphe_sb_voting_button_title">نمایش دکمهٔ رأی‌دهی</string>
+  <string name="morphe_sb_voting_button_summary">دکمه‌ای برای رأی مثبت یا منفی به بخش‌ها اضافه می‌کند</string>
+  <string name="morphe_sb_square_layout_title">استفاده از طرح‌بندی مربعی</string>
+  <string name="morphe_sb_square_layout_summary">برای دکمه‌ها و کنترل‌های SponsorBlock از گوشه‌های مربعی استفاده می‌کند</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
+  <string name="morphe_sb_compact_skip_button_title">استفاده از دکمهٔ ردکردن فشرده</string>
+  <string name="morphe_sb_compact_skip_button_summary">عرض دکمهٔ ردکردن را برای صرفه‌جویی در فضا کاهش می‌دهد</string>
+  <string name="morphe_sb_auto_hide_skip_button_title">پنهان‌کردن خودکار دکمهٔ ردکردن</string>
+  <string name="morphe_sb_auto_hide_skip_button_summary">دکمهٔ ردکردن را پس از چند ثانیه پنهان می‌کند، به‌جای اینکه در تمام بخش قابل مشاهده بماند</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_title">مدت نمایش دکمهٔ ردکردن</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_summary">مدت قابل مشاهده‌بودن دکمه‌های ردکردن را تنظیم کنید</string>
+  <string name="morphe_sb_toast_on_skip_title">نمایش اعلان ردکردن</string>
+  <string name="morphe_sb_toast_on_skip_summary">وقتی بخشی به‌طور خودکار رد شود، اعلانی نمایش می‌دهد</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">مدت اعلان ردکردن</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">مدت قابل مشاهده‌بودن اعلان لغو را تنظیم کنید</string>
+  <string name="morphe_sb_duration_1s">۱ ثانیه</string>
+  <string name="morphe_sb_duration_2s">۲ ثانیه</string>
+  <string name="morphe_sb_duration_3s">۳ ثانیه</string>
+  <string name="morphe_sb_duration_4s">۴ ثانیه</string>
+  <string name="morphe_sb_duration_5s">۵ ثانیه</string>
+  <string name="morphe_sb_duration_6s">۶ ثانیه</string>
+  <string name="morphe_sb_duration_7s">۷ ثانیه</string>
+  <string name="morphe_sb_duration_8s">۸ ثانیه</string>
+  <string name="morphe_sb_duration_9s">۹ ثانیه</string>
+  <string name="morphe_sb_duration_10s">۱۰ ثانیه</string>
+  <string name="morphe_sb_video_length_without_segments_title">نمایش طول ویدئو بدون بخش‌ها</string>
+  <string name="morphe_sb_video_length_without_segments_summary">همهٔ بخش‌ها را از مدت‌زمان کل ویدئوی نمایش‌داده‌شده در نوار جست‌وجو کم می‌کند</string>
+  <string name="morphe_sb_create_segment_category_title">ایجاد بخش‌های جدید</string>
+  <string name="morphe_sb_create_new_segment_title">نمایش دکمهٔ «ایجاد بخش جدید»</string>
+  <string name="morphe_sb_create_new_segment_summary">دکمه‌ای به پخش‌کنندهٔ ویدئو اضافه می‌کند که امکان ارسال بخش‌های جدید SponsorBlock را فراهم می‌کند</string>
+  <string name="morphe_sb_create_new_segment_step_title">گام تنظیم زمان</string>
+  <string name="morphe_sb_create_new_segment_step_summary">مقدار جست‌وجوی دکمه‌های تنظیم زمان (بر حسب میلی‌ثانیه)</string>
+  <string name="morphe_sb_create_new_segment_step_invalid">مقدار باید عددی مثبت باشد</string>
+  <string name="morphe_sb_guidelines_title">راهنمای ارسال</string>
+  <string name="morphe_sb_guidelines_summary">راهنما شامل قوانین و نکاتی برای ایجاد بخش‌های جدید است</string>
+  <string name="morphe_sb_guidelines_popup_title">راهنما را دنبال کنید</string>
+  <string name="morphe_sb_guidelines_popup_content">پیش از ایجاد بخش‌های جدید، راهنمای SponsorBlock را بخوانید</string>
+  <string name="morphe_sb_guidelines_popup_already_read">قبلاً خوانده‌ام</string>
+  <string name="morphe_sb_guidelines_popup_open">نمایش بده</string>
   <string name="morphe_sb_general_title">عمومی</string>
+  <string name="morphe_sb_toast_on_connection_error_title">نمایش هشدارهای خطای اتصال</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">وقتی سرور SponsorBlock در دسترس نباشد، اعلانی نمایش می‌دهد</string>
+  <string name="morphe_sb_track_skip_count_title">فعال‌کردن ردیابی تعداد ردکردن‌ها</string>
+  <string name="morphe_sb_track_skip_count_summary">تعداد ردکردن‌ها را برای ردیابی زمان صرفه‌جویی‌شده به جدول امتیازات SponsorBlock ارسال می‌کند</string>
+  <string name="morphe_sb_min_segment_duration_title">حداقل مدت بخش</string>
+  <string name="morphe_sb_min_segment_duration_summary">بخش‌های کوتاه‌تر از این مقدار (بر حسب ثانیه) نمایش داده یا رد نمی‌شوند</string>
+  <string name="morphe_sb_min_segment_duration_invalid">مدت‌زمان نامعتبر است</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_title">شناسهٔ کاربری خصوصی شما</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_summary">این شناسه باید خصوصی بماند. مانند گذرواژه است و نباید با کسی به اشتراک گذاشته شود. اگر کسی آن را داشته باشد، می‌تواند خود را جای شما جا بزند</string>
+  <string name="morphe_sb_private_user_id_Do_Not_Share_invalid">شناسهٔ کاربری خصوصی باید حداقل ۳۰ نویسه داشته باشد</string>
+  <string name="morphe_sb_api_url_title">تغییر نشانی API</string>
+  <string name="morphe_sb_api_url_summary">نشانی‌ای که SponsorBlock برای فراخوانی‌های سرور استفاده می‌کند</string>
+  <string name="morphe_sb_channel_whitelist_title">فهرست مجاز کانال‌ها</string>
+  <string name="morphe_sb_channel_whitelist_summary">SponsorBlock برای کانال‌های موجود در فهرست مجاز غیرفعال است</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_title">اعلان هنگام کانال موجود در فهرست مجاز</string>
+  <string name="morphe_sb_toast_on_whitelisted_channel_summary">وقتی SponsorBlock برای کانالی در فهرست مجاز غیرفعال شود، اعلانی نمایش می‌دهد</string>
+  <string name="morphe_sb_channel_whitelisted_toast">SponsorBlock برای این کانال غیرفعال شد</string>
+  <string name="morphe_sb_api_url_reset">نشانی API بازنشانی شد</string>
+  <string name="morphe_sb_api_url_invalid">نشانی API نامعتبر است</string>
+  <string name="morphe_sb_api_url_changed">نشانی API تغییر کرد</string>
+  <string name="morphe_sb_settings_ie_title">واردکردن / صادرکردن تنظیمات</string>
+  <string name="morphe_sb_settings_copy">کپی</string>
+  <string name="morphe_sb_settings_ie_summary">پیکربندی JSON مربوط به SponsorBlock شما که می‌تواند در Morphe و دیگر پلتفرم‌های SponsorBlock وارد یا صادر شود</string>
+  <string name="morphe_sb_settings_ie_summary_warning">"پیکربندی JSON مربوط به SponsorBlock شما که می‌تواند در Morphe و دیگر پلتفرم‌های SponsorBlock وارد یا صادر شود
+
+این پیکربندی شامل شناسهٔ کاربری خصوصی شماست. حتماً آن را هوشمندانه به اشتراک بگذارید"</string>
+  <string name="morphe_sb_settings_import_successful">تنظیمات با موفقیت وارد شدند</string>
+  <string name="morphe_sb_settings_import_failed">واردکردن ناموفق بود: %s</string>
+  <string name="morphe_sb_settings_export_failed">صادرکردن ناموفق بود: %s</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning">"تنظیمات شما شامل شناسهٔ کاربری خصوصی SponsorBlock است.
+
+شناسهٔ کاربری شما مانند گذرواژه است و هرگز نباید به اشتراک گذاشته شود."</string>
+  <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">دوباره نمایش نده</string>
+  <string name="morphe_sb_diff_segments_title">تغییر رفتار بخش‌ها</string>
+  <string name="morphe_sb_segments_sponsor">حامی مالی</string>
+  <string name="morphe_sb_segments_sponsor_summary">تبلیغ پولی، ارجاع‌های پولی و تبلیغات مستقیم. برای تبلیغ خودکار یا معرفی رایگان اهداف / سازندگان / وب‌سایت‌ها / محصولاتی که دوست دارند نیست</string>
+  <string name="morphe_sb_segments_selfpromo">تبلیغ بدون پرداخت / خودتبلیغی</string>
+  <string name="morphe_sb_segments_selfpromo_summary">مشابه حامی مالی، اما برای تبلیغ بدون پرداخت / خودتبلیغی. شامل بخش‌هایی دربارهٔ کالاها، کمک‌های مالی یا اطلاعات مربوط به افرادی است که با آن‌ها همکاری کرده‌اند</string>
+  <string name="morphe_sb_segments_interaction">یادآوری تعامل (عضویت)</string>
+  <string name="morphe_sb_segments_interaction_summary">یادآوری کوتاهی برای پسندیدن، عضویت یا دنبال‌کردن آن‌ها در میانهٔ محتوا. اگر طولانی یا دربارهٔ موضوعی خاص باشد، باید در دستهٔ خودتبلیغی قرار گیرد</string>
+  <string name="morphe_sb_segments_highlight">بخش برجسته</string>
+  <string name="morphe_sb_segments_highlight_summary">بخشی از ویدئو که بیشتر مردم به دنبال آن هستند</string>
+  <string name="morphe_sb_segments_intro">وقفه / پویانمایی آغازین</string>
+  <string name="morphe_sb_segments_intro_summary">یک بازهٔ زمانی بدون محتوای واقعی. می‌تواند مکث، قاب ثابت یا پویانمایی تکرارشونده باشد. شامل گذارهایی که اطلاعات دارند نمی‌شود</string>
+  <string name="morphe_sb_segments_outro">کارت‌های پایانی / تیتراژ</string>
+  <string name="morphe_sb_segments_outro_summary">تیتراژ یا زمانی که کارت‌های پایانی YouTube ظاهر می‌شوند. برای پایان‌بندی‌های دارای اطلاعات نیست</string>
+  <string name="morphe_sb_segments_hook">قلاب / خوشامدگویی</string>
+  <string name="morphe_sb_segments_hook_summary">پیش‌نمایش‌های روایت‌شده برای ویدئوی آینده، خوشامدگویی و خداحافظی. شامل بخش‌هایی که محتوای اضافی ارائه می‌کنند نمی‌شود</string>
+  <string name="morphe_sb_segments_preview">پیش‌نمایش / مرور دوباره</string>
+  <string name="morphe_sb_segments_preview_summary">مجموعه‌ای از کلیپ‌ها که آنچه قرار است بیاید یا آنچه در این ویدئو یا ویدئوهای دیگر یک مجموعه رخ داده است نشان می‌دهد و همهٔ اطلاعات آن جای دیگری تکرار شده‌اند</string>
+  <string name="morphe_sb_segments_filler">حاشیه / شوخی‌ها</string>
+  <string name="morphe_sb_segments_filler_summary">صحنه‌ها یا شوخی‌های حاشیه‌ای که برای درک محتوای اصلی ویدئو لازم نیستند. شامل بخش‌هایی که زمینه یا جزئیات پس‌زمینه ارائه می‌کنند نمی‌شود</string>
+  <string name="morphe_sb_segments_nomusic">موسیقی: بخش بدون موسیقی</string>
+  <string name="morphe_sb_segments_nomusic_summary">فقط برای استفاده در ویدئوهای موسیقی. بخش‌های ویدئوی موسیقی بدون موسیقی که قبلاً در دستهٔ دیگری پوشش داده نشده‌اند</string>
+  <string name="morphe_sb_skip_button_compact">ردکردن</string>
+  <string name="morphe_sb_skip_button_compact_highlight">بخش برجسته</string>
+  <string name="morphe_sb_skip_button_sponsor">ردکردن حامی مالی</string>
+  <string name="morphe_sb_skip_button_selfpromo">ردکردن تبلیغ</string>
+  <string name="morphe_sb_skip_button_interaction">ردکردن تعامل</string>
+  <string name="morphe_sb_skip_button_highlight">رفتن به بخش برجسته</string>
+  <string name="morphe_sb_skip_button_intro_beginning">ردکردن آغازین</string>
+  <string name="morphe_sb_skip_button_intro_middle">ردکردن وقفه</string>
+  <string name="morphe_sb_skip_button_intro_end">ردکردن وقفه</string>
+  <string name="morphe_sb_skip_button_outro">ردکردن پایان</string>
+  <string name="morphe_sb_skip_button_hook">ردکردن قلاب</string>
+  <string name="morphe_sb_skip_button_preview_beginning">ردکردن پیش‌نمایش</string>
+  <string name="morphe_sb_skip_button_preview_middle">ردکردن پیش‌نمایش</string>
+  <string name="morphe_sb_skip_button_preview_end">ردکردن مرور دوباره</string>
+  <string name="morphe_sb_skip_button_filler">ردکردن حاشیه</string>
+  <string name="morphe_sb_skip_button_nomusic">ردکردن بخش بدون موسیقی</string>
+  <string name="morphe_sb_skip_button_unsubmitted">ردکردن بخش</string>
+  <string name="morphe_sb_skipped_sponsor">حامی مالی رد شد</string>
+  <string name="morphe_sb_skipped_selfpromo">خودتبلیغی رد شد</string>
+  <string name="morphe_sb_skipped_interaction">یادآوری آزاردهنده رد شد</string>
+  <string name="morphe_sb_skipped_highlight">به بخش برجسته رفت</string>
+  <string name="morphe_sb_skipped_intro_beginning">آغازین رد شد</string>
+  <string name="morphe_sb_skipped_intro_middle">وقفه رد شد</string>
+  <string name="morphe_sb_skipped_intro_end">وقفه رد شد</string>
+  <string name="morphe_sb_skipped_outro">پایان رد شد</string>
+  <string name="morphe_sb_skipped_hook">قلاب رد شد</string>
+  <string name="morphe_sb_skipped_preview_beginning">پیش‌نمایش رد شد</string>
+  <string name="morphe_sb_skipped_preview_middle">پیش‌نمایش رد شد</string>
+  <string name="morphe_sb_skipped_preview_end">مرور دوباره رد شد</string>
+  <string name="morphe_sb_skipped_filler">حاشیه رد شد</string>
+  <string name="morphe_sb_skipped_nomusic">بخش بدون موسیقی رد شد</string>
+  <string name="morphe_sb_skipped_unsubmitted">بخش ارسال‌نشده رد شد</string>
+  <string name="morphe_sb_skipped_multiple_segments">چند بخش رد شد</string>
+  <string name="morphe_sb_skip_automatically">ردکردن خودکار</string>
+  <string name="morphe_sb_skip_automatically_once">یک‌بار ردکردن خودکار</string>
+  <string name="morphe_sb_skip_showbutton">نمایش دکمهٔ ردکردن</string>
+  <string name="morphe_sb_skip_seekbaronly">نمایش در نوار جست‌وجو</string>
+  <string name="morphe_sb_skip_ignore">غیرفعال‌کردن</string>
+  <string name="morphe_sb_submit_failed_invalid">ارسال بخش ناموفق بود: %s</string>
+  <string name="morphe_sb_submit_failed_timeout">SponsorBlock موقتاً از کار افتاده است</string>
+  <string name="morphe_sb_submit_failed_unknown_error">ارسال بخش ناموفق بود (وضعیت: %1$d %2$s)</string>
+  <string name="morphe_sb_submit_failed_rate_limit">ارسال بخش ناموفق بود. محدودیت نرخ (درخواست‌های بیش از حد از همان کاربر یا IP)</string>
+  <string name="morphe_sb_submit_failed_forbidden">نمی‌توان بخش را ارسال کرد: %s</string>
+  <string name="morphe_sb_submit_failed_duplicate">"نمی‌توان بخش را ارسال کرد.
+قبلاً وجود دارد"</string>
+  <string name="morphe_sb_submit_succeeded">بخش با موفقیت ارسال شد</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock موقتاً در دسترس نیست (مهلت API تمام شد)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock موقتاً در دسترس نیست (وضعیت %d)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock موقتاً در دسترس نیست</string>
+  <string name="morphe_sb_vote_failed_timeout">رأی‌دادن به بخش ناموفق بود (مهلت API تمام شد)</string>
+  <string name="morphe_sb_vote_failed_unknown_error">رأی‌دادن به بخش ناموفق بود (وضعیت: %1$d %2$s)</string>
+  <string name="morphe_sb_vote_failed_forbidden">رأی‌دادن به بخش ناموفق بود: %s</string>
+  <string name="morphe_sb_vote_upvote">رأی مثبت</string>
+  <string name="morphe_sb_vote_downvote">رأی منفی</string>
+  <string name="morphe_sb_vote_category">تغییر دسته</string>
+  <string name="morphe_sb_vote_no_segments">بخشی برای رأی‌دادن وجود ندارد</string>
   <!-- A segment start and end time, such as "02:10 to 03:40". -->
+  <string name="morphe_sb_vote_segment_time_to_from">%1$s تا %2$s</string>
+  <string name="morphe_sb_new_segment_choose_category">دستهٔ بخش را انتخاب کنید</string>
+  <string name="morphe_sb_new_segment_disabled_category">دسته در تنظیمات غیرفعال است. برای ارسال، دسته را فعال کنید.</string>
+  <string name="morphe_sb_new_segment_title">بخش جدید SponsorBlock</string>
+  <string name="morphe_sb_new_segment_mark_time_as_question">%s را به‌عنوان آغاز یا پایان بخش جدید تنظیم می‌کنید؟</string>
+  <string name="morphe_sb_new_segment_mark_start">آغاز</string>
+  <string name="morphe_sb_new_segment_mark_end">پایان</string>
+  <string name="morphe_sb_new_segment_now">اکنون</string>
+  <string name="morphe_sb_new_segment_time_start">زمان آغاز بخش</string>
+  <string name="morphe_sb_new_segment_time_end">زمان پایان بخش</string>
+  <string name="morphe_sb_new_segment_confirm_title">آیا زمان‌ها درست هستند؟</string>
+  <string name="morphe_sb_new_segment_confirm_content">"بخش از
+
+%1$s
+تا
+%2$s
+
+(%3$s)
+
+آمادهٔ ارسال است؟"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">ارسال</string>
+  <string name="morphe_sb_new_segment_start_is_before_end">آغاز باید پیش از پایان باشد</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">ابتدا یک موقعیت را روی نوار زمان علامت بزنید</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">پیش‌نمایش بخش را ببینید و مطمئن شوید که به‌نرمی رد می‌شود</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_title">ویرایش دستی زمان‌بندی بخش</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_content">آیا می‌خواهید زمان‌بندی آغاز یا پایان بخش را ویرایش کنید؟</string>
+  <string name="morphe_sb_new_segment_edit_by_hand_parse_error">زمان واردشده نامعتبر است</string>
+  <string name="morphe_sb_new_segment_highlight_title">ارسال بخش برجسته</string>
+  <string name="morphe_sb_new_segment_highlight_content">"آیا زمان بخش برجسته درست است؟
+
+%s
+
+اگر بخش برجسته ارسال نمی‌کنید، روی لغو ضربه بزنید و موقعیت دوم را علامت بزنید"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">ارسال بخش برجسته</string>
+  <string name="morphe_sb_stats_title">آمار</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
+  <string name="morphe_sb_stats_connection_failure">آمار موقتاً در دسترس نیست (API از کار افتاده است)</string>
+  <string name="morphe_sb_stats_loading">در حال بارگیری…</string>
+  <string name="morphe_sb_stats_sb_disabled">SponsorBlock غیرفعال است</string>
+  <string name="morphe_sb_stats_username">نام کاربری شما: &lt;b&gt;%s&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_username_change">برای تغییر نام کاربری، اینجا ضربه بزنید</string>
+  <string name="morphe_sb_stats_username_change_unknown_error">تغییر نام کاربری ناموفق بود: وضعیت: %1$d %2$s</string>
+  <string name="morphe_sb_stats_username_changed">نام کاربری با موفقیت تغییر کرد</string>
+  <string name="morphe_sb_stats_reputation">اعتبار شما: &lt;b&gt;%.2f&lt;/b&gt;</string>
+  <string name="morphe_sb_stats_submissions">شما &lt;b&gt;%s&lt;/b&gt; بخش ایجاد کرده‌اید</string>
+  <string name="morphe_sb_stats_submissions_summary">برای مشاهدهٔ بخش‌های خود، اینجا ضربه بزنید</string>
+  <string name="morphe_sb_stats_saved_zero">جدول امتیازات SponsorBlock</string>
+  <string name="morphe_sb_stats_saved">شما افراد را از &lt;b&gt;%s&lt;/b&gt; بخش نجات داده‌اید</string>
+  <string name="morphe_sb_stats_saved_summary_zero">برای دیدن آمار جهانی و مشارکت‌کنندگان برتر، اینجا ضربه بزنید</string>
+  <string name="morphe_sb_stats_saved_summary">این مقدار &lt;b&gt;%s&lt;/b&gt; از عمر آن‌هاست.&lt;br&gt;برای دیدن جدول امتیازات، اینجا ضربه بزنید</string>
+  <string name="morphe_sb_stats_self_saved">شما &lt;b&gt;%s&lt;/b&gt; بخش را رد کرده‌اید</string>
+  <string name="morphe_sb_stats_self_saved_summary">این مقدار &lt;b&gt;%s&lt;/b&gt; است</string>
+  <string name="morphe_sb_stats_self_saved_reset_title">شمارندهٔ بخش‌های ردشده بازنشانی شود؟</string>
+  <string name="morphe_sb_stats_saved_hour_format">%1$s ساعت و %2$s دقیقه</string>
+  <string name="morphe_sb_stats_saved_minute_format">%1$s دقیقه و %2$s ثانیه</string>
   <string name="morphe_sb_stats_saved_second_format">%s ثانیه</string>
+  <string name="morphe_sb_color_opacity_label">شفافیت:</string>
+  <string name="morphe_sb_color_dot_label">رنگ:</string>
   <string name="morphe_sb_about_title">درباره</string>
+  <string name="morphe_sb_about_api_summary">"داده‌ها توسط API SponsorBlock ارائه می‌شوند
+
+برای بازکردن Sponsor.ajay.app و دیدن دانلودها برای پلتفرم‌های دیگر، اینجا ضربه بزنید"</string>
 </resources>

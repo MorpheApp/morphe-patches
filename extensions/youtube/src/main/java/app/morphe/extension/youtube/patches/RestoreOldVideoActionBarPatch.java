@@ -125,7 +125,9 @@ public class RestoreOldVideoActionBarPatch {
      * Injection point.
      */
     public static boolean fixRelatedVideoOverlay(boolean original) {
-        if (FIX_VIDEO_ACTION_BAR && !Settings.INNERTUBE_COLD_CONFIG_DATA.isSetToDefault() && !Settings.INNERTUBE_COLD_HASH_DATA.isSetToDefault()) {
+        if (FIX_VIDEO_ACTION_BAR
+                && !Settings.INNERTUBE_COLD_CONFIG_DATA.isSetToDefault()
+                && !Settings.INNERTUBE_COLD_HASH_DATA.isSetToDefault()) {
             return false;
         }
 

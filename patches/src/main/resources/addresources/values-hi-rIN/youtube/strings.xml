@@ -96,6 +96,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">छुपाएं \'मुझे सूचित करें\' बटन</string>
+  <string name="morphe_hide_notify_me_button_summary">निर्धारित लाइव स्ट्रीम और प्रीमियर के लिए रिमाइंडर बटन छिपाता है</string>
   <string name="morphe_hide_playables_title">छुपाएं प्लेबल्स</string>
   <string name="morphe_hide_playables_summary">गेम खेलने की अनुमति देने वाली सुविधा को छुपाता है</string>
   <string name="morphe_hide_search_term_thumbnails_title">छिपाएँ खोज शब्द थंबनेल</string>
@@ -545,12 +546,22 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_disable_precise_seeking_gesture_title">प्रेसिस सीकिंग गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">सीकबार को ऊपर खींचने पर सक्रिय होने वाले सटीक सीकिंग मोड को निष्क्रिय करता है</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">लाइव स्ट्रीम DVR सक्षम करें</string>
+  <string name="morphe_live_stream_dvr_summary">सभी लाइव स्ट्रीम पर सीक करने की अनुमति देता है, यहाँ तक कि उन पर भी जो सामान्य रूप से इसे प्रतिबंधित करती हैं</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">सर्कबार थंबनेल सक्षम करें</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">सर्कबार को ड्रैग करते समय एक वीडियो थंबनेल दिखाता है</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">सबसे अधिक दोहराया गया</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'लाइव स्ट्रीम DVR सक्षम करें' उपलब्ध नहीं हो सकता है
+
+इसे ठीक करने के लिए, 'वीडियो स्ट्रीम स्पूफ़ करें' चालू करें और 'डिफ़ॉल्ट क्लाइंट' को 'TV Simply' या 'visionOS' में बदलें"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">लाइव स्ट्रीम DVR अवधि बढ़ाएँ</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">आपको लाइव प्रसारणों को 7 दिनों तक पीछे रिवाइंड करने की अनुमति देता है</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'लाइव स्ट्रीम DVR अवधि बढ़ाएँ' उपलब्ध नहीं हो सकता है
+
+इसे ठीक करने के लिए, 'वीडियो स्ट्रीम स्पूफ़ करें' चालू करें और 'डिफ़ॉल्ट क्लाइंट' को 'TV Simply' या 'visionOS' में बदलें"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करें</string>
   <string name="morphe_slide_to_seek_summary">वीडियो प्लेयर को दबाए रखने पर 2x गति पर चलाने के बजाय स्लाइड से सीक सक्षम करता है</string>
@@ -1193,6 +1204,9 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <string name="morphe_playback_audio_time_stretching_title">ऑडियो समय विस्तारण</string>
   <string name="morphe_playback_audio_time_stretching_summary">गति और पिच को स्वतंत्र रूप से सेट करने की अनुमति देता है, इससे ऑडियो कलाकृतियाँ हो सकती हैं</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">लाइव स्ट्रीम प्लेबैक स्थिति याद रखें</string>
+  <string name="morphe_remember_live_stream_position_summary">चालू लाइव स्ट्रीम के लिए, वर्तमान लाइव स्थिति पर सीक करने के बजाय आपकी प्लेबैक स्थिति को याद रखता है और उसे फिर से शुरू करता है</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">यह सुविधा 24/7 लाइव स्ट्रीम और अन्य स्ट्रीम के साथ काम नहीं करती है जो \'हमेशा चालू\' रहती हैं</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR वीडियो अक्षम करें</string>
   <string name="morphe_force_hdr_video_title">HDR वीडियो जबरन लागू करें</string>

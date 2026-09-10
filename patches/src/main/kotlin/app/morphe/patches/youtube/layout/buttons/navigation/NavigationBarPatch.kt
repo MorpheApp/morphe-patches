@@ -75,7 +75,7 @@ private const val EXTENSION_SETTING_INTERFACE =
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
     description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
-            + " and the upper navigation toolbar."
+            + "and the upper navigation toolbar."
 ) {
     dependsOn(
         sharedExtensionPatch,

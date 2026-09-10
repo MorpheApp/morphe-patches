@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.view.View;
 import android.widget.ImageView;
 

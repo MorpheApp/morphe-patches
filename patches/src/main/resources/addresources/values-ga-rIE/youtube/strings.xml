@@ -96,6 +96,7 @@ I measc na n-athruithe tá:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Folaigh cnaipe \'Cuir in iúl dom\'</string>
+  <string name="morphe_hide_notify_me_button_summary">Folaíonn sé an cnaipe meabhrúcháin do shruthanna beo sceidealaithe agus do chéadtaispeántais.</string>
   <string name="morphe_hide_playables_title">Folaigh na heilimintí inseinnte</string>
   <string name="morphe_hide_playables_summary">Folaíonn sé an ghné a ligeann duit cluichí a imirt</string>
   <string name="morphe_hide_search_term_thumbnails_title">Mionsamhlacha téarmaí cuardaigh a cheilt</string>
@@ -545,13 +546,22 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Díchumasaigh gotha ​​cuardaigh beacht</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Díchumasaíonn sé an modh cuardaigh bheacht a ghníomhaítear nuair a tharraingítear an barra cuardaigh suas</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Cumasaigh DVR srutha bheo</string>
+  <string name="morphe_live_stream_dvr_summary">Ceadaíonn sé cuardach ar gach sruth beo, fiú iad siúd a chuireann srian air de ghnáth.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Cumasaigh mionsamhlacha an bharra cuardaigh</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Taispeánann mionsamhail físe agus an barra cuardaigh á tharraingt</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">An chuid is mó d’athsheinm</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"B'fhéidir nach mbeidh 'Cumasaigh DVR srutha bheo' ar fáil
+
+Chun é seo a réiteach, cas ar 'Falsaigh sruthanna físe' agus athraigh an 'Cliant réamhshocraithe' go 'TV Simply' nó 'visionOS'."</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Leathnaigh fad DVR srutha bheo</string>
   <string name="morphe_expand_live_stream_dvr_duration_summary">Ligeann sé duit craoltaí beo a athchasadh suas le 7 lá san am atá thart</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"B'fhéidir nach mbeidh 'Leathnaigh fad DVR srutha bheo' ar fáil
+
+Chun é seo a réiteach, cas ar 'Falsaigh sruthanna físe' agus athraigh an 'Cliant réamhshocraithe' go 'TV Simply' nó 'visionOS'."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Cumasaigh sleamhnán a lorg</string>
   <string name="morphe_slide_to_seek_summary">Cumasaíonn sé seo an sleamhnán chun cuardach a dhéanamh in ionad é a sheinm ag luas 2x nuair a bhrúnn tú agus a choinníonn tú an seinnteoir físe</string>
@@ -1194,6 +1204,9 @@ Tapáil anseo chun DeArrow.ajay.app a oscailt."</string>
   <string name="morphe_playback_audio_time_stretching_title">Síneadh ama fuaime</string>
   <string name="morphe_playback_audio_time_stretching_summary">Ceadaíonn sé luas agus páirc a shocrú go neamhspleách, d\'fhéadfadh sé airteagail fuaime a chruthú</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Cuimhnigh ar shuíomh athsheinm srutha bheo</string>
+  <string name="morphe_remember_live_stream_position_summary">Do shruthanna beo leanúnacha, cuimhníonn sé ar do shuíomh athsheinm agus atosaíonn sé é in ionad cuardach go dtí an suíomh beo reatha.</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Ní oibríonn an ghné seo le sruthanna beo 24/7 agus le sruthanna eile atá \'ar siúl i gcónaí\'.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Díchumasaigh físeán HDR</string>
   <string name="morphe_force_hdr_video_title">Fórsáil físeán HDR</string>

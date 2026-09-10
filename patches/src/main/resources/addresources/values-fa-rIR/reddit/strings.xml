@@ -16,7 +16,56 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="reddit_privacy_policy">سیاست حفظ حریم خصوصی Reddit</string>
+  <string name="morphe_google_signin_not_available_toast">ورود با Google در دسترس نیست. برای ورود از ایمیل استفاده کنید</string>
   <string name="morphe_screen_ads_title">تبلیغات</string>
+  <string name="morphe_hide_post_ads_title">پنهان‌کردن تبلیغات خوراک</string>
+  <string name="morphe_hide_comment_ads_title">پنهان‌کردن تبلیغات دیدگاه‌ها</string>
+  <string name="morphe_screen_navigation_bar_title">نوار پیمایش</string>
+  <string name="morphe_hide_answers_button_title">پنهان‌کردن دکمهٔ پاسخ‌ها</string>
+  <string name="morphe_hide_chat_button_title">پنهان‌کردن دکمهٔ گفت‌وگو</string>
+  <string name="morphe_hide_create_button_title">پنهان‌کردن دکمهٔ ساخت</string>
+  <string name="morphe_hide_discover_button_title">پنهان‌کردن دکمهٔ کشف یا انجمن‌ها</string>
+  <string name="morphe_hide_games_button_title">پنهان‌کردن دکمهٔ بازی‌ها</string>
+  <string name="morphe_screen_sidebar_title">نوار کناری</string>
+  <string name="morphe_hide_recently_visited_shelf_title">پنهان‌کردن قفسهٔ بازدیدهای اخیر</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">پنهان‌کردن قفسهٔ بازی‌ها در Reddit</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">پنهان‌کردن قفسهٔ Reddit Pro</string>
+  <string name="morphe_hide_about_shelf_title">پنهان‌کردن قفسهٔ درباره</string>
+  <string name="morphe_hide_resources_shelf_title">پنهان‌کردن قفسهٔ منابع</string>
+  <string name="morphe_screen_layout_title">طرح‌بندی</string>
+  <string name="morphe_custom_font_title">قلم سفارشی</string>
+  <string name="morphe_custom_font_summary">فایل قلم TTF یا OTF سفارشی را از مسیر زیر بارگیری کنید. فعال‌کردن این گزینه، «اجبار قلم سیستم» را نیز خاموش می‌کند</string>
+  <string name="morphe_custom_font_file_path_title">فایل قلم سفارشی</string>
+  <string name="morphe_custom_font_file_path_summary">برای انتخاب فایل قلم TTF یا OTF ضربه بزنید</string>
+  <string name="morphe_custom_font_selected_font">قلم انتخاب‌شده — %s</string>
+  <string name="morphe_custom_font_pick_file_first">ابتدا یک فایل قلم سفارشی انتخاب کنید</string>
+  <string name="morphe_custom_font_invalid_file">لطفاً یک فایل قلم ‎.ttf یا ‎.otf انتخاب کنید</string>
+  <string name="morphe_custom_font_failed_to_load">بارگیری قلم سفارشی ناموفق بود. فایل دیگری انتخاب کنید</string>
+  <string name="morphe_disable_modern_home_title">غیرفعال‌کردن رابط کاربری مدرن خانه</string>
+  <string name="morphe_disable_screenshot_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی عکس صفحه</string>
+  <string name="morphe_disable_screenshot_popup_summary">پنجرهٔ بازشویی را که هنگام گرفتن عکس صفحه ظاهر می‌شود غیرفعال می‌کند</string>
+  <string name="morphe_force_system_font_title">اجبار قلم سیستم</string>
+  <string name="morphe_force_system_font_summary">به‌جای Reddit Sans یا Roboto از قلم سیستم دستگاه استفاده می‌کند. فعال‌کردن این گزینه، «قلم سفارشی» را نیز خاموش می‌کند</string>
+  <string name="morphe_hide_ask_button_title">پنهان‌کردن دکمهٔ پرسش</string>
+  <string name="morphe_hide_ask_button_summary">دکمهٔ پرسش را در نوار جست‌وجو پنهان می‌کند</string>
+  <string name="morphe_hide_communities_shelf_title">پنهان‌کردن قفسهٔ انجمن‌ها</string>
+  <string name="morphe_hide_communities_shelf_summary">قفسهٔ انجمن‌های مرتبط یا پیشنهادی را در ساب‌ردیت‌ها پنهان می‌کند</string>
+  <string name="morphe_hide_trending_shelves_title">پنهان‌کردن قفسه‌های محبوب</string>
+  <string name="morphe_hide_trending_shelves_summary">قفسه‌های محبوب را از خوراک و پیشنهادهای جست‌وجو پنهان می‌کند</string>
+  <string name="morphe_remove_notification_dialog_title">حذف گفت‌وگوی پیشنهاد اعلان</string>
+  <string name="morphe_remove_notification_dialog_summary">هنگام بازدید از یک ساب‌ردیت، گفت‌وگوی پیشنهاد اعلان را به‌طور خودکار می‌بندد</string>
+  <string name="morphe_show_view_count_title">نمایش تعداد بازدید در پست‌ها</string>
+  <string name="morphe_show_view_count_summary">محدودیت: فقط وقتی در پاسخ API تعداد بازدید وجود داشته باشد در دسترس است</string>
+  <string name="morphe_remove_nsfw_dialog_title">حذف گفت‌وگوی هشدار NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">هنگام بازدید از یک ساب‌ردیت، هشدار محتوای NSFW را به‌طور خودکار می‌پذیرد</string>
   <string name="morphe_screen_miscellaneous_title">متفرقه</string>
   <string name="morphe_about_title">درباره</string>
+  <string name="morphe_about_summary">نسخهٔ پچ و پیوندهای رسمی</string>
+  <string name="morphe_sanitize_sharing_links_title">پاک‌سازی پیوندهای اشتراک‌گذاری</string>
+  <string name="morphe_sanitize_sharing_links_summary">پارامترهای پرس‌وجوی رهگیری را از پیوندهای اشتراک‌گذاری‌شده حذف می‌کند</string>
+  <string name="morphe_open_links_directly_title">بازکردن مستقیم پیوندها</string>
+  <string name="morphe_open_links_directly_summary">هنگام بازکردن پیوندهای خارجی، نشانی‌های تغییرمسیر را دور می‌زند</string>
+  <string name="morphe_open_links_externally_title">بازکردن خارجی پیوندها</string>
+  <string name="morphe_open_links_externally_summary">پیوندها را به‌جای مرورگر درون‌برنامه‌ای، در مرورگر شما باز می‌کند</string>
 </resources>

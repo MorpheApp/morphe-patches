@@ -96,6 +96,7 @@ A változások a következőket tartalmazzák:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\"Értesíts\" gomb elrejtése</string>
+  <string name="morphe_hide_notify_me_button_summary">Elrejti az emlékeztető gombot az ütemezett élő közvetítések és premierek esetén</string>
   <string name="morphe_hide_playables_title">Lejátszható elemek elrejtése</string>
   <string name="morphe_hide_playables_summary">Elrejti a játékok lejátszását lehetővé tévő funkciót</string>
   <string name="morphe_hide_search_term_thumbnails_title">Keresési kifejezések indexképeinek elrejtése</string>
@@ -545,12 +546,22 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Pontos keresési kézmozdulat letiltása</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Letiltja a pontos pozíciókeresési módot, amely a lejátszósáv felhúzásakor aktiválódik</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Élő közvetítések DVR-jének engedélyezése</string>
+  <string name="morphe_live_stream_dvr_summary">Lehetővé teszi a tekerést minden élő közvetítésnél, még azoknál is, amelyek ezt egyébként korlátozzák.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Engedélyezze a keresősáv bélyegképeit</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Videó bélyegképet jelenít meg a keresősáv húzásakor</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Legtöbbször újrajátszott</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"Az „Élő stream DVR engedélyezése” lehet, hogy nem érhető el.
+
+A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást, és állítsa az „Alapértelmezett kliens” beállítást „TV Simply”-re vagy „visionOS”-re."</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Élő stream DVR időtartamának növelése</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Lehetővé teszi, hogy az élő közvetítéseket akár 7 nappal visszatekerje a múltba.</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"Az „Élő stream DVR időtartamának növelése” lehet, hogy nem érhető el.
+
+A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást, és állítsa az „Alapértelmezett kliens” beállítást „TV Simply”-re vagy „visionOS”-re."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
   <string name="morphe_slide_to_seek_summary">Engedélyezi a videólejátszó megnyomása és tartása közbeni csúsztatást a kétszeres sebességű lejátszás helyett</string>
@@ -1193,6 +1204,9 @@ Ha engedélyezve van, akkor a videók URL-jeit elküldjük az API kiszolgálóna
   <string name="morphe_playback_audio_time_stretching_title">Audió időnyújtás</string>
   <string name="morphe_playback_audio_time_stretching_summary">Lehetővé teszi a sebesség és a hangmagasság független beállítását, ami audio artefaktumokat okozhat</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Élő stream lejátszási pozíciójának megjegyzése</string>
+  <string name="morphe_remember_live_stream_position_summary">A folyamatban lévő élő közvetítéseknél megjegyzi a lejátszási pozíciót, és onnan folytatja a lejátszást ahelyett, hogy a jelenlegi élő pozícióra ugrana.</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Ez a funkció nem működik a 24/7-es élő közvetítésekkel és más, „mindig bekapcsolt” közvetítésekkel.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Az HDR videó letiltása</string>
   <string name="morphe_force_hdr_video_title">HDR videó kényszerítése</string>

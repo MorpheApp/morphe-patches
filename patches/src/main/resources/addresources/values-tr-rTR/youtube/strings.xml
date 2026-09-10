@@ -96,6 +96,7 @@ Değişiklikler şunları içerir:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'Bana hatırlat\' düğmesini gizle</string>
+  <string name="morphe_hide_notify_me_button_summary">Planlanmış canlı yayınlar ve prömiyerler için hatırlatma düğmesini gizler.</string>
   <string name="morphe_hide_playables_title">Hazır Oyunlar\'ı gizle</string>
   <string name="morphe_hide_playables_summary">Oyun oynamanıza olanak tanıyan özelliği gizler</string>
   <string name="morphe_hide_search_term_thumbnails_title">Arama terimi küçük resimlerini gizle</string>
@@ -545,13 +546,22 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Zaman çubuğunu yukarı çektiğinizde etkinleşen hassas kaydırma modunu devre dışı bırakır</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Canlı yayın DVR özelliğini etkinleştir</string>
+  <string name="morphe_live_stream_dvr_summary">Normalde buna izin vermeyenler de dahil olmak üzere tüm canlı yayınlarda oynatma konumunu değiştirmeyi sağlar.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Zaman çubuğu küçük resimlerini etkinleştir</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Arama çubuğunu sürüklerken video küçük resmini gösterir</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">En çok tekrar oynatılan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Canlı yayın DVR özelliğini etkinleştir' kullanılamayabilir.
+
+Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir ve 'Varsayılan istemci'yi 'TV Simply' veya 'visionOS' olarak değiştir."</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Canlı yayın DVR süresini uzat</string>
   <string name="morphe_expand_live_stream_dvr_duration_summary">Canlı yayınları 7 güne kadar geriye sarmanıza olanak tanır</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Canlı yayın DVR süresini uzat' kullanılamayabilir.
+
+Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir ve 'Varsayılan istemci'yi 'TV Simply' veya 'visionOS' olarak değiştir."</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Kaydırarak sardırmayı etkinleştir</string>
   <string name="morphe_slide_to_seek_summary">Video oynatıcıya basılı tutulduğunda 2x hızda oynatmak yerine kaydırarak sardırmayı etkinleştirir</string>
@@ -1194,6 +1204,9 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_playback_audio_time_stretching_title">Ses zaman genişletme</string>
   <string name="morphe_playback_audio_time_stretching_summary">Hızın ve perdenin birbirinden bağımsız olarak ayarlanmasına izin verir, ses bozulmalarına neden olabilir</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Canlı yayın oynatma konumunu hatırla</string>
+  <string name="morphe_remember_live_stream_position_summary">Devam eden canlı yayınlarda, canlı konuma atlamak yerine oynatma konumunuzu hatırlar ve kaldığı yerden devam eder.</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Bu özellik 24/7 canlı yayınlarda ve \'her zaman açık\' olan diğer yayınlarda çalışmaz.</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR videoyu devre dışı bırak</string>
   <string name="morphe_force_hdr_video_title">HDR videoyu zorla</string>

@@ -96,6 +96,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">הסתר לחצן \'אני רוצה לקבל התראה\'</string>
+  <string name="morphe_hide_notify_me_button_summary">מסתיר את כפתור התזכורת לשידורים חיים מתוזמנים ולבכורות</string>
   <string name="morphe_hide_playables_title">הסתר משחקייה</string>
   <string name="morphe_hide_playables_summary">מסתיר את התכונה המאפשרת לך לשחק במשחקים</string>
   <string name="morphe_hide_search_term_thumbnails_title">הסתר תמונות ממוזערות של מונחי חיפוש</string>
@@ -545,12 +546,22 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">משבית את מצב החיפוש המדויק שמופעל בעת משיכת פס החיפוש</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">הפעל DVR לשידור חי</string>
+  <string name="morphe_live_stream_dvr_summary">מאפשר ניווט בכל השידורים החיים, גם אלה שבדרך כלל מגבילים זאת</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">אפשר תמונות ממוזערות בסרגל החיפוש</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">מציג תמונה ממוזערת של הסרטון בזמן גרירת סרגל החיפוש</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">הכי הרבה השמעות חוזרות</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'הפעל DVR לשידור חי' עשוי לא להיות זמין
+
+כדי לתקן זאת, הפעל את 'זיוף הזרמת וידאו' ושנה את 'לקוח ברירת המחדל' ל-'TV Simply' או 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">הרחב את משך DVR לשידור חי</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">מאפשר לך להריץ אחורה שידורים חיים עד 7 ימים לאחור</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'הרחב את משך DVR לשידור חי' עשוי לא להיות זמין
+
+כדי לתקן זאת, הפעל את 'זיוף הזרמת וידאו' ושנה את 'לקוח ברירת המחדל' ל-'TV Simply' או 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
   <string name="morphe_slide_to_seek_summary">מאפשר החלקה לחיפוש במקום לנגן במהירות של 2x בעת לחיצה והחזקה על נגן הווידאו</string>
@@ -1193,6 +1204,9 @@ Second \"item\" text"</string>
   <string name="morphe_playback_audio_time_stretching_title">מתיחת זמן אודיו (Audio time stretching)</string>
   <string name="morphe_playback_audio_time_stretching_summary">מאפשר להגדיר מהירות וגובה צליל באופן עצמאי, עשוי לגרום לעיוותים באודיו</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">זכור את מיקום ההשמעה בשידור חי</string>
+  <string name="morphe_remember_live_stream_position_summary">עבור שידורים חיים פעילים, זוכרת וממשיכה את מיקום ההשמעה שלך במקום לקפוץ למיקום החי הנוכחי</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">תכונה זו אינה פועלת עם שידורים חיים 24/7 ושידורים אחרים שהם \'תמיד פעילים\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">השבת סרטון HDR</string>
   <string name="morphe_force_hdr_video_title">אלץ וידאו HDR</string>

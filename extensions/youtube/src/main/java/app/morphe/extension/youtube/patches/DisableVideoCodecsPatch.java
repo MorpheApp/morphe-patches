@@ -107,4 +107,3 @@ public class DisableVideoCodecsPatch {
         return !Settings.FORCE_AVC_CODEC.get();
     }
 }
-

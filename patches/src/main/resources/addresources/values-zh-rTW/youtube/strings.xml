@@ -96,6 +96,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">隱藏「通知我」按鈕</string>
+  <string name="morphe_hide_notify_me_button_summary">隱藏排定的直播與首播的提醒按鈕</string>
   <string name="morphe_hide_playables_title">隱藏「遊戲角落」</string>
   <string name="morphe_hide_playables_summary">隱藏允許遊玩遊戲的功能</string>
   <string name="morphe_hide_search_term_thumbnails_title">隱藏搜尋字詞縮圖</string>
@@ -545,12 +546,22 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">停用向上拖曳尋找條時啟動的精確尋找模式</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">啟用直播 DVR</string>
+  <string name="morphe_live_stream_dvr_summary">允許在所有直播中進行跳轉，即使是通常限制跳轉的直播</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">啟用跳轉列縮圖預覽</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">在拖動搜尋條時顯示影片縮圖</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">最多重播</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'啟用直播 DVR' 可能無法使用
+
+若要修正此問題，請開啟 '模擬影片串流' 並將 '預設用戶端' 變更為 'TV Simply' 或 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">擴展直播 DVR 時長</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">允許您將直播回捲至過去最多 7 天</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'擴展直播 DVR 時長' 可能無法使用
+
+若要修正此問題，請開啟 '模擬影片串流' 並將 '預設用戶端' 變更為 'TV Simply' 或 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
   <string name="morphe_slide_to_seek_summary">按住影片播放器時啟用滑動尋找，而不是以 2 倍速度播放</string>
@@ -1193,6 +1204,9 @@ Second \"item\" text"</string>
   <string name="morphe_playback_audio_time_stretching_title">音訊時間拉伸</string>
   <string name="morphe_playback_audio_time_stretching_summary">允許獨立設定速度和音調，可能會造成音訊失真</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">記住直播播放位置</string>
+  <string name="morphe_remember_live_stream_position_summary">對於進行中的直播，記住並恢復您的播放位置，而不是跳到目前直播位置。</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">此功能不適用於 24/7 全天候直播和其他「持續開啟」的直播。</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">停用 HDR 影片</string>
   <string name="morphe_force_hdr_video_title">強制 HDR 影片</string>

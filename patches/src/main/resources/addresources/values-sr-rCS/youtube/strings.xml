@@ -96,6 +96,7 @@ Promene uključuju:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Sakrij dugme „Obavesti me”</string>
+  <string name="morphe_hide_notify_me_button_summary">Sakriva dugme podsetnika za zakazane prenose uživo i premijere</string>
   <string name="morphe_hide_playables_title">Sakrij salu za igru</string>
   <string name="morphe_hide_playables_summary">Sakriva funkciju koja vam omogućava da igrate igre</string>
   <string name="morphe_hide_search_term_thumbnails_title">Sakrij minijature termina pretrage</string>
@@ -545,12 +546,22 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogući pokret preciznog premotavanja</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Onemogućava precizan način podešavanja koji se aktivira kada povučete traku za podešavanje</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Omogući DVR za prenos uživo</string>
+  <string name="morphe_live_stream_dvr_summary">Omogućava premotavanje na svim prenosima uživo, čak i na onima koji to obično ograničavaju</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Omogući sličice trake za premotavanje</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Prikazuje sliku videa tokom povlačenja trake za premotavanje</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Najčešće ponovljeno</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Omogući DVR za prenos uživo' možda nije dostupno
+
+Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumevani klijent' na 'TV Simply' ili 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Proširi trajanje DVR-a za prenos uživo</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Omogućava vam da premotate prenose uživo do 7 dana unazad</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Proširi trajanje DVR-a za prenos uživo' možda nije dostupno
+
+Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumevani klijent' na 'TV Simply' ili 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Omogući prevlačenje za premotavanje</string>
   <string name="morphe_slide_to_seek_summary">Omogućava klizanje za podešavanje umesto reprodukovanja brzinom od 2x kada pritisnete i zadržite plejer videa</string>
@@ -1193,6 +1204,9 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_playback_audio_time_stretching_title">Rastegljivanje audio vremena</string>
   <string name="morphe_playback_audio_time_stretching_summary">Omogućava nezavisno podešavanje brzine i visine tona, što može izazvati audio artefakte</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Zapamti poziciju reprodukcije prenosa uživo</string>
+  <string name="morphe_remember_live_stream_position_summary">Za tekuće prenose uživo, pamti i nastavlja vašu poziciju reprodukcije umesto da skače na trenutnu poziciju uživo</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Ova funkcija ne radi sa 24/7 prenosima uživo i drugim strimovima koji su \'stalno uključeni\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogući HDR video</string>
   <string name="morphe_force_hdr_video_title">Forsiraj HDR video</string>

@@ -8,7 +8,9 @@
 package app.morphe.extension.music.patches;
 
 import android.util.Log;
+
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class RememberShuffleStatePatch {
@@ -30,7 +32,7 @@ public class RememberShuffleStatePatch {
             return;
         }
 
-        shuffleTracks();
+        Utils.runOnMainThreadDelayed(RememberShuffleStatePatch::shuffleTracks, 500);
     }
 
     /**

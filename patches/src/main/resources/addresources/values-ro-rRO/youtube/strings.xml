@@ -96,6 +96,7 @@ Schimbari incluse:
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ascunde butonul \'Notifică-mă\'</string>
+  <string name="morphe_hide_notify_me_button_summary">Ascunde butonul de memento pentru transmisiunile live programate și premiere</string>
   <string name="morphe_hide_playables_title">Ascunde Playables</string>
   <string name="morphe_hide_playables_summary">Ascunde funcția care vă permite să jucați jocuri</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ascunde miniaturile termenilor de căutare</string>
@@ -545,12 +546,22 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">Dezactivează modul de căutare precisă care se activează atunci când tragi de bara de căutare</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">Activează DVR pentru transmisiunile live</string>
+  <string name="morphe_live_stream_dvr_summary">Permite derularea în toate transmisiunile live, chiar și în cele care o restricționează în mod normal</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Activează miniaturile barei de căutare</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Afișează o miniatură video în timpul glisării pe bara de căutare</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Cele mai redate</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"'Activează DVR pentru transmisiunile live' s-ar putea să nu fie disponibilă
+
+Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul implicit' în 'TV Simply' sau 'visionOS'"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">Extinde durata DVR pentru transmisiunile live</string>
+  <string name="morphe_expand_live_stream_dvr_duration_summary">Îți permite să derulezi înapoi transmisiunile live până la 7 zile în urmă</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"'Extinde durata DVR pentru transmisiunile live' s-ar putea să nu fie disponibilă
+
+Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul implicit' în 'TV Simply' sau 'visionOS'"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activează diapozitivul pentru a căuta</string>
   <string name="morphe_slide_to_seek_summary">Activează glisarea pentru a căuta în loc să redă cu o viteză de 2x când apeși și menții apăsat playerul video</string>
@@ -1193,6 +1204,9 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <string name="morphe_playback_audio_time_stretching_title">Extinderea temporală a audio</string>
   <string name="morphe_playback_audio_time_stretching_summary">Permite setarea vitezei și a tonalității independent, ceea ce poate cauza artefacte audio</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">Reține poziția de redare pentru transmisiunile live</string>
+  <string name="morphe_remember_live_stream_position_summary">Pentru transmisiunile live în curs, reține și reia redarea de la poziția ta în loc să deruleze la poziția live curentă</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">Această funcție nu funcționează cu transmisiunile live 24/7 și cu alte transmisiuni care sunt \'întotdeauna active\'</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Dezactivați videoclipurile HDR</string>
   <string name="morphe_force_hdr_video_title">Forțează video HDR</string>

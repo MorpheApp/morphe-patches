@@ -15,4 +15,3 @@ public class FixPipChatBarPatch {
         if (navBarBg != null) navBarBg.setVisibility(View.GONE);
     }
 }
-

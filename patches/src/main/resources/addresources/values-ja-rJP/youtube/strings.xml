@@ -546,13 +546,22 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">シークバーを上にスワイプすると有効になる「再生位置の細かい調整」モードを無効にします</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
+  <string name="morphe_live_stream_dvr_title">すべてのライブ配信で DVR を有効化</string>
+  <string name="morphe_live_stream_dvr_summary">本来はシーク機能が制限される場合も含め、すべてのライブ配信でシーク機能が利用可能になります</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">シーク位置の映像を縮小表示</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">シークバーをドラッグしてシークしているときに、シーク位置の映像を縮小した画像をシークバーの上に表示します</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">リプレイ回数が最も多い部分</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_live_stream_dvr_not_available">"[すべてのライブ配信で DVR を有効化] をオンにしたときに正常に動作しない場合があります
+
+この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
+  <string name="morphe_expand_live_stream_dvr_duration_title">ライブ配信の DVR の制限を拡張</string>
   <string name="morphe_expand_live_stream_dvr_duration_summary">ライブ配信を最大 7 日前まで巻き戻し可能にします</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_live_stream_dvr_duration_not_available">"[ライブ配信の DVR の制限を拡張] をオンにしたときに正常に動作しない場合があります
+
+この問題を解決するには、[動画ストリームを偽装] をオンにして [デフォルトのクライアント] を「TV Simply」または「visionOS」に変更してください"</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
   <string name="morphe_slide_to_seek_summary">動画プレーヤーの画面を長押ししたときに倍速再生ではなくスライドによるシークが有効になります。</string>
@@ -1194,6 +1203,9 @@ Automotive レイアウト
   <string name="morphe_playback_audio_time_stretching_title">タイムストレッチ</string>
   <string name="morphe_playback_audio_time_stretching_summary">再生速度と音声ピッチを個別に設定できますが、音声にノイズなどの副作用が生じる場合があります</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
+  <string name="morphe_remember_live_stream_position_title">ライブ配信の再生位置を記憶</string>
+  <string name="morphe_remember_live_stream_position_summary">生放送中のライブ配信を再度開いた際の再生方法を、「ライブ再生」から「前回の再生位置からの追っかけ再生」に変更します</string>
+  <string name="morphe_remember_live_stream_position_user_dialog_message">この機能は、垂れ流しのライブ配信などの半永久的に稼働し続けるコンテンツでは正常に動作しません</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_hdr_video_title">HDR 動画を強制的に使用</string>

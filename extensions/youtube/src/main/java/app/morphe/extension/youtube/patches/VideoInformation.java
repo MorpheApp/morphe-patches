@@ -1064,6 +1064,14 @@ public final class VideoInformation {
                     // Only change Shorts quality if the quality actually needs to change, because
                     // the "Auto" option is not shown in the flyout and setting the same quality
                     // again can cause the Short to restart.
+                    //
+                    // If a regular video is opened via a link inside a Short, the Shorts UI fragment
+                    // remains open during the transition. Forcing a changeQuality() restart during
+                    // this specific overlapping state causes an ExoPlayer codec deadlock.
+                    if (ShortsPlayerState.isOpen() && !PlayerType.getCurrent().isNoneOrHidden()) {
+                        return i;
+                    }
+
                     if (qualityNeedsChange || !ShortsPlayerState.isOpen()) {
                         changeQuality(quality);
                         return i;
