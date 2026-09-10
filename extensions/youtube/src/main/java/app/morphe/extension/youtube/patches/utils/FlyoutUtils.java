@@ -283,7 +283,7 @@ public final class FlyoutUtils {
                                     addFlyoutElements(targetPanel);
                                     onFlyoutListBound(targetPanel);
                                 },
-                                100
+                                50
                         );
                     } else {
                         flyoutVisibilityHandler.postDelayed(this, 10);
@@ -871,6 +871,8 @@ public final class FlyoutUtils {
                         if (description != null) {
                             String stringDescription = description.toString();
 
+                            Logger.printDebug(() -> "Flyout content desription: " + stringDescription);
+
                             setFlyoutVideoId(flyoutBuffer, stringDescription);
                             setFlyoutChannel(flyoutBuffer, stringDescription);
 
@@ -925,7 +927,7 @@ public final class FlyoutUtils {
                 byte[] nextWordBytes = wordsBytes[i];
                 int nextWordIndex = byteIndexOf(buffer, nextWordBytes, currentPos);
 
-                if (nextWordIndex != -1 && (nextWordIndex - currentPos) <= 10) {
+                if (nextWordIndex != -1 && (nextWordIndex - currentPos) <= 20) {
                     currentPos = nextWordIndex + nextWordBytes.length;
                 } else {
                     fullMatch = false;
@@ -1048,7 +1050,7 @@ public final class FlyoutUtils {
             flyoutPlaylistId = new String(
                     flyoutBuffer,
                     playlistIdStart,
-                    playlistIdEnd - playlistIdStart,
+                    playlistIdEnd - playlistIdStart - 1,
                     StandardCharsets.US_ASCII
             );
         }

@@ -49,18 +49,17 @@ public final class OpenSystemShareSheetPatch {
         final String longURLPrefix = "https://www.youtube.com";
         final Pair<String, String> videoURLPrefix = !Settings.REPLACE_LINKS_WITH_SHORTENER.get()
                 ? new Pair<>(longURLPrefix + "/watch?v=", "&")
-                : new Pair<>("https://youtu.be", "?");
+                : new Pair<>("https://youtu.be/", "?");
 
         final String intentUrl;
         // Make sure to check channelId at the end, since it is never reset.
         if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty()) {
             intentUrl = longURLPrefix + "/playlist?list=" + FlyoutUtils.getFlyoutPlaylistId();
         } else if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
-            intentUrl = videoURLPrefix.first + "/" + FlyoutUtils.getFlyoutVideoId();
+            intentUrl = videoURLPrefix.first + FlyoutUtils.getFlyoutVideoId();
         } else if (!FlyoutUtils.getFlyoutCommentId().isEmpty()) {
             intentUrl =
                     videoURLPrefix.first +
-                    "/" +
                     VideoInformation.getVideoId() +
                     videoURLPrefix.second +
                     "lc=" +
@@ -69,7 +68,7 @@ public final class OpenSystemShareSheetPatch {
             FlyoutUtils.resetFlyoutCommentId();
         } else if (PlayerType.getCurrent().isMaximizedOrFullscreen() ||
                 ShortsPlayerState.isOpen()) {
-            intentUrl = videoURLPrefix.first + "/" +  VideoInformation.getVideoId();
+            intentUrl = videoURLPrefix.first + VideoInformation.getVideoId();
         } else if (!ChannelPageFlyoutFilter.getFlyoutChannelId().isEmpty()) {
             intentUrl = longURLPrefix + "/channel/" + ChannelPageFlyoutFilter.getFlyoutChannelId();
         } else {
