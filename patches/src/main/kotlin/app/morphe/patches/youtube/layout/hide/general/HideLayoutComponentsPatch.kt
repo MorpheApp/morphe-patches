@@ -1263,5 +1263,22 @@ val hideLayoutComponentsPatch = bytecodePatch(
         }
 
         // endregion
+
+        // region disable UI padding feature flags
+
+        listOf(
+            CommentReplyPaddingFeatureFlagFingerprint,
+            IncognitoSearchPaddingFeatureFlagFingerprint
+        ).forEach { fingerprint ->
+            fingerprint.clearMatch()
+            fingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$LAYOUT_COMPONENTS_FILTER->disableUIPaddingFeatureFlags(Z)Z"
+                )
+            }
+        }
+
+        // endregion
     }
 }

@@ -596,6 +596,16 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
+     */
+    public static boolean disableUIPaddingFeatureFlags(boolean original) {
+        if (Settings.HIDE_COMPACT_BANNER.get()) {
+            return false;
+        }
+        return original;
+    }
+
+    /**
+     * Injection point.
      * Called from a different place then the other filters.
      */
     public static boolean filterMixPlaylists(@Nullable byte[] buffer) {
