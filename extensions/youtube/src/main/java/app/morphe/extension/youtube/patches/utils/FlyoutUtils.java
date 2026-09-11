@@ -283,7 +283,7 @@ public final class FlyoutUtils {
                                     addFlyoutElements(targetPanel);
                                     onFlyoutListBound(targetPanel);
                                 },
-                                50
+                                30
                         );
                     } else {
                         flyoutVisibilityHandler.postDelayed(this, 10);
