@@ -904,7 +904,7 @@ public final class FlyoutUtils {
             }
         }
 
-        int targetWordCount = Math.min(words.size(), 5);
+        int targetWordCount = Math.min(words.size(), 3);
         if (targetWordCount == 0) {
             return;
         }
