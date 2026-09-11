@@ -1,3 +1,9 @@
+## [1.42.1-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.2...v1.42.1-dev.3) (2026-09-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:** Patch failing on `20.21.37` ([41d89ef](https://github.com/MorpheApp/morphe-patches/commit/41d89ef38ae4feb744054656a6b6a8a653f14eaa))
+
 ## [1.42.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.1...v1.42.1-dev.2) (2026-09-11)
 
 ### 🐛 Bug Fixes
