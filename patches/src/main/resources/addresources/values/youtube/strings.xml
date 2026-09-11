@@ -438,6 +438,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_vot_screen_title">Voice over translation</string>
     <string name="morphe_vot_screen_summary">Read video captions aloud using on-device text-to-speech, synchronized with playback</string>
     <string name="morphe_vot_enabled_title">Voice over translation</string>
+    <string name="morphe_vot_enabled_summary">Shows an overlay button in video player. Tap to toggle translation, tap and hold for quick settings</string>
     <string name="morphe_vot_caption_language_title">Language</string>
     <string name="morphe_vot_translation_service_title">Translation provider</string>
     <string name="morphe_vot_original_audio_volume_title">Original audio volume</string>
