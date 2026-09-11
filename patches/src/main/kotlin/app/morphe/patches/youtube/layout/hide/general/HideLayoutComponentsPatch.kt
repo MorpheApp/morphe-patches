@@ -44,7 +44,7 @@ import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_04_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
@@ -1267,7 +1267,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region disable UI padding feature flags
 
-        if (is_21_04_or_greater) {
+        if (is_21_07_or_greater) {
             listOf(
                 CommentReplyPaddingFeatureFlagFingerprint,
                 IncognitoSearchPaddingFeatureFlagFingerprint
