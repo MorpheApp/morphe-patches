@@ -783,3 +783,15 @@ internal object HideTimeBarEntryPointContainerFingerprint : Fingerprint(
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
 )
+
+internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45752241)
+    )
+)
+
+internal object IncognitoSearchPaddingFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45724388)
+    )
+)
