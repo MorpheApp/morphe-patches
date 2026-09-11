@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible;
 import static app.morphe.extension.youtube.patches.utils.PlaylistPatch.QueueManager.OPEN_QUEUE;
 
 import android.annotation.SuppressLint;
@@ -41,8 +40,8 @@ import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -83,6 +82,7 @@ public final class FlyoutUtils {
             @Nullable PopupWindow popupWindow
     ) {}
 
+    private static final int VIDEO_ID_LENGTH = 11;
     public static final int CHANNEL_ID_LENGTH = 24;
     private static final byte[] CHANNEL_ID_PREFIX_BYTES = getAsciiBytes("UC");
     private static final byte[] PLAYLIST_ID_PREFIXES_BYTES =
@@ -114,9 +114,8 @@ public final class FlyoutUtils {
             getAsciiBytes("yt_outline_experimental_share")
     );
 
-    private static final Pattern TITLE_CLEANUP_PATTERN = Pattern.compile("[^\\p{L}\\p{M}\\p{N}\\s_&'+]");
-    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s+");
-    private static final Pattern COMMENT_ID_CLEANUP_PATTERN = Pattern.compile("[^A-Za-z0-9_.-]");
+    private static final Pattern COMMENT_ID_CLEANUP_PATTERN =
+            Pattern.compile("[^A-Za-z0-9_.-]");
 
     private static final int SECONDARY_CONTAINER_ID =
             ResourceUtils.getIdentifier(ResourceType.ID, "list_item_secondary_container");
@@ -152,9 +151,12 @@ public final class FlyoutUtils {
 
     private static WeakReference<View> senderViewRef = new WeakReference<>(null);
 
+    private static final Handler flyoutVisibilityHandler = new Handler(Looper.getMainLooper());
+    private static boolean flyoutVisibilityHandlerRunning;
+    private static final Handler flyoutIdsResetHandler = new Handler(Looper.getMainLooper());
+    private static boolean flyoutIdsResetHandlerRunning;
+
     private static Dialog flyoutDialog;
-    private static boolean isDialogShowing;
-    private static boolean isPopupWindowShowing;
     private static PopupWindow flyoutPopupWindow;
     private static String flyoutVideoId = "";
     private static String flyoutPlaylistId = "";
@@ -188,6 +190,10 @@ public final class FlyoutUtils {
 
     public static String getFlyoutCommentId() {
         return flyoutCommentId;
+    }
+
+    public static void resetFlyoutCommentId() {
+        flyoutCommentId = "";
     }
 
     /**
@@ -233,35 +239,6 @@ public final class FlyoutUtils {
         runFlyoutVisibilityHandler();
     }
 
-    private static void runFlyoutVisibilityHandler() {
-        Handler flyoutVisibilityPollingHandler = new Handler(Looper.getMainLooper());
-        flyoutVisibilityPollingHandler.post(
-            new Runnable() {
-                @Override
-                public void run() {
-                    boolean blockFlyoutVisibilityPollingHandler = false;
-
-                    if (flyoutDialog != null && flyoutDialog.isShowing()) {
-                        isDialogShowing = true;
-                        blockFlyoutVisibilityPollingHandler = true;
-                    }
-                    if (flyoutPopupWindow != null && flyoutPopupWindow.isShowing()) {
-                        isPopupWindowShowing = true;
-                        blockFlyoutVisibilityPollingHandler = true;
-                    }
-
-                    if (blockFlyoutVisibilityPollingHandler) {
-                        runFlyoutIdsResetHandler();
-                        addFlyoutElements(isDialogShowing ? flyoutDialog : flyoutPopupWindow);
-                        onFlyoutListBound(isDialogShowing ? flyoutDialog : flyoutPopupWindow);
-                    } else {
-                        flyoutVisibilityPollingHandler.postDelayed(this, 10);
-                    }
-                }
-            }
-        );
-    }
-
     public static void dismissFlyout() {
         if (flyoutDialog != null) {
             flyoutDialog.dismiss();
@@ -273,114 +250,192 @@ public final class FlyoutUtils {
         }
     }
 
-    private static void addFlyoutElements(Object flyoutPanel) {
-        // In order to allow the litho filtering to detect the current menu
-        // (before adding the buttons), a slight delay has been added.
-        Utils.runOnMainThreadDelayed(
-            () -> {
-                int nextButtonIndex = 0;
+    private static void runFlyoutVisibilityHandler() {
+        if (flyoutVisibilityHandlerRunning) {
+            return;
+        }
+        flyoutVisibilityHandlerRunning = true;
 
-                // The items of the menu that is closing are gone, and their typeface is copied
-                // onto whatever this call adds instead.
-                customItemTextRefs.clear();
+        flyoutVisibilityHandler.removeCallbacksAndMessages(null);
+        flyoutVisibilityHandler.post(
+            new Runnable() {
+                @Override
+                public void run() {
+                    if (flyoutDialog == null && flyoutPopupWindow == null) {
+                        flyoutVisibilityHandlerRunning = false;
+                        return;
+                    }
 
-                // Ensure to show the following buttons only for specific flyouts.
-                String currentFlyoutVideoId = getFlyoutVideoId();
-                String currentVideoId;
+                    final boolean isDialogShowing =
+                            flyoutDialog != null && flyoutDialog.isShowing();
+                    final boolean isPopupWindowShowing =
+                            flyoutPopupWindow != null && flyoutPopupWindow.isShowing();
+                    final boolean blockFlyoutVisibilityHandler =
+                            isDialogShowing || isPopupWindowShowing;
 
-                if (!currentFlyoutVideoId.isEmpty()) {
-                    currentVideoId = currentFlyoutVideoId;
-                } else {
-                    if (getTopFlyoutMenuVisible()) {
-                        currentVideoId = VideoInformation.getVideoId();
+                    if (blockFlyoutVisibilityHandler) {
+                        final Object targetPanel = isDialogShowing ? flyoutDialog : flyoutPopupWindow;
+
+                        // give a delay to ensure the flyout animation is finished.
+                        Utils.runOnMainThreadDelayed(
+                                () -> {
+                                    runFlyoutIdsResetHandler();
+                                    addFlyoutElements(targetPanel);
+                                    onFlyoutListBound(targetPanel);
+                                },
+                                30
+                        );
                     } else {
-                        currentVideoId = "";
+                        flyoutVisibilityHandler.postDelayed(this, 10);
                     }
                 }
-
-                if (!currentFlyoutVideoId.isEmpty()) {
-                    // TODO: Add playlists compatibility to Morphe's queue.
-                    if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
-                            flyoutPlaylistId.isEmpty()) {
-                        nextButtonIndex = addFlyoutButton(
-                                flyoutPanel,
-                                queueButtonDrawable,
-                                queueButtonName,
-                                v -> AddToQueuePatch.flyoutButtonClickLogic(
-                                        AddToQueuePatch.queueButtonOriginalNames.get(0)
-                                ),
-                                nextButtonIndex
-                        );
-                    }
-
-                    if (Settings.KIDS_SAVE_TO_WATCH_LATER_BUTTON.get() &&
-                            PlayerType.getCurrent().isMaximizedOrFullscreen() &&
-                            videoMarkedAsForKids) {
-                        nextButtonIndex = addFlyoutButton(
-                                flyoutPanel,
-                                saveToWatchLaterDrawable,
-                                saveToWatchLaterButtonName,
-                                v -> {
-                                    SaveToWatchLaterPatch.saveVideo(getFlyoutVideoId());
-
-                                    dismissFlyout(); // Must dismiss after showing dialog.
-                                },
-                                nextButtonIndex
-                        );
-                    }
-                }
-
-                if (!currentVideoId.isEmpty()) {
-                    if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
-                        nextButtonIndex = addFlyoutButton(
-                                flyoutPanel,
-                                aiSListSubmitDrawable,
-                                aiSListSubmitButtonName,
-                                v -> {
-                                    AiSListSubmitDialog.show(currentVideoId);
-
-                                    dismissFlyout();
-                                },
-                                nextButtonIndex
-                        );
-                    }
-
-                    if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
-                        nextButtonIndex = addWhitelistButton(
-                                flyoutPanel,
-                                WhitelistType.ADS,
-                                adWhitelistDrawable,
-                                nextButtonIndex
-                        );
-                    }
-
-                    if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
-                        nextButtonIndex = addWhitelistButton(
-                                flyoutPanel,
-                                WhitelistType.PLAYBACK_SPEED,
-                                playbackSpeedWhitelistDrawable,
-                                nextButtonIndex
-                        );
-                    }
-                }
-
-                if (nextButtonIndex > 0) {
-                    addDivider(flyoutPanel, nextButtonIndex);
-                }
-
-                // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
-                // overlay settings, to prevent them from also being added into nested menus.
-                PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
-            },
-            15
+            }
         );
     }
 
+    private static void runFlyoutIdsResetHandler() {
+        if (flyoutIdsResetHandlerRunning) {
+            return;
+        }
+        flyoutIdsResetHandlerRunning = true;
+
+        flyoutIdsResetHandler.removeCallbacksAndMessages(null);
+        flyoutIdsResetHandler.post(
+            new Runnable() {
+                @Override
+                public void run() {
+                    final boolean isDialogClosed =
+                            flyoutDialog == null || !flyoutDialog.isShowing();
+                    final boolean isPopupWindowClosed =
+                            flyoutPopupWindow == null || !flyoutPopupWindow.isShowing();
+                    final boolean blockFlyoutIdsResetHandler =
+                            isDialogClosed && isPopupWindowClosed;
+
+                    if (blockFlyoutIdsResetHandler) {
+                        // Give a delay to wait for the system sharing panel to be called.
+                        Utils.runOnMainThreadDelayed(
+                                () -> {
+                                    visibleFlyoutButtons.clear();
+                                    currentButtonIndex = 0;
+                                    flyoutVideoId = "";
+                                    flyoutPlaylistId = "";
+                                    flyoutChannelId = "";
+                                    flyoutChannelName = "";
+
+                                    flyoutVisibilityHandlerRunning = false;
+                                    flyoutIdsResetHandlerRunning = false;
+                                },
+                                // The delay used to prevent the system share sheet from failing to
+                                // display, sometimes causes the injected buttons to appear in the
+                                // YouTube share sheet. For this reason, the delay is set to zero
+                                // when the setting to display the system share sheet is disabled.
+                                Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 100 : 0
+                        );
+                    } else {
+                        flyoutIdsResetHandler.postDelayed(this, 10);
+                    }
+                }
+            }
+        );
+    }
+
+    private static void addFlyoutElements(Object flyoutPanel) {
+        int nextButtonIndex = 0;
+
+        // The items of the menu that is closing are gone, and their typeface is copied
+        // onto whatever this call adds instead.
+        customItemTextRefs.clear();
+
+        // Ensure to show the following buttons only for specific flyout menus.
+        String currentVideoId;
+        if (!getFlyoutVideoId().isEmpty()) {
+            currentVideoId = getFlyoutVideoId();
+        } else {
+            if (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()) {
+                currentVideoId = VideoInformation.getVideoId();
+            } else {
+                currentVideoId = "";
+            }
+        }
+
+        if (!currentVideoId.isEmpty()) {
+            // TODO: Add playlists compatibility to Morphe's queue.
+            if (Settings.QUEUE_ADD_FLYOUT_MENU.get() &&
+                    flyoutPlaylistId.isEmpty()) {
+                nextButtonIndex = addFlyoutButton(
+                        flyoutPanel,
+                        queueButtonDrawable,
+                        queueButtonName,
+                        v -> AddToQueuePatch.flyoutButtonClickLogic(
+                                AddToQueuePatch.queueButtonOriginalNames.get(0)
+                        ),
+                        nextButtonIndex
+                );
+            }
+
+            if (Settings.KIDS_SAVE_TO_WATCH_LATER_BUTTON.get() &&
+                    PlayerType.getCurrent().isMaximizedOrFullscreen() &&
+                    videoMarkedAsForKids) {
+                nextButtonIndex = addFlyoutButton(
+                        flyoutPanel,
+                        saveToWatchLaterDrawable,
+                        saveToWatchLaterButtonName,
+                        v -> {
+                            SaveToWatchLaterPatch.saveVideo(getFlyoutVideoId());
+
+                            dismissFlyout(); // Must dismiss after showing dialog.
+                        },
+                        nextButtonIndex
+                );
+            }
+
+            if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
+                nextButtonIndex = addFlyoutButton(
+                        flyoutPanel,
+                        aiSListSubmitDrawable,
+                        aiSListSubmitButtonName,
+                        v -> {
+                            AiSListSubmitDialog.show(currentVideoId);
+
+                            dismissFlyout();
+                        },
+                        nextButtonIndex
+                );
+            }
+
+            if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+                nextButtonIndex = addWhitelistButton(
+                        flyoutPanel,
+                        WhitelistType.ADS,
+                        adWhitelistDrawable,
+                        nextButtonIndex
+                );
+            }
+
+            if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+                nextButtonIndex = addWhitelistButton(
+                        flyoutPanel,
+                        WhitelistType.PLAYBACK_SPEED,
+                        playbackSpeedWhitelistDrawable,
+                        nextButtonIndex
+                );
+            }
+        }
+
+        if (nextButtonIndex > 0) {
+            addDivider(flyoutPanel, nextButtonIndex);
+        }
+
+        // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
+        // overlay settings, to prevent them from also being added into nested menus.
+        PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
+    }
+
     private static int addWhitelistButton(
-        Object flyoutPanel,
-        WhitelistType type,
-        Drawable icon,
-        int index
+            Object flyoutPanel,
+            WhitelistType type,
+            Drawable icon,
+            int index
     ) {
         String currentChannelId =
                 !flyoutChannelId.isEmpty()
@@ -592,7 +647,7 @@ public final class FlyoutUtils {
                 "Current renderized flyout button {" +
                         "Name:" + currentButtonName + "; " +
                         "Index: " + currentButtonIndex +
-                "}"
+                        "}"
         );
         currentButtonIndex++;
 
@@ -619,44 +674,6 @@ public final class FlyoutUtils {
 
     public static void resetCurrentButtonIndex() {
         currentButtonIndex = 0;
-    }
-
-    private static void runFlyoutIdsResetHandler() {
-        Handler flyoutIdsResetPollingHandler = new Handler(Looper.getMainLooper());
-        flyoutIdsResetPollingHandler.post(
-            new Runnable() {
-                @Override
-                public void run() {
-                    if (flyoutDialog != null && !flyoutDialog.isShowing()) {
-                        isDialogShowing = false;
-                    }
-                    if (flyoutPopupWindow != null && !flyoutPopupWindow.isShowing()) {
-                        isPopupWindowShowing = false;
-                    }
-
-                    if (!isDialogShowing && !isPopupWindowShowing) {
-                        // Since the system share menu is called faster, do not use a large delay.
-                        Utils.runOnMainThreadDelayed(
-                            () -> {
-                                visibleFlyoutButtons.clear();
-                                currentButtonIndex = 0;
-                                flyoutVideoId = "";
-                                flyoutPlaylistId = "";
-                                flyoutChannelId = "";
-                                flyoutChannelName = "";
-                            },
-                            // The delay used to prevent the system share sheet from failing to
-                            // display, sometimes causes the injected buttons to appear in the
-                            // YouTube share sheet. For this reason, the delay is set to zero
-                            // when the setting to display the system share sheet is disabled.
-                            Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 50 : 0
-                        );
-                    } else {
-                        flyoutIdsResetPollingHandler.postDelayed(this, 10);
-                    }
-                }
-            }
-        );
     }
 
     @Nullable
@@ -807,7 +824,7 @@ public final class FlyoutUtils {
      */
     public static void extractFlyoutIdFromObject(@Nullable Object bufferObject) {
         Logger.printDebug(() -> "Flyout buffer class: " + ((bufferObject == null)
-                                ? null : bufferObject.getClass()));
+                ? null : bufferObject.getClass()));
 
         if (bufferObject instanceof FlyoutMenuVideoIdInterface videoIdInterface) {
             String videoId = videoIdInterface.patch_getVideoId();
@@ -854,6 +871,8 @@ public final class FlyoutUtils {
                         if (description != null) {
                             String stringDescription = description.toString();
 
+                            Logger.printDebug(() -> "Flyout content desription: " + stringDescription);
+
                             setFlyoutVideoId(flyoutBuffer, stringDescription);
                             setFlyoutChannel(flyoutBuffer, stringDescription);
 
@@ -866,73 +885,83 @@ public final class FlyoutUtils {
         }
     }
 
-    private static void setFlyoutVideoId(byte[] buffer, String description) {
-        if (buffer == null || description == null || description.isEmpty()) {
+    public static void setFlyoutVideoId(byte[] buffer, String rawDescription) {
+        if (buffer == null || rawDescription == null || rawDescription.isEmpty()) {
             return;
         }
 
-        String title = TITLE_CLEANUP_PATTERN.matcher(
-                description.toLowerCase(Locale.ROOT)
-        ).replaceAll("");
-        List<byte[]> words = new ArrayList<>();
-        for (String word : WHITESPACE_PATTERN.split(title)) {
-            if (word.length() > 2) {
-                words.add(word.getBytes(StandardCharsets.UTF_8));
+        String cleanDescription = rawDescription.replaceAll(
+                "[^\\p{L}\\p{N}\\p{M}]",
+                " "
+        );
+        String[] tokens = cleanDescription.split("\\s+");
+
+        List<String> words = new ArrayList<>();
+        for (String token : tokens) {
+            String trimmed = token.trim();
+            if (!trimmed.isEmpty()) {
+                words.add(trimmed);
             }
         }
-        if (words.isEmpty()) {
+
+        int targetWordCount = Math.min(words.size(), 3);
+        if (targetWordCount == 0) {
             return;
         }
 
-        int bestIdx = -1;
-        int maxScore = 0;
-        final int len = buffer.length;
-        final int windowSize = 200;
-        for (int i = 0, iMaxIndex = len - windowSize; i <= iMaxIndex; i += 20) {
-            int score = 0;
-
-            for (byte[] word : words) {
-                boolean found = false;
-
-                final int wordLen = word.length;
-                for (int j = i, jMaxIndex = i + windowSize - wordLen; j <= jMaxIndex; j++) {
-                    int k = 0;
-                    while (k < wordLen) {
-                        final byte b = buffer[j + k];
-                        if (((b >= 65 && b <= 90) ? (byte) (b + 32) : b) != word[k]) {
-                            break;
-                        }
-                        k++;
-                    }
-                    if (k == wordLen) {
-                        found = true;
-                        break;
-                    }
-                }
-                if (found) {
-                    score++;
-                }
-            }
-            if (score > maxScore) {
-                maxScore = score;
-                bestIdx = i;
-            }
+        byte[][] wordsBytes = new byte[targetWordCount][];
+        for (int i = 0; i < targetWordCount; i++) {
+            wordsBytes[i] = words.get(i).getBytes(StandardCharsets.UTF_8);
         }
 
-        final int requiredScore = Math.max(1, (int) Math.ceil(words.size() * 0.4));
-        if (bestIdx >= 0 && maxScore >= requiredScore) {
-            for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
-                // Search for the video ID prefix after the best title match.
-                int index = byteIndexOf(buffer, VIDEO_ID_PREFIX_BYTES, bestIdx);
+        int byteTitleStartIndex = -1;
+        byte[] firstWordBytes = wordsBytes[0];
+        int fromIndex = 0;
 
-                if (index >= 0) {
-                    final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
-                    final int videoIdEnd = videoIdStart + 11;
-                    if (videoIdEnd <= buffer.length) {
-                        flyoutVideoId = new String(buffer, videoIdStart, 11, StandardCharsets.US_ASCII);
-                        return;
-                    }
+        while ((fromIndex = byteIndexOf(buffer, firstWordBytes, fromIndex)) != -1) {
+            int candidateStart = fromIndex;
+            int currentPos = candidateStart + firstWordBytes.length;
+            boolean fullMatch = true;
+
+            for (int i = 1; i < wordsBytes.length; i++) {
+                byte[] nextWordBytes = wordsBytes[i];
+                int nextWordIndex = byteIndexOf(buffer, nextWordBytes, currentPos);
+
+                if (nextWordIndex != -1 && (nextWordIndex - currentPos) <= 30) {
+                    currentPos = nextWordIndex + nextWordBytes.length;
+                } else {
+                    fullMatch = false;
+                    break;
                 }
+            }
+
+            if (fullMatch) {
+                byteTitleStartIndex = candidateStart;
+                break;
+            }
+
+            fromIndex++;
+        }
+
+        if (byteTitleStartIndex == -1) {
+            return;
+        }
+
+        for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
+            int index = byteIndexOf(buffer, VIDEO_ID_PREFIX_BYTES, byteTitleStartIndex);
+
+            if (index >= 0) {
+                final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
+                final int videoIdEnd = videoIdStart + VIDEO_ID_LENGTH;
+                if (videoIdEnd <= buffer.length) {
+                    flyoutVideoId = new String(
+                            buffer,
+                            videoIdStart,
+                            VIDEO_ID_LENGTH,
+                            StandardCharsets.US_ASCII
+                    );
+                }
+                return;
             }
         }
     }
@@ -1021,7 +1050,7 @@ public final class FlyoutUtils {
             flyoutPlaylistId = new String(
                     flyoutBuffer,
                     playlistIdStart,
-                    playlistIdEnd - playlistIdStart,
+                    playlistIdEnd - playlistIdStart - 1,
                     StandardCharsets.US_ASCII
             );
         }
@@ -1043,13 +1072,13 @@ public final class FlyoutUtils {
                     final byte b = buffer[curr];
                     final boolean isBase64 =
                             (b >= 'A' && b <= 'Z') ||
-                            (b >= 'a' && b <= 'z') ||
-                            (b >= '0' && b <= '9') ||
-                            b == '+' ||
-                            b == '/' ||
-                            b == '=' ||
-                            b == '-' ||
-                            b == '_';
+                                    (b >= 'a' && b <= 'z') ||
+                                    (b >= '0' && b <= '9') ||
+                                    b == '+' ||
+                                    b == '/' ||
+                                    b == '=' ||
+                                    b == '-' ||
+                                    b == '_';
 
                     if (isBase64) {
                         curr++;
@@ -1074,7 +1103,9 @@ public final class FlyoutUtils {
             }
 
             // Get the Comment ID from the fetched base64 decoded buffer.
-            byte[] byteBase64 = Base64.decode(Arrays.copyOfRange(buffer, bestStart, bestEnd), Base64.URL_SAFE);
+            byte[] byteBase64 = Base64.decode(
+                    Arrays.copyOfRange(buffer, bestStart, bestEnd), Base64.URL_SAFE
+            );
             final int base64VideoIdIndex = byteIndexOf(
                     byteBase64,
                     VideoInformation.getVideoId().getBytes(StandardCharsets.UTF_8)
@@ -1091,7 +1122,10 @@ public final class FlyoutUtils {
                     .trim();
 
             final int spaceIndex = cleanedCommentId.indexOf(' ');
-            flyoutCommentId = spaceIndex == -1 ? cleanedCommentId : cleanedCommentId.substring(0, spaceIndex);
+            flyoutCommentId =
+                    spaceIndex == -1
+                            ? cleanedCommentId
+                            : cleanedCommentId.substring(0, spaceIndex);
 
             // Reset 'flyoutCommentId' immediately after its fetching (when the comment
             // share flyout button is pressed), to prevent unintended usage.
@@ -1106,8 +1140,10 @@ public final class FlyoutUtils {
     }
 
     public static int byteIndexOf(byte[] haystack, byte[] needle, int startIndex) {
-        if (needle == null) return -1;
-        List<Integer> indices = byteIndexesOf(haystack, List.of(needle), startIndex);
+        if (needle == null) {
+            return -1;
+        }
+        List<Integer> indices = byteIndexesOf(haystack, Collections.singletonList(needle), startIndex);
         return indices.isEmpty() ? -1 : indices.get(0);
     }
 
@@ -1117,22 +1153,34 @@ public final class FlyoutUtils {
 
     public static List<Integer> byteIndexesOf(byte[] haystack, List<byte[]> needles, int startIndex) {
         List<Integer> indices = new ArrayList<>();
-        if (haystack == null || needles == null) {
+        if (haystack == null || needles == null || needles.isEmpty()) {
             return indices;
         }
 
+        final int start = Math.max(0, startIndex);
         final int haystackLen = haystack.length;
+        final int numNeedles = needles.size();
 
-        final boolean[] found = new boolean[needles.size()];
-        for (int i = startIndex; i < haystackLen; i++) {
-            for (int k = 0; k < needles.size(); k++) {
+        final boolean[] found = new boolean[numNeedles];
+        int foundCount = 0;
+
+        for (int i = start; i < haystackLen; i++) {
+            if (foundCount == numNeedles) {
+                break;
+            }
+
+            for (int k = 0; k < numNeedles; k++) {
+                if (found[k]) {
+                    continue;
+                }
+
                 byte[] needle = needles.get(k);
-                if (found[k] || needle == null) {
+                if (needle == null || needle.length == 0) {
                     continue;
                 }
 
                 final int needleLen = needle.length;
-                if (needleLen == 0 || i + needleLen > haystackLen) {
+                if (i + needleLen > haystackLen) {
                     continue;
                 }
 
@@ -1143,9 +1191,11 @@ public final class FlyoutUtils {
                         break;
                     }
                 }
+
                 if (match) {
                     indices.add(i);
                     found[k] = true;
+                    foundCount++;
                 }
             }
         }

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -45,25 +46,31 @@ public final class OpenSystemShareSheetPatch {
             return;
         }
 
-        final String prefixURL = (Settings.REPLACE_LINKS_WITH_SHORTENER.get()
-                ? "https://youtu.be/"
-                : "https://www.youtube.com/watch?v="
-        );
+        final String longURLPrefix = "https://www.youtube.com";
+        final Pair<String, String> videoURLPrefix = !Settings.REPLACE_LINKS_WITH_SHORTENER.get()
+                ? new Pair<>(longURLPrefix + "/watch?v=", "&")
+                : new Pair<>("https://youtu.be/", "?");
 
         final String intentUrl;
         // Make sure to check channelId at the end, since it is never reset.
         if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty()) {
-            intentUrl = "https://www.youtube.com/playlist?list=" + FlyoutUtils.getFlyoutPlaylistId();
+            intentUrl = longURLPrefix + "/playlist?list=" + FlyoutUtils.getFlyoutPlaylistId();
         } else if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
-            intentUrl = prefixURL + FlyoutUtils.getFlyoutVideoId();
+            intentUrl = videoURLPrefix.first + FlyoutUtils.getFlyoutVideoId();
         } else if (!FlyoutUtils.getFlyoutCommentId().isEmpty()) {
-            final String separator = (Settings.REPLACE_LINKS_WITH_SHORTENER.get() ? "?" : "&");
-            intentUrl = prefixURL + VideoInformation.getVideoId() + separator + "lc=" + FlyoutUtils.getFlyoutCommentId();
+            intentUrl =
+                    videoURLPrefix.first +
+                    VideoInformation.getVideoId() +
+                    videoURLPrefix.second +
+                    "lc=" +
+                    FlyoutUtils.getFlyoutCommentId();
+
+            FlyoutUtils.resetFlyoutCommentId();
         } else if (PlayerType.getCurrent().isMaximizedOrFullscreen() ||
                 ShortsPlayerState.isOpen()) {
-            intentUrl = prefixURL + VideoInformation.getVideoId();
+            intentUrl = videoURLPrefix.first + VideoInformation.getVideoId();
         } else if (!ChannelPageFlyoutFilter.getFlyoutChannelId().isEmpty()) {
-            intentUrl = "https://www.youtube.com/channel/" + ChannelPageFlyoutFilter.getFlyoutChannelId();
+            intentUrl = longURLPrefix + "/channel/" + ChannelPageFlyoutFilter.getFlyoutChannelId();
         } else {
             intentUrl = "";
         }
