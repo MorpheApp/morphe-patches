@@ -1270,7 +1270,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
             CommentReplyPaddingFeatureFlagFingerprint,
             IncognitoSearchPaddingFeatureFlagFingerprint
         ).forEach { fingerprint ->
-            fingerprint.clearMatch()
             fingerprint.matchAll().forEach {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
