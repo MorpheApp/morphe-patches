@@ -189,10 +189,12 @@ The behavior went away earlier in the search, so more than one flag may be invol
 Please update MicroG to the latest version v%2s."</string>
     <string name="gms_core_dialog_update_text">Update</string>
     <string name="gms_core_dialog_ignore_text">Ignore</string>
-    <string name="gms_core_dialog_conflict_message">"The installed MicroG is not recommended by Morphe :\n\n%1s\n\nTap to uninstall it, then reopen this app and install MicroG RE."</string>
-    <string name="gms_core_dialog_conflict_entry">• %1s (v%2s)</string>
-    <!-- Shown when the installed MicroG does not report a version name. -->
-    <string name="gms_core_dialog_conflict_entry_unknown_version">• %1s</string>
+    <string name="gms_core_dialog_conflict_message">"The installed MicroG is not recommended by Morphe:
+
+%1s
+
+Tap to uninstall it, then reopen this app and install MicroG RE."</string>
+    <string name="gms_core_dialog_conflict_entry" translatable="false">• %1s</string>
     <string name="gms_core_dialog_uninstall_text">Uninstall</string>
     <!-- "Don't kill my app" should be kept in English and not translated -->
     <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG does not have permission to run in the background.

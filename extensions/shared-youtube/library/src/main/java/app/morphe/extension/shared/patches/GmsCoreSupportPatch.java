@@ -34,15 +34,16 @@ import android.provider.Settings;
 import android.util.Pair;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -244,15 +245,17 @@ public class GmsCoreSupportPatch {
             if (!officialGmsCoreInstalled && !conflictsIgnored) {
                 Logger.printInfo(() -> "GmsCore was not found");
 
-                // A MicroG that is only installed for another user cannot be seen or removed from
-                // here, but it keeps MicroG-RE from being installed, so every MicroG is asked to
-                // be uninstalled for all users before the user is sent to the download page.
-                // All requests are sent at once, because the system stacks their confirmation
-                // dialogs and the user confirms them one after the other. They are sent in reverse
-                // order, so the most likely MicroG is shown as the first dialog.
-                final String[] microGPackageNames = getMicroGPackageNames();
-                for (int i = microGPackageNames.length - 1; i >= 0; i--) {
-                    uninstallForAllUsers(context, microGPackageNames[i]);
+                // Ask to uninstall only MicroG packages that are installed for any user,
+                // so we don't trigger "App not found" warnings for uninstalled packages.
+                List<String> installedPackageNames = new ArrayList<>();
+                for (VariantPackage variant : variants) {
+                    if (!installedPackageNames.contains(variant.packageName)) {
+                        installedPackageNames.add(variant.packageName);
+                    }
+                }
+
+                for (int i = installedPackageNames.size() - 1; i >= 0; i--) {
+                    uninstallForAllUsers(context, installedPackageNames.get(i));
                 }
 
                 // Cannot show a dialog and must show a toast,
@@ -263,7 +266,7 @@ public class GmsCoreSupportPatch {
                 // user. Opening it earlier would put the page in front of the dialogs and leave the
                 // uninstall requests unconfirmed.
                 Utils.runOnMainThreadDelayed(() -> open(context, getGmsCoreDownload()),
-                        UNINSTALL_PROMPT_DELAY_MILLIS * (microGPackageNames.length + 1));
+                        UNINSTALL_PROMPT_DELAY_MILLIS * (installedPackageNames.size() + 1));
                 return;
             }
 
@@ -291,9 +294,7 @@ public class GmsCoreSupportPatch {
             }
 
             // Check if GmsCore is currently running in the background.
-            var client = context.getContentResolver().acquireContentProviderClient(GMS_CORE_PROVIDER);
-            //noinspection TryFinallyCanBeTryWithResources
-            try {
+            try (var client = context.getContentResolver().acquireContentProviderClient(GMS_CORE_PROVIDER)) {
                 if (client == null) {
                     Logger.printInfo(() -> "GmsCore is not running in the background");
 
@@ -306,8 +307,6 @@ public class GmsCoreSupportPatch {
                                 (dialog, id) -> openDontKillMyApp(context));
                     }
                 }
-            } finally {
-                if (client != null) client.close();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "checkGmsCore failure", ex);
@@ -325,20 +324,20 @@ public class GmsCoreSupportPatch {
 
         scanUser(context, currentUserId, null, variants);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            try {
-                UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
-                if (userManager != null) {
-                    List<UserHandle> profiles = userManager.getUserProfiles();
-                    for (UserHandle handle : profiles) {
-                        int userId = userHandleIdentifier(handle);
-                        if (userId < 0 || userId == currentUserId) continue;
-                        scanUser(context, userId, handle, variants);
-                    }
+        try {
+            // noinspection WrongConstant
+            UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
+            if (userManager != null) {
+                List<UserHandle> profiles = userManager.getUserProfiles();
+                for (UserHandle handle : profiles) {
+                    int userId = userHandleIdentifier(handle);
+                    if (userId < 0 || userId == currentUserId) continue;
+                    scanUser(context, userId, handle, variants);
                 }
-            } catch (Exception ignored) {
-                // A profile that cannot be listed has no installs that can be found.
             }
+        } catch (Exception ex) {
+            // A profile that cannot be listed has no installs that can be found.
+            Logger.printInfo(() -> "Could not check for MicroG variants", ex);
         }
 
         return variants;
@@ -373,8 +372,8 @@ public class GmsCoreSupportPatch {
             PackageInfo info = getPackageInfoForUser(context, packageName, userId, handle);
             if (info == null) continue;
 
-            boolean officialMicroG =
-                    packageName.equals(GMS_CORE_PACKAGE_NAME) && isOfficialMicroG(info);
+            final boolean officialMicroG = packageName.equals(GMS_CORE_PACKAGE_NAME)
+                    && isOfficialMicroG(info);
 
             variants.add(new VariantPackage(packageName, userId, info.versionName, officialMicroG));
         }
@@ -403,8 +402,6 @@ public class GmsCoreSupportPatch {
                 // Direct call; available in every SDK.
                 return context.getPackageManager().getPackageInfo(packageName, signatureFlags());
             } catch (PackageManager.NameNotFoundException ex) {
-                return null;
-            } catch (Exception ex) {
                 return null;
             }
         }
@@ -567,6 +564,7 @@ public class GmsCoreSupportPatch {
 
         StringBuilder signature = new StringBuilder();
         for (String entry : entries) {
+            //noinspection SizeReplaceableByIsEmpty
             if (signature.length() > 0) signature.append(';');
             signature.append(entry);
         }
@@ -584,6 +582,7 @@ public class GmsCoreSupportPatch {
         Utils.runOnMainThreadDelayed(() -> {
             StringBuilder list = new StringBuilder();
             for (VariantPackage variant : conflicts) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (list.length() > 0) list.append('\n');
                 list.append(variant);
             }
@@ -591,8 +590,7 @@ public class GmsCoreSupportPatch {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
                     str("gms_core_dialog_title"), // Title.
-                    String.format(Locale.ROOT,
-                            str("gms_core_dialog_conflict_message"), list), // Message.
+                    str("gms_core_dialog_conflict_message", list), // Message.
                     null, // No EditText.
                     str("gms_core_dialog_uninstall_text"), // Uninstall button text.
                     () -> uninstallConflictingMicroG(context, conflicts), // Uninstall action.
@@ -617,7 +615,7 @@ public class GmsCoreSupportPatch {
      */
     private static void uninstallConflictingMicroG(Activity context, List<VariantPackage> conflicts) {
         // Ask to uninstall each package only once, even when it is installed for several users,
-        // since the uninstall removes it for every user at once.
+        // since uninstalling removes it for every user at once.
         List<String> packageNames = new ArrayList<>();
         for (VariantPackage variant : conflicts) {
             if (!packageNames.contains(variant.packageName)) {
@@ -625,8 +623,8 @@ public class GmsCoreSupportPatch {
             }
         }
 
-        for (int i = 0; i < packageNames.size(); i++) {
-            final String packageName = packageNames.get(i);
+        for (int i = 0, size = packageNames.size(); i < size; i++) {
+            String packageName = packageNames.get(i);
             Utils.runOnMainThreadDelayed(() -> uninstallForAllUsers(context, packageName),
                     UNINSTALL_PROMPT_DELAY_MILLIS * i);
         }
@@ -636,50 +634,36 @@ public class GmsCoreSupportPatch {
      * Asks the system uninstaller to remove the package for every user, since copies that are
      * installed for another user cannot be removed from here, but still keep MicroG-RE from being
      * installed or working.
-     * <p>
-     * A package that is not installed at all is reported by the system with an "app not found"
-     * message, which is the only way an app can tell that state apart from a copy of another user.
      */
     private static void uninstallForAllUsers(Context context, String packageName) {
         try {
+            //noinspection deprecation
             Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE,
                     Uri.parse("package:" + packageName));
             intent.putExtra(EXTRA_UNINSTALL_ALL_USERS, true);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
             // The system uninstaller is part of every device, so this cannot normally happen.
+            Logger.printInfo(() -> "Could not uninstall: " + packageName, ex);
         }
     }
 
     /**
      * A MicroG / Google Play services install found on the device.
+     *
+     * @param officialMicroG True if this is MicroG-RE signed by the official key.
      */
-    private static class VariantPackage {
-        final String packageName;
-        final int userId;
-        @Nullable
-        final String versionName;
-        /** True if this is MicroG-RE signed by the official key. */
-        final boolean officialMicroG;
+    private record VariantPackage(String packageName, int userId, @Nullable String versionName,
+                                  boolean officialMicroG) {
 
-        VariantPackage(String packageName, int userId, @Nullable String versionName,
-                       boolean officialMicroG) {
-            this.packageName = packageName;
-            this.userId = userId;
-            this.versionName = versionName;
-            this.officialMicroG = officialMicroG;
-        }
-
+        @NonNull
         @Override
         public String toString() {
-            // The uninstall removes the package for every user, so the user it belongs to does
-            // not have to be stated here.
-            return versionName == null
-                    ? String.format(Locale.ROOT,
-                            str("gms_core_dialog_conflict_entry_unknown_version"), packageName)
-                    : String.format(Locale.ROOT, str("gms_core_dialog_conflict_entry"),
-                            packageName, versionName);
+            // Uninstall removes the package for every user,
+            // so the user it belongs to does not have to be stated here.
+            return Utils.getTextDirectionString() + str("gms_core_dialog_conflict_entry",
+                    (versionName == null) ? packageName : versionName);
         }
     }
 
@@ -690,8 +674,7 @@ public class GmsCoreSupportPatch {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
                     str("gms_core_dialog_title"), // Title.
-                    String.format(Locale.ROOT,
-                            str("gms_core_dialog_outdated_message"), installedVersion, latestVersion), // Message.
+                    str("gms_core_dialog_outdated_message", installedVersion, latestVersion), // Message.
                     null, // No EditText.
                     str("gms_core_dialog_update_text"), // Update button text.
                     () -> open(context, getGmsCoreDownload()), // Update action.
@@ -734,8 +717,9 @@ public class GmsCoreSupportPatch {
                 }
 
                 Utils.runOnMainThread(() -> showOutdatedMicroGDialog(context, installedVersionName, latestVersionName));
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
                 // MicroG keeps working, so a failed check is only informational.
+                Logger.printInfo(() -> "Could not check for MicroG update", ex);
             }
         });
     }
