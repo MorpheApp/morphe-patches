@@ -755,7 +755,10 @@ public class GmsCoreSupportPatch {
         int[] av = parseVersion(a);
         int[] bv = parseVersion(b);
         if (av == null || bv == null) return 0;
-        for (int i = 0; i < 3; i++) {
+        // Intentionally only check major and minor version,
+        // to avoid nagging the user about 0.0.x updates.
+        final int groupsToCheck = 2;
+        for (int i = 0; i < groupsToCheck; i++) {
             if (av[i] != bv[i]) return Integer.compare(av[i], bv[i]);
         }
         return 0;
