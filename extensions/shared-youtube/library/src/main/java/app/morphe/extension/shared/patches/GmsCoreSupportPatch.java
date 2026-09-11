@@ -11,6 +11,7 @@
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.GMS_CORE_IGNORED_CONFLICTS;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.GMS_CORE_IGNORED_VERSION;
 
 import android.annotation.SuppressLint;
@@ -20,10 +21,15 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
+import android.os.Process;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.util.Pair;
 import android.widget.LinearLayout;
@@ -36,6 +42,11 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.lang.reflect.Method;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
@@ -68,6 +79,38 @@ public class GmsCoreSupportPatch {
      */
     private static final String MICROG_LATEST_RELEASE_API_URL =
             "https://api.github.com/repos/MorpheApp/MicroG-RE/releases/latest";
+
+    /**
+     * SHA-256 digest of the signing certificate used by official MicroG-RE releases.
+     * Verified against the release APKs (e.g. 7.1.0 and 7.1.1).
+     */
+    private static final String OFFICIAL_MICROG_SIGNING_CERT_SHA256 =
+            "0b6c9515afb195fac59601696ba0a7907a0b217ccf720b43148427ccf64343e7";
+
+    /**
+     * Other package names that may hold a different MicroG install, which prevents MicroG-RE
+     * from being installed or working correctly.
+     * <p>
+     * Google Play services is deliberately not checked: only a rooted or signature spoofing
+     * setup can install another MicroG under that name, and genuine Google Play services
+     * coexists with MicroG-RE without any problem.
+     */
+    private static final String[] CONFLICTING_GMS_PACKAGE_NAMES = {
+            "com.mgoogle.android.gms",  // Older MicroG spoof builds.
+            "org.microg.gms",           // Alternate MicroG package name.
+    };
+
+    /**
+     * Platform extra (hidden from the public SDK) that makes the system uninstaller remove the
+     * package for every user instead of only the current one.
+     */
+    private static final String EXTRA_UNINSTALL_ALL_USERS =
+            "android.intent.extra.UNINSTALL_ALL_USERS";
+
+    /**
+     * Delay between two uninstall requests, so the system can show each of them.
+     */
+    private static final long UNINSTALL_PROMPT_DELAY_MILLIS = 1500;
 
     /**
      * If a manufacturer specific page exists on DontKillMyApp.
@@ -166,21 +209,69 @@ public class GmsCoreSupportPatch {
                 return;
             }
 
-            // Verify GmsCore is installed.
-            try {
-                PackageManager manager = context.getPackageManager();
-                manager.getPackageInfo(GMS_CORE_PACKAGE_NAME, PackageManager.GET_ACTIVITIES);
-            } catch (PackageManager.NameNotFoundException exception) {
+            // Find every MicroG install and verify the installed MicroG-RE is signed by the
+            // official key, since an install signed by another key cannot be updated.
+            List<VariantPackage> variants = findMicroGVariants(context);
+            List<VariantPackage> conflicts = new ArrayList<>();
+            boolean officialGmsCoreInstalled = false;
+            for (VariantPackage variant : variants) {
+                if (variant.officialMicroG) {
+                    if (variant.userId == currentUserId()) {
+                        officialGmsCoreInstalled = true;
+                    }
+                } else {
+                    conflicts.add(variant);
+                }
+            }
+
+            // A conflicting install (MicroG-RE signed by a different key, or another MicroG
+            // under a different package name) prevents MicroG-RE from being installed or
+            // working, and should be removed first. The user can also keep using the app with
+            // the conflicting installs, which is remembered until they change.
+            boolean conflictsIgnored = false;
+            if (!conflicts.isEmpty()) {
+                final String conflictsSignature = conflictSignature(conflicts);
+                conflictsIgnored = conflictsSignature.equals(GMS_CORE_IGNORED_CONFLICTS.get());
+
+                if (!conflictsIgnored) {
+                    showMicroGConflictDialog(context, conflicts, conflictsSignature);
+                    return;
+                }
+            }
+
+            // Verify MicroG-RE is installed. Conflicting installs that were ignored are
+            // accepted as well, since they still provide GmsCore.
+            if (!officialGmsCoreInstalled && !conflictsIgnored) {
                 Logger.printInfo(() -> "GmsCore was not found");
+
+                // A MicroG that is only installed for another user cannot be seen or removed from
+                // here, but it keeps MicroG-RE from being installed, so every MicroG is asked to
+                // be uninstalled for all users before the user is sent to the download page.
+                // All requests are sent at once, because the system stacks their confirmation
+                // dialogs and the user confirms them one after the other. They are sent in reverse
+                // order, so the most likely MicroG is shown as the first dialog.
+                final String[] microGPackageNames = getMicroGPackageNames();
+                for (int i = microGPackageNames.length - 1; i >= 0; i--) {
+                    uninstallForAllUsers(context, microGPackageNames[i]);
+                }
+
                 // Cannot show a dialog and must show a toast,
                 // because on some installations the app crashes before a dialog can be displayed.
                 Utils.showToastLong(str("gms_core_toast_not_installed_message"));
-                open(context, getGmsCoreDownload());
+
+                // The download page is opened only after every confirmation dialog was sent to the
+                // user. Opening it earlier would put the page in front of the dialogs and leave the
+                // uninstall requests unconfirmed.
+                Utils.runOnMainThreadDelayed(() -> open(context, getGmsCoreDownload()),
+                        UNINSTALL_PROMPT_DELAY_MILLIS * (microGPackageNames.length + 1));
                 return;
             }
 
-            // Check if GmsCore is outdated.
-            checkForMicroGUpdate(context);
+            // Check if GmsCore is outdated. An install signed by a different key cannot be
+            // updated by installing a MicroG-RE release, so it is not asked to update.
+            if (officialGmsCoreInstalled) {
+                checkForMicroGUpdate(context);
+            }
 
             // Check if GmsCore is whitelisted from battery optimizations.
             if (isAndroidAutomotive(context)) {
@@ -223,6 +314,375 @@ public class GmsCoreSupportPatch {
         }
     }
 
+    /**
+     * Finds every MicroG / Google Play services install that could conflict with MicroG-RE.
+     * The current user is always scanned, and so is every profile of it the app is allowed to
+     * query (such as the work profile).
+     */
+    private static List<VariantPackage> findMicroGVariants(Context context) {
+        List<VariantPackage> variants = new ArrayList<>();
+        final int currentUserId = currentUserId();
+
+        scanUser(context, currentUserId, null, variants);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            try {
+                UserManager userManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
+                if (userManager != null) {
+                    List<UserHandle> profiles = userManager.getUserProfiles();
+                    for (UserHandle handle : profiles) {
+                        int userId = userHandleIdentifier(handle);
+                        if (userId < 0 || userId == currentUserId) continue;
+                        scanUser(context, userId, handle, variants);
+                    }
+                }
+            } catch (Exception ignored) {
+                // A profile that cannot be listed has no installs that can be found.
+            }
+        }
+
+        return variants;
+    }
+
+    /**
+     * @return Every package name that can hold a MicroG install, without duplicates.
+     */
+    private static String[] getMicroGPackageNames() {
+        List<String> packageNames = new ArrayList<>();
+        addPackageName(packageNames, GMS_CORE_PACKAGE_NAME);
+        for (String packageName : CONFLICTING_GMS_PACKAGE_NAMES) {
+            addPackageName(packageNames, packageName);
+        }
+        return packageNames.toArray(new String[0]);
+    }
+
+    private static void addPackageName(List<String> packageNames, @Nullable String packageName) {
+        if (packageName != null && !packageNames.contains(packageName)) {
+            packageNames.add(packageName);
+        }
+    }
+
+    /**
+     * Records every candidate package that is installed for the given user.
+     *
+     * @param handle The user handle of that user, or null when it is not known.
+     */
+    private static void scanUser(Context context, int userId, @Nullable UserHandle handle,
+                                 List<VariantPackage> variants) {
+        for (String packageName : getMicroGPackageNames()) {
+            PackageInfo info = getPackageInfoForUser(context, packageName, userId, handle);
+            if (info == null) continue;
+
+            boolean officialMicroG =
+                    packageName.equals(GMS_CORE_PACKAGE_NAME) && isOfficialMicroG(info);
+
+            variants.add(new VariantPackage(packageName, userId, info.versionName, officialMicroG));
+        }
+    }
+
+    /**
+     * @return The user id of the current process.
+     */
+    private static int currentUserId() {
+        return Process.myUid() / 100000;
+    }
+
+    /**
+     * Queries a package for the given user. The current user is queried directly, other users are
+     * queried through a context scoped to that user when the device allows it, and otherwise
+     * through the hidden {@code PackageManager.getPackageInfoAsUser}.
+     *
+     * @return The package information, or null when the package is not installed for that user
+     *         or when that user cannot be queried at all.
+     */
+    @Nullable
+    private static PackageInfo getPackageInfoForUser(Context context, String packageName, int userId,
+                                                     @Nullable UserHandle handle) {
+        if (userId == currentUserId()) {
+            try {
+                // Direct call; available in every SDK.
+                return context.getPackageManager().getPackageInfo(packageName, signatureFlags());
+            } catch (PackageManager.NameNotFoundException ex) {
+                return null;
+            } catch (Exception ex) {
+                return null;
+            }
+        }
+
+        // Public API: use a context scoped to the other user.
+        if (handle != null && CREATE_CONTEXT_AS_USER != null) {
+            try {
+                Context userContext = (Context) CREATE_CONTEXT_AS_USER.invoke(context, handle, 0);
+                if (userContext != null) {
+                    return userContext.getPackageManager()
+                            .getPackageInfo(packageName, signatureFlags());
+                }
+            } catch (Exception ex) {
+                if (ex.getCause() instanceof PackageManager.NameNotFoundException) return null;
+            }
+        }
+
+        // Hidden API fallback, not available to every app.
+        if (PACKAGE_MANAGER_GET_PACKAGE_INFO_AS_USER == null) {
+            return null;
+        }
+        try {
+            return (PackageInfo) PACKAGE_MANAGER_GET_PACKAGE_INFO_AS_USER.invoke(
+                    context.getPackageManager(), packageName, signatureFlags(), userId);
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    /**
+     * @return The id of the given user handle, or -1 if it cannot be resolved.
+     */
+    private static int userHandleIdentifier(UserHandle handle) {
+        try {
+            if (USER_HANDLE_GET_IDENTIFIER == null) return -1;
+            return (int) USER_HANDLE_GET_IDENTIFIER.invoke(handle);
+        } catch (Exception ex) {
+            return -1;
+        }
+    }
+
+    /**
+     * Public API since API 24, but missing from some compile SDKs. Resolved lazily at runtime.
+     */
+    @Nullable
+    private static final Method CREATE_CONTEXT_AS_USER = getCreateContextAsUserMethod();
+
+    /**
+     * Hidden API, resolved lazily at runtime and skipped when it is not available.
+     */
+    @Nullable
+    private static final Method PACKAGE_MANAGER_GET_PACKAGE_INFO_AS_USER = getPackageInfoAsUserMethod();
+
+    /**
+     * Hidden API, resolved lazily at runtime and skipped when it is not available.
+     */
+    @Nullable
+    private static final Method USER_HANDLE_GET_IDENTIFIER = getUserHandleIdentifierMethod();
+
+    @Nullable
+    private static Method getCreateContextAsUserMethod() {
+        try {
+            return Context.class.getMethod("createContextAsUser", UserHandle.class, int.class);
+        } catch (NoSuchMethodException ex) {
+            return null;
+        }
+    }
+
+    @Nullable
+    private static Method getPackageInfoAsUserMethod() {
+        try {
+            return PackageManager.class.getMethod(
+                    "getPackageInfoAsUser", String.class, int.class, int.class);
+        } catch (NoSuchMethodException ex) {
+            return null;
+        }
+    }
+
+    @Nullable
+    private static Method getUserHandleIdentifierMethod() {
+        try {
+            return UserHandle.class.getMethod("getIdentifier");
+        } catch (NoSuchMethodException ex) {
+            return null;
+        }
+    }
+
+    private static int signatureFlags() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            return PackageManager.GET_SIGNING_CERTIFICATES;
+        }
+        return PackageManager.GET_SIGNATURES;
+    }
+
+    /**
+     * @return If the package is signed by the official MicroG-RE signing key.
+     */
+    private static boolean isOfficialMicroG(PackageInfo packageInfo) {
+        return matchesSigningCert(packageInfo, OFFICIAL_MICROG_SIGNING_CERT_SHA256);
+    }
+
+    /**
+     * @return If any certificate of the package, including the certificates of a signing key
+     *         rotation, matches the expected SHA-256 digest.
+     */
+    private static boolean matchesSigningCert(PackageInfo packageInfo, String expectedSha256) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                if (packageInfo.signingInfo == null) return false;
+                if (matchesAnySigningCert(packageInfo.signingInfo.getApkContentsSigners(), expectedSha256)) {
+                    return true;
+                }
+                // A rotated signing key keeps the old certificate in the history.
+                return matchesAnySigningCert(packageInfo.signingInfo.getSigningCertificateHistory(),
+                        expectedSha256);
+            }
+            return matchesAnySigningCert(packageInfo.signatures, expectedSha256);
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    private static boolean matchesAnySigningCert(@Nullable Signature[] signatures, String expectedSha256) {
+        if (signatures == null) return false;
+        for (Signature signature : signatures) {
+            if (expectedSha256.equalsIgnoreCase(sha256Hex(signature.toByteArray()))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Nullable
+    private static String sha256Hex(byte[] data) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(data);
+            StringBuilder sb = new StringBuilder(hash.length * 2);
+            for (byte b : hash) {
+                sb.append(Character.forDigit((b >> 4) & 0xF, 16));
+                sb.append(Character.forDigit(b & 0xF, 16));
+            }
+            return sb.toString();
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
+    /**
+     * @return A value that identifies the conflicting installs, used to remember which installs
+     *         the user chose to ignore. Installing or updating a MicroG variant changes it,
+     *         which asks again.
+     */
+    private static String conflictSignature(List<VariantPackage> conflicts) {
+        List<String> entries = new ArrayList<>();
+        for (VariantPackage variant : conflicts) {
+            entries.add(variant.packageName + "@" + variant.userId + "@" + variant.versionName);
+        }
+        Collections.sort(entries);
+
+        StringBuilder signature = new StringBuilder();
+        for (String entry : entries) {
+            if (signature.length() > 0) signature.append(';');
+            signature.append(entry);
+        }
+        return signature.toString();
+    }
+
+    /**
+     * Shows a dialog listing every conflicting MicroG install, with an action to uninstall them
+     * all before installing MicroG-RE, and an action to keep using the app as it is.
+     */
+    private static void showMicroGConflictDialog(Activity context, List<VariantPackage> conflicts,
+                                                 String conflictsSignature) {
+        // Use a delay to allow the activity to finish initializing.
+        // Otherwise, if device is in dark mode the dialog is shown with wrong color scheme.
+        Utils.runOnMainThreadDelayed(() -> {
+            StringBuilder list = new StringBuilder();
+            for (VariantPackage variant : conflicts) {
+                if (list.length() > 0) list.append('\n');
+                list.append(variant);
+            }
+
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    context,
+                    str("gms_core_dialog_title"), // Title.
+                    String.format(Locale.ROOT,
+                            str("gms_core_dialog_conflict_message"), list), // Message.
+                    null, // No EditText.
+                    str("gms_core_dialog_uninstall_text"), // Uninstall button text.
+                    () -> uninstallConflictingMicroG(context, conflicts), // Uninstall action.
+                    null, // No Cancel button.
+                    str("gms_core_dialog_ignore_text"), // Ignore button text.
+                    // Remember which installs were ignored, and only ask again when they change.
+                    () -> GMS_CORE_IGNORED_CONFLICTS.save(conflictsSignature), // Ignore action.
+                    true // Dismiss dialog when the Ignore button is clicked.
+            );
+
+            Dialog dialog = dialogPair.first;
+            dialog.setCancelable(true);
+            Utils.showDialog(context, dialog);
+        }, 100);
+    }
+
+    /**
+     * Starts the system uninstall flow for every conflicting package, spacing out the
+     * confirmation prompts so each one can appear. Every copy of the package is removed,
+     * including copies installed for other users. After all are removed, reopening the app
+     * will prompt to install the official MicroG-RE.
+     */
+    private static void uninstallConflictingMicroG(Activity context, List<VariantPackage> conflicts) {
+        // Ask to uninstall each package only once, even when it is installed for several users,
+        // since the uninstall removes it for every user at once.
+        List<String> packageNames = new ArrayList<>();
+        for (VariantPackage variant : conflicts) {
+            if (!packageNames.contains(variant.packageName)) {
+                packageNames.add(variant.packageName);
+            }
+        }
+
+        for (int i = 0; i < packageNames.size(); i++) {
+            final String packageName = packageNames.get(i);
+            Utils.runOnMainThreadDelayed(() -> uninstallForAllUsers(context, packageName),
+                    UNINSTALL_PROMPT_DELAY_MILLIS * i);
+        }
+    }
+
+    /**
+     * Asks the system uninstaller to remove the package for every user, since copies that are
+     * installed for another user cannot be removed from here, but still keep MicroG-RE from being
+     * installed or working.
+     * <p>
+     * A package that is not installed at all is reported by the system with an "app not found"
+     * message, which is the only way an app can tell that state apart from a copy of another user.
+     */
+    private static void uninstallForAllUsers(Context context, String packageName) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE,
+                    Uri.parse("package:" + packageName));
+            intent.putExtra(EXTRA_UNINSTALL_ALL_USERS, true);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception ignored) {
+            // The system uninstaller is part of every device, so this cannot normally happen.
+        }
+    }
+
+    /**
+     * A MicroG / Google Play services install found on the device.
+     */
+    private static class VariantPackage {
+        final String packageName;
+        final int userId;
+        @Nullable
+        final String versionName;
+        /** True if this is MicroG-RE signed by the official key. */
+        final boolean officialMicroG;
+
+        VariantPackage(String packageName, int userId, @Nullable String versionName,
+                       boolean officialMicroG) {
+            this.packageName = packageName;
+            this.userId = userId;
+            this.versionName = versionName;
+            this.officialMicroG = officialMicroG;
+        }
+
+        @Override
+        public String toString() {
+            // The uninstall removes the package for every user, so the user it belongs to does
+            // not have to be stated here.
+            return versionName == null
+                    ? String.format(Locale.ROOT,
+                            str("gms_core_dialog_conflict_entry_unknown_version"), packageName)
+                    : String.format(Locale.ROOT, str("gms_core_dialog_conflict_entry"),
+                            packageName, versionName);
+        }
+    }
+
     private static void showOutdatedMicroGDialog(Activity context, String installedVersion, String latestVersion) {
         // Use a delay to allow the activity to finish initializing.
         // Otherwise, if device is in dark mode the dialog is shown with wrong color scheme.
@@ -258,7 +718,6 @@ public class GmsCoreSupportPatch {
                         .getPackageInfo(GMS_CORE_PACKAGE_NAME, 0).versionName;
                 if (installedVersionName == null || parseVersion(installedVersionName) == null) {
                     // Unknown installed version format, do not nag the user.
-                    Logger.printInfo(() -> "Unknown installed version: " + installedVersionName);
                     return;
                 }
 
@@ -274,11 +733,9 @@ public class GmsCoreSupportPatch {
                     return;
                 }
 
-                Logger.printInfo(() -> "MicroG is outdated, installed: " + installedVersionName
-                        + " latest: " + latestVersionName);
                 Utils.runOnMainThread(() -> showOutdatedMicroGDialog(context, installedVersionName, latestVersionName));
-            } catch (Exception ex) {
-                Logger.printInfo(() -> "Could not check MicroG update: " + ex);
+            } catch (Exception ignored) {
+                // MicroG keeps working, so a failed check is only informational.
             }
         });
     }
@@ -295,7 +752,6 @@ public class GmsCoreSupportPatch {
         connection.setReadTimeout(5000);
         final int responseCode = connection.getResponseCode();
         if (responseCode != HttpURLConnection.HTTP_OK) {
-            Logger.printInfo(() -> "Could not fetch release version, response code: " + responseCode);
             connection.disconnect();
             return null;
         }
@@ -303,7 +759,6 @@ public class GmsCoreSupportPatch {
             // The latest release endpoint returns the newest stable (non-prerelease) tag.
             return Requester.parseJSONObjectAndDisconnect(connection).optString("tag_name", null);
         } catch (JSONException ex) {
-            Logger.printInfo(() -> "Could not parse release version", ex);
             return null;
         }
     }
