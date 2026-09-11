@@ -849,9 +849,14 @@ public class Settings extends SharedYouTubeSettings {
             MINIPLAYER_TYPE.resetToDefault();
         }
 
-        // Force flag off 21.30+ causes many problems including app crashes
+        // 21.30+ causes many problems including app crashes
         if (VersionCheckPatch.IS_21_30_OR_GREATER && !RESTORE_OLD_SETTINGS_MENUS.isSetToDefault()) {
             RESTORE_OLD_SETTINGS_MENUS.resetToDefault();
+        }
+
+        // 21.36+ has many visual glitches and problems with old thin player icons
+        if (VersionCheckPatch.IS_21_36_OR_GREATER && !RESTORE_OLD_PLAYER_BUTTONS.isSetToDefault()) {
+            RESTORE_OLD_PLAYER_BUTTONS.resetToDefault();
         }
 
         // Android XR, Android XR Downgraded, and visionOS 1.03 are not selectable in the settings and are selected by spoof stream patch if needed.

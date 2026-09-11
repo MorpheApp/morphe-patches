@@ -252,7 +252,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
     )
 
     execute {
-        if (is_20_31_or_greater) {
+        if (is_20_31_or_greater && !is_21_36_or_greater) {
             PreferenceScreen.PLAYER.addPreferences(
                 SwitchPreference("morphe_restore_old_player_buttons", summary = true)
             )
