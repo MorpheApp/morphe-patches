@@ -927,7 +927,7 @@ public final class FlyoutUtils {
                 byte[] nextWordBytes = wordsBytes[i];
                 int nextWordIndex = byteIndexOf(buffer, nextWordBytes, currentPos);
 
-                if (nextWordIndex != -1 && (nextWordIndex - currentPos) <= 20) {
+                if (nextWordIndex != -1 && (nextWordIndex - currentPos) <= 30) {
                     currentPos = nextWordIndex + nextWordBytes.length;
                 } else {
                     fullMatch = false;
