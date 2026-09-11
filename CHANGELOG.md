@@ -1,3 +1,11 @@
+## [1.42.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.1...v1.42.1-dev.2) (2026-09-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - FlyoutUtils:** Injected buttons are shown in collaborators panel ([#2867](https://github.com/MorpheApp/morphe-patches/issues/2867)) ([b595f8d](https://github.com/MorpheApp/morphe-patches/commit/b595f8d60023b127a67c4238bf285e12ebeee427))
+* **YouTube - Hide layout components:** Fix UI padding in comment replies and incognito search ([#2891](https://github.com/MorpheApp/morphe-patches/issues/2891)) ([59485db](https://github.com/MorpheApp/morphe-patches/commit/59485db96f29c9fa458ceca5f29e1754197220f4))
+* **YouTube - Loop video:** Respect sleep timer end of video state ([#2890](https://github.com/MorpheApp/morphe-patches/issues/2890)) ([9f4f2a8](https://github.com/MorpheApp/morphe-patches/commit/9f4f2a8a6a8bef2627f8809cdec5b9b40773855a))
+
 ## [1.42.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0...v1.42.1-dev.1) (2026-09-10)
 
 ### 🐛 Bug Fixes
