@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.loop
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
@@ -25,7 +26,10 @@ internal object SleepTimerCancelMethodFingerprint : Fingerprint(
 
 internal object SleepTimerConstructorFingerprint : Fingerprint(
     classFingerprint = SleepTimerCancelMethodFingerprint,
-    name = "<init>"
+    name = "<init>",
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+    )
 )
 
 internal object SleepTimerVideoEndedEventFingerprint : Fingerprint(

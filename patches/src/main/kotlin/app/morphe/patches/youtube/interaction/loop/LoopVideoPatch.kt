@@ -11,11 +11,11 @@
 package app.morphe.patches.youtube.interaction.loop
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -23,7 +23,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.playerStatusMethodRef
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
-import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -31,7 +30,6 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LoopVideoPatch;"
@@ -45,7 +43,8 @@ val loopVideoPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         loopVideoButtonPatch,
-        videoInformationPatch
+        videoInformationPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -105,7 +104,7 @@ val loopVideoPatch = bytecodePatch(
                             null,
                             MutableMethodImplementation(3),
                         ).toMutable().apply {
-                            addInstructions(
+                            addInstructionsWithLabels(
                                 0,
                                 """
                                     iget-object v0, p0, $stateFieldRef
@@ -126,12 +125,10 @@ val loopVideoPatch = bytecodePatch(
 
         SleepTimerConstructorFingerprint.matchAll().forEach { match ->
             match.method.apply {
-                val index = indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>"
-                } + 1
                 addInstruction(
-                    index,
-                    "invoke-static { p0 }, $EXTENSION_CLASS->setSleepTimerController($EXTENSION_SLEEP_TIMER_INTERFACE)V"
+                    match.instructionMatches.first().index + 1,
+                    "invoke-static { p0 }, $EXTENSION_CLASS->" +
+                            "setSleepTimerController($EXTENSION_SLEEP_TIMER_INTERFACE)V"
                 )
             }
         }
