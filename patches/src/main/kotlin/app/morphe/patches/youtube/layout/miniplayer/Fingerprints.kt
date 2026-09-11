@@ -380,3 +380,31 @@ internal object ShowMiniplayerCommandFingerprint: Fingerprint(
         literal(121253L)
     )
 )
+
+internal object MiniplayerLegacyControlsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "controls_layout"),
+        checkCast("Landroid/view/ViewGroup;", location = MatchAfterWithin(5))
+    )
+)
+
+internal object MiniplayerLegacyControlsVisibilityFingerprint : Fingerprint(
+    classFingerprint = MiniplayerLegacyControlsFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Landroid/view/ViewGroup;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;"
+        ),
+        literal(8, location = MatchAfterWithin(6)),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/view/ViewGroup;->setVisibility(I)V",
+            location = MatchAfterImmediately()
+        )
+    )
+)

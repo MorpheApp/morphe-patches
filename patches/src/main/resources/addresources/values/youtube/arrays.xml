@@ -397,6 +397,16 @@
         <item>MODERN_3</item>
         <item>MODERN_4</item>
     </string-array>
+    <string-array name="morphe_miniplayer_type_21_29_entries">
+        <item>@string/morphe_miniplayer_type_entry_0</item>
+        <item>@string/morphe_miniplayer_type_entry_1</item>
+        <item>@string/morphe_miniplayer_type_entry_2</item>
+    </string-array>
+    <string-array name="morphe_miniplayer_type_21_29_entry_values">
+        <item>DISABLED</item>
+        <item>MODERN_4</item>
+        <item>MINIMAL_BAR</item>
+    </string-array>
     <string-array name="morphe_miniplayer_type_legacy_20_03_entries">
         <item>@string/morphe_miniplayer_type_entry_0</item>
         <item>@string/morphe_miniplayer_type_entry_1</item>

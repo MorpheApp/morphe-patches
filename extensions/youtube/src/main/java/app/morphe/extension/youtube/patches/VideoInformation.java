@@ -123,6 +123,7 @@ public final class VideoInformation {
     private static WeakReference<ExoPlayerImpl> exoPlayerImplRef = new WeakReference<>(null);
     private static String channelId = "";
     private static String channelName = "";
+    private static String videoTitle = "";
     private static String videoId = "";
     private static long videoLength = 0;
 
@@ -241,7 +242,7 @@ public final class VideoInformation {
             videoLength = 0;
             channelId = "";
             channelName = "";
-            String videoTitle = "";
+            videoTitle = "";
             // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
             final float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
@@ -317,6 +318,19 @@ public final class VideoInformation {
     @NonNull
     public static String getChannelName() {
         return channelName;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVideoTitle(String title) {
+        videoTitle = title != null ? title : "";
+        Logger.printDebug(() -> "Extracted Video Title: " + videoTitle);
+    }
+
+    @NonNull
+    public static String getVideoTitle() {
+        return videoTitle;
     }
 
     /**

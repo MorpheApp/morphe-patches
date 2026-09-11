@@ -30,6 +30,7 @@ import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPT
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.InitializePlaybackSpeedValuesFingerprint
 import app.morphe.patches.youtube.shared.SpeedLimiterFingerprint
@@ -500,6 +501,19 @@ val videoInformationPatch = bytecodePatch(
             val channelNameMethodCall = getChannelNameFingerprint(playerResponseType).instructionMatches.last()
                 .instruction.getReference<MethodReference>()!!
 
+            // The helper this resolves through only exists in later targets, and the title is
+            // only used by the minimal miniplayer, which is only rebuilt for those.
+            val videoTitleInstructions = if (is_21_29_or_greater) {
+                val videoTitleMethodCall = getVideoTitleFingerprint(playerResponseType)
+                    .instructionMatches.first().instruction.getReference<MethodReference>()!!
+
+                """
+                    invoke-interface { p1 }, $videoTitleMethodCall
+                    move-result-object v0
+                    invoke-static { v0 }, $EXTENSION_CLASS->setVideoTitle(Ljava/lang/String;)V
+                """
+            } else ""
+
             it.classDef.apply {
                 val helperMethod = ImmutableMethod(
                     type,
@@ -525,7 +539,9 @@ val videoInformationPatch = bytecodePatch(
                             invoke-interface { p1 }, $channelNameMethodCall
                             move-result-object v0
                             invoke-static { v0 }, $EXTENSION_CLASS->setChannelName(Ljava/lang/String;)V
-                            
+
+                            $videoTitleInstructions
+
                             return-void
                         """.toInstructions(),
                         null,
