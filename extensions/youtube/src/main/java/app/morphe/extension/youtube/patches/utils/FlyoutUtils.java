@@ -844,21 +844,41 @@ public final class FlyoutUtils {
             if (byteIndexInStartRange(listItemShareBytesIndexes.get(0))) {
                 setFlyoutCommentId(flyoutBuffer);
             }
-            return;
         }
 
         setFlyoutPlaylistId(flyoutBuffer);
 
         View senderView = senderViewRef.get();
+        Logger.printDebug(() -> "Flyout sender view object: " +
+                            (senderView != null));
         if (senderView != null) {
             ViewParent parent = senderView.getParent();
+            int parentCount = 0;
             while (parent != null) {
+                parentCount++;
+
+                ViewParent loggingParent = parent;
+                final int loggingParentCount = parentCount;
+                Logger.printDebug(() -> "Flyout senderView parent " +
+                        loggingParentCount +
+                        ": " +
+                        loggingParent
+                );
+                
                 if (parent instanceof ComponentHost componentHost) {
                     CharSequence description = componentHost.getContentDescription();
-                    if (description != null) {
+                    boolean descriptionNull = description == null;
+
+                    Logger.printDebug(() -> "Flyout componentHost description is null: " +
+                            descriptionNull
+                    );
+
+                    if (!descriptionNull) {
                         String stringDescription = description.toString();
 
-                        Logger.printDebug(() -> "Flyout content desription: " + stringDescription);
+                        Logger.printDebug(() -> "Flyout componentHost description content: " +
+                                stringDescription
+                        );
 
                         setFlyoutVideoId(flyoutBuffer, stringDescription);
                         setFlyoutChannel(flyoutBuffer, stringDescription);
