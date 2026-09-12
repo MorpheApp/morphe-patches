@@ -405,6 +405,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_screen_title">語音轉錄翻譯</string>
   <string name="morphe_vot_screen_summary">使用裝置上的文字轉語音功能朗讀影片字幕，並與播放同步</string>
   <string name="morphe_vot_enabled_title">語音轉錄翻譯</string>
+  <string name="morphe_vot_enabled_summary">在影片播放器中顯示疊加按鈕。輕觸可切換翻譯，長按可開啟快速設定。。,</string>
   <string name="morphe_vot_caption_language_title">語言</string>
   <string name="morphe_vot_translation_service_title">翻譯供應商</string>
   <string name="morphe_vot_original_audio_volume_title">原始音量</string>
@@ -1024,7 +1025,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">停用「繼續觀看」迷你播放器，這是 YouTube Premium 的功能，會在應用程式啟動時顯示</string>
   <string name="morphe_miniplayer_screen_title">迷你播放器</string>
   <string name="morphe_miniplayer_screen_summary">自訂迷你影片播放器的外觀和行為</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube 移除了所有額外的迷你播放器。若要變更迷你播放器類型，請修補 YouTube 21.28.208 或更舊版本。</string>
   <string name="morphe_miniplayer_type_title">迷你播放器類型</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
   <string name="morphe_miniplayer_type_entry_1">預設</string>

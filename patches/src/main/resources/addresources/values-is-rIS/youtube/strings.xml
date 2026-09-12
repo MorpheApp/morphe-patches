@@ -405,6 +405,7 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_vot_screen_title">Þýðing á raddsegulmagni</string>
   <string name="morphe_vot_screen_summary">Les upp undirtitla myndbandsins með texta-til-tala á tækinu, samhæmt með endursendingu</string>
   <string name="morphe_vot_enabled_title">Þýðing á raddsegulmagni</string>
+  <string name="morphe_vot_enabled_summary">Sýnir yfirlagshnapp í myndspilaranum. Snertu til að kveikja/slökkva á þýðingu, snertu og haltu fyrir flýtistillingar</string>
   <string name="morphe_vot_caption_language_title">Tungumál</string>
   <string name="morphe_vot_translation_service_title">Þýðingarveitari</string>
   <string name="morphe_vot_original_audio_volume_title">Hljóðstyrkur upprunalegu hljóðs</string>
@@ -1019,7 +1020,6 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_miniplayer_disable_resuming_summary">Gerir óvirkt \'Halda áfram að horfa\' litla spilara, YouTube Premium eiginleika sem birtist þegar appið ræsir</string>
   <string name="morphe_miniplayer_screen_title">Mini spilari</string>
   <string name="morphe_miniplayer_screen_summary">Sérsnið útlit og hegðun minnkaðs myndavörpunar</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube fjarlægði alla auka smáspilara. Til að breyta gerð smáspilarans skaltu plástra YouTube 21.28.208 eða eldri.</string>
   <string name="morphe_miniplayer_type_title">Gerð Mini spilara</string>
   <string name="morphe_miniplayer_type_entry_0">Gerðu óvirkt</string>
   <string name="morphe_miniplayer_type_entry_1">Lágmark</string>

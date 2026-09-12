@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 โปรดอัปเดต MicroG เป็นเวอร์ชันล่าสุด v%2s"</string>
   <string name="gms_core_dialog_update_text">อัปเดต</string>
   <string name="gms_core_dialog_ignore_text">ไม่สนใจ</string>
+  <string name="gms_core_dialog_conflict_message">"Morphe ไม่แนะนำ MicroG ที่ติดตั้งอยู่:
+
+%1s
+
+แตะเพื่อถอนการติดตั้ง จากนั้นเปิดแอปนี้ใหม่และติดตั้ง MicroG RE"</string>
+  <string name="gms_core_dialog_uninstall_text">ถอนการติดตั้ง</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ไม่มีสิทธิ์รันในพื้นหลัง
 

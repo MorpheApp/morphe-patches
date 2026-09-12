@@ -438,6 +438,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_vot_screen_title">Voice over translation</string>
     <string name="morphe_vot_screen_summary">Read video captions aloud using on-device text-to-speech, synchronized with playback</string>
     <string name="morphe_vot_enabled_title">Voice over translation</string>
+    <string name="morphe_vot_enabled_summary">Shows an overlay button in video player. Tap to toggle translation, tap and hold for quick settings</string>
     <string name="morphe_vot_caption_language_title">Language</string>
     <string name="morphe_vot_translation_service_title">Translation provider</string>
     <string name="morphe_vot_original_audio_volume_title">Original audio volume</string>
@@ -1117,7 +1118,6 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
     <string name="morphe_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_miniplayer_screen_summary">Customize the appearance and behavior of the minimized video player</string>
-    <string name="morphe_miniplayer_not_available_summary">YouTube removed all additional miniplayers. To change the miniplayer type then patch YouTube 21.28.208 or older</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>
     <string name="morphe_miniplayer_type_entry_1">Default</string>

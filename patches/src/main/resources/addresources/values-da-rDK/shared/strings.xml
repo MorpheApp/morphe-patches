@@ -184,6 +184,12 @@ Adfærden forsvandt tidligere i søgningen, så mere end ét flag kan være invo
 Opdater venligst MicroG til den nyeste version v%2s."</string>
   <string name="gms_core_dialog_update_text">Opdater</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
+  <string name="gms_core_dialog_conflict_message">"Den installerede MicroG anbefales ikke af Morphe:
+
+%1s
+
+Tryk for at afinstallere den, og åbn derefter denne app igen og installér MicroG RE. \"key\":\"gms_core_dialog_conflict_message\",\"context\":\"gms_core_dialog_conflict_message\",\"maxLength\":null,\"terms\":[{\"source\":\"Morphe\",\"translatable\":false,\"translation\":\"Morphe\",\"partOfSpeech\":\"PROPN\"},{\"source\":\"MicroG\",\"translatable\":false,\"translation\":\"MicroG\",\"partOfSpeech\":\"PROPN\"}]}]} no no. Need output correct JSON. Above accidentally malformed? I must final valid. Need ensure no extra text. I'll output array.[{"</string>
+  <string name="gms_core_dialog_uninstall_text">Afinstaller</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tilladelse til at køre i baggrunden.
 

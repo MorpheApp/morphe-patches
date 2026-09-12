@@ -71,6 +71,7 @@ public class SavePlaylistRequest {
         return cache.put(libraryId, new SavePlaylistRequest(playlistId, libraryId, requestHeader));
     }
 
+    @SuppressWarnings("unused")
     @Nullable
     public static SavePlaylistRequest getRequestForLibraryId(String libraryId) {
         return cache.get(libraryId);

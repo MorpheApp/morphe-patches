@@ -149,7 +149,8 @@ public final class HidePlayerFlyoutMenuPatch {
                             return EMPTY_BYTE_ARRAY;
                         }
                     } else if (HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER && model.hasBottomSheetHeaderModel()) {
-                        // 'CAPTIONS_HEADER_PATH(bottom_sheet_header.e)' is used not only for captions player flyout menu but also in other places:
+                        // CAPTIONS_HEADER_PATH, 'bottom_sheet_header.e', is used not only
+                        // for captions player flyout menu but also in other places:
                         // https://github.com/MorpheApp/morphe-patches/issues/2637.
                         //
                         // Filter only if the bottom sheet title is 'Captions'.

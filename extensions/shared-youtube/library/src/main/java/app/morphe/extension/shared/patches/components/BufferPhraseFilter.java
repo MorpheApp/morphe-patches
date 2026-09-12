@@ -488,10 +488,10 @@ public abstract class BufferPhraseFilter extends Filter {
     }
 
     /** YouTube video IDs are 11 chars from the base64-url alphabet. */
-    public static final int VIDEO_ID_LENGTH = 11;
+    private static final int VIDEO_ID_LENGTH = 11;
 
     /** Byte sequence that precedes the video ID inside the buffer's thumbnail URL. */
-    public static final byte[] THUMBNAIL_URL_PREFIX =
+    private static final byte[] THUMBNAIL_URL_PREFIX =
             "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII);
 
     /**

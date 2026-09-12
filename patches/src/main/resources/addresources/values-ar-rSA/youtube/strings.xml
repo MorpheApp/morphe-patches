@@ -405,6 +405,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
   <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>
   <string name="morphe_vot_enabled_title">الترجمة الصوتية</string>
+  <string name="morphe_vot_enabled_summary">يعرض زر متراكب في مشغّل الفيديو. انقر لتشغيل أو إيقاف الترجمة، واضغط مع الاستمرار للوصول إلى الإعدادات السريعة.</string>
   <string name="morphe_vot_caption_language_title">اللغة</string>
   <string name="morphe_vot_translation_service_title">مزوّد الترجمة</string>
   <string name="morphe_vot_original_audio_volume_title">مستوى صوت الصوت الأصلي</string>
@@ -1029,7 +1030,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_disable_resuming_summary">يعطّل مشغل \'متابعة المشاهدة\' المصغر، وهي ميزة YouTube Premium تظهر عند بدء تشغيل التطبيق</string>
   <string name="morphe_miniplayer_screen_title">المشغل المصغر</string>
   <string name="morphe_miniplayer_screen_summary">تخصيص مظهر ونمط مشغل الفيديو المصغر</string>
-  <string name="morphe_miniplayer_not_available_summary">أزال YouTube كل مشغلات الفيديو المصغر الإضافية. لتغيير نوع المشغل المصغر قم بتعديل YouTube بإصدار 21.28.208 أو أقدم</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">إفتراضي</string>

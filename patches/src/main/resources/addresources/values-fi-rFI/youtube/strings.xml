@@ -405,6 +405,7 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_vot_screen_title">Ääniratateksti</string>
   <string name="morphe_vot_screen_summary">Lue videon tekstitykset ääneen laitteen tekstistä puheeksi -toiminnolla, synkronoitu toiston kanssa</string>
   <string name="morphe_vot_enabled_title">Ääniratateksti</string>
+  <string name="morphe_vot_enabled_summary">Näyttää päällekkäispainikkeen videosoittimessa. Napauta kytkeäksesi käännöksen päälle tai pois. Napauta ja pidä painettuna avataksesi pika-asetukset. 2.0.0-beta.1</string>
   <string name="morphe_vot_caption_language_title">Kieli</string>
   <string name="morphe_vot_translation_service_title">Käännöspalvelun tarjoaja</string>
   <string name="morphe_vot_original_audio_volume_title">Alkuperäisen äänenvoimakkuus</string>
@@ -1024,7 +1025,6 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_miniplayer_disable_resuming_summary">Poistaa käytöstä ’Jatka katselua’ -minisoittimen, YouTube Premium -ominaisuuden, joka ilmestyy sovelluksen käynnistyessä</string>
   <string name="morphe_miniplayer_screen_title">Minisoitin</string>
   <string name="morphe_miniplayer_screen_summary">Muokkaa pienennetyn videotoistimen ulkoasua ja toimintaa</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube poisti kaikki ylimääräiset miniplayerit. Vaihtaaksesi miniplayerin tyypin, paikkaa YouTube 21.28.208 tai vanhempi</string>
   <string name="morphe_miniplayer_type_title">Minisoittimen tyyppi</string>
   <string name="morphe_miniplayer_type_entry_0">Pois käytöstä</string>
   <string name="morphe_miniplayer_type_entry_1">Oletus</string>

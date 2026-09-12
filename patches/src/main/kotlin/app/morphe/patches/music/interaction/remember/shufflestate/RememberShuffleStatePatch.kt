@@ -7,11 +7,11 @@
 
 package app.morphe.patches.music.interaction.remember.shufflestate
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
@@ -27,11 +27,13 @@ import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.numberOfParameterRegistersLogical
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/RememberShuffleStatePatch;"
@@ -58,85 +60,111 @@ val rememberShuffleStatePatch = bytecodePatch(
         val enumClass = ShuffleEnumFingerprint.method.definingClass
 
         ShuffleOnClickFingerprint.let { fingerprint ->
-            fingerprint.method.apply {
-                val startIndex = fingerprint.instructionMatches.first().index
+            val onClickMethod = fingerprint.method
+            val shuffleButtonUiClass = onClickMethod.definingClass
 
-                val enumMethodIndex = indexOfFirstInstructionReversedOrThrow(startIndex,
-                    methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = enumClass)
+            val startIndex = fingerprint.instructionMatches.first().index
+
+            val enumMethodIndex = onClickMethod.indexOfFirstInstructionReversedOrThrow(
+                startIndex,
+                methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = enumClass)
+            )
+
+            val enumRegister = onClickMethod.getInstruction<OneRegisterInstruction>(enumMethodIndex + 1).registerA
+            val enumIndex = enumMethodIndex + 2
+
+            val enumMethodRef = onClickMethod.getInstruction(enumMethodIndex).getReference<MethodReference>()!!
+            val getStateMethodName = enumMethodRef.name
+            val shuffleClass = enumMethodRef.definingClass
+
+            onClickMethod.addInstruction(
+                enumIndex,
+                "invoke-static { v$enumRegister }, $EXTENSION_CLASS->saveShuffleState(Ljava/lang/Enum;)V"
+            )
+
+            val invokeInterfaceInst = onClickMethod.getInstruction<ReferenceInstruction>(
+                onClickMethod.indexOfFirstInstructionOrThrow(
+                    Opcode.INVOKE_INTERFACE
                 )
-                val enumRegister = getInstruction<OneRegisterInstruction>(enumMethodIndex + 1).registerA
-                val enumIndex = enumMethodIndex + 2
+            )
 
-                addInstruction(
-                    enumIndex,
-                    "invoke-static { v$enumRegister }, $EXTENSION_CLASS->saveShuffleState(Ljava/lang/Enum;)V"
+            val providerMethodRef = invokeInterfaceInst.reference as MethodReference
+            val providerClass = providerMethodRef.definingClass
+            val providerMethodName = providerMethodRef.name
+
+            val shuffleButtonUiMutableClass = mutableClassDefBy(shuffleButtonUiClass)
+            val shuffleButtonUiInit = shuffleButtonUiMutableClass.methods.first { it.name == "<init>" }
+
+            val returnIndex = shuffleButtonUiInit.indexOfFirstInstruction(Opcode.RETURN_VOID)
+            shuffleButtonUiInit.addInstructions(
+                returnIndex,
+                """
+                    invoke-interface {p2}, $providerClass->$providerMethodName()Ljava/lang/Object;
+                    move-result-object v0
+                    check-cast v0, $shuffleClass
+                    sput-object v0, $EXTENSION_CLASS->shuffleClass:$shuffleClass
+                """
+            )
+
+            addStaticFieldToExtension(
+                className = EXTENSION_CLASS,
+                methodName = "shuffleTracks",
+                fieldName = "shuffleClass",
+                objectClass = shuffleClass,
+                smaliInstructions = """
+                    if-eqz v0, :ignore
+                    
+                    invoke-virtual { v0 }, $shuffleClass->$getStateMethodName()$enumClass
+                    move-result-object v1
+                    
+                    invoke-virtual { v1 }, Ljava/lang/Enum;->ordinal()I
+                    move-result v1
+                    
+                    add-int/lit8 v1, v1, -0x1
+                    if-eqz v1, :ignore
+                    
+                    sget-object v1, $enumClass->b:$enumClass
+                    invoke-virtual { v0, v1 }, $shuffleClass->shuffleTracks($enumClass)V
+                    
+                    :ignore
+                    return-void
+                """
+            )
+
+            val shuffleMethodFingerprint = Fingerprint(
+                definingClass = shuffleClass,
+                returnType = "V",
+                filters = listOf(
+                    methodCall(
+                        opcode = Opcode.INVOKE_VIRTUAL,
+                        definingClass = enumClass,
+                        name = "ordinal"
+                    ),
+                    methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "post")
                 )
+            )
 
-                val shuffleClassIndex = indexOfFirstInstructionReversedOrThrow(
-                    enumIndex, Opcode.CHECK_CAST
-                )
-                val shuffleClass = getInstruction(shuffleClassIndex).getReference<TypeReference>()!!.type
-                val shuffleMutableClass = this@execute.mutableClassDefBy(shuffleClass)
-
-                shuffleMutableClass.methods.filter { it.name == "<init>" }.forEach { constructor ->
-                    val superInitIndex = constructor.indexOfFirstInstructionOrThrow(
-                        methodCall(
-                            opcode = Opcode.INVOKE_DIRECT,
-                            name = "<init>"
-                        )
-                    )
-                    constructor.addInstructions(
-                        superInitIndex + 1,
-                        """
-                            sput-object p0, $EXTENSION_CLASS->shuffleClass:$shuffleClass
-                        """
-                    )
-                }
-
-                this@execute.addStaticFieldToExtension(
-                    className = EXTENSION_CLASS,
-                    methodName = "shuffleTracks",
-                    fieldName = "shuffleClass",
-                    objectClass = shuffleClass,
-                    smaliInstructions = """
-                        if-eqz v0, :ignore
-                        
-                        sget-object v1, $enumClass->b:$enumClass
-                        invoke-virtual { v0, v1 }, $shuffleClass->shuffleTracks($enumClass)V
-                        
-                        :ignore
-                        return-void
-                    """
-                )
-
-                val ordinalFilter = methodCall(opcode = Opcode.INVOKE_VIRTUAL, definingClass = enumClass, name = "ordinal")
-                val postFilter = methodCall(opcode = Opcode.INVOKE_VIRTUAL, name = "post")
-
-                val shuffleMethod = shuffleMutableClass.methods.firstOrNull { method ->
-                    method.returnType == "V" &&
-                            method.indexOfFirstInstruction(ordinalFilter) >= 0 &&
-                            method.indexOfFirstInstruction(postFilter) >= 0
-                } ?: throw PatchException("Internal shuffle method not found in $shuffleClass")
-
-                val clonedMethod = shuffleMethod.cloneMutable(
-                    accessFlags = shuffleMethod.accessFlags.toPublicAccessFlags(),
+            val clonedMethod = shuffleMethodFingerprint.method.let {
+                it.cloneMutable(
+                    accessFlags = it.accessFlags.toPublicAccessFlags(),
                     name = "shuffleTracks",
                     additionalRegisters = 1,
                     parameters = listOf(
                         ImmutableMethodParameter(enumClass, emptySet(), "enumClass")
                     )
                 )
-
-                val ordinalIndex = clonedMethod.indexOfFirstInstruction(ordinalFilter)
-                val ordinalRegister = clonedMethod.getInstruction<FiveRegisterInstruction>(ordinalIndex).registerC
-
-                clonedMethod.addInstruction(
-                    ordinalIndex,
-                    "move-object/from16 v$ordinalRegister, p1"
-                )
-
-                shuffleMutableClass.methods.add(clonedMethod)
             }
+
+            val ordinalIndex =  shuffleMethodFingerprint.instructionMatches.first().index +
+                    clonedMethod.numberOfParameterRegistersLogical // Cloning adjusts match indexes.
+            val ordinalRegister = clonedMethod.getInstruction<FiveRegisterInstruction>(ordinalIndex).registerC
+
+            clonedMethod.addInstruction(
+                ordinalIndex,
+                "move-object/from16 v$ordinalRegister, p1"
+            )
+
+            mutableClassDefBy(shuffleClass).methods.add(clonedMethod)
         }
 
         musicVideoIdHook("$EXTENSION_CLASS->applySavedShuffleState(Ljava/lang/String;)V")

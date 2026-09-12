@@ -76,6 +76,21 @@ internal fun getChannelIdFingerprint(playerResponseType: String) = object : Fing
     )
 ) {}
 
+internal fun getVideoTitleFingerprint(playerResponseType: String) = object : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(playerResponseType),
+    filters = listOf(
+        methodCall(
+            definingClass = playerResponseType,
+            returnType = "Ljava/lang/String;"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, MatchAfterImmediately()),
+        string("", location = MatchAfterImmediately())
+    )
+) {}
+
 internal fun getChannelNameFingerprint(playerResponseType: String) = object : Fingerprint(
     filters = listOf(
         string("setMetadata may only be called once"),

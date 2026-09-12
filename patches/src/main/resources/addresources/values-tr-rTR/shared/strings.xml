@@ -184,6 +184,12 @@ Davranış, aramanın daha önceki bir adımında ortadan kalktı; bu nedenle bi
 Lütfen MicroG'u en son sürüm olan v%2s sürümüne güncelleyin."</string>
   <string name="gms_core_dialog_update_text">Güncelle</string>
   <string name="gms_core_dialog_ignore_text">Yoksay</string>
+  <string name="gms_core_dialog_conflict_message">"Yüklü MicroG Morphe tarafından önerilmiyor:
+
+%1s
+
+Kaldırmak için dokunun, ardından bu uygulamayı yeniden açın ve MicroG RE'yi yükleyin."</string>
+  <string name="gms_core_dialog_uninstall_text">Kaldır</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore'nin arka planda çalışma izni yok.
 

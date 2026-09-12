@@ -405,6 +405,7 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_vot_screen_title">Spraakvertaling</string>
   <string name="morphe_vot_screen_summary">Lees ondertitels hardop voor met behulp van tekst-naar-spraak op het apparaat, gesynchroniseerd met het afspelen</string>
   <string name="morphe_vot_enabled_title">Spraakvertaling</string>
+  <string name="morphe_vot_enabled_summary">Toont een overlayknop in de videospeler. Tik om vertaling in of uit te schakelen, tik en houd vast voor snelle instellingen.</string>
   <string name="morphe_vot_caption_language_title">Taal</string>
   <string name="morphe_vot_translation_service_title">Vertalingsprovider</string>
   <string name="morphe_vot_original_audio_volume_title">Volume van originele audio</string>
@@ -693,9 +694,9 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Stel ondertitelcookies in</string>
   <string name="morphe_set_caption_cookies_summary">"Verhelpt een standaard YouTube-probleem waarbij de automatisch vertaalde ondertitels mogelijk niet beschikbaar zijn vanwege ontbrekende cookies\n\n'Ondertitel-cookies' moeten worden verstrekt"</string>
-  <string name="morphe_caption_cookies_title">Ondertekende cookies</string>
+  <string name="morphe_caption_cookies_title">Ondertitelcookies</string>
   <string name="morphe_caption_cookies_summary">Cookies die moeten worden ingesteld in Timed Text API (Caption Data API) verzoeken</string>
-  <string name="morphe_get_caption_cookies_title">Ondertekende cookies ophalen</string>
+  <string name="morphe_get_caption_cookies_title">Ondertitelcookies ophalen</string>
   <string name="morphe_get_caption_cookies_summary">Klik hier om cookies op te halen</string>
   <string name="morphe_get_caption_cookies_failed">Het ophalen van cookies is mislukt</string>
   <string name="morphe_get_caption_cookies_duplicate">Cookies bestaan al</string>
@@ -707,21 +708,21 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_navigation_buttons_screen_title">Navigatieknoppen</string>
   <string name="morphe_navigation_buttons_screen_summary">Kies welke componenten er in de werkbalk verschijnen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_home_button_title">Verberg Microfoon-knop</string>
+  <string name="morphe_hide_home_button_title">Verberg Home-knop</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">Verberg de knop \"Shorts\"</string>
+  <string name="morphe_hide_shorts_button_title">Verberg Shorts-knop</string>
   <!-- 'Create' has no display name. Translate normally. -->
-  <string name="morphe_hide_create_button_title">Knop Maken verbergen</string>
+  <string name="morphe_hide_create_button_title">Verberg Maken-knop</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_subscriptions_button_title">Verberg Zoek-knop</string>
+  <string name="morphe_hide_subscriptions_button_title">Verberg Abonnementen-knop</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_notifications_button_title">Toon Instellingen-knop</string>
-  <string name="morphe_show_search_button_title">Instellingen-knop positie</string>
-  <string name="morphe_show_search_button_index_title">Wanneer ingeschakeld, opent het tikken Morphe-instellingen en lang indrukken opent YouTube-instellingen, schakel uit om te wisselen</string>
-  <string name="morphe_show_settings_button_title">Vermindert de horizontale spatiëring tussen knoppen</string>
-  <string name="morphe_show_settings_button_index_title">Animeert overgangen bij het wisselen tussen tabbladen</string>
+  <string name="morphe_hide_notifications_button_title">Verberg Meldingen-knop</string>
+  <string name="morphe_show_search_button_title">Toon Zoek-knop</string>
+  <string name="morphe_show_search_button_index_title">Zoek-knop positie</string>
+  <string name="morphe_show_settings_button_title">Toon Instellingen-knop</string>
+  <string name="morphe_show_settings_button_index_title">Instellingen-knop positie</string>
   <string name="morphe_show_settings_button_type_title">Actie van de instellingenknop</string>
-  <string name="morphe_show_settings_button_type_summary">Houdt de navigatiebalk zichtbaar tijdens het scrollen</string>
+  <string name="morphe_show_settings_button_type_summary">Opent Morphe-instellingen indien ingeschakeld, of YouTube-instellingen indien uitgeschakeld</string>
   <string name="morphe_swap_create_with_notifications_button_title">Wissel de knop \'Maken\' om met de knop \'Meldingen\'</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Als het wijzigen van deze instelling geen effect heeft, probeer dan over te schakelen naar de Incognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigatieknoppenlabels verbergen</string>
@@ -729,19 +730,19 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Dit verbergt de navigatiebalk volledig, inclusief het tabblad 'Jij'.
 
 Om Instellingen te openen, schakelt u de knop Instellingen in via Algemeen → Werkbalk → Instellingen weergeven."</string>
-  <string name="morphe_narrow_navigation_buttons_title">Schakel smalle navigatieknoppen in</string>
-  <string name="morphe_narrow_navigation_buttons_summary">Maakt de statusbalk volledig ondoorzichtig</string>
+  <string name="morphe_narrow_navigation_buttons_title">Smalle navigatieknoppen inschakelen</string>
+  <string name="morphe_narrow_navigation_buttons_summary">Vermindert de horizontale ruimte tussen knoppen</string>
   <string name="morphe_navigation_bar_animations_title">Navigatiebalkanimaties inschakelen</string>
   <string name="morphe_navigation_bar_animations_summary">Maakt de navigatiebalk volledig ondoorzichtig in de lichte modus</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Automatisch verbergen van de navigatiebalk uitschakelen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Automatisch verbergen van navigatiebalk uitschakelen</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Maakt de navigatiebalk volledig ondoorzichtig in de donkere modus</string>
   <string name="morphe_disable_translucent_navigation_title">Transparante navigatiebalk uitschakelen</string>
   <string name="morphe_disable_translucent_navigation_summary">Maakt de navigatie- en statusbalk volledig ondoorzichtig</string>
-  <string name="morphe_toolbar_screen_title">Balkon</string>
-  <string name="morphe_toolbar_screen_summary">Verberg \'Audiotrack\'-menuvoet</string>
+  <string name="morphe_toolbar_screen_title">Werkbalk</string>
+  <string name="morphe_toolbar_screen_summary">Kies welke componenten in de werkbalk verschijnen</string>
   <string name="morphe_hide_toolbar_cast_button_title">Verberg Cast-knop</string>
-  <string name="morphe_hide_toolbar_chat_button_title">Chat knop verbergen</string>
-  <string name="morphe_hide_toolbar_create_button_title">Knop Maken verbergen</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Verberg Chat-knop</string>
+  <string name="morphe_hide_toolbar_create_button_title">Verberg Maken-knop</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Verberg Microfoon-knop</string>
   <string name="morphe_hide_toolbar_notification_button_title">Verberg Meldingen-knop</string>
   <string name="morphe_hide_toolbar_search_button_title">Verberg Zoek-knop</string>
@@ -1022,7 +1023,6 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_disable_resuming_summary">Schakelt de \'Doorgaan met kijken\'-minispeler uit, een functie van YouTube Premium die verschijnt bij het opstarten van de app</string>
   <string name="morphe_miniplayer_screen_title">Minispeler</string>
   <string name="morphe_miniplayer_screen_summary">Pas het uiterlijk en het gedrag van de geminimaliseerde videospeler aan</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube heeft alle extra miniplayers verwijderd. Om het type miniplayer te wijzigen, patch YouTube 21.28.208 of ouder.</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
@@ -1247,7 +1247,7 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-ervaring is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabiel volume is niet beschikbaar</string>
-  <string name="morphe_spoof_video_streams_about_js">• Als deontminering mislukt, kan afspelen mislukken</string>
+  <string name="morphe_spoof_video_streams_about_js">• Als de-obfuscatie mislukt, kan afspelen mislukken</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Oorspronkelijke audio forceren is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Inloggen op Android VR is vereist</string>

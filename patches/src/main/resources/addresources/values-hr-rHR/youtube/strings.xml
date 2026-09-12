@@ -407,6 +407,7 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_vot_screen_title">Prevođenje glasom</string>
   <string name="morphe_vot_screen_summary">Čitaj titlove videozapisa naglas koristeći uređajni text-to-speech, sinkronizirano s reprodukcijom</string>
   <string name="morphe_vot_enabled_title">Prevođenje glasom</string>
+  <string name="morphe_vot_enabled_summary">Prikazuje prekrivni gumb u video playeru. Dodirnite za uključivanje/isključivanje prijevoda, dodirnite i držite za brze postavke</string>
   <string name="morphe_vot_caption_language_title">Jezik</string>
   <string name="morphe_vot_translation_service_title">Davatelj prijevoda</string>
   <string name="morphe_vot_original_audio_volume_title">Glasnoća originalnog audiozapisa</string>
@@ -1026,7 +1027,6 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogućuje miniplayer \'Nastavi gledati\', značajku YouTube Premiuma koja se pojavljuje pri pokretanju aplikacije</string>
   <string name="morphe_miniplayer_screen_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite izgled i ponašanje minimiziranog video playera</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube je uklonio sve dodatne mini-pretraživače. Kako biste promijenili vrstu mini-pretraživača, patchirajte YouTube 21.28.208 ili stariju verziju</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
   <string name="morphe_miniplayer_type_entry_1">Zadano</string>

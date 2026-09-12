@@ -405,6 +405,7 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_vot_screen_title">Traduzione voice over</string>
   <string name="morphe_vot_screen_summary">Leggi ad alta voce i sottotitoli del video utilizzando la sintesi vocale del dispositivo, sincronizzata con la riproduzione</string>
   <string name="morphe_vot_enabled_title">Traduzione voice over</string>
+  <string name="morphe_vot_enabled_summary">Mostra un pulsante in sovrapposizione nel lettore video. Tocca il toggle per attivare la traduzione, tocca e tieni premuto per impostazioni rapide</string>
   <string name="morphe_vot_caption_language_title">Lingua</string>
   <string name="morphe_vot_translation_service_title">Fornitore di traduzione</string>
   <string name="morphe_vot_original_audio_volume_title">Volume audio originale</string>
@@ -1024,7 +1025,6 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_miniplayer_disable_resuming_summary">Impedisce al lettore minimizzato \'Continua a guardare\' di essere mostrato all\'avvio dell\'app</string>
   <string name="morphe_miniplayer_screen_title">Lettore minimizzato</string>
   <string name="morphe_miniplayer_screen_summary">Personalizza l\'aspetto e il comportamento del lettore minimizzato</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube ha rimosso tutti i miniplayer aggiuntivi. Per cambiare il tipo di miniplayer, applica la patch a YouTube 21.28.208 o versioni precedenti.</string>
   <string name="morphe_miniplayer_type_title">Tipo di Lettore minimizzato</string>
   <string name="morphe_miniplayer_type_entry_0">Disattivato</string>
   <string name="morphe_miniplayer_type_entry_1">Predefinito</string>

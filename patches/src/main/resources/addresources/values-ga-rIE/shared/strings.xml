@@ -184,6 +184,12 @@ D’imigh an t-iompar níos luaithe sa chuardach, mar sin d’fhéadfadh níos m
 Nuashonraigh MicroG go dtí an leagan is déanaí v%2s le do thoil."</string>
   <string name="gms_core_dialog_update_text">NuashonrúNuashonrú</string>
   <string name="gms_core_dialog_ignore_text">Déan neamhaird</string>
+  <string name="gms_core_dialog_conflict_message">"Ní mholann Morphe an MicroG atá suiteáilte:
+
+%1s
+
+Tapáil chun é a dhíshuiteáil, ansin athoscail an aip seo agus suiteáil MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Díshuiteáil</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Níl cead ag MicroG rith sa chúlra.
 

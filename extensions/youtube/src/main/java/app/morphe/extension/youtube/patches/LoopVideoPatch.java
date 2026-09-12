@@ -10,6 +10,8 @@
 
 package app.morphe.extension.youtube.patches;
 
+import java.lang.ref.WeakReference;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.LoopVideoButton;
@@ -33,6 +35,27 @@ public class LoopVideoPatch {
     private static final long SEEK_COOLDOWN_MS = 2000;
     /** How early to seek before rangeEndMs when rangeEndIsVideoEnd, to avoid the end screen. */
     private static final long END_SCREEN_BUFFER_MS = 1500;
+
+    public interface SleepTimerController {
+        boolean patch_isSetToEndOfVideo();
+    }
+
+    private static WeakReference<SleepTimerController> sleepTimerControllerRef = new WeakReference<>(null);
+
+    /**
+     * Injection point.
+     */
+    public static void setSleepTimerController(SleepTimerController controller) {
+        sleepTimerControllerRef = new WeakReference<>(controller);
+    }
+
+    public static boolean isSleepTimerEndingVideo() {
+        SleepTimerController controller = sleepTimerControllerRef.get();
+        if (controller != null) {
+            return controller.patch_isSetToEndOfVideo();
+        }
+        return false;
+    }
 
     public static boolean isRangeActive() {
         return rangeStartMs >= 0 && rangeEndMs > rangeStartMs;
@@ -84,7 +107,12 @@ public class LoopVideoPatch {
         try {
             final boolean isEnded = Settings.LOOP_VIDEO.get()
                     && status != null && "ENDED".equals(status.name());
+
             if (isEnded) {
+                if (isSleepTimerEndingVideo()) {
+                    return false;
+                }
+
                 return VideoInformation.seekTo(isRangeActive()
                         // Fallback: if the video truly ended while range is active (videoTimeChanged was too slow),
                         // seek to range start so the end screen is dismissed.

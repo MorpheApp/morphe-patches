@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 অনুগ্রহ করে MicroG-এর সর্বশেষ সংস্করণ v%2s-এ আপডেট করুন।"</string>
   <string name="gms_core_dialog_update_text">আপডেট করুন</string>
   <string name="gms_core_dialog_ignore_text">উপেক্ষা করুন</string>
+  <string name="gms_core_dialog_conflict_message">"ইনস্টল করা MicroG-টি Morphe-এর দ্বারা সুপারিশ করা হয় না:
+
+%1s
+
+এটি আনইনস্টল করতে আলতো চাপুন, তারপর এই অ্যাপটি আবার খুলুন এবং MicroG RE ইনস্টল করুন।"</string>
+  <string name="gms_core_dialog_uninstall_text">আনইনস্টল করুন</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-এর পটভূমিতে চালানোর অনুমতি নেই।
 

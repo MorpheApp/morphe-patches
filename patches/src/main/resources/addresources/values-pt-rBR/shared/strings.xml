@@ -184,6 +184,12 @@ O comportamento desapareceu no início da busca, portanto, mais de uma flag pode
 Atualize o MicroG para a versão mais recente v%2s."</string>
   <string name="gms_core_dialog_update_text">Atualizar</string>
   <string name="gms_core_dialog_ignore_text">Ignorar</string>
+  <string name="gms_core_dialog_conflict_message">"O MicroG instalado não é recomendado pelo Morphe:
+
+%1s
+
+Toque para desinstalá-lo, depois reabra este aplicativo e instale o MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Desinstalar</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"O MicroG não tem permissão para ser executado em segundo plano.
 

@@ -184,6 +184,12 @@ Comportamentul a dispărut mai devreme în căutare, deci poate fi implicat mai 
 Te rugăm să actualizezi MicroG la cea mai recentă versiune v%2s."</string>
   <string name="gms_core_dialog_update_text">Actualizează</string>
   <string name="gms_core_dialog_ignore_text">Ignoră</string>
+  <string name="gms_core_dialog_conflict_message">"MicroG-ul instalat nu este recomandat de Morphe:
+
+%1s
+
+Atingeți pentru a-l dezinstala, apoi redeschideți această aplicație și instalați MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Dezinstalează</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nu are permisiunea de a rula în fundal.
 

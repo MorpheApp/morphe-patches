@@ -30,7 +30,7 @@ public class PlayerTypeHookPatch {
 
     /**
      * Injection point.
-     *
+     * <p>
      * Add a listener to the shorts player overlay View.
      * Triggered when a shorts player is attached or detached to Windows.
      *

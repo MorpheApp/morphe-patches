@@ -184,6 +184,12 @@ Ponašanje je nestalo ranije u pretraživanju, pa je možda uključeno više zas
 Ažurirajte MicroG na najnoviju verziju v%2s."</string>
   <string name="gms_core_dialog_update_text">Ažuriraj</string>
   <string name="gms_core_dialog_ignore_text">Zanemari</string>
+  <string name="gms_core_dialog_conflict_message">"Morphe ne preporučuje instalirani MicroG:
+
+%1s
+
+Dodirnite da biste ga deinstalirali, zatim ponovno otvorite ovu aplikaciju i instalirajte MicroG RE. This is not a JSON array? Wait, I accidentally included extra "</string>
+  <string name="gms_core_dialog_uninstall_text">Deinstaliraj</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nema dopuštenje da radi u pozadini.
 

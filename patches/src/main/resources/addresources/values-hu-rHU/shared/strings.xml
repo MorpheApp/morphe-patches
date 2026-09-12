@@ -184,6 +184,12 @@ A viselkedés korábban eltűnt a keresés során, így több funkciókapcsoló 
 Kérjük, frissítse a MicroG-t a legújabb v%2s verzióra."</string>
   <string name="gms_core_dialog_update_text">Frissítés</string>
   <string name="gms_core_dialog_ignore_text">Mellőzés</string>
+  <string name="gms_core_dialog_conflict_message">"A telepített MicroG használatát a Morphe nem javasolja:
+
+%1s
+
+Koppints az eltávolításhoz, majd nyisd meg újra az appot és telepítsd a MicroG RE-t."</string>
+  <string name="gms_core_dialog_uninstall_text">Eltávolítás</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"A MicroG nem rendelkezik engedéllyel a háttérben történő futáshoz.
 

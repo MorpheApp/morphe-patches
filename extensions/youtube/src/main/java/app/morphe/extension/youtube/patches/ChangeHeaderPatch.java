@@ -1,9 +1,24 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2910
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
@@ -40,7 +55,7 @@ public class ChangeHeaderPatch {
          * @return The attribute id of this header logo, or NULL if the logo should not be replaced.
          */
         @Nullable
-        private Integer getAttributeId() {
+        public Integer getAttributeId() {
             if (attributeName == null) {
                 return null;
             }
@@ -103,5 +118,68 @@ public class ChangeHeaderPatch {
         // Should never happen.
         Logger.printException(() -> "Could not find regular header logo resource");
         return original;
+    }
+
+    private static int drawerContentViewId = -1;
+
+    /**
+     * Injection point.
+     */
+    public static void updateDrawerLogo(ViewGroup drawerContentView) {
+        if (drawerContentView == null) {
+            return;
+        }
+
+        if (drawerContentViewId == -1) {
+            drawerContentViewId = ResourceUtils.getIdentifier(ResourceType.ID, "drawer_content_view");
+        }
+
+        if (drawerContentViewId != 0 && drawerContentView.getId() != drawerContentViewId) {
+            return;
+        }
+
+        drawerContentView.post(() -> {
+            LinkedList<ViewGroup> queue = new LinkedList<>();
+            queue.add(drawerContentView);
+
+            while (!queue.isEmpty()) {
+                ViewGroup current = queue.poll();
+                for (int i = 0; i < Objects.requireNonNull(current).getChildCount(); i++) {
+                    View child = current.getChildAt(i);
+
+                    if (child instanceof ImageView logoView) {
+
+                        if (logoView.getTag() == null) {
+                            logoView.setTag(true);
+
+                            logoView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                                @Override
+                                public boolean onPreDraw() {
+                                    Drawable currentDrawable = logoView.getDrawable();
+
+                                    if (currentDrawable != null) {
+                                        int viewWidth = logoView.getWidth();
+                                        int viewHeight = logoView.getHeight();
+
+                                        if (viewWidth > 0 && viewHeight > 0 && viewWidth > viewHeight * 2) {
+                                            Drawable customLogo = getDrawable(currentDrawable);
+
+                                            if (customLogo != null && currentDrawable != customLogo) {
+                                                logoView.setImageDrawable(customLogo);
+                                            }
+
+                                            logoView.getViewTreeObserver().removeOnPreDrawListener(this);
+                                        }
+                                    }
+                                    return true;
+                                }
+                            });
+                        }
+                    } else if (child instanceof ViewGroup) {
+                        queue.add((ViewGroup) child);
+                    }
+                }
+            }
+        });
     }
 }

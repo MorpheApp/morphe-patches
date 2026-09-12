@@ -184,6 +184,12 @@ Chování zmizelo dříve v průzkumu, takže může být zapojeno více než je
 Aktualizujte prosím MicroG na nejnovější verzi v%2s."</string>
   <string name="gms_core_dialog_update_text">Aktualizovat</string>
   <string name="gms_core_dialog_ignore_text">Ignorovat</string>
+  <string name="gms_core_dialog_conflict_message">"Nainstalovaný MicroG není doporučován aplikací Morphe:
+
+%1s
+
+Klepnutím na něj ho odinstalujte, poté znovu otevřete tuto aplikaci a nainstalujte MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Odinstalovat</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG GmsCore nemá oprávnění běžet na pozadí.
 

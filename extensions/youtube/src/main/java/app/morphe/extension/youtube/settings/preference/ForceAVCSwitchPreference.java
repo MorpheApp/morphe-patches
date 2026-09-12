@@ -72,4 +72,3 @@ public class ForceAVCSwitchPreference extends SwitchPreference {
         super.setSummary(summary);
     }
 }
-

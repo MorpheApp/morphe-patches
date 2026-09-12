@@ -11,9 +11,8 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -169,12 +168,11 @@ public class PlaylistPatch {
         row.setClickable(true);
         row.setFocusable(true);
 
-        int[] attrs = {android.R.attr.selectableItemBackground};
-        Drawable ripple;
-        try (TypedArray typedArray = context.obtainStyledAttributes(attrs)) {
-            ripple = typedArray.getDrawable(0);
+        TypedValue ripple = new TypedValue();
+        if (context.getTheme().resolveAttribute(
+                android.R.attr.selectableItemBackground, ripple, true)) {
+            row.setBackgroundResource(ripple.resourceId);
         }
-        row.setBackground(ripple);
 
         ImageView icon = new ImageView(context);
         icon.setImageResource(iconId);
@@ -187,7 +185,7 @@ public class PlaylistPatch {
         TextView text = new TextView(context);
         text.setText(title);
         text.setTextColor(ThemeUtils.getAppForegroundColor());
-        text.setTextSize(android.util.TypedValue.COMPLEX_UNIT_SP, 16);
+        text.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
         LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         text.setLayoutParams(textParams);

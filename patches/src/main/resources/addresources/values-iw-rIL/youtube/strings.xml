@@ -405,6 +405,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_screen_title">תרגום דיבוב</string>
   <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
   <string name="morphe_vot_enabled_title">תרגום דיבוב</string>
+  <string name="morphe_vot_enabled_summary">מציג כפתור צף בנגן הווידאו. הקש כדי להפעיל או לכבות את התרגום, הקש והחזק להגדרות מהירות</string>
   <string name="morphe_vot_caption_language_title">שפה</string>
   <string name="morphe_vot_translation_service_title">ספק תרגום</string>
   <string name="morphe_vot_original_audio_volume_title">עוצמת שמע מקורית</string>
@@ -1024,7 +1025,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_resuming_summary">משבית את הנגן המיני \'המשך לצפות\', תכונה בתשלום של YouTube Premium שמופיעה בעת הפעלת האפליקציה</string>
   <string name="morphe_miniplayer_screen_title">מיני-נגן</string>
   <string name="morphe_miniplayer_screen_summary">התאם אישית את המראה וההתנהגות של נגן הווידאו הממוזער</string>
-  <string name="morphe_miniplayer_not_available_summary">YouTube הסיר את כל המיני-נגנים הנוספים. כדי לשנות את סוג המיני-נגן, יש להטליא את YouTube 21.28.208 או גרסה נמוכה יותר.</string>
   <string name="morphe_miniplayer_type_title">סוג מיני-נגן</string>
   <string name="morphe_miniplayer_type_entry_0">מושבת</string>
   <string name="morphe_miniplayer_type_entry_1">ברירת מחדל</string>

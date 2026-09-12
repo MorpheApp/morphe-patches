@@ -568,7 +568,15 @@ fun gmsCoreSupportResourcePatch(
                 "$fromPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" to "$toPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
                 "com.google.android.c2dm" to "$GMS_CORE_VENDOR_GROUP_ID.android.c2dm",
                 "com.google.android.libraries.photos.api.mars" to "$GMS_CORE_VENDOR_GROUP_ID.android.apps.photos.api.mars",
-                "</queries>" to "<package android:name=\"$GMS_CORE_VENDOR_GROUP_ID.android.gms\"/></queries>",
+                // Make every known MicroG / GMS variant visible to the package manager
+                // so the extension can detect conflicting installs, and allow the app to
+                // request their uninstall on Android 14+.
+                "</queries>" to
+                        "<package android:name=\"$GMS_CORE_VENDOR_GROUP_ID.android.gms\"/>" +
+                        "<package android:name=\"com.mgoogle.android.gms\"/>" +
+                        "<package android:name=\"org.microg.gms\"/>" +
+                        "</queries>" +
+                        "<uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
             )
 
             val manifest = get("AndroidManifest.xml")

@@ -12,8 +12,6 @@ package app.morphe.extension.youtube.videoplayer;
 
 import android.view.View;
 
-import androidx.annotation.Nullable;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
@@ -48,7 +46,7 @@ public class ExternalDownloadButton {
     }
 
     private static void onDownloadClick(View view) {
-        ExternalDownloaderPreference.launchExternalDownloader(VideoInformation.getVideoId(), view.getContext(), "https://youtu.be/" + VideoInformation.getVideoId());
+        ExternalDownloaderPreference.launchExternalDownloader(VideoInformation.getVideoId(),
+                view.getContext(), "https://youtu.be/" + VideoInformation.getVideoId());
     }
 }
-

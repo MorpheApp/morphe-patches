@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 Молимо ажурирајте MicroG на најновију верзију v%2s."</string>
   <string name="gms_core_dialog_update_text">Ажурирајте</string>
   <string name="gms_core_dialog_ignore_text">Игнориши</string>
+  <string name="gms_core_dialog_conflict_message">"Morphe не препоручује инсталирани MicroG:
+
+%1s
+
+Додирните да га деинсталирате, затим поново отворите ову апликацију и инсталирајте MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Деинсталирај</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG нема дозволу за рад у позадини.
 

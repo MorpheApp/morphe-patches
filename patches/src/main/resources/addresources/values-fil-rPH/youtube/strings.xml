@@ -405,6 +405,7 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
   <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
   <string name="morphe_vot_enabled_title">Pagsasalin ng boses</string>
+  <string name="morphe_vot_enabled_summary">test</string>
   <string name="morphe_vot_caption_language_title">Wika</string>
   <string name="morphe_vot_translation_service_title">Tagapagbigay ng pagsasalin</string>
   <string name="morphe_vot_original_audio_volume_title">Dami ng orihinal na audio</string>
@@ -1022,7 +1023,6 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">I-customize ang hitsura at pag-uugali ng minimize video player</string>
-  <string name="morphe_miniplayer_not_available_summary">Inalis ng YouTube ang lahat ng karagdagang miniplayer. Upang baguhin ang uri ng miniplayer, i-patch ang YouTube 21.28.208 o mas luma.</string>
   <string name="morphe_miniplayer_type_title">Uri ng miniplayer</string>
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
   <string name="morphe_miniplayer_type_entry_1">Default</string>

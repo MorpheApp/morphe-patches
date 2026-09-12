@@ -22,4 +22,3 @@ public class FixPreferenceIconPatch {
         return REMOVE_BROKEN_PREFERENCE_ICON;
     }
 }
-

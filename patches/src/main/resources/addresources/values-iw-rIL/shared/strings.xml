@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 אנא עדכן את MicroG לגרסה האחרונה v%2s."</string>
   <string name="gms_core_dialog_update_text">עדכן</string>
   <string name="gms_core_dialog_ignore_text">התעלם</string>
+  <string name="gms_core_dialog_conflict_message">"MicroG המותקן אינו מומלץ על ידי Morphe:
+
+%1s
+
+הקש כדי להסיר אותו, ואז פתח מחדש את האפליקציה הזאת והתקן את MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">הסר</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"ל-MicroG GmsCore אין הרשאה לרוץ ברקע.
 
