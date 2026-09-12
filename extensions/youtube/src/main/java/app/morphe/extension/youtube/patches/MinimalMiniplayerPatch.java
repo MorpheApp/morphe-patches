@@ -23,7 +23,6 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +53,23 @@ import kotlin.Unit;
  */
 @SuppressWarnings("unused")
 public final class MinimalMiniplayerPatch {
+
+    /**
+     * Interface to use obfuscated methods.
+     */
+    public interface MiniplayerBoundsController {
+        // Method is added during patching.
+        void patch_setBounds(Rect bounds);
+    }
+
+    private static final int MODERN_MINIPLAYER_OVERLAY_ACTION_BUTTON = ResourceUtils.getIdentifier(
+            ResourceType.ID, "modern_miniplayer_overlay_action_button");
+    private static final int MODERN_MINIPLAYER_CLOSE = ResourceUtils.getIdentifier(
+            ResourceType.ID, "modern_miniplayer_close");
+    private static final int MODERN_MINIPLAYER_EXPAND = ResourceUtils.getIdentifier(
+            ResourceType.ID, "modern_miniplayer_expand");
+    private static final String ACCESSIBILITY_MINIPLAYER_VIEW_STRING = ResourceUtils.getString(
+            "accessibility_miniplayer_view");
 
     private static final boolean ENABLED =
             Settings.MINIPLAYER_TYPE.get() == MiniplayerType.MINIMAL_BAR;
@@ -153,14 +169,6 @@ public final class MinimalMiniplayerPatch {
             return resources.getDimensionPixelSize(resourceId);
         }
         return 0;
-    }
-
-    /**
-     * Interface to use obfuscated methods.
-     */
-    public interface MiniplayerBoundsController {
-        // Method is added during patching.
-        void patch_setBounds(Rect bounds);
     }
 
     /**
@@ -300,7 +308,7 @@ public final class MinimalMiniplayerPatch {
      */
     private static Rect dockToStart(Rect original) {
         if (original.left <= 0) return original;
-        if (original.width() >= windowWidth()) return original;
+        if (original.width() >= getWidthPixels()) return original;
 
         dockedBounds.set(0, original.top, original.width(), original.bottom);
 
@@ -310,17 +318,15 @@ public final class MinimalMiniplayerPatch {
     private static void barBoundsFor(Rect resting) {
         final int bottom = barBottomFor(resting) - BAR_MARGIN;
 
-        barBounds.set(BAR_MARGIN, bottom - BAR_HEIGHT, windowWidth() - BAR_MARGIN, bottom);
+        barBounds.set(BAR_MARGIN, bottom - BAR_HEIGHT, getWidthPixels() - BAR_MARGIN, bottom);
     }
 
     /**
      * Not {@link Dim#getScreenWidth()}, which measures the display. A bar spans the window,
      * and the two differ in split screen and on foldables.
      */
-    private static int windowWidth() {
-        DisplayMetrics displayMetrics = Utils.getContext().getResources().getDisplayMetrics();
-
-        return displayMetrics.widthPixels;
+    private static int getWidthPixels() {
+        return Dim.getMetrics().widthPixels;
     }
 
     /**
@@ -500,11 +506,11 @@ public final class MinimalMiniplayerPatch {
 
         try {
             final int id = button.getId();
-            if (id == ResourceUtils.getIdentifier(ResourceType.ID, "modern_miniplayer_overlay_action_button")) {
+            if (id == MODERN_MINIPLAYER_OVERLAY_ACTION_BUTTON) {
                 modernActionButtonRef = new WeakReference<>(button);
-            } else if (id == ResourceUtils.getIdentifier(ResourceType.ID, "modern_miniplayer_close")) {
+            } else if (id == MODERN_MINIPLAYER_CLOSE) {
                 modernCloseButtonRef = new WeakReference<>(button);
-            } else if (id == ResourceUtils.getIdentifier(ResourceType.ID, "modern_miniplayer_expand")) {
+            } else if (id == MODERN_MINIPLAYER_EXPAND) {
                 // Kept in place, it is the only handle on expanding the player.
                 modernExpandButtonRef = new WeakReference<>(button);
                 return;
@@ -529,8 +535,7 @@ public final class MinimalMiniplayerPatch {
         final int slop = Dim.dp20;
 
         controlsLayout.setClickable(true);
-        controlsLayout.setContentDescription(
-                ResourceUtils.getString("accessibility_miniplayer_view"));
+        controlsLayout.setContentDescription(ACCESSIBILITY_MINIPLAYER_VIEW_STRING);
         controlsLayout.setOnClickListener(v -> expandPlayer());
 
         controlsLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -836,9 +841,11 @@ public final class MinimalMiniplayerPatch {
         if (morph && startIconMorph(playPause)) return;
 
         if (playing) {
-            setIcon(playPause, "yt_fill_experimental_pause_vd_theme_24", "yt_fill_pause_vd_theme_24");
+            setIcon(playPause, "yt_fill_experimental_pause_vd_theme_24",
+                    "yt_fill_pause_vd_theme_24");
         } else {
-            setIcon(playPause, "yt_fill_experimental_play_vd_theme_24", "yt_fill_play_arrow_vd_theme_24");
+            setIcon(playPause, "yt_fill_experimental_play_vd_theme_24",
+                    "yt_fill_play_arrow_vd_theme_24");
         }
     }
 
