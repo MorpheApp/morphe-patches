@@ -14,7 +14,7 @@ public class SpoofVideoStreamsPatch {
         public boolean isAvailable() {
             ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
             return Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.isAvailable()
-                    && (client == ClientType.ANDROID_VR_DASH || client == ClientType.ANDROID_XR_DASH || client == ClientType.VISIONOS_1_02);
+                    && (client == ClientType.ANDROID_VR_DASH || client == ClientType.ANDROID_VR_SABR || client == ClientType.VISIONOS_1_02);
         }
 
         @Override
