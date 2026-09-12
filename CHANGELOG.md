@@ -64,7 +64,7 @@
 
 * **YouTube Music:** Add experimental support for `9.35.54` ([7e42c2a](https://github.com/MorpheApp/morphe-patches/commit/7e42c2a57aa3838338b02569bce5e69f102457d2))
 * **YouTube:** Add support for `21.13.164` ([58b9a75](https://github.com/MorpheApp/morphe-patches/commit/58b9a7540847828dc543e0056821d451acfdbfdf))
-* **YouTube:** Add support for `21.36.45` ([#2814](https://github.com/MorpheApp/morphe-patches/issues/2814)) ([07d36c3](https://github.com/MorpheApp/morphe-patches/commit/07d36c334ec9834e671bf1bb97b14f6a20dcdbbe))
+* **YouTube:** Add experimental support for `21.36.45` ([#2814](https://github.com/MorpheApp/morphe-patches/issues/2814)) ([07d36c3](https://github.com/MorpheApp/morphe-patches/commit/07d36c334ec9834e671bf1bb97b14f6a20dcdbbe))
 
 ## [1.42.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0-dev.9...v1.42.0-dev.10) (2026-09-09)
 
