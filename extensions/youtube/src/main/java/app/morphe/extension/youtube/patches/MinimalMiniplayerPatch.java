@@ -11,10 +11,14 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.util.DisplayMetrics;
@@ -34,6 +38,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.ViewAnimations;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -161,7 +166,7 @@ public final class MinimalMiniplayerPatch {
                 playPause.setOnClickListener(v ->
                         clickModernButton(modernActionButtonRef, "play/pause"));
                 holdTouch(playPause);
-                addButtonCircle(playPause);
+                styleButton(playPause);
             }
 
             ImageView close = Utils.getChildViewByResourceName(controlsLayout, "floaty_close_button");
@@ -169,7 +174,7 @@ public final class MinimalMiniplayerPatch {
                 close.setOnClickListener(v -> closeBar());
                 holdTouch(close);
                 setIcon(close, "yt_outline_experimental_x_vd_theme_24", "yt_outline_x_black_24");
-                addButtonCircle(close);
+                styleButton(close);
             }
 
             View subtitleBar = Utils.getChildViewByResourceName(controlsLayout, "floaty_subtitle_bar");
@@ -808,22 +813,33 @@ public final class MinimalMiniplayerPatch {
     }
 
     /**
-     * Keeps whatever YouTube put there, which is the ripple, and only fills in behind it.
+     * The touch feedback YouTube puts on these buttons is rectangular, which a round button
+     * cannot use, so the background is replaced rather than kept.
      */
-    private static void addButtonCircle(View button) {
-        ShapeDrawable circle = new ShapeDrawable(new OvalShape());
-        // Stands off the bar by the same amount whatever theme colors the app is using.
-        circle.getPaint().setColor(Utils.adjustColorBrightness(
+    private static void styleButton(View button) {
+        GradientDrawable circle = new GradientDrawable();
+        circle.setShape(GradientDrawable.OVAL);
+        // Follows the theme, so a custom app color carries into the bar.
+        circle.setColor(Utils.adjustColorBrightness(
                 ThemeUtils.getAppBackgroundColor(), 0.9f, 1.25f));
 
-        // The button is a 48dp touch target, and 40dp is what a round one looks like, which
-        // also leaves the neighboring circles 8dp apart.
+        // 48dp is the touch target, 40dp the button, which also keeps the circles apart.
         Drawable inset = new InsetDrawable(circle, Dim.dp4);
+        Drawable ripple = new InsetDrawable(new ShapeDrawable(new OvalShape()), Dim.dp4);
 
-        Drawable existing = button.getBackground();
-        button.setBackground(existing == null
-                ? inset
-                : new LayerDrawable(new Drawable[]{inset, existing}));
+        final int foreground = ThemeUtils.getAppForegroundColor();
+        RippleDrawable background = new RippleDrawable(
+                ColorStateList.valueOf(Color.argb(60, Color.red(foreground),
+                        Color.green(foreground), Color.blue(foreground))),
+                inset,
+                ripple);
+        // Layers nest their padding, which would inset the mask a second time and draw the
+        // ripple smaller than the circle it belongs to.
+        background.setPaddingMode(LayerDrawable.PADDING_MODE_STACK);
+
+        button.setBackground(background);
+
+        ViewAnimations.applyPressEffect(button);
     }
 
     /**
