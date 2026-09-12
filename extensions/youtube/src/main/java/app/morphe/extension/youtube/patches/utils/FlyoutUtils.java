@@ -96,19 +96,6 @@ public final class FlyoutUtils {
             getAsciiBytes("com.google.android.apps.youtube.kids"),
             getAsciiBytes("https://www.youtube.com/myfamily/#mf-compare")
     );
-    private static final List<byte[]> VIDEO_ELEMENTS_BYTES = List.of(
-            getAsciiBytes("compact_playlist.e"),
-            getAsciiBytes("compact_video.e"),
-            getAsciiBytes("grid_video.e"),
-            getAsciiBytes("grid_video_wrapper.e"),
-            getAsciiBytes("horizontal_shelf.e"),
-            getAsciiBytes("rich_grid_row.e"),
-            getAsciiBytes("shorts_pivot_item.e"),
-            getAsciiBytes("shorts_shelf.e"),
-            getAsciiBytes("shorts_video_cell.e"),
-            getAsciiBytes("swipeable_row.e"),
-            getAsciiBytes("video_lockup_with_attachment.e")
-    );
     private static final List<byte[]> LIST_ITEM_SHARE_BYTES = List.of(
             getAsciiBytes("list_item.e"),
             getAsciiBytes("yt_outline_experimental_share")
@@ -859,28 +846,26 @@ public final class FlyoutUtils {
             return;
         }
 
-        if (!byteIndexesOf(flyoutBuffer, VIDEO_ELEMENTS_BYTES).isEmpty()) {
-            setFlyoutPlaylistId(flyoutBuffer);
+        setFlyoutPlaylistId(flyoutBuffer);
 
-            View senderView = senderViewRef.get();
-            if (senderView != null) {
-                ViewParent parent = senderView.getParent();
-                while (parent != null) {
-                    if (parent instanceof ComponentHost componentHost) {
-                        CharSequence description = componentHost.getContentDescription();
-                        if (description != null) {
-                            String stringDescription = description.toString();
+        View senderView = senderViewRef.get();
+        if (senderView != null) {
+            ViewParent parent = senderView.getParent();
+            while (parent != null) {
+                if (parent instanceof ComponentHost componentHost) {
+                    CharSequence description = componentHost.getContentDescription();
+                    if (description != null) {
+                        String stringDescription = description.toString();
 
-                            Logger.printDebug(() -> "Flyout content desription: " + stringDescription);
+                        Logger.printDebug(() -> "Flyout content desription: " + stringDescription);
 
-                            setFlyoutVideoId(flyoutBuffer, stringDescription);
-                            setFlyoutChannel(flyoutBuffer, stringDescription);
+                        setFlyoutVideoId(flyoutBuffer, stringDescription);
+                        setFlyoutChannel(flyoutBuffer, stringDescription);
 
-                            break;
-                        }
+                        break;
                     }
-                    parent = parent.getParent();
                 }
+                parent = parent.getParent();
             }
         }
     }
