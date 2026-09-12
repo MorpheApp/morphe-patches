@@ -230,8 +230,9 @@ public class FullscreenVideoScalePatch {
         view.getLocationOnScreen(loc);
 
         VideoScaleMode mode = Settings.FULLSCREEN_VIDEO_SCALE.get();
+        final float pinch = Math.max(1f, DisableFullscreenGesturesPatch.getPinchScale());
         if (mode == VideoScaleMode.ZOOM) {
-            final float scale = Math.max(displayW / contentW, displayH / contentH);
+            final float scale = Math.max(displayW / contentW, displayH / contentH) * pinch;
             view.setPivotX(contentLeft + contentW / 2f);
             view.setPivotY(contentTop + contentH / 2f);
             view.setScaleX(scale);
@@ -243,10 +244,24 @@ public class FullscreenVideoScalePatch {
             return;
         }
 
+        final float scaleX = (displayW / contentW) * pinch;
+        final float scaleY = (displayH / contentH) * pinch;
+        if (pinch > 1.01f) {
+            view.setPivotX(contentLeft + contentW / 2f);
+            view.setPivotY(contentTop + contentH / 2f);
+            view.setScaleX(scaleX);
+            view.setScaleY(scaleY);
+            final float contentCenterX = loc[0] + contentLeft + contentW / 2f;
+            final float contentCenterY = loc[1] + contentTop + contentH / 2f;
+            view.setTranslationX(displayW / 2f - contentCenterX);
+            view.setTranslationY(displayH / 2f - contentCenterY);
+            return;
+        }
+
         view.setPivotX(contentLeft);
         view.setPivotY(contentTop);
-        view.setScaleX(displayW / contentW);
-        view.setScaleY(displayH / contentH);
+        view.setScaleX(scaleX);
+        view.setScaleY(scaleY);
         view.setTranslationX(-(loc[0] + contentLeft));
         view.setTranslationY(-(loc[1] + contentTop));
     }
