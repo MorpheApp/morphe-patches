@@ -25,15 +25,18 @@ import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
-import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.patches.util.resource.StringResourceSanitizer
 import app.morphe.util.ResourceGroup
+import app.morphe.util.asSequence
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
+import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -41,6 +44,8 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
 import org.w3c.dom.NodeList
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 import java.util.logging.Logger
 
 private val mipmapDirectories = mapOf(
@@ -62,6 +67,23 @@ private val iconStyleNames = arrayOf(
 
 private const val ORIGINAL_USER_ICON_STYLE_NAME = "original"
 private const val CUSTOM_USER_ICON_STYLE_NAME = "custom"
+
+// Matches the default icon of a regular install, which the extension uses
+// when no icon has been selected in the app settings.
+private const val DEFAULT_MOUNTED_ICON_STYLE_NAME = "black"
+
+// A mounted install cannot select an icon at runtime, so the style is a patch option instead.
+// The values must be kept in sync with 'iconStyleNames'.
+private val mountedIconStyleValues = mapOf(
+    "App default" to null,
+    "Original" to ORIGINAL_USER_ICON_STYLE_NAME,
+    "Black" to "black",
+    "Dark" to "dark",
+    "Light" to "light",
+    "Play" to "play",
+    "Play black" to "play_black",
+    "Custom" to CUSTOM_USER_ICON_STYLE_NAME,
+)
 
 private const val LAUNCHER_RESOURCE_NAME_PREFIX = "morphe_launcher_"
 private const val LAUNCHER_ADAPTIVE_BACKGROUND_PREFIX = "morphe_adaptive_background_"
@@ -110,7 +132,8 @@ internal fun baseCustomBrandingPatch(
 ): ResourcePatch = resourcePatch(
     name = "Custom branding",
     description = "Adds options to change the app icon and app name. " +
-            "Branding cannot be changed for mounted (root) installations."
+            "For mounted (root) installations the branding is applied while patching, " +
+            "because it cannot be changed from the app settings."
 ) {
 
     availability { installer, _ ->
@@ -151,6 +174,23 @@ internal fun baseCustomBrandingPatch(
               ${notificationIconPngDirectories.map { (dpi, dim) -> "- $dpi/$USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME ($dim)" }.joinToString("\n")}
         """
     )
+
+    val mountedIconStyle by stringOption(
+        key = "mountedIconStyle",
+        values = mountedIconStyleValues,
+        title = "App icon for mounted installs",
+        description = """
+            The app icon to use when the app is installed by mounting (root).
+
+            Such an install cannot change the icon from the app settings, so the icon is applied
+            while patching. This option is ignored for all other installations.
+
+            'App default' uses the custom icon if one is provided, and otherwise the same icon
+            a regular install starts with.
+        """
+    ) {
+        it == null || mountedIconStyleValues.containsValue(it)
+    }
 
     block()
 
@@ -216,31 +256,169 @@ internal fun baseCustomBrandingPatch(
                 // and can only do that in the finalize block here.
                 // The UI preferences cannot be selectively added here, because the settings finalize block
                 // may have already run and the settings are already wrote to file.
-                // Instead, show a warning if any patch option was used (A rooted device launcher ignores the manifest changes),
-                // and the non-functional in-app settings are removed on app startup by extension code.
-                if (isRootInstall && (useCustomName || useCustomIcon)) {
-                    Logger.getLogger(this::class.java.name).warning(
-                        "Custom branding does not work with root installation. No changes applied."
+                // Instead, the non-functional in-app settings are removed on app startup by extension code.
+                if (isRootInstall) {
+                    // A mounted install keeps the original app installed and the system parses the
+                    // manifest of the stock APK, so the launch aliases and any manifest branding
+                    // attribute are never used. Resource ids are unchanged by patching and are still
+                    // resolved from the mounted APK, and replacing what those ids point to is the only
+                    // way the branding of a mounted install can be changed.
+                    applyMountedBranding(
+                        originalLauncherIconName,
+                        originalAppName,
+                        mountedIconStyle,
+                        customIcon,
+                        customName
                     )
+
+                    return@finalize
                 }
 
-                if (!isRootInstall || useCustomName) {
-                    document("AndroidManifest.xml").use { document ->
-                        val application = document.getElementsByTagName("application").item(0) as Element
-                        application.setAttribute(
-                            "android:label",
-                            if (useCustomName) {
-                                // Use custom name everywhere.
-                                customName!!
+                document("AndroidManifest.xml").use { document ->
+                    // Create launch aliases that can be programmatically selected in app.
+                    fun createAlias(
+                        aliasName: String,
+                        iconMipmapName: String,
+                        appNameIndex: Int,
+                        useCustomName: Boolean,
+                        enabled: Boolean,
+                        intents: NodeList
+                    ): Element {
+                        val label = if (useCustomName) {
+                            if (customName == null) {
+                                "Custom" // Dummy text, and normally cannot be seen.
                             } else {
-                                // The YT application name can appear in some places alongside the system
-                                // YouTube app, such as the settings app list and in the "open with" file picker.
-                                // Because the YouTube app cannot be completely uninstalled and only disabled,
-                                // use a custom name for this situation to disambiguate which app is which.
-                                "@string/morphe_custom_branding_name_entry_2"
+                                customName!!
                             }
+                        } else if (appNameIndex == 1) {
+                            // Indexing starts at 1.
+                            originalAppName
+                        } else {
+                            "@string/morphe_custom_branding_name_entry_$appNameIndex"
+                        }
+                        val alias = document.createElement("activity-alias")
+                        alias.setAttribute("android:name", aliasName)
+                        alias.setAttribute("android:enabled", enabled.toString())
+                        alias.setAttribute("android:exported", "true")
+                        alias.setAttribute("android:icon", "@mipmap/$iconMipmapName")
+                        alias.setAttribute("android:label", label)
+                        alias.setAttribute("android:targetActivity", mainActivityName)
+
+                        // Copy all intents from the original alias so long press actions still work.
+                        if (isYouTubeMusic) {
+                            val intentFilter = document.createElement("intent-filter").apply {
+                                val action = document.createElement("action")
+                                action.setAttribute("android:name", "android.intent.action.MAIN")
+                                appendChild(action)
+
+                                val category = document.createElement("category")
+                                category.setAttribute("android:name", "android.intent.category.LAUNCHER")
+                                appendChild(category)
+                            }
+                            alias.appendChild(intentFilter)
+                        } else {
+                            for (i in 0 until intents.length) {
+                                alias.appendChild(
+                                    intents.item(i).cloneNode(true)
+                                )
+                            }
+                        }
+
+                        return alias
+                    }
+
+                    val application = document.getElementsByTagName("application").item(0) as Element
+                    val intentFilters = document.childNodes.findElementByAttributeValueOrThrow(
+                        "android:name",
+                        activityAliasNameWithIntents
+                    ).childNodes
+
+                    // If user provides a custom icon, then change the application icon ('static' icon)
+                    // which shows as the push notification for some devices, in the app settings,
+                    // and as the icon for the apk before installing.
+                    // This icon cannot be dynamically selected and this change must only be done if the
+                    // user provides an icon otherwise there is no way to restore the original YouTube icon.
+                    if (useCustomIcon) {
+                        application.setAttribute(
+                            "android:icon",
+                            "@mipmap/morphe_launcher_custom"
                         )
                     }
+
+                    val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
+                    val enabledIconIndex = if (useCustomIcon) iconStyleNames.size else 0 // 0 indexing
+
+                    for (appNameIndex in 1 .. numberOfPresetAppNames) {
+                        fun aliasName(name: String): String = ".morphe_" + name + '_' + appNameIndex
+
+                        val useCustomNameLabel = (useCustomName && appNameIndex == numberOfPresetAppNames)
+
+                        // Original icon.
+                        application.appendChild(
+                            createAlias(
+                                aliasName = aliasName(ORIGINAL_USER_ICON_STYLE_NAME),
+                                iconMipmapName = originalLauncherIconName,
+                                appNameIndex = appNameIndex,
+                                useCustomName = useCustomNameLabel,
+                                enabled = false,
+                                intentFilters
+                            )
+                        )
+
+                        // Bundled icons.
+                        iconStyleNames.forEachIndexed { iconIndex, style ->
+                            application.appendChild(
+                                createAlias(
+                                    aliasName = aliasName(style),
+                                    iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + style,
+                                    appNameIndex = appNameIndex,
+                                    useCustomName = useCustomNameLabel,
+                                    enabled = (appNameIndex == enabledNameIndex && iconIndex == enabledIconIndex),
+                                    intentFilters
+                                )
+                            )
+                        }
+
+                        // User provided custom icon.
+                        //
+                        // Must add all aliases even if the user did not provide a custom icon of their own.
+                        // This is because if the user installs with an option, then repatches without the option,
+                        // the alias must still exist because if it was previously enabled, and then it's removed
+                        // the app will become broken and cannot launch. Even if the app data is cleared
+                        // it still cannot be launched and the only fix is to uninstall the app.
+                        // To prevent this, always include all aliases and use dummy data if needed.
+                        application.appendChild(
+                            createAlias(
+                                aliasName = aliasName(CUSTOM_USER_ICON_STYLE_NAME),
+                                iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + CUSTOM_USER_ICON_STYLE_NAME,
+                                appNameIndex = appNameIndex,
+                                useCustomName = useCustomNameLabel,
+                                enabled = appNameIndex == enabledNameIndex && useCustomIcon,
+                                intentFilters
+                            )
+                        )
+                    }
+
+                    // Remove the main action from the original alias, otherwise two apps icons
+                    // can be shown in the launcher. Can only be done after adding the new aliases.
+                    intentFilters.findElementByAttributeValueOrThrow(
+                        "android:name",
+                        "android.intent.action.MAIN"
+                    ).removeFromParent()
+
+                    application.setAttribute(
+                        "android:label",
+                        if (useCustomName) {
+                            // Use custom name everywhere.
+                            customName!!
+                        } else {
+                            // The YT application name can appear in some places alongside the system
+                            // YouTube app, such as the settings app list and in the "open with" file picker.
+                            // Because the YouTube app cannot be completely uninstalled and only disabled,
+                            // use a custom name for this situation to disambiguate which app is which.
+                            "@string/morphe_custom_branding_name_entry_2"
+                        }
+                    )
                 }
             }
         }
@@ -331,141 +509,8 @@ internal fun baseCustomBrandingPatch(
             )
         }
 
-        document("AndroidManifest.xml").use { document ->
-            // Create launch aliases that can be programmatically selected in app.
-            fun createAlias(
-                aliasName: String,
-                iconMipmapName: String,
-                appNameIndex: Int,
-                useCustomName: Boolean,
-                enabled: Boolean,
-                intents: NodeList
-            ): Element {
-                val label = if (useCustomName) {
-                    if (customName == null) {
-                        "Custom" // Dummy text, and normally cannot be seen.
-                    } else {
-                        customName!!
-                    }
-                } else if (appNameIndex == 1) {
-                    // Indexing starts at 1.
-                    originalAppName
-                } else {
-                    "@string/morphe_custom_branding_name_entry_$appNameIndex"
-                }
-                val alias = document.createElement("activity-alias")
-                alias.setAttribute("android:name", aliasName)
-                alias.setAttribute("android:enabled", enabled.toString())
-                alias.setAttribute("android:exported", "true")
-                alias.setAttribute("android:icon", "@mipmap/$iconMipmapName")
-                alias.setAttribute("android:label", label)
-                alias.setAttribute("android:targetActivity", mainActivityName)
-
-                // Copy all intents from the original alias so long press actions still work.
-                if (isYouTubeMusic) {
-                    val intentFilter = document.createElement("intent-filter").apply {
-                        val action = document.createElement("action")
-                        action.setAttribute("android:name", "android.intent.action.MAIN")
-                        appendChild(action)
-
-                        val category = document.createElement("category")
-                        category.setAttribute("android:name", "android.intent.category.LAUNCHER")
-                        appendChild(category)
-                    }
-                    alias.appendChild(intentFilter)
-                } else {
-                    for (i in 0 until intents.length) {
-                        alias.appendChild(
-                            intents.item(i).cloneNode(true)
-                        )
-                    }
-                }
-
-                return alias
-            }
-
-            val application = document.getElementsByTagName("application").item(0) as Element
-            val intentFilters = document.childNodes.findElementByAttributeValueOrThrow(
-                "android:name",
-                activityAliasNameWithIntents
-            ).childNodes
-
-            // If user provides a custom icon, then change the application icon ('static' icon)
-            // which shows as the push notification for some devices, in the app settings,
-            // and as the icon for the apk before installing.
-            // This icon cannot be dynamically selected and this change must only be done if the
-            // user provides an icon otherwise there is no way to restore the original YouTube icon.
-            if (useCustomIcon) {
-                application.setAttribute(
-                    "android:icon",
-                    "@mipmap/morphe_launcher_custom"
-                )
-            }
-
-            val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
-            val enabledIconIndex = if (useCustomIcon) iconStyleNames.size else 0 // 0 indexing
-
-            for (appNameIndex in 1 .. numberOfPresetAppNames) {
-                fun aliasName(name: String): String = ".morphe_" + name + '_' + appNameIndex
-
-                val useCustomNameLabel = (useCustomName && appNameIndex == numberOfPresetAppNames)
-
-                // Original icon.
-                application.appendChild(
-                    createAlias(
-                        aliasName = aliasName(ORIGINAL_USER_ICON_STYLE_NAME),
-                        iconMipmapName = originalLauncherIconName,
-                        appNameIndex = appNameIndex,
-                        useCustomName = useCustomNameLabel,
-                        enabled = false,
-                        intentFilters
-                    )
-                )
-
-                // Bundled icons.
-                iconStyleNames.forEachIndexed { iconIndex, style ->
-                    application.appendChild(
-                        createAlias(
-                            aliasName = aliasName(style),
-                            iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + style,
-                            appNameIndex = appNameIndex,
-                            useCustomName = useCustomNameLabel,
-                            enabled = (appNameIndex == enabledNameIndex && iconIndex == enabledIconIndex),
-                            intentFilters
-                        )
-                    )
-                }
-
-                // User provided custom icon.
-                //
-                // Must add all aliases even if the user did not provide a custom icon of their own.
-                // This is because if the user installs with an option, then repatches without the option,
-                // the alias must still exist because if it was previously enabled, and then it's removed
-                // the app will become broken and cannot launch. Even if the app data is cleared
-                // it still cannot be launched and the only fix is to uninstall the app.
-                // To prevent this, always include all aliases and use dummy data if needed.
-                application.appendChild(
-                    createAlias(
-                        aliasName = aliasName(CUSTOM_USER_ICON_STYLE_NAME),
-                        iconMipmapName = LAUNCHER_RESOURCE_NAME_PREFIX + CUSTOM_USER_ICON_STYLE_NAME,
-                        appNameIndex = appNameIndex,
-                        useCustomName = useCustomNameLabel,
-                        enabled = appNameIndex == enabledNameIndex && useCustomIcon,
-                        intentFilters
-                    )
-                )
-            }
-
-            // Remove the main action from the original alias, otherwise two apps icons
-            // can be shown in the launcher. Can only be done after adding the new aliases.
-            intentFilters.findElementByAttributeValueOrThrow(
-                "android:name",
-                "android.intent.action.MAIN"
-            ).removeFromParent()
-        }
-
-        // Copy custom icons last, so if the user enters an invalid icon path
-        // and an exception is thrown then the critical manifest changes are still made.
+        // Copy the user provided icon files here and not in the finalize block, because a mounted
+        // install uses them to replace the icon of the app and that is done while finalizing.
         if (useCustomIcon) {
             // Copy user provided files
             val iconPathFile = File(customIcon!!.trim())
@@ -562,5 +607,159 @@ internal fun baseCustomBrandingPatch(
         }
 
         executeBlock()
+    }
+}
+
+/**
+ * Applies the branding of a mounted (root) install by replacing the contents of the resources
+ * the manifest of the stock APK already points to.
+ *
+ * @param originalAppName The app name resource reference declared by the unpatched app.
+ * @param mountedIconStyle The icon style patch option, or null to use the default icon.
+ * @param customIcon The custom icon patch option folder, if one was provided.
+ * @param customName The custom app name patch option, if one was provided.
+ */
+private fun ResourcePatchContext.applyMountedBranding(
+    originalLauncherIconName: String,
+    originalAppName: String,
+    mountedIconStyle: String?,
+    customIcon: String?,
+    customName: String?
+) {
+    val logger = Logger.getLogger(ResourcePatchContext::class.java.name)
+
+    if (customName != null) {
+        if (!originalAppName.startsWith("@string/")) {
+            throw PatchException("Expected a string resource but found: $originalAppName")
+        }
+
+        setAppNameResource(originalAppName.substring("@string/".length), customName)
+        logger.info("Mounted install app name: $customName")
+    }
+
+    val iconStyle = mountedIconStyle
+        ?: if (customIcon != null) CUSTOM_USER_ICON_STYLE_NAME else DEFAULT_MOUNTED_ICON_STYLE_NAME
+
+    if (iconStyle == ORIGINAL_USER_ICON_STYLE_NAME) {
+        return
+    }
+
+    if (iconStyle == CUSTOM_USER_ICON_STYLE_NAME && customIcon == null) {
+        throw PatchException(
+            "The 'Custom' app icon for mounted installs requires the 'Custom icon' option."
+        )
+    }
+
+    setLauncherIconResource(originalLauncherIconName, iconStyle)
+    logger.info("Mounted install app icon: $iconStyle")
+}
+
+/**
+ * Sets the app name of the default locale, and removes the localized app names because
+ * a launcher resolves the app name using the locale of the device and not of the app.
+ */
+private fun ResourcePatchContext.setAppNameResource(resourceName: String, appName: String) {
+    val valuesDirectories = get("res").listFiles { file ->
+        file.isDirectory && (file.name == "values" || file.name.startsWith("values-"))
+    } ?: throw PatchException("Could not find the app resources")
+
+    var defaultAppNameSet = false
+
+    valuesDirectories.forEach { valuesDirectory ->
+        if (!valuesDirectory.resolve("strings.xml").exists()) return@forEach
+
+        document("res/${valuesDirectory.name}/strings.xml").use { document ->
+            val resources = document.getElementsByTagName("resources").item(0) ?: return@use
+            val declarations = resources.childNodes.asSequence()
+                .filterIsInstance<Element>()
+                .filter { it.tagName == "string" && it.getAttribute("name") == resourceName }
+                .toList()
+
+            if (valuesDirectory.name != "values") {
+                declarations.forEach { it.removeFromParent() }
+                return@use
+            }
+
+            val sanitizedAppName = StringResourceSanitizer.sanitizeAndroidResourceString(
+                resourceName,
+                appName
+            )
+
+            if (declarations.isEmpty()) {
+                val declaration = document.createElement("string")
+                declaration.setAttribute("name", resourceName)
+                declaration.textContent = sanitizedAppName
+                resources.appendChild(declaration)
+            } else {
+                declarations.forEach { it.textContent = sanitizedAppName }
+            }
+
+            defaultAppNameSet = true
+        }
+    }
+
+    if (!defaultAppNameSet) {
+        throw PatchException("Could not find the app name resource: $resourceName")
+    }
+}
+
+/**
+ * Replaces the adaptive launcher icon of the app with a bundled icon style.
+ */
+private fun ResourcePatchContext.setLauncherIconResource(
+    originalLauncherIconName: String,
+    iconStyle: String
+) {
+    val iconReferences = mutableSetOf("mipmap" to originalLauncherIconName)
+
+    document("AndroidManifest.xml").use { document ->
+        val application = document.getElementsByTagName("application").item(0) as Element
+
+        // Some launchers show the round icon, and it can point to a different resource.
+        arrayOf("android:icon", "android:roundIcon").forEach { attributeName ->
+            val reference = application.getAttribute(attributeName)
+            val typeIndex = reference.indexOf('/')
+
+            // Framework resources such as '@android:mipmap/sym_def_app_icon' cannot be replaced.
+            if (!reference.startsWith("@") || typeIndex < 0 || reference.contains(':')) {
+                return@forEach
+            }
+
+            iconReferences += reference.substring(1, typeIndex) to reference.substring(typeIndex + 1)
+        }
+    }
+
+    val resourceDirectory = get("res")
+    var replacedIcons = 0
+
+    iconReferences.forEach { (resourceType, resourceName) ->
+        val typeDirectories = resourceDirectory.listFiles { file ->
+            file.isDirectory && (file.name == resourceType || file.name.startsWith("$resourceType-"))
+        } ?: return@forEach
+
+        typeDirectories.forEach { typeDirectory ->
+            // Only the adaptive icon is replaced. A raster icon of the same name is used by
+            // Android 7 and older, which the target apps no longer support.
+            val iconFile = typeDirectory.resolve("$resourceName.xml")
+            if (!iconFile.exists()) return@forEach
+
+            val bundledIcon = inputStreamFromBundledResource(
+                "custom-branding",
+                "mipmap-anydpi/$LAUNCHER_RESOURCE_NAME_PREFIX$iconStyle.xml"
+            ) ?: throw PatchException("Could not find the bundled icon style: $iconStyle")
+
+            bundledIcon.use { icon ->
+                Files.copy(icon, iconFile.toPath(), StandardCopyOption.REPLACE_EXISTING)
+            }
+
+            replacedIcons++
+        }
+    }
+
+    if (replacedIcons == 0) {
+        throw PatchException(
+            "Could not find an adaptive launcher icon to replace: " +
+                    iconReferences.joinToString { (type, name) -> "@$type/$name" }
+        )
     }
 }
