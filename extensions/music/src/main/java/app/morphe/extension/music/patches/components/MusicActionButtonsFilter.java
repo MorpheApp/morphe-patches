@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.LyricsPanelInstaller;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.TreeNodeElementPatch.LithoGetBufferContainerInterface;
@@ -180,6 +182,9 @@ public final class MusicActionButtonsFilter extends Filter {
         try {
             if (!identifier.startsWith(VIDEO_ACTION_BAR_PREFIX)) {
                 return;
+            }
+            if (LyricsManager.getInstance().hasLyrics()) {
+                LyricsPanelInstaller.enableLyricsButton();
             }
             if (Settings.HIDE_ACTION_BAR.get()) {
                 treeNodeResultList.clear();

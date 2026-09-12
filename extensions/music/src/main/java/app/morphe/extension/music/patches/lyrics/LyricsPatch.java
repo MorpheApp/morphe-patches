@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
@@ -39,4 +40,6 @@ public final class LyricsPatch {
             Logger.printException(() -> "onSetPlaybackState failure", ex);
         }
     }
+
+    
 }

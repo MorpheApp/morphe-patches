@@ -14,8 +14,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-
-import app.morphe.extension.shared.Logger;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Parser for the LRC format used by both LRCLIB and KuGou.
@@ -25,7 +26,48 @@ public final class LrcParser {
     /** Tags such as {@code [ar:Artist]} that are not timestamps. */
     private static final String METADATA_TAG_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
 
+    private static final Set<String> CREDIT_META_KEYS = Set.of("ti", "ar", "al", "au");
+
+    private static final Pattern LRC_META = Pattern.compile("^\\[(\\w+):([^\\]]*)]$");
+
+    public static final class LrcParseResult {
+        public final List<LyricsLine> lines;
+        public final List<String> creditLines;
+
+        LrcParseResult(List<LyricsLine> lines, List<String> creditLines) {
+            this.lines = lines;
+            this.creditLines = creditLines;
+        }
+    }
+
     private LrcParser() {
+    }
+
+    public static LrcParseResult parseSyncedWithCreditLines(@Nullable String lrc) {
+        List<String> creditLines = extractCreditMetadata(lrc);
+        List<LyricsLine> lines = parseSynced(lrc);
+        return new LrcParseResult(lines, creditLines);
+    }
+
+    public static List<String> extractCreditMetadata(@Nullable String lrc) {
+        List<String> creditLines = new ArrayList<>();
+        if (lrc == null || lrc.isEmpty()) {
+            return creditLines;
+        }
+        for (String rawLine : lrc.split("\\r?\\n")) {
+            String line = rawLine.trim();
+            Matcher meta = LRC_META.matcher(line);
+            if (meta.matches()) {
+                String key = meta.group(1).toLowerCase(Locale.ROOT);
+                if (!key.equals("offset") && CREDIT_META_KEYS.contains(key)) {
+                    String value = meta.group(2).trim();
+                    if (!value.isEmpty()) {
+                        creditLines.add(meta.group(1) + ":" + value);
+                    }
+                }
+            }
+        }
+        return creditLines;
     }
 
     /**
@@ -78,9 +120,17 @@ public final class LrcParser {
                 continue;
             }
 
-            String text = stripWordTimestamps(line.substring(index)).trim();
-            for (long time : timestamps) {
-                lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text));
+            final long lineStartMs = Math.max(0, timestamps.get(0) + fileOffsetMs);
+            final BodyParse body = parseBody(line.substring(index), lineStartMs);
+            final String text = body.text.trim();
+            if (!body.words.isEmpty()) {
+                for (long time : timestamps) {
+                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text, body.words));
+                }
+            } else if (!text.isEmpty()) {
+                for (long time : timestamps) {
+                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text));
+                }
             }
         }
 
@@ -90,6 +140,130 @@ public final class LrcParser {
 
         lines.sort(Comparator.comparingLong(LyricsLine::startTimeMs));
         return lines;
+    }
+
+    private static final class BodyParse {
+        final String text;
+        final List<Word> words;
+
+        BodyParse(String text, List<Word> words) {
+            this.text = text;
+            this.words = words;
+        }
+    }
+
+    private static BodyParse parseBody(String body, long lineStartMs) {
+        if (body.indexOf('<') < 0 && body.indexOf('[') < 0) {
+            // No word-level tags, so this is a plain line.
+            return new BodyParse(body, List.of());
+        }
+
+        final List<Word> words = new ArrayList<>();
+        final StringBuilder full = new StringBuilder();
+
+        long pendingStart = LyricsLine.NO_TIME;
+        final StringBuilder pending = new StringBuilder();
+        String prefix = "";
+        boolean hasToken = false;
+
+        int index = 0;
+        final int length = body.length();
+        while (index < length) {
+            final char c = body.charAt(index);
+            if (c == '<' || c == '[') {
+                final char close = (c == '<') ? '>' : ']';
+                final int end = body.indexOf(close, index);
+                if (end < 0) {
+                    // Unterminated tag: keep the remainder as literal text.
+                    full.append(body, index, length);
+                    pending.append(body, index, length);
+                    break;
+                }
+                final long time = parseTimestamp(body.substring(index + 1, end));
+                if (time != LyricsLine.NO_TIME) {
+                    if (pendingStart == LyricsLine.NO_TIME) {
+                        // First word tag: text accumulated so far precedes any timed word.
+                        prefix = pending.toString();
+                        pendingStart = time;
+                    } else {
+                        final String word = pending.toString();
+                        if (!word.trim().isEmpty()) {
+                            words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
+                        }
+                        pendingStart = time;
+                    }
+                    hasToken = true;
+                    pending.setLength(0);
+                } else {
+                    // Not a timestamp (e.g. [chorus]): keep as literal text.
+                    full.append(body, index, end + 1);
+                    pending.append(body, index, end + 1);
+                }
+                index = end + 1;
+            } else {
+                full.append(c);
+                pending.append(c);
+                index++;
+            }
+        }
+
+        if (!hasToken) {
+            // No valid word tag was found; treat the whole body as a plain line.
+            return new BodyParse(body, List.of());
+        }
+
+        if (pendingStart != LyricsLine.NO_TIME) {
+            final String word = pending.toString();
+            if (!word.trim().isEmpty()) {
+                words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
+            }
+        }
+
+        if (!prefix.trim().isEmpty()) {
+            words.add(0, new Word(lineStartMs, LyricsLine.NO_TIME, prefix.trim()));
+        }
+
+        if (words.isEmpty()) {
+            return new BodyParse(full.toString().trim(), List.of());
+        }
+
+        inferWordEnds(words);
+        return new BodyParse(full.toString().trim(), words);
+    }
+
+    private static void inferWordEnds(List<Word> words) {
+        for (int i = 0; i < words.size() - 1; i++) {
+            Word word = words.get(i);
+            if (word.endMs() == LyricsLine.NO_TIME) {
+                words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(), word.text()));
+            }
+        }
+        if (!words.isEmpty()) {
+            int last = words.size() - 1;
+            Word lastWord = words.get(last);
+            if (lastWord.endMs() == LyricsLine.NO_TIME) {
+                words.set(last, new Word(lastWord.startMs(),
+                        lastWord.startMs() + 800, lastWord.text()));
+            }
+        }
+    }
+
+    public static String formatLine(LyricsLine line) {
+        StringBuilder builder = new StringBuilder(formatTimestamp(line.startTimeMs()));
+        if (line.hasWords()) {
+            for (Word word : line.words()) {
+                builder.append('<')
+                        .append(formatWordTimestamp(word.startMs()))
+                        .append('>')
+                        .append(word.text());
+                if (word.endsWithSpace()) {
+                    builder.append(' ');
+                }
+            }
+        } else {
+            builder.append(line.text());
+        }
+        return builder.toString();
     }
 
     /**
@@ -188,33 +362,24 @@ public final class LrcParser {
 
             return (minutes * 60 + seconds) * 1000 + fractionMs;
         } catch (NumberFormatException | IndexOutOfBoundsException ex) {
-            Logger.printDebug(() -> "Not a timestamp: " + tag);
             return LyricsLine.NO_TIME;
         }
     }
 
     /**
-     * Removes word level timestamps of enhanced LRC, such as {@code <00:12.00>}.
+     * Formats a line level timestamp as {@code [mm:ss.xx]} for the LRC cache.
      */
-    private static String stripWordTimestamps(String text) {
-        if (text.indexOf('<') < 0) {
-            return text;
-        }
+    private static String formatTimestamp(long timeMs) {
+        final long minutes = timeMs / 60_000;
+        final long seconds = (timeMs / 1000) % 60;
+        final long hundredths = (timeMs % 1000) / 10;
+        return String.format(Locale.US, "[%02d:%02d.%02d]", minutes, seconds, hundredths);
+    }
 
-        StringBuilder builder = new StringBuilder(text.length());
-        int index = 0;
-        while (index < text.length()) {
-            char character = text.charAt(index);
-            if (character == '<') {
-                int end = text.indexOf('>', index);
-                if (end > 0) {
-                    index = end + 1;
-                    continue;
-                }
-            }
-            builder.append(character);
-            index++;
-        }
-        return builder.toString();
+    private static String formatWordTimestamp(long timeMs) {
+        final long minutes = timeMs / 60_000;
+        final long seconds = (timeMs / 1000) % 60;
+        final long hundredths = (timeMs % 1000) / 10;
+        return String.format(Locale.US, "%02d:%02d.%02d", minutes, seconds, hundredths);
     }
 }

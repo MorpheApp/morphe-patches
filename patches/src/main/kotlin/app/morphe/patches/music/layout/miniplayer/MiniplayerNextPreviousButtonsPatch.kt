@@ -27,6 +27,8 @@ import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/MiniplayerPreviousNextButtonsPatch;"
+private const val MINIPLAYER_LYRICS_CLASS =
+    "Lapp/morphe/extension/music/patches/lyrics/MiniPlayerLyrics;"
 
 private const val IMAGE_VIEW_TAG =
     "com.google.android.libraries.youtube.common.ui.TouchImageView"
@@ -125,6 +127,11 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
                     insertIndex,
                     "invoke-static { v$parentViewRegister }, $EXTENSION_CLASS->" +
                             "setPreviousNextButtonOnClickListener(Landroid/view/View;)V"
+                )
+                addInstruction(
+                    insertIndex + 1,
+                    "invoke-static { v$parentViewRegister }, $MINIPLAYER_LYRICS_CLASS->" +
+                            "onMiniPlayerViewCreated(Landroid/view/View;)V"
                 )
             }
         }

@@ -9,20 +9,15 @@ package app.morphe.extension.music.patches.lyrics;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.music.patches.lyrics.requests.CharactersConverter;
+
 /**
  * Normalizes YouTube Music metadata into what a lyrics database expects.
  *
- * <p>Separate from the scrobbling cleaner, which is driven by scrobbling settings.
+ * <p>All cleanup is driven by the user-configured {@link app.morphe.extension.music.settings.Settings#LYRICS_CUSTOM_REGEX}.
+ * When the regex is blank no filtering is applied.
  */
 final class MetadataCleaner {
-
-    private static final String VIDEO_SUFFIX_PATTERN =
-            "(?i)\\s*[（(\\[](official\\s+)?(video|audio|music\\s+video|lyrics?\\s+video|visualizer|mv)[）)\\]]";
-    private static final String REMASTER_PATTERN =
-            "(?i)\\s*[（(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[）)\\]]";
-    private static final String QUALITY_PATTERN =
-            "(?i)\\s*[（(\\[](mono|stereo|hq|hd|4k|8k)[）)\\]]";
-    private static final String TOPIC_SUFFIX_PATTERN = "(?i)\\s*-\\s*topic$";
 
     private MetadataCleaner() {
     }
@@ -31,18 +26,14 @@ final class MetadataCleaner {
         if (title == null) {
             return "";
         }
-        String clean = title
-                .replaceAll(VIDEO_SUFFIX_PATTERN, "")
-                .replaceAll(REMASTER_PATTERN, "")
-                .replaceAll(QUALITY_PATTERN, "");
-        return collapseWhitespace(clean);
+        return collapseWhitespace(applyRegex(title, app.morphe.extension.music.settings.Settings.LYRICS_CUSTOM_REGEX.get()));
     }
 
     static String cleanArtist(@Nullable String artist) {
         if (artist == null) {
             return "";
         }
-        String clean = artist.replaceAll(TOPIC_SUFFIX_PATTERN, "");
+        String clean = artist;
 
         // Multi artist strings such as "A, B & C" rarely match a database entry,
         // so only the first credited artist is used for the lookup.
@@ -50,18 +41,67 @@ final class MetadataCleaner {
         if (separator > 0) {
             clean = clean.substring(0, separator);
         }
-        return collapseWhitespace(clean);
+        return collapseWhitespace(applyRegex(clean, app.morphe.extension.music.settings.Settings.LYRICS_CUSTOM_REGEX.get()));
     }
 
     static String cleanAlbum(@Nullable String album) {
         if (album == null) {
             return "";
         }
-        return collapseWhitespace(album.replaceAll(REMASTER_PATTERN, ""));
+        return collapseWhitespace(applyRegex(album, app.morphe.extension.music.settings.Settings.LYRICS_CUSTOM_REGEX.get()));
+    }
+
+    static String applyRegex(String input, String regex) {
+        if (regex == null || regex.isBlank()) {
+            return input;
+        }
+        try {
+            return CharactersConverter.normalizePreserveCase(input).replaceAll(regex, "");
+        } catch (Exception ex) {
+            return input;
+        }
+    }
+
+    static String[] parseTitleAndArtist(@Nullable String rawTitle) {
+        if (rawTitle == null) {
+            return null;
+        }
+        int idx = rawTitle.indexOf(" - ");
+        if (idx <= 0 || idx >= rawTitle.length() - 3) {
+            return null;
+        }
+        String artist = cleanArtist(rawTitle.substring(0, idx).trim());
+        String title = cleanTitle(rawTitle.substring(idx + 3).trim());
+        if (artist.isEmpty() || title.isEmpty()) {
+            return null;
+        }
+        return new String[]{ artist, title };
+    }
+
+    @Nullable
+    static TrackInfo swapTitleAndArtist(TrackInfo track, @Nullable String rawTitle) {
+        if (rawTitle == null) {
+            return null;
+        }
+        int idx = rawTitle.indexOf(" - ");
+        if (idx <= 0 || idx >= rawTitle.length() - 3) {
+            return null;
+        }
+        String left = rawTitle.substring(0, idx).trim();
+        String right = rawTitle.substring(idx + 3).trim();
+        // Original split: left=artist, right=title → swapped: left=title, right=artist
+        String swappedArtist = cleanArtist(right);
+        String swappedTitle = cleanTitle(left);
+        if (swappedArtist.isEmpty() || swappedTitle.isEmpty()) {
+            return null;
+        }
+        TrackInfo swapped = new TrackInfo(swappedTitle, swappedArtist, track.album(),
+                track.durationSeconds());
+        return swapped.equals(track) ? null : swapped;
     }
 
     private static int indexOfFirstSeparator(String artist) {
-        final String[] separators = {" & ", ", ", " x ", " X ", " feat. ", " ft. ", " с "};
+        final String[] separators = {" & ", ", ", " x ", " X ", " feat. ", " ft. ", " с ", " 和 "};
         int result = -1;
         for (String separator : separators) {
             int index = artist.indexOf(separator);
@@ -70,6 +110,10 @@ final class MetadataCleaner {
             }
         }
         return result;
+    }
+
+    static String[] splitArtists(String artist) {
+        return artist.split("\\s*(?:和|&|feat\\.?|ft\\.?|,|/)\\s*");
     }
 
     private static String collapseWhitespace(String value) {

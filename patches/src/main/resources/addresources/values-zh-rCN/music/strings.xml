@@ -308,32 +308,102 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌词</string>
   <string name="morphe_music_lyrics_enabled_summary">从第三方服务获取歌词，如果找不到则回退到内置歌词</string>
-  <string name="morphe_music_lyrics_source_title">歌词服务</string>
+  <string name="morphe_music_lyrics_section_service_title">歌词服务</string>
+  <string name="morphe_music_lyrics_section_overlay_title">叠层界面</string>
+  <string name="morphe_music_lyrics_section_sync_title">同步</string>
+  <string name="morphe_music_lyrics_section_about_title">关于</string>
+  <string name="morphe_music_lyrics_source_summary">点 ▲/▼ 调整优先级顺序，勾选框启用或禁用每个提供者</string>
+  <string name="morphe_music_lyrics_source_all_disabled">已禁用所有提供者 — 仅使用内置歌词、嵌入歌词</string>
+  <string name="morphe_music_lyrics_source_reset_title">重置提供者顺序？</string>
+  <string name="morphe_music_lyrics_source_reset_message">将提供者恢复为默认优先级顺序</string>
+  <string name="morphe_music_token_dialog_get_token">获取令牌</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music 令牌</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">粘贴来自 music.apple.com 的 media-user-token Cookie。\n\n步骤：\n1. 在 music.apple.com 登录会员账号\n2. 打开开发者工具 → Application → Cookies → music.apple.com\n3. 复制 \"media-user-token\" 的值</string>
+  <string name="morphe_music_apple_music_token_dialog_hint">media-user-token</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token 已保存</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token 已清除</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token 无效 — 请检查后重试</string>
+  <string name="morphe_music_spotify_token_title">Spotify 令牌</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">粘贴来自 Spotify 的 sp_dc Cookie。\n\n步骤：\n1. 在 open.spotify.com 登录\n2. 打开开发者工具 → Application → Cookies → open.spotify.com\n3. 复制 \"sp_dc\" 的值</string>
+  <string name="morphe_music_spotify_token_dialog_hint">sp_dc</string>
+   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc 已保存</string>
+    <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc 已清除</string>
+    <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc 无效 — 请检查后重试</string>
+   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+   <string name="morphe_music_deezer_arl_dialog_instruction">粘贴来自 Deezer 的 arl Cookie。\n\n步骤：\n1. 在 deezer.com 登录\n2. 打开开发者工具 → Application → Cookies → deezer.com\n3. 复制 \"arl\" 的值</string>
+   <string name="morphe_music_deezer_arl_dialog_hint">arl</string>
+   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl 已保存</string>
+    <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl 已清除</string>
+    <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl 无效 — 请检查后重试</string>
+    <string name="morphe_music_musixmatch_token_title">Musixmatch 令牌</string>
+    <string name="morphe_music_musixmatch_token_dialog_instruction">粘贴你的 Musixmatch 用户令牌。\n\n步骤：\n1. 访问 musixmatch.com 并登录\n2. 打开开发者工具 → Application → Local Storage\n3. 复制 user token 的值</string>
+    <string name="morphe_music_musixmatch_token_dialog_hint">用户令牌</string>
+    <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token 已保存</string>
+    <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token 已清除</string>
+    <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: user token 无效 — 请检查后重试</string>
+  <string name="morphe_music_youtube_cookies_title">YouTube 令牌</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">粘贴你的 YouTube 令牌以绕过机器人检测。\n\n步骤：\n1. 在浏览器中打开 youtube.com 并登录\n2. 打开开发者工具 (F12) → Application → Cookies → youtube.com\n3. 复制完整的 cookie 字符串（key=value 对，用分号分隔）\n\n必需的 cookie：SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO</string>
+  <string name="morphe_music_youtube_cookies_dialog_hint">SID=...; HSID=...; SSID=...; SAPISID=...</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies 已保存</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies 已清除</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: Cookie 无效 — 请检查后重试</string>
   <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB，然后是酷狗</string>
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB然后QQ然后KuGou然后NetEase然后BiniLyrics然后Unison然后AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">点击歌词行以跳转</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">点击一行将跳到歌曲的该时刻</string>
   <string name="morphe_music_lyrics_show_copy_button_title">显示复制按钮</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">点击复制原始歌词到剪贴板；长按保存歌词源文件到下载文件夹</string>
   <string name="morphe_music_lyrics_show_translate_button_title">显示翻译按钮</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">使用提供者翻译或 Google 翻译歌词</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">显示音译按钮</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">使用提供者音译或 Google 音译歌词</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">显示刷新按钮</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">点击切换到下一歌词源；长按临时禁用第三方歌词显示原生歌词</string>
+  <string name="morphe_music_lyrics_saved">已保存</string>
+  <string name="morphe_music_lyrics_word_sync_title">逐词同步高亮</string>
+  <string name="morphe_music_lyrics_word_sync_summary">当歌词包含逐词时间信息时，随音乐高亮每一个词或音节</string>
+  <string name="morphe_music_lyrics_hide_played_title">隐藏已播放的歌词</string>
+  <string name="morphe_music_lyrics_hide_played_summary">隐藏当前播放行以上的歌词</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">隐藏未播放的歌词</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">隐藏当前播放行以下的歌词</string>
+  <string name="morphe_music_lyrics_mediasession_title">在媒体通知卡片中显示歌词</string>
+  <string name="morphe_music_lyrics_miniplayer_title">在迷你播放器中显示歌词</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">歌手和歌名显示顺序</string>
+  <string name="morphe_music_lyrics_display_artist_first_summary">在迷你播放器和媒体通知卡片中切换歌手和歌名的显示顺序，ON &quot;歌手 - 歌名&quot; 和 OFF &quot;歌名 - 歌手&quot;，不影响歌词搜索</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">过滤器</string>
+  <string name="morphe_music_lyrics_custom_regex_title">元数据正则</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">在查询歌词前，应用于标题、艺术家和专辑的正则表达式。留空则不清理。默认移除「Official Video」「Remaster」「- Topic」等常见杂乱信息</string>
+  <string name="morphe_music_lyrics_text_filter_title">歌词过滤正则</string>
+  <string name="morphe_music_lyrics_text_filter_summary">仅应用于歌词原文的正则表达式（不影响翻译和罗马音）。留空则不过滤</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">信息行标记</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">英文逗号分隔的标记列表。包含标记后跟冒号的行将作为信用信息显示在底部。留空则不过滤</string>
   <string name="morphe_music_lyrics_text_size_title">文本大小</string>
   <string name="morphe_music_lyrics_text_size_summary">歌词文本的大小</string>
   <string name="morphe_music_lyrics_offset_ms_title">时间偏移</string>
   <string name="morphe_music_lyrics_offset_ms_summary">将同步歌词向前或向后移动。如果歌词超前于歌曲，请使用正值</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">来源：%s</string>
+  <string name="morphe_music_lyrics_translated_by_google">由 Google 翻译</string>
+  <string name="morphe_music_lyrics_romanized_by_google">由 Google 音译</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">翻译</string>
-  <string name="morphe_music_lyrics_translate_hide">显示原始歌词</string>
+  <string name="morphe_music_lyrics_translate_hide">已翻译</string>
+  <string name="morphe_music_lyrics_romanize_hide">已音译</string>
   <string name="morphe_music_lyrics_translating">正在翻译…</string>
+  <string name="morphe_music_lyrics_romanizing">正在音译…</string>
   <string name="morphe_music_lyrics_translate_failed">无法翻译歌词</string>
-  <string name="morphe_music_lyrics_copy">复制</string>
+  <string name="morphe_music_lyrics_romanize_failed">无法音译歌词</string>
   <string name="morphe_music_lyrics_copied">复制到剪贴板</string>
-  <string name="morphe_music_lyrics_about_title">关于第三方歌词</string>
+  <string name="morphe_music_lyrics_refreshing">刷新中</string>
+  <string name="morphe_music_lyrics_refreshed">已刷新</string>
   <string name="morphe_music_lyrics_about_summary">"歌词通过曲目标题和艺术家查找，因此元数据不寻常的曲目可能找不到任何内容，或者找到错误的版本
 
 同步歌词跟随播放。如果它们漂移，请调整时间偏移
 
 如果没有找到第三方歌词，则会显示内置歌词"</string>
+  <string name="morphe_music_lyrics_hide_info_title">隐藏词曲作者</string>
+  <string name="morphe_music_lyrics_hide_info_summary">隐藏歌词下方显示的词曲作者信息</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和音译位置</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启后音译在歌词下方、翻译在歌词上方；关闭时音译在上方、翻译在下方</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 禁用粗体图标</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢复播放器的「接下来播放」「歌词」和「相关」标签页</string>

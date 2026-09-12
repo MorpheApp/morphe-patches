@@ -347,34 +347,111 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <!-- layout.lyrics.lyricsPatch -->
     <string name="morphe_music_lyrics_enabled_title">Use third-party lyrics</string>
     <string name="morphe_music_lyrics_enabled_summary">Shows lyrics from a third-party service, falling back to the built-in lyrics when none are found</string>
-    <string name="morphe_music_lyrics_source_title">Lyrics service</string>
-    <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-    <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, then KuGou</string>
+    <string name="morphe_music_lyrics_section_service_title">Lyrics service</string>
+    <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
+    <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
+    <string name="morphe_music_lyrics_section_about_title">About</string>
+    <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+    <string name="morphe_music_lyrics_source_summary">Tap ▲/▼ to set the priority order, and the box to enable or disable each provider</string>
+    <string name="morphe_music_lyrics_source_all_disabled">All providers disabled — built-in lyrics and embedded lyrics</string>
+    <string name="morphe_music_lyrics_source_reset_title">Reset provider order?</string>
+    <string name="morphe_music_lyrics_source_reset_message">Restore providers to the default priority order</string>
+    <string name="morphe_music_token_dialog_get_token">Get token</string>
+    <string name="morphe_music_apple_music_token_title">Apple Music token</string>
+    <string name="morphe_music_apple_music_token_dialog_instruction">Paste the media-user-token cookie from music.apple.com.\n\nSteps:\n1. Sign in at music.apple.com as a member user\n2. Open DevTools → Application → Cookies → music.apple.com\n3. Copy the value of \"media-user-token\"</string>
+    <string name="morphe_music_apple_music_token_dialog_hint">media-user-token</string>
+    <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token saved</string>
+    <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token cleared</string>
+    <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: invalid media-user-token — please check and try again</string>
+    <string name="morphe_music_spotify_token_title">Spotify token</string>
+    <string name="morphe_music_spotify_token_dialog_instruction">Paste the sp_dc cookie from Spotify.\n\nSteps:\n1. Sign in at open.spotify.com\n2. Open DevTools → Application → Cookies → open.spotify.com\n3. Copy the value of \"sp_dc\"</string>
+    <string name="morphe_music_spotify_token_dialog_hint">sp_dc</string>
+    <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc saved</string>
+    <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc cleared</string>
+    <string name="morphe_music_spotify_token_toast_invalid">Spotify: invalid sp_dc — please check and try again</string>
+    <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+    <string name="morphe_music_deezer_arl_dialog_instruction">Paste the arl cookie from Deezer.\n\nSteps:\n1. Sign in at deezer.com\n2. Open DevTools → Application → Cookies → deezer.com\n3. Copy the value of \"arl\"</string>
+    <string name="morphe_music_deezer_arl_dialog_hint">arl</string>
+    <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl saved</string>
+    <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl cleared</string>
+    <string name="morphe_music_deezer_arl_toast_invalid">Deezer: invalid arl — please check and try again</string>
+    <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
+    <string name="morphe_music_musixmatch_token_dialog_instruction">Paste your Musixmatch user token.\n\nSteps:\n1. Visit musixmatch.com and sign in\n2. Open DevTools → Application → Local Storage\n3. Copy the value of the user token</string>
+    <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
+    <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token saved</string>
+    <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token cleared</string>
+    <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: invalid user token — please check and try again</string>
+    <string name="morphe_music_youtube_cookies_title">YouTube cookies</string>
+    <string name="morphe_music_youtube_cookies_dialog_instruction">Paste your YouTube cookies to bypass bot detection.\n\nSteps:\n1. Open youtube.com in a browser and sign in\n2. Open DevTools (F12) → Application → Cookies → youtube.com\n3. Copy the full cookie string (key=value pairs separated by semicolons)\n\nRequired cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO</string>
+    <string name="morphe_music_youtube_cookies_dialog_hint">SID=...; HSID=...; SSID=...; SAPISID=...</string>
+    <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies saved</string>
+    <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies cleared</string>
+    <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: invalid cookies — please check and try again</string>
+    <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
+    <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, then QQ, then KuGou, then NetEase, then BiniLyrics, then Unison, then AMLL</string>
     <string name="morphe_music_lyrics_source_entry_lrclib" translatable="false">LRCLIB</string>
+    <string name="morphe_music_lyrics_source_entry_qq" translatable="false">QQ</string>
     <string name="morphe_music_lyrics_source_entry_kugou" translatable="false">KuGou</string>
+    <string name="morphe_music_lyrics_source_entry_netease" translatable="false">NetEase</string>
+    <string name="morphe_music_lyrics_source_entry_binimum" translatable="false">BiniLyrics</string>
+    <string name="morphe_music_lyrics_source_entry_unison" translatable="false">Unison</string>
+    <string name="morphe_music_lyrics_source_entry_amll" translatable="false">AMLL</string>
     <string name="morphe_music_lyrics_tap_to_seek_title">Tap a line to seek</string>
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tapping a line jumps to that moment in the song</string>
     <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
+    <string name="morphe_music_lyrics_show_copy_button_summary">Tap to copy original lyrics as plain text; long press to save raw lyrics source file to Downloads</string>
     <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
+    <string name="morphe_music_lyrics_show_translate_button_summary">Translate lyrics using provider translations or Google Translate</string>
+    <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize button</string>
+    <string name="morphe_music_lyrics_show_romanize_button_summary">Romanize lyrics using provider romanization or Google Translate romanization</string>
+    <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
+    <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long press to temporarily disable third-party lyrics and show native lyrics</string>
+    <string name="morphe_music_lyrics_saved">Saved</string>
+    <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
+    <string name="morphe_music_lyrics_word_sync_summary">Highlights each word or syllable in time with the music when the lyrics carry word timing</string>
+    <string name="morphe_music_lyrics_hide_played_title">Hide played lyrics</string>
+    <string name="morphe_music_lyrics_hide_played_summary">Hide lyrics lines above the currently playing line</string>
+    <string name="morphe_music_lyrics_hide_unplayed_title">Hide unplayed lyrics</string>
+    <string name="morphe_music_lyrics_hide_unplayed_summary">Hide lyrics lines below the currently playing line</string>
+    <string name="morphe_music_lyrics_mediasession_title">Show MediaSession Lyrics on lock screen</string>
+    <string name="morphe_music_lyrics_miniplayer_title">Show Miniplayer Lyrics</string>
+    <string name="morphe_music_lyrics_display_artist_first_title">Artist and Title display order</string>
+    <string name="morphe_music_lyrics_display_artist_first_summary">Toggle the display order of Artist and Title in the Miniplayer and MediaSession. ON &quot;Artist - Title&quot; and OFF &quot;Title - Artist&quot; Does not affect lyrics search</string>
+    <string name="morphe_settings_music_lyrics_metadata_title">Filters</string>
+    <string name="morphe_music_lyrics_custom_regex_title">Metadata regex</string>
+    <string name="morphe_music_lyrics_custom_regex_summary">Regular expression applied to titles, artists, and albums before looking up lyrics. Leave empty to disable. The default removes common clutter like \"Official Video\", \"Remaster\", and \"- Topic\"</string>
+    <string name="morphe_music_lyrics_text_filter_title">Lyrics filter regex</string>
+    <string name="morphe_music_lyrics_text_filter_summary">Regular expression applied to the original lyrics text only (not translations or romanizations). Leave empty to disable</string>
+    <string name="morphe_music_lyrics_credit_line_regex_title">Info line markers</string>
+    <string name="morphe_music_lyrics_credit_line_regex_summary">Comma-separated markers. Lines containing a marker followed by a colon are shown as credit info at the bottom. Leave empty to disable</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Timing offset</string>
     <string name="morphe_music_lyrics_offset_ms_summary">Shift synced lyrics forwards or backwards. Use a positive value if the lyrics run ahead of the song</string>
     <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
+    <string name="morphe_music_lyrics_translated_by_google">Translated by Google</string>
+    <string name="morphe_music_lyrics_romanized_by_google">Romanized by Google</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
-    <string name="morphe_music_lyrics_translate_show">Translate</string>
-    <string name="morphe_music_lyrics_translate_hide">Show original</string>
+    <string name="morphe_music_lyrics_translate_hide">Translated</string>
     <string name="morphe_music_lyrics_translating">Translating…</string>
     <string name="morphe_music_lyrics_translate_failed">Could not translate the lyrics</string>
-    <string name="morphe_music_lyrics_copy">Copy</string>
+    <string name="morphe_music_lyrics_romanize_hide">Romanized</string>
+    <string name="morphe_music_lyrics_romanizing">Romanizing…</string>
+    <string name="morphe_music_lyrics_romanize_failed">Could not romanize the lyrics</string>
     <string name="morphe_music_lyrics_copied">Copied to clipboard</string>
-    <string name="morphe_music_lyrics_about_title">About third-party lyrics</string>
+    <string name="morphe_music_lyrics_refreshing">Refreshing</string>
+    <string name="morphe_music_lyrics_refreshed">Refreshed</string>
     <string name="morphe_music_lyrics_about_summary">"Lyrics are looked up by track title and artist, so a track with unusual metadata may find nothing, or find the wrong version
 
 Synced lyrics follow playback. If they drift, adjust the timing offset
 
 When no third-party lyrics are found, the built-in lyrics are shown instead"</string>
+
+    <string name="morphe_music_lyrics_hide_info_title">Hide songwriter credits</string>
+    <string name="morphe_music_lyrics_hide_info_summary">Hide the songwriter credits shown below the lyrics</string>
+    <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>
+    <string name="morphe_music_lyrics_swap_trans_roma_summary">ON puts romanization below lyrics and translation above; OFF keeps romanization above and translation below</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>

@@ -8,6 +8,7 @@
 package app.morphe.extension.music.patches.lyrics;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelView;
 import app.morphe.extension.music.settings.Settings;
@@ -91,13 +93,10 @@ public final class LyricsPanelInstaller {
         View root = activity.getWindow().getDecorView();
         TextView title = findVisibleTitle(root);
         if (title == null) {
-            Logger.printDebug(() -> "No open engagement panel found");
             return;
         }
 
         if (!isLyricsTitle(title)) {
-            Logger.printDebug(() -> "Open panel is '" + title.getText()
-                    + "', not the lyrics panel '" + lyricsTitle() + "'");
             return;
         }
 
@@ -105,11 +104,23 @@ public final class LyricsPanelInstaller {
         // looked up from the panel the heading belongs to rather than globally.
         ViewGroup panel = findPanelContent(title);
         if (panel == null) {
-            Logger.printDebug(() -> "Lyrics panel has no " + PANEL_CONTENT_ID);
             return;
         }
 
         LyricsPanelView existing = panelReference == null ? null : panelReference.get();
+
+        if (existing != null && existing.getParent() instanceof ViewGroup previousParent
+                && previousParent != panel) {
+            previousParent.removeView(existing);
+        }
+
+        for (int i = panel.getChildCount() - 1; i >= 0; i--) {
+            final View child = panel.getChildAt(i);
+            if (child instanceof LyricsPanelView && child != existing) {
+                panel.removeViewAt(i);
+            }
+        }
+
         if (existing != null && existing.getParent() == panel) {
             // Reopening the panel makes the app restore its own content, so the
             // overlay state has to be reapplied rather than assumed still correct.
@@ -117,17 +128,11 @@ public final class LyricsPanelInstaller {
             return;
         }
 
-        if (existing != null && existing.getParent() instanceof ViewGroup previousParent) {
-            previousParent.removeView(existing);
-        }
-
         LyricsPanelView panelView = new LyricsPanelView(panel.getContext());
         panel.addView(panelView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
         panelReference = new WeakReference<>(panelView);
-
-        Logger.printDebug(() -> "Installed the lyrics panel");
     }
 
     /**
@@ -141,7 +146,16 @@ public final class LyricsPanelInstaller {
         if (activity == null) {
             return false;
         }
-        return isLyricsTitle(findVisibleTitle(activity.getWindow().getDecorView()));
+        return isLyricsTitle(findForegroundTitle(activity.getWindow().getDecorView()));
+    }
+
+    public static boolean isOtherPanelForeground() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) {
+            return false;
+        }
+        final TextView title = findForegroundTitle(activity.getWindow().getDecorView());
+        return title != null && !isLyricsTitle(title);
     }
 
     private static boolean isLyricsTitle(@Nullable TextView title) {
@@ -208,6 +222,41 @@ public final class LyricsPanelInstaller {
     }
 
     @Nullable
+    private static TextView findForegroundTitle(View root) {
+        final int titleId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_TITLE_ID);
+        if (titleId == 0) {
+            Logger.printException(() -> "App is missing " + PANEL_TITLE_ID);
+            return null;
+        }
+        final Rect rect = new Rect();
+        return findForegroundTitle(root, titleId, rect);
+    }
+
+    @Nullable
+    private static TextView findForegroundTitle(View view, int titleId, Rect rect) {
+        if (view.getVisibility() != View.VISIBLE) {
+            return null;
+        }
+
+        TextView result = null;
+        if (view.getId() == titleId && view instanceof TextView title) {
+            if (title.getGlobalVisibleRect(rect) && !rect.isEmpty()) {
+                result = title;
+            }
+        }
+
+        if (view instanceof ViewGroup group) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                final TextView found = findForegroundTitle(group.getChildAt(i), titleId, rect);
+                if (found != null) {
+                    result = found;
+                }
+            }
+        }
+        return result;
+    }
+
+    @Nullable
     private static String lyricsTitle() {
         if (lyricsTitle == null) {
             if (ResourceUtils.getStringIdentifier(LYRICS_TITLE_RESOURCE) == 0) {
@@ -217,5 +266,65 @@ public final class LyricsPanelInstaller {
             lyricsTitle = ResourceUtils.getString(LYRICS_TITLE_RESOURCE);
         }
         return lyricsTitle;
+    }
+
+    public static void enableLyricsButton() {
+        final Activity activity = Utils.getActivity();
+        if (activity == null) {
+            return;
+        }
+        final String title = lyricsTitle();
+        if (title == null) {
+            return;
+        }
+        final View root = activity.getWindow().getDecorView();
+        for (long delay : ENABLE_BUTTON_DELAYS_MS) {
+            Utils.runOnMainThreadDelayed(() -> enableLyricsButtonPass(root, title), delay);
+        }
+    }
+
+    private static final long[] ENABLE_BUTTON_DELAYS_MS = {0, 150, 500, 1000, 2000};
+
+    private static void enableLyricsButtonPass(@Nullable View root, String title) {
+        if (root == null) {
+            return;
+        }
+        final String titleLower = title.toLowerCase(Locale.ROOT);
+        enableLyricsButtonPass(root, title, titleLower);
+    }
+
+    private static boolean enableLyricsButtonPass(View view, String title, String titleLower) {
+        if (view.getVisibility() != View.VISIBLE) {
+            return false;
+        }
+        boolean matched = false;
+        final CharSequence description = view.getContentDescription();
+        if (description != null) {
+            final String desc = description.toString();
+            final String descLower = desc.toLowerCase(Locale.ROOT);
+            final boolean matches = title.equalsIgnoreCase(desc)
+                    || descLower.contains(titleLower)
+                    || descLower.contains("lyric");
+            if (matches) {
+                enableAndClick(view, desc);
+                matched = true;
+            }
+        }
+        if (view instanceof ViewGroup group) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                if (enableLyricsButtonPass(group.getChildAt(i), title, titleLower)) {
+                    matched = true;
+                }
+            }
+        }
+        return matched;
+    }
+
+    private static void enableAndClick(View view, String desc) {
+        view.setEnabled(true);
+        view.setClickable(true);
+        view.setAlpha(1.0f);
+        Logger.printInfo(() -> "Enabling lyrics button: " + view.getClass().getSimpleName()
+                + " content description: '" + desc + "'");
     }
 }
