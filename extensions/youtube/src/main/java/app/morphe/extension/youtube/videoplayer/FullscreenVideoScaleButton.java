@@ -22,6 +22,7 @@ import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public class FullscreenVideoScaleButton {
@@ -41,12 +42,28 @@ public class FullscreenVideoScaleButton {
                 return;
             }
 
-            overlayButtonRef = new WeakReference<>(PlayerOverlayButton.addButton(
+            ImageView button = new ImageView(controlsView.getContext()) {
+                @Override
+                public void setVisibility(int visibility) {
+                    super.setVisibility(isOverlayButtonVisible() ? visibility : GONE);
+                }
+            };
+            ImageView added = PlayerOverlayButton.addButton(
                     controlsView,
+                    button,
                     getIconName(Settings.FULLSCREEN_VIDEO_SCALE.get()),
                     view -> cycleScaleMode(),
                     null
-            ));
+            );
+            overlayButtonRef = new WeakReference<>(added);
+            if (added != null) {
+                added.getViewTreeObserver().addOnPreDrawListener(() -> {
+                    if (!isOverlayButtonVisible() && added.getVisibility() != View.GONE) {
+                        added.setVisibility(View.GONE);
+                    }
+                    return true;
+                });
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
@@ -66,13 +83,27 @@ public class FullscreenVideoScaleButton {
                     "fullscreen_video_scale_button",
                     null,
                     Settings.FULLSCREEN_VIDEO_SCALE.get().iconBaseName,
-                    Settings.FULLSCREEN_VIDEO_SCALE_BUTTON,
+                    () -> isOverlayButtonVisible()
+                            ? LegacyPlayerControlButton.ButtonVisibility.ENABLED
+                            : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
                     view -> cycleScaleMode(),
                     null
             );
         } catch (Exception ex) {
             Logger.printException(() -> "initializeLegacyButton failure", ex);
         }
+    }
+
+    private static boolean isOverlayButtonVisible() {
+        if (!Settings.FULLSCREEN_VIDEO_SCALE_BUTTON.get()) {
+            return false;
+        }
+        if (!Settings.FULLSCREEN_VIDEO_SCALE_BUTTON_FULLSCREEN_ONLY.get()) {
+            return true;
+        }
+        PlayerType type = PlayerType.getCurrent();
+        return type == PlayerType.WATCH_WHILE_FULLSCREEN
+                || type == PlayerType.WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN;
     }
 
     private static void cycleScaleMode() {

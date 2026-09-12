@@ -12,6 +12,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
@@ -84,7 +85,10 @@ val fullscreenVideoScalePatch = bytecodePatch(
         )
 
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_fullscreen_video_scale_button", summary = true)
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_fullscreen_video_scale_button", summary = true),
+                SwitchPreference("morphe_fullscreen_video_scale_button_fullscreen_only", summary = true)
+            )
         )
 
         addPlayerBottomButton(EXTENSION_BUTTON)

@@ -1005,6 +1005,8 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_fullscreen_video_scale_entry_zoom">Zoom (crop to fill)</string>
     <string name="morphe_fullscreen_video_scale_button_title">Show video scale button</string>
     <string name="morphe_fullscreen_video_scale_button_summary">Tap to cycle Default, Stretch, and Zoom</string>
+    <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Show only in fullscreen</string>
+    <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Hide the video scale button in the portrait player</string>
 
     <!-- layout.player.buttons.muteVideoButtonPatch -->
     <string name="morphe_mute_video_button_title">Show Mute button</string>
