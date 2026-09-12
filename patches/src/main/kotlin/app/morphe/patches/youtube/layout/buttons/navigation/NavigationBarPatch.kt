@@ -17,7 +17,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -37,8 +36,6 @@ import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -47,7 +44,6 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
@@ -148,79 +144,10 @@ val navigationBarPatch = bytecodePatch(
         // Hide navigation bar
         addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
-        // Force on/off translucent effect on status bar and navigation buttons.
-        if (is_20_31_or_greater) {
-            val translucentStatusBarFilter = if (is_21_30_or_greater) {
-                TRANSLUCENT_STATUS_BAR_FILTER
-            } else {
-                methodCall(TranslucentNavigationStatusBarFeatureFlagFingerprint.originalMethod)
-            }
-
-            arrayOf(
-                translucentImmersiveFingerprint(translucentStatusBarFilter),
-                translucentCheckOnTextFingerprint(translucentStatusBarFilter),
-                translucentYouTabFingerprint(translucentStatusBarFilter),
-                translucentUpdateStatusBarFingerprint(translucentStatusBarFilter)
-            ).forEach { fingerprint ->
-                fingerprint.matchAll().forEach {
-                    if (is_21_30_or_greater) {
-                        it.method.insertLiteralOverride(
-                            it.instructionMatches.last().index,
-                            "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-                        )
-                        return@forEach
-                    }
-
-                    it.method.apply {
-                        findInstructionIndicesReversedOrThrow(translucentStatusBarFilter).forEach { index ->
-                            val instruction = getInstruction(index + 1)
-                            if (instruction.opcode != Opcode.MOVE_RESULT) {
-                                return@forEach
-                            }
-                            val register = (instruction as OneRegisterInstruction).registerA
-                            addInstructions(
-                                index + 2,
-                                """
-                                    invoke-static { v$register }, $EXTENSION_CLASS->useTranslucentNavigation(Z)Z
-                                    move-result v$register
-                                """
-                            )
-                        }
-                    }
-                }
-            }
-        } else {
-            TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-                )
-            }
-        }
-
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-            )
-        }
-
-        TranslucentNavigationButtonsFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-            )
-        }
-
-        if (is_20_46_or_greater) {
-            // Feature interferes with translucent status bar and must be forced off.
-            CollapsingToolbarLayoutFeatureFlagFingerprint.matchAll().forEach {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->allowCollapsingToolbarLayout(Z)Z"
-                )
-            }
-        }
+        // Paint over the translucent status bar and navigation bar, instead of turning off the
+        // feature flags that drive them. Those flags also switch the app out of edge to edge, which
+        // moves the whole window layout and breaks everything measuring against it.
+        addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarOpaque(Landroid/view/View;)V")
 
         AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(

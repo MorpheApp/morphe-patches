@@ -11,7 +11,6 @@
 package app.morphe.patches.youtube.layout.buttons.navigation
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionFilter
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
@@ -66,12 +65,6 @@ internal object CastMenuItemVisibilityFingerprint : Fingerprint(
 internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45680008L)
-    )
-)
-
-internal object CollapsingToolbarLayoutFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45736608L)
     )
 )
 
@@ -134,104 +127,9 @@ internal object PivotBarChangedFingerprint : Fingerprint(
     )
 )
 
-/** Translucent navigation bar buttons feature flag. */
-internal val TRANSLUCENT_STATUS_BAR_FILTER = literal(45400535L)
-
-internal object TranslucentNavigationStatusBarFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        TRANSLUCENT_STATUS_BAR_FILTER
-    )
-)
-
-internal fun translucentImmersiveFingerprint(filter: InstructionFilter) = object : Fingerprint(
-    classFingerprint = Fingerprint(
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-        parameters = listOf("Landroid/app/Activity;", "L"),
-        filters = listOf(
-            methodCall(
-                opcode = Opcode.INVOKE_STATIC,
-                smali = "Ljava/util/Collections;->newSetFromMap(Ljava/util/Map;)Ljava/util/Set;"
-            ),
-            filter
-        )
-    ),
-    filters = listOf(filter)
-) {}
-
-internal fun translucentCheckOnTextFingerprint(filter: InstructionFilter) = object : Fingerprint(
-    classFingerprint = Fingerprint(
-        accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
-        parameters = listOf("Landroid/graphics/Rect;"),
-        returnType = "V",
-        filters = listOf(
-            filter,
-            methodCall(
-                opcode = Opcode.INVOKE_VIRTUAL,
-                smali = "Landroid/view/View;->onCheckIsTextEditor()Z"
-            )
-        )
-    ),
-    filters = listOf(filter)
-) {}
-
-internal fun translucentUpdateStatusBarFingerprint(filter: InstructionFilter) = object : Fingerprint(
-    classFingerprint = Fingerprint(
-        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-        name = "run",
-        parameters = listOf(),
-        returnType = "V",
-        filters = listOf(
-            filter,
-            methodCall(
-                opcode = Opcode.INVOKE_VIRTUAL,
-                smali = "Landroid/view/ViewGroup;->setFitsSystemWindows(Z)V"
-            ),
-            methodCall(
-                opcode = Opcode.INVOKE_VIRTUAL,
-                smali = "Lcom/google/android/apps/youtube/app/watchwhile/MainActivity;->getWindow()Landroid/view/Window;"
-            )
-        )
-    ),
-    filters = listOf(filter)
-) {}
-
-internal fun translucentYouTabFingerprint(filter: InstructionFilter) = object : Fingerprint(
-    classFingerprint = Fingerprint(
-        returnType = "Landroid/view/View;",
-        parameters = listOf(
-            "Landroid/view/LayoutInflater;",
-            "Landroid/view/ViewGroup;",
-            "Landroid/os/Bundle;"
-        ),
-        filters = listOf(
-            filter,
-            opcode(Opcode.MOVE_RESULT, MatchAfterWithin(15)),
-            string("instance_activated_text_color"),
-            string("instance_secondary_text_color")
-        )
-    ),
-    filters = listOf(filter)
-) {}
-
-
 /*
  * YouTube nav buttons.
  */
-
-internal object TranslucentNavigationButtonsFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45630927L) // Translucent navigation bar buttons feature flag.
-    )
-)
-
-/**
- * Device on screen back/home/recent buttons.
- */
-internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45632194L) // Translucent system buttons feature flag.
-    )
-)
 
 private object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

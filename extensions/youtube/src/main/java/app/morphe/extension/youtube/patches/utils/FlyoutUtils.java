@@ -14,13 +14,13 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Base64;
 import android.util.Pair;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -752,9 +752,10 @@ public final class FlyoutUtils {
             secondaryContainer.setVisibility(View.GONE);
         }
 
-        int[] attrs = {android.R.attr.selectableItemBackground};
-        try (TypedArray typedArray = context.obtainStyledAttributes(attrs)) {
-            customButton.setForeground(typedArray.getDrawable(0));
+        TypedValue ripple = new TypedValue();
+        if (context.getTheme().resolveAttribute(
+                android.R.attr.selectableItemBackground, ripple, true)) {
+            customButton.setForeground(context.getDrawable(ripple.resourceId));
         }
 
         customButton.setOnClickListener(clickListener);
