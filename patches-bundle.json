@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-11T12:31:19",
-  "description": "## [1.42.1-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.2...v1.42.1-dev.3) (2026-09-11)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide layout components:** Patch failing on `20.21.37` ([41d89ef](https://github.com/MorpheApp/morphe-patches/commit/41d89ef38ae4feb744054656a6b6a8a653f14eaa))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.42.1-dev.3/patches-1.42.1-dev.3.mpp",
+  "created_at": "2026-09-12T07:42:18",
+  "description": "## [1.43.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.3...v1.43.0-dev.1) (2026-09-12)\n\n### ✨ New Features\n\n* **GmsCore support:** Handle conflicting MicroG installs ([#2907](https://github.com/MorpheApp/morphe-patches/issues/2907)) ([31a66d9](https://github.com/MorpheApp/morphe-patches/commit/31a66d95932f6ccf4e39a5804c750af72a606d15))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.36.50` ([da8c85d](https://github.com/MorpheApp/morphe-patches/commit/da8c85d88a3c34597426525f5a81f69a4efdcd75))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.43.0-dev.1/patches-1.43.0-dev.1.mpp",
   "signature_download_url": "",
-  "version": "1.42.1-dev.3"
+  "version": "1.43.0-dev.1"
 }
