@@ -13,6 +13,10 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +24,6 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
@@ -29,9 +32,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
-import app.morphe.extension.youtube.patches.theme.SeekbarColorPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Unit;
@@ -54,13 +57,18 @@ public final class MinimalMiniplayerPatch {
     private static final int BAR_HEIGHT = Dim.dp(56);
 
     /**
+     * Detached from the edges, so the rounded corners the miniplayer already has are visible.
+     */
+    private static final int BAR_MARGIN = Dim.dp8;
+
+    /**
      * Derived from the height, so the thumbnail keeps 16:9 through every frame of the morph.
      */
     private static int videoWidthFor(int height) {
         return Math.round(height * 16f / 9f);
     }
 
-    private static final long PROGRESS_UPDATE_MILLIS = 500;
+    private static final long TICK_MILLIS = 500;
 
     /**
      * Content description YouTube puts on the action button while the video is playing.
@@ -101,13 +109,12 @@ public final class MinimalMiniplayerPatch {
     private static WeakReference<View> modernCloseButtonRef = new WeakReference<>(null);
     private static WeakReference<View> modernExpandButtonRef = new WeakReference<>(null);
     private static WeakReference<View> watchPlayerRef = new WeakReference<>(null);
-    private static WeakReference<View> progressRef = new WeakReference<>(null);
     private static WeakReference<View> skipAdRef = new WeakReference<>(null);
     private static WeakReference<View> navigationBarRef = new WeakReference<>(null);
     private static WeakReference<MiniplayerBoundsController> boundsControllerRef = new WeakReference<>(null);
 
     private static boolean listenersInstalled;
-    private static boolean progressTicking;
+    private static boolean ticking;
     private static boolean playing;
     private static boolean morphing;
 
@@ -154,6 +161,7 @@ public final class MinimalMiniplayerPatch {
                 playPause.setOnClickListener(v ->
                         clickModernButton(modernActionButtonRef, "play/pause"));
                 holdTouch(playPause);
+                addButtonCircle(playPause);
             }
 
             ImageView close = Utils.getChildViewByResourceName(controlsLayout, "floaty_close_button");
@@ -161,6 +169,7 @@ public final class MinimalMiniplayerPatch {
                 close.setOnClickListener(v -> closeBar());
                 holdTouch(close);
                 setIcon(close, "yt_outline_experimental_x_vd_theme_24", "yt_outline_x_black_24");
+                addButtonCircle(close);
             }
 
             View subtitleBar = Utils.getChildViewByResourceName(controlsLayout, "floaty_subtitle_bar");
@@ -178,8 +187,6 @@ public final class MinimalMiniplayerPatch {
             }
 
             setBarGestures(controlsLayout);
-            addProgressLine(controlsLayout);
-            hideTimeBar(controlsLayout);
 
             installListeners();
             updateBar();
@@ -272,9 +279,9 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static void barBoundsFor(Rect resting) {
-        final int bottom = barBottomFor(resting);
+        final int bottom = barBottomFor(resting) - BAR_MARGIN;
 
-        barBounds.set(0, bottom - BAR_HEIGHT, windowWidth(), bottom);
+        barBounds.set(BAR_MARGIN, bottom - BAR_HEIGHT, windowWidth() - BAR_MARGIN, bottom);
     }
 
     /**
@@ -297,8 +304,12 @@ public final class MinimalMiniplayerPatch {
 
         navigationBar.getLocationInWindow(windowLocation);
 
+        // Where it rests, not where it is. YouTube slides it away while the feed scrolls, and
+        // a position taken mid-slide leaves the bar underneath it once it comes back.
+        final int top = windowLocation[1] - Math.round(navigationBar.getTranslationY());
+
         // Never pull the bar up, only close the gap underneath it.
-        return Math.max(windowLocation[1], resting.bottom);
+        return Math.max(top, resting.bottom);
     }
 
     /**
@@ -486,7 +497,7 @@ public final class MinimalMiniplayerPatch {
      */
     @SuppressLint("ClickableViewAccessibility")
     private static void setBarGestures(ViewGroup controlsLayout) {
-        final int slop = Dim.dp(20);
+        final int slop = Dim.dp20;
 
         controlsLayout.setClickable(true);
         controlsLayout.setContentDescription(
@@ -592,7 +603,7 @@ public final class MinimalMiniplayerPatch {
             final boolean minimized = type == PlayerType.WATCH_WHILE_MINIMIZED;
 
             Utils.runOnMainThreadNowOrLater(() -> {
-                startProgressUpdates(minimized);
+                startTicking(minimized);
 
                 if (minimized) {
                     refreshContents();
@@ -622,37 +633,12 @@ public final class MinimalMiniplayerPatch {
         final boolean minimized = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED;
 
         updateVideoClip();
-        startProgressUpdates(minimized);
+        startTicking(minimized);
         refreshContents();
         showControls(minimized);
         if (minimized && !morphing) {
             setContentAlpha(1f);
         }
-
-        ViewGroup controls = controlsRef.get();
-        if (controls != null) {
-            hideTimeBar(controls);
-        }
-    }
-
-    /**
-     * YouTube's own time bar cuts across the rounded corners and cannot be restyled.
-     */
-    private static void addProgressLine(ViewGroup controlsLayout) {
-        View line = new View(controlsLayout.getContext());
-
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, Dim.dp(2));
-        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        line.setLayoutParams(params);
-
-        // Same color the user picked for the player seek bar, YouTube red when untouched.
-        line.setBackgroundColor(SeekbarColorPatch.getSeekbarColor());
-        // Scaled rather than resized, so no layout pass is needed to move it.
-        line.setScaleX(0);
-
-        controlsLayout.addView(line);
-        progressRef = new WeakReference<>(line);
     }
 
     /**
@@ -689,42 +675,25 @@ public final class MinimalMiniplayerPatch {
         return navigationBar;
     }
 
-    private static void hideTimeBar(ViewGroup controlsLayout) {
-        View timeBar = Utils.getChildViewByResourceName(
-                controlsLayout.getRootView(), "floaty_bar_time_bar_view");
-        if (timeBar != null) {
-            timeBar.setVisibility(View.GONE);
-        }
-    }
-
-    private static void startProgressUpdates(boolean start) {
-        if (progressTicking == start) return;
-        progressTicking = start;
+    private static void startTicking(boolean start) {
+        if (ticking == start) return;
+        ticking = start;
 
         if (start) {
-            updateProgress();
+            tick();
         }
     }
 
-    private static void updateProgress() {
-        if (!progressTicking) return;
-
-        final long played = VideoInformation.getVideoTime();
-        final long length = VideoInformation.getVideoLength();
-
-        View line = progressRef.get();
-        if (line != null) {
-            // Grows from the start edge, whichever side that is.
-            line.setPivotX(Utils.isRightToLeftLocale() ? line.getWidth() : 0);
-            line.setScaleX(length > 0
-                    ? Math.min(1f, (float) played / length)
-                    : 0f);
-        }
+    /**
+     * Nothing announces a new video to the bar, so its contents are kept in step by polling.
+     */
+    private static void tick() {
+        if (!ticking) return;
 
         updateText();
         updateVideoClip();
 
-        Utils.runOnMainThreadDelayed(MinimalMiniplayerPatch::updateProgress, PROGRESS_UPDATE_MILLIS);
+        Utils.runOnMainThreadDelayed(MinimalMiniplayerPatch::tick, TICK_MILLIS);
     }
 
     /**
@@ -836,6 +805,25 @@ public final class MinimalMiniplayerPatch {
         } else {
             setIcon(playPause, "yt_fill_experimental_play_vd_theme_24", "yt_fill_play_arrow_vd_theme_24");
         }
+    }
+
+    /**
+     * Keeps whatever YouTube put there, which is the ripple, and only fills in behind it.
+     */
+    private static void addButtonCircle(View button) {
+        ShapeDrawable circle = new ShapeDrawable(new OvalShape());
+        // Stands off the bar by the same amount whatever theme colors the app is using.
+        circle.getPaint().setColor(Utils.adjustColorBrightness(
+                ThemeUtils.getAppBackgroundColor(), 0.9f, 1.25f));
+
+        // The button is a 48dp touch target, and 40dp is what a round one looks like, which
+        // also leaves the neighboring circles 8dp apart.
+        Drawable inset = new InsetDrawable(circle, Dim.dp4);
+
+        Drawable existing = button.getBackground();
+        button.setBackground(existing == null
+                ? inset
+                : new LayerDrawable(new Drawable[]{inset, existing}));
     }
 
     /**
