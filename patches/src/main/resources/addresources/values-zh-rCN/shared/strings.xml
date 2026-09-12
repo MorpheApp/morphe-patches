@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 请将 MicroG 更新到最新版本 v%2s。"</string>
   <string name="gms_core_dialog_update_text">更新</string>
   <string name="gms_core_dialog_ignore_text">忽略</string>
+  <string name="gms_core_dialog_conflict_message">"所安装的 MicroG 不是 Morphe 推荐的版本：
+
+%1s
+
+点按将其卸载，然后重新打开此应用并安装 MicroG RE。"</string>
+  <string name="gms_core_dialog_uninstall_text">卸载</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG 无法在后台运行。
 

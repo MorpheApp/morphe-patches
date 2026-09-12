@@ -184,6 +184,12 @@ Správanie sa počas hľadania stratilo, takže môže byť zapojených viac pre
 Prosím, aktualizujte MicroG na najnovšiu verziu v%2s."</string>
   <string name="gms_core_dialog_update_text">Aktualizovať</string>
   <string name="gms_core_dialog_ignore_text">Ignorovať</string>
+  <string name="gms_core_dialog_conflict_message">"Nainštalovaný MicroG nie je odporúčaný aplikáciou Morphe:
+
+%1s
+
+Klepnite na odinštalovanie, potom znova otvorte túto aplikáciu a nainštalujte MicroG RE.}}],"</string>
+  <string name="gms_core_dialog_uninstall_text">Odinštalovať</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG nemá povolenie spúšťať sa na pozadí.
 

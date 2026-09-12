@@ -184,6 +184,12 @@ Het gedrag verdween eerder in de zoektocht, dus er kan meer dan één flag bij b
 Update MicroG naar de nieuwste versie v%2s."</string>
   <string name="gms_core_dialog_update_text">Update</string>
   <string name="gms_core_dialog_ignore_text">Negeren</string>
+  <string name="gms_core_dialog_conflict_message">"De geïnstalleerde MicroG wordt niet aanbevolen door Morphe:
+
+%1s
+
+Tik om het te deïnstalleren en open daarna deze app opnieuw om MicroG RE te installeren."</string>
+  <string name="gms_core_dialog_uninstall_text">Uninstall</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG heeft geen toestemming om op de achtergrond te draaien.
 

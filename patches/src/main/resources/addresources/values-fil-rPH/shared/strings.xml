@@ -184,6 +184,12 @@ Nawala ang pag-uugali noong mas maaga sa paghahanap, kaya maaaring kasangkot ang
 Mangyaring i-update ang MicroG sa pinakabagong bersyon v%2s."</string>
   <string name="gms_core_dialog_update_text">I-update</string>
   <string name="gms_core_dialog_ignore_text">Huwag pansinin</string>
+  <string name="gms_core_dialog_conflict_message">"Hindi inirerekomenda ng Morphe ang naka-install na MicroG:
+
+%1s
+
+I-tap para i-uninstall ito, pagkatapos ay buksan muli ang app na ito at i-install ang MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Burahin</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"Walang pahintulot ang MicroG na tumakbo sa likuran.
 

@@ -405,6 +405,7 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_vot_screen_title">Hlasový překlad</string>
   <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>
   <string name="morphe_vot_enabled_title">Hlasový překlad</string>
+  <string name="morphe_vot_enabled_summary">Zobrazuje překryvné tlačítko v přehrávači videa. Klepnutím přepnete překlad, klepnutím a podržením otevřete rychlá nastavení. hidden: true? no hidden false?</string>
   <string name="morphe_vot_caption_language_title">Jazyk</string>
   <string name="morphe_vot_translation_service_title">Poskytovatel překladu</string>
   <string name="morphe_vot_original_audio_volume_title">Hlasitost původního zvuku</string>

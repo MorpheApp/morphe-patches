@@ -184,6 +184,12 @@ Ponašanje je nestalo ranije tokom pretrage, pa možda postoji više zastavica i
 Ažurirajte MicroG na najnoviju verziju v%2s."</string>
   <string name="gms_core_dialog_update_text">Ažuriraj</string>
   <string name="gms_core_dialog_ignore_text">Ignoriši</string>
+  <string name="gms_core_dialog_conflict_message">"Instalirani MicroG ne preporučuje Morphe:
+
+%1s
+
+Dodirnite da ga deinstalirate, zatim ponovo otvorite ovu aplikaciju i instalirajte MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Deinstaliraj</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nema dozvolu za rad u pozadini.
 

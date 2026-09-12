@@ -185,6 +185,12 @@ Le comportement a disparu plus tôt au cours de la recherche, donc plusieurs ind
 Veuillez mettre à jour MicroG vers la dernière version v%2s."</string>
   <string name="gms_core_dialog_update_text">Mettre à jour</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
+  <string name="gms_core_dialog_conflict_message">"La version installée de MicroG n'est pas recommandée par Morphe :
+
+%1s
+
+Appuyez pour désinstaller MicroG, puis rouvrez cette application et installez MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Désinstaller</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG n'a pas l'autorisation de fonctionner en arrière-plan.
 

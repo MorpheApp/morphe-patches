@@ -184,6 +184,12 @@ Hegðunin hvarf fyrr í leitinni, svo mögulega er fleiri en eitt flagg í hlut 
 Vinsamlegast uppfærðu MicroG í nýjustu útgáfuna v%2s."</string>
   <string name="gms_core_dialog_update_text">Uppfæra</string>
   <string name="gms_core_dialog_ignore_text">Hunsa</string>
+  <string name="gms_core_dialog_conflict_message">"Morphe mælir ekki með uppsetta MicroG:
+
+%1s
+
+Ýttu til að fjarlægja það, opnaðu síðan þetta forrit aftur og settu upp MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Fjarlægja</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG hefur ekki leyfi til að keyra í bakgrunni.
 

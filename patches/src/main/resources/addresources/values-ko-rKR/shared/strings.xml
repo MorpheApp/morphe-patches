@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 MicroG를 최신 %2s 버전으로 업데이트하세요."</string>
   <string name="gms_core_dialog_update_text">업데이트</string>
   <string name="gms_core_dialog_ignore_text">무시</string>
+  <string name="gms_core_dialog_conflict_message">"설치된 MicroG는 Morphe가 권장하지 않습니다:
+
+%1s
+
+탭하여 제거한 다음 이 앱을 다시 열고 MicroG RE를 설치하세요.    "</string>
+  <string name="gms_core_dialog_uninstall_text">설치 제거</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG에는 백그라운드에서 실행할 수 있는 권한이 없습니다.
 

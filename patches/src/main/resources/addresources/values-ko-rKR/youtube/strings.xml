@@ -92,7 +92,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_title">영화 선반 숨기기</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_notifications_menu_header_title">알림 메뉴 헤더 숨기기</string>
-  <string name="morphe_hide_notifications_menu_header_summary">알림벨 버튼을 탭하면 표시되는 메뉴에서 헤더가 숨겨집니다</string>
+  <string name="morphe_hide_notifications_menu_header_summary">알림벨 버튼을 탭하면 표시되는 메뉴에서 헤더를 숨깁니다</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future live streams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'알림 받기\' 버튼 숨기기</string>
@@ -405,6 +405,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_screen_title">음성 번역</string>
   <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 재생에 맞춰 동기화된 동영상 자막을 읽어줍니다</string>
   <string name="morphe_vot_enabled_title">음성 번역</string>
+  <string name="morphe_vot_enabled_summary">동영상 플레이어에 오버레이 버튼을 표시합니다. 버튼을 탭하여 번역 기능을 켜거나 끌 수 있고, 길게 탭하면 빠른 설정이 실행됩니다</string>
   <string name="morphe_vot_caption_language_title">언어</string>
   <string name="morphe_vot_translation_service_title">번역 제공자</string>
   <string name="morphe_vot_original_audio_volume_title">원본 오디오 볼륨</string>

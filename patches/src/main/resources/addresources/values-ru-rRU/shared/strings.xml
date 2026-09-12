@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 Пожалуйста, обновите MicroG до последней версии v%2s."</string>
   <string name="gms_core_dialog_update_text">Обновление</string>
   <string name="gms_core_dialog_ignore_text">Игнорировать</string>
+  <string name="gms_core_dialog_conflict_message">"Установленный MicroG не рекомендуется Morphe:
+
+%1s
+
+Нажмите, чтобы удалить его, затем снова откройте это приложение и установите MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Деинсталяция</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG не имеет разрешения на работу в фоновом режиме.
 

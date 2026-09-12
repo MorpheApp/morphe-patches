@@ -184,6 +184,12 @@ Second \"item\" text"</string>
 कृपया MicroG को नवीनतम संस्करण v%2s में अपडेट करें।"</string>
   <string name="gms_core_dialog_update_text">अपडेट</string>
   <string name="gms_core_dialog_ignore_text">अनदेखा करें</string>
+  <string name="gms_core_dialog_conflict_message">"इंस्टॉल किया गया MicroG Morphe द्वारा अनुशंसित नहीं है:
+
+%1s
+
+इसे अनइंस्टॉल करने के लिए टैप करें, फिर इस ऐप को दोबारा खोलें और MicroG RE इंस्टॉल करें।"</string>
+  <string name="gms_core_dialog_uninstall_text">अनइंस्टॉल करें</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"माइक्रोजी को बैकग्राउंड में चलने की अनुमति नहीं है।
 

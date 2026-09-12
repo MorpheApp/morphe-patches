@@ -182,6 +182,12 @@ Toiminta katosi aiemmin haussa, joten mukana voi olla useampi lippu tai jokin va
 Päivitä MicroG uusimpaan versioon v%2s."</string>
   <string name="gms_core_dialog_update_text">Päivitä</string>
   <string name="gms_core_dialog_ignore_text">Ohita</string>
+  <string name="gms_core_dialog_conflict_message">"Morphe ei suosittele asennettua MicroG:tä: 
+
+%1s
+
+Napauta poistaaksesi sen, avaa sitten tämä sovellus uudelleen ja asenna MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Poista</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG:llä ei ole lupaa toimia taustalla.
 

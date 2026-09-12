@@ -405,6 +405,7 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_vot_screen_title">Prevod sinhronizovane titlova</string>
   <string name="morphe_vot_screen_summary">Učita titlove iz videa i izgovara ih pomoću ugrađenog pretvarača teksta u govor, sinhronizovano sa reprodukcijom</string>
   <string name="morphe_vot_enabled_title">Prevod sinhronizovane titlova</string>
+  <string name="morphe_vot_enabled_summary">Prikazuje preklopno dugme u video plejeru. Dodirnite da biste uključili ili isključili prevod, dodirnite i zadržite za brza podešavanja. It can be replaced with a new time entry. OK? I need to finalize. Wait, I incorrectly output invalid? Let\'s inspect: I sent a JSON object with </string>
   <string name="morphe_vot_caption_language_title">Jezik</string>
   <string name="morphe_vot_translation_service_title">Провајдер превода</string>
   <string name="morphe_vot_original_audio_volume_title">Гласноћа оригиналног звука</string>

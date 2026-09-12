@@ -184,6 +184,12 @@ Davranış axtarışın əvvəlində itdi, buna görə də birdən çox nişanç
 Xahiş olunur, MicroG-ni ən son v%2s versiyasına yeniləyin."</string>
   <string name="gms_core_dialog_update_text">Yenilə</string>
   <string name="gms_core_dialog_ignore_text">Məhəl qoyma</string>
+  <string name="gms_core_dialog_conflict_message">"Quraşdırılmış MicroG Morphe tərəfindən tövsiyə edilmir:
+
+%1s
+
+Onu silmək üçün toxun, sonra bu tətbiqi yenidən aç və MicroG RE-ni quraşdır."</string>
+  <string name="gms_core_dialog_uninstall_text">Quraşdırmanı sil</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-nin fonda işləmək icazəsi yoxdur.
 

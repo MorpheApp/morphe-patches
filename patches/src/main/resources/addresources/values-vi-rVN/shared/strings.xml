@@ -184,6 +184,12 @@ Hành vi đã biến mất trước đó trong quá trình tìm kiếm, vì vậ
 Vui lòng cập nhật MicroG lên phiên bản mới nhất v%2s."</string>
   <string name="gms_core_dialog_update_text">Cập nhật</string>
   <string name="gms_core_dialog_ignore_text">Bỏ qua</string>
+  <string name="gms_core_dialog_conflict_message">"MicroG đã cài đặt không được Morphe khuyến nghị:
+
+<b>%1s</b>
+
+Nhấn để gỡ cài đặt nó, sau đó mở lại ứng dụng này và cài đặt MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Gỡ</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don\"t kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.\n\nĐiều này cần thiết cho ứng dụng hoạt động."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>

@@ -184,6 +184,12 @@ Perilaku tersebut menghilang lebih awal pada saat pencarian, sehingga kemungkina
 Harap perbarui MicroG ke versi terbaru v%2s."</string>
   <string name="gms_core_dialog_update_text">Perbarui</string>
   <string name="gms_core_dialog_ignore_text">Abaikan</string>
+  <string name="gms_core_dialog_conflict_message">"MicroG yang terpasang tidak direkomendasikan oleh Morphe:
+
+%1s
+
+Ketuk untuk mencopot pemasangannya, lalu buka kembali aplikasi ini dan instal MicroG RE.0"</string>
+  <string name="gms_core_dialog_uninstall_text">Hapus pemasangan</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG tidak memiliki izin untuk berjalan di latar belakang.
 

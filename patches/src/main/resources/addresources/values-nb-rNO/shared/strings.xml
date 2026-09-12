@@ -184,6 +184,12 @@ Atferden forsvant tidligere i søket, så mer enn ett flagg kan være involvert,
 Vennligst oppdater MicroG til den nyeste versjonen v%2s."</string>
   <string name="gms_core_dialog_update_text">Oppdater</string>
   <string name="gms_core_dialog_ignore_text">Ignorer</string>
+  <string name="gms_core_dialog_conflict_message">"Den installerte MicroG-en anbefales ikke av Morphe:
+
+%1s
+
+Trykk for å avinstallere den. Åpne deretter appen på nytt og installer MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Avinstaller</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tillatelse til å kjøre i bakgrunnen.
 
