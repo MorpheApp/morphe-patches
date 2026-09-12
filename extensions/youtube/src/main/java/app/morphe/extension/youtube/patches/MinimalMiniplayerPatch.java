@@ -14,6 +14,7 @@ import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
@@ -167,6 +168,10 @@ public final class MinimalMiniplayerPatch {
                         clickModernButton(modernActionButtonRef, "play/pause"));
                 holdTouch(playPause);
                 styleButton(playPause);
+                // The morph YouTube animates its own play button with is a 48dp drawable and
+                // the plain icons are 24dp, so both are scaled into the same box.
+                playPause.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                playPause.setPadding(Dim.dp12, Dim.dp12, Dim.dp12, Dim.dp12);
             }
 
             ImageView close = Utils.getChildViewByResourceName(controlsLayout, "floaty_close_button");
@@ -716,7 +721,7 @@ public final class MinimalMiniplayerPatch {
         if (playing == isPlaying) return;
 
         playing = isPlaying;
-        updatePlayPauseIcon();
+        updatePlayPauseIcon(true);
     }
 
     /**
@@ -779,7 +784,7 @@ public final class MinimalMiniplayerPatch {
 
     private static void refreshContents() {
         updateText();
-        updatePlayPauseIcon();
+        updatePlayPauseIcon(false);
     }
 
     private static void updateText() {
@@ -801,9 +806,15 @@ public final class MinimalMiniplayerPatch {
         return true;
     }
 
-    private static void updatePlayPauseIcon() {
+    /**
+     * @param morph Whether the state changed while the bar was up, which is the only time
+     *              animating the icon makes sense.
+     */
+    private static void updatePlayPauseIcon(boolean morph) {
         ImageView playPause = playPauseRef.get();
         if (playPause == null) return;
+
+        if (morph && startIconMorph(playPause)) return;
 
         if (playing) {
             setIcon(playPause, "yt_fill_experimental_pause_vd_theme_24", "yt_fill_pause_vd_theme_24");
@@ -840,6 +851,27 @@ public final class MinimalMiniplayerPatch {
         button.setBackground(background);
 
         ViewAnimations.applyPressEffect(button);
+    }
+
+    /**
+     * The app ships the drawable its own player uses to morph between the two icons.
+     */
+    private static boolean startIconMorph(ImageView view) {
+        final String name = playing
+                ? "player_play_pause_vector_transition"
+                : "player_pause_play_vector_transition";
+
+        Drawable drawable = ResourceUtils.getDrawable(name + "_delhi");
+        if (drawable == null) {
+            drawable = ResourceUtils.getDrawable(name);
+        }
+
+        if (!(drawable instanceof AnimatedVectorDrawable morph)) return false;
+
+        view.setImageDrawable(morph);
+        morph.start();
+
+        return true;
     }
 
     /**
