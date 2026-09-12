@@ -38,6 +38,7 @@ public class DisablePlayStoreUpdatesPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("deprecation")
     public static int getVersionCode(PackageInfo info) {
         final int versionCode = info.versionCode;
 

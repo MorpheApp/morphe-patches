@@ -1,12 +1,10 @@
-import java.lang.Boolean.TRUE
-
 extension {
     name = "extensions/all/versioncode/change-version-code.mpe"
 }
 
 android {
     namespace = "app.morphe.extension"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 26
