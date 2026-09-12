@@ -47,7 +47,6 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.numberOfParameterRegisters
-import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -613,20 +612,16 @@ val miniplayerPatch = bytecodePatch(
 
             // Only this method recalculates the rect the video is laid out with. Insert after
             // the early return, so the unchanged rect is what gets compared.
-            MiniplayerHorizontalRepositionFingerprint.method.apply {
-                val index = indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.IGET && getReference<FieldReference>()?.let { field ->
-                        field.definingClass == "Landroid/graphics/Rect;" && field.name == "left"
-                    } == true
+            MiniplayerHorizontalRepositionFingerprint.let {
+                it.method.apply {
+                    addInstructionsAtControlFlowLabel(
+                        it.instructionMatches.first().index,
+                        """
+                            invoke-static { p1 }, $MINIMAL_EXTENSION_CLASS->getMinimalBarBounds(Landroid/graphics/Rect;)Landroid/graphics/Rect;
+                            move-result-object p1
+                        """
+                    )
                 }
-
-                addInstructionsAtControlFlowLabel(
-                    index,
-                    """
-                        invoke-static { p1 }, $MINIMAL_EXTENSION_CLASS->getMinimalBarBounds(Landroid/graphics/Rect;)Landroid/graphics/Rect;
-                        move-result-object p1
-                    """
-                )
             }
 
             // Written on the rect itself rather than through its getter, because the field is
@@ -651,22 +646,17 @@ val miniplayerPatch = bytecodePatch(
 
             // Must run after the offscreen handler hook above, which patches the same method
             // and uses instruction indexes that inserting here would shift.
-            MiniplayerOffscreenHandlerFingerprint.method.apply {
-                val p0 = p0Register
-                val free = findFreeRegister(0, p0 + 1, p0 + 2, p0 + 3, p0 + 4)
-
-                addInstructions(
-                    0,
-                    """
-                        invoke-static { p1, p2, p3, p4 }, $MINIMAL_EXTENSION_CLASS->getMiniplayerBounds(IIII)Landroid/graphics/Rect;
-                        move-result-object v$free
-                        iget p1, v$free, Landroid/graphics/Rect;->left:I
-                        iget p2, v$free, Landroid/graphics/Rect;->top:I
-                        iget p3, v$free, Landroid/graphics/Rect;->right:I
-                        iget p4, v$free, Landroid/graphics/Rect;->bottom:I
-                    """
-                )
-            }
+            MiniplayerOffscreenHandlerFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { p1, p2, p3, p4 }, $MINIMAL_EXTENSION_CLASS->getMiniplayerBounds(IIII)Landroid/graphics/Rect;
+                    move-result-object v0
+                    iget p1, v0, Landroid/graphics/Rect;->left:I
+                    iget p2, v0, Landroid/graphics/Rect;->top:I
+                    iget p3, v0, Landroid/graphics/Rect;->right:I
+                    iget p4, v0, Landroid/graphics/Rect;->bottom:I
+                """
+            )
         }
 
         // endregion

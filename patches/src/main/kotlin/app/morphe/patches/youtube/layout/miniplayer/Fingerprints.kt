@@ -174,7 +174,14 @@ internal object MiniplayerHorizontalRepositionFingerprint : Fingerprint(
     classFingerprint = MiniplayerRectDragFieldsNameFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("Landroid/graphics/Rect;")
+    parameters = listOf("Landroid/graphics/Rect;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET,
+            definingClass = "Landroid/graphics/Rect;",
+            name = "left"
+        )
+    )
 )
 
 internal object MiniplayerOffscreenRectValidatorFingerprint : Fingerprint (
