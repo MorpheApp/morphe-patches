@@ -40,6 +40,7 @@ import androidx.annotation.Nullable;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -414,7 +415,9 @@ public class GmsCoreSupportPatch {
                     return userContext.getPackageManager()
                             .getPackageInfo(packageName, signatureFlags());
                 }
-            } catch (Exception ex) {
+            } catch (PackageManager.NameNotFoundException ex) {
+                return null;
+            } catch (InvocationTargetException | IllegalAccessException ex) {
                 if (ex.getCause() instanceof PackageManager.NameNotFoundException) return null;
             }
         }
@@ -426,7 +429,7 @@ public class GmsCoreSupportPatch {
         try {
             return (PackageInfo) PACKAGE_MANAGER_GET_PACKAGE_INFO_AS_USER.invoke(
                     context.getPackageManager(), packageName, signatureFlags(), userId);
-        } catch (Exception ex) {
+        } catch (InvocationTargetException | IllegalAccessException ex) {
             return null;
         }
     }
@@ -437,8 +440,9 @@ public class GmsCoreSupportPatch {
     private static int userHandleIdentifier(UserHandle handle) {
         try {
             if (USER_HANDLE_GET_IDENTIFIER == null) return -1;
-            return (int) USER_HANDLE_GET_IDENTIFIER.invoke(handle);
-        } catch (Exception ex) {
+            Object result = USER_HANDLE_GET_IDENTIFIER.invoke(handle);
+            return result instanceof Integer ? (Integer) result : -1;
+        } catch (InvocationTargetException | IllegalAccessException ex) {
             return -1;
         }
     }
@@ -462,6 +466,7 @@ public class GmsCoreSupportPatch {
     private static final Method USER_HANDLE_GET_IDENTIFIER = getUserHandleIdentifierMethod();
 
     @Nullable
+    @SuppressWarnings("JavaReflectionMemberAccess")
     private static Method getCreateContextAsUserMethod() {
         try {
             return Context.class.getMethod("createContextAsUser", UserHandle.class, int.class);
@@ -471,6 +476,7 @@ public class GmsCoreSupportPatch {
     }
 
     @Nullable
+    @SuppressWarnings("JavaReflectionMemberAccess")
     private static Method getPackageInfoAsUserMethod() {
         try {
             return PackageManager.class.getMethod(
@@ -481,6 +487,7 @@ public class GmsCoreSupportPatch {
     }
 
     @Nullable
+    @SuppressWarnings("JavaReflectionMemberAccess")
     private static Method getUserHandleIdentifierMethod() {
         try {
             return UserHandle.class.getMethod("getIdentifier");
@@ -489,6 +496,7 @@ public class GmsCoreSupportPatch {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private static int signatureFlags() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             return PackageManager.GET_SIGNING_CERTIFICATES;
@@ -500,34 +508,35 @@ public class GmsCoreSupportPatch {
      * @return If the package is signed by the official MicroG-RE signing key.
      */
     private static boolean isOfficialMicroG(PackageInfo packageInfo) {
-        return matchesSigningCert(packageInfo, OFFICIAL_MICROG_SIGNING_CERT_SHA256);
+        return matchesSigningCert(packageInfo);
     }
 
     /**
      * @return If any certificate of the package, including the certificates of a signing key
      *         rotation, matches the expected SHA-256 digest.
      */
-    private static boolean matchesSigningCert(PackageInfo packageInfo, String expectedSha256) {
+    @SuppressWarnings("deprecation")
+    private static boolean matchesSigningCert(PackageInfo packageInfo) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 if (packageInfo.signingInfo == null) return false;
-                if (matchesAnySigningCert(packageInfo.signingInfo.getApkContentsSigners(), expectedSha256)) {
+                if (matchesAnySigningCert(packageInfo.signingInfo.getApkContentsSigners())) {
                     return true;
                 }
                 // A rotated signing key keeps the old certificate in the history.
-                return matchesAnySigningCert(packageInfo.signingInfo.getSigningCertificateHistory(),
-                        expectedSha256);
+                return matchesAnySigningCert(packageInfo.signingInfo.getSigningCertificateHistory());
             }
-            return matchesAnySigningCert(packageInfo.signatures, expectedSha256);
+            return matchesAnySigningCert(packageInfo.signatures);
         } catch (Exception ex) {
             return false;
         }
     }
 
-    private static boolean matchesAnySigningCert(@Nullable Signature[] signatures, String expectedSha256) {
+    private static boolean matchesAnySigningCert(@Nullable Signature[] signatures) {
         if (signatures == null) return false;
         for (Signature signature : signatures) {
-            if (expectedSha256.equalsIgnoreCase(sha256Hex(signature.toByteArray()))) {
+            if (GmsCoreSupportPatch.OFFICIAL_MICROG_SIGNING_CERT_SHA256.equalsIgnoreCase(
+                    sha256Hex(signature.toByteArray()))) {
                 return true;
             }
         }
@@ -635,9 +644,9 @@ public class GmsCoreSupportPatch {
      * installed for another user cannot be removed from here, but still keep MicroG-RE from being
      * installed or working.
      */
+    @SuppressWarnings("deprecation")
     private static void uninstallForAllUsers(Context context, String packageName) {
         try {
-            //noinspection deprecation
             Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE,
                     Uri.parse("package:" + packageName));
             intent.putExtra(EXTRA_UNINSTALL_ALL_USERS, true);
@@ -741,7 +750,8 @@ public class GmsCoreSupportPatch {
         }
         try {
             // The latest release endpoint returns the newest stable (non-prerelease) tag.
-            return Requester.parseJSONObjectAndDisconnect(connection).optString("tag_name", null);
+            String tagName = Requester.parseJSONObjectAndDisconnect(connection).optString("tag_name");
+            return tagName.isEmpty() ? null : tagName;
         } catch (JSONException ex) {
             return null;
         }
