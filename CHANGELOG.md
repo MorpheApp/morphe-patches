@@ -1,3 +1,19 @@
+## [1.43.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.1...v1.43.0-dev.2) (2026-09-12)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Change header:** Apply custom header logo to explore menu ([#2910](https://github.com/MorpheApp/morphe-patches/issues/2910)) ([e549894](https://github.com/MorpheApp/morphe-patches/commit/e549894d1c8dd2e9909a5c773c3c9c81a4df64a5))
+* **YouTube - Navigation bar:** Keep the app edge to edge when the translucent navigation bar is disabled ([7f2153d](https://github.com/MorpheApp/morphe-patches/commit/7f2153d58830debfe44b9feb94d4a064dd6f56d5))
+* **YouTube - Spoof video streams:** Show AV1 toggle when 'Android VR' client is selected ([19f2325](https://github.com/MorpheApp/morphe-patches/commit/19f232578d8f65c77a90de6da021c5bea59f31d9))
+
+### ✨ New Features
+
+* **YouTube - Miniplayer:** Restore the minimal miniplayer on 21.29+ ([#2911](https://github.com/MorpheApp/morphe-patches/issues/2911)) ([af1a457](https://github.com/MorpheApp/morphe-patches/commit/af1a457e6c62888c1d5de81a54ceefe8edff9abc))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.36.0` & `2026.37.0` ([596c812](https://github.com/MorpheApp/morphe-patches/commit/596c81283a2666cbb3568786fdb40d587a0bb986))
+
 ## [1.43.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.42.1-dev.3...v1.43.0-dev.1) (2026-09-12)
 
 ### ✨ New Features
