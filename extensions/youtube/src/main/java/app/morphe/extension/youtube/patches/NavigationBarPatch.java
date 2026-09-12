@@ -53,10 +53,6 @@ import app.morphe.extension.youtube.shared.NavigationBar;
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
 
-    public static boolean isPatchIncluded() {
-        return false;
-    }
-
     private static final Map<NavigationBar.NavigationButton, Boolean> shouldHideMap =
             new EnumMap<>(NavigationBar.NavigationButton.class) {
         {
@@ -77,6 +73,10 @@ public final class NavigationBarPatch {
     private static final boolean DISABLE_AUTO_HIDE_NAVIGATION_BAR = Settings.DISABLE_AUTO_HIDE_NAVIGATION_BAR.get();
 
     private static final boolean HIDE_NAVIGATION_BAR = Settings.HIDE_NAVIGATION_BAR.get();
+
+    public static boolean isPatchIncluded() {
+        return false;
+    }
 
     /**
      * Injection point.
