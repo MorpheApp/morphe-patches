@@ -23,6 +23,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private val variants = arrayOf("light", "dark")
@@ -65,6 +66,20 @@ private val changeHeaderBytecodePatch = bytecodePatch {
                     """
                         invoke-static { v$register }, $EXTENSION_CLASS->getHeaderAttributeId(I)I
                         move-result v$register    
+                    """
+                )
+            }
+        }
+
+        DrawerHeaderRenderFingerprint.matchAll().forEach { match ->
+            match.method.apply {
+                val addViewIndex = match.instructionMatches.last().index
+                val viewGroupRegister = getInstruction<FiveRegisterInstruction>(addViewIndex).registerC
+
+                addInstructions(
+                    addViewIndex + 1,
+                    """
+                        invoke-static { v$viewGroupRegister }, $EXTENSION_CLASS->updateDrawerLogo(Landroid/view/ViewGroup;)V
                     """
                 )
             }
