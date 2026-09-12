@@ -278,12 +278,18 @@ public class ThemeColorPatch {
     private static boolean splashScreenThemeApplied;
 
     /**
+     * If the system gives the app the overlay manager it needs. Resolved with the first context
+     * of the app, because the API being there is not a promise that the manager is.
+     */
+    private static boolean overlayAvailable;
+
+    /**
      * If a theme color of the user can be applied. An overlay that an app registers for
      * itself exists since Android 14, and no color can be added to the app on older versions.
      */
     @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     public static boolean isCustomColorSupported() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && overlayAvailable;
     }
 
     /**
@@ -415,6 +421,16 @@ public class ThemeColorPatch {
     private static void resolveConfigValues(Context context) {
         if (darkConfigValue > 0) {
             return;
+        }
+
+        // A color the user picked selects a variant of the palette when no overlay can be
+        // registered, so this is resolved before the config values and not with the overlay.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            overlayAvailable = ThemeColorOverlay.isAvailable(context);
+            if (!overlayAvailable) {
+                Logger.printDebug(() -> "Overlays are not available, "
+                        + "a color the user picked uses the nearest color of the palette");
+            }
         }
 
         ThemeColor dark = SharedYouTubeSettings.THEME_COLOR_DARK.get();

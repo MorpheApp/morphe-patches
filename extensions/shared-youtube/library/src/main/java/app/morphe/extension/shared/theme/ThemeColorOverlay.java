@@ -56,6 +56,15 @@ final class ThemeColorOverlay {
     private static final String OVERLAYABLE_NAME = "MorpheThemeColor";
 
     /**
+     * If the app can register an overlay for itself. Android 14 added the API, but the system
+     * hands out the manager only if it considers the app new enough to use it for itself, and
+     * a build that gets that wrong leaves the app without one.
+     */
+    static boolean isAvailable(Context context) {
+        return context.getSystemService(OverlayManager.class) != null;
+    }
+
+    /**
      * Gives every color resource of {@code colors} the color it is mapped to, in the overlay of one
      * theme. A resource that is not included keeps the value it has in the app.
      *
