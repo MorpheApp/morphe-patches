@@ -170,6 +170,10 @@ public final class MiniplayerPatch {
     private static final int OPACITY_LEVEL =
             (SeekBarPreference.clampToRange(Settings.MINIPLAYER_OPACITY) * 255) / 100;
 
+    public static boolean isPatchIncluded() {
+        return false;
+    }
+
     /**
      * Everything about dragging the miniplayer around, which a docked bar does not do.
      */

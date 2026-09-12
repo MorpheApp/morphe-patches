@@ -799,6 +799,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_disable_auto_hide_navigation_bar_summary">Keeps the navigation bar visible while scrolling</string>
     <string name="morphe_disable_translucent_navigation_title">Disable translucent navigation bar</string>
     <string name="morphe_disable_translucent_navigation_summary">Makes the navigation and status bar fully opaque</string>
+    <string name="morphe_disable_translucent_navigation_summary_not_available">To use this feature, change to a different miniplayer type</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Choose which components appear in the toolbar</string>
