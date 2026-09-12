@@ -47,7 +47,6 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.numberOfParameterRegisters
-import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -128,8 +127,6 @@ val miniplayerPatch = bytecodePatch(
                 preferences = preferences
             )
         )
-
-        setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         fun MutableMethod.insertMiniplayerBooleanOverride(index: Int, methodName: String) {
             val register = getInstruction<OneRegisterInstruction>(index).registerA

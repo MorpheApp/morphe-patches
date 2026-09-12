@@ -106,11 +106,7 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_narrow_navigation_buttons", summary = true),
             SwitchPreference("morphe_hide_navigation_button_labels"),
             SwitchPreference("morphe_navigation_bar_animations", summary = true),
-            SwitchPreference(
-                "morphe_disable_translucent_navigation",
-                summary = true,
-                tag = "app.morphe.extension.youtube.settings.preference.DisableTranslucentNavigationPreference"
-            )
+            SwitchPreference("morphe_disable_translucent_navigation", summary = true)
         )
 
         if (is_20_31_or_greater) {

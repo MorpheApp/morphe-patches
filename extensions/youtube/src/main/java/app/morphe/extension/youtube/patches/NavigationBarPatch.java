@@ -11,7 +11,6 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.NavigationBarPatch.DisableTranslucentNavigationAvailability.canDisableTranslucentNavigationBar;
 
 import android.app.Activity;
 import android.content.Context;
@@ -40,7 +39,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.IntegerSetting;
-import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
@@ -55,21 +53,8 @@ import app.morphe.extension.youtube.shared.NavigationBar;
 @SuppressWarnings("unused")
 public final class NavigationBarPatch {
 
-    public static class DisableTranslucentNavigationAvailability implements Setting.Availability {
-        public static boolean canDisableTranslucentNavigationBar() {
-            return !MiniplayerPatch.isPatchIncluded()
-                    || Settings.MINIPLAYER_TYPE.get() != MiniplayerPatch.MiniplayerType.MINIMAL_BAR;
-        }
-
-        @Override
-        public boolean isAvailable() {
-            return canDisableTranslucentNavigationBar();
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(Settings.MINIPLAYER_TYPE);
-        }
+    public static boolean isPatchIncluded() {
+        return false;
     }
 
     private static final Map<NavigationBar.NavigationButton, Boolean> shouldHideMap =
@@ -83,14 +68,9 @@ public final class NavigationBarPatch {
         }
     };
 
-    public static boolean isPatchIncluded() {
-        return false;
-    }
-
-    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION = Settings.DISABLE_TRANSLUCENT_NAVIGATION.get()
-            && canDisableTranslucentNavigationBar();
-
     private static final boolean SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON = Settings.SWAP_CREATE_WITH_NOTIFICATIONS_BUTTON.get();
+
+    private static final boolean DISABLE_TRANSLUCENT_NAVIGATION = Settings.DISABLE_TRANSLUCENT_NAVIGATION.get();
 
     private static final boolean NARROW_NAVIGATION_BUTTONS = Settings.NARROW_NAVIGATION_BUTTONS.get();
 
