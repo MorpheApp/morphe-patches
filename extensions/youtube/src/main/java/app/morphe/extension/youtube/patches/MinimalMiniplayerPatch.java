@@ -12,6 +12,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
@@ -79,8 +80,9 @@ public final class MinimalMiniplayerPatch {
     /**
      * Content description YouTube puts on the action button while the video is playing.
      */
-    private static final int PAUSE_DESCRIPTION =
-            ResourceUtils.getStringIdentifier("accessibility_pause");
+    private static final int PAUSE_DESCRIPTION = ResourceUtils.
+            getStringIdentifier("accessibility_pause");
+
     private static final long MORPH_MILLIS = 220;
 
     /**
@@ -135,6 +137,23 @@ public final class MinimalMiniplayerPatch {
      * it already reports the new state by the time the change is delivered.
      */
     private static boolean barShapeApplied;
+
+    private static final int Y_OFFSET_FIX =
+            // Disable translucent navigation bar causes offset issues.
+            NavigationBarPatch.isPatchIncluded() && Settings.DISABLE_TRANSLUCENT_NAVIGATION.get()
+                    ? getStatusBarHeight()
+                    : 0;
+
+    private static int getStatusBarHeight() {
+        Resources resources = Utils.getContext().getResources();
+        //noinspection InternalInsetResource
+        final int resourceId = resources.getIdentifier(
+                "status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
+    }
 
     /**
      * Interface to use obfuscated methods.
@@ -310,16 +329,16 @@ public final class MinimalMiniplayerPatch {
      */
     private static int barBottomFor(Rect resting) {
         View navigationBar = navigationBar(controlsRef.get());
-        if (navigationBar == null || !navigationBar.isShown()) return resting.bottom;
+        if (navigationBar == null || !navigationBar.isShown()) return resting.bottom - Y_OFFSET_FIX;
 
         navigationBar.getLocationInWindow(windowLocation);
 
         // Where it rests, not where it is. YouTube slides it away while the feed scrolls, and
         // a position taken mid-slide leaves the bar underneath it once it comes back.
-        final int top = windowLocation[1] - Math.round(navigationBar.getTranslationY());
+        final int top = windowLocation[1] - Math.round(navigationBar.getTranslationY()) - Y_OFFSET_FIX;
 
         // Never pull the bar up, only close the gap underneath it.
-        return Math.max(top, resting.bottom);
+        return Math.max(top, resting.bottom - Y_OFFSET_FIX);
     }
 
     /**
