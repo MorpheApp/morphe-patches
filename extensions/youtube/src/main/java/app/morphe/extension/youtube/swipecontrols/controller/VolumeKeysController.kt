@@ -51,7 +51,7 @@ class VolumeKeysController(
     private fun handleVolumeKeyEvent(event: KeyEvent, volumeUp: Boolean): Boolean {
         if (event.action == KeyEvent.ACTION_DOWN) {
             controller.audio?.apply {
-                adjustVolumeBySteps(controller.config.volumeSwipeSensitivity * if (volumeUp) 1 else -1)
+                adjustVolumeBySteps(if (volumeUp) 1 else -1)
                 controller.overlay.onVolumeChanged(steppedVolume, steppedMaxVolume)
             }
         }

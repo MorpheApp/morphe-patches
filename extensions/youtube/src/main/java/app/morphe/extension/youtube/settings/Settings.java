@@ -589,7 +589,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SWIPE_PRESS_TO_ENGAGE = new BooleanSetting("morphe_swipe_press_to_engage", FALSE, true, new AnySwipeZoneAvailability());
     public static final BooleanSetting SWIPE_HAPTIC_FEEDBACK = new BooleanSetting("morphe_swipe_haptic_feedback", TRUE, true, new AnySwipeZoneAvailability());
     public static final IntegerSetting SWIPE_MAGNITUDE_THRESHOLD = new IntegerSetting("morphe_swipe_threshold", 30, true, new AnySwipeZoneAvailability());
-    public static final IntegerSetting SWIPE_VOLUME_SENSITIVITY = new IntegerSetting("morphe_swipe_volume_sensitivity", 1, true, new SwipeActionAvailability(SwipeZoneAction.VOLUME));
+    public static final IntegerSetting SWIPE_VOLUME_DISTANCE = new IntegerSetting("morphe_swipe_volume_distance", 10, true, new SwipeActionAvailability(SwipeZoneAction.VOLUME));
     public static final EnumSetting<SwipeVolumeSteps> SWIPE_VOLUME_STEPS = new EnumSetting<>("morphe_swipe_volume_steps", SwipeVolumeSteps.DEVICE_DEFAULT, true, new SwipeActionAvailability(SwipeZoneAction.VOLUME));
     public static final IntegerSetting SWIPE_BRIGHTNESS_SENSITIVITY = new IntegerSetting("morphe_swipe_brightness_sensitivity", 1, true, new SwipeActionAvailability(SwipeZoneAction.BRIGHTNESS));
     public static final IntegerSetting SWIPE_SPEED_SENSITIVITY = new IntegerSetting("morphe_swipe_speed_sensitivity", 10, true, new SwipeActionAvailability(SwipeZoneAction.SPEED));
@@ -925,8 +925,8 @@ public class Settings extends SharedYouTubeSettings {
                 0, 100, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(PLAYER_CONTROL_BUTTONS_BACKGROUND_OPACITY,
                 0, 100, 1, "%"));
-        SeekBarPreference.register(new SeekBarConfig(SWIPE_VOLUME_SENSITIVITY,
-                1, 10, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_VOLUME_DISTANCE,
+                1, 50, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_BRIGHTNESS_SENSITIVITY,
                 1, 10, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_SENSITIVITY,

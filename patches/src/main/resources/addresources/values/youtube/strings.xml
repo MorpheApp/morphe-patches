@@ -658,8 +658,8 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_text_overlay_size_summary">Adjust the size of the on-screen text (1-30)</string>
     <string name="morphe_swipe_threshold_title">Swipe magnitude threshold</string>
     <string name="morphe_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
-    <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
-    <string name="morphe_swipe_volume_sensitivity_summary">Higher values increase the volume change per swipe</string>
+    <string name="morphe_swipe_volume_distance_title">Volume swipe sensitivity</string>
+    <string name="morphe_swipe_volume_distance_summary">Higher values require more swiping per volume step</string>
     <string name="morphe_swipe_volume_steps_title">Volume steps</string>
     <string name="morphe_swipe_volume_steps_entry_default">Device default</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>

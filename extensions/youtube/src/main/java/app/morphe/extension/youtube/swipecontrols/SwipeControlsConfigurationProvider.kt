@@ -189,18 +189,18 @@ class SwipeControlsConfigurationProvider {
     val swipeMagnitudeThreshold = Settings.SWIPE_MAGNITUDE_THRESHOLD.get()
 
     /**
-     * The sensitivity of volume swipe gestures, determining how much volume changes per swipe.
+     * The swipe distance of a single volume step, in dp.
      * Resets to default if set to 0, as it would disable swiping.
      */
-    val volumeSwipeSensitivity: Int
+    val volumeSwipeDistance: Int
         get() {
-            val sensitivity = Settings.SWIPE_VOLUME_SENSITIVITY.get()
+            val distance = Settings.SWIPE_VOLUME_DISTANCE.get()
 
-            if (sensitivity < 1) {
-                return Settings.SWIPE_VOLUME_SENSITIVITY.resetToDefault()
+            if (distance < 1) {
+                return Settings.SWIPE_VOLUME_DISTANCE.resetToDefault()
             }
 
-            return sensitivity
+            return distance
         }
 
     /**
