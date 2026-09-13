@@ -15,16 +15,6 @@ import app.morphe.util.setExtensionIsPatchIncluded
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/CustomAppIconPatch;"
 
-/**
- * Adds a standalone app icon picker to the Morphe settings screen.
- *
- * Reads all activity-alias entries from the Reddit APK manifest via PackageManager,
- * shows them in a dialog with icon previews, and applies the selected icon using
- * PackageManager.setComponentEnabledSetting() — the same mechanism Reddit uses
- * internally, but without any premium gate.
- *
- * No dependency on Reddit's LauncherIcons infrastructure or premium subscription.
- */
 @Suppress("unused")
 val customAppIconPatch = bytecodePatch(
     name = "Custom app icon",
@@ -36,5 +26,7 @@ val customAppIconPatch = bytecodePatch(
 
     execute {
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
+
+//        LauncherIconSwitcherFingerprint.method.returnEarly(null)
     }
 }

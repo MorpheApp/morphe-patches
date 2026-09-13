@@ -66,27 +66,28 @@ public class CustomAppIconPatch {
      * For StartActivity the full class name is used since it IS a real class, not an alias.
      */
     public enum RedditIcon {
-        DEFAULT("com.reddit.frontpage.StartActivity", str("morphe_app_icon_default")),
-        CLASSIC("launcher.classic", "Classic"),
-        ALIEN_BLUE("launcher.alien_blue", "Alien Blue"),
-        AMAZEDOGE("launcher.amazedoge", "Amaze Doge"),
-        ASTRONAUT("launcher.astronaut", "Astronaut"),
-        BRRR("launcher.brrr", "Brrr"),
-        CHIBI("launcher.chibi", "Chibi"),
-        DOGE("launcher.doge", "Doge"),
-        MECHASNOO("launcher.mechasnoo", "Mecha Snoo"),
-        NEON("launcher.neon", "Neon"),
-        PIXELS("launcher.pixels", "Pixels"),
-        PLANET("launcher.planet", "Planet"),
-        PULLOVER("launcher.pullover", "Pullover"),
-        REDDITGIFTS("launcher.redditgifts", "Reddit Gifts"),
-        RETRO("launcher.retro", "Retro"),
-        ROCKET("launcher.rocket", "Rocket"),
-        STOCKS("launcher.stocks", "Wall Street"),
-        TOTHEMOON("launcher.tothemoon", "To The Moon"),
-        VAPORWAVE("launcher.vaporwave", "Vaporwave"),
-        VITRUVIAN("launcher.vitruvian", "Vitruvian"),
-        WALLSTREET("launcher.wallstreet", "Wall Street Bets");
+        DEFAULT(str("morphe_app_icon_default"), "launcher.default",
+                "com.reddit.frontpage.StartActivity"),
+        CLASSIC("Classic", "launcher.classic"),
+        ALIEN_BLUE("Alien Blue", "launcher.alien_blue"),
+        AMAZEDOGE("Amaze Doge", "launcher.amazedoge"),
+        ASTRONAUT("Astronaut", "launcher.astronaut"),
+        BRRR("Brrr", "launcher.brrr"),
+        CHIBI("Chibi", "launcher.chibi"),
+        DOGE("Doge", "launcher.doge"),
+        MECHASNOO("Mecha Snoo", "launcher.mechasnoo"),
+        NEON("Neon", "launcher.neon"),
+        PIXELS("Pixels", "launcher.pixels"),
+        PLANET("Planet", "launcher.planet"),
+        PULLOVER("Pullover", "launcher.pullover"),
+        REDDITGIFTS("Reddit Gifts", "launcher.redditgifts"),
+        RETRO("Retro", "launcher.retro"),
+        ROCKET("Rocket", "launcher.rocket"),
+        STOCKS("Wall Street", "launcher.stocks"),
+        TOTHEMOON("To The Moon", "launcher.tothemoon"),
+        VAPORWAVE("Vaporwave", "launcher.vaporwave"),
+        VITRUVIAN("Vitruvian", "launcher.vitruvian"),
+        WALLSTREET("Wall Street Bets", "launcher.wallstreet");
 
         // Additional Reddit limited time icons exist, but they should not be shown to the user.
         //
@@ -94,12 +95,22 @@ public class CustomAppIconPatch {
         // longer has the icon, then the launcher will no longer show Reddit and clearing the
         // app data will not fix it. The only fix is to completely uninstall then reinstall.
 
-        public final String componentName;
+        public final List<String> componentNames;
         public final String label;
 
-        RedditIcon(String componentName, String label) {
-            this.componentName = componentName;
+        RedditIcon(String label, String... componentNames) {
+            this.componentNames = List.of(componentNames);
             this.label = label;
+        }
+
+        private boolean matchesActivity(ActivityInfo aInfo) {
+            if (aInfo.name == null) return false;
+            for (String name : componentNames) {
+                if (aInfo.name.equals(name) || aInfo.name.equals(PACKAGE + '.' + name)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         @Nullable
@@ -114,9 +125,7 @@ public class CustomAppIconPatch {
 
                 if (pInfo.activities != null) {
                     for (ActivityInfo aInfo : pInfo.activities) {
-                        if (aInfo.name == null) continue;
-                        if (aInfo.name.equals(componentName)
-                                || aInfo.name.equals(PACKAGE + '.' + componentName)) {
+                        if (matchesActivity(aInfo)) {
                             int iconRes = aInfo.icon != 0 ? aInfo.icon : aInfo.applicationInfo.icon;
                             if (iconRes != 0) {
                                 return appRes.getDrawable(iconRes, null);
@@ -125,7 +134,7 @@ public class CustomAppIconPatch {
                     }
                 }
             } catch (Exception ex) {
-                Logger.printInfo(() -> "Could not load icon for " + componentName, ex);
+                Logger.printInfo(() -> "Could not load icon for " + componentNames, ex);
             }
             return null;
         }
@@ -142,7 +151,7 @@ public class CustomAppIconPatch {
 
         Preference preference = new Preference(context);
         preference.setTitle(str("morphe_app_icon_title"));
-        preference.setSummary(currentComponent.label);
+        preference.setSummary(currentComponent == null ? "Unknown" : currentComponent.label);
         preference.setOnPreferenceClickListener(pref -> {
             CustomAppIconPatch.showIconPicker(context);
             return true;
@@ -155,20 +164,23 @@ public class CustomAppIconPatch {
         showPickerDialog(context, currentComponent);
     }
 
+    @Nullable
     private static RedditIcon detectCurrentIcon(Context context) {
         PackageManager pm = context.getPackageManager();
         for (RedditIcon icon : RedditIcon.values()) {
-            if (icon == RedditIcon.DEFAULT) continue;
-            final int state = pm.getComponentEnabledSetting(
-                    new ComponentName(PACKAGE, icon.componentName));
-            if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
-                return icon;
+            for (String name : icon.componentNames) {
+                final int state = pm.getComponentEnabledSetting(
+                        new ComponentName(PACKAGE, name));
+                if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                    || state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT) {
+                    return icon;
+                }
             }
         }
-        return RedditIcon.DEFAULT;
+        return null;
     }
 
-    private static void showPickerDialog(Context context, RedditIcon current) {
+    private static void showPickerDialog(Context context, @Nullable RedditIcon current) {
         IconAdapter adapter = new IconAdapter(context, current);
         new AlertDialog.Builder(context)
                 .setTitle(str("morphe_app_icon_choose_title"))
@@ -179,7 +191,6 @@ public class CustomAppIconPatch {
     }
 
     private static void confirmAndApply(Context context, RedditIcon selected) {
-        var icons = List.of(RedditIcon.values());
         new AlertDialog.Builder(context)
                 .setTitle(str("morphe_settings_restart_title"))
                 .setMessage(str("morphe_settings_restart_dialog_message"))
@@ -205,16 +216,20 @@ public class CustomAppIconPatch {
             // Disable non selected aliases.
             for (RedditIcon icon : RedditIcon.values()) {
                 if (icon == selected) continue;
-                pm.setComponentEnabledSetting(
-                        new ComponentName(PACKAGE, icon.componentName),
-                        PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                        PackageManager.DONT_KILL_APP);
+                for (String name : icon.componentNames) {
+                    pm.setComponentEnabledSetting(
+                            new ComponentName(PACKAGE, name),
+                            PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                            PackageManager.DONT_KILL_APP);
+                }
             }
 
-            pm.setComponentEnabledSetting(
-                    new ComponentName(PACKAGE, selected.componentName),
-                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                    0);
+            for (String name : selected.componentNames) {
+                pm.setComponentEnabledSetting(
+                        new ComponentName(PACKAGE, name),
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                        0);
+            }
         } catch (SecurityException ex) {
             // Should never happen, no need to localize text.
             new AlertDialog.Builder(context)
@@ -233,9 +248,10 @@ public class CustomAppIconPatch {
     }
 
     private static class IconAdapter extends ArrayAdapter<RedditIcon> {
+        @Nullable
         private final RedditIcon currentComponent;
 
-        IconAdapter(Context ctx, RedditIcon current) {
+        IconAdapter(Context ctx, @Nullable RedditIcon current) {
             super(ctx, 0, List.of(RedditIcon.values()));
             currentComponent = current;
         }
