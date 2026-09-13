@@ -28,7 +28,8 @@ class VolumeKeysController(
      * @return Whether to consume the event.
      */
     fun onKeyEvent(event: KeyEvent): Boolean {
-        if (!controller.config.overwriteVolumeKeyControls) {
+        // Without a volume controller the device has to handle the keys, or they would do nothing.
+        if (!controller.config.overwriteVolumeKeyControls || controller.audio == null) {
             return false
         }
 

@@ -57,6 +57,13 @@ class AudioVolumeController(
     }
 
     /**
+     * Whether the audio service was bound and the volume can be adjusted.
+     * A controller that is not available must not be used, as the stream bounds are unknown.
+     */
+    val isAvailable: Boolean
+        get() = this::audioManager.isInitialized
+
+    /**
      * The current volume, ranging from 0.0 to [maxVolume].
      */
     var volume: Int
