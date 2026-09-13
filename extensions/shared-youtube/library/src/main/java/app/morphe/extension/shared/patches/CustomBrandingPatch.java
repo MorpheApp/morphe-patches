@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2518
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -12,6 +12,7 @@ package app.morphe.extension.shared.patches;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.view.View;
@@ -125,6 +126,7 @@ public class CustomBrandingPatch {
         // between Settings initialization and this class.
         if (notificationSmallIcon == null) {
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {
+                // A mounted install has the original icon resource replaced while patching.
                 Logger.printDebug(() -> "App is root mounted. Not overriding small notification icon");
                 return notificationSmallIcon = 0;
             }
@@ -149,6 +151,12 @@ public class CustomBrandingPatch {
      * Injection point.
      */
     public static View getLottieViewOrNull(View lottieStartupView) {
+        if (GmsCoreSupportPatch.isPackageNameOriginal()) {
+            // A mounted install cannot change the icon at runtime, so the icon chosen
+            // while patching decides if the original startup animation is kept.
+            return mountedIconApplied() ? null : lottieStartupView;
+        }
+
         if (SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get() == BrandingTheme.ORIGINAL) {
             return lottieStartupView;
         }
@@ -176,6 +184,14 @@ public class CustomBrandingPatch {
      */
     public static int getColor(int original) {
         try {
+            if (GmsCoreSupportPatch.isPackageNameOriginal()) {
+                // A mounted install has the notification icon resource replaced while patching,
+                // and the tint of the original icon does not match the icon that replaced it.
+                return mountedNotificationIconApplied()
+                        ? Color.TRANSPARENT
+                        : original;
+            }
+
             final int smallIcon = getNotificationSmallIcon();
             if (smallIcon != 0) {
                 // Remove YT red tint.
@@ -200,6 +216,36 @@ public class CustomBrandingPatch {
     /**
      * Injection point.
      * <p>
+     * The icon style selected during patching.
+     */
+    private static String defaultIconStyleName() {
+        // Modified during patching, but requires a default if custom branding is excluded.
+        return "";
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * If a mounted (root) install had a launcher icon applied during patching.
+     */
+    private static boolean mountedIconApplied() {
+        // Modified during patching, but requires a default if custom branding is excluded.
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * If a mounted (root) install had the notification icon applied during patching.
+     */
+    private static boolean mountedNotificationIconApplied() {
+        // Modified during patching, but requires a default if custom branding is excluded.
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * If a custom icon was provided during patching.
      */
     private static boolean userProvidedCustomIcon() {
@@ -211,7 +257,7 @@ public class CustomBrandingPatch {
      * Injection point.
      * <p>
      * The mipmap resource name of the original unpatched launcher icon.
-     * Differs per app: YouTube uses "ic_launcher", YT Music uses "ic_launcher_release".
+     * Differs per app: YouTube uses "ringo2_ic_launcher", YT Music uses "ic_launcher_release".
      */
     private static String originalLauncherIconName() {
         // Modified during patching.
@@ -247,9 +293,57 @@ public class CustomBrandingPatch {
     }
 
     public static BrandingTheme getDefaultIconStyle() {
+        // Cannot log here, because this runs while Settings are initializing.
+        String styleName = defaultIconStyleName();
+
+        if (!styleName.isEmpty()) {
+            try {
+                return BrandingTheme.valueOf(styleName.toUpperCase(Locale.US));
+            } catch (IllegalArgumentException ex) {
+                // An icon style was added to the patch but not to this enum.
+            }
+        }
+
+        // Custom branding is excluded from the app.
         return userProvidedCustomIcon()
                 ? BrandingTheme.CUSTOM
                 : BrandingTheme.BLACK;
+    }
+
+    /**
+     * Asks a launcher to reload the icon of the app after the branding was applied by patching.
+     * <p>
+     * Mounting changes nothing a launcher uses to notice the app was updated, because the package
+     * is still the one the unpatched app was installed with. So a launcher keeps showing the icon
+     * it cached when the unpatched app was first seen, and not even a reboot refreshes it.
+     * <p>
+     * Changing the state of a component makes the system broadcast that the package changed, which
+     * is what makes a launcher reload the icon. The launch component is enabled either way, so
+     * setting it and then restoring it changes nothing else.
+     */
+    private static void refreshMountedLauncherIcon() {
+        String patchedIconStyle = defaultIconStyleName();
+        if (patchedIconStyle.equals(SharedYouTubeSettings.CUSTOM_BRANDING_ICON_PATCHED.get())) {
+            return;
+        }
+
+        Context context = Utils.getContext();
+        PackageManager pm = context.getPackageManager();
+        Intent launchIntent = pm.getLaunchIntentForPackage(context.getPackageName());
+        ComponentName launchComponent = launchIntent == null ? null : launchIntent.getComponent();
+
+        if (launchComponent == null) {
+            Logger.printException(() -> "Could not find the launch component of the app");
+            return;
+        }
+
+        pm.setComponentEnabledSetting(launchComponent,
+                PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+        pm.setComponentEnabledSetting(launchComponent,
+                PackageManager.COMPONENT_ENABLED_STATE_DEFAULT, PackageManager.DONT_KILL_APP);
+
+        SharedYouTubeSettings.CUSTOM_BRANDING_ICON_PATCHED.save(patchedIconStyle);
+        Logger.printInfo(() -> "Asked the launcher to reload the icon: " + patchedIconStyle);
     }
 
     /**
@@ -259,8 +353,19 @@ public class CustomBrandingPatch {
     public static void setBranding() {
         try {
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {
-                Logger.printInfo(() -> "App is root mounted. Cannot dynamically change app icon");
+                Logger.printInfo(() -> "App is root mounted. Branding was applied while patching");
+                refreshMountedLauncherIcon();
                 return;
+            }
+
+            // Patching with a different icon overrides the icon selected in the app, otherwise
+            // the patch option would silently do nothing for anyone who already has the app.
+            // Patching with the same icon keeps the selection, so an app update does not undo it.
+            String patchedIconStyle = defaultIconStyleName();
+            if (!patchedIconStyle.equals(SharedYouTubeSettings.CUSTOM_BRANDING_ICON_PATCHED.get())) {
+                Logger.printInfo(() -> "Applying the icon of the last patch: " + patchedIconStyle);
+                SharedYouTubeSettings.CUSTOM_BRANDING_ICON_PATCHED.save(patchedIconStyle);
+                SharedYouTubeSettings.CUSTOM_BRANDING_ICON.save(getDefaultIconStyle());
             }
 
             Context context = Utils.getContext();

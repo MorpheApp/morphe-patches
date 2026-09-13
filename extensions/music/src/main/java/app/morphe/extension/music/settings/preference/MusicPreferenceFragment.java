@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.music.settings.preference;
 
 import android.app.Dialog;
@@ -33,13 +43,14 @@ public class MusicPreferenceFragment extends ToolbarPreferenceFragment {
             setPreferenceScreenToolbar(preferenceScreen);
 
             // Clunky work around until preferences are custom classes that manage themselves.
-            // Custom branding only works with non-root install. But the preferences must be
-            // added during patched because of difficulties detecting during patching if it's
-            // a root installation. So instead the non-functional preferences are removed during
-            // runtime if the app is mount (root) installation.
+            // A mount (root) install has its branding applied while patching and cannot change
+            // it at runtime. But the preferences must be added during patching because of
+            // difficulties detecting during patching if it's a root installation. So instead
+            // the non-functional preferences are removed during runtime.
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {
                 removePreferences(
                         SharedYouTubeSettings.CUSTOM_BRANDING_ICON.key,
+                        SharedYouTubeSettings.CUSTOM_BRANDING_NOTIFICATION_ICON.key,
                         SharedYouTubeSettings.CUSTOM_BRANDING_NAME.key);
             }
         } catch (Exception ex) {

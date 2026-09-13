@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.layout.branding
 
 import app.morphe.patcher.Fingerprint
@@ -27,6 +37,30 @@ internal object UserProvidedCustomNameExtensionFingerprint : Fingerprint(
 internal object UserProvidedCustomIconExtensionFingerprint : Fingerprint(
     definingClass = EXTENSION_CLASS,
     name = "userProvidedCustomIcon",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf()
+)
+
+internal object DefaultIconStyleNameExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "defaultIconStyleName",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf()
+)
+
+internal object MountedNotificationIconAppliedExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "mountedNotificationIconApplied",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Z",
+    parameters = listOf()
+)
+
+internal object MountedIconAppliedExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "mountedIconApplied",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
     parameters = listOf()
