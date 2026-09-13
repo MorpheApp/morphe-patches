@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
-import static app.morphe.extension.shared.StringRef.str;
-
 import android.view.View;
 import android.widget.ImageView;
 
@@ -20,9 +18,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
+import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -44,28 +42,14 @@ public class FullscreenVideoScaleButton {
                 return;
             }
 
-            ImageView button = new ImageView(controlsView.getContext()) {
-                @Override
-                public void setVisibility(int visibility) {
-                    super.setVisibility(isOverlayButtonVisible() ? visibility : GONE);
-                }
-            };
             ImageView added = PlayerOverlayButton.addButton(
                     controlsView,
-                    button,
                     getIconName(Settings.FULLSCREEN_VIDEO_SCALE.get()),
+                    FullscreenVideoScaleButton::isOverlayButtonEnabled,
                     view -> cycleScaleMode(),
                     null
             );
             overlayButtonRef = new WeakReference<>(added);
-            if (added != null) {
-                added.getViewTreeObserver().addOnPreDrawListener(() -> {
-                    if (!isOverlayButtonVisible() && added.getVisibility() != View.GONE) {
-                        added.setVisibility(View.GONE);
-                    }
-                    return true;
-                });
-            }
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
@@ -85,7 +69,7 @@ public class FullscreenVideoScaleButton {
                     "fullscreen_video_scale_button",
                     null,
                     Settings.FULLSCREEN_VIDEO_SCALE.get().iconBaseName,
-                    () -> isOverlayButtonVisible()
+                    () -> isOverlayButtonEnabled()
                             ? LegacyPlayerControlButton.ButtonVisibility.ENABLED
                             : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
                     view -> cycleScaleMode(),
@@ -96,7 +80,7 @@ public class FullscreenVideoScaleButton {
         }
     }
 
-    private static boolean isOverlayButtonVisible() {
+    private static boolean isOverlayButtonEnabled() {
         if (!Settings.FULLSCREEN_VIDEO_SCALE_BUTTON.get()) {
             return false;
         }

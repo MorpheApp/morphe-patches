@@ -42,7 +42,12 @@ import app.morphe.extension.youtube.settings.Settings;
 
 public class PlayerOverlayButton {
 
-    public static final int BUTTON_WIDTH = (int) ResourceUtils.getDimension("controls_overlay_action_button_size");
+    public interface PlayerOverlayButtonIsEnabledInterface {
+        boolean isButtonCurrentlyEnabled();
+    }
+
+    public static final int BUTTON_WIDTH = (int) ResourceUtils.getDimension(
+            "controls_overlay_action_button_size");
 
     private static final int ICON_SHADOW_OFFSET_X;
     private static final int ICON_SHADOW_OFFSET_Y;
@@ -246,13 +251,18 @@ public class PlayerOverlayButton {
 
     private static class PlayerOverlayButtonController {
         private final WeakReference<View> buttonRef;
+        @Nullable
+        private final PlayerOverlayButtonIsEnabledInterface isEnabled;
         private final SetViewBackgroundInterface setBackground;
         // Track the ConstantState of the source background to detect real drawable changes.
         @Nullable
         private Drawable.ConstantState sourceBackgroundSnapshot;
 
-        private PlayerOverlayButtonController(View newButton, SetViewBackgroundInterface backgroundInterface) {
+        private PlayerOverlayButtonController(View newButton,
+                                              @Nullable PlayerOverlayButtonIsEnabledInterface enabledInterface,
+                                              SetViewBackgroundInterface backgroundInterface) {
             buttonRef = new WeakReference<>(newButton);
+            isEnabled = enabledInterface;
             setBackground = backgroundInterface;
 
             newButton.getViewTreeObserver().addOnPreDrawListener(() -> {
@@ -261,12 +271,36 @@ public class PlayerOverlayButton {
             });
         }
 
+        private boolean isEnabled() {
+            return isEnabled == null || isEnabled.isButtonCurrentlyEnabled();
+        }
+
+        private int getEnabledButtonIndex() {
+            int count = 0;
+            for (PlayerOverlayButtonController controller : buttonControllers) {
+                if (controller == this) {
+                    return count;
+                }
+                if (controller.isEnabled()) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
         private void updateLayoutFromSourceButton() {
             View source = ytSourceButtonRef.get();
             View button = buttonRef.get();
             if (source == null || button == null) {
                 Logger.printException(() -> "Player buttons is null, source: " + source
                         + " button: " + button);
+                return;
+            }
+
+            if (!isEnabled()) {
+                if (button.getVisibility() != View.GONE) {
+                    button.setVisibility(View.GONE);
+                }
                 return;
             }
 
@@ -298,12 +332,12 @@ public class PlayerOverlayButton {
                 );
             }
 
-            final int effectiveCustomButtons = Math.max(0, buttonControllers.size()
+            final int effectiveCustomButtons = Math.max(0, getNumberOfEnabledButtons()
                     - (HIDE_FULLSCREEN_BUTTON_ENABLED ? 1 : 0));
             final float spacingPercentage = getButtonWidthPercentage(effectiveCustomButtons, source);
 
             // Convert from 0 indexing to 1 indexing.
-            final int buttonNumber = buttonControllers.indexOf(this) + (HIDE_FULLSCREEN_BUTTON_ENABLED ? 0 : 1);
+            final int buttonNumber = getEnabledButtonIndex() + (HIDE_FULLSCREEN_BUTTON_ENABLED ? 0 : 1);
             final float xOffset = (int) (source.getX()
                     - (buttonNumber * (spacingPercentage * source.getWidth())));
 
@@ -459,10 +493,32 @@ public class PlayerOverlayButton {
                                       String drawableName,
                                       View.OnClickListener onClickListener,
                                       View.OnLongClickListener onLongClickListener) {
+        return addButton(sourceButton, drawableName, null, onClickListener, onLongClickListener);
+    }
+
+    /**
+     * Adds an icon button to the player overlay, positioned to the left of {@code sourceButton}.
+     * <p>
+     * On first call, resolves the chapter title and video heading containers so their end margins
+     * can be kept clear of overlay buttons on every subsequent pre-draw pass.
+     *
+     * @param sourceButton        the existing player button used as a position and style anchor.
+     * @param drawableName        resource name of the drawable to display inside the button.
+     * @param isEnabled           allows selectively showing/hiding the overlay button.
+     * @param onClickListener     invoked when the button is tapped.
+     * @param onLongClickListener invoked when the button is long-pressed.
+     */
+    @Nullable
+    public static ImageView addButton(View sourceButton,
+                                      String drawableName,
+                                      PlayerOverlayButtonIsEnabledInterface isEnabled,
+                                      View.OnClickListener onClickListener,
+                                      View.OnLongClickListener onLongClickListener) {
         return addButton(
                 sourceButton,
                 new ImageView(sourceButton.getContext()),
                 drawableName,
+                isEnabled,
                 onClickListener,
                 onLongClickListener
         );
@@ -486,6 +542,29 @@ public class PlayerOverlayButton {
                                                     String drawableName,
                                                     View.OnClickListener onClickListener,
                                                     View.OnLongClickListener onLongClickListener) {
+        return addButton(sourceButton, button, drawableName, null, onClickListener, onLongClickListener);
+    }
+
+    /**
+     * Adds a caller provided button to the player overlay, using the same layout, background
+     * and positioning as the built-in overlay buttons. Used for buttons that draw more than
+     * an icon, such as a progress indicator.
+     *
+     * @param sourceButton        the existing player button used as a position and style anchor.
+     * @param button              the button to add.
+     * @param drawableName        resource name of the drawable to display inside the button.
+     * @param isEnabled           allows selectively showing/hiding the overlay button.
+     * @param onClickListener     invoked when the button is tapped.
+     * @param onLongClickListener invoked when the button is long-pressed.
+     * @return the added button, or {@code null} if the button could not be added.
+     */
+    @Nullable
+    public static <T extends ImageView> T addButton(View sourceButton,
+                                                    T button,
+                                                    String drawableName,
+                                                    @Nullable PlayerOverlayButtonIsEnabledInterface isEnabled,
+                                                    View.OnClickListener onClickListener,
+                                                    View.OnLongClickListener onLongClickListener) {
         ViewGroup sourceButtonViewGroup = updateRefsFromSourceButton(sourceButton);
         if (sourceButtonViewGroup == null) return null;
 
@@ -498,7 +577,7 @@ public class PlayerOverlayButton {
         button.setOnLongClickListener(onLongClickListener);
         sourceButtonViewGroup.addView(button);
 
-        buttonControllers.add(new PlayerOverlayButtonController(button, button::setBackground));
+        buttonControllers.add(new PlayerOverlayButtonController(button, isEnabled, button::setBackground));
         return button;
     }
 
@@ -515,6 +594,26 @@ public class PlayerOverlayButton {
      */
     @Nullable
     public static TextView addButtonWithTextOverlay(View sourceButton,
+                                                    View.OnClickListener onClickListener,
+                                                    View.OnLongClickListener onLongClickListener) {
+        return addButtonWithTextOverlay(sourceButton, null, onClickListener, onLongClickListener);
+    }
+
+    /**
+     * Adds a text-only button to the player overlay, positioned to the left of {@code sourceButton}.
+     * <p>
+     * On first call, resolves the chapter title and video heading containers so their end margins
+     * can be kept clear of overlay buttons on every subsequent pre-draw pass.
+     *
+     * @param sourceButton        the existing player button used as a position and style anchor.
+     * @param isEnabled           allows selectively showing/hiding the overlay button.
+     * @param onClickListener     invoked when the button is tapped.
+     * @param onLongClickListener invoked when the button is long-pressed.
+     * @return the created {@link TextView}, or {@code null} if the button could not be added.
+     */
+    @Nullable
+    public static TextView addButtonWithTextOverlay(View sourceButton,
+                                                    @Nullable PlayerOverlayButtonIsEnabledInterface isEnabled,
                                                     View.OnClickListener onClickListener,
                                                     View.OnLongClickListener onLongClickListener) {
         ViewGroup sourceButtonViewGroup = updateRefsFromSourceButton(sourceButton);
@@ -536,9 +635,13 @@ public class PlayerOverlayButton {
         textOverlay.setOnLongClickListener(onLongClickListener);
         sourceButtonViewGroup.addView(textOverlay);
 
-        buttonControllers.add(new PlayerOverlayButtonController(textOverlay, textOverlay::setBackground));
+        buttonControllers.add(new PlayerOverlayButtonController(textOverlay, isEnabled, textOverlay::setBackground));
 
         return textOverlay;
+    }
+
+    private static int getNumberOfEnabledButtons() {
+        return (int) buttonControllers.stream().filter(PlayerOverlayButtonController::isEnabled).count();
     }
 
     /**
@@ -554,7 +657,7 @@ public class PlayerOverlayButton {
                 try {
                     styleSourceButtonBackground(controlsViewGroup);
 
-                    final int effectiveCustomButtons = Math.max(0, buttonControllers.size()
+                    final int effectiveCustomButtons = Math.max(0, getNumberOfEnabledButtons()
                             - (Settings.HIDE_FULLSCREEN_BUTTON.get() ? 1 : 0));
 
                     int buttonWidth = BUTTON_WIDTH;
