@@ -206,6 +206,7 @@ public class CustomDialogListPreference extends ListPreference {
         ListView listView = new ListView(context);
         listView.setId(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listView.setDividerHeight(0);
 
         // Create custom adapter for the ListView.
         ListPreferenceArrayAdapter adapter = new ListPreferenceArrayAdapter(

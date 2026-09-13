@@ -42,7 +42,6 @@ import app.morphe.util.registersUsed
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
@@ -113,7 +112,7 @@ val settingsPatch = bytecodePatch(
         }
 
         // Turn off Google Play in app update prompt.
-        GooglePlayUpdateCheckFingerprint.method.returnEarly(null);
+        GooglePlayUpdateCheckFingerprint.method.returnEarly(null)
 
         // Force Play Store Verification checks to pass.
         PlayStoreVerificationFingerprint.method.returnEarly(false)

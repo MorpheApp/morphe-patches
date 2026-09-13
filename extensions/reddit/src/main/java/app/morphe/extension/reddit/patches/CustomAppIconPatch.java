@@ -9,7 +9,7 @@ package app.morphe.extension.reddit.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -18,11 +18,14 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.preference.Preference;
+import android.util.Pair;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,13 +36,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
  * Standalone app icon picker for the Reddit app.
- *
+ * <p>
  * Uses the exact activity-alias component names extracted from
  * AndroidManifest.xml in Reddit 2026.32.0.
- *
+ * <p>
  * IMPORTANT — component name format:
  *   The manifest registers aliases with short names (no leading dot, no package prefix):
  *     android:name="launcher.classic"
@@ -47,14 +53,14 @@ import app.morphe.extension.shared.Logger;
  *   with ComponentName(PACKAGE, "launcher.classic"), NOT ComponentName(PACKAGE,
  *   "com.reddit.frontpage.launcher.classic"). The fully-qualified form is rejected with
  *   "Component class ... does not exist in com.reddit.frontpage".
- *
+ * <p>
  * IMPORTANT — icon loading:
  *   All aliases are disabled (android:enabled="false") in the manifest, so
  *   getActivityIcon() throws NameNotFoundException. Instead, we query
  *   GET_ACTIVITIES | GET_DISABLED_COMPONENTS and load icons directly from the
  *   app's Resources via ActivityInfo.icon. The per-alias webp files are confirmed
  *   present in res/mipmap-xxhdpi-v4/ in base.apk.
- *
+ * <p>
  * IMPORTANT — process restart:
  *   Android kills and restarts the app process when a launcher alias's enabled state
  *   changes. We show a confirmation dialog before applying so the user is not surprised.
@@ -201,27 +207,53 @@ public class CustomAppIconPatch {
     private static void showPickerDialog(Context context, @Nullable RedditIcon current) {
         List<RedditIcon> icons = RedditIcon.getAvailableIcons(context);
         IconAdapter adapter = new IconAdapter(context, icons, current);
-        new AlertDialog.Builder(context)
-                .setTitle(str("morphe_app_icon_choose_title"))
-                .setAdapter(adapter, (dialog, which)
-                        -> confirmAndApply(context, icons.get(which)))
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+
+        ListView listView = new ListView(context);
+        listView.setId(android.R.id.list);
+        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listView.setDividerHeight(0);
+        listView.setAdapter(adapter);
+
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                context,
+                str("morphe_app_icon_choose_title"),
+                null, null, null, null,
+                () -> {}, // Cancel action
+                null, null, true
+        );
+
+        Dialog dialog = dialogPair.first;
+        LinearLayout mainLayout = dialogPair.second;
+
+        LinearLayout.LayoutParams listViewParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1.0f);
+
+        mainLayout.addView(listView, mainLayout.getChildCount() - 1, listViewParams);
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            dialog.dismiss();
+            confirmAndApply(context, icons.get(position));
+        });
+
+        dialog.show();
     }
 
     private static void confirmAndApply(Context context, RedditIcon selected) {
-        new AlertDialog.Builder(context)
-                .setTitle(str("morphe_settings_restart_title"))
-                .setMessage(str("morphe_settings_restart_dialog_message"))
-                .setPositiveButton(android.R.string.ok, (dialog, which)
-                        -> applyIcon(context, selected))
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+        CustomDialog.create(
+                context,
+                str("morphe_settings_restart_title"),
+                str("morphe_settings_restart_dialog_message"),
+                null,
+                str("morphe_settings_restart"),
+                () -> applyIcon(context, selected),
+                () -> {}, // Cancel action
+                null, null, true
+        ).first.show();
     }
 
     /**
      * Switch the active launcher alias.
-     *
+     * <p>
      * Component names are passed RAW (as in the manifest) to ComponentName —
      * e.g. "launcher.classic", NOT "com.reddit.frontpage.launcher.classic".
      * Passing the fully-qualified form causes:
@@ -232,7 +264,7 @@ public class CustomAppIconPatch {
         try {
             PackageManager pm = context.getPackageManager();
 
-            // Disable non selected aliases.
+            // Disable non-selected aliases.
             for (RedditIcon icon : RedditIcon.getAvailableIcons(context)) {
                 if (icon == selected) continue;
                 for (String name : icon.componentNames) {
@@ -247,20 +279,16 @@ public class CustomAppIconPatch {
                     new ComponentName(PACKAGE, selected.componentNames.get(0)),
                     PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                     0);
+
         } catch (SecurityException ex) {
             // Should never happen, no need to localize text.
-            new AlertDialog.Builder(context)
-                    .setTitle("Permission Denied")
-                    .setMessage("Could not change the app icon. Try reinstalling the patched app: "
-                            + ex.getMessage())
-                    .setPositiveButton(android.R.string.ok, null)
-                    .show();
+            CustomDialog.create(context, "Permission Denied",
+                    "Could not change the app icon. Try reinstalling the patched app: " + ex.getMessage(),
+                    null, context.getString(android.R.string.ok), () -> {}, () -> {}, null, null, true).first.show();
         } catch (Exception ex) {
-            new AlertDialog.Builder(context)
-                    .setTitle("Error")
-                    .setMessage("Failed to apply icon: " + ex.getMessage())
-                    .setPositiveButton(android.R.string.ok, null)
-                    .show();
+            CustomDialog.create(context, "Error",
+                    "Failed to apply app icon: " + ex.getMessage(),
+                    null, context.getString(android.R.string.ok), () -> {}, () -> {}, null, null, true).first.show();
         }
     }
 
@@ -277,8 +305,8 @@ public class CustomAppIconPatch {
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             Context context = getContext();
-
             RedditIcon redditIcon = getItem(position);
+
             LinearLayout row = new LinearLayout(context);
             row.setOrientation(LinearLayout.HORIZONTAL);
             row.setPadding(32, 20, 32, 20);
@@ -286,16 +314,16 @@ public class CustomAppIconPatch {
             ImageView img = new ImageView(context);
             final int size = 112;
             img.setLayoutParams(new LinearLayout.LayoutParams(size, size));
+            Drawable iconDrawable = (redditIcon != null) ? redditIcon.getIcon(context) : null;
 
-            Drawable iconDrawable;
-            if (redditIcon == null || (iconDrawable = redditIcon.getIcon(context)) == null) {
+            if (iconDrawable == null) {
                 try {
                     iconDrawable = context.getPackageManager().getApplicationIcon(PACKAGE);
                 } catch (Exception ex) {
                     Logger.printException(() -> "Could not set icon", ex); // Should never happen.
-                    iconDrawable = null;
                 }
             }
+
             img.setImageDrawable(iconDrawable);
             img.setScaleType(ImageView.ScaleType.FIT_CENTER);
             row.addView(img);
@@ -305,20 +333,27 @@ public class CustomAppIconPatch {
             LinearLayout.LayoutParams colParams = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             colParams.setMarginStart(28);
+            colParams.gravity = Gravity.CENTER_VERTICAL;
             col.setLayoutParams(colParams);
 
             TextView title = new TextView(context);
             if (redditIcon != null) title.setText(redditIcon.label);
             title.setTextSize(15f);
+            title.setTextColor(ThemeUtils.getAppForegroundColor());
             col.addView(title);
-
-            if (redditIcon == currentComponent) {
-                TextView badge = new TextView(context);
-                badge.setText(str("morphe_app_icon_active"));
-                badge.setTextSize(12f);
-                col.addView(badge);
-            }
             row.addView(col);
+
+            ImageView checkIcon = new ImageView(context);
+            checkIcon.setImageResource(CustomDialogListPreference.DRAWABLE_CHECKMARK);
+            checkIcon.setColorFilter(ThemeUtils.getAppForegroundColor());
+
+            LinearLayout.LayoutParams checkParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            checkParams.gravity = Gravity.CENTER_VERTICAL;
+            checkIcon.setLayoutParams(checkParams);
+
+            checkIcon.setVisibility(redditIcon == currentComponent ? View.VISIBLE : View.GONE);
+            row.addView(checkIcon);
 
             return row;
         }

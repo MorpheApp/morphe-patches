@@ -36,7 +36,8 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public boolean getSettingsStatus() {
-        return OpenLinksDirectlyPatch.isPatchIncluded() ||
+        return CustomAppIconPatch.isPatchIncluded() ||
+                OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded();
     }
