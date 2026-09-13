@@ -182,6 +182,24 @@
         <item>VERTICAL</item>
         <item>VERTICAL_MINIMAL</item>
     </string-array>
+    <string-array name="morphe_swipe_volume_steps_entries">
+        <item>@string/morphe_swipe_volume_steps_entry_default</item>
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
+        <item>50</item>
+    </string-array>
+    <string-array name="morphe_swipe_volume_steps_entry_values">
+        <item>DEVICE_DEFAULT</item>
+        <item>STEPS_5</item>
+        <item>STEPS_10</item>
+        <item>STEPS_15</item>
+        <item>STEPS_20</item>
+        <item>STEPS_30</item>
+        <item>STEPS_50</item>
+    </string-array>
     <string-array name="morphe_swipe_speed_step_entries">
         <item>0.05x</item>
         <item>0.10x</item>

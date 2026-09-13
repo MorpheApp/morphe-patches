@@ -660,6 +660,8 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
     <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
     <string name="morphe_swipe_volume_sensitivity_summary">Higher values increase the volume change per swipe</string>
+    <string name="morphe_swipe_volume_steps_title">Volume steps</string>
+    <string name="morphe_swipe_volume_steps_entry_default">Device default</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
     <string name="morphe_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
