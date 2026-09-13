@@ -12,6 +12,7 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.DISABLED;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MINIMAL;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MINIMAL_BAR;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MINIMAL_BAR_2;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_1;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_2;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_3;
@@ -70,7 +71,9 @@ public final class MiniplayerPatch {
          *
          * @see MinimalMiniplayerPatch
          */
-        MINIMAL_BAR(null, 4);
+        MINIMAL_BAR(null, 4),
+        MINIMAL_BAR_2(null, 4);
+
 
         /**
          * Legacy tablet hook value.
@@ -133,6 +136,10 @@ public final class MiniplayerPatch {
 
     private static final MiniplayerType CURRENT_TYPE = Settings.MINIPLAYER_TYPE.get();
 
+    public static MiniplayerType getCurrentMiniplayerType() {
+        return CURRENT_TYPE;
+    }
+
     /**
      * Cannot turn off double tap with modern 2 or 3 with later targets,
      * as forcing it off breakings tapping the miniplayer.
@@ -143,7 +150,8 @@ public final class MiniplayerPatch {
      * The minimal bar is docked and answers for its own gestures, so everything about dragging
      * the miniplayer is left at its untouched value no matter what the settings still hold.
      */
-    private static final boolean MINIMAL_BAR_SELECTED = CURRENT_TYPE == MINIMAL_BAR;
+    private static final boolean MINIMAL_BAR_SELECTED =
+            CURRENT_TYPE == MINIMAL_BAR || CURRENT_TYPE == MINIMAL_BAR_2;
 
     private static final boolean DRAG_AND_DROP_ENABLED = CURRENT_TYPE.isModern()
             && (MINIMAL_BAR_SELECTED || !Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP.get());
@@ -176,7 +184,7 @@ public final class MiniplayerPatch {
     private static boolean isDraggableMiniplayer() {
         MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
 
-        return type.isModern() && type != MINIMAL_BAR;
+        return type.isModern() && type != MINIMAL_BAR && type != MINIMAL_BAR_2;
     }
 
     public static final class MiniplayerDragAndDropAvailability implements Setting.Availability {
@@ -265,7 +273,7 @@ public final class MiniplayerPatch {
         public boolean isAvailable() {
             MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
             return type == MODERN_1 || type == MODERN_2 || type == MODERN_3 || type == MODERN_4
-                    || type == MINIMAL_BAR;
+                    || type == MINIMAL_BAR || type == MINIMAL_BAR_2;
         }
 
         @Override

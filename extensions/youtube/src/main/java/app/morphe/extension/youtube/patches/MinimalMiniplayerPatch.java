@@ -1,11 +1,16 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2911
+ * https://github.com/MorpheApp/morphe-patches/pull/2928
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.youtube.patches;
+
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MINIMAL_BAR;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MINIMAL_BAR_2;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.getCurrentMiniplayerType;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -50,7 +55,7 @@ import kotlin.Unit;
  * Its layout {@code floaty_bar_controls} is still inflated as the miniplayer container, so the
  * player is reshaped into a bar and those original views are unhidden and driven from here.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SpellCheckingInspection"})
 public final class MinimalMiniplayerPatch {
 
     /**
@@ -70,8 +75,8 @@ public final class MinimalMiniplayerPatch {
     private static final String ACCESSIBILITY_MINIPLAYER_VIEW_STRING = ResourceUtils.getString(
             "accessibility_miniplayer_view");
 
-    private static final boolean ENABLED =
-            Settings.MINIPLAYER_TYPE.get() == MiniplayerType.MINIMAL_BAR;
+    private static final boolean ENABLED = Settings.MINIPLAYER_TYPE.get() == MiniplayerType.MINIMAL_BAR
+            || Settings.MINIPLAYER_TYPE.get() == MiniplayerType.MINIMAL_BAR_2;
 
     /**
      * YouTube's own {@code floaty_bar_height}.
@@ -196,8 +201,10 @@ public final class MinimalMiniplayerPatch {
                 subtitleBar.setVisibility(View.VISIBLE);
             }
 
-            startAfterVideo(title);
-            startAfterVideo(subtitleBar);
+            if (getCurrentMiniplayerType() == MINIMAL_BAR) {
+                startAfterVideo(title);
+                startAfterVideo(subtitleBar);
+            }
 
             // Nothing drives this anymore and it would only draw an empty track.
             View progressBar = Utils.getChildViewByResourceName(controlsLayout, "progress_bar");
@@ -336,7 +343,7 @@ public final class MinimalMiniplayerPatch {
      */
     public static void applyVideoRect(Rect videoRect) {
         try {
-            if (ENABLED && inBarMode()) {
+            if (getCurrentMiniplayerType() == MINIMAL_BAR && inBarMode()) {
                 final int videoWidth = videoWidthFor(currentBounds.height());
 
                 videoRect.set(currentBounds);
@@ -749,8 +756,9 @@ public final class MinimalMiniplayerPatch {
      */
     private static void updateVideoClip() {
         View watchPlayer = watchPlayerRef.get();
+        ViewGroup controls = controlsRef.get();
+
         if (watchPlayer == null) {
-            ViewGroup controls = controlsRef.get();
             if (controls == null) return;
 
             watchPlayer = Utils.getChildViewByResourceName(controls.getRootView(), "watch_player");
@@ -761,24 +769,47 @@ public final class MinimalMiniplayerPatch {
             watchPlayerRef = new WeakReference<>(watchPlayer);
         }
 
-        final int height = currentBounds.height();
-        final int videoWidth = videoWidthFor(height);
+        if (getCurrentMiniplayerType() == MINIMAL_BAR) {
+            final int height = currentBounds.height();
+            final int videoWidth = videoWidthFor(height);
 
-        // Only a bar is far wider than the video it holds. Going by the state instead would
-        // uncover the video for as long as the player still holds the bar shape. Ads are
-        // uncovered as well, their skip button is part of the overlay this hides.
-        if (!inBarMode() || height <= 0 || currentBounds.width() <= videoWidth || isSkipAdShown()) {
+            // Only a bar is far wider than the video it holds. Going by the state instead would
+            // uncover the video for as long as the player still holds the bar shape. Ads are
+            // uncovered as well, their skip button is part of the overlay this hides.
+            if (!inBarMode() || height <= 0 || currentBounds.width() <= videoWidth || isSkipAdShown()) {
+                watchPlayer.setClipBounds(null);
+                return;
+            }
+
+            final int width = currentBounds.width();
+            clipBounds.set(0, 0, videoWidth, height);
+            if (Utils.isRightToLeftLocale()) {
+                clipBounds.offset(width - videoWidth, 0);
+            }
+
+            watchPlayer.setClipBounds(clipBounds);
+        } else if (getCurrentMiniplayerType() == MINIMAL_BAR_2) {
+            if (ENABLED && inBarMode() && controls != null) {
+                watchPlayer.setElevation(0f);
+                watchPlayer.setTranslationZ(0f);
+
+                controls.setElevation(Dim.dp(10));
+                controls.setTranslationZ(Dim.dp(10));
+
+                controls.setBackgroundColor(Color.argb(100, 0, 0, 0));
+                if (controls.getParent() instanceof View parentView) {
+                    parentView.setBackgroundColor(Color.TRANSPARENT);
+
+                    parentView.setElevation(Dim.dp(10));
+                    parentView.setTranslationZ(Dim.dp(10));
+                }
+                if (watchPlayer.getParent() instanceof View playerParent) {
+                    playerParent.setBackgroundColor(Color.TRANSPARENT);
+                }
+            }
+
             watchPlayer.setClipBounds(null);
-            return;
         }
-
-        final int width = currentBounds.width();
-        clipBounds.set(0, 0, videoWidth, height);
-        if (Utils.isRightToLeftLocale()) {
-            clipBounds.offset(width - videoWidth, 0);
-        }
-
-        watchPlayer.setClipBounds(clipBounds);
     }
 
     private static void showControls(boolean show) {
@@ -839,8 +870,19 @@ public final class MinimalMiniplayerPatch {
         GradientDrawable circle = new GradientDrawable();
         circle.setShape(GradientDrawable.OVAL);
         // Follows the theme, so a custom app color carries into the bar.
-        circle.setColor(Utils.adjustColorBrightness(
-                ThemeUtils.getAppBackgroundColor(), 0.9f, 1.25f));
+        final int baseColor = Utils.adjustColorBrightness(
+                                        ThemeUtils.getAppBackgroundColor(),
+                                        0.9f,
+                                        1.25f
+                                );
+        circle.setColor(
+                Color.argb(
+                        getCurrentMiniplayerType() == MINIMAL_BAR ? 255 : 180,
+                        Color.red(baseColor),
+                        Color.green(baseColor),
+                        Color.blue(baseColor)
+                )
+        );
 
         // 48dp is the touch target, 40dp the button, which also keeps the circles apart.
         Drawable inset = new InsetDrawable(circle, Dim.dp4);

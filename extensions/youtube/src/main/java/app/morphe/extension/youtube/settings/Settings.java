@@ -852,6 +852,7 @@ public class Settings extends SharedYouTubeSettings {
         // 21.29+ YT removed all miniplayer types, except modern_4 and what is rebuilt on top of it.
         if (VersionCheckPatch.IS_21_29_OR_GREATER && !MINIPLAYER_TYPE.isSetToDefault()
                 && MINIPLAYER_TYPE.get() != MiniplayerType.MINIMAL_BAR
+                && MINIPLAYER_TYPE.get() != MiniplayerType.MINIMAL_BAR_2
                 && MINIPLAYER_TYPE.get() != MiniplayerType.DISABLED) {
             MINIPLAYER_TYPE.resetToDefault();
         }
