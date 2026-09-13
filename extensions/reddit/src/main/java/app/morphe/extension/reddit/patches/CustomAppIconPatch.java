@@ -28,7 +28,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import app.morphe.extension.shared.Logger;
 
@@ -89,6 +91,12 @@ public class CustomAppIconPatch {
         VITRUVIAN("Vitruvian", "launcher.vitruvian"),
         WALLSTREET("Wall Street Bets", "launcher.wallstreet");
 
+        public static List<RedditIcon> getAvailableIcons(Context context) {
+            return Arrays.stream(values())
+                    .filter(icon -> icon.isAvailable(context))
+                    .collect(Collectors.toList());
+        }
+
         // Additional Reddit limited time icons exist, but they should not be shown to the user.
         //
         // If the user selects a time limited icon and later upgrades to a version that no
@@ -97,10 +105,17 @@ public class CustomAppIconPatch {
 
         public final List<String> componentNames;
         public final String label;
+        @Nullable
+        private Boolean available;
 
         RedditIcon(String label, String... componentNames) {
             this.componentNames = List.of(componentNames);
             this.label = label;
+        }
+
+        public boolean isAvailable(Context context) {
+            if (available != null) return available;
+            return getIcon(context) != null;
         }
 
         private boolean matchesActivity(ActivityInfo aInfo) {
@@ -128,6 +143,7 @@ public class CustomAppIconPatch {
                         if (matchesActivity(aInfo)) {
                             int iconRes = aInfo.icon != 0 ? aInfo.icon : aInfo.applicationInfo.icon;
                             if (iconRes != 0) {
+                                available = true;
                                 return appRes.getDrawable(iconRes, null);
                             }
                         }
@@ -136,6 +152,7 @@ public class CustomAppIconPatch {
             } catch (Exception ex) {
                 Logger.printInfo(() -> "Could not load icon for " + componentNames, ex);
             }
+            available = false;
             return null;
         }
     }
@@ -167,13 +184,16 @@ public class CustomAppIconPatch {
     @Nullable
     private static RedditIcon detectCurrentIcon(Context context) {
         PackageManager pm = context.getPackageManager();
-        for (RedditIcon icon : RedditIcon.values()) {
+        for (RedditIcon icon : RedditIcon.getAvailableIcons(context)) {
             for (String name : icon.componentNames) {
-                final int state = pm.getComponentEnabledSetting(
-                        new ComponentName(PACKAGE, name));
-                if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-                    || state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT) {
-                    return icon;
+                try {
+                    final int state = pm.getComponentEnabledSetting(
+                            new ComponentName(PACKAGE, name));
+                    if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                            || state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT) {
+                        return icon;
+                    }
+                } catch (Exception ignored) {
                 }
             }
         }
@@ -181,11 +201,12 @@ public class CustomAppIconPatch {
     }
 
     private static void showPickerDialog(Context context, @Nullable RedditIcon current) {
-        IconAdapter adapter = new IconAdapter(context, current);
+        List<RedditIcon> icons = RedditIcon.getAvailableIcons(context);
+        IconAdapter adapter = new IconAdapter(context, icons, current);
         new AlertDialog.Builder(context)
                 .setTitle(str("morphe_app_icon_choose_title"))
                 .setAdapter(adapter, (dialog, which)
-                        -> confirmAndApply(context, RedditIcon.values()[which]))
+                        -> confirmAndApply(context, icons.get(which)))
                 .setNegativeButton(android.R.string.cancel, null)
                 .show();
     }
@@ -214,7 +235,7 @@ public class CustomAppIconPatch {
             PackageManager pm = context.getPackageManager();
 
             // Disable non selected aliases.
-            for (RedditIcon icon : RedditIcon.values()) {
+            for (RedditIcon icon : RedditIcon.getAvailableIcons(context)) {
                 if (icon == selected) continue;
                 for (String name : icon.componentNames) {
                     pm.setComponentEnabledSetting(
@@ -251,8 +272,8 @@ public class CustomAppIconPatch {
         @Nullable
         private final RedditIcon currentComponent;
 
-        IconAdapter(Context ctx, @Nullable RedditIcon current) {
-            super(ctx, 0, List.of(RedditIcon.values()));
+        IconAdapter(Context ctx, List<RedditIcon> items, @Nullable RedditIcon current) {
+            super(ctx, 0, items);
             currentComponent = current;
         }
 
