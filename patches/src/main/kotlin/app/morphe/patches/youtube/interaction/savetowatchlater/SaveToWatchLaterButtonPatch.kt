@@ -9,10 +9,12 @@ package app.morphe.patches.youtube.interaction.savetowatchlater
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -46,6 +48,7 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
     description = "Adds an option to display save to Watch later button in the video player.",
 ) {
     dependsOn(
+        flyoutPatch,
         saveToWatchLaterButtonResourcePatch,
         settingsPatch,
         legacyPlayerControlsPatch,
@@ -76,6 +79,15 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
             )
         )
 
+        PreferenceScreen.FEED.addPreferences(
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_save_shorts_from_feed")
+            )
+        )
+
+        PreferenceScreen.addShortsPlayerPreferences(
+            SwitchPreference("morphe_save_shorts_from_player")
+        )
         initializeTopControl(EXTENSION_BUTTON)
     }
 }
