@@ -13,6 +13,7 @@ import android.content.Context;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.CustomAppIconPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
@@ -53,9 +54,11 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         importPref.setSummary(str("morphe_pref_import_export_summary"));
         addPreference(importPref);
 
-        SortedListPreference language = new SortedListPreference(context, BaseSettings.MORPHE_LANGUAGE);
-        addPreference(language);
+        addPreference(new SortedListPreference(context, BaseSettings.MORPHE_LANGUAGE));
 
+        if (CustomAppIconPatch.isPatchIncluded()) {
+            addPreference(CustomAppIconPatch.getIconPreference(context));
+        }
         if (OpenLinksDirectlyPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
