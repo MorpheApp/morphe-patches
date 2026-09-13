@@ -26,7 +26,5 @@ val customAppIconPatch = bytecodePatch(
 
     execute {
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
-
-//        LauncherIconSwitcherFingerprint.method.returnEarly(null)
     }
 }

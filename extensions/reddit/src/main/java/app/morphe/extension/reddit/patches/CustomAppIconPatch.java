@@ -141,16 +141,15 @@ public class CustomAppIconPatch {
                 if (pInfo.activities != null) {
                     for (ActivityInfo aInfo : pInfo.activities) {
                         if (matchesActivity(aInfo)) {
-                            int iconRes = aInfo.icon != 0 ? aInfo.icon : aInfo.applicationInfo.icon;
-                            if (iconRes != 0) {
+                            if (aInfo.icon != 0) {
                                 available = true;
-                                return appRes.getDrawable(iconRes, null);
+                                return appRes.getDrawable(aInfo.icon, null);
                             }
                         }
                     }
                 }
             } catch (Exception ex) {
-                Logger.printInfo(() -> "Could not load icon for " + componentNames, ex);
+                Logger.printInfo(() -> "Could not load icon for: " + componentNames, ex);
             }
             available = false;
             return null;
@@ -168,7 +167,9 @@ public class CustomAppIconPatch {
 
         Preference preference = new Preference(context);
         preference.setTitle(str("morphe_app_icon_title"));
-        preference.setSummary(currentComponent == null ? "Unknown" : currentComponent.label);
+        preference.setSummary(currentComponent == null
+                ? str("morphe_app_icon_unknown")
+                : currentComponent.label);
         preference.setOnPreferenceClickListener(pref -> {
             CustomAppIconPatch.showIconPicker(context);
             return true;
@@ -186,14 +187,11 @@ public class CustomAppIconPatch {
         PackageManager pm = context.getPackageManager();
         for (RedditIcon icon : RedditIcon.getAvailableIcons(context)) {
             for (String name : icon.componentNames) {
-                try {
-                    final int state = pm.getComponentEnabledSetting(
-                            new ComponentName(PACKAGE, name));
-                    if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-                            || state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT) {
-                        return icon;
-                    }
-                } catch (Exception ignored) {
+                final int state = pm.getComponentEnabledSetting(
+                        new ComponentName(PACKAGE, name));
+                if (state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+                        || state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT) {
+                    return icon;
                 }
             }
         }
@@ -245,25 +243,23 @@ public class CustomAppIconPatch {
                 }
             }
 
-            for (String name : selected.componentNames) {
-                pm.setComponentEnabledSetting(
-                        new ComponentName(PACKAGE, name),
-                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                        0);
-            }
+            pm.setComponentEnabledSetting(
+                    new ComponentName(PACKAGE, selected.componentNames.get(0)),
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    0);
         } catch (SecurityException ex) {
             // Should never happen, no need to localize text.
             new AlertDialog.Builder(context)
                     .setTitle("Permission Denied")
                     .setMessage("Could not change the app icon. Try reinstalling the patched app: "
                             + ex.getMessage())
-                    .setPositiveButton("OK", null)
+                    .setPositiveButton(android.R.string.ok, null)
                     .show();
         } catch (Exception ex) {
             new AlertDialog.Builder(context)
                     .setTitle("Error")
                     .setMessage("Failed to apply icon: " + ex.getMessage())
-                    .setPositiveButton("OK", null)
+                    .setPositiveButton(android.R.string.ok, null)
                     .show();
         }
     }
@@ -280,19 +276,21 @@ public class CustomAppIconPatch {
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+            Context context = getContext();
+
             RedditIcon redditIcon = getItem(position);
-            LinearLayout row = new LinearLayout(getContext());
+            LinearLayout row = new LinearLayout(context);
             row.setOrientation(LinearLayout.HORIZONTAL);
             row.setPadding(32, 20, 32, 20);
 
-            ImageView img = new ImageView(getContext());
+            ImageView img = new ImageView(context);
             final int size = 112;
             img.setLayoutParams(new LinearLayout.LayoutParams(size, size));
 
             Drawable iconDrawable;
-            if (redditIcon == null || (iconDrawable = redditIcon.getIcon(getContext())) == null) {
+            if (redditIcon == null || (iconDrawable = redditIcon.getIcon(context)) == null) {
                 try {
-                    iconDrawable = getContext().getPackageManager().getApplicationIcon(PACKAGE);
+                    iconDrawable = context.getPackageManager().getApplicationIcon(PACKAGE);
                 } catch (Exception ex) {
                     Logger.printException(() -> "Could not set icon", ex); // Should never happen.
                     iconDrawable = null;
@@ -302,25 +300,26 @@ public class CustomAppIconPatch {
             img.setScaleType(ImageView.ScaleType.FIT_CENTER);
             row.addView(img);
 
-            LinearLayout col = new LinearLayout(getContext());
+            LinearLayout col = new LinearLayout(context);
             col.setOrientation(LinearLayout.VERTICAL);
             LinearLayout.LayoutParams colParams = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             colParams.setMarginStart(28);
             col.setLayoutParams(colParams);
 
-            TextView title = new TextView(getContext());
+            TextView title = new TextView(context);
             if (redditIcon != null) title.setText(redditIcon.label);
             title.setTextSize(15f);
             col.addView(title);
 
             if (redditIcon == currentComponent) {
-                TextView badge = new TextView(getContext());
+                TextView badge = new TextView(context);
                 badge.setText(str("morphe_app_icon_active"));
                 badge.setTextSize(12f);
                 col.addView(badge);
             }
             row.addView(col);
+
             return row;
         }
     }
