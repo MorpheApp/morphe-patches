@@ -99,7 +99,6 @@ internal fun spoofVideoStreamsPatch(
         mainActivityOnCreateFingerprint.method.addInstructions(
             0,
             """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setMainActivity(Landroid/app/Activity;)V       
                 invoke-static { }, $extensionClass->setClientOrderToUse()V   
             """
         )
