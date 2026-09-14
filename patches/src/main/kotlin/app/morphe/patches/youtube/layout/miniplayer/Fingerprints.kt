@@ -406,7 +406,7 @@ internal object MiniplayerControlsVisibilityFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = $$"Landroid/view/ViewGroup;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;"
         ),
-        literal(8, location = MatchAfterWithin(15)),
+        literal(8),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = "Landroid/view/ViewGroup;->setVisibility(I)V",

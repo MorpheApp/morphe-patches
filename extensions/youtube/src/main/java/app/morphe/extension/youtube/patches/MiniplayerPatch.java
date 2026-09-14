@@ -72,8 +72,12 @@ public final class MiniplayerPatch {
          * @see MinimalMiniplayerPatch
          */
         MINIMAL_BAR(null, 4),
+        /**
+         * Same bar, but drawn on the video instead of beside it.
+         *
+         * @see MinimalMiniplayerPatch
+         */
         MINIMAL_BAR_2(null, 4);
-
 
         /**
          * Legacy tablet hook value.
