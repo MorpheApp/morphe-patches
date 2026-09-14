@@ -25,7 +25,8 @@ internal object FeedBottomSheetFlyoutFingerprint : Fingerprint (
     classFingerprint = Fingerprint(
         parameters = listOf("Landroid/os/Bundle;"),
         filters = listOf(
-            string("BaseBottomSheetDialogFragment.useNewUi"),
+            // "BaseBottomSheetDialogFragment.useNewUi" was removed in YouTube 21.37
+            // after Google fully launched the experiment it gated. Don't require it.
             string("BaseBottomSheetDialogFragment.peekHeightEnabled"),
             string("BaseBottomSheetDialogFragment.largeFormWidthDp"),
         )

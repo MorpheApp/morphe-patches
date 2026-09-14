@@ -316,7 +316,16 @@ internal fun spoofVideoStreamsPatch(
         // Requesting streams intended for other platforms with a body tuned for Android could be the cause of 400 errors.
         // A proper fix may include modifying the request body to match the platforms expected body.
 
-        BuildMediaDataSourceFingerprint.method.apply {
+        // Media3's DataSpec constructor gained an extra field in YouTube 21.37,
+        // shifting the httpMethod/httpBody field letters. Detect which shape is present.
+        val (dataSourceFingerprint, httpMethodField, httpBodyField) =
+            if (BuildMediaDataSourceFingerprint.matchOrNull() != null) {
+                Triple(BuildMediaDataSourceFingerprint, "c", "d")
+            } else {
+                Triple(BuildMediaDataSourceFingerprintV2, "d", "e")
+            }
+
+        dataSourceFingerprint.method.apply {
             val targetIndex =
                 indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
 
@@ -326,15 +335,15 @@ internal fun spoofVideoStreamsPatch(
                 targetIndex,
                 """
                     # Field a: Stream uri.
-                    # Field c: Http method.
-                    # Field d: Post data.
+                    # Field $httpMethodField: Http method.
+                    # Field $httpBodyField: Post data.
                     move-object v0, p0  # method has over 15 registers and must copy p0 to a lower register.
                     iget-object v1, v0, $definingClass->a:Landroid/net/Uri;
-                    iget v2, v0, $definingClass->c:I
-                    iget-object v3, v0, $definingClass->d:[B
+                    iget v2, v0, $definingClass->$httpMethodField:I
+                    iget-object v3, v0, $definingClass->$httpBodyField:[B
                     invoke-static { v1, v2, v3 }, $EXTENSION_CLASS->removeVideoPlaybackPostBody(Landroid/net/Uri;I[B)[B
                     move-result-object v1
-                    iput-object v1, v0, $definingClass->d:[B
+                    iput-object v1, v0, $definingClass->$httpBodyField:[B
                 """
             )
         }

@@ -168,6 +168,30 @@ internal object BuildMediaDataSourceFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Media3's DataSpec constructor as of YouTube 21.37 gained an extra String parameter
+ * (inserted between the uriPositionOffset and httpMethod parameters), shifting the
+ * httpMethod and httpBody fields from "c"/"d" to "d"/"e". Older versions still use
+ * [BuildMediaDataSourceFingerprint]; this is the fallback for 21.37 and later.
+ */
+internal object BuildMediaDataSourceFingerprintV2 : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf(
+        "Landroid/net/Uri;",
+        "J",
+        "Ljava/lang/String;",
+        "I",
+        "[B",
+        "Ljava/util/Map;",
+        "J",
+        "J",
+        "Ljava/lang/String;",
+        "I",
+        "Ljava/lang/Object;",
+    )
+)
+
 internal object HlsCurrentTimeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Z", "L"),
