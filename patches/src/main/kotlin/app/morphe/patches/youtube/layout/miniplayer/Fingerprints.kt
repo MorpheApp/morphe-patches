@@ -388,7 +388,7 @@ internal object ShowMiniplayerCommandFingerprint: Fingerprint(
     )
 )
 
-internal object MiniplayerLegacyControlsFingerprint : Fingerprint(
+internal object MiniplayerControlsFingerprint : Fingerprint(
     name = "<init>",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "controls_layout"),
@@ -396,8 +396,8 @@ internal object MiniplayerLegacyControlsFingerprint : Fingerprint(
     )
 )
 
-internal object MiniplayerLegacyControlsVisibilityFingerprint : Fingerprint(
-    classFingerprint = MiniplayerLegacyControlsFingerprint,
+internal object MiniplayerControlsVisibilityFingerprint : Fingerprint(
+    classFingerprint = MiniplayerControlsFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),

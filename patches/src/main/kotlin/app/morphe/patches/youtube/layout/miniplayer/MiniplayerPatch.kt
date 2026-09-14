@@ -537,7 +537,7 @@ val miniplayerPatch = bytecodePatch(
 
         // region Minimal miniplayer.
 
-        MiniplayerLegacyControlsFingerprint.let {
+        MiniplayerControlsFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
@@ -550,7 +550,7 @@ val miniplayerPatch = bytecodePatch(
             }
         }
 
-        MiniplayerLegacyControlsVisibilityFingerprint.let {
+        MiniplayerControlsVisibilityFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches[1].index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
