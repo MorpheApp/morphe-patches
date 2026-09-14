@@ -11,8 +11,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -42,7 +42,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
 
     execute {
         headerDrawableNames.forEach { drawableName ->
-            val drawableId = getResourceId(ResourceType.DRAWABLE, drawableName)
+            val drawableId = resourceId(ResourceType.DRAWABLE, drawableName)
 
             forEachLiteralValueInstruction(drawableId) { literalIndex ->
                 val register = getInstruction<OneRegisterInstruction>(literalIndex).registerA

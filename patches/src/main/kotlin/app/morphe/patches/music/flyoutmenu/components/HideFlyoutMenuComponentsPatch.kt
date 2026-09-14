@@ -12,8 +12,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
@@ -128,7 +128,7 @@ val hideFlyoutMenuComponentsPatch = bytecodePatch(
         // PlayerFlyoutMenuComponentsFilter). Kept side-by-side as a fallback for
         // pre-Litho builds; the two hooks share HIDE_FLYOUT_MENU_LIKE_DISLIKE and are
         // mutually harmless when both fire.
-        val endButtonsContainer = getResourceId(ResourceType.ID, "end_buttons_container")
+        val endButtonsContainer = resourceId(ResourceType.ID, "end_buttons_container")
         EndButtonsContainerFingerprint.method.apply {
             val startIndex = indexOfFirstLiteralInstructionOrThrow(endButtonsContainer)
             val targetIndex = indexOfFirstInstructionOrThrow(startIndex, Opcode.MOVE_RESULT_OBJECT)

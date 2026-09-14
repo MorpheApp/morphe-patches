@@ -16,8 +16,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patches.shared.layout.branding.header.CUSTOM_HEADER_RESOURCE_NAME
 import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -49,7 +49,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
             "yt_ringo2_premium_wordmark_header"
         ).forEach { resource ->
             variants.forEach { theme ->
-                getResourceId(ResourceType.DRAWABLE, resource + "_" + theme)
+                resourceId(ResourceType.DRAWABLE, resource + "_" + theme)
             }
         }
 
@@ -57,7 +57,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
             "ytWordmarkHeader",
             "ytPremiumWordmarkHeader"
         ).forEach { resourceName ->
-            val resourceId = getResourceId(ResourceType.ATTR, resourceName)
+            val resourceId = resourceId(ResourceType.ATTR, resourceName)
 
             forEachLiteralValueInstruction(resourceId) { literalIndex ->
                 val register = getInstruction<OneRegisterInstruction>(literalIndex).registerA

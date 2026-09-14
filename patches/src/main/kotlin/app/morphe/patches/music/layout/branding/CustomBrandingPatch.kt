@@ -11,8 +11,8 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -35,7 +35,7 @@ private val disableSplashAnimationPatch = bytecodePatch {
         // barely shown. Instead, turn off the animation entirely (app will also launch a little faster).
         CairoSplashAnimationConfigFingerprint.method.apply {
             val literalIndex = indexOfFirstLiteralInstructionOrThrow(
-                getResourceId(ResourceType.LAYOUT, "main_activity_launch_animation")
+                resourceId(ResourceType.LAYOUT, "main_activity_launch_animation")
             )
             val checkCastIndex = indexOfFirstInstructionOrThrow(literalIndex) {
                 opcode == Opcode.CHECK_CAST &&
