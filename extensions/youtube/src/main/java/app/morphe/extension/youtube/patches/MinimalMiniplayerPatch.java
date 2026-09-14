@@ -911,10 +911,10 @@ public final class MinimalMiniplayerPatch {
                 ? "player_play_pause_vector_transition"
                 : "player_pause_play_vector_transition";
 
-        Drawable drawable = ResourceUtils.getDrawable(name + "_delhi");
-        if (drawable == null) {
-            drawable = ResourceUtils.getDrawable(name);
-        }
+        final int drawableIdentifier = ResourceUtils.getDrawableIdentifier(name + "_delhi");
+        Drawable drawable = drawableIdentifier == 0
+                ? ResourceUtils.getDrawable(name)
+                : Utils.getContext().getDrawable(drawableIdentifier);
 
         if (!(drawable instanceof AnimatedVectorDrawable morph)) return false;
 
@@ -928,10 +928,10 @@ public final class MinimalMiniplayerPatch {
      * The bar layout still points at the thin icon set, so the bold one is used when the app has it.
      */
     private static void setIcon(ImageView view, String boldName, String legacyName) {
-        Drawable drawable = ResourceUtils.getDrawable(boldName);
-        if (drawable == null) {
-            drawable = ResourceUtils.getDrawable(legacyName);
-        }
+        final int drawableIdentifier = ResourceUtils.getDrawableIdentifier(boldName);
+        Drawable drawable = drawableIdentifier == 0
+                ? ResourceUtils.getDrawable(legacyName)
+                : Utils.getContext().getDrawable(drawableIdentifier);
 
         if (drawable != null) {
             view.setImageDrawable(drawable);
