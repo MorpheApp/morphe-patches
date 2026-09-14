@@ -410,6 +410,13 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_double_tap_length_180s" translatable="false">180</string>
     <string name="morphe_double_tap_length_240s" translatable="false">240</string>
 
+    <!-- interaction.channelsearch.channelSearchPatch -->
+    <string name="morphe_channel_search_title">Search within channel</string>
+    <string name="morphe_channel_search_summary">Searching while a channel is open searches only that channel</string>
+    <string name="morphe_channel_search_results_title">Search: %s</string>
+    <string name="morphe_channel_search_no_results">Nothing found on this channel</string>
+    <string name="morphe_channel_search_failed">Could not search this channel</string>
+
     <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
     <string name="morphe_share_copy_link_button_success">Link copied to clipboard</string>
     <string name="morphe_share_copy_link_with_timestamp_button_success">Link with timestamp copied to clipboard</string>

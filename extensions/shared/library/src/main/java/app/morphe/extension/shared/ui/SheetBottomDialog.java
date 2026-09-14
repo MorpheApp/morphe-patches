@@ -150,6 +150,39 @@ public class SheetBottomDialog {
     }
 
     /**
+     * Share of the screen height a scrollable dialog content takes up at most.
+     */
+    public static final int DEFAULT_MAX_HEIGHT_PERCENT = 75;
+
+    /**
+     * @see #createCappedScrollView(Context, int)
+     */
+    public static ScrollView createCappedScrollView(@NonNull Context context) {
+        return createCappedScrollView(context, DEFAULT_MAX_HEIGHT_PERCENT);
+    }
+
+    /**
+     * Creates a {@link ScrollView} that never grows past a share of the screen, so that a long
+     * list still leaves the dialog usable, including in landscape.
+     *
+     * @param context          The context used to create the view.
+     * @param maxHeightPercent Share of the screen height the content may take up. Pass one only
+     *                         when this dialog has a reason to differ from the default.
+     */
+    public static ScrollView createCappedScrollView(@NonNull Context context, int maxHeightPercent) {
+        ScrollView scrollView = new ScrollView(context) {
+            @Override
+            protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(
+                        Dim.pctHeight(maxHeightPercent), MeasureSpec.AT_MOST));
+            }
+        };
+        scrollView.setVerticalScrollBarEnabled(false);
+
+        return scrollView;
+    }
+
+    /**
      * A custom {@link LinearLayout} that provides drag-to-dismiss functionality for a {@link SlideDialog}.
      * This layout intercepts touch events to allow dragging the dialog downward to dismiss it when the
      * content cannot scroll upward. It ensures compatibility with scrollable content (e.g., {@link ListView},
