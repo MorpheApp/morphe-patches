@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-13T18:57:42",
-  "description": "## [1.43.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.3...v1.43.0-dev.4) (2026-09-13)\n\n### ✨ New Features\n\n* **Custom branding:** Add an app icon patch option and support mounted installations ([#2518](https://github.com/MorpheApp/morphe-patches/issues/2518)) ([e7a508f](https://github.com/MorpheApp/morphe-patches/commit/e7a508f2b1b629066e49776254e5c2e2f625976a))\n* **Reddit:** Add `Custom app icon` patch ([#2937](https://github.com/MorpheApp/morphe-patches/issues/2937)) ([c17f699](https://github.com/MorpheApp/morphe-patches/commit/c17f6990a6d3ed5f8041f07eb3cb129a939e529e))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.43.0-dev.4/patches-1.43.0-dev.4.mpp",
+  "created_at": "2026-09-14T00:36:08",
+  "description": "## [1.43.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0-dev.5...v1.43.0-dev.6) (2026-09-14)\n\n### 🐛 Bug Fixes\n\n* **YouTube - FlyoutUtils:** Fetch element description straight from ViewGroup instead componentHost ([7565b9d](https://github.com/MorpheApp/morphe-patches/commit/7565b9d4409d20cf58075fb7d53eca081d2ac282))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.43.0-dev.6/patches-1.43.0-dev.6.mpp",
   "signature_download_url": "",
-  "version": "1.43.0-dev.4"
+  "version": "1.43.0-dev.6"
 }

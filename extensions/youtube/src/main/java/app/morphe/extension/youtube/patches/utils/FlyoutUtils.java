@@ -34,8 +34,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.facebook.litho.ComponentHost;
-
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -854,7 +852,7 @@ public final class FlyoutUtils {
         if (senderView != null) {
             ViewParent parent = senderView.getParent();
             int parentCount = 0;
-            while (parent != null) {
+            while (parent != null && !parent.toString().contains("id.results")) {
                 parentCount++;
 
                 ViewParent loggingParent = parent;
@@ -865,18 +863,18 @@ public final class FlyoutUtils {
                         loggingParent
                 );
                 
-                if (parent instanceof ComponentHost componentHost) {
-                    CharSequence description = componentHost.getContentDescription();
+                if (parent instanceof ViewGroup viewGroupParent) {
+                    CharSequence description = viewGroupParent.getContentDescription();
                     boolean descriptionNull = description == null;
 
-                    Logger.printDebug(() -> "Flyout componentHost description is null: " +
+                    Logger.printDebug(() -> "Flyout viewGroupParent description is null: " +
                             descriptionNull
                     );
 
                     if (!descriptionNull) {
                         String stringDescription = description.toString();
 
-                        Logger.printDebug(() -> "Flyout componentHost description content: " +
+                        Logger.printDebug(() -> "Flyout viewGroupParent description content: " +
                                 stringDescription
                         );
 
@@ -966,6 +964,10 @@ public final class FlyoutUtils {
                             VIDEO_ID_LENGTH,
                             StandardCharsets.US_ASCII
                     );
+
+                    Logger.printDebug(() -> "Flyout Video ID found: " +
+                            flyoutVideoId
+                    );
                 }
                 return;
             }
@@ -978,36 +980,44 @@ public final class FlyoutUtils {
              index = byteIndexOf(buffer, CHANNEL_ID_PREFIX_BYTES, index + 1)) {
             if (isValidChannelId(buffer, index)) {
                 flyoutChannelId = new String(buffer, index, CHANNEL_ID_LENGTH, StandardCharsets.US_ASCII);
-                flyoutChannelName = findChannelName(description);
+                Logger.printDebug(() -> "Flyout Channel ID found: " +
+                        flyoutChannelId
+                );
+
+                // The channel name is the only text the accessibility description repeats in two adjacent
+                // parts, as "Go to channel <name>" is always followed by "<name>". Matching those parts
+                // finds the name without depending on the app language.
+                String[] descriptionParts = description.split(" - ");
+                String fetchedChannelName = "";
+
+                for (int i = 1; i < descriptionParts.length; i++) {
+                    String previousPart = descriptionParts[i - 1];
+                    String part = descriptionParts[i];
+
+                    for (
+                        int length = Math.min(previousPart.length(), part.length());
+                        length > fetchedChannelName.length(); length--
+                    ) {
+                        String candidateName = part.substring(0, length);
+                        if (previousPart.endsWith(candidateName)) {
+                            fetchedChannelName = candidateName;
+                            break;
+                        }
+                    }
+                }
+
+                if (fetchedChannelName.length() > 1) {
+                    flyoutChannelName = fetchedChannelName;
+                    Logger.printDebug(() -> "Flyout Channel Name found: " +
+                            flyoutChannelName
+                    );
+                }
+
+
+
                 return;
             }
         }
-    }
-
-    /**
-     * The channel name is the only text the accessibility description repeats in two adjacent
-     * parts, as "Go to channel <name>" is always followed by "<name>". Matching those parts
-     * finds the name without depending on the app language.
-     */
-    private static String findChannelName(String description) {
-        String[] parts = description.split(" - ");
-        String name = "";
-
-        for (int i = 1; i < parts.length; i++) {
-            String previousPart = parts[i - 1];
-            String part = parts[i];
-
-            for (int length = Math.min(previousPart.length(), part.length());
-                 length > name.length(); length--) {
-                String candidate = part.substring(0, length);
-                if (previousPart.endsWith(candidate)) {
-                    name = candidate;
-                    break;
-                }
-            }
-        }
-
-        return name.length() > 1 ? name : "";
     }
 
     /**
@@ -1058,6 +1068,9 @@ public final class FlyoutUtils {
                     playlistIdStart,
                     playlistIdEnd - playlistIdStart - 1,
                     StandardCharsets.US_ASCII
+            );
+            Logger.printDebug(() -> "Flyout Playlist ID found: " +
+                    flyoutPlaylistId
             );
         }
     }
@@ -1132,6 +1145,9 @@ public final class FlyoutUtils {
                     spaceIndex == -1
                             ? cleanedCommentId
                             : cleanedCommentId.substring(0, spaceIndex);
+            Logger.printDebug(() -> "Flyout Comment ID found: " +
+                    flyoutCommentId
+            );
 
             // Reset 'flyoutCommentId' immediately after its fetching (when the comment
             // share flyout button is pressed), to prevent unintended usage.

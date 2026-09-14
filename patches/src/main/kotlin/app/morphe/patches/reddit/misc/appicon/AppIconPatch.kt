@@ -13,12 +13,12 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/reddit/patches/CustomAppIconPatch;"
+    "Lapp/morphe/extension/reddit/patches/AppIconPatch;"
 
 @Suppress("unused")
-val customAppIconPatch = bytecodePatch(
-    name = "Custom app icon",
-    description = "Adds an option to select an existing manifest app icon."
+val appIconPatch = bytecodePatch(
+    name = "App icon",
+    description = "Adds an option to select from the Reddit app icons available in the manifest."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 

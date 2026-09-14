@@ -66,7 +66,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
  *   changes. We show a confirmation dialog before applying so the user is not surprised.
  */
 @SuppressWarnings({"deprecation", "unused"})
-public class CustomAppIconPatch {
+public class AppIconPatch {
 
     /**
      * Verified from AndroidManifest.xml in Reddit 2026.32.0.
@@ -76,26 +76,26 @@ public class CustomAppIconPatch {
     public enum RedditIcon {
         DEFAULT(str("morphe_app_icon_default"), "launcher.default",
                 "com.reddit.frontpage.StartActivity"),
-        CLASSIC("Classic", "launcher.classic"),
         ALIEN_BLUE("Alien Blue", "launcher.alien_blue"),
-        AMAZEDOGE("Amaze Doge", "launcher.amazedoge"),
+        AMAZE_DOGE("Amaze Doge", "launcher.amazedoge"),
+        ANIME("Anime", "launcher.chibi"),
         ASTRONAUT("Astronaut", "launcher.astronaut"),
-        BRRR("Brrr", "launcher.brrr"),
-        CHIBI("Chibi", "launcher.chibi"),
+        CLASSIC("Classic", "launcher.classic"),
         DOGE("Doge", "launcher.doge"),
-        MECHASNOO("Mecha Snoo", "launcher.mechasnoo"),
+        MECHA_SNOO("Mecha Snoo", "launcher.mechasnoo"),
         NEON("Neon", "launcher.neon"),
-        PIXELS("Pixels", "launcher.pixels"),
+        OUTRUN("Outrun", "launcher.vaporwave"),
         PLANET("Planet", "launcher.planet"),
-        PULLOVER("Pullover", "launcher.pullover"),
-        REDDITGIFTS("Reddit Gifts", "launcher.redditgifts"),
-        RETRO("Retro", "launcher.retro"),
+        REDDIT_GIFTS("Reddit Gifts", "launcher.redditgifts"),
+        RETRO_CARTOON("Retro Cartoon", "launcher.retro"),
         ROCKET("Rocket", "launcher.rocket"),
-        STOCKS("Wall Street", "launcher.stocks"),
-        TOTHEMOON("To The Moon", "launcher.tothemoon"),
-        VAPORWAVE("Vaporwave", "launcher.vaporwave"),
+        STOCKS("Stocks", "launcher.stocks"),
+        SWEATER("Sweater", "launcher.pullover"),
+        TO_THE_MOON("To the Moon", "launcher.tothemoon"),
         VITRUVIAN("Vitruvian", "launcher.vitruvian"),
-        WALLSTREET("Wall Street Bets", "launcher.wallstreet");
+        VOXELS("Voxels", "launcher.pixels"),
+        WALL_STREET("Wall Street", "launcher.wallstreet"),
+        WINTER("Winter", "launcher.brrr");
 
         public static List<RedditIcon> getAvailableIcons(Context context) {
             return Arrays.stream(values())
@@ -177,7 +177,7 @@ public class CustomAppIconPatch {
                 ? str("morphe_app_icon_unknown")
                 : currentComponent.label);
         preference.setOnPreferenceClickListener(pref -> {
-            CustomAppIconPatch.showIconPicker(context);
+            AppIconPatch.showIconPicker(context);
             return true;
         });
         return preference;

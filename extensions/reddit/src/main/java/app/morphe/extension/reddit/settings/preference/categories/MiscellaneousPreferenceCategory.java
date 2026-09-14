@@ -13,7 +13,7 @@ import android.content.Context;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
-import app.morphe.extension.reddit.patches.CustomAppIconPatch;
+import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
@@ -36,7 +36,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
     @Override
     public boolean getSettingsStatus() {
-        return CustomAppIconPatch.isPatchIncluded() ||
+        return AppIconPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded();
@@ -57,8 +57,8 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
 
         addPreference(new SortedListPreference(context, BaseSettings.MORPHE_LANGUAGE));
 
-        if (CustomAppIconPatch.isPatchIncluded()) {
-            addPreference(CustomAppIconPatch.getIconPreference(context));
+        if (AppIconPatch.isPatchIncluded()) {
+            addPreference(AppIconPatch.getIconPreference(context));
         }
         if (OpenLinksDirectlyPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
