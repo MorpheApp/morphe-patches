@@ -33,7 +33,6 @@ import app.morphe.util.copyResources
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.registersUsed
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -316,34 +315,25 @@ internal fun spoofVideoStreamsPatch(
         // Requesting streams intended for other platforms with a body tuned for Android could be the cause of 400 errors.
         // A proper fix may include modifying the request body to match the platforms expected body.
 
-        // Media3's DataSpec constructor gained an extra field in YouTube 21.37,
-        // shifting the httpMethod/httpBody field letters. Detect which shape is present.
-        val (dataSourceFingerprint, httpMethodField, httpBodyField) =
-            if (BuildMediaDataSourceFingerprint.matchOrNull() != null) {
-                Triple(BuildMediaDataSourceFingerprint, "c", "d")
-            } else {
-                Triple(BuildMediaDataSourceFingerprintV2, "d", "e")
-            }
+        BuildMediaDataSourceFingerprint.let {
+            val urlField = it.instructionMatches[0].getFieldAccessed()
+            val httpMethodField = it.instructionMatches[1].getFieldAccessed()
+            val httpBodyField = it.instructionMatches[2].getFieldAccessed()
+            val index = it.instructionMatches.last().index
 
-        dataSourceFingerprint.method.apply {
-            val targetIndex =
-                indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
-
-            // Instructions are added just before the method returns,
-            // so there's no concern of clobbering in-use registers.
-            addInstructions(
-                targetIndex,
+            it.method.addInstructions(
+                index,
                 """
                     # Field a: Stream uri.
                     # Field $httpMethodField: Http method.
                     # Field $httpBodyField: Post data.
                     move-object v0, p0  # method has over 15 registers and must copy p0 to a lower register.
-                    iget-object v1, v0, $definingClass->a:Landroid/net/Uri;
-                    iget v2, v0, $definingClass->$httpMethodField:I
-                    iget-object v3, v0, $definingClass->$httpBodyField:[B
+                    iget-object v1, v0, $urlField
+                    iget v2, v0, $httpMethodField
+                    iget-object v3, v0, $httpBodyField
                     invoke-static { v1, v2, v3 }, $EXTENSION_CLASS->removeVideoPlaybackPostBody(Landroid/net/Uri;I[B)[B
                     move-result-object v1
-                    iput-object v1, v0, $definingClass->$httpBodyField:[B
+                    iput-object v1, v0, $httpBodyField
                 """
             )
         }
