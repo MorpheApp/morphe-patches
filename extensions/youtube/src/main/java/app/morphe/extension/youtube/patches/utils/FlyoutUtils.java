@@ -100,21 +100,6 @@ public final class FlyoutUtils {
             getAsciiBytes("com.google.android.apps.youtube.kids"),
             getAsciiBytes("https://www.youtube.com/myfamily/#mf-compare")
     );
-    private static final List<byte[]> VIDEO_ELEMENTS_BYTES = List.of(
-            getAsciiBytes("compact_playlist.e"),
-            getAsciiBytes("compact_video.e"),
-            getAsciiBytes("grid_video.e"),
-            getAsciiBytes("grid_video_wrapper.e"),
-            getAsciiBytes("horizontal_shelf.e"),
-            getAsciiBytes("rich_grid_row.e"),
-            getAsciiBytes("shorts_pivot_item.e"),
-            getAsciiBytes("shorts_shelf.e"),
-            getAsciiBytes("shorts_video_cell.e"),
-            getAsciiBytes("swipeable_row.e"),
-            getAsciiBytes("video_lockup_with_attachment.e"),
-            getAsciiBytes("video_card.e")
-    );
-
     private static final List<byte[]> SHORTS_VIDEO_ELEMENTS_BYTES = List.of(
             getAsciiBytes("shorts_pivot_item.e"),
             getAsciiBytes("shorts_shelf.e"),
@@ -208,10 +193,6 @@ public final class FlyoutUtils {
 
     public static String getFlyoutVideoId() {
         return flyoutVideoId;
-    }
-
-    public static boolean isFlyoutShort() {
-        return flyoutIsShort;
     }
 
     public static String getFlyoutPlaylistId() {
@@ -378,8 +359,14 @@ public final class FlyoutUtils {
         customItemTextRefs.clear();
 
         // Ensure to show the following buttons only for specific flyout menus.
-        String currentVideoId;
-        if (!getFlyoutVideoId().isEmpty()) {
+        final boolean shortsPlayerFlyout =
+                ShortsPlayerState.isOpen()
+                        && PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible();
+
+        final String currentVideoId;
+        if (shortsPlayerFlyout) {
+            currentVideoId = VideoInformation.getVideoId();
+        } else if (!getFlyoutVideoId().isEmpty()) {
             currentVideoId = getFlyoutVideoId();
         } else if (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()) {
             currentVideoId = VideoInformation.getVideoId();
@@ -387,13 +374,8 @@ public final class FlyoutUtils {
             currentVideoId = "";
         }
 
-        final String shortsPlayerVideoId;
-        if (ShortsPlayerState.isOpen()
-                && PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()) {
-            shortsPlayerVideoId = VideoInformation.getVideoId();
-        } else {
-            shortsPlayerVideoId = "";
-        }
+        final String shortsPlayerVideoId =
+                shortsPlayerFlyout ? currentVideoId : "";
 
         if (!currentVideoId.isEmpty()) {
             if (flyoutButtonProvider != null) {
@@ -420,7 +402,9 @@ public final class FlyoutUtils {
                 );
             }
 
-            if (flyoutIsShort && Settings.SAVE_SHORTS_FROM_FEED.get()) {
+            if (!shortsPlayerFlyout
+                    && flyoutIsShort
+                    && Settings.SAVE_SHORTS_FROM_FEED.get()) {
                 nextButtonIndex = addFlyoutButton(
                         flyoutPanel,
                         saveToWatchLaterDrawable,
@@ -460,7 +444,7 @@ public final class FlyoutUtils {
                 );
             }
 
-            if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+            if (!flyoutIsShort && Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
                 nextButtonIndex = addWhitelistButton(
                         flyoutPanel,
                         WhitelistType.ADS,
@@ -469,7 +453,7 @@ public final class FlyoutUtils {
                 );
             }
 
-            if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+            if (!flyoutIsShort && Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
                 nextButtonIndex = addWhitelistButton(
                         flyoutPanel,
                         WhitelistType.PLAYBACK_SPEED,
@@ -917,7 +901,7 @@ public final class FlyoutUtils {
             }
         }
 
-        if (isFeedFlyout && !byteIndexesOf(flyoutBuffer, VIDEO_ELEMENTS_BYTES).isEmpty()) {
+        if (isFeedFlyout) {
             flyoutIsShort = !byteIndexesOf(
                     flyoutBuffer,
                     SHORTS_VIDEO_ELEMENTS_BYTES

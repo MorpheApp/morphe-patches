@@ -47,7 +47,6 @@ public final class AddToQueuePatch {
                 public int addButtons(Object flyoutPanel, int index, String videoId) {
                     if (!Settings.QUEUE_ADD_FLYOUT_MENU.get()
                             || !FlyoutUtils.getFlyoutPlaylistId().isEmpty()
-                            || FlyoutUtils.isFlyoutShort()
                             || ShortsPlayerState.isOpen()
                             || videoId.isEmpty()) {
                         return index;
