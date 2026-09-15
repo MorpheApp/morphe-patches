@@ -41,6 +41,7 @@ import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest;
+import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResult;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -121,7 +122,7 @@ public final class ChannelSearchPatch {
             Logger.printDebug(() -> "Searching channel " + channelId + " for: " + query);
 
             Utils.runOnBackgroundThread(() -> {
-                List<ChannelSearchRequest.Result> results = ChannelSearchRequest
+                List<ChannelSearchResult> results = ChannelSearchRequest
                         .fetchRequestIfNeeded(channelId, query)
                         .getResults();
 
@@ -145,7 +146,7 @@ public final class ChannelSearchPatch {
     }
 
     private static void showResults(Activity activity, String query,
-                                    List<ChannelSearchRequest.Result> results) {
+                                    List<ChannelSearchRequest.ChannelSearchResult> results) {
         try {
             hideKeyboard(activity);
 
@@ -163,7 +164,7 @@ public final class ChannelSearchPatch {
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
                     .createSlideDialog(activity, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
 
-            for (ChannelSearchRequest.Result result : results) {
+            for (ChannelSearchRequest.ChannelSearchResult result : results) {
                 View row = createResultRow(activity, result);
                 row.setOnClickListener(view -> {
                     dialog.dismiss();
@@ -195,7 +196,7 @@ public final class ChannelSearchPatch {
         return header;
     }
 
-    private static View createResultRow(Activity activity, ChannelSearchRequest.Result result) {
+    private static View createResultRow(Activity activity, ChannelSearchRequest.ChannelSearchResult result) {
         LinearLayout row = createResultRowContainer(activity);
         row.addView(createResultThumbnail(activity, result));
         row.addView(createResultText(activity, result));
@@ -219,7 +220,7 @@ public final class ChannelSearchPatch {
         return row;
     }
 
-    private static View createResultThumbnail(Activity activity, ChannelSearchRequest.Result result) {
+    private static View createResultThumbnail(Activity activity, ChannelSearchRequest.ChannelSearchResult result) {
         ImageView thumbnail = new ImageView(activity);
         thumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
         thumbnail.setClipToOutline(true);
@@ -239,7 +240,7 @@ public final class ChannelSearchPatch {
         return thumbnail;
     }
 
-    private static View createResultText(Activity activity, ChannelSearchRequest.Result result) {
+    private static View createResultText(Activity activity, ChannelSearchRequest.ChannelSearchResult result) {
         LinearLayout text = new LinearLayout(activity);
         text.setOrientation(LinearLayout.VERTICAL);
         text.setLayoutParams(new LinearLayout.LayoutParams(

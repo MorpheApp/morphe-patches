@@ -7,7 +7,6 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -31,18 +30,32 @@ import app.morphe.extension.shared.requests.Requester;
 
 public final class ChannelSearchRequest {
 
+    public static final class ChannelSearchResult {
+        public final String videoId;
+        public final String title;
+        public final String metadata;
+        public final String thumbnailUrl;
+
+        private ChannelSearchResult(String videoId, String title, String metadata, String thumbnailUrl) {
+            this.videoId = videoId;
+            this.title = title;
+            this.metadata = metadata;
+            this.thumbnailUrl = thumbnailUrl;
+        }
+    }
+
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 15 * 1000;
 
     private static final Map<String, ChannelSearchRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(10));
 
-    private final Future<List<Result>> future;
+    private final Future<List<ChannelSearchResult>> future;
 
     private ChannelSearchRequest(String channelId, String query) {
         this.future = Utils.submitOnBackgroundThread(() -> fetch(channelId, query));
     }
 
-    public static ChannelSearchRequest fetchRequestIfNeeded(@NonNull String channelId, @NonNull String query) {
+    public static ChannelSearchRequest fetchRequestIfNeeded(String channelId, String query) {
         return cache.computeIfAbsent(
                 channelId + "\n" + query,
                 key -> new ChannelSearchRequest(channelId, query)
@@ -53,7 +66,7 @@ public final class ChannelSearchRequest {
      * Null if the request failed. Empty if the channel has nothing matching the query.
      */
     @Nullable
-    public List<Result> getResults() {
+    public List<ChannelSearchResult> getResults() {
         try {
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
@@ -68,7 +81,7 @@ public final class ChannelSearchRequest {
     }
 
     @Nullable
-    private static List<Result> fetch(String channelId, String query) {
+    private static List<ChannelSearchResult> fetch(String channelId, String query) {
         Utils.verifyOffMainThread();
 
         final long startTime = System.currentTimeMillis();
@@ -97,9 +110,8 @@ public final class ChannelSearchRequest {
         return null;
     }
 
-    @NonNull
-    private static List<Result> parseResponse(JSONObject json) {
-        List<Result> results = new ArrayList<>();
+    private static List<ChannelSearchResult> parseResponse(JSONObject json) {
+        List<ChannelSearchResult> results = new ArrayList<>();
 
         try {
             JSONArray tabs = json
@@ -132,7 +144,7 @@ public final class ChannelSearchRequest {
                     for (int k = 0, itemsLength = items.length(); k < itemsLength; k++) {
                         JSONObject video = items.getJSONObject(k).optJSONObject("compactVideoRenderer");
                         if (video != null) {
-                            Result result = parseVideo(video);
+                            ChannelSearchResult result = parseVideo(video);
                             if (result != null) {
                                 results.add(result);
                             }
@@ -148,7 +160,7 @@ public final class ChannelSearchRequest {
     }
 
     @Nullable
-    private static Result parseVideo(JSONObject video) {
+    private static ChannelSearchResult parseVideo(JSONObject video) {
         String videoId = video.optString("videoId");
         String title = parseText(video.optJSONObject("title"));
         if (videoId.isEmpty() || title.isEmpty()) {
@@ -160,13 +172,14 @@ public final class ChannelSearchRequest {
         appendMetadata(metadata, parseText(video.optJSONObject("shortViewCountText")));
         appendMetadata(metadata, parseText(video.optJSONObject("publishedTimeText")));
 
-        return new Result(videoId, title, metadata.toString(), parseThumbnail(video));
+        return new ChannelSearchResult(videoId, title, metadata.toString(), parseThumbnail(video));
     }
 
     private static void appendMetadata(StringBuilder metadata, String value) {
         if (value.isEmpty()) {
             return;
         }
+        //noinspection SizeReplaceableByIsEmpty
         if (metadata.length() != 0) {
             metadata.append("  •  ");
         }
@@ -176,7 +189,6 @@ public final class ChannelSearchRequest {
     /**
      * Text is either a plain string or a list of runs, depending on the field.
      */
-    @NonNull
     private static String parseText(@Nullable JSONObject text) {
         if (text == null) {
             return "";
@@ -205,7 +217,6 @@ public final class ChannelSearchRequest {
     /**
      * Widest thumbnail that is always present, so rows do not load a needlessly large image.
      */
-    @NonNull
     private static String parseThumbnail(JSONObject video) {
         JSONObject thumbnail = video.optJSONObject("thumbnail");
         if (thumbnail == null) {
@@ -225,19 +236,5 @@ public final class ChannelSearchRequest {
             }
         }
         return best;
-    }
-
-    public static final class Result {
-        public final String videoId;
-        public final String title;
-        public final String metadata;
-        public final String thumbnailUrl;
-
-        private Result(String videoId, String title, String metadata, String thumbnailUrl) {
-            this.videoId = videoId;
-            this.title = title;
-            this.metadata = metadata;
-            this.thumbnailUrl = thumbnailUrl;
-        }
     }
 }

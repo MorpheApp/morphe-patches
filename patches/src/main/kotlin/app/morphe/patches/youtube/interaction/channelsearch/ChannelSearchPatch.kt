@@ -18,14 +18,10 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
-import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
 
 @Suppress("unused")
 val channelSearchPatch = bytecodePatch(
@@ -37,7 +33,7 @@ val channelSearchPatch = bytecodePatch(
 
     dependsOn(
         addResourcesPatch,
-        settingsPatch,
+        settingsPatch
     )
 
     execute {
@@ -45,7 +41,7 @@ val channelSearchPatch = bytecodePatch(
             SwitchPreference("morphe_channel_search", summary = true)
         )
 
-        // Activity is used as the context of the results dialog.
+        // Activity is used as the context of the result dialog.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
@@ -53,38 +49,30 @@ val channelSearchPatch = bytecodePatch(
         )
 
         // A channel page browses by its channel id, which is what the search is scoped to.
-        val browseIdField = (if (browseIdTraceFingerprint.methodOrNull != null)
-            browseIdTraceFingerprint.instructionMatches[1]
-        else
-            browseIdTraceLegacyFingerprint.instructionMatches[0])
-            .getInstruction<ReferenceInstruction>().reference as FieldReference
+        val browseIdField = BrowseIdTraceFingerprint.instructionMatches.last().getFieldAccessed()
 
         Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf("Ljava/lang/String;"),
             filters = listOf(
-                fieldAccess(reference = browseIdField, opcode = Opcode.IPUT_OBJECT)
+                fieldAccess(opcode = Opcode.IPUT_OBJECT, reference = browseIdField)
             )
         ).method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V"
         )
 
-        (searchSubmitFingerprint.methodOrNull ?: searchSubmitLegacyFingerprint.method).apply {
-            val freeRegister = findFreeRegister(0)
-
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { p1 }, $EXTENSION_CLASS->searchInChannel(Ljava/lang/String;)Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :search_all_of_youtube
-                    return-void
-                    :search_all_of_youtube
-                    nop
-                """
-            )
-        }
+        SearchSubmitFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->searchInChannel(Ljava/lang/String;)Z
+                move-result v0
+                if-eqz v0, :search_all_of_youtube
+                return-void
+                :search_all_of_youtube
+                nop
+            """
+        )
     }
 }
