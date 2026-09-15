@@ -382,6 +382,11 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_channel_whitelist_channel_removed">Kanal beyaz listeden kaldırıldı</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Kanalda ara</string>
+  <string name="morphe_channel_search_summary">Bir kanal açıkken yapılan aramalar yalnızca o kanalı kapsar</string>
+  <string name="morphe_channel_search_results_title">Arama: %s</string>
+  <string name="morphe_channel_search_no_results">Bu kanalda sonuç bulunamadı</string>
+  <string name="morphe_channel_search_failed">Bu kanalda arama yapılamadı</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Bağlantı panoya kopyalandı</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Zaman damgasıyla birlikte bağlantı panoya kopyalandı</string>
