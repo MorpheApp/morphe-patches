@@ -65,6 +65,15 @@ Staðfestu að pakkanafnið er rétt og að forritið er uppsett"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe spila svartur</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Sérsniðin</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Þetta breytir tákninu sem birtist í forritaræsinum þínum.
+
+Þessi stilling mun ekki breyta tákninu í neinum af eftirfarandi tilvikum:
+• forritalistanum í kerfisstillingum tækisins
+• ákveðnum push-tilkynningum
+• forritavalinu 'Opna með'
+• Android Auto-tákninu
+
+Til að breyta tákninu alls staðar skaltu keyra plástra aftur og breyta plástravalkostinum 'Forritstákn'."</string>
   <string name="morphe_custom_branding_notification_icon_title">Tákn tilkynninga</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Passa við tákn app</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe spila</string>

@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.layout.playlistautoplay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -30,7 +29,6 @@ val disablePlaylistAutoplayPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        resourceMappingPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

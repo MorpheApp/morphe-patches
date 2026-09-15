@@ -139,10 +139,10 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_disable_dislike_redirection_title">Desativar redirecionamento de não gostei</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Impede a passagem para a próxima faixa quando o botão de não gostei é pressionado</string>
   <!-- layout.buttons.hideButtonsPatch -->
-  <string name="morphe_music_hide_cast_button_title">Ocultar botão de transmissão</string>
-  <string name="morphe_music_hide_history_button_title">Ocultar botão de histórico</string>
-  <string name="morphe_music_hide_notification_button_title">Ocultar botão de notificação</string>
-  <string name="morphe_music_hide_search_button_title">Ocultar botão de pesquisa</string>
+  <string name="morphe_music_hide_cast_button_title">Ocultar botão Transmitir</string>
+  <string name="morphe_music_hide_history_button_title">Ocultar botão Histórico</string>
+  <string name="morphe_music_hide_notification_button_title">Ocultar botão Notificação</string>
+  <string name="morphe_music_hide_search_button_title">Ocultar botão Pesquisar</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Botões de ação</string>
   <string name="morphe_music_action_buttons_screen_summary">Escolha quais botões de ação aparecem abaixo do player</string>
@@ -150,7 +150,7 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_hide_like_dislike_button_title">Ocultar botão de Gostei e Não gostei</string>
   <string name="morphe_music_hide_comments_button_title">Ocultar botão Comentários</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_live_chat_replay_button_title">Ocultar botão \"Replay do chat ao vivo\"</string>
+  <string name="morphe_music_hide_live_chat_replay_button_title">Ocultar botão \'Replay do chat ao vivo\'</string>
   <!-- 'Lyrics' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_lyrics_button_title">Ocultar botão Letras</string>
   <!-- 'Share' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -160,7 +160,7 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <!-- 'Download' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_download_button_title">Ocultar botão Baixar</string>
   <!-- 'Start radio' should be translated using the same localized wording YouTube Music displays for the button. -->
-  <string name="morphe_music_hide_radio_button_title">Ocultar o botão \"Iniciar rádio\"</string>
+  <string name="morphe_music_hide_radio_button_title">Ocultar botão \'Iniciar rádio\'</string>
   <!-- flyoutmenu.components.hideFlyoutMenuComponentsPatch -->
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu suspenso</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Escolha quais componentes aparecem nos menus suspostos do player e da fila</string>
@@ -193,7 +193,7 @@ YouTube Music 8.x — o Crossfade funciona apenas no YouTube Music 9.x ou mais r
   <string name="morphe_music_hide_flyout_menu_share_title">Ocultar menu Compartilhar</string>
   <string name="morphe_music_hide_flyout_menu_shuffle_play_title">Ocultar menu \'Reprodução aleatória\'</string>
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Ocultar menu \'Temporizador de suspensão\'</string>
-  <string name="morphe_music_hide_flyout_menu_start_radio_title">Ocultar o botão \"Iniciar rádio\"</string>
+  <string name="morphe_music_hide_flyout_menu_start_radio_title">Ocultar botão \'Iniciar rádio\'</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Ocultar menu \'Estatísticas para nerds\'</string>
   <string name="morphe_music_hide_flyout_menu_subscribe_title">Ocultar menu Inscrever-se</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Ocultar menu \'Remover do discador rápido\'</string>

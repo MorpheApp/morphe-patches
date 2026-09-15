@@ -70,6 +70,15 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_custom_branding_icon_entry_6">Morphe play black</string>
     <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
     <string name="morphe_custom_branding_icon_entry_7">Custom</string>
+    <string name="morphe_custom_branding_icon_user_dialog_message">"This changes the icon shown in your app launcher.
+
+This setting will not change the icon in any of these locations:
+• Device system settings app list
+• Certain push notifications
+• 'Open with' app picker
+• Android Auto icon
+
+To change the icon everywhere, patch again and change the 'App icon' patch option"</string>
     <string name="morphe_custom_branding_notification_icon_title">Notification icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_1">Match app icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_2" translatable="false">Morphe</string>

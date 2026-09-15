@@ -65,6 +65,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe Spielschwarz</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Benutzerdefiniert</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Dies ändert das Symbol, das in deinem App-Launcher angezeigt wird.
+
+Diese Einstellung ändert das Symbol an keiner der folgenden Stellen:
+• App-Liste in den Systemeinstellungen des Geräts
+• Bestimmte Push-Benachrichtigungen
+• App-Auswahl 'Öffnen mit'
+• Android-Auto-Symbol
+
+Um das Symbol überall zu ändern, patche erneut und ändere die Patch-Option 'App-Symbol'."</string>
   <string name="morphe_custom_branding_notification_icon_title">Benachrichtigungsicon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">App-Symbol ändern</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Spiel</string>

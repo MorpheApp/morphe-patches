@@ -276,8 +276,7 @@ public final class MiniplayerPatch {
         @Override
         public boolean isAvailable() {
             MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
-            return type == MODERN_1 || type == MODERN_2 || type == MODERN_3 || type == MODERN_4
-                    || type == MINIMAL_BAR || type == MINIMAL_BAR_2;
+            return type == MODERN_1 || type == MODERN_2 || type == MODERN_3 || type == MODERN_4;
         }
 
         @Override

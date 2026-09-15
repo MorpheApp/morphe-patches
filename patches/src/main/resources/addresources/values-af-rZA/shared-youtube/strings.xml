@@ -65,6 +65,15 @@ Verifieer dat die pakketnaam korrek is en die app geïnstalleer is"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe speel swart</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Pasgemaak</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Dit verander die ikoon wat in jou toepassingslanseerder gewys word.
+
+Hierdie instelling sal nie die ikoon in enige van hierdie plekke verander nie:
+• Toestelstelselinstellings se toepassingslys
+• Sekere stootkennisgewings
+• 'Maak oop met'-toepassingskieser
+• Android Auto-ikoon
+
+Om die ikoon oral te verander, pas die patch weer toe en verander die patchopsie 'Toepassingsikoon'.##key:morphe_custom_branding_icon_user_dialog_message##context:morphe_custom_branding_icon_user_dialog_message##maxLength:null"</string>
   <string name="morphe_custom_branding_notification_icon_title">Kennisgewingikoon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Pas app-ikoon</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe speel</string>

@@ -22,7 +22,6 @@ import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesYouTube
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
@@ -82,7 +81,6 @@ private val preferences = mutableSetOf<BasePreference>()
 
 private val settingsResourcePatch = resourcePatch {
     dependsOn(
-        resourceMappingPatch,
         settingsPatch(
             rootPreferences = listOf(
                 // The Cairo layout shows the Morphe name as the category of the entry,

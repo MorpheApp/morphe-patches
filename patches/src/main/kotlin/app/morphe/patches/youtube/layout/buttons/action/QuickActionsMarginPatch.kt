@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.layout.buttons.action
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -22,7 +21,6 @@ internal val quickActionsMarginPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        resourceMappingPatch
     )
 
     execute {

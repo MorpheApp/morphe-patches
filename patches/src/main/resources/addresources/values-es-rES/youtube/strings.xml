@@ -381,6 +381,12 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_channel_whitelist_channel_added">Canal añadido a la lista de excepción</string>
   <string name="morphe_channel_whitelist_channel_removed">Canal eliminado de la lista de excepción</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Buscar en el canal</string>
+  <string name="morphe_channel_search_summary">La búsqueda mientras un canal está abierto se limita a ese canal</string>
+  <string name="morphe_channel_search_results_title">Búsqueda: %s</string>
+  <string name="morphe_channel_search_no_results">No se encontró nada en este canal</string>
+  <string name="morphe_channel_search_failed">No se pudo buscar en este canal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Enlace copiado al portapapeles</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Enlace con marca de tiempo copiado al portapapeles</string>

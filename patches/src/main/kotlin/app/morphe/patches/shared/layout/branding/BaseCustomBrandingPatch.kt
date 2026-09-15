@@ -25,7 +25,6 @@ import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -196,7 +195,6 @@ internal fun baseCustomBrandingPatch(
     block()
 
     dependsOn(
-        resourceMappingPatch,
         fixRecycledBitmapPatch,
         bytecodePatch {
             execute {

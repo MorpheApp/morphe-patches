@@ -12,8 +12,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-
-import com.facebook.litho.ComponentHost;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
@@ -51,20 +52,49 @@ public final class OpenChannelOfLiveAvatarPatch {
                 if (playbackStartDescriptorMap.containsKey(VIDEO_THUMBNAIL_VIEW_KEY)) {
                     return false;
                 }
-                // Acquire the LithoView that opened the video (Live ring or Thumbnail).
-                if (!(playbackStartDescriptorMap.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost)) {
+                // Acquire the View that open the video (Live ring or Thumbnail).
+                if (!(playbackStartDescriptorMap.get(ELEMENTS_SENDER_VIEW) instanceof View senderView)) {
                     return false;
                 }
-                // If the video was opened via a Live ring, its parent element will be instantiated from ComponentHost.
-                // In this case, the code will continue to open the channel instead of the current live video.
-                if (!(componentHost.getParent() instanceof ComponentHost)) {
+                // Verifies that a parent is of type Litho, ensuring that its description is not null.
+                ViewParent parent = senderView.getParent();
+                int parentCount = 0;
+                boolean isLiveAvatar = false;
+                while (parent != null && !parent.toString().contains("results")) {
+                    parentCount++;
+
+                    ViewParent loggingParent = parent;
+                    final int loggingParentCount = parentCount;
+                    Logger.printDebug(() -> "Live Avatar senderView parent " +
+                            loggingParentCount +
+                            ": " +
+                            loggingParent
+                    );
+
+                    if (parent instanceof ViewGroup viewGroupParent) {
+                        CharSequence description = viewGroupParent.getContentDescription();
+                        boolean descriptionNull = description == null;
+
+                        Logger.printDebug(() -> "Live Avatar viewGroupParent description is null: " +
+                                descriptionNull
+                        );
+
+                        if (!descriptionNull) {
+                            isLiveAvatar = true;
+
+                            break;
+                        }
+                    }
+                    parent = parent.getParent();
+                }
+                if (!isLiveAvatar) {
                     return false;
                 }
                 // The Live ring object takes up a small portion of the screen and an equivalent
                 // height and width, compared to thumbnails or the header channel avatar.
                 // This check will avoid any false positives.
-                final int width = componentHost.getWidth();
-                final int height = componentHost.getHeight();
+                final int width = senderView.getWidth();
+                final int height = senderView.getHeight();
                 // The getDisplayMetrics() properties must be retrieved dynamically to avoid false positives when
                 // switching between the inner and outer screens (or vice versa) on foldable devices.
                 DisplayMetrics currentMetrics = Dim.getMetrics();

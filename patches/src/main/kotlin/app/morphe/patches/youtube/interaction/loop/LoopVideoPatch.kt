@@ -15,7 +15,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -44,7 +43,6 @@ val loopVideoPatch = bytecodePatch(
         sharedExtensionPatch,
         loopVideoButtonPatch,
         videoInformationPatch,
-        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

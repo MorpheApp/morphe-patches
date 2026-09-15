@@ -12,7 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_28_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
@@ -100,7 +99,6 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        resourceMappingPatch,
         miniplayerButtonsResourcePatch
     )
 

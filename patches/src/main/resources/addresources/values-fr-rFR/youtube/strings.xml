@@ -381,6 +381,12 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_channel_whitelist_channel_added">Chaîne ajoutée à la liste blanche</string>
   <string name="morphe_channel_whitelist_channel_removed">Chaîne retirée de la liste blanche</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Rechercher dans la chaîne</string>
+  <string name="morphe_channel_search_summary">Lorsqu\'une recherche est effectuée alors qu\'une chaîne est ouverte les résultats concernent uniquement cette chaîne</string>
+  <string name="morphe_channel_search_results_title">Recherche : %s</string>
+  <string name="morphe_channel_search_no_results">Aucun résultat trouvé sur cette chaîne</string>
+  <string name="morphe_channel_search_failed">Impossible d\'effectuer une recherche sur cette chaîne</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lien copié dans le presse-papiers</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Lien avec horodatage copié dans le presse-papiers</string>
@@ -1037,7 +1043,7 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <string name="morphe_miniplayer_type_title">Type de mini-lecteur</string>
   <string name="morphe_miniplayer_type_entry_0">Désactivé</string>
   <string name="morphe_miniplayer_type_entry_1">Par défaut</string>
-  <string name="morphe_miniplayer_type_entry_2">Minimale</string>
+  <string name="morphe_miniplayer_type_entry_2">Minimaliste</string>
   <string name="morphe_miniplayer_type_entry_3">Minimaliste 2</string>
   <string name="morphe_miniplayer_type_entry_4">Tablette</string>
   <string name="morphe_miniplayer_type_entry_5">Moderne 1</string>

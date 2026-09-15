@@ -15,8 +15,8 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
 import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags

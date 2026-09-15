@@ -65,6 +65,15 @@ Verifica que el nombre del paquete sea correcto y que la aplicación esté insta
   <string name="morphe_custom_branding_icon_entry_6">Morphe play negro</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizado</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Esto cambia el icono que se muestra en el lanzador de aplicaciones.
+
+Este ajuste no cambiará el icono en ninguna de estas ubicaciones:
+• Lista de aplicaciones de los ajustes del sistema del dispositivo
+• Ciertas notificaciones push
+• Selector de aplicaciones 'Abrir con'
+• Icono de Android Auto
+
+Para cambiar el icono en todas partes, vuelve a parchear y cambia la opción de parches 'Icono de la aplicación'"</string>
   <string name="morphe_custom_branding_notification_icon_title">Icono de notificación</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Coincidir con el icono de la aplicación</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>

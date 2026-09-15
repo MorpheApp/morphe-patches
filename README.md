@@ -35,14 +35,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.43.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.43.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;147 patches total
+> **[v1.44.0-dev.1](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.44.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;148 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;82 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;83 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.36.45 | 🧪&nbsp;21.35.442 | 🧪&nbsp;21.28.208 | 21.13.164 | 21.07.247 | 20.31.42 | 20.21.37 |
+| 🧪&nbsp;21.37.42 | 🧪&nbsp;21.36.45 | 🧪&nbsp;21.28.208 | 21.13.164 | 21.07.247 | 20.31.42 | 20.21.37 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -57,6 +57,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Change form factor](#change-form-factor) | Adds an option to change the UI appearance to a phone, tablet, or automotive device. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
 | [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
+| [Channel search](#channel-search) | Adds an option to search inside the channel that is currently open instead of searching all of YouTube. |  |
 | [Check watch history domain name resolution](#check-watch-history-domain-name-resolution) | Checks if the device DNS server is preventing user watch history from being saved. |  |
 | [Copy video link](#copy-video-link) | Adds options to display buttons in the video player to copy video links. |  |
 | [Custom branding](#custom-branding) | Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings. | • App name<br>• Custom icon<br>• App icon |

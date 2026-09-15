@@ -52,6 +52,8 @@ import kotlin.Pair;
 
 @SuppressWarnings({"unused", "StaticFieldLeak"})
 public class PlaylistPatch {
+    private static final int PLAYLIST_LIST_MAX_HEIGHT_PERCENT = 50;
+
     private static final String checkFailedAuth = str("morphe_queue_manager_check_failed_auth");
     private static final String checkFailedPlaylistId = str("morphe_queue_manager_check_failed_playlist_id");
     private static final String checkFailedQueue = str("morphe_queue_manager_check_failed_queue");
@@ -306,14 +308,8 @@ public class PlaylistPatch {
                         listContainer.addView(itemLayout);
                     }
 
-                    ScrollView scrollView = new ScrollView(context) {
-                        @Override
-                        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-                            heightMeasureSpec = MeasureSpec.makeMeasureSpec(Dim.pctHeight(50), MeasureSpec.AT_MOST);
-                            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-                        }
-                    };
-                    scrollView.setVerticalScrollBarEnabled(false);
+                    ScrollView scrollView = SheetBottomDialog.createCappedScrollView(
+                            context, PLAYLIST_LIST_MAX_HEIGHT_PERCENT);
                     scrollView.addView(listContainer);
                     mainLayout.addView(scrollView);
 

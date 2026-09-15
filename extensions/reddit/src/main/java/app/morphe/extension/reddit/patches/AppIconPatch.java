@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -162,7 +163,8 @@ public class AppIconPatch {
         }
     }
 
-    private static final String PACKAGE = "com.reddit.frontpage";
+    // Cannot use hardcoded package name or icon picker is broken with cloned apps.
+    private static final String PACKAGE = Utils.getContext().getPackageName();
 
     public static boolean isPatchIncluded() {
         return true;

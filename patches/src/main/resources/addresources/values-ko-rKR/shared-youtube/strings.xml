@@ -65,6 +65,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe Play Black</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">사용자 정의</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"이 설정은 앱 런처에 표시되는 아이콘을 변경합니다
+
+하지만 다음 위치에 표시되는 아이콘은 변경되지 않습니다:
+• 기기의 시스템 설정 앱 목록
+• 일부 푸시 알림
+• ‘다음으로 열기’ 앱 선택기
+• Android Auto 아이콘
+
+모든 위치의 아이콘을 변경하려면 다시 패치한 후 ‘App icon’ 패치 옵션을 변경하세요"</string>
   <string name="morphe_custom_branding_notification_icon_title">알림 아이콘</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">앱 아이콘과 맞추기</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>

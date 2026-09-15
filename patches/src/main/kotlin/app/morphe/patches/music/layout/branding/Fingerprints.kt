@@ -2,8 +2,8 @@ package app.morphe.patches.music.layout.branding
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patches.music.shared.YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 
 internal object CairoSplashAnimationConfigFingerprint : Fingerprint(
     definingClass = YOUTUBE_MUSIC_MAIN_ACTIVITY_CLASS_TYPE,

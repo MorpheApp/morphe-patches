@@ -11,6 +11,7 @@
  * https://gitlab.com/ReVanced/revanced-patches/-/commit/584b00fd87f83504b8886e4f3f674f8c3943cd91
  * https://gitlab.com/ReVanced/revanced-patches/-/commit/14a8f4fb96f5e2a4bc264a54115e0870b1a1ffa8
  * https://github.com/MorpheApp/morphe-patches/commit/f5371ca998c019609c2b5558b3408ab1fec065c8
+ * https://github.com/MorpheApp/morphe-patches/pull/2964
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -147,6 +148,39 @@ public class SheetBottomDialog {
         mainLayout.addView(handleContainer);
 
         return mainLayout;
+    }
+
+    /**
+     * Share of the screen height a scrollable dialog content takes up at most.
+     */
+    public static final int DEFAULT_MAX_HEIGHT_PERCENT = 75;
+
+    /**
+     * @see #createCappedScrollView(Context, int)
+     */
+    public static ScrollView createCappedScrollView(@NonNull Context context) {
+        return createCappedScrollView(context, DEFAULT_MAX_HEIGHT_PERCENT);
+    }
+
+    /**
+     * Creates a {@link ScrollView} that never grows past a share of the screen, so that a long
+     * list still leaves the dialog usable, including in landscape.
+     *
+     * @param context          The context used to create the view.
+     * @param maxHeightPercent Share of the screen height the content may take up. Pass one only
+     *                         when this dialog has a reason to differ from the default.
+     */
+    public static ScrollView createCappedScrollView(@NonNull Context context, int maxHeightPercent) {
+        ScrollView scrollView = new ScrollView(context) {
+            @Override
+            protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(
+                        Dim.pctHeight(maxHeightPercent), MeasureSpec.AT_MOST));
+            }
+        };
+        scrollView.setVerticalScrollBarEnabled(false);
+
+        return scrollView;
     }
 
     /**

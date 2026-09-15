@@ -1,3 +1,35 @@
+## [1.44.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.43.1-dev.2...v1.44.0-dev.1) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* **YouTube - GmsCore support:** "Play Protect certification" screen is shown on startup ([#2977](https://github.com/MorpheApp/morphe-patches/issues/2977)) ([e250326](https://github.com/MorpheApp/morphe-patches/commit/e25032649908890ae848ee012befbb266deb08e8))
+
+### ✨ New Features
+
+* **Custom branding:** Warn that the app icon setting only changes the launcher icon ([8607c76](https://github.com/MorpheApp/morphe-patches/commit/8607c76d33e931fc0931de8e2a52d5ac9b4d3dc6))
+* **YouTube:** Add `Channel search` patch ([#2964](https://github.com/MorpheApp/morphe-patches/issues/2964)) ([acd856c](https://github.com/MorpheApp/morphe-patches/commit/acd856cc27dde7f33042ddced67c8ee6a8c31e30))
+
+## [1.43.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.43.1-dev.1...v1.43.1-dev.2) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Improved type 2 bar UI ([299af68](https://github.com/MorpheApp/morphe-patches/commit/299af68d5e90326a76febbaa0a28bbe7b7600986))
+* **YouTube - Miniplayer:** Default size setting is not grayed out with modern minimal ([aa9bc8e](https://github.com/MorpheApp/morphe-patches/commit/aa9bc8e6b51f81b9dc497f006372efb0a13f798b))
+* **YouTube:** Deprecated componentHost extension ([c42f07d](https://github.com/MorpheApp/morphe-patches/commit/c42f07df385805aa22744fd2bc169f77b24a77c0))
+
+## [1.43.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.43.0...v1.43.1-dev.1) (2026-09-15)
+
+### 🐛 Bug Fixes
+
+* **Reddit - App icon:** Support changing icon on cloned installs ([22c4443](https://github.com/MorpheApp/morphe-patches/commit/22c4443912d60641e710a7a12c4dfc0c88ab8100))
+* **YouTube - Minimal miniplayer:** Slide the bar clear of the screen when closing it ([680ef54](https://github.com/MorpheApp/morphe-patches/commit/680ef54c555b829ddf0bf8cb17637734478563ac))
+* **YouTube - Minimal miniplayer:** Span the type 2 bar with the video at any aspect ratio ([4ed999f](https://github.com/MorpheApp/morphe-patches/commit/4ed999f243a18ee859279fddf40c80a9a2b1123b))
+* **YouTube - Settings:** Fix crash opening settings after the app process is restarted ([#2958](https://github.com/MorpheApp/morphe-patches/issues/2958)) ([89b7bb0](https://github.com/MorpheApp/morphe-patches/commit/89b7bb0cf8bc0553afa56c982bdf234f8ac68298))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.37.42` ([#2962](https://github.com/MorpheApp/morphe-patches/issues/2962)) ([9418faa](https://github.com/MorpheApp/morphe-patches/commit/9418faaf46610875781a4952a379523c09a462db))
+
 ## [1.43.0](https://github.com/MorpheApp/morphe-patches/compare/v1.42.0...v1.43.0) (2026-09-14)
 
 ### 🐛 Bug Fixes
