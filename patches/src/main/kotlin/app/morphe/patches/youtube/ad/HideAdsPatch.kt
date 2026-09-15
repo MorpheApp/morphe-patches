@@ -18,7 +18,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
@@ -92,7 +91,6 @@ val hideAdsPatch = bytecodePatch(
     dependsOn(
         hideAdsResourcePatch,
         elementProtoParserHookPatch,
-        resourceMappingPatch,
         versionCheckPatch,
         sharedExtensionPatch,
         elementProtoParserHookPatch,

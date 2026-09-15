@@ -18,7 +18,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -63,7 +62,6 @@ internal val hideShortsWidgetOption = booleanOption(
 private val hideShortsComponentsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        resourceMappingPatch,
         versionCheckPatch
     )
 
@@ -175,7 +173,6 @@ val hideShortsComponentsPatch = bytecodePatch(
         layoutReloadObserverPatch,
         lithoFilterPatch,
         navigationBarHookPatch,
-        resourceMappingPatch,
         sharedExtensionPatch,
         versionCheckPatch,
     )

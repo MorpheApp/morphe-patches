@@ -8,7 +8,6 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -23,7 +22,6 @@ val navigationBarPatch = bytecodePatch(
     description = "Adds options to hide navigation bar, labels and buttons."
 ) {
     dependsOn(
-        resourceMappingPatch,
         sharedExtensionPatch,
         settingsPatch,
         resourcePatch {
