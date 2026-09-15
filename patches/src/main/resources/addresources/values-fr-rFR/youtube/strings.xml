@@ -382,6 +382,11 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_channel_whitelist_channel_removed">Chaîne retirée de la liste blanche</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Rechercher dans la chaîne</string>
+  <string name="morphe_channel_search_summary">Lorsqu\'une recherche est effectuée alors qu\'une chaîne est ouverte les résultats concernent uniquement cette chaîne</string>
+  <string name="morphe_channel_search_results_title">Recherche : %s</string>
+  <string name="morphe_channel_search_no_results">Aucun résultat trouvé sur cette chaîne</string>
+  <string name="morphe_channel_search_failed">Impossible d\'effectuer une recherche sur cette chaîne</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lien copié dans le presse-papiers</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Lien avec horodatage copié dans le presse-papiers</string>
