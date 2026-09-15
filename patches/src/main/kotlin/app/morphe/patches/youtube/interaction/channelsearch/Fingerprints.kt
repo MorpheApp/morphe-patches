@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.interaction.channelsearch
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
@@ -15,16 +16,29 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Sets the browse id of a browse request, and flags whether it is the home feed.
+ * Traces the browse id of a browse request, which is where the field it is kept in can be read
+ * from. The setter of that field has no shape of its own to match against.
  */
-internal val browseIdSetterFingerprint = Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("Ljava/lang/String;"),
+internal val browseIdTraceFingerprint = Fingerprint(
+    strings = listOf("browseId", "language"),
     filters = listOf(
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Ljava/lang/String;"),
-        string("FEwhat_to_watch"),
-        fieldAccess(opcode = Opcode.IPUT_BOOLEAN),
+        string("browseId"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;",
+            location = MatchAfterImmediately()
+        ),
+    )
+)
+
+/**
+ * 20.30 and earlier read the field before the name of it.
+ */
+internal val browseIdTraceLegacyFingerprint = Fingerprint(
+    strings = listOf("browseId", "language"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "Ljava/lang/String;"),
+        string("browseId", MatchAfterImmediately()),
     )
 )
 
@@ -57,6 +71,39 @@ internal val searchSubmitFingerprint = Fingerprint(
                 "Ljava/lang/String;",
                 "Ljava/lang/String;",
                 "Z"
+            ),
+            returnType = "V"
+        )
+    )
+)
+
+/**
+ * 20.30 and earlier take one parameter less, both here and in the search it calls.
+ */
+internal val searchSubmitLegacyFingerprint = Fingerprint(
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(
+        "Ljava/lang/String;",
+        "I",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+    ),
+    filters = listOf(
+        methodCall(
+            parameters = listOf(
+                "Ljava/lang/String;",
+                "[B",
+                "Ljava/lang/String;",
+                "I",
+                "L",
+                "L",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;",
+                "Ljava/lang/String;"
             ),
             returnType = "V"
         )

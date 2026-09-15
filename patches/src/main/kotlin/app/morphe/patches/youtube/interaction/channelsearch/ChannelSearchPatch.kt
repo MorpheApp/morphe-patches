@@ -7,8 +7,10 @@
 
 package app.morphe.patches.youtube.interaction.channelsearch
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -17,6 +19,10 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findFreeRegister
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
@@ -47,12 +53,25 @@ val channelSearchPatch = bytecodePatch(
         )
 
         // A channel page browses by its channel id, which is what the search is scoped to.
-        browseIdSetterFingerprint.method.addInstruction(
+        val browseIdField = (if (browseIdTraceFingerprint.methodOrNull != null)
+            browseIdTraceFingerprint.instructionMatches[1]
+        else
+            browseIdTraceLegacyFingerprint.instructionMatches[0])
+            .getInstruction<ReferenceInstruction>().reference as FieldReference
+
+        Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf("Ljava/lang/String;"),
+            filters = listOf(
+                fieldAccess(reference = browseIdField, opcode = Opcode.IPUT_OBJECT)
+            )
+        ).method.addInstruction(
             0,
             "invoke-static { p1 }, $EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V"
         )
 
-        searchSubmitFingerprint.method.apply {
+        (searchSubmitFingerprint.methodOrNull ?: searchSubmitLegacyFingerprint.method).apply {
             val freeRegister = findFreeRegister(0)
 
             addInstructionsWithLabels(
