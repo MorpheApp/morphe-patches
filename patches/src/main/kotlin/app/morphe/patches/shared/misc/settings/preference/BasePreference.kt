@@ -22,7 +22,8 @@ abstract class BasePreference(
     icon: String? = null,
     iconBold: String? = null,
     layout: String? = null,
-    val tag: String
+    val tag: String,
+    val dependency: String? = null
 ) {
 
     var icon: String? = icon
@@ -48,6 +49,7 @@ abstract class BasePreference(
             key?.let { setAttribute("android:key", it) }
             titleKey?.let { setAttribute("android:title", "@string/$it") }
             summaryKey?.let { setAttribute("android:summary", "@string/$it") }
+            dependency?.let { setAttribute("android:dependency", it) }
 
             if (icon != null || iconBold != null) {
                 setAttribute("android:icon",  icon ?: iconBold)

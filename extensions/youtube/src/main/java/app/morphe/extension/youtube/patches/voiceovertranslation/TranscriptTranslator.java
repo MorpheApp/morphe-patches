@@ -837,7 +837,7 @@ public final class TranscriptTranslator {
                     final String data = sseLine.substring(6).trim();
                     if (data.equals("[DONE]")) break;
 
-                    final JSONObject chunk;
+                    JSONObject chunk;
                     try {
                         chunk = new JSONObject(data);
                     } catch (Exception ignored) {

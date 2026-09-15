@@ -31,6 +31,11 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 public class Requester {
+    /**
+     * Response code of a successful API call.
+     */
+    public static final int HTTP_STATUS_CODE_SUCCESS = 200;
+
     public interface ConnectionProvider {
         HttpURLConnection openConnection(URL url) throws IOException;
     }

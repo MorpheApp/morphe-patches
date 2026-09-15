@@ -23,8 +23,9 @@ open class PreferenceCategory(
     layout: String? = null,
     sorting: Sorting = Sorting.BY_TITLE,
     tag: String = "PreferenceCategory",
+    dependency: String? = null,
     val preferences: Set<BasePreference>
-) : BasePreference(sorting.appendSortType(key), titleKey, null, icon, iconBold, layout, tag) {
+) : BasePreference(sorting.appendSortType(key), titleKey, null, icon, iconBold, layout, tag, dependency) {
 
     override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
         super.serialize(ownerDocument, resourceCallback).apply {

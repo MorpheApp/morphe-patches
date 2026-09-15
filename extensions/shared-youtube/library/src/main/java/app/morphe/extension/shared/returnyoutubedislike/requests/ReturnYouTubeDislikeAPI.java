@@ -49,11 +49,6 @@ public class ReturnYouTubeDislikeAPI {
     private static final int API_REGISTER_VOTE_TIMEOUT_MILLISECONDS = 60 * 1000; // 60 Seconds.
 
     /**
-     * Response code of a successful API call
-     */
-    private static final int HTTP_STATUS_CODE_SUCCESS = 200;
-
-    /**
      * RYD API sometimes returns 401 (authorization error), even though the user ID is valid.
      * There is no known fix for this (resetting to a different user ID does not fix it),
      * so instead just quietly ignore the error.
@@ -297,7 +292,7 @@ public class ReturnYouTubeDislikeAPI {
                 return null;
             }
 
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 // Do not disconnect, the same server connection will likely be used again soon.
                 JSONObject json = Requester.parseJSONObject(connection);
                 try {
@@ -351,7 +346,7 @@ public class ReturnYouTubeDislikeAPI {
                 connection.disconnect(); // disconnect, as no more connections will be made for a little while
                 return null;
             }
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 JSONObject json = Requester.parseJSONObject(connection);
                 String challenge = json.getString("challenge");
                 int difficulty = json.getInt("difficulty");
@@ -399,7 +394,7 @@ public class ReturnYouTubeDislikeAPI {
                 connection.disconnect(); // disconnect, as no more connections will be made for a little while
                 return null;
             }
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 Logger.printDebug(() -> "Registration confirmation successful");
                 return userID;
             }
@@ -473,7 +468,7 @@ public class ReturnYouTubeDislikeAPI {
                 connection.disconnect(); // disconnect, as no more connections will be made for a little while
                 return false;
             }
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 JSONObject json = Requester.parseJSONObject(connection);
                 String challenge = json.getString("challenge");
                 int difficulty = json.getInt("difficulty");
@@ -524,7 +519,7 @@ public class ReturnYouTubeDislikeAPI {
                 connection.disconnect(); // disconnect, as no more connections will be made for a little while
                 return false;
             }
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 Logger.printDebug(() -> "Vote confirm successful for video: " + videoId);
                 return true;
             }

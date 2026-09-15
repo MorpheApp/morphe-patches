@@ -110,25 +110,25 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_about_how_title">它的工作原理</string>
   <string name="morphe_music_crossfade_about_how_summary">"交叉淡入淡出将一首歌的结尾与下一首歌的开头重叠，在您选择的持续时间和曲线中逐渐降低一首歌的音量，同时逐渐提高另一首歌的音量。
 
-它在自动前进（一首歌自动结束时）和手动跳过时运行——两者都有自己独立的切换选项。在自动前进的情况下，混合会在歌曲结束前几秒钟开始。
+    它在自动前进（一首歌自动结束时）和手动跳过时运行——两者都有自己独立的切换选项。在自动前进的情况下，混合会在歌曲结束前几秒钟开始。
 
-需要 YouTube Music 9.x 或更高版本。"</string>
+    需要 YouTube Music 9.x 或更高版本。"</string>
   <string name="morphe_music_crossfade_about_best_title">最佳使用场景</string>
   <string name="morphe_music_crossfade_about_best_summary">正常的歌曲播放和自动前进、单曲循环（歌曲淡入淡出到自身）、本地音频——手机扬声器、有线耳机、蓝牙或 USB。</string>
   <string name="morphe_music_crossfade_about_quirks_title">效果不太好</string>
   <string name="morphe_music_crossfade_about_quirks_summary">"在开启交叉淡入时，音乐视频仅播放音频（如果您想暂停视频，请长按“随机播放”按钮）
 
-短于淡入持续时间的歌曲可能会跳过淡入
+    短于淡入持续时间的歌曲可能会跳过淡入
 
-锁屏或通知可能会短暂显示过时的状态，尤其是在过渡期间"</string>
+    锁屏或通知可能会短暂显示过时的状态，尤其是在过渡期间"</string>
   <string name="morphe_music_crossfade_about_known_title">已知问题</string>
   <string name="morphe_music_crossfade_about_known_summary">"将音乐视频设置为第一首歌曲，或者从当前队列外部启动的歌曲，可能会在仅音频模式开始之前短暂显示为视频
 
-暂停交叉淡入以观看音乐视频可能会导致一些视频画面变黑（那些音频来自视频本身的视频）。在选择歌曲之前暂停交叉淡入可以避免这种情况"</string>
+    暂停交叉淡入以观看音乐视频可能会导致一些视频画面变黑（那些音频来自视频本身的视频）。在选择歌曲之前暂停交叉淡入可以避免这种情况"</string>
   <string name="morphe_music_crossfade_about_unsupported_title">完全无法工作</string>
   <string name="morphe_music_crossfade_about_unsupported_summary">"投屏或镜像音频（Chromecast、屏幕或音频镜像）——交叉淡入会暂停，因为它在那里的稳定性较差，并且可能无法修复。
 
-YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</string>
+    YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</string>
   <string name="morphe_music_crossfade_about_credit_title">鸣谢</string>
   <string name="morphe_music_crossfade_about_credit_summary">交叉淡入功能由 VazerOG 提供</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -304,7 +304,7 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling 会自动将您的 YouTube Music 使用情况同步到您的 Last.fm 或 ListenBrainz 个人资料。
 
-为了确保在后台播放期间同步 scrobbling，请确保 YouTube Music 的应用电池使用量设置为“无限制”。"</string>
+    为了确保在后台播放期间同步 scrobbling，请确保 YouTube Music 的应用电池使用量设置为“无限制”。"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌词</string>
   <string name="morphe_music_lyrics_enabled_summary">从第三方服务获取歌词，如果找不到则回退到内置歌词</string>
@@ -331,9 +331,9 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_about_title">关于第三方歌词</string>
   <string name="morphe_music_lyrics_about_summary">"歌词通过曲目标题和艺术家查找，因此元数据不寻常的曲目可能找不到任何内容，或者找到错误的版本
 
-同步歌词跟随播放。如果它们漂移，请调整时间偏移
+    同步歌词跟随播放。如果它们漂移，请调整时间偏移
 
-如果没有找到第三方歌词，则会显示内置歌词"</string>
+    如果没有找到第三方歌词，则会显示内置歌词"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 禁用粗体图标</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢复播放器的「接下来播放」「歌词」和「相关」标签页</string>
