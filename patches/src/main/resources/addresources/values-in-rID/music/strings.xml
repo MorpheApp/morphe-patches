@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_title">Gantikan tombol Unduh</string>
   <string name="morphe_external_downloader_action_button_summary">Menggunakan pengunduh eksternal pilihan Anda daripada tombol tindakan Unduh bawaan</string>
   <string name="morphe_external_downloader_flyout_menu_title">Gantikan menu Unduh</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Menggunakan pengunduh eksternal pilihan Anda daripada menu melayang Unduh bawaan</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Menggunakan pengunduh eksternal pilihan Anda daripada menu flyout Unduh bawaan</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Tentang</string>
@@ -329,11 +329,11 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <string name="morphe_music_lyrics_copy">Salin</string>
   <string name="morphe_music_lyrics_copied">Disalin ke papan klip</string>
   <string name="morphe_music_lyrics_about_title">Tentang lirik pihak ketiga</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirik dicari berdasarkan judul trek dan artis, jadi trek dengan metadata yang tidak biasa mungkin tidak menemukan apa pun, atau menemukan versi yang salah
+  <string name="morphe_music_lyrics_about_summary">"​Lirik dicari berdasarkan judul lagu dan artis, sehingga lagu dengan metadata yang tidak biasa mungkin tidak menemukan hasil, atau menemukan versi yang salah
 
-Lirik yang disinkronkan mengikuti pemutaran. Jika lirik melayang, sesuaikan pergeseran waktu
+​Lirik tersinkronisasi mengikuti pemutaran. Jika posisinya bergeser, sesuaikan pergerakan waktunya
 
-Ketika tidak ada lirik pihak ketiga yang ditemukan, lirik bawaan ditampilkan sebagai gantinya"</string>
+​Saat lirik dari pihak ketiga tidak ditemukan, lirik bawaan yang akan ditampilkan sebagai gantinya"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Nonaktifkan ikon tebal</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Kembalikan tab Pemutar Berikutnya, Lirik, dan Terkait</string>

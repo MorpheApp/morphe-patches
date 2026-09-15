@@ -1070,7 +1070,7 @@ Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_theme_color_light_entry_12">Jasnożółty</string>
   <string name="morphe_theme_color_light_entry_13">Jasnopomarańczowy</string>
   <string name="morphe_theme_color_light_entry_14">Jasnoczerwony</string>
-  <string name="morphe_theme_color_light_custom_title">Niestandardowe jasne tło</string>
+  <string name="morphe_theme_color_light_custom_title">Własne jasne tło</string>
   <string name="morphe_theme_color_light_custom_summary">Ustaw kolor tła dla jasnego motywu</string>
   <string name="morphe_theme_color_change_foreground_title">Zmień kolor pierwszego planu</string>
   <string name="morphe_theme_color_change_foreground_summary">Użyj koloru motywu dla tekstu i ikon</string>
@@ -1080,7 +1080,7 @@ Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_splash_screen_animation_style_entry_1">Wyłączony</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Kolorowy</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Monochromatyczny</string>
-  <string name="morphe_seekbar_custom_color_title">Włącz niestandardowy kolor paska postępu</string>
+  <string name="morphe_seekbar_custom_color_title">Włącz własny kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_primary_title">Kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Ustaw główny kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_accent_title">Kolor akcentu paska postępu</string>
@@ -1184,12 +1184,12 @@ Dotknij tutaj, aby otworzyć DeArrow.ajay.app"</string>
   <string name="morphe_video_quality_dialog_button_title">Pokaż przycisk Jakość</string>
   <string name="morphe_video_quality_dialog_button_summary">Przytrzymaj, aby zresetować jakość do domyślnej</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
-  <string name="morphe_custom_speed_menu_title">Pokaż menu niestandardowej prędkości</string>
+  <string name="morphe_custom_speed_menu_title">Pokaż własne menu prędkości odtwarzania</string>
   <string name="morphe_restore_old_speed_menu_title">Przywróć stare menu prędkości odtwarzania</string>
-  <string name="morphe_custom_playback_speeds_title">Niestandardowe prędkości odtwarzania</string>
+  <string name="morphe_custom_playback_speeds_title">Własne prędkości odtwarzania</string>
   <string name="morphe_custom_playback_speeds_summary">Wprowadź preferowaną prędkość odtwarzania</string>
-  <string name="morphe_custom_playback_speeds_invalid">Prędkości niestandardowe muszą być mniejsze niż %s</string>
-  <string name="morphe_custom_playback_speeds_parse_exception">Nieprawidłowe niestandardowe prędkości odtwarzania</string>
+  <string name="morphe_custom_playback_speeds_invalid">Własne prędkości odtwarzania muszą być mniejsze niż %s</string>
+  <string name="morphe_custom_playback_speeds_parse_exception">Nieprawidłowe własne prędkości odtwarzania</string>
   <string name="morphe_custom_playback_speeds_auto">Automatyczna</string>
   <string name="morphe_speed_tap_and_hold_title">Prędkość po przytrzymaniu</string>
   <string name="morphe_speed_tap_and_hold_summary">Ustaw mnożnik prędkości podczas przytrzymania ekranu. Wartość 0 wyłącza funkcję</string>

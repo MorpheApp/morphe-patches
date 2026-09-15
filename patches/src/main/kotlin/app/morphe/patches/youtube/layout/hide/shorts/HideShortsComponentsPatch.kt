@@ -16,9 +16,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -63,7 +62,6 @@ internal val hideShortsWidgetOption = booleanOption(
 private val hideShortsComponentsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        resourceMappingPatch,
         versionCheckPatch
     )
 
@@ -175,7 +173,6 @@ val hideShortsComponentsPatch = bytecodePatch(
         layoutReloadObserverPatch,
         lithoFilterPatch,
         navigationBarHookPatch,
-        resourceMappingPatch,
         sharedExtensionPatch,
         versionCheckPatch,
     )
@@ -192,7 +189,7 @@ val hideShortsComponentsPatch = bytecodePatch(
 
         if (!is_21_05_or_greater) {
             forEachLiteralValueInstruction(
-                getResourceId(ResourceType.DIMEN, "reel_player_right_pivot_v2_size")
+                resourceId(ResourceType.DIMEN, "reel_player_right_pivot_v2_size")
             ) { literalInstructionIndex ->
                 val targetIndex = indexOfFirstInstructionOrThrow(literalInstructionIndex) {
                     getReference<MethodReference>()?.name == "getDimensionPixelSize"

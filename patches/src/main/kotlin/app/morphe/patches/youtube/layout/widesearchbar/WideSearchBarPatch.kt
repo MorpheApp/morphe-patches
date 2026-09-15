@@ -8,7 +8,6 @@
 package app.morphe.patches.youtube.layout.widesearchbar
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
@@ -31,7 +30,6 @@ val wideSearchBarPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        resourceMappingPatch,
         versionCheckPatch,
         toolBarHookPatch
     )

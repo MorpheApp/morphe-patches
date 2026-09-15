@@ -73,9 +73,9 @@ As mudanças incluem:
   <string name="morphe_hide_expandable_card_entry_3">Ocultar tudo</string>
   <string name="morphe_hide_floating_microphone_button_title">Ocultar botão de microfone flutuante</string>
   <string name="morphe_hide_floating_microphone_button_summary">Oculta o botão de microfone flutuante no canto inferior direito da tela de sugestões de pesquisa</string>
-  <string name="morphe_hide_get_premium_button_title">Ocultar botão \'Ter acesso Premium\'</string>
+  <string name="morphe_hide_get_premium_button_title">Ocultar botão \'Obter Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar prateleiras horizontais</string>
-  <string name="morphe_hide_horizontal_shelves_summary">Oculta prateleiras horizontais como Notícias de última hora, Posts da comunidade que podem te interessar, Continuar assistindo, Explorar mais canais, Explorar mais tópicos, Para você, Vídeos mais recentes, Mais relevantes, Posts da comunidade do criador, Compras e Assista novamente</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Oculta carrosséis horizontais como Últimas notícias, Postagens da comunidade que você pode gostar, Continuar assistindo, Conheça mais canais, Conheça mais tópicos, Para você, Vídeos mais recentes, Mais relevantes, Postagens da comunidade de criadores, Shopping e Assistir novamente</string>
   <string name="morphe_hide_hyped_label_title">Ocultar rótulo Hypado</string>
   <string name="morphe_hide_image_shelf_title">Ocultar prateleira de imagens</string>
   <string name="morphe_hide_image_shelf_summary">Oculta prateleiras de imagens nos resultados da pesquisa</string>
@@ -138,10 +138,10 @@ As mudanças incluem:
   <string name="morphe_hide_info_panels_summary">Oculta painéis de informações contextuais, como informações médicas</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Ocultar botão Seja membro</string>
+  <string name="morphe_hide_join_membership_button_title">Ocultar botão \'Seja membro\'</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live-streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Ocultar botão \"Replay do chat ao vivo\"</string>
+  <string name="morphe_hide_live_chat_replay_button_title">Ocultar botão \'Replay do chat ao vivo\'</string>
   <string name="morphe_hide_live_chat_replay_button_summary">Oculta o botão de replay do chat no modo tela cheia</string>
   <string name="morphe_hide_medical_panels_title">Ocultar painel médico</string>
   <string name="morphe_hide_player_gesture_hints_title">Ocultar dicas de gestos do player</string>
@@ -156,7 +156,7 @@ As mudanças incluem:
   <string name="morphe_hide_video_title_title">Ocultar título do vídeo</string>
   <string name="morphe_hide_video_title_summary">Oculta o título do vídeo no modo de tela cheia</string>
   <string name="morphe_sanitize_video_subtitle_title">Sanitizar legenda do vídeo</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Sanitiza frases como \'#\', \'Arrecadação de fundos\', \'Loja\' e \'produtos\' da legenda do vídeo</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Remove frases como \'#\', \'Campanha de arrecadação\', \'Shopping\' e \'produtos\' das legendas do vídeo</string>
   <string name="morphe_hide_description_components_screen_title">Descrição do vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Escolha quais componentes aparecem na descrição do vídeo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar seção \'Resumo de vídeo gerado por IA\'</string>
@@ -228,7 +228,7 @@ As mudanças incluem:
   <string name="morphe_hide_news_menu_title">Ocultar menu Notícias</string>
   <string name="morphe_hide_playables_menu_title">Ocultar menu Jogos</string>
   <string name="morphe_hide_podcasts_menu_title">Ocultar menu Podcasts</string>
-  <string name="morphe_hide_shopping_menu_title">Ocultar menu Compras</string>
+  <string name="morphe_hide_shopping_menu_title">Ocultar menu Shopping</string>
   <string name="morphe_hide_sports_menu_title">Ocultar menu Esportes</string>
   <string name="morphe_hide_youtube_premium_menu_title">Ocultar menu YouTube Premium</string>
   <string name="morphe_hide_youtube_studio_menu_title">Ocultar menu YouTube Studio</string>
@@ -368,7 +368,7 @@ As denúncias são públicas e passam por revisão antes de um canal ser adicion
   <string name="morphe_hide_paid_promotion_labels_title">Ocultar rótulo de promoção paga</string>
   <string name="morphe_hide_player_popup_ads_title">Ocultar anúncios pop-up no player</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ocultar cartões de auto promoção</string>
-  <string name="morphe_hide_shopping_links_title">Ocultar links de compras</string>
+  <string name="morphe_hide_shopping_links_title">Ocultar links do Shopping</string>
   <string name="morphe_hide_video_ads_title">Ocultar anúncios em vídeos</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ocultar promoções do YouTube Premium</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
@@ -594,7 +594,7 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_swipe_overlay_timeout_title">Tempo limite da sobreposição no gesto</string>
   <string name="morphe_swipe_overlay_timeout_summary">A quantidade de milissegundos em que a sobreposição é visível</string>
   <string name="morphe_swipe_overlay_background_opacity_title">Opacidade do plano de fundo de sobreposição de deslize</string>
-  <string name="morphe_swipe_overlay_background_opacity_summary">Ajuste o nível de transparência (0 é transparente, 100 é opaco)</string>
+  <string name="morphe_swipe_overlay_background_opacity_summary">Ajustar o nível de transparência (0 é transparente, 100 é opaco)</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_title">Cor da barra de brilho da sobreposição de deslize</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Definir a cor da barra de progresso dos controles de brilho</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">Cor da barra de volume da sobreposição de deslize</string>
@@ -631,7 +631,7 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_action_buttons_screen_title">Botões de ação</string>
   <string name="morphe_action_buttons_screen_summary">Escolha quais botões de ação aparecem nos modos retrato e tela cheia</string>
   <string name="morphe_portrait_buttons">Botões retrato</string>
-  <string name="morphe_disable_like_subscribe_glow_title">Desativar o brilho do botão Curtir e Inscrever-se</string>
+  <string name="morphe_disable_like_subscribe_glow_title">Desativar o brilho do botão Gostei e Inscrever-se</string>
   <string name="morphe_disable_like_subscribe_glow_summary">Evita que os botões Gostei e Inscrever-se brilhem quando o criador os menciona</string>
   <string name="morphe_hide_action_bar_title">Ocultar barra de ação</string>
   <string name="morphe_hide_like_dislike_button_title">Ocultar botões Gostei e Não gostei</string>
@@ -664,7 +664,7 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_hide_clip_button_title">Ocultar botão Clip</string>
   <string name="morphe_hide_clip_button_summary">Isso pode não funcionar para algumas contas de usuário</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_shop_button_title">Ocultar botão Comprar</string>
+  <string name="morphe_hide_shop_button_title">Ocultar botão Shopping</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Ocultar botão Salvar</string>
   <string name="morphe_hide_more_button_title">Ocultar botão Mais</string>
@@ -673,7 +673,7 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <string name="morphe_hide_quick_actions_ask_button_title">Ocultar botão Perguntar</string>
   <string name="morphe_hide_quick_actions_comments_button_title">Ocultar botão Comentários</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Ocultar botão Não gostei</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Ocultar botão Curtir</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Ocultar botão Gostei</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Ocultar botão \'Chat ao vivo\'</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Ocultar botão Mix</string>
   <string name="morphe_hide_quick_actions_more_button_title">Ocultar botão Mais</string>
@@ -746,7 +746,7 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
   <string name="morphe_toolbar_screen_summary">Escolha quais componentes aparecem na barra de ferramentas</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ocultar botão Transmitir</string>
-  <string name="morphe_hide_toolbar_chat_button_title">Ocultar botão de bate-papo</string>
+  <string name="morphe_hide_toolbar_chat_button_title">Ocultar botão Chat</string>
   <string name="morphe_hide_toolbar_create_button_title">Ocultar o botão Criar</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ocultar botão de Microfone</string>
   <string name="morphe_hide_toolbar_notification_button_title">Ocultar botão Notificações</string>
@@ -845,8 +845,8 @@ Para mostrar o menu 'Faixa de áudio', altere 'Simular streams de vídeo' para q
   <string name="morphe_hide_shorts_history_title">Ocultar no histórico de exibição</string>
   <string name="morphe_shorts_player_screen_title">Player dos Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Escolha quais componentes aparecem no player dos Shorts</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">Desativar dois toques para curtir</string>
-  <string name="morphe_hide_shorts_ai_button_title">Ocultar botão AI</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Desativar o toque duplo para marcar como \'Gostei\'</string>
+  <string name="morphe_hide_shorts_ai_button_title">Ocultar botão IA</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">Ocultar rótulo \'Dublagem automática\'</string>
   <string name="morphe_hide_shorts_channel_bar_title">Ocultar barra de canais</string>
   <string name="morphe_hide_shorts_comments_button_title">Ocultar botão Comentários</string>
@@ -858,13 +858,13 @@ Para mostrar o menu 'Faixa de áudio', altere 'Simular streams de vídeo' para q
   <string name="morphe_hide_shorts_info_panel_title">Ocultar painel de informações</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_join_button_title">Ocultar botão Seja membro</string>
-  <string name="morphe_hide_shorts_like_button_title">Ocultar botão Curtir</string>
+  <string name="morphe_hide_shorts_like_button_title">Ocultar botão Gostei</string>
   <!-- YouTube may no longer use this feature and this setting may be obsolete. -->
-  <string name="morphe_hide_shorts_like_fountain_title">Ocultar animação de fonte do botão Curtir</string>
+  <string name="morphe_hide_shorts_like_fountain_title">Ocultar animação de fonte do botão Gostei</string>
   <string name="morphe_hide_shorts_live_preview_title">Ocultar prévia ao vivo</string>
   <string name="morphe_hide_shorts_location_label_title">Ocultar rótulo de localização</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Ocultar barra de navegação</string>
-  <string name="morphe_hide_shorts_new_posts_button_title">Ocultar botão \'Novos posts\'</string>
+  <string name="morphe_hide_shorts_new_posts_button_title">Ocultar botão \'Novas postagens\'</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">Ocultar botões de sobreposição pausados</string>
   <string name="morphe_hide_shorts_preview_comment_title">Ocultar comentário de visualização</string>
   <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
@@ -875,11 +875,11 @@ Para mostrar o menu 'Faixa de áudio', altere 'Simular streams de vídeo' para q
   <string name="morphe_hide_shorts_search_suggestions_title">Ocultar sugestões de busca</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shorts_share_button_title">Ocultar botão Compartilhar</string>
-  <string name="morphe_hide_shorts_shop_button_title">Ocultar botão Comprar</string>
-  <string name="morphe_hide_shorts_sound_button_title">Ocultar botão som</string>
+  <string name="morphe_hide_shorts_shop_button_title">Ocultar botão Shopping</string>
+  <string name="morphe_hide_shorts_sound_button_title">Ocultar botão Som</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Ocultar rótulo de metadados de som</string>
   <string name="morphe_hide_shorts_subscribe_button_title">Ocultar o botão Inscrever-se</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Ocultar botão \'Valeu Demais\'</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Ocultar botão \'Comprar Valeu Demais\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">Ocultar produtos marcados</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Ocultar botão Próximos</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Ocultar botão \'Usar este som\'</string>
@@ -1002,7 +1002,7 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_change_start_page_entry_notifications">Notificações</string>
   <string name="morphe_change_start_page_entry_playlists">Playlists</string>
   <string name="morphe_change_start_page_entry_search">Procurar</string>
-  <string name="morphe_change_start_page_entry_shopping">Compras</string>
+  <string name="morphe_change_start_page_entry_shopping">Shopping</string>
   <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Esportes</string>
   <string name="morphe_change_start_page_entry_subscriptions">Inscrições</string>

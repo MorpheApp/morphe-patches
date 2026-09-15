@@ -19,7 +19,6 @@ import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
@@ -56,7 +55,6 @@ val settingsPatch = bytecodePatch(
         disablePlayStoreUpdatesPatch,
         spoofSignaturePatch,
         removeLinkVerification,
-        resourceMappingPatch,
         addResourcesPatch,
         versionCheckPatch,
         experimentalAppNoticePatch(

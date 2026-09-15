@@ -607,14 +607,14 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_threshold_title">スワイプのしきい値</string>
   <string name="morphe_swipe_threshold_summary">ジェスチャーとして判定される最小のスワイプ距離を設定します</string>
   <string name="morphe_swipe_volume_distance_title">音量ジェスチャーのスワイプ感度</string>
-  <string name="morphe_swipe_volume_distance_summary">値が大きいほど、音量ステップごとのスワイプ量が多くなります。</string>
-  <string name="morphe_swipe_volume_steps_title">音量ステップ</string>
+  <string name="morphe_swipe_volume_distance_summary">この値を大きくすると、音量の増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
+  <string name="morphe_swipe_volume_steps_title">音量レベルの段階数</string>
   <string name="morphe_swipe_volume_steps_entry_default">端末のデフォルト</string>
   <string name="morphe_swipe_brightness_sensitivity_title">明るさジェスチャーのスワイプ感度</string>
-  <string name="morphe_swipe_brightness_sensitivity_summary">この値を大きくすると、明るさを変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
+  <string name="morphe_swipe_brightness_sensitivity_summary">この値を大きくすると、明るさの増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
   <string name="morphe_swipe_speed_sensitivity_title">再生速度ジェスチャーのスワイプ感度</string>
-  <string name="morphe_swipe_speed_sensitivity_summary">この値を大きくすると、再生速度を変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
-  <string name="morphe_swipe_speed_step_title">速度段階</string>
+  <string name="morphe_swipe_speed_sensitivity_summary">この値を大きくすると、再生速度の増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
+  <string name="morphe_swipe_speed_step_title">再生速度の変化量 (1 段階)</string>
   <string name="morphe_swipe_speed_zone_height_title">上側横スワイプの領域の縦幅</string>
   <string name="morphe_swipe_speed_zone_height_summary">上側横スワイプ ジェスチャーに割り当てる、画面上端を起点とする領域の縦幅 (画面全体の縦幅に対するパーセンテージ: 5-75)</string>
   <string name="morphe_swipe_zone_label_speed">再生速度</string>
@@ -933,7 +933,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_fullscreen_video_scale_button_title">ビデオスケールボタンを表示</string>
   <string name="morphe_fullscreen_video_scale_button_summary">タップすると、デフォルト → 引き伸ばす → ズーム → デフォルトの順に切り替わります</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">全画面表示でのみ表示</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">縦画面のプレーヤーには「画面の埋め方」ボタンを表示しません</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">縦画面表示のプレーヤーの「画面の埋め方」ボタンを非表示にします</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">消音ボタンを表示</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -1037,8 +1037,8 @@ Automotive レイアウト
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
-  <string name="morphe_miniplayer_type_entry_2">旧タイプ（横長）</string>
-  <string name="morphe_miniplayer_type_entry_3">ミニマル 2</string>
+  <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>
+  <string name="morphe_miniplayer_type_entry_3">横長 2</string>
   <string name="morphe_miniplayer_type_entry_4">タブレット</string>
   <string name="morphe_miniplayer_type_entry_5">新タイプ 1</string>
   <string name="morphe_miniplayer_type_entry_6">新タイプ 2</string>

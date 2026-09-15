@@ -47,15 +47,15 @@ Second \"item\" text"</string>
 Beberapa tata letak sisi server mungkin tidak kembali.
 
 Perubahan termasuk:
-• Komponen di menu melayang pemutar (atau setelan terkait) mungkin tidak berfungsi.
+• Komponen di menu flyout pemutar (atau setelan terkait) mungkin tidak berfungsi.
 • Angka yang bergulir tidak dianimasi.
 • Tab koleksi ditampilkan.
 • Bagian musik dari deskripsi video mungkin tidak berfungsi.
-• Item menu melayang pemutar tidak dapat disembunyikan.
+• Item menu flyout pemutar tidak dapat disembunyikan.
 • Tombol beralih akun mungkin tidak muncul di tab Koleksi."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu feed melayang</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu feed melayang</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu feed flyout</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu feed flyout</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Masukkan nama menu melayang untuk disaring, dipisahkan oleh baris baru</string>
   <string name="morphe_hide_account_menu_title">Aktifkan penyaring menu bawah Koleksi / Anda</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Penyaring menu bawah Koleksi / Anda</string>
@@ -503,7 +503,7 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_save_to_watch_later_error_toast">Tidak dapat menyimpan video ini di daftar tonton nanti</string>
   <string name="morphe_save_to_watch_later_flyout_title">Simpan ke Tonton Nanti</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Tampilkan tombol Simpan ke Tonton Nanti di video anak-anak</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Memungkinkan penyimpanan video terkait anak-anak di menu melayang \'Tonton Nanti\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Memungkinkan penyimpanan video terkait anak-anak di menu flyout \'Tonton Nanti\'</string>
   <string name="morphe_queue_flyout_title">Tambahkan ke antrean Morphe</string>
   <string name="morphe_queue_restore_title">Simpan antrean antar sesi</string>
   <string name="morphe_queue_restore_summary">Antrean disimpan setelah memulai ulang aplikasi</string>
@@ -511,14 +511,14 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Ketuk untuk pilihan antrean, ketuk dan tahan untuk menyimpan ke Tonton Nanti</string>
   <string name="morphe_queue_override_flyout_menu_title">Mengganti tombol feed hamparan antrean </string>
   <string name="morphe_queue_override_flyout_menu_summary">Membuka antrean Morphe daripada antrean YouTube</string>
-  <string name="morphe_queue_add_flyout_menu_title">Tambahkan item menu antrean feed melayang</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Menambahkan item melayang tambahan. Aktifkan ini jika \"Tambahkan ke antrean\" tidak ditampilkan</string>
-  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Daftar putih iklan di menu melayang</string>
-  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Menambahkan item menu melayang yang memungkinkan iklan diputar di saluran video tersebut</string>
+  <string name="morphe_queue_add_flyout_menu_title">Tambahkan item menu antrean feed flyout</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Menambahkan item flyout tambahan. Aktifkan ini jika \"Tambahkan ke antrean\" tidak ditampilkan</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Daftar putih iklan di menu flyout</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Menambahkan item menu flyout yang memungkinkan iklan diputar di saluran video tersebut</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Fitur ini mungkin memerlukan penggunaan PotHelper atau mengubah \"Palsukan aliran video\" menjadi TV atau masuk Android VR.</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Daftar putih kecepatan di menu melayang</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Menambahkan item menu melayang yang selalu memutar saluran video tersebut dengan kecepatan 1,0x</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Daftar putih kecepatan di menu flyout</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Menambahkan item menu flyout yang selalu memutar saluran video tersebut dengan kecepatan 1,0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Belum masuk</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Tidak ditemukan ID daftar putar</string>
   <string name="morphe_queue_manager_check_failed_queue">Antrean kosong</string>
@@ -758,7 +758,7 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_show_toolbar_settings_button_type_summary">Saat diaktifkan, ketuk membuka setelan Morphe dan tahan membuka setelan YouTube, nonaktifkan untuk menukarnya</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu melayang</string>
-  <string name="morphe_hide_player_flyout_summary">Pilih komponen mana yang akan ditampilkan di menu melayang</string>
+  <string name="morphe_hide_player_flyout_summary">Pilih komponen mana yang akan ditampilkan di menu flyout</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Sembunyikan \'Setelan tambahan\' / menu Lainnya</string>
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
