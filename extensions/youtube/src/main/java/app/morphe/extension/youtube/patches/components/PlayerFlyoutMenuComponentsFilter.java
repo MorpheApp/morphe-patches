@@ -200,6 +200,9 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
             // Shorts also use this player flyout panel
             if (ShortsPlayerState.isOpen()) {
+                if (qualityMenuButtonPrimary.check(buffer).isFiltered()) {
+                    topFlyoutMenuVisible = true;
+                }
                 return false;
             }
 
