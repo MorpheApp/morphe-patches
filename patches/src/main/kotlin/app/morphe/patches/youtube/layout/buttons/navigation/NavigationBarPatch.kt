@@ -212,6 +212,13 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
+            )
+        }
+
         PivotBarRendererFingerprint.let {
             it.method.apply {
                 val pivotBarItemRendererType = it.instructionMatches[2].instruction.getReference<TypeReference>()!!.type
