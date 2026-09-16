@@ -7,6 +7,9 @@
 
 package app.morphe.extension.music.patches.downloads;
 
+import static app.morphe.extension.shared.StringRef.str;
+
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -16,9 +19,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Icon;
 import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
+import android.media.MediaMetadata;
 import android.media.MediaPlayer;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
@@ -40,10 +45,11 @@ import app.morphe.extension.shared.Logger;
 /** Foreground offline player with audio focus, MediaSession and lock-screen controls. */
 public final class OfflinePlaybackService extends Service {
     public interface PlaybackListener {
-        void onPlaybackChanged(String title, boolean playing, int position, int duration);
+        void onPlaybackChanged(String path, String title, boolean playing, int position, int duration);
     }
 
     private static final Set<PlaybackListener> listeners = new CopyOnWriteArraySet<>();
+    private static volatile String currentPath = "";
     private static volatile String currentTitle = "";
     private static volatile boolean currentPlaying;
     private static volatile int currentPosition;
@@ -52,7 +58,7 @@ public final class OfflinePlaybackService extends Service {
 
     public static void addListener(PlaybackListener listener) {
         listeners.add(listener);
-        listener.onPlaybackChanged(currentTitle, currentPlaying, currentPosition, currentDuration);
+        listener.onPlaybackChanged(currentPath, currentTitle, currentPlaying, currentPosition, currentDuration);
     }
 
     public static void removeListener(PlaybackListener listener) { listeners.remove(listener); }
@@ -94,6 +100,8 @@ public final class OfflinePlaybackService extends Service {
     private MediaSession session;
     private AudioManager audioManager;
     private AudioFocusRequest focusRequest;
+    private String path = "";
+    private String publishedMetadataPath = "";
     private String title = "YouTube Music";
     private String artist = "YouTube Music";
     private Bitmap artwork;
@@ -126,8 +134,6 @@ public final class OfflinePlaybackService extends Service {
                 publishState();
             }
         });
-        session.setFlags(MediaSession.FLAG_HANDLES_MEDIA_BUTTONS |
-                MediaSession.FLAG_HANDLES_TRANSPORT_CONTROLS);
         Intent launch = getPackageManager().getLaunchIntentForPackage(getPackageName());
         if (launch != null) session.setSessionActivity(PendingIntent.getActivity(this, 3, launch,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE));
@@ -161,13 +167,14 @@ public final class OfflinePlaybackService extends Service {
     private void playFile(@Nullable String path, @Nullable String requestedTitle,
                           @Nullable String requestedArtist, @Nullable String artworkPath) {
         if (path == null || !new File(path).isFile()) return;
+        this.path = path;
         title = requestedTitle == null ? new File(path).getName() : requestedTitle;
         artist = requestedArtist == null || requestedArtist.isBlank() ? "YouTube Music" : requestedArtist;
         artwork = artworkPath == null ? null : BitmapFactory.decodeFile(artworkPath);
         releasePlayer();
         try {
             pauseOtherMedia();
-            if (!requestFocus()) return;
+            if (audioFocusDenied()) return;
             player = new MediaPlayer();
             player.setWakeMode(this, PowerManager.PARTIAL_WAKE_LOCK);
             player.setAudioAttributes(new AudioAttributes.Builder()
@@ -210,7 +217,7 @@ public final class OfflinePlaybackService extends Service {
 
     private void resume() {
         if (player == null) return;
-        if (!requestFocus()) return;
+        if (audioFocusDenied()) return;
         player.start();
         publishState();
         notifyChanged();
@@ -227,8 +234,11 @@ public final class OfflinePlaybackService extends Service {
         releasePlayer();
         progressHandler.removeCallbacks(progressTicker);
         if (audioManager != null && focusRequest != null) audioManager.abandonAudioFocusRequest(focusRequest);
-        session.setPlaybackState(new PlaybackState.Builder().setState(
-                PlaybackState.STATE_STOPPED, 0, 0).build());
+        publishedMetadataPath = "";
+        if (session != null) {
+            session.setPlaybackState(new PlaybackState.Builder().setState(
+                    PlaybackState.STATE_STOPPED, 0, 0).build());
+        }
         stopForeground(STOP_FOREGROUND_REMOVE);
         stopSelf();
     }
@@ -260,9 +270,12 @@ public final class OfflinePlaybackService extends Service {
                 .build();
     }
 
-    private boolean requestFocus() {
-        return audioManager != null && focusRequest != null &&
-                audioManager.requestAudioFocus(focusRequest) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED;
+    /**
+     * @return Whether the system refused audio focus, so playback must not start.
+     */
+    private boolean audioFocusDenied() {
+        return audioManager == null || focusRequest == null
+                || audioManager.requestAudioFocus(focusRequest) != AudioManager.AUDIOFOCUS_REQUEST_GRANTED;
     }
 
     /** Pause the currently routed system player before this session becomes active. */
@@ -275,9 +288,12 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void publishState() {
+        MediaSession currentSession = session;
+        if (currentSession == null) return;
+
         boolean playing = player != null && player.isPlaying();
         long position = player == null ? 0 : player.getCurrentPosition();
-        session.setPlaybackState(new PlaybackState.Builder()
+        currentSession.setPlaybackState(new PlaybackState.Builder()
                 .setActions(PlaybackState.ACTION_PLAY | PlaybackState.ACTION_PAUSE |
                         PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_STOP |
                         PlaybackState.ACTION_SEEK_TO | PlaybackState.ACTION_SKIP_TO_NEXT |
@@ -285,24 +301,28 @@ public final class OfflinePlaybackService extends Service {
                 .setState(playing ? PlaybackState.STATE_PLAYING : PlaybackState.STATE_PAUSED,
                         position, playing ? 1f : 0f)
                 .build());
+        currentPath = path == null ? "" : path;
         currentTitle = title;
         currentPlaying = playing;
         currentPosition = (int) position;
         currentDuration = player == null ? 0 : player.getDuration();
         for (PlaybackListener listener : listeners) {
-            listener.onPlaybackChanged(currentTitle, currentPlaying, currentPosition, currentDuration);
+            listener.onPlaybackChanged(currentPath, currentTitle, currentPlaying, currentPosition, currentDuration);
         }
-        android.media.MediaMetadata.Builder metadata = new android.media.MediaMetadata.Builder()
-                .putString(android.media.MediaMetadata.METADATA_KEY_TITLE, title)
-                .putString(android.media.MediaMetadata.METADATA_KEY_ARTIST, artist)
-                .putLong(android.media.MediaMetadata.METADATA_KEY_DURATION,
-                        player == null ? 0 : player.getDuration());
-        if (artwork != null) {
-            metadata.putBitmap(android.media.MediaMetadata.METADATA_KEY_ALBUM_ART, artwork)
-                    .putBitmap(android.media.MediaMetadata.METADATA_KEY_ART, artwork)
-                    .putBitmap(android.media.MediaMetadata.METADATA_KEY_DISPLAY_ICON, artwork);
+        // Rebuilding the metadata copies the artwork, so only do it when the track changed.
+        if (!currentPath.equals(publishedMetadataPath)) {
+            publishedMetadataPath = currentPath;
+            MediaMetadata.Builder metadata = new MediaMetadata.Builder()
+                    .putString(MediaMetadata.METADATA_KEY_TITLE, title)
+                    .putString(MediaMetadata.METADATA_KEY_ARTIST, artist)
+                    .putLong(MediaMetadata.METADATA_KEY_DURATION, currentDuration);
+            if (artwork != null) {
+                metadata.putBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART, artwork)
+                        .putBitmap(MediaMetadata.METADATA_KEY_ART, artwork)
+                        .putBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON, artwork);
+            }
+            currentSession.setMetadata(metadata.build());
         }
-        session.setMetadata(metadata.build());
     }
 
     private Notification notification() {
@@ -325,14 +345,24 @@ public final class OfflinePlaybackService extends Service {
                 .setOnlyAlertOnce(true)
                 .setShowWhen(false)
                 .setOngoing(true)
-                .addAction(android.R.drawable.ic_media_previous, "Previous", previous)
-                .addAction(playing ? android.R.drawable.ic_media_pause : android.R.drawable.ic_media_play,
-                        playing ? "Pause" : "Play", toggle)
-                .addAction(android.R.drawable.ic_media_next, "Next", next)
-                .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Close", stop)
+                .addAction(action(android.R.drawable.ic_media_previous,
+                        str("morphe_music_downloads_previous"), previous))
+                .addAction(action(
+                        playing ? android.R.drawable.ic_media_pause : android.R.drawable.ic_media_play,
+                        str(playing ? "morphe_music_downloads_pause" : "morphe_music_downloads_play"),
+                        toggle))
+                .addAction(action(android.R.drawable.ic_media_next,
+                        str("morphe_music_downloads_next"), next))
+                .addAction(action(android.R.drawable.ic_menu_close_clear_cancel,
+                        str("morphe_music_downloads_close"), stop))
                 .setStyle(new Notification.MediaStyle().setMediaSession(session.getSessionToken())
                         .setShowActionsInCompactView(0, 1, 2))
                 .build();
+    }
+
+    private Notification.Action action(int iconResource, String title, PendingIntent intent) {
+        return new Notification.Action.Builder(
+                Icon.createWithResource(this, iconResource), title, intent).build();
     }
 
     private PendingIntent serviceIntent(String action, int code) {
@@ -341,13 +371,14 @@ public final class OfflinePlaybackService extends Service {
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
+    @SuppressLint("NotificationPermission") // The patch declares POST_NOTIFICATIONS.
     private void notifyChanged() {
         ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).notify(NOTIFICATION_ID, notification());
     }
 
     private void createChannel() {
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Offline playback",
-                NotificationManager.IMPORTANCE_LOW);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
+                str("morphe_music_downloads_playback_channel"), NotificationManager.IMPORTANCE_LOW);
         channel.setSound(null, null);
         channel.setShowBadge(false);
         channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);

@@ -10,6 +10,8 @@
 
 package app.morphe.extension.music.settings;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.BlendMode;
@@ -135,7 +137,7 @@ public class MusicActivityHook extends BaseActivityHook {
     @Override
     protected void onPostToolbarSetup(Activity activity, Toolbar toolbar, PreferenceFragment fragment) {
         if (fragment instanceof LocalDownloadsFragment) {
-            toolbar.setTitle("Download");
+            toolbar.setTitle(str("morphe_music_downloads_screen_title"));
         } else if (fragment instanceof MusicPreferenceFragment) {
             searchViewController = MusicSearchViewController.addSearchViewComponents(
                     activity, toolbar, (MusicPreferenceFragment) fragment);
