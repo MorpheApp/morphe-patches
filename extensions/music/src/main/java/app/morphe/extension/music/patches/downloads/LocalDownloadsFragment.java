@@ -9,8 +9,10 @@ package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Outline;
@@ -18,6 +20,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
@@ -64,6 +67,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private static final int SEEK_BAR_HEIGHT_DP = 3;
     private static final int SEEK_THUMB_DP = 12;
+
+    private static final int SEARCH_BAR_HEIGHT_DP = 46;
+    private static final long SEARCH_ANIMATION_MILLISECONDS = 180;
 
     /** Dimming the foreground gives a readable secondary on any background. */
     private static final float SECONDARY_DIM = 0.72f;
@@ -208,7 +214,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                     showTracks();
                 });
         searchBar.setVisibility(View.GONE);
-        header.addView(searchBar, new LinearLayout.LayoutParams(-1, -2));
+        searchBar.setAlpha(0f);
+        header.addView(searchBar, new LinearLayout.LayoutParams(-1, 0));
 
         LinearLayout line = new LinearLayout(getActivity());
         line.setGravity(Gravity.CENTER_VERTICAL);
@@ -239,11 +246,14 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     /** Opens the search field, or closes it and drops the query. */
     private void toggleSearch() {
         final boolean opening = searchBar.getVisibility() != View.VISIBLE;
-        searchBar.setVisibility(opening ? View.VISIBLE : View.GONE);
-
         InputMethodManager keyboard = (InputMethodManager)
                 getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+
         if (opening) {
+            searchBar.setVisibility(View.VISIBLE);
+            slideSearchBar(dp(SEARCH_BAR_HEIGHT_DP));
+            searchBar.animate().alpha(1f).setDuration(SEARCH_ANIMATION_MILLISECONDS).start();
+
             searchBar.requestFocus();
             if (keyboard != null) keyboard.showSoftInput(searchBar, InputMethodManager.SHOW_IMPLICIT);
             return;
@@ -252,6 +262,21 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         if (keyboard != null) keyboard.hideSoftInputFromWindow(searchBar.getWindowToken(), 0);
         searchBar.setText("");
         searchBar.clearFocus();
+
+        slideSearchBar(0);
+        searchBar.animate().alpha(0f).setDuration(SEARCH_ANIMATION_MILLISECONDS)
+                .withEndAction(() -> searchBar.setVisibility(View.GONE)).start();
+    }
+
+    /** The height is animated by hand, since a collapsing child otherwise jumps the list. */
+    private void slideSearchBar(int target) {
+        ValueAnimator animator = ValueAnimator.ofInt(searchBar.getHeight(), target);
+        animator.setDuration(SEARCH_ANIMATION_MILLISECONDS);
+        animator.addUpdateListener(value -> {
+            searchBar.getLayoutParams().height = (int) value.getAnimatedValue();
+            searchBar.requestLayout();
+        });
+        animator.start();
     }
 
     private void showSortMenu(View anchor) {
@@ -343,13 +368,24 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private void markPlayingRow() {
         int playingIndex = queuePaths.indexOf(playingPath);
         for (int i = 0; i < rowViews.size(); i++) {
-            rowViews.get(i).setBackground(i == playingIndex ? playingRowBackground() : null);
+            rowViews.get(i).setBackground(rowBackground(i == playingIndex));
         }
     }
 
-    private Drawable playingRowBackground() {
-        return CustomDialog.createRoundedBackground(ROW_CORNER_DP, Utils.adjustColorBrightness(
-                ThemeUtils.getAppBackgroundColor(), PLAYING_ROW_BRIGHTNESS));
+    /** The ripple is masked to the card, so it does not spill into the neighboring rows. */
+    private Drawable rowBackground(boolean playing) {
+        Drawable card = playing
+                ? CustomDialog.createRoundedBackground(ROW_CORNER_DP, Utils.adjustColorBrightness(
+                        ThemeUtils.getAppBackgroundColor(), PLAYING_ROW_BRIGHTNESS))
+                : null;
+        return new RippleDrawable(ColorStateList.valueOf(rippleColor()), card,
+                CustomDialog.createRoundedBackground(ROW_CORNER_DP, Color.WHITE));
+    }
+
+    private static int rippleColor() {
+        final int foreground = foreground();
+        return Color.argb(60, Color.red(foreground),
+                Color.green(foreground), Color.blue(foreground));
     }
 
     private LinearLayout createStockMiniPlayer() {
@@ -674,7 +710,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         button.setContentDescription(description);
         button.setScaleType(ImageView.ScaleType.CENTER);
         button.setPadding(dp(10), dp(10), dp(10), dp(10));
-        button.setBackgroundColor(Color.TRANSPARENT);
+
+        button.setBackground(new RippleDrawable(ColorStateList.valueOf(rippleColor()),
+                null, new ShapeDrawable(new OvalShape())));
         return button;
     }
 
