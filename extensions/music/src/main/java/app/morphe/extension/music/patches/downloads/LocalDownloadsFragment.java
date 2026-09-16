@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.downloads;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -17,6 +18,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -104,6 +106,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private SeekBar miniSeek;
     private LinearLayout miniPlayer;
     private LinearLayout songsList;
+
+    private boolean showingPause;
 
     /**
      * Every downloaded track, read once per refresh instead of on every list or playback update.
@@ -438,6 +442,10 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         miniPlay = icon("yt_fill_experimental_play_vd_theme_24",
                 str("morphe_music_downloads_play_pause"));
+        // The morph drawable of the app is 48dp, so whatever the button shows is scaled down to
+        // the 24dp of the icons beside it.
+        miniPlay.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        miniPlay.setPadding(dp(12), dp(12), dp(12), dp(12));
         miniPlay.setOnClickListener(v -> OfflinePlaybackService.toggle(getActivity()));
         line.addView(miniPlay, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
@@ -648,6 +656,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         getActivity().runOnUiThread(() -> {
             if (miniPlayer == null) return;
+            final boolean wasVisible = miniPlayer.getVisibility() == View.VISIBLE;
             miniPlayer.setVisibility(title.isEmpty() ? View.GONE : View.VISIBLE);
 
             // Decoding the cover on every tick would read the disk twice a second.
@@ -663,12 +672,45 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 markPlayingRow();
             }
 
-            miniPlay.setImageDrawable(ResourceUtils.getDrawable(playing
-                    ? "yt_fill_experimental_pause_vd_theme_24"
-                    : "yt_fill_experimental_play_vd_theme_24"));
+            // This runs on every playback tick, so the icon only morphs when the state
+            // actually flips while the bar is on screen to see it happen.
+            updatePlayIcon(playing, wasVisible && playing != showingPause);
             miniSeek.setMax(Math.max(1, duration));
             if (!userSeeking) miniSeek.setProgress(position, true);
         });
+    }
+
+    private void updatePlayIcon(boolean playing, boolean morph) {
+        showingPause = playing;
+        if (morph && startIconMorph(playing)) return;
+
+        miniPlay.setImageDrawable(ResourceUtils.getDrawable(playing
+                ? "yt_fill_experimental_pause_vd_theme_24"
+                : "yt_fill_experimental_play_vd_theme_24"));
+    }
+
+    /**
+     * The app ships the drawable its own player uses to morph between the two icons.
+     */
+    private boolean startIconMorph(boolean playing) {
+        final String name = playing
+                ? "player_play_pause_vector_transition"
+                : "player_pause_play_vector_transition";
+
+        int identifier = ResourceUtils.getDrawableIdentifier(name + "_delhi");
+        if (identifier == 0) identifier = ResourceUtils.getDrawableIdentifier(name);
+
+        Activity activity = getActivity();
+        if (identifier == 0 || activity == null) return false;
+
+        // It fills itself with a theme attribute of the player, so it has to be read with the
+        // theme of this screen, which defines that attribute as white for the icon tint to work.
+        Drawable drawable = activity.getDrawable(identifier);
+        if (!(drawable instanceof AnimatedVectorDrawable morph)) return false;
+
+        miniPlay.setImageDrawable(morph);
+        morph.start();
+        return true;
     }
 
     private void applyTrackVisuals(OfflineTrack track) {
