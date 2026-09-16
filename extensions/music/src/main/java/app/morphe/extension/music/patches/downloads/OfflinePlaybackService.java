@@ -182,7 +182,11 @@ public final class OfflinePlaybackService extends Service {
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                     .build());
             player.setDataSource(path);
+            // Skipping quickly leaves the previous player mid prepare. Its callbacks are
+            // cleared on release, and each one still checks that it belongs to the current
+            // track, so a discarded player can never tear down the one that replaced it.
             player.setOnPreparedListener(mp -> {
+                if (mp != player) return;
                 mp.start();
                 publishState();
                 startForeground(NOTIFICATION_ID, notification());
@@ -190,10 +194,12 @@ public final class OfflinePlaybackService extends Service {
                 progressHandler.post(progressTicker);
             });
             player.setOnCompletionListener(mp -> {
+                if (mp != player) return;
                 if (queueIndex >= 0 && queueIndex + 1 < queue.size()) playQueueOffset(1);
                 else stopPlayback();
             });
             player.setOnErrorListener((mp, what, extra) -> {
+                if (mp != player) return true;
                 Logger.printException(() -> "Offline player error: " + what + "/" + extra);
                 stopPlayback();
                 return true;
@@ -244,11 +250,17 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void releasePlayer() {
-        if (player != null) {
-            player.reset();
-            player.release();
-            player = null;
-        }
+        MediaPlayer released = player;
+        if (released == null) return;
+
+        // Cleared first, otherwise releasing a player that is still preparing reports an error
+        // that would stop whatever is playing by then.
+        player = null;
+        released.setOnPreparedListener(null);
+        released.setOnCompletionListener(null);
+        released.setOnErrorListener(null);
+        released.reset();
+        released.release();
     }
 
     private void createFocusRequest() {
