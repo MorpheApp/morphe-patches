@@ -25,10 +25,11 @@ class NonInteractivePreference(
     layout: String? = null,
     tag: String = "Preference",
     val selectable: Boolean = false,
-    dependency: String? = null,
-) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag, dependency) {
+    val dependency: String? = null,
+) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag) {
     override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
         super.serialize(ownerDocument, resourceCallback).apply {
             setAttribute("android:selectable", selectable.toString())
+            dependency?.let { setAttribute("android:dependency", it) }
         }
 }

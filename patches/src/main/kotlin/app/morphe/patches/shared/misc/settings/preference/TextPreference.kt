@@ -24,8 +24,7 @@ class TextPreference(
     layout: String? = null,
     tag: String = "app.morphe.extension.shared.settings.preference.ResettableEditTextPreference",
     val inputType: InputType = InputType.TEXT,
-    dependency: String? = null,
-) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag, dependency) {
+) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag) {
 
     override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
         super.serialize(ownerDocument, resourceCallback).apply {

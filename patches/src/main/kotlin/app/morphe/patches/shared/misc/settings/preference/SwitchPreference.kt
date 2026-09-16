@@ -18,6 +18,5 @@ class SwitchPreference(
     tag: String = "SwitchPreference",
     icon: String? = null,
     iconBold: String? = null,
-    layout: String? = null,
-    dependency: String? = null
-) : BasePreference(key, titleKey, if (summary) "${key}_summary" else null, icon, iconBold, layout, tag, dependency)
+    layout: String? = null
+) : BasePreference(key, titleKey, if (summary) "${key}_summary" else null, icon, iconBold, layout, tag)

@@ -65,7 +65,6 @@ val lyricsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        val dep = "morphe_music_lyrics_enabled"
         PreferenceScreen.LYRICS.addPreferences(
             SwitchPreference("morphe_music_lyrics_enabled", summary = true),
             PreferenceCategory(
@@ -78,8 +77,8 @@ val lyricsPatch = bytecodePatch(
                         summaryKey = "morphe_music_lyrics_source_summary",
                         tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
                         selectable = false,
-                        dependency = dep
-                    ),
+                        dependency = "morphe_music_lyrics_enabled"
+                    )
                 )
             ),
             PreferenceCategory(
@@ -88,18 +87,15 @@ val lyricsPatch = bytecodePatch(
                 preferences = setOf(
                     TextPreference(
                         key = "morphe_music_lyrics_custom_regex",
-                        inputType = InputType.TEXT_MULTI_LINE,
-                        dependency = dep
+                        inputType = InputType.TEXT_MULTI_LINE
                     ),
                     TextPreference(
                         key = "morphe_music_lyrics_text_filter",
-                        inputType = InputType.TEXT_MULTI_LINE,
-                        dependency = dep
+                        inputType = InputType.TEXT_MULTI_LINE
                     ),
                     TextPreference(
                         key = "morphe_music_lyrics_credit_line_regex",
-                        inputType = InputType.TEXT_MULTI_LINE,
-                        dependency = dep
+                        inputType = InputType.TEXT_MULTI_LINE
                     )
                 )
             ),
@@ -112,18 +108,18 @@ val lyricsPatch = bytecodePatch(
                         summaryKey = "morphe_music_lyrics_text_size_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true,
-                        dependency = dep
+                        dependency = "morphe_music_lyrics_enabled"
                     ),
-                    SwitchPreference("morphe_music_lyrics_word_sync", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_hide_played", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_hide_unplayed", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true, dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true, dependency = dep),
+                    SwitchPreference("morphe_music_lyrics_word_sync", summary = true),
+                    SwitchPreference("morphe_music_lyrics_hide_played", summary = true),
+                    SwitchPreference("morphe_music_lyrics_hide_unplayed", summary = true),
+                    SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
+                    SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
+                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -135,11 +131,11 @@ val lyricsPatch = bytecodePatch(
                         summaryKey = "morphe_music_lyrics_offset_ms_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true,
-                        dependency = dep
+                        dependency = "morphe_music_lyrics_enabled"
                     ),
-                    SwitchPreference("morphe_music_lyrics_miniplayer", dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_mediasession", dependency = dep),
-                    SwitchPreference("morphe_music_lyrics_display_artist_first", summary = true, dependency = dep),
+                    SwitchPreference("morphe_music_lyrics_miniplayer"),
+                    SwitchPreference("morphe_music_lyrics_mediasession"),
+                    SwitchPreference("morphe_music_lyrics_display_artist_first", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -150,10 +146,10 @@ val lyricsPatch = bytecodePatch(
                         key = "morphe_music_lyrics_about",
                         titleKey = null,
                         summaryKey = "morphe_music_lyrics_about_summary",
-                        dependency = dep
+                        dependency = "morphe_music_lyrics_enabled"
                     )
                 )
-            ),
+            )
         )
 
         // The panel content is built by Elements, so there is no view to hook. The timed
