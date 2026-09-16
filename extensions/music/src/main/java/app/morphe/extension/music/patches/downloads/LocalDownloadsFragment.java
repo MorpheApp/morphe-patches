@@ -18,7 +18,7 @@ import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceFragment;
@@ -61,7 +61,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private static final int WHITE = Color.rgb(245, 245, 245);
     private static final int SECONDARY = Color.rgb(180, 180, 180);
     private static final int ARTWORK_PLACEHOLDER = Color.rgb(40, 40, 40);
-    private static final int SEEK_BAR_TRACK = Color.rgb(85, 85, 85);
+    private static final int SEEK_BAR_HEIGHT_DP = 3;
+    private static final int SEEK_THUMB_DP = 12;
 
     /** How much the background of the playing row is lifted out of the black. */
     private static final float PLAYING_ROW_BRIGHTNESS = 1.35f;
@@ -366,15 +367,16 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         line.addView(miniNext, new LinearLayout.LayoutParams(dp(48), dp(56)));
 
         outer.addView(line, new LinearLayout.LayoutParams(-1, dp(60)));
-        outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, dp(12)));
+        outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, dp(18)));
         return outer;
     }
 
     private SeekBar createSeekBar() {
         miniSeek = new SeekBar(getActivity());
-        miniSeek.setPadding(0, 0, 0, 0);
+        // The bar keeps the gutters of the list, so it reads as a control rather than an edge.
+        miniSeek.setPadding(dp(16), 0, dp(16), 0);
         miniSeek.setProgressDrawable(createSeekBarDrawable());
-        // The thumb and its ripple would be drawn outside this very short bar.
+        // The stock thumb draws a ripple far wider than the bar, so it only appears while dragging.
         miniSeek.setThumb(null);
         miniSeek.setThumbOffset(0);
         miniSeek.setBackground(null);
@@ -383,11 +385,14 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             @Override
             public void onStartTrackingTouch(SeekBar bar) {
                 userSeeking = true;
+                bar.setThumb(createThumb());
+                bar.setThumbOffset(dp(SEEK_THUMB_DP) / 2);
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar bar) {
                 userSeeking = false;
+                bar.setThumb(null);
                 OfflinePlaybackService.seekTo(bar.getProgress());
             }
 
@@ -398,24 +403,36 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         return miniSeek;
     }
 
+    private Drawable createThumb() {
+        ShapeDrawable thumb = new ShapeDrawable(new OvalShape());
+        thumb.setIntrinsicWidth(dp(SEEK_THUMB_DP));
+        thumb.setIntrinsicHeight(dp(SEEK_THUMB_DP));
+        thumb.getPaint().setColor(ThemeUtils.getAppForegroundColor());
+        return thumb;
+    }
+
     /**
-     * The bar is drawn one pixel thick. Its height comes from the drawable because
-     * {@code setMinHeight} and {@code setMaxHeight} are only available from API 29.
+     * The thickness comes from the drawable because {@code setMinHeight} and
+     * {@code setMaxHeight} are only available from API 29.
      */
     private Drawable createSeekBarDrawable() {
-        ShapeDrawable track = new ShapeDrawable(new RectShape());
-        track.setIntrinsicHeight(dp(2));
-        track.getPaint().setColor(SEEK_BAR_TRACK);
+        final int foreground = ThemeUtils.getAppForegroundColor();
 
-        ShapeDrawable played = new ShapeDrawable(new RectShape());
-        played.setIntrinsicHeight(dp(2));
-        played.getPaint().setColor(Color.WHITE);
+        // Dimming the foreground works on any background, unlike lightening a black one.
+        ShapeDrawable track = roundedBar(Utils.adjustColorBrightness(foreground, 0.35f));
+        ShapeDrawable played = roundedBar(foreground);
 
         LayerDrawable layers = new LayerDrawable(new Drawable[]{
                 track, new ClipDrawable(played, Gravity.START, ClipDrawable.HORIZONTAL)});
         layers.setId(0, android.R.id.background);
         layers.setId(1, android.R.id.progress);
         return layers;
+    }
+
+    private ShapeDrawable roundedBar(int color) {
+        ShapeDrawable bar = CustomDialog.createRoundedBackground(SEEK_BAR_HEIGHT_DP, color);
+        bar.setIntrinsicHeight(dp(SEEK_BAR_HEIGHT_DP));
+        return bar;
     }
 
     private void showTrackMenu(View anchor, OfflineTrack track) {
@@ -548,7 +565,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                     ? "yt_fill_experimental_pause_vd_theme_24"
                     : "yt_fill_experimental_play_vd_theme_24"));
             miniSeek.setMax(Math.max(1, duration));
-            if (!userSeeking) miniSeek.setProgress(position);
+            if (!userSeeking) miniSeek.setProgress(position, true);
         });
     }
 
