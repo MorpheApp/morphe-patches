@@ -170,7 +170,11 @@ public final class OfflinePlaybackService extends Service {
         this.path = path;
         title = requestedTitle == null ? new File(path).getName() : requestedTitle;
         artist = requestedArtist == null || requestedArtist.isBlank() ? "YouTube Music" : requestedArtist;
-        artwork = artworkPath == null ? null : BitmapFactory.decodeFile(artworkPath);
+        // A track saved without a cover has no file, and decoding it would log an error a second.
+        File artworkFile = artworkPath == null ? null : new File(artworkPath);
+        artwork = artworkFile != null && artworkFile.isFile()
+                ? BitmapFactory.decodeFile(artworkPath)
+                : null;
         releasePlayer();
         try {
             pauseOtherMedia();

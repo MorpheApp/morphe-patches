@@ -75,6 +75,8 @@ public final class LocalDownloadManager {
 
     private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{1,20}");
 
+    private static final String THUMBNAIL_URL = "https://i.ytimg.com/vi/";
+
     private static final Set<String> ACTIVE_DOWNLOADS = ConcurrentHashMap.newKeySet();
 
     private LocalDownloadManager() {
@@ -141,7 +143,7 @@ public final class LocalDownloadManager {
             title = firstNotBlank(title, details.getTitle(), videoId);
             artist = firstNotBlank(artist, stripTopic(details.getOwnerChannelName()), "");
             if (duration <= 0) duration = details.getLengthSeconds();
-            if (artwork == null) artwork = downloadArtwork(largestThumbnail(details));
+            if (artwork == null) artwork = resolveArtwork(videoId, details);
             if (!directory.isDirectory() && !directory.mkdirs()) {
                 throw new IllegalStateException("Could not create download directory");
             }
@@ -226,6 +228,19 @@ public final class LocalDownloadManager {
                 return;
             }
         }
+    }
+
+    /**
+     * Some videos come back without any video details, so the thumbnail of the id is used as a
+     * fallback. It exists for every video, while the largest size does not.
+     */
+    @Nullable
+    private static Bitmap resolveArtwork(String videoId, VideoDetails details) {
+        Bitmap artwork = downloadArtwork(largestThumbnail(details));
+        if (artwork != null) return artwork;
+
+        artwork = downloadArtwork(THUMBNAIL_URL + videoId + "/maxresdefault.jpg");
+        return artwork != null ? artwork : downloadArtwork(THUMBNAIL_URL + videoId + "/hqdefault.jpg");
     }
 
     @Nullable
