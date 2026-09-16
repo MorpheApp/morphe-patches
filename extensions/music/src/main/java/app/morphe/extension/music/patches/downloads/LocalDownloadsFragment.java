@@ -66,6 +66,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         implements OfflinePlaybackService.PlaybackListener {
 
     private static final int SEEK_BAR_HEIGHT_DP = 3;
+
+    /** The bar is drawn thin but stays easy to hit. */
+    private static final int SEEK_BAR_TOUCH_DP = 18;
     private static final int SEEK_THUMB_DP = 12;
 
     private static final int SEARCH_BAR_HEIGHT_DP = 46;
@@ -391,7 +394,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private LinearLayout createStockMiniPlayer() {
         LinearLayout outer = new LinearLayout(getActivity());
         outer.setOrientation(LinearLayout.VERTICAL);
-        outer.setBackgroundColor(background());
+        outer.setBackgroundColor(ThemeUtils.getDialogBackgroundColor());
         // Lifts the bar off the gesture area, so the seek bar is not on the screen edge.
         outer.setPadding(0, 0, 0, dp(12));
 
@@ -434,7 +437,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         line.addView(miniNext, new LinearLayout.LayoutParams(dp(48), dp(56)));
 
         outer.addView(line, new LinearLayout.LayoutParams(-1, dp(60)));
-        outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, dp(18)));
+        outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, dp(SEEK_BAR_TOUCH_DP)));
         return outer;
     }
 
@@ -486,20 +489,24 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         final int foreground = ThemeUtils.getAppForegroundColor();
 
         // Dimming the foreground works on any background, unlike lightening a black one.
-        ShapeDrawable track = roundedBar(Utils.adjustColorBrightness(foreground, 0.35f));
-        ShapeDrawable played = roundedBar(foreground);
+        Drawable track = roundedBar(Utils.adjustColorBrightness(foreground, 0.3f));
+        Drawable played = roundedBar(foreground);
 
         LayerDrawable layers = new LayerDrawable(new Drawable[]{
                 track, new ClipDrawable(played, Gravity.START, ClipDrawable.HORIZONTAL)});
         layers.setId(0, android.R.id.background);
         layers.setId(1, android.R.id.progress);
+
+        // A progress drawable is stretched to the view, and the thickness can only be capped
+        // with setMaxHeight from API 29, so the band is inset to the height it should have.
+        final int inset = (dp(SEEK_BAR_TOUCH_DP) - dp(SEEK_BAR_HEIGHT_DP)) / 2;
+        layers.setLayerInset(0, 0, inset, 0, inset);
+        layers.setLayerInset(1, 0, inset, 0, inset);
         return layers;
     }
 
-    private ShapeDrawable roundedBar(int color) {
-        ShapeDrawable bar = CustomDialog.createRoundedBackground(SEEK_BAR_HEIGHT_DP, color);
-        bar.setIntrinsicHeight(dp(SEEK_BAR_HEIGHT_DP));
-        return bar;
+    private Drawable roundedBar(int color) {
+        return CustomDialog.createRoundedBackground(SEEK_BAR_HEIGHT_DP, color);
     }
 
     private void showTrackMenu(View anchor, OfflineTrack track) {
