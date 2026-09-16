@@ -62,13 +62,13 @@ import app.morphe.extension.music.settings.Settings;
 public final class LocalDownloadsFragment extends PreferenceFragment
         implements OfflinePlaybackService.PlaybackListener {
 
-    private static final int WHITE = Color.rgb(245, 245, 245);
-    private static final int SECONDARY = Color.rgb(180, 180, 180);
-    private static final int ARTWORK_PLACEHOLDER = Color.rgb(40, 40, 40);
     private static final int SEEK_BAR_HEIGHT_DP = 3;
     private static final int SEEK_THUMB_DP = 12;
 
-    /** How much the background of the playing row is lifted out of the black. */
+    /** Dimming the foreground gives a readable secondary on any background. */
+    private static final float SECONDARY_DIM = 0.72f;
+
+    /** How much the background of the playing row is lifted out of the surrounding one. */
     private static final float PLAYING_ROW_BRIGHTNESS = 1.35f;
 
     private static final int ROW_CORNER_DP = 8;
@@ -126,7 +126,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         LinearLayout root = new LinearLayout(getActivity());
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setBackgroundColor(Color.BLACK);
+        root.setBackgroundColor(background());
 
         // The header stays out of the list, so typing a query does not rebuild the search bar.
         root.addView(createHeader(), new LinearLayout.LayoutParams(-1, -2));
@@ -214,7 +214,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         line.setGravity(Gravity.CENTER_VERTICAL);
         line.setPadding(0, dp(8), 0, 0);
 
-        summary = text("", 13, SECONDARY);
+        summary = text("", 13, secondary());
         line.addView(summary, new LinearLayout.LayoutParams(0, -2, 1));
 
         ImageButton search = icon(BaseSearchViewController.getSearchIconDrawable(),
@@ -297,7 +297,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         if (queuePaths.isEmpty()) {
             TextView empty = text(str(tracks.isEmpty()
                     ? "morphe_music_downloads_empty"
-                    : "morphe_music_downloads_nothing_found"), 16, SECONDARY);
+                    : "morphe_music_downloads_nothing_found"), 16, secondary());
             empty.setGravity(Gravity.CENTER);
             empty.setPadding(0, dp(80), 0, 0);
             songsList.addView(empty);
@@ -318,12 +318,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         labels.setOrientation(LinearLayout.VERTICAL);
         labels.setPadding(dp(14), 0, dp(8), 0);
 
-        TextView name = text(track.displayTitle(), 16, WHITE);
+        TextView name = text(track.displayTitle(), 16, foreground());
         name.setSingleLine(true);
 
         TextView detail = text(str("morphe_music_downloads_track_subtitle",
                 track.displayArtist(), formatDuration(track.durationSeconds()),
-                formatSize(track.audioFile().length())), 13, SECONDARY);
+                formatSize(track.audioFile().length())), 13, secondary());
         detail.setSingleLine(true);
 
         labels.addView(name);
@@ -355,7 +355,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private LinearLayout createStockMiniPlayer() {
         LinearLayout outer = new LinearLayout(getActivity());
         outer.setOrientation(LinearLayout.VERTICAL);
-        outer.setBackgroundColor(Color.BLACK);
+        outer.setBackgroundColor(background());
         // Lifts the bar off the gesture area, so the seek bar is not on the screen edge.
         outer.setPadding(0, 0, 0, dp(12));
 
@@ -371,11 +371,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         labels.setGravity(Gravity.CENTER_VERTICAL);
         labels.setPadding(dp(16), 0, dp(4), 0);
 
-        miniTitle = text("", 14, WHITE);
+        miniTitle = text("", 14, foreground());
         miniTitle.setSingleLine(true);
         miniTitle.setTypeface(Typeface.DEFAULT_BOLD);
 
-        miniArtist = text("", 14, SECONDARY);
+        miniArtist = text("", 14, secondary());
         miniArtist.setSingleLine(true);
 
         labels.addView(miniTitle);
@@ -493,7 +493,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 TextView view = text(getItem(position), 15,
-                        selected < 0 || position == selected ? WHITE : SECONDARY);
+                        selected < 0 || position == selected ? foreground() : secondary());
                 view.setPadding(dp(20), dp(14), dp(20), dp(14));
                 return view;
             }
@@ -624,7 +624,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
     private ImageView artworkView(@Nullable Bitmap bitmap) {
         ImageView view = new ImageView(getActivity());
-        view.setBackgroundColor(ARTWORK_PLACEHOLDER);
+        view.setBackgroundColor(artworkPlaceholder());
         roundCorners(view);
 
         if (bitmap != null) {
@@ -633,7 +633,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         } else {
             view.setImageDrawable(
                     ResourceUtils.getDrawable("yt_fill_experimental_play_circle_vd_theme_24"));
-            view.setColorFilter(WHITE);
+            view.setColorFilter(foreground());
             view.setPadding(dp(16), dp(16), dp(16), dp(16));
         }
         return view;
@@ -663,7 +663,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private ImageButton icon(String drawable, String description) {
         ImageButton button = icon(ResourceUtils.getDrawable(drawable), description);
         // Icons of the app carry no color of their own.
-        button.setColorFilter(WHITE);
+        button.setColorFilter(foreground());
         return button;
     }
 
@@ -676,6 +676,22 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         button.setPadding(dp(10), dp(10), dp(10), dp(10));
         button.setBackgroundColor(Color.TRANSPARENT);
         return button;
+    }
+
+    private static int foreground() {
+        return ThemeUtils.getAppForegroundColor();
+    }
+
+    private static int secondary() {
+        return Utils.adjustColorBrightness(foreground(), SECONDARY_DIM);
+    }
+
+    private static int background() {
+        return ThemeUtils.getAppBackgroundColor();
+    }
+
+    private static int artworkPlaceholder() {
+        return Utils.adjustColorBrightness(foreground(), 0.2f);
     }
 
     private int dp(int value) {
