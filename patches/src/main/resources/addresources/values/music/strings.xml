@@ -15,6 +15,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <string name="morphe_music_jam_probe_title">Jam queue sharing</string>
+    <string name="morphe_music_jam_probe_summary">Host or join a nearby Jam and edit its queue through Jam Layer.</string>
     <!-- layout.branding.customBrandingPatch -->
     <string name="morphe_custom_branding_name_entry_2" translatable="false">YT Music Morphe</string>
     <string name="morphe_custom_branding_name_entry_3" translatable="false">Music Morphe</string>
