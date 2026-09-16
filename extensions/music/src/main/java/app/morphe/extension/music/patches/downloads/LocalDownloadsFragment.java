@@ -19,6 +19,7 @@ import android.graphics.Outline;
 import android.graphics.Typeface;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -529,8 +530,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         popup.setDropDownGravity(Gravity.END);
         popup.setWidth(dp(MENU_WIDTH_DP));
         popup.setModal(true);
-        popup.setBackgroundDrawable(CustomDialog.createRoundedBackground(
-                MENU_CORNER_DP, ThemeUtils.getDialogBackgroundColor()));
+        popup.setBackgroundDrawable(menuBackground());
         popup.setAdapter(new ArrayAdapter<>(getActivity(), 0, items) {
             @NonNull
             @Override
@@ -546,6 +546,18 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             onPick.accept(position);
         });
         popup.show();
+    }
+
+    /**
+     * The surface color of a theme can sit very close to its background, so the menu is outlined
+     * rather than left to rely on the two being far enough apart.
+     */
+    private Drawable menuBackground() {
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(ThemeUtils.getDialogBackgroundColor());
+        background.setCornerRadius(dp(MENU_CORNER_DP));
+        background.setStroke(dp(1), rippleColor());
+        return background;
     }
 
     private void confirmDelete(OfflineTrack track) {
