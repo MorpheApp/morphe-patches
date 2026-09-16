@@ -56,11 +56,14 @@ private val downloadsResourcePatch = resourcePatch {
         var xml = manifest.readText()
 
         // YouTube Music already declares most of these, so each one is added only when missing.
+        // The whole attribute is matched, since FOREGROUND_SERVICE is a prefix of
+        // FOREGROUND_SERVICE_MEDIA_PLAYBACK and would otherwise look like it is already there.
         for (permission in OFFLINE_PLAYBACK_PERMISSIONS) {
-            if (!xml.contains(permission)) {
+            val declaration = "android:name=\"$permission\""
+            if (!xml.contains(declaration)) {
                 xml = xml.replace(
                     "<application",
-                    "<uses-permission android:name=\"$permission\" />\n    <application"
+                    "<uses-permission $declaration />\n    <application"
                 )
             }
         }

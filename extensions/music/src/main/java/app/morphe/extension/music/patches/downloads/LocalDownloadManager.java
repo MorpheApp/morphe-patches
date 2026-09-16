@@ -36,6 +36,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
 import app.morphe.extension.music.shared.VideoInformation;
@@ -72,6 +73,8 @@ public final class LocalDownloadManager {
     /** A range that makes no progress this many times in a row is treated as stalled. */
     private static final int MAX_STALLED_ATTEMPTS = 4;
 
+    private static final Pattern VIDEO_ID = Pattern.compile("[A-Za-z0-9_-]{1,20}");
+
     private static final Set<String> ACTIVE_DOWNLOADS = ConcurrentHashMap.newKeySet();
 
     private LocalDownloadManager() {
@@ -79,7 +82,10 @@ public final class LocalDownloadManager {
 
     /** Must be called from the main thread. Resolution and downloading happen in background. */
     public static void enqueue(@NonNull String videoId) {
-        if (videoId.isBlank()) {
+        // Every file of a download is named after the id, so anything that is not a plain id
+        // is refused rather than written under a different name than it is looked up by.
+        if (!VIDEO_ID.matcher(videoId).matches()) {
+            Logger.printDebug(() -> "Refusing to download an unusable id: " + videoId);
             Utils.showToastShort(str("morphe_music_downloads_unknown_track"));
             return;
         }
@@ -141,7 +147,7 @@ public final class LocalDownloadManager {
             }
 
             String extension = format.getMimeType().contains("mp4") ? ".m4a" : ".webm";
-            File destination = new File(directory, sanitizeFileName(videoId) + extension);
+            File destination = new File(directory, videoId + extension);
             File temporary = new File(directory, destination.getName() + ".part");
 
             if (temporary.exists() && !temporary.delete()) {
@@ -473,10 +479,5 @@ public final class LocalDownloadManager {
             Logger.printException(() -> "Could not parse audio formats: " + videoId, ex);
             return null;
         }
-    }
-
-    @NonNull
-    private static String sanitizeFileName(@NonNull String value) {
-        return value.replaceAll("[^A-Za-z0-9_-]", "_");
     }
 }
