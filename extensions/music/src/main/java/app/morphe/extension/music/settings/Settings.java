@@ -88,6 +88,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // Downloads
     public static final BooleanSetting IN_APP_DOWNLOADS = new BooleanSetting("morphe_music_in_app_downloads", FALSE, false, "morphe_music_in_app_downloads_user_dialog_message", parent(EXTERNAL_DOWNLOADER_ACTION_BUTTON));
+    public static final StringSetting DOWNLOADS_SORT = new StringSetting("morphe_music_downloads_sort", "ARTIST", false, false);
 
     // Action buttons
     public static final BooleanSetting HIDE_ACTION_BAR = new BooleanSetting("morphe_music_hide_action_bar", FALSE, true);
