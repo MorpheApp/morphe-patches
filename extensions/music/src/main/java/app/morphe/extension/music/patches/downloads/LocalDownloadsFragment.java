@@ -209,27 +209,27 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         summary = text("", 13, SECONDARY);
         line.addView(summary, new LinearLayout.LayoutParams(0, -2, 1));
 
-        ImageButton menu = icon("yt_outline_experimental_overflow_vertical_vd_theme_24",
+        ImageButton sort = icon("yt_outline_experimental_sort_vd_theme_24",
+                str("morphe_music_downloads_sort"));
+        sort.setOnClickListener(v -> showSortMenu(sort));
+        line.addView(sort, new LinearLayout.LayoutParams(dp(40), dp(40)));
+
+        ImageButton deleteAll = icon("yt_outline_experimental_trash_can_vd_theme_24",
                 str("morphe_music_downloads_delete_all"));
-        menu.setOnClickListener(v -> showCatalogueMenu(menu));
-        line.addView(menu, new LinearLayout.LayoutParams(dp(40), dp(40)));
+        deleteAll.setOnClickListener(v -> confirmDeleteAll());
+        line.addView(deleteAll, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
         header.addView(line, new LinearLayout.LayoutParams(-1, -2));
         return header;
     }
 
-    private void showCatalogueMenu(View anchor) {
+    private void showSortMenu(View anchor) {
         String[] items = {
                 str("morphe_music_downloads_sort_artist"),
                 str("morphe_music_downloads_sort_title"),
                 str("morphe_music_downloads_sort_size"),
-                str("morphe_music_downloads_delete_all"),
         };
-        showMenu(anchor, items, position -> {
-            if (position == 3) {
-                confirmDeleteAll();
-                return;
-            }
+        showMenu(anchor, items, SortOrder.saved().ordinal(), position -> {
             Settings.DOWNLOADS_SORT.save(SortOrder.values()[position].name());
             showTracks();
         });
@@ -440,13 +440,16 @@ public final class LocalDownloadsFragment extends PreferenceFragment
                 str("morphe_music_downloads_play"),
                 str("morphe_music_downloads_delete_track"),
         };
-        showMenu(anchor, items, position -> {
+        showMenu(anchor, items, -1, position -> {
             if (position == 1) confirmDelete(track);
             else play(track);
         });
     }
 
-    private void showMenu(View anchor, String[] items, IntConsumer onPick) {
+    /**
+     * @param selected Index drawn as the active choice, or -1 when the items are plain actions.
+     */
+    private void showMenu(View anchor, String[] items, int selected, IntConsumer onPick) {
         ListPopupWindow popup = new ListPopupWindow(getActivity());
         popup.setAnchorView(anchor);
         popup.setDropDownGravity(Gravity.END);
@@ -458,7 +461,8 @@ public final class LocalDownloadsFragment extends PreferenceFragment
             @NonNull
             @Override
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                TextView view = text(getItem(position), 15, WHITE);
+                TextView view = text(getItem(position), 15,
+                        selected < 0 || position == selected ? WHITE : SECONDARY);
                 view.setPadding(dp(20), dp(14), dp(20), dp(14));
                 return view;
             }
