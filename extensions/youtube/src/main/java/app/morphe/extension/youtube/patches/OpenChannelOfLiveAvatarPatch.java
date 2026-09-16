@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -106,23 +107,28 @@ public final class OpenChannelOfLiveAvatarPatch {
 
                 Utils.runOnBackgroundThread(() -> {
                     channelIdRequest = ChannelIdRequest.fetchRequestIfNeeded(videoId);
-                    String channelId = channelIdRequest.getChannelId();
-                    if (!TextUtils.isEmpty(channelId)) {
-                        Logger.printDebug(() -> "channel ID response: " + channelId);
+                    Pair<String, String> channelInfo = channelIdRequest.getChannelInfo();
+                    if (channelInfo != null) {
+                        String channelId = channelInfo.second;
+                        if (!TextUtils.isEmpty(channelId)) {
+                            Logger.printDebug(() -> "channel ID response: " + channelId);
 
-                        Utils.runOnMainThread(() -> {
-                            var context = mainActivityRef.get();
-                            if (context != null) {
-                                Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
-                                videoChannelIntent.setData(Uri.parse("https://www.youtube.com/channel/" + channelId));
-                                videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                videoChannelIntent.setPackage(context.getPackageName());
-                                context.startActivity(videoChannelIntent);
-                            }
-                        });
-                    } else {
-                        Logger.printDebug(() -> "Could not get channel ID, string parameter is null: " + videoId);
+                            Utils.runOnMainThread(() -> {
+                                var context = mainActivityRef.get();
+                                if (context != null) {
+                                    Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
+                                    videoChannelIntent.setData(Uri.parse("https://www.youtube.com/channel/" + channelId));
+                                    videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    videoChannelIntent.setPackage(context.getPackageName());
+                                    context.startActivity(videoChannelIntent);
+                                }
+                            });
+
+                            return;
+                        }
                     }
+
+                    Logger.printDebug(() -> "Could not get channel ID, string parameter is null: " + videoId);
                 });
                 return true;
             } catch (Exception ex) {

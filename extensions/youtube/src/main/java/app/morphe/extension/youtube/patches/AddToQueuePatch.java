@@ -8,6 +8,7 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.patches.utils.FlyoutUtils.getFlyoutVideoId;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -23,7 +24,6 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
-import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -44,10 +44,9 @@ public final class AddToQueuePatch {
     private static final FlyoutUtils.FlyoutButtonProvider FLYOUT_BUTTON_PROVIDER =
             new FlyoutUtils.FlyoutButtonProvider() {
                 @Override
-                public int addButtons(Object flyoutPanel, int index, String videoId) {
+                public int addQueueButton(Object flyoutPanel, int index, String videoId) {
                     if (!Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
                             !FlyoutUtils.getFlyoutPlaylistId().isEmpty() ||
-                            ShortsPlayerState.isOpen() ||
                             videoId.isEmpty()) {
                         return index;
                     }
@@ -56,7 +55,10 @@ public final class AddToQueuePatch {
                             flyoutPanel,
                             queueButtonDrawable,
                             queueButtonName,
-                            v -> flyoutButtonClickLogic(queueButtonOriginalNames.get(0)),
+                            v -> flyoutButtonClickLogic(
+                                    queueButtonOriginalNames.get(0),
+                                    videoId
+                            ),
                             index
                     );
                 }
@@ -90,9 +92,6 @@ public final class AddToQueuePatch {
                 }
             };
 
-    /**
-     * Injection point.
-     */
     public static void registerFlyoutProvider() {
         FlyoutUtils.setFlyoutButtonProvider(FLYOUT_BUTTON_PROVIDER);
     }
@@ -105,7 +104,7 @@ public final class AddToQueuePatch {
             return original;
         }
 
-        if (FlyoutUtils.getFlyoutVideoId().isEmpty()) {
+        if (getFlyoutVideoId().isEmpty()) {
             Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
             return original;
         }
@@ -123,7 +122,7 @@ public final class AddToQueuePatch {
                 return false;
             }
 
-            if (FlyoutUtils.getFlyoutVideoId().isEmpty()) {
+            if (getFlyoutVideoId().isEmpty()) {
                 Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
                 return false;
             }
@@ -139,9 +138,12 @@ public final class AddToQueuePatch {
 
             if (!FlyoutUtils.getVisibleFlyoutButtons().isEmpty()) {
                 if (buttonIndex >= 0) {
-                    return flyoutButtonClickLogic(FlyoutUtils.getVisibleFlyoutButtons().get(buttonIndex).first);
+                    return flyoutButtonClickLogic(
+                            FlyoutUtils.getVisibleFlyoutButtons().get(buttonIndex).first,
+                            getFlyoutVideoId()
+                    );
                 } else if (!buttonName.isEmpty()) {
-                    return flyoutButtonClickLogic(buttonName);
+                    return flyoutButtonClickLogic(buttonName, getFlyoutVideoId());
                 }
             }
         } catch (Exception ex) {
@@ -156,7 +158,7 @@ public final class AddToQueuePatch {
                 // Reset index logic goes here if needed between UI clicks
                 FlyoutUtils.resetCurrentButtonIndex();
 
-                if (flyoutButtonClickLogic(buttonName)) {
+                if (flyoutButtonClickLogic(buttonName, getFlyoutVideoId())) {
                     return;
                 }
             } catch (Exception ex) {
@@ -168,15 +170,14 @@ public final class AddToQueuePatch {
         };
     }
 
-    public static boolean flyoutButtonClickLogic(String buttonName) {
+    public static boolean flyoutButtonClickLogic(String buttonName, String videoId) {
         try {
             if (queueButtonOriginalNames.contains(buttonName)) {
-                String flyoutVideoId = FlyoutUtils.getFlyoutVideoId();
-                Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
+                Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + videoId);
 
                 Activity activity = Utils.getActivity();
                 if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
-                    PlaylistPatch.prepareDialogBuilder(activity, flyoutVideoId);
+                    PlaylistPatch.prepareDialogBuilder(activity, videoId);
                 } else {
                     Logger.printException(() -> "Could not open queue flyout, activity is not available");
                 }

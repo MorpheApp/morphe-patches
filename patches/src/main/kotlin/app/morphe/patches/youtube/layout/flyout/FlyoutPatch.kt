@@ -209,7 +209,7 @@ val flyoutPatch = bytecodePatch(
 
         StartVideoInformerFingerprint.method.addInstruction(
             0,
-            "invoke-static { }, $EXTENSION_UTILS_CLASS->setVideoMarkedAsForKids()V"
+            "invoke-static { }, $EXTENSION_UTILS_CLASS->resetVideoMarkedAsForKids()V"
         )
 
         addLithoFilter(

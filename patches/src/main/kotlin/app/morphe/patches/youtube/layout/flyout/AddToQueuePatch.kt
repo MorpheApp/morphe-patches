@@ -95,11 +95,6 @@ val addToQueuePatch = bytecodePatch(
                         invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_UTILS_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V
                     """
                 )
-
-                addInstruction(
-                    0,
-                    "invoke-static {}, $EXTENSION_CLASS->registerFlyoutProvider()V"
-                )
             }
 
             ContextualMenuItemBuilderFingerprint.let {

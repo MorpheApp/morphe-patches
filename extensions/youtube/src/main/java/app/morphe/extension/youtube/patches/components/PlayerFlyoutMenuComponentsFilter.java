@@ -201,16 +201,16 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 return false; // Overflow menu is always the start of the path.
             }
 
-            // Verify that the open flyout menu is the first one and not the 'others'
-            // one, by checking the filtering of its first button (quality menu).
-            if (videoQualityMenuButtonPrimary.check(buffer).isFiltered() &&
-                videoQualityMenuButtonSecondary.check(buffer).isFiltered()) {
-                topFlyoutMenuVisible = true;
-            }
-
             // Shorts also use this player flyout panel
             if (ShortsPlayerState.isOpen()) {
                 return false;
+            }
+
+            // Verify that the open flyout menu is the first one and not the 'others'
+            // one, by checking the filtering of its first button (quality menu).
+            if (videoQualityMenuButtonPrimary.check(buffer).isFiltered() &&
+                    videoQualityMenuButtonSecondary.check(buffer).isFiltered()) {
+                topFlyoutMenuVisible = true;
             }
 
             // 21.x+ fix.
