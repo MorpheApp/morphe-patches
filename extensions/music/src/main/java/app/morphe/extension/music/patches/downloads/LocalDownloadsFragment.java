@@ -540,6 +540,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         popup.setWidth(dp(MENU_WIDTH_DP));
         popup.setModal(true);
         popup.setBackgroundDrawable(menuBackground());
+        // The list draws its own square selector, which would bleed past the rounded background.
+        popup.setListSelector(new RippleDrawable(ColorStateList.valueOf(rippleColor()), null,
+                CustomDialog.createRoundedBackground(MENU_CORNER_DP, Color.WHITE)));
         popup.setAdapter(new ArrayAdapter<>(getActivity(), 0, items) {
             @NonNull
             @Override
