@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -27,7 +28,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,6 +51,7 @@ import java.util.function.IntConsumer;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -100,6 +104,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private String playingPath = "";
     private String query = "";
     private TextView summary;
+    private EditText searchBar;
     private boolean userSeeking;
 
     /** How the catalogue is ordered, remembered between visits. */
@@ -196,11 +201,14 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         header.setOrientation(LinearLayout.VERTICAL);
         header.setPadding(dp(16), dp(8), dp(16), dp(6));
 
-        header.addView(CustomDialog.createSearchBar(getActivity(),
+        // Hidden until asked for, the way the settings screen reveals its own search.
+        searchBar = CustomDialog.createSearchBar(getActivity(),
                 str("morphe_music_downloads_search_hint"), text -> {
                     query = text.trim().toLowerCase(Locale.ROOT);
                     showTracks();
-                }), new LinearLayout.LayoutParams(-1, -2));
+                });
+        searchBar.setVisibility(View.GONE);
+        header.addView(searchBar, new LinearLayout.LayoutParams(-1, -2));
 
         LinearLayout line = new LinearLayout(getActivity());
         line.setGravity(Gravity.CENTER_VERTICAL);
@@ -208,6 +216,11 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         summary = text("", 13, SECONDARY);
         line.addView(summary, new LinearLayout.LayoutParams(0, -2, 1));
+
+        ImageButton search = icon(BaseSearchViewController.getSearchIconDrawable(),
+                str("morphe_music_downloads_search_hint"));
+        search.setOnClickListener(v -> toggleSearch());
+        line.addView(search, new LinearLayout.LayoutParams(dp(40), dp(40)));
 
         ImageButton sort = icon("yt_outline_experimental_sort_vd_theme_24",
                 str("morphe_music_downloads_sort"));
@@ -221,6 +234,24 @@ public final class LocalDownloadsFragment extends PreferenceFragment
 
         header.addView(line, new LinearLayout.LayoutParams(-1, -2));
         return header;
+    }
+
+    /** Opens the search field, or closes it and drops the query. */
+    private void toggleSearch() {
+        final boolean opening = searchBar.getVisibility() != View.VISIBLE;
+        searchBar.setVisibility(opening ? View.VISIBLE : View.GONE);
+
+        InputMethodManager keyboard = (InputMethodManager)
+                getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (opening) {
+            searchBar.requestFocus();
+            if (keyboard != null) keyboard.showSoftInput(searchBar, InputMethodManager.SHOW_IMPLICIT);
+            return;
+        }
+
+        if (keyboard != null) keyboard.hideSoftInputFromWindow(searchBar.getWindowToken(), 0);
+        searchBar.setText("");
+        searchBar.clearFocus();
     }
 
     private void showSortMenu(View anchor) {
@@ -630,10 +661,17 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     }
 
     private ImageButton icon(String drawable, String description) {
-        ImageButton button = new ImageButton(getActivity());
-        button.setImageDrawable(ResourceUtils.getDrawable(drawable));
-        button.setContentDescription(description);
+        ImageButton button = icon(ResourceUtils.getDrawable(drawable), description);
+        // Icons of the app carry no color of their own.
         button.setColorFilter(WHITE);
+        return button;
+    }
+
+    /** For drawables that already carry the colors of Morphe. */
+    private ImageButton icon(Drawable drawable, String description) {
+        ImageButton button = new ImageButton(getActivity());
+        button.setImageDrawable(drawable);
+        button.setContentDescription(description);
         button.setScaleType(ImageView.ScaleType.CENTER);
         button.setPadding(dp(10), dp(10), dp(10), dp(10));
         button.setBackgroundColor(Color.TRANSPARENT);
