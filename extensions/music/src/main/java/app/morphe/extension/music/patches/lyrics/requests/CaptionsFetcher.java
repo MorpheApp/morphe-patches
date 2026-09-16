@@ -267,9 +267,9 @@ public final class CaptionsFetcher {
             if (!videoId.equals(previousId)) {
                 return videoId;
             }
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 5; i++) {
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(100);
                 } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                     break;
@@ -284,9 +284,9 @@ public final class CaptionsFetcher {
             }
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             try {
-                Thread.sleep(200);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
                 break;
@@ -1036,18 +1036,18 @@ public final class CaptionsFetcher {
                 continue;
             }
 
-            String text = "";
+            StringBuilder textBuilder = new StringBuilder();
             long startTimeMs = event.optLong("tStartMs", 0);
 
             JSONArray segments = event.getJSONArray("segs");
             for (int j = 0; j < segments.length(); j++) {
                 JSONObject seg = segments.getJSONObject(j);
                 if (seg.has("utf8")) {
-                    text += seg.getString("utf8");
+                    textBuilder.append(seg.getString("utf8"));
                 }
             }
 
-            String trimmed = text.trim();
+            String trimmed = textBuilder.toString().trim();
             if (trimmed.isEmpty()
                     || BRACKETS_PATTERN.matcher(trimmed).matches()
                     || PARENTHESES_PATTERN.matcher(trimmed).matches()) {

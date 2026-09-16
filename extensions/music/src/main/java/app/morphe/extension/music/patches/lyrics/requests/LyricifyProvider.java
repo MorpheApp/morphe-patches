@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
@@ -39,6 +40,9 @@ public final class LyricifyProvider implements LyricsProvider {
 
     private static final Random RNG = new Random();
 
+    private static final ConcurrentHashMap<String, String> isrcCache =
+            new ConcurrentHashMap<>();
+
     @Override
     public String name() {
         return "Lyricify";
@@ -47,7 +51,15 @@ public final class LyricifyProvider implements LyricsProvider {
     @Nullable
     @Override
     public Lyrics fetch(TrackInfo track) throws Exception {
-        final String isrc = fetchIsrcFromCreditsFm(track.title(), track.artist());
+        final String cacheKey = track.title().toLowerCase(Locale.ROOT)
+                + "|" + track.artist().toLowerCase(Locale.ROOT);
+        String isrc = isrcCache.get(cacheKey);
+        if (isrc == null) {
+            isrc = fetchIsrcFromCreditsFm(track.title(), track.artist());
+            if (isrc != null && !isrc.isEmpty()) {
+                isrcCache.put(cacheKey, isrc);
+            }
+        }
         if (isrc == null || isrc.isEmpty()) {
             return null;
         }

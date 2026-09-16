@@ -1175,6 +1175,11 @@ final class TtmlParser {
             }
         }
 
+        if (effectiveBegin == 0 && effectiveEnd == 0 && words.isEmpty()) {
+            effectiveBegin = LyricsLine.NO_TIME;
+            effectiveEnd = LyricsLine.NO_TIME;
+        }
+
         if (words.isEmpty() && !lineText.isEmpty() && hasTimeAttrs && effectiveEnd > effectiveBegin) {
             words.add(new Word(effectiveBegin, effectiveEnd, lineText, null, false));
         }
@@ -1582,7 +1587,9 @@ final class TtmlParser {
         if (result == null || result.lines.isEmpty()) return null;
 
         List<String> combinedSongwriters = combineCredits(result.songwriters, result.amllCreditLines);
-        return new Lyrics(result.lines, providerName, true,
+        boolean synced = result.lines.stream()
+                .anyMatch(line -> line.startTimeMs() != LyricsLine.NO_TIME);
+        return new Lyrics(result.lines, providerName, synced,
                 result.romanization, result.translations,
                 result.romanizations, combinedSongwriters, ttml, "ttml", sourceUrl);
     }
