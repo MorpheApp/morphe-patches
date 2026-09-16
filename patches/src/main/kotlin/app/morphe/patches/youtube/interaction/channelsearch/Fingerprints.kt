@@ -34,6 +34,20 @@ internal object BrowseFragmentOnCreateViewFingerprint : Fingerprint(
 )
 
 /**
+ * The search feed is its own fragment, so it does not go through the browse fragment when
+ * the user returns to it from a channel.
+ */
+internal object SearchResultsFragmentOnCreateViewFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Landroid/view/LayoutInflater;",
+        "Landroid/view/ViewGroup;",
+        "Landroid/os/Bundle;"
+    ),
+    strings = listOf("search_cache_key")
+)
+
+/**
  * Every search submit path funnels through this method, including suggestions and filter chips.
  */
 internal object SearchSubmitFingerprint : Fingerprint(

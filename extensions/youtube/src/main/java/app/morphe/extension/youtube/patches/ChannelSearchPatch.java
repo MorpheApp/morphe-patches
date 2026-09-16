@@ -93,6 +93,15 @@ public final class ChannelSearchPatch {
 
     /**
      * Injection point.
+     * <p>
+     * The search feed is not a browse page, and returning to it from a channel sets no browse id.
+     */
+    public static void clearBrowseId() {
+        currentBrowseId = "";
+    }
+
+    /**
+     * Injection point.
      *
      * @return Whether the global search was replaced with a search inside the current channel.
      */

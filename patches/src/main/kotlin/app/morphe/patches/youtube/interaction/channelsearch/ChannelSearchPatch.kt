@@ -115,6 +115,13 @@ val channelSearchPatch = bytecodePatch(
             }
         }
 
+        // Leaving a channel for the search feed shows no browse page, so nothing would
+        // otherwise replace the browse id of the channel.
+        SearchResultsFragmentOnCreateViewFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $EXTENSION_CLASS->clearBrowseId()V"
+        )
+
         SearchSubmitFingerprint.method.addInstructionsWithLabels(
             0,
             """
