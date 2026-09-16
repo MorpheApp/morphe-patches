@@ -76,7 +76,7 @@ public final class OfflinePlaybackService extends Service {
 
     public static void seekTo(int position) {
         OfflinePlaybackService service = instance;
-        if (service != null && service.player != null) {
+        if (service != null && service.playerReady()) {
             service.player.seekTo(Math.max(0, Math.min(position, service.player.getDuration())));
             service.publishState();
         }
@@ -97,6 +97,7 @@ public final class OfflinePlaybackService extends Service {
     private static final int NOTIFICATION_ID = 8841;
 
     private MediaPlayer player;
+    private boolean prepared;
     private MediaSession session;
     private AudioManager audioManager;
     private AudioFocusRequest focusRequest;
@@ -130,7 +131,7 @@ public final class OfflinePlaybackService extends Service {
             @Override public void onSkipToPrevious() { playQueueOffset(-1); }
             @Override public void onStop() { stopPlayback(); }
             @Override public void onSeekTo(long pos) {
-                if (player != null) player.seekTo((int) Math.min(Integer.MAX_VALUE, pos));
+                if (playerReady()) player.seekTo((int) Math.min(Integer.MAX_VALUE, pos));
                 publishState();
             }
         });
@@ -153,7 +154,7 @@ public final class OfflinePlaybackService extends Service {
             playFile(intent.getStringExtra(EXTRA_PATH), intent.getStringExtra(EXTRA_TITLE),
                     intent.getStringExtra(EXTRA_ARTIST), intent.getStringExtra(EXTRA_ARTWORK_PATH));
         } else if (ACTION_TOGGLE.equals(action)) {
-            if (player != null && player.isPlaying()) pause(); else resume();
+            if (playerReady() && player.isPlaying()) pause(); else resume();
         } else if (ACTION_STOP.equals(action)) {
             stopPlayback();
         } else if (ACTION_NEXT.equals(action)) {
@@ -191,6 +192,7 @@ public final class OfflinePlaybackService extends Service {
             // track, so a discarded player can never tear down the one that replaced it.
             player.setOnPreparedListener(mp -> {
                 if (mp != player) return;
+                prepared = true;
                 mp.start();
                 publishState();
                 startForeground(NOTIFICATION_ID, notification());
@@ -226,7 +228,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void resume() {
-        if (player == null) return;
+        if (!playerReady()) return;
         if (audioFocusDenied()) return;
         player.start();
         publishState();
@@ -234,7 +236,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void pause() {
-        if (player == null || !player.isPlaying()) return;
+        if (!playerReady() || !player.isPlaying()) return;
         player.pause();
         publishState();
         notifyChanged();
@@ -253,7 +255,18 @@ public final class OfflinePlaybackService extends Service {
         stopSelf();
     }
 
+    /**
+     * Asking a player that is still preparing about its state is an invalid operation, which it
+     * answers with an error that stops playback, so nothing may reach it before it is ready.
+     */
+    private boolean playerReady() {
+        return prepared && player != null;
+    }
+
     private void releasePlayer() {
+        prepared = false;
+        progressHandler.removeCallbacks(progressTicker);
+
         MediaPlayer released = player;
         if (released == null) return;
 
@@ -307,8 +320,8 @@ public final class OfflinePlaybackService extends Service {
         MediaSession currentSession = session;
         if (currentSession == null) return;
 
-        boolean playing = player != null && player.isPlaying();
-        long position = player == null ? 0 : player.getCurrentPosition();
+        boolean playing = playerReady() && player.isPlaying();
+        long position = playerReady() ? player.getCurrentPosition() : 0;
         currentSession.setPlaybackState(new PlaybackState.Builder()
                 .setActions(PlaybackState.ACTION_PLAY | PlaybackState.ACTION_PAUSE |
                         PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_STOP |
@@ -321,7 +334,7 @@ public final class OfflinePlaybackService extends Service {
         currentTitle = title;
         currentPlaying = playing;
         currentPosition = (int) position;
-        currentDuration = player == null ? 0 : player.getDuration();
+        currentDuration = playerReady() ? player.getDuration() : 0;
         for (PlaybackListener listener : listeners) {
             listener.onPlaybackChanged(currentPath, currentTitle, currentPlaying, currentPosition, currentDuration);
         }
@@ -342,7 +355,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private Notification notification() {
-        boolean playing = player != null && player.isPlaying();
+        boolean playing = playerReady() && player.isPlaying();
         PendingIntent toggle = serviceIntent(ACTION_TOGGLE, 1);
         PendingIntent stop = serviceIntent(ACTION_STOP, 2);
         PendingIntent previous = serviceIntent(ACTION_PREVIOUS, 4);
