@@ -45,10 +45,10 @@ public final class AddToQueuePatch {
             new FlyoutUtils.FlyoutButtonProvider() {
                 @Override
                 public int addButtons(Object flyoutPanel, int index, String videoId) {
-                    if (!Settings.QUEUE_ADD_FLYOUT_MENU.get()
-                            || !FlyoutUtils.getFlyoutPlaylistId().isEmpty()
-                            || ShortsPlayerState.isOpen()
-                            || videoId.isEmpty()) {
+                    if (!Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
+                            !FlyoutUtils.getFlyoutPlaylistId().isEmpty() ||
+                            ShortsPlayerState.isOpen() ||
+                            videoId.isEmpty()) {
                         return index;
                     }
 
@@ -90,6 +90,9 @@ public final class AddToQueuePatch {
                 }
             };
 
+    /**
+     * Injection point.
+     */
     public static void registerFlyoutProvider() {
         FlyoutUtils.setFlyoutButtonProvider(FLYOUT_BUTTON_PROVIDER);
     }

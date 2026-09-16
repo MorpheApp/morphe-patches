@@ -32,6 +32,9 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
     public static boolean getTopFlyoutMenuVisible() {
         return topFlyoutMenuVisible;
     }
+    public static void setTopFlyoutMenuVisible(boolean value) {
+        topFlyoutMenuVisible = value;
+    }
     public static void resetTopFlyoutMenuVisible() {
         topFlyoutMenuVisible = false;
     }
@@ -48,11 +51,11 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
     }
 
-    private final ByteArrayFilterGroup qualityMenuButtonPrimary = new ByteArrayFilterGroup(
+    private final ByteArrayFilterGroup videoQualityMenuButtonPrimary = new ByteArrayFilterGroup(
             null,
             "overflow_menu_item.e"
     );
-    private final ByteArrayFilterGroup qualityMenuButtonSecondary = new ByteArrayFilterGroup(
+    private final ByteArrayFilterGroup videoQualityMenuButtonSecondary = new ByteArrayFilterGroup(
             null,
             "quality_sheet_header.e"
     );
@@ -198,19 +201,16 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 return false; // Overflow menu is always the start of the path.
             }
 
-            // Shorts also use this player flyout panel
-            if (ShortsPlayerState.isOpen()) {
-                if (qualityMenuButtonPrimary.check(buffer).isFiltered()) {
-                    topFlyoutMenuVisible = true;
-                }
-                return false;
-            }
-
             // Verify that the open flyout menu is the first one and not the 'others'
             // one, by checking the filtering of its first button (quality menu).
-            if (qualityMenuButtonPrimary.check(buffer).isFiltered() &&
-                    qualityMenuButtonSecondary.check(buffer).isFiltered()) {
+            if (videoQualityMenuButtonPrimary.check(buffer).isFiltered() &&
+                videoQualityMenuButtonSecondary.check(buffer).isFiltered()) {
                 topFlyoutMenuVisible = true;
+            }
+
+            // Shorts also use this player flyout panel
+            if (ShortsPlayerState.isOpen()) {
+                return false;
             }
 
             // 21.x+ fix.

@@ -60,6 +60,7 @@ val flyoutPatch = bytecodePatch(
     )
 
     execute {
+        // Add interface method to get protocol buffer.
         InteractiveStickerRendererGetEditViewFingerprint.let {
             val bufferField = it.instructionMatches.last().getFieldAccessed()
 
@@ -89,6 +90,7 @@ val flyoutPatch = bytecodePatch(
         }
 
         fun addProtocolVideoIdInterface(messageType: String) {
+            // videoId is the only string field in the class initialized to an empty string.
             val videoIdStringField = Fingerprint(
                 definingClass = messageType,
                 name = "<init>",
@@ -128,6 +130,7 @@ val flyoutPatch = bytecodePatch(
             }
         }
 
+        // Full watch history list. Needs special treatment because it doesn't use litho.
         addProtocolVideoIdInterface(
             FlyoutMenuItemMessageFingerprint
                 .instructionMatches[1]
@@ -136,6 +139,7 @@ val flyoutPatch = bytecodePatch(
                 .type
         )
 
+        // Playlists in 'You' tab. Doesn't seem required for 21.x but is required for 20.21
         addProtocolVideoIdInterface(
             SingularGeneratedExtensionFingerprint
                 .instructionMatches[1]
@@ -147,7 +151,7 @@ val flyoutPatch = bytecodePatch(
         FeedFlyoutBufferObjectFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p2 .. p2 }, $EXTENSION_UTILS_CLASS->" +
-                "extractFeedFlyoutIdFromMap(Ljava/util/Map;)V"
+                "extractFlyoutIdFromMap(Ljava/util/Map;)V"
         )
 
         OnClickLithoButtonBufferObjectFingerprint.let {
@@ -173,6 +177,8 @@ val flyoutPatch = bytecodePatch(
                     "extractFlyoutIdFromObject(Ljava/lang/Object;)V"
             )
         }
+
+        // end region
 
         FeedBottomSheetFlyoutFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
