@@ -38,6 +38,40 @@ Second \"item\" text"</string>
     <string name="morphe_external_downloader_action_button_summary">Uses your chosen external downloader instead of the stock Download action button</string>
     <string name="morphe_external_downloader_flyout_menu_title">Override Download menu</string>
     <string name="morphe_external_downloader_flyout_menu_summary">Uses your chosen external downloader instead of the stock Download flyout menu</string>
+    <string name="morphe_music_in_app_downloads_title">Download in app</string>
+    <string name="morphe_music_in_app_downloads_summary">Downloads audio inside YouTube Music instead of opening the external downloader app</string>
+    <string name="morphe_music_in_app_downloads_user_dialog_message">"In app downloads reuse the audio stream the app already resolved and require 'Spoof video streams' to be enabled.
+
+Tracks are saved to the private storage of the app and are deleted if YouTube Music is uninstalled. They are separate from the Music Premium offline library."</string>
+    <string name="morphe_music_downloads_screen_title">Downloads</string>
+    <string name="morphe_music_downloads_empty">"No downloads
+Downloaded tracks appear here"</string>
+    <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+    <string name="morphe_music_downloads_summary">%1$s tracks • %2$s MB</string>
+    <string name="morphe_music_downloads_actions_for">Actions for %s</string>
+    <string name="morphe_music_downloads_play">Play</string>
+    <string name="morphe_music_downloads_play_pause">Play or pause</string>
+    <string name="morphe_music_downloads_previous">Previous</string>
+    <string name="morphe_music_downloads_next">Next</string>
+    <string name="morphe_music_downloads_pause">Pause</string>
+    <string name="morphe_music_downloads_close">Close</string>
+    <string name="morphe_music_downloads_delete">Delete</string>
+    <string name="morphe_music_downloads_delete_track">Delete download</string>
+    <string name="morphe_music_downloads_delete_track_title">Delete download?</string>
+    <string name="morphe_music_downloads_delete_track_message">%s is removed from the device</string>
+    <string name="morphe_music_downloads_track_deleted">Download deleted</string>
+    <string name="morphe_music_downloads_track_delete_failed">Could not delete the download</string>
+    <string name="morphe_music_downloads_play_failed">Could not play the download</string>
+    <string name="morphe_music_downloads_notification_channel">Audio downloads</string>
+    <string name="morphe_music_downloads_playback_channel">Offline playback</string>
+    <string name="morphe_music_downloads_unknown_track">Download unavailable: unknown track</string>
+    <string name="morphe_music_downloads_already_running">Download already in progress</string>
+    <string name="morphe_music_downloads_already_saved">Already downloaded</string>
+    <string name="morphe_music_downloads_started">Download started</string>
+    <string name="morphe_music_downloads_starting">Starting download…</string>
+    <string name="morphe_music_downloads_progress">Downloading %s%%</string>
+    <string name="morphe_music_downloads_complete">Download complete</string>
+    <string name="morphe_music_downloads_failed">Download failed</string>
 
     <!-- misc.settings.settingsPatch -->
 
