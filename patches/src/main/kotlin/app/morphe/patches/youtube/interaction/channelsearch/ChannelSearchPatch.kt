@@ -9,7 +9,9 @@ package app.morphe.patches.youtube.interaction.channelsearch
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
@@ -18,8 +20,15 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
+import app.morphe.util.findFreeRegister
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
 
@@ -49,19 +58,62 @@ val channelSearchPatch = bytecodePatch(
         )
 
         // A channel page browses by its channel id, which is what the search is scoped to.
-        val browseIdField = BrowseIdTraceFingerprint.instructionMatches.last().getFieldAccessed()
+        BrowseFragmentOnCreateViewFingerprint.method.apply {
+            val browseDataIndex = indexOfFirstInstructionOrThrow {
+                getReference<StringReference>()?.string == BROWSE_DATA_MISSING_STRING
+            }
 
-        Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            returnType = "V",
-            parameters = listOf("Ljava/lang/String;"),
-            filters = listOf(
-                fieldAccess(opcode = Opcode.IPUT_OBJECT, reference = browseIdField)
-            )
-        ).method.addInstruction(
-            0,
-            "invoke-static { p1 }, $EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V"
-        )
+            // The endpoint of the page is read just before it is checked for browse data.
+            val endpointIndex = indexOfFirstInstructionReversedOrThrow(browseDataIndex) {
+                opcode == Opcode.IGET_OBJECT &&
+                        getReference<FieldReference>()?.definingClass == definingClass
+            }
+            val endpointField = getInstruction<ReferenceInstruction>(endpointIndex)
+                .getReference<FieldReference>()!!
+
+            // Browse data is an extension of the endpoint, and reading it starts with that field.
+            val browseDataExtensionIndex = indexOfFirstInstructionOrThrow(endpointIndex) {
+                opcode == Opcode.SGET_OBJECT
+            }
+            val browseDataExtensionField =
+                getInstruction<ReferenceInstruction>(browseDataExtensionIndex)
+                    .getReference<FieldReference>()!!
+
+            val browseIdMethod = Fingerprint(
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+                returnType = "Ljava/lang/String;",
+                parameters = listOf(endpointField.type),
+                filters = listOf(
+                    fieldAccess(opcode = Opcode.SGET_OBJECT, reference = browseDataExtensionField)
+                )
+            ).method
+
+            // The fragment is handed the endpoint of every page it shows, including a page that
+            // is returned to and served from cache, which makes no browse request to read.
+            Fingerprint(
+                definingClass = definingClass,
+                returnType = "V",
+                parameters = listOf(endpointField.type),
+                filters = listOf(
+                    fieldAccess(opcode = Opcode.IPUT_OBJECT, reference = endpointField)
+                )
+            ).method.apply {
+                val insertIndex = indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.IPUT_OBJECT &&
+                            getReference<FieldReference>() == endpointField
+                } + 1
+                val freeRegister = findFreeRegister(insertIndex)
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        invoke-static { p1 }, $browseIdMethod
+                        move-result-object v$freeRegister
+                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V
+                    """
+                )
+            }
+        }
 
         SearchSubmitFingerprint.method.addInstructionsWithLabels(
             0,

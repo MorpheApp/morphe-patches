@@ -8,34 +8,29 @@
 package app.morphe.patches.youtube.interaction.channelsearch
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.parametersMatch
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Traces the browse id of a browse request, which is where the field it is kept in can be read
- * from. The setter of that field has no shape of its own to match against.
+ * Logged right after the endpoint of the page is read and found to carry no browse data.
  */
-internal object BrowseIdTraceFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;"),
-    filters = listOf(
-        string("FEwhat_to_watch"),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = "Ljava/lang/String;",
-            location = MatchAfterWithin(10)
-        )
+internal const val BROWSE_DATA_MISSING_STRING =
+    "Browse Fragment was given a navigation endpoint without browse data."
+
+/**
+ * Every browse page is shown by this one fragment, and the endpoint it is handed names the page.
+ * The browse request cannot be used instead, because a page served from cache makes no request.
+ */
+internal object BrowseFragmentOnCreateViewFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Landroid/view/LayoutInflater;",
+        "Landroid/view/ViewGroup;",
+        "Landroid/os/Bundle;"
     ),
-    strings = listOf(
-        "Home offline response is only used for Homepage"
-    )
+    strings = listOf(BROWSE_DATA_MISSING_STRING)
 )
 
 /**
