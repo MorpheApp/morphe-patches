@@ -396,6 +396,12 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         LinearLayout outer = new LinearLayout(getActivity());
         outer.setOrientation(LinearLayout.VERTICAL);
         outer.setBackgroundColor(ThemeUtils.getDialogBackgroundColor());
+
+        // The surface color of a theme can sit very close to its background, so the bar is
+        // separated by a rule rather than by the fill alone.
+        View divider = new View(getActivity());
+        divider.setBackgroundColor(rippleColor());
+        outer.addView(divider, new LinearLayout.LayoutParams(-1, dp(1)));
         // Lifts the bar off the gesture area, so the seek bar is not on the screen edge.
         outer.setPadding(0, 0, 0, dp(12));
 
