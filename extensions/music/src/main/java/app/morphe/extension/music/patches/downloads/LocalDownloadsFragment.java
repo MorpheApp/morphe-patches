@@ -91,6 +91,9 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private static final int MENU_WIDTH_DP = 220;
     private static final int MENU_CORNER_DP = 12;
 
+    /** Icon buttons are square, otherwise their round ripple is drawn as a stretched oval. */
+    private static final int ICON_BUTTON_DP = 48;
+
     private File musicRoot;
     private ImageView miniArtwork;
     private TextView miniTitle;
@@ -362,7 +365,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         ImageButton menu = icon("yt_outline_experimental_overflow_vertical_vd_theme_24",
                 str("morphe_music_downloads_actions_for", track.displayTitle()));
         menu.setOnClickListener(v -> showTrackMenu(menu, track));
-        row.addView(menu, new LinearLayout.LayoutParams(dp(48), dp(52)));
+        row.addView(menu, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
         row.setOnClickListener(v -> play(track));
         return row;
@@ -431,17 +434,17 @@ public final class LocalDownloadsFragment extends PreferenceFragment
         miniPrevious = icon("yt_fill_experimental_skip_previous_vd_theme_24",
                 str("morphe_music_downloads_previous"));
         miniPrevious.setOnClickListener(v -> OfflinePlaybackService.skipPrevious(getActivity()));
-        line.addView(miniPrevious, new LinearLayout.LayoutParams(dp(48), dp(56)));
+        line.addView(miniPrevious, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
         miniPlay = icon("yt_fill_experimental_play_vd_theme_24",
                 str("morphe_music_downloads_play_pause"));
         miniPlay.setOnClickListener(v -> OfflinePlaybackService.toggle(getActivity()));
-        line.addView(miniPlay, new LinearLayout.LayoutParams(dp(48), dp(56)));
+        line.addView(miniPlay, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
         miniNext = icon("yt_fill_experimental_skip_next_vd_theme_24",
                 str("morphe_music_downloads_next"));
         miniNext.setOnClickListener(v -> OfflinePlaybackService.skipNext(getActivity()));
-        line.addView(miniNext, new LinearLayout.LayoutParams(dp(48), dp(56)));
+        line.addView(miniNext, new LinearLayout.LayoutParams(dp(ICON_BUTTON_DP), dp(ICON_BUTTON_DP)));
 
         outer.addView(line, new LinearLayout.LayoutParams(-1, dp(60)));
         outer.addView(createSeekBar(), new LinearLayout.LayoutParams(-1, dp(SEEK_BAR_TOUCH_DP)));
