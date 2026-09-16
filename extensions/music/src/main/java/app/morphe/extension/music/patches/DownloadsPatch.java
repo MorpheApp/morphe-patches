@@ -48,6 +48,7 @@ public final class DownloadsPatch {
 
     private static volatile long lastFlyoutDownloadTime;
     private static volatile long lastMainPlayerDownloadTime;
+    private static volatile long lastLocalDownloadsOpenTime;
     /** Browse id of the stock offline tab, which the local catalogue replaces. */
     private static final byte[] OFFLINE_BROWSE_ID =
             "FEmusic_offline".getBytes(StandardCharsets.US_ASCII);
@@ -97,6 +98,14 @@ public final class DownloadsPatch {
     private static void openLocalDownloads() {
         Activity activity = Utils.getActivity();
         if (activity == null) return;
+
+        // A single tap on the offline chip resolves its command twice, which would otherwise
+        // stack a second copy of the screen on top of the first.
+        final long now = System.currentTimeMillis();
+        if (now - lastLocalDownloadsOpenTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return;
+        lastLocalDownloadsOpenTime = now;
+        Logger.printDebug(() -> "Offline tab opened, showing the local downloads");
+
         Intent intent = new Intent();
         intent.setClassName(activity, "com.google.android.gms.common.api.GoogleApiActivity");
         intent.setPackage(activity.getPackageName());
@@ -282,11 +291,12 @@ public final class DownloadsPatch {
             if (inAppDownloads()) {
                 byte[] commandBytes = p1.toByteArray();
                 if (commandBytes != null && isOfflineBrowseCommand(commandBytes)) {
-                    Logger.printDebug(() -> "commandResolverOnClick: offline tab intercepted");
                     openLocalDownloads();
-                    return true;
+                    // The local screen is opened on top of the stock one rather than in place of
+                    // it. Consuming the command instead leaves the app with a navigation it never
+                    // finished, which it replays on the next start and cancels again.
+                    return false;
                 }
-
             }
 
             if (inAppDownloadButtonOnClick(map)) {
