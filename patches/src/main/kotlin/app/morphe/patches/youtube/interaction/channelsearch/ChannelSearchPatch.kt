@@ -28,7 +28,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChannelSearchPatch;"
 
@@ -58,60 +57,59 @@ val channelSearchPatch = bytecodePatch(
         )
 
         // A channel page browses by its channel id, which is what the search is scoped to.
-        BrowseFragmentOnCreateViewFingerprint.method.apply {
-            val browseDataIndex = indexOfFirstInstructionOrThrow {
-                getReference<StringReference>()?.string == BROWSE_DATA_MISSING_STRING
-            }
+        BrowseFragmentOnCreateViewFingerprint.let {
+            it.method.apply {
+                val browseDataIndex = it.instructionMatches.first().index
 
-            // The endpoint of the page is read just before it is checked for browse data.
-            val endpointIndex = indexOfFirstInstructionReversedOrThrow(browseDataIndex) {
-                opcode == Opcode.IGET_OBJECT &&
-                        getReference<FieldReference>()?.definingClass == definingClass
-            }
-            val endpointField = getInstruction<ReferenceInstruction>(endpointIndex)
-                .getReference<FieldReference>()!!
-
-            // Browse data is an extension of the endpoint, and reading it starts with that field.
-            val browseDataExtensionIndex = indexOfFirstInstructionOrThrow(endpointIndex) {
-                opcode == Opcode.SGET_OBJECT
-            }
-            val browseDataExtensionField =
-                getInstruction<ReferenceInstruction>(browseDataExtensionIndex)
+                // The endpoint of the page is read just before it is checked for browse data.
+                val endpointIndex = indexOfFirstInstructionReversedOrThrow(
+                    browseDataIndex,
+                    fieldAccess(opcode = Opcode.IGET_OBJECT, definingClass = "this")
+                )
+                val endpointField = getInstruction<ReferenceInstruction>(endpointIndex)
                     .getReference<FieldReference>()!!
 
-            val browseIdMethod = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-                returnType = "Ljava/lang/String;",
-                parameters = listOf(endpointField.type),
-                filters = listOf(
-                    fieldAccess(opcode = Opcode.SGET_OBJECT, reference = browseDataExtensionField)
+                // Browse data is an extension of the endpoint, and reading it starts with that field.
+                val browseDataExtensionIndex = indexOfFirstInstructionOrThrow(
+                    endpointIndex, Opcode.SGET_OBJECT
                 )
-            ).method
+                val browseDataExtensionField =
+                    getInstruction<ReferenceInstruction>(browseDataExtensionIndex)
+                        .getReference<FieldReference>()!!
 
-            // The fragment is handed the endpoint of every page it shows, including a page that
-            // is returned to and served from cache, which makes no browse request to read.
-            Fingerprint(
-                definingClass = definingClass,
-                returnType = "V",
-                parameters = listOf(endpointField.type),
-                filters = listOf(
-                    fieldAccess(opcode = Opcode.IPUT_OBJECT, reference = endpointField)
-                )
-            ).method.apply {
-                val insertIndex = indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.IPUT_OBJECT &&
-                            getReference<FieldReference>() == endpointField
-                } + 1
-                val freeRegister = findFreeRegister(insertIndex)
+                val browseIdMethod = Fingerprint(
+                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+                    returnType = "Ljava/lang/String;",
+                    parameters = listOf(endpointField.type),
+                    filters = listOf(
+                        fieldAccess(opcode = Opcode.SGET_OBJECT, reference = browseDataExtensionField)
+                    )
+                ).method
 
-                addInstructions(
-                    insertIndex,
-                    """
-                        invoke-static { p1 }, $browseIdMethod
-                        move-result-object v$freeRegister
-                        invoke-static { v$freeRegister }, $EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V
-                    """
-                )
+                // The fragment is handed the endpoint of every page it shows, including a page that
+                // is returned to and served from cache, which makes no browse request to read.
+                Fingerprint(
+                    definingClass = definingClass,
+                    returnType = "V",
+                    parameters = listOf(endpointField.type),
+                    filters = listOf(
+                        fieldAccess(opcode = Opcode.IPUT_OBJECT, reference = endpointField)
+                    )
+                ).method.apply {
+                    val insertIndex = indexOfFirstInstructionOrThrow(
+                        fieldAccess(opcode = Opcode.IPUT_OBJECT, reference = endpointField)
+                    ) + 1
+                    val freeRegister = findFreeRegister(insertIndex)
+
+                    addInstructions(
+                        insertIndex,
+                        """
+                            invoke-static { p1 }, $browseIdMethod
+                            move-result-object v$freeRegister
+                            invoke-static { v$freeRegister }, $EXTENSION_CLASS->setBrowseId(Ljava/lang/String;)V
+                        """
+                    )
+                }
             }
         }
 

@@ -11,13 +11,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.parametersMatch
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
-
-/**
- * Logged right after the endpoint of the page is read and found to carry no browse data.
- */
-internal const val BROWSE_DATA_MISSING_STRING =
-    "Browse Fragment was given a navigation endpoint without browse data."
 
 /**
  * Every browse page is shown by this one fragment, and the endpoint it is handed names the page.
@@ -30,7 +25,9 @@ internal object BrowseFragmentOnCreateViewFingerprint : Fingerprint(
         "Landroid/view/ViewGroup;",
         "Landroid/os/Bundle;"
     ),
-    strings = listOf(BROWSE_DATA_MISSING_STRING)
+    filters = listOf(
+        string("Browse Fragment was given a navigation endpoint without browse data.")
+    )
 )
 
 /**
@@ -44,7 +41,9 @@ internal object SearchResultsFragmentOnCreateViewFingerprint : Fingerprint(
         "Landroid/view/ViewGroup;",
         "Landroid/os/Bundle;"
     ),
-    strings = listOf("search_cache_key")
+    filters = listOf(
+        string("search_cache_key")
+    )
 )
 
 /**
