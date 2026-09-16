@@ -382,6 +382,12 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_channel_whitelist_channel_added">Kanal zur Whitelist hinzugefügt</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal von der Whitelist entfernt</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Diesen Kanal durchsuchen</string>
+  <string name="morphe_channel_search_summary">Wenn ein Kanal geöffnet ist, wird bei der Suche nur dieser Kanal durchsucht.</string>
+  <string name="morphe_channel_search_results_title">Suche: %s</string>
+  <string name="morphe_channel_search_no_results">Auf diesem Kanal wurde nichts gefunden.</string>
+  <string name="morphe_channel_search_failed">Dieser Kanal konnte nicht durchsucht werden.</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link in Zwischenablage kopiert</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link mit Zeitstempel in Zwischenablage kopiert</string>
@@ -607,8 +613,10 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_swipe_text_overlay_size_summary">Passt die Größe auf dem Bildschirm an (1-30)</string>
   <string name="morphe_swipe_threshold_title">Wischgrößenschwelle</string>
   <string name="morphe_swipe_threshold_summary">Legen Sie die erforderliche Wischdistanz fest, bevor eine Anpassung ausgelöst wird</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Empfindlichkeit der Lautstärken-Gestensteuerung</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Höhere Werte erhöhen die Lautstärkeveränderung pro Wischbewegung</string>
+  <string name="morphe_swipe_volume_distance_title">Empfindlichkeit der Lautstärken-Gestensteuerung</string>
+  <string name="morphe_swipe_volume_distance_summary">Höhere Werte erfordern mehr Wischen pro Lautstärkestufe</string>
+  <string name="morphe_swipe_volume_steps_title">Lautstärkestufen</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Gerätestandard</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Empfindlichkeit der Helligkeits-Gestensteuerung</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Höhere Werte erfordern mehr Wischbewegungen pro Helligkeitsstufe</string>
   <string name="morphe_swipe_speed_sensitivity_title">Empfindlichkeit der Wischbewegung für die Geschwindigkeit</string>
@@ -1036,11 +1044,12 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_miniplayer_type_entry_0">Deaktiviert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
-  <string name="morphe_miniplayer_type_entry_3">Tablets</string>
-  <string name="morphe_miniplayer_type_entry_4">Modern 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Modern 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Modern 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Modern 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimal 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Tablets</string>
+  <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Modern 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Abgerundete Ecken deaktivieren</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Ziehen und Ablegen deaktivieren</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Verhindert das Ziehen des minimierten Players in verschiedene Ecken des Bildschirms</string>

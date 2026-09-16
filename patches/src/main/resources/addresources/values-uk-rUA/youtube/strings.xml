@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Канал додано до білого списку</string>
   <string name="morphe_channel_whitelist_channel_removed">Канал видалено з білого списку</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Пошук на каналі</string>
+  <string name="morphe_channel_search_summary">Пошук під час відкритого каналу шукає лише в цьому каналі</string>
+  <string name="morphe_channel_search_results_title">Пошук: %s</string>
+  <string name="morphe_channel_search_no_results">Нічого не знайдено на цьому каналі</string>
+  <string name="morphe_channel_search_failed">Не вдалося виконати пошук на цьому каналі</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Посилання скопійовано в буфер обміну</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Посилання з позначкою часу скопійовано в буфер обміну</string>
@@ -516,7 +522,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Білий список реклами у спливному меню</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Додає пункт спливного меню, що дозволяє відтворення реклами на каналі цього відео</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ця функція може вимагати використання PotHelper або зміни «Підміна відеопотоків» на вхід через TV або Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ця функція може вимагати використання PotHelper або зміни \"Підміни відеопотоків\" на \"TV\" чи \"Android VR з входом\"</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Білий список швидкості у спливному меню</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Додає пункт спливного меню, що завжди відтворює канал цього відео зі швидкістю 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Не увійшли в систему</string>
@@ -606,8 +612,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_text_overlay_size_summary">Налаштовує розміру тексту на екрані (від 1 до 30)</string>
   <string name="morphe_swipe_threshold_title">Поріг величини жесту</string>
   <string name="morphe_swipe_threshold_summary">Встановлює мінімальну дистанцію свайпу для спрацювання</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Чутливість жесту гучності</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Вищі значення збільшують зміну гучності за один свайп</string>
+  <string name="morphe_swipe_volume_distance_title">Чутливість жесту гучності</string>
+  <string name="morphe_swipe_volume_distance_summary">Вищі значення потребують більшого свайпу на один крок гучності</string>
+  <string name="morphe_swipe_volume_steps_title">Кроки гучності</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Типова для пристрою</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чутливість жесту яскравості</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Вищі значення потребують більшого свайпу на один крок яскравості</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чутливість жесту швидкості</string>
@@ -915,7 +923,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Вимкнути жест свайпу вниз у портретному режимі</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Вимкнути жест свайпу вниз у ландшафтному режимі</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">Вимкнути жест масштабування щипком</string>
-  <string name="morphe_restore_pinch_to_zoom_title">Відновити зведення пальців для масштабування</string>
+  <string name="morphe_restore_pinch_to_zoom_title">Відновити масштабування щипком</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Відкривати відео у повноекранному режимі</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Вимкнено</string>
@@ -929,7 +937,7 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_button_title">Показувати кнопку масштабу відео</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Натисніть, щоб перемикати між \"Типовим\", \"Розтягнутим\" та \"Масштабованим\"</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Показувати лише в повноекранному режимі</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Приховати кнопку масштабування відео в портретному плеєрі</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Приховати кнопку масштабу відео в портретному плеєрі</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Показувати кнопку \"Вимкнути звук\"</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -1034,11 +1042,12 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">Вимкнено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартний</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімальний</string>
-  <string name="morphe_miniplayer_type_entry_3">Планшетний</string>
-  <string name="morphe_miniplayer_type_entry_4">Новітній 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Новітній 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Новітній 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Новітній 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Мінімальний 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Планшетний</string>
+  <string name="morphe_miniplayer_type_entry_5">Новітній 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Новітній 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Новітній 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Новітній 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Вимкнути закруглені кути</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Вимкнути перетягування</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Запобігає перетягування мінімізованого плеєра до різних кутів екрана</string>

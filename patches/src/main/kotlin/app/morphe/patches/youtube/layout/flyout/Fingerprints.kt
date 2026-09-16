@@ -16,8 +16,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -25,7 +25,6 @@ internal object FeedBottomSheetFlyoutFingerprint : Fingerprint (
     classFingerprint = Fingerprint(
         parameters = listOf("Landroid/os/Bundle;"),
         filters = listOf(
-            string("BaseBottomSheetDialogFragment.useNewUi"),
             string("BaseBottomSheetDialogFragment.peekHeightEnabled"),
             string("BaseBottomSheetDialogFragment.largeFormWidthDp"),
         )

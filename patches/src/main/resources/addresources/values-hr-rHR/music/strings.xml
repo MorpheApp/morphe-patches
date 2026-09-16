@@ -308,32 +308,24 @@ Kako biste osigurali sinkronizaciju scrobblinga tijekom reprodukcije u pozadini,
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Koristi tekst pjesme treće strane</string>
   <string name="morphe_music_lyrics_enabled_summary">Prikazuje stihove iz usluge treće strane, a kada se ništa ne pronađe, prikazuje ugrađene stihove</string>
-  <string name="morphe_music_lyrics_source_title">Usluga za stihove</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, zatim KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Usluga stihova</string>
+  <string name="morphe_music_lyrics_section_about_title">O aplikaciji</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">Dodirnite redak za pomicanje</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Dodir na redak vodi na taj trenutak u pjesmi</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Prikaži tipku za kopiranje</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Prikaži tipku za prijevod</string>
+  <string name="morphe_music_lyrics_saved">Spremljeno</string>
   <string name="morphe_music_lyrics_text_size_title">Veličina teksta</string>
   <string name="morphe_music_lyrics_text_size_summary">Veličina teksta stihova</string>
   <string name="morphe_music_lyrics_offset_ms_title">Vremenski pomak</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Pomakni sinkronizirane stihove naprijed ili natrag. Koristite pozitivnu vrijednost ako stihovi idu ispred pjesme</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Izvor: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Prevedi</string>
-  <string name="morphe_music_lyrics_translate_hide">Prikaži izvornik</string>
   <string name="morphe_music_lyrics_translating">Prijevod u tijeku…</string>
   <string name="morphe_music_lyrics_translate_failed">Prijevod stihova nije uspio</string>
-  <string name="morphe_music_lyrics_copy">Kopiraj</string>
   <string name="morphe_music_lyrics_copied">Kopirano u međuspremnik</string>
-  <string name="morphe_music_lyrics_about_title">O stihovima treće strane</string>
-  <string name="morphe_music_lyrics_about_summary">"Stihovi se pretražuju prema naslovu pjesme i izvođaču, tako da se za pjesmu s neuobičajenim metapodacima možda neće ništa pronaći ili će se pronaći pogrešna inačica
-
-Sinkronizirani stihovi prate reprodukciju. Ako se raziđu, prilagodite vremenski pomak
-
-Kada se ne pronađu stihovi treće strane, umjesto toga prikazuju se ugrađeni stihovi"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Onemogući podebljane ikone</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Vrati kartice Player Zatim, Stihovi i Povezano</string>

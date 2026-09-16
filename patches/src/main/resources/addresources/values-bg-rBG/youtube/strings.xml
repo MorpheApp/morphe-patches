@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Каналът е добавен към списъка с разрешени канали</string>
   <string name="morphe_channel_whitelist_channel_removed">Каналът е премахнат от списъка с разрешени канали</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Търсене в канала</string>
+  <string name="morphe_channel_search_summary">Докато каналът е отворен, се търси само в него</string>
+  <string name="morphe_channel_search_results_title">Търсене: %s</string>
+  <string name="morphe_channel_search_no_results">Нищо не е намерено в този канал</string>
+  <string name="morphe_channel_search_failed">Неуспешно търсене в този канал</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Връзка, копирана в клипборда</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Връзка с времеви печат, копирана в клипборда</string>
@@ -606,8 +612,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_text_overlay_size_summary">Скрий бутона „Докладвай“</string>
   <string name="morphe_swipe_threshold_title">Порог за свайп</string>
   <string name="morphe_swipe_threshold_summary">Скрий бутона „Remix“</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Чувствителност на свайп за volum</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">По-високите стойности увеличават промяната в силата на звука при всяко плъзгане.</string>
+  <string name="morphe_swipe_volume_distance_title">Чувствителност на плъзването за силата на звука</string>
+  <string name="morphe_swipe_volume_distance_summary">По-високите стойности изискват повече плъзване за стъпка на силата на звука</string>
+  <string name="morphe_swipe_volume_steps_title">Стъпки на силата на звука</string>
+  <string name="morphe_swipe_volume_steps_entry_default">По подразбиране на устройството</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чувствителност при плъзгане за яркост</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">По-високите стойности изискват повече плъзгане за всяка стъпка на яркостта.</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чувствителност при плъзгане за скорост</string>
@@ -1035,11 +1043,12 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">Изключен</string>
   <string name="morphe_miniplayer_type_entry_1">По подразбиране</string>
   <string name="morphe_miniplayer_type_entry_2">Минимален</string>
-  <string name="morphe_miniplayer_type_entry_3">Таблет</string>
-  <string name="morphe_miniplayer_type_entry_4">Модерен 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Модерен 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Модерен 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Модерен 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Минимален 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Таблет</string>
+  <string name="morphe_miniplayer_type_entry_5">Модерен 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Модерен 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Модерен 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Модерен 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Изключете округлини ръбове</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Изключете влачене и пускане</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Предотвратява плъзгането на минимизирания плейър в различни ъгли на екрана</string>

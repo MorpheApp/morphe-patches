@@ -308,9 +308,10 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">ใช้เนื้อเพลงของบุคคลที่สาม</string>
   <string name="morphe_music_lyrics_enabled_summary">แสดงเนื้อเพลงจากบริการของบุคคลที่สาม โดยย้อนกลับไปที่เนื้อเพลงในตัวเมื่อไม่พบ</string>
-  <string name="morphe_music_lyrics_source_title">บริการเนื้อเพลง</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, แล้ว KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">บริการเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_section_about_title">เกี่ยวกับ</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">แตะเส้นเพื่อค้นหา</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">การแตะเส้นจะข้ามไปยังช่วงเวลานั้นในเพลง</string>
   <string name="morphe_music_lyrics_show_copy_button_title">แสดงปุ่มคัดลอก</string>
@@ -318,22 +319,12 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_lyrics_text_size_title">ขนาดข้อความ</string>
   <string name="morphe_music_lyrics_text_size_summary">ขนาดของข้อความเนื้อเพลง</string>
   <string name="morphe_music_lyrics_offset_ms_title">การชดเชยเวลา</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">เลื่อนเนื้อเพลงที่ซิงค์ไปข้างหน้าหรือข้างหลัง ใช้ค่าบวกหากเนื้อเพลงวิ่งนำหน้าเพลง</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">แหล่งที่มา: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">แปลภาษา</string>
-  <string name="morphe_music_lyrics_translate_hide">แสดงต้นฉบับ</string>
   <string name="morphe_music_lyrics_translating">กำลังแปล...</string>
   <string name="morphe_music_lyrics_translate_failed">ไม่สามารถแปลเนื้อเพลงได้</string>
-  <string name="morphe_music_lyrics_copy">คัดลอก</string>
   <string name="morphe_music_lyrics_copied">คัดลอกไปยังคลิปบอร์ดแล้ว</string>
-  <string name="morphe_music_lyrics_about_title">เกี่ยวกับเนื้อเพลงของบุคคลที่สาม</string>
-  <string name="morphe_music_lyrics_about_summary">"เนื้อเพลงจะถูกค้นหาตามชื่อเพลงและศิลปิน ดังนั้นเพลงที่มีข้อมูลเมตาที่ผิดปกติอาจไม่พบอะไรเลย หรือพบเวอร์ชันที่ไม่ถูกต้อง
-
-เนื้อเพลงที่ซิงค์ตามการเล่น หากดริฟท์ ให้ปรับการชดเชยเวลา
-
-เมื่อไม่พบเนื้อเพลงของบุคคลที่สาม เนื้อเพลงในตัวจะแสดงแทน"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ปิดใช้งานไอคอนตัวหนา</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - กู้คืนแท็บถัดไป เนื้อเพลง และที่เกี่ยวข้องของเครื่องเล่น</string>

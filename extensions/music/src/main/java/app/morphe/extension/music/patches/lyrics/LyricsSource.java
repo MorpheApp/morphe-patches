@@ -13,5 +13,12 @@ package app.morphe.extension.music.patches.lyrics;
 public enum LyricsSource {
     LRCLIB_THEN_KUGOU,
     LRCLIB,
-    KUGOU
+    KUGOU,
+    NETEASE,
+    QQ,
+    BINIMUM,
+    UNISON,
+    AMLL,
+    CAPTIONS,
+    LOCAL
 }

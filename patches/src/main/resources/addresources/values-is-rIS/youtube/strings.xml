@@ -381,6 +381,12 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_channel_whitelist_channel_added">Rás bætt við á hvítlista</string>
   <string name="morphe_channel_whitelist_channel_removed">Rás fjarlægð úr hvítlista</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Leita í rásinni</string>
+  <string name="morphe_channel_search_summary">Meðan rás er opin er aðeins leitað í þeirri rás</string>
+  <string name="morphe_channel_search_results_title">Leit: %s</string>
+  <string name="morphe_channel_search_no_results">Ekkert fannst á þessari rás</string>
+  <string name="morphe_channel_search_failed">Ekki tókst að leita í þessari rás</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Tengill kopíruðu á klippiborðið</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Tengill með tímastampu kopíruðu á klippiborðið</string>
@@ -604,8 +610,10 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_swipe_text_overlay_size_summary">Stilltu stærð textans á skjánum (1-30)</string>
   <string name="morphe_swipe_threshold_title">Markmið sveipa</string>
   <string name="morphe_swipe_threshold_summary">Stilltu nauðsynlegt stríðufjarlægð áður en stilling gerist</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Hljóðstyrk næmis sveipa</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Hærri skilvirki auka hljóðbreytingu á birtanki</string>
+  <string name="morphe_swipe_volume_distance_title">Næmi hljóðstyrksstrokunar</string>
+  <string name="morphe_swipe_volume_distance_summary">Hærri gildi krefjast meiri strokunar fyrir hvert hljóðstyrksþrep.</string>
+  <string name="morphe_swipe_volume_steps_title">Hljóðstyrksþrep</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Sjálfgefið fyrir tækið</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Áframbreytingar á skærleika</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Hærri skilvirki krefjast meira dýfbjarg á breytingar</string>
   <string name="morphe_swipe_speed_sensitivity_title">Hraðafræðilegar áhrif</string>
@@ -1030,11 +1038,12 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_miniplayer_type_entry_0">Gerðu óvirkt</string>
   <string name="morphe_miniplayer_type_entry_1">Lágmark</string>
   <string name="morphe_miniplayer_type_entry_2">Tafla</string>
-  <string name="morphe_miniplayer_type_entry_3">Lágmark</string>
-  <string name="morphe_miniplayer_type_entry_4">Modern 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Modern 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Modern 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Modern 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Lágmark 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Spjald</string>
+  <string name="morphe_miniplayer_type_entry_5">Nútíma 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Nútíma 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Nútíma 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Nútíma 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Lokað hornum</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Lokað drag og slepp</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Kemur í veg fyrir að draga minnkaðan vörpuninn á mismunandi horn skjásins</string>

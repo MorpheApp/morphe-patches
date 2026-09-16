@@ -65,6 +65,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe play чорна</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Власна</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Це змінює іконку, яка показується в лаунчері.
+
+Це налаштування не змінить іконку в жодному з таких місць:
+• Список застосунків у системних налаштуваннях пристрою
+• Деякі push-сповіщення
+• Діалогове вікно \"Відкрити за допомогою\"
+• Іконка Android Auto
+
+Щоб змінити іконку всюди, пропатчіть знову та змініть параметр патчу \"Іконка застосунку\""</string>
   <string name="morphe_custom_branding_notification_icon_title">Іконка сповіщення</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Відповідати іконці застосунку</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>

@@ -8,7 +8,6 @@ package app.morphe.extension.reddit.settings;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-
 import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNew;
 
 import app.morphe.extension.shared.settings.BaseSettings;

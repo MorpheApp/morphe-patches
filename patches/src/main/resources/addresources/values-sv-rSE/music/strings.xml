@@ -308,32 +308,24 @@ För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Använd tredjeparts sångtexter</string>
   <string name="morphe_music_lyrics_enabled_summary">Visar sångtexter från en tredjepartstjänst, med fallback till de inbyggda sångtexterna när inga hittas</string>
-  <string name="morphe_music_lyrics_source_title">Sångtexttjänst</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, sedan KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Sångtextstjänst</string>
+  <string name="morphe_music_lyrics_section_about_title">Om</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">Tryck på en rad för att hoppa</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Genom att trycka på en rad hoppar du till det ögonblicket i låten</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Visa knappen Kopiera</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Visa knappen Översätt</string>
+  <string name="morphe_music_lyrics_saved">Sparad</string>
   <string name="morphe_music_lyrics_text_size_title">Textstorlek</string>
   <string name="morphe_music_lyrics_text_size_summary">Storleken på sångtexten</string>
   <string name="morphe_music_lyrics_offset_ms_title">Tidsförskjutning</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Förskjut synkroniserade sångtexter framåt eller bakåt. Använd ett positivt värde om sångtexten ligger före låten</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Källa: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Översätt</string>
-  <string name="morphe_music_lyrics_translate_hide">Visa original</string>
   <string name="morphe_music_lyrics_translating">Översätter…</string>
   <string name="morphe_music_lyrics_translate_failed">Kunde inte översätta sångtexten</string>
-  <string name="morphe_music_lyrics_copy">Kopiera</string>
   <string name="morphe_music_lyrics_copied">Kopierad till urklipp</string>
-  <string name="morphe_music_lyrics_about_title">Om tredjeparts sångtexter</string>
-  <string name="morphe_music_lyrics_about_summary">"Sångtexter hämtas baserat på låttitel och artist, så en låt med ovanlig metadata kanske inte hittar något, eller hittar fel version
-
-Synkroniserade sångtexter följer uppspelningen. Om de driver, justera tidsförskjutningen
-
-När inga tredjeparts sångtexter hittas visas de inbyggda sångtexterna istället"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 – Inaktivera ikoner i fet stil</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Återställ spelarens flikar Upp nästa, Sångtext och Relaterade</string>

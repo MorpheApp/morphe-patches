@@ -65,6 +65,15 @@ Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</str
   <string name="morphe_custom_branding_icon_entry_6">Morphe crno</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Prilagođeno</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Ovo menja ikonu koja se prikazuje u vašem pokretaču aplikacija.
+
+Ova postavka neće promeniti ikonu na sledećim mestima:
+• Lista aplikacija u sistemskim podešavanjima uređaja
+• Određena push obaveštenja
+• Birač aplikacija „Otvori pomoću“
+• Android Auto ikona
+
+Da biste promenili ikonu svuda, ponovo izvršite patch i promenite opciju patch-a „App icon“."</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona obaveštenja</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Uparite ikonu aplikacije</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe pleј</string>

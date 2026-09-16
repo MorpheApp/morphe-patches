@@ -381,6 +381,7 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">کانال به فهرست مجاز اضافه شد</string>
   <string name="morphe_channel_whitelist_channel_removed">کانال از فهرست مجاز حذف شد</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">پیوند در کلیپ‌بورد کپی شد</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">پیوند همراه با زمان‌نما در کلیپ‌بورد کپی شد</string>
@@ -405,6 +406,7 @@ Second \"item\" text"</string>
   <string name="morphe_vot_screen_title">ترجمهٔ صوتی</string>
   <string name="morphe_vot_screen_summary">زیرنویس‌های ویدئو را با تبدیل متن به گفتار روی دستگاه و همگام با پخش، بلند می‌خواند</string>
   <string name="morphe_vot_enabled_title">ترجمهٔ صوتی</string>
+  <string name="morphe_vot_enabled_summary">یک دکمه روی پخش‌کننده ویدیو نمایش می‌دهد. برای فعال یا غیرفعال کردن ترجمه ضربه بزنید و برای تنظیمات سریع لمس کرده و نگه دارید</string>
   <string name="morphe_vot_caption_language_title">زبان</string>
   <string name="morphe_vot_translation_service_title">ارائه‌دهندهٔ ترجمه</string>
   <string name="morphe_vot_original_audio_volume_title">بلندی صدای اصلی</string>
@@ -515,6 +517,7 @@ Second \"item\" text"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">فهرست مجاز تبلیغات در منوی بازشو</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">موردی به منوی بازشو اضافه می‌کند که اجازه می‌دهد تبلیغات در کانال آن ویدئو پخش شوند</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">این قابلیت ممکن است نیاز داشته باشد از PotHelper استفاده کنید یا گزینه‌ی \"Spoof video streams\" را برای ورود به حساب در TV یا Android VR تغییر دهید.</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">فهرست مجاز سرعت در منوی بازشو</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">موردی به منوی بازشو اضافه می‌کند که همیشه کانال آن ویدئو را با سرعت ۱٫۰× پخش می‌کند</string>
   <string name="morphe_queue_manager_check_failed_auth">وارد نشده‌اید</string>
@@ -604,8 +607,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_text_overlay_size_summary">اندازهٔ متن روی صفحه را تنظیم کنید (۱ تا ۳۰)</string>
   <string name="morphe_swipe_threshold_title">آستانهٔ اندازهٔ کشیدن</string>
   <string name="morphe_swipe_threshold_summary">فاصلهٔ لازم برای کشیدن پیش از فعال‌شدن تنظیم را تعیین کنید</string>
-  <string name="morphe_swipe_volume_sensitivity_title">حساسیت کشیدن برای بلندی صدا</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">مقادیر بالاتر، تغییر بلندی صدا در هر کشیدن را افزایش می‌دهند</string>
+  <string name="morphe_swipe_volume_distance_title">حساسیت کشیدن برای بلندی صدا</string>
+  <string name="morphe_swipe_volume_distance_summary">مقدار‌های بالاتر به ازای هر گام بلندی از صدا، نیاز به کشیدن انگشت بیشتری دارند</string>
+  <string name="morphe_swipe_volume_steps_title">گام‌های حجم</string>
+  <string name="morphe_swipe_volume_steps_entry_default">دستگاه پیش‌فرض</string>
   <string name="morphe_swipe_brightness_sensitivity_title">حساسیت کشیدن برای روشنایی</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">مقادیر بالاتر، برای هر گام روشنایی به کشیدن بیشتری نیاز دارند</string>
   <string name="morphe_swipe_speed_sensitivity_title">حساسیت کشیدن برای سرعت</string>
@@ -914,6 +919,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">غیرفعال‌کردن حرکت کشیدن به پایین در حالت عمودی</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">غیرفعال‌کردن حرکت کشیدن به پایین در حالت افقی</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">غیرفعال‌کردن حرکت نیشگون برای بزرگ‌نمایی</string>
+  <string name="morphe_restore_pinch_to_zoom_title">بازگرداندن بزرگ‌نمایی با حرکت دو انگشتی</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">بازکردن ویدئوها در حالت تمام‌صفحه</string>
   <string name="morphe_open_videos_fullscreen_entry_1">غیرفعال</string>
@@ -926,6 +932,8 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_video_scale_entry_zoom">بزرگ‌نمایی (برش برای پرکردن)</string>
   <string name="morphe_fullscreen_video_scale_button_title">نمایش دکمهٔ مقیاس ویدئو</string>
   <string name="morphe_fullscreen_video_scale_button_summary">برای جابه‌جایی بین حالت‌های پیش‌فرض، کشیده و بزرگ‌نمایی ضربه بزنید</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">فقط در حالت تمام‌صفحه نمایش داده شود</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">دکمه مقیاس ویدئو را در پخش‌کننده حالت عمودی مخفی کنید</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">نمایش دکمهٔ بی‌صدا</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -965,6 +973,7 @@ Second \"item\" text"</string>
 
 محدودیت: اگر «بازیابی نوار عملیات قدیمی ویدئو» خاموش باشد، ممکن است روی‌هم‌افتادگی «ویدئوهای بیشتر» در دسترس نباشد"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 — بازگردانی رفتار قبلی کپشن‌ها</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - بازیابی ذخیره در فهرست پخش</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - غیرفعال‌کردن آیکون‌های پررنگ</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - بازگرداندن نام کانال به زیر پخش‌کنندهٔ ویدئو</string>
@@ -1029,11 +1038,12 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">غیرفعال</string>
   <string name="morphe_miniplayer_type_entry_1">پیش‌فرض</string>
   <string name="morphe_miniplayer_type_entry_2">حداقلی</string>
-  <string name="morphe_miniplayer_type_entry_3">تبلت</string>
-  <string name="morphe_miniplayer_type_entry_4">مدرن ۱</string>
-  <string name="morphe_miniplayer_type_entry_5">مدرن ۲</string>
-  <string name="morphe_miniplayer_type_entry_6">مدرن ۳</string>
-  <string name="morphe_miniplayer_type_entry_7">مدرن ۴</string>
+  <string name="morphe_miniplayer_type_entry_3">مینیمال ۲</string>
+  <string name="morphe_miniplayer_type_entry_4">تبلت</string>
+  <string name="morphe_miniplayer_type_entry_5">مدرن ۱</string>
+  <string name="morphe_miniplayer_type_entry_6">مدرن ۲</string>
+  <string name="morphe_miniplayer_type_entry_7">مدرن ۳</string>
+  <string name="morphe_miniplayer_type_entry_8">مدرن ۴</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">غیرفعال‌کردن گوشه‌های گرد</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">غیرفعال‌کردن کشیدن و رهاکردن</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">از کشیدن پخش‌کنندهٔ کوچک‌شده به گوشه‌های مختلف صفحه جلوگیری می‌کند</string>

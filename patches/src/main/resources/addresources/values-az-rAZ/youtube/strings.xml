@@ -381,6 +381,12 @@ AiSlopList.com 'u açmaq və digər platformalar üçün yükləmələri görmə
   <string name="morphe_channel_whitelist_channel_added">Kanal ağ siyahıya əlavə olundu</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal ağ siyahıdan silindi</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Kanal daxilində axtar</string>
+  <string name="morphe_channel_search_summary">Kanal açıq olarkən axtarış etmək yalnız həmin kanalı axtarır</string>
+  <string name="morphe_channel_search_results_title">Axtarış: %s</string>
+  <string name="morphe_channel_search_no_results">Bu kanalda heç nə tapılmadı</string>
+  <string name="morphe_channel_search_failed">Bu kanalda axtarış etmək olmadı</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link buferə köçürüldü</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Vaxt möhürü olan link buferə köçürüldü</string>
@@ -516,6 +522,7 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Açılan menyuda reklam ağ siyahısı</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Həmin videonun kanalında reklamların oynadılmasına imkan verən açılan menyu bəndi əlavə edir</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Bu xüsusiyyət PotHelper istifadə etməyi və ya \"Video yayımlarını saxtalaşdırı\" TV və ya Android VR girişinə dəyişdirməyi tələb edə bilər.</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Açılan menyuda sürət ağ siyahısı</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Həmin videonun kanalını həmişə 1.0x sürətlə oynadan açılan menyu bəndi əlavə edir</string>
   <string name="morphe_queue_manager_check_failed_auth">Daxil olunmayıb</string>
@@ -605,8 +612,10 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_swipe_text_overlay_size_summary">Ekrandakı mətnin ölçüsünü nizamla (1-30)</string>
   <string name="morphe_swipe_threshold_title">Sürüşdürmə böyüklüyü həddi</string>
   <string name="morphe_swipe_threshold_summary">Nizamlama aktivləşməzdən əvvəl tələb olunan sürüşdürmə məsafəsini təyin et</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Səs səviyyəsi sürüşdürmə həssaslığı</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Daha yüksək dəyərlər hər sürüşdürmə üzrə səs dəyişikliyini artırır</string>
+  <string name="morphe_swipe_volume_distance_title">Səs səviyyəsi sürüşdürmə həssaslığı</string>
+  <string name="morphe_swipe_volume_distance_summary">Daha yüksək dəyərlər hər səs pilləsi üzrə daha çox sürüşdürmə tələb edir</string>
+  <string name="morphe_swipe_volume_steps_title">Səs səviyyəsi pillələri</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Cihaz standartı</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Parlaqlıq sürüşdürmə həssaslığı</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Daha yüksək dəyərlər hər parlaqlıq pilləsi üzrə daha çox sürüşdürmə tələb edir</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sürət sürüşdürmə həssaslığı</string>
@@ -915,6 +924,7 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Portret aşağı sürüşdürmə jestini qapat</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Landşaft aşağı sürüşdürmə jestini qapat</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">Yaxınlaşdırmaq üçün çimdikləmə jestini qapat</string>
+  <string name="morphe_restore_pinch_to_zoom_title">Böyütmək üçün çimdikləməni bərpa et</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Videoları tam ekran rejimində aç</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Qapalıdı</string>
@@ -1033,11 +1043,12 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_miniplayer_type_entry_0">Qapalıdı</string>
   <string name="morphe_miniplayer_type_entry_1">İlkin</string>
   <string name="morphe_miniplayer_type_entry_2">Ən kiçik</string>
-  <string name="morphe_miniplayer_type_entry_3">Planşet</string>
-  <string name="morphe_miniplayer_type_entry_4">Müasir 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Müasir 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Müasir 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Müasir 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Ən kiçik 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Planşet</string>
+  <string name="morphe_miniplayer_type_entry_5">Müasir 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Müasir 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Müasir 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Müasir 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Dəyirmi küncləri qapat</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Sürüklə və burax-ı qapat</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Kiçildilmiş oynadıcını ekranın müxtəlif künclərinə sürükləməyə mane olur</string>

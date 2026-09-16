@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">채널을 화이트리스트에 추가하였습니다</string>
   <string name="morphe_channel_whitelist_channel_removed">채널을 화이트리스트에서 제거하였습니다</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">채널 내 검색</string>
+  <string name="morphe_channel_search_summary">채널을 열어 둔 상태에서 검색하면 해당 채널 내에서만 검색합니다</string>
+  <string name="morphe_channel_search_results_title">검색: %s</string>
+  <string name="morphe_channel_search_no_results">이 채널에서 아무것도 찾을 수 없습니다</string>
+  <string name="morphe_channel_search_failed">이 채널을 검색할 수 없습니다</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">타임스탬프가 표기된 링크를 클립보드에 복사하였습니다</string>
@@ -608,8 +614,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_text_overlay_size_summary">화면 텍스트 크기를 설정할 수 있습니다 (1-30)</string>
   <string name="morphe_swipe_threshold_title">스와이프 한계치</string>
   <string name="morphe_swipe_threshold_summary">제스처 인식을 위해 얼마나 스와이프를 해야 할지를 설정할 수 있습니다</string>
-  <string name="morphe_swipe_volume_sensitivity_title">볼륨 스와이프 민감도</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">값이 높을수록 한 번의 스와이프로 변경되는 볼륨 크기가 증가합니다</string>
+  <string name="morphe_swipe_volume_distance_title">볼륨 스와이프 민감도</string>
+  <string name="morphe_swipe_volume_distance_summary">값이 높을수록 볼륨 단계당 더 많은 스와이프가 필요합니다.</string>
+  <string name="morphe_swipe_volume_steps_title">볼륨 단계</string>
+  <string name="morphe_swipe_volume_steps_entry_default">기기 기본값</string>
   <string name="morphe_swipe_brightness_sensitivity_title">밝기 스와이프 민감도</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">값이 높을수록 밝기 단계를 변경하려면 더 많이 스와이프해야 합니다</string>
   <string name="morphe_swipe_speed_sensitivity_title">속도 스와이프 민감도</string>
@@ -1036,12 +1044,13 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_type_title">미니 플레이어 유형</string>
   <string name="morphe_miniplayer_type_entry_0">사용 안함</string>
   <string name="morphe_miniplayer_type_entry_1">기본값</string>
-  <string name="morphe_miniplayer_type_entry_2">최소화</string>
-  <string name="morphe_miniplayer_type_entry_3">태블릿</string>
-  <string name="morphe_miniplayer_type_entry_4">모던 스타일 1</string>
-  <string name="morphe_miniplayer_type_entry_5">모던 스타일 2</string>
-  <string name="morphe_miniplayer_type_entry_6">모던 스타일 3</string>
-  <string name="morphe_miniplayer_type_entry_7">모던 스타일 4</string>
+  <string name="morphe_miniplayer_type_entry_2">최소화 1</string>
+  <string name="morphe_miniplayer_type_entry_3">최소화 2</string>
+  <string name="morphe_miniplayer_type_entry_4">태블릿</string>
+  <string name="morphe_miniplayer_type_entry_5">모던 스타일 1</string>
+  <string name="morphe_miniplayer_type_entry_6">모던 스타일 2</string>
+  <string name="morphe_miniplayer_type_entry_7">모던 스타일 3</string>
+  <string name="morphe_miniplayer_type_entry_8">모던 스타일 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">둥근 모서리 비활성화하기</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">드래그 &amp; 드롭 비활성화하기</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">최소화된 플레이어를 화면의 다른 모서리로 드래그하는 것을 방지할 수 있습니다</string>

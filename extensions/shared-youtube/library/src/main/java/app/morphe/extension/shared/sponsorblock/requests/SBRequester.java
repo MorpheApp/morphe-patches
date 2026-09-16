@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/2524
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.sponsorblock.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -56,11 +66,6 @@ public class SBRequester {
      */
     private static final int TIMEOUT_HTTP_DEFAULT_MILLISECONDS = 10000;
 
-    /**
-     * Response code of a successful API call.
-     */
-    private static final int HTTP_STATUS_CODE_SUCCESS = 200;
-
     @Nullable
     private static volatile UserStats lastFetchedStats;
 
@@ -88,7 +93,7 @@ public class SBRequester {
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.GET_SEGMENTS, videoId, SegmentCategory.sponsorBlockAPIFetchCategories);
             final int responseCode = connection.getResponseCode();
 
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 JSONArray responseArray = Requester.parseJSONArray(connection);
                 FloatSetting minDurationSetting = settings().segmentMinDurationSeconds();
                 final long minSegmentDuration = minDurationSetting == null
@@ -203,7 +208,7 @@ public class SBRequester {
                     "Morphe/" + Utils.getAppVersionName());
             final int responseCode = connection.getResponseCode();
 
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 Utils.showToastLong(str("morphe_sb_submit_succeeded"));
                 return;
             }
@@ -241,7 +246,7 @@ public class SBRequester {
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.VIEWED_SEGMENT, segment.UUID);
             final int responseCode = connection.getResponseCode();
 
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 Logger.printDebug(() -> "Successfully sent view count for segment: " + segment);
             } else {
                 Logger.printDebug(() -> "Failed to sent view count for segment: " + segment.UUID
@@ -272,7 +277,7 @@ public class SBRequester {
 
                 String userMessage;
                 switch (responseCode) {
-                    case HTTP_STATUS_CODE_SUCCESS:
+                    case Requester.HTTP_STATUS_CODE_SUCCESS:
                         Logger.printDebug(() -> "Vote success for segment: " + segment);
                         return;
                     case 403:
@@ -332,7 +337,7 @@ public class SBRequester {
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.CHANGE_USERNAME, SponsorBlockHelpers.getOrGenerateSBPrivateUserID(), username);
             final int responseCode = connection.getResponseCode();
             String responseMessage = connection.getResponseMessage();
-            if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
             return str("morphe_sb_stats_username_change_unknown_error", responseCode, responseMessage);

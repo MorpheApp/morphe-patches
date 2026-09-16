@@ -381,6 +381,12 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_channel_whitelist_channel_added">Dodano kanał do białej listy</string>
   <string name="morphe_channel_whitelist_channel_removed">Usunięto kanał z białej listy</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Szukaj w kanale</string>
+  <string name="morphe_channel_search_summary">Wyszukiwanie przy otwartym kanale obejmuje wyłącznie ten kanał</string>
+  <string name="morphe_channel_search_results_title">Wyszukiwanie: %s</string>
+  <string name="morphe_channel_search_no_results">Nic nie znaleziono na tym kanale</string>
+  <string name="morphe_channel_search_failed">Nie udało się przeszukać tego kanału</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Skopiowano link do schowka</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Skopiowano link z czasem do schowka</string>
@@ -516,7 +522,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Biała lista reklam w menu filmu</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która pozwala na wyświetlanie reklam na kanale danego filmu</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelper lub zmiany opcji „Spoofowanie strumieni wideo” na TV lub logowanie Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Ta funkcja może wymagać użycia PotHelpera lub zmiany opcji \"Fałszowanie strumieni filmów\" na TV lub Android VR.</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Biała lista prędkości w menu filmu</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Dodaje do menu opcję, która zawsze odtwarza kanał danego filmu z prędkością 1x</string>
   <string name="morphe_queue_manager_check_failed_auth">Nie zalogowano</string>
@@ -581,9 +587,9 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_zone_label_volume">Głośność</string>
   <string name="morphe_swipe_zone_label_native">Oryginalne</string>
   <string name="morphe_swipe_zone_label_off">Wyłączone</string>
-  <string name="morphe_swipe_ignore_when_locked_title">Ignoruj przeciągnięcia przy zablokowanym ekranie</string>
+  <string name="morphe_swipe_ignore_when_locked_title">Ignoruj przesunięcia przy zablokowanym ekranie</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the player menu item. -->
-  <string name="morphe_swipe_ignore_when_locked_summary">Gesty przeciągania są ignorowane, gdy odtwarzacz jest zablokowany funkcją \"Ekran blokady\"</string>
+  <string name="morphe_swipe_ignore_when_locked_summary">Gesty przesunięcia są ignorowane, gdy odtwarzacz jest zablokowany funkcją \"Ekran blokady\"</string>
   <string name="morphe_swipe_press_to_engage_title">Włącz wymóg przytrzymania dla gestów</string>
   <string name="morphe_swipe_press_to_engage_summary">Wymaga przytrzymania, zanim gest przesunięcia zostanie rozpoznany</string>
   <string name="morphe_swipe_haptic_feedback_title">Włącz wibracje</string>
@@ -606,8 +612,10 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_text_overlay_size_summary">Dostosuj rozmiar tekstu wyświetlanego na ekranie (1-30)</string>
   <string name="morphe_swipe_threshold_title">Próg aktywacji gestu</string>
   <string name="morphe_swipe_threshold_summary">Ustaw wymagany dystans przesunięcia palcem, zanim rozpocznie się regulacja</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Czułość gestu głośności</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Wyższe wartości zwiększają zmianę głośności przy przesunięciu palcem</string>
+  <string name="morphe_swipe_volume_distance_title">Czułość gestu głośności</string>
+  <string name="morphe_swipe_volume_distance_summary">Wyższe wartości wymagają dłuższego przesunięcia palcem dla każdej zmiany głośności</string>
+  <string name="morphe_swipe_volume_steps_title">Kroki głośności</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Domyślnie dla urządzenia</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Czułość gestu jasności</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Wyższe wartości wymagają dłuższego przesunięcia przy zmianie poziomu jasności</string>
   <string name="morphe_swipe_speed_sensitivity_title">Czułość gestu prędkości</string>
@@ -911,11 +919,11 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesty trybu pełnoekranowego</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gesty odtwarzacza w trybie pełnoekranowym</string>
-  <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Wyłącz gest przeciągnięcia w górę w orientacji pionowej</string>
-  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Wyłącz gest przeciągnięcia w dół w orientacji pionowej</string>
-  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Wyłącz gest przeciągnięcia w dół w orientacji poziomej</string>
+  <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Wyłącz gest przesunięcia w górę w orientacji pionowej</string>
+  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Wyłącz gest przesunięcia w dół w orientacji pionowej</string>
+  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Wyłącz gest przesunięcia w dół w orientacji poziomej</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">Wyłącz gest powiększania palcami</string>
-  <string name="morphe_restore_pinch_to_zoom_title">Przywróć powiększanie gestem szczypania</string>
+  <string name="morphe_restore_pinch_to_zoom_title">Przywróć powiększanie przez uszczypnięcie</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Otwieraj filmy w trybie pełnoekranowym</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Wyłączone</string>
@@ -929,7 +937,7 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_fullscreen_video_scale_button_title">Pokaż przycisk skalowania filmu</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Dotknij, aby przełączać między trybami: Domyślne, Rozciągnij i Powiększ</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Pokaż tylko na pełnym ekranie</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ukryj przycisk skalowania wideo w odtwarzaczu pionowym</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Ukryj przycisk skalowania filmu w odtwarzaczu pionowym</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Pokaż przycisk Wycisz</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -969,7 +977,7 @@ Układ samochodowy
 
 Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączona, nakładka \"Więcej filmów\" może być niedostępna"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Przywróć stare zachowanie napisów</string>
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Przywraca stare zachowanie napisów</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Przywraca stare menu dodawania do playlisty</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Wyłącza pogrubione ikony</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Przywraca nazwę kanału pod odtwarzaczem</string>
@@ -1034,11 +1042,12 @@ Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_miniplayer_type_entry_0">Wyłączony</string>
   <string name="morphe_miniplayer_type_entry_1">Domyślny</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalny</string>
-  <string name="morphe_miniplayer_type_entry_3">Tabletowy</string>
-  <string name="morphe_miniplayer_type_entry_4">Nowoczesny 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Nowoczesny 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Nowoczesny 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Nowoczesny 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimalny 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Tabletowy</string>
+  <string name="morphe_miniplayer_type_entry_5">Nowoczesny 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Nowoczesny 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Nowoczesny 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Nowoczesny 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Wyłącz zaokrąglone rogi</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Wyłącz gest przeciągnięcia i upuszczenia</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Zapobiega przeciąganiu miniodtwarzacza w różne rogi ekranu</string>
@@ -1067,7 +1076,7 @@ Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_theme_color_light_entry_12">Jasnożółty</string>
   <string name="morphe_theme_color_light_entry_13">Jasnopomarańczowy</string>
   <string name="morphe_theme_color_light_entry_14">Jasnoczerwony</string>
-  <string name="morphe_theme_color_light_custom_title">Niestandardowe jasne tło</string>
+  <string name="morphe_theme_color_light_custom_title">Własne jasne tło</string>
   <string name="morphe_theme_color_light_custom_summary">Ustaw kolor tła dla jasnego motywu</string>
   <string name="morphe_theme_color_change_foreground_title">Zmień kolor pierwszego planu</string>
   <string name="morphe_theme_color_change_foreground_summary">Użyj koloru motywu dla tekstu i ikon</string>
@@ -1077,7 +1086,7 @@ Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_splash_screen_animation_style_entry_1">Wyłączony</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Kolorowy</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Monochromatyczny</string>
-  <string name="morphe_seekbar_custom_color_title">Włącz niestandardowy kolor paska postępu</string>
+  <string name="morphe_seekbar_custom_color_title">Włącz własny kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_primary_title">Kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Ustaw główny kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_accent_title">Kolor akcentu paska postępu</string>
@@ -1181,12 +1190,12 @@ Dotknij tutaj, aby otworzyć DeArrow.ajay.app"</string>
   <string name="morphe_video_quality_dialog_button_title">Pokaż przycisk Jakość</string>
   <string name="morphe_video_quality_dialog_button_summary">Przytrzymaj, aby zresetować jakość do domyślnej</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
-  <string name="morphe_custom_speed_menu_title">Pokaż menu niestandardowej prędkości</string>
+  <string name="morphe_custom_speed_menu_title">Pokaż własne menu prędkości odtwarzania</string>
   <string name="morphe_restore_old_speed_menu_title">Przywróć stare menu prędkości odtwarzania</string>
-  <string name="morphe_custom_playback_speeds_title">Niestandardowe prędkości odtwarzania</string>
+  <string name="morphe_custom_playback_speeds_title">Własne prędkości odtwarzania</string>
   <string name="morphe_custom_playback_speeds_summary">Wprowadź preferowaną prędkość odtwarzania</string>
-  <string name="morphe_custom_playback_speeds_invalid">Prędkości niestandardowe muszą być mniejsze niż %s</string>
-  <string name="morphe_custom_playback_speeds_parse_exception">Nieprawidłowe niestandardowe prędkości odtwarzania</string>
+  <string name="morphe_custom_playback_speeds_invalid">Własne prędkości odtwarzania muszą być mniejsze niż %s</string>
+  <string name="morphe_custom_playback_speeds_parse_exception">Nieprawidłowe własne prędkości odtwarzania</string>
   <string name="morphe_custom_playback_speeds_auto">Automatyczna</string>
   <string name="morphe_speed_tap_and_hold_title">Prędkość po przytrzymaniu</string>
   <string name="morphe_speed_tap_and_hold_summary">Ustaw mnożnik prędkości podczas przytrzymania ekranu. Wartość 0 wyłącza funkcję</string>

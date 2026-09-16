@@ -410,6 +410,13 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_double_tap_length_180s" translatable="false">180</string>
     <string name="morphe_double_tap_length_240s" translatable="false">240</string>
 
+    <!-- interaction.channelsearch.channelSearchPatch -->
+    <string name="morphe_channel_search_title">Search within channel</string>
+    <string name="morphe_channel_search_summary">Searching while a channel is open searches only that channel</string>
+    <string name="morphe_channel_search_results_title">Search: %s</string>
+    <string name="morphe_channel_search_no_results">Nothing found on this channel</string>
+    <string name="morphe_channel_search_failed">Could not search this channel</string>
+
     <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
     <string name="morphe_share_copy_link_button_success">Link copied to clipboard</string>
     <string name="morphe_share_copy_link_with_timestamp_button_success">Link with timestamp copied to clipboard</string>
@@ -658,8 +665,10 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_text_overlay_size_summary">Adjust the size of the on-screen text (1-30)</string>
     <string name="morphe_swipe_threshold_title">Swipe magnitude threshold</string>
     <string name="morphe_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
-    <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
-    <string name="morphe_swipe_volume_sensitivity_summary">Higher values increase the volume change per swipe</string>
+    <string name="morphe_swipe_volume_distance_title">Volume swipe sensitivity</string>
+    <string name="morphe_swipe_volume_distance_summary">Higher values require more swiping per volume step</string>
+    <string name="morphe_swipe_volume_steps_title">Volume steps</string>
+    <string name="morphe_swipe_volume_steps_entry_default">Device default</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
     <string name="morphe_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
@@ -1128,11 +1137,12 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>
     <string name="morphe_miniplayer_type_entry_1">Default</string>
     <string name="morphe_miniplayer_type_entry_2">Minimal</string>
-    <string name="morphe_miniplayer_type_entry_3">Tablet</string>
-    <string name="morphe_miniplayer_type_entry_4">Modern 1</string>
-    <string name="morphe_miniplayer_type_entry_5">Modern 2</string>
-    <string name="morphe_miniplayer_type_entry_6">Modern 3</string>
-    <string name="morphe_miniplayer_type_entry_7">Modern 4</string>
+    <string name="morphe_miniplayer_type_entry_3">Minimal 2</string>
+    <string name="morphe_miniplayer_type_entry_4">Tablet</string>
+    <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
+    <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
+    <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
+    <string name="morphe_miniplayer_type_entry_8">Modern 4</string>
     <string name="morphe_miniplayer_disable_rounded_corners_title">Disable rounded corners</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_title">Disable drag and drop</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_summary">Prevents dragging the minimized player to different corners of the screen</string>

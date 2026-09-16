@@ -9,6 +9,9 @@ package app.morphe.extension.music.patches.lyrics.requests;
 
 import androidx.annotation.Nullable;
 
+import java.util.Collections;
+import java.util.List;
+
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 
@@ -29,4 +32,20 @@ public interface LyricsProvider {
      */
     @Nullable
     Lyrics fetch(TrackInfo track) throws Exception;
+
+    /**
+     * Returns all candidate lyrics for the track, ordered by relevance.
+     * The first candidate is typically the best match.
+     */
+    default List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+        Lyrics single = fetch(track);
+        return (single != null) ? Collections.singletonList(single) : Collections.emptyList();
+    }
+
+    /**
+     * Whether this provider supports multiple candidates per track.
+     */
+    default boolean hasCandidates() {
+        return false;
+    }
 }

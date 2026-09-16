@@ -383,6 +383,12 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <string name="morphe_channel_whitelist_channel_added">Kanal je dodan na popis dopuštenih</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal je uklonjen s popisa dopuštenih</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Pretraži unutar kanala</string>
+  <string name="morphe_channel_search_summary">Dok je kanal otvoren, pretraga se ograničava samo na taj kanal</string>
+  <string name="morphe_channel_search_results_title">Pretraga: %s</string>
+  <string name="morphe_channel_search_no_results">Na ovom kanalu nema rezultata</string>
+  <string name="morphe_channel_search_failed">Pretraživanje ovog kanala nije uspjelo</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Poveznica kopirana u međuspremnik</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Poveznica s vremenskim žigom kopirana u međuspremnik</string>
@@ -608,8 +614,10 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_swipe_text_overlay_size_summary">Prilagodite veličinu teksta na zaslonu (1-30)</string>
   <string name="morphe_swipe_threshold_title">Trajanje popisa jakosti</string>
   <string name="morphe_swipe_threshold_summary">Postavite potrebnu udaljenost povlačenja prije nego što se aktivira prilagodba</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Vrijednost popisa jakosti</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Veće vrijednosti povećavaju promjenu glasnoće po povlačenju</string>
+  <string name="morphe_swipe_volume_distance_title">Osjetljivost klizanja za glasnoću</string>
+  <string name="morphe_swipe_volume_distance_summary">Veće vrijednosti zahtijevaju više klizanja po koraku glasnoće</string>
+  <string name="morphe_swipe_volume_steps_title">Koraci glasnoće</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Zadano za uređaj</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Osjetljivost povlačenja svjetline</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Veće vrijednosti zahtijevaju više povlačenja po koraku svjetline</string>
   <string name="morphe_swipe_speed_sensitivity_title">Osjetljivost povlačenja brzine</string>
@@ -1037,11 +1045,12 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
   <string name="morphe_miniplayer_type_entry_1">Zadano</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalno</string>
-  <string name="morphe_miniplayer_type_entry_3">Tablet</string>
-  <string name="morphe_miniplayer_type_entry_4">Modern 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Modern 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Modern 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Modern 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimalni 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Tablet</string>
+  <string name="morphe_miniplayer_type_entry_5">Moderni 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Moderan 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Moderan 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Moderan 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Onemogućite zaokrugljene uglove</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Onemogu drag and drop</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Sprječava povlačenje minimiziranog playera u različite kutove zaslona</string>

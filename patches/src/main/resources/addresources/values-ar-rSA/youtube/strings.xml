@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">تمت إضافة القناة إلى القائمة المسموح بها</string>
   <string name="morphe_channel_whitelist_channel_removed">تم إزالة القناة من القائمة المسموح بها</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">البحث داخل القناة</string>
+  <string name="morphe_channel_search_summary">عند إجراء البحث أثناء فتح قناة، يقتصر البحث على تلك القناة فقط</string>
+  <string name="morphe_channel_search_results_title">البحث: %s</string>
+  <string name="morphe_channel_search_no_results">لا توجد نتائج في هذه القناة</string>
+  <string name="morphe_channel_search_failed">تعذر البحث في هذه القناة</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">تم نسخ الرابط إلى الحافظة</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">تم نسخ الرابط مع الطابع الزمني إلى الحافظة</string>
@@ -520,7 +526,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">القائمة المسموح بها للإعلانات في القائمة المنبثقة</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">يضيف عنصرًا في القائمة المنبثقة يتيح تشغيل الإعلانات على قناة ذلك الفيديو</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">قد تتطلب هذه الميزة استخدام PotHelper أو تغيير \"انتحال تدفقات الفيديو\" إلى تسجيل الدخول عبر TV أو Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">قد تتطلب هذه الميزة استخدام PotHelper أو تغيير \'Spoof Video Streams\' إلى TV أو تسجيل الدخول عبر Android VR.</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">القائمة المسموح بها للسرعة في القائمة المنبثقة</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">يضيف عنصرًا في القائمة المنبثقة يُشغّل قناة ذلك الفيديو دائمًا بسرعة 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">تسجيل الدخول غير ممكن</string>
@@ -610,8 +616,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_text_overlay_size_summary">ضبط حجم النص على الشاشة (1-30)</string>
   <string name="morphe_swipe_threshold_title">مقدار حد التمرير</string>
   <string name="morphe_swipe_threshold_summary">تعيين مسافة التمرير المطلوبة قبل بدء التعديل</string>
-  <string name="morphe_swipe_volume_sensitivity_title">حساسية تمرير مستوى الصوت</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">القيم الأعلى تزيد من تغيُّر مستوى الصوت مع كل تمريرة</string>
+  <string name="morphe_swipe_volume_distance_title">حساسية تمرير مستوى الصوت</string>
+  <string name="morphe_swipe_volume_distance_summary">تتطلب القيم الأعلى مزيدًا من التمرير لكل درجة مستوى الصوت</string>
+  <string name="morphe_swipe_volume_steps_title">درجات مستوى الصوت</string>
+  <string name="morphe_swipe_volume_steps_entry_default">إعداد الجهاز الافتراضي</string>
   <string name="morphe_swipe_brightness_sensitivity_title">حساسية تمرير مستوى السطوع</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل مستوى سطوع</string>
   <string name="morphe_swipe_speed_sensitivity_title">حساسية تمرير السرعة</string>
@@ -921,7 +929,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">تعطيل إيماءة التمرير لأسفل في الوضع الرأسي</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">تعطيل إيماءة التمرير لأسفل في الوضع الأفقي</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">تعطيل إيماءة التكبير بالإصبع</string>
-  <string name="morphe_restore_pinch_to_zoom_title">استعادة الضغط بالقرص للتكبير</string>
+  <string name="morphe_restore_pinch_to_zoom_title">استعادة التكبير بالإصبع</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">فتح الفيديوهات بوضع ملء الشاشة</string>
   <string name="morphe_open_videos_fullscreen_entry_1">معطّل</string>
@@ -975,7 +983,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 
 القيود: إذا تم إيقاف تشغيل 'استعادة شريط إجراءات الفيديو القديم'، فقد لا يتوفر عنصر 'المزيد من الفيديوهات'"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - استعادة سلوك التسميات التوضيحية القديم</string>
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - استعادة سلوك الترجمة القديم</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - استعادة الحفظ القديم إلى قائمة التشغيل</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - تعطيل الأيقونات العريضة</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - استعادة اسم القناة أسفل مشغل الفيديو</string>
@@ -1040,11 +1048,12 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">إفتراضي</string>
   <string name="morphe_miniplayer_type_entry_2">بسيط</string>
-  <string name="morphe_miniplayer_type_entry_3">الجهاز اللوحي</string>
-  <string name="morphe_miniplayer_type_entry_4">حديث 1</string>
-  <string name="morphe_miniplayer_type_entry_5">حديث 2</string>
-  <string name="morphe_miniplayer_type_entry_6">حديث 3</string>
-  <string name="morphe_miniplayer_type_entry_7">حديث 4</string>
+  <string name="morphe_miniplayer_type_entry_3">بسيط 2</string>
+  <string name="morphe_miniplayer_type_entry_4">الجهاز اللوحي</string>
+  <string name="morphe_miniplayer_type_entry_5">حديث 1</string>
+  <string name="morphe_miniplayer_type_entry_6">حديث 2</string>
+  <string name="morphe_miniplayer_type_entry_7">حديث 3</string>
+  <string name="morphe_miniplayer_type_entry_8">حديث 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">تعطيل الزوايا الدائرية</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">تعطيل السحب والإفلات</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">يمنع سحب المشغل المصغر إلى زوايا مختلفة من الشاشة</string>

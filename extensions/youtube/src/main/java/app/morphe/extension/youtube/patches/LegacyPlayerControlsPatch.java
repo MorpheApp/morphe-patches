@@ -55,6 +55,16 @@ public class LegacyPlayerControlsPatch {
     /**
      * Injection point.
      */
+    public static boolean forcePlayerSeekbar(boolean original) {
+        if (!original) {
+            Logger.printDebug(() -> "Player seekbar feature flag is off");
+        }
+        return true;
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean usePlayerBottomControlsExploderLayout(boolean original) {
         return !RESTORE_OLD_PLAYER_BUTTONS;
     }

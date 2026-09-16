@@ -155,7 +155,9 @@ YouTube Music 8.x — pudar silang hanya berkesan pada versi 9.x dan yang lebih 
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- layout.lyrics.lyricsPatch -->
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_section_about_title">Mengenai</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->

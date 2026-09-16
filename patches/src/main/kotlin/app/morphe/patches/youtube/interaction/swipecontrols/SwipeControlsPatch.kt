@@ -88,8 +88,12 @@ private val swipeControlsResourcePatch = resourcePatch {
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
             ),
             NonInteractivePreference(
-                key = "morphe_swipe_volume_sensitivity",
+                key = "morphe_swipe_volume_distance",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
+            ),
+            ListPreference(
+                "morphe_swipe_volume_steps",
+                tag = "app.morphe.extension.youtube.settings.preference.SwipeVolumeStepsPreference"
             ),
             NonInteractivePreference(
                 key = "morphe_swipe_speed_sensitivity",

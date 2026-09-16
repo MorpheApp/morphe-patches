@@ -18,6 +18,9 @@ jobs:
           fetch-depth: 0
           clean: true
 
+      - name: Reset Crowdin branch
+        run: git push origin dev:crowdin --force
+
       - name: Pull strings from Crowdin
         uses: crowdin/github-action@v3
         with:

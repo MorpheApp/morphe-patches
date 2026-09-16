@@ -65,6 +65,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe Play（ブラック）</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">カスタム</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"この設定により、アプリ ランチャーに表示されるアイコンが変更されます。
+
+この設定では、次の場所のアイコンは変更されません:
+• 端末のシステム設定のアプリ一覧
+• 一部のプッシュ通知
+• 「アプリで開く」ピッカー
+• Android Auto アイコン
+
+アイコンをすべての場所で変更するには、再度パッチを適用し、「アプリアイコン」パッチ オプションを変更してください"</string>
   <string name="morphe_custom_branding_notification_icon_title">通知アイコン</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">アプリアイコンに合わせる</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
@@ -146,7 +155,7 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <string name="morphe_proxy_auth_username_summary">プロキシ サーバーへの Basic 認証で使用するユーザー名</string>
   <string name="morphe_proxy_auth_password_title">パスワード</string>
   <string name="morphe_proxy_auth_password_summary">プロキシ サーバーへの Basic 認証で使用するパスワード</string>
-  <string name="morphe_proxy_allow_direct_fallback_title">失敗時に直接接続に切り替える</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">失敗時の直接接続を許可</string>
   <string name="morphe_proxy_allow_direct_fallback_summary">プロキシ接続に失敗したときに直接接続に切り替えます</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">全画面広告を非表示</string>

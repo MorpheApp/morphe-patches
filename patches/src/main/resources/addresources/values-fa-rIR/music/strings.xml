@@ -308,32 +308,25 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">استفاده از متن آهنگ شخص ثالث</string>
   <string name="morphe_music_lyrics_enabled_summary">متن آهنگ را از سرویس شخص ثالث نشان می‌دهد و اگر چیزی پیدا نشود به متن داخلی برمی‌گردد</string>
-  <string name="morphe_music_lyrics_source_title">سرویس متن آهنگ</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB، سپس KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">سرویس متن آهنگ</string>
+  <string name="morphe_music_lyrics_section_about_title">درباره</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_token_dialog_get_token">دریافت توکن</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">برای جست‌وجو روی یک خط ضربه بزنید</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">با ضربه‌زدن روی یک خط، به همان لحظه در آهنگ می‌روید</string>
   <string name="morphe_music_lyrics_show_copy_button_title">نمایش دکمهٔ کپی</string>
   <string name="morphe_music_lyrics_show_translate_button_title">نمایش دکمهٔ ترجمه</string>
+  <string name="morphe_music_lyrics_saved">ذخیره‌شده</string>
   <string name="morphe_music_lyrics_text_size_title">اندازهٔ متن</string>
   <string name="morphe_music_lyrics_text_size_summary">اندازهٔ متن آهنگ</string>
   <string name="morphe_music_lyrics_offset_ms_title">تغییر زمان‌بندی</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">متن همگام‌شدهٔ آهنگ را جلو یا عقب ببرید. اگر متن از آهنگ جلوتر است، مقدار مثبت وارد کنید</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">منبع: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">ترجمه</string>
-  <string name="morphe_music_lyrics_translate_hide">نمایش متن اصلی</string>
   <string name="morphe_music_lyrics_translating">در حال ترجمه…</string>
   <string name="morphe_music_lyrics_translate_failed">ترجمهٔ متن آهنگ ممکن نشد</string>
-  <string name="morphe_music_lyrics_copy">کپی</string>
   <string name="morphe_music_lyrics_copied">در کلیپ‌بورد کپی شد</string>
-  <string name="morphe_music_lyrics_about_title">دربارهٔ متن آهنگ شخص ثالث</string>
-  <string name="morphe_music_lyrics_about_summary">"متن آهنگ بر اساس عنوان آهنگ و هنرمند جست‌وجو می‌شود؛ بنابراین ممکن است برای آهنگی با فرادادهٔ غیرمعمول چیزی پیدا نشود یا نسخهٔ نادرستی پیدا شود
-
-متن همگام‌شدهٔ آهنگ همراه با پخش پیش می‌رود. اگر از زمان‌بندی خارج شد، تغییر زمان‌بندی را تنظیم کنید
-
-وقتی متن آهنگ شخص ثالث پیدا نشود، متن داخلی نمایش داده می‌شود"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - غیرفعال‌کردن آیکون‌های پررنگ</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - بازگرداندن برگه‌های بعدی پخش‌کننده، متن آهنگ و مرتبط</string>

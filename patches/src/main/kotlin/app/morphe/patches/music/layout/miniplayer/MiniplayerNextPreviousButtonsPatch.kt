@@ -12,7 +12,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_28_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
@@ -27,6 +26,8 @@ import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/MiniplayerPreviousNextButtonsPatch;"
+private const val MINIPLAYER_LYRICS_CLASS =
+    "Lapp/morphe/extension/music/patches/lyrics/MiniPlayerLyrics;"
 
 private const val IMAGE_VIEW_TAG =
     "com.google.android.libraries.youtube.common.ui.TouchImageView"
@@ -100,7 +101,6 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        resourceMappingPatch,
         miniplayerButtonsResourcePatch
     )
 
@@ -125,6 +125,11 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
                     insertIndex,
                     "invoke-static { v$parentViewRegister }, $EXTENSION_CLASS->" +
                             "setPreviousNextButtonOnClickListener(Landroid/view/View;)V"
+                )
+                addInstruction(
+                    insertIndex + 1,
+                    "invoke-static { v$parentViewRegister }, $MINIPLAYER_LYRICS_CLASS->" +
+                            "onMiniPlayerViewCreated(Landroid/view/View;)V"
                 )
             }
         }

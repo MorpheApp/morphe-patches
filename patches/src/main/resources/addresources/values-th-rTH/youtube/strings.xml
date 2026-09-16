@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">ช่องถูกเพิ่มลงในรายการที่อนุญาตแล้ว</string>
   <string name="morphe_channel_whitelist_channel_removed">ช่องถูกนำออกจากรายการที่อนุญาตแล้ว</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">ค้นหาในช่อง</string>
+  <string name="morphe_channel_search_summary">เมื่อเปิดช่องอยู่ การค้นหาจะค้นหาเฉพาะในช่องนั้นเท่านั้น</string>
+  <string name="morphe_channel_search_results_title">ค้นหา: %s</string>
+  <string name="morphe_channel_search_no_results">ไม่พบผลลัพธ์ในช่องนี้</string>
+  <string name="morphe_channel_search_failed">ไม่สามารถค้นหาช่องนี้ได้</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">คัดลอกลิงก์ไปยังคลิปบอร์ด</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">คัดลอกลิงก์ที่มีช่วงเวลาไปยังคลิปบอร์ด</string>
@@ -606,8 +612,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_text_overlay_size_summary">ปรับขนาดตัวอักษรบนหน้าจอ (1-30)</string>
   <string name="morphe_swipe_threshold_title">เกณฑ์ขนาดของการปัด</string>
   <string name="morphe_swipe_threshold_summary">ตั้งค่าระยะการปัดที่จำเป็นก่อนที่จะเกิดการปรับ</string>
-  <string name="morphe_swipe_volume_sensitivity_title">ความไวในการปัดปรับระดับเสียง</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">ค่าที่สูงขึ้นจะเพิ่มการเปลี่ยนแปลงระดับเสียงต่อการปัดแต่ละครั้ง</string>
+  <string name="morphe_swipe_volume_distance_title">ความไวในการปัดปรับระดับเสียง</string>
+  <string name="morphe_swipe_volume_distance_summary">ค่าที่สูงขึ้นต้องปัดมากขึ้นต่อขั้นปรับระดับเสียง</string>
+  <string name="morphe_swipe_volume_steps_title">ขั้นระดับเสียง</string>
+  <string name="morphe_swipe_volume_steps_entry_default">ค่าเริ่มต้นของอุปกรณ์</string>
   <string name="morphe_swipe_brightness_sensitivity_title">ความไวในการปัดปรับความสว่าง</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">ค่าที่สูงขึ้นต้องมีการปัดมากขึ้นต่อการปรับความสว่างแต่ละครั้ง</string>
   <string name="morphe_swipe_speed_sensitivity_title">ความไวในการปัดปรับความเร็ว</string>
@@ -1035,11 +1043,12 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">ปิดการใช้งานอยู่</string>
   <string name="morphe_miniplayer_type_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_miniplayer_type_entry_2">น้อยที่สุด</string>
-  <string name="morphe_miniplayer_type_entry_3">แท็บเล็ต</string>
-  <string name="morphe_miniplayer_type_entry_4">ทันสมัย 1</string>
-  <string name="morphe_miniplayer_type_entry_5">ทันสมัย 2</string>
-  <string name="morphe_miniplayer_type_entry_6">ทันสมัย 3</string>
-  <string name="morphe_miniplayer_type_entry_7">ทันสมัย 4</string>
+  <string name="morphe_miniplayer_type_entry_3">มินิมอล 2</string>
+  <string name="morphe_miniplayer_type_entry_4">แท็บเล็ต</string>
+  <string name="morphe_miniplayer_type_entry_5">ทันสมัย 1</string>
+  <string name="morphe_miniplayer_type_entry_6">ทันสมัย 2</string>
+  <string name="morphe_miniplayer_type_entry_7">ทันสมัย 3</string>
+  <string name="morphe_miniplayer_type_entry_8">ทันสมัย 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">ปิดใช้งานมุมโค้งมน</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ปิดใช้งานการลากและวาง</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">ป้องกันไม่ให้ลากเครื่องเล่นขนาดเล็กไปยังมุมต่างๆ ของหน้าจอ</string>

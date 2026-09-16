@@ -322,6 +322,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium जाहिरात वृत्तपत्रे लपवा</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्डवर कॉपी केली</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">टाइमस्टॅम्पसह लिंक क्लिपबोर्डवर कॉपी केली</string>
@@ -520,8 +521,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_swipe_text_overlay_size_summary">पुढील किंवा मागील व्हिडिओवर जाण्यासाठी फुलस्क्रीन मोडमध्ये स्वाइप करा</string>
   <string name="morphe_swipe_threshold_title">स्वाइप परिमाण थ्रेशोल्ड</string>
   <string name="morphe_swipe_threshold_summary">तळाच्या नेव्हिगेशन बारमध्ये कोणते बटण दिसतात ते निवडा</string>
-  <string name="morphe_swipe_volume_sensitivity_title">व्हॉल्यूम स्वॅप संवेदनशीलता</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">जास्त व्हॅल्यू प्रत्येक स्वाइपवर आवाज बदलण्याची पातळी वाढवतात</string>
   <string name="morphe_swipe_brightness_sensitivity_title">चमक स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">जास्त व्हॅल्यू प्रत्येक चमक बदलासाठी जास्त स्वाइपिंगची आवश्यकता असते</string>
   <string name="morphe_swipe_speed_sensitivity_title">वेग स्वाइप संवेदनशीलता</string>
@@ -905,11 +904,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_type_entry_0">अक्षम</string>
   <string name="morphe_miniplayer_type_entry_1">डीफॉल्ट</string>
   <string name="morphe_miniplayer_type_entry_2">किमान</string>
-  <string name="morphe_miniplayer_type_entry_3">टॅबलेट</string>
-  <string name="morphe_miniplayer_type_entry_4">आधुनिक 1</string>
-  <string name="morphe_miniplayer_type_entry_5">आधुनिक 2</string>
-  <string name="morphe_miniplayer_type_entry_6">आधुनिक 3</string>
-  <string name="morphe_miniplayer_type_entry_7">आधुनिक 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">गोलाकार कोपरे अक्षम करा</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ड्रॅग आणि ड्रॉप अक्षम करा</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">मिनीप्लेअरला (Miniplayer) स्क्रीनच्या वेगवेगळ्या कोपऱ्यात ड्रॅग (Drag) करण्यापासून प्रतिबंधित (Prevent) करते</string>

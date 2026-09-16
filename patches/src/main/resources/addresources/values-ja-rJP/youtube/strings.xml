@@ -255,8 +255,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_community_guidelines_title">コミュニティ ガイドラインを非表示</string>
   <string name="morphe_hide_comments_create_a_short_button_title">「ショート動画を作成」ボタンを非表示</string>
   <string name="morphe_hide_comments_emoji_button_title">絵文字ボタンを非表示</string>
-  <string name="morphe_hide_comments_filter_bar_options_title">コメント欄で基本のフィルタバー以外を非表示</string>
-  <string name="morphe_hide_comments_filter_bar_options_summary">「人気順」と「新しい順」以外の、コメント欄のフィルタバーをすべて非表示にします</string>
+  <string name="morphe_hide_comments_filter_bar_options_title">コメント欄で基本のフィルタボタン以外を非表示</string>
+  <string name="morphe_hide_comments_filter_bar_options_summary">「人気順」「新しい順」以外の、コメント欄のフィルタボタンをすべて非表示にします</string>
   <string name="morphe_hide_comments_gift_animation_and_cards_title">ギフト アニメーションとギフトカードを非表示</string>
   <string name="morphe_hide_comments_gift_button_title">ギフトボタンを非表示</string>
   <string name="morphe_hide_comments_info_button_title">情報ボタン (i アイコン) を非表示</string>
@@ -381,6 +381,10 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <string name="morphe_channel_whitelist_channel_added">チャンネルをホワイトリストに追加しました</string>
   <string name="morphe_channel_whitelist_channel_removed">チャンネルをホワイトリストから削除しました</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">チャンネル内を検索</string>
+  <string name="morphe_channel_search_summary">チャンネルを開いた状態での検索は、そのチャンネルだけが検索対象になります</string>
+  <string name="morphe_channel_search_results_title">検索：%s</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">タイムスタンプ付きリンクをコピーしました</string>
@@ -405,12 +409,13 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <string name="morphe_vot_screen_title">吹き替え翻訳</string>
   <string name="morphe_vot_screen_summary">動画字幕を翻訳し、デバイス上のテキスト読み上げ機能で字幕の翻訳を字幕に同期しながら読み上げます</string>
   <string name="morphe_vot_enabled_title">吹き替え翻訳</string>
+  <string name="morphe_vot_enabled_summary">プレーヤー オーバーレイにボタンを表示します。タップするとオン / オフを切り替えます。長押しすると簡易設定メニューを表示します</string>
   <string name="morphe_vot_caption_language_title">言語</string>
   <string name="morphe_vot_translation_service_title">翻訳サービス</string>
   <string name="morphe_vot_original_audio_volume_title">動画の音量</string>
   <string name="morphe_vot_original_audio_volume_summary">吹き替え音声を再生しているときの YouTube 動画の音量</string>
   <string name="morphe_vot_translation_volume_title">吹き替えの音量</string>
-  <string name="morphe_vot_translation_volume_summary">吹き替え音声の音量</string>
+  <string name="morphe_vot_translation_volume_summary">動画に重ねる吹き替え音声の音量</string>
   <string name="morphe_vot_max_speech_rate_title">吹き替え音声の加速上限</string>
   <string name="morphe_vot_max_speech_rate_summary">吹き替え元の字幕に同期するために吹き替え音声を加速して再生する際の上限値</string>
   <string name="morphe_vot_mymemory_info_summary">"無料の翻訳API。APIキーは不要です。無料プランでは1日あたり最大5,000文字、またはEメールアドレスを使用すると1日あたり最大50,000文字です。
@@ -515,7 +520,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">フライアウトメニュー内の広告ホワイトリスト</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">その動画のチャンネルで広告を再生できるフライアウト項目を追加します</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">この機能では、PotHelper を使用するか、「動画ストリームを偽装」を TV または Android VR のサインインに変更する必要がある場合があります。</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">この機能を使用するには、PotHelper を使用する、もしくは [動画ストリームを偽装] のクライアントを「TV」または「Android VR (ログイン)」に変更する必要がある場合があります。</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">フライアウトメニュー内の再生速度ホワイトリスト</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">その動画のチャンネルの動画を常に1.0倍速で再生するフライアウト項目を追加します</string>
   <string name="morphe_queue_manager_check_failed_auth">ログインしていません</string>
@@ -605,13 +610,15 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_text_overlay_size_summary">スワイプ オーバーレイに表示される文字の大きさを設定します (1-30)</string>
   <string name="morphe_swipe_threshold_title">スワイプのしきい値</string>
   <string name="morphe_swipe_threshold_summary">ジェスチャーとして判定される最小のスワイプ距離を設定します</string>
-  <string name="morphe_swipe_volume_sensitivity_title">音量ジェスチャーのスワイプ感度</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">この値を大きくすると、スワイプによる音量の変化量が大きくなります</string>
+  <string name="morphe_swipe_volume_distance_title">音量ジェスチャーのスワイプ感度</string>
+  <string name="morphe_swipe_volume_distance_summary">この値を大きくすると、音量の増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
+  <string name="morphe_swipe_volume_steps_title">音量レベルの段階数</string>
+  <string name="morphe_swipe_volume_steps_entry_default">端末のデフォルト</string>
   <string name="morphe_swipe_brightness_sensitivity_title">明るさジェスチャーのスワイプ感度</string>
-  <string name="morphe_swipe_brightness_sensitivity_summary">この値を大きくすると、明るさを変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
+  <string name="morphe_swipe_brightness_sensitivity_summary">この値を大きくすると、明るさの増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
   <string name="morphe_swipe_speed_sensitivity_title">再生速度ジェスチャーのスワイプ感度</string>
-  <string name="morphe_swipe_speed_sensitivity_summary">この値を大きくすると、再生速度を変化させるために必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
-  <string name="morphe_swipe_speed_step_title">速度段階</string>
+  <string name="morphe_swipe_speed_sensitivity_summary">この値を大きくすると、再生速度の増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
+  <string name="morphe_swipe_speed_step_title">再生速度の変化量 (1 段階)</string>
   <string name="morphe_swipe_speed_zone_height_title">上側横スワイプの領域の縦幅</string>
   <string name="morphe_swipe_speed_zone_height_summary">上側横スワイプ ジェスチャーに割り当てる、画面上端を起点とする領域の縦幅 (画面全体の縦幅に対するパーセンテージ: 5-75)</string>
   <string name="morphe_swipe_zone_label_speed">再生速度</string>
@@ -800,7 +807,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_autoplay_preview_summary">全画面表示モードで終了画面に表示される、「次の動画」のプレビューを非表示にします</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_overlay_buttons_screen_title">オーバーレイ ボタン</string>
-  <string name="morphe_overlay_buttons_screen_summary">動画プレーヤーの画面上に表示するボタンを設定します</string>
+  <string name="morphe_overlay_buttons_screen_summary">動画プレーヤーの画面を覆うプレーヤー オーバーレイに表示するボタンを設定します</string>
   <string name="morphe_hide_autoplay_button_title">自動再生ボタンを非表示</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
   <string name="morphe_hide_captions_button_title">字幕ボタンを非表示</string>
@@ -916,7 +923,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">縦画面での下へのスワイプ ジェスチャーを無効化</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">横画面での下へのスワイプ ジェスチャーを無効化</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">「ピンチしてズーム」ジェスチャーを無効化</string>
-  <string name="morphe_restore_pinch_to_zoom_title">ピンチでズームを復元</string>
+  <string name="morphe_restore_pinch_to_zoom_title">「ピンチしてズーム」を復元</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">全画面表示で動画を開く</string>
   <string name="morphe_open_videos_fullscreen_entry_1">無効</string>
@@ -929,8 +936,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_fullscreen_video_scale_entry_zoom">ズーム（切り抜いて画面いっぱい）</string>
   <string name="morphe_fullscreen_video_scale_button_title">ビデオスケールボタンを表示</string>
   <string name="morphe_fullscreen_video_scale_button_summary">タップすると、デフォルト → 引き伸ばす → ズーム → デフォルトの順に切り替わります</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">フルスクリーンのみに表示</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">縦向きプレイヤーでビデオスケールボタンを非表示にする</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">全画面表示でのみ表示</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">縦画面表示のプレーヤーの「画面の埋め方」ボタンを非表示にします</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">消音ボタンを表示</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -970,8 +977,8 @@ Automotive レイアウト
 
 制限事項: [アクションバーを旧式に戻す] がオフのとき、「その他の動画」オーバーレイが利用できない場合があります"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 以前のキャプションの動作を復元</string>
-  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 以前の「再生リストに保存」に戻す</string>
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を以前の仕様に戻す</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を以前の仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 動画プレーヤー下のチャンネル名表示を復元</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
@@ -1034,12 +1041,13 @@ Automotive レイアウト
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
-  <string name="morphe_miniplayer_type_entry_2">旧タイプ（横長）</string>
-  <string name="morphe_miniplayer_type_entry_3">タブレット</string>
-  <string name="morphe_miniplayer_type_entry_4">新タイプ 1</string>
-  <string name="morphe_miniplayer_type_entry_5">新タイプ 2</string>
-  <string name="morphe_miniplayer_type_entry_6">新タイプ 3</string>
-  <string name="morphe_miniplayer_type_entry_7">新タイプ 4</string>
+  <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>
+  <string name="morphe_miniplayer_type_entry_3">横長 2</string>
+  <string name="morphe_miniplayer_type_entry_4">タブレット</string>
+  <string name="morphe_miniplayer_type_entry_5">新タイプ 1</string>
+  <string name="morphe_miniplayer_type_entry_6">新タイプ 2</string>
+  <string name="morphe_miniplayer_type_entry_7">新タイプ 3</string>
+  <string name="morphe_miniplayer_type_entry_8">新タイプ 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">ミニプレーヤーを直角化</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ドラッグ &amp; ドロップを無効化</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">ミニプレーヤーをドラッグして画面の四隅を移動する機能を無効にします</string>
@@ -1057,7 +1065,7 @@ Automotive レイアウト
   <string name="morphe_miniplayer_opacity_summary">ミニプレーヤー オーバーレイの透明度を設定します (0-100: 0 が透明)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">「戻る」ボタンでアプリを終了</string>
-  <string name="morphe_back_button_always_exits_feed_summary">ホームタブで「戻る」ボタンをタップしたときに、ホームフィードの最上部にスクロールせずに常にアプリを終了します</string>
+  <string name="morphe_back_button_always_exits_feed_summary">ホームタブで「戻る」ボタンをタップしたときに、ホームフィードのスクロール位置が最上部ではない場合でも、最上部にスクロールせずに常にアプリを終了します</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">ライトモードのテーマ</string>
   <string name="morphe_theme_color_light_entry_2">ホワイト</string>
@@ -1162,7 +1170,7 @@ Automotive レイアウト
   <string name="morphe_remember_video_quality_last_selected_title">画質を保存</string>
   <string name="morphe_remember_video_quality_last_selected_summary">画質メニューでの画質の変更を、設定の「デフォルトの画質」に反映し、すべての動画に適用します</string>
   <string name="morphe_remember_video_quality_last_selected_toast_title">画質変更の通知</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">新しいデフォルトの画質が保存されたときに通知を表示します</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">設定の [デフォルトの画質] または [ショートのデフォルトの画質] に新しい値が保存されたときに通知を表示します</string>
   <string name="morphe_video_quality_default_wifi_title">デフォルトの画質 (Wi-Fi)</string>
   <string name="morphe_video_quality_default_mobile_title">デフォルトの画質 (モバイル)</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">ショートの画質を保存</string>
@@ -1191,9 +1199,9 @@ Automotive レイアウト
   <string name="morphe_speed_tap_and_hold_summary">画面を長押ししたときの再生速度を設定します。0 に設定すると、長押し倍速再生そのものが無効になります</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">再生速度を保存</string>
-  <string name="morphe_remember_playback_speed_last_selected_summary">再生速度メニューでの再生速度の変更を、設定の「デフォルトの再生速度」に反映し、すべての動画に適用します</string>
+  <string name="morphe_remember_playback_speed_last_selected_summary">再生速度メニューでの再生速度の変更を、設定の [デフォルトの再生速度] に反映し、すべての動画に適用します</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_title">再生速度変更の通知</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_summary">新しいデフォルトの再生速度が保存されたときに通知を表示します</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary">設定の [デフォルトの再生速度] に新しい値が保存されたときに通知を表示します</string>
   <string name="morphe_playback_speed_default_title">デフォルトの再生速度</string>
   <string name="morphe_remember_playback_speed_toast">デフォルトの再生速度の変更: %s</string>
   <string name="morphe_disable_playback_speed_music_title">音楽動画を通常速度で再生</string>

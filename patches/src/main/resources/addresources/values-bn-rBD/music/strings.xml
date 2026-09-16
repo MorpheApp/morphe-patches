@@ -308,9 +308,9 @@ Second \"item\" text"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">তৃতীয় পক্ষের লিরিকস ব্যবহার করুন</string>
   <string name="morphe_music_lyrics_enabled_summary">একটি তৃতীয় পক্ষের পরিষেবা থেকে লিরিকস দেখায়, যদি কিছু খুঁজে না পাওয়া যায় তবে অন্তর্নির্মিত লিরিকসে ফিরে যায়</string>
-  <string name="morphe_music_lyrics_source_title">লিরিকস পরিষেবা</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, তারপর KuGou</string>
+  <string name="morphe_music_lyrics_section_about_title">মর্ফ সম্পর্কে</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">লাইনটিতে ট্যাপ করে যান</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">একটি লাইনে ট্যাপ করলে গানের সেই মুহূর্তটিতে যাওয়া যাবে</string>
   <string name="morphe_music_lyrics_show_copy_button_title">কপি বাটন দেখান</string>
@@ -318,22 +318,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_text_size_title">টেক্সট আকার</string>
   <string name="morphe_music_lyrics_text_size_summary">লিরিক্স টেক্সটের আকার</string>
   <string name="morphe_music_lyrics_offset_ms_title">সময় অফসেট</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">সিঙ্ক করা লিরিক্স সামনে বা পিছনে সরিয়ে দেয়। যদি লিরিক্স গানের চেয়ে এগিয়ে থাকে তবে একটি পজিটিভ মান ব্যবহার করুন</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">উৎস: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">অনুবাদ</string>
-  <string name="morphe_music_lyrics_translate_hide">মূল দেখান</string>
   <string name="morphe_music_lyrics_translating">অনুবাদ করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_translate_failed">লিরিক্স অনুবাদ করা যায়নি</string>
-  <string name="morphe_music_lyrics_copy">অনুলিপি করুন</string>
   <string name="morphe_music_lyrics_copied">ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
-  <string name="morphe_music_lyrics_about_title">তৃতীয় পক্ষের লিরিক্স সম্পর্কে</string>
-  <string name="morphe_music_lyrics_about_summary">"ট্র্যাকের শিরোনাম এবং শিল্পীর দ্বারা লিরিক্স অনুসন্ধান করা হয়, তাই অস্বাভাবিক মেটাডেটা সহ একটি ট্র্যাক কিছুই খুঁজে পাবে না, অথবা ভুল সংস্করণ খুঁজে পেতে পারে
-
-সিঙ্ক করা লিরিক্স প্লেব্যাকের সাথে অনুসরণ করে। যদি তারা সরে যায় তবে সময় অফসেট সামঞ্জস্য করুন
-
-যখন কোনো তৃতীয় পক্ষের লিরিক্স পাওয়া যায় না, তখন বিল্ট-ইন লিরিক্স দেখানো হয়"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - বোল্ড আইকন নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - প্লেয়ার আপ নেক্সট, লিরিক্স এবং সম্পর্কিত ট্যাব পুনরুদ্ধার করুন</string>

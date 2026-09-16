@@ -308,32 +308,25 @@ Chun a chinntiú go bhfuil scrobbling i gcóir le linn imirt san chúlra, déan 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Úsáid liricí tríú páirtí</string>
   <string name="morphe_music_lyrics_enabled_summary">Taispeánann sé liricí ó sheirbhís tríú páirtí, ag úsáid na liricí ionsuite nuair nach bhfaightear aon cheann.</string>
-  <string name="morphe_music_lyrics_source_title">Seirbhís liricí</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, ansin KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Seirbhís liricí</string>
+  <string name="morphe_music_lyrics_section_about_title">Maidir</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_token_dialog_get_token">Faigh comhartha</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">Tapáil líne le cuardach</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Léimeann tapáil líne go dtí an nóiméad sin san amhrán</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Taispeáin an cnaipe Cóipeála</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Taispeáin an cnaipe Aistrigh</string>
+  <string name="morphe_music_lyrics_saved">Sábháilte</string>
   <string name="morphe_music_lyrics_text_size_title">Méid an téacs</string>
   <string name="morphe_music_lyrics_text_size_summary">Méid téacs na liricí</string>
   <string name="morphe_music_lyrics_offset_ms_title">Fritháireamh ama</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Bog liricí sioncronaithe ar aghaidh nó ar gcúl. Úsáid luach dearfach má ritheann na liricí chun tosaigh ar an amhrán</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Foinse: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Aistrigh</string>
-  <string name="morphe_music_lyrics_translate_hide">Taispeáin an bunleagan</string>
   <string name="morphe_music_lyrics_translating">Ag aistriú…</string>
   <string name="morphe_music_lyrics_translate_failed">Ní féidir na líricí a aistriú</string>
-  <string name="morphe_music_lyrics_copy">Cóipeáil</string>
   <string name="morphe_music_lyrics_copied">Cóipeáilte chuig an ghearrthaisce</string>
-  <string name="morphe_music_lyrics_about_title">Maidir le liricí tríú páirtí</string>
-  <string name="morphe_music_lyrics_about_summary">"Déantar cuardach ar liricí de réir teideal an riain agus an ealaíontóra, mar sin d'fhéadfadh sé nach mbeadh aon rud le fáil i gcás rian a bhfuil meiteashonraí neamhghnácha ann, nó go mbeadh an leagan mícheart le fáil.
-
-Leanann liricí sioncrónaithe an athsheinm. Má imíonn siad, coigeartaigh an t-amchlár.
-
-Nuair nach bhfaightear aon liricí tríú páirtí, taispeántar na liricí ionsuite ina n-ionad."</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Díchumasaigh deilbhíní troma</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Athchóirigh an t-imreoir Ar Aghaidh, Liricí, agus na cluaisíní Gaolmhara</string>

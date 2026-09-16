@@ -217,6 +217,7 @@ Second \"item\" text"</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_channel_whitelist_remove">Отстрани</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_copy_video_link_with_timestamp_button_title">Копирајте го временскиот печат стандардно</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -319,8 +320,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_text_overlay_size_summary">Прилагодете ја големината на текстот на екранот (1-30)</string>
   <string name="morphe_swipe_threshold_title">Праг на гестот за повлекување</string>
   <string name="morphe_swipe_threshold_summary">Поставете ја потребната оддалеченост на кликнување пред да се активира прилагодувањето</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Осетливост на повлекување за јачина на звук</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Поголемите вредност ги зголемуваат промените во волуменот при секое движење</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чуствителност на движење за осветленост</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Поголемите вредности бараат повеќе движења за секое ниво на осветленост</string>
   <string name="morphe_swipe_speed_sensitivity_title">Чуствителност на движење за брзина</string>
@@ -674,11 +673,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">Оневозможено</string>
   <string name="morphe_miniplayer_type_entry_1">Поставено како стандардно</string>
   <string name="morphe_miniplayer_type_entry_2">Минималистички</string>
-  <string name="morphe_miniplayer_type_entry_3">Таблет</string>
-  <string name="morphe_miniplayer_type_entry_4">Модерно 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Модерно 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Модерно 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Модерно 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Исклучи заоблени агли</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Исклучи превлекување и пуштање</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Се напркат гнау за препри за перу</string>

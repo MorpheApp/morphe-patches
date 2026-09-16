@@ -190,6 +190,30 @@ public enum ClientType {
             "Android Studio"
     ),
     /**
+     * Plain ANDROID client used for caption / transcript fetching.
+     */
+    ANDROID(
+            3,
+            "ANDROID",
+            "com.google.android.youtube",
+            Build.MANUFACTURER,
+            Build.MODEL,
+            "Android",
+            Build.VERSION.RELEASE,
+            String.valueOf(Build.VERSION.SDK_INT),
+            Build.ID,
+            "20.10.38",
+            null,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            true,
+            "Android"
+    ),
+    /**
      * Video not playable: None.
      * AV1 codec available.
      */

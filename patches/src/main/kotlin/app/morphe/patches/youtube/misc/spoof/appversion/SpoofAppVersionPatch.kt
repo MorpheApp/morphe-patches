@@ -10,7 +10,6 @@ package app.morphe.patches.youtube.misc.spoof.appversion
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.spoof.appversion.baseSpoofAppVersionPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
@@ -61,8 +60,7 @@ val spoofAppVersionPatch = baseSpoofAppVersionPatch(
     },
     block = {
         dependsOn(
-            resourceMappingPatch,
-            sharedExtensionPatch,
+                sharedExtensionPatch,
             settingsPatch,
             versionCheckPatch,
             clientContextHookPatch

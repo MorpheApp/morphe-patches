@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.swipecontrols.controller
 
 import android.view.KeyEvent
@@ -18,7 +28,8 @@ class VolumeKeysController(
      * @return Whether to consume the event.
      */
     fun onKeyEvent(event: KeyEvent): Boolean {
-        if (!controller.config.overwriteVolumeKeyControls) {
+        // Without a volume controller the device has to handle the keys, or they would do nothing.
+        if (!controller.config.overwriteVolumeKeyControls || controller.audio == null) {
             return false
         }
 
@@ -41,8 +52,8 @@ class VolumeKeysController(
     private fun handleVolumeKeyEvent(event: KeyEvent, volumeUp: Boolean): Boolean {
         if (event.action == KeyEvent.ACTION_DOWN) {
             controller.audio?.apply {
-                volume += controller.config.volumeSwipeSensitivity * if (volumeUp) 1 else -1
-                controller.overlay.onVolumeChanged(volume, maxVolume)
+                adjustVolumeBySteps(if (volumeUp) 1 else -1)
+                controller.overlay.onVolumeChanged(steppedVolume, steppedMaxVolume)
             }
         }
 

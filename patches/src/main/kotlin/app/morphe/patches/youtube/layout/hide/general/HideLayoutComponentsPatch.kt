@@ -20,7 +20,6 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.litho.node.hookTreeNodeResult
@@ -107,7 +106,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
         engagementPanelHookPatch,
         navigationBarHookPatch,
         versionCheckPatch,
-        resourceMappingPatch,
         hideHorizontalShelvesPatch,
         hideUpdateScreenPatch,
         elementProtoParserHookPatch,

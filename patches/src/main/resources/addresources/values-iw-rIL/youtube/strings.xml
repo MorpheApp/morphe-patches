@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">הערוץ נוסף לרשימה הלבנה</string>
   <string name="morphe_channel_whitelist_channel_removed">הערוץ הוסר מהרשימה הלבנה</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">חיפוש בערוץ</string>
+  <string name="morphe_channel_search_summary">בזמן שערוץ פתוח, החיפוש מתבצע רק באותו ערוץ</string>
+  <string name="morphe_channel_search_results_title">חיפוש: %s</string>
+  <string name="morphe_channel_search_no_results">לא נמצא דבר בערוץ זה</string>
+  <string name="morphe_channel_search_failed">לא ניתן לחפש בערוץ זה</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">קישור הועתק ללוח הגזירים</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">קישור עם חותמת זמן הועתק ללוח הגזירים</string>
@@ -606,8 +612,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_text_overlay_size_summary">הסתר כפתור \'הורדה\'</string>
   <string name="morphe_swipe_threshold_title">סף גודל החלקה</string>
   <string name="morphe_swipe_threshold_summary">הסתר כפתור \'הייפ\'</string>
-  <string name="morphe_swipe_volume_sensitivity_title">רגישות החלקה בעוצמת הקול</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">ערכים גבוהים יותר מגדילים את שינוי עוצמת הקול בכל החלקה</string>
+  <string name="morphe_swipe_volume_distance_title">רגישות החלקה בעוצמת הקול</string>
+  <string name="morphe_swipe_volume_distance_summary">ערכים גבוהים יותר דורשים יותר החלקות לכל שלב עוצמת קול</string>
+  <string name="morphe_swipe_volume_steps_title">שלבי עוצמת קול</string>
+  <string name="morphe_swipe_volume_steps_entry_default">ברירת מחדל של המכשיר</string>
   <string name="morphe_swipe_brightness_sensitivity_title">רגישות החלקה בבהירות</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">ערכים גבוהים יותר דורשים יותר החלקות לכל שלב בהירות</string>
   <string name="morphe_swipe_speed_sensitivity_title">רגישות החלקה במהירות</string>
@@ -1035,11 +1043,12 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">מושבת</string>
   <string name="morphe_miniplayer_type_entry_1">ברירת מחדל</string>
   <string name="morphe_miniplayer_type_entry_2">מינימלי</string>
-  <string name="morphe_miniplayer_type_entry_3">טאבלט</string>
-  <string name="morphe_miniplayer_type_entry_4">מודרני 1</string>
-  <string name="morphe_miniplayer_type_entry_5">מודרני 2</string>
-  <string name="morphe_miniplayer_type_entry_6">מודרני 3</string>
-  <string name="morphe_miniplayer_type_entry_7">מודרני 4</string>
+  <string name="morphe_miniplayer_type_entry_3">מינימלי 2</string>
+  <string name="morphe_miniplayer_type_entry_4">טאבלט</string>
+  <string name="morphe_miniplayer_type_entry_5">מודרני 1</string>
+  <string name="morphe_miniplayer_type_entry_6">מודרני 2</string>
+  <string name="morphe_miniplayer_type_entry_7">מודרני 3</string>
+  <string name="morphe_miniplayer_type_entry_8">מודרני 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">בטל פינות מעוגלות</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">בטל גרירה ושחרור</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">מונע גרירת הנגן הממוזער לפינות שונות של המסך</string>

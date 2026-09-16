@@ -47,7 +47,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Desabilita o popup que aparece ao tirar uma captura de tela</string>
   <string name="morphe_force_system_font_title">Fonte do sistema forçada</string>
   <string name="morphe_force_system_font_summary">Use a fonte do sistema do dispositivo em vez de Reddit Sans ou Roboto. Ativar isso também desativa a fonte personalizada.</string>
-  <string name="morphe_hide_ask_button_title">Ocultar botão \"Ask\"</string>
+  <string name="morphe_hide_ask_button_title">Ocultar botão Perguntar</string>
   <string name="morphe_hide_ask_button_summary">Oculta o botão \"Ask\" na barra de pesquisa</string>
   <string name="morphe_hide_communities_shelf_title">Ocultar prateleira de comunidades</string>
   <string name="morphe_hide_communities_shelf_summary">Oculta a prateleira de comunidades relacionadas ou sugeridas em subreddits</string>
@@ -68,4 +68,8 @@ Second \"item\" text"</string>
   <string name="morphe_open_links_directly_summary">Ignora URLs de redirecionamento ao abrir links externos</string>
   <string name="morphe_open_links_externally_title">Abrir links externamente</string>
   <string name="morphe_open_links_externally_summary">Abre links no navegador padrão em vez do navegador integrado</string>
+  <string name="morphe_app_icon_title">Ícone do aplicativo</string>
+  <string name="morphe_app_icon_choose_title">Escolher ícone do app</string>
+  <string name="morphe_app_icon_default">Padrão</string>
+  <string name="morphe_app_icon_unknown">Desconhecido</string>
 </resources>

@@ -20,7 +20,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.addon.LEGACY_BUTTON_SLOTS_RESOURCE_DIRECTORY
@@ -194,14 +193,25 @@ private var newPlayerControlsOverride = false
 
 context(patchContext: BytecodePatchContext)
 internal fun disableNewPlayerControlsFeatureFlag() {
-    if (!is_21_04_or_greater || newPlayerControlsOverride) return
+    if (newPlayerControlsOverride) return
     newPlayerControlsOverride = true
 
-    NewPlayerOverlaysFeatureFlagFingerprint.matchAll().forEach {
-        it.method.insertLiteralOverride(
-            it.instructionMatches.first().index,
-            false
-        )
+    if (is_20_31_or_greater) {
+        PlayerSeekbarFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->forcePlayerSeekbar(Z)Z"
+            )
+        }
+    }
+
+    if (is_21_04_or_greater) {
+        NewPlayerOverlaysFeatureFlagFingerprint.matchAll().forEach {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                false
+            )
+        }
     }
 }
 
@@ -245,7 +255,6 @@ val legacyPlayerControlsPatch = bytecodePatch(
     dependsOn(
         legacyPlayerControlsResourcePatch,
         sharedExtensionPatch,
-        resourceMappingPatch, // Used by fingerprints.
         playerControlsOverlayVisibilityPatch,
         versionCheckPatch,
         settingsPatch

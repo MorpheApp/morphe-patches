@@ -18,16 +18,18 @@ import org.w3c.dom.Document
 @Suppress("MemberVisibilityCanBePrivate")
 class NonInteractivePreference(
     key: String,
-    titleKey: String = "${key}_title",
+    titleKey: String? = "${key}_title",
     summaryKey: String? = "${key}_summary",
     icon: String? = null,
     iconBold: String? = null,
     layout: String? = null,
     tag: String = "Preference",
     val selectable: Boolean = false,
+    val dependency: String? = null,
 ) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag) {
     override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
         super.serialize(ownerDocument, resourceCallback).apply {
             setAttribute("android:selectable", selectable.toString())
+            dependency?.let { setAttribute("android:dependency", it) }
         }
 }

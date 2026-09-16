@@ -162,6 +162,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium प्रमोशन छिपाइ</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीव्ही में साइन इन करी\' पॉपअप अक्षम करी</string>
@@ -224,7 +225,6 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">स्वाइप ओवरले वॉल्यूम रंग</string>
   <string name="morphe_swipe_text_overlay_size_title">स्वाइप ओवरले टेक्स्ट आकार</string>
   <string name="morphe_swipe_threshold_title">स्वाइप परिमाण थ्रेशोल्ड</string>
-  <string name="morphe_swipe_volume_sensitivity_title">वॉल्यूम स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_overlay_style_title">स्वाइप ओवरले शैली</string>
   <string name="morphe_swipe_overlay_style_entry_1">क्षैतिज ओवरले</string>
   <string name="morphe_swipe_overlay_style_entry_2">क्षैतिज ओवरले (न्यूनतम - ऊपर)</string>
@@ -444,11 +444,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">अक्षम करी</string>
   <string name="morphe_miniplayer_type_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_miniplayer_type_entry_2">न्यूनतम</string>
-  <string name="morphe_miniplayer_type_entry_3">टैबलेट</string>
-  <string name="morphe_miniplayer_type_entry_4">आधुनिक 1</string>
-  <string name="morphe_miniplayer_type_entry_5">आधुनिक 2</string>
-  <string name="morphe_miniplayer_type_entry_6">आधुनिक 3</string>
-  <string name="morphe_miniplayer_type_entry_7">आधुनिक 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">गोल कोनों के डिसेबल करी</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ड्रैग और ड्रॉप डिसेबल करी</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">क्षैतिज ड्रैग जेस्चर डिसेबल करी</string>

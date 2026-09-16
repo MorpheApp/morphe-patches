@@ -381,6 +381,12 @@ Promene uključuju:
   <string name="morphe_channel_whitelist_channel_added">Канал је додат на белу листу</string>
   <string name="morphe_channel_whitelist_channel_removed">Канал је уклоњен са беле листе</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Претрага у оквиру канала</string>
+  <string name="morphe_channel_search_summary">Док је канал отворен, претрага се врши само у том каналу.</string>
+  <string name="morphe_channel_search_results_title">Претрага: %s</string>
+  <string name="morphe_channel_search_no_results">Ништа није пронађено на овом каналу</string>
+  <string name="morphe_channel_search_failed">Претрага овог канала није успела</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Линк копиран у привремену меморију</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Линк са временском ознаком копиран у привремену меморију</string>
@@ -606,8 +612,10 @@ Promene uključuju:
   <string name="morphe_swipe_text_overlay_size_summary">Подесите величину текста на екрану (1-30)</string>
   <string name="morphe_swipe_threshold_title">Праг трајања превлачења</string>
   <string name="morphe_swipe_threshold_summary">Подесите потребну удаљеност превлачења пре него што се покрене подешавање</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Осетљивост превлачења за јачину звука</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Веће вредности повећавају промену јачине звука при сваком превлачењу</string>
+  <string name="morphe_swipe_volume_distance_title">Осетљивост превлачења за јачину звука</string>
+  <string name="morphe_swipe_volume_distance_summary">Веће вредности захтевају висе превлачења по степену јачине звука</string>
+  <string name="morphe_swipe_volume_steps_title">Степени јачине звука</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Подразумевано за уређај</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Осетљивост превлачења за осветљење</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Веће вредности захтевају више превлачења по кораку осветљења</string>
   <string name="morphe_swipe_speed_sensitivity_title">Осетљивост превлачења за брзину</string>
@@ -1018,11 +1026,12 @@ Promene uključuju:
   <string name="morphe_miniplayer_type_entry_0">Онемогућен</string>
   <string name="morphe_miniplayer_type_entry_1">Подразумеван</string>
   <string name="morphe_miniplayer_type_entry_2">Минималан</string>
-  <string name="morphe_miniplayer_type_entry_3">Таблет</string>
-  <string name="morphe_miniplayer_type_entry_4">Модеран 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Модеран 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Модеран 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Модеран 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Минимални 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Таблет</string>
+  <string name="morphe_miniplayer_type_entry_5">Модеран 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Модеран 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Модеран 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Модеран 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Онемогући заобљене углове</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Онемогући превлачење и отпуштање</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Спречава превлачење мини-плејера у различите углове екрана</string>

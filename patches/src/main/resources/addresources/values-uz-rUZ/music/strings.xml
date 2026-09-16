@@ -306,9 +306,10 @@ Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTu
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Uchinchi tomon matnlaridan foydalanish</string>
   <string name="morphe_music_lyrics_enabled_summary">Uchinchi tomon xizmatidan matnlar ko‘rsatiladi, agar topilmasa, o‘rnatilgan matnlarga qaytadi</string>
-  <string name="morphe_music_lyrics_source_title">Matnlar xizmati</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, keyin KuGou</string>
+  <string name="morphe_music_lyrics_section_about_title">Biz haqimizda</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_token_dialog_get_token">Tokenni olish</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">Satrga teginib, o‘tkazish</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Satrga tegish, qo‘shiqda shu lahzaga o‘tadi</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Nusxalash tugmasini ko‘rsatish</string>
@@ -316,22 +317,12 @@ Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTu
   <string name="morphe_music_lyrics_text_size_title">Matn hajmi</string>
   <string name="morphe_music_lyrics_text_size_summary">Lirikalar matnining hajmi</string>
   <string name="morphe_music_lyrics_offset_ms_title">Vaqtni sozlash</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Lirikani oldinga yoki orqaga siljiting. Lirikalar qo‘shiqdan oldinda bo‘lsa, musbat qiymatdan foydalaning</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Manba: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Tarjima qilish</string>
-  <string name="morphe_music_lyrics_translate_hide">Aslini ko‘rsatish</string>
   <string name="morphe_music_lyrics_translating">Tarjima qilinmoqda…</string>
   <string name="morphe_music_lyrics_translate_failed">Lirikalarni tarjima qilib bo‘lmadi</string>
-  <string name="morphe_music_lyrics_copy">Nusxalash</string>
   <string name="morphe_music_lyrics_copied">Nusxalash quvuriga nusxalandi</string>
-  <string name="morphe_music_lyrics_about_title">Uchinchi tomon lirikalari haqida</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirika treki nomini va ijodkorini orqali qidiriladi, shuning uchun g‘ayrioddiy metama’lumotlarga ega treklikda hech narsa topilmasligi yoki noto‘g‘ri versiya topilishi mumkin
-
-Sinxronizatsiya qilingan lirikalar ijroga rioya qiladi. Agar ular surilib ketsa, vaqtni sozlang
-
-Uchinchi tomon lirikalari topilmaganida o‘rniga ichki lirikalar ko‘rsatiladi"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Qalin ikonkalarni o\'chirish</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Playerning Keyingi, Qo\'shiq matni va Tegishli yorliqlarini tiklash</string>

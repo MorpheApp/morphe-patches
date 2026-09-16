@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">চ্যানেলটি হোয়াইটলিস্টে যোগ করা হয়েছে</string>
   <string name="morphe_channel_whitelist_channel_removed">চ্যানেলটি হোয়াইটলিস্ট থেকে সরানো হয়েছে</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">চ্যানেলের মধ্যে অনুসন্ধান করুন</string>
+  <string name="morphe_channel_search_summary">একটি চ্যানেল খোলা থাকাকালীন অনুসন্ধান করলে শুধুমাত্র সেই চ্যানেলেই অনুসন্ধান করা হয়</string>
+  <string name="morphe_channel_search_results_title">অনুসন্ধান: %s</string>
+  <string name="morphe_channel_search_no_results">এই চ্যানেলে কিছুই পাওয়া যায়নি</string>
+  <string name="morphe_channel_search_failed">এই চ্যানেলে অনুসন্ধান করা যায়নি</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">লিঙ্কটি ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
@@ -606,8 +612,10 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_swipe_text_overlay_size_summary">ফুলস্ক্রিন মোডে সোয়াইপ করে পরবর্তী বা পূর্ববর্তী ভিডিওতে যান</string>
   <string name="morphe_swipe_threshold_title">সোয়াইপ থ্রেশহোল্ড এর মাত্রা</string>
   <string name="morphe_swipe_threshold_summary">পোর্ট্রেট এবং ফুলস্ক্রিন মোডে কোন অ্যাকশন বাটনগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>
-  <string name="morphe_swipe_volume_sensitivity_title">ভলিউম সোয়াইপ সংবেদনশীলতা</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">প্রতি সোয়াইপে ভলিউম কতটা পরিবর্তিত হয়</string>
+  <string name="morphe_swipe_volume_distance_title">ভলিউম সোয়াইপ সংবেদনশীলতা</string>
+  <string name="morphe_swipe_volume_distance_summary">উচ্চতর মানগুলির জন্য প্রতি ভলিউম ধাপে আরও বেশি সোয়াইপ করতে হবে</string>
+  <string name="morphe_swipe_volume_steps_title">ভলিউম ধাপ</string>
+  <string name="morphe_swipe_volume_steps_entry_default">ডিভাইস ডিফল্ট</string>
   <string name="morphe_swipe_brightness_sensitivity_title">উজ্জ্বলতা সোয়াইপ সংবেদনশীলতা</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">উজ্জ্বলতা বাড়ানোর জন্য প্রতিটি সোয়াইপে বেশি সোয়াইপ করতে হবে</string>
   <string name="morphe_swipe_speed_sensitivity_title">স্পিড সোয়াইপ সংবেদনশীলতা</string>
@@ -1020,11 +1028,12 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_miniplayer_type_entry_0">নিষ্ক্রিয় হয়েছে</string>
   <string name="morphe_miniplayer_type_entry_1">পূর্ব-নির্ধারিত</string>
   <string name="morphe_miniplayer_type_entry_2">ন্যূনতম</string>
-  <string name="morphe_miniplayer_type_entry_3">ট্যাবলেট</string>
-  <string name="morphe_miniplayer_type_entry_4">মর্ডান ১</string>
-  <string name="morphe_miniplayer_type_entry_5">মর্ডান ২</string>
-  <string name="morphe_miniplayer_type_entry_6">মর্ডান ৩</string>
-  <string name="morphe_miniplayer_type_entry_7">আধুনিক ৪</string>
+  <string name="morphe_miniplayer_type_entry_3">ন্যূনতম 2</string>
+  <string name="morphe_miniplayer_type_entry_4">ট্যাবলেট</string>
+  <string name="morphe_miniplayer_type_entry_5">মর্ডান ১</string>
+  <string name="morphe_miniplayer_type_entry_6">মর্ডান ২</string>
+  <string name="morphe_miniplayer_type_entry_7">মর্ডান ৩</string>
+  <string name="morphe_miniplayer_type_entry_8">আধুনিক ৪</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">গোলাকার কোণা নিষ্ক্রিয় করুন</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">টেনে-ছেড়ে দেওয়া নিষ্ক্রিয় করুন</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">সংক্ষেপিত প্লেয়ারটিকে স্ক্রিনের বিভিন্ন কোণে সরানোর থেকে বিরত করে</string>

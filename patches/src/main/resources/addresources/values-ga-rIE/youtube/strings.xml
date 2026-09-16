@@ -381,6 +381,12 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_channel_whitelist_channel_added">Cainéal curtha leis an liosta bán</string>
   <string name="morphe_channel_whitelist_channel_removed">Baineadh an cainéal den liosta bán</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Cuardaigh sa chainéal</string>
+  <string name="morphe_channel_search_summary">Nuair a bhíonn cainéal ar oscailt, ní dhéantar ach an cainéal sin a chuardach</string>
+  <string name="morphe_channel_search_results_title">Cuardach: %s</string>
+  <string name="morphe_channel_search_no_results">Níor aimsíodh aon rud ar an gcainéal seo</string>
+  <string name="morphe_channel_search_failed">Níorbh fhéidir an cainéal seo a chuardach</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Nasc cóipeáilte chuig an ghearrthaisce</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Nasc le stampa ama cóipeáilte chuig an ghearrthaisce</string>
@@ -516,7 +522,7 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Liosta bán fógraí sa roghchlár sleamhnáin</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Cuireann sé mír fillte leis a ligeann do fhógraí seinm ar chainéal an fhíseáin sin</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
-  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Seans go mbeidh ort PotHelper a úsáid nó \"Sruthanna físeáin a spoofáil\" a athrú go TV nó go logáil isteach Android VR.</string>
+  <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">D\'fhéadfadh go n-éileodh an ghné seo úsáid a bhaint as PotHelper nó \"sruthanna físeáin spoof\" a athrú go síniú isteach teilifíse nó Android VR.</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Liosta bán luais sa roghchlár aníos</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Cuireann mír fillteán leis a sheinneann cainéal an fhíseáin sin i gcónaí ag luas 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">Gan logáil isteach</string>
@@ -606,8 +612,10 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_swipe_text_overlay_size_summary">Coigeartaigh méid an téacs ar an scáileán (1-30)</string>
   <string name="morphe_swipe_threshold_title">Tairseach méide svaidhpeála</string>
   <string name="morphe_swipe_threshold_summary">Socraigh an fad svaidhpeála riachtanach sula ngníomhaítear coigeartú</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Íogaireacht svaidhpeáil toirte</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Méadaíonn luachanna níos airde an t-athrú toirte in aghaidh an svaidhpeála.</string>
+  <string name="morphe_swipe_volume_distance_title">Íogaireacht an scuabtha toirte</string>
+  <string name="morphe_swipe_volume_distance_summary">Éilíonn luachanna níos airde níos mó scuabtha in aghaidh na céime toirte.</string>
+  <string name="morphe_swipe_volume_steps_title">Céimeanna toirte</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Réamhshocrú an ghléis</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Íogaireacht gile svaidhpeála</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Éilíonn luachanna níos airde níos mó svaidhpeála in aghaidh gach céim gile</string>
   <string name="morphe_swipe_speed_sensitivity_title">Íogaireacht luas-swipeála</string>
@@ -916,7 +924,7 @@ Socruithe → Athsheinm (nó Uathsheinm) → Uathsheinm an chéad fhíseán eile
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Díchumasaigh gotha ​​svaidhpeála síos portráide</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Díchumasaigh gotha ​​svaidhpeála tírdhreacha</string>
   <string name="morphe_disable_fullscreen_zoom_gesture_title">Díchumasaigh gotha ​​pinch-to-súmáil</string>
-  <string name="morphe_restore_pinch_to_zoom_title">Athchóirigh an phinseáil chun súmála</string>
+  <string name="morphe_restore_pinch_to_zoom_title">Athchóirigh pinch chun zúmáil</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
   <string name="morphe_open_videos_fullscreen_title">Oscail físeáin i mód lánscáileáin</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Díchumasaithe</string>
@@ -929,8 +937,8 @@ Socruithe → Athsheinm (nó Uathsheinm) → Uathsheinm an chéad fhíseán eile
   <string name="morphe_fullscreen_video_scale_entry_zoom">Zúmáil (bearr chun líonadh)</string>
   <string name="morphe_fullscreen_video_scale_button_title">Taispeáin cnaipe scála físe</string>
   <string name="morphe_fullscreen_video_scale_button_summary">Beartaigh chun dul tríd an Réamhshocrú, an Síneadh agus an Zúmáil</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Taispeáin i lánscáileán amháin</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Folaigh an cnaipe scála físeáin sa seinnteoir portráide</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">Taispeáin ar lánscáileán amháin</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">Folaigh an cnaipe scála físeáin san imreoir portráide</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">Taispeáin an cnaipe Balbhaigh</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -970,7 +978,7 @@ Leagan amach gluaisteán
 
 Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múchta, b'fhéidir nach mbeidh forleagan 'Tuilleadh físeáin' ar fáil"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Athchóirigh sean-iompar na bhfotheideal</string>
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Athchóirigh iompar fotheidil d\'aois</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Athchóirigh an sean-shábháil chuig an seinmliosta</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Díchumasaigh deilbhíní troma</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Athchóirigh ainm an chainéil faoin seinnteoir físe</string>
@@ -1035,11 +1043,12 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_miniplayer_type_entry_0">Díchumasaithe</string>
   <string name="morphe_miniplayer_type_entry_1">Réamhshocrú</string>
   <string name="morphe_miniplayer_type_entry_2">Íosta</string>
-  <string name="morphe_miniplayer_type_entry_3">Táibléad</string>
-  <string name="morphe_miniplayer_type_entry_4">Nua-Aimseartha 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Nua-Aimseartha 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Nua-Aimseartha 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Nua-Aimseartha 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Íosta 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Táibléad</string>
+  <string name="morphe_miniplayer_type_entry_5">Nua-aimseartha 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Nua-aimseartha 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Nua-aimseartha 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Nua-aimseartha 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Díchumasaigh coirnéil chothromú</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Díchumasaigh tarraing agus scaoil</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Coscann sé an t-imreoir íoslaghdaithe a tharraingt chuig coirnéil éagsúla den scáileán.</string>

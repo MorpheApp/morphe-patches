@@ -381,6 +381,12 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <string name="morphe_channel_whitelist_channel_added">Kanal tillagd i vitlistan</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal borttagen från vitlistan</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Sök i kanalen</string>
+  <string name="morphe_channel_search_summary">När du söker medan en kanal är öppen söker du bara i den kanalen</string>
+  <string name="morphe_channel_search_results_title">Sök: %s</string>
+  <string name="morphe_channel_search_no_results">Inget hittades i den här kanalen</string>
+  <string name="morphe_channel_search_failed">Det gick inte att söka i den här kanalen</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Länk kopierad till urklipp</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Länk med tidsstämpel kopierad till urklipp</string>
@@ -606,8 +612,10 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_swipe_text_overlay_size_summary">Justera textstorleken på skärmen (1–30)</string>
   <string name="morphe_swipe_threshold_title">Tröskelvärde för svep</string>
   <string name="morphe_swipe_threshold_summary">Ange det avstånd som krävs för att svepgesten ska utlösa en justering</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Svepkänslighet för volymgest</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Högre värden ökar volymändringen per svep</string>
+  <string name="morphe_swipe_volume_distance_title">Svepkänslighet för volymgest</string>
+  <string name="morphe_swipe_volume_distance_summary">Högre värden kräver fler svepningar per volymsteg</string>
+  <string name="morphe_swipe_volume_steps_title">Volymsteg</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Enhetsstandard</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Svepkänslighet för ljusstyrkegest</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Högre värden kräver mer svepande per ljusstyrkesteg</string>
   <string name="morphe_swipe_speed_sensitivity_title">Svepkänslighet för hastighetsgest</string>
@@ -1035,11 +1043,12 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_miniplayer_type_entry_0">Inaktiverad</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
-  <string name="morphe_miniplayer_type_entry_3">Surfplatta</string>
-  <string name="morphe_miniplayer_type_entry_4">Modern 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Modern 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Modern 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Modern 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimal 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Surfplatta</string>
+  <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Modern 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Inaktivera rundade hörn</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Inaktivera dra och släpp</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Förhindrar att den minimerade spelaren kan dras till olika hörn av skärmen</string>

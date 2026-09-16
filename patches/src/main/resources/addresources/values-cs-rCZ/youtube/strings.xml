@@ -381,6 +381,12 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_channel_whitelist_channel_added">Kanál byl přidán do seznamu povolených</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanál byl odebrán ze seznamu povolených</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Hledat v kanálu</string>
+  <string name="morphe_channel_search_summary">Když je otevřený kanál, hledá se pouze v tomto kanálu.</string>
+  <string name="morphe_channel_search_results_title">Hledat: %s</string>
+  <string name="morphe_channel_search_no_results">Na tomto kanálu se nic nenašlo</string>
+  <string name="morphe_channel_search_failed">Tento kanál se nepodařilo prohledat</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Odkaz zkopírován do schránky</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Odkaz s časovým razítkem zkopírován do schránky</string>
@@ -606,8 +612,10 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_swipe_text_overlay_size_summary">Upravte velikost textu na obrazovce (1–30)</string>
   <string name="morphe_swipe_threshold_title">Práh vynucení gesta</string>
   <string name="morphe_swipe_threshold_summary">Nastavte požadovanou vzdálenost posouvání před spuštěním úpravy</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Citlivost přejetí hlasitosti</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Vyšší hodnoty zvyšují změnu hlasitosti na jedno přejetí</string>
+  <string name="morphe_swipe_volume_distance_title">Citlivost přejetí hlasitosti</string>
+  <string name="morphe_swipe_volume_distance_summary">Vyšší hodnoty vyžadují více přejetí na krok hlasitosti</string>
+  <string name="morphe_swipe_volume_steps_title">Kroky hlasitosti</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Výchozí nastavení zařízení</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Citlivost přejetí jasu</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Vyšší hodnoty vyžadují více přejetí pro každý krok jasu</string>
   <string name="morphe_swipe_speed_sensitivity_title">Citlivost přejetí rychlosti</string>
@@ -1032,11 +1040,12 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_miniplayer_type_entry_0">Vypnuto</string>
   <string name="morphe_miniplayer_type_entry_1">Výchozí</string>
   <string name="morphe_miniplayer_type_entry_2">Minimální</string>
-  <string name="morphe_miniplayer_type_entry_3">Tablet</string>
-  <string name="morphe_miniplayer_type_entry_4">Moderní 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Moderní 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Moderní 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Moderní 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimální 2</string>
+  <string name="morphe_miniplayer_type_entry_4">tablet</string>
+  <string name="morphe_miniplayer_type_entry_5">Moderní 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Moderní 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Moderní 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Moderní 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Zakázat zaoblené rohy</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Zakázat přetažení</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Zabraňuje přetahování minimalizovaného přehrávače do různých rohů obrazovky</string>

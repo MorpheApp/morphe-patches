@@ -7,11 +7,17 @@
 
 package app.morphe.patches.reddit.misc.extension.hooks
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patches.all.misc.extension.ExtensionHook
 import app.morphe.patches.all.misc.extension.activityOnCreateExtensionHook
 
-internal val redditActivityOnCreateHook = activityOnCreateExtensionHook(
-    activityClassType = "Lcom/reddit/launch/main/MainActivity;"
+internal object RedditActivityOnCreateFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/launch/main/MainActivity;",
+    name = "onCreate",
+    returnType = "V",
 )
+
+internal val redditActivityOnCreateHook = ExtensionHook(RedditActivityOnCreateFingerprint)
 
 internal val redditApplicationOnCreateHook = activityOnCreateExtensionHook(
     activityClassType = "Lcom/reddit/frontpage/FrontpageApplication;"

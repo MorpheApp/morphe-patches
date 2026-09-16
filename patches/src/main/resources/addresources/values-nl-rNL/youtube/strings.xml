@@ -381,6 +381,12 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_channel_whitelist_channel_added">Kanaal toegevoegd aan de witte lijst</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanaal verwijderd van de witte lijst</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Zoeken in kanaal</string>
+  <string name="morphe_channel_search_summary">Als een kanaal geopend is, wordt er alleen in dat kanaal gezocht</string>
+  <string name="morphe_channel_search_results_title">Zoeken: %s</string>
+  <string name="morphe_channel_search_no_results">Niets gevonden op dit kanaal</string>
+  <string name="morphe_channel_search_failed">Kan dit kanaal niet doorzoeken</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link naar klembord gekopieerd</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link met tijdstempel naar klembord gekopieerd</string>
@@ -606,8 +612,10 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_swipe_text_overlay_size_summary">Pas de grootte van de tekst op het scherm aan (1-30)</string>
   <string name="morphe_swipe_threshold_title">Drempelwaarde swipe-sterkte</string>
   <string name="morphe_swipe_threshold_summary">Stel de benodigde veegafstand in voordat een aanpassing wordt geactiveerd</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Gevoeligheid volumegest</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Hogere waarden vergroten de volume verandering per veegbeweging</string>
+  <string name="morphe_swipe_volume_distance_title">Gevoeligheid volumegest</string>
+  <string name="morphe_swipe_volume_distance_summary">Hogere waarden vereisen meer vegen per volumestap</string>
+  <string name="morphe_swipe_volume_steps_title">Volumestappen</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Apparaatstandaard</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Veeggevoeligheid helderheid</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Hogere waarden vereisen meer vegen per helderheidsstap</string>
   <string name="morphe_swipe_speed_sensitivity_title">Veeggevoeligheid snelheid</string>
@@ -1033,11 +1041,12 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
-  <string name="morphe_miniplayer_type_entry_3">Tablet</string>
-  <string name="morphe_miniplayer_type_entry_4">Modern 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Modern 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Modern 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Modern 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimaal 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Tablet</string>
+  <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Modern 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Afgeronde hoeken uitschakelen</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Slepen en neerzetten uitschakelen</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Voorkomt dat de geminimaliseerde speler naar verschillende hoeken van het scherm wordt gesleept</string>

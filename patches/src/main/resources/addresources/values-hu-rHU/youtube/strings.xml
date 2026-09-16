@@ -381,6 +381,12 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_channel_whitelist_channel_added">A csatorna hozzáadva a fehérlistához</string>
   <string name="morphe_channel_whitelist_channel_removed">A csatorna eltávolítva a fehérlistáról</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Keresés a csatornán belül</string>
+  <string name="morphe_channel_search_summary">Ha egy csatorna nyitva van, a keresés csak abban a csatornában történik.</string>
+  <string name="morphe_channel_search_results_title">Keresés: %s</string>
+  <string name="morphe_channel_search_no_results">Nincs találat ezen a csatornán</string>
+  <string name="morphe_channel_search_failed">Nem sikerült keresni ezen a csatornán</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link másolva a vágólapra</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">A videó időbélyeggel ellátott linkje másolva a vágólapra</string>
@@ -606,8 +612,10 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_swipe_text_overlay_size_summary">Állítsa be a képernyőn megjelenő szöveg méretét (1-30)</string>
   <string name="morphe_swipe_threshold_title">A csúsztatás küszöbértéke</string>
   <string name="morphe_swipe_threshold_summary">Állítsa be a szükséges gesztus távolságot, mielőtt a beállítás érvénybe lép</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Hangerő-görgetés érzékenysége</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">A nagyobb értékek növelik a hangerőváltozást egy húzás során</string>
+  <string name="morphe_swipe_volume_distance_title">Hangerő-görgetés érzékenysége</string>
+  <string name="morphe_swipe_volume_distance_summary">A magasabb értékek több húzást igényelnek hangerőlépésenként.</string>
+  <string name="morphe_swipe_volume_steps_title">Hangerőlépések</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Eszköz alapértelmezése</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Fényerő-húzásérzékenység</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">A nagyobb értékek több húzást igényelnek a fényerő lépésenkénti változásához</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sebesség-húzásérzékenység</string>
@@ -1035,11 +1043,12 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_miniplayer_type_entry_0">Kikapcsolva</string>
   <string name="morphe_miniplayer_type_entry_1">Alapértelmezett</string>
   <string name="morphe_miniplayer_type_entry_2">Minimális</string>
-  <string name="morphe_miniplayer_type_entry_3">Táblagép</string>
-  <string name="morphe_miniplayer_type_entry_4">Modern 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Modern 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Modern 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Modern 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Minimál 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Táblagép</string>
+  <string name="morphe_miniplayer_type_entry_5">Modern 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Modern 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Modern 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Modern 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Lekerekített sarkok letiltása</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Fogd és vidd letiltása</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Megakadályozza a minimalizált lejátszó áthúzását a képernyő különböző sarkaiiba</string>

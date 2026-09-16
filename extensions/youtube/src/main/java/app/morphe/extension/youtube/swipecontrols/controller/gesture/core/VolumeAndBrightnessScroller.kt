@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.swipecontrols.controller.gesture.core
 
 import android.content.Context
@@ -50,7 +60,6 @@ interface VolumeAndBrightnessScroller {
  * @param overlayController Overlay controller instance.
  * @param volumeDistance Unit distance for volume scrolling, in dp.
  * @param brightnessDistance Unit distance for brightness scrolling, in dp; higher = more precise.
- * @param volumeSwipeSensitivity How much volume will change per swipe.
  * @param speedDistance Unit distance for speed scrolling, in dp; higher = more precise.
  * @param speedStepInt Playback speed change per tick, expressed as an integer multiplied by 100 (e.g. 5 = 0.05x).
  * @param enableSpeedGesture Whether the playback speed swipe gesture is enabled.
@@ -62,7 +71,6 @@ class VolumeAndBrightnessScrollerImpl(
     private val overlayController: SwipeControlsOverlay,
     volumeDistance: Int = 10,
     brightnessDistance: Int = 1,
-    private val volumeSwipeSensitivity: Int,
     speedDistance: Int = 10,
     private val speedStepInt: Int = 5,
     private val enableSpeedGesture: Boolean = false,
@@ -77,8 +85,8 @@ class VolumeAndBrightnessScrollerImpl(
             ),
         ) { _, _, direction ->
             volumeController?.run {
-                volume += direction * volumeSwipeSensitivity
-                overlayController.onVolumeChanged(volume, maxVolume)
+                adjustVolumeBySteps(direction)
+                overlayController.onVolumeChanged(steppedVolume, steppedMaxVolume)
             }
         }
 

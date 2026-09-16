@@ -65,6 +65,15 @@ Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe musta</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Mukautettu</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Tämä vaihtaa sovellusvalikossa näkyvän kuvakkeen.
+
+Tämä asetus ei vaihda kuvaketta missään seuraavista paikoista:
+• Laitteen järjestelmäasetusten sovellusluettelo
+• Tietyt push-ilmoitukset
+• 'Avaa sovelluksella' -sovellusvalitsin
+• Android Auto -kuvake
+
+Vaihtaaksesi kuvakkeen kaikkialla, paikkaa uudelleen ja muuta 'Sovelluskuvake'-paikkausvaihtoehtoa"</string>
   <string name="morphe_custom_branding_notification_icon_title">Ilmoituksen kuvake</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Sovelluksen kuvakkeen vaihtaminen</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe musta</string>

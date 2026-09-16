@@ -335,6 +335,7 @@ Batafsil ma'lumot olish uchun AiSlopList.com ni oching"</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamasini yashirish</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Havola quvvatlantirildi</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Vaqt muhrini o\'z ichiga olgan havola quvvatlantirildi</string>
@@ -542,8 +543,6 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_swipe_text_overlay_size_summary">On-ekrandagi matnning oʻlchamini sozlash (1–30)</string>
   <string name="morphe_swipe_threshold_title">Sirt bilan surish harakatining chegarasi</string>
   <string name="morphe_swipe_threshold_summary">\'Yoqish\' va \'Obuna\' tugmalari ijodkor ularni aytganda porlamasligi</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Hajm bilan sirt bilan surish sezgirligi</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Har bir siljishda ovoz balandligini oshirish qiymatlari yuqori</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Yorqinlik siljish sezgirligi</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Yorqinlik bosqichlari uchun ko\'proq siljish kerak bo\'lgan qiymatlar yuqori</string>
   <string name="morphe_swipe_speed_sensitivity_title">Tezlik siljish sezgirligi</string>
@@ -947,11 +946,6 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_miniplayer_type_entry_0">O\'chirilgan</string>
   <string name="morphe_miniplayer_type_entry_1">Standart</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
-  <string name="morphe_miniplayer_type_entry_3">Planshet</string>
-  <string name="morphe_miniplayer_type_entry_4">Zamonaviy 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Zamonaviy 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Zamonaviy 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Zamonaviy 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Dumaloq burchaklarni o\'chirish</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Surib yurishni o\'chirish</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Kichraytirilgan pleerni ekranning turli burchaklariga sudrab o\'tkazishning oldini olish</string>

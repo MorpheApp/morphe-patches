@@ -25,7 +25,6 @@ import app.morphe.patcher.patch.folderOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -71,7 +70,7 @@ private const val DEFAULT_ICON_STYLE_NAME = "black"
 
 // Derived from the bundled styles so a new style cannot be missing here.
 private val iconStyleValues = buildMap {
-    put("App default", null)
+    put("Automatic", null)
     put("Original", ORIGINAL_USER_ICON_STYLE_NAME)
 
     iconStyleNames.forEach { style ->
@@ -179,18 +178,15 @@ internal fun baseCustomBrandingPatch(
         values = iconStyleValues,
         title = "App icon",
         description = """
-            The app icon to use.
+            The app icon to use, including the notification icon.
 
-            A regular installation starts with this icon and can change it later in the app
-            settings. A mounted (root) installation cannot change it from the app settings,
-            so changing its icon requires patching again.
+            'Automatic' uses the custom icon if one is provided, and otherwise 'Black'.
+            Select 'Original' to keep the icon of the unpatched app.
 
-            'App default' uses the custom icon if one is provided, and otherwise the standard icon.
-
-            The notification icon of the app follows this option.
-
-            Places that cannot use the icon selected in the app settings, such as Android Auto and
-            the app list of the system settings, always show the icon chosen here.
+            The icon can be changed later in the app settings, but only for the launcher.
+            Android Auto, the app list of the system settings and the apk file always show
+            the icon chosen here, and a mounted (root) installation can only change it by
+            patching again.
         """
     ) {
         it == null || iconStyleValues.containsValue(it)
@@ -199,7 +195,6 @@ internal fun baseCustomBrandingPatch(
     block()
 
     dependsOn(
-        resourceMappingPatch,
         fixRecycledBitmapPatch,
         bytecodePatch {
             execute {
@@ -739,7 +734,7 @@ private fun ResourcePatchContext.resourceDirectories(resourceType: String): List
 }
 
 /**
- * The icon style to use, resolving the 'App default' option value.
+ * The icon style to use, resolving the 'Automatic' option value.
  */
 private fun resolveIconStyle(appIconStyle: String?, customIcon: String?): String =
     appIconStyle

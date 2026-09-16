@@ -65,6 +65,15 @@ Kontroller, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe afspilning af sort</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Brugerdefineret</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Dette ændrer ikonet, der vises i din appstarter.
+
+Denne indstilling ændrer ikke ikonet på nogen af disse steder:
+• App-listen i enhedens systemindstillinger
+• Visse pushnotifikationer
+• ‘Åbn med’-appvælgeren
+• Android Auto-ikonet
+
+For at ændre ikonet overalt skal du patche igen og ændre patchindstillingen ‘App icon’. Updates from the translation memory are unavailable. Some terminology may be preserved."</string>
   <string name="morphe_custom_branding_notification_icon_title">Notifikationsikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Match appikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>

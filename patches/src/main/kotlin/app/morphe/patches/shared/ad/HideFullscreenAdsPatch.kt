@@ -11,7 +11,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -32,8 +31,6 @@ internal fun hideFullscreenAdsPatch(
 ) = bytecodePatch(
     description = "Adds an option to hide fullscreen premium popup ads."
 ) {
-    dependsOn(resourceMappingPatch)
-
     execute {
         preferenceScreen.addPreferences(
             SwitchPreference("morphe_hide_fullscreen_ads")

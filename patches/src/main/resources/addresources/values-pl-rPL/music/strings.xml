@@ -308,32 +308,87 @@ Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij si�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Używaj zewnętrznych tekstów</string>
   <string name="morphe_music_lyrics_enabled_summary">Wyświetla teksty z zewnętrznej usługi, przełączając się na wbudowane, gdy nic nie zostanie znalezione</string>
-  <string name="morphe_music_lyrics_source_title">Usługa z tekstami</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, następnie KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Usługa tekstów</string>
+  <string name="morphe_music_lyrics_section_overlay_title">Nakładka</string>
+  <string name="morphe_music_lyrics_section_sync_title">Synchronizacja</string>
+  <string name="morphe_music_lyrics_section_about_title">Informacje</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_lyrics_source_summary">Użyj ▲/▼ do zmiany priorytetu, a pól wyboru do włączania i wyłączania dostawców</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Wszyscy dostawcy wyłączeni - teksty wbudowane i osadzone</string>
+  <string name="morphe_music_lyrics_source_reset_title">Zresetować kolejność dostawców?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Przywróć domyślną kolejność priorytetów dla dostawców</string>
+  <string name="morphe_music_token_dialog_get_token">Pobierz token</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Wklej ciasteczka media-user-token z music.apple.com.
+
+Kroki:
+1. Zaloguj się na music.apple.com jako subskrybent
+2. Otwórz DevTools → Application → Cookies → music.apple.com
+3. Skopiuj wartość \"media-user-token\""</string>
+  <string name="morphe_music_apple_music_token_dialog_hint">media-user-token</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: zapisano media-user-token</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: wyczyszczono media-user-token</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: nieprawidłowy media-user-token - sprawdź i spróbuj ponownie</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Wklej ciasteczka sp_dc ze Spotify.
+
+Kroki:
+1. Zaloguj się na open.spotify.com
+2. Otwórz DevTools → Application → Cookies → open.spotify.com
+3. Skopiuj wartość \"sp_dc\""</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: zapisano sp_dc</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: wyczyszczono sp_dc</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: nieprawidłowy sp_dc - sprawdź i spróbuj ponownie</string>
+  <string name="morphe_music_apple_token_optional_hint">Token Apple Music jest opcjonalny. Bez niego jako rozwiązanie zapasowe zostanie użyte Lyrically.</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Wklej ciasteczka arl z Deezera.
+
+Kroki:
+1. Zaloguj się na deezer.com
+2. Otwórz DevTools → Application → Cookies → deezer.com
+3. Skopiuj wartość \"arl\""</string>
+  <string name="morphe_music_deezer_arl_dialog_hint">arl</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: zapisano arl</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: wyczyszczono arl</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: nieprawidłowy arl - sprawdź i spróbuj ponownie</string>
+  <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Wklej token użytkownika Musixmatch.
+
+Kroki:
+1. Wejdź na musixmatch.com i zaloguj się
+2. Otwórz DevTools → Application → Local Storage
+3. Skopiuj wartość tokena użytkownika"</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">token użytkownika</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: zapisano token użytkownika</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: wyczyszczono token użytkownika</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: nieprawidłowy token użytkownika - sprawdź i spróbuj ponownie</string>
+  <string name="morphe_music_youtube_cookies_title">Ciasteczka YouTube</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Wklej ciasteczka YouTube, aby pobierać napisy i transkrypcje z YouTube.
+
+Kroki:
+1. Otwórz youtube.com w przeglądarce i zaloguj się
+2. Otwórz DevTools → Application → Cookies → youtube.com
+3. Skopiuj cały ciąg ciasteczek (pary klucz=wartość oddzielone średnikami)
+
+Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: zapisano ciasteczka</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: wyczyszczono ciasteczka</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: nieprawidłowe ciasteczka - sprawdź i spróbuj ponownie</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">Dotknij linijki, aby przewinąć</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Dotknięcie linijki przeskakuje do tego momentu w utworze</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Pokaż przycisk Kopiuj</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Pokaż przycisk Przetłumacz</string>
+  <string name="morphe_music_lyrics_saved">Zapisano</string>
   <string name="morphe_music_lyrics_text_size_title">Rozmiar tekstu</string>
   <string name="morphe_music_lyrics_text_size_summary">Rozmiar tekstu utworu</string>
   <string name="morphe_music_lyrics_offset_ms_title">Przesunięcie czasowe</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Przesuń zsynchronizowany tekst do przodu lub do tyłu. Użyj wartości dodatniej, jeśli tekst wyprzedza utwór</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Źródło: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Przetłumacz</string>
-  <string name="morphe_music_lyrics_translate_hide">Pokaż oryginał</string>
   <string name="morphe_music_lyrics_translating">Tłumaczenie…</string>
   <string name="morphe_music_lyrics_translate_failed">Nie udało się przetłumaczyć tekstu</string>
-  <string name="morphe_music_lyrics_copy">Kopiuj</string>
   <string name="morphe_music_lyrics_copied">Skopiowano do schowka</string>
-  <string name="morphe_music_lyrics_about_title">O zewnętrznych tekstach</string>
-  <string name="morphe_music_lyrics_about_summary">"Teksty są wyszukiwane na podstawie tytułu utworu i wykonawcy, dlatego dla utworu z nietypowymi metadanymi może nie zostać znalezione nic lub znaleziona zostanie niewłaściwa wersja
-
-Zsynchronizowane teksty podążają za odtwarzaniem. Jeśli się rozjeżdżają, dostosuj przesunięcie czasowe
-
-Gdy nie zostaną znalezione żadne zewnętrzne teksty, zamiast nich wyświetlane są te wbudowane"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Wyłącza pogrubione ikony</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Przywraca zakładki Następne, Tekst i Powiązane w odtwarzaczu</string>

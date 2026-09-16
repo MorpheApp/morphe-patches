@@ -308,32 +308,25 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Utiliser les paroles de tiers</string>
   <string name="morphe_music_lyrics_enabled_summary">Affiche les paroles d\'un service tiers, en utilisant les paroles intégrées en cas d\'absence de celles-ci</string>
-  <string name="morphe_music_lyrics_source_title">Service de paroles</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, puis KuGou.</string>
+  <string name="morphe_music_lyrics_section_service_title">Service de paroles</string>
+  <string name="morphe_music_lyrics_section_about_title">À propos</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_token_dialog_get_token">Obtenir un jeton</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">Appuyez sur une ligne pour aller à ce moment</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Appuyez sur une ligne pour aller directement à ce moment de la chanson</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Afficher un bouton \'Copier\'</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Afficher un bouton \'Traduire\'</string>
+  <string name="morphe_music_lyrics_saved">Enregistré</string>
   <string name="morphe_music_lyrics_text_size_title">Taille du texte</string>
   <string name="morphe_music_lyrics_text_size_summary">Taille du texte des paroles</string>
   <string name="morphe_music_lyrics_offset_ms_title">Décalage de synchronisation</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Décale les paroles synchronisées vers l\'avant ou vers l\'arrière. Utilisez une valeur positive si les paroles sont en avance sur la chanson</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Source: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Traduire</string>
-  <string name="morphe_music_lyrics_translate_hide">Afficher l\'original</string>
   <string name="morphe_music_lyrics_translating">Traduction…</string>
   <string name="morphe_music_lyrics_translate_failed">Impossible de traduire les paroles</string>
-  <string name="morphe_music_lyrics_copy">Copier</string>
   <string name="morphe_music_lyrics_copied">Copié dans le presse-papiers</string>
-  <string name="morphe_music_lyrics_about_title">À propos des paroles de tiers</string>
-  <string name="morphe_music_lyrics_about_summary">"Les paroles sont recherchées à partir du titre du morceau et de l'artiste, ainsi, un morceau avec des métadonnées inhabituelles peut ne rien trouver, ou trouver la mauvaise version
-
-Les paroles synchronisées suivent la lecture. Si elles dérivent, ajustez le décalage de synchronisation
-
-Lorsque aucune parole tierce n'est trouvée, les paroles intégrées sont affichées à la place"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Désactive les icônes en gras</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 – Restaure les onglets \'À suivre\', \'Paroles\' et \'Similaires\' du lecteur</string>

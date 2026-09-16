@@ -74,7 +74,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_entry_3">隱藏全部</string>
   <string name="morphe_hide_floating_microphone_button_title">隱藏「懸浮麥克風」按鈕</string>
   <string name="morphe_hide_floating_microphone_button_summary">隱藏搜尋建議螢幕右下角的浮動麥克風按鈕</string>
-  <string name="morphe_hide_get_premium_button_title">隶裈、要账利按键</string>
+  <string name="morphe_hide_get_premium_button_title">隱藏取得 Premium 按鈕</string>
   <string name="morphe_hide_horizontal_shelves_title">隱藏橫向區塊</string>
   <string name="morphe_hide_horizontal_shelves_summary">已隱藏橫向專區，例如：• 即時新聞• 你可能喜歡的社群貼文• 繼續觀看• 探索更多頻道• 探索更多主題• 為你推薦• 最新影片• 最相關• 來自創作者社群的貼文• 購物• 再次觀看</string>
   <string name="morphe_hide_hyped_label_title">隱藏熱門標籤</string>
@@ -366,7 +366,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">隱藏片尾商店橫幅</string>
   <string name="morphe_hide_general_ads_title">隱藏一般廣告</string>
   <string name="morphe_hide_merchandise_banners_title">隱藏商品橫幅</string>
-  <string name="morphe_hide_paid_promotion_labels_title">隶裈他证利按案标</string>
+  <string name="morphe_hide_paid_promotion_labels_title">隱藏付費推廣標籤</string>
   <string name="morphe_hide_player_popup_ads_title">隱藏播放器彈出廣告</string>
   <string name="morphe_hide_self_sponsor_ads_title">隱藏自我贊助資訊卡</string>
   <string name="morphe_hide_shopping_links_title">隱藏購物連結</string>
@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">頻道已加入白名單</string>
   <string name="morphe_channel_whitelist_channel_removed">頻道已從白名單中移除</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">搜尋頻道內</string>
+  <string name="morphe_channel_search_summary">當頻道開啟時，搜尋只會搜尋該頻道</string>
+  <string name="morphe_channel_search_results_title">搜尋：%s</string>
+  <string name="morphe_channel_search_no_results">此頻道找不到任何結果</string>
+  <string name="morphe_channel_search_failed">無法搜尋此頻道</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">已將網址複製到剪貼簿</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">已將帶時間戳的連結複製到剪貼簿</string>
@@ -606,8 +612,10 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_text_overlay_size_summary">調整螢幕上文字的大小 (1-30)</string>
   <string name="morphe_swipe_threshold_title">滑動幅度臨界點</string>
   <string name="morphe_swipe_threshold_summary">設定觸發調整所需滑動距離</string>
-  <string name="morphe_swipe_volume_sensitivity_title">音量滑動靈敏度</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">較高的數值會增加每次滑動的音量變化</string>
+  <string name="morphe_swipe_volume_distance_title">音量滑動靈敏度</string>
+  <string name="morphe_swipe_volume_distance_summary">數值越高，每段音量需要滑動更多次</string>
+  <string name="morphe_swipe_volume_steps_title">音量階級</string>
+  <string name="morphe_swipe_volume_steps_entry_default">裝置預設</string>
   <string name="morphe_swipe_brightness_sensitivity_title">亮度滑動靈敏度</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">較高的數值需要更頻繁的滑動才能改變亮度</string>
   <string name="morphe_swipe_speed_sensitivity_title">速度滑動靈敏度</string>
@@ -1035,11 +1043,12 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
   <string name="morphe_miniplayer_type_entry_1">預設</string>
   <string name="morphe_miniplayer_type_entry_2">極簡</string>
-  <string name="morphe_miniplayer_type_entry_3">平板電腦</string>
-  <string name="morphe_miniplayer_type_entry_4">現代 1</string>
-  <string name="morphe_miniplayer_type_entry_5">現代 2</string>
-  <string name="morphe_miniplayer_type_entry_6">現代 3</string>
-  <string name="morphe_miniplayer_type_entry_7">現代 4</string>
+  <string name="morphe_miniplayer_type_entry_3">精簡 2</string>
+  <string name="morphe_miniplayer_type_entry_4">平板電腦</string>
+  <string name="morphe_miniplayer_type_entry_5">現代 1</string>
+  <string name="morphe_miniplayer_type_entry_6">現代 2</string>
+  <string name="morphe_miniplayer_type_entry_7">現代 3</string>
+  <string name="morphe_miniplayer_type_entry_8">現代 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">停用圓角</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">停用拖放</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">防止將迷你播放器拖放到螢幕的不同角落</string>

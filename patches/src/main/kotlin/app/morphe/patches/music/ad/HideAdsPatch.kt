@@ -17,7 +17,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -39,7 +38,6 @@ val hideAdsPatch = bytecodePatch(
         sharedExtensionPatch,
         hideFullscreenAdsPatch(PreferenceScreen.ADS),
         settingsPatch,
-        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)

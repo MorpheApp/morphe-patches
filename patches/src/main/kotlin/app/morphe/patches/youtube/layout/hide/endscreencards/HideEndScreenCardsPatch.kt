@@ -5,7 +5,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -17,7 +16,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private val hideEndScreenCardsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        resourceMappingPatch,
     )
 
     execute {
@@ -39,7 +37,6 @@ val hideEndScreenCardsPatch = bytecodePatch(
         sharedExtensionPatch,
         hideEndScreenCardsResourcePatch,
         versionCheckPatch,
-        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

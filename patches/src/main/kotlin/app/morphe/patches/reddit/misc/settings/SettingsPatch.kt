@@ -19,7 +19,6 @@ import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
@@ -42,7 +41,6 @@ import app.morphe.util.registersUsed
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
@@ -57,7 +55,6 @@ val settingsPatch = bytecodePatch(
         disablePlayStoreUpdatesPatch,
         spoofSignaturePatch,
         removeLinkVerification,
-        resourceMappingPatch,
         addResourcesPatch,
         versionCheckPatch,
         experimentalAppNoticePatch(
@@ -113,7 +110,7 @@ val settingsPatch = bytecodePatch(
         }
 
         // Turn off Google Play in app update prompt.
-        GooglePlayUpdateCheckFingerprint.method.returnEarly(null);
+        GooglePlayUpdateCheckFingerprint.method.returnEarly(null)
 
         // Force Play Store Verification checks to pass.
         PlayStoreVerificationFingerprint.method.returnEarly(false)

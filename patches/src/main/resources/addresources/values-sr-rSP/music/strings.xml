@@ -308,9 +308,10 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Коришћење текстова песама треће стране</string>
   <string name="morphe_music_lyrics_enabled_summary">Приказује текстове песама са сервиса треће стране, враћајући се на уграђене текстове песама када нису пронађени</string>
-  <string name="morphe_music_lyrics_source_title">Сервис за текстове песама</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, затим KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Сервис за текстове песама</string>
+  <string name="morphe_music_lyrics_section_about_title">O programu</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_tap_to_seek_title">Додирните ред да бисте премотали</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Додиривање реда прескаче на тај тренутак у песми</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Прикажи дугме за копирање</string>
@@ -318,22 +319,12 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_text_size_title">Величина текста</string>
   <string name="morphe_music_lyrics_text_size_summary">Величина текста текстова песама</string>
   <string name="morphe_music_lyrics_offset_ms_title">Корекција времена</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Померите синхронизоване текстове песама напред или назад. Користите позитивну вредност ако текстови претече песми</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Извор: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Преведи</string>
-  <string name="morphe_music_lyrics_translate_hide">Прикажи оригинал</string>
   <string name="morphe_music_lyrics_translating">Превођење…</string>
   <string name="morphe_music_lyrics_translate_failed">Није било могуће превести текстове песама</string>
-  <string name="morphe_music_lyrics_copy">Kopiraj</string>
   <string name="morphe_music_lyrics_copied">Копирано у привремену меморију</string>
-  <string name="morphe_music_lyrics_about_title">О текстовима песама треће стране</string>
-  <string name="morphe_music_lyrics_about_summary">"Текстови песама се траже према наслову и извођачу, тако да песма са необичним метаподовима може да не пронађе ништа или да пронађе погрешну верзију
-
-Текстови који су синхронизовани прате репродукцију. Ако се одмакну, подесите корекцију времена
-
-Када није пронађен текст треће стране, уместо тога се приказује уграђени текст"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Онемогући подебљане иконе</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 — Врати картице „Следеће”, „Текстови” и „Повезано” у плејеру</string>

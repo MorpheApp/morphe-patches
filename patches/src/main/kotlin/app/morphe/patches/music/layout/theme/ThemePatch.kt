@@ -13,17 +13,16 @@ package app.morphe.patches.music.layout.theme
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_30_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.baseThemePatch
-import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.usePatchedThemeColor
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -102,7 +101,6 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
-            resourceMappingPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
                 colorNamesDark = musicColorNamesDark,

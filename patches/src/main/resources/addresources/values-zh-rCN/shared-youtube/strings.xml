@@ -65,6 +65,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe 玩转黑色</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">自定义</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"这会更改应用启动器中显示的图标。
+
+此设置不会更改以下任何位置中的图标：
+• 设备系统设置中的应用列表
+• 某些推送通知
+• “打开方式”应用选择器
+• Android Auto 图标
+
+要更改所有位置的图标，请重新打补丁并更改“应用图标”补丁选项。\"}]}[{"</string>
   <string name="morphe_custom_branding_notification_icon_title">通知图标</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">匹配应用图标</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe 玩乐</string>

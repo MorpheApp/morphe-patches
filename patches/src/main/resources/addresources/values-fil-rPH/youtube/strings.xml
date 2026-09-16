@@ -381,6 +381,12 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_channel_whitelist_channel_added">Idinagdag ang channel sa whitelist</string>
   <string name="morphe_channel_whitelist_channel_removed">Tinanggal ang channel sa whitelist</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Maghanap sa loob ng channel</string>
+  <string name="morphe_channel_search_summary">Ang paghahanap habang bukas ang isang channel ay sa channel na iyon lamang</string>
+  <string name="morphe_channel_search_results_title">Paghahanap: %s</string>
+  <string name="morphe_channel_search_no_results">Walang nahanap sa channel na ito</string>
+  <string name="morphe_channel_search_failed">Hindi ma-search ang channel na ito</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Nakalink sa clipboard</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Nakalink na may timestamp sa clipboard</string>
@@ -606,8 +612,10 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_swipe_text_overlay_size_summary">Ayusin ang laki ng text sa screen (1-30)</string>
   <string name="morphe_swipe_threshold_title">Threshold ng swipe magnitude</string>
   <string name="morphe_swipe_threshold_summary">Itakda ang kinakailangang distansya ng swipe bago ma-trigger ang isang pagsasaayos</string>
-  <string name="morphe_swipe_volume_sensitivity_title">Sensitivity ng swipe volume</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">Ang mas mataas na halaga ay nagpapataas ng pagbabago sa volume sa bawat paggalaw</string>
+  <string name="morphe_swipe_volume_distance_title">Sensitivity ng pag-swipe ng volume</string>
+  <string name="morphe_swipe_volume_distance_summary">Kapag mas mataas ang value, mas maraming swipe ang kailangan para madagdagan ng isang level ang volume</string>
+  <string name="morphe_swipe_volume_steps_title">Mga hakbang ng volume</string>
+  <string name="morphe_swipe_volume_steps_entry_default">Default ng device</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensitibidad ng paggalaw ng liwanag</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Ang mas mataas na halaga ay nangangailangan ng mas maraming paggalaw sa bawat hakbang ng liwanag</string>
   <string name="morphe_swipe_speed_sensitivity_title">Sensitibidad ng paggalaw ng bilis</string>
@@ -1033,11 +1041,12 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
   <string name="morphe_miniplayer_type_entry_1">Default</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
-  <string name="morphe_miniplayer_type_entry_3">Tablet</string>
-  <string name="morphe_miniplayer_type_entry_4">Moderno 1</string>
-  <string name="morphe_miniplayer_type_entry_5">Moderno 2</string>
-  <string name="morphe_miniplayer_type_entry_6">Moderno 3</string>
-  <string name="morphe_miniplayer_type_entry_7">Moderno 4</string>
+  <string name="morphe_miniplayer_type_entry_3">Payak 2</string>
+  <string name="morphe_miniplayer_type_entry_4">Tablet</string>
+  <string name="morphe_miniplayer_type_entry_5">Moderno 1</string>
+  <string name="morphe_miniplayer_type_entry_6">Moderno 2</string>
+  <string name="morphe_miniplayer_type_entry_7">Moderno 3</string>
+  <string name="morphe_miniplayer_type_entry_8">Moderno 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">I-disable ang bilog na sulok</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">I-disable ang pag-drag at drop</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary">Pinipigilan ang pag-drag ng minimize player sa iba\'t ibang sulok ng screen</string>

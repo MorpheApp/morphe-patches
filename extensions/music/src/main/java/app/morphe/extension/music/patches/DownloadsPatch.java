@@ -9,10 +9,9 @@ package app.morphe.extension.music.patches;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
-
-import com.facebook.litho.ComponentHost;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -169,8 +168,8 @@ public final class DownloadsPatch {
             }
             Utils.verifyOnMainThread();
 
-            if (map.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost) {
-                CharSequence contentDescription = componentHost.getContentDescription();
+            if (map.get(ELEMENTS_SENDER_VIEW) instanceof ViewGroup senderViewGroup) {
+                CharSequence contentDescription = senderViewGroup.getContentDescription();
                 if (contentDescription != null && downloadButtonLabel.equals(contentDescription.toString())) {
                     final long now = System.currentTimeMillis();
                     if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
@@ -235,8 +234,8 @@ public final class DownloadsPatch {
                     return false;
                 }
 
-                if (viewObj instanceof ComponentHost componentHost) {
-                    CharSequence cd = componentHost.getContentDescription();
+                if (viewObj instanceof ViewGroup senderViewGroup) {
+                    CharSequence cd = senderViewGroup.getContentDescription();
                     if (cd != null && !downloadButtonLabel.isEmpty()) {
                         String cdLower = cd.toString().toLowerCase();
                         String labelLower = downloadButtonLabel.toLowerCase();
