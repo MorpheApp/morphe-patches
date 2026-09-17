@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.youtube.patches.AddToQueuePatch.registerFlyoutProvider;
-import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.setTopFlyoutMenuVisible;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
@@ -104,10 +103,6 @@ public final class FlyoutUtils {
     private static final List<byte[]> SHORTS_VIDEO_ELEMENT_BYTES = List.of(
             getAsciiBytes("history-shorts-shelf-item"),
             getAsciiBytes("shorts-shelf-item")
-    );
-    private static final List<byte[]> SHORTS_TOP_BAR_BYTES = List.of(
-            getAsciiBytes("top_bar.e"),
-            getAsciiBytes("shorts_overflow_menu")
     );
     private static final List<byte[]> HORIZONTAL_SHELF_HISTORY_BYTES = List.of(
             getAsciiBytes("horizontal_shelf.e"),
@@ -855,14 +850,6 @@ public final class FlyoutUtils {
 
         if (Settings.DEBUG_PROTOBUFFER.get()) {
             Logger.printDebug(() -> "Flyout buffer: " + new BufferAsciiStrings(flyoutBuffer).getStrings());
-        }
-
-        // Verify that the open flyout menu is the first one and not the 'others'
-        // one, by checking the filtering of its first button (quality menu).
-        List<Integer> shortsTopBarBytesIndexes = byteIndexesOf(flyoutBuffer, SHORTS_TOP_BAR_BYTES);
-        if (!shortsTopBarBytesIndexes.isEmpty() &&
-                shortsTopBarBytesIndexes.size() == LIST_ITEM_SHARE_BYTES.size()) {
-            setTopFlyoutMenuVisible(true);
         }
 
         // Check whether the buffer contains the specified IDs within a certain initial

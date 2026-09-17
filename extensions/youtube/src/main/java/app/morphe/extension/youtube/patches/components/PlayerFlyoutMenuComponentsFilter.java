@@ -23,6 +23,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
@@ -31,9 +32,6 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
     private static boolean topFlyoutMenuVisible;
     public static boolean getTopFlyoutMenuVisible() {
         return topFlyoutMenuVisible;
-    }
-    public static void setTopFlyoutMenuVisible(boolean value) {
-        topFlyoutMenuVisible = value;
     }
     public static void resetTopFlyoutMenuVisible() {
         topFlyoutMenuVisible = false;
@@ -51,13 +49,17 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
     }
 
-    private final ByteArrayFilterGroup videoQualityMenuButtonPrimary = new ByteArrayFilterGroup(
+    private final ByteArrayFilterGroup overflowMenuItem = new ByteArrayFilterGroup(
             null,
             "overflow_menu_item.e"
     );
-    private final ByteArrayFilterGroup videoQualityMenuButtonSecondary = new ByteArrayFilterGroup(
+    private final ByteArrayFilterGroup videoPlayerSettingsQualityButton = new ByteArrayFilterGroup(
             null,
             "quality_sheet_header.e"
+    );
+    private final ByteArrayFilterGroup shortsPlayerSettingsCaptionsButton = new ByteArrayFilterGroup(
+            null,
+            "closed_captions"
     );
     private final StringFilterGroup audioTrackMenuFooter;
     private final StringFilterGroup divider;
@@ -201,16 +203,23 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                 return false; // Overflow menu is always the start of the path.
             }
 
+            // Verify that the open flyout menu is the first one and not the 'others'
+            // one, by checking the filtering of its first button (quality menu).
+            boolean videoPlayerFlyout =
+                    PlayerType.getCurrent().isMaximizedOrFullscreen() &&
+                            overflowMenuItem.check(buffer).isFiltered() &&
+                            videoPlayerSettingsQualityButton.check(buffer).isFiltered();
+            boolean shortsPlayerFlyout =
+                    ShortsPlayerState.isOpen() &&
+                            overflowMenuItem.check(buffer).isFiltered() &&
+                            shortsPlayerSettingsCaptionsButton.check(buffer).isFiltered();
+            if (videoPlayerFlyout || shortsPlayerFlyout) {
+                topFlyoutMenuVisible = true;
+            }
+
             // Shorts also use this player flyout panel
             if (ShortsPlayerState.isOpen()) {
                 return false;
-            }
-
-            // Verify that the open flyout menu is the first one and not the 'others'
-            // one, by checking the filtering of its first button (quality menu).
-            if (videoQualityMenuButtonPrimary.check(buffer).isFiltered() &&
-                    videoQualityMenuButtonSecondary.check(buffer).isFiltered()) {
-                topFlyoutMenuVisible = true;
             }
 
             // 21.x+ fix.
