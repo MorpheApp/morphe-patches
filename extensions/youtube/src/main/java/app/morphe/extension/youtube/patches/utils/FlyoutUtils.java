@@ -415,14 +415,17 @@ public final class FlyoutUtils {
 
         final String saveToWatchLaterButtonVideoId;
         if (!flyoutVideoId.isEmpty()) {
-            if (Settings.KIDS_SAVE_TO_WATCH_LATER_BUTTON.get() && videoMarkedAsForKids) {
+            if (Settings.KIDS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
+                    videoMarkedAsForKids) {
                 saveToWatchLaterButtonVideoId = flyoutVideoId;
-            } else if (Settings.SHORTS_SAVE_TO_WATCH_LATER_BUTTON.get() && isShortFlyout) {
+            } else if (Settings.SHORTS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
+                    isShortFlyout) {
                 saveToWatchLaterButtonVideoId = flyoutVideoId;
             } else {
                 saveToWatchLaterButtonVideoId = "";
             }
-        } else if (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()) {
+        } else if (Settings.SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
+                PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()) {
             saveToWatchLaterButtonVideoId = VideoInformation.getVideoId();
         } else {
             saveToWatchLaterButtonVideoId = "";
