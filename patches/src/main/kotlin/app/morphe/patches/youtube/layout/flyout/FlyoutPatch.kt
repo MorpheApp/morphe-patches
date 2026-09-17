@@ -18,6 +18,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
+import app.morphe.patches.youtube.layout.hide.general.hideLayoutComponentsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
@@ -55,6 +56,7 @@ val flyoutPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         lithoFilterPatch,
+        hideLayoutComponentsPatch,
         videoInformationPatch,
         elementProtoParserHookPatch,
     )
@@ -204,8 +206,6 @@ val flyoutPatch = bytecodePatch(
                 )
             }
         }
-
-        hookElement("$EXTENSION_UTILS_CLASS->onNewElementsLoaded")
 
         StartVideoInformerFingerprint.method.addInstruction(
             0,

@@ -71,7 +71,6 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         addPlayerOverlayPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_save_to_watch_later_button", summary = true),
-
                 SwitchPreference("morphe_swap_save_and_queue_actions", summary = true),
                 SwitchPreference("morphe_queue_restore", summary = true)
             )
