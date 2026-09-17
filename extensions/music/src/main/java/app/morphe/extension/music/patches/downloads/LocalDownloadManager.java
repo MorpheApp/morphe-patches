@@ -38,6 +38,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
+import app.morphe.extension.music.patches.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -468,13 +470,16 @@ public final class LocalDownloadManager {
         StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
         if (request == null) {
             Logger.printDebug(() -> "No cached streaming request for download, resolving: " + videoId);
-            request = StreamingDataRequest.fetchRequestForDownload(videoId);
+            // The clients are named here because the playback order is only set up while spoofing
+            // is on, and a download needs a client that answers with plain urls either way.
+            request = StreamingDataRequest.fetchRequestForDownload(videoId,
+                    SpoofVideoStreamsPatch.getAvailableClients(),
+                    Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
         }
 
         StreamingDataRequest.StreamData stream = request.getStream();
         if (stream == null) {
-            Logger.printDebug(() -> "No stream data resolved for " + videoId
-                    + ", is 'Spoof video streams' enabled?");
+            Logger.printDebug(() -> "No stream data resolved for " + videoId);
             return null;
         }
 
