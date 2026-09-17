@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2269
+ * https://github.com/MorpheApp/morphe-patches/pull/3033
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -55,14 +56,72 @@ public final class LyricsPanelInstaller {
     @Nullable
     private static String lyricsTitle;
 
+    /** Panel the app currently has in the engagement panel container. */
+    @Nullable
+    private static WeakReference<Object> currentPanelReference;
+
+    /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
+    @Nullable
+    private static WeakReference<Object> lyricsPanelReference;
+
     private LyricsPanelInstaller() {
+    }
+
+    /**
+     * Injection point.
+     *
+     * <p>Some accounts get the panel without a heading, and then the app's own bookkeeping
+     * is the only thing that tells the lyrics panel from the other panels that share the
+     * same container.
+     *
+     * @param panel Panel put in the engagement panel container, or null when it was given up.
+     */
+    @SuppressWarnings("unused")
+    public static void onEngagementPanelChanged(@Nullable Object panel) {
+        try {
+            currentPanelReference = panel == null ? null : new WeakReference<>(panel);
+
+            final boolean isLyricsPanel = panel != null && panel == lyricsPanel();
+            Logger.printDebug(() -> "Engagement panel: "
+                    + (panel == null ? "none" : panel.getClass().getName())
+                    + (isLyricsPanel ? " (lyrics)" : ""));
+
+            // Showing a panel again does not always rebuild its content, so there is no
+            // component callback to install from when the lyrics panel comes back.
+            if (isLyricsPanel) {
+                onLyricsPanelDetected();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not track the engagement panel", ex);
+        }
+    }
+
+    @Nullable
+    private static Object currentPanel() {
+        return currentPanelReference == null ? null : currentPanelReference.get();
+    }
+
+    @Nullable
+    private static Object lyricsPanel() {
+        return lyricsPanelReference == null ? null : lyricsPanelReference.get();
     }
 
     /**
      * Called by the litho filter when the lyrics panel is being built.
      */
     public static void onLyricsPanelDetected() {
-        if (installPending || !Settings.LYRICS_ENABLED.get()) {
+        if (!Settings.LYRICS_ENABLED.get()) {
+            return;
+        }
+
+        // Whichever panel holds the container while the lyrics component is built is the
+        // lyrics panel, which keeps this working without knowing what the app calls it.
+        Object panel = currentPanel();
+        if (panel != null) {
+            lyricsPanelReference = new WeakReference<>(panel);
+        }
+
+        if (installPending) {
             return;
         }
 
@@ -91,18 +150,7 @@ public final class LyricsPanelInstaller {
         }
 
         View root = activity.getWindow().getDecorView();
-        TextView title = findVisibleTitle(root);
-        if (title == null) {
-            return;
-        }
-
-        if (!isLyricsTitle(title)) {
-            return;
-        }
-
-        // The heading and the content live in the same panel, so the container is
-        // looked up from the panel the heading belongs to rather than globally.
-        ViewGroup panel = findPanelContent(title);
+        ViewGroup panel = findLyricsPanelContent(root);
         if (panel == null) {
             return;
         }
@@ -137,7 +185,8 @@ public final class LyricsPanelInstaller {
 
     /**
      * All engagement panels are built into the same content container, so the heading
-     * is what tells the lyrics panel from the comments or the live chat one.
+     * is what tells the lyrics panel from the comments or the live chat one. A panel
+     * shown without a heading falls back to the panel the app itself put there.
      *
      * @return Whether the engagement panel currently on screen is the lyrics panel.
      */
@@ -146,7 +195,12 @@ public final class LyricsPanelInstaller {
         if (activity == null) {
             return false;
         }
-        return isLyricsTitle(findForegroundTitle(activity.getWindow().getDecorView()));
+        TextView title = findForegroundTitle(activity.getWindow().getDecorView());
+        if (title != null) {
+            return isLyricsTitle(title);
+        }
+        Object current = currentPanel();
+        return current != null && current == lyricsPanel();
     }
 
     public static boolean isOtherPanelForeground() {
@@ -155,7 +209,69 @@ public final class LyricsPanelInstaller {
             return false;
         }
         TextView title = findForegroundTitle(activity.getWindow().getDecorView());
-        return title != null && !isLyricsTitle(title);
+        if (title != null) {
+            return !isLyricsTitle(title);
+        }
+        Object current = currentPanel();
+        return current != null && current != lyricsPanel();
+    }
+
+    /**
+     * @return The container the lyrics belong in, or null when the panel on screen is
+     * not the lyrics one.
+     */
+    @Nullable
+    private static ViewGroup findLyricsPanelContent(View root) {
+        TextView title = findVisibleTitle(root);
+        if (title != null) {
+            // The heading and the content live in the same panel, so the container is
+            // looked up from the panel the heading belongs to rather than globally.
+            return isLyricsTitle(title) ? findPanelContent(title) : null;
+        }
+
+        // Without a heading there is nothing to look the panel up from, so the container
+        // on screen is taken as is, once the app agrees the lyrics panel is the one in it.
+        Object current = currentPanel();
+        if (current == null || current != lyricsPanel()) {
+            return null;
+        }
+        return findForegroundPanelContent(root);
+    }
+
+    /**
+     * @return The content container of the engagement panel currently on screen, if any.
+     */
+    @Nullable
+    private static ViewGroup findForegroundPanelContent(View root) {
+        final int panelContentId = ResourceUtils.getIdentifier(ResourceType.ID, PANEL_CONTENT_ID);
+        if (panelContentId == 0) {
+            return null;
+        }
+        return findForegroundPanelContent(root, panelContentId, new Rect());
+    }
+
+    @Nullable
+    private static ViewGroup findForegroundPanelContent(View view, int panelContentId, Rect rect) {
+        if (view.getVisibility() != View.VISIBLE) {
+            return null;
+        }
+
+        ViewGroup result = null;
+        if (view.getId() == panelContentId && view instanceof ViewGroup content
+                && content.getGlobalVisibleRect(rect) && !rect.isEmpty()) {
+            result = content;
+        }
+
+        if (view instanceof ViewGroup group) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                ViewGroup found = findForegroundPanelContent(
+                        group.getChildAt(i), panelContentId, rect);
+                if (found != null) {
+                    result = found;
+                }
+            }
+        }
+        return result;
     }
 
     private static boolean isLyricsTitle(@Nullable TextView title) {
