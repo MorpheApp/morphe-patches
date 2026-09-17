@@ -18,7 +18,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -83,7 +82,7 @@ public final class LocalDownloadManager {
     }
 
     /** Must be called from the main thread. Resolution and downloading happen in background. */
-    public static void enqueue(@NonNull String videoId) {
+    public static void enqueue(String videoId) {
         // Every file of a download is named after the id, so anything that is not a plain id
         // is refused rather than written under a different name than it is looked up by.
         if (!VIDEO_ID.matcher(videoId).matches()) {
@@ -182,7 +181,6 @@ public final class LocalDownloadManager {
     private record ResolvedStream(Format format, VideoDetails details) {
     }
 
-    @NonNull
     private static String firstNotBlank(@Nullable String value, String fallback, String lastResort) {
         if (value != null && !value.isBlank()) return value;
         if (!fallback.isBlank()) return fallback;
@@ -466,7 +464,7 @@ public final class LocalDownloadManager {
     }
 
     @Nullable
-    private static ResolvedStream resolveStream(@NonNull String videoId) {
+    private static ResolvedStream resolveStream(String videoId) {
         StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
         if (request == null) {
             Logger.printDebug(() -> "No cached streaming request for download, resolving: " + videoId);

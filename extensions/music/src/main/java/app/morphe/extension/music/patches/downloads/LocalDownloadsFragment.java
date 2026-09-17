@@ -55,13 +55,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.function.IntConsumer;
 
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
-import app.morphe.extension.music.settings.Settings;
 
 /** Local catalogue with a compact player matching the stock bottom player of YouTube Music. */
 @SuppressWarnings("deprecation")
@@ -615,7 +615,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     }
 
     private void deleteTrack(OfflineTrack track) {
-        boolean deleted = track.audioFile().delete();
+        final boolean deleted = track.audioFile().delete();
         deleteSidecars(track.videoId());
 
         if (!deleted) {
@@ -629,7 +629,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
     private void play(OfflineTrack track) {
         try {
             ArrayList<String> queue = new ArrayList<>(queuePaths);
-            int queueIndex = Math.max(0, queue.indexOf(track.audioFile().getAbsolutePath()));
+            final int queueIndex = Math.max(0, queue.indexOf(track.audioFile().getAbsolutePath()));
 
             Intent intent = new Intent(getActivity(), OfflinePlaybackService.class)
                     .setAction(OfflinePlaybackService.ACTION_PLAY_FILE)
@@ -693,7 +693,7 @@ public final class LocalDownloadsFragment extends PreferenceFragment
      * The app ships the drawable its own player uses to morph between the two icons.
      */
     private boolean startIconMorph(boolean playing) {
-        final String name = playing
+        String name = playing
                 ? "player_play_pause_vector_transition"
                 : "player_pause_play_vector_transition";
 

@@ -320,8 +320,8 @@ public final class OfflinePlaybackService extends Service {
         MediaSession currentSession = session;
         if (currentSession == null) return;
 
-        boolean playing = playerReady() && player.isPlaying();
-        long position = playerReady() ? player.getCurrentPosition() : 0;
+        final boolean playing = playerReady() && player.isPlaying();
+        final long position = playerReady() ? player.getCurrentPosition() : 0;
         currentSession.setPlaybackState(new PlaybackState.Builder()
                 .setActions(PlaybackState.ACTION_PLAY | PlaybackState.ACTION_PAUSE |
                         PlaybackState.ACTION_PLAY_PAUSE | PlaybackState.ACTION_STOP |
@@ -354,8 +354,9 @@ public final class OfflinePlaybackService extends Service {
         }
     }
 
+    @SuppressLint("WrongConstant")
     private Notification notification() {
-        boolean playing = playerReady() && player.isPlaying();
+        final boolean playing = playerReady() && player.isPlaying();
         PendingIntent toggle = serviceIntent(ACTION_TOGGLE, 1);
         PendingIntent stop = serviceIntent(ACTION_STOP, 2);
         PendingIntent previous = serviceIntent(ACTION_PREVIOUS, 4);
@@ -396,6 +397,7 @@ public final class OfflinePlaybackService extends Service {
 
     private PendingIntent serviceIntent(String action, int code) {
         Intent intent = new Intent(this, OfflinePlaybackService.class).setAction(action);
+        //noinspection WrongConstant
         return PendingIntent.getService(this, code, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
@@ -406,6 +408,7 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void createChannel() {
+        //noinspection WrongConstant
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
                 str("morphe_music_downloads_playback_channel"), NotificationManager.IMPORTANCE_LOW);
         channel.setSound(null, null);
