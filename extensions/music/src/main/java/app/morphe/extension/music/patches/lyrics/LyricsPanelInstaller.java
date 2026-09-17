@@ -47,22 +47,19 @@ public final class LyricsPanelInstaller {
     /** Time given to the panel to attach its views after the component is built. */
     private static final long INSTALL_DELAY_MILLISECONDS = 150;
 
-    @Nullable
-    private static WeakReference<LyricsPanelView> panelReference;
-
     /** Collapses the many component callbacks of one panel opening into one attempt. */
     private static boolean installPending;
 
     @Nullable
     private static String lyricsTitle;
 
+    private static WeakReference<LyricsPanelView> panelReference = new WeakReference<>(null);
+
     /** Panel the app currently has in the engagement panel container. */
-    @Nullable
-    private static WeakReference<Object> currentPanelReference;
+    private static WeakReference<Object> currentPanelReference = new WeakReference<>(null);
 
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
-    @Nullable
-    private static WeakReference<Object> lyricsPanelReference;
+    private static WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
 
     private LyricsPanelInstaller() {
     }
@@ -79,9 +76,9 @@ public final class LyricsPanelInstaller {
     @SuppressWarnings("unused")
     public static void onEngagementPanelChanged(@Nullable Object panel) {
         try {
-            currentPanelReference = panel == null ? null : new WeakReference<>(panel);
+            currentPanelReference = new WeakReference<>(panel);
 
-            final boolean isLyricsPanel = panel != null && panel == lyricsPanel();
+            final boolean isLyricsPanel = isCurrentPanelLyrics();
             Logger.printDebug(() -> "Engagement panel: "
                     + (panel == null ? "none" : panel.getClass().getName())
                     + (isLyricsPanel ? " (lyrics)" : ""));
@@ -96,16 +93,6 @@ public final class LyricsPanelInstaller {
         }
     }
 
-    @Nullable
-    private static Object currentPanel() {
-        return currentPanelReference == null ? null : currentPanelReference.get();
-    }
-
-    @Nullable
-    private static Object lyricsPanel() {
-        return lyricsPanelReference == null ? null : lyricsPanelReference.get();
-    }
-
     /**
      * Called by the litho filter when the lyrics panel is being built.
      */
@@ -116,7 +103,7 @@ public final class LyricsPanelInstaller {
 
         // Whichever panel holds the container while the lyrics component is built is the
         // lyrics panel, which keeps this working without knowing what the app calls it.
-        Object panel = currentPanel();
+        Object panel = currentPanelReference.get();
         if (panel != null) {
             lyricsPanelReference = new WeakReference<>(panel);
         }
@@ -155,7 +142,7 @@ public final class LyricsPanelInstaller {
             return;
         }
 
-        LyricsPanelView existing = panelReference == null ? null : panelReference.get();
+        LyricsPanelView existing = panelReference.get();
 
         if (existing != null && existing.getParent() instanceof ViewGroup previousParent
                 && previousParent != panel) {
@@ -183,6 +170,11 @@ public final class LyricsPanelInstaller {
         panelReference = new WeakReference<>(panelView);
     }
 
+    private static boolean isCurrentPanelLyrics() {
+        Object current = currentPanelReference.get();
+        return current != null && current == lyricsPanelReference.get();
+    }
+
     /**
      * All engagement panels are built into the same content container, so the heading
      * is what tells the lyrics panel from the comments or the live chat one. A panel
@@ -199,8 +191,7 @@ public final class LyricsPanelInstaller {
         if (title != null) {
             return isLyricsTitle(title);
         }
-        Object current = currentPanel();
-        return current != null && current == lyricsPanel();
+        return isCurrentPanelLyrics();
     }
 
     public static boolean isOtherPanelForeground() {
@@ -212,8 +203,8 @@ public final class LyricsPanelInstaller {
         if (title != null) {
             return !isLyricsTitle(title);
         }
-        Object current = currentPanel();
-        return current != null && current != lyricsPanel();
+        Object current = currentPanelReference.get();
+        return current != null && !isCurrentPanelLyrics();
     }
 
     /**
@@ -231,8 +222,7 @@ public final class LyricsPanelInstaller {
 
         // Without a heading there is nothing to look the panel up from, so the container
         // on screen is taken as is, once the app agrees the lyrics panel is the one in it.
-        Object current = currentPanel();
-        if (current == null || current != lyricsPanel()) {
+        if (!isCurrentPanelLyrics()) {
             return null;
         }
         return findForegroundPanelContent(root);
@@ -247,31 +237,7 @@ public final class LyricsPanelInstaller {
         if (panelContentId == 0) {
             return null;
         }
-        return findForegroundPanelContent(root, panelContentId, new Rect());
-    }
-
-    @Nullable
-    private static ViewGroup findForegroundPanelContent(View view, int panelContentId, Rect rect) {
-        if (view.getVisibility() != View.VISIBLE) {
-            return null;
-        }
-
-        ViewGroup result = null;
-        if (view.getId() == panelContentId && view instanceof ViewGroup content
-                && content.getGlobalVisibleRect(rect) && !rect.isEmpty()) {
-            result = content;
-        }
-
-        if (view instanceof ViewGroup group) {
-            for (int i = 0; i < group.getChildCount(); i++) {
-                ViewGroup found = findForegroundPanelContent(
-                        group.getChildAt(i), panelContentId, rect);
-                if (found != null) {
-                    result = found;
-                }
-            }
-        }
-        return result;
+        return findForegroundView(root, panelContentId, new Rect(), ViewGroup.class);
     }
 
     private static boolean isLyricsTitle(@Nullable TextView title) {
@@ -327,7 +293,7 @@ public final class LyricsPanelInstaller {
         }
 
         if (view instanceof ViewGroup group) {
-            for (int i = 0; i < group.getChildCount(); i++) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 TextView found = findVisibleTitle(group.getChildAt(i), titleId);
                 if (found != null) {
                     return found;
@@ -345,25 +311,24 @@ public final class LyricsPanelInstaller {
             return null;
         }
         Rect rect = new Rect();
-        return findForegroundTitle(root, titleId, rect);
+        return findForegroundView(root, titleId, rect, TextView.class);
     }
 
     @Nullable
-    private static TextView findForegroundTitle(View view, int titleId, Rect rect) {
+    private static <T extends View> T findForegroundView(View view, int targetId, Rect rect, Class<T> clazz) {
         if (view.getVisibility() != View.VISIBLE) {
             return null;
         }
 
-        TextView result = null;
-        if (view.getId() == titleId && view instanceof TextView title) {
-            if (title.getGlobalVisibleRect(rect) && !rect.isEmpty()) {
-                result = title;
-            }
+        T result = null;
+        if (view.getId() == targetId && clazz.isInstance(view)
+                && view.getGlobalVisibleRect(rect) && !rect.isEmpty()) {
+            result = clazz.cast(view);
         }
 
         if (view instanceof ViewGroup group) {
-            for (int i = 0; i < group.getChildCount(); i++) {
-                TextView found = findForegroundTitle(group.getChildAt(i), titleId, rect);
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                T found = findForegroundView(group.getChildAt(i), targetId, rect, clazz);
                 if (found != null) {
                     result = found;
                 }
@@ -427,7 +392,7 @@ public final class LyricsPanelInstaller {
             }
         }
         if (view instanceof ViewGroup group) {
-            for (int i = 0; i < group.getChildCount(); i++) {
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
                 if (enableLyricsButtonPass(group.getChildAt(i), title, titleLower)) {
                     matched = true;
                 }
@@ -440,7 +405,7 @@ public final class LyricsPanelInstaller {
         view.setEnabled(true);
         view.setClickable(true);
         view.setAlpha(1.0f);
-        Logger.printInfo(() -> "Enabling lyrics button: " + view.getClass().getSimpleName()
+        Logger.printDebug(() -> "Enabling lyrics button: " + view.getClass().getSimpleName()
                 + " content description: '" + desc + "'");
     }
 }
