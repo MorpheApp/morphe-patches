@@ -61,11 +61,16 @@ public final class LrcParser {
             String line = rawLine.trim();
             Matcher meta = LRC_META.matcher(line);
             if (meta.matches()) {
-                String key = meta.group(1).toLowerCase(Locale.ROOT);
+                String tag = meta.group(1);
+                String rawValue = meta.group(2);
+                if (tag == null || rawValue == null) {
+                    continue;
+                }
+                String key = tag.toLowerCase(Locale.ROOT);
                 if (!key.equals("offset") && CREDIT_META_KEYS.contains(key)) {
-                    String value = meta.group(2).trim();
+                    String value = rawValue.trim();
                     if (!value.isEmpty()) {
-                        creditLines.add(meta.group(1) + ":" + value);
+                        creditLines.add(tag + ":" + value);
                     }
                 }
             }
@@ -180,14 +185,13 @@ public final class LrcParser {
                     if (pendingStart == LyricsLine.NO_TIME) {
                         // First word tag: text accumulated so far precedes any timed word.
                         prefix = pending.toString();
-                        pendingStart = time;
                     } else {
                         String word = pending.toString();
                         if (!word.trim().isEmpty()) {
                             words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
                         }
-                        pendingStart = time;
                     }
+                    pendingStart = time;
                     hasToken = true;
                     pending.setLength(0);
                 } else {
@@ -208,11 +212,9 @@ public final class LrcParser {
             return new BodyParse(body, List.of());
         }
 
-        if (pendingStart != LyricsLine.NO_TIME) {
-            String word = pending.toString();
-            if (!word.trim().isEmpty()) {
-                words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
-            }
+        String word = pending.toString();
+        if (!word.trim().isEmpty()) {
+            words.add(new Word(pendingStart, LyricsLine.NO_TIME, word));
         }
 
         if (!prefix.trim().isEmpty()) {

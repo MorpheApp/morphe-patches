@@ -64,6 +64,12 @@ public final class LyricsFileSaver {
         String fileName = sanitizeFileName(track.artist() + " - " + track.title())
                 + "." + formatType;
 
+        // MediaStore.Downloads arrived in Android 10 and there is no legacy path here,
+        // so saving is unavailable on older releases rather than failing at the field.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return null;
+        }
+
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(MediaStore.Downloads.DISPLAY_NAME, fileName);
@@ -72,9 +78,7 @@ public final class LyricsFileSaver {
         values.put(MediaStore.Downloads.RELATIVE_PATH,
                 Environment.DIRECTORY_DOWNLOADS + "/" + directoryName);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            values.put(MediaStore.Downloads.IS_PENDING, 1);
-        }
+        values.put(MediaStore.Downloads.IS_PENDING, 1);
 
         Uri insertUri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
         if (insertUri == null) {
@@ -93,11 +97,9 @@ public final class LyricsFileSaver {
             resolver.delete(insertUri, null, null);
             return null;
         } finally {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                values.clear();
-                values.put(MediaStore.Downloads.IS_PENDING, 0);
-                resolver.update(insertUri, values, null, null);
-            }
+            values.clear();
+            values.put(MediaStore.Downloads.IS_PENDING, 0);
+            resolver.update(insertUri, values, null, null);
         }
     }
 
@@ -193,7 +195,6 @@ public final class LyricsFileSaver {
             case "lyricsfile.yaml" -> "text/yaml";
             case "json", "mxm.json", "sp.json", "dzr.json", "ytm.json" -> "application/json";
             case "plain", "txt" -> "text/plain";
-            case "json3", "lyl", "lys", "lrc", "krc", "yrc", "qrc" -> "application/octet-stream";
             default -> "application/octet-stream";
         };
     }

@@ -10,7 +10,6 @@ package app.morphe.extension.music.patches.lyrics.requests;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -40,13 +39,7 @@ public final class DeezerProvider implements LyricsProvider {
     private static String cachedApiToken;
     private static String cachedSid;
 
-    private static class Session {
-        final String apiToken;
-        final String sid;
-        Session(String apiToken, String sid) {
-            this.apiToken = apiToken;
-            this.sid = sid;
-        }
+    private record Session(String apiToken, String sid) {
     }
 
     @Override
@@ -105,7 +98,7 @@ public final class DeezerProvider implements LyricsProvider {
     @Nullable
     private static String getArl() {
         String arl = Settings.DEEZER_ARL.get();
-        if (arl == null || arl.isEmpty() || "null".equals(arl)) {
+        if (arl.isEmpty() || "null".equals(arl)) {
             return null;
         }
         return arl;
@@ -128,7 +121,6 @@ public final class DeezerProvider implements LyricsProvider {
             headers.put("Accept", "application/json");
 
             HttpURLConnection connection = LyricsRequests.postJson(url, "{}", headers);
-            if (connection == null) return null;
 
             String sid = null;
             for (Map.Entry<String, List<String>> entry : connection.getHeaderFields().entrySet()) {
@@ -154,7 +146,7 @@ public final class DeezerProvider implements LyricsProvider {
             JSONObject results = response.optJSONObject("results");
             if (results == null) return null;
 
-            String apiToken = results.optString("checkForm", null);
+            String apiToken = LyricsRequests.optString(results, "checkForm");
             if (apiToken == null || apiToken.isEmpty()) return null;
 
             cachedArl = arl;
@@ -183,7 +175,6 @@ public final class DeezerProvider implements LyricsProvider {
         } catch (IOException ignored) {
             return null;
         }
-        if (connection == null) return null;
 
         try {
             final int httpCode = connection.getResponseCode();
@@ -205,13 +196,13 @@ public final class DeezerProvider implements LyricsProvider {
                 + "?method=song.getLyrics"
                 + "&input=3"
                 + "&api_version=1.0"
-                + "&api_token=" + LyricsRequests.encode(session.apiToken);
+                + "&api_token=" + LyricsRequests.encode(session.apiToken());
 
         String body = "{\"sng_id\":" + trackId + "}";
 
         String cookie = "arl=" + arl;
-        if (session.sid != null && !session.sid.isEmpty()) {
-            cookie += "; sid=" + session.sid;
+        if (session.sid() != null && !session.sid().isEmpty()) {
+            cookie += "; sid=" + session.sid();
         }
         Map<String, String> headers = new HashMap<>();
         headers.put("Cookie", cookie);
@@ -223,7 +214,6 @@ public final class DeezerProvider implements LyricsProvider {
         } catch (IOException ignored) {
             return null;
         }
-        if (connection == null) return null;
 
         try {
             final int httpCode = connection.getResponseCode();
@@ -236,13 +226,13 @@ public final class DeezerProvider implements LyricsProvider {
             JSONObject results = response.optJSONObject("results");
             if (results == null) return null;
 
-            String lyricsText = results.optString("LYRICS_TEXT", null);
+            String lyricsText = LyricsRequests.optString(results, "LYRICS_TEXT");
             JSONArray syncJson = results.optJSONArray("LYRICS_SYNC_JSON");
             String rawFormat = results.toString();
 
             if (syncJson != null && syncJson.length() > 0) {
                 return parseSyncedLyrics(syncJson, trackId, rawFormat);
-            } else if (!lyricsText.isEmpty()) {
+            } else if (lyricsText != null) {
                 return parsePlainText(lyricsText, trackId, rawFormat);
             }
 
@@ -255,8 +245,7 @@ public final class DeezerProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics parseSyncedLyrics(JSONArray syncJson, long trackId, String rawFormat)
-            throws JSONException {
+    private Lyrics parseSyncedLyrics(JSONArray syncJson, long trackId, String rawFormat) {
         List<LyricsLine> lines = new ArrayList<>();
 
         for (int i = 0; i < syncJson.length(); i++) {

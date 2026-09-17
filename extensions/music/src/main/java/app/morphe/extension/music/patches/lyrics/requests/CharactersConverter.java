@@ -8,6 +8,7 @@
 package app.morphe.extension.music.patches.lyrics.requests;
 
 import android.icu.text.Transliterator;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,6 +51,12 @@ public final class CharactersConverter {
 
     @Nullable
     private static Transliterator create(String... ids) {
+        // Transliterator arrived in Android 10. Below it the fields stay null and every
+        // conversion returns its input, which is why a missing class must not be reached:
+        // it would throw an Error that the RuntimeException below does not catch.
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return null;
+        }
         for (String id : ids) {
             try {
                 return Transliterator.getInstance(id);
@@ -72,26 +79,29 @@ public final class CharactersConverter {
 
     @NonNull
     private static String transliterate(@Nullable Transliterator transliterator, @NonNull String text) {
-        if (transliterator == null) {
+        if (transliterator == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return text;
         }
+        // Transliterator is not thread safe, and the argument is always one of the shared
+        // instances above, so locking on it serializes the calls against that one instance.
+        //noinspection SynchronizationOnLocalVariableOrMethodParameter
         synchronized (transliterator) {
             return transliterator.transliterate(text);
         }
     }
 
     /**
-     * Normalises text for string matching by converting various character variants to their
+     * Normalizes text for string matching by converting various character variants to their
      * standard forms. The chain is intentionally ordered:
      * <ol>
      *   <li>Fullwidth → Halfwidth (letters, numbers, punctuation)</li>
      *   <li>Any-Lower (case folding)</li>
-     *   <li>NFKC Unicode normalisation (compatibility decomposition)</li>
+     *   <li>NFKC Unicode normalization (compatibility decomposition)</li>
      *   <li>Latin → ASCII (removes diacritics, e.g. Beyoncé → Beyonce)</li>
      *   <li>Whitespace collapsing (trim + collapse runs to single space)</li>
      * </ol>
      * Unlike the per-variant transforms in {@link #variants(TrackInfo)}, this method chains
-     * all normalisation steps into a single pass. It is designed for use in metadata regex
+     * all normalization steps into a single pass. It is designed for use in metadata regex
      * cleaning and lyrics text filtering so that user-configured patterns always match
      * regardless of the character variant used in the source text.
      */
@@ -129,7 +139,7 @@ public final class CharactersConverter {
      * Variants are generated independently from the original (not chained) to keep the number
      * manageable. Variants identical to the original or to each other are omitted.
      * <p>
-     * The order follows expected usefulness: CJK script variants first, then normalisation,
+     * The order follows expected usefulness: CJK script variants first, then normalization,
      * then Latin and Japanese script variants.
      */
     @NonNull

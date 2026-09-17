@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -29,6 +30,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.spoof.ClientType;
@@ -63,30 +65,12 @@ public final class CaptionsFetcher {
     private CaptionsFetcher() {
     }
 
-    private static final class CaptionTrack {
-        final String url;
-        final String langCode;
-        final String vssId;
-        final boolean isAsr;
-        final boolean isTranslatable;
-        final boolean isTranslation;
-        final boolean hasTlang;
-        final String displayName;
-
-        CaptionTrack(String url, String langCode, String vssId, boolean isAsr,
-                     boolean isTranslatable, boolean isTranslation, boolean hasTlang,
-                     String displayName) {
-            this.url = url;
-            this.langCode = langCode;
-            this.vssId = vssId;
-            this.isAsr = isAsr;
-            this.isTranslatable = isTranslatable;
-            this.isTranslation = isTranslation;
-            this.hasTlang = hasTlang;
-            this.displayName = displayName;
-        }
+    private record CaptionTrack(String url, String langCode, String vssId, boolean isAsr,
+                                boolean isTranslatable, boolean isTranslation, boolean hasTlang,
+                                String displayName) {
 
         @Override
+        @NonNull
         public String toString() {
             return langCode + (isAsr ? " (ASR)" : " (manual)")
                     + " vssId=" + vssId
@@ -177,46 +161,43 @@ public final class CaptionsFetcher {
                 return CaptionsOutcome.ALLOW_PROVIDERS;
             }
 
-            if (captions.errorReason != null) {
-                return CaptionsOutcome.withError(captions.errorReason, captions.innertubeTrack);
+            if (captions.errorReason() != null) {
+                return CaptionsOutcome.withError(captions.errorReason(), captions.innertubeTrack());
             }
 
-            if (!captions.structurePresent) {
-                return tryTimedtext(videoId, captions.poToken, captions.innertubeTrack);
+            if (!captions.structurePresent()) {
+                return tryTimedtext(videoId, captions.poToken(), captions.innertubeTrack());
             }
 
-            for (CaptionTrack t : captions.tracks) {
-            }
-
-            if (!captions.tracks.isEmpty()) {
-                CaptionTrack primaryTrack = selectPrimaryTrack(captions.tracks,
-                        captions.sourceLangCode);
+            if (!captions.tracks().isEmpty()) {
+                CaptionTrack primaryTrack = selectPrimaryTrack(captions.tracks(),
+                        captions.sourceLangCode());
                 if (primaryTrack != null) {
-                    Lyrics primaryLyrics = fetchTrackLyrics(primaryTrack, captions.poToken);
+                    Lyrics primaryLyrics = fetchTrackLyrics(primaryTrack, captions.poToken());
                     if (primaryLyrics != null && !primaryLyrics.isEmpty()) {
                         CaptionTrack translationTrack =
-                                selectTranslationTrack(captions.tracks, primaryTrack.langCode,
-                                        captions.sourceLangCode);
+                                selectTranslationTrack(captions.tracks(), primaryTrack.langCode(),
+                                        captions.sourceLangCode());
                         Lyrics translationLyrics = null;
                         if (translationTrack != null) {
-                            Lyrics tl = fetchTrackLyrics(translationTrack, captions.poToken);
+                            Lyrics tl = fetchTrackLyrics(translationTrack, captions.poToken());
                             if (tl != null && !tl.isEmpty()) {
                                 translationLyrics = tl;
                             }
                         }
                         lastFetchedVideoId = videoId;
                         return CaptionsOutcome.captions(primaryLyrics, translationLyrics,
-                                captions.innertubeTrack);
+                                captions.innertubeTrack());
                     }
                 }
             }
 
-            Lyrics timed = fetchViaTimedtext(videoId, captions.poToken, null);
+            Lyrics timed = fetchViaTimedtext(videoId, captions.poToken(), null);
             if (timed != null && !timed.isEmpty()) {
                 lastFetchedVideoId = videoId;
-                return CaptionsOutcome.captions(timed, captions.innertubeTrack);
+                return CaptionsOutcome.captions(timed, captions.innertubeTrack());
             }
-            return allowProviders(captions.innertubeTrack);
+            return allowProviders(captions.innertubeTrack());
         } catch (Exception ex) {
             return CaptionsOutcome.ALLOW_PROVIDERS;
         }
@@ -225,13 +206,14 @@ public final class CaptionsFetcher {
     @Nullable
     private static Lyrics fetchTrackLyrics(CaptionTrack track, @Nullable String poToken) {
         try {
-            String url = buildCaptionUrl(track.url, poToken);
+            String url = buildCaptionUrl(track.url(), poToken);
             String json = fetchCaptionUrl(url);
             List<LyricsLine> lines = parseJson3(json);
             if (!lines.isEmpty()) {
                 return new Lyrics(lines, Lyrics.CAPTIONS_PROVIDER, true, null, null, null, null, json, "json3", null);
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch captions", ex);
         }
         return null;
     }
@@ -263,7 +245,7 @@ public final class CaptionsFetcher {
         String videoId = VideoInformation.getVideoId();
         String previousId = lastFetchedVideoId;
 
-        if (videoId != null && !videoId.isEmpty()) {
+        if (!videoId.isEmpty()) {
             if (!videoId.equals(previousId)) {
                 return videoId;
             }
@@ -275,11 +257,11 @@ public final class CaptionsFetcher {
                     break;
                 }
                 videoId = VideoInformation.getVideoId();
-                if (videoId != null && !videoId.isEmpty() && !videoId.equals(previousId)) {
+                if (!videoId.isEmpty() && !videoId.equals(previousId)) {
                     return videoId;
                 }
             }
-            if (videoId != null && !videoId.isEmpty()) {
+            if (!videoId.isEmpty()) {
                 return videoId;
             }
         }
@@ -292,34 +274,17 @@ public final class CaptionsFetcher {
                 break;
             }
             videoId = VideoInformation.getVideoId();
-            if (videoId != null && !videoId.isEmpty()) {
+            if (!videoId.isEmpty()) {
                 return videoId;
             }
         }
         return null;
     }
 
-    private static final class CaptionListResult {
-        final boolean structurePresent;
-        final List<CaptionTrack> tracks;
-        final @Nullable String poToken;
-        final @Nullable TrackInfo innertubeTrack;
-        final @Nullable String sourceLangCode;
-        final @Nullable String videoLangCode;
-        final @Nullable String errorReason;
-
-        CaptionListResult(boolean structurePresent, List<CaptionTrack> tracks,
-                          @Nullable String poToken, @Nullable TrackInfo innertubeTrack,
-                          @Nullable String sourceLangCode, @Nullable String videoLangCode,
-                          @Nullable String errorReason) {
-            this.structurePresent = structurePresent;
-            this.tracks = tracks;
-            this.poToken = poToken;
-            this.innertubeTrack = innertubeTrack;
-            this.sourceLangCode = sourceLangCode;
-            this.videoLangCode = videoLangCode;
-            this.errorReason = errorReason;
-        }
+    private record CaptionListResult(boolean structurePresent, List<CaptionTrack> tracks,
+                                     @Nullable String poToken, @Nullable TrackInfo innertubeTrack,
+                                     @Nullable String sourceLangCode, @Nullable String videoLangCode,
+                                     @Nullable String errorReason) {
     }
 
     @Nullable
@@ -330,8 +295,6 @@ public final class CaptionsFetcher {
         }
         TrackInfo innertubeTrack = extractVideoDetails(json);
         String videoLangCode = extractVideoLanguageCode(json);
-        if (videoLangCode == null || videoLangCode.isEmpty()) {
-        }
 
         String errorReason = extractPlayabilityError(json);
         if (errorReason != null) {
@@ -344,6 +307,7 @@ public final class CaptionsFetcher {
             try {
                 resolvedPoToken = PoTokenManager.getPlayerPoToken(ClientType.ANDROID, videoId);
             } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not resolve a player PoToken", ex);
             }
         }
         String poToken = resolvedPoToken;
@@ -392,6 +356,7 @@ public final class CaptionsFetcher {
                 }
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read the caption languages", ex);
         }
         return langs;
     }
@@ -403,8 +368,8 @@ public final class CaptionsFetcher {
                                                    @Nullable String audioTracksLang,
                                                    Set<String> translationLangs) {
         for (CaptionTrack track : tracks) {
-            if (track.isAsr) {
-                return track.langCode;
+            if (track.isAsr()) {
+                return track.langCode();
             }
         }
         if (videoLangCode != null && !videoLangCode.isEmpty()) {
@@ -412,19 +377,19 @@ public final class CaptionsFetcher {
         }
         if (microLang != null && !microLang.isEmpty()) {
             for (CaptionTrack track : tracks) {
-                if (!track.isAsr && track.langCode.equals(microLang)) {
+                if (!track.isAsr() && track.langCode().equals(microLang)) {
                     return microLang;
                 }
             }
         }
         for (CaptionTrack track : tracks) {
-            if (!track.isAsr && !track.isTranslation) {
-                return track.langCode;
+            if (!track.isAsr() && !track.isTranslation()) {
+                return track.langCode();
             }
         }
         for (CaptionTrack track : tracks) {
-            if (!track.isAsr && !track.hasTlang) {
-                return track.langCode;
+            if (!track.isAsr() && !track.hasTlang()) {
+                return track.langCode();
             }
         }
         if (audioTracksLang != null && !audioTracksLang.isEmpty()) {
@@ -432,20 +397,18 @@ public final class CaptionsFetcher {
         }
         if (translationLangs != null && !translationLangs.isEmpty()) {
             for (CaptionTrack track : tracks) {
-                if (!track.isAsr && !translationLangs.contains(track.langCode)) {
-                    return track.langCode;
+                if (!track.isAsr() && !translationLangs.contains(track.langCode())) {
+                    return track.langCode();
                 }
             }
         }
         List<CaptionTrack> translatable = new ArrayList<>();
-        List<CaptionTrack> nonTranslatable = new ArrayList<>();
         for (CaptionTrack track : tracks) {
-            if (!track.isAsr) {
-                if (track.isTranslatable) translatable.add(track);
-                else nonTranslatable.add(track);
+            if (!track.isAsr() && track.isTranslatable()) {
+                translatable.add(track);
             }
         }
-        if (translatable.size() == 1 && !translatable.isEmpty()) {
+        if (translatable.size() == 1) {
             return translatable.get(0).langCode;
         }
         return null;
@@ -547,10 +510,10 @@ public final class CaptionsFetcher {
             }
             final int captionIdx = indices.getInt(0);
             if (captionIdx >= 0 && captionIdx < tracks.size()) {
-                String lang = tracks.get(captionIdx).langCode;
-                return lang;
+                return tracks.get(captionIdx).langCode;
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not pick the caption language", ex);
         }
         return null;
     }
@@ -698,6 +661,7 @@ public final class CaptionsFetcher {
                         isTranslatable, isTranslation, hasTlang, name));
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read the caption tracks", ex);
         }
         return tracks;
     }
@@ -709,12 +673,11 @@ public final class CaptionsFetcher {
         CaptionTrack fallbackManual = null;
         CaptionTrack fallbackAsr = null;
         for (CaptionTrack track : tracks) {
-            if (track.url.contains("variant=gemini")) {
+            if (track.url().contains("variant=gemini")) {
                 continue;
             }
-            if (!track.isAsr) {
-                if (sourceLangCode != null && track.langCode.equals(sourceLangCode)
-                        && sourceManual == null) {
+            if (!track.isAsr()) {
+                if (track.langCode().equals(sourceLangCode)) {
                     sourceManual = track;
                 } else if (fallbackManual == null) {
                     fallbackManual = track;
@@ -743,18 +706,18 @@ public final class CaptionsFetcher {
         CaptionTrack manualMatch = null;
         CaptionTrack asrMatch = null;
         for (CaptionTrack track : tracks) {
-            if (track.url.contains("variant=gemini")) continue;
-            if (track.langCode.equals(primaryLang)) {
+            if (track.url().contains("variant=gemini")) continue;
+            if (track.langCode().equals(primaryLang)) {
                 continue;
             }
-            if (sourceLangCode != null && track.langCode.equals(sourceLangCode)) {
+            if (track.langCode().equals(sourceLangCode)) {
                 continue;
             }
-            boolean langMatch = track.langCode.startsWith(sysLang) || sysLang.startsWith(track.langCode);
+            boolean langMatch = track.langCode().startsWith(sysLang) || sysLang.startsWith(track.langCode());
             if (!langMatch) continue;
-            if (!track.isAsr && manualMatch == null) {
+            if (!track.isAsr()) {
                 manualMatch = track;
-            } else if (track.isAsr && asrMatch == null) {
+            } else if (asrMatch == null) {
                 asrMatch = track;
             }
             if (manualMatch != null) break;
@@ -764,7 +727,7 @@ public final class CaptionsFetcher {
 
     private static String getCookies() {
         String userCookies = Settings.LYRICS_CAPTION_COOKIES.get();
-        if (userCookies != null && !userCookies.isEmpty()) {
+        if (!userCookies.isEmpty()) {
             return userCookies;
         }
 
@@ -792,6 +755,7 @@ public final class CaptionsFetcher {
                 return cachedCookies;
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch cookies", ex);
         } finally {
             if (conn != null) conn.disconnect();
         }
@@ -807,7 +771,6 @@ public final class CaptionsFetcher {
             if (eq > 0) {
                 String key = entry.substring(0, eq).trim();
                 if (COOKIE_KEYS.contains(key)) {
-                    //noinspection SizeReplaceableByIsEmpty
                     if (sb.length() > 0) sb.append("; ");
                     sb.append(entry);
                 }
@@ -981,7 +944,12 @@ public final class CaptionsFetcher {
         }
     }
 
+    /**
+     * @param preferredLangs Languages to try before the defaults. Nothing asks for a
+     *                       preference yet, so the branch it drives is dormant.
+     */
     @Nullable
+    @SuppressWarnings("SameParameterValue")
     private static Lyrics fetchViaTimedtext(String videoId, @Nullable String poToken,
                                            @Nullable List<String> preferredLangs) {
         List<String> langs = new ArrayList<>();

@@ -147,7 +147,7 @@ public final class MusixmatchProvider implements LyricsProvider {
 
                 JSONObject body = obj(obj(root, "message"), "body");
                 if (body != null) {
-                    final String t = body.optString("user_token", null);
+                    final String t = LyricsRequests.optString(body, "user_token");
                     if (isUsableToken(t)) {
                         cachedToken = t;
                     }
@@ -327,7 +327,7 @@ public final class MusixmatchProvider implements LyricsProvider {
             if (translated == null) {
                 return null;
             }
-            final String subtitleBody = translated.optString("subtitle_body", null);
+            final String subtitleBody = LyricsRequests.optString(translated, "subtitle_body");
             if (subtitleBody == null || subtitleBody.isEmpty()) {
                 return null;
             }
@@ -424,7 +424,7 @@ public final class MusixmatchProvider implements LyricsProvider {
             if (richHeader != null && richStatus == 200) {
                 JSONObject richBody = obj(obj(richMsg, "body"), "richsync");
                 if (richBody != null) {
-                    final String richBodyStr = richBody.optString("richsync_body", null);
+                    final String richBodyStr = LyricsRequests.optString(richBody, "richsync_body");
                     if (richBodyStr != null && !richBodyStr.isEmpty()) {
                         return appendCopyright(parseRichsync(richBodyStr, sourceUrl), copyright);
                     }
@@ -443,7 +443,7 @@ public final class MusixmatchProvider implements LyricsProvider {
                     JSONObject subtitle = subItem != null
                             ? subItem.optJSONObject("subtitle") : null;
                     if (subtitle != null) {
-                        final String subtitleBody = subtitle.optString("subtitle_body", null);
+                        final String subtitleBody = LyricsRequests.optString(subtitle, "subtitle_body");
                         if (subtitleBody != null && !subtitleBody.isEmpty()) {
                             return appendCopyright(parseSubtitles(subtitleBody, sourceUrl), copyright);
                         }
@@ -457,7 +457,7 @@ public final class MusixmatchProvider implements LyricsProvider {
             if (lyricsHeader != null && lyricsStatus == 200) {
                 JSONObject lyricsBody = obj(obj(lyricsMsg, "body"), "lyrics");
                 if (lyricsBody != null) {
-                    final String lyricsText = lyricsBody.optString("lyrics_body", null);
+                    final String lyricsText = LyricsRequests.optString(lyricsBody, "lyrics_body");
                     if (lyricsText != null && !lyricsText.isEmpty()) {
                         return appendCopyright(parseLyrics(lyricsText, sourceUrl), copyright);
                     }
@@ -475,7 +475,7 @@ public final class MusixmatchProvider implements LyricsProvider {
         JSONObject lyricsMsg = obj(obj(macro, "track.lyrics.get"), "message");
         JSONObject lyricsBody = obj(obj(lyricsMsg, "body"), "lyrics");
         if (lyricsBody != null) {
-            final String c = lyricsBody.optString("lyrics_copyright", null);
+            final String c = LyricsRequests.optString(lyricsBody, "lyrics_copyright");
             if (c != null && !c.trim().isEmpty()) {
                 return c.trim();
             }
@@ -487,7 +487,7 @@ public final class MusixmatchProvider implements LyricsProvider {
             JSONObject subItem = subList.optJSONObject(0);
             JSONObject subtitle = subItem != null ? subItem.optJSONObject("subtitle") : null;
             if (subtitle != null) {
-                final String c = subtitle.optString("lyrics_copyright", null);
+                final String c = LyricsRequests.optString(subtitle, "lyrics_copyright");
                 if (c != null && !c.trim().isEmpty()) {
                     return c.trim();
                 }
@@ -496,7 +496,7 @@ public final class MusixmatchProvider implements LyricsProvider {
         JSONObject richMsg = obj(obj(macro, "track.richsync.get"), "message");
         JSONObject richBody = obj(obj(richMsg, "body"), "richsync");
         if (richBody != null) {
-            final String c = richBody.optString("lyrics_copyright", null);
+            final String c = LyricsRequests.optString(richBody, "lyrics_copyright");
             if (c != null && !c.trim().isEmpty()) {
                 return c.trim();
             }
@@ -509,7 +509,7 @@ public final class MusixmatchProvider implements LyricsProvider {
         JSONObject lyricsMsg = obj(obj(macro, "track.lyrics.get"), "message");
         JSONObject lyricsBody = obj(obj(lyricsMsg, "body"), "lyrics");
         if (lyricsBody != null) {
-            final String url = lyricsBody.optString("backlink_url", null);
+            final String url = LyricsRequests.optString(lyricsBody, "backlink_url");
             if (url != null && !url.isEmpty()) {
                 return stripTrackingParams(url);
             }
@@ -566,7 +566,7 @@ public final class MusixmatchProvider implements LyricsProvider {
             final double lineTe = line.optDouble("te", lineTs);
             final long lineStartMs = (long) (lineTs * 1000);
             final long lineEndMs = (long) (lineTe * 1000);
-            final String x = line.optString("x", null);
+            final String x = LyricsRequests.optString(line, "x");
 
             List<Word> words = null;
             final JSONArray lArr = line.optJSONArray("l");
@@ -577,7 +577,7 @@ public final class MusixmatchProvider implements LyricsProvider {
                     if (w == null) {
                         continue;
                     }
-                    final String chunk = w.optString("c", null);
+                    final String chunk = LyricsRequests.optString(w, "c");
                     if (chunk == null || chunk.isEmpty()) {
                         continue;
                     }
@@ -697,7 +697,7 @@ public final class MusixmatchProvider implements LyricsProvider {
     @Nullable
     private static String headerHint(JSONObject root) {
         JSONObject header = obj(obj(root, "message"), "header");
-        return header != null ? header.optString("hint", null) : null;
+        return header != null ? LyricsRequests.optString(header, "hint") : null;
     }
 
     private static JSONObject obj(JSONObject o, String key) {

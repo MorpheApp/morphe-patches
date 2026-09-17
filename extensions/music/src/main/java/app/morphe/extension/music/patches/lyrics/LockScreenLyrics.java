@@ -31,6 +31,7 @@ import app.morphe.extension.music.settings.Settings;
  * <p>All fields other than title and artist, notably the album art, are preserved by copying
  * the original metadata with {@link MediaMetadata.Builder}.
  */
+@SuppressWarnings("unused")
 public final class LockScreenLyrics {
 
     @Nullable
@@ -46,7 +47,7 @@ public final class LockScreenLyrics {
     @Nullable
     private static volatile String lastPushedTitle;
 
-    /** Set when the app pushes fresh metadata, forcing a repush on the next tick. */
+    /** Set when the app pushes fresh metadata, so the next tick pushes it again. */
     private static volatile boolean needsRepush;
 
     /** Drives the periodic check that mirrors the current line into the MediaSession. */
@@ -87,14 +88,15 @@ public final class LockScreenLyrics {
     }
 
     private static void tick() {
+        WeakReference<MediaSession> reference = sessionRef;
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()
-                || sessionRef == null || originalMetadata == null) {
+                || reference == null || originalMetadata == null) {
             ticker.stop();
             lastPushedTitle = null;
             return;
         }
 
-        MediaSession session = sessionRef.get();
+        MediaSession session = reference.get();
         if (session == null) {
             // The session was released; wait for the next metadata update.
             ticker.stop();
@@ -144,12 +146,13 @@ public final class LockScreenLyrics {
             builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
         }
         String artist = realArtist == null ? "" : realArtist;
-        if (lyricsMatch() && realTitle != null && !realTitle.isEmpty()) {
+        String trackTitle = realTitle;
+        if (lyricsMatch() && trackTitle != null && !trackTitle.isEmpty()) {
             String display;
             if (Settings.LYRICS_DISPLAY_ARTIST_FIRST.get()) {
-                display = artist + " - " + realTitle;
+                display = artist + " - " + trackTitle;
             } else {
-                display = realTitle + " - " + artist;
+                display = trackTitle + " - " + artist;
             }
             builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);
         } else {

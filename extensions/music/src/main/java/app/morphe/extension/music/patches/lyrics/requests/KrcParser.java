@@ -41,17 +41,30 @@ public final class KrcParser {
                 continue;
             }
 
-            long lineStart = Long.parseLong(lineMatch.group(1));
-            long lineDuration = Long.parseLong(lineMatch.group(2));
-            long lineEnd = lineStart + lineDuration;
+            // Every group of both patterns is mandatory, so a match fills them all. The
+            // guard keeps that from turning silent if a pattern ever gains an optional group.
+            String startText = lineMatch.group(1);
+            String durationText = lineMatch.group(2);
             String content = lineMatch.group(3);
+            if (startText == null || durationText == null || content == null) {
+                continue;
+            }
+
+            long lineStart = Long.parseLong(startText);
+            long lineDuration = Long.parseLong(durationText);
+            long lineEnd = lineStart + lineDuration;
 
             List<Long> offsets = new ArrayList<>();
             List<String> texts = new ArrayList<>();
             Matcher wordMatch = KRC_WORD.matcher(content);
             while (wordMatch.find()) {
-                offsets.add(Long.parseLong(wordMatch.group(1)));
-                texts.add(wordMatch.group(4));
+                String offsetText = wordMatch.group(1);
+                String wordText = wordMatch.group(4);
+                if (offsetText == null || wordText == null) {
+                    continue;
+                }
+                offsets.add(Long.parseLong(offsetText));
+                texts.add(wordText);
             }
 
             List<Word> words = new ArrayList<>();

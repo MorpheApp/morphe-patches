@@ -31,6 +31,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.Word;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class SpotifyProvider implements LyricsProvider {
@@ -238,9 +239,9 @@ public final class SpotifyProvider implements LyricsProvider {
             JSONObject dataNode = itemWrapper.optJSONObject("data");
             JSONObject node = dataNode != null ? dataNode : itemWrapper;
 
-            String id = node.optString("id", null);
+            String id = LyricsRequests.optString(node, "id");
             if (id == null || id.isEmpty()) {
-                final String uri = node.optString("uri", null);
+                final String uri = LyricsRequests.optString(node, "uri");
                 if (uri != null && uri.startsWith("spotify:track:")) {
                     id = uri.substring("spotify:track:".length());
                 }
@@ -284,7 +285,7 @@ public final class SpotifyProvider implements LyricsProvider {
         }
 
         final String syncType = lyricsObj.optString("syncType", "UNSYNCED");
-        final String provider = lyricsObj.optString("provider", null);
+        final String provider = LyricsRequests.optString(lyricsObj, "provider");
         final String providerName = (provider != null && !provider.isEmpty())
                 ? name() + " (via " + provider + ")" : name();
         final JSONArray linesArr = lyricsObj.optJSONArray("lines");
@@ -413,7 +414,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     private static long parseStartTimeMs(JSONObject obj) {
-        final String raw = obj.optString("startTimeMs", null);
+        final String raw = LyricsRequests.optString(obj, "startTimeMs");
         if (raw == null || raw.isEmpty()) {
             return LyricsLine.NO_TIME;
         }
@@ -503,7 +504,7 @@ public final class SpotifyProvider implements LyricsProvider {
             }
             cachedAccessToken = token;
 
-            final String clientId = json.optString("clientId", null);
+            final String clientId = LyricsRequests.optString(json, "clientId");
             if (clientId != null && !clientId.isEmpty()) {
                 cachedClientId = clientId;
             }
@@ -623,6 +624,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 }
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read the Spotify server time", ex);
         } finally {
             if (connection != null) connection.disconnect();
         }
@@ -679,6 +681,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 }
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch the Spotify secret", ex);
         }
 
         if (cachedTotpSecrets == null || cachedTotpVersion == null) {
@@ -731,6 +734,7 @@ public final class SpotifyProvider implements LyricsProvider {
                     return Requester.parseString(connection);
                 }
             } catch (IOException ex) {
+                Logger.printDebug(() -> "Could not read the response", ex);
             } finally {
                 if (connection != null) connection.disconnect();
             }

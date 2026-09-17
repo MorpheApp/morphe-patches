@@ -90,8 +90,7 @@ public final class BinimumProvider implements LyricsProvider {
             if (best == null) {
                 return null;
             }
-            String lyricsUrl = LyricsRequests.optString(best, "lyricsUrl");
-            return lyricsUrl != null ? lyricsUrl : null;
+            return LyricsRequests.optString(best, "lyricsUrl");
         } finally {
             if (connection != null) {
                 connection.disconnect();

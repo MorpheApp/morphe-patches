@@ -29,6 +29,7 @@ import app.morphe.extension.shared.ResourceUtils;
  * <p>The miniplayer view hierarchy is captured from the constructor injection point, and a ticker
  * updates the two {@link TextView}s as playback progresses.
  */
+@SuppressWarnings("unused")
 public final class MiniPlayerLyrics {
 
     private static WeakReference<TextView> titleRef = new WeakReference<>(null);

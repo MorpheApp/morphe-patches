@@ -135,7 +135,7 @@ public final class YTMusicProvider implements LyricsProvider {
                         .optJSONObject("browseEndpointContextMusicConfig")
                         .optString("pageType", "");
                 if ("MUSIC_PAGE_TYPE_TRACK_LYRICS".equals(pageType)) {
-                    return browseEndpoint.optString("browseId", null);
+                    return LyricsRequests.optString(browseEndpoint, "browseId");
                 }
             }
         } catch (Exception ignored) {

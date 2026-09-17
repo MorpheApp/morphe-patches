@@ -113,6 +113,7 @@ public final class NetEaseProvider implements LyricsProvider {
                     results.add(lyrics);
                 }
             } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch NetEase lyrics for a song", ex);
             }
         }
         return results;

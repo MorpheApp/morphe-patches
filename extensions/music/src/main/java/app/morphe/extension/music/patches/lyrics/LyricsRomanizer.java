@@ -133,9 +133,9 @@ public final class LyricsRomanizer {
                 List<LyricsLine> langLines = romanizations.get(key);
                 if (langLines == null || i >= langLines.size()) continue;
                 String text = langLines.get(i).text();
-                if (text != null) text = text.trim();
+                if (text == null) continue;
+                text = text.trim();
                 if (!text.isEmpty()) {
-                    //noinspection SizeReplaceableByIsEmpty
                     if (merged.length() > 0) merged.append('\n');
                     merged.append(text);
                 }

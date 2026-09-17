@@ -148,6 +148,7 @@ final class LyricsCache {
             Files.write(file.toPath(), fileLines, StandardCharsets.UTF_8);
             trimDiskCache();
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not write the lyrics cache", ex);
         }
     }
 
@@ -216,6 +217,7 @@ final class LyricsCache {
             Files.write(file.toPath(), fileLines, StandardCharsets.UTF_8);
             trimDiskCache();
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not write the lyrics cache", ex);
         }
     }
 
@@ -322,6 +324,7 @@ final class LyricsCache {
             Files.write(file.toPath(), fileLines, StandardCharsets.UTF_8);
             trimDiskCache();
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not write the lyrics cache", ex);
         }
     }
 
@@ -346,6 +349,7 @@ final class LyricsCache {
         for (int i = 0; i < deleteCount; i++) {
             File file = sorted.get(i);
             if (!file.delete()) {
+                Logger.printDebug(() -> "Could not delete a cached lyrics file: " + file);
             }
         }
     }

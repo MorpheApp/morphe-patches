@@ -20,7 +20,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -28,6 +27,7 @@ import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class LunaProvider implements LyricsProvider {
@@ -79,6 +79,7 @@ public final class LunaProvider implements LyricsProvider {
                     results.add(lyrics);
                 }
             } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch Luna lyrics for a track id", ex);
             }
         }
         return results;
@@ -155,8 +156,8 @@ public final class LunaProvider implements LyricsProvider {
                 if (entity == null) continue;
                 JSONObject trackObj = entity.optJSONObject("track");
                 if (trackObj == null) continue;
-                String id = trackObj.optString("id", null);
-                if (!id.isEmpty()) {
+                String id = LyricsRequests.optString(trackObj, "id");
+                if (id != null) {
                     trackIdList.add(id);
                 }
             }
@@ -270,7 +271,7 @@ public final class LunaProvider implements LyricsProvider {
             if ("zh".equals(sysLang)) {
                 JSONObject translations = lyricInfo.optJSONObject("translations");
                 if (translations != null) {
-                    String cnContent = translations.optString("cn", null);
+                    String cnContent = LyricsRequests.optString(translations, "cn");
                     if (cnContent != null && !cnContent.isEmpty()) {
                         List<LyricsLine> cnLines = LrcParser.parseSynced(cnContent);
                         if (!cnLines.isEmpty()) {
@@ -308,7 +309,7 @@ public final class LunaProvider implements LyricsProvider {
             for (int i = 0; i < composers.length(); i++) {
                 JSONObject composer = composers.optJSONObject(i);
                 if (composer != null) {
-                    String name = composer.optString("name", null);
+                    String name = LyricsRequests.optString(composer, "name");
                     if (name != null && !name.isEmpty()) {
                         songwriters.add(name);
                     }
@@ -321,7 +322,7 @@ public final class LunaProvider implements LyricsProvider {
             for (int i = 0; i < lyricists.length(); i++) {
                 JSONObject lyricist = lyricists.optJSONObject(i);
                 if (lyricist != null) {
-                    String name = lyricist.optString("name", null);
+                    String name = LyricsRequests.optString(lyricist, "name");
                     if (name != null && !name.isEmpty()) {
                         songwriters.add(name);
                     }
@@ -348,7 +349,7 @@ public final class LunaProvider implements LyricsProvider {
     }
 
     private static String generateClientId() {
-        Random random = ThreadLocalRandom.current();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
         return String.valueOf(random.nextLong(10_000_000, 99_999_999))
                 + random.nextLong(10_000_000, 99_999_999);
     }

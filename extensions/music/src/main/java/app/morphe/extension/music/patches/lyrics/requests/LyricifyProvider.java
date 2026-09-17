@@ -15,7 +15,6 @@ import org.json.JSONObject;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.shared.Logger;
 
 public final class LyricifyProvider implements LyricsProvider {
 
@@ -66,7 +66,7 @@ public final class LyricifyProvider implements LyricsProvider {
 
         final String username = generateUsername();
         final String isrcParam = base64NoWrap(isrc);
-        final String isrcEncoded = URLEncoder.encode(isrcParam, "UTF-8");
+        final String isrcEncoded = LyricsRequests.encode(isrcParam);
 
         final String url = API_BASE
                 + "?username=" + username
@@ -91,7 +91,7 @@ public final class LyricifyProvider implements LyricsProvider {
         final String json = LyricsRequests.parseGzipString(conn);
         conn.disconnect();
 
-        if (json == null || json.isEmpty()) {
+        if (json.isEmpty()) {
             return null;
         }
 
@@ -101,14 +101,14 @@ public final class LyricifyProvider implements LyricsProvider {
             return null;
         }
 
-        final String text = response.optString("text", null);
+        final String text = LyricsRequests.optString(response, "text");
         if (text == null || text.isEmpty()) {
             return null;
         }
 
         final int offset = response.optInt("offset", 0);
-        final String writer = response.optString("writer", null);
-        final String trans = response.optString("trans", null);
+        final String writer = LyricsRequests.optString(response, "writer");
+        final String trans = LyricsRequests.optString(response, "trans");
 
         final boolean isSyllable = text.contains("[from:AppleSyllable]");
         final List<LyricsLine> lines;
@@ -197,17 +197,18 @@ public final class LyricifyProvider implements LyricsProvider {
             final int code = connection.getResponseCode();
             if (code == 200) {
                 final String responseBody = LyricsRequests.parseGzipString(connection);
-                if (responseBody == null || responseBody.isEmpty()) {
+                if (responseBody.isEmpty()) {
                     return null;
                 }
                 final JSONObject response = new JSONObject(responseBody);
-                final String isrc = response.optString("isrc", null);
+                final String isrc = LyricsRequests.optString(response, "isrc");
                 if (isrc != null && !isrc.isEmpty()) {
                     return isrc;
                 }
                 return null;
             }
         } catch (Exception e) {
+            Logger.printDebug(() -> "Could not read the ISRC", e);
         } finally {
             if (connection != null) connection.disconnect();
         }

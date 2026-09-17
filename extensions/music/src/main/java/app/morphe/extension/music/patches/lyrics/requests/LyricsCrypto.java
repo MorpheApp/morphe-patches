@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import android.annotation.SuppressLint;
 import android.util.Base64;
 
 import java.io.ByteArrayInputStream;
@@ -53,6 +54,11 @@ final class LyricsCrypto {
         return builder.toString();
     }
 
+    /**
+     * ECB is weak, but the mode is not ours to choose: it is what the NetEase eapi endpoint
+     * encrypts with, so anything else would simply fail to decrypt.
+     */
+    @SuppressLint("GetInstance")
     static String aesEcbPkcs5EncryptHex(String data, String key) {
         try {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
@@ -63,6 +69,11 @@ final class LyricsCrypto {
         }
     }
 
+    /**
+     * ECB is weak, but the mode is not ours to choose: it is what the NetEase eapi endpoint
+     * encrypts with, so anything else would simply fail to decrypt.
+     */
+    @SuppressLint("GetInstance")
     static String aesEcbPkcs5DecryptBase64ToString(String base64Data, String key) {
         try {
             byte[] raw = Base64.decode(base64Data, Base64.DEFAULT);
@@ -236,7 +247,7 @@ final class LyricsCrypto {
             while ((read = input.read(buffer)) != -1) {
                 out.write(buffer, 0, read);
             }
-            return new String(out.toByteArray(), StandardCharsets.UTF_8);
+            return out.toString("UTF-8");
         } catch (IOException ex) {
             return "";
         }

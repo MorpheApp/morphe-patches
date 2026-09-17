@@ -31,6 +31,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 /**
@@ -100,6 +101,7 @@ public final class QQProvider implements LyricsProvider {
                     results.add(lyrics);
                 }
             } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch QQ lyrics for a song", ex);
             }
         }
         return results;

@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.zip.InflaterInputStream;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
@@ -36,6 +35,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 /**
@@ -53,7 +53,6 @@ public final class KuGouProvider implements LyricsProvider {
             64, 71, 97, 119, 94, 50, 116, 71, 81, 54, 49, 45, (byte) 206, (byte) 210, 110, 105
     };
 
-    private static final Pattern KRC_LINE = Pattern.compile("^\\[(\\d+),(\\d+)](.*)");
 
     @Override
     public String name() {
@@ -69,11 +68,11 @@ public final class KuGouProvider implements LyricsProvider {
     @Override
     public Lyrics fetch(TrackInfo track) throws Exception {
         SongInfo songInfo = resolveHash(track);
-        if (songInfo == null || songInfo.hash.isEmpty()) {
+        if (songInfo == null || songInfo.hash().isEmpty()) {
             return null;
         }
-        String hash = songInfo.hash;
-        String id = songInfo.id;
+        String hash = songInfo.hash();
+        String id = songInfo.id();
         if (id.isEmpty()) {
             id = hash;
         }
@@ -130,14 +129,14 @@ public final class KuGouProvider implements LyricsProvider {
             krcResult = new KrcResult(LrcParser.parseSynced(rawFormat), metadataCreditLines, null, null);
             formatType = "lrc";
         }
-        List<LyricsLine> lines = krcResult.lines;
-        List<String> creditLines = new ArrayList<>(krcResult.creditLines);
+        List<LyricsLine> lines = krcResult.lines();
+        List<String> creditLines = new ArrayList<>(krcResult.creditLines());
         if (lines.isEmpty()) {
             return null;
         }
 
-        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, krcResult.romanization);
-        List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, krcResult.translation);
+        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, krcResult.romanization());
+        List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, krcResult.translation());
         Map<String, List<LyricsLine>> translations =
                 LyricsMerge.singleLanguageTranslations(translation, "zh");
 
@@ -152,11 +151,11 @@ public final class KuGouProvider implements LyricsProvider {
     @Override
     public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
         SongInfo songInfo = resolveHash(track);
-        if (songInfo == null || songInfo.hash.isEmpty()) {
+        if (songInfo == null || songInfo.hash().isEmpty()) {
             return new ArrayList<>();
         }
-        String hash = songInfo.hash;
-        String id = songInfo.id;
+        String hash = songInfo.hash();
+        String id = songInfo.id();
         if (id.isEmpty()) {
             id = hash;
         }
@@ -184,18 +183,19 @@ public final class KuGouProvider implements LyricsProvider {
             }
             try {
                 String sourceUrl = "https://www.kugou.com/song/" + id + ".html";
-                Lyrics lyrics = fetchFromCandidate(candidate, track, sourceUrl);
+                Lyrics lyrics = fetchFromCandidate(candidate, sourceUrl);
                 if (lyrics != null) {
                     results.add(lyrics);
                 }
             } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch KuGou lyrics for a candidate", ex);
             }
         }
         return results;
     }
 
     @Nullable
-    private Lyrics fetchFromCandidate(JSONObject candidate, TrackInfo track, @Nullable String sourceUrl) throws Exception {
+    private Lyrics fetchFromCandidate(JSONObject candidate, @Nullable String sourceUrl) throws Exception {
         String id = candidate.optString("id", "");
         String accessKey = candidate.optString("accesskey", "");
         if (id.isEmpty() || accessKey.isEmpty()) {
@@ -228,14 +228,14 @@ public final class KuGouProvider implements LyricsProvider {
             krcResult = new KrcResult(LrcParser.parseSynced(rawFormat), metadataCreditLines, null, null);
             formatType = "lrc";
         }
-        List<LyricsLine> lines = krcResult.lines;
-        List<String> creditLines = new ArrayList<>(krcResult.creditLines);
+        List<LyricsLine> lines = krcResult.lines();
+        List<String> creditLines = new ArrayList<>(krcResult.creditLines());
         if (lines.isEmpty()) {
             return null;
         }
 
-        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, krcResult.romanization);
-        List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, krcResult.translation);
+        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, krcResult.romanization());
+        List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, krcResult.translation());
         Map<String, List<LyricsLine>> translations =
                 LyricsMerge.singleLanguageTranslations(translation, "zh");
 
@@ -308,48 +308,26 @@ public final class KuGouProvider implements LyricsProvider {
             out.write(buffer, 0, read);
         }
         input.close();
-        return new String(out.toByteArray(), StandardCharsets.UTF_8);
+        return out.toString("UTF-8");
     }
 
-    private static final class SongInfo {
-        final String hash;
-        final String id;
-
-        SongInfo(String hash, String id) {
-            this.hash = hash;
-            this.id = id != null ? id : "";
+    private record SongInfo(String hash, String id) {
+        SongInfo {
+            id = id != null ? id : "";
         }
     }
 
-    private static final class KrcResult {
-        final List<LyricsLine> lines;
-        final List<String> creditLines;
-        @Nullable
-        final List<LyricsLine> romanization;
-        @Nullable
-        final List<LyricsLine> translation;
-
-        KrcResult(List<LyricsLine> lines, @Nullable List<String> creditLines,
-                  @Nullable List<LyricsLine> romanization,
-                  @Nullable List<LyricsLine> translation) {
-            this.lines = lines;
-            this.creditLines = creditLines != null ? creditLines : List.of();
-            this.romanization = romanization;
-            this.translation = translation;
+    private record KrcResult(List<LyricsLine> lines, List<String> creditLines,
+                             @Nullable List<LyricsLine> romanization,
+                             @Nullable List<LyricsLine> translation) {
+        KrcResult {
+            creditLines = creditLines != null ? creditLines : List.of();
         }
     }
 
     /** Romanization (type 0) and translation (type 1) extracted from a KRC {@code [language]} tag. */
-    private static final class KrcAuxiliary {
-        @Nullable
-        final List<LyricsLine> romanization;
-        @Nullable
-        final List<LyricsLine> translation;
-
-        KrcAuxiliary(@Nullable List<LyricsLine> romanization, @Nullable List<LyricsLine> translation) {
-            this.romanization = romanization;
-            this.translation = translation;
-        }
+    private record KrcAuxiliary(@Nullable List<LyricsLine> romanization,
+                                @Nullable List<LyricsLine> translation) {
     }
 
     private static KrcResult parseKrc(String krc) {
@@ -368,30 +346,61 @@ public final class KuGouProvider implements LyricsProvider {
 
             Matcher meta = LrcParser.LRC_META.matcher(line);
             if (meta.matches()) {
-                String name = meta.group(1).toLowerCase(Locale.ROOT);
+                String key = meta.group(1);
+                String value = meta.group(2);
+                if (key == null || value == null) {
+                    continue;
+                }
+                String name = key.toLowerCase(Locale.ROOT);
                 if (name.equals("offset")) {
                     try {
-                        fileOffsetMs = -Long.parseLong(meta.group(2).trim());
+                        fileOffsetMs = -Long.parseLong(value.trim());
                     } catch (NumberFormatException ignored) {
                     }
                 } else if (name.equals("language")) {
-                    languageTag = meta.group(2);
-                } else {
-                    if (LrcParser.CREDIT_META_KEYS.contains(name)) {
-                        String value = meta.group(2).trim();
-                        if (!value.isEmpty()) {
-                            creditLines.add(meta.group(1) + ":" + value);
-                        }
+                    languageTag = value;
+                } else if (LrcParser.CREDIT_META_KEYS.contains(name)) {
+                    String trimmed = value.trim();
+                    if (!trimmed.isEmpty()) {
+                        creditLines.add(key + ":" + trimmed);
                     }
                 }
             }
         }
 
-        List<LyricsLine> lines = KrcParser.parse(krc);
+        List<LyricsLine> lines = applyFileOffset(KrcParser.parse(krc), fileOffsetMs);
         KrcAuxiliary auxiliary = languageTag == null ? null : parseKrcLanguageTag(languageTag, lines);
         return new KrcResult(lines, creditLines,
-                auxiliary == null ? null : auxiliary.romanization,
-                auxiliary == null ? null : auxiliary.translation);
+                auxiliary == null ? null : auxiliary.romanization(),
+                auxiliary == null ? null : auxiliary.translation());
+    }
+
+     /**
+     * Applies the file's {@code [offset]} tag, which belongs to the lyrics themselves rather
+     * than to the offset the user configures. The caller has already negated it, because a
+     * positive tag means the lyrics are shown earlier.
+     */
+    private static List<LyricsLine> applyFileOffset(List<LyricsLine> lines, long offsetMs) {
+        if (offsetMs == 0) {
+            return lines;
+        }
+        List<LyricsLine> shifted = new ArrayList<>(lines.size());
+        for (LyricsLine line : lines) {
+            List<Word> words = new ArrayList<>(line.words().size());
+            for (Word word : line.words()) {
+                words.add(new Word(shift(word.startMs(), offsetMs), shift(word.endMs(), offsetMs),
+                        word.text(), word.romaji(), word.endsWithSpace()));
+            }
+            shifted.add(new LyricsLine(shift(line.startTimeMs(), offsetMs),
+                    shift(line.endTimeMs(), offsetMs), line.text(), words,
+                    line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
+        }
+        return shifted;
+    }
+
+    /** Leaves {@link LyricsLine#NO_TIME} alone and keeps a shift from going negative. */
+    private static long shift(long timeMs, long offsetMs) {
+        return timeMs == LyricsLine.NO_TIME ? timeMs : Math.max(0, timeMs + offsetMs);
     }
 
     @Nullable
@@ -489,7 +498,6 @@ public final class KuGouProvider implements LyricsProvider {
         for (int i = 0; i < entry.length(); i++) {
             String part = entry.optString(i, "").trim();
             if (!part.isEmpty()) {
-                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append(' ');
                 }
