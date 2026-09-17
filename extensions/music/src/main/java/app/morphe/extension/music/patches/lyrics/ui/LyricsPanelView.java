@@ -550,7 +550,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 // The app restores its own panel content asynchronously, and switching
                 // to another engagement panel gives no lyrics state change to react to,
                 // so the wanted state is reapplied on every tick rather than on changes.
-                syncOverlay();
+                // The cached answer is kept here, since ticks carry no news of their own.
+                applyOverlayVisibility();
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not update lyrics panel view", ex);
             }
@@ -783,8 +784,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      * Reapplies the wanted state, because reopening the panel makes the app restore
      * its own content, and opening another engagement panel makes it take the same
      * container over, neither of which is a lyrics state change to react to.
+     *
+     * <p>Called when the panel on screen has just changed, so the cached answer from
+     * before the change would keep the built-in lyrics visible until it expires.
      */
     public void syncOverlay() {
+        overlayCacheUptimeMs = 0;
         applyOverlayVisibility();
     }
 

@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics;
 
 import android.app.Activity;
 import android.graphics.Rect;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -46,6 +47,12 @@ public final class LyricsPanelInstaller {
 
     /** Time given to the panel to attach its views after the component is built. */
     private static final long INSTALL_DELAY_MILLISECONDS = 150;
+
+    /** Gap between attempts, about one frame. */
+    private static final long INSTALL_RETRY_MILLISECONDS = 16;
+
+    /** How long the panel is waited for before the attempt is given up. */
+    private static final long INSTALL_TIMEOUT_MILLISECONDS = 2000;
 
     /** Collapses the many component callbacks of one panel opening into one attempt. */
     private static boolean installPending;
@@ -120,26 +127,43 @@ public final class LyricsPanelInstaller {
                 ? 0
                 : INSTALL_DELAY_MILLISECONDS;
 
+        scheduleInstall(SystemClock.uptimeMillis() + INSTALL_TIMEOUT_MILLISECONDS, delay);
+    }
+
+    /**
+     * The panel content is built before the views it goes into are attached, so the first
+     * attempt is usually too early. Retrying frame by frame covers the built-in lyrics as
+     * soon as there is something to cover them in, instead of leaving them on screen until
+     * the panel happens to be built again.
+     */
+    private static void scheduleInstall(long deadlineUptimeMs, long delay) {
         Utils.runOnMainThreadDelayed(() -> {
-            installPending = false;
             try {
-                install();
+                if (install() || SystemClock.uptimeMillis() >= deadlineUptimeMs) {
+                    installPending = false;
+                    return;
+                }
+                scheduleInstall(deadlineUptimeMs, INSTALL_RETRY_MILLISECONDS);
             } catch (Exception ex) {
+                installPending = false;
                 Logger.printException(() -> "Could not install the lyrics panel", ex);
             }
         }, delay);
     }
 
-    private static void install() {
+    /**
+     * @return Whether the panel is in place, so that no further attempt is needed.
+     */
+    private static boolean install() {
         Activity activity = Utils.getActivity();
         if (activity == null) {
-            return;
+            return false;
         }
 
         View root = activity.getWindow().getDecorView();
         ViewGroup panel = findLyricsPanelContent(root);
         if (panel == null) {
-            return;
+            return false;
         }
 
         LyricsPanelView existing = panelReference.get();
@@ -160,7 +184,7 @@ public final class LyricsPanelInstaller {
             // Reopening the panel makes the app restore its own content, so the
             // overlay state has to be reapplied rather than assumed still correct.
             existing.syncOverlay();
-            return;
+            return true;
         }
 
         LyricsPanelView panelView = new LyricsPanelView(panel.getContext());
@@ -168,6 +192,7 @@ public final class LyricsPanelInstaller {
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
         panelReference = new WeakReference<>(panelView);
+        return true;
     }
 
     private static boolean isCurrentPanelLyrics() {
