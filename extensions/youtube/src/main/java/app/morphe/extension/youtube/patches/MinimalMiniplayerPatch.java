@@ -134,12 +134,13 @@ public final class MinimalMiniplayerPatch {
     private static final Rect currentBounds = new Rect();
 
     private static final Rect clipBounds = new Rect();
-    private static final Rect dockedBounds = new Rect();
     private static final int[] windowLocation = new int[2];
 
     private static final Rect morphFrom = new Rect();
     private static final Rect morphTo = new Rect();
     private static final Rect morphCurrent = new Rect();
+
+    private static final Runnable setContentAlphaRunnable = () -> setContentAlpha(1f);
 
     private static WeakReference<ViewGroup> controlsRef = new WeakReference<>(null);
     private static WeakReference<View> barContainerRef = new WeakReference<>(null);
@@ -178,10 +179,6 @@ public final class MinimalMiniplayerPatch {
     private static boolean applyingBounds;
     private static ValueAnimator morphAnimator;
 
-    /**
-     * Whether the player currently holds the bar shape. The player type cannot answer this,
-     * it already reports the new state by the time the change is delivered.
-     */
     private static boolean barShapeApplied;
 
     /**
@@ -278,15 +275,9 @@ public final class MinimalMiniplayerPatch {
      */
     public static int getLegacyControlsVisibility(int original) {
         // Any other shape and these would sit across the whole screen.
-        if (ENABLED && inBarMode()) {
-            // The morph owns the alpha while it runs.
-            if (!morphing) {
-                setContentAlpha(1f);
-            }
-
+        if (ENABLED) {
             return View.VISIBLE;
         }
-
         return original;
     }
 
@@ -319,30 +310,50 @@ public final class MinimalMiniplayerPatch {
                 return original;
             }
 
-            setDockedBounds(original);
-            barBoundsFor(dockedBounds);
+            // Prevents the video from anchoring into one of the display corners by spanning the
+            // bounds to full display width, making the transition to miniplayer smoother.
+            Rect dockedBounds = new Rect(0, original.top, getWidthPixels(), original.bottom);
 
-            lastBounds.set(barBounds);
+            lastBounds.set(dockedBounds);
 
-            if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED) {
-                barShapeApplied = true;
+            // Handle a smooth transition from the maximized to the minimal player.
+            PlayerType currentType = PlayerType.getCurrent();
+            if (currentType == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED) {
+                barBoundsFor(dockedBounds);
+
+                final int maxDragTop = barBounds.top > 0 ? barBounds.top : dockedBounds.top;
+                final float progress = maxDragTop > 0
+                        ? Math.min(1.0f, Math.max(0.0f, (float) original.top / maxDragTop))
+                        : 1.0f;
+
+                final int currentLeft = interpolate(dockedBounds.left, barBounds.left, progress);
+                final int currentTop = interpolate(dockedBounds.top, barBounds.top, progress);
+                final int currentRight = interpolate(dockedBounds.right, barBounds.right, progress);
+                final int currentBottom = interpolate(dockedBounds.bottom, barBounds.bottom, progress);
+
+                setBoundsDuringDrag(
+                        false,
+                        new Rect(currentLeft, currentTop, currentRight, currentBottom)
+                );
+
+                return currentBounds;
             }
 
-            currentBounds.set(barBounds);
-            return currentBounds;
+            // Set the bounds parameters of the minimal player.
+            if (currentType == PlayerType.WATCH_WHILE_MINIMIZED) {
+                barBoundsFor(dockedBounds);
+                setBoundsDuringDrag(true, barBounds);
+                return barBounds;
+            }
+
+            setBoundsDuringDrag(false, dockedBounds);
+
+            return dockedBounds;
         } catch (Exception ex) {
             Logger.printException(() -> "getMinimalBarBounds failure", ex);
         }
 
         return original;
-    }
-
-    /**
-     * Prevents the video from anchoring into one of the display corners by spanning the
-     * bounds to full display width, making the transition to miniplayer smoother.
-     */
-    private static void setDockedBounds(Rect original) {
-        dockedBounds.set(0, original.top, getWidthPixels(), original.bottom);
     }
 
     private static void barBoundsFor(Rect resting) {
@@ -365,7 +376,9 @@ public final class MinimalMiniplayerPatch {
      */
     private static int barBottomFor(Rect resting) {
         View navigationBar = navigationBar(controlsRef.get());
-        if (navigationBar == null || !navigationBar.isShown()) return resting.bottom;
+        if (navigationBar == null || !navigationBar.isShown()) {
+            return resting.bottom;
+        }
 
         navigationBar.getLocationInWindow(windowLocation);
 
@@ -384,16 +397,11 @@ public final class MinimalMiniplayerPatch {
      */
     public static void applyVideoRect(Rect videoRect) {
         try {
-            if (!ENABLED) {
-                return;
-            }
+            PlayerType type = PlayerType.getCurrent();
+            final boolean isBarMode = inBarMode()
+                    || type == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED;
 
-            if (!inBarMode()) {
-                videoRect.left = 0;
-                videoRect.right = getWidthPixels();
-
-                return;
-            }
+            if (!isBarMode) return;
 
             if (getCurrentMiniplayerType() == MINIMAL_BAR) {
                 final int videoWidth = videoWidthFor(currentBounds.height());
@@ -463,7 +471,9 @@ public final class MinimalMiniplayerPatch {
         try {
             cancelMorph();
 
-            if (lastBounds.isEmpty()) return;
+            if (lastBounds.isEmpty() || morphAnimator != null) {
+                return;
+            }
 
             MiniplayerBoundsController controller = boundsControllerRef.get();
             if (controller == null) {
@@ -478,7 +488,20 @@ public final class MinimalMiniplayerPatch {
 
             setContentAlpha(0f);
             showControls(true);
-            runMorph(true, () -> setContentAlpha(1f));
+
+            // Prevents the miniplayer from flickering, once it
+            // reaches the MINIMIZED player state
+            // at the bottom position.
+            if (morphFrom.equals(morphTo)) {
+                setBounds(controller, morphTo);
+                updateVideoClip();
+                
+                runControlsFadeIn(setContentAlphaRunnable);
+
+                return;
+            }
+
+            runMorph(true, setContentAlphaRunnable);
         } catch (Exception ex) {
             morphing = false;
             Logger.printException(() -> "applyBarShape failure", ex);
@@ -497,14 +520,23 @@ public final class MinimalMiniplayerPatch {
         currentBounds.set(bounds);
     }
 
+    private static void setBoundsDuringDrag(boolean draggingDone, Rect targetRect) {
+        barShapeApplied = draggingDone;
+        updateVideoClip();
+        currentBounds.set(targetRect);
+    }
+
     private static void runMorph(boolean fadeInContent, Runnable onEnd) {
         morphing = true;
 
         ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
         animator.setDuration(MORPH_MILLIS);
         animator.setInterpolator(new DecelerateInterpolator());
-        animator.addUpdateListener(value ->
-                onMorphFrame((float) value.getAnimatedValue(), fadeInContent));
+        animator.addUpdateListener(
+                value
+                        ->
+                onMorphFrame((float) value.getAnimatedValue(), fadeInContent)
+        );
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -512,6 +544,28 @@ public final class MinimalMiniplayerPatch {
                 morphAnimator = null;
                 currentBounds.set(morphTo);
                 updateVideoClip();
+                onEnd.run();
+            }
+        });
+
+        morphAnimator = animator;
+        animator.start();
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static void runControlsFadeIn(Runnable onEnd) {
+        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
+        animator.setDuration(MORPH_MILLIS);
+        animator.setInterpolator(new DecelerateInterpolator());
+        animator.addUpdateListener(
+                value
+                        ->
+                setContentAlpha((float) value.getAnimatedValue())
+        );
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                morphAnimator = null;
                 onEnd.run();
             }
         });
@@ -752,11 +806,15 @@ public final class MinimalMiniplayerPatch {
         View skipAd = skipAdRef.get();
         if (skipAd == null) {
             ViewGroup controls = controlsRef.get();
-            if (controls == null) return false;
+            if (controls == null) {
+                return false;
+            }
 
             skipAd = Utils.getChildViewByResourceName(
                     controls.getRootView(), "modern_miniplayer_skip_ad_button");
-            if (skipAd == null) return false;
+            if (skipAd == null) {
+                return false;
+            }
 
             skipAdRef = new WeakReference<>(skipAd);
         }
@@ -766,9 +824,13 @@ public final class MinimalMiniplayerPatch {
 
     private static View navigationBar(ViewGroup controls) {
         View navigationBar = navigationBarRef.get();
-        if (navigationBar != null) return navigationBar;
+        if (navigationBar != null) {
+            return navigationBar;
+        }
 
-        if (controls == null) return null;
+        if (controls == null) {
+            return null;
+        }
 
         navigationBar = Utils.getChildViewByResourceName(
                 controls.getRootView(), "bottom_bar_container");
@@ -917,10 +979,14 @@ public final class MinimalMiniplayerPatch {
     @Nullable
     private static View watchPlayer() {
         View watchPlayer = watchPlayerRef.get();
-        if (watchPlayer != null) return watchPlayer;
+        if (watchPlayer != null) {
+            return watchPlayer;
+        }
 
         ViewGroup controls = controlsRef.get();
-        if (controls == null) return null;
+        if (controls == null) {
+            return null;
+        }
 
         watchPlayer = Utils.getChildViewByResourceName(controls.getRootView(), "watch_player");
         if (watchPlayer == null) {
@@ -955,7 +1021,9 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static boolean setText(TextView view, String text) {
-        if (view == null) return false;
+        if (view == null) {
+            return false;
+        }
 
         if (!text.contentEquals(view.getText())) {
             view.setText(text);
@@ -1032,7 +1100,9 @@ public final class MinimalMiniplayerPatch {
                 ? ResourceUtils.getDrawable(name)
                 : Utils.getContext().getDrawable(drawableIdentifier);
 
-        if (!(drawable instanceof AnimatedVectorDrawable morph)) return false;
+        if (!(drawable instanceof AnimatedVectorDrawable morph)) {
+            return false;
+        }
 
         view.setImageDrawable(morph);
         morph.start();
