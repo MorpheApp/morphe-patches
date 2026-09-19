@@ -384,7 +384,7 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Søg i kanalen</string>
   <string name="morphe_channel_search_summary">Når du søger, mens en kanal er åben, foregår søgningen kun i den kanal</string>
-  <string name="morphe_channel_search_results_title">Søgning: %s</string>
+  <string name="morphe_channel_search_results">Kanalens søgeresultater</string>
   <string name="morphe_channel_search_no_results">Intet fundet på denne kanal</string>
   <string name="morphe_channel_search_failed">Kunne ikke søge i denne kanal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->

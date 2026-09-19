@@ -34,9 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">フライアウト メニューの「オフラインに一時保存」の呼び出し先を、「純正アプリ内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
   <string name="morphe_music_in_app_downloads_title">アプリ内ダウンロード</string>
   <string name="morphe_music_in_app_downloads_summary">外部のダウンローダーアプリを開かずに、YouTube Music内で音声をダウンロードします。</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"トラックはアプリのプライベートストレージに保存され、YouTube Music をアンインストールすると削除されます。
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"ダウンロードした楽曲は、YouTube Music の非公開ストレージ領域に保存されるため、YouTube Music をアンインストールすると削除されます。
 
-この設定がオンの間、ダウンロードタブには Music Premium のオフラインライブラリの代わりにこれらのトラックが表示されます。オフにするとタブが復元され、Premium のダウンロードが影響を受けることは一切ありません。"</string>
+この機能をオンにしている間は、Premium 機能でダウンロードした楽曲の代わりに、この機能でダウンロードした楽曲を、オフラインのコンテンツとしてライブラリタブに表示します。オフにすると元に戻ります。この機能が Premium 機能でダウンロードした楽曲に影響を及ぼすことはありません。"</string>
   <string name="morphe_music_downloads_screen_title">ダウンロード</string>
   <string name="morphe_music_downloads_empty">"まだダウンロードしていません
 ダウンロードした楽曲がここに表示されます
@@ -363,16 +363,16 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_source_reset_title">プロバイダーの順序をリセットしますか？</string>
   <string name="morphe_music_lyrics_source_reset_message">プロバイダーを既定の優先順位に戻します</string>
   <string name="morphe_music_token_dialog_get_token">トークンを取得</string>
-  <string name="morphe_music_apple_music_token_title">Apple Music Media-User-Token</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music media-user-token</string>
   <string name="morphe_music_apple_music_token_dialog_instruction">"music.apple.com の media-user-token Cookie を貼り付けてください。
 
 手順:
-1. music.apple.com にメンバーユーザーとしてサインインします
-2. DevTools → Application → Cookies → music.apple.com を開きます
-3. 「media-user-token」の値をコピーします"</string>
+1. サブスクリプションに登録中のアカウントで music.apple.com にサインイン
+2. DevTools → Application → Cookies → music.apple.com の順に開く
+3.「media-user-token」の値をコピー"</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token を保存しました</string>
-  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token をクリアしました</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token が無効です。ご確認の上、もう一度お試しください。</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token を消去しました</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: 無効な media-user-token です。確認して再度お試しください</string>
   <string name="morphe_music_spotify_token_title">Spotify […] \"sp_dc\" の値をコピーしてください</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify の sp_dc Cookie を貼り付けてください。
 

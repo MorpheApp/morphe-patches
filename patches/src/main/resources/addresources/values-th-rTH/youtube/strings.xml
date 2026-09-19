@@ -384,7 +384,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">ค้นหาในช่อง</string>
   <string name="morphe_channel_search_summary">เมื่อเปิดช่องอยู่ การค้นหาจะค้นหาเฉพาะในช่องนั้นเท่านั้น</string>
-  <string name="morphe_channel_search_results_title">ค้นหา: %s</string>
+  <string name="morphe_channel_search_results">ผลการค้นหาช่อง</string>
   <string name="morphe_channel_search_no_results">ไม่พบผลลัพธ์ในช่องนี้</string>
   <string name="morphe_channel_search_failed">ไม่สามารถค้นหาช่องนี้ได้</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1271,7 +1271,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• ไม่มีตัวแปลงสัญญาณวิดีโอ AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• รูปแบบ 360° VR Immersive ไม่พร้อมใช้งาน</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• ระดับเสียงคงที่ไม่พร้อมใช้งาน</string>
-  <string name="morphe_spoof_video_streams_about_end_early">• การเล่นอาจจบลงเร็วขึ้น 1 วินาที</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Playback may end 1 second early</string>
   <string name="morphe_spoof_video_streams_about_js">• ถ้า Deobfuscation ล้มเหลว การเล่นอาจล้มเหลว</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• บังคับใช้เสียงต้นฉบับไม่พร้อมใช้งาน</string>
