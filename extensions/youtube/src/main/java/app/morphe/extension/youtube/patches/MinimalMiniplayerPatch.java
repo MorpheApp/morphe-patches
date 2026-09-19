@@ -319,39 +319,17 @@ public final class MinimalMiniplayerPatch {
                 return original;
             }
 
-            Rect docked = fullWidthSpan(original);
-            lastBounds.set(docked);
+            setDockedBounds(original);
+            barBoundsFor(dockedBounds);
 
-            barBoundsFor(docked);
+            lastBounds.set(barBounds);
 
-            PlayerType currentType = PlayerType.getCurrent();
-            if (currentType == PlayerType.WATCH_WHILE_MINIMIZED) {
-                currentBounds.set(barBounds);
+            if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED) {
                 barShapeApplied = true;
-                return barBounds;
-            }
-            if (currentType.isMaximizedOrFullscreen()) {
-                barShapeApplied = false;
-                currentBounds.set(docked);
-                return docked;
             }
 
-            // Interpolate bounds during player minimization.
-            int targetTop = barBounds.top;
-            if (targetTop > 0 && docked.top > 0) {
-                float fraction = Math.min(1f, Math.max(0f, (float) docked.top / targetTop));
-                currentBounds.set(
-                        interpolate(docked.left, barBounds.left, fraction),
-                        interpolate(docked.top, barBounds.top, fraction),
-                        interpolate(docked.right, barBounds.right, fraction),
-                        interpolate(docked.bottom, barBounds.bottom, fraction)
-                );
-                return currentBounds;
-            }
-
-            currentBounds.set(docked);
-
-            return docked;
+            currentBounds.set(barBounds);
+            return currentBounds;
         } catch (Exception ex) {
             Logger.printException(() -> "getMinimalBarBounds failure", ex);
         }
@@ -363,10 +341,8 @@ public final class MinimalMiniplayerPatch {
      * Prevents the video from anchoring into one of the display corners by spanning the
      * bounds to full display width, making the transition to miniplayer smoother.
      */
-    private static Rect fullWidthSpan(Rect original) {
+    private static void setDockedBounds(Rect original) {
         dockedBounds.set(0, original.top, getWidthPixels(), original.bottom);
-
-        return dockedBounds;
     }
 
     private static void barBoundsFor(Rect resting) {
