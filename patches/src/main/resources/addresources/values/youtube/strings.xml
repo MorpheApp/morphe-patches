@@ -413,7 +413,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <!-- interaction.channelsearch.channelSearchPatch -->
     <string name="morphe_channel_search_title">Search within channel</string>
     <string name="morphe_channel_search_summary">Searching while a channel is open searches only that channel</string>
-    <string name="morphe_channel_search_results_title">Search: %s</string>
+    <string name="morphe_channel_search_results">Channel search results</string>
     <string name="morphe_channel_search_no_results">Nothing found on this channel</string>
     <string name="morphe_channel_search_failed">Could not search this channel</string>
 
