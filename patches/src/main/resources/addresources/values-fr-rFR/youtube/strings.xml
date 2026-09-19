@@ -381,6 +381,12 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_channel_whitelist_channel_added">Chaîne ajoutée à la liste blanche</string>
   <string name="morphe_channel_whitelist_channel_removed">Chaîne retirée de la liste blanche</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Rechercher dans la chaîne</string>
+  <string name="morphe_channel_search_summary">Lorsqu\'une recherche est effectuée alors qu\'une chaîne est ouverte les résultats concernent uniquement cette chaîne</string>
+  <string name="morphe_channel_search_results">Résultats de recherche de chaînes</string>
+  <string name="morphe_channel_search_no_results">Aucun résultat trouvé sur cette chaîne</string>
+  <string name="morphe_channel_search_failed">Impossible d\'effectuer une recherche sur cette chaîne</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lien copié dans le presse-papiers</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Lien avec horodatage copié dans le presse-papiers</string>
@@ -502,8 +508,12 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Cette vidéo est déjà enregistrée dans la playlist \'À regarder plus tard\'</string>
   <string name="morphe_save_to_watch_later_error_toast">Impossible d\'enregistrer cette vidéo dans la playlist \'À regarder plus tard\'</string>
   <string name="morphe_save_to_watch_later_flyout_title">Enregistrer dans \'À regarder plus tard\'</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Afficher le bouton \'Enregistrer dans \"À regarder plus tard\"\' dans le menu déroulant du lecteur</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Permet d\'enregistrer la vidéo en cours de visionnage dans \'À regarder plus tard\' depuis le menu déroulant de la vidéo</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Afficher le bouton \'Enregistrer dans \"À regarder plus tard\"\' dans les vidéos pour enfants</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permet d\'enregistrer les vidéos pour enfants dans le menu déroulant \'À regarder plus tard\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permet d\'enregistrer les vidéos pour enfants dans \'À regarder plus tard\' depuis le menu déroulant</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Afficher le bouton \'Enregistrer dans \"À regarder plus tard\"\' dans le menu déroulant shorts </string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permet d\'enregistrer les shorts dans \'À regarder plus tard\' depuis le menu déroulant</string>
   <string name="morphe_queue_flyout_title">Ajouter à la file d\'attente Morphe</string>
   <string name="morphe_queue_restore_title">Conserver la file d\'attente entre les sessions</string>
   <string name="morphe_queue_restore_summary">La file d\'attente est conservée après le redémarrage de l\'application</string>
@@ -703,7 +713,7 @@ Les 'Cookies des sous-titres' doivent être fournis"</string>
   <string name="morphe_caption_cookies_title">Cookies des sous-titres</string>
   <string name="morphe_caption_cookies_summary">Cookies à définir dans les requêtes de l\'API Timed Text (API des données de sous-titres)</string>
   <string name="morphe_get_caption_cookies_title">Obtenir les cookies de sous-titres</string>
-  <string name="morphe_get_caption_cookies_summary">Appuyez ici pour récupérer les cookies</string>
+  <string name="morphe_get_caption_cookies_summary"> Cliquez ici pour récupérer les cookies</string>
   <string name="morphe_get_caption_cookies_failed">Échec de la récupération des cookies</string>
   <string name="morphe_get_caption_cookies_duplicate">Les cookies existent déjà</string>
   <string name="morphe_get_caption_cookies_success">Les cookies ont été mis à jour avec succès</string>
@@ -912,6 +922,9 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <string name="morphe_exit_fullscreen_entry_2">Portrait uniquement</string>
   <string name="morphe_exit_fullscreen_entry_3">Paysage uniquement</string>
   <string name="morphe_exit_fullscreen_entry_4">Portrait et paysage</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Forcer le mode paysage en plein écran</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Faire pivoter le lecteur en mode paysage lors du passage en plein écran. Indisponible sur les petits écrans, qui s\'ouvrent déjà en plein écran en mode paysage</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gestes en mode plein écran</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gestes du lecteur en mode plein écran</string>
@@ -1037,7 +1050,7 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <string name="morphe_miniplayer_type_title">Type de mini-lecteur</string>
   <string name="morphe_miniplayer_type_entry_0">Désactivé</string>
   <string name="morphe_miniplayer_type_entry_1">Par défaut</string>
-  <string name="morphe_miniplayer_type_entry_2">Minimale</string>
+  <string name="morphe_miniplayer_type_entry_2">Minimaliste</string>
   <string name="morphe_miniplayer_type_entry_3">Minimaliste 2</string>
   <string name="morphe_miniplayer_type_entry_4">Tablette</string>
   <string name="morphe_miniplayer_type_entry_5">Moderne 1</string>
@@ -1259,6 +1272,7 @@ La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images
   <string name="morphe_spoof_video_streams_about_no_av1">• Aucun codec vidéo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Le mode 360° VR immersif n\'est pas disponible</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Le volume stable n\'est pas disponible</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• La lecture peut se terminer 1 seconde plus tôt</string>
   <string name="morphe_spoof_video_streams_about_js">• Si la désobfuscation échoue, la lecture peut échouer</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forcer la langue audio d\'origine n\'est pas disponible</string>

@@ -33,6 +33,7 @@ import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
+import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -370,6 +371,8 @@ public class CommentsFilter extends Filter {
      * Injection point.
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
+        FlyoutUtils.onCommentsLoaded(bytes);
+
         if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()) {
             try {
                 var newElement = NewElement.parseFrom(bytes).toBuilder();

@@ -3,8 +3,8 @@ package app.morphe.patches.youtube.layout.player.overlay
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.youtube.layout.sponsorblock.ControlsOverlayFingerprint
 import app.morphe.patches.youtube.misc.playercontrols.PlayerBottomGradientScrimFingerprint
 

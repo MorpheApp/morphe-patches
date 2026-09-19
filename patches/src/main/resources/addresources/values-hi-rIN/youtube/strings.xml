@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">चैनल को व्हाइटलिस्ट में जोड़ा गया</string>
   <string name="morphe_channel_whitelist_channel_removed">चैनल को व्हाइटलिस्ट से हटा दिया गया</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">चैनल में खोजें</string>
+  <string name="morphe_channel_search_summary">जब कोई चैनल खुला हो, तो खोज केवल उसी चैनल में होती है</string>
+  <string name="morphe_channel_search_results">चैनल खोज परिणाम</string>
+  <string name="morphe_channel_search_no_results">इस चैनल पर कुछ नहीं मिला</string>
+  <string name="morphe_channel_search_failed">इस चैनल में खोज नहीं की जा सकी</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्ड में कॉपी किया गया</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">टाइमस्टैम्प के साथ लिंक क्लिपबोर्ड में कॉपी किया गया</string>
@@ -502,8 +508,12 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_save_to_watch_later_already_exists_toast">यह वीडियो पहले से ही बाद में देखने की प्लेलिस्ट में सहेजा गया है</string>
   <string name="morphe_save_to_watch_later_error_toast">इस वीडियो को बाद में देखने की प्लेलिस्ट में सहेजा नहीं जा सकता</string>
   <string name="morphe_save_to_watch_later_flyout_title">बाद में देखने के लिए सहेजें</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">प्लेयर सेटिंग फ्लाईआउट में बाद में देखने के लिए सेव करें बटन दिखाएँ</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">वीडियो सेटिंग फ्लाईआउट से वर्तमान में देखे जा रहे वीडियो को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">बच्चों के वीडियो में \'बाद में देखने के लिए सहेजें\' बटन दिखाएं</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">किड से संबंधित वीडियो को \'बाद में देखें\' फ्लाईआउट मेनू में सहेजने की अनुमति देता है</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">फ्लाईआउट मेनू से बच्चों से जुड़े वीडियो को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">शॉर्ट्स फ्लाईआउट में बाद में देखने के लिए सेव करें बटन दिखाएँ</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">फ्लाईआउट मेनू से शॉर्ट्स को \'बाद में देखें\' में सेव करने की अनुमति देता है</string>
   <string name="morphe_queue_flyout_title">Morphe कतार में जोड़ें</string>
   <string name="morphe_queue_restore_title">सत्रों के बीच कतार बनाए रखें</string>
   <string name="morphe_queue_restore_summary">ऐप को पुनरारंभ करने के बाद कतार बनी रहती है</string>
@@ -911,6 +921,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_exit_fullscreen_entry_2">पोर्ट्रेट ओनली</string>
   <string name="morphe_exit_fullscreen_entry_3">लैंडस्केप ओनली</string>
   <string name="morphe_exit_fullscreen_entry_4">पोर्ट्रेट और लैंडस्केप</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">फ़ुलस्क्रीन में लैंडस्केप जबरदस्ती लागू करें</string>
+  <string name="morphe_force_fullscreen_landscape_summary">फ़ुलस्क्रीन में जाने पर प्लेयर को लैंडस्केप में घुमाएँ। छोटी स्क्रीनों पर अनुपलब्ध है, जो पहले से ही लैंडस्केप में फ़ुलस्क्रीन खोलती हैं।</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">फ़ुलस्क्रीन जेस्चर</string>
   <string name="morphe_disable_fullscreen_gestures_summary">फुलस्क्रीन मोड में प्लेयर जेस्चर</string>
@@ -1258,6 +1271,7 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <string name="morphe_spoof_video_streams_about_no_av1">• कोई AV1 वीडियो कोडेक नहीं</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव मोड उपलब्ध नहीं है।</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• स्थिर वॉल्यूम उपलब्ध नहीं है</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• प्लेबैक 1 सेकंड पहले समाप्त हो सकता है</string>
   <string name="morphe_spoof_video_streams_about_js">• अगर डीक्रिप्शन विफल हो जाता है, तो प्लेबैक भी विफल हो सकता है।</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• बल मूल ऑडियो उपलब्ध नहीं है</string>

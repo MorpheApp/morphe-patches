@@ -14,17 +14,16 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoColorOverrideHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
@@ -46,7 +45,6 @@ val seekbarColorPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         versionCheckPatch,
-        resourceMappingPatch,
         lithoColorHookPatch({ is_21_30_or_greater })
     )
 
@@ -82,7 +80,14 @@ val seekbarColorPatch = bytecodePatch(
 
         lithoColorOverrideHook(EXTENSION_CLASS, "getLithoColor")
 
-        // 19.25+ changes
+        if (is_21_21_or_greater) {
+            ShortsWhiteSeekbarFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    false
+                )
+            }
+        }
 
         var handleBarColorFingerprints = mutableListOf<Fingerprint>(PlayerSeekbarHandle1ColorFingerprint)
         if (!is_20_34_or_greater) {

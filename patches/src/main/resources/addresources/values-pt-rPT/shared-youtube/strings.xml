@@ -65,6 +65,15 @@ Verifique se o nome do pacote está correto e o aplicativo está instalado"</str
   <string name="morphe_custom_branding_icon_entry_6">Morphe play preto</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizado</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Isso altera o ícone exibido no seu iniciador de aplicativos.
+
+Esta configuração não alterará o ícone em nenhum destes locais:
+• Lista de aplicativos nas configurações do sistema do dispositivo
+• Certas notificações push
+• Seletor de aplicativos 'Abrir com'
+• Ícone do Android Auto
+
+Para alterar o ícone em todos os lugares, aplique o patch novamente e altere a opção de patch 'Ícone do aplicativo'"</string>
   <string name="morphe_custom_branding_notification_icon_title">Ícone de notificação</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Combinar ícone do aplicativo</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>

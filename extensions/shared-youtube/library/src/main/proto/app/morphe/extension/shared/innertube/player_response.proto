@@ -11,7 +11,29 @@ message PlayerResponse {
   optional ResponseContext responseContext = 1;
   optional PlayabilityStatus playabilityStatus = 2;
   optional StreamingData streamingData = 4;
+  optional VideoDetails videoDetails = 11;
   optional PlayerConfig playerConfig = 15;
+}
+
+// Field numbers read off a real player response, since asking for "videoDetails"
+// in the fields mask returns nothing.
+message VideoDetails {
+  optional string videoId = 1;
+  optional string title = 15;
+  optional int32 lengthSeconds = 16;
+  optional string channelId = 19;
+  optional ThumbnailList thumbnail = 25;
+  optional string ownerChannelName = 33;
+}
+
+message ThumbnailList {
+  repeated ThumbnailEntry thumbnails = 1;
+}
+
+message ThumbnailEntry {
+  optional string url = 1;
+  optional int32 width = 2;
+  optional int32 height = 3;
 }
 
 message PlayabilityStatus {
@@ -45,6 +67,7 @@ message Format {
   optional int32 audioChannels = 46;
   optional int64 approxDurationMs = 44;
   optional int64 audioSampleRate = 45;
+  optional int64 contentLength = 12;
   optional string mimeType = 5;
   optional string url = 2;
   optional string signatureCipher = 48;

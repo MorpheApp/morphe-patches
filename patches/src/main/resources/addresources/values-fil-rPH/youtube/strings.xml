@@ -381,6 +381,12 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_channel_whitelist_channel_added">Idinagdag ang channel sa whitelist</string>
   <string name="morphe_channel_whitelist_channel_removed">Tinanggal ang channel sa whitelist</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Maghanap sa loob ng channel</string>
+  <string name="morphe_channel_search_summary">Ang paghahanap habang bukas ang isang channel ay sa channel na iyon lamang</string>
+  <string name="morphe_channel_search_results">Mga resulta ng paghahanap sa channel</string>
+  <string name="morphe_channel_search_no_results">Walang nahanap sa channel na ito</string>
+  <string name="morphe_channel_search_failed">Hindi ma-search ang channel na ito</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Nakalink sa clipboard</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Nakalink na may timestamp sa clipboard</string>
@@ -502,8 +508,12 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Naisave na ang videong ito sa playlist na I-save para manood mamaya</string>
   <string name="morphe_save_to_watch_later_error_toast">Hindi ma-save ang videong ito sa playlist na I-save para manood mamaya</string>
   <string name="morphe_save_to_watch_later_flyout_title">I-save sa Panoorin Mamaya</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa flyout ng mga setting ng player</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Nagbibigay-daan sa pag-save ng kasalukuyang pinapanood na video sa \'Panoorin Mamaya\' mula sa flyout ng mga setting ng video</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa mga video ng mga bata</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga video na may kaugnayan sa bata sa menu ng \'Panoorin Mamaya\' o flyout menu.</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga video na nauugnay sa mga bata sa \'Panoorin Mamaya\' mula sa flyout menu</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Ipakita ang button na I-save sa Panoorin Mamaya sa flyout ng shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Nagbibigay-daan sa pag-save ng mga shorts sa \'Panoorin Mamaya\' mula sa flyout menu</string>
   <string name="morphe_queue_flyout_title">Idagdag sa Morphe queue</string>
   <string name="morphe_queue_restore_title">Panatilihin ang pila sa pagitan ng mga sesyon</string>
   <string name="morphe_queue_restore_summary">Ang pila ay nananatili kahit i-restart ang app</string>
@@ -909,6 +919,9 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_exit_fullscreen_entry_2">Portrait only</string>
   <string name="morphe_exit_fullscreen_entry_3">Landscape only</string>
   <string name="morphe_exit_fullscreen_entry_4">Portrait at landscape</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Pilitin ang landscape sa fullscreen</string>
+  <string name="morphe_force_fullscreen_landscape_summary">I-rotate ang player sa landscape kapag pumapasok sa fullscreen. Hindi available sa maliliit na screen, na nagbubukas na sa fullscreen sa landscape</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Mga galaw para sa buong screen</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Mga galaw ng player sa fullscreen mode</string>
@@ -1256,6 +1269,7 @@ Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mg
   <string name="morphe_spoof_video_streams_about_no_av1">• Walang codec ng video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Ang 360° VR na immersive mode ay hindi magagamit</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Hindi available ang matatag na volume</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Maaaring matapos nang 1 segundo nang maaga ang playback</string>
   <string name="morphe_spoof_video_streams_about_js">• Kung mabigo ang deobfuscation, maaaring mabigo ang playback</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Hindi available ang Force original audio</string>

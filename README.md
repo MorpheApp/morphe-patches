@@ -35,14 +35,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.43.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.43.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;147 patches total
+> **[v1.44.0-dev.11](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.44.0-dev.11)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;149 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;82 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;84 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.36.45 | 🧪&nbsp;21.35.442 | 🧪&nbsp;21.28.208 | 21.13.164 | 21.07.247 | 20.31.42 | 20.21.37 |
+| 🧪&nbsp;21.38.123 | 🧪&nbsp;21.37.42 | 🧪&nbsp;21.28.208 | 21.16.256 | 21.13.164 | 20.31.42 | 20.21.37 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -57,6 +57,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Change form factor](#change-form-factor) | Adds an option to change the UI appearance to a phone, tablet, or automotive device. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
 | [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
+| [Channel search](#channel-search) | Adds an option to search inside the channel that is currently open instead of searching all of YouTube. |  |
 | [Check watch history domain name resolution](#check-watch-history-domain-name-resolution) | Checks if the device DNS server is preventing user watch history from being saved. |  |
 | [Copy video link](#copy-video-link) | Adds options to display buttons in the video player to copy video links. |  |
 | [Custom branding](#custom-branding) | Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings. | • App name<br>• Custom icon<br>• App icon |
@@ -78,6 +79,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Downloads](#downloads) | Adds support to download videos with an external downloader app using the in-app download button or a video player action button. |  |
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Exit fullscreen mode](#exit-fullscreen-mode) | Adds options to automatically exit fullscreen mode when a video reaches the end. |  |
+| [Force fullscreen landscape](#force-fullscreen-landscape) | Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices. |  |
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [Fullscreen video scale](#fullscreen-video-scale) | Adds options to stretch or zoom videos to fill the screen in fullscreen mode. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
@@ -138,7 +140,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.37.0 | 🧪&nbsp;2026.36.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
+| 🧪&nbsp;2026.38.0 | 🧪&nbsp;2026.37.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
 | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -171,7 +173,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.36.50 | 🧪&nbsp;9.35.54 | 🧪&nbsp;9.34.52 | 9.15.51 |
+| 🧪&nbsp;9.37.54 | 🧪&nbsp;9.36.50 | 🧪&nbsp;9.35.54 | 9.15.51 |
 | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -187,7 +189,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
 | [Disable QUIC protocol](#disable-quic-protocol) | Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol. |  |
 | [Disable dislike redirection](#disable-dislike-redirection) | Adds an option to prevent skipping to the next track when the dislike button is pressed. |  |
-| [Downloads](#downloads) | Adds support to download songs with an external downloader app using the in-app download button. |  |
+| [Downloads](#downloads) | Adds support to download songs using the in-app download button, either with an external downloader app or inside YouTube Music. |  |
 | [Enable debugging](#enable-debugging) | Adds options for debugging and exporting Morphe logs to the clipboard. |  |
 | [Enable exclusive audio playback](#enable-exclusive-audio-playback) | Enables the option to play audio without video. |  |
 | [Enable forced miniplayer](#enable-forced-miniplayer) | Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs. |  |
@@ -217,7 +219,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof app version](#spoof-app-version) | Adds an option to trick the app into thinking you are running an older version. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Theme](#theme) | Adds options for theming, and settings to change the app foreground and background colors. | • Dark theme color |
-| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel. |  |
+| [Third-party lyrics](#third-party-lyrics) | Adds an option to show synced lyrics with experience enhancement from 10+ providers in the lyrics panel. |  |
 
 </details>
 

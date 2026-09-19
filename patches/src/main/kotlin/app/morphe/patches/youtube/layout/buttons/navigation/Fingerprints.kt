@@ -20,9 +20,9 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.parametersMatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -130,6 +130,15 @@ internal object PivotBarChangedFingerprint : Fingerprint(
 /*
  * YouTube nav buttons.
  */
+
+/**
+ * Device on screen back/home/recent buttons.
+ */
+internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45632194L) // Translucent system buttons feature flag.
+    )
+)
 
 private object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

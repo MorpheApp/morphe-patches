@@ -65,6 +65,15 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe 黑色</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">自訂</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"這會變更你的應用程式啟動器中顯示的圖示。
+
+此設定不會變更以下任何位置的圖示：
+• 裝置系統設定中的應用程式清單
+• 部分推播通知
+• 「開啟方式」應用程式選擇器
+• Android Auto 圖示
+
+若要變更所有位置的圖示，請再次修補，並變更「App icon」修補選項。"</string>
   <string name="morphe_custom_branding_notification_icon_title">通知圖示</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">變更應用程式圖示？</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe 遊戲</string>

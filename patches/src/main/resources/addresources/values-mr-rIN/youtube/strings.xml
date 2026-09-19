@@ -322,6 +322,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium जाहिरात वृत्तपत्रे लपवा</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्डवर कॉपी केली</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">टाइमस्टॅम्पसह लिंक क्लिपबोर्डवर कॉपी केली</string>
@@ -809,6 +810,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_exit_fullscreen_entry_2">पोर्ट्रेट फक्त</string>
   <string name="morphe_exit_fullscreen_entry_3">लँडस्केप फक्त</string>
   <string name="morphe_exit_fullscreen_entry_4">पोर्ट्रेट (Portrait) आणि लँडस्केप (Landscape)</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">पूर्ण स्क्रीन हावभाव</string>
   <string name="morphe_disable_fullscreen_gestures_summary">फुलस्क्रीन मोडमधील प्लेयर जेश्चर</string>

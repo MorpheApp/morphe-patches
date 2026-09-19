@@ -65,6 +65,15 @@ Verifiera att paketnamnet är korrekt och att appen har installerats"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe – spela upp – svart</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Anpassad</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Detta ändrar ikonen som visas i din applikationsstartare.
+
+Den här inställningen ändrar inte ikonen på någon av dessa platser:
+• Applistan i enhetens systeminställningar
+• Vissa pushaviseringar
+• Appväljaren 'Öppna med'
+• Android Auto-ikonen
+
+För att ändra ikonen överallt, applicera patchen igen och ändra patchalternativet 'App-ikon'."</string>
   <string name="morphe_custom_branding_notification_icon_title">Aviseringsikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Matcha appikonen</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe – spela upp</string>

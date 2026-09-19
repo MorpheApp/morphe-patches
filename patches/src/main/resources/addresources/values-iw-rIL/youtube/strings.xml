@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">הערוץ נוסף לרשימה הלבנה</string>
   <string name="morphe_channel_whitelist_channel_removed">הערוץ הוסר מהרשימה הלבנה</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">חיפוש בערוץ</string>
+  <string name="morphe_channel_search_summary">בזמן שערוץ פתוח, החיפוש מתבצע רק באותו ערוץ</string>
+  <string name="morphe_channel_search_results">תוצאות חיפוש ערוצים</string>
+  <string name="morphe_channel_search_no_results">לא נמצא דבר בערוץ זה</string>
+  <string name="morphe_channel_search_failed">לא ניתן לחפש בערוץ זה</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">קישור הועתק ללוח הגזירים</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">קישור עם חותמת זמן הועתק ללוח הגזירים</string>
@@ -502,8 +508,12 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">הסרטון הזה כבר שמור בפלייליסט \'צפייה מאוחרת\'</string>
   <string name="morphe_save_to_watch_later_error_toast">לא ניתן לשמור סרטון זה בפלייליסט \'צפייה מאוחרת\'.</string>
   <string name="morphe_save_to_watch_later_flyout_title">שמור לצפייה מאוחרת</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">הצג כפתור שמירה לצפייה מאוחרת בתפריט ההגדרות של הנגן</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">מאפשר לשמור את הסרטון הנוכחי ברשימת \'צפה מאוחר יותר\' מתפריט ההגדרות של הסרטון</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">הצג כפתור שמירה לצפייה מאוחרת בסרטוני ילדים</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">מאפשר שמירת סרטונים לילדים בתפריט הצף \'צפייה מאוחרת\' %d videos</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">מאפשר לשמור סרטונים הקשורים לילדים ברשימת \'צפה מאוחר יותר\' מהתפריט הנפתח</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">הצג כפתור שמירה ל\'צפה מאוחר יותר\' בתפריט הנפתח של הסרטונים הקצרים</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">מאפשר לשמור סרטונים קצרים ברשימת \'צפה מאוחר יותר\' מהתפריט הנפתח</string>
   <string name="morphe_queue_flyout_title">הוסף לתור Morphe</string>
   <string name="morphe_queue_restore_title">שמור תור בין הפעלות</string>
   <string name="morphe_queue_restore_summary">התור נשמר גם לאחר הפעלה מחדש של האפליקציה</string>
@@ -911,6 +921,9 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_2">דיוקן בלבד</string>
   <string name="morphe_exit_fullscreen_entry_3">נוף בלבד</string>
   <string name="morphe_exit_fullscreen_entry_4">לאורך ולרוחב</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">אלץ מצב לרוחב במסך מלא</string>
+  <string name="morphe_force_fullscreen_landscape_summary">סובב את הנגן למצב אופקי בעת כניסה למסך מלא. לא זמין במסכים קטנים, שכבר נפתחים למסך מלא במצב אופקי</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">מחוות מסך מלא</string>
   <string name="morphe_disable_fullscreen_gestures_summary">מחוות נגן במצב מסך מלא</string>
@@ -1258,6 +1271,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• מצב 360° VR אינו זמין</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• עוצמת קול יציבה אינה זמינה</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• ההשמעה עשויה להסתיים שנייה אחת מוקדם</string>
   <string name="morphe_spoof_video_streams_about_js">• אם הדהוד נכשל, ייתכן שהפלייבק יהיה כושל</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• כפיית שמע מקורי אינה זמינה</string>

@@ -381,6 +381,12 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <string name="morphe_channel_whitelist_channel_added">Kanava lisätty valkolistalle</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanava poistettu valkolistalta</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Hae kanavasta</string>
+  <string name="morphe_channel_search_summary">Kun kanava on avoinna, haku kohdistuu vain kyseiseen kanavaan.</string>
+  <string name="morphe_channel_search_results">Kanavahaun tulokset</string>
+  <string name="morphe_channel_search_no_results">Tältä kanavalta ei löytynyt mitään</string>
+  <string name="morphe_channel_search_failed">Tätä kanavaa ei voitu hakea</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Linkki kopioitu leikepöydälle</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Linkki aikaleimalla kopioitu leikepöydälle</string>
@@ -502,8 +508,12 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Tämä video on jo tallennettu katsoaksesi myöhemmin -soittolistalle</string>
   <string name="morphe_save_to_watch_later_error_toast">Tätä videota ei voi tallentaa katsoaksesi myöhemmin -soittolistalle</string>
   <string name="morphe_save_to_watch_later_flyout_title">Tallenna myöhemmin katsottavaksi</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Näytä Tallenna myöhemmin -painike soittimen asetusten ponnahdusvalikossa</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Sallii parhaillaan katsottavan videon tallentamisen \'Katso myöhemmin\' -luetteloon videoasetusten ponnahdusvalikosta</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Näytä Tallenna myöhemmin katsottavaksi -painike lasten tilassa</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Sallii lasten videoiden tallentamisen Katso myöhemmin -valikkoon</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Sallii lapsiin liittyvien videoiden tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Näytä Tallenna myöhemmin -painike Shortsit-ponnahdusvalikossa</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Sallii Shortsien tallentamisen \'Katso myöhemmin\' -luetteloon ponnahdusvalikosta</string>
   <string name="morphe_queue_flyout_title">Lisää Morphe-jonoon</string>
   <string name="morphe_queue_restore_title">Pidä jono käytössä istuntojen välillä</string>
   <string name="morphe_queue_restore_summary">Jono säilyy sovelluksen uudelleenkäynnistyksen jälkeen</string>
@@ -911,6 +921,9 @@ Asetukset → Toisto (tai Automaattinen toisto) → Toista seuraava video"</stri
   <string name="morphe_exit_fullscreen_entry_2">Pysty</string>
   <string name="morphe_exit_fullscreen_entry_3">Vaaka</string>
   <string name="morphe_exit_fullscreen_entry_4">Pysty ja vaaka</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Pakota vaakasuunta koko näytön tilassa</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Käännä soitin vaakasuuntaan, kun siirryt koko näyttötilaan. Ei käytettävissä pienillä näytöillä, joilla koko näyttö avautuu jo vaakasuunnassa.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Koko näytön eleet</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Soittimen eleet koko näytön tilassa</string>
@@ -1258,6 +1271,7 @@ AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ei AV1-videokoodekkia</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiivinen tila ei ole käytettävissä</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Tasainen äänenvoimakkuus ei ole käytettävissä</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Toisto voi päättyä 1 sekunnin etuajassa</string>
   <string name="morphe_spoof_video_streams_about_js">• Jos deobfuskointi epäonnistuu, toistaminen saattaa epäonnistua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Pakota alkuperäinen ääni ei ole käytettävissä</string>

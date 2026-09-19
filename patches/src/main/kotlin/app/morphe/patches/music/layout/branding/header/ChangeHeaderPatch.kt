@@ -10,12 +10,11 @@ package app.morphe.patches.music.layout.branding.header
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.getResourceId
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
 import app.morphe.util.forEachLiteralValueInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -38,11 +37,9 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/ChangeHeaderPatch;"
 
 private val changeHeaderBytecodePatch = bytecodePatch {
-    dependsOn(resourceMappingPatch)
-
     execute {
         headerDrawableNames.forEach { drawableName ->
-            val drawableId = getResourceId(ResourceType.DRAWABLE, drawableName)
+            val drawableId = resourceId(ResourceType.DRAWABLE, drawableName)
 
             forEachLiteralValueInstruction(drawableId) { literalIndex ->
                 val register = getInstruction<OneRegisterInstruction>(literalIndex).registerA

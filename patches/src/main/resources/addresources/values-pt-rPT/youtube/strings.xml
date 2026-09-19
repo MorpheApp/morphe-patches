@@ -381,6 +381,12 @@ As denúncias são públicas e são analisadas antes de um canal ser adicionado 
   <string name="morphe_channel_whitelist_channel_added">Canal adicionado à lista de permissões</string>
   <string name="morphe_channel_whitelist_channel_removed">Canal removido da lista de permissões</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Pesquisar no canal</string>
+  <string name="morphe_channel_search_summary">Ao pesquisar com um canal aberto, a pesquisa é feita somente nesse canal.</string>
+  <string name="morphe_channel_search_results">Resultados da pesquisa de canais</string>
+  <string name="morphe_channel_search_no_results">Nada encontrado neste canal</string>
+  <string name="morphe_channel_search_failed">Não foi possível pesquisar neste canal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiado para a área de transferência</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link com timestamp copiado para a área de transferência</string>
@@ -502,8 +508,12 @@ Informação: Pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Este vídeo já está salvo na playlist Assistir depois</string>
   <string name="morphe_save_to_watch_later_error_toast">Não foi possível salvar este vídeo na playlist Assistir depois</string>
   <string name="morphe_save_to_watch_later_flyout_title">Salvar em Assistir mais tarde</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Mostrar o botão Salvar em \'Assistir mais tarde\' no menu de configurações do player.</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Permite salvar o vídeo que você está assistindo em \'Assistir mais tarde\' pelo menu de configurações do vídeo.</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar botão Salvar em Assistir mais tarde em vídeos infantis</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite salvar vídeos relacionados a crianças no menu \'Assistir mais tarde\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite salvar vídeos relacionados a crianças em \'Assistir mais tarde\' pelo menu.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostrar o botão Salvar em \'Assistir mais tarde\' no menu de Shorts.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite salvar Shorts em \'Assistir mais tarde\' pelo menu.</string>
   <string name="morphe_queue_flyout_title">Adicionar à fila do Morphe</string>
   <string name="morphe_queue_restore_title">Manter fila entre as sessões</string>
   <string name="morphe_queue_restore_summary">A fila é mantida após reiniciar o aplicativo</string>
@@ -911,6 +921,9 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_exit_fullscreen_entry_2">Apenas retrato</string>
   <string name="morphe_exit_fullscreen_entry_3">Apenas paisagem</string>
   <string name="morphe_exit_fullscreen_entry_4">Retrato e paisagem</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Forçar o modo paisagem em tela cheia</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Girar o player para o modo paisagem ao entrar em tela cheia. Indisponível em telas pequenas, que já abrem em tela cheia no modo paisagem.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gestos de tela cheia</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gestos do player em modo de ecrã inteiro</string>
@@ -1258,6 +1271,7 @@ A reprodução de vídeo com AV1 pode apresentar soluços ou perder quadros."</s
   <string name="morphe_spoof_video_streams_about_no_av1">• Nenhum codec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modo imersivo 360° VR não está disponível</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• O volume estável não está disponível</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• A reprodução pode terminar 1 segundo mais cedo</string>
   <string name="morphe_spoof_video_streams_about_js">• Se a desobfuscação falhar, a reprodução também pode falhar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forçar áudio original não está disponível</string>

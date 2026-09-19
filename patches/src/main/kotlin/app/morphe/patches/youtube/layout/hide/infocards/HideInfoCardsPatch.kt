@@ -6,7 +6,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -30,7 +29,6 @@ val hideInfoCardsPatch = bytecodePatch(
         sharedExtensionPatch,
         lithoFilterPatch,
         settingsPatch,
-        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

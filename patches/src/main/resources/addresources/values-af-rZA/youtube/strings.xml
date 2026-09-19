@@ -381,6 +381,12 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <string name="morphe_channel_whitelist_channel_added">Kanaal by witlys gevoeg</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanaal van witlys verwyder</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Soek binne die kanaal</string>
+  <string name="morphe_channel_search_summary">Wanneer jy soek terwyl \'n kanaal oop is, word slegs daardie kanaal deursoek</string>
+  <string name="morphe_channel_search_results">Kanaalsoekresultate</string>
+  <string name="morphe_channel_search_no_results">Niks op hierdie kanaal gevind nie</string>
+  <string name="morphe_channel_search_failed">Kon nie hierdie kanaal deursoek nie</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Skakel na knipbord gekopieer</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Skakel met tydstempel na knipbord gekopieer</string>
@@ -502,8 +508,12 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Hierdie video is reeds in spaar om later te kyk snitlys gestoor</string>
   <string name="morphe_save_to_watch_later_error_toast">Kan hierdie video nie in spaar om later te kyk snitlys stoor nie</string>
   <string name="morphe_save_to_watch_later_flyout_title">Stoor na Kyk later</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Wys die \'Stoor na Kyk later\'-knoppie in die spelerinstellingskieslys</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Dit laat jou toe om die video wat jy tans kyk, vanuit die video-instellingskieslys na \'Kyk later\' te stoor.</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Wys Stoor na Kyk later-knoppie in kindervideo\'s</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Laat toe om kinder-verwante video\'s in die \'Watch\'-keuselys te stoor</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Dit laat jou toe om kinderverwante video\'s vanuit die kieslys na \'Kyk later\' te stoor.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Wys die \'Stoor na Kyk later\'-knoppie in die kortvideokieslys</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Dit laat jou toe om kortvideo\'s vanuit die kieslys na \'Kyk later\' te stoor.</string>
   <string name="morphe_queue_flyout_title">Voeg by Morphe-tou</string>
   <string name="morphe_queue_restore_title">Behou tou tussen sessies</string>
   <string name="morphe_queue_restore_summary">Tou word behou na die herbegin van die app</string>
@@ -911,6 +921,9 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <string name="morphe_exit_fullscreen_entry_2">Portretmodus slegs</string>
   <string name="morphe_exit_fullscreen_entry_3">Landskapmodus slegs</string>
   <string name="morphe_exit_fullscreen_entry_4">Portret en landskap</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Dwing landskapmodus in volskerm</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Roteer die speler na landskap wanneer jy volskerm binnegaan. Onbeskikbaar op klein skerms, wat reeds in landskap volskerm oopmaak</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Volskerm gebare</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Spelergebare in volskermmodus</string>
@@ -1258,6 +1271,7 @@ Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR meeslepende modus is nie beskikbaar nie</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile volume is nie beskikbaar nie</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Terugspeel kan 1 sekonde vroeg eindig</string>
   <string name="morphe_spoof_video_streams_about_js">• Indien ontmeng misluk, kan speel misluk</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forceer oorspronklike klank is nie beskikbaar nie</string>

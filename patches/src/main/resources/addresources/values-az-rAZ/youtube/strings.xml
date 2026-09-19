@@ -381,6 +381,11 @@ AiSlopList.com 'u açmaq və digər platformalar üçün yükləmələri görmə
   <string name="morphe_channel_whitelist_channel_added">Kanal ağ siyahıya əlavə olundu</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal ağ siyahıdan silindi</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Kanal daxilində axtar</string>
+  <string name="morphe_channel_search_summary">Kanal açıq olarkən axtarış etmək yalnız həmin kanalı axtarır</string>
+  <string name="morphe_channel_search_no_results">Bu kanalda heç nə tapılmadı</string>
+  <string name="morphe_channel_search_failed">Bu kanalda axtarış etmək olmadı</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link buferə köçürüldü</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Vaxt möhürü olan link buferə köçürüldü</string>
@@ -502,8 +507,12 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Bu video artıq sonra izləyin pleylistində saxlanılıb</string>
   <string name="morphe_save_to_watch_later_error_toast">Bu videonu sonra izləyin pleylistində saxlamaq olmur</string>
   <string name="morphe_save_to_watch_later_flyout_title">Daha sonra izləmək üçün saxla</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Oynadıcının tənzimləmələr menyusunda \"Daha sonra İzləmək üçün Saxla\" düyməsini göstər</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Video tənzimləmələri menyusundan cari izlənilən videonu \"Sonra izləyində\" saxlamağa imkan verir</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Uşaq videolarında Daha sonra İzləmək üçün Saxlanı göstər</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Uşaqlarla əlaqəli videoları \"Sonra izləyin\" açılan menyusunda saxlamağa imkan verir</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Uşaqlarla əlaqəli videoları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts açılan menyusunda \"Daha sonra İzləmək üçün Saxla\" düyməsini göstər</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Shorts-ları açılan menyudan \"Sonra izləyin\" bölməsində saxlamağa imkan verir</string>
   <string name="morphe_queue_flyout_title">Morphe növbəsinə əlavə et</string>
   <string name="morphe_queue_restore_title">​Sessiyalar arasında növbəni qoru</string>
   <string name="morphe_queue_restore_summary">Tətbiq yenidən başladıldıqdan sonra növbə qorunur</string>
@@ -911,6 +920,9 @@ Ayarlar→ Oxunuş (və ya Avtomatik oxunuş) → Növbəti videonu avtomatik ox
   <string name="morphe_exit_fullscreen_entry_2">Yalnız portret</string>
   <string name="morphe_exit_fullscreen_entry_3">Yalnız landşaft</string>
   <string name="morphe_exit_fullscreen_entry_4">Portret və landşaft</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Tam ekranda məcburi landşaft rejimini aktivləşdir</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Tam ekrana keçdikdə oynadıcını landşaft rejiminə fırlat. Kiçik ekranlarda əlçatmazdır, çünki onlar artıq tam ekranı landşaft rejimində açır</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Tam ekran jestləri</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Tam ekran rejimində oynadıcı jestləri</string>
@@ -1258,6 +1270,7 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodlayıcı yoxdur</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR geniş rejimi əlçatan deyil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit səs səviyyəsi yoxdur</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Oynatma 1 saniyə tez bitə bilər</string>
   <string name="morphe_spoof_video_streams_about_js">• Deobfuscation pozularsa, oynatma uğursuz ola bilər</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal səsi zorla əlçatan deyil</string>

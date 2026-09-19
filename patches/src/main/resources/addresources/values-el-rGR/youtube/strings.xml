@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Το κανάλι προστέθηκε στη λίστα επιτρεπόμενων</string>
   <string name="morphe_channel_whitelist_channel_removed">Το κανάλι αφαιρέθηκε από τη λίστα επιτρεπόμενων</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Αναζήτηση στο κανάλι</string>
+  <string name="morphe_channel_search_summary">Όταν ένα κανάλι είναι ανοιχτό, η αναζήτηση πραγματοποιείται μόνο σε αυτό το κανάλι</string>
+  <string name="morphe_channel_search_results">Αποτελέσματα αναζήτησης καναλιών</string>
+  <string name="morphe_channel_search_no_results">Δεν βρέθηκαν αποτελέσματα σε αυτό το κανάλι</string>
+  <string name="morphe_channel_search_failed">Δεν ήταν δυνατή η αναζήτηση σε αυτό το κανάλι</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Η διεύθυνση URL με χρονοσήμανση αντιγράφηκε στο πρόχειρο</string>
@@ -502,8 +508,12 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Αυτό το βίντεο είναι ήδη αποθηκευμένο στη λίστα παρακολούθησης αργότερα</string>
   <string name="morphe_save_to_watch_later_error_toast">Δεν είναι δυνατή η αποθήκευση αυτού του βίντεο στη λίστα παρακολούθησης αργότερα</string>
   <string name="morphe_save_to_watch_later_flyout_title">Αποθήκευση στην Παρακολούθηση αργότερα</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Εμφάνιση του κουμπιού «Αποθήκευση για παρακολούθηση αργότερα» στο αναδυόμενο μενού ρυθμίσεων του προγράμματος αναπαραγωγής</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Επιτρέπει την αποθήκευση του βίντεο που παρακολουθείτε αυτήν τη στιγμή στη λίστα «Παρακολούθηση αργότερα» από το αναδυόμενο μενού ρυθμίσεων βίντεο</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Εμφάνιση κουμπιού \'Αποθήκευση για αργότερα\' σε παιδικά βίντεο</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Επιτρέπει την αποθήκευση βίντεο που σχετίζονται με παιδιά στο αναδυόμενο μενού \'Παρακολούθηση αργότερα\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Επιτρέπει την αποθήκευση βίντεο που αφορούν παιδιά στη λίστα «Παρακολούθηση αργότερα» από το αναδυόμενο μενού</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Εμφάνιση του κουμπιού «Αποθήκευση για παρακολούθηση αργότερα» στο αναδυόμενο μενού των Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Επιτρέπει την αποθήκευση των Shorts στη λίστα «Παρακολούθηση αργότερα» από το αναδυόμενο μενού</string>
   <string name="morphe_queue_flyout_title">Προσθήκη στην ουρά Morphe</string>
   <string name="morphe_queue_restore_title">Διατήρηση ουράς μεταξύ των περιόδων σύνδεσης</string>
   <string name="morphe_queue_restore_summary">Η ουρά διατηρείται μετά την επανεκκίνηση της εφαρμογής</string>
@@ -911,6 +921,9 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_2">Μόνο κάθετη</string>
   <string name="morphe_exit_fullscreen_entry_3">Μόνο οριζόντια</string>
   <string name="morphe_exit_fullscreen_entry_4">Κατακόρυφη και οριζόντια</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Υποχρεωτικός οριζόντιος προσανατολισμός σε πλήρη οθόνη</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Περιστρέφει το πρόγραμμα αναπαραγωγής σε οριζόντιο προσανατολισμό κατά την είσοδο σε πλήρη οθόνη. Μη διαθέσιμο σε μικρές οθόνες, οι οποίες ανοίγουν ήδη σε πλήρη οθόνη σε οριζόντιο προσανατολισμό.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Ζητήματα πλήρους οθόνης</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Χειρονομίες προγράμματος αναπαραγωγής σε πλήρη οθόνη</string>
@@ -1243,6 +1256,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Δεν υπάρχει ο κωδικοποιητής βίντεο AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Η 360° VR βιωματική λειτουργία δεν είναι διαθέσιμη</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Η λειτουργία «Σταθερή ένταση» δεν είναι διαθέσιμη</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Η αναπαραγωγή ενδέχεται να τελειώσει 1 δευτερόλεπτο νωρίτερα</string>
   <string name="morphe_spoof_video_streams_about_js">• Εάν η αποπερικοπή αποτύχει, η αναπαραγωγή μπορεί να αποτύχει</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ο εξαναγκασμός αρχικής γλώσσας ήχου δεν είναι διαθέσιμος</string>

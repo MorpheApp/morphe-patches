@@ -25,7 +25,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_04_general_title">Genel</string>
   <string name="morphe_settings_screen_05_player_title">Oynatıcı</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
-  <string name="morphe_settings_screen_07_seekbar_title">Zaman çubuğu</string>
+  <string name="morphe_settings_screen_07_seekbar_title">İlerleme çubuğu</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kaydırma denetimleri</string>
   <string name="morphe_settings_screen_11_misc_title">Çeşitli</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
@@ -381,6 +381,12 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_channel_whitelist_channel_added">Kanal beyaz listeye eklendi</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal beyaz listeden kaldırıldı</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Kanalda ara</string>
+  <string name="morphe_channel_search_summary">Bir kanal açıkken yapılan aramalar yalnızca o kanalı kapsar</string>
+  <string name="morphe_channel_search_results">Kanal arama sonuçları</string>
+  <string name="morphe_channel_search_no_results">Bu kanalda sonuç bulunamadı</string>
+  <string name="morphe_channel_search_failed">Bu kanalda arama yapılamadı</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Bağlantı panoya kopyalandı</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Zaman damgasıyla birlikte bağlantı panoya kopyalandı</string>
@@ -502,8 +508,12 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Bu video daha sonra izle listesinde zaten kayıtlı</string>
   <string name="morphe_save_to_watch_later_error_toast">Bu video daha sonra izle listesine kaydedilemiyor</string>
   <string name="morphe_save_to_watch_later_flyout_title">Daha sonra izle</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Oynatıcı ayarları açılır menüsünde “Daha sonra İzle” butonunu göster</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Video ayarları açılır menüsünden o anda izlenmekte olan videoyu “Daha sonra izle” bölümüne kaydetmeye olanak tanır</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Çocuk videolarında daha sonra izle düğmesini göster</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Çocuklarla ilgili videoları \'Daha Sonra İzle\' açılır menüsünde kaydetmeye izin verir</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Açılır menüden çocuklarla ilgili videoları “Daha sonra izle” bölümüne kaydetmeye olanak tanır</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">“Daha sonra izle” butonunu shorts açılır menüsünde göster</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Açılır menüden shorts videolarını “Daha sonra izle” bölümüne kaydetmeye olanak tanır</string>
   <string name="morphe_queue_flyout_title">Morphe sırasına ekle</string>
   <string name="morphe_queue_restore_title">Sırayı oturumlar arasında koru</string>
   <string name="morphe_queue_restore_summary">Uygulama yeniden başlatıldığında sıra korunur</string>
@@ -547,12 +557,12 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Kanal avatarına dokunulduğunda canlı yayının açılmasını engeller</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
-  <string name="morphe_disable_precise_seeking_gesture_summary">Zaman çubuğunu yukarı çektiğinizde etkinleşen hassas kaydırma modunu devre dışı bırakır</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary">İlerleme çubuğu yukarı kaydırıldığında etkinleşen hassas sarma modunu devre dışı bırakır</string>
   <!-- interaction.seekbar.liveStreamDVRPatch -->
   <string name="morphe_live_stream_dvr_title">Canlı yayın DVR özelliğini etkinleştir</string>
   <string name="morphe_live_stream_dvr_summary">Normalde buna izin vermeyenler de dahil olmak üzere tüm canlı yayınlarda oynatma konumunu değiştirmeyi sağlar.</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
-  <string name="morphe_seekbar_thumbnail_preview_title">Zaman çubuğu küçük resimlerini etkinleştir</string>
+  <string name="morphe_seekbar_thumbnail_preview_title">İlerleme çubuğu küçük resimlerini etkinleştir</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Arama çubuğunu sürüklerken video küçük resmini gösterir</string>
   <string name="morphe_seekbar_thumbnail_heatmap_peak_point">En çok tekrar oynatılan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
@@ -570,7 +580,7 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_slide_to_seek_summary">Video oynatıcıya basılı tutulduğunda 2x hızda oynatmak yerine kaydırarak sardırmayı etkinleştirir</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">Dokunarak sardırmayı etkinleştir</string>
-  <string name="morphe_tap_to_seek_summary">Sürüklemeden o konuma atlamak için zaman çubuğuna dokunun</string>
+  <string name="morphe_tap_to_seek_summary">Sürüklemeye gerek kalmadan, yalnızca ilerleme çubuğuna dokunarak o konuma atlayın</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Sola kaydırma hareketi</string>
   <string name="morphe_swipe_right_zone_title">Sağa kaydırma hareketi</string>
@@ -830,10 +840,10 @@ Ayarlara erişmek için, Genel → Araç Çubuğu → Ayarları Göster yoluyla 
   <string name="morphe_disable_rolling_number_animations_title">Kayan sayı animasyonlarını devre dışı bırak</string>
   <string name="morphe_disable_rolling_number_animations_summary">Beğeni ve görüntüleme sayıları üzerindeki sayım animasyonunu durdurur</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
-  <string name="morphe_hide_seekbar_title">Video oynatıcısı zaman çubuğunu gizle</string>
-  <string name="morphe_hide_seekbar_thumbnail_title">Video kapak fotoğrafı zaman çubuğunu gizle</string>
+  <string name="morphe_hide_seekbar_title">Video oynatıcısı ilerleme çubuğunu gizle</string>
+  <string name="morphe_hide_seekbar_thumbnail_title">Video kapak fotoğrafı ilerleme çubuğunu gizle</string>
   <string name="morphe_hide_seekbar_thumbnail_summary">Daha önce izlediğiniz videoların kapak resimlerinde gösterilen izleme ilerleme çubuğunu gizler</string>
-  <string name="morphe_fullscreen_large_seekbar_title">Tam ekran büyük zaman çubuğunu etkinleştir</string>
+  <string name="morphe_fullscreen_large_seekbar_title">Tam ekranda büyük ilerleme çubuğunu etkinleştir</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_hide_shorts_category_title">Shorts\'u gizle</string>
   <string name="morphe_hide_shorts_channel_title">Kanal sayfasında gizle</string>
@@ -911,6 +921,9 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_exit_fullscreen_entry_2">Sadece dikey mod</string>
   <string name="morphe_exit_fullscreen_entry_3">Sadece yatay mod</string>
   <string name="morphe_exit_fullscreen_entry_4">Dikey ve yatay</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Tam ekranda yatay modu zorla</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Tam ekrana geçerken oynatıcıyı yatay moda döndür. Küçük ekranlarda kullanılamaz; bu ekranlar zaten tam ekranı yatay modda açar</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Tam ekran hareketleri</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Tam ekran modunda oynatıcı hareketleri</string>
@@ -1081,12 +1094,12 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Tek renk</string>
-  <string name="morphe_seekbar_custom_color_title">Özel zaman çubuğu rengini etkinleştir</string>
-  <string name="morphe_seekbar_custom_color_primary_title">Zaman çubuğu rengi</string>
+  <string name="morphe_seekbar_custom_color_title">Özel ilerleme çubuğu rengini etkinleştir</string>
+  <string name="morphe_seekbar_custom_color_primary_title">İlerleme çubuğu rengi</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Video ilerleme çubuğunun birincil rengini ayarlayın</string>
-  <string name="morphe_seekbar_custom_color_accent_title">Zaman çubuğu vurgu rengi</string>
+  <string name="morphe_seekbar_custom_color_accent_title">İlerleme çubuğu vurgu rengi</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Video ilerleme çubuğunun ikincil rengini ayarlayın</string>
-  <string name="morphe_seekbar_custom_color_invalid">Geçersiz zaman çubuğu renk değeri</string>
+  <string name="morphe_seekbar_custom_color_invalid">İlerleme çubuğu renk değeri geçersiz</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Başlık logosu</string>
@@ -1151,8 +1164,8 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_notification_media_screen_summary">Kilit ekranınızda ve bildirim panelinizde görünen oynatma kontrollerini özelleştirin</string>
   <string name="morphe_hide_notification_media_prev_next_title">Önceki &amp; Sonraki butonlarını gizle</string>
   <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerinde Önceki ve Sonraki düğmelerini gizler</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Zaman çubuğunu devre dışı bırak</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki zaman çubuğunu sürüklemeyi engeller</string>
+  <string name="morphe_disable_notification_media_seekbar_title">İlerleme çubuğunu devre dışı bırak</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki ilerleme çubuğunu sürüklemeyi engeller</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1258,6 +1271,7 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit ses mevcut değil</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Oynatma 1 saniye erken sona erebilir</string>
   <string name="morphe_spoof_video_streams_about_js">• Eşleştirme başarısız olursa oynatma da başarısız olabilir</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Orijinal sesi zorlama mevcut değil</string>

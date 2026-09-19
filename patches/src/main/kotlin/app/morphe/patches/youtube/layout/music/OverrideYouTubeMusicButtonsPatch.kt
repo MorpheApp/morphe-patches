@@ -30,15 +30,24 @@ private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
 
     execute {
         val manifestFile = get("AndroidManifest.xml")
-        var manifestContent = manifestFile.readText()
-        val permissionTag = "<uses-permission android:name=\"android.permission.QUERY_ALL_PACKAGES\"/>"
+        val manifestContent = manifestFile.readText()
 
-        if (!manifestContent.contains(permissionTag)) {
-            manifestContent = manifestContent.replace(
-                "<application",
-                "$permissionTag\n    <application"
+        // Only launchable apps are needed here, and QUERY_ALL_PACKAGES additionally exposes
+        // OEM media route providers whose route descriptors crash the app when unmarshalled.
+        val queryTag = "<intent><action android:name=\"android.intent.action.MAIN\"/>" +
+                "<category android:name=\"android.intent.category.LAUNCHER\"/></intent>"
+
+        if (!manifestContent.contains(queryTag)) {
+            manifestFile.writeText(
+                if (manifestContent.contains("</queries>")) {
+                    manifestContent.replace("</queries>", "$queryTag</queries>")
+                } else {
+                    manifestContent.replace(
+                        "<application",
+                        "<queries>$queryTag</queries>\n    <application"
+                    )
+                }
             )
-            manifestFile.writeText(manifestContent)
         }
     }
 }

@@ -381,6 +381,12 @@ Prijave su javne i pregledaju se pre nego što kanal bude dodat na listu. Uklanj
   <string name="morphe_channel_whitelist_channel_added">Kanal je dodan na listu dozvoljenih kanala</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal je uklonjen sa liste dozvoljenih kanala</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Pretraga unutar kanala</string>
+  <string name="morphe_channel_search_summary">Dok je kanal otvoren, pretraga se ograničava na taj kanal</string>
+  <string name="morphe_channel_search_results">Rezultati pretrage kanala</string>
+  <string name="morphe_channel_search_no_results">Ništa nije pronađeno na ovom kanalu</string>
+  <string name="morphe_channel_search_failed">Pretraga ovog kanala nije uspela</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link kopiran u privremenu memoriju</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link sa vremenskom oznakom kopiran u privremenu memoriju</string>
@@ -502,8 +508,12 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ovaj video je već sačuvan na listi za gledanje kasnije</string>
   <string name="morphe_save_to_watch_later_error_toast">Nije moguće sačuvati ovaj video na listi za gledanje kasnije</string>
   <string name="morphe_save_to_watch_later_flyout_title">Sačuvaj za kasnije</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Prikaži dugme „Sačuvaj u listu Pogledaj kasnije“ u iskačućem meniju podešavanja plejera.</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Omogućava čuvanje trenutno gledanog videa u listu \'Pogledaj kasnije\' iz menija sa podešavanjima videa.</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Prikaži dugme Sačuvaj za kasnije u dečjim video snimcima</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Omogućava čuvanje dečijih video snimaka u \'Pogledaj kasnije\' meniju</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Omogućava čuvanje video snimaka povezanih sa decom u listi „Pogledaj kasnije“ iz menija koji se otvara.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Prikaži dugme Sačuvaj u listu „Pogledaj kasnije“ u meniju Shortsa.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Omogućava čuvanje Shortsa u listi „Pogledaj kasnije“ iz menija koji se otvara.</string>
   <string name="morphe_queue_flyout_title">Dodaj u Morphe red</string>
   <string name="morphe_queue_restore_title">Zadrži red čekanja između sesija</string>
   <string name="morphe_queue_restore_summary">Red čekanja je sačuvan nakon ponovnog pokretanja aplikacije</string>
@@ -911,6 +921,9 @@ Postavke → Reprodukcija (ili Automatsko puštanje) → Automatski pusti slede�
   <string name="morphe_exit_fullscreen_entry_2">Portretni režim</string>
   <string name="morphe_exit_fullscreen_entry_3">Pejzažni režim</string>
   <string name="morphe_exit_fullscreen_entry_4">Uspravno i vodoravno</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Prisili pejzažni prikaz u režimu preko celog ekrana</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Rotiraj plejer u pejzažni prikaz pri ulasku u režim preko celog ekrana. Nije dostupno na malim ekranima, koji se već otvaraju preko celog ekrana u pejzažnom prikazu</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gestovi punog ekrana</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Pokreti plejera u režimu preko celog ekrana</string>
@@ -1258,6 +1271,7 @@ Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema video kodeka AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Opcija „Ujednačena jačina zvuka” nije dostupna</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Reprodukcija se može završiti 1 sekund ranije</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako deobfuskacija ne uspeva, reprodukcija može neuspeti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Prisiljavanje originalnog zvuka nije dostupno</string>

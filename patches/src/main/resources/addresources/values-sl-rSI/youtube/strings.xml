@@ -381,6 +381,12 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_channel_whitelist_channel_added">Kanal je bil dodan na belo listo</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal je bil odstranjen z bele liste</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Iskanje v kanalu</string>
+  <string name="morphe_channel_search_summary">Ko je kanal odprt, iskanje poteka samo po tem kanalu.</string>
+  <string name="morphe_channel_search_results">Rezultati iskanja kanalov</string>
+  <string name="morphe_channel_search_no_results">Na tem kanalu ni najdenih rezultatov.</string>
+  <string name="morphe_channel_search_failed">Iskanje po tem kanalu ni uspelo.</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Povezava kopirana v odložišče</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Povezava s časovnim žigom kopirana v odložišče</string>
@@ -502,8 +508,12 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ta video je že shranjen na seznam za kasnejši ogled</string>
   <string name="morphe_save_to_watch_later_error_toast">Težava pri shranjevanju videoposnetka na seznam za kasnejši ogled</string>
   <string name="morphe_save_to_watch_later_flyout_title">Shrani za pozneje</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Prikaži gumb Shrani v Ogled pozneje v pojavnem meniju nastavitev predvajalnika</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Omogoča shranjevanje trenutno gledanega videoposnetka v \'Ogled pozneje\' iz pojavnega menija nastavitev videoposnetka</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Prikaži gumb Shrani za pozneje v otroških videoposnetkih</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Omogoča shranjevanje videoposnetkov, povezanih z otroki, v meniju \'Watch later\'.</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Omogoča shranjevanje videoposnetkov za otroke v \'Ogled pozneje\' iz pojavnega menija</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Prikaži gumb Shrani v Ogled pozneje v pojavnem meniju Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Omogoča shranjevanje kratkih videoposnetkov v \'Ogled pozneje\' iz pojavnega menija</string>
   <string name="morphe_queue_flyout_title">Dodaj v Morphe čakalno vrsto</string>
   <string name="morphe_queue_restore_title">Ohranite vrsto med sejami</string>
   <string name="morphe_queue_restore_summary">Vrsta se shrani tudi po ponovnem zagonu aplikacije</string>
@@ -911,6 +921,9 @@ Nastavitve → Predvajanje (ali Samodejno predvajanje) → Samodejno predvajanje
   <string name="morphe_exit_fullscreen_entry_2">Portretni način</string>
   <string name="morphe_exit_fullscreen_entry_3">Ležeči način</string>
   <string name="morphe_exit_fullscreen_entry_4">Portretni in ležeči način</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Vsili ležeči prikaz v celozaslonskem načinu</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Ob vstopu v celozaslonski način zavrti predvajalnik v ležeči položaj. Ni na voljo na majhnih zaslonih, ki se že odprejo v ležečem celozaslonskem načinu.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesture za celozaslonski način</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Poteze predvajalnika v celozaslonskem načinu</string>
@@ -1258,6 +1271,7 @@ Predvajanje AV1 videa se lahko zamika ali izgublja okvirje."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ni kodeka AV1 videa</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR poglobljeni način ni na voljo</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilna glasnost ni na voljo</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Predvajanje se lahko konča 1 sekundo prej</string>
   <string name="morphe_spoof_video_streams_about_js">• Če deobstrukcija ne uspe, lahko predvajanje neuspešno</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Sila izvirnega zvoka ni na voljo</string>

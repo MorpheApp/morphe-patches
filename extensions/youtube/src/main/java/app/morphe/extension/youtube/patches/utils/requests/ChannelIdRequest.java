@@ -7,10 +7,11 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
+import android.util.Pair;
+
 import androidx.annotation.NonNull;
 
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -23,16 +24,16 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
-
 @SuppressWarnings("unused")
 public class ChannelIdRequest {
-    private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 5 * 1000;
-    private final Future<String> future;
+    // Must be less than 5 seconds to ensure Android "App not responding" dialog does not show.
+    private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 3 * 1000;
+    private final Future<Pair<String, String>> future;
 
     private static final Map<String, ChannelIdRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
@@ -47,10 +48,10 @@ public class ChannelIdRequest {
     }
 
     @Nullable
-    public String getChannelId() {
+    public Pair<String, String> getChannelInfo() {
         try {
             if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: Blocking main thread");
+                Logger.printDebug(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
@@ -76,11 +77,13 @@ public class ChannelIdRequest {
     }
 
     @Nullable
-    private static String parseResponse(JSONObject json) {
-        try {
-            return json.getJSONObject("videoDetails").getString("channelId");
-        } catch (JSONException e) {
-            Logger.printDebug(() -> "parseResponse failed: " + json, e);
+    private static Pair<String, String> parseResponse(JSONObject json) {
+        JSONObject videoDetails = json.optJSONObject("videoDetails");
+        if (videoDetails != null) {
+            return new Pair<>(
+                    videoDetails.optString("author", ""),
+                    videoDetails.optString("channelId", "")
+            );
         }
 
         return null;
@@ -116,7 +119,7 @@ public class ChannelIdRequest {
     }
 
     @Nullable
-    private static String fetch(String videoId) {
+    private static Pair<String, String> fetch(String videoId) {
         JSONObject json = sendRequest(videoId);
         if (json != null) {
             return parseResponse(json);

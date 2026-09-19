@@ -381,6 +381,12 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_channel_whitelist_channel_added">Dodano kanał do białej listy</string>
   <string name="morphe_channel_whitelist_channel_removed">Usunięto kanał z białej listy</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Szukaj w kanale</string>
+  <string name="morphe_channel_search_summary">Wyszukiwanie przy otwartym kanale obejmuje wyłącznie ten kanał</string>
+  <string name="morphe_channel_search_results">Wyniki wyszukiwania kanałów</string>
+  <string name="morphe_channel_search_no_results">Nic nie znaleziono na tym kanale</string>
+  <string name="morphe_channel_search_failed">Nie udało się przeszukać tego kanału</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Skopiowano link do schowka</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Skopiowano link z czasem do schowka</string>
@@ -502,8 +508,12 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Film jest już na playliście \"Do obejrzenia\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Nie udało się zapisać na playliście \"Do obejrzenia\"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Zapisz do obejrzenia</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Pokaż przycisk \"Zapisz do obejrzenia\" w menu ustawień odtwarzacza</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Umożliwia zapisywanie aktualnie oglądanego filmu na liście \"Do obejrzenia\" z poziomu menu ustawień filmu</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Pokaż przycisk Zapisz do obejrzenia w filmach dla dzieci</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Pozwala zapisywać filmy dla dzieci w wysuwanym menu \"Do obejrzenia\"</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umożliwia zapisywanie filmów przeznaczonych dla dzieci na liście \"Do obejrzenia\" z poziomu menu</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Pokaż przycisk \"Zapisz do obejrzenia\" w menu Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umożliwia zapisywanie filmów Short na liście \"Do obejrzenia\" z poziomu menu</string>
   <string name="morphe_queue_flyout_title">Dodaj do kolejki Morphe</string>
   <string name="morphe_queue_restore_title">Zachowaj kolejkę po wyjściu</string>
   <string name="morphe_queue_restore_summary">Kolejka nie zniknie po ponownym uruchomieniu aplikacji</string>
@@ -910,6 +920,9 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_exit_fullscreen_entry_2">Tylko w orientacji pionowej</string>
   <string name="morphe_exit_fullscreen_entry_3">Tylko w orientacji poziomej</string>
   <string name="morphe_exit_fullscreen_entry_4">W orientacji pionowej i poziomej</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Wymuś orientację poziomą na pełnym ekranie</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Obraca odtwarzacz do orientacji poziomej po przejściu na pełny ekran. Opcja niedostępna na małych ekranach, które domyślnie otwierają tryb pełnoekranowy w orientacji poziomej</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesty trybu pełnoekranowego</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gesty odtwarzacza w trybie pełnoekranowym</string>
@@ -1070,7 +1083,7 @@ Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_theme_color_light_entry_12">Jasnożółty</string>
   <string name="morphe_theme_color_light_entry_13">Jasnopomarańczowy</string>
   <string name="morphe_theme_color_light_entry_14">Jasnoczerwony</string>
-  <string name="morphe_theme_color_light_custom_title">Niestandardowe jasne tło</string>
+  <string name="morphe_theme_color_light_custom_title">Własne jasne tło</string>
   <string name="morphe_theme_color_light_custom_summary">Ustaw kolor tła dla jasnego motywu</string>
   <string name="morphe_theme_color_change_foreground_title">Zmień kolor pierwszego planu</string>
   <string name="morphe_theme_color_change_foreground_summary">Użyj koloru motywu dla tekstu i ikon</string>
@@ -1080,7 +1093,7 @@ Ograniczenia: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_splash_screen_animation_style_entry_1">Wyłączony</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Kolorowy</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Monochromatyczny</string>
-  <string name="morphe_seekbar_custom_color_title">Włącz niestandardowy kolor paska postępu</string>
+  <string name="morphe_seekbar_custom_color_title">Włącz własny kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_primary_title">Kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Ustaw główny kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_accent_title">Kolor akcentu paska postępu</string>
@@ -1184,12 +1197,12 @@ Dotknij tutaj, aby otworzyć DeArrow.ajay.app"</string>
   <string name="morphe_video_quality_dialog_button_title">Pokaż przycisk Jakość</string>
   <string name="morphe_video_quality_dialog_button_summary">Przytrzymaj, aby zresetować jakość do domyślnej</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
-  <string name="morphe_custom_speed_menu_title">Pokaż menu niestandardowej prędkości</string>
+  <string name="morphe_custom_speed_menu_title">Pokaż własne menu prędkości odtwarzania</string>
   <string name="morphe_restore_old_speed_menu_title">Przywróć stare menu prędkości odtwarzania</string>
-  <string name="morphe_custom_playback_speeds_title">Niestandardowe prędkości odtwarzania</string>
+  <string name="morphe_custom_playback_speeds_title">Własne prędkości odtwarzania</string>
   <string name="morphe_custom_playback_speeds_summary">Wprowadź preferowaną prędkość odtwarzania</string>
-  <string name="morphe_custom_playback_speeds_invalid">Prędkości niestandardowe muszą być mniejsze niż %s</string>
-  <string name="morphe_custom_playback_speeds_parse_exception">Nieprawidłowe niestandardowe prędkości odtwarzania</string>
+  <string name="morphe_custom_playback_speeds_invalid">Własne prędkości odtwarzania muszą być mniejsze niż %s</string>
+  <string name="morphe_custom_playback_speeds_parse_exception">Nieprawidłowe własne prędkości odtwarzania</string>
   <string name="morphe_custom_playback_speeds_auto">Automatyczna</string>
   <string name="morphe_speed_tap_and_hold_title">Prędkość po przytrzymaniu</string>
   <string name="morphe_speed_tap_and_hold_summary">Ustaw mnożnik prędkości podczas przytrzymania ekranu. Wartość 0 wyłącza funkcję</string>
@@ -1257,6 +1270,7 @@ Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie kl
   <string name="morphe_spoof_video_streams_about_no_av1">• Brak kodeka filmu AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Tryb immersyjny 360° VR nie jest dostępny</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilna głośność nie jest dostępna</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Odtwarzanie może zakończyć się sekundę wcześniej</string>
   <string name="morphe_spoof_video_streams_about_js">• Jeśli odszyfrowywanie zawiedzie, odtwarzanie może nie działać</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Wymuszanie oryginalnej ścieżki dźwiękowej nie działa</string>

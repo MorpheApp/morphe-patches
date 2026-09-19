@@ -382,6 +382,12 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_channel_whitelist_channel_added">Kanal zur Whitelist hinzugefügt</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal von der Whitelist entfernt</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Diesen Kanal durchsuchen</string>
+  <string name="morphe_channel_search_summary">Wenn ein Kanal geöffnet ist, wird bei der Suche nur dieser Kanal durchsucht.</string>
+  <string name="morphe_channel_search_results">Kanal-Suchergebnisse</string>
+  <string name="morphe_channel_search_no_results">Auf diesem Kanal wurde nichts gefunden.</string>
+  <string name="morphe_channel_search_failed">Dieser Kanal konnte nicht durchsucht werden.</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link in Zwischenablage kopiert</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link mit Zeitstempel in Zwischenablage kopiert</string>
@@ -503,8 +509,12 @@ Info: Funktioniert möglicherweise nicht bei Livestreams"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Dieses Video ist bereits zur Wiedergabeliste \"Später ansehen\" hinzugefügt</string>
   <string name="morphe_save_to_watch_later_error_toast">Dieses Video kann nicht zur Wiedergabeliste \"Später ansehen\" hinzugefügt werden</string>
   <string name="morphe_save_to_watch_later_flyout_title">Später ansehen</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Schaltfläche zum Speichern in „Später ansehen“ im Flyout der Player-Einstellungen anzeigen</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Ermöglicht das Speichern des aktuell angesehenen Videos in \'Später ansehen\' über das Flyout der Videoeinstellungen</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Schaltfläche \'Später ansehen\' in Kinder-Videos anzeigen</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Ermöglicht das Speichern von kinderbezogenen Videos im Flyout-Menü „Später ansehen“.</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Ermöglicht das Speichern von kinderbezogenen Videos in \'Später ansehen\' über das Flyout-Menü</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zeige die Schaltfläche \'Speichern in Später ansehen\' im Shorts-Flyout</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Ermöglicht das Speichern von Shorts in \'Später ansehen\' über das Flyout-Menü</string>
   <string name="morphe_queue_flyout_title">Zur Morphe-Warteschlange hinzufügen</string>
   <string name="morphe_queue_restore_title">Warteschlange zwischen Sitzungen beibehalten</string>
   <string name="morphe_queue_restore_summary">Warteschlange wird nach Neustart der App beibehalten</string>
@@ -912,6 +922,9 @@ Einstellungen → Wiedergabe (oder Automatische Wiedergabe) → Nächstes Video 
   <string name="morphe_exit_fullscreen_entry_2">Nur Hochformat</string>
   <string name="morphe_exit_fullscreen_entry_3">Nur Querformat</string>
   <string name="morphe_exit_fullscreen_entry_4">Hoch- und Querformat</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Querformat im Vollbildmodus erzwingen</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Dreht den Player beim Wechsel in den Vollbildmodus ins Querformat. Auf kleinen Bildschirmen nicht verfügbar, die den Vollbildmodus bereits im Querformat starten</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesten für Vollbildansicht</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Player-Gesten im Vollbildmodus</string>
@@ -1259,6 +1272,7 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kein AV1-Videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersiver Modus ist nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile Lautstärke ist nicht verfügbar</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Die Wiedergabe endet möglicherweise 1 Sekunde früher.</string>
   <string name="morphe_spoof_video_streams_about_js">• Wenn die Deobfuskation fehlschlägt, kann die Wiedergabe fehlschlagen</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Originalton erzwingen ist nicht verfügbar</string>

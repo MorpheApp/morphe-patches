@@ -8,18 +8,23 @@
 package app.morphe.extension.music.patches;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.facebook.litho.ComponentHost;
-
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 import java.util.Map;
 
+import app.morphe.extension.music.patches.downloads.LocalDownloadManager;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
 
@@ -43,6 +48,10 @@ public final class DownloadsPatch {
 
     private static volatile long lastFlyoutDownloadTime;
     private static volatile long lastMainPlayerDownloadTime;
+    private static volatile long lastLocalDownloadsOpenTime;
+    /** Browse id of the stock offline tab, which the local catalogue replaces. */
+    private static final byte[] OFFLINE_BROWSE_ID =
+            "FEmusic_offline".getBytes(StandardCharsets.US_ASCII);
 
     /**
      * Injection point.
@@ -61,16 +70,58 @@ public final class DownloadsPatch {
         }
     }
 
-    private static void launchExternalDownloader() {
-        launchExternalDownloader(VideoInformation.getVideoId());
+    /**
+     * In app downloads reuse the download button hooks, so the override switch gates both targets.
+     */
+    private static boolean inAppDownloads() {
+        return SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
+                && Settings.IN_APP_DOWNLOADS.get();
     }
 
-    private static void launchExternalDownloader(String videoId) {
+    private static void startDownload() {
+        startDownload(VideoInformation.getVideoId());
+    }
+
+    private static void startDownload(String videoId) {
         cachedFlyoutVideoId = "";
         // Do not clear download button label.
 
+        if (Settings.IN_APP_DOWNLOADS.get()) {
+            LocalDownloadManager.enqueue(videoId);
+            return;
+        }
+
         ExternalDownloaderPreference.launchExternalDownloader(
                 videoId, Utils.getActivity(), "https://music.youtube.com/watch?v=" + videoId);
+    }
+
+    private static void openLocalDownloads() {
+        Activity activity = Utils.getActivity();
+        if (activity == null) return;
+
+        // A single tap on the offline chip resolves its command twice, which would otherwise
+        // stack a second copy of the screen on top of the first.
+        final long now = System.currentTimeMillis();
+        if (now - lastLocalDownloadsOpenTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return;
+        lastLocalDownloadsOpenTime = now;
+        Logger.printDebug(() -> "Offline tab opened, showing the local downloads");
+
+        Intent intent = new Intent();
+        intent.setClassName(activity, "com.google.android.gms.common.api.GoogleApiActivity");
+        intent.setPackage(activity.getPackageName());
+        intent.setData(Uri.parse(BaseActivityHook.MORPHE_DOWNLOADS_INTENT));
+        activity.startActivity(intent);
+    }
+
+    private static boolean isOfflineBrowseCommand(byte[] bytes) {
+        byte[] target = OFFLINE_BROWSE_ID;
+        outer: for (int i = 0; i <= bytes.length - target.length; i++) {
+            for (int j = 0; j < target.length; j++) {
+                if (bytes[i + j] != target[j]) continue outer;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -161,6 +212,47 @@ public final class DownloadsPatch {
     /**
      * Injection point.
      */
+    public static boolean offlineVideoEndpointOnClick(ProtocolBufferFieldInterface endpoint,
+                                                       @Nullable Map<Object, Object> map) {
+        try {
+            if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()) {
+                return false;
+            }
+            Utils.verifyOnMainThread();
+
+            String videoId = endpoint == null ? null : extractVideoIdFromCommand(endpoint);
+            if (videoId == null || videoId.isEmpty()) {
+                videoId = VideoInformation.getVideoId();
+            }
+            if (videoId.isEmpty()) return false;
+
+            long now = System.currentTimeMillis();
+            if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) return true;
+            lastMainPlayerDownloadTime = now;
+            startDownload(videoId);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "offlineVideoEndpointOnClick failure", ex);
+            return false;
+        }
+    }
+
+    /**
+     * The label is the localized download text litho gave us, so no hard coded language is needed.
+     */
+    private static boolean isDownloadSender(@Nullable Map<Object, Object> map) {
+        if (map == null || downloadButtonLabel.isEmpty()
+                || !(map.get(ELEMENTS_SENDER_VIEW) instanceof ViewGroup senderViewGroup)) {
+            return false;
+        }
+        CharSequence description = senderViewGroup.getContentDescription();
+        if (description == null) return false;
+
+        String value = description.toString().toLowerCase(Locale.ROOT);
+        String label = downloadButtonLabel.toLowerCase(Locale.ROOT);
+        return value.contains(label) || label.contains(value);
+    }
+
     public static boolean inAppDownloadButtonOnClick(@Nullable Map<Object, Object> map) {
         try {
             if (!SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
@@ -169,18 +261,15 @@ public final class DownloadsPatch {
             }
             Utils.verifyOnMainThread();
 
-            if (map.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost) {
-                CharSequence contentDescription = componentHost.getContentDescription();
-                if (contentDescription != null && downloadButtonLabel.equals(contentDescription.toString())) {
-                    final long now = System.currentTimeMillis();
-                    if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
-                        return true;
-                    }
-                    lastMainPlayerDownloadTime = now;
-
-                    launchExternalDownloader();
+            if (isDownloadSender(map)) {
+                final long now = System.currentTimeMillis();
+                if (now - lastMainPlayerDownloadTime < IGNORE_DOUBLE_CLICK_DURATION_MS) {
                     return true;
                 }
+                lastMainPlayerDownloadTime = now;
+
+                startDownload();
+                return true;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "inAppDownloadButtonOnClick failure", ex);
@@ -198,6 +287,17 @@ public final class DownloadsPatch {
                 return false;
             }
             Utils.verifyOnMainThread();
+
+            if (inAppDownloads()) {
+                byte[] commandBytes = p1.toByteArray();
+                if (commandBytes != null && isOfflineBrowseCommand(commandBytes)) {
+                    openLocalDownloads();
+                    // The local screen is opened on top of the stock one rather than in place of
+                    // it. Consuming the command instead leaves the app with a navigation it never
+                    // finished, which it replays on the next start and cancels again.
+                    return false;
+                }
+            }
 
             if (inAppDownloadButtonOnClick(map)) {
                 Logger.printDebug(() -> "inAppDownloadButtonOnClicked");
@@ -235,11 +335,11 @@ public final class DownloadsPatch {
                     return false;
                 }
 
-                if (viewObj instanceof ComponentHost componentHost) {
-                    CharSequence cd = componentHost.getContentDescription();
+                if (viewObj instanceof ViewGroup senderViewGroup) {
+                    CharSequence cd = senderViewGroup.getContentDescription();
                     if (cd != null && !downloadButtonLabel.isEmpty()) {
-                        String cdLower = cd.toString().toLowerCase();
-                        String labelLower = downloadButtonLabel.toLowerCase();
+                        String cdLower = cd.toString().toLowerCase(Locale.ROOT);
+                        String labelLower = downloadButtonLabel.toLowerCase(Locale.ROOT);
 
                         if (!cdLower.contains(labelLower) && !labelLower.contains(cdLower)) {
                             Logger.printDebug(() -> "Ignored false positive UI click (Content description mismatch).");
@@ -264,16 +364,23 @@ public final class DownloadsPatch {
 
                 if (targetId != null && !targetId.isEmpty()) {
                     lastFlyoutDownloadTime = now;
-                    launchExternalDownloader(targetId);
+                    final String flyoutId = targetId;
+                    Logger.printDebug(() -> "Flyout download of " + flyoutId
+                            + " inDialog=" + inDialog);
+                    startDownload(targetId);
                     return true;
 
                 } else if (inDialog) {
                     lastFlyoutDownloadTime = now;
+                    // The flyout of a queue row carries no id either, so this can only be
+                    // the track that is playing.
                     Logger.printDebug(() -> "Now Playing Download Intercepted via Window Check.");
-                    launchExternalDownloader();
+                    startDownload();
                     return true;
 
                 } else {
+                    // A download click with no video id is a whole album or playlist, which the
+                    // app only offers with Premium, so the stock UI handles it.
                     Logger.printDebug(() -> "Playlist Download detected via Window Check. Falling back to native UI");
                     return false;
                 }

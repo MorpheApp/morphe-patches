@@ -44,6 +44,8 @@ public class BackgroundPlaybackPatch {
 
     private static boolean receiverRegistered;
 
+    private static boolean pendingAutoPause;
+
     /**
      * Injection point. Called during app initialization via onCreateHook.
      */
@@ -52,14 +54,26 @@ public class BackgroundPlaybackPatch {
             return;
         }
         try {
+            IntentFilter filter = new IntentFilter();
+            filter.addAction(Intent.ACTION_SCREEN_OFF);
+            filter.addAction(Intent.ACTION_SCREEN_ON);
             Utils.getContext().registerReceiver(new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
-                    if (intent != null && Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
-                        handleScreenOff(context);
+                    if (intent != null) {
+                        if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
+                            handleScreenOff(context);
+                        } else if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
+                            pendingAutoPause = false;
+                        }
                     }
                 }
-            }, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+            }, filter);
+
+            VideoState.getOnChange().addObserver(state -> {
+                onVideoStateChanged(state);
+                return kotlin.Unit.INSTANCE;
+            });
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         } finally {
@@ -69,7 +83,7 @@ public class BackgroundPlaybackPatch {
 
     private static void handleScreenOff(Context context) {
         AutoPauseOnLockMode mode = Settings.AUTO_PAUSE_ON_LOCK.get();
-        if (mode == AutoPauseOnLockMode.OFF || VideoState.getCurrent() != VideoState.PLAYING) {
+        if (mode == AutoPauseOnLockMode.OFF) {
             return;
         }
 
@@ -77,11 +91,31 @@ public class BackgroundPlaybackPatch {
             return;
         }
 
+        VideoState currentState = VideoState.getCurrent();
+        if (currentState == VideoState.PLAYING) {
+            sendPause(context);
+        } else {
+            pendingAutoPause = true;
+        }
+    }
+
+    private static void sendPause(Context context) {
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
         if (am != null) {
             final long now = SystemClock.uptimeMillis();
             am.dispatchMediaKeyEvent(new KeyEvent(now, now, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PAUSE, 0));
             am.dispatchMediaKeyEvent(new KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_PAUSE, 0));
+        }
+    }
+
+    private static void onVideoStateChanged(VideoState state) {
+        if (pendingAutoPause) {
+            if (state == VideoState.PLAYING) {
+                pendingAutoPause = false;
+                sendPause(Utils.getContext());
+            } else if (state != VideoState.NEW) {
+                pendingAutoPause = false;
+            }
         }
     }
 

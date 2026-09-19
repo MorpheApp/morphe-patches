@@ -381,6 +381,12 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_channel_whitelist_channel_added">Canale aggiunto alla whitelist</string>
   <string name="morphe_channel_whitelist_channel_removed">Canale rimosso dalla whitelist</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Cerca nel canale</string>
+  <string name="morphe_channel_search_summary">Quando un canale è aperto, la ricerca viene eseguita solo in quel canale</string>
+  <string name="morphe_channel_search_results">Risultati della ricerca dei canali</string>
+  <string name="morphe_channel_search_no_results">Nessun risultato trovato su questo canale</string>
+  <string name="morphe_channel_search_failed">Impossibile cercare in questo canale</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiato negli appunti</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link con indicatore di tempo copiato negli appunti</string>
@@ -400,12 +406,12 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_external_downloader_summary">Mostra un pulsante di overlay sul lettore video per aprire il tuo downloader esterno</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_external_downloader_action_button_title">Sovrascrivi il pulsante azione Download e il menu</string>
-  <string name="morphe_external_downloader_action_button_summary">Utilizza il downloader esterno scelto invece della funzionalità di download integrata di YouTube</string>
+  <string name="morphe_external_downloader_action_button_summary">Utilizza il downloader esterno scelto invece della funzionalità di download integrata</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduzione voice over</string>
   <string name="morphe_vot_screen_summary">Leggi ad alta voce i sottotitoli del video utilizzando la sintesi vocale del dispositivo, sincronizzata con la riproduzione</string>
   <string name="morphe_vot_enabled_title">Traduzione voice over</string>
-  <string name="morphe_vot_enabled_summary">Mostra un pulsante in sovrapposizione nel lettore video. Tocca il toggle per attivare la traduzione, tocca e tieni premuto per impostazioni rapide</string>
+  <string name="morphe_vot_enabled_summary">Mostra un pulsante in sovrapposizione nel lettore video. Tocca l\'interruttore per attivare la traduzione, tocca e tieni premuto per impostazioni rapide</string>
   <string name="morphe_vot_caption_language_title">Lingua</string>
   <string name="morphe_vot_translation_service_title">Fornitore di traduzione</string>
   <string name="morphe_vot_original_audio_volume_title">Volume audio originale</string>
@@ -501,9 +507,13 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video salvato con successo nella playlist \"Guarda più tardi\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Questo video è già stato salvato nella playlist \"Guarda più tardi\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Impossibile salvare questo video nella playlist \"Guardalo più tardi\"</string>
-  <string name="morphe_save_to_watch_later_flyout_title">Salva in Guarda più tardi</string>
+  <string name="morphe_save_to_watch_later_flyout_title">Salva per guardare più tardi</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Mostra il pulsante Salva in Guarda più tardi nel menu a comparsa delle impostazioni del player</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Consente di salvare il video attualmente in riproduzione in \'Guarda più tardi\' dal menu a comparsa delle impostazioni video</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostra il pulsante Salva per guardare più tardi nei video per bambini</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Consente di salvare video correlati ai bambini nel menu a comparsa \"Guarda più tardi\"</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Consente di salvare video per bambini in \'Guarda più tardi\' dal menu a comparsa</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostra il pulsante Salva in Guarda più tardi nel menu a comparsa degli Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Consente di salvare gli Shorts in \'Guarda più tardi\' dal menu a comparsa</string>
   <string name="morphe_queue_flyout_title">Aggiungi alla coda di Morphe</string>
   <string name="morphe_queue_restore_title">Mantieni la coda tra le sessioni</string>
   <string name="morphe_queue_restore_summary">La coda viene mantenuta anche riavviando l\'app</string>
@@ -699,7 +709,7 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_set_caption_cookies_title">Imposta i cookie dei sottotitoli</string>
   <string name="morphe_set_caption_cookies_summary">"Risolve un bug di YouTube in cui i sottotitoli di traduzione automatica potrebbero non essere disponibili a causa della mancanza di cookie.
 
-I 'Cookie dei sottotitoli' devono essere forniti"</string>
+'Cookie dei sottotitoli' devono essere forniti"</string>
   <string name="morphe_caption_cookies_title">Cookie dei sottotitoli</string>
   <string name="morphe_caption_cookies_summary">Cookie da impostare nelle richieste Timed Text API (Caption Data API)</string>
   <string name="morphe_get_caption_cookies_title">Ottieni cookie dei sottotitoli</string>
@@ -911,6 +921,9 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <string name="morphe_exit_fullscreen_entry_2">Solo verticale</string>
   <string name="morphe_exit_fullscreen_entry_3">Solo orizzontale</string>
   <string name="morphe_exit_fullscreen_entry_4">Verticale e orizzontale</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Forza l\'orientamento orizzontale a schermo intero</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Ruota il player in orizzontale quando si passa a schermo intero. Non disponibile su schermi piccoli, che si aprono già a schermo intero in orizzontale.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesti a schermo intero</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gesti del lettore in modalità schermo intero</string>
@@ -942,7 +955,7 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <string name="morphe_searchbar_type_title">Barra di ricerca</string>
   <string name="morphe_searchbar_type_entry_disabled">Disattivato</string>
   <string name="morphe_searchbar_type_entry_wide">Largo</string>
-  <string name="morphe_searchbar_type_entry_extra_wide">Molto larga</string>
+  <string name="morphe_searchbar_type_entry_extra_wide">Extra largo</string>
   <!-- layout.sponsorblock.sponsorBlockPatch -->
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Layout del dispositivo</string>
@@ -981,7 +994,7 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato duranre la condivisione di un contenuto</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Sovrascrivi i pulsanti di YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Apre l\'app musicale preferita anziché l\'app ufficiale di YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Apre l\'app musicale preferita anziché l\'app YouTube Music integrata</string>
   <string name="morphe_custom_music_package_name_title">Nome pacchetto dell\'app musicale</string>
   <string name="morphe_custom_music_package_name_summary">Nome del pacchetto dell\'app musicale installata</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1258,6 +1271,7 @@ La riproduzione video con AV1 potrebbe rallentare o perdere fotogrammi."</string
   <string name="morphe_spoof_video_streams_about_no_av1">• Nessun codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modalità immersiva a 360° VR non disponibile</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Il volume stabile non è disponibile</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• La riproduzione potrebbe terminare 1 secondo prima</string>
   <string name="morphe_spoof_video_streams_about_js">• In caso di fallimento della deobfuscazione, la riproduzione potrebbe fallire</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• L\'audio originale forzato non è disponibile</string>

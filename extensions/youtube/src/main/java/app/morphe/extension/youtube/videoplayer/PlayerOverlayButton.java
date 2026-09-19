@@ -315,14 +315,33 @@ public class PlayerOverlayButton {
                     && sourcePaddingBottom == button.getPaddingBottom())
             ) {
                 //noinspection ExtractMethodRecommender
-                ViewGroup.LayoutParams layoutParams = source.getLayoutParams();
+                ViewGroup.LayoutParams sourceLayoutParams = source.getLayoutParams();
+                ViewGroup.LayoutParams layoutParams;
+
                 if (VersionCheckPatch.IS_21_15_OR_GREATER) {
                     // Fullscreen button has a custom margin layout parameters class
                     // and if used directly causes a broken layout with 21.15+
-                    // if quality and speed button are shown. Older app targets
-                    // must use the original layout otherwise app crashes with a cast exception.
-                    layoutParams = new ViewGroup.MarginLayoutParams(layoutParams);
+                    // if quality and speed button are shown.
+                    layoutParams = new ViewGroup.MarginLayoutParams(sourceLayoutParams);
+                } else {
+                    // Older app versions require the parent's original LayoutParams type.
+                    // Reuse the custom button's own instance instead of sharing the
+                    // fullscreen button's LayoutParams object.
+                    layoutParams = button.getLayoutParams();
+                    layoutParams.width = sourceLayoutParams.width;
+                    layoutParams.height = sourceLayoutParams.height;
+
+                    if (layoutParams instanceof ViewGroup.MarginLayoutParams buttonMargins
+                            && sourceLayoutParams instanceof ViewGroup.MarginLayoutParams sourceMargins) {
+                        buttonMargins.leftMargin = sourceMargins.leftMargin;
+                        buttonMargins.topMargin = sourceMargins.topMargin;
+                        buttonMargins.rightMargin = sourceMargins.rightMargin;
+                        buttonMargins.bottomMargin = sourceMargins.bottomMargin;
+                        buttonMargins.setMarginStart(sourceMargins.getMarginStart());
+                        buttonMargins.setMarginEnd(sourceMargins.getMarginEnd());
+                    }
                 }
+
                 button.setLayoutParams(layoutParams);
                 button.setPadding(
                         sourcePaddingLeft,

@@ -65,6 +65,14 @@ Paket adının doğru olduğundan ve uygulamanın yüklü olduğundan emin olun"
   <string name="morphe_custom_branding_icon_entry_6">Morphe play siyah</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Özel</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Bu ayar, uygulama başlatıcınızda gösterilen simgeyi değiştirir.
+
+Bu ayar aşağıdaki konumlardaki simgeyi değiştirmez:
+• Cihaz sistem ayarlarındaki uygulama listesi
+• Belirli anlık bildirimler
+• 'Birlikte aç' uygulama seçicisi
+• Android Auto simgesi
+Simgeyi her yerde değiştirmek için uygulamayı tekrar yamalayın ve 'Uygulama simgesi' yama seçeneğini değiştirin"</string>
   <string name="morphe_custom_branding_notification_icon_title">Bildirim simgesi</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Uygulama simgesini takip et</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>

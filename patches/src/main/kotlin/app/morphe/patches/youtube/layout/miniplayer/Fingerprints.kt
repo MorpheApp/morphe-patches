@@ -21,8 +21,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -91,8 +91,7 @@ internal object MiniplayerAnimatedExpandFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I"),
     filters = listOf(
-        opcode(opcode = Opcode.CONST_4),
-        opcode(opcode = Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IF_NE),
         opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
         opcode(opcode = Opcode.MOVE, location = MatchAfterWithin(7)),
         opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())

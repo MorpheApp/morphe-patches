@@ -381,6 +381,12 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <string name="morphe_channel_whitelist_channel_added">Kanal lagt til i hvitelisten</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal fjernet fra hvitelisten</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Søk i kanalen</string>
+  <string name="morphe_channel_search_summary">Når en kanal er åpen, begrenses søket bare til den kanalen</string>
+  <string name="morphe_channel_search_results">Søkeresultater for kanalen</string>
+  <string name="morphe_channel_search_no_results">Fant ingenting på denne kanalen</string>
+  <string name="morphe_channel_search_failed">Kunne ikke søke i denne kanalen</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Koblet til utklippstavlen</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Koblet til utklippstavlen med tidsstempel</string>
@@ -502,8 +508,12 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Denne videoen er allerede lagret i Se senere-listen</string>
   <string name="morphe_save_to_watch_later_error_toast">Kunne ikke lagre denne videoen i Se senere-listen</string>
   <string name="morphe_save_to_watch_later_flyout_title">Lagre til Se senere</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Vis «Lagre i Se senere»-knappen i spillerinnstillingsmenyen.</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Lar deg lagre videoen du ser på i «Se senere» fra videoinnstillingsmenyen.</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Vis Lagre til Se senere-knappen i barnevideoer</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Tillater lagring av barnerelaterte videoer i \'Se senere\'-undermenyen</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Lar deg lagre barnerelaterte videoer i «Se senere» fra uttrekksmenyen.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Vis «Lagre i Se senere»-knappen i uttrekksmenyen for Shorts.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Lar deg lagre Shorts i «Se senere» fra uttrekksmenyen.</string>
   <string name="morphe_queue_flyout_title">Legg til i Morphe-kø</string>
   <string name="morphe_queue_restore_title">Behold køen mellom øktene</string>
   <string name="morphe_queue_restore_summary">Køen beholdes etter omstart av appen</string>
@@ -911,6 +921,9 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <string name="morphe_exit_fullscreen_entry_2">Stående format</string>
   <string name="morphe_exit_fullscreen_entry_3">Liggende format</string>
   <string name="morphe_exit_fullscreen_entry_4">Stående og liggende</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Tving landskapsmodus i fullskjerm</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Roter spilleren til landskapsmodus når du går inn i fullskjerm. Ikke tilgjengelig på små skjermer, som allerede åpner fullskjerm i landskapsmodus</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Fullskjermbevegelser</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Avspillerbevegelser i fullskjermmodus</string>
@@ -1256,6 +1269,7 @@ Videospilling med AV1 kan hakke eller miste bilder."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ingen AV1-videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-oppslukende modus er ikke tilgjengelig</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil volum er ikke tilgjengelig</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Avspillingen kan avsluttes 1 sekund for tidlig</string>
   <string name="morphe_spoof_video_streams_about_js">• Hvis obfuscering mislykkes, kan avspillingen mislykkes</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Original lyd kan ikke tvinges</string>

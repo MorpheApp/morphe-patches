@@ -381,6 +381,12 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_channel_whitelist_channel_added">Rás bætt við á hvítlista</string>
   <string name="morphe_channel_whitelist_channel_removed">Rás fjarlægð úr hvítlista</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Leita í rásinni</string>
+  <string name="morphe_channel_search_summary">Meðan rás er opin er aðeins leitað í þeirri rás</string>
+  <string name="morphe_channel_search_results">Leitarniðurstöður rása</string>
+  <string name="morphe_channel_search_no_results">Ekkert fannst á þessari rás</string>
+  <string name="morphe_channel_search_failed">Ekki tókst að leita í þessari rás</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Tengill kopíruðu á klippiborðið</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Tengill með tímastampu kopíruðu á klippiborðið</string>
@@ -500,8 +506,12 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_save_to_watch_later_already_exists_toast">Þetta vídeó var dulís á vaktur lista</string>
   <string name="morphe_save_to_watch_later_error_toast">Ekki dulís þitta vídeó á vaktur lista</string>
   <string name="morphe_save_to_watch_later_flyout_title">Vista í Horfa síðar</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd spilarastillinga</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Leyfir að vista myndbandið sem verið er að horfa á núna í \'Horfa seinna\' úr sprettivalmynd myndbandsstillinga</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Sýna hnappinn „Vista í Horfa síðar“ í barnamyndböndum</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Leyfir vistun barnatengdra myndbanda í \'Horfa síðar\' sprettivalmyndinni.ævi.ævi.ævi</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Leyfir að vista barnatengd myndbönd í \'Horfa seinna\' úr sprettivalmyndinni</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Sýna hnappinn Vista í Horfa seinna í sprettivalmynd Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Leyfir að vista Shorts í \'Horfa seinna\' úr sprettivalmyndinni</string>
   <string name="morphe_queue_flyout_title">Bæta í Morphe biðröð</string>
   <string name="morphe_queue_restore_title">Geymdu biðrað á milli lotna</string>
   <string name="morphe_queue_restore_summary">Biðlisti er vistaður eftir endurræsingar appinu</string>
@@ -907,6 +917,9 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <string name="morphe_exit_fullscreen_entry_2">Portrett aðeins</string>
   <string name="morphe_exit_fullscreen_entry_3">Landslagsaðeins</string>
   <string name="morphe_exit_fullscreen_entry_4">Portrait og landscape</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Þvinga landslag í fullskjá</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Snúa spilaranum í landslag þegar farið er í fullskjá. Ekki tiltækt á litlum skjám, sem opna nú þegar í fullskjá í landslagi.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Fullskjárshreyfingar</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Bendingar spilara í fullskjásstillingu</string>
@@ -1253,6 +1266,7 @@ Myndbandsspilun með AV1 getur hakka eða orðið með rammalegsfall."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Enginn AV1 myndbandakód</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR innlifunhamur er ekki í boði</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stöðugur hljóðstyrkur er ekki í boði</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Spilun getur endað 1 sekúndu snemma</string>
   <string name="morphe_spoof_video_streams_about_js">• Ef endurkóðun misstakast getur spilunin misst</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ekki er hægt til þess að neyða upprunalegt hljóð</string>

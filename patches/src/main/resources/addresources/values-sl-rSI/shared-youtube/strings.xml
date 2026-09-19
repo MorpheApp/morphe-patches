@@ -65,6 +65,15 @@ Preverite, ali je ime paketa pravilno in ali je aplikacija nameščena"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe igra s črno</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Prilagodljivo</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"To spremeni ikono, prikazano v vašem zaganjalniku aplikacij.
+
+Ta nastavitev ne bo spremenila ikone na nobenem od teh mest:
+• Seznam aplikacij v sistemskih nastavitvah naprave
+• Nekatera potisna obvestila
+• Izbirnik aplikacij »Odpri z«
+• Ikona v Android Auto
+
+Če želite spremeniti ikono povsod, znova izvedite krpanje in spremenite možnost krpanja »Ikona aplikacije«."</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona obvestil</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Uskladite ikono aplikacije</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe predvajaj</string>

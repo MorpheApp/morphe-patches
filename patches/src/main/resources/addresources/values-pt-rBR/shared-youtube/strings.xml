@@ -65,6 +65,15 @@ Verifique se o nome do pacote está correto e se o app está instalado"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe play preto</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizado</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Isso altera o ícone exibido no seu lançador de aplicativos.
+
+Essa configuração não alterará o ícone em nenhum destes locais:
+• Lista de aplicativos nas configurações do sistema do dispositivo
+• Determinadas notificações push
+• Seletor de aplicativos \"Abrir com\"
+• Ícone do Android Auto
+
+Para alterar o ícone em todos os locais, aplique o patch novamente e altere a opção de patch \"Ícone do aplicativo\""</string>
   <string name="morphe_custom_branding_notification_icon_title">Ícone de notificação</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Combinar com o ícone do aplicativo</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
@@ -230,8 +239,8 @@ Se esta opção for desativada posteriormente, é recomendável limpar os dados 
   <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
   <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Usar botão Curtir compacto</string>
-  <string name="morphe_ryd_compact_layout_summary">Reduz a largura do botão Curtir para economizar espaço</string>
+  <string name="morphe_ryd_compact_layout_title">Usar botão Gostei compacto</string>
+  <string name="morphe_ryd_compact_layout_summary">Reduz a largura do botão Gostei para economizar espaço</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar uma estimativa de \'Gostei\'</string>
   <string name="morphe_ryd_estimated_like_summary">Mostra uma contagem de \'Gostei\' estimada em vídeos onde o criador os desativou</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>
@@ -245,7 +254,7 @@ Toque aqui para abrir ReturnYouTubeDislike.com"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMin_title">Tempo de resposta da API, mínimo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Tempo de resposta da API, máximo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Tempo de resposta da API, mídia mais recente</string>
-  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">Deslikes temporariamente indisponíveis - Limite de taxa da API do cliente em efeito</string>
+  <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">A contagem de \"Não gostei\" está temporariamente indisponível — Limite de requisições da API do cliente em vigor</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_title">API de busca de votos, número de chamadas</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nenhuma chamada de rede feita</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">%d chamadas de rede realizadas</string>

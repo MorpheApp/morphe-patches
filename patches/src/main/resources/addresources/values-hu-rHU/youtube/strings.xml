@@ -381,6 +381,12 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_channel_whitelist_channel_added">A csatorna hozzáadva a fehérlistához</string>
   <string name="morphe_channel_whitelist_channel_removed">A csatorna eltávolítva a fehérlistáról</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Keresés a csatornán belül</string>
+  <string name="morphe_channel_search_summary">Ha egy csatorna nyitva van, a keresés csak abban a csatornában történik.</string>
+  <string name="morphe_channel_search_results">Csatornakeresési eredmények</string>
+  <string name="morphe_channel_search_no_results">Nincs találat ezen a csatornán</string>
+  <string name="morphe_channel_search_failed">Nem sikerült keresni ezen a csatornán</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link másolva a vágólapra</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">A videó időbélyeggel ellátott linkje másolva a vágólapra</string>
@@ -502,8 +508,12 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ez a videó már mentve van a „Később megnézem” lejátszási listára</string>
   <string name="morphe_save_to_watch_later_error_toast">A videó nem menthető a „Később megnézem” lejátszási listára</string>
   <string name="morphe_save_to_watch_later_flyout_title">Mentés későbbre</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">A „Mentés a Később nézem listába” gomb megjelenítése a lejátszó beállítási felugró menüjében</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Lehetővé teszi az aktuálisan nézett videó mentését a \'Watch later\' listába a videóbeállítások felugró menüjéből</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mentés későbbre gomb megjelenítése a gyerekvideókban</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Lehetővé teszi a gyerekeknek szóló videók mentését a \'Megnézem később\' előugró menüben. ,\"key\":\"morphe_save_to_watch_later_kids_flyout_menu_button_summary\",\"context\":\"morphe_save_to_watch_later_kids_flyout_menu_button_summary\",\"maxLength\":null,\"terms\":[]}</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Lehetővé teszi gyerekeknek szóló videók mentését a \'Watch later\' listába a felugró menüből</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">A \'Watch later\' mentése gomb megjelenítése a Shorts felugró menüjében</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Lehetővé teszi a Shorts mentését a \'Watch later\' listába a felugró menüből</string>
   <string name="morphe_queue_flyout_title">Hozzáadás a Morphe sorhoz</string>
   <string name="morphe_queue_restore_title">Tartsa fenn a sorát a munkamenetek között</string>
   <string name="morphe_queue_restore_summary">A sor az alkalmazás újraindítása után is megőrizhető</string>
@@ -911,6 +921,9 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <string name="morphe_exit_fullscreen_entry_2">Csak portré mód</string>
   <string name="morphe_exit_fullscreen_entry_3">Csak tájkép mód</string>
   <string name="morphe_exit_fullscreen_entry_4">Portré és tájkép</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Teljes képernyős módban fekvő tájolás kényszerítése</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Forgassa a lejátszót fekvő tájolásba, amikor teljes képernyőre vált. Kis képernyőkön nem érhető el, mivel azok már eleve fekvő tájolásban nyitják meg a teljes képernyőt.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Teljes képernyős gesztusok</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Lejátszó gesztusai teljes képernyős módban</string>
@@ -1258,6 +1271,7 @@ Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nincs AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR merőleges mód nem elérhető</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil hangerő nem elérhető</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• A lejátszás 1 másodperccel korábban érhet véget</string>
   <string name="morphe_spoof_video_streams_about_js">• Ha a deobfuszkálás sikertelen, a lejátszás is megbomolhat</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Eredeti hang kényszerítése nem érhető el</string>

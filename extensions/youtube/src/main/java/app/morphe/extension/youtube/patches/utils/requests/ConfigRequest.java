@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
-import androidx.annotation.NonNull;
-
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -22,13 +20,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.ConfigResponse;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.Context;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.GlobalConfigGroup;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.RawColdConfigGroup;
-
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -42,9 +40,13 @@ public class ConfigRequest {
         CompletableFuture<ConfigGroup> future = CompletableFuture.supplyAsync(() -> send(requestHeader));
         try {
             ConfigGroup configGroup = future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-            if (configGroup != null) {
+            if (configGroup == null) {
+                Logger.printInfo(() -> "Received null config");
+            } else {
                 String coldConfigData = configGroup.coldConfigData;
                 String coldHashData = configGroup.coldHashData;
+                Logger.printInfo(() -> "Received config length: " + coldConfigData.length()
+                        + " hash length: " + coldHashData.length());
                 Settings.INNERTUBE_COLD_CONFIG_DATA.save(coldConfigData);
                 Settings.INNERTUBE_COLD_HASH_DATA.save(coldHashData);
             }
@@ -67,7 +69,7 @@ public class ConfigRequest {
     }
 
     @Nullable
-    private static ConfigGroup parse(@NonNull HttpURLConnection connection) {
+    private static ConfigGroup parse(HttpURLConnection connection) {
         try (InputStream inputStream = connection.getInputStream()) {
             ConfigResponse configResponse = ConfigResponse.parseFrom(inputStream);
             if (!configResponse.hasContext()) {
@@ -116,7 +118,7 @@ public class ConfigRequest {
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
             int responseCode = connection.getResponseCode();
-            if (responseCode == 200 && connection.getContentLength() != 0) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS && connection.getContentLength() != 0) {
                 return parse(connection);
             }
             handleConnectionError("Config request failed with code: " + responseCode, null);

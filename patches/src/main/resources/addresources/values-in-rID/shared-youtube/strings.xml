@@ -65,7 +65,16 @@ Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe play hitam</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Kustom</string>
-  <string name="morphe_custom_branding_notification_icon_title">Ikon pemberitahuan</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Ini mengubah ikon yang ditampilkan di peluncur aplikasi Anda.
+
+Setelan ini tidak akan mengubah ikon di lokasi mana pun berikut ini:
+• Daftar aplikasi setelan sistem perangkat
+• Notifikasi dorong tertentu
+• Pemilih aplikasi 'Buka dengan'
+• Ikon Android Auto
+
+Untuk mengubah ikon di semua tempat, lakukan tambal lagi dan ubah opsi tambal 'Ikon aplikasi'"</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ikon Notifikasi</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Cocokkan ikon aplikasi</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -79,7 +88,7 @@ Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
 
 Jika Anda pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Tidak dapat mengambil aliran klien apa pun</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan pengaturan ini dapat menyebabkan masalah pemutaran.</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan setelan ini dapat menyebabkan masalah pemutaran.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Cobalah mengaktifkan: Palsukan aliran video &gt; Masuk Android VR</string>
@@ -111,9 +120,9 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Berhasil masuk</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentikasi disimpan
 
-• Pengaturan Morphe Anda tidak akan mengimpor/mengekspor autentikasi Android VR
+• Setelan Morphe Anda tidak akan mengimpor/mengekspor autentikasi Android VR
 • Jika aplikasi ini tidak digunakan selama 6 bulan, Google akan menghapus autentikasi ini
-• Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari pengaturan Google Anda"</string>
+• Anda perlu masuk kembali jika Anda mengubah kata sandi Google Anda atau menghapus pendaftaran perangkat ini dari setelan Google Anda"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 sementara tidak tersedia (API kehabisan waktu)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Masuk ke Android VR telah kadaluwarsa, coba masuk ke VR lagi</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 sementara tidak tersedia (status %d)</string>
@@ -163,7 +172,7 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Buffer protokol log</string>
   <string name="morphe_debug_protobuffer_summary">Menambahkan informasi catatan tambahan untuk pengembang guna mengidentifikasi komponen aplikasi</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Mengaktifkan pengaturan ini akan mencatat data tata letak tambahan, termasuk teks pada layar untuk beberapa komponen UI.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Mengaktifkan setelan ini akan mencatat data tata letak tambahan, termasuk teks pada layar untuk beberapa komponen UI.
 
 Ini dapat membantu mengidentifikasi komponen saat membuat penyaring khusus.
 
@@ -177,9 +186,9 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_custom_filter_strings_summary">Daftar string pembuat jalur komponen yang akan disaring, dipisahkan oleh baris baru</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Penyaring khusus tidak sah: %s</string>
   <!-- layout.hide.settingsmenu.hideSettingsMenuFilterPatch -->
-  <string name="morphe_settings_menu_filter_screen_title">Filter menu Pengaturan</string>
-  <string name="morphe_settings_menu_filter_screen_summary">Sembunyikan item di layar pengaturan aplikasi standar berdasarkan nama yang terlihat</string>
-  <string name="morphe_settings_menu_filter_picker_empty">Buka layar pengaturan aplikasi standar sekali untuk mengisi daftar</string>
+  <string name="morphe_settings_menu_filter_screen_title">Filter menu Setelan</string>
+  <string name="morphe_settings_menu_filter_screen_summary">Sembunyikan item di layar setelan aplikasi standar berdasarkan nama yang terlihat</string>
+  <string name="morphe_settings_menu_filter_picker_empty">Buka layar setelan aplikasi standar sekali untuk mengisi daftar</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Hapus dialog pembatasan penonton</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak mengabaikan batasan usia. Hanya otomatis menerimanya</string>
@@ -189,14 +198,14 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_external_potoken_provider_title">Penyedia PoToken Eksternal</string>
   <string name="morphe_external_potoken_provider_summary">"Memperbaiki masalah pemutaran saat menggunakan PoToken minter eksternal (Eksperimental)
 
-Jika Anda adalah pengguna YouTube Premium, pengaturan ini mungkin tidak diperlukan"</string>
+Jika Anda adalah pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"</string>
   <!-- "Fixes playback issues using an external PoToken minter (Experimental)" should use the same wording as morphe_external_potoken_provider_summary
          'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
   <string name="morphe_external_potoken_provider_unavailable_summary">"Memperbaiki masalah pemutaran menggunakan pencetak PoToken eksternal (Eksperimental)
 
 Untuk menggunakan fitur ini, matikan 'Palsukan aliran video'"</string>
   <string name="morphe_external_potoken_provider_user_dialog_message">Jika tidak berhasil, coba hentikan paksa MicroG</string>
-  <string name="morphe_external_potoken_provider_settings_summary">Buka pengaturan PotHelper</string>
+  <string name="morphe_external_potoken_provider_settings_summary">Buka setelan PotHelper</string>
   <string name="morphe_external_potoken_provider_about_summary">"Fitur ini saat ini masih dalam tahap pengembangan dan mungkin tidak berfungsi
 
 Ketuk di sini untuk mengunduh PotHelper"</string>
@@ -235,7 +244,7 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_ryd_estimated_like_title">Tampilkan perkiraan suka</string>
   <string name="morphe_ryd_estimated_like_summary">Menampilkan perkiraan jumlah suka pada video di mana pembuatnya telah menonaktifkan fitur suka</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Tampilkan peringatan kesalahan sambungan</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary">Menampilkan pemberitahuan saat server Return YouTube Dislike tidak tersedia</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Menampilkan notifikasi saat server Return YouTube Dislike tidak tersedia</string>
   <string name="morphe_ryd_attribution_summary">"Data disediakan oleh API Return YouTube Dislike
 
 Ketuk di sini untuk membuka ReturnYouTubeDislike.com"</string>

@@ -32,6 +32,50 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">A kiválasztott külső letöltőt használja a beépített Letöltés művelet gomb helyett</string>
   <string name="morphe_external_downloader_flyout_menu_title">A Letöltés menü felülírása</string>
   <string name="morphe_external_downloader_flyout_menu_summary">A kiválasztott külső letöltőt használja a beépített Letöltés felugró menü helyett</string>
+  <string name="morphe_music_in_app_downloads_title">Letöltés az alkalmazásban</string>
+  <string name="morphe_music_in_app_downloads_summary">Audiót tölt le a YouTube Musicban a külső letöltőalkalmazás megnyitása helyett</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"A számok az alkalmazás privát tárterületére kerülnek mentve, és törlődnek, ha a YouTube Music zostanie telepítve.
+
+Amíg ez bekapcsolva van, a Letöltések fül ezeket a számokat listázza a Music Premium offline könyvtár helyett. A kikapcsolás visszaállítja a fül funkcióját, és a Premium letöltések érintetlenek maradnak."</string>
+  <string name="morphe_music_downloads_screen_title">Letöltések</string>
+  <string name="morphe_music_downloads_empty">"Nincs letöltés
+A letöltött számok itt jelennek meg"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">%1$s szám • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">Letöltések keresése</string>
+  <string name="morphe_music_downloads_sort">Rendezés</string>
+  <string name="morphe_music_downloads_sort_artist">Rendezés előadó szerint</string>
+  <string name="morphe_music_downloads_sort_title">Rendezés cím szerint</string>
+  <string name="morphe_music_downloads_sort_size">Rendezés méret szerint</string>
+  <string name="morphe_music_downloads_delete_all">Összes letöltés törlése</string>
+  <string name="morphe_music_downloads_delete_all_title">Törlöd az összes letöltést?</string>
+  <string name="morphe_music_downloads_delete_all_message">Az összes letöltött szám törlődik erről az eszközről</string>
+  <string name="morphe_music_downloads_all_deleted">Letöltések törölve</string>
+  <string name="morphe_music_downloads_nothing_found">Nincs találat</string>
+  <string name="morphe_music_downloads_actions_for">%s műveletei</string>
+  <string name="morphe_music_downloads_play">Lejátszás</string>
+  <string name="morphe_music_downloads_play_pause">Lejátszás vagy szünet</string>
+  <string name="morphe_music_downloads_previous">Előző</string>
+  <string name="morphe_music_downloads_next">Következő</string>
+  <string name="morphe_music_downloads_pause">Szünet</string>
+  <string name="morphe_music_downloads_close">Bezárás</string>
+  <string name="morphe_music_downloads_delete">Törlés</string>
+  <string name="morphe_music_downloads_delete_track">Letöltés törlése</string>
+  <string name="morphe_music_downloads_delete_track_title">Törlöd a letöltést?</string>
+  <string name="morphe_music_downloads_delete_track_message">%s törlődik erről az eszközről</string>
+  <string name="morphe_music_downloads_track_deleted">Letöltés törölve</string>
+  <string name="morphe_music_downloads_track_delete_failed">Nem sikerült törölni a letöltést</string>
+  <string name="morphe_music_downloads_play_failed">Nem sikerült lejátszani a letöltést</string>
+  <string name="morphe_music_downloads_notification_channel">Audió-letöltések</string>
+  <string name="morphe_music_downloads_playback_channel">Offline lejátszás</string>
+  <string name="morphe_music_downloads_unknown_track">Nem sikerült azonosítani a letöltendő számot</string>
+  <string name="morphe_music_downloads_already_running">A letöltés már folyamatban van</string>
+  <string name="morphe_music_downloads_already_saved">Már letöltve</string>
+  <string name="morphe_music_downloads_started">Letöltés elindítva</string>
+  <string name="morphe_music_downloads_starting">Letöltés indítása…</string>
+  <string name="morphe_music_downloads_progress">Letöltés: %s%%</string>
+  <string name="morphe_music_downloads_complete">Letöltés befejezve</string>
+  <string name="morphe_music_downloads_failed">Letöltés sikertelen</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Névjegy</string>
@@ -308,30 +352,120 @@ A háttérlejátszás közbeni szinkronizálás biztosításához győződjön m
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Harmadik féles szöveg használata</string>
   <string name="morphe_music_lyrics_enabled_summary">Szövegeket jelenít meg egy külső szolgáltatótól, ha nincs találat, akkor a beépített szövegeket használja.</string>
-  <string name="morphe_music_lyrics_source_title">Szöveg szolgáltatás</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, majd a KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Dalszöveg-szolgáltatás</string>
+  <string name="morphe_music_lyrics_section_overlay_title">Átfedés</string>
+  <string name="morphe_music_lyrics_section_sync_title">Szinkronizálás</string>
+  <string name="morphe_music_lyrics_section_about_title">Névjegy</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_lyrics_source_summary">Érintse meg a ▲/▼ gombot a prioritási sorrend beállításához, a jelölőnégyzetet pedig az egyes szolgáltatók engedélyezéséhez vagy letiltásához.</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Minden szolgáltató le van tiltva – a beépített és a beágyazott dalszövegek is.</string>
+  <string name="morphe_music_lyrics_source_reset_title">Visszaállítja a szolgáltatók sorrendjét?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Szolgáltatók visszaállítása az alapértelmezett prioritási sorrendre.</string>
+  <string name="morphe_music_token_dialog_get_token">Token lekérése</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music médiafelhasználói token</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Illeszd be a media-user-token cookie-t a music.apple.com oldalról
+
+Lépések:
+1. Jelentkezz be a music.apple.com oldalon regisztrált felhasználóként
+2. Nyisd meg a DevTools → Application → Cookies → music.apple.com menüt
+3. Másold ki a \"media-user-token\" értékét"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token elmentve</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token törölve</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: érvénytelen media-user-token — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Illeszd be a Spotify sp_dc cookie-ját.
+
+Lépések:
+1. Jelentkezz be az open.spotify.com oldalon
+2. Nyisd meg a DevTools → Application → Cookies → open.spotify.com menüt
+3. Másold ki a \"sp_dc\" értékét"</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Enélkül a Lyrically lesz tartalékként használva.</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc törölve</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: érvénytelen sp_dc — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_apple_token_optional_hint">Az Apple Music token opcionális. Enélkül a Lyrically szolgál tartalékként.</string>
+  <string name="morphe_music_deezer_arl_title">Deezer […] Másolja ki az \"arl\" értékét.</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Illeszd be a Deezer arl cookie-ját.
+
+Lépések:
+1. Jelentkezz be a deezer.com oldalon
+2. Nyisd meg a DevTools → Application → Cookies → deezer.com menüt
+3. Másold ki az \"arl\" értékét"</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl elmentve</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: érvénytelen arl, próbálja újra.</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: érvénytelen arl — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch-token</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"A Musixmatch token nélkül is működik, így ez a mező üresen hagyható.
+
+Csak a saját fiókod használatához adj meg tokent. A tokennak a Musixmatch Android alkalmazásból kell származnia: a musixmatch.com-ról másolt tokenek a megszűnt asztali klienshez tartoznak, és az API elutasítja azokat."</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">felhasználói token</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: felhasználói token elmentve</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: felhasználói token törölve</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: érvénytelen felhasználói token — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_youtube_cookies_title">YouTube-cookie-k</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"A YouTube-cookie-kat illeszd be, ha feliratokat és időzített szövegeket szeretnél lekérdezni a YouTube-ról.
+
+Lépések:
+1. Nyisd meg a youtube.com-ot egy böngészőben, és jelentkezz be
+2. Nyisd meg a DevTools (F12) → Application → Cookies → youtube.com menüt
+3. Másold ki a teljes cookie-stringet (pontosvesszővel elválasztott kulcs=érték párok)
+
+Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie-k elmentve</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookie-k törölve</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: érvénytelen cookie-k — ellenőrizd, és próbáld újra</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, majd QQ, majd KuGou, majd NetEase, majd BiniLyrics, majd Unison, majd AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Érintse meg a sort az ugráshoz</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">A sor megérintése ugrássá teszi a dalban a megfelelő pillanatra</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Másolás gomb megjelenítése</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Koppintson az eredeti dalszöveg egyszerű szövegként történő másolásához; tartsa hosszan a nyers dalszöveg-forrásfájl mentéséhez a Letöltések mappába.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Fordítás gomb megjelenítése</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Dalszöveg fordítása a szolgáltató fordításai vagy a Google Translate segítségével.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Romanizálás gomb megjelenítése</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Dalszöveg romanizálása a szolgáltató romanizálásával vagy a Google Translate segítségével […] gomb.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Frissítés gomb megjelenítése</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Koppintson a következő dalszöveg-jelöltre váltáshoz; […] : „A szinkronizált szavak vagy szótagok kiemelése”</string>
+  <string name="morphe_music_lyrics_saved">Mentett</string>
+  <string name="morphe_music_lyrics_word_sync_title">Szinkronizált szavak vagy szótagok kiemelése</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Előnyben részesíti a szavankénti dalszövegeket, ha elérhetők. Ha a dalszöveg szószintű időzítést tartalmaz, a zene ütemére emeli ki az egyes szavakat vagy szótagokat.</string>
+  <string name="morphe_music_lyrics_hide_played_title">A lejátszott sor elrejtése</string>
+  <string name="morphe_music_lyrics_hide_played_summary">Minilejátszó dalszövegének megjelenítése</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">A még el nem hangzott dalszövegek elrejtése</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Dalszövegsorok elrejtése a jelenleg lejátszott […] képernyőn.</string>
+  <string name="morphe_music_lyrics_mediasession_title">MediaSession-dalszövegek megjelenítése a lezáróképernyőn</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Dalszöveg megjelenítése a minilejátszóban</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">Előadó és cím megjelenítési sorrendje</string>
+  <string name="morphe_music_lyrics_display_artist_first_summary">Váltja az előadó és a cím sorrendjét a minilejátszóban és a MediaSessionben. BE: \"Előadó - Cím\", KI: \"Cím - Előadó\". Nem befolyásolja a dalszövegkeresést.</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Szűrők</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Dalszöveg-szűrő regex</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">A címekre, előadókra és albumokra alkalmazott reguláris kifejezés a dalszövegek keresése előtt. A letiltáshoz hagyd üresen. Az alapértelmezett eltávolítja a gyakori felesleges elemeket, például az \"Official Video\", a \"Remaster\" és a \"- Topic\" kifejezéseket.</string>
+  <string name="morphe_music_lyrics_text_filter_title">Dalszöveg-szűrő regex</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Csak az eredeti dalszövegre alkalmazott reguláris kifejezés (nem a fordításokra vagy romanizációkra). A letiltáshoz hagyd üresen.</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Információs sorok jelölői</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Ha a dalszövegek hibásan az aljára szűrődnek, módosítsd vagy töröld ezt a mezőt. Vesszővel elválasztott jelölők: azok a sorok, amelyek egy, kettősponttal követett jelölőt tartalmaznak, alul forrásmegjelölésként jelennek meg. A letiltáshoz hagyd üresen.</string>
   <string name="morphe_music_lyrics_text_size_title">Betűméret</string>
   <string name="morphe_music_lyrics_text_size_summary">A dalszöveg betűmérete</string>
   <string name="morphe_music_lyrics_offset_ms_title">Időeltolódás</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">A szinkronizált dalszöveg előre vagy hátra tolása. Pozitív értéket használjon, ha a dalszöveg megelőzi a zenét</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">A szinkronizált dalszövegek a lejátszást követik. Ha elcsúsznak, módosítsd az időeltolást. A szinkronizált dalszövegeket told előre vagy hátra. Használj pozitív értéket, ha a dalszöveg a szám előtt jár.</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Forrás: %s</string>
+  <string name="morphe_music_lyrics_translated_by_google">Fordította a Google</string>
+  <string name="morphe_music_lyrics_romanized_by_google">A Google romanizálta</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Fordítás</string>
-  <string name="morphe_music_lyrics_translate_hide">Eredeti megjelenítése</string>
+  <string name="morphe_music_lyrics_translate_hide">Lefordítva</string>
   <string name="morphe_music_lyrics_translating">Fordítás…</string>
   <string name="morphe_music_lyrics_translate_failed">A dalszöveg fordítása sikertelen</string>
-  <string name="morphe_music_lyrics_copy">Másolás</string>
+  <string name="morphe_music_lyrics_romanize_hide">Romanizált</string>
+  <string name="morphe_music_lyrics_romanizing">Romanizálás…</string>
+  <string name="morphe_music_lyrics_romanize_failed">Nem sikerült romanizálni a dalszöveget.</string>
   <string name="morphe_music_lyrics_copied">Másolva a vágólapra</string>
-  <string name="morphe_music_lyrics_about_title">A harmadik fél dalszövegeiről</string>
-  <string name="morphe_music_lyrics_about_summary">"A dalszövegeket a szám címe és előadó alapján keresi meg a rendszer, ezért a szokatlan metaadatokkal rendelkező számok nem találnak semmit, vagy a rossz verziót. A szinkronizált dalszövegek követik a lejátszást. Ha elcsúsznak, állítsa be az időeltolódást.
-
-Ha nem található harmadik fél által biztosított dalszöveg, a beépített dalszöveg jelenik meg helyette."</string>
+  <string name="morphe_music_lyrics_refreshing">Frissítés</string>
+  <string name="morphe_music_lyrics_refreshed">Frissítve</string>
+  <string name="morphe_music_lyrics_about_summary">"A dalszövegek keresése az előadó és a cím alapján történik, így egy szokatlan metaadatokkal rendelkező számnál előfordulhat, hogy nincs találat, vagy rossz verzió érkezik. A frissítés gombbal manuálisan is válthatsz a verziók között. Ha nincs harmadik féltől származó dalszöveg, akkor helyette a beépített vagy a fájlba ágyazott dalszöveg jelenik meg. A *-gal jelölt szolgáltatók engedélyezéséhez token szükséges. Az engedélyezett szolgáltatók lekérdezése nem mindig a te sorrendedben történik, hanem a sebességük alapján válaszolnak."</string>
+  <string name="morphe_music_lyrics_hide_info_title">Forrásmegjelölés elrejtése</string>
+  <string name="morphe_music_lyrics_hide_info_summary">A dalszöveg alatt látható forrásmegjelölés elrejtése</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">A fordítás és a romanizáció felcserélése</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">BE: a romanizációt a dalszöveg alá, a fordítást fölé helyezi; KI: a romanizációt felül, a fordítást alul hagyja.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Félkövér ikonok letiltása</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - A Lejátszó „Következő”, „Dalszövegek” és „Kapcsolódó” lapok visszaállítása</string>

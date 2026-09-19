@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.scrobbling;
 
+import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.os.Handler;
@@ -52,6 +53,13 @@ public class ScrobbleManager {
     private String currentAlbum;
     private String currentSongId;
     private int currentDurationSeconds;
+    private Bitmap currentArtwork;
+
+    public String getCurrentTitle() { return currentTitle; }
+    public String getCurrentArtist() { return currentArtist; }
+    public String getCurrentAlbum() { return currentAlbum; }
+    public int getCurrentDurationSeconds() { return currentDurationSeconds; }
+    public Bitmap getCurrentArtwork() { return currentArtwork; }
 
     private long songStartedAtSeconds;
     private boolean songStarted;
@@ -178,6 +186,8 @@ public class ScrobbleManager {
             final int duration = song != null && song.durationSeconds() > 0
                     ? song.durationSeconds()
                     : (int) (metadata.getLong(MediaMetadata.METADATA_KEY_DURATION) / 1000);
+            Bitmap artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
+            if (artwork == null) artwork = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
             if (title == null || title.isBlank() || artist == null || artist.isBlank()) {
                 return;
             }
@@ -195,6 +205,7 @@ public class ScrobbleManager {
                 currentAlbum = album;
                 currentSongId = songId;
                 currentDurationSeconds = duration;
+                currentArtwork = artwork;
 
                 if (isPlayerPlaying) {
                     onSongStart();

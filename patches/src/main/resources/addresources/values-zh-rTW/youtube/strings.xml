@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">頻道已加入白名單</string>
   <string name="morphe_channel_whitelist_channel_removed">頻道已從白名單中移除</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">搜尋頻道內</string>
+  <string name="morphe_channel_search_summary">當頻道開啟時，搜尋只會搜尋該頻道</string>
+  <string name="morphe_channel_search_results">頻道搜尋結果</string>
+  <string name="morphe_channel_search_no_results">此頻道找不到任何結果</string>
+  <string name="morphe_channel_search_failed">無法搜尋此頻道</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">已將網址複製到剪貼簿</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">已將帶時間戳的連結複製到剪貼簿</string>
@@ -502,8 +508,12 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">此影片已儲存至稍後觀看播放清單</string>
   <string name="morphe_save_to_watch_later_error_toast">無法將此影片儲存至稍後觀看播放清單</string>
   <string name="morphe_save_to_watch_later_flyout_title">儲存至「稍後觀看」</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">在播放器設定彈出視窗中顯示「儲存以稍後觀看」按鈕</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">允許將目前觀看的影片儲存在影片設定彈出視窗的「稍後觀看」中</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">在兒童影片中顯示「稍後觀看」按鈕</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">允許在兒童影片的「稍後觀看」彈出選單中儲存相關影片</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">允許將與兒童相關的影片從彈出式選單儲存到「稍後觀看」中</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">在 Shorts 彈出視窗中顯示「儲存以稍後觀看」按鈕</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">允許將 Shorts 儲存在彈出式選單的「稍後觀看」中</string>
   <string name="morphe_queue_flyout_title">加入 Morphe 佇列</string>
   <string name="morphe_queue_restore_title">在不同工作階段中保留佇列</string>
   <string name="morphe_queue_restore_summary">重新啟動應用程式後，佇列會保留</string>
@@ -911,6 +921,9 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_2">直立</string>
   <string name="morphe_exit_fullscreen_entry_3">橫向</string>
   <string name="morphe_exit_fullscreen_entry_4">直立和橫向</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">強制全螢幕橫向</string>
+  <string name="morphe_force_fullscreen_landscape_summary">進入全螢幕時，將播放器旋轉為橫向。小螢幕上無法使用，因為小螢幕的全螢幕已以橫向開啟。</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">全螢幕手勢</string>
   <string name="morphe_disable_fullscreen_gestures_summary">全螢幕模式下的手勢操作</string>
@@ -1257,6 +1270,7 @@ AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 全景模式不可用</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 無法使用平衡音量</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• 播放可能會提早 1 秒結束</string>
   <string name="morphe_spoof_video_streams_about_js">• 如果解密失敗，播放可能會失敗</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 強制原始音訊不可用</string>

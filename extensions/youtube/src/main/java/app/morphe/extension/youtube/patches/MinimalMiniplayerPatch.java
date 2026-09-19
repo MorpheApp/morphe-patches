@@ -20,6 +20,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
@@ -97,7 +98,7 @@ public final class MinimalMiniplayerPatch {
     private static final int OVERLAY_SCRIM_COLOR = Color.argb(100, 0, 0, 0);
     private static final int OVERLAY_BUTTON_COLOR = Color.argb(80, 255, 255, 255);
     private static final int OVERLAY_PRIMARY_COLOR = Color.WHITE;
-    private static final int OVERLAY_SECONDARY_COLOR = Color.argb(179, 255, 255, 255);
+    private static final int OVERLAY_SECONDARY_COLOR = Color.argb(180, 255, 255, 255);
 
     /**
      * Derived from the height, so the thumbnail keeps 16:9 through every frame of the morph.
@@ -114,7 +115,7 @@ public final class MinimalMiniplayerPatch {
     private static final int PAUSE_DESCRIPTION = ResourceUtils.
             getStringIdentifier("accessibility_pause");
 
-    private static final long MORPH_MILLIS = 220;
+    private static final long MORPH_MILLIS = 300;
 
     /**
      * Reused, because the bounds hooks run for every frame of a drag.
@@ -166,6 +167,9 @@ public final class MinimalMiniplayerPatch {
     private static boolean barDrawsOverPlayer;
     @Nullable
     private static Drawable originalBarBackground;
+    private static final Drawable customType2BarBackground = new ColorDrawable(
+            Color.argb(70, 0, 0, 0)
+    );
     private static int barIndexInParent;
 
     /**
@@ -191,7 +195,15 @@ public final class MinimalMiniplayerPatch {
         try {
             controlsRef = new WeakReference<>(controlsLayout);
             barContainerRef = new WeakReference<>(
-                    controlsLayout.getParent() instanceof View barContainer ? barContainer : null);
+                    controlsLayout.getParent() instanceof View barContainer
+                            ? barContainer
+                            : null
+            );
+
+            watchPlayerRef = new WeakReference<>(null);
+            skipAdRef = new WeakReference<>(null);
+            navigationBarRef = new WeakReference<>(null);
+
             // A new watch page brings its own views, so what the last ones were left in
             // does not carry over.
             barDrawsOverPlayer = false;
@@ -233,7 +245,7 @@ public final class MinimalMiniplayerPatch {
                 startAfterVideo(title);
                 startAfterVideo(subtitleBar);
             } else {
-                // The contents sit on the video rather than beside it, so it is dimmed and
+                // The contents sit on the video rather than beside it, so it is dimmed, and
                 // they take the overlay colors.
                 controlsLayout.setBackgroundColor(OVERLAY_SCRIM_COLOR);
                 setTextColor(title, OVERLAY_PRIMARY_COLOR);
@@ -307,14 +319,34 @@ public final class MinimalMiniplayerPatch {
                 return original;
             }
 
-            Rect docked = dockToStart(original);
+            Rect docked = fullWidthSpan(original);
             lastBounds.set(docked);
 
-            if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED) {
-                barBoundsFor(docked);
+            barBoundsFor(docked);
+
+            PlayerType currentType = PlayerType.getCurrent();
+            if (currentType == PlayerType.WATCH_WHILE_MINIMIZED) {
                 currentBounds.set(barBounds);
                 barShapeApplied = true;
                 return barBounds;
+            }
+            if (currentType.isMaximizedOrFullscreen()) {
+                barShapeApplied = false;
+                currentBounds.set(docked);
+                return docked;
+            }
+
+            // Interpolate bounds during player minimization.
+            int targetTop = barBounds.top;
+            if (targetTop > 0 && docked.top > 0) {
+                float fraction = Math.min(1f, Math.max(0f, (float) docked.top / targetTop));
+                currentBounds.set(
+                        interpolate(docked.left, barBounds.left, fraction),
+                        interpolate(docked.top, barBounds.top, fraction),
+                        interpolate(docked.right, barBounds.right, fraction),
+                        interpolate(docked.bottom, barBounds.bottom, fraction)
+                );
+                return currentBounds;
             }
 
             currentBounds.set(docked);
@@ -328,14 +360,11 @@ public final class MinimalMiniplayerPatch {
     }
 
     /**
-     * Docked where the thumbnail sits, otherwise YouTube's collapse animation ends in the
-     * opposite corner and the thumbnail has to travel the whole width afterward.
+     * Prevents the video from anchoring into one of the display corners by spanning the
+     * bounds to full display width, making the transition to miniplayer smoother.
      */
-    private static Rect dockToStart(Rect original) {
-        if (original.left <= 0) return original;
-        if (original.width() >= getWidthPixels()) return original;
-
-        dockedBounds.set(0, original.top, original.width(), original.bottom);
+    private static Rect fullWidthSpan(Rect original) {
+        dockedBounds.set(0, original.top, getWidthPixels(), original.bottom);
 
         return dockedBounds;
     }
@@ -347,8 +376,8 @@ public final class MinimalMiniplayerPatch {
     }
 
     /**
-     * Not {@link Dim#getScreenWidth()}, which measures the display. A bar spans the window,
-     * and the two differ in split screen and on foldables.
+     * Not {@link Dim#getScreenWidth()}, which measures the display. A bar spans
+     * the window, and the two differ in split screen and on foldables.
      */
     private static int getWidthPixels() {
         return Dim.getMetrics().widthPixels;
@@ -379,7 +408,18 @@ public final class MinimalMiniplayerPatch {
      */
     public static void applyVideoRect(Rect videoRect) {
         try {
-            if (getCurrentMiniplayerType() == MINIMAL_BAR && inBarMode()) {
+            if (!ENABLED) {
+                return;
+            }
+
+            if (!inBarMode()) {
+                videoRect.left = 0;
+                videoRect.right = getWidthPixels();
+
+                return;
+            }
+
+            if (getCurrentMiniplayerType() == MINIMAL_BAR) {
                 final int videoWidth = videoWidthFor(currentBounds.height());
 
                 videoRect.set(currentBounds);
@@ -387,6 +427,38 @@ public final class MinimalMiniplayerPatch {
                     videoRect.left = videoRect.right - videoWidth;
                 } else {
                     videoRect.right = videoRect.left + videoWidth;
+                }
+            } else {
+                // Type 2 spans the bar with the video. YouTube fits anything that is not 16:9
+                // inside the bar instead, and the miniplayer has no background of its own, so
+                // the feed shows through beside it. The overflow is clipped away again.
+                final float videoWidth = videoRect.width();
+                final float videoHeight = videoRect.height();
+                final float videoAspectRatio =
+                        (videoWidth > 0 && videoHeight > 0)
+                                ? videoWidth / videoHeight
+                                : 16f / 9f;
+
+                final float barWidth = currentBounds.width();
+                final float barHeight = currentBounds.height();
+                final float barAspectRatio = barWidth / barHeight;
+
+                videoRect.set(currentBounds);
+
+                if (videoAspectRatio < barAspectRatio) {
+                    // Video is narrower than the bar
+                    final int targetHeight = Math.round(barWidth / videoAspectRatio);
+                    final int overflowY = Math.max(0, (int) (targetHeight - barHeight)) / 2;
+
+                    videoRect.top -= overflowY;
+                    videoRect.bottom += overflowY;
+                } else {
+                    // Video is wider than the bar
+                    final int targetWidth = Math.round(barHeight * videoAspectRatio);
+                    final int overflowX = Math.max(0, (int) (targetWidth - barWidth)) / 2;
+
+                    videoRect.left -= overflowX;
+                    videoRect.right += overflowX;
                 }
             }
         } catch (Exception ex) {
@@ -427,15 +499,9 @@ public final class MinimalMiniplayerPatch {
             barBoundsFor(lastBounds);
             morphTo.set(barBounds);
             barShapeApplied = true;
-            showControls(true);
-
-            if (morphFrom.equals(morphTo)) {
-                setBounds(controller, morphTo);
-                updateVideoClip();
-                return;
-            }
 
             setContentAlpha(0f);
+            showControls(true);
             runMorph(true, () -> setContentAlpha(1f));
         } catch (Exception ex) {
             morphing = false;
@@ -443,6 +509,7 @@ public final class MinimalMiniplayerPatch {
         }
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static void setBounds(MiniplayerBoundsController controller, Rect bounds) {
         applyingBounds = true;
         try {
@@ -609,7 +676,9 @@ public final class MinimalMiniplayerPatch {
         cancelMorph();
         morphFrom.set(currentBounds);
         morphTo.set(currentBounds);
-        morphTo.offset(0, currentBounds.height());
+        // Clear of the screen, not one bar height down. That only reaches the navigation bar,
+        // which the bar then sits behind until YouTube is done closing after the click below.
+        morphTo.offset(0, Dim.getScreenHeight() - currentBounds.top);
 
         runMorph(false, () -> clickModernButton(modernCloseButtonRef, "close"));
     }
@@ -797,7 +866,43 @@ public final class MinimalMiniplayerPatch {
         // Not from showControls(), which YouTube bypasses when it puts the bar up itself.
         // Called for every bounds change and tick, and does nothing once the order is set.
         if (getCurrentMiniplayerType() == MINIMAL_BAR_2) {
-            setBarDrawsOverPlayer(inBarMode());
+            // Type 2 draws the bar on the video, and the player holds a SurfaceView that punches
+            // a hole through whatever was drawn before it, so the bar has to come after the player in the
+            // watch layout. Elevation is no use, this layout draws its children through its own
+            // drawChild and does not order them by it.
+            // The order is put back when the bar goes away. It also decides who gets a touch first, and
+            // a bar left in front swallows the taps that should reach the expanded player.
+            final boolean barMode = inBarMode();
+
+            if (barDrawsOverPlayer != barMode) {
+                View barContainer = barContainerRef.get();
+                if (barContainer != null && barContainer.getParent() instanceof ViewGroup parent) {
+                    if (barMode) {
+                        barIndexInParent = parent.indexOfChild(barContainer);
+                        if (barIndexInParent < 0) return;
+
+                        originalBarBackground = barContainer.getBackground();
+                        // Here the video, with a slight shading effect to increase
+                        // the text readability, is the background for the bar.
+                        barContainer.setBackground(customType2BarBackground);
+                        parent.bringChildToFront(barContainer);
+                    } else {
+                        barContainer.setBackground(originalBarBackground);
+                        originalBarBackground = null;
+
+                        final int childCount = parent.getChildCount();
+                        if (parent.indexOfChild(barContainer) == childCount - 1) {
+                            // Moving everything the bar jumped over back to the front, in order, leaves
+                            // the bar itself at the index it started from.
+                            for (int i = barIndexInParent; i < childCount - 1; i++) {
+                                parent.bringChildToFront(parent.getChildAt(barIndexInParent));
+                            }
+                        }
+                    }
+                }
+            }
+
+            barDrawsOverPlayer = barMode;
         }
 
         final int height = currentBounds.height();
@@ -850,46 +955,6 @@ public final class MinimalMiniplayerPatch {
         watchPlayerRef = new WeakReference<>(watchPlayer);
 
         return watchPlayer;
-    }
-
-    /**
-     * Type 2 draws the bar on the video, and the player holds a {@code SurfaceView} that punches
-     * a hole through whatever was drawn before it, so the bar has to come after the player in the
-     * watch layout. Elevation is no use, this layout draws its children through its own
-     * {@code drawChild} and does not order them by it.
-     * <p>
-     * The order is put back when the bar goes away. It also decides who gets a touch first, and
-     * a bar left in front swallows the taps that should reach the expanded player.
-     */
-    private static void setBarDrawsOverPlayer(boolean over) {
-        if (barDrawsOverPlayer == over) return;
-
-        View barContainer = barContainerRef.get();
-        if (barContainer == null || !(barContainer.getParent() instanceof ViewGroup parent)) return;
-
-        if (over) {
-            barIndexInParent = parent.indexOfChild(barContainer);
-            if (barIndexInParent < 0) return;
-
-            originalBarBackground = barContainer.getBackground();
-            // Here the video is the background of the bar.
-            barContainer.setBackground(null);
-            parent.bringChildToFront(barContainer);
-        } else {
-            barContainer.setBackground(originalBarBackground);
-            originalBarBackground = null;
-
-            final int childCount = parent.getChildCount();
-            if (parent.indexOfChild(barContainer) == childCount - 1) {
-                // Moving everything the bar jumped over back to the front, in order, leaves
-                // the bar itself at the index it started from.
-                for (int i = barIndexInParent; i < childCount - 1; i++) {
-                    parent.bringChildToFront(parent.getChildAt(barIndexInParent));
-                }
-            }
-        }
-
-        barDrawsOverPlayer = over;
     }
 
     private static void showControls(boolean show) {

@@ -40,7 +40,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_clear_history">Borrar historial de búsqueda</string>
   <string name="morphe_settings_search_clear_history_message">¿Realmente quieres borrar todo el historial de búsqueda?</string>
   <string name="morphe_settings_search_tips_title">Consejos de búsqueda</string>
-  <string name="morphe_settings_search_tips_summary">"• Toca una ruta para navegar a ella
+  <string name="morphe_settings_search_tips_summary">"• Pulsa una ruta para navegar a ella
 • Mantén pulsado un ajuste para navegar a él
 • Pulsa Enter para guardar una consulta de búsqueda en el historial
 • La búsqueda ignora mayúsculas, minúsculas y puntuación
@@ -136,7 +136,7 @@ No se te notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadores de funciones guardados</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadores de funciones restablecidos</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadores de funciones copiados al portapapeles</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la app para usar este ajuste</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la aplicación para usar este ajuste</string>
   <string name="morphe_debug_feature_flags_manager_import_export_title">Exportar e importar</string>
   <string name="morphe_debug_feature_flags_manager_import_success">Importados %s indicadores de funciones</string>
   <string name="morphe_debug_feature_flags_manager_import_failed">No se encontraron indicadores de funciones</string>
@@ -150,7 +150,7 @@ No se te notificará de ningún evento inesperado."</string>
 Se bloquean la mitad de los %s indicadores, y tras cada reinicio tú dices si el comportamiento sigue presente.
 
 Reproduce el comportamiento una vez antes de empezar; de lo contrario, los indicadores que la aplicación aún no ha solicitado faltarán en la búsqueda"</string>
-  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Inicio</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Comenzar</string>
   <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"No hay indicadores de funciones para buscar.
 
 Solo los indicadores que la aplicación ha alcanzado y que no están forzados actualmente se pueden usar en una búsqueda binaria"</string>
@@ -197,7 +197,7 @@ Sigue la guía \"Don't kill my app\" para tu teléfono, y aplica las instruccion
 
 Esto es requerido para el funcionamiento de la aplicación."</string>
   <string name="gms_core_dialog_open_website_text">Abrir sitio web</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Las optimizaciones de batería para MicroG deben desactivarse para prevenir problemas.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Las optimizaciones de batería para MicroG deben desactivarse para evitar problemas.
 
 Deshabilitar las optimizaciones de batería para MicroG no tendrá un efecto negativo en el uso de la batería.
 
@@ -220,11 +220,11 @@ Si no se modifican las optimizaciones de la batería, es posible que se produzca
   <string name="morphe_link_handling_open">Abrir configuración</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 ¡Alerta experimental! 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Estás usando una versión experimental de la app: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_message">"Estás usando una versión experimental de la aplicación: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Puede que la app se comporte de forma extraña o que se produzcan errores no identificados mientras afinamos los parches para esta versión de la app.
+🔧 Puede que la aplicación se comporte de forma extraña o que se produzcan errores no identificados mientras afinamos los parches para esta versión de la aplicación.
 &lt;br/&gt;&lt;br/&gt;
-Si deseas disfrutar de una experiencia sin problemas, &lt;b&gt;desinstala&lt;/b&gt; esta versión y actualiza la app a la versión recomendada: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Si deseas disfrutar de una experiencia sin problemas, &lt;b&gt;desinstala&lt;/b&gt; esta versión y actualiza la aplicación a la versión recomendada: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quiero experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quiero estable</string>
 </resources>

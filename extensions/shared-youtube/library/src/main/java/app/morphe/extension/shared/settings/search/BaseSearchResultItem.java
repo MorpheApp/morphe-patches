@@ -194,6 +194,7 @@ public abstract class BaseSearchResultItem {
          */
         private void appendText(StringBuilder builder, CharSequence text) {
             if (!TextUtils.isEmpty(text)) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append(" ");
                 }

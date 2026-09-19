@@ -32,6 +32,50 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">ใช้ตัวดาวน์โหลดภายนอกที่คุณเลือกแทนปุ่มดาวน์โหลดเริ่มต้น</string>
   <string name="morphe_external_downloader_flyout_menu_title">แทนที่เมนูดาวน์โหลด</string>
   <string name="morphe_external_downloader_flyout_menu_summary">ใช้ตัวดาวน์โหลดภายนอกที่คุณเลือกแทนเมนูดาวน์โหลดแบบเลื่อนออกเริ่มต้น</string>
+  <string name="morphe_music_in_app_downloads_title">ดาวน์โหลดในแอป</string>
+  <string name="morphe_music_in_app_downloads_summary">ดาวน์โหลดเสียงภายใน YouTube Music แทนการเปิดแอปตัวดาวน์โหลดภายนอก</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"แทร็กจะถูกบันทึกไว้ในพื้นที่จัดเก็บข้อมูลส่วนตัวของแอป และจะถูกลบหากถอนการติดตั้ง YouTube Music
+
+เมื่อเปิดฟีเจอร์นี้ แท็บดาวน์โหลดจะแสดงรายการแทร็กเหล่านี้แทนคลังออฟไลน์ของ Music Premium การปิดฟีเจอร์นี้จะทำให้แท็บกลับมาเหมือนเดิม และไฟล์ดาวน์โหลดของ Premium จะไม่มีวันถูกแตะต้อง"</string>
+  <string name="morphe_music_downloads_screen_title">ดาวน์โหลด</string>
+  <string name="morphe_music_downloads_empty">"ไม่มีรายการดาวน์โหลด
+แทร็กที่ดาวน์โหลดจะปรากฏที่นี่"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">%1$s แทร็ก • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">ค้นหารายการดาวน์โหลด</string>
+  <string name="morphe_music_downloads_sort">จัดเรียง</string>
+  <string name="morphe_music_downloads_sort_artist">จัดเรียงตามศิลปิน</string>
+  <string name="morphe_music_downloads_sort_title">จัดเรียงตามชื่อ</string>
+  <string name="morphe_music_downloads_sort_size">จัดเรียงตามขนาด</string>
+  <string name="morphe_music_downloads_delete_all">ลบรายการดาวน์โหลดทั้งหมด</string>
+  <string name="morphe_music_downloads_delete_all_title">ลบรายการดาวน์โหลดทั้งหมดหรือไม่</string>
+  <string name="morphe_music_downloads_delete_all_message">แทร็กที่ดาวน์โหลดทั้งหมดจะถูกลบออกจากอุปกรณ์นี้</string>
+  <string name="morphe_music_downloads_all_deleted">ลบรายการดาวน์โหลดแล้ว</string>
+  <string name="morphe_music_downloads_nothing_found">ไม่พบรายการ</string>
+  <string name="morphe_music_downloads_actions_for">การดำเนินการสำหรับ %s</string>
+  <string name="morphe_music_downloads_play">เล่น</string>
+  <string name="morphe_music_downloads_play_pause">เล่นหรือหยุดชั่วคราว</string>
+  <string name="morphe_music_downloads_previous">ก่อนหน้า</string>
+  <string name="morphe_music_downloads_next">ถัดไป</string>
+  <string name="morphe_music_downloads_pause">หยุดชั่วคราว</string>
+  <string name="morphe_music_downloads_close">ปิด</string>
+  <string name="morphe_music_downloads_delete">ลบ</string>
+  <string name="morphe_music_downloads_delete_track">ลบรายการดาวน์โหลด</string>
+  <string name="morphe_music_downloads_delete_track_title">ลบรายการดาวน์โหลดหรือไม่</string>
+  <string name="morphe_music_downloads_delete_track_message">%s จะถูกลบออกจากอุปกรณ์นี้</string>
+  <string name="morphe_music_downloads_track_deleted">ลบรายการดาวน์โหลดแล้ว</string>
+  <string name="morphe_music_downloads_track_delete_failed">ไม่สามารถลบรายการดาวน์โหลดได้</string>
+  <string name="morphe_music_downloads_play_failed">ไม่สามารถเล่นรายการดาวน์โหลดได้</string>
+  <string name="morphe_music_downloads_notification_channel">การดาวน์โหลดเสียง</string>
+  <string name="morphe_music_downloads_playback_channel">การเล่นแบบออฟไลน์</string>
+  <string name="morphe_music_downloads_unknown_track">ไม่สามารถระบุแทร็กที่จะดาวน์โหลดได้</string>
+  <string name="morphe_music_downloads_already_running">มีการดาวน์โหลดอยู่ระหว่างดำเนินการแล้ว</string>
+  <string name="morphe_music_downloads_already_saved">ดาวน์โหลดไปแล้ว</string>
+  <string name="morphe_music_downloads_started">เริ่มดาวน์โหลดแล้ว</string>
+  <string name="morphe_music_downloads_starting">กำลังเริ่มดาวน์โหลด…</string>
+  <string name="morphe_music_downloads_progress">กำลังดาวน์โหลด %s%%</string>
+  <string name="morphe_music_downloads_complete">ดาวน์โหลดเสร็จสมบูรณ์</string>
+  <string name="morphe_music_downloads_failed">ดาวน์โหลดล้มเหลว</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">เกี่ยวกับ</string>
@@ -308,32 +352,115 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">ใช้เนื้อเพลงของบุคคลที่สาม</string>
   <string name="morphe_music_lyrics_enabled_summary">แสดงเนื้อเพลงจากบริการของบุคคลที่สาม โดยย้อนกลับไปที่เนื้อเพลงในตัวเมื่อไม่พบ</string>
-  <string name="morphe_music_lyrics_source_title">บริการเนื้อเพลง</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, แล้ว KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">บริการเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_section_overlay_title">โอเวอร์เลย์</string>
+  <string name="morphe_music_lyrics_section_sync_title">การซิงโครไนซ์</string>
+  <string name="morphe_music_lyrics_section_about_title">เกี่ยวกับ</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_lyrics_source_summary">แตะ ▲/▼ เพื่อตั้งลำดับความสำคัญ แล้วแตะช่องทำเครื่องหมายเพื่อเปิดหรือปิดผู้ให้บริการแต่ละราย</string>
+  <string name="morphe_music_lyrics_source_all_disabled">ผู้ให้บริการทั้งหมดถูกปิดใช้งาน — เนื้อเพลงในตัวและเนื้อเพลงแบบฝัง</string>
+  <string name="morphe_music_lyrics_source_reset_title">รีเซ็ตผู้ให้บริการทั้งหมดหรือไม่</string>
+  <string name="morphe_music_lyrics_source_reset_message">คืนค่าผู้ให้บริการกลับไปเป็นลำดับความสำคัญเริ่มต้น</string>
+  <string name="morphe_music_token_dialog_get_token">รับโทเค็น</string>
+  <string name="morphe_music_apple_music_token_title">โทเค็นผู้ใช้สื่อ Apple Music</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"วางคุกกี้ media-user-token จาก music.apple.com
+
+ขั้นตอน:
+1. ลงชื่อเข้าใช้ที่ music.apple.com ในฐานะสมาชิก
+2. เปิด DevTools → Application → Cookies → music.apple.com
+3. คัดลอกค่าของ \"media-user-token\""</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token […] อีกครั้ง</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: ล้าง media-user-token แล้ว</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
+  <string name="morphe_music_spotify_token_title">Spotify […] คัดลอกค่าของ \"sp_dc\"</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"วางคุกกี้ sp_dc จาก Spotify
+
+ขั้นตอน:
+1. ลงชื่อเข้าใช้ที่ https://open.spotify.com
+2. เปิด DevTools → Application → Cookies → https://open.spotify.com
+3. คัดลอกค่าของ \"sp_dc\""</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: บันทึก sp_dc แล้ว</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] หากไม่มี ระบบจะใช้ Lyrically เป็นตัวสำรอง</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
+  <string name="morphe_music_apple_token_optional_hint">โทเค็นของ Apple Music เป็นตัวเลือกเสริม หากไม่มีโทเค็นนี้ โปรแกรมจะใช้ Lyrically เป็นตัวสำรอง</string>
+  <string name="morphe_music_deezer_arl_title">Deezer […] คัดลอกค่าของ \"arl\"</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"วางคุกกี้ arl จาก Deezer
+
+ขั้นตอน:
+1. ลงชื่อเข้าใช้ที่ https://www.deezer.com
+2. เปิด DevTools → Application → Cookies → https://www.deezer.com
+3. คัดลอกค่าของ \"arl\""</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: บันทึก arl แล้ว</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl […] อีกครั้ง</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch […] คัดลอกค่าของโทเค็นผู้ใช้</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch ใช้งานได้โดยไม่ต้องมีโทเค็น ดังนั้นช่องนี้จึงเว้นว่างไว้ได้
+
+เพิ่มโทเค็นเฉพาะเมื่อต้องการใช้บัญชีของคุณเองเท่านั้น โทเค็นจะต้องมาจากแอป Musixmatch บน Android: โทเค็นที่คัดลอกจาก musixmatch.com เป็นของโปรแกรมเดสก์ท็อปที่เลิกใช้งานแล้ว และ API จะปฏิเสธโทเค็นเหล่านั้น"</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">ผู้ใช้ […] อีกครั้ง</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: บันทึกโทเค็นผู้ใช้แล้ว</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ล้างโทเค็นผู้ใช้แล้ว</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: โทเค็นผู้ใช้ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
+  <string name="morphe_music_youtube_cookies_title">คุกกี้ YouTube</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"วาง […] คัดลอกสตริงคุกกี้แบบเต็ม (คู่ key=value คั่นด้วยเครื่องหมายอัฒภาค)
+
+คุกกี้ที่ต้องใช้: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PSID, __Secure-3PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: บันทึกคุกกี้แล้ว</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: ล้างคุกกี้แล้ว</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: คุกกี้ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, จากนั้น QQ, จากนั้น KuGou, จากนั้น NetEase, จากนั้น BiniLyrics, จากนั้น Unison, จากนั้น AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">แตะเส้นเพื่อค้นหา</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">การแตะเส้นจะข้ามไปยังช่วงเวลานั้นในเพลง</string>
   <string name="morphe_music_lyrics_show_copy_button_title">แสดงปุ่มคัดลอก</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">แตะเพื่อคัดลอกเนื้อเพลงต้นฉบับเป็นข้อความธรรมดา; กดค้างเพื่อบันทึกไฟล์ซอร์สเนื้อเพลงดิบไปยังโฟลเดอร์ดาวน์โหลด</string>
   <string name="morphe_music_lyrics_show_translate_button_title">แสดงปุ่มแปลภาษา</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">แปลเนื้อเพลงโดยใช้คำแปลจากผู้ให้บริการหรือ Google Translate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">แสดงปุ่มโรมาไนซ์</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">โรมาไนซ์เนื้อเพลงโดยใช้การโรมาไนซ์จากผู้ให้บริการหรือการโรมาไนซ์ของ Google Translate</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">แสดงปุ่มรีเฟรช</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังตัวเลือกเนื้อเพลงถัดไป; กดค้างเพื่อปิดใช้เนื้อเพลงจากบุคคลที่สามชั่วคราวและแสดงเนื้อเพลงในตัว</string>
+  <string name="morphe_music_lyrics_saved">บันทึกแล้ว</string>
+  <string name="morphe_music_lyrics_word_sync_title">ไฮไลต์คำหรือพยางค์ที่ซิงก์</string>
+  <string name="morphe_music_lyrics_word_sync_summary">ให้ความสำคัญกับเนื้อเพลงแบบคำต่อคำเมื่อมีให้บริการ เมื่อเนื้อเพลงมีข้อมูลเวลาของคำ จะไฮไลต์แต่ละคำหรือพยางค์ให้ตรงกับจังหวะเพลง</string>
+  <string name="morphe_music_lyrics_hide_played_title">ซ่อนบรรทัดที่เล่นแล้ว […]</string>
+  <string name="morphe_music_lyrics_hide_played_summary">ซ่อนบรรทัดเนื้อเพลงที่อยู่เหนือบรรทัดที่กำลังเล่น</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">ซ่อนเนื้อเพลงที่ยังไม่เล่น</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">ซ่อนเนื้อเพลงที่อยู่ต่ำกว่าบรรทัดที่กำลังเล่น […] หน้าจอ</string>
+  <string name="morphe_music_lyrics_mediasession_title">แสดงเนื้อเพลง MediaSession บนหน้าจอล็อก</string>
+  <string name="morphe_music_lyrics_miniplayer_title">แสดงเนื้อเพลงในมินิเพลเยอร์</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">การแสดงศิลปินและชื่อเพลง […] เปิด \"ศิลปิน - ชื่อเพลง\" และปิด \"ชื่อเพลง - ศิลปิน\" ไม่มีผลต่อการค้นหาเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_display_artist_first_summary">สลับลำดับการแสดงชื่อศิลปินและชื่อเพลงในมินิเพลเยอร์และ MediaSession เปิด \"ชื่อศิลปิน - ชื่อเพลง\" และปิด \"ชื่อเพลง - ชื่อศิลปิน\" ไม่ส่งผลต่อการค้นหาเนื้อเพลง</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">ตัวกรอง</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Metadata: \"รีเจ็กซ์ตัวกรองเนื้อเพลง\"</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">นิพจน์ทั่วไปที่ใช้กับชื่อเพลง ศิลปิน และอัลบั้มก่อนค้นหาเนื้อเพลง เว้นว่างเพื่อปิดใช้ ค่าเริ่มต้นจะลบคำที่ไม่จำเป็นทั่วไป เช่น \"Official Video\" \"Remaster\" และ \"- Topic\"</string>
+  <string name="morphe_music_lyrics_text_filter_title">นิพจน์ทั่วไปสำหรับกรองเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_text_filter_summary">นิพจน์ทั่วไปที่ใช้กับเนื้อเพลงต้นฉบับเท่านั้น (ไม่รวมคำแปลหรือข้อความแบบโรมัน) เว้นว่างเพื่อปิดใช้งาน</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">…</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">หากเนื้อเพลงถูกกรองไปไว้ด้านล่างอย่างไม่ถูกต้อง ให้ปรับหรือล้างค่าตรงนี้ คำกำกับที่คั่นด้วยเครื่องหมายจุลภาค: บรรทัดที่มีคำกำกับตามด้วยเครื่องหมายทวิภาคจะแสดงเป็นข้อมูลเครดิตที่ด้านล่าง เว้นว่างเพื่อปิดใช้</string>
   <string name="morphe_music_lyrics_text_size_title">ขนาดข้อความ</string>
   <string name="morphe_music_lyrics_text_size_summary">ขนาดของข้อความเนื้อเพลง</string>
   <string name="morphe_music_lyrics_offset_ms_title">การชดเชยเวลา</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">เลื่อนเนื้อเพลงที่ซิงค์ไปข้างหน้าหรือข้างหลัง ใช้ค่าบวกหากเนื้อเพลงวิ่งนำหน้าเพลง</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">เนื้อเพลงแบบซิงก์จะติดตามการเล่น หากคลาดเคลื่อน ให้ปรับค่าชดเชยเวลา เลื่อนเนื้อเพลงแบบซิงก์ไปข้างหน้าหรือข้างหลัง ใช้ค่าเป็นบวกหากเนื้อเพลงเร็วกว่าเพลง</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">แหล่งที่มา: %s</string>
+  <string name="morphe_music_lyrics_translated_by_google">แปลโดย Google</string>
+  <string name="morphe_music_lyrics_romanized_by_google">โรมาไนซ์โดย Google</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">แปลภาษา</string>
-  <string name="morphe_music_lyrics_translate_hide">แสดงต้นฉบับ</string>
+  <string name="morphe_music_lyrics_translate_hide">แปลแล้ว</string>
   <string name="morphe_music_lyrics_translating">กำลังแปล...</string>
   <string name="morphe_music_lyrics_translate_failed">ไม่สามารถแปลเนื้อเพลงได้</string>
-  <string name="morphe_music_lyrics_copy">คัดลอก</string>
+  <string name="morphe_music_lyrics_romanize_hide">โรมาไนซ์แล้ว</string>
+  <string name="morphe_music_lyrics_romanizing">กำลังโรมาไนซ์…</string>
+  <string name="morphe_music_lyrics_romanize_failed">ไม่สามารถโรมาไนซ์เนื้อเพลงได้</string>
   <string name="morphe_music_lyrics_copied">คัดลอกไปยังคลิปบอร์ดแล้ว</string>
-  <string name="morphe_music_lyrics_about_title">เกี่ยวกับเนื้อเพลงของบุคคลที่สาม</string>
-  <string name="morphe_music_lyrics_about_summary">"เนื้อเพลงจะถูกค้นหาตามชื่อเพลงและศิลปิน ดังนั้นเพลงที่มีข้อมูลเมตาที่ผิดปกติอาจไม่พบอะไรเลย หรือพบเวอร์ชันที่ไม่ถูกต้อง
-
-เนื้อเพลงที่ซิงค์ตามการเล่น หากดริฟท์ ให้ปรับการชดเชยเวลา
-
-เมื่อไม่พบเนื้อเพลงของบุคคลที่สาม เนื้อเพลงในตัวจะแสดงแทน"</string>
+  <string name="morphe_music_lyrics_refreshing">กำลังรีเฟรช</string>
+  <string name="morphe_music_lyrics_refreshed">รีเฟรชแล้ว</string>
+  <string name="morphe_music_lyrics_about_summary">"ค้นหาเนื้อเพลงจากชื่อเพลงและศิลปิน […] คุณยังลองใช้ปุ่มรีเฟรชเพื่อสลับเวอร์ชันด้วยตนเองได้ เมื่อไม่พบเนื้อเพลงของบุคคลที่สาม ระบบจะแสดงเนื้อเพลงในตัวหรือเนื้อเพลงแบบฝังแทน […] ผู้ให้บริการที่เปิดใช้ทั้งหมดไม่ได้ถูกเรียกตามลำดับที่คุณเลือกเสมอไป แต่จะตอบสนองตามความเร็วของบริการ"</string>
+  <string name="morphe_music_lyrics_hide_info_title">ซ่อนบรรทัดเครดิต</string>
+  <string name="morphe_music_lyrics_hide_info_summary">ซ่อนบรรทัดเครดิตที่แสดงใต้เนื้อเพลง</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">สลับคำแปลและการโรมาไนซ์</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">การเปิดจะวางการโรมาไนซ์ไว้ใต้เนื้อเพลงและคำแปลไว้ด้านบน การปิดจะให้การโรมาไนซ์อยู่ด้านบนและคำแปลอยู่ด้านล่าง</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - ปิดใช้งานไอคอนตัวหนา</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - กู้คืนแท็บถัดไป เนื้อเพลง และที่เกี่ยวข้องของเครื่องเล่น</string>

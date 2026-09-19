@@ -9,8 +9,8 @@ package app.morphe.patches.shared.ad
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 

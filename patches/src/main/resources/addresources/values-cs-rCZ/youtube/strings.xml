@@ -381,6 +381,12 @@ Hlášení jsou veřejná a před přidáním kanálu do seznamu jsou kontrolov�
   <string name="morphe_channel_whitelist_channel_added">Kanál byl přidán do seznamu povolených</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanál byl odebrán ze seznamu povolených</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Hledat v kanálu</string>
+  <string name="morphe_channel_search_summary">Když je otevřený kanál, hledá se pouze v tomto kanálu.</string>
+  <string name="morphe_channel_search_results">Výsledky vyhledávání kanálů</string>
+  <string name="morphe_channel_search_no_results">Na tomto kanálu se nic nenašlo</string>
+  <string name="morphe_channel_search_failed">Tento kanál se nepodařilo prohledat</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Odkaz zkopírován do schránky</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Odkaz s časovým razítkem zkopírován do schránky</string>
@@ -502,8 +508,12 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Toto video je již uloženo do seznamu pro pozdější zhlédnutí</string>
   <string name="morphe_save_to_watch_later_error_toast">Nelze uložit toto video do seznamu pro pozdější zhlédnutí</string>
   <string name="morphe_save_to_watch_later_flyout_title">Uložit do seznamu Později</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Zobrazit tlačítko Uložit do seznamu Přehrát později v rozbalovací nabídce nastavení přehrávače</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Umožňuje uložit právě sledované video do seznamu „Přehrát později“ z rozbalovací nabídky nastavení videa</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Zobrazit tlačítko Uložit do seznamu Později u videí pro děti</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umožňuje ukládat videa pro děti do rozbalovací nabídky \'Přehrát později\'.</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Umožňuje ukládat videa související s dětmi do seznamu „Přehrát později“ z rozbalovací nabídky</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Zobrazit tlačítko Uložit k přehrání později v nabídce Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Umožňuje ukládat Shorts do seznamu „Přehrát později“ z rozbalovací nabídky</string>
   <string name="morphe_queue_flyout_title">Přidat do Morphe fronty</string>
   <string name="morphe_queue_restore_title">Udržet frontu mezi relacemi</string>
   <string name="morphe_queue_restore_summary">Fronta je zachována i po restartu aplikace</string>
@@ -909,6 +919,9 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <string name="morphe_exit_fullscreen_entry_2">Na výšku</string>
   <string name="morphe_exit_fullscreen_entry_3">Na šířku</string>
   <string name="morphe_exit_fullscreen_entry_4">Na výšku i na šířku</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Vynutit orientaci na šířku v režimu celé obrazovky</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Při přepnutí na celou obrazovku otočte přehrávač na šířku. Na malých obrazovkách není k dispozici, protože se už otevírají na celou obrazovku na šířku.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesta pro celou obrazovku</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gesta přehrávače v režimu celé obrazovky</string>
@@ -1255,6 +1268,7 @@ Přehrávání videa s AV1 se může sekat nebo vypadávat snímky."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Žádný video kodek AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Režim 360° VR prohlížení není k dispozici</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilní hlasitost není k dispozici</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Přehrávání může skončit o 1 sekundu dříve</string>
   <string name="morphe_spoof_video_streams_about_js">• Pokud selže deobfuskace, může se také selhat přehrávání</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Vynutit původní zvuk není k dispozici</string>

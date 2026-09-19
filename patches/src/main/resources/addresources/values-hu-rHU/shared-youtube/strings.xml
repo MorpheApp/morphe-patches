@@ -65,6 +65,15 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
   <string name="morphe_custom_branding_icon_entry_6">Morphe fekete játék</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Egyéni</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Ez módosítja az alkalmazásindítóban látható ikont.
+
+Ez a beállítás nem módosítja az ikont a következő helyeken:
+• Az eszköz rendszerbeállításaiban található alkalmazáslista
+• Egyes leküldéses értesítések
+• „Megnyitás ezzel” alkalmazásválasztó
+• Android Auto-ikon
+
+Az ikon mindenhol történő megváltoztatásához futtasd újra a javítást, és módosítsd az „Alkalmazásikon” javítási beállítást."</string>
   <string name="morphe_custom_branding_notification_icon_title">Értesítési ikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Alkalmazás ikonjának módosítása</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe lejátszás</string>

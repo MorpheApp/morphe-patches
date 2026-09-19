@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">Канал добавлен в список разрешенных</string>
   <string name="morphe_channel_whitelist_channel_removed">Канал удален из списка разрешенных</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Поиск по каналу</string>
+  <string name="morphe_channel_search_summary">При открытом канале поиск выполняется только по этому каналу</string>
+  <string name="morphe_channel_search_results">Результаты поиска каналов</string>
+  <string name="morphe_channel_search_no_results">В этом канале ничего не найдено</string>
+  <string name="morphe_channel_search_failed">Не удалось выполнить поиск по каналу</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Ссылка скопирована в буфер обмена</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Ссылка с отметкой времени скопирована в буфер обмена</string>
@@ -504,8 +510,12 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Это видео уже сохранено в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Не удалось сохранить это видео в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_flyout_title">Сохранить в „Смотреть позже“</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Показывать кнопку «Сохранить в „Посмотреть позже“» во всплывающем меню настроек плеера</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Позволяет сохранять текущее видео в «Посмотреть позже» из всплывающего меню настроек видео</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Показывать кнопку «Сохранить в „Смотреть позже“» в детских видео</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Разрешает сохранять детские видео в выпадающем меню «Смотреть позже»</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Позволяет сохранять детские видео в «Посмотреть позже» из всплывающего меню</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Показывать кнопку «Сохранить в „Посмотреть позже“» во всплывающем меню шортсов</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Позволяет сохранять шортсы в «Посмотреть позже» из всплывающего меню</string>
   <string name="morphe_queue_flyout_title">Добавить в очередь Morphe</string>
   <string name="morphe_queue_restore_title">Сохранять очередь между сеансами</string>
   <string name="morphe_queue_restore_summary">Очередь сохраняется после перезапуска приложения</string>
@@ -913,6 +923,9 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_2">Портрет</string>
   <string name="morphe_exit_fullscreen_entry_3">Ландшафт</string>
   <string name="morphe_exit_fullscreen_entry_4">Портрет и ландшафт</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Принудительно включать альбомную ориентацию в полноэкранном режиме</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Поверните плеер в альбомную ориентацию при переходе в полноэкранный режим. Недоступно на маленьких экранах, которые уже открывают полноэкранный режим в альбомной ориентации</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Жесты полноэкранного режима</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Жесты плеера в полноэкранном режиме</string>
@@ -1260,6 +1273,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсутствует видеокодек AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Режим погружения 360° VR недоступен</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Постоянный уровень громкости недоступен </string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Воспроизведение может закончиться на 1 секунду раньше</string>
   <string name="morphe_spoof_video_streams_about_js">• Если деобфускация провалится, воспроизведение может провалиться</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Принудительная оригинальная звуковая дорожка недоступна</string>

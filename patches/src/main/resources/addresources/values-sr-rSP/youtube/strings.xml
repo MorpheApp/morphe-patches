@@ -381,6 +381,12 @@ Promene uključuju:
   <string name="morphe_channel_whitelist_channel_added">Канал је додат на белу листу</string>
   <string name="morphe_channel_whitelist_channel_removed">Канал је уклоњен са беле листе</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Претрага у оквиру канала</string>
+  <string name="morphe_channel_search_summary">Док је канал отворен, претрага се врши само у том каналу.</string>
+  <string name="morphe_channel_search_results">Резултати претраге канала</string>
+  <string name="morphe_channel_search_no_results">Ништа није пронађено на овом каналу</string>
+  <string name="morphe_channel_search_failed">Претрага овог канала није успела</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Линк копиран у привремену меморију</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Линк са временском ознаком копиран у привремену меморију</string>
@@ -502,8 +508,12 @@ Promene uključuju:
   <string name="morphe_save_to_watch_later_already_exists_toast">Овај видео је већ сачуван у листу за гледање касније</string>
   <string name="morphe_save_to_watch_later_error_toast">Не може да сачува овај видео у листу за гледање касније</string>
   <string name="morphe_save_to_watch_later_flyout_title">Сачувај за касније</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Прикажи дугме Сачувај за касније у искачућем менију подешавања плејера</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Омогућава чување тренутно гледаног видео снимка у листу „Погледај касније“ из искачућег менија подешавања видеа.</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Прикажи дугме Сачувај за касније у дечијим видео снимцима</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Омогућава чување видео записа за децу у искачућем менију \'Погледај касније\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Омогућава чување дечијих видео снимака у листу „Погледај касније“ из искачућег менија.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Прикажи дугме „Сачувај у Погледај касније“ у искачућем менију за кратке видео снимке.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Омогућава чување кратких видео снимака у листу „Погледај касније“ из искачућег менија.</string>
   <string name="morphe_queue_flyout_title">Додај у Morphe ред</string>
   <string name="morphe_queue_restore_title">Задржите ред чекања између сесија</string>
   <string name="morphe_queue_restore_summary">Ред чекања се чува након поновног покретања апликације</string>
@@ -909,6 +919,9 @@ Promene uključuju:
   <string name="morphe_exit_fullscreen_entry_2">Портретно</string>
   <string name="morphe_exit_fullscreen_entry_3">Пејзажно</string>
   <string name="morphe_exit_fullscreen_entry_4">Усправно и водоравно</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Принуди пејзажни приказ у режиму целог екрана</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Окрените плејер у хоризонтални режим када пређете на цео екран. Недоступно на малим екранима, који се већ отварају преко целог екрана у хоризонталном режиму</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Гестови преко целог екрана</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Покрети плејера у режиму преко целог екрана</string>
@@ -1241,6 +1254,7 @@ Promene uključuju:
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодека AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Опција „Уједначена јачина звука” није доступна</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Репродукција може да се заврши 1 секунду раније</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako deobfuskacija propadne, reprodukcija može propasti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Присиљавање оригиналног звука није доступно</string>

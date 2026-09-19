@@ -381,6 +381,12 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_channel_whitelist_channel_added">Canal adăugat în lista albă</string>
   <string name="morphe_channel_whitelist_channel_removed">Canal eliminat din lista albă</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Căutare în canal</string>
+  <string name="morphe_channel_search_summary">Căutarea în timp ce un canal este deschis se limitează la acel canal.</string>
+  <string name="morphe_channel_search_results">Rezultatele căutării în canal</string>
+  <string name="morphe_channel_search_no_results">Nu s-a găsit nimic în acest canal.</string>
+  <string name="morphe_channel_search_failed">Nu s-a putut căuta în acest canal.</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiat în clipboard</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link cu marcaj temporal copiat în clipboard</string>
@@ -502,8 +508,12 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Acest video este deja salvat în lista de vizionare ulterioară</string>
   <string name="morphe_save_to_watch_later_error_toast">Nu se poate salva acest video în lista de vizionare ulterioară</string>
   <string name="morphe_save_to_watch_later_flyout_title">Salvează în Urmărește mai târziu</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Afișează butonul Salvează în Vizionează mai târziu în meniul de setări al playerului</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Permite salvarea videoclipului în curs de vizionare în „Vizionează mai târziu” din meniul de setări al playerului</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Afișează butonul Salvează în Urmărește mai târziu în videoclipurile pentru copii</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite salvarea videoclipurilor pentru copii în meniul derulant \'Urmărește mai târziu\'.</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite salvarea videoclipurilor pentru copii în „Vizionează mai târziu” din meniul derulant</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Afișează butonul Salvează în Vizionează mai târziu în meniul pentru Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite salvarea shorts-urilor în „Vizionează mai târziu” din meniul derulant</string>
   <string name="morphe_queue_flyout_title">Adaugă în coada Morphe</string>
   <string name="morphe_queue_restore_title">Menține coada între sesiuni</string>
   <string name="morphe_queue_restore_summary">Coada este păstrată după repornirea aplicației</string>
@@ -911,6 +921,9 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_exit_fullscreen_entry_2">Portret</string>
   <string name="morphe_exit_fullscreen_entry_3">Peisaj</string>
   <string name="morphe_exit_fullscreen_entry_4">Portret și peisaj</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Forțează modul peisaj în ecran complet</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Rotește playerul în modul peisaj când intri în ecran complet. Indisponibil pe ecranele mici, care se deschid deja în ecran complet în modul peisaj</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gesturi ecran complet</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gesturi pentru player în modul ecran complet</string>
@@ -1258,6 +1271,7 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Fara codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mod 360° VR immersiv nu este disponibil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumul stabil nu este disponibil</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Redarea se poate încheia cu 1 secundă mai devreme.</string>
   <string name="morphe_spoof_video_streams_about_js">• Dacă deobfuscarea eșuează, reproducerea poate eșua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forțarea sunetului original nu este disponibilă</string>

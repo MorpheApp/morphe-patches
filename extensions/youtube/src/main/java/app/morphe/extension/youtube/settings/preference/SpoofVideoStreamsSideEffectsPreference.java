@@ -110,7 +110,8 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
                     summary = str("morphe_spoof_video_streams_about_no_stable_volume")
                             + '\n' + str("morphe_spoof_video_streams_about_sign_in_to_vr_required");
             case VISIONOS_1_02, VISIONOS_1_03 ->
-                    summary = str("morphe_spoof_video_streams_about_no_stable_volume");
+                    summary = str("morphe_spoof_video_streams_about_no_stable_volume")
+                            + '\n' + str("morphe_spoof_video_streams_about_end_early");
             case TV_SABR, TV_DASH, TV_SIMPLY ->
                     summary = str("morphe_spoof_video_streams_about_js");
             default -> Logger.printException(() -> "Unknown client: " + clientType);

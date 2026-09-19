@@ -22,7 +22,6 @@ import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesYouTube
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
 import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
@@ -82,7 +81,6 @@ private val preferences = mutableSetOf<BasePreference>()
 
 private val settingsResourcePatch = resourcePatch {
     dependsOn(
-        resourceMappingPatch,
         settingsPatch(
             rootPreferences = listOf(
                 // The Cairo layout shows the Morphe name as the category of the entry,
@@ -449,6 +447,24 @@ fun newIntent(settingsName: String) = IntentPreference.Intent(
 }
 
 object PreferenceScreen : BasePreferenceScreen() {
+    private val shortsPlayerPreferences = mutableSetOf<BasePreference>()
+
+    val SHORTS_PLAYER = PreferenceScreenPreference(
+        key = "morphe_shorts_player_screen",
+        sorting = Sorting.UNSORTED,
+        preferences = shortsPlayerPreferences,
+    )
+
+    private var shortsPlayerScreenAdded = false
+
+    fun addShortsPlayerPreferences(vararg preferences: BasePreference) {
+        shortsPlayerPreferences.addAll(preferences)
+
+        if (!shortsPlayerScreenAdded) {
+            SHORTS.addPreferences(SHORTS_PLAYER)
+            shortsPlayerScreenAdded = true
+        }
+    }
     // Sort screens in the root menu by key, to not scatter related items apart
     // (sorting key is set in morphe_prefs.xml).
     // If no preferences are added to a screen, the screen will not be added to the settings.

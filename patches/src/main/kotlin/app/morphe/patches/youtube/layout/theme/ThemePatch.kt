@@ -17,9 +17,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_DARK
 import app.morphe.patches.shared.layout.theme.STYLE_DEFAULT_COLOR_NAMES_LIGHT
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_EXTENSION_CLASS
@@ -226,8 +225,7 @@ val themePatch = baseThemePatch(
     },
     block = {
         val themeResourcePatch = resourcePatch {
-            dependsOn(resourceMappingPatch)
-
+        
             execute {
                 fun addColorResource(
                     resourceFile: String,
@@ -375,8 +373,7 @@ val themePatch = baseThemePatch(
         dependsOn(
             sharedExtensionPatch,
             settingsPatch,
-            resourceMappingPatch,
-            seekbarColorPatch,
+                seekbarColorPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
                 includeLightColor = true,

@@ -65,6 +65,15 @@ Verifiser at pakkenavnet er korrekt og appen er installert"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe lek svart</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Tilpass</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Dette endrer ikonet som vises i appstarteren din.
+
+Denne innstillingen vil ikke endre ikonet på noen av disse stedene:
+• Applisten i enhetens systeminnstillinger
+• Visse push-varsler
+• Appvelgeren for «Åpne med»
+• Android Auto-ikonet
+
+For å endre ikonet overalt, må du patche på nytt og endre patch-alternativet «App-ikon»."</string>
   <string name="morphe_custom_branding_notification_icon_title">Varslingsikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Tilpass app-ikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe spill</string>

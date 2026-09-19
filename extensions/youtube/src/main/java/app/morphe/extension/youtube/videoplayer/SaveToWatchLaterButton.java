@@ -32,7 +32,7 @@ public class SaveToWatchLaterButton {
             );
 
     static {
-        if (Settings.SAVE_TO_WATCH_LATER_BUTTON.get()) {
+        if (Settings.SAVE_TO_WATCH_LATER_OVERLAY_BUTTON.get()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
@@ -69,7 +69,7 @@ public class SaveToWatchLaterButton {
                     "morphe_save_to_watch_later_button",
                     null,
                     swapSaveAndQueue ? null : "morphe_save_to_watch_later_button",
-                    Settings.SAVE_TO_WATCH_LATER_BUTTON,
+                    Settings.SAVE_TO_WATCH_LATER_OVERLAY_BUTTON,
                     v -> clickAction.apply(swapSaveAndQueue),
                     v -> {
                         clickAction.apply(!swapSaveAndQueue);

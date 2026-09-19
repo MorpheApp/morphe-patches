@@ -345,6 +345,7 @@ Bike li vir da vekirina AiSlopList.com û dîsa dîtina barkirina platformên di
   <string name="morphe_channel_whitelist_channel_added">Kanalê li listeya spî de hat zêdekirin</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanalê ji listeya spî de hat lêkirin</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lînkê hat kopîkirin ser klîpbordê</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Lînkê bi demê hat kopîkirin ser klîpbordê</string>
@@ -847,6 +848,7 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <string name="morphe_exit_fullscreen_entry_2">Tênîşîn tenê</string>
   <string name="morphe_exit_fullscreen_entry_3">Horîzontal tenê</string>
   <string name="morphe_exit_fullscreen_entry_4">Portrait and landscape</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Têkelên tevna tîkê</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Tevgerên player di moda ekrana tijî de</string>

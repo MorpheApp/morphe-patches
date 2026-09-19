@@ -32,6 +32,50 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">Používá vámi zvolený externí downloader místo výchozího tlačítka Stáhnout</string>
   <string name="morphe_external_downloader_flyout_menu_title">Přepsat nabídku Stahování</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Používá vámi zvolený externí downloader místo výchozí nabídky Stáhnout</string>
+  <string name="morphe_music_in_app_downloads_title">Stahování v aplikaci</string>
+  <string name="morphe_music_in_app_downloads_summary">Stahuje zvuk v rámci YouTube Music místo otevírání externí aplikace pro stahování</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Skladby se ukládají do soukromého úložiště aplikace a smažou se, pokud je YouTube Music odinstalováno.
+
+Dokud je to zapnuté, karta Stahování zobrazuje tyto skladby místo offline knihovny Music Premium. Vypnutí obnoví kartu a stahování Premium se nikdy nedotkne."</string>
+  <string name="morphe_music_downloads_screen_title">Stahování</string>
+  <string name="morphe_music_downloads_empty">"Žádné stažené skladby
+Stažené skladby se zobrazí zde"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">%1$s skladeb • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">Hledat ve stažených skladbách</string>
+  <string name="morphe_music_downloads_sort">Seřadit</string>
+  <string name="morphe_music_downloads_sort_artist">Seřadit podle interpreta</string>
+  <string name="morphe_music_downloads_sort_title">Seřadit podle názvu</string>
+  <string name="morphe_music_downloads_sort_size">Seřadit podle velikosti</string>
+  <string name="morphe_music_downloads_delete_all">Smazat všechny stažené skladby</string>
+  <string name="morphe_music_downloads_delete_all_title">Smazat všechny stažené skladby?</string>
+  <string name="morphe_music_downloads_delete_all_message">Všechny stažené skladby budou z tohoto zařízení smazány</string>
+  <string name="morphe_music_downloads_all_deleted">Stažené skladby byly smazány</string>
+  <string name="morphe_music_downloads_nothing_found">Nic nebylo nalezeno</string>
+  <string name="morphe_music_downloads_actions_for">Akce pro %s</string>
+  <string name="morphe_music_downloads_play">Přehrát</string>
+  <string name="morphe_music_downloads_play_pause">Přehrát nebo pozastavit</string>
+  <string name="morphe_music_downloads_previous">Předchozí</string>
+  <string name="morphe_music_downloads_next">Další</string>
+  <string name="morphe_music_downloads_pause">Pozastavit</string>
+  <string name="morphe_music_downloads_close">Zavřít</string>
+  <string name="morphe_music_downloads_delete">Smazat</string>
+  <string name="morphe_music_downloads_delete_track">Smazat staženou skladbu</string>
+  <string name="morphe_music_downloads_delete_track_title">Smazat staženou skladbu?</string>
+  <string name="morphe_music_downloads_delete_track_message">%s bude smazána z tohoto zařízení</string>
+  <string name="morphe_music_downloads_track_deleted">Stažená skladba byla smazána</string>
+  <string name="morphe_music_downloads_track_delete_failed">Staženou skladbu se nepodařilo smazat</string>
+  <string name="morphe_music_downloads_play_failed">Staženou skladbu se nepodařilo přehrát</string>
+  <string name="morphe_music_downloads_notification_channel">Stahování zvuku</string>
+  <string name="morphe_music_downloads_playback_channel">Offline přehrávání</string>
+  <string name="morphe_music_downloads_unknown_track">Nepodařilo se identifikovat skladbu ke stažení</string>
+  <string name="morphe_music_downloads_already_running">Stahování již probíhá</string>
+  <string name="morphe_music_downloads_already_saved">Již staženo</string>
+  <string name="morphe_music_downloads_started">Stahování spuštěno</string>
+  <string name="morphe_music_downloads_starting">Spouštím stahování…</string>
+  <string name="morphe_music_downloads_progress">Stahování %s%%</string>
+  <string name="morphe_music_downloads_complete">Stahování dokončeno</string>
+  <string name="morphe_music_downloads_failed">Stahování selhalo</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O aplikaci</string>
@@ -308,32 +352,115 @@ Pro zajištění synchronizace scrobblingu během přehrávání na pozadí se u
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Používat texty od třetí strany</string>
   <string name="morphe_music_lyrics_enabled_summary">Zobrazuje texty ze služby třetí strany, s přechodem na vestavěné texty, pokud neexistují.</string>
-  <string name="morphe_music_lyrics_source_title">Služba textů</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, poté KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Služba pro texty písní</string>
+  <string name="morphe_music_lyrics_section_overlay_title">Překryv</string>
+  <string name="morphe_music_lyrics_section_sync_title">Synchronizace</string>
+  <string name="morphe_music_lyrics_section_about_title">O aplikaci</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_lyrics_source_summary">Klepnutím na ▲/▼ nastavíte pořadí priority a políčkem zapnete nebo vypnete jednotlivé poskytovatele.</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Všichni poskytovatelé vypnuti – vestavěné a vložené texty.</string>
+  <string name="morphe_music_lyrics_source_reset_title">Obnovit výchozí pořadí poskytovatelů?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Obnovit výchozí pořadí priorit poskytovatelů.</string>
+  <string name="morphe_music_token_dialog_get_token">Získat token</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music token uživatele médií</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Vložte cookie media-user-token z music.apple.com
+
+Postup:
+1. Přihlaste se na music.apple.com jako registrovaný uživatel
+2. Otevřete DevTools → Application → Cookies → music.apple.com
+3. Zkopírujte hodnotu „media-user-token“"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token uložen</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token vymazán</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: neplatný media-user-token — zkontrolujte a zkuste to znovu</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Vložte cookie sp_dc ze služby Spotify.
+
+Postup:
+1. Přihlaste se na open.spotify.com
+2. Otevřete DevTools → Aplikace → Soubory cookie → open.spotify.com
+3. Zkopírujte hodnotu „sp_dc“"</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Bez něj bude jako záložní použit Lyrically.</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc vymazán</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: neplatný sp_dc — zkontrolujte a zkuste to znovu</string>
+  <string name="morphe_music_apple_token_optional_hint">Token Apple Music je volitelný. Bez něj se jako záložní použije Lyrically.</string>
+  <string name="morphe_music_deezer_arl_title">Deezer […] Zkopírujte hodnotu \"arl\".</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Vložte cookie arl ze služby Deezer.
+
+Postup:
+1. Přihlaste se na deezer.com
+2. Otevřete DevTools → Aplikace → Soubory cookie → deezer.com
+3. Zkopírujte hodnotu „arl“"</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl uložen.</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: neplatný arl. Zkuste to znovu.</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: neplatný arl — zkontrolujte a zkuste to znovu</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch […] Zkopírujte hodnotu uživatelského tokenu.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funguje bez tokenu, takže toto pole může zůstat prázdné.
+
+Přidejte token pouze pro použití vlastního účtu. Musí pocházet z aplikace Musixmatch pro Android: tokeny zkopírované z musixmatch.com patří ukončenému desktopovému klientovi a API je odmítá."</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: neplatný uživatelský token. Zkuste to znovu.</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: uživatelský token uložen</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: uživatelský token vymazán</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: neplatný uživatelský token — zkontrolujte a zkuste to znovu</string>
+  <string name="morphe_music_youtube_cookies_title">Soubory cookie YouTube</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Vložte […] Zkopírujte celý řetězec cookies (dvojice klíč=hodnota oddělené středníky)
+
+Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies uloženy.</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies vymazány.</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: neplatné cookies – zkontrolujte je a zkuste to znovu.</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, poté QQ, poté KuGou, poté NetEase, poté BiniLyrics, poté Unison, poté AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Klepnutím na řádek přejděte na daný čas</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Klepnutím na řádek se přeskočí do daného okamžiku v písni</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Zobrazit tlačítko Kopírovat</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Klepnutím zkopírujete původní text jako prostý text; dlouhým stisknutím uložíte nezpracovaný zdroj textu do složky Stažené soubory.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Zobrazit tlačítko Přeložit</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Přeložit texty pomocí překladů poskytovatele nebo Google Překladače.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Zobrazit tlačítko pro přepis do latinky.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Přepsat texty do latinky pomocí přepisu od poskytovatele nebo tlačítka Google Překladač.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
+  <string name="morphe_music_lyrics_saved">Uloženo</string>
+  <string name="morphe_music_lyrics_word_sync_title">Zvýrazňovat synchronizovaná slova nebo slabiky</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Upřednostnit texty slovo po slově, pokud jsou k dispozici. Když texty obsahují načasování slov, zvýrazní každé slovo nebo slabiku v rytmu hudby.</string>
+  <string name="morphe_music_lyrics_hide_played_title">Skrýt […] texty.</string>
+  <string name="morphe_music_lyrics_hide_played_summary">Skrýt řádky textu nad aktuálně přehrávaným řádkem</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">Skrýt nepřehrávané texty</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Skrýt řádky textu pod aktuálně přehrávanou […] obrazovkou.</string>
+  <string name="morphe_music_lyrics_mediasession_title">Zobrazovat texty MediaSession na zamykací obrazovce</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Zobrazovat texty v minipřehrávači</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">Pořadí zobrazení interpreta a názvu</string>
+  <string name="morphe_music_lyrics_display_artist_first_summary">Přepíná pořadí zobrazení interpreta a názvu v minipřehrávači a MediaSession. Zapnuto „Interpret – Název“ a vypnuto „Název – Interpret“. Neovlivňuje vyhledávání textů.</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Filtry</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Me […] texty. […] : \"Lyrics filter regex\"</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Regulární výraz aplikovaný na názvy, interprety a alba před vyhledáním textů. Nechte prázdné pro vypnutí. Výchozí nastavení odstraňuje běžné rušivé prvky, jako jsou „Official Video“, „Remaster“ a „- Topic“.</string>
+  <string name="morphe_music_lyrics_text_filter_title">Regulární výraz pro filtr textů</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Regulární výraz se použije pouze na původní text písně. Tuto funkci můžete využít pro filtrování textů.</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Značky informačních řádků</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Pokud jsou texty nesprávně odfiltrovány dolů, upravte nebo vymažte toto pole. Značky oddělené čárkami: řádky obsahující značku následovanou dvojtečkou se zobrazují dole jako informace o autorství. Nechte prázdné pro vypnutí.</string>
   <string name="morphe_music_lyrics_text_size_title">Velikost textu</string>
   <string name="morphe_music_lyrics_text_size_summary">Velikost textu písně</string>
   <string name="morphe_music_lyrics_offset_ms_title">Posun načasování</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Posuňte synchronizovaný text písně dopředu nebo dozadu. Použijte kladnou hodnotu, pokud text písně předbíhá píseň</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Synchronizované texty sledují přehrávání. Pokud se rozcházejí, upravte posun načasování. Posuňte synchronizované texty dopředu nebo dozadu. Použijte kladnou hodnotu, pokud texty předbíhají skladbu.</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Zdroj: %s</string>
+  <string name="morphe_music_lyrics_translated_by_google">Přeloženo službou Google</string>
+  <string name="morphe_music_lyrics_romanized_by_google">Romanizováno službou Google</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Přeložit</string>
-  <string name="morphe_music_lyrics_translate_hide">Zobrazit originál</string>
+  <string name="morphe_music_lyrics_translate_hide">Přeloženo</string>
   <string name="morphe_music_lyrics_translating">Překládání…</string>
   <string name="morphe_music_lyrics_translate_failed">Text písně se nepodařilo přeložit</string>
-  <string name="morphe_music_lyrics_copy">Kopírovat</string>
+  <string name="morphe_music_lyrics_romanize_hide">Romanizováno</string>
+  <string name="morphe_music_lyrics_romanizing">Probíhá romanizace…</string>
+  <string name="morphe_music_lyrics_romanize_failed">Texty se nepodařilo romanizovat.</string>
   <string name="morphe_music_lyrics_copied">Zkopírováno do schránky</string>
-  <string name="morphe_music_lyrics_about_title">Informace o externích textech písní</string>
-  <string name="morphe_music_lyrics_about_summary">"Texty písní se vyhledávají podle názvu skladby a interpreta, takže u skladby s neobvyklými metadaty nemusí být nic nalezeno nebo může být nalezena špatná verze
-
-Synchronizované texty následují přehrávání. Pokud se rozcházejí, upravte posun načasování
-
-Pokud nejsou nalezeny žádné externí texty písní, jsou místo nich zobrazeny vestavěné texty"</string>
+  <string name="morphe_music_lyrics_refreshing">Obnovování</string>
+  <string name="morphe_music_lyrics_refreshed">Obnoveno</string>
+  <string name="morphe_music_lyrics_about_summary">"Texty se vyhledávají podle názvu skladby a interpreta, takže u skladby s neobvyklými metadaty nemusí být nalezeno nic, nebo může být nalezena nesprávná verze. Můžete také zkusit tlačítko obnovení pro ruční přepnutí verzí. Pokud nejsou nalezeny žádné texty od třetích stran, zobrazí se místo toho vestavěné nebo vložené texty. Poskytovatelé označení hvězdičkou vyžadují pro povolení token. Ne všichni povolení poskytovatelé jsou vždy dotazováni v pořadí, které zvolíte, ale odpovídají podle své rychlosti."</string>
+  <string name="morphe_music_lyrics_hide_info_title">Skrýt řádek s uvedením zdroje</string>
+  <string name="morphe_music_lyrics_hide_info_summary">Skrýt řádek s uvedením zdroje zobrazený pod textem písně.</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">Prohodit překlad a romanizaci</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Zapnuto umístí romanizaci pod texty a překlad nad texty; Vypnuto ponechá romanizaci nad texty a překlad pod texty.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Zakázat tučné ikony</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Obnovit karty Další v pořadí, Texty písní a Související</string>

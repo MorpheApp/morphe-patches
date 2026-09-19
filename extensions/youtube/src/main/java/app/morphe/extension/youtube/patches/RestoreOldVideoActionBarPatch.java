@@ -54,7 +54,7 @@ public class RestoreOldVideoActionBarPatch {
                         minHeaders.put(VISITOR_ID_HEADER, visitorId);
 
                         String authorization = requestHeaders.get(AUTHORIZATION_HEADER);
-                        if (Utils.isNotEmpty(visitorId)) {
+                        if (Utils.isNotEmpty(authorization)) {
                             minHeaders.put(AUTHORIZATION_HEADER, authorization);
                         }
 
@@ -67,6 +67,18 @@ public class RestoreOldVideoActionBarPatch {
             needFetch = false;
         }
     }
+
+    /**
+     * Injection point.
+     * Turns off a feature flag that interferes with overriding config.
+     */
+    public static boolean useMediaSessionFeatureFlag(boolean original) {
+        if (FIX_VIDEO_ACTION_BAR) {
+            return false;
+        }
+        return original;
+    }
+
 
     /**
      * Injection point.

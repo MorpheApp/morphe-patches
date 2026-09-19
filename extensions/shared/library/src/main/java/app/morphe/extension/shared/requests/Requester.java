@@ -10,6 +10,9 @@
 
 package app.morphe.extension.shared.requests;
 
+import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -22,10 +25,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 public class Requester {
+    /**
+     * Response code of a successful API call.
+     */
+    public static final int HTTP_STATUS_CODE_SUCCESS = 200;
+
     public interface ConnectionProvider {
         HttpURLConnection openConnection(URL url) throws IOException;
     }
@@ -57,6 +67,25 @@ public class Requester {
         connection.setRequestProperty("User-Agent", agentString);
 
         return connection;
+    }
+
+    /**
+     * @return The locale the app itself is configured with, which differs from the system one
+     *         when the user picks another language inside the app. Request bodies send the
+     *         language and the country of it as their hl and gl fields.
+     */
+    @NonNull
+    public static Locale getAppLocale() {
+        try {
+            Context context = Utils.getContext();
+            if (context != null) {
+                return context.getResources().getConfiguration().getLocales().get(0);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getAppLocale failure", ex);
+        }
+
+        return Locale.getDefault();
     }
 
     public static HttpURLConnection openConnection(String url) throws IOException {
@@ -98,7 +127,7 @@ public class Requester {
 
     /**
      * Parse the {@link HttpURLConnection} response as a String, and disconnect.
-     *
+     * <p>
      * <b>Should only be used if other requests to the server in the near future are unlikely</b>
      *
      * @see #parseString(HttpURLConnection)
@@ -124,7 +153,7 @@ public class Requester {
     /**
      * Parse the {@link HttpURLConnection} error stream as a String, and disconnect.
      * If the server sent no error response data, this returns an empty string.
-     *
+     * <p>
      * Should only be used if other requests to the server are unlikely in the near future.
      *
      * @see #parseErrorString(HttpURLConnection)
@@ -146,7 +175,7 @@ public class Requester {
 
     /**
      * Parse the {@link HttpURLConnection}, close the underlying InputStream, and disconnect.
-     *
+     * <p>
      * <b>Should only be used if other requests to the server in the near future are unlikely</b>
      *
      * @see #parseJSONObject(HttpURLConnection)
@@ -168,7 +197,7 @@ public class Requester {
 
     /**
      * Parse the {@link HttpURLConnection}, close the underlying InputStream, and disconnect.
-     *
+     * <p>
      * <b>Should only be used if other requests to the server in the near future are unlikely</b>
      *
      * @see #parseJSONArray(HttpURLConnection)

@@ -381,6 +381,12 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_channel_whitelist_channel_added">Kanaal toegevoegd aan de witte lijst</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanaal verwijderd van de witte lijst</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Zoeken in kanaal</string>
+  <string name="morphe_channel_search_summary">Als een kanaal geopend is, wordt er alleen in dat kanaal gezocht</string>
+  <string name="morphe_channel_search_results">Zoekresultaten voor kanalen</string>
+  <string name="morphe_channel_search_no_results">Niets gevonden op dit kanaal</string>
+  <string name="morphe_channel_search_failed">Kan dit kanaal niet doorzoeken</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link naar klembord gekopieerd</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link met tijdstempel naar klembord gekopieerd</string>
@@ -502,8 +508,12 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Deze video is al opgeslagen in de afspeellijst \'Bekijk later\'</string>
   <string name="morphe_save_to_watch_later_error_toast">Kan deze video niet opslaan in de afspeellijst \'Bekijk later\'</string>
   <string name="morphe_save_to_watch_later_flyout_title">Opslaan in Watch later</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in de instellingenflyout van de speler.</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Hiermee kun je de video die je momenteel bekijkt vanuit het uitklapmenu voor video-instellingen opslaan in \'Later bekijken\'.</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Toon knop Opslaan in Watch later bij kindervideo\'s</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Maakt het mogelijk om kindervideo\'s op te slaan in het menu \'Later bekijken\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Hiermee kunt u kindgerelateerde video\'s opslaan in \'Later bekijken\' via het flyoutmenu</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Toon de knop \'Opslaan in Later bekijken\' in het flyoutmenu voor Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Hiermee kunt u Shorts opslaan in \'Later bekijken\' via het flyoutmenu</string>
   <string name="morphe_queue_flyout_title">Toevoegen aan Morphe-wachtrij</string>
   <string name="morphe_queue_restore_title">Wachtrij behouden tussen sessies</string>
   <string name="morphe_queue_restore_summary">Wachtrij blijft behouden na het opnieuw starten van de app</string>
@@ -909,6 +919,9 @@ Instellingen → Weergave (of automatisch afspelen) → Volgende video automatis
   <string name="morphe_exit_fullscreen_entry_2">Portret</string>
   <string name="morphe_exit_fullscreen_entry_3">Landschap</string>
   <string name="morphe_exit_fullscreen_entry_4">Portret en landschap</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Forceer liggend formaat in volledig scherm</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Draai de speler naar liggend formaat bij het openen van volledig scherm. Niet beschikbaar op kleine schermen, die al in liggend formaat volledig scherm openen.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Volledig scherm gebaren</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Spelergebaren in volledig scherm</string>
@@ -1256,6 +1269,7 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-ervaring is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabiel volume is niet beschikbaar</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Het afspelen kan 1 seconde eerder eindigen</string>
   <string name="morphe_spoof_video_streams_about_js">• Als de-obfuscatie mislukt, kan afspelen mislukken</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Oorspronkelijke audio forceren is niet beschikbaar</string>

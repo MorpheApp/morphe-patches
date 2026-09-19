@@ -355,16 +355,8 @@ public class CustomPlaybackSpeedPatch {
             SheetBottomDialog.DraggableLinearLayout mainLayout =
                     SheetBottomDialog.createMainLayout(context, LegacyPlayerControlButton.getDialogBackgroundColor());
 
-            // Wrap the dialog content in a ScrollView capped to most of the screen height,
-            // so the dialog remains fully usable in landscape where the available height is limited.
-            ScrollView scrollView = new ScrollView(context) {
-                @Override
-                protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-                    heightMeasureSpec = MeasureSpec.makeMeasureSpec(Dim.pctHeight(75), MeasureSpec.AT_MOST);
-                    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-                }
-            };
-            scrollView.setVerticalScrollBarEnabled(false);
+            // Capped so the dialog remains fully usable in landscape, where height is limited.
+            ScrollView scrollView = SheetBottomDialog.createCappedScrollView(context);
 
             LinearLayout contentLayout = new LinearLayout(context);
             contentLayout.setOrientation(LinearLayout.VERTICAL);

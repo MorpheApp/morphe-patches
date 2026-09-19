@@ -37,7 +37,7 @@ public final class AnnouncementsPatch {
 
         try {
             // Do not show the announcement if the request failed.
-            if (connection.getResponseCode() != 200) {
+            if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 if (Settings.ANNOUNCEMENT_LAST_ID.isSetToDefault())
                     return true;
 

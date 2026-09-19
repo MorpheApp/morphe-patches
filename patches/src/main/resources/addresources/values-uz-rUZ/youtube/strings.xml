@@ -335,6 +335,7 @@ Batafsil ma'lumot olish uchun AiSlopList.com ni oching"</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamasini yashirish</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Havola quvvatlantirildi</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Vaqt muhrini o\'z ichiga olgan havola quvvatlantirildi</string>
@@ -454,7 +455,6 @@ Ma'lumot: Jonli efirlarda ishlamasligi mumkin"</string>
   <string name="morphe_save_to_watch_later_error_toast">Ushbu videoni Watch Later ga saqlab boʻlmadi</string>
   <string name="morphe_save_to_watch_later_flyout_title">Keyinroq ko\'rish uchun saqlash</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Bolalar videolarida keyinroq ko\'rish uchun saqlash tugmasini ko\'rsatish</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Bolalar videolarini \'Keyinroq ko\'rish\' ochiladigan menyusida saqlash imkonini beradi</string>
   <string name="morphe_queue_flyout_title">Morphe navbatiga qo\'sh</string>
   <string name="morphe_queue_restore_title">Ilovaning qayta ishga tushirilgandan so\'ng navbat saqlanadi</string>
   <string name="morphe_queue_restore_summary">Kirish qilinmagan</string>
@@ -839,6 +839,7 @@ Sozlamalar → Oynatish (yoki Avtoijro) → Keyingi videoni avtomatik ravishda i
   <string name="morphe_exit_fullscreen_entry_2">Uy tugmasini yashirish</string>
   <string name="morphe_exit_fullscreen_entry_3">Shorts tugmasini yashirish</string>
   <string name="morphe_exit_fullscreen_entry_4">Portret va landshaft</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">To\'liq ekran gestlari</string>
   <string name="morphe_disable_fullscreen_gestures_summary">To\'liq ekran rejimidagi pleyer imo-ishoralari</string>

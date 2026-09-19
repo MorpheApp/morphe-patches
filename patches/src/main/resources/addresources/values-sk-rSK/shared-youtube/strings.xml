@@ -65,6 +65,15 @@ Skontrolujte, či je názov balíka správny a či je aplikácia nainštalovaná
   <string name="morphe_custom_branding_icon_entry_6">Morphe hra s čiernou</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Vlastná</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Toto zmení ikonu zobrazenú vo vašom spúšťači aplikácií.
+
+Toto nastavenie nezmení ikonu v žiadnom z týchto miest:
+• Zoznam aplikácií v systémových nastaveniach zariadenia
+• Niektoré push notifikácie
+• Výber aplikácie „Otvoriť pomocou“
+• Ikona Android Auto
+
+Ak chcete zmeniť ikonu všade, znova aplikujte záplatu a zmeňte možnosť záplaty „Ikona aplikácie“"</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona upozornenia</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Zmeniť ikonu aplikácie</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe hra</string>

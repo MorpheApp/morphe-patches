@@ -18,6 +18,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
@@ -70,10 +71,18 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         addPlayerOverlayPreferences(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_save_to_watch_later_button", summary = true),
-                SwitchPreference("morphe_save_to_watch_later_kids_flyout_button", summary = true),
                 SwitchPreference("morphe_swap_save_and_queue_actions", summary = true),
                 SwitchPreference("morphe_queue_restore", summary = true)
             )
+        )
+
+        PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("morphe_save_to_watch_later_flyout_button", summary = true),
+            SwitchPreference("morphe_save_to_watch_later_kids_flyout_button", summary = true)
+        )
+
+        PreferenceScreen.SHORTS.addPreferences(
+            SwitchPreference("morphe_save_to_watch_later_shorts_flyout_button", summary = true)
         )
 
         initializeTopControl(EXTENSION_BUTTON)

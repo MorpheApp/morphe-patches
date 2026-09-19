@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">채널을 화이트리스트에 추가하였습니다</string>
   <string name="morphe_channel_whitelist_channel_removed">채널을 화이트리스트에서 제거하였습니다</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">채널 내 검색</string>
+  <string name="morphe_channel_search_summary">채널을 열어 둔 상태에서 검색하면 해당 채널 내에서만 검색합니다</string>
+  <string name="morphe_channel_search_results">채널 검색 결과</string>
+  <string name="morphe_channel_search_no_results">이 채널에서 아무것도 찾을 수 없습니다</string>
+  <string name="morphe_channel_search_failed">이 채널을 검색할 수 없습니다</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">타임스탬프가 표기된 링크를 클립보드에 복사하였습니다</string>
@@ -504,8 +510,12 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_save_to_watch_later_already_exists_toast">이 동영상은 이미 \'나중에 볼 동영상\' 재생목록에 저장되어 있습니다</string>
   <string name="morphe_save_to_watch_later_error_toast">이 동영상을 \'나중에 볼 동영상\' 재생목록에 저장할 수 없습니다</string>
   <string name="morphe_save_to_watch_later_flyout_title">나중에 볼 동영상에 저장</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">플레이어 설정 메뉴에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">플레이어 설정 메뉴로 현재 시청 중인 동영상을 \'나중에 볼 동영상’에 저장할 수 있습니다</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Kids 동영상에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">\'나중에 볼 동영상에 저장\' 피드 메뉴로 관련 동영상에 있는 Kids 동영상을 저장할 수 있습니다</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">피드 메뉴로 관련 동영상에 있는 Kids 동영상을 \'나중에 볼 동영상\'에 저장할 수 있습니다</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Shorts에 \'나중에 볼 동영상에 저장\' 메뉴 표시하기</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">피드 메뉴로 Shorts를 \'나중에 볼 동영상\'에 저장할 수 있습니다</string>
   <string name="morphe_queue_flyout_title">Morphe 현재 재생목록에 추가</string>
   <string name="morphe_queue_restore_title">세션 간에 현재 재생목록 유지하기</string>
   <string name="morphe_queue_restore_summary">앱을 다시 시작한 후에도 현재 재생목록이 유지됩니다</string>
@@ -913,6 +923,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_exit_fullscreen_entry_2">세로 모드에서만</string>
   <string name="morphe_exit_fullscreen_entry_3">가로 모드에서만</string>
   <string name="morphe_exit_fullscreen_entry_4">세로 및 가로 모드</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">전체 화면에서 가로 모드 강제로 활성화하기</string>
+  <string name="morphe_force_fullscreen_landscape_summary">전체 화면 모드 진입 시 플레이어를 가로 방향으로 회전합니다. 이미 가로 방향으로 전체 화면이 열리는 작은 화면에서는 사용할 수 없습니다</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">전체 화면 제스처</string>
   <string name="morphe_disable_fullscreen_gestures_summary">전체 화면에서 사용할 수 있는 플레이어 제스처를 설정할 수 있습니다</string>
@@ -1251,7 +1264,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_video_quality_prioritize_dialog">이 설정을 비활성화하면, 일부 오래된 동영상에서 화질 옵션이 표시되지 않을 수 있습니다</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">\'Android VR\' / \'visionOS\' AV1 허용하기</string>
-  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' 클라이언트를 사용할 경우에 소프트웨어 AV1 디코딩을 허용합니다</string>
+  <string name="morphe_spoof_video_streams_av1_summary">\'Android VR\' / \'visionOS\' 클라이언트를 사용할 경우에 AV1 디코딩을 허용합니다\n\n하드웨어 AV1 디코딩이 지원되지 않는 기기에서 소프트웨어 AV1 디코딩이 사용될 수 있습니다</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"이 설정을 활성화하면, 소프트웨어 AV1 디코딩이 사용될 수 있습니다.
 
 AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있습니다."</string>
@@ -1260,6 +1273,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 코덱이 지원되지 않습니다</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 몰입 모드를 사용할 수 없습니다</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 안정적인 볼륨을 사용할 수 없습니다</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• 재생이 1초 일찍 종료될 수 있습니다</string>
   <string name="morphe_spoof_video_streams_about_js">• 복호화에 실패하면 재생이 실패할 수 있습니다</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 원본 오디오를 강제로 활성화할 수 없습니다</string>

@@ -229,6 +229,17 @@ public final class NavigationBarPatch {
 
     /**
      * Injection point.
+     */
+    public static boolean useTranslucentNavigation(boolean original) {
+        if (DISABLE_TRANSLUCENT_NAVIGATION) {
+            return false;
+        }
+
+        return original;
+    }
+
+    /**
+     * Injection point.
      *
      * @param messageLite MessageLite class of PivotBarItemRenderer.
      */

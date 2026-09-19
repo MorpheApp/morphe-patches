@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">ช่องถูกเพิ่มลงในรายการที่อนุญาตแล้ว</string>
   <string name="morphe_channel_whitelist_channel_removed">ช่องถูกนำออกจากรายการที่อนุญาตแล้ว</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">ค้นหาในช่อง</string>
+  <string name="morphe_channel_search_summary">เมื่อเปิดช่องอยู่ การค้นหาจะค้นหาเฉพาะในช่องนั้นเท่านั้น</string>
+  <string name="morphe_channel_search_results">ผลการค้นหาช่อง</string>
+  <string name="morphe_channel_search_no_results">ไม่พบผลลัพธ์ในช่องนี้</string>
+  <string name="morphe_channel_search_failed">ไม่สามารถค้นหาช่องนี้ได้</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">คัดลอกลิงก์ไปยังคลิปบอร์ด</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">คัดลอกลิงก์ที่มีช่วงเวลาไปยังคลิปบอร์ด</string>
@@ -502,8 +508,12 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">วิดีโอนี้ถูกบันทึกในรายการดูภายหลังแล้ว</string>
   <string name="morphe_save_to_watch_later_error_toast">ไม่สามารถบันทึกวิดีโอนี้ลงในรายการดูภายหลังได้</string>
   <string name="morphe_save_to_watch_later_flyout_title">บันทึกไปยังดูภายหลัง</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">แสดงปุ่มบันทึกลงในรายการดูภายหลังในเมนูการตั้งค่าเครื่องเล่น</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่กำลังดูอยู่ไว้ใน \'ดูภายหลัง\' จากเมนูลอยการตั้งค่าวิดีโอ</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">แสดงปุ่ม \'บันทึกไปยังดูภายหลัง\' ในวิดีโอสำหรับเด็ก</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่เกี่ยวข้องกับเด็กในเมนูย่อย \'ดูภายหลัง\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">อนุญาตให้บันทึกวิดีโอที่เกี่ยวข้องกับเด็กใน \'ดูภายหลัง\' จากเมนู flyout</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">แสดงปุ่มบันทึกลงในดูภายหลังในเมนู flyout ของ Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">อนุญาตให้บันทึก Shorts ใน \'ดูภายหลัง\' จากเมนู flyout</string>
   <string name="morphe_queue_flyout_title">เพิ่มลงในคิว Morphe</string>
   <string name="morphe_queue_restore_title">คงคิวไว้ระหว่างการใช้งาน</string>
   <string name="morphe_queue_restore_summary">คิวจะถูกเก็บไว้หลังจากการปิดและเปิดแอปอีกครั้ง</string>
@@ -911,6 +921,9 @@ Second \"item\" text"</string>
   <string name="morphe_exit_fullscreen_entry_2">แนวตั้งเท่านั้น</string>
   <string name="morphe_exit_fullscreen_entry_3">แนวนอนเท่านั้น</string>
   <string name="morphe_exit_fullscreen_entry_4">แนวตั้งและแนวนอน</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">บังคับแนวนอนในโหมดเต็มหน้าจอ</string>
+  <string name="morphe_force_fullscreen_landscape_summary">หมุนเครื่องเล่นเป็นแนวนอนเมื่อเข้าสู่โหมดเต็มหน้าจอ ใช้ไม่ได้บนหน้าจอขนาดเล็ก ซึ่งเปิดเต็มหน้าจอในแนวนอนอยู่แล้ว</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">ท่าทางแบบเต็มหน้าจอ</string>
   <string name="morphe_disable_fullscreen_gestures_summary">ท่าทางของตัวเล่นในโหมดเต็มหน้าจอ</string>
@@ -1258,6 +1271,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• ไม่มีตัวแปลงสัญญาณวิดีโอ AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• รูปแบบ 360° VR Immersive ไม่พร้อมใช้งาน</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• ระดับเสียงคงที่ไม่พร้อมใช้งาน</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Playback may end 1 second early</string>
   <string name="morphe_spoof_video_streams_about_js">• ถ้า Deobfuscation ล้มเหลว การเล่นอาจล้มเหลว</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• บังคับใช้เสียงต้นฉบับไม่พร้อมใช้งาน</string>

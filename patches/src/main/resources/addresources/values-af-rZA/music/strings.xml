@@ -32,6 +32,50 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard Download-aksieknoppie</string>
   <string name="morphe_external_downloader_flyout_menu_title">Oorskryf aflaai-kieslys</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Gebruik jou gekose eksterne aflaaier in plaas van die standaard Download-vliegmenu</string>
+  <string name="morphe_music_in_app_downloads_title">Laai in die app af</string>
+  <string name="morphe_music_in_app_downloads_summary">Laai oudio binne YouTube Music af in plaas van om die eksterne aflaaier-toepassing oop te maak</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Snitte word in die toep se privaat berging gestoor en word verwyder as YouTube Music gedeïnstalleer word.
+
+Terwyl dit aan is, lys die Aflaaie-oortjie hierdie snitte in plaas van Music Premium se vanlynbiblioteek. As jy dit afskakel, word die oortjie herstel, en Premium-aflaaie word nooit geraak nie."</string>
+  <string name="morphe_music_downloads_screen_title">Aflaaie</string>
+  <string name="morphe_music_downloads_empty">"Geen aflaaie nie
+Afgelaaide snitte verskyn hier"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s\u00A0MB</string>
+  <string name="morphe_music_downloads_summary">%1$s snitte • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">Soek aflaaie</string>
+  <string name="morphe_music_downloads_sort">Sorteer</string>
+  <string name="morphe_music_downloads_sort_artist">Sorteer volgens kunstenaar</string>
+  <string name="morphe_music_downloads_sort_title">Sorteer volgens titel</string>
+  <string name="morphe_music_downloads_sort_size">Sorteer volgens grootte</string>
+  <string name="morphe_music_downloads_delete_all">Vee alle aflaaie uit</string>
+  <string name="morphe_music_downloads_delete_all_title">Vee alle aflaaie uit?</string>
+  <string name="morphe_music_downloads_delete_all_message">Alle afgelaaide snitte sal van hierdie toestel uitgevee word</string>
+  <string name="morphe_music_downloads_all_deleted">Aflaaie uitgevee</string>
+  <string name="morphe_music_downloads_nothing_found">Niks gevind nie</string>
+  <string name="morphe_music_downloads_actions_for">Aksies vir %s</string>
+  <string name="morphe_music_downloads_play">Speel</string>
+  <string name="morphe_music_downloads_play_pause">Speel of pouse</string>
+  <string name="morphe_music_downloads_previous">Vorige</string>
+  <string name="morphe_music_downloads_next">Volgende</string>
+  <string name="morphe_music_downloads_pause">Pouse</string>
+  <string name="morphe_music_downloads_close">Maak toe</string>
+  <string name="morphe_music_downloads_delete">Vee uit</string>
+  <string name="morphe_music_downloads_delete_track">Vee aflaai uit</string>
+  <string name="morphe_music_downloads_delete_track_title">Vee aflaai uit?</string>
+  <string name="morphe_music_downloads_delete_track_message">%s sal van hierdie toestel uitgevee word</string>
+  <string name="morphe_music_downloads_track_deleted">Aflaai uitgevee</string>
+  <string name="morphe_music_downloads_track_delete_failed">Kon nie die aflaai uitvee nie</string>
+  <string name="morphe_music_downloads_play_failed">Kon nie die aflaai speel nie</string>
+  <string name="morphe_music_downloads_notification_channel">Oudio-aflaaie</string>
+  <string name="morphe_music_downloads_playback_channel">Offline-afspeel</string>
+  <string name="morphe_music_downloads_unknown_track">Kon nie die snit identifiseer om af te laai nie</string>
+  <string name="morphe_music_downloads_already_running">Aflaai is reeds aan die gang</string>
+  <string name="morphe_music_downloads_already_saved">Reeds afgelaai</string>
+  <string name="morphe_music_downloads_started">Aflaai begin</string>
+  <string name="morphe_music_downloads_starting">Begin aflaai…</string>
+  <string name="morphe_music_downloads_progress">Laai %s%% af</string>
+  <string name="morphe_music_downloads_complete">Aflaai voltooi</string>
+  <string name="morphe_music_downloads_failed">Aflaai misluk</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Inligting</string>
@@ -308,32 +352,115 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gebruik derdeparty lirieke</string>
   <string name="morphe_music_lyrics_enabled_summary">Wys lirieke van \'n derdeparty diens, met terugval na die ingeboude lirieke wanneer nie gevind nie</string>
-  <string name="morphe_music_lyrics_source_title">Lirieke diens</string>
-  <!-- 'LRCLIB' and 'KuGou' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, dan KuGou</string>
+  <string name="morphe_music_lyrics_section_service_title">Lirieke-diens</string>
+  <string name="morphe_music_lyrics_section_overlay_title">Oorleg</string>
+  <string name="morphe_music_lyrics_section_sync_title">Sinchronisasie</string>
+  <string name="morphe_music_lyrics_section_about_title">Oor</string>
+  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
+  <string name="morphe_music_lyrics_source_summary">Tik ▲/▼ om die prioriteitsorde te stel, en die blokkie om elke verskaffer te aktiveer of deaktiveer</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers is gedeaktiveer — ingeboude en ingebedde lirieke</string>
+  <string name="morphe_music_lyrics_source_reset_title">Verskaffervolgorde terugstel?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Herstel verskaffers na die standaardprioriteitsorde</string>
+  <string name="morphe_music_token_dialog_get_token">Kry token</string>
+  <string name="morphe_music_apple_music_token_title">Apple Music-mediagebruikerstoken</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Plak die media-user-token-koekie van music.apple.com
+
+Stappe:
+1. Meld aan by music.apple.com as 'n lid
+2. Maak DevTools oop → Toepassing → Koekies → music.apple.com
+3. Kopieer die waarde van \"media-user-token\""</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token gestoor</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token verwyder</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: ongeldige media-user-token — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"Plak die sp_dc-koekie van Spotify.
+
+Stappe:
+1. Meld aan by open.spotify.com
+2. Maak DevTools oop → Toepassing → Koekies → open.spotify.com
+3. Kopieer die waarde van \"sp_dc\""</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Sonder dit sal Lyrically as terugval gebruik word.</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc verwyder</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: ongeldige sp_dc — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music-token is opsioneel. Sonder dit sal Lyrically as terugval gebruik word.</string>
+  <string name="morphe_music_deezer_arl_title">Deezer […] Kopieer die waarde van \"arl\"</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"Plak die arl-koekie van Deezer.
+
+Stappe:
+1. Meld aan by deezer.com
+2. Maak DevTools oop → Toepassing → Koekies → deezer.com
+3. Kopieer die waarde van \"arl\""</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl gestoor</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ongeldige arl, probeer asseblief weer</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopieer die waarde van die gebruikerstoken</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch werk sonder 'n token, so hierdie veld kan leeg bly.
+
+Voeg slegs 'n token by om jou eie rekening te gebruik. Dit moet van die Musixmatch Android-toepassing kom: tokens wat van musixmatch.com gekopieer is, behoort aan die afgetrede lessenaar-kliënt en die API weier hulle"</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ongeldige gebruikerstoken, probeer asseblief weer</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: gebruikerstoken gestoor</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: gebruikerstoken verwyder</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: ongeldige gebruikerstoken — kontroleer asseblief en probeer weer</string>
+  <string name="morphe_music_youtube_cookies_title">YouTube-koekies</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"Plak […] Kopieer die volledige koekie-string (sleutel=waarde-pare geskei deur kommapunte)
+
+Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+  <string name="morphe_music_youtube_cookies_toast_saved">YouTube: koekies gestoor</string>
+  <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: koekies skoongemaak</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ongeldige koekies — gaan na en probeer asseblief weer</string>
+  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
+  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, dan QQ, dan KuGou, dan NetEase, dan BiniLyrics, dan Unison, dan</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Tik \'n reël om te soek</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Tik op \'n reël spring na daardie oomblik in die liedjie</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Wys Kopièer knoppie</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">Raak om oorspronklike lirieke as gewone teks te kopieer; druk lank om rou lirieke-bronlêer na Downloads te stoor</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Wys Vertaal knoppie</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Vertaal lirieke met verskaffervertalings of Google Translate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">Wys romaniseer-knoppie</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniseer lirieke met verskaffer-romanisering of Google Translate […] knoppie</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">Wys verfris-knoppie</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Raak om na die volgende liriekkandidaat te wissel; […] :\"Gestoor\"</string>
+  <string name="morphe_music_lyrics_saved">Gestoor</string>
+  <string name="morphe_music_lyrics_word_sync_title">Raak aan ▲/▼ om die prioriteitsorde te stel, en die blokkie om elke verskaffer te aktiveer of deaktiveer.</string>
+  <string name="morphe_music_lyrics_word_sync_summary">Alle verskaffers gedeaktiveer — ingeboude lirieke en ingebedde lirieke.</string>
+  <string name="morphe_music_lyrics_hide_played_title">Verskafferorde terugstel?</string>
+  <string name="morphe_music_lyrics_hide_played_summary">Versteek liriekreëls bo die reël wat tans speel</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">Versteek ongespeelde lirieke</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">Herstel verskaffers na die standaard prioriteitsorde.</string>
+  <string name="morphe_music_lyrics_mediasession_title">Wys MediaSession-lirieke op die sluitskerm</string>
+  <string name="morphe_music_lyrics_miniplayer_title">Wys romaniseer-knoppie</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">Wys romaniseer-knoppie</string>
+  <string name="morphe_music_lyrics_display_artist_first_summary">Wissel die vertoonorde van Kunstenaar en Titel in die Mini-speler en MediaSession. AAN \"Kunstenaar - Titel\" en AF \"Titel - Kunstenaar\". Dit raak nie die soektog na lirieke nie.</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_custom_regex_title">Me […] lirieke. […] :\"Lirieke\"</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Reëlmatige uitdrukking word op titels, kunstenaars en albums toegepas voordat daar na lirieke gesoek word. Los dit leeg om te deaktiveer. Die verstek verwyder algemene rommel soos \"Official Video\", \"Remaster\" en \"- Topic\".</string>
+  <string name="morphe_music_lyrics_text_filter_title">Lirieke-filter-regex</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Vertaal lirieke met verskaffervertalings of Google Translate</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">Wys romaniseer-knoppie</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Romaniseer lirieke met verskaffer-romanisering of Google Translate […] knoppie</string>
   <string name="morphe_music_lyrics_text_size_title">Teks grootte</string>
   <string name="morphe_music_lyrics_text_size_summary">Grootte van die lirieke teks</string>
   <string name="morphe_music_lyrics_offset_ms_title">Tydverskuiwing</string>
-  <string name="morphe_music_lyrics_offset_ms_summary">Skuif gesinkroniseerde lirieke vorentoe of agtertoe. Gebruik \'n positiewe waarde as die lirieke voor die liedjie loop</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">Raak om na die volgende liriekkandidaat te wissel; […] :\"Gestoor\"</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Bron: %s</string>
+  <string name="morphe_music_lyrics_translated_by_google">Gereedskapsafdelings?</string>
+  <string name="morphe_music_lyrics_romanized_by_google">Lirieke-bron?</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
-  <string name="morphe_music_lyrics_translate_show">Vertaal</string>
-  <string name="morphe_music_lyrics_translate_hide">Wys oorspronklike</string>
+  <string name="morphe_music_lyrics_translate_hide">Me […] lirieke. […] :\"Lirieke\"</string>
   <string name="morphe_music_lyrics_translating">Besig met vertaling…</string>
   <string name="morphe_music_lyrics_translate_failed">Kon nie die lirieke vertaal nie</string>
-  <string name="morphe_music_lyrics_copy">Kopieer</string>
+  <string name="morphe_music_lyrics_romanize_hide">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_romanizing">Me […] lirieke. […] :\"Lirieke\"</string>
+  <string name="morphe_music_lyrics_romanize_failed">Gereedskapsafdelings?</string>
   <string name="morphe_music_lyrics_copied">Na knipbord gekopieer</string>
-  <string name="morphe_music_lyrics_about_title">Oor derdeparty lirieke</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirieke word opgespoor deur snit titel en kunstenaar, so 'n snit met ongewone metadata sal niks vind nie, of die verkeerde weergawe vind nie.
-
-Gesinkroniseerde lirieke volg speel. As dit wegdryf, pas die tydverskuiwing aan.
-
-Wanneer geen derdeparty lirieke gevind word nie, word die ingeboude lirieke vertoon in plaas daarvan"</string>
+  <string name="morphe_music_lyrics_refreshing">Besig om te verfris</string>
+  <string name="morphe_music_lyrics_refreshed">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_about_summary">"Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed"</string>
+  <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_hide_info_summary">Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">Lirieke-bron?</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Deaktiveer vet ikone</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Herstel Speler Volgende, Lirieke en Verwante oortjies</string>

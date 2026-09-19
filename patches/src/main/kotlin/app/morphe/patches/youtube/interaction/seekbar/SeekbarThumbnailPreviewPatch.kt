@@ -11,7 +11,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.chapters.chaptersHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -37,7 +36,6 @@ val seekbarThumbnailPreviewPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         versionCheckPatch,
-        resourceMappingPatch,
         chaptersHookPatch
     )
 

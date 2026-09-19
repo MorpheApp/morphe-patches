@@ -17,17 +17,19 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
+import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
+private const val ADS_FILTER = "Lapp/morphe/extension/music/patches/components/AdsFilter;"
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideAdsPatch;"
 
 @Suppress("unused")
@@ -38,8 +40,8 @@ val hideAdsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         hideFullscreenAdsPatch(PreferenceScreen.ADS),
-        settingsPatch,
-        resourceMappingPatch
+        lithoFilterPatch,
+        settingsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -48,8 +50,10 @@ val hideAdsPatch = bytecodePatch(
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_music_hide_get_premium_label"),
             SwitchPreference("morphe_music_hide_music_premium_promotions"),
-            SwitchPreference("morphe_music_hide_video_ads"),
+            SwitchPreference("morphe_music_hide_video_ads")
         )
+
+        addLithoFilter(ADS_FILTER)
 
         // Hide 'Get Music Premium' label
         HideGetPremiumFingerprint.method.apply {
@@ -62,13 +66,13 @@ val hideAdsPatch = bytecodePatch(
 
             replaceInstruction(
                 insertIndex,
-                "const/16 v$visibilityRegister, 0x8",
+                "const/16 v$visibilityRegister, 0x8"
             )
 
             addInstruction(
                 insertIndex + 1,
                 "invoke-virtual {v$getPremiumViewRegister, v$visibilityRegister}, " +
-                        "Landroid/view/View;->setVisibility(I)V",
+                        "Landroid/view/View;->setVisibility(I)V"
             )
         }
 

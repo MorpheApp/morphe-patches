@@ -65,6 +65,15 @@ Verificați dacă numele pachetului este corect și aplicația este instalată"<
   <string name="morphe_custom_branding_icon_entry_6">Morphe joacă negru</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">Personalizat</string>
+  <string name="morphe_custom_branding_icon_user_dialog_message">"Această setare schimbă pictograma afișată în lansatorul de aplicații.
+
+Această setare nu va schimba pictograma în niciuna dintre următoarele locații:
+• Lista aplicațiilor din setările de sistem ale dispozitivului
+• Anumite notificări push
+• Selectorul de aplicații „Deschideți cu”
+• Pictograma Android Auto
+
+Pentru a schimba pictograma peste tot, aplicați patch-ul din nou și modificați opțiunea de patch „Pictograma aplicației”"</string>
   <string name="morphe_custom_branding_notification_icon_title">Icon de notificare</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Potrivește pictograma aplicației</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>

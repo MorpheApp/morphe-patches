@@ -381,6 +381,12 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_channel_whitelist_channel_added">Kanal tilføjet til hvidliste</string>
   <string name="morphe_channel_whitelist_channel_removed">Kanal fjernet fra hvidliste</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Søg i kanalen</string>
+  <string name="morphe_channel_search_summary">Når du søger, mens en kanal er åben, foregår søgningen kun i den kanal</string>
+  <string name="morphe_channel_search_results">Kanalens søgeresultater</string>
+  <string name="morphe_channel_search_no_results">Intet fundet på denne kanal</string>
+  <string name="morphe_channel_search_failed">Kunne ikke søge i denne kanal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link kopieret til udklipsholder</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link med tidsstempel kopieret til udklipsholder</string>
@@ -502,8 +508,12 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Denne video er allerede gemt i afspilningslisten til senere</string>
   <string name="morphe_save_to_watch_later_error_toast">Kunne ikke gemme denne video i afspilningslisten til senere</string>
   <string name="morphe_save_to_watch_later_flyout_title">Gem til Se senere</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Vis knappen Gem til Se senere i afspillerens indstillingsmenu</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Giver mulighed for at gemme den aktuelle video i \'Se senere\' fra videoindstillingsmenuen</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Vis knappen Gem til Se senere i børnevideoer</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Giver mulighed for at gemme børnerelaterede videoer i menuen \'Se senere\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Giver mulighed for at gemme børnerelaterede videoer i \'Se senere\' fra flyoutmenuen</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Vis knappen Gem til Se senere i Shorts-flyoutmenuen</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Giver mulighed for at gemme Shorts i \'Se senere\' fra flyoutmenuen</string>
   <string name="morphe_queue_flyout_title">Tilføj til Morphe-kø</string>
   <string name="morphe_queue_restore_title">Behold køen mellem sessioner</string>
   <string name="morphe_queue_restore_summary">Køen bevares efter genstart af appen</string>
@@ -909,6 +919,9 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <string name="morphe_exit_fullscreen_entry_2">Portræt</string>
   <string name="morphe_exit_fullscreen_entry_3">Landskab</string>
   <string name="morphe_exit_fullscreen_entry_4">Portræt og landskab</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Tving liggende tilstand i fuldskærm</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Roter afspilleren til liggende retning, når du går i fuldskærm. Ikke tilgængelig på små skærme, som allerede åbner fuldskærm i liggende retning</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gestusser til fuld skærm</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Bevægelser i fuldskærmstilstand</string>
@@ -1256,6 +1269,7 @@ Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Intet AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiv tilstand er ikke tilgængelig</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil lydstyrke er ikke tilgængelig</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Afspilningen kan slutte 1 sekund for tidligt</string>
   <string name="morphe_spoof_video_streams_about_js">• Hvis deobfuskering mislykkes, kan afspilning mislykkes</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tving original lyd er ikke tilgængelig</string>

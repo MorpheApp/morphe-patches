@@ -7,8 +7,6 @@
 
 package app.morphe.extension.music.patches.album;
 
-import android.content.Context;
-
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +22,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.CountDownLatch;
@@ -223,21 +220,6 @@ public final class PlaylistRequest {
         return null;
     }
 
-    // Reads the locale the app itself is configured with (which may differ from the system locale
-    // when the user picks a different language inside YT Music). Falls back to system locale before
-    // the application context is available.
-    @NonNull
-    private static Locale currentAppLocale() {
-        try {
-            Context context = Utils.getContext();
-            if (context != null) {
-                return context.getResources().getConfiguration().getLocales().get(0);
-            }
-        } catch (Exception ignored) {
-        }
-        return Locale.getDefault();
-    }
-
     private static HttpURLConnection openInnerTubeConnection() throws IOException {
         HttpURLConnection connection =
                 Requester.getConnectionFromCompiledRoute(YT_API_URL, GET_PLAYLIST_PAGE_ROUTE);
@@ -269,7 +251,7 @@ public final class PlaylistRequest {
             client.put("osVersion", CLIENT.osVersion);
             client.put("androidSdkVersion", CLIENT.androidSdkVersion);
             client.put("hl", LANGUAGE);
-            client.put("gl", currentAppLocale().getCountry());
+            client.put("gl", Requester.getAppLocale().getCountry());
             client.put("timeZone", TIME_ZONE.getID());
             client.put("utcOffsetMinutes", String.valueOf(UTC_OFFSET_MINUTES));
 
@@ -303,7 +285,7 @@ public final class PlaylistRequest {
                     .getJSONObject("playlist");
 
             // Top Songs reuses the album's playlistId - the response is only an album when the
-            // playlist title starts with "Album" (Song = Top Songs). Hence the forced hl=en above.
+            // playlist title starts with "Album" (Song = Top Songs). Hence, the forced hl=en above.
             String title = playlistObj.optString("title", "");
             if (!title.startsWith("Album")) {
                 return NO_SONGS;

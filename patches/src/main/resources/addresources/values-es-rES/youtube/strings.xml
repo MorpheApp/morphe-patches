@@ -50,13 +50,13 @@ Los cambios incluyen:
 • Es posible que los componentes del menú desplegable del reproductor (o ajustes relacionados) no funcionen.
 • Los contadores no están animados.
 • Se muestra la pestaña Biblioteca.
-• Es posible que la sección de música de la descripción del video no funcione.
+• Es posible que la sección de música de la descripción del vídeo no funcione.
 • No se pueden ocultar los elementos del menú desplegable del reproductor.
 • Es posible que el botón para cambiar de cuenta no aparezca en la pestaña Biblioteca."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_feed_flyout_menu_title">Activar filtro del menú desplegable del feed</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro del menú desplegable del feed</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Introduce los nombres de los elementos del menú desplegable que quieres filtrar, separados por saltos de línea</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Activar filtro del menú flotante del feed</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filtro del menú flotante del feed</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Introduce los nombres de los elementos del menú flotante que quieres filtrar, separados por saltos de línea</string>
   <string name="morphe_hide_account_menu_title">Activar el filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_title">Filtro del menú inferior «Biblioteca / Tú»</string>
   <string name="morphe_hide_account_menu_filter_strings_summary">Introduce los nombres de los elementos del menú inferior «Biblioteca / Tú» que quieres filtrar, separados por saltos de línea</string>
@@ -76,7 +76,7 @@ Los cambios incluyen:
   <string name="morphe_hide_floating_microphone_button_summary">Oculta el botón flotante del micrófono en la esquina inferior derecha de la pantalla de sugerencias de búsqueda</string>
   <string name="morphe_hide_get_premium_button_title">Ocultar botón \'Obtener Premium\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar secciones horizontales</string>
-  <string name="morphe_hide_horizontal_shelves_summary">Oculta secciones horizontales como Noticias de última hora, Publicaciones de la comunidad que te pueden gustar, Continuar viendo, Explorar más canales, Explorar más temas, Para ti, Videos más recientes, Más relevante, Publicaciones de la comunidad del Creador, Compras y Volver a ver</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Oculta secciones horizontales como Noticias de última hora, Publicaciones de la comunidad que te pueden gustar, Continuar viendo, Explorar más canales, Explorar más temas, Para ti, Vídeos más recientes, Más relevante, Publicaciones de la comunidad del Creador, Compras y Volver a ver</string>
   <string name="morphe_hide_hyped_label_title">Ocultar etiqueta Hypeado</string>
   <string name="morphe_hide_image_shelf_title">Ocultar sección de imágenes</string>
   <string name="morphe_hide_image_shelf_summary">Oculta las secciones de imágenes en los resultados de búsqueda</string>
@@ -98,7 +98,7 @@ Los cambios incluyen:
   <string name="morphe_hide_notify_me_button_title">Ocultar botón Notificarme</string>
   <string name="morphe_hide_notify_me_button_summary">Oculta el botón de recordatorio para los directos y los estrenos programados</string>
   <string name="morphe_hide_playables_title">Ocultar jugables</string>
-  <string name="morphe_hide_playables_summary">Oculta la función que te permite jugar juegos</string>
+  <string name="morphe_hide_playables_summary">Oculta la función que te permite jugar a juegos</string>
   <string name="morphe_hide_search_term_thumbnails_title">Ocultar miniaturas de términos de búsqueda</string>
   <string name="morphe_hide_search_term_thumbnails_summary">Oculta las vistas previas en miniatura en la lista de autocompletado de búsqueda</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
@@ -157,7 +157,7 @@ Los cambios incluyen:
   <string name="morphe_hide_video_title_title">Ocultar título de vídeo</string>
   <string name="morphe_hide_video_title_summary">Oculta el título del vídeo en el modo de pantalla completa</string>
   <string name="morphe_sanitize_video_subtitle_title">Desinfectar subtítulos de vídeo</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Desinfecta frases como \"#\", \"Recaudación de fondos\", \"Tienda\" y \"productos\" de los subtítulos de los vídeos</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Desinfecta frases como \'#\', \'Recaudación de fondos\', \'Tienda\' y \'productos\' de los subtítulos de los vídeos</string>
   <string name="morphe_hide_description_components_screen_title">Descripción del vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Elige qué componentes aparecen en la descripción del vídeo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar sección \'Resumen de vídeo generado por IA\'</string>
@@ -223,7 +223,7 @@ Los cambios incluyen:
   <string name="morphe_hide_hype_menu_title">Ocultar menú Hype</string>
   <string name="morphe_hide_learning_menu_title">Ocultar menú Aprendizaje</string>
   <string name="morphe_hide_live_menu_title">Ocultar menú \'En directo\'</string>
-  <string name="morphe_hide_memberships_menu_title">Ocultar menú \'Miembros del canal\' </string>
+  <string name="morphe_hide_memberships_menu_title">Ocultar menú \'Miembros del canal\'</string>
   <string name="morphe_hide_movies_menu_title">Ocultar menú \'Películas y TV\'</string>
   <string name="morphe_hide_music_menu_title">Ocultar menú Música</string>
   <string name="morphe_hide_news_menu_title">Ocultar menú Noticias</string>
@@ -241,7 +241,7 @@ Los cambios incluyen:
   <string name="morphe_comments_screen_title">Comentarios</string>
   <string name="morphe_comments_screen_summary">Elige qué componentes aparecen en la sección de comentarios</string>
   <string name="morphe_hide_comments_carousel_title">Activar filtro de carrusel de comentarios</string>
-  <string name="morphe_hide_comments_carousel_summary">"• Asegúrate de introducir el nombre exacto del elemento del carrusel (p. ej., Preguntar, Hypear este video, Escuchar en YouTube Music).
+  <string name="morphe_hide_comments_carousel_summary">"• Asegúrate de introducir el nombre exacto del elemento del carrusel (p. ej., Preguntar, Hypear este vídeo, Escuchar en YouTube Music).
 • Ocultar elementos del carrusel puede tener efectos secundarios no deseados.
 • Si se ocultan todos los elementos del carrusel, también se ocultará toda la sección de comentarios."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filtro de carrusel de comentarios</string>
@@ -350,7 +350,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_aislist_submit_already_warnlisted">Este canal ya está en la lista de advertencias de AiSList</string>
   <string name="morphe_aislist_submit_dialog_confirm">Reportar</string>
   <string name="morphe_aislist_submit_no_username">Establece un nombre de remitente en los ajustes del filtro de canales de IA para reportar canales</string>
-  <string name="morphe_aislist_submit_resolving">Buscando el canal...</string>
+  <string name="morphe_aislist_submit_resolving">Buscando el canal…</string>
   <string name="morphe_aislist_submit_failed_channel">No se pudo encontrar el canal de este vídeo</string>
   <string name="morphe_aislist_submit_success">Canal reportado y pendiente de revisión</string>
   <string name="morphe_aislist_submit_failed_conflict">AiSList no ha podido guardar el reporte. Inténtalo de nuevo más tarde</string>
@@ -381,6 +381,12 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_channel_whitelist_channel_added">Canal añadido a la lista de excepción</string>
   <string name="morphe_channel_whitelist_channel_removed">Canal eliminado de la lista de excepción</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Buscar en el canal</string>
+  <string name="morphe_channel_search_summary">La búsqueda mientras un canal está abierto se limita a ese canal</string>
+  <string name="morphe_channel_search_results">Resultados de búsqueda de canales</string>
+  <string name="morphe_channel_search_no_results">No se encontró nada en este canal</string>
+  <string name="morphe_channel_search_failed">No se pudo buscar en este canal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Enlace copiado al portapapeles</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Enlace con marca de tiempo copiado al portapapeles</string>
@@ -395,7 +401,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_disable_chapter_skip_double_tap_title">Desactivar salto de capítulo con doble toque</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary">Desactiva el gesto de doble toque con dos dedos que omite capítulos, lo que podría activarse accidentalmente con un dedo</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_summary">Descarga videos, podcasts o canciones con aplicaciones de descarga de terceros</string>
+  <string name="morphe_external_downloader_screen_summary">Descarga vídeos, podcasts o canciones con aplicaciones de descarga de terceros</string>
   <string name="morphe_external_downloader_title">Mostrar botón de descarga externa</string>
   <string name="morphe_external_downloader_summary">Muestra un botón superpuesto en el reproductor de vídeo que abre tu descargador externo</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -405,7 +411,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_vot_screen_title">Traducción con voz</string>
   <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del vídeo mediante la síntesis de texto a voz del dispositivo, sincronizada con la reproducción</string>
   <string name="morphe_vot_enabled_title">Traducción con voz</string>
-  <string name="morphe_vot_enabled_summary">Muestra un botón superpuesto en el reproductor de vídeo. Púlsalo para activar o desactivar la traducción; mantenlo pulsado para acceder a los ajustes rápidos.</string>
+  <string name="morphe_vot_enabled_summary">Muestra un botón superpuesto en el reproductor de vídeo. Púlsalo para activar o desactivar la traducción; mantenlo pulsado para acceder a los ajustes rápidos</string>
   <string name="morphe_vot_caption_language_title">Idioma</string>
   <string name="morphe_vot_translation_service_title">Proveedor de traducción</string>
   <string name="morphe_vot_original_audio_volume_title">Volumen de audio original</string>
@@ -416,7 +422,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_vot_max_speech_rate_summary">Multiplicador máximo de velocidad al ajustar la voz al intervalo de tiempo de un subtítulo</string>
   <string name="morphe_vot_mymemory_info_summary">"API de traducción gratuita, sin necesidad de clave API. Hasta 5000 caracteres al día en el plan gratuito, o hasta 50.000 caracteres al día proporcionando una dirección de correo electrónico.
 
-Toca aquí para abrir MyMemory.translated.net."</string>
+Pulsa aquí para abrir MyMemory.translated.net."</string>
   <string name="morphe_vot_mymemory_email_title">Correo electrónico de MyMemory</string>
   <string name="morphe_vot_mymemory_email_summary">Opcional. Introduce tu dirección de correo electrónico de MyMemory para aumentar el límite diario de 5000 a 50.000 caracteres. Déjalo vacío para utilizar el límite anónimo</string>
   <string name="morphe_vot_openrouter_info_summary">"Traducción con IA de pago mediante OpenRouter. Recarga saldo una sola vez y traduce miles de vídeos. Mistral Nemo es la opción más económica, mientras que Gemma 4 ofrece la mayor calidad.
@@ -427,10 +433,10 @@ Toca aquí para abrir OpenRouter.ai."</string>
   <string name="morphe_vot_openrouter_model_title">Modelo OpenRouter</string>
   <string name="morphe_vot_openrouter_model_custom">Personalizado</string>
   <string name="morphe_vot_openrouter_not_configured_title">OpenRouter no configurado</string>
-  <string name="morphe_vot_openrouter_not_configured_message">Ingresa tu clave de API de OpenRouter en los ajustes antes de seleccionar este proveedor</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Introduce tu clave de API de OpenRouter en los ajustes antes de seleccionar este proveedor</string>
   <string name="morphe_vot_cost_free">Gratis</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
-  <string name="morphe_vot_cost_per_hour">%s por 100 horas de video</string>
+  <string name="morphe_vot_cost_per_hour">%s por 100 horas de vídeo</string>
   <string name="morphe_vot_tts_voice_type">Voz</string>
   <string name="morphe_vot_tts_system">Sistema</string>
   <string name="morphe_vot_voice_gender_male_multilingual">Multilingüe masculino</string>
@@ -441,7 +447,7 @@ Toca aquí para abrir OpenRouter.ai."</string>
   <string name="morphe_vot_http_error_title">Traducción no disponible</string>
   <string name="morphe_vot_http_error_message">"El servicio de traducción devolvió un error HTTP %s. Es probable que tu dirección IP tenga un límite de peticiones activo por hasta 24 horas.
 
-Para seguir traduciendo, cambia de proveedor en los ajustes o usa una VPN."</string>
+Para seguir traduciendo, cambia de proveedor en los ajustes o usa una VPN"</string>
   <string name="morphe_vot_do_not_show_again">No volver a mostrar</string>
   <string name="morphe_vot_export_api_key_warning">"Tus ajustes contienen una clave API de OpenRouter.
 
@@ -449,16 +455,16 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_vot_openrouter_credits_title">Límite de crédito de OpenRouter alcanzado</string>
   <string name="morphe_vot_openrouter_credits_message">Se ha alcanzado tu límite de crédito de OpenRouter. Recarga tu saldo o aumenta el límite de gasto de tu clave en OpenRouter.ai</string>
   <string name="morphe_vot_openrouter_open_website">Abrir OpenRouter.ai</string>
-  <string name="morphe_vot_openrouter_error">Falló la traducción con OpenRouter (HTTP %s).</string>
+  <string name="morphe_vot_openrouter_error">Falló la traducción con OpenRouter (HTTP %s)</string>
   <string name="morphe_vot_mymemory_quota_title">Límite diario de MyMemory alcanzado</string>
   <string name="morphe_vot_mymemory_quota_next_available">Próximo disponible en %s.</string>
-  <string name="morphe_vot_mymemory_quota_message_no_email">Has utilizado la cuota diaria gratuita de traducción de MyMemory (5.000 caracteres). Agrega una dirección de correo electrónico de MyMemory en los ajustes para aumentar el límite diario a 50.000 caracteres o cambia a un servicio de traducción diferente</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Has utilizado la cuota diaria gratuita de traducción de MyMemory (5.000 caracteres). Añade una dirección de correo electrónico de MyMemory en los ajustes para aumentar el límite diario a 50.000 caracteres o cambia a un servicio de traducción diferente</string>
   <string name="morphe_vot_mymemory_quota_message_with_email">Has utilizado la cuota de traducción de MyMemory de hoy (50.000 caracteres). Cambia a un servicio de traducción diferente o inténtalo de nuevo mañana</string>
   <string name="morphe_vot_mymemory_error">Falló la traducción con MyMemory (estado %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activar vídeo en bucle</string>
-  <string name="morphe_do_not_remember_loop_video_title">No recordar video en bucle</string>
-  <string name="morphe_do_not_remember_loop_video_summary">Evita que el estado de bucle del video actual se guarde para videos posteriores</string>
+  <string name="morphe_do_not_remember_loop_video_title">No recordar vídeo en bucle</string>
+  <string name="morphe_do_not_remember_loop_video_summary">Evita que el estado de bucle del vídeo actual se guarde para vídeos posteriores</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Mostrar botón de vídeo en bucle</string>
   <string name="morphe_loop_video_button_toast_on">Vídeo en bucle activado</string>
@@ -467,14 +473,14 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_loop_video_range_label_start">Inicio</string>
   <string name="morphe_loop_video_range_label_end">Final</string>
   <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
-  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (vacío = fin del video)</string>
+  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (vacío = fin del vídeo)</string>
   <string name="morphe_loop_video_range_set">Establecer</string>
   <string name="morphe_loop_video_range_clear">Borrar</string>
   <string name="morphe_loop_video_range_toast_on">Repetición de %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Tiempo no válido</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mostrar botón \'Reproducir todo\'</string>
-  <string name="morphe_play_all_button_summary">"Pulsa para generar una lista de reproducción de todos los vídeos del canal. Toca y mantén pulsado para deshacer.
+  <string name="morphe_play_all_button_summary">"Pulsa para generar una lista de reproducción de todos los vídeos del canal. Mantén pulsado para deshacer.
 
 Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_play_all_button_type_title">Modo de generación de listas de reproducción</string>
@@ -494,52 +500,56 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_play_all_button_not_available_toast">No se puede generar la lista de reproducción porque el ID del canal no coincide</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_title">Mostrar botón de recarga de vídeo</string>
-  <string name="morphe_dismiss_player_not_available_toast">El ID del vídeo no está disponible. Vuelve a cargar el vídeo manualmente.</string>
+  <string name="morphe_dismiss_player_not_available_toast">El ID del vídeo no está disponible. Vuelve a cargar el vídeo manualmente</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Mostrar botón \'Guardar para ver más tarde\'</string>
-  <string name="morphe_save_to_watch_later_button_summary">Toca para guardar en \'Ver más tarde\', mantén pulsado para opciones de cola</string>
-  <string name="morphe_save_to_watch_later_success_toast">Video guardado correctamente en la lista de reproducción \'Ver más tarde\'</string>
-  <string name="morphe_save_to_watch_later_already_exists_toast">Este video ya está guardado en la lista de reproducción \'Ver más tarde\'</string>
-  <string name="morphe_save_to_watch_later_error_toast">No se puede guardar este video en la lista de reproducción \'Ver más tarde\'</string>
+  <string name="morphe_save_to_watch_later_button_summary">Pulsa para guardar en \'Ver más tarde\', mantén pulsado para opciones de cola</string>
+  <string name="morphe_save_to_watch_later_success_toast">Vídeo guardado correctamente en la lista de reproducción \'Ver más tarde\'</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Este vídeo ya está guardado en la lista de reproducción \'Ver más tarde\'</string>
+  <string name="morphe_save_to_watch_later_error_toast">No se puede guardar este vídeo en la lista de reproducción \'Ver más tarde\'</string>
   <string name="morphe_save_to_watch_later_flyout_title">Guardar en \'Ver más tarde\'</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en el menú flotante de ajustes del reproductor</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Permite guardar el vídeo que se está viendo en \'Ver más tarde\' desde el menú flotante de ajustes del vídeo</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en videos infantiles</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite guardar videos infantiles en el menú desplegable \'Ver más tarde\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Permite guardar vídeos infantiles en \'Ver más tarde\' desde el menú flotante</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Mostrar botón \'Guardar para ver más tarde\' en el menú flotante de Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Permite guardar Shorts en \'Ver más tarde\' desde el menú flotante</string>
   <string name="morphe_queue_flyout_title">Añadir a la cola de Morphe</string>
   <string name="morphe_queue_restore_title">Mantener la cola entre sesiones</string>
   <string name="morphe_queue_restore_summary">La cola se mantiene después de reiniciar la aplicación</string>
   <string name="morphe_swap_save_and_queue_actions_title">Intercambiar las acciones Guardar y Añadir a la cola</string>
   <string name="morphe_swap_save_and_queue_actions_summary">Toca para ver las opciones de cola, mantén pulsado para guardar en \'Ver más tarde\'</string>
-  <string name="morphe_queue_override_flyout_menu_title">Reemplazar botón de cola del menú desplegable del feed</string>
+  <string name="morphe_queue_override_flyout_menu_title">Reemplazar botón de cola del menú flotante del feed</string>
   <string name="morphe_queue_override_flyout_menu_summary">Abre la cola de Morphe en lugar de la cola de YouTube</string>
-  <string name="morphe_queue_add_flyout_menu_title">Añadir Cola al menú desplegable del feed</string>
-  <string name="morphe_queue_add_flyout_menu_summary">Añade un elemento adicional al menú desplegable. Actívalo si no se muestra \'Añadir a la cola\'</string>
-  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Lista de excepción para anuncios en el menú desplegable</string>
-  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Añade un elemento en el menú desplegable que permite los anuncios en el canal de ese vídeo</string>
+  <string name="morphe_queue_add_flyout_menu_title">Añadir Cola al menú flotante del feed</string>
+  <string name="morphe_queue_add_flyout_menu_summary">Añade un elemento adicional al menú flotante. Actívalo si no se muestra \'Añadir a la cola\'</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_title">Lista de excepción para anuncios en el menú flotante</string>
+  <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Añade un elemento en el menú flotante que permite los anuncios en el canal de ese vídeo</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <string name="morphe_ads_channel_whitelist_flyout_user_dialog_message">Esta función puede requerir el uso de PotHelper o cambiar \'Falsificar transmisiones de vídeo\' a TV o Inicio de sesión de Android VR</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Lista de excepción para velocidad en el menú desplegable</string>
-  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Añade un elemento en el menú desplegable que reproduce siempre los vídeos de ese canal a velocidad 1.0x</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_title">Lista de excepción para velocidad en el menú flotante</string>
+  <string name="morphe_playback_speed_channel_whitelist_flyout_menu_summary">Añade un elemento en el menú flotante que reproduce siempre los vídeos de ese canal a velocidad 1.0x</string>
   <string name="morphe_queue_manager_check_failed_auth">No has iniciado sesión</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">No hay ID de lista de reproducción</string>
   <string name="morphe_queue_manager_check_failed_queue">La cola está vacía</string>
-  <string name="morphe_queue_manager_check_failed_video_id">No hay ID de video</string>
+  <string name="morphe_queue_manager_check_failed_video_id">No hay ID de vídeo</string>
   <string name="morphe_queue_manager_check_failed_generic">Error: %s</string>
-  <string name="morphe_queue_manager_fetch_failed_add">Error al agregar a la cola</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Error al añadir a la cola</string>
   <string name="morphe_queue_manager_fetch_failed_create">Error al crear la cola</string>
   <string name="morphe_queue_manager_fetch_failed_remove">Error al eliminar de la cola</string>
   <string name="morphe_queue_manager_fetch_failed_save">Error al guardar la cola</string>
-  <string name="morphe_queue_manager_fetch_succeeded_add">Agregado a la cola</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Añadido a la cola</string>
   <string name="morphe_queue_manager_fetch_succeeded_create">Cola creada</string>
   <string name="morphe_queue_manager_fetch_succeeded_remove">Eliminado de la cola</string>
   <string name="morphe_queue_manager_fetch_succeeded_save">Cola guardada en %s</string>
   <string name="morphe_queue_manager_playlist_title">Cola de Morphe</string>
-  <string name="morphe_queue_manager_add_to_queue">Agregar a la cola</string>
-  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Agregar a la cola y abrir</string>
-  <string name="morphe_queue_manager_add_to_queue_and_play_video">Agregar a la cola y reproducir</string>
-  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Agregar y recargar vídeo</string>
+  <string name="morphe_queue_manager_add_to_queue">Añadir a la cola</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Añadir a la cola y abrir</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Añadir a la cola y reproducir</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Añadir y recargar vídeo</string>
   <string name="morphe_queue_manager_remove_from_queue">Eliminar de la cola</string>
   <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Eliminar y abrir cola</string>
-  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Eliminar de la cola y recargar video</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Eliminar de la cola y recargar vídeo</string>
   <string name="morphe_queue_manager_open_queue">Abrir cola</string>
   <string name="morphe_queue_manager_save_queue">Guardar cola en lista de reproducción</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
@@ -592,17 +602,17 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Activar gesto de brillo automático</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">Deslizar el brillo hasta su valor más bajo activa el brillo automático del sistema</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">Automático</string>
-  <string name="morphe_swipe_overlay_timeout_title">Tiempo de espera de superposición deslizante</string>
-  <string name="morphe_swipe_overlay_timeout_summary">La cantidad de milisegundos que la superposición está visible</string>
-  <string name="morphe_swipe_overlay_background_opacity_title">Opacidad de fondo de superposición deslizante</string>
+  <string name="morphe_swipe_overlay_timeout_title">Duración de superposición de deslizamiento</string>
+  <string name="morphe_swipe_overlay_timeout_summary">La cantidad de milisegundos que la superposición permanece visible</string>
+  <string name="morphe_swipe_overlay_background_opacity_title">Opacidad de fondo de superposición de deslizamiento</string>
   <string name="morphe_swipe_overlay_background_opacity_summary">Ajusta el nivel de transparencia (0 es transparente, 100 es opaco)</string>
-  <string name="morphe_swipe_overlay_progress_brightness_color_title">Color de superposición deslizante de brillo</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_title">Color de superposición de deslizamiento de brillo</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">Establece el color de la barra de progreso de los controles de brillo</string>
-  <string name="morphe_swipe_overlay_progress_volume_color_title">Color de superposición deslizante de volumen</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_title">Color de superposición de deslizamiento de volumen</string>
   <string name="morphe_swipe_overlay_progress_volume_color_summary">Establece el color de la barra de progreso de los controles de volumen</string>
-  <string name="morphe_swipe_overlay_progress_speed_color_title">Color de superposición deslizante de velocidad</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_title">Color de superposición de deslizamiento de velocidad</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">Establece el color de la barra de progreso de los controles de velocidad de reproducción</string>
-  <string name="morphe_swipe_text_overlay_size_title">Tamaño del texto de superposición deslizante</string>
+  <string name="morphe_swipe_text_overlay_size_title">Tamaño de texto de superposición de deslizamiento</string>
   <string name="morphe_swipe_text_overlay_size_summary">Ajusta el tamaño del texto en pantalla (de 1 a 30)</string>
   <string name="morphe_swipe_threshold_title">Umbral de magnitud del deslizamiento</string>
   <string name="morphe_swipe_threshold_summary">Establece la distancia de deslizamiento necesaria antes de activar un ajuste</string>
@@ -618,7 +628,7 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_swipe_speed_zone_height_title">Altura de la zona de gesto de velocidad</string>
   <string name="morphe_swipe_speed_zone_height_summary">Altura de la zona de gesto de velocidad como porcentaje de la altura del reproductor (5-75)</string>
   <string name="morphe_swipe_zone_label_speed">Velocidad</string>
-  <string name="morphe_swipe_overlay_style_title">Estilo de superposición deslizante</string>
+  <string name="morphe_swipe_overlay_style_title">Estilo de superposición de deslizamiento</string>
   <string name="morphe_swipe_overlay_style_entry_1">Superposición horizontal</string>
   <string name="morphe_swipe_overlay_style_entry_2">Superposición horizontal (mínima - superior)</string>
   <string name="morphe_swipe_overlay_style_entry_3">Superposición horizontal (mínima - centro)</string>
@@ -663,7 +673,7 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_hide_ask_button_title">Ocultar botón Preguntar</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Ocultar botón Clip</string>
-  <string name="morphe_hide_clip_button_summary">Es posible que esto no funcione para algunas cuentas de usuario.</string>
+  <string name="morphe_hide_clip_button_summary">Es posible que esto no funcione para algunas cuentas de usuario</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_shop_button_title">Ocultar botón Tienda</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
@@ -757,15 +767,17 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_show_toolbar_settings_button_type_title">Acción del botón de Ajustes</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Cuando está activado, pulsar abre los ajustes de Morphe y mantener pulsado abre la configuración de YouTube; desactivar para invertir el comportamiento</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
-  <string name="morphe_hide_player_flyout_title">Menú desplegable</string>
-  <string name="morphe_hide_player_flyout_summary">Elige qué componentes aparecen en el menú desplegable</string>
+  <string name="morphe_hide_player_flyout_title">Menú flotante</string>
+  <string name="morphe_hide_player_flyout_summary">Elige qué componentes aparecen en el menú flotante</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Ocultar menú \'Ajustes adicionales / Más\'</string>
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_ambient_mode_title">Ocultar menú Modo Ambiente</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
          'Android Studio' and 'Android VR Downgraded' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"El menú 'Pista de audio' está oculto\n\nPara mostrar el menú 'Pista de audio', cambia 'Falsificar transmisiones de vídeo' a cualquier cliente excepto 'Android Studio' y 'Android VR Downgraded'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"El menú 'Pista de audio' está oculto
+
+Para mostrar el menú 'Pista de audio', cambia 'Falsificar transmisiones de vídeo' a cualquier cliente excepto 'Android Studio' y 'Android VR Downgraded'"</string>
   <!-- 'Audio Track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_audio_track_title">Ocultar menú \'Pista de audio\'</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Ocultar pie del menú \'Pista de audio\'</string>
@@ -878,7 +890,7 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_hide_shorts_sound_button_title">Ocultar botón Sonido</string>
   <string name="morphe_hide_shorts_sound_metadata_label_title">Ocultar etiqueta de metadatos de sonido</string>
   <string name="morphe_hide_shorts_subscribe_button_title">Ocultar botón Suscribirme</string>
-  <string name="morphe_hide_shorts_super_thanks_button_title">Ocultar botón \"Comprar Super Thanks\"</string>
+  <string name="morphe_hide_shorts_super_thanks_button_title">Ocultar botón \'Comprar Super Thanks\'</string>
   <string name="morphe_hide_shorts_tagged_products_title">Ocultar productos etiquetados</string>
   <string name="morphe_hide_shorts_upcoming_button_title">Ocultar botón Próximos</string>
   <string name="morphe_hide_shorts_use_sound_button_title">Ocultar botón \'Usar este sonido\'</string>
@@ -909,6 +921,9 @@ Configuración → Reproducción (o Reproducción automática) → Reproducción
   <string name="morphe_exit_fullscreen_entry_2">Solo vertical</string>
   <string name="morphe_exit_fullscreen_entry_3">Solo horizontal</string>
   <string name="morphe_exit_fullscreen_entry_4">Vertical y horizontal</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Forzar modo horizontal en pantalla completa</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Gira el reproductor a modo horizontal al entrar en pantalla completa. No disponible en pantallas pequeñas, que ya se abren en pantalla completa en modo horizontal</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gestos de pantalla completa</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gestos del reproductor en modo pantalla completa</string>
@@ -1200,7 +1215,7 @@ Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_playback_speed_default_title">Velocidad predeterminada de reproducción</string>
   <string name="morphe_remember_playback_speed_toast">Se ha cambiado la velocidad de reproducción predeterminada a: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Usar velocidad normal para la música</string>
-  <string name="morphe_disable_playback_speed_music_summary">Reproduce siempre los videos musicales a una velocidad de 1.0x</string>
+  <string name="morphe_disable_playback_speed_music_summary">Reproduce siempre los vídeos musicales a una velocidad de 1.0x</string>
   <string name="morphe_playback_speed_channel_whitelist_title">Lista de excepción para velocidad</string>
   <string name="morphe_playback_speed_channel_whitelist_summary">Los vídeos de canales en la lista de excepción siempre se reproducen a velocidad 1.0x</string>
   <string name="morphe_playback_speed_channel_whitelist_flyout_add">Añadir canal a la lista de excepción para velocidad</string>
@@ -1256,7 +1271,8 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</strin
   <string name="morphe_spoof_video_streams_about_no_av1">• Sin códec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• El modo inmersivo 360° VR no está disponible</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumen estable no disponible</string>
-  <string name="morphe_spoof_video_streams_about_js">• Si el descifrado falla, la reproducción puede fallar</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• La reproducción puede terminar 1 segundo antes</string>
+  <string name="morphe_spoof_video_streams_about_js">• Si la desofuscación falla, la reproducción puede fallar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forzar audio original no está disponible</string>
   <string name="morphe_spoof_video_streams_about_sign_in_to_vr_required">• Es necesario iniciar sesión en Android VR</string>

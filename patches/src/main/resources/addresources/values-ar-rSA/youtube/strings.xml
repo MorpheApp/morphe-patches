@@ -381,6 +381,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_whitelist_channel_added">تمت إضافة القناة إلى القائمة المسموح بها</string>
   <string name="morphe_channel_whitelist_channel_removed">تم إزالة القناة من القائمة المسموح بها</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">البحث داخل القناة</string>
+  <string name="morphe_channel_search_summary">عند إجراء البحث أثناء فتح قناة، يقتصر البحث على تلك القناة فقط</string>
+  <string name="morphe_channel_search_results">نتائج البحث في القناة</string>
+  <string name="morphe_channel_search_no_results">لا توجد نتائج في هذه القناة</string>
+  <string name="morphe_channel_search_failed">تعذر البحث في هذه القناة</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">تم نسخ الرابط إلى الحافظة</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">تم نسخ الرابط مع الطابع الزمني إلى الحافظة</string>
@@ -506,8 +512,12 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_save_to_watch_later_already_exists_toast">هذا الفيديو محفوظ بالفعل في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_error_toast">لا يمكن حفظ هذا الفيديو في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_flyout_title">الحفظ في المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">عرض زر الحفظ في قائمة \"المشاهدة لاحقًا\" في قائمة إعدادات المشغّل المنبثقة</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">يتيح حفظ الفيديوهات المتعلقة بالأطفال في قائمة \"المشاهدة لاحقًا\" من قائمة إعدادات الفيديو المنبثقة</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">عرض زر الحفظ في المشاهدة لاحقًا بفيديوهات الأطفال</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">يسمح بحفظ الفيديوهات المتعلقة بالأطفال في قائمة \'المشاهدة لاحقًا\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">يتيح حفظ فيديوهات Shorts في قائمة \"المشاهدة لاحقًا\" من القائمة المنبثقة</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">عرض زر \"الحفظ للمشاهدة لاحقًا\" في قائمة Shorts المنبثقة</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">يتيح حفظ فيديوهات Shorts في قائمة \"المشاهدة لاحقًا\" من القائمة المنبثقة</string>
   <string name="morphe_queue_flyout_title">إضافة الى قائمة انتظار Morphe</string>
   <string name="morphe_queue_restore_title">احتفظ بقائمة الانتظار بين الجلسات</string>
   <string name="morphe_queue_restore_summary">تبقى قائمة الانتظار محفوظة بعد إعادة تشغيل التطبيق</string>
@@ -916,6 +926,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_exit_fullscreen_entry_2">الوضع الطولي فقط</string>
   <string name="morphe_exit_fullscreen_entry_3">وضع بالعرض فقط</string>
   <string name="morphe_exit_fullscreen_entry_4">بالطول والعرض</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">فرض الوضع الأفقي في ملء الشاشة</string>
+  <string name="morphe_force_fullscreen_landscape_summary">قم بتدوير المشغّل إلى الوضع الأفقي عند الدخول إلى ملء الشاشة. غير متاح على الشاشات الصغيرة، التي تفتح بالفعل بملء الشاشة في الوضع الأفقي</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">إيماءات ملء الشاشة</string>
   <string name="morphe_disable_fullscreen_gestures_summary">إيماءات المشغل في وضع ملء الشاشة</string>
@@ -1263,6 +1276,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_spoof_video_streams_about_no_av1">• لا يوجد ترميز الفيديو AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• وضع 360° VR immersive غير متوفر</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• مستوى الصوت الثابت غير متاح</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• قد ينتهي التشغيل قبل ثانية واحدة</string>
   <string name="morphe_spoof_video_streams_about_js">• إذا فشل فك التشفير، قد يفشل التشغيل</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• فرض الصوت الأصلي غير متاح</string>

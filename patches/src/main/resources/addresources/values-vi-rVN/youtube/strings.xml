@@ -380,6 +380,12 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_channel_whitelist_channel_added">Đã thêm kênh vào danh sách ngoại lệ</string>
   <string name="morphe_channel_whitelist_channel_removed">Đã xóa kênh khỏi danh sách ngoại lệ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
+  <!-- interaction.channelsearch.channelSearchPatch -->
+  <string name="morphe_channel_search_title">Tìm kiếm trong kênh</string>
+  <string name="morphe_channel_search_summary">Tìm kiếm khi một kênh đang mở sẽ chỉ tìm kiếm trong kênh đó</string>
+  <string name="morphe_channel_search_results">Kết quả tìm kiếm kênh</string>
+  <string name="morphe_channel_search_no_results">Không tìm thấy gì trên kênh này</string>
+  <string name="morphe_channel_search_failed">Không thể tìm kiếm trên kênh này</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Đã sao chép liên kết vào bảng nhớ tạm</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Đã sao chép liên kết với dấu thời gian vào bảng nhớ tạm</string>
@@ -501,8 +507,12 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_save_to_watch_later_already_exists_toast">Video này đã được lưu trong danh sách xem sau</string>
   <string name="morphe_save_to_watch_later_error_toast">Không thể lưu video này vào danh sách xem sau</string>
   <string name="morphe_save_to_watch_later_flyout_title">Lưu vào Xem sau</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Hiển thị nút Lưu vào Xem sau trong menu cài đặt trình phát</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Cho phép lưu video đang xem vào \'Xem sau\' từ menu cài đặt video</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Hiển thị nút Lưu vào Xem sau trong video dành cho trẻ em</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Cho phép lưu các video liên quan đến trẻ em trong menu flyout \'Watch later\'</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Cho phép lưu video liên quan đến trẻ em vào \'Xem sau\' từ menu bật lên</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Hiển thị nút Lưu vào Xem sau trong menu bật lên của Shorts</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Cho phép lưu Shorts vào \'Xem sau\' từ menu bật lên</string>
   <string name="morphe_queue_flyout_title">Thêm vào hàng chờ Morphe</string>
   <string name="morphe_queue_restore_title">Lưu hàng chờ giữa các phiên</string>
   <string name="morphe_queue_restore_summary">Hàng chờ vẫn được lưu sau khi tắt đi bật lại ứng dụng</string>
@@ -910,6 +920,9 @@ Cài đặt → Phát (hoặc Tự động phát) → tự động phát video t
   <string name="morphe_exit_fullscreen_entry_2">Chỉ dọc</string>
   <string name="morphe_exit_fullscreen_entry_3">Chỉ ngang</string>
   <string name="morphe_exit_fullscreen_entry_4">Chế độ dọc và ngang</string>
+  <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
+  <string name="morphe_force_fullscreen_landscape_title">Buộc xoay ngang khi toàn màn hình</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Xoay trình phát sang ngang khi vào chế độ toàn màn hình. Không khả dụng trên màn hình nhỏ vì các màn hình này đã mở toàn màn hình ở chế độ ngang</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Cử chỉ toàn màn hình</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Cử chỉ của trình phát ở chế độ toàn màn hình</string>
@@ -1257,6 +1270,7 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Không hỗ trợ chế độ trải nhiệm VR 360°</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Âm lượng ổn định không khả dụng</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Phát lại có thể kết thúc sớm 1 giây</string>
   <string name="morphe_spoof_video_streams_about_js">• Nếu giải mã thất bại, video có thể không phát được</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Buộc âm thanh gốc không khả dụng</string>
