@@ -319,39 +319,38 @@ public final class MinimalMiniplayerPatch {
                 return original;
             }
 
-            Rect docked = fullWidthSpan(original);
-            lastBounds.set(docked);
-
-            barBoundsFor(docked);
+            Rect docking = widthSpan(original);
+            lastBounds.set(docking);
 
             PlayerType currentType = PlayerType.getCurrent();
+            if (currentType.isMaximizedOrFullscreen()) {
+                barShapeApplied = false;
+                currentBounds.set(docking);
+                return docking;
+            }
             if (currentType == PlayerType.WATCH_WHILE_MINIMIZED) {
+                barBoundsFor(docking);
                 currentBounds.set(barBounds);
                 barShapeApplied = true;
                 return barBounds;
             }
-            if (currentType.isMaximizedOrFullscreen()) {
-                barShapeApplied = false;
-                currentBounds.set(docked);
-                return docked;
-            }
 
             // Interpolate bounds during player minimization.
             int targetTop = barBounds.top;
-            if (targetTop > 0 && docked.top > 0) {
-                float fraction = Math.min(1f, Math.max(0f, (float) docked.top / targetTop));
+            if (targetTop > 0 && docking.top > 0) {
+                float fraction = Math.min(1f, Math.max(0f, (float) docking.top / targetTop));
                 currentBounds.set(
-                        interpolate(docked.left, barBounds.left, fraction),
-                        interpolate(docked.top, barBounds.top, fraction),
-                        interpolate(docked.right, barBounds.right, fraction),
-                        interpolate(docked.bottom, barBounds.bottom, fraction)
+                        interpolate(docking.left, barBounds.left, fraction),
+                        interpolate(docking.top, barBounds.top, fraction),
+                        interpolate(docking.right, barBounds.right, fraction),
+                        interpolate(docking.bottom, barBounds.bottom, fraction)
                 );
                 return currentBounds;
             }
 
-            currentBounds.set(docked);
+            currentBounds.set(docking);
 
-            return docked;
+            return docking;
         } catch (Exception ex) {
             Logger.printException(() -> "getMinimalBarBounds failure", ex);
         }
@@ -360,11 +359,19 @@ public final class MinimalMiniplayerPatch {
     }
 
     /**
-     * Prevents the video from anchoring into one of the display corners by spanning the
-     * bounds to full display width, making the transition to miniplayer smoother.
+     * Handle the dragging spanning bounds for the available minimal miniplayer styles.
      */
-    private static Rect fullWidthSpan(Rect original) {
-        dockedBounds.set(0, original.top, getWidthPixels(), original.bottom);
+    private static Rect widthSpan(Rect original) {
+        if (original.left <= 0 || original.width() >= getWidthPixels()) {
+            return original;
+        }
+
+        if (getCurrentMiniplayerType() == MINIMAL_BAR) {
+            dockedBounds.set(0, original.top, original.width(), original.bottom);
+        }
+        if (getCurrentMiniplayerType() == MINIMAL_BAR_2) {
+            dockedBounds.set(0, original.top, getWidthPixels(), original.bottom);
+        }
 
         return dockedBounds;
     }
@@ -502,6 +509,11 @@ public final class MinimalMiniplayerPatch {
 
             setContentAlpha(0f);
             showControls(true);
+            if (morphFrom.equals(morphTo)) {
+                setBounds(controller, morphTo);
+                updateVideoClip();
+                return;
+            }
             runMorph(true, () -> setContentAlpha(1f));
         } catch (Exception ex) {
             morphing = false;
