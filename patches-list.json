@@ -9919,6 +9919,19 @@
         }
       ],
       "options": []
-    }
+    }, 
+      {
+            "name": "Force Background Playback with Audio in YouTube Videos and Shorts",
+                "description": "Some users, and many others, are no longer able to load background playback in videos; it's now just audio. Shorts don't even have background playback or audio at all. So, we need to force it: picture-in-picture (PiP) and audio in videos, and background playback with audio in Shorts. This will be in the next update.",
+                    "options": []
+                      },
+                        {
+                            "name": "Restore the Original YouTube and YouTube Music Icons in Recent Apps/Multitasking",
+                                "description": "It's no longer just the black Morphe icon. I miss that original icon everywhere, so we'll restore your original icons in Recent Apps/Multitasking in the next update.",
+                                    "options": []
+                                      }
+                                    ]
+
+      }
   ]
 }
