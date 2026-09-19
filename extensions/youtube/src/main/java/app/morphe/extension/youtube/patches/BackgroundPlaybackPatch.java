@@ -44,7 +44,7 @@ public class BackgroundPlaybackPatch {
 
     private static boolean receiverRegistered;
 
-    private static volatile boolean pendingAutoPause = false;
+    private static boolean pendingAutoPause;
 
     /**
      * Injection point. Called during app initialization via onCreateHook.
