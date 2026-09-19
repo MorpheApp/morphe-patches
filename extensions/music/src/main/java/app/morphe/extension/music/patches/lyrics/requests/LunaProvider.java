@@ -62,31 +62,77 @@ public final class LunaProvider implements LyricsProvider {
 
     @Override
     public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
-        JSONArray trackIds = searchTracks(track);
-        if (trackIds == null || trackIds.length() == 0) {
+        List<JSONObject> tracks = searchTracks(track);
+        if (tracks.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<Lyrics> results = new ArrayList<>();
-        for (int i = 0; i < trackIds.length() && results.size() < LyricsRequests.MAX_CANDIDATES; i++) {
-            String trackId = trackIds.optString(i, null);
+        List<ScoredLyrics> scored = new ArrayList<>();
+        for (JSONObject trackObj : tracks) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
+            String trackId = trackObj.optString("id", null);
             if (trackId == null || trackId.isEmpty()) {
                 continue;
             }
             try {
                 Lyrics lyrics = fetchLyricsByTrackId(trackId);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            trackObj.optString("name", ""),
+                            firstArtistName(trackObj),
+                            trackObj.optLong("duration", 0) / 1000,
+                            lyrics, track);
+                    scored.add(new ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch Luna lyrics for a track id", ex);
             }
         }
+
+        scored.sort((a, b) -> b.score - a.score);
+        List<Lyrics> results = new ArrayList<>(scored.size());
+        for (ScoredLyrics s : scored) {
+            results.add(s.lyrics);
+        }
         return results;
     }
 
+    private static String firstArtistName(JSONObject trackObj) {
+        JSONArray artists = trackObj.optJSONArray("artists");
+        if (artists != null && artists.length() > 0) {
+            JSONObject first = artists.optJSONObject(0);
+            if (first != null) {
+                return first.optString("name", "");
+            }
+        }
+        return "";
+    }
+
+    private record ScoredLyrics(int score, Lyrics lyrics) {
+    }
+
+    private static int scoreCandidate(JSONObject trackObj, TrackInfo track) {
+        String title = trackObj.optString("name", "");
+        String artist = "";
+        JSONArray artists = trackObj.optJSONArray("artists");
+        if (artists != null && artists.length() > 0) {
+            JSONObject first = artists.optJSONObject(0);
+            if (first != null) {
+                artist = first.optString("name", "");
+            }
+        }
+        long durationMs = trackObj.optLong("duration", 0);
+        return LyricsRequests.scoreTrackCandidate(title, artist,
+                durationMs > 0 ? durationMs / 1000 : 0, track);
+    }
+
+    private static boolean isOriginalTrack(JSONObject trackObj) {
+        JSONObject label = trackObj.optJSONObject("label_info");
+        return label != null && label.optBoolean("is_original", false);
+    }
+
     @Nullable
-    private JSONArray searchTracks(TrackInfo track) throws Exception {
+    private List<JSONObject> searchTracks(TrackInfo track) throws Exception {
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
 
         String keyword = track.artist() + " " + track.title();
@@ -123,23 +169,23 @@ public final class LunaProvider implements LyricsProvider {
                 + "&_rticket=" + System.currentTimeMillis()
                 + "&q=" + LyricsRequests.encode(keyword)
                 + "&cursor=0"
-                + "&count=10";
+                + "&count=20";
 
         HttpURLConnection connection = openConnection(url, SEARCH_UA);
         if (connection == null || connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
             if (connection != null) {
                 LyricsRequests.logFailure("Luna", connection);
             }
-            return null;
+            return new ArrayList<>();
         }
 
         JSONObject response = Requester.parseJSONObject(connection);
         JSONArray resultGroups = response.optJSONArray("result_groups");
         if (resultGroups == null || resultGroups.length() == 0) {
-            return null;
+            return new ArrayList<>();
         }
 
-        List<String> trackIdList = new ArrayList<>();
+        List<JSONObject> trackList = new ArrayList<>();
         for (int g = 0, length = resultGroups.length(); g < length; g++) {
             JSONObject group = resultGroups.optJSONObject(g);
             if (group == null) continue;
@@ -156,18 +202,21 @@ public final class LunaProvider implements LyricsProvider {
                 if (entity == null) continue;
                 JSONObject trackObj = entity.optJSONObject("track");
                 if (trackObj == null) continue;
-                String id = LyricsRequests.optString(trackObj, "id");
-                if (id != null) {
-                    trackIdList.add(id);
+                String id = trackObj.optString("id", null);
+                if (id != null && !id.isEmpty()) {
+                    trackList.add(trackObj);
                 }
             }
         }
 
-        JSONArray ids = new JSONArray();
-        for (String id : trackIdList) {
-            ids.put(id);
-        }
-        return ids;
+        trackList.sort((a, b) -> {
+            int sa = scoreCandidate(a, track);
+            int sb = scoreCandidate(b, track);
+            if (isOriginalTrack(a)) sa += 10;
+            if (isOriginalTrack(b)) sb += 10;
+            return sb - sa;
+        });
+        return trackList;
     }
 
     @Nullable

@@ -456,15 +456,15 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies saved</string>
     <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies cleared</string>
     <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: invalid cookies — please check and try again</string>
-    <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-    <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, then QQ, then KuGou, then NetEase, then BiniLyrics, then Unison, then AMLL</string>
     <string name="morphe_music_lyrics_source_entry_lrclib" translatable="false">LRCLIB</string>
     <string name="morphe_music_lyrics_source_entry_qq" translatable="false">QQ</string>
     <string name="morphe_music_lyrics_source_entry_kugou" translatable="false">KuGou</string>
     <string name="morphe_music_lyrics_source_entry_netease" translatable="false">NetEase</string>
     <string name="morphe_music_lyrics_source_entry_binimum" translatable="false">BiniLyrics</string>
     <string name="morphe_music_lyrics_source_entry_unison" translatable="false">Unison</string>
+    <string name="morphe_music_lyrics_source_entry_simpmusic" translatable="false">SimpMusic</string>
     <string name="morphe_music_lyrics_source_entry_amll" translatable="false">AMLL</string>
+    <string name="morphe_music_lyrics_source_entry_lunabeat" translatable="false">LunaBeat</string>
     <string name="morphe_music_lyrics_tap_to_seek_title">Tap a line to seek</string>
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tapping a line jumps to that moment in the song</string>
     <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>

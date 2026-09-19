@@ -122,29 +122,74 @@ public final class AppleMusicProvider implements LyricsProvider {
             return results;
         }
 
-        List<String> songIds = searchAllSongs(track, ctx.userToken, ctx.storefront);
-        if (songIds.isEmpty()) {
+        List<JSONObject> songs = searchAllSongs(track, ctx.userToken, ctx.storefront);
+        if (songs.isEmpty()) {
             return new ArrayList<>();
         }
 
-        List<Lyrics> results = new ArrayList<>();
-        for (String songId : songIds) {
-            if (results.size() >= LyricsRequests.MAX_CANDIDATES) {
+        List<ScoredLyrics> scored = new ArrayList<>();
+        for (JSONObject song : songs) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
+            }
+            String songId = song.optString("id", null);
+            if (songId == null) {
+                continue;
             }
             try {
                 Lyrics lyrics = fetchLyrics(ctx.userToken, ctx.storefront, ctx.language, songId);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            titleFromSong(song), artistFromSong(song),
+                            durationFromSong(song), lyrics, track);
+                    scored.add(new ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch Apple Music lyrics for a candidate", ex);
             }
         }
+
+        scored.sort((a, b) -> b.score - a.score);
+        List<Lyrics> results = new ArrayList<>(scored.size());
+        for (ScoredLyrics s : scored) {
+            results.add(s.lyrics);
+        }
         return results;
     }
 
-    private List<String> searchAllSongs(TrackInfo track, String userToken, String storefront) {
+    private static String titleFromSong(JSONObject song) {
+        JSONObject attributes = song.optJSONObject("attributes");
+        return attributes != null ? attributes.optString("name", "") : "";
+    }
+
+    private static String artistFromSong(JSONObject song) {
+        JSONObject attributes = song.optJSONObject("attributes");
+        return attributes != null ? attributes.optString("artistName", "") : "";
+    }
+
+    private static long durationFromSong(JSONObject song) {
+        JSONObject attributes = song.optJSONObject("attributes");
+        if (attributes == null) return 0;
+        long durationMs = attributes.optLong("durationInMillis", 0);
+        return durationMs > 0 ? durationMs / 1000 : 0;
+    }
+
+    private record ScoredLyrics(int score, Lyrics lyrics) {
+    }
+
+    private static int scoreCandidate(JSONObject item, TrackInfo track) {
+        JSONObject attributes = item.optJSONObject("attributes");
+        if (attributes == null) {
+            return 0;
+        }
+        String title = attributes.optString("name", "");
+        String artist = attributes.optString("artistName", "");
+        long durationMs = attributes.optLong("durationInMillis", 0);
+        return LyricsRequests.scoreTrackCandidate(title, artist,
+                durationMs > 0 ? durationMs / 1000 : 0, track);
+    }
+
+    private List<JSONObject> searchAllSongs(TrackInfo track, String userToken, String storefront) {
         HttpURLConnection connection = null;
         try {
             String term = LyricsRequests.encode(track.title() + " " + track.artist());
@@ -169,17 +214,15 @@ public final class AppleMusicProvider implements LyricsProvider {
                 return new ArrayList<>();
             }
 
-            List<String> ids = new ArrayList<>();
+            List<JSONObject> scored = new ArrayList<>();
             for (int i = 0; i < items.length(); i++) {
                 JSONObject item = items.optJSONObject(i);
                 if (item != null) {
-                    String id = LyricsRequests.optString(item, "id");
-                    if (id != null) {
-                        ids.add(id);
-                    }
+                    scored.add(item);
                 }
             }
-            return ids;
+            scored.sort((a, b) -> scoreCandidate(b, track) - scoreCandidate(a, track));
+            return scored;
         } catch (Exception ex) {
             return new ArrayList<>();
         } finally {
@@ -405,27 +448,17 @@ public final class AppleMusicProvider implements LyricsProvider {
                 return null;
             }
 
-            String title = track.title().toLowerCase().trim();
-            String artist = track.artist().toLowerCase().trim();
             String bestId = null;
+            int bestScore = -1;
             for (int i = 0; i < items.length(); i++) {
                 JSONObject item = items.optJSONObject(i);
                 if (item == null) {
                     continue;
                 }
-                JSONObject attributes = item.optJSONObject("attributes");
-                if (attributes == null) {
-                    continue;
-                }
-                String itemTitle = attributes.optString("name", "");
-                String itemArtist = attributes.optString("artistName", "");
-                String itemId = LyricsRequests.optString(item, "id");
-                if (bestId == null) {
-                    bestId = itemId;
-                }
-                if (itemTitle.toLowerCase().contains(title) && itemArtist.toLowerCase().contains(artist)) {
-                    bestId = itemId;
-                    break;
+                int score = scoreCandidate(item, track);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestId = item.optString("id", null);
                 }
             }
             return bestId;

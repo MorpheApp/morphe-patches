@@ -35,7 +35,7 @@ final class LyricsCache {
     private static final int MEMORY_ENTRIES = 200;
 
     /** Maximum number of files kept on disk. Older files are deleted first. */
-    private static final int DISK_ENTRIES = 250;
+    private static final int DISK_ENTRIES = 2000;
 
     private static final String DIRECTORY_NAME = "morphe_lyrics";
     private static final String HEADER_PROVIDER = "#provider=";

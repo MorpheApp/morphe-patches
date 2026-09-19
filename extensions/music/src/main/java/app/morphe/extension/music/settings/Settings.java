@@ -179,7 +179,7 @@ public class Settings extends SharedYouTubeSettings {
     // Lyrics
     public static final BooleanSetting LYRICS_ENABLED = new BooleanSetting("morphe_music_lyrics_enabled", TRUE, true);
     public static final String DEFAULT_LYRICS_ORDER =
-            "YTMusic,-Captions,Apple,LRCLIB,QQ,NetEase,KuGou,-Luna,-bLyrics,-BiniLyrics,-Unison,-AMLL,-Lyricify,-Spotify,-Musixmatch,-Deezer,";
+            "YTMusic,-Captions,Apple,LRCLIB,QQ,NetEase,KuGou,Luna,-bLyrics,-BiniLyrics,-Unison,-SimpMusic,-AMLL,-LunaBeat,-Lyricify,-Spotify,-Musixmatch,-Deezer,";
     public static final StringSetting LYRICS_SOURCE = new StringSetting("morphe_music_lyrics_source", DEFAULT_LYRICS_ORDER, true, parent(LYRICS_ENABLED));
     public static final StringSetting APPLE_MUSIC_TOKEN = new StringSetting("morphe_music_apple_music_token", "", true, parent(LYRICS_ENABLED));
     public static final StringSetting SPOTIFY_TOKEN = new StringSetting("morphe_music_spotify_token", "", true, parent(LYRICS_ENABLED));
@@ -252,18 +252,18 @@ public class Settings extends SharedYouTubeSettings {
             + "Executive,Guitar,Group,Harmony,ISRC,Keyboard,LA,Lang,Language,Lead,Leader,Leaders,"
             + "Length,Lyric,Lyricist,Lyricists,Lyrics,Lyrics By,MV,Main Sample,Manufactory,"
             + "Manufactured,Manufactured By,Manufacturing,Master,Mastered,Mastered By,Mastering,"
-            + "Mastering Engineer,Mastering Engineers,Masters,Mix Engineer,Mixed,Mixed By,Mixer,"
-            + "Mixers,Mixing,Mixing Studio,Music,OP,Original Title,Original Publisher,Original Writer,"
-            + "PGM,PV,Percussion,Performed,Performed By,Performer,Performers,Performing,"
-            + "Pro-Tools Editing,Produced,Produced By,Producer,Producers,Producing,Program,Published,"
-            + "Published By,Publisher,Publishers,Publishing,Publishing Group,"
-            + "Publishing Group Administered By,QQ,RE,Rap,Record,Recorded,Recorded At,Recorded By,"
-            + "Recorder,Recorders,Recording,Recordings,Records,SP,Sample,Sampled,Samples,Sampling,"
-            + "Singer,Singers,Singing,Song,Strings,Studio,Sub,Sub Publisher,Subs,Subscribe,Subscribed,"
-            + "Subscriber,Subscribers,Surround,Synthesizer,Synthesizers,TA,Title,VE,Ver,Version,Vocal,"
-            + "Vocal Arrangement,Vocal Directed,Vocal Directed By,Vocal Director,Vocal Engineer,"
-            + "Vocal Engineering,Vocal Produced,Vocal Produced By,Vocal Producer,Vocal Producers,"
-            + "Vocals,Vocals Arrangement,Voice,Written,Written By,Writter,"
+            + "Mastering Engineer,Mastering Engineers,Masters,Mix Engineer,Mix Engineered by,Mixed,"
+            + "Mixed By,Mixer,Mixers,Mixing,Mixing Studio,Music,OP,Original Lyrics by,Original Title,"
+            + "Original Publisher,Original Writer,PGM,PV,Percussion,Performed,Performed By,Performer,"
+            + "Performers,Performing,Pro-Tools Editing,Produced,Produced By,Producer,Producers,"
+            + "Producing,Program,Programming by,Published,Published By,Publisher,Publishers,Publishing,"
+            + "Publishing Group,Publishing Group Administered By,QQ,RE,Rap,Record,Recorded,"
+            + "Recorded At,Recorded By,Recorder,Recorders,Recording,Recordings,Records,SP,Sample,"
+            + "Sampled,Samples,Sampling,Singer,Singers,Singing,Song,Strings,Studio,Sub,Sub Publisher,"
+            + "Subs,Subscribe,Subscribed,Subscriber,Subscribers,Surround,Synthesizer,Synthesizers,"
+            + "TA,Title,VE,Ver,Version,Vocal,Vocal Arrangement,Vocal Directed,Vocal Directed By,"
+            + "Vocal Director,Vocal Engineer,Vocal Engineering,Vocal Produced,Vocal Produced By,"
+            + "Vocal Producer,Vocal Producers,Vocals,Vocals Arrangement,Voice,Written,Written By,Writter,"
             + "专辑,业务联系,业务邮箱,中提,中提琴,中提琴手,中文,主催,主唱,乐器,乐团,乐队,书法,二胡,人声,企业宣传,"
             + "企划,企宣,伴唱,伴奏,伴舞,低音提琴,作曲,作画,作者,作词,修音,修音师,公司,出品,出品人,创作,创作者,指挥,"
             + "创意,制作,制作人,前置混音,剧情,剪纸艺术家,助力推广,助理,协力,厂牌,原唱,原曲,原歌名,原版,原画,原编曲,"
@@ -278,10 +278,10 @@ public class Settings extends SharedYouTubeSettings {
             + "男声,画,画师,监制,监唱,私人,童声,笛,笛子,笛萧,策划,管乐,管弦,管弦乐,箫,粤语,经纪,统筹,编,编写,编剧,"
             + "编唱,编导,编曲,编舞,编舞师,编著,编辑,缩混,网易音乐人商务合作,美工,美术,美术设计,翻唱,翻译,翻译者,联合,"
             + "联系,联系方式,舞台,舞团,舞曲,舞蹈,艺人制作统筹,艺人经纪,艺人经纪公司,艺人统筹,艺术家,艺术指导,艺术指导老师,"
-            + "艺统,花脸,英文,营销,萧笛,萨克斯,视觉,记,设计,词,词Lyrics,词曲作者,词曲提供,译者,语言,语言代码,说唱,"
-            + "说唱词,调校,调音,谱曲,贝斯,贴唱,造型,邮件,邮箱地址,配唱,采样,钢琴,铜管,键盘,键盘手,长号,长笛,队长,附加,"
-            + "音乐,音乐人,音准调校,音响,音效,音编,音频,项目企划,项目协力,项目总企划,项目总监,项目统筹,项目营销,顾问,"
-            + "领唱,领舞,题字,题记,飓风计划商务合作,马头琴,鸣谢,鼓,鼓录音,鼓录音室,鼓录制,鼓机";
+            + "艺统,花脸,英文,营销,萧笛,萨克斯,视觉,记,设计,词,词Lyricist,词Lyrics,词曲作者,词曲提供,译者,语言,"
+            + "语言代码,说唱,说唱词,调校,调音,谱曲,贝斯,贴唱,造型,邮件,邮箱地址,配唱,采样,钢琴,铜管,键盘,键盘手,长号,"
+            + "长笛,队长,附加,音乐,音乐人,音准调校,音响,音效,音编,音频,项目企划,项目协力,项目总企划,项目总监,项目统筹,"
+            + "项目营销,顾问,领唱,领舞,题字,题记,飓风计划商务合作,马头琴,鸣谢,鼓,鼓录音,鼓录音室,鼓录制,鼓机,运营";
     public static final StringSetting LYRICS_CREDIT_LINE_REGEX = new StringSetting("morphe_music_lyrics_credit_line_regex", DEFAULT_LYRICS_CREDIT_LINE_REGEX, true, parent(LYRICS_ENABLED));
 
     // SponsorBlock

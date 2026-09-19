@@ -99,9 +99,10 @@ public final class NetEaseProvider implements LyricsProvider {
     public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> songs = searchAll(keyword, track);
-        List<Lyrics> results = new ArrayList<>();
+
+        List<ScoredLyrics> scored = new ArrayList<>();
         for (JSONObject song : songs) {
-            if (results.size() >= LyricsRequests.MAX_CANDIDATES) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
             if (song == null || !song.has("id")) {
@@ -110,13 +111,26 @@ public final class NetEaseProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchFromSong(song);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    long durationMs = song.optLong("duration", 0);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            song.optString("name", ""), song.optString("artist", ""),
+                            durationMs > 0 ? durationMs / 1000 : 0, lyrics, track);
+                    scored.add(new ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch NetEase lyrics for a song", ex);
             }
         }
+
+        scored.sort((a, b) -> b.score - a.score);
+        List<Lyrics> results = new ArrayList<>(scored.size());
+        for (ScoredLyrics s : scored) {
+            results.add(s.lyrics);
+        }
         return results;
+    }
+
+    private record ScoredLyrics(int score, Lyrics lyrics) {
     }
 
     @Nullable

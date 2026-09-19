@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.zip.GZIPInputStream;
 
+import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.shared.Logger;
@@ -37,7 +38,7 @@ import app.morphe.extension.shared.requests.Requester;
 /**
  * Shared HTTP helpers for the lyrics providers.
  */
-final class LyricsRequests {
+public final class LyricsRequests {
 
     static final int MAX_CANDIDATES = 5;
     private static final int CONNECT_TIMEOUT_MILLISECONDS = 5 * 1000;
@@ -223,7 +224,7 @@ final class LyricsRequests {
         lastRequestTime.set(System.currentTimeMillis());
     }
 
-    static int scoreTrackCandidate(String title, String artist, long durationSec, TrackInfo track) {
+    public static int scoreTrackCandidate(String title, String artist, long durationSec, TrackInfo track) {
         String wantedTitle = track.title().toLowerCase(Locale.ROOT);
         String wantedArtist = track.artist().toLowerCase(Locale.ROOT);
         String t = title != null ? title.toLowerCase(Locale.ROOT) : "";
@@ -242,5 +243,23 @@ final class LyricsRequests {
             }
         }
         return score;
+    }
+
+    public static int syncRank(Lyrics lyrics) {
+        for (LyricsLine line : lyrics.lines()) {
+            if (line.hasWords()) {
+                return 2;
+            }
+        }
+        return lyrics.synced() ? 1 : 0;
+    }
+
+    public static int scoreLyricsCandidate(String title, String artist, long durationSec,
+                                     Lyrics lyrics, TrackInfo track) {
+        return scoreTrackCandidate(title, artist, durationSec, track) + syncRank(lyrics);
+    }
+
+    public static int scoreSingleResult(Lyrics lyrics) {
+        return 6 + syncRank(lyrics);
     }
 }

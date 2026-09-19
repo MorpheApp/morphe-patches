@@ -88,9 +88,10 @@ public final class QQProvider implements LyricsProvider {
     public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> candidates = searchAll(keyword, track);
-        List<Lyrics> results = new ArrayList<>();
+
+        List<ScoredLyrics> scored = new ArrayList<>();
         for (JSONObject song : candidates) {
-            if (results.size() >= LyricsRequests.MAX_CANDIDATES) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
             if (song == null || !song.has("id")) {
@@ -99,13 +100,25 @@ public final class QQProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchFromSong(song);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            song.optString("title", ""), singers(song),
+                            song.optInt("interval", 0), lyrics, track);
+                    scored.add(new ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch QQ lyrics for a song", ex);
             }
         }
+
+        scored.sort((a, b) -> b.score - a.score);
+        List<Lyrics> results = new ArrayList<>(scored.size());
+        for (ScoredLyrics s : scored) {
+            results.add(s.lyrics);
+        }
         return results;
+    }
+
+    private record ScoredLyrics(int score, Lyrics lyrics) {
     }
 
     @Nullable

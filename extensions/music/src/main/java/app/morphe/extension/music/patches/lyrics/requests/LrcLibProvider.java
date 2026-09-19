@@ -57,25 +57,25 @@ public final class LrcLibProvider implements LyricsProvider {
 
     @Override
     public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
-        List<Lyrics> results = new ArrayList<>();
+        List<ScoredLyrics> scored = new ArrayList<>();
 
         // Exact match first
         Lyrics exact = fetchExact(track);
         if (exact != null) {
-            results.add(exact);
+            scored.add(new ScoredLyrics(LyricsRequests.scoreSingleResult(exact), exact));
         }
 
-        // Then search results, sorted by duration delta
+        // Then search results, sorted by combined score
         String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
         HttpURLConnection connection = LyricsRequests.openConnection(url);
         if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
-            return results;
+            return toResults(scored);
         }
 
         JSONArray searchResults = Requester.parseJSONArray(connection);
         if (searchResults.length() == 0) {
-            return results;
+            return toResults(scored);
         }
 
         List<JSONObject> candidates = new ArrayList<>();
@@ -87,21 +87,54 @@ public final class LrcLibProvider implements LyricsProvider {
         }
 
         candidates.sort((a, b) -> {
+            int scoreA = scoreCandidate(a, track);
+            int scoreB = scoreCandidate(b, track);
+            if (scoreA != scoreB) {
+                return scoreB - scoreA;
+            }
             int deltaA = Math.abs(a.optInt("duration", 0) - track.durationSeconds());
             int deltaB = Math.abs(b.optInt("duration", 0) - track.durationSeconds());
             return deltaA - deltaB;
         });
 
         for (JSONObject candidate : candidates) {
-            if (results.size() >= LyricsRequests.MAX_CANDIDATES) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
-            Lyrics lyrics = toLyrics(candidate);
-            if (lyrics != null && !lyrics.isEmpty()) {
-                results.add(lyrics);
+            try {
+                Lyrics lyrics = toLyrics(candidate);
+                if (lyrics != null && !lyrics.isEmpty()) {
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            candidate.optString("trackName", ""),
+                            candidate.optString("artistName", ""),
+                            candidate.optInt("duration", 0),
+                            lyrics, track);
+                    scored.add(new ScoredLyrics(score, lyrics));
+                }
+            } catch (Exception ex) {
             }
         }
+
+        scored.sort((a, b) -> b.score - a.score);
+        return toResults(scored);
+    }
+
+    private static List<Lyrics> toResults(List<ScoredLyrics> scored) {
+        List<Lyrics> results = new ArrayList<>(scored.size());
+        for (ScoredLyrics s : scored) {
+            results.add(s.lyrics);
+        }
         return results;
+    }
+
+    private record ScoredLyrics(int score, Lyrics lyrics) {
+    }
+
+    private static int scoreCandidate(JSONObject item, TrackInfo track) {
+        String title = item.optString("trackName", "");
+        String artist = item.optString("artistName", "");
+        return LyricsRequests.scoreTrackCandidate(title, artist,
+                item.optInt("duration", 0), track);
     }
 
     @Nullable
@@ -140,29 +173,30 @@ public final class LrcLibProvider implements LyricsProvider {
             return null;
         }
 
-        // Prefer the candidate closest in duration, since same titled tracks are common.
-        JSONObject best = null;
-        int bestDelta = Integer.MAX_VALUE;
+        Lyrics bestLyrics = null;
+        int bestCombined = -1;
         for (int i = 0; i < resultsLength; i++) {
             JSONObject candidate = results.optJSONObject(i);
             if (candidate == null) {
                 continue;
             }
-            if (track.durationSeconds() <= 0) {
-                best = candidate;
-                break;
-            }
-            int delta = Math.abs(candidate.optInt("duration", 0) - track.durationSeconds());
-            if (delta < bestDelta) {
-                bestDelta = delta;
-                best = candidate;
+            try {
+                Lyrics candidateLyrics = toLyrics(candidate);
+                if (candidateLyrics != null) {
+                    int combined = LyricsRequests.scoreLyricsCandidate(
+                            candidate.optString("trackName", ""),
+                            candidate.optString("artistName", ""),
+                            candidate.optInt("duration", 0),
+                            candidateLyrics, track);
+                    if (combined > bestCombined) {
+                        bestCombined = combined;
+                        bestLyrics = candidateLyrics;
+                    }
+                }
+            } catch (Exception ignored) {
             }
         }
-
-        if (best == null) {
-            return null;
-        }
-        return toLyrics(best);
+        return bestLyrics;
     }
 
     @Nullable

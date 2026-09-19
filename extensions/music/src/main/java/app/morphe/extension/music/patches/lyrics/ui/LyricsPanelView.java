@@ -1613,10 +1613,20 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         ((Spannable) lineViews.get(i).getText()).removeSpan(cached);
                         lineUnsungSpans.set(i, null);
                     }
-                    applyWordColors(i, Long.MIN_VALUE, true);
+                    if (lineViews.get(i) instanceof LyricsLineView) {
+                        ((LyricsLineView) lineViews.get(i)).setHighlight(
+                                Collections.emptyList(), 0, false, 0, 0, -1);
+                    }
                 }
+                lastWordLineIndex = -1;
+                pendingOldWordLineIndex = -1;
+                wordSyncWasEnabled = enabled;
+                return;
             }
             wordSyncWasEnabled = enabled;
+        }
+        if (!enabled) {
+            return;
         }
         int active = highlightedIndex;
 
@@ -1625,17 +1635,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (lastWordLineIndex >= 0) {
                 clearWordHighlight(lastWordLineIndex);
             }
-            lastWordLineIndex = -1;
-            pendingOldWordLineIndex = -1;
-            return;
-        }
-
-        if (!enabled) {
-            if (lastWordLineIndex >= 0 && lastWordLineIndex != active) {
-                clearWordHighlight(lastWordLineIndex);
-            }
-            applyWordColors(active, 0, true);
-            applyBgWordColors(active, 0, true);
             lastWordLineIndex = -1;
             pendingOldWordLineIndex = -1;
             return;

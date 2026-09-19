@@ -90,10 +90,11 @@ public final class DeezerProvider implements LyricsProvider {
             return Collections.emptyList();
         }
 
-        List<Lyrics> results = new ArrayList<>();
-        for (int i = 0; i < searchResults.length() && results.size() < LyricsRequests.MAX_CANDIDATES; i++) {
-            JSONObject item = searchResults.optJSONObject(i);
-            if (item == null) continue;
+        List<JSONObject> sorted = sortCandidates(searchResults, track);
+
+        List<ScoredLyrics> scored = new ArrayList<>();
+        for (JSONObject item : sorted) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
 
             final long trackId = item.optLong("id", -1);
             if (trackId <= 0) continue;
@@ -101,12 +102,51 @@ public final class DeezerProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchLyricsByTrackId(trackId, arl);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            item.optString("title", ""),
+                            artistName(item),
+                            item.optInt("duration", 0),
+                            lyrics, track);
+                    scored.add(new ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ignored) {
             }
         }
+
+        scored.sort((a, b) -> b.score - a.score);
+        List<Lyrics> results = new ArrayList<>(scored.size());
+        for (ScoredLyrics s : scored) {
+            results.add(s.lyrics);
+        }
         return results;
+    }
+
+    private static String artistName(JSONObject item) {
+        JSONObject artistObj = item.optJSONObject("artist");
+        return artistObj != null ? artistObj.optString("name", "") : "";
+    }
+
+    private record ScoredLyrics(int score, Lyrics lyrics) {
+    }
+
+    private static int scoreCandidate(JSONObject item, TrackInfo track) {
+        String title = item.optString("title", "");
+        JSONObject artistObj = item.optJSONObject("artist");
+        String artist = artistObj != null ? artistObj.optString("name", "") : "";
+        return LyricsRequests.scoreTrackCandidate(title, artist,
+                item.optInt("duration", 0), track);
+    }
+
+    private static List<JSONObject> sortCandidates(JSONArray searchResults, TrackInfo track) {
+        List<JSONObject> list = new ArrayList<>();
+        for (int i = 0; i < searchResults.length(); i++) {
+            JSONObject item = searchResults.optJSONObject(i);
+            if (item != null) {
+                list.add(item);
+            }
+        }
+        list.sort((a, b) -> scoreCandidate(b, track) - scoreCandidate(a, track));
+        return list;
     }
 
     @Nullable
@@ -204,9 +244,9 @@ public final class DeezerProvider implements LyricsProvider {
             return null;
         }
 
-        final String rawFormat = lyrics.toString();
         JSONArray syncedLines = lyrics.optJSONArray("synchronizedLines");
         if (syncedLines != null && syncedLines.length() > 0) {
+            final String rawFormat = syncedLines.toString();
             Lyrics synced = parseSyncedLyrics(syncedLines, trackId, rawFormat, creditLines(lyrics));
             if (synced != null) {
                 return synced;
@@ -215,6 +255,7 @@ public final class DeezerProvider implements LyricsProvider {
 
         final String text = LyricsRequests.optString(lyrics, "text");
         if (text != null) {
+            final String rawFormat = text;
             return parsePlainText(text, trackId, rawFormat, creditLines(lyrics));
         }
         return null;
@@ -272,11 +313,11 @@ public final class DeezerProvider implements LyricsProvider {
         List<String> credits = new ArrayList<>(2);
         final String writers = flatten(lyrics.opt("writers"));
         if (writers != null) {
-            credits.add("Written by " + writers);
+            credits.add("Writer(s): " + writers);
         }
         final String copyright = LyricsRequests.optString(lyrics, "copyright");
         if (copyright != null) {
-            credits.add(copyright);
+            credits.add("Copyright: " + copyright);
         }
         return credits.isEmpty() ? null : credits;
     }
@@ -331,7 +372,7 @@ public final class DeezerProvider implements LyricsProvider {
 
         String sourceUrl = "https://www.deezer.com/track/" + trackId;
         return new Lyrics(lines, name(), false, null, null, null, creditLines,
-                rawFormat, "dzr.json", sourceUrl);
+                rawFormat, "txt", sourceUrl);
     }
 
     public static boolean validateArl(String arl) {

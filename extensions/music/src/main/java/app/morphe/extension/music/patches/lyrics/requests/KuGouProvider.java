@@ -172,9 +172,9 @@ public final class KuGouProvider implements LyricsProvider {
             return new ArrayList<>();
         }
 
-        List<Lyrics> results = new ArrayList<>();
+        List<ScoredLyrics> scored = new ArrayList<>();
         for (int i = 0; i < candidates.length(); i++) {
-            if (results.size() >= LyricsRequests.MAX_CANDIDATES) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
             JSONObject candidate = candidates.optJSONObject(i);
@@ -185,13 +185,23 @@ public final class KuGouProvider implements LyricsProvider {
                 String sourceUrl = "https://www.kugou.com/song/" + id + ".html";
                 Lyrics lyrics = fetchFromCandidate(candidate, sourceUrl);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreSingleResult(lyrics);
+                    scored.add(new ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch KuGou lyrics for a candidate", ex);
             }
         }
+
+        scored.sort((a, b) -> b.score - a.score);
+        List<Lyrics> results = new ArrayList<>(scored.size());
+        for (ScoredLyrics s : scored) {
+            results.add(s.lyrics);
+        }
         return results;
+    }
+
+    private record ScoredLyrics(int score, Lyrics lyrics) {
     }
 
     @Nullable
