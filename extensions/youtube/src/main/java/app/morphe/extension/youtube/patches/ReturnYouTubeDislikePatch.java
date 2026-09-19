@@ -12,18 +12,36 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike.Vote;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.PixelFormat;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
+import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 
@@ -272,6 +290,292 @@ public class ReturnYouTubeDislikePatch {
     }
 
     //
+    // Icon only like and dislike buttons of the compact action bar.
+    //
+
+    private static final float ICON_BUTTON_COUNT_TEXT_SIZE_SP = 10;
+    private static final int ICON_BUTTON_COUNT_BOTTOM_MARGIN = Dim.dp(3);
+    private static final long ICON_BUTTON_FETCH_WAIT_MILLISECONDS = 5000;
+
+    private static final long LIKES_HIDDEN = -1;
+    private static final long LIKES_UNKNOWN = -2;
+
+    /**
+     * View tag Elements puts the accessibility id of a button in, such as "id.video.like.button".
+     */
+    private static final String ACCESSIBILITY_ID_TAG_NAME = "elements_accessibility_view_tag_id";
+    private static final String LIKE_BUTTON_ACCESSIBILITY_ID = "id.video.like";
+    private static final String DISLIKE_BUTTON_ACCESSIBILITY_ID = "id.video.dislike";
+
+    private static int accessibilityIdTag;
+
+    /**
+     * Litho recycles host views, so the counts are tracked per host and removed when it is reused.
+     * Main thread only.
+     */
+    private static final Map<View, IconButtonCountDrawable> iconButtonCounts = new WeakHashMap<>();
+
+    @Nullable
+    private static ReturnYouTubeDislike iconButtonPendingFetch;
+
+    /**
+     * @return The accessibility id of the button the host shows, or null if it is not a button.
+     */
+    @Nullable
+    private static String accessibilityIdOf(View host) {
+        if (accessibilityIdTag == 0) {
+            accessibilityIdTag = ResourceUtils.getIdentifier(ResourceType.ID, ACCESSIBILITY_ID_TAG_NAME);
+            if (accessibilityIdTag == 0) {
+                return null;
+            }
+        }
+        Object tag = host.getTag(accessibilityIdTag);
+        return tag == null ? null : tag.toString();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called on the main thread for every Litho host view, and with null when a recycled host is cleared.
+     */
+    public static void onComponentHostContentDescription(View host, @Nullable CharSequence description) {
+        try {
+            IconButtonCountDrawable existing = iconButtonCounts.isEmpty()
+                    ? null
+                    : iconButtonCounts.get(host);
+
+            String accessibilityId = description == null ? null : accessibilityIdOf(host);
+            final boolean isLike = accessibilityId != null
+                    && accessibilityId.startsWith(LIKE_BUTTON_ACCESSIBILITY_ID);
+            final boolean isDislike = accessibilityId != null
+                    && accessibilityId.startsWith(DISLIKE_BUTTON_ACCESSIBILITY_ID);
+
+            if ((!isLike && !isDislike) || !Settings.RYD_ENABLED.get()) {
+                if (existing != null) {
+                    host.getOverlay().remove(existing);
+                    iconButtonCounts.remove(host);
+                }
+                return;
+            }
+
+            if (existing == null) {
+                existing = new IconButtonCountDrawable(host);
+                host.getOverlay().add(existing);
+                iconButtonCounts.put(host, existing);
+            }
+            existing.setButton(description.toString(), isLike);
+            Logger.printDebug(() -> "Button with a count: " + accessibilityId);
+            refreshIconButtonCounts();
+        } catch (Exception ex) {
+            Logger.printException(() -> "onComponentHostContentDescription failure", ex);
+        }
+    }
+
+    private static void invalidateIconButtonCounts() {
+        for (IconButtonCountDrawable drawable : iconButtonCounts.values()) {
+            drawable.refresh();
+        }
+    }
+
+    /**
+     * Redraws the counts now, and again once the fetch completes if it is still loading.
+     */
+    private static void refreshIconButtonCounts() {
+        if (iconButtonCounts.isEmpty()) {
+            return;
+        }
+        invalidateIconButtonCounts();
+
+        ReturnYouTubeDislike videoData = currentVideoData;
+        if (videoData == null || videoData.fetchCompleted() || videoData == iconButtonPendingFetch) {
+            return;
+        }
+        iconButtonPendingFetch = videoData;
+        Utils.runOnBackgroundThread(() -> {
+            videoData.getFetchData(ICON_BUTTON_FETCH_WAIT_MILLISECONDS);
+            Utils.runOnMainThread(() -> {
+                if (iconButtonPendingFetch == videoData) {
+                    iconButtonPendingFetch = null;
+                }
+                invalidateIconButtonCounts();
+            });
+        });
+    }
+
+    /**
+     * Reads the like count from a label such as "like this video along with 2,589 other people".
+     *
+     * @return The count, {@link #LIKES_HIDDEN} if the label has no number (hidden by the creator),
+     *         or {@link #LIKES_UNKNOWN} if the number is not a whole count, such as a compact "2,5K".
+     */
+    private static long parseLabelCount(String label) {
+        final int length = label.length();
+        int index = 0;
+        while (index < length && !Character.isDigit(label.charAt(index))) {
+            index++;
+        }
+        if (index == length) {
+            return LIKES_HIDDEN;
+        }
+
+        long count = 0;
+        int digitsSinceSeparator = 0;
+        boolean hasSeparator = false;
+        for (; index < length; index++) {
+            final char c = label.charAt(index);
+            if (Character.isDigit(c)) {
+                if (count > Long.MAX_VALUE / 10) {
+                    return LIKES_UNKNOWN;
+                }
+                count = count * 10 + Character.digit(c, 10);
+                digitsSinceSeparator++;
+                continue;
+            }
+            // Swiss style grouping uses either apostrophe.
+            final boolean isSeparator = c == ',' || c == '.' || c == '\'' || c == '’'
+                    || Character.isSpaceChar(c);
+            if (!isSeparator || index + 1 >= length || !Character.isDigit(label.charAt(index + 1))) {
+                break;
+            }
+            // Grouping separators always split groups of three, anything else is a decimal.
+            if (hasSeparator && digitsSinceSeparator != 3) {
+                return LIKES_UNKNOWN;
+            }
+            hasSeparator = true;
+            digitsSinceSeparator = 0;
+        }
+
+        if (hasSeparator && digitsSinceSeparator != 3) {
+            return LIKES_UNKNOWN;
+        }
+        return count;
+    }
+
+    /**
+     * @return If the Litho host has mounted any text, which needs the unobfuscated Litho classes
+     *         since the extension cannot compile against them.
+     */
+    private static boolean hostShowsText(View host) {
+        try {
+            Object textContent = host.getClass().getMethod("getTextContent").invoke(host);
+            if (textContent == null) {
+                return false;
+            }
+            Object textItems = Class.forName("com.facebook.litho.TextContent")
+                    .getMethod("getTextItems").invoke(textContent);
+            return textItems instanceof List<?> items && !items.isEmpty();
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read the text of: " + host);
+            return false;
+        }
+    }
+
+    /**
+     * Draws the count below the icon, in the empty space the button already has,
+     * so the Litho layout does not change.
+     */
+    private static final class IconButtonCountDrawable extends Drawable {
+        private final View host;
+        private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private int alpha = 255;
+        private String label = "";
+        private boolean isLike;
+        @Nullable
+        private Boolean hasOwnLabel;
+        /**
+         * Like count from the label, {@link #LIKES_HIDDEN} or {@link #LIKES_UNKNOWN}.
+         */
+        private long youTubeLikes;
+
+        IconButtonCountDrawable(View host) {
+            this.host = host;
+            paint.setTextAlign(Paint.Align.CENTER);
+            paint.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+            paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                    ICON_BUTTON_COUNT_TEXT_SIZE_SP, host.getResources().getDisplayMetrics()));
+        }
+
+        void setButton(String label, boolean isLike) {
+            this.label = label;
+            this.isLike = isLike;
+            youTubeLikes = isLike ? parseLabelCount(label) : LIKES_UNKNOWN;
+            hasOwnLabel = null;
+        }
+
+        /**
+         * @return If the button already shows a count of its own, which tablets and the old action bar do.
+         *         Litho mounts the text after the description, so this is answered on the first draw.
+         */
+        private boolean hasOwnLabel() {
+            Boolean cached = hasOwnLabel;
+            if (cached == null) {
+                hasOwnLabel = cached = hostShowsText(host);
+            }
+            return cached;
+        }
+
+        void refresh() {
+            setBounds(0, 0, host.getWidth(), host.getHeight());
+            invalidateSelf();
+        }
+
+        @Nullable
+        private String getText() {
+            ReturnYouTubeDislike videoData = currentVideoData;
+            if (isLike && youTubeLikes >= 0) {
+                // The label counts the other people who liked, which is one more
+                // than the like count YouTube shows, and it leaves out the user's own like.
+                long likes = youTubeLikes - 1;
+                // The button keeps no state of its own, so only a vote of this session is known.
+                if (videoData != null && videoData.isLikedByUser()) {
+                    likes++;
+                }
+                return ReturnYouTubeDislike.formatLikeCount(likes);
+            }
+            if (videoData == null) {
+                return null;
+            }
+            if (isLike) {
+                return youTubeLikes == LIKES_HIDDEN && !Settings.RYD_ESTIMATED_LIKE.get()
+                        ? null
+                        : videoData.getFormattedLikes();
+            }
+            return videoData.getFormattedDislikes();
+        }
+
+        @Override
+        public void draw(@NonNull Canvas canvas) {
+            // In case a recycled host was given a new description without passing through the hook.
+            if (!TextUtils.equals(host.getContentDescription(), label) || hasOwnLabel()) {
+                return;
+            }
+            String text = getText();
+            if (text == null) {
+                return;
+            }
+            paint.setColor(ThemeUtils.getAppForegroundColor());
+            paint.setAlpha(Color.alpha(paint.getColor()) * alpha / 255);
+            canvas.drawText(text, host.getWidth() / 2f,
+                    host.getHeight() - ICON_BUTTON_COUNT_BOTTOM_MARGIN, paint);
+        }
+
+        @Override
+        public void setAlpha(int alpha) {
+            this.alpha = alpha;
+        }
+
+        @Override
+        public void setColorFilter(@Nullable ColorFilter colorFilter) {
+            paint.setColorFilter(colorFilter);
+        }
+
+        @Override
+        public int getOpacity() {
+            return PixelFormat.TRANSLUCENT;
+        }
+    }
+
+    //
     // Video ID and voting hooks (all players).
     //
 
@@ -349,6 +653,8 @@ public class ReturnYouTubeDislikePatch {
 
             // Do not fetch if missing, so Shorts in regular player don't show bogus Shorts data.
             currentVideoData = ReturnYouTubeDislike.getFetchForVideoIdOrNull(videoId);
+            // The compact bar can mount before the video ID is known.
+            refreshIconButtonCounts();
         } catch (Exception ex) {
             Logger.printException(() -> "newVideoLoaded failure", ex);
         }
@@ -394,6 +700,7 @@ public class ReturnYouTubeDislikePatch {
             for (Vote v : Vote.values()) {
                 if (v.endpoint.equals(endpoint)) {
                     videoData.sendVote(v);
+                    invalidateIconButtonCounts();
                     return;
                 }
             }

@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
@@ -214,6 +215,13 @@ val returnYouTubeDislikePatch = bytecodePatch(
         }
 
         // endregion
+
+        // The compact action bar has icon only like and dislike buttons with no text to hook,
+        // so the counts are drawn over the button host views, which are found by their view tag.
+        ComponentHostSetContentDescriptionFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostContentDescription(Landroid/view/View;Ljava/lang/CharSequence;)V"
+        )
 
         // region Hook rolling numbers.
 

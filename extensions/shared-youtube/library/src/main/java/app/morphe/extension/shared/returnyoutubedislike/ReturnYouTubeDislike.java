@@ -19,6 +19,9 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.graphics.drawable.shapes.RectShape;
+import android.icu.number.LocalizedNumberFormatter;
+import android.icu.number.Notation;
+import android.icu.number.NumberFormatter;
 import android.icu.text.CompactDecimalFormat;
 import android.icu.text.DecimalFormat;
 import android.icu.text.DecimalFormatSymbols;
@@ -36,7 +39,9 @@ import android.widget.Toast;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -84,7 +89,7 @@ public class ReturnYouTubeDislike {
 
     /**
      * Maximum amount of time to block the UI from updates while waiting for network call to complete.
-     *
+     * <p>
      * Must be less than 5 seconds, as per:
      * <a href="https://developer.android.com/topic/performance/vitals/anr">Android guidelines</a>
      */
@@ -508,6 +513,41 @@ public class ReturnYouTubeDislike {
         }
     }
 
+    /**
+     * Formats the like count the way YouTube does, which truncates instead of rounding (2,589 is 2.5K).
+     * Android 10 and lower lack the formatter that can truncate, and round instead.
+     */
+    public static String formatLikeCount(long likeCount) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            return TruncatingLikeCountFormatter.format(likeCount);
+        }
+        return formatDislikeCount(likeCount);
+    }
+
+    /**
+     * CompactDecimalFormat ignores its rounding mode, so this uses the newer ICU number formatter.
+     * A separate class keeps the Android 11 classes from loading on older devices.
+     */
+    @RequiresApi(Build.VERSION_CODES.R)
+    private static final class TruncatingLikeCountFormatter {
+        private static final LocalizedNumberFormatter formatter;
+
+        static {
+            Locale locale = Locale.getDefault();
+            DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance(locale);
+            symbols.setDigitStrings(DecimalFormatSymbols.getInstance(Locale.ENGLISH).getDigitStrings());
+
+            formatter = NumberFormatter.withLocale(locale)
+                    .notation(Notation.compactShort())
+                    .roundingMode(RoundingMode.DOWN)
+                    .symbols(symbols);
+        }
+
+        static String format(long count) {
+            return formatter.format(count).toString();
+        }
+    }
+
     protected static String formatDislikePercentage(float dislikePercentage) {
         synchronized (ReturnYouTubeDislike.class) {
             if (dislikePercentageFormatter == null) {
@@ -573,6 +613,59 @@ public class ReturnYouTubeDislike {
      */
     public boolean fetchCompleted() {
         return future.isDone();
+    }
+
+    /**
+     * @return The formatted like count, or null if the fetch has not completed, or it failed.
+     */
+    @Nullable
+    public String getFormattedLikes() {
+        RYDVoteData voteData = getCompletedVoteData();
+        return voteData == null
+                ? null
+                : formatDislikeCount(voteData.getLikeCount());
+    }
+
+    /**
+     * @return The formatted dislike count or percentage, or null if the fetch has not completed, or it failed.
+     */
+    @Nullable
+    public String getFormattedDislikes() {
+        RYDVoteData voteData = getCompletedVoteData();
+        if (voteData == null) {
+            return null;
+        }
+        return SharedYouTubeSettings.RYD_DISLIKE_PERCENTAGE.get()
+                ? formatDislikePercentage(voteData.getDislikePercentage())
+                : formatDislikeCount(voteData.getDislikeCount());
+    }
+
+    /**
+     * @return If the user liked the video after it was opened.
+     */
+    public synchronized boolean isLikedByUser() {
+        return userVote == Vote.LIKE;
+    }
+
+    @Nullable
+    private RYDVoteData getCompletedVoteData() {
+        if (!future.isDone()) {
+            return null;
+        }
+        RYDVoteData voteData = getFetchData(0);
+        if (voteData == null) {
+            return null;
+        }
+        synchronized (this) {
+            if (isShort) {
+                return null;
+            }
+            // A vote cast before the fetch completed has not been applied yet.
+            if (userVote != null) {
+                voteData.updateUsingVote(userVote);
+            }
+        }
+        return voteData;
     }
 
     private synchronized void clearUICache() {
