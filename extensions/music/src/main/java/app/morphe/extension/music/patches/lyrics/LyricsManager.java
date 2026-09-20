@@ -112,6 +112,11 @@ public final class LyricsManager {
     private static final int CREDIT_LINE_GAP_TOLERANCE = 3;
 
     @Nullable
+    private static volatile String cachedCreditMarkers;
+    @Nullable
+    private static volatile List<String> cachedCreditVariants;
+
+    @Nullable
     private TrackInfo currentTrack;
 
     /** Metadata of the current track, kept so it can be read again as the song of an album. */
@@ -150,11 +155,18 @@ public final class LyricsManager {
 
     private long smoothedPosition = -1;
 
+    private int lastHighlightedIndex = -1;
+
     private LyricsManager() {
         PlayAlbumSongsPatch.addSubstitutionListener(
                 (videoId, resolvedVideoId) -> reloadCurrentTrack());
         VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
         executor.execute(LunaBeatProvider::preloadIndex);
+        executor.execute(() -> {
+            MetadataCleaner.resolveSettingBlocking(Settings.LYRICS_CUSTOM_REGEX.get());
+            MetadataCleaner.resolveSettingBlocking(Settings.LYRICS_TEXT_FILTER.get());
+            MetadataCleaner.resolveSettingBlocking(Settings.LYRICS_CREDIT_LINE_REGEX.get());
+        });
     }
 
     private final PriorityQueue<ScoredCandidate> candidateQueue = new PriorityQueue<>();
@@ -210,6 +222,7 @@ public final class LyricsManager {
         positionUpdatedAtUptimeMs = SystemClock.uptimeMillis();
         lastVideoTimeSample = -1;
         smoothedPosition = -1;
+        lastHighlightedIndex = -1;
     }
 
     /**
@@ -284,9 +297,9 @@ public final class LyricsManager {
             }
         }
 
-        String[] parsed = MetadataCleaner.parseTitleAndArtist(rawTitle);
-        String effectiveTitle = parsed != null ? parsed[1] : MetadataCleaner.cleanTitle(rawTitle);
-        String effectiveArtist = parsed != null ? parsed[0] : MetadataCleaner.cleanArtist(rawArtist);
+        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(rawTitle, rawArtist);
+        String effectiveTitle = parsed[1];
+        String effectiveArtist = parsed[0];
 
         TrackInfo track = new TrackInfo(
                 effectiveTitle,
@@ -354,9 +367,9 @@ public final class LyricsManager {
             return;
         }
 
-        String[] parsed = MetadataCleaner.parseTitleAndArtist(title);
-        String cleanedTitle = parsed != null ? parsed[1] : MetadataCleaner.cleanTitle(title);
-        String cleanedArtist = parsed != null ? parsed[0] : MetadataCleaner.cleanArtist(artist);
+        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);
+        String cleanedTitle = parsed[1];
+        String cleanedArtist = parsed[0];
         if (cleanedTitle.isEmpty() || cleanedArtist.isEmpty()) {
             return;
         }
@@ -409,7 +422,7 @@ public final class LyricsManager {
     }
 
     @Nullable
-    private static Uri parseMediaUri(@NonNull MediaMetadata metadata) {
+    static Uri parseMediaUri(@NonNull MediaMetadata metadata) {
         String uri = metadata.getString(MediaMetadata.METADATA_KEY_MEDIA_URI);
         return (uri != null) ? Uri.parse(uri) : null;
     }
@@ -424,6 +437,7 @@ public final class LyricsManager {
         }
         shownFingerprints.clear();
         filteredCache.clear();
+        lastHighlightedIndex = -1;
 
         executor.execute(() -> runProviderLookup(id, track, null));
     }
@@ -577,7 +591,7 @@ public final class LyricsManager {
             if (embeddedUri != null) {
                 Lyrics embedded = LocalLyricsFetcher.fetch(embeddedUri);
                 if (embedded != null) {
-                    LyricsCache.put(track, LyricsSource.LOCAL.name(), embedded);
+                    LyricsCache.put(track, "LOCAL", embedded);
                     Utils.runOnMainThread(() -> publish(id, embedded));
                     return;
                 }
@@ -999,7 +1013,7 @@ public final class LyricsManager {
         if (countSlashes(text) > 5) {
             return true;
         }
-        String setting = Settings.LYRICS_CREDIT_LINE_REGEX.get();
+        String setting = MetadataCleaner.resolveSetting(Settings.LYRICS_CREDIT_LINE_REGEX.get());
         if (setting.isBlank()) {
             return false;
         }
@@ -1007,15 +1021,7 @@ public final class LyricsManager {
         String normalized = CharactersConverter.normalize(text);
 
         String[] markers = setting.split(",");
-        Set<String> allVariantsSet = new LinkedHashSet<>();
-        for (String marker : markers) {
-            marker = marker.trim();
-            if (marker.isEmpty()) {
-                continue;
-            }
-            allVariantsSet.addAll(CharactersConverter.variants(marker));
-        }
-        List<String> allVariants = new ArrayList<>(allVariantsSet);
+        List<String> allVariants = getCachedCreditVariants(markers);
 
         for (String variant : allVariants) {
             if (variant.length() >= 2 && normalized.startsWith(variant)) {
@@ -1026,6 +1032,8 @@ public final class LyricsManager {
                 }
             }
         }
+
+        String normalizedWithSpaces = normalized;
 
         normalized = normalized
                  .replace('|', ':')
@@ -1055,18 +1063,37 @@ public final class LyricsManager {
         }
         String beforeSep = sepIdx >= 0 ? normalized.substring(0, sepIdx) : normalized;
 
+        boolean hasRealSeparator = false;
+        if (sepIdx >= 0) {
+            int realSepIdx = -1;
+            int spaceSepIdx = normalizedWithSpaces.indexOf(' ');
+            int colonSepIdx = normalizedWithSpaces.indexOf(':');
+            if (colonSepIdx >= 0) {
+                realSepIdx = colonSepIdx;
+            }
+            for (char c : new char[]{'|', '｜', '—', '－', '-', ';', '；', ',', '，', '~', '～',
+                    '：', '·', '@', '/', '\\', '&'}) {
+                int idx = normalizedWithSpaces.indexOf(c);
+                if (idx >= 0 && (realSepIdx < 0 || idx < realSepIdx)) {
+                    realSepIdx = idx;
+                }
+            }
+            hasRealSeparator = realSepIdx >= 0
+                    && (spaceSepIdx < 0 || realSepIdx < spaceSepIdx);
+        }
+
         for (String variant : allVariants) {
             if (variant.isEmpty()) {
                 continue;
             }
-            if (beforeSep.equals(variant)) {
+            if (hasRealSeparator && beforeSep.equals(variant)) {
                 return true;
             }
             if (sepIdx >= 0 && beforeSep.endsWith(variant)) {
                 int startIdx = beforeSep.length() - variant.length();
                 if (startIdx > 0) {
                     char prev = beforeSep.charAt(startIdx - 1);
-                    if (!Character.isLetterOrDigit(prev)) {
+                    if (!Character.isLetterOrDigit(prev) && prev != '\'') {
                         return true;
                     }
                 }
@@ -1080,6 +1107,25 @@ public final class LyricsManager {
             }
         }
         return false;
+    }
+
+    private static List<String> getCachedCreditVariants(String[] markers) {
+        String markerKey = String.join(",", markers);
+        List<String> cached = cachedCreditVariants;
+        if (cached != null && markerKey.equals(cachedCreditMarkers)) {
+            return cached;
+        }
+        Set<String> allVariantsSet = new LinkedHashSet<>();
+        for (String marker : markers) {
+            marker = marker.trim();
+            if (!marker.isEmpty()) {
+                allVariantsSet.addAll(CharactersConverter.variants(marker));
+            }
+        }
+        List<String> result = new ArrayList<>(allVariantsSet);
+        cachedCreditMarkers = markerKey;
+        cachedCreditVariants = result;
+        return result;
     }
 
     private static boolean isCreditLabelBoundary(String text, int pos, List<String> allVariants, String currentVariant) {
@@ -1181,7 +1227,7 @@ public final class LyricsManager {
         if (lyrics == Lyrics.NOT_FOUND) {
             return lyrics;
         }
-        String filter = Settings.LYRICS_TEXT_FILTER.get();
+        String filter = MetadataCleaner.resolveSetting(Settings.LYRICS_TEXT_FILTER.get());
         if (filter.isBlank()) {
             return lyrics;
         }
@@ -1244,7 +1290,8 @@ public final class LyricsManager {
         if (currentLyrics == null || !currentLyrics.synced() || currentLyrics.isEmpty()) {
             return "";
         }
-        final int index = currentLyrics.indexForPosition(getPositionMs(), -1);
+        final int index = currentLyrics.indexForPosition(getPositionMs(), lastHighlightedIndex);
+        lastHighlightedIndex = index;
         if (index < 0) {
             return "";
         }

@@ -22,7 +22,7 @@ import app.morphe.extension.music.settings.Settings;
  * lock screen, Android Auto and Bluetooth displays. The artist field is rewritten to
  * {@code "artist - title"} so the track identity is preserved.
  *
- * <p>The app's {@link MediaSession#setMetadata(MediaMetadata)} call site is observed to
+ * <p>The app's {@link MediaSession#setMetadata(MediaSession)} call site is observed to
  * capture the {@link MediaSession} instance and the original metadata. Modified metadata is
  * then pushed from a ticker via the captured session. Because that push goes through the
  * framework directly, it does not re-enter the hooked app call site, so the lyrics and
@@ -39,9 +39,16 @@ public final class LockScreenLyrics {
     @Nullable
     private static volatile MediaMetadata originalMetadata;
     @Nullable
+    private static MediaMetadata.Builder metadataBuilder;
+    @Nullable
     private static volatile String realTitle;
     @Nullable
     private static volatile String realArtist;
+
+    @Nullable
+    private static String cachedCleanedTitle;
+    @Nullable
+    private static String cachedCleanedArtist;
 
     /** Title pushed on the last tick, to avoid redundant {@code setMetadata} calls. */
     @Nullable
@@ -67,8 +74,13 @@ public final class LockScreenLyrics {
 
         sessionRef = new WeakReference<>(session);
         originalMetadata = original;
+        metadataBuilder = new MediaMetadata.Builder(original);
         realTitle = original.getString(MediaMetadata.METADATA_KEY_TITLE);
         realArtist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
+
+        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(realTitle, realArtist);
+        cachedCleanedTitle = parsed[1];
+        cachedCleanedArtist = parsed[0];
 
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()) {
             ticker.stop();
@@ -76,11 +88,7 @@ public final class LockScreenLyrics {
             return;
         }
 
-        android.net.Uri mediaUri = null;
-        String uriString = original.getString(android.media.MediaMetadata.METADATA_KEY_MEDIA_URI);
-        if (uriString != null) {
-            mediaUri = android.net.Uri.parse(uriString);
-        }
+        android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
         LyricsManager.getInstance().onDisplayedTrackChanged(realTitle, realArtist, mediaUri);
         lastPushedTitle = null;
         needsRepush = true;
@@ -104,7 +112,9 @@ public final class LockScreenLyrics {
             return;
         }
 
-        String newTitle = getCurrentLine();
+        boolean matched = lyricsMatch();
+
+        String newTitle = getCurrentLine(matched);
         if (!needsRepush && newTitle.equals(lastPushedTitle)) {
             ticker.schedule();
             return;
@@ -112,7 +122,7 @@ public final class LockScreenLyrics {
 
         lastPushedTitle = newTitle;
         needsRepush = false;
-        session.setMetadata(buildMetadata(originalMetadata, newTitle));
+        session.setMetadata(buildMetadata(newTitle, matched));
 
         ticker.schedule();
     }
@@ -123,37 +133,33 @@ public final class LockScreenLyrics {
         if (track == null) {
             return false;
         }
-        String[] parsed = MetadataCleaner.parseTitleAndArtist(realTitle);
-        String cleanedTitle = parsed != null ? parsed[1] : MetadataCleaner.cleanTitle(realTitle);
-        String cleanedArtist = parsed != null ? parsed[0] : MetadataCleaner.cleanArtist(realArtist);
-        return Objects.equals(track.title(), cleanedTitle)
-                && Objects.equals(track.artist(), cleanedArtist)
+        return Objects.equals(track.title(), cachedCleanedTitle)
+                && Objects.equals(track.artist(), cachedCleanedArtist)
                 && manager.areLyricsSynced();
     }
 
-    private static String getCurrentLine() {
+    private static String getCurrentLine(boolean matched) {
         LyricsManager manager = LyricsManager.getInstance();
-        String line = lyricsMatch() ? manager.getCurrentLineText() : null;
+        String line = matched ? manager.getCurrentLineText() : null;
         if (line == null || line.isEmpty()) {
             return realTitle == null ? "" : realTitle;
         }
         return line;
     }
 
-    private static MediaMetadata buildMetadata(MediaMetadata original, String title) {
-        MediaMetadata.Builder builder = new MediaMetadata.Builder(original);
+    private static MediaMetadata buildMetadata(String title, boolean matched) {
+        MediaMetadata.Builder builder = metadataBuilder;
+        if (builder == null) {
+            return null;
+        }
         if (title != null) {
             builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
         }
         String artist = realArtist == null ? "" : realArtist;
         String trackTitle = realTitle;
-        if (lyricsMatch() && trackTitle != null && !trackTitle.isEmpty()) {
-            String display;
-            if (Settings.LYRICS_DISPLAY_ARTIST_FIRST.get()) {
-                display = artist + " - " + trackTitle;
-            } else {
-                display = trackTitle + " - " + artist;
-            }
+        if (matched && trackTitle != null && !trackTitle.isEmpty()) {
+            String display = new TrackInfo(trackTitle, artist, "", 0)
+                    .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
             builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);
         } else {
             builder.putString(MediaMetadata.METADATA_KEY_ARTIST, artist);

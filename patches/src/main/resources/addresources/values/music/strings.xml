@@ -501,6 +501,8 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
     <string name="morphe_music_lyrics_translated_by_google">Translated by Google</string>
     <string name="morphe_music_lyrics_romanized_by_google">Romanized by Google</string>
+    <string name="morphe_music_lyrics_translated_by_ai">Translated by %s</string>
+    <string name="morphe_music_lyrics_romanized_by_ai">Romanized by %s</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
     <string name="morphe_music_lyrics_translate_hide">Translated</string>
     <string name="morphe_music_lyrics_translating">Translating…</string>
@@ -517,6 +519,22 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>
     <string name="morphe_music_lyrics_swap_trans_roma_summary">ON puts romanization below lyrics and translation above; OFF keeps romanization above and translation below</string>
+    <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI-compatible Translation</string>
+    <string name="morphe_music_lyrics_use_ai_translation_summary">Use a custom OpenAI-compatible API for translation and romanization instead of Google Translate</string>
+    <string name="morphe_music_lyrics_ai_config_dialog_title">AI Translation Settings</string>
+    <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configure the OpenAI-compatible API endpoint for AI-powered lyrics translation and romanization.</string>
+    <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://text.pollinations.ai/openai)</string>
+    <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (leave empty for anonymous access)</string>
+    <string name="morphe_music_lyrics_ai_config_model_hint">Model name (e.g. openai-fast, gpt-4o-mini)</string>
+    <string name="morphe_music_lyrics_ai_config_toast_saved">AI translation settings saved</string>
+    <string name="morphe_music_lyrics_ai_config_toast_invalid">Could not connect to AI endpoint. Please check your settings.</string>
+    <string name="morphe_music_lyrics_ai_config_toast_reset">AI translation settings reset</string>
+    <string name="morphe_music_lyrics_ai_config_status_configured">Configured</string>
+    <string name="morphe_music_lyrics_ai_config_status_not_configured">Tap to configure</string>
+    <string name="morphe_music_lyrics_ai_config_status_empty_url">Base URL cannot be empty</string>
+    <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL must start with http:// or https://</string>
+    <string name="morphe_music_lyrics_ai_config_status_empty_model">Model name cannot be empty</string>
+    <string name="morphe_music_lyrics_ai_config_status_validating">Validating connection…</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Disable bold icons</string>

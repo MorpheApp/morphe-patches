@@ -28,6 +28,10 @@ public record TrackInfo(String title, String artist, String album, int durationS
         return artist.toLowerCase(Locale.ROOT) + " " + title.toLowerCase(Locale.ROOT);
     }
 
+    public String displayWith(boolean artistFirst) {
+        return artistFirst ? artist + " - " + title : title + " - " + artist;
+    }
+
     /**
      * Only the title and the artist identify a track. The album and the duration
      * are left out because the app reports them late, and a metadata update that
