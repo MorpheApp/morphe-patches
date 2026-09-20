@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3075
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -33,7 +33,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.List;
+import com.facebook.litho.ComponentHost;
+import com.facebook.litho.TextContent;
+
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -53,6 +55,8 @@ import app.morphe.extension.youtube.shared.PlayerType;
  */
 @SuppressWarnings("unused")
 public class ReturnYouTubeDislikePatch {
+
+    private static final Boolean RYD_ENABLED = Settings.RYD_ENABLED.get();
 
     /**
      * RYD data for the current video on screen.
@@ -116,7 +120,7 @@ public class ReturnYouTubeDislikePatch {
                                                   CharSequence original,
                                                   boolean isRollingNumber) {
         try {
-            if (!Settings.RYD_ENABLED.get()) {
+            if (!RYD_ENABLED) {
                 return original;
             }
 
@@ -183,7 +187,7 @@ public class ReturnYouTubeDislikePatch {
      */
     public static float onRollingNumberMeasured(String text, float measuredTextWidth) {
         try {
-            if (Settings.RYD_ENABLED.get()) {
+            if (RYD_ENABLED) {
                 if (ReturnYouTubeDislike.isPreviouslyCreatedSegmentedSpan(text)) {
                     // +1 pixel is needed for some foreign languages that measure
                     // the text different from what is used for layout (Greek in particular).
@@ -251,8 +255,7 @@ public class ReturnYouTubeDislikePatch {
      */
     public static CharSequence updateRollingNumber(TextView view, CharSequence original) {
         try {
-            if (!Settings.RYD_ENABLED.get()) {
-                removeRollingNumberPatchChanges(view);
+            if (!RYD_ENABLED) {
                 return original;
             }
             // Called for all instances of RollingNumber, so must check if text is for a dislikes.
@@ -310,7 +313,7 @@ public class ReturnYouTubeDislikePatch {
     private static final String LIKE_BUTTON_ACCESSIBILITY_ID = "id.video.like";
     private static final String DISLIKE_BUTTON_ACCESSIBILITY_ID = "id.video.dislike";
 
-    private static int accessibilityIdTag;
+    private static final int accessibilityIdTag = ResourceUtils.getIdentifier(ResourceType.ID, ACCESSIBILITY_ID_TAG_NAME);
 
     /**
      * Set while this patch writes a description, since the hook is called again for it.
@@ -321,7 +324,7 @@ public class ReturnYouTubeDislikePatch {
      * Litho recycles host views, so the counts are tracked per host and removed when it is reused.
      * Main thread only.
      */
-    private static final Map<View, IconButtonCountDrawable> iconButtonCounts = new WeakHashMap<>();
+    private static final Map<ComponentHost, IconButtonCountDrawable> iconButtonCounts = new WeakHashMap<>();
 
     @Nullable
     private static ReturnYouTubeDislike iconButtonPendingFetch;
@@ -331,11 +334,9 @@ public class ReturnYouTubeDislikePatch {
      */
     @Nullable
     private static String accessibilityIdOf(View host) {
+        Utils.verifyOnMainThread();
         if (accessibilityIdTag == 0) {
-            accessibilityIdTag = ResourceUtils.getIdentifier(ResourceType.ID, ACCESSIBILITY_ID_TAG_NAME);
-            if (accessibilityIdTag == 0) {
-                return null;
-            }
+            return null;
         }
         Object tag = host.getTag(accessibilityIdTag);
         return tag == null ? null : tag.toString();
@@ -349,7 +350,11 @@ public class ReturnYouTubeDislikePatch {
      * @return The description the host keeps, which for a dislike button includes the count.
      */
     @Nullable
-    public static CharSequence onComponentHostContentDescription(View host, @Nullable CharSequence description) {
+    public static CharSequence onComponentHostContentDescription(ComponentHost host,
+                                                                 @Nullable CharSequence description) {
+        if (!RYD_ENABLED) {
+            return description;
+        }
         if (rewritingDescription) {
             return description;
         }
@@ -364,7 +369,7 @@ public class ReturnYouTubeDislikePatch {
             final boolean isDislike = accessibilityId != null
                     && accessibilityId.startsWith(DISLIKE_BUTTON_ACCESSIBILITY_ID);
 
-            if ((!isLike && !isDislike) || !Settings.RYD_ENABLED.get()) {
+            if (!isLike && !isDislike) {
                 if (existing != null) {
                     host.getOverlay().remove(existing);
                     iconButtonCounts.remove(host);
@@ -520,15 +525,16 @@ public class ReturnYouTubeDislikePatch {
      * @return If the Litho host has mounted any text, which needs the unobfuscated Litho classes
      *         since the extension cannot compile against them.
      */
-    private static boolean hostShowsText(View host) {
+    private static boolean hostShowsText(View view) {
+        if (!(view instanceof ComponentHost host)) {
+            return false;
+        }
         try {
-            Object textContent = host.getClass().getMethod("getTextContent").invoke(host);
+            TextContent textContent = host.getTextContent();
             if (textContent == null) {
                 return false;
             }
-            Object textItems = Class.forName("com.facebook.litho.TextContent")
-                    .getMethod("getTextItems").invoke(textContent);
-            return textItems instanceof List<?> items && !items.isEmpty();
+            return !textContent.getTextItems().isEmpty();
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not read the text of: " + host);
             return false;
@@ -540,7 +546,8 @@ public class ReturnYouTubeDislikePatch {
      * so the Litho layout does not change.
      */
     private static final class IconButtonCountDrawable extends Drawable {
-        private final View host;
+        private static final Typeface TYPEFACE = Typeface.create("sans-serif-medium", Typeface.NORMAL);
+        private final ComponentHost host;
         private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private int alpha = 255;
         private String label = "";
@@ -554,10 +561,10 @@ public class ReturnYouTubeDislikePatch {
          */
         private long youTubeLikes;
 
-        IconButtonCountDrawable(View host) {
+        IconButtonCountDrawable(ComponentHost host) {
             this.host = host;
             paint.setTextAlign(Paint.Align.CENTER);
-            paint.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+            paint.setTypeface(TYPEFACE);
             paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
                     ICON_BUTTON_COUNT_TEXT_SIZE_SP, host.getResources().getDisplayMetrics()));
         }
@@ -684,7 +691,7 @@ public class ReturnYouTubeDislikePatch {
      */
     public static void preloadVideoId(String videoId, boolean isShortAndOpeningOrPlaying) {
         try {
-            if (!Settings.RYD_ENABLED.get()) {
+            if (!RYD_ENABLED) {
                 return;
             }
             if (videoId.equals(lastPrefetchedVideoId)) {
@@ -727,7 +734,7 @@ public class ReturnYouTubeDislikePatch {
      */
     public static void newVideoLoaded(String videoId) {
         try {
-            if (!Settings.RYD_ENABLED.get()) return;
+            if (!RYD_ENABLED) return;
             if (videoId == null || videoId.isBlank()) {
                 Logger.printDebug(() -> "Ignoring blank videoId");
                 return;
@@ -775,7 +782,7 @@ public class ReturnYouTubeDislikePatch {
      */
     public static void sendVote(String endpoint, String videoId) {
         try {
-            if (!Settings.RYD_ENABLED.get()) {
+            if (!RYD_ENABLED) {
                 return;
             }
             if (!Utils.isNotEmpty(videoId)) {

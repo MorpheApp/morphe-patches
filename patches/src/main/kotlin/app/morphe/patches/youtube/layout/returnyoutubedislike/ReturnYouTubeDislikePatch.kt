@@ -134,6 +134,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // endregion
 
+        // Verify stubbed classes are not obfuscated.
+        classDefBy("Lcom/facebook/litho/ComponentHost;")
+        classDefBy("Lcom/facebook/litho/TextContent;")
+
         // region Hook code for creation and cached lookup of text Spans.
 
         // Alternatively the hook can be made in the creation of Spans in TextComponentSpec.
@@ -220,7 +224,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         ComponentHostSetContentDescriptionFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostContentDescription(Landroid/view/View;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostContentDescription(Lcom/facebook/litho/ComponentHost;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                 move-result-object p1
             """
         )
