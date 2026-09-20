@@ -145,8 +145,6 @@ public final class MinimalMiniplayerPatch {
     private static final Rect morphTo = new Rect();
     private static final Rect morphCurrent = new Rect();
 
-    private static final Runnable setContentAlphaRunnable = () -> setContentAlpha(1f);
-
     private static WeakReference<ViewGroup> controlsRef = new WeakReference<>(null);
     private static WeakReference<View> barContainerRef = new WeakReference<>(null);
     private static WeakReference<TextView> titleRef = new WeakReference<>(null);
@@ -183,6 +181,7 @@ public final class MinimalMiniplayerPatch {
      */
     private static boolean applyingBounds;
     private static ValueAnimator morphAnimator;
+    private static ValueAnimator controlsFadeInAnimator;
 
     private static boolean barShapeApplied;
 
@@ -284,6 +283,10 @@ public final class MinimalMiniplayerPatch {
     public static int getLegacyControlsVisibility(int original) {
         // Any other shape and these would sit across the whole screen.
         if (ENABLED) {
+            if (!inBarMode()) {
+                setContentAlpha(0f);
+            }
+
             return View.VISIBLE;
         }
         return original;
@@ -479,7 +482,7 @@ public final class MinimalMiniplayerPatch {
         try {
             cancelMorph();
 
-            if (lastBounds.isEmpty() || morphAnimator != null) {
+            if (lastBounds.isEmpty()) {
                 return;
             }
 
@@ -493,9 +496,8 @@ public final class MinimalMiniplayerPatch {
             barBoundsFor(lastBounds);
             morphTo.set(barBounds);
             barShapeApplied = true;
+            runControlsFadeIn();
 
-            setContentAlpha(0f);
-            showControls(true);
 
             // Prevents the miniplayer from flickering, once it
             // reaches the MINIMIZED player state
@@ -503,20 +505,16 @@ public final class MinimalMiniplayerPatch {
             if (morphFrom.equals(morphTo)) {
                 setBounds(controller, morphTo);
                 updateVideoClip();
-                
-                runControlsFadeIn(setContentAlphaRunnable);
-
                 return;
             }
 
-            runMorph(true, setContentAlphaRunnable);
+            runMorph(null);
         } catch (Exception ex) {
             morphing = false;
             Logger.printException(() -> "applyBarShape failure", ex);
         }
     }
 
-    @SuppressWarnings("SameParameterValue")
     private static void setBounds(MiniplayerBoundsController controller, Rect bounds) {
         applyingBounds = true;
         try {
@@ -534,7 +532,7 @@ public final class MinimalMiniplayerPatch {
         currentBounds.set(targetRect);
     }
 
-    private static void runMorph(boolean fadeInContent, Runnable onEnd) {
+    private static void runMorph(Runnable onEnd) {
         morphing = true;
 
         ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
@@ -543,7 +541,7 @@ public final class MinimalMiniplayerPatch {
         animator.addUpdateListener(
                 value
                         ->
-                onMorphFrame((float) value.getAnimatedValue(), fadeInContent)
+                onMorphFrame((float) value.getAnimatedValue())
         );
         animator.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -552,7 +550,9 @@ public final class MinimalMiniplayerPatch {
                 morphAnimator = null;
                 currentBounds.set(morphTo);
                 updateVideoClip();
-                onEnd.run();
+                if (onEnd != null) {
+                    onEnd.run();
+                }
             }
         });
 
@@ -560,29 +560,30 @@ public final class MinimalMiniplayerPatch {
         animator.start();
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private static void runControlsFadeIn(Runnable onEnd) {
-        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f);
-        animator.setDuration(MORPH_MILLIS);
-        animator.setInterpolator(new DecelerateInterpolator());
-        animator.addUpdateListener(
+    private static void runControlsFadeIn() {
+        if (controlsFadeInAnimator != null) {
+            return;
+        }
+
+        controlsFadeInAnimator = ValueAnimator.ofFloat(0f, 1f);
+        controlsFadeInAnimator.setDuration(MORPH_MILLIS);
+        controlsFadeInAnimator.setInterpolator(new DecelerateInterpolator());
+        controlsFadeInAnimator.addUpdateListener(
                 value
                         ->
-                setContentAlpha((float) value.getAnimatedValue())
+                // The text would otherwise sit on top of the video, stil wide at this point.
+                setContentAlpha(Math.max(0f, ((float) value.getAnimatedValue() - 0.4f) / 0.6f))
         );
-        animator.addListener(new AnimatorListenerAdapter() {
+        controlsFadeInAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                morphAnimator = null;
-                onEnd.run();
+                controlsFadeInAnimator = null;
             }
         });
-
-        morphAnimator = animator;
-        animator.start();
+        controlsFadeInAnimator.start();
     }
 
-    private static void onMorphFrame(float fraction, boolean fadeInContent) {
+    private static void onMorphFrame(float fraction) {
         MiniplayerBoundsController controller = boundsControllerRef.get();
         if (controller == null) {
             cancelMorph();
@@ -598,18 +599,21 @@ public final class MinimalMiniplayerPatch {
 
         setBounds(controller, morphCurrent);
         updateVideoClip();
-
-        if (fadeInContent) {
-            // The text would otherwise sit on top of the video, still wide at this point.
-            setContentAlpha(Math.max(0f, (fraction - 0.4f) / 0.6f));
-        }
     }
 
     private static void cancelMorph() {
-        ValueAnimator animator = morphAnimator;
-        morphAnimator = null;
         morphing = false;
 
+        ValueAnimator animator = morphAnimator;
+        morphAnimator = null;
+        if (animator != null) {
+            // Cancelling would otherwise report the morph as finished.
+            animator.removeAllListeners();
+            animator.cancel();
+        }
+
+        animator = controlsFadeInAnimator;
+        controlsFadeInAnimator = null;
         if (animator != null) {
             // Cancelling would otherwise report the morph as finished.
             animator.removeAllListeners();
@@ -718,7 +722,7 @@ public final class MinimalMiniplayerPatch {
         // which the bar then sits behind until YouTube is done closing after the click below.
         morphTo.offset(0, Dim.getScreenHeight() - currentBounds.top);
 
-        runMorph(false, () -> clickModernButton(modernCloseButtonRef, "close"));
+        runMorph(() -> clickModernButton(modernCloseButtonRef, "close"));
     }
 
     private static void expandPlayer() {
@@ -782,11 +786,6 @@ public final class MinimalMiniplayerPatch {
                     if (type != PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_DISMISSED) {
                         cancelMorph();
                     }
-
-                    if (!morphing) {
-                        // Done here as well, YouTube does not always run its own pass in time.
-                        showControls(false);
-                    }
                 }
 
                 updateVideoClip();
@@ -796,15 +795,9 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static void updateBar() {
-        final boolean minimized = PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED;
-
         updateVideoClip();
-        startTicking(minimized);
+        startTicking(PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED);
         refreshContents();
-        showControls(minimized);
-        if (minimized && !morphing) {
-            setContentAlpha(1f);
-        }
     }
 
     /**
@@ -1005,13 +998,6 @@ public final class MinimalMiniplayerPatch {
         watchPlayerRef = new WeakReference<>(watchPlayer);
 
         return watchPlayer;
-    }
-
-    private static void showControls(boolean show) {
-        ViewGroup controls = controlsRef.get();
-        if (controls == null) return;
-
-        controls.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     private static void refreshContents() {
