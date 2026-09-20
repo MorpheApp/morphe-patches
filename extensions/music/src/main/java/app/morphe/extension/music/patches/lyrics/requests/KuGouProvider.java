@@ -172,7 +172,7 @@ public final class KuGouProvider implements LyricsProvider {
             return new ArrayList<>();
         }
 
-        List<ScoredLyrics> scored = new ArrayList<>();
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         for (int i = 0; i < candidates.length(); i++) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
@@ -186,22 +186,14 @@ public final class KuGouProvider implements LyricsProvider {
                 Lyrics lyrics = fetchFromCandidate(candidate, sourceUrl);
                 if (lyrics != null) {
                     int score = LyricsRequests.scoreSingleResult(lyrics);
-                    scored.add(new ScoredLyrics(score, lyrics));
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch KuGou lyrics for a candidate", ex);
             }
         }
 
-        scored.sort((a, b) -> b.score - a.score);
-        List<Lyrics> results = new ArrayList<>(scored.size());
-        for (ScoredLyrics s : scored) {
-            results.add(s.lyrics);
-        }
-        return results;
-    }
-
-    private record ScoredLyrics(int score, Lyrics lyrics) {
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     @Nullable
@@ -366,7 +358,8 @@ public final class KuGouProvider implements LyricsProvider {
                 if (name.equals("offset")) {
                     try {
                         fileOffsetMs = -Long.parseLong(value.trim());
-                    } catch (NumberFormatException ignored) {
+                    } catch (NumberFormatException ex) {
+                        Logger.printDebug(() -> "Could not parse offset in KuGou LRC", ex);
                     }
                 } else if (name.equals("language")) {
                     languageTag = value;
@@ -506,9 +499,10 @@ public final class KuGouProvider implements LyricsProvider {
             return "";
         }
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < entry.length(); i++) {
+        for (int i = 0, length = entry.length(); i < length; i++) {
             String part = entry.optString(i, "").trim();
             if (!part.isEmpty()) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append(' ');
                 }

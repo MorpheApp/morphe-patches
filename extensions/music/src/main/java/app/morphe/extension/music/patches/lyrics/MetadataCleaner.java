@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 import app.morphe.extension.music.patches.lyrics.requests.CharactersConverter;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 
 /**
  * Normalizes YouTube Music metadata into what a lyrics database expects.
@@ -89,7 +90,8 @@ final class MetadataCleaner {
             cached = download(trimmed);
             resolveCache.put(trimmed, cached);
             return cached;
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Failed to download setting: " + trimmed, ex);
             return trimmed;
         }
     }
@@ -132,6 +134,7 @@ final class MetadataCleaner {
         try {
             return CharactersConverter.normalizePreserveCase(input).replaceAll(regex, "");
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Failed to apply regex", ex);
             return input;
         }
     }
@@ -227,6 +230,7 @@ final class MetadataCleaner {
                     new InputStreamReader(conn.getInputStream(), charset))) {
                 String line;
                 while ((line = br.readLine()) != null) {
+                    //noinspection SizeReplaceableByIsEmpty
                     if (sb.length() > 0) {
                         sb.append('\n');
                     }
@@ -255,7 +259,8 @@ final class MetadataCleaner {
                 try {
                     String content = download(url);
                     resolveCache.put(url, content);
-                } catch (Exception ignored) {
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Failed to download URL: " + url, ex);
                 } finally {
                     latch.countDown();
                 }
@@ -265,7 +270,8 @@ final class MetadataCleaner {
         void await() {
             try {
                 latch.await(READ_TIMEOUT_MS + 1000, TimeUnit.MILLISECONDS);
-            } catch (InterruptedException ignored) {
+            } catch (InterruptedException ex) {
+                Logger.printDebug(() -> "Interrupted waiting for resolve task", ex);
                 Thread.currentThread().interrupt();
             }
         }

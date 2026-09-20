@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/pull/2625
+ * https://github.com/MorpheApp/morphe-patches/pull/3041
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -83,6 +83,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             JSONObject manifest = Requester.parseJSONObject(conn);
             return manifest.optString("revision", null);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch LunaBeat manifest revision", ex);
             return null;
         } finally {
             if (conn != null) conn.disconnect();
@@ -156,28 +157,20 @@ public final class LunaBeatProvider implements LyricsProvider {
             return Collections.emptyList();
         }
 
-        List<ScoredLyrics> scored = new ArrayList<>();
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>(matches.size());
         for (Song song : matches) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
-            try {
-                Lyrics lyrics = fetchLunabeatLyrics(song);
-                if (lyrics != null && !lyrics.isEmpty()) {
-                    int score = scoreLunabeatCandidate(
-                            song.title(),
-                            song.artists.length > 0 ? song.artists[0] : "",
-                            0, lyrics, track);
-                    scored.add(new ScoredLyrics(score, lyrics));
-                }
-            } catch (Exception ex) {
+            Lyrics lyrics = fetchLunabeatLyrics(song);
+            if (lyrics != null && !lyrics.isEmpty()) {
+                int score = scoreLunabeatCandidate(
+                        song.title(),
+                        song.artists.length > 0 ? song.artists[0] : "",
+                        0, lyrics, track);
+                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
             }
         }
 
-        scored.sort((a, b) -> b.score - a.score);
-        List<Lyrics> results = new ArrayList<>(scored.size());
-        for (ScoredLyrics s : scored) {
-            results.add(s.lyrics);
-        }
-        return results;
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     private static void ensureIndexLoaded() {
@@ -186,7 +179,9 @@ public final class LunaBeatProvider implements LyricsProvider {
         }
         try {
             lunabeatIndexLatch.await(5, TimeUnit.SECONDS);
-        } catch (InterruptedException ignored) {
+        } catch (InterruptedException ex) {
+            Logger.printDebug(() -> "Interrupted waiting for LunaBeat index latch", ex);
+            Thread.currentThread().interrupt(); // Restore interrupt status flag.
         }
     }
 
@@ -260,6 +255,7 @@ public final class LunaBeatProvider implements LyricsProvider {
                     lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
                     lyrics.sourceUrl());
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch LunaBeat lyrics", ex);
             return null;
         } finally {
             if (conn != null) conn.disconnect();
@@ -273,8 +269,5 @@ public final class LunaBeatProvider implements LyricsProvider {
             trackScore += 2;
         }
         return trackScore + LyricsRequests.syncRank(lyrics);
-    }
-
-    private record ScoredLyrics(int score, Lyrics lyrics) {
     }
 }

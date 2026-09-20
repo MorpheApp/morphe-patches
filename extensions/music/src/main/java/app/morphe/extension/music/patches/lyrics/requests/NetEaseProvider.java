@@ -100,7 +100,7 @@ public final class NetEaseProvider implements LyricsProvider {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> songs = searchAll(keyword, track);
 
-        List<ScoredLyrics> scored = new ArrayList<>();
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         for (JSONObject song : songs) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
@@ -111,26 +111,18 @@ public final class NetEaseProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchFromSong(song);
                 if (lyrics != null) {
-                    long durationMs = song.optLong("duration", 0);
+                    final long durationMs = song.optLong("duration", 0);
                     int score = LyricsRequests.scoreLyricsCandidate(
                             song.optString("name", ""), song.optString("artist", ""),
                             durationMs > 0 ? durationMs / 1000 : 0, lyrics, track);
-                    scored.add(new ScoredLyrics(score, lyrics));
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch NetEase lyrics for a song", ex);
             }
         }
 
-        scored.sort((a, b) -> b.score - a.score);
-        List<Lyrics> results = new ArrayList<>(scored.size());
-        for (ScoredLyrics s : scored) {
-            results.add(s.lyrics);
-        }
-        return results;
-    }
-
-    private record ScoredLyrics(int score, Lyrics lyrics) {
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     @Nullable
@@ -201,7 +193,8 @@ public final class NetEaseProvider implements LyricsProvider {
                 if (!value.isEmpty()) {
                     creditLines.add(value);
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not parse NetEase user description", ex);
             }
         }
         return creditLines;
@@ -222,6 +215,7 @@ public final class NetEaseProvider implements LyricsProvider {
             if (trimmed.startsWith("{")) {
                 continue;
             }
+            //noinspection SizeReplaceableByIsEmpty
             if (builder.length() > 0) {
                 builder.append('\n');
             }
@@ -230,16 +224,23 @@ public final class NetEaseProvider implements LyricsProvider {
         return builder.toString();
     }
 
-    private static List<JSONObject> searchAll(String keyword, TrackInfo track) {
+    private static List<JSONObject> searchCandidates(String keyword) {
         List<JSONObject> candidates = new ArrayList<>();
         try {
             candidates.addAll(searchByEapi(keyword));
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not search NetEase by EAPI", ex);
             try {
                 candidates.addAll(searchByCloudSearch(keyword));
-            } catch (Exception ignored) {
+            } catch (Exception ex2) {
+                Logger.printDebug(() -> "Could not search NetEase by CloudSearch", ex2);
             }
         }
+        return candidates;
+    }
+
+    private static List<JSONObject> searchAll(String keyword, TrackInfo track) {
+        List<JSONObject> candidates = searchCandidates(keyword);
         if (candidates.isEmpty()) {
             return new ArrayList<>();
         }
@@ -250,16 +251,7 @@ public final class NetEaseProvider implements LyricsProvider {
 
     @Nullable
     private static JSONObject searchBest(String keyword, TrackInfo track) {
-        List<JSONObject> candidates = new ArrayList<>();
-        try {
-            candidates.addAll(searchByEapi(keyword));
-        } catch (Exception ex) {
-            try {
-                candidates.addAll(searchByCloudSearch(keyword));
-            } catch (Exception ignored) {
-            }
-        }
-
+        List<JSONObject> candidates = searchCandidates(keyword);
         if (candidates.isEmpty()) {
             return null;
         }
@@ -279,7 +271,7 @@ public final class NetEaseProvider implements LyricsProvider {
     private static int scoreCandidate(JSONObject song, TrackInfo track) {
         String title = song.optString("name", "");
         String artist = song.optString("artist", "");
-        long durationMs = song.optLong("duration", 0);
+        final long durationMs = song.optLong("duration", 0);
         return LyricsRequests.scoreTrackCandidate(title, artist,
                 durationMs > 0 ? durationMs / 1000 : 0, track);
     }
@@ -378,6 +370,7 @@ public final class NetEaseProvider implements LyricsProvider {
             }
             String name = artist.optString("name", "");
             if (!name.isEmpty()) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append('/');
                 }
@@ -423,6 +416,7 @@ public final class NetEaseProvider implements LyricsProvider {
         try {
             ensureInit();
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Ensure NetEase init failed", ex);
             if (cookieJar.isEmpty()) {
                 resetPreCookies();
             }
@@ -562,6 +556,7 @@ public final class NetEaseProvider implements LyricsProvider {
     private static String cookieHeader() {
         StringBuilder builder = new StringBuilder();
         for (Map.Entry<String, String> entry : cookieJar.entrySet()) {
+            //noinspection SizeReplaceableByIsEmpty
             if (builder.length() > 0) {
                 builder.append("; ");
             }
@@ -632,6 +627,7 @@ public final class NetEaseProvider implements LyricsProvider {
                 if (trimmed.isEmpty()) {
                     continue;
                 }
+                //noinspection SizeReplaceableByIsEmpty
                 if (full.length() > 0 && needsSpaceBetween(full.toString(), trimmed)) {
                     full.append(' ');
                 }
@@ -729,7 +725,8 @@ public final class NetEaseProvider implements LyricsProvider {
                     if (!value.isEmpty()) {
                         items.add(new Item(start, value));
                     }
-                } catch (Exception ignored) {
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Could not parse NetEase LRC item", ex);
                 }
                 continue;
             }

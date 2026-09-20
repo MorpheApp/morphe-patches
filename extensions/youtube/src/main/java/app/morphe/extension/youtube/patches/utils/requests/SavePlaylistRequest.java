@@ -97,7 +97,7 @@ public class SavePlaylistRequest {
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
             int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return Requester.parseJSONObject(connection);
             }
             handleConnectionError("Save playlist failed with code: " + responseCode, null);

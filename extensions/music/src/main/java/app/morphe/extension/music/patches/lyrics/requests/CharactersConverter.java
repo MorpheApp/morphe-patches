@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Set;
 
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.shared.Logger;
 
 public final class CharactersConverter {
     @Nullable
@@ -60,7 +61,8 @@ public final class CharactersConverter {
         for (String id : ids) {
             try {
                 return Transliterator.getInstance(id);
-            } catch (RuntimeException ignored) {
+            } catch (RuntimeException ex) {
+                Logger.printDebug(() -> "Could not create Transliterator for ID: " + id, ex);
                 // Try the next candidate id.
             }
         }

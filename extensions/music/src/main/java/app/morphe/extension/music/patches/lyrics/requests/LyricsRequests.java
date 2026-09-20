@@ -216,6 +216,7 @@ public final class LyricsRequests {
             try {
                 Thread.sleep(minIntervalMs - elapsed);
             } catch (InterruptedException ex) {
+                Logger.printDebug(() -> "Interrupted during throttle sleep", ex);
                 // Sleeping cleared the flag, so it is restored to keep the cancellation
                 // visible to the lookup that is being abandoned.
                 Thread.currentThread().interrupt();

@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Lyrics of a single track, either synced (each line carries a timestamp) or plain.
@@ -40,6 +41,16 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
                      @Nullable String rawFormat,
                      @Nullable String formatType,
                      @Nullable String sourceUrl) {
+
+    public record ScoredLyrics(int score, Lyrics lyrics) {
+    }
+
+    public static List<Lyrics> sortLyricsByScore(List<ScoredLyrics> scored) {
+        scored.sort((a, b) -> b.score - a.score);
+        return scored.stream()
+                .map(s -> s.lyrics)
+                .collect(Collectors.toList());
+    }
 
     /** Marker for a track that was looked up successfully but has no lyrics anywhere. */
     public static final Lyrics NOT_FOUND = new Lyrics(Collections.emptyList(), "", false,

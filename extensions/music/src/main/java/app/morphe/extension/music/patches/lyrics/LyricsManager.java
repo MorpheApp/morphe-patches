@@ -24,8 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CompletionService;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -47,8 +47,8 @@ import app.morphe.extension.music.patches.lyrics.requests.KuGouProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.LrcLibProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
-import app.morphe.extension.music.patches.lyrics.requests.LyricifyProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LyricifyProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.requests.MusixmatchProvider;
@@ -173,12 +173,7 @@ public final class LyricsManager {
     private final Set<String> shownFingerprints = ConcurrentHashMap.newKeySet();
     private volatile boolean phase2Done;
 
-    private final Map<String, Lyrics> filteredCache = new java.util.LinkedHashMap<>(32, 0.75f, true) {
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<String, Lyrics> eldest) {
-            return size() > 32;
-        }
-    };
+    private final Map<String, Lyrics> filteredCache = Utils.createSizeRestrictedMap(32);
 
     public static LyricsManager getInstance() {
         return INSTANCE;
@@ -540,7 +535,8 @@ public final class LyricsManager {
             Future<List<Lyrics>> f;
             try {
                 f = cs.poll(5, TimeUnit.SECONDS);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ex) {
+                Logger.printDebug(() -> "Interrupted polling candidate futures", ex);
                 Thread.currentThread().interrupt();
                 break;
             }
@@ -566,7 +562,8 @@ public final class LyricsManager {
                         }
                     }
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Failed to process candidate result", ex);
             }
         }
     }
@@ -729,6 +726,7 @@ public final class LyricsManager {
                     try {
                         return provider.fetch(track);
                     } catch (Exception ex) {
+                        Logger.printDebug(() -> "Provider fetch failed: " + provider.name(), ex);
                         threadFailed.set(true);
                         return null;
                     }
@@ -752,7 +750,8 @@ public final class LyricsManager {
             Future<Lyrics> f;
             try {
                 f = cs.poll(remaining, TimeUnit.MILLISECONDS);
-            } catch (InterruptedException e) {
+            } catch (InterruptedException ex) {
+                Logger.printDebug(() -> "Interrupted polling provider futures", ex);
                 Thread.currentThread().interrupt();
                 break;
             }
@@ -803,7 +802,8 @@ public final class LyricsManager {
                     final int score = LyricsRequests.scoreSingleResult(fetched);
                     scoreCandidates.add(new ScoredCandidate(score, rank, fetched));
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Failed to process extra lyrics result", ex);
             }
         }
 

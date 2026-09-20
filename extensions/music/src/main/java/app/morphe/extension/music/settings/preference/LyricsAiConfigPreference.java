@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -77,7 +78,9 @@ public class LyricsAiConfigPreference extends SwitchPreference
                 prefs.registerOnSharedPreferenceChangeListener(this);
                 updateVisibility();
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onAttachedToHierarchy failure", ex);
+        }
     }
 
     @Override
@@ -107,7 +110,9 @@ public class LyricsAiConfigPreference extends SwitchPreference
                 cachedParent.removePreference(this);
                 isCurrentlyVisible = false;
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "updateVisibility failure", ex);
+        }
     }
 
     @Override
@@ -343,7 +348,8 @@ public class LyricsAiConfigPreference extends SwitchPreference
                 conn.disconnect();
                 return false;
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "testApiEndpoint failure", ex);
             return false;
         }
     }

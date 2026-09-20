@@ -22,6 +22,7 @@ import java.util.List;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 /**
@@ -57,12 +58,12 @@ public final class LrcLibProvider implements LyricsProvider {
 
     @Override
     public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
-        List<ScoredLyrics> scored = new ArrayList<>();
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
 
         // Exact match first
         Lyrics exact = fetchExact(track);
         if (exact != null) {
-            scored.add(new ScoredLyrics(LyricsRequests.scoreSingleResult(exact), exact));
+            scored.add(new Lyrics.ScoredLyrics(LyricsRequests.scoreSingleResult(exact), exact));
         }
 
         // Then search results, sorted by combined score
@@ -70,12 +71,12 @@ public final class LrcLibProvider implements LyricsProvider {
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
         HttpURLConnection connection = LyricsRequests.openConnection(url);
         if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
-            return toResults(scored);
+            return Lyrics.sortLyricsByScore(scored);
         }
 
         JSONArray searchResults = Requester.parseJSONArray(connection);
         if (searchResults.length() == 0) {
-            return toResults(scored);
+            return Lyrics.sortLyricsByScore(scored);
         }
 
         List<JSONObject> candidates = new ArrayList<>();
@@ -87,13 +88,13 @@ public final class LrcLibProvider implements LyricsProvider {
         }
 
         candidates.sort((a, b) -> {
-            int scoreA = scoreCandidate(a, track);
-            int scoreB = scoreCandidate(b, track);
+            final int scoreA = scoreCandidate(a, track);
+            final int scoreB = scoreCandidate(b, track);
             if (scoreA != scoreB) {
                 return scoreB - scoreA;
             }
-            int deltaA = Math.abs(a.optInt("duration", 0) - track.durationSeconds());
-            int deltaB = Math.abs(b.optInt("duration", 0) - track.durationSeconds());
+            final int deltaA = Math.abs(a.optInt("duration", 0) - track.durationSeconds());
+            final int deltaB = Math.abs(b.optInt("duration", 0) - track.durationSeconds());
             return deltaA - deltaB;
         });
 
@@ -101,33 +102,18 @@ public final class LrcLibProvider implements LyricsProvider {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
-            try {
-                Lyrics lyrics = toLyrics(candidate);
-                if (lyrics != null && !lyrics.isEmpty()) {
-                    int score = LyricsRequests.scoreLyricsCandidate(
-                            candidate.optString("trackName", ""),
-                            candidate.optString("artistName", ""),
-                            candidate.optInt("duration", 0),
-                            lyrics, track);
-                    scored.add(new ScoredLyrics(score, lyrics));
-                }
-            } catch (Exception ex) {
+            Lyrics lyrics = toLyrics(candidate);
+            if (lyrics != null && !lyrics.isEmpty()) {
+                int score = LyricsRequests.scoreLyricsCandidate(
+                        candidate.optString("trackName", ""),
+                        candidate.optString("artistName", ""),
+                        candidate.optInt("duration", 0),
+                        lyrics, track);
+                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
             }
         }
 
-        scored.sort((a, b) -> b.score - a.score);
-        return toResults(scored);
-    }
-
-    private static List<Lyrics> toResults(List<ScoredLyrics> scored) {
-        List<Lyrics> results = new ArrayList<>(scored.size());
-        for (ScoredLyrics s : scored) {
-            results.add(s.lyrics);
-        }
-        return results;
-    }
-
-    private record ScoredLyrics(int score, Lyrics lyrics) {
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     private static int scoreCandidate(JSONObject item, TrackInfo track) {
@@ -193,7 +179,8 @@ public final class LrcLibProvider implements LyricsProvider {
                         bestLyrics = candidateLyrics;
                     }
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Failed to process LrcLib candidate", ex);
             }
         }
         return bestLyrics;

@@ -28,6 +28,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.Word;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class MusixmatchProvider implements LyricsProvider {
@@ -76,21 +77,23 @@ public final class MusixmatchProvider implements LyricsProvider {
         final List<JSONObject> trackObjs;
         try {
             trackObjs = searchTracks(track, token);
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not search Musixmatch tracks", ex);
             return Collections.emptyList();
         }
         if (trackObjs.isEmpty()) {
             return Collections.emptyList();
         }
 
-        final List<ScoredLyrics> scored = new ArrayList<>();
+        final List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         for (JSONObject trackObj : trackObjs) {
             final int trackId = trackObj.optInt("track_id", -1);
             if (trackId <= 0) continue;
             final Lyrics lyrics;
             try {
                 lyrics = fetchLyricsByTrackId(trackId, token);
-            } catch (Exception e) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch Musixmatch lyrics by track ID", ex);
                 continue;
             }
             if (lyrics != null) {
@@ -99,20 +102,12 @@ public final class MusixmatchProvider implements LyricsProvider {
                         trackObj.optString("artist_name", ""),
                         trackObj.optInt("track_length", 0),
                         lyrics, track);
-                scored.add(new ScoredLyrics(score, lyrics));
+                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
                 break;
             }
         }
 
-        scored.sort((a, b) -> b.score - a.score);
-        final List<Lyrics> results = new ArrayList<>(scored.size());
-        for (ScoredLyrics s : scored) {
-            results.add(s.lyrics);
-        }
-        return results;
-    }
-
-    private record ScoredLyrics(int score, Lyrics lyrics) {
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     @Nullable
@@ -624,6 +619,7 @@ public final class MusixmatchProvider implements LyricsProvider {
             connection.disconnect();
             return status != 401 || !"renew".equalsIgnoreCase(hint);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not validate Musixmatch token", ex);
             return true;
         }
     }

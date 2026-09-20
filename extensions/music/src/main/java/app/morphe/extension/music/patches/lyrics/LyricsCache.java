@@ -23,9 +23,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import app.morphe.extension.music.patches.lyrics.requests.LrcParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.music.patches.lyrics.requests.LrcParser;
 
 /**
  * Two level lyrics cache: an in memory map for the current session,
@@ -128,6 +128,7 @@ final class LyricsCache {
             List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
             return lines.size() == expectedLineCount ? lines : null;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read string list from cache", ex);
             return null;
         }
     }
@@ -160,6 +161,7 @@ final class LyricsCache {
             }
             return result;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read lyrics line list from cache", ex);
             return null;
         }
     }
@@ -246,6 +248,7 @@ final class LyricsCache {
             }
             return result;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read embedded romanization from cache", ex);
             return null;
         }
     }
@@ -327,6 +330,7 @@ final class LyricsCache {
             return new Lyrics(parsed, provider, synced, readEmbeddedRomanization(key),
                     null, null, songwriters, null, null, sourceUrl);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read lyrics from disk cache", ex);
             return null;
         }
     }
@@ -413,6 +417,7 @@ final class LyricsCache {
             }
             return directory;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not get cache directory", ex);
             return null;
         }
     }

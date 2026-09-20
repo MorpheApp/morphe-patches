@@ -67,7 +67,7 @@ public final class LunaProvider implements LyricsProvider {
             return Collections.emptyList();
         }
 
-        List<ScoredLyrics> scored = new ArrayList<>();
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         for (JSONObject trackObj : tracks) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
             String trackId = trackObj.optString("id", null);
@@ -82,19 +82,14 @@ public final class LunaProvider implements LyricsProvider {
                             firstArtistName(trackObj),
                             trackObj.optLong("duration", 0) / 1000,
                             lyrics, track);
-                    scored.add(new ScoredLyrics(score, lyrics));
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch Luna lyrics for a track id", ex);
             }
         }
 
-        scored.sort((a, b) -> b.score - a.score);
-        List<Lyrics> results = new ArrayList<>(scored.size());
-        for (ScoredLyrics s : scored) {
-            results.add(s.lyrics);
-        }
-        return results;
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     private static String firstArtistName(JSONObject trackObj) {
@@ -108,9 +103,6 @@ public final class LunaProvider implements LyricsProvider {
         return "";
     }
 
-    private record ScoredLyrics(int score, Lyrics lyrics) {
-    }
-
     private static int scoreCandidate(JSONObject trackObj, TrackInfo track) {
         String title = trackObj.optString("name", "");
         String artist = "";
@@ -121,7 +113,7 @@ public final class LunaProvider implements LyricsProvider {
                 artist = first.optString("name", "");
             }
         }
-        long durationMs = trackObj.optLong("duration", 0);
+        final long durationMs = trackObj.optLong("duration", 0);
         return LyricsRequests.scoreTrackCandidate(title, artist,
                 durationMs > 0 ? durationMs / 1000 : 0, track);
     }
@@ -393,6 +385,7 @@ public final class LunaProvider implements LyricsProvider {
             connection.setReadTimeout(15000);
             return connection;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not open Luna GET connection", ex);
             return null;
         }
     }

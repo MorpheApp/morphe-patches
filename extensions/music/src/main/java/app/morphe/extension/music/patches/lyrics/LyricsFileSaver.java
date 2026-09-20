@@ -25,6 +25,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Locale;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
 /**
@@ -99,6 +100,7 @@ public final class LyricsFileSaver {
             out.flush();
             return Environment.DIRECTORY_DOWNLOADS + "/" + directoryName + "/" + fileName;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not save lyrics file", ex);
             resolver.delete(insertUri, null, null);
             return null;
         } finally {
@@ -204,7 +206,8 @@ public final class LyricsFileSaver {
                 obj.put("milliseconds", ms);
                 obj.put("duration", line.endTimeMs() - line.startTimeMs());
                 arr.put(obj);
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "rebuildDzrJson failure", ex);
             }
         }
         return arr.toString();

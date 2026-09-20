@@ -39,8 +39,8 @@ public class GetPlaylistItemsRequest {
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.BROWSE_PLAYLIST, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
-            int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            final int responseCode = connection.getResponseCode();
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 JSONObject json = Requester.parseJSONObject(connection);
                 return parseResponse(json);
             }

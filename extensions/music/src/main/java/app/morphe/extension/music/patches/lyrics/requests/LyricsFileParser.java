@@ -17,6 +17,7 @@ import java.util.Map;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.shared.Logger;
 
 public final class LyricsFileParser {
 
@@ -139,6 +140,7 @@ public final class LyricsFileParser {
                 if (wordText.isEmpty()) {
                     continue;
                 }
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append(' ');
                 }
@@ -177,7 +179,8 @@ public final class LyricsFileParser {
         if (value instanceof String) {
             try {
                 return Long.parseLong(((String) value).trim());
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Could not parse long value in LyricsFileParser", ex);
                 return LyricsLine.NO_TIME;
             }
         }
@@ -272,6 +275,7 @@ public final class LyricsFileParser {
             if (indentOf(line) <= indent) {
                 break;
             }
+            //noinspection SizeReplaceableByIsEmpty
             if (builder.length() > 0) {
                 builder.append('\n');
             }

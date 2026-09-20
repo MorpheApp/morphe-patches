@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.shared.Logger;
 
 /**
  * Parser for the LRC format used by both LRCLIB and KuGou.
@@ -318,6 +319,7 @@ public final class LrcParser {
             // A positive LRC offset means the lyrics are shown earlier.
             return -Long.parseLong(value);
         } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Failed to parse LRC offset tag", ex);
             return null;
         }
     }
@@ -360,6 +362,7 @@ public final class LrcParser {
 
             return (minutes * 60 + seconds) * 1000 + fractionMs;
         } catch (NumberFormatException | IndexOutOfBoundsException ex) {
+            Logger.printDebug(() -> "Failed to parse LRC timestamp: " + tag, ex);
             return LyricsLine.NO_TIME;
         }
     }

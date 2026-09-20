@@ -20,7 +20,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.text.StaticLayout;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -32,6 +31,7 @@ import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.StaticLayout;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.ReplacementSpan;
@@ -39,8 +39,8 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewPropertyAnimator;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -646,14 +646,16 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 if (display != null) {
                     deviceRate = display.getRefreshRate();
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not get display refresh rate", ex);
             }
             interval = deviceRate > 0f ? Math.round(1000f / deviceRate) : 16;
         } else {
             try {
                 int fps = Integer.parseInt(rate);
                 interval = fps > 0 ? Math.round(1000f / fps) : 16;
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Could not parse refresh rate setting", ex);
                 interval = 16;
             }
         }
@@ -776,6 +778,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         creditView.setVisibility(GONE);
         creditView.setOnLongClickListener(v -> {
             CharSequence text = creditView.getText();
+            //noinspection SizeReplaceableByIsEmpty
             if (text != null && text.length() > 0) {
                 ClipboardManager clipboard = (ClipboardManager) getContext()
                         .getSystemService(Context.CLIPBOARD_SERVICE);
@@ -1422,7 +1425,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentSourceUrl));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getContext().startActivity(intent);
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onSourceClicked failure", ex);
         }
     }
 
@@ -1472,7 +1476,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 setButtonLabel(copyView, str("morphe_music_lyrics_saved"), true);
                 handler.postDelayed(() -> setButtonLabel(copyView, null, false), 1500);
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onCopyLongPressed failure", ex);
         }
     }
 
@@ -1553,7 +1558,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     handler.postDelayed(this::updateRomanizeLabel, 3000);
                 }
             });
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onRomanizeClicked failure", ex);
         }
     }
 

@@ -97,8 +97,8 @@ public class GetPlaylistsRequest {
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.GET_PLAYLISTS, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
-            int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            final int responseCode = connection.getResponseCode();
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return Requester.parseJSONObject(connection);
             }
             handleConnectionError("Get playlists failed with code: " + responseCode, null);

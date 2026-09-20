@@ -9,8 +9,6 @@ package app.morphe.extension.music.patches.lyrics;
 
 import androidx.annotation.Nullable;
 
-import app.morphe.extension.shared.Logger;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,6 +18,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+
+import app.morphe.extension.shared.Logger;
 
 final class OpenAIClient {
 
@@ -154,6 +154,7 @@ final class OpenAIClient {
             if (dot >= 0 && dot + 1 < line.length()) {
                 line = line.substring(dot + 1).trim();
             }
+            //noinspection SizeReplaceableByIsEmpty
             if (sb.length() > 0) {
                 sb.append('\n');
             }

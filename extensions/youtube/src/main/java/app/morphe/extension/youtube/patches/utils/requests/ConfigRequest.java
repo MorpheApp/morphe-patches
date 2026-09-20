@@ -22,13 +22,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.ConfigResponse;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.Context;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.GlobalConfigGroup;
 import app.morphe.extension.youtube.innertube.ConfigResponseOuterClass.RawColdConfigGroup;
-
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -115,8 +115,8 @@ public class ConfigRequest {
             HttpURLConnection connection = ConfigRoutes.getConnection(ConfigRoutes.GET_CONFIG, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
-            int responseCode = connection.getResponseCode();
-            if (responseCode == 200 && connection.getContentLength() != 0) {
+            final int responseCode = connection.getResponseCode();
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS && connection.getContentLength() != 0) {
                 return parse(connection);
             }
             handleConnectionError("Config request failed with code: " + responseCode, null);

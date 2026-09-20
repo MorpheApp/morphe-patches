@@ -136,7 +136,9 @@ public class ListenBrainzTokenPreference extends Preference {
                                 if (!validation.valid) {
                                     Utils.showToastLong(str("morphe_music_listenbrainz_token_toast_invalid_warning"));
                                 }
-                            } catch (Exception ignored) {}
+                            } catch (Exception ex) {
+                                Logger.printDebug(() -> "ListenBrainz validateToken failure", ex);
+                            }
                         });
                     }
                 },

@@ -89,7 +89,7 @@ public final class LyricifyProvider implements LyricsProvider {
             return null;
         }
 
-        final JSONObject response = new JSONObject(json);
+        JSONObject response = new JSONObject(json);
 
         if (response.optBoolean("isInstrumental", false)) {
             return null;
@@ -206,7 +206,7 @@ public final class LyricifyProvider implements LyricsProvider {
                 if (responseBody.isEmpty()) {
                     return null;
                 }
-                final JSONObject response = new JSONObject(responseBody);
+                JSONObject response = new JSONObject(responseBody);
                 final String isrc = LyricsRequests.optString(response, "isrc");
                 if (isrc != null && !isrc.isEmpty()) {
                     return isrc;

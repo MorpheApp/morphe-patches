@@ -25,6 +25,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.Word;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class SimpMusicProvider implements LyricsProvider {
@@ -65,7 +66,7 @@ public final class SimpMusicProvider implements LyricsProvider {
                 return null;
             }
 
-            final JSONObject root = Requester.parseJSONObject(connection);
+            JSONObject root = Requester.parseJSONObject(connection);
             if (!root.optBoolean("success", false)) {
                 return null;
             }
@@ -75,6 +76,7 @@ public final class SimpMusicProvider implements LyricsProvider {
             }
             return pickBestEntry(data);
         } catch (IOException | JSONException ex) {
+            Logger.printDebug(() -> "Could not query SimpMusic API", ex);
             return null;
         } finally {
             if (connection != null) {
@@ -88,7 +90,7 @@ public final class SimpMusicProvider implements LyricsProvider {
         Lyrics best = null;
         int bestVote = Integer.MIN_VALUE;
         for (int i = 0; i < data.length(); i++) {
-            final JSONObject entry = data.optJSONObject(i);
+            JSONObject entry = data.optJSONObject(i);
             if (entry == null) {
                 continue;
             }
@@ -157,7 +159,8 @@ public final class SimpMusicProvider implements LyricsProvider {
                     String val = trimmed.substring(8, close).trim();
                     try {
                         offsetHolder[0] = (long) (Double.parseDouble(val) * 1000);
-                    } catch (NumberFormatException ignored) {
+                    } catch (NumberFormatException ex) {
+                        Logger.printDebug(() -> "Could not parse offset in SimpMusic LRC", ex);
                     }
                 }
                 continue;
@@ -184,7 +187,8 @@ public final class SimpMusicProvider implements LyricsProvider {
                 } else {
                     builder.append((char) Integer.parseInt(matcher.group(2)));
                 }
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Could not parse HTML entity in SimpMusic", ex);
                 builder.append(matcher.group(0));
             }
             last = matcher.end();
