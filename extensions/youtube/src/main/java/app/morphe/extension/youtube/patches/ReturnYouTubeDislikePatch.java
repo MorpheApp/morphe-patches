@@ -595,9 +595,12 @@ public class ReturnYouTubeDislikePatch {
                 return;
             }
 
-            String spoken = label + ", " + str(Settings.RYD_DISLIKE_PERCENTAGE.get()
-                    ? "morphe_ryd_accessibility_dislike_percentage"
-                    : "morphe_ryd_accessibility_dislike_count", dislikes);
+            // YouTube says the likes of a video as "like this video along with 1,406 other
+            // people", and the dislikes are said the same way so that a screen reader announces
+            // both buttons alike.  A percentage is not a count of people and keeps its own wording.
+            String spoken = Settings.RYD_DISLIKE_PERCENTAGE.get()
+                    ? label + ", " + str("morphe_ryd_accessibility_dislike_percentage", dislikes)
+                    : label + " " + str("morphe_ryd_accessibility_dislike_count", dislikes);
             if (spoken.equals(spokenLabel) && TextUtils.equals(host.getContentDescription(), spoken)) {
                 return;
             }
