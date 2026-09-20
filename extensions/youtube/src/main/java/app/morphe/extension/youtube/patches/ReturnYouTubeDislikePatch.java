@@ -663,8 +663,19 @@ public class ReturnYouTubeDislikePatch {
             paint.setAlpha(Color.alpha(color) * alpha / 255);
 
             if (beside) {
-                canvas.drawText(text, countCenterX(),
-                        (host.getHeight() - paint.descent() - paint.ascent()) / 2f, paint);
+                TextView likeTextView = barTextOf(barOf(host), 0);
+                final float baselineY;
+                if (likeTextView != null && likeTextView.getBaseline() != -1 && likeTextView.isAttachedToWindow()) {
+                    int[] textLoc = new int[2];
+                    int[] hostLoc = new int[2];
+                    likeTextView.getLocationInWindow(textLoc);
+                    host.getLocationInWindow(hostLoc);
+                    baselineY = (textLoc[1] + likeTextView.getBaseline()) - hostLoc[1];
+                } else {
+                    Paint.FontMetrics fm = paint.getFontMetrics();
+                    baselineY = (host.getHeight() - fm.bottom - fm.top) / 2f;
+                }
+                canvas.drawText(text, countCenterX(), baselineY, paint);
                 return;
             }
             canvas.drawText(text, host.getWidth() / 2f,
