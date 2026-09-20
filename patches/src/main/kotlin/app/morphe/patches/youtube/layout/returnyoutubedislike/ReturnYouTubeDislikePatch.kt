@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
@@ -228,17 +229,14 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // the count. A width is no use, since the layout stretches the icon over whatever it gets.
         //
         // The only long of the node is the pointer to its native counterpart.
-        val yogaNodeClass = YogaSetWidthFingerprint.originalClassDef
-        val yogaNativeNodeName = yogaNodeClass.fields.single { it.type == "J" }.name
-        val yogaNativeNode = "${yogaNodeClass.type}->$yogaNativeNodeName:J"
 
         // The method reads the same pointer itself, so it always has the two locals this needs.
-        YogaSetWidthFingerprint.method.addInstructions(
-            0,
-            """
-                iget-wide v0, p0, $yogaNativeNode
-                invoke-static { v0, v1, p1 }, $EXTENSION_CLASS->onYogaSetWidth(JF)V
-            """
-        )
+        YogaSetWidthFingerprint.let {
+            val register = it.instructionMatches.last().getInstruction<FiveRegisterInstruction>().registerC
+            it.method.addInstruction(
+                it.instructionMatches.last().index,
+                "invoke-static { v$register, v${register + 1}, p1 }, $EXTENSION_CLASS->onYogaSetWidth(JF)V"
+            )
+        }
     }
 }
