@@ -26,6 +26,8 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -471,6 +473,49 @@ public class ReturnYouTubeDislikePatch {
         return count;
     }
 
+    private static final int MAX_BAR_PARENTS = 5;
+    private static final int MAX_BAR_DEPTH = 6;
+
+    /**
+     * The counts of the old action bar sit in the like button, a neighbor of the dislike button,
+     * and Litho reports the text of one host only, so the whole bar is searched.
+     *
+     * @return If anything in the bar holding this button shows text, such as a count or a label.
+     */
+    private static boolean barShowsText(View host) {
+        final int barWidth = 2 * host.getWidth();
+        View view = host;
+
+        for (int i = 0; i < MAX_BAR_PARENTS; i++) {
+            ViewParent parent = view.getParent();
+            if (!(parent instanceof View parentView)) {
+                break;
+            }
+            view = parentView;
+            // The first parent wider than the button is the bar or the pill holding it.
+            if (view.getWidth() >= barWidth) {
+                return subtreeShowsText(view, 0);
+            }
+        }
+
+        return hostShowsText(host);
+    }
+
+    private static boolean subtreeShowsText(View view, int depth) {
+        if (hostShowsText(view)) {
+            return true;
+        }
+        if (depth >= MAX_BAR_DEPTH || !(view instanceof ViewGroup group)) {
+            return false;
+        }
+        for (int i = 0, childCount = group.getChildCount(); i < childCount; i++) {
+            if (subtreeShowsText(group.getChildAt(i), depth + 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * @return If the Litho host has mounted any text, which needs the unobfuscated Litho classes
      *         since the extension cannot compile against them.
@@ -526,13 +571,13 @@ public class ReturnYouTubeDislikePatch {
         }
 
         /**
-         * @return If the button already shows a count of its own, which tablets and the old action bar do.
+         * @return If the bar already shows the counts, which tablets and the old action bar do.
          *         Litho mounts the text after the description, so this is answered on the first draw.
          */
         private boolean hasOwnLabel() {
             Boolean cached = hasOwnLabel;
             if (cached == null) {
-                hasOwnLabel = cached = hostShowsText(host);
+                hasOwnLabel = cached = barShowsText(host);
             }
             return cached;
         }
