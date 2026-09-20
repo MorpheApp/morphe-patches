@@ -384,7 +384,7 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Cari di dalam saluran</string>
   <string name="morphe_channel_search_summary">Pencarian saat saluran terbuka hanya menelusuri saluran tersebut</string>
-  <string name="morphe_channel_search_results_title">Cari: %s</string>
+  <string name="morphe_channel_search_results">Hasil pencarian saluran</string>
   <string name="morphe_channel_search_no_results">Tidak ada yang ditemukan di saluran ini</string>
   <string name="morphe_channel_search_failed">Tidak dapat mencari di saluran ini</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1129,7 +1129,7 @@ Jika diaktifkan, URL video akan dikirim ke server API dan tidak ada data lain ya
 
 Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Tampilkan peringatan kesalahan sambungan</string>
-  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Menampilkan pemberitahuan saat server DeArrow tidak tersedia</string>
+  <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Menampilkan notifikasi saat server DeArrow tidak tersedia</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Titik akhir API DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">URL titik akhir cache thumbnail DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Tangkapan video diam</string>
@@ -1160,12 +1160,12 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Nonaktifkan getar sentuh dan tahan</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Nonaktifkan sentuh getar zoom</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Kontrol media pemberitahuan</string>
-  <string name="morphe_notification_media_screen_summary">Kustomisasi kontrol pemutaran yang ditampilkan pada layar kunci dan panel pemberitahuan Anda</string>
+  <string name="morphe_notification_media_screen_title">Kontrol media notifikasi</string>
+  <string name="morphe_notification_media_screen_summary">Kustomisasi kontrol pemutaran yang ditampilkan pada layar kunci dan panel notifikasi Anda</string>
   <string name="morphe_hide_notification_media_prev_next_title">Sembunyikan tombol Sebelumnya &amp; Berikutnya</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Menyembunyikan tombol Sebelumnya dan Berikutnya pada pemberitahuan media, layar kunci, dan kontrol headphone</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Sembunyikan tombol Sebelumnya dan Berikutnya di notifikasi media, layar kunci, dan kontrol headphone</string>
   <string name="morphe_disable_notification_media_seekbar_title">Nonaktifkan bilah geser</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Mencegah penyeretan bilah geser di layar kunci dan panel pemberitahuan</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Mencegah penyeretan bilah pencarian di layar kunci dan panel notifikasi</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot dan pasang ulang MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1179,8 +1179,8 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <string name="morphe_video_quality_default_entry_1">Otomatis</string>
   <string name="morphe_remember_video_quality_last_selected_title">Ingat kualitas video</string>
   <string name="morphe_remember_video_quality_last_selected_summary">Menerapkan pilihan kualitas manual Anda ke semua video mendatang</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_title">Pemberitahuan perubahan kualitas</string>
-  <string name="morphe_remember_video_quality_last_selected_toast_summary">Menampilkan pemberitahuan saat kualitas video bawaan baru disimpan</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_title">Notifikasi perubahan kualitas</string>
+  <string name="morphe_remember_video_quality_last_selected_toast_summary">Menampilkan notifikasi saat kualitas video bawaan baru disimpan</string>
   <string name="morphe_video_quality_default_wifi_title">Kualitas video bawaan di jaringan Wi-Fi</string>
   <string name="morphe_video_quality_default_mobile_title">Kualitas video bawaan di jaringan selular</string>
   <string name="morphe_remember_shorts_quality_last_selected_title">Ingat kualitas Shorts</string>
@@ -1210,8 +1210,8 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Ingat kecepatan pemutaran</string>
   <string name="morphe_remember_playback_speed_last_selected_summary">Menerapkan pilihan kecepatan manual Anda ke semua video mendatang</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_title">Pemberitahuan perubahan kecepatan</string>
-  <string name="morphe_remember_playback_speed_last_selected_toast_summary">Menampilkan pemberitahuan saat kecepatan pemutaran bawaan baru disimpan</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_title">Notifikasi perubahan kecepatan</string>
+  <string name="morphe_remember_playback_speed_last_selected_toast_summary">Menampilkan notifikasi saat kecepatan pemutaran bawaan baru disimpan</string>
   <string name="morphe_playback_speed_default_title">Kecepatan pemutaran bawaan</string>
   <string name="morphe_remember_playback_speed_toast">Mengubah kecepatan bawaan menjadi: %s</string>
   <string name="morphe_disable_playback_speed_music_title">Gunakan kecepatan normal untuk musik</string>
@@ -1271,6 +1271,7 @@ Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Tidak ada codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mode imersif 360° VR tidak tersedia</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volume stabil tidak tersedia</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Pemutaran mungkin berakhir 1 detik lebih awal</string>
   <string name="morphe_spoof_video_streams_about_js">• Jika proses pembukaan kode terenkripsi gagal, pemutaran mungkin gagal</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Paksa audio asli tidak tersedia</string>

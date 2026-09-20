@@ -384,7 +384,7 @@ Promene uključuju:
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Претрага у оквиру канала</string>
   <string name="morphe_channel_search_summary">Док је канал отворен, претрага се врши само у том каналу.</string>
-  <string name="morphe_channel_search_results_title">Претрага: %s</string>
+  <string name="morphe_channel_search_results">Резултати претраге канала</string>
   <string name="morphe_channel_search_no_results">Ништа није пронађено на овом каналу</string>
   <string name="morphe_channel_search_failed">Претрага овог канала није успела</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1254,6 +1254,7 @@ Promene uključuju:
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодека AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Опција „Уједначена јачина звука” није доступна</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Репродукција може да се заврши 1 секунду раније</string>
   <string name="morphe_spoof_video_streams_about_js">• Ako deobfuskacija propadne, reprodukcija može propasti</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Присиљавање оригиналног звука није доступно</string>

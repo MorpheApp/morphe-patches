@@ -380,12 +380,16 @@ Koraki:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc … Brez njega bo kot nadomestna uporabljena storitev Lyrically.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc je izbrisan</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: neveljaven sp_dc — preverite in poskusite znova.</string>
+  <string name="morphe_music_apple_token_optional_hint">Žeton za Apple Music ni obvezen. Brez njega bo Lyrically uporabljen kot rezerva</string>
   <string name="morphe_music_deezer_arl_title">Deezer … Kopirajte vrednost \"arl\".</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Prilepite piškotek arl iz […] Kopirajte vrednost \"arl\""</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl je shranjen.</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ARL ni veljaven. Poskusite znova.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: neveljaven arl — preverite in poskusite znova.</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch … Kopirajte vrednost uporabniškega žetona.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch deluje brez žetona, zato lahko to polje ostane prazno.
+
+Dodajte žeton samo za uporabo svojega računa. Žeton mora izvirati iz aplikacije Musixmatch za Android: žetoni, kopirani s spletnega mesta musixmatch.com, pripadajo opuščenemu namiznemu odjemalcu in API jih zavrača"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Uporabniški žeton ni veljaven. Poskusite znova.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: uporabniški žeton je shranjen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: uporabniški žeton je izbrisan</string>

@@ -394,6 +394,9 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl təmizləndi</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: etibarsız arl — xahiş olunur, yoxla və təkrar cəhd et</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch token olmadan da işləyir, buna görə də bu sahə boş qala bilər.
+
+​Yalnız öz hesabınızı işlətmək üçün token əlavə edin. Token mütləq Musixmatch Android tətbiqindən götürülməlidir: musixmatch.com-dan köçürülmüş tokenlər köhnəlmiş masaüstü müştərisinə aiddir və API onları rədd edir"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token saxlanıldı</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token təmizləndi</string>

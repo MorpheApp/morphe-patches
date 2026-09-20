@@ -413,7 +413,7 @@ val miniplayerPatch = bytecodePatch(
         } else {
             MiniplayerAnimatedExpandFingerprint.let {
                 it.method.apply {
-                    val insertIndex = it.instructionMatches[1].index
+                    val insertIndex = it.instructionMatches.first().index
                     val labelIndex = it.instructionMatches.last().index
                     val free = findFreeRegister(insertIndex)
 

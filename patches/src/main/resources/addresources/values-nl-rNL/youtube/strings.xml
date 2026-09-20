@@ -384,7 +384,7 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Zoeken in kanaal</string>
   <string name="morphe_channel_search_summary">Als een kanaal geopend is, wordt er alleen in dat kanaal gezocht</string>
-  <string name="morphe_channel_search_results_title">Zoeken: %s</string>
+  <string name="morphe_channel_search_results">Zoekresultaten voor kanalen</string>
   <string name="morphe_channel_search_no_results">Niets gevonden op dit kanaal</string>
   <string name="morphe_channel_search_failed">Kan dit kanaal niet doorzoeken</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1269,6 +1269,7 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-ervaring is niet beschikbaar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabiel volume is niet beschikbaar</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Het afspelen kan 1 seconde eerder eindigen</string>
   <string name="morphe_spoof_video_streams_about_js">• Als de-obfuscatie mislukt, kan afspelen mislukken</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Oorspronkelijke audio forceren is niet beschikbaar</string>

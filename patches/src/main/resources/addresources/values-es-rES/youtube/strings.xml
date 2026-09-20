@@ -384,7 +384,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Buscar en el canal</string>
   <string name="morphe_channel_search_summary">La búsqueda mientras un canal está abierto se limita a ese canal</string>
-  <string name="morphe_channel_search_results_title">Búsqueda: %s</string>
+  <string name="morphe_channel_search_results">Resultados de búsqueda de canales</string>
   <string name="morphe_channel_search_no_results">No se encontró nada en este canal</string>
   <string name="morphe_channel_search_failed">No se pudo buscar en este canal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1271,6 +1271,7 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</strin
   <string name="morphe_spoof_video_streams_about_no_av1">• Sin códec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• El modo inmersivo 360° VR no está disponible</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Volumen estable no disponible</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• La reproducción puede terminar 1 segundo antes</string>
   <string name="morphe_spoof_video_streams_about_js">• Si la desofuscación falla, la reproducción puede fallar</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forzar audio original no está disponible</string>

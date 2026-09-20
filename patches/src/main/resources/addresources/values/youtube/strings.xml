@@ -413,7 +413,7 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <!-- interaction.channelsearch.channelSearchPatch -->
     <string name="morphe_channel_search_title">Search within channel</string>
     <string name="morphe_channel_search_summary">Searching while a channel is open searches only that channel</string>
-    <string name="morphe_channel_search_results_title">Search: %s</string>
+    <string name="morphe_channel_search_results">Channel search results</string>
     <string name="morphe_channel_search_no_results">Nothing found on this channel</string>
     <string name="morphe_channel_search_failed">Could not search this channel</string>
 
@@ -1402,6 +1402,7 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_av1">• No AV1 video codec</string>
     <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersive mode is not available</string>
     <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stable volume is not available</string>
+    <string name="morphe_spoof_video_streams_about_end_early">• Playback may end 1 second early</string>
     <string name="morphe_spoof_video_streams_about_js">• If deobfuscation fails, playback may fail</string>
     <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>

@@ -394,6 +394,9 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl לא תקין, נסה שוב</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl לא תקין — נא לבדוק ולנסות שוב</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] העתק את הערך של טוקן המשתמש</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch עובדת ללא אסימון (token), כך ששדה זה יכול להישאר ריק.
+
+הוסף אסימון רק כדי להשתמש בחשבון שלך. הוא חייב להגיע מאפליקציית Musixmatch לאנדרואיד: אסימונים שהועתקו מ-musixmatch.com שייכים ללקוח שולחן העבודה שהוצא משימוש, וה-API דוחה אותם."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">טוקן המשתמש לא תקין, נסה שוב</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: אסימון המשתמש נשמר</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: אסימון המשתמש נוקה</string>

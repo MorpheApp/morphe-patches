@@ -392,6 +392,9 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl очищено</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: недействительный arl — проверьте и повторите попытку</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch работает без токена, поэтому это поле может оставаться пустым.
+
+Добавляйте токен только для использования своей учетной записи. Он должен исходить из Android-приложения Musixmatch: токены, скопированные с musixmatch.com, принадлежат устаревшему настольному клиенту, и API отклоняет их"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Токен пользователя</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: токен пользователя сохранён</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: токен пользователя очищен</string>

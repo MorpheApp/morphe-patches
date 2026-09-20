@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">使用您选择的外部下载器代替系统默认的「下载」弹出菜单</string>
   <string name="morphe_music_in_app_downloads_title">在应用内下载</string>
   <string name="morphe_music_in_app_downloads_summary">在 YouTube Music 内下载音频，而不是打开外部下载应用</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"曲目保存在应用的私有存储中，如果卸载 YouTube Music，这些曲目将被删除。
+
+开启此选项后，“下载”标签页将列出这些曲目，而不是 Music Premium 离线曲库。关闭此选项可恢复该标签页，Premium 下载内容绝不会受到影响。"</string>
   <string name="morphe_music_downloads_screen_title">下载</string>
   <string name="morphe_music_downloads_empty">"没有下载
 下载的曲目将显示在此处"</string>
@@ -379,6 +382,7 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_spotify_token_toast_saved">Spotify：sp_dc 已保存</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify：sp_dc 已清除</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify：sp_dc 无效——请检查后重试</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music 令牌是可选的。没有它时，将使用 Lyrically 作为后备方案。</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] 复制“arl”的值</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"粘贴来自 Deezer 的 arl cookie。
 
@@ -390,6 +394,9 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_deezer_arl_toast_cleared">[…] 重试</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer：arl 无效——请检查后重试</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] 复制用户令牌的值</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch 无需令牌即可使用，因此此字段可以留空。
+
+仅当使用自己的账户时才需要添加令牌。该令牌必须来自 Musixmatch Android 应用：从 musixmatch.com 复制的令牌属于已停用的桌面客户端，API 会拒绝这些令牌。"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">用户 […] 重试</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch：用户 token 已保存</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch：用户 token 已清除</string>

@@ -382,6 +382,9 @@ Pași:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl nevalid, încercați din nou.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: token media-user șters.</string>
   <string name="morphe_music_musixmatch_token_title">Deezer: token media-user salvat.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funcționează fără un token, așa că acest câmp poate rămâne gol.
+
+Adaugă un token doar pentru a-ți folosi propriul cont. Trebuie să provină din aplicația Android Musixmatch: tokenurile copiate de pe musixmatch.com aparțin clientului desktop retras, iar API-ul le refuză"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: token de utilizator nevalid, încercați din nou.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Deezer: token media-user expirat.</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Cookie-uri YouTube</string>

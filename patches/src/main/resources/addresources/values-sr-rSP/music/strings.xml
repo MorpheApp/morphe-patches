@@ -394,6 +394,9 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: неважећи arl — покушајте поново.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: неважећи arl — проверите и покушајте поново</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Копирајте вредност корисничког токена.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch ради без токена, па ово поље може да остане празно.
+
+Додајте токен само да бисте користили свој налог. Мора да потиче из Android апликације Musixmatch: токени копирани са musixmatch.com припадају укинутом десктоп клијенту и API их одбија"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: неважећи кориснички токен — покушајте поново.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: кориснички токен сачуван</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: кориснички токен обрисан</string>

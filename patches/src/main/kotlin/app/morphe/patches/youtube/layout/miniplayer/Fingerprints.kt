@@ -91,8 +91,7 @@ internal object MiniplayerAnimatedExpandFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I"),
     filters = listOf(
-        opcode(opcode = Opcode.CONST_4),
-        opcode(opcode = Opcode.IF_NE, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IF_NE),
         opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
         opcode(opcode = Opcode.MOVE, location = MatchAfterWithin(7)),
         opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())

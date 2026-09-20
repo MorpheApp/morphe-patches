@@ -394,6 +394,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: অবৈধ arl — অনুগ্রহ করে পরীক্ষা করে আবার চেষ্টা করুন</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] ব্যবহারকারীর টোকেনের মান কপি করুন</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch টোকেন ছাড়াই কাজ করে, তাই এই ক্ষেত্রটি খালি রাখা যেতে পারে।
+
+শুধুমাত্র আপনার নিজস্ব অ্যাকাউন্ট ব্যবহার করার জন্য একটি টোকেন যোগ করুন। এটি Musixmatch অ্যান্ড্রয়েড অ্যাপ থেকে আসতে হবে: musixmatch.com থেকে কপি করা টোকেনগুলো অবসরপ্রাপ্ত ডেস্কটপ ক্লায়েন্টের এবং API সেগুলো গ্রহণ করে না।"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ব্যবহারকারীর টোকেন অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: ইউজার টোকেন সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ব্যবহারকারীর টোকেন মুছে ফেলা হয়েছে</string>

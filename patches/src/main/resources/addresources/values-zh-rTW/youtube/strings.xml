@@ -384,7 +384,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">搜尋頻道內</string>
   <string name="morphe_channel_search_summary">當頻道開啟時，搜尋只會搜尋該頻道</string>
-  <string name="morphe_channel_search_results_title">搜尋：%s</string>
+  <string name="morphe_channel_search_results">頻道搜尋結果</string>
   <string name="morphe_channel_search_no_results">此頻道找不到任何結果</string>
   <string name="morphe_channel_search_failed">無法搜尋此頻道</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1270,6 +1270,7 @@ AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 全景模式不可用</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• 無法使用平衡音量</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• 播放可能會提早 1 秒結束</string>
   <string name="morphe_spoof_video_streams_about_js">• 如果解密失敗，播放可能會失敗</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• 強制原始音訊不可用</string>

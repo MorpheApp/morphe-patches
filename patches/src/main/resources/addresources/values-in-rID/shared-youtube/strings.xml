@@ -74,7 +74,7 @@ Setelan ini tidak akan mengubah ikon di lokasi mana pun berikut ini:
 • Ikon Android Auto
 
 Untuk mengubah ikon di semua tempat, lakukan tambal lagi dan ubah opsi tambal 'Ikon aplikasi'"</string>
-  <string name="morphe_custom_branding_notification_icon_title">Ikon pemberitahuan</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ikon Notifikasi</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Cocokkan ikon aplikasi</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
@@ -244,7 +244,7 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_ryd_estimated_like_title">Tampilkan perkiraan suka</string>
   <string name="morphe_ryd_estimated_like_summary">Menampilkan perkiraan jumlah suka pada video di mana pembuatnya telah menonaktifkan fitur suka</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Tampilkan peringatan kesalahan sambungan</string>
-  <string name="morphe_ryd_toast_on_connection_error_summary">Menampilkan pemberitahuan saat server Return YouTube Dislike tidak tersedia</string>
+  <string name="morphe_ryd_toast_on_connection_error_summary">Menampilkan notifikasi saat server Return YouTube Dislike tidak tersedia</string>
   <string name="morphe_ryd_attribution_summary">"Data disediakan oleh API Return YouTube Dislike
 
 Ketuk di sini untuk membuka ReturnYouTubeDislike.com"</string>

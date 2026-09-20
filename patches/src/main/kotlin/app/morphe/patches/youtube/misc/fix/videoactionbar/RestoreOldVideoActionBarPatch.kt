@@ -14,11 +14,13 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.spoof.addMediaSessionOverride
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -55,6 +57,10 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_restore_old_video_action_bar", summary = true)
         )
+
+        if (is_20_39_or_greater) {
+            addMediaSessionOverride("$EXTENSION_CLASS->useMediaSessionFeatureFlag(Z)Z")
+        }
 
         if (is_20_30_or_greater) {
             hookBuildRequest(

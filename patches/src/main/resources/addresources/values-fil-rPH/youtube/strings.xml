@@ -384,7 +384,7 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Maghanap sa loob ng channel</string>
   <string name="morphe_channel_search_summary">Ang paghahanap habang bukas ang isang channel ay sa channel na iyon lamang</string>
-  <string name="morphe_channel_search_results_title">Paghahanap: %s</string>
+  <string name="morphe_channel_search_results">Mga resulta ng paghahanap sa channel</string>
   <string name="morphe_channel_search_no_results">Walang nahanap sa channel na ito</string>
   <string name="morphe_channel_search_failed">Hindi ma-search ang channel na ito</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1269,6 +1269,7 @@ Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mg
   <string name="morphe_spoof_video_streams_about_no_av1">• Walang codec ng video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Ang 360° VR na immersive mode ay hindi magagamit</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Hindi available ang matatag na volume</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Maaaring matapos nang 1 segundo nang maaga ang playback</string>
   <string name="morphe_spoof_video_streams_about_js">• Kung mabigo ang deobfuscation, maaaring mabigo ang playback</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Hindi available ang Force original audio</string>

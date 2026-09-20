@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Menggunakan pengunduh eksternal pilihan Anda daripada menu flyout Unduh bawaan</string>
   <string name="morphe_music_in_app_downloads_title">Unduh dalam aplikasi</string>
   <string name="morphe_music_in_app_downloads_summary">Mengunduh audio di dalam YouTube Music daripada membuka aplikasi pengunduh eksternal</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Trek disimpan di penyimpanan pribadi aplikasi dan akan dihapus jika YouTube Music dihapus instalasinya.
+
+Selama fitur ini aktif, tab Unduhan mencantumkan trek ini, bukan pustaka offline Music Premium. Mematikannya akan memulihkan tab tersebut, dan unduhan Premium tidak akan pernah tersentuh."</string>
   <string name="morphe_music_downloads_screen_title">Unduhan</string>
   <string name="morphe_music_downloads_empty">"Tidak ada unduhan
 Lagu yang diunduh akan muncul di sini"</string>
@@ -379,6 +382,7 @@ Langkah-langkah:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc disimpan</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc dihapus</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc tidak valid — periksa kembali dan coba lagi</string>
+  <string name="morphe_music_apple_token_optional_hint">Token Apple Music bersifat opsional. Tanpa token tersebut, Lyrically akan digunakan sebagai cadangan</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Tempel cookie arl dari Deezer.
 
@@ -390,6 +394,9 @@ Langkah-langkah:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl tidak valid. Silakan coba lagi.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl tidak valid — periksa kembali dan coba lagi</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch berfungsi tanpa token, jadi kolom ini bisa tetap kosong.
+
+Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal dari aplikasi Android Musixmatch: token yang disalin dari musixmatch.com milik klien desktop yang sudah tidak digunakan lagi dan API menolaknya."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token pengguna disimpan</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token pengguna dihapus</string>

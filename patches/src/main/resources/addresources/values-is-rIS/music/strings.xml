@@ -382,6 +382,7 @@ Skref:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc vistað</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc hreinsað</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: ógilt sp_dc — athugaðu og reyndu aftur</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music tóken er valkostinn. Án þess mun Lyrically vera notað sem fallback</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Afritaðu gildi \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Límdu vafrakökuna arl úr Deezer.
 
@@ -393,6 +394,9 @@ Skref:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl hreinsað</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ógilt arl — athugaðu og reyndu aftur</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch virkar ánlykil, svo þetta reitur getur verið tómur.
+
+Bættu aðlykil aðeins til að nota þitt eigið reikning. Hann verður að koma frá Musixmatch Android appinu: lyklar sem eru afritin frá musixmatch.com tilheyra úreltum skáltóma (desktop client) og API neitar þeim."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">notendatoken</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: notandatákn vistað</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: notandatákn hreinsað</string>

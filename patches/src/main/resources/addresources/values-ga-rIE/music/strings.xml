@@ -33,46 +33,49 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_title">Sáraigh an roghchlár Íoslódála</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Úsáideann sé an íoslódálaí seachtrach roghnaithe agat in ionad an roghchláir Íoslódála stoic</string>
   <string name="morphe_music_in_app_downloads_title">Íoslódáil san aip</string>
-  <string name="morphe_music_in_app_downloads_summary">Íoslódáiltear fuaim laistigh de YouTube Music seachas an aip sheachtrach íoslódála a oscailt</string>
+  <string name="morphe_music_in_app_downloads_summary">Íoslódálann sé fuaim laistigh de YouTube Music in áit an aip sheachtrach íoslódála a oscailt.</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Sábháiltear na rianta i stóráil phríobháideach an aip agus scriostar iad má dhéantar YouTube Music a dhíshuiteáil.
+
+Nuair atá an ghné seo ar siúl, taispeántar na rianta seo sa chluaisín Íoslódálacha in áit leabharlann as líne Music Premium. Má mhúchtar í, filleann an cluaisín ina ghnáthstaid agus ní dhéantar aon difear d’íoslódálacha Premium."</string>
   <string name="morphe_music_downloads_screen_title">Íoslódálacha</string>
-  <string name="morphe_music_downloads_empty">"Gan íoslódálacha
-Taispeánfar rianta íoslódáilte anseo"</string>
-  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s meigibheart</string>
-  <string name="morphe_music_downloads_summary">%1$s rianta • %2$s MB</string>
-  <string name="morphe_music_downloads_search_hint">Cuardaigh sna híoslódálacha</string>
+  <string name="morphe_music_downloads_empty">"Gan aon íoslódálacha
+Feictear rianta íoslódáilte anseo"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
+  <string name="morphe_music_downloads_summary">%1$s rian • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">Cuardaigh íoslódálacha</string>
   <string name="morphe_music_downloads_sort">Sórtáil</string>
   <string name="morphe_music_downloads_sort_artist">Sórtáil de réir ealaíontóra</string>
   <string name="morphe_music_downloads_sort_title">Sórtáil de réir teidil</string>
   <string name="morphe_music_downloads_sort_size">Sórtáil de réir méide</string>
-  <string name="morphe_music_downloads_delete_all">Scrios na híoslódálacha go léir</string>
-  <string name="morphe_music_downloads_delete_all_title">An scriosfar na híoslódálacha go léir?</string>
-  <string name="morphe_music_downloads_delete_all_message">Scriosfar na rianta íoslódáilte go léir ón ngléas seo.</string>
-  <string name="morphe_music_downloads_all_deleted">Scriosadh na híoslódálacha.</string>
-  <string name="morphe_music_downloads_nothing_found">Níor aimsíodh aon rud.</string>
+  <string name="morphe_music_downloads_delete_all">Scrios gach íoslódáil</string>
+  <string name="morphe_music_downloads_delete_all_title">Scrios gach íoslódáil?</string>
+  <string name="morphe_music_downloads_delete_all_message">Scriosfar gach rian íoslódáilte ón bhfeiste seo.</string>
+  <string name="morphe_music_downloads_all_deleted">Scriosadh na híoslódálacha</string>
+  <string name="morphe_music_downloads_nothing_found">Níor aimsíodh aon rud</string>
   <string name="morphe_music_downloads_actions_for">Gníomhartha do %s</string>
   <string name="morphe_music_downloads_play">Seinn</string>
   <string name="morphe_music_downloads_play_pause">Seinn nó sos</string>
-  <string name="morphe_music_downloads_previous">Siar</string>
+  <string name="morphe_music_downloads_previous">Roimhe seo</string>
   <string name="morphe_music_downloads_next">Ar Aghaidh</string>
   <string name="morphe_music_downloads_pause">Sos</string>
   <string name="morphe_music_downloads_close">Dún</string>
   <string name="morphe_music_downloads_delete">Scrios</string>
-  <string name="morphe_music_downloads_delete_track">Scrios íoslódáil</string>
-  <string name="morphe_music_downloads_delete_track_title">An scriosfar an íoslódáil?</string>
-  <string name="morphe_music_downloads_delete_track_message">Scriosfar %s ón ngléas seo.</string>
-  <string name="morphe_music_downloads_track_deleted">Scriosadh an íoslódáil.</string>
-  <string name="morphe_music_downloads_track_delete_failed">Níorbh fhéidir an íoslódáil a scriosadh.</string>
-  <string name="morphe_music_downloads_play_failed">Níorbh fhéidir an íoslódáil a sheinm.</string>
-  <string name="morphe_music_downloads_notification_channel">Íoslódálacha fuaime.</string>
-  <string name="morphe_music_downloads_playback_channel">Athsheinm as líne.</string>
-  <string name="morphe_music_downloads_unknown_track">Níorbh fhéidir an rian atá le híoslódáil a aithint.</string>
-  <string name="morphe_music_downloads_already_running">Tá íoslódáil ar siúl cheana.</string>
-  <string name="morphe_music_downloads_already_saved">Íoslódáilte cheana.</string>
-  <string name="morphe_music_downloads_started">Cuireadh tús leis an íoslódáil.</string>
+  <string name="morphe_music_downloads_delete_track">Scrios an íoslódáil</string>
+  <string name="morphe_music_downloads_delete_track_title">Scrios an íoslódáil?</string>
+  <string name="morphe_music_downloads_delete_track_message">Scriosfar %s ón bhfeiste seo</string>
+  <string name="morphe_music_downloads_track_deleted">Íoslódáil scriosta</string>
+  <string name="morphe_music_downloads_track_delete_failed">Níorbh fhéidir an íoslódáil a scriosadh</string>
+  <string name="morphe_music_downloads_play_failed">Níorbh fhéidir an íoslódáil a sheinm</string>
+  <string name="morphe_music_downloads_notification_channel">Íoslódálacha fuaime</string>
+  <string name="morphe_music_downloads_playback_channel">Athsheinm as líne</string>
+  <string name="morphe_music_downloads_unknown_track">Níorbh fhéidir an rian le híoslódáil a aithint</string>
+  <string name="morphe_music_downloads_already_running">Íoslódáil ar siúl cheana féin</string>
+  <string name="morphe_music_downloads_already_saved">Íoslódáilte cheana féin</string>
+  <string name="morphe_music_downloads_started">Tá an íoslódáil tosaithe</string>
   <string name="morphe_music_downloads_starting">Ag tosú ar an íoslódáil…</string>
   <string name="morphe_music_downloads_progress">Ag íoslódáil %s%%</string>
-  <string name="morphe_music_downloads_complete">Íoslódáil críochnaithe.</string>
-  <string name="morphe_music_downloads_failed">Theip ar an íoslódáil.</string>
+  <string name="morphe_music_downloads_complete">Íoslódáil críochnaithe</string>
+  <string name="morphe_music_downloads_failed">Theip ar an íoslódáil</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Maidir</string>
@@ -379,7 +382,7 @@ Céimeanna:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc sábháilte</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc glanta</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc neamhbhailí — seiceáil é agus déan iarracht arís, le do thoil</string>
-  <string name="morphe_music_apple_token_optional_hint">Tá token Apple Music roghnach. Gan é, úsáidfear Lyrically mar rogha mhalartach.</string>
+  <string name="morphe_music_apple_token_optional_hint">Tá an comhartha Apple Music roghnach. Mura n-úsáidtear é, bainfear úsáid as Lyrically mar rogha chúltaca.</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Greamaigh an fianán 'arl' ó Deezer.
 
@@ -391,6 +394,9 @@ Céimeanna:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl glanta</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl neamhbhailí — seiceáil é agus déan iarracht arís, le do thoil.</string>
   <string name="morphe_music_musixmatch_token_title">Comhartha Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Oibríonn Musixmatch gan chomhartha, mar sin is féidir an réimse seo a fhágáil folamh.
+
+Ná cuir comhartha leis ach amháin más mian leat do chuntas féin a úsáid. Caithfidh sé teacht ó aip Android Musixmatch: baineann comharthaí a chóipeáiltear ó musixmatch.com leis an bhfeidhmchlár deisce atá curtha ar ceal, agus diúltaíonn an API dóibh."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">comhartha úsáideora</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: comhartha úsáideora sábháilte</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: comhartha úsáideora glanta</string>

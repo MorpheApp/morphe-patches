@@ -384,7 +384,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Търсене в канала</string>
   <string name="morphe_channel_search_summary">Докато каналът е отворен, се търси само в него</string>
-  <string name="morphe_channel_search_results_title">Търсене: %s</string>
+  <string name="morphe_channel_search_results">Резултати от търсенето на канали</string>
   <string name="morphe_channel_search_no_results">Нищо не е намерено в този канал</string>
   <string name="morphe_channel_search_failed">Неуспешно търсене в този канал</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1271,6 +1271,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсъства AV1 кодек на видео</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR иммерсивен режим не е наличен</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Не е налична стабилна звук</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Възпроизвеждането може да приключи 1 секунда по-рано</string>
   <string name="morphe_spoof_video_streams_about_js">• Ако деобфускацията провали, възпроизвеждането може да провали</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Не е налично \"Принудително оригинално аудио\"</string>

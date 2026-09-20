@@ -394,6 +394,9 @@ Mga hakbang:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: invalid ang arl — pakisubukang muli.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: hindi wasto ang arl — pakitingnan at subukang muli</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopyahin ang halaga ng user token.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Gumagana ang Musixmatch nang walang token, kaya maaaring manatiling blangko ang field na ito.
+
+Magdagdag ng token para lang magamit ang iyong sariling account. Dapat itong manggaling sa Musixmatch Android app: ang mga token na kinopya mula sa musixmatch.com ay kabilang sa retiradong desktop client at tinatanggihan ng API ang mga ito."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: invalid ang user token — pakisubukang muli.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: na-save ang user token</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: na-clear ang user token</string>

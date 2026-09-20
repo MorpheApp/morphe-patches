@@ -384,7 +384,7 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Keresés a csatornán belül</string>
   <string name="morphe_channel_search_summary">Ha egy csatorna nyitva van, a keresés csak abban a csatornában történik.</string>
-  <string name="morphe_channel_search_results_title">Keresés: %s</string>
+  <string name="morphe_channel_search_results">Csatornakeresési eredmények</string>
   <string name="morphe_channel_search_no_results">Nincs találat ezen a csatornán</string>
   <string name="morphe_channel_search_failed">Nem sikerült keresni ezen a csatornán</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1271,6 +1271,7 @@ Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nincs AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR merőleges mód nem elérhető</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil hangerő nem elérhető</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• A lejátszás 1 másodperccel korábban érhet véget</string>
   <string name="morphe_spoof_video_streams_about_js">• Ha a deobfuszkálás sikertelen, a lejátszás is megbomolhat</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Eredeti hang kényszerítése nem érhető el</string>

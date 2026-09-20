@@ -384,7 +384,7 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Søg i kanalen</string>
   <string name="morphe_channel_search_summary">Når du søger, mens en kanal er åben, foregår søgningen kun i den kanal</string>
-  <string name="morphe_channel_search_results_title">Søgning: %s</string>
+  <string name="morphe_channel_search_results">Kanalens søgeresultater</string>
   <string name="morphe_channel_search_no_results">Intet fundet på denne kanal</string>
   <string name="morphe_channel_search_failed">Kunne ikke søge i denne kanal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1269,6 +1269,7 @@ Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Intet AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiv tilstand er ikke tilgængelig</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabil lydstyrke er ikke tilgængelig</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Afspilningen kan slutte 1 sekund for tidligt</string>
   <string name="morphe_spoof_video_streams_about_js">• Hvis deobfuskering mislykkes, kan afspilning mislykkes</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Tving original lyd er ikke tilgængelig</string>

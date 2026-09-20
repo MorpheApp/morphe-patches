@@ -7,8 +7,6 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
-import androidx.annotation.NonNull;
-
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -42,9 +40,13 @@ public class ConfigRequest {
         CompletableFuture<ConfigGroup> future = CompletableFuture.supplyAsync(() -> send(requestHeader));
         try {
             ConfigGroup configGroup = future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
-            if (configGroup != null) {
+            if (configGroup == null) {
+                Logger.printInfo(() -> "Received null config");
+            } else {
                 String coldConfigData = configGroup.coldConfigData;
                 String coldHashData = configGroup.coldHashData;
+                Logger.printInfo(() -> "Received config length: " + coldConfigData.length()
+                        + " hash length: " + coldHashData.length());
                 Settings.INNERTUBE_COLD_CONFIG_DATA.save(coldConfigData);
                 Settings.INNERTUBE_COLD_HASH_DATA.save(coldHashData);
             }
@@ -67,7 +69,7 @@ public class ConfigRequest {
     }
 
     @Nullable
-    private static ConfigGroup parse(@NonNull HttpURLConnection connection) {
+    private static ConfigGroup parse(HttpURLConnection connection) {
         try (InputStream inputStream = connection.getInputStream()) {
             ConfigResponse configResponse = ConfigResponse.parseFrom(inputStream);
             if (!configResponse.hasContext()) {

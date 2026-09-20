@@ -384,7 +384,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">চ্যানেলের মধ্যে অনুসন্ধান করুন</string>
   <string name="morphe_channel_search_summary">একটি চ্যানেল খোলা থাকাকালীন অনুসন্ধান করলে শুধুমাত্র সেই চ্যানেলেই অনুসন্ধান করা হয়</string>
-  <string name="morphe_channel_search_results_title">অনুসন্ধান: %s</string>
+  <string name="morphe_channel_search_results">চ্যানেল অনুসন্ধানের ফলাফল</string>
   <string name="morphe_channel_search_no_results">এই চ্যানেলে কিছুই পাওয়া যায়নি</string>
   <string name="morphe_channel_search_failed">এই চ্যানেলে অনুসন্ধান করা যায়নি</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1256,6 +1256,7 @@ AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে
   <string name="morphe_spoof_video_streams_about_no_av1">• কোনো AV1 ভিডিও কোডেক নেই</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• ৩৬০° ভিএআর ইমার্সিভ মোড উপলব্ধ নয়</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• স্থিতিশীল ভলিউম উপলব্ধ নেই</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• প্লেব্যাক ১ সেকেন্ড আগে শেষ হতে পারে</string>
   <string name="morphe_spoof_video_streams_about_js">• যদি ডিকোডিং ব্যর্থ হয়, তাহলে প্লেব্যাকও ব্যর্থ হতে পারে</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• মূল অডিও জোরপূর্বক উপলব্ধ নেই</string>

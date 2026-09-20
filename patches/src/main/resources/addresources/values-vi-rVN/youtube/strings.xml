@@ -383,7 +383,7 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Tìm kiếm trong kênh</string>
   <string name="morphe_channel_search_summary">Tìm kiếm khi một kênh đang mở sẽ chỉ tìm kiếm trong kênh đó</string>
-  <string name="morphe_channel_search_results_title">Tìm kiếm: %s</string>
+  <string name="morphe_channel_search_results">Kết quả tìm kiếm kênh</string>
   <string name="morphe_channel_search_no_results">Không tìm thấy gì trên kênh này</string>
   <string name="morphe_channel_search_failed">Không thể tìm kiếm trên kênh này</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1270,6 +1270,7 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Không hỗ trợ chế độ trải nhiệm VR 360°</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Âm lượng ổn định không khả dụng</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Phát lại có thể kết thúc sớm 1 giây</string>
   <string name="morphe_spoof_video_streams_about_js">• Nếu giải mã thất bại, video có thể không phát được</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Buộc âm thanh gốc không khả dụng</string>

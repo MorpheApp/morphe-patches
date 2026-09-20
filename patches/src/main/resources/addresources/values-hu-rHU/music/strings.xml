@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">A kiválasztott külső letöltőt használja a beépített Letöltés felugró menü helyett</string>
   <string name="morphe_music_in_app_downloads_title">Letöltés az alkalmazásban</string>
   <string name="morphe_music_in_app_downloads_summary">Audiót tölt le a YouTube Musicban a külső letöltőalkalmazás megnyitása helyett</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"A számok az alkalmazás privát tárterületére kerülnek mentve, és törlődnek, ha a YouTube Music zostanie telepítve.
+
+Amíg ez bekapcsolva van, a Letöltések fül ezeket a számokat listázza a Music Premium offline könyvtár helyett. A kikapcsolás visszaállítja a fül funkcióját, és a Premium letöltések érintetlenek maradnak."</string>
   <string name="morphe_music_downloads_screen_title">Letöltések</string>
   <string name="morphe_music_downloads_empty">"Nincs letöltés
 A letöltött számok itt jelennek meg"</string>
@@ -379,6 +382,7 @@ Lépések:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Enélkül a Lyrically lesz tartalékként használva.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc törölve</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: érvénytelen sp_dc — ellenőrizd, és próbáld újra</string>
+  <string name="morphe_music_apple_token_optional_hint">Az Apple Music token opcionális. Enélkül a Lyrically szolgál tartalékként.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Másolja ki az \"arl\" értékét.</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Illeszd be a Deezer arl cookie-ját.
 
@@ -390,6 +394,9 @@ Lépések:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: érvénytelen arl, próbálja újra.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: érvénytelen arl — ellenőrizd, és próbáld újra</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch-token</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"A Musixmatch token nélkül is működik, így ez a mező üresen hagyható.
+
+Csak a saját fiókod használatához adj meg tokent. A tokennak a Musixmatch Android alkalmazásból kell származnia: a musixmatch.com-ról másolt tokenek a megszűnt asztali klienshez tartoznak, és az API elutasítja azokat."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">felhasználói token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: felhasználói token elmentve</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: felhasználói token törölve</string>

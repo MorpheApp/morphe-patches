@@ -384,7 +384,7 @@ Raportit ovat julkisia ja ne tarkistetaan ennen kuin kanava lisätään listaan.
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Hae kanavasta</string>
   <string name="morphe_channel_search_summary">Kun kanava on avoinna, haku kohdistuu vain kyseiseen kanavaan.</string>
-  <string name="morphe_channel_search_results_title">Haku: %s</string>
+  <string name="morphe_channel_search_results">Kanavahaun tulokset</string>
   <string name="morphe_channel_search_no_results">Tältä kanavalta ei löytynyt mitään</string>
   <string name="morphe_channel_search_failed">Tätä kanavaa ei voitu hakea</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1271,6 +1271,7 @@ AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ei AV1-videokoodekkia</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiivinen tila ei ole käytettävissä</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Tasainen äänenvoimakkuus ei ole käytettävissä</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Toisto voi päättyä 1 sekunnin etuajassa</string>
   <string name="morphe_spoof_video_streams_about_js">• Jos deobfuskointi epäonnistuu, toistaminen saattaa epäonnistua</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Pakota alkuperäinen ääni ei ole käytettävissä</string>

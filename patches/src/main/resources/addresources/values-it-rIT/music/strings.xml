@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Utilizza il downloader esterno scelto invece del menu flyout Scarica</string>
   <string name="morphe_music_in_app_downloads_title">Download nell\'app</string>
   <string name="morphe_music_in_app_downloads_summary">Scarica audio all\'interno di YouTube Music invece di aprire l\'app di download esterna</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"I brani vengono salvati nello spazio di archiviazione privato dell'app e vengono eliminati se YouTube Music viene disinstallato.
+
+Mentre questa opzione è attiva, la scheda Download elenca questi brani invece della libreria offline di Music Premium. Disattivandola, la scheda viene ripristinata e i download Premium non vengono mai toccati."</string>
   <string name="morphe_music_downloads_screen_title">Download</string>
   <string name="morphe_music_downloads_empty">"Nessun download\nLe tracce scaricate appaiono qui"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
@@ -390,6 +393,9 @@ Passaggi:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl cancellato</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl non valido — controlla e riprova</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funziona senza token, quindi questo campo può restare vuoto.
+
+Aggiungi un token solo per usare il tuo account. Deve provenire dall'app Android di Musixmatch: i token copiati da musixmatch.com appartengono al client desktop dismesso e l'API li rifiuta"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token utente</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token utente salvato</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token utente cancellato</string>

@@ -394,6 +394,9 @@ Fremgangsmåte:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl fjernet</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ugyldig arl – sjekk og prøv igjen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch-brukertoken</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch fungerer uten token, så dette feltet kan stå tomt.
+
+Legg til et token bare for å bruke din egen konto. Det må komme fra Musixmatch Android-appen: tokens kopiert fra musixmatch.com tilhører den utgåtte skrivebordsklienten, og API-en avviser dem."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">brukertoken</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: brukertoken lagret</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: brukertoken slettet</string>

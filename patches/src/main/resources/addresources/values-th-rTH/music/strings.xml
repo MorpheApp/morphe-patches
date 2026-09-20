@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">ใช้ตัวดาวน์โหลดภายนอกที่คุณเลือกแทนเมนูดาวน์โหลดแบบเลื่อนออกเริ่มต้น</string>
   <string name="morphe_music_in_app_downloads_title">ดาวน์โหลดในแอป</string>
   <string name="morphe_music_in_app_downloads_summary">ดาวน์โหลดเสียงภายใน YouTube Music แทนการเปิดแอปตัวดาวน์โหลดภายนอก</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"แทร็กจะถูกบันทึกไว้ในพื้นที่จัดเก็บข้อมูลส่วนตัวของแอป และจะถูกลบหากถอนการติดตั้ง YouTube Music
+
+เมื่อเปิดฟีเจอร์นี้ แท็บดาวน์โหลดจะแสดงรายการแทร็กเหล่านี้แทนคลังออฟไลน์ของ Music Premium การปิดฟีเจอร์นี้จะทำให้แท็บกลับมาเหมือนเดิม และไฟล์ดาวน์โหลดของ Premium จะไม่มีวันถูกแตะต้อง"</string>
   <string name="morphe_music_downloads_screen_title">ดาวน์โหลด</string>
   <string name="morphe_music_downloads_empty">"ไม่มีรายการดาวน์โหลด
 แทร็กที่ดาวน์โหลดจะปรากฏที่นี่"</string>
@@ -379,6 +382,7 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_spotify_token_toast_saved">Spotify: บันทึก sp_dc แล้ว</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] หากไม่มี ระบบจะใช้ Lyrically เป็นตัวสำรอง</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
+  <string name="morphe_music_apple_token_optional_hint">โทเค็นของ Apple Music เป็นตัวเลือกเสริม หากไม่มีโทเค็นนี้ โปรแกรมจะใช้ Lyrically เป็นตัวสำรอง</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] คัดลอกค่าของ \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"วางคุกกี้ arl จาก Deezer
 
@@ -390,6 +394,9 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl […] อีกครั้ง</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] คัดลอกค่าของโทเค็นผู้ใช้</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch ใช้งานได้โดยไม่ต้องมีโทเค็น ดังนั้นช่องนี้จึงเว้นว่างไว้ได้
+
+เพิ่มโทเค็นเฉพาะเมื่อต้องการใช้บัญชีของคุณเองเท่านั้น โทเค็นจะต้องมาจากแอป Musixmatch บน Android: โทเค็นที่คัดลอกจาก musixmatch.com เป็นของโปรแกรมเดสก์ท็อปที่เลิกใช้งานแล้ว และ API จะปฏิเสธโทเค็นเหล่านั้น"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">ผู้ใช้ […] อีกครั้ง</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: บันทึกโทเค็นผู้ใช้แล้ว</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ล้างโทเค็นผู้ใช้แล้ว</string>

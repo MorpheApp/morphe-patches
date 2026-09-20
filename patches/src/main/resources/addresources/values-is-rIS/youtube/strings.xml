@@ -384,7 +384,7 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Leita í rásinni</string>
   <string name="morphe_channel_search_summary">Meðan rás er opin er aðeins leitað í þeirri rás</string>
-  <string name="morphe_channel_search_results_title">Leit: %s</string>
+  <string name="morphe_channel_search_results">Leitarniðurstöður rása</string>
   <string name="morphe_channel_search_no_results">Ekkert fannst á þessari rás</string>
   <string name="morphe_channel_search_failed">Ekki tókst að leita í þessari rás</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1266,6 +1266,7 @@ Myndbandsspilun með AV1 getur hakka eða orðið með rammalegsfall."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Enginn AV1 myndbandakód</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR innlifunhamur er ekki í boði</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stöðugur hljóðstyrkur er ekki í boði</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Spilun getur endað 1 sekúndu snemma</string>
   <string name="morphe_spoof_video_streams_about_js">• Ef endurkóðun misstakast getur spilunin misst</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ekki er hægt til þess að neyða upprunalegt hljóð</string>

@@ -384,7 +384,7 @@ Verslae is openbaar en word nagegaan voordat 'n kanaal by 'n lys gevoeg word. Ve
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Soek binne die kanaal</string>
   <string name="morphe_channel_search_summary">Wanneer jy soek terwyl \'n kanaal oop is, word slegs daardie kanaal deursoek</string>
-  <string name="morphe_channel_search_results_title">Soek: %s</string>
+  <string name="morphe_channel_search_results">Kanaalsoekresultate</string>
   <string name="morphe_channel_search_no_results">Niks op hierdie kanaal gevind nie</string>
   <string name="morphe_channel_search_failed">Kon nie hierdie kanaal deursoek nie</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1271,6 +1271,7 @@ Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR meeslepende modus is nie beskikbaar nie</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile volume is nie beskikbaar nie</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Terugspeel kan 1 sekonde vroeg eindig</string>
   <string name="morphe_spoof_video_streams_about_js">• Indien ontmeng misluk, kan speel misluk</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forceer oorspronklike klank is nie beskikbaar nie</string>

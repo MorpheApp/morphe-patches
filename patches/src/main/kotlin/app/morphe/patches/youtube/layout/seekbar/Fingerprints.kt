@@ -17,9 +17,9 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -137,5 +137,11 @@ internal object LottieSplashScreenFeatureFlagFingerprint : Fingerprint(
             literal(268507948L), // 20.21.37
             literal(1073814316L)
         )
+    )
+)
+
+internal object ShortsWhiteSeekbarFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45787913)
     )
 )

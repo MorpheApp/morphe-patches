@@ -382,6 +382,7 @@ Postup:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Bez neho sa použije Lyrically ako záložná možnosť.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc bol vymazaný</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc je neplatný — skontrolujte ho a skúste to znova.</string>
+  <string name="morphe_music_apple_token_optional_hint">Token Apple Music je voliteľný. Bez neho bude Lyrically použitý ako náhradná možnosť</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Skopírujte hodnotu \"arl\".</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Vložte cookie arl z Deezer.
 
@@ -393,6 +394,9 @@ Postup:
   <string name="morphe_music_deezer_arl_toast_cleared">Neplatný ARL, skúste to znova.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl je neplatný — skontrolujte ho a skúste to znova.</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Skopírujte hodnotu používateľského tokenu.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funguje bez tokenu, takže toto pole môže zostať prázdne.
+
+Token pridajte iba vtedy, ak chcete používať svoj vlastný účet. Musí pochádzať z aplikácie Musixmatch pre Android: tokeny skopírované z musixmatch.com patria zrušenému desktopovému klientovi a API ich odmieta"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Neplatný používateľský token, skúste to znova.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: používateľský token bol uložený</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: používateľský token bol vymazaný</string>

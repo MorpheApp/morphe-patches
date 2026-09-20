@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Používá vámi zvolený externí downloader místo výchozí nabídky Stáhnout</string>
   <string name="morphe_music_in_app_downloads_title">Stahování v aplikaci</string>
   <string name="morphe_music_in_app_downloads_summary">Stahuje zvuk v rámci YouTube Music místo otevírání externí aplikace pro stahování</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Skladby se ukládají do soukromého úložiště aplikace a smažou se, pokud je YouTube Music odinstalováno.
+
+Dokud je to zapnuté, karta Stahování zobrazuje tyto skladby místo offline knihovny Music Premium. Vypnutí obnoví kartu a stahování Premium se nikdy nedotkne."</string>
   <string name="morphe_music_downloads_screen_title">Stahování</string>
   <string name="morphe_music_downloads_empty">"Žádné stažené skladby
 Stažené skladby se zobrazí zde"</string>
@@ -379,6 +382,7 @@ Postup:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Bez něj bude jako záložní použit Lyrically.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc vymazán</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: neplatný sp_dc — zkontrolujte a zkuste to znovu</string>
+  <string name="morphe_music_apple_token_optional_hint">Token Apple Music je volitelný. Bez něj se jako záložní použije Lyrically.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Zkopírujte hodnotu \"arl\".</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Vložte cookie arl ze služby Deezer.
 
@@ -390,6 +394,9 @@ Postup:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: neplatný arl. Zkuste to znovu.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: neplatný arl — zkontrolujte a zkuste to znovu</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Zkopírujte hodnotu uživatelského tokenu.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funguje bez tokenu, takže toto pole může zůstat prázdné.
+
+Přidejte token pouze pro použití vlastního účtu. Musí pocházet z aplikace Musixmatch pro Android: tokeny zkopírované z musixmatch.com patří ukončenému desktopovému klientovi a API je odmítá."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: neplatný uživatelský token. Zkuste to znovu.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: uživatelský token uložen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: uživatelský token vymazán</string>

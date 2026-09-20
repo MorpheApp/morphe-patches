@@ -385,7 +385,7 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Diesen Kanal durchsuchen</string>
   <string name="morphe_channel_search_summary">Wenn ein Kanal geöffnet ist, wird bei der Suche nur dieser Kanal durchsucht.</string>
-  <string name="morphe_channel_search_results_title">Suche: %s</string>
+  <string name="morphe_channel_search_results">Kanal-Suchergebnisse</string>
   <string name="morphe_channel_search_no_results">Auf diesem Kanal wurde nichts gefunden.</string>
   <string name="morphe_channel_search_failed">Dieser Kanal konnte nicht durchsucht werden.</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1272,6 +1272,7 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Kein AV1-Videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersiver Modus ist nicht verfügbar</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabile Lautstärke ist nicht verfügbar</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Die Wiedergabe endet möglicherweise 1 Sekunde früher.</string>
   <string name="morphe_spoof_video_streams_about_js">• Wenn die Deobfuskation fehlschlägt, kann die Wiedergabe fehlschlagen</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Originalton erzwingen ist nicht verfügbar</string>

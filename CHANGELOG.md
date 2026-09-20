@@ -1,3 +1,49 @@
+## [1.44.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.10...v1.44.0-dev.11) (2026-09-19)
+
+### ✨ New Features
+
+* **YouTube - Channel search:** Show the searched channel in the results header ([c0e49d4](https://github.com/MorpheApp/morphe-patches/commit/c0e49d4ba97a5ca79033e379f3f581a395cda7a4))
+
+## [1.44.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.9...v1.44.0-dev.10) (2026-09-19)
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.37.54` ([04f67ae](https://github.com/MorpheApp/morphe-patches/commit/04f67ae150d23b1c888061e9d723459736f8f52c))
+
+## [1.44.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.8...v1.44.0-dev.9) (2026-09-19)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Controls fade-in animation doesn't work ([396a0bc](https://github.com/MorpheApp/morphe-patches/commit/396a0bcd333423bb17cbe501599e70d80591f8d0))
+* **YouTube - Minimal miniplayer:** Interpolate minimizing transitions. ([13e653a](https://github.com/MorpheApp/morphe-patches/commit/13e653a68943b548728d85042e6785058b3cedb2))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.38.0` ([404fc59](https://github.com/MorpheApp/morphe-patches/commit/404fc599fa082fd958780450a1ec57476295c712))
+
+## [1.44.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.7...v1.44.0-dev.8) (2026-09-19)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Theme:** Experimental app targets can show white Shorts seekbar ([aaeca6a](https://github.com/MorpheApp/morphe-patches/commit/aaeca6a75bf7d1e14e6c31fbbeffa50bda55ac0f))
+
+## [1.44.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.6...v1.44.0-dev.7) (2026-09-19)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Minimal miniplayer:** Fully expand the player width during the minimization animation. ([aaa1211](https://github.com/MorpheApp/morphe-patches/commit/aaa1211855d245b44940575dc8f9e3428593bde5))
+* **YouTube - Remove background playback restrictions:** Auto pause when video is loading ([#3060](https://github.com/MorpheApp/morphe-patches/issues/3060)) ([cbffcf3](https://github.com/MorpheApp/morphe-patches/commit/cbffcf3c09bde19ac1e16921cd5f359d1b9430be))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.38.123` ([#3053](https://github.com/MorpheApp/morphe-patches/issues/3053)) ([fd4a726](https://github.com/MorpheApp/morphe-patches/commit/fd4a72611ea561f605085fc1512a91b8084410fe))
+
+## [1.44.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.5...v1.44.0-dev.6) (2026-09-18)
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add support for `21.16.256` ([900575c](https://github.com/MorpheApp/morphe-patches/commit/900575ccc97cb8faf831786afd693c30d28e4f9f))
+
 ## [1.44.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.4...v1.44.0-dev.5) (2026-09-18)
 
 ### 🐛 Bug Fixes

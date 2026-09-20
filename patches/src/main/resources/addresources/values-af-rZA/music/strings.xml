@@ -394,6 +394,9 @@ Stappe:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ongeldige arl, probeer asseblief weer</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl — kontroleer asseblief en probeer weer</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopieer die waarde van die gebruikerstoken</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch werk sonder 'n token, so hierdie veld kan leeg bly.
+
+Voeg slegs 'n token by om jou eie rekening te gebruik. Dit moet van die Musixmatch Android-toepassing kom: tokens wat van musixmatch.com gekopieer is, behoort aan die afgetrede lessenaar-kliënt en die API weier hulle"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ongeldige gebruikerstoken, probeer asseblief weer</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: gebruikerstoken gestoor</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: gebruikerstoken verwyder</string>

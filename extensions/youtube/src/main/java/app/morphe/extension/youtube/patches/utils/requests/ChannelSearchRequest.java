@@ -44,12 +44,23 @@ public final class ChannelSearchRequest {
         }
     }
 
+    public static final class ChannelSearchResponse {
+        /** Empty if the response does not name the channel. */
+        public final String channelName;
+        public final List<ChannelSearchResult> results;
+
+        private ChannelSearchResponse(String channelName, List<ChannelSearchResult> results) {
+            this.channelName = channelName;
+            this.results = results;
+        }
+    }
+
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 15 * 1000;
 
     private static final Map<String, ChannelSearchRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(10));
 
-    private final Future<List<ChannelSearchResult>> future;
+    private final Future<ChannelSearchResponse> future;
 
     private ChannelSearchRequest(String channelId, String query) {
         this.future = Utils.submitOnBackgroundThread(() -> fetch(channelId, query));
@@ -63,25 +74,25 @@ public final class ChannelSearchRequest {
     }
 
     /**
-     * Null if the request failed. Empty if the channel has nothing matching the query.
+     * Null if the request failed. Results are empty if the channel has nothing matching the query.
      */
     @Nullable
-    public List<ChannelSearchResult> getResults() {
+    public ChannelSearchResponse getResponse() {
         try {
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getResults timed out", ex);
+            Logger.printInfo(() -> "getResponse timed out", ex);
         } catch (InterruptedException ex) {
-            Logger.printException(() -> "getResults interrupted", ex);
+            Logger.printException(() -> "getResponse interrupted", ex);
             Thread.currentThread().interrupt();
         } catch (ExecutionException ex) {
-            Logger.printException(() -> "getResults failure", ex);
+            Logger.printException(() -> "getResponse failure", ex);
         }
         return null;
     }
 
     @Nullable
-    private static List<ChannelSearchResult> fetch(String channelId, String query) {
+    private static ChannelSearchResponse fetch(String channelId, String query) {
         Utils.verifyOffMainThread();
 
         final long startTime = System.currentTimeMillis();
@@ -110,7 +121,7 @@ public final class ChannelSearchRequest {
         return null;
     }
 
-    private static List<ChannelSearchResult> parseResponse(JSONObject json) {
+    private static ChannelSearchResponse parseResponse(JSONObject json) {
         List<ChannelSearchResult> results = new ArrayList<>();
 
         try {
@@ -156,7 +167,17 @@ public final class ChannelSearchRequest {
             Logger.printException(() -> "parseResponse failed", ex);
         }
 
-        return results;
+        return new ChannelSearchResponse(parseChannelName(json), results);
+    }
+
+    private static String parseChannelName(JSONObject json) {
+        JSONObject metadata = json.optJSONObject("metadata");
+        if (metadata == null) {
+            return "";
+        }
+
+        JSONObject channel = metadata.optJSONObject("channelMetadataRenderer");
+        return channel == null ? "" : channel.optString("title");
     }
 
     @Nullable
@@ -179,7 +200,6 @@ public final class ChannelSearchRequest {
         if (value.isEmpty()) {
             return;
         }
-        //noinspection SizeReplaceableByIsEmpty
         if (metadata.length() != 0) {
             metadata.append("  •  ");
         }

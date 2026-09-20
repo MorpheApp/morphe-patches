@@ -377,12 +377,16 @@ Koraci:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Bez nje, Lyrically će se koristiti kao rezerva.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc sačuvan.</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc nije važeći — pokušajte ponovo.</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music token je opcion. Bez njega, Lyrically će biti korišćen kao zamena</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Kopirajte vrednost \"arl\".</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer: arl sačuvan."</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: ARL sačuvan.</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: nevažeći ARL — proverite i pokušajte ponovo.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl nije važeći — pokušajte ponovo.</string>
   <string name="morphe_music_musixmatch_token_title">LRCLIB, zatim QQ, zatim KuGou, zatim NetEase, zatim BiniLyrics, zatim Unison, zatim AMLL.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch radi bez tokena, pa ovo polje može ostati prazno.
+
+Dodajte token samo ako želite da koristite sopstveni nalog. On mora potecati iz Musixmatch Android aplikacije: tokeni kopirani sa musixmatch.com pripadaju penzioniranom desktop klijentu i API ih odbija"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">korisnički token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">YouTube: kolačići obrisani.</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: korisnički token je obrisan</string>

@@ -384,7 +384,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Пошук на каналі</string>
   <string name="morphe_channel_search_summary">Пошук під час відкритого каналу шукає лише в цьому каналі</string>
-  <string name="morphe_channel_search_results_title">Пошук: %s</string>
+  <string name="morphe_channel_search_results">Результати пошуку каналів</string>
   <string name="morphe_channel_search_no_results">Нічого не знайдено на цьому каналі</string>
   <string name="morphe_channel_search_failed">Не вдалося виконати пошук на цьому каналі</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1270,6 +1270,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Відеокодек AV1 відсутній</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Режим занурення у віртуальну реальність 360° недоступний</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Пункт меню \"Стабілізувати гучність\" недоступний</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Відтворення може завершитися на 1 секунду раніше</string>
   <string name="morphe_spoof_video_streams_about_js">• Якщо деобфускація не вдається, відтворення може завершитися невдачею</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Примусово оригінальна мова звукової доріжки\" недоступна</string>

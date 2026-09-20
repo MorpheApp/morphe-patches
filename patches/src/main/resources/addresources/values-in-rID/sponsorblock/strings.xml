@@ -30,10 +30,10 @@ Second \"item\" text"</string>
   <string name="morphe_sb_auto_hide_skip_button_summary">Menyembunyikan tombol Lewati setelah beberapa detik daripada menampilkannya selama seluruh segmen</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_title">Durasi tombol Lewati</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">Atur berapa lama tombol Lewati tetap terlihat</string>
-  <string name="morphe_sb_toast_on_skip_title">Tampilkan pemberitahuan Lewati</string>
-  <string name="morphe_sb_toast_on_skip_summary">Menampilkan pemberitahuan saat segmen dilewati secara otomatis</string>
-  <string name="morphe_sb_toast_on_skip_duration_title">Durasi pemberitahuan Lewati</string>
-  <string name="morphe_sb_toast_on_skip_duration_summary">Atur berapa lama pemberitahuan pembatalan tetap terlihat</string>
+  <string name="morphe_sb_toast_on_skip_title">Tampilkan notifikasi lewati</string>
+  <string name="morphe_sb_toast_on_skip_summary">Menampilkan notifikasi saat segmen dilewati secara otomatis</string>
+  <string name="morphe_sb_toast_on_skip_duration_title">Durasi notifikasi lewati</string>
+  <string name="morphe_sb_toast_on_skip_duration_summary">Atur berapa lama notifikasi pembatalan tetap terlihat</string>
   <string name="morphe_sb_duration_1s">1 detik</string>
   <string name="morphe_sb_duration_2s">2 detik</string>
   <string name="morphe_sb_duration_3s">3 detik</string>
@@ -60,7 +60,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_guidelines_popup_open">Tunjukkan</string>
   <string name="morphe_sb_general_title">Umum</string>
   <string name="morphe_sb_toast_on_connection_error_title">Tampilkan peringatan kesalahan sambungan</string>
-  <string name="morphe_sb_toast_on_connection_error_summary">Menampilkan pemberitahuan saat server SponsorBlock tidak tersedia</string>
+  <string name="morphe_sb_toast_on_connection_error_summary">Menampilkan notifikasi saat server SponsorBlock tidak tersedia</string>
   <string name="morphe_sb_track_skip_count_title">Aktifkan pelacakan melewati hitungan</string>
   <string name="morphe_sb_track_skip_count_summary">Mengirim jumlah lewati ke papan peringkat SponsorBlock untuk melacak berapa banyak waktu yang disimpan</string>
   <string name="morphe_sb_min_segment_duration_title">Durasi minimum segmen</string>

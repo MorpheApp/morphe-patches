@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Usa o seu downloader externo escolhido em vez do menu de download padrão.</string>
   <string name="morphe_music_in_app_downloads_title">Baixar no app</string>
   <string name="morphe_music_in_app_downloads_summary">Baixa áudio no YouTube Music em vez de abrir o app externo de download</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"As faixas são salvas no armazenamento privado do aplicativo e são excluídas se o YouTube Music for desinstalado.
+
+Enquanto esta opção estiver ativada, a aba Downloads lista essas faixas em vez da biblioteca offline do Music Premium. Desativá-la restaura a aba, e os downloads do Premium nunca são afetados."</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Sem downloads
 As faixas baixadas aparecem aqui"</string>
@@ -379,6 +382,7 @@ Etapas:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc salvo</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc removido</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc inválido — verifique e tente novamente</string>
+  <string name="morphe_music_apple_token_optional_hint">O token do Apple Music é opcional. Sem ele, o Lyrically será usado como alternativa</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Copie o valor de \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Cole o cookie arl do Deezer.
 
@@ -390,6 +394,9 @@ Etapas:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl removido</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl inválido — verifique e tente novamente</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Copie o valor do token do usuário</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"O Musixmatch funciona sem token, então este campo pode ficar vazio.
+
+Adicione um token apenas para usar sua própria conta. Ele tem de vir do aplicativo Android do Musixmatch: tokens copiados de musixmatch.com pertencem ao cliente de desktop descontinuado e a API os rejeita."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token do usuário</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token de usuário salvo</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token de usuário removido</string>

@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Χρησιμοποιεί τον επιλεγμένο εξωτερικό λήπτη αντί για το προεπιλεγμένο μενού «Λήψη»</string>
   <string name="morphe_music_in_app_downloads_title">Λήψη εντός εφαρμογής</string>
   <string name="morphe_music_in_app_downloads_summary">Κατεβάζει ήχο μέσα στο YouTube Music αντί να ανοίγει την εξωτερική εφαρμογή λήψης</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Τα κομμάτια αποθηκεύονται στον ιδιωτικό χώρο αποθήκευσης της εφαρμογής και διαγράφονται αν απεγκατασταθεί το YouTube Music.
+
+Όσο αυτό είναι ενεργό, η καρτέλα Λήψεις παραθέτει αυτά τα κομμάτια αντί για την offline βιβλιοθήκη του Music Premium. Αν το απενεργοποιήσετε, η καρτέλα επανέρχεται και οι λήψεις Premium δεν επηρεάζονται ποτέ."</string>
   <string name="morphe_music_downloads_screen_title">Λήψεις</string>
   <string name="morphe_music_downloads_empty">"Δεν υπάρχουν λήψεις
 Τα κομμάτια που έχετε κατεβάσει εμφανίζονται εδώ"</string>
@@ -391,6 +394,9 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: το arl διαγράφηκε</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: μη έγκυρο arl — ελέγξτε το και δοκιμάστε ξανά</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Το Musixmatch λειτουργεί χωρίς token, οπότε αυτό το πεδίο μπορεί να παραμείνει κενό.
+
+Προσθέστε token μόνο για να χρησιμοποιήσετε τον δικό σας λογαριασμό. Πρέπει να προέρχεται από την εφαρμογή Musixmatch για Android: τα token που αντιγράφονται από το musixmatch.com ανήκουν στον αποσυρμένο desktop client και το API τα απορρίπτει"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token χρήστη</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: το user token αποθηκεύτηκε</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: το user token διαγράφηκε</string>

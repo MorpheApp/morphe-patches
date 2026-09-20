@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Käyttää valitsemaasi ulkoista latausohjelmaa tavallisen Lataa-pikavalikon sijaan</string>
   <string name="morphe_music_in_app_downloads_title">Lataa sovelluksessa</string>
   <string name="morphe_music_in_app_downloads_summary">Lataa äänen YouTube Musicissa avaamatta ulkoista lataussovellusta</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Kappaleet tallennetaan sovelluksen yksityiseen tallennustilaan, ja ne poistetaan, jos YouTube Music poistetaan.
+
+Kun tämä on päällä, Lataukset-välilehti listaa nämä kappaleet Music Premium -offlinekirjaston sijaan. Kun sen ottaa pois päältä, välilehti palautuu, eikä Premium-latauksiin kosketa koskaan."</string>
   <string name="morphe_music_downloads_screen_title">Lataukset</string>
   <string name="morphe_music_downloads_empty">"Ei latauksia
 Ladatut kappaleet näkyvät tässä"</string>
@@ -391,6 +394,9 @@ Vaiheet:
   <string name="morphe_music_deezer_arl_toast_cleared">Virheellinen ARL, yritä uudelleen.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: virheellinen arl — tarkista ja yritä uudelleen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopioi käyttäjätunnuksen arvo.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch toimii ilman tokenia, joten tämä kenttä voi jäädä tyhjäksi.
+
+Lisää token vain, jos haluat käyttää omaa tiliäsi. Sen on oltava peräisin Musixmatchin Android-sovelluksesta: musixmatch.comista kopioidut tokenit kuuluvat käytöstä poistetulle työpöytäasiakkaalle, eikä API hyväksy niitä"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Virheellinen käyttäjätunnus, yritä uudelleen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: käyttäjäntunnus tallennettu</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: käyttäjäntunnus tyhjennetty</string>

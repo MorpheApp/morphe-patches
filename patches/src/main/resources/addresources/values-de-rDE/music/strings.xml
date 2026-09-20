@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Verwendet den von dir gewählten externen Downloader anstelle des standardmäßigen Download-Flyout-Menüs.</string>
   <string name="morphe_music_in_app_downloads_title">Download in der App</string>
   <string name="morphe_music_in_app_downloads_summary">Lädt Audio in YouTube Music herunter, anstatt die externe Downloader-App zu öffnen</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Titel werden im privaten Speicher der App gespeichert und gelöscht, wenn YouTube Music deinstalliert wird.
+
+Solange diese Option aktiviert ist, listet der Downloads-Tab diese Titel anstelle der Offline-Bibliothek von Music Premium auf. Wenn du sie deaktivierst, wird der Tab wiederhergestellt, und Premium-Downloads bleiben unberührt."</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Keine Downloads
 Heruntergeladene Titel erscheinen hier"</string>
@@ -391,6 +394,9 @@ Schritte:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl ungültig. Bitte erneut versuchen.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ungültiges arl – bitte überprüfen und erneut versuchen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopiere den Wert des Benutzer-Tokens.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funktioniert auch ohne Token, daher kann dieses Feld leer bleiben.
+
+Füge ein Token nur hinzu, um dein eigenes Konto zu verwenden. Es muss aus der Musixmatch-Android-App stammen: Token, die von musixmatch.com kopiert wurden, gehören zum eingestellten Desktop-Client, und die API lehnt sie ab"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ungültiges Benutzer-Token. Bitte erneut versuchen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: Benutzertoken gespeichert</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: Benutzertoken gelöscht</string>

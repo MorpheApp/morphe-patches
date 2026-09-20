@@ -384,7 +384,7 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Rechercher dans la chaîne</string>
   <string name="morphe_channel_search_summary">Lorsqu\'une recherche est effectuée alors qu\'une chaîne est ouverte les résultats concernent uniquement cette chaîne</string>
-  <string name="morphe_channel_search_results_title">Recherche : %s</string>
+  <string name="morphe_channel_search_results">Résultats de recherche de chaînes</string>
   <string name="morphe_channel_search_no_results">Aucun résultat trouvé sur cette chaîne</string>
   <string name="morphe_channel_search_failed">Impossible d\'effectuer une recherche sur cette chaîne</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -713,7 +713,7 @@ Les 'Cookies des sous-titres' doivent être fournis"</string>
   <string name="morphe_caption_cookies_title">Cookies des sous-titres</string>
   <string name="morphe_caption_cookies_summary">Cookies à définir dans les requêtes de l\'API Timed Text (API des données de sous-titres)</string>
   <string name="morphe_get_caption_cookies_title">Obtenir les cookies de sous-titres</string>
-  <string name="morphe_get_caption_cookies_summary">Appuyez ici pour récupérer les cookies</string>
+  <string name="morphe_get_caption_cookies_summary"> Cliquez ici pour récupérer les cookies</string>
   <string name="morphe_get_caption_cookies_failed">Échec de la récupération des cookies</string>
   <string name="morphe_get_caption_cookies_duplicate">Les cookies existent déjà</string>
   <string name="morphe_get_caption_cookies_success">Les cookies ont été mis à jour avec succès</string>
@@ -1272,6 +1272,7 @@ La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images
   <string name="morphe_spoof_video_streams_about_no_av1">• Aucun codec vidéo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Le mode 360° VR immersif n\'est pas disponible</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Le volume stable n\'est pas disponible</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• La lecture peut se terminer 1 seconde plus tôt</string>
   <string name="morphe_spoof_video_streams_about_js">• Si la désobfuscation échoue, la lecture peut échouer</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Forcer la langue audio d\'origine n\'est pas disponible</string>

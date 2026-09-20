@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Sử dụng trình tải xuống bên ngoài mà bạn đã chọn thay cho menu Tải xuống mặc định</string>
   <string name="morphe_music_in_app_downloads_title">Tải xuống trong ứng dụng</string>
   <string name="morphe_music_in_app_downloads_summary">Tải xuống âm thanh trong YouTube Music thay vì mở ứng dụng tải xuống bên ngoài</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Các bản nhạc được lưu vào bộ nhớ riêng của ứng dụng và sẽ bị xóa nếu YouTube Music được gỡ cài đặt.
+
+Khi bật tùy chọn này, tab Tải xuống sẽ liệt kê các bản nhạc này thay vì thư viện ngoại tuyến Music Premium. Tắt tùy chọn này sẽ khôi phục lại tab và các bản tải xuống Premium không bao giờ bị ảnh hưởng."</string>
   <string name="morphe_music_downloads_screen_title">Tải xuống</string>
   <string name="morphe_music_downloads_empty">"Không có bản tải xuống
 Các bài hát đã tải sẽ xuất hiện ở đây"</string>
@@ -377,6 +380,7 @@ Các bước:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: đã lưu sp_dc</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] Nếu không có, Lyrically sẽ được dùng làm phương án dự phòng.</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc không hợp lệ — vui lòng kiểm tra và thử lại</string>
+  <string name="morphe_music_apple_token_optional_hint">Token Apple Music là tùy chọn. Nếu không có nó, Lyrically sẽ được dùng làm phương án dự phòng.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Sao chép giá trị \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Dán cookie arl từ Deezer.
 
@@ -388,6 +392,9 @@ Các bước:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl không hợp lệ — vui lòng thử lại</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl không hợp lệ — vui lòng kiểm tra và thử lại</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Sao chép giá trị token người dùng</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch hoạt động không cần token, nên trường này có thể để trống.
+
+Chỉ thêm token khi bạn muốn dùng tài khoản của riêng mình. Token phải lấy từ ứng dụng Musixmatch Android: các token sao chép từ musixmatch.com thuộc về trình khách máy tính để bàn đã ngừng hoạt động và API sẽ từ chối chúng."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Token người dùng không hợp lệ — vui lòng thử lại</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: đã lưu token người dùng</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: đã xóa token người dùng</string>

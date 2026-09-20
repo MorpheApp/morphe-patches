@@ -378,12 +378,16 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Без него Lyrically ще се използва като алтернатива.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Apple Music: media-user-token липсва</string>
   <string name="morphe_music_spotify_token_toast_invalid">Apple Music: media-user-token е невалиден</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music токенът е по избор. Без него Lyrically ще се използва като резервен вариант.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Копирайте стойността на \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Apple Music: media-user-token е забранен"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl е запазен.</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Невалиден arl, опитайте отново.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Apple Music: media-user-token е в процес на издаване</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Копирайте стойността на потребителския токен.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch работи без токен, така че това поле може да остане празно.
+
+Добавете токен само за да използвате собствената си сметка. Той трябва да идва от приложението Musixmatch за Android: токените, копирани от musixmatch.com, принадлежат на оттегления десктоп клиент и API ги отхвърля."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Невалиден потребителски токен, опитайте отново.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Apple Music: media-user-token е актуализиран</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Apple Music: media-user-token е запазен</string>

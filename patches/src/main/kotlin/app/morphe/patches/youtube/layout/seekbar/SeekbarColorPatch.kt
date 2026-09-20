@@ -23,6 +23,7 @@ import app.morphe.patches.shared.layout.theme.lithoColorOverrideHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
@@ -79,7 +80,14 @@ val seekbarColorPatch = bytecodePatch(
 
         lithoColorOverrideHook(EXTENSION_CLASS, "getLithoColor")
 
-        // 19.25+ changes
+        if (is_21_21_or_greater) {
+            ShortsWhiteSeekbarFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    false
+                )
+            }
+        }
 
         var handleBarColorFingerprints = mutableListOf<Fingerprint>(PlayerSeekbarHandle1ColorFingerprint)
         if (!is_20_34_or_greater) {

@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Gebruikt je gekozen externe downloader in plaats van het standaard Download-uitklapmenu</string>
   <string name="morphe_music_in_app_downloads_title">Downloaden in de app</string>
   <string name="morphe_music_in_app_downloads_summary">Downloadt audio in YouTube Music in plaats van de externe downloadapp te openen</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Tracks worden opgeslagen in de privéopslag van de app en worden verwijderd als YouTube Music wordt gedeïnstalleerd.
+
+Zolang dit is ingeschakeld, toont het tabblad Downloads deze nummers in plaats van de offline bibliotheek van Music Premium. Als je dit uitschakelt, wordt het tabblad hersteld en Premium-downloads worden nooit aangeraakt."</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Geen downloads
 Gedownloade nummers verschijnen hier"</string>
@@ -374,6 +377,7 @@ Stappen:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc opgeslagen</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] Zonder dit wordt Lyrically als fallback gebruikt.</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: ongeldige sp_dc — controleer en probeer het opnieuw</string>
+  <string name="morphe_music_apple_token_optional_hint">Het Apple Music-token is optioneel. Zonder token wordt Lyrically als fallback gebruikt.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Kopieer de waarde van \"arl\"</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Plak de arl-cookie van Deezer.
 
@@ -385,6 +389,9 @@ Stappen:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl gewist</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl — controleer en probeer het opnieuw</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopieer de waarde van de gebruikerstoken</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch werkt zonder token, dus dit veld kan leeg blijven.
+
+Voeg alleen een token toe om je eigen account te gebruiken. Het moet afkomstig zijn uit de Musixmatch Android-app: tokens die van musixmatch.com zijn gekopieerd, horen bij de stopgezette desktopclient en de API weigert ze."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">gebruikerstoken</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: gebruikerstoken opgeslagen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: gebruikerstoken […] opnieuw</string>

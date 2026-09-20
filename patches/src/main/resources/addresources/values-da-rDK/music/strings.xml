@@ -393,6 +393,9 @@ Trin:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl ryddet</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ugyldig arl — tjek venligst og prøv igen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopier værdien af brugerens token</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch fungerer uden et token, så dette felt kan forblive tomt.
+
+Tilføj kun et token for at bruge din egen konto. Det skal komme fra Musixmatch Android-appen: tokens kopieret fra musixmatch.com tilhører den udgåede desktopklient, og API'et afviser dem."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Ugyldig bruger-token. Prøv igen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: brugertoken gemt</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: brugertoken fjernet</string>

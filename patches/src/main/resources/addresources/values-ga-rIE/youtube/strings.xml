@@ -384,7 +384,7 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Cuardaigh sa chainéal</string>
   <string name="morphe_channel_search_summary">Má dhéantar cuardach agus cainéal ar oscailt, ní dhéantar cuardach ach sa chainéal sin.</string>
-  <string name="morphe_channel_search_results_title">Cuardach: %s</string>
+  <string name="morphe_channel_search_results">Torthaí cuardaigh cainéil</string>
   <string name="morphe_channel_search_no_results">Níor aimsíodh aon rud ar an gcainéal seo</string>
   <string name="morphe_channel_search_failed">Níorbh fhéidir an cainéal seo a chuardach</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -508,12 +508,12 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Tá an físeán seo sábháilte cheana féin sa seinmliosta féach níos déanaí</string>
   <string name="morphe_save_to_watch_later_error_toast">Ní féidir an físeán seo a shábháil sa seinmliosta féach níos déanaí</string>
   <string name="morphe_save_to_watch_later_flyout_title">Sábháil le Féachaint Níos Déanaí</string>
-  <string name="morphe_save_to_watch_later_flyout_button_title">Taispeáin an cnaipe \"Sábháil sa liosta \'Féach ar ball\'\" sa roghchlár aníos de na socruithe seinnteora.</string>
-  <string name="morphe_save_to_watch_later_flyout_button_summary">Ligeann sé duit an físeán atá ar siúl faoi láthair a shábháil sa liosta \'Féach ar ball\' ón roghchlár aníos de na socruithe físeáin.</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">Taispeáin an cnaipe \"Sábháil le breathnú air níos déanaí\" sa phainéal aníos de shocruithe an imreora.</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">Ceadaítear an físeán atá á fheiceáil faoi láthair a shábháil sa liosta \'Féach níos déanaí\' ón bpainéal socruithe físeáin.</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">Taispeáin an cnaipe Sábháil le Féach Níos Déanaí i bhfíseáin do pháistí</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Ligeann sé duit físeáin a bhaineann le leanaí a shábháil sa liosta \'Féach ar ball\' ón roghchlár aníos.</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Taispeáin an cnaipe \"Sábháil sa liosta \'Féach ar ball\'\" sa roghchlár aníos Shorts.</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Ligeann sé duit Shorts a shábháil sa liosta \'Féach ar ball\' ón roghchlár aníos.</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">Ceadaítear físeáin a bhaineann le páistí a shábháil sa liosta \'Féach níos déanaí\' ón roghchlár aníos.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">Taispeáin an cnaipe \'Sábháil le breathnú air níos déanaí\' sa phainéal aníos do na físeáin ghearra.</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">Ceadaíonn sé físeáin ghearra a shábháil sa liosta \'Féach níos déanaí\' ón roghchlár aníos.</string>
   <string name="morphe_queue_flyout_title">Cuir leis an scuaine Morphe</string>
   <string name="morphe_queue_restore_title">Coinnigh scuaine idir seisiúin</string>
   <string name="morphe_queue_restore_summary">Coinnítear an scuaine tar éis an aip a atosú</string>
@@ -922,8 +922,8 @@ Socruithe → Athsheinm (nó Uathsheinm) → Uathsheinm an chéad fhíseán eile
   <string name="morphe_exit_fullscreen_entry_3">Tírdhreach amháin</string>
   <string name="morphe_exit_fullscreen_entry_4">Portráid agus tírdhreach</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
-  <string name="morphe_force_fullscreen_landscape_title">Cuir tírdhreach i bhfeidhm i mód lánscáileáin</string>
-  <string name="morphe_force_fullscreen_landscape_summary">Rothlaigh an seinnteoir go mód tírdhreacha agus tú ag dul isteach i mód lánscáileáin. Níl sé ar fáil ar scáileáin bheaga, a osclaíonn go lánscáileán i mód tírdhreacha cheana féin</string>
+  <string name="morphe_force_fullscreen_landscape_title">Cuir an leagan amach i mód lánscáileáin</string>
+  <string name="morphe_force_fullscreen_landscape_summary">Rothlaigh an seinnteoir go dtí an tírdhreach nuair a théann tú isteach sa scáileán lán. Ní féidir é a úsáid ar scáileáin bheaga, a osclaíonn an scáileán lán cheana féin i dtírdhreach.</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">Gothaí lánscáileáin</string>
   <string name="morphe_disable_fullscreen_gestures_summary">Gothaí imreora i mód lánscáileáin</string>
@@ -1271,6 +1271,7 @@ D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe l
   <string name="morphe_spoof_video_streams_about_no_av1">• Gan aon chóideic físe AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Níl mód tumtha VR 360° ar fáil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Níl toirt chobhsaí ar fáil</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• D’fhéadfadh an t-athsheinm críochnú 1 soicind roimh am</string>
   <string name="morphe_spoof_video_streams_about_js">• Má theipeann ar an dí-dhorchadas, d\'fhéadfadh teip a bheith ar an athsheinm</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Níl an fuaim bhunaidh iallach ar fáil</string>

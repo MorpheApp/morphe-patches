@@ -14,6 +14,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Outline;
+import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -32,15 +34,16 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest;
+import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResponse;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResult;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -131,17 +134,17 @@ public final class ChannelSearchPatch {
             Logger.printDebug(() -> "Searching channel " + channelId + " for: " + query);
 
             Utils.runOnBackgroundThread(() -> {
-                List<ChannelSearchResult> results = ChannelSearchRequest
+                ChannelSearchResponse response = ChannelSearchRequest
                         .fetchRequestIfNeeded(channelId, query)
-                        .getResults();
+                        .getResponse();
 
                 Utils.runOnMainThread(() -> {
-                    if (results == null) {
+                    if (response == null) {
                         Utils.showToastShort(str("morphe_channel_search_failed"));
-                    } else if (results.isEmpty()) {
+                    } else if (response.results.isEmpty()) {
                         Utils.showToastShort(str("morphe_channel_search_no_results"));
                     } else {
-                        showResults(activity, query, results);
+                        showResults(activity, query, response);
                     }
                 });
             });
@@ -154,14 +157,14 @@ public final class ChannelSearchPatch {
         return false;
     }
 
-    private static void showResults(Activity activity, String query,
-                                    List<ChannelSearchRequest.ChannelSearchResult> results) {
+    private static void showResults(Activity activity, String query, ChannelSearchResponse response) {
         try {
             hideKeyboard(activity);
 
             SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
                     .createMainLayout(activity, null);
-            mainLayout.addView(createHeader(activity, query));
+            mainLayout.addView(createHeader(activity, query, response.channelName));
+            mainLayout.addView(createDivider(activity));
 
             LinearLayout listContainer = new LinearLayout(activity);
             listContainer.setOrientation(LinearLayout.VERTICAL);
@@ -173,7 +176,7 @@ public final class ChannelSearchPatch {
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
                     .createSlideDialog(activity, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
 
-            for (ChannelSearchRequest.ChannelSearchResult result : results) {
+            for (ChannelSearchResult result : response.results) {
                 View row = createResultRow(activity, result);
                 row.setOnClickListener(view -> {
                     dialog.dismiss();
@@ -195,17 +198,68 @@ public final class ChannelSearchPatch {
         }
     }
 
-    private static View createHeader(Activity activity, String query) {
-        TextView header = new TextView(activity);
-        header.setText(str("morphe_channel_search_results_title", query));
-        header.setTextColor(ThemeUtils.getAppForegroundColor());
-        header.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-        header.setSingleLine();
-        header.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
+    /**
+     * The query alone reads like a global search, so the channel it was scoped to is shown under it.
+     */
+    private static View createHeader(Activity activity, String query, String channelName) {
+        final int foregroundColor = ThemeUtils.getAppForegroundColor();
+
+        LinearLayout header = new LinearLayout(activity);
+        header.setOrientation(LinearLayout.HORIZONTAL);
+        header.setGravity(Gravity.CENTER_VERTICAL);
+        header.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp12);
+
+        ImageView icon = new ImageView(activity);
+        icon.setImageDrawable(BaseSearchViewController.getSearchIconDrawable());
+        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
+        iconParams.setMarginEnd(Dim.dp16);
+        icon.setLayoutParams(iconParams);
+        header.addView(icon);
+
+        LinearLayout text = new LinearLayout(activity);
+        text.setOrientation(LinearLayout.VERTICAL);
+        text.setLayoutParams(new LinearLayout.LayoutParams(
+                0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+
+        TextView queryView = new TextView(activity);
+        queryView.setText(query);
+        queryView.setTextColor(foregroundColor);
+        queryView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        queryView.setTypeface(Typeface.DEFAULT_BOLD);
+        queryView.setSingleLine();
+        queryView.setEllipsize(TextUtils.TruncateAt.END);
+        text.addView(queryView);
+
+        String scope = str("morphe_channel_search_results");
+        if (!channelName.isEmpty()) {
+            scope += "  •  " + channelName;
+        }
+
+        TextView scopeView = new TextView(activity);
+        scopeView.setText(scope);
+        scopeView.setTextColor(foregroundColor);
+        scopeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+        scopeView.setAlpha(0.7f);
+        scopeView.setSingleLine();
+        scopeView.setEllipsize(TextUtils.TruncateAt.END);
+        text.addView(scopeView);
+
+        header.addView(text);
         return header;
     }
 
-    private static View createResultRow(Activity activity, ChannelSearchRequest.ChannelSearchResult result) {
+    private static View createDivider(Activity activity) {
+        View divider = new View(activity);
+        divider.setBackgroundColor(ThemeUtils.getAppForegroundColor());
+        divider.setAlpha(0.12f);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, Dim.dp1);
+        params.setMargins(0, 0, 0, Dim.dp4);
+        divider.setLayoutParams(params);
+        return divider;
+    }
+
+    private static View createResultRow(Activity activity, ChannelSearchResult result) {
         LinearLayout row = createResultRowContainer(activity);
         row.addView(createResultThumbnail(activity, result));
         row.addView(createResultText(activity, result));
@@ -229,7 +283,7 @@ public final class ChannelSearchPatch {
         return row;
     }
 
-    private static View createResultThumbnail(Activity activity, ChannelSearchRequest.ChannelSearchResult result) {
+    private static View createResultThumbnail(Activity activity, ChannelSearchResult result) {
         ImageView thumbnail = new ImageView(activity);
         thumbnail.setScaleType(ImageView.ScaleType.CENTER_CROP);
         thumbnail.setClipToOutline(true);
@@ -249,7 +303,7 @@ public final class ChannelSearchPatch {
         return thumbnail;
     }
 
-    private static View createResultText(Activity activity, ChannelSearchRequest.ChannelSearchResult result) {
+    private static View createResultText(Activity activity, ChannelSearchResult result) {
         LinearLayout text = new LinearLayout(activity);
         text.setOrientation(LinearLayout.VERTICAL);
         text.setLayoutParams(new LinearLayout.LayoutParams(

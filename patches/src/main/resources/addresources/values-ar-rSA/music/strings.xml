@@ -384,6 +384,9 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: قيمة arl غير صالحة — حاول مرة أخرى.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">ديزر: \"sp_dc\" غير صحيح — رجاءاً تحقق وحاول مرة اخرى</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch: انسخ قيمة رمز المستخدم.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"يعمل Musixmatch بدون رمز مميز، لذلك يمكن ترك هذا الحقل فارغًا.
+
+أضف رمزًا مميزًا فقط لاستخدام حسابك الخاص. يجب أن يأتي من تطبيق Musixmatch لنظام Android: الرموز المميزة المنسوخة من musixmatch.com تنتمي إلى عميل سطح المكتب المتوقف ويتم رفضها بواسطة API."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: الرمز غير صالح — حاول مرة أخرى.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">ميوزكسماج: تم حفظ توكين المستخدم</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">ميوزكسماج: تم مسح توكين المستخدم</string>

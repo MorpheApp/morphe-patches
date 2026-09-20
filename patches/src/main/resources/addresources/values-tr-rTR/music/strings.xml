@@ -382,6 +382,7 @@ Adımlar:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc kaydedildi</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc temizlendi</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: geçersiz sp_dc — lütfen kontrol edip tekrar deneyin</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music tokeni isteğe bağlıdır. Bu token yoksa, Lyrically yedek seçenek olarak kullanılacak.</string>
   <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer'dan arl çerezini yapıştırın.
 
@@ -393,6 +394,9 @@ Adımlar:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl temizlendi</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: geçersiz arl — lütfen kontrol edip tekrar deneyin</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Tokeni</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch, token olmadan da çalışır; bu nedenle bu alan boş bırakılabilir.
+
+Yalnızca kendi hesabınızı kullanmak için bir token ekleyin. Bu token, Musixmatch Android uygulamasından alınmış olmalı: musixmatch.com adresinden kopyalanan token’lar, artık kullanılmayan masaüstü istemcisine aittir ve API bunları kabul etmez"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">kullanıcı tokeni</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: kullanıcı belirteci kaydedildi</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: kullanıcı belirteci temizlendi</string>

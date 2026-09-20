@@ -384,7 +384,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">חיפוש בערוץ</string>
   <string name="morphe_channel_search_summary">בזמן שערוץ פתוח, החיפוש מתבצע רק באותו ערוץ</string>
-  <string name="morphe_channel_search_results_title">חיפוש: %s</string>
+  <string name="morphe_channel_search_results">תוצאות חיפוש ערוצים</string>
   <string name="morphe_channel_search_no_results">לא נמצא דבר בערוץ זה</string>
   <string name="morphe_channel_search_failed">לא ניתן לחפש בערוץ זה</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1271,6 +1271,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• מצב 360° VR אינו זמין</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• עוצמת קול יציבה אינה זמינה</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• ההשמעה עשויה להסתיים שנייה אחת מוקדם</string>
   <string name="morphe_spoof_video_streams_about_js">• אם הדהוד נכשל, ייתכן שהפלייבק יהיה כושל</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• כפיית שמע מקורי אינה זמינה</string>

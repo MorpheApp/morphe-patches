@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Usa o baixador externo escolhido em vez do menu suspenso oficial de Download integrado padrão</string>
   <string name="morphe_music_in_app_downloads_title">Baixar no app</string>
   <string name="morphe_music_in_app_downloads_summary">Baixa o áudio dentro do YouTube Music em vez de abrir o app externo de download</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"As faixas são salvas no armazenamento privado do app e são excluídas se o YouTube Music for desinstalado.
+
+Enquanto isso estiver ativado, a guia Downloads listará essas faixas em vez da biblioteca offline do Music Premium. Desativá-lo restaura a guia, e os downloads do Premium nunca são afetados."</string>
   <string name="morphe_music_downloads_screen_title">Downloads</string>
   <string name="morphe_music_downloads_empty">"Nenhum download
 As faixas baixadas aparecem aqui"</string>
@@ -386,6 +389,9 @@ Etapas:
   <string name="morphe_music_deezer_arl_toast_cleared">Tente novamente.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl removido</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Copie o valor do token do usuário</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"O Musixmatch funciona sem token, este campo pode ficar vazio.
+
+Adicione um token apenas se quiser usar sua própria conta. Ele deve ser obtido no aplicativo do Musixmatch para Android: tokens copiados do site musixmatch.com pertencem ao cliente para desktop já descontinuado e são recusados ​​pela API."</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Tente novamente.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token do usuário salvo</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token do usuário limpo</string>

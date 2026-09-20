@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Använder din valda externa nedladdare istället för den vanliga nedladdningsmenyn</string>
   <string name="morphe_music_in_app_downloads_title">Ladda ner i appen</string>
   <string name="morphe_music_in_app_downloads_summary">Laddar ner ljud i YouTube Music istället för att öppna den externa nedladdningsappen</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Spår sparas i appens privata lagring och raderas om YouTube Music avinstalleras.
+
+Medan detta är på visar fliken Nedladdningar dessa spår i stället för Music Premiums offlinebibliotek. Om du stänger av det återställs fliken och Premium-nedladdningar rörs aldrig."</string>
   <string name="morphe_music_downloads_screen_title">Nedladdningar</string>
   <string name="morphe_music_downloads_empty">"Inga nedladdningar
 Nedladdade spår visas här"</string>
@@ -379,6 +382,7 @@ Steg:
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Utan den används Lyrically som reserv.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc rensades</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: ogiltig sp_dc – kontrollera och försök igen</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music-token är valfritt. Utan det kommer Lyrically att användas som reserv.</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] Kopiera värdet för \"arl\".</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Klistra in arl-cookien från Deezer.
 
@@ -390,6 +394,9 @@ Steg:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ogiltig arl – kontrollera och försök igen.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ogiltig arl – kontrollera och försök igen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopiera värdet för användartoken.</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch fungerar utan en token, så det här fältet kan lämnas tomt.
+
+Lägg till en token endast för att använda ditt eget konto. Den måste komma från Musixmatch Android-appen: tokens som kopierats från musixmatch.com tillhör den nedlagda skrivbordsklienten och API:et avvisar dem"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ogiltig användartoken – kontrollera och försök igen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: användartoken sparades</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: användartoken rensades</string>

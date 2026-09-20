@@ -384,7 +384,7 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">チャンネル内を検索</string>
   <string name="morphe_channel_search_summary">チャンネルを開いた状態での検索は、そのチャンネルだけが検索対象になります</string>
-  <string name="morphe_channel_search_results_title">検索：%s</string>
+  <string name="morphe_channel_search_results">チャンネル検索結果</string>
   <string name="morphe_channel_search_no_results">このチャンネルでは見つかりませんでした</string>
   <string name="morphe_channel_search_failed">このチャンネル内を検索できませんでした</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -923,8 +923,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_exit_fullscreen_entry_3">横画面のみ</string>
   <string name="morphe_exit_fullscreen_entry_4">縦画面 &amp; 横画面</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
-  <string name="morphe_force_fullscreen_landscape_title">全画面で横向きを強制</string>
-  <string name="morphe_force_fullscreen_landscape_summary">全画面に入るときにプレイヤーを横向きに回転します。小さな画面では、すでに全画面が横向きで開くため、利用できません</string>
+  <string name="morphe_force_fullscreen_landscape_title">横向きの全画面表示を有効化</string>
+  <string name="morphe_force_fullscreen_landscape_summary">プレーヤーの映像を横向きに回転して表示する全画面表示を、大画面でも有効にします。通常のスマートフォン サイズの画面での動作を、タブレットなどの大画面で再現する機能のため、利用可能なのは大画面デバイスのみです</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">全画面表示ジェスチャー</string>
   <string name="morphe_disable_fullscreen_gestures_summary">全画面表示モードに関連するジェスチャー</string>
@@ -1270,6 +1270,7 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 コーデックが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 動画では没入モードが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">•「一定音量」が利用できない</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• 再生が 1 秒早く終了する場合がある</string>
   <string name="morphe_spoof_video_streams_about_js">• 難読化の解除に失敗した場合、再生に失敗する可能性がある</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• [オリジナルの音声を常に使用] が利用できない</string>

@@ -59,7 +59,8 @@ public class SpoofVideoStreamsPatch {
     private static final String INTERNET_CONNECTION_CHECK_URI_STRING = "https://www.google.com/gen_204";
     private static final Uri INTERNET_CONNECTION_CHECK_URI = Uri.parse(INTERNET_CONNECTION_CHECK_URI_STRING);
 
-    private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded() && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
+    private static final boolean SPOOF_VIDEO_STREAMS = isPatchIncluded()
+            && SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
     @NonNull
     private static volatile Locale localeOverride = AppLanguage.DEFAULT.getLocale();
@@ -90,9 +91,9 @@ public class SpoofVideoStreamsPatch {
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
 
-        if (SPOOF_VIDEO_STREAMS) {
-            StreamingDataRequest.setClientOrderToUse(availableClients, client);
+        StreamingDataRequest.setClientOrderToUse(availableClients, client);
 
+        if (SPOOF_VIDEO_STREAMS) {
             // Prefetch visitorId for default client.
             Utils.runOnBackgroundThread(() -> VisitorIdRequester.getVisitorId(client));
         }

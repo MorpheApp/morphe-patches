@@ -384,7 +384,7 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Vyhľadávanie v rámci kanála</string>
   <string name="morphe_channel_search_summary">Keď je otvorený kanál, vyhľadávanie prebieha iba v tomto kanáli.</string>
-  <string name="morphe_channel_search_results_title">Vyhľadávanie: %s</string>
+  <string name="morphe_channel_search_results">Výsledky vyhľadávania kanálov</string>
   <string name="morphe_channel_search_no_results">Na tomto kanáli sa nič nenašlo</string>
   <string name="morphe_channel_search_failed">Vyhľadávanie v tomto kanáli sa nepodarilo</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1270,6 +1270,7 @@ Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať sní
   <string name="morphe_spoof_video_streams_about_no_av1">• Video kodek AV1 nie je podporovaný</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR ponorenie nie je k dispozícii</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Stabilná hlasitosť nie je dostupná</string>
+  <string name="morphe_spoof_video_streams_about_end_early">• Prehrávanie môže skončiť o 1 sekundu skôr</string>
   <string name="morphe_spoof_video_streams_about_js">• Ak deobfuskácia zlyhá, prehrávanie nemusí fungovať</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Vynútenie pôvodného zvuku nie je k dispozícii</string>
