@@ -1,146 +1,24 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3075
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.InstructionLocation.MatchFirst
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
-import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-
-/**
- * 21.25+
- */
-internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
-    classFingerprint = RollingNumberMeasureStaticLabelParentFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "F",
-    parameters = listOf("Ljava/lang/String;"),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = "this",
-            location = MatchFirst(),
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = "[F",
-            location = MatchAfterWithin(3),
-        ),
-        opcode(
-            opcode = Opcode.AGET,
-            location = MatchAfterWithin(5),
-        ),
-        literal(
-            literal = 0,
-            location = MatchAfterImmediately(),
-        ),
-        // Measured text width
-        literal(
-            literal = 0,
-            location = MatchAfterImmediately(),
-        )
-    )
-)
-
-/**
- * ~ 21.24
- */
-internal object RollingNumberMeasureAnimatedTextLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Lj$/util/Optional;",
-    parameters = listOf("L", "Ljava/lang/String;", "L"),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET,
-            type = "F",
-            location = MatchFirst(),
-        ),
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            type = "[F",
-            location = MatchAfterWithin(3),
-        ),
-        literal(
-            literal = 1.0f,
-            location = MatchAfterWithin(3),
-        ),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            smali = "Ljava/lang/Math;->max(FF)F",
-            location = MatchAfterWithin(3),
-        ),
-        opcode(
-            opcode = Opcode.AGET,
-            location = MatchAfterWithin(5),
-        ),
-        literal(
-            literal = 0,
-            location = MatchAfterImmediately(),
-        ),
-        // Measured text width
-        literal(
-            literal = 0,
-            location = MatchAfterImmediately(),
-        )
-    )
-)
-
-internal object RollingNumberMeasureStaticLabelFingerprint : Fingerprint(
-    classFingerprint = RollingNumberMeasureStaticLabelParentFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "F",
-    parameters = listOf("Ljava/lang/String;"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.RETURN,
-    )
-)
-
-private object RollingNumberMeasureStaticLabelParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    filters = listOf(
-        string("RollingNumberFontProperties{paint=")
-    )
-)
-
-internal object RollingNumberSetterFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_DIRECT,
-        Opcode.IGET_OBJECT,
-    ),
-    // Partial string match.
-    strings = listOf("RollingNumberType required properties missing! Need")
-)
-
-internal object RollingNumberTextViewFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L", "F", "F"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IPUT,
-        null, // invoke-direct or invoke-virtual
-        Opcode.IPUT_OBJECT,
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.RETURN_VOID,
-    ),
-    custom = { _, classDef ->
-        classDef.superclass == "Landroid/support/v7/widget/AppCompatTextView;" || classDef.superclass ==
-                "Lcom/google/android/libraries/youtube/rendering/ui/spec/typography/YouTubeAppCompatTextView;"
-    }
-)
 
 internal object TextComponentConstructorFingerprint : Fingerprint(
     filters = listOf(
@@ -198,6 +76,30 @@ internal object LithoSpannableStringCreationFingerprint : Fingerprint(
         methodCall(
             name = "addOnLayoutChangeListener",
             parameters = listOf($$"Landroid/view/View$OnLayoutChangeListener;"),
+        )
+    )
+)
+
+internal object ComponentHostSetContentDescriptionFingerprint : Fingerprint(
+    definingClass = "Lcom/facebook/litho/ComponentHost;",
+    name = "setContentDescription",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/CharSequence;")
+)
+
+internal object YogaSetWidthFingerprint : Fingerprint(
+    definingClass = "Lcom/facebook/yoga/YogaNodeJNIBase;",
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_WIDE,
+            definingClass = "this",
+            type = "J"
+        ),
+        methodCall(
+            definingClass = "Lcom/facebook/yoga/YogaNative;",
+            name = "jni_YGNodeStyleSetWidthJNI",
         )
     )
 )

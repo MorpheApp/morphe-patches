@@ -74,7 +74,7 @@ Melodiile descărcate apar aici"</string>
   <string name="morphe_music_downloads_started">Descărcare începută</string>
   <string name="morphe_music_downloads_starting">Se începe descărcarea…</string>
   <string name="morphe_music_downloads_progress">Se descarcă %s%%</string>
-  <string name="morphe_music_downloads_complete">Descărcare completă</string>
+  <string name="morphe_music_downloads_complete">Descărcare finalizată</string>
   <string name="morphe_music_downloads_failed">Descărcare eșuată</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
@@ -314,12 +314,12 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_listenbrainz_token_status_empty">Vă rugăm să introduceți un token</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Se validează…</string>
   <string name="morphe_music_listenbrainz_token_status_valid">Token valid! Utilizator: %s</string>
-  <string name="morphe_music_listenbrainz_token_status_invalid">Token invalid: %s</string>
+  <string name="morphe_music_listenbrainz_token_status_invalid">Token nevalid: %s</string>
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">necunoscut</string>
   <string name="morphe_music_listenbrainz_token_status_failed">Verificarea a eșuat: %s</string>
   <string name="morphe_music_listenbrainz_token_toast_cleared">Token șters</string>
   <string name="morphe_music_listenbrainz_token_toast_saved">Token salvat</string>
-  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Atenție: Token-ul salvat este invalid!</string>
+  <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Avertisment: Tokenul salvat este nevalid!</string>
   <string name="morphe_music_lastfm_love_on_like_title">Iubește piesele apreciate</string>
   <string name="morphe_music_lastfm_love_on_like_summary">Iubește automat piesele de pe Last.fm atunci când le apreciezi pe YouTube Music (și încetează să mai iubești piesele când nu îți mai plac sau dislike-uiești)</string>
   <string name="morphe_music_lastfm_token_title">Cont Last.fm</string>
@@ -369,18 +369,18 @@ Pași:
 1. […] Copiați valoarea \"media-user-token\"."</string>
   <string name="morphe_music_apple_music_token_toast_saved">Apple Music: token media-user salvat.</string>
   <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: token media-user șters.</string>
-  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: token media-user expirat.</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token nevalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_spotify_token_title">Spotify: token media-user salvat.</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Spotify: token media-user șters."</string>
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc […] Fără el, Lyrically va fi folosit ca soluție de rezervă.</string>
   <string name="morphe_music_spotify_token_toast_cleared">Deezer: token media-user expirat.</string>
-  <string name="morphe_music_spotify_token_toast_invalid">Deezer: token media-user salvat.</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Deezer: sp_dc nevalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_apple_token_optional_hint">Tokenul Apple Music este opțional. Fără el, Lyrically va fi folosit ca rezervă</string>
   <string name="morphe_music_deezer_arl_title">Apple Music: token media-user salvat.</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Apple Music: token media-user șters."</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl salvat</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl nevalid, încercați din nou.</string>
-  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: token media-user șters.</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl nevalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_musixmatch_token_title">Deezer: token media-user salvat.</string>
   <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funcționează fără un token, așa că acest câmp poate rămâne gol.
 
@@ -388,14 +388,14 @@ Adaugă un token doar pentru a-ți folosi propriul cont. Trebuie să provină di
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: token de utilizator nevalid, încercați din nou.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Deezer: token media-user expirat.</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Cookie-uri YouTube</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Deezer: token media-user salvat.</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: tokenul utilizatorului nevalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_youtube_cookies_title">YouTube: autentificare necesară.</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Copiați întregul șir de cookie-uri (perechi cheie=valoare separate prin punct și virgulă)
 
 Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie-uri nevalide. Verificați și încercați din nou.</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: token media-user șters.</string>
-  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: token media-user expirat.</string>
+  <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie-uri nevalide — te rugăm să verifici și să încerci din nou</string>
   <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
   <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">YouTube: token media-user salvat.</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Atingeți o linie pentru a naviga</string>

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-19T18:43:37",
-  "description": "## [1.44.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.10...v1.44.0-dev.11) (2026-09-19)\n\n### ✨ New Features\n\n* **YouTube - Channel search:** Show the searched channel in the results header ([c0e49d4](https://github.com/MorpheApp/morphe-patches/commit/c0e49d4ba97a5ca79033e379f3f581a395cda7a4))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.44.0-dev.11/patches-1.44.0-dev.11.mpp",
+  "created_at": "2026-09-20T20:55:54",
+  "description": "## [1.44.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0-dev.11...v1.44.0-dev.12) (2026-09-20)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Navigation bar:** Use black system bars in Shorts ([#3088](https://github.com/MorpheApp/morphe-patches/issues/3088)) ([e88ec7d](https://github.com/MorpheApp/morphe-patches/commit/e88ec7db71993dd412f656a2c5d988edc07e00a1))\n* **YouTube:** Hide Shorts captions flyout item ([#3082](https://github.com/MorpheApp/morphe-patches/issues/3082)) ([a0d8171](https://github.com/MorpheApp/morphe-patches/commit/a0d8171790c2f6f50dfb8588d973697f731785c8))\n\n### ✨ New Features\n\n* **YouTube - Miniplayer:** Add option to hide Minimal 2 miniplayer title ([#3087](https://github.com/MorpheApp/morphe-patches/issues/3087)) ([6e1ca28](https://github.com/MorpheApp/morphe-patches/commit/6e1ca285e43094004fa6b828d4482ddab6949ff6))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.44.0-dev.12/patches-1.44.0-dev.12.mpp",
   "signature_download_url": "",
-  "version": "1.44.0-dev.11"
+  "version": "1.44.0-dev.12"
 }

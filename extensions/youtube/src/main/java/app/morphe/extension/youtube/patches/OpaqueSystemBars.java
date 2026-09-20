@@ -22,6 +22,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 /**
  * Paints the two views YouTube makes translucent, so the status bar and the navigation bar look solid.
@@ -57,7 +58,10 @@ final class OpaqueSystemBars {
         if (statusBarView != null) {
             // Painted as the foreground, so the dimming the app keeps writing into
             // the background of this view never shows through again.
-            statusBarView.setForeground(new ColorDrawable(ThemeUtils.getAppBackgroundColor()));
+            keepForeground(
+                    statusBarView,
+                    new ColorDrawable(ThemeUtils.getAppBackgroundColor())
+            );
         }
     }
 
@@ -87,11 +91,33 @@ final class OpaqueSystemBars {
      * background again, so the paint is put back whenever that happens.
      */
     private static void keepBackground(View view, Drawable background) {
-        view.setBackground(background);
+        Drawable shortsBackground = new ColorDrawable(Color.BLACK);
+
+        view.setBackground(ShortsPlayerState.isOpen() ? shortsBackground : background);
 
         view.getViewTreeObserver().addOnPreDrawListener(() -> {
-            if (view.getBackground() != background) {
-                view.setBackground(background);
+            Drawable expectedBackground =
+                    ShortsPlayerState.isOpen() ? shortsBackground : background;
+
+            if (view.getBackground() != expectedBackground) {
+                view.setBackground(expectedBackground);
+            }
+
+            return true;
+        });
+    }
+
+    private static void keepForeground(View view, Drawable foreground) {
+        Drawable shortsForeground = new ColorDrawable(Color.BLACK);
+
+        view.setForeground(ShortsPlayerState.isOpen() ? shortsForeground : foreground);
+
+        view.getViewTreeObserver().addOnPreDrawListener(() -> {
+            Drawable expectedForeground =
+                    ShortsPlayerState.isOpen() ? shortsForeground : foreground;
+
+            if (view.getForeground() != expectedForeground) {
+                view.setForeground(expectedForeground);
             }
 
             return true;

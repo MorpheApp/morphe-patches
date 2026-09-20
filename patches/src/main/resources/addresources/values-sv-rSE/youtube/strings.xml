@@ -151,7 +151,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_player_gesture_hints_summary">Döljer tipsen som visas när du använder gester i spelaren, som \"Dra upp för exakt sökning\", \"Släpp för att avbryta\" och \"2x\"</string>
   <string name="morphe_hide_snackbar_title">Dölj snackbar-meddelanden</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Dölj riktlinjer för prenumeranter</string>
-  <string name="morphe_hide_sync_button_title">Dölj knappen Synka med video</string>
+  <string name="morphe_hide_sync_button_title">Dölj knappen Synkronisera till video</string>
   <string name="morphe_hide_timed_reactions_title">Dölj tidsbaserade reaktioner</string>
   <string name="morphe_hide_timed_reactions_summary">Döljer funktionen som låter användare reagera med emojis i kommentarsfältet och livechatten</string>
   <string name="morphe_hide_video_title_title">Dölj videotitel</string>
@@ -1047,6 +1047,7 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_miniplayer_screen_title">Minispelare</string>
   <string name="morphe_miniplayer_screen_summary">Anpassa den minimerade videospelarens utseende och beteende</string>
   <string name="morphe_miniplayer_type_title">Minispelartyp</string>
+  <string name="morphe_miniplayer_hide_title_title">Dölj titel</string>
   <string name="morphe_miniplayer_type_entry_0">Inaktiverad</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>

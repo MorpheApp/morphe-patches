@@ -386,6 +386,7 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Pretraži unutar kanala</string>
   <string name="morphe_channel_search_summary">Dok je kanal otvoren, pretraga se ograničava samo na taj kanal</string>
+  <string name="morphe_channel_search_results">Rezultati pretraživanja kanala</string>
   <string name="morphe_channel_search_no_results">Na ovom kanalu nema rezultata</string>
   <string name="morphe_channel_search_failed">Pretraživanje ovog kanala nije uspjelo</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1048,6 +1049,7 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_miniplayer_screen_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite izgled i ponašanje minimiziranog video playera</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
+  <string name="morphe_miniplayer_hide_title_title">Sakrij naslov</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
   <string name="morphe_miniplayer_type_entry_1">Zadano</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalno</string>

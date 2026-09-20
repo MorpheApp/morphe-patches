@@ -384,7 +384,7 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">チャンネル内を検索</string>
   <string name="morphe_channel_search_summary">チャンネルを開いた状態での検索は、そのチャンネルだけが検索対象になります</string>
-  <string name="morphe_channel_search_results">チャンネル検索結果</string>
+  <string name="morphe_channel_search_results">チャンネル内の検索結果</string>
   <string name="morphe_channel_search_no_results">このチャンネルでは見つかりませんでした</string>
   <string name="morphe_channel_search_failed">このチャンネル内を検索できませんでした</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -508,12 +508,12 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_save_to_watch_later_already_exists_toast">この動画は既に「後で見る」に保存されています</string>
   <string name="morphe_save_to_watch_later_error_toast">この動画は「後で見る」に保存できません</string>
   <string name="morphe_save_to_watch_later_flyout_title">[後で見る] に保存</string>
-  <string name="morphe_save_to_watch_later_flyout_button_title">プレーヤー設定のフライアウトに「後で見る」に保存ボタンを表示する</string>
-  <string name="morphe_save_to_watch_later_flyout_button_summary">動画設定のフライアウトから、現在視聴中の動画を「後で見る」に保存できるようにします</string>
+  <string name="morphe_save_to_watch_later_flyout_button_title">プレーヤーのフライアウト メニューに「[後で見る]に保存」を表示</string>
+  <string name="morphe_save_to_watch_later_flyout_button_summary">プレーヤー オーバーレイの歯車アイコンから呼び出されるフライアウト メニューに「[後で見る]に保存」を表示します。タップすると視聴中の動画を [後で見る] に保存します</string>
   <string name="morphe_save_to_watch_later_kids_flyout_button_title">子ども向け動画の関連動画に「[後で見る] に保存」を表示</string>
-  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">フライアウトメニューから、キッズ関連動画を「後で見る」に保存できるようにします</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">ショート動画のフライアウトに「後で見る」に保存するボタンを表示する</string>
-  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">フライアウトメニューからショート動画を「後で見る」に保存できるようにします</string>
+  <string name="morphe_save_to_watch_later_kids_flyout_button_summary">子ども向け動画の関連動画のフライアウト メニューに「[後で見る] に保存」を表示します</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_title">ショート動画のフライアウト メニューに「[後で見る] に保存」を表示</string>
+  <string name="morphe_save_to_watch_later_shorts_flyout_button_summary">ショート動画のフライアウト メニューに「[後で見る] に保存」を表示します</string>
   <string name="morphe_queue_flyout_title">Morphe キューに追加</string>
   <string name="morphe_queue_restore_title">セッションをまたいでキューを保持</string>
   <string name="morphe_queue_restore_summary">アプリを終了または再起動したときにキューを保持します</string>
@@ -1048,6 +1048,7 @@ Automotive レイアウト
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
+  <string name="morphe_miniplayer_hide_title_title">タイトルを非表示</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
   <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>

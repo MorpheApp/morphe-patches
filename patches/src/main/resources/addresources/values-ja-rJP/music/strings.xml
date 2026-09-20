@@ -33,48 +33,47 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_title">「オフラインに一時保存」の動作を上書き</string>
   <string name="morphe_external_downloader_flyout_menu_summary">フライアウト メニューの「オフラインに一時保存」の呼び出し先を、「純正アプリ内蔵のダウンロード機能」から「設定した外部ダウンローダー」に変更します</string>
   <string name="morphe_music_in_app_downloads_title">アプリ内ダウンロード</string>
-  <string name="morphe_music_in_app_downloads_summary">外部のダウンローダーアプリを開かずに、YouTube Music内で音声をダウンロードします。</string>
+  <string name="morphe_music_in_app_downloads_summary">外部ダウンロード アプリを開くことなく、YouTube Music 内に音声をダウンロードします</string>
   <string name="morphe_music_in_app_downloads_user_dialog_message">"ダウンロードした楽曲は、YouTube Music の非公開ストレージ領域に保存されるため、YouTube Music をアンインストールすると削除されます。
 
 この機能をオンにしている間は、Premium 機能でダウンロードした楽曲の代わりに、この機能でダウンロードした楽曲を、オフラインのコンテンツとしてライブラリタブに表示します。オフにすると元に戻ります。この機能が Premium 機能でダウンロードした楽曲に影響を及ぼすことはありません。"</string>
-  <string name="morphe_music_downloads_screen_title">ダウンロード</string>
+  <string name="morphe_music_downloads_screen_title">ダウンロード一覧</string>
   <string name="morphe_music_downloads_empty">"まだダウンロードしていません
-ダウンロードした楽曲がここに表示されます
-"</string>
+ダウンロードした楽曲がここに表示されます"</string>
   <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s MB</string>
   <string name="morphe_music_downloads_summary">%1$s 曲 • %2$s MB</string>
   <string name="morphe_music_downloads_search_hint">ダウンロードを検索</string>
   <string name="morphe_music_downloads_sort">並べ替え</string>
-  <string name="morphe_music_downloads_sort_artist">アーティストで並べ替え</string>
-  <string name="morphe_music_downloads_sort_title">タイトルで並べ替え</string>
-  <string name="morphe_music_downloads_sort_size">サイズで並べ替え</string>
+  <string name="morphe_music_downloads_sort_artist">アーティスト順</string>
+  <string name="morphe_music_downloads_sort_title">タイトル順</string>
+  <string name="morphe_music_downloads_sort_size">サイズ順</string>
   <string name="morphe_music_downloads_delete_all">すべてのダウンロードを削除</string>
   <string name="morphe_music_downloads_delete_all_title">すべてのダウンロードを削除しますか？</string>
-  <string name="morphe_music_downloads_delete_all_message">このデバイスからダウンロードしたすべてのトラックが削除されます</string>
-  <string name="morphe_music_downloads_all_deleted">ダウンロードが削除されました</string>
+  <string name="morphe_music_downloads_delete_all_message">ダウンロードしたすべての楽曲がこのデバイスから削除されます</string>
+  <string name="morphe_music_downloads_all_deleted">ダウンロードを削除しました</string>
   <string name="morphe_music_downloads_nothing_found">見つかりませんでした</string>
   <string name="morphe_music_downloads_actions_for">%s の操作</string>
   <string name="morphe_music_downloads_play">再生</string>
-  <string name="morphe_music_downloads_play_pause">再生または一時停止</string>
-  <string name="morphe_music_downloads_previous">前へ</string>
-  <string name="morphe_music_downloads_next">次へ</string>
+  <string name="morphe_music_downloads_play_pause">再生 / 一時停止</string>
+  <string name="morphe_music_downloads_previous">前の曲</string>
+  <string name="morphe_music_downloads_next">次の曲</string>
   <string name="morphe_music_downloads_pause">一時停止</string>
   <string name="morphe_music_downloads_close">閉じる</string>
   <string name="morphe_music_downloads_delete">削除</string>
   <string name="morphe_music_downloads_delete_track">ダウンロードを削除</string>
   <string name="morphe_music_downloads_delete_track_title">ダウンロードを削除しますか？</string>
   <string name="morphe_music_downloads_delete_track_message">このデバイスから %s が削除されます</string>
-  <string name="morphe_music_downloads_track_deleted">ダウンロードが削除されました</string>
+  <string name="morphe_music_downloads_track_deleted">ダウンロードを削除しました</string>
   <string name="morphe_music_downloads_track_delete_failed">ダウンロードを削除できませんでした</string>
   <string name="morphe_music_downloads_play_failed">ダウンロードを再生できませんでした</string>
-  <string name="morphe_music_downloads_notification_channel">オーディオダウンロード</string>
+  <string name="morphe_music_downloads_notification_channel">音声ダウンロード</string>
   <string name="morphe_music_downloads_playback_channel">オフライン再生</string>
-  <string name="morphe_music_downloads_unknown_track">ダウンロードするトラックを特定できませんでした</string>
-  <string name="morphe_music_downloads_already_running">ダウンロードは既に進行中です</string>
-  <string name="morphe_music_downloads_already_saved">既にダウンロード済みです</string>
+  <string name="morphe_music_downloads_unknown_track">ダウンロードする楽曲を特定できませんでした</string>
+  <string name="morphe_music_downloads_already_running">ダウンロードはすでに進行中です</string>
+  <string name="morphe_music_downloads_already_saved">すでにダウンロード済みです</string>
   <string name="morphe_music_downloads_started">ダウンロードを開始しました</string>
   <string name="morphe_music_downloads_starting">ダウンロードを開始しています…</string>
-  <string name="morphe_music_downloads_progress">%s%% ダウンロード中</string>
+  <string name="morphe_music_downloads_progress">ダウンロード中: %s%%</string>
   <string name="morphe_music_downloads_complete">ダウンロード完了</string>
   <string name="morphe_music_downloads_failed">ダウンロードに失敗しました</string>
   <!-- misc.settings.settingsPatch -->
@@ -383,7 +382,7 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc を保存しました</string>
   <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc […] これがない場合、Lyrically がフォールバックとして使用されます</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc が無効です。値を確認してもう一度お試しください</string>
-  <string name="morphe_music_apple_token_optional_hint">Apple Music のトークンは任意です。設定しない場合は、Lyrically がフォールバックとして使用されます。</string>
+  <string name="morphe_music_apple_token_optional_hint">Apple Music のトークンは必須ではありません。このトークンがない場合は、代替として Lyrically を使用します</string>
   <string name="morphe_music_deezer_arl_title">Deezer […] \"arl\" の値をコピーしてください</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"Deezer の arl Cookie を貼り付けてください。
 
@@ -395,9 +394,9 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl が無効です。もう一度お試しください</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl が無効です。値を確認してもう一度お試しください</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] ユーザートークンの値をコピーしてください</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch はトークンなしでも動作するため、この欄は空のままにできます。
+  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch はトークンなしで動作するため、ここは空欄のままでも問題ありません。
 
-トークンを追加するのは、自分のアカウントを使用する場合だけです。トークンは Musixmatch Android アプリから取得する必要があります。musixmatch.com からコピーしたトークンは廃止されたデスクトップクライアントに属しており、API はそれらを拒否します。"</string>
+自分のアカウントを使用する場合にのみトークンを入力してください。トークンは Musixmatch の Android アプリから取得する必要があります。musixmatch.com のトークンは廃止されたデスクトップ クライアント用のものであり、API に拒否されます"</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">ユーザートークンが無効です。もう一度お試しください</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token 保存済み</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token 削除済み</string>

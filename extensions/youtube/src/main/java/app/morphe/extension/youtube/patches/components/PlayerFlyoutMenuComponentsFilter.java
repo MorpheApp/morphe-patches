@@ -219,7 +219,8 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
             // Shorts also use this player flyout panel
             if (ShortsPlayerState.isOpen()) {
-                return false;
+                return Settings.HIDE_PLAYER_FLYOUT_CAPTIONS.get() &&
+                        shortsPlayerSettingsCaptionsButton.check(buffer).isFiltered();
             }
 
             // 21.x+ fix.

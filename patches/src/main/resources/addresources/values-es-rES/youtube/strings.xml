@@ -204,7 +204,7 @@ Los cambios incluyen:
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Ocultar botón Unirme</string>
   <string name="morphe_hide_links_preview_title">Ocultar vista previa de enlaces</string>
-  <string name="morphe_hide_links_preview_summary">Oculta los enlaces web clickables en la cabecera del canal</string>
+  <string name="morphe_hide_links_preview_summary">Oculta los enlaces web en la cabecera del canal</string>
   <string name="morphe_hide_members_only_chip_title">Ocultar etiqueta \'Solo para miembros\'</string>
   <string name="morphe_hide_members_only_chip_summary">Oculta la etiqueta \'Solo para miembros\' en la barra de filtro del canal</string>
   <string name="morphe_hide_members_shelf_title">Ocultar sección de miembros</string>
@@ -384,7 +384,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Buscar en el canal</string>
   <string name="morphe_channel_search_summary">La búsqueda mientras un canal está abierto se limita a ese canal</string>
-  <string name="morphe_channel_search_results">Resultados de búsqueda de canales</string>
+  <string name="morphe_channel_search_results">Resultados de búsqueda del canal</string>
   <string name="morphe_channel_search_no_results">No se encontró nada en este canal</string>
   <string name="morphe_channel_search_failed">No se pudo buscar en este canal</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
@@ -1047,6 +1047,7 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_miniplayer_screen_title">Reproductor en miniatura</string>
   <string name="morphe_miniplayer_screen_summary">Personaliza la apariencia y el comportamiento del reproductor de vídeo minimizado</string>
   <string name="morphe_miniplayer_type_title">Tipo de reproductor en miniatura</string>
+  <string name="morphe_miniplayer_hide_title_title">Ocultar título</string>
   <string name="morphe_miniplayer_type_entry_0">Desactivado</string>
   <string name="morphe_miniplayer_type_entry_1">Predeterminado</string>
   <string name="morphe_miniplayer_type_entry_2">Mínimo</string>
