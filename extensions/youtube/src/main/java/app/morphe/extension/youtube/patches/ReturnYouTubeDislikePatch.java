@@ -10,6 +10,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike.Vote;
 
 import android.graphics.Canvas;
@@ -310,6 +311,11 @@ public class ReturnYouTubeDislikePatch {
     private static int accessibilityIdTag;
 
     /**
+     * Set while this patch writes a description, since the hook is called again for it.
+     */
+    private static boolean rewritingDescription;
+
+    /**
      * Litho recycles host views, so the counts are tracked per host and removed when it is reused.
      * Main thread only.
      */
@@ -337,8 +343,14 @@ public class ReturnYouTubeDislikePatch {
      * Injection point.
      * <p>
      * Called on the main thread for every Litho host view, and with null when a recycled host is cleared.
+     *
+     * @return The description the host keeps, which for a dislike button includes the count.
      */
-    public static void onComponentHostContentDescription(View host, @Nullable CharSequence description) {
+    @Nullable
+    public static CharSequence onComponentHostContentDescription(View host, @Nullable CharSequence description) {
+        if (rewritingDescription) {
+            return description;
+        }
         try {
             IconButtonCountDrawable existing = iconButtonCounts.isEmpty()
                     ? null
@@ -355,7 +367,7 @@ public class ReturnYouTubeDislikePatch {
                     host.getOverlay().remove(existing);
                     iconButtonCounts.remove(host);
                 }
-                return;
+                return description;
             }
 
             if (existing == null) {
@@ -366,9 +378,17 @@ public class ReturnYouTubeDislikePatch {
             existing.setButton(description.toString(), isLike);
             Logger.printDebug(() -> "Button with a count: " + accessibilityId);
             refreshIconButtonCounts();
+
+            // The caller stores what is returned, so a description set from here would be overwritten.
+            String spoken = existing.spokenLabel;
+            if (spoken != null) {
+                return spoken;
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "onComponentHostContentDescription failure", ex);
         }
+
+        return description;
     }
 
     private static void invalidateIconButtonCounts() {
@@ -479,6 +499,8 @@ public class ReturnYouTubeDislikePatch {
         private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private int alpha = 255;
         private String label = "";
+        @Nullable
+        private String spokenLabel;
         private boolean isLike;
         @Nullable
         private Boolean hasOwnLabel;
@@ -500,6 +522,7 @@ public class ReturnYouTubeDislikePatch {
             this.isLike = isLike;
             youTubeLikes = isLike ? parseLabelCount(label) : LIKES_UNKNOWN;
             hasOwnLabel = null;
+            spokenLabel = null;
         }
 
         /**
@@ -516,7 +539,37 @@ public class ReturnYouTubeDislikePatch {
 
         void refresh() {
             setBounds(0, 0, host.getWidth(), host.getHeight());
+            updateSpokenLabel();
             invalidateSelf();
+        }
+
+        /**
+         * YouTube tells the like count to screen readers but never the dislike count,
+         * and the number drawn here is not something a screen reader can see.
+         */
+        private void updateSpokenLabel() {
+            if (isLike) {
+                return;
+            }
+            String dislikes = getText();
+            if (dislikes == null) {
+                return;
+            }
+
+            String spoken = label + ", " + str(Settings.RYD_DISLIKE_PERCENTAGE.get()
+                    ? "morphe_ryd_accessibility_dislike_percentage"
+                    : "morphe_ryd_accessibility_dislike_count", dislikes);
+            if (spoken.equals(spokenLabel) && TextUtils.equals(host.getContentDescription(), spoken)) {
+                return;
+            }
+
+            spokenLabel = spoken;
+            rewritingDescription = true;
+            try {
+                host.setContentDescription(spoken);
+            } finally {
+                rewritingDescription = false;
+            }
         }
 
         @Nullable
@@ -546,7 +599,9 @@ public class ReturnYouTubeDislikePatch {
         @Override
         public void draw(@NonNull Canvas canvas) {
             // In case a recycled host was given a new description without passing through the hook.
-            if (!TextUtils.equals(host.getContentDescription(), label) || hasOwnLabel()) {
+            CharSequence current = host.getContentDescription();
+            if ((!TextUtils.equals(current, label) && !TextUtils.equals(current, spokenLabel))
+                    || hasOwnLabel()) {
                 return;
             }
             String text = getText();
