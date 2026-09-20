@@ -13,7 +13,6 @@ package app.morphe.patches.youtube.layout.returnyoutubedislike
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
@@ -31,18 +30,15 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.RollingNumberTextViewAnimationUpdateFingerprint
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -50,8 +46,6 @@ import app.morphe.util.insertLiteralOverride
 import app.morphe.util.numberOfParameterRegistersLogical
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -137,6 +131,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // Verify stubbed classes are not obfuscated.
         classDefBy("Lcom/facebook/litho/ComponentHost;")
         classDefBy("Lcom/facebook/litho/TextContent;")
+        classDefBy("Lcom/facebook/yoga/YogaNative;")
 
         // region Hook code for creation and cached lookup of text Spans.
 
@@ -229,93 +224,21 @@ val returnYouTubeDislikePatch = bytecodePatch(
             """
         )
 
-        // region Hook rolling numbers.
+        // The dislike icon is given a margin so the button wrapping it grows and leaves room for
+        // the count. A width is no use, since the layout stretches the icon over whatever it gets.
+        //
+        // The only long of the node is the pointer to its native counterpart.
+        val yogaNodeClass = YogaSetWidthFingerprint.originalClassDef
+        val yogaNativeNodeName = yogaNodeClass.fields.single { it.type == "J" }.name
+        val yogaNativeNode = "${yogaNodeClass.type}->$yogaNativeNodeName:J"
 
-        RollingNumberSetterFingerprint.method.apply {
-            val insertIndex = 1
-            val dislikesIndex = RollingNumberSetterFingerprint.instructionMatches.last().index
-            val charSequenceInstanceRegister = getInstruction<OneRegisterInstruction>(0).registerA
-            val charSequenceFieldReference = getInstruction<ReferenceInstruction>(dislikesIndex).reference
-            val conversionContextRegister = implementation!!.registerCount - parameters.size + 1
-            val freeRegister = findFreeRegister(insertIndex, charSequenceInstanceRegister, conversionContextRegister)
-
-            addInstructions(
-                insertIndex,
-                """
-                    iget-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
-                    invoke-static { v$conversionContextRegister, v$freeRegister }, $EXTENSION_CLASS->onRollingNumberLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$freeRegister
-                    iput-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
-                """
-            )
-        }
-
-        // Rolling Number text views use the measured width of the raw string for layout.
-        // Modify the measure text calculation to include the left drawable separator if needed.
-        val rollingNumberMeasureAnimatedTextFingerprint = if (is_21_25_or_greater)
-            RollingNumberMeasureAnimatedTextFingerprint
-        else
-            RollingNumberMeasureAnimatedTextLegacyFingerprint
-
-        rollingNumberMeasureAnimatedTextFingerprint.let {
-            it.method.apply {
-                val endIndex = it.instructionMatches.last().index
-                val measuredTextWidthRegister = getInstruction<OneRegisterInstruction>(endIndex).registerA
-
-                addInstructions(
-                    endIndex + 1,
-                    """
-                        invoke-static { p1, v$measuredTextWidthRegister }, $EXTENSION_CLASS->onRollingNumberMeasured(Ljava/lang/String;F)F
-                        move-result v$measuredTextWidthRegister
-                    """
-                )
-            }
-        }
-
-        // Additional text measurement method. Used if YouTube decides not to animate the likes count
-        // and sometimes used for initial video load.
-        RollingNumberMeasureStaticLabelFingerprint.let {
-            val measureTextIndex = it.instructionMatches.first().index + 1
-            it.method.apply {
-                val freeRegister = getInstruction<TwoRegisterInstruction>(0).registerA
-
-                addInstructions(
-                    measureTextIndex + 1,
-                    """
-                        move-result v$freeRegister
-                        invoke-static { p1, v$freeRegister }, $EXTENSION_CLASS->onRollingNumberMeasured(Ljava/lang/String;F)F
-                    """
-                )
-            }
-        }
-
-        arrayOf(
-            // The rolling number Span is missing styling since it's initially set as a String.
-            // Modify the UI text view and use the styled like/dislike Span.
-            // Initial TextView is set in this method.
-            RollingNumberTextViewFingerprint,
-            // Videos less than 24 hours after uploaded, like counts will be updated in real time.
-            // Whenever like counts are updated, TextView is set in this method.
-            RollingNumberTextViewAnimationUpdateFingerprint,
-        ).forEach { fingerprint ->
-            fingerprint.method.apply {
-                findInstructionIndicesReversedOrThrow(
-                    methodCall(name = "setText")
-                ).forEach { setTextIndex ->
-                    val textViewRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerC
-                    val textSpanRegister = getInstruction<FiveRegisterInstruction>(setTextIndex).registerD
-
-                    addInstructions(
-                        setTextIndex,
-                        """
-                            invoke-static { v$textViewRegister, v$textSpanRegister }, $EXTENSION_CLASS->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                            move-result-object v$textSpanRegister
-                        """
-                    )
-                }
-            }
-        }
-
-        // endregion
+        // The method reads the same pointer itself, so it always has the two locals this needs.
+        YogaSetWidthFingerprint.method.addInstructions(
+            0,
+            """
+                iget-wide v0, p0, $yogaNativeNode
+                invoke-static { v0, v1, p1 }, $EXTENSION_CLASS->onYogaSetWidth(JF)V
+            """
+        )
     }
 }

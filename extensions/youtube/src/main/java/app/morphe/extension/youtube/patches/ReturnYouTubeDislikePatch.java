@@ -20,7 +20,6 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -35,6 +34,7 @@ import androidx.annotation.Nullable;
 
 import com.facebook.litho.ComponentHost;
 import com.facebook.litho.TextContent;
+import com.facebook.yoga.YogaNative;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -98,52 +98,36 @@ public class ReturnYouTubeDislikePatch {
     /**
      * Injection point.
      * <p>
-     * For Litho segmented buttons.
+     * Called when a litho text component is created, and also when a Span is later reused
+     * (such as scrolling off and back on screen).  Usually called off the main thread, and
+     * can be called several times for the same element.
+     * <p>
+     * Only a segmented button that YouTube lays out itself is handled here.  When the old action
+     * bar is restored the dislike count is drawn over the button instead.
+     *
+     * @param original Original char sequence created or reused by Litho.
+     * @return The original char sequence, or a replacement that contains the dislikes.
      */
     public static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
                                                  CharSequence original) {
-        return onLithoTextLoaded(contextInterface, original, false);
-    }
-
-    /**
-     * Called when a litho text component is initially created,
-     * and also when a Span is later reused again (such as scrolling off/on screen).
-     * <p>
-     * This method is sometimes called on the main thread, but it is usually called _off_ the main thread.
-     * This method can be called multiple times for the same UI element (including after dislikes was added).
-     *
-     * @param original Original char sequence was created or reused by Litho.
-     * @param isRollingNumber If the span is for a Rolling Number.
-     * @return The original char sequence (if nothing should change), or a replacement char sequence that contains dislikes.
-     */
-    private static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
-                                                  CharSequence original,
-                                                  boolean isRollingNumber) {
         try {
-            if (!RYD_ENABLED) {
-                return original;
-            }
-
-            String identifier = contextInterface.patch_getIdentifier();
-            if (isRollingNumber && (identifier == null || !identifier.contains("video_action_bar.e"))) {
+            if (!RYD_ENABLED || OLD_ACTION_BAR_ENABLED) {
                 return original;
             }
 
             StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
-            String path = pathBuilder.toString();
-
-            if (path.contains("segmented_like_dislike_button.e")) {
-                // Regular video.
-                ReturnYouTubeDislike videoData = currentVideoData;
-                if (videoData == null) {
-                    return original; // User enabled RYD while a video was on screen.
-                }
-                if (!(original instanceof Spanned)) {
-                    original = new SpannableString(original);
-                }
-                return videoData.getDislikesSpanForRegularVideo((Spanned) original,
-                        true, isRollingNumber);
+            if (!pathBuilder.toString().contains("segmented_like_dislike_button.e")) {
+                return original;
             }
+
+            ReturnYouTubeDislike videoData = currentVideoData;
+            if (videoData == null) {
+                return original; // User enabled RYD while a video was on screen.
+            }
+            if (!(original instanceof Spanned)) {
+                original = new SpannableString(original);
+            }
+            return videoData.getDislikesSpanForRegularVideo((Spanned) original, true, false);
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }
@@ -151,153 +135,130 @@ public class ReturnYouTubeDislikePatch {
     }
 
     //
-    // Rolling Number
+    // Dislike button width of the old action bar.
     //
 
     /**
-     * Current regular video rolling number text, if rolling number is in use.
-     * This is saved to a field as it's used in every draw() call.
+     * The segmented button of the old action bar has a count for the likes only, so the dislike
+     * count is drawn over the button and the button is given room for it.
      */
-    @Nullable
-    private static volatile CharSequence rollingNumberSpan;
+    private static final boolean OLD_ACTION_BAR_ENABLED =
+            RYD_ENABLED && Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get();
+
+    private static final int OLD_BAR_DISLIKE_ICON_WIDTH = Dim.dp16;
+    private static final int OLD_BAR_SEPARATOR_WIDTH = Dim.dp1;
+    private static final float OLD_BAR_COUNT_TEXT_SIZE_SP = 12;
+    private static final int OLD_BAR_COUNT_SIDE_MARGIN = Dim.dp4;
 
     /**
-     * Injection point.
+     * Nothing identifies the button, since the whole bar is a single Litho component, so it is
+     * found by the separator that is always laid out immediately before it.
      */
-    public static String onRollingNumberLoaded(ContextInterface contextInterface, String original) {
-        try {
-            CharSequence replacement = onLithoTextLoaded(contextInterface, original, true);
+    private static final ThreadLocal<Boolean> previousWidthWasSeparator = new ThreadLocal<>();
 
-            String replacementString = replacement.toString();
-            if (!replacementString.equals(original)) {
-                rollingNumberSpan = replacement;
-                return replacementString;
-            } // Else, the text was not a likes count but instead the view count or something else.
-        } catch (Exception ex) {
-            Logger.printException(() -> "onRollingNumberLoaded failure", ex);
-        }
-        return original;
+    private static Paint oldBarCountPaint;
+
+    private static boolean isDimension(float width, int dimension) {
+        return Math.abs(width - dimension) < 1;
     }
+
+    private static Paint oldBarCountPaint() {
+        if (oldBarCountPaint == null) {
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint.setTextAlign(Paint.Align.CENTER);
+            paint.setTypeface(COUNT_TYPEFACE);
+            paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                    OLD_BAR_COUNT_TEXT_SIZE_SP,
+                    Utils.getContext().getResources().getDisplayMetrics()));
+            oldBarCountPaint = paint;
+        }
+        return oldBarCountPaint;
+    }
+
+    private static int oldBarWidthOf(String count) {
+        return 2 * OLD_BAR_COUNT_SIDE_MARGIN
+                + (int) Math.ceil(oldBarCountPaint().measureText(count));
+    }
+
+    /**
+     * The count of the segmented button is drawn by the layout engine and not by the text view
+     * beside it, so its color cannot be changed.  The count drawn here takes the color of that
+     * view instead, which is the one the engine draws with.
+     */
+    private static int oldBarCountColor(View host) {
+        TextView text = barTextOf(barOf(host), 0);
+        return text == null ? ThemeUtils.getAppForegroundColor() : text.getCurrentTextColor();
+    }
+
+    /**
+     * @return The first text of the bar, which is the count YouTube shows for the likes.
+     */
+    @Nullable
+    private static TextView barTextOf(View view, int depth) {
+        if (view instanceof TextView text) {
+            return text;
+        }
+        if (depth >= MAX_BAR_DEPTH || !(view instanceof ViewGroup group)) {
+            return null;
+        }
+        for (int i = 0, childCount = group.getChildCount(); i < childCount; i++) {
+            TextView text = barTextOf(group.getChildAt(i), depth + 1);
+            if (text != null) {
+                return text;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * YGEdge of the native layout engine.
+     */
+    private static final int YOGA_EDGE_LEFT = 0;
+    private static final int YOGA_EDGE_RIGHT = 2;
 
     /**
      * Injection point.
      * <p>
-     * Called for all usage of Rolling Number.
-     * Modifies the measured String text width to include the left separator and padding, if needed.
+     * Called for every Litho layout node that is given an exact width.
+     *
+     * @param nodePointer Pointer to the native node of the layout engine.
      */
-    public static float onRollingNumberMeasured(String text, float measuredTextWidth) {
+    public static void onYogaSetWidth(long nodePointer, float width) {
         try {
-            if (RYD_ENABLED) {
-                if (ReturnYouTubeDislike.isPreviouslyCreatedSegmentedSpan(text)) {
-                    // +1 pixel is needed for some foreign languages that measure
-                    // the text different from what is used for layout (Greek in particular).
-                    // Probably a bug in Android, but who knows.
-                    // Single line mode is also used as an additional fix for this issue.
-                    if (Settings.RYD_COMPACT_LAYOUT.get()) {
-                        return measuredTextWidth + 1;
-                    }
-
-                    return measuredTextWidth + 1
-                            + ReturnYouTubeDislike.leftSeparatorBoundsYouTube.right
-                            + ReturnYouTubeDislike.leftSeparatorShapePaddingPixels;
-                }
+            if (!OLD_ACTION_BAR_ENABLED) {
+                return;
             }
+            ReturnYouTubeDislike videoData = currentVideoData;
+            if (videoData == null) {
+                return;
+            }
+
+            final boolean afterSeparator = Boolean.TRUE.equals(previousWidthWasSeparator.get());
+            previousWidthWasSeparator.set(isDimension(width, OLD_BAR_SEPARATOR_WIDTH));
+
+            if (!afterSeparator || !isDimension(width, OLD_BAR_DISLIKE_ICON_WIDTH)) {
+                return;
+            }
+
+            // Litho cannot be asked to lay out again, so a count that is not fetched by now gets
+            // room for the widest one that can be shown.
+            String dislikes = videoData.getFormattedDislikes();
+            final int margin = oldBarWidthOf(dislikes != null ? dislikes
+                    : Settings.RYD_DISLIKE_PERCENTAGE.get() ? "88.8%" : "8.8M");
+            YogaNative.jni_YGNodeStyleSetMarginJNI(nodePointer,
+                    Utils.isRightToLeftLocale() ? YOGA_EDGE_LEFT : YOGA_EDGE_RIGHT, margin);
+            Logger.printDebug(() -> "Giving the dislike button a margin of " + margin);
         } catch (Exception ex) {
-            Logger.printException(() -> "onRollingNumberMeasured failure", ex);
-        }
-
-        return measuredTextWidth;
-    }
-
-    /**
-     * Add Rolling Number text view modifications.
-     */
-    private static void addRollingNumberPatchChanges(TextView view) {
-        // YouTube Rolling Numbers do not use compound drawables or drawable padding.
-        if (view.getCompoundDrawablePadding() == 0) {
-            Logger.printDebug(() -> "Adding rolling number TextView changes");
-            view.setCompoundDrawablePadding(ReturnYouTubeDislike.leftSeparatorShapePaddingPixels);
-            ShapeDrawable separator = ReturnYouTubeDislike.getLeftSeparatorDrawable();
-            if (Utils.isRightToLeftLocale()) {
-                view.setCompoundDrawables(null, null, separator, null);
-            } else {
-                view.setCompoundDrawables(separator, null, null, null);
-            }
-
-            // Disliking can cause the span to grow in size, which is ok and is laid out correctly,
-            // but if the user then removes their dislike the layout will not adjust to the new shorter width.
-            // Use a center alignment to take up any extra space.
-            view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-            // Single line mode does not clip words if the span is larger than the view bounds.
-            // The styled span applied to the view should always have the same bounds,
-            // but use this feature just in case the measurements are somehow off by a few pixels.
-            view.setSingleLine(true);
-        }
-    }
-
-    /**
-     * Remove Rolling Number text view modifications made by this patch.
-     * Required as it appears text views can be reused for other rolling numbers (view count, upload time, etc.).
-     */
-    private static void removeRollingNumberPatchChanges(TextView view) {
-        if (view.getCompoundDrawablePadding() != 0) {
-            Logger.printDebug(() -> "Removing rolling number TextView changes");
-            view.setCompoundDrawablePadding(0);
-            view.setCompoundDrawables(null, null, null, null);
-            view.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY); // Default alignment
-            view.setSingleLine(false);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static CharSequence updateRollingNumber(TextView view, CharSequence original) {
-        try {
-            if (!RYD_ENABLED) {
-                return original;
-            }
-            // Called for all instances of RollingNumber, so must check if text is for a dislikes.
-            // Text will already have the correct content, but it's missing the drawable separators.
-            if (!ReturnYouTubeDislike.isPreviouslyCreatedSegmentedSpan(original.toString())) {
-                // The text is the video view count, upload time, or some other text.
-                removeRollingNumberPatchChanges(view);
-                return original;
-            }
-
-            CharSequence replacement = rollingNumberSpan;
-            if (replacement == null) {
-                // User enabled RYD while a video was open,
-                // or user opened/closed a Short while a regular video was opened.
-                Logger.printDebug(() -> "Cannot update rolling number (field is null");
-                removeRollingNumberPatchChanges(view);
-                return original;
-            }
-
-            if (Settings.RYD_COMPACT_LAYOUT.get()) {
-                removeRollingNumberPatchChanges(view);
-            } else {
-                addRollingNumberPatchChanges(view);
-            }
-
-            // Remove any padding set by Rolling Number.
-            view.setPadding(0, 0, 0, 0);
-
-            // When displaying dislikes, the rolling animation is not visually correct
-            // and the dislikes always animate (even though the dislike count has not changed).
-            // The animation is caused by an image span attached to the span,
-            // and using only the modified segmented span prevents the animation from showing.
-            return replacement;
-        } catch (Exception ex) {
-            Logger.printException(() -> "updateRollingNumber failure", ex);
-            return original;
+            Logger.printException(() -> "onYogaSetWidth failure", ex);
         }
     }
 
     //
     // Icon only like and dislike buttons of the compact action bar.
     //
+
+    private static final Typeface COUNT_TYPEFACE =
+            Typeface.create("sans-serif-medium", Typeface.NORMAL);
 
     private static final float ICON_BUTTON_COUNT_TEXT_SIZE_SP = 10;
     private static final int ICON_BUTTON_COUNT_BOTTOM_MARGIN = Dim.dp(3);
@@ -488,7 +449,17 @@ public class ReturnYouTubeDislikePatch {
      * @return If anything in the bar holding this button shows text, such as a count or a label.
      */
     private static boolean barShowsText(View host) {
-        final int barWidth = 2 * host.getWidth();
+        View bar = barOf(host);
+        return bar == host ? hostShowsText(host) : subtreeShowsText(bar, 0);
+    }
+
+    /**
+     * The height is used rather than the width, since the dislike button is no longer square.
+     *
+     * @return The bar or pill holding this button, or the button itself if it was not found.
+     */
+    private static View barOf(View host) {
+        final int barWidth = 2 * host.getHeight();
         View view = host;
 
         for (int i = 0; i < MAX_BAR_PARENTS; i++) {
@@ -499,11 +470,11 @@ public class ReturnYouTubeDislikePatch {
             view = parentView;
             // The first parent wider than the button is the bar or the pill holding it.
             if (view.getWidth() >= barWidth) {
-                return subtreeShowsText(view, 0);
+                return view;
             }
         }
 
-        return hostShowsText(host);
+        return host;
     }
 
     private static boolean subtreeShowsText(View view, int depth) {
@@ -542,11 +513,10 @@ public class ReturnYouTubeDislikePatch {
     }
 
     /**
-     * Draws the count below the icon, in the empty space the button already has,
-     * so the Litho layout does not change.
+     * Draws the count below the icon of a compact action bar button, and beside the icon of the
+     * old action bar dislike button, in the margin {@link #onYogaSetWidth(long, float)} gave it.
      */
     private static final class IconButtonCountDrawable extends Drawable {
-        private static final Typeface TYPEFACE = Typeface.create("sans-serif-medium", Typeface.NORMAL);
         private final ComponentHost host;
         private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private int alpha = 255;
@@ -564,9 +534,15 @@ public class ReturnYouTubeDislikePatch {
         IconButtonCountDrawable(ComponentHost host) {
             this.host = host;
             paint.setTextAlign(Paint.Align.CENTER);
-            paint.setTypeface(TYPEFACE);
-            paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                    ICON_BUTTON_COUNT_TEXT_SIZE_SP, host.getResources().getDisplayMetrics()));
+            paint.setTypeface(COUNT_TYPEFACE);
+        }
+
+        /**
+         * @return If the count goes beside the icon, which only the dislike button of the old
+         *         action bar has room for.  Every other button is square.
+         */
+        private boolean drawsBeside() {
+            return !isLike && hasOwnLabel() && host.getWidth() > host.getHeight();
         }
 
         void setButton(String label, boolean isLike) {
@@ -593,6 +569,17 @@ public class ReturnYouTubeDislikePatch {
             setBounds(0, 0, host.getWidth(), host.getHeight());
             updateSpokenLabel();
             invalidateSelf();
+        }
+
+        /**
+         * @return Where to center the count, in the space the margin freed.  The insets the
+         *         button had while it was square cancel out, leaving half of the icon.
+         */
+        private float countCenterX() {
+            final int icon = Utils.isRightToLeftLocale()
+                    ? -OLD_BAR_DISLIKE_ICON_WIDTH
+                    : OLD_BAR_DISLIKE_ICON_WIDTH;
+            return (host.getWidth() + icon) / 2f;
         }
 
         /**
@@ -652,16 +639,31 @@ public class ReturnYouTubeDislikePatch {
         public void draw(@NonNull Canvas canvas) {
             // In case a recycled host was given a new description without passing through the hook.
             CharSequence current = host.getContentDescription();
+            final boolean beside = drawsBeside();
             if ((!TextUtils.equals(current, label) && !TextUtils.equals(current, spokenLabel))
-                    || hasOwnLabel()) {
+                    || (hasOwnLabel() && !beside)) {
                 return;
             }
             String text = getText();
             if (text == null) {
                 return;
             }
-            paint.setColor(ThemeUtils.getAppForegroundColor());
-            paint.setAlpha(Color.alpha(paint.getColor()) * alpha / 255);
+            // A count beside the icon can be as large as the likes YouTube shows,
+            // while one below it must stay small.
+            paint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                    beside ? OLD_BAR_COUNT_TEXT_SIZE_SP : ICON_BUTTON_COUNT_TEXT_SIZE_SP,
+                    host.getResources().getDisplayMetrics()));
+            final int color = beside
+                    ? oldBarCountColor(host)
+                    : ThemeUtils.getAppForegroundColor();
+            paint.setColor(color);
+            paint.setAlpha(Color.alpha(color) * alpha / 255);
+
+            if (beside) {
+                canvas.drawText(text, countCenterX(),
+                        (host.getHeight() - paint.descent() - paint.ascent()) / 2f, paint);
+                return;
+            }
             canvas.drawText(text, host.getWidth() / 2f,
                     host.getHeight() - ICON_BUTTON_COUNT_BOTTOM_MARGIN, paint);
         }
