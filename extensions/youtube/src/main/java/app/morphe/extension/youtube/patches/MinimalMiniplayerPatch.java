@@ -181,8 +181,7 @@ public final class MinimalMiniplayerPatch {
      */
     private static boolean applyingBounds;
     private static ValueAnimator morphAnimator;
-    private static ValueAnimator controlsFadeInAnimator;
-
+    
     private static boolean barShapeApplied;
 
     /**
@@ -283,10 +282,6 @@ public final class MinimalMiniplayerPatch {
     public static int getLegacyControlsVisibility(int original) {
         // Any other shape and these would sit across the whole screen.
         if (ENABLED) {
-            if (!inBarMode()) {
-                setContentAlpha(0f);
-            }
-
             return View.VISIBLE;
         }
         return original;
@@ -496,8 +491,6 @@ public final class MinimalMiniplayerPatch {
             barBoundsFor(lastBounds);
             morphTo.set(barBounds);
             barShapeApplied = true;
-            runControlsFadeIn();
-
 
             // Prevents the miniplayer from flickering, once it
             // reaches the MINIMIZED player state
@@ -560,29 +553,6 @@ public final class MinimalMiniplayerPatch {
         animator.start();
     }
 
-    private static void runControlsFadeIn() {
-        if (controlsFadeInAnimator != null) {
-            return;
-        }
-
-        controlsFadeInAnimator = ValueAnimator.ofFloat(0f, 1f);
-        controlsFadeInAnimator.setDuration(MORPH_MILLIS);
-        controlsFadeInAnimator.setInterpolator(new DecelerateInterpolator());
-        controlsFadeInAnimator.addUpdateListener(
-                value
-                        ->
-                // The text would otherwise sit on top of the video, stil wide at this point.
-                setContentAlpha(Math.max(0f, ((float) value.getAnimatedValue() - 0.4f) / 0.6f))
-        );
-        controlsFadeInAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                controlsFadeInAnimator = null;
-            }
-        });
-        controlsFadeInAnimator.start();
-    }
-
     private static void onMorphFrame(float fraction) {
         MiniplayerBoundsController controller = boundsControllerRef.get();
         if (controller == null) {
@@ -611,32 +581,19 @@ public final class MinimalMiniplayerPatch {
             animator.removeAllListeners();
             animator.cancel();
         }
-
-        animator = controlsFadeInAnimator;
-        controlsFadeInAnimator = null;
-        if (animator != null) {
-            // Cancelling would otherwise report the morph as finished.
-            animator.removeAllListeners();
-            animator.cancel();
-        }
     }
 
     private static int interpolate(int from, int to, float fraction) {
         return Math.round(from + (to - from) * fraction);
     }
 
-    private static void setContentAlpha(float alpha) {
-        ViewGroup controls = controlsRef.get();
-        if (controls != null) {
-            controls.setAlpha(alpha);
-        }
-    }
-
     /**
      * Called from {@link MiniplayerPatch} for each modern overlay button that is created.
      */
     static void setModernOverlayButton(View button) {
-        if (!ENABLED) return;
+        if (!ENABLED) {
+            return;
+        }
 
         try {
             final int id = button.getId();
@@ -766,7 +723,9 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static void installListeners() {
-        if (listenersInstalled) return;
+        if (listenersInstalled) {
+            return;
+        }
         listenersInstalled = true;
 
         PlayerType.getOnChange().addObserver((PlayerType type) -> {
@@ -843,7 +802,9 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static void startTicking(boolean start) {
-        if (ticking == start) return;
+        if (ticking == start) {
+            return;
+        }
         ticking = start;
 
         if (start) {
@@ -855,7 +816,9 @@ public final class MinimalMiniplayerPatch {
      * Nothing announces a new video to the bar, so its contents are kept in step by polling.
      */
     private static void tick() {
-        if (!ticking) return;
+        if (!ticking) {
+            return;
+        }
 
         updateText();
         updateVideoClip();
@@ -875,7 +838,9 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static void setPlaying(boolean isPlaying) {
-        if (playing == isPlaying) return;
+        if (playing == isPlaying) {
+            return;
+        }
 
         playing = isPlaying;
         updatePlayPauseIcon(true);
@@ -885,7 +850,9 @@ public final class MinimalMiniplayerPatch {
      * The video is drawn over the start of the bar, so the text begins after it.
      */
     private static void startAfterVideo(View view) {
-        if (view == null) return;
+        if (view == null) {
+            return;
+        }
 
         ViewGroup.LayoutParams params = view.getLayoutParams();
         if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
@@ -900,7 +867,9 @@ public final class MinimalMiniplayerPatch {
      */
     private static void updateVideoClip() {
         View watchPlayer = watchPlayer();
-        if (watchPlayer == null) return;
+        if (watchPlayer == null) {
+            return;
+        }
 
         // Not from showControls(), which YouTube bypasses when it puts the bar up itself.
         // Called for every bounds change and tick, and does nothing once the order is set.
@@ -918,7 +887,9 @@ public final class MinimalMiniplayerPatch {
                 if (barContainer != null && barContainer.getParent() instanceof ViewGroup parent) {
                     if (barMode) {
                         barIndexInParent = parent.indexOfChild(barContainer);
-                        if (barIndexInParent < 0) return;
+                        if (barIndexInParent < 0) {
+                            return;
+                        }
 
                         originalBarBackground = barContainer.getBackground();
                         // Here the video, with a slight shading effect to increase
@@ -1032,9 +1003,13 @@ public final class MinimalMiniplayerPatch {
      */
     private static void updatePlayPauseIcon(boolean morph) {
         ImageView playPause = playPauseRef.get();
-        if (playPause == null) return;
+        if (playPause == null) {
+            return;
+        }
 
-        if (morph && startIconMorph(playPause)) return;
+        if (morph && startIconMorph(playPause)) {
+            return;
+        }
 
         if (playing) {
             setIcon(playPause, "yt_fill_experimental_pause_vd_theme_24",
