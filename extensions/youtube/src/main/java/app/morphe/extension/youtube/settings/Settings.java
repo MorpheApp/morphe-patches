@@ -79,6 +79,15 @@ import app.morphe.extension.youtube.videoplayer.PlayAllButton.PlaylistIDPrefix;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
 public class Settings extends SharedYouTubeSettings {
+    // Series tracking. Consent is account-bound and excluded from settings import/export.
+    public static final BooleanSetting SERIES_TRACKER_HISTORY_TAB = new BooleanSetting("series_tracker_show_history_tab", FALSE, true);
+    public static final BooleanSetting SERIES_TRACKER_BUTTON = new BooleanSetting("series_tracker_show_button", FALSE, true);
+    public static final BooleanSetting SERIES_TRACKER_RECORD_PROGRESS = new BooleanSetting("series_tracker_record_followed_progress", FALSE, false, false);
+    public static final IntegerSetting SERIES_TRACKER_COMPLETION_PERCENT = new IntegerSetting("series_tracker_completion_percent", 92);
+    public static final IntegerSetting SERIES_TRACKER_COMPLETION_SECONDS = new IntegerSetting("series_tracker_completion_seconds", 30);
+
+    public static final BooleanSetting SERIES_TRACKER_YOUTUBE_PROGRESS = new BooleanSetting("series_tracker_youtube_progress", FALSE, false, false);
+
     // Video
     public static final EnumSetting<PlaybackBufferSize> PLAYBACK_BUFFER_SIZE = new EnumSetting<>(
             "morphe_playback_buffer_size", PlaybackBufferSize.DEFAULT, true);
