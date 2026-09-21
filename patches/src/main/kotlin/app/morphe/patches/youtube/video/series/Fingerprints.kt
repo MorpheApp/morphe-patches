@@ -69,7 +69,7 @@ internal object GeneratedRegistryFingerprint :
 
 internal object HistoryNavigationBuilderFingerprint :
     Fingerprint(
-        definingClass = "${OUR_PREFIX}HistoryNavigation;",
+        definingClass = "Lapp/morphe/extension/youtube/series/HistoryNavigation;",
         name = "buildNative",
         parameters = listOf("[B"),
         returnType = "Ljava/lang/Object;",

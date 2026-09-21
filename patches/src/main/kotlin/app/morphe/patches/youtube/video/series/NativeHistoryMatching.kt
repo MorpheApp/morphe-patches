@@ -1,14 +1,23 @@
 package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructionsOrNull
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
+import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.Instruction
+import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -48,6 +57,21 @@ private fun <T> Iterable<T>.unique(role: String): T =
     singleOrNull()
         ?: throw PatchException("Series Tracker: native History $role is missing or ambiguous")
 
+// A nullable context is safe only when the host passes null in the factory's argument register.
+private fun Method.passesNullTo(factory: MethodReference): Boolean =
+    findInstructionIndicesReversed(methodCall(factory)).any { index ->
+        if (index == 0) false
+        else {
+            val value = getInstruction<Instruction>(index - 1)
+            val call = getInstruction<Instruction>(index)
+            value.opcode == Opcode.CONST_4 &&
+                (value as? NarrowLiteralInstruction)?.narrowLiteral == 0 &&
+                call.opcode == Opcode.INVOKE_VIRTUAL &&
+                (call as? FiveRegisterInstruction)?.registerCount == 2 &&
+                call.registerD == (value as? OneRegisterInstruction)?.registerA
+        }
+    }
+
 /** Resolve the native contract from strings, signatures, inheritance and call relationships. */
 context(context: BytecodePatchContext)
 internal fun resolveNativeHistory(
@@ -58,7 +82,14 @@ internal fun resolveNativeHistory(
     lookup: (String) -> ClassDef,
 ): NativeHistoryContract {
     val capture =
-        NativeAccountRequestFingerprint(accountType).matchAll(service, 1..1).single().originalMethod
+        NativeAccountRequestFingerprint(accountType)
+            .matchAll(service)
+            .filter { match ->
+                val method = match.originalMethod
+                method.indexOfFirstInstruction(newInstance(type = method.returnType)) >= 0
+            }
+            .unique("account request capture")
+            .originalMethod
     val request = lookup(capture.returnType)
     val hierarchy =
         generateSequence(request) {
@@ -77,22 +108,48 @@ internal fun resolveNativeHistory(
             NativeRequestFactoryFingerprint(request.type, capture.parameterTypes.first().toString())
                 .matchAll(service)
                 .filter { candidate ->
-                    NativeNullContextCallerFingerprint(candidate.originalMethod)
-                        .matchOrNull(service) != null
+                    val factory = candidate.originalMethod
+                    NativeNullContextCallerFingerprint(factory)
+                        .matchAllOrNull(service)
+                        .orEmpty()
+                        .any { it.originalMethod.passesNullTo(factory) }
                 }
                 .unique("nullable-context request factory")
                 .originalMethod
         }
+    fun delegatedCalls(method: Method) =
+        method
+            .findInstructionIndicesReversed(
+                methodCall(
+                    definingClass = service.type,
+                    parameters = method.parameterTypes.map(CharSequence::toString),
+                    returnType = method.returnType,
+                )
+            )
+            .map { method.getInstruction<Instruction>(it).getReference<MethodReference>()!! }
+            .filter { it.name != method.name }
+
     val dispatch =
         NativeBrowseDispatchFingerprint(service.type, request.type)
-            .matchAll(service, 1..1)
-            .single()
+            .matchAll(service)
+            .filter { delegatedCalls(it.originalMethod).isNotEmpty() }
+            .unique("browse dispatch")
             .originalMethod
-    NativeDispatchTargetFingerprint(dispatch).matchAll(service)
+    // A matching call is insufficient: its implementation must also be public and non-static.
+    if (
+        delegatedCalls(dispatch).none {
+            NativeDispatchTargetFingerprint(it).matchOrNull(service) != null
+        }
+    ) {
+        throw PatchException("Series Tracker: native History delegated dispatch is missing")
+    }
     val genericDispatch =
-        NativeGenericDispatchFingerprint(request.superclass!!)
-            .matchAll(service, 1..1)
-            .single()
+        listOf(
+                NativeGenericDispatchFingerprint(request.superclass!!),
+                NativeGenericDispatchWithExtraParameterFingerprint(request.superclass!!),
+            )
+            .flatMap { it.matchAllOrNull(service).orEmpty() }
+            .unique("generic dispatch")
             .originalMethod
 
     fun declared(field: FieldReference): FieldReference =

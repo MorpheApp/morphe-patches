@@ -2,22 +2,13 @@ package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.string
-import app.morphe.util.findInstructionIndicesReversed
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
-import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -46,9 +37,6 @@ internal class NativeAccountRequestFingerprint(accountType: String) :
         parameters = listOf("L", accountType, "Ljava/lang/String;"),
         returnType = "L",
         filters = listOf(newInstance(type = "L")),
-        custom = { method, _ ->
-            method.indexOfFirstInstruction(newInstance(type = method.returnType)) >= 0
-        },
     )
 
 internal class NativeRequestFactoryFingerprint(requestType: String, contextType: String? = null) :
@@ -61,24 +49,10 @@ internal class NativeRequestFactoryFingerprint(requestType: String, contextType:
         },
     )
 
-// A nullable context is safe only when the host itself passes null to this factory.
+// The resolver additionally verifies that the null constant is the factory argument.
 internal class NativeNullContextCallerFingerprint(factory: MethodReference) :
     Fingerprint(
-        filters = listOf(literal(0), methodCall(factory, location = MatchAfterImmediately())),
-        custom = { method, _ ->
-            method.findInstructionIndicesReversed(methodCall(factory)).any { index ->
-                if (index == 0) false
-                else {
-                    val value = method.getInstruction<Instruction>(index - 1)
-                    val call = method.getInstruction<Instruction>(index)
-                    value.opcode == Opcode.CONST_4 &&
-                        (value as? NarrowLiteralInstruction)?.narrowLiteral == 0 &&
-                        call.opcode == Opcode.INVOKE_VIRTUAL &&
-                        (call as? FiveRegisterInstruction)?.registerCount == 2 &&
-                        call.registerD == (value as? OneRegisterInstruction)?.registerA
-                }
-            }
-        },
+        filters = listOf(literal(0), methodCall(factory, location = MatchAfterImmediately()))
     )
 
 internal class NativeBrowseDispatchFingerprint(serviceType: String, requestType: String) :
@@ -95,28 +69,31 @@ internal class NativeBrowseDispatchFingerprint(serviceType: String, requestType:
             ),
         custom = { method, _ ->
             AccessFlags.PUBLIC.isSet(method.accessFlags) &&
-                !AccessFlags.STATIC.isSet(method.accessFlags) &&
-                method.indexOfFirstInstruction {
-                    getReference<MethodReference>()?.let { call ->
-                        call.definingClass == serviceType &&
-                            call.name != method.name &&
-                            call.parameterTypes == method.parameterTypes &&
-                            call.returnType == method.returnType
-                    } == true
-                } >= 0
+                !AccessFlags.STATIC.isSet(method.accessFlags)
         },
     )
 
+// The 21.38 host has a fourth object parameter on the generic dispatch method.
 internal class NativeGenericDispatchFingerprint(requestBase: String) :
     Fingerprint(
+        parameters = listOf(requestBase, "L", "Ljava/util/concurrent/Executor;"),
         returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
         filters =
             listOf(methodCall(returnType = "Lcom/google/common/util/concurrent/ListenableFuture;")),
         custom = { method, _ ->
-            method.parameterTypes.size in 3..4 &&
-                method.parameterTypes.first() == requestBase &&
-                method.parameterTypes[2] == "Ljava/util/concurrent/Executor;" &&
-                AccessFlags.PUBLIC.isSet(method.accessFlags) &&
+            AccessFlags.PUBLIC.isSet(method.accessFlags) &&
+                !AccessFlags.STATIC.isSet(method.accessFlags)
+        },
+    )
+
+internal class NativeGenericDispatchWithExtraParameterFingerprint(requestBase: String) :
+    Fingerprint(
+        parameters = listOf(requestBase, "L", "Ljava/util/concurrent/Executor;", "L"),
+        returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+        filters =
+            listOf(methodCall(returnType = "Lcom/google/common/util/concurrent/ListenableFuture;")),
+        custom = { method, _ ->
+            AccessFlags.PUBLIC.isSet(method.accessFlags) &&
                 !AccessFlags.STATIC.isSet(method.accessFlags)
         },
     )
@@ -166,16 +143,16 @@ internal class NativeResponseConstructorFingerprint(payload: FieldReference) :
         custom = { method, _ -> payload.type in method.parameterTypes },
     )
 
-// Validate the delegated implementation as well as the public dispatch entry point.
-internal class NativeDispatchTargetFingerprint(dispatch: Method) :
+// Resolve an already identified call target by its exact signature.
+internal class NativeDispatchTargetFingerprint(target: MethodReference) :
     Fingerprint(
-        parameters = dispatch.parameterTypes.map(CharSequence::toString),
-        returnType = dispatch.returnType,
+        definingClass = target.definingClass,
+        name = target.name,
+        parameters = target.parameterTypes.map(CharSequence::toString),
+        returnType = target.returnType,
         custom = { method, _ ->
             AccessFlags.PUBLIC.isSet(method.accessFlags) &&
-                !AccessFlags.STATIC.isSet(method.accessFlags) &&
-                method.name != dispatch.name &&
-                dispatch.indexOfFirstInstruction(methodCall(method)) >= 0
+                !AccessFlags.STATIC.isSet(method.accessFlags)
         },
     )
 
