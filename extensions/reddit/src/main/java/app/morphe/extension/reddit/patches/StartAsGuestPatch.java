@@ -1,19 +1,18 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3109
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.reddit.patches;
 
-import android.os.Handler;
-import android.os.Looper;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import app.morphe.extension.shared.Utils;
 
 /** Starts Reddit with its native logged-out browsing session. */
 @SuppressWarnings("unused")
@@ -23,11 +22,13 @@ public final class StartAsGuestPatch {
     private StartAsGuestPatch() {
     }
 
-    /** Injection point. */
+    /**
+     * Injection point.
+     */
     public static void schedule() {
         if (!SCHEDULED.compareAndSet(false, true)) return;
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+        Utils.runOnMainThreadDelayed(() -> {
             try {
                 Object graph = staticField("dvb", "a");
                 Object sessionAccessor = staticField("tkp", "i0");
