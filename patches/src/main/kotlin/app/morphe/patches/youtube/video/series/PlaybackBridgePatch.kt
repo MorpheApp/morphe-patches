@@ -2,15 +2,16 @@ package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.video.information.PlayerInitFingerprint
 import app.morphe.patches.youtube.video.videoid.VideoIdFingerprint
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
 
@@ -19,20 +20,8 @@ internal fun BytecodePatchContext.wirePlaybackSource() {
     val accessor = VideoIdFingerprint.instructionMatches.first().getMethodCalled()
     val original = PlayerInitFingerprint.originalClassDef
     val idGetter =
-        original.methods
-            .filter { method ->
-                method.parameterTypes.isEmpty() &&
-                    method.returnType == "Ljava/lang/String;" &&
-                    !AccessFlags.STATIC.isSet(method.accessFlags) &&
-                    method.implementation?.instructions?.any {
-                        (it as? ReferenceInstruction)?.reference == accessor
-                    } == true
-            }
-            .singleOrNull()
-            ?: throw PatchException(
-                "Series Tracker: active controller video ID is ambiguous or unavailable"
-            )
-    val controller = mutableClassDefBy(original.type)
+        ControllerVideoIdFingerprint(accessor).matchAll(original, 1..1).single().originalMethod
+    val controller = PlayerInitFingerprint.classDef
     val bridge = "${OUR_PREFIX}PlaybackBridge\$Source;"
     if (bridge in controller.interfaces) return
     controller.interfaces.add(bridge)
@@ -73,35 +62,21 @@ internal fun BytecodePatchContext.wirePlaybackSource() {
 
 /** Observe the platform session already owned by YouTube so Resume can leave PAUSED. */
 internal fun BytecodePatchContext.wirePlaybackSession() {
-    var matches = 0
-    MediaSessionFingerprint.matchAll(1..1).forEach { match ->
-        val clazz = match.originalClassDef
-        val original = match.originalMethod
-        val instructions = original.implementation?.instructions?.toList().orEmpty()
-        val indices =
-            instructions.indices.filter { i ->
-                val ref = (instructions[i] as? ReferenceInstruction)?.reference as? MethodReference
-                ref?.definingClass == "Landroid/media/session/MediaSession;" &&
-                    ref.signature() == "setMetadata(Landroid/media/MediaMetadata;)V"
-            }
-        if (indices.isNotEmpty()) {
-            val method =
-                mutableClassDefBy(clazz.type).methods.single {
-                    it.signature() == original.signature()
-                }
-            indices.reversed().forEach { index ->
-                val register = (instructions[index] as FiveRegisterInstruction).registerC
-                method.addInstruction(
-                    index + 1,
-                    "invoke-static/range {v$register .. v$register}, " +
-                        "${OUR_PREFIX}PlaybackSession;->attach(Landroid/media/session/MediaSession;)V",
-                )
-                matches++
-            }
-        }
-    }
-    if (matches != 1)
-        throw PatchException(
-            "Series Tracker: expected one platform media session metadata call, found $matches"
+    val match = MediaSessionFingerprint.matchAll(1..1).single()
+    val method = match.method
+    val indices =
+        method.findInstructionIndicesReversedOrThrow(
+            methodCall(
+                "Landroid/media/session/MediaSession;->setMetadata(Landroid/media/MediaMetadata;)V"
+            )
         )
+    if (indices.size != 1)
+        throw PatchException("Series Tracker: expected one media session metadata call")
+    val index = indices.single()
+    val register = method.getInstruction<FiveRegisterInstruction>(index).registerC
+    method.addInstruction(
+        index + 1,
+        "invoke-static/range {v$register .. v$register}, " +
+            "${OUR_PREFIX}PlaybackSession;->attach(Landroid/media/session/MediaSession;)V",
+    )
 }
