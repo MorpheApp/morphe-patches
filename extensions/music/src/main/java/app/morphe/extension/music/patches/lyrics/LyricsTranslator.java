@@ -36,6 +36,13 @@ public final class LyricsTranslator {
         return Locale.getDefault().getLanguage();
     }
 
+    private static String translationLanguage() {
+        String language = Settings.LYRICS_TRANSLATION_LANGUAGE.get();
+        return "DEFAULT".equalsIgnoreCase(language)
+                ? deviceLanguage()
+                : language.toLowerCase(Locale.ROOT);
+    }
+
     @Nullable
     private static List<String> embeddedTranslation(Lyrics lyrics, String target, int lineCount) {
         Map<String, List<LyricsLine>> byLang = lyrics.translations();
@@ -94,7 +101,7 @@ public final class LyricsTranslator {
             lines.add(line.text());
         }
 
-        String language = deviceLanguage();
+        String language = translationLanguage();
 
         List<String> embedded = embeddedTranslation(lyrics, language, lines.size());
         if (embedded != null) {

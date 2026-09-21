@@ -505,6 +505,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_romanized_by_ai">Romanized by %s</string>
     <!-- Tappable label under the lyrics that turns the translation on. -->
     <string name="morphe_music_lyrics_translate_hide">Translated</string>
+    <string name="morphe_music_lyrics_translation_language_title">Translation language</string>
     <string name="morphe_music_lyrics_translating">Translating…</string>
     <string name="morphe_music_lyrics_translate_failed">Could not translate the lyrics</string>
     <string name="morphe_music_lyrics_romanize_hide">Romanized</string>

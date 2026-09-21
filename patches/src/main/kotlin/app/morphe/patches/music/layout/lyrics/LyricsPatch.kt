@@ -24,6 +24,7 @@ import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -124,6 +125,11 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
+                    ListPreference(
+                        key = "morphe_music_lyrics_translation_language",
+                        entriesKey = "morphe_language_entries",
+                        entryValuesKey = "morphe_language_entry_values"
+                    ),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
                     SwitchPreference(
                         key = "morphe_music_lyrics_use_ai_translation",
