@@ -4,6 +4,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.util.getMutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.immutable.*
 
@@ -100,8 +101,8 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
         return-object v0
     """,
     )
-    mutable.methods
-        .single { it.signature() == contract.capture.signature() }
+    contract.capture
+        .getMutableMethod()
         .addInstructions(
             0,
             "invoke-static/range {p0 .. p0}, $TRANSPORT->attach($HISTORY_SOURCE)V",
@@ -171,8 +172,7 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
     // Retain the exact future: the extension never cancels a host-owned request.
     val ticket = "${OUR_PREFIX}NativeHistoryTransport\$Ticket;"
     for (target in listOf(contract.dispatch, contract.genericDispatch)) {
-        val signature = target.signature()
-        val original = mutable.methods.single { it.signature() == signature }
+        val original = target.getMutableMethod()
         val name = original.name
         val alias = "seriesTrackerNative" + name
         if (mutable.methods.any { it.name == alias })
