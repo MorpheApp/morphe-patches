@@ -71,7 +71,7 @@ public final class MiniPlayerLyrics {
         }
         String title = original.getString(MediaMetadata.METADATA_KEY_TITLE);
         String artist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
-        if (title == null || title.isBlank() || artist == null || artist.isBlank()) {
+        if (title == null || title.trim().isEmpty() || artist == null || artist.trim().isEmpty()) {
             return;
         }
         String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);

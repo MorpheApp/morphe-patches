@@ -176,10 +176,6 @@ public final class AppleMusicProvider implements LyricsProvider {
         return durationMs > 0 ? durationMs / 1000 : 0;
     }
 
-    public static List<Lyrics> sortLyricsByScore(List<Lyrics.ScoredLyrics> scored) {
-        return Lyrics.sortLyricsByScore(scored);
-    }
-
     private static int scoreCandidate(JSONObject item, TrackInfo track) {
         JSONObject attributes = item.optJSONObject("attributes");
         if (attributes == null) {

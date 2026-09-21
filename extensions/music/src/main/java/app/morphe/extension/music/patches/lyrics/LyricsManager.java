@@ -11,6 +11,7 @@ import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.net.Uri;
 import android.os.SystemClock;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -73,6 +74,8 @@ import app.morphe.extension.shared.Utils;
  * accumulate. A seek or play/pause also re-anchors via {@link #onSetPlaybackState}.
  */
 public final class LyricsManager {
+
+    private static final String TAG = "MORPHE_CPT";
 
     public enum State {
         IDLE,
@@ -157,6 +160,8 @@ public final class LyricsManager {
 
     private int lastHighlightedIndex = -1;
 
+    private int temporaryOffsetMs = 0;
+
     private LyricsManager() {
         PlayAlbumSongsPatch.addSubstitutionListener(
                 (videoId, resolvedVideoId) -> reloadCurrentTrack());
@@ -236,13 +241,19 @@ public final class LyricsManager {
             final long elapsed = SystemClock.uptimeMillis() - positionUpdatedAtUptimeMs;
             position += (long) (elapsed * playbackSpeed);
         }
-        long result = position - Settings.LYRICS_OFFSET_MS.get();
+        long result = position - Settings.LYRICS_OFFSET_MS.get() - temporaryOffsetMs;
 
         if (result > 0) {
             smoothedPosition = result;
         }
         return smoothedPosition >= 0 ? smoothedPosition : result;
     }
+
+    public int getTemporaryOffsetMs() { return temporaryOffsetMs; }
+
+    public void setTemporaryOffsetMs(int ms) { temporaryOffsetMs = ms; }
+
+    public void resetTemporaryOffsetMs() { temporaryOffsetMs = 0; }
 
     /**
      * Injection point relay. Called on the main thread.
@@ -252,6 +263,7 @@ public final class LyricsManager {
         if (metadata == null) {
             return;
         }
+        resetTemporaryOffsetMs();
         currentMetadata = metadata;
         loadTrackOf(metadata);
     }
@@ -276,7 +288,7 @@ public final class LyricsManager {
 
         String rawTitle = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
         String rawArtist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
-        if (rawTitle == null || rawTitle.isBlank() || rawArtist == null || rawArtist.isBlank()) {
+        if (rawTitle == null || rawTitle.trim().isEmpty() || rawArtist == null || rawArtist.trim().isEmpty()) {
             return;
         }
 
@@ -358,7 +370,7 @@ public final class LyricsManager {
         Utils.verifyOnMainThread();
         currentRawTitle = title;
         currentRawArtist = artist;
-        if (title == null || title.isBlank() || artist == null || artist.isBlank()) {
+        if (title == null || title.trim().isEmpty() || artist == null || artist.trim().isEmpty()) {
             return;
         }
 
@@ -1014,7 +1026,7 @@ public final class LyricsManager {
             return true;
         }
         String setting = MetadataCleaner.resolveSetting(Settings.LYRICS_CREDIT_LINE_REGEX.get());
-        if (setting.isBlank()) {
+        if (setting.trim().isEmpty()) {
             return false;
         }
 
@@ -1177,7 +1189,7 @@ public final class LyricsManager {
         }
         String artist = track.artist();
         String title = track.title();
-        if (artist == null || artist.isBlank() || title == null || title.isBlank()) {
+        if (artist == null || artist.trim().isEmpty() || title == null || title.trim().isEmpty()) {
             return false;
         }
         int dashIdx = text.indexOf('-');
@@ -1228,7 +1240,7 @@ public final class LyricsManager {
             return lyrics;
         }
         String filter = MetadataCleaner.resolveSetting(Settings.LYRICS_TEXT_FILTER.get());
-        if (filter.isBlank()) {
+        if (filter.trim().isEmpty()) {
             return lyrics;
         }
 

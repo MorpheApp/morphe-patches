@@ -24,6 +24,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -37,6 +38,7 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.ReplacementSpan;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -216,6 +218,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private int pendingOldWordLineIndex = -1;
 
     private boolean seekPending;
+
+    /** Floating ruler for temporary offset adjustment via horizontal swipe. */
+    private OffsetRulerView offsetRulerView;
+    private GestureDetector offsetGestureDetector;
+    private boolean isOffsetAdjusting;
+    private float offsetSwipeStartX;
+    private int offsetSwipeStartMs;
+    private final Runnable hideOffsetRunnable = this::hideOffsetRuler;
 
     private record WordTiming(int start, int end, long startMs, long endMs,
             @Nullable String romaji) {
@@ -471,14 +481,17 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
 
-            sungLayout = StaticLayout.Builder
+            StaticLayout.Builder b = StaticLayout.Builder
                     .obtain(copy, 0, copy.length(), getPaint(), base.getWidth())
                     .setAlignment(base.getAlignment())
                     .setLineSpacing(getLineSpacingExtra(), getLineSpacingMultiplier())
                     .setIncludePad(getIncludeFontPadding())
                     .setBreakStrategy(getBreakStrategy())
-                    .setHyphenationFrequency(getHyphenationFrequency())
-                    .build();
+                    .setHyphenationFrequency(getHyphenationFrequency());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                b.setUseLineSpacingFromFallbacks(true);
+            }
+            sungLayout = b.build();
             sungLayoutText = text;
             sungLayoutWidth = base.getWidth();
             sungLayoutColor = sungColor;
@@ -551,11 +564,23 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 lineMaxSungX[lineNum] = extendSung(lineMaxSungX[lineNum], edge,
                         isRightToLeftLine(layout, lineNum));
                 final int wrappedLine = cachedWordWrappedLine[i];
-                if (wrappedLine >= 0 && wrappedLine < lineCount && progress >= 1f) {
-                    lineMaxSungX[wrappedLine] = extendSung(lineMaxSungX[wrappedLine],
-                            isRightToLeftLine(layout, wrappedLine)
-                                    ? cachedLineLeft[wrappedLine] : cachedLineRight[wrappedLine],
-                            isRightToLeftLine(layout, wrappedLine));
+                if (wrappedLine >= 0 && wrappedLine < lineCount) {
+                    final int charsOnLine0 = layout.getLineEnd(lineNum) - s;
+                    final int charsOnLine1 = e - layout.getLineEnd(lineNum);
+                    if (charsOnLine0 + charsOnLine1 > 0) {
+                        final float line1Progress = Math.max(0f,
+                                (progress * (charsOnLine0 + charsOnLine1) - charsOnLine0)
+                                        / (float) charsOnLine1);
+                        if (line1Progress > 0f) {
+                            final float line1Edge = layout.getLineLeft(wrappedLine)
+                                    + (layout.getLineRight(wrappedLine)
+                                            - layout.getLineLeft(wrappedLine))
+                                            * line1Progress;
+                            lineMaxSungX[wrappedLine] = extendSung(
+                                    lineMaxSungX[wrappedLine], line1Edge,
+                                    isRightToLeftLine(layout, wrappedLine));
+                        }
+                    }
                 }
             }
 
@@ -827,6 +852,40 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
         buttonRowParams.bottomMargin = Dim.dp40;
         addView(buttonRow, buttonRowParams);
+
+        offsetRulerView = new OffsetRulerView(context);
+        LayoutParams rulerParams = new LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                LayoutParams.WRAP_CONTENT,
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+        rulerParams.bottomMargin = Dim.dp8;
+        addView(offsetRulerView, rulerParams);
+
+        offsetGestureDetector = new GestureDetector(context,
+                new GestureDetector.SimpleOnGestureListener() {
+                    @Override
+                    public boolean onScroll(@NonNull MotionEvent e1, @Nullable MotionEvent e2,
+                            float distanceX, float distanceY) {
+                        if (isOffsetAdjusting) {
+                            float dx = e2.getX() - offsetSwipeStartX;
+                            int deltaMs = Math.round(dx / getResources().getDisplayMetrics().density) * 10;
+                            int newMs = Math.max(-20000, Math.min(20000, offsetSwipeStartMs + deltaMs));
+                            LyricsManager.getInstance().setTemporaryOffsetMs(newMs);
+                            offsetRulerView.setOffsetMs(newMs);
+                            scheduleHideOffsetRuler();
+                            return true;
+                        }
+                        if (Math.abs(distanceX) > Math.abs(distanceY) * 2
+                                && Math.abs(distanceX) > 30 * getResources().getDisplayMetrics().density) {
+                            isOffsetAdjusting = true;
+                            offsetSwipeStartX = e1.getX();
+                            offsetSwipeStartMs = LyricsManager.getInstance().getTemporaryOffsetMs();
+                            showOffsetRuler();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
     }
 
     @Override
@@ -835,7 +894,46 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         // instead of fighting the user. The event itself is left untouched.
         userScrollUntilUptimeMs = SystemClock.uptimeMillis() + MANUAL_SCROLL_PAUSE_MILLISECONDS;
         lastScrollTarget = -1;
-        return super.onInterceptTouchEvent(event);
+        offsetGestureDetector.onTouchEvent(event);
+        if (event.getActionMasked() == MotionEvent.ACTION_UP
+                || event.getActionMasked() == MotionEvent.ACTION_CANCEL) {
+            isOffsetAdjusting = false;
+        }
+        return isOffsetAdjusting || super.onInterceptTouchEvent(event);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (isOffsetAdjusting) {
+            offsetGestureDetector.onTouchEvent(event);
+            if (event.getActionMasked() == MotionEvent.ACTION_UP
+                    || event.getActionMasked() == MotionEvent.ACTION_CANCEL) {
+                isOffsetAdjusting = false;
+            }
+            return true;
+        }
+        return super.onTouchEvent(event);
+    }
+
+    private void showOffsetRuler() {
+        handler.removeCallbacks(hideOffsetRunnable);
+        offsetRulerView.setOffsetMs(LyricsManager.getInstance().getTemporaryOffsetMs());
+        if (offsetRulerView.getVisibility() != VISIBLE) {
+            offsetRulerView.setAlpha(0f);
+            offsetRulerView.setVisibility(VISIBLE);
+            offsetRulerView.animate().alpha(1f).setDuration(200).start();
+        }
+    }
+
+    private void hideOffsetRuler() {
+        if (offsetRulerView.getVisibility() != VISIBLE) return;
+        offsetRulerView.animate().alpha(0f).setDuration(200).withEndAction(() ->
+                offsetRulerView.setVisibility(GONE)).start();
+    }
+
+    private void scheduleHideOffsetRuler() {
+        handler.removeCallbacks(hideOffsetRunnable);
+        handler.postDelayed(hideOffsetRunnable, 2000);
     }
 
     @Override
@@ -851,6 +949,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         super.onDetachedFromWindow();
         LyricsManager.getInstance().removeListener(this);
         handler.removeCallbacksAndMessages(null);
+        LyricsManager.getInstance().resetTemporaryOffsetMs();
+        offsetRulerView.setVisibility(GONE);
         if (!LyricsPanelInstaller.isOtherPanelForeground()) {
             restoreHiddenSiblings();
         }
@@ -863,6 +963,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             highlightedIndex = -1;
             pendingOldWordLineIndex = -1;
             userScrollUntilUptimeMs = 0;
+            LyricsManager.getInstance().resetTemporaryOffsetMs();
+            hideOffsetRuler();
+            isOffsetAdjusting = false;
             translatedLines = null;
             romanizedLines = null;
             romanizedFromGoogle = false;
@@ -1033,6 +1136,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineView.setAlpha(newLyrics.synced() ? INACTIVE_LINE_ALPHA : 1f);
             lineView.setPadding(0, Dim.dp8, 0, Dim.dp8);
             lineView.setIncludeFontPadding(false);
+            lineView.getPaint().setElegantTextHeight(true);
             lineView.setTypeface(null, Typeface.BOLD);
 
             if (newLyrics.synced()) {
@@ -1171,9 +1275,36 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private static List<WordTiming> computeWordTimings(LyricsLine line) {
-        if (!line.hasWords() || line.words().size() == 1) {
+        if (!line.hasWords()) {
             return Collections.emptyList();
         }
+
+        if (line.words().size() == 1) {
+            Word single = line.words().get(0);
+            String wText = single.text();
+            if (wText.length() > 1) {
+                long wordStart = single.startMs();
+                long wordEnd = single.endMs();
+                if (wordEnd <= wordStart) {
+                    return Collections.emptyList();
+                }
+                int charCount = wText.length();
+                long dur = wordEnd - wordStart;
+                long perChar = dur / charCount;
+                List<WordTiming> timings = new ArrayList<>(charCount);
+                int pos = 0;
+                for (int i = 0; i < charCount; i++) {
+                    int next = pos + Character.charCount(wText.codePointAt(pos));
+                    timings.add(new WordTiming(pos, next,
+                            wordStart + i * perChar,
+                            wordStart + (i + 1) * perChar, null));
+                    pos = next;
+                }
+                return timings;
+            }
+            return Collections.emptyList();
+        }
+
         List<WordTiming> timings = new ArrayList<>(line.words().size());
         String text = line.text();
         int textLength = text.length();
@@ -2135,5 +2266,49 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             text += "\n" + String.format(str("morphe_music_lyrics_romanized_by_ai"), aiModel);
         }
         return text;
+    }
+
+    private final class OffsetRulerView extends View {
+        private static final int RANGE_MS = 20000;
+
+        private final Paint valuePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+
+        private int currentOffsetMs;
+
+        OffsetRulerView(Context context) {
+            super(context);
+            valuePaint.setColor(Color.WHITE);
+            valuePaint.setTextAlign(Paint.Align.CENTER);
+            valuePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+            setVisibility(GONE);
+        }
+
+        void setOffsetMs(int ms) {
+            currentOffsetMs = Math.max(-RANGE_MS, Math.min(RANGE_MS, ms));
+            invalidate();
+        }
+
+        int getOffsetMs() {
+            return currentOffsetMs;
+        }
+
+        @Override
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            int w = MeasureSpec.getSize(widthMeasureSpec);
+            int h = (int) (28 * getResources().getDisplayMetrics().density);
+            setMeasuredDimension(w, h);
+        }
+
+        @Override
+        protected void onDraw(@NonNull Canvas canvas) {
+            int w = getWidth();
+            int h = getHeight();
+            float density = getResources().getDisplayMetrics().density;
+
+            String text = (currentOffsetMs >= 0 ? "+" : "") + currentOffsetMs + "ms";
+            valuePaint.setTextSize(13 * density);
+            canvas.drawText(text, w / 2f, h / 2f + 5 * density, valuePaint);
+        }
+
     }
 }

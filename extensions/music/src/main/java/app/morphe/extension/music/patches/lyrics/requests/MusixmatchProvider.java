@@ -114,7 +114,7 @@ public final class MusixmatchProvider implements LyricsProvider {
     private String ensureToken() throws IOException, JSONException {
         synchronized (TOKEN_LOCK) {
             final String userToken = Settings.MUSIXMATCH_TOKEN.get();
-            if (!userToken.isBlank() && isUsableToken(userToken)
+            if (!userToken.trim().isEmpty() && isUsableToken(userToken)
                     && !userToken.equals(rejectedUserToken)) {
                 cachedToken = userToken;
                 return cachedToken;

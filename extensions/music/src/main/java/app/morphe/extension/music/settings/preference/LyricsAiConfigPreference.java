@@ -128,12 +128,7 @@ public class LyricsAiConfigPreference extends SwitchPreference
             String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
             String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
             String model = Settings.LYRICS_AI_MODEL.get();
-            if (baseUrl.isEmpty() || model.isEmpty()
-                    || !baseUrl.startsWith("http://") && !baseUrl.startsWith("https://")) {
-                dialogShowing = true;
-                new Handler(Looper.getMainLooper()).post(this::showDialog);
-                return false;
-            }
+            dialogShowing = true;
             settingFromCode = true;
             setChecked(false);
             settingFromCode = false;
@@ -141,16 +136,10 @@ public class LyricsAiConfigPreference extends SwitchPreference
             Utils.runOnBackgroundThread(() -> {
                 boolean valid = validateConfig(baseUrl, apiToken, model);
                 Utils.runOnMainThread(() -> {
-                    settingFromCode = true;
-                    setChecked(valid);
-                    settingFromCode = false;
-                    if (valid) {
-                        Settings.LYRICS_USE_AI_TRANSLATION.save(true);
-                        setSummary(str("morphe_music_lyrics_ai_config_status_configured"));
-                    } else {
-                        dialogShowing = true;
-                        showDialog();
+                    if (!valid) {
+                        Utils.showToastShort(str("morphe_music_lyrics_ai_config_toast_invalid"));
                     }
+                    showDialog();
                 });
             });
             return false;

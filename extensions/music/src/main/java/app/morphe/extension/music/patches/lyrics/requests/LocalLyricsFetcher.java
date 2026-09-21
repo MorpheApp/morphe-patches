@@ -95,9 +95,9 @@ public final class LocalLyricsFetcher {
     @Nullable
     public static Uri resolveMediaStoreUri(String title, String artist, int durationSeconds,
                                            @Nullable String rawTitle, @Nullable String rawArtist) {
-        String primaryTitle = (title != null && !title.isBlank()) ? title : rawTitle;
-        String primaryArtist = (artist != null && !artist.isBlank()) ? artist : rawArtist;
-        if (primaryTitle == null || primaryTitle.isBlank()) {
+        String primaryTitle = (title != null && !title.trim().isEmpty()) ? title : rawTitle;
+        String primaryArtist = (artist != null && !artist.trim().isEmpty()) ? artist : rawArtist;
+        if (primaryTitle == null || primaryTitle.trim().isEmpty()) {
             return null;
         }
         Context context = Utils.getContext();
@@ -129,7 +129,7 @@ public final class LocalLyricsFetcher {
         long bestScore = Long.MAX_VALUE;
         try {
             for (String t : titleCandidates) {
-                if (t == null || t.isBlank()) {
+                if (t == null || t.trim().isEmpty()) {
                     continue;
                 }
                 String selection = MediaStore.Audio.Media.TITLE + " LIKE ? ESCAPE '\\'";
@@ -339,13 +339,13 @@ public final class LocalLyricsFetcher {
             switch (id) {
                 case "USLT", "ULT" -> {
                     String s = parseTextFrame(d, bodyOff, size);
-                    if (s != null && !s.isBlank()) {
+                    if (s != null && !s.trim().isEmpty()) {
                         return s;
                     }
                 }
                 case "SYLT", "SLT" -> {
                     String s = parseSylt(d, bodyOff, size);
-                    if (s != null && !s.isBlank()) {
+                    if (s != null && !s.trim().isEmpty()) {
                         return s;
                     }
                 }
@@ -355,7 +355,7 @@ public final class LocalLyricsFetcher {
                             && (desc.regionMatches(true, 0, "LYRICS", 0, 6)
                              || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
                         String s = parseTxxxValue(d, bodyOff, size);
-                        if (s != null && !s.isBlank()) {
+                        if (s != null && !s.trim().isEmpty()) {
                             return s;
                         }
                     }
@@ -366,7 +366,7 @@ public final class LocalLyricsFetcher {
                             && (desc.regionMatches(true, 0, "LYRICS", 0, 6)
                              || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
                         String s = parseCommBody(d, bodyOff, size);
-                        if (s != null && !s.isBlank()) {
+                        if (s != null && !s.trim().isEmpty()) {
                             return s;
                         }
                     }
@@ -714,7 +714,7 @@ public final class LocalLyricsFetcher {
                     || (c0 == 'L' && c1 == 'Y' && c2 == 'R' && c3 == ' ');
             if (isLyrics) {
                 String s = readM4aData(d, pos + 8, pos + size);
-                if (s != null && !s.isBlank()) {
+                if (s != null && !s.trim().isEmpty()) {
                     return s;
                 }
             } else {
@@ -773,7 +773,7 @@ public final class LocalLyricsFetcher {
         try (MediaMetadataRetriever retriever = new MediaMetadataRetriever()) {
             retriever.setDataSource(context, uri);
             String raw = retriever.extractMetadata(METADATA_KEY_LYRICS);
-            if (raw == null || raw.isBlank()) {
+            if (raw == null || raw.trim().isEmpty()) {
                 return null;
             }
             return parse(raw);
@@ -785,7 +785,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static Lyrics parse(@Nullable String raw) {
-        if (raw == null || raw.isBlank()) {
+        if (raw == null || raw.trim().isEmpty()) {
             return null;
         }
 

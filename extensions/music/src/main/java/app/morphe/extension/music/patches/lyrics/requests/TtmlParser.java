@@ -250,7 +250,7 @@ final class TtmlParser {
 
                         final ParsedLine pl = processPElement(p, pBegin, pEnd, hasTimeAttrs);
 
-                        if (pl != null && !pl.text().isBlank()) {
+                        if (pl != null && !pl.text().trim().isEmpty()) {
                             final LyricsLine line = new LyricsLine(
                                     pl.begin(), pl.end(), pl.text(), pl.words(),
                                     agentId, false, false, divSongPart);
@@ -1059,7 +1059,7 @@ final class TtmlParser {
         }
 
         final String lineText = normalizeText(fullText.toString());
-        if (lineText.isBlank()) {
+        if (lineText.trim().isEmpty()) {
             return null;
         }
 
@@ -1109,7 +1109,7 @@ final class TtmlParser {
         // Save final BG section
         if (inBg && (!bgWords.isEmpty() || bgFullText.length() > 0)) {
             String bgText = normalizeText(bgFullText.toString());
-            if (!bgText.isBlank()) {
+            if (!bgText.trim().isEmpty()) {
                 bgText = bgText.replaceAll("^[(（]+", "").replaceAll("[)）]+$", "").trim();
                 stripBgWordParens(bgWords);
                 if (!bgText.isEmpty()) {

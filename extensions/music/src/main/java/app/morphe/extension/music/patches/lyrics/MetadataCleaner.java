@@ -44,7 +44,7 @@ final class MetadataCleaner {
     }
 
     static String resolveSetting(@Nullable String value) {
-        if (value == null || value.isBlank()) {
+        if (value == null || value.trim().isEmpty()) {
             return value == null ? "" : value;
         }
 
@@ -63,7 +63,7 @@ final class MetadataCleaner {
     }
 
     static String resolveSettingBlocking(@Nullable String value) {
-        if (value == null || value.isBlank()) {
+        if (value == null || value.trim().isEmpty()) {
             return value == null ? "" : value;
         }
 
@@ -128,7 +128,7 @@ final class MetadataCleaner {
     }
 
     static String applyRegex(String input, String regex) {
-        if (regex == null || regex.isBlank()) {
+        if (regex == null || regex.trim().isEmpty()) {
             return input;
         }
         try {

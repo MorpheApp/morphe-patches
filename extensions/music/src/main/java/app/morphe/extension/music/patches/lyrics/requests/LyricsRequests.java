@@ -172,7 +172,7 @@ public final class LyricsRequests {
             return null;
         }
         final String value = object.optString(key, "");
-        return value.isBlank() ? null : value;
+        return value.trim().isEmpty() ? null : value;
     }
 
     static String parseGzipString(HttpURLConnection connection) throws IOException {

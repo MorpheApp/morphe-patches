@@ -86,7 +86,7 @@ public final class SpotifyProvider implements LyricsProvider {
     @Override
     public Lyrics fetch(TrackInfo track) throws Exception {
         final String spDc = Settings.SPOTIFY_TOKEN.get();
-        if (spDc.isBlank()) {
+        if (spDc.trim().isEmpty()) {
             return null;
         }
 
@@ -523,7 +523,7 @@ public final class SpotifyProvider implements LyricsProvider {
             final String body = Requester.parseString(connection);
             JSONObject json = new JSONObject(body);
             final String token = json.optString("accessToken", "");
-            if (token.isBlank()) {
+            if (token.trim().isEmpty()) {
                 return null;
             }
             cachedAccessToken = token;
@@ -810,7 +810,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     public static boolean validateToken(String spDc) {
-        if (spDc == null || spDc.isBlank()) return false;
+        if (spDc == null || spDc.trim().isEmpty()) return false;
         HttpURLConnection connection = null;
         try {
             connection = openServerTimeConnection(spDc, 8000);

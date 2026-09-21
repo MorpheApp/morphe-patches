@@ -323,7 +323,7 @@ public final class DeezerProvider implements LyricsProvider {
     @Nullable
     private static String flatten(@Nullable Object value) {
         if (value instanceof String string) {
-            return string.isBlank() ? null : string.trim();
+            return string.trim().isEmpty() ? null : string.trim();
         }
         if (value instanceof JSONArray array) {
             StringBuilder builder = new StringBuilder();
@@ -373,7 +373,7 @@ public final class DeezerProvider implements LyricsProvider {
     }
 
     public static boolean validateArl(String arl) {
-        if (arl == null || arl.isBlank() || "null".equals(arl)) return false;
+        if (arl == null || arl.trim().isEmpty() || "null".equals(arl)) return false;
         return accountId(arl) > 0;
     }
 

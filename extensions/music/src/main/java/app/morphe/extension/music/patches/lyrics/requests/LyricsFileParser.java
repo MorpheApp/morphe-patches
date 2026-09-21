@@ -209,7 +209,7 @@ public final class LyricsFileParser {
             if (indentOf(line) != indent || !line.trim().startsWith("- ")) {
                 break;
             }
-            String rest = line.trim().substring(2).strip();
+            String rest = line.trim().substring(2).trim();
             if (rest.isEmpty()) {
                 cursor.index++;
                 sequence.add(readValue(lines, cursor, indent + 2));
@@ -236,7 +236,7 @@ public final class LyricsFileParser {
                 continue;
             }
             String key = line.substring(indent, colon).trim();
-            String value = line.substring(colon + 1).strip();
+            String value = line.substring(colon + 1).trim();
             cursor.index++;
 
             if (value.isEmpty()) {
@@ -287,7 +287,7 @@ public final class LyricsFileParser {
     }
 
     private static String unquote(String value) {
-        String string = value.strip();
+        String string = value.trim();
         if (string.length() >= 2 && string.startsWith("'") && string.endsWith("'")) {
             return string.substring(1, string.length() - 1).replace("''", "'");
         }
