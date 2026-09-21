@@ -8,25 +8,20 @@
 package app.morphe.patches.reddit.misc.guest
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.fieldAccess
-import com.android.tools.smali.dexlib2.AccessFlags
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object WelcomeViewModelConstructorFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/auth/login/screen/welcomev2/WelcomeV2ViewModel;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+internal object FrontPageApplicationHasFinishedOnboardingFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/frontpage/FrontpageApplication;",
     filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            smali = "Lcom/reddit/auth/login/screen/welcomev2/WelcomeV2ViewModel;->c0:Lb3o0;"
+        methodCall(smali = "Lcom/reddit/session/Session;->isLoggedIn()Z"),
+        methodCall(smali = "Lcom/reddit/session/Session;->isIncognito()Z"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "Z",
+            parameters = listOf(),
+            location = MatchAfterWithin(10)
         )
     )
-)
-
-internal object StartupCredentialPickerFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/auth/login/screen/welcomev2/" +
-        "WelcomeV2ViewModel\$viewState\$2\$1\$1;",
-    name = "invokeSuspend",
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;")
 )
