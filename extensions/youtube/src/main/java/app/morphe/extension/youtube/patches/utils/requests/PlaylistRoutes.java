@@ -178,6 +178,18 @@ public final class PlaylistRoutes {
         return new byte[0];
     }
 
+    public static byte[] browsePlaylistContinuationBody(String continuation) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", androidContext());
+            body.put("continuation", continuation);
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "browsePlaylistContinuationBody failed", ex);
+        }
+        return new byte[0];
+    }
+
     public static byte[] savePlaylistBody(String playlistId, String libraryId) {
         try {
             JSONObject body = getBaseContentJson();

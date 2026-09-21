@@ -1418,4 +1418,11 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_restore_old_video_action_bar_summary">"Fixes dislikes not shown and video action buttons cannot be hidden
 
 Limitation: Reverts to old style \'More videos\' overlay"</string>
+
+    <!-- interaction.playlistsearch.playlistSearchPatch -->
+    <string name="morphe_playlist_search_title">Search within playlist</string>
+    <string name="morphe_playlist_search_summary">Searching while a playlist is open searches only that playlist</string>
+    <string name="morphe_playlist_search_results">Playlist search results</string>
+    <string name="morphe_playlist_search_no_results">Nothing found in this playlist</string>
+    <string name="morphe_playlist_search_failed">Playlist search failed</string>
 </resources>
