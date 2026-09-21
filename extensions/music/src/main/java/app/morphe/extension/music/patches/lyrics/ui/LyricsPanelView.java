@@ -875,8 +875,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             scheduleHideOffsetRuler();
                             return true;
                         }
-                        if (Math.abs(distanceX) > Math.abs(distanceY) * 2
-                                && Math.abs(distanceX) > 30 * getResources().getDisplayMetrics().density) {
+                        float density = getResources().getDisplayMetrics().density;
+                        float touchY = e1.getY();
+                        boolean inButtonArea = buttonRow.getVisibility() == VISIBLE
+                                && touchY >= buttonRow.getTop() - Dim.dp8
+                                && touchY <= buttonRow.getBottom() + Dim.dp8;
+                        if (inButtonArea
+                                && Math.abs(distanceX) > Math.abs(distanceY) * 1.5
+                                && Math.abs(distanceX) > 15 * density) {
                             isOffsetAdjusting = true;
                             offsetSwipeStartX = e1.getX();
                             offsetSwipeStartMs = LyricsManager.getInstance().getTemporaryOffsetMs();
