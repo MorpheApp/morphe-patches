@@ -141,8 +141,7 @@ public class CommentsFilter extends Filter {
 
         var previewComment = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
-                "comments_entry_point_teaser",
-                "comments_entry_point_simplebox"
+                "comments_entry_point_teaser"
         );
 
         previewCommentDotsSelector = new StringFilterGroup(
