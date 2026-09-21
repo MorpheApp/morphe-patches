@@ -12,13 +12,11 @@ package app.morphe.patches.youtube.layout.returnyoutubedislike
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
 internal object TextComponentConstructorFingerprint : Fingerprint(
     filters = listOf(
@@ -76,30 +74,6 @@ internal object LithoSpannableStringCreationFingerprint : Fingerprint(
         methodCall(
             name = "addOnLayoutChangeListener",
             parameters = listOf($$"Landroid/view/View$OnLayoutChangeListener;"),
-        )
-    )
-)
-
-internal object ComponentHostSetContentDescriptionFingerprint : Fingerprint(
-    definingClass = "Lcom/facebook/litho/ComponentHost;",
-    name = "setContentDescription",
-    returnType = "V",
-    parameters = listOf("Ljava/lang/CharSequence;")
-)
-
-internal object YogaSetWidthFingerprint : Fingerprint(
-    definingClass = "Lcom/facebook/yoga/YogaNodeJNIBase;",
-    returnType = "V",
-    parameters = listOf("F"),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_WIDE,
-            definingClass = "this",
-            type = "J"
-        ),
-        methodCall(
-            definingClass = "Lcom/facebook/yoga/YogaNative;",
-            name = "jni_YGNodeStyleSetWidthJNI",
         )
     )
 )
