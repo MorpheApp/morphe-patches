@@ -12,16 +12,23 @@ package app.morphe.patches.shared.misc.litho.context
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.BytecodePatch
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.Method
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 const val EXTENSION_CONTEXT_INTERFACE =
@@ -54,14 +61,24 @@ internal fun createConversionContextPatch(
     dependsOn(sharedExtensionPatchDep)
 
     execute {
-        val (identifierField, stringBuilderField) = with (ConversionContextToStringFingerprint) {
-            conversionContextClassDef = classDef
+        val toStringMethod: MutableMethod
+        val identifierField: FieldReference
+        val stringBuilderField: FieldReference
 
-            Pair(
-                method.findFieldFromToString(IDENTIFIER_PROPERTY),
-                conversionContextClassDef.fields.single { field -> field.type == "Ljava/lang/StringBuilder;" }
-            )
+        with (ConversionContextToStringFingerprint) {
+            conversionContextClassDef = classDef
+            toStringMethod = method
+            identifierField = method.findFieldFromToString(IDENTIFIER_PROPERTY)
+            stringBuilderField = conversionContextClassDef.fields.single { field ->
+                field.type == "Ljava/lang/StringBuilder;"
+            }
         }
+
+        compactConversionContextToString(
+            toStringMethod,
+            identifierField,
+            stringBuilderField,
+        )
 
         // The conversionContext class can be used as is in most versions.
         if (conversionContextClassDef.superclass == "Ljava/lang/Object;") {
@@ -185,4 +202,103 @@ internal fun createConversionContextPatch(
             }
         }
     }
+}
+
+/**
+ * Original toString() dumps AtomicReferences, services, and byte arrays. Callers keep using
+ * toString(); this rewrite returns identifier, path, and the null-check fields they match.
+ */
+private fun compactConversionContextToString(
+    toStringMethod: MutableMethod,
+    identifierField: FieldReference,
+    stringBuilderField: FieldReference,
+) {
+    val registerCount = toStringMethod.implementation!!.registerCount
+    if (registerCount < 3) {
+        throw PatchException("ConversionContext.toString() has too few registers to compact")
+    }
+
+    val nullCheckFields = buildList {
+        toStringMethod.findReferenceFieldOrNull(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY)?.let {
+            add(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY to it)
+        }
+        toStringMethod.findReferenceFieldOrNull(HEIGHT_CONSTRAINT_PROPERTY)?.let {
+            add(HEIGHT_CONSTRAINT_PROPERTY to it)
+        }
+    }
+
+    val smali = buildString {
+        appendLine(
+            """
+                move-object/from16 v2, p0
+                new-instance v0, Ljava/lang/StringBuilder;
+                invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+                const-string v1, "identifierProperty="
+                invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+                iget-object v1, v2, $identifierField
+                invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+                const-string v1, " "
+                invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+                iget-object v1, v2, $stringBuilderField
+                if-eqz v1, :morphe_cc_no_path
+                invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+                :morphe_cc_no_path
+                nop
+            """.trimIndent()
+        )
+        nullCheckFields.forEachIndexed { index, (name, field) ->
+            appendLine(
+                """
+                    const-string v1, "$name"
+                    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+                    iget-object v1, v2, $field
+                    if-eqz v1, :morphe_cc_non_null_$index
+                    const-string v1, "null"
+                    goto :morphe_cc_append_$index
+                    :morphe_cc_non_null_$index
+                    const-string v1, "1"
+                    :morphe_cc_append_$index
+                    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+                """.trimIndent()
+            )
+        }
+        appendLine(
+            """
+                invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+                move-result-object v0
+                return-object v0
+            """.trimIndent()
+        )
+    }
+
+    toStringMethod.addInstructionsWithLabels(0, smali)
+}
+
+private fun Method.findReferenceFieldOrNull(fieldName: String): FieldReference? {
+    val instructions = implementation?.instructions?.toList() ?: return null
+    val stringIndex = instructions.indexOfFirst { instruction ->
+        val reference = (instruction as? ReferenceInstruction)?.reference
+        reference is StringReference && reference.string.contains(fieldName)
+    }
+    if (stringIndex < 0) return null
+
+    for (i in (stringIndex + 1) until instructions.size) {
+        val instruction = instructions[i]
+        if (instruction.opcode == Opcode.IGET_OBJECT) {
+            val field = (instruction as? ReferenceInstruction)?.reference as? FieldReference
+                ?: continue
+            val type = field.type
+            if (type.startsWith("L") || type.startsWith("[")) {
+                return field
+            }
+        }
+        val reference = (instruction as? ReferenceInstruction)?.reference
+        if (i > stringIndex + 1 &&
+            reference is StringReference &&
+            reference.string.startsWith(", ")
+        ) {
+            return null
+        }
+    }
+    return null
 }
