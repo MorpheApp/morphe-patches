@@ -523,6 +523,12 @@ internal fun baseCustomBrandingPatch(
             ResourceGroup(
                 "mipmap-anydpi",
                 "$LAUNCHER_RESOURCE_NAME_PREFIX$CUSTOM_USER_ICON_STYLE_NAME.xml"
+            ),
+            // Startup animation of each launcher foreground, played by the app hooks in place of the original.
+            ResourceGroup(
+                "raw",
+                "morphe_startup_animation.json",
+                "morphe_startup_animation_play.json"
             )
         )
 

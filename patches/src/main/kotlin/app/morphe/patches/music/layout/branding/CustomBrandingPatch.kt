@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.music.layout.branding
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -20,16 +30,11 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
-private val disableSplashAnimationPatch = bytecodePatch {
-
+private val startupAnimationPatch = bytecodePatch {
     execute {
-        // The existing YT animation usually only shows for a fraction of a second,
-        // and the existing animation does not match the new splash screen
-        // causing the original YT Music logo to momentarily flash on screen as the animation starts.
-        //
-        // Could replace the lottie animation file with our own custom animation (app_launch.json),
-        // but the animation is not always the same size as the launch screen, and it's still
-        // barely shown. Instead, turn off the animation entirely (app will also launch a little faster).
+        // The original animation starts with the original logo, which would flash on screen
+        // before a branded app. An icon with its own animation plays that instead, and the
+        // animation is turned off for a user provided icon.
         CairoSplashAnimationConfigFingerprint.method.apply {
             val literalIndex = indexOfFirstLiteralInstructionOrThrow(
                 resourceId(ResourceType.LAYOUT, "main_activity_launch_animation")
@@ -40,12 +45,25 @@ private val disableSplashAnimationPatch = bytecodePatch {
             }
             val register = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
 
-            // If using a custom icon then set the lottie animation view to null to bypasses the startup animation.
+            // A null view bypasses the startup animation.
             addInstructions(
                 checkCastIndex,
                 """
                     invoke-static { v$register }, $EXTENSION_CLASS->getLottieViewOrNull(Landroid/view/View;)Landroid/view/View;
                     move-result-object v$register
+                """
+            )
+
+            val animationIndex = indexOfFirstLiteralInstructionOrThrow(
+                resourceId(ResourceType.RAW, "app_launch")
+            )
+            val animationRegister = getInstruction<OneRegisterInstruction>(animationIndex).registerA
+
+            addInstructions(
+                animationIndex + 1,
+                """
+                    invoke-static { v$animationRegister }, $EXTENSION_CLASS->getStartupAnimation(I)I
+                    move-result v$animationRegister
                 """
             )
         }
@@ -66,7 +84,10 @@ val customBrandingPatch = baseCustomBrandingPatch(
     preferenceScreen = PreferenceScreen.GENERAL,
 
     block = {
-        dependsOn(sharedExtensionPatch, disableSplashAnimationPatch)
+        dependsOn(
+            sharedExtensionPatch,
+            startupAnimationPatch
+        )
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     }

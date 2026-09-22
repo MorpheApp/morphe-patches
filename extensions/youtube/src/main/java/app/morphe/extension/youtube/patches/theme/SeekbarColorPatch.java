@@ -25,6 +25,7 @@ import java.util.Scanner;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -123,6 +124,13 @@ public final class SeekbarColorPatch {
      */
     public static void setSplashAnimationLottie(LottieAnimationView view, int resourceId) {
         try {
+            // A custom branding icon replaces the YouTube logo animation with its own.
+            final int brandingAnimation = CustomBrandingPatch.getStartupAnimation();
+            if (brandingAnimation != 0) {
+                view.patch_setAnimation(brandingAnimation);
+                return;
+            }
+
             ThemePatch.SplashScreenAnimationStyle animationStyle = Settings.SPLASH_SCREEN_ANIMATION_STYLE.get();
             if (!SEEKBAR_CUSTOM_COLOR_ENABLED
                     // Black and white animations cannot use color replacements.
