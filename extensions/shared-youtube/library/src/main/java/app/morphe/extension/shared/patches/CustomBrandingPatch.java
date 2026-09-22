@@ -89,14 +89,20 @@ public class CustomBrandingPatch {
          * <p>
          * Themes that share a launcher foreground share an animation. Returns {@code null} for
          * {@link #ORIGINAL} and {@link #CUSTOM}, which keep the original animation.
+         *
+         * @param monochrome If the animation of a single color is wanted.
          */
         @Nullable
-        String startupAnimationResourceName() {
-            return switch (this) {
+        String startupAnimationResourceName(boolean monochrome) {
+            String name = switch (this) {
                 case LIGHT, DARK, BLACK -> "morphe_startup_animation";
                 case PLAY, PLAY_BLACK -> "morphe_startup_animation_play";
                 default -> null;
             };
+            if (name != null && monochrome) {
+                name += "_monochrome";
+            }
+            return name;
         }
     }
 
@@ -166,7 +172,7 @@ public class CustomBrandingPatch {
      * Injection point.
      */
     public static View getLottieViewOrNull(View lottieStartupView) {
-        if (getStartupAnimation() != 0) {
+        if (getStartupAnimation(false) != 0) {
             // The icon has its own animation, which replaces the original one.
             return lottieStartupView;
         }
@@ -187,9 +193,11 @@ public class CustomBrandingPatch {
     /**
      * The startup animation that matches the launcher icon.
      *
+     * @param monochrome If the animation of a single color is wanted. Only YouTube has it,
+     *                   and its color is set by the caller.
      * @return The raw resource id, or 0 to keep the original animation.
      */
-    public static int getStartupAnimation() {
+    public static int getStartupAnimation(boolean monochrome) {
         try {
             BrandingTheme branding;
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {
@@ -201,7 +209,7 @@ public class CustomBrandingPatch {
                 branding = SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
             }
 
-            String animationName = branding.startupAnimationResourceName();
+            String animationName = branding.startupAnimationResourceName(monochrome);
             if (animationName != null) {
                 // Not found if custom branding is excluded.
                 return ResourceUtils.getIdentifier(ResourceType.RAW, animationName);
@@ -216,7 +224,7 @@ public class CustomBrandingPatch {
      * Injection point.
      */
     public static int getStartupAnimation(int original) {
-        final int startupAnimation = getStartupAnimation();
+        final int startupAnimation = getStartupAnimation(false);
         return startupAnimation != 0
                 ? startupAnimation
                 : original;
