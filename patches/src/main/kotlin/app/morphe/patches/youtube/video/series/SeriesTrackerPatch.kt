@@ -8,8 +8,6 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
-import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
-import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
@@ -59,7 +57,6 @@ val seriesTrackerPatch =
             navigationBarPatch,
             seriesTrackerResourcesPatch,
             legacyPlayerControlsPatch,
-            playerOverlayButtonsHookPatch,
         )
         // Keep support limited to versions covered by the host and device checks.
         compatibleWith(
@@ -134,6 +131,5 @@ val seriesTrackerPatch =
             onCreateHook(EXTENSION_CLASS, "newVideoStarted")
             videoTimeHook(EXTENSION_CLASS, "videoTimeChanged")
             initializeTopControl(BUTTON)
-            addPlayerBottomButton(BUTTON)
         }
     }
