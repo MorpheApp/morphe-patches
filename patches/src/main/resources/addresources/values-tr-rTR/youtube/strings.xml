@@ -1047,7 +1047,7 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_miniplayer_screen_title">Mini oynatıcı</string>
   <string name="morphe_miniplayer_screen_summary">Küçültülmüş video oynatıcısının görünümünü ve davranışını özelleştirin</string>
   <string name="morphe_miniplayer_type_title">Mini oynatıcı tipi</string>
-  <string name="morphe_miniplayer_hide_title_title">Başlığı gizle</string>
+  <string name="morphe_miniplayer_hide_title_title">Başlığı ve kanalı gizle</string>
   <string name="morphe_miniplayer_type_entry_0">Devre dışı</string>
   <string name="morphe_miniplayer_type_entry_1">Varsayılan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1283,7 +1283,7 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Meraklısı için istatistikler\'de taklit göster</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Eski video eylem çubuğunu geri yükle</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Beğenmemelerin görünmemesi ve video eylem düğmelerinin gizlenememesi sorunlarını düzeltir
+  <string name="morphe_restore_old_video_action_bar_summary">"Video eylem düğmelerinin gizlenememesi sorununu düzeltir
 
-Sınırlamalar: Eski 'Daha fazla video' katmanı görünümüne geri döner"</string>
+Sınırlama: Eski stil 'Diğer videolar' katmanına geri döner"</string>
 </resources>

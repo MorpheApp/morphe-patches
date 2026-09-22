@@ -352,6 +352,8 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gebruik derdeparty lirieke</string>
   <string name="morphe_music_lyrics_enabled_summary">Wys lirieke van \'n derdeparty diens, met terugval na die ingeboude lirieke wanneer nie gevind nie</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Hou skerm aan terwyl jy lirieke bekyk</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Voorkom dat die skerm afskakel terwyl die lirieke-paneel oop is</string>
   <string name="morphe_music_lyrics_section_service_title">Lirieke-diens</string>
   <string name="morphe_music_lyrics_section_overlay_title">Oorleg</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinchronisasie</string>
@@ -448,6 +450,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseer deur %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Me […] lirieke. […] :\"Lirieke\"</string>
+  <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
   <string name="morphe_music_lyrics_translating">Besig met vertaling…</string>
   <string name="morphe_music_lyrics_translate_failed">Kon nie die lirieke vertaal nie</string>
   <string name="morphe_music_lyrics_romanize_hide">Lirieke-bron?</string>

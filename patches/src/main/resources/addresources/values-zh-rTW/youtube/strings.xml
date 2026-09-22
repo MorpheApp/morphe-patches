@@ -1047,7 +1047,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">迷你播放器</string>
   <string name="morphe_miniplayer_screen_summary">自訂迷你影片播放器的外觀和行為</string>
   <string name="morphe_miniplayer_type_title">迷你播放器類型</string>
-  <string name="morphe_miniplayer_hide_title_title">隱藏標題</string>
   <string name="morphe_miniplayer_type_entry_0">停用</string>
   <string name="morphe_miniplayer_type_entry_1">預設</string>
   <string name="morphe_miniplayer_type_entry_2">極簡</string>
@@ -1282,7 +1281,7 @@ AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在「Stats for nerds」中顯示偽造狀態</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">還原舊版影片動作列</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"修正無法顯示不喜歡和隱藏影片動作按鈕的問題
+  <string name="morphe_restore_old_video_action_bar_summary">"修正影片操作按鈕無法隱藏的問題
 
-限制：復原為舊式「更多影片」疊加層"</string>
+限制：還原為舊式「更多影片」覆蓋畫面"</string>
 </resources>

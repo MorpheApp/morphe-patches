@@ -352,6 +352,8 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">השתמש במילות שירים של צד שלישי</string>
   <string name="morphe_music_lyrics_enabled_summary">מציג מילים משירות צד שלישי, עם מעבר למילים המובנות כאשר לא נמצאו מילים</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">שמור מסך דלוק בזמן צפייה במילות השיר</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">מונע מהמסך להיכבות בזמן שחלון המילים פתוח</string>
   <string name="morphe_music_lyrics_section_service_title">שירות מילות שירים</string>
   <string name="morphe_music_lyrics_section_overlay_title">שכבת-על</string>
   <string name="morphe_music_lyrics_section_sync_title">סנכרון</string>
@@ -453,6 +455,7 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_lyrics_romanized_by_ai">רומניזציה על ידי %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">תרגום</string>
+  <string name="morphe_music_lyrics_translation_language_title">שפת התרגום</string>
   <string name="morphe_music_lyrics_translating">מתרגם…</string>
   <string name="morphe_music_lyrics_translate_failed">לא ניתן לתרגם את המילים</string>
   <string name="morphe_music_lyrics_romanize_hide">רומניזציה</string>

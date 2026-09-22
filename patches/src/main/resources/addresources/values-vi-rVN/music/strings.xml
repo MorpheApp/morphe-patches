@@ -352,6 +352,8 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Sử dụng lời bài hát từ bên thứ ba</string>
   <string name="morphe_music_lyrics_enabled_summary">Hiển thị lời bài hát từ một dịch vụ bên thứ ba, chuyển về lời bài hát tích hợp sẵn khi không tìm thấy</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Giữ màn hình luôn bật khi xem lời bài hát</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Ngăn màn hình tắt trong khi bảng lời bài hát đang mở</string>
   <string name="morphe_music_lyrics_section_service_title">Dịch vụ lời bài hát</string>
   <string name="morphe_music_lyrics_section_overlay_title">Lớp phủ</string>
   <string name="morphe_music_lyrics_section_sync_title">Đồng bộ</string>
@@ -444,6 +446,7 @@ Chỉ thêm token khi bạn muốn dùng tài khoản của riêng mình. Token 
   <string name="morphe_music_lyrics_romanized_by_ai">Phiên âm bởi %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Đã dịch</string>
+  <string name="morphe_music_lyrics_translation_language_title">Ngôn ngữ bản dịch</string>
   <string name="morphe_music_lyrics_translating">Đang dịch…</string>
   <string name="morphe_music_lyrics_translate_failed">Không thể dịch lời bài hát</string>
   <string name="morphe_music_lyrics_romanize_hide">Đã chuyển tự</string>

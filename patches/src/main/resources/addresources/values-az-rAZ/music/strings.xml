@@ -352,6 +352,8 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Üçüncü tərəf mahnı sözlərin istifadə et</string>
   <string name="morphe_music_lyrics_enabled_summary">Üçüncü tərəf xidmətindən lirikanı göstərir, heç biri tapılmadıqda daxili sözlərə geri qayıdır</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Mahnı sözlərinə baxarkən ekranı açıq saxla</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Mahnı sözləri paneli açıq olduqda ekranın sönməsinin qarşısını alır</string>
   <string name="morphe_music_lyrics_section_service_title">Mahnı sözləri xidməti</string>
   <string name="morphe_music_lyrics_section_overlay_title">Örtük</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinxronizasiya</string>
@@ -449,8 +451,11 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_lyrics_source_label">Mənbə: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Google tərəfindən tərcümə edilib</string>
   <string name="morphe_music_lyrics_romanized_by_google">Google tərəfindən transkripsiya olunub</string>
+  <string name="morphe_music_lyrics_translated_by_ai">%s tərəfindən tərcümə edilib</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">%s tərəfindən transkripsiya olunub</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Tərcümə edildi</string>
+  <string name="morphe_music_lyrics_translation_language_title">Tərcümə dili</string>
   <string name="morphe_music_lyrics_translating">Tərcümə olunur…</string>
   <string name="morphe_music_lyrics_translate_failed">Mahnı sözlərini tərcümə etmək olmadı</string>
   <string name="morphe_music_lyrics_romanize_hide">Transkripsiya olundu</string>
@@ -464,6 +469,22 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_lyrics_hide_info_summary">Mahnı sözlərinin altında göstərilən müəllif sətrini gizlət</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tərcümə və transkripsiyanın yerini dəyiş</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">AÇIQ olduqda transkripsiya sözlərin altında və tərcümə yuxarıda göstərilir; QAPALI olduqda transkripsiya üstdə, tərcümə isə altda qalır</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI uyğun tərcümə</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Tərcümə və transkripsiya üçün Google Tərcümə əvəzinə fərdi OpenAI uyğun API-sini istifadə et</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Süni İntellekt Tərcümə Tənzimləmələri</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Süni intellektlə mahnı sözlərinin tərcüməsi və transkripsiyası üçün OpenAI uyğun API son nöqtəsini tənzimlə.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API son nöqtəsi URL-si (məsələn, https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API açarı (gizli giriş üçün boş qoy)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Model adı (məsələn, openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Süni intellekt tərcümə tənzimləmələri saxlanıldı</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Süni intellekt son nöqtəsinə qoşulmaq olmadı. Zəhmət olmasa, tənzimləmələrinizi yoxlayın.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Süni intellekt tərcümə tənzimləmələri sıfırlandı</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Tənzimlənib</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Tənzimləmək üçün toxun</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Əsas URL boş ola bilməz</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Əsas URL http:// və ya https:// ilə başlamalıdır</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Model adı boş ola bilməz</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Bağlantı təsdiqlənir…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Qalın simvolları qeyri-aktiv et</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Oynadıcının Növbəti, Mahnı sözləri və Əlaqəli panellərini bərpa et</string>

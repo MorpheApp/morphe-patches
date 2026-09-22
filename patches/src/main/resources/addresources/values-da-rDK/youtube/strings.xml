@@ -1045,7 +1045,6 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_miniplayer_screen_title">Mini-afspiller</string>
   <string name="morphe_miniplayer_screen_summary">Tilpas udseendet og adfærden af den minimerede videoplayer</string>
   <string name="morphe_miniplayer_type_title">Type af miniplayer</string>
-  <string name="morphe_miniplayer_hide_title_title">Skjul titel</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiveret</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1281,7 +1280,7 @@ Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Vis spoofing i \'Statistik for nørder\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Gendan gammel videohandlingslinje</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Løser problemet med manglende dislikes og at video-handlingsknapper ikke kan skjules
+  <string name="morphe_restore_old_video_action_bar_summary">"Retter, at videohandlingsknapper ikke kan skjules
 
-Begrænsning: Vendes tilbage til den gamle stil for 'Flere videoer'-overlejringen"</string>
+Begrænsning: Vender tilbage til gammeldags 'Flere videoer'-overlay"</string>
 </resources>

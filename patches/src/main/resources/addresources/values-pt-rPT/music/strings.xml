@@ -352,6 +352,8 @@ Para garantir que o scrobbling seja sincronizado durante a reprodução em segun
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Usar letras de terceiros</string>
   <string name="morphe_music_lyrics_enabled_summary">Exibe letras de um serviço de terceiros, recorrendo às letras internas quando nenhuma for encontrada</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Manter a tela ativa ao visualizar letras</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Evita que a tela desligue enquanto o painel de letras está aberto</string>
   <string name="morphe_music_lyrics_section_service_title">Serviço de Letras</string>
   <string name="morphe_music_lyrics_section_overlay_title">Sobreposição</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronização</string>
@@ -453,6 +455,7 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizado por %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Ocultar linha de crédito</string>
+  <string name="morphe_music_lyrics_translation_language_title">Idioma da tradução</string>
   <string name="morphe_music_lyrics_translating">Traduzindo…</string>
   <string name="morphe_music_lyrics_translate_failed">Não foi possível traduzir a letra</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizado</string>

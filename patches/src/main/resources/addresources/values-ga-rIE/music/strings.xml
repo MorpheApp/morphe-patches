@@ -352,6 +352,8 @@ Chun a chinntiú go bhfuil scrobbling i gcóir le linn imirt san chúlra, déan 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Úsáid liricí tríú páirtí</string>
   <string name="morphe_music_lyrics_enabled_summary">Taispeánann sé liricí ó sheirbhís tríú páirtí, ag úsáid na liricí ionsuite nuair nach bhfaightear aon cheann.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Coinnigh an scáileán ar siúl agus tú ag féachaint ar liricí</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Cuireann sé cosc ar mhúchadh an scáileáin agus an painéal liricí ar oscailt</string>
   <string name="morphe_music_lyrics_section_service_title">Seirbhís liricí</string>
   <string name="morphe_music_lyrics_section_overlay_title">Forleagan</string>
   <string name="morphe_music_lyrics_section_sync_title">Sioncrónú</string>
@@ -453,6 +455,7 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_romanized_by_ai">Rómhánachaithe ag %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Aistrithe</string>
+  <string name="morphe_music_lyrics_translation_language_title">Teanga aistriúcháin</string>
   <string name="morphe_music_lyrics_translating">Ag aistriú…</string>
   <string name="morphe_music_lyrics_translate_failed">Ní féidir na líricí a aistriú</string>
   <string name="morphe_music_lyrics_romanize_hide">Rómánaithe</string>

@@ -115,13 +115,6 @@ public class ReturnYouTubeDislikePatch {
     // Counts drawn over the like and dislike buttons, shared with YouTube Music.
     //
 
-    /**
-     * The segmented button of the old action bar has a count for the likes only, so the dislike
-     * count is drawn over the button and the button is given room for it.
-     */
-    private static final boolean OLD_ACTION_BAR_ENABLED =
-            RYD_ENABLED && Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get();
-
     static {
         ReturnYouTubeDislikeButtons.setVideoDataSource(() -> currentVideoData);
     }
@@ -130,7 +123,7 @@ public class ReturnYouTubeDislikePatch {
      * Injection point.
      */
     public static void onYogaSetWidth(long nodePointer, float width) {
-        if (OLD_ACTION_BAR_ENABLED) {
+        if (RYD_ENABLED) {
             ReturnYouTubeDislikeButtons.onYogaSetWidth(nodePointer, width);
         }
     }

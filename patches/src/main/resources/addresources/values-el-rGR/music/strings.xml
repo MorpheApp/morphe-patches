@@ -352,6 +352,8 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Χρήση στίχων από τρίτους</string>
   <string name="morphe_music_lyrics_enabled_summary">Εμφανίζει στίχους από μια υπηρεσία τρίτου μέρους, επιστρέφοντας στους ενσωματωμένους στίχους όταν δεν βρεθούν.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Να παραμένει η οθόνη ανοιχτή κατά την προβολή στίχων</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Αποτρέπει την απενεργοποίηση της οθόνης όσο ο πίνακας στίχων είναι ανοιχτός.</string>
   <string name="morphe_music_lyrics_section_service_title">Υπηρεσία στίχων</string>
   <string name="morphe_music_lyrics_section_overlay_title">Επικάλυψη</string>
   <string name="morphe_music_lyrics_section_sync_title">Συγχρονισμός</string>
@@ -448,6 +450,7 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_lyrics_romanized_by_ai">Μεταγράφηκε σε λατινικούς χαρακτήρες από %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Μεταφρασμένο</string>
+  <string name="morphe_music_lyrics_translation_language_title">Γλώσσα μετάφρασης</string>
   <string name="morphe_music_lyrics_translating">Μετάφραση…</string>
   <string name="morphe_music_lyrics_translate_failed">Δεν ήταν δυνατή η μετάφραση των στίχων</string>
   <string name="morphe_music_lyrics_romanize_hide">Μεταγεγραμμένο</string>

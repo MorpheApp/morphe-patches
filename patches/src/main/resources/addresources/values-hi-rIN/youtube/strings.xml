@@ -1047,7 +1047,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
   <string name="morphe_miniplayer_screen_summary">मिनीकृत प्लेयर को कस्टमाइज़ करें</string>
   <string name="morphe_miniplayer_type_title">मिनीप्लेयर प्रकार</string>
-  <string name="morphe_miniplayer_hide_title_title">शीर्षक छिपाएँ</string>
   <string name="morphe_miniplayer_type_entry_0">अक्षम</string>
   <string name="morphe_miniplayer_type_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_miniplayer_type_entry_2">न्यूनतम</string>
@@ -1283,7 +1282,7 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">स्पूफिंग को \'स्टैट्स फॉर नर्ड्स\' में दिखाएं</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">पुराने वीडियो एक्शन बार को पुनर्स्थापित करें</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"डिस्लाइक्स को नहीं दिखाए जाने और वीडियो एक्शन बटन को छिपाए नहीं जा सकने की समस्या ठीक करता है
+  <string name="morphe_restore_old_video_action_bar_summary">"वीडियो एक्शन बटन छिपाने की असमर्थता को ठीक करता है
 
-सीमा: पुराने 'अधिक वीडियो' ओवरले पर वापस लौटता है"</string>
+सीमा: पुरानी शैली 'More videos' ओवरले पर वापस लौटता है"</string>
 </resources>

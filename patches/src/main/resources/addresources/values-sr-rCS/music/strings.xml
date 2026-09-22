@@ -351,6 +351,8 @@ Da biste obezbedili sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, u
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Koristi tekstove pesama trećih strana</string>
   <string name="morphe_music_lyrics_enabled_summary">Prikazuje tekstove pesama sa servisa treće strane, vraćajući se na ugrađene tekstove kada nisu pronađeni</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Drži ekran uključen dok gledate tekst pesme</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Sprečava da se ekran ugasi dok je panel sa tekstom pesme otvoren</string>
   <string name="morphe_music_lyrics_section_service_title">Servis za tekst pesme.</string>
   <string name="morphe_music_lyrics_section_overlay_title">Preklop</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinhronizacija</string>
@@ -443,6 +445,7 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizovao %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Prevedeno</string>
+  <string name="morphe_music_lyrics_translation_language_title">Jezik prevoda</string>
   <string name="morphe_music_lyrics_translating">Prevođenje…</string>
   <string name="morphe_music_lyrics_translate_failed">Nije bilo moguće prevesti tekst</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizovano</string>

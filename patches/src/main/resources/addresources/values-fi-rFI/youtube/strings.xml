@@ -1047,7 +1047,7 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_miniplayer_screen_title">Minisoitin</string>
   <string name="morphe_miniplayer_screen_summary">Muokkaa pienennetyn videotoistimen ulkoasua ja toimintaa</string>
   <string name="morphe_miniplayer_type_title">Minisoittimen tyyppi</string>
-  <string name="morphe_miniplayer_hide_title_title">Piilota otsikko</string>
+  <string name="morphe_miniplayer_hide_title_title">Piilota otsikko ja kanava</string>
   <string name="morphe_miniplayer_type_entry_0">Pois käytöstä</string>
   <string name="morphe_miniplayer_type_entry_1">Oletus</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaalinen</string>
@@ -1283,7 +1283,7 @@ AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Näytä naamiointi \'Stats for nerds\' -osiossa</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Palauta vanha videotoimintopalkki</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Korjaa tykkäysten puuttuminen ja videotoimintopainikkeiden piilottamisen ongelmat
+  <string name="morphe_restore_old_video_action_bar_summary">"Korjaa videotoimintapainikkeiden piilottamisen
 
-Rajoitus: Palaa vanhaan \"Lisää videoita\" -peittokuviotyyliin"</string>
+Rajoitus: Palauttaa vanhan tyylin 'Lisää videoita' -peittokuvan"</string>
 </resources>

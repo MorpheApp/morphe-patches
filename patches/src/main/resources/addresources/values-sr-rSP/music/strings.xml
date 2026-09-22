@@ -352,6 +352,8 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Коришћење текстова песама треће стране</string>
   <string name="morphe_music_lyrics_enabled_summary">Приказује текстове песама са сервиса треће стране, враћајући се на уграђене текстове песама када нису пронађени</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Држите екран укљученим док гледате текст песме</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Спречава искључивање екрана док је панел са текстом песме отворен</string>
   <string name="morphe_music_lyrics_section_service_title">Сервис за текстове песама</string>
   <string name="morphe_music_lyrics_section_overlay_title">Преклапање</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронизација</string>
@@ -448,6 +450,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_romanized_by_ai">Романизација: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Преведено</string>
+  <string name="morphe_music_lyrics_translation_language_title">Језик превода</string>
   <string name="morphe_music_lyrics_translating">Превођење…</string>
   <string name="morphe_music_lyrics_translate_failed">Није било могуће превести текстове песама</string>
   <string name="morphe_music_lyrics_romanize_hide">Романизовано</string>
@@ -464,7 +467,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI-компатибилан превод</string>
   <string name="morphe_music_lyrics_use_ai_translation_summary">Користите прилагођени OpenAI-компатибилни API за превод и романизацију уместо Google Translate-а.</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">Подешавања AI превода</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Подесите OpenAI-компатибилни API крајњу тачку за AI превод и романизацију текстова песама.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Подесите крању OpenAI-компатибилни API крајњу тачку за AI превод и романизацију текстова песама.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API крајња тачка URL (нпр. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API кључ (оставите празно за анониман приступ)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Назив модела (нпр. openai-fast, gpt-4o-mini)</string>

@@ -1048,7 +1048,6 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_miniplayer_screen_title">Minispieler</string>
   <string name="morphe_miniplayer_screen_summary">Passen Sie das Erscheinungsbild und das Verhalten des minimierten Videoplayers an</string>
   <string name="morphe_miniplayer_type_title">Minispielertyp</string>
-  <string name="morphe_miniplayer_hide_title_title">Titel ausblenden</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiviert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1284,7 +1283,7 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Spoofing in „Statistiken für Nerds“ anzeigen</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Alte Video-Aktionsleiste wiederherstellen</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Behebt fehlende Dislikes und das Nichtausblenden der Video-Aktionsschaltfläche
+  <string name="morphe_restore_old_video_action_bar_summary">"Behebt, dass Video-Aktionsschaltflächen nicht ausgeblendet werden können
 
-Einschränkung: Zurück zum alten „Mehr Videos“-Overlay"</string>
+Einschränkung: Kehrt zum alten Overlay 'Weitere Videos' zurück."</string>
 </resources>

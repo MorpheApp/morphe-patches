@@ -1046,7 +1046,7 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">Personalize a aparência e o comportamento do mini player minimizado</string>
   <string name="morphe_miniplayer_type_title">Tipo de miniplayer</string>
-  <string name="morphe_miniplayer_hide_title_title">Ocultar título</string>
+  <string name="morphe_miniplayer_hide_title_title">Ocultar título e canal</string>
   <string name="morphe_miniplayer_type_entry_0">Desativado</string>
   <string name="morphe_miniplayer_type_entry_1">Padrão</string>
   <string name="morphe_miniplayer_type_entry_2">Mínimo</string>
@@ -1282,7 +1282,7 @@ A reprodução de vídeos com AV1 pode apresentar travamentos ou perda de frames
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar cliente simulado nas \'Estatísticas para nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurar barra de ações de vídeo antiga</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Restaura a exibição do botão 'Não gostei' e permite ocultar os botões de ação do vídeo
+  <string name="morphe_restore_old_video_action_bar_summary">"Corrige o problema em que os botões de ação do vídeo não podem ser ocultados
 
-Limitação: Retorna à sobreposição 'Mais vídeos' no estilo antigo"</string>
+Limitação: Reverte para o estilo antigo da sobreposição 'Mais vídeos'"</string>
 </resources>

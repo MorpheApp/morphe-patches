@@ -1049,7 +1049,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_screen_title">미니 플레이어</string>
   <string name="morphe_miniplayer_screen_summary">최소화된 동영상 플레이어의 레이아웃 및 동작을 설정할 수 있습니다</string>
   <string name="morphe_miniplayer_type_title">미니 플레이어 유형</string>
-  <string name="morphe_miniplayer_hide_title_title">제목 숨기기</string>
+  <string name="morphe_miniplayer_hide_title_title">제목 및 채널 숨기기</string>
   <string name="morphe_miniplayer_type_entry_0">사용 안함</string>
   <string name="morphe_miniplayer_type_entry_1">기본값</string>
   <string name="morphe_miniplayer_type_entry_2">최소화 1</string>
@@ -1285,7 +1285,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">전문 통계에서 속이기 정보 표시하기</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">이전 동영상 작업 버튼바 복원하기</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"싫어요 수가 표시되지 않거나 동영상 작업 버튼을 숨길 수 없는 문제를 수정합니다
+  <string name="morphe_restore_old_video_action_bar_summary">"동영상 작업 버튼을 숨길 수 없는 문제를 수정합니다
 
-제한 사항: 이전 '동영상 더보기' 오버레이가 복원됩니다"</string>
+제한 사항: 이전 스타일의 '동영상 더보기' 오버레이로 되돌아갑니다"</string>
 </resources>

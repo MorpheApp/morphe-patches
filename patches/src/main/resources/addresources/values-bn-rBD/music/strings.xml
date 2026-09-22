@@ -352,6 +352,8 @@ Second \"item\" text"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">তৃতীয় পক্ষের লিরিকস ব্যবহার করুন</string>
   <string name="morphe_music_lyrics_enabled_summary">একটি তৃতীয় পক্ষের পরিষেবা থেকে লিরিকস দেখায়, যদি কিছু খুঁজে না পাওয়া যায় তবে অন্তর্নির্মিত লিরিকসে ফিরে যায়</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">গানের কথা দেখার সময় স্ক্রিন চালু রাখুন</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">গানের কথার প্যানেল খোলা থাকাকালীন ডিসপ্লে বন্ধ হয়ে যাওয়া প্রতিরোধ করে</string>
   <string name="morphe_music_lyrics_section_service_title">লিরিক্স পরিষেবা</string>
   <string name="morphe_music_lyrics_section_overlay_title">ওভারলে</string>
   <string name="morphe_music_lyrics_section_sync_title">সিঙ্ক্রোনাইজেশন</string>
@@ -448,6 +450,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">রোমানাইজ করেছেন %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">রোমানাইজ করা হচ্ছে…</string>
+  <string name="morphe_music_lyrics_translation_language_title">অনুবাদের ভাষা</string>
   <string name="morphe_music_lyrics_translating">অনুবাদ করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_translate_failed">লিরিক্স অনুবাদ করা যায়নি</string>
   <string name="morphe_music_lyrics_romanize_hide">লিরিক্স রোমানাইজ করা যায়নি</string>

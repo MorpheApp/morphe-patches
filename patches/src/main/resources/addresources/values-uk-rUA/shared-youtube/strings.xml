@@ -235,7 +235,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">Дизлайки недоступні (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Приховано власником</string>
-  <string name="morphe_ryd_accessibility_dislike_percentage">Не подобається це відео, %s голосів є дизлайками</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Дизлайкнути це відео разом із %s іншими людьми</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Дизлайкнути це відео, %s голосів є дизлайками</string>
   <string name="morphe_ryd_enabled_title">Увімкнути Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Показувати дизлайки у відсотках</string>
   <string name="morphe_ryd_dislike_percentage_summary">Показує дизлайки у відсотках від лайків замість числа</string>

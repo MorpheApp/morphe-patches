@@ -1047,7 +1047,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">Миниплеер</string>
   <string name="morphe_miniplayer_screen_summary">Персонализирайте външния вид и поведението на минимизирания видео плейър</string>
   <string name="morphe_miniplayer_type_title">Тип на миниплеера</string>
-  <string name="morphe_miniplayer_hide_title_title">Скрий заглавието</string>
+  <string name="morphe_miniplayer_hide_title_title">Скриване на заглавието и канала</string>
   <string name="morphe_miniplayer_type_entry_0">Изключен</string>
   <string name="morphe_miniplayer_type_entry_1">По подразбиране</string>
   <string name="morphe_miniplayer_type_entry_2">Минимален</string>
@@ -1283,7 +1283,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показване на имитирането в \'Stats for nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Възстановяване на стар видео бар с действия</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Отстранява проблема с неотчетените отрицателни оценки и невъзможността за скриване на бутоните за действие във видеоклипа
+  <string name="morphe_restore_old_video_action_bar_summary">"Коригира проблем, при който бутоните за действия с видеото не могат да бъдат скрити
 
-Ограничение: Връща се към стария стил на покритието „Още видеоклипове“"</string>
+Ограничение: Връща се към стария стил на наслагването „Още видеоклипове“"</string>
 </resources>

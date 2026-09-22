@@ -352,6 +352,8 @@ A háttérlejátszás közbeni szinkronizálás biztosításához győződjön m
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Harmadik féles szöveg használata</string>
   <string name="morphe_music_lyrics_enabled_summary">Szövegeket jelenít meg egy külső szolgáltatótól, ha nincs találat, akkor a beépített szövegeket használja.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Képernyő bekapcsolva tartása a dalszövegek megtekintése közben</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Megakadályozza, hogy a kijelző kikapcsoljon, amíg a dalszövegpanel nyitva van</string>
   <string name="morphe_music_lyrics_section_service_title">Dalszöveg-szolgáltatás</string>
   <string name="morphe_music_lyrics_section_overlay_title">Átfedés</string>
   <string name="morphe_music_lyrics_section_sync_title">Szinkronizálás</string>
@@ -453,6 +455,7 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizálta: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Lefordítva</string>
+  <string name="morphe_music_lyrics_translation_language_title">Fordítás nyelve</string>
   <string name="morphe_music_lyrics_translating">Fordítás…</string>
   <string name="morphe_music_lyrics_translate_failed">A dalszöveg fordítása sikertelen</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizált</string>

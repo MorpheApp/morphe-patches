@@ -352,6 +352,8 @@ Pro zajištění synchronizace scrobblingu během přehrávání na pozadí se u
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Používat texty od třetí strany</string>
   <string name="morphe_music_lyrics_enabled_summary">Zobrazuje texty ze služby třetí strany, s přechodem na vestavěné texty, pokud neexistují.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Ponechat obrazovku zapnutou při prohlížení textů písní</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Zabraňuje vypnutí obrazovky, když je otevřen panel s texty písní</string>
   <string name="morphe_music_lyrics_section_service_title">Služba pro texty písní</string>
   <string name="morphe_music_lyrics_section_overlay_title">Překryv</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronizace</string>
@@ -448,6 +450,7 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizováno službou %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Přeloženo</string>
+  <string name="morphe_music_lyrics_translation_language_title">Jazyk překladu</string>
   <string name="morphe_music_lyrics_translating">Překládání…</string>
   <string name="morphe_music_lyrics_translate_failed">Text písně se nepodařilo přeložit</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizováno</string>

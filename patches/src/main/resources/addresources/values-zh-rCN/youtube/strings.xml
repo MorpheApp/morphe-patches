@@ -1047,7 +1047,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">小型播放器</string>
   <string name="morphe_miniplayer_screen_summary">自定义最小化视频播放器的外观和行为</string>
   <string name="morphe_miniplayer_type_title">小型播放器类型</string>
-  <string name="morphe_miniplayer_hide_title_title">隐藏标题</string>
+  <string name="morphe_miniplayer_hide_title_title">隐藏标题和频道</string>
   <string name="morphe_miniplayer_type_entry_0">已禁用</string>
   <string name="morphe_miniplayer_type_entry_1">默认</string>
   <string name="morphe_miniplayer_type_entry_2">极简</string>
@@ -1283,7 +1283,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">在“高级统计信息”中显示伪造信息</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">恢复旧版视频操作栏</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"修复不喜欢数量未显示和视频操作按钮无法隐藏的问题
+  <string name="morphe_restore_old_video_action_bar_summary">"修复视频操作按钮无法隐藏的问题
 
-限制：恢复到旧版“更多视频”叠加层样式"</string>
+限制：恢复旧版“更多视频”叠加层"</string>
 </resources>

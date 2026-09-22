@@ -352,6 +352,8 @@ För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Använd tredjeparts sångtexter</string>
   <string name="morphe_music_lyrics_enabled_summary">Visar sångtexter från en tredjepartstjänst, med fallback till de inbyggda sångtexterna när inga hittas</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Håll skärmen på medan du visar texten</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Förhindrar att skärmen stängs av medan textpanelen är öppen</string>
   <string name="morphe_music_lyrics_section_service_title">Sångtextstjänst</string>
   <string name="morphe_music_lyrics_section_overlay_title">Överlägg</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
@@ -448,6 +450,7 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_romanized_by_ai">Romaniserad av %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Översatt</string>
+  <string name="morphe_music_lyrics_translation_language_title">Översättningsspråk</string>
   <string name="morphe_music_lyrics_translating">Översätter…</string>
   <string name="morphe_music_lyrics_translate_failed">Kunde inte översätta sångtexten</string>
   <string name="morphe_music_lyrics_romanize_hide">Romaniserad</string>

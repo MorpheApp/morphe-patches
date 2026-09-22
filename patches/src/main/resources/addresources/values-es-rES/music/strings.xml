@@ -352,6 +352,8 @@ Para garantizar que la sincronización se realice durante la reproducción en se
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Usar letras de terceros</string>
   <string name="morphe_music_lyrics_enabled_summary">Muestra letras de un servicio de terceros, recurriendo a las letras integradas cuando no se encuentran</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Mantener pantalla encendida mientras se ven las letras</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Evita que la pantalla se apague mientras el panel de letras está abierto</string>
   <string name="morphe_music_lyrics_section_service_title">Servicio de letras</string>
   <string name="morphe_music_lyrics_section_overlay_title">Superposición</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronización</string>
@@ -453,6 +455,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizado por %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traducido</string>
+  <string name="morphe_music_lyrics_translation_language_title">Idioma de traducción</string>
   <string name="morphe_music_lyrics_translating">Traduciendo…</string>
   <string name="morphe_music_lyrics_translate_failed">No se pudieron traducir las letras</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizado</string>

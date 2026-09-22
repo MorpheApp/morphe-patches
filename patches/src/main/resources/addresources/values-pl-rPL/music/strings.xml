@@ -352,6 +352,8 @@ Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij si�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Używaj zewnętrznych tekstów</string>
   <string name="morphe_music_lyrics_enabled_summary">Wyświetla teksty z zewnętrznej usługi, przełączając się na wbudowane, gdy nic nie zostanie znalezione</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Nie wyłączaj ekranu podczas wyświetlania tekstu</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Zapobiega wyłączaniu się ekranu, gdy panel z tekstem jest otwarty</string>
   <string name="morphe_music_lyrics_section_service_title">Usługa tekstów</string>
   <string name="morphe_music_lyrics_section_overlay_title">Nakładka</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronizacja</string>
@@ -453,6 +455,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_romanized_by_ai">Zromanizowane przez %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Przetłumaczone</string>
+  <string name="morphe_music_lyrics_translation_language_title">Język tłumaczenia</string>
   <string name="morphe_music_lyrics_translating">Tłumaczenie…</string>
   <string name="morphe_music_lyrics_translate_failed">Nie udało się przetłumaczyć tekstu</string>
   <string name="morphe_music_lyrics_romanize_hide">Zromanizowane</string>
