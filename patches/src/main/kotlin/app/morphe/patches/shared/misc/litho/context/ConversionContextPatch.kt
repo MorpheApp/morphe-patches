@@ -10,12 +10,8 @@
 
 package app.morphe.patches.shared.misc.litho.context
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.BytecodePatch
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
@@ -23,7 +19,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -59,170 +54,25 @@ internal fun createConversionContextPatch(
 
     execute {
         val toStringMethod: MutableMethod
-        val identifierField: FieldReference
         val stringBuilderField: FieldReference
+        val identifierField: FieldReference
+        val horizontalSwipeField: FieldReference
+        val heightConstraint: FieldReference
 
-        with (ConversionContextToStringFingerprint) {
+        with(ConversionContextToStringFingerprint) {
             conversionContextClassDef = classDef
             toStringMethod = method
-            identifierField = method.findFieldFromToString(IDENTIFIER_PROPERTY)
             stringBuilderField = conversionContextClassDef.fields.single { field ->
                 field.type == "Ljava/lang/StringBuilder;"
             }
+            identifierField = method.findFieldFromToString(IDENTIFIER_PROPERTY)
+            horizontalSwipeField = method.findFieldFromToString(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY)
+            heightConstraint = method.findFieldFromToString(HEIGHT_CONSTRAINT_PROPERTY)
         }
 
-        compactConversionContextToString(
-            toStringMethod,
-            identifierField,
-            stringBuilderField
-        )
-
-        // The conversionContext class can be used as is in most versions.
-        if (conversionContextClassDef.superclass == "Ljava/lang/Object;") {
-            conversionContextClassDef.apply {
-                // Add interface and helper methods to allow extension code to call obfuscated methods.
-                interfaces.add(EXTENSION_CONTEXT_INTERFACE)
-
-                arrayOf(
-                    Triple(
-                        "patch_getIdentifier",
-                        "Ljava/lang/String;",
-                        identifierField
-                    ),
-                    Triple(
-                        "patch_getPathBuilder",
-                        "Ljava/lang/StringBuilder;",
-                        stringBuilderField
-                    )
-                ).forEach { (interfaceMethodName, interfaceMethodReturnType, classFieldReference) ->
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            interfaceMethodName,
-                            listOf(),
-                            interfaceMethodReturnType,
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    iget-object v0, p0, $classFieldReference
-                                    return-object v0
-                                """
-                            )
-                        }
-                    )
-                }
-            }
-        } else {
-            // In some special versions, such as YouTube 20.41, it inherits from an abstract class,
-            // in which case a helper method is added to the abstract class.
-
-            // Since fields cannot be accessed directly in an abstract class, abstract methods are linked.
-            val conversionContextIdentifierFingerprint = Fingerprint(
-                definingClass = conversionContextClassDef.type,
-                parameters = listOf(),
-                returnType = "Ljava/lang/String;",
-                filters = listOf(
-                    fieldAccess(
-                        opcode = Opcode.IGET_OBJECT,
-                        reference = identifierField
-                    ),
-                    opcode(
-                        opcode = Opcode.RETURN_OBJECT,
-                        location = MatchAfterImmediately()
-                    )
-                )
-            )
-            val conversionContextStringBuilderFingerprint = Fingerprint(
-                definingClass = conversionContextClassDef.type,
-                parameters = listOf(),
-                returnType = "Ljava/lang/StringBuilder;",
-                filters = listOf(
-                    fieldAccess(
-                        opcode = Opcode.IGET_OBJECT,
-                        reference = stringBuilderField
-                    ),
-                    opcode(
-                        opcode = Opcode.RETURN_OBJECT,
-                        location = MatchAfterImmediately()
-                    )
-                )
-            )
-
-            val stringBuilderMethodName = conversionContextStringBuilderFingerprint.method.name
-            val identifierMethodName = conversionContextIdentifierFingerprint.method.name
-
-            conversionContextClassDef = mutableClassDefBy(conversionContextClassDef.superclass!!)
-
-            conversionContextClassDef.apply {
-                // Add interface and helper methods to allow extension code to call obfuscated methods.
-                interfaces.add(EXTENSION_CONTEXT_INTERFACE)
-
-                arrayOf(
-                    Triple(
-                        "patch_getIdentifier",
-                        "Ljava/lang/String;",
-                        identifierMethodName
-                    ),
-                    Triple(
-                        "patch_getPathBuilder",
-                        "Ljava/lang/StringBuilder;",
-                        stringBuilderMethodName
-                    )
-                ).forEach { (interfaceMethodName, interfaceMethodReturnType, classMethodName) ->
-                    methods.add(
-                        ImmutableMethod(
-                            type,
-                            interfaceMethodName,
-                            listOf(),
-                            interfaceMethodReturnType,
-                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                            null,
-                            null,
-                            MutableMethodImplementation(2),
-                        ).toMutable().apply {
-                            addInstructions(
-                                0,
-                                """
-                                    invoke-virtual {p0}, $type->$classMethodName()$interfaceMethodReturnType
-                                    move-result-object v0
-                                    return-object v0
-                                """
-                            )
-                        }
-                    )
-                }
-            }
-        }
-    }
-}
-
-/**
- * Original toString() dumps AtomicReferences, services, and byte arrays. Callers keep using
- * toString(); this rewrite returns identifier, path, and the null-check fields they match.
- */
-private fun compactConversionContextToString(
-    toStringMethod: MutableMethod,
-    identifierField: FieldReference,
-    stringBuilderField: FieldReference,
-) {
-    require(toStringMethod.implementation!!.registerCount >= 3) {
-        "ConversionContext.toString() has too few registers to compact"
-    }
-
-    val nullCheckFields = buildList {
-        add(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY to
-                toStringMethod.findFieldFromToString(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY))
-        add(HEIGHT_CONSTRAINT_PROPERTY to
-                toStringMethod.findFieldFromToString(HEIGHT_CONSTRAINT_PROPERTY))
-    }
-
-    val smali = buildString {
-        appendLine(
+        // Replace toString() to only include information patches care about.
+        toStringMethod.addInstructionsWithLabels(
+            0,
             """
                 move-object/from16 v2, p0
                 new-instance v0, Ljava/lang/StringBuilder;
@@ -234,36 +84,64 @@ private fun compactConversionContextToString(
                 const-string v1, " "
                 invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
                 iget-object v1, v2, $stringBuilderField
+ 
                 if-eqz v1, :morphe_cc_no_path
                 invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
                 :morphe_cc_no_path
                 nop
-            """
-        )
-        nullCheckFields.forEachIndexed { index, (name, field) ->
-            appendLine(
-                """
-                    const-string v1, "$name"
-                    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-                    iget-object v1, v2, $field
-                    if-eqz v1, :morphe_cc_non_null_$index
-                    const-string v1, "null"
-                    goto :morphe_cc_append_$index
-                    :morphe_cc_non_null_$index
-                    const-string v1, "1"
-                    :morphe_cc_append_$index
-                    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-                """
-            )
-        }
-        appendLine(
-            """
                 invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
                 move-result-object v0
                 return-object v0
             """
         )
-    }
 
-    toStringMethod.addInstructionsWithLabels(0, smali)
+        conversionContextClassDef.apply {
+            // Add interface and helper methods to allow extension code to call obfuscated methods.
+            interfaces.add(EXTENSION_CONTEXT_INTERFACE)
+
+            arrayOf(
+                Triple(
+                    "patch_getIdentifier",
+                    "Ljava/lang/String;",
+                    identifierField
+                ),
+                Triple(
+                    "patch_getPathBuilder",
+                    "Ljava/lang/StringBuilder;",
+                    stringBuilderField
+                ),
+                Triple(
+                    "get_horizontalCollectionSwipeProtector",
+                    "Ljava/lang/Object;",
+                    horizontalSwipeField
+                ),
+                Triple(
+                    "patch_getHeightConstraint",
+                    "Ljava/lang/Integer;",
+                    heightConstraint
+                )
+            ).forEach { (interfaceMethodName, interfaceMethodReturnType, classFieldReference) ->
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        interfaceMethodName,
+                        listOf(),
+                        interfaceMethodReturnType,
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                iget-object v0, p0, $classFieldReference
+                                return-object v0
+                            """
+                        )
+                    }
+                )
+            }
+        }
+    }
 }

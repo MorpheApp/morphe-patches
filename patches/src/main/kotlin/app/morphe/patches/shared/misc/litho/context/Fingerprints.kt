@@ -10,7 +10,6 @@ package app.morphe.patches.shared.misc.litho.context
 import app.morphe.patcher.Fingerprint
 
 internal const val IDENTIFIER_PROPERTY = ", identifierProperty="
-
 internal const val HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY = "horizontalCollectionSwipeProtector="
 internal const val HEIGHT_CONSTRAINT_PROPERTY = "heightConstraint="
 
