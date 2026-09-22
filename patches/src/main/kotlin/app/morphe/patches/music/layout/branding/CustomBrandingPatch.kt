@@ -19,10 +19,12 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_MAIN_ACTIVITY_NAME
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.settings.PreferenceScreen
+import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
@@ -30,8 +32,17 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
+private const val STARTUP_ANIMATION_EXTENSION_CLASS =
+    "Lapp/morphe/extension/music/patches/StartupAnimationPatch;"
+
 private val startupAnimationPatch = bytecodePatch {
+    dependsOn(settingsPatch)
+
     execute {
+        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_music_startup_animation", summary = true)
+        )
+
         // The original animation starts with the original logo, which would flash on screen
         // before a branded app. An icon with its own animation plays that instead, and the
         // animation is turned off for a user provided icon.
@@ -49,7 +60,7 @@ private val startupAnimationPatch = bytecodePatch {
             addInstructions(
                 checkCastIndex,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS->getLottieViewOrNull(Landroid/view/View;)Landroid/view/View;
+                    invoke-static { v$register }, $STARTUP_ANIMATION_EXTENSION_CLASS->getLottieViewOrNull(Landroid/view/View;)Landroid/view/View;
                     move-result-object v$register
                 """
             )
