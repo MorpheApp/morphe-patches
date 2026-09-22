@@ -246,6 +246,9 @@ public final class LyricsManager {
         }
         long result = position - Settings.LYRICS_OFFSET_MS.get() - temporaryOffsetMs;
 
+        if (smoothedPosition >= 0 && result < smoothedPosition - 2000) {
+            smoothedPosition = -1;
+        }
         if (result > 0) {
             smoothedPosition = result;
         }

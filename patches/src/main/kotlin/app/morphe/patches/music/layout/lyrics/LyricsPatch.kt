@@ -83,7 +83,7 @@ val lyricsPatch = bytecodePatch(
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_source",
                         titleKey = null,
-                        summaryKey = "morphe_music_lyrics_source_summary",
+                        summaryKey = null,
                         tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
                         selectable = false,
                         dependency = "morphe_music_lyrics_enabled"
@@ -128,7 +128,8 @@ val lyricsPatch = bytecodePatch(
                     ListPreference(
                         key = "morphe_music_lyrics_translation_language",
                         entriesKey = "morphe_language_entries",
-                        entryValuesKey = "morphe_language_entry_values"
+                        entryValuesKey = "morphe_language_entry_values",
+                        tag = "app.morphe.extension.music.settings.preference.LyricsTranslationLanguagePreference"
                     ),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
                     SwitchPreference(
@@ -138,7 +139,8 @@ val lyricsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
-                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true)
+                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
+                    SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true)
                 )
             ),
             PreferenceCategory(
@@ -152,7 +154,6 @@ val lyricsPatch = bytecodePatch(
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     ),
-                    SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true),
                     SwitchPreference("morphe_music_lyrics_miniplayer"),
                     SwitchPreference("morphe_music_lyrics_mediasession"),
                     SwitchPreference("morphe_music_lyrics_display_artist_first", summary = true)

@@ -868,7 +868,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             float distanceX, float distanceY) {
                         if (isOffsetAdjusting) {
                             float dx = e2.getX() - offsetSwipeStartX;
-                            int deltaMs = Math.round(dx / getResources().getDisplayMetrics().density) * 10;
+                            int deltaMs = Math.round(-dx / getResources().getDisplayMetrics().density) * 10;
                             int newMs = Math.max(-20000, Math.min(20000, offsetSwipeStartMs + deltaMs));
                             LyricsManager.getInstance().setTemporaryOffsetMs(newMs);
                             offsetRulerView.setOffsetMs(newMs);
@@ -1150,8 +1150,17 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             }
 
             if (tapToSeek) {
-                final long seekTime = line.startTimeMs();
                 lineView.setOnClickListener(view -> {
+                    final long videoLength = VideoInformation.getVideoLength();
+                    long target = line.startTimeMs()
+                            + Settings.LYRICS_OFFSET_MS.get()
+                            + LyricsManager.getInstance().getTemporaryOffsetMs();
+                    if (target < 0) {
+                        target = 0;
+                    } else if (videoLength > 0 && target > videoLength) {
+                        target = videoLength;
+                    }
+                    final long seekTime = target;
                     if (!VideoInformation.seekTo(seekTime)) {
                         Logger.printDebug(() -> "Seek to lyrics line failed: " + seekTime);
                     }
@@ -1767,11 +1776,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final long pos = manager.getPositionMs();
         final int index = current.indexForPosition(pos, highlightedIndex);
         if (index == highlightedIndex) {
-            if (highlightedIndex >= 0 && highlightedIndex < lineViews.size()
+            final int anchor = index >= 0 ? index : 0;
+            if (anchor < lineViews.size()
                     && !seekPending
                     && SystemClock.uptimeMillis() >= userScrollUntilUptimeMs) {
-                final int target = lineRows.get(highlightedIndex).getTop()
-                        + lineViews.get(highlightedIndex).getTop()
+                final int target = lineRows.get(anchor).getTop()
+                        + lineViews.get(anchor).getTop()
                         - scrollView.getHeight() / SCROLL_OFFSET_FRACTION;
                 final int clamped = Math.max(0, target);
                 final int dist = Math.abs(scrollView.getScrollY() - clamped);
@@ -1819,6 +1829,36 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         seekPending = false;
 
         if (index < 0 || index >= lineViews.size()) {
+            if (index < 0) {
+                final boolean hidePlayedNow = Settings.LYRICS_HIDE_PLAYED.get();
+                final boolean hideUnplayedNow = Settings.LYRICS_HIDE_UNPLAYED.get();
+                if (hidePlayedNow || hideUnplayedNow) {
+                    linesContainer.suppressLayout(true);
+                    try {
+                        for (int i = 0; i < lineRows.size(); i++) {
+                            lineRows.get(i).setVisibility(hideUnplayedNow ? GONE : VISIBLE);
+                        }
+                    } finally {
+                        linesContainer.suppressLayout(false);
+                    }
+                    lastOverlayIndex = index;
+                }
+                if (!lineRows.isEmpty()
+                        && SystemClock.uptimeMillis() >= userScrollUntilUptimeMs) {
+                    final int target = lineRows.get(0).getTop()
+                            + lineViews.get(0).getTop()
+                            - scrollView.getHeight() / SCROLL_OFFSET_FRACTION;
+                    final int clamped = Math.max(0, target);
+                    final int dist = Math.abs(scrollView.getScrollY() - clamped);
+                    if (dist > scrollView.getHeight() * SCROLL_INSTANT_THRESHOLD_FACTOR) {
+                        scrollView.scrollTo(0, clamped);
+                        lastScrollTarget = clamped;
+                    } else if (clamped != lastScrollTarget) {
+                        scrollView.smoothScrollTo(0, clamped);
+                        lastScrollTarget = clamped;
+                    }
+                }
+            }
             return;
         }
 

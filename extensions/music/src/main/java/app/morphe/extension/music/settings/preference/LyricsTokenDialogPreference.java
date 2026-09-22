@@ -167,7 +167,7 @@ public class LyricsTokenDialogPreference extends Preference {
                 "https://www.musixmatch.com",
                 false,
                 MusixmatchProvider::validateToken,
-                null);
+                "morphe_music_musixmatch_token_optional_hint");
         preference.onTokenChanged = MusixmatchProvider::invalidateToken;
         return preference;
     }
