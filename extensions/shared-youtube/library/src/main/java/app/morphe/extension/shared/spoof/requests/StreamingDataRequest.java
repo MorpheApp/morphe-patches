@@ -387,7 +387,7 @@ public class StreamingDataRequest {
             // If DASH protocol is not available, the client will be skipped.
             StreamingData streamingData = playerResponse.getStreamingData();
             if (streamingData.getAdaptiveFormatsCount() == 0) {
-                handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientType);
+                Logger.printDebug(() -> "Ignoring empty adaptiveFormat (" + clientType + ")");
                 return null;
             }
 
