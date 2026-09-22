@@ -14,6 +14,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.SplashAnimationPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
@@ -26,9 +27,21 @@ public class StartupAnimationPatch {
     private static final int TRACK_COLOR = Color.rgb(128, 128, 128);
 
     /**
+     * How long the app waits before the mark starts moving. The app drops the first frames of
+     * an animation while it is still starting up, which makes the start of it look torn.
+     */
+    private static final long START_DELAY_MS = 100;
+
+    /**
      * Injection point.
      */
     public static void setSplashAnimationLottie(LottieAnimationView view, int resourceId) {
+        // The app plays the animation as soon as this returns, and Lottie plays an animation
+        // that is set later as soon as it has it, so setting it later is what delays the start.
+        Utils.runOnMainThreadDelayed(() -> setSplashAnimation(view, resourceId), START_DELAY_MS);
+    }
+
+    private static void setSplashAnimation(LottieAnimationView view, int resourceId) {
         try {
             // A custom branding icon replaces the YT Music logo animation with its own.
             if (SplashAnimationPatch.setBrandedSplashAnimation(view)) {
@@ -55,7 +68,7 @@ public class StartupAnimationPatch {
 
             view.patch_setAnimation(resourceId);
         } catch (Exception ex) {
-            Logger.printException(() -> "setSplashAnimationLottie failure", ex);
+            Logger.printException(() -> "setSplashAnimation failure", ex);
         }
     }
 }
