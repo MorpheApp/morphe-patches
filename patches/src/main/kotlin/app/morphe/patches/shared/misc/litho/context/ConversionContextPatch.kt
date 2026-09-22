@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/1919
+ * https://github.com/MorpheApp/morphe-patches/pull/3120
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -16,7 +17,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.BytecodePatch
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -25,10 +25,7 @@ import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 const val EXTENSION_CONTEXT_INTERFACE =
@@ -77,7 +74,7 @@ internal fun createConversionContextPatch(
         compactConversionContextToString(
             toStringMethod,
             identifierField,
-            stringBuilderField,
+            stringBuilderField
         )
 
         // The conversionContext class can be used as is in most versions.
@@ -213,18 +210,15 @@ private fun compactConversionContextToString(
     identifierField: FieldReference,
     stringBuilderField: FieldReference,
 ) {
-    val registerCount = toStringMethod.implementation!!.registerCount
-    if (registerCount < 3) {
-        throw PatchException("ConversionContext.toString() has too few registers to compact")
+    require(toStringMethod.implementation!!.registerCount >= 3) {
+        "ConversionContext.toString() has too few registers to compact"
     }
 
     val nullCheckFields = buildList {
-        toStringMethod.findReferenceFieldOrNull(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY)?.let {
-            add(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY to it)
-        }
-        toStringMethod.findReferenceFieldOrNull(HEIGHT_CONSTRAINT_PROPERTY)?.let {
-            add(HEIGHT_CONSTRAINT_PROPERTY to it)
-        }
+        add(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY to
+                toStringMethod.findFieldFromToString(HORIZONTAL_COLLECTION_SWIPE_PROTECTOR_PROPERTY))
+        add(HEIGHT_CONSTRAINT_PROPERTY to
+                toStringMethod.findFieldFromToString(HEIGHT_CONSTRAINT_PROPERTY))
     }
 
     val smali = buildString {
@@ -244,7 +238,7 @@ private fun compactConversionContextToString(
                 invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
                 :morphe_cc_no_path
                 nop
-            """.trimIndent()
+            """
         )
         nullCheckFields.forEachIndexed { index, (name, field) ->
             appendLine(
@@ -259,7 +253,7 @@ private fun compactConversionContextToString(
                     const-string v1, "1"
                     :morphe_cc_append_$index
                     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-                """.trimIndent()
+                """
             )
         }
         appendLine(
@@ -267,38 +261,9 @@ private fun compactConversionContextToString(
                 invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
                 move-result-object v0
                 return-object v0
-            """.trimIndent()
+            """
         )
     }
 
     toStringMethod.addInstructionsWithLabels(0, smali)
-}
-
-private fun Method.findReferenceFieldOrNull(fieldName: String): FieldReference? {
-    val instructions = implementation?.instructions?.toList() ?: return null
-    val stringIndex = instructions.indexOfFirst { instruction ->
-        val reference = (instruction as? ReferenceInstruction)?.reference
-        reference is StringReference && reference.string.contains(fieldName)
-    }
-    if (stringIndex < 0) return null
-
-    for (i in (stringIndex + 1) until instructions.size) {
-        val instruction = instructions[i]
-        if (instruction.opcode == Opcode.IGET_OBJECT) {
-            val field = (instruction as? ReferenceInstruction)?.reference as? FieldReference
-                ?: continue
-            val type = field.type
-            if (type.startsWith("L") || type.startsWith("[")) {
-                return field
-            }
-        }
-        val reference = (instruction as? ReferenceInstruction)?.reference
-        if (i > stringIndex + 1 &&
-            reference is StringReference &&
-            reference.string.startsWith(", ")
-        ) {
-            return null
-        }
-    }
-    return null
 }
