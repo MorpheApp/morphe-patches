@@ -352,6 +352,8 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Utiliser les paroles de tiers</string>
   <string name="morphe_music_lyrics_enabled_summary">Affiche les paroles d\'un service tiers, en utilisant les paroles intégrées en cas d\'absence de celles-ci</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Garder l\'écran allumé pendant l\'affichage des paroles</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Empêche l\'écran de s\'éteindre lorsque le panneau des paroles est ouvert</string>
   <string name="morphe_music_lyrics_section_service_title">Service de paroles</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
@@ -453,6 +455,7 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_romanized_by_ai">Romanisé par %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traduit</string>
+  <string name="morphe_music_lyrics_translation_language_title">Langue de traduction</string>
   <string name="morphe_music_lyrics_translating">Traduction…</string>
   <string name="morphe_music_lyrics_translate_failed">Impossible de traduire les paroles</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisé</string>

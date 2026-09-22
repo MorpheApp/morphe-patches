@@ -1047,7 +1047,6 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_miniplayer_screen_title">Mini-plejer</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodi izgled i ponašanje smanjenog video plejera</string>
   <string name="morphe_miniplayer_type_title">Tip mini-plejera</string>
-  <string name="morphe_miniplayer_hide_title_title">Sakrij naslov</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućen</string>
   <string name="morphe_miniplayer_type_entry_1">Podrazumevan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalan</string>
@@ -1283,7 +1282,7 @@ Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Prikaži lažiranje u „Statistici za znalce”</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Vraća staru traku radnji videa</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja prikaz dislajkova i onemogućava sakrivanje dugmadi za akcije sa video zapisom
+  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja problem kada se dugmad za akcije videa ne mogu sakriti
 
-Ograničenje: Vraća se na stari stil prekrivanja \"Više video zapisa\""</string>
+Ograničenje: Vraća se na stari stil 'More videos' preklopa"</string>
 </resources>

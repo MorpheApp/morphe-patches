@@ -1048,7 +1048,7 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <string name="morphe_miniplayer_screen_title">Mini-lecteur</string>
   <string name="morphe_miniplayer_screen_summary">Personnalisez l\'apparence et le comportement du mini-lecteur vidéo</string>
   <string name="morphe_miniplayer_type_title">Type de mini-lecteur</string>
-  <string name="morphe_miniplayer_hide_title_title">Masquer le titre</string>
+  <string name="morphe_miniplayer_hide_title_title">Masquer le titre et la chaîne</string>
   <string name="morphe_miniplayer_type_entry_0">Désactivé</string>
   <string name="morphe_miniplayer_type_entry_1">Par défaut</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaliste</string>
@@ -1284,7 +1284,7 @@ La lecture de vidéos en AV1 peut présenter des saccades ou des pertes d'images
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Afficher la falsification dans les \'Statistiques avancées\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurer l\'ancienne barre d\'actions vidéo</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Corrige le problème des je n'aime pas non affichés et des boutons d'actions de la vidéo qui ne peuvent pas être masqués
+  <string name="morphe_restore_old_video_action_bar_summary">"Corrige l'impossibilité de masquer les boutons d'action vidéo
 
-Limitation : Rétablit l'ancien style d'overlay 'Plus de vidéos'"</string>
+Limitation : Rétablit l'ancien style de l'overlay 'Plus de vidéos'"</string>
 </resources>

@@ -235,6 +235,8 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_ryd_failure_generic">Dislike tidak tersedia (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Disembunyikan oleh pemilik</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Tidak suka video ini, bersama dengan %s orang lainnya</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Tidak suka video ini, %s dari suara adalah dislike</string>
   <string name="morphe_ryd_enabled_title">Aktifkan Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Tampilkan dislike sebagai persentase</string>
   <string name="morphe_ryd_dislike_percentage_summary">Menampilkan jumlah tidak suka sebagai persentase dari jumlah suka, bukan sebagai angka</string>

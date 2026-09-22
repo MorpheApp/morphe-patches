@@ -352,6 +352,8 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">ใช้เนื้อเพลงของบุคคลที่สาม</string>
   <string name="morphe_music_lyrics_enabled_summary">แสดงเนื้อเพลงจากบริการของบุคคลที่สาม โดยย้อนกลับไปที่เนื้อเพลงในตัวเมื่อไม่พบ</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">เปิดหน้าจอค้างไว้ขณะดูเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">ป้องกันไม่ให้หน้าจอปิดในขณะที่แผงเนื้อเพลงเปิดอยู่</string>
   <string name="morphe_music_lyrics_section_service_title">บริการเนื้อเพลง</string>
   <string name="morphe_music_lyrics_section_overlay_title">โอเวอร์เลย์</string>
   <string name="morphe_music_lyrics_section_sync_title">การซิงโครไนซ์</string>
@@ -448,6 +450,7 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_lyrics_romanized_by_ai">ถอดเป็นอักษรโรมันโดย %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">แปลแล้ว</string>
+  <string name="morphe_music_lyrics_translation_language_title">ภาษาแปล</string>
   <string name="morphe_music_lyrics_translating">กำลังแปล...</string>
   <string name="morphe_music_lyrics_translate_failed">ไม่สามารถแปลเนื้อเพลงได้</string>
   <string name="morphe_music_lyrics_romanize_hide">โรมาไนซ์แล้ว</string>

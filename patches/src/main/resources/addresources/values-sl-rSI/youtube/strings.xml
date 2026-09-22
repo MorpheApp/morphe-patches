@@ -1047,7 +1047,6 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_miniplayer_screen_title">Mini predvajalnik</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite videz in obnašanje minimiziranega predajalnika videa</string>
   <string name="morphe_miniplayer_type_title">Vrsta predvajalnika</string>
-  <string name="morphe_miniplayer_hide_title_title">Skrij naslov</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogočen</string>
   <string name="morphe_miniplayer_type_entry_1">Privzeta</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalen</string>
@@ -1283,7 +1282,7 @@ Predvajanje AV1 videa se lahko zamika ali izgublja okvirje."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Pokaži spoofing v \'Statistika za norce\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Ponovni prikaz starega videoposnetka z orodjarno</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Popravi, da se ne prikazujejo nezakonske ocene in možnosti za predvajanje ni mogoče skriti
+  <string name="morphe_restore_old_video_action_bar_summary">"Odpravi napako, da gumbov za dejanja v videoposnetkih ni mogoče skriti
 
-Omejitev: Vrnitev na stari slog »Več videoposnetkov«"</string>
+Omejitev: Vrne se stari slog prekrivnega elementa »Več videoposnetkov«"</string>
 </resources>

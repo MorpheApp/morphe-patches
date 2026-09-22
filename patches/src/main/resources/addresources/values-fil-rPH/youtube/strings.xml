@@ -1045,7 +1045,7 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">I-customize ang hitsura at pag-uugali ng minimize video player</string>
   <string name="morphe_miniplayer_type_title">Uri ng miniplayer</string>
-  <string name="morphe_miniplayer_hide_title_title">Itago ang pamagat</string>
+  <string name="morphe_miniplayer_hide_title_title">Itago ang pamagat at channel</string>
   <string name="morphe_miniplayer_type_entry_0">Na-disable</string>
   <string name="morphe_miniplayer_type_entry_1">Default</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1281,7 +1281,7 @@ Ang pag-playback ng video gamit ang AV1 ay maaaring mag-stutter o mag-drop ng mg
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Ipakita ang paggagaya sa \'Stats for nerds\'.</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Ibalik ang lumang video action bar</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Inaayos ang mga hindi ipinapakitang dislike at hindi maitagong mga pindutan ng pagkilos ng video
+  <string name="morphe_restore_old_video_action_bar_summary">"Inaayos ang isyu kung saan hindi maitatago ang mga pindutan ng aksyon sa video
 
-Limitasyon: Ibabalik sa lumang estilo ang 'Higit pang mga video' overlay"</string>
+Limitasyon: Bumabalik sa lumang istilo ng overlay na 'Higit pang mga video'"</string>
 </resources>

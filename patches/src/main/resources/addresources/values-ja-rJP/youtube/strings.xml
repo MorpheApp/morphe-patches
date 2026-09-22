@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">スワイプ コントロール</string>
   <string name="morphe_settings_screen_11_misc_title">その他</string>
   <string name="morphe_settings_screen_12_video_title">動画</string>
-  <string name="morphe_restore_old_settings_menus_title">YouTube の設定メニューを旧式に戻す</string>
+  <string name="morphe_restore_old_settings_menus_title">YouTube の設定メニューを旧仕様に戻す</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">バックグラウンド再生の制限を解除</string>
   <string name="morphe_shorts_disable_background_playback_title">ショートのバックグラウンド再生を無効化</string>
@@ -982,12 +982,12 @@ Automotive レイアウト
 • 動画プレーヤーのアクション ボタンにボタン名が表示される (旧仕様)"</string>
   <string name="morphe_tablet_layout_in_player_title">プレーヤーにのみタブレット レイアウトを適用</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"動画プレーヤーのレイアウトを旧スタイルに戻します
+  <string name="morphe_tablet_layout_in_player_summary">"動画プレーヤーのレイアウトを以前のスタイルに戻します
 
-制限事項: [アクションバーを旧式に戻す] がオフのとき、「その他の動画」オーバーレイが利用できない場合があります"</string>
+制限事項: [アクションバーを旧仕様に戻す] がオフのとき、「その他の動画」オーバーレイが表示されない場合があります"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を以前の仕様に戻す</string>
-  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を以前の仕様に戻す</string>
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を旧仕様に戻す</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 動画プレーヤー下のチャンネル名表示を復元</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
@@ -1048,7 +1048,7 @@ Automotive レイアウト
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
-  <string name="morphe_miniplayer_hide_title_title">タイトルを非表示</string>
+  <string name="morphe_miniplayer_hide_title_title">タイトルとチャンネル名を非表示</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
   <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>
@@ -1281,8 +1281,8 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <string name="morphe_spoof_video_streams_player_js_variant_title">JavaScript 版プレーヤー</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">統計情報にクライアントを表示</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">アクションバーを旧式に戻す</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"低評価数が表示されない不具合とアクション ボタンを非表示にできない不具合を修正します
+  <string name="morphe_restore_old_video_action_bar_title">アクションバーを旧仕様に戻す</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"アクション ボタンを非表示にできない不具合を修正します
 
-制限事項:「その他の動画」オーバーレイも旧スタイルに戻ります"</string>
+制限事項:「その他の動画」オーバーレイも以前のスタイルに戻ります"</string>
 </resources>

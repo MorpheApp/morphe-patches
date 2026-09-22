@@ -1044,7 +1044,7 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_miniplayer_screen_title">Mini přehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Přizpůsobte vzhled a chování minimalizovaného přehrávače videa</string>
   <string name="morphe_miniplayer_type_title">Typ mini přehrávače</string>
-  <string name="morphe_miniplayer_hide_title_title">Skrýt název</string>
+  <string name="morphe_miniplayer_hide_title_title">Skrýt název a kanál</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnuto</string>
   <string name="morphe_miniplayer_type_entry_1">Výchozí</string>
   <string name="morphe_miniplayer_type_entry_2">Minimální</string>
@@ -1280,7 +1280,7 @@ Přehrávání videa s AV1 se může sekat nebo vypadávat snímky."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Zobrazit falšování v \'Statistiky pro nadšence\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Obnovit starou akční lištu videa</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Opravuje problém se nezobrazujícími se nedokonalými hodnoceními a nemožností skrýt tlačítka akcí videa
+  <string name="morphe_restore_old_video_action_bar_summary">"Opravuje problém, kdy nelze skrýt tlačítka akcí u videa
 
-Omezení: Vrací se ke starému stylu překrytí 'Další videa'"</string>
+Omezení: Vrací se ke starému stylu překrytí „Další videa“."</string>
 </resources>

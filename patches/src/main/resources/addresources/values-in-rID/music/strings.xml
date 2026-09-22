@@ -186,7 +186,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
   <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
   <string name="morphe_music_hide_notification_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_music_hide_search_button_title">Sembunyikan tombol pencarian</string>
+  <string name="morphe_music_hide_search_button_title">Sembunyikan tombol Telusuri</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_music_action_buttons_screen_summary">Pilih tombol tindakan mana yang akan ditampilkan di bawah pemutar</string>
@@ -252,7 +252,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_change_start_page_entry_library">Koleksi</string>
   <string name="morphe_change_start_page_entry_liked_music">Musik yang disukai</string>
   <string name="morphe_change_start_page_entry_playlists">Daftar Putar</string>
-  <string name="morphe_change_start_page_entry_search">Pencarian</string>
+  <string name="morphe_change_start_page_entry_search">Telusuri</string>
   <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Sembunyikan bilah penyaring</string>
@@ -352,6 +352,8 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gunakan lirik pihak ketiga</string>
   <string name="morphe_music_lyrics_enabled_summary">Menampilkan lirik dari layanan pihak ketiga, beralih menggunakan lirik bawaan jika tidak ditemukan</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Biarkan layar tetap menyala saat menampilkan lirik</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Mencegah layar mati saat panel lirik terbuka</string>
   <string name="morphe_music_lyrics_section_service_title">Layanan lirik</string>
   <string name="morphe_music_lyrics_section_overlay_title">Hamparan</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinkronisasi</string>
@@ -418,9 +420,9 @@ Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal d
   <string name="morphe_music_lyrics_show_copy_button_title">Tampilkan tombol Salin</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Ketuk untuk menyalin lirik asli sebagai teks biasa; tekan lama untuk menyimpan file sumber lirik mentah ke Unduhan.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tampilkan tombol Terjemahan</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Terjemahkan lirik menggunakan terjemahan penyedia atau Google Terjemahan.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Terjemahkan lirik menggunakan penyedia terjemahan atau Google Terjemahan</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanisasi lirik menggunakan romanisasi penyedia atau romanisasi Google Translate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanisasikan lirik menggunakan penyedia romanisasi atau romanisasi Google Terjemahan</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk menonaktifkan lirik pihak ketiga sementara waktu dan menampilkan lirik bawaan</string>
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
@@ -453,6 +455,7 @@ Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal d
   <string name="morphe_music_lyrics_romanized_by_ai">Diromanisasi oleh %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Diterjemahkan</string>
+  <string name="morphe_music_lyrics_translation_language_title">Bahasa terjemahan</string>
   <string name="morphe_music_lyrics_translating">Menerjemahkan…</string>
   <string name="morphe_music_lyrics_translate_failed">Tidak dapat menerjemahkan lirik</string>
   <string name="morphe_music_lyrics_romanize_hide">Diromanisasi</string>

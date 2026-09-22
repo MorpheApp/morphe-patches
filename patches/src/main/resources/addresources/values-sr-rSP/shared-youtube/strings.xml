@@ -235,8 +235,8 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_ryd_failure_generic">Несвиђања нису доступна (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Скривено од стране власника</string>
-  <string name="morphe_ryd_accessibility_dislike_count">Не свиђа ми се овај видео, као ни 2.7k других људи</string>
-  <string name="morphe_ryd_accessibility_dislike_percentage">Не свиђа ми се овај видео, 2.5k гласова су несвиђања</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Не свиђа ми се овај видео, као ни %s осталих</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Не свиђа ми се овај видео, %s гласова су не свиђања </string>
   <string name="morphe_ryd_enabled_title">Омогући Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Прикажи несвиђања као проценат</string>
   <string name="morphe_ryd_dislike_percentage_summary">Приказује несвиђања као проценат свиђања уместо броја</string>

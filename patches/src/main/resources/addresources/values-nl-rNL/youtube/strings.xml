@@ -1045,7 +1045,7 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_screen_title">Minispeler</string>
   <string name="morphe_miniplayer_screen_summary">Pas het uiterlijk en het gedrag van de geminimaliseerde videospeler aan</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>
-  <string name="morphe_miniplayer_hide_title_title">Titel verbergen</string>
+  <string name="morphe_miniplayer_hide_title_title">Verberg titel en kanaal</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1281,7 +1281,7 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Toon spoofing in \'Stats for nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Herstel oude video acties balk</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Lost het probleem op waarbij dislikes niet worden weergegeven en video actieknoppen niet kunnen worden verborgen
+  <string name="morphe_restore_old_video_action_bar_summary">"Verhelpt dat video-actieknoppen niet kunnen worden verborgen
 
-Beperking: Keert terug naar de oude stijl van de \"Meer video's\" overlay"</string>
+Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</string>
 </resources>

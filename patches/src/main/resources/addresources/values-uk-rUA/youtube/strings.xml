@@ -1046,7 +1046,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">Мініплеєр</string>
   <string name="morphe_miniplayer_screen_summary">Налаштування вигляду та поведінки мінімізованого відеоплеєра</string>
   <string name="morphe_miniplayer_type_title">Тип мініплеєра</string>
-  <string name="morphe_miniplayer_hide_title_title">Сховати назву</string>
+  <string name="morphe_miniplayer_hide_title_title">Приховати назву та канал</string>
   <string name="morphe_miniplayer_type_entry_0">Вимкнено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартний</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімальний</string>
@@ -1282,7 +1282,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показати підміну в \"Статистиці для сисадмінів\"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Відновити стару панель дій відео</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Виправляє відсутність лайків/дизлайків та неможливість приховати кнопки дій відео
+  <string name="morphe_restore_old_video_action_bar_summary">"Виправляє неможливість приховати кнопки дій відео
 
 Обмеження: повертає старий стиль накладки \"Інші відео\""</string>
 </resources>

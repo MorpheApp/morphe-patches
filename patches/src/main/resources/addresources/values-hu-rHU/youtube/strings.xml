@@ -1047,7 +1047,6 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_miniplayer_screen_title">Minilejátszó</string>
   <string name="morphe_miniplayer_screen_summary">A minimalizált videólejátszó megjelenésének és viselkedésének testreszabása</string>
   <string name="morphe_miniplayer_type_title">Minilejátszó típus</string>
-  <string name="morphe_miniplayer_hide_title_title">Cím elrejtése</string>
   <string name="morphe_miniplayer_type_entry_0">Kikapcsolva</string>
   <string name="morphe_miniplayer_type_entry_1">Alapértelmezett</string>
   <string name="morphe_miniplayer_type_entry_2">Minimális</string>
@@ -1283,7 +1282,7 @@ Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hamisítás megjelenítése a „Stats for nerds” részben</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Régi videós eszköztár visszaállítása</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Javítja a nem megjelenő nemtetszéseket és a videós eszköztárak elrejtésének problémáját.
+  <string name="morphe_restore_old_video_action_bar_summary">"Javítja azt a problémát, hogy a videó műveletgombjai nem rejthetők el
 
-Korlátozás: Visszatér a régi stílusú „További videók” réteghez."</string>
+Korlátozás: Visszaáll a régi stílusú 'További videók' átfedésre"</string>
 </resources>

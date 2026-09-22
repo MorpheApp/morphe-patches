@@ -352,6 +352,8 @@ Om ervoor te zorgen dat scrobbling tijdens het afspelen op de achtergrond wordt 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gebruik songteksten van derden</string>
   <string name="morphe_music_lyrics_enabled_summary">Toont songteksten van een externe dienst, waarbij indien geen songteksten worden gevonden, wordt teruggevallen op de ingebouwde songteksten.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Scherm aanhouden tijdens het bekijken van songteksten</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Voorkomt dat het scherm wordt uitgeschakeld terwijl het songtekstpaneel geopend is</string>
   <string name="morphe_music_lyrics_section_service_title">Songtekstenservice</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisatie</string>
@@ -443,6 +445,7 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseerd door %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Vertaald</string>
+  <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
   <string name="morphe_music_lyrics_translating">Bezig met vertalen…</string>
   <string name="morphe_music_lyrics_translate_failed">Kon de songtekst niet vertalen</string>
   <string name="morphe_music_lyrics_romanize_hide">Geromaniseerd</string>

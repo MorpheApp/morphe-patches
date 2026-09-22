@@ -352,6 +352,8 @@ Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak i
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Üçüncü taraf şarkı sözlerini kullan</string>
   <string name="morphe_music_lyrics_enabled_summary">Üçüncü taraf bir servisten şarkı sözleri gösterir, bulunamadığında yerleşik şarkı sözlerine geri döner</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Şarkı sözlerini görüntülerken ekranı açık tut</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Şarkı sözleri paneli açıkken ekranın kapanmasını önler</string>
   <string name="morphe_music_lyrics_section_service_title">Şarkı sözü servisi</string>
   <string name="morphe_music_lyrics_section_overlay_title">Yer paylaşımı</string>
   <string name="morphe_music_lyrics_section_sync_title">Senkronizasyon</string>
@@ -453,6 +455,7 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_romanized_by_ai">Romanize eden: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Çevrildi</string>
+  <string name="morphe_music_lyrics_translation_language_title">Çeviri dili</string>
   <string name="morphe_music_lyrics_translating">Çeviriliyor…</string>
   <string name="morphe_music_lyrics_translate_failed">Şarkı sözleri çevrilemedi</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanize</string>

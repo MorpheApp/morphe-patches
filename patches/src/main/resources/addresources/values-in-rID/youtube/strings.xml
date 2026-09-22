@@ -564,7 +564,7 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktifkan thumbnail pada bilah geser</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Menampilkan thumbnail video saat menggeser bilah geser</string>
-  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Paling sering diputar ulang</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Paling sering di-replay</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_live_stream_dvr_not_available">"'Aktifkan siaran langsung DVR' mungkin tidak tersedia
 
@@ -733,8 +733,8 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hide_subscriptions_button_title">Sembunyikan tombol Subscription</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_show_search_button_title">Tampilkan tombol Pencarian</string>
-  <string name="morphe_show_search_button_index_title">Posisi tombol Pencarian</string>
+  <string name="morphe_show_search_button_title">Tampilkan tombol Telusuri </string>
+  <string name="morphe_show_search_button_index_title">Posisi tombol Telusuri</string>
   <string name="morphe_show_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_settings_button_index_title">Posisi tombol Setelan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan tombol setelan</string>
@@ -761,7 +761,7 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_hide_toolbar_create_button_title">Sembunyikan tombol Buat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sembunyikan tombol Mikrofon</string>
   <string name="morphe_hide_toolbar_notification_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Pencarian</string>
+  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Telusuri </string>
   <string name="morphe_show_toolbar_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_toolbar_settings_button_index_title">Posisi tombol Setelan</string>
   <string name="morphe_show_toolbar_settings_button_type_title">Tindakan tombol Setelan</string>
@@ -952,7 +952,7 @@ Setelan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya secar
   <string name="morphe_player_overlay_opacity_title">Opasitas hamparan pemutar</string>
   <string name="morphe_player_overlay_opacity_summary">Sesuaikan tingkat transparansi (0 adalah transparan, 100 adalah buram)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_searchbar_type_title">Bilah pencarian</string>
+  <string name="morphe_searchbar_type_title">Bilah telusuri</string>
   <string name="morphe_searchbar_type_entry_disabled">Dinonaktifkan</string>
   <string name="morphe_searchbar_type_entry_wide">Lebar</string>
   <string name="morphe_searchbar_type_entry_extra_wide">Ekstra lebar</string>
@@ -1015,7 +1015,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_change_start_page_entry_news">Berita</string>
   <string name="morphe_change_start_page_entry_notifications">Notifikasi</string>
   <string name="morphe_change_start_page_entry_playlists">Daftar Putar</string>
-  <string name="morphe_change_start_page_entry_search">Pencarian</string>
+  <string name="morphe_change_start_page_entry_search">Telusuri</string>
   <string name="morphe_change_start_page_entry_shopping">Belanja</string>
   <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Olahraga</string>
@@ -1047,7 +1047,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_miniplayer_screen_title">Pemutar mini</string>
   <string name="morphe_miniplayer_screen_summary">Kustomisasi tampilan dan perilaku pemutar video yang diperkecil</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>
-  <string name="morphe_miniplayer_hide_title_title">Sembunyikan judul</string>
+  <string name="morphe_miniplayer_hide_title_title">Sembunyikan judul dan saluran</string>
   <string name="morphe_miniplayer_type_entry_0">Dinonaktifkan</string>
   <string name="morphe_miniplayer_type_entry_1">Bawaan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1283,7 +1283,7 @@ Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Tampilkan pemalsuan pada \'Informasi statistik\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Kembalikan bilah tindakan video lama</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Memperbaiki masalah Tidak Suka tidak ditampilkan dan tombol tindakan video yang tidak dapat disembunyikan
+  <string name="morphe_restore_old_video_action_bar_summary">"Memperbaiki masalah tombol tindakan video yang tidak dapat disembunyikan
 
 Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
 </resources>

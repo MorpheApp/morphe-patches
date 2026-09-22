@@ -122,6 +122,9 @@ public final class LyricsManager {
     @Nullable
     private TrackInfo currentTrack;
 
+    @NonNull
+    private String currentVideoId = "";
+
     /** Metadata of the current track, kept so it can be read again as the song of an album. */
     @Nullable
     private MediaMetadata currentMetadata;
@@ -323,12 +326,14 @@ public final class LyricsManager {
         currentRawArtist = rawArtist;
         currentMediaUri = parseMediaUri(metadata);
 
-        if (track.equals(currentTrack)) {
+        String videoId = VideoInformation.getVideoId();
+        if (track.equals(currentTrack) && videoId.equals(currentVideoId)) {
             resetPosition();
             return;
         }
 
         currentTrack = track;
+        currentVideoId = videoId;
         overrideNative = false;
         resetPosition();
 

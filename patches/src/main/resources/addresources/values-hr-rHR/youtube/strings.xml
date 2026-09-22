@@ -1049,7 +1049,7 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_miniplayer_screen_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite izgled i ponašanje minimiziranog video playera</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
-  <string name="morphe_miniplayer_hide_title_title">Sakrij naslov</string>
+  <string name="morphe_miniplayer_hide_title_title">Sakrij naslov i kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
   <string name="morphe_miniplayer_type_entry_1">Zadano</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalno</string>
@@ -1285,7 +1285,7 @@ Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Prikaži parodiranje u \'Statistici za nerdove\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Vrati staru traku s radnjama za videozapise</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja problem gdje se dislike-ovi ne prikazuju i gumbi za radnje videozapisa se ne mogu sakriti
+  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja problem što se gumbi radnji videozapisa ne mogu sakriti
 
-Ograničenje: Vraća na stari stil overlay-a 'Više videozapisa'"</string>
+Ograničenje: Vraća se na stari stil 'More videos' prekrivača"</string>
 </resources>

@@ -352,6 +352,8 @@ Para matiyak na naka-sync ang scrobbling habang nagpe-play sa background, sigura
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gumamit ng mga liriko mula sa third-party</string>
   <string name="morphe_music_lyrics_enabled_summary">Nagpapakita ng mga liriko mula sa isang third-party service, babalik sa mga built-in na liriko kapag walang nakita</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Panatilihing naka-on ang screen habang tinitingnan ang mga liriko.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Pinipigilan ang display na mag-off habang nakabukas ang lyrics panel.</string>
   <string name="morphe_music_lyrics_section_service_title">Serbisyo ng liriko</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisasyon</string>
@@ -448,6 +450,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_romanized_by_ai">Isina-romanisa ni %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Isinalin</string>
+  <string name="morphe_music_lyrics_translation_language_title">Wika ng pagsasalin</string>
   <string name="morphe_music_lyrics_translating">Nagsasalin…</string>
   <string name="morphe_music_lyrics_translate_failed">Hindi ma-isalin ang lyrics</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisado</string>
@@ -461,10 +464,10 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_hide_info_summary">Itago ang linya ng kredito na ipinapakita sa ibaba ng lyrics.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Pagpalitin ang pagsasalin at romanisasyon.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Kapag ON, nasa ibaba ng lyrics ang romanisasyon at nasa itaas ang pagsasalin; kapag OFF, nananatili sa itaas ang romanisasyon at nasa ibaba ang pagsasalin.</string>
-  <string name="morphe_music_lyrics_use_ai_translation_title">Pagsasaling Tugma sa OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Pagsasaling tumutugma sa OpenAI</string>
   <string name="morphe_music_lyrics_use_ai_translation_summary">Gumamit ng custom na API na katugma sa OpenAI para sa pagsasalin at romanisasyon sa halip na Google Translate</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">Mga Setting ng Pagsasalin ng AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">I-configure ang endpoint ng API na katugma sa OpenAI para sa pagsasalin at romanisasyon ng mga lyrics na gumagamit ng AI.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Mga Setting para sa AI Translation</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">I-configure ang OpenAI-compatible API endpoint para sa AI-powered na pagsasalin at romanisasyon ng lyrics.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ng API endpoint (hal. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (iwanang walang laman para sa anonymous na pag-access)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Pangalan ng modelo (hal. openai-fast, gpt-4o-mini)</string>
@@ -476,7 +479,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Ang Base URL ay hindi maaaring walang laman</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Ang Base URL ay dapat magsimula sa http:// o https://</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">Ang pangalan ng modelo ay hindi maaaring walang laman</string>
-  <string name="morphe_music_lyrics_ai_config_status_validating">Sinusuri ang koneksyon…</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Tinitignan ang koneksyon…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - I-disable ang mga bold na icon</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Ibalik ang Player Up next, Lyrics, at Related tabs</string>

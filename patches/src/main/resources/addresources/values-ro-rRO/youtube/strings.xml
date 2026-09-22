@@ -1047,7 +1047,6 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_miniplayer_screen_summary">Personalizează aspectul și comportamentul miniplayerului mic</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
-  <string name="morphe_miniplayer_hide_title_title">Ascunde titlul</string>
   <string name="morphe_miniplayer_type_entry_0">Dezactivat</string>
   <string name="morphe_miniplayer_type_entry_1">Implicit</string>
   <string name="morphe_miniplayer_type_entry_2">Minimă</string>
@@ -1283,7 +1282,7 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Afișează falsificarea în \'Statistici pentru pasionați\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurare bara de acțiune video veche</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Remediază problema dezactivării afișării numărului de dislike-uri și imposibilitatea ascunderii butoanelor de acțiune video
+  <string name="morphe_restore_old_video_action_bar_summary">"Remediază problema că butoanele de acțiune video nu pot fi ascunse
 
-Limitare: Revine la aspectul vechi al stratului 'Mai multe videoclipuri'"</string>
+Limitare: Revenire la suprapunerea de stil vechi 'Mai multe videoclipuri'"</string>
 </resources>

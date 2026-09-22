@@ -1047,7 +1047,6 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_miniplayer_screen_title">Minispelare</string>
   <string name="morphe_miniplayer_screen_summary">Anpassa den minimerade videospelarens utseende och beteende</string>
   <string name="morphe_miniplayer_type_title">Minispelartyp</string>
-  <string name="morphe_miniplayer_hide_title_title">Dölj titel</string>
   <string name="morphe_miniplayer_type_entry_0">Inaktiverad</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1283,7 +1282,7 @@ Videouppspelning med AV1 kan hacka eller tappa bildrutor."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Visa förfalskningen i \'Statistik för nördar\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Återställ gammalt videoåtgärdsfält</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Åtgärdar att ogilla-ningar inte visas och att videoåtgärdsknappar inte kan döljas
+  <string name="morphe_restore_old_video_action_bar_summary">"Åtgärdar att videons åtgärdsknappar inte kan döljas
 
-Begränsning: Återgår till gammaldags 'Fler videor'-överlägg"</string>
+Begränsning: Återgår till gammal stil för 'Fler videor'-överlägget"</string>
 </resources>

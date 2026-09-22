@@ -1415,7 +1415,7 @@ Video playback with AV1 may stutter or drop frames."</string>
 
     <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
     <string name="morphe_restore_old_video_action_bar_title">Restore old video action bar</string>
-    <string name="morphe_restore_old_video_action_bar_summary">"Fixes dislikes not shown and video action buttons cannot be hidden
+    <string name="morphe_restore_old_video_action_bar_summary">"Fixes video action buttons cannot be hidden
 
 Limitation: Reverts to old style \'More videos\' overlay"</string>
 </resources>

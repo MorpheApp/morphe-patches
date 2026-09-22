@@ -352,6 +352,8 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Використовувати сторонні тексти пісень</string>
   <string name="morphe_music_lyrics_enabled_summary">Показує текст пісні зі стороннього сервісу, повертаючись до вбудованого тексту, якщо нічого не знайдено</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Тримати екран увімкненим під час перегляду тексту пісні</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Запобігає вимкненню екрана, поки відкрита панель тексту пісні</string>
   <string name="morphe_music_lyrics_section_service_title">Сервіс текстів пісень</string>
   <string name="morphe_music_lyrics_section_overlay_title">Оверлей</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронізація</string>
@@ -453,6 +455,7 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_lyrics_romanized_by_ai">Романізовано %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перекладено</string>
+  <string name="morphe_music_lyrics_translation_language_title">Мова перекладу</string>
   <string name="morphe_music_lyrics_translating">Переклад…</string>
   <string name="morphe_music_lyrics_translate_failed">Не вдалося перекласти текст пісні</string>
   <string name="morphe_music_lyrics_romanize_hide">Романізовано</string>
@@ -466,20 +469,20 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_lyrics_hide_info_summary">Приховати рядок з інформацією про авторів, що показується під текстом пісні</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поміняти місцями переклад і романізацію</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Увімкнено - романізація під текстом, переклад над текстом; вимкнено - романізація над текстом, переклад під текстом</string>
-  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI-сумісний переклад</string>
-  <string name="morphe_music_lyrics_use_ai_translation_summary">Використовувати спеціальний OpenAI-сумісний API для перекладу та романізації замість Google Translate</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">Налаштування перекладу ШІ</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Налаштуйте кінцеву точку OpenAI-сумісного API для перекладу та романізації текстів пісень за допомогою штучного інтелекту.</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адреса API (наприклад, https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Переклад через сервіс, сумісний з OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Використовувати власний API, сумісний з OpenAI, для перекладу та романізації замість Google Translate</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Налаштування AI-перекладу</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Налаштуйте кінцеву точку API, сумісну з OpenAI, для AI-перекладу текстів пісень та романізації.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL-адреса кінцевої точки API (наприклад, https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Ключ API (залиште порожнім для анонімного доступу)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Назва моделі (наприклад, openai-fast, gpt-4o-mini)</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Налаштування перекладу ШІ збережено</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">Не вдалося підключитися до кінцевої точки ШІ. Перевірте свої налаштування.</string>
-  <string name="morphe_music_lyrics_ai_config_toast_reset">Налаштування перекладу ШІ скинуто</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Налаштування AI-перекладу збережено</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Не вдалося підключитися до кінцевої точки AI. Будь ласка, перевірте налаштування.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Налаштування AI-перекладу скинуто</string>
   <string name="morphe_music_lyrics_ai_config_status_configured">Налаштовано</string>
   <string name="morphe_music_lyrics_ai_config_status_not_configured">Натисніть, щоб налаштувати</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_url">Базовий URL не може бути порожнім</string>
-  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базовий URL повинен починатися з http:// або https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Базова URL-адреса не може бути порожньою</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базова URL-адреса має починатися з http:// або https://</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">Назва моделі не може бути порожньою</string>
   <string name="morphe_music_lyrics_ai_config_status_validating">Перевірка з\'єднання…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->

@@ -350,6 +350,8 @@ YouTube Music версии 8.x — плавный переход работае�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Использовать текст песни из сторонних источников</string>
   <string name="morphe_music_lyrics_enabled_summary">Отображает текст песни из стороннего сервиса, при его отсутствии – встроенный текст песни</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Не выключать экран при просмотре текстов песен</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Предотвращает отключение экрана, пока открыта панель с текстами песен</string>
   <string name="morphe_music_lyrics_section_service_title">Сервис текстов песен</string>
   <string name="morphe_music_lyrics_section_overlay_title">Оверлей</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронизация</string>
@@ -446,6 +448,7 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_romanized_by_ai">Транслитерировано с помощью %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перевод</string>
+  <string name="morphe_music_lyrics_translation_language_title">Язык перевода</string>
   <string name="morphe_music_lyrics_translating">Перевод…</string>
   <string name="morphe_music_lyrics_translate_failed">Не удалось перевести текст песни</string>
   <string name="morphe_music_lyrics_romanize_hide">Романизация</string>

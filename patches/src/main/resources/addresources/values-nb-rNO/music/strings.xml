@@ -352,6 +352,8 @@ For å sikre at scrobbling synkroniseres under avspilling i bakgrunnen, må du s
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Bruk eksterne tekster</string>
   <string name="morphe_music_lyrics_enabled_summary">Viser tekster fra en tredjepartstjeneste, og faller tilbake til de innebygde tekstene når ingen finnes</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Hold skjermen på mens du ser på sangtekster</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Forhindrer at skjermen slår seg av mens sangtekstpanelet er åpent</string>
   <string name="morphe_music_lyrics_section_service_title">Sangteksttjeneste</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlegg</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
@@ -453,6 +455,7 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_romanized_by_ai">Romanisert av %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Oversatt</string>
+  <string name="morphe_music_lyrics_translation_language_title">Oversettelsesspråk</string>
   <string name="morphe_music_lyrics_translating">Oversetter…</string>
   <string name="morphe_music_lyrics_translate_failed">Kunne ikke oversette sangteksten</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisert</string>

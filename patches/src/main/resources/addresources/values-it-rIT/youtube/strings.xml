@@ -1047,7 +1047,7 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_miniplayer_screen_title">Lettore minimizzato</string>
   <string name="morphe_miniplayer_screen_summary">Personalizza l\'aspetto e il comportamento del lettore minimizzato</string>
   <string name="morphe_miniplayer_type_title">Tipo di Lettore minimizzato</string>
-  <string name="morphe_miniplayer_hide_title_title">Nascondi titolo</string>
+  <string name="morphe_miniplayer_hide_title_title">Nascondi titolo e canale</string>
   <string name="morphe_miniplayer_type_entry_0">Disattivato</string>
   <string name="morphe_miniplayer_type_entry_1">Predefinito</string>
   <string name="morphe_miniplayer_type_entry_2">Minimale</string>
@@ -1283,7 +1283,7 @@ La riproduzione video con AV1 potrebbe rallentare o perdere fotogrammi."</string
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostra la falsificazione nelle \'Statistiche per nerd\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Ripristina la barra delle azioni video precedente</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Risolve il problema dei \"Mi piace\" non visualizzati e dei pulsanti delle azioni video che non possono essere nascosti
+  <string name="morphe_restore_old_video_action_bar_summary">"Corregge il problema per cui i pulsanti delle azioni video non possono essere nascosti
 
-Limitazione: ripristina lo stile precedente della sovrapposizione \"Altri video\""</string>
+Limitazione: ripristina il vecchio stile della sovrapposizione 'Altri video'"</string>
 </resources>

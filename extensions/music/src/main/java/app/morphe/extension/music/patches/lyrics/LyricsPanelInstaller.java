@@ -122,6 +122,11 @@ public final class LyricsPanelInstaller {
 
             updateKeepScreenOn(isLyricsPanel);
 
+            LyricsPanelView panelView = panelReference.get();
+            if (panelView != null) {
+                panelView.syncOverlay();
+            }
+
             // Showing a panel again does not always rebuild its content, so there is no
             // component callback to install from when the lyrics panel comes back.
             if (isLyricsPanel) {

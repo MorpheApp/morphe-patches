@@ -352,6 +352,8 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Използване на текстове от трети страни</string>
   <string name="morphe_music_lyrics_enabled_summary">Показва текстове от външен източник, като се връща към вградените текстове, когато такива не бъдат намерени</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Дръжте екрана включен, докато преглеждате текстовете</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Предотвратява изключването на екрана, докато панелът с текстовете е отворен</string>
   <string name="morphe_music_lyrics_section_service_title">Услуга за текстове на песни</string>
   <string name="morphe_music_lyrics_section_overlay_title">Наслагване</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронизация</string>
@@ -439,6 +441,7 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_romanized_by_ai">Романизирано от %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Преведено</string>
+  <string name="morphe_music_lyrics_translation_language_title">Език на превода</string>
   <string name="morphe_music_lyrics_translating">Превежда се…</string>
   <string name="morphe_music_lyrics_translate_failed">Не може да преведе текста</string>
   <string name="morphe_music_lyrics_romanize_hide">Романизирано</string>

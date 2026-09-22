@@ -352,6 +352,8 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">서드파티 가사 사용하기</string>
   <string name="morphe_music_lyrics_enabled_summary">서드파티 서비스의 가사를 표시합니다. 가사를 찾을 수 없는 경우에는 내장된 가사를 대신 표시합니다</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">가사 보는 동안 화면 켜두기</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">가사 패널이 열려 있는 동안 화면이 꺼지지 않도록 방지합니다</string>
   <string name="morphe_music_lyrics_section_service_title">가사 서비스</string>
   <string name="morphe_music_lyrics_section_overlay_title">오버레이</string>
   <string name="morphe_music_lyrics_section_sync_title">동기화</string>
@@ -433,7 +435,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">재생되지 않은 가사 숨기기</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">현재 재생 중인 줄 아래의 가사 줄을 숨깁니다</string>
   <string name="morphe_music_lyrics_mediasession_title">잠금 화면에 MediaSession 가사 표시하기</string>
-  <string name="morphe_music_lyrics_miniplayer_title">미니플레이어 가사 표시하기</string>
+  <string name="morphe_music_lyrics_miniplayer_title">미니 플레이어 가사 표시하기</string>
   <string name="morphe_music_lyrics_display_artist_first_title">아티스트 및 제목 표시 순서</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">미니 플레이어와 MediaSession에서 아티스트와 제목의 표시 순서를 전환합니다. 활성화되면 \'아티스트 - 제목\', 비활성화되면 \'제목 - 아티스트\'로 표시됩니다. 가사 검색에는 영향을 주지 않습니다</string>
   <string name="morphe_settings_music_lyrics_metadata_title">필터</string>
@@ -455,6 +457,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s에 의해 로마자 표기됨</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">번역됨</string>
+  <string name="morphe_music_lyrics_translation_language_title">번역 언어</string>
   <string name="morphe_music_lyrics_translating">번역하는 중…</string>
   <string name="morphe_music_lyrics_translate_failed">가사를 번역할 수 없습니다</string>
   <string name="morphe_music_lyrics_romanize_hide">로마자 표기됨</string>
@@ -471,15 +474,15 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI 호환 번역</string>
   <string name="morphe_music_lyrics_use_ai_translation_summary">Google 번역 대신 사용자 정의 OpenAI 호환 API를 사용하여 번역 및 로마자 표기를 수행합니다</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI 번역 설정</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI 기반 가사 번역 및 로마자 표기를 위해 OpenAI 호환 API 엔드포인트를 구성합니다</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI 기반 가사 번역 및 로마자 표기를 위해 OpenAI 호환 API 엔드포인트를 설정하세요</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 엔드포인트 URL (예시: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API 키 (익명 접속을 원하시면 비워 두세요)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">모델 이름 (예시: openai-fast, gpt-4o-mini)</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">AI 번역 설정이 저장됨</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI 번역 설정을 저장하였습니다</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">AI 엔드포인트에 연결할 수 없습니다. 설정을 확인하세요</string>
-  <string name="morphe_music_lyrics_ai_config_toast_reset">AI 번역 설정 초기화</string>
-  <string name="morphe_music_lyrics_ai_config_status_configured">구성됨</string>
-  <string name="morphe_music_lyrics_ai_config_status_not_configured">탭하여 구성</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI 번역 설정을 초기화하였습니다</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">설정됨</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">설정하려면 탭하세요</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">기본 URL은 비워둘 수 없습니다</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">기본 URL은 http:// 또는 https://로 시작해야 합니다</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">모델 이름은 비워둘 수 없습니다</string>

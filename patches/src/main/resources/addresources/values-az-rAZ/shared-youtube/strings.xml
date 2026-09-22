@@ -235,6 +235,8 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_ryd_failure_generic">Bəyənməmə əlçatmazdır (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Sahibi tərəfindən gizlədilib</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Digər %s nəfər kimi, bu videonu bəyənmə</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Bu videonu bəyənmə, səslərin %s-i bəyənməmədir</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike-ı aktivləşdir</string>
   <string name="morphe_ryd_dislike_percentage_title">Bəyənməmələri faiz nisbəti olaraq göstər</string>
   <string name="morphe_ryd_dislike_percentage_summary">Bəyənməmələri rəqəm əvəzinə bəyənmələrin faiz nisbəti kimi göstərir</string>

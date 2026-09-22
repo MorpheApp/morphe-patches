@@ -352,6 +352,8 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌詞</string>
   <string name="morphe_music_lyrics_enabled_summary">從第三方服務顯示歌詞，若找不到則改用內建歌詞</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">檢視歌詞時保持螢幕開啟</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">防止在歌詞面板開啟時螢幕關閉</string>
   <string name="morphe_music_lyrics_section_service_title">歌詞服務</string>
   <string name="morphe_music_lyrics_section_overlay_title">疊加層</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
@@ -453,6 +455,7 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">由 %s 進行羅馬拼音翻譯</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">已翻譯</string>
+  <string name="morphe_music_lyrics_translation_language_title">翻譯語言</string>
   <string name="morphe_music_lyrics_translating">正在翻譯…</string>
   <string name="morphe_music_lyrics_translate_failed">無法翻譯歌詞</string>
   <string name="morphe_music_lyrics_romanize_hide">已翻譯成羅馬拼音</string>

@@ -352,6 +352,8 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌词</string>
   <string name="morphe_music_lyrics_enabled_summary">从第三方服务获取歌词，如果找不到则回退到内置歌词</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">查看歌词时保持屏幕常亮</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">防止在歌词面板打开时屏幕关闭</string>
   <string name="morphe_music_lyrics_section_service_title">歌词服务</string>
   <string name="morphe_music_lyrics_section_overlay_title">悬浮</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
@@ -453,6 +455,7 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_romanized_by_ai">由 %s 音译</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">翻译</string>
+  <string name="morphe_music_lyrics_translation_language_title">翻译语言</string>
   <string name="morphe_music_lyrics_translating">正在翻译…</string>
   <string name="morphe_music_lyrics_translate_failed">无法翻译歌词</string>
   <string name="morphe_music_lyrics_romanize_hide">罗马字</string>

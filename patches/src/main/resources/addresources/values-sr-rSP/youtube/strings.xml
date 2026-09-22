@@ -1030,7 +1030,7 @@ Promene uključuju:
   <string name="morphe_miniplayer_screen_title">Мини-плејер</string>
   <string name="morphe_miniplayer_screen_summary">Прилагодите изглед и понашање мини-плејера</string>
   <string name="morphe_miniplayer_type_title">Тип мини-плејера</string>
-  <string name="morphe_miniplayer_hide_title_title">Сакриј наслов</string>
+  <string name="morphe_miniplayer_hide_title_title">Сакриј наслов и канал</string>
   <string name="morphe_miniplayer_type_entry_0">Онемогућен</string>
   <string name="morphe_miniplayer_type_entry_1">Подразумеван</string>
   <string name="morphe_miniplayer_type_entry_2">Минималан</string>
@@ -1266,7 +1266,7 @@ Promene uključuju:
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Прикажи лажирање у „Статистици за зналце”</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Врати стару траку радњи видеа</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Поправља проблем са неприказаним не свиђањима и немогућношћу сакривања дугмади за акције видеа
+  <string name="morphe_restore_old_video_action_bar_summary">"Исправља проблем што се дугмад за акције на видео снимку не могу сакрити
 
-Ограничење: Враћа се на стари стил преклапања „Више видеа“"</string>
+Ограничење: Враћа се на стари стил преклапања 'Више видеа'"</string>
 </resources>

@@ -352,6 +352,8 @@ Til þess að tryggja að scrobbling sé samstilla á meðan spilað er í bakgr
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Nota lög frá þriðja aðila</string>
   <string name="morphe_music_lyrics_enabled_summary">Sýnir lög frá þriðja aðila, með fallbak til innbyggðra laga þegar engin eru fundin</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Haltu skjánum kveiktum meðan þú skoðar texta</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Kemur í veg fyrir að skjárinn slökkvi á meðan textaglugginn er opinn</string>
   <string name="morphe_music_lyrics_section_service_title">Textaþjónusta</string>
   <string name="morphe_music_lyrics_section_overlay_title">Yfirlag</string>
   <string name="morphe_music_lyrics_section_sync_title">Samstilling</string>
@@ -451,6 +453,7 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_romanized_by_ai">Umritað af %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Þýddur</string>
+  <string name="morphe_music_lyrics_translation_language_title">Þýðingartungumál</string>
   <string name="morphe_music_lyrics_translating">Þýðing á ferð…</string>
   <string name="morphe_music_lyrics_translate_failed">Gat ekki þýtt textann</string>
   <string name="morphe_music_lyrics_romanize_hide">Rómanseraður</string>

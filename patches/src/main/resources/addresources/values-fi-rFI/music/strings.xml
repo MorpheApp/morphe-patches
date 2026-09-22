@@ -352,6 +352,8 @@ Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, e
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Käytä kolmannen osapuolen lyriikoita</string>
   <string name="morphe_music_lyrics_enabled_summary">Näyttää lyriikoita kolmannen osapuolen palvelusta. Jos lyriikoita ei löydy, käytetään sisäänrakennettuja lyriikoita.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Pidä näyttö päällä sanoituksia katseltaessa</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Estää näytön sammumisen, kun sanoituspaneeli on avoinna</string>
   <string name="morphe_music_lyrics_section_service_title">Sanoituspalvelu</string>
   <string name="morphe_music_lyrics_section_overlay_title">Päällekkäisnäyttö</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronointi.</string>
@@ -448,6 +450,7 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_romanized_by_ai">Latinisoinut %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Käännetty</string>
+  <string name="morphe_music_lyrics_translation_language_title">Käännöskieli</string>
   <string name="morphe_music_lyrics_translating">Käännetään…</string>
   <string name="morphe_music_lyrics_translate_failed">Sanoituksia ei voitu kääntää</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisoitu</string>

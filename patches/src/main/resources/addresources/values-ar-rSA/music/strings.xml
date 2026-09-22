@@ -352,6 +352,8 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">استخدام كلمات أغاني من طرف ثالث</string>
   <string name="morphe_music_lyrics_enabled_summary">عرض كلمات الأغاني من خدمة خارجية، والرجوع إلى كلمات الأغاني المدمجة في حالة عدم العثور عليها</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">إبقاء الشاشة مضاءة أثناء عرض الكلمات</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">يمنع انطفاء الشاشة عندما تكون لوحة الكلمات مفتوحة</string>
   <string name="morphe_music_lyrics_section_service_title">خدمة الكلمات</string>
   <string name="morphe_music_lyrics_section_overlay_title">التراكب</string>
   <string name="morphe_music_lyrics_section_sync_title">المزامنة</string>
@@ -438,6 +440,7 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_romanized_by_ai">تمت الكتابة بالحروف اللاتينية بواسطة %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">مترجَم</string>
+  <string name="morphe_music_lyrics_translation_language_title">لغة الترجمة</string>
   <string name="morphe_music_lyrics_translating">جارٍ الترجمة...</string>
   <string name="morphe_music_lyrics_translate_failed">تعذر ترجمة كلمات الأغنية</string>
   <string name="morphe_music_lyrics_romanize_hide">مُروَّن</string>

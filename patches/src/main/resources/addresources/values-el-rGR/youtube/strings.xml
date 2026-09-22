@@ -1032,7 +1032,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">Ελαχιστοποιημένη οθόνη αναπαραγωγής</string>
   <string name="morphe_miniplayer_screen_summary">Προσαρμόστε την εμφάνιση και τη συμπεριφορά του μικρογραφικού αναπαραγωγέα βίντεο</string>
   <string name="morphe_miniplayer_type_title">Τύπος ελαχιστοποιημένης οθόνης αναπαραγωγής</string>
-  <string name="morphe_miniplayer_hide_title_title">Απόκρυψη τίτλου</string>
   <string name="morphe_miniplayer_type_entry_0">Απενεργοποιημένη</string>
   <string name="morphe_miniplayer_type_entry_1">Προεπιλογή</string>
   <string name="morphe_miniplayer_type_entry_2">Μινιμαλιστική</string>
@@ -1268,7 +1267,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Εμφάνιση παραποίησης στο \'Στατιστικά για σπασίκλες\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Επαναφορά γραμμής ενεργειών βίντεο παλαιού τύπου</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Διορθώνει την εμφάνιση των μη εμφανιζόμενων απορρίψεων και η γραμμή εργαλείων βίντεο δεν μπορεί να κρυφτεί
+  <string name="morphe_restore_old_video_action_bar_summary">"Διορθώνει το πρόβλημα με τα κουμπιά ενεργειών βίντεο που δεν μπορούν να αποκρυφθούν
 
-Περιορισμός: Επιστρέφει στην παλιά στυλ επικάλυψης 'Περισσότερα βίντεο'"</string>
+Περιορισμός: Επαναφέρει το παλιό στυλ επικάλυψης 'Περισσότερα βίντεο'"</string>
 </resources>

@@ -352,6 +352,8 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">外部サービスの歌詞を使用</string>
   <string name="morphe_music_lyrics_enabled_summary">外部の歌詞配信サービスから歌詞を取得して表示します。見つからない場合は、アプリの歌詞を表示します</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">歌詞表示中は画面を常にオン</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">歌詞欄が表示されている間は、画面の消灯機能を無効にします</string>
   <string name="morphe_music_lyrics_section_service_title">歌詞配信サービス</string>
   <string name="morphe_music_lyrics_section_overlay_title">オーバーレイ</string>
   <string name="morphe_music_lyrics_section_sync_title">同期</string>
@@ -442,10 +444,11 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_source_label">提供: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">保存済み</string>
   <string name="morphe_music_lyrics_romanized_by_google">未保存</string>
-  <string name="morphe_music_lyrics_translated_by_ai">%sによる翻訳</string>
-  <string name="morphe_music_lyrics_romanized_by_ai">%sによるローマ字化</string>
+  <string name="morphe_music_lyrics_translated_by_ai">翻訳: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">ローマ字: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">歌詞が見つかりません</string>
+  <string name="morphe_music_lyrics_translation_language_title">翻訳言語</string>
   <string name="morphe_music_lyrics_translating">翻訳中…</string>
   <string name="morphe_music_lyrics_translate_failed">歌詞を翻訳できませんでした</string>
   <string name="morphe_music_lyrics_romanize_hide">歌詞が見つかりません</string>
@@ -459,22 +462,22 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_hide_info_summary">この歌詞を編集</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">この歌詞を編集</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">この歌詞を編集</string>
-  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI互換翻訳</string>
-  <string name="morphe_music_lyrics_use_ai_translation_summary">Google翻訳の代わりに、翻訳とローマ字化にカスタムのOpenAI互換APIを使用します</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">AI翻訳設定</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AIによる歌詞の翻訳とローマ字化のために、OpenAI互換APIエンドポイントを設定してください。</string>
-  <string name="morphe_music_lyrics_ai_config_base_url_hint">APIエンドポイントURL（例：https://text.pollinations.ai/openai）</string>
-  <string name="morphe_music_lyrics_ai_config_api_token_hint">APIキー（匿名アクセスの場合は空のままにしてください）</string>
-  <string name="morphe_music_lyrics_ai_config_model_hint">モデル名（例：openai-fast、gpt-4o-mini）</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">AI翻訳設定を保存しました</string>
-  <string name="morphe_music_lyrics_ai_config_toast_invalid">AIエンドポイントに接続できませんでした。設定を確認してください。</string>
-  <string name="morphe_music_lyrics_ai_config_toast_reset">AI翻訳設定をリセットしました</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI 互換の翻訳</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Google 翻訳の代わりに、設定した OpenAI 互換 API を翻訳とローマ字表記に使用します</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI 翻訳の設定</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI による歌詞の翻訳とローマ字表記に使用する OpenAI 互換 API のエンドポイントを設定します。</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL (例: https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API キー (認証なしの場合は空欄)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">モデル名 (例: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI 翻訳の設定を保存しました</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">AI エンドポイントに接続できませんでした。設定を確認してください。</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI 翻訳の設定をリセットしました</string>
   <string name="morphe_music_lyrics_ai_config_status_configured">設定済み</string>
   <string name="morphe_music_lyrics_ai_config_status_not_configured">タップして設定</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_url">ベースURLは空にできません</string>
-  <string name="morphe_music_lyrics_ai_config_status_invalid_url">ベースURLはhttp://またはhttps://で始まる必要があります</string>
-  <string name="morphe_music_lyrics_ai_config_status_empty_model">モデル名は空にできません</string>
-  <string name="morphe_music_lyrics_ai_config_status_validating">接続を検証中…</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">ベース URL は空欄にはできません</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">ベース URL は http:// または https:// で始まる必要があります</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">モデル名は空欄にはできません</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">接続を確認中…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - アイコンの太字表示を無効化</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - プレーヤーの「次のコンテンツ」「歌詞」「関連コンテンツ」タブを復元</string>

@@ -1046,7 +1046,7 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_miniplayer_screen_title">Miniprehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Prispôsobte vzhľad a správanie zmenšeného prehrávača videa</string>
   <string name="morphe_miniplayer_type_title">Typ miniprehrávača</string>
-  <string name="morphe_miniplayer_hide_title_title">Skryť názov</string>
+  <string name="morphe_miniplayer_hide_title_title">Skryť názov a kanál</string>
   <string name="morphe_miniplayer_type_entry_0">Vypnutý</string>
   <string name="morphe_miniplayer_type_entry_1">Predvolený</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalistický</string>
@@ -1282,7 +1282,7 @@ Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať sní
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Zobraziť falšovanie v \'Stats for nerds\'.</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Obnoviť starú akčnú lištu videa</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Opravuje zobrazenie počtu zlých hodnotení a umožňuje skryť tlačidlá akcií videa
+  <string name="morphe_restore_old_video_action_bar_summary">"Opravuje problém, že akčné tlačidlá videa sa nedajú skryť
 
-Obmedzenie: Vráti sa k starému štýlu vrstvy 'Ďalšie videá'"</string>
+Obmedzenie: Vracia sa k starému štýlu prekrytia 'Ďalšie videá'"</string>
 </resources>

@@ -352,6 +352,8 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">तृतीय-पक्ष गीत का उपयोग करें</string>
   <string name="morphe_music_lyrics_enabled_summary">किसी तृतीय-पक्ष सेवा से गीत दिखाता है, जब कोई नहीं मिलता है तो अंतर्निहित गीतों पर वापस चला जाता है</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">गीत देखते समय स्क्रीन चालू रखें</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">गीत पैनल खुला होने पर स्क्रीन को बंद होने से रोकता है</string>
   <string name="morphe_music_lyrics_section_service_title">गीत बोल सेवा</string>
   <string name="morphe_music_lyrics_section_overlay_title">ओवरले</string>
   <string name="morphe_music_lyrics_section_sync_title">सिंक्रनाइज़ेशन</string>
@@ -448,6 +450,7 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_romanized_by_ai">%s द्वारा रोमनकृत</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">अनुवादित</string>
+  <string name="morphe_music_lyrics_translation_language_title">अनुवाद भाषा</string>
   <string name="morphe_music_lyrics_translating">अनुवाद किया जा रहा है…</string>
   <string name="morphe_music_lyrics_translate_failed">गीत का अनुवाद नहीं कर सका</string>
   <string name="morphe_music_lyrics_romanize_hide">रोमनीकृत</string>

@@ -352,6 +352,8 @@ Pentru a te asigura că scrobbling-ul este sincronizat în timpul redării în f
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Utilizați versuri de la terți</string>
   <string name="morphe_music_lyrics_enabled_summary">Afișează versurile de la un serviciu terț, revenind la versurile integrate dacă nu se găsesc niciunul</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Menține ecranul pornit în timp ce vizualizezi versurile</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Împiedică ecranul să se oprească în timp ce panoul de versuri este deschis.</string>
   <string name="morphe_music_lyrics_section_service_title">Serviciul de versuri</string>
   <string name="morphe_music_lyrics_section_overlay_title">Suprapunere</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizare</string>
@@ -436,6 +438,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizat de %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Redare reluată.</string>
+  <string name="morphe_music_lyrics_translation_language_title">Limba de traducere</string>
   <string name="morphe_music_lyrics_translating">Se traduce…</string>
   <string name="morphe_music_lyrics_translate_failed">Nu s-au putut traduce versurile</string>
   <string name="morphe_music_lyrics_romanize_hide">Redare reluată.</string>

@@ -48,6 +48,7 @@ import app.morphe.extension.shared.sponsorblock.requests.SBRequester.SegmentSubm
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.VideoState;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
 
 /**
@@ -218,7 +219,13 @@ public class SponsorBlockUtils {
                             formatSegmentTime(newSponsorSegmentDialogShownMillis)),
                     null,
                     str("morphe_sb_new_segment_mark_end"),
-                    () -> newSponsorSegmentEndMillis = newSponsorSegmentDialogShownMillis,
+                    () -> {
+                        final long videoLength = VideoInformation.getVideoLength();
+                        newSponsorSegmentEndMillis =
+                                VideoState.getCurrent() == VideoState.ENDED && videoLength > 0
+                                        ? videoLength
+                                        : newSponsorSegmentDialogShownMillis;
+                    },
                     null,
                     str("morphe_sb_new_segment_mark_start"),
                     () -> newSponsorSegmentStartMillis = newSponsorSegmentDialogShownMillis,

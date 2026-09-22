@@ -28,7 +28,7 @@ Second \"item\" text"</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Prenesite videe, podkaste ali pesmi z aplikacijami za prenašanje tretje osebe</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_external_downloader_action_button_title">Prepiši gumb za prenos</string>
+  <string name="morphe_external_downloader_action_button_title">Prekrij gumb za prenos</string>
   <string name="morphe_external_downloader_action_button_summary">Uporabi izbrani zunanji prenašalnik namesto privzetega gumba za dejanje Prenos</string>
   <string name="morphe_external_downloader_flyout_menu_title">Prepiši meni Prenos</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Uporabi izbrani zunanji prenašalnik namesto privzetega pojavnega menija Prenos</string>
@@ -80,7 +80,7 @@ Prenesene skladbe se prikažejo tukaj"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">O nas</string>
   <string name="morphe_settings_music_screen_1_ads_title">Oglasi</string>
-  <string name="morphe_settings_music_screen_2_feed_title">Vnos</string>
+  <string name="morphe_settings_music_screen_2_feed_title">Vir videoposnetkov</string>
   <string name="morphe_settings_music_screen_3_general_title">Splošno</string>
   <string name="morphe_settings_music_screen_4_player_title">Predvajalnik</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Besedila</string>
@@ -92,17 +92,17 @@ Prenesene skladbe se prikažejo tukaj"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Skrij Avdio / Video gumb za vklop/izklop</string>
   <string name="morphe_music_hide_explore_shelf_title">Skrij polico Razišči</string>
-  <string name="morphe_music_hide_grid_shelves_title">Skrij police mrež</string>
+  <string name="morphe_music_hide_grid_shelves_title">Skrij mrežaste police</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Skrij horizontalne police</string>
-  <string name="morphe_music_hide_list_shelves_title">Skrij police seznamov</string>
+  <string name="morphe_music_hide_list_shelves_title">Skrij police s seznami</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Plošč plošč besedil</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Skrij gumb za deljenje</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skrij gumb za prevod</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skrij polico \'Novo od\'</string>
-  <string name="morphe_music_hide_playlist_shelves_title">Skrij police seznamov predvajanj</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Skrij police s seznami predvajanja</string>
   <string name="morphe_music_hide_repeat_button_title">Skrij gumb Ponovi</string>
   <string name="morphe_music_hide_shuffle_button_title">Skrij gumb Naključno</string>
-  <string name="morphe_music_hide_speed_dial_shelf_title">Skrij polico \'Hitro klicanje\'</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Skrij polico \'Hitra izbira\'</string>
   <string name="morphe_music_comments_screen_title">Komentarji</string>
   <string name="morphe_music_comments_screen_summary">Izberi katere komponente so prikazane v odseku s komentarji</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Skrij Smernice skupnosti</string>
@@ -352,6 +352,8 @@ Za zagotovitev sinhronizacije med predvajanjem v ozadju poskrbite, da je uporaba
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Uporaba besedil tretje strani</string>
   <string name="morphe_music_lyrics_enabled_summary">Prikazuje besedila iz storitve tretje strani, in se vrne k vgrajenim besedilom, če jih ne najde.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Zaslon naj ostane prižgan med ogledom besedil.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Preprečuje, da se zaslon izklopi, ko je plošča z besedili odprta.</string>
   <string name="morphe_music_lyrics_section_service_title">Storitev za besedila</string>
   <string name="morphe_music_lyrics_section_overlay_title">Prekrivanje</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinhronizacija</string>
@@ -441,6 +443,7 @@ Zahtevani piškotki: SID, HSID, SSID, SAPISID, __Secure-3APISID, __Secure-1APISI
   <string name="morphe_music_lyrics_romanized_by_ai">Romaniziral %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Prevedeno</string>
+  <string name="morphe_music_lyrics_translation_language_title">Jezik prevoda</string>
   <string name="morphe_music_lyrics_translating">Prevajanje…</string>
   <string name="morphe_music_lyrics_translate_failed">Besedila ni bilo mogoče prevesti.</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizirano</string>
