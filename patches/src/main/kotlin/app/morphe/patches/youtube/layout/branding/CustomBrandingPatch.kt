@@ -28,6 +28,7 @@ val customBrandingPatch = baseCustomBrandingPatch(
     originalAppName = "@string/application_name",
     originalAppPackageName = YOUTUBE_PACKAGE_NAME,
     isYouTubeMusic = false,
+    startupAnimationDirectory = "custom-branding/youtube",
     numberOfPresetAppNames = 5,
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     mainActivityName = YOUTUBE_MAIN_ACTIVITY_NAME,

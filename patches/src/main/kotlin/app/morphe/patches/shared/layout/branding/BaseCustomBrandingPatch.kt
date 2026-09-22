@@ -120,6 +120,7 @@ internal fun baseCustomBrandingPatch(
     originalAppName: String,
     originalAppPackageName: String,
     isYouTubeMusic: Boolean,
+    startupAnimationDirectory: String,
     numberOfPresetAppNames: Int,
     mainActivityOnCreateFingerprint: Fingerprint,
     mainActivityName: String,
@@ -523,8 +524,13 @@ internal fun baseCustomBrandingPatch(
             ResourceGroup(
                 "mipmap-anydpi",
                 "$LAUNCHER_RESOURCE_NAME_PREFIX$CUSTOM_USER_ICON_STYLE_NAME.xml"
-            ),
-            // Startup animation of each launcher foreground, played by the app hooks in place of the original.
+            )
+        )
+
+        // Startup animation of each launcher foreground, played by the app hooks in place of the
+        // original. The pace of it differs per app, because each one cuts it off differently.
+        copyResources(
+            startupAnimationDirectory,
             ResourceGroup(
                 "raw",
                 "morphe_startup_animation.json",
