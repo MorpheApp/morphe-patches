@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3174
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -9,14 +9,13 @@ package app.morphe.extension.music.settings.preference;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Looper;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 
 @SuppressWarnings({"unused", "deprecation"})
@@ -58,8 +57,8 @@ public class LyricsTranslationLanguagePreference extends CustomDialogListPrefere
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-        if ("morphe_music_lyrics_show_translate_button".equals(key)) {
-            new Handler(Looper.getMainLooper()).post(this::updateVisibility);
+        if (Settings.LYRICS_SHOW_TRANSLATE_BUTTON.key.equals(key)) {
+            Utils.runOnMainThread(this::updateVisibility);
         }
     }
 

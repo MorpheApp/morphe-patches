@@ -14,8 +14,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.os.Handler;
-import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.text.InputType;
@@ -62,9 +60,9 @@ public class LyricsAiConfigPreference extends SwitchPreference
     }
 
     private void init() {
-        setSummary(Settings.LYRICS_USE_AI_TRANSLATION.get()
-                ? str("morphe_music_lyrics_ai_config_status_configured")
-                : str("morphe_music_lyrics_ai_config_status_not_configured"));
+        setSummary(str(Settings.LYRICS_USE_AI_TRANSLATION.get()
+                ? "morphe_music_lyrics_ai_config_status_configured"
+                : "morphe_music_lyrics_ai_config_status_not_configured"));
         updateVisibility();
     }
 
@@ -85,9 +83,9 @@ public class LyricsAiConfigPreference extends SwitchPreference
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-        if ("morphe_music_lyrics_show_translate_button".equals(key)
-                || "morphe_music_lyrics_show_romanize_button".equals(key)) {
-            new Handler(Looper.getMainLooper()).post(this::updateVisibility);
+        if (Settings.LYRICS_SHOW_TRANSLATE_BUTTON.key.equals(key)
+                || Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)) {
+            Utils.runOnMainThread(this::updateVisibility);
         }
     }
 
