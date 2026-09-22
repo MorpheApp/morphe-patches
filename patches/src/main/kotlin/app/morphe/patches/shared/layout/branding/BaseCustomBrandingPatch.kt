@@ -534,10 +534,7 @@ internal fun baseCustomBrandingPatch(
             ResourceGroup(
                 "raw",
                 "morphe_startup_animation.json",
-                "morphe_startup_animation_play.json",
-                // Played when the splash screen style is black and white.
-                "morphe_startup_animation_monochrome.json",
-                "morphe_startup_animation_play_monochrome.json"
+                "morphe_startup_animation_play.json"
             )
         )
 

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -73,10 +74,12 @@ public class SplashAnimationPatch {
     }
 
     /**
-     * Color the branded monochrome animation is drawn with in the file, as it is written in
-     * the JSON. The mark never uses it, so nothing else of the file is replaced with it.
+     * The colors of the mark, as they are written in the JSON of the branded animation.
+     * A gradient holds its colors without an alpha value, and the rest of the file with one.
      */
-    private static final String MONOCHROME_PLACEHOLDER_COLOR = "[1,0,1,1]";
+    private static final String BRAND_PRIMARY_COLOR = "[0.117647,0.352941,0.658824,1]";
+    private static final String BRAND_SECONDARY_COLOR = "[0,0.686275,0.682353,1]";
+    private static final String BRAND_GRADIENT = "[0,0.117647,0.352941,0.658824,1,0,0.686275,0.682353]";
 
     public static boolean isDisabled() {
         return SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get()
@@ -96,15 +99,21 @@ public class SplashAnimationPatch {
      * @return If a branded animation was played, and the original one should not be.
      */
     public static boolean setBrandedSplashAnimation(LottieAnimationView view) {
-        final boolean monochrome = isMonochrome();
-        final int animation = CustomBrandingPatch.getStartupAnimation(monochrome);
+        final int animation = CustomBrandingPatch.getStartupAnimation();
         if (animation == 0) {
             return false;
         }
 
-        if (monochrome) {
-            setSplashAnimation(view, animation, Map.of(
-                    MONOCHROME_PLACEHOLDER_COLOR, ThemeUtils.getAppForegroundColor()
+        if (isMonochrome()) {
+            // A gradient of a single color is a flat fill, so the same file
+            // also serves as the monochrome animation.
+            final int color = ThemeUtils.getAppForegroundColor();
+            final String flatColor = getColorStringArray(color);
+
+            replaceColorsAndPlay(view, animation, Map.of(
+                    BRAND_PRIMARY_COLOR, flatColor,
+                    BRAND_SECONDARY_COLOR, flatColor,
+                    BRAND_GRADIENT, getGradientStringArray(color)
             ));
         } else {
             view.patch_setAnimation(animation);
@@ -126,10 +135,18 @@ public class SplashAnimationPatch {
      */
     public static void setSplashAnimation(LottieAnimationView view, int resourceId,
                                           Map<String, Integer> replacements) {
+        Map<String, String> colors = new LinkedHashMap<>();
+        replacements.forEach((original, color) -> colors.put(original, getColorStringArray(color)));
+
+        replaceColorsAndPlay(view, resourceId, colors);
+    }
+
+    private static void replaceColorsAndPlay(LottieAnimationView view, int resourceId,
+                                             Map<String, String> replacements) {
         String json = loadRawResourceAsString(resourceId);
         String replacement = json;
 
-        for (Map.Entry<String, Integer> entry : replacements.entrySet()) {
+        for (Map.Entry<String, String> entry : replacements.entrySet()) {
             final String original = entry.getKey();
 
             if (BaseSettings.DEBUG.get() && !json.contains(original)) {
@@ -137,13 +154,20 @@ public class SplashAnimationPatch {
             }
 
             for (String key : COLOR_KEYS) {
-                replacement = replacement.replace(key + original,
-                        key + getColorStringArray(entry.getValue()));
+                replacement = replacement.replace(key + original, key + entry.getValue());
             }
         }
 
         // cacheKey is not needed since the animation will not be reused.
         view.patch_setAnimation(new ByteArrayInputStream(replacement.getBytes()), null);
+    }
+
+    private static String getGradientStringArray(int color) {
+        final String stop = Color.red(color) / 255.0 + ", "
+                + Color.green(color) / 255.0 + ", "
+                + Color.blue(color) / 255.0;
+
+        return "[0, " + stop + ", 1, " + stop + "]";
     }
 
     private static String getColorStringArray(int color) {
