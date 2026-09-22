@@ -192,12 +192,15 @@ public final class LrcLibProvider implements LyricsProvider {
             return Lyrics.NOT_FOUND;
         }
 
+        final int id = response.optInt("id", -1);
+        final String sourceUrl = id > 0 ? "https://lrclib.net/tracks/" + id : null;
+
         String lyricsFile = LyricsRequests.optString(response, "lyricsFile");
         if (lyricsFile == null) {
             lyricsFile = LyricsRequests.optString(response, "lyricsfile");
         }
         if (lyricsFile != null) {
-            Lyrics fromFile = LyricsFileParser.parse(lyricsFile, name());
+            Lyrics fromFile = LyricsFileParser.parse(lyricsFile, name(), sourceUrl);
             if (fromFile != null && !fromFile.isEmpty()) {
                 return fromFile;
             }
@@ -209,7 +212,7 @@ public final class LrcLibProvider implements LyricsProvider {
             if (!result.lines.isEmpty()) {
                 return new Lyrics(result.lines, name(), true, null, null, null,
                         result.creditLines.isEmpty() ? null : result.creditLines,
-                        enhanced, "lrc", null);
+                        enhanced, "lrc", sourceUrl);
             }
         }
 
@@ -219,7 +222,7 @@ public final class LrcLibProvider implements LyricsProvider {
             if (!result.lines.isEmpty()) {
                 return new Lyrics(result.lines, name(), true, null, null, null,
                         result.creditLines.isEmpty() ? null : result.creditLines,
-                        synced, "lrc", null);
+                        synced, "lrc", sourceUrl);
             }
         }
 
@@ -227,7 +230,8 @@ public final class LrcLibProvider implements LyricsProvider {
         if (plain != null) {
             List<LyricsLine> lines = LrcParser.parsePlain(plain);
             if (!lines.isEmpty()) {
-                return new Lyrics(lines, name(), false, null, null, null, null, plain, "lrc", null);
+                return new Lyrics(lines, name(), false, null, null, null, null, plain, "lrc",
+                        sourceUrl);
             }
         }
 

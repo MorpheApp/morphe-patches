@@ -54,6 +54,7 @@ import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.requests.MusixmatchProvider;
 import app.morphe.extension.music.patches.lyrics.requests.NetEaseProvider;
+import app.morphe.extension.music.patches.lyrics.requests.PetitLyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.QQProvider;
 import app.morphe.extension.music.patches.lyrics.requests.SimpMusicProvider;
 import app.morphe.extension.music.patches.lyrics.requests.SpotifyProvider;
@@ -1338,7 +1339,7 @@ public final class LyricsManager {
     /** Canonical provider ids, in the default priority order. */
     private static final List<String> PROVIDER_ORDER = Arrays.asList(
             "YTMusic", "Captions", "LRCLIB", "QQ", "NetEase", "KuGou",
-            "Luna", "bLyrics", "BiniLyrics",
+            "Luna", "PetitLyrics", "bLyrics", "BiniLyrics",
             "Unison", "SimpMusic", "AMLL", "LunaBeat", "Lyricify", "Apple", "Musixmatch", "Spotify", "Deezer");
 
     @NonNull
@@ -1387,6 +1388,7 @@ public final class LyricsManager {
             case "NetEase" -> new NetEaseProvider();
             case "KuGou" -> new KuGouProvider();
             case "Luna" -> new LunaProvider();
+            case "PetitLyrics" -> new PetitLyricsProvider();
             case "bLyrics" -> new BlyricsProvider();
             case "BiniLyrics" -> new BinimumProvider();
             case "Unison" -> new UnisonProvider();

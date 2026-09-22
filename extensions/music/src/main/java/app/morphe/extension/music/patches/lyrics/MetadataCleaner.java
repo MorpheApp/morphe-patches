@@ -96,8 +96,6 @@ final class MetadataCleaner {
         }
     }
 
-    // -- Metadata cleaning ------------------------------------------------
-
     static String cleanTitle(@Nullable String title) {
         if (title == null) {
             return "";

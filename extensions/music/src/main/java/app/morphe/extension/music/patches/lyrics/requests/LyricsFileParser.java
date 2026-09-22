@@ -28,6 +28,12 @@ public final class LyricsFileParser {
 
     @Nullable
     public static Lyrics parse(@Nullable String yaml, String providerName) {
+        return parse(yaml, providerName, null);
+    }
+
+    @Nullable
+    public static Lyrics parse(@Nullable String yaml, String providerName,
+            @Nullable String sourceUrl) {
         if (yaml == null || yaml.isEmpty()) {
             return null;
         }
@@ -84,29 +90,30 @@ public final class LyricsFileParser {
         if (instrumental) {
             return parsedLines.isEmpty()
                     ? Lyrics.NOT_FOUND
-                    : fileLyrics(parsedLines, providerName, true, creditLinesOut, yaml);
+                    : fileLyrics(parsedLines, providerName, true, creditLinesOut, yaml, sourceUrl);
         }
 
         boolean synced = parsedLines.stream()
                 .anyMatch(line -> line.startTimeMs() != LyricsLine.NO_TIME);
         if (synced) {
-            return fileLyrics(parsedLines, providerName, true, creditLinesOut, yaml);
+            return fileLyrics(parsedLines, providerName, true, creditLinesOut, yaml, sourceUrl);
         }
 
         Object plainObject = top.get("plain");
         if (plainObject instanceof String) {
             List<LyricsLine> plain = LrcParser.parsePlain((String) plainObject);
             if (!plain.isEmpty()) {
-                return fileLyrics(plain, providerName, false, creditLinesOut, yaml);
+                return fileLyrics(plain, providerName, false, creditLinesOut, yaml, sourceUrl);
             }
         }
         return Lyrics.NOT_FOUND;
     }
 
     private static Lyrics fileLyrics(List<LyricsLine> lines, String providerName, boolean synced,
-                                     @Nullable List<String> creditLines, String yaml) {
+                                     @Nullable List<String> creditLines, String yaml,
+                                     @Nullable String sourceUrl) {
         return new Lyrics(lines, providerName, synced, null, null, null,
-                creditLines, yaml, "lyricsfile.yaml", null);
+                creditLines, yaml, "lyricsfile.yaml", sourceUrl);
     }
 
     @Nullable
@@ -214,8 +221,6 @@ public final class LyricsFileParser {
                 cursor.index++;
                 sequence.add(readValue(lines, cursor, indent + 2));
             } else {
-                // The first mapping key sits inline after "- "; rewrite it as a
-                // regular mapping line so the shared reader can consume it.
                 lines.set(cursor.index, " ".repeat(indent + 2) + rest);
                 sequence.add(readMapping(lines, cursor, indent + 2));
             }

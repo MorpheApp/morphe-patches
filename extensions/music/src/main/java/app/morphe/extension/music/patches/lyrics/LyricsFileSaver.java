@@ -57,6 +57,8 @@ public final class LyricsFileSaver {
                 content = rebuildLyricifySyllable(lyrics.lines());
             } else if ("dzr.json".equals(formatType)) {
                 content = rebuildDzrJson(lyrics.lines());
+            } else if ("wsy".equals(formatType)) {
+                return null;
             } else {
                 content = rebuildPlainText(lyrics.lines());
                 formatType = "txt";

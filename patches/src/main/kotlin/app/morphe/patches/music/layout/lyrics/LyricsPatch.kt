@@ -128,8 +128,7 @@ val lyricsPatch = bytecodePatch(
                     ListPreference(
                         key = "morphe_music_lyrics_translation_language",
                         entriesKey = "morphe_language_entries",
-                        entryValuesKey = "morphe_language_entry_values",
-                        tag = "app.morphe.extension.music.settings.preference.LyricsTranslationLanguagePreference"
+                        entryValuesKey = "morphe_language_entry_values"
                     ),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
                     SwitchPreference(

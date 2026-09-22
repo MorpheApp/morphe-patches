@@ -683,8 +683,6 @@ public final class AppleMusicProvider implements LyricsProvider {
         return connection;
     }
 
-    // ── Lyrically fallback (no Apple Music token required) ──────────────
-
     @Nullable
     private Lyrics fetchViaLyrically(TrackInfo track) {
         if (track.title().isEmpty() || track.artist().isEmpty()) {
