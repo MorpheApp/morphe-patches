@@ -71,11 +71,10 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
                               FilterContentType contentType,
                               int contentIndex) {
         if (matchedGroup == listItem) {
-            // Scope strictly to components whose path *root* is `list_item.`. The substring
-            // also occurs inside `music_list_item.` used by home feed track cards, whose
-            // buffer happens to embed `yt_outline_download` - filtering those would blank
-            // the home page.
-            if (!path.startsWith(LIST_ITEM_ROOT_PREFIX)) {
+            // Match root or nested list items, while avoiding `music_list_item.` used by
+            // home feed track cards whose buffer can also contain download icon markers.
+            if (!path.startsWith(LIST_ITEM_ROOT_PREFIX)
+                    && !path.contains("|" + LIST_ITEM_ROOT_PREFIX)) {
                 return false;
             }
             return bufferGroupList.check(buffer).isFiltered();
