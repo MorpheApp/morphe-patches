@@ -114,22 +114,32 @@ public class SplashAnimationPatch {
     }
 
     /**
+     * A fixed color is written as the value of a property, and a color that animates as the
+     * value of one of its keyframes.
+     */
+    private static final String[] COLOR_KEYS = { "\"k\":", "\"s\":" };
+
+    /**
      * Plays a Lottie animation with some of the colors of the file replaced.
      *
      * @param replacements The color of the file, as it is written in the JSON, and its replacement.
      */
     public static void setSplashAnimation(LottieAnimationView view, int resourceId,
                                           Map<String, Integer> replacements) {
-        final String key = "\"k\":";
         String json = loadRawResourceAsString(resourceId);
         String replacement = json;
 
         for (Map.Entry<String, Integer> entry : replacements.entrySet()) {
-            if (BaseSettings.DEBUG.get() && !json.contains(key + entry.getKey())) {
-                Logger.printException(() -> "Could not replace splash animation colors: " + json);
+            final String original = entry.getKey();
+
+            if (BaseSettings.DEBUG.get() && !json.contains(original)) {
+                Logger.printException(() -> "Could not replace splash animation color: " + original);
             }
-            replacement = replacement.replace(key + entry.getKey(),
-                    key + getColorStringArray(entry.getValue()));
+
+            for (String key : COLOR_KEYS) {
+                replacement = replacement.replace(key + original,
+                        key + getColorStringArray(entry.getValue()));
+            }
         }
 
         // cacheKey is not needed since the animation will not be reused.
