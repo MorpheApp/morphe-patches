@@ -88,9 +88,10 @@ public final class QQProvider implements LyricsProvider {
     public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> candidates = searchAll(keyword, track);
-        List<Lyrics> results = new ArrayList<>();
+
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         for (JSONObject song : candidates) {
-            if (results.size() >= LyricsRequests.MAX_CANDIDATES) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
             if (song == null || !song.has("id")) {
@@ -99,13 +100,17 @@ public final class QQProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchFromSong(song);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            song.optString("title", ""), singers(song),
+                            song.optInt("interval", 0), lyrics, track);
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch QQ lyrics for a song", ex);
             }
         }
-        return results;
+
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     @Nullable
@@ -249,6 +254,7 @@ public final class QQProvider implements LyricsProvider {
             }
             String name = singer.optString("name", "");
             if (!name.isEmpty()) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append('/');
                 }
@@ -308,7 +314,8 @@ public final class QQProvider implements LyricsProvider {
     private static String base64Text(String text) {
         try {
             return Base64.encodeToString(text.getBytes(StandardCharsets.UTF_8), Base64.NO_WRAP);
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Base64 encoding failed", ex);
             return "";
         }
     }
@@ -335,7 +342,8 @@ public final class QQProvider implements LyricsProvider {
             if (decoded.length > 0) {
                 return new String(decoded, StandardCharsets.UTF_8);
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Base64 decode QQ lyric payload failed", ex);
         }
         return raw;
     }
@@ -348,7 +356,8 @@ public final class QQProvider implements LyricsProvider {
             builder.append(text, last, matcher.start());
             try {
                 builder.append((char) Integer.parseInt(Objects.requireNonNull(matcher.group(1))));
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Decode XML entity numeric value failed", ex);
                 builder.append(matcher.group(0));
             }
             last = matcher.end();
@@ -381,7 +390,8 @@ public final class QQProvider implements LyricsProvider {
             if ("offset".equalsIgnoreCase(key)) {
                 try {
                     offsetOut[0] = Long.parseLong(value);
-                } catch (NumberFormatException ignored) {
+                } catch (NumberFormatException ex) {
+                    Logger.printDebug(() -> "Parse QRC offset failed", ex);
                 }
                 continue;
             }

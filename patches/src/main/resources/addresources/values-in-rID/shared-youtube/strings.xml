@@ -238,9 +238,6 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_ryd_enabled_title">Aktifkan Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Tampilkan dislike sebagai persentase</string>
   <string name="morphe_ryd_dislike_percentage_summary">Menampilkan jumlah tidak suka sebagai persentase dari jumlah suka, bukan sebagai angka</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Gunakan tombol Suka ringkas</string>
-  <string name="morphe_ryd_compact_layout_summary">Mengurangi lebar tombol Suka untuk menghemat ruang</string>
   <string name="morphe_ryd_estimated_like_title">Tampilkan perkiraan suka</string>
   <string name="morphe_ryd_estimated_like_summary">Menampilkan perkiraan jumlah suka pada video di mana pembuatnya telah menonaktifkan fitur suka</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Tampilkan peringatan kesalahan sambungan</string>

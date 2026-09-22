@@ -233,12 +233,11 @@ To bo spremenilo videz in funkcije aplikacije, vendar lahko pride do neznanih st
   <string name="morphe_ryd_failure_generic">Ne maram všeč ni na voljo (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skrije ga lastnik</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Ta video ni všeč tebi in še %s drugim.</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Ta video mi ni všeč, %s glasov je negativnih</string>
   <string name="morphe_ryd_enabled_title">Omogoči Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Prikaži ne maram kot odstotek</string>
   <string name="morphe_ryd_dislike_percentage_summary">Prikaže ne maram kot odstotek všečnosti namesto števila</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Uporabi kompaktno obliko gumba \"Všeč\"</string>
-  <string name="morphe_ryd_compact_layout_summary">Zmanjša širino gumba \"Všeč\" za prihranek prostora</string>
   <string name="morphe_ryd_estimated_like_title">Prikaži ocenjeno število všečnosti</string>
   <string name="morphe_ryd_estimated_like_summary">Prikaže ocenjeno število všečnosti na videih, kjer je ustvarjalec onemogočil všečke</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Prikaži opozorila o napaki povezave</string>

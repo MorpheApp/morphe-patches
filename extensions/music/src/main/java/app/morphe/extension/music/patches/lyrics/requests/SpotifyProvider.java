@@ -86,11 +86,11 @@ public final class SpotifyProvider implements LyricsProvider {
     @Override
     public Lyrics fetch(TrackInfo track) throws Exception {
         final String spDc = Settings.SPOTIFY_TOKEN.get();
-        if (spDc.isBlank()) {
+        if (spDc.trim().isEmpty()) {
             return null;
         }
 
-        final String trackId = searchTrack(spDc, track.title(), track.artist());
+        String trackId  = searchTrack(spDc, track.title(), track.artist());
         if (trackId == null) {
             return null;
         }
@@ -130,7 +130,7 @@ public final class SpotifyProvider implements LyricsProvider {
                             .put("offset", 0))
                     .toString();
 
-            final String trackId = executeSearch(accessToken, clientToken, body);
+            String trackId  = executeSearch(accessToken, clientToken, body);
             if (trackId != null) {
                 return trackId;
             }
@@ -149,7 +149,8 @@ public final class SpotifyProvider implements LyricsProvider {
             if (retryAfterMs > 0) {
                 try {
                     Thread.sleep(retryAfterMs);
-                } catch (InterruptedException ignored) {
+                } catch (InterruptedException ex) {
+                    Logger.printDebug(() -> "Interrupted during search retry sleep", ex);
                     Thread.currentThread().interrupt();
                     return null;
                 }
@@ -164,7 +165,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 final String json = Requester.parseString(connection);
                 connection.disconnect();
 
-                final String trackId = parseSearchResult(json);
+                String trackId  = parseSearchResult(json);
                 if (trackId != null) {
                     return trackId;
                 }
@@ -243,6 +244,7 @@ public final class SpotifyProvider implements LyricsProvider {
 
             return extractTrackId(items);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not search Spotify track ID", ex);
             return null;
         }
     }
@@ -437,7 +439,8 @@ public final class SpotifyProvider implements LyricsProvider {
         }
         try {
             return Long.parseLong(raw);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Could not parse start time in Spotify lyrics line", ex);
             return LyricsLine.NO_TIME;
         }
     }
@@ -520,7 +523,7 @@ public final class SpotifyProvider implements LyricsProvider {
             final String body = Requester.parseString(connection);
             JSONObject json = new JSONObject(body);
             final String token = json.optString("accessToken", "");
-            if (token.isBlank()) {
+            if (token.trim().isEmpty()) {
                 return null;
             }
             cachedAccessToken = token;
@@ -532,6 +535,7 @@ public final class SpotifyProvider implements LyricsProvider {
 
             return cachedAccessToken;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch Spotify access token", ex);
             return null;
         } finally {
             if (connection != null) connection.disconnect();
@@ -618,23 +622,27 @@ public final class SpotifyProvider implements LyricsProvider {
             connection.disconnect();
             return cachedClientToken;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch Spotify client token", ex);
             return null;
         }
+    }
+
+    private static HttpURLConnection openServerTimeConnection(String spDc, int readTimeoutMs) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) new java.net.URL(SERVER_TIME_URL).openConnection();
+        connection.setRequestMethod("GET");
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(readTimeoutMs);
+        connection.setRequestProperty("User-Agent", USER_AGENT);
+        connection.setRequestProperty("Origin", "https://open.spotify.com/");
+        connection.setRequestProperty("Referer", "https://open.spotify.com/");
+        connection.setRequestProperty("Cookie", "sp_dc=" + spDc);
+        return connection;
     }
 
     private long getServerTime(String spDc) {
         HttpURLConnection connection = null;
         try {
-            connection = (HttpURLConnection)
-                    new java.net.URL(SERVER_TIME_URL).openConnection();
-            connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
-            connection.setRequestProperty("User-Agent", USER_AGENT);
-            connection.setRequestProperty("Origin", "https://open.spotify.com/");
-            connection.setRequestProperty("Referer", "https://open.spotify.com/");
-            connection.setRequestProperty("Cookie", "sp_dc=" + spDc);
-
+            connection = openServerTimeConnection(spDc, 5000);
             final int code = connection.getResponseCode();
             if (code == 200) {
                 final String body = Requester.parseString(connection);
@@ -673,7 +681,8 @@ public final class SpotifyProvider implements LyricsProvider {
                         if (v > newestVersion) {
                             newestVersion = v;
                         }
-                    } catch (NumberFormatException ignored) {
+                    } catch (NumberFormatException ex) {
+                        Logger.printDebug(() -> "Could not parse TOTP secret version", ex);
                     }
                 }
 
@@ -763,7 +772,8 @@ public final class SpotifyProvider implements LyricsProvider {
             if (attempt < SECRET_FETCH_RETRIES) {
                 try {
                     Thread.sleep(1000L * (attempt + 1));
-                } catch (InterruptedException ignored) {
+                } catch (InterruptedException ex) {
+                    Logger.printDebug(() -> "Interrupted during secret fetch retry sleep", ex);
                     Thread.currentThread().interrupt();
                     return null;
                 }
@@ -785,7 +795,8 @@ public final class SpotifyProvider implements LyricsProvider {
         if (retryAfter != null) {
             try {
                 return Long.parseLong(retryAfter) * 1000;
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Could not parse Retry-After header", ex);
             }
         }
         return 3000; // default 3 seconds
@@ -799,22 +810,16 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     public static boolean validateToken(String spDc) {
-        if (spDc == null || spDc.isBlank()) return false;
+        if (spDc == null || spDc.trim().isEmpty()) return false;
+        HttpURLConnection connection = null;
         try {
-            final HttpURLConnection connection = (HttpURLConnection)
-                    new java.net.URL(SERVER_TIME_URL).openConnection();
-            connection.setRequestMethod("GET");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(8000);
-            connection.setRequestProperty("User-Agent", USER_AGENT);
-            connection.setRequestProperty("Origin", "https://open.spotify.com/");
-            connection.setRequestProperty("Referer", "https://open.spotify.com/");
-            connection.setRequestProperty("Cookie", "sp_dc=" + spDc);
-            final int code = connection.getResponseCode();
-            connection.disconnect();
-            return code == 200;
+            connection = openServerTimeConnection(spDc, 8000);
+            return connection.getResponseCode() == Requester.HTTP_STATUS_CODE_SUCCESS;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not validate Spotify token", ex);
             return false;
+        } finally {
+            if (connection != null) connection.disconnect();
         }
     }
 }

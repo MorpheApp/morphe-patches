@@ -408,8 +408,6 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: evästeet tallennettu.</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: evästeet tyhjennetty.</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: virheelliset evästeet — tarkista ja yritä uudelleen.</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, sitten QQ, sitten KuGou, sitten NetEase, sitten BiniLyrics, sitten Unison, sitten AMLL.</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Napauta riviä siirtyäksesi</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Rivin napauttaminen hyppää siihen kohtaan kappaleessa</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Näytä kopioi -painike</string>
@@ -446,6 +444,8 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_source_label">Lähde: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Kääntänyt Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romanisoinut Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Kääntänyt %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Latinisoinut %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Käännetty</string>
   <string name="morphe_music_lyrics_translating">Käännetään…</string>
@@ -461,6 +461,22 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_hide_info_summary">Piilota lyriikoiden alla näkyvä tekijätietorivi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Vaihda käännöksen ja romanisoinnin paikkaa</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">PÄÄLLÄ asettaa romanisoinnin lyriikoiden alle ja käännöksen yläpuolelle; POIS pitää romanisoinnin yläpuolella ja käännöksen alapuolella</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI-yhteensopiva käännös</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Käytä mukautettua OpenAI-yhteensopivaa API:a sanoitusten kääntämiseen ja latinointiin Google Translate -palvelun sijaan</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Tekoälykäännösasetukset</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Määritä OpenAI-yhteensopiva API-päätepiste tekoälypohjaista sanoitusten kääntämistä ja latinointia varten.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API-päätepisteen URL-osoite (esim. https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API-avain (jätä tyhjäksi anonyymiä käyttöä varten)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Mallin nimi (esim. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Tekoälykäännösasetukset tallennettu</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Yhteyttä tekoälypäätepisteeseen ei voitu muodostaa. Tarkista asetuksesi.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Tekoälykäännösasetukset palautettu</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Määritetty</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Napauta määrittääksesi</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Perus-URL-osoite ei voi olla tyhjä</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Perus-URL-osoitteen on alettava http:// tai https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Mallin nimi ei voi olla tyhjä</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Tarkistetaan yhteyttä…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Poista lihavoidut kuvakkeet</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Palauta Playerin Seuraavaksi-, Sanoitukset- ja Liittyvät-välilehdet</string>

@@ -21,6 +21,7 @@ import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.innertube.utils.AuthUtils;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -83,7 +84,7 @@ public final class YTMusicProvider implements LyricsProvider {
     @Nullable
     private static String fetchLyricsBrowseId(String videoId) {
         try {
-            final JSONObject body = new JSONObject();
+            JSONObject body = new JSONObject();
             body.put("context", buildContext("WEB_REMIX", WEB_REMIX_VERSION));
             body.put("videoId", videoId);
             body.put("playlistId", "RDAMVM" + videoId);
@@ -96,12 +97,13 @@ public final class YTMusicProvider implements LyricsProvider {
                     LyricsRequests.logFailure("YTMusic", conn);
                     return null;
                 }
-                final JSONObject response = Requester.parseJSONObject(conn);
+                JSONObject response = Requester.parseJSONObject(conn);
                 return extractLyricsBrowseId(response);
             } finally {
                 conn.disconnect();
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch YTMusic browse ID", ex);
             return null;
         }
     }
@@ -116,12 +118,12 @@ public final class YTMusicProvider implements LyricsProvider {
                     .getJSONObject("watchNextTabbedResultsRenderer")
                     .getJSONArray("tabs");
             for (int i = 0; i < tabs.length(); i++) {
-                final JSONObject browseEndpoint = LyricsRequests.optPath(tabs.optJSONObject(i),
+                JSONObject browseEndpoint = LyricsRequests.optPath(tabs.optJSONObject(i),
                         "tabRenderer", "endpoint", "browseEndpoint");
                 if (browseEndpoint == null) {
                     continue;
                 }
-                final JSONObject musicConfig = LyricsRequests.optPath(browseEndpoint,
+                JSONObject musicConfig = LyricsRequests.optPath(browseEndpoint,
                         "browseEndpointContextSupportedConfigs",
                         "browseEndpointContextMusicConfig");
                 if (musicConfig == null) {
@@ -131,7 +133,8 @@ public final class YTMusicProvider implements LyricsProvider {
                     return LyricsRequests.optString(browseEndpoint, "browseId");
                 }
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not extract YTMusic lyrics browse ID", ex);
         }
         return null;
     }
@@ -141,7 +144,7 @@ public final class YTMusicProvider implements LyricsProvider {
         try {
             final String clientVersion = useAndroidClient
                     ? ANDROID_MUSIC_VERSION : WEB_REMIX_VERSION;
-            final JSONObject body = new JSONObject();
+            JSONObject body = new JSONObject();
             body.put("context", buildContext(
                     useAndroidClient ? "ANDROID_MUSIC" : "WEB_REMIX", clientVersion));
             body.put("browseId", browseId);
@@ -154,19 +157,20 @@ public final class YTMusicProvider implements LyricsProvider {
                     conn.disconnect();
                     return null;
                 }
-                final JSONObject response = Requester.parseJSONObject(conn);
+                JSONObject response = Requester.parseJSONObject(conn);
                 return parseLyricsResponse(response);
             } finally {
                 conn.disconnect();
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch YTMusic lyrics", ex);
             return null;
         }
     }
 
     @Nullable
     private static Lyrics parseLyricsResponse(JSONObject response) {
-        final JSONObject lyricsData = navigateTimedLyricsModel(response);
+        JSONObject lyricsData = navigateTimedLyricsModel(response);
         final String viaProvider = extractSourceProvider(lyricsData, response);
         final String sourceTag = viaProvider != null
                 ? "YouTube Music (via " + viaProvider + ")"
@@ -229,7 +233,7 @@ public final class YTMusicProvider implements LyricsProvider {
             }
         }
         try {
-            final JSONObject footer = response
+            JSONObject footer = response
                     .getJSONObject("contents")
                     .getJSONObject("sectionListRenderer")
                     .getJSONArray("contents")
@@ -239,7 +243,8 @@ public final class YTMusicProvider implements LyricsProvider {
             final String source = footer.getJSONArray("runs")
                     .getJSONObject(0).optString("text", "");
             return parseSourceProvider(source);
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not extract YTMusic source provider from description", ex);
         }
         return null;
     }
@@ -265,7 +270,8 @@ public final class YTMusicProvider implements LyricsProvider {
                     .getJSONObject("model")
                     .getJSONObject("timedLyricsModel")
                     .getJSONObject("lyricsData");
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not navigate YTMusic timed lyrics model", ex);
         }
         return null;
     }
@@ -278,15 +284,15 @@ public final class YTMusicProvider implements LyricsProvider {
                     .getJSONObject("sectionListRenderer")
                     .getJSONArray("contents");
             for (int i = 0; i < sectionContents.length(); i++) {
-                final JSONObject shelf = sectionContents.optJSONObject(i);
+                JSONObject shelf = sectionContents.optJSONObject(i);
                 if (shelf == null) {
                     continue;
                 }
-                final JSONObject renderer = shelf.optJSONObject("musicDescriptionShelfRenderer");
+                JSONObject renderer = shelf.optJSONObject("musicDescriptionShelfRenderer");
                 if (renderer == null) {
                     continue;
                 }
-                final JSONObject description = renderer.optJSONObject("description");
+                JSONObject description = renderer.optJSONObject("description");
                 if (description == null) {
                     continue;
                 }
@@ -294,7 +300,7 @@ public final class YTMusicProvider implements LyricsProvider {
                 if (runs != null && runs.length() > 0) {
                     final StringBuilder sb = new StringBuilder();
                     for (int r = 0; r < runs.length(); r++) {
-                        final JSONObject run = runs.optJSONObject(r);
+                        JSONObject run = runs.optJSONObject(r);
                         if (run != null) {
                             sb.append(run.optString("text", ""));
                         }
@@ -302,7 +308,8 @@ public final class YTMusicProvider implements LyricsProvider {
                     return sb.toString();
                 }
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not extract YTMusic plain text lyrics", ex);
         }
         return null;
     }
@@ -310,7 +317,7 @@ public final class YTMusicProvider implements LyricsProvider {
     private static List<LyricsLine> parseTimedLyrics(JSONArray timedArray) {
         final List<LyricsLine> lines = new ArrayList<>();
         for (int i = 0; i < timedArray.length(); i++) {
-            final JSONObject entry = timedArray.optJSONObject(i);
+            JSONObject entry = timedArray.optJSONObject(i);
             if (entry == null) {
                 continue;
             }
@@ -318,7 +325,7 @@ public final class YTMusicProvider implements LyricsProvider {
             if (text.isEmpty()) {
                 continue;
             }
-            final JSONObject cueRange = entry.optJSONObject("cueRange");
+            JSONObject cueRange = entry.optJSONObject("cueRange");
             final long startMs = parseTimestamp(cueRange, "startTimeMilliseconds");
             final long endMs = parseTimestamp(cueRange, "endTimeMilliseconds");
             lines.add(new LyricsLine(startMs, endMs, text, List.of()));
@@ -336,20 +343,21 @@ public final class YTMusicProvider implements LyricsProvider {
         }
         try {
             return Long.parseLong(raw);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Could not parse YTMusic timestamp: " + raw, ex);
             return LyricsLine.NO_TIME;
         }
     }
 
     private static JSONObject buildContext(String clientName, String clientVersion) throws Exception {
-        final JSONObject client = new JSONObject();
+        JSONObject client = new JSONObject();
         client.put("clientName", clientName);
         client.put("clientVersion", clientVersion);
         client.put("hl", "en");
 
-        final JSONObject user = new JSONObject();
+        JSONObject user = new JSONObject();
 
-        final JSONObject context = new JSONObject();
+        JSONObject context = new JSONObject();
         context.put("client", client);
         context.put("user", user);
         return context;

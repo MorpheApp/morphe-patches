@@ -235,12 +235,11 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_failure_generic">低評価数表示は利用できません (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">非公開</string>
+  <string name="morphe_ryd_accessibility_dislike_count">他 %s 人もこの動画を低く評価しました</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">この動画を低評価（投票の %s が低評価）</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike を有効化</string>
   <string name="morphe_ryd_dislike_percentage_title">低評価をパーセントで表示</string>
   <string name="morphe_ryd_dislike_percentage_summary">投票数ではなくパーセントで低評価を表示します</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">コンパクトな高評価ボタンを使用</string>
-  <string name="morphe_ryd_compact_layout_summary">高評価ボタンを横幅が短いボタンで置き換えます</string>
   <string name="morphe_ryd_estimated_like_title">高評価の推定値を表示</string>
   <string name="morphe_ryd_estimated_like_summary">動画投稿者が高評価数を非公開に設定している動画で、高評価の推定値を表示します</string>
   <string name="morphe_ryd_toast_on_connection_error_title">接続エラーの通知を表示</string>

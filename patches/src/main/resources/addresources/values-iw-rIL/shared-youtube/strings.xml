@@ -235,12 +235,11 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">דיסלייקים אינם זמינים (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">מוסתר על ידי הבעלים</string>
+  <string name="morphe_ryd_accessibility_dislike_count">לא אהבתי את הסרטון הזה, יחד עם %s אנשים נוספים</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">לא אהבתי את הסרטון הזה, %s מההצבעות הן שליליות</string>
   <string name="morphe_ryd_enabled_title">הפעל החזרת לייקים ל-YouTube</string>
   <string name="morphe_ryd_dislike_percentage_title">הצג דיסלייקים כאחוזים</string>
   <string name="morphe_ryd_dislike_percentage_summary">מציג דיסלייקים כאחוז מהלייקים ולא כמספר</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">השתמש בכפתור לייק קומפקטי</string>
-  <string name="morphe_ryd_compact_layout_summary">מקטין את רוחב כפתור הלייק כדי לחסוך מקום</string>
   <string name="morphe_ryd_estimated_like_title">הצג סימוני \'אהבתי\' משוערים</string>
   <string name="morphe_ryd_estimated_like_summary">מציג ספירת לייקים משוערת בסרטונים שהיוצר השבית את הלייקים בהם</string>
   <string name="morphe_ryd_toast_on_connection_error_title">הצג התראות שגיאת חיבור</string>

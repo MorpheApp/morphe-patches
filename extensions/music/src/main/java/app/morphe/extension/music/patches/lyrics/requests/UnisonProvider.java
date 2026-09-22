@@ -29,6 +29,7 @@ import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.shared.VideoInformation;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class UnisonProvider implements LyricsProvider {
@@ -103,6 +104,7 @@ public final class UnisonProvider implements LyricsProvider {
             }
             return parseLyrics(format, lyrics);
         } catch (IOException | JSONException ex) {
+            Logger.printDebug(() -> "Could not fetch Unison lyrics", ex);
             return null;
         } finally {
             if (connection != null) {
@@ -143,6 +145,7 @@ public final class UnisonProvider implements LyricsProvider {
             final byte[] hash = digest.digest(canonical.getBytes(StandardCharsets.UTF_8));
             return toHex(hash);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not compute Unison key ID", ex);
             return FALLBACK_KEY_ID;
         }
     }

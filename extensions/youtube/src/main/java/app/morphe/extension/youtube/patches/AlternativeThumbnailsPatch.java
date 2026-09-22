@@ -343,7 +343,7 @@ public final class AlternativeThumbnailsPatch {
     public static void handleCronetSuccess(UrlRequest request, @NonNull UrlResponseInfo responseInfo) {
         try {
             final int statusCode = responseInfo.getHttpStatusCode();
-            if (statusCode == 200) {
+            if (statusCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return;
             }
 

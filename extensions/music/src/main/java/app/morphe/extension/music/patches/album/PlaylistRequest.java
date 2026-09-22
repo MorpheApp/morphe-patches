@@ -198,8 +198,8 @@ public final class PlaylistRequest {
             connection.setFixedLengthStreamingMode(body.length);
             connection.getOutputStream().write(body);
 
-            int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            final int responseCode = connection.getResponseCode();
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return Requester.parseJSONObject(connection);
             }
 

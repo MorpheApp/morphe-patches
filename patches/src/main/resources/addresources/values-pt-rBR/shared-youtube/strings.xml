@@ -238,9 +238,6 @@ Se esta opção for desativada posteriormente, é recomendável limpar os dados 
   <string name="morphe_ryd_enabled_title">Ativar o Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
   <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Usar botão Gostei compacto</string>
-  <string name="morphe_ryd_compact_layout_summary">Reduz a largura do botão Gostei para economizar espaço</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar uma estimativa de \'Gostei\'</string>
   <string name="morphe_ryd_estimated_like_summary">Mostra uma contagem de \'Gostei\' estimada em vídeos onde o criador os desativou</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>

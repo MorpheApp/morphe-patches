@@ -235,12 +235,11 @@ Ako se kasnije isključi, preporučuje se obrisati podatke aplikacije kako bi se
   <string name="morphe_ryd_failure_generic">Dislikeovi nisu dostupni (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skriveno od strane vlasnika</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Ne sviđa mi se ovaj videozapis, uz %s drugih osoba</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Ne sviđa mi se ovaj videozapis, %s glasova su nesviđanja</string>
   <string name="morphe_ryd_enabled_title">Omogući Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Prikaži dislikeove kao postotak</string>
   <string name="morphe_ryd_dislike_percentage_summary">Prikaže dislikeove kao postotak likeova umjesto kao broj</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Koristi kompaktni gumb Like</string>
-  <string name="morphe_ryd_compact_layout_summary">Smanjuje širinu gumba Like kako bi se uštedio prostor</string>
   <string name="morphe_ryd_estimated_like_title">Prikaži procijenjene likeove</string>
   <string name="morphe_ryd_estimated_like_summary">Prikaže procijenjeni broj likeova na videozapisima gdje je kreator onemogućio likeove</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Prikaži upozorenja o pogrešci pri povezivanju</string>

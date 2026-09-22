@@ -235,12 +235,10 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">Дизлайки недоступні (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Приховано власником</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Не подобається це відео, %s голосів є дизлайками</string>
   <string name="morphe_ryd_enabled_title">Увімкнути Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Показувати дизлайки у відсотках</string>
   <string name="morphe_ryd_dislike_percentage_summary">Показує дизлайки у відсотках від лайків замість числа</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Використовувати компактну кнопку \"Лайк\"</string>
-  <string name="morphe_ryd_compact_layout_summary">Зменшує ширину кнопки \"Лайк\", щоб заощадити місце</string>
   <string name="morphe_ryd_estimated_like_title">Показувати приблизну кількість лайків</string>
   <string name="morphe_ryd_estimated_like_summary">Показує приблизну кількість лайків на відео, де автор вимкнув лайки</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показувати сповіщення про помилки з’єднання</string>

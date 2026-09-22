@@ -413,8 +413,6 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: העוגיות נשמרו</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: העוגיות נוקו</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: עוגיות לא תקינות — אנא בדוק ונסה שוב</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, לאחר מכן QQ, לאחר מכן KuGou, לאחר מכן NetEase, לאחר מכן BiniLyrics, לאחר מכן Unison, לאחר מכן AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">הקש על שורה כדי לדלג</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">הקשה על שורה מקפיצה לנקודה זו בשיר</string>
   <string name="morphe_music_lyrics_show_copy_button_title">הצג לחצן העתקה</string>
@@ -451,6 +449,8 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_lyrics_source_label">מקור: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">תורגם על ידי Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">רומניזציה על ידי Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">תורגם על ידי %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">רומניזציה על ידי %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">תרגום</string>
   <string name="morphe_music_lyrics_translating">מתרגם…</string>
@@ -466,6 +466,22 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_lyrics_hide_info_summary">הסתר את שורת הקרדיט המוצגת מתחת למילות השיר</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">החלף בין תרגום לרומניזציה</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">במצב ON הרומניזציה מופיעה מתחת למילות השיר והתרגום מעל; במצב OFF הרומניזציה נשארת מעל והתרגום מתחת</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">תרגום תואם OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">השתמש ב-API מותאם אישית ותואם OpenAI לתרגום ורומניזציה במקום Google Translate</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">הגדרות תרגום AI</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">הגדר את נקודת הקצה של API תואם OpenAI לתרגום ורומניזציה של מילות שירים באמצעות AI.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">כתובת URL של נקודת קצה API (לדוגמה https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">מפתח API (השאר ריק לגישה אנונימית)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">שם המודל (לדוגמה openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">הגדרות תרגום AI נשמרו</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">לא ניתן היה להתחבר לנקודת הקצה של AI. אנא בדוק את ההגדרות שלך.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">הגדרות תרגום AI אופסו</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">מוגדר</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">הקש כדי להגדיר</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">כתובת ה-URL הבסיסית לא יכולה להיות ריקה</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">כתובת ה-URL הבסיסית חייבת להתחיל ב-http:// או ב-https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">שם המודל לא יכול להיות ריק</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">מאמת חיבור…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - השבת אייקונים מודגשים</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - שחזור לשוניות הבא בתור, מילים, וקשורות בנגן</string>

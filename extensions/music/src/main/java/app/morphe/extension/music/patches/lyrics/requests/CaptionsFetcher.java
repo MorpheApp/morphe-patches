@@ -20,6 +20,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -137,7 +139,7 @@ public final class CaptionsFetcher {
             Lyrics result = outcome.lyrics;
             if (outcome.translationLyrics != null && !outcome.translationLyrics.isEmpty()) {
                 String langTag = Locale.getDefault().toLanguageTag();
-                Map<String, List<LyricsLine>> translations = new java.util.HashMap<>();
+                Map<String, List<LyricsLine>> translations = new HashMap<>();
                 translations.put(langTag, outcome.translationLyrics.lines());
                 result = new Lyrics(result.lines(), result.providerName(), result.synced(),
                         result.romanization(), translations,
@@ -200,6 +202,7 @@ public final class CaptionsFetcher {
             }
             return allowProviders(captions.innertubeTrack());
         } catch (Exception ex) {
+            Logger.printDebug(() -> "fetchCaptions failure", ex);
             return CaptionsOutcome.ALLOW_PROVIDERS;
         }
     }
@@ -254,6 +257,7 @@ public final class CaptionsFetcher {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException ex) {
+                    Logger.printDebug(() -> "Interrupted waiting for video ID", ex);
                     Thread.currentThread().interrupt();
                     break;
                 }
@@ -271,6 +275,7 @@ public final class CaptionsFetcher {
             try {
                 Thread.sleep(100);
             } catch (InterruptedException ex) {
+                Logger.printDebug(() -> "Interrupted retrying video ID", ex);
                 Thread.currentThread().interrupt();
                 break;
             }
@@ -329,7 +334,7 @@ public final class CaptionsFetcher {
     }
 
     private static Set<String> extractTranslationLanguages(String json) {
-        Set<String> langs = new java.util.HashSet<>();
+        Set<String> langs = new HashSet<>();
         int idx = json.indexOf("\"translationLanguages\":[");
         if (idx < 0) {
             return langs;
@@ -492,7 +497,9 @@ public final class CaptionsFetcher {
             if (numEnd > numStart) {
                 try {
                     defaultIdx = Integer.parseInt(json.substring(numStart, numEnd));
-                } catch (NumberFormatException ignored) {}
+                } catch (NumberFormatException ex) {
+                    Logger.printDebug(() -> "Could not parse default track index", ex);
+                }
             }
         }
         if (defaultIdx < 0) {
@@ -591,7 +598,8 @@ public final class CaptionsFetcher {
                     return runs.getJSONObject(0).optString("text", "");
                 }
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not extract name from track", ex);
         }
         return "";
     }
@@ -749,7 +757,7 @@ public final class CaptionsFetcher {
             conn.setReadTimeout(5000);
 
             final int responseCode = conn.getResponseCode();
-            if (responseCode == 200) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 List<String> setCookies = conn.getHeaderFields().get("Set-Cookie");
                 cachedCookies = parseCookies(setCookies);
                 cachedCookiesTime = System.currentTimeMillis();
@@ -772,6 +780,7 @@ public final class CaptionsFetcher {
             if (eq > 0) {
                 String key = entry.substring(0, eq).trim();
                 if (COOKIE_KEYS.contains(key)) {
+                    //noinspection SizeReplaceableByIsEmpty
                     if (sb.length() > 0) sb.append("; ");
                     sb.append(entry);
                 }
@@ -811,7 +820,48 @@ public final class CaptionsFetcher {
             }
             return "SAPISIDHASH " + timestamp + "_" + hex;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not compute SAPISIDHASH", ex);
             return null;
+        }
+    }
+
+    @Nullable
+    private static String postInnertubePlayer(String bodyJson, @Nullable String cookies) throws Exception {
+        HttpURLConnection conn = Requester.openConnection(INNERTUBE_PLAYER_URL);
+        try {
+            conn.setRequestMethod("POST");
+            conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
+            conn.setReadTimeout(READ_TIMEOUT_MS);
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("User-Agent", CAPTION_USER_AGENT);
+            conn.setRequestProperty("Origin", "https://www.youtube.com");
+            conn.setRequestProperty("Referer", "https://www.youtube.com/");
+            conn.setRequestProperty("X-Origin", "https://www.youtube.com");
+            conn.setRequestProperty("X-YouTube-Client-Name", "1");
+            conn.setRequestProperty("X-YouTube-Client-Version", "2.20250101.00.00");
+            conn.setRequestProperty("X-Goog-AuthUser", "0");
+
+            if (cookies != null && !cookies.isEmpty()) {
+                conn.setRequestProperty("Cookie", cookies);
+                String sapisidHash = computeSapisidHash(cookies);
+                if (sapisidHash != null) {
+                    conn.setRequestProperty("Authorization", sapisidHash);
+                }
+            }
+            conn.setDoOutput(true);
+
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(bodyJson.getBytes(StandardCharsets.UTF_8));
+            }
+
+            final int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                return null;
+            }
+
+            return Requester.parseString(conn);
+        } finally {
+            conn.disconnect();
         }
     }
 
@@ -829,97 +879,27 @@ public final class CaptionsFetcher {
             body.put("context", context);
             body.put("videoId", "dQw4w9WgXcQ");
 
-            HttpURLConnection conn = Requester.openConnection(INNERTUBE_PLAYER_URL);
-            try {
-                conn.setRequestMethod("POST");
-                conn.setConnectTimeout(5000);
-                conn.setReadTimeout(8000);
-                conn.setRequestProperty("Content-Type", "application/json");
-                conn.setRequestProperty("User-Agent", CAPTION_USER_AGENT);
-                conn.setRequestProperty("Origin", "https://www.youtube.com");
-                conn.setRequestProperty("Referer", "https://www.youtube.com/");
-                conn.setRequestProperty("X-Origin", "https://www.youtube.com");
-                conn.setRequestProperty("X-YouTube-Client-Name", "1");
-                conn.setRequestProperty("X-YouTube-Client-Version", "2.20250101.00.00");
-                conn.setRequestProperty("X-Goog-AuthUser", "0");
-                conn.setRequestProperty("Cookie", cookies);
-                String sapisidHash = computeSapisidHash(cookies);
-                if (sapisidHash != null) {
-                    conn.setRequestProperty("Authorization", sapisidHash);
-                }
-                conn.setDoOutput(true);
-
-                try (OutputStream os = conn.getOutputStream()) {
-                    os.write(body.toString().getBytes(StandardCharsets.UTF_8));
-                }
-
-                final int responseCode = conn.getResponseCode();
-                if (responseCode != 200) {
-                    return false;
-                }
-
-                String json = Requester.parseString(conn);
-                JSONObject resp = new JSONObject(json);
-                JSONObject ps = resp.optJSONObject("playabilityStatus");
-                String status = ps != null ? ps.optString("status") : null;
-                return "OK".equals(status);
-            } finally {
-                conn.disconnect();
+            String json = postInnertubePlayer(body.toString(), cookies);
+            if (json == null) {
+                return false;
             }
+            JSONObject resp = new JSONObject(json);
+            JSONObject ps = resp.optJSONObject("playabilityStatus");
+            String status = ps != null ? ps.optString("status") : null;
+            return "OK".equals(status);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not validate YouTube cookies", ex);
             return false;
         }
     }
 
     @Nullable
     private static String fetchInnertubePlayer(String videoId) {
-        String cookies = getCookies();
-        final boolean hasCookies = cookies != null && !cookies.isEmpty();
-
         try {
             String bodyStr = buildPlayerRequestBody(videoId);
-
-            HttpURLConnection conn = null;
-            try {
-                conn = Requester.openConnection(INNERTUBE_PLAYER_URL);
-                conn.setRequestMethod("POST");
-                conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
-                conn.setReadTimeout(READ_TIMEOUT_MS);
-                conn.setRequestProperty("Content-Type", "application/json");
-                conn.setRequestProperty("User-Agent", CAPTION_USER_AGENT);
-                conn.setRequestProperty("Origin", "https://www.youtube.com");
-                conn.setRequestProperty("Referer", "https://www.youtube.com/");
-                conn.setRequestProperty("X-Origin", "https://www.youtube.com");
-                conn.setRequestProperty("X-YouTube-Client-Name", "1");
-                conn.setRequestProperty("X-YouTube-Client-Version", "2.20250101.00.00");
-                conn.setRequestProperty("X-Goog-AuthUser", "0");
-                conn.setDoOutput(true);
-
-                if (hasCookies) {
-                    conn.setRequestProperty("Cookie", cookies);
-                    String sapisidHash = computeSapisidHash(cookies);
-                    if (sapisidHash != null) {
-                        conn.setRequestProperty("Authorization", sapisidHash);
-                    }
-                }
-
-                try (OutputStream os = conn.getOutputStream()) {
-                    os.write(bodyStr.getBytes(StandardCharsets.UTF_8));
-                }
-
-                final int responseCode = conn.getResponseCode();
-                if (responseCode != 200) {
-                    return null;
-                }
-                return Requester.parseString(conn);
-            } catch (Exception ex) {
-                return null;
-            } finally {
-                if (conn != null) {
-                    conn.disconnect();
-                }
-            }
+            return postInnertubePlayer(bodyStr, getCookies());
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch InnerTube player", ex);
             return null;
         }
     }
@@ -966,7 +946,8 @@ public final class CaptionsFetcher {
                 if (!lines.isEmpty()) {
                     return new Lyrics(lines, Lyrics.CAPTIONS_PROVIDER, true, null, null, null, null, json, "json3", null);
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch via timedtext for lang: " + lang, ex);
             }
         }
         return null;

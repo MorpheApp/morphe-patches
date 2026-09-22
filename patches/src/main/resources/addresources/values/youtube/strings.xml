@@ -1142,7 +1142,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_miniplayer_screen_summary">Customize the appearance and behavior of the minimized video player</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>
-    <string name="morphe_miniplayer_hide_title_title">Hide title</string>
+    <string name="morphe_miniplayer_hide_title_title">Hide title and channel</string>
     <string name="morphe_miniplayer_type_entry_0">Disabled</string>
     <string name="morphe_miniplayer_type_entry_1">Default</string>
     <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1415,7 +1415,7 @@ Video playback with AV1 may stutter or drop frames."</string>
 
     <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
     <string name="morphe_restore_old_video_action_bar_title">Restore old video action bar</string>
-    <string name="morphe_restore_old_video_action_bar_summary">"Fixes dislikes not shown and video action buttons cannot be hidden
+    <string name="morphe_restore_old_video_action_bar_summary">"Fixes video action buttons cannot be hidden
 
 Limitation: Reverts to old style \'More videos\' overlay"</string>
 

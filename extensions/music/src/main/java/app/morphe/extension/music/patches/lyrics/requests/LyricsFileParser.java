@@ -17,6 +17,7 @@ import java.util.Map;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.shared.Logger;
 
 public final class LyricsFileParser {
 
@@ -139,6 +140,7 @@ public final class LyricsFileParser {
                 if (wordText.isEmpty()) {
                     continue;
                 }
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append(' ');
                 }
@@ -177,7 +179,8 @@ public final class LyricsFileParser {
         if (value instanceof String) {
             try {
                 return Long.parseLong(((String) value).trim());
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException ex) {
+                Logger.printDebug(() -> "Could not parse long value in LyricsFileParser", ex);
                 return LyricsLine.NO_TIME;
             }
         }
@@ -206,7 +209,7 @@ public final class LyricsFileParser {
             if (indentOf(line) != indent || !line.trim().startsWith("- ")) {
                 break;
             }
-            String rest = line.trim().substring(2).strip();
+            String rest = line.trim().substring(2).trim();
             if (rest.isEmpty()) {
                 cursor.index++;
                 sequence.add(readValue(lines, cursor, indent + 2));
@@ -233,7 +236,7 @@ public final class LyricsFileParser {
                 continue;
             }
             String key = line.substring(indent, colon).trim();
-            String value = line.substring(colon + 1).strip();
+            String value = line.substring(colon + 1).trim();
             cursor.index++;
 
             if (value.isEmpty()) {
@@ -272,6 +275,7 @@ public final class LyricsFileParser {
             if (indentOf(line) <= indent) {
                 break;
             }
+            //noinspection SizeReplaceableByIsEmpty
             if (builder.length() > 0) {
                 builder.append('\n');
             }
@@ -283,7 +287,7 @@ public final class LyricsFileParser {
     }
 
     private static String unquote(String value) {
-        String string = value.strip();
+        String string = value.trim();
         if (string.length() >= 2 && string.startsWith("'") && string.endsWith("'")) {
             return string.substring(1, string.length() - 1).replace("''", "'");
         }

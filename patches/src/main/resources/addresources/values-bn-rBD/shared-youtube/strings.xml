@@ -235,12 +235,11 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <string name="morphe_ryd_failure_generic">অপছন্দ উপলভ্য নয় (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">মালিক কর্তৃক লুকানো</string>
+  <string name="morphe_ryd_accessibility_dislike_count">এই ভিডিওটি অপছন্দ করুন, %s জন অন্য লোকের সাথে</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">এই ভিডিওটি অপছন্দ করুন, %s ভোটই অপছন্দ</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike সক্ষম করুন</string>
   <string name="morphe_ryd_dislike_percentage_title">অপছন্দগুলো শতাংশ অনুযায়ী দেখান</string>
   <string name="morphe_ryd_dislike_percentage_summary">সংখ্যাটির পরিবর্তে লাইকের শতাংশ হিসাবে অপছন্দ দেখায়</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">সংক্ষিপ্ত Like বোতাম ব্যবহার করুন</string>
-  <string name="morphe_ryd_compact_layout_summary">স্থান বাঁচানোর জন্য Like বোতামের প্রস্থ কমায়</string>
   <string name="morphe_ryd_estimated_like_title">অনুমানিত লাইক দেখান</string>
   <string name="morphe_ryd_estimated_like_summary">যে ভিডিওগুলোর নির্মাতারা লাইক নিষ্ক্রিয় করেছেন, সেগুলোতে একটি আনুমানিক লাইকের সংখ্যা দেখায়</string>
   <string name="morphe_ryd_toast_on_connection_error_title">সংযোগ ত্রুটির সতর্কতা দেখান</string>

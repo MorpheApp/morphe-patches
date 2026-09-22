@@ -172,9 +172,9 @@ public final class KuGouProvider implements LyricsProvider {
             return new ArrayList<>();
         }
 
-        List<Lyrics> results = new ArrayList<>();
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
         for (int i = 0; i < candidates.length(); i++) {
-            if (results.size() >= LyricsRequests.MAX_CANDIDATES) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
             JSONObject candidate = candidates.optJSONObject(i);
@@ -185,13 +185,15 @@ public final class KuGouProvider implements LyricsProvider {
                 String sourceUrl = "https://www.kugou.com/song/" + id + ".html";
                 Lyrics lyrics = fetchFromCandidate(candidate, sourceUrl);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreSingleResult(lyrics);
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch KuGou lyrics for a candidate", ex);
             }
         }
-        return results;
+
+        return Lyrics.sortLyricsByScore(scored);
     }
 
     @Nullable
@@ -356,7 +358,8 @@ public final class KuGouProvider implements LyricsProvider {
                 if (name.equals("offset")) {
                     try {
                         fileOffsetMs = -Long.parseLong(value.trim());
-                    } catch (NumberFormatException ignored) {
+                    } catch (NumberFormatException ex) {
+                        Logger.printDebug(() -> "Could not parse offset in KuGou LRC", ex);
                     }
                 } else if (name.equals("language")) {
                     languageTag = value;
@@ -496,9 +499,10 @@ public final class KuGouProvider implements LyricsProvider {
             return "";
         }
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < entry.length(); i++) {
+        for (int i = 0, length = entry.length(); i < length; i++) {
             String part = entry.optString(i, "").trim();
             if (!part.isEmpty()) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) {
                     builder.append(' ');
                 }

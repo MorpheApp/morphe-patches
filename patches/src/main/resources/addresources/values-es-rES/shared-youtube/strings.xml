@@ -235,12 +235,11 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_ryd_failure_generic">Los \'No me gusta\' no están disponibles (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Oculto por el propietario</string>
+  <string name="morphe_ryd_accessibility_dislike_count">No me gusta este vídeo, al igual que a otras %s personas</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">No me gusta este vídeo; el %s de los votos son No me gusta</string>
   <string name="morphe_ryd_enabled_title">Activar Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar \'No me gusta\' como porcentaje</string>
   <string name="morphe_ryd_dislike_percentage_summary">Muestra los \'No me gusta\' como un porcentaje de las reacciones positivas en lugar de un número</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Usar botón de \'Me gusta\' compacto</string>
-  <string name="morphe_ryd_compact_layout_summary">Reduce el ancho del botón de \'Me gusta\' para ahorrar espacio</string>
   <string name="morphe_ryd_estimated_like_title">Mostrar estimación de \'Me gusta\'</string>
   <string name="morphe_ryd_estimated_like_summary">Muestra una estimación del número de \'Me gusta\' en los videos donde el creador ha desactivado las reacciones</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de error de conexión</string>

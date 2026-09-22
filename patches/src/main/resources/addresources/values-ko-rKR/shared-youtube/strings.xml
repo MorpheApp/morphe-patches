@@ -235,12 +235,11 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_ryd_failure_generic">싫어요 수를 표시할 수 없습니다 (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">소유자에 의해 숨겨짐</string>
+  <string name="morphe_ryd_accessibility_dislike_count">%s 명의 다른 사람들과 함께 이 동영상에 싫어요를 눌렀습니다</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">투표 중 %s %%가 이 동영상에 싫어요를 눌렀습니다</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike 활성화하기</string>
   <string name="morphe_ryd_dislike_percentage_title">싫어요 수를 백분율로 표시하기</string>
   <string name="morphe_ryd_dislike_percentage_summary">싫어요 수를 숫자 대신 좋아요 수 대비 백분율로 표시합니다</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">최소화된 좋아요 버튼 사용하기</string>
-  <string name="morphe_ryd_compact_layout_summary">공간을 절약하기 위해 좋아요 버튼의 너비를 줄입니다</string>
   <string name="morphe_ryd_estimated_like_title">추정되는 좋아요 수 표시하기</string>
   <string name="morphe_ryd_estimated_like_summary">좋아요 수가 숨겨진 동영상에서 추정되는 좋아요 수를 표시합니다</string>
   <string name="morphe_ryd_toast_on_connection_error_title">연결 오류 알림 표시하기</string>

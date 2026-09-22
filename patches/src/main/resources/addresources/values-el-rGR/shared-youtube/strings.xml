@@ -231,12 +231,11 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">Δεδομένα dislike μη διαθέσιμα (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Κρυμμένα από τον ιδιοκτήτη</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Δεν μου αρέσει αυτό το βίντεο, μαζί με %s άλλα άτομα</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Δεν μου αρέσει αυτό το βίντεο, %s των ψήφων είναι αρνητικές</string>
   <string name="morphe_ryd_enabled_title">Ενεργοποίηση Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Εμφάνιση των Dislike ως ποσοστό</string>
   <string name="morphe_ryd_dislike_percentage_summary">Εμφανίζει τα dislike ως ποσοστό των like αντί για αριθμό</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Χρήση συμπαγούς κουμπιού Like</string>
-  <string name="morphe_ryd_compact_layout_summary">Μειώνει το πλάτος του κουμπιού Like για εξοικονόμηση χώρου</string>
   <string name="morphe_ryd_estimated_like_title">Εμφάνιση των εκτιμώμενων «Μου αρέσει»</string>
   <string name="morphe_ryd_estimated_like_summary">Εμφανίζει μια εκτιμώμενη μέτρηση like σε βίντεο όπου ο δημιουργός έχει απενεργοποιήσει τα like</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Εμφάνιση ειδοποιήσεων σφάλματος σύνδεσης</string>

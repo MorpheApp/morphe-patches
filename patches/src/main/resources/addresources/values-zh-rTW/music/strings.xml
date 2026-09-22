@@ -413,8 +413,6 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube：已儲存Cookie</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube：已清除Cookie</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube：無效Cookie — 請檢查並重試</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB、QQ、KuGou、NetEase、BiniLyrics、Unison、AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">點擊行以尋找</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">點擊一行會跳到歌曲的那個時間點</string>
   <string name="morphe_music_lyrics_show_copy_button_title">顯示複製按鈕</string>
@@ -451,6 +449,8 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_source_label">來源：%s</string>
   <string name="morphe_music_lyrics_translated_by_google">由 Google 翻譯</string>
   <string name="morphe_music_lyrics_romanized_by_google">由 Google 轉寫</string>
+  <string name="morphe_music_lyrics_translated_by_ai">由 %s 進行翻譯</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">由 %s 進行羅馬拼音翻譯</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">已翻譯</string>
   <string name="morphe_music_lyrics_translating">正在翻譯…</string>
@@ -466,6 +466,22 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_hide_info_summary">在歌詞畫面中隱藏來源標示</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交換翻譯和羅馬拼音</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">開啟時將羅馬拼音放在歌詞下面，翻譯放在上面； 關閉時維持羅馬拼音放在上面，翻譯放在下面</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI 相容翻譯</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">使用自訂的 OpenAI 相容 API 進行翻譯和羅馬拼音，取代 Google 翻譯</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI 翻譯設定</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">設定用於 AI 歌詞翻譯和羅馬拼音的 OpenAI 相容 API 端點。</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端點 URL（例如 https://text.pollinations.ai/openai）</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API 金鑰（留空以匿名存取）</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">模型名稱（例如 openai-fast、gpt-4o-mini）</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI 翻譯設定已儲存</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">無法連線到 AI 端點。請檢查您的設定。</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI 翻譯設定已重設</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">已設定</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">點擊以設定</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Base URL 不能為空</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL 必須以 http:// 或 https:// 開頭</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">模型名稱不能為空</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">正在驗證連線…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 停用粗體圖示</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢復播放器「接下來播放」、「歌詞」和「相關」標籤</string>

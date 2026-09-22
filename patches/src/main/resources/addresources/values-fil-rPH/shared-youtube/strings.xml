@@ -235,12 +235,11 @@ Kung patayin ito sa kalaunan, inirerekomenda na i-clear ang data ng app upang ma
   <string name="morphe_ryd_failure_generic">Hindi magagamit ang mga dislike (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Itinago ng may-ari</string>
+  <string name="morphe_ryd_accessibility_dislike_count">I-dislike ang video na ito, kasama ang %s ibang tao</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">I-dislike ang video na ito, %s ng mga boto ay mga dislike</string>
   <string name="morphe_ryd_enabled_title">I-enable ang Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Ipakita ang mga dislike bilang porsyento</string>
   <string name="morphe_ryd_dislike_percentage_summary">Ipinapakita ang mga dislike bilang isang porsyento ng mga like sa halip na isang numero</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Gumamit ng compact na button ng Like</string>
-  <string name="morphe_ryd_compact_layout_summary">Binabawasan ang lapad ng button ng Like para makatipid ng espasyo</string>
   <string name="morphe_ryd_estimated_like_title">Ipakita ang tinantyang bilang ng mga like</string>
   <string name="morphe_ryd_estimated_like_summary">Ipinapakita ang tinantyang bilang ng mga like sa mga video kung saan hindi pinagana ng tagalikha ang mga like</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Ipakita ang mga alerto ng error sa koneksyon</string>

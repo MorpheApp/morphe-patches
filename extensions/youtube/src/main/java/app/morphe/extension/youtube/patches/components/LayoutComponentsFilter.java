@@ -234,6 +234,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_channel_bar"
         );
 
+        final var compactChannelCommunityButton = new StringFilterGroup(
+                Settings.HIDE_COMMUNITY_BUTTON,
+                "compact_channel$FEcommunity"
+        );
+
         compactChannelBarInner = new StringFilterGroup(
                 Settings.HIDE_JOIN_MEMBERSHIP_BUTTON,
                 "compact_channel_bar_inner",
@@ -378,7 +383,8 @@ public final class LayoutComponentsFilter extends Filter {
                 Settings.HIDE_SURVEYS,
                 "in_feed_survey",
                 "slimline_survey",
-                "feed_nudge"
+                "feed_nudge",
+                "in_short_survey"
         );
 
         final var timedReactions = new StringFilterGroup(
@@ -436,6 +442,7 @@ public final class LayoutComponentsFilter extends Filter {
                 chipBar,
                 compactBanner,
                 compactChannelBar,
+                compactChannelCommunityButton,
                 compactChannelBarInner,
                 communityPosts,
                 crowdfundingBox,

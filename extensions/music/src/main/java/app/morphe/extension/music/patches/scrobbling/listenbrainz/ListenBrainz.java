@@ -48,7 +48,7 @@ public class ListenBrainz {
         conn.setReadTimeout(10000);
 
         final int code = conn.getResponseCode();
-        if (code == 200) {
+        if (code == Requester.HTTP_STATUS_CODE_SUCCESS) {
             String response = Requester.parseString(conn);
             JSONObject root = new JSONObject(response);
             TokenValidation validation = new TokenValidation();
@@ -172,7 +172,7 @@ public class ListenBrainz {
         }
 
         final int code = conn.getResponseCode();
-        if (code == 200) {
+        if (code == Requester.HTTP_STATUS_CODE_SUCCESS) {
             return true;
         }
         String errResponse = Requester.parseErrorStringAndDisconnect(conn);

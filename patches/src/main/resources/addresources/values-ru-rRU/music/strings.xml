@@ -406,8 +406,6 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: куки сохранены</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: куки очищены</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: недействительные куки — проверьте и попробуйте ещё раз.</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, затем QQ, затем KuGou, затем NetEase, затем BiniLyrics, затем Unison, затем AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Нажмите на строку, чтобы перейти к моменту воспроизведения</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Нажатие на строку переводит к соответствующему моменту в песне</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Показать кнопку копирования</string>
@@ -444,6 +442,8 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_source_label">Источник: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Переведено Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Романизировано Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Переведено с помощью %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Транслитерировано с помощью %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перевод</string>
   <string name="morphe_music_lyrics_translating">Перевод…</string>
@@ -459,6 +459,22 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_hide_info_summary">Скрывать строку с указанием авторства под текстом</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поменять местами перевод и романизацию</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ON размещает романизацию под переводом, OFF — над ним</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Перевод, совместимый с OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Использовать собственный OpenAI-совместимый API для перевода и транслитерации вместо Google Translate</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Настройки ИИ-перевода</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Настройте конечную точку API, совместимого с OpenAI, для перевода текстов песен и транслитерации с помощью ИИ.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL конечной точки API (например, https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">Ключ API (оставьте пустым для анонимного доступа)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Название модели (например, openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Настройки ИИ-перевода сохранены</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Не удалось подключиться к конечной точке ИИ. Проверьте настройки.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Настройки ИИ-перевода сброшены</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Настроено</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Нажмите, чтобы настроить</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Базовый URL не может быть пустым</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Базовый URL должен начинаться с http:// или https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Название модели не может быть пустым</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Проверка подключения…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">Выключить жирные иконки</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Восстановить вкладки \"Далее\", \"Текст песни\" и \"Похожее\" в плеере</string>

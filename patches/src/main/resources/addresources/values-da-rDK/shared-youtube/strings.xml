@@ -235,12 +235,11 @@ Hvis det senere slås fra, anbefales det at rydde app-data for at forhindre UI-f
   <string name="morphe_ryd_failure_generic">Dislikes er ikke tilgængelige (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skjult af ejer</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Synes ikke om denne video, sammen med %s andre personer</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Synes ikke om denne video, %s af stemmerne er dislikes</string>
   <string name="morphe_ryd_enabled_title">Aktivér Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Vis dislikes som procent</string>
   <string name="morphe_ryd_dislike_percentage_summary">Viser dislikes som en procentdel af likes i stedet for et tal</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Brug kompakt Like-knap</string>
-  <string name="morphe_ryd_compact_layout_summary">Reducerer bredden af Like-knappen for at spare plads</string>
   <string name="morphe_ryd_estimated_like_title">Vis anslåede Likes</string>
   <string name="morphe_ryd_estimated_like_summary">Viser et estimeret like-antal på videoer, hvor skaberen har deaktiveret likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Vis forbindelsesfejlmeddelelser</string>

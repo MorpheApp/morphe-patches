@@ -25,6 +25,7 @@ import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
 public final class DeezerProvider implements LyricsProvider {
@@ -90,10 +91,11 @@ public final class DeezerProvider implements LyricsProvider {
             return Collections.emptyList();
         }
 
-        List<Lyrics> results = new ArrayList<>();
-        for (int i = 0; i < searchResults.length() && results.size() < LyricsRequests.MAX_CANDIDATES; i++) {
-            JSONObject item = searchResults.optJSONObject(i);
-            if (item == null) continue;
+        List<JSONObject> sorted = sortCandidates(searchResults, track);
+
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (JSONObject item : sorted) {
+            if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
 
             final long trackId = item.optLong("id", -1);
             if (trackId <= 0) continue;
@@ -101,12 +103,44 @@ public final class DeezerProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchLyricsByTrackId(trackId, arl);
                 if (lyrics != null) {
-                    results.add(lyrics);
+                    int score = LyricsRequests.scoreLyricsCandidate(
+                            item.optString("title", ""),
+                            artistName(item),
+                            item.optInt("duration", 0),
+                            lyrics, track);
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
                 }
-            } catch (Exception ignored) {
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not fetch Deezer lyrics by track ID", ex);
             }
         }
-        return results;
+
+        return Lyrics.sortLyricsByScore(scored);
+    }
+
+    private static String artistName(JSONObject item) {
+        JSONObject artistObj = item.optJSONObject("artist");
+        return artistObj != null ? artistObj.optString("name", "") : "";
+    }
+
+    private static int scoreCandidate(JSONObject item, TrackInfo track) {
+        String title = item.optString("title", "");
+        JSONObject artistObj = item.optJSONObject("artist");
+        String artist = artistObj != null ? artistObj.optString("name", "") : "";
+        return LyricsRequests.scoreTrackCandidate(title, artist,
+                item.optInt("duration", 0), track);
+    }
+
+    private static List<JSONObject> sortCandidates(JSONArray searchResults, TrackInfo track) {
+        List<JSONObject> list = new ArrayList<>();
+        for (int i = 0; i < searchResults.length(); i++) {
+            JSONObject item = searchResults.optJSONObject(i);
+            if (item != null) {
+                list.add(item);
+            }
+        }
+        list.sort((a, b) -> scoreCandidate(b, track) - scoreCandidate(a, track));
+        return list;
     }
 
     @Nullable
@@ -151,7 +185,8 @@ public final class DeezerProvider implements LyricsProvider {
             } finally {
                 connection.disconnect();
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not get Deezer JWT", ex);
             return null;
         }
     }
@@ -175,7 +210,8 @@ public final class DeezerProvider implements LyricsProvider {
         try {
             connection = LyricsRequests.openConnection(url, 10000, 15000,
                     Map.of("Accept", "application/json"));
-        } catch (IOException ignored) {
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not open Deezer search connection", ex);
             return null;
         }
 
@@ -184,7 +220,8 @@ public final class DeezerProvider implements LyricsProvider {
             if (httpCode != Requester.HTTP_STATUS_CODE_SUCCESS) return null;
             JSONObject response = Requester.parseJSONObject(connection);
             return response.optJSONArray("data");
-        } catch (IOException ignored) {
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not parse Deezer search response", ex);
             return null;
         } finally {
             connection.disconnect();
@@ -204,18 +241,18 @@ public final class DeezerProvider implements LyricsProvider {
             return null;
         }
 
-        final String rawFormat = lyrics.toString();
         JSONArray syncedLines = lyrics.optJSONArray("synchronizedLines");
         if (syncedLines != null && syncedLines.length() > 0) {
+            String rawFormat = syncedLines.toString();
             Lyrics synced = parseSyncedLyrics(syncedLines, trackId, rawFormat, creditLines(lyrics));
             if (synced != null) {
                 return synced;
             }
         }
 
-        final String text = LyricsRequests.optString(lyrics, "text");
+        String text = LyricsRequests.optString(lyrics, "text");
         if (text != null) {
-            return parsePlainText(text, trackId, rawFormat, creditLines(lyrics));
+            return parsePlainText(text, trackId, text, creditLines(lyrics));
         }
         return null;
     }
@@ -260,7 +297,8 @@ public final class DeezerProvider implements LyricsProvider {
                 return null;
             }
             return Requester.parseJSONObject(connection);
-        } catch (IOException ignored) {
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not postPipe", ex);
             return null;
         } finally {
             connection.disconnect();
@@ -272,11 +310,11 @@ public final class DeezerProvider implements LyricsProvider {
         List<String> credits = new ArrayList<>(2);
         final String writers = flatten(lyrics.opt("writers"));
         if (writers != null) {
-            credits.add("Written by " + writers);
+            credits.add("Writer(s): " + writers);
         }
         final String copyright = LyricsRequests.optString(lyrics, "copyright");
         if (copyright != null) {
-            credits.add(copyright);
+            credits.add("Copyright: " + copyright);
         }
         return credits.isEmpty() ? null : credits;
     }
@@ -285,7 +323,7 @@ public final class DeezerProvider implements LyricsProvider {
     @Nullable
     private static String flatten(@Nullable Object value) {
         if (value instanceof String string) {
-            return string.isBlank() ? null : string.trim();
+            return string.trim().isEmpty() ? null : string.trim();
         }
         if (value instanceof JSONArray array) {
             StringBuilder builder = new StringBuilder();
@@ -331,11 +369,11 @@ public final class DeezerProvider implements LyricsProvider {
 
         String sourceUrl = "https://www.deezer.com/track/" + trackId;
         return new Lyrics(lines, name(), false, null, null, null, creditLines,
-                rawFormat, "dzr.json", sourceUrl);
+                rawFormat, "txt", sourceUrl);
     }
 
     public static boolean validateArl(String arl) {
-        if (arl == null || arl.isBlank() || "null".equals(arl)) return false;
+        if (arl == null || arl.trim().isEmpty() || "null".equals(arl)) return false;
         return accountId(arl) > 0;
     }
 
@@ -366,7 +404,8 @@ public final class DeezerProvider implements LyricsProvider {
             } finally {
                 connection.disconnect();
             }
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not get Deezer account ID", ex);
             return 0;
         }
     }

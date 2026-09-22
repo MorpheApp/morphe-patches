@@ -227,12 +227,11 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">Нехаресванията не са достъпни (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Скрито от собственика</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Не харесвайте това видео, заедно с още %s души</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Не харесвайте това видео, %s от гласовете са нехаресвания</string>
   <string name="morphe_ryd_enabled_title">Активиране на Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Показване на нехаресванията като процент</string>
   <string name="morphe_ryd_dislike_percentage_summary">Показва нехаресванията като процент от харесванията вместо като число</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Използване на компактен бутон „Харесва ми“</string>
-  <string name="morphe_ryd_compact_layout_summary">Намалява ширината на бутона „Харесва ми“, за да се спести място</string>
   <string name="morphe_ryd_estimated_like_title">Показване на приблизителни харесвания</string>
   <string name="morphe_ryd_estimated_like_summary">Показва приблизителен брой харесвания на видеа, където създателят е деактивирал харесванията</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показване на съобщения за грешка при връзката</string>

@@ -28,6 +28,7 @@ import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 public final class LocalLyricsFetcher {
@@ -94,9 +95,9 @@ public final class LocalLyricsFetcher {
     @Nullable
     public static Uri resolveMediaStoreUri(String title, String artist, int durationSeconds,
                                            @Nullable String rawTitle, @Nullable String rawArtist) {
-        String primaryTitle = (title != null && !title.isBlank()) ? title : rawTitle;
-        String primaryArtist = (artist != null && !artist.isBlank()) ? artist : rawArtist;
-        if (primaryTitle == null || primaryTitle.isBlank()) {
+        String primaryTitle = (title != null && !title.trim().isEmpty()) ? title : rawTitle;
+        String primaryArtist = (artist != null && !artist.trim().isEmpty()) ? artist : rawArtist;
+        if (primaryTitle == null || primaryTitle.trim().isEmpty()) {
             return null;
         }
         Context context = Utils.getContext();
@@ -128,7 +129,7 @@ public final class LocalLyricsFetcher {
         long bestScore = Long.MAX_VALUE;
         try {
             for (String t : titleCandidates) {
-                if (t == null || t.isBlank()) {
+                if (t == null || t.trim().isEmpty()) {
                     continue;
                 }
                 String selection = MediaStore.Audio.Media.TITLE + " LIKE ? ESCAPE '\\'";
@@ -178,6 +179,7 @@ public final class LocalLyricsFetcher {
                 }
             }
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not query MediaStore for candidate URI", ex);
             return null;
         }
         return best;
@@ -210,6 +212,7 @@ public final class LocalLyricsFetcher {
             }
             return out.toByteArray();
         } catch (IOException | SecurityException | NullPointerException ex) {
+            Logger.printDebug(() -> "Could not read bytes from URI", ex);
             return null;
         }
     }
@@ -262,6 +265,7 @@ public final class LocalLyricsFetcher {
             System.arraycopy(ring, 0, result, M4A_TAIL_BYTES - ringPos, ringPos);
             return result;
         } catch (IOException | SecurityException | NullPointerException ex) {
+            Logger.printDebug(() -> "Could not read tail bytes from URI", ex);
             return null;
         }
     }
@@ -335,13 +339,13 @@ public final class LocalLyricsFetcher {
             switch (id) {
                 case "USLT", "ULT" -> {
                     String s = parseTextFrame(d, bodyOff, size);
-                    if (s != null && !s.isBlank()) {
+                    if (s != null && !s.trim().isEmpty()) {
                         return s;
                     }
                 }
                 case "SYLT", "SLT" -> {
                     String s = parseSylt(d, bodyOff, size);
-                    if (s != null && !s.isBlank()) {
+                    if (s != null && !s.trim().isEmpty()) {
                         return s;
                     }
                 }
@@ -351,7 +355,7 @@ public final class LocalLyricsFetcher {
                             && (desc.regionMatches(true, 0, "LYRICS", 0, 6)
                              || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
                         String s = parseTxxxValue(d, bodyOff, size);
-                        if (s != null && !s.isBlank()) {
+                        if (s != null && !s.trim().isEmpty()) {
                             return s;
                         }
                     }
@@ -362,7 +366,7 @@ public final class LocalLyricsFetcher {
                             && (desc.regionMatches(true, 0, "LYRICS", 0, 6)
                              || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
                         String s = parseCommBody(d, bodyOff, size);
-                        if (s != null && !s.isBlank()) {
+                        if (s != null && !s.trim().isEmpty()) {
                             return s;
                         }
                     }
@@ -710,7 +714,7 @@ public final class LocalLyricsFetcher {
                     || (c0 == 'L' && c1 == 'Y' && c2 == 'R' && c3 == ' ');
             if (isLyrics) {
                 String s = readM4aData(d, pos + 8, pos + size);
-                if (s != null && !s.isBlank()) {
+                if (s != null && !s.trim().isEmpty()) {
                     return s;
                 }
             } else {
@@ -769,18 +773,19 @@ public final class LocalLyricsFetcher {
         try (MediaMetadataRetriever retriever = new MediaMetadataRetriever()) {
             retriever.setDataSource(context, uri);
             String raw = retriever.extractMetadata(METADATA_KEY_LYRICS);
-            if (raw == null || raw.isBlank()) {
+            if (raw == null || raw.trim().isEmpty()) {
                 return null;
             }
             return parse(raw);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not extract lyrics via MediaMetadataRetriever", ex);
             return null;
         }
     }
 
     @Nullable
     private static Lyrics parse(@Nullable String raw) {
-        if (raw == null || raw.isBlank()) {
+        if (raw == null || raw.trim().isEmpty()) {
             return null;
         }
 
@@ -899,27 +904,37 @@ public final class LocalLyricsFetcher {
         if (isLikelyGbk(b)) {
             try {
                 return new String(b, "GBK");
-            } catch (Exception ignored) { }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not decode GBK text", ex);
+            }
         }
         if (isLikelyBig5(b)) {
             try {
                 return new String(b, "Big5");
-            } catch (Exception ignored) { }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not decode Big5 text", ex);
+            }
         }
         if (isLikelyShiftJis(b)) {
             try {
                 return new String(b, "Shift_JIS");
-            } catch (Exception ignored) { }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not decode Shift_JIS text", ex);
+            }
         }
         if (isLikelyEucKr(b)) {
             try {
                 return new String(b, "EUC-KR");
-            } catch (Exception ignored) { }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not decode EUC-KR text", ex);
+            }
         }
         if (isLikelyWindows1252(b)) {
             try {
                 return new String(b, "Windows-1252");
-            } catch (Exception ignored) { }
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not decode Windows-1252 text", ex);
+            }
         }
         return switch (declaredEnc) {
             case 1 -> new String(b, StandardCharsets.UTF_16);

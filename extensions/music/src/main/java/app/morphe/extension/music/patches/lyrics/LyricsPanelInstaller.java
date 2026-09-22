@@ -13,6 +13,7 @@ import android.graphics.Rect;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -68,7 +69,36 @@ public final class LyricsPanelInstaller {
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
     private static WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
 
+    /**
+     * Whether this class added the window flag, so an existing app-owned flag is never cleared.
+     */
+    private static boolean keepScreenOnFlagAdded;
+
     private LyricsPanelInstaller() {
+    }
+
+    private static void updateKeepScreenOn(boolean lyricsPanelOpen) {
+        Utils.runOnMainThreadNowOrLater(() -> {
+            Activity activity = Utils.getActivity();
+            if (activity == null) {
+                return;
+            }
+
+            final int keepScreenOnFlag = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+            final boolean shouldKeepScreenOn =
+                    Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen;
+
+            if (shouldKeepScreenOn) {
+                if (!keepScreenOnFlagAdded
+                        && (activity.getWindow().getAttributes().flags & keepScreenOnFlag) == 0) {
+                    activity.getWindow().addFlags(keepScreenOnFlag);
+                    keepScreenOnFlagAdded = true;
+                }
+            } else if (keepScreenOnFlagAdded) {
+                activity.getWindow().clearFlags(keepScreenOnFlag);
+                keepScreenOnFlagAdded = false;
+            }
+        });
     }
 
     /**
@@ -90,6 +120,8 @@ public final class LyricsPanelInstaller {
                     + (panel == null ? "none" : panel.getClass().getName())
                     + (isLyricsPanel ? " (lyrics)" : ""));
 
+            updateKeepScreenOn(isLyricsPanel);
+
             // Showing a panel again does not always rebuild its content, so there is no
             // component callback to install from when the lyrics panel comes back.
             if (isLyricsPanel) {
@@ -104,15 +136,17 @@ public final class LyricsPanelInstaller {
      * Called by the litho filter when the lyrics panel is being built.
      */
     public static void onLyricsPanelDetected() {
-        if (!Settings.LYRICS_ENABLED.get()) {
-            return;
-        }
-
         // Whichever panel holds the container while the lyrics component is built is the
         // lyrics panel, which keeps this working without knowing what the app calls it.
         Object panel = currentPanelReference.get();
         if (panel != null) {
             lyricsPanelReference = new WeakReference<>(panel);
+        }
+
+        updateKeepScreenOn(true);
+
+        if (!Settings.LYRICS_ENABLED.get()) {
+            return;
         }
 
         if (installPending) {

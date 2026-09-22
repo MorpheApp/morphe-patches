@@ -235,12 +235,11 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_ryd_failure_generic">Dislike-uri indisponibile (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Ascuns de proprietar</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Nu-mi place acest videoclip, împreună cu alte %s persoane</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Nu-mi place acest videoclip, %s din voturi sunt dislike-uri</string>
   <string name="morphe_ryd_enabled_title">Activează Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Afișează dislike-uri ca procentaj</string>
   <string name="morphe_ryd_dislike_percentage_summary">Afișează dislike-uri ca procentaj din numărul de like-uri, în loc de un număr</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Utilizează butonul Like compact</string>
-  <string name="morphe_ryd_compact_layout_summary">Reduce lățimea butonului Like pentru a economisi spațiu</string>
   <string name="morphe_ryd_estimated_like_title">Afișați aprecierile estimate</string>
   <string name="morphe_ryd_estimated_like_summary">Afișează un număr estimativ de like-uri pe videoclipurile unde creatorul a dezactivat like-urile</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afișează alerte de eroare de conexiune</string>

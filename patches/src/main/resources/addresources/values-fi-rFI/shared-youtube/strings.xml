@@ -235,12 +235,11 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_ryd_failure_generic">Ei-tykkäykset eivät ole saatavilla (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Omistajan piilottama</string>
+  <string name="morphe_ryd_accessibility_dislike_count">En pidä tästä videosta, samoin kuin %s muuta ihmistä</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">En pidä tästä videosta, %s äänistä on en pidä -ääniä</string>
   <string name="morphe_ryd_enabled_title">Ota Return YouTube Dislike käyttöön</string>
   <string name="morphe_ryd_dislike_percentage_title">Näytä ei-tykkäykset prosentteina</string>
   <string name="morphe_ryd_dislike_percentage_summary">Näyttää ei-tykkäykset tykkäysten prosenttiosuutena numeron sijaan</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Käytä kompaktia tykkäyspainiketta</string>
-  <string name="morphe_ryd_compact_layout_summary">Pienentää tykkäyspainikkeen leveyttä tilan säästämiseksi</string>
   <string name="morphe_ryd_estimated_like_title">Näytä arvioidut tykkäykset</string>
   <string name="morphe_ryd_estimated_like_summary">Näyttää arvioidun tykkäysmäärän videoissa, joissa luoja on poistanut tykkäykset käytöstä</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Näytä yhteysvirheilmoitukset</string>

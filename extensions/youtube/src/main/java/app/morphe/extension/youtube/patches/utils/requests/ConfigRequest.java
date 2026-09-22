@@ -117,7 +117,7 @@ public class ConfigRequest {
             HttpURLConnection connection = ConfigRoutes.getConnection(ConfigRoutes.GET_CONFIG, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
-            int responseCode = connection.getResponseCode();
+            final int responseCode = connection.getResponseCode();
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS && connection.getContentLength() != 0) {
                 return parse(connection);
             }

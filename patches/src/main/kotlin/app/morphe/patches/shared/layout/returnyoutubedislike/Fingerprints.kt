@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3075
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -11,15 +11,9 @@
 package app.morphe.patches.shared.layout.returnyoutubedislike
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.InstructionLocation.MatchFirst
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.newInstance
-import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -82,3 +76,27 @@ internal fun likeEndpointParserFingerprint(definingClass: String) = object : Fin
         string("")
     )
 ) {}
+
+internal object ComponentHostSetContentDescriptionFingerprint : Fingerprint(
+    definingClass = "Lcom/facebook/litho/ComponentHost;",
+    name = "setContentDescription",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/CharSequence;")
+)
+
+internal object YogaSetWidthFingerprint : Fingerprint(
+    definingClass = "Lcom/facebook/yoga/YogaNodeJNIBase;",
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_WIDE,
+            definingClass = "this",
+            type = "J"
+        ),
+        methodCall(
+            definingClass = "Lcom/facebook/yoga/YogaNative;",
+            name = "jni_YGNodeStyleSetWidthJNI",
+        )
+    )
+)

@@ -235,12 +235,11 @@ Se in seguito verrà disattivata, si consiglia di cancellare i dati dell'app per
   <string name="morphe_ryd_failure_generic">Non Mi Piace non disponibili (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Nascosto dal proprietario</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Non mi piace questo video, insieme ad altre %s persone</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Non mi piace questo video, il %s dei voti sono negativi</string>
   <string name="morphe_ryd_enabled_title">Abilita Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostra i Non mi piace in percentuale</string>
   <string name="morphe_ryd_dislike_percentage_summary">Mostra i Non mi piace come percentuale di Mi piace anziché come numero</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Usa il pulsante Mi piace compatto</string>
-  <string name="morphe_ryd_compact_layout_summary">Riduce la larghezza del pulsante Mi piace per risparmiare spazio</string>
   <string name="morphe_ryd_estimated_like_title">Mostra \"Mi piace\" stimati</string>
   <string name="morphe_ryd_estimated_like_summary">Mostra un conteggio approssimativo dei Mi piace su video in cui il creatore ha disabilitato i Mi piace</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostra avvisi di errore di connessione</string>

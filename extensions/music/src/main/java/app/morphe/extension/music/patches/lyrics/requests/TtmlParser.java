@@ -28,6 +28,7 @@ import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.shared.Logger;
 
 /**
  * Parses Apple Music style TTML into lyric lines.
@@ -155,7 +156,8 @@ final class TtmlParser {
                 }
                 event = p.next();
             }
-        } catch (XmlPullParserException | IOException ignored) {
+        } catch (XmlPullParserException | IOException ex) {
+            Logger.printDebug(() -> "Could not parse TTML head metadata", ex);
         }
 
         return new HeadMetadata(songwriters, amllCredits, agentTypes, sidecarRoman, sidecarTrans);
@@ -248,7 +250,7 @@ final class TtmlParser {
 
                         final ParsedLine pl = processPElement(p, pBegin, pEnd, hasTimeAttrs);
 
-                        if (pl != null && !pl.text().isBlank()) {
+                        if (pl != null && !pl.text().trim().isEmpty()) {
                             final LyricsLine line = new LyricsLine(
                                     pl.begin(), pl.end(), pl.text(), pl.words(),
                                     agentId, false, false, divSongPart);
@@ -386,6 +388,7 @@ final class TtmlParser {
                     amllCreditLines.isEmpty() ? null : amllCreditLines,
                     agentNames);
         } catch (XmlPullParserException | IOException ex) {
+            Logger.printDebug(() -> "Could not parse TTML to lyrics", ex);
             return null;
         }
     }
@@ -442,7 +445,8 @@ final class TtmlParser {
         if (end == agentId.length()) return 0;
         try {
             return Integer.parseInt(agentId.substring(end));
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Could not extract agent number from ID: " + agentId, ex);
             return 0;
         }
     }
@@ -1055,7 +1059,7 @@ final class TtmlParser {
         }
 
         final String lineText = normalizeText(fullText.toString());
-        if (lineText.isBlank()) {
+        if (lineText.trim().isEmpty()) {
             return null;
         }
 
@@ -1105,7 +1109,7 @@ final class TtmlParser {
         // Save final BG section
         if (inBg && (!bgWords.isEmpty() || bgFullText.length() > 0)) {
             String bgText = normalizeText(bgFullText.toString());
-            if (!bgText.isBlank()) {
+            if (!bgText.trim().isEmpty()) {
                 bgText = bgText.replaceAll("^[(（]+", "").replaceAll("[)）]+$", "").trim();
                 stripBgWordParens(bgWords);
                 if (!bgText.isEmpty()) {
@@ -1214,7 +1218,7 @@ final class TtmlParser {
     }
 
     private static String buildLineRomaji(List<Word> words,
-            @Nullable List<RomajiSyllable> sidecar) {
+                                          @Nullable List<RomajiSyllable> sidecar) {
         final StringBuilder perWord = new StringBuilder();
         boolean hasPerWord = false;
         for (Word w : words) {
@@ -1227,10 +1231,12 @@ final class TtmlParser {
             for (Word w : words) {
                 String r = w.romaji();
                 if (r != null && !r.isEmpty()) {
+                    //noinspection SizeReplaceableByIsEmpty
                     if (perWord.length() > 0) perWord.append(' ');
                     perWord.append(r);
                 }
             }
+            //noinspection SizeReplaceableByIsEmpty
             if (perWord.length() > 0) {
                 return perWord.toString();
             }
@@ -1240,6 +1246,7 @@ final class TtmlParser {
             final StringBuilder sb = new StringBuilder();
             for (RomajiSyllable s : sidecar) {
                 if (s.text().isEmpty()) continue;
+                //noinspection SizeReplaceableByIsEmpty
                 if (sb.length() > 0) sb.append(' ');
                 sb.append(s.text());
             }
@@ -1287,6 +1294,7 @@ final class TtmlParser {
             final StringBuilder sb = new StringBuilder();
             for (Word w : alignedWords) {
                 if (w.romaji() != null && !w.romaji().isEmpty()) {
+                    //noinspection SizeReplaceableByIsEmpty
                     if (sb.length() > 0) sb.append(' ');
                     sb.append(w.romaji());
                 }
@@ -1431,7 +1439,8 @@ final class TtmlParser {
         // Fallback: bare decimal number treated as seconds
         try {
             return (long) (Double.parseDouble(trimmed) * 1000);
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Could not parse TTML time string: " + trimmed, ex);
             return 0;
         }
     }

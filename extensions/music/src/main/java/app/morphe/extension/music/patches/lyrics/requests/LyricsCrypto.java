@@ -22,6 +22,8 @@ import java.util.zip.InflaterInputStream;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import app.morphe.extension.shared.Logger;
+
 /**
  * Small crypto helpers shared by the NetEase and QQ lyrics providers.
  *
@@ -81,6 +83,7 @@ final class LyricsCrypto {
             cipher.init(Cipher.DECRYPT_MODE, new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "AES"));
             return new String(cipher.doFinal(raw), StandardCharsets.UTF_8);
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not decrypt Base64 AES ECB", ex);
             return "";
         }
     }
@@ -250,6 +253,7 @@ final class LyricsCrypto {
             //noinspection CharsetObjectCanBeUsed
             return out.toString(StandardCharsets.UTF_8.name());
         } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not inflate zlib data", ex);
             return "";
         }
     }

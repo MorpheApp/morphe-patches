@@ -97,8 +97,8 @@ public class CreatePlaylistRequest {
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.CREATE_PLAYLIST, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
-            int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            final int responseCode = connection.getResponseCode();
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return Requester.parseJSONObject(connection);
             }
             handleConnectionError("Create playlist failed with code: " + responseCode, null);
@@ -132,7 +132,7 @@ public class CreatePlaylistRequest {
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
             int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return Requester.parseJSONObject(connection);
             }
             handleConnectionError("Get set video id failed with code: " + responseCode, null);

@@ -413,8 +413,6 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies guardadas</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies borradas</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookies no válidas. Compruébalas e inténtalo de nuevo</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, luego QQ, luego KuGou, luego NetEase, luego BiniLyrics, luego Unison, luego AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Pulsar una línea para saltar</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Pulsar una línea salta a ese momento de la canción</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Mostrar botón Copiar</string>
@@ -451,6 +449,8 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_source_label">Fuente: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Traducido por Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romanizado por Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Traducido por %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romanizado por %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traducido</string>
   <string name="morphe_music_lyrics_translating">Traduciendo…</string>
@@ -466,6 +466,22 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_hide_info_summary">Oculta la línea de créditos que se muestra debajo de las letras</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Intercambiar traducción y romanización</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Activado coloca la romanización debajo de las letras y la traducción arriba; desactivado mantiene la romanización arriba y la traducción abajo</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Traducción compatible con OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Utiliza una API personalizada compatible con OpenAI para la traducción y romanización en lugar de Google Translate</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Ajustes de traducción con IA</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configura el punto de conexión de la API compatible con OpenAI para la traducción y romanización de letras con IA.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL del punto de conexión de la API (p. ej., https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">Clave API (dejar en blanco para acceso anónimo)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Nombre del modelo (p. ej., openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Ajustes de traducción con IA guardados</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">No se pudo conectar con el punto de conexión de la IA. Comprueba tus ajustes.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Ajustes de traducción con IA restablecidos</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Configurado</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Pulsa para configurar</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">La URL base no puede estar vacía</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">La URL base debe empezar por http:// o https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">El nombre del modelo no puede estar vacío</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Validando la conexión…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Desactivar iconos en negrita</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restaurar pestañas del reproductor \'A continuación\', Letra y Relacionado</string>

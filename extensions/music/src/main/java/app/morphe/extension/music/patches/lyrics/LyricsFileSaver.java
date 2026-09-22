@@ -17,11 +17,15 @@ import android.provider.MediaStore;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Locale;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
 /**
@@ -51,6 +55,8 @@ public final class LyricsFileSaver {
                 content = rebuildLyricifyLines(lyrics.lines());
             } else if ("lys".equals(formatType)) {
                 content = rebuildLyricifySyllable(lyrics.lines());
+            } else if ("dzr.json".equals(formatType)) {
+                content = rebuildDzrJson(lyrics.lines());
             } else {
                 content = rebuildPlainText(lyrics.lines());
                 formatType = "txt";
@@ -94,6 +100,7 @@ public final class LyricsFileSaver {
             out.flush();
             return Environment.DIRECTORY_DOWNLOADS + "/" + directoryName + "/" + fileName;
         } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not save lyrics file", ex);
             resolver.delete(insertUri, null, null);
             return null;
         } finally {
@@ -182,6 +189,28 @@ public final class LyricsFileSaver {
             sb.append(lines.get(i).text());
         }
         return sb.toString();
+    }
+
+    private static String rebuildDzrJson(List<LyricsLine> lines) {
+        JSONArray arr = new JSONArray();
+        for (LyricsLine line : lines) {
+            JSONObject obj = new JSONObject();
+            try {
+                final long ms = line.startTimeMs();
+                final long min = ms / 60000;
+                final long sec = (ms % 60000) / 1000;
+                final long cs = (ms % 1000) / 10;
+                obj.put("lrcTimestamp", String.format(Locale.US,
+                        "[%02d:%02d.%02d]", min, sec, cs));
+                obj.put("line", line.text());
+                obj.put("milliseconds", ms);
+                obj.put("duration", line.endTimeMs() - line.startTimeMs());
+                arr.put(obj);
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "rebuildDzrJson failure", ex);
+            }
+        }
+        return arr.toString();
     }
 
     private static String sanitizeFileName(String name) {

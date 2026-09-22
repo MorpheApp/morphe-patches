@@ -238,9 +238,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_enabled_title">Включить Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Показывать дизлайки в процентах</string>
   <string name="morphe_ryd_dislike_percentage_summary">Отображает дизлайки в процентах от лайков вместо количества</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Использовать компактную кнопку «Нравится»</string>
-  <string name="morphe_ryd_compact_layout_summary">Уменьшает ширину кнопки «Нравится», чтобы сэкономить место</string>
   <string name="morphe_ryd_estimated_like_title">Показать примерное количество лайков</string>
   <string name="morphe_ryd_estimated_like_summary">Показывает приблизительное количество лайков на видео, где автор отключил лайки</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показывать уведомления об ошибках подключения</string>

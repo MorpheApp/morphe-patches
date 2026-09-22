@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics;
 
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -43,6 +44,9 @@ public final class MiniPlayerLyrics {
     @Nullable
     private static String displayArtist;
 
+    @Nullable
+    private static String cachedSubtitle;
+
     /** Drives the periodic check that mirrors the current line into the mini player. */
     private static final LyricsTicker ticker = new LyricsTicker(MiniPlayerLyrics::tick);
 
@@ -56,24 +60,26 @@ public final class MiniPlayerLyrics {
     private MiniPlayerLyrics() {
     }
 
+    private static void disableFeature() {
+        ticker.stop();
+        LyricsManager.getInstance().removeListener(lyricsListener);
+    }
+
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
         if (original == null) {
             return;
         }
         String title = original.getString(MediaMetadata.METADATA_KEY_TITLE);
         String artist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
-        if (title == null || title.isBlank() || artist == null || artist.isBlank()) {
+        if (title == null || title.trim().isEmpty() || artist == null || artist.trim().isEmpty()) {
             return;
         }
-        String[] parsed = MetadataCleaner.parseTitleAndArtist(title);
-        displayTitle = parsed != null ? parsed[1] : MetadataCleaner.cleanTitle(title);
-        displayArtist = parsed != null ? parsed[0] : MetadataCleaner.cleanArtist(artist);
+        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);
+        displayTitle = parsed[1];
+        displayArtist = parsed[0];
+        cachedSubtitle = null; // invalidate on track change
 
-        android.net.Uri mediaUri = null;
-        String uriString = original.getString(android.media.MediaMetadata.METADATA_KEY_MEDIA_URI);
-        if (uriString != null) {
-            mediaUri = android.net.Uri.parse(uriString);
-        }
+        android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
         LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
     }
 
@@ -111,8 +117,7 @@ public final class MiniPlayerLyrics {
         }
 
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()) {
-            ticker.stop();
-            LyricsManager.getInstance().removeListener(lyricsListener);
+            disableFeature();
             return;
         }
 
@@ -122,16 +127,14 @@ public final class MiniPlayerLyrics {
 
     private static void tick() {
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()) {
-            ticker.stop();
-            LyricsManager.getInstance().removeListener(lyricsListener);
+            disableFeature();
             return;
         }
 
         TextView title = titleRef.get();
         TextView subtitle = subtitleRef.get();
         if (title == null || subtitle == null) {
-            ticker.stop();
-            LyricsManager.getInstance().removeListener(lyricsListener);
+            disableFeature();
             return;
         }
 
@@ -149,27 +152,20 @@ public final class MiniPlayerLyrics {
         if (synced) {
             String line = manager.getCurrentLineText();
             String newTitle = line.isEmpty() ? track.title() : line;
-            String actualTitle = title.getText() != null ? title.getText().toString() : null;
-            if (!newTitle.equals(actualTitle)) {
+            if (!TextUtils.equals(newTitle, title.getText())) {
                 title.setText(newTitle);
             }
-            String newSubtitle;
-            if (Settings.LYRICS_DISPLAY_ARTIST_FIRST.get()) {
-                newSubtitle = track.artist() + " - " + track.title();
-            } else {
-                newSubtitle = track.title() + " - " + track.artist();
+            if (cachedSubtitle == null) {
+                cachedSubtitle = track.displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
             }
-            String actualSubtitle = subtitle.getText() != null ? subtitle.getText().toString() : null;
-            if (!newSubtitle.equals(actualSubtitle)) {
-                subtitle.setText(newSubtitle);
+            if (!TextUtils.equals(cachedSubtitle, subtitle.getText())) {
+                subtitle.setText(cachedSubtitle);
             }
         } else {
-            String actualTitle = title.getText() != null ? title.getText().toString() : null;
-            if (!track.title().equals(actualTitle)) {
+            if (!TextUtils.equals(track.title(), title.getText())) {
                 title.setText(track.title());
             }
-            String actualSubtitle = subtitle.getText() != null ? subtitle.getText().toString() : null;
-            if (!track.artist().equals(actualSubtitle)) {
+            if (!TextUtils.equals(track.artist(), subtitle.getText())) {
                 subtitle.setText(track.artist());
             }
         }

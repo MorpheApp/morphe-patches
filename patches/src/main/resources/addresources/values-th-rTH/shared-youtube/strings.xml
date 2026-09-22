@@ -238,9 +238,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_enabled_title">เปิดใช้งาน Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">แสดงจำนวนไม่ชอบเป็นเปอร์เซ็นต์</string>
   <string name="morphe_ryd_dislike_percentage_summary">แสดงจำนวนไม่ชอบเป็นเปอร์เซ็นต์ของจำนวนชอบ แทนที่จะเป็นตัวเลข</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">ใช้ปุ่มถูกใจแบบกะทัดรัด</string>
-  <string name="morphe_ryd_compact_layout_summary">ลดความกว้างของปุ่มถูกใจเพื่อประหยัดพื้นที่</string>
   <string name="morphe_ryd_estimated_like_title">แสดงจำนวนถูกใจโดยประมาณ</string>
   <string name="morphe_ryd_estimated_like_summary">แสดงจำนวนการถูกใจโดยประมาณในวิดีโอที่ผู้สร้างปิดการนับจำนวนถูกใจ</string>
   <string name="morphe_ryd_toast_on_connection_error_title">แสดงการแจ้งเตือนข้อผิดพลาดในการเชื่อมต่อ</string>

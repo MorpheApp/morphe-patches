@@ -408,8 +408,6 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube cookie uložené</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube cookie vymazané</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">Neplatný YouTube cookie, skúste to znova.</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLib […] Kugou</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Klepnite na riadok a posuňte prehrávanie</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Klepetím na riadok sa preskočí na daný moment v piesni</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Zobraziť tlačidlo Kopírovať</string>
@@ -446,6 +444,8 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_source_label">Zdroj: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Skryť preklad</string>
   <string name="morphe_music_lyrics_romanized_by_google">Zobraziť romanizáciu</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Preložené pomocou %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romanizované pomocou %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Skryť romanizáciu</string>
   <string name="morphe_music_lyrics_translating">Prekladám…</string>
@@ -461,6 +461,22 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_hide_info_summary">Nahlásiť problém s textom piesne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Problém bol nahlásený</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Nahlásenie zlyhalo</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Preklad kompatibilný s OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Použiť vlastné API kompatibilné s OpenAI na preklad a romanizáciu namiesto Google Translate</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Nastavenia AI prekladu</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Nakonfigurujte koncový bod API kompatibilného s OpenAI pre preklad a romanizáciu textov piesní pomocou AI.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL koncového bodu API (napr. https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API kľúč (nechajte prázdne pre anonymný prístup)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Názov modelu (napr. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Nastavenia AI prekladu boli uložené</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nepodarilo sa pripojiť k AI koncovému bodu. Skontrolujte svoje nastavenia.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Nastavenia AI prekladu boli obnovené</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Nakonfigurované</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Klepnutím nakonfigurujete</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Základná URL nemôže byť prázdna</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Základná URL musí začínať s http:// alebo https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Názov modelu nemôže byť prázdny</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Overuje sa pripojenie…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Zakázať tučné ikony</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 – Obnoviť karty Prehrávača: Ďalej, Texty a Súvisiace</string>

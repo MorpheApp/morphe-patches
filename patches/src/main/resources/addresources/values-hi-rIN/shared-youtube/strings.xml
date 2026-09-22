@@ -235,12 +235,11 @@ PotHelper डाउनलोड करने के लिए यहां ट�
   <string name="morphe_ryd_failure_generic">डिसलाइक उपलब्ध नहीं हैं (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">मालिक द्वारा छिपाया गया</string>
+  <string name="morphe_ryd_accessibility_dislike_count">इस वीडियो को नापसंद करें, %s अन्य लोगों के साथ</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">इस वीडियो को नापसंद करें, %s वोट नापसंद हैं</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike सक्षम करें</string>
   <string name="morphe_ryd_dislike_percentage_title">डिसलाइक को प्रतिशत के रूप में दिखाएँ</string>
   <string name="morphe_ryd_dislike_percentage_summary">संख्या के बजाय लाइक के प्रतिशत के रूप में डिसलाइक दिखाता है</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">कॉम्पैक्ट लाइक बटन का उपयोग करें</string>
-  <string name="morphe_ryd_compact_layout_summary">जगह बचाने के लिए लाइक बटन की चौड़ाई कम करता है</string>
   <string name="morphe_ryd_estimated_like_title">अनुमानित लाइक दिखाएँ</string>
   <string name="morphe_ryd_estimated_like_summary">उन वीडियो पर अनुमानित लाइक गिनती दिखाता है जहाँ निर्माता ने लाइक को अक्षम कर दिया है</string>
   <string name="morphe_ryd_toast_on_connection_error_title">कनेक्शन त्रुटि अलर्ट दिखाएँ</string>

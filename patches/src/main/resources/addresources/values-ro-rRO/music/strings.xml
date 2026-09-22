@@ -396,8 +396,6 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie-uri nevalide. Verificați și încercați din nou.</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: token media-user șters.</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie-uri nevalide — te rugăm să verifici și să încerci din nou</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">YouTube: token media-user salvat.</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Atingeți o linie pentru a naviga</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Atingerea unei linii saltă la acel moment din melodie</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Arată butonul de copiere</string>
@@ -434,6 +432,8 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_source_label">Sursă: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Redare întreruptă.</string>
   <string name="morphe_music_lyrics_romanized_by_google">Redare în curs.</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Tradus de %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romanizat de %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Redare reluată.</string>
   <string name="morphe_music_lyrics_translating">Se traduce…</string>
@@ -449,6 +449,22 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_info_summary">Redare în curs pe un alt dispozitiv.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Redare în curs pe acest dispozitiv.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Redare în curs pe un alt dispozitiv.</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Traducere compatibilă OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Folosește un API personalizat compatibil OpenAI pentru traducere și romanizare în loc de Google Translate</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Setări traducere AI</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configurează endpoint-ul API-ului compatibil OpenAI pentru traducerea și romanizarea versurilor cu ajutorul AI.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (de ex. https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">Cheie API (lasă gol pentru acces anonim)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Nume model (de ex. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Setări de traducere AI salvate</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nu s-a putut conecta la endpoint-ul AI. Verifică setările.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Setări de traducere AI resetate</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Configurat</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Atinge pentru a configura</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">URL-ul de bază nu poate fi gol</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL-ul de bază trebuie să înceapă cu http:// sau https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Numele modelului nu poate fi gol</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Se validează conexiunea…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Dezactivează pictogramele aldine</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Restaurează filele Up next, Versuri și Conexe din player</string>

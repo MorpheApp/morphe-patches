@@ -30,6 +30,7 @@ import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.MusixmatchProvider;
 import app.morphe.extension.music.patches.lyrics.requests.SpotifyProvider;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -284,7 +285,8 @@ public class LyricsTokenDialogPreference extends Preference {
                                     Uri.parse(getTokenUrl));
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(intent);
-                        } catch (Exception ignored) {
+                        } catch (Exception ex) {
+                            Logger.printDebug(() -> "Get token button click failure", ex);
                         }
                     },
                     false, false);

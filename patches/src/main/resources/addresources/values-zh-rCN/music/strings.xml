@@ -413,8 +413,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube：Cookie 已保存</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube：Cookie 已清除</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube：Cookie 无效 — 请检查后重试</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB，然后 QQ，然后 KuGou，然后 NetEase，然后 BiniLyrics，然后 Unison，然后 AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">点击歌词行以跳转</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">点击一行将跳到歌曲的该时刻</string>
   <string name="morphe_music_lyrics_show_copy_button_title">显示复制按钮</string>
@@ -451,6 +449,8 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_source_label">来源：%s</string>
   <string name="morphe_music_lyrics_translated_by_google">由 Google 翻译</string>
   <string name="morphe_music_lyrics_romanized_by_google">由 Google 提供罗马字</string>
+  <string name="morphe_music_lyrics_translated_by_ai">由 %s 翻译</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">由 %s 音译</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">翻译</string>
   <string name="morphe_music_lyrics_translating">正在翻译…</string>
@@ -466,6 +466,22 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_hide_info_summary">隐藏显示在歌词下方的署名行</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和罗马字</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时，罗马字在歌词下方、翻译在歌词上方；关闭时，罗马字在歌词上方、翻译在歌词下方</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI 兼容翻译</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">使用自定义的 OpenAI 兼容 API 进行翻译和音译，而不是 Google 翻译</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI 翻译设置</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">配置用于 AI 歌词翻译和音译的 OpenAI 兼容 API 端点。</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端点 URL（例如 https://text.pollinations.ai/openai）</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API 密钥（留空以匿名访问）</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">模型名称（例如 openai-fast、gpt-4o-mini）</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI 翻译设置已保存</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">无法连接到 AI 端点。请检查您的设置。</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI 翻译设置已重置</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">已配置</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">点击配置</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">基础 URL 不能为空</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">基础 URL 必须以 http:// 或 https:// 开头</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">模型名称不能为空</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">正在验证连接…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - 禁用粗体图标</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - 恢复播放器的「接下来播放」「歌词」和「相关」标签页</string>

@@ -235,12 +235,11 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">無法顯示不喜歡人數 (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">已由擁有者隱藏</string>
+  <string name="morphe_ryd_accessibility_dislike_count">不喜歡這部影片，以及另外 %s 人</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">不喜歡這部影片，%s 的票為不喜歡</string>
   <string name="morphe_ryd_enabled_title">啟用 Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">以百分比顯示不喜歡人數</string>
   <string name="morphe_ryd_dislike_percentage_summary">以不喜歡人數的百分比取代數量顯示</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">使用精簡的「讚」按鈕</string>
-  <string name="morphe_ryd_compact_layout_summary">縮小「讚」按鈕的寬度以節省空間</string>
   <string name="morphe_ryd_estimated_like_title">顯示預估喜歡人數</string>
   <string name="morphe_ryd_estimated_like_summary">在創作者停用「讚」功能時，顯示預估的「讚」人數</string>
   <string name="morphe_ryd_toast_on_connection_error_title">顯示連線錯誤警示</string>

@@ -8,7 +8,6 @@
 package app.morphe.extension.music.patches.components;
 
 import app.morphe.extension.music.patches.lyrics.LyricsPanelInstaller;
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
@@ -26,7 +25,7 @@ public final class LyricsPanelFilter extends Filter {
 
     public LyricsPanelFilter() {
         addIdentifierCallbacks(new StringFilterGroup(
-                Settings.LYRICS_ENABLED,
+                null,
                 "timed_lyrics"
         ));
     }

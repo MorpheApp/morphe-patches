@@ -234,12 +234,11 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_ryd_failure_generic">Beğenilmemeler kullanılamıyor (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Sahibi tarafından gizlendi</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Bu videoyu %s diğer kişiyle birlikte beğenme</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Bu videoyu beğenme, oyların %s\'i beğenmeme</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike\'ı Etkinleştir</string>
   <string name="morphe_ryd_dislike_percentage_title">Beğenmemeyi yüzde olarak göster</string>
   <string name="morphe_ryd_dislike_percentage_summary">Beğenmemeleri sayı yerine beğenilere kıyasla yüzde olarak gösterir</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Ufak Beğen düğmesi kullan</string>
-  <string name="morphe_ryd_compact_layout_summary">Yer kazanmak için Beğen düğmesinin genişliğini azaltır</string>
   <string name="morphe_ryd_estimated_like_title">Tahmini beğenileri göster</string>
   <string name="morphe_ryd_estimated_like_summary">İçerik üreticisinin beğenmeleri kapattığı videolarda tahmini bir beğeni sayısı gösterir</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı hatası uyarılarını göster</string>

@@ -235,12 +235,11 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_ryd_failure_generic">Nelíbí se se nedají použít (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skryto vlastníkem</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Toto video se mi nelíbí, spolu s %s dalšími lidmi</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Toto video se mi nelíbí, %s hlasů je negativních.</string>
   <string name="morphe_ryd_enabled_title">Povolit Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Zobrazit nelíbí se v procentech</string>
   <string name="morphe_ryd_dislike_percentage_summary">Zobrazuje nelíbí se jako procento lajků místo čísla</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Použít kompaktní tlačítko Lajk</string>
-  <string name="morphe_ryd_compact_layout_summary">Zmenšuje šířku tlačítka Lajk pro úsporu místa</string>
   <string name="morphe_ryd_estimated_like_title">Zobrazit odhadované počty To se mi líbí</string>
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet lajků u videí, kde tvůrce zakázal lajky</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobrazovat upozornění na chyby připojení</string>

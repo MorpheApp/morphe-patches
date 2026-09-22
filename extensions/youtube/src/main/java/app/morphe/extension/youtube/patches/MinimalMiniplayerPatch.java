@@ -20,7 +20,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
@@ -99,8 +98,10 @@ public final class MinimalMiniplayerPatch {
      * Type 2 draws the bar on the video, which is dimmed but never light, so the app colors
      * cannot be used. These are what YouTube puts on its own player overlays.
      */
-    private static final int OVERLAY_SCRIM_COLOR = Color.argb(100, 0, 0, 0);
+    private static final int OVERLAY_SCRIM_COLOR = Color.argb(80, 0, 0, 0);
     private static final int OVERLAY_BUTTON_COLOR = Color.argb(80, 255, 255, 255);
+    private static final int OVERLAY_DARK_BUTTON_COLOR = Color.argb(120, 0, 0, 0);
+    private static final int OVERLAY_TEXT_SHADOW_COLOR = Color.argb(180, 0, 0, 0);
     private static final int OVERLAY_PRIMARY_COLOR = Color.WHITE;
     private static final int OVERLAY_SECONDARY_COLOR = Color.argb(180, 255, 255, 255);
 
@@ -172,9 +173,6 @@ public final class MinimalMiniplayerPatch {
     private static boolean barDrawsOverPlayer;
     @Nullable
     private static Drawable originalBarBackground;
-    private static final Drawable customType2BarBackground = new ColorDrawable(
-            Color.argb(70, 0, 0, 0)
-    );
     private static int barIndexInParent;
 
     /**
@@ -247,7 +245,7 @@ public final class MinimalMiniplayerPatch {
 
             View subtitleBar = Utils.getChildViewByResourceName(controlsLayout, "floaty_subtitle_bar");
             if (subtitleBar != null) {
-                subtitleBar.setVisibility(View.VISIBLE);
+                subtitleBar.setVisibility(HIDE_TITLE ? View.GONE : View.VISIBLE);
             }
 
             if (getCurrentMiniplayerType() == MINIMAL_BAR) {
@@ -255,10 +253,10 @@ public final class MinimalMiniplayerPatch {
                 startAfterVideo(subtitleBar);
             } else {
                 // The contents sit on the video rather than beside it, so it is dimmed, and
-                // they take the overlay colors.
-                controlsLayout.setBackgroundColor(OVERLAY_SCRIM_COLOR);
-                setTextColor(title, OVERLAY_PRIMARY_COLOR);
-                setTextColor(subtitle, OVERLAY_SECONDARY_COLOR);
+                // they take the overlay colors. The buttons alone have a backdrop of their own.
+                controlsLayout.setBackgroundColor(HIDE_TITLE ? Color.TRANSPARENT : OVERLAY_SCRIM_COLOR);
+                setOverlayTextColor(title, OVERLAY_PRIMARY_COLOR);
+                setOverlayTextColor(subtitle, OVERLAY_SECONDARY_COLOR);
                 setIconColor(playPause);
                 setIconColor(close);
             }
@@ -382,7 +380,7 @@ public final class MinimalMiniplayerPatch {
      * While the navigation bar is away, YouTube's own resting edge is already the right one.
      */
     private static int barBottomFor(Rect resting) {
-        View navigationBar = navigationBar(controlsRef.get());
+        View navigationBar = navigationBar();
         if (navigationBar == null || !navigationBar.isShown()) return resting.bottom;
 
         navigationBar.getLocationInWindow(windowLocation);
@@ -391,8 +389,12 @@ public final class MinimalMiniplayerPatch {
         // a position taken mid-slide leaves the bar underneath it once it comes back.
         final int top = windowLocation[1] - Math.round(navigationBar.getTranslationY());
 
-        // Never pull the bar up, only close the gap underneath it.
-        return Math.max(top, resting.bottom);
+        // A rail beside the content says nothing about where the bar ends.
+        if (navigationBar.getWidth() < navigationBar.getHeight()) return resting.bottom;
+
+        // Docked against it even when YouTube rests lower. After a recreated activity its
+        // resting bounds are still the ones from before the system insets moved everything up.
+        return top;
     }
 
     /**
@@ -776,11 +778,7 @@ public final class MinimalMiniplayerPatch {
     private static boolean isSkipAdShown() {
         View skipAd = skipAdRef.get();
         if (skipAd == null) {
-            ViewGroup controls = controlsRef.get();
-            if (controls == null) return false;
-
-            skipAd = Utils.getChildViewByResourceName(
-                    controls.getRootView(), "modern_miniplayer_skip_ad_button");
+            skipAd = findInWindow("modern_miniplayer_skip_ad_button");
             if (skipAd == null) return false;
 
             skipAdRef = new WeakReference<>(skipAd);
@@ -789,19 +787,55 @@ public final class MinimalMiniplayerPatch {
         return skipAd.isShown();
     }
 
-    private static View navigationBar(ViewGroup controls) {
+    /**
+     * For the views outside the bar layout, which the bar only reaches through the window.
+     */
+    @Nullable
+    private static View findInWindow(String name) {
+        ViewGroup controls = controlsRef.get();
+        if (controls == null) return null;
+
+        return Utils.getChildViewByResourceName(controls.getRootView(), name);
+    }
+
+    @Nullable
+    private static View navigationBar() {
         View navigationBar = navigationBarRef.get();
         if (navigationBar != null) return navigationBar;
 
-        if (controls == null) return null;
-
-        navigationBar = Utils.getChildViewByResourceName(
-                controls.getRootView(), "bottom_bar_container");
+        navigationBar = findInWindow("bottom_bar_container");
         if (navigationBar != null) {
             navigationBarRef = new WeakReference<>(navigationBar);
+            navigationBar.removeOnLayoutChangeListener(navigationBarLayoutListener);
+            navigationBar.addOnLayoutChangeListener(navigationBarLayoutListener);
         }
 
         return navigationBar;
+    }
+
+    /**
+     * Without the translucent navigation bar, a recreated activity lays the navigation bar out
+     * before the system insets move it up, and a bar placed against that stays underneath it.
+     */
+    private static final View.OnLayoutChangeListener navigationBarLayoutListener =
+            (view, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+                if (top != oldTop || bottom != oldBottom) {
+                    // Not from inside the layout pass the change is reported from.
+                    Utils.runOnMainThread(MinimalMiniplayerPatch::reapplyBarBounds);
+                }
+            };
+
+    private static void reapplyBarBounds() {
+        if (!barShapeApplied || morphing || lastBounds.isEmpty()) return;
+
+        MiniplayerBoundsController controller = boundsControllerRef.get();
+        if (controller == null) return;
+
+        barBoundsFor(lastBounds);
+        if (barBounds.equals(currentBounds)) return;
+
+        setBounds(controller, barBounds);
+        updateVideoClip();
     }
 
     private static void startTicking(boolean start) {
@@ -867,43 +901,7 @@ public final class MinimalMiniplayerPatch {
         // Not from showControls(), which YouTube bypasses when it puts the bar up itself.
         // Called for every bounds change and tick, and does nothing once the order is set.
         if (getCurrentMiniplayerType() == MINIMAL_BAR_2) {
-            // Type 2 draws the bar on the video, and the player holds a SurfaceView that punches
-            // a hole through whatever was drawn before it, so the bar has to come after the player in the
-            // watch layout. Elevation is no use, this layout draws its children through its own
-            // drawChild and does not order them by it.
-            // The order is put back when the bar goes away. It also decides who gets a touch first, and
-            // a bar left in front swallows the taps that should reach the expanded player.
-            final boolean barMode = inBarMode();
-
-            if (barDrawsOverPlayer != barMode) {
-                View barContainer = barContainerRef.get();
-                if (barContainer != null && barContainer.getParent() instanceof ViewGroup parent) {
-                    if (barMode) {
-                        barIndexInParent = parent.indexOfChild(barContainer);
-                        if (barIndexInParent < 0) return;
-
-                        originalBarBackground = barContainer.getBackground();
-                        // Here the video, with a slight shading effect to increase
-                        // the text readability, is the background for the bar.
-                        barContainer.setBackground(customType2BarBackground);
-                        parent.bringChildToFront(barContainer);
-                    } else {
-                        barContainer.setBackground(originalBarBackground);
-                        originalBarBackground = null;
-
-                        final int childCount = parent.getChildCount();
-                        if (parent.indexOfChild(barContainer) == childCount - 1) {
-                            // Moving everything the bar jumped over back to the front, in order, leaves
-                            // the bar itself at the index it started from.
-                            for (int i = barIndexInParent; i < childCount - 1; i++) {
-                                parent.bringChildToFront(parent.getChildAt(barIndexInParent));
-                            }
-                        }
-                    }
-                }
-            }
-
-            barDrawsOverPlayer = barMode;
+            setBarDrawsOverPlayer(inBarMode());
         }
 
         final int height = currentBounds.height();
@@ -939,15 +937,53 @@ public final class MinimalMiniplayerPatch {
         watchPlayer.setClipBounds(clipBounds);
     }
 
+    /**
+     * Type 2 draws the bar on the video, and the player holds a {@code SurfaceView} that punches
+     * a hole through whatever was drawn before it, so the bar has to come after the player in the
+     * watch layout. Elevation is no use, this layout draws its children through its own
+     * {@code drawChild} and does not order them by it.
+     * <p>
+     * The order is put back when the bar goes away. It also decides who gets a touch first, and
+     * a bar left in front swallows the taps that should reach the expanded player.
+     */
+    private static void setBarDrawsOverPlayer(boolean over) {
+        if (barDrawsOverPlayer == over) return;
+
+        View barContainer = barContainerRef.get();
+        if (barContainer != null && barContainer.getParent() instanceof ViewGroup parent) {
+            if (over) {
+                barIndexInParent = parent.indexOfChild(barContainer);
+
+                originalBarBackground = barContainer.getBackground();
+                // The video is the background, the controls on top of it already dim it.
+                barContainer.setBackground(null);
+                parent.bringChildToFront(barContainer);
+            } else {
+                barContainer.setBackground(originalBarBackground);
+                originalBarBackground = null;
+
+                final int childCount = parent.getChildCount();
+                if (parent.indexOfChild(barContainer) == childCount - 1) {
+                    // Moving everything the bar jumped over back to the front, in order, leaves
+                    // the bar itself at the index it started from.
+                    for (int i = barIndexInParent; i < childCount - 1; i++) {
+                        parent.bringChildToFront(parent.getChildAt(barIndexInParent));
+                    }
+                }
+            }
+        }
+
+        barDrawsOverPlayer = over;
+    }
+
     @Nullable
     private static View watchPlayer() {
         View watchPlayer = watchPlayerRef.get();
         if (watchPlayer != null) return watchPlayer;
 
-        ViewGroup controls = controlsRef.get();
-        if (controls == null) return null;
+        if (controlsRef.get() == null) return null;
 
-        watchPlayer = Utils.getChildViewByResourceName(controls.getRootView(), "watch_player");
+        watchPlayer = findInWindow("watch_player");
         if (watchPlayer == null) {
             Logger.printDebug(() -> "Could not find the player view");
             return null;
@@ -1019,8 +1055,9 @@ public final class MinimalMiniplayerPatch {
         circle.setShape(GradientDrawable.OVAL);
         // Beside the video this follows the theme, so a custom app color carries into the bar.
         // On the video it is a translucent scrim instead, which the video shows through.
+        // Without text the video is not dimmed, and a light circle is lost on a light video.
         circle.setColor(overVideo
-                ? OVERLAY_BUTTON_COLOR
+                ? (HIDE_TITLE ? OVERLAY_DARK_BUTTON_COLOR : OVERLAY_BUTTON_COLOR)
                 : Utils.adjustColorBrightness(ThemeUtils.getAppBackgroundColor(), 0.9f, 1.25f));
 
         // 48dp is the touch target, 40dp the button, which also keeps the circles apart.
@@ -1052,15 +1089,7 @@ public final class MinimalMiniplayerPatch {
                 ? "player_play_pause_vector_transition"
                 : "player_pause_play_vector_transition";
 
-        int drawableIdentifier = ResourceUtils.getDrawableIdentifier(name + "_delhi");
-        if (drawableIdentifier == 0) {
-            drawableIdentifier = ResourceUtils.getDrawableIdentifier(name);
-        }
-        if (drawableIdentifier == 0) return false;
-
-        // Its fill is a YouTube theme attribute. The extension context has no theme once an app
-        // language is set, so the icon would come out transparent.
-        Drawable drawable = view.getContext().getDrawable(drawableIdentifier);
+        Drawable drawable = getDrawable(view, name + "_delhi", name);
 
         if (!(drawable instanceof AnimatedVectorDrawable morph)) return false;
 
@@ -1070,9 +1099,11 @@ public final class MinimalMiniplayerPatch {
         return true;
     }
 
-    private static void setTextColor(@Nullable TextView view, int color) {
+    private static void setOverlayTextColor(@Nullable TextView view, int color) {
         if (view != null) {
             view.setTextColor(color);
+            // The dimming alone is too light for white text on a light video.
+            view.setShadowLayer(Dim.dp4, 0, 0, OVERLAY_TEXT_SHADOW_COLOR);
         }
     }
 
@@ -1089,13 +1120,28 @@ public final class MinimalMiniplayerPatch {
      * The bar layout still points at the thin icon set, so the bold one is used when the app has it.
      */
     private static void setIcon(ImageView view, String boldName, String legacyName) {
-        final int drawableIdentifier = ResourceUtils.getDrawableIdentifier(boldName);
-        Drawable drawable = drawableIdentifier == 0
-                ? ResourceUtils.getDrawable(legacyName)
-                : Utils.getContext().getDrawable(drawableIdentifier);
-
+        Drawable drawable = getDrawable(view, boldName, legacyName);
         if (drawable != null) {
             view.setImageDrawable(drawable);
         }
+    }
+
+    /**
+     * From the context of the view it goes on. Some are filled with a YouTube theme attribute,
+     * and the extension context has no theme once an app language is set.
+     */
+    @Nullable
+    private static Drawable getDrawable(View view, String name, String fallbackName) {
+        int identifier = ResourceUtils.getDrawableIdentifier(name);
+        if (identifier == 0) {
+            identifier = ResourceUtils.getDrawableIdentifier(fallbackName);
+        }
+
+        if (identifier == 0) {
+            Logger.printException(() -> "Could not find drawable: " + fallbackName);
+            return null;
+        }
+
+        return view.getContext().getDrawable(identifier);
     }
 }

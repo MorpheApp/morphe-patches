@@ -235,12 +235,11 @@ Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu
   <string name="morphe_ryd_failure_generic">Dislikes sind nicht verfügbar (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Vom Ersteller deaktiviert</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Zusammen mit %s anderen Personen gefällt mir dieses Video nicht.</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Dieses Video gefällt mir nicht: %s der Stimmen sind Dislikes.</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike aktivieren</string>
   <string name="morphe_ryd_dislike_percentage_title">Dislikes prozentual anzeigen</string>
   <string name="morphe_ryd_dislike_percentage_summary">Zeigt anstelle eines Zahlenwerts die Dislikes prozentual zur Anzahl der Likes an</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Schaltfläche „Like“ in kompakter Darstellung verwenden</string>
-  <string name="morphe_ryd_compact_layout_summary">Verringert die Breite der „Like“-Schaltfläche, um Platz zu sparen</string>
   <string name="morphe_ryd_estimated_like_title">Geschätzte \"Gefällt mir\"-Angaben anzeigen</string>
   <string name="morphe_ryd_estimated_like_summary">Zeigt bei Videos mit deaktivierten Likes eine geschätzte Anzahl an</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Warnungen zu Verbindungfehlern anzeigen</string>

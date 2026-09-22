@@ -235,12 +235,11 @@ Hvis du slår det av senere, anbefales det å slette appdataene for å forhindre
   <string name="morphe_ryd_failure_generic">Misliker er ikke tilgjengelige (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skjult av eier</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Mislik denne videoen, sammen med %s andre personer</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Mislik denne videoen, %s av stemmene er misliker</string>
   <string name="morphe_ryd_enabled_title">Aktiver Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Vis misliker som prosentandel</string>
   <string name="morphe_ryd_dislike_percentage_summary">Viser misliker som en prosentandel av likerklikk i stedet for et tall</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Bruk kompakt likerklikk-knapp</string>
-  <string name="morphe_ryd_compact_layout_summary">Reduserer bredden på likerklikk-knappen for å spare plass</string>
   <string name="morphe_ryd_estimated_like_title">Vis estimerte likerklikk</string>
   <string name="morphe_ryd_estimated_like_summary">Viser et estimert antall likerklikk på videoer der skaperen har deaktivert likerklikk</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Vis tilkoblingsfeilvarsler</string>

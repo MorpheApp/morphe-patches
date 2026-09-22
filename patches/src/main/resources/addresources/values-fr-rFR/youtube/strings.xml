@@ -1132,8 +1132,8 @@ Si activé, les URL des vidéos seront envoyées au serveur de l'API, et aucune 
 Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Afficher les alertes d\'erreur de connexion</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Affiche une notification lorsque le serveur DeArrow est indisponible</string>
-  <string name="morphe_alt_thumbnail_dearrow_api_url_title">Point de connexion à l\'API DeArrow</string>
-  <string name="morphe_alt_thumbnail_dearrow_api_url_summary">L\'URL du point de connexion au cache des miniatures DeArrow</string>
+  <string name="morphe_alt_thumbnail_dearrow_api_url_title">Point de terminaison à l\'API DeArrow</string>
+  <string name="morphe_alt_thumbnail_dearrow_api_url_summary">L\'URL du point de terminaison au cache des miniatures DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Captures d\'écran vidéo</string>
   <string name="morphe_alt_thumbnail_stills_about_summary">Les miniatures peuvent être capturées du début, du milieu ou de la fin de chaque vidéo. Les miniatures sont intégrées à YouTube, aucune API externe n\'est utilisée</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Utiliser des captures rapides</string>

@@ -30,6 +30,7 @@ import java.util.Locale;
 
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
@@ -123,7 +124,9 @@ public final class CrossfadeCurvePreference extends Preference
             if (prefs != null) {
                 prefs.registerOnSharedPreferenceChangeListener(this);
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onAttachedToHierarchy failure", ex);
+        }
     }
 
     @Override

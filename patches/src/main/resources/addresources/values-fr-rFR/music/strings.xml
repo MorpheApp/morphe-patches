@@ -363,7 +363,7 @@ Pour que le scrobbling continue à se synchroniser pendant la lecture en arrièr
   <string name="morphe_music_lyrics_source_reset_message">Rétablir les fournisseurs dans l\'ordre de priorité par défaut</string>
   <string name="morphe_music_token_dialog_get_token">Obtenir un jeton</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
-  <string name="morphe_music_apple_music_token_dialog_instruction">"Collez le cookie media-user-token de music.apple.com.
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Collez le cookie media-user-token de music.apple.com
 
 Étapes :
 1. Connectez-vous à music.apple.com en tant qu'utilisateur membre
@@ -413,8 +413,6 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube : cookies enregistrés</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube : cookies supprimés</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube : cookies invalides — veuillez vérifier et réessayer</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, puis QQ, puis KuGou, puis NetEase, puis BiniLyrics, puis Unison, puis AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Appuyez sur une ligne pour aller à ce moment</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Appuyez sur une ligne pour aller directement à ce moment de la chanson</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Afficher un bouton \'Copier\'</string>
@@ -434,7 +432,7 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_hide_unplayed_summary">Masquer les lignes de paroles au-dessous de la ligne en cours de lecture</string>
   <string name="morphe_music_lyrics_mediasession_title">Afficher les paroles MediaSession sur l\'écran de verrouillage</string>
   <string name="morphe_music_lyrics_miniplayer_title">Afficher les paroles dans le mini-lecteur</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">Ordre d\'affichage de l’Artiste et du Titre</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">Ordre d\'affichage de l\'Artiste et du Titre</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">Basculer l\'ordre d\'affichage de l\'Artiste et du Titre dans le mini-lecteur et MediaSession. ACTIVÉ : \"Artiste - Titre\" et DÉSACTIVÉ : \"Titre - Artiste\" N\'affecte pas la recherche de paroles</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtres</string>
   <string name="morphe_music_lyrics_custom_regex_title">Expression régulière des métadonnées</string>
@@ -451,6 +449,8 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_source_label">Source: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Traduit par Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romanisé par Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Traduit par %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romanisé par %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traduit</string>
   <string name="morphe_music_lyrics_translating">Traduction…</string>
@@ -466,6 +466,22 @@ Cookies nécessaires : SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_hide_info_summary">Masquer la ligne de crédit affichée sous les paroles</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Inverser la traduction et la romanisation</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">ACTIVÉ place la romanisation sous les paroles et la traduction au-dessus ; DÉSACTIVÉ conserve la romanisation au-dessus et la traduction en dessous</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Traduction compatible avec OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Utiliser une API personnalisée compatible avec OpenAI pour la traduction et la romanisation au lieu de Google Traduction</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Paramètres de traduction par IA</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Configurez le point de terminaison de l\'API compatible avec OpenAI pour la traduction et la romanisation des paroles par IA.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL du point de terminaison de l\'API (par ex. https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">Clé d\'API (laissez vide pour un accès anonyme)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Nom du modèle (par ex. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Paramètres de traduction par IA enregistrés</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Impossible de se connecter au point de terminaison de l\'IA. Veuillez vérifier vos paramètres.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Paramètres de traduction par IA réinitialisés</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Configuré</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Appuyez pour configurer</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">L\'URL de base ne peut pas être vide</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">L\'URL de base doit commencer par http:// ou https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Le nom du modèle ne peut pas être vide</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Validation de la connexion…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Désactive les icônes en gras</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 – Restaure les onglets \'À suivre\', \'Paroles\' et \'Similaires\' du lecteur</string>

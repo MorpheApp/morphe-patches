@@ -413,8 +413,6 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie-k elmentve</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookie-k törölve</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: érvénytelen cookie-k — ellenőrizd, és próbáld újra</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, majd QQ, majd KuGou, majd NetEase, majd BiniLyrics, majd Unison, majd AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Érintse meg a sort az ugráshoz</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">A sor megérintése ugrássá teszi a dalban a megfelelő pillanatra</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Másolás gomb megjelenítése</string>
@@ -451,6 +449,8 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_source_label">Forrás: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Fordította a Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">A Google romanizálta</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Fordította: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romanizálta: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Lefordítva</string>
   <string name="morphe_music_lyrics_translating">Fordítás…</string>
@@ -466,6 +466,22 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_hide_info_summary">A dalszöveg alatt látható forrásmegjelölés elrejtése</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">A fordítás és a romanizáció felcserélése</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">BE: a romanizációt a dalszöveg alá, a fordítást fölé helyezi; KI: a romanizációt felül, a fordítást alul hagyja.</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI-kompatibilis fordítás</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Egyéni OpenAI-kompatibilis API használata fordításhoz és romanizáláshoz a Google Translate helyett</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI-fordítási beállítások</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Állítsa be az OpenAI-kompatibilis API-végpontot az AI-alapú dalszövegfordításhoz és romanizáláshoz.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API-végpont URL-címe (pl. https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API-kulcs (hagyja üresen anonim hozzáféréshez)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Modellnév (pl. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI-fordítási beállítások elmentve</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Nem sikerült csatlakozni az AI-végponthoz. Ellenőrizze a beállításokat.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI-fordítási beállítások visszaállítva</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Beállítva</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Koppintson a beállításhoz</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">A Base URL nem lehet üres</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">A Base URL-nek http:// vagy https:// előtaggal kell kezdődnie</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">A modellnév nem lehet üres</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Kapcsolat ellenőrzése…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Félkövér ikonok letiltása</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - A Lejátszó „Következő”, „Dalszövegek” és „Kapcsolódó” lapok visszaállítása</string>

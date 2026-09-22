@@ -103,7 +103,7 @@ public final class ChannelSearchRequest {
             connection.getOutputStream().write(requestBody);
 
             final int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
+            if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return parseResponse(Requester.parseJSONObject(connection));
             }
             String error = Requester.parseErrorStringAndDisconnect(connection);

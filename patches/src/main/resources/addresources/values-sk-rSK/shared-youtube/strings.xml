@@ -235,12 +235,11 @@ Ak ju neskôr vypnete, odporúda sa vymazať dáta aplikácie, aby ste predišli
   <string name="morphe_ryd_failure_generic">Počet \'Nepáči sa mi\' nie je dostupný (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Skryté vlastníkom</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Toto video sa mi nepáči, spolu s %s ďalšími ľuďmi</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Toto video sa mi nepáči, %s hlasov je negatívnych</string>
   <string name="morphe_ryd_enabled_title">Povoliť Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Zobraziť počet \'Nepáči sa mi\' v percentách</string>
   <string name="morphe_ryd_dislike_percentage_summary">Zobrazuje počet \'Nepáči sa mi\' ako percentuálny podiel počtu \'Páči sa mi\' namiesto čísla</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Použiť kompaktné tlačidlo \'Páči sa mi\'</string>
-  <string name="morphe_ryd_compact_layout_summary">Zmenšuje šírku tlačidla \'Páči sa mi\' pre úsporu miesta</string>
   <string name="morphe_ryd_estimated_like_title">Zobraziť odhadovaný počet \'Páči sa mi\'</string>
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet \'Páči sa mi\' na videách, kde autor zakázal hodnotenie</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobrazovať upozornenia o chybách pripojenia</string>

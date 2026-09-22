@@ -235,12 +235,11 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_ryd_failure_generic">Несвиђања нису доступна (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Скривено од стране власника</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Не свиђа ми се овај видео, као ни 2.7k других људи</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Не свиђа ми се овај видео, 2.5k гласова су несвиђања</string>
   <string name="morphe_ryd_enabled_title">Омогући Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Прикажи несвиђања као проценат</string>
   <string name="morphe_ryd_dislike_percentage_summary">Приказује несвиђања као проценат свиђања уместо броја</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Користи компактно дугме „Свиђа ми се“</string>
-  <string name="morphe_ryd_compact_layout_summary">Смањује ширину дугмета „Свиђа ми се“ како би се уштедело место</string>
   <string name="morphe_ryd_estimated_like_title">Прикажи процењени број свиђања</string>
   <string name="morphe_ryd_estimated_like_summary">Приказује процењену прегледаност на видео снимцима на којем је креатор искључио прегледаност</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Приказуј упозорења о грешци у вези са повезивањем</string>

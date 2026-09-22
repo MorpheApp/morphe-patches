@@ -235,12 +235,11 @@ Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-
   <string name="morphe_ryd_failure_generic">Dislikes is nie beskikbaar nie (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Verberg deur eienaar</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Keur hierdie video af, saam met %s ander mense</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Keur hierdie video af, %s van die stemme is afkeure</string>
   <string name="morphe_ryd_enabled_title">Aktiveer Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Wys dislikes as persentasie</string>
   <string name="morphe_ryd_dislike_percentage_summary">Wys dislikes as \'n persentasie van likes in plaas van \'n getal</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Gebruik kompakte Like-knoppie</string>
-  <string name="morphe_ryd_compact_layout_summary">Verminder die wydte van die Like-knoppie om spasie te bespaar</string>
   <string name="morphe_ryd_estimated_like_title">Wys geskatte likes</string>
   <string name="morphe_ryd_estimated_like_summary">Wys \'n geskatte like-telling op video\'s waar die skepper likes gedeaktiveer het</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Wys konneksiefoutwaarskuwings</string>

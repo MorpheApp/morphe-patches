@@ -32,6 +32,7 @@ import java.util.Map;
 import java.util.Set;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
@@ -49,7 +50,7 @@ public final class LyricsOrderedListPreference extends Preference {
     /** Canonical provider ids, in the default priority order, shown in the list. */
     private static final List<String> PROVIDER_ORDER = Arrays.asList(
             "YTMusic", "Captions", "LRCLIB", "QQ", "NetEase", "KuGou", "Luna", "bLyrics", "BiniLyrics",
-            "Unison", "AMLL", "Lyricify", "Apple", "Musixmatch", "Spotify", "Deezer");
+            "Unison", "SimpMusic", "AMLL", "LunaBeat", "Lyricify", "Apple", "Musixmatch", "Spotify", "Deezer");
 
     /** Friendlier labels for display; ids not present here are shown verbatim. */
     private static final Map<String, String> PROVIDER_LABELS = new HashMap<>();
@@ -140,7 +141,8 @@ public final class LyricsOrderedListPreference extends Preference {
         try {
             loadItems();
             updateSummary();
-        } catch (Exception ignored) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "onAttachedToHierarchy failure", ex);
         }
     }
 
@@ -399,6 +401,7 @@ public final class LyricsOrderedListPreference extends Preference {
         }
         StringBuilder sb = new StringBuilder();
         for (Item item : items) {
+            //noinspection SizeReplaceableByIsEmpty
             if (sb.length() > 0) {
                 sb.append(',');
             }

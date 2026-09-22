@@ -407,8 +407,6 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies gemt</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies ryddet</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: ugyldige cookies — kontrollér og prøv igen</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, derefter QQ, derefter KuGou, derefter NetEase, derefter BiniLyrics, derefter Unison, derefter AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Tryk på en linje for at søge</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Ved at trykke på en linje springer du til det tidspunkt i sangen</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Vis Kopier-knap</string>
@@ -445,6 +443,8 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_source_label">Kilde: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Oversat af Google</string>
   <string name="morphe_music_lyrics_romanized_by_google">Romaniseret af Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Oversat af %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romaniseret af %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Oversat</string>
   <string name="morphe_music_lyrics_translating">Oversætter…</string>
@@ -460,6 +460,22 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skjul kreditlinjen, der vises under teksterne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Byt om på oversættelse og romanisering</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">TIL sætter romanisering under teksterne og oversættelse over; FRA beholder romanisering over og oversættelse under.</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI-kompatibel oversættelse</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Brug en tilpasset OpenAI-kompatibel API til oversættelse og romanisering i stedet for Google Oversæt</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI-oversættelsesindstillinger</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Konfigurér slutpunktet for den OpenAI-kompatible API til AI-drevet oversættelse og romanisering af sangtekster.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunkt-URL (f.eks. https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API-nøgle (lad den være tom for anonym adgang)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Modelnavn (f.eks. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI-oversættelsesindstillinger gemt</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Kunne ikke oprette forbindelse til AI-slutpunktet. Tjek dine indstillinger.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI-oversættelsesindstillinger nulstillet</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Konfigureret</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Tryk for at konfigurere</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Base-URL må ikke være tom</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base-URL skal starte med http:// eller https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Modelnavn må ikke være tomt</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Validerer forbindelse…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Deaktiver fede ikoner</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Gendan fanerne Næste, Tekster og Relaterede i Player</string>

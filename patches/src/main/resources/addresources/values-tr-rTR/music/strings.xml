@@ -413,8 +413,6 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: çerezler kaydedildi</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: çerezler temizlendi</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: geçersiz çerezler — lütfen kontrol edin ve tekrar deneyin</string>
-  <!-- 'LRCLIB', 'KuGou', 'NetEase', 'QQ', 'BiniLyrics', 'Unison' and 'AMLL' are service names and must be kept untranslated -->
-  <string name="morphe_music_lyrics_source_entry_lrclib_then_kugou">LRCLIB, ardından QQ, ardından KuGou, ardından NetEase, ardından BiniLyrics, ardından Unison, ardından AMLL</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Bir satıra dokunarak şarkıda ilerle</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Bir satıra dokunmak şarkıda o ana atlar</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Kopyala düğmesini göster</string>
@@ -451,6 +449,8 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_source_label">Kaynak: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Yenile</string>
   <string name="morphe_music_lyrics_romanized_by_google">Okunuşu sağlayan: Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">Çeviren: %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">Romanize eden: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Çevrildi</string>
   <string name="morphe_music_lyrics_translating">Çeviriliyor…</string>
@@ -466,6 +466,22 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_hide_info_summary">Şarkı sözlerinin altında gösterilen künye satırını gizle</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Çeviri ve okunuşun yerini değiştir</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">AÇIK olduğunda okunuşu şarkı sözlerinin altına ve çeviriyi üstüne yerleştirir; KAPALI olduğunda okunuşu üstte ve çeviriyi altta tutar</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI uyumlu Çeviri</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Çeviri ve romanizasyon için Google Çeviri yerine özel OpenAI uyumlu bir API kullanın</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">AI Çeviri Ayarları</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI destekli şarkı sözü çevirisi ve romanizasyonu için OpenAI uyumlu API uç noktasını yapılandırın.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">API uç noktası URL’si (ör. https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">API anahtarı (anonim erişim için boş bırakın)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Model adı (ör. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI çeviri ayarları kaydedildi</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">AI uç noktasına bağlanılamadı. Lütfen ayarlarınızı kontrol edin.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI çeviri ayarları sıfırlandı</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Yapılandırıldı</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Yapılandırmak için dokunun</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Temel URL boş olamaz</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Temel URL http:// veya https:// ile başlamalıdır</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Model adı boş olamaz</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Bağlantı doğrulanıyor…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Kalın simgeleri devre dışı bırak</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Çalardaki Sıradaki, Şarkı Sözleri ve İlgili sekmelerini geri yükle</string>

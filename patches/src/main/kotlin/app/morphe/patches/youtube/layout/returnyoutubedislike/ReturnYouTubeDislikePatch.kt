@@ -10,7 +10,6 @@
 
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
@@ -19,6 +18,7 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
+import app.morphe.patches.shared.layout.returnyoutubedislike.hookLikeDislikeButtons
 import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
 import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
@@ -128,11 +128,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // endregion
 
-        // Verify stubbed classes are not obfuscated.
-        classDefBy("Lcom/facebook/litho/ComponentHost;")
-        classDefBy("Lcom/facebook/litho/TextContent;")
-        classDefBy("Lcom/facebook/yoga/YogaNative;")
-
         // region Hook code for creation and cached lookup of text Spans.
 
         // Alternatively the hook can be made in the creation of Spans in TextComponentSpec.
@@ -214,28 +209,6 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // endregion
 
-        // The compact action bar has icon only like and dislike buttons with no text to hook,
-        // so the counts are drawn over the button host views, which are found by their view tag.
-        ComponentHostSetContentDescriptionFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostContentDescription(Lcom/facebook/litho/ComponentHost;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                move-result-object p1
-            """
-        )
-
-        // The dislike icon is given a margin so the button wrapping it grows and leaves room for
-        // the count. A width is no use, since the layout stretches the icon over whatever it gets.
-        //
-        // The only long of the node is the pointer to its native counterpart.
-
-        // The method reads the same pointer itself, so it always has the two locals this needs.
-        YogaSetWidthFingerprint.let {
-            val register = it.instructionMatches.last().getInstruction<FiveRegisterInstruction>().registerC
-            it.method.addInstruction(
-                it.instructionMatches.last().index,
-                "invoke-static { v$register, v${register + 1}, p1 }, $EXTENSION_CLASS->onYogaSetWidth(JF)V"
-            )
-        }
+        hookLikeDislikeButtons(EXTENSION_CLASS)
     }
 }

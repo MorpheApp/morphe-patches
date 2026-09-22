@@ -235,12 +235,11 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_ryd_failure_generic">Không thể hiện số lượt không thích (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Đã bị chủ sở hữu ẩn</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Không thích video này, cùng với %s người khác</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Không thích video này, %s phiếu bầu là không thích</string>
   <string name="morphe_ryd_enabled_title">Bật Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Hiện số lượt không thích dưới dạng phần trăm</string>
   <string name="morphe_ryd_dislike_percentage_summary">Hiển thị số lượt không thích dưới dạng phần trăm thay vì một con số</string>
-  <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
-  <string name="morphe_ryd_compact_layout_title">Dùng nút Thích thu gọn</string>
-  <string name="morphe_ryd_compact_layout_summary">Giảm chiều rộng nút Thích để tiết kiệm không gian</string>
   <string name="morphe_ryd_estimated_like_title">Hiện số lượt thích ước tính</string>
   <string name="morphe_ryd_estimated_like_summary">Hiển thị số lượt thích ước tính trên các video mà nhà sáng tạo đã ẩn lượt thích</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Hiện cảnh báo lỗi kết nối</string>
