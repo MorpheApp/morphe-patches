@@ -1,12 +1,23 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/340
+ * https://github.com/MorpheApp/morphe-patches/pull/3120
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.shared.spoof.js.nsigsolver.common;
 
-import app.morphe.extension.shared.settings.preference.SharedPrefCategory;
-import java.lang.ref.WeakReference;
+import androidx.annotation.GuardedBy;
+import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import app.morphe.extension.shared.settings.preference.SharedPrefCategory;
 
 public class CacheService {
     private static final String PREF_NAME = "yt_cache_service";
@@ -16,6 +27,8 @@ public class CacheService {
      * so historical hashes must not accumulate.
      */
     private static final String PLAYER_KEY_PREFIX = "player:";
+
+    @GuardedBy("itself")
     private static final Map<String, WeakReference<SharedPrefCategory>> prefs = new HashMap<>();
 
     // Singleton instance
@@ -42,9 +55,8 @@ public class CacheService {
 
         if (!code.isEmpty()) {
             return new CachedData(code, version, variant);
-        } else {
-            return null;
         }
+        return null;
     }
 
     public void save(String section, String key, CachedData content) throws CacheError {
@@ -62,7 +74,7 @@ public class CacheService {
      * Keep at most one preprocessed player JS entry. {@code keepKey} is the current
      * {@code player:<hash>} key, or {@code null} when the current hash is unknown (drop extras).
      */
-    private void prunePlayerEntries(SharedPrefCategory pref, String keepKey) {
+    private void prunePlayerEntries(SharedPrefCategory pref, @Nullable String keepKey) {
         Map<String, ?> all = pref.preferences.getAll();
         if (all.isEmpty()) {
             return;
@@ -73,7 +85,7 @@ public class CacheService {
             if (!existing.startsWith(PLAYER_KEY_PREFIX)) {
                 continue;
             }
-            int delim = existing.indexOf(KEY_DELIM);
+            final int delim = existing.indexOf(KEY_DELIM);
             if (delim <= PLAYER_KEY_PREFIX.length()) {
                 continue;
             }
@@ -85,7 +97,7 @@ public class CacheService {
         }
 
         if (keepKey == null) {
-            if (playerBases.size() <= 1) {
+            if (playerBases.size() == 1) {
                 return;
             }
             for (String base : playerBases) {
@@ -108,16 +120,22 @@ public class CacheService {
     }
 
     private SharedPrefCategory getSharedPrefs(String name) {
-        WeakReference<SharedPrefCategory> ref = prefs.get(name);
-        SharedPrefCategory existing = (ref != null) ? ref.get() : null;
+        synchronized (prefs) {
+            prefs.values().removeIf(ref -> ref.get() == null);
 
-        if (existing != null) {
-            return existing;
+            WeakReference<SharedPrefCategory> ref = prefs.get(name);
+
+            if (ref != null) {
+                SharedPrefCategory existing = ref.get();
+                if (existing != null) {
+                    return existing;
+                }
+            }
+
+            SharedPrefCategory newPrefs = new SharedPrefCategory(name);
+            prefs.put(name, new WeakReference<>(newPrefs));
+            return newPrefs;
         }
-
-        SharedPrefCategory newPrefs = new SharedPrefCategory(name);
-        prefs.put(name, new WeakReference<>(newPrefs));
-        return newPrefs;
     }
 
     private String getCodeKey(String key) {
