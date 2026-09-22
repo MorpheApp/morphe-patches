@@ -11,7 +11,7 @@
 package app.morphe.patches.youtube.layout.branding
 
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
-import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
+import app.morphe.patches.youtube.layout.theme.splashAnimationPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_MAIN_ACTIVITY_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
@@ -39,7 +39,7 @@ val customBrandingPatch = baseCustomBrandingPatch(
         dependsOn(
             sharedExtensionPatch,
             // Owns the hook that loads the startup animation.
-            seekbarColorPatch
+            splashAnimationPatch
         )
 
         compatibleWith(COMPATIBILITY_YOUTUBE)
