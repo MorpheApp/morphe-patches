@@ -30,7 +30,7 @@ public class StartupAnimationPatch {
      * How long the app waits before the mark starts moving. The app drops the first frames of
      * an animation while it is still starting up, which makes the start of it look torn.
      */
-    private static final long START_DELAY_MS = 100;
+    private static final long START_DELAY_MS = 170;
 
     /**
      * Injection point.
