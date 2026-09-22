@@ -35,6 +35,8 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.shared.misc.spans.addSpanFilter
 import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
+import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
+import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -111,7 +113,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         elementProtoParserHookPatch,
         fixProtoLibraryPatch,
         treeNodeElementHookPatch,
-        inclusiveSpanPatch
+        inclusiveSpanPatch,
+        textComponentPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -603,6 +606,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 "hideAlbumCard"
             )
         }
+
+        // endregion
+
+        // region hide comment preview
+
+        hookLithoSpannableString(COMMENTS_FILTER)
 
         // endregion
 

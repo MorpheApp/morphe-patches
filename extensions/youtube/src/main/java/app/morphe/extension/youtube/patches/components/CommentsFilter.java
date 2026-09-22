@@ -10,7 +10,11 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.patches.TextComponentPatch.newSpanUsingStylingOfAnotherSpan;
+
 import android.support.v7.widget.RecyclerView;
+import android.text.Spanned;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -55,6 +59,9 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup comments;
     private final StringFilterGroup commentsFilterBar;
     private final StringFilterGroup emojiButton;
+
+    private static final CharSequence hiddenPreviewCommentCharSequence =
+            str("morphe_hide_comments_preview_comment_hidden");
 
     public CommentsFilter() {
         var channelGuidelines = new StringFilterGroup(
@@ -137,12 +144,6 @@ public class CommentsFilter extends Filter {
                 "gift_attribution_card_classic_live.e"
         );
 
-        var previewComment = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
-                "comments_entry_point_teaser",
-                "comments_entry_point_simplebox"
-        );
-
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
                 "super_thanks_button.e"
@@ -171,7 +172,6 @@ public class CommentsFilter extends Filter {
                 createAShortButton,
                 emojiButton,
                 giftAnimationAndCards,
-                previewComment,
                 thanksButton,
                 timestampButton,
                 topFansButton
@@ -423,5 +423,32 @@ public class CommentsFilter extends Filter {
         }
 
         return bytes;
+    }
+
+    /**
+     * Called when a litho text component is created, and also when a Span is later reused
+     * (such as scrolling off and back on screen). Usually called off the main thread, and
+     * can be called several times for the same element.
+     *
+     * @param original Original char sequence created or reused by Litho.
+     * @return The original char sequence, or a replacement that contains the dislikes.
+     */
+    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
+                                                 CharSequence original) {
+        if (!Settings.HIDE_COMMENTS_PREVIEW_COMMENT.get()) {
+            return original;
+        }
+
+        StringBuilder pathBuilderTest = contextInterface.patch_getPathBuilder();
+        if (pathBuilderTest == null) {
+            return original;
+        }
+
+        if (pathBuilderTest.indexOf("comments_entry_point_teaser.e") == -1 &&
+                pathBuilderTest.indexOf("comments_entry_point_simplebox.e") == -1) {
+            return original;
+        }
+
+        return newSpanUsingStylingOfAnotherSpan((Spanned) original, hiddenPreviewCommentCharSequence);
     }
 }

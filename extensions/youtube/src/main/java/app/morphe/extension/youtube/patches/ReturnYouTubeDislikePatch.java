@@ -60,19 +60,6 @@ public class ReturnYouTubeDislikePatch {
     //
 
     /**
-     * Injection point.
-     * <p>
-     * Logs if new litho text layout is used.
-     */
-    public static boolean useNewLithoTextCreation(boolean useNewLithoTextCreation) {
-        // Don't force flag on/off unless debugging patch hooks,
-        // because forcing off with newer YT targets causes Shorts player to show no buttons,
-        // presumably because the old litho data isn't in the layout data.
-        Logger.printDebug(() -> "useNewLithoTextCreation: " + useNewLithoTextCreation);
-        return useNewLithoTextCreation;
-    }
-
-    /**
      * Called when a litho text component is created, and also when a Span is later reused
      * (such as scrolling off and back on screen). Usually called off the main thread, and
      * can be called several times for the same element.
