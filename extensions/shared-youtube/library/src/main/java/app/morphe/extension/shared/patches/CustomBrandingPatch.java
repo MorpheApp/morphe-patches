@@ -172,7 +172,11 @@ public class CustomBrandingPatch {
      * Injection point.
      */
     public static View getLottieViewOrNull(View lottieStartupView) {
-        if (getStartupAnimation(false) != 0) {
+        if (SplashAnimationPatch.isDisabled()) {
+            return null;
+        }
+
+        if (getStartupAnimation(SplashAnimationPatch.isMonochrome()) != 0) {
             // The icon has its own animation, which replaces the original one.
             return lottieStartupView;
         }
@@ -218,16 +222,6 @@ public class CustomBrandingPatch {
             Logger.printException(() -> "getStartupAnimation failure", ex);
         }
         return 0;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static int getStartupAnimation(int original) {
-        final int startupAnimation = getStartupAnimation(false);
-        return startupAnimation != 0
-                ? startupAnimation
-                : original;
     }
 
     /**

@@ -7,25 +7,42 @@
 
 package app.morphe.extension.music.patches;
 
-import android.view.View;
+import com.airbnb.lottie.LottieAnimationView;
 
-import androidx.annotation.Nullable;
+import java.util.Map;
 
-import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.shared.patches.CustomBrandingPatch;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.SplashAnimationPatch;
+import app.morphe.extension.shared.theme.ThemeUtils;
 
 @SuppressWarnings("unused")
 public class StartupAnimationPatch {
 
     /**
      * Injection point.
-     *
-     * @return The view that plays the startup animation, or null to skip the animation.
      */
-    @Nullable
-    public static View getLottieViewOrNull(View lottieStartupView) {
-        return Settings.STARTUP_ANIMATION.get()
-                ? CustomBrandingPatch.getLottieViewOrNull(lottieStartupView)
-                : null;
+    public static void setSplashAnimationLottie(LottieAnimationView view, int resourceId) {
+        try {
+            // A custom branding icon replaces the YT Music logo animation with its own.
+            if (SplashAnimationPatch.setBrandedSplashAnimation(view)) {
+                return;
+            }
+
+            if (SplashAnimationPatch.isMonochrome()) {
+                // The app has no black and white animation of its own, so the colors of the
+                // original one are replaced with the foreground color of the theme.
+                final int foregroundColor = ThemeUtils.getAppForegroundColor();
+
+                SplashAnimationPatch.setSplashAnimation(view, resourceId, Map.of(
+                        "[1,0,0.2,1]", foregroundColor,
+                        "[1,0.152941176471,0.56862745098,1]", foregroundColor
+                ));
+                return;
+            }
+
+            view.patch_setAnimation(resourceId);
+        } catch (Exception ex) {
+            Logger.printException(() -> "setSplashAnimationLottie failure", ex);
+        }
     }
 }

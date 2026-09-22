@@ -22,7 +22,7 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/theme/SplashAnimationPatch;"
+    "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
 /**
  * Hands the animation the app plays while it starts over to extension code,

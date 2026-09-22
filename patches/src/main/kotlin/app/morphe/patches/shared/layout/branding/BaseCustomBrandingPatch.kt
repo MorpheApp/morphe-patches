@@ -529,22 +529,16 @@ internal fun baseCustomBrandingPatch(
 
         // Startup animation of each launcher foreground, played by the app hooks in place of the
         // original. The pace of it differs per app, because each one cuts it off differently.
-        val startupAnimationNames = mutableListOf(
-            "morphe_startup_animation.json",
-            "morphe_startup_animation_play.json"
-        )
-
-        if (!isYouTubeMusic) {
-            // Only YouTube has a black and white splash screen style to follow.
-            startupAnimationNames += listOf(
+        copyResources(
+            startupAnimationDirectory,
+            ResourceGroup(
+                "raw",
+                "morphe_startup_animation.json",
+                "morphe_startup_animation_play.json",
+                // Played when the splash screen style is black and white.
                 "morphe_startup_animation_monochrome.json",
                 "morphe_startup_animation_play_monochrome.json"
             )
-        }
-
-        copyResources(
-            startupAnimationDirectory,
-            ResourceGroup("raw", *startupAnimationNames.toTypedArray())
         )
 
         // Copy template icon files.
