@@ -6,6 +6,8 @@
         android:layout_height="@dimen/controls_overlay_action_button_size"
         android:layout_alignWithParentIfMissing="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="2dp"
+        android:padding="@dimen/controls_overlay_action_button_padding"
         android:layout_toStartOf="@id/music_app_deeplink_button"
         android:contentDescription="@string/series_tracker_title"
         android:visibility="gone"
