@@ -179,9 +179,9 @@ public final class MusicActionButtonsFilter extends Filter {
      * reflection walk) and dispatch on the same endpoint markers that {@link #isFiltered}
      * uses for visual hiding.
      */
-    public static void onLazilyConvertedElementLoaded(String identifier, List<Object> treeNodeResultList) {
+    public static void onLazilyConvertedElementLoaded(CharSequence identifier, List<Object> treeNodeResultList) {
         try {
-            if (!identifier.startsWith(VIDEO_ACTION_BAR_PREFIX)) {
+            if (!Utils.startsWith(identifier, VIDEO_ACTION_BAR_PREFIX)) {
                 return;
             }
             if (LyricsManager.getInstance().hasLyrics()) {

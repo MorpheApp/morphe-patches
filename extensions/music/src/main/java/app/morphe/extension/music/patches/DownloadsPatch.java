@@ -68,7 +68,7 @@ public final class DownloadsPatch {
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not parse litho text", ex);
+            Logger.printDebug(() -> "onLithoTextLoaded failure", ex);
         }
     }
 
