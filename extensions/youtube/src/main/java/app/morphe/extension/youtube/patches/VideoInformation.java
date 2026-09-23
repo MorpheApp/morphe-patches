@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.shared.Event;
@@ -893,8 +894,8 @@ public final class VideoInformation {
                 if (identifier == null || !identifier.startsWith("playback_rate_selector_menu_sheet.e")) {
                     return;
                 }
-                String path = contextInterface.patch_getPathBuilder().toString();
-                if (!path.endsWith("|ContainerType|ContainerType|ContainerType|TextType|")) {
+                StringBuilder path = contextInterface.patch_getPathBuilder();
+                if (!CharSequenceSearch.endsWith(path, "|ContainerType|ContainerType|ContainerType|TextType|")) {
                     return;
                 }
                 String text = Objects.toString(original);

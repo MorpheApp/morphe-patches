@@ -13,6 +13,7 @@ package app.morphe.extension.youtube.patches.components;
 import java.util.List;
 
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -178,7 +179,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -189,13 +190,13 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
 
         if (matchedGroup == divider) {
-            if (path.contains("captions_sheet_content.e")) {
+            if (CharSequenceSearch.contains(path, "captions_sheet_content.e")) {
                 return Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
             }
-            if (path.contains("quick_quality_sheet_content.e")) {
+            if (CharSequenceSearch.contains(path, "quick_quality_sheet_content.e")) {
                 return Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
             }
-            return path.contains("overflow_menu_item.e");
+            return CharSequenceSearch.contains(path, "overflow_menu_item.e");
         }
 
         if (matchedGroup == flyoutMenu) {
@@ -224,7 +225,7 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
             }
 
             // 21.x+ fix.
-            if (VersionCheckPatch.IS_20_31_OR_GREATER && path.contains("bottom_sheet_list_option.e")) {
+            if (VersionCheckPatch.IS_20_31_OR_GREATER && CharSequenceSearch.contains(path, "bottom_sheet_list_option.e")) {
                 return false;
             }
 

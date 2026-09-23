@@ -21,6 +21,7 @@ import com.facebook.litho.ComponentHost;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislike;
 import app.morphe.extension.shared.returnyoutubedislike.ReturnYouTubeDislikeButtons;
@@ -93,7 +94,7 @@ public class ReturnYouTubeDislikePatch {
             }
 
             StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
-            if (!pathBuilder.toString().contains("segmented_like_dislike_button.e")) {
+            if (!CharSequenceSearch.contains(pathBuilder, "segmented_like_dislike_button.e")) {
                 return original;
             }
 

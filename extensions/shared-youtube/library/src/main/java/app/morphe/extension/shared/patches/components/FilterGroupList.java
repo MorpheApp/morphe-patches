@@ -11,10 +11,10 @@ import java.util.function.Consumer;
 
 import app.morphe.extension.shared.TrieSearch;
 
-public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<T> {
+public abstract class FilterGroupList<V extends S, S, T extends FilterGroup<V>> implements Iterable<T> {
 
     private final List<T> filterGroups = new ArrayList<>();
-    private final TrieSearch<V> search = createSearchGraph();
+    private final TrieSearch<S> search = createSearchGraph();
 
     @SafeVarargs
     public final void addAll(final T... groups) {
@@ -61,5 +61,5 @@ public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements It
 
     }
 
-    protected abstract TrieSearch<V> createSearchGraph();
+    protected abstract TrieSearch<S> createSearchGraph();
 }

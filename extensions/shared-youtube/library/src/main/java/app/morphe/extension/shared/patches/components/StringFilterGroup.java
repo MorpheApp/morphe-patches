@@ -10,17 +10,19 @@ public class StringFilterGroup extends FilterGroup<String> {
 
     @Override
     public FilterGroupResult check(final String string) {
+        return check((CharSequence) string);
+    }
+
+    public FilterGroupResult check(final CharSequence text) {
         int matchedIndex = -1;
         int matchedLength = 0;
-        if (isEnabled()) {
+        if (isEnabled() && text.length() != 0) {
             for (String pattern : filters) {
-                if (!string.isEmpty()) {
-                    final int indexOf = string.indexOf(pattern);
-                    if (indexOf >= 0) {
-                        matchedIndex = indexOf;
-                        matchedLength = pattern.length();
-                        break;
-                    }
+                final int indexOf = CharSequenceSearch.indexOf(text, pattern);
+                if (indexOf >= 0) {
+                    matchedIndex = indexOf;
+                    matchedLength = pattern.length();
+                    break;
                 }
             }
         }

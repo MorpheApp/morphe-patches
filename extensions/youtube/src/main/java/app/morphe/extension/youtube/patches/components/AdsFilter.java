@@ -19,6 +19,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
+import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
@@ -208,7 +209,7 @@ public final class AdsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -227,7 +228,7 @@ public final class AdsFilter extends Filter {
         }
 
         if (matchedGroup == shortsPaidPromotionLabel) {
-            return path.contains("|button.e") && shortsPaidPromotionLabelBuffer.check(buffer).isFiltered();
+            return CharSequenceSearch.contains(path, "|button.e") && shortsPaidPromotionLabelBuffer.check(buffer).isFiltered();
         }
 
         return !exceptions.matches(path);
