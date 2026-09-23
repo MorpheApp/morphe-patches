@@ -54,6 +54,10 @@ public final class PlaylistRoutes {
             Route.Method.POST, "browse?prettyPrint=false"
     ).compile();
 
+    public static final Route.CompiledRoute PLAYLIST_FILTER_SEARCH_METADATA = new Route(
+            Route.Method.POST, "get_playlist_filter_search_metadata?prettyPrint=false"
+    ).compile();
+
     public static final Route.CompiledRoute GET_MIX_PLAYLIST = new Route(
             Route.Method.POST,
             "next" +
@@ -166,10 +170,10 @@ public final class PlaylistRoutes {
         return new byte[0];
     }
 
+
     public static byte[] browsePlaylistBody(String playlistId) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("context", androidContext());
+            JSONObject body = getBaseContentJson();
             body.put("browseId", "VL" + playlistId);
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
@@ -178,10 +182,24 @@ public final class PlaylistRoutes {
         return new byte[0];
     }
 
-    public static byte[] browsePlaylistContinuationBody(String continuation) {
+    public static byte[] playlistFilterSearchMetadataBody(String playlistId) {
         try {
             JSONObject body = new JSONObject();
             body.put("context", androidContext());
+            body.put("playlistId", playlistId);
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(
+                    () -> "playlistFilterSearchMetadataBody failed",
+                    ex
+            );
+        }
+        return new byte[0];
+    }
+
+    public static byte[] browsePlaylistContinuationBody(String continuation) {
+        try {
+            JSONObject body = getBaseContentJson();
             body.put("continuation", continuation);
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {

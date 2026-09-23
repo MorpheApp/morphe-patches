@@ -80,18 +80,38 @@ public final class PlaylistSearchPatch {
 
     public static boolean searchInPlaylist(@Nullable String query) {
         try {
-            if (!Settings.PLAYLIST_SEARCH.get() || query == null || query.isEmpty()) {
+            final String browseId = currentBrowseId;
+            final boolean settingEnabled = Settings.PLAYLIST_SEARCH.get();
+
+            Logger.printDebug(() -> "PLAYLIST_SEARCH ENTRY"
+                    + " query=" + query
+                    + " settingEnabled=" + settingEnabled
+                    + " browseId=" + browseId
+                    + " browseIdIsPlaylist="
+                    + isPlaylistBrowseId(browseId)
+                    + " activityPresent="
+                    + (mainActivityRef.get() != null));
+
+            if (!settingEnabled || query == null || query.isEmpty()) {
+                Logger.printDebug(() -> "PLAYLIST_SEARCH EXIT reason=PRECONDITION"
+                        + " settingEnabled=" + settingEnabled
+                        + " queryEmpty=" + (query == null || query.isEmpty()));
                 return false;
             }
 
-            final String browseId = currentBrowseId;
             if (!isPlaylistBrowseId(browseId)) {
+                Logger.printDebug(() -> "PLAYLIST_SEARCH EXIT reason=NOT_PLAYLIST"
+                        + " browseId=" + browseId);
                 return false;
             }
 
             final String playlistId = browseId.substring(2);
             Activity activity = mainActivityRef.get();
-            if (activity == null) return false;
+
+            if (activity == null) {
+                Logger.printDebug(() -> "PLAYLIST_SEARCH EXIT reason=NO_ACTIVITY");
+                return false;
+            }
 
             final long now = System.currentTimeMillis();
             if (query.equals(lastQuery)
