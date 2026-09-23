@@ -16,7 +16,11 @@ import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPT
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import java.lang.ref.WeakReference
 
 private lateinit var exploderButtonMethodRef : WeakReference<MutableMethod>
@@ -25,8 +29,17 @@ private var exploderButtonInsertRegister = -1
 
 fun addPlayerBottomButton(descriptor: String) {
     exploderButtonMethodRef.get()?.apply {
+        // Patches that run after the hook can add instructions earlier in this method,
+        // which moves the hook. Insert after the last hook call instead of a stored index.
+        exploderButtonInsertIndex = indexOfFirstInstructionReversedOrThrow {
+            opcode == Opcode.INVOKE_STATIC && getReference<MethodReference>()?.let {
+                it.parameterTypes.singleOrNull()?.toString() == "Landroid/view/View;" &&
+                        (it.name == "initializeButton" || it.name == "fixMinimalMiniplayerFullscreenButtonTint")
+            } == true
+        } + 1
+
         addInstruction(
-            exploderButtonInsertIndex++,
+            exploderButtonInsertIndex,
             "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V"
         )
     }
