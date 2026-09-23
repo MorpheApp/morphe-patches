@@ -15,10 +15,10 @@ public interface ContextInterface {
     StringBuilder patch_getPathBuilder();
     String patch_getIdentifier();
     Integer patch_getHeightConstraint();
-    Object get_horizontalCollectionSwipeProtector();
+    Object patch_getHorizontalCollectionSwipeProtector();
 
     default boolean isHomeFeedOrRelatedVideo() {
-        return get_horizontalCollectionSwipeProtector() == null;
+        return patch_getHorizontalCollectionSwipeProtector() == null;
     }
     default boolean isSubscriptionOrLibrary() {
         return patch_getHeightConstraint() == null;

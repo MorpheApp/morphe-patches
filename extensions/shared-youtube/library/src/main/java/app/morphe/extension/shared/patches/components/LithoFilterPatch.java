@@ -120,7 +120,7 @@ public final class LithoFilterPatch {
                 continue;
             }
 
-            for (String pattern : group.filters) {
+            for (CharSequence pattern : group.filters) {
                 pathSearchTree.addPattern(pattern, (textSearched, matchedStartIndex,
                                                     matchedLength, callbackParameter) -> {
                             if (!group.isEnabled()) return false;

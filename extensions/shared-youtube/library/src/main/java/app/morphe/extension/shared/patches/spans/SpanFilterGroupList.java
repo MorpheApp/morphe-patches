@@ -24,7 +24,7 @@ public abstract class SpanFilterGroupList<V, T extends SpanFilterGroup<V>> imple
     private final TrieSearch<V> search = createSearchGraph();
 
     @SafeVarargs
-    public final void addAll(final T... groups) {
+    public final void addAll(T... groups) {
         filterGroups.addAll(Arrays.asList(groups));
 
         for (T group : groups) {

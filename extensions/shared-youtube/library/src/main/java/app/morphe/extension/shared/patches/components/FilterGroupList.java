@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.patches.components;
 
 import androidx.annotation.NonNull;
@@ -11,10 +21,10 @@ import java.util.function.Consumer;
 
 import app.morphe.extension.shared.TrieSearch;
 
-public abstract class FilterGroupList<V extends S, S, T extends FilterGroup<V>> implements Iterable<T> {
+public abstract class FilterGroupList<V, T extends FilterGroup<V>> implements Iterable<T> {
 
     private final List<T> filterGroups = new ArrayList<>();
-    private final TrieSearch<S> search = createSearchGraph();
+    private final TrieSearch<V> search = createSearchGraph();
 
     @SafeVarargs
     public final void addAll(final T... groups) {
@@ -61,5 +71,5 @@ public abstract class FilterGroupList<V extends S, S, T extends FilterGroup<V>> 
 
     }
 
-    protected abstract TrieSearch<S> createSearchGraph();
+    protected abstract TrieSearch<V> createSearchGraph();
 }

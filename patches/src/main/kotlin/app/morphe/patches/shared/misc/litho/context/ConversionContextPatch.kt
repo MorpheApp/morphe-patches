@@ -112,7 +112,7 @@ internal fun createConversionContextPatch(
                     stringBuilderField
                 ),
                 Triple(
-                    "get_horizontalCollectionSwipeProtector",
+                    "patch_getHorizontalCollectionSwipeProtector",
                     "Ljava/lang/Object;",
                     horizontalSwipeField
                 ),

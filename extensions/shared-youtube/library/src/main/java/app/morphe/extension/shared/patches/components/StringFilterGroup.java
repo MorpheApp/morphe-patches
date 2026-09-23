@@ -10,23 +10,19 @@ package app.morphe.extension.shared.patches.components;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 
-public class StringFilterGroup extends FilterGroup<String> {
+public class StringFilterGroup extends FilterGroup<CharSequence> {
 
-    public StringFilterGroup(final BooleanSetting setting, final String... filters) {
+    public StringFilterGroup(BooleanSetting setting, String... filters) {
         super(setting, filters);
     }
 
     @Override
-    public FilterGroupResult check(final String string) {
-        return check((CharSequence) string);
-    }
-
-    public FilterGroupResult check(final CharSequence text) {
+    public FilterGroupResult check(CharSequence text) {
         int matchedIndex = -1;
         int matchedLength = 0;
         //noinspection SizeReplaceableByIsEmpty
         if (isEnabled() && text.length() != 0) {
-            for (String pattern : filters) {
+            for (CharSequence pattern : filters) {
                 final int indexOf = Utils.indexOf(text, pattern);
                 if (indexOf >= 0) {
                     matchedIndex = indexOf;
