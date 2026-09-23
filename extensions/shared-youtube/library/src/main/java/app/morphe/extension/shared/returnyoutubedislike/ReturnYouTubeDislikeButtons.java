@@ -151,12 +151,12 @@ public final class ReturnYouTubeDislikeButtons {
 
     /**
      * The count of the segmented button is drawn by the layout engine and not by the text view
-     * beside it, so its color cannot be changed. YouTube uses the color of that view, while
-     * YouTube Music uses the app foreground color because its view can report black incorrectly.
+     * beside it, so its color cannot be changed. YouTube uses the color of that view.
+     * YouTube Music's segmented player control uses a light foreground, so its count is white.
      */
     private static int oldBarCountColor(View host) {
         if (useAppForegroundForSegmentedCount) {
-            return ThemeUtils.getAppForegroundColor();
+            return Color.WHITE;
         }
         TextView text = barTextOf(barOf(host), 0);
         return text == null ? ThemeUtils.getAppForegroundColor() : text.getCurrentTextColor();
