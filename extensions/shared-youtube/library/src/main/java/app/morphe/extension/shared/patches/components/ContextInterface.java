@@ -7,14 +7,20 @@
 
 package app.morphe.extension.shared.patches.components;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 /**
  * Interface to use obfuscated methods.
  */
 public interface ContextInterface {
-    // Method is added during patching.
-    StringBuilder patch_getPathBuilder();
+    @Nullable
     String patch_getIdentifier();
+    @NonNull
+    StringBuilder patch_getPathBuilder();
+    @Nullable
     Integer patch_getHeightConstraint();
+    @Nullable
     Object patch_getHorizontalCollectionSwipeProtector();
 
     default boolean isHomeFeedOrRelatedVideo() {
