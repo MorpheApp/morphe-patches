@@ -108,6 +108,11 @@ public final class ReturnYouTubeDislikeButtons {
      */
     private static volatile int oldBarCountStartMargin = Dim.dp(9);
     private static final int OLD_BAR_COUNT_END_MARGIN = Dim.dp(5);
+    /**
+     * Maximum gap between the animated like half and the untagged dislike half.
+     * Allows for Litho rounding the nominal 1dp separation above Dim.dp(1).
+     */
+    private static final int UNTAGGED_DISLIKE_MAX_GAP = Dim.dp(2);
 
     /**
      * Nothing identifies the button, since the whole bar is a single Litho component, so it is
@@ -378,8 +383,8 @@ public final class ReturnYouTubeDislikeButtons {
 
     /**
      * @return If the host is the dislike half of a segmented button: a single icon, widened by the
-     *         margin, beside the like button with its animated icon. The like button is found by
-     *         its place and not by the child order, which a like moves it to the end of.
+     *         margin, immediately beside the like button with its animated icon. The like button is
+     *         found by its place and not by the child order, which a like moves it to the end of.
      */
     private static boolean isSegmentedDislikeButton(ComponentHost host) {
         if (!host.isClickable() || host.getWidth() <= host.getHeight()
@@ -393,14 +398,28 @@ public final class ReturnYouTubeDislikeButtons {
             if (sibling == host) {
                 continue;
             }
-            final boolean before = rightToLeft
-                    ? sibling.getLeft() >= host.getRight()
-                    : sibling.getRight() <= host.getLeft();
-            if (before && hasAnimatedIcon(sibling, 0)) {
+            if (isImmediatelyBeside(host.getLeft(), host.getRight(),
+                    sibling.getLeft(), sibling.getRight(),
+                    rightToLeft, UNTAGGED_DISLIKE_MAX_GAP)
+                    && hasAnimatedIcon(sibling, 0)) {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * @return If the sibling sits against this host on the side of the like button, no farther
+     *         than {@code maxGapPx}. Overlap and a sibling farther along the row do not qualify.
+     *         Edges are used instead of child order.
+     */
+    private static boolean isImmediatelyBeside(int hostLeft, int hostRight,
+            int siblingLeft, int siblingRight,
+            boolean rightToLeft, int maxGapPx) {
+        final int gap = rightToLeft
+                ? siblingLeft - hostRight
+                : hostLeft - siblingRight;
+        return gap >= 0 && gap <= maxGapPx;
     }
 
     private static boolean hasAnimatedIcon(View view, int depth) {
