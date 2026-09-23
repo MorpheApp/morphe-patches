@@ -9,7 +9,6 @@ package app.morphe.patches.shared.misc.lottie
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.anyInstruction
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -45,6 +44,24 @@ internal object LottieCompositionFactoryFromJsonInputStreamFingerprint : Fingerp
     parameters = listOf("Ljava/io/InputStream;", "Ljava/lang/String;"),
     returnType = "L",
     filters = listOf(
-        anyInstruction(literal(2), literal(3))
+        // The task and not the composition the synchronous method of the same signature returns.
+        // Older Lottie versions cache the task without the Runnable.
+        anyInstruction(
+            methodCall(
+                definingClass = "this",
+                parameters = listOf(
+                    "Ljava/lang/String;",
+                    "Ljava/util/concurrent/Callable;"
+                )
+            ),
+            methodCall(
+                definingClass = "this",
+                parameters = listOf(
+                    "Ljava/lang/String;",
+                    "Ljava/util/concurrent/Callable;",
+                    "Ljava/lang/Runnable;"
+                )
+            )
+        )
     )
 )
