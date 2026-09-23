@@ -1047,6 +1047,7 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_miniplayer_screen_title">Mini-plejer</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodi izgled i ponašanje smanjenog video plejera</string>
   <string name="morphe_miniplayer_type_title">Tip mini-plejera</string>
+  <string name="morphe_miniplayer_hide_title_title">Sakrij naslov i kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućen</string>
   <string name="morphe_miniplayer_type_entry_1">Podrazumevan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalan</string>
@@ -1090,10 +1091,6 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_theme_color_change_foreground_summary">Koristi boju teme za tekst i ikonice</string>
   <string name="morphe_gradient_loading_screen_title">Omogući gradijentnu pozadinu ekrana učitavanja</string>
   <string name="morphe_gradient_loading_screen_summary">Prikazuje gradijentnu pozadinu na ekranu u toku učitavanja umesto jednobojne</string>
-  <string name="morphe_splash_screen_animation_style_title">Stil ekrana pokretanja</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Onemogućen</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Boja</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monohromatski</string>
   <string name="morphe_seekbar_custom_color_title">Omogući prilagođenu boju trake za premotavanje</string>
   <string name="morphe_seekbar_custom_color_primary_title">Boju trake za pretraživanje</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Postavi primarnu boju trake za napredak videa</string>

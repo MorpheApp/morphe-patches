@@ -1047,6 +1047,7 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_miniplayer_screen_title">Minispiller</string>
   <string name="morphe_miniplayer_screen_summary">Tilpass utseendet og oppførselen til den minimerte videospilleren</string>
   <string name="morphe_miniplayer_type_title">Minispiller type</string>
+  <string name="morphe_miniplayer_hide_title_title">Skjul tittel og kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktivert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1090,10 +1091,6 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_theme_color_change_foreground_summary">Bruk temafargen for tekst og ikoner</string>
   <string name="morphe_gradient_loading_screen_title">Aktiver gradientlasteskjerm</string>
   <string name="morphe_gradient_loading_screen_summary">Viser en gradientbakgrunn på lasteskjermen i stedet for en solid farge</string>
-  <string name="morphe_splash_screen_animation_style_title">Splash screen-stil</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Deaktivert</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Farge</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <string name="morphe_seekbar_custom_color_title">Aktiver tilpasset søkelinjeklarfarge</string>
   <string name="morphe_seekbar_custom_color_primary_title">Søylediagramfarge</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Angi primærfargen på videofremdriftslinjen</string>

@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Hoạt ảnh khởi động</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Tắt</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Màu</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Đơn sắc</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Khởi động lại để hoàn tất thiết lập</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

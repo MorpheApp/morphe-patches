@@ -1047,6 +1047,7 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_miniplayer_screen_summary">Personalizează aspectul și comportamentul miniplayerului mic</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
+  <string name="morphe_miniplayer_hide_title_title">Ascunde titlul și canalul</string>
   <string name="morphe_miniplayer_type_entry_0">Dezactivat</string>
   <string name="morphe_miniplayer_type_entry_1">Implicit</string>
   <string name="morphe_miniplayer_type_entry_2">Minimă</string>
@@ -1090,10 +1091,6 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_theme_color_change_foreground_summary">Folosește culoarea temei pentru text și pictograme</string>
   <string name="morphe_gradient_loading_screen_title">Activează ecranul de încărcare gradient</string>
   <string name="morphe_gradient_loading_screen_summary">Afișează un fundal gradat pe ecranul de încărcare în loc de o culoare solidă</string>
-  <string name="morphe_splash_screen_animation_style_title">Stil ecran de pornire</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Dezactivat</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Culoare</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monocrom</string>
   <string name="morphe_seekbar_custom_color_title">Activează culoarea barei de căutare personalizate</string>
   <string name="morphe_seekbar_custom_color_primary_title">Culoarea barei de căutare</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Stabilește culoarea principală a barei de progres video</string>

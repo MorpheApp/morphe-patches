@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">앱 시작 애니메이션</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">사용 안함</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">컬러</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">흑백</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Анимация при стартиране</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Изключено</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Цвят</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Монохромен</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Рестартирайте, за да завършите настройката</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

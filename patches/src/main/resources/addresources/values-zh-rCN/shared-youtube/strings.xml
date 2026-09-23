@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">启动动画</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">已禁用</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">颜色</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">单色</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">重启以完成设置</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

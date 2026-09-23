@@ -1046,6 +1046,7 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_miniplayer_screen_title">Trình phát thu nhỏ</string>
   <string name="morphe_miniplayer_screen_summary">Tùy chỉnh giao diện và hành vi của trình phát thu nhỏ</string>
   <string name="morphe_miniplayer_type_title">Loại trình phát thu nhỏ</string>
+  <string name="morphe_miniplayer_hide_title_title">Ẩn tiêu đề và kênh</string>
   <string name="morphe_miniplayer_type_entry_0">Tắt</string>
   <string name="morphe_miniplayer_type_entry_1">Mặc định</string>
   <string name="morphe_miniplayer_type_entry_2">Tối giản</string>
@@ -1089,10 +1090,6 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_theme_color_change_foreground_summary">Sử dụng màu chủ đề cho văn bản và biểu tượng</string>
   <string name="morphe_gradient_loading_screen_title">Bật màn hình tải màu gradient</string>
   <string name="morphe_gradient_loading_screen_summary">Hiển thị nền gradient trên màn hình tải thay vì một màu sắc đồng nhất</string>
-  <string name="morphe_splash_screen_animation_style_title">Kiểu màn hình chờ</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Tắt</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Màu</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Đơn sắc</string>
   <string name="morphe_seekbar_custom_color_title">Bật tùy chỉnh màu thanh tiến trình</string>
   <string name="morphe_seekbar_custom_color_primary_title">Màu của thanh tiến trình</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Đặt màu chính cho thanh tiến trình video</string>

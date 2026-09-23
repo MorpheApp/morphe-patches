@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">غیرفعال</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">رنگی</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">تک‌رنگ</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">برای پایان راه‌اندازی، مجدداً راه‌اندازی کنید</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

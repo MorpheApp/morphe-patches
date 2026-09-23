@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Indítási animáció</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Kikapcsolva</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Színes</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokróm</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Indíts újra a beállítások befejezéséhez</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

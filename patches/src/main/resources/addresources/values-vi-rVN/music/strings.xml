@@ -460,6 +460,19 @@ Các bước:
   <string name="morphe_music_lyrics_use_ai_translation_title">Dịch tương thích OpenAI</string>
   <string name="morphe_music_lyrics_use_ai_translation_summary">Sử dụng API tương thích OpenAI tùy chỉnh để dịch và phiên âm thay vì Google Dịch</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">Cài đặt dịch AI</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Cấu hình điểm cuối API tương thích OpenAI để dịch lời bài hát và phiên âm bằng AI.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL điểm cuối API (ví dụ: https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">Khóa API (để trống để truy cập ẩn danh)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">Tên mô hình (ví dụ: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Đã lưu cài đặt dịch AI</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">Không thể kết nối tới điểm cuối AI. Vui lòng kiểm tra cài đặt của bạn.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Đã đặt lại cài đặt dịch AI</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">Đã cấu hình</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">Chạm để cấu hình</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">URL cơ sở không được để trống</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">URL cơ sở phải bắt đầu bằng http:// hoặc https://</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">Tên mô hình không được để trống</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Đang kiểm tra kết nối…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Vô hiệu hóa biểu tượng đậm</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Khôi phục các tab Trình phát, Tiếp theo, Lời bài hát và Liên quan</string>

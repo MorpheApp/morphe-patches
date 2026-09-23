@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">لەکارخراو</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">ڕەنگ</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monochrome</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">دەستپێکردنەوە بۆ تەواوکردنی ئامادەکردن</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

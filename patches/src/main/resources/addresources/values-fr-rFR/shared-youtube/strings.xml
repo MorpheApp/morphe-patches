@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animation de démarrage</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Désactivé</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Coloré</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monochrome</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Redémarrez pour terminer la configuration</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

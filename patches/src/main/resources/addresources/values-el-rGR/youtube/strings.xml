@@ -1032,6 +1032,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">Ελαχιστοποιημένη οθόνη αναπαραγωγής</string>
   <string name="morphe_miniplayer_screen_summary">Προσαρμόστε την εμφάνιση και τη συμπεριφορά του μικρογραφικού αναπαραγωγέα βίντεο</string>
   <string name="morphe_miniplayer_type_title">Τύπος ελαχιστοποιημένης οθόνης αναπαραγωγής</string>
+  <string name="morphe_miniplayer_hide_title_title">Απόκρυψη τίτλου και καναλιού</string>
   <string name="morphe_miniplayer_type_entry_0">Απενεργοποιημένη</string>
   <string name="morphe_miniplayer_type_entry_1">Προεπιλογή</string>
   <string name="morphe_miniplayer_type_entry_2">Μινιμαλιστική</string>
@@ -1075,10 +1076,6 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_change_foreground_summary">Ορίστε το χρώμα φόντου του φωτεινού θέματος</string>
   <string name="morphe_gradient_loading_screen_title">Διαβάθμιση οθόνης φόρτωσης</string>
   <string name="morphe_gradient_loading_screen_summary">Εμφανίζει ένα διαβαθμισμένο φόντο στην οθόνη φόρτωσης αντί για ένα συμπαγές χρώμα</string>
-  <string name="morphe_splash_screen_animation_style_title">Στυλ οθόνης εκκίνησης</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Απενεργοποιημένη</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Χρωματιστή</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Μονόχρωμο</string>
   <string name="morphe_seekbar_custom_color_title">Προσαρμοσμένο χρώμα γραμμής προόδου</string>
   <string name="morphe_seekbar_custom_color_primary_title">Χρώμα γραμμής προόδου</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Ορίστε το κύριο χρώμα της γραμμής προόδου του βίντεο</string>

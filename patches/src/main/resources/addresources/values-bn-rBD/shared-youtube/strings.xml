@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">স্টার্টআপ অ্যানিমেশন</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">বন্ধ রাখুন</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">রং</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">একরঙা</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">সেটআপ সম্পন্ন করতে রিস্টার্ট করুন</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

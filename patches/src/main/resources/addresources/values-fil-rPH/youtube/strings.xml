@@ -1089,10 +1089,6 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_theme_color_change_foreground_summary">Gamitin ang kulay ng tema para sa teksto at mga icon.\',\'key\':\'morphe_theme_color_change_foreground_summary</string>
   <string name="morphe_gradient_loading_screen_title">I-enable ang gradient loading screen</string>
   <string name="morphe_gradient_loading_screen_summary">Ipinapakita ang gradient background sa loading screen sa halip na solid color</string>
-  <string name="morphe_splash_screen_animation_style_title">Estilo ng splash screen</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Nakapatay</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Kulay</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochrome</string>
   <string name="morphe_seekbar_custom_color_title">I-enable ang custom seekbar color</string>
   <string name="morphe_seekbar_custom_color_primary_title">Seekbar color</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Itakda ang pangunahing kulay ng video progress bar</string>

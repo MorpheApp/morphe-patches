@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Beochan tosaithe</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Díchumasaithe</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Dath</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monacrómach</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

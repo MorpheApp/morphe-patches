@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Ræsingarhreyfimynd</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Óvirkt</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Litur</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Einlit</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Endurræstu til að lokar á uppsetninguna</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
