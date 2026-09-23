@@ -1064,20 +1064,21 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
             // Removing channel tabs shifts the remaining tabs,
             // so the index of the tab to select must be remapped.
-            val selectTabIndex = indexOfFirstInstructionReversedOrThrow(
-                methodCall(
-                    definingClass = parameterTypes.first().toString(),
-                    parameters = listOf("I"),
-                    returnType = "V"
-                )
-            )
-            val selectTabRegister = getInstruction<FiveRegisterInstruction>(selectTabIndex).registerD
+            // The tab is selected by a call on the first parameter that is given the index
+            // parameter as its first argument. Its other parameters differ between versions.
+            val selectedIndexRegister = implementation!!.registerCount - 1
+            val selectTabIndex = indexOfFirstInstructionReversedOrThrow {
+                val reference = getReference<MethodReference>()
+                reference?.definingClass == parameterTypes.first().toString()
+                        && reference.parameterTypes.firstOrNull()?.toString() == "I"
+                        && (this as? FiveRegisterInstruction)?.registerD == selectedIndexRegister
+            }
 
             addInstructions(
                 selectTabIndex,
                 """
-                    invoke-static { v$selectTabRegister }, $LAYOUT_COMPONENTS_FILTER->getChannelTabSelectedIndex(I)I
-                    move-result v$selectTabRegister
+                    invoke-static { v$selectedIndexRegister }, $LAYOUT_COMPONENTS_FILTER->getChannelTabSelectedIndex(I)I
+                    move-result v$selectedIndexRegister
                 """
             )
 
