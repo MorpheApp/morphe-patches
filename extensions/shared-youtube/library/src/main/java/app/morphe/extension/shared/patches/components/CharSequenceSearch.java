@@ -7,14 +7,14 @@ package app.morphe.extension.shared.patches.components;
 public final class CharSequenceSearch {
     private CharSequenceSearch() {}
 
-    public static boolean contains(CharSequence text, String pattern) {
+    public static boolean contains(CharSequence text, CharSequence pattern) {
         return indexOf(text, pattern) >= 0;
     }
 
     /**
      * Same result as {@link String#startsWith(String)}.
      */
-    public static boolean startsWith(CharSequence text, String prefix) {
+    public static boolean startsWith(CharSequence text, CharSequence prefix) {
         int prefixLength = prefix.length();
         if (prefixLength == 0) {
             return true;
@@ -53,22 +53,25 @@ public final class CharSequenceSearch {
     /**
      * Same result as {@code Utils.startsWithAny(String, String...)}.
      */
-    public static boolean startsWithAny(CharSequence text, String... prefixes) {
+    public static boolean startsWithAny(CharSequence text, CharSequence... prefixes) {
+        //noinspection SizeReplaceableByIsEmpty
         if (text == null || text.length() == 0) {
             return false;
         }
-        for (String prefix : prefixes) {
-            if (prefix != null && !prefix.isEmpty() && startsWith(text, prefix)) {
+        for (CharSequence prefix : prefixes) {
+            //noinspection SizeReplaceableByIsEmpty
+            if (prefix != null && prefix.length() > 0 && startsWith(text, prefix)) {
                 return true;
             }
         }
+        String foo = null;
         return false;
     }
 
     /**
      * Same result as {@link String#indexOf(String)} for {@code fromIndex == 0}.
      */
-    public static int indexOf(CharSequence text, String pattern) {
+    public static int indexOf(CharSequence text, CharSequence pattern) {
         int patternLength = pattern.length();
         if (patternLength == 0) {
             return 0;
