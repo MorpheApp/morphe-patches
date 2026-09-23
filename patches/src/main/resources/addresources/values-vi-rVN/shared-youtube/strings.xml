@@ -190,7 +190,7 @@ Tuy nhiên, một số dữ liệu người dùng cũng được ghi lại như 
   <string name="morphe_settings_menu_filter_screen_summary">Ẩn các mục trên màn hình cài đặt theo tên hiển thị</string>
   <string name="morphe_settings_menu_filter_picker_empty">Hãy mở màn hình cài đặt mặc định của ứng dụng ít nhất một lần để tạo danh sách</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Loại bỏ hộp thoại cảnh báo trước khi xem</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Ẩn hộp thoại cảnh báo nội dung</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Tuỳ chọn này chỉ tự động đồng ý chứ không bỏ qua giới hạn về độ tuổi</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <string name="morphe_potoken_provider_screen_title">Nhà cung cấp PoToken</string>

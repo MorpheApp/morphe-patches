@@ -71,6 +71,7 @@ internal fun createConversionContextPatch(
         }
 
         // Replace toString() to only include information patches care about.
+        // Edit: This change is no longer needed as toString() is no longer called on the context.
         toStringMethod.addInstructionsWithLabels(
             0,
             """
@@ -111,7 +112,7 @@ internal fun createConversionContextPatch(
                     stringBuilderField
                 ),
                 Triple(
-                    "get_horizontalCollectionSwipeProtector",
+                    "patch_getHorizontalCollectionSwipeProtector",
                     "Ljava/lang/Object;",
                     horizontalSwipeField
                 ),

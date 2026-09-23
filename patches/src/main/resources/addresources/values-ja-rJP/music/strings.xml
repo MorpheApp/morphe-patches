@@ -358,8 +358,6 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_section_overlay_title">オーバーレイ</string>
   <string name="morphe_music_lyrics_section_sync_title">同期</string>
   <string name="morphe_music_lyrics_section_about_title">このフィルタについて</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">▲/▼ をタップして優先順位を設定し、ボックスをタップして各プロバイダーを有効または無効にします</string>
   <string name="morphe_music_lyrics_source_all_disabled">すべてのプロバイダーが無効です — 内蔵歌詞と埋め込み歌詞</string>
   <string name="morphe_music_lyrics_source_reset_title">プロバイダーの順序をリセットしますか？</string>
   <string name="morphe_music_lyrics_source_reset_message">プロバイダーを既定の優先順位に戻します</string>
@@ -396,9 +394,8 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl が無効です。もう一度お試しください</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl が無効です。値を確認してもう一度お試しください</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] ユーザートークンの値をコピーしてください</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch はトークンなしで動作するため、ここは空欄のままでも問題ありません。
-
-自分のアカウントを使用する場合にのみトークンを入力してください。トークンは Musixmatch の Android アプリから取得する必要があります。musixmatch.com のトークンは廃止されたデスクトップ クライアント用のものであり、API に拒否されます"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">トークンを追加するのは、自分のアカウントを使用する場合のみです。これは Musixmatch Android アプリから取得する必要があります: musixmatch.com からコピーしたトークンは廃止されたデスクトップクライアント用であり、API はそれらを拒否します</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch はトークンなしでも動作するため、このフィールドは空のままで構いません</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">ユーザートークンが無効です。もう一度お試しください</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token 保存済み</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token 削除済み</string>
@@ -413,9 +410,9 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_show_copy_button_title">コピーボタンを表示</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">オフにした行をハイライトする</string>
   <string name="morphe_music_lyrics_show_translate_button_title">翻訳ボタンを表示</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">カラオケ行をハイライトする</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">プロバイダーの翻訳、Google 翻訳、または OpenAI 互換 API を使用して歌詞を翻訳します</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">ローマ字化ボタンを表示</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">プロバイダーのローマ字化またはGoogle Translate […] ボタンを使用して歌詞をローマ字化</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">プロバイダーのローマ字表記、Google 翻訳、または OpenAI 互換 API を使用して歌詞をローマ字化します</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">更新ボタンを表示</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">タップすると次の歌詞候補に切り替わります; \"Saved\"</string>
   <string name="morphe_music_lyrics_saved">保存しました</string>
@@ -457,7 +454,7 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_copied">クリップボードにコピーしました</string>
   <string name="morphe_music_lyrics_refreshing">更新中</string>
   <string name="morphe_music_lyrics_refreshed">更新済み</string>
-  <string name="morphe_music_lyrics_about_summary">"歌詞はタイトルとアーティストで検索されます。[…] 曲のメタデータを編集すると、より良い結果が得られる場合があります"</string>
+  <string name="morphe_music_lyrics_about_summary">"歌詞はタイトルとアーティストで照合されます。通常とは異なるメタデータでは、何も見つからないか、間違ったバージョンが見つかる可能性があります。更新を使用してバージョンを切り替えてください。* が付いているプロバイダーはトークンが必要です。有効なすべてのプロバイダーが常に指定された順序で要求されるわけではなく、応答速度に基づいて応答します。"</string>
   <string name="morphe_music_lyrics_hide_info_title">この歌詞を編集</string>
   <string name="morphe_music_lyrics_hide_info_summary">この歌詞を編集</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">この歌詞を編集</string>

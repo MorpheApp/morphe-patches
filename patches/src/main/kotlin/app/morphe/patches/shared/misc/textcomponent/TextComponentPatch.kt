@@ -17,6 +17,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.LithoSpannableStringCreationFingerprint
 import app.morphe.patches.shared.SpannableStringBuilderFingerprint
+import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.shared.TextComponentConstructorFingerprint
 import app.morphe.patches.shared.TextComponentFeatureFlagFingerprint
 import app.morphe.patches.shared.TextComponentLookupFingerprint
@@ -180,7 +181,7 @@ internal fun hookSpannableString(
         addInstructions(
             spannedIndex,
             """
-                invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(Ljava/lang/Object;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                 move-result-object v$spannedRegister
             """
         )
@@ -188,7 +189,7 @@ internal fun hookSpannableString(
     } else {
         addInstruction(
             spannedIndex++,
-            "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(Ljava/lang/Object;Ljava/lang/CharSequence;)V"
+            "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)V"
         )
     }
 }

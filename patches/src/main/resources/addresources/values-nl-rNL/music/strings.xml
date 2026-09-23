@@ -358,8 +358,6 @@ Om ervoor te zorgen dat scrobbling tijdens het afspelen op de achtergrond wordt 
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisatie</string>
   <string name="morphe_music_lyrics_section_about_title">Over</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tik op ▲/▼ om de prioriteitsvolgorde in te stellen en gebruik het vakje om elke provider in of uit te schakelen.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle providers uitgeschakeld — ingebouwde songteksten en ingesloten songteksten</string>
   <string name="morphe_music_lyrics_source_reset_title">Providerorder resetten?</string>
   <string name="morphe_music_lyrics_source_reset_message">Providers terugzetten naar de standaardprioriteitsvolgorde</string>
@@ -391,9 +389,8 @@ Stappen:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl gewist</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl — controleer en probeer het opnieuw</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopieer de waarde van de gebruikerstoken</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch werkt zonder token, dus dit veld kan leeg blijven.
-
-Voeg alleen een token toe om je eigen account te gebruiken. Het moet afkomstig zijn uit de Musixmatch Android-app: tokens die van musixmatch.com zijn gekopieerd, horen bij de stopgezette desktopclient en de API weigert ze."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Voeg alleen een token toe om je eigen account te gebruiken. Het moet afkomstig zijn uit de Musixmatch Android-app: tokens die zijn gekopieerd van musixmatch.com behoren tot de uitgefaseerde desktopclient en de API weigert ze.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch werkt zonder token, dus dit veld mag leeg blijven.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">gebruikerstoken</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: gebruikerstoken opgeslagen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: gebruikerstoken […] opnieuw</string>
@@ -410,9 +407,9 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_copy_button_title">Toon Kopieer knop</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tik om originele songteksten als platte tekst te kopiëren; lang indrukken om het ruwe songtekstbronbestand op te slaan in Downloads</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Toon Vertaal knop</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Vertaal songteksten met behulp van providervertalingen of Google Translate</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Vertaal songteksten met behulp van providervertalingen, Google Translate of een OpenAI-compatibele API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Toon romaniseerknop</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniseer songteksten met behulp van provider-romanisatie of Google Translate […] knop</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniseer songteksten met behulp van providerromanisatie, Google Translate of een OpenAI-compatibele API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vernieuwknop weergeven</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om naar de volgende songtekstkandidaat te schakelen; […] :\"Markeer gesynchroniseerde woorden of lettergrepen\"</string>
   <string name="morphe_music_lyrics_saved">Opgeslagen</string>
@@ -454,7 +451,7 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_copied">Gekopieerd naar klembord</string>
   <string name="morphe_music_lyrics_refreshing">Vernieuwen</string>
   <string name="morphe_music_lyrics_refreshed">Vernieuwd</string>
-  <string name="morphe_music_lyrics_about_summary">"Songteksten worden opgezocht op titel en artiest van het nummer, […] Je kunt ook de vernieuwknop proberen om handmatig van versie te wisselen. […] Niet alle ingeschakelde providers worden altijd in jouw volgorde opgevraagd, maar reageren op basis van hun snelheid."</string>
+  <string name="morphe_music_lyrics_about_summary">"Songteksten worden op titel en artiest gematched; ongebruikelijke metadata kunnen niets of de verkeerde versie opleveren. Gebruik verversen om van versie te wisselen. Providers gemarkeerd met * vereisen een token. Niet alle ingeschakelde providers worden altijd in uw volgorde opgevraagd, maar reageren op basis van hun snelheid."</string>
   <string name="morphe_music_lyrics_hide_info_title">Verberg creditregel</string>
   <string name="morphe_music_lyrics_hide_info_summary">Verberg de creditregel die onder de songteksten wordt weergegeven</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Wissel vertaling en romanisatie om</string>

@@ -358,8 +358,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_overlay_title">ওভারলে</string>
   <string name="morphe_music_lyrics_section_sync_title">সিঙ্ক্রোনাইজেশন</string>
   <string name="morphe_music_lyrics_section_about_title">মর্ফ সম্পর্কে</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">অগ্রাধিকার ক্রম সেট করতে ▲/▼ আলতো চাপুন এবং প্রতিটি প্রদানকারী সক্রিয়/নিষ্ক্রিয় করতে বক্স ব্যবহার করুন।</string>
   <string name="morphe_music_lyrics_source_all_disabled">সব প্রদানকারী অক্ষম — বিল্ট-ইন লিরিক্স এবং এমবেড করা লিরিক্স</string>
   <string name="morphe_music_lyrics_source_reset_title">প্রদানকারীর ক্রম পুনরায় সেট করবেন?</string>
   <string name="morphe_music_lyrics_source_reset_message">প্রদানকারীদের ডিফল্ট অগ্রাধিকার ক্রমে পুনরুদ্ধার করুন</string>
@@ -396,9 +394,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: অবৈধ arl — অনুগ্রহ করে পরীক্ষা করে আবার চেষ্টা করুন</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] ব্যবহারকারীর টোকেনের মান কপি করুন</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch টোকেন ছাড়াই কাজ করে, তাই এই ক্ষেত্রটি খালি রাখা যেতে পারে।
-
-শুধুমাত্র আপনার নিজস্ব অ্যাকাউন্ট ব্যবহার করার জন্য একটি টোকেন যোগ করুন। এটি Musixmatch অ্যান্ড্রয়েড অ্যাপ থেকে আসতে হবে: musixmatch.com থেকে কপি করা টোকেনগুলো অবসরপ্রাপ্ত ডেস্কটপ ক্লায়েন্টের এবং API সেগুলো গ্রহণ করে না।"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">একটি টোকেন যোগ করুন শুধুমাত্র আপনার নিজের অ্যাকাউন্ট ব্যবহার করার জন্য। এটি অবশ্যই Musixmatch Android অ্যাপ থেকে আসতে হবে: musixmatch.com থেকে কপি করা টোকেনগুলো অপ্রচলিত ডেস্কটপ ক্লায়েন্টের টোকেন, এবং API সেগুলি প্রত্যাখ্যান করে।</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch টোকেন ছাড়াই কাজ করে, তাই এই ক্ষেত্রটি খালি রাখা যেতে পারে।</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ব্যবহারকারীর টোকেন অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: ইউজার টোকেন সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ব্যবহারকারীর টোকেন মুছে ফেলা হয়েছে</string>
@@ -415,9 +412,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">কপি বাটন দেখান</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">মূল লিরিক্স প্লেইন টেক্সট হিসেবে কপি করতে আলতো চাপুন; raw লিরিক্স সোর্স ফাইল ডাউনলোডে সংরক্ষণ করতে দীর্ঘ চাপ দিন</string>
   <string name="morphe_music_lyrics_show_translate_button_title">অনুবাদ বাটন দেখান</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">প্রদানকারীর অনুবাদ বা Google Translate ব্যবহার করে লিরিক্স অনুবাদ করুন</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">প্রদানকারীর অনুবাদ, Google Translate, অথবা একটি OpenAI-সামঞ্জস্যপূর্ণ API ব্যবহার করে গানের কথা অনুবাদ করুন।</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanize বাটন দেখান</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">প্রদানকারীর রোমানাইজেশন বা Google Translate ব্যবহার করে লিরিক্স রোমানাইজ করুন […] বাটন</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">প্রদানকারীর রোমানাইজেশন, Google Translate, অথবা একটি OpenAI-সামঞ্জস্যপূর্ণ API ব্যবহার করে গানের কথা রোমানাইজ করুন।</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">রিফ্রেশ বোতাম দেখান</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">পরবর্তী লিরিক্স প্রার্থীতে যেতে আলতো চাপুন; […]</string>
   <string name="morphe_music_lyrics_saved">সংরক্ষিত হয়েছে</string>
@@ -459,7 +456,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_copied">ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
   <string name="morphe_music_lyrics_refreshing">লিরিক্স খোঁজার সময় শিরোনাম, শিল্পী এবং অ্যালবাম অনুসারে একটি ট্র্যাক খুঁজে পাওয়া যায় না, অথবা ভুল সংস্করণ পাওয়া যায়। আপনি ম্যানুয়ালি সঠিক সংস্করণটি নির্বাচন করতে পারেন, অথবা অনুসন্ধানটি আবার চেষ্টা করতে পারেন।</string>
   <string name="morphe_music_lyrics_refreshed">ক্রেডিট লাইন লুকান</string>
-  <string name="morphe_music_lyrics_about_summary">"লিরিক্সের নিচে দেখানো ক্রেডিট লাইনটি লুকান"</string>
+  <string name="morphe_music_lyrics_about_summary">"গানের কথা শিরোনাম এবং শিল্পীর নাম দ্বারা মেলানো হয়; অস্বাভাবিক মেটাডেটা কিছুই খুঁজে নাও পেতে পারে বা ভুল সংস্করণ খুঁজে পেতে পারে। সংস্করণ পরিবর্তন করতে রিফ্রেশ ব্যবহার করুন। * চিহ্নিত প্রদানকারীদের একটি টোকেন প্রয়োজন। সক্রিয় করা সমস্ত প্রদানকারী সবসময় আপনার ক্রমে অনুরোধ করা হয় না, বরং তাদের গতির ভিত্তিতে সাড়া দেয়।"</string>
   <string name="morphe_music_lyrics_hide_info_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>
   <string name="morphe_music_lyrics_hide_info_summary">ON রোমানাইজেশনকে লিরিক্সের নিচে এবং অনুবাদকে উপরে রাখে; OFF রোমানাইজেশনকে উপরে এবং অনুবাদকে নিচে রাখে</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>

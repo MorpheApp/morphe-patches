@@ -24,6 +24,7 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ExternalDownloaderPreference;
@@ -57,11 +58,12 @@ public final class DownloadsPatch {
      * Injection point.
      * Usually is called of the main thread.
      */
-    public static void onLithoTextLoaded(Object conversionContext, CharSequence original) {
+    public static void onLithoTextLoaded(ContextInterface conversionContext, CharSequence original) {
         try {
-            if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get() &&
-                    downloadButtonLabel.isEmpty() &&
-                    conversionContext.toString().contains("music_download_button.")) {
+            if (SharedYouTubeSettings.EXTERNAL_DOWNLOADER_ACTION_BUTTON.get()
+                    && downloadButtonLabel.isEmpty()
+                    && Utils.contains(conversionContext.patch_getPathBuilder(),
+                    "music_download_button.")) {
                 downloadButtonLabel = original.toString();
                 Logger.printDebug(() -> "Found download button label: " + downloadButtonLabel);
             }

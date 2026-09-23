@@ -79,6 +79,7 @@ public final class ReturnYouTubeDislikeButtons {
         oldBarCountStartMargin = Dim.dp(startMarginDp);
         oldBarCountPaint = null;
         useAppForegroundForSegmentedCount = true;
+        findsUntaggedDislikeButton = true;
     }
 
     @Nullable
@@ -314,7 +315,8 @@ public final class ReturnYouTubeDislikeButtons {
                     host.getOverlay().remove(existing);
                     iconButtonCounts.remove(host);
                 }
-                if (accessibilityId == null && description != null && segmentedMarginGiven) {
+                if (accessibilityId == null && description != null
+                        && findsUntaggedDislikeButton && segmentedMarginGiven) {
                     // Laid out and mounted only after this.
                     host.post(() -> addCountToUntaggedDislikeButton(host));
                 }
@@ -347,6 +349,12 @@ public final class ReturnYouTubeDislikeButtons {
      * needs to be found, since it tags neither of its buttons.
      */
     private static volatile boolean segmentedMarginGiven;
+
+    /**
+     * YouTube tags its dislike button, and a search by place there also matches the share and
+     * comment buttons of community posts, which sit beside a like button with an animated icon.
+     */
+    private static volatile boolean findsUntaggedDislikeButton;
 
     private static void addCountToUntaggedDislikeButton(ComponentHost host) {
         try {

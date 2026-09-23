@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Morphe 설정을 기본값으로 초기화합니다</string>
   <string name="morphe_settings_import_success">%d 개의 설정을 가져왔습니다</string>
   <string name="morphe_settings_import_failure_parse">설정을 가져올 수 없습니다: %s</string>
+  <string name="morphe_settings_navigate_up">위로 이동</string>
   <string name="morphe_settings_search_hint">설정 검색</string>
   <string name="morphe_settings_search_no_results_title">\'%s\'에 대한 검색 결과가 없습니다</string>
   <string name="morphe_settings_search_no_results_summary">다른 키워드를 검색해 보세요</string>
   <string name="morphe_settings_search_recent_searches">최근 검색어</string>
   <string name="morphe_settings_search_remove_message">검색 기록에서 제거하시겠습니까?</string>
+  <string name="morphe_settings_search_remove">검색 기록에서 제거하시겠습니까</string>
   <string name="morphe_settings_search_clear_history">검색 기록 지우기</string>
   <string name="morphe_settings_search_clear_history_message">모든 검색 기록을 지우시겠습니까?</string>
   <string name="morphe_settings_search_tips_title">검색 팁</string>
@@ -201,8 +203,8 @@ MicroG를 최신 %2s 버전으로 업데이트하세요."</string>
 
 MicroG 앱 배터리 최적화를 비활성화(제한 없음)하더라도, 배터리 사용량에 부정적인 영향을 미치지 않습니다.
 
-앱 배터리 최적화를 비활성화(제한 없음)하려면 '계속하기' 버튼을 탭하세요."</string>
-  <string name="gms_core_dialog_continue_text">계속하기</string>
+앱 배터리 최적화를 비활성화(제한 없음)하려면 '계속' 버튼을 탭하세요."</string>
+  <string name="gms_core_dialog_continue_text">계속</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG 배터리 최적화 대화 상자 표시하기</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"이 설정을 비활성화하면 MicroG 배터리 최적화 대화 상자가 숨겨집니다
 

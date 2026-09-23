@@ -20,7 +20,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo Header</string>
   <string name="morphe_header_logo_entry_1">Bawaan</string>
-  <string name="morphe_header_logo_entry_3">Khusus</string>
+  <string name="morphe_header_logo_entry_3">Kustom</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Putar trek audio album</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
@@ -358,8 +358,6 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <string name="morphe_music_lyrics_section_overlay_title">Hamparan</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinkronisasi</string>
   <string name="morphe_music_lyrics_section_about_title">Tentang</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Ketuk ▲/▼ untuk mengatur urutan prioritas, dan kotak untuk mengaktifkan atau menonaktifkan setiap penyedia</string>
   <string name="morphe_music_lyrics_source_all_disabled">Semua penyedia dinonaktifkan — lirik bawaan dan lirik tersemat</string>
   <string name="morphe_music_lyrics_source_reset_title">Setel ulang urutan penyedia?</string>
   <string name="morphe_music_lyrics_source_reset_message">Kembalikan penyedia ke urutan prioritas bawaan</string>
@@ -396,9 +394,8 @@ Langkah-langkah:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl tidak valid. Silakan coba lagi.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl tidak valid — periksa kembali dan coba lagi</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch berfungsi tanpa token, jadi kolom ini bisa tetap kosong.
-
-Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal dari aplikasi Android Musixmatch: token yang disalin dari musixmatch.com milik klien desktop yang sudah tidak digunakan lagi dan API menolaknya."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal dari aplikasi Musixmatch Android: token yang disalin dari musixmatch.com milik klien desktop yang sudah pensiun dan API menolaknya.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch berfungsi tanpa token, jadi kolom ini bisa tetap kosong.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token pengguna disimpan</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token pengguna dihapus</string>
@@ -420,9 +417,9 @@ Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal d
   <string name="morphe_music_lyrics_show_copy_button_title">Tampilkan tombol Salin</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Ketuk untuk menyalin lirik asli sebagai teks biasa; tekan lama untuk menyimpan file sumber lirik mentah ke Unduhan.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tampilkan tombol Terjemahan</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Terjemahkan lirik menggunakan penyedia terjemahan atau Google Terjemahan</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Terjemahkan lirik menggunakan penyedia terjemahan, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanisasikan lirik menggunakan penyedia romanisasi atau romanisasi Google Terjemahan</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanisasikan lirik menggunakan penyedia romanisasi, Google Terjemahan, atau API yang kompatibel dengan OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk menonaktifkan lirik pihak ketiga sementara waktu dan menampilkan lirik bawaan</string>
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
@@ -464,7 +461,7 @@ Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal d
   <string name="morphe_music_lyrics_copied">Disalin ke papan klip</string>
   <string name="morphe_music_lyrics_refreshing">MediaSession</string>
   <string name="morphe_music_lyrics_refreshed">Segarkan</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirik dicari berdasarkan judul lagu dan artis, jadi lagu dengan metadata yang tidak biasa mungkin tidak menemukan apa pun, atau menemukan versi yang salah. Anda juga dapat mencoba tombol refresh untuk beralih versi secara manual. Jika tidak ditemukan lirik pihak ketiga, lirik bawaan atau yang disematkan akan ditampilkan sebagai gantinya. Penyedia yang ditandai dengan * memerlukan token untuk diaktifkan. Semua penyedia yang diaktifkan tidak selalu diminta dalam pesanan Anda, tetapi merespons berdasarkan kecepatan mereka"</string>
+  <string name="morphe_music_lyrics_about_summary">"Lirik dicocokkan berdasarkan judul dan artis, metadata yang tidak biasa mungkin tidak menemukan apa pun atau versi yang salah. Gunakan refresh untuk mengganti versi. Penyedia yang ditandai * memerlukan token. Semua penyedia yang diaktifkan tidak selalu diminta sesuai urutan Anda, tetapi merespons berdasarkan kecepatannya."</string>
   <string name="morphe_music_lyrics_hide_info_title">Sembunyikan baris kredit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sembunyikan baris kredit yang ditampilkan di bawah lirik</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tukar terjemahan dan romanisasi</string>

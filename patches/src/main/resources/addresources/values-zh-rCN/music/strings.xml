@@ -355,11 +355,9 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_keep_screen_on_title">查看歌词时保持屏幕常亮</string>
   <string name="morphe_music_lyrics_keep_screen_on_summary">防止在歌词面板打开时屏幕关闭</string>
   <string name="morphe_music_lyrics_section_service_title">歌词服务</string>
-  <string name="morphe_music_lyrics_section_overlay_title">悬浮</string>
+  <string name="morphe_music_lyrics_section_overlay_title">叠加层</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
   <string name="morphe_music_lyrics_section_about_title">关于</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">点按 ▲/▼ 以设置优先级顺序，点按复选框以启用或禁用每个歌词提供程序</string>
   <string name="morphe_music_lyrics_source_all_disabled">所有提供程序均已禁用 — 内置歌词与内嵌歌词</string>
   <string name="morphe_music_lyrics_source_reset_title">重置提供程序顺序？</string>
   <string name="morphe_music_lyrics_source_reset_message">将提供程序恢复为默认优先级顺序</string>
@@ -385,7 +383,7 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_spotify_token_toast_cleared">Spotify：sp_dc 已清除</string>
   <string name="morphe_music_spotify_token_toast_invalid">Spotify：sp_dc 无效——请检查后重试</string>
   <string name="morphe_music_apple_token_optional_hint">Apple Music 令牌是可选的。没有它时，将使用 Lyrically 作为后备方案。</string>
-  <string name="morphe_music_deezer_arl_title">Deezer […] 复制“arl”的值</string>
+  <string name="morphe_music_deezer_arl_title">Deezer ARL</string>
   <string name="morphe_music_deezer_arl_dialog_instruction">"粘贴来自 Deezer 的 arl cookie。
 
 步骤：
@@ -393,13 +391,12 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
 2. 打开 DevTools → 应用程序 → Cookie → deezer.com
 3. 复制 \"arl\" 的值"</string>
   <string name="morphe_music_deezer_arl_toast_saved">Deezer：arl 已保存</string>
-  <string name="morphe_music_deezer_arl_toast_cleared">[…] 重试</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl 已清除</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer：arl 无效——请检查后重试</string>
-  <string name="morphe_music_musixmatch_token_title">Musixmatch […] 复制用户令牌的值</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch 无需令牌即可使用，因此此字段可以留空。
-
-仅当使用自己的账户时才需要添加令牌。该令牌必须来自 Musixmatch Android 应用：从 musixmatch.com 复制的令牌属于已停用的桌面客户端，API 会拒绝这些令牌。"</string>
-  <string name="morphe_music_musixmatch_token_dialog_hint">用户 […] 重试</string>
+  <string name="morphe_music_musixmatch_token_title">Musixmatch 令牌</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">仅当使用您自己的帐户时才添加令牌。它必须来自 Musixmatch Android 应用：从 musixmatch.com 复制的令牌属于已停用的桌面客户端，API 会拒绝它们</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch 无需令牌即可使用，因此此字段可以留空</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">用户令牌</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch：用户 token 已保存</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch：用户 token 已清除</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch：用户 token 无效——请检查后重试</string>
@@ -420,27 +417,27 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_show_copy_button_title">显示复制按钮</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">点按以纯文本形式复制原始歌词；长按将原始歌词源文件保存到“下载”文件夹</string>
   <string name="morphe_music_lyrics_show_translate_button_title">显示翻译按钮</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">使用提供程序的翻译或 Google 翻译来翻译歌词</string>
-  <string name="morphe_music_lyrics_show_romanize_button_title">显示罗马化按钮</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">使用提供程序的罗马化或 Google 翻译[…]按钮</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">使用提供商翻译、Google 翻译或兼容 OpenAI 的 API 翻译歌词</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">显示音译按钮</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">使用提供商音译、Google 翻译或兼容 OpenAI 的 API 将歌词音译</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">显示刷新按钮</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">点按以切换下一个歌词候选项；[…] 高亮同步的单词或音节</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">点按可切换至下一个歌词候选项；长按可暂时禁用第三方歌词并显示原生歌词</string>
   <string name="morphe_music_lyrics_saved">已保存</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
-  <string name="morphe_music_lyrics_word_sync_summary">下载歌词</string>
-  <string name="morphe_music_lyrics_hide_played_title">下载歌词时自动保存</string>
-  <string name="morphe_music_lyrics_hide_played_summary">自动下载歌词</string>
-  <string name="morphe_music_lyrics_hide_unplayed_title">打开 / 关闭</string>
-  <string name="morphe_music_lyrics_hide_unplayed_summary">仅 Wi-Fi</string>
-  <string name="morphe_music_lyrics_mediasession_title">始终</string>
-  <string name="morphe_music_lyrics_miniplayer_title">从不</string>
-  <string name="morphe_music_lyrics_display_artist_first_title">询问式</string>
-  <string name="morphe_music_lyrics_display_artist_first_summary">后台更新</string>
-  <string name="morphe_settings_music_lyrics_metadata_title">电池优化</string>
-  <string name="morphe_music_lyrics_custom_regex_title">自动启动</string>
+  <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
+  <string name="morphe_music_lyrics_hide_played_title">隐藏已播歌词</string>
+  <string name="morphe_music_lyrics_hide_played_summary">隐藏当前播放行之上的歌词行</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">隐藏未播歌词</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">隐藏当前播放行之下的歌词行</string>
+  <string name="morphe_music_lyrics_mediasession_title">在锁屏上显示媒体通知卡片歌词</string>
+  <string name="morphe_music_lyrics_miniplayer_title">显示迷你播放器歌词</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">艺术家和标题显示顺序</string>
+  <string name="morphe_music_lyrics_display_artist_first_summary">在迷你播放器和媒体通知卡片中切换艺术家和标题的显示顺序。ON“艺术家-标题”和OFF“标题-艺术家”不影响歌词搜索</string>
+  <string name="morphe_settings_music_lyrics_metadata_title">过滤规则</string>
+  <string name="morphe_music_lyrics_custom_regex_title">元数据正则表达式</string>
   <string name="morphe_music_lyrics_custom_regex_summary">在查找歌词之前应用于曲目标题、艺人和专辑的正则表达式。留空以禁用。默认会移除常见干扰内容，如 \"Official Video\"、\"Remaster\" 和 \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">歌词过滤正则表达式</string>
-  <string name="morphe_music_lyrics_text_filter_summary">仅应用于原始歌词文本的正则表达式（不应用于翻译或罗马字）。留空以禁用</string>
+  <string name="morphe_music_lyrics_text_filter_summary">仅应用于原始歌词文本的正则表达式（不应用于翻译或音译）。留空以禁用</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">信息行标记</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">如果歌词被错误地过滤到底部，请调整或清除此项。以逗号分隔的标记：包含标记且后跟冒号的行会作为署名信息显示在底部。留空以禁用</string>
   <string name="morphe_music_lyrics_text_size_title">文本大小</string>
@@ -450,25 +447,25 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">来源：%s</string>
   <string name="morphe_music_lyrics_translated_by_google">由 Google 翻译</string>
-  <string name="morphe_music_lyrics_romanized_by_google">由 Google 提供罗马字</string>
+  <string name="morphe_music_lyrics_romanized_by_google">由 Google 提供音译</string>
   <string name="morphe_music_lyrics_translated_by_ai">由 %s 翻译</string>
   <string name="morphe_music_lyrics_romanized_by_ai">由 %s 音译</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">翻译</string>
-  <string name="morphe_music_lyrics_translation_language_title">翻译语言</string>
+  <string name="morphe_music_lyrics_translation_language_title">翻译目标语言</string>
   <string name="morphe_music_lyrics_translating">正在翻译…</string>
   <string name="morphe_music_lyrics_translate_failed">无法翻译歌词</string>
-  <string name="morphe_music_lyrics_romanize_hide">罗马字</string>
-  <string name="morphe_music_lyrics_romanizing">正在生成罗马字…</string>
-  <string name="morphe_music_lyrics_romanize_failed">无法为歌词生成罗马字</string>
+  <string name="morphe_music_lyrics_romanize_hide">已音译</string>
+  <string name="morphe_music_lyrics_romanizing">正在音译…</string>
+  <string name="morphe_music_lyrics_romanize_failed">无法为歌词生成音译</string>
   <string name="morphe_music_lyrics_copied">复制到剪贴板</string>
   <string name="morphe_music_lyrics_refreshing">正在刷新</string>
   <string name="morphe_music_lyrics_refreshed">已刷新</string>
-  <string name="morphe_music_lyrics_about_summary">"歌词是根据曲目标题和艺人查找的，因此元数据不常见的曲目可能找不到歌词，或找到错误的版本。你也可以尝试使用刷新按钮来手动切换版本。当找不到第三方歌词时，会显示内置或嵌入的歌词。标有 * 的提供方需要 token 才能启用。并非所有已启用的提供方都会按照你的顺序被请求，而是根据它们的速度进行响应"</string>
+  <string name="morphe_music_lyrics_about_summary">"歌词根据标题和艺术家进行匹配，异常的元数据可能导致找不到结果或匹配到错误的版本。使用刷新以切换版本。标有 * 的提供程序需要令牌。并非所有已启用的提供程序都会按您的顺序被请求，而是根据其速度进行响应。"</string>
   <string name="morphe_music_lyrics_hide_info_title">隐藏署名行</string>
   <string name="morphe_music_lyrics_hide_info_summary">隐藏显示在歌词下方的署名行</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和罗马字</string>
-  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时，罗马字在歌词下方、翻译在歌词上方；关闭时，罗马字在歌词上方、翻译在歌词下方</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和音译</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">开启时，音译在歌词下方、翻译在歌词上方；关闭时，音译在歌词上方、翻译在歌词下方</string>
   <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI 兼容翻译</string>
   <string name="morphe_music_lyrics_use_ai_translation_summary">使用自定义的 OpenAI 兼容 API 进行翻译和音译，而不是 Google 翻译</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI 翻译设置</string>

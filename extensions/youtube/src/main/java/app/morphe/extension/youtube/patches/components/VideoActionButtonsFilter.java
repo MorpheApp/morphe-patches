@@ -207,7 +207,7 @@ public final class VideoActionButtonsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -220,7 +220,7 @@ public final class VideoActionButtonsFilter extends Filter {
         } else if (matchedGroup == actionBarGroup) {
             if (Settings.HIDE_ACTION_BAR.get() || accessibilityGroupList.check(accessibility).isFiltered()) {
                 return true;
-            } else if (accessibility != null && accessibility.startsWith(ELEMENT_BUTTON_ID) && !path.contains(MORE_BUTTON_PATH)) {
+            } else if (accessibility != null && accessibility.startsWith(ELEMENT_BUTTON_ID) && !Utils.contains(path, MORE_BUTTON_PATH)) {
                 return bufferGroupList.check(buffer).isFiltered();
             }
             return false;

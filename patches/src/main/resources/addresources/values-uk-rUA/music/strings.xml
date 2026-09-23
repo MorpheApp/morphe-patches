@@ -358,8 +358,6 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_lyrics_section_overlay_title">Оверлей</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронізація</string>
   <string name="morphe_music_lyrics_section_about_title">Про сервіс</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Натисніть ▲/▼, щоб встановити порядок пріоритету, і позначку, щоб увімкнути або вимкнути кожного постачальника</string>
   <string name="morphe_music_lyrics_source_all_disabled">Усіх постачальників вимкнено - вбудовані тексти пісень і вбудовані субтитри</string>
   <string name="morphe_music_lyrics_source_reset_title">Скинути порядок постачальників?</string>
   <string name="morphe_music_lyrics_source_reset_message">Відновити типовий порядок пріоритету постачальників</string>
@@ -396,9 +394,8 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl очищено</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: недійсний arl - перевірте і спробуйте ще раз</string>
   <string name="morphe_music_musixmatch_token_title">Токен Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch працює без токена, тож це поле можна залишити порожнім.
-
-Додавайте токен лише для використання власного облікового запису. Він має бути отриманий із застосунку Musixmatch для Android: токени, скопійовані з musixmatch.com, належать застарілому десктопному клієнту, і API їх не приймає"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Додайте токен лише для використання власного облікового запису. Він має бути з додатка Musixmatch для Android: токени, скопійовані з musixmatch.com, належать застарілому десктопному клієнту, і API відхиляє їх.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch працює без токена, тому це поле можна залишити порожнім.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">токен користувача</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: токен користувача збережено</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: токен користувача очищено</string>
@@ -420,9 +417,9 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_lyrics_show_copy_button_title">Показати кнопку \"Копіювати\"</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Натисніть, щоб скопіювати оригінальний текст пісні як звичайний текст; натисніть і утримуйте, щоб зберегти файл вихідного тексту пісні у \"Завантаження\"</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Показати кнопку \"Перекласти\"</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Перекласти текст пісні за допомогою перекладів постачальника або Google Перекладача</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Перекладайте тексти пісень за допомогою перекладів від провайдера, Google Translate або API, сумісного з OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показати кнопку \"Романізувати\"</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Романізувати текст пісні за допомогою романізації постачальника або романізації Google Перекладача</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Романізуйте тексти пісень за допомогою романізації від провайдера, Google Translate або API, сумісного з OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показувати кнопку \"Оновити\"</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Натисніть, щоб перейти до наступного варіанта тексту пісні; натисніть і утримуйте, щоб тимчасово вимкнути сторонні тексти пісень і показати вбудований текст</string>
   <string name="morphe_music_lyrics_saved">Збережено</string>
@@ -464,7 +461,7 @@ YouTube Music 8.x - плавний перехід працює лише на в�
   <string name="morphe_music_lyrics_copied">Скопійовано</string>
   <string name="morphe_music_lyrics_refreshing">Оновлення</string>
   <string name="morphe_music_lyrics_refreshed">Оновлено</string>
-  <string name="morphe_music_lyrics_about_summary">"Тексти пісень шукаються за назвою треку та виконавцем, тож трек з нетиповими метаданими може нічого не знайти або знайти неправильну версію. Ви також можете спробувати кнопку оновлення, щоб вручну перемкнути версію. Якщо сторонні тексти пісень не знайдено, замість них показуються вбудовані тексти. Постачальники, позначені *, потребують токена для увімкнення. Усі увімкнені постачальники не завжди запитуються у вашому порядку, а відповідають залежно від їхньої швидкості"</string>
+  <string name="morphe_music_lyrics_about_summary">"Тексти пісень зіставляються за назвою та виконавцем, незвичайні метадані можуть нічого не знайти або знайти неправильну версію. Використовуйте оновлення, щоб перемкнути версії. Постачальники, позначені *, потребують токен. Усі ввімкнені постачальники не завжди запитуються у вашому порядку, а відповідають залежно від своєї швидкості."</string>
   <string name="morphe_music_lyrics_hide_info_title">Приховати рядок з інформацією про авторів</string>
   <string name="morphe_music_lyrics_hide_info_summary">Приховати рядок з інформацією про авторів, що показується під текстом пісні</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поміняти місцями переклад і романізацію</string>

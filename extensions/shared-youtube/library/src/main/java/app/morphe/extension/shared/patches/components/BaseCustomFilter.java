@@ -289,7 +289,7 @@ public abstract class BaseCustomFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -305,7 +305,7 @@ public abstract class BaseCustomFilter extends Filter {
 
         // Check for extra path components.
         for (String component : custom.extraPathComponents) {
-            if (!path.contains(component)) {
+            if (!Utils.contains(path, component)) {
                 return false;
             }
         }

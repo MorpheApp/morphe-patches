@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-22T20:06:56",
-  "description": "## [1.45.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.2...v1.45.0-dev.3) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* Reduce heap use from ConversionContext dumps and JS player cache ([#3120](https://github.com/MorpheApp/morphe-patches/issues/3120)) ([317fd56](https://github.com/MorpheApp/morphe-patches/commit/317fd56c1ecba41a7b928011a39e6a943ca9b07f))\n* **YouTube - Hide layout components:** Restore preview comment simplebox matcher ([#3130](https://github.com/MorpheApp/morphe-patches/issues/3130)) ([6e55325](https://github.com/MorpheApp/morphe-patches/commit/6e55325ddbbff9323206bda909b4a50b6d2ab178))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.45.0-dev.3/patches-1.45.0-dev.3.mpp",
+  "created_at": "2026-09-23T15:09:24",
+  "description": "## [1.45.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.4...v1.45.0-dev.5) (2026-09-23)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Playback speed:** Music videos do not play at 1x speed ([#3210](https://github.com/MorpheApp/morphe-patches/issues/3210)) ([1c7086d](https://github.com/MorpheApp/morphe-patches/commit/1c7086da6270a723da370f89440d70475f96c888))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.45.0-dev.5/patches-1.45.0-dev.5.mpp",
   "signature_download_url": "",
-  "version": "1.45.0-dev.3"
+  "version": "1.45.0-dev.5"
 }
