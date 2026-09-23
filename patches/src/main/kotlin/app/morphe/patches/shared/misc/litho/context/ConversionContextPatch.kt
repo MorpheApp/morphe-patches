@@ -12,7 +12,6 @@ package app.morphe.patches.shared.misc.litho.context
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.patch.BytecodePatch
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
@@ -28,9 +27,6 @@ const val EXTENSION_CONTEXT_INTERFACE =
 
 /**
  * Holds the mutable class def of the conversion context class after the patch has run.
- *
- * Only one variant of [createConversionContextPatch] runs per patching session (per target app),
- * so a session-scoped var is safe.
  */
 lateinit var conversionContextClassDef: MutableClass
     internal set
@@ -42,16 +38,10 @@ lateinit var conversionContextClassDef: MutableClass
  * abstract superclass in some versions), exposing helper methods that extension code can call to
  * read the identifier and the path-builder StringBuilder via obfuscation-safe names.
  *
- * @param sharedExtensionPatchDep The app-specific `sharedExtensionPatch` (ensures the extension
- *                                classes referenced by [EXTENSION_CONTEXT_INTERFACE] are present).
  */
-internal fun createConversionContextPatch(
-    sharedExtensionPatchDep: BytecodePatch,
-): BytecodePatch = bytecodePatch(
+val conversionContextPatch = bytecodePatch(
     description = "Hooks the method to use the conversion context in an extension."
 ) {
-    dependsOn(sharedExtensionPatchDep)
-
     execute {
         val toStringMethod: MutableMethod
         val stringBuilderField: FieldReference

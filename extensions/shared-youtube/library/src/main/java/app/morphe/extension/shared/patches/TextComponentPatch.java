@@ -8,7 +8,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
-package app.morphe.extension.youtube.patches;
+package app.morphe.extension.shared.patches;
 
 import android.text.SpannableString;
 import android.text.Spanned;

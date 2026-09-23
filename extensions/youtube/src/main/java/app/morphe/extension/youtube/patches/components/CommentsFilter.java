@@ -11,7 +11,7 @@
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.TextComponentPatch.newSpanUsingStylingOfAnotherSpan;
+import static app.morphe.extension.shared.patches.TextComponentPatch.newSpanUsingStylingOfAnotherSpan;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;

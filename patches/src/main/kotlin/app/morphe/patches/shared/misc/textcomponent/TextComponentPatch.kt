@@ -17,14 +17,13 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.LithoSpannableStringCreationFingerprint
 import app.morphe.patches.shared.SpannableStringBuilderFingerprint
-import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.shared.TextComponentConstructorFingerprint
 import app.morphe.patches.shared.TextComponentFeatureFlagFingerprint
 import app.morphe.patches.shared.TextComponentLookupFingerprint
 import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.shared.misc.litho.context.conversionContextClassDef
+import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.layout.returnyoutubedislike.TextComponentDataFingerprint
-import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
@@ -55,8 +54,7 @@ private var lithoSpannableStringCreationConversionContextRegister = -1
 private var lithoSpannableStringCreationConversionContextField : String = ""
 private var lithoSpannableStringCreationCharSequenceRegister = -1
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/TextComponentPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/TextComponentPatch;"
 
 val textComponentPatch = bytecodePatch(
     description = "Provides hooks into text components for extension filtering."
