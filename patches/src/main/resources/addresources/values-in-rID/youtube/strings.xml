@@ -733,7 +733,7 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hide_subscriptions_button_title">Sembunyikan tombol Subscription</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_show_search_button_title">Tampilkan tombol Telusuri </string>
+  <string name="morphe_show_search_button_title">Tampilkan tombol Telusuri</string>
   <string name="morphe_show_search_button_index_title">Posisi tombol Telusuri</string>
   <string name="morphe_show_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_settings_button_index_title">Posisi tombol Setelan</string>
@@ -761,7 +761,7 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_hide_toolbar_create_button_title">Sembunyikan tombol Buat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sembunyikan tombol Mikrofon</string>
   <string name="morphe_hide_toolbar_notification_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Telusuri </string>
+  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Telusuri</string>
   <string name="morphe_show_toolbar_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_toolbar_settings_button_index_title">Posisi tombol Setelan</string>
   <string name="morphe_show_toolbar_settings_button_type_title">Tindakan tombol Setelan</string>
@@ -952,7 +952,7 @@ Setelan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya secar
   <string name="morphe_player_overlay_opacity_title">Opasitas hamparan pemutar</string>
   <string name="morphe_player_overlay_opacity_summary">Sesuaikan tingkat transparansi (0 adalah transparan, 100 adalah buram)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_searchbar_type_title">Bilah telusuri</string>
+  <string name="morphe_searchbar_type_title">Bilah penelusuran</string>
   <string name="morphe_searchbar_type_entry_disabled">Dinonaktifkan</string>
   <string name="morphe_searchbar_type_entry_wide">Lebar</string>
   <string name="morphe_searchbar_type_entry_extra_wide">Ekstra lebar</string>

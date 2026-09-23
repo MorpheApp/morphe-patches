@@ -358,8 +358,6 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_section_overlay_title">Преклапање</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронизација</string>
   <string name="morphe_music_lyrics_section_about_title">O programu</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Додирните ▲/▼ да бисте подесили редослед приоритета, а квадратић да укључите или искључите сваког провајдера.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Сви провајдери су искључени — уграђени текстови и уметнути текстови песама.</string>
   <string name="morphe_music_lyrics_source_reset_title">Ресетовати редослед провајдера?</string>
   <string name="morphe_music_lyrics_source_reset_message">Врати провајдере на подразумевани редослед приоритета.</string>
@@ -396,13 +394,12 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: неважећи arl — покушајте поново.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: неважећи arl — проверите и покушајте поново</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Копирајте вредност корисничког токена.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch ради без токена, па ово поље може да остане празно.
-
-Додајте токен само да бисте користили свој налог. Мора да потиче из Android апликације Musixmatch: токени копирани са musixmatch.com припадају укинутом десктоп клијенту и API их одбија"</string>
-  <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: неважећи кориснички токен — покушајте поново.</string>
-  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: кориснички токен сачуван</string>
-  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: кориснички токен обрисан</string>
-  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: неважећи кориснички токен — проверите и покушајте поново</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Додајте токен само да бисте користили сопствени налог. Мора да потиче из Musixmatch Android апликације: токени копирани са musixmatch.com припадају повученом десктоп клијенту и API их одбија</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch ради и без токена, тако да ово поље може да остане празно</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">кориснички тоken</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: кориснички tokena сачуван</string>
+  <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: кориснички token обрисан</string>
+  <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: неважећи кориснички token — проверите и покушајте поново</string>
   <string name="morphe_music_youtube_cookies_title">YouTube колачићи</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Налепите […] Копирајте пуни низ колачића (парови кључ=вредност раздвојени тачком и зарезом)
 
@@ -415,9 +412,9 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_show_copy_button_title">Прикажи дугме за копирање</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Додирните да копирате оригинални текст песме као обичан текст; дуго притисните да сачувате сирови изворни фајл текстова у Преузимања</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Прикажи дугме за превод</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Преведите текстове песама користећи преводе провајдера или Google преводилац.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Преведите текстове песама користећи преводе провајдера, Google Translate или API компатибилан са OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Прикажи дугме за романизацију</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Романизујте текстове песама помоћу романизације провајдера или Google преводиоца […] дугме.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Романизујте текстове песама користећи романизацију провајдера, Google Translate или API компатибилан са OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Прикажите дугме за освежавање</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Додирните да бисте се пребацили на следећи кандидат текстова; […] :\"Сачувано\"</string>
   <string name="morphe_music_lyrics_saved">Сачувано</string>
@@ -459,7 +456,7 @@ Da biste osigurali sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, po
   <string name="morphe_music_lyrics_copied">Копирано у привремену меморију</string>
   <string name="morphe_music_lyrics_refreshing">Освежавање</string>
   <string name="morphe_music_lyrics_refreshed">Освежено.</string>
-  <string name="morphe_music_lyrics_about_summary">"Текстови се проналазе по називу песме и извођачу, […] Такође можете притиснути дугме за освежавање да ручно промените верзију. […] Сви омогућени провајдери се не позивају увек вашим редоследом, већ одговарају на основу своје брзине."</string>
+  <string name="morphe_music_lyrics_about_summary">"Текстови се подударају према наслову и извођачу, понекада се може десити да се не пронађе ништа или прикаже погрешну верзију. Користите опцију освежи да бисте променили верзију. Добављачи означени * захтевају токен. Сви доступни извођачи не могу увек да одговоре у вашем упиту, али одазивају се у зависности од брзине"</string>
   <string name="morphe_music_lyrics_hide_info_title">Сакриј линију са заслугама</string>
   <string name="morphe_music_lyrics_hide_info_summary">Сакриј линију са заслугама приказану испод текстова.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Замени превод и романизацију.</string>

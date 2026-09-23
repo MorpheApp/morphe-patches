@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">將 Morphe 設定重設為預設值</string>
   <string name="morphe_settings_import_success">已匯入 %d 個設定</string>
   <string name="morphe_settings_import_failure_parse">無法匯入：%s</string>
+  <string name="morphe_settings_navigate_up">向上瀏覽</string>
   <string name="morphe_settings_search_hint">搜尋設定</string>
   <string name="morphe_settings_search_no_results_title">沒有找到「%s」的結果</string>
   <string name="morphe_settings_search_no_results_summary">嘗試其他關鍵字</string>
   <string name="morphe_settings_search_recent_searches">最近搜尋</string>
   <string name="morphe_settings_search_remove_message">要從搜尋記錄中移除嗎？</string>
+  <string name="morphe_settings_search_remove">從搜尋記錄中移除</string>
   <string name="morphe_settings_search_clear_history">清除搜尋記錄</string>
   <string name="morphe_settings_search_clear_history_message">您確定要清除所有搜尋記錄嗎？</string>
   <string name="morphe_settings_search_tips_title">搜尋秘訣</string>

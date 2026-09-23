@@ -74,7 +74,7 @@ public final class SimpMusicProvider implements LyricsProvider {
             if (data == null || data.length() == 0) {
                 return null;
             }
-            return pickBestEntry(data);
+            return pickBestEntry(data, videoId);
         } catch (IOException | JSONException ex) {
             Logger.printDebug(() -> "Could not query SimpMusic API", ex);
             return null;
@@ -85,8 +85,12 @@ public final class SimpMusicProvider implements LyricsProvider {
         }
     }
 
+    private static String sourceUrl(String videoId) {
+        return "https://lyrics.simpmusic.org/#/video/" + videoId;
+    }
+
     @Nullable
-    private Lyrics pickBestEntry(JSONArray data) {
+    private Lyrics pickBestEntry(JSONArray data, String videoId) {
         Lyrics best = null;
         int bestVote = Integer.MIN_VALUE;
         for (int i = 0; i < data.length(); i++) {
@@ -98,7 +102,7 @@ public final class SimpMusicProvider implements LyricsProvider {
             if (vote < bestVote) {
                 continue;
             }
-            final Lyrics lyrics = parseEntry(entry);
+            final Lyrics lyrics = parseEntry(entry, videoId);
             if (lyrics != null && !lyrics.isEmpty()) {
                 best = lyrics;
                 bestVote = vote;
@@ -108,29 +112,28 @@ public final class SimpMusicProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics parseEntry(JSONObject entry) {
-        // Prefer rich sync (word-level), then synced (line-level), then plain.
+    private Lyrics parseEntry(JSONObject entry, String videoId) {
         final String richSync = LyricsRequests.optString(entry, "richSyncLyrics");
         if (richSync != null) {
-            return parseLrc(richSync);
+            return parseLrc(richSync, videoId);
         }
         final String synced = LyricsRequests.optString(entry, "syncedLyrics");
         if (synced != null) {
-            return parseLrc(synced);
+            return parseLrc(synced, videoId);
         }
         final String plain = LyricsRequests.optString(entry, "plainLyric");
         if (plain != null) {
             final List<LyricsLine> lines = LrcParser.parsePlain(plain);
             if (!lines.isEmpty()) {
                 return new Lyrics(lines, name(), false,
-                        null, null, null, null, plain, "plain", null);
+                        null, null, null, null, plain, "plain", sourceUrl(videoId));
             }
         }
         return null;
     }
 
     @Nullable
-    private Lyrics parseLrc(String lrc) {
+    private Lyrics parseLrc(String lrc, String videoId) {
         final long[] offsetHolder = {0};
         final String sanitized = sanitizeLrc(lrc, offsetHolder);
         final LrcParser.LrcParseResult result = LrcParser.parseSyncedWithCreditLines(sanitized);
@@ -144,7 +147,7 @@ public final class SimpMusicProvider implements LyricsProvider {
         return new Lyrics(lines, name(), true,
                 null, null, null,
                 result.creditLines.isEmpty() ? null : result.creditLines,
-                sanitized, "lrc", null);
+                sanitized, "lrc", sourceUrl(videoId));
     }
 
     private static String sanitizeLrc(String lrc, long[] offsetHolder) {

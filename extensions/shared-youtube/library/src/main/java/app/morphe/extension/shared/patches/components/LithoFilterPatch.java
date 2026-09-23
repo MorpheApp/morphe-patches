@@ -28,7 +28,7 @@ public final class LithoFilterPatch {
      * Simple wrapper to pass the litho parameters through the prefix search.
      */
     private record LithoFilterParameters(ContextInterface contextInterface, String identifier,
-                                         String path, String accessibility, byte[] buffer,
+                                         CharSequence path, String accessibility, byte[] buffer,
                                          BufferAsciiStrings asciiStrings) {
         @NonNull
         @Override
@@ -120,7 +120,7 @@ public final class LithoFilterPatch {
                 continue;
             }
 
-            for (String pattern : group.filters) {
+            for (CharSequence pattern : group.filters) {
                 pathSearchTree.addPattern(pattern, (textSearched, matchedStartIndex,
                                                     matchedLength, callbackParameter) -> {
                             if (!group.isEnabled()) return false;
@@ -175,8 +175,6 @@ public final class LithoFilterPatch {
                 return false;
             }
 
-            String path = pathBuilder.toString();
-
             String accessibility;
             if (accessibilityText != null && !accessibilityText.isBlank()) {
                 accessibility = accessibilityId + '|' + accessibilityText;
@@ -196,12 +194,12 @@ public final class LithoFilterPatch {
             }
 
             LithoFilterParameters parameter = new LithoFilterParameters(
-                    contextInterface, identifier, path, accessibility,
+                    contextInterface, identifier, pathBuilder, accessibility,
                     buffer, new BufferAsciiStrings(buffer));
             Logger.printDebug(() -> "Searching " + parameter);
 
             return identifierSearchTree.matches(identifier, parameter)
-                    || pathSearchTree.matches(path, parameter);
+                    || pathSearchTree.matches(pathBuilder, parameter);
         } catch (Exception ex) {
             Logger.printException(() -> "isFiltered failure", ex);
         }

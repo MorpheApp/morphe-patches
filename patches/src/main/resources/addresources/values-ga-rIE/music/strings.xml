@@ -358,8 +358,6 @@ Chun a chinntiú go bhfuil scrobbling i gcóir le linn imirt san chúlra, déan 
   <string name="morphe_music_lyrics_section_overlay_title">Forleagan</string>
   <string name="morphe_music_lyrics_section_sync_title">Sioncrónú</string>
   <string name="morphe_music_lyrics_section_about_title">Maidir</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tapáil ▲/▼ chun an t-ord tosaíochta a shocrú, agus tapáil an bosca chun gach soláthraí a chumasú nó a dhíchumasú</string>
   <string name="morphe_music_lyrics_source_all_disabled">Gach soláthraí díchumasaithe — liricí ionsuite agus liricí leabaithe</string>
   <string name="morphe_music_lyrics_source_reset_title">Athshocraigh ord an tsoláthraí?</string>
   <string name="morphe_music_lyrics_source_reset_message">Athchóirigh soláthraithe chuig an ord tosaíochta réamhshocraithe</string>
@@ -396,9 +394,8 @@ Céimeanna:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl glanta</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl neamhbhailí — seiceáil é agus déan iarracht arís, le do thoil.</string>
   <string name="morphe_music_musixmatch_token_title">Comhartha Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Oibríonn Musixmatch gan chomhartha, mar sin is féidir an réimse seo a fhágáil folamh.
-
-Ná cuir comhartha leis ach amháin más mian leat do chuntas féin a úsáid. Caithfidh sé teacht ó aip Android Musixmatch: baineann comharthaí a chóipeáiltear ó musixmatch.com leis an bhfeidhmchlár deisce atá curtha ar ceal, agus diúltaíonn an API dóibh."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Cuir token leis ach amháin chun do chuntas féin a úsáid. Caithfidh sé teacht ó aip Android Musixmatch: baineann tokens cóipeáilte ó musixmatch.com leis an gcliant deisce atá ar scor agus diúltaíonn an API dóibh</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Oibríonn Musixmatch gan token, mar sin féadfaidh an réimse seo fanacht folamh</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">comhartha úsáideora</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: comhartha úsáideora sábháilte</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: comhartha úsáideora glanta</string>
@@ -420,9 +417,9 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_copy_button_title">Taispeáin an cnaipe Cóipeála</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tapáil chun na liricí bunaidh a chóipeáil mar ghnáth-théacs; brúigh fada chun an bunchomhad foinseach de na liricí a shábháil sa bhfillteán Íoslódálacha</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Taispeáin an cnaipe Aistrigh</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Aistrigh liricí ag baint úsáide as aistriúcháin soláthraithe nó Google Translate</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Aistrigh na liricí ag úsáid aistriúcháin an tsoláthraí, Google Translate, nó API atá comhoiriúnach le OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Taispeáin an cnaipe Rómhánaithe</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Déan rómánú ar na liricí ag baint úsáide as rómánú an tsoláthraí nó rómánú Google Translate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Rómhánaigh na liricí ag úsáid rómhánú an tsoláthraí, Google Translate, nó API atá comhoiriúnach le OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Taispeáin an cnaipe athnuachana</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tapáil chun aistriú go dtí an chéad rogha eile d’fhocail an amhráin; brúigh go fada chun focail ó fhoinse sheachtrach a dhíghníomhachtú go sealadach agus na focail dhúchásacha a thaispeáint</string>
   <string name="morphe_music_lyrics_saved">Sábháilte</string>
@@ -464,7 +461,7 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_copied">Cóipeáilte chuig an ghearrthaisce</string>
   <string name="morphe_music_lyrics_refreshing">Athnuachanach</string>
   <string name="morphe_music_lyrics_refreshed">Athnuachana</string>
-  <string name="morphe_music_lyrics_about_summary">"Déantar cuardach ar liricí de réir theideal an riain agus an ealaíontóra; dá bhrí sin, d’fhéadfadh sé nach bhfaighfí aon rud, nó go bhfaighfí an leagan mícheart, i gcás riain a bhfuil meiteashonraí neamhghnácha ag baint leis. Is féidir leat an cnaipe athnuachana a úsáid freisin chun leaganacha a athrú de láimh. Mura bhfaightear aon liricí ó sholáthraithe tríú páirtí, taispeántar liricí ionsuite nó leabaithe ina n-áit. Teastaíonn comhartha chun na soláthraithe a bhfuil an comhartha * ag gabháil leo a chumasú. Ní iarrtar gach soláthraí atá cumasaithe i gcónaí i do ordú, ach freagraíonn siad bunaithe ar a luas"</string>
+  <string name="morphe_music_lyrics_about_summary">"Meaitseáiltear liricí de réir teidil agus ealaíontóra; b’fhéidir nach bhfaighidh meiteashonraí neamhghnácha aon rud, nó go bhfaighidh siad an leagan mícheart. Bain úsáid as athnuachan chun leaganacha a athrú. Teastaíonn comhartha ó sholáthraithe atá marcáilte le *. Ní i gcónaí a iarrtar na soláthraithe cumasaithe go léir san ord atá agat, ach freagraíonn siad de réir a luais."</string>
   <string name="morphe_music_lyrics_hide_info_title">Folaigh an líne chreidmheasa</string>
   <string name="morphe_music_lyrics_hide_info_summary">Folaigh an líne aitheantais a thaispeántar faoi na liricí</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Malartaigh an t-aistriúchán agus an rómánú</string>
@@ -484,7 +481,7 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Ní féidir URL bonn a bheith folamh</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Caithfidh URL bonn tosú le http:// nó https://</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">Ní féidir ainm samhail a bheith folamh</string>
-  <string name="morphe_music_lyrics_ai_config_status_validating">Ag bailíochtú an cheangail…</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Ag fíorú na nascachta…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - Díchumasaigh deilbhíní troma</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Athchóirigh an t-imreoir Ar Aghaidh, Liricí, agus na cluaisíní Gaolmhara</string>

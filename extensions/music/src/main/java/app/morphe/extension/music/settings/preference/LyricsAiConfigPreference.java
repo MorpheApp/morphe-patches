@@ -11,12 +11,8 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.os.Handler;
-import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.preference.SwitchPreference;
 import android.text.InputType;
 import android.util.AttributeSet;
@@ -34,8 +30,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings({"unused", "deprecation"})
-public class LyricsAiConfigPreference extends SwitchPreference
-        implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class LyricsAiConfigPreference extends SwitchPreference {
 
     private boolean dialogShowing = false;
     private volatile boolean saveInProgress = false;
@@ -65,54 +60,6 @@ public class LyricsAiConfigPreference extends SwitchPreference
         setSummary(Settings.LYRICS_USE_AI_TRANSLATION.get()
                 ? str("morphe_music_lyrics_ai_config_status_configured")
                 : str("morphe_music_lyrics_ai_config_status_not_configured"));
-        updateVisibility();
-    }
-
-    @Override
-    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
-        super.onAttachedToHierarchy(preferenceManager);
-        cachedParent = getParent();
-        try {
-            SharedPreferences prefs = preferenceManager.getSharedPreferences();
-            if (prefs != null) {
-                prefs.registerOnSharedPreferenceChangeListener(this);
-                updateVisibility();
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "onAttachedToHierarchy failure", ex);
-        }
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-        if ("morphe_music_lyrics_show_translate_button".equals(key)
-                || "morphe_music_lyrics_show_romanize_button".equals(key)) {
-            new Handler(Looper.getMainLooper()).post(this::updateVisibility);
-        }
-    }
-
-    private boolean isCurrentlyVisible = true;
-    private android.preference.PreferenceGroup cachedParent;
-
-    private void updateVisibility() {
-        boolean shouldBeVisible = Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get()
-                || Settings.LYRICS_SHOW_ROMANIZE_BUTTON.get();
-        if (shouldBeVisible == isCurrentlyVisible) return;
-        try {
-            if (cachedParent == null) {
-                cachedParent = getParent();
-            }
-            if (cachedParent == null) return;
-            if (shouldBeVisible) {
-                cachedParent.addPreference(this);
-                isCurrentlyVisible = true;
-            } else {
-                cachedParent.removePreference(this);
-                isCurrentlyVisible = false;
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "updateVisibility failure", ex);
-        }
     }
 
     @Override

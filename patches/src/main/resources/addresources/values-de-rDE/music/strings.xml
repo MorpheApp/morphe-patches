@@ -358,8 +358,6 @@ Um sicherzustellen, dass Scrobbling während der Wiedergabe im Hintergrund synch
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
   <string name="morphe_music_lyrics_section_about_title">Über</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tippe auf ▲/▼, um die Prioritätsreihenfolge festzulegen, und auf das Kontrollkästchen, um jeden Anbieter zu aktivieren oder zu deaktivieren.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle Anbieter deaktiviert – integrierte Songtexte und eingebettete Songtexte.</string>
   <string name="morphe_music_lyrics_source_reset_title">Anbieterreihenfolge zurücksetzen?</string>
   <string name="morphe_music_lyrics_source_reset_message">Anbieter auf die Standard-Prioritätsreihenfolge zurücksetzen.</string>
@@ -396,9 +394,8 @@ Schritte:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl ungültig. Bitte erneut versuchen.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ungültiges arl – bitte überprüfen und erneut versuchen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopiere den Wert des Benutzer-Tokens.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funktioniert auch ohne Token, daher kann dieses Feld leer bleiben.
-
-Füge ein Token nur hinzu, um dein eigenes Konto zu verwenden. Es muss aus der Musixmatch-Android-App stammen: Token, die von musixmatch.com kopiert wurden, gehören zum eingestellten Desktop-Client, und die API lehnt sie ab"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Füge ein Token nur hinzu, um dein eigenes Konto zu verwenden. Es muss aus der Musixmatch-Android-App stammen: Tokens, die von musixmatch.com kopiert wurden, gehören zum eingestellten Desktop-Client, und die API lehnt sie ab.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funktioniert ohne Token, daher kann dieses Feld leer bleiben.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ungültiges Benutzer-Token. Bitte erneut versuchen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: Benutzertoken gespeichert</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: Benutzertoken gelöscht</string>
@@ -415,9 +412,9 @@ Erforderliche Cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_copy_button_title">Kopieren-Schaltfläche anzeigen</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tippe, um die Original-Songtexte als Klartext zu kopieren; drücke lange, um die rohe Songtext-Quelldatei in Downloads zu speichern.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Übersetzen-Schaltfläche anzeigen</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Übersetze Songtexte mit Anbieterübersetzungen oder Google Übersetzer.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Übersetze Songtexte mithilfe von Anbieterübersetzungen, Google Translate oder einer OpenAI-kompatiblen API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Schaltfläche „Romanisieren“ anzeigen.</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanisiere Songtexte mithilfe der Anbieter-Romanisierung oder Google Übersetzer.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanisiere Songtexte mithilfe von Anbieter-Romanisierung, Google Translate oder einer OpenAI-kompatiblen API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Schaltfläche „Aktualisieren“ anzeigen</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tippe, um zum nächsten Songtextkandidaten zu wechseln; drücke lange, um zu speichern.</string>
   <string name="morphe_music_lyrics_saved">Gespeichert</string>
@@ -459,7 +456,7 @@ Erforderliche Cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_copied">In Zwischenablage kopiert</string>
   <string name="morphe_music_lyrics_refreshing">Wird aktualisiert</string>
   <string name="morphe_music_lyrics_refreshed">Aktualisiert.</string>
-  <string name="morphe_music_lyrics_about_summary">"Songtexte werden anhand von Titel und Künstler gesucht, […] Du kannst auch die Aktualisieren-Schaltfläche verwenden, um manuell zwischen Versionen zu wechseln. […] Alle aktivierten Anbieter werden nicht immer in deiner Reihenfolge angefragt, sondern antworten basierend auf ihrer Geschwindigkeit."</string>
+  <string name="morphe_music_lyrics_about_summary">"Songtexte werden nach Titel und Künstler abgeglichen. Ungewöhnliche Metadaten können zu keinem Ergebnis oder zur falschen Version führen. Verwenden Sie Aktualisieren, um die Versionen zu wechseln. Mit * markierte Anbieter erfordern ein Token. Alle aktivierten Anbieter werden nicht immer in Ihrer Reihenfolge angefragt, sondern antworten je nach ihrer Geschwindigkeit."</string>
   <string name="morphe_music_lyrics_hide_info_title">Creditszeile ausblenden.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Blende die unter den Songtexten angezeigte Creditszeile aus.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Übersetzung und Romanisierung vertauschen.</string>

@@ -41,8 +41,10 @@ import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibility;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRendererAccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Buttons;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.RendererAccessibilityData;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.patches.spoof.SpoofOSNamePatch;
@@ -517,8 +519,12 @@ public final class NavigationBarPatch {
                     if (originalButtons.hasButtonRenderer() && originalButtons.getButtonRenderer().hasIcon()) {
                         ButtonRenderer.Builder renderer = originalButtons.getButtonRenderer().toBuilder();
 
-                        renderer.clearButtonRendererAccessibilityData();
-                        renderer.clearRendererAccessibilityData();
+                        // Replace the accessibility label of the copied button.
+                        ButtonRendererAccessibilityData accessibilityData = ButtonRendererAccessibilityData
+                                .newBuilder().setLabel(str("morphe_settings_submenu_title")).build();
+                        renderer.setButtonRendererAccessibilityData(accessibilityData);
+                        renderer.setRendererAccessibilityData(RendererAccessibilityData.newBuilder()
+                                .setButtonRendererAccessibilityData(accessibilityData).build());
 
                         renderer.clearIcon();
                         renderer.setIcon(Icon.newBuilder().setYtIconType(YTIconType.SETTINGS_CAIRO).build());

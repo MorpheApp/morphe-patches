@@ -169,11 +169,10 @@ public final class SpotifyProvider implements LyricsProvider {
                 if (trackId != null) {
                     return trackId;
                 }
-                break; // got 200 but no tracks - don't retry, try next hash
+                break;
             }
 
             if (code == 429) {
-                // The loop bound decides whether a retry is left.
                 retryAfterMs = parseRetryAfter(connection);
                 connection.disconnect();
                 continue;

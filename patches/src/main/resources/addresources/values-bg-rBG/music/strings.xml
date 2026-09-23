@@ -358,8 +358,6 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_section_overlay_title">Наслагване</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронизация</string>
   <string name="morphe_music_lyrics_section_about_title">Отношение</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Докоснете ▲/▼, за да зададете реда на приоритет, и квадратчето, за да включите или изключите всеки доставчик.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Всички доставчици са изключени — вградени текстове и текстове, вградени в песента.</string>
   <string name="morphe_music_lyrics_source_reset_title">Да се нулира редът на доставчиците?</string>
   <string name="morphe_music_lyrics_source_reset_message">Възстановяване на реда по подразбиране на доставчиците.</string>
@@ -387,9 +385,8 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_deezer_arl_toast_cleared">Невалиден arl, опитайте отново.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Apple Music: media-user-token е в процес на издаване</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Копирайте стойността на потребителския токен.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch работи без токен, така че това поле може да остане празно.
-
-Добавете токен само за да използвате собствената си сметка. Той трябва да идва от приложението Musixmatch за Android: токените, копирани от musixmatch.com, принадлежат на оттегления десктоп клиент и API ги отхвърля."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Добавете токен само за да използвате собствения си акаунт. Той трябва да дойде от приложението Musixmatch за Android: токените, копирани от musixmatch.com, принадлежат на оттегления десктоп клиент и API ги отхвърля.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch работи без токен, така че това поле може да остане празно.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Невалиден потребителски токен, опитайте отново.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Apple Music: media-user-token е актуализиран</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Apple Music: media-user-token е запазен</string>
@@ -406,9 +403,9 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_show_copy_button_title">Покажи бутон Копиране</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Докоснете, за да копирате оригиналния текст като обикновен текст; задръжте натиснато, за да запишете суровия файл с текста в Изтегляния.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Покажи бутон Превод</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Превеждане на текста с помощта на преводи от доставчика или Google Translate.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Превеждане на текстове на песни чрез преводи от доставчика, Google Translate или API, съвместим с OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показване на бутона за романизиране</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Романизиране на текста чрез романизация от доставчика или Google Translate.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Романизиране на текстове на песни чрез романизация от доставчика, Google Translate или API, съвместим с OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показване на бутона за опресняване</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Докоснете, за да преминете към следващия вариант на текста; задръжте натиснато, за да деактивирате временно текстовете от трети страни и да покажете вградените текстове.</string>
   <string name="morphe_music_lyrics_saved">Запазено</string>
@@ -450,7 +447,7 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_copied">Копирано в клипборда</string>
   <string name="morphe_music_lyrics_refreshing">Опресняване</string>
   <string name="morphe_music_lyrics_refreshed">Опреснено</string>
-  <string name="morphe_music_lyrics_about_summary">"Текстовете се търсят по заглавие на песен и изпълнител, така че песен с нестандартни метаданни може да не открие нищо или да открие грешната версия. Можете също да използвате бутона за опресняване, за да превключвате ръчно между версиите. Когато не се намерят текстове от трети страни, се показват вградените текстове. Доставчиците, отбелязани с *, изискват token, за да се активират. Всички активирани доставчици не винаги се извикват в реда, който сте задали; те отговарят според скоростта си."</string>
+  <string name="morphe_music_lyrics_about_summary">"Текстовете се съпоставят по заглавие и изпълнител. Необичайни метаданни може да не намерят нищо или да намерят грешната версия. Използвайте опресняване, за да превключите версиите. Доставчиците, отбелязани с *, изискват токен. Не всички активирани доставчици винаги се запитват в реда, който сте задали, но отговарят според скоростта си."</string>
   <string name="morphe_music_lyrics_hide_info_title">Скриване на реда с кредитна информация</string>
   <string name="morphe_music_lyrics_hide_info_summary">Скриване на реда с кредитна информация, показан под текста.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Размяна на превода и романизацията</string>

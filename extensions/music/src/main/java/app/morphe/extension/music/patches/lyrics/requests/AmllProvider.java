@@ -35,14 +35,15 @@ public final class AmllProvider implements LyricsProvider {
             return null;
         }
 
-        // 1) Resolve the AMLL lyric id from the track metadata.
-        final long lyricId = searchLyricId(track.title(), track.artist(), track.album());
-
+        final JSONObject best = searchBest(track.title(), track.artist(), track.album());
+        if (best == null) {
+            return null;
+        }
+        final long lyricId = best.optLong("id", -1);
         if (lyricId < 0) {
             return null;
         }
 
-        // word-level timing; the LyricsManager falls back to line sync if a line lacks words.
         HttpURLConnection getConnection = null;
         try {
             getConnection = LyricsRequests.openConnection(
@@ -60,7 +61,7 @@ public final class AmllProvider implements LyricsProvider {
             if (ttml == null) {
                 return null;
             }
-            return TtmlParser.ttmlToLyrics(ttml, name(), null);
+            return TtmlParser.ttmlToLyrics(ttml, name(), sourceUrl(getData, best));
         } finally {
             if (getConnection != null) {
                 getConnection.disconnect();
@@ -68,7 +69,31 @@ public final class AmllProvider implements LyricsProvider {
         }
     }
 
-    private long searchLyricId(String title, String artist, String album) {
+    @Nullable
+    private static String sourceUrl(JSONObject getData, JSONObject best) {
+        String file = firstPath(getData, "path", "file", "filename", "filePath");
+        if (file == null) {
+            file = firstPath(best, "path", "file", "filename", "filePath");
+        }
+        if (file == null || file.isEmpty()) {
+            return null;
+        }
+        return "https://amlldb.bikonoo.com/view-lyric.html?file=" + file;
+    }
+
+    @Nullable
+    private static String firstPath(JSONObject object, String... keys) {
+        for (String key : keys) {
+            final String value = LyricsRequests.optString(object, key);
+            if (value != null) {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    @Nullable
+    private JSONObject searchBest(String title, String artist, String album) {
         HttpURLConnection searchConnection = null;
         try {
             String searchUrl = String.format(
@@ -84,25 +109,25 @@ public final class AmllProvider implements LyricsProvider {
 
             searchConnection = LyricsRequests.openConnection(searchUrl);
             if (searchConnection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
-                return -1;
+                return null;
             }
             JSONObject searchRoot = Requester.parseJSONObject(searchConnection);
             JSONObject searchData = searchRoot.optJSONObject("data");
             if (searchData == null) {
-                return -1;
+                return null;
             }
             JSONArray items = searchData.optJSONArray("items");
             if (items == null || items.length() == 0) {
-                return -1;
+                return null;
             }
             JSONObject best = items.optJSONObject(0);
-            if (best == null) {
-                return -1;
+            if (best == null || best.optLong("id", -1) < 0) {
+                return null;
             }
-            return best.optLong("id", -1);
+            return best;
         } catch (Exception ex) {
             Logger.printInfo(() -> "Could not fetch lyrics", ex);
-            return -1;
+            return null;
         } finally {
             if (searchConnection != null) {
                 searchConnection.disconnect();

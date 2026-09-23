@@ -349,6 +349,7 @@ public class SearchHistoryManager {
 
                 // Set click listener for delete icon.
                 ImageView deleteIcon = view.findViewById(ID_DELETE_ICON);
+                deleteIcon.setContentDescription(str("morphe_settings_search_remove"));
 
                 deleteIcon.setImageResource(Utils.appIsUsingBoldIcons()
                                 ? ID_SEARCH_REMOVE_ICON_BOLD

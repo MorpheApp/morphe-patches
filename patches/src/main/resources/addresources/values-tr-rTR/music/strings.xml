@@ -358,8 +358,6 @@ Scrobbling'in arka planda çalma sırasında senkronize olduğundan emin olmak i
   <string name="morphe_music_lyrics_section_overlay_title">Yer paylaşımı</string>
   <string name="morphe_music_lyrics_section_sync_title">Senkronizasyon</string>
   <string name="morphe_music_lyrics_section_about_title">Hakkında</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Şarkı sözleri aranmadan önce başlıklara, sanatçılara ve albümlere uygulanan düzenli ifade. Devre dışı bırakmak için boş bırakın. Varsayılan, \"Official Video\", \"Remaster\" ve \"- Topic\" gibi yaygın gereksiz ekleri kaldırır</string>
   <string name="morphe_music_lyrics_source_all_disabled">Tüm sağlayıcılar devre dışı — yerleşik şarkı sözleri ve gömülü şarkı sözleri</string>
   <string name="morphe_music_lyrics_source_reset_title">Sağlayıcı sırası sıfırlansın mı?</string>
   <string name="morphe_music_lyrics_source_reset_message">Sağlayıcıları varsayılan öncelik sırasına geri yükle</string>
@@ -396,9 +394,8 @@ Adımlar:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl temizlendi</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: geçersiz arl — lütfen kontrol edip tekrar deneyin</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Tokeni</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch, token olmadan da çalışır; bu nedenle bu alan boş bırakılabilir.
-
-Yalnızca kendi hesabınızı kullanmak için bir token ekleyin. Bu token, Musixmatch Android uygulamasından alınmış olmalı: musixmatch.com adresinden kopyalanan token’lar, artık kullanılmayan masaüstü istemcisine aittir ve API bunları kabul etmez"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Yalnızca kendi hesabınızı kullanmak için bir token ekleyin. Bu token, Musixmatch Android uygulamasından gelmelidir: musixmatch.com\'dan kopyalanan tokenler, kullanımdan kaldırılmış masaüstü istemcisine aittir ve API bunları reddeder.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch bir token olmadan çalışır, bu yüzden bu alan boş bırakılabilir.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">kullanıcı tokeni</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: kullanıcı belirteci kaydedildi</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: kullanıcı belirteci temizlendi</string>
@@ -420,9 +417,9 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_show_copy_button_title">Kopyala düğmesini göster</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Orijinal şarkı sözlerini düz metin olarak kopyalamak için dokunun; ham şarkı sözleri kaynak dosyasını İndirilenler klasörüne kaydetmek için uzun basın</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Çevir düğmesini göster</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Şarkı sözlerini sağlayıcı çevirileriyle veya Google Çeviri ile çevir</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Şarkı sözlerini çevirmek için sağlayıcı çevirilerini, Google Translate veya OpenAI uyumlu bir API kullanın.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Okunuş butonunu göster</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Şarkı sözlerinin okunuşunu sağlayıcı veya Google Çeviri kullanarak göster</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Şarkı sözlerini romanize etmek için sağlayıcı romanizasyonunu, Google Translate veya OpenAI uyumlu bir API kullanın.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Yenile düğmesini göster</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Bir sonraki şarkı sözü seçeneğine geçmek için dokunun; üçüncü taraf şarkı sözlerini geçici olarak devre dışı bırakıp sistem şarkı sözlerini görüntülemek için uzun basın</string>
   <string name="morphe_music_lyrics_saved">Kaydedildi</string>
@@ -464,7 +461,7 @@ Gerekli çerezler: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISI
   <string name="morphe_music_lyrics_copied">Panoya kopyalandı</string>
   <string name="morphe_music_lyrics_refreshing">Yenileniyor</string>
   <string name="morphe_music_lyrics_refreshed">Yenilendi</string>
-  <string name="morphe_music_lyrics_about_summary">"Şarkı sözleri parça adına ve sanatçıya göre aranır; bu nedenle olağandışı meta verilere sahip bir parça hiçbir şey bulamayabilir veya yanlış sürümü bulabilir. Ayrıca sürümleri manuel olarak değiştirmek için yenile düğmesini deneyebilirsiniz. Üçüncü taraf şarkı sözü bulunamadığında, bunun yerine yerleşik veya gömülü şarkı sözleri gösterilir. * ile işaretlenen sağlayıcılar etkinleştirmek için bir token gerektirir. Etkin sağlayıcıların tümü her zaman sizin sıranıza göre istenmez, hızlarına göre yanıt verirler"</string>
+  <string name="morphe_music_lyrics_about_summary">"Şarkı sözleri başlık ve sanatçıya göre eşleştirilir, olağandışı meta veriler hiçbir şey bulamayabilir veya yanlış sürümü bulabilir. Sürümleri değiştirmek için yenilemeyi kullanın. * ile işaretlenen sağlayıcılar bir belirteç gerektirir. Etkinleştirilen tüm sağlayıcılar her zaman belirttiğiniz sırada istenmez, ancak hızlarına göre yanıt verirler."</string>
   <string name="morphe_music_lyrics_hide_info_title">Yenile</string>
   <string name="morphe_music_lyrics_hide_info_summary">Şarkı sözlerinin altında gösterilen künye satırını gizle</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Çeviri ve okunuşun yerini değiştir</string>

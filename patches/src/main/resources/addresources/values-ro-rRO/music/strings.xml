@@ -358,8 +358,6 @@ Pentru a te asigura că scrobbling-ul este sincronizat în timpul redării în f
   <string name="morphe_music_lyrics_section_overlay_title">Suprapunere</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizare</string>
   <string name="morphe_music_lyrics_section_about_title">Despre</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Atingeți ▲/▼ pentru a seta ordinea de prioritate, iar bifa pentru a activa sau dezactiva fiecare furnizor</string>
   <string name="morphe_music_lyrics_source_all_disabled">Toți furnizorii dezactivați — versuri integrate și versuri încorporate.</string>
   <string name="morphe_music_lyrics_source_reset_title">Resetați ordinea furnizorilor?</string>
   <string name="morphe_music_lyrics_source_reset_message">Restabiliți ordinea implicită de prioritate a furnizorilor.</string>
@@ -384,9 +382,8 @@ Pași:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl nevalid, încercați din nou.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl nevalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_musixmatch_token_title">Deezer: token media-user salvat.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funcționează fără un token, așa că acest câmp poate rămâne gol.
-
-Adaugă un token doar pentru a-ți folosi propriul cont. Trebuie să provină din aplicația Android Musixmatch: tokenurile copiate de pe musixmatch.com aparțin clientului desktop retras, iar API-ul le refuză"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Adaugă un token doar pentru a-ți folosi propriul cont. Acesta trebuie să provină din aplicația Musixmatch pentru Android: tokenurile copiate de pe musixmatch.com aparțin clientului desktop scos din uz, iar API-ul le refuză.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funcționează fără token, deci acest câmp poate rămâne gol.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: token de utilizator nevalid, încercați din nou.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Deezer: token media-user expirat.</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Cookie-uri YouTube</string>
@@ -403,9 +400,9 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Arată butonul de copiere</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Faceți clic aici pentru a copia valoarea.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Arată butonul de traducere</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Traduceți textul în limba română.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tradu versurile folosind traducerile oferite de furnizor, Google Translate sau un API compatibil cu OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Afișați butonul Romanize.</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizați textul în limba română.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizează versurile folosind romanizarea oferită de furnizor, Google Translate sau un API compatibil cu OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afișați butonul Reîmprospătare.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Atingeți pentru a comuta la următoarea sugestie de vers.</string>
   <string name="morphe_music_lyrics_saved">Salvat</string>
@@ -447,7 +444,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_copied">Copiat în clipboard</string>
   <string name="morphe_music_lyrics_refreshing">Se încarcă…</string>
   <string name="morphe_music_lyrics_refreshed">Reîmprospătat</string>
-  <string name="morphe_music_lyrics_about_summary">"Redare în curs de pe alt dispozitiv."</string>
+  <string name="morphe_music_lyrics_about_summary">"Versurile sunt potrivite după titlu și artist, metadatele neobișnuite pot să nu găsească nimic sau versiunea greșită. Folosiți reîmprospătarea pentru a comuta versiunile. Furnizorii marcați cu * necesită un token. Furnizorii activați nu sunt solicitați întotdeauna în ordinea ta, ci răspund în funcție de viteza lor."</string>
   <string name="morphe_music_lyrics_hide_info_title">Redare în curs pe acest dispozitiv.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Redare în curs pe un alt dispozitiv.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Redare în curs pe acest dispozitiv.</string>

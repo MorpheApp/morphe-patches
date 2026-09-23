@@ -358,8 +358,6 @@ Til þess að tryggja að scrobbling sé samstilla á meðan spilað er í bakgr
   <string name="morphe_music_lyrics_section_overlay_title">Yfirlag</string>
   <string name="morphe_music_lyrics_section_sync_title">Samstilling</string>
   <string name="morphe_music_lyrics_section_about_title">Um</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Pikkaðu á ▲/▼ til að stilla forgangsröð og hakaðu í reitinn til að virkja eða slökkva á hverri veitu</string>
   <string name="morphe_music_lyrics_source_all_disabled">Allar veitur óvirkjar — innbyggðir textar og innfelldir textar</string>
   <string name="morphe_music_lyrics_source_reset_title">Endurstilla forgangsröð?</string>
   <string name="morphe_music_lyrics_source_reset_message">Endurheimta veitur í sjálfgefna forgangsröð</string>
@@ -396,9 +394,8 @@ Skref:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl hreinsað</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ógilt arl — athugaðu og reyndu aftur</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch virkar ánlykil, svo þetta reitur getur verið tómur.
-
-Bættu aðlykil aðeins til að nota þitt eigið reikning. Hann verður að koma frá Musixmatch Android appinu: lyklar sem eru afritin frá musixmatch.com tilheyra úreltum skáltóma (desktop client) og API neitar þeim."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Bættu við aðgangslykli aðeins til að nota þinn eigin reikning. Hann verður að koma frá Musixmatch Android-appinu: aðgangslyklar afritaðir af musixmatch.com tilheyra hinu niðurlagða skrifborðsforriti og API-ið hafnar þeim.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch virkar án aðgangslykils, svo þennan reit er hægt að skilja eftir auðan.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">notendatoken</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: notandatákn vistað</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: notandatákn hreinsað</string>
@@ -418,9 +415,9 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Sýna afritunarhnapp</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Engar vafrakökur fundust. Gakktu úr skugga um að þú sért skráð(ur) inn á YouTube og reyndu aftur.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Sýna þýðingarhnapp</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Settu vafrakökurnar upp í samræmi við skjátextann.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Þýddu söngtexta með þýðingum frá þjónustuveitanda, Google Translate eða OpenAI-samhæfðu API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Sýna umritunarhnappinn</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Vafrakökurnar voru ekki settar inn. Athugaðu hvort slökkva þurfi á auglýsingalokum og reyndu aftur.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Umritaðu söngtexta í latneska stafrófið með latneskri umritun frá þjónustuveitanda, Google Translate eða OpenAI-samhæfðu API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Settu inn gildar vafrakökur til að leyfa YouTube-tengingu.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Snertdu til að skipta yfir í næstu textatillögu; haltu inni til að gera texta frá þriðja aðila tímabundið óvirka og sýna innbyggða texta</string>
   <string name="morphe_music_lyrics_saved">Vistað</string>
@@ -462,7 +459,7 @@ Nauðsynlegar vafrakökur: SID, HSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_copied">Afritað í klemmuskrá</string>
   <string name="morphe_music_lyrics_refreshing">Endurnýjun</string>
   <string name="morphe_music_lyrics_refreshed">Endurnýjað</string>
-  <string name="morphe_music_lyrics_about_summary">"Textar eru sóttir af YouTube, en ekki tókst að finna neinn texta á þessu tungumáli. Reyndu aftur eða breyttu stillingunum."</string>
+  <string name="morphe_music_lyrics_about_summary">"Lagatextar eru passaðir við titil og flytjanda, en óvenjuleg lýsigögn geta fundið ekkert eða ranga útgáfu. Notaðu endurnýjun til að skipta um útgáfu. Veitendur merktir með * þurfa aðgangstákn. Ekki er alltaf óskað eftir öllum virkum veitendum í þinni röð, heldur svara þeir eftir hraða sínum."</string>
   <string name="morphe_music_lyrics_hide_info_title">Fela upplýsingalínu</string>
   <string name="morphe_music_lyrics_hide_info_summary">Fela upplýsingalínuna sem sýnd er fyrir neðan textann</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Víxla þýðingu og rómönskun</string>

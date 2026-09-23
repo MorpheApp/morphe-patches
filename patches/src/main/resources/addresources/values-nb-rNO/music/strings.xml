@@ -358,8 +358,6 @@ For å sikre at scrobbling synkroniseres under avspilling i bakgrunnen, må du s
   <string name="morphe_music_lyrics_section_overlay_title">Overlegg</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
   <string name="morphe_music_lyrics_section_about_title">Om</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Trykk på ▲/▼ for å angi prioritetsrekkefølgen, og trykk på boksen for å aktivere eller deaktivere hver leverandør</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle leverandører deaktivert – innebygde tekster og innebygde tekster</string>
   <string name="morphe_music_lyrics_source_reset_title">Tilbakestill leverandørrekkefølgen?</string>
   <string name="morphe_music_lyrics_source_reset_message">Tilbakestill leverandørene til standard prioritetsrekkefølge</string>
@@ -396,9 +394,8 @@ Fremgangsmåte:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl fjernet</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ugyldig arl – sjekk og prøv igjen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch-brukertoken</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch fungerer uten token, så dette feltet kan stå tomt.
-
-Legg til et token bare for å bruke din egen konto. Det må komme fra Musixmatch Android-appen: tokens kopiert fra musixmatch.com tilhører den utgåtte skrivebordsklienten, og API-en avviser dem."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Legg til et token kun for å bruke din egen konto. Det må komme fra Musixmatch Android-appen: tokens kopiert fra musixmatch.com tilhører den utgåtte skrivebordsklienten, og API-et avviser dem.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch fungerer uten et token, så dette feltet kan stå tomt.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">brukertoken</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: brukertoken lagret</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: brukertoken slettet</string>
@@ -420,9 +417,9 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_show_copy_button_title">Vis kopier-knapp</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Deezer: ugyldig ARL-informasjonskapsel. Kopier en fersk ARL-informasjonskapsel fra nettleseren.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Vis oversettelsesknapp</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Musixmatch: ugyldig brukertoken. Kopier et ferskt brukertoken fra nettstedet.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Oversett sangtekster med leverandøroversettelser, Google Translate eller et OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Vis romaniseringsknappen</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniser tekster med leverandørens romanisering eller Google Oversetter […] knapp</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniser sangtekster ved hjelp av leverandørens romanisering, Google Translate eller et OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vis oppdater-knappen</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Trykk for å bytte til neste tekstkandidat […] \"Lagret\"</string>
   <string name="morphe_music_lyrics_saved">Lagret</string>
@@ -464,7 +461,7 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_copied">Kopiert til utklippstavlen</string>
   <string name="morphe_music_lyrics_refreshing">Oppdaterer</string>
   <string name="morphe_music_lyrics_refreshed">Oppdatert</string>
-  <string name="morphe_music_lyrics_about_summary">"Sangtekster slås opp etter tittel og artist, så et spor med uvanlig metadata kan gi ingen treff eller feil versjon. Du kan også prøve oppdateringsknappen for å bytte versjoner manuelt. Når ingen tredjepartssangtekster finnes, vises innebygde eller integrerte tekster i stedet. Leverandører merket med * krever et token for å aktiveres. Alle aktiverte leverandører blir ikke alltid forespurt i den rekkefølgen du har valgt, men svarer basert på hastigheten deres"</string>
+  <string name="morphe_music_lyrics_about_summary">"Sangtekster matches etter tittel og artist, uvanlig metadata kan finne ingenting eller feil versjon. Bruk oppdater for å bytte versjoner. Tilbydere merket * krever en token. Ikke alle aktiverte tilbydere blir alltid spurt i din rekkefølge, men svarer basert på hastigheten deres."</string>
   <string name="morphe_music_lyrics_hide_info_title">Skjul krediteringslinjen</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skjul krediteringslinjen som vises under teksten</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Bytt om oversettelse og romanisering</string>

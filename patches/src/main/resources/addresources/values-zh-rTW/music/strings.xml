@@ -358,8 +358,6 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_section_overlay_title">疊加層</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
   <string name="morphe_music_lyrics_section_about_title">關於</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">點擊 ▲/▼ 設定優先順序，並勾選或取消勾選以啟用或停用每個提供者</string>
   <string name="morphe_music_lyrics_source_all_disabled">所有提供者均已停用 — 內建歌詞與嵌入歌詞</string>
   <string name="morphe_music_lyrics_source_reset_title">重設提供者順序？</string>
   <string name="morphe_music_lyrics_source_reset_message">將提供者還原為預設優先順序</string>
@@ -396,9 +394,8 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Could not romanize the lyrics</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer：arl 無效。請檢查後再試一次。</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch：[…] 複製「token」的值</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch無需Token即可運作，因此該欄位可以留空。
-
-新增Token僅用於使用您自己的帳戶。Token必須來自Musixmatch Android應用程式：從 musixmatch.com 複製的Token屬於已淘汰的桌面客戶端，而且 API 會拒絕那些Token。"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">僅在要使用您自己的帳戶時才新增權杖。此權杖必須來自 Musixmatch Android 應用程式：從 musixmatch.com 複製的權杖屬於已停用的桌面用戶端，API 會拒絕這些權杖。</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch 不需要權杖也能運作，因此此欄位可以留空。</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">使用者Token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch：已儲存使用者Token</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch：已清除使用者Token</string>
@@ -420,9 +417,9 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">顯示複製按鈕</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">點擊可複製純文字歌詞；長按可將原始歌詞來源儲存到下載的歌曲</string>
   <string name="morphe_music_lyrics_show_translate_button_title">顯示翻譯按鈕</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">使用提供者翻譯或Google翻譯去翻譯歌詞</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">使用提供者的翻譯、Google Translate 或 OpenAI 相容 API 翻譯歌詞。</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">顯示羅馬拼音按鈕</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">使用提供者的羅馬拼音或Google翻譯的羅馬拼音將歌詞以羅馬拼音方式顯示</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">使用提供者的羅馬拼音、Google Translate 或 OpenAI 相容 API 將歌詞翻譯成羅馬拼音。</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">顯示重新整理按鈕</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">已儲存</string>
   <string name="morphe_music_lyrics_saved">已儲存</string>
@@ -464,7 +461,7 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_copied">已複製到剪貼簿</string>
   <string name="morphe_music_lyrics_refreshing">正在重新整理</string>
   <string name="morphe_music_lyrics_refreshed">已重新整理</string>
-  <string name="morphe_music_lyrics_about_summary">"歌詞會依歌曲標題與藝人搜尋，接著依提供者排序。您可以按重新整理按鈕來切換版本。"</string>
+  <string name="morphe_music_lyrics_about_summary">"歌詞會以標題和藝人進行比對，非標準的中繼資料可能找不到任何結果或找到錯誤的版本。使用重新整理來切換版本。標示 * 的提供者需要權杖。所有已啟用的提供者不一定是按照您的順序被要求，而是根據其速度回應。"</string>
   <string name="morphe_music_lyrics_hide_info_title">隱藏來源標示</string>
   <string name="morphe_music_lyrics_hide_info_summary">在歌詞畫面中隱藏來源標示</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交換翻譯和羅馬拼音</string>

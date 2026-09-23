@@ -342,10 +342,11 @@ internal fun baseCustomBrandingPatch(
                     }
 
                     val application = document.getElementsByTagName("application").item(0) as Element
-                    val intentFilters = document.childNodes.findElementByAttributeValueOrThrow(
+                    val originalAlias = document.childNodes.findElementByAttributeValueOrThrow(
                         "android:name",
                         activityAliasNameWithIntents
-                    ).childNodes
+                    )
+                    val intentFilters = originalAlias.childNodes
 
                     val enabledNameIndex = if (useCustomName) numberOfPresetAppNames else 1 // 1 indexing
                     val enabledIconStyle = resolveIconStyle(appIconStyle, customIcon)
@@ -424,12 +425,24 @@ internal fun baseCustomBrandingPatch(
                         )
                     }
 
-                    // Remove the main action from the original alias, otherwise two apps icons
-                    // can be shown in the launcher. Can only be done after adding the new aliases.
-                    intentFilters.findElementByAttributeValueOrThrow(
-                        "android:name",
-                        "android.intent.action.MAIN"
-                    ).removeFromParent()
+                    // Can only be done after adding the new aliases.
+                    if (isYouTubeMusic) {
+                        // Remove the main action from the original alias, otherwise two apps icons
+                        // can be shown in the launcher.
+                        intentFilters.findElementByAttributeValueOrThrow(
+                            "android:name",
+                            "android.intent.action.MAIN"
+                        ).removeFromParent()
+                    } else {
+                        // All intent filters were copied to the new aliases. Remove them from the
+                        // original alias, otherwise two app icons can be shown in the launcher, and
+                        // intents such as the search shortcut match two activities of the app and
+                        // Android asks which one to use.
+                        val originalIntentFilters = originalAlias.getElementsByTagName("intent-filter")
+                        for (i in originalIntentFilters.length - 1 downTo 0) {
+                            originalIntentFilters.item(i).removeFromParent()
+                        }
+                    }
 
                     application.setAttribute(
                         "android:label",

@@ -476,7 +476,7 @@ public final class LayoutComponentsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -545,7 +545,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == getPremiumButton) {
-            return path.startsWith("page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
+            return Utils.startsWith(path, "page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == inviteToMessageCard) {
@@ -563,7 +563,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == notificationsMenuHeader) {
-            return path.startsWith("subscribe_menu_notifications.e")
+            return Utils.startsWith(path, "subscribe_menu_notifications.e")
                     && notificationsMenuHeaderBuffer.check(buffer).isFiltered();
         }
 

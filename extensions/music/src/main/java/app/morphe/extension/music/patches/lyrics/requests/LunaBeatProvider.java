@@ -181,7 +181,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             lunabeatIndexLatch.await(5, TimeUnit.SECONDS);
         } catch (InterruptedException ex) {
             Logger.printDebug(() -> "Interrupted waiting for LunaBeat index latch", ex);
-            Thread.currentThread().interrupt(); // Restore interrupt status flag.
+            Thread.currentThread().interrupt();
         }
     }
 

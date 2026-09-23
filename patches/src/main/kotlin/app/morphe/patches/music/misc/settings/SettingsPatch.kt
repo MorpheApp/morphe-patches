@@ -7,6 +7,7 @@
 
 package app.morphe.patches.music.misc.settings
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
@@ -216,6 +217,12 @@ val settingsPatch = bytecodePatch(
             GoogleApiActivityOnCreateFingerprint,
             MUSIC_ACTIVITY_HOOK_CLASS,
             true
+        )
+
+        // The context is set before this, since the extension hooks are added in finalize.
+        youTubeMusicApplicationInitOnCreateHook.fingerprint.method.addInstruction(
+            0,
+            "invoke-static {}, $MUSIC_ACTIVITY_HOOK_CLASS->onMainActivityCreate()V"
         )
 
         BoldIconsFeatureFlagFingerprint.matchAll().forEach {

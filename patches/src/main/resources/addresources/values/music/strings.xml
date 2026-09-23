@@ -397,8 +397,6 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
     <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
     <string name="morphe_music_lyrics_section_about_title">About</string>
-    <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-    <string name="morphe_music_lyrics_source_summary">Tap ▲/▼ to set the priority order, and the box to enable or disable each provider</string>
     <string name="morphe_music_lyrics_source_all_disabled">All providers disabled — built-in lyrics and embedded lyrics</string>
     <string name="morphe_music_lyrics_source_reset_title">Reset provider order?</string>
     <string name="morphe_music_lyrics_source_reset_message">Restore providers to the default priority order</string>
@@ -438,9 +436,8 @@ Steps:
     <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl cleared</string>
     <string name="morphe_music_deezer_arl_toast_invalid">Deezer: invalid arl — please check and try again</string>
     <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
-    <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch works without a token, so this field can stay empty.
-
-Add a token only to use your own account. It has to come from the Musixmatch Android app: tokens copied from musixmatch.com belong to the retired desktop client and the API refuses them"</string>
+    <string name="morphe_music_musixmatch_token_dialog_instruction">Add a token only to use your own account. It has to come from the Musixmatch Android app: tokens copied from musixmatch.com belong to the retired desktop client and the API refuses them</string>
+    <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch works without a token, so this field can stay empty</string>
     <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
     <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: user token saved</string>
     <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: user token cleared</string>
@@ -458,23 +455,14 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookies saved</string>
     <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookies cleared</string>
     <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: invalid cookies — please check and try again</string>
-    <string name="morphe_music_lyrics_source_entry_lrclib" translatable="false">LRCLIB</string>
-    <string name="morphe_music_lyrics_source_entry_qq" translatable="false">QQ</string>
-    <string name="morphe_music_lyrics_source_entry_kugou" translatable="false">KuGou</string>
-    <string name="morphe_music_lyrics_source_entry_netease" translatable="false">NetEase</string>
-    <string name="morphe_music_lyrics_source_entry_binimum" translatable="false">BiniLyrics</string>
-    <string name="morphe_music_lyrics_source_entry_unison" translatable="false">Unison</string>
-    <string name="morphe_music_lyrics_source_entry_simpmusic" translatable="false">SimpMusic</string>
-    <string name="morphe_music_lyrics_source_entry_amll" translatable="false">AMLL</string>
-    <string name="morphe_music_lyrics_source_entry_lunabeat" translatable="false">LunaBeat</string>
     <string name="morphe_music_lyrics_tap_to_seek_title">Tap a line to seek</string>
     <string name="morphe_music_lyrics_tap_to_seek_summary">Tapping a line jumps to that moment in the song</string>
     <string name="morphe_music_lyrics_show_copy_button_title">Show Copy button</string>
     <string name="morphe_music_lyrics_show_copy_button_summary">Tap to copy original lyrics as plain text; long press to save raw lyrics source file to Downloads</string>
     <string name="morphe_music_lyrics_show_translate_button_title">Show Translate button</string>
-    <string name="morphe_music_lyrics_show_translate_button_summary">Translate lyrics using provider translations or Google Translate</string>
+    <string name="morphe_music_lyrics_show_translate_button_summary">Translate lyrics using provider translations, Google Translate, or an OpenAI-compatible API</string>
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize button</string>
-    <string name="morphe_music_lyrics_show_romanize_button_summary">Romanize lyrics using provider romanization or Google Translate romanization</string>
+    <string name="morphe_music_lyrics_show_romanize_button_summary">Romanize lyrics using provider romanization, Google Translate, or an OpenAI-compatible API</string>
     <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
     <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long press to temporarily disable third-party lyrics and show native lyrics</string>
     <string name="morphe_music_lyrics_saved">Saved</string>
@@ -516,8 +504,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_copied">Copied to clipboard</string>
     <string name="morphe_music_lyrics_refreshing">Refreshing</string>
     <string name="morphe_music_lyrics_refreshed">Refreshed</string>
-    <string name="morphe_music_lyrics_about_summary">"Lyrics are looked up by track title and artist, so a track with unusual metadata may find nothing, or find the wrong version. You can also try the refresh button to manually switch versions. When no third-party lyrics are found, built-in or embedded lyrics are shown instead. Providers marked with * require a token to enable. All enabled providers are not always requested in your order, but respond based on their speed"</string>
-
+    <string name="morphe_music_lyrics_about_summary">"Lyrics are matched by title and artist, unusual metadata may find nothing or the wrong version. Use refresh to switch versions. Providers marked * require a token. All enabled providers are not always requested in your order, but respond based on their speed"</string>
     <string name="morphe_music_lyrics_hide_info_title">Hide credit line</string>
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>

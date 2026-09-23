@@ -235,6 +235,8 @@ Se esta opção for desativada posteriormente, é recomendável limpar os dados 
   <string name="morphe_ryd_failure_generic">Não gostei indisponível (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Oculto pelo proprietário</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Descurta este vídeo, assim como outras %s pessoas</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Descurta este vídeo, %s dos votos são de desaprovação</string>
   <string name="morphe_ryd_enabled_title">Ativar o Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
   <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>

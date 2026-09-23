@@ -80,8 +80,7 @@ public class ReturnYouTubeDislikePatch {
      * @param original Original char sequence created or reused by Litho.
      * @return The original char sequence, or a replacement that contains the dislikes.
      */
-    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
-                                                 CharSequence original) {
+    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence original) {
         try {
             if (!RYD_ENABLED) {
                 return original;
@@ -93,7 +92,7 @@ public class ReturnYouTubeDislikePatch {
             }
 
             StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
-            if (!pathBuilder.toString().contains("segmented_like_dislike_button.e")) {
+            if (!Utils.contains(pathBuilder, "segmented_like_dislike_button.e")) {
                 return original;
             }
 
