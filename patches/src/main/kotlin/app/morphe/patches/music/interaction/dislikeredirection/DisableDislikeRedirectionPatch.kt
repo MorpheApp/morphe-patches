@@ -52,12 +52,22 @@ val disableDislikeRedirectionPatch = bytecodePatch(
             val notificationOnClickIndex = notificationFingerprint.instructionMatches.last().index
             notificationFingerprint.method.injectRedirectionGuard(notificationOnClickIndex)
 
-            DislikeButtonOnClickListenerFingerprint.method.apply {
-                val onClickIndex = indexOfFirstInstructionReversedOrThrow {
-                    (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_VIRTUAL) &&
-                            getReference<MethodReference>()?.returnType == "V"
+            // Newer versions can skip to the next track in more than one place (dislike command
+            // handler and like button click listener). The older listener fingerprint is too
+            // loose for these versions, it can match an unrelated method.
+            val skipMatches = DislikeSkipToNextFingerprint.matchAllOrNull()
+            if (!skipMatches.isNullOrEmpty()) {
+                skipMatches.forEach { match ->
+                    match.method.injectRedirectionGuard(match.instructionMatches.last().index)
                 }
-                injectRedirectionGuard(onClickIndex)
+            } else {
+                DislikeButtonOnClickListenerFingerprint.method.apply {
+                    val onClickIndex = indexOfFirstInstructionReversedOrThrow {
+                        (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_VIRTUAL) &&
+                                getReference<MethodReference>()?.returnType == "V"
+                    }
+                    injectRedirectionGuard(onClickIndex)
+                }
             }
         } else {
             // The notification and player handlers share the same onClick dispatch interface method,
