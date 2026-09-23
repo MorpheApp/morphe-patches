@@ -14,6 +14,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_35_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -52,12 +53,10 @@ val disableDislikeRedirectionPatch = bytecodePatch(
             val notificationOnClickIndex = notificationFingerprint.instructionMatches.last().index
             notificationFingerprint.method.injectRedirectionGuard(notificationOnClickIndex)
 
-            // Newer versions can skip to the next track in more than one place (dislike command
-            // handler and like button click listener). The older listener fingerprint is too
-            // loose for these versions, it can match an unrelated method.
-            val skipMatches = DislikeSkipToNextFingerprint.matchAllOrNull()
-            if (!skipMatches.isNullOrEmpty()) {
-                skipMatches.forEach { match ->
+            if (is_9_35_or_greater) {
+                // Skips to the next track in more than one place (dislike command handler
+                // and, on 9.36+, the like button click listener).
+                DislikeSkipToNextFingerprint.matchAll().forEach { match ->
                     match.method.injectRedirectionGuard(match.instructionMatches.last().index)
                 }
             } else {
