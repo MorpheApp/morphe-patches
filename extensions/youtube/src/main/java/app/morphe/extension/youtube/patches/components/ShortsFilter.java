@@ -23,8 +23,8 @@ import java.util.List;
 
 import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -471,8 +471,8 @@ public final class ShortsFilter extends Filter {
         if (contentType == FilterContentType.PATH) {
             if (matchedGroup == subscribeButton || matchedGroup == joinButton || matchedGroup == autoDubbedLabel) {
                 // Selectively filter to avoid false positive filtering of other subscribe/join buttons.
-                return CharSequenceSearch.startsWith(path, REEL_CHANNEL_BAR_PATH) || CharSequenceSearch.startsWith(path, REEL_METAPANEL_PATH)
-                        || CharSequenceSearch.startsWith(path, REEL_PLAYER_OVERLAY_PATH);
+                return Utils.startsWith(path, REEL_CHANNEL_BAR_PATH) || Utils.startsWith(path, REEL_METAPANEL_PATH)
+                        || Utils.startsWith(path, REEL_PLAYER_OVERLAY_PATH);
             }
 
             if (matchedGroup == reelCarousel) {
@@ -516,7 +516,7 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == useButtons) {
-                return CharSequenceSearch.contains(path, "|button.e") && useButtonsBuffer.check(buffer).isFiltered();
+                return Utils.contains(path, "|button.e") && useButtonsBuffer.check(buffer).isFiltered();
             }
 
             if (matchedGroup == suggestedAction) {

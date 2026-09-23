@@ -16,9 +16,9 @@ import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.LyricsPanelInstaller;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.TreeNodeElementPatch.LithoGetBufferContainerInterface;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
@@ -134,13 +134,13 @@ public final class MusicActionButtonsFilter extends Filter {
             return true;
         }
         if (matchedGroup == genericActionButton) {
-            if (!CharSequenceSearch.contains(path, VIDEO_ACTION_BAR_PREFIX)) {
+            if (!Utils.contains(path, VIDEO_ACTION_BAR_PREFIX)) {
                 return false;
             }
             // Wrapper- and inner-level renders embed sibling data in their proto buffer, so
             // a single marker would match the whole action bar. Only fire on the leaf-button
             // render - path contains `|button.eml-fe|` but not the `button_inner` descendant.
-            if (!CharSequenceSearch.contains(path, "|button.eml-fe|") || CharSequenceSearch.contains(path, "button_inner")) {
+            if (!Utils.contains(path, "|button.eml-fe|") || Utils.contains(path, "button_inner")) {
                 return false;
             }
             // Dispatch by endpoint marker. Each of the four known buttons has a unique
@@ -165,7 +165,7 @@ public final class MusicActionButtonsFilter extends Filter {
             }
             return Settings.HIDE_SAVE_BUTTON.get();
         }
-        return CharSequenceSearch.contains(path, VIDEO_ACTION_BAR_PREFIX);
+        return Utils.contains(path, VIDEO_ACTION_BAR_PREFIX);
     }
 
     /**

@@ -1,6 +1,5 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
  * https://github.com/MorpheApp/morphe-patches/pull/2282
  *
  * Original hard forked code:
@@ -245,8 +244,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             val bottomSheetBuilderMethodCall : String
             AudioTrackOldBottomSheetFingerprint.instructionMatches.apply {
                 fun getMethodCall(offset: Int):String {
-                    val methodReference =
-                        this[offset].instruction.getReference<MethodReference>()!!
+                    val methodReference = this[offset].instruction.getReference<MethodReference>()!!
 
                     return methodReference.toString()
                         .replace(methodReference.definingClass, onItemClickClass)
@@ -348,8 +346,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         TapAndHoldSpeedFingerprint.let {
             it.method.apply {
                 val speedIndex = it.instructionMatches.last().index
-                val speedRegister =
-                    getInstruction<OneRegisterInstruction>(speedIndex).registerA
+                val speedRegister = getInstruction<OneRegisterInstruction>(speedIndex).registerA
 
                 addInstructions(
                     speedIndex + 1,

@@ -13,6 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.SpannableStringBuilderFingerprint
+import app.morphe.patches.shared.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -52,7 +53,7 @@ internal fun hookSpannableString(
         addInstructions(
             spannedIndex,
             """
-                invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(Ljava/lang/Object;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                 move-result-object v$spannedRegister
             """
         )
@@ -60,7 +61,7 @@ internal fun hookSpannableString(
     } else {
         addInstruction(
             spannedIndex++,
-            "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(Ljava/lang/Object;Ljava/lang/CharSequence;)V"
+            "invoke-static { v$spannedContextRegister, v$spannedRegister }, $classDescriptor->$methodName(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)V"
         )
     }
 }

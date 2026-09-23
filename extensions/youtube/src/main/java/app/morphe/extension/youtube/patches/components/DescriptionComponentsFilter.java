@@ -10,8 +10,8 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -248,7 +248,7 @@ public final class DescriptionComponentsFilter extends Filter {
         }
 
         if (matchedGroup == linksSection) {
-            return CharSequenceSearch.startsWith(path, INFOCARDS_SECTION_PATH) && CharSequenceSearch.contains(path, "button.e");
+            return Utils.startsWith(path, INFOCARDS_SECTION_PATH) && Utils.contains(path, "button.e");
         }
 
         if (matchedGroup == macroMarkersCarousel) {
@@ -265,7 +265,7 @@ public final class DescriptionComponentsFilter extends Filter {
         }
 
         if (matchedGroup == subscribeButton) {
-            return CharSequenceSearch.startsWith(path, INFOCARDS_SECTION_PATH);
+            return Utils.startsWith(path, INFOCARDS_SECTION_PATH);
         }
 
         if (matchedGroup == videoDetails) {

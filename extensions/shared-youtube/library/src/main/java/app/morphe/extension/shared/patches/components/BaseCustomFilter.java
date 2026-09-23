@@ -305,7 +305,7 @@ public abstract class BaseCustomFilter extends Filter {
 
         // Check for extra path components.
         for (String component : custom.extraPathComponents) {
-            if (!CharSequenceSearch.contains(path, component)) {
+            if (!Utils.contains(path, component)) {
                 return false;
             }
         }

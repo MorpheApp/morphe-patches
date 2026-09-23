@@ -8,8 +8,8 @@
 package app.morphe.extension.music.patches.components;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -74,8 +74,8 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         if (matchedGroup == listItem) {
             // Match root or nested list items, while avoiding `music_list_item.` used by
             // home feed track cards whose buffer can also contain download icon markers.
-            if (!CharSequenceSearch.startsWith(path, LIST_ITEM_ROOT_PREFIX)
-                    && !CharSequenceSearch.contains(path, "|" + LIST_ITEM_ROOT_PREFIX)) {
+            if (!Utils.startsWith(path, LIST_ITEM_ROOT_PREFIX)
+                    && !Utils.contains(path, "|" + LIST_ITEM_ROOT_PREFIX)) {
                 return false;
             }
             return bufferGroupList.check(buffer).isFiltered();

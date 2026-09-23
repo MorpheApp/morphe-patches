@@ -24,7 +24,6 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -215,13 +214,13 @@ public final class VideoActionButtonsFilter extends Filter {
                               FilterContentType contentType,
                               int contentIndex) {
         if (matchedGroup == likeSubscribeGlow) {
-            return CharSequenceSearch.startsWithAny(path, COMPACT_CHANNEL_BAR_PREFIX, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
+            return Utils.startsWithAny(path, COMPACT_CHANNEL_BAR_PREFIX, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
         } else if (matchedGroup == moreButton) {
             return true;
         } else if (matchedGroup == actionBarGroup) {
             if (Settings.HIDE_ACTION_BAR.get() || accessibilityGroupList.check(accessibility).isFiltered()) {
                 return true;
-            } else if (accessibility != null && accessibility.startsWith(ELEMENT_BUTTON_ID) && !CharSequenceSearch.contains(path, MORE_BUTTON_PATH)) {
+            } else if (accessibility != null && accessibility.startsWith(ELEMENT_BUTTON_ID) && !Utils.contains(path, MORE_BUTTON_PATH)) {
                 return bufferGroupList.check(buffer).isFiltered();
             }
             return false;

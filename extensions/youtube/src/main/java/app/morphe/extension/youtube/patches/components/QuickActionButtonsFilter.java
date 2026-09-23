@@ -8,8 +8,8 @@
 package app.morphe.extension.youtube.patches.components;
 
 import app.morphe.extension.shared.StringTrieSearch;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -126,7 +126,7 @@ public final class QuickActionButtonsFilter extends Filter {
                               FilterContentType contentType,
                               int contentIndex) {
 
-        if (!CharSequenceSearch.startsWith(path, QUICK_ACTIONS_PATH)) {
+        if (!Utils.startsWith(path, QUICK_ACTIONS_PATH)) {
             return false;
         }
 

@@ -26,7 +26,6 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.patches.components.CharSequenceSearch;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
@@ -190,7 +189,7 @@ public class CommentsFilter extends Filter {
                               FilterContentType contentType,
                               int contentIndex) {
         if (matchedGroup == comments) {
-            if (CharSequenceSearch.startsWith(path, VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
+            if (Utils.startsWith(path, VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
                 return Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();
             }
             return Settings.HIDE_COMMENTS_SECTION.get();
