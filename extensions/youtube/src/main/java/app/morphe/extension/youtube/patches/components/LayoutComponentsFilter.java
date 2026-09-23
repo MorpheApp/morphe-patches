@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -57,6 +58,11 @@ public final class LayoutComponentsFilter extends Filter {
 
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
+
+    @Nullable
+    private static List<?> channelTabs;
+    @Nullable
+    private static List<?> originalChannelTabs;
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
@@ -958,6 +964,56 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return false;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called before the channel tabs are copied into the tab list.
+     *
+     * @param tabs         Tab list that hidden channel tabs are removed from.
+     * @param originalTabs All channel tabs, including tabs that are later hidden.
+     */
+    public static void setChannelTabs(List<?> tabs, List<?> originalTabs) {
+        channelTabs = tabs;
+        originalChannelTabs = new ArrayList<>(originalTabs);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Removing channel tabs shifts the remaining tabs, so the index of the tab to select
+     * (such as the Videos tab opened from a video description) must be remapped.
+     * If the tab to select is hidden, the next visible tab is selected instead.
+     *
+     * @param selectedIndex Index of the tab to select, relative to all channel tabs.
+     * @return Index of the tab to select, relative to the visible channel tabs.
+     */
+    public static int getChannelTabSelectedIndex(int selectedIndex) {
+        List<?> tabs = channelTabs;
+        List<?> originalTabs = originalChannelTabs;
+        channelTabs = null;
+        originalChannelTabs = null;
+
+        try {
+            if (tabs == null || originalTabs == null || tabs.isEmpty()
+                    || tabs.size() == originalTabs.size()
+                    || selectedIndex < 0 || selectedIndex >= originalTabs.size()) {
+                return selectedIndex;
+            }
+
+            int visibleIndex = 0;
+            for (int i = 0; i < selectedIndex; i++) {
+                if (tabs.contains(originalTabs.get(i))) {
+                    visibleIndex++;
+                }
+            }
+
+            return Math.min(visibleIndex, tabs.size() - 1);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getChannelTabSelectedIndex failure", ex);
+            return selectedIndex;
+        }
     }
 
     /**

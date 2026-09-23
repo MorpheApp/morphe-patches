@@ -1061,6 +1061,36 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ExternalLabel("next_iterator", getInstruction(iteratorIndex))
                 )
             }
+
+            // Removing channel tabs shifts the remaining tabs,
+            // so the index of the tab to select must be remapped.
+            val selectTabIndex = indexOfFirstInstructionReversedOrThrow(
+                methodCall(
+                    definingClass = parameterTypes.first().toString(),
+                    parameters = listOf("I"),
+                    returnType = "V"
+                )
+            )
+            val selectTabRegister = getInstruction<FiveRegisterInstruction>(selectTabIndex).registerD
+
+            addInstructions(
+                selectTabIndex,
+                """
+                    invoke-static { v$selectTabRegister }, $LAYOUT_COMPONENTS_FILTER->getChannelTabSelectedIndex(I)I
+                    move-result v$selectTabRegister
+                """
+            )
+
+            val addAllIndex = indexOfFirstInstructionOrThrow(
+                methodCall(smali = "Ljava/util/List;->addAll(Ljava/util/Collection;)Z")
+            )
+            val addAllInstruction = getInstruction<FiveRegisterInstruction>(addAllIndex)
+
+            addInstruction(
+                addAllIndex,
+                "invoke-static { v${addAllInstruction.registerC}, v${addAllInstruction.registerD} }, " +
+                        "$LAYOUT_COMPONENTS_FILTER->setChannelTabs(Ljava/util/List;Ljava/util/List;)V"
+            )
         }
 
         // endregion
