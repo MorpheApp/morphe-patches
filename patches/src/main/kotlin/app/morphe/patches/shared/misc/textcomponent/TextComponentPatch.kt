@@ -77,7 +77,20 @@ val textComponentPatch = bytecodePatch(
                 )
             }
         }
+    }
+}
 
+/**
+ * Hooks the creation and cached lookup of YouTube Litho text Spans.
+ */
+internal val lithoSpannableStringPatch = bytecodePatch(
+    description = "Provides hooks into Litho text Spans for extension filtering."
+) {
+    dependsOn(
+        conversionContextPatch
+    )
+
+    execute {
         // region Hook code for creation and cached lookup of text Spans.
 
         // Alternatively the hook can be made in the creation of Spans in TextComponentSpec.
