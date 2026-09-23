@@ -11,6 +11,9 @@ import android.net.Uri;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.protobuf.MessageLite;
+
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
@@ -25,6 +28,14 @@ public class RestoreOldVideoActionBarPatch {
         // Methods are added during patching.
         void patch_setColdConfigData(String coldConfigData);
         void patch_setColdHashData(String coldHashData);
+    }
+
+    /**
+     * Interface to use obfuscated methods.
+     */
+    public interface RequestInterface {
+        // Method is added during patching.
+        String patch_getEndpoint();
     }
 
     private static final boolean FIX_VIDEO_ACTION_BAR = Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get()
@@ -43,6 +54,18 @@ public class RestoreOldVideoActionBarPatch {
     private static final String COLD_HASH_DATA_HEADER = "X-Youtube-Cold-Hash-Data";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
     private static boolean needFetch = true;
+    /**
+     * Field number of the continuation token in the body of 'next' requests.
+     * Watch page requests have no continuation. Comment requests do.
+     */
+    private static final int NEXT_REQUEST_CONTINUATION_FIELD = 8;
+    /**
+     * Time when the body of a watch page 'next' request was last built, or zero if none is pending.
+     * Comment requests also use the 'next' endpoint, and overriding their config
+     * prevents newly posted comments from showing until the comment sorting is changed.
+     */
+    private static volatile long watchNextRequestTime;
+    private static final long WATCH_NEXT_REQUEST_TIMEOUT_MILLISECONDS = 10_000;
 
     private static void fetchRequestIfNeeded(String url, Map<String, String> requestHeaders) {
         if (Settings.INNERTUBE_COLD_CONFIG_DATA.isSetToDefault() || Settings.INNERTUBE_COLD_HASH_DATA.isSetToDefault()) {
@@ -89,7 +112,7 @@ public class RestoreOldVideoActionBarPatch {
 
             Uri uri = Uri.parse(url);
             String path = uri.getPath();
-            if (path != null && path.contains("next") && requestHeaders != null) {
+            if (path != null && path.contains("next") && requestHeaders != null && isWatchNextRequest()) {
                 if (requestHeaders.get(COLD_CONFIG_DATA_HEADER) != null) {
                     String coldConfigData = Settings.INNERTUBE_COLD_CONFIG_DATA.get();
                     if (Utils.isNotEmpty(coldConfigData)) {
@@ -106,6 +129,82 @@ public class RestoreOldVideoActionBarPatch {
         }
 
         return requestHeaders;
+    }
+
+    /**
+     * Whether a 'next' request is for the watch page, and not for comments.
+     */
+    private static boolean isWatchNextRequest() {
+        final long requestTime = watchNextRequestTime;
+        watchNextRequestTime = 0;
+        return requestTime != 0
+                && System.currentTimeMillis() - requestTime < WATCH_NEXT_REQUEST_TIMEOUT_MILLISECONDS;
+    }
+
+    /**
+     * Injection point.
+     * Called when the body of an InnerTube request is built.
+     */
+    public static void onBuildRequestBody(MessageLite body, RequestInterface request) {
+        try {
+            if (FIX_VIDEO_ACTION_BAR && body != null && request != null
+                    && "next".equals(request.patch_getEndpoint())
+                    && !hasTopLevelField(body.toByteArray(), NEXT_REQUEST_CONTINUATION_FIELD)) {
+                watchNextRequestTime = System.currentTimeMillis();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onBuildRequestBody failure", ex);
+        }
+    }
+
+    /**
+     * @return If the serialized protocol buffer message has a top level field with the given number.
+     *         If the message cannot be read, true is returned.
+     */
+    private static boolean hasTopLevelField(byte[] message, int fieldNumber) {
+        int position = 0;
+        while (position < message.length) {
+            long tag = 0;
+            int shift = 0;
+            int value;
+            do {
+                if (position >= message.length) return true;
+                value = message[position++] & 0xFF;
+                tag |= (long) (value & 0x7F) << shift;
+                shift += 7;
+            } while ((value & 0x80) != 0);
+
+            if ((tag >>> 3) == fieldNumber) return true;
+
+            switch ((int) (tag & 0x7)) {
+                case 0: // Varint.
+                    do {
+                        if (position >= message.length) return true;
+                    } while ((message[position++] & 0x80) != 0);
+                    break;
+                case 1: // 64-bit.
+                    position += 8;
+                    break;
+                case 2: // Length delimited.
+                    long length = 0;
+                    shift = 0;
+                    do {
+                        if (position >= message.length) return true;
+                        value = message[position++] & 0xFF;
+                        length |= (long) (value & 0x7F) << shift;
+                        shift += 7;
+                    } while ((value & 0x80) != 0);
+                    if (length > message.length - position) return true;
+                    position += (int) length;
+                    break;
+                case 5: // 32-bit.
+                    position += 4;
+                    break;
+                default:
+                    return true;
+            }
+        }
+        return false;
     }
 
     /**
