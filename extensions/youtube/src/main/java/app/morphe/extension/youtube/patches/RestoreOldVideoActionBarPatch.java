@@ -8,10 +8,10 @@ package app.morphe.extension.youtube.patches;
 
 import android.net.Uri;
 
+import com.google.protobuf.MessageLite;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.google.protobuf.MessageLite;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -163,12 +163,14 @@ public class RestoreOldVideoActionBarPatch {
      */
     private static boolean hasTopLevelField(byte[] message, int fieldNumber) {
         int position = 0;
-        while (position < message.length) {
+        final int end = message.length;
+        while (position < end) {
             long tag = 0;
             int shift = 0;
             int value;
             do {
-                if (position >= message.length) return true;
+                // A varint is at most 10 bytes; a larger shift would wrap (shift & 63) and corrupt the tag.
+                if (position >= end || shift >= 64) return true;
                 value = message[position++] & 0xFF;
                 tag |= (long) (value & 0x7F) << shift;
                 shift += 7;
@@ -179,28 +181,34 @@ public class RestoreOldVideoActionBarPatch {
             switch ((int) (tag & 0x7)) {
                 case 0: // Varint.
                     do {
-                        if (position >= message.length) return true;
+                        if (position >= end) return true;
                     } while ((message[position++] & 0x80) != 0);
                     break;
                 case 1: // 64-bit.
+                    // Truncated message: subtracting avoids int overflow and stops position running past the end.
+                    if (end - position < 8) return true;
                     position += 8;
                     break;
                 case 2: // Length delimited.
                     long length = 0;
                     shift = 0;
                     do {
-                        if (position >= message.length) return true;
+                        // Same 10-byte varint limit as the tag loop above.
+                        if (position >= end || shift >= 64) return true;
                         value = message[position++] & 0xFF;
                         length |= (long) (value & 0x7F) << shift;
                         shift += 7;
                     } while ((value & 0x80) != 0);
-                    if (length > message.length - position) return true;
+                    // A 10-byte varint can set bit 63, making length negative and moving position backwards.
+                    if (length < 0 || length > end - position) return true;
                     position += (int) length;
                     break;
                 case 5: // 32-bit.
+                    // Truncated message: same overflow-safe check as the 64-bit case.
+                    if (end - position < 4) return true;
                     position += 4;
                     break;
-                default:
+                default: // Groups (3, 4) and invalid wire types (6, 7): treat as unreadable.
                     return true;
             }
         }
