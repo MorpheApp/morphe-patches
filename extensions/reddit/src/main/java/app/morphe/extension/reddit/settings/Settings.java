@@ -42,6 +42,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_TRENDING_SHELVES = new BooleanSetting("morphe_hide_trending_shelves", FALSE, true);
     public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
+    public static final BooleanSetting SHOW_FLAIRS_IN_HOME_FEED = new BooleanSetting("morphe_show_flairs_in_home_feed", FALSE, true);
     public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
 
     // Miscellaneous
