@@ -125,9 +125,7 @@ val channelSearchPatch = bytecodePatch(
         // Only the default hint is replaced, not the hint of Shorts or playlist search.
         SearchBoxHintFingerprint.let {
             it.method.apply {
-                val index = indexOfFirstInstructionOrThrow(
-                    it.instructionMatches.last().index, Opcode.MOVE_RESULT_OBJECT
-                )
+                val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstructions(

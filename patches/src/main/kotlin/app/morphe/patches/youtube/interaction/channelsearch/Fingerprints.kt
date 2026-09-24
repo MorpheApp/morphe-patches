@@ -10,11 +10,13 @@ package app.morphe.patches.youtube.interaction.channelsearch
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * Every browse page is shown by this one fragment, and the endpoint it is handed names the page.
@@ -58,7 +60,8 @@ internal object SearchBoxHintFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.STRING, "shorts_search_hint"),
         resourceLiteral(ResourceType.STRING, "playlists_search_hint"),
-        resourceLiteral(ResourceType.STRING, "search_hint")
+        resourceLiteral(ResourceType.STRING, "search_hint"),
+        opcode(Opcode.MOVE_RESULT_OBJECT)
     ),
     custom = { method, _ ->
         method.parameterTypes.firstOrNull() == "Landroid/content/Context;"
