@@ -18,7 +18,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.PatchException
+import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
@@ -44,9 +46,11 @@ import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.removeFromParent
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -68,6 +72,44 @@ private const val EXTENSION_CLASS =
 private const val EXTENSION_SETTING_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$SettingsController;"
 
+private val hideSearchAppShortcutOption = booleanOption(
+    key = "hideSearchAppShortcut",
+    default = false,
+    title = "Hide Search app shortcut",
+    description = "Permanently hides the shortcut to open Search when long pressing the app icon in your launcher."
+)
+
+private val hideSubscriptionsAppShortcutOption = booleanOption(
+    key = "hideSubscriptionsAppShortcut",
+    default = false,
+    title = "Hide Subscriptions app shortcut",
+    description = "Permanently hides the shortcut to open Subscriptions when long pressing the app icon in your launcher."
+)
+
+private val navigationBarResourcePatch = resourcePatch {
+    execute {
+        val hideSearchAppShortcut by hideSearchAppShortcutOption
+        val hideSubscriptionsAppShortcut by hideSubscriptionsAppShortcutOption
+
+        // Verify the file has the expected nodes, even if the patch options are off.
+        document("res/xml/main_shortcuts.xml").use { document ->
+            mapOf(
+                "search-shortcut" to hideSearchAppShortcut,
+                "subscriptions-shortcut" to hideSubscriptionsAppShortcut
+            ).forEach { (shortcutId, hide) ->
+                val shortcut = document.childNodes.findElementByAttributeValueOrThrow(
+                    "android:shortcutId",
+                    shortcutId
+                )
+
+                if (hide == true) {
+                    shortcut.removeFromParent()
+                }
+            }
+        }
+    }
+}
+
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
     description = "Adds options to hide and change the bottom navigation bar (such as the Shorts button) "
@@ -81,9 +123,13 @@ val navigationBarPatch = bytecodePatch(
         clientContextHookPatch,
         toolBarHookPatch,
         fixProtoLibraryPatch,
+        navigationBarResourcePatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
+
+    hideSearchAppShortcutOption()
+    hideSubscriptionsAppShortcutOption()
 
     execute {
         val navPreferences = mutableSetOf(
