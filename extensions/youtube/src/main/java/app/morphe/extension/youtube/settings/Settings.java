@@ -135,6 +135,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_HORIZONTAL_SHELVES = new BooleanSetting("morphe_hide_horizontal_shelves", TRUE);
     public static final BooleanSetting HIDE_HYPED_LABEL = new BooleanSetting("morphe_hide_hyped_label", FALSE);
     public static final BooleanSetting HIDE_IMAGE_SHELF = new BooleanSetting("morphe_hide_image_shelf", TRUE);
+    public static final BooleanSetting HIDE_HISTORY_SHELF = new BooleanSetting("morphe_hide_history_shelf", FALSE);
     public static final BooleanSetting HIDE_INVITE_TO_MESSAGE_CARD = new BooleanSetting("morphe_hide_invite_to_message_card", FALSE);
     public static final BooleanSetting HIDE_LATEST_VIDEOS_BUTTON = new BooleanSetting("morphe_hide_latest_videos_button", FALSE);
     public static final BooleanSetting HIDE_MIX_PLAYLISTS = new BooleanSetting("morphe_hide_mix_playlists", FALSE);

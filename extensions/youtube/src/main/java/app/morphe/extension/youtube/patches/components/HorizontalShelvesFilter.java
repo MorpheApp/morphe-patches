@@ -51,6 +51,11 @@ public final class HorizontalShelvesFilter extends Filter {
                         "shopping_item_card_list"
                 ),
                 new ByteArrayFilterGroup(
+                        Settings.HIDE_HISTORY_SHELF,
+                        // Browse id of the History page, opened by the shelf header.
+                        "FEhistory"
+                ),
+                new ByteArrayFilterGroup(
                         Settings.HIDE_MOVIES_SECTION,
                         "movie_card.e"
                 ),
