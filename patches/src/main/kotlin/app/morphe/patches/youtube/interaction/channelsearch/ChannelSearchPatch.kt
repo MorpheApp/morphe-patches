@@ -26,6 +26,7 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -119,6 +120,25 @@ val channelSearchPatch = bytecodePatch(
             0,
             "invoke-static { }, $EXTENSION_CLASS->clearBrowseId()V"
         )
+
+        // The search box otherwise still reads as a search of all of YouTube.
+        // Only the default hint is replaced, not the hint of Shorts or playlist search.
+        SearchBoxHintFingerprint.let {
+            it.method.apply {
+                val index = indexOfFirstInstructionOrThrow(
+                    it.instructionMatches.last().index, Opcode.MOVE_RESULT_OBJECT
+                )
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->getSearchHint(Ljava/lang/String;)Ljava/lang/String;
+                        move-result-object v$register
+                    """
+                )
+            }
+        }
 
         SearchSubmitFingerprint.method.addInstructionsWithLabels(
             0,

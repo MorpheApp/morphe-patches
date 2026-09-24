@@ -11,6 +11,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.parametersMatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
@@ -44,6 +46,23 @@ internal object SearchResultsFragmentOnCreateViewFingerprint : Fingerprint(
     filters = listOf(
         string("search_cache_key")
     )
+)
+
+/**
+ * Picks the hint of the search box. The default hint is loaded last, after the hints of
+ * Shorts search and playlist search.
+ */
+internal object SearchBoxHintFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        resourceLiteral(ResourceType.STRING, "shorts_search_hint"),
+        resourceLiteral(ResourceType.STRING, "playlists_search_hint"),
+        resourceLiteral(ResourceType.STRING, "search_hint")
+    ),
+    custom = { method, _ ->
+        method.parameterTypes.firstOrNull() == "Landroid/content/Context;"
+    }
 )
 
 /**

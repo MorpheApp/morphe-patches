@@ -105,6 +105,23 @@ public final class ChannelSearchPatch {
 
     /**
      * Injection point.
+     * <p>
+     * Called only for the default hint, not for the hint of Shorts or playlist search.
+     */
+    public static String getSearchHint(String original) {
+        try {
+            if (Settings.CHANNEL_SEARCH.get() && isChannelId(currentBrowseId)) {
+                return str("morphe_channel_search_hint");
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "getSearchHint failure", ex);
+        }
+
+        return original;
+    }
+
+    /**
+     * Injection point.
      *
      * @return Whether the global search was replaced with a search inside the current channel.
      */
