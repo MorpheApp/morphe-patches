@@ -972,6 +972,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide channel tab
 
         ChannelTabRendererFingerprint.method.apply {
+            val channelTabMatch = ChannelTabRendererFingerprint.instructionMatches[1]
+            val selectedIndexRegister = channelTabMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+            addInstructions(
+                channelTabMatch.index,
+                """
+                    invoke-static { v$selectedIndexRegister }, $LAYOUT_COMPONENTS_FILTER->getChannelTabSelectedIndex(I)I
+                    move-result v$selectedIndexRegister
+                """
+            )
+
             val iteratorIndex = indexOfFirstInstructionReversedOrThrow(
                 methodCall(name = "hasNext")
             )
@@ -1072,26 +1083,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ExternalLabel("next_iterator", getInstruction(iteratorIndex))
                 )
             }
-
-            // Removing channel tabs shifts the remaining tabs,
-            // so the index of the tab to select must be remapped.
-            // The tab is selected by a call on the first parameter that is given the index
-            // parameter as its first argument. Its other parameters differ between versions.
-            val selectedIndexRegister = implementation!!.registerCount - 1
-            val selectTabIndex = indexOfFirstInstructionReversedOrThrow {
-                val reference = getReference<MethodReference>()
-                reference?.definingClass == parameterTypes.first().toString()
-                        && reference.parameterTypes.firstOrNull()?.toString() == "I"
-                        && (this as? FiveRegisterInstruction)?.registerD == selectedIndexRegister
-            }
-
-            addInstructions(
-                selectTabIndex,
-                """
-                    invoke-static { v$selectedIndexRegister }, $LAYOUT_COMPONENTS_FILTER->getChannelTabSelectedIndex(I)I
-                    move-result v$selectedIndexRegister
-                """
-            )
 
             val addAllIndex = indexOfFirstInstructionOrThrow(
                 methodCall(smali = "Ljava/util/List;->addAll(Ljava/util/Collection;)Z")
