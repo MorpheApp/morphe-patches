@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.Word;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -41,12 +40,12 @@ public final class SimpMusicProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         final String videoId = VideoInformation.getVideoId();
         if (videoId == null || videoId.isEmpty()) {
             return null;
         }
-        return fetchByVideoId(videoId);
+        return FetchResult.of(fetchByVideoId(videoId));
     }
 
     @Nullable
@@ -142,7 +141,7 @@ public final class SimpMusicProvider implements LyricsProvider {
         }
         List<LyricsLine> lines = collapseSpaces(result.lines);
         if (offsetHolder[0] != 0) {
-            lines = applyOffset(lines, offsetHolder[0]);
+            lines = LyricsRequests.applyOffset(lines, offsetHolder[0]);
         }
         return new Lyrics(lines, name(), true,
                 null, null, null,
@@ -217,28 +216,5 @@ public final class SimpMusicProvider implements LyricsProvider {
             }
         }
         return result;
-    }
-
-    private static List<LyricsLine> applyOffset(List<LyricsLine> lines, long offsetMs) {
-        List<LyricsLine> adjusted = new ArrayList<>(lines.size());
-        for (LyricsLine line : lines) {
-            long newStart = line.startTimeMs() + offsetMs;
-            long newEnd = line.endTimeMs() != LyricsLine.NO_TIME
-                    ? line.endTimeMs() + offsetMs : LyricsLine.NO_TIME;
-            List<Word> adjustedWords = new ArrayList<>();
-            if (line.words() != null) {
-                for (Word word : line.words()) {
-                    adjustedWords.add(new Word(
-                            word.startMs() + offsetMs,
-                            word.endMs() + offsetMs,
-                            word.text(),
-                            word.romaji(),
-                            word.endsWithSpace()));
-                }
-            }
-            adjusted.add(new LyricsLine(newStart, newEnd, line.text(), adjustedWords,
-                    line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
-        }
-        return adjusted;
     }
 }

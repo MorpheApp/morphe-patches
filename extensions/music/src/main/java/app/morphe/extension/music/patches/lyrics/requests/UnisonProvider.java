@@ -47,7 +47,7 @@ public final class UnisonProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         final String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
             return null;
@@ -57,7 +57,7 @@ public final class UnisonProvider implements LyricsProvider {
         final int duration = track.durationSeconds();
         final String album = track.album();
 
-        return fetchByVideoId(videoId, title, artist, duration, album);
+        return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));
     }
 
     @Nullable

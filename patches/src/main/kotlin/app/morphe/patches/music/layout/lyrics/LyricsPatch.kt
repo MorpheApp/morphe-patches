@@ -51,7 +51,7 @@ private const val LYRICS_PANEL_FILTER =
 @Suppress("unused")
 val lyricsPatch = bytecodePatch(
     name = "Third-party lyrics",
-    description = "Adds an option to show synced lyrics with experience enhancement from 15+ providers in the lyrics panel."
+    description = "Adds an option to show synced lyrics with experience enhancement from 16+ providers in the lyrics panel."
 ) {
     dependsOn(
         sharedExtensionPatch,

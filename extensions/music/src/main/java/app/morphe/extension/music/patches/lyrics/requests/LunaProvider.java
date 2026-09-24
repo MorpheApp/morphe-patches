@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
@@ -55,13 +54,13 @@ public final class LunaProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
-        List<Lyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : candidates.get(0);
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
+        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         List<JSONObject> tracks = searchTracks(track);
         if (tracks.isEmpty()) {
             return Collections.emptyList();
@@ -89,7 +88,7 @@ public final class LunaProvider implements LyricsProvider {
             }
         }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     private static String firstArtistName(JSONObject trackObj) {
@@ -208,7 +207,14 @@ public final class LunaProvider implements LyricsProvider {
             if (isOriginalTrack(b)) sb += 10;
             return sb - sa;
         });
-        return trackList;
+        List<JSONObject> passed = new ArrayList<>();
+        for (JSONObject item : trackList) {
+            if (scoreCandidate(item, track) >= LyricsRequests.SOFT_MIN) {
+                passed.add(item);
+            }
+        }
+        return passed.isEmpty() && !trackList.isEmpty()
+                ? List.of(trackList.get(0)) : passed;
     }
 
     @Nullable
@@ -308,7 +314,7 @@ public final class LunaProvider implements LyricsProvider {
         }
 
         if (result.isEmpty()) {
-            String sysLang = Locale.getDefault().getLanguage();
+            String sysLang = LyricsRequests.deviceLanguage();
             if ("zh".equals(sysLang)) {
                 JSONObject translations = lyricInfo.optJSONObject("translations");
                 if (translations != null) {

@@ -84,7 +84,7 @@ public final class SpotifyProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         final String spDc = Settings.SPOTIFY_TOKEN.get();
         if (spDc.trim().isEmpty()) {
             return null;
@@ -102,7 +102,7 @@ public final class SpotifyProvider implements LyricsProvider {
         }
 
         final String rawJson = lyricsResponse.toString();
-        return parseLyrics(lyricsResponse, rawJson, sourceUrl);
+        return FetchResult.blind(parseLyrics(lyricsResponse, rawJson, sourceUrl));
     }
 
     @Nullable

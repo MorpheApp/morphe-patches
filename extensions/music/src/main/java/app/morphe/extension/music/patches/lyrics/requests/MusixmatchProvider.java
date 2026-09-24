@@ -62,13 +62,13 @@ public final class MusixmatchProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
-        final List<Lyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : candidates.get(0);
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        final List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
+        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         final String token = ensureToken();
         if (token == null) {
             return Collections.emptyList();
@@ -86,6 +86,8 @@ public final class MusixmatchProvider implements LyricsProvider {
         }
 
         final List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        Lyrics firstAccepted = null;
+        int firstAcceptedScore = -1;
         for (JSONObject trackObj : trackObjs) {
             final int trackId = trackObj.optInt("track_id", -1);
             if (trackId <= 0) continue;
@@ -102,12 +104,21 @@ public final class MusixmatchProvider implements LyricsProvider {
                         trackObj.optString("artist_name", ""),
                         trackObj.optInt("track_length", 0),
                         lyrics, track);
-                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
-                break;
+                if (firstAccepted == null) {
+                    firstAccepted = lyrics;
+                    firstAcceptedScore = score;
+                }
+                if (score >= LyricsRequests.SOFT_MIN + LyricsRequests.syncRank(lyrics)) {
+                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+                    break;
+                }
             }
         }
+        if (scored.isEmpty() && firstAccepted != null) {
+            scored.add(new Lyrics.ScoredLyrics(firstAcceptedScore, firstAccepted));
+        }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     @Nullable

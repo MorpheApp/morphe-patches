@@ -156,22 +156,7 @@ public final class LyricsFileParser {
             text = builder.toString();
         }
 
-        if (words.size() > 1) {
-            for (int i = 0; i < words.size() - 1; i++) {
-                Word word = words.get(i);
-                if (word.endMs() == LyricsLine.NO_TIME) {
-                    words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(), word.text()));
-                }
-            }
-        }
-        if (!words.isEmpty()) {
-            int last = words.size() - 1;
-            Word lastWord = words.get(last);
-            if (lastWord.endMs() == LyricsLine.NO_TIME) {
-                words.set(last, new Word(lastWord.startMs(),
-                        lastWord.startMs() + 800, lastWord.text()));
-            }
-        }
+        LrcParser.inferMissingWordEnds(words, 800);
 
         return new LyricsLine(asLong(map.get("start_ms")), text, words);
     }

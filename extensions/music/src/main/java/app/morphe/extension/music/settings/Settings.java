@@ -191,6 +191,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting DEEZER_ARL = new StringSetting("morphe_music_deezer_arl", "", true, parent(LYRICS_ENABLED));
     public static final StringSetting MUSIXMATCH_TOKEN = new StringSetting("morphe_music_musixmatch_token", "", true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TRANSLATE = new BooleanSetting("morphe_music_lyrics_translate", FALSE, true, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_TRANSLATE_ONLY = new BooleanSetting("morphe_music_lyrics_translate_only", FALSE, true, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_TRANSLATION_LANGUAGE = new StringSetting("morphe_music_lyrics_translation_language", "DEFAULT", true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_TAP_TO_SEEK = new BooleanSetting("morphe_music_lyrics_tap_to_seek", TRUE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_COPY_BUTTON = new BooleanSetting("morphe_music_lyrics_show_copy_button", TRUE, true, parent(LYRICS_ENABLED));
@@ -204,6 +205,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_HIDE_INFO = new BooleanSetting("morphe_music_lyrics_hide_info", FALSE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SWAP_TRANS_ROMA = new BooleanSetting("morphe_music_lyrics_swap_trans_roma", FALSE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_ROMANIZE = new BooleanSetting("morphe_music_lyrics_romanize", FALSE, true, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_ROMANIZE_ONLY = new BooleanSetting("morphe_music_lyrics_romanize_only", FALSE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_WORD_SYNC = new BooleanSetting("morphe_music_lyrics_word_sync", TRUE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_PLAYED = new BooleanSetting("morphe_music_lyrics_hide_played", FALSE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_UNPLAYED = new BooleanSetting("morphe_music_lyrics_hide_unplayed", FALSE, true, parent(LYRICS_ENABLED));
@@ -215,11 +217,11 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_USE_EMBEDDED = new BooleanSetting("morphe_music_lyrics_use_embedded", TRUE, true, parent(LYRICS_ENABLED));
     public static final StringSetting LYRICS_CAPTION_COOKIES = new StringSetting("morphe_music_lyrics_caption_cookies", "", true, parent(LYRICS_ENABLED));
     public static final String DEFAULT_LYRICS_REGEX =
-            "(?i)\\s*[（(\\[]((official\\s+)?(video|audio|music\\s+video|lyrics?\\s+video|visualizer|mv))[）)\\]]"
-            + "|(?i)\\s*[（(\\[]((\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?)[）)\\]]"
-            + "|(?i)\\s*[（(\\[](mono|stereo|hq|hd|4k|8k)[）)\\]]"
-            + "|[（(][^）)]*(?:主题曲|片尾曲|插曲|片头曲|广告曲|推广曲)[^）)]*[）)]"
-            + "|[（(][^）)]*[\\uff1a:][^）)]*[）)]"
+            "(?i)\\s*[（(\\[【][^）)\\]】]*?(?:official\\s+)?(?:video|audio|music\\s+video|lyrics?\\s+video|visualizer|mv)[^）)\\]】]*[）)\\]】]"
+            + "|(?i)\\s*[（(\\[【][^）)\\]】]*?remaster(?:ed)?(?:\\s+\\d{4})?[^）)\\]】]*[）)\\]】]"
+            + "|(?i)\\s*[（(\\[【](?:mono|stereo|hq|hd|4k|8k)[）)\\]】]"
+            + "|[（(\\[【][^）)\\]】]*(?:主题曲|片尾曲|插曲|片头曲|广告曲|推广曲)[^）)\\]】]*[）)\\]】]"
+            + "|[（(\\[【][^）)\\]】]*[\\uff1a:][^）)\\]】]*[）)\\]】]"
             + "|(?i)\\s*-\\s*topic$";
     public static final StringSetting LYRICS_CUSTOM_REGEX = new StringSetting("morphe_music_lyrics_custom_regex", DEFAULT_LYRICS_REGEX, true, parent(LYRICS_ENABLED));
     public static final String DEFAULT_LYRICS_TEXT_FILTER =
@@ -249,29 +251,29 @@ public class Settings extends SharedYouTubeSettings {
             + ").*";
     public static final StringSetting LYRICS_TEXT_FILTER = new StringSetting("morphe_music_lyrics_text_filter", DEFAULT_LYRICS_TEXT_FILTER, true, parent(LYRICS_ENABLED));
     public static final String DEFAULT_LYRICS_CREDIT_LINE_REGEX =
-           "A&R,A.Guita,AU,Additional Drums Engineering,Administer,Administered,Administered By,Administering,Administers,"
+           "1st Violin,2nd Violin,A&R,A.Guita,AU,Additional Drums Engineering,Administer,Administered,Administered By,Administering,Administers,"
             + "Agency,Album,All Instruments,Arranged,Arranged By,Arranger,Arrangers,Arranging,"
             + "Artist,Artists,Assistant Engineer,Assistant Engineers,Assistant Mix Engineer,"
             + "Assistant Mix Engineers,Author,Authoring,Authors,Autotune,Backed,Background,"
-            + "Background Vocal,Background Vocals,Backing,Bass,Bass Guitar,COS,CV,Child,Child Choir,"
+            + "Background Vocal,Background Vocals,Backing,Backing Vocals 和音,Bass,Bass 贝斯,Bass Guitar,Brass Arrange,Brass Band,COS,CV,Cello,Cello 大提琴,Child,Child Choir,"
             + "Child Choir Instruction,Child Lead,Children,Composed By,Composer,Composers,"
-            + "Composing,Copyright,Cover,Credit,DJ,Digital Edited,Digital Edited By,"
+            + "Composing,Conductor,Copyright,Cover,Credit,DJ,Digital Edited,Digital Edited By,"
             + "Digital Editing,Directed,Directed By,Directing,Director,Directors,Drum,Drum programming,Drums,"
             + "Duration,E.Guitar,Edited,Edited By,Editing Engineer,Editing Engineers,Editor,"
-            + "Editors,Engineer,Engineered,Engineered By,Engineering,Engineers,Executed,Executing,"
-            + "Executive,Guitar,Group,Harmony,ISRC,Keyboard,LA,Lang,Language,Lead,Leader,Leaders,"
-            + "Length,Lyric,Lyricist,Lyricists,Lyrics,Lyrics By,MV,Main Sample,Manufactory,"
-            + "Manufactured,Manufactured By,Manufacturing,Master,Mastered,Mastered By,Mastering,"
+            + "Editors,Electric Guitar,Engineer,Engineered,Engineered By,Engineering,Engineers,Executed,Executing,"
+            + "Executive,First Violin 第一小提琴,Guitar,Guitars,Guitars 吉他,Group,Harmony,ISRC,Instrumental Technician,Keyboard,Keyboard/Music Arrangement 键盘与编曲,LA,Label A&R,Lang,Language,Lead,Leader,Leaders,"
+            + "Length,Lyric,Lyricist,Lyricist 词,Lyricist 词作,Lyricists,Lyrics,Lyrics By,MV,Main Sample,Manufactory,"
+            + "Manufactured,Manufactured By,Manufacturing,Management,Master,Mastered,Mastered By,Mastering,Mastering 母带后期处理,"
             + "Mastering Engineer,Mastering Engineers,Masters,Mix Engineer,Mix Engineered by,Mixed,"
-            + "Mixed By,Mixer,Mixers,Mixing,Mixing Engineer,Mixing Studio,Music,OA,OC,OP,OT,Original Lyrics by,"
+            + "Mixed By,Mixer,Mixers,Mixing,Mixing Engineer,Mixing Studio,Music,Musical Director & Mixing Engineer,OA,OC,OP,OT,Original Lyrics by,"
             + "Original Title,Original Publisher,Original Writer,PGM,PV,Percussion,Performed,"
-            + "Performed By,Performer,Performers,Performing,Pro-Tools Editing,Produced,Produced By,"
-            + "Producer,Producers,Producing,Program,Programming by,Published,Published By,Publisher,"
+            + "Performed By,Performer,Performers,Performing,Piano,Pro-Tools Editing,Produced,Produced By,"
+            + "Producer,Producer 制作人,Producers,Producing,Program,Programming by,Published,Published By,Publisher,"
             + "Publishers,Publishing,Publishing Group,Publishing Group Administered By,QQ,RE,Rap,"
-            + "Record,Recorded,Recorded At,Recorded By,Recorder,Recorders,Recording,Recording Engineer,Recordings,"
-            + "Records,SP,Sample,Sampled,Samples,Sampling,Singer,Singers,Singing,Song,Strings,"
+            + "Record,Recorded,Recorded At,Recorded By,Recorder,Recorders,Recording,Recording & Mixing Engineer,Recording Engineer,Recordings,"
+            + "Records,SP,Sample,Sampled,Samples,Sampling,Second Violin 第二小提琴,Singer,Singers,Singing,Song,String Arrangement 弦乐编写,String Recording,String Recording Engineer 弦乐录音师,String Recording Studio 弦乐录音棚,Strings,Strings Arrangement,Strings Arrangement & Piano,Strings Direction,"
             + "Studio,Sub,Sub Publisher,Subs,Subscribe,Subscribed,Subscriber,Subscribers,Surround,"
-            + "Synthesizer,Synthesizers,TA,Title,VE,Ver,Version,Vocal,Vocal Arrangement,"
+            + "Synthesizer,Synthesizers,TA,Title,VE,Ver,Version,Viola,Viola 中提琴,Vocal,Vocal Arrangement,"
             + "Vocal Directed,Vocal Directed By,Vocal Director,Vocal Engineer,Vocal Engineering,"
             + "Vocal Produced,Vocal Produced By,Vocal Producer,Vocal Producers,Vocals,"
             + "Vocals Arrangement,Voice,Written,Written By,Writter,"

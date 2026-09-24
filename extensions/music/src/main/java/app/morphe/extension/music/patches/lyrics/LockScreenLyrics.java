@@ -152,9 +152,7 @@ public final class LockScreenLyrics {
         if (builder == null) {
             return null;
         }
-        if (title != null) {
-            builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
-        }
+        builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
         String artist = realArtist == null ? "" : realArtist;
         String trackTitle = realTitle;
         if (matched && trackTitle != null && !trackTitle.isEmpty()) {

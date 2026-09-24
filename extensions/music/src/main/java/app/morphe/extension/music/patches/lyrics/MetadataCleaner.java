@@ -14,14 +14,18 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.requests.CharactersConverter;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
@@ -125,68 +129,111 @@ final class MetadataCleaner {
         return collapseWhitespace(applyRegex(album, resolveSetting(Settings.LYRICS_CUSTOM_REGEX.get())));
     }
 
+    @Nullable
+    private static volatile String cachedRegexSource;
+    @Nullable
+    private static volatile Pattern cachedRegex;
+
     static String applyRegex(String input, String regex) {
         if (regex == null || regex.trim().isEmpty()) {
             return input;
         }
         try {
-            return CharactersConverter.normalizePreserveCase(input).replaceAll(regex, "");
+            Pattern pattern = cachedRegex;
+            if (pattern == null || !regex.equals(cachedRegexSource)) {
+                pattern = Pattern.compile(regex);
+                cachedRegex = pattern;
+                cachedRegexSource = regex;
+            }
+            return pattern.matcher(CharactersConverter.normalizePreserveCase(input)).replaceAll("");
         } catch (Exception ex) {
             Logger.printDebug(() -> "Failed to apply regex", ex);
             return input;
         }
     }
 
-    static String[] parseTitleAndArtist(@Nullable String rawTitle) {
-        if (rawTitle == null) {
-            return null;
-        }
-        int idx = rawTitle.indexOf(" - ");
-        if (idx <= 0 || idx >= rawTitle.length() - 3) {
-            return null;
-        }
-        String artist = cleanArtist(rawTitle.substring(0, idx).trim());
-        String title = cleanTitle(rawTitle.substring(idx + 3).trim());
-        if (artist.isEmpty() || title.isEmpty()) {
-            return null;
-        }
-        return new String[]{ artist, title };
-    }
-
-    static String[] parseCleanTitleAndArtist(@Nullable String rawTitle, @Nullable String rawArtist) {
-        String[] parsed = parseTitleAndArtist(rawTitle);
-        if (parsed != null) {
-            return parsed;
-        }
-        return new String[] { cleanArtist(rawArtist), cleanTitle(rawTitle) };
-    }
+    private static final String DASH_SEPARATOR = " - ";
 
     @Nullable
-    static TrackInfo swapTitleAndArtist(TrackInfo track, @Nullable String rawTitle) {
+    private static String[] splitDashRaw(@Nullable String rawTitle) {
         if (rawTitle == null) {
             return null;
         }
-        int idx = rawTitle.indexOf(" - ");
-        if (idx <= 0 || idx >= rawTitle.length() - 3) {
+        int idx = rawTitle.indexOf(DASH_SEPARATOR);
+        if (idx <= 0 || idx >= rawTitle.length() - DASH_SEPARATOR.length()) {
             return null;
         }
         String left = rawTitle.substring(0, idx).trim();
-        String right = rawTitle.substring(idx + 3).trim();
-        // Original split: left=artist, right=title → swapped: left=title, right=artist
-        String swappedArtist = cleanArtist(right);
-        String swappedTitle = cleanTitle(left);
-        if (swappedArtist.isEmpty() || swappedTitle.isEmpty()) {
+        String right = rawTitle.substring(idx + DASH_SEPARATOR.length()).trim();
+        if (left.isEmpty() || right.isEmpty()) {
             return null;
         }
-        TrackInfo swapped = new TrackInfo(swappedTitle, swappedArtist, track.album(),
-                track.durationSeconds());
-        return swapped.equals(track) ? null : swapped;
+        return new String[]{ left, right };
     }
 
+    static String[] parseCleanTitleAndArtist(@Nullable String rawTitle, @Nullable String rawArtist) {
+        return new String[]{ cleanArtist(rawArtist), cleanTitle(rawTitle) };
+    }
+
+    @Nullable
+    static TrackInfo trustedDashSplit(@Nullable String rawTitle, @Nullable String rawArtist,
+                                      @Nullable String album, int durationSeconds) {
+        String[] sides = splitDashRaw(rawTitle);
+        if (sides == null || rawArtist == null || rawArtist.trim().isEmpty()) {
+            return null;
+        }
+        String left = sides[0];
+        String right = sides[1];
+        if (approxArtistEqual(left, rawArtist)) {
+            return buildSplit(cleanTitle(right), cleanArtist(left), album, durationSeconds);
+        }
+        if (approxArtistEqual(right, rawArtist)) {
+            return buildSplit(cleanTitle(left), cleanArtist(right), album, durationSeconds);
+        }
+        return null;
+    }
+
+    @Nullable
+    static TrackInfo anyDashSplit(@Nullable String rawTitle, @Nullable String album,
+                                  int durationSeconds) {
+        String[] sides = splitDashRaw(rawTitle);
+        if (sides == null) {
+            return null;
+        }
+        return buildSplit(cleanTitle(sides[1]), cleanArtist(sides[0]), album, durationSeconds);
+    }
+
+    @Nullable
+    static TrackInfo anyDashSplitReversed(@Nullable String rawTitle, @Nullable String album,
+                                          int durationSeconds) {
+        String[] sides = splitDashRaw(rawTitle);
+        if (sides == null) {
+            return null;
+        }
+        return buildSplit(cleanTitle(sides[0]), cleanArtist(sides[1]), album, durationSeconds);
+    }
+
+    @Nullable
+    private static TrackInfo buildSplit(String title, String artist, String album,
+                                        int durationSeconds) {
+        if (title.isEmpty() || artist.isEmpty()) {
+            return null;
+        }
+        return new TrackInfo(title, artist, album == null ? "" : album, durationSeconds);
+    }
+
+    private static boolean approxArtistEqual(String side, String rawArtist) {
+        return LyricsRequests.containsEither(
+                LyricsRequests.normalizeForMatch(side),
+                LyricsRequests.normalizeForMatch(rawArtist));
+    }
+
+    private static final String[] ARTIST_SEPARATORS =
+            {" & ", ", ", " x ", " X ", " feat. ", " feat ", " ft. ", " ft ", " с ", " 和 ", " 和 ", "/", "×"};
+
     private static int indexOfFirstSeparator(String artist) {
-        String[] separators = {" & ", ", ", " x ", " X ", " feat. ", " ft. ", " с ", " 和 "};
         int result = -1;
-        for (String separator : separators) {
+        for (String separator : ARTIST_SEPARATORS) {
             int index = artist.indexOf(separator);
             if (index > 0 && (result < 0 || index < result)) {
                 result = index;
@@ -196,7 +243,15 @@ final class MetadataCleaner {
     }
 
     static String[] splitArtists(String artist) {
-        return artist.split("\\s*(?:和|&|feat\\.?|ft\\.?|,|/)\\s*");
+        String[] raw = artist.split("\\s*(?:和|&|feat\\.?|ft\\.?|,|/|×)\\s*");
+        List<String> parts = new ArrayList<>();
+        for (String part : raw) {
+            String trimmed = part.trim();
+            if (!trimmed.isEmpty()) {
+                parts.add(trimmed);
+            }
+        }
+        return parts.toArray(new String[0]);
     }
 
     private static String collapseWhitespace(String value) {

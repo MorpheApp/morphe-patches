@@ -14,7 +14,6 @@ import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -30,7 +29,7 @@ public final class AmllProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         if (track.title().isEmpty() || track.artist().isEmpty()) {
             return null;
         }
@@ -61,7 +60,7 @@ public final class AmllProvider implements LyricsProvider {
             if (ttml == null) {
                 return null;
             }
-            return TtmlParser.ttmlToLyrics(ttml, name(), sourceUrl(getData, best));
+            return FetchResult.blind(TtmlParser.ttmlToLyrics(ttml, name(), sourceUrl(getData, best)));
         } finally {
             if (getConnection != null) {
                 getConnection.disconnect();

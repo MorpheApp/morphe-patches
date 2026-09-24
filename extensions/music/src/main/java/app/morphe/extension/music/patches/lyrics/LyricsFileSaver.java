@@ -23,8 +23,8 @@ import org.json.JSONObject;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Locale;
 
+import app.morphe.extension.music.patches.lyrics.requests.LrcParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
@@ -136,12 +136,8 @@ public final class LyricsFileSaver {
     private static String rebuildLrc(List<LyricsLine> lines) {
         StringBuilder sb = new StringBuilder(50 * lines.size());
         for (LyricsLine line : lines) {
-            final long totalMs = line.startTimeMs();
-            final long min = totalMs / 60000;
-            final long sec = (totalMs % 60000) / 1000;
-            final long ms = totalMs % 1000;
             sb.append('[')
-              .append(String.format(Locale.US, "%02d:%02d.%02d", min, sec, ms / 10))
+              .append(LrcParser.formatCentiseconds(line.startTimeMs()))
               .append(']')
               .append(line.text())
               .append('\n');
@@ -199,11 +195,7 @@ public final class LyricsFileSaver {
             JSONObject obj = new JSONObject();
             try {
                 final long ms = line.startTimeMs();
-                final long min = ms / 60000;
-                final long sec = (ms % 60000) / 1000;
-                final long cs = (ms % 1000) / 10;
-                obj.put("lrcTimestamp", String.format(Locale.US,
-                        "[%02d:%02d.%02d]", min, sec, cs));
+                obj.put("lrcTimestamp", "[" + LrcParser.formatCentiseconds(ms) + "]");
                 obj.put("line", line.text());
                 obj.put("milliseconds", ms);
                 obj.put("duration", line.endTimeMs() - line.startTimeMs());

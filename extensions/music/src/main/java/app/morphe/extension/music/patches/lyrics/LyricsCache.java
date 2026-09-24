@@ -184,42 +184,32 @@ final class LyricsCache {
 
     @Nullable
     private static File translationFile(TrackInfo track, String source, String language) {
-        File directory = cacheDirectory();
-        if (directory == null) {
-            return null;
-        }
-        return new File(directory,
-                Integer.toHexString(key(track, source).hashCode()) + "." + language + ".txt");
+        return derivedCacheFile(track, source, "." + language + ".txt");
     }
 
     @Nullable
     private static File romanizationFile(TrackInfo track, String source) {
-        File directory = cacheDirectory();
-        if (directory == null) {
-            return null;
-        }
-        return new File(directory,
-                Integer.toHexString(key(track, source).hashCode()) + ".rom.txt");
+        return derivedCacheFile(track, source, ".rom.txt");
     }
 
     @Nullable
     private static File aiTranslationFile(TrackInfo track, String source, String language) {
-        File directory = cacheDirectory();
-        if (directory == null) {
-            return null;
-        }
-        return new File(directory,
-                Integer.toHexString(key(track, source).hashCode()) + ".ai." + language + ".txt");
+        return derivedCacheFile(track, source, ".ai." + language + ".txt");
     }
 
     @Nullable
     private static File aiRomanizationFile(TrackInfo track, String source) {
+        return derivedCacheFile(track, source, ".ai.rom.txt");
+    }
+
+    @Nullable
+    private static File derivedCacheFile(TrackInfo track, String source, String suffix) {
         File directory = cacheDirectory();
         if (directory == null) {
             return null;
         }
         return new File(directory,
-                Integer.toHexString(key(track, source).hashCode()) + ".ai.rom.txt");
+                Integer.toHexString(key(track, source).hashCode()) + suffix);
     }
 
     @Nullable

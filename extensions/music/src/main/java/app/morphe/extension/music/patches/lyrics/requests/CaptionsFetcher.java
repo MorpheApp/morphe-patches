@@ -125,7 +125,7 @@ public final class CaptionsFetcher {
 
         @Override
         @Nullable
-        public Lyrics fetch(app.morphe.extension.music.patches.lyrics.TrackInfo track) throws Exception {
+        public FetchResult fetch(app.morphe.extension.music.patches.lyrics.TrackInfo track) throws Exception {
             CaptionsOutcome outcome = CaptionsFetcher.fetch();
 
             if (outcome.errorReason != null) {
@@ -148,7 +148,7 @@ public final class CaptionsFetcher {
                         result.sourceUrl());
             }
 
-            return result;
+            return FetchResult.of(result);
         }
     }
 

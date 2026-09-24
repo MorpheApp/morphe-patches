@@ -21,7 +21,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
@@ -66,23 +65,23 @@ public final class PetitLyricsProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         Stash stash = new Stash();
 
         collectTier(track, TIER_WORD_SYNC, stash);
         Lyrics result = tryWordSync(stash);
         if (result != null) {
-            return result;
+            return FetchResult.of(result, track);
         }
 
         collectTier(track, TIER_LINE_SYNC, stash);
         result = tryWordSync(stash);
         if (result != null) {
-            return result;
+            return FetchResult.of(result, track);
         }
         result = tryLineSync(track, stash);
         if (result != null) {
-            return result;
+            return FetchResult.of(result, track);
         }
 
         if (stash.plainText == null && !stash.plainRequested) {
@@ -96,7 +95,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
         result = tryText(stash);
         if (result != null) {
-            return result;
+            return FetchResult.of(result, track);
         }
         return null;
     }
@@ -123,6 +122,16 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
         List<Song> sorted = new ArrayList<>(response.songs);
         sorted.sort((a, b) -> Integer.compare(scoreOf(b, track), scoreOf(a, track)));
+        List<Song> gated = new ArrayList<>();
+        for (Song song : sorted) {
+            if (scoreOf(song, track) >= LyricsRequests.SOFT_MIN) {
+                gated.add(song);
+            }
+        }
+        if (gated.isEmpty() && !sorted.isEmpty()) {
+            gated.add(sorted.get(0));
+        }
+        sorted = gated;
 
         if (stash.creditLines == null) {
             for (Song song : sorted) {
@@ -704,12 +713,8 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private static String buildLrc(List<LyricsLine> lines) {
         StringBuilder sb = new StringBuilder(50 * lines.size());
         for (LyricsLine line : lines) {
-            final long totalMs = Math.max(0, line.startTimeMs());
-            final long min = totalMs / 60000;
-            final long sec = (totalMs % 60000) / 1000;
-            final long ms = totalMs % 1000;
             sb.append('[')
-              .append(String.format(Locale.US, "%02d:%02d.%02d", min, sec, ms / 10))
+              .append(LrcParser.formatCentiseconds(Math.max(0, line.startTimeMs())))
               .append(']')
               .append(line.text())
               .append('\n');

@@ -399,7 +399,21 @@ public final class LyricsPanelInstaller {
         return lyricsTitle;
     }
 
+    private static final long[] ENABLE_BUTTON_DELAYS_MS = {0, 150, 500, 1000, 2000};
+
+    private static final long ENABLE_BUTTON_MIN_INTERVAL_MS = 2000;
+
+    private static long lastEnableButtonWalkUptimeMs;
+    private static boolean enableButtonWalkPending;
+
     public static void enableLyricsButton() {
+        if (enableButtonWalkPending) {
+            return;
+        }
+        final long now = SystemClock.uptimeMillis();
+        if (now - lastEnableButtonWalkUptimeMs < ENABLE_BUTTON_MIN_INTERVAL_MS) {
+            return;
+        }
         Activity activity = Utils.getActivity();
         if (activity == null) {
             return;
@@ -408,20 +422,33 @@ public final class LyricsPanelInstaller {
         if (title == null) {
             return;
         }
-        View root = activity.getWindow().getDecorView();
-        for (long delay : ENABLE_BUTTON_DELAYS_MS) {
-            Utils.runOnMainThreadDelayed(() -> enableLyricsButtonPass(root, title), delay);
-        }
+        final View root = activity.getWindow().getDecorView();
+        enableButtonWalkPending = true;
+        lastEnableButtonWalkUptimeMs = now;
+        scheduleEnableButtonPass(root, title, 0);
     }
 
-    private static final long[] ENABLE_BUTTON_DELAYS_MS = {0, 150, 500, 1000, 2000};
-
-    private static void enableLyricsButtonPass(@Nullable View root, String title) {
-        if (root == null) {
-            return;
-        }
-        String titleLower = title.toLowerCase(Locale.ROOT);
-        enableLyricsButtonPass(root, title, titleLower);
+    private static void scheduleEnableButtonPass(final View root, final String title, final int step) {
+        final long delay = step == 0
+                ? ENABLE_BUTTON_DELAYS_MS[0]
+                : ENABLE_BUTTON_DELAYS_MS[step] - ENABLE_BUTTON_DELAYS_MS[step - 1];
+        Utils.runOnMainThreadDelayed(() -> {
+            boolean matched = false;
+            boolean scheduledNext = false;
+            try {
+                matched = enableLyricsButtonPass(root, title, title.toLowerCase(Locale.ROOT));
+                if (!matched && step + 1 < ENABLE_BUTTON_DELAYS_MS.length) {
+                    scheduleEnableButtonPass(root, title, step + 1);
+                    scheduledNext = true;
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "enableLyricsButton pass failure", ex);
+            } finally {
+                if (!scheduledNext) {
+                    enableButtonWalkPending = false;
+                }
+            }
+        }, delay);
     }
 
     private static boolean enableLyricsButtonPass(View view, String title, String titleLower) {

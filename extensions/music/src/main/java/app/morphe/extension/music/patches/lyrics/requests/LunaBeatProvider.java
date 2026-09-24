@@ -143,13 +143,13 @@ public final class LunaBeatProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
-        List<Lyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : candidates.get(0);
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
+        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         ensureIndexLoaded();
 
         List<Song> matches = searchLunabeatIndex(track);
@@ -160,17 +160,20 @@ public final class LunaBeatProvider implements LyricsProvider {
         List<Lyrics.ScoredLyrics> scored = new ArrayList<>(matches.size());
         for (Song song : matches) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
+            String artist = song.artists.length > 0 ? song.artists[0] : "";
+            int trackScore = LyricsRequests.scoreTrackCandidate(song.title(), artist, 0, track);
+            if (trackScore < LyricsRequests.SOFT_MIN && !scored.isEmpty()) {
+                continue;
+            }
             Lyrics lyrics = fetchLunabeatLyrics(song);
             if (lyrics != null && !lyrics.isEmpty()) {
                 int score = scoreLunabeatCandidate(
-                        song.title(),
-                        song.artists.length > 0 ? song.artists[0] : "",
-                        0, lyrics, track);
+                        song.title(), artist, 0, lyrics, track);
                 scored.add(new Lyrics.ScoredLyrics(score, lyrics));
             }
         }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     private static void ensureIndexLoaded() {
@@ -238,7 +241,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             Map<String, List<LyricsLine>> translations = lyrics.translations();
             if (translations == null || translations.isEmpty()) return lyrics;
 
-            String deviceLang = Locale.getDefault().getLanguage();
+            String deviceLang = LyricsRequests.deviceLanguage();
             if ("zh".equals(deviceLang)) {
                 List<LyricsLine> zhLines = translations.get("zh");
                 if (zhLines == null) return lyrics;
@@ -265,9 +268,6 @@ public final class LunaBeatProvider implements LyricsProvider {
     private static int scoreLunabeatCandidate(String title, String artist,
             long durationSec, Lyrics lyrics, TrackInfo track) {
         int trackScore = LyricsRequests.scoreTrackCandidate(title, artist, durationSec, track);
-        if (durationSec <= 0 || track.durationSeconds() <= 0) {
-            trackScore += 2;
-        }
         return trackScore + LyricsRequests.syncRank(lyrics);
     }
 }

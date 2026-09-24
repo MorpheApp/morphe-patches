@@ -46,18 +46,18 @@ public final class LrcLibProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         // The exact endpoint matches on duration as well, which gives the best timings,
         // but it fails for any track whose duration differs from the database entry.
         Lyrics exact = fetchExact(track);
-        if (exact != null) {
-            return exact;
+        if (exact != null && exact != Lyrics.NOT_FOUND) {
+            return FetchResult.of(exact, track);
         }
-        return fetchSearch(track);
+        return FetchResult.of(fetchSearch(track), track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
 
         // Exact match first
@@ -71,12 +71,12 @@ public final class LrcLibProvider implements LyricsProvider {
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
         HttpURLConnection connection = LyricsRequests.openConnection(url);
         if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
-            return Lyrics.sortLyricsByScore(scored);
+            return Lyrics.sortScoredByScore(scored);
         }
 
         JSONArray searchResults = Requester.parseJSONArray(connection);
         if (searchResults.length() == 0) {
-            return Lyrics.sortLyricsByScore(scored);
+            return Lyrics.sortScoredByScore(scored);
         }
 
         List<JSONObject> candidates = new ArrayList<>();
@@ -98,7 +98,17 @@ public final class LrcLibProvider implements LyricsProvider {
             return deltaA - deltaB;
         });
 
+        List<JSONObject> gated = new ArrayList<>();
         for (JSONObject candidate : candidates) {
+            if (scoreCandidate(candidate, track) >= LyricsRequests.SOFT_MIN) {
+                gated.add(candidate);
+            }
+        }
+        if (gated.isEmpty() && !candidates.isEmpty()) {
+            gated.add(candidates.get(0));
+        }
+
+        for (JSONObject candidate : gated) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
@@ -113,7 +123,7 @@ public final class LrcLibProvider implements LyricsProvider {
             }
         }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     private static int scoreCandidate(JSONObject item, TrackInfo track) {
@@ -168,13 +178,14 @@ public final class LrcLibProvider implements LyricsProvider {
             }
             try {
                 Lyrics candidateLyrics = toLyrics(candidate);
-                if (candidateLyrics != null) {
+                if (candidateLyrics != null && candidateLyrics != Lyrics.NOT_FOUND) {
                     int combined = LyricsRequests.scoreLyricsCandidate(
                             candidate.optString("trackName", ""),
                             candidate.optString("artistName", ""),
                             candidate.optInt("duration", 0),
                             candidateLyrics, track);
-                    if (combined > bestCombined) {
+                    int trackScore = combined - LyricsRequests.syncRank(candidateLyrics);
+                    if (trackScore >= LyricsRequests.SOFT_MIN && combined > bestCombined) {
                         bestCombined = combined;
                         bestLyrics = candidateLyrics;
                     }

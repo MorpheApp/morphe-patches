@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;
@@ -33,7 +34,7 @@ public final class LyricsTranslator {
     }
 
     public static String deviceLanguage() {
-        return Locale.getDefault().getLanguage();
+        return LyricsRequests.deviceLanguage();
     }
 
     private static String translationLanguage() {
@@ -147,54 +148,8 @@ public final class LyricsTranslator {
     @Nullable
     private static List<String> aiTranslate(List<String> lines, String language,
             String title, String artist, String baseUrl, String apiToken, String model) {
-        int totalChars = 0;
-        for (String line : lines) {
-            totalChars += line.length() + 1;
-        }
-        if (totalChars > OpenAIClient.getMaxChars()) {
-            return null;
-        }
-        String prompt = buildTranslatePrompt(lines, language, title, artist);
-        String response = OpenAIClient.request(baseUrl, apiToken, model,
-                prompt, SYSTEM_PROMPT);
-        if (response == null) {
-            return null;
-        }
-        String[] result = response.split("\n", -1);
-        int end = result.length;
-        while (end > 0 && result[end - 1].trim().isEmpty()) {
-            end--;
-        }
-        if (end == 0) {
-            return null;
-        }
-        boolean allSkip = true;
-        for (int i = 0; i < end; i++) {
-            result[i] = OpenAIClient.stripLineNumber(result[i]);
-            if (!result[i].trim().equalsIgnoreCase("SKIP")) {
-                allSkip = false;
-            }
-        }
-        if (allSkip) {
-            return null;
-        }
-        if (end > lines.size() + 2 || end < lines.size() - 2) {
-            return null;
-        }
-        List<String> out = new ArrayList<>(lines.size());
-        for (int i = 0; i < lines.size(); i++) {
-            if (i < end) {
-                String trimmed = result[i].trim();
-                if (trimmed.equalsIgnoreCase("SKIP") || OpenAIClient.isNoteOrEmptyLine(lines.get(i))) {
-                    out.add("");
-                } else {
-                    out.add(trimmed);
-                }
-            } else {
-                out.add("");
-            }
-        }
-        return out;
+        return OpenAIClient.mapLines(baseUrl, apiToken, model,
+                buildTranslatePrompt(lines, language, title, artist), SYSTEM_PROMPT, lines);
     }
 
     private static String buildTranslatePrompt(List<String> lines, String targetLang,
