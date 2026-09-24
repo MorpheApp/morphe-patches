@@ -45,6 +45,10 @@ public class CommentsFilter extends Filter {
     private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String COMMENT_PATH = "|comment.e";
+    /**
+     * The button text is localized, and the component also holds other tri-state buttons.
+     */
+    private static final String TRANSLATE_BUTTON_ACCESSIBILITY_ID = "id.ui.comments.translate.button";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
     private static final String VIDEO_METADATA_CAROUSEL_PATH = "video_metadata_carousel.e";
     private static final int ID_LIVE_CHAT_ACTION_PANEL =
@@ -60,6 +64,7 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup commentsFilterBar;
     private final StringFilterGroup emojiButton;
     private final StringFilterGroup menuButton;
+    private final StringFilterGroup translateButton;
 
     private static final CharSequence hiddenPreviewCommentCharSequence =
             str("morphe_hide_comments_preview_comment_hidden");
@@ -166,6 +171,11 @@ public class CommentsFilter extends Filter {
                 "live_viewer_leaderboard_chat_entry_point.e"
         );
 
+        translateButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_TRANSLATE_BUTTON,
+                "tri_state_button.e"
+        );
+
         addPathCallbacks(
                 channelGuidelines,
                 chatSummary,
@@ -182,7 +192,8 @@ public class CommentsFilter extends Filter {
                 menuButton,
                 thanksButton,
                 timestampButton,
-                topFansButton
+                topFansButton,
+                translateButton
         );
     }
 
@@ -216,6 +227,11 @@ public class CommentsFilter extends Filter {
 
         if (matchedGroup == menuButton) {
             return Utils.contains(path, COMMENT_PATH);
+        }
+
+        if (matchedGroup == translateButton) {
+            return accessibility.startsWith(TRANSLATE_BUTTON_ACCESSIBILITY_ID)
+                    && Utils.contains(path, COMMENT_PATH);
         }
 
         if (matchedGroup == commentsFilterBar) {
