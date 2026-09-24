@@ -87,6 +87,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
+    private final StringFilterGroup subscribedChannelsBarName;
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup surveys;
     private final StringFilterGroup videoLabels;
@@ -375,6 +376,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "subscriptions_channel_bar"
         );
 
+        // The name under each channel avatar of the bar is the only text of the channel.
+        subscribedChannelsBarName = new StringFilterGroup(
+                Settings.HIDE_SUBSCRIBED_CHANNELS_BAR_NAMES,
+                "subscriptions_channel_bar_channel.e"
+        );
+
         final var subscribersCommunityGuidelines = new StringFilterGroup(
                 Settings.HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES,
                 "sponsorships_comments_upsell"
@@ -466,6 +473,7 @@ public final class LayoutComponentsFilter extends Filter {
                 searchFriction,
                 singleItemInformationPanel,
                 subscribedChannelsBar,
+                subscribedChannelsBarName,
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,
@@ -580,6 +588,10 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == searchFriction) {
             singleItemInformationPanelIndex.set(0);
             return false;
+        }
+
+        if (matchedGroup == subscribedChannelsBarName) {
+            return Utils.endsWith(path, "|TextType|");
         }
 
         if (matchedGroup == singleItemInformationPanel) {
