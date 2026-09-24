@@ -54,7 +54,7 @@ val hideButtonsPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_search_button"),
             SwitchPreference("morphe_music_hide_voice_search_button"),
             SwitchPreference("morphe_music_hide_sound_search_button"),
-            SwitchPreference("morphe_music_hide_library_new_button")
+            SwitchPreference("morphe_music_hide_library_new_button", summary = true)
         )
 
         // Region for hide history button in the top bar.

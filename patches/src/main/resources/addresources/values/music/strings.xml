@@ -211,7 +211,8 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_search_button_title">Hide Search button</string>
     <string name="morphe_music_hide_voice_search_button_title">Hide Voice search button</string>
     <string name="morphe_music_hide_sound_search_button_title">Hide Sound search button</string>
-    <string name="morphe_music_hide_library_new_button_title">Hide Library New button</string>
+    <string name="morphe_music_hide_library_new_button_title">Hide New button</string>
+    <string name="morphe_music_hide_library_new_button_summary">Hides the New button in the Library tab</string>
 
     <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
     <string name="morphe_music_action_buttons_screen_title">Action buttons</string>
