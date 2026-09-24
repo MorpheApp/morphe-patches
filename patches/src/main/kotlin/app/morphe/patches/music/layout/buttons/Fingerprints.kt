@@ -68,6 +68,17 @@ internal object SearchActionViewFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches the search toolbar view constructor in newer app targets,
+ * and the search fragments that build the toolbar in older app targets.
+ */
+internal object SearchVoiceButtonsFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "voice_search"),
+        resourceLiteral(ResourceType.ID, "sound_search")
+    )
+)
+
 internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

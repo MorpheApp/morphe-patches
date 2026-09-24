@@ -33,7 +33,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideBut
 @Suppress("unused")
 val hideButtonsPatch = bytecodePatch(
     name = "Hide buttons",
-    description = "Adds options to hide the cast, history, notification, and search buttons."
+    description = "Adds options to hide the cast, history, notification, search, voice search, and sound search buttons."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -46,12 +46,16 @@ val hideButtonsPatch = bytecodePatch(
         val playerOverlayChip = resourceId(ResourceType.ID, "player_overlay_chip")
         val searchButton = resourceId(ResourceType.LAYOUT, "search_button")
         val topBarMenuItemImageView = resourceId(ResourceType.ID, "top_bar_menu_item_image_view")
+        val voiceSearch = resourceId(ResourceType.ID, "voice_search")
+        val soundSearch = resourceId(ResourceType.ID, "sound_search")
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),
             SwitchPreference("morphe_music_hide_history_button"),
             SwitchPreference("morphe_music_hide_notification_button"),
-            SwitchPreference("morphe_music_hide_search_button")
+            SwitchPreference("morphe_music_hide_search_button"),
+            SwitchPreference("morphe_music_hide_voice_search_button"),
+            SwitchPreference("morphe_music_hide_sound_search_button")
         )
 
         // Region for hide history button in the top bar.
@@ -103,6 +107,28 @@ val hideButtonsPatch = bytecodePatch(
                     "invoke-static { v$targetRegister }, " +
                             "$EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
                 )
+            }
+        }
+
+        // Region for hide voice search and sound search buttons in the search bar.
+        SearchVoiceButtonsFingerprint.matchAll().forEach { match ->
+            match.method.apply {
+                arrayOf(
+                    voiceSearch to "hideVoiceSearchButton",
+                    soundSearch to "hideSoundSearchButton"
+                ).forEach { (resourceIdLiteral, methodName) ->
+                    val resourceIndex = indexOfFirstLiteralInstructionOrThrow(resourceIdLiteral)
+                    val targetIndex = indexOfFirstInstructionOrThrow(
+                        resourceIndex, Opcode.MOVE_RESULT_OBJECT
+                    )
+                    val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+
+                    addInstruction(
+                        targetIndex + 1,
+                        "invoke-static { v$targetRegister }, " +
+                                "$EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
+                    )
+                }
             }
         }
 

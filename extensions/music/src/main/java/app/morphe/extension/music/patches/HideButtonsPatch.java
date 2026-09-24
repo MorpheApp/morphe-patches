@@ -45,4 +45,19 @@ public class HideButtonsPatch {
     public static void hideSearchButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SEARCH_BUTTON, view);
     }
+
+    /**
+     * Injection point
+     */
+    public static void hideVoiceSearchButton(View view) {
+        // The app changes the visibility of this button while typing, so it is hidden by size.
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_VOICE_SEARCH_BUTTON, view);
+    }
+
+    /**
+     * Injection point
+     */
+    public static void hideSoundSearchButton(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SOUND_SEARCH_BUTTON, view);
+    }
 }
