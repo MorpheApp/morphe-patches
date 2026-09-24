@@ -46,8 +46,6 @@ val hideButtonsPatch = bytecodePatch(
         val playerOverlayChip = resourceId(ResourceType.ID, "player_overlay_chip")
         val searchButton = resourceId(ResourceType.LAYOUT, "search_button")
         val topBarMenuItemImageView = resourceId(ResourceType.ID, "top_bar_menu_item_image_view")
-        val voiceSearch = resourceId(ResourceType.ID, "voice_search")
-        val soundSearch = resourceId(ResourceType.ID, "sound_search")
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),
@@ -112,23 +110,17 @@ val hideButtonsPatch = bytecodePatch(
 
         // Region for hide voice search and sound search buttons in the search bar.
         SearchVoiceButtonsFingerprint.matchAll().forEach { match ->
-            match.method.apply {
-                arrayOf(
-                    voiceSearch to "hideVoiceSearchButton",
-                    soundSearch to "hideSoundSearchButton"
-                ).forEach { (resourceIdLiteral, methodName) ->
-                    val resourceIndex = indexOfFirstLiteralInstructionOrThrow(resourceIdLiteral)
-                    val targetIndex = indexOfFirstInstructionOrThrow(
-                        resourceIndex, Opcode.MOVE_RESULT_OBJECT
-                    )
-                    val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+            // Insert at the later index first, so the earlier index stays valid.
+            arrayOf(
+                match.instructionMatches[3] to "hideSoundSearchButton",
+                match.instructionMatches[1] to "hideVoiceSearchButton"
+            ).forEach { (moveResult, methodName) ->
+                val register = moveResult.getInstruction<OneRegisterInstruction>().registerA
 
-                    addInstruction(
-                        targetIndex + 1,
-                        "invoke-static { v$targetRegister }, " +
-                                "$EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
-                    )
-                }
+                match.method.addInstruction(
+                    moveResult.index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
+                )
             }
         }
 
