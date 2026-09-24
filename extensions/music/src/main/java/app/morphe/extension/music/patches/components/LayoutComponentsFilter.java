@@ -21,9 +21,11 @@ public final class LayoutComponentsFilter extends Filter {
 
     private static final String TIMED_LYRICS_IDENTIFIER = "timed_lyrics";
     private static final String TOGGLE_BUTTON_PATH = "toggle_button.e";
+    private static final String LIST_ITEM_EXTRA_DETAILS_PATH = "music_list_item_extra_details.e";
 
     private final StringFilterGroup lyricsShareButton;
     private final StringFilterGroup lyricsTranslateButton;
+    private final StringFilterGroup podcastEpisodeDownloadButton;
 
     public LayoutComponentsFilter() {
         final StringFilterGroup exploreShelf = new StringFilterGroup(
@@ -64,6 +66,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "music_action_card_shelf.e"
         );
 
+        // Download button under the description of a podcast episode in episode lists.
+        podcastEpisodeDownloadButton = new StringFilterGroup(
+                Settings.HIDE_PODCAST_EPISODE_DOWNLOAD_BUTTON,
+                "music_download_button.e"
+        );
+
         final StringFilterGroup playlistShelves = new StringFilterGroup(
                 Settings.HIDE_PLAYLIST_SHELVES,
                 "music_container_card_shelf.e"
@@ -83,6 +91,7 @@ public final class LayoutComponentsFilter extends Filter {
                 lyricsTranslateButton,
                 newFromShelf,
                 playlistShelves,
+                podcastEpisodeDownloadButton,
                 speedDialShelf
         );
     }
@@ -108,6 +117,10 @@ public final class LayoutComponentsFilter extends Filter {
             }
 
             return true;
+        }
+
+        if (matchedGroup == podcastEpisodeDownloadButton) {
+            return Utils.contains(path, LIST_ITEM_EXTRA_DETAILS_PATH);
         }
 
         return true;
