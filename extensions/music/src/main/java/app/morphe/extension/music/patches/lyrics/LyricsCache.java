@@ -370,8 +370,13 @@ final class LyricsCache {
 
     /**
      * Deletes the oldest files once the cache grows past {@link #DISK_ENTRIES}.
+     * <p>
+     * Providers are queried in parallel and each result is cached, so trims can overlap. A sort
+     * needs keys that hold still, and a file written or deleted meanwhile changes its modification
+     * time, so each time is read once before sorting. Trims also run one at a time, so two of them
+     * never delete the files the other is ordering.
      */
-    private static void trimDiskCache() {
+    private static synchronized void trimDiskCache() {
         File directory = cacheDirectory();
         if (directory == null) {
             return;
@@ -382,12 +387,17 @@ final class LyricsCache {
             return;
         }
 
-        List<File> sorted = new ArrayList<>(Arrays.asList(files));
-        sorted.sort(Comparator.comparingLong(File::lastModified));
+        final long[] modified = new long[files.length];
+        final Integer[] oldestFirst = new Integer[files.length];
+        for (int i = 0; i < files.length; i++) {
+            modified[i] = files[i].lastModified();
+            oldestFirst[i] = i;
+        }
+        Arrays.sort(oldestFirst, Comparator.comparingLong(i -> modified[i]));
 
-        final int deleteCount = sorted.size() - DISK_ENTRIES;
+        final int deleteCount = files.length - DISK_ENTRIES;
         for (int i = 0; i < deleteCount; i++) {
-            File file = sorted.get(i);
+            File file = files[oldestFirst[i]];
             if (!file.delete()) {
                 Logger.printDebug(() -> "Could not delete a cached lyrics file: " + file);
             }
