@@ -200,6 +200,10 @@ public class LyricsTokenDialogPreference extends Preference {
         if (multiline) {
             tokenInput.setSingleLine(false);
             tokenInput.setMinLines(3);
+            // A full cookie string is long. Scroll inside the field
+            // so the dialog buttons are not pushed off the screen.
+            tokenInput.setMaxLines(6);
+            tokenInput.setVerticalScrollBarEnabled(true);
         }
         if (configured) {
             String currentToken = setting.get();
