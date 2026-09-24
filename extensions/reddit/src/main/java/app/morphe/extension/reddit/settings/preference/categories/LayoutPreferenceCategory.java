@@ -20,6 +20,7 @@ import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelf;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
+import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -43,6 +44,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideCommunitiesShelf.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
+                ShowFlairsInHomeFeedPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded();
     }
 
@@ -110,6 +112,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SHOW_VIEW_COUNT
+            ));
+        }
+
+        if (ShowFlairsInHomeFeedPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SHOW_FLAIRS_IN_HOME_FEED
             ));
         }
     }
