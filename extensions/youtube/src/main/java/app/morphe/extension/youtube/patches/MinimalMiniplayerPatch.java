@@ -188,6 +188,11 @@ public final class MinimalMiniplayerPatch {
     private static boolean barShapeApplied;
 
     /**
+     * Do not set it to 1.00f, otherwise it will cause artifacts (e.g: with the controls fading).
+     */
+    private static final float maxDragProgress = 0.95f;
+
+    /**
      * Injection point.
      * <p>
      * The legacy bar layout, looked up by YouTube itself and then left unused.
@@ -333,8 +338,25 @@ public final class MinimalMiniplayerPatch {
 
             Rect docked = fullWidthSpan(original);
             lastBounds.set(docked);
+            PlayerType getCurrent = PlayerType.getCurrent();
+            if (getCurrent == PlayerType.WATCH_WHILE_SLIDING_MINIMIZED_MAXIMIZED) {
+                barBoundsFor(dockedBounds);
 
-            if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED) {
+                final int maxDragTop = barBounds.top > 0 ? barBounds.top : dockedBounds.top;
+                final float progress = maxDragTop > 0
+                        ? Math.min(maxDragProgress, Math.max(0.0f, (float) original.top / maxDragTop))
+                        : maxDragProgress;
+
+                final int currentLeft = interpolate(dockedBounds.left, barBounds.left, progress);
+                final int currentTop = interpolate(dockedBounds.top, barBounds.top, progress);
+                final int currentRight = interpolate(dockedBounds.right, barBounds.right, progress);
+                final int currentBottom = interpolate(dockedBounds.bottom, barBounds.bottom, progress);
+
+                currentBounds.set(new Rect(currentLeft, currentTop, currentRight, currentBottom));
+
+                return currentBounds;
+            }
+            if (getCurrent == PlayerType.WATCH_WHILE_MINIMIZED) {
                 barBoundsFor(docked);
                 currentBounds.set(barBounds);
                 barShapeApplied = true;
@@ -342,7 +364,6 @@ public final class MinimalMiniplayerPatch {
             }
 
             currentBounds.set(docked);
-
             return docked;
         } catch (Exception ex) {
             Logger.printException(() -> "getMinimalBarBounds failure", ex);
@@ -405,13 +426,6 @@ public final class MinimalMiniplayerPatch {
     public static void applyVideoRect(Rect videoRect) {
         try {
             if (!ENABLED) {
-                return;
-            }
-
-            if (!inBarMode()) {
-                videoRect.left = 0;
-                videoRect.right = getWidthPixels();
-
                 return;
             }
 
