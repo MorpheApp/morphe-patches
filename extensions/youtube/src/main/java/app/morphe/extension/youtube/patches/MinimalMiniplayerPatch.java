@@ -428,12 +428,7 @@ public final class MinimalMiniplayerPatch {
                 // Type 2 spans the bar with the video. YouTube fits anything that is not 16:9
                 // inside the bar instead, and the miniplayer has no background of its own, so
                 // the feed shows through beside it. The overflow is clipped away again.
-                final float videoWidth = videoRect.width();
-                final float videoHeight = videoRect.height();
-                final float videoAspectRatio =
-                        (videoWidth > 0 && videoHeight > 0)
-                                ? videoWidth / videoHeight
-                                : 16f / 9f;
+                final float videoAspectRatio = 16f / 9f;
 
                 final float barWidth = currentBounds.width();
                 final float barHeight = currentBounds.height();
