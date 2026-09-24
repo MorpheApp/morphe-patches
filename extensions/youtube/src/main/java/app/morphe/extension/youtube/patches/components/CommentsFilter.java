@@ -16,6 +16,8 @@ import static app.morphe.extension.shared.patches.TextComponentPatch.newSpanUsin
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -23,6 +25,7 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import java.util.List;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -34,13 +37,18 @@ import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public class CommentsFilter extends Filter {
+
+    private static final String ELEMENTS_SENDER_VIEW =
+            "com.google.android.libraries.youtube.rendering.elements.sender_view";
 
     private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
@@ -466,5 +474,23 @@ public class CommentsFilter extends Filter {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }
         return original;
+    }
+
+    /**
+     * Injection point.
+     * Disable clickable timestamps for preview comments.
+     */
+    public static boolean onVideoIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
+        if (!Settings.HIDE_COMMENTS_PREVIEW_COMMENT.get()) {
+            return false;
+        }
+        if (!(playbackStartDescriptorMap.get(ELEMENTS_SENDER_VIEW) instanceof ViewGroup senderView)) {
+            return false;
+        }
+        final int height = senderView.getHeight();
+        boolean isTimestamp = height >= Dim.dp(40) && height <= Dim.dp(60);
+        return PlayerType.getCurrent().isMaximizedOrFullscreen() &&
+                EngagementPanel.getCurrentOpenedPanels().isEmpty() &&
+                isTimestamp;
     }
 }
