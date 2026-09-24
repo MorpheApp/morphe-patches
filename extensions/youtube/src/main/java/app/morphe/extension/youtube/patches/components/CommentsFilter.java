@@ -44,6 +44,7 @@ public class CommentsFilter extends Filter {
 
     private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
+    private static final String COMMENT_PATH = "|comment.e";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
     private static final String VIDEO_METADATA_CAROUSEL_PATH = "video_metadata_carousel.e";
     private static final int ID_LIVE_CHAT_ACTION_PANEL =
@@ -58,6 +59,7 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup comments;
     private final StringFilterGroup commentsFilterBar;
     private final StringFilterGroup emojiButton;
+    private final StringFilterGroup menuButton;
 
     private static final CharSequence hiddenPreviewCommentCharSequence =
             str("morphe_hide_comments_preview_comment_hidden");
@@ -137,6 +139,12 @@ public class CommentsFilter extends Filter {
                 "id.comment.quick_emoji.button"
         );
 
+        // Overflow buttons are also used outside of comments.
+        menuButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_MENU_BUTTON,
+                "overflow_button.e"
+        );
+
         var giftAnimationAndCards = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_GIFT_ANIMATION_AND_CARDS,
                 "gift_overlay.e",
@@ -171,6 +179,7 @@ public class CommentsFilter extends Filter {
                 createAShortButton,
                 emojiButton,
                 giftAnimationAndCards,
+                menuButton,
                 thanksButton,
                 timestampButton,
                 topFansButton
@@ -203,6 +212,10 @@ public class CommentsFilter extends Filter {
                 return false;
             }
             return commentComposerButtonsGroupList.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == menuButton) {
+            return Utils.contains(path, COMMENT_PATH);
         }
 
         if (matchedGroup == commentsFilterBar) {
