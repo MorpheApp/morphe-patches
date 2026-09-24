@@ -60,4 +60,11 @@ public class HideButtonsPatch {
     public static void hideSoundSearchButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SOUND_SEARCH_BUTTON, view);
     }
+
+    /**
+     * Injection point
+     */
+    public static void hideLibraryNewButton(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_LIBRARY_NEW_BUTTON, view);
+    }
 }

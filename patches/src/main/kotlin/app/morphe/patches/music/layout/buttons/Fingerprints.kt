@@ -13,6 +13,7 @@ package app.morphe.patches.music.layout.buttons
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
@@ -88,5 +89,20 @@ internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "top_bar_menu_item_image_view")
+    )
+)
+
+/**
+ * The Library tab binds its floating New button as an extended button. Other fragments bind
+ * a view with the same id as a different class, so the cast tells the Library button apart.
+ */
+internal object LibraryNewButtonFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "floating_action_button"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
+        checkCast(
+            "Lcom/google/android/material/floatingactionbutton/ExtendedFloatingActionButton;",
+            location = MatchAfterImmediately()
+        )
     )
 )
