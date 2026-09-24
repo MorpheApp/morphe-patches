@@ -1047,6 +1047,7 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_miniplayer_screen_title">Minispelare</string>
   <string name="morphe_miniplayer_screen_summary">Anpassa den minimerade videospelarens utseende och beteende</string>
   <string name="morphe_miniplayer_type_title">Minispelartyp</string>
+  <string name="morphe_miniplayer_hide_title_title">Dölj titel och kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Inaktiverad</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1090,10 +1091,6 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_theme_color_change_foreground_summary">Använd temafärgen för text och ikoner</string>
   <string name="morphe_gradient_loading_screen_title">Aktivera tonad inläsningsskärm</string>
   <string name="morphe_gradient_loading_screen_summary">Visar en tonad bakgrund på inläsningsskärmen istället för en enfärgad</string>
-  <string name="morphe_splash_screen_animation_style_title">Välkomstskärmens stil</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Inaktiverad</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Färg</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <string name="morphe_seekbar_custom_color_title">Aktivera anpassad färg på sökreglaget</string>
   <string name="morphe_seekbar_custom_color_primary_title">Sökreglagets färg</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Ange huvudfärgen för videons förloppsindikator</string>

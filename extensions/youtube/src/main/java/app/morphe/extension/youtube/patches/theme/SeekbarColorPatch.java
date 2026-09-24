@@ -14,18 +14,10 @@ import static app.morphe.extension.shared.StringRef.str;
 
 import android.graphics.Color;
 
-import com.airbnb.lottie.LottieAnimationView;
-
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.Scanner;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -109,70 +101,12 @@ public final class SeekbarColorPatch {
         return customSeekbarColor;
     }
 
-    /**
-     * Injection point.
-     */
-    public static boolean useLotteLaunchSplashScreen(boolean original) {
-        Logger.printDebug(() -> "Lottie splash screen flag: " + original);
-        return true; // Force lottie animation view.
+    public static int getSeekbarAccentColor() {
+        return customSeekbarColorGradient[1];
     }
 
-    /**
-     * Injection point.
-     * Modern Lottie style animation.
-     */
-    public static void setSplashAnimationLottie(LottieAnimationView view, int resourceId) {
-        try {
-            ThemePatch.SplashScreenAnimationStyle animationStyle = Settings.SPLASH_SCREEN_ANIMATION_STYLE.get();
-            if (!SEEKBAR_CUSTOM_COLOR_ENABLED
-                    // Black and white animations cannot use color replacements.
-                    || animationStyle == ThemePatch.SplashScreenAnimationStyle.FPS_30_BLACK_AND_WHITE
-                    || animationStyle == ThemePatch.SplashScreenAnimationStyle.FPS_60_BLACK_AND_WHITE) {
-                view.patch_setAnimation(resourceId);
-                return;
-            }
-
-            // Must specify primary key name otherwise the morphing YT logo color is also changed.
-            String originalKey = "\"k\":";
-            String originalPrimary = originalKey + "[1,0,0.2,1]";
-            String originalAccent = originalKey + "[1,0.152941176471,0.56862745098,1]";
-
-            String replacementPrimary = originalKey + getColorStringArray(customSeekbarColor);
-            String replacementAccent = originalKey + getColorStringArray(customSeekbarColorGradient[1]);
-
-            String json = loadRawResourceAsString(resourceId);
-            String replacement = json
-                    .replace(originalPrimary, replacementPrimary)
-                    .replace(originalAccent, replacementAccent);
-
-            if (BaseSettings.DEBUG.get() && (!json.contains(originalPrimary) || !json.contains(originalAccent))) {
-                Logger.printException(() -> "Could not replace splash animation colors: " + json);
-            }
-
-            // cacheKey is not needed since the animation will not be reused.
-            view.patch_setAnimation(new ByteArrayInputStream(replacement.getBytes()), null);
-        } catch (Exception ex) {
-            Logger.printException(() -> "setSplashAnimationLottie failure", ex);
-        }
-    }
-
-    private static String getColorStringArray(int color) {
-        return Arrays.toString(new double[]{
-                Color.red(color) / 255.0,
-                Color.green(color) / 255.0,
-                Color.blue(color) / 255.0,
-                Color.alpha(color) / 255.0
-        });
-    }
-
-    private static String loadRawResourceAsString(int resourceId) {
-        //noinspection CharsetObjectCanBeUsed
-        try (InputStream inputStream = Utils.getContext().getResources().openRawResource(resourceId);
-             Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name()).useDelimiter("\\A")) {
-            return scanner.next();
-        } catch (IOException e) {
-            throw new IllegalStateException("Could not load resource: " + resourceId);
-        }
+    public static boolean isCustomSeekbarColorEnabled() {
+        return SEEKBAR_CUSTOM_COLOR_ENABLED;
     }
 
     /**

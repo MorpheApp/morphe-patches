@@ -1,3 +1,46 @@
+## [1.45.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.7...v1.45.0-dev.8) (2026-09-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube Music - Disable dislike redirection:** Fix patch on 9.35+ ([#3226](https://github.com/MorpheApp/morphe-patches/issues/3226)) ([703ddde](https://github.com/MorpheApp/morphe-patches/commit/703ddde1733d3514993ae689dedd1795bf696d82))
+* **YouTube Music - Downloads:** Fix patching failure "Could not find conversion context field" ([#3231](https://github.com/MorpheApp/morphe-patches/issues/3231)) ([b4f2d7d](https://github.com/MorpheApp/morphe-patches/commit/b4f2d7d83c234b1f71ff4a6c8298a59ffe6ad240))
+
+## [1.45.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.6...v1.45.0-dev.7) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* Resolve startup crash for older Android devices ([b3391b4](https://github.com/MorpheApp/morphe-patches/commit/b3391b423dba14ceedccf5b6ae5e1abebcc80c5d))
+* **YouTube:** "Hide preview comment" breaks comment section text box ([#3187](https://github.com/MorpheApp/morphe-patches/issues/3187)) ([d592804](https://github.com/MorpheApp/morphe-patches/commit/d5928043b7982326a102aafa2993e3cb8872eaf7))
+
+## [1.45.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.5...v1.45.0-dev.6) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* **YouTube:** "Restore old video action bar" hides newly posted comments ([#3216](https://github.com/MorpheApp/morphe-patches/issues/3216)) ([24d5823](https://github.com/MorpheApp/morphe-patches/commit/24d582398b812f96e23bc374c3c77c4dd5506eb4))
+
+### ✨ New Features
+
+* **Custom branding:** Animate the Morphe logo at startup ([#3178](https://github.com/MorpheApp/morphe-patches/issues/3178)) ([70e8a9d](https://github.com/MorpheApp/morphe-patches/commit/70e8a9de9fc16efb830e2594dc6ba37ef49653c8))
+
+## [1.45.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.4...v1.45.0-dev.5) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Playback speed:** Music videos do not play at 1x speed ([#3210](https://github.com/MorpheApp/morphe-patches/issues/3210)) ([1c7086d](https://github.com/MorpheApp/morphe-patches/commit/1c7086da6270a723da370f89440d70475f96c888))
+
+## [1.45.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.3...v1.45.0-dev.4) (2026-09-23)
+
+### 🐛 Bug Fixes
+
+* **YouTube  - Voice over translation:** Add missing accessibility labels and Voice over translation button state ([#3203](https://github.com/MorpheApp/morphe-patches/issues/3203)) ([d99679b](https://github.com/MorpheApp/morphe-patches/commit/d99679b50dc6f19a2feffaa7f5a8940a9d83da94))
+* **YouTube - Custom branding:** Do not ask which app to use for app shortcut actions ([#3204](https://github.com/MorpheApp/morphe-patches/issues/3204)) ([0a2f0e0](https://github.com/MorpheApp/morphe-patches/commit/0a2f0e0f487512d6fd5f0c97ca83ad061859988c))
+* **YouTube - Return YouTube Dislike:** Do not show dislikes on the share and comment buttons of community posts ([31b657c](https://github.com/MorpheApp/morphe-patches/commit/31b657c5482def040a368b1d4661db704249db50))
+* **YouTube Music - Return YouTube Dislike:** Dislike count is black when the device uses the light theme ([7e7e15d](https://github.com/MorpheApp/morphe-patches/commit/7e7e15d8e0796a96d615e26ea66ac771fa068321))
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Add new provider ([#3174](https://github.com/MorpheApp/morphe-patches/issues/3174)) ([1bc710e](https://github.com/MorpheApp/morphe-patches/commit/1bc710e371eb89e663acaadb415c497b7829fe1e))
+
 ## [1.45.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.2...v1.45.0-dev.3) (2026-09-22)
 
 ### 🐛 Bug Fixes

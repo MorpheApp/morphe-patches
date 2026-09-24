@@ -13,7 +13,6 @@ import android.graphics.Rect;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -69,11 +68,6 @@ public final class LyricsPanelInstaller {
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
     private static WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
 
-    /**
-     * Whether this class added the window flag, so an existing app-owned flag is never cleared.
-     */
-    private static boolean keepScreenOnFlagAdded;
-
     private LyricsPanelInstaller() {
     }
 
@@ -84,20 +78,12 @@ public final class LyricsPanelInstaller {
                 return;
             }
 
-            final int keepScreenOnFlag = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
-            final boolean shouldKeepScreenOn =
-                    Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen;
-
-            if (shouldKeepScreenOn) {
-                if (!keepScreenOnFlagAdded
-                        && (activity.getWindow().getAttributes().flags & keepScreenOnFlag) == 0) {
-                    activity.getWindow().addFlags(keepScreenOnFlag);
-                    keepScreenOnFlagAdded = true;
-                }
-            } else if (keepScreenOnFlagAdded) {
-                activity.getWindow().clearFlags(keepScreenOnFlag);
-                keepScreenOnFlagAdded = false;
-            }
+            // The app sets and clears the keep screen on window flag itself, such as when
+            // the next track starts, so a window flag set here would not last. A view that
+            // keeps the screen on is added to the window flags on every layout update and
+            // does not change the flag the app owns.
+            activity.getWindow().getDecorView().setKeepScreenOn(
+                    Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen);
         });
     }
 

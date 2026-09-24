@@ -1047,6 +1047,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">มินิเพลเยอร์</string>
   <string name="morphe_miniplayer_screen_summary">ปรับแต่งรูปลักษณ์และพฤติกรรมของเครื่องเล่นวิดีโอขนาดเล็ก</string>
   <string name="morphe_miniplayer_type_title">ประเภทของเครื่องเล่นย่อขนาด</string>
+  <string name="morphe_miniplayer_hide_title_title">ซ่อนชื่อและช่อง</string>
   <string name="morphe_miniplayer_type_entry_0">ปิดการใช้งานอยู่</string>
   <string name="morphe_miniplayer_type_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_miniplayer_type_entry_2">น้อยที่สุด</string>
@@ -1090,10 +1091,6 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_change_foreground_summary">ใช้สีธีมสำหรับข้อความและไอคอน</string>
   <string name="morphe_gradient_loading_screen_title">เปิดใช้งานหน้าจอโหลดแบบไล่ระดับสี</string>
   <string name="morphe_gradient_loading_screen_summary">แสดงพื้นหลังไล่ระดับสีบนหน้าจอการโหลดแทนที่จะเป็นสีทึบ</string>
-  <string name="morphe_splash_screen_animation_style_title">รูปแบบหน้าจอ Splash</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">ปิดการใช้งานอยู่</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">สี</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">ขาวดำ</string>
   <string name="morphe_seekbar_custom_color_title">เปิดใช้งานสีแถบเลื่อนแบบกำหนดเอง</string>
   <string name="morphe_seekbar_custom_color_primary_title">สีแถบความคืบหน้า</string>
   <string name="morphe_seekbar_custom_color_primary_summary">ตั้งค่าสีหลักของแถบความคืบหน้าของวิดีโอ</string>

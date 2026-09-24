@@ -91,7 +91,7 @@ public final class LayoutComponentsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -104,7 +104,7 @@ public final class LayoutComponentsFilter extends Filter {
 
             if (matchedGroup == lyricsShareButton) {
                 // `button.e` also matches `toggle_button.e` - let the translate callback own that path.
-                return !path.contains(TOGGLE_BUTTON_PATH);
+                return !Utils.contains(path, TOGGLE_BUTTON_PATH);
             }
 
             return true;

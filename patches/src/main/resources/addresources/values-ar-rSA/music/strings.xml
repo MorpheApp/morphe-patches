@@ -358,8 +358,6 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_section_overlay_title">التراكب</string>
   <string name="morphe_music_lyrics_section_sync_title">المزامنة</string>
   <string name="morphe_music_lyrics_section_about_title">لمحة</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">انقر على ▲/▼ لضبط ترتيب الأولوية، وعلى مربع الاختيار لتفعيل أو تعطيل كل مزوّد.</string>
   <string name="morphe_music_lyrics_source_all_disabled">إخفاء السطر الجاري تشغيله.</string>
   <string name="morphe_music_lyrics_source_reset_title">إعادة تعيين ترتيب المزوّدين؟</string>
   <string name="morphe_music_lyrics_source_reset_message">استعادة الطلب الافتراضي للمزوّدين.</string>
@@ -386,9 +384,8 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: قيمة arl غير صالحة — حاول مرة أخرى.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">ديزر: \"sp_dc\" غير صحيح — رجاءاً تحقق وحاول مرة اخرى</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch: انسخ قيمة رمز المستخدم.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"يعمل Musixmatch بدون رمز مميز، لذلك يمكن ترك هذا الحقل فارغًا.
-
-أضف رمزًا مميزًا فقط لاستخدام حسابك الخاص. يجب أن يأتي من تطبيق Musixmatch لنظام Android: الرموز المميزة المنسوخة من musixmatch.com تنتمي إلى عميل سطح المكتب المتوقف ويتم رفضها بواسطة API."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">أضف رمزًا فقط لاستخدام حسابك الخاص. يجب أن يكون من تطبيق Musixmatch لنظام Android: الرموز المنسوخة من musixmatch.com تخص عميل سطح المكتب المتوقف عن العمل وترفضها واجهة API</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">يعمل Musixmatch بدون رمز، لذلك يمكن ترك هذا الحقل فارغًا</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: الرمز غير صالح — حاول مرة أخرى.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">ميوزكسماج: تم حفظ توكين المستخدم</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">ميوزكسماج: تم مسح توكين المستخدم</string>
@@ -405,9 +402,9 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_show_copy_button_title">إظهار زر النسخ</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">انقر لنسخ الكلمات الأصلية كنص عادي؛ اضغط مطولًا لحفظ ملف مصدر الكلمات الخام في مجلد التنزيلات.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">إظهار زر الترجمة</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">ترجمة الكلمات باستخدام ترجمات المزوّد أو ترجمة Google.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">ترجم كلمات الأغاني باستخدام ترجمات المزود، أو ترجمة Google، أو واجهة برمجة تطبيقات متوافقة مع OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">إظهار زر الرومنة</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">رومنة الكلمات باستخدام رومنة المزوّد أو ترجمة Google.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">حوّل كلمات الأغاني إلى أحرف لاتينية باستخدام الرومنة من المزود، أو ترجمة Google، أو واجهة برمجة تطبيقات متوافقة مع OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">إظهار زر التحديث</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">انقر للتبديل إلى مرشّح الكلمات التالي؛ اضغط مطولًا لفتح الخيارات.</string>
   <string name="morphe_music_lyrics_saved">محفوظة</string>
@@ -449,7 +446,7 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_copied">تم النسخ إلى الحافظة</string>
   <string name="morphe_music_lyrics_refreshing">جارٍ التحديث</string>
   <string name="morphe_music_lyrics_refreshed">تم التحديث</string>
-  <string name="morphe_music_lyrics_about_summary">"يتم البحث عن الكلمات حسب عنوان الأغنية والفنان، […] يمكنك أيضًا تجربة زر التحديث لتبديل الإصدارات يدويًا. […] لا يتم طلب جميع المزوّدين الممكّنين دائمًا بترتيبك، بل يستجيبون بناءً على سرعتهم."</string>
+  <string name="morphe_music_lyrics_about_summary">"تتم مطابقة كلمات الأغاني حسب العنوان والفنان، وقد تؤدي البيانات الوصفية غير المعتادة إلى عدم العثور على شيء أو العثور على الإصدار الخاطئ. استخدم التحديث لتبديل الإصدارات. مقدمو الخدمة المعلمون بـ * يتطلبون رمزًا. لا يتم دائمًا طلب جميع مقدمي الخدمة المفعلين حسب ترتيبك، بل يستجيبون بناءً على سرعتهم."</string>
   <string name="morphe_music_lyrics_hide_info_title">إخفاء سطر الإسناد</string>
   <string name="morphe_music_lyrics_hide_info_summary">إخفاء سطر الإسناد الظاهر أسفل الكلمات.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">تبديل موضع الترجمة والرومنة</string>

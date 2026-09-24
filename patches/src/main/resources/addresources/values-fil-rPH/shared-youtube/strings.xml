@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animasyon sa pagsisimula</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Nakapatay</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Kulay</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokromo</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

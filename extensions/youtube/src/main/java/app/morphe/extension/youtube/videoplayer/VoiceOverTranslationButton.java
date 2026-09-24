@@ -8,7 +8,9 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import android.view.View;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.Nullable;
 
@@ -53,6 +55,7 @@ public final class VoiceOverTranslationButton {
             overlayButtonRef = button != null ? new WeakReference<>(button) : null;
             if (button != null) {
                 button.setContentDescription(ResourceUtils.getString("morphe_vot_enabled_title"));
+                setToggleAccessibilityDelegate(button);
             }
             refreshActivatedState();
         } catch (Exception ex) {
@@ -82,10 +85,30 @@ public final class VoiceOverTranslationButton {
                         VotBottomSheet.show(view.getContext());
                         return true;
                     });
+            View legacyButton = Utils.getChildViewByResourceName(controlsView, "morphe_vot_button");
+            if (legacyButton != null) {
+                setToggleAccessibilityDelegate(legacyButton);
+            }
             refreshActivatedState();
         } catch (Exception ex) {
             Logger.printException(() -> "initializeLegacyButton failure", ex);
         }
+    }
+
+    /**
+     * Exposes the button to accessibility services as a toggle,
+     * so screen readers announce whether translation is on or off.
+     */
+    private static void setToggleAccessibilityDelegate(View button) {
+        button.setAccessibilityDelegate(new View.AccessibilityDelegate() {
+            @Override
+            public void onInitializeAccessibilityNodeInfo(View host, AccessibilityNodeInfo info) {
+                super.onInitializeAccessibilityNodeInfo(host, info);
+                info.setClassName(ToggleButton.class.getName());
+                info.setCheckable(true);
+                info.setChecked(VoiceOverTranslationPatch.isSessionEnabled());
+            }
+        });
     }
 
     private static void refreshActivatedState() {

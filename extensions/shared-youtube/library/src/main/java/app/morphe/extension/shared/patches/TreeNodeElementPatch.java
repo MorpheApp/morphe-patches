@@ -34,7 +34,7 @@ public class TreeNodeElementPatch {
             }
             String firstElement = treeNodeResultList.get(0).toString();
             if (ELEMENT_IDENTIFIER_COMPONENT.equals(firstElement)) {
-                String path = contextInterface.patch_getPathBuilder().toString();
+                StringBuilder path = contextInterface.patch_getPathBuilder();
                 onComponentLoaded(path, treeNodeResultList);
             } else if (ELEMENT_IDENTIFIER_LAZILY.equals(firstElement)) {
                 String identifier = contextInterface.patch_getIdentifier();
@@ -47,11 +47,11 @@ public class TreeNodeElementPatch {
         }
     }
 
-    private static void onComponentLoaded(String path, List<Object> treeNodeResultList) {
+    private static void onComponentLoaded(CharSequence path, List<Object> treeNodeResultList) {
         // Code added during patching.
     }
 
-    private static void onLazilyConvertedElementLoaded(String identifier, List<Object> treeNodeResultList) {
+    private static void onLazilyConvertedElementLoaded(CharSequence identifier, List<Object> treeNodeResultList) {
         // Code added during patching.
     }
 }

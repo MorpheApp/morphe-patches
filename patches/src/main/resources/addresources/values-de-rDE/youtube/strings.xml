@@ -1048,6 +1048,7 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_miniplayer_screen_title">Minispieler</string>
   <string name="morphe_miniplayer_screen_summary">Passen Sie das Erscheinungsbild und das Verhalten des minimierten Videoplayers an</string>
   <string name="morphe_miniplayer_type_title">Minispielertyp</string>
+  <string name="morphe_miniplayer_hide_title_title">Titel und Kanal ausblenden</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiviert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1091,10 +1092,6 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_theme_color_change_foreground_summary">Verwende die Themenfarbe für Text und Symbole</string>
   <string name="morphe_gradient_loading_screen_title">Gradientenladebildschirm aktivieren</string>
   <string name="morphe_gradient_loading_screen_summary">Zeigt einen Farbverlauf im Hintergrund des Ladebildschirms anstelle einer einheitlichen Farbe an</string>
-  <string name="morphe_splash_screen_animation_style_title">Art des Begrüßungsbildschirms</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Deaktiviert</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Farbe</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochrom</string>
   <string name="morphe_seekbar_custom_color_title">Benutzerdefinierte Farbgebung aktivieren</string>
   <string name="morphe_seekbar_custom_color_primary_title">Farbe der Fortschrittsanzeige</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Die Primärfarbe des Videofortschrittsbalkens</string>

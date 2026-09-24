@@ -1047,6 +1047,7 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_miniplayer_screen_title">Mini predvajalnik</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite videz in obnašanje minimiziranega predajalnika videa</string>
   <string name="morphe_miniplayer_type_title">Vrsta predvajalnika</string>
+  <string name="morphe_miniplayer_hide_title_title">Skrij naslov in kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogočen</string>
   <string name="morphe_miniplayer_type_entry_1">Privzeta</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalen</string>
@@ -1090,10 +1091,6 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_theme_color_change_foreground_summary">Uporabi barvo teme za besedilo in ikone. destacar,</string>
   <string name="morphe_gradient_loading_screen_title">Omogočite privzetno zaslonsko ozadje z gradientom</string>
   <string name="morphe_gradient_loading_screen_summary">Prikaže gradientno ozadje na zaslonu za nalaganje namesto polne barve</string>
-  <string name="morphe_splash_screen_animation_style_title">Slog začetnega zaslona</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Onemogočeno.</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Barva</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokromatsko</string>
   <string name="morphe_seekbar_custom_color_title">Omogočite prilagojeno barvo drsnega regulatorja</string>
   <string name="morphe_seekbar_custom_color_primary_title">Barva vrstice za napredovanje</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Nastavite primarno barvo vrstice za napredovanje videa</string>

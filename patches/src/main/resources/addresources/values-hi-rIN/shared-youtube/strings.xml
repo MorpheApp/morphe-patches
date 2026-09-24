@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">स्टार्टअप एनीमेशन</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">अक्षम</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">रंग</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">मोनोक्रोम</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">सेटिंग को पूरा करने के लिए रीस्टार्ट करें</string>
   <!-- layout.branding.baseCustomBrandingPatch -->

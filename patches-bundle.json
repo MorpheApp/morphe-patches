@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-22T20:06:56",
-  "description": "## [1.45.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.2...v1.45.0-dev.3) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* Reduce heap use from ConversionContext dumps and JS player cache ([#3120](https://github.com/MorpheApp/morphe-patches/issues/3120)) ([317fd56](https://github.com/MorpheApp/morphe-patches/commit/317fd56c1ecba41a7b928011a39e6a943ca9b07f))\n* **YouTube - Hide layout components:** Restore preview comment simplebox matcher ([#3130](https://github.com/MorpheApp/morphe-patches/issues/3130)) ([6e55325](https://github.com/MorpheApp/morphe-patches/commit/6e55325ddbbff9323206bda909b4a50b6d2ab178))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.45.0-dev.3/patches-1.45.0-dev.3.mpp",
+  "created_at": "2026-09-24T00:12:24",
+  "description": "## [1.45.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.7...v1.45.0-dev.8) (2026-09-24)\n\n### 🐛 Bug Fixes\n\n* **YouTube Music - Disable dislike redirection:** Fix patch on 9.35+ ([#3226](https://github.com/MorpheApp/morphe-patches/issues/3226)) ([703ddde](https://github.com/MorpheApp/morphe-patches/commit/703ddde1733d3514993ae689dedd1795bf696d82))\n* **YouTube Music - Downloads:** Fix patching failure \"Could not find conversion context field\" ([#3231](https://github.com/MorpheApp/morphe-patches/issues/3231)) ([b4f2d7d](https://github.com/MorpheApp/morphe-patches/commit/b4f2d7d83c234b1f71ff4a6c8298a59ffe6ad240))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.45.0-dev.8/patches-1.45.0-dev.8.mpp",
   "signature_download_url": "",
-  "version": "1.45.0-dev.3"
+  "version": "1.45.0-dev.8"
 }

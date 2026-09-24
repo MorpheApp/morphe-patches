@@ -7,21 +7,23 @@
 
 package app.morphe.extension.shared.patches.spans;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 
-public class StringSpanFilterGroup extends SpanFilterGroup<String> {
+public class StringSpanFilterGroup extends SpanFilterGroup<CharSequence> {
 
     public StringSpanFilterGroup(final BooleanSetting setting, final String... filters) {
         super(setting, filters);
     }
 
     @Override
-    public SpanFilterGroup.FilterGroupResult check(final String string) {
+    public SpanFilterGroup.FilterGroupResult check(CharSequence string) {
         int matchedIndex = -1;
         if (isEnabled()) {
-            for (String pattern : filters) {
-                if (!string.isEmpty()) {
-                    final int indexOf = string.indexOf(pattern);
+            for (CharSequence pattern : filters) {
+                //noinspection SizeReplaceableByIsEmpty
+                if (string.length() > 0) {
+                    final int indexOf = Utils.indexOf(string, pattern);
                     if (indexOf >= 0) {
                         matchedIndex = indexOf;
                         break;

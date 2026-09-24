@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">แอนิเมชันเริ่มต้น</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">ปิดการใช้งานอยู่</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">สี</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">โมโนโครม</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">รีสตาร์ทเพื่อดำเนินการตั้งค่าให้เสร็จสิ้น</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -235,6 +240,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">ไม่สามารถแสดงความไม่ชอบได้ (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">ซ่อนโดยเจ้าของ</string>
+  <string name="morphe_ryd_accessibility_dislike_count">ไม่ชอบวิดีโอนี้ พร้อมกับคนอื่นอีก %s คน</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">ไม่ชอบวิดีโอนี้ %s ของคะแนนโหวตเป็นการไม่ชอบ</string>
   <string name="morphe_ryd_enabled_title">เปิดใช้งาน Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">แสดงจำนวนไม่ชอบเป็นเปอร์เซ็นต์</string>
   <string name="morphe_ryd_dislike_percentage_summary">แสดงจำนวนไม่ชอบเป็นเปอร์เซ็นต์ของจำนวนชอบ แทนที่จะเป็นตัวเลข</string>

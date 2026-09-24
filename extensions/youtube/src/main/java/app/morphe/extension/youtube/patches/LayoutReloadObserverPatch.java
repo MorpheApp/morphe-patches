@@ -40,7 +40,7 @@ public class LayoutReloadObserverPatch {
     private static final String VIDEO_ACTION_BAR_PREFIX = "video_action_bar.e";
     public static final AtomicBoolean isActionBarVisible = new AtomicBoolean(false);
 
-    public static void onLazilyConvertedElementLoaded(String identifier, List<Object> treeNodeResultList) {
+    public static void onLazilyConvertedElementLoaded(CharSequence identifier, List<Object> treeNodeResultList) {
         if (!Utils.startsWithAny(identifier, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX)) {
             return;
         }

@@ -43,9 +43,6 @@ import android.widget.TextView;
 import java.util.Arrays;
 import java.util.function.Consumer;
 
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
@@ -60,6 +57,8 @@ import app.morphe.extension.youtube.patches.components.PlaybackSpeedMenuFilter;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings("unused")
 public class CustomPlaybackSpeedPatch {
@@ -186,20 +185,19 @@ public class CustomPlaybackSpeedPatch {
     /**
      * Injection point.
      */
-    public static CharSequence onSeekEduOverlayLoaded(Object context, CharSequence original) {
-        if (!DISABLE_TAP_AND_HOLD_SPEED && TextUtils.equals(tapAndHoldEduText, original)
-                && context instanceof ContextInterface contextInterface) {
-            try {
-                String identifier = contextInterface.patch_getIdentifier();
+    public static CharSequence onSeekEduOverlayLoaded(ContextInterface context, CharSequence original) {
+        try {
+            if (!DISABLE_TAP_AND_HOLD_SPEED && TextUtils.equals(tapAndHoldEduText, original)) {
+                String identifier = context.patch_getIdentifier();
                 if (identifier != null && identifier.startsWith("seek_edu_overlay_v2.e")) {
                     // 2.00x → 2x, 1.50x → 1.5x.
                     return VideoInformation.formatSpeedStringX(TAP_AND_HOLD_SPEED)
                             .replace(".00x", "x")
                             .replace("0x", "x") + ' ';
                 }
-            } catch (Exception ex) {
-                Logger.printException(() -> "onSeekEduOverlayLoaded failed", ex);
             }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onSeekEduOverlayLoaded failed", ex);
         }
 
         return original;

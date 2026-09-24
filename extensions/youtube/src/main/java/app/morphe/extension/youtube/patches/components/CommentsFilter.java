@@ -10,14 +10,17 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.patches.TextComponentPatch.newSpanUsingStylingOfAnotherSpan;
+
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
-
-import androidx.annotation.NonNull;
 
 import java.util.List;
 
@@ -55,6 +58,9 @@ public class CommentsFilter extends Filter {
     private final StringFilterGroup comments;
     private final StringFilterGroup commentsFilterBar;
     private final StringFilterGroup emojiButton;
+
+    private static final CharSequence hiddenPreviewCommentCharSequence =
+            str("morphe_hide_comments_preview_comment_hidden");
 
     public CommentsFilter() {
         var channelGuidelines = new StringFilterGroup(
@@ -137,12 +143,6 @@ public class CommentsFilter extends Filter {
                 "gift_attribution_card_classic_live.e"
         );
 
-        var previewComment = new StringFilterGroup(
-                Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
-                "comments_entry_point_teaser",
-                "comments_entry_point_simplebox"
-        );
-
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
                 "super_thanks_button.e"
@@ -171,7 +171,6 @@ public class CommentsFilter extends Filter {
                 createAShortButton,
                 emojiButton,
                 giftAnimationAndCards,
-                previewComment,
                 thanksButton,
                 timestampButton,
                 topFansButton
@@ -182,14 +181,14 @@ public class CommentsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
         if (matchedGroup == comments) {
-            if (path.startsWith(VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
+            if (Utils.startsWith(path, VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
                 return Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();
             }
             return Settings.HIDE_COMMENTS_SECTION.get();
@@ -216,11 +215,10 @@ public class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideCommentsFilterBarOptions(@NonNull String identifier,
-                                                    @NonNull List<Object> treeNodeResultList) {
+    public static void hideCommentsFilterBarOptions(CharSequence path, List<Object> treeNodeResultList) {
         try {
             if (Settings.HIDE_COMMENTS_FILTER_BAR_OPTIONS.get()
-                    && identifier.startsWith(CHIP_BAR_PATH_PREFIX)
+                    && Utils.startsWith(path, CHIP_BAR_PATH_PREFIX)
                     // Playlist sort button uses same components and must only filter if the player is opened.
                     && PlayerType.getCurrent().isMaximizedOrFullscreen()
             ) {
@@ -359,8 +357,8 @@ public class CommentsFilter extends Filter {
      * Injection point.
      */
     public static byte[] onCommentsLoaded(byte[] bytes) {
-        if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()) {
-            try {
+        try {
+            if (Settings.HIDE_COMMENTS_CAROUSEL.get() && !commentsCarouselFilterStrings.isEmpty()) {
                 var newElement = NewElement.parseFrom(bytes).toBuilder();
                 var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
                 if (identifier != null && identifier.contains(VIDEO_METADATA_CAROUSEL_PATH)) {
@@ -417,11 +415,43 @@ public class CommentsFilter extends Filter {
                         }
                     }
                 }
-            } catch (Exception ex) {
-                Logger.printException(() -> "Failed to parse newElement", ex);
             }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onCommentsLoaded failure", ex);
         }
 
         return bytes;
+    }
+
+    /**
+     * Called when a litho text component is created, and also when a Span is later reused
+     * (such as scrolling off and back on screen). Usually called off the main thread, and
+     * can be called several times for the same element.
+     *
+     * @param original Original char sequence created or reused by Litho.
+     * @return The original char sequence, or a replacement that contains the dislikes.
+     */
+    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
+                                                 CharSequence original) {
+        try {
+            if (!Settings.HIDE_COMMENTS_PREVIEW_COMMENT.get()) {
+                return original;
+            }
+
+            StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
+            if (pathBuilder.indexOf("comments_entry_point_teaser.e") < 0
+                    && pathBuilder.indexOf("comments_entry_point_simplebox.e") < 0) {
+                return original;
+            }
+
+            Spanned originalSpanned = original instanceof Spanned spanned
+                    ? spanned
+                    : new SpannableString(original);
+
+            return newSpanUsingStylingOfAnotherSpan(originalSpanned, hiddenPreviewCommentCharSequence);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onLithoTextLoaded failure", ex);
+        }
+        return original;
     }
 }

@@ -358,8 +358,6 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_section_overlay_title">ओवरले</string>
   <string name="morphe_music_lyrics_section_sync_title">सिंक्रनाइज़ेशन</string>
   <string name="morphe_music_lyrics_section_about_title">इसके बारे में</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">प्राथमिकता क्रम निर्धारित करने के लिए ▲/▼ पर टैप करें, और प्रत्येक प्रदाता को सक्षम या अक्षम करने के लिए बॉक्स पर टैप करें।</string>
   <string name="morphe_music_lyrics_source_all_disabled">सभी प्रदाता अक्षम हैं — अंतर्निहित गीत और एम्बेडेड गीत।</string>
   <string name="morphe_music_lyrics_source_reset_title">प्रदाता क्रम रीसेट करें?</string>
   <string name="morphe_music_lyrics_source_reset_message">प्रदाताओं को डिफ़ॉल्ट प्राथमिकता क्रम पर पुनर्स्थापित करें।</string>
@@ -396,9 +394,8 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer ARL अमान्य है, पुनः प्रयास करें।</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: अमान्य arl — कृपया जाँचें और पुनः प्रयास करें</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] उपयोगकर्ता टोकन का मान कॉपी करें</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch बिना टोकन के काम करता है, इसलिए यह फ़ील्ड खाली रह सकती है।
-
-टोकन केवल अपने खाते का उपयोग करने के लिए जोड़ें। इसे Musixmatch Android ऐप से आना चाहिए: musixmatch.com से कॉपी किए गए टोकन अप्रचलित डेस्कटॉप क्लाइंट से संबंधित हैं और API उन्हें अस्वीकार कर देता है"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">अपना खाता उपयोग करने के लिए ही टोकन जोड़ें। यह Musixmatch Android ऐप से आना चाहिए: musixmatch.com से कॉपी किए गए टोकन बंद किए गए डेस्कटॉप क्लाइंट के हैं और API उन्हें अस्वीकार कर देता है।</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch बिना टोकन के काम करता है, इसलिए यह फ़ील्ड खाली रह सकती है।</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">उपयोगकर्ता टोकन अमान्य है, पुनः प्रयास करें।</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: उपयोगकर्ता टोकन सहेजा गया</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: उपयोगकर्ता टोकन साफ़ किया गया</string>
@@ -415,9 +412,9 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_show_copy_button_title">कॉपी बटन दिखाएं</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">मूल लिरिक्स को सादे पाठ के रूप में कॉपी करने के लिए टैप करें; कच्ची लिरिक्स स्रोत फ़ाइल को डाउनलोड में सहेजने के लिए लॉन्ग प्रेस करें</string>
   <string name="morphe_music_lyrics_show_translate_button_title">अनुवाद बटन दिखाएं</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">प्रदाता अनुवाद या Google Translate का उपयोग करके गीत के बोल का अनुवाद करें</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">प्रदाता अनुवाद, Google Translate या OpenAI-संगत API का उपयोग करके गीत के बोल का अनुवाद करें।</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">रोमनाइज़ बटन दिखाएँ</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">प्रदाता रोमनीकरण या Google Translate रोमनीकरण का उपयोग करके गीतों को रोमनीकृत करें</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">प्रदाता रोमनीकरण, Google Translate या OpenAI-संगत API का उपयोग करके गीत के बोल को रोमन में लिखें।</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">रिफ़्रेश बटन दिखाएँ</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">अगले गीत विकल्प पर जाने के लिए टैप करें; तृतीय-पक्ष गीतों को अस्थायी रूप से अक्षम करने और अंतर्निहित गीत दिखाने के लिए देर तक दबाएँ</string>
   <string name="morphe_music_lyrics_saved">सहेजा गया</string>
@@ -459,7 +456,7 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_copied">क्लिपबोर्ड में कॉपी किया गया</string>
   <string name="morphe_music_lyrics_refreshing">रिफ़्रेश हो रहा है</string>
   <string name="morphe_music_lyrics_refreshed">रीफ़्रेश किया गया</string>
-  <string name="morphe_music_lyrics_about_summary">"गीतों को ट्रैक शीर्षक और कलाकार के आधार पर खोजा जाता है, इसलिए असामान्य मेटाडेटा वाला ट्रैक कुछ नहीं ढूँढ सकता है, या गलत संस्करण ढूँढ सकता है। आप मैन्युअल रूप से संस्करण बदलने के लिए रीफ़्रेश बटन भी आज़मा सकते हैं। जब कोई तृतीय-पक्ष गीत नहीं मिलते हैं, तो बिल्ट-इन या एम्बेडेड गीत दिखाए जाते हैं। * से चिह्नित प्रदाताओं को सक्षम करने के लिए टोकन की आवश्यकता होती है। सभी सक्षम प्रदाताओं से हमेशा आपके क्रम में अनुरोध नहीं किया जाता है, बल्कि वे अपनी गति के आधार पर प्रतिक्रिया देते हैं"</string>
+  <string name="morphe_music_lyrics_about_summary">"गीत शीर्षक और कलाकार द्वारा मिलान किए जाते हैं, असामान्य मेटाडेटा कुछ नहीं या गलत संस्करण खोज सकता है। संस्करण बदलने के लिए रीफ्रेश का उपयोग करें। * चिह्नित प्रदाताओं को टोकन की आवश्यकता होती है। सभी सक्षम प्रदाताओं से हमेशा आपके क्रम में अनुरोध नहीं किया जाता है, बल्कि वे अपनी गति के आधार पर प्रतिक्रिया देते हैं।"</string>
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतों के नीचे दिखाई जाने वाली क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद और रोमनीकरण आपस में बदलें</string>

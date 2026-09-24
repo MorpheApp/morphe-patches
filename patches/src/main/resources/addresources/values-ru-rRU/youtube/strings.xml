@@ -1049,6 +1049,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">Миниплеер</string>
   <string name="morphe_miniplayer_screen_summary">Настройка внешнего вида и поведения мини-плеера</string>
   <string name="morphe_miniplayer_type_title">Тип миниплеера</string>
+  <string name="morphe_miniplayer_hide_title_title">Скрыть название и канал</string>
   <string name="morphe_miniplayer_type_entry_0">Отключено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартный</string>
   <string name="morphe_miniplayer_type_entry_2">Минимальный</string>
@@ -1092,10 +1093,6 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_change_foreground_summary">Используйте цвет темы для текста и значков</string>
   <string name="morphe_gradient_loading_screen_title">Включить градиентный фон экрана загрузки</string>
   <string name="morphe_gradient_loading_screen_summary">Показывает градиентный фон на экране загрузки вместо сплошного цвета</string>
-  <string name="morphe_splash_screen_animation_style_title">Стиль экрана заставки</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Выключено</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Цветной</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Монохромный</string>
   <string name="morphe_seekbar_custom_color_title">Включить кастомный цвет полосы прогресса</string>
   <string name="morphe_seekbar_custom_color_primary_title">Цвет полосы прогресса</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Установите основной цвет полосы прогресса видео</string>

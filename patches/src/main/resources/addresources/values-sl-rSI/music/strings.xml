@@ -358,8 +358,6 @@ Za zagotovitev sinhronizacije med predvajanjem v ozadju poskrbite, da je uporaba
   <string name="morphe_music_lyrics_section_overlay_title">Prekrivanje</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinhronizacija</string>
   <string name="morphe_music_lyrics_section_about_title">O nas</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tapnite ▲/▼ za nastavitev vrstnega reda in potrditveno polje za omogočanje ali onemogočanje posameznega ponudnika</string>
   <string name="morphe_music_lyrics_source_all_disabled">Vsi ponudniki so onemogočeni – vgrajena in vdelana besedila.</string>
   <string name="morphe_music_lyrics_source_reset_title">Ponastavitev vrstnega reda ponudnikov?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ponastavi ponudnike na privzeti vrstni red.</string>
@@ -389,9 +387,8 @@ Koraki:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ARL ni veljaven. Poskusite znova.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: neveljaven arl — preverite in poskusite znova.</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch … Kopirajte vrednost uporabniškega žetona.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch deluje brez žetona, zato lahko to polje ostane prazno.
-
-Dodajte žeton samo za uporabo svojega računa. Žeton mora izvirati iz aplikacije Musixmatch za Android: žetoni, kopirani s spletnega mesta musixmatch.com, pripadajo opuščenemu namiznemu odjemalcu in API jih zavrača"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Žeton dodajte samo, če želite uporabljati svoj račun. Prihajati mora iz aplikacije Musixmatch za Android: žetoni, kopirani s spletnega mesta musixmatch.com, pripadajo opuščenemu namiznemu odjemalcu in jih API zavrača.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch deluje tudi brez žetona, zato lahko to polje ostane prazno.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Uporabniški žeton ni veljaven. Poskusite znova.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: uporabniški žeton je shranjen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: uporabniški žeton je izbrisan</string>
@@ -408,9 +405,9 @@ Zahtevani piškotki: SID, HSID, SSID, SAPISID, __Secure-3APISID, __Secure-1APISI
   <string name="morphe_music_lyrics_show_copy_button_title">Pokaži gumb Kopiraj</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tapnite za kopiranje izvirnega besedila kot navadno besedilo; pritisnite in zadržite za shranjevanje surove izvorne datoteke besedila v mapo Prenosi.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Pokaži gumb Prevedi</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Prevedite besedilo s prevodi ponudnika ali z Google Prevajalnikom.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Prevedite besedila s ponudnikovimi prevodi, Google Prevajalnikom ali API-jem, združljivim z OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikažite gumb za romanizacijo</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizirajte besedilo z uporabo ponudnikove romanizacije ali romanizacije Google Prevajalnika.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizirajte besedila s ponudnikovo romanizacijo, Google Prevajalnikom ali API-jem, združljivim z OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Prikaži gumb Osveži</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Dotaknite se, da preklopite na naslednjega kandidata za besedilo; dolgo pritisnite, da začasno onemogočite besedila tretjih oseb in prikažete izvirno besedilo.</string>
   <string name="morphe_music_lyrics_saved">Shranjeno</string>
@@ -452,7 +449,7 @@ Zahtevani piškotki: SID, HSID, SSID, SAPISID, __Secure-3APISID, __Secure-1APISI
   <string name="morphe_music_lyrics_copied">Kopirano v odložišče</string>
   <string name="morphe_music_lyrics_refreshing">Osveževanje</string>
   <string name="morphe_music_lyrics_refreshed">Osveženo</string>
-  <string name="morphe_music_lyrics_about_summary">"Besedilo se išče po naslovu skladbe in izvajalcu, […] Poskusite lahko tudi z gumbom za osvežitev, da ročno preklapljate med različicami. […] Vsi omogočeni ponudniki niso vedno klicani v vašem vrstnem redu, ampak se odzovejo glede na svojo hitrost."</string>
+  <string name="morphe_music_lyrics_about_summary">"Besedila pesmi se ujemajo po naslovu in izvajalcu; nenavadni metapodatki lahko ne najdejo ničesar ali napačno različico. Uporabite osvežitev za preklop različic. Ponudniki, označeni z *, zahtevajo žeton. Vsi omogočeni ponudniki niso vedno zaprošeni v vašem vrstnem redu, ampak odgovarjajo glede na svojo hitrost."</string>
   <string name="morphe_music_lyrics_hide_info_title">Skrijte vrstico z avtorstvom</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skrijte vrstico z avtorstvom, prikazano pod besedilom.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamenjajte prevod in romanizacijo.</string>

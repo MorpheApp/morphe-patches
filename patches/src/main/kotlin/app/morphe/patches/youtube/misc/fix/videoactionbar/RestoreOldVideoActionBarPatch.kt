@@ -7,9 +7,13 @@
 
 package app.morphe.patches.youtube.misc.fix.videoactionbar
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.BuildInnerTubeProtoRequestUriFingerprint
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.request.buildRequestPatch
 import app.morphe.patches.shared.misc.request.hookBuildRequest
@@ -26,11 +30,18 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.ModernRelateVideoOverlayFingerprint
 import app.morphe.patches.youtube.shared.RelateVideoOverlayLayoutParamFingerprint
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
@@ -40,6 +51,9 @@ private const val EXTENSION_CLASS =
 
 private const val EXTENSION_CONFIG_INFO_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/RestoreOldVideoActionBarPatch$ConfigInfoInterface;"
+
+private const val EXTENSION_REQUEST_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/RestoreOldVideoActionBarPatch$RequestInterface;"
 
 internal val restoreOldVideoActionBarPatch = bytecodePatch(
     description = "Overrides 'X-Youtube-Cold-Config-Data', fixes 'Hide video action buttons' and 'Return YouTube Dislike', "
@@ -67,6 +81,63 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
                 descriptor = "$EXTENSION_CLASS->fixVideoActionBar",
                 hookHeader = true
             )
+
+            // Comment requests use the same 'next' endpoint as watch page requests.
+            // Their config must not be overridden, so find out which requests are for the watch page.
+            BuildInnerTubeProtoRequestUriFingerprint.method.apply {
+                // uri.buildUpon().appendEncodedPath("youtubei/v1").appendEncodedPath(this.request.endpoint)
+                val appendEndpointIndex = indexOfFirstInstructionReversedOrThrow(
+                    methodCall(name = "appendEncodedPath")
+                )
+                val endpointRegister = getInstruction<FiveRegisterInstruction>(appendEndpointIndex).registerD
+                val endpointIndex = indexOfFirstInstructionReversedOrThrow(appendEndpointIndex) {
+                    opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == endpointRegister
+                }
+                val endpointField = getInstruction<ReferenceInstruction>(endpointIndex).reference as FieldReference
+                val requestRegister = getInstruction<TwoRegisterInstruction>(endpointIndex).registerB
+                val requestIndex = indexOfFirstInstructionReversedOrThrow(endpointIndex) {
+                    opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == requestRegister
+                }
+                val requestField = getInstruction<ReferenceInstruction>(requestIndex).reference as FieldReference
+
+                BuildInnerTubeProtoRequestUriFingerprint.classDef.apply {
+                    interfaces.add(EXTENSION_REQUEST_INTERFACE)
+
+                    methods.add(
+                        ImmutableMethod(
+                            type,
+                            "patch_getEndpoint",
+                            listOf(),
+                            "Ljava/lang/String;",
+                            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                            null,
+                            null,
+                            MutableMethodImplementation(2),
+                        ).toMutable().apply {
+                            addInstructions(
+                                0,
+                                """
+                                    iget-object v0, p0, $requestField
+                                    iget-object v0, v0, $endpointField
+                                    return-object v0
+                                """
+                            )
+                        }
+                    )
+                }
+            }
+
+            BuildInnerTubeProtoRequestBodyFingerprint.method.apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                    addInstruction(
+                        index,
+                        "invoke-static { v$register, p0 }, $EXTENSION_CLASS->" +
+                                "onBuildRequestBody(Lcom/google/protobuf/MessageLite;$EXTENSION_REQUEST_INTERFACE)V"
+                    )
+                }
+            }
 
             val configInfoClass = with(BuildInnerTubeProtoRequestBodyFingerprint) {
                 val match = instructionMatches.first()

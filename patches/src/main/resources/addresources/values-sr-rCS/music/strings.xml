@@ -357,8 +357,6 @@ Da biste obezbedili sinhronizaciju scrobbling-a tokom reprodukcije u pozadini, u
   <string name="morphe_music_lyrics_section_overlay_title">Preklop</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinhronizacija</string>
   <string name="morphe_music_lyrics_section_about_title">O programu</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Dodirnite ▲/▼ da biste podesili redosled prioriteta, a potvrdni okvir da biste omogućili ili onemogućili svaki izvor.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Svi izvori su onemogućeni — ugrađeni i umetnuti tekstovi.</string>
   <string name="morphe_music_lyrics_source_reset_title">Poništi redosled izvora?</string>
   <string name="morphe_music_lyrics_source_reset_message">Vrati izvore na podrazumevani redosled prioriteta.</string>
@@ -386,9 +384,8 @@ Koraci:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: nevažeći ARL — proverite i pokušajte ponovo.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl nije važeći — pokušajte ponovo.</string>
   <string name="morphe_music_musixmatch_token_title">LRCLIB, zatim QQ, zatim KuGou, zatim NetEase, zatim BiniLyrics, zatim Unison, zatim AMLL.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch radi bez tokena, pa ovo polje može ostati prazno.
-
-Dodajte token samo ako želite da koristite sopstveni nalog. On mora potecati iz Musixmatch Android aplikacije: tokeni kopirani sa musixmatch.com pripadaju penzioniranom desktop klijentu i API ih odbija"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Dodaj token samo da koristiš sopstveni nalog. Mora da potiče iz Musixmatch Android aplikacije: tokeni kopirani sa musixmatch.com pripadaju penzionisanom desktop klijentu i API ih odbija</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch radi bez tokena, tako da ovo polje može ostati prazno</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">korisnički token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">YouTube: kolačići obrisani.</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: korisnički token je obrisan</string>
@@ -410,9 +407,9 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Prikaži dugme za kopiranje</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Prevedite tekstove koristeći prevode izvora ili Google prevodilac.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Prikaži dugme za prevođenje</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Prikaži dugme za romanizaciju.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Prevedi tekst pesme koristeći prevode provajdera, Google Translate ili API kompatibilan sa OpenAI-jem</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikaži dugme za romanizaciju.</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizovanje…</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizuj tekst pesme koristeći romanizaciju provajdera, Google Translate ili API kompatibilan sa OpenAI-jem</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Nije moguće romanizovati pesmu.</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Osveženo.</string>
   <string name="morphe_music_lyrics_saved">Tekst se traži po naslovu numere i izvođaču, […] Možete i da pritisnete dugme za osvežavanje da biste ručno promenili verzije. […] Svi omogućeni izvori se ne traže uvek po vašem redosledu, već odgovaraju prema svojoj brzini.</string>
@@ -454,7 +451,7 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_copied">Kopirano u privremenu memoriju</string>
   <string name="morphe_music_lyrics_refreshing">Osvežavanje</string>
   <string name="morphe_music_lyrics_refreshed">Osveženo</string>
-  <string name="morphe_music_lyrics_about_summary">"Stihovi se pretražuju po naslovu pesme i izvođaču, […] Možete i da dodirnete dugme za osvežavanje da ručno promenite verzije. […] Svi omogućeni provajderi nisu uvek pozvani prema vašem redosledu, već odgovaraju prema svojoj brzini."</string>
+  <string name="morphe_music_lyrics_about_summary">"Tekstovi pesama se uparuju prema naslovu i izvođaču. Neuobičajeni metapodaci mogu dovesti do toga da se ne pronađe ništa ili pogrešna verzija. Koristite osvežavanje da biste promenili verzije. Provajderi označeni * zahtevaju token. Svi omogućeni provajderi se ne pozivaju uvek po vašem redosledu, već odgovaraju na osnovu svoje brzine."</string>
   <string name="morphe_music_lyrics_hide_info_title">Sakrij red s informacijama</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sakrij red s informacijama prikazan ispod stihova.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Promeni redosled prikaza izvođača i naslova</string>

@@ -1047,6 +1047,7 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_miniplayer_screen_title">Minilejátszó</string>
   <string name="morphe_miniplayer_screen_summary">A minimalizált videólejátszó megjelenésének és viselkedésének testreszabása</string>
   <string name="morphe_miniplayer_type_title">Minilejátszó típus</string>
+  <string name="morphe_miniplayer_hide_title_title">Cím és csatorna elrejtése</string>
   <string name="morphe_miniplayer_type_entry_0">Kikapcsolva</string>
   <string name="morphe_miniplayer_type_entry_1">Alapértelmezett</string>
   <string name="morphe_miniplayer_type_entry_2">Minimális</string>
@@ -1090,10 +1091,6 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_theme_color_change_foreground_summary">Használja a téma színét a szöveghez és az ikonokhoz</string>
   <string name="morphe_gradient_loading_screen_title">Színátmenetes betöltési képernyő engedélyezése</string>
   <string name="morphe_gradient_loading_screen_summary">Árnyékoló háttér megjelenítése a betöltési képernyőn a tömör szín helyett</string>
-  <string name="morphe_splash_screen_animation_style_title">Üdvözlőképernyő stílusa</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Kikapcsolva</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Színes</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokróm</string>
   <string name="morphe_seekbar_custom_color_title">Egyéni keresősáv szín engedélyezése</string>
   <string name="morphe_seekbar_custom_color_primary_title">Keresősáv színe</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Állítsa be a videó lejátszás jelzője elsődleges színét</string>

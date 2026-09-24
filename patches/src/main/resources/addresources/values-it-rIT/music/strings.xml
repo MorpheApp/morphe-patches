@@ -357,8 +357,6 @@ Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in bac
   <string name="morphe_music_lyrics_section_overlay_title">Sovrapposizione</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizzazione</string>
   <string name="morphe_music_lyrics_section_about_title">A proposito di</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tocca ▲/▼ per impostare l\'ordine di priorità e la casella per abilitare o disabilitare ogni provider</string>
   <string name="morphe_music_lyrics_source_all_disabled">Tutti i provider disabilitati — testi integrati e testi incorporati</string>
   <string name="morphe_music_lyrics_source_reset_title">Reimpostare l\'ordine dei provider?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ripristina i provider all\'ordine di priorità predefinito</string>
@@ -395,9 +393,8 @@ Passaggi:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl cancellato</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl non valido — controlla e riprova</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funziona senza token, quindi questo campo può restare vuoto.
-
-Aggiungi un token solo per usare il tuo account. Deve provenire dall'app Android di Musixmatch: i token copiati da musixmatch.com appartengono al client desktop dismesso e l'API li rifiuta"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Aggiungi un token solo per usare il tuo account. Deve provenire dall\'app Android di Musixmatch: i token copiati da musixmatch.com appartengono al client desktop dismesso e l\'API li rifiuta</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funziona senza token, quindi questo campo può rimanere vuoto</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token utente</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token utente salvato</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token utente cancellato</string>
@@ -414,9 +411,9 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_copy_button_title">Mostra il pulsante di copia</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tocca per copiare i testi originali come testo normale; tieni premuto per salvare il file sorgente dei testi non elaborati in Download</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Mostra il pulsante Traduci</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Tocca per passare al candidato successivo; tieni premuto per selezionare una fonte di testi</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Traduci i testi usando le traduzioni del provider, Google Translate o un\'API compatibile con OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostra il pulsante Romanizza</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Tocca per passare al candidato precedente; tieni premuto per selezionare una fonte di testi</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizza i testi usando la romanizzazione del provider, Google Translate o un\'API compatibile con OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostra il pulsante Aggiorna</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Tocca per passare alla fonte di testi successiva; tieni premuto per selezionare una fonte di testi</string>
   <string name="morphe_music_lyrics_saved">Salvato</string>
@@ -458,7 +455,7 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_copied">Copiato negli appunti</string>
   <string name="morphe_music_lyrics_refreshing">Aggiornamento in corso</string>
   <string name="morphe_music_lyrics_refreshed">Aggiornato</string>
-  <string name="morphe_music_lyrics_about_summary">"Testi non disponibili"</string>
+  <string name="morphe_music_lyrics_about_summary">"I testi vengono abbinati in base al titolo e all'artista; metadati insoliti potrebbero non trovare nulla o la versione sbagliata. Usa Aggiorna per cambiare versione. I provider contrassegnati con * richiedono un token. Non tutti i provider abilitati vengono sempre interrogati nell'ordine che hai impostato, ma rispondono in base alla loro velocità."</string>
   <string name="morphe_music_lyrics_hide_info_title">Nascondi la riga dei crediti</string>
   <string name="morphe_music_lyrics_hide_info_summary">Caricamento testi...</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Scambia traduzione e romanizzazione</string>

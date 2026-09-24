@@ -27,6 +27,8 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
+import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_37_or_greater
@@ -59,7 +61,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 internal const val MINIMAL_EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MinimalMiniplayerPatch;"
 internal const val MINIMAL_BOUNDS_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/MinimalMiniplayerPatch$MiniplayerBoundsController;"
@@ -73,7 +75,8 @@ val miniplayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        playerOverlayButtonsHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -194,6 +197,17 @@ val miniplayerPatch = bytecodePatch(
         }
 
         // endregion
+
+        // Fix the fullscreen button tint when the minimal miniplayer type is selected.
+        // The minimal type forces a theme where ytOverlayButtonPrimary resolves to gray
+        // instead of white, making the fullscreen button appear gray instead of white.
+        if (!is_21_29_or_greater) {
+            addPlayerBottomButton(
+                descriptor = EXTENSION_CLASS,
+                methodName = "fixMinimalMiniplayerFullscreenButtonTint"
+            )
+        }
+
 
         // region Enable tablet miniplayer.
         // Parts of the YT code is removed in 20.37+ and the legacy player no longer works.

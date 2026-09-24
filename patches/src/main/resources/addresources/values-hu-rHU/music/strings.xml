@@ -358,8 +358,6 @@ A háttérlejátszás közbeni szinkronizálás biztosításához győződjön m
   <string name="morphe_music_lyrics_section_overlay_title">Átfedés</string>
   <string name="morphe_music_lyrics_section_sync_title">Szinkronizálás</string>
   <string name="morphe_music_lyrics_section_about_title">Névjegy</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Érintse meg a ▲/▼ gombot a prioritási sorrend beállításához, a jelölőnégyzetet pedig az egyes szolgáltatók engedélyezéséhez vagy letiltásához.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Minden szolgáltató le van tiltva – a beépített és a beágyazott dalszövegek is.</string>
   <string name="morphe_music_lyrics_source_reset_title">Visszaállítja a szolgáltatók sorrendjét?</string>
   <string name="morphe_music_lyrics_source_reset_message">Szolgáltatók visszaállítása az alapértelmezett prioritási sorrendre.</string>
@@ -396,9 +394,8 @@ Lépések:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: érvénytelen arl, próbálja újra.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: érvénytelen arl — ellenőrizd, és próbáld újra</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch-token</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"A Musixmatch token nélkül is működik, így ez a mező üresen hagyható.
-
-Csak a saját fiókod használatához adj meg tokent. A tokennak a Musixmatch Android alkalmazásból kell származnia: a musixmatch.com-ról másolt tokenek a megszűnt asztali klienshez tartoznak, és az API elutasítja azokat."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Csak akkor adj meg tokent, ha a saját fiókodat szeretnéd használni. A tokennek a Musixmatch Android alkalmazásból kell származnia: a musixmatch.com-ról kimásolt tokenek a megszűnt asztali klienshez tartoznak, és az API elutasítja azokat.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">A Musixmatch token nélkül is működik, így ez a mező üresen hagyható.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">felhasználói token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: felhasználói token elmentve</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: felhasználói token törölve</string>
@@ -420,9 +417,9 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_copy_button_title">Másolás gomb megjelenítése</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Koppintson az eredeti dalszöveg egyszerű szövegként történő másolásához; tartsa hosszan a nyers dalszöveg-forrásfájl mentéséhez a Letöltések mappába.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Fordítás gomb megjelenítése</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Dalszöveg fordítása a szolgáltató fordításai vagy a Google Translate segítségével.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Dalszövegek fordítása a szolgáltató által biztosított fordításokkal, a Google Fordítóval vagy egy OpenAI-kompatibilis API-val.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanizálás gomb megjelenítése</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Dalszöveg romanizálása a szolgáltató romanizálásával vagy a Google Translate segítségével […] gomb.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Dalszövegek romanizálása a szolgáltató által biztosított romanizálással, a Google Fordítóval vagy egy OpenAI-kompatibilis API-val.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Frissítés gomb megjelenítése</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Koppintson a következő dalszöveg-jelöltre váltáshoz; […] : „A szinkronizált szavak vagy szótagok kiemelése”</string>
   <string name="morphe_music_lyrics_saved">Mentett</string>
@@ -464,7 +461,7 @@ Szükséges cookie-k: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_copied">Másolva a vágólapra</string>
   <string name="morphe_music_lyrics_refreshing">Frissítés</string>
   <string name="morphe_music_lyrics_refreshed">Frissítve</string>
-  <string name="morphe_music_lyrics_about_summary">"A dalszövegek keresése az előadó és a cím alapján történik, így egy szokatlan metaadatokkal rendelkező számnál előfordulhat, hogy nincs találat, vagy rossz verzió érkezik. A frissítés gombbal manuálisan is válthatsz a verziók között. Ha nincs harmadik féltől származó dalszöveg, akkor helyette a beépített vagy a fájlba ágyazott dalszöveg jelenik meg. A *-gal jelölt szolgáltatók engedélyezéséhez token szükséges. Az engedélyezett szolgáltatók lekérdezése nem mindig a te sorrendedben történik, hanem a sebességük alapján válaszolnak."</string>
+  <string name="morphe_music_lyrics_about_summary">"A dalszövegek cím és előadó alapján kerülnek párosításra; a szokatlan metaadatok miatt előfordulhat, hogy semmi nem található, vagy rossz verzió jelenik meg. A frissítés segítségével válthatsz a verziók között. A *-gal jelölt szolgáltatók tokent igényelnek. Az összes engedélyezett szolgáltató nem mindig a kérésed szerinti sorrendben kerül lekérdezésre, hanem sebességük alapján válaszolnak."</string>
   <string name="morphe_music_lyrics_hide_info_title">Forrásmegjelölés elrejtése</string>
   <string name="morphe_music_lyrics_hide_info_summary">A dalszöveg alatt látható forrásmegjelölés elrejtése</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">A fordítás és a romanizáció felcserélése</string>

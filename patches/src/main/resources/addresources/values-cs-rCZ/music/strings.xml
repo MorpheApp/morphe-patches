@@ -358,8 +358,6 @@ Pro zajištění synchronizace scrobblingu během přehrávání na pozadí se u
   <string name="morphe_music_lyrics_section_overlay_title">Překryv</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronizace</string>
   <string name="morphe_music_lyrics_section_about_title">O aplikaci</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Klepnutím na ▲/▼ nastavíte pořadí priority a políčkem zapnete nebo vypnete jednotlivé poskytovatele.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Všichni poskytovatelé vypnuti – vestavěné a vložené texty.</string>
   <string name="morphe_music_lyrics_source_reset_title">Obnovit výchozí pořadí poskytovatelů?</string>
   <string name="morphe_music_lyrics_source_reset_message">Obnovit výchozí pořadí priorit poskytovatelů.</string>
@@ -396,9 +394,8 @@ Postup:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: neplatný arl. Zkuste to znovu.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: neplatný arl — zkontrolujte a zkuste to znovu</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Zkopírujte hodnotu uživatelského tokenu.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funguje bez tokenu, takže toto pole může zůstat prázdné.
-
-Přidejte token pouze pro použití vlastního účtu. Musí pocházet z aplikace Musixmatch pro Android: tokeny zkopírované z musixmatch.com patří ukončenému desktopovému klientovi a API je odmítá."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Token přidávejte pouze v případě, že používáte vlastní účet. Musí pocházet z aplikace Musixmatch pro Android: tokeny zkopírované z musixmatch.com patří ukončenému desktopovému klientovi a API je odmítá.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funguje i bez tokenu, takže toto pole může zůstat prázdné.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: neplatný uživatelský token. Zkuste to znovu.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: uživatelský token uložen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: uživatelský token vymazán</string>
@@ -415,9 +412,9 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_copy_button_title">Zobrazit tlačítko Kopírovat</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Klepnutím zkopírujete původní text jako prostý text; dlouhým stisknutím uložíte nezpracovaný zdroj textu do složky Stažené soubory.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Zobrazit tlačítko Přeložit</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Přeložit texty pomocí překladů poskytovatele nebo Google Překladače.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Přeložit texty písní pomocí překladů od poskytovatele, Google Translate nebo API kompatibilního s OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Zobrazit tlačítko pro přepis do latinky.</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Přepsat texty do latinky pomocí přepisu od poskytovatele nebo tlačítka Google Překladač.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Přepsat texty písní do latinky pomocí romanizace od poskytovatele, Google Translate nebo API kompatibilního s OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
   <string name="morphe_music_lyrics_saved">Uloženo</string>
@@ -459,7 +456,7 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_copied">Zkopírováno do schránky</string>
   <string name="morphe_music_lyrics_refreshing">Obnovování</string>
   <string name="morphe_music_lyrics_refreshed">Obnoveno</string>
-  <string name="morphe_music_lyrics_about_summary">"Texty se vyhledávají podle názvu skladby a interpreta, takže u skladby s neobvyklými metadaty nemusí být nalezeno nic, nebo může být nalezena nesprávná verze. Můžete také zkusit tlačítko obnovení pro ruční přepnutí verzí. Pokud nejsou nalezeny žádné texty od třetích stran, zobrazí se místo toho vestavěné nebo vložené texty. Poskytovatelé označení hvězdičkou vyžadují pro povolení token. Ne všichni povolení poskytovatelé jsou vždy dotazováni v pořadí, které zvolíte, ale odpovídají podle své rychlosti."</string>
+  <string name="morphe_music_lyrics_about_summary">"Texty písní se párují podle názvu a interpreta; neobvyklá metadata nemusí najít nic nebo špatnou verzi. Obnovením přepnete verze. Poskytovatelé označení * vyžadují token. Všichni povolení poskytovatelé nejsou vždy dotazováni v pořadí, ale reagují podle své rychlosti."</string>
   <string name="morphe_music_lyrics_hide_info_title">Skrýt řádek s uvedením zdroje</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skrýt řádek s uvedením zdroje zobrazený pod textem písně.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Prohodit překlad a romanizaci</string>
