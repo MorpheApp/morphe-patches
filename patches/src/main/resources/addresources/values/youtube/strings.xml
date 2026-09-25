@@ -1328,6 +1328,8 @@ Tap here to open DeArrow.ajay.app"</string>
     <!-- video.quality.button.videoQualityDialogButtonPatch -->
     <string name="morphe_video_quality_dialog_button_title">Show Quality button</string>
     <string name="morphe_video_quality_dialog_button_summary">Tap and hold to reset quality to default</string>
+    <string name="morphe_video_quality_dialog_button_resolution_title">Show resolution on Quality button</string>
+    <string name="morphe_video_quality_dialog_button_resolution_summary">Show the resolution, such as 1080, instead of a label such as FHD</string>
 
     <!-- video.speed.custom.customPlaybackSpeedPatch -->
     <string name="morphe_custom_speed_menu_title">Custom playback speed menu</string>

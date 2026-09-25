@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.video.quality
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
@@ -49,7 +50,10 @@ val videoQualityDialogButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_video_quality_dialog_button", summary = true)
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_video_quality_dialog_button", summary = true),
+                SwitchPreference("morphe_video_quality_dialog_button_resolution", summary = true)
+            )
         )
 
         addPlayerBottomButton(EXTENSION_BUTTON)
