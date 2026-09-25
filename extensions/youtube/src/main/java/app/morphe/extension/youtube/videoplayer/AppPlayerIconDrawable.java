@@ -8,6 +8,9 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableWrapper;
 import android.util.AttributeSet;
@@ -23,9 +26,10 @@ import java.io.IOException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.ui.Dim;
 
 /**
- * Replaces an icon of the app's own player controls with the selected icon style.
+ * Replaces an icon of the app's own player or Shorts controls with the selected icon style.
  * <p>
  * The patch moves the original drawable to a new name and puts a {@code <drawable class>}
  * pointing to a subclass in its place, so every place that loads the icon gets this wrapper.
@@ -63,11 +67,94 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
         }
     }
 
+    public static final class ShortsHeart extends AppPlayerIconDrawable {
+        public ShortsHeart() {
+            super(true, "morphe_shorts_heart", "morphe_youtube_shorts_heart_outline_32dp");
+        }
+    }
+
+    public static final class ShortsHeartFill extends AppPlayerIconDrawable {
+        public ShortsHeartFill() {
+            super(true, "morphe_shorts_heart_fill", "morphe_youtube_shorts_heart_fill_32dp");
+        }
+    }
+
+    public static final class ShortsHeartOff extends AppPlayerIconDrawable {
+        public ShortsHeartOff() {
+            super(true, "morphe_shorts_heart_fill", "morphe_youtube_shorts_heart_off_32dp");
+        }
+    }
+
+    public static final class ShortsComment extends AppPlayerIconDrawable {
+        public ShortsComment() {
+            super(true, "morphe_shorts_comment", "morphe_youtube_shorts_comment_outline_32dp");
+        }
+    }
+
+    public static final class ShortsSave extends AppPlayerIconDrawable {
+        public ShortsSave() {
+            super(true, "morphe_shorts_save", "morphe_youtube_shorts_save_outline_32dp");
+        }
+    }
+
+    public static final class ShortsSaveFill extends AppPlayerIconDrawable {
+        public ShortsSaveFill() {
+            super(true, "morphe_shorts_save_fill", "morphe_youtube_shorts_save_fill_32dp");
+        }
+    }
+
+    public static final class ShortsShare extends AppPlayerIconDrawable {
+        public ShortsShare() {
+            super(true, "morphe_shorts_share", "morphe_youtube_shorts_share_outline_32dp");
+        }
+    }
+
+    public static final class ShortsRemix extends AppPlayerIconDrawable {
+        public ShortsRemix() {
+            super(true, "morphe_shorts_remix", "morphe_youtube_shorts_remix_outline_32dp");
+        }
+    }
+
+    public static final class ShortsLike extends AppPlayerIconDrawable {
+        public ShortsLike() {
+            super(true, "morphe_shorts_like", "morphe_youtube_shorts_like_outline_32dp");
+        }
+    }
+
+    public static final class ShortsLikeFill extends AppPlayerIconDrawable {
+        public ShortsLikeFill() {
+            super(true, "morphe_shorts_like_fill", "morphe_youtube_shorts_like_fill_32dp");
+        }
+    }
+
+    public static final class ShortsDislike extends AppPlayerIconDrawable {
+        public ShortsDislike() {
+            super(true, "morphe_shorts_dislike", "morphe_youtube_shorts_dislike_outline_32dp");
+        }
+    }
+
+    public static final class ShortsDislikeFill extends AppPlayerIconDrawable {
+        public ShortsDislikeFill() {
+            super(true, "morphe_shorts_dislike_fill", "morphe_youtube_shorts_dislike_fill_32dp");
+        }
+    }
+
     private final String drawableName;
+    // The style icons are plain 24 dp vectors, while the Shorts originals are 32 dp with a shadow.
+    private final boolean shortsStyled;
+    @Nullable
+    private Bitmap shadow;
 
     private AppPlayerIconDrawable(String styleBaseName, String originalName) {
+        this(false, styleBaseName, originalName);
+    }
+
+    private AppPlayerIconDrawable(boolean shorts, String styleBaseName, String originalName) {
         super(null);
-        drawableName = PlayerIcons.name(styleBaseName, originalName, originalName);
+        drawableName = shorts
+                ? PlayerIcons.shorts(styleBaseName, originalName)
+                : PlayerIcons.name(styleBaseName, originalName, originalName);
+        shortsStyled = shorts && !drawableName.equals(originalName);
     }
 
     // The original icon is tinted with a theme attribute, so it is loaded with the theme of the caller.
@@ -82,6 +169,38 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
         } catch (Exception ex) {
             Logger.printException(() -> "Could not load player icon: " + drawableName, ex);
         }
+    }
+
+    @Override
+    public int getIntrinsicWidth() {
+        return shortsStyled ? Dim.dp32 : super.getIntrinsicWidth();
+    }
+
+    @Override
+    public int getIntrinsicHeight() {
+        return shortsStyled ? Dim.dp32 : super.getIntrinsicHeight();
+    }
+
+    @Override
+    protected void onBoundsChange(@NonNull Rect bounds) {
+        super.onBoundsChange(bounds);
+        shadow = null;
+    }
+
+    @Override
+    public void draw(@NonNull Canvas canvas) {
+        if (shortsStyled && IconShadow.isAvailable()) {
+            Drawable icon = getDrawable();
+            Rect bounds = getBounds();
+            if (shadow == null && icon != null && !bounds.isEmpty()) {
+                shadow = IconShadow.build(icon, bounds.width(), bounds.height());
+            }
+            if (shadow != null) {
+                canvas.drawBitmap(shadow, bounds.left, bounds.top, null);
+            }
+        }
+
+        super.draw(canvas);
     }
 
     // Resources caches drawables by their constant state, and a copy made from it would be empty.

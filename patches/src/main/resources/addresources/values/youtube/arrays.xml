@@ -818,4 +818,18 @@
         <item>PHOSPHOR</item>
         <item>SHARP</item>
     </string-array>
+
+    <!-- layout.shortsicons.shortsIconStylePatch -->
+    <string-array name="morphe_shorts_icon_style_entries">
+        <item>@string/morphe_player_icon_style_entry_default</item>
+        <item>@string/morphe_player_icon_style_entry_fluent</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_sharp</item>
+    </string-array>
+    <string-array name="morphe_shorts_icon_style_entry_values">
+        <item>AUTO</item>
+        <item>FLUENT</item>
+        <item>PHOSPHOR</item>
+        <item>SHARP</item>
+    </string-array>
 </resources>

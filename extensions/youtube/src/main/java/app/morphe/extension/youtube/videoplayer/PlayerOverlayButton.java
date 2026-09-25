@@ -10,9 +10,7 @@ package app.morphe.extension.youtube.videoplayer;
 import android.animation.ValueAnimator;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
@@ -51,29 +49,6 @@ public class PlayerOverlayButton {
 
     public static final int BUTTON_WIDTH = (int) ResourceUtils.getDimension(
             "controls_overlay_action_button_size");
-
-    private static final int ICON_SHADOW_OFFSET_X;
-    private static final int ICON_SHADOW_OFFSET_Y;
-    private static final int ICON_SHADOW_BLUR_RADIUS;
-    private static final int ICON_SHADOW_COLOR;
-
-    static {
-        int offsetX = 0, offsetY = 0, blurRadius = 0, color = Color.TRANSPARENT;
-        try {
-            // The app has both integer and dimension versions of these. The player controls read
-            // the integers as raw pixels, while only the miniplayer reads the dimensions.
-            offsetX = ResourceUtils.getInteger("shadow_icon_offset_x");
-            offsetY = ResourceUtils.getInteger("shadow_icon_offset_y");
-            blurRadius = ResourceUtils.getInteger("shadow_icon_size");
-            color = Color.argb(ResourceUtils.getInteger("shadow_icon_alpha"), 0, 0, 0);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Could not resolve player icon shadow resources", ex);
-        }
-        ICON_SHADOW_OFFSET_X = offsetX;
-        ICON_SHADOW_OFFSET_Y = offsetY;
-        ICON_SHADOW_BLUR_RADIUS = blurRadius;
-        ICON_SHADOW_COLOR = color;
-    }
 
     /**
      * The app's own player icons carry a soft drop shadow, which is what keeps a white icon
@@ -143,37 +118,7 @@ public class PlayerOverlayButton {
             Rect bounds = getBounds();
             if (icon == null || bounds.isEmpty()) return;
 
-            final int width = bounds.width();
-            final int height = bounds.height();
-
-            try {
-                Bitmap rendered = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-                // The wrapper draws the icon at the view bounds, so move it to the bitmap origin
-                // and put it back afterward.
-                Rect iconBounds = new Rect(icon.getBounds());
-                icon.setBounds(0, 0, width, height);
-                icon.draw(new Canvas(rendered));
-                icon.setBounds(iconBounds);
-
-                Bitmap mask = rendered.extractAlpha();
-                rendered.recycle();
-
-                Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                paint.setColor(ICON_SHADOW_COLOR);
-                paint.setMaskFilter(new BlurMaskFilter(
-                        ICON_SHADOW_BLUR_RADIUS, BlurMaskFilter.Blur.NORMAL));
-
-                // Blurring at draw time into a bitmap the size of the icon keeps the shadow
-                // inside the icon box, the way the app builds its own player icon shadows.
-                Bitmap blurred = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-                new Canvas(blurred).drawBitmap(
-                        mask, ICON_SHADOW_OFFSET_X, ICON_SHADOW_OFFSET_Y, paint);
-                mask.recycle();
-
-                shadow = blurred;
-            } catch (Exception ex) {
-                Logger.printException(() -> "Could not build player icon shadow", ex);
-            }
+            shadow = IconShadow.build(icon, bounds.width(), bounds.height());
         }
     }
 
@@ -182,7 +127,7 @@ public class PlayerOverlayButton {
      * which the mute and video scale buttons do when their state changes.
      */
     private static void applyIconShadow(View button) {
-        if (ICON_SHADOW_BLUR_RADIUS <= 0 || !(button instanceof ImageView imageView)) return;
+        if (!IconShadow.isAvailable() || !(button instanceof ImageView imageView)) return;
 
         Drawable icon = imageView.getDrawable();
         if (icon != null && !(icon instanceof ShadowedIconDrawable)) {
@@ -689,9 +634,9 @@ public class PlayerOverlayButton {
         textOverlay.setTextSize(TypedValue.COMPLEX_UNIT_PX, Dim.dp(14));
         textOverlay.setTextColor(0xFFFFFFFF);
         textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
-        if (ICON_SHADOW_BLUR_RADIUS > 0) {
-            textOverlay.setShadowLayer(ICON_SHADOW_BLUR_RADIUS,
-                    ICON_SHADOW_OFFSET_X, ICON_SHADOW_OFFSET_Y, ICON_SHADOW_COLOR);
+        if (IconShadow.isAvailable()) {
+            textOverlay.setShadowLayer(IconShadow.BLUR_RADIUS,
+                    IconShadow.OFFSET_X, IconShadow.OFFSET_Y, IconShadow.COLOR);
         }
         textOverlay.setOnClickListener(onClickListener);
         textOverlay.setOnLongClickListener(onLongClickListener);

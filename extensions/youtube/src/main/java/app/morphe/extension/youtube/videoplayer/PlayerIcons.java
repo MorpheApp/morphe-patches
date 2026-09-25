@@ -50,6 +50,7 @@ public final class PlayerIcons {
 
     // Buttons keep the drawable they were created with, so a style change only applies after a restart.
     private static final Style STYLE = Settings.PLAYER_ICON_STYLE.get();
+    private static final Style SHORTS_STYLE = Settings.SHORTS_ICON_STYLE.get();
 
     // Some buttons resolve their icon on every tap.
     private static final Map<String, String> names = new ConcurrentHashMap<>();
@@ -81,6 +82,20 @@ public final class PlayerIcons {
         final boolean useRegular = STYLE == Style.REGULAR
                 || (STYLE != Style.BOLD && AUTO_SUFFIX.isEmpty());
         return useRegular ? appRegularName : appBoldName;
+    }
+
+    /**
+     * For a Shorts icon the app itself provides.
+     *
+     * @return Drawable name of the selected Shorts style variant of {@code baseName}, or {@code appName}.
+     */
+    public static String shorts(String baseName, String appName) {
+        return shorts(SHORTS_STYLE, baseName, appName);
+    }
+
+    public static String shorts(Style style, String baseName, String appName) {
+        String styled = styledVariant(style, baseName);
+        return styled != null ? styled : appName;
     }
 
     public static String resolve(Style style, String baseName) {

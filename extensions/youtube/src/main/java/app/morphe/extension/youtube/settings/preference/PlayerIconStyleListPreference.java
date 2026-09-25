@@ -24,6 +24,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.settings.preference.IconListPreference;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
 /**
@@ -46,6 +47,9 @@ public class PlayerIconStyleListPreference extends IconListPreference {
             "morphe_sb_backward",
             "morphe_ic_sc_volume_high",
     };
+
+    private static final String SHORTS_SAMPLE_ICON = "morphe_shorts_heart";
+    private static final String SHORTS_SAMPLE_APP_ICON = "morphe_youtube_shorts_heart_outline_32dp";
 
     // The icons are always white over video, so the tile stays dark in the light theme too.
     private static final int TILE_COLOR = 0xFF2A3440;
@@ -75,14 +79,18 @@ public class PlayerIconStyleListPreference extends IconListPreference {
         if (values == null) return new Drawable[0];
 
         Drawable[] drawables = new Drawable[values.length];
-        String sample = findSampleIcon();
+        final boolean shorts = Settings.SHORTS_ICON_STYLE.key.equals(getKey());
+        String sample = shorts ? SHORTS_SAMPLE_ICON : findSampleIcon();
         if (sample == null) return drawables;
 
         Context context = getContext();
         for (int i = 0; i < values.length; i++) {
             try {
                 PlayerIcons.Style style = PlayerIcons.Style.valueOf(values[i].toString());
-                drawables[i] = buildTile(context, PlayerIcons.resolve(style, sample));
+                drawables[i] = shorts
+                        // The app's Shorts icons carry their own shadow, which a tint would paint over.
+                        ? buildTile(context, PlayerIcons.shorts(style, sample, SHORTS_SAMPLE_APP_ICON), false)
+                        : buildTile(context, PlayerIcons.resolve(style, sample), true);
             } catch (Exception ex) {
                 final int index = i;
                 Logger.printException(() -> "Could not build icon style preview: " + values[index], ex);
@@ -102,7 +110,7 @@ public class PlayerIconStyleListPreference extends IconListPreference {
     }
 
     @Nullable
-    private static Drawable buildTile(Context context, String drawableName) {
+    private static Drawable buildTile(Context context, String drawableName, boolean tint) {
         Drawable icon = context.getDrawable(
                 ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, drawableName));
         if (icon == null) return null;
@@ -117,7 +125,9 @@ public class PlayerIconStyleListPreference extends IconListPreference {
         canvas.drawRoundRect(0, 0, sizePx, sizePx, radius, radius, paint);
 
         icon = icon.mutate();
-        icon.setTint(Color.WHITE);
+        if (tint) {
+            icon.setTint(Color.WHITE);
+        }
         final int iconSize = Math.round(sizePx * ICON_SIZE_FRACTION);
         final int offset = (sizePx - iconSize) / 2;
         icon.setBounds(offset, offset, offset + iconSize, offset + iconSize);

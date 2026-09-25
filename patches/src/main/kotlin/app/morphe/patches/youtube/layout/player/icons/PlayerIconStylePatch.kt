@@ -17,7 +17,7 @@ import app.morphe.util.copyResources
 import app.morphe.util.inputStreamFromBundledResource
 
 // A style does not have to cover every icon, so its variants are copied only when bundled.
-// Patches that copy player icons must depend on playerIconStylePatch, which adds the picker.
+// Player button patches must depend on playerIconStylePatch, which adds the picker.
 private val iconStyleSuffixes = listOf("_fluent", "_phosphor", "_sharp")
 
 private fun iconStyleVariants(resourceDirectory: String, baseNames: Array<out String>) =
@@ -84,6 +84,36 @@ private val appPlayerBitmapIcons = listOf(
     "yt_outline_experimental_player_full_exit_alt_black_24" to "FullscreenExitAlt",
 )
 
+/**
+ * Replaces an app icon that exists only as density specific bitmaps with a wrapper.
+ * A density specific bitmap wins over a default drawable, so every bitmap is removed.
+ *
+ * @param originalName Name to keep the original bitmaps under, or null to drop them.
+ * @return false if the app has no such icon.
+ */
+internal fun ResourcePatchContext.wrapAppBitmapIcon(
+    appName: String,
+    wrapperClass: String,
+    originalName: String? = null,
+): Boolean {
+    val bitmaps = get("res", false).listFiles { file ->
+        file.isDirectory && file.name.startsWith("drawable")
+    }.orEmpty().flatMap { directory ->
+        listOf("png", "webp").map { extension -> directory.resolve("$appName.$extension") }
+    }.filter { it.exists() }
+    if (bitmaps.isEmpty()) return false
+
+    bitmaps.forEach { bitmap ->
+        val directory = bitmap.parentFile.name
+        if (originalName != null) {
+            bitmap.copyTo(get("res/$directory/$originalName.${bitmap.extension}"), overwrite = true)
+        }
+        delete("res/$directory/${bitmap.name}")
+    }
+    get("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
+    return true
+}
+
 private fun appPlayerIconWrapper(wrapperClass: String) =
     $$"""
     <?xml version="1.0" encoding="utf-8"?>
@@ -118,16 +148,6 @@ internal val playerIconStylePatch = resourcePatch {
             appIcon.writeText(appPlayerIconWrapper(wrapperClass))
         }
 
-        // A density specific bitmap wins over a default drawable, so every bitmap is removed.
-        val drawableDirectories = get("res", false).listFiles { file ->
-            file.isDirectory && file.name.startsWith("drawable")
-        }.orEmpty()
-        appPlayerBitmapIcons.forEach { (appName, wrapperClass) ->
-            val bitmaps = drawableDirectories.map { it.resolve("$appName.png") }.filter { it.exists() }
-            if (bitmaps.isEmpty()) return@forEach
-
-            bitmaps.forEach { bitmap -> delete("res/${bitmap.parentFile.name}/${bitmap.name}") }
-            get("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
-        }
+        appPlayerBitmapIcons.forEach { (appName, wrapperClass) -> wrapAppBitmapIcon(appName, wrapperClass) }
     }
 }
