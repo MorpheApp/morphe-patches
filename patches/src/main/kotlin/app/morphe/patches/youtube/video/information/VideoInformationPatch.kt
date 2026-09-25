@@ -26,7 +26,10 @@ import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
+import app.morphe.patches.shared.misc.videoinformation.PlaybackParametersToStringFingerprint
 import app.morphe.patches.shared.misc.videoinformation.PlayerControllerSetTimeReferenceFingerprint
+import app.morphe.patches.shared.misc.videoinformation.getExoPlayerImplFingerprint
+import app.morphe.patches.shared.misc.videoinformation.getPlaybackParametersSetterFingerprint
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch

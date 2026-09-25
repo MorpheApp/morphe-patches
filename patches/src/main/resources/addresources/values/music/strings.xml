@@ -200,6 +200,14 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
     <string name="morphe_music_remember_shuffle_state_title">Remember shuffle state</string>
 
+    <!-- video.speed.playbackSpeedPatch -->
+    <string name="morphe_music_playback_speed_screen_title">Playback speed</string>
+    <string name="morphe_music_playback_speed_screen_summary">Change the playback speed and pitch of tracks</string>
+    <string name="morphe_music_playback_speed_title">Playback speed</string>
+    <string name="morphe_music_playback_speed_summary">Speed used for all tracks. At 100% the app speed is used, such as the podcast playback speed</string>
+    <string name="morphe_music_playback_speed_change_pitch_title">Change pitch with speed</string>
+    <string name="morphe_music_playback_speed_change_pitch_summary">Raises or lowers the pitch together with the speed, like a vinyl record. When turned off, the original pitch is kept</string>
+
     <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
     <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
     <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
