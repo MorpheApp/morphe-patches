@@ -62,6 +62,10 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
             null,
             "closed_captions"
     );
+    private final ByteArrayFilterGroup shortsPlayerSettingsAudioTrackButton = new ByteArrayFilterGroup(
+            null,
+            "audio_track_sheet_content.e"
+    );
     private final StringFilterGroup audioTrackMenuFooter;
     private final StringFilterGroup divider;
     private final StringFilterGroup flyoutMenu;
@@ -218,8 +222,10 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
             // Shorts also use this player flyout panel
             if (ShortsPlayerState.isOpen()) {
-                return Settings.HIDE_PLAYER_FLYOUT_CAPTIONS.get()
-                        && shortsPlayerSettingsCaptionsButton.check(buffer).isFiltered();
+                return (Settings.HIDE_PLAYER_FLYOUT_CAPTIONS.get()
+                        && shortsPlayerSettingsCaptionsButton.check(buffer).isFiltered())
+                        || (Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK.get()
+                        && shortsPlayerSettingsAudioTrackButton.check(buffer).isFiltered());
             }
 
             // 21.x+ fix.
