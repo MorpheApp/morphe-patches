@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.patch.bytecodePatch
@@ -12,21 +22,11 @@ import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 
 private val videoQualityButtonResourcePatch = resourcePatch {
     dependsOn(legacyPlayerControlsPatch)
 
     execute {
-        copyResources(
-            "qualitybutton",
-            ResourceGroup(
-                "drawable",
-                "morphe_video_quality_dialog_button_rectangle.xml"
-            ),
-        )
-
         addLegacyBottomControl("qualitybutton")
     }
 }

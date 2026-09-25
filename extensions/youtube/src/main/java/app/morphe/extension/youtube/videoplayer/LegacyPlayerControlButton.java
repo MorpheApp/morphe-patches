@@ -203,6 +203,7 @@ public class LegacyPlayerControlButton {
         TextView tempTextOverlay = null;
         if (textOverlayId != null) {
             tempTextOverlay = Utils.getChildViewByResourceName(controlsViewGroup, textOverlayId);
+            PlayerIcons.styleText(tempTextOverlay);
         }
         textOverlayRef = new WeakReference<>(tempTextOverlay);
     }

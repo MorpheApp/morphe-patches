@@ -7,11 +7,14 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableWrapper;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -20,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -55,6 +59,9 @@ public final class PlayerIcons {
     // Buttons keep the drawable they were created with, so a style change only applies after a restart.
     private static final Style STYLE = Settings.PLAYER_ICON_STYLE.get();
     private static final Style SHORTS_STYLE = Settings.SHORTS_ICON_STYLE.get();
+
+    private static final Typeface TEXT_TYPEFACE = textTypeface(
+            STYLE == Style.AUTO ? (AUTO_SUFFIX.isEmpty() ? Style.REGULAR : Style.BOLD) : STYLE);
 
     // Some buttons resolve their icon on every tap.
     private static final Map<String, String> names = new ConcurrentHashMap<>();
@@ -118,6 +125,32 @@ public final class PlayerIcons {
 
         String styled = baseName + style.suffix;
         return exists(styled) ? styled : null;
+    }
+
+    /**
+     * Styles the text of a text button (playback speed, video quality) to match the selected icon style.
+     */
+    public static void styleText(TextView text) {
+        // Fixed size regardless of the system font-size setting, since the button has no room to grow.
+        text.setTextSize(TypedValue.COMPLEX_UNIT_PX, Dim.dp(14));
+        text.setTextColor(0xFFFFFFFF);
+        text.setTypeface(TEXT_TYPEFACE);
+        if (IconShadow.isAvailable()) {
+            text.setShadowLayer(IconShadow.BLUR_RADIUS,
+                    IconShadow.OFFSET_X, IconShadow.OFFSET_Y, IconShadow.COLOR);
+        }
+    }
+
+    // The text weight follows the stroke weight of the icons next to it,
+    // the condensed face stays so the text keeps the look it always had.
+    private static Typeface textTypeface(Style style) {
+        return switch (style) {
+            case REGULAR -> Typeface.create("sans-serif-condensed", Typeface.NORMAL);
+            case PHOSPHOR_LIGHT -> Typeface.create("sans-serif-condensed-light", Typeface.NORMAL);
+            case FLUENT, PHOSPHOR, PHOSPHOR_DUOTONE, IONICONS, SHARP ->
+                    Typeface.create("sans-serif-condensed-medium", Typeface.NORMAL);
+            default -> Typeface.create("sans-serif-condensed", Typeface.BOLD);
+        };
     }
 
     /**

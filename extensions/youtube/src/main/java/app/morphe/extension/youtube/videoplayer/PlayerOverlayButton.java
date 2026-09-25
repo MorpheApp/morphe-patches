@@ -13,12 +13,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Animatable2;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableWrapper;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +34,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.HidePlayerOverlayButtonsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -630,14 +627,7 @@ public class PlayerOverlayButton {
         TextView textOverlay = new TextView(sourceButton.getContext());
         textOverlay.setId(View.generateViewId());
         textOverlay.setGravity(Gravity.CENTER);
-        // Fixed size regardless of the system font-size setting, since the button has no room to grow.
-        textOverlay.setTextSize(TypedValue.COMPLEX_UNIT_PX, Dim.dp(14));
-        textOverlay.setTextColor(0xFFFFFFFF);
-        textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
-        if (IconShadow.isAvailable()) {
-            textOverlay.setShadowLayer(IconShadow.BLUR_RADIUS,
-                    IconShadow.OFFSET_X, IconShadow.OFFSET_Y, IconShadow.COLOR);
-        }
+        PlayerIcons.styleText(textOverlay);
         textOverlay.setOnClickListener(onClickListener);
         textOverlay.setOnLongClickListener(onLongClickListener);
         sourceButtonViewGroup.addView(textOverlay);
