@@ -36,7 +36,7 @@ public class CopyVideoLinkButton {
             }
 
             PlayerOverlayButton.addButton(controlsView,
-                    COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON ? "morphe_yt_copy_timestamp_bold" : "morphe_yt_copy_bold",
+                    PlayerIcons.name(COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON ? "morphe_yt_copy_timestamp" : "morphe_yt_copy"),
                     view -> copyLink(COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON),
                     view -> {
                         copyLink(!COPY_VIDEO_LINK_WITH_TIMESTAMP_BUTTON);

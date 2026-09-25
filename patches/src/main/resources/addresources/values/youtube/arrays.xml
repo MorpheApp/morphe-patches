@@ -800,4 +800,22 @@
         <item>openrouter</item>
         <item>mymemory</item>
     </string-array>
+
+    <!-- layout.player.icons.playerIconStylePatch -->
+    <string-array name="morphe_player_icon_style_entries">
+        <item>@string/morphe_player_icon_style_entry_auto</item>
+        <item>@string/morphe_player_icon_style_entry_regular</item>
+        <item>@string/morphe_player_icon_style_entry_bold</item>
+        <item>@string/morphe_player_icon_style_entry_fluent</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_sharp</item>
+    </string-array>
+    <string-array name="morphe_player_icon_style_entry_values">
+        <item>AUTO</item>
+        <item>REGULAR</item>
+        <item>BOLD</item>
+        <item>FLUENT</item>
+        <item>PHOSPHOR</item>
+        <item>SHARP</item>
+    </string-array>
 </resources>

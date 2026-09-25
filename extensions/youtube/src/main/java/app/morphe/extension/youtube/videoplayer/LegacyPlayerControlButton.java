@@ -26,11 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 
 public class LegacyPlayerControlButton {
 
@@ -182,12 +180,7 @@ public class LegacyPlayerControlButton {
         View button = Utils.getChildViewByResourceName(controlsViewGroup, buttonId);
 
         if (imageResourceName != null) {
-            final int iconResourceId = ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE,
-                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                            ? imageResourceName
-                            : imageResourceName + "_bold"
-            );
-            ((ImageView) button).setImageResource(iconResourceId);
+            ((ImageView) button).setImageResource(PlayerIcons.id(imageResourceName));
         }
 
         // Wrap click listener to trigger animation.

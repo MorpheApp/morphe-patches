@@ -15,7 +15,6 @@ import java.util.function.Function;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -24,12 +23,12 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class SaveToWatchLaterButton {
 
-    public static final int saveToWatchLaterResourceId =
-            ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
-                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                            ? "yt_outline_list_add_black_24"
-                            : "yt_outline_experimental_playlist_add_vd_theme_24"
-            );
+    public static final int addToQueueResourceId =
+            ResourceUtils.getIdentifier(ResourceType.DRAWABLE, PlayerIcons.name(
+                    "morphe_add_to_queue_button",
+                    "yt_outline_list_add_black_24",
+                    "yt_outline_experimental_playlist_add_vd_theme_24"
+            ));
 
     static {
         if (Settings.SAVE_TO_WATCH_LATER_OVERLAY_BUTTON.get()) {
@@ -78,7 +77,7 @@ public class SaveToWatchLaterButton {
             );
 
             if (swapSaveAndQueue) {
-                instance.setIcon(saveToWatchLaterResourceId);
+                instance.setIcon(addToQueueResourceId);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);

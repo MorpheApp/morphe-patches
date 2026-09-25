@@ -1425,4 +1425,13 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_restore_old_video_action_bar_summary">"Fixes video action buttons cannot be hidden
 
 Limitation: Reverts to old style \'More videos\' overlay"</string>
+
+    <!-- layout.player.icons.playerIconStylePatch -->
+    <string name="morphe_player_icon_style_title">Player icon style</string>
+    <string name="morphe_player_icon_style_entry_auto">Automatic</string>
+    <string name="morphe_player_icon_style_entry_regular">Thin</string>
+    <string name="morphe_player_icon_style_entry_bold">Bold</string>
+    <string name="morphe_player_icon_style_entry_fluent">Fluent</string>
+    <string name="morphe_player_icon_style_entry_phosphor">Phosphor</string>
+    <string name="morphe_player_icon_style_entry_sharp">Sharp</string>
 </resources>

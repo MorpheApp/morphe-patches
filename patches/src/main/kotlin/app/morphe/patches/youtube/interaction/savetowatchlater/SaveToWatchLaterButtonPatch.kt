@@ -13,6 +13,9 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerIconStyles
+import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -22,19 +25,13 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 
 private val saveToWatchLaterButtonResourcePatch = resourcePatch {
+    dependsOn(playerIconStylePatch)
+
     execute {
-        copyResources(
-            "savetowatchlaterbutton",
-            ResourceGroup(
-                resourceDirectoryName = "drawable",
-                "morphe_save_to_watch_later_button.xml",
-                "morphe_save_to_watch_later_button_bold.xml",
-            )
-        )
+        copyPlayerButtonIcons("savetowatchlaterbutton", "morphe_save_to_watch_later_button")
+        copyPlayerIconStyles("savetowatchlaterbutton", "morphe_add_to_queue_button")
     }
 }
 

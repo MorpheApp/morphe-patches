@@ -12,6 +12,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -43,7 +44,7 @@ public final class VoiceOverTranslationButton {
 
             ImageView button = PlayerOverlayButton.addButton(
                     controlsView,
-                    "morphe_yt_vot_bold",
+                    PlayerIcons.name("morphe_yt_vot"),
                     view -> {
                         VoiceOverTranslationPatch.toggleTranslation();
                         refreshActivatedState();
@@ -102,10 +103,12 @@ public final class VoiceOverTranslationButton {
     private static void setToggleAccessibilityDelegate(View button) {
         button.setAccessibilityDelegate(new View.AccessibilityDelegate() {
             @Override
-            public void onInitializeAccessibilityNodeInfo(View host, AccessibilityNodeInfo info) {
+            @SuppressWarnings("deprecation")
+            public void onInitializeAccessibilityNodeInfo(@NonNull View host, @NonNull AccessibilityNodeInfo info) {
                 super.onInitializeAccessibilityNodeInfo(host, info);
                 info.setClassName(ToggleButton.class.getName());
                 info.setCheckable(true);
+                // setChecked(int) is API 36 only, the boolean version still works on every version.
                 info.setChecked(VoiceOverTranslationPatch.isSessionEnabled());
             }
         });

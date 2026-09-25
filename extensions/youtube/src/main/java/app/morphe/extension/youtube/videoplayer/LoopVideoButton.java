@@ -31,13 +31,10 @@ import androidx.annotation.Nullable;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.LoopVideoPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
@@ -54,21 +51,9 @@ public class LoopVideoButton {
     @Nullable
     private static LegacyPlayerControlButton legacy;
 
-    private static final int LOOP_VIDEO_ON = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE,
-            LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                    ? "morphe_loop_video_button_on"
-                    : "morphe_loop_video_button_on_bold");
-    private static final int LOOP_VIDEO_OFF = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE,
-            LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                    ? "morphe_loop_video_button_off"
-                    : "morphe_loop_video_button_off_bold");
-    private static final int LOOP_VIDEO_RANGE = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE,
-            LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                    ? "morphe_loop_video_button_range"
-                    : "morphe_loop_video_button_range_bold");
+    private static final int LOOP_VIDEO_ON = PlayerIcons.id("morphe_loop_video_button_on");
+    private static final int LOOP_VIDEO_OFF = PlayerIcons.id("morphe_loop_video_button_off");
+    private static final int LOOP_VIDEO_RANGE = PlayerIcons.id("morphe_loop_video_button_range");
     private static final String videoRangeInvalidTimeStringName =
             "morphe_loop_video_range_invalid_time";
 

@@ -8,34 +8,26 @@ import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPrefere
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 
 private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoLinkButton;"
 
 private val copyVideoLinkButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        legacyPlayerControlsPatch
+        legacyPlayerControlsPatch,
+        playerIconStylePatch
     )
 
     execute {
-        copyResources(
-            "copyvideolinkbutton",
-            ResourceGroup(
-                resourceDirectoryName = "drawable",
-                "morphe_yt_copy.xml",
-                "morphe_yt_copy_timestamp.xml",
-                "morphe_yt_copy_bold.xml",
-                "morphe_yt_copy_timestamp_bold.xml"
-            )
-        )
+        copyPlayerButtonIcons("copyvideolinkbutton", "morphe_yt_copy", "morphe_yt_copy_timestamp")
 
         addLegacyBottomControl("copyvideolinkbutton")
     }
