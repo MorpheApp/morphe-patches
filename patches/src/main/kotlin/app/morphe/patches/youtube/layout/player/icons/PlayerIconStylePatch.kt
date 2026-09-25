@@ -139,15 +139,18 @@ internal val playerIconStylePatch = resourcePatch {
         copyPlayerIconStyles("playericons", "morphe_fullscreen_enter", "morphe_fullscreen_exit")
 
         // The app loads these by resource id from code, so the wrapper replaces the resource itself.
-        appPlayerIcons.forEach { (appName, originalName, wrapperClass) ->
+        val wrapped = appPlayerIcons.filter { (appName, originalName, wrapperClass) ->
             val appIcon = get("res/drawable/$appName.xml")
             // Targets before the bold player do not have these icons.
-            if (!appIcon.exists()) return@forEach
+            if (!appIcon.exists()) return@filter false
 
             appIcon.copyTo(get("res/drawable/$originalName.xml"), overwrite = true)
             appIcon.writeText(appPlayerIconWrapper(wrapperClass))
-        }
+            true
+        }.map { it.third }
 
-        appPlayerBitmapIcons.forEach { (appName, wrapperClass) -> wrapAppBitmapIcon(appName, wrapperClass) }
+        // A bitmap wrapper falls back to the vector copy, so it is only safe where that copy exists.
+        appPlayerBitmapIcons.filter { (_, wrapperClass) -> wrapperClass in wrapped }
+            .forEach { (appName, wrapperClass) -> wrapAppBitmapIcon(appName, wrapperClass) }
     }
 }
