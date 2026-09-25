@@ -17,7 +17,19 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 // App icon of a Shorts action button and the wrapper that takes its place.
+// The yt_delhi icons are the Shorts player since 21.21, the youtube_shorts icons are the older one.
 private val shortsIcons = listOf(
+    "yt_delhi_heart_outline_24dp" to "DelhiHeart",
+    "yt_delhi_heart_fill_white_24dp" to "DelhiHeartFill",
+    "yt_delhi_comment_24dp" to "DelhiComment",
+    "yt_delhi_bookmark_not_filled_24dp" to "DelhiSave",
+    "yt_delhi_bookmark_filled_24dp" to "DelhiSaveFill",
+    "yt_delhi_share_24dp" to "DelhiShare",
+    "yt_delhi_remix_24dp" to "DelhiRemix",
+    "yt_delhi_thumbs_up_not_filled_24dp" to "DelhiLike",
+    "yt_delhi_thumbs_up_filled_24dp" to "DelhiLikeFill",
+    "yt_delhi_thumbs_down_not_filled_24dp" to "DelhiDislike",
+    "yt_delhi_thumbs_down_filled_24dp" to "DelhiDislikeFill",
     "youtube_shorts_heart_outline_32dp" to "ShortsHeart",
     "youtube_shorts_heart_fill_32dp" to "ShortsHeartFill",
     "youtube_shorts_heart_off_32dp" to "ShortsHeartOff",

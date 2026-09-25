@@ -69,92 +69,164 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
 
     public static final class ShortsHeart extends AppPlayerIconDrawable {
         public ShortsHeart() {
-            super(true, "morphe_shorts_heart", "morphe_youtube_shorts_heart_outline_32dp");
+            super(Dim.dp32, "morphe_shorts_heart", "morphe_youtube_shorts_heart_outline_32dp");
         }
     }
 
     public static final class ShortsHeartFill extends AppPlayerIconDrawable {
         public ShortsHeartFill() {
-            super(true, "morphe_shorts_heart_fill", "morphe_youtube_shorts_heart_fill_32dp");
+            super(Dim.dp32, "morphe_shorts_heart_fill", "morphe_youtube_shorts_heart_fill_32dp");
         }
     }
 
     public static final class ShortsHeartOff extends AppPlayerIconDrawable {
         public ShortsHeartOff() {
-            super(true, "morphe_shorts_heart_fill", "morphe_youtube_shorts_heart_off_32dp");
+            super(Dim.dp32, "morphe_shorts_heart_fill", "morphe_youtube_shorts_heart_off_32dp");
         }
     }
 
     public static final class ShortsComment extends AppPlayerIconDrawable {
         public ShortsComment() {
-            super(true, "morphe_shorts_comment", "morphe_youtube_shorts_comment_outline_32dp");
+            super(Dim.dp32, "morphe_shorts_comment", "morphe_youtube_shorts_comment_outline_32dp");
         }
     }
 
     public static final class ShortsSave extends AppPlayerIconDrawable {
         public ShortsSave() {
-            super(true, "morphe_shorts_save", "morphe_youtube_shorts_save_outline_32dp");
+            super(Dim.dp32, "morphe_shorts_save", "morphe_youtube_shorts_save_outline_32dp");
         }
     }
 
     public static final class ShortsSaveFill extends AppPlayerIconDrawable {
         public ShortsSaveFill() {
-            super(true, "morphe_shorts_save_fill", "morphe_youtube_shorts_save_fill_32dp");
+            super(Dim.dp32, "morphe_shorts_save_fill", "morphe_youtube_shorts_save_fill_32dp");
         }
     }
 
     public static final class ShortsShare extends AppPlayerIconDrawable {
         public ShortsShare() {
-            super(true, "morphe_shorts_share", "morphe_youtube_shorts_share_outline_32dp");
+            super(Dim.dp32, "morphe_shorts_share", "morphe_youtube_shorts_share_outline_32dp");
         }
     }
 
     public static final class ShortsRemix extends AppPlayerIconDrawable {
         public ShortsRemix() {
-            super(true, "morphe_shorts_remix", "morphe_youtube_shorts_remix_outline_32dp");
+            super(Dim.dp32, "morphe_shorts_remix", "morphe_youtube_shorts_remix_outline_32dp");
         }
     }
 
     public static final class ShortsLike extends AppPlayerIconDrawable {
         public ShortsLike() {
-            super(true, "morphe_shorts_like", "morphe_youtube_shorts_like_outline_32dp");
+            super(Dim.dp32, "morphe_shorts_like", "morphe_youtube_shorts_like_outline_32dp");
         }
     }
 
     public static final class ShortsLikeFill extends AppPlayerIconDrawable {
         public ShortsLikeFill() {
-            super(true, "morphe_shorts_like_fill", "morphe_youtube_shorts_like_fill_32dp");
+            super(Dim.dp32, "morphe_shorts_like_fill", "morphe_youtube_shorts_like_fill_32dp");
         }
     }
 
     public static final class ShortsDislike extends AppPlayerIconDrawable {
         public ShortsDislike() {
-            super(true, "morphe_shorts_dislike", "morphe_youtube_shorts_dislike_outline_32dp");
+            super(Dim.dp32, "morphe_shorts_dislike", "morphe_youtube_shorts_dislike_outline_32dp");
         }
     }
 
     public static final class ShortsDislikeFill extends AppPlayerIconDrawable {
         public ShortsDislikeFill() {
-            super(true, "morphe_shorts_dislike_fill", "morphe_youtube_shorts_dislike_fill_32dp");
+            super(Dim.dp32, "morphe_shorts_dislike_fill", "morphe_youtube_shorts_dislike_fill_32dp");
+        }
+    }
+
+    public static final class DelhiHeart extends AppPlayerIconDrawable {
+        public DelhiHeart() {
+            super(Dim.dp24, "morphe_shorts_heart", "morphe_yt_delhi_heart_outline_24dp");
+        }
+    }
+
+    public static final class DelhiHeartFill extends AppPlayerIconDrawable {
+        public DelhiHeartFill() {
+            super(Dim.dp24, "morphe_shorts_heart_fill", "morphe_yt_delhi_heart_fill_white_24dp");
+        }
+    }
+
+    public static final class DelhiComment extends AppPlayerIconDrawable {
+        public DelhiComment() {
+            super(Dim.dp24, "morphe_shorts_comment", "morphe_yt_delhi_comment_24dp");
+        }
+    }
+
+    public static final class DelhiSave extends AppPlayerIconDrawable {
+        public DelhiSave() {
+            super(Dim.dp24, "morphe_shorts_save", "morphe_yt_delhi_bookmark_not_filled_24dp");
+        }
+    }
+
+    public static final class DelhiSaveFill extends AppPlayerIconDrawable {
+        public DelhiSaveFill() {
+            super(Dim.dp24, "morphe_shorts_save_fill", "morphe_yt_delhi_bookmark_filled_24dp");
+        }
+    }
+
+    public static final class DelhiShare extends AppPlayerIconDrawable {
+        public DelhiShare() {
+            super(Dim.dp24, "morphe_shorts_share", "morphe_yt_delhi_share_24dp");
+        }
+    }
+
+    public static final class DelhiRemix extends AppPlayerIconDrawable {
+        public DelhiRemix() {
+            super(Dim.dp24, "morphe_shorts_remix", "morphe_yt_delhi_remix_24dp");
+        }
+    }
+
+    public static final class DelhiLike extends AppPlayerIconDrawable {
+        public DelhiLike() {
+            super(Dim.dp24, "morphe_shorts_like", "morphe_yt_delhi_thumbs_up_not_filled_24dp");
+        }
+    }
+
+    public static final class DelhiLikeFill extends AppPlayerIconDrawable {
+        public DelhiLikeFill() {
+            super(Dim.dp24, "morphe_shorts_like_fill", "morphe_yt_delhi_thumbs_up_filled_24dp");
+        }
+    }
+
+    public static final class DelhiDislike extends AppPlayerIconDrawable {
+        public DelhiDislike() {
+            super(Dim.dp24, "morphe_shorts_dislike", "morphe_yt_delhi_thumbs_down_not_filled_24dp");
+        }
+    }
+
+    public static final class DelhiDislikeFill extends AppPlayerIconDrawable {
+        public DelhiDislikeFill() {
+            super(Dim.dp24, "morphe_shorts_dislike_fill", "morphe_yt_delhi_thumbs_down_filled_24dp");
         }
     }
 
     private final String drawableName;
-    // The style icons are plain 24 dp vectors, while the Shorts originals are 32 dp with a shadow.
+    // The style icons are plain vectors, while the Shorts originals are bitmaps with a shadow.
     private final boolean shortsStyled;
+    private final int shortsSize;
     @Nullable
     private Bitmap shadow;
 
     private AppPlayerIconDrawable(String styleBaseName, String originalName) {
-        this(false, styleBaseName, originalName);
+        super(null);
+        drawableName = PlayerIcons.name(styleBaseName, originalName, originalName);
+        shortsStyled = false;
+        shortsSize = 0;
     }
 
-    private AppPlayerIconDrawable(boolean shorts, String styleBaseName, String originalName) {
+    /**
+     * @param shortsSize Size of the app's Shorts icon, which the style icon takes over.
+     */
+    private AppPlayerIconDrawable(int shortsSize, String styleBaseName, String originalName) {
         super(null);
-        drawableName = shorts
-                ? PlayerIcons.shorts(styleBaseName, originalName)
-                : PlayerIcons.name(styleBaseName, originalName, originalName);
-        shortsStyled = shorts && !drawableName.equals(originalName);
+        drawableName = PlayerIcons.shorts(styleBaseName, originalName);
+        shortsStyled = !drawableName.equals(originalName);
+        this.shortsSize = shortsSize;
     }
 
     // The original icon is tinted with a theme attribute, so it is loaded with the theme of the caller.
@@ -173,12 +245,12 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
 
     @Override
     public int getIntrinsicWidth() {
-        return shortsStyled ? Dim.dp32 : super.getIntrinsicWidth();
+        return shortsStyled ? shortsSize : super.getIntrinsicWidth();
     }
 
     @Override
     public int getIntrinsicHeight() {
-        return shortsStyled ? Dim.dp32 : super.getIntrinsicHeight();
+        return shortsStyled ? shortsSize : super.getIntrinsicHeight();
     }
 
     @Override

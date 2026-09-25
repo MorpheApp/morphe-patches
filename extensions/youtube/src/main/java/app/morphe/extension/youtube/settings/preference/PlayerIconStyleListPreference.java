@@ -49,7 +49,10 @@ public class PlayerIconStyleListPreference extends IconListPreference {
     };
 
     private static final String SHORTS_SAMPLE_ICON = "morphe_shorts_heart";
-    private static final String SHORTS_SAMPLE_APP_ICON = "morphe_youtube_shorts_heart_outline_32dp";
+    // The Shorts player shows the yt_delhi icons since 21.21, and the youtube_shorts icons before.
+    private static final String SHORTS_SAMPLE_APP_ICON = PlayerIcons.exists("morphe_yt_delhi_heart_outline_24dp")
+            ? "morphe_yt_delhi_heart_outline_24dp"
+            : "morphe_youtube_shorts_heart_outline_32dp";
 
     // The icons are always white over video, so the tile stays dark in the light theme too.
     private static final int TILE_COLOR = 0xFF2A3440;
