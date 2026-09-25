@@ -136,7 +136,8 @@ internal val playerIconStylePatch = resourcePatch {
             )
         )
 
-        copyPlayerIconStyles("playericons", "morphe_fullscreen_enter", "morphe_fullscreen_exit")
+        // The base icons are the Thin style, the app has no thin fullscreen icon of its own.
+        copyPlayerIcons("playericons", "morphe_fullscreen_enter", "morphe_fullscreen_exit")
 
         // The app loads these by resource id from code, so the wrapper replaces the resource itself.
         val wrapped = appPlayerIcons.filter { (appName, originalName, wrapperClass) ->
