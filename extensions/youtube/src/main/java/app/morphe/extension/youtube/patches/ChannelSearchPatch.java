@@ -186,6 +186,88 @@ public final class ChannelSearchPatch {
         return original;
     }
 
+    private static final class SearchController implements ChannelSearchRequest.ChannelSearchCallback {
+        private final Activity activity;
+        private final String query;
+        private SheetBottomDialog.SlideDialog dialog;
+        private LinearLayout listContainer;
+        private ScrollView scrollView;
+        private ChannelSearchResponse lastResponse;
+        private SortOption activeSort = SortOption.RELEVANCE;
+        private volatile boolean isCancelled = false;
+
+        private SearchController(Activity activity, String query) {
+            this.activity = activity;
+            this.query = query;
+        }
+
+        @Override
+        public boolean isCancelled() {
+            return isCancelled || (dialog != null && !dialog.isShowing());
+        }
+
+        public void cancel() {
+            isCancelled = true;
+        }
+
+        public void bindUI(SheetBottomDialog.SlideDialog dialog, LinearLayout listContainer, ScrollView scrollView) {
+            this.dialog = dialog;
+            this.listContainer = listContainer;
+            this.scrollView = scrollView;
+        }
+
+        @Override
+        public void onResponsePage(@Nullable ChannelSearchResponse response, boolean isComplete) {
+            if (isCancelled()) {
+                return;
+            }
+            Utils.runOnMainThread(() -> {
+                if (isCancelled()) {
+                    return;
+                }
+                if (response == null) {
+                    if (dialog == null) {
+                        Utils.showToastShort(str("morphe_channel_search_failed"));
+                    }
+                    return;
+                }
+                if (response.results.isEmpty()) {
+                    if (dialog == null) {
+                        Utils.showToastShort(str("morphe_channel_search_no_results"));
+                    }
+                    return;
+                }
+
+                lastResponse = response;
+                if (dialog == null) {
+                    showResultsDialog(activity, query, response, this);
+                } else if (dialog.isShowing()) {
+                    refreshResults();
+                }
+            });
+        }
+
+        public void setSort(SortOption selectedOption) {
+            this.activeSort = selectedOption;
+            refreshResults();
+        }
+
+        public SortOption getActiveSort() {
+            return activeSort;
+        }
+
+        public void refreshResults() {
+            if (lastResponse != null && listContainer != null) {
+                int scrollY = scrollView != null ? scrollView.getScrollY() : 0;
+                List<ChannelSearchResult> sorted = activeSort.sort(new ArrayList<>(lastResponse.results));
+                populateList(activity, sorted, listContainer, dialog);
+                if (scrollY > 0 && scrollView != null) {
+                    scrollView.scrollTo(0, scrollY);
+                }
+            }
+        }
+    }
+
     /**
      * Injection point.
      * Called on main thread.
@@ -217,21 +299,8 @@ public final class ChannelSearchPatch {
 
             Logger.printDebug(() -> "Searching channel: " + channelId + " for: " + query);
 
-            Utils.runOnBackgroundThread(() -> {
-                ChannelSearchResponse response = ChannelSearchRequest
-                        .fetchRequestIfNeeded(channelId, query)
-                        .getResponse();
-
-                Utils.runOnMainThread(() -> {
-                    if (response == null) {
-                        Utils.showToastShort(str("morphe_channel_search_failed"));
-                    } else if (response.results.isEmpty()) {
-                        Utils.showToastShort(str("morphe_channel_search_no_results"));
-                    } else {
-                        showResults(activity, query, response);
-                    }
-                });
-            });
+            SearchController controller = new SearchController(activity, query);
+            ChannelSearchRequest.fetchProgressive(channelId, query, controller);
 
             return true;
         } catch (Exception ex) {
@@ -241,7 +310,8 @@ public final class ChannelSearchPatch {
         return false;
     }
 
-    private static void showResults(Activity activity, String query, ChannelSearchResponse response) {
+    private static void showResultsDialog(Activity activity, String query, ChannelSearchResponse response,
+                                         SearchController controller) {
         try {
             hideKeyboard(activity);
 
@@ -262,23 +332,26 @@ public final class ChannelSearchPatch {
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
                     .createSlideDialog(activity, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
 
-            View sortBar = createSortBar(activity, response.results, listContainer, scrollView, dialog);
+            controller.bindUI(dialog, listContainer, scrollView);
+
+            View sortBar = createSortBar(activity, controller);
             mainLayout.addView(sortBar);
 
-            populateList(activity, response.results, listContainer, dialog);
+            controller.refreshResults();
 
             mainLayout.addView(scrollView);
 
-            dialog.setOnDismissListener(dismissed -> thumbnailCache.clear());
+            dialog.setOnDismissListener(dismissed -> {
+                controller.cancel();
+                thumbnailCache.clear();
+            });
             dialog.show();
         } catch (Exception ex) {
-            Logger.printException(() -> "showResults failure", ex);
+            Logger.printException(() -> "showResultsDialog failure", ex);
         }
     }
 
-    private static View createSortBar(Activity activity, List<ChannelSearchResult> results,
-                                      LinearLayout listContainer, ScrollView scrollView,
-                                      SheetBottomDialog.SlideDialog dialog) {
+    private static View createSortBar(Activity activity, SearchController controller) {
         LinearLayout sortBarLayout = new LinearLayout(activity);
         sortBarLayout.setOrientation(LinearLayout.HORIZONTAL);
         sortBarLayout.setGravity(Gravity.CENTER_VERTICAL);
@@ -299,13 +372,12 @@ public final class ChannelSearchPatch {
         background.getPaint().setColor(buttonBgColor);
         sortButton.setBackground(background);
         sortButton.setOnClickListener(new View.OnClickListener() {
-            private SortOption activeSort = SortOption.RELEVANCE;
             {
                 updateButtonText();
             }
 
             private void updateButtonText() {
-                sortButton.setText(activeSort.sortName + "  ▼");
+                sortButton.setText(controller.getActiveSort().sortName + "  ▼");
             }
 
             @Override
@@ -323,13 +395,11 @@ public final class ChannelSearchPatch {
                         return false;
                     }
                     SortOption selectedOption = options[index];
-                    if (activeSort == selectedOption) {
+                    if (controller.getActiveSort() == selectedOption) {
                         return true;
                     }
-                    activeSort = selectedOption;
+                    controller.setSort(selectedOption);
                     updateButtonText();
-
-                    sortAndRefreshList(results, selectedOption, activity, listContainer, scrollView, dialog);
                     return true;
                 });
                 popupMenu.show();

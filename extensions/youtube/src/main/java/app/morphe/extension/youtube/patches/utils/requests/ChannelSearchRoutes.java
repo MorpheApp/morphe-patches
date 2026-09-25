@@ -79,6 +79,31 @@ public final class ChannelSearchRoutes {
         return new byte[0];
     }
 
+    public static byte[] createContinuationBody(String continuationToken, Locale locale) {
+        try {
+            String hl = orDefault(locale.getLanguage(), DEFAULT_LANGUAGE);
+            String gl = orDefault(locale.getCountry(), DEFAULT_COUNTRY);
+
+            JSONObject client = new JSONObject();
+            client.put("clientName", CLIENT_NAME);
+            client.put("clientVersion", CLIENT_VERSION);
+            client.put("hl", hl);
+            client.put("gl", gl);
+
+            JSONObject context = new JSONObject();
+            context.put("client", client);
+
+            JSONObject body = new JSONObject();
+            body.put("context", context);
+            body.put("continuation", continuationToken);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createContinuationBody failed", ex);
+        }
+        return new byte[0];
+    }
+
     private static String orDefault(String value, String fallback) {
         return value.isEmpty() ? fallback : value;
     }
