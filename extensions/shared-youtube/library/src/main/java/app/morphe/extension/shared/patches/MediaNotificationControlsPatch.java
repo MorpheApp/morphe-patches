@@ -1,15 +1,22 @@
-package app.morphe.extension.youtube.patches;
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/1322
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
+package app.morphe.extension.shared.patches;
 
 import android.media.session.PlaybackState;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
 public class MediaNotificationControlsPatch {
 
-    public static final Boolean HIDE_NOTIFICATIONS_MEDIA_SEEKBAR = Settings.DISABLE_NOTIFICATION_MEDIA_SEEKBAR.get();
-    public static final Boolean HIDE_NOTIFICATION_MEDIA_PREV_NEXT = Settings.HIDE_NOTIFICATION_MEDIA_PREV_NEXT.get();
+    public static final Boolean HIDE_NOTIFICATIONS_MEDIA_SEEKBAR = SharedYouTubeSettings.DISABLE_NOTIFICATION_MEDIA_SEEKBAR.get();
+    public static final Boolean HIDE_NOTIFICATION_MEDIA_PREV_NEXT = SharedYouTubeSettings.HIDE_NOTIFICATION_MEDIA_PREV_NEXT.get();
 
     /**
      * Injection point.

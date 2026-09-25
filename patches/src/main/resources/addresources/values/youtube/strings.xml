@@ -1284,14 +1284,6 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Disable tap and hold haptics</string>
     <string name="morphe_disable_haptic_feedback_zoom_title">Disable zoom haptics</string>
 
-    <!-- misc.medianotification.mediaNotificationControlsPatch -->
-    <string name="morphe_notification_media_screen_title">Notification media controls</string>
-    <string name="morphe_notification_media_screen_summary">Customize the playback controls shown on your lock screen and notification panel</string>
-    <string name="morphe_hide_notification_media_prev_next_title">Hide Previous &amp; Next buttons</string>
-    <string name="morphe_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
-    <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
-    <string name="morphe_disable_notification_media_seekbar_summary">Prevents dragging the seekbar on the lock screen and notification panel</string>
-
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
     <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>
 
