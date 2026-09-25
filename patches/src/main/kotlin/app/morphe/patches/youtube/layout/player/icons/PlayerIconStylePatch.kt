@@ -18,7 +18,7 @@ import app.morphe.util.inputStreamFromBundledResource
 
 // A style does not have to cover every icon, so its variants are copied only when bundled.
 // Player button patches must depend on playerIconStylePatch, which adds the picker.
-private val iconStyleSuffixes = listOf("_fluent", "_phosphor", "_sharp")
+private val iconStyleSuffixes = listOf("_fluent", "_phosphor", "_phosphor_light", "_sharp")
 
 private fun iconStyleVariants(resourceDirectory: String, baseNames: Array<out String>) =
     baseNames.flatMap { baseName -> iconStyleSuffixes.map { suffix -> "$baseName$suffix.xml" } }

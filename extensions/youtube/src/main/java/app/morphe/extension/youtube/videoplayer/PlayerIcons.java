@@ -35,6 +35,7 @@ public final class PlayerIcons {
         BOLD("_bold"),
         FLUENT("_fluent"),
         PHOSPHOR("_phosphor"),
+        PHOSPHOR_LIGHT("_phosphor_light"),
         SHARP("_sharp");
 
         @Nullable

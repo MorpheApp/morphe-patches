@@ -808,6 +808,7 @@
         <item>@string/morphe_player_icon_style_entry_bold</item>
         <item>@string/morphe_player_icon_style_entry_fluent</item>
         <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
         <item>@string/morphe_player_icon_style_entry_sharp</item>
     </string-array>
     <string-array name="morphe_player_icon_style_entry_values">
@@ -816,6 +817,7 @@
         <item>BOLD</item>
         <item>FLUENT</item>
         <item>PHOSPHOR</item>
+        <item>PHOSPHOR_LIGHT</item>
         <item>SHARP</item>
     </string-array>
 
@@ -824,12 +826,14 @@
         <item>@string/morphe_player_icon_style_entry_default</item>
         <item>@string/morphe_player_icon_style_entry_fluent</item>
         <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
         <item>@string/morphe_player_icon_style_entry_sharp</item>
     </string-array>
     <string-array name="morphe_shorts_icon_style_entry_values">
         <item>AUTO</item>
         <item>FLUENT</item>
         <item>PHOSPHOR</item>
+        <item>PHOSPHOR_LIGHT</item>
         <item>SHARP</item>
     </string-array>
 </resources>
