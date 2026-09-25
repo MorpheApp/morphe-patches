@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2964
+ * https://github.com/MorpheApp/morphe-patches/pull/3298
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -15,6 +16,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Outline;
 import android.graphics.Typeface;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -24,6 +27,7 @@ import android.view.ViewOutlineProvider;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -33,7 +37,10 @@ import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
@@ -49,6 +56,48 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class ChannelSearchPatch {
+
+    private enum SortOption {
+        RELEVANCE("morphe_channel_search_sort_relevance"),
+        NEWEST("morphe_channel_search_sort_newest"),
+        OLDEST("morphe_channel_search_sort_oldest"),
+        MOST_VIEWED("morphe_channel_search_sort_most_viewed");
+
+        final String stringKey;
+
+        SortOption(String stringKey) {
+            this.stringKey = stringKey;
+        }
+
+        public List<ChannelSearchResult> sort(List<ChannelSearchResult> results) {
+            switch (this) {
+                case RELEVANCE -> results.sort(Comparator.comparingInt(a -> a.originalIndex));
+                case NEWEST -> results.sort((a, b) -> {
+                    if (a.publishedTimeSeconds == Long.MAX_VALUE && b.publishedTimeSeconds == Long.MAX_VALUE) {
+                        return Integer.compare(a.originalIndex, b.originalIndex);
+                    }
+                    if (a.publishedTimeSeconds == Long.MAX_VALUE) return 1;
+                    if (b.publishedTimeSeconds == Long.MAX_VALUE) return -1;
+                    final int cmp = Long.compare(a.publishedTimeSeconds, b.publishedTimeSeconds);
+                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
+                });
+                case OLDEST -> results.sort((a, b) -> {
+                    if (a.publishedTimeSeconds == Long.MAX_VALUE && b.publishedTimeSeconds == Long.MAX_VALUE) {
+                        return Integer.compare(a.originalIndex, b.originalIndex);
+                    }
+                    if (a.publishedTimeSeconds == Long.MAX_VALUE) return 1;
+                    if (b.publishedTimeSeconds == Long.MAX_VALUE) return -1;
+                    final int cmp = Long.compare(b.publishedTimeSeconds, a.publishedTimeSeconds);
+                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
+                });
+                case MOST_VIEWED -> results.sort((a, b) -> {
+                    final int cmp = Long.compare(b.viewCount, a.viewCount);
+                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
+                });
+            }
+            return results;
+        }
+    }
 
     private static final int CHANNEL_ID_LENGTH = 24;
 
@@ -122,7 +171,7 @@ public final class ChannelSearchPatch {
                 return false;
             }
 
-            final String channelId = currentBrowseId;
+            String channelId = currentBrowseId;
             if (!isChannelId(channelId)) {
                 return false;
             }
@@ -139,7 +188,7 @@ public final class ChannelSearchPatch {
             lastQuery = query;
             lastQueryTime = now;
 
-            Logger.printDebug(() -> "Searching channel " + channelId + " for: " + query);
+            Logger.printDebug(() -> "Searching channel: " + channelId + " for: " + query);
 
             Utils.runOnBackgroundThread(() -> {
                 ChannelSearchResponse response = ChannelSearchRequest
@@ -179,30 +228,102 @@ public final class ChannelSearchPatch {
 
             ScrollView scrollView = SheetBottomDialog.createCappedScrollView(activity);
             scrollView.addView(listContainer);
-            mainLayout.addView(scrollView);
 
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
                     .createSlideDialog(activity, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
 
-            for (ChannelSearchResult result : response.results) {
-                View row = createResultRow(activity, result);
-                row.setOnClickListener(view -> {
-                    dialog.dismiss();
-                    // Opening the video right away interrupts the dismiss animation, and the
-                    // dialog then stays on screen because that animation never ends.
-                    Utils.runOnMainThreadDelayed(() -> {
-                        closeSearch(activity);
-                        LoadVideoPatch.openVideoIntent(
-                                "https://www.youtube.com/watch?v=" + result.videoId, false);
-                    }, DIALOG_ANIMATION_DURATION_MILLISECONDS);
-                });
-                listContainer.addView(row);
-            }
+            View sortBar = createSortBar(activity, response.results, listContainer, scrollView, dialog);
+            mainLayout.addView(sortBar);
+
+            populateList(activity, response.results, listContainer, dialog);
+
+            mainLayout.addView(scrollView);
 
             dialog.setOnDismissListener(dismissed -> thumbnailCache.clear());
             dialog.show();
         } catch (Exception ex) {
             Logger.printException(() -> "showResults failure", ex);
+        }
+    }
+
+    private static View createSortBar(Activity activity, List<ChannelSearchResult> results,
+                                      LinearLayout listContainer, ScrollView scrollView,
+                                      SheetBottomDialog.SlideDialog dialog) {
+        LinearLayout sortBarLayout = new LinearLayout(activity);
+        sortBarLayout.setOrientation(LinearLayout.HORIZONTAL);
+        sortBarLayout.setGravity(Gravity.CENTER_VERTICAL);
+        sortBarLayout.setPadding(Dim.dp16, Dim.dp4, Dim.dp16, Dim.dp8);
+
+        final int fgColor = ThemeUtils.getAppForegroundColor();
+        final int buttonBgColor = (fgColor & 0x00FFFFFF) | 0x1A000000;
+
+        TextView sortButton = new TextView(activity);
+        sortButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
+        sortButton.setSingleLine();
+        sortButton.setGravity(Gravity.CENTER);
+        sortButton.setPadding(Dim.dp12, Dim.dp6, Dim.dp12, Dim.dp6);
+        sortButton.setTextColor(fgColor);
+
+        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
+                Dim.roundedCorners(16), null, null));
+        background.getPaint().setColor(buttonBgColor);
+        sortButton.setBackground(background);
+
+        final SortOption[] activeSort = {SortOption.RELEVANCE};
+        sortButton.setText(str(activeSort[0].stringKey) + "  ▼");
+
+        sortButton.setOnClickListener(v -> {
+            PopupMenu popupMenu = new PopupMenu(activity, sortButton);
+            SortOption[] options = SortOption.values();
+            for (int i = 0, length = options.length; i < length; i++) {
+                popupMenu.getMenu().add(0, i, i, str(options[i].stringKey));
+            }
+
+            popupMenu.setOnMenuItemClickListener(item -> {
+                int index = item.getItemId();
+                if (index < 0 || index >= options.length) {
+                    return false;
+                }
+                SortOption selectedOption = options[index];
+                if (activeSort[0] == selectedOption) {
+                    return true;
+                }
+                activeSort[0] = selectedOption;
+                sortButton.setText(str(selectedOption.stringKey) + "  ▼");
+
+                sortAndRefreshList(results, selectedOption, activity, listContainer, scrollView, dialog);
+                return true;
+            });
+
+            popupMenu.show();
+        });
+
+        sortBarLayout.addView(sortButton);
+        return sortBarLayout;
+    }
+
+    private static void sortAndRefreshList(List<ChannelSearchResult> results, SortOption sortOption,
+                                           Activity activity, LinearLayout listContainer,
+                                           ScrollView scrollView, SheetBottomDialog.SlideDialog dialog) {
+        List<ChannelSearchResult> sorted = sortOption.sort(new ArrayList<>(results));
+        populateList(activity, sorted, listContainer, dialog);
+        scrollView.scrollTo(0, 0);
+    }
+
+    private static void populateList(Activity activity, List<ChannelSearchResult> results,
+                                     LinearLayout listContainer, SheetBottomDialog.SlideDialog dialog) {
+        listContainer.removeAllViews();
+        for (ChannelSearchResult result : results) {
+            View row = createResultRow(activity, result);
+            row.setOnClickListener(view -> {
+                dialog.dismiss();
+                Utils.runOnMainThreadDelayed(() -> {
+                    closeSearch(activity);
+                    LoadVideoPatch.openVideoIntent(
+                            "https://www.youtube.com/watch?v=" + result.videoId, false);
+                }, DIALOG_ANIMATION_DURATION_MILLISECONDS);
+            });
+            listContainer.addView(row);
         }
     }
 

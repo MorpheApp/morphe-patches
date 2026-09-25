@@ -427,6 +427,10 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_channel_search_results">Channel search results</string>
     <string name="morphe_channel_search_no_results">Nothing found on this channel</string>
     <string name="morphe_channel_search_failed">Could not search this channel</string>
+    <string name="morphe_channel_search_sort_relevance">Relevance</string>
+    <string name="morphe_channel_search_sort_most_viewed">Most viewed</string>
+    <string name="morphe_channel_search_sort_newest">Newest</string>
+    <string name="morphe_channel_search_sort_oldest">Oldest</string>
 
     <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
     <string name="morphe_share_copy_link_button_success">Link copied to clipboard</string>

@@ -52,15 +52,16 @@ public final class ChannelSearchRoutes {
     private ChannelSearchRoutes() {
     }
 
-    public static byte[] createBody(String channelId, String query) {
+    public static byte[] createBody(String channelId, String query, Locale locale) {
         try {
-            Locale locale = Requester.getAppLocale();
+            String hl = orDefault(locale.getLanguage(), DEFAULT_LANGUAGE);
+            String gl = orDefault(locale.getCountry(), DEFAULT_COUNTRY);
 
             JSONObject client = new JSONObject();
             client.put("clientName", CLIENT_NAME);
             client.put("clientVersion", CLIENT_VERSION);
-            client.put("hl", orDefault(locale.getLanguage(), DEFAULT_LANGUAGE));
-            client.put("gl", orDefault(locale.getCountry(), DEFAULT_COUNTRY));
+            client.put("hl", hl);
+            client.put("gl", gl);
 
             JSONObject context = new JSONObject();
             context.put("client", client);
