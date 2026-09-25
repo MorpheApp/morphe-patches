@@ -184,6 +184,9 @@ public final class LyricsFileParser {
     }
 
     private static Object readValue(List<String> lines, Cursor cursor, int indent) {
+        if (cursor.index >= lines.size()) {
+            return new LinkedHashMap<>();
+        }
         if (isSequenceItem(lines.get(cursor.index), indent)) {
             return readSequence(lines, cursor, indent);
         }
@@ -204,6 +207,9 @@ public final class LyricsFileParser {
             String rest = line.trim().substring(2).trim();
             if (rest.isEmpty()) {
                 cursor.index++;
+                if (cursor.index >= lines.size()) {
+                    break;
+                }
                 sequence.add(readValue(lines, cursor, indent + 2));
             } else {
                 lines.set(cursor.index, " ".repeat(indent + 2) + rest);

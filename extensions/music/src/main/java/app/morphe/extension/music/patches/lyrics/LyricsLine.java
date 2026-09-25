@@ -34,6 +34,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
 
     public LyricsLine {
         words = words == null ? List.of() : Collections.unmodifiableList(words);
+        text = text == null ? "" : text;
     }
 
     public LyricsLine(long startTimeMs, String text, List<Word> words,

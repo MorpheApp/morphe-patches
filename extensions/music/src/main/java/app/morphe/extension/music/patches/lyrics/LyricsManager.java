@@ -499,26 +499,29 @@ public final class LyricsManager {
     }
 
     private boolean pollAndPublishNext(int id, TrackInfo track) {
-        synchronized (candidateQueue) {
-            while (!candidateQueue.isEmpty()) {
-                ScoredCandidate next = candidateQueue.poll();
-                if (id != requestId) {
-                    return false;
-                }
-                if (next.lyrics() != currentLyrics
-                        && !shownFingerprints.contains(fingerprint(next.lyrics()))
-                        && isValidLyrics(next.lyrics(), track)) {
-                    Utils.runOnMainThread(() -> {
-                        if (id != requestId) {
-                            return;
-                        }
-                        publish(id, next.lyrics());
-                    });
-                    return true;
-                }
+        while (true) {
+            ScoredCandidate next;
+            synchronized (candidateQueue) {
+                next = candidateQueue.poll();
+            }
+            if (next == null) {
+                return false;
+            }
+            if (id != requestId) {
+                return false;
+            }
+            if (next.lyrics() != currentLyrics
+                    && !shownFingerprints.contains(fingerprint(next.lyrics()))
+                    && isValidLyrics(next.lyrics(), track)) {
+                Utils.runOnMainThread(() -> {
+                    if (id != requestId) {
+                        return;
+                    }
+                    publish(id, next.lyrics());
+                });
+                return true;
             }
         }
-        return false;
     }
 
     private void collectRemainingCandidates(int id, TrackInfo track,
