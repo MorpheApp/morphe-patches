@@ -47,7 +47,7 @@ public final class VideoActionButtonsFilter extends Filter {
                 "yt_fill_experimental_spark",
                 "yt_fill_spark"
         ),
-        CHANNEL_PROFILE(false),
+        CHANNEL_PROFILE(Settings.HIDE_CHANNEL_PROFILE_BUTTON.get()),
         CLIP(Settings.HIDE_CLIP_BUTTON.get()),
         COMMENTS(
                 Settings.HIDE_COMMENTS_BUTTON.get(),

@@ -735,6 +735,8 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
     <string name="morphe_hide_ask_button_title">Hide Ask button</string>
+    <string name="morphe_hide_channel_profile_button_title">Hide channel and Subscribe button</string>
+    <string name="morphe_hide_channel_profile_button_summary">Hides the channel avatar and Subscribe button at the start of the action bar</string>
     <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_clip_button_title">Hide Clip button</string>
     <string name="morphe_hide_clip_button_summary">This may not work for some user accounts</string>
