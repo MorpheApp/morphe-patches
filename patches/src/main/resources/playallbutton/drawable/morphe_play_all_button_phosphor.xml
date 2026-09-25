@@ -51,8 +51,8 @@
                 <objectAnimator
                     android:propertyName="scaleX"
                     android:duration="100"
-                    android:valueFrom="1.0"
-                    android:valueTo="1.1"
+                    android:valueFrom="1"
+                    android:valueTo="0.9"
                     android:repeatCount="1"
                     android:repeatMode="reverse"
                     android:interpolator="@android:interpolator/fast_out_slow_in" />
@@ -60,8 +60,8 @@
                 <objectAnimator
                     android:propertyName="scaleY"
                     android:duration="100"
-                    android:valueFrom="1.0"
-                    android:valueTo="1.1"
+                    android:valueFrom="1"
+                    android:valueTo="0.9"
                     android:repeatCount="1"
                     android:repeatMode="reverse"
                     android:interpolator="@android:interpolator/fast_out_slow_in" />

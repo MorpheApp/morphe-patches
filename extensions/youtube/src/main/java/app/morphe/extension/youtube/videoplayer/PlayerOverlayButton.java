@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import android.animation.ValueAnimator;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BlurMaskFilter;
@@ -79,8 +80,13 @@ public class PlayerOverlayButton {
      * readable over bright video once the circle behind it is made transparent.
      */
     private static final class ShadowedIconDrawable extends DrawableWrapper {
+        private static final int SHADOW_FADE_IN_DURATION = 200;
+
         @Nullable
         private Bitmap shadow;
+        private final Paint shadowPaint = new Paint();
+        @Nullable
+        private ValueAnimator shadowFade;
 
         ShadowedIconDrawable(Drawable icon) {
             super(icon);
@@ -89,10 +95,24 @@ public class PlayerOverlayButton {
                 animated.registerAnimationCallback(new Animatable2.AnimationCallback() {
                     @Override
                     public void onAnimationEnd(Drawable drawable) {
-                        invalidateSelf();
+                        fadeInShadow();
                     }
                 });
             }
+        }
+
+        // Showing the whole shadow in one frame reads as a flicker.
+        private void fadeInShadow() {
+            if (shadowFade != null) {
+                shadowFade.cancel();
+            }
+            shadowFade = ValueAnimator.ofInt(0, 255);
+            shadowFade.setDuration(SHADOW_FADE_IN_DURATION);
+            shadowFade.addUpdateListener(animation -> {
+                shadowPaint.setAlpha((int) animation.getAnimatedValue());
+                invalidateSelf();
+            });
+            shadowFade.start();
         }
 
         @Override
@@ -111,7 +131,7 @@ public class PlayerOverlayButton {
                 }
                 if (shadow != null) {
                     Rect bounds = getBounds();
-                    canvas.drawBitmap(shadow, bounds.left, bounds.top, null);
+                    canvas.drawBitmap(shadow, bounds.left, bounds.top, shadowPaint);
                 }
             }
 

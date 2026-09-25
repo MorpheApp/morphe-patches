@@ -36,7 +36,7 @@
                     android:propertyName="scaleX"
                     android:duration="120"
                     android:valueFrom="1"
-                    android:valueTo="1.15"
+                    android:valueTo="1.1"
                     android:repeatCount="1"
                     android:repeatMode="reverse"
                     android:interpolator="@android:interpolator/fast_out_slow_in" />
@@ -44,7 +44,7 @@
                     android:propertyName="scaleY"
                     android:duration="120"
                     android:valueFrom="1"
-                    android:valueTo="1.15"
+                    android:valueTo="1.1"
                     android:repeatCount="1"
                     android:repeatMode="reverse"
                     android:interpolator="@android:interpolator/fast_out_slow_in" />

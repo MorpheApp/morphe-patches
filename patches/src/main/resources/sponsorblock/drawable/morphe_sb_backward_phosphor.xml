@@ -51,16 +51,43 @@
                 <objectAnimator
                     android:propertyName="translateX"
                     android:duration="100"
+                    android:startOffset="80"
                     android:valueFrom="0"
                     android:valueTo="-21.3333"
                     android:interpolator="@android:interpolator/fast_out_slow_in" />
                 <objectAnimator
                     android:propertyName="translateX"
                     android:duration="150"
-                    android:startOffset="100"
+                    android:startOffset="180"
                     android:valueFrom="-21.3333"
                     android:valueTo="0"
                     android:interpolator="@android:interpolator/overshoot" />
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="80"
+                    android:valueFrom="1"
+                    android:valueTo="0.86"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="100"
+                    android:startOffset="330"
+                    android:valueFrom="0.86"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="80"
+                    android:valueFrom="1"
+                    android:valueTo="0.86"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="100"
+                    android:startOffset="330"
+                    android:valueFrom="0.86"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
             </set>
         </aapt:attr>
     </target>

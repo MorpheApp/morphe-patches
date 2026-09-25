@@ -60,31 +60,31 @@
                 <objectAnimator
                     android:propertyName="scaleX"
                     android:duration="150"
-                    android:valueFrom="1.0"
-                    android:valueTo="1.2"
+                    android:valueFrom="1"
+                    android:valueTo="0.96"
                     android:interpolator="@android:interpolator/overshoot" />
 
                 <objectAnimator
                     android:propertyName="scaleY"
                     android:duration="150"
-                    android:valueFrom="1.0"
-                    android:valueTo="1.2"
+                    android:valueFrom="1"
+                    android:valueTo="0.96"
                     android:interpolator="@android:interpolator/overshoot" />
 
                 <objectAnimator
                     android:propertyName="scaleX"
                     android:duration="150"
                     android:startOffset="150"
-                    android:valueFrom="1.2"
-                    android:valueTo="1.0"
+                    android:valueFrom="0.96"
+                    android:valueTo="1"
                     android:interpolator="@android:interpolator/anticipate_overshoot" />
 
                 <objectAnimator
                     android:propertyName="scaleY"
                     android:duration="150"
                     android:startOffset="150"
-                    android:valueFrom="1.2"
-                    android:valueTo="1.0"
+                    android:valueFrom="0.96"
+                    android:valueTo="1"
                     android:interpolator="@android:interpolator/anticipate_overshoot" />
 
                 <!-- Rotation animation -->
