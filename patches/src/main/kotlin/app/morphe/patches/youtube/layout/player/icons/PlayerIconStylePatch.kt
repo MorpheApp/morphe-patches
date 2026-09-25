@@ -63,8 +63,37 @@ internal fun ResourcePatchContext.copyPlayerIconStyles(resourceDirectory: String
     )
 }
 
+private const val APP_PLAYER_ICON_DRAWABLE =
+    "app.morphe.extension.youtube.videoplayer.AppPlayerIconDrawable"
+
+// App icon, the name its original is moved to, and the wrapper that takes its place.
+private val appPlayerIcons = listOf(
+    Triple("yt_outline_experimental_player_full_enter_vd_theme_24", "morphe_yt_player_full_enter", "FullscreenEnter"),
+    Triple("yt_outline_experimental_player_full_enter_alt_vd_theme_24", "morphe_yt_player_full_enter_alt", "FullscreenEnterAlt"),
+    Triple("yt_outline_experimental_player_full_enter_portrait_vd_theme_24", "morphe_yt_player_full_enter_portrait", "FullscreenEnterPortrait"),
+    Triple("yt_outline_experimental_player_full_exit_vd_theme_24", "morphe_yt_player_full_exit", "FullscreenExit"),
+    Triple("yt_outline_experimental_player_full_exit_alt_vd_theme_24", "morphe_yt_player_full_exit_alt", "FullscreenExitAlt"),
+)
+
+// Bitmap versions of the same icons, the bold player shows these. The wrapper falls back to the vector above.
+private val appPlayerBitmapIcons = listOf(
+    "yt_outline_experimental_player_full_enter_black_24" to "FullscreenEnter",
+    "yt_outline_experimental_player_full_enter_alt_black_24" to "FullscreenEnterAlt",
+    "yt_outline_experimental_player_full_enter_portrait_black_24" to "FullscreenEnterPortrait",
+    "yt_outline_experimental_player_full_exit_black_24" to "FullscreenExit",
+    "yt_outline_experimental_player_full_exit_alt_black_24" to "FullscreenExitAlt",
+)
+
+private fun appPlayerIconWrapper(wrapperClass: String) =
+    $$"""
+    <?xml version="1.0" encoding="utf-8"?>
+    <drawable xmlns:android="http://schemas.android.com/apk/res/android"
+        class="$${APP_PLAYER_ICON_DRAWABLE}$$${wrapperClass}" />
+    """.trimIndent()
+
 /**
- * Adds the player icon style picker, shared by the player buttons and the swipe controls.
+ * Adds the player icon style picker, shared by the player buttons and the swipe controls,
+ * and applies the style to the app's own fullscreen button.
  */
 internal val playerIconStylePatch = resourcePatch {
     dependsOn(settingsPatch)
@@ -76,5 +105,29 @@ internal val playerIconStylePatch = resourcePatch {
                 tag = "app.morphe.extension.youtube.settings.preference.PlayerIconStyleListPreference"
             )
         )
+
+        copyPlayerIconStyles("playericons", "morphe_fullscreen_enter", "morphe_fullscreen_exit")
+
+        // The app loads these by resource id from code, so the wrapper replaces the resource itself.
+        appPlayerIcons.forEach { (appName, originalName, wrapperClass) ->
+            val appIcon = get("res/drawable/$appName.xml")
+            // Targets before the bold player do not have these icons.
+            if (!appIcon.exists()) return@forEach
+
+            appIcon.copyTo(get("res/drawable/$originalName.xml"), overwrite = true)
+            appIcon.writeText(appPlayerIconWrapper(wrapperClass))
+        }
+
+        // A density specific bitmap wins over a default drawable, so every bitmap is removed.
+        val drawableDirectories = get("res", false).listFiles { file ->
+            file.isDirectory && file.name.startsWith("drawable")
+        }.orEmpty()
+        appPlayerBitmapIcons.forEach { (appName, wrapperClass) ->
+            val bitmaps = drawableDirectories.map { it.resolve("$appName.png") }.filter { it.exists() }
+            if (bitmaps.isEmpty()) return@forEach
+
+            bitmaps.forEach { bitmap -> delete("res/${bitmap.parentFile.name}/${bitmap.name}") }
+            get("res/drawable/$appName.xml").writeText(appPlayerIconWrapper(wrapperClass))
+        }
     }
 }
