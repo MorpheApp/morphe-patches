@@ -36,8 +36,6 @@ import app.morphe.extension.youtube.settings.Settings;
 
 public final class ChannelSearchRequest {
 
-    public static final Pattern PATTERN_PUBLISHED_TIME = Pattern.compile("(\\d+)\\s*(year|month|week|day|hour|minute|second)");
-
     public static final class ChannelSearchResult {
         public final String videoId;
         public final String title;
@@ -45,16 +43,18 @@ public final class ChannelSearchRequest {
         public final String thumbnailUrl;
         public final long publishedTimeSeconds;
         public final long viewCount;
+        public final long lengthSeconds;
         public final int originalIndex;
 
         private ChannelSearchResult(String videoId, String title, String metadata, String thumbnailUrl,
-                                    long publishedTimeSeconds, long viewCount, int originalIndex) {
+                                    long publishedTimeSeconds, long viewCount, long lengthSeconds, int originalIndex) {
             this.videoId = videoId;
             this.title = title;
             this.metadata = metadata;
             this.thumbnailUrl = thumbnailUrl;
             this.publishedTimeSeconds = publishedTimeSeconds;
             this.viewCount = viewCount;
+            this.lengthSeconds = lengthSeconds;
             this.originalIndex = originalIndex;
         }
     }
@@ -71,6 +71,11 @@ public final class ChannelSearchRequest {
     }
 
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 15 * 1000;
+
+    public static final Pattern PATTERN_VIEW_COUNT = Pattern.compile("(\\d+([.,]\\d+)?)");
+
+    public static final Pattern PATTERN_PUBLISHED_TIME = Pattern.compile(
+            "(\\d+)\\s*(year|month|week|day|hour|minute|second)");
 
     private static final Map<String, ChannelSearchRequest> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(10));
@@ -123,8 +128,11 @@ public final class ChannelSearchRequest {
                 () -> fetchSingle(channelId, query, Locale.US));
 
         try {
-            ChannelSearchResponse localized = localizedFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
+            // Video upload date, viewcount, and other metadata appears to only be available
+            // as UI strings. Make two requests, one in English and another in the device locale,
+            // then parse English metadata and add to localized result.
             ChannelSearchResponse english = englishFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
+            ChannelSearchResponse localized = localizedFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
 
             if (localized == null) {
                 return english;
@@ -134,17 +142,22 @@ public final class ChannelSearchRequest {
             }
 
             //noinspection ExtractMethodRecommender
-            Map<String, Long> englishTimes = new HashMap<>(2 * english.results.size());
+            Map<String, ChannelSearchResult> englishMap = new HashMap<>(
+                    2 * english.results.size());
             for (ChannelSearchResult item : english.results) {
-                englishTimes.put(item.videoId, item.publishedTimeSeconds);
+                englishMap.put(item.videoId, item);
             }
 
             // Add English parsed metadata to localized results.
             List<ChannelSearchResult> mergedResults = new ArrayList<>(localized.results.size());
             for (ChannelSearchResult item : localized.results) {
-                Long timeSeconds = englishTimes.get(item.videoId);
-                final long publishedTimeSeconds = (timeSeconds != null)
-                        ? timeSeconds : item.publishedTimeSeconds;
+                ChannelSearchResult englishItem = englishMap.get(item.videoId);
+                final long publishedTimeSeconds = englishItem != null
+                        ? englishItem.publishedTimeSeconds : item.publishedTimeSeconds;
+                final long viewCount = englishItem != null
+                        ? englishItem.viewCount : item.viewCount;
+                final long lengthSeconds = englishItem != null
+                        ? englishItem.lengthSeconds : item.lengthSeconds;
 
                 mergedResults.add(new ChannelSearchResult(
                         item.videoId,
@@ -152,7 +165,8 @@ public final class ChannelSearchRequest {
                         item.metadata,
                         item.thumbnailUrl,
                         publishedTimeSeconds,
-                        item.viewCount,
+                        viewCount,
+                        lengthSeconds,
                         item.originalIndex
                 ));
             }
@@ -262,12 +276,13 @@ public final class ChannelSearchRequest {
         String videoId = video.optString("videoId");
         String title = parseText(video.optJSONObject("title"));
         if (videoId.isEmpty() || title.isEmpty()) {
+            logDebugException("Could not parse videoId: " + videoId);
             return null;
         }
 
         String lengthText = parseText(video.optJSONObject("lengthText"));
-        String shortViewCountText = parseText(video.optJSONObject("shortViewCountText"));
         String viewCountText = parseText(video.optJSONObject("viewCountText"));
+        String shortViewCountText = parseText(video.optJSONObject("shortViewCountText"));
         String displayViewCountText = !shortViewCountText.isEmpty() ? shortViewCountText : viewCountText;
         String publishedTimeText = parseText(video.optJSONObject("publishedTimeText"));
 
@@ -276,11 +291,30 @@ public final class ChannelSearchRequest {
         appendMetadata(metadata, displayViewCountText);
         appendMetadata(metadata, publishedTimeText);
 
-        long publishedTimeSeconds = isEnglish ? parsePublishedTimeSecondsAgo(publishedTimeText) : Long.MAX_VALUE;
-        long viewCount = parseViewCount(viewCountText, shortViewCountText);
+        final long publishedTimeSeconds = isEnglish ? parsePublishedTimeSecondsAgo(publishedTimeText) : Long.MAX_VALUE;
+        final long viewCount = parseViewCount(viewCountText, shortViewCountText);
+        final long lengthSeconds = parseLengthSeconds(lengthText);
 
         return new ChannelSearchResult(videoId, title, metadata.toString(), parseThumbnail(video),
-                publishedTimeSeconds, viewCount, index);
+                publishedTimeSeconds, viewCount, lengthSeconds, index);
+    }
+
+    private static long parseLengthSeconds(String lengthText) {
+        if (lengthText == null || lengthText.isEmpty()) {
+            return 0;
+        }
+
+        String[] parts = lengthText.trim().split(":");
+        try {
+            long totalSeconds = 0;
+            for (String part : parts) {
+                totalSeconds = totalSeconds * 60 + Long.parseLong(part.trim());
+            }
+            return totalSeconds;
+        } catch (Exception ex) {
+            logDebugException("Could not parse length: " + lengthText);
+            return 0;
+        }
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -300,7 +334,7 @@ public final class ChannelSearchRequest {
             return Long.MAX_VALUE;
         }
 
-        long number;
+        final long number;
         try {
             number = Long.parseLong(matcher.group(1));
         } catch (Exception ex) {
@@ -342,6 +376,7 @@ public final class ChannelSearchRequest {
         String textToParse = (shortViewCountText != null && !shortViewCountText.isEmpty())
                 ? shortViewCountText : viewCountText;
         if (textToParse == null || textToParse.isEmpty()) {
+            logDebugException("Could not parse view count: " + shortViewCountText);
             return 0;
         }
 
@@ -350,16 +385,18 @@ public final class ChannelSearchRequest {
             return 0;
         }
 
-        long multiplier = 1;
+        final long multiplier;
         if (lower.contains("b")) {
             multiplier = 1_000_000_000L;
         } else if (lower.contains("m")) {
             multiplier = 1_000_000L;
         } else if (lower.contains("k")) {
             multiplier = 1_000L;
+        } else {
+            multiplier = 1;
         }
 
-        Matcher matcher = Pattern.compile("(\\d+([.,]\\d+)?)").matcher(lower);
+        Matcher matcher = PATTERN_VIEW_COUNT.matcher(lower);
         if (!matcher.find()) {
             return 0;
         }

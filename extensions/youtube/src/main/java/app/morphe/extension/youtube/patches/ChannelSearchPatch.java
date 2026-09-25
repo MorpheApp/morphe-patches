@@ -8,6 +8,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.shared.StringRef.sf;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
@@ -21,6 +22,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
@@ -61,12 +63,14 @@ public final class ChannelSearchPatch {
         RELEVANCE("morphe_channel_search_sort_relevance"),
         NEWEST("morphe_channel_search_sort_newest"),
         OLDEST("morphe_channel_search_sort_oldest"),
-        MOST_VIEWED("morphe_channel_search_sort_most_viewed");
+        MOST_VIEWED("morphe_channel_search_sort_most_viewed"),
+        SHORTEST("morphe_channel_search_sort_shortest"),
+        LONGEST("morphe_channel_search_sort_longest");
 
-        final String stringKey;
+        final String sortName;
 
-        SortOption(String stringKey) {
-            this.stringKey = stringKey;
+        SortOption(String sortName) {
+            this.sortName = sf(sortName).toString();
         }
 
         public List<ChannelSearchResult> sort(List<ChannelSearchResult> results) {
@@ -92,6 +96,24 @@ public final class ChannelSearchPatch {
                 });
                 case MOST_VIEWED -> results.sort((a, b) -> {
                     final int cmp = Long.compare(b.viewCount, a.viewCount);
+                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
+                });
+                case SHORTEST -> results.sort((a, b) -> {
+                    if (a.lengthSeconds == 0 && b.lengthSeconds == 0) {
+                        return Integer.compare(a.originalIndex, b.originalIndex);
+                    }
+                    if (a.lengthSeconds == 0) return 1;
+                    if (b.lengthSeconds == 0) return -1;
+                    final int cmp = Long.compare(a.lengthSeconds, b.lengthSeconds);
+                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
+                });
+                case LONGEST -> results.sort((a, b) -> {
+                    if (a.lengthSeconds == 0 && b.lengthSeconds == 0) {
+                        return Integer.compare(a.originalIndex, b.originalIndex);
+                    }
+                    if (a.lengthSeconds == 0) return 1;
+                    if (b.lengthSeconds == 0) return -1;
+                    final int cmp = Long.compare(b.lengthSeconds, a.lengthSeconds);
                     return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
                 });
             }
@@ -129,6 +151,7 @@ public final class ChannelSearchPatch {
 
     /**
      * Injection point.
+     * Called on main thread.
      */
     public static void setBrowseId(@Nullable String browseId) {
         currentBrowseId = browseId == null ? "" : browseId;
@@ -136,7 +159,6 @@ public final class ChannelSearchPatch {
 
     /**
      * Injection point.
-     * <p>
      * The search feed is not a browse page, and returning to it from a channel sets no browse id.
      */
     public static void clearBrowseId() {
@@ -145,7 +167,6 @@ public final class ChannelSearchPatch {
 
     /**
      * Injection point.
-     * <p>
      * Called only for the default hint, not for the hint of Shorts or playlist search.
      */
     public static String getSearchHint(String original) {
@@ -162,6 +183,7 @@ public final class ChannelSearchPatch {
 
     /**
      * Injection point.
+     * Called on main thread.
      *
      * @return Whether the global search was replaced with a search inside the current channel.
      */
@@ -268,37 +290,45 @@ public final class ChannelSearchPatch {
                 Dim.roundedCorners(16), null, null));
         background.getPaint().setColor(buttonBgColor);
         sortButton.setBackground(background);
-
-        final SortOption[] activeSort = {SortOption.RELEVANCE};
-        sortButton.setText(str(activeSort[0].stringKey) + "  ▼");
-
-        sortButton.setOnClickListener(v -> {
-            PopupMenu popupMenu = new PopupMenu(activity, sortButton);
-            SortOption[] options = SortOption.values();
-            for (int i = 0, length = options.length; i < length; i++) {
-                popupMenu.getMenu().add(0, i, i, str(options[i].stringKey));
+        sortButton.setOnClickListener(new View.OnClickListener() {
+            private SortOption activeSort = SortOption.RELEVANCE;
+            {
+                updateButtonText();
             }
 
-            popupMenu.setOnMenuItemClickListener(item -> {
-                int index = item.getItemId();
-                if (index < 0 || index >= options.length) {
-                    return false;
+            private void updateButtonText() {
+                sortButton.setText(activeSort.sortName + "  ▼");
+            }
+
+            @Override
+            public void onClick(View v) {
+                PopupMenu popupMenu = new PopupMenu(activity, sortButton);
+                SortOption[] options = SortOption.values();
+                Menu menu = popupMenu.getMenu();
+                for (int i = 0, length = options.length; i < length; i++) {
+                    menu.add(0, i, i, options[i].sortName);
                 }
-                SortOption selectedOption = options[index];
-                if (activeSort[0] == selectedOption) {
+
+                popupMenu.setOnMenuItemClickListener(item -> {
+                    int index = item.getItemId();
+                    if (index < 0 || index >= options.length) {
+                        return false;
+                    }
+                    SortOption selectedOption = options[index];
+                    if (activeSort == selectedOption) {
+                        return true;
+                    }
+                    activeSort = selectedOption;
+                    updateButtonText();
+
+                    sortAndRefreshList(results, selectedOption, activity, listContainer, scrollView, dialog);
                     return true;
-                }
-                activeSort[0] = selectedOption;
-                sortButton.setText(str(selectedOption.stringKey) + "  ▼");
-
-                sortAndRefreshList(results, selectedOption, activity, listContainer, scrollView, dialog);
-                return true;
-            });
-
-            popupMenu.show();
+                });
+                popupMenu.show();
+            }
         });
-
         sortBarLayout.addView(sortButton);
+
         return sortBarLayout;
     }
 
@@ -319,8 +349,8 @@ public final class ChannelSearchPatch {
                 dialog.dismiss();
                 Utils.runOnMainThreadDelayed(() -> {
                     closeSearch(activity);
-                    LoadVideoPatch.openVideoIntent(
-                            "https://www.youtube.com/watch?v=" + result.videoId, false);
+                    LoadVideoPatch.openVideoIntent("https://www.youtube.com/watch?v="
+                            + result.videoId, false);
                 }, DIALOG_ANIMATION_DURATION_MILLISECONDS);
             });
             listContainer.addView(row);

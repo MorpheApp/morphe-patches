@@ -431,6 +431,8 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_channel_search_sort_most_viewed">Most viewed</string>
     <string name="morphe_channel_search_sort_newest">Newest</string>
     <string name="morphe_channel_search_sort_oldest">Oldest</string>
+    <string name="morphe_channel_search_sort_shortest">Shortest</string>
+    <string name="morphe_channel_search_sort_longest">Longest</string>
 
     <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
     <string name="morphe_share_copy_link_button_success">Link copied to clipboard</string>
