@@ -809,6 +809,9 @@
         <item>@string/morphe_player_icon_style_entry_fluent</item>
         <item>@string/morphe_player_icon_style_entry_phosphor</item>
         <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_fill</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_duotone</item>
+        <item>@string/morphe_player_icon_style_entry_ionicons</item>
         <item>@string/morphe_player_icon_style_entry_sharp</item>
     </string-array>
     <string-array name="morphe_player_icon_style_entry_values">
@@ -818,6 +821,9 @@
         <item>FLUENT</item>
         <item>PHOSPHOR</item>
         <item>PHOSPHOR_LIGHT</item>
+        <item>PHOSPHOR_FILL</item>
+        <item>PHOSPHOR_DUOTONE</item>
+        <item>IONICONS</item>
         <item>SHARP</item>
     </string-array>
 
@@ -827,6 +833,8 @@
         <item>@string/morphe_player_icon_style_entry_fluent</item>
         <item>@string/morphe_player_icon_style_entry_phosphor</item>
         <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_duotone</item>
+        <item>@string/morphe_player_icon_style_entry_ionicons</item>
         <item>@string/morphe_player_icon_style_entry_sharp</item>
     </string-array>
     <string-array name="morphe_shorts_icon_style_entry_values">
@@ -834,6 +842,8 @@
         <item>FLUENT</item>
         <item>PHOSPHOR</item>
         <item>PHOSPHOR_LIGHT</item>
+        <item>PHOSPHOR_DUOTONE</item>
+        <item>IONICONS</item>
         <item>SHARP</item>
     </string-array>
 </resources>
