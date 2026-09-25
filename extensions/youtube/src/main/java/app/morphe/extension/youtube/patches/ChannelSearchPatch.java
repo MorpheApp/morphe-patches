@@ -42,6 +42,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -194,7 +195,7 @@ public final class ChannelSearchPatch {
         private ScrollView scrollView;
         private ChannelSearchResponse lastResponse;
         private SortOption activeSort = SortOption.RELEVANCE;
-        private volatile boolean isCancelled = false;
+        private volatile boolean isCancelled;
 
         private SearchController(Activity activity, String query) {
             this.activity = activity;
@@ -420,17 +421,32 @@ public final class ChannelSearchPatch {
 
     private static void populateList(Activity activity, List<ChannelSearchResult> results,
                                      LinearLayout listContainer, SheetBottomDialog.SlideDialog dialog) {
+        final int count = listContainer.getChildCount();
+        Map<String, View> existingViews = new HashMap<>(2 * count);
+        for (int i = 0; i < count; i++) {
+            View child = listContainer.getChildAt(i);
+            Object tag = child.getTag();
+            if (tag instanceof String) {
+                existingViews.put((String) tag, child);
+            }
+        }
+
         listContainer.removeAllViews();
+
         for (ChannelSearchResult result : results) {
-            View row = createResultRow(activity, result);
-            row.setOnClickListener(view -> {
-                dialog.dismiss();
-                Utils.runOnMainThreadDelayed(() -> {
-                    closeSearch(activity);
-                    LoadVideoPatch.openVideoIntent("https://www.youtube.com/watch?v="
-                            + result.videoId, false);
-                }, DIALOG_ANIMATION_DURATION_MILLISECONDS);
-            });
+            View row = existingViews.get(result.videoId);
+            if (row == null) {
+                row = createResultRow(activity, result);
+                row.setTag(result.videoId);
+                final String videoId = result.videoId;
+                row.setOnClickListener(view -> {
+                    dialog.dismiss();
+                    Utils.runOnMainThreadDelayed(() -> {
+                        closeSearch(activity);
+                        LoadVideoPatch.openVideoIntent("https://www.youtube.com/watch?v=" + videoId, false);
+                    }, DIALOG_ANIMATION_DURATION_MILLISECONDS);
+                });
+            }
             listContainer.addView(row);
         }
     }
@@ -573,6 +589,7 @@ public final class ChannelSearchPatch {
 
         Bitmap cached = thumbnailCache.get(url);
         if (cached != null) {
+            view.setAlpha(1.0f);
             view.setImageBitmap(cached);
             return;
         }
@@ -596,7 +613,9 @@ public final class ChannelSearchPatch {
                 Utils.runOnMainThread(() -> {
                     ImageView target = viewRef.get();
                     if (target != null) {
+                        target.setAlpha(0.0f);
                         target.setImageBitmap(bitmap);
+                        target.animate().alpha(1.0f).setDuration(200).start();
                     }
                 });
             } catch (Exception ex) {

@@ -193,15 +193,18 @@ public final class ChannelSearchRequest {
                 return localized;
             }
 
-            Map<String, ChannelSearchResult> englishMap = new HashMap<>(2 * english.results.size());
-            for (ChannelSearchResult item : english.results) {
+            //noinspection ExtractMethodRecommender
+            List<ChannelSearchResult> englishResults = english.results;
+            Map<String, ChannelSearchResult> englishMap = new HashMap<>(2 * englishResults.size());
+            for (ChannelSearchResult item : englishResults) {
                 englishMap.put(item.videoId, item);
             }
 
-            Set<String> mergedSeen = new HashSet<>(2 * localized.results.size());
-            List<ChannelSearchResult> mergedResults = new ArrayList<>(localized.results.size());
-            for (ChannelSearchResult item : localized.results) {
-                if (!mergedSeen.add(item.videoId)) {
+            List<ChannelSearchResult> localizedResults = localized.results;
+            Set<String> mergedSeen = new HashSet<>(2 * localizedResults.size());
+            List<ChannelSearchResult> mergedResults = new ArrayList<>(localizedResults.size());
+            for (ChannelSearchResult item : localizedResults) {
+                if (!mergedSeen.add(item.videoId)) { // Continuation can include duplicates.
                     continue;
                 }
 
@@ -236,7 +239,8 @@ public final class ChannelSearchRequest {
     }
 
     @Nullable
-    private static ChannelSearchResponse fetchSingle(String channelId, String query, Locale locale, ChannelSearchCallback callback) {
+    private static ChannelSearchResponse fetchSingle(String channelId, String query,
+                                                     Locale locale, ChannelSearchCallback callback) {
         Utils.verifyOffMainThread();
 
         final boolean isEnglish = "en".equalsIgnoreCase(locale.getLanguage());
@@ -424,7 +428,10 @@ public final class ChannelSearchRequest {
     }
 
     @Nullable
-    private static String extractContinuationToken(JSONObject continuationItemRenderer) {
+    private static String extractContinuationToken(@Nullable JSONObject continuationItemRenderer) {
+        if (continuationItemRenderer == null) {
+            return null;
+        }
         try {
             return continuationItemRenderer
                     .getJSONObject("continuationEndpoint")
