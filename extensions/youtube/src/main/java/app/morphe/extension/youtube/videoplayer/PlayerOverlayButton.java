@@ -15,6 +15,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Animatable2;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableWrapper;
 import android.util.TypedValue;
@@ -82,6 +84,15 @@ public class PlayerOverlayButton {
 
         ShadowedIconDrawable(Drawable icon) {
             super(icon);
+            // The shadow is left out while the icon animates, so it has to come back at the end.
+            if (icon instanceof Animatable2 animated) {
+                animated.registerAnimationCallback(new Animatable2.AnimationCallback() {
+                    @Override
+                    public void onAnimationEnd(Drawable drawable) {
+                        invalidateSelf();
+                    }
+                });
+            }
         }
 
         @Override
@@ -92,12 +103,16 @@ public class PlayerOverlayButton {
 
         @Override
         public void draw(@NonNull Canvas canvas) {
-            if (shadow == null) {
-                buildShadow();
-            }
-            if (shadow != null) {
-                Rect bounds = getBounds();
-                canvas.drawBitmap(shadow, bounds.left, bounds.top, null);
+            // The shadow is a still image, so it would lag behind a rotating or scaling icon.
+            final boolean animating = getDrawable() instanceof Animatable animated && animated.isRunning();
+            if (!animating) {
+                if (shadow == null) {
+                    buildShadow();
+                }
+                if (shadow != null) {
+                    Rect bounds = getBounds();
+                    canvas.drawBitmap(shadow, bounds.left, bounds.top, null);
+                }
             }
 
             super.draw(canvas);
@@ -314,7 +329,6 @@ public class PlayerOverlayButton {
                     && sourcePaddingRight == button.getPaddingRight()
                     && sourcePaddingBottom == button.getPaddingBottom())
             ) {
-                //noinspection ExtractMethodRecommender
                 ViewGroup.LayoutParams sourceLayoutParams = source.getLayoutParams();
                 ViewGroup.LayoutParams layoutParams;
 
@@ -592,8 +606,17 @@ public class PlayerOverlayButton {
         button.setImageResource(ResourceUtils.getIdentifierOrThrow(
                 ResourceType.DRAWABLE, drawableName)
         );
-        button.setOnClickListener(onClickListener);
-        button.setOnLongClickListener(onLongClickListener);
+        button.setOnClickListener(view -> {
+            if (onClickListener != null) {
+                onClickListener.onClick(view);
+            }
+            PlayerIcons.animate(button);
+        });
+        button.setOnLongClickListener(onLongClickListener == null ? null : view -> {
+            final boolean consumed = onLongClickListener.onLongClick(view);
+            PlayerIcons.animate(button);
+            return consumed;
+        });
         sourceButtonViewGroup.addView(button);
 
         buttonControllers.add(new PlayerOverlayButtonController(button, isEnabled, button::setBackground));

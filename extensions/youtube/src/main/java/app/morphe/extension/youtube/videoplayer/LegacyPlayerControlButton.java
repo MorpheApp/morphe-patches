@@ -12,8 +12,6 @@ package app.morphe.extension.youtube.videoplayer;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -185,17 +183,18 @@ public class LegacyPlayerControlButton {
 
         // Wrap click listener to trigger animation.
         button.setOnClickListener(view -> {
-            animateIcon();
             if (onClickListener != null) {
                 onClickListener.onClick(view);
             }
+            animateIcon();
         });
 
         if (longClickListener != null) {
             // Wrap long click listener to trigger animation.
             button.setOnLongClickListener(view -> {
+                final boolean consumed = longClickListener.onLongClick(view);
                 animateIcon();
-                return longClickListener.onLongClick(view);
+                return consumed;
             });
         }
 
@@ -253,13 +252,7 @@ public class LegacyPlayerControlButton {
      */
     public void animateIcon() {
         try {
-            View button = buttonRef.get();
-            if (button instanceof ImageView imageView) {
-                Drawable drawable = imageView.getDrawable();
-                if (drawable instanceof AnimatedVectorDrawable avd) {
-                    avd.start();
-                }
-            }
+            PlayerIcons.animate(buttonRef.get());
         } catch (Exception ex) {
             Logger.printException(() -> "animateIcon failure", ex);
         }

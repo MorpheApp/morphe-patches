@@ -7,6 +7,12 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.annotation.Nullable;
 
 import java.util.Map;
@@ -93,6 +99,22 @@ public final class PlayerIcons {
 
         String styled = baseName + style.suffix;
         return exists(styled) ? styled : null;
+    }
+
+    /**
+     * Starts the tap animation of the icon, if it is animated.
+     * Call it after the click listener, so a button that swaps its icon animates the new one.
+     */
+    public static void animate(View button) {
+        if (!(button instanceof ImageView imageView)) return;
+
+        Drawable icon = imageView.getDrawable();
+        if (icon instanceof DrawableWrapper wrapper) {
+            icon = wrapper.getDrawable();
+        }
+        if (icon instanceof AnimatedVectorDrawable animated) {
+            animated.start();
+        }
     }
 
     public static boolean exists(String drawableName) {

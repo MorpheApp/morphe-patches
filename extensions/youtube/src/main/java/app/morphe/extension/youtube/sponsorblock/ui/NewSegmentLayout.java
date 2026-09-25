@@ -151,6 +151,7 @@ public final class NewSegmentLayout extends FrameLayout {
         button.setBackground(new RippleDrawable(rippleColorStateList, null, null));
         button.setOnClickListener(v -> {
             handler.apply();
+            PlayerIcons.animate(button);
             Logger.printDebug(() -> debugMessage);
         });
     }
