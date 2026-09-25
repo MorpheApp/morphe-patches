@@ -64,6 +64,7 @@ public final class ChannelSearchPatch {
         NEWEST("morphe_channel_search_sort_newest"),
         OLDEST("morphe_channel_search_sort_oldest"),
         MOST_VIEWED("morphe_channel_search_sort_most_viewed"),
+        LEAST_VIEWED("morphe_channel_search_sort_least_viewed"),
         SHORTEST("morphe_channel_search_sort_shortest"),
         LONGEST("morphe_channel_search_sort_longest");
 
@@ -96,6 +97,10 @@ public final class ChannelSearchPatch {
                 });
                 case MOST_VIEWED -> results.sort((a, b) -> {
                     final int cmp = Long.compare(b.viewCount, a.viewCount);
+                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
+                });
+                case LEAST_VIEWED -> results.sort((a, b) -> {
+                    final int cmp = Long.compare(a.viewCount, b.viewCount);
                     return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
                 });
                 case SHORTEST -> results.sort((a, b) -> {
@@ -247,8 +252,11 @@ public final class ChannelSearchPatch {
 
             LinearLayout listContainer = new LinearLayout(activity);
             listContainer.setOrientation(LinearLayout.VERTICAL);
+            listContainer.setPadding(0, 0, 0, Dim.dp16);
 
-            ScrollView scrollView = SheetBottomDialog.createCappedScrollView(activity);
+            ScrollView scrollView = SheetBottomDialog.createCappedScrollView(activity, 60);
+            scrollView.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.0f));
             scrollView.addView(listContainer);
 
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
