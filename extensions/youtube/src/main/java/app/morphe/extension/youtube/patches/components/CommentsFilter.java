@@ -68,6 +68,7 @@ public class CommentsFilter extends Filter {
     private final ByteArrayFilterGroupList commentComposerButtonsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup comments;
     private final StringFilterGroup commentsFilterBar;
+    private final StringFilterGroup dislikeButton;
     private final StringFilterGroup emojiButton;
     private final StringFilterGroup commentCardsIndicator;
     private final StringFilterGroup menuButton;
@@ -189,6 +190,11 @@ public class CommentsFilter extends Filter {
                 "live_viewer_leaderboard_chat_entry_point.e"
         );
 
+        dislikeButton = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_DISLIKE_BUTTON,
+                "engagement_dislike_button.e"
+        );
+
         translateButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_TRANSLATE_BUTTON,
                 "tri_state_button.e"
@@ -205,6 +211,7 @@ public class CommentsFilter extends Filter {
                 commentsFilterBar,
                 communityGuidelines,
                 createAShortButton,
+                dislikeButton,
                 emojiButton,
                 giftAnimationAndCards,
                 previewComment,
@@ -246,6 +253,11 @@ public class CommentsFilter extends Filter {
         }
 
         if (matchedGroup == menuButton) {
+            return Utils.contains(path, COMMENT_PATH);
+        }
+
+        if (matchedGroup == dislikeButton) {
+            // Only the buttons of comments and replies.
             return Utils.contains(path, COMMENT_PATH);
         }
 
