@@ -115,14 +115,24 @@ public class PlayAlbumSongsPatch {
                 return;
             }
 
+            AlbumTrack track = new AlbumTrack(playlistId, playlistIndex);
             synchronized (albumTracks) {
-                AlbumTrack existing = albumTracks.get(videoId);
-                if (existing != null
-                        && existing.playlistIndex() == playlistIndex
-                        && existing.playlistId().equals(playlistId)) {
+                if (track.equals(albumTracks.get(videoId))) {
                     return;
                 }
-                albumTracks.put(videoId, new AlbumTrack(playlistId, playlistIndex));
+                if (isPositionOfAnotherVideo(videoId, track)) {
+                    // An album added to the queue gives every one of its tracks the position
+                    // of its first track. Two videos cannot be the same album track, so this
+                    // position is not the one of this video and it keeps playing as is.
+                    albumTracks.remove(videoId);
+                    synchronized (songs) {
+                        songs.remove(videoId);
+                    }
+                    Logger.printDebug(() -> "Album position " + playlistIndex
+                            + " already belongs to another video, not replacing: " + videoId);
+                    return;
+                }
+                albumTracks.put(videoId, track);
             }
 
             // Runs before the app requests the streams of this video, which is what gives the
@@ -150,6 +160,16 @@ public class PlayAlbumSongsPatch {
             Logger.printException(() -> "ignoreDontPlayMusicVideoSetting failure", ex);
             return false;
         }
+    }
+
+    @GuardedBy("albumTracks")
+    private static boolean isPositionOfAnotherVideo(@NonNull String videoId, @NonNull AlbumTrack track) {
+        for (Map.Entry<String, AlbumTrack> entry : albumTracks.entrySet()) {
+            if (!entry.getKey().equals(videoId) && entry.getValue().equals(track)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
