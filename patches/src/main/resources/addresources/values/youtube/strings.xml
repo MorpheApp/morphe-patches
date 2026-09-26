@@ -1091,6 +1091,11 @@ Automotive layout
     <string name="morphe_tablet_layout_in_player_summary">"Restores the old player layout
 
 Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' overlay may not be available"</string>
+    <string name="morphe_tablet_layout_in_player_user_dialog_message">"YouTube no longer supports most of the tablet player layout, so this can break the player on newer app versions.
+
+For example, comments and \'More videos\' below the video may not be shown.
+
+If something in the player does not work, turn this off first."</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restore old captions behavior</string>
