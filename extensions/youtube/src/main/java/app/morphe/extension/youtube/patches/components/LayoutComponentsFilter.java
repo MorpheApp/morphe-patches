@@ -76,7 +76,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup compactChannelCommunityButton;
-    private final ByteArrayFilterGroup compactChannelCommunityButtonBuffer;
+    private final ByteArrayFilterGroup communityButtonBuffer;
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup exploreTopicsShelf;
@@ -248,7 +248,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_channel.e"
         );
 
-        compactChannelCommunityButtonBuffer = new ByteArrayFilterGroup(
+        communityButtonBuffer = new ByteArrayFilterGroup(
                 null,
                 "FEcommunity_page"
         );
@@ -531,6 +531,12 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == channelProfile) {
+            // On 21.38 the Community button no longer always reports its accessibility id.
+            if (Settings.HIDE_COMMUNITY_BUTTON.get()
+                    && compactChannelBarInnerButton.check(path).isFiltered()
+                    && communityButtonBuffer.check(buffer).isFiltered()) {
+                return true;
+            }
             return channelProfileGroupList.check(accessibility).isFiltered();
         }
 
@@ -546,7 +552,7 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == compactChannelCommunityButton) {
             // The whole channel card carries the button buffers, so match the button itself.
             return compactChannelBarInnerButton.check(path).isFiltered()
-                    && compactChannelCommunityButtonBuffer.check(buffer).isFiltered();
+                    && communityButtonBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == compactChannelBarInner) {
