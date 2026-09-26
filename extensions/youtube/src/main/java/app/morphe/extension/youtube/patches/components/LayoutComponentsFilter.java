@@ -67,7 +67,9 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
     private final StringFilterGroup channelProfile;
-    private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
+    private final StringFilterGroupList channelProfileHeaderButtonsLegacyGroupList = new StringFilterGroupList();
+    private final StringFilterGroup channelProfileHeaderButton;
+    private final ByteArrayFilterGroupList channelProfileHeaderButtonsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup channelFilterBar;
     private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
@@ -75,8 +77,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
-    private final StringFilterGroup compactChannelCommunityButton;
-    private final ByteArrayFilterGroup communityButtonBuffer;
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup exploreTopicsShelf;
@@ -204,7 +204,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "channel_profile.e",
                 "page_header.e"
         );
-        channelProfileGroupList.addAll(
+        channelProfileHeaderButtonsLegacyGroupList.addAll(
                 new StringFilterGroup(
                         Settings.HIDE_COMMUNITY_BUTTON,
                         "community_button"
@@ -220,6 +220,20 @@ public final class LayoutComponentsFilter extends Filter {
                 new StringFilterGroup(
                         Settings.HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE,
                         "subscribe_button"
+                )
+        );
+        channelProfileHeaderButton = new StringFilterGroup(
+                null,
+                "|button.e"
+        );
+        channelProfileHeaderButtonsGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_COMMUNITY_BUTTON,
+                        "yt_outline_experimental_person"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_JOIN_BUTTON,
+                        "yt_fill_experimental_star_circle"
                 )
         );
 
@@ -243,14 +257,9 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_channel_bar"
         );
 
-        compactChannelCommunityButton = new StringFilterGroup(
+        final var compactChannelCommunityButton = new StringFilterGroup(
                 Settings.HIDE_COMMUNITY_BUTTON,
-                "compact_channel.e"
-        );
-
-        communityButtonBuffer = new ByteArrayFilterGroup(
-                null,
-                "FEcommunity_page"
+                "compact_channel$FEcommunity"
         );
 
         compactChannelBarInner = new StringFilterGroup(
@@ -531,13 +540,9 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == channelProfile) {
-            // On 21.38 the Community button no longer always reports its accessibility id.
-            if (Settings.HIDE_COMMUNITY_BUTTON.get()
-                    && compactChannelBarInnerButton.check(path).isFiltered()
-                    && communityButtonBuffer.check(buffer).isFiltered()) {
-                return true;
-            }
-            return channelProfileGroupList.check(accessibility).isFiltered();
+            return channelProfileHeaderButtonsLegacyGroupList.check(accessibility).isFiltered() ||
+                    (matchedGroup == channelProfileHeaderButton &&
+                            channelProfileHeaderButtonsGroupList.check(buffer).isFiltered());
         }
 
         if (matchedGroup == chipBar) {
@@ -547,12 +552,6 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == communityPosts) {
             return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
-        }
-
-        if (matchedGroup == compactChannelCommunityButton) {
-            // The whole channel card carries the button buffers, so match the button itself.
-            return compactChannelBarInnerButton.check(path).isFiltered()
-                    && communityButtonBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == compactChannelBarInner) {
