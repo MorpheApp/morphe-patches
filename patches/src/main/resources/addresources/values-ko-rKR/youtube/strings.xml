@@ -398,12 +398,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">채널 검색 결과</string>
   <string name="morphe_channel_search_no_results">이 채널에서 아무것도 찾을 수 없습니다</string>
   <string name="morphe_channel_search_failed">이 채널을 검색할 수 없습니다</string>
-  <string name="morphe_channel_search_sort_relevance">관련순</string>
-  <string name="morphe_channel_search_sort_most_viewed">조회순</string>
-  <string name="morphe_channel_search_sort_least_viewed">조회 적은 순</string>
+  <string name="morphe_channel_search_sort_relevance">관련성순</string>
+  <string name="morphe_channel_search_sort_most_viewed">조회수 높은순</string>
+  <string name="morphe_channel_search_sort_least_viewed">조회수 낮은순</string>
   <string name="morphe_channel_search_sort_newest">최신순</string>
   <string name="morphe_channel_search_sort_oldest">오래된순</string>
-  <string name="morphe_channel_search_sort_shortest">최단</string>
+  <string name="morphe_channel_search_sort_shortest">짧은순</string>
   <string name="morphe_channel_search_sort_longest">긴순</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
@@ -1210,8 +1210,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">동영상 화질 버튼 표시하기</string>
   <string name="morphe_video_quality_dialog_button_summary">버튼을 길게 탭하여 동영상 화질을 기본값으로 초기화할 수 있습니다</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">품질 버튼에 해상도 표시</string>
-  <string name="morphe_video_quality_dialog_button_resolution_summary">FHD와 같은 레이블 대신 1080과 같은 해상도를 표시합니다.</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">화질 버튼에 해상도 표시</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">FHD와 같은 라벨 대신 1080과 같이 해상도 수치를 표시합니다</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">사용자 정의 동영상 재생 속도 활성화하기</string>
   <string name="morphe_restore_old_speed_menu_title">이전 동영상 재생 속도 메뉴 복원하기</string>
@@ -1304,7 +1304,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_player_icon_style_title">플레이어 아이콘 스타일</string>
   <string name="morphe_player_icon_style_entry_auto">자동</string>
   <string name="morphe_player_icon_style_entry_default">기본값</string>
-  <string name="morphe_player_icon_style_entry_regular">가는</string>
+  <string name="morphe_player_icon_style_entry_regular">얇은</string>
   <string name="morphe_player_icon_style_entry_bold">굵은</string>
   <string name="morphe_shorts_icon_style_title">Shorts 아이콘 스타일</string>
 </resources>

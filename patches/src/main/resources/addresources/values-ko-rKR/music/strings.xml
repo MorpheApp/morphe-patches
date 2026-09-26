@@ -442,7 +442,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">미니 플레이어와 MediaSession에서 아티스트와 제목의 표시 순서를 전환합니다. 활성화되면 \'아티스트 - 제목\', 비활성화되면 \'제목 - 아티스트\'로 표시됩니다. 가사 검색에는 영향을 주지 않습니다</string>
   <string name="morphe_settings_music_lyrics_metadata_title">필터</string>
   <string name="morphe_music_lyrics_custom_regex_title">메타데이터 정규식</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">가사 검색 전과 두 제목이 일치하는지 평가할 때 제목, 아티스트, 앨범에 적용되는 정규 표현식입니다. 비워 두면 둘 다 비활성화됩니다. 기본값은 \"Official Video\", \"Remaster\", \"【插曲】\", \"- Topic\" 같은 일반적인 군더더기를 제거합니다.</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">가사를 검색하기 전과 두 제목이 일치하는지 판단할 때 제목, 아티스트, 앨범에 적용할 정규식입니다. 비워 두면 두 기능 모두 비활성화됩니다. 기본값은 \'Official Video\', \'Remaster\', \'【曲】\', \'- Topic\'과 같은 불필요한 문구를 제거합니다</string>
   <string name="morphe_music_lyrics_text_filter_title">가사 필터 정규식</string>
   <string name="morphe_music_lyrics_text_filter_summary">원본 가사 텍스트에만 적용되는 정규식입니다. 번역이나 로마자 표기에는 적용되지 않습니다. 비워두면 비활성화됩니다</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">정보 줄 마커</string>

@@ -398,13 +398,13 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <string name="morphe_channel_search_results">チャンネル内の検索結果</string>
   <string name="morphe_channel_search_no_results">このチャンネルでは見つかりませんでした</string>
   <string name="morphe_channel_search_failed">このチャンネル内を検索できませんでした</string>
-  <string name="morphe_channel_search_sort_relevance">関連性</string>
-  <string name="morphe_channel_search_sort_most_viewed">再生回数が多い</string>
-  <string name="morphe_channel_search_sort_least_viewed">再生回数が少ない</string>
+  <string name="morphe_channel_search_sort_relevance">関連度順</string>
+  <string name="morphe_channel_search_sort_most_viewed">視聴回数が多い順</string>
+  <string name="morphe_channel_search_sort_least_viewed">視聴回数が少ない順</string>
   <string name="morphe_channel_search_sort_newest">新しい順</string>
   <string name="morphe_channel_search_sort_oldest">古い順</string>
-  <string name="morphe_channel_search_sort_shortest">Short の短い順</string>
-  <string name="morphe_channel_search_sort_longest">長い順</string>
+  <string name="morphe_channel_search_sort_shortest">再生時間が短い順</string>
+  <string name="morphe_channel_search_sort_longest">再生時間が長い順</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">タイムスタンプ付きリンクをコピーしました</string>
@@ -1207,7 +1207,7 @@ Automotive レイアウト
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質ボタンを表示</string>
   <string name="morphe_video_quality_dialog_button_summary">長押しすると、画質をデフォルトの値にリセットします</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">画質ボタンに解像度を表示する</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">画質ボタンに解像度を表示</string>
   <string name="morphe_video_quality_dialog_button_resolution_summary">FHDなどのラベルの代わりに、1080などの解像度を表示する</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">カスタム再生速度メニュー</string>
@@ -1298,10 +1298,10 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
 
 制限事項:「その他の動画」オーバーレイも以前のスタイルに戻ります"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
-  <string name="morphe_player_icon_style_title">プレイヤーアイコンのスタイル</string>
+  <string name="morphe_player_icon_style_title">プレーヤー アイコンのスタイル</string>
   <string name="morphe_player_icon_style_entry_auto">自動</string>
   <string name="morphe_player_icon_style_entry_default">デフォルト</string>
-  <string name="morphe_player_icon_style_entry_regular">細い</string>
-  <string name="morphe_player_icon_style_entry_bold">太い</string>
-  <string name="morphe_shorts_icon_style_title">Short アイコンスタイル</string>
+  <string name="morphe_player_icon_style_entry_regular">細字</string>
+  <string name="morphe_player_icon_style_entry_bold">太字</string>
+  <string name="morphe_shorts_icon_style_title">ショート アイコンのスタイル</string>
 </resources>

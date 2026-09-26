@@ -403,7 +403,7 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_channel_search_sort_least_viewed">Les moins vues</string>
   <string name="morphe_channel_search_sort_newest">Les plus récentes</string>
   <string name="morphe_channel_search_sort_oldest">Les plus anciennes</string>
-  <string name="morphe_channel_search_sort_shortest">Le plus Short</string>
+  <string name="morphe_channel_search_sort_shortest">Les plus courtes</string>
   <string name="morphe_channel_search_sort_longest">Les plus longues</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lien copié dans le presse-papiers</string>
@@ -1165,7 +1165,7 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Restaurer l\'ancien style de bouton du lecteur</string>
-  <string name="morphe_restore_old_player_buttons_summary">Rétablit les commandes du lecteur vidéo en gras vers l\'ancien style visuel plus fin</string>
+  <string name="morphe_restore_old_player_buttons_summary">Rétablit les commandes épaisses du lecteur vidéo dans leur ancien style visuel, plus fin</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsifier les dimensions de l\'appareil</string>
   <string name="morphe_spoof_device_dimensions_summary">L\'activation de cette option peut débloquer des qualités vidéo plus élevées</string>
@@ -1209,8 +1209,8 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Afficher un bouton \'Qualité\'</string>
   <string name="morphe_video_quality_dialog_button_summary">Appuyez longuement pour réinitialiser la qualité par défaut</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">Afficher la résolution sur le bouton Qualité</string>
-  <string name="morphe_video_quality_dialog_button_resolution_summary">Afficher la résolution, par exemple 1080, au lieu d\'un libellé tel que FHD</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Afficher la résolution sur le bouton \'Qualité\'</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Afficher la résolution, comme 1080, au lieu d\'un libellé comme FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Personnaliser le menu \'Vitesse de lecture\'</string>
   <string name="morphe_restore_old_speed_menu_title">Restaurer l\'ancien menu de vitesse de lecture</string>
@@ -1305,5 +1305,5 @@ Limitation : Rétablit l'ancien style de l'overlay 'Plus de vidéos'"</string>
   <string name="morphe_player_icon_style_entry_default">Par défaut</string>
   <string name="morphe_player_icon_style_entry_regular">Fin</string>
   <string name="morphe_player_icon_style_entry_bold">Gras</string>
-  <string name="morphe_shorts_icon_style_title">Style de l\'icône Shorts</string>
+  <string name="morphe_shorts_icon_style_title">Style d\'icône Shorts</string>
 </resources>

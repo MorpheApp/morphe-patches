@@ -398,6 +398,13 @@ AiSlopList.com 'u açmaq və digər platformalar üçün yükləmələri görmə
   <string name="morphe_channel_search_results">Kanal axtarış nəticələri</string>
   <string name="morphe_channel_search_no_results">Bu kanalda heç nə tapılmadı</string>
   <string name="morphe_channel_search_failed">Bu kanalda axtarış etmək olmadı</string>
+  <string name="morphe_channel_search_sort_relevance">Uyğunluq</string>
+  <string name="morphe_channel_search_sort_most_viewed">Ən çox baxılan</string>
+  <string name="morphe_channel_search_sort_least_viewed">Ən az baxılan</string>
+  <string name="morphe_channel_search_sort_newest">Ən yeni</string>
+  <string name="morphe_channel_search_sort_oldest">Ən köhnə</string>
+  <string name="morphe_channel_search_sort_shortest">Ən qısa</string>
+  <string name="morphe_channel_search_sort_longest">Ən uzun</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link buferə köçürüldü</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Vaxt möhürü olan link buferə köçürüldü</string>
@@ -1201,6 +1208,8 @@ DeArrow.ajay.app 'i açmaq üçün buraya toxun"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Keyfiyyət düyməsini göstər</string>
   <string name="morphe_video_quality_dialog_button_summary">Keyfiyyəti ilkin vəziyyətə qaytarmaq üçün toxun və saxla</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Keyfiyyət düyməsində ayırdetməni göstər</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">FHD kimi etiket əvəzinə 1080 kimi ayırdetməni göstər</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Fərdi oynatma sürəti siyahısı</string>
   <string name="morphe_restore_old_speed_menu_title">Köhnə oynatma sürəti menyusunu bərpa et</string>
@@ -1290,6 +1299,10 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
 
 Məhdudiyyət: Köhnə üslub üçün \"Daha çox video\" örtüyünə qayıdır"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Oynadıcı simvol üslubu</string>
   <string name="morphe_player_icon_style_entry_auto">Birbaşa</string>
   <string name="morphe_player_icon_style_entry_default">İlkin</string>
+  <string name="morphe_player_icon_style_entry_regular">Nazik</string>
+  <string name="morphe_player_icon_style_entry_bold">Qalın</string>
+  <string name="morphe_shorts_icon_style_title">Shorts simvol üslubu</string>
 </resources>

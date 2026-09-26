@@ -196,7 +196,7 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <string name="morphe_music_action_buttons_screen_title">Przyciski akcji</string>
   <string name="morphe_music_action_buttons_screen_summary">Zdecyduj, które przyciski akcji będą wyświetlane pod odtwarzaczem</string>
   <string name="morphe_music_hide_action_bar_title">Ukryj pasek akcji</string>
-  <string name="morphe_music_hide_like_dislike_button_title">Ukryj przyciski Lubię i Nie lubię</string>
+  <string name="morphe_music_hide_like_dislike_button_title">Ukryj przyciski Lubię i \"Nie podoba mi się\"</string>
   <string name="morphe_music_hide_comments_button_title">Ukryj przycisk Komentarze</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
   <string name="morphe_music_hide_live_chat_replay_button_title">Ukryj przycisk \"Powtórka czatu na żywo\"</string>
@@ -214,7 +214,7 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <string name="morphe_music_hide_flyout_menu_components_screen_title">Menu wysuwane</string>
   <string name="morphe_music_hide_flyout_menu_components_screen_summary">Zdecyduj, które elementy będą wyświetlane w menu wysuwanym odtwarzacza i kolejki</string>
   <string name="morphe_music_hide_flyout_menu_3_column_component_title">Ukryj element 3-kolumnowy</string>
-  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ukryj przyciski Lubię i Nie lubię</string>
+  <string name="morphe_music_hide_flyout_menu_like_dislike_title">Ukryj przyciski Lubię i \"Nie podoba mi się\"</string>
   <string name="morphe_music_hide_flyout_menu_taste_match_title">Ukryj menu \"Dopasowanie gustu\"</string>
   <string name="morphe_music_hide_flyout_menu_add_to_listen_later_title">Ukryj menu \"Dodaj do playlisty: Słuchaj później\"</string>
   <string name="morphe_music_hide_flyout_menu_add_to_queue_title">Ukryj menu \"Dodaj do kolejki\"</string>
@@ -422,9 +422,9 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Pokaż przycisk Kopiuj</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Dotknij, aby skopiować oryginalny tekst jako zwykły tekst. Przytrzymaj, aby zapisać surowy plik źródłowy z tekstem w folderze Pobrane</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Pokaż przycisk Przetłumacz</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Dotknij, aby przełączyć tłumaczenie; przytrzymaj, aby tylko tłumaczyć. Używa tłumaczeń dostawcy, Google Translate lub API kompatybilnego z OpenAI.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Dotknij, aby przełączyć tłumaczenie. Przytrzymaj, aby wyświetlić tylko tłumaczenie. Wykorzystuje tłumaczenia dostawcy, Tłumacza Google lub API zgodne z OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Pokaż przycisk Romanizuj</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Dotknij, aby przełączyć romanizację; przytrzymaj, aby tylko romanizować. Używa romanizacji dostawcy, Google Translate lub API kompatybilnego z OpenAI.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Dotknij, aby przełączyć romanizację. Przytrzymaj, aby wyświetlić tylko romanizację. Wykorzystuje romanizację dostawcy, Tłumacza Google lub API zgodne z OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Pokaż przycisk Odśwież</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Dotknij, aby przełączyć na kolejną propozycję tekstu. Przytrzymaj, aby tymczasowo wyłączyć teksty zewnętrzne i pokazać oryginalne</string>
   <string name="morphe_music_lyrics_saved">Zapisano</string>
@@ -440,7 +440,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_display_artist_first_summary">Zmienia kolejność wyświetlania wykonawcy i tytułu w miniodtwarzaczu i MediaSession. Włączone: \"Wykonawca - Tytuł\", wyłączone: \"Tytuł - Wykonawca\". Nie wpływa to na wyszukiwanie tekstów</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtry</string>
   <string name="morphe_music_lyrics_custom_regex_title">Wyrażenie regularne dla metadanych</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Wyrażenie regularne stosowane do tytułów, wykonawców i albumów przed wyszukiwaniem tekstów piosenek oraz przy ocenie, czy dwa tytuły pasują do siebie. Pozostaw puste, aby wyłączyć oba. Domyślnie usuwa typowe zbędne elementy, takie jak „Official Video”, „Remaster”, „【插曲】” i „- Topic”.</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Wyrażenie regularne stosowane do tytułów, wykonawców i albumów przed wyszukaniem tekstu oraz podczas oceniania zgodności dwóch tytułów. Pozostaw puste, aby wyłączyć obie funkcje. Domyślne ustawienie usuwa powszechne zbędne elementy, takie jak \"Official Video\", \"Remaster\", \"【插曲】\" i \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">Wyrażenie regularne filtra tekstu</string>
   <string name="morphe_music_lyrics_text_filter_summary">Wyrażenie regularne stosowane wyłącznie do oryginalnego tekstu piosenki (z pominięciem tłumaczeń i romanizacji). Pozostaw puste, aby wyłączyć</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Znaczniki wierszy informacyjnych</string>
@@ -464,7 +464,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_romanizing">Romanizowanie…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nie udało się zromanizować tekstu</string>
   <string name="morphe_music_lyrics_translate_only">Tylko tłumaczenie</string>
-  <string name="morphe_music_lyrics_romanize_only">Tylko zromanizowane</string>
+  <string name="morphe_music_lyrics_romanize_only">Tylko romanizacja</string>
   <string name="morphe_music_lyrics_copied">Skopiowano do schowka</string>
   <string name="morphe_music_lyrics_refreshing">Odświeżanie</string>
   <string name="morphe_music_lyrics_refreshed">Odświeżono</string>

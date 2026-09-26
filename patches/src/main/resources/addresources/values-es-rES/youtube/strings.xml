@@ -1299,10 +1299,10 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</strin
 
 Limitación: Vuelve al antiguo estilo de superposición de 'Más vídeos'"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
-  <string name="morphe_player_icon_style_title">Estilo del icono del reproductor</string>
+  <string name="morphe_player_icon_style_title">Estilo de iconos del reproductor</string>
   <string name="morphe_player_icon_style_entry_auto">Automático</string>
   <string name="morphe_player_icon_style_entry_default">Predeterminado</string>
-  <string name="morphe_player_icon_style_entry_regular">Delgado</string>
-  <string name="morphe_player_icon_style_entry_bold">Ancho</string>
-  <string name="morphe_shorts_icon_style_title">Estilo del icono de Shorts</string>
+  <string name="morphe_player_icon_style_entry_regular">Fino</string>
+  <string name="morphe_player_icon_style_entry_bold">Grueso</string>
+  <string name="morphe_shorts_icon_style_title">Estilo de iconos de Shorts</string>
 </resources>
