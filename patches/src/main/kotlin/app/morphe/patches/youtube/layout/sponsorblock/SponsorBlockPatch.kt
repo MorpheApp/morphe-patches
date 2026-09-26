@@ -329,6 +329,7 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Initialize the SponsorBlock view.
         ControlsOverlayFingerprint.let {
+            it.clearMatch() // Parent fingerprint is shared and may have changed.
             it.method.apply {
                 val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
