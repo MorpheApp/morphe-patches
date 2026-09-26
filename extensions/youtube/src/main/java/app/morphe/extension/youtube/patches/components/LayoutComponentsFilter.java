@@ -75,6 +75,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
+    private final StringFilterGroup compactChannelCommunityButton;
+    private final ByteArrayFilterGroup compactChannelCommunityButtonBuffer;
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup exploreTopicsShelf;
@@ -241,9 +243,14 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_channel_bar"
         );
 
-        final var compactChannelCommunityButton = new StringFilterGroup(
+        compactChannelCommunityButton = new StringFilterGroup(
                 Settings.HIDE_COMMUNITY_BUTTON,
-                "compact_channel$FEcommunity"
+                "compact_channel.e"
+        );
+
+        compactChannelCommunityButtonBuffer = new ByteArrayFilterGroup(
+                null,
+                "FEcommunity_page"
         );
 
         compactChannelBarInner = new StringFilterGroup(
@@ -534,6 +541,12 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == communityPosts) {
             return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
+        }
+
+        if (matchedGroup == compactChannelCommunityButton) {
+            // The whole channel card carries the button buffers, so match the button itself.
+            return compactChannelBarInnerButton.check(path).isFiltered()
+                    && compactChannelCommunityButtonBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == compactChannelBarInner) {
