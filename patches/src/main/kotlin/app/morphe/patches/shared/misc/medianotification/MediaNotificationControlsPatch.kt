@@ -10,6 +10,7 @@ package app.morphe.patches.shared.misc.medianotification
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -17,12 +18,13 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/MediaNotificationControlsPatch;"
 
 internal fun mediaNotificationControlsPatch(
     block: BytecodePatchBuilder.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
+    executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
     name = "Media notification controls",
     description = "Adds options to disable the seekbar and previous/next buttons in the " +
@@ -58,5 +60,7 @@ internal fun mediaNotificationControlsPatch(
                 )
             }
         }
+
+        executeBlock()
     }
 }
