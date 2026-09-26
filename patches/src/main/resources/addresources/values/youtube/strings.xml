@@ -95,6 +95,8 @@ Changes include:
           This button usually appears in the Home feed for refreshing the feed. -->
     <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
     <string name="morphe_hide_latest_videos_button_summary">Hides the blue \'Latest videos\' banner that appears at the top of the Home feed</string>
+    <string name="morphe_hide_live_streams_title">Hide live streams</string>
+    <string name="morphe_hide_live_streams_summary">Hides videos that are live now in the home feed and search results</string>
     <string name="morphe_hide_mix_playlists_title">Hide mix playlists</string>
     <string name="morphe_hide_movies_section_title">Hide movies section</string>
     <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->

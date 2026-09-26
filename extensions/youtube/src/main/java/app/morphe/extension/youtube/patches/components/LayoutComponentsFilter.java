@@ -82,6 +82,8 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup exploreTopicsShelf;
     private final StringFilterGroup inviteToMessageCard;
     private final ByteArrayFilterGroup inviteToMessageCardBuffer;
+    private final StringFilterGroup liveStream;
+    private final ByteArrayFilterGroup liveStreamBuffer;
     private final StringFilterGroup notificationsMenuHeader;
     private final ByteArrayFilterGroup notificationsMenuHeaderBuffer;
     private final StringFilterGroup notifyMe;
@@ -145,6 +147,20 @@ public final class LayoutComponentsFilter extends Filter {
                 "connections_inbox_zero_state"
         );
 
+        // Feed and search result items.
+        liveStream = new StringFilterGroup(
+                Settings.HIDE_LIVE_STREAMS,
+                "video_lockup_with_attachment.e"
+        );
+
+        // Icon of the 'LIVE' thumbnail badge. Only videos that are live now have it,
+        // past streams ('Streamed 2 months ago') do not.
+        liveStreamBuffer = new ByteArrayFilterGroup(
+                null,
+                "yt_outline_live_black",
+                "yt_outline_experimental_live_black"
+        );
+
         // The hint shown in the player during seek gestures. The identifier is versioned.
         final var seekEduOverlay = new StringFilterGroup(
                 Settings.HIDE_PLAYER_GESTURE_HINTS,
@@ -156,6 +172,7 @@ public final class LayoutComponentsFilter extends Filter {
                 exploreTopicsShelf,
                 liveChatReplay,
                 inviteToMessageCard,
+                liveStream,
                 seekEduOverlay
         );
 
@@ -496,6 +513,17 @@ public final class LayoutComponentsFilter extends Filter {
                 button.getMatchedIndex() + button.getMatchedLength()).isFiltered();
     }
 
+    /**
+     * Only the root lockup holds the whole item buffer. Its nested components share
+     * a common icon list that also contains the LIVE badge, so checking them would
+     * cause false positives.
+     *
+     * @return If the path is the root of a feed item: {@code identifier|hash|CellType|}.
+     */
+    private static boolean isLockupRoot(CharSequence path) {
+        return Utils.endsWith(path, "|CellType|");
+    }
+
     @Override
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
@@ -580,6 +608,12 @@ public final class LayoutComponentsFilter extends Filter {
 
             // Check the navigation button last and only after all buffer checks pass.
             return NavigationButton.getSelectedNavigationButton() == NavigationButton.NOTIFICATIONS;
+        }
+
+        if (matchedGroup == liveStream) {
+            // Only check the whole lockup. The buffers of its nested components include
+            // a shared list of icon names that also has the 'LIVE' badge icon.
+            return isLockupRoot(path) && liveStreamBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == notificationsMenuHeader) {
