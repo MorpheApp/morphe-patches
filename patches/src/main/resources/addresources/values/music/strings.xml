@@ -15,6 +15,95 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <string name="morphe_music_jam_update_host_controls">Update the host’s Jam patch to use pause and resume.</string>
+    <string name="morphe_music_jam_probe_title">Jam queue sharing</string>
+    <string name="morphe_music_jam_probe_summary">Host or join a nearby Jam and edit its queue through Jam Layer.</string>
+    <string name="morphe_music_jam_enabled_title">Enable Jam queue sharing</string>
+    <string name="morphe_music_jam_enabled_summary">Enables the Jam integration after YouTube Music restarts.</string>
+    <string name="morphe_music_jam_download_title">Download Jam Layer to get working</string>
+    <string name="morphe_music_jam_download_summary">Open the latest Jam Layer release in your browser.</string>
+    <string name="morphe_music_jam_controls_title">Jam controls</string>
+    <string name="morphe_music_jam_controls_summary">Host or join a nearby Jam and manage the session.</string>
+    <string name="morphe_music_jam_companion_package_title">Jam Layer package</string>
+    <string name="morphe_music_jam_companion_package_summary">Choose the installed companion app used for nearby queue sharing.</string>
+
+    <string name="morphe_music_jam_package_message">Use an installed companion package. Pairing requires your approval and a local capability token.</string>
+    <string name="morphe_music_jam_wifi_title">Turn on Wi-Fi?</string>
+    <string name="morphe_music_jam_wifi_message">Turn on Wi-Fi, then try starting or joining the Jam again.</string>
+    <string name="morphe_music_jam_wifi_settings">Open Wi-Fi settings</string>
+    <string name="morphe_music_jam_cancel">Cancel</string>
+    <string name="morphe_music_jam_use_package">Use package</string>
+    <string name="morphe_music_jam_invalid_package">Enter a valid Android package name</string>
+    <string name="morphe_music_jam_package_saved">Package saved. Set up Jam Layer to connect.</string>
+    <string name="morphe_music_jam_disconnected">Jam disconnected</string>
+    <string name="morphe_music_jam_enable_layer_first">Enable Jam Layer first</string>
+    <string name="morphe_music_jam_enable_patch_first">Enable Jam queue sharing in settings, then restart YouTube Music</string>
+    <string name="morphe_music_jam_install_layer_first">Install the selected Jam Layer package first</string>
+    <string name="morphe_music_jam_join_hint">Enter the code shown on the host. Wi-Fi Aware can connect nearby devices even when their LANs differ.</string>
+    <string name="morphe_music_jam_join_with_code">Join with a code</string>
+    <string name="morphe_music_jam_join">Join</string>
+    <string name="morphe_music_jam_scan_qr">Scan QR</string>
+    <string name="morphe_music_jam_invalid_invite">Enter the eight-character code or paste an invitation</string>
+    <string name="morphe_music_jam_join_your_jam">Join your Jam</string>
+    <string name="morphe_music_jam_copy_code">Copy code</string>
+    <string name="morphe_music_jam_code_clip">Jam code</string>
+    <string name="morphe_music_jam_show_qr">Show QR</string>
+    <string name="morphe_music_jam_done">Done</string>
+    <string name="morphe_music_jam_invite_title">Invite to your Jam</string>
+    <string name="morphe_music_jam_invite_message">Scan to join and edit this queue. Ending the Jam revokes the invitation.</string>
+    <string name="morphe_music_jam_copy_link">Copy link</string>
+    <string name="morphe_music_jam_invitation_clip">Jam invitation</string>
+    <string name="morphe_music_jam_reconnecting_toast">Jam is reconnecting; try again shortly</string>
+    <string name="morphe_music_jam_added_to_jam">Added to Jam</string>
+    <string name="morphe_music_jam_unavailable_toast">Jam is unavailable; the track was not added</string>
+    <string name="morphe_music_jam_your_jam">Your Jam</string>
+    <string name="morphe_music_jam_listening_together">Listening together</string>
+    <string name="morphe_music_jam_joining_jam">Joining Jam</string>
+    <string name="morphe_music_jam_listen_together">Listen together</string>
+    <string name="morphe_music_jam_updating">Updating Jam…</string>
+    <string name="morphe_music_jam_finding_host">Finding your host on Wi-Fi…</string>
+    <string name="morphe_music_jam_waiting_people">Waiting for people</string>
+    <string name="morphe_music_jam_one_connected">%d person connected</string>
+    <string name="morphe_music_jam_many_connected">%d people connected</string>
+    <string name="morphe_music_jam_code_expires">Enter this code on a nearby device. Wi-Fi Aware works across separate LANs when supported. Expires in %d minutes.</string>
+    <string name="morphe_music_jam_seek_to">Seek to %s?</string>
+    <string name="morphe_music_jam_package_example" translatable="false">app.example.jam</string>
+    <string name="morphe_music_jam_code_example" translatable="false">ABCD-EFGH</string>
+    <string name="morphe_music_jam_edits_open">Edits open</string>
+    <string name="morphe_music_jam_edits_locked">Edits locked</string>
+    <string name="morphe_music_jam_connected_aware">Connected via Wi-Fi Aware</string>
+    <string name="morphe_music_jam_connected_wifi">Connected via Wi-Fi</string>
+    <string name="morphe_music_jam_reconnecting_host">Reconnecting to your host…</string>
+    <string name="morphe_music_jam_share_prompt">Share a queue. Let everyone add songs.</string>
+    <string name="morphe_music_jam_invite_people">Invite people</string>
+    <string name="morphe_music_jam_guest_edits">Guests can edit the queue</string>
+    <string name="morphe_music_jam_end_jam">End Jam</string>
+    <string name="morphe_music_jam_participant_help">The host plays the music. Add, move or remove songs directly in the YouTube Music queue.</string>
+    <string name="morphe_music_jam_joining_help">Keep both devices nearby. You can cancel while we look for the host.</string>
+    <string name="morphe_music_jam_cancel_joining">Cancel joining</string>
+    <string name="morphe_music_jam_leave_jam">Leave Jam</string>
+    <string name="morphe_music_jam_start_jam">Start a Jam</string>
+    <string name="morphe_music_jam_setup_layer">Set up Jam Layer</string>
+    <string name="morphe_music_jam_manage">Manage</string>
+    <string name="morphe_music_jam_details">Details</string>
+    <string name="morphe_music_jam_open">Open</string>
+    <string name="morphe_music_jam_loading_song_options">Loading song options…</string>
+    <string name="morphe_music_jam_song_options_unavailable">Song options unavailable; try again</string>
+    <string name="morphe_music_jam_song_options_failed">Could not open song options</string>
+    <string name="morphe_music_jam_no_browser">No browser is available to download Jam Layer</string>
+    <string name="morphe_music_jam_waiting_host_queue">Waiting for the host queue</string>
+    <string name="morphe_music_jam_open_song_first">Open a song in YouTube Music first</string>
+    <string name="morphe_music_jam_play_on_host">Play on host</string>
+    <string name="morphe_music_jam_quit_and_play">Quit Jam and play locally</string>
+    <string name="morphe_music_jam_play_next">Play next in Jam</string>
+    <string name="morphe_music_jam_add_to_queue">Add to Jam queue</string>
+    <string name="morphe_music_jam_play_track">Play this Jam track</string>
+    <string name="morphe_music_jam_choose_playback">Choose where to play</string>
+    <string name="morphe_music_jam_move_host_here">Move the host here</string>
+    <string name="morphe_music_jam_seek_not_ready">Song did not become ready to seek</string>
+    <string name="morphe_music_jam_queue_changed_gesture">Queue changed; try the gesture again</string>
+
+
     <!-- layout.branding.customBrandingPatch -->
     <string name="morphe_custom_branding_name_entry_2" translatable="false">YT Music Morphe</string>
     <string name="morphe_custom_branding_name_entry_3" translatable="false">Music Morphe</string>

@@ -19,6 +19,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.music.jam.JamPlayback;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
@@ -37,13 +38,21 @@ public class MiniplayerPreviousNextButtonsPatch {
         if (previousButtonViewId != 0) {
             View previousButtonView = view.findViewById(previousButtonViewId);
             Utils.hideViewUnderCondition(!Settings.MINIPLAYER_PREVIOUS_BUTTON.get(), previousButtonView);
-            previousButtonView.setOnClickListener(v -> dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_PREVIOUS));
+            previousButtonView.setOnClickListener(v -> {
+                if (!JamPlayback.playButton(v)) {
+                    dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_PREVIOUS);
+                }
+            });
         }
         int nextButtonViewId = getNextButtonId();
         if (nextButtonViewId != 0) {
             View nextButtonView = view.findViewById(nextButtonViewId);
             Utils.hideViewUnderCondition(!Settings.MINIPLAYER_NEXT_BUTTON.get(), nextButtonView);
-            nextButtonView.setOnClickListener(v -> dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_NEXT));
+            nextButtonView.setOnClickListener(v -> {
+                if (!JamPlayback.playButton(v)) {
+                    dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_NEXT);
+                }
+            });
         }
     }
 
