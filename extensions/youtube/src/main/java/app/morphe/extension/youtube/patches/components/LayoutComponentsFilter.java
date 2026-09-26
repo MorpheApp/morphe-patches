@@ -67,7 +67,9 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
     private final StringFilterGroup channelProfile;
-    private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
+    private final StringFilterGroupList channelProfileHeaderButtonsLegacyGroupList = new StringFilterGroupList();
+    private final StringFilterGroup channelProfileHeaderButton;
+    private final ByteArrayFilterGroupList channelProfileHeaderButtonsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup channelFilterBar;
     private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
@@ -202,7 +204,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "channel_profile.e",
                 "page_header.e"
         );
-        channelProfileGroupList.addAll(
+        channelProfileHeaderButtonsLegacyGroupList.addAll(
                 new StringFilterGroup(
                         Settings.HIDE_COMMUNITY_BUTTON,
                         "community_button"
@@ -218,6 +220,20 @@ public final class LayoutComponentsFilter extends Filter {
                 new StringFilterGroup(
                         Settings.HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE,
                         "subscribe_button"
+                )
+        );
+        channelProfileHeaderButton = new StringFilterGroup(
+                null,
+                "|button.e"
+        );
+        channelProfileHeaderButtonsGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_COMMUNITY_BUTTON,
+                        "yt_outline_experimental_person"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_JOIN_BUTTON,
+                        "yt_fill_experimental_star_circle"
                 )
         );
 
@@ -524,7 +540,9 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == channelProfile) {
-            return channelProfileGroupList.check(accessibility).isFiltered();
+            return channelProfileHeaderButtonsLegacyGroupList.check(accessibility).isFiltered() ||
+                    (matchedGroup == channelProfileHeaderButton &&
+                            channelProfileHeaderButtonsGroupList.check(buffer).isFiltered());
         }
 
         if (matchedGroup == chipBar) {
