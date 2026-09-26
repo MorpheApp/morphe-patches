@@ -43,6 +43,7 @@ import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
+import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -243,6 +244,11 @@ val sponsorBlockPatch = bytecodePatch(
         )
 
         hookBackgroundPlayVideoId(
+            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS +
+                    "->setCurrentVideoId(Ljava/lang/String;)V"
+        )
+        // Some app versions do not reach the background play hook for regular playback.
+        hookVideoId(
             EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS +
                     "->setCurrentVideoId(Ljava/lang/String;)V"
         )
