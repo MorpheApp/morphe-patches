@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animação de inicialização</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Desativado</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Cor</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monocromático</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reinicie para finalizar a configuração</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Para fazer login, pressione continuar abaixo"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Não é possível fazer login no VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Deslogado do Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token de login do VR inválido, tente fazer login no VR novamente</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Controles de mídia da notificação</string>
+  <string name="morphe_notification_media_screen_summary">Personalize os controles de reprodução exibidos na tela de bloqueio e no painel de notificações.</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ocultar botões Anterior e Próximo</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Oculta os botões Anterior e Próximo na notificação de mídia, na tela de bloqueio e nos controles de fone de ouvido.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Desativar barra de progresso</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Impede o arrasto da barra de progresso na tela de bloqueio e no painel de notificação</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desativar protocolo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -235,6 +247,8 @@ Se esta opção for desativada posteriormente, é recomendável limpar os dados 
   <string name="morphe_ryd_failure_generic">Não gostei indisponível (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Oculto pelo proprietário</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Descurta este vídeo, assim como outras %s pessoas</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Descurta este vídeo, %s dos votos são de desaprovação</string>
   <string name="morphe_ryd_enabled_title">Ativar o Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Mostrar não gostei como porcentagem</string>
   <string name="morphe_ryd_dislike_percentage_summary">Exibe não gostei como porcentagem, substituindo o número convencional</string>

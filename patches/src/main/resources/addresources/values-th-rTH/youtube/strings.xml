@@ -75,6 +75,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">ซ่อนปุ่มไมโครโฟนแบบลอย</string>
   <string name="morphe_hide_floating_microphone_button_summary">ซ่อนปุ่มไมโครโฟนลอยที่มุมล่างขวาของหน้าจอคำแนะนำการค้นหา</string>
   <string name="morphe_hide_get_premium_button_title">ซ่อนปุ่ม \'รับ Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">ซ่อนแถวประวัติการดู</string>
+  <string name="morphe_hide_history_shelf_summary">ซ่อนแถวประวัติการดูในแท็บคุณ</string>
   <string name="morphe_hide_horizontal_shelves_title">ซ่อนชั้นวางแนวนอน</string>
   <string name="morphe_hide_horizontal_shelves_summary">ซ่อนชั้นวางแนวนอน เช่น ข่าวเด่น, โพสต์จากชุมชนที่คุณอาจชอบ, รับชมต่อ, สำรวจช่องเพิ่มเติม, สำรวจหัวข้อเพิ่มเติม, สำหรับคุณ, วิดีโอล่าสุด, ที่เกี่ยวข้องมากที่สุด, โพสต์จากชุมชนของผู้สร้าง, ร้านค้า และ ดูอีกครั้ง</string>
   <string name="morphe_hide_hyped_label_title">ซ่อนป้ายกำกับ \'Hyped\'</string>
@@ -106,6 +108,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_title">ซ่อนปุ่ม \'แสดงเพิ่มเติม\'</string>
   <string name="morphe_hide_show_more_button_summary">ซ่อนปุ่มขยายใต้วิดีโอในผลการค้นหา</string>
   <string name="morphe_hide_subscribed_channels_bar_title">ซ่อนแถบช่องที่ติดตาม</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">ซ่อนชื่อช่องในแถบช่องที่ติดตาม</string>
   <string name="morphe_hide_surveys_title">ซ่อนแบบสำรวจ</string>
   <string name="morphe_hide_surveys_summary">ซ่อนแบบสำรวจและการแนะนำเกี่ยวกับความแม่นยำของการแนะนำฟีด</string>
   <string name="morphe_hide_ticket_shelf_title">ซ่อนชั้นวางตั๋ว</string>
@@ -254,6 +257,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">ซ่อนส่วนความคิดเห็นในหน้าแชทหลัก</string>
   <string name="morphe_hide_comments_community_guidelines_title">ซ่อนแนวทางชุมชน</string>
   <string name="morphe_hide_comments_create_a_short_button_title">ซ่อนปุ่ม \'สร้าง Shorts\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">ซ่อนปุ่มไม่ชอบ</string>
   <string name="morphe_hide_comments_emoji_button_title">ซ่อนปุ่มอีโมจิ</string>
   <string name="morphe_hide_comments_filter_bar_options_title">ซ่อนตัวเลือกแถบกรอง</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">ซ่อนตัวเลือกแถบกรองทั้งหมด ยกเว้น \'ยอดนิยม\' และ \'ใหม่ล่าสุด\'</string>
@@ -263,11 +267,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">ซ่อนแถบผู้บริจาคแชทสด</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">ซ่อนคำแนะนำเครื่องมือแชทสด</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">ซ่อนป๊อปอัปคำแนะนำเครื่องมือที่แสดงใกล้กับแถบป้อนข้อมูลแชท เช่น ประกาศแชทสำหรับสมาชิกเท่านั้น</string>
+  <string name="morphe_hide_comments_menu_button_title">ซ่อนปุ่มเมนู</string>
+  <string name="morphe_hide_comments_menu_button_summary">ซ่อนปุ่มเมนู 3 จุดของความคิดเห็นแต่ละรายการ</string>
   <string name="morphe_hide_comments_preview_comment_title">ซ่อนความคิดเห็นตัวอย่าง</string>
   <string name="morphe_hide_comments_preview_comment_summary">ซ่อนตัวอย่างความคิดเห็นใต้คลิปวิดีโอ ก่อนที่จะเปิดส่วนความคิดเห็นทั้งหมด</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">ความคิดเห็นถูกซ่อนโดย Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">เปิดใช้ปุ่มความคิดเห็นแบบมินิมอล</string>
+  <string name="morphe_minimal_comments_button_summary">ซ่อนการ์ดเลื่อนและตัวเลือกหน้าซึ่งแสดงอยู่บนปุ่มความคิดเห็น</string>
   <string name="morphe_hide_comments_thanks_button_title">ซ่อนปุ่มขอบคุณ</string>
   <string name="morphe_hide_comments_timestamp_button_title">ซ่อนปุ่มตราประทับเวลา</string>
   <string name="morphe_hide_comments_top_fans_button_title">ซ่อนปุ่ม \'Top fans\'</string>
+  <string name="morphe_hide_comments_translate_button_title">ซ่อนปุ่มแปลภาษา</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">ทำให้ลิงก์การค้นหาที่ไฮไลต์เป็นรูปแบบปกติ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">เปลี่ยนลิงก์การค้นหาที่ไฮไลต์เป็นข้อความธรรมดา</string>
   <string name="morphe_hide_keyword_content_screen_title">ตัวกรองคำหลัก</string>
@@ -384,9 +394,17 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">ค้นหาในช่อง</string>
   <string name="morphe_channel_search_summary">เมื่อเปิดช่องอยู่ การค้นหาจะค้นหาเฉพาะในช่องนั้นเท่านั้น</string>
+  <string name="morphe_channel_search_hint">ค้นหาช่อง</string>
   <string name="morphe_channel_search_results">ผลการค้นหาช่อง</string>
   <string name="morphe_channel_search_no_results">ไม่พบผลลัพธ์ในช่องนี้</string>
   <string name="morphe_channel_search_failed">ไม่สามารถค้นหาช่องนี้ได้</string>
+  <string name="morphe_channel_search_sort_relevance">ความเกี่ยวข้อง</string>
+  <string name="morphe_channel_search_sort_most_viewed">ดูมากที่สุด</string>
+  <string name="morphe_channel_search_sort_least_viewed">ดูน้อยที่สุด</string>
+  <string name="morphe_channel_search_sort_newest">ใหม่ล่าสุด</string>
+  <string name="morphe_channel_search_sort_oldest">เก่าที่สุด</string>
+  <string name="morphe_channel_search_sort_shortest">สั้นที่สุด</string>
+  <string name="morphe_channel_search_sort_longest">ยาวที่สุด</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">คัดลอกลิงก์ไปยังคลิปบอร์ด</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">คัดลอกลิงก์ที่มีช่วงเวลาไปยังคลิปบอร์ด</string>
@@ -671,6 +689,8 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">ซ่อนปุ่มถาม</string>
+  <string name="morphe_hide_channel_profile_button_title">ซ่อนช่องและปุ่มติดตาม</string>
+  <string name="morphe_hide_channel_profile_button_summary">ซ่อนรูปโปรไฟล์ช่องและปุ่มติดตามที่ตอนต้นของแถบการทำงาน</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">ซ่อนปุ่มคลิป</string>
   <string name="morphe_hide_clip_button_summary">คุณสมบัตินี้อาจใช้งานไม่ได้กับบางบัญชีผู้ใช้</string>
@@ -742,6 +762,7 @@ Second \"item\" text"</string>
   <string name="morphe_swap_create_with_notifications_button_title">สลับปุ่มสร้างกับปุ่มการแจ้งเตือน</string>
   <string name="morphe_swap_create_with_notifications_button_summary">หากการเปลี่ยนแปลงการตั้งค่านี้ไม่มีผล ให้ลองสลับไปโหมดไม่ระบุตัวตน</string>
   <string name="morphe_hide_navigation_button_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">ซ่อนจุดเนื้อหาใหม่</string>
   <string name="morphe_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"สิ่งนี้จะซ่อนแถบนำทางอย่างสมบูรณ์ รวมถึงแท็บ 'คุณ'
 
@@ -1047,7 +1068,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">มินิเพลเยอร์</string>
   <string name="morphe_miniplayer_screen_summary">ปรับแต่งรูปลักษณ์และพฤติกรรมของเครื่องเล่นวิดีโอขนาดเล็ก</string>
   <string name="morphe_miniplayer_type_title">ประเภทของเครื่องเล่นย่อขนาด</string>
-  <string name="morphe_miniplayer_hide_title_title">ซ่อนชื่อเรื่อง</string>
+  <string name="morphe_miniplayer_hide_title_title">ซ่อนชื่อและช่อง</string>
   <string name="morphe_miniplayer_type_entry_0">ปิดการใช้งานอยู่</string>
   <string name="morphe_miniplayer_type_entry_1">ค่าเริ่มต้น</string>
   <string name="morphe_miniplayer_type_entry_2">น้อยที่สุด</string>
@@ -1091,10 +1112,6 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_change_foreground_summary">ใช้สีธีมสำหรับข้อความและไอคอน</string>
   <string name="morphe_gradient_loading_screen_title">เปิดใช้งานหน้าจอโหลดแบบไล่ระดับสี</string>
   <string name="morphe_gradient_loading_screen_summary">แสดงพื้นหลังไล่ระดับสีบนหน้าจอการโหลดแทนที่จะเป็นสีทึบ</string>
-  <string name="morphe_splash_screen_animation_style_title">รูปแบบหน้าจอ Splash</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">ปิดการใช้งานอยู่</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">สี</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">ขาวดำ</string>
   <string name="morphe_seekbar_custom_color_title">เปิดใช้งานสีแถบเลื่อนแบบกำหนดเอง</string>
   <string name="morphe_seekbar_custom_color_primary_title">สีแถบความคืบหน้า</string>
   <string name="morphe_seekbar_custom_color_primary_summary">ตั้งค่าสีหลักของแถบความคืบหน้าของวิดีโอ</string>
@@ -1160,13 +1177,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">ปิดใช้งานแฮปติกยกเลิกการค้นหา</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">ปิดใช้งานแฮปติกการกดและถือ</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ปิดใช้งานแฮปติกซูม</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">ตัวควบคุมสื่อการแจ้งเตือน</string>
-  <string name="morphe_notification_media_screen_summary">ปรับแต่งการควบคุมการเล่นที่แสดงบนหน้าจอล็อคและแผงการแจ้งเตือนของคุณ</string>
-  <string name="morphe_hide_notification_media_prev_next_title">ซ่อนปุ่มก่อนหน้า &amp; ถัดไป</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">ซ่อนปุ่มก่อนหน้าและถัดไปในแผงการแจ้งเตือน หน้าจอล็อค และการควบคุมหูฟัง</string>
-  <string name="morphe_disable_notification_media_seekbar_title">ปิดใช้งานแถบเลื่อน</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">ป้องกันการลากแถบเลื่อนบนหน้าจอล็อคและแผงการแจ้งเตือน</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">หากคุณเพิ่งเปลี่ยนรายละเอียดการเข้าสู่ระบบบัญชีของคุณ ให้ถอนการติดตั้งและติดตั้ง MicroG ใหม่อีกครั้ง</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1198,6 +1208,8 @@ Second \"item\" text"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">แสดงปุ่มคุณภาพ</string>
   <string name="morphe_video_quality_dialog_button_summary">แตะค้างไว้เพื่อรีเซ็ตคุณภาพเป็นค่าเริ่มต้น</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">แสดงความละเอียดบนปุ่มคุณภาพ</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">แสดงความละเอียด เช่น 1080 แทนที่จะเป็นป้ายกำกับ เช่น FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">เมนูกำหนดความเร็วในการเล่นแบบกำหนดเอง</string>
   <string name="morphe_restore_old_speed_menu_title">คืนค่าเมนูความเร็วในการเล่นแบบเก่า</string>
@@ -1283,7 +1295,14 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">แสดงการปลอมแปลงใน \'สถิติสำหรับพวกเนิร์ด\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">กู้คืนแถบการทำงานของวิดีโอแบบเดิม</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"แก้ไขปัญหาการไม่แสดงผลการไม่ชอบ และปุ่มการทำงานของวิดีโอไม่สามารถซ่อนได้
+  <string name="morphe_restore_old_video_action_bar_summary">"แก้ไขปัญหาที่ปุ่มการทำงานของวิดีโอไม่สามารถซ่อนได้
 
-ข้อจำกัด: กลับไปใช้การแสดงผล 'วิดีโอเพิ่มเติม' แบบเก่า"</string>
+ข้อจำกัด: ย้อนกลับไปใช้รูปแบบโอเวอร์เลย์ 'More videos' แบบเก่า"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">สไตล์ไอคอนเครื่องเล่น</string>
+  <string name="morphe_player_icon_style_entry_auto">อัตโนมัติ</string>
+  <string name="morphe_player_icon_style_entry_default">ค่าเริ่มต้นThe</string>
+  <string name="morphe_player_icon_style_entry_regular">บาง</string>
+  <string name="morphe_player_icon_style_entry_bold">หนา</string>
+  <string name="morphe_shorts_icon_style_title">สไตล์ไอคอน Shorts</string>
 </resources>

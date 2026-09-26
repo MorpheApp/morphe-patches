@@ -75,6 +75,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">Скрыть плавающую кнопку микрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary">Скрывает плавающую кнопку микрофона в нижнем правом углу экрана предложений поиска</string>
   <string name="morphe_hide_get_premium_button_title">Скрыть кнопку \"Получить Premium\"</string>
+  <string name="morphe_hide_history_shelf_title">Скрыть раздел «История»</string>
+  <string name="morphe_hide_history_shelf_summary">Скрывает раздел «История» на вкладке «Вы»</string>
   <string name="morphe_hide_horizontal_shelves_title">Скрыть горизонтальные секции</string>
   <string name="morphe_hide_horizontal_shelves_summary">Скрывает горизонтальные полки, такие как:• Срочные новости• Публикации сообщества, которые вам могут понравиться• Продолжить просмотр• Исследовать больше каналов• Исследовать больше тем• Для вас• Последние видео• Самые актуальные• Публикации из Сообщества создателя• Покупки• Смотреть еще раз</string>
   <string name="morphe_hide_hyped_label_title">Скрыть метку \"В тренде\"</string>
@@ -106,6 +108,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_title">Скрыть кнопку \"Показать еще\"</string>
   <string name="morphe_hide_show_more_button_summary">Скрывает кнопку развернуть под видео в результатах поиска</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Скрыть панель подписанных каналов</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Скрыть названия каналов на панели подписок</string>
   <string name="morphe_hide_surveys_title">Скрыть опросы</string>
   <string name="morphe_hide_surveys_summary">Скрывает опросы и подсказки о точности рекомендаций ленты</string>
   <string name="morphe_hide_ticket_shelf_title">Скрыть секцию билетов</string>
@@ -254,6 +257,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Скрыть раздел комментариев в ленте главной страницы</string>
   <string name="morphe_hide_comments_community_guidelines_title">Скрыть правила сообщества</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Скрыть кнопку \"Создать Short\"</string>
+  <string name="morphe_hide_comments_dislike_button_title">Скрыть кнопку \"Дизлайк\"</string>
   <string name="morphe_hide_comments_emoji_button_title">Скрыть кнопку \"Эмодзи\"</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Скрыть параметры панели фильтров</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Скрывает все параметры панели фильтров, кроме «Лучшие» и «Новые»</string>
@@ -263,11 +267,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Скрыть панель донатеров в прямом чате</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Скрыть подсказки в живом чате</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Скрывает всплывающие подсказки рядом с полем ввода чата, например, уведомление о чате только для подписчиков</string>
+  <string name="morphe_hide_comments_menu_button_title">Скрыть кнопку меню</string>
+  <string name="morphe_hide_comments_menu_button_summary">Скрывает кнопку меню с 3 точками у каждого комментария</string>
   <string name="morphe_hide_comments_preview_comment_title">Скрыть предпросмотр комментария</string>
   <string name="morphe_hide_comments_preview_comment_summary">Скрывает предварительный просмотр комментария под видео перед открытием полного раздела комментариев</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Комментарий скрыт Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Включить минималистичную кнопку комментариев</string>
+  <string name="morphe_minimal_comments_button_summary">Скрывает скользящие карточки и их переключатель страниц, отображаемые на кнопке комментариев</string>
   <string name="morphe_hide_comments_thanks_button_title">Скрыть кнопку \"Спасибо\"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Скрыть кнопку метки времени</string>
   <string name="morphe_hide_comments_top_fans_button_title">Скрыть кнопку «Лучшие фанаты»</string>
+  <string name="morphe_hide_comments_translate_button_title">Скрыть кнопку \"Перевести\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Очистить выделенные ссылки поиска</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Очищает выделенные ссылки поиска, оставляя только исходный простой текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Фильтр по ключевым словам</string>
@@ -384,9 +394,17 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Поиск по каналу</string>
   <string name="morphe_channel_search_summary">При открытом канале поиск выполняется только по этому каналу</string>
+  <string name="morphe_channel_search_hint">Поиск по каналу</string>
   <string name="morphe_channel_search_results">Результаты поиска каналов</string>
   <string name="morphe_channel_search_no_results">В этом канале ничего не найдено</string>
   <string name="morphe_channel_search_failed">Не удалось выполнить поиск по каналу</string>
+  <string name="morphe_channel_search_sort_relevance">Релевантность</string>
+  <string name="morphe_channel_search_sort_most_viewed">Самые просматриваемые</string>
+  <string name="morphe_channel_search_sort_least_viewed">Наименее просматриваемые</string>
+  <string name="morphe_channel_search_sort_newest">Самые новые</string>
+  <string name="morphe_channel_search_sort_oldest">Самые старые</string>
+  <string name="morphe_channel_search_sort_shortest">Самые короткие</string>
+  <string name="morphe_channel_search_sort_longest">Самые длинные</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Ссылка скопирована в буфер обмена</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Ссылка с отметкой времени скопирована в буфер обмена</string>
@@ -673,6 +691,8 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Скрыть кнопку \"Спросить\"</string>
+  <string name="morphe_hide_channel_profile_button_title">Скрыть канал и кнопку подписки</string>
+  <string name="morphe_hide_channel_profile_button_summary">Скрывает аватар канала и кнопку подписки в начале панели действий.</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Скрыть кнопку \"Создать клип\"</string>
   <string name="morphe_hide_clip_button_summary">Эта функция может не работать для некоторых учетных записей пользователей</string>
@@ -744,6 +764,7 @@ Second \"item\" text"</string>
   <string name="morphe_swap_create_with_notifications_button_title">Заменяет кнопку «Создать» кнопкой «Уведомления»</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Если изменение этой настройки не получило эффекта, попробуйте переключиться в режим Инкогнито</string>
   <string name="morphe_hide_navigation_button_labels_title">Скрыть подписи кнопок навигации</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Скрывать точку нового контента</string>
   <string name="morphe_hide_navigation_bar_title">Скрыть панель навигации</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Это полностью скрывает панель навигации, включая вкладку \"Вы\".
 
@@ -1049,7 +1070,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">Миниплеер</string>
   <string name="morphe_miniplayer_screen_summary">Настройка внешнего вида и поведения мини-плеера</string>
   <string name="morphe_miniplayer_type_title">Тип миниплеера</string>
-  <string name="morphe_miniplayer_hide_title_title">Скрыть название</string>
+  <string name="morphe_miniplayer_hide_title_title">Скрыть название и канал</string>
   <string name="morphe_miniplayer_type_entry_0">Отключено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартный</string>
   <string name="morphe_miniplayer_type_entry_2">Минимальный</string>
@@ -1093,10 +1114,6 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_change_foreground_summary">Используйте цвет темы для текста и значков</string>
   <string name="morphe_gradient_loading_screen_title">Включить градиентный фон экрана загрузки</string>
   <string name="morphe_gradient_loading_screen_summary">Показывает градиентный фон на экране загрузки вместо сплошного цвета</string>
-  <string name="morphe_splash_screen_animation_style_title">Стиль экрана заставки</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Выключено</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Цветной</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Монохромный</string>
   <string name="morphe_seekbar_custom_color_title">Включить кастомный цвет полосы прогресса</string>
   <string name="morphe_seekbar_custom_color_primary_title">Цвет полосы прогресса</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Установите основной цвет полосы прогресса видео</string>
@@ -1162,13 +1179,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Отключить виброотклик отмены перемотки</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Отключить виброотклик при долгом нажатии</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Отключить виброотклик при масштабировании</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Элементы управления воспроизведением в уведомлениях</string>
-  <string name="morphe_notification_media_screen_summary">Настройте внешний вид и поведение панели управления мини-плеером на заблокированном экране и панели уведомлений</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Скрыть предыдущий &amp; Следующие кнопки</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Скрывает кнопки «Предыдущий» и «Следующий» в уведомлениях, на заблокированном экране и в элементах управления наушниками</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Отключить полосу прокрутки</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Запрещает перетаскивание полосы прогресса на заблокированном экране и панели уведомлений</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Если Вы недавно изменили данные для входа в свою учетную запись, удалите и переустановите MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1200,6 +1210,8 @@ Second \"item\" text"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Показать кнопку качества</string>
   <string name="morphe_video_quality_dialog_button_summary">Нажмите и удерживайте, чтобы сбросить качество до значения по умолчанию</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Показывать разрешение на кнопке качества</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Показывать разрешение, например 1080, вместо такой метки, как FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Показать кастомное меню скорости</string>
   <string name="morphe_restore_old_speed_menu_title">Восстановить старое меню скорости воспроизведения</string>
@@ -1285,7 +1297,14 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показывать подмену в \"Статистика для продвинутых\"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Восстановить старую панель действий видео</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Исправляет проблему с не отображением отметки «Не нравится» и невозможностью скрыть кнопки управления видео
+  <string name="morphe_restore_old_video_action_bar_summary">"Исправляет проблему, из-за которой кнопки действий видео невозможно скрыть
 
-Ограничение: Возвращается к старому стилю наложения «Ещё видео»"</string>
+Ограничение: возвращает старый стиль оверлея «More videos»"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Стиль значков плеера</string>
+  <string name="morphe_player_icon_style_entry_auto">Автоматически</string>
+  <string name="morphe_player_icon_style_entry_default">По умолчанию</string>
+  <string name="morphe_player_icon_style_entry_regular">Тонкий</string>
+  <string name="morphe_player_icon_style_entry_bold">Жирный</string>
+  <string name="morphe_shorts_icon_style_title">Стиль значка Shorts</string>
 </resources>

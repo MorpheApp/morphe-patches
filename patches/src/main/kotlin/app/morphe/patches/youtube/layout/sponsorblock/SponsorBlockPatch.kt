@@ -25,6 +25,8 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.disableNewPlayerControlsFeatureFlag
@@ -65,7 +67,8 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch,
-        addResourcesPatch
+        addResourcesPatch,
+        playerIconStylePatch
     )
 
     execute {
@@ -176,35 +179,27 @@ private val sponsorBlockResourcePatch = resourcePatch {
             )
         )
 
-        arrayOf(
+        copyResources(
+            "sponsorblock",
             ResourceGroup(
                 "layout",
                 "morphe_sb_inline_sponsor_overlay.xml",
                 "morphe_sb_new_segment.xml",
                 "morphe_sb_skip_sponsor_button.xml"
-            ),
-            ResourceGroup(
-                "drawable",
-                "morphe_sb_adjust.xml",
-                "morphe_sb_adjust_bold.xml",
-                "morphe_sb_backward.xml",
-                "morphe_sb_backward_bold.xml",
-                "morphe_sb_compare.xml",
-                "morphe_sb_compare_bold.xml",
-                "morphe_sb_edit.xml",
-                "morphe_sb_edit_bold.xml",
-                "morphe_sb_forward.xml",
-                "morphe_sb_forward_bold.xml",
-                "morphe_sb_logo.xml",
-                "morphe_sb_logo_bold.xml",
-                "morphe_sb_publish.xml",
-                "morphe_sb_publish_bold.xml",
-                "morphe_sb_voting.xml",
-                "morphe_sb_voting_bold.xml"
             )
-        ).forEach { resourceGroup ->
-            copyResources("sponsorblock", resourceGroup)
-        }
+        )
+
+        copyPlayerButtonIcons(
+            "sponsorblock",
+            "morphe_sb_adjust",
+            "morphe_sb_backward",
+            "morphe_sb_compare",
+            "morphe_sb_edit",
+            "morphe_sb_forward",
+            "morphe_sb_logo",
+            "morphe_sb_publish",
+            "morphe_sb_voting"
+        )
 
         addTopControl(
             "sponsorblock",
@@ -334,6 +329,7 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Initialize the SponsorBlock view.
         ControlsOverlayFingerprint.let {
+            it.clearMatch() // Parent fingerprint is shared and may have changed.
             it.method.apply {
                 val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA

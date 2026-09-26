@@ -75,6 +75,8 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_floating_microphone_button_title">Schwebende Mikrofon-Schaltfläche ausblenden</string>
   <string name="morphe_hide_floating_microphone_button_summary">Blendet die schwebende Mikrofon-Schaltfläche unten rechts in den Suchvorschlägen aus.</string>
   <string name="morphe_hide_get_premium_button_title">\'Get Premium\'-Button ausblenden</string>
+  <string name="morphe_hide_history_shelf_title">Verlaufsbereich ausblenden</string>
+  <string name="morphe_hide_history_shelf_summary">Blendet den Verlaufsbereich im Tab „Du“ aus.</string>
   <string name="morphe_hide_horizontal_shelves_title">Horizontale Reihen ausblenden</string>
   <string name="morphe_hide_horizontal_shelves_summary">Blendet horizontale Bereiche wie „Aktuelle Nachrichten“, „Community-Beiträge, die dir gefallen könnten“, „Weiter ansehen“, „Mehr Kanäle entdecken“, „Mehr Themen entdecken“, „Für dich“, „Neueste Videos“, „Am relevantesten“, „Beiträge aus der Community des Erstellers“, „Shopping“ und „Nochmal ansehen“ aus.</string>
   <string name="morphe_hide_hyped_label_title">Verstecke Hyped Label</string>
@@ -106,6 +108,7 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_show_more_button_title">Schaltfläche „Mehr anzeigen“ ausblenden.</string>
   <string name="morphe_hide_show_more_button_summary">Verbirgt die Schaltfläche „Mehr anzeigen“ unter Videos in den Suchergebnissen</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Leiste mit abonnierten Kanälen ausblenden</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Kanalnamen in der Leiste für abonnierte Kanäle ausblenden</string>
   <string name="morphe_hide_surveys_title">Umfragen ausblenden</string>
   <string name="morphe_hide_surveys_summary">Blendet Umfragen und Hinweise zur Genauigkeit der Feed-Empfehlungen aus</string>
   <string name="morphe_hide_ticket_shelf_title">Ticket-Bereich ausblenden</string>
@@ -255,6 +258,7 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_comments_section_in_home_feed_title">Kommentarbereich im Starseiten-Feed ausblenden</string>
   <string name="morphe_hide_comments_community_guidelines_title">Community-Richtlinien ausblenden</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Schaltfläche „Als Short erstellen“ ausblenden</string>
+  <string name="morphe_hide_comments_dislike_button_title">Schaltfläche „Dislike“ ausblenden</string>
   <string name="morphe_hide_comments_emoji_button_title">Emoji-Schaltfläche ausblenden</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterleistenoptionen ausblenden</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Blendet alle Filterleistenoptionen außer \"Top\" und \"Neueste\" aus</string>
@@ -264,11 +268,17 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Spendenleiste im Live-Chat ausblenden</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Live-Chat-Tooltips ausblenden</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Blendet Tooltip-Popups aus, die in der Nähe der Chat-Eingabeleiste angezeigt werden, wie z. B. den Hinweis zum Chat nur für Abonnenten</string>
+  <string name="morphe_hide_comments_menu_button_title">Menü-Button ausblenden</string>
+  <string name="morphe_hide_comments_menu_button_summary">Blendet den Drei-Punkte-Menü-Button jedes Kommentars aus.</string>
   <string name="morphe_hide_comments_preview_comment_title">Vorschaukommentar ausblenden</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbirgt die Kommentarvorschau unter dem Video, bevor der vollständige Kommentarbereich geöffnet wird</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Kommentar von Morphe ausgeblendet...</string>
+  <string name="morphe_minimal_comments_button_title">Minimalen Kommentare-Button aktivieren</string>
+  <string name="morphe_minimal_comments_button_summary">Blendet die Schiebekarten und deren Seitenauswahl aus, die auf dem Kommentare-Button angezeigt werden.</string>
   <string name="morphe_hide_comments_thanks_button_title">Schaltfläche \'Dankeschön\' ausblenden</string>
   <string name="morphe_hide_comments_timestamp_button_title">Zeitstempel-Schaltfläche ausblenden</string>
   <string name="morphe_hide_comments_top_fans_button_title">„Top-Fans“-Button ausblenden</string>
+  <string name="morphe_hide_comments_translate_button_title">Schaltfläche „Übersetzen“ ausblenden</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hervorgehobene Suchlinks bereinigen</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Bereinigt hervorgehobene Suchlinks und belässt nur den ursprünglichen Klartext</string>
   <string name="morphe_hide_keyword_content_screen_title">Stichwortfilter</string>
@@ -385,9 +395,17 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Diesen Kanal durchsuchen</string>
   <string name="morphe_channel_search_summary">Wenn ein Kanal geöffnet ist, wird bei der Suche nur dieser Kanal durchsucht.</string>
+  <string name="morphe_channel_search_hint">Kanal suchen</string>
   <string name="morphe_channel_search_results">Kanal-Suchergebnisse</string>
   <string name="morphe_channel_search_no_results">Auf diesem Kanal wurde nichts gefunden.</string>
   <string name="morphe_channel_search_failed">Dieser Kanal konnte nicht durchsucht werden.</string>
+  <string name="morphe_channel_search_sort_relevance">Relevanz</string>
+  <string name="morphe_channel_search_sort_most_viewed">Am häufigsten gesehen</string>
+  <string name="morphe_channel_search_sort_least_viewed">Am wenigsten gesehen</string>
+  <string name="morphe_channel_search_sort_newest">Neueste</string>
+  <string name="morphe_channel_search_sort_oldest">Älteste</string>
+  <string name="morphe_channel_search_sort_shortest">Kürzeste</string>
+  <string name="morphe_channel_search_sort_longest">Längste</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link in Zwischenablage kopiert</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link mit Zeitstempel in Zwischenablage kopiert</string>
@@ -672,6 +690,8 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Schaltfläche „Fragen“ ausblenden</string>
+  <string name="morphe_hide_channel_profile_button_title">Kanal und Abonnieren-Button ausblenden</string>
+  <string name="morphe_hide_channel_profile_button_summary">Blendet den Kanal-Avatar und den Abonnieren-Button am Anfang der Aktionsleiste aus.</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Schaltfläche „Clip erstellen“ ausblenden</string>
   <string name="morphe_hide_clip_button_summary">Funktioniert möglicherweise nicht für einige Benutzerkonten</string>
@@ -743,6 +763,7 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_swap_create_with_notifications_button_title">Erstellen-Schaltfläche mit Benachrichtigungsschaltfläche tauschen</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Wenn die Änderung dieser Einstellung keinen Effekt hat, versuchen Sie, in den Inkognito-Modus zu wechseln.</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigationstastenbezeichnungen ausblenden</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Punkt für neue Inhalte ausblenden</string>
   <string name="morphe_hide_navigation_bar_title">Navigationsleiste ausblenden</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Diese Einstellung blendet die Navigationsleiste vollständig aus, einschließlich des Tabs „You“.
 
@@ -1048,7 +1069,7 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_miniplayer_screen_title">Minispieler</string>
   <string name="morphe_miniplayer_screen_summary">Passen Sie das Erscheinungsbild und das Verhalten des minimierten Videoplayers an</string>
   <string name="morphe_miniplayer_type_title">Minispielertyp</string>
-  <string name="morphe_miniplayer_hide_title_title">Titel ausblenden</string>
+  <string name="morphe_miniplayer_hide_title_title">Titel und Kanal ausblenden</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktiviert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1092,10 +1113,6 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_theme_color_change_foreground_summary">Verwende die Themenfarbe für Text und Symbole</string>
   <string name="morphe_gradient_loading_screen_title">Gradientenladebildschirm aktivieren</string>
   <string name="morphe_gradient_loading_screen_summary">Zeigt einen Farbverlauf im Hintergrund des Ladebildschirms anstelle einer einheitlichen Farbe an</string>
-  <string name="morphe_splash_screen_animation_style_title">Art des Begrüßungsbildschirms</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Deaktiviert</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Farbe</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochrom</string>
   <string name="morphe_seekbar_custom_color_title">Benutzerdefinierte Farbgebung aktivieren</string>
   <string name="morphe_seekbar_custom_color_primary_title">Farbe der Fortschrittsanzeige</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Die Primärfarbe des Videofortschrittsbalkens</string>
@@ -1161,13 +1178,6 @@ Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Haptik für das Rückgängigmachen der Suche deaktivieren</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Deaktivieren Sie das Antippen und Halten von Haptik</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoomhaptik deaktivieren</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Benachrichtigung Mediensteuerung</string>
-  <string name="morphe_notification_media_screen_summary">Passen Sie die Anzeige der Wiedergabesteuerelemente auf Ihrem Sperrbildschirm und in Ihrem Benachrichtigungsfeld an</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Schaltflächen „Zurück“ &amp; „Weiter“ ausblenden</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Blendet Zurück- und Weiter-Schaltflächen in Medienbenachrichtigung, Sperrbildschirm und Kopfhörersteuerung aus.</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Videofortschrittsbalken deaktivieren</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Verhindert das Ziehen der Fortschrittsanzeige auf dem Sperrbildschirm und im Benachrichtigungsfeld</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Wenn Sie kürzlich Ihre Kontoanmeldedaten geändert haben, deinstallieren Sie MicroG und installieren Sie es erneut.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1199,6 +1209,8 @@ Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Schaltfläche für die Wiedergabequalität anzeigen</string>
   <string name="morphe_video_quality_dialog_button_summary">Tippen und gedrückt halten, um die Qualität auf den Standard zurückzusetzen</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Auflösung auf der Schaltfläche „Qualität“ anzeigen</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Auflösung anzeigen, z. B. 1080, statt einer Bezeichnung wie FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Benutzerdefiniertes Wiedergabegeschwindigkeitsmenü</string>
   <string name="morphe_restore_old_speed_menu_title">Altes Wiedergabegeschwindigkeitsmenü wiederherstellen</string>
@@ -1284,7 +1296,14 @@ Die Videowiedergabe mit AV1 kann stottern oder Bilder überspringen."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Spoofing in „Statistiken für Nerds“ anzeigen</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Alte Video-Aktionsleiste wiederherstellen</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Behebt fehlende Dislikes und das Nichtausblenden der Video-Aktionsschaltfläche
+  <string name="morphe_restore_old_video_action_bar_summary">"Behebt, dass Video-Aktionsschaltflächen nicht ausgeblendet werden können
 
-Einschränkung: Zurück zum alten „Mehr Videos“-Overlay"</string>
+Einschränkung: Kehrt zum alten Overlay 'Weitere Videos' zurück."</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Stil der Player-Symbole</string>
+  <string name="morphe_player_icon_style_entry_auto">Automatisch</string>
+  <string name="morphe_player_icon_style_entry_default">Standard</string>
+  <string name="morphe_player_icon_style_entry_regular">Dünn</string>
+  <string name="morphe_player_icon_style_entry_bold">Fett</string>
+  <string name="morphe_shorts_icon_style_title">Shorts-Symbolstil</string>
 </resources>

@@ -100,6 +100,7 @@ Lalabas dito ang mga na-download na track"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Itago ang button na Isalin</string>
   <string name="morphe_music_hide_new_from_shelf_title">Itago ang \'New from\' shelf</string>
   <string name="morphe_music_hide_playlist_shelves_title">Itago ang mga playlist shelf</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Itago ang I-download na button ng episode ng podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Itago ang Repeat button</string>
   <string name="morphe_music_hide_shuffle_button_title">Itago ang Shuffle button</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Itago ang \'Speed dial\' shelf</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <string name="morphe_music_hide_history_button_title">Itago ang kasaysayan na button</string>
   <string name="morphe_music_hide_notification_button_title">Itago ang notipikasyon na button</string>
   <string name="morphe_music_hide_search_button_title">Itago ang paghahanap na button</string>
+  <string name="morphe_music_hide_voice_search_button_title">Itago ang Voice search button</string>
+  <string name="morphe_music_hide_sound_search_button_title">Itago ang Sound search button</string>
+  <string name="morphe_music_hide_library_new_button_title">Itago ang New button</string>
+  <string name="morphe_music_hide_library_new_button_summary">Itinatago ang New button sa Library tab</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Mga pindutan ng pagkilos</string>
   <string name="morphe_music_action_buttons_screen_summary">Piliin kung aling mga pindutan ng pagkilos ang lalabas sa ilalim ng player</string>
@@ -352,12 +357,12 @@ Para matiyak na naka-sync ang scrobbling habang nagpe-play sa background, sigura
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gumamit ng mga liriko mula sa third-party</string>
   <string name="morphe_music_lyrics_enabled_summary">Nagpapakita ng mga liriko mula sa isang third-party service, babalik sa mga built-in na liriko kapag walang nakita</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Panatilihing naka-on ang screen habang tinitingnan ang mga liriko.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Pinipigilan ang display na mag-off habang nakabukas ang lyrics panel.</string>
   <string name="morphe_music_lyrics_section_service_title">Serbisyo ng liriko</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisasyon</string>
   <string name="morphe_music_lyrics_section_about_title">Tungkol</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">I-tap ang ▲/▼ upang itakda ang pagkakasunud-sunod ng priyoridad, at ang kahon upang paganahin o i-disable ang bawat provider.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Naka-disable ang lahat ng provider — ang built-in na lyrics at naka-embed na lyrics.</string>
   <string name="morphe_music_lyrics_source_reset_title">I-reset ang pagkakasunud-sunod ng provider?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ibalik ang mga provider sa default na pagkakasunud-sunod ng priyoridad.</string>
@@ -394,9 +399,8 @@ Mga hakbang:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: invalid ang arl — pakisubukang muli.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: hindi wasto ang arl — pakitingnan at subukang muli</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopyahin ang halaga ng user token.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Gumagana ang Musixmatch nang walang token, kaya maaaring manatiling blangko ang field na ito.
-
-Magdagdag ng token para lang magamit ang iyong sariling account. Dapat itong manggaling sa Musixmatch Android app: ang mga token na kinopya mula sa musixmatch.com ay kabilang sa retiradong desktop client at tinatanggihan ng API ang mga ito."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Magdagdag ng token para lang magamit ang iyong sariling account. Dapat itong manggaling sa Musixmatch Android app: ang mga token na kinopya mula sa musixmatch.com ay kabilang sa retiradong desktop client at tinatanggihan ng API ang mga ito.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Gumagana ang Musixmatch kahit walang token, kaya maaaring manatiling walang laman ang field na ito.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: invalid ang user token — pakisubukang muli.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: na-save ang user token</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: na-clear ang user token</string>
@@ -413,9 +417,9 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_show_copy_button_title">Ipakita ang button na Kopyahin</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">I-tap upang kopyahin ang orihinal na lyrics bilang plain text; pindutin nang matagal upang i-save ang raw lyrics source file sa Downloads.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Ipakita ang button na Isalin</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Isalin ang lyrics gamit ang mga pagsasalin ng provider o Google Translate.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">I-tap upang i-toggle ang pagsasalin; pindutin nang matagal para sa pagsasalin lamang. Gumagamit ng mga pagsasalin mula sa provider, Google Translate, o isang API na katugma ng OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Ipakita ang Romanize button</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Ipakita ang refresh button</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">I-tap upang i-toggle ang romanisasyon; pindutin nang matagal para sa romanisasyon lamang. Gumagamit ng romanisasyon mula sa provider, Google Translate, o isang API na katugma ng OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ipakita ang button na Refresh</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">I-highlight ang mga naka-sync na salita o pantig.</string>
   <string name="morphe_music_lyrics_saved">Na-save</string>
@@ -431,7 +435,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_display_artist_first_summary">I-toggle ang pagkakasunod-sunod ng pagpapakita ng Artist at Title sa Miniplayer at MediaSession. Kapag ON: \"Artist - Title\"; kapag OFF: \"Title - Artist\". Hindi ito nakakaapekto sa paghahanap ng lyrics.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Mga Filter</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex ng filter ng lyrics</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Regular expression na inilalapat sa mga pamagat, mga artist, at mga album bago maghanap ng mga lyrics. Iwanang blangko para i-disable. Inaalis ng default ang mga karaniwang kalat gaya ng \"Official Video\", \"Remaster\", at \"- Topic\".</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Regular expression na inilalapat sa mga pamagat, artist, at album bago maghanap ng mga liriko at kapag nagmamarka kung magkatugma ang dalawang pamagat. Iwanang blangko upang i-disable ang pareho. Ang default ay nag-aalis ng karaniwang kalat tulad ng \"Official Video\", \"Remaster\", \"【插曲】\", at \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">Regex ng filter ng lyrics</string>
   <string name="morphe_music_lyrics_text_filter_summary">Ang regular expression ay inilalapat lamang sa orihinal na teksto ng lyrics (hindi sa mga pagsasalin o romanisasyon). Iwanang blangko upang i-disable.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Mga marker ng linya ng impormasyon</string>
@@ -448,23 +452,26 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_romanized_by_ai">Isina-romanisa ni %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Isinalin</string>
+  <string name="morphe_music_lyrics_translation_language_title">Wika ng pagsasalin</string>
   <string name="morphe_music_lyrics_translating">Nagsasalin…</string>
   <string name="morphe_music_lyrics_translate_failed">Hindi ma-isalin ang lyrics</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanisado</string>
   <string name="morphe_music_lyrics_romanizing">Nire-romanize…</string>
   <string name="morphe_music_lyrics_romanize_failed">Hindi ma-romanize ang kanta.</string>
+  <string name="morphe_music_lyrics_translate_only">Isinalin lamang</string>
+  <string name="morphe_music_lyrics_romanize_only">Romanisado lamang</string>
   <string name="morphe_music_lyrics_copied">Nakopya sa clipboard</string>
   <string name="morphe_music_lyrics_refreshing">Nagre-refresh</string>
   <string name="morphe_music_lyrics_refreshed">Na-refresh</string>
-  <string name="morphe_music_lyrics_about_summary">"Ang mga lyrics ay hinahanap gamit ang pamagat ng track at artist. […] Maaari mo ring subukan ang refresh button upang manu-manong magpalit ng mga bersyon. […] Hindi lahat ng naka-enable na provider ay hinihiling ayon sa iyong order, kundi tumutugon sila batay sa kanilang bilis."</string>
+  <string name="morphe_music_lyrics_about_summary">"Ang mga liriko ay itinutugma sa pamagat at artist, ang hindi pangkaraniwang metadata ay maaaring walang mahanap o maling bersyon. Gamitin ang refresh upang lumipat ng mga bersyon. Ang mga provider na may markang * ay nangangailangan ng token. Ang lahat ng pinagana na provider ay hindi palaging hinihiling sa iyong order, ngunit tumutugon batay sa kanilang bilis"</string>
   <string name="morphe_music_lyrics_hide_info_title">Itago ang linya ng kredito</string>
   <string name="morphe_music_lyrics_hide_info_summary">Itago ang linya ng kredito na ipinapakita sa ibaba ng lyrics.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Pagpalitin ang pagsasalin at romanisasyon.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Kapag ON, nasa ibaba ng lyrics ang romanisasyon at nasa itaas ang pagsasalin; kapag OFF, nananatili sa itaas ang romanisasyon at nasa ibaba ang pagsasalin.</string>
-  <string name="morphe_music_lyrics_use_ai_translation_title">Pagsasaling Tugma sa OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Pagsasaling tumutugma sa OpenAI</string>
   <string name="morphe_music_lyrics_use_ai_translation_summary">Gumamit ng custom na API na katugma sa OpenAI para sa pagsasalin at romanisasyon sa halip na Google Translate</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">Mga Setting ng Pagsasalin ng AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">I-configure ang endpoint ng API na katugma sa OpenAI para sa pagsasalin at romanisasyon ng mga lyrics na gumagamit ng AI.</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Mga Setting para sa AI Translation</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">I-configure ang OpenAI-compatible API endpoint para sa AI-powered na pagsasalin at romanisasyon ng lyrics.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ng API endpoint (hal. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (iwanang walang laman para sa anonymous na pag-access)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Pangalan ng modelo (hal. openai-fast, gpt-4o-mini)</string>
@@ -476,7 +483,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Ang Base URL ay hindi maaaring walang laman</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Ang Base URL ay dapat magsimula sa http:// o https://</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">Ang pangalan ng modelo ay hindi maaaring walang laman</string>
-  <string name="morphe_music_lyrics_ai_config_status_validating">Sinusuri ang koneksyon…</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">Tinitignan ang koneksyon…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - I-disable ang mga bold na icon</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - Ibalik ang Player Up next, Lyrics, at Related tabs</string>

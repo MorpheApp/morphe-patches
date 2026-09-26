@@ -98,6 +98,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Скрыть кнопку \"Перевести\"</string>
   <string name="morphe_music_hide_new_from_shelf_title">Скрыть секцию \"Новое от\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Скрыть секции плейлистов</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Скрыть кнопку скачивания эпизода подкаста</string>
   <string name="morphe_music_hide_repeat_button_title">Скрыть кнопку \"Повтор\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Скрыть кнопку \"Перемешать\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Скрыть секцию \"Быстрый набор\"</string>
@@ -185,6 +186,10 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_hide_history_button_title">Скрыть кнопку \"История\"</string>
   <string name="morphe_music_hide_notification_button_title">Скрыть кнопку уведомлений</string>
   <string name="morphe_music_hide_search_button_title">Скрыть кнопку поиска</string>
+  <string name="morphe_music_hide_voice_search_button_title">Скрыть кнопку Голосового поиска</string>
+  <string name="morphe_music_hide_sound_search_button_title">Скрыть кнопку поиска звука</string>
+  <string name="morphe_music_hide_library_new_button_title">Скрыть кнопку «Новинки»</string>
+  <string name="morphe_music_hide_library_new_button_summary">Скрывает кнопку «Новинки» на вкладке «Библиотека»</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Кнопки действий</string>
   <string name="morphe_music_action_buttons_screen_summary">Выберите, какие кнопки действий будут отображаться под плеером</string>
@@ -350,12 +355,12 @@ YouTube Music версии 8.x — плавный переход работае�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Использовать текст песни из сторонних источников</string>
   <string name="morphe_music_lyrics_enabled_summary">Отображает текст песни из стороннего сервиса, при его отсутствии – встроенный текст песни</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Не выключать экран при просмотре текстов песен</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Предотвращает отключение экрана, пока открыта панель с текстами песен</string>
   <string name="morphe_music_lyrics_section_service_title">Сервис текстов песен</string>
   <string name="morphe_music_lyrics_section_overlay_title">Оверлей</string>
   <string name="morphe_music_lyrics_section_sync_title">Синхронизация</string>
   <string name="morphe_music_lyrics_section_about_title">О приложении</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Нажмите ▲/▼, чтобы задать порядок приоритета, и используйте флажок, чтобы включить или отключить каждый сервис</string>
   <string name="morphe_music_lyrics_source_all_disabled">Все сервисы отключены — встроенные тексты и тексты из метаданных</string>
   <string name="morphe_music_lyrics_source_reset_title">Сбросить порядок сервисов?</string>
   <string name="morphe_music_lyrics_source_reset_message">Восстановить сервисы в порядке приоритета по умолчанию</string>
@@ -392,9 +397,8 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl очищено</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: недействительный arl — проверьте и повторите попытку</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch Token</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch работает без токена, поэтому это поле может оставаться пустым.
-
-Добавляйте токен только для использования своей учетной записи. Он должен исходить из Android-приложения Musixmatch: токены, скопированные с musixmatch.com, принадлежат устаревшему настольному клиенту, и API отклоняет их"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Добавьте токен только для использования собственной учётной записи. Он должен быть получен из приложения Musixmatch для Android: токены, скопированные с musixmatch.com, относятся к снятому с поддержки десктопному клиенту, и API их отклоняет.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch работает без токена, поэтому это поле можно оставить пустым.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Токен пользователя</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: токен пользователя сохранён</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: токен пользователя очищен</string>
@@ -411,9 +415,9 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_show_copy_button_title">Показать кнопку копирования</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Нажмите, чтобы скопировать оригинальный текст как обычный текст; нажмите и удерживайте, чтобы сохранить исходный файл текста в Downloads</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Показать кнопку перевода</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Переводите текст с помощью переводов сервисов или Google Переводчика</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Нажмите, чтобы переключить перевод; долгое нажатие — только перевод. Использует переводы провайдера, Google Translate или OpenAI-совместимый API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Показывать кнопку романизации</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Романизировать текст с помощью романизации сервиса или Google Переводчика</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Нажмите, чтобы переключить романизацию; долгое нажатие — только романизация. Использует романизацию провайдера, Google Translate или OpenAI-совместимый API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показывать кнопку «Обновить»</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Сохранено</string>
   <string name="morphe_music_lyrics_saved">Сохранено</string>
@@ -429,7 +433,7 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_display_artist_first_summary">Переключить порядок отображения исполнителя и названия в мини-плеере и MediaSession. Включено: «Исполнитель — Название», выключено: «Название — Исполнитель»</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Фильтры</string>
   <string name="morphe_music_lyrics_custom_regex_title">Регулярное выражение для метаданных</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Регулярное выражение, применяемое к названиям, исполнителям и альбомам перед поиском текста. Оставьте поле пустым, чтобы отключить. По умолчанию удаляется распространённый мусор, например «Official Video», «Remaster» и «- Topic».</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Регулярное выражение применяется к названиям, исполнителям и альбомам перед поиском текстов песен и при оценке совпадения двух названий. Оставьте пустым, чтобы отключить оба. По умолчанию удаляется распространённый мусор, такой как \"Official Video\", \"Remaster\", \"【插曲】\" и \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Регулярное выражение фильтра текста</string>
   <string name="morphe_music_lyrics_text_filter_summary">Регулярное выражение применяется только к оригинальному тексту песни (не к переводам или романизациям)</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Маркеры информационных строк</string>
@@ -446,15 +450,18 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_romanized_by_ai">Транслитерировано с помощью %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Перевод</string>
+  <string name="morphe_music_lyrics_translation_language_title">Язык перевода</string>
   <string name="morphe_music_lyrics_translating">Перевод…</string>
   <string name="morphe_music_lyrics_translate_failed">Не удалось перевести текст песни</string>
   <string name="morphe_music_lyrics_romanize_hide">Романизация</string>
   <string name="morphe_music_lyrics_romanizing">Романизация…</string>
   <string name="morphe_music_lyrics_romanize_failed">Не удалось романизировать текст</string>
+  <string name="morphe_music_lyrics_translate_only">Только перевод</string>
+  <string name="morphe_music_lyrics_romanize_only">Только романизированный</string>
   <string name="morphe_music_lyrics_copied">Скопировано в буфер обмена</string>
   <string name="morphe_music_lyrics_refreshing">Обновление</string>
   <string name="morphe_music_lyrics_refreshed">Обновлено</string>
-  <string name="morphe_music_lyrics_about_summary">"Текст ищется по названию трека и исполнителю. Вы также можете попробовать кнопку обновления, чтобы вручную переключить версии. Не все включенные сервисы всегда запрашиваются в вашем порядке, но отвечают в зависимости от их скорости"</string>
+  <string name="morphe_music_lyrics_about_summary">"Тексты песен подбираются по названию и исполнителю; нестандартные метаданные могут не найти ничего или найти неправильную версию. Используйте обновление для переключения версий. Провайдеры, отмеченные *, требуют токен. Все включенные провайдеры запрашиваются не всегда в указанном вами порядке, а отвечают в зависимости от их скорости."</string>
   <string name="morphe_music_lyrics_hide_info_title">Скрыть строку с указанием авторства</string>
   <string name="morphe_music_lyrics_hide_info_summary">Скрывать строку с указанием авторства под текстом</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Поменять местами перевод и романизацию</string>

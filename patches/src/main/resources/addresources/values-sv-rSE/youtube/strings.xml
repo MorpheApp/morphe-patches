@@ -75,6 +75,8 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_floating_microphone_button_title">Dölj flytande mikrofonknapp</string>
   <string name="morphe_hide_floating_microphone_button_summary">Döljer den flytande mikrofonknappen nere till höger på skärmen för sökförslag</string>
   <string name="morphe_hide_get_premium_button_title">Dölj knappen Skaffa Premium</string>
+  <string name="morphe_hide_history_shelf_title">Dölj historikhyllan</string>
+  <string name="morphe_hide_history_shelf_summary">Döljer historikhyllan i Du-fliken</string>
   <string name="morphe_hide_horizontal_shelves_title">Dölj horisontella hyllor</string>
   <string name="morphe_hide_horizontal_shelves_summary">Döljer horisontella hyllor som Senaste nytt, Community-inlägg du kanske gillar, Fortsätt titta, Utforska fler kanaler, Utforska fler ämnen, För dig, Senaste videorna, Mest relevanta, Inlägg från kreatörs community, Shopping och Titta igen</string>
   <string name="morphe_hide_hyped_label_title">Dölj hajpetikett</string>
@@ -106,6 +108,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_show_more_button_title">Dölj knappen Visa mer</string>
   <string name="morphe_hide_show_more_button_summary">Döljer expanderingsknappen under videor i sökresultaten</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Dölj fältet med kanaler du prenumererar på</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Dölj kanalnamn i fältet för prenumererade kanaler</string>
   <string name="morphe_hide_surveys_title">Dölj enkäter</string>
   <string name="morphe_hide_surveys_summary">Dölj enkäter och puffar om hur korrekta rekommendationerna är i flödet</string>
   <string name="morphe_hide_ticket_shelf_title">Dölj biljetthylla</string>
@@ -254,6 +257,7 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_section_in_home_feed_title">Dölj kommentarsfältet i hemflödet</string>
   <string name="morphe_hide_comments_community_guidelines_title">Dölj communityns riktlinjer</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Dölj knappen Skapa en Shorts-video</string>
+  <string name="morphe_hide_comments_dislike_button_title">Dölj knappen Ogilla</string>
   <string name="morphe_hide_comments_emoji_button_title">Dölj emoji-knappen</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Dölj filterfältsalternativ</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Döljer alla filterfältsalternativ utom Populärast och Senaste</string>
@@ -263,11 +267,17 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Dölj fält för donatorer i livechatt</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Dölj verktygstips för livechatt</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Döljer verktygstips som visas nära chattinmatningsfältet, till exempel meddelandet om endast prenumeranter</string>
+  <string name="morphe_hide_comments_menu_button_title">Dölj menyknappen</string>
+  <string name="morphe_hide_comments_menu_button_summary">Döljer menyknappen med 3 punkter för varje kommentar</string>
   <string name="morphe_hide_comments_preview_comment_title">Dölj förhandsvisad kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Döljer förhandsvisningen av kommentarer under videon innan det fullständiga kommentarsfältet har öppnats</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Kommentar dold av Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Aktivera minimal kommentarsknapp</string>
+  <string name="morphe_minimal_comments_button_summary">Döljer de glidande korten och deras sidväljare, som visas på kommentarsknappen</string>
   <string name="morphe_hide_comments_thanks_button_title">Dölj knappen Thanks</string>
   <string name="morphe_hide_comments_timestamp_button_title">Dölj tidsstämpelknappen</string>
   <string name="morphe_hide_comments_top_fans_button_title">Dölj knappen \'Toppfans\'</string>
+  <string name="morphe_hide_comments_translate_button_title">Dölj översättningsknappen</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Rensa markerade söklänkar</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Rensar markerade söklänkar och lämnar bara den ursprungliga vanliga texten</string>
   <string name="morphe_hide_keyword_content_screen_title">Nyckelordsfilter</string>
@@ -384,9 +394,17 @@ Rapporter är offentliga och granskas innan en kanal läggs till i en lista. Bor
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Sök i kanalen</string>
   <string name="morphe_channel_search_summary">När du söker medan en kanal är öppen söker du bara i den kanalen</string>
+  <string name="morphe_channel_search_hint">Sök kanal</string>
   <string name="morphe_channel_search_results">Sökresultat för kanaler</string>
   <string name="morphe_channel_search_no_results">Inget hittades i den här kanalen</string>
   <string name="morphe_channel_search_failed">Det gick inte att söka i den här kanalen</string>
+  <string name="morphe_channel_search_sort_relevance">Relevans</string>
+  <string name="morphe_channel_search_sort_most_viewed">Mest visade</string>
+  <string name="morphe_channel_search_sort_least_viewed">Minst visade</string>
+  <string name="morphe_channel_search_sort_newest">Nyaste</string>
+  <string name="morphe_channel_search_sort_oldest">Äldsta</string>
+  <string name="morphe_channel_search_sort_shortest">Shortaste</string>
+  <string name="morphe_channel_search_sort_longest">Längsta</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Länk kopierad till urklipp</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Länk med tidsstämpel kopierad till urklipp</string>
@@ -671,6 +689,8 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Dölj knappen Fråga</string>
+  <string name="morphe_hide_channel_profile_button_title">Dölj kanal och prenumerera-knappen</string>
+  <string name="morphe_hide_channel_profile_button_summary">Döljer kanalavataren och prenumerera-knappen i början av åtgärdsfältet</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Dölj knappen Klipp</string>
   <string name="morphe_hide_clip_button_summary">Detta kanske inte fungerar för vissa användarkonton</string>
@@ -742,6 +762,7 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_swap_create_with_notifications_button_title">Byt knappen Skapa mot knappen Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Om den här inställningen inte träder i kraft kan du testa att byta till inkognitoläget</string>
   <string name="morphe_hide_navigation_button_labels_title">Dölj etiketter för navigeringsknappar</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Dölj pricken för nytt innehåll</string>
   <string name="morphe_hide_navigation_bar_title">Dölj navigeringsfältet</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Det här döljer navigeringsfältet helt, inklusive fliken Ditt YouTube.
 
@@ -1047,7 +1068,7 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_miniplayer_screen_title">Minispelare</string>
   <string name="morphe_miniplayer_screen_summary">Anpassa den minimerade videospelarens utseende och beteende</string>
   <string name="morphe_miniplayer_type_title">Minispelartyp</string>
-  <string name="morphe_miniplayer_hide_title_title">Dölj titel</string>
+  <string name="morphe_miniplayer_hide_title_title">Dölj titel och kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Inaktiverad</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1091,10 +1112,6 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_theme_color_change_foreground_summary">Använd temafärgen för text och ikoner</string>
   <string name="morphe_gradient_loading_screen_title">Aktivera tonad inläsningsskärm</string>
   <string name="morphe_gradient_loading_screen_summary">Visar en tonad bakgrund på inläsningsskärmen istället för en enfärgad</string>
-  <string name="morphe_splash_screen_animation_style_title">Välkomstskärmens stil</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Inaktiverad</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Färg</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <string name="morphe_seekbar_custom_color_title">Aktivera anpassad färg på sökreglaget</string>
   <string name="morphe_seekbar_custom_color_primary_title">Sökreglagets färg</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Ange huvudfärgen för videons förloppsindikator</string>
@@ -1160,13 +1177,6 @@ Tryck här för att öppna DeArrow.ajay.app"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Inaktivera haptik för att ångra sökning</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Inaktivera haptik för långt tryck</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Inaktivera zoomhaptik</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Mediestyrning i aviseringar</string>
-  <string name="morphe_notification_media_screen_summary">Anpassa de uppspelningskontroller som visas på låsskärmen och i aviseringspanelen</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Dölj knapparna Föregående &amp; Nästa</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Döljer knapparna Föregående och Nästa i medieaviseringen, på låsskärmen och för hörlursstyrning</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Inaktivera sökreglaget</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Förhindrar att sökreglaget kan dras på låsskärmen och i aviseringspanelen</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Om du nyligen har ändrat dina inloggningsuppgifter, avinstallera och installera om MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1198,6 +1208,8 @@ Tryck här för att öppna DeArrow.ajay.app"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Visa knappen Kvalitet</string>
   <string name="morphe_video_quality_dialog_button_summary">Tryck länge för att återställa till standardkvaliteten</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Visa upplösning på kvalitetsknappen</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Visa upplösningen, till exempel 1080, i stället för en etikett som FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Anpassad meny för uppspelningshastighet</string>
   <string name="morphe_restore_old_speed_menu_title">Återställ gammal meny för uppspelningshastighet</string>
@@ -1283,7 +1295,14 @@ Videouppspelning med AV1 kan hacka eller tappa bildrutor."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Visa förfalskningen i \'Statistik för nördar\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Återställ gammalt videoåtgärdsfält</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Åtgärdar att ogilla-ningar inte visas och att videoåtgärdsknappar inte kan döljas
+  <string name="morphe_restore_old_video_action_bar_summary">"Åtgärdar att videons åtgärdsknappar inte kan döljas
 
-Begränsning: Återgår till gammaldags 'Fler videor'-överlägg"</string>
+Begränsning: Återgår till gammal stil för 'Fler videor'-överlägget"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Ikonstil i spelaren</string>
+  <string name="morphe_player_icon_style_entry_auto">Automatisk</string>
+  <string name="morphe_player_icon_style_entry_default">Standard</string>
+  <string name="morphe_player_icon_style_entry_regular">Tunn</string>
+  <string name="morphe_player_icon_style_entry_bold">Fet</string>
+  <string name="morphe_shorts_icon_style_title">Ikonstil för Shorts</string>
 </resources>

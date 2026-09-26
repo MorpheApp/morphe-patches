@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/microsoft/fluentui-system-icons/blob/17be10491111b47687d09748fe23a037ecc35881/assets/Arrow%20Download/SVG/ic_fluent_arrow_download_24_regular.svg
+    Changes made: Converted to a vector drawable, added the tap animation.
+
+    MIT License
+
+    Copyright (c) 2020 Microsoft Corporation
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <group
+                android:name="icon_group"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="@android:color/white"
+                    android:pathData="M18.2498 20.5009C18.664 20.5008 19 20.8365 19 21.2507C19 21.6649 18.6644 22.0008 18.2502 22.0009L5.25022 22.0047C4.836 22.0048 4.5 21.6691 4.5 21.2549C4.5 20.8407 4.83557 20.5048 5.24978 20.5047L18.2498 20.5009ZM11.6482 2.01271L11.75 2.00586C12.1297 2.00586 12.4435 2.28801 12.4932 2.65409L12.5 2.75586L12.499 16.4409L16.2208 12.7205C16.4871 12.4543 16.9038 12.4301 17.1974 12.648L17.2815 12.7206C17.5477 12.9869 17.5719 13.4036 17.354 13.6972L17.2814 13.7813L12.2837 18.7779C12.0176 19.044 11.6012 19.0683 11.3076 18.8507L11.2235 18.7782L6.22003 13.7816C5.92694 13.4889 5.92661 13.014 6.21931 12.7209C6.48539 12.4545 6.90204 12.43 7.1958 12.6477L7.27997 12.7202L10.999 16.4339L11 2.75586C11 2.37616 11.2822 2.06237 11.6482 2.01271L11.75 2.00586L11.6482 2.01271Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <!-- Scale animation (slight bounce) -->
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="150"
+                    android:valueFrom="1"
+                    android:valueTo="0.82"
+                    android:interpolator="@android:interpolator/overshoot" />
+
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="150"
+                    android:valueFrom="1"
+                    android:valueTo="0.82"
+                    android:interpolator="@android:interpolator/overshoot" />
+
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="150"
+                    android:startOffset="150"
+                    android:valueFrom="0.91"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/anticipate_overshoot" />
+
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="150"
+                    android:startOffset="150"
+                    android:valueFrom="0.91"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/anticipate_overshoot" />
+
+                <!-- Translation Y - move down and back up -->
+                <objectAnimator
+                    android:propertyName="translateY"
+                    android:duration="150"
+                    android:valueFrom="0"
+                    android:valueTo="3"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+
+                <objectAnimator
+                    android:propertyName="translateY"
+                    android:duration="150"
+                    android:startOffset="150"
+                    android:valueFrom="3"
+                    android:valueTo="0"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

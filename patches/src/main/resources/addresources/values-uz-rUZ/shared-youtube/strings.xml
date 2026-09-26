@@ -17,6 +17,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Sozlashni tugatish uchun qayta ishga tushirish</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -122,6 +123,7 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR ga kirishning iloji yo‘q: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR dan chiqib ketdi</string>
   <string name="morphe_oauth2_toast_invalid">Yaroqsiz VR kirish tokeni, VR ga yana kirishni sinab ko‘ring</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolini o‘chirish</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

@@ -75,6 +75,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">플로팅 마이크 버튼 숨기기</string>
   <string name="morphe_hide_floating_microphone_button_summary">검색 추천 화면 오른쪽 하단에 있는 플로팅 마이크 버튼을 숨깁니다</string>
   <string name="morphe_hide_get_premium_button_title">Premium 구매 버튼 숨기기</string>
+  <string name="morphe_hide_history_shelf_title">기록 선반 숨기기</string>
+  <string name="morphe_hide_history_shelf_summary">내 페이지 탭에서 기록 선반을 숨깁니다</string>
   <string name="morphe_hide_horizontal_shelves_title">좌우 슬라이드 선반 숨기기</string>
   <string name="morphe_hide_horizontal_shelves_summary">다음 선반을 숨깁니다:\n뉴스 속보, 내가 좋아할 만한 커뮤니티 게시물, 이어서 시청하기, 채널 더보기, 다른 주제 더 살펴보기, 추천, 최신 동영상, 관련성, 크리에이터 커뮤니티 게시물, 라이브 쇼핑, 다시 시청하기</string>
   <string name="morphe_hide_hyped_label_title">하이프 관련 라벨 숨기기</string>
@@ -106,6 +108,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_title">\'자세히 보기\' 버튼 숨기기</string>
   <string name="morphe_hide_show_more_button_summary">검색 결과에서 동영상 아래에 있는 \'자세히 보기\' 버튼을 숨깁니다</string>
   <string name="morphe_hide_subscribed_channels_bar_title">구독 채널바 숨기기</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">구독 채널바에서 채널 이름 숨기기</string>
   <string name="morphe_hide_surveys_title">설문 조사 숨기기</string>
   <string name="morphe_hide_surveys_summary">피드 추천 정확도에 대한 설문 조사 및 안내 메시지를 숨깁니다</string>
   <string name="morphe_hide_ticket_shelf_title">콘서트 선반 숨기기</string>
@@ -254,6 +257,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">홈 피드에서 댓글 섹션 숨기기</string>
   <string name="morphe_hide_comments_community_guidelines_title">커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Shorts 만들기 버튼 숨기기</string>
+  <string name="morphe_hide_comments_dislike_button_title">싫어요 버튼 숨기기</string>
   <string name="morphe_hide_comments_emoji_button_title">이모지 버튼 숨기기</string>
   <string name="morphe_hide_comments_filter_bar_options_title">필터 바 옵션 숨기기</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'인기순\' 및 \'최신순\'을 제외한 모든 필터 바 옵션을 숨깁니다</string>
@@ -263,11 +267,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">실시간 채팅 후원자 섹션 숨기기</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">실시간 채팅 도구 설명 숨기기</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">구독자 전용 채팅 안내와 같이 채팅 입력창 주변에 표시되는 도구 설명 팝업을 숨깁니다</string>
+  <string name="morphe_hide_comments_menu_button_title">메뉴 버튼 숨기기</string>
+  <string name="morphe_hide_comments_menu_button_summary">각 댓글의 3점 메뉴 버튼을 숨깁니다</string>
   <string name="morphe_hide_comments_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_comments_preview_comment_summary">전체 댓글 섹션을 열기 전에 동영상 아래에 있는 댓글 미리보기를 숨깁니다</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Morphe에 의해 댓글이 숨겨졌습니다...</string>
+  <string name="morphe_minimal_comments_button_title">최소화된 댓글 버튼 활성화하기</string>
+  <string name="morphe_minimal_comments_button_summary">댓글 버튼에 표시되는 슬라이딩 카드와 페이지 선택기를 숨깁니다</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks 버튼 숨기기</string>
   <string name="morphe_hide_comments_timestamp_button_title">타임스탬프 버튼 숨기기</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'탑 팬\' 버튼 숨기기</string>
+  <string name="morphe_hide_comments_translate_button_title">번역 버튼 숨기기</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">강조 표시된 검색 링크 정리하기</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">강조 표시된 검색 링크를 정리하고, 원본 일반 텍스트만 남깁니다</string>
   <string name="morphe_hide_keyword_content_screen_title">키워드 필터</string>
@@ -384,9 +394,17 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">채널 내 검색</string>
   <string name="morphe_channel_search_summary">채널을 열어 둔 상태에서 검색하면 해당 채널 내에서만 검색합니다</string>
+  <string name="morphe_channel_search_hint">채널 검색</string>
   <string name="morphe_channel_search_results">채널 검색 결과</string>
   <string name="morphe_channel_search_no_results">이 채널에서 아무것도 찾을 수 없습니다</string>
   <string name="morphe_channel_search_failed">이 채널을 검색할 수 없습니다</string>
+  <string name="morphe_channel_search_sort_relevance">관련순</string>
+  <string name="morphe_channel_search_sort_most_viewed">조회순</string>
+  <string name="morphe_channel_search_sort_least_viewed">조회 적은 순</string>
+  <string name="morphe_channel_search_sort_newest">최신순</string>
+  <string name="morphe_channel_search_sort_oldest">오래된순</string>
+  <string name="morphe_channel_search_sort_shortest">최단</string>
+  <string name="morphe_channel_search_sort_longest">긴순</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">타임스탬프가 표기된 링크를 클립보드에 복사하였습니다</string>
@@ -673,6 +691,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">질문하기 버튼 숨기기</string>
+  <string name="morphe_hide_channel_profile_button_title">채널 및 구독 버튼 숨기기</string>
+  <string name="morphe_hide_channel_profile_button_summary">작업 버튼 바의 시작 부분에서 채널 아바타와 구독 버튼을 숨깁니다</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">클립 버튼 숨기기</string>
   <string name="morphe_hide_clip_button_summary">일부 사용자 계정에서는 작동하지 않을 수 있습니다</string>
@@ -744,6 +764,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swap_create_with_notifications_button_title">만들기 버튼과 알림 버튼의 위치 교환하기</string>
   <string name="morphe_swap_create_with_notifications_button_summary">이 설정을 변경해도 적용되지 않는 경우에는 시크릿 모드로 전환해 보세요</string>
   <string name="morphe_hide_navigation_button_labels_title">하단바 버튼 라벨 숨기기</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">새 콘텐츠 알림점 숨기기</string>
   <string name="morphe_hide_navigation_bar_title">하단바 숨기기</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"이 설정을 사용하면 ‘내 페이지’ 탭을 포함한 하단바가 완전히 숨겨집니다.
 
@@ -1049,7 +1070,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_miniplayer_screen_title">미니 플레이어</string>
   <string name="morphe_miniplayer_screen_summary">최소화된 동영상 플레이어의 레이아웃 및 동작을 설정할 수 있습니다</string>
   <string name="morphe_miniplayer_type_title">미니 플레이어 유형</string>
-  <string name="morphe_miniplayer_hide_title_title">제목 숨기기</string>
+  <string name="morphe_miniplayer_hide_title_title">제목 및 채널 숨기기</string>
   <string name="morphe_miniplayer_type_entry_0">사용 안함</string>
   <string name="morphe_miniplayer_type_entry_1">기본값</string>
   <string name="morphe_miniplayer_type_entry_2">최소화 1</string>
@@ -1093,10 +1114,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_theme_color_change_foreground_summary">텍스트와 아이콘에 테마 색상을 사용합니다</string>
   <string name="morphe_gradient_loading_screen_title">그라데이션 색상 로딩 화면 활성화하기</string>
   <string name="morphe_gradient_loading_screen_summary">로딩 화면에 단색 대신 그라데이션 배경을 표시합니다</string>
-  <string name="morphe_splash_screen_animation_style_title">스플래시 애니메이션 스타일</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">사용 안함</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">컬러</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">흑백</string>
   <string name="morphe_seekbar_custom_color_title">사용자 정의 재생바 색상 활성화하기</string>
   <string name="morphe_seekbar_custom_color_primary_title">재생바 색상</string>
   <string name="morphe_seekbar_custom_color_primary_summary">동영상 진행률의 기본 색상을 설정할 수 있습니다</string>
@@ -1162,13 +1179,6 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_disable_haptic_feedback_seek_undo_title">탐색 취소 진동 피드백 비활성화하기</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">길게 탭하기 진동 피드백 비활성화하기</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">동영상 확대 진동 피드백 비활성화하기</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">알림 미디어 컨트롤</string>
-  <string name="morphe_notification_media_screen_summary">잠금 화면 및 알림 패널에 표시되는 재생 컨트롤을 설정할 수 있습니다</string>
-  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 동영상 버튼 숨기기</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 및 다음 버튼을 숨깁니다</string>
-  <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면 및 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">최근에 계정 로그인 정보를 변경했다면 MicroG를 제거하고 다시 설치하세요.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1200,6 +1210,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">동영상 화질 버튼 표시하기</string>
   <string name="morphe_video_quality_dialog_button_summary">버튼을 길게 탭하여 동영상 화질을 기본값으로 초기화할 수 있습니다</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">품질 버튼에 해상도 표시</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">FHD와 같은 레이블 대신 1080과 같은 해상도를 표시합니다.</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">사용자 정의 동영상 재생 속도 활성화하기</string>
   <string name="morphe_restore_old_speed_menu_title">이전 동영상 재생 속도 메뉴 복원하기</string>
@@ -1285,7 +1297,14 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">전문 통계에서 속이기 정보 표시하기</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">이전 동영상 작업 버튼바 복원하기</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"싫어요 수가 표시되지 않거나 동영상 작업 버튼을 숨길 수 없는 문제를 수정합니다
+  <string name="morphe_restore_old_video_action_bar_summary">"동영상 작업 버튼을 숨길 수 없는 문제를 수정합니다
 
-제한 사항: 이전 '동영상 더보기' 오버레이가 복원됩니다"</string>
+제한 사항: 이전 스타일의 '동영상 더보기' 오버레이로 되돌아갑니다"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">플레이어 아이콘 스타일</string>
+  <string name="morphe_player_icon_style_entry_auto">자동</string>
+  <string name="morphe_player_icon_style_entry_default">기본값</string>
+  <string name="morphe_player_icon_style_entry_regular">가는</string>
+  <string name="morphe_player_icon_style_entry_bold">굵은</string>
+  <string name="morphe_shorts_icon_style_title">Shorts 아이콘 스타일</string>
 </resources>

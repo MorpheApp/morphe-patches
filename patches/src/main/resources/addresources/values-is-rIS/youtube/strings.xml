@@ -75,6 +75,8 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_floating_microphone_button_title">Fela fljótandi hljóðnemahnapp</string>
   <string name="morphe_hide_floating_microphone_button_summary">Felur fljótandi hljóðnemahnapp neðst í hægra horninu á skjá leitaruppástungna</string>
   <string name="morphe_hide_get_premium_button_title">Fela hnappinn \'Fá Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">Fela spilunarsöguhilluna</string>
+  <string name="morphe_hide_history_shelf_summary">Felur spilunarsöguhilluna í Þú-flipanum</string>
   <string name="morphe_hide_horizontal_shelves_title">Fela láréttar raðir</string>
   <string name="morphe_hide_horizontal_shelves_summary">Felur láréttar raðir eins og Fréttir, Samfélagsfærslur sem þú gætir haft áhuga á, Halda áfram að horfa, Fleiri rásir, Fleiri efni, Fyrir þig, Nýjustu myndbönd, Mest viðeigandi, Samfélagsfærslur höfunda, Verslun og Horfa aftur</string>
   <string name="morphe_hide_hyped_label_title">Fela „Hyped“ merkið</string>
@@ -106,6 +108,7 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_show_more_button_title">Fela \'Sýna meira\' hnappinn</string>
   <string name="morphe_hide_show_more_button_summary">Hyl leiðbeiningar listunum</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Fela áskriftarrásastiku</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Fela nöfn rása í áskriftastiku</string>
   <string name="morphe_hide_surveys_title">Fela kannelana</string>
   <string name="morphe_hide_surveys_summary">Hylur kannanir og hröggur um nákvæmni um tillögur um umhverfi</string>
   <string name="morphe_hide_ticket_shelf_title">Fela miðaskjá</string>
@@ -254,6 +257,7 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_comments_section_in_home_feed_title">Húfa viðfjörðunardeild á Heim</string>
   <string name="morphe_hide_comments_community_guidelines_title">Fela samfélagsreglur</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Fela \'Búa til stutta vídeó\' hnappinn</string>
+  <string name="morphe_hide_comments_dislike_button_title">Fela hnappinn „Ekki líka við“</string>
   <string name="morphe_hide_comments_emoji_button_title">Fela Emoji hnapp</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Fela valmöguleika stjórnibarans</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Félur alla valmöguleika stjórnibarans nema \'Efst\' og \'Nýjast\'</string>
@@ -263,11 +267,17 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Hylja „Paramert í lausnir“ ummerki</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Fela upplýsingaglugga í beinu spjalli</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Felur upplýsingaglugga sem birtast nálægt spjallstikunni, eins og tilkynningu um spjall eingöngu fyrir áskrifendur</string>
+  <string name="morphe_hide_comments_menu_button_title">Fela valmyndarhnapp</string>
+  <string name="morphe_hide_comments_menu_button_summary">Felur þriggja punkta valmyndarhnappinn hverrar athugasemdar</string>
   <string name="morphe_hide_comments_preview_comment_title">Fela forsýningu athugasemda</string>
   <string name="morphe_hide_comments_preview_comment_summary">Felur athugasmd forskoðunina undir vídeó áður en full athugasmdakassinn opnast</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Athugasemd falin af Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Virkja lágmarksathugasemdahnapp</string>
+  <string name="morphe_minimal_comments_button_summary">Felur rennispjöldin og síðuveljarann sem birtast á athugasemdahnappinum</string>
   <string name="morphe_hide_comments_thanks_button_title">Fela þakknsemishnappinn</string>
   <string name="morphe_hide_comments_timestamp_button_title">Fela Tímalínu hnapp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Fela \'Topp aðdáendur\' hnappinn</string>
+  <string name="morphe_hide_comments_translate_button_title">Fela þýðingarhnappinn</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Hreinsa lýst tengla í leit</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Hreinsar lýsta leittengla og skilur eftir aðeins upprunalega textann</string>
   <string name="morphe_hide_keyword_content_screen_title">Hraðvæðir</string>
@@ -384,9 +394,17 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Leita í rásinni</string>
   <string name="morphe_channel_search_summary">Meðan rás er opin er aðeins leitað í þeirri rás</string>
+  <string name="morphe_channel_search_hint">Leita að rás</string>
   <string name="morphe_channel_search_results">Leitarniðurstöður rása</string>
   <string name="morphe_channel_search_no_results">Ekkert fannst á þessari rás</string>
   <string name="morphe_channel_search_failed">Ekki tókst að leita í þessari rás</string>
+  <string name="morphe_channel_search_sort_relevance">Mikilvægi</string>
+  <string name="morphe_channel_search_sort_most_viewed">Mest áhorft</string>
+  <string name="morphe_channel_search_sort_least_viewed">Minnst áhorft</string>
+  <string name="morphe_channel_search_sort_newest">Nýjustu</string>
+  <string name="morphe_channel_search_sort_oldest">Elstu</string>
+  <string name="morphe_channel_search_sort_shortest">Stystu</string>
+  <string name="morphe_channel_search_sort_longest">Lengstu</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Tengill kopíruðu á klippiborðið</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Tengill með tímastampu kopíruðu á klippiborðið</string>
@@ -669,6 +687,8 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Felur Spyrja hnappinn</string>
+  <string name="morphe_hide_channel_profile_button_title">Fela rás og áskriftarhnapp</string>
+  <string name="morphe_hide_channel_profile_button_summary">Felur sniðsmynd rásar og áskriftarhnappinn í byrjun aðgerðastikunnar</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Felur Clip hnappinn</string>
   <string name="morphe_hide_clip_button_summary">Þetta virkar kannski ekki fyrir sum notendareikninga</string>
@@ -740,6 +760,7 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_swap_create_with_notifications_button_title">Skildu við skipti Create hnappinn og Notifications hnappinn</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ef breyting á þessari stillingu hefur ekki áhrif skaltu prófa að skipta yfir í leynistillinga ham</string>
   <string name="morphe_hide_navigation_button_labels_title">Fela stýrihnappamerki</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Fela punkt fyrir nýtt efni</string>
   <string name="morphe_hide_navigation_bar_title">Fela stjórnstikur</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Þetta fela heilt og hljótt nautastjórnstikuna, þar á meðal 'Þér' flipa.
 
@@ -1042,6 +1063,7 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_miniplayer_screen_title">Mini spilari</string>
   <string name="morphe_miniplayer_screen_summary">Sérsnið útlit og hegðun minnkaðs myndavörpunar</string>
   <string name="morphe_miniplayer_type_title">Gerð Mini spilara</string>
+  <string name="morphe_miniplayer_hide_title_title">Fela titil og rás</string>
   <string name="morphe_miniplayer_type_entry_0">Gerðu óvirkt</string>
   <string name="morphe_miniplayer_type_entry_1">Lágmark</string>
   <string name="morphe_miniplayer_type_entry_2">Tafla</string>
@@ -1085,10 +1107,6 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_theme_color_change_foreground_summary">Notaðu þemalitinn fyrir texta og tákn</string>
   <string name="morphe_gradient_loading_screen_title">Vírúð álitunni á ræsingarskjáinn</string>
   <string name="morphe_gradient_loading_screen_summary">Sýnir gradient bakgrunn á hleðslaskjánum í stað eins lit</string>
-  <string name="morphe_splash_screen_animation_style_title">Stíll ræsingarskjásins</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Gerður óvirkur</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Litur</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monókrómar</string>
   <string name="morphe_seekbar_custom_color_title">Vírúð sérsniðnum litastiku</string>
   <string name="morphe_seekbar_custom_color_primary_title">Lit leitarstikunnar</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Stilltu aðallitinn á vídeóleiðarstikunni</string>
@@ -1154,13 +1172,6 @@ Bankaðu hér til að opna DeArrow.ajay.app"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Lokað afturskiptunar hapticum</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Lokað snertiapulptareignum</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Lokað zoom hapticum</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Athugasemda plagar</string>
-  <string name="morphe_notification_media_screen_summary">Sérsniðu útlitið og hegðun mínkaðs vídeó</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Fela fyrri &amp; næstu hnappa</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Hylur „Fyrri“ og „Næsta“ hnappi á miðilupplýsingum, læsiskjármynd og heyrnartækjastjórn</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Lokað dul</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Kemur í veg fyrir að draga leitarstikuna á læsiskjármynd og á miðilupplýsingastjórn</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ef þú hefur nýlega breytt innskráningartölum reikningsins þíns, afmálið og settu MicroG upp á ný.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1192,6 +1203,8 @@ Bankaðu hér til að opna DeArrow.ajay.app"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Sýnir hnappinn gæðavideo</string>
   <string name="morphe_video_quality_dialog_button_summary">Snertu og haltu til að endurstill gæðið í sjálfgefið</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Sýna upplausn á gæðahnappi</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Sýna upplausn, svo sem 1080, í stað merkis eins og FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Sérsniðin hraðavalmynd</string>
   <string name="morphe_restore_old_speed_menu_title">Endurheimta gamla hraðavalmynd</string>
@@ -1277,7 +1290,14 @@ Myndbandsspilun með AV1 getur hakka eða orðið með rammalegsfall."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Sýna spoofun í \'Stats for nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Endurstaða gamla myndavélarinnar</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Lagfærir vandamál með óbirt dislík og ekki hægt er að fela stjórntakkana í myndbandi
+  <string name="morphe_restore_old_video_action_bar_summary">"Lagfærir að ekki er hægt að fela myndbandsaðgerðahnappana
 
-Takmörkun: Sníð við gamla stíl 'Fleiri myndbönd' lagskiptarinn"</string>
+Takmörkun: Snýr aftur í gamla 'Fleiri myndbönd' yfirlagsstílinn"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Táknstíll spilara</string>
+  <string name="morphe_player_icon_style_entry_auto">Sjálfvirkt</string>
+  <string name="morphe_player_icon_style_entry_default">Sjálfgefið</string>
+  <string name="morphe_player_icon_style_entry_regular">Þunnur</string>
+  <string name="morphe_player_icon_style_entry_bold">Feitletraður</string>
+  <string name="morphe_shorts_icon_style_title">Stíll Shorts-táknsins</string>
 </resources>

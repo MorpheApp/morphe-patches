@@ -75,6 +75,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">Приховати плаваючу кнопку мікрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary">Приховує плаваючу кнопку мікрофона в правому нижньому куті екрана пошукових підказок</string>
   <string name="morphe_hide_get_premium_button_title">Приховати кнопку \"Придбати підписку Premium\"</string>
+  <string name="morphe_hide_history_shelf_title">Приховати панель \"Історія\"</string>
+  <string name="morphe_hide_history_shelf_summary">Приховує панель \"Історія\" на вкладці \"Ви\"</string>
   <string name="morphe_hide_horizontal_shelves_title">Приховати горизонтальні панелі</string>
   <string name="morphe_hide_horizontal_shelves_summary">Приховує горизонтальні панелі, зокрема Останні новини, Рекомендовані дописи спільноти, Продовжити перегляд, Перегляньте більше каналів, Перегляньте більше тем, Для вас, Останні відео, Найбільш релевантні, Дописи зі спільноти автора, Покупки та Переглянути знову</string>
   <string name="morphe_hide_hyped_label_title">Приховати мітку \"У тренді\"</string>
@@ -106,6 +108,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_title">Приховати кнопку \"Показати більше\"</string>
   <string name="morphe_hide_show_more_button_summary">Приховує кнопку розгортання під відео в результатах пошуку</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Приховати панель підписок</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Приховати назви каналів у панелі підписаних каналів</string>
   <string name="morphe_hide_surveys_title">Приховати опитування</string>
   <string name="morphe_hide_surveys_summary">Приховує опитування та підказки щодо точності рекомендацій у стрічці</string>
   <string name="morphe_hide_ticket_shelf_title">Приховати панель квитків</string>
@@ -254,6 +257,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">Приховати секцію коментарів у стрічці</string>
   <string name="morphe_hide_comments_community_guidelines_title">Приховати правила спільноти</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Приховати кнопку \"Створити Short\"</string>
+  <string name="morphe_hide_comments_dislike_button_title">Приховати кнопку \"Дизлайк\"</string>
   <string name="morphe_hide_comments_emoji_button_title">Приховати кнопку \"Емодзі\"</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Приховати параметри панелі фільтрів</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Приховує всі варіанти панелі фільтрів, окрім  \"Найпопулярніші\" та \"Найновіші\"</string>
@@ -263,11 +267,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Приховати панель спонсорів у живому чаті</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Приховати підказки живого чату</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Приховує спливні підказки біля панелі вводу чату, наприклад повідомлення про чат лише для підписників</string>
+  <string name="morphe_hide_comments_menu_button_title">Приховати кнопку \"Меню\"</string>
+  <string name="morphe_hide_comments_menu_button_summary">Приховує кнопку меню з трьома крапками для кожного коментаря</string>
   <string name="morphe_hide_comments_preview_comment_title">Приховати прев\'ю коментар</string>
   <string name="morphe_hide_comments_preview_comment_summary">Приховує попередній перегляд коментаря під відео до повного відкриття секції коментарів</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Коментар приховано Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Увімкнути мінімалістичну кнопку коментарів</string>
+  <string name="morphe_minimal_comments_button_summary">Приховує кнопки-картки, що з\'являються, та їхній перемикач сторінок на кнопці коментарів</string>
   <string name="morphe_hide_comments_thanks_button_title">Приховати кнопку \"Дякую\"</string>
   <string name="morphe_hide_comments_timestamp_button_title">Приховати кнопку позначки часу</string>
   <string name="morphe_hide_comments_top_fans_button_title">Приховати кнопку \"Топ фанати\"</string>
+  <string name="morphe_hide_comments_translate_button_title">Приховати кнопку \"Перекласти\"</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Очищувати виділені пошукові посилання</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Очищує виділені пошукові посилання, залишаючи лише оригінальний звичайний текст</string>
   <string name="morphe_hide_keyword_content_screen_title">Фільтр ключових слів</string>
@@ -384,9 +394,17 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Пошук на каналі</string>
   <string name="morphe_channel_search_summary">Пошук під час відкритого каналу шукає лише в цьому каналі</string>
+  <string name="morphe_channel_search_hint">Пошук на каналі</string>
   <string name="morphe_channel_search_results">Результати пошуку з каналу</string>
   <string name="morphe_channel_search_no_results">Нічого не знайдено на цьому каналі</string>
   <string name="morphe_channel_search_failed">Не вдалося виконати пошук на цьому каналі</string>
+  <string name="morphe_channel_search_sort_relevance">Релевантність</string>
+  <string name="morphe_channel_search_sort_most_viewed">Найбільш переглядані</string>
+  <string name="morphe_channel_search_sort_least_viewed">Найменш переглядані</string>
+  <string name="morphe_channel_search_sort_newest">Найновіші</string>
+  <string name="morphe_channel_search_sort_oldest">Найстаріші</string>
+  <string name="morphe_channel_search_sort_shortest">Найкоротші</string>
+  <string name="morphe_channel_search_sort_longest">Найдовші</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Посилання скопійовано в буфер обміну</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Посилання з позначкою часу скопійовано в буфер обміну</string>
@@ -671,6 +689,8 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Приховати кнопку \"Запитати\"</string>
+  <string name="morphe_hide_channel_profile_button_title">Приховати канал і кнопку підписки</string>
+  <string name="morphe_hide_channel_profile_button_summary">Приховує аватар каналу та кнопку підписки на початку панелі дій</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Приховати кнопку \"Кліп\"</string>
   <string name="morphe_hide_clip_button_summary">Може не працювати для деяких облікових записів</string>
@@ -742,6 +762,7 @@ Second \"item\" text"</string>
   <string name="morphe_swap_create_with_notifications_button_title">Поміняти місцями кнопку \"Створити\" та кнопку \"Сповіщення\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Якщо зміна цього налаштування не набирає чинності, спробуйте перейти в анонімний режим</string>
   <string name="morphe_hide_navigation_button_labels_title">Приховати підписи кнопок навігації</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Приховати крапку нового контенту</string>
   <string name="morphe_hide_navigation_bar_title">Приховати панель навігації</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Це повністю приховує панель навігації, включаючи вкладку \"Ви\".
 
@@ -1046,7 +1067,7 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">Мініплеєр</string>
   <string name="morphe_miniplayer_screen_summary">Налаштування вигляду та поведінки мінімізованого відеоплеєра</string>
   <string name="morphe_miniplayer_type_title">Тип мініплеєра</string>
-  <string name="morphe_miniplayer_hide_title_title">Сховати назву</string>
+  <string name="morphe_miniplayer_hide_title_title">Приховати назву та канал</string>
   <string name="morphe_miniplayer_type_entry_0">Вимкнено</string>
   <string name="morphe_miniplayer_type_entry_1">Стандартний</string>
   <string name="morphe_miniplayer_type_entry_2">Мінімальний</string>
@@ -1090,10 +1111,6 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_change_foreground_summary">Використовувати колір теми для тексту та іконок</string>
   <string name="morphe_gradient_loading_screen_title">Увімкнути градієнт завантаження</string>
   <string name="morphe_gradient_loading_screen_summary">Показує градієнтний фон на екрані завантаження замість суцільного кольору</string>
-  <string name="morphe_splash_screen_animation_style_title">Стиль заставки</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Вимкнено</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Кольорова</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Монохромний</string>
   <string name="morphe_seekbar_custom_color_title">Увімкнути власний колір смуги відтворення</string>
   <string name="morphe_seekbar_custom_color_primary_title">Колір смуги відтворення</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Встановлює основний колір смуги прогресу відтворення відео</string>
@@ -1159,13 +1176,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Вимкнути вібрацію скасування перемотування</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Вимкнути вібрацію при тривалому натисканні</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Вимкнути вібрацію при масштабуванні</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Елементи керування медіа у сповіщеннях</string>
-  <string name="morphe_notification_media_screen_summary">Налаштування елементів керування відтворенням на екрані блокування та в панелі сповіщень</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Приховати кнопки Попереднє та Наступне</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Приховує кнопки \"Попереднє\" та \"Наступне\" у сповіщеннях медіаплеєра, на екрані блокування та в елементах керування навушниками</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Вимкнути смугу відтворення</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Запобігає перетягуванню смуги відтворення на екрані блокування та в панелі сповіщень</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Якщо Ви нещодавно змінили дані для входу у свій обліковий запис, видаліть і повторно встановіть MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1197,6 +1207,8 @@ Second \"item\" text"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Показати кнопку \"Якість\"</string>
   <string name="morphe_video_quality_dialog_button_summary">Натисніть і утримуйте для скидання якості до типової</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Показати роздільну здатність на кнопці Якість</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Показувати роздільну здатність, наприклад 1080, замість позначки, як-от FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Власне меню швидкості відтворення</string>
   <string name="morphe_restore_old_speed_menu_title">Відновити старе меню швидкості відтворення</string>
@@ -1282,7 +1294,14 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Показати підміну в \"Статистиці для сисадмінів\"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Відновити стару панель дій відео</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Виправляє відсутність лайків/дизлайків та неможливість приховати кнопки дій відео
+  <string name="morphe_restore_old_video_action_bar_summary">"Виправляє неможливість приховати кнопки дій відео
 
 Обмеження: повертає старий стиль накладки \"Інші відео\""</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Стиль іконок плеєра</string>
+  <string name="morphe_player_icon_style_entry_auto">Автоматично</string>
+  <string name="morphe_player_icon_style_entry_default">Типова</string>
+  <string name="morphe_player_icon_style_entry_regular">Тонкий</string>
+  <string name="morphe_player_icon_style_entry_bold">Жирний</string>
+  <string name="morphe_shorts_icon_style_title">Стиль іконки Shorts</string>
 </resources>

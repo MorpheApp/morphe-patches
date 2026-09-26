@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     https://github.com/google/material-design-icons/blob/c4daeb98d119754cc058ef366d69150fed76ec2d/symbols/android/restart_alt/materialsymbolsoutlined/restart_alt_gradN25_24px.xml
-    Changes made: Icon has been resized.
+    Changes made: Icon has been resized, added the tap animation.
 
     Copyright 2022 Google
 
@@ -17,13 +17,63 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="24.0dip"
-    android:width="24.0dip"
-    android:viewportWidth="24.0"
-    android:viewportHeight="24.0">
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
 
-  <path
-      android:fillColor="@android:color/white"
-      android:pathData="M7.748,2.95A10,10 0,0 0,4 6.001V3a1,1 0,0 0,-2 0v6h6a1,1 0,0 0,0 -2H5.757a8,8 0,0 1,14.044 3.225,1 1,0 0,0 1.95,-0.445A10,10 0,0 0,7.748 2.95ZM3.004,13.033a1.001,1.001 0,0 0,-0.752 1.198A10,10 0,0 0,20 17.997V21a1,1 0,0 0,2 0v-6h-6a1,1 0,0 0,0 2h2.244a8,8 0,0 1,-14.042 -3.215,1 1,0 0,0 -1.198,-0.752Z" />
-</vector>
+    <aapt:attr name="android:drawable">
+        <vector
+            android:height="24.0dip"
+            android:width="24.0dip"
+            android:viewportWidth="24.0"
+            android:viewportHeight="24.0">
+            <group
+                android:name="icon_group"
+                android:pivotX="12"
+                android:pivotY="12">
+              <path
+                  android:fillColor="@android:color/white"
+                  android:pathData="M7.748,2.95A10,10 0,0 0,4 6.001V3a1,1 0,0 0,-2 0v6h6a1,1 0,0 0,0 -2H5.757a8,8 0,0 1,14.044 3.225,1 1,0 0,0 1.95,-0.445A10,10 0,0 0,7.748 2.95ZM3.004,13.033a1.001,1.001 0,0 0,-0.752 1.198A10,10 0,0 0,20 17.997V21a1,1 0,0 0,2 0v-6h-6a1,1 0,0 0,0 2h2.244a8,8 0,0 1,-14.042 -3.215,1 1,0 0,0 -1.198,-0.752Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="450"
+                    android:startOffset="80"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="80"
+                    android:valueFrom="1"
+                    android:valueTo="0.88"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="100"
+                    android:startOffset="530"
+                    android:valueFrom="0.88"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="80"
+                    android:valueFrom="1"
+                    android:valueTo="0.88"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="100"
+                    android:startOffset="530"
+                    android:valueFrom="0.88"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

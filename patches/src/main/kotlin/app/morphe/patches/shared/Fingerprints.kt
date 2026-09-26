@@ -15,6 +15,7 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -131,6 +132,55 @@ internal object SpannableStringBuilderFingerprint : Fingerprint(
         string(
             "Failed to set PB Style Run Extension in TextComponentSpec.",
             comparison = StringComparisonType.STARTS_WITH
+        )
+    )
+)
+
+internal object TextComponentConstructorFingerprint : Fingerprint(
+    filters = listOf(
+        string("TextComponent")
+    ),
+    custom = { method, _ ->
+        // 20.23+ is public.
+        // 20.22 and lower is private.
+        AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+    }
+)
+
+internal object TextComponentLookupFingerprint : Fingerprint(
+    classFingerprint = TextComponentConstructorFingerprint,
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf("L"),
+    filters = listOf(
+        string("…")
+    )
+)
+
+internal object TextComponentFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45675738L)
+    )
+)
+
+internal object LithoSpannableStringCreationFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Ljava/lang/Object;", "L"),
+    filters = listOf(
+        newInstance(type = "Landroid/text/SpannableString;"),
+        methodCall(
+            smali = "Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V",
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            smali = "Landroid/text/SpannableString;->getSpans(IILjava/lang/Class;)[Ljava/lang/Object;",
+            location = MatchAfterWithin(5)
+        ),
+
+        methodCall(
+            name = "addOnLayoutChangeListener",
+            parameters = listOf($$"Landroid/view/View$OnLayoutChangeListener;"),
         )
     )
 )

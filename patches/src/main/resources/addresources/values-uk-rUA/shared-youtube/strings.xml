@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Анімація запуску</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Вимкнено</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Кольорова</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Монохромна</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Перезавантажте, щоб завершити налаштування</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не вдається ввійти до VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Ви вийшли з Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недійсний токен входу у VR, спробуйте ввійти у VR ще раз</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Елементи керування медіа в сповіщеннях</string>
+  <string name="morphe_notification_media_screen_summary">Налаштування елементів керування відтворенням на екрані блокування та в панелі сповіщень</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Приховати кнопки Попереднє та Наступне</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Приховує кнопки \"Попереднє\" та \"Наступне\" у сповіщеннях медіаплеєра, на екрані блокування та в елементах керування навушниками</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Вимкнути повзунок</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Запобігає перетягуванню смуги відтворення на екрані блокування та в панелі сповіщень</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Вимкнути протокол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -235,7 +247,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">Дизлайки недоступні (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Приховано власником</string>
-  <string name="morphe_ryd_accessibility_dislike_percentage">Не подобається це відео, %s голосів є дизлайками</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Дизлайкнути це відео разом із %s іншими людьми</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Дизлайкнути це відео, %s голосів є дизлайками</string>
   <string name="morphe_ryd_enabled_title">Увімкнути Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Показувати дизлайки у відсотках</string>
   <string name="morphe_ryd_dislike_percentage_summary">Показує дизлайки у відсотках від лайків замість числа</string>

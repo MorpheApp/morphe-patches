@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">앱 시작 애니메이션</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">사용 안함</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">컬러</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">흑백</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -102,8 +107,8 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR에 로그인하기</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR에 로그인하면 일부 사용자의 재생 문제가 해결될 수 있습니다
 
-로그인하려면 아래에 있는 '계속하기'를 탭하세요"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">계속하기</string>
+로그인하려면 아래에 있는 '계속' 버튼을 탭하세요"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">계속</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">로그아웃</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">설명서</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
@@ -131,6 +136,13 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_oauth2_connection_failure_auth_error">VR에 로그인할 수 없습니다: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR에서 로그아웃되었습니다</string>
   <string name="morphe_oauth2_toast_invalid">잘못된 VR 로그인 토큰입니다. 다시 VR에 로그인하세요</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">미디어 알림 컨트롤</string>
+  <string name="morphe_notification_media_screen_summary">잠금 화면 및 알림 패널에 표시되는 재생 컨트롤을 설정할 수 있습니다</string>
+  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 버튼 숨기기</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 및 다음 버튼을 숨깁니다</string>
+  <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면 및 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC 프로토콜 비활성화하기</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -235,8 +247,8 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_ryd_failure_generic">싫어요 수를 표시할 수 없습니다 (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">소유자에 의해 숨겨짐</string>
-  <string name="morphe_ryd_accessibility_dislike_count">%s 명의 다른 사람들과 함께 이 동영상에 싫어요를 눌렀습니다</string>
-  <string name="morphe_ryd_accessibility_dislike_percentage">투표 중 %s %%가 이 동영상에 싫어요를 눌렀습니다</string>
+  <string name="morphe_ryd_accessibility_dislike_count">다른 사용자 %s 명과 함께 이 동영상에 싫어요 표시</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">전체 투표 중 %s %%가 이 동영상에 싫어요 표시</string>
   <string name="morphe_ryd_enabled_title">Return YouTube Dislike 활성화하기</string>
   <string name="morphe_ryd_dislike_percentage_title">싫어요 수를 백분율로 표시하기</string>
   <string name="morphe_ryd_dislike_percentage_summary">싫어요 수를 숫자 대신 좋아요 수 대비 백분율로 표시합니다</string>

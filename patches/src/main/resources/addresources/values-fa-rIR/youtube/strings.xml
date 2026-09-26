@@ -254,6 +254,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">پنهان‌کردن بخش دیدگاه‌ها در خوراک خانه</string>
   <string name="morphe_hide_comments_community_guidelines_title">پنهان‌کردن دستورالعمل‌های جامعه</string>
   <string name="morphe_hide_comments_create_a_short_button_title">پنهان‌کردن دکمهٔ «ساخت Short»</string>
+  <string name="morphe_hide_comments_dislike_button_title">پنهان‌کردن دکمهٔ نپسندیدن</string>
   <string name="morphe_hide_comments_emoji_button_title">پنهان‌کردن دکمهٔ ایموجی</string>
   <string name="morphe_hide_comments_filter_bar_options_title">پنهان‌کردن گزینه‌های نوار فیلتر</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">همهٔ گزینه‌های نوار فیلتر به‌جز «برترها» و «جدیدترین‌ها» را پنهان می‌کند</string>
@@ -268,6 +269,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_thanks_button_title">پنهان‌کردن دکمهٔ تشکر</string>
   <string name="morphe_hide_comments_timestamp_button_title">پنهان‌کردن دکمهٔ زمان‌نما</string>
   <string name="morphe_hide_comments_top_fans_button_title">پنهان‌کردن دکمهٔ «طرفداران برتر»</string>
+  <string name="morphe_hide_comments_translate_button_title">پنهان‌کردن دکمهٔ ترجمه</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">پاک‌سازی پیوندهای جست‌وجوی برجسته</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">پیوندهای جست‌وجوی برجسته را پاک‌سازی می‌کند و فقط متن سادهٔ اصلی را نگه می‌دارد</string>
   <string name="morphe_hide_keyword_content_screen_title">فیلتر کلمهٔ کلیدی</string>
@@ -1038,7 +1040,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_screen_title">مینی‌پخش‌کننده</string>
   <string name="morphe_miniplayer_screen_summary">ظاهر و رفتار پخش‌کنندهٔ ویدئوی کوچک‌شده را سفارشی کنید</string>
   <string name="morphe_miniplayer_type_title">نوع مینی‌پخش‌کننده</string>
-  <string name="morphe_miniplayer_hide_title_title">پنهان کردن عنوان</string>
   <string name="morphe_miniplayer_type_entry_0">غیرفعال</string>
   <string name="morphe_miniplayer_type_entry_1">پیش‌فرض</string>
   <string name="morphe_miniplayer_type_entry_2">حداقلی</string>
@@ -1082,10 +1083,6 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_change_foreground_summary">از رنگ طرح برای متن و آیکون‌ها استفاده می‌کند</string>
   <string name="morphe_gradient_loading_screen_title">فعال‌کردن صفحهٔ بارگیری گرادیانی</string>
   <string name="morphe_gradient_loading_screen_summary">به‌جای رنگ یک‌دست، پس‌زمینهٔ گرادیانی را در صفحهٔ بارگیری نمایش می‌دهد</string>
-  <string name="morphe_splash_screen_animation_style_title">سبک صفحهٔ آغازین</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">غیرفعال</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">رنگی</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">تک‌رنگ</string>
   <string name="morphe_seekbar_custom_color_title">فعال‌کردن رنگ سفارشی نوار جست‌وجو</string>
   <string name="morphe_seekbar_custom_color_primary_title">رنگ نوار جست‌وجو</string>
   <string name="morphe_seekbar_custom_color_primary_summary">رنگ اصلی نوار پیشرفت ویدئو را تنظیم کنید</string>
@@ -1151,13 +1148,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">غیرفعال‌کردن بازخورد لمسی لغو جست‌وجو</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">غیرفعال‌کردن بازخورد لمسی ضربه و نگه‌داشتن</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">غیرفعال‌کردن بازخورد لمسی بزرگ‌نمایی</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">کنترل‌های رسانهٔ اعلان</string>
-  <string name="morphe_notification_media_screen_summary">کنترل‌های پخش نمایش‌داده‌شده در صفحهٔ قفل و پنل اعلان را سفارشی کنید</string>
-  <string name="morphe_hide_notification_media_prev_next_title">پنهان‌کردن دکمه‌های قبلی و بعدی</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">دکمه‌های قبلی و بعدی را در اعلان رسانه، صفحهٔ قفل و کنترل‌های هدفون پنهان می‌کند</string>
-  <string name="morphe_disable_notification_media_seekbar_title">غیرفعال‌کردن نوار جست‌وجو</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">از کشیدن نوار جست‌وجو در صفحهٔ قفل و پنل اعلان جلوگیری می‌کند</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">اگر اخیراً اطلاعات ورود حسابتان را تغییر داده‌اید، MicroG را حذف و دوباره نصب کنید.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1274,7 +1264,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">نمایش جعل در «آمار برای نردها»</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">بازیابی نوار عملیات قدیمی ویدئو</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"مشکل نمایش‌ندادن پسندیدن‌ها و پنهان‌نشدن دکمه‌های عملیات ویدئو را برطرف می‌کند
-
-محدودیت: به سبک قدیمی روی‌هم‌افتادگی «ویدئوهای بیشتر» برمی‌گردد"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_auto">خودکار</string>
+  <string name="morphe_player_icon_style_entry_default">پیش‌فرض</string>
 </resources>

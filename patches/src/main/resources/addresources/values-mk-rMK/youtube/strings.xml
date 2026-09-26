@@ -689,10 +689,6 @@ Second \"item\" text"</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Вклучи анимиран екран за вчитување</string>
   <string name="morphe_gradient_loading_screen_summary">Прикажува градиентна позадина на екранот за вчитување наместо еднобојна</string>
-  <string name="morphe_splash_screen_animation_style_title">Стил на почетен екран</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Оневозможено</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Боја</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Монохроматски</string>
   <string name="morphe_seekbar_custom_color_title">Вклучи прилагодена боја на лентата за премотување</string>
   <string name="morphe_seekbar_custom_color_primary_title">Боја на лентата за премотување</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Поставете ја главната боја на лентата за премотување на видеото</string>
@@ -753,12 +749,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Исклучете хептична повратна врска за враќање на премотувањето</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Исклучи хептична повратна врска при допир и задржување</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Исклучете хептична повратна врска за зумирање</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Медиумски контроли за известување</string>
-  <string name="morphe_notification_media_screen_summary">Прилагодете ги контролите за репродукција прикажани на екранот за заклучување и панелот за известувања</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Ги крие претходните и следните копчиња во медиумски известувања, на екранот за заклучување и во контролите на слушалките</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Исклучи лента за барање</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Спречува влечење на лентата за премотување на заклучениот екран и панелот за известувања</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ако неодамна ги променивте деталите за најава на вашиот акаунт, отстранете ја и повторно инсталирајте MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -826,4 +816,7 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">Варијанта на JavaScript на плеерот</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_auto">Автоматски</string>
+  <string name="morphe_player_icon_style_entry_default">Стандардно</string>
 </resources>

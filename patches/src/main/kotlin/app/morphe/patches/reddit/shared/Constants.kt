@@ -15,27 +15,31 @@ internal object Constants {
         ),
         targets = listOf(
             AppTarget(
+                version = "2026.39.0",
+                minSdk = 29,
+                isExperimental = true
+            ),
+            AppTarget(
                 version = "2026.38.0",
-                minSdk = 28,
+                minSdk = 29,
                 isExperimental = true
             ),
             AppTarget(
                 version = "2026.37.0",
-                minSdk = 28,
+                minSdk = 29,
                 isExperimental = true
             ),
             // 2026.33.0 has issues where replying can show an empty comment box.
             AppTarget(
                 version = "2026.24.0", // Last version with disable modern home.
-                minSdk = 28,
-                isExperimental = true
+                minSdk = 29
             ),
             AppTarget(
-                version = "2026.14.0",
-                minSdk = 28
+                version = "2026.14.0", // TODO: Remove this version
+                minSdk = 29
             ),
             AppTarget(
-                version = "2026.04.0",
+                version = "2026.10.0", // Last version for Android 9.0
                 minSdk = 28
             )
         )

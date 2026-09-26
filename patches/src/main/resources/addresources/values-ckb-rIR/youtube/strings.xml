@@ -457,9 +457,6 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">سکرینی بارکردنێکی فڕکێنەرەوە سازشە</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">نەخوێتە</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">ڕەنگ</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">منۆكرۆم</string>
   <string name="morphe_seekbar_custom_color_title">سازشە ڕەنگی دیاری پێ بکە</string>
   <string name="morphe_seekbar_custom_color_invalid">نرخی ڕەنگی سیگبار ناگەڕێت</string>
   <!-- layout.branding.customBrandingPatch -->
@@ -499,7 +496,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">عیبهی دهوكەر ڕاستەگی ئىینی داخىلى ساراوە هۊندرو</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">خه‌مه‌كانی پۆشینی ڕیوه‌ڵه‌وه‌ هه‌ڵده‌ده‌سته‌.</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">عیبهی زۈم دەس نالوײەە تا ڕاۈە</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">هەركێ ڕوخی نیگەړانت گۆری ڕووخانی دڵسۈکره، پەرگەتەن و كارخوری مایكروجی دەر داسةكی زۆر بۊرى</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -542,4 +538,7 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">ژیان JavaScript-ی خاس</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_auto">خۆکار</string>
+  <string name="morphe_player_icon_style_entry_default">بنەڕەت</string>
 </resources>

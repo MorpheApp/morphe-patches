@@ -12,14 +12,13 @@ package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
 
-import java.util.Locale;
-
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,13 +26,13 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
-import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
-import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Hooking class for the current playing video.
@@ -886,27 +885,25 @@ public final class VideoInformation {
     /**
      * Injection point.
      */
-    public static void onNativePlaybackSpeedPanelLoaded(Object context, CharSequence original) {
-        if (context instanceof ContextInterface contextInterface) {
-            try {
-                String identifier = contextInterface.patch_getIdentifier();
-                if (identifier == null || !identifier.startsWith("playback_rate_selector_menu_sheet.e")) {
-                    return;
-                }
-                String path = contextInterface.patch_getPathBuilder().toString();
-                if (!path.endsWith("|ContainerType|ContainerType|ContainerType|TextType|")) {
-                    return;
-                }
-                String text = Objects.toString(original);
-                if (text.length() == 5) {
-                    Matcher matcher = PLAYBACK_SPEED_PATTERN.matcher(text);
-                    if (matcher.matches()) {
-                        setPlaybackSpeedFormattedString(text, Float.parseFloat(text.substring(0, 4)));
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "onNativePlaybackSpeedPanelLoaded failed", ex);
+    public static void onNativePlaybackSpeedPanelLoaded(ContextInterface context, CharSequence original) {
+        try {
+            String identifier = context.patch_getIdentifier();
+            if (identifier == null || !identifier.startsWith("playback_rate_selector_menu_sheet.e")) {
+                return;
             }
+            StringBuilder path = context.patch_getPathBuilder();
+            if (!Utils.endsWith(path, "|ContainerType|ContainerType|ContainerType|TextType|")) {
+                return;
+            }
+            if (original.length() == 5) {
+                Matcher matcher = PLAYBACK_SPEED_PATTERN.matcher(original);
+                if (matcher.matches()) {
+                    String text = original.toString();
+                    setPlaybackSpeedFormattedString(text, Float.parseFloat(text.substring(0, 4)));
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onNativePlaybackSpeedPanelLoaded failed", ex);
         }
     }
 

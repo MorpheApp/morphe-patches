@@ -454,9 +454,6 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">सक्षम ग्रेडियेंट लोडिंग स्क्रीन</string>
-  <string name="morphe_splash_screen_animation_style_title">स्प्लैश स्क्रीन स्टाइल</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">निष्क्रिय</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">रंग</string>
   <string name="morphe_seekbar_custom_color_title">कस्टम सीकबार रंग सक्षम करी</string>
   <string name="morphe_seekbar_custom_color_invalid">अमान्य सीकबार रंग मान</string>
   <!-- layout.branding.customBrandingPatch -->
@@ -498,9 +495,6 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">खोज पूर्ववत हैप्टिक्स अक्षम करी</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">ट्याप र होल्ड ह्याप्टिक प्रतिक्रिया अक्षम गर्नुहोस्</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ज़ूम हैप्टिक्स अक्षम करी</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">अधिसूचना मिडिया नियन्त्रणहरू</string>
-  <string name="morphe_disable_notification_media_seekbar_title">सर्कबार अक्षम गर्नुहोस्</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">यदि तपाईंले हालै आफ्नो खाताको लगइन विवरणहरू परिवर्तन गर्नुभएको छ भने, कृपया MicroG स्थापना रद्द गर्नुहोस् र पुन: स्थापना गर्नुहोस्।</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -554,4 +548,5 @@ AV1 को साथ भिडियो प्लेब्याक स्टट
   <!-- Quality refers to video quality -->
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट भिन्नता</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <!-- layout.player.icons.playerIconStylePatch -->
 </resources>

@@ -19,60 +19,62 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">सेटिंग्स</string>
   <string name="morphe_settings_confirm_user_dialog_title">क्या आप वाकई आगे बढ़ना चाहते हैं?</string>
-  <string name="morphe_settings_save">सहेजें</string>
+  <string name="morphe_settings_save">सेव करें</string>
   <string name="morphe_settings_reset">रीसेट करें</string>
   <string name="morphe_settings_reset_color">रंग रीसेट करें</string>
   <string name="morphe_settings_color_invalid">अमान्य रंग</string>
-  <string name="morphe_settings_restart_title">रीस्टार्ट आवश्यक है</string>
-  <string name="morphe_settings_restart_dialog_message">इस बदलाव के प्रभावकारी होने के लिए ऐप को रीस्टार्ट करें।</string>
+  <string name="morphe_settings_restart_title">रीस्टार्ट करना ज़रूरी है</string>
+  <string name="morphe_settings_restart_dialog_message">इस बदलाव को लागू करने के लिए ऐप को रीस्टार्ट करें।</string>
   <string name="morphe_settings_restart">रीस्टार्ट करें</string>
   <!-- String is also duplicated in Reddit import / export preference -->
-  <string name="morphe_settings_import">आयात करें</string>
+  <string name="morphe_settings_import">इंपोर्ट करें</string>
   <string name="morphe_settings_import_copy">कॉपी करें</string>
-  <string name="morphe_settings_import_reset">मorphe सेटिंग्स डिफ़ॉल्ट पर वापस लाएं</string>
-  <string name="morphe_settings_import_success">%d सेटिंग्स आयात किए गए</string>
-  <string name="morphe_settings_import_failure_parse">आयात विफल: %s</string>
+  <string name="morphe_settings_import_reset">Morphe सेटिंग्स डिफ़ॉल्ट पर रीसेट हो गईं</string>
+  <string name="morphe_settings_import_success">%d सेटिंग्स इंपोर्ट की गईं</string>
+  <string name="morphe_settings_import_failure_parse">इंपोर्ट नहीं हो सका: %s</string>
+  <string name="morphe_settings_navigate_up">वापस जाएँ</string>
   <string name="morphe_settings_search_hint">सेटिंग्स खोजें</string>
   <string name="morphe_settings_search_no_results_title">\'%s\' के लिए कोई परिणाम नहीं मिला</string>
-  <string name="morphe_settings_search_no_results_summary">अन्य शब्द का प्रयोग करें</string>
-  <string name="morphe_settings_search_recent_searches">हाल की खोजें</string>
-  <string name="morphe_settings_search_remove_message">खोज इतिहास से हटाएं?</string>
-  <string name="morphe_settings_search_clear_history">खोज इतिहास मिटाएं</string>
-  <string name="morphe_settings_search_clear_history_message">क्या आप वाकई सभी खोज इतिहास को मिटाना चाहते हैं?</string>
-  <string name="morphe_settings_search_tips_title">खोज टिप्पणियाँ</string>
-  <string name="morphe_settings_search_tips_summary">"• पथ पर क्लिक करें ताकि उस तक पहुंचें
-• सेटिंग पर लॉन्ग प्रेस करें ताकि उस तक पहुंचें
-• एंटर प्रेस करें ताकि खोज क्वेरी को इतिहास में सहेजें
-• खोज केसिंग और पंक्चुएशन को नजरअंदाज करता है
-• अक्षम सेटिंग के बच्चों को मातृ सेटिंग के ऊपर दिखाया जाता है"</string>
-  <string name="morphe_settings_search_empty_history_title">खोज इतिहास खाली है</string>
-  <string name="morphe_settings_search_empty_history_summary">खोज इतिहास को सहेजने के लिए, खोज क्वेरी टाइप करें और एंटर प्रेस करें</string>
-  <string name="morphe_settings_search_history_title">सेटिंग्स खोज इतिहास दिखाएं</string>
+  <string name="morphe_settings_search_no_results_summary">कोई दूसरा शब्द आज़माएँ</string>
+  <string name="morphe_settings_search_recent_searches">हाल ही में की गई खोजें</string>
+  <string name="morphe_settings_search_remove_message">सर्च हिस्ट्री से हटाएँ?</string>
+  <string name="morphe_settings_search_remove">सर्च हिस्ट्री से हटाएँ</string>
+  <string name="morphe_settings_search_clear_history">सर्च हिस्ट्री मिटाएं</string>
+  <string name="morphe_settings_search_clear_history_message">क्या आप वाकई पूरी सर्च हिस्ट्री मिटाना चाहते हैं?</string>
+  <string name="morphe_settings_search_tips_title">सर्च सुझाव</string>
+  <string name="morphe_settings_search_tips_summary">"• उस पर जाने के लिए पाथ पर टैप करें
+• उस पर जाने के लिए सेटिंग पर लॉन्ग-प्रेस करें
+• सर्च क्वेरी को हिस्ट्री में सेव करने के लिए Enter दबाएँ
+• सर्च में केसिंग और पंक्चुएशन का फर्क नहीं पड़ता
+• पैरेंट सेटिंग्स बंद चाइल्ड सेटिंग्स के ऊपर दिखती हैं"</string>
+  <string name="morphe_settings_search_empty_history_title">सर्च हिस्ट्री खाली है</string>
+  <string name="morphe_settings_search_empty_history_summary">सर्च हिस्ट्री सेव करने के लिए, सर्च क्वेरी टाइप करें और Enter दबाएँ</string>
+  <string name="morphe_settings_search_history_title">सेटिंग्स सर्च हिस्ट्री दिखाएँ</string>
   <string name="morphe_settings_name_title">Morphe सेटिंग्स का नाम</string>
   <string name="morphe_settings_name_default_item">डिफ़ॉल्ट</string>
   <string name="morphe_settings_name_entry_2">अतिरिक्त</string>
-  <string name="morphe_settings_name_entry_3">ट्वीक्स</string>
-  <string name="morphe_settings_name_entry_4">मॉर्फ़िंग समय</string>
+  <string name="morphe_settings_name_entry_3">ट्विक्स</string>
+  <string name="morphe_settings_name_entry_4">मॉर्फ़िंग टाइम</string>
   <string name="morphe_settings_name_custom_item">कस्टम</string>
   <string name="morphe_settings_name_custom_item_hint">नाम दर्ज करें</string>
   <string name="morphe_settings_name_empty_warning">नाम खाली नहीं हो सकता</string>
-  <string name="morphe_show_menu_icons_title">Morphe सेटिंग आइकन दिखाएं</string>
+  <string name="morphe_show_menu_icons_title">Morphe सेटिंग्स आइकन दिखाएँ</string>
   <string name="morphe_settings_menu_copy_path">कॉपी किया गया: %s</string>
-  <string name="morphe_language_title">Morphe भाषा</string>
-  <string name="morphe_language_user_dialog_message">"कुछ भाषाओं के अनुवाद可能 अदृश्य या अपूर्ण हो सकते हैं।
+  <string name="morphe_language_title">Morphe की भाषा</string>
+  <string name="morphe_language_user_dialog_message">"कुछ भाषाओं के अनुवाद उपलब्ध नहीं हो सकते या अधूरे हो सकते हैं।
 
-नई भाषाओं का अनुवाद करने या मौजूदा अनुवादों को सुधारने के लिए, visit morphe.software/translate"</string>
-  <string name="morphe_language_DEFAULT">एप्लिकेशन भाषा</string>
-  <string name="morphe_pref_import_export_title">आयात / निर्यात</string>
-  <string name="morphe_pref_import_export_summary">Morphe सेटिंग्स आयात करें / निर्यात करें</string>
-  <string name="morphe_settings_import_file">फ़ाइल से आयात करें</string>
-  <string name="morphe_settings_import_file_success">सेटिंग्स सफलतापूर्वक आयात की गईं, लागू करने के लिए सहेजें पर टैप करें</string>
-  <string name="morphe_settings_import_file_failed">सेटिंग्स आयात करने में विफल</string>
-  <string name="morphe_settings_export_file">फ़ाइल में निर्यात करें</string>
-  <string name="morphe_settings_export_file_success">सेटिंग्स सफलतापूर्वक एक्सपोर्ट हो गया</string>
-  <string name="morphe_settings_export_file_failed">सेटिंग्स एक्सपोर्ट करने में विफल</string>
+नई भाषाओं का अनुवाद करने या मौजूदा अनुवादों को बेहतर बनाने के लिए, morphe.software/translate पर जाएँ"</string>
+  <string name="morphe_language_DEFAULT">ऐप की भाषा</string>
+  <string name="morphe_pref_import_export_title">इम्पोर्ट / एक्सपोर्ट</string>
+  <string name="morphe_pref_import_export_summary">Morphe सेटिंग्स को इंपोर्ट / एक्सपोर्ट करें</string>
+  <string name="morphe_settings_import_file">फ़ाइल से इंपोर्ट करें</string>
+  <string name="morphe_settings_import_file_success">सेटिंग्स सफलतापूर्वक इंपोर्ट हो गईं, लागू करने के लिए सेव करें पर टैप करें</string>
+  <string name="morphe_settings_import_file_failed">सेटिंग्स इंपोर्ट नहीं हो सकीं</string>
+  <string name="morphe_settings_export_file">फ़ाइल में एक्सपोर्ट करें</string>
+  <string name="morphe_settings_export_file_success">सेटिंग्स सफलतापूर्वक एक्सपोर्ट हो गईं</string>
+  <string name="morphe_settings_export_file_failed">सेटिंग्स एक्सपोर्ट नहीं हो सकीं</string>
   <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">आप Morphe Patches की नवीनतम संस्करण &lt;i&gt;%s&lt;/i&gt; का उपयोग कर रहे हैं</string>
+  <string name="morphe_settings_about_links_body_version_current">आप Morphe Patches का लेटेस्ट वर्ज़न &lt;i&gt;%s&lt;/i&gt; इस्तेमाल कर रहे हैं</string>
   <string name="morphe_settings_about_links_body_version_outdated">आप Morphe Patches संस्करण &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध है: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;अपडेट करने के लिए, इस ऐप को पुनपटच करें</string>
   <string name="morphe_settings_about_links_dev_header">नोट</string>
   <string name="morphe_settings_about_links_dev_body">यह संस्करण एक प्री-रीलिज़ संस्करण है और आप अप्रत्याशित समस्याओं का अनुभव कर सकते हैं</string>

@@ -17,6 +17,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">Onemogućeno</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokromatski</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Ponovno pokrenite da biste dovršili postavljanje</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +134,13 @@ Za prijavu, pritisnite nastavak ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne mogu se prijaviti na VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odjavljeni s Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte ponovno se prijaviti na VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Kontrole medija u obavijestima</string>
+  <string name="morphe_notification_media_screen_summary">Prilagodi kontrole reprodukcije prikazane na zaključanom zaslonu i ploči obavijesti</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Sakrij prethodne i sljedeće gumbe</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Sakriva prethodne i sljedeće gumbe u medijskoj obavijesti, na zaključanom zaslonu i na kontrolama za slušalice</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Onemogući kliznu traku</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Sprječava povlačenje klizne trake na zaključanom zaslonu i ploči obavijesti</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Onemisliti protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

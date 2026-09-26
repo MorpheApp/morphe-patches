@@ -100,6 +100,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Κρύψε το κουμπί «Μετάφραση»</string>
   <string name="morphe_music_hide_new_from_shelf_title">Απόκρυψη ράφι \"Νέο από\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Απόκρυψη ραφιών λίστας αναπαραγωγής</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Απόκρυψη κουμπιού λήψης επεισοδίου podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Απόκρυψη κουμπιού \"Επανάληψη\"</string>
   <string name="morphe_music_hide_shuffle_button_title">Απόκρυψη κουμπιού \"Ανακάτεμα\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Απόκρυψη ράφι \"Γρήγορη κλήση\"</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_hide_history_button_title">Απόκρυψη κουμπιού ιστορικού</string>
   <string name="morphe_music_hide_notification_button_title">Απόκρυψη κουμπιού ειδοποιήσεων</string>
   <string name="morphe_music_hide_search_button_title">Απόκρυψη κουμπιού αναζήτησης</string>
+  <string name="morphe_music_hide_voice_search_button_title">Απόκρυψη κουμπιού φωνητικής αναζήτησης</string>
+  <string name="morphe_music_hide_sound_search_button_title">Απόκρυψη κουμπιού αναζήτησης ήχου</string>
+  <string name="morphe_music_hide_library_new_button_title">Απόκρυψη κουμπιού Νέο</string>
+  <string name="morphe_music_hide_library_new_button_summary">Αποκρύπτει το κουμπί Νέο στην καρτέλα Βιβλιοθήκη</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Κουμπιά ενεργειών</string>
   <string name="morphe_music_action_buttons_screen_summary">Επιλέξτε ποια κουμπιά ενεργειών θα εμφανίζονται κάτω από το πρόγραμμα αναπαραγωγής</string>
@@ -352,12 +357,12 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Χρήση στίχων από τρίτους</string>
   <string name="morphe_music_lyrics_enabled_summary">Εμφανίζει στίχους από μια υπηρεσία τρίτου μέρους, επιστρέφοντας στους ενσωματωμένους στίχους όταν δεν βρεθούν.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Να παραμένει η οθόνη ανοιχτή κατά την προβολή στίχων</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Αποτρέπει την απενεργοποίηση της οθόνης όσο ο πίνακας στίχων είναι ανοιχτός.</string>
   <string name="morphe_music_lyrics_section_service_title">Υπηρεσία στίχων</string>
   <string name="morphe_music_lyrics_section_overlay_title">Επικάλυψη</string>
   <string name="morphe_music_lyrics_section_sync_title">Συγχρονισμός</string>
   <string name="morphe_music_lyrics_section_about_title">Πληροφορίες</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Πατήστε ▲/▼ για να ορίσετε τη σειρά προτεραιότητας και το πλαίσιο για να ενεργοποιήσετε ή να απενεργοποιήσετε κάθε πάροχο</string>
   <string name="morphe_music_lyrics_source_all_disabled">Όλοι οι πάροχοι είναι απενεργοποιημένοι — στίχοι της εφαρμογής και στίχοι ενσωματωμένοι στα αρχεία</string>
   <string name="morphe_music_lyrics_source_reset_title">Επαναφορά σειράς παρόχων;</string>
   <string name="morphe_music_lyrics_source_reset_message">Επαναφορά των παρόχων στην προεπιλεγμένη σειρά προτεραιότητας</string>
@@ -394,9 +399,8 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: το arl διαγράφηκε</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: μη έγκυρο arl — ελέγξτε το και δοκιμάστε ξανά</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Το Musixmatch λειτουργεί χωρίς token, οπότε αυτό το πεδίο μπορεί να παραμείνει κενό.
-
-Προσθέστε token μόνο για να χρησιμοποιήσετε τον δικό σας λογαριασμό. Πρέπει να προέρχεται από την εφαρμογή Musixmatch για Android: τα token που αντιγράφονται από το musixmatch.com ανήκουν στον αποσυρμένο desktop client και το API τα απορρίπτει"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Προσθέστε ένα διακριτικό μόνο για να χρησιμοποιήσετε τον δικό σας λογαριασμό. Πρέπει να προέρχεται από την εφαρμογή Musixmatch για Android: τα διακριτικά που αντιγράφηκαν από το musixmatch.com ανήκουν στον αποσυρμένο πελάτη επιτραπέζιου υπολογιστή και το API τα απορρίπτει.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Το Musixmatch λειτουργεί χωρίς διακριτικό, οπότε αυτό το πεδίο μπορεί να παραμείνει κενό.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token χρήστη</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: το user token αποθηκεύτηκε</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: το user token διαγράφηκε</string>
@@ -413,9 +417,9 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_lyrics_show_copy_button_title">Εμφάνιση κουμπιού αντιγραφής</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Πατήστε για να αντιγράψετε τους αρχικούς στίχους ως απλό κείμενο· πατήστε παρατεταμένα για να αποθηκεύσετε το αρχείο προέλευσης στίχων στις Λήψεις.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Εμφάνιση κουμπιού μετάφρασης</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Μεταφράστε στίχους χρησιμοποιώντας τις μεταφράσεις του παρόχου ή το Google Translate.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Πατήστε για εναλλαγή μετάφρασης· παρατεταμένο πάτημα για μετάφραση μόνο. Χρησιμοποιεί μεταφράσεις παρόχου, Google Translate ή ένα API συμβατό με OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Εμφάνιση κουμπιού μεταγραφής.</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Μεταγράψτε στίχους χρησιμοποιώντας τη μεταγραφή του παρόχου ή το Google Translate.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Πατήστε για εναλλαγή λατινοποίησης· παρατεταμένο πάτημα για λατινοποίηση μόνο. Χρησιμοποιεί λατινοποίηση παρόχου, Google Translate ή ένα API συμβατό με OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Εμφάνιση κουμπιού ανανέωσης</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Επισήμανση συγχρονισμένων λέξεων ή συλλαβών.</string>
   <string name="morphe_music_lyrics_saved">Αποθηκεύτηκε</string>
@@ -431,7 +435,7 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_lyrics_display_artist_first_summary">Εναλλαγή της σειράς εμφάνισης καλλιτέχνη και τίτλου στο Miniplayer και στο MediaSession. Ενεργό \"Καλλιτέχνης - Τίτλος\" και ανενεργό \"Τίτλος - Καλλιτέχνης\" Δεν επηρεάζει την αναζήτηση στίχων</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Φίλτρα</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex φίλτρου στίχων.</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Κανονική έκφραση που εφαρμόζεται σε τίτλους, καλλιτέχνες και άλμπουμ πριν από την αναζήτηση στίχων. Αφήστε το κενό για απενεργοποίηση. Η προεπιλογή αφαιρεί κοινό άχρηστο περιεχόμενο, όπως \"Official Video\", \"Remaster\" και \"- Topic\".</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Κανονική έκφραση που εφαρμόζεται σε τίτλους, καλλιτέχνες και άλμπουμ πριν από την αναζήτηση στίχων και κατά τη βαθμολόγηση του αν δύο τίτλοι ταιριάζουν. Αφήστε το κενό για να απενεργοποιήσετε και τα δύο. Η προεπιλογή αφαιρεί συνηθισμένα περιττά στοιχεία, όπως \"Official Video\", \"Remaster\", \"【插曲】\" και \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Κανονική έκφραση φίλτρου στίχων</string>
   <string name="morphe_music_lyrics_text_filter_summary">Η κανονική έκφραση εφαρμόζεται μόνο στο αρχικό κείμενο στίχων (όχι σε μεταφράσεις ή μεταγραφές). Αφήστε το κενό για απενεργοποίηση.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Δείκτες γραμμών πληροφοριών.</string>
@@ -448,15 +452,18 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_lyrics_romanized_by_ai">Μεταγράφηκε σε λατινικούς χαρακτήρες από %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Μεταφρασμένο</string>
+  <string name="morphe_music_lyrics_translation_language_title">Γλώσσα μετάφρασης</string>
   <string name="morphe_music_lyrics_translating">Μετάφραση…</string>
   <string name="morphe_music_lyrics_translate_failed">Δεν ήταν δυνατή η μετάφραση των στίχων</string>
   <string name="morphe_music_lyrics_romanize_hide">Μεταγεγραμμένο</string>
   <string name="morphe_music_lyrics_romanizing">Μεταγραφή…</string>
   <string name="morphe_music_lyrics_romanize_failed">Δεν ήταν δυνατή η μεταγραφή των στίχων.</string>
+  <string name="morphe_music_lyrics_translate_only">Μόνο μετάφραση</string>
+  <string name="morphe_music_lyrics_romanize_only">Μόνο σε λατινική γραφή</string>
   <string name="morphe_music_lyrics_copied">Αντιγράφηκε στο πρόχειρο</string>
   <string name="morphe_music_lyrics_refreshing">Ανανέωση</string>
   <string name="morphe_music_lyrics_refreshed">Ανανεώθηκε</string>
-  <string name="morphe_music_lyrics_about_summary">"Οι στίχοι αναζητούνται με βάση τον τίτλο του τραγουδιού και τον καλλιτέχνη. […] Μπορείτε επίσης να δοκιμάσετε το κουμπί ανανέωσης για να αλλάξετε μη αυτόματα εκδόσεις. […] Δεν γίνεται πάντα αίτημα σε όλους τους παρόχους με τη σειρά που τους έχετε ορίσει, αλλά αποκρίνονται με βάση την ταχύτητά τους."</string>
+  <string name="morphe_music_lyrics_about_summary">"Οι στίχοι αντιστοιχίζονται με βάση τον τίτλο και τον καλλιτέχνη· ασυνήθιστα μεταδεδομένα μπορεί να μην βρουν τίποτα ή τη λάθος έκδοση. Χρησιμοποιήστε την ανανέωση για να αλλάξετε εκδόσεις. Οι πάροχοι που επισημαίνονται με * απαιτούν διακριτικό (token). Δεν ζητούνται πάντα όλοι οι ενεργοποιημένοι πάροχοι με τη σειρά που έχετε ορίσει, αλλά αποκρίνονται με βάση την ταχύτητά τους."</string>
   <string name="morphe_music_lyrics_hide_info_title">Απόκρυψη γραμμής πιστώσεων.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Απόκρυψη της γραμμής πιστώσεων που εμφανίζεται κάτω από τους στίχους.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Εναλλαγή μετάφρασης και μεταγραφής.</string>

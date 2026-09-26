@@ -99,6 +99,7 @@ Mens dette er slået til, viser fanen Downloads disse numre i stedet for Music P
   <string name="morphe_music_hide_lyrics_translate_button_title">Skjul Oversæt-knappen</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skjul \'Fra\' hylden</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skjul playlistehylder</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Skjul download-knap for podcastafsnit</string>
   <string name="morphe_music_hide_repeat_button_title">Skjul gentagelsesknap</string>
   <string name="morphe_music_hide_shuffle_button_title">Skjul blandingsknap</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Skjul \'Hurtigvalg\'-hylden</string>
@@ -186,6 +187,10 @@ YouTube Music 8.x – crossfade kører kun på 9.x og nyere"</string>
   <string name="morphe_music_hide_history_button_title">Skjul historikknap</string>
   <string name="morphe_music_hide_notification_button_title">Skjul notifikationsknap</string>
   <string name="morphe_music_hide_search_button_title">Skjul søgeknap</string>
+  <string name="morphe_music_hide_voice_search_button_title">Skjul stemmesøgningsknappen</string>
+  <string name="morphe_music_hide_sound_search_button_title">Skjul lydsøgningsknappen</string>
+  <string name="morphe_music_hide_library_new_button_title">Skjul Ny-knappen</string>
+  <string name="morphe_music_hide_library_new_button_summary">Skjuler Ny-knappen i fanen Bibliotek</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Handlingsknapper</string>
   <string name="morphe_music_action_buttons_screen_summary">Vælg hvilke handlingsknapper der vises under afspilleren</string>
@@ -351,12 +356,12 @@ For at sikre, at scrobbling synkroniseres under afspilning i baggrunden, skal du
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Brug tredjeparts-tekster</string>
   <string name="morphe_music_lyrics_enabled_summary">Viser tekster fra en tredjepartstjeneste, og falder tilbage til de indbyggede tekster, når der ikke findes nogen</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Hold skærmen tændt, mens du ser tekster</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Forhindrer skærmen i at slukke, mens tekstpanelet er åbent</string>
   <string name="morphe_music_lyrics_section_service_title">Sangteksttjeneste</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
   <string name="morphe_music_lyrics_section_about_title">Om</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tryk på ▲/▼ for at angive prioritetsrækkefølgen, og marker afkrydsningsfeltet for at aktivere eller deaktivere hver udbyder.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle udbydere er deaktiveret — indbyggede og integrerede tekster</string>
   <string name="morphe_music_lyrics_source_reset_title">Nulstil udbyderrækkefølgen?</string>
   <string name="morphe_music_lyrics_source_reset_message">Gendan udbyderne til standardprioriteten</string>
@@ -393,9 +398,8 @@ Trin:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl ryddet</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ugyldig arl — tjek venligst og prøv igen</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopier værdien af brugerens token</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch fungerer uden et token, så dette felt kan forblive tomt.
-
-Tilføj kun et token for at bruge din egen konto. Det skal komme fra Musixmatch Android-appen: tokens kopieret fra musixmatch.com tilhører den udgåede desktopklient, og API'et afviser dem."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Tilføj kun et token for at bruge din egen konto. Det skal komme fra Musixmatch Android-appen: tokens kopieret fra musixmatch.com tilhører den udgåede desktopklient, og API\'et afviser dem.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch fungerer uden et token, så dette felt kan forblive tomt.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Ugyldig bruger-token. Prøv igen.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: brugertoken gemt</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: brugertoken fjernet</string>
@@ -412,9 +416,9 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Vis Kopier-knap</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tryk for at kopiere den originale tekst som ren tekst; tryk længe for at gemme den rå tekstkildefil i Downloads.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Vis Oversæt-knap</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Oversæt tekster med udbyderens oversættelser eller Google Translate</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tryk for at skifte oversættelse; langt tryk for kun oversættelse. Bruger udbyderens oversættelser, Google Translate eller et OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Vis Romaniser-knap</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniser tekster med udbyderens romanisering eller Google Translate […] knap</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Tryk for at skifte romanisering; langt tryk for kun romanisering. Bruger udbyderens romanisering, Google Translate eller et OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vis opdateringsknap</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Fremhæv synkroniserede ord eller stavelser</string>
   <string name="morphe_music_lyrics_saved">Gemt</string>
@@ -430,7 +434,7 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">Skift visningsrækkefølgen for kunstner og titel i Miniplayer og MediaSession. TIL \"Kunstner - Titel\" og FRA \"Titel - Kunstner\". Det påvirker ikke søgningen efter sangtekster.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtre</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex for tekstfilter</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Regulært udtryk, der anvendes på titler, kunstnere og albummer, før der søges efter sangtekster. Lad feltet være tomt for at deaktivere. Standardindstillingen fjerner almindeligt rod som \"Official Video\", \"Remaster\" og \"- Topic\".</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Regulært udtryk, der anvendes på titler, kunstnere og albummer, før man slår tekster op, og ved vurdering af, om to titler matcher. Lad feltet være tomt for at deaktivere begge. Standardværdien fjerner almindelig støj som \"Official Video\", \"Remaster\", \"【插曲】\" og \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Regex til sangtekstfilter</string>
   <string name="morphe_music_lyrics_text_filter_summary">Et regulært udtryk anvendes kun på den oprindelige tekst (ikke oversættelser eller romaniseringer). Lad det være tomt for at deaktivere.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Markører for infolinjer</string>
@@ -447,15 +451,18 @@ Krævede cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">Romaniseret af %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Oversat</string>
+  <string name="morphe_music_lyrics_translation_language_title">Oversættelsessprog</string>
   <string name="morphe_music_lyrics_translating">Oversætter…</string>
   <string name="morphe_music_lyrics_translate_failed">Kunne ikke oversætte teksten</string>
   <string name="morphe_music_lyrics_romanize_hide">Romaniseret</string>
   <string name="morphe_music_lyrics_romanizing">Romaniserer…</string>
   <string name="morphe_music_lyrics_romanize_failed">Kunne ikke romanisere sangteksten</string>
+  <string name="morphe_music_lyrics_translate_only">Kun oversat</string>
+  <string name="morphe_music_lyrics_romanize_only">Kun romaniseret</string>
   <string name="morphe_music_lyrics_copied">Kopieret til udklipsholder</string>
   <string name="morphe_music_lyrics_refreshing">Opdaterer</string>
   <string name="morphe_music_lyrics_refreshed">Opdateret</string>
-  <string name="morphe_music_lyrics_about_summary">"Teksterne slås op efter titel og kunstner, […] Du kan også prøve opdateringsknappen for manuelt at skifte versioner. […] Alle aktiverede udbydere bliver ikke altid forespurgt i din rækkefølge, men svarer ud fra deres hastighed."</string>
+  <string name="morphe_music_lyrics_about_summary">"Sangtekster matcheres ud fra titel og kunstner; usædvanlige metadata kan resultere i ingen resultater eller den forkerte version. Brug Opdater til at skifte versioner. Udbydere markeret med * kræver et token. Alle aktiverede udbydere forespørges ikke altid i din rækkefølge, men svarer baseret på deres hastighed."</string>
   <string name="morphe_music_lyrics_hide_info_title">Skjul kreditlinje</string>
   <string name="morphe_music_lyrics_hide_info_summary">Skjul kreditlinjen, der vises under teksterne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Byt om på oversættelse og romanisering</string>

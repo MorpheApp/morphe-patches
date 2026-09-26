@@ -91,18 +91,19 @@ Las pistas descargadas aparecen aquí"</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ocultar selector Audio / Vídeo</string>
-  <string name="morphe_music_hide_explore_shelf_title">Ocultar sección Explorar</string>
+  <string name="morphe_music_hide_explore_shelf_title">Ocultar estantería Explorar</string>
   <string name="morphe_music_hide_grid_shelves_title">Ocultar secciones en cuadrícula</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ocultar secciones horizontales</string>
   <string name="morphe_music_hide_list_shelves_title">Ocultar secciones en lista</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel de letras</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Ocultar botón Compartir</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botón Traducir</string>
-  <string name="morphe_music_hide_new_from_shelf_title">Ocultar sección \'Novedades de\'</string>
+  <string name="morphe_music_hide_new_from_shelf_title">Ocultar estantería \'Novedades de\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ocultar secciones de listas de reproducción</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Ocultar botón Descargar de episodios de podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Ocultar botón Repetir</string>
   <string name="morphe_music_hide_shuffle_button_title">Ocultar botón Aleatorio</string>
-  <string name="morphe_music_hide_speed_dial_shelf_title">Ocultar sección \'Acceso rápido\'</string>
+  <string name="morphe_music_hide_speed_dial_shelf_title">Ocultar estantería \'Acceso rápido\'</string>
   <string name="morphe_music_comments_screen_title">Comentarios</string>
   <string name="morphe_music_comments_screen_summary">Elige qué componentes aparecen en la sección de comentarios</string>
   <string name="morphe_music_hide_comments_community_guidelines_title">Ocultar normas de la comunidad</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_hide_history_button_title">Ocultar botón Historial</string>
   <string name="morphe_music_hide_notification_button_title">Ocultar botón Notificaciones</string>
   <string name="morphe_music_hide_search_button_title">Ocultar botón de búsqueda</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ocultar botón de búsqueda por voz</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ocultar botón de búsqueda por sonido</string>
+  <string name="morphe_music_hide_library_new_button_title">Ocultar botón Nueva</string>
+  <string name="morphe_music_hide_library_new_button_summary">Oculta el botón Nueva en la pestaña Biblioteca</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Botones de acción</string>
   <string name="morphe_music_action_buttons_screen_summary">Elige qué botones de acción aparecen debajo del reproductor</string>
@@ -239,7 +244,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_hide_flyout_menu_sleep_timer_title">Ocultar menú \'Temporizador de suspensión\'</string>
   <string name="morphe_music_hide_flyout_menu_start_radio_title">Ocultar menú \'Iniciar Mix\'</string>
   <string name="morphe_music_hide_flyout_menu_stats_for_nerds_title">Ocultar menú \'Estadísticas avanzadas\'</string>
-  <string name="morphe_music_hide_flyout_menu_subscribe_title">Ocultar menú Suscribirme</string>
+  <string name="morphe_music_hide_flyout_menu_subscribe_title">Ocultar menú Suscribirse</string>
   <string name="morphe_music_hide_flyout_menu_unpin_from_speed_dial_title">Ocultar menú \'Desfijar del acceso rápido\'</string>
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Ocultar menú \'Ver créditos de la canción\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -352,12 +357,12 @@ Para garantizar que la sincronización se realice durante la reproducción en se
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Usar letras de terceros</string>
   <string name="morphe_music_lyrics_enabled_summary">Muestra letras de un servicio de terceros, recurriendo a las letras integradas cuando no se encuentran</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Mantener pantalla encendida mientras se ven las letras</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Evita que la pantalla se apague mientras el panel de letras está abierto</string>
   <string name="morphe_music_lyrics_section_service_title">Servicio de letras</string>
   <string name="morphe_music_lyrics_section_overlay_title">Superposición</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronización</string>
   <string name="morphe_music_lyrics_section_about_title">Acerca de</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Pulsa ▲/▼ para establecer el orden de prioridad, y la casilla para activar o desactivar cada proveedor</string>
   <string name="morphe_music_lyrics_source_all_disabled">Todos los proveedores desactivados: letras integradas y letras incrustadas</string>
   <string name="morphe_music_lyrics_source_reset_title">¿Restablecer orden de proveedores?</string>
   <string name="morphe_music_lyrics_source_reset_message">Restaura los proveedores al orden de prioridad predeterminado</string>
@@ -394,9 +399,8 @@ Pasos:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl borrado</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl no válido. Compruébalo e inténtalo de nuevo</string>
   <string name="morphe_music_musixmatch_token_title">Token de Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funciona sin token, así que este campo puede quedarse vacío.
-
-Añade un token solo para usar tu propia cuenta. Tiene que provenir de la aplicación de Musixmatch para Android: los tokens copiados de musixmatch.com pertenecen al cliente de escritorio que ya no está disponible y la API los rechaza."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Añade un token solo para usar tu propia cuenta. Tiene que provenir de la aplicación de Musixmatch para Android: los tokens copiados de musixmatch.com pertenecen al cliente de escritorio que ya no está disponible y la API los rechaza</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funciona sin token, así que este campo puede quedarse vacío</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token de usuario</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token de usuario guardado</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token de usuario borrado</string>
@@ -418,9 +422,9 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_show_copy_button_title">Mostrar botón Copiar</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Pulsa para copiar las letras originales como texto sin formato; mantén pulsado para guardar el archivo de letras sin procesar en Descargas</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Mostrar botón Traducir</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Traduce las letras usando las traducciones del proveedor o Google Translate</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Pulsa para activar o desactivar la traducción; mantén pulsado para solo traducción. Usa las traducciones del proveedor, Google Translate o una API compatible con OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostrar botón Romanizar</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniza las letras usando la romanización del proveedor o la de Google Translate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Pulsa para activar o desactivar la romanización; mantén pulsado para solo romanización. Usa la romanización del proveedor, Google Translate o una API compatible con OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botón Actualizar</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Pulsa para cambiar a la siguiente letra candidata; mantén pulsado para desactivar temporalmente las letras de terceros y mostrar las nativas</string>
   <string name="morphe_music_lyrics_saved">Guardado</string>
@@ -436,7 +440,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_display_artist_first_summary">Alterna el orden de visualización de artista y título en el reproductor en miniatura y MediaSession. Activado: \"Artista - Título\"; desactivado: \"Título - Artista\". No afecta a la búsqueda de letras</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtros</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex de metadatos</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Expresión regular aplicada a títulos, artistas y álbumes antes de buscar las letras. Déjala vacía para desactivarla. La predeterminada elimina términos comunes como \"Vídeo oficial\", \"Remasterizado\" y \"- Topic\"</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Expresión regular aplicada a títulos, artistas y álbumes antes de buscar las letras y al puntuar si dos títulos coinciden. Déjala vacía para desactivar ambas. La predeterminada elimina términos comunes como \"Vídeo oficial\", \"Remaster\", \"【插曲】\" y \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">Regex de filtro de letras</string>
   <string name="morphe_music_lyrics_text_filter_summary">Expresión regular aplicada solo al texto original de las letras (no a traducciones ni romanizaciones). Déjala vacía para desactivarla</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Marcadores de línea de información</string>
@@ -453,15 +457,18 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizado por %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Traducido</string>
+  <string name="morphe_music_lyrics_translation_language_title">Idioma de traducción</string>
   <string name="morphe_music_lyrics_translating">Traduciendo…</string>
   <string name="morphe_music_lyrics_translate_failed">No se pudieron traducir las letras</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizado</string>
   <string name="morphe_music_lyrics_romanizing">Romanizando…</string>
   <string name="morphe_music_lyrics_romanize_failed">No se pudieron romanizar las letras</string>
+  <string name="morphe_music_lyrics_translate_only">Solo traducción</string>
+  <string name="morphe_music_lyrics_romanize_only">Solo romanización</string>
   <string name="morphe_music_lyrics_copied">Copiado al portapapeles</string>
   <string name="morphe_music_lyrics_refreshing">Actualizando</string>
   <string name="morphe_music_lyrics_refreshed">Actualizado</string>
-  <string name="morphe_music_lyrics_about_summary">"Las letras se buscan por título de pista y artista, por lo que una pista con metadatos inusuales puede no encontrar nada o encontrar la versión incorrecta. También puedes probar el botón 'Actualizar' para cambiar de versión manualmente. Cuando no se encuentran letras de terceros, se muestran las letras integradas o incrustadas en su lugar. Los proveedores marcados con * requieren un token para activarse. No siempre se consultan todos los proveedores activados en el orden que establezcas, sino que responden según su velocidad"</string>
+  <string name="morphe_music_lyrics_about_summary">"Las letras se buscan por título y artista; unos metadatos inusuales pueden no encontrar nada o encontrar la versión incorrecta. Usa Actualizar para cambiar de versión. Los proveedores marcados con * requieren un token. No siempre se consultan todos los proveedores activados en el orden que establezcas, sino que responden según su velocidad"</string>
   <string name="morphe_music_lyrics_hide_info_title">Ocultar línea de créditos</string>
   <string name="morphe_music_lyrics_hide_info_summary">Oculta la línea de créditos que se muestra debajo de las letras</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Intercambiar traducción y romanización</string>

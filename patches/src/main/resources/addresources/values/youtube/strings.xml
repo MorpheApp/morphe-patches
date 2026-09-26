@@ -80,6 +80,8 @@ Changes include:
     <string name="morphe_hide_floating_microphone_button_title">Hide floating microphone button</string>
     <string name="morphe_hide_floating_microphone_button_summary">Hides floating microphone button in the lower-right corner of search suggestions screen</string>
     <string name="morphe_hide_get_premium_button_title">Hide \'Get Premium\' button</string>
+    <string name="morphe_hide_history_shelf_title">Hide History shelf</string>
+    <string name="morphe_hide_history_shelf_summary">Hides the History shelf in the You tab</string>
     <string name="morphe_hide_horizontal_shelves_title">Hide horizontal shelves</string>
     <string name="morphe_hide_horizontal_shelves_summary">Hides horizontal shelves such as Breaking news, Community posts you may like, Continue watching, Explore more channels, Explore more topics, For You, Latest videos, Most relevant, Posts from Creator\'s Community, Shopping, and Watch it again</string>
     <string name="morphe_hide_hyped_label_title">Hide Hyped label</string>
@@ -111,6 +113,7 @@ Changes include:
     <string name="morphe_hide_show_more_button_title">Hide \'Show more\' button</string>
     <string name="morphe_hide_show_more_button_summary">Hides the expand button under videos in the search results</string>
     <string name="morphe_hide_subscribed_channels_bar_title">Hide subscribed channels bar</string>
+    <string name="morphe_hide_subscribed_channels_bar_names_title">Hide channel names in subscribed channels bar</string>
     <string name="morphe_hide_surveys_title">Hide surveys</string>
     <string name="morphe_hide_surveys_summary">Hide surveys and nudges about feed recommendation accuracy</string>
     <string name="morphe_hide_ticket_shelf_title">Hide ticket shelf</string>
@@ -265,6 +268,7 @@ Changes include:
     <string name="morphe_hide_comments_section_in_home_feed_title">Hide comments section in Home feed</string>
     <string name="morphe_hide_comments_community_guidelines_title">Hide Community Guidelines</string>
     <string name="morphe_hide_comments_create_a_short_button_title">Hide \'Create a Short\' button</string>
+    <string name="morphe_hide_comments_dislike_button_title">Hide Dislike button</string>
     <string name="morphe_hide_comments_emoji_button_title">Hide Emoji button</string>
     <string name="morphe_hide_comments_filter_bar_options_title">Hide filter bar options</string>
     <string name="morphe_hide_comments_filter_bar_options_summary">Hides all filter bar options except \'Top\' and \'Newest\'</string>
@@ -274,11 +278,17 @@ Changes include:
     <string name="morphe_hide_comments_live_chat_donators_bar_title">Hide live chat donators bar</string>
     <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
     <string name="morphe_hide_comments_live_chat_tooltips_summary">Hides tooltip popups shown near the chat input bar, such as the subscriber-only chat notice</string>
+    <string name="morphe_hide_comments_menu_button_title">Hide Menu button</string>
+    <string name="morphe_hide_comments_menu_button_summary">Hides the 3-dot menu button of each comment</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
+    <string name="morphe_hide_comments_preview_comment_hidden">Comment hidden by Morphe...</string>
+    <string name="morphe_minimal_comments_button_title">Enable minimal comments button</string>
+    <string name="morphe_minimal_comments_button_summary">Hides the sliding cards and its page selector, displayed on the comments button</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
     <string name="morphe_hide_comments_timestamp_button_title">Hide Timestamp button</string>
     <string name="morphe_hide_comments_top_fans_button_title">Hide \'Top fans\' button</string>
+    <string name="morphe_hide_comments_translate_button_title">Hide Translate button</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitize highlighted search links</string>
     <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitizes highlighted search links, leaving only the original plain text</string>
 
@@ -413,9 +423,17 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <!-- interaction.channelsearch.channelSearchPatch -->
     <string name="morphe_channel_search_title">Search within channel</string>
     <string name="morphe_channel_search_summary">Searching while a channel is open searches only that channel</string>
+    <string name="morphe_channel_search_hint">Search channel</string>
     <string name="morphe_channel_search_results">Channel search results</string>
     <string name="morphe_channel_search_no_results">Nothing found on this channel</string>
     <string name="morphe_channel_search_failed">Could not search this channel</string>
+    <string name="morphe_channel_search_sort_relevance">Relevance</string>
+    <string name="morphe_channel_search_sort_most_viewed">Most viewed</string>
+    <string name="morphe_channel_search_sort_least_viewed">Least viewed</string>
+    <string name="morphe_channel_search_sort_newest">Newest</string>
+    <string name="morphe_channel_search_sort_oldest">Oldest</string>
+    <string name="morphe_channel_search_sort_shortest">Shortest</string>
+    <string name="morphe_channel_search_sort_longest">Longest</string>
 
     <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
     <string name="morphe_share_copy_link_button_success">Link copied to clipboard</string>
@@ -725,6 +743,8 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
     <string name="morphe_hide_ask_button_title">Hide Ask button</string>
+    <string name="morphe_hide_channel_profile_button_title">Hide channel and Subscribe button</string>
+    <string name="morphe_hide_channel_profile_button_summary">Hides the channel avatar and Subscribe button at the start of the action bar</string>
     <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_clip_button_title">Hide Clip button</string>
     <string name="morphe_hide_clip_button_summary">This may not work for some user accounts</string>
@@ -802,6 +822,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary">If changing this setting does not take effect, try switching to Incognito mode</string>
     <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
+    <string name="morphe_hide_navigation_new_content_dot_title">Hide new content dot</string>
     <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the \'You\' tab.
 
@@ -1189,10 +1210,6 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_theme_color_change_foreground_summary">Use the theme color for text and icons</string>
     <string name="morphe_gradient_loading_screen_title">Enable gradient loading screen</string>
     <string name="morphe_gradient_loading_screen_summary">Shows a gradient background on the loading screen instead of a solid color</string>
-    <string name="morphe_splash_screen_animation_style_title">Splash screen style</string>
-    <string name="morphe_splash_screen_animation_style_entry_1">Disabled</string>
-    <string name="morphe_splash_screen_animation_style_entry_2">Color</string>
-    <string name="morphe_splash_screen_animation_style_entry_3">Monochrome</string>
     <string name="morphe_seekbar_custom_color_title">Enable custom seekbar color</string>
     <string name="morphe_seekbar_custom_color_primary_title">Seekbar color</string>
     <string name="morphe_seekbar_custom_color_primary_summary">Set the primary color of the video progress bar</string>
@@ -1277,14 +1294,6 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Disable tap and hold haptics</string>
     <string name="morphe_disable_haptic_feedback_zoom_title">Disable zoom haptics</string>
 
-    <!-- misc.medianotification.mediaNotificationControlsPatch -->
-    <string name="morphe_notification_media_screen_title">Notification media controls</string>
-    <string name="morphe_notification_media_screen_summary">Customize the playback controls shown on your lock screen and notification panel</string>
-    <string name="morphe_hide_notification_media_prev_next_title">Hide Previous &amp; Next buttons</string>
-    <string name="morphe_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
-    <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
-    <string name="morphe_disable_notification_media_seekbar_summary">Prevents dragging the seekbar on the lock screen and notification panel</string>
-
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
     <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>
 
@@ -1321,6 +1330,8 @@ Tap here to open DeArrow.ajay.app"</string>
     <!-- video.quality.button.videoQualityDialogButtonPatch -->
     <string name="morphe_video_quality_dialog_button_title">Show Quality button</string>
     <string name="morphe_video_quality_dialog_button_summary">Tap and hold to reset quality to default</string>
+    <string name="morphe_video_quality_dialog_button_resolution_title">Show resolution on Quality button</string>
+    <string name="morphe_video_quality_dialog_button_resolution_summary">Show the resolution, such as 1080, instead of a label such as FHD</string>
 
     <!-- video.speed.custom.customPlaybackSpeedPatch -->
     <string name="morphe_custom_speed_menu_title">Custom playback speed menu</string>
@@ -1415,7 +1426,22 @@ Video playback with AV1 may stutter or drop frames."</string>
 
     <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
     <string name="morphe_restore_old_video_action_bar_title">Restore old video action bar</string>
-    <string name="morphe_restore_old_video_action_bar_summary">"Fixes dislikes not shown and video action buttons cannot be hidden
+    <string name="morphe_restore_old_video_action_bar_summary">"Fixes video action buttons cannot be hidden
 
 Limitation: Reverts to old style \'More videos\' overlay"</string>
+
+    <!-- layout.player.icons.playerIconStylePatch -->
+    <string name="morphe_player_icon_style_title">Player icon style</string>
+    <string name="morphe_player_icon_style_entry_auto">Automatic</string>
+    <string name="morphe_player_icon_style_entry_default">Default</string>
+    <string name="morphe_player_icon_style_entry_regular">Thin</string>
+    <string name="morphe_player_icon_style_entry_bold">Bold</string>
+    <string name="morphe_player_icon_style_entry_fluent" translatable="false">Fluent</string>
+    <string name="morphe_player_icon_style_entry_phosphor" translatable="false">Phosphor</string>
+    <string name="morphe_player_icon_style_entry_phosphor_light" translatable="false">Phosphor Light</string>
+    <string name="morphe_player_icon_style_entry_phosphor_fill" translatable="false">Phosphor Fill</string>
+    <string name="morphe_player_icon_style_entry_phosphor_duotone" translatable="false">Phosphor Duotone</string>
+    <string name="morphe_player_icon_style_entry_ionicons" translatable="false">Ionicons</string>
+    <string name="morphe_player_icon_style_entry_sharp" translatable="false">Sharp</string>
+    <string name="morphe_shorts_icon_style_title">Shorts icon style</string>
 </resources>

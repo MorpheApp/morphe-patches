@@ -8,8 +8,11 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import android.view.View;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
@@ -41,7 +44,7 @@ public final class VoiceOverTranslationButton {
 
             ImageView button = PlayerOverlayButton.addButton(
                     controlsView,
-                    "morphe_yt_vot_bold",
+                    PlayerIcons.name("morphe_yt_vot"),
                     view -> {
                         VoiceOverTranslationPatch.toggleTranslation();
                         refreshActivatedState();
@@ -53,6 +56,7 @@ public final class VoiceOverTranslationButton {
             overlayButtonRef = button != null ? new WeakReference<>(button) : null;
             if (button != null) {
                 button.setContentDescription(ResourceUtils.getString("morphe_vot_enabled_title"));
+                setToggleAccessibilityDelegate(button);
             }
             refreshActivatedState();
         } catch (Exception ex) {
@@ -82,10 +86,32 @@ public final class VoiceOverTranslationButton {
                         VotBottomSheet.show(view.getContext());
                         return true;
                     });
+            View legacyButton = Utils.getChildViewByResourceName(controlsView, "morphe_vot_button");
+            if (legacyButton != null) {
+                setToggleAccessibilityDelegate(legacyButton);
+            }
             refreshActivatedState();
         } catch (Exception ex) {
             Logger.printException(() -> "initializeLegacyButton failure", ex);
         }
+    }
+
+    /**
+     * Exposes the button to accessibility services as a toggle,
+     * so screen readers announce whether translation is on or off.
+     */
+    private static void setToggleAccessibilityDelegate(View button) {
+        button.setAccessibilityDelegate(new View.AccessibilityDelegate() {
+            @Override
+            @SuppressWarnings("deprecation")
+            public void onInitializeAccessibilityNodeInfo(@NonNull View host, @NonNull AccessibilityNodeInfo info) {
+                super.onInitializeAccessibilityNodeInfo(host, info);
+                info.setClassName(ToggleButton.class.getName());
+                info.setCheckable(true);
+                // setChecked(int) is API 36 only, the boolean version still works on every version.
+                info.setChecked(VoiceOverTranslationPatch.isSessionEnabled());
+            }
+        });
     }
 
     private static void refreshActivatedState() {

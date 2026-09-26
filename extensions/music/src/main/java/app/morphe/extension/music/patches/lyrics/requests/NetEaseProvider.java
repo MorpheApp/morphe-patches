@@ -86,17 +86,26 @@ public final class NetEaseProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         String keyword = track.title() + " " + track.artist();
         JSONObject song = searchBest(keyword, track);
         if (song == null || !song.has("id")) {
             return null;
         }
-        return fetchFromSong(song);
+        Lyrics lyrics = fetchFromSong(song);
+        if (lyrics == null) {
+            return null;
+        }
+        final long durationMs = song.optLong("duration", 0);
+        return FetchResult.of(lyrics,
+                song.optString("name", ""),
+                song.optString("artist", ""),
+                durationMs > 0 ? durationMs / 1000 : 0,
+                track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> songs = searchAll(keyword, track);
 
@@ -122,7 +131,7 @@ public final class NetEaseProvider implements LyricsProvider {
             }
         }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     @Nullable
@@ -246,7 +255,14 @@ public final class NetEaseProvider implements LyricsProvider {
         }
         List<JSONObject> scored = new ArrayList<>(candidates);
         scored.sort((a, b) -> scoreCandidate(b, track) - scoreCandidate(a, track));
-        return scored;
+        List<JSONObject> passed = new ArrayList<>();
+        for (JSONObject item : scored) {
+            if (scoreCandidate(item, track) >= LyricsRequests.SOFT_MIN) {
+                passed.add(item);
+            }
+        }
+        return passed.isEmpty() && !scored.isEmpty()
+                ? List.of(scored.get(0)) : passed;
     }
 
     @Nullable
@@ -264,6 +280,9 @@ public final class NetEaseProvider implements LyricsProvider {
                 bestScore = score;
                 best = candidate;
             }
+        }
+        if (best == null || bestScore < LyricsRequests.SOFT_MIN) {
+            return null;
         }
         return best;
     }

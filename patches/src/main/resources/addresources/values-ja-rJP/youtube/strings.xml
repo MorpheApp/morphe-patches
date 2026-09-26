@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">スワイプ コントロール</string>
   <string name="morphe_settings_screen_11_misc_title">その他</string>
   <string name="morphe_settings_screen_12_video_title">動画</string>
-  <string name="morphe_restore_old_settings_menus_title">YouTube の設定メニューを旧式に戻す</string>
+  <string name="morphe_restore_old_settings_menus_title">YouTube の設定メニューを旧仕様に戻す</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">バックグラウンド再生の制限を解除</string>
   <string name="morphe_shorts_disable_background_playback_title">ショートのバックグラウンド再生を無効化</string>
@@ -75,6 +75,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">音声入力のフローティング ボタンを非表示</string>
   <string name="morphe_hide_floating_microphone_button_summary">検索候補画面の右下に表示されるマイクボタンを非表示にします</string>
   <string name="morphe_hide_get_premium_button_title">「Premium を購入」ボタンを非表示</string>
+  <string name="morphe_hide_history_shelf_title">履歴欄を非表示</string>
+  <string name="morphe_hide_history_shelf_summary">マイページタブの履歴欄を非表示にします</string>
   <string name="morphe_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_hide_horizontal_shelves_summary">ニュース速報、おすすめのコミュニティ投稿、続きを見る、他のチャンネルを探す、その他のトピック、おすすめ、新着動画、関連が強い、\"チャンネル名\" のコミュニティの投稿、ショッピング、もう一度見る、などの横スクロール欄を非表示にします</string>
   <string name="morphe_hide_hyped_label_title">「大盛り上がり」ラベルを非表示</string>
@@ -105,7 +107,8 @@ Second \"item\" text"</string>
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">「もっと見る」ボタンを非表示</string>
   <string name="morphe_hide_show_more_button_summary">検索結果の動画の下に表示される、展開してより多くの動画を表示するボタンを非表示にします</string>
-  <string name="morphe_hide_subscribed_channels_bar_title">横スクロールする横一列の登録済みチャンネルのリストを非表示</string>
+  <string name="morphe_hide_subscribed_channels_bar_title">登録済みチャンネルの横スクロールバーを非表示</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">登録済みチャンネルの横スクロールバーのチャンネル名を非表示</string>
   <string name="morphe_hide_surveys_title">アンケートを非表示</string>
   <string name="morphe_hide_surveys_summary">フィードのおすすめ精度に関するアンケートやフィードバック要求を非表示にします</string>
   <string name="morphe_hide_ticket_shelf_title">チケット欄を非表示</string>
@@ -245,7 +248,7 @@ Second \"item\" text"</string>
 • 横スワイプ欄を非表示にすると予期しない副作用が引き起こされる可能性がある
 • すべての横スワイプ欄を非表示にした場合、コメント セクションごと表示されなくなる"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">横スワイプ欄のフィルタ</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にするコメント セクションの横スワイプ欄のタイトルを改行区切りで入力してください</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にする、コメント セクションの横スワイプ欄のタイトルを改行区切りで入力してください</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
   <string name="morphe_hide_comments_channel_guidelines_title">チャンネルのガイドラインを非表示</string>
   <string name="morphe_hide_comments_contexts_title">コメントの表示方法のヒントを非表示</string>
@@ -254,6 +257,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">ホームフィードでのコメント欄を非表示</string>
   <string name="morphe_hide_comments_community_guidelines_title">コミュニティ ガイドラインを非表示</string>
   <string name="morphe_hide_comments_create_a_short_button_title">「ショート動画を作成」ボタンを非表示</string>
+  <string name="morphe_hide_comments_dislike_button_title">低評価ボタンを非表示</string>
   <string name="morphe_hide_comments_emoji_button_title">絵文字ボタンを非表示</string>
   <string name="morphe_hide_comments_filter_bar_options_title">コメント欄で基本のフィルタボタン以外を非表示</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">「人気順」「新しい順」以外の、コメント欄のフィルタボタンをすべて非表示にします</string>
@@ -263,11 +267,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">チャット欄の投げ銭表示を無効化</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">チャット入力欄の吹き出しを非表示</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">チャット入力欄付近に吹き出し形式のポップアップで表示される、チャンネル登録者のみモードのライブ配信にチャットを送信する際の注意事項などの、チャットに関するヒントを非表示にします</string>
+  <string name="morphe_hide_comments_menu_button_title">メニューボタンを非表示</string>
+  <string name="morphe_hide_comments_menu_button_summary">各コメントの右端に表示される 3 点メニューボタンを非表示にします</string>
   <string name="morphe_hide_comments_preview_comment_title">コメントのプレビューを非表示</string>
   <string name="morphe_hide_comments_preview_comment_summary">コメント欄を開く前に動画の下に表示される、コメントのプレビューを非表示にします</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Morphe によってコメントが非表示になりました</string>
+  <string name="morphe_minimal_comments_button_title">コメント セクションをコンパクト化</string>
+  <string name="morphe_minimal_comments_button_summary">コメント セクションの横スワイプ欄を切り替える機能を無効にし、コンパクトなスタイルで表示します</string>
   <string name="morphe_hide_comments_thanks_button_title">Thanks ボタンを非表示</string>
   <string name="morphe_hide_comments_timestamp_button_title">タイムスタンプ ボタンを非表示</string>
   <string name="morphe_hide_comments_top_fans_button_title">「トップファン」ボタンを非表示</string>
+  <string name="morphe_hide_comments_translate_button_title">翻訳 / 原文ボタンを非表示</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">テキスト内の検索リンクを除去</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">テキスト内の単語やフレーズに埋め込まれた虫眼鏡アイコン付きの検索リンクを取り除き、通常のテキストに戻します</string>
   <string name="morphe_hide_keyword_content_screen_title">キーワード フィルタ</string>
@@ -384,9 +394,17 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">チャンネル内を検索</string>
   <string name="morphe_channel_search_summary">チャンネルを開いた状態での検索は、そのチャンネルだけが検索対象になります</string>
+  <string name="morphe_channel_search_hint">チャンネル内を検索</string>
   <string name="morphe_channel_search_results">チャンネル内の検索結果</string>
   <string name="morphe_channel_search_no_results">このチャンネルでは見つかりませんでした</string>
   <string name="morphe_channel_search_failed">このチャンネル内を検索できませんでした</string>
+  <string name="morphe_channel_search_sort_relevance">関連性</string>
+  <string name="morphe_channel_search_sort_most_viewed">再生回数が多い</string>
+  <string name="morphe_channel_search_sort_least_viewed">再生回数が少ない</string>
+  <string name="morphe_channel_search_sort_newest">新しい順</string>
+  <string name="morphe_channel_search_sort_oldest">古い順</string>
+  <string name="morphe_channel_search_sort_shortest">Short の短い順</string>
+  <string name="morphe_channel_search_sort_longest">長い順</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">タイムスタンプ付きリンクをコピーしました</string>
@@ -671,6 +689,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">「質問する」ボタンを非表示</string>
+  <string name="morphe_hide_channel_profile_button_title">チャンネルとチャンネル登録ボタンを非表示</string>
+  <string name="morphe_hide_channel_profile_button_summary">アクションバーの先頭にあるチャンネルのアバターとチャンネル登録ボタンを非表示にします</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">クリップボタンを非表示</string>
   <string name="morphe_hide_clip_button_summary">この機能は、一部のユーザー アカウントでは正常に動作しない場合があります</string>
@@ -742,6 +762,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swap_create_with_notifications_button_title">作成ボタンと通知ボタンを入れ替える</string>
   <string name="morphe_swap_create_with_notifications_button_summary">この設定を変更しても反映されない場合は、シークレット モードへの切り替えをお試しください</string>
   <string name="morphe_hide_navigation_button_labels_title">ボタンをアイコンのみで表示</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">通知ドットを非表示</string>
   <string name="morphe_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"この機能は、マイページタブを含むナビゲーション バー全体を完全に非表示にします。
 
@@ -760,7 +781,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_toolbar_cast_button_title">キャストボタンを非表示</string>
   <string name="morphe_hide_toolbar_chat_button_title">チャットボタンを非表示</string>
   <string name="morphe_hide_toolbar_create_button_title">作成ボタンを非表示</string>
-  <string name="morphe_hide_toolbar_microphone_button_title">音声検索ボタンを非表示</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">検索の音声入力ボタンを非表示</string>
   <string name="morphe_hide_toolbar_notification_button_title">通知ボタンを非表示</string>
   <string name="morphe_hide_toolbar_search_button_title">検索ボタンを非表示</string>
   <string name="morphe_show_toolbar_settings_button_title">設定ボタンを表示</string>
@@ -982,12 +1003,12 @@ Automotive レイアウト
 • 動画プレーヤーのアクション ボタンにボタン名が表示される (旧仕様)"</string>
   <string name="morphe_tablet_layout_in_player_title">プレーヤーにのみタブレット レイアウトを適用</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"動画プレーヤーのレイアウトを旧スタイルに戻します
+  <string name="morphe_tablet_layout_in_player_summary">"動画プレーヤーのレイアウトを以前のスタイルに戻します
 
-制限事項: [アクションバーを旧式に戻す] がオフのとき、「その他の動画」オーバーレイが利用できない場合があります"</string>
+制限事項: [アクションバーを旧仕様に戻す] がオフのとき、「その他の動画」オーバーレイが表示されない場合があります"</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を以前の仕様に戻す</string>
-  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を以前の仕様に戻す</string>
+  <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を旧仕様に戻す</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 動画プレーヤー下のチャンネル名表示を復元</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
@@ -1048,7 +1069,7 @@ Automotive レイアウト
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
-  <string name="morphe_miniplayer_hide_title_title">タイトルを非表示</string>
+  <string name="morphe_miniplayer_hide_title_title">タイトルとチャンネル名を非表示</string>
   <string name="morphe_miniplayer_type_entry_0">無効</string>
   <string name="morphe_miniplayer_type_entry_1">デフォルト</string>
   <string name="morphe_miniplayer_type_entry_2">横長（旧タイプ）</string>
@@ -1092,10 +1113,6 @@ Automotive レイアウト
   <string name="morphe_theme_color_change_foreground_summary">設定したテーマの色をテキストやアイコンなどにも適用します</string>
   <string name="morphe_gradient_loading_screen_title">グラデーションの読み込み画面を有効化</string>
   <string name="morphe_gradient_loading_screen_summary">読み込み画面の背景を、「単色の背景」から「グラデーションの背景」に変更します</string>
-  <string name="morphe_splash_screen_animation_style_title">スプラッシュ画面のスタイル</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">無効</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">カラー</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">モノクロ</string>
   <string name="morphe_seekbar_custom_color_title">編集したシークバーの色を有効化</string>
   <string name="morphe_seekbar_custom_color_primary_title">シークバーの色</string>
   <string name="morphe_seekbar_custom_color_primary_summary">動画の現在の再生位置を示すプログレスバーのメインカラーを設定します</string>
@@ -1159,13 +1176,6 @@ Automotive レイアウト
   <string name="morphe_disable_haptic_feedback_seek_undo_title">シーク取り消しの触覚フィードバックを無効化</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">長押しの触覚フィードバックを無効化</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ズームの触覚フィードバックを無効化</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">ロック画面のメディア コントロール</string>
-  <string name="morphe_notification_media_screen_summary">通知パネルとロック画面に表示されるプレーヤーのコントロールをカスタマイズします</string>
-  <string name="morphe_hide_notification_media_prev_next_title">前の動画ボタンと次の動画ボタンを非表示</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">通知パネルとロック画面に表示されるプレーヤーの前の動画ボタンと次の動画ボタンを非表示にします。ヘッドホンからの操作によって前の動画 / 次の動画へ移動する機能も無効にします</string>
-  <string name="morphe_disable_notification_media_seekbar_title">シークバーでのシーク操作を無効化</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">通知パネルとロック画面に表示されるプレーヤーのシークバーでのシーク操作を無効にします</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">最近アカウントのログイン情報を変更した場合は、MicroG をアンインストールして再インストールしてください。</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1197,6 +1207,8 @@ Automotive レイアウト
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質ボタンを表示</string>
   <string name="morphe_video_quality_dialog_button_summary">長押しすると、画質をデフォルトの値にリセットします</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">画質ボタンに解像度を表示する</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">FHDなどのラベルの代わりに、1080などの解像度を表示する</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">カスタム再生速度メニュー</string>
   <string name="morphe_restore_old_speed_menu_title">以前の再生速度メニューに戻す</string>
@@ -1281,8 +1293,15 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <string name="morphe_spoof_video_streams_player_js_variant_title">JavaScript 版プレーヤー</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">統計情報にクライアントを表示</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">アクションバーを旧式に戻す</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"低評価数が表示されない不具合とアクション ボタンを非表示にできない不具合を修正します
+  <string name="morphe_restore_old_video_action_bar_title">アクションバーを旧仕様に戻す</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"アクション ボタンを非表示にできない不具合を修正します
 
-制限事項:「その他の動画」オーバーレイも旧スタイルに戻ります"</string>
+制限事項:「その他の動画」オーバーレイも以前のスタイルに戻ります"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">プレイヤーアイコンのスタイル</string>
+  <string name="morphe_player_icon_style_entry_auto">自動</string>
+  <string name="morphe_player_icon_style_entry_default">デフォルト</string>
+  <string name="morphe_player_icon_style_entry_regular">細い</string>
+  <string name="morphe_player_icon_style_entry_bold">太い</string>
+  <string name="morphe_shorts_icon_style_title">Short アイコンスタイル</string>
 </resources>

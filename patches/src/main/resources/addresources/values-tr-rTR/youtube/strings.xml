@@ -75,6 +75,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_floating_microphone_button_title">Yüzen mikrofon düğmesini gizle</string>
   <string name="morphe_hide_floating_microphone_button_summary">Arama önerileri ekranının sağ alt köşesindeki yüzen mikrofon düğmesini gizler</string>
   <string name="morphe_hide_get_premium_button_title">\'Get Premium\' düğmesini gizle</string>
+  <string name="morphe_hide_history_shelf_title">Geçmiş rafını gizle</string>
+  <string name="morphe_hide_history_shelf_summary">Sen sekmesindeki Geçmiş rafını gizler</string>
   <string name="morphe_hide_horizontal_shelves_title">Yatay rafları gizle</string>
   <string name="morphe_hide_horizontal_shelves_summary">Son dakika haberleri, Beğenebileceğiniz topluluk gönderileri, İzlemeye devam et, Daha fazla kanal keşfet, Daha fazla konu keşfet, Senin için, En yeni videolar, En alakalı, İçerik Üreticisi Topluluğu\'ndan gönderiler, Alışveriş ve Tekrar izle gibi yatay rafları gizler</string>
   <string name="morphe_hide_hyped_label_title">Hyped etiketini gizle</string>
@@ -106,6 +108,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_show_more_button_title">\'Daha fazla göster\' düğmesini gizle</string>
   <string name="morphe_hide_show_more_button_summary">Arama sonuçlarında videoların altındaki genişlet düğmesini gizler</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Abone olunmuş kanallar çubuğunu gizle</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Abone olunan kanallar çubuğunda kanal adlarını gizle</string>
   <string name="morphe_hide_surveys_title">Anketleri gizle</string>
   <string name="morphe_hide_surveys_summary">Akış öneri doğruluğuyla ilgili anketleri ve hatırlatmaları gizler</string>
   <string name="morphe_hide_ticket_shelf_title">Bilet rafını gizle</string>
@@ -254,6 +257,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_section_in_home_feed_title">Ana sayfa akışında yorumlar bölümünü gizle</string>
   <string name="morphe_hide_comments_community_guidelines_title">Topluluk kurallarını gizle</string>
   <string name="morphe_hide_comments_create_a_short_button_title">\'Short oluştur\' düğmesini gizle</string>
+  <string name="morphe_hide_comments_dislike_button_title">Beğenmeme düğmesini gizle</string>
   <string name="morphe_hide_comments_emoji_button_title">Emoji düğmesini gizle</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filtre çubuğu seçeneklerini gizle</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'En popüler\' ve \'En yeni\' dışındaki tüm filtre çubuğu seçeneklerini gizler</string>
@@ -263,11 +267,17 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Canlı sohbet bağışçıları çubuğunu gizle</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Canlı sohbet araç ipuçlarını gizle</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Sadece abonelere özel sohbet bildirimi gibi sohbet giriş çubuğunun yanında gösterilen araç ipucu pencerelerini gizler</string>
+  <string name="morphe_hide_comments_menu_button_title">Menü düğmesini gizle</string>
+  <string name="morphe_hide_comments_menu_button_summary">Her yorumun 3 noktalı menü düğmesini gizler</string>
   <string name="morphe_hide_comments_preview_comment_title">Ön izlenen yorumu gizle</string>
   <string name="morphe_hide_comments_preview_comment_summary">Tam yorumlar bölümünü açmadan önce videonun altındaki yorum ön izlemesini gizler</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Yorum Morphe tarafından gizlendi...</string>
+  <string name="morphe_minimal_comments_button_title">Minimal yorumlar düğmesini etkinleştir</string>
+  <string name="morphe_minimal_comments_button_summary">Yorumlar düğmesinde görüntülenen kayan kartları ve sayfa seçicisini gizler</string>
   <string name="morphe_hide_comments_thanks_button_title">Teşekkürler düğmesini gizle</string>
   <string name="morphe_hide_comments_timestamp_button_title">Zaman damgası düğmesini gizle</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'En iyi hayranlar\' düğmesini gizle</string>
+  <string name="morphe_hide_comments_translate_button_title">Çevir düğmesini gizle</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Öne çıkan arama bağlantılarını temizle</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Öne çıkan arama bağlantılarını temizler, yalnızca orijinal düz metni bırakır</string>
   <string name="morphe_hide_keyword_content_screen_title">Anahtar kelime filtresi</string>
@@ -384,9 +394,17 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Kanalda ara</string>
   <string name="morphe_channel_search_summary">Bir kanal açıkken yapılan aramalar yalnızca o kanalı kapsar</string>
+  <string name="morphe_channel_search_hint">Kanal ara</string>
   <string name="morphe_channel_search_results">Kanal arama sonuçları</string>
   <string name="morphe_channel_search_no_results">Bu kanalda sonuç bulunamadı</string>
   <string name="morphe_channel_search_failed">Bu kanalda arama yapılamadı</string>
+  <string name="morphe_channel_search_sort_relevance">Alaka</string>
+  <string name="morphe_channel_search_sort_most_viewed">En çok izlenen</string>
+  <string name="morphe_channel_search_sort_least_viewed">En az izlenen</string>
+  <string name="morphe_channel_search_sort_newest">En yeni</string>
+  <string name="morphe_channel_search_sort_oldest">En eski</string>
+  <string name="morphe_channel_search_sort_shortest">En kısa Short</string>
+  <string name="morphe_channel_search_sort_longest">En uzun</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Bağlantı panoya kopyalandı</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Zaman damgasıyla birlikte bağlantı panoya kopyalandı</string>
@@ -671,6 +689,8 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Soru düğmesini gizle</string>
+  <string name="morphe_hide_channel_profile_button_title">Kanalı ve Abone Ol düğmesini gizle</string>
+  <string name="morphe_hide_channel_profile_button_summary">Eylem çubuğunun başındaki kanal avatarını ve Abone Ol düğmesini gizler.</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Klip düğmesini gizle</string>
   <string name="morphe_hide_clip_button_summary">Bu, bazı kullanıcı hesapları için çalışmayabilir</string>
@@ -742,6 +762,7 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_swap_create_with_notifications_button_title">Oluştur düğmesini Bildirimler düğmesiyle değiştir</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin</string>
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmesi etiketlerini gizle</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Yeni içerik noktasını gizle</string>
   <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, 'Siz' sekmesi de dahil olmak üzere gezinme çubuğunu tamamen gizler.
 
@@ -1047,7 +1068,7 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_miniplayer_screen_title">Mini oynatıcı</string>
   <string name="morphe_miniplayer_screen_summary">Küçültülmüş video oynatıcısının görünümünü ve davranışını özelleştirin</string>
   <string name="morphe_miniplayer_type_title">Mini oynatıcı tipi</string>
-  <string name="morphe_miniplayer_hide_title_title">Başlığı gizle</string>
+  <string name="morphe_miniplayer_hide_title_title">Başlığı ve kanalı gizle</string>
   <string name="morphe_miniplayer_type_entry_0">Devre dışı</string>
   <string name="morphe_miniplayer_type_entry_1">Varsayılan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1091,10 +1112,6 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_theme_color_change_foreground_summary">Metin ve simgeler için tema rengini kullan</string>
   <string name="morphe_gradient_loading_screen_title">Gradyan yükleme ekranını etkinleştir</string>
   <string name="morphe_gradient_loading_screen_summary">Yükleme ekranında düz bir renk yerine degrade arka plan gösterir</string>
-  <string name="morphe_splash_screen_animation_style_title">Açılış ekranı stili</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Tek renk</string>
   <string name="morphe_seekbar_custom_color_title">Özel ilerleme çubuğu rengini etkinleştir</string>
   <string name="morphe_seekbar_custom_color_primary_title">İlerleme çubuğu rengi</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Video ilerleme çubuğunun birincil rengini ayarlayın</string>
@@ -1160,13 +1177,6 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Sardırmayı geri alma titreşimini devre dışı bırak</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Dokunma ve basılı tutma titreşimini devre dışı bırak</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Yakınlaştırma titreşimini devre dışı bırak</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Bildirim medya kontrolleri</string>
-  <string name="morphe_notification_media_screen_summary">Kilit ekranınızda ve bildirim panelinizde görünen oynatma kontrollerini özelleştirin</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Önceki &amp; Sonraki butonlarını gizle</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerinde Önceki ve Sonraki düğmelerini gizler</string>
-  <string name="morphe_disable_notification_media_seekbar_title">İlerleme çubuğunu devre dışı bırak</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki ilerleme çubuğunu sürüklemeyi engeller</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1198,6 +1208,8 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Kalite düğmesini göster</string>
   <string name="morphe_video_quality_dialog_button_summary">Kaliteyi varsayılana sıfırlamak için dokunup basılı tutun</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Kalite düğmesinde çözünürlüğü göster</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Çözünürlüğü, FHD gibi bir etiket yerine 1080 gibi göster</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Özel oynatma hızı menüsü</string>
   <string name="morphe_restore_old_speed_menu_title">Eski oynatma hızı menüsünü geri getir</string>
@@ -1283,7 +1295,14 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Meraklısı için istatistikler\'de taklit göster</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Eski video eylem çubuğunu geri yükle</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Beğenmemelerin görünmemesi ve video eylem düğmelerinin gizlenememesi sorunlarını düzeltir
+  <string name="morphe_restore_old_video_action_bar_summary">"Video eylem düğmelerinin gizlenememesi sorununu düzeltir
 
-Sınırlamalar: Eski 'Daha fazla video' katmanı görünümüne geri döner"</string>
+Sınırlama: Eski stil 'Diğer videolar' katmanına geri döner"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Oynatıcı simge stili</string>
+  <string name="morphe_player_icon_style_entry_auto">Otomatik</string>
+  <string name="morphe_player_icon_style_entry_default">Varsayılan</string>
+  <string name="morphe_player_icon_style_entry_regular">İnce</string>
+  <string name="morphe_player_icon_style_entry_bold">Kalın</string>
+  <string name="morphe_shorts_icon_style_title">Shorts simge stili</string>
 </resources>

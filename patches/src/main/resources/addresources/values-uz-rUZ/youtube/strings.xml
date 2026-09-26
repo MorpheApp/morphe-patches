@@ -262,6 +262,7 @@ Oʻzgarishlar:
   <string name="morphe_hide_comments_thanks_button_title">“Rahmat” tugmasini yashirish</string>
   <string name="morphe_hide_comments_timestamp_button_title">Vaqt belgisi tugmasini yashirish</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'Top muxlislar\' tugmasini yashirish</string>
+  <string name="morphe_hide_comments_translate_button_title">Tarjima tugmasini yashirish</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitarlangan ajratilgan havola</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Faqat asl matnni qoldirib, sanatlangan ajratilgan havola</string>
   <string name="morphe_hide_keyword_content_screen_title">Kalit soʻz filtri</string>
@@ -980,10 +981,6 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_theme_color_change_foreground_summary">Matn va piktogrammalar uchun mavzu rangidan foydalaning.″,</string>
   <string name="morphe_gradient_loading_screen_title">Rangli gradientni yoqish</string>
   <string name="morphe_gradient_loading_screen_summary">Yüklenme ekranda to\'liq rang o\'rniga gradient fonini ko\'rsatish</string>
-  <string name="morphe_splash_screen_animation_style_title">Ekran animatsiyasi uslubi</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">O\'chirilgan</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Rang</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monoxrom</string>
   <string name="morphe_seekbar_custom_color_title">Video tasvirining rangini sozlash</string>
   <string name="morphe_seekbar_custom_color_primary_title">Seekbar rangi</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Video progress barining asosiy rangini belgilash</string>
@@ -1049,13 +1046,6 @@ Batafsil ma'lumot olish uchun DeArrow.ajay.app ni oching."</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">• Zum qilish imkoniyati yo\'q</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Tezkor harakatga javob harakatlarini oʻchirish</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">• Audio izlash yo\'q</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Bildirishnomalar media boshqaruvlari</string>
-  <string name="morphe_notification_media_screen_summary">Bloklangan ekranda va bildirishnoma panelida ko\'rsatiladigan ijro elementlarini sozlash</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Oldingi &amp; Keyingi tugmalarini yashirish</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Media bildirishnomasi, bloklangan ekran va garnitura kontrollerida oldingi va keyingi tugmalarni yashirish</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Tracklarni oʻzgartirish panelini oʻchirish</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Bloklangan ekranda va bildirishnoma panelida progress barni sudrishning oldini olish</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Agar hisobingiz nomini o\'zgargan bo\'lsangiz, MicroGni qayta yuklab o\'rnatishni tavsiya etamiz.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1161,7 +1151,6 @@ AV1 bilan video o'ynashda lag yoki to'silishlar yuzaga kelishi mumkin."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Stats for nerds\' da soxtalashtirishni ko\'rsatish</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Eski video harakatlar panelini tiklash</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Yoqtirishlar va video harakatlar tugmalarini yashirish imkoniyatini tiklaydi.
-
-Cheklov: Eski uslubdagi «Koʻproq videolar» qoplami koʻrinadi."</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_default">Standart</string>
 </resources>

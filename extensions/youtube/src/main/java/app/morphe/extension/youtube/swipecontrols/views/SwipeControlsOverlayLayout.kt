@@ -23,6 +23,7 @@ import app.morphe.extension.shared.ui.ViewAnimations
 import app.morphe.extension.youtube.patches.VideoInformation
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
+import app.morphe.extension.youtube.videoplayer.PlayerIcons
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.round
@@ -59,7 +60,7 @@ class SwipeControlsOverlayLayout(
     // Function to retrieve drawable resources by name.
     private fun getDrawable(name: String): Drawable {
         val drawable = resources.getDrawable(
-            getIdentifierOrThrow(context, ResourceType.DRAWABLE, name),
+            getIdentifierOrThrow(context, ResourceType.DRAWABLE, PlayerIcons.name(name)),
             context.theme,
         )
         drawable.setTint(config.overlayTextColor)

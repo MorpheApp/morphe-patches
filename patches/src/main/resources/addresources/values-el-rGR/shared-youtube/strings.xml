@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Κινούμενο σχέδιο εκκίνησης</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Απενεργοποιημένο</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Χρωματιστή</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Μονόχρωμο</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Επανεκκινήστε για να ολοκληρωθεί η διαδικασία</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Αποσυνδεθήκατε από το Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Άκυρο κλειδί εισόδου VR, συνδεθείτε ξανά στο VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Χειριστήρια πολυμέσων ειδοποίησης</string>
+  <string name="morphe_notification_media_screen_summary">Προσαρμόστε τα χειριστήρια αναπαραγωγής που εμφανίζονται στην οθόνη κλειδώματος και στον πίνακα ειδοποιήσεων</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Απόκρυψη κουμπιών Προηγούμενο &amp; Επόμενο</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Αποκρύπτει τα κουμπιά Προηγούμενο και Επόμενο στην ειδοποίηση πολυμέσων, στην οθόνη κλειδώματος και στα χειριστήρια ακουστικών</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Απενεργοποίηση γραμμής αναζήτησης</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Αποτρέπει τη μεταφορά της γραμμής αναζήτησης στην οθόνη κλειδώματος και στον πίνακα ειδοποιήσεων</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Απενεργοποίηση πρωτοκόλλου QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

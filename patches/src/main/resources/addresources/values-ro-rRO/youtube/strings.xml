@@ -75,6 +75,8 @@ Schimbari incluse:
   <string name="morphe_hide_floating_microphone_button_title">Ascunderea butonului microfon plutitor</string>
   <string name="morphe_hide_floating_microphone_button_summary">Ascunde butonul plutitor al microfonului în colțul din dreapta jos al ecranului de sugestii de căutare</string>
   <string name="morphe_hide_get_premium_button_title">Ascunde butonul \'Obține Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">Ascunde secțiunea Istoric</string>
+  <string name="morphe_hide_history_shelf_summary">Ascunde secțiunea Istoric din fila Tu</string>
   <string name="morphe_hide_horizontal_shelves_title">Ascunde rafturile orizontale</string>
   <string name="morphe_hide_horizontal_shelves_summary">Ascunde rafturile orizontale, cum ar fi Știri de ultimă oră, Postări din comunitate care s-ar putea să-ți placă, Continuă să urmărești, Explorează mai multe canale, Explorează mai multe subiecte, Pentru tine, Ultimele videoclipuri, Cele mai relevante, Postări din comunitatea creatorului, Cumpărături și Urmărește din nou</string>
   <string name="morphe_hide_hyped_label_title">Ascunde eticheta \"În tendințe\"</string>
@@ -106,6 +108,7 @@ Schimbari incluse:
   <string name="morphe_hide_show_more_button_title">Ascunderea butonului „Afișează mai multe”</string>
   <string name="morphe_hide_show_more_button_summary">Ascunde butonul de extindere de sub videoclipuri în rezultatele căutării</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Ascunde bara cu canale abonate</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Ascunde numele canalelor din bara de canale abonate</string>
   <string name="morphe_hide_surveys_title">Ascunde sondajele</string>
   <string name="morphe_hide_surveys_summary">Ascunde sondaje și sugestii despre acuratețea recomandărilor pentru fluxul de conținut</string>
   <string name="morphe_hide_ticket_shelf_title">Ascunde raftul de bilete</string>
@@ -254,6 +257,7 @@ Schimbari incluse:
   <string name="morphe_hide_comments_section_in_home_feed_title">Ascunde secţiunea comentarii în fluxul principal</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ascunde regulile comunității</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Ascunde butonul \'Creare Short\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">Ascunde butonul Dislike</string>
   <string name="morphe_hide_comments_emoji_button_title">Ascunde butonul Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ascunde opțiunile barei de filtre</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ascunde toate opțiunile din bara de filtre, cu excepția \'Top\' și \'Cele mai noi\'</string>
@@ -263,11 +267,17 @@ Schimbari incluse:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ascunde bara cu donatori în chat-ul live</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Ascunde sugestiile din chatul live</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Ascunde ferestrele de sugestii afișate lângă bara de introducere a chat-ului, cum ar fi notificarea pentru chat-ul rezervat abonaților</string>
+  <string name="morphe_hide_comments_menu_button_title">Ascunde butonul de meniu</string>
+  <string name="morphe_hide_comments_menu_button_summary">Ascunde butonul de meniu cu <b>3</b> puncte al fiecărui comentariu</string>
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
   <string name="morphe_hide_comments_preview_comment_summary">Ascunde previzualizarea comentariului de sub videoclip înainte de a deschide secțiunea completă de comentarii</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Comentariu ascuns de Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Activează butonul minimal de comentarii</string>
+  <string name="morphe_minimal_comments_button_summary">Ascunde cardurile glisante și selectorul de pagini al acestora de pe butonul de comentarii</string>
   <string name="morphe_hide_comments_thanks_button_title">Ascunde butonul „Mulțumesc”</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ascunde butonul Timestamp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ascunde butonul \'Top fani\'</string>
+  <string name="morphe_hide_comments_translate_button_title">Ascunde butonul de traducere</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Dezactivează legăturile de căutare evidențiate</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Dezactivează legăturile de căutare evidențiate, afișând doar textul original simplu</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtru de cuvinte-cheie</string>
@@ -384,9 +394,17 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Căutare în canal</string>
   <string name="morphe_channel_search_summary">Căutarea în timp ce un canal este deschis se limitează la acel canal.</string>
+  <string name="morphe_channel_search_hint">Caută canal</string>
   <string name="morphe_channel_search_results">Rezultatele căutării în canal</string>
   <string name="morphe_channel_search_no_results">Nu s-a găsit nimic în acest canal.</string>
   <string name="morphe_channel_search_failed">Nu s-a putut căuta în acest canal.</string>
+  <string name="morphe_channel_search_sort_relevance">Relevanță</string>
+  <string name="morphe_channel_search_sort_most_viewed">Cele mai vizionate</string>
+  <string name="morphe_channel_search_sort_least_viewed">Cele mai puțin vizionate</string>
+  <string name="morphe_channel_search_sort_newest">Cele mai noi</string>
+  <string name="morphe_channel_search_sort_oldest">Cele mai vechi</string>
+  <string name="morphe_channel_search_sort_shortest">Cele mai scurte</string>
+  <string name="morphe_channel_search_sort_longest">Cele mai lungi</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiat în clipboard</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link cu marcaj temporal copiat în clipboard</string>
@@ -671,6 +689,8 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Afișează când nu este pe mut</string>
+  <string name="morphe_hide_channel_profile_button_title">Ascunde canalul și butonul Abonare</string>
+  <string name="morphe_hide_channel_profile_button_summary">Ascunde avatarul canalului și butonul Abonare de la începutul barei de acțiuni</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Activează cookie-urile subtitrărilor</string>
   <string name="morphe_hide_clip_button_summary">Este posibil ca aceasta să nu funcționeze pentru unele conturi de utilizator</string>
@@ -742,6 +762,7 @@ Trebuie furnizate „Cookie-uri pentru subtitrări”"</string>
   <string name="morphe_swap_create_with_notifications_button_title">Inversează butonul Creare cu butonul Notificări</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Dacă schimbarea acestei setări nu are efect, încercați să comutați la modul Incognito</string>
   <string name="morphe_hide_navigation_button_labels_title">Ascunde etichetele butoanelor de navigare</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Ascunde punctul de conținut nou</string>
   <string name="morphe_hide_navigation_bar_title">Ascunde bara de navigare</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Aceasta ascunde complet bara de navigare, inclusiv fila 'You'.
 
@@ -1047,7 +1068,7 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_miniplayer_screen_summary">Personalizează aspectul și comportamentul miniplayerului mic</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
-  <string name="morphe_miniplayer_hide_title_title">Ascunde titlul</string>
+  <string name="morphe_miniplayer_hide_title_title">Ascunde titlul și canalul</string>
   <string name="morphe_miniplayer_type_entry_0">Dezactivat</string>
   <string name="morphe_miniplayer_type_entry_1">Implicit</string>
   <string name="morphe_miniplayer_type_entry_2">Minimă</string>
@@ -1091,10 +1112,6 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_theme_color_change_foreground_summary">Folosește culoarea temei pentru text și pictograme</string>
   <string name="morphe_gradient_loading_screen_title">Activează ecranul de încărcare gradient</string>
   <string name="morphe_gradient_loading_screen_summary">Afișează un fundal gradat pe ecranul de încărcare în loc de o culoare solidă</string>
-  <string name="morphe_splash_screen_animation_style_title">Stil ecran de pornire</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Dezactivat</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Culoare</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monocrom</string>
   <string name="morphe_seekbar_custom_color_title">Activează culoarea barei de căutare personalizate</string>
   <string name="morphe_seekbar_custom_color_primary_title">Culoarea barei de căutare</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Stabilește culoarea principală a barei de progres video</string>
@@ -1160,13 +1177,6 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Dezactivare haptics anulare căutare</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Dezactivaţi hapticile la tap şi hold</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Dezactivare haptics zoom</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Comenzi media pentru notificări</string>
-  <string name="morphe_notification_media_screen_summary">Personalizează comenzile de redare afișate pe ecranul de blocare și panoul de notificări</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Ascunde butoanele Înapoi &amp; Înainte</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Ascunde butoanele anterioare și următoare din notificarea media, pe ecranul de blocare și pe comenzile pentru căști</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Dezactivează bara de căutare</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Împiedică tragerea barei de căutare pe ecranul de blocare și panoul de notificări</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dacă ți-ai schimbat recent detaliile de conectare la cont, dezinstalează și reinstalează MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1198,6 +1208,8 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Afișează butonul Calitate</string>
   <string name="morphe_video_quality_dialog_button_summary">Atinge și menține apăsat pentru a reseta calitatea la valoarea implicită</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Afișează rezoluția pe butonul Calitate</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Afișează rezoluția, de exemplu 1080, în loc de o etichetă precum FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Meniu de redare personalizat</string>
   <string name="morphe_restore_old_speed_menu_title">Restaurare meniu vechi de viteză de redare</string>
@@ -1283,7 +1295,14 @@ Redarea video cu AV1 poate sacada sau pierde cadre."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Afișează falsificarea în \'Statistici pentru pasionați\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurare bara de acțiune video veche</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Remediază problema dezactivării afișării numărului de dislike-uri și imposibilitatea ascunderii butoanelor de acțiune video
+  <string name="morphe_restore_old_video_action_bar_summary">"Remediază problema că butoanele de acțiune video nu pot fi ascunse
 
-Limitare: Revine la aspectul vechi al stratului 'Mai multe videoclipuri'"</string>
+Limitare: Revenire la suprapunerea de stil vechi 'Mai multe videoclipuri'"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Stilul pictogramei playerului</string>
+  <string name="morphe_player_icon_style_entry_auto">Automat</string>
+  <string name="morphe_player_icon_style_entry_default">Implicit</string>
+  <string name="morphe_player_icon_style_entry_regular">Subțire</string>
+  <string name="morphe_player_icon_style_entry_bold">Aldin</string>
+  <string name="morphe_shorts_icon_style_title">Stilul pictogramei Shorts</string>
 </resources>

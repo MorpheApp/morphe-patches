@@ -24,6 +24,7 @@ import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -50,7 +51,7 @@ private const val LYRICS_PANEL_FILTER =
 @Suppress("unused")
 val lyricsPatch = bytecodePatch(
     name = "Third-party lyrics",
-    description = "Adds an option to show synced lyrics with experience enhancement from 15+ providers in the lyrics panel."
+    description = "Adds an option to show synced lyrics with experience enhancement from 16+ providers in the lyrics panel."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -82,7 +83,7 @@ val lyricsPatch = bytecodePatch(
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_source",
                         titleKey = null,
-                        summaryKey = "morphe_music_lyrics_source_summary",
+                        summaryKey = null,
                         tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
                         selectable = false,
                         dependency = "morphe_music_lyrics_enabled"
@@ -124,6 +125,11 @@ val lyricsPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lyrics_tap_to_seek", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_copy_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_show_translate_button", summary = true),
+                    ListPreference(
+                        key = "morphe_music_lyrics_translation_language",
+                        entriesKey = "morphe_language_entries",
+                        entryValuesKey = "morphe_language_entry_values"
+                    ),
                     SwitchPreference("morphe_music_lyrics_show_romanize_button", summary = true),
                     SwitchPreference(
                         key = "morphe_music_lyrics_use_ai_translation",
@@ -132,7 +138,8 @@ val lyricsPatch = bytecodePatch(
                     ),
                     SwitchPreference("morphe_music_lyrics_show_refresh_button", summary = true),
                     SwitchPreference("morphe_music_lyrics_hide_info", summary = true),
-                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true)
+                    SwitchPreference("morphe_music_lyrics_swap_trans_roma", summary = true),
+                    SwitchPreference("morphe_music_lyrics_keep_screen_on", summary = true)
                 )
             ),
             PreferenceCategory(

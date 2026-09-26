@@ -75,6 +75,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">إخفاء زر الميكروفون العائم</string>
   <string name="morphe_hide_floating_microphone_button_summary">يخفي زر الميكروفون العائم في الزاوية اليمنى السفلية من شاشة اقتراحات البحث</string>
   <string name="morphe_hide_get_premium_button_title">إخفاء زر \'الاشتراك في Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">إخفاء شريط السجلّ</string>
+  <string name="morphe_hide_history_shelf_summary">يخفي شريط سجل المشاهدة في تبويب «أنت»</string>
   <string name="morphe_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
   <string name="morphe_hide_horizontal_shelves_summary">يخفي الرفوف الأفقية مثل أخبار عاجلة، منشورات المجتمع التي قد تعجبك، متابعة المشاهدة، استكشاف المزيد من القنوات، استكشاف المزيد من المواضيع، من أجلك، أحدث الفيديوهات، الأكثر صلة، منشورات من مجتمع صنّاع المحتوى، التسوّق وشاهدها مرة أخرى</string>
   <string name="morphe_hide_hyped_label_title">إخفاء علامة أكبر تشجيع</string>
@@ -106,6 +108,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_title">إخفاء زر \'عرض عناصر أكثر\'</string>
   <string name="morphe_hide_show_more_button_summary">يخفي زر التوسيع أسفل الفيديوهات في نتائج البحث</string>
   <string name="morphe_hide_subscribed_channels_bar_title">إخفاء شريط القنوات المشترك بها</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">إخفاء أسماء القنوات في شريط القنوات المشترك بها</string>
   <string name="morphe_hide_surveys_title">إخفاء الاستطلاعات</string>
   <string name="morphe_hide_surveys_summary">إخفاء استطلاعات الرأي والتنبيهات حول دقّة توصية الخلاصة</string>
   <string name="morphe_hide_ticket_shelf_title">إخفاء رف التذاكر</string>
@@ -254,6 +257,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">إخفاء قسم التعليقات في خلاصة الصفحة الرئيسية</string>
   <string name="morphe_hide_comments_community_guidelines_title">إخفاء إرشادات المجتمع</string>
   <string name="morphe_hide_comments_create_a_short_button_title">إخفاء زر \'إنشاء Short\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">إخفاء زر لم يعجبني</string>
   <string name="morphe_hide_comments_emoji_button_title">إخفاء زر الإيموجي</string>
   <string name="morphe_hide_comments_filter_bar_options_title">إخفاء خيارات شريط التصفية</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">يخفي جميع خيارات فرز التعليقات باستثناء ‘الأهم‘ و ‘أحدث التعليقات‘</string>
@@ -263,11 +267,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">إخفاء شريط مُتبرِّعي المحادثة المباشرة</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">إخفاء تلميحات المحادثة المباشرة</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">يُخفي نوافذ التلميحات المنبثقة التي تظهر بجوار شريط كتابة المحادثة، مثل إشعار المحادثة مخصصة للمشتركين فقط</string>
+  <string name="morphe_hide_comments_menu_button_title">إخفاء زر القائمة</string>
+  <string name="morphe_hide_comments_menu_button_summary">يخفي زر القائمة ذي النقاط الثلاث لكل تعليق</string>
   <string name="morphe_hide_comments_preview_comment_title">إخفاء تعليق المعاينة</string>
   <string name="morphe_hide_comments_preview_comment_summary">يخفي تعليق المعاينة أسفل الفيديو قبل فتح قسم التعليقات الكامل</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">تم إخفاء التعليق بواسطة Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">تمكين زر التعليقات المبسّط</string>
+  <string name="morphe_minimal_comments_button_summary">يخفي البطاقات المنزلقة ومحدد الصفحات الخاص بها، الظاهرة على زر التعليقات</string>
   <string name="morphe_hide_comments_thanks_button_title">إخفاء زر شكرًا</string>
   <string name="morphe_hide_comments_timestamp_button_title">إخفاء زر الطابع الزمني</string>
   <string name="morphe_hide_comments_top_fans_button_title">إخفاء زر \'أهم المعجبين\'</string>
+  <string name="morphe_hide_comments_translate_button_title">إخفاء زر الترجمة</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">تنظيف روابط البحث المميزة</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">ينظف روابط البحث المميزة، ويترك فقط النص الأصلي العادي</string>
   <string name="morphe_hide_keyword_content_screen_title">تصفية الكلمات المفتاحية</string>
@@ -384,9 +394,17 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">البحث داخل القناة</string>
   <string name="morphe_channel_search_summary">عند إجراء البحث أثناء فتح قناة، يقتصر البحث على تلك القناة فقط</string>
+  <string name="morphe_channel_search_hint">البحث عن قناة</string>
   <string name="morphe_channel_search_results">نتائج البحث في القناة</string>
   <string name="morphe_channel_search_no_results">لا توجد نتائج في هذه القناة</string>
   <string name="morphe_channel_search_failed">تعذر البحث في هذه القناة</string>
+  <string name="morphe_channel_search_sort_relevance">مدى الصلة</string>
+  <string name="morphe_channel_search_sort_most_viewed">الأكثر مشاهدةً</string>
+  <string name="morphe_channel_search_sort_least_viewed">الأقل مشاهدةً</string>
+  <string name="morphe_channel_search_sort_newest">الأحدَّث</string>
+  <string name="morphe_channel_search_sort_oldest">الأقدَّم</string>
+  <string name="morphe_channel_search_sort_shortest">الأقصَّر</string>
+  <string name="morphe_channel_search_sort_longest">الأطوَّل</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">تم نسخ الرابط إلى الحافظة</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">تم نسخ الرابط مع الطابع الزمني إلى الحافظة</string>
@@ -675,6 +693,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">إخفاء زر طرح سؤال</string>
+  <string name="morphe_hide_channel_profile_button_title">إخفاء القناة وزر اشتراك</string>
+  <string name="morphe_hide_channel_profile_button_summary">يخفي صورة القناة وزر اشتراك في بداية شريط الإجراءات</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">إخفاء زر المقطع</string>
   <string name="morphe_hide_clip_button_summary">قد لا يعمل هذا الإعداد لبعض حسابات المستخدمين</string>
@@ -746,6 +766,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swap_create_with_notifications_button_title">تبديل زر الإنشاء بزر الإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary">إذا لم يُؤدِّ تغيير هذا الإعداد إلى أي نتيجة، جرِّب التبديل إلى وضع التصفّح المتخفي</string>
   <string name="morphe_hide_navigation_button_labels_title">إخفاء تسميات زر التنقل</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">إخفاء نقطة المحتوى الجديد</string>
   <string name="morphe_hide_navigation_bar_title">إخفاء شريط التنقل</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"يؤدي هذا إلى إخفاء شريط التنقل بالكامل، بما في ذلك علامة التبويب 'أنت'.
 
@@ -1052,7 +1073,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_miniplayer_screen_title">المشغل المصغر</string>
   <string name="morphe_miniplayer_screen_summary">تخصيص مظهر ونمط مشغل الفيديو المصغر</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>
-  <string name="morphe_miniplayer_hide_title_title">إخفاء العنوان</string>
+  <string name="morphe_miniplayer_hide_title_title">إخفاء العنوان والقناة</string>
   <string name="morphe_miniplayer_type_entry_0">معطّل</string>
   <string name="morphe_miniplayer_type_entry_1">إفتراضي</string>
   <string name="morphe_miniplayer_type_entry_2">بسيط</string>
@@ -1096,10 +1117,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_theme_color_change_foreground_summary">استخدام لون المظهر للنص والأيقونات</string>
   <string name="morphe_gradient_loading_screen_title">تمكين شاشة التحميل المتدرجة</string>
   <string name="morphe_gradient_loading_screen_summary">يعرض خلفية متدرجة على شاشة التحميل بدلًا من لون ثابت</string>
-  <string name="morphe_splash_screen_animation_style_title">نمط الشاشة الترحيبية</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">معطّل</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">اللون</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">أحادية اللون</string>
   <string name="morphe_seekbar_custom_color_title">تمكين لون شريط تقدم الفيديو المخصص</string>
   <string name="morphe_seekbar_custom_color_primary_title">لون شريط التقدم</string>
   <string name="morphe_seekbar_custom_color_primary_summary">تعيين اللون الأساسي لشريط تقدم الفيديو</string>
@@ -1165,13 +1182,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_disable_haptic_feedback_seek_undo_title">تعطيل اهتزاز التراجع عن التمرير</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">تعطيل اهتزازات النقر والضغط المطول</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">تعطيل الاهتزاز عند التكبير</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">عناصر تحكم الوسائط في الإشعارات</string>
-  <string name="morphe_notification_media_screen_summary">تخصيص عناصر التحكم في التشغيل المعروضة على شاشة القفل ولوحة الإشعارات</string>
-  <string name="morphe_hide_notification_media_prev_next_title">إخفاء أزرار السابق &amp; التالي</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">يخفي أزرار \'السابق\' و \'التالي\' في إشعار الوسائط، شاشة القفل، وعناصر تحكم سماعة الرأس</string>
-  <string name="morphe_disable_notification_media_seekbar_title">تعطيل شريط التقدم</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">يمنع سحب شريط التقدم على شاشة القفل ولوحة الإشعارات</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">إذا قمت مؤخرًا بتغيير تفاصيل تسجيل الدخول إلى حسابك، فقم بإلغاء تثبيت MicroG وإعادة تثبيته.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1203,6 +1213,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">عرض زر الجودة</string>
   <string name="morphe_video_quality_dialog_button_summary">اضغط مع الاستمرار لإعادة الجودة إلى الوضع الافتراضي</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">عرض الدقة على زر الجودة</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">عرض الدقة، مثل 1080، بدلًا من تسمية مثل FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">قائمة سرعة التشغيل المخصصة</string>
   <string name="morphe_restore_old_speed_menu_title">استعادة قائمة سرعة التشغيل القديمة</string>
@@ -1288,7 +1300,14 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">عرض التمويه في \'إحصاءات تقنية\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">استعادة شريط إجراءات الفيديو القديم</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"يُصلح عدم ظهور لم يعجبني وعدم إمكانية إخفاء أزرار إجراءات الفيديو
+  <string name="morphe_restore_old_video_action_bar_summary">"يُصلح مشكلة عدم إمكانية إخفاء أزرار إجراءات الفيديو
 
 القيود: يعود إلى نمط 'المزيد من الفيديوهات' القديم"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">نمط أيقونة المشغّل</string>
+  <string name="morphe_player_icon_style_entry_auto">تلقائي</string>
+  <string name="morphe_player_icon_style_entry_default">الافتراضي</string>
+  <string name="morphe_player_icon_style_entry_regular">نحيف</string>
+  <string name="morphe_player_icon_style_entry_bold">عريض</string>
+  <string name="morphe_shorts_icon_style_title">نمط أيقونة Shorts</string>
 </resources>

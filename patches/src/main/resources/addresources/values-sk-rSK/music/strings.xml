@@ -100,6 +100,7 @@ Stiahnuté skladby sa zobrazia tu"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skryť tlačidlo Preložiť</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skryť poličku \'Novinky od\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skryť poličky zoznamov skladieb</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Skryť tlačidlo na stiahnutie epizódy podcastu</string>
   <string name="morphe_music_hide_repeat_button_title">Skryť tlačidlo Opakovať</string>
   <string name="morphe_music_hide_shuffle_button_title">Skryť tlačidlo Náhodné prehrávanie</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Skryť poličku \'Rýchla voľba\'</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>
   <string name="morphe_music_hide_notification_button_title">Skryť tlačidlo upozornení</string>
   <string name="morphe_music_hide_search_button_title">Skryť tlačidlo vyhľadávania</string>
+  <string name="morphe_music_hide_voice_search_button_title">Skryť tlačidlo hlasového vyhľadávania</string>
+  <string name="morphe_music_hide_sound_search_button_title">Skryť tlačidlo vyhľadávania zvuku</string>
+  <string name="morphe_music_hide_library_new_button_title">Skryť tlačidlo Nový</string>
+  <string name="morphe_music_hide_library_new_button_summary">Skryje tlačidlo Nový na karte Knižnica</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Tlačidlá akcie</string>
   <string name="morphe_music_action_buttons_screen_summary">Vyberte, ktoré komponenty sa zobrazia v lište nástrojov</string>
@@ -352,12 +357,12 @@ Na zabezpečenie synchronizácie scrobblingu počas prehrievania na pozadí sa u
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Použiť texty od tretej strany</string>
   <string name="morphe_music_lyrics_enabled_summary">Zobrazuje texty od tretej strany, pričom ak sa žiadne nenájdu, prepne na vstavané texty.</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Ponechať obrazovku zapnutú pri prezeraní textu piesne</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Zabraňuje vypnutiu obrazovky, kým je otvorený panel s textom piesne</string>
   <string name="morphe_music_lyrics_section_service_title">Služba textov piesní</string>
   <string name="morphe_music_lyrics_section_overlay_title">Prekrytie</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronizácia</string>
   <string name="morphe_music_lyrics_section_about_title">O aplikácii</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Klepnutím na ▲/▼ nastavíte poradie priority a políčko zapne alebo vypne každého poskytovateľa.</string>
   <string name="morphe_music_lyrics_source_all_disabled">Všetci poskytovatelia sú vypnutí – vstavané texty a vložené texty.</string>
   <string name="morphe_music_lyrics_source_reset_title">Obnoviť poradie poskytovateľov?</string>
   <string name="morphe_music_lyrics_source_reset_message">Obnoviť poskytovateľov do predvoleného poradia priority.</string>
@@ -394,9 +399,8 @@ Postup:
   <string name="morphe_music_deezer_arl_toast_cleared">Neplatný ARL, skúste to znova.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl je neplatný — skontrolujte ho a skúste to znova.</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Skopírujte hodnotu používateľského tokenu.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funguje bez tokenu, takže toto pole môže zostať prázdne.
-
-Token pridajte iba vtedy, ak chcete používať svoj vlastný účet. Musí pochádzať z aplikácie Musixmatch pre Android: tokeny skopírované z musixmatch.com patria zrušenému desktopovému klientovi a API ich odmieta"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Token pridávajte len vtedy, ak chcete používať vlastný účet. Musí pochádzať z aplikácie Musixmatch pre Android: tokeny skopírované z musixmatch.com patria vyradenému desktopovému klientovi a API ich odmieta.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funguje aj bez tokenu, takže toto pole môže zostať prázdne.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Neplatný používateľský token, skúste to znova.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: používateľský token bol uložený</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: používateľský token bol vymazaný</string>
@@ -413,9 +417,9 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_copy_button_title">Zobraziť tlačidlo Kopírovať</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Kopírovaním skopírujete pôvodný text piesne ako obyčajný text; dlhým stlačením uložíte surový zdrojový súbor s textom piesne do priečinka Stiahnuté.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Zobraziť tlačidlo Preložiť</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Preložte text piesne pomocou prekladov od poskytovateľa alebo služby Google Translate.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Klepnutím prepnete preklad; dlhým stlačením zobrazíte iba preklad. Používa preklady poskytovateľa, Google Translate alebo OpenAI-kompatibilné API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Zobraziť tlačidlo Kopírovať</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Skryť tlačidlo Kopírovať</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Klepnutím prepnete romanizáciu; dlhým stlačením zobrazíte iba romanizáciu. Používa romanizáciu poskytovateľa, Google Translate alebo OpenAI-kompatibilné API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Preložiť text piesne</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Preklad zlyhal</string>
   <string name="morphe_music_lyrics_saved">Uložené</string>
@@ -431,7 +435,7 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_display_artist_first_summary">Nenašiel sa žiadny preklad</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Táto pieseň nemá text</string>
   <string name="morphe_music_lyrics_custom_regex_title">Táto pieseň nemá preklad</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Regulárny výraz sa aplikuje iba na pôvodný text piesne (nie na preklady ani romanizácie). Ak ho chcete vypnúť, nechajte ho prázdny.</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Regulárny výraz sa aplikuje na názvy, interpretov a albumy pred vyhľadaním textov piesní a pri posudzovaní, či sa dva názvy zhodujú. Ak ho necháte prázdny, obe funkcie sa vypnú. Predvolený výraz odstraňuje bežné rušivé prvky, ako napríklad „Official Video“, „Remaster“, „【插曲】“ a „- Topic“.</string>
   <string name="morphe_music_lyrics_text_filter_title">Filter</string>
   <string name="morphe_music_lyrics_text_filter_summary">Žiadne filtre</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Zobraziť pôvodný text piesne</string>
@@ -448,15 +452,18 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizované pomocou %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Skryť romanizáciu</string>
+  <string name="morphe_music_lyrics_translation_language_title">Jazyk prekladu</string>
   <string name="morphe_music_lyrics_translating">Prekladám…</string>
   <string name="morphe_music_lyrics_translate_failed">Text piesne sa nepodarilo preložiť</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizácia</string>
   <string name="morphe_music_lyrics_romanizing">Žiadna romanizácia</string>
   <string name="morphe_music_lyrics_romanize_failed">Zobraziť prepis</string>
+  <string name="morphe_music_lyrics_translate_only">Iba preklad</string>
+  <string name="morphe_music_lyrics_romanize_only">Iba romanizované</string>
   <string name="morphe_music_lyrics_copied">Skopírované do schránky</string>
   <string name="morphe_music_lyrics_refreshing">Skryť prepis</string>
   <string name="morphe_music_lyrics_refreshed">Prepis</string>
-  <string name="morphe_music_lyrics_about_summary">"Žiadny prepis"</string>
+  <string name="morphe_music_lyrics_about_summary">"Texty piesní sa priraďujú podľa názvu a interpreta, nezvyčajné metadáta môžu nenájsť nič alebo nesprávnu verziu. Pomocou obnovenia prepínajte verzie. Poskytovatelia označení * vyžadujú token. Nie všetci povolení poskytovatelia sú vždy vyžiadaní v nastavenom poradí, ale odpovedajú podľa svojej rýchlosti."</string>
   <string name="morphe_music_lyrics_hide_info_title">Nahlásiť problém s prekladom</string>
   <string name="morphe_music_lyrics_hide_info_summary">Nahlásiť problém s textom piesne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Problém bol nahlásený</string>

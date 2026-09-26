@@ -314,8 +314,6 @@ Automotive layout
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Light theme background</string>
   <string name="morphe_theme_color_light_entry_2">White</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Tidak dibenarkan</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo pengepala</string>
@@ -332,7 +330,6 @@ Automotive layout
   <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <string name="morphe_bypass_link_redirects_title">Memirau ubah hala pautan</string>
@@ -359,4 +356,7 @@ Automotive layout
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Pulihkan bar tindakan video lama</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_auto">Automatik</string>
+  <string name="morphe_player_icon_style_entry_default">Lalai</string>
 </resources>

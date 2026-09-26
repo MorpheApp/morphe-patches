@@ -54,6 +54,17 @@ public class MusicActivityHook extends BaseActivityHook {
 
     /**
      * Injection point.
+     * <p>
+     * Otherwise the dark mode status falls back to the device theme until the settings are
+     * opened, and the extension draws with dark colors on the dark app.
+     */
+    @SuppressWarnings("unused")
+    public static void onMainActivityCreate() {
+        Utils.setIsDarkModeEnabled(true);
+    }
+
+    /**
+     * Injection point.
      */
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {

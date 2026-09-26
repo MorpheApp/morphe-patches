@@ -100,6 +100,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">번역 버튼 숨기기</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'(아티스트)의 새로운 음악\' 선반 숨기기</string>
   <string name="morphe_music_hide_playlist_shelves_title">재생목록 선반 숨기기</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">팟캐스트 에피소드 오프라인 저장 버튼 숨기기</string>
   <string name="morphe_music_hide_repeat_button_title">반복 버튼 숨기기</string>
   <string name="morphe_music_hide_shuffle_button_title">셔플 버튼 숨기기</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">빠른 선곡 선반 숨기기</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_hide_history_button_title">기록 버튼 숨기기</string>
   <string name="morphe_music_hide_notification_button_title">알림 버튼 숨기기</string>
   <string name="morphe_music_hide_search_button_title">검색 버튼 숨기기</string>
+  <string name="morphe_music_hide_voice_search_button_title">음성 검색 버튼 숨기기</string>
+  <string name="morphe_music_hide_sound_search_button_title">소리 검색 버튼 숨기기</string>
+  <string name="morphe_music_hide_library_new_button_title">\'새로 만들기\' 버튼 숨기기</string>
+  <string name="morphe_music_hide_library_new_button_summary">보관함에서 \'새로 만들기\' 버튼을 숨깁니다</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">작업 버튼</string>
   <string name="morphe_music_action_buttons_screen_summary">플레이어 아래에 표시할 작업 버튼을 설정하세요</string>
@@ -352,12 +357,12 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">서드파티 가사 사용하기</string>
   <string name="morphe_music_lyrics_enabled_summary">서드파티 서비스의 가사를 표시합니다. 가사를 찾을 수 없는 경우에는 내장된 가사를 대신 표시합니다</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">가사 보는 동안 화면 켜두기</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">가사 패널이 열려 있는 동안 화면이 꺼지지 않도록 방지합니다</string>
   <string name="morphe_music_lyrics_section_service_title">가사 서비스</string>
   <string name="morphe_music_lyrics_section_overlay_title">오버레이</string>
   <string name="morphe_music_lyrics_section_sync_title">동기화</string>
   <string name="morphe_music_lyrics_section_about_title">정보</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">▲/▼를 탭하여 우선순위를 설정하고, 상자를 탭하여 각 제공자를 활성화하거나 비활성화합니다</string>
   <string name="morphe_music_lyrics_source_all_disabled">모든 제공자가 비활성화됨 - 내장 가사 및 삽입 가사</string>
   <string name="morphe_music_lyrics_source_reset_title">제공자 순서를 초기화하시겠습니까?</string>
   <string name="morphe_music_lyrics_source_reset_message">제공자를 기본 우선순위 순서로 복원합니다</string>
@@ -394,9 +399,8 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl 삭제됨</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: 잘못된 arl — 확인 후 다시 시도하세요</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch 토큰</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch는 토큰 없이도 작동하므로 이 항목은 비워 두어도 됩니다. 
-
-본인 계정을 사용하려는 경우에만 토큰을 입력하세요. 토큰은 반드시 Musixmatch Android 앱에서 가져온 것이어야 합니다: musixmatch.com에서 복사한 토큰은 더 이상 사용되지 않는 데스크톱 클라이언트용이므로 API에서 이를 거부합니다."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">본인 계정을 사용하려는 경우에만 토큰을 입력하세요. 토큰은 반드시 Musixmatch Android 앱에서 가져온 것이어야 합니다: musixmatch.com에서 복사한 토큰은 더 이상 사용되지 않는 데스크톱 클라이언트용이므로 API에서 이를 거부합니다</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch는 토큰 없이도 작동하므로 이 필드는 비워 둘 수 있습니다</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">사용자 토큰</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: 사용자 토큰이 저장됨</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: 사용자 토큰이 삭제됨</string>
@@ -420,9 +424,9 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">복사 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">버튼을 탭하여 원본 가사를 일반 텍스트로 복사할 수 있고, 길게 탭하면 원본 가사 소스 파일을 다운로드에 저장할 수 있습니다</string>
   <string name="morphe_music_lyrics_show_translate_button_title">번역 버튼 표시하기</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">제공자 번역 또는 Google 번역을 사용하여 가사를 번역하세요</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">탭하여 번역 켜기/끄기; 길게 눌러 번역만 표시. 제공자 번역, Google Translate 또는 OpenAI 호환 API를 사용합니다.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">로마자 표기 버튼 표시하기</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">제공자 로마자 표기법 또는 Google 번역 로마자 표기법을 사용하여 가사를 로마자로 변환합니다</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">탭하여 로마자 표기 켜기/끄기; 길게 눌러 로마자 표기만 표시. 제공자 로마자 표기, Google Translate 또는 OpenAI 호환 API를 사용합니다.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">새로고침 버튼 표시하기</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">버튼을 탭하여 다음 가사 후보로 전환할 수 있고, 길게 탭하면 서드파티 가사를 일시적으로 비활성화하고 기본 가사를 표시할 수 있습니다</string>
   <string name="morphe_music_lyrics_saved">저장됨</string>
@@ -433,12 +437,12 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_hide_unplayed_title">재생되지 않은 가사 숨기기</string>
   <string name="morphe_music_lyrics_hide_unplayed_summary">현재 재생 중인 줄 아래의 가사 줄을 숨깁니다</string>
   <string name="morphe_music_lyrics_mediasession_title">잠금 화면에 MediaSession 가사 표시하기</string>
-  <string name="morphe_music_lyrics_miniplayer_title">미니플레이어 가사 표시하기</string>
+  <string name="morphe_music_lyrics_miniplayer_title">미니 플레이어 가사 표시하기</string>
   <string name="morphe_music_lyrics_display_artist_first_title">아티스트 및 제목 표시 순서</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">미니 플레이어와 MediaSession에서 아티스트와 제목의 표시 순서를 전환합니다. 활성화되면 \'아티스트 - 제목\', 비활성화되면 \'제목 - 아티스트\'로 표시됩니다. 가사 검색에는 영향을 주지 않습니다</string>
   <string name="morphe_settings_music_lyrics_metadata_title">필터</string>
   <string name="morphe_music_lyrics_custom_regex_title">메타데이터 정규식</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">가사를 검색하기 전에 트랙 제목, 아티스트, 앨범에 적용되는 정규식입니다. 비워두면 비활성화됩니다. 기본값은 \'Official Video\', \'Remaster\', \'- Topic\'과 같은 불필요한 문구를 제거합니다</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">가사 검색 전과 두 제목이 일치하는지 평가할 때 제목, 아티스트, 앨범에 적용되는 정규 표현식입니다. 비워 두면 둘 다 비활성화됩니다. 기본값은 \"Official Video\", \"Remaster\", \"【插曲】\", \"- Topic\" 같은 일반적인 군더더기를 제거합니다.</string>
   <string name="morphe_music_lyrics_text_filter_title">가사 필터 정규식</string>
   <string name="morphe_music_lyrics_text_filter_summary">원본 가사 텍스트에만 적용되는 정규식입니다. 번역이나 로마자 표기에는 적용되지 않습니다. 비워두면 비활성화됩니다</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">정보 줄 마커</string>
@@ -455,15 +459,18 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">%s에 의해 로마자 표기됨</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">번역됨</string>
+  <string name="morphe_music_lyrics_translation_language_title">번역 언어</string>
   <string name="morphe_music_lyrics_translating">번역하는 중…</string>
   <string name="morphe_music_lyrics_translate_failed">가사를 번역할 수 없습니다</string>
   <string name="morphe_music_lyrics_romanize_hide">로마자 표기됨</string>
   <string name="morphe_music_lyrics_romanizing">로마자 표기 중…</string>
   <string name="morphe_music_lyrics_romanize_failed">가사를 로마자로 표기할 수 없습니다</string>
+  <string name="morphe_music_lyrics_translate_only">번역만</string>
+  <string name="morphe_music_lyrics_romanize_only">로마자 표기만</string>
   <string name="morphe_music_lyrics_copied">클립보드에 복사하였습니다</string>
   <string name="morphe_music_lyrics_refreshing">새로고침 중</string>
   <string name="morphe_music_lyrics_refreshed">새로고침됨</string>
-  <string name="morphe_music_lyrics_about_summary">"가사는 트랙 제목과 아티스트를 기준으로 검색되므로, 메타데이터가 특이한 곡은 가사를 찾지 못하거나 잘못된 버전의 가사가 검색될 수 있습니다. 또한 새로고침 버튼을 눌러 수동으로 다른 버전으로 변경해 볼 수도 있습니다. 서드파티 가사 제공자에서 가사를 찾지 못한 경우에는 앱에 내장 가사 또는 삽입 가사가 대신 표시됩니다. * 표시가 있는 제공자는 사용하려면 토큰이 필요합니다. 활성화된 모든 가사 제공자가 항상 설정한 순서대로 요청되는 것은 아니며, 각 제공자의 응답 속도에 따라 결과가 반환됩니다"</string>
+  <string name="morphe_music_lyrics_about_summary">"가사는 제목과 아티스트를 기준으로 일치하는 항목을 찾습니다. 특이한 메타데이터가 있으면 아무것도 찾지 못하거나 다른 버전의 곡을 찾을 수 있습니다. 새로고침을 사용하면 다른 버전으로 전환할 수 있습니다. * 표시가 있는 제공자는 토큰이 필요합니다. 활성화된 모든 제공지가 설정한 순서대로 항상 요청되는 것은 아니며, 응답 속도에 따라 결과가 제공됩니다"</string>
   <string name="morphe_music_lyrics_hide_info_title">크레딧 라인 숨기기</string>
   <string name="morphe_music_lyrics_hide_info_summary">가사 아래에 표시되는 크레딧 라인을 숨깁니다</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">번역과 로마자 표기 위치 바꾸기</string>
@@ -471,15 +478,15 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_use_ai_translation_title">OpenAI 호환 번역</string>
   <string name="morphe_music_lyrics_use_ai_translation_summary">Google 번역 대신 사용자 정의 OpenAI 호환 API를 사용하여 번역 및 로마자 표기를 수행합니다</string>
   <string name="morphe_music_lyrics_ai_config_dialog_title">AI 번역 설정</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI 기반 가사 번역 및 로마자 표기를 위해 OpenAI 호환 API 엔드포인트를 구성합니다</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">AI 기반 가사 번역 및 로마자 표기를 위해 OpenAI 호환 API 엔드포인트를 설정하세요</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 엔드포인트 URL (예시: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API 키 (익명 접속을 원하시면 비워 두세요)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">모델 이름 (예시: openai-fast, gpt-4o-mini)</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">AI 번역 설정이 저장됨</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">AI 번역 설정을 저장하였습니다</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">AI 엔드포인트에 연결할 수 없습니다. 설정을 확인하세요</string>
-  <string name="morphe_music_lyrics_ai_config_toast_reset">AI 번역 설정 초기화</string>
-  <string name="morphe_music_lyrics_ai_config_status_configured">구성됨</string>
-  <string name="morphe_music_lyrics_ai_config_status_not_configured">탭하여 구성</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">AI 번역 설정을 초기화하였습니다</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">설정됨</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">설정하려면 탭하세요</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">기본 URL은 비워둘 수 없습니다</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">기본 URL은 http:// 또는 https://로 시작해야 합니다</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">모델 이름은 비워둘 수 없습니다</string>

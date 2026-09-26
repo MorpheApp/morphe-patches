@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">تأثير حركة بدء التشغيل</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">معطّل</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">اللون</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">أحادية اللون</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">إعادة التشغيل لإنهاء الإعداد</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">فشل تسجيل الدخول إلى VR: %s</string>
   <string name="morphe_oauth2_toast_reset">تم تسجيل خروج Android VR</string>
   <string name="morphe_oauth2_toast_invalid">رمز تسجيل الدخول إلى VR غير صالح، حاول تسجيل الدخول مرة أخرى إلى VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">عناصر التحكم في وسائط الإشعارات</string>
+  <string name="morphe_notification_media_screen_summary">تخصيص عناصر التحكم في التشغيل المعروضة على شاشة القفل ولوحة الإشعارات</string>
+  <string name="morphe_hide_notification_media_prev_next_title">إخفاء أزرار السابق &amp; التالي</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">يخفي أزرار \'السابق\' و \'التالي\' في إشعار الوسائط، شاشة القفل، وعناصر تحكم سماعة الرأس</string>
+  <string name="morphe_disable_notification_media_seekbar_title">تعطيل شريط التمرير</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">يمنع سحب شريط التقدم على شاشة القفل ولوحة الإشعارات</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">تعطيل بروتوكول QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

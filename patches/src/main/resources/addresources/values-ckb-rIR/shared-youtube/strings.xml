@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">لەکارخراو</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">ڕەنگ</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monochrome</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">دەستپێکردنەوە بۆ تەواوکردنی ئامادەکردن</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -87,6 +91,10 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">نەتوانم لە VR چواردووەم: %s</string>
   <string name="morphe_oauth2_toast_reset">ڳ0ڱڰڱڱڰڱ إواندرواد قوميرواد VR</string>
   <string name="morphe_oauth2_toast_invalid">نسيحو دواكني ذيسنه لمن روسينه ، دواكه دوروسينه به امنهسي</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_summary">Customize the playback controls shown on your lock screen and notification panel</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Hides Previous and Next buttons in media notification, lock screen, and headphone controls</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Prevents dragging the seekbar on the lock screen and notification panel</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">پڕۆتۆكۆلی QUIC ڕاكوچە بكە</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

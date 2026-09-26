@@ -100,6 +100,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">অনুবাদ বোতামটি লুকান</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'নতুন\' শেল্ফ লুকান</string>
   <string name="morphe_music_hide_playlist_shelves_title">প্লেলিস্ট শেল্ফগুলো লুকান</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">পডকাস্ট পর্বের ডাউনলোড বোতাম লুকান</string>
   <string name="morphe_music_hide_repeat_button_title">রিপিট বোতাম লুকান</string>
   <string name="morphe_music_hide_shuffle_button_title">শাফল বোতাম লুকান</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'স্পীড ডায়াল\' শেল্ফ লুকান</string>
@@ -187,6 +188,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
   <string name="morphe_music_hide_notification_button_title">বিজ্ঞপ্তি বাটন লুকান</string>
   <string name="morphe_music_hide_search_button_title">অনুসন্ধান বাটন লুকান</string>
+  <string name="morphe_music_hide_voice_search_button_title">ভয়েস সার্চ বোতাম লুকান</string>
+  <string name="morphe_music_hide_sound_search_button_title">সাউন্ড সার্চ বোতাম লুকান</string>
+  <string name="morphe_music_hide_library_new_button_title">নতুন বাটন লুকান</string>
+  <string name="morphe_music_hide_library_new_button_summary">লাইব্রেরি ট্যাবে নতুন বাটনটি লুকায়</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">অ্যাকশন বোতাম</string>
   <string name="morphe_music_action_buttons_screen_summary">প্লেয়ারের নিচে কোন অ্যাকশন বাটনগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>
@@ -352,12 +357,12 @@ Second \"item\" text"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">তৃতীয় পক্ষের লিরিকস ব্যবহার করুন</string>
   <string name="morphe_music_lyrics_enabled_summary">একটি তৃতীয় পক্ষের পরিষেবা থেকে লিরিকস দেখায়, যদি কিছু খুঁজে না পাওয়া যায় তবে অন্তর্নির্মিত লিরিকসে ফিরে যায়</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">গানের কথা দেখার সময় স্ক্রিন চালু রাখুন</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">গানের কথার প্যানেল খোলা থাকাকালীন ডিসপ্লে বন্ধ হয়ে যাওয়া প্রতিরোধ করে</string>
   <string name="morphe_music_lyrics_section_service_title">লিরিক্স পরিষেবা</string>
   <string name="morphe_music_lyrics_section_overlay_title">ওভারলে</string>
   <string name="morphe_music_lyrics_section_sync_title">সিঙ্ক্রোনাইজেশন</string>
   <string name="morphe_music_lyrics_section_about_title">মর্ফ সম্পর্কে</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">অগ্রাধিকার ক্রম সেট করতে ▲/▼ আলতো চাপুন এবং প্রতিটি প্রদানকারী সক্রিয়/নিষ্ক্রিয় করতে বক্স ব্যবহার করুন।</string>
   <string name="morphe_music_lyrics_source_all_disabled">সব প্রদানকারী অক্ষম — বিল্ট-ইন লিরিক্স এবং এমবেড করা লিরিক্স</string>
   <string name="morphe_music_lyrics_source_reset_title">প্রদানকারীর ক্রম পুনরায় সেট করবেন?</string>
   <string name="morphe_music_lyrics_source_reset_message">প্রদানকারীদের ডিফল্ট অগ্রাধিকার ক্রমে পুনরুদ্ধার করুন</string>
@@ -394,9 +399,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: অবৈধ arl — অনুগ্রহ করে পরীক্ষা করে আবার চেষ্টা করুন</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] ব্যবহারকারীর টোকেনের মান কপি করুন</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch টোকেন ছাড়াই কাজ করে, তাই এই ক্ষেত্রটি খালি রাখা যেতে পারে।
-
-শুধুমাত্র আপনার নিজস্ব অ্যাকাউন্ট ব্যবহার করার জন্য একটি টোকেন যোগ করুন। এটি Musixmatch অ্যান্ড্রয়েড অ্যাপ থেকে আসতে হবে: musixmatch.com থেকে কপি করা টোকেনগুলো অবসরপ্রাপ্ত ডেস্কটপ ক্লায়েন্টের এবং API সেগুলো গ্রহণ করে না।"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">একটি টোকেন যোগ করুন শুধুমাত্র আপনার নিজের অ্যাকাউন্ট ব্যবহার করার জন্য। এটি অবশ্যই Musixmatch Android অ্যাপ থেকে আসতে হবে: musixmatch.com থেকে কপি করা টোকেনগুলো অপ্রচলিত ডেস্কটপ ক্লায়েন্টের টোকেন, এবং API সেগুলি প্রত্যাখ্যান করে।</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch টোকেন ছাড়াই কাজ করে, তাই এই ক্ষেত্রটি খালি রাখা যেতে পারে।</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ব্যবহারকারীর টোকেন অবৈধ — অনুগ্রহ করে আবার পরীক্ষা করে চেষ্টা করুন।</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: ইউজার টোকেন সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ব্যবহারকারীর টোকেন মুছে ফেলা হয়েছে</string>
@@ -413,9 +417,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">কপি বাটন দেখান</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">মূল লিরিক্স প্লেইন টেক্সট হিসেবে কপি করতে আলতো চাপুন; raw লিরিক্স সোর্স ফাইল ডাউনলোডে সংরক্ষণ করতে দীর্ঘ চাপ দিন</string>
   <string name="morphe_music_lyrics_show_translate_button_title">অনুবাদ বাটন দেখান</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">প্রদানকারীর অনুবাদ বা Google Translate ব্যবহার করে লিরিক্স অনুবাদ করুন</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">অনুবাদ টগল করতে ট্যাপ করুন; শুধুমাত্র অনুবাদের জন্য দীর্ঘ চাপ দিন। প্রদানকারীর অনুবাদ, Google Translate, বা OpenAI-সামঞ্জস্যপূর্ণ API ব্যবহার করে।</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanize বাটন দেখান</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">প্রদানকারীর রোমানাইজেশন বা Google Translate ব্যবহার করে লিরিক্স রোমানাইজ করুন […] বাটন</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">রোমানাইজেশন টগল করতে ট্যাপ করুন; শুধুমাত্র রোমানাইজেশনের জন্য দীর্ঘ চাপ দিন। প্রদানকারীর রোমানাইজেশন, Google Translate, বা OpenAI-সামঞ্জস্যপূর্ণ API ব্যবহার করে।</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">রিফ্রেশ বোতাম দেখান</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">পরবর্তী লিরিক্স প্রার্থীতে যেতে আলতো চাপুন; […]</string>
   <string name="morphe_music_lyrics_saved">সংরক্ষিত হয়েছে</string>
@@ -431,7 +435,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">মিনিপ্লেয়ার এবং MediaSession-এ শিল্পী ও শিরোনামের প্রদর্শনের ক্রম টগল করুন। ON থাকলে \"শিল্পী - শিরোনাম\" এবং OFF থাকলে \"শিরোনাম - শিল্পী\"। এটি লিরিক্স অনুসন্ধানে প্রভাব ফেলে না</string>
   <string name="morphe_settings_music_lyrics_metadata_title">লিরিক্স ট্র্যাক শিরোনাম এবং শিল্পী অনুযায়ী খোঁজা হয়, […] ম্যানুয়ালি সংস্করণ পরিবর্তন করতে আপনি রিফ্রেশ বাটনও চেষ্টা করতে পারেন। […] সব সক্রিয় প্রদানকারী সবসময় তাদের ক্রমে অনুরোধ করা হয় না, তবে তাদের গতির ভিত্তিতে সাড়া দেয়।</string>
   <string name="morphe_music_lyrics_custom_regex_title">মেটাডেটা রেজেক্স</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">লিরিক্স খোঁজার আগে শিরোনাম, শিল্পী এবং অ্যালবামে প্রয়োগ করা রেগুলার এক্সপ্রেশন। খালি রাখলে এটি নিষ্ক্রিয় থাকবে। ডিফল্ট রেগুলার এক্সপ্রেশনটি \"অফিসিয়াল ভিডিও\", \"রিমাস্টার\" এবং \"- টপিক\"-এর মতো সাধারণ অপ্রয়োজনীয় অংশ মুছে দেয়।</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">গানের কথা খোঁজার আগে এবং দুটি শিরোনাম মেলে কিনা তা যাচাই করার সময় শিরোনাম, শিল্পী এবং অ্যালবামগুলিতে রেগুলার এক্সপ্রেশন প্রয়োগ করা হয়। উভয় নিষ্ক্রিয় করতে খালি রাখুন। ডিফল্টটি \"Official Video\", \"Remaster\", \"【插曲】\" এবং \"- Topic\" এর মতো সাধারণ অপ্রয়োজনীয় অংশ সরিয়ে দেয়।</string>
   <string name="morphe_music_lyrics_text_filter_title">লিরিক্স ফিল্টার রেজেক্স</string>
   <string name="morphe_music_lyrics_text_filter_summary">শুধুমাত্র মূল লিরিক্স টেক্সটে প্রযোজ্য রেগুলার এক্সপ্রেশন (অনুবাদ বা রোমানাইজেশনে নয়)। খালি রাখলে এটি নিষ্ক্রিয় থাকবে।</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">তথ্য লাইনের মার্কার</string>
@@ -448,15 +452,18 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">রোমানাইজ করেছেন %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">রোমানাইজ করা হচ্ছে…</string>
+  <string name="morphe_music_lyrics_translation_language_title">অনুবাদের ভাষা</string>
   <string name="morphe_music_lyrics_translating">অনুবাদ করা হচ্ছে…</string>
   <string name="morphe_music_lyrics_translate_failed">লিরিক্স অনুবাদ করা যায়নি</string>
   <string name="morphe_music_lyrics_romanize_hide">লিরিক্স রোমানাইজ করা যায়নি</string>
   <string name="morphe_music_lyrics_romanizing">রিফ্রেশ করা হচ্ছে</string>
   <string name="morphe_music_lyrics_romanize_failed">রিফ্রেশ করা হয়েছে</string>
+  <string name="morphe_music_lyrics_translate_only">শুধুমাত্র অনুবাদিত</string>
+  <string name="morphe_music_lyrics_romanize_only">শুধুমাত্র রোমানাইজড</string>
   <string name="morphe_music_lyrics_copied">ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
   <string name="morphe_music_lyrics_refreshing">লিরিক্স খোঁজার সময় শিরোনাম, শিল্পী এবং অ্যালবাম অনুসারে একটি ট্র্যাক খুঁজে পাওয়া যায় না, অথবা ভুল সংস্করণ পাওয়া যায়। আপনি ম্যানুয়ালি সঠিক সংস্করণটি নির্বাচন করতে পারেন, অথবা অনুসন্ধানটি আবার চেষ্টা করতে পারেন।</string>
   <string name="morphe_music_lyrics_refreshed">ক্রেডিট লাইন লুকান</string>
-  <string name="morphe_music_lyrics_about_summary">"লিরিক্সের নিচে দেখানো ক্রেডিট লাইনটি লুকান"</string>
+  <string name="morphe_music_lyrics_about_summary">"গানের কথা শিরোনাম এবং শিল্পীর নাম দ্বারা মেলানো হয়; অস্বাভাবিক মেটাডেটা কিছুই খুঁজে নাও পেতে পারে বা ভুল সংস্করণ খুঁজে পেতে পারে। সংস্করণ পরিবর্তন করতে রিফ্রেশ ব্যবহার করুন। * চিহ্নিত প্রদানকারীদের একটি টোকেন প্রয়োজন। সক্রিয় করা সমস্ত প্রদানকারী সবসময় আপনার ক্রমে অনুরোধ করা হয় না, বরং তাদের গতির ভিত্তিতে সাড়া দেয়।"</string>
   <string name="morphe_music_lyrics_hide_info_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>
   <string name="morphe_music_lyrics_hide_info_summary">ON রোমানাইজেশনকে লিরিক্সের নিচে এবং অনুবাদকে উপরে রাখে; OFF রোমানাইজেশনকে উপরে এবং অনুবাদকে নিচে রাখে</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>

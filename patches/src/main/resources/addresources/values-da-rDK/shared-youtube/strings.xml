@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Startanimation</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Deaktiveret</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Farve</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Genstart for at færdiggøre opsætningen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge ind på VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logget ud af Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ugyldigt VR-logge-ind token, prøv at logge ind i VR igen</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Mediekontrol i notifikationer</string>
+  <string name="morphe_notification_media_screen_summary">Tilpas afspilningskontrollerne, der vises på din låseskærm og i meddelelsespanelet</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skjul Forrige- og Næste-knapper</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Skjuler Forrige- og Næste-knapperne i medienotifikationen, på låseskærmen og i hovedtelefonkontrollerne</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Deaktiver søgebjælken</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Forhindrer, at søgebjælken kan trækkes på låseskærmen og i meddelelsespanelet</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

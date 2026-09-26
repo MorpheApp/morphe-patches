@@ -15,48 +15,21 @@ import android.view.View;
 import android.widget.Spinner;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.Nullable;
+
+import com.airbnb.lottie.LottieAnimationView;
+
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.SplashAnimationPatch;
+import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ThemePatch extends BaseThemePatch {
-    public enum SplashScreenAnimationStyle {
-        // 0 int style exists in target app as a fall through default, but its value is repurposed to be disabled.
-        DISABLED(0),
-        FPS_60_ONE_SECOND(1),
-        FPS_60_TWO_SECOND(2),
-        FPS_60_FIVE_SECOND(3),
-        FPS_60_BLACK_AND_WHITE(4),
-        FPS_30_ONE_SECOND(5),
-        FPS_30_TWO_SECOND(6),
-        FPS_30_FIVE_SECOND(7),
-        FPS_30_BLACK_AND_WHITE(8);
-        // There exists a 10th JSON style used as the switch statement default,
-        // but visually it is identical to 60fps one second.
-
-        @Nullable
-        static SplashScreenAnimationStyle styleFromOrdinal(int style) {
-            // Alternatively can return using values()[style]
-            for (SplashScreenAnimationStyle value : values()) {
-                if (value.style == style) {
-                    return value;
-                }
-            }
-
-            return null;
-        }
-
-        final int style;
-
-        SplashScreenAnimationStyle(int style) {
-            this.style = style;
-        }
-    }
-
     // Color constants used in relation with litho components.
     private static final int[] WHITE_VALUES = {
             0xFFFFFFFF, // Comments chip background.
@@ -99,15 +72,51 @@ public class ThemePatch extends BaseThemePatch {
     /**
      * Injection point.
      */
+    public static boolean useLotteLaunchSplashScreen(boolean original) {
+        Logger.printDebug(() -> "Lottie splash screen flag: " + original);
+        return true; // Force lottie animation view.
+    }
+
+    /**
+     * Injection point.
+     * Modern Lottie style animation.
+     */
+    public static void setSplashAnimationLottie(LottieAnimationView view, int resourceId) {
+        try {
+            // A custom branding icon replaces the YouTube logo animation with its own.
+            if (SplashAnimationPatch.setBrandedSplashAnimation(view)) {
+                return;
+            }
+
+            if (!SeekbarColorPatch.isCustomSeekbarColorEnabled()
+                    // Black and white animations cannot use color replacements.
+                    || SplashAnimationPatch.isMonochrome()) {
+                view.patch_setAnimation(resourceId);
+                return;
+            }
+
+            // Must specify primary key name otherwise the morphing YT logo color is also changed.
+            SplashAnimationPatch.setSplashAnimation(view, resourceId, Map.of(
+                    "[1,0,0.2,1]", SeekbarColorPatch.getSeekbarColor(),
+                    "[1,0.152941176471,0.56862745098,1]", SeekbarColorPatch.getSeekbarAccentColor()
+            ));
+        } catch (Exception ex) {
+            Logger.printException(() -> "setSplashAnimationLottie failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean showSplashScreen(boolean original) {
-        return Settings.SPLASH_SCREEN_ANIMATION_STYLE.get() != SplashScreenAnimationStyle.DISABLED && original;
+        return SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get() != SplashScreenAnimationStyle.DISABLED && original;
     }
 
     /**
      * Injection point.
      */
     public static int showSplashScreen(int i, int i2) {
-        if (Settings.SPLASH_SCREEN_ANIMATION_STYLE.get() != SplashScreenAnimationStyle.DISABLED || i != i2) {
+        if (SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get() != SplashScreenAnimationStyle.DISABLED || i != i2) {
             return i;
         }
         return i - 1;
@@ -117,7 +126,7 @@ public class ThemePatch extends BaseThemePatch {
      * Injection point.
      */
     public static int getLoadingScreenType(int original) {
-        SplashScreenAnimationStyle style = Settings.SPLASH_SCREEN_ANIMATION_STYLE.get();
+        SplashScreenAnimationStyle style = SharedYouTubeSettings.SPLASH_SCREEN_ANIMATION_STYLE.get();
 
         if (style == SplashScreenAnimationStyle.DISABLED) {
             return original;

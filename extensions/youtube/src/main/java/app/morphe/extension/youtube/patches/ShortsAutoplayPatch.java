@@ -12,10 +12,10 @@ package app.morphe.extension.youtube.patches;
 
 import android.app.Activity;
 
-import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -69,18 +69,11 @@ public class ShortsAutoplayPatch {
         private Enum<?> ytEnumValue;
     }
 
-    private static WeakReference<Activity> mainActivityRef = new WeakReference<>(null);
-
-
-    public static void setMainActivity(Activity activity) {
-        mainActivityRef = new WeakReference<>(activity);
-    }
-
     /**
      * @return If the app is currently in background PiP mode.
      */
     private static boolean isAppInBackgroundPiPMode() {
-        Activity activity = mainActivityRef.get();
+        Activity activity = Utils.getActivity();
         return activity != null && activity.isInPictureInPictureMode();
     }
 

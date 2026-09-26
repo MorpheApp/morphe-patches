@@ -1,6 +1,5 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
  * https://github.com/MorpheApp/morphe-patches/pull/2282
  *
  * Original hard forked code:
@@ -22,6 +21,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.misc.litho.context.conversionContextPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -29,7 +29,6 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.textcomponent.hookSpannableString
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
@@ -245,8 +244,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             val bottomSheetBuilderMethodCall : String
             AudioTrackOldBottomSheetFingerprint.instructionMatches.apply {
                 fun getMethodCall(offset: Int):String {
-                    val methodReference =
-                        this[offset].instruction.getReference<MethodReference>()!!
+                    val methodReference = this[offset].instruction.getReference<MethodReference>()!!
 
                     return methodReference.toString()
                         .replace(methodReference.definingClass, onItemClickClass)
@@ -348,8 +346,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         TapAndHoldSpeedFingerprint.let {
             it.method.apply {
                 val speedIndex = it.instructionMatches.last().index
-                val speedRegister =
-                    getInstruction<OneRegisterInstruction>(speedIndex).registerA
+                val speedRegister = getInstruction<OneRegisterInstruction>(speedIndex).registerA
 
                 addInstructions(
                     speedIndex + 1,

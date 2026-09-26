@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Настройки Morphe восстановлены до значений по умолчанию</string>
   <string name="morphe_settings_import_success">Импортировано %d настроек</string>
   <string name="morphe_settings_import_failure_parse">Ошибка импорта: %s</string>
+  <string name="morphe_settings_navigate_up">Перейти вверх</string>
   <string name="morphe_settings_search_hint">Поиск настроек</string>
   <string name="morphe_settings_search_no_results_title">По запросу \"%s\" ничего не найдено</string>
   <string name="morphe_settings_search_no_results_summary">Попробуйте другое ключевое слово</string>
   <string name="morphe_settings_search_recent_searches">Недавние поиски</string>
   <string name="morphe_settings_search_remove_message">Удалить из истории поиска?</string>
+  <string name="morphe_settings_search_remove">Удалить из истории поиска</string>
   <string name="morphe_settings_search_clear_history">Очистить историю поиска</string>
   <string name="morphe_settings_search_clear_history_message">Вы уверены, что хотите очистить всю историю поиска?</string>
   <string name="morphe_settings_search_tips_title">Советы по поиску</string>

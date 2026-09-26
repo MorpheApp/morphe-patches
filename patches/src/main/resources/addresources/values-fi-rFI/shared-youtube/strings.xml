@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Käynnistysanimaatio</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Pois käytöstä</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Väri</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Yksivärinen</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Kirjautuminen VR-tilaan epäonnistui: %s</string>
   <string name="morphe_oauth2_toast_reset">Kirjauduttu ulos Android VR -tilasta</string>
   <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumistunniste, yritä kirjautua uudelleen VR-tilaan</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Ilmoituksen mediasäätimet</string>
+  <string name="morphe_notification_media_screen_summary">Mukauta lukitusnäytössä ja ilmoituspaneelissa näkyviä toistosäätimiä.</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Piilota Edellinen- ja seuraava-painikkeet</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Piilottaa Edellinen- ja seuraava-painikkeet mediailmoituksessa, lukitusnäytössä ja kuulokkeiden säätimissä.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Poista kelauspalkki käytöstä</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Estää kelauspalkin vetämisen lukitusnäytössä ja ilmoituspaneelissa.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

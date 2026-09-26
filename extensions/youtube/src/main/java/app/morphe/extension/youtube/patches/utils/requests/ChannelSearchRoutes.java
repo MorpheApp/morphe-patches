@@ -52,15 +52,16 @@ public final class ChannelSearchRoutes {
     private ChannelSearchRoutes() {
     }
 
-    public static byte[] createBody(String channelId, String query) {
+    public static byte[] createBody(String channelId, String query, Locale locale) {
         try {
-            Locale locale = Requester.getAppLocale();
+            String hl = orDefault(locale.getLanguage(), DEFAULT_LANGUAGE);
+            String gl = orDefault(locale.getCountry(), DEFAULT_COUNTRY);
 
             JSONObject client = new JSONObject();
             client.put("clientName", CLIENT_NAME);
             client.put("clientVersion", CLIENT_VERSION);
-            client.put("hl", orDefault(locale.getLanguage(), DEFAULT_LANGUAGE));
-            client.put("gl", orDefault(locale.getCountry(), DEFAULT_COUNTRY));
+            client.put("hl", hl);
+            client.put("gl", gl);
 
             JSONObject context = new JSONObject();
             context.put("client", client);
@@ -74,6 +75,31 @@ public final class ChannelSearchRoutes {
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
             Logger.printException(() -> "createBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    public static byte[] createContinuationBody(String continuationToken, Locale locale) {
+        try {
+            String hl = orDefault(locale.getLanguage(), DEFAULT_LANGUAGE);
+            String gl = orDefault(locale.getCountry(), DEFAULT_COUNTRY);
+
+            JSONObject client = new JSONObject();
+            client.put("clientName", CLIENT_NAME);
+            client.put("clientVersion", CLIENT_VERSION);
+            client.put("hl", hl);
+            client.put("gl", gl);
+
+            JSONObject context = new JSONObject();
+            context.put("client", client);
+
+            JSONObject body = new JSONObject();
+            body.put("context", context);
+            body.put("continuation", continuationToken);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createContinuationBody failed", ex);
         }
         return new byte[0];
     }

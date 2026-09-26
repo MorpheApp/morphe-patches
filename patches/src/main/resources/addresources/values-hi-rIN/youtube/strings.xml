@@ -75,6 +75,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">छुपाएं तैरती माइक्रोफोन बटन</string>
   <string name="morphe_hide_floating_microphone_button_summary">खोज सुझाव स्क्रीन के निचले-दाएं कोने में फ्लोटिंग माइक्रोफ़ोन बटन को छुपाता है</string>
   <string name="morphe_hide_get_premium_button_title">\'Get Premium\' बटन छिपाएं</string>
+  <string name="morphe_hide_history_shelf_title">इतिहास शेल्फ़ छिपाएँ</string>
+  <string name="morphe_hide_history_shelf_summary">आप टैब में इतिहास शेल्फ़ छिपाता है</string>
   <string name="morphe_hide_horizontal_shelves_title">छुपाएं क्षैतिज रैक</string>
   <string name="morphe_hide_horizontal_shelves_summary">ब्रेकिंग न्यूज़, कम्युनिटी पोस्ट जिन्हें आप पसंद कर सकते हैं, देखना जारी रखें, और अधिक चैनल देखें, और अधिक विषय देखें, आपके लिए, नवीनतम वीडियो, सबसे प्रासंगिक, क्रिएटर के कम्युनिटी से पोस्ट, शॉपिंग और फिर से देखें जैसे क्षैतिज शेल्फ़ को छुपाता है</string>
   <string name="morphe_hide_hyped_label_title">हाइप लेबल छुपाएं</string>
@@ -106,6 +108,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_title">छुपाएं \'और दिखाएं\' बटन</string>
   <string name="morphe_hide_show_more_button_summary">खोज परिणामों में वीडियो के नीचे विस्तार बटन को छुपाता है</string>
   <string name="morphe_hide_subscribed_channels_bar_title">छुपाएं सब्सक्राइब चैनल बार</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">सदस्यता वाले चैनल बार में चैनल के नाम छिपाएँ</string>
   <string name="morphe_hide_surveys_title">सर्वेक्षण छुपाएं</string>
   <string name="morphe_hide_surveys_summary">फ़ीड अनुशंसा सटीकता के बारे में सर्वेक्षण और नज़दीकी को छुपाता है</string>
   <string name="morphe_hide_ticket_shelf_title">छिपाएं टिकट शेल्फ</string>
@@ -254,6 +257,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_section_in_home_feed_title">होम फ़ीड में टिप्पणियों का अनुभाग छुपाएं</string>
   <string name="morphe_hide_comments_community_guidelines_title">छुपाएं समुदाय निदेशिका</string>
   <string name="morphe_hide_comments_create_a_short_button_title">छुपाएं \'बटन बनाने के लिए छोटा\' बटन</string>
+  <string name="morphe_hide_comments_dislike_button_title">नापसंद बटन छिपाएं</string>
   <string name="morphe_hide_comments_emoji_button_title">इमोजी बटन छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_title">फ़िल्टर बार विकल्प छुपाएं</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">\'टॉप\' और \'नवीनतम\' के अलावा सभी फ़िल्टर बार विकल्प छुपाता है</string>
@@ -263,11 +267,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_live_chat_donators_bar_title">लाइव चैट दानदाताओं की बार छुपाएं</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">लाइव चैट टूलटिप्स छुपाएं</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">चैट इनपुट बार के पास दिखाए जाने वाले टूलटिप पॉपअप छुपाता है, जैसे कि सब्सक्राइबर-ओनली चैट सूचना</string>
+  <string name="morphe_hide_comments_menu_button_title">मेनू बटन छिपाएँ</string>
+  <string name="morphe_hide_comments_menu_button_summary">प्रत्येक टिप्पणी का 3-डॉट मेनू बटन छिपाता है</string>
   <string name="morphe_hide_comments_preview_comment_title">छुपाएं पूर्वावलोकन टिप्पणी</string>
   <string name="morphe_hide_comments_preview_comment_summary">संपूर्ण टिप्पणी अनुभाग खोलने से पहले वीडियो के नीचे टिप्पणी पूर्वावलोकन को छुपाता है</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Morphe द्वारा टिप्पणी छिपाई गई...</string>
+  <string name="morphe_minimal_comments_button_title">न्यूनतम कमेंट बटन सक्षम करें</string>
+  <string name="morphe_minimal_comments_button_summary">कमेंट बटन पर प्रदर्शित स्लाइडिंग कार्ड और उसका पेज चयनकर्ता को छिपाता है</string>
   <string name="morphe_hide_comments_thanks_button_title">छुपाएं \'धन्यवाद\' बटन</string>
   <string name="morphe_hide_comments_timestamp_button_title">टाइमस्टैम्प बटन छुपाएं</string>
   <string name="morphe_hide_comments_top_fans_button_title">\'टॉप फैंस\' बटन छिपाएँ</string>
+  <string name="morphe_hide_comments_translate_button_title">अनुवाद बटन छिपाएँ</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करें</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">हाइलाइट किए गए खोज लिंक सैनिटाइज़ करता है, केवल मूल सादे पाठ को छोड़ देता है</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फ़िल्टर</string>
@@ -384,9 +394,17 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">चैनल में खोजें</string>
   <string name="morphe_channel_search_summary">जब कोई चैनल खुला हो, तो खोज केवल उसी चैनल में होती है</string>
+  <string name="morphe_channel_search_hint">चैनल खोजें</string>
   <string name="morphe_channel_search_results">चैनल खोज परिणाम</string>
   <string name="morphe_channel_search_no_results">इस चैनल पर कुछ नहीं मिला</string>
   <string name="morphe_channel_search_failed">इस चैनल में खोज नहीं की जा सकी</string>
+  <string name="morphe_channel_search_sort_relevance">प्रासंगिकता</string>
+  <string name="morphe_channel_search_sort_most_viewed">सबसे अधिक देखे गए</string>
+  <string name="morphe_channel_search_sort_least_viewed">सबसे कम देखे गए</string>
+  <string name="morphe_channel_search_sort_newest">नवीनतम</string>
+  <string name="morphe_channel_search_sort_oldest">सबसे पुराना</string>
+  <string name="morphe_channel_search_sort_shortest">सबसे छोटा</string>
+  <string name="morphe_channel_search_sort_longest">सबसे लंबा</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्ड में कॉपी किया गया</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">टाइमस्टैम्प के साथ लिंक क्लिपबोर्ड में कॉपी किया गया</string>
@@ -671,6 +689,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">पूछें बटन छुपाएं</string>
+  <string name="morphe_hide_channel_profile_button_title">चैनल और सब्सक्राइब बटन छिपाएँ</string>
+  <string name="morphe_hide_channel_profile_button_summary">एक्शन बार की शुरुआत में चैनल अवतार और सब्सक्राइब बटन छिपाता है</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">क्लिप बटन छुपाएं</string>
   <string name="morphe_hide_clip_button_summary">यह कुछ उपयोगकर्ता खातों के लिए काम नहीं कर सकता है।</string>
@@ -742,6 +762,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swap_create_with_notifications_button_title">बनाएं बटन को सूचनाएँ बटन से बदलें</string>
   <string name="morphe_swap_create_with_notifications_button_summary">यदि इस सेटिंग को बदलने से कोई प्रभाव नहीं होता है, तो गुप्त मोड में स्विच करने का प्रयास करें।</string>
   <string name="morphe_hide_navigation_button_labels_title">नेविगेशन बटन लेबल्स छिपाएं</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">नए कंटेंट का डॉट छिपाएं</string>
   <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"यह नेविगेशन बार को पूरी तरह से छिपा देता है, जिसमें 'You' टैब भी शामिल है।
 
@@ -1047,7 +1068,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
   <string name="morphe_miniplayer_screen_summary">मिनीकृत प्लेयर को कस्टमाइज़ करें</string>
   <string name="morphe_miniplayer_type_title">मिनीप्लेयर प्रकार</string>
-  <string name="morphe_miniplayer_hide_title_title">शीर्षक छिपाएँ</string>
+  <string name="morphe_miniplayer_hide_title_title">शीर्षक और चैनल छिपाएँ</string>
   <string name="morphe_miniplayer_type_entry_0">अक्षम</string>
   <string name="morphe_miniplayer_type_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_miniplayer_type_entry_2">न्यूनतम</string>
@@ -1091,10 +1112,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_theme_color_change_foreground_summary">टेक्स्ट और आइकन के लिए थीम रंग का उपयोग करें</string>
   <string name="morphe_gradient_loading_screen_title">ग्रेडिएंट लोडिंग स्क्रीन सक्षम करें</string>
   <string name="morphe_gradient_loading_screen_summary">लोडिंग स्क्रीन पर एक ठोस रंग के बजाय एक ग्रेडिएंट पृष्ठभूमि दिखाता है</string>
-  <string name="morphe_splash_screen_animation_style_title">स्प्लैश स्क्रीन शैली</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">निष्क्रिय</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">रंग</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">मोनोक्रोम</string>
   <string name="morphe_seekbar_custom_color_title">कस्टम सीकबार रंग सक्षम करें</string>
   <string name="morphe_seekbar_custom_color_primary_title">सीकबार रंग</string>
   <string name="morphe_seekbar_custom_color_primary_summary">वीडियो प्रोग्रेस बार का प्राथमिक रंग सेट करें</string>
@@ -1160,13 +1177,6 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <string name="morphe_disable_haptic_feedback_seek_undo_title">खोज पूर्ववत haptिक्स अक्षम करें</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">डिसेबल टैप ऐंड होल्ड हॅप्टिक्स</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ज़ूम haptिक्स अक्षम करें</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">सूचना मीडिया नियंत्रण</string>
-  <string name="morphe_notification_media_screen_summary">अपने लॉक स्क्रीन और अधिसूचना पैनल पर प्रदर्शित होने वाले प्लेबैक नियंत्रणों को अनुकूलित करें</string>
-  <string name="morphe_hide_notification_media_prev_next_title">पिछले &amp; अगले बटन छिपाएँ</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">मीडिया अधिसूचना, लॉक स्क्रीन और हेडफ़ोन नियंत्रण में पिछला और अगला बटन छुपाता है</string>
-  <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करें</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">लॉक स्क्रीन और अधिसूचना पैनल पर सीकबार को खींचने से रोकता है</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">यदि आपने हाल ही में अपना खाता लॉगिन विवरण बदल दिया है, तो MicroG को अनइंस्टॉल और फिर से इंस्टॉल करें।</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1198,6 +1208,8 @@ DeArrow.ajay.app खोलने के लिए यहां टैप कर�
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">गुणवत्ता बटन दिखाएं</string>
   <string name="morphe_video_quality_dialog_button_summary">डिफ़ॉल्ट पर गुणवत्ता को रीसेट करने के लिए टैप और होल्ड करें</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">गुणवत्ता बटन पर रिज़ॉल्यूशन दिखाएँ</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">रिज़ॉल्यूशन दिखाएँ, जैसे 1080, लेबल जैसे FHD के बजाय</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">कस्टम प्लेबैक गति मेनू</string>
   <string name="morphe_restore_old_speed_menu_title">पुराने प्लेबैक स्पीड मेनू को पुनर्स्थापित करें</string>
@@ -1283,7 +1295,14 @@ AV1 के साथ वीडियो प्लेबैक स्टटर �
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">स्पूफिंग को \'स्टैट्स फॉर नर्ड्स\' में दिखाएं</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">पुराने वीडियो एक्शन बार को पुनर्स्थापित करें</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"डिस्लाइक्स को नहीं दिखाए जाने और वीडियो एक्शन बटन को छिपाए नहीं जा सकने की समस्या ठीक करता है
+  <string name="morphe_restore_old_video_action_bar_summary">"वीडियो एक्शन बटन छिपाने की असमर्थता को ठीक करता है
 
-सीमा: पुराने 'अधिक वीडियो' ओवरले पर वापस लौटता है"</string>
+सीमा: पुरानी शैली 'More videos' ओवरले पर वापस लौटता है"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">प्लेयर आइकन शैली</string>
+  <string name="morphe_player_icon_style_entry_auto">स्वचालित</string>
+  <string name="morphe_player_icon_style_entry_default">डिफ़ॉल्ट</string>
+  <string name="morphe_player_icon_style_entry_regular">पतला</string>
+  <string name="morphe_player_icon_style_entry_bold">बोल्ड</string>
+  <string name="morphe_shorts_icon_style_title">Shorts आइकन शैली</string>
 </resources>

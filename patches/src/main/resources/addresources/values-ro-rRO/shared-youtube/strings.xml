@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animație de pornire</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Dezactivat</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Culoare</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monocrom</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reporniți pentru a finaliza configurarea</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nu puteți vă conecta la VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Controale media pentru notificări</string>
+  <string name="morphe_notification_media_screen_summary">Personalizează comenzile de redare afișate pe ecranul de blocare și în panoul de notificări</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ascunde butoanele Anterior și Următor</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Ascunde butoanele Anterior și Următor din notificarea media, de pe ecranul de blocare și din comenzile căștilor</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Dezactivează bara de căutare</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Împiedică glisarea barei de căutare pe ecranul de blocare și în panoul de notificări</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Dezactivați protocolul QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

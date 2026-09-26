@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">স্টার্টআপ অ্যানিমেশন</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">বন্ধ রাখুন</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">রং</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">একরঙা</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">সেটআপ সম্পন্ন করতে রিস্টার্ট করুন</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR এ প্রবেশ করতে ব্যর্থ হয়েছে: %s</string>
   <string name="morphe_oauth2_toast_reset">অ্যান্ড্রয়েড ভিআর থেকে লগ আউট করা হয়েছে</string>
   <string name="morphe_oauth2_toast_invalid">VR প্রবেশের জন্য অকার্যকর টোকেন, আবার VR এ প্রবেশ করুন</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">নোটিফিকেশন মিডিয়া নিয়ন্ত্রণ</string>
+  <string name="morphe_notification_media_screen_summary">আপনার লক স্ক্রিনে এবং বিজ্ঞপ্তি প্যানেলে দেখানো প্লেব্যাক নিয়ন্ত্রণগুলি কাস্টমাইজ করুন</string>
+  <string name="morphe_hide_notification_media_prev_next_title">পূর্ববর্তী ও পরবর্তী বোতাম লুকান</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">মিডিয়া বিজ্ঞপ্তিতে, লক স্ক্রিনে এবং হেডফোন নিয়ন্ত্রণে পূর্ববর্তী ও পরবর্তী বোতাম লুকিয়ে রাখে</string>
+  <string name="morphe_disable_notification_media_seekbar_title">সিকবার নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">লক স্ক্রিনে এবং বিজ্ঞপ্তি প্যানেলে সিকবার টেনে সরানো প্রতিরোধ করে</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">কিউআইসি প্রোটোকল বন্ধ করুন</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

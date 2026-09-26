@@ -75,6 +75,8 @@ Wijzigingen zijn:
   <string name="morphe_hide_floating_microphone_button_title">Verberg zwevende microfoonknop</string>
   <string name="morphe_hide_floating_microphone_button_summary">Verbergt de zwevende microfoonknop in de rechteronderhoek van het scherm met zoeksuggesties</string>
   <string name="morphe_hide_get_premium_button_title">\'Get Premium\' knop verbergen</string>
+  <string name="morphe_hide_history_shelf_title">Verberg de geschiedenis-sectie</string>
+  <string name="morphe_hide_history_shelf_summary">Verbergt de geschiedenis-sectie in het tabblad Jij</string>
   <string name="morphe_hide_horizontal_shelves_title">Horizontale planken verbergen</string>
   <string name="morphe_hide_horizontal_shelves_summary">Verbergt horizontale schappen zoals Breaking news, Community posts die je misschien leuk vindt, Verder kijken, Meer kanalen verkennen, Meer onderwerpen verkennen, Voor jou, Nieuwste video\'s, Meest relevant, Posts van de Creator\'s Community, Shopping, en Kijk opnieuw</string>
   <string name="morphe_hide_hyped_label_title">Verberg Hyped label</string>
@@ -106,6 +108,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_show_more_button_title">Verberg knop \'Meer weergeven\'</string>
   <string name="morphe_hide_show_more_button_summary">Verbergt de uitbreidingsknop onder video\'s in de zoekresultaten</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Verberg abonneerde kanalen balk</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Verberg kanaalnamen in de balk met geabonneerde kanalen</string>
   <string name="morphe_hide_surveys_title">Enquêtes verbergen</string>
   <string name="morphe_hide_surveys_summary">Verbergt enquêtes en aanmoedigingen over de nauwkeurigheid van feed-aanbevelingen</string>
   <string name="morphe_hide_ticket_shelf_title">Ticketsectie verbergen</string>
@@ -254,6 +257,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_section_in_home_feed_title">Verberg reactiessectie in Home-feed</string>
   <string name="morphe_hide_comments_community_guidelines_title">Communityrichtlijnen verbergen</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Verberg \'Create a Short\' knop</string>
+  <string name="morphe_hide_comments_dislike_button_title">Verberg de knop \"Niet leuk\"</string>
   <string name="morphe_hide_comments_emoji_button_title">Emoji-knop verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Filterbalkopties verbergen</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Verbergt alle filterbalkopties, behalve \'Top\' en \'Nieuwste\'</string>
@@ -263,11 +267,17 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Verberg de donateur balk van live chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Verberg live chat-tooltips</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Verbergt tooltippop-ups die verschijnen bij de chat-invoerbalk, zoals de melding voor alleen abonnees</string>
+  <string name="morphe_hide_comments_menu_button_title">Menu-knop verbergen</string>
+  <string name="morphe_hide_comments_menu_button_summary">Verbergt de menuknop met drie puntjes van elke reactie</string>
   <string name="morphe_hide_comments_preview_comment_title">Reactie in preview verbergen</string>
   <string name="morphe_hide_comments_preview_comment_summary">Verbergt het commentaarvoorbeeldunder de video voordat de volledige commentaarsectie wordt geopend</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Reactie verborgen door Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Minimale reactiesknop inschakelen</string>
+  <string name="morphe_minimal_comments_button_summary">Verbergt de schuifkaarten en de bijbehorende paginaselector, weergegeven op de reactiesknop</string>
   <string name="morphe_hide_comments_thanks_button_title">Verberg de knop \'Bedankt\'</string>
   <string name="morphe_hide_comments_timestamp_button_title">Tijdstempelknop verbergen</string>
   <string name="morphe_hide_comments_top_fans_button_title">Verberg de knop \'Top fans\'</string>
+  <string name="morphe_hide_comments_translate_button_title">Verberg de vertaalknop</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Schoon gehighlighte search URL\'s op</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Schoont gehighlighte search URL\'s op, zodat alleen de originele tekst overblijft</string>
   <string name="morphe_hide_keyword_content_screen_title">Trefwoordfilter</string>
@@ -384,9 +394,17 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Zoeken in kanaal</string>
   <string name="morphe_channel_search_summary">Als een kanaal geopend is, wordt er alleen in dat kanaal gezocht</string>
+  <string name="morphe_channel_search_hint">Zoek kanaal</string>
   <string name="morphe_channel_search_results">Zoekresultaten voor kanalen</string>
   <string name="morphe_channel_search_no_results">Niets gevonden op dit kanaal</string>
   <string name="morphe_channel_search_failed">Kan dit kanaal niet doorzoeken</string>
+  <string name="morphe_channel_search_sort_relevance">Relevantie</string>
+  <string name="morphe_channel_search_sort_most_viewed">Meest bekeken</string>
+  <string name="morphe_channel_search_sort_least_viewed">Minst bekeken</string>
+  <string name="morphe_channel_search_sort_newest">Nieuwste</string>
+  <string name="morphe_channel_search_sort_oldest">Oudste</string>
+  <string name="morphe_channel_search_sort_shortest">Shortste</string>
+  <string name="morphe_channel_search_sort_longest">Langste</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link naar klembord gekopieerd</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link met tijdstempel naar klembord gekopieerd</string>
@@ -671,6 +689,8 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Verberg Vraag-knop</string>
+  <string name="morphe_hide_channel_profile_button_title">Verberg kanaal en abonneerknop</string>
+  <string name="morphe_hide_channel_profile_button_summary">Verbergt de kanaalavatar en de abonneerknop aan het begin van de actiebalk</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Verberg Clip-knop</string>
   <string name="morphe_hide_clip_button_summary">Dit werkt mogelijk niet voor sommige gebruikersaccounts</string>
@@ -740,6 +760,7 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_swap_create_with_notifications_button_title">Wissel de knop \'Maken\' om met de knop \'Meldingen\'</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Als het wijzigen van deze instelling geen effect heeft, probeer dan over te schakelen naar de Incognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Navigatieknoppenlabels verbergen</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Verberg nieuwe contentstip</string>
   <string name="morphe_hide_navigation_bar_title">Verberg de navigatiebalk</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Dit verbergt de navigatiebalk volledig, inclusief het tabblad 'Jij'.
 
@@ -1045,7 +1066,7 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_miniplayer_screen_title">Minispeler</string>
   <string name="morphe_miniplayer_screen_summary">Pas het uiterlijk en het gedrag van de geminimaliseerde videospeler aan</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>
-  <string name="morphe_miniplayer_hide_title_title">Titel verbergen</string>
+  <string name="morphe_miniplayer_hide_title_title">Verberg titel en kanaal</string>
   <string name="morphe_miniplayer_type_entry_0">Uitgeschakeld</string>
   <string name="morphe_miniplayer_type_entry_1">Standaard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimaal</string>
@@ -1089,10 +1110,6 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_theme_color_change_foreground_summary">Gebruik de themakleur voor tekst en pictogrammen</string>
   <string name="morphe_gradient_loading_screen_title">Schakel het laden van het verloopscherm in</string>
   <string name="morphe_gradient_loading_screen_summary">Toont een verloop achtergrond op het laadscherm in plaats van een effen kleur</string>
-  <string name="morphe_splash_screen_animation_style_title">Stijl van opstartscherm</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Uitgeschakeld</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Kleur</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monochroom</string>
   <string name="morphe_seekbar_custom_color_title">Schakel aangepaste schuifregelaar kleur in</string>
   <string name="morphe_seekbar_custom_color_primary_title">Kleuren voortgangsbalk</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Stel de primaire kleur van de video voortgangsbalk in</string>
@@ -1158,13 +1175,6 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Haptiek voor ongedaan maken van zoeken uitschakelen</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Uitschakelen tap en houd haptiek</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoom-haptics uitschakelen</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Melding media bedieningselementen</string>
-  <string name="morphe_notification_media_screen_summary">Pas het uiterlijk en het gedrag van de video speler aan op je vergrendelscherm en meldingspaneel</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Verberg Vorige &amp; Volgende knoppen</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Verbergt de Vorige en Volgende knoppen in mediasnelding, vergrendelscherm en koptelefoonbedieningselementen</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Zoekbalk uitschakelen</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Voorkomt dat de media voortgangsbalk op het vergrendelscherm en meldingspaneel wordt gesleept</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Als u onlangs de inloggegevens van uw account hebt gewijzigd, verwijder dan MicroG en installeer het opnieuw.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1196,6 +1206,8 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Toon de \'Kwaliteit\'-knop</string>
   <string name="morphe_video_quality_dialog_button_summary">Tik en houd vast om de kwaliteit naar de vooraf ingestelde waarde terug te zetten</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Toon resolutie op kwaliteitsknop</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Toon de resolutie, zoals 1080, in plaats van een label zoals FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menu voor aangepaste afspeelsnelheid</string>
   <string name="morphe_restore_old_speed_menu_title">Oud afspeelsnelheidsmenu herstellen</string>
@@ -1281,7 +1293,14 @@ Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Toon spoofing in \'Stats for nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Herstel oude video acties balk</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Lost het probleem op waarbij dislikes niet worden weergegeven en video actieknoppen niet kunnen worden verborgen
+  <string name="morphe_restore_old_video_action_bar_summary">"Verhelpt dat video-actieknoppen niet kunnen worden verborgen
 
-Beperking: Keert terug naar de oude stijl van de \"Meer video's\" overlay"</string>
+Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Stijl van het pictogram van de speler</string>
+  <string name="morphe_player_icon_style_entry_auto">Automatisch</string>
+  <string name="morphe_player_icon_style_entry_default">Standaard</string>
+  <string name="morphe_player_icon_style_entry_regular">Dun</string>
+  <string name="morphe_player_icon_style_entry_bold">Vet</string>
+  <string name="morphe_shorts_icon_style_title">Shorts-pictogramstijl</string>
 </resources>

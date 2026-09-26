@@ -35,6 +35,9 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.shared.misc.spans.addSpanFilter
 import app.morphe.patches.shared.misc.spans.inclusiveSpanPatch
+import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
+import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
+import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -55,6 +58,8 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.ModernRelateVideoOverlayFingerprint
 import app.morphe.patches.youtube.shared.RelateVideoOverlayLayoutParamFingerprint
+import app.morphe.patches.youtube.shared.hookVideoIntent
+import app.morphe.patches.youtube.shared.openVideoIntentPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -111,7 +116,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
         elementProtoParserHookPatch,
         fixProtoLibraryPatch,
         treeNodeElementHookPatch,
-        inclusiveSpanPatch
+        inclusiveSpanPatch,
+        textComponentPatch,
+        lithoSpannableStringPatch,
+        openVideoIntentPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -169,6 +177,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_community_guidelines"),
                     SwitchPreference("morphe_hide_comments_contexts"),
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
+                    SwitchPreference("morphe_hide_comments_dislike_button"),
                     SwitchPreference("morphe_hide_comments_emoji_button"),
                     SwitchPreference("morphe_hide_comments_filter_bar_options", summary = true),
                     SwitchPreference("morphe_hide_comments_gift_animation_and_cards"),
@@ -176,10 +185,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
                     SwitchPreference("morphe_hide_comments_live_chat_tooltips", summary = true),
+                    SwitchPreference("morphe_hide_comments_menu_button", summary = true),
                     SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
+                    SwitchPreference("morphe_minimal_comments_button", summary = true),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
                     SwitchPreference("morphe_hide_comments_timestamp_button"),
                     SwitchPreference("morphe_hide_comments_top_fans_button"),
+                    SwitchPreference("morphe_hide_comments_translate_button"),
                     SwitchPreference("morphe_sanitize_comments_highlighted_search_links", summary = true)
                 ),
                 sorting = Sorting.UNSORTED
@@ -401,6 +413,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ),
             SwitchPreference("morphe_hide_floating_microphone_button", summary = true),
             SwitchPreference("morphe_hide_get_premium_button"),
+            SwitchPreference("morphe_hide_history_shelf", summary = true),
             SwitchPreference("morphe_hide_horizontal_shelves", summary = true),
             SwitchPreference("morphe_hide_hyped_label"),
             SwitchPreference("morphe_hide_image_shelf", summary = true),
@@ -414,6 +427,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_search_term_thumbnails", summary = true),
             SwitchPreference("morphe_hide_show_more_button", summary = true),
             SwitchPreference("morphe_hide_subscribed_channels_bar"),
+            SwitchPreference("morphe_hide_subscribed_channels_bar_names"),
             SwitchPreference("morphe_hide_surveys", summary = true),
             SwitchPreference("morphe_hide_ticket_shelf"),
             SwitchPreference(
@@ -606,6 +620,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
+        // region hide comment preview
+
+        hookLithoSpannableString(COMMENTS_FILTER)
+        hookVideoIntent(COMMENTS_FILTER, detectVideo = true, detectShorts = false)
+
+        // endregion
+
         // region hide comments carousel
 
         hookElement("$COMMENTS_FILTER->onCommentsLoaded")
@@ -625,6 +646,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
             }
         }
+
 
         //endregion
 
@@ -961,6 +983,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide channel tab
 
         ChannelTabRendererFingerprint.method.apply {
+            val channelTabMatch = ChannelTabRendererFingerprint.instructionMatches[1]
+            val selectedIndexRegister = channelTabMatch.getInstruction<FiveRegisterInstruction>().registerD
+
+            addInstructions(
+                channelTabMatch.index,
+                """
+                    invoke-static { v$selectedIndexRegister }, $LAYOUT_COMPONENTS_FILTER->getChannelTabSelectedIndex(I)I
+                    move-result v$selectedIndexRegister
+                """
+            )
+
             val iteratorIndex = indexOfFirstInstructionReversedOrThrow(
                 methodCall(name = "hasNext")
             )
@@ -1061,6 +1094,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     ExternalLabel("next_iterator", getInstruction(iteratorIndex))
                 )
             }
+
+            val addAllIndex = indexOfFirstInstructionOrThrow(
+                methodCall(smali = "Ljava/util/List;->addAll(Ljava/util/Collection;)Z")
+            )
+            val addAllInstruction = getInstruction<FiveRegisterInstruction>(addAllIndex)
+
+            addInstruction(
+                addAllIndex,
+                "invoke-static { v${addAllInstruction.registerC}, v${addAllInstruction.registerD} }, " +
+                        "$LAYOUT_COMPONENTS_FILTER->setChannelTabs(Ljava/util/List;Ljava/util/List;)V"
+            )
         }
 
         // endregion

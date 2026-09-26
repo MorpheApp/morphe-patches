@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Анимация запуска</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Выключено</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Цветной</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Монохромная</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Перезагрузите для завершения настройки</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не удается войти в VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Вышли из войти Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недействительный токен входа в VR, попробуйте войти в VR еще раз</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Элементы управления мультимедиа в уведомлении</string>
+  <string name="morphe_notification_media_screen_summary">Настройте элементы управления воспроизведением, отображаемые на экране блокировки и в панели уведомлений</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Скрыть предыдущий &amp; Следующие кнопки</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Скрывает кнопки «Предыдущий» и «Следующий» в медиауведомлении, на экране блокировки и в элементах управления гарнитуры</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Отключить ползунок перемотки</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Предотвращает перетаскивание ползунка перемотки на экране блокировки и в панели уведомлений</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Отключить протокол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -235,6 +247,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">Дизлайки недоступны (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Скрыто владельцем</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Не нравится это видео, как и %s другим людям</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Не нравится это видео, %s голосов — дизлайки</string>
   <string name="morphe_ryd_enabled_title">Включить Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Показывать дизлайки в процентах</string>
   <string name="morphe_ryd_dislike_percentage_summary">Отображает дизлайки в процентах от лайков вместо количества</string>

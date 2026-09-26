@@ -20,7 +20,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo Header</string>
   <string name="morphe_header_logo_entry_1">Bawaan</string>
-  <string name="morphe_header_logo_entry_3">Khusus</string>
+  <string name="morphe_header_logo_entry_3">Kustom</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <string name="morphe_music_play_album_songs_title">Putar trek audio album</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_flyout_menu_summary">Menggunakan pengunduh eksternal pilihan Anda daripada menu flyout Unduh bawaan</string>
   <string name="morphe_music_in_app_downloads_title">Unduh dalam aplikasi</string>
   <string name="morphe_music_in_app_downloads_summary">Mengunduh audio di dalam YouTube Music daripada membuka aplikasi pengunduh eksternal</string>
-  <string name="morphe_music_in_app_downloads_user_dialog_message">"Trek disimpan di penyimpanan pribadi aplikasi dan akan dihapus jika YouTube Music dihapus instalasinya.
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"Trek disimpan di penyimpanan pribadi aplikasi dan akan dihapus jika YouTube Music dicopot.
 
 Selama fitur ini aktif, tab Unduhan mencantumkan trek ini, bukan pustaka offline Music Premium. Mematikannya akan memulihkan tab tersebut, dan unduhan Premium tidak akan pernah tersentuh."</string>
   <string name="morphe_music_downloads_screen_title">Unduhan</string>
@@ -100,6 +100,7 @@ Lagu yang diunduh akan muncul di sini"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sembunyikan tombol Terjemahan</string>
   <string name="morphe_music_hide_new_from_shelf_title">Sembunyikan rak \'Baru dari\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Sembunyikan deretan daftar putar</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Sembunyikan tombol unduh episode podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Sembunyikan tombol Ulangi</string>
   <string name="morphe_music_hide_shuffle_button_title">Sembunyikan tombol Acak</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sembunyikan rak \'Pintasan cepat\'</string>
@@ -186,7 +187,11 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_cast_button_title">Sembunyikan tombol transmisi</string>
   <string name="morphe_music_hide_history_button_title">Sembunyikan tombol Riwayat</string>
   <string name="morphe_music_hide_notification_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_music_hide_search_button_title">Sembunyikan tombol pencarian</string>
+  <string name="morphe_music_hide_search_button_title">Sembunyikan tombol Telusuri</string>
+  <string name="morphe_music_hide_voice_search_button_title">Sembunyikan tombol pencarian Suara</string>
+  <string name="morphe_music_hide_sound_search_button_title">Sembunyikan tombol pencarian suara</string>
+  <string name="morphe_music_hide_library_new_button_title">Sembunyikan tombol Baru</string>
+  <string name="morphe_music_hide_library_new_button_summary">Menyembunyikan tombol Baru di tab Pustaka</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_music_action_buttons_screen_summary">Pilih tombol tindakan mana yang akan ditampilkan di bawah pemutar</string>
@@ -252,7 +257,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_change_start_page_entry_library">Koleksi</string>
   <string name="morphe_change_start_page_entry_liked_music">Musik yang disukai</string>
   <string name="morphe_change_start_page_entry_playlists">Daftar Putar</string>
-  <string name="morphe_change_start_page_entry_search">Pencarian</string>
+  <string name="morphe_change_start_page_entry_search">Telusuri</string>
   <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Sembunyikan bilah penyaring</string>
@@ -352,12 +357,12 @@ Untuk memastikan scrobbling disinkronkan selama pemutaran latar belakang, pastik
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gunakan lirik pihak ketiga</string>
   <string name="morphe_music_lyrics_enabled_summary">Menampilkan lirik dari layanan pihak ketiga, beralih menggunakan lirik bawaan jika tidak ditemukan</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Biarkan layar tetap menyala saat menampilkan lirik</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Mencegah layar mati saat panel lirik terbuka</string>
   <string name="morphe_music_lyrics_section_service_title">Layanan lirik</string>
   <string name="morphe_music_lyrics_section_overlay_title">Hamparan</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinkronisasi</string>
   <string name="morphe_music_lyrics_section_about_title">Tentang</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Ketuk ▲/▼ untuk mengatur urutan prioritas, dan kotak untuk mengaktifkan atau menonaktifkan setiap penyedia</string>
   <string name="morphe_music_lyrics_source_all_disabled">Semua penyedia dinonaktifkan — lirik bawaan dan lirik tersemat</string>
   <string name="morphe_music_lyrics_source_reset_title">Setel ulang urutan penyedia?</string>
   <string name="morphe_music_lyrics_source_reset_message">Kembalikan penyedia ke urutan prioritas bawaan</string>
@@ -394,9 +399,8 @@ Langkah-langkah:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl tidak valid. Silakan coba lagi.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl tidak valid — periksa kembali dan coba lagi</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch berfungsi tanpa token, jadi kolom ini bisa tetap kosong.
-
-Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal dari aplikasi Android Musixmatch: token yang disalin dari musixmatch.com milik klien desktop yang sudah tidak digunakan lagi dan API menolaknya."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal dari aplikasi Musixmatch Android: token yang disalin dari musixmatch.com milik klien desktop yang sudah pensiun dan API menolaknya.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch berfungsi tanpa token, jadi kolom ini bisa tetap kosong.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">user token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token pengguna disimpan</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token pengguna dihapus</string>
@@ -418,9 +422,9 @@ Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal d
   <string name="morphe_music_lyrics_show_copy_button_title">Tampilkan tombol Salin</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Ketuk untuk menyalin lirik asli sebagai teks biasa; tekan lama untuk menyimpan file sumber lirik mentah ke Unduhan.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tampilkan tombol Terjemahan</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Terjemahkan lirik menggunakan terjemahan penyedia atau Google Terjemahan.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Ketuk untuk mengalihkan terjemahan; tekan lama untuk hanya terjemahan. Menggunakan terjemahan penyedia, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanisasi lirik menggunakan romanisasi penyedia atau romanisasi Google Translate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Ketuk untuk mengalihkan romanisasi; tekan lama untuk hanya romanisasi. Menggunakan romanisasi penyedia, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk menonaktifkan lirik pihak ketiga sementara waktu dan menampilkan lirik bawaan</string>
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
@@ -436,7 +440,7 @@ Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal d
   <string name="morphe_music_lyrics_display_artist_first_summary">Ubah urutan tampilan Artis dan Judul di Pemutar mini dan MediaSession. ON \"Artis - Judul\" dan OFF \"Judul - Artis\". Tidak memengaruhi pencarian lirik</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filter</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex metadata</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Regular expression diterapkan pada judul, artis, dan album sebelum mencari lirik. Biarkan kosong untuk menonaktifkan. Pengaturan bawaan akan menghapus teks tambahan yang umum seperti \"Official Video\", \"Remaster\", dan \"- Topic\"</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Ekspresi reguler diterapkan pada judul, artis, dan album sebelum mencari lirik dan saat menilai apakah dua judul cocok. Biarkan kosong untuk menonaktifkan keduanya. Default menghapus keramaian umum seperti \"Official Video\", \"Remaster\", \"【插曲】\", dan \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">Regex filter lirik</string>
   <string name="morphe_music_lyrics_text_filter_summary">Regular expression hanya diterapkan pada teks lirik asli (bukan terjemahan atau romanisasi). Biarkan kosong untuk menonaktifkan</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Penanda baris info</string>
@@ -453,15 +457,18 @@ Tambahkan token hanya untuk menggunakan akun Anda sendiri. Token harus berasal d
   <string name="morphe_music_lyrics_romanized_by_ai">Diromanisasi oleh %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Diterjemahkan</string>
+  <string name="morphe_music_lyrics_translation_language_title">Bahasa terjemahan</string>
   <string name="morphe_music_lyrics_translating">Menerjemahkan…</string>
   <string name="morphe_music_lyrics_translate_failed">Tidak dapat menerjemahkan lirik</string>
   <string name="morphe_music_lyrics_romanize_hide">Diromanisasi</string>
   <string name="morphe_music_lyrics_romanizing">Meromanisasi…</string>
   <string name="morphe_music_lyrics_romanize_failed">Tidak dapat meromanisasi lirik</string>
+  <string name="morphe_music_lyrics_translate_only">Terjemahan saja</string>
+  <string name="morphe_music_lyrics_romanize_only">Hanya romanisasi</string>
   <string name="morphe_music_lyrics_copied">Disalin ke papan klip</string>
   <string name="morphe_music_lyrics_refreshing">MediaSession</string>
   <string name="morphe_music_lyrics_refreshed">Segarkan</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirik dicari berdasarkan judul lagu dan artis, jadi lagu dengan metadata yang tidak biasa mungkin tidak menemukan apa pun, atau menemukan versi yang salah. Anda juga dapat mencoba tombol refresh untuk beralih versi secara manual. Jika tidak ditemukan lirik pihak ketiga, lirik bawaan atau yang disematkan akan ditampilkan sebagai gantinya. Penyedia yang ditandai dengan * memerlukan token untuk diaktifkan. Semua penyedia yang diaktifkan tidak selalu diminta dalam pesanan Anda, tetapi merespons berdasarkan kecepatan mereka"</string>
+  <string name="morphe_music_lyrics_about_summary">"Lirik dicocokkan berdasarkan judul dan artis, metadata yang tidak biasa mungkin tidak menemukan apa pun atau versi yang salah. Gunakan refresh untuk mengganti versi. Penyedia yang ditandai * memerlukan token. Semua penyedia yang diaktifkan tidak selalu diminta sesuai urutan Anda, tetapi merespons berdasarkan kecepatannya."</string>
   <string name="morphe_music_lyrics_hide_info_title">Sembunyikan baris kredit</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sembunyikan baris kredit yang ditampilkan di bawah lirik</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tukar terjemahan dan romanisasi</string>

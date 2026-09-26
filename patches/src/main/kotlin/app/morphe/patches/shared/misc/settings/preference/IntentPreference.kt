@@ -28,7 +28,9 @@ class IntentPreference(
     override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
         super.serialize(ownerDocument, resourceCallback).apply {
             appendChild(ownerDocument.createElement("intent").also { intentNode ->
-                intentNode.setAttribute("android:data", intent.data)
+                if (intent.data.isNotEmpty()) {
+                    intentNode.setAttribute("android:data", intent.data)
+                }
                 intentNode.setAttribute("android:targetClass", intent.targetClass)
                 intentNode.setAttribute("android:targetPackage", intent.targetPackageSupplier())
             })

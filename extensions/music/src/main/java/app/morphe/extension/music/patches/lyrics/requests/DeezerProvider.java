@@ -69,13 +69,13 @@ public final class DeezerProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
-        List<Lyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : candidates.get(0);
+    public FetchResult fetch(TrackInfo track) throws Exception {
+        List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
+        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         String arl = getArl();
         if (arl == null) {
             return Collections.emptyList();
@@ -115,7 +115,7 @@ public final class DeezerProvider implements LyricsProvider {
             }
         }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     private static String artistName(JSONObject item) {
@@ -127,8 +127,10 @@ public final class DeezerProvider implements LyricsProvider {
         String title = item.optString("title", "");
         JSONObject artistObj = item.optJSONObject("artist");
         String artist = artistObj != null ? artistObj.optString("name", "") : "";
+        JSONObject albumObj = item.optJSONObject("album");
+        String album = albumObj != null ? albumObj.optString("title", "") : "";
         return LyricsRequests.scoreTrackCandidate(title, artist,
-                item.optInt("duration", 0), track);
+                item.optInt("duration", 0), album, track);
     }
 
     private static List<JSONObject> sortCandidates(JSONArray searchResults, TrackInfo track) {
@@ -140,7 +142,13 @@ public final class DeezerProvider implements LyricsProvider {
             }
         }
         list.sort((a, b) -> scoreCandidate(b, track) - scoreCandidate(a, track));
-        return list;
+        List<JSONObject> passed = new ArrayList<>();
+        for (JSONObject item : list) {
+            if (scoreCandidate(item, track) >= LyricsRequests.SOFT_MIN) {
+                passed.add(item);
+            }
+        }
+        return passed.isEmpty() && !list.isEmpty() ? List.of(list.get(0)) : passed;
     }
 
     @Nullable

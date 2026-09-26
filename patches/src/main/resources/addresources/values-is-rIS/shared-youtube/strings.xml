@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Ræsingarhreyfimynd</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Óvirkt</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Litur</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Einlit</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Endurræstu til að lokar á uppsetninguna</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ekki hægt að skrá inn á VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Skráð út af Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ógild VR innskráningartakinn, prófaðu að skrá þig inn á VR aftur</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Margmiðlunarstýringar tilkynninga</string>
+  <string name="morphe_notification_media_screen_summary">Sérsníddu spilunarstýringarnar sem birtast á læsiskjánum þínum og tilkynningaspjaldinu</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Fela fyrri og næstu hnappa</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Felur fyrri og næstu hnappa í spilunartilkynningu, á læsiskjá og í heyrnartólstýringum</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Slökkva á framvindustiku</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Kemur í veg fyrir að hægt sé að draga framvindustikuna á læsiskjánum og tilkynningaspjaldinu</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Slökktu á QUIC samskiptareglum</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

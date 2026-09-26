@@ -100,6 +100,7 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Verberg Vertaal-knoppie</string>
   <string name="morphe_music_hide_new_from_shelf_title">Verberg \'Nuut van\'-rak</string>
   <string name="morphe_music_hide_playlist_shelves_title">Verberg playlist-rakke</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Verberg aflaaiknoppie vir podcast-episode</string>
   <string name="morphe_music_hide_repeat_button_title">Verberg Herhaal-knoppie</string>
   <string name="morphe_music_hide_shuffle_button_title">Verberg Lukrake volgorde-knoppie</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Verberg \'Spoedskakelaar\'-rak</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_music_hide_history_button_title">Verberg Geskiedenis-knoppie</string>
   <string name="morphe_music_hide_notification_button_title">Verberg Kennisgewing-knoppie</string>
   <string name="morphe_music_hide_search_button_title">Verberg Soek-knoppie</string>
+  <string name="morphe_music_hide_voice_search_button_title">Verberg stemsoektogknoppie</string>
+  <string name="morphe_music_hide_sound_search_button_title">Verberg klanksoektogknoppie</string>
+  <string name="morphe_music_hide_library_new_button_title">Versteek Nuwe-knoppie</string>
+  <string name="morphe_music_hide_library_new_button_summary">Versteek die Nuwe-knoppie in die Biblioteek-oortjie</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Aksieknoppie</string>
   <string name="morphe_music_action_buttons_screen_summary">Kies watter aksieknoppie onder die speler verskyn</string>
@@ -352,12 +357,12 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Gebruik derdeparty lirieke</string>
   <string name="morphe_music_lyrics_enabled_summary">Wys lirieke van \'n derdeparty diens, met terugval na die ingeboude lirieke wanneer nie gevind nie</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Hou skerm aan terwyl jy lirieke bekyk</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Voorkom dat die skerm afskakel terwyl die lirieke-paneel oop is</string>
   <string name="morphe_music_lyrics_section_service_title">Lirieke-diens</string>
   <string name="morphe_music_lyrics_section_overlay_title">Oorleg</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinchronisasie</string>
   <string name="morphe_music_lyrics_section_about_title">Oor</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tik ▲/▼ om die prioriteitsorde te stel, en die blokkie om elke verskaffer te aktiveer of deaktiveer</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers is gedeaktiveer — ingeboude en ingebedde lirieke</string>
   <string name="morphe_music_lyrics_source_reset_title">Verskaffervolgorde terugstel?</string>
   <string name="morphe_music_lyrics_source_reset_message">Herstel verskaffers na die standaardprioriteitsorde</string>
@@ -394,9 +399,8 @@ Stappe:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: ongeldige arl, probeer asseblief weer</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: ongeldige arl — kontroleer asseblief en probeer weer</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] Kopieer die waarde van die gebruikerstoken</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch werk sonder 'n token, so hierdie veld kan leeg bly.
-
-Voeg slegs 'n token by om jou eie rekening te gebruik. Dit moet van die Musixmatch Android-toepassing kom: tokens wat van musixmatch.com gekopieer is, behoort aan die afgetrede lessenaar-kliënt en die API weier hulle"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Voeg slegs \'n token by om jou eie rekening te gebruik. Dit moet van die Musixmatch Android-toepassing kom: tokens wat van musixmatch.com gekopieer is, behoort aan die uitgefaseerde lessenaarkliënt en die API weier hulle.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch werk sonder \'n token, so hierdie veld kan leeg bly.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: ongeldige gebruikerstoken, probeer asseblief weer</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: gebruikerstoken gestoor</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: gebruikerstoken verwyder</string>
@@ -413,9 +417,9 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_copy_button_title">Wys Kopièer knoppie</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Raak om oorspronklike lirieke as gewone teks te kopieer; druk lank om rou lirieke-bronlêer na Downloads te stoor</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Wys Vertaal knoppie</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Vertaal lirieke met verskaffervertalings of Google Translate</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tik om vertaling te wissel; druk lank vir slegs vertaling. Gebruik die verskaffer se vertalings, Google Translate, of \'n OpenAI-versoenbare API.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Wys romaniseer-knoppie</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniseer lirieke met verskaffer-romanisering of Google Translate […] knoppie</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisering te wissel; druk lank vir slegs romanisering. Gebruik die verskaffer se romanisering, Google Translate, of \'n OpenAI-versoenbare API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Wys verfris-knoppie</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Raak om na die volgende liriekkandidaat te wissel; […] :\"Gestoor\"</string>
   <string name="morphe_music_lyrics_saved">Gestoor</string>
@@ -431,7 +435,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_display_artist_first_summary">Wissel die vertoonorde van Kunstenaar en Titel in die Mini-speler en MediaSession. AAN \"Kunstenaar - Titel\" en AF \"Titel - Kunstenaar\". Dit raak nie die soektog na lirieke nie.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_custom_regex_title">Me […] lirieke. […] :\"Lirieke\"</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Reëlmatige uitdrukking word op titels, kunstenaars en albums toegepas voordat daar na lirieke gesoek word. Los dit leeg om te deaktiveer. Die verstek verwyder algemene rommel soos \"Official Video\", \"Remaster\" en \"- Topic\".</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Reguliere uitdrukking word toegepas op titels, kunstenaars en albums voordat lirieke opgesoek word en wanneer daar beoordeel word of twee titels ooreenstem. Los leeg om albei te deaktiveer. Die verstek verwyder algemene rommel soos \"Official Video\", \"Remaster\", \"【插曲】\" en \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Lirieke-filter-regex</string>
   <string name="morphe_music_lyrics_text_filter_summary">Vertaal lirieke met verskaffervertalings of Google Translate</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Wys romaniseer-knoppie</string>
@@ -448,15 +452,18 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_romanized_by_ai">Geromaniseer deur %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Me […] lirieke. […] :\"Lirieke\"</string>
+  <string name="morphe_music_lyrics_translation_language_title">Vertalingstaal</string>
   <string name="morphe_music_lyrics_translating">Besig met vertaling…</string>
   <string name="morphe_music_lyrics_translate_failed">Kon nie die lirieke vertaal nie</string>
   <string name="morphe_music_lyrics_romanize_hide">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_romanizing">Me […] lirieke. […] :\"Lirieke\"</string>
   <string name="morphe_music_lyrics_romanize_failed">Gereedskapsafdelings?</string>
+  <string name="morphe_music_lyrics_translate_only">Slegs vertaal.</string>
+  <string name="morphe_music_lyrics_romanize_only">Slegs geromaniseer</string>
   <string name="morphe_music_lyrics_copied">Na knipbord gekopieer</string>
   <string name="morphe_music_lyrics_refreshing">Besig om te verfris</string>
   <string name="morphe_music_lyrics_refreshed">Lirieke-bron?</string>
-  <string name="morphe_music_lyrics_about_summary">"Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed"</string>
+  <string name="morphe_music_lyrics_about_summary">"Lirieke word volgens titel en kunstenaar gekoppel, ongewone metadata mag niks of die verkeerde weergawe vind nie. Gebruik verfris om van weergawe te wissel. Verskaffers wat met * gemerk is, vereis 'n token. Nie alle geaktiveerde verskaffers word altyd in jou volgorde aangevra nie, maar hulle reageer op grond van hul spoed."</string>
   <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_hide_info_summary">Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>

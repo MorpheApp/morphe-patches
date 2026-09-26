@@ -100,6 +100,7 @@ Ovdje se prikazuju preuzete pjesme"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sakrij tipku za prijevod</string>
   <string name="morphe_music_hide_new_from_shelf_title">Sakrij policu \'Novo od\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Sakrij police popisa za reprodukciju</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Sakrij gumb za preuzimanje epizode podcasta</string>
   <string name="morphe_music_hide_repeat_button_title">Sakrij tipku za ponavljanje</string>
   <string name="morphe_music_hide_shuffle_button_title">Sakrij tipku za miješanje</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sakrij policu \'Brzi izbor\'</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <string name="morphe_music_hide_history_button_title">Sakrij tipku za povijest</string>
   <string name="morphe_music_hide_notification_button_title">Sakrij tipku za obavijesti</string>
   <string name="morphe_music_hide_search_button_title">Sakrij tipku za pretraživanje</string>
+  <string name="morphe_music_hide_voice_search_button_title">Sakrij gumb za glasovno pretraživanje</string>
+  <string name="morphe_music_hide_sound_search_button_title">Sakrij gumb za zvučno pretraživanje</string>
+  <string name="morphe_music_hide_library_new_button_title">Sakrij gumb Novo</string>
+  <string name="morphe_music_hide_library_new_button_summary">Skriva gumb Novo u kartici Knjižnica</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Akcijske tipke</string>
   <string name="morphe_music_action_buttons_screen_summary">Odaberite koje će se akcijske tipke prikazivati ispod playera</string>
@@ -352,10 +357,11 @@ Kako biste osigurali sinkronizaciju scrobblinga tijekom reprodukcije u pozadini,
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Koristi tekst pjesme treće strane</string>
   <string name="morphe_music_lyrics_enabled_summary">Prikazuje stihove iz usluge treće strane, a kada se ništa ne pronađe, prikazuje ugrađene stihove</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">Zadrži ekran uključenim dok gledaš stihove</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">Sprječava isključivanje zaslona dok je ploča stihova otvorena</string>
   <string name="morphe_music_lyrics_section_service_title">Usluga stihova</string>
   <string name="morphe_music_lyrics_section_overlay_title">Pregač</string>
   <string name="morphe_music_lyrics_section_about_title">O aplikaciji</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Zalijepi kolačić sp_dc sa Spotifyja.
@@ -379,9 +385,8 @@ Koraci:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl obrisan</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: neispravan arl — provjeri i pokušaj ponovno</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch token</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch radi bez tokena, pa ovo polje može ostati prazno.
-
-Dodaj token samo ako želiš koristiti vlastiti račun. Mora doći iz Musixmatch Android aplikacije: tokeni kopirani sa stranice musixmatch.com pripadaju povučenom desktop klijentu i API ih odbija."</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Dodaj token samo za korištenje vlastitog računa. Mora doći iz Musixmatch Android aplikacije: tokeni kopirani s musixmatch.com pripadaju umirovljenom desktop klijentu i API ih odbija.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch radi bez tokena, tako da ovo polje može ostati prazno.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">korisnički token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: korisnički token spremljen</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: korisnički token obrisan</string>
@@ -403,9 +408,9 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Prikaži tipku za kopiranje</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Dodirni za kopiranje izvornih tekstova pjesama kao obični tekst; dugo pritisni za spremanje sirove izvorne datoteke s tekstovima pjesama u Preuzimanja.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Prikaži tipku za prijevod</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Prevedi tekstove pjesama koristeći prijevode pružatelja usluge ili Google prevoditelja.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Dodirnite za uključivanje/isključivanje prijevoda; dugi pritisak za samo prijevod. Koristi prijevode pružatelja usluge, Google Translate ili API kompatibilan s OpenAI-jem.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikaži gumb za romanizaciju</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romaniziraj tekstove pjesama koristeći romanizaciju pružatelja usluge ili Google prevoditeljevu romanizaciju.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Dodirnite za uključivanje/isključivanje romanizacije; dugi pritisak za samo romanizaciju. Koristi romanizaciju pružatelja usluge, Google Translate ili API kompatibilan s OpenAI-jem.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Prikaži gumb za osvježavanje</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">Dodirni za prebacivanje na sljedeći kandidat teksta pjesme; dugo pritisni za privremeno isključivanje tekstova pjesama trećih strana i prikaz ugrađenih tekstova pjesama.</string>
   <string name="morphe_music_lyrics_saved">Spremljeno</string>
@@ -421,7 +426,7 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_display_artist_first_summary">Prebacuje redoslijed prikaza izvođača i naslova u miniplayeru i MediaSessionu. ULJUČENO: \"Izvođač - Naslov\", ISKLJUČENO: \"Naslov - Izvođač\". Ne utječe na pretragu tekstova pjesama.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filteri</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex za metapodatke</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Regularni izraz koji se primjenjuje na naslove, izvođače i albume prije pretrage tekstova pjesama. Ostavi prazno za onemogućavanje. Zadani izraz uklanja uobičajene nepotrebne dijelove poput \"Official Video\", \"Remaster\" i \"- Topic\".</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Regularni izraz primjenjuje se na naslove, izvođače i albume prije pretraživanja tekstova pjesama i pri ocjenjivanju odgovaraju li dva naslova. Ostavite prazno da biste onemogućili oboje. Zadana vrijednost uklanja uobičajene nepotrebne dijelove poput \"Official Video\", \"Remaster\", \"【插曲】\" i \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Regex za filtriranje tekstova pjesama</string>
   <string name="morphe_music_lyrics_text_filter_summary">Regularni izraz koji se primjenjuje samo na izvorni tekst pjesama (ne na prijevode ili romanizacije). Ostavi prazno za onemogućavanje.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Oznake redaka s informacijama</string>
@@ -438,15 +443,18 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_romanized_by_ai">Romanizirano: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">Prijevod</string>
+  <string name="morphe_music_lyrics_translation_language_title">Jezik prijevoda</string>
   <string name="morphe_music_lyrics_translating">Prijevod u tijeku…</string>
   <string name="morphe_music_lyrics_translate_failed">Prijevod stihova nije uspio</string>
   <string name="morphe_music_lyrics_romanize_hide">Romanizacija</string>
   <string name="morphe_music_lyrics_romanizing">Romanizacija…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nije uspjelo romanizirati tekstove pjesama.</string>
+  <string name="morphe_music_lyrics_translate_only">Samo prevedeno</string>
+  <string name="morphe_music_lyrics_romanize_only">Samo romanizirano</string>
   <string name="morphe_music_lyrics_copied">Kopirano u međuspremnik</string>
   <string name="morphe_music_lyrics_refreshing">Osvježavanje…</string>
   <string name="morphe_music_lyrics_refreshed">Osvježeno</string>
-  <string name="morphe_music_lyrics_about_summary">"Tekstovi pjesama pretražuju se prema naslovu pjesme i izvođaču, pa pjesma s neuobičajenim metapodacima možda neće pronaći ništa ili će pronaći pogrešnu verziju. Takoder možeš isprobati gumb za osvježavanje da ručno promijeniš verziju. Kada se ne pronađu tekstovi trećih strana, umjesto njih prikazuju se ugrađeni tekstovi pjesama. Pružatelji usluga označeni zvjezdom (*) zahtijevaju token za aktivaciju. Svi omogućeni pružatelji usluga nisu uvijek pozvani tvojim redoslijedom, već odgovaraju prema svojoj brzini."</string>
+  <string name="morphe_music_lyrics_about_summary">"Tekstovi se usklađuju prema naslovu i izvođaču, a neuobičajeni metapodaci možda neće pronaći ništa ili pogrešnu verziju. Koristite osvježavanje za promjenu verzija. Davatelji označeni sa * zahtijevaju token. Svi omogućeni davatelji nisu uvijek pozvani vašim redoslijedom, već odgovaraju prema svojoj brzini."</string>
   <string name="morphe_music_lyrics_hide_info_title">Sakrij redak sa zaslugama</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sakrij redak sa zaslugama prikazan ispod tekstova pjesama.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamijeni prijevod i romanizaciju</string>

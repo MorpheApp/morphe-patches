@@ -19,6 +19,8 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerIcons
+import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
@@ -28,8 +30,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeMainActivityConstructorFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.transformMethods
 import app.morphe.util.traverseClassHierarchy
@@ -41,7 +41,8 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/swipecontrol
 private val swipeControlsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        playerIconStylePatch
     )
 
     execute {
@@ -130,21 +131,18 @@ private val swipeControlsResourcePatch = resourcePatch {
             TextPreference("morphe_swipe_threshold", inputType = InputType.NUMBER)
         )
 
-        copyResources(
+        copyPlayerIcons(
             "swipecontrols",
-            ResourceGroup(
-                "drawable",
-                "morphe_ic_sc_brightness_auto.xml",
-                "morphe_ic_sc_brightness_full.xml",
-                "morphe_ic_sc_brightness_high.xml",
-                "morphe_ic_sc_brightness_low.xml",
-                "morphe_ic_sc_brightness_medium.xml",
-                "morphe_ic_sc_volume_high.xml",
-                "morphe_ic_sc_volume_low.xml",
-                "morphe_ic_sc_volume_mute.xml",
-                "morphe_ic_sc_volume_normal.xml",
-                "morphe_ic_sc_speed.xml"
-            )
+            "morphe_ic_sc_brightness_auto",
+            "morphe_ic_sc_brightness_full",
+            "morphe_ic_sc_brightness_high",
+            "morphe_ic_sc_brightness_low",
+            "morphe_ic_sc_brightness_medium",
+            "morphe_ic_sc_volume_high",
+            "morphe_ic_sc_volume_low",
+            "morphe_ic_sc_volume_mute",
+            "morphe_ic_sc_volume_normal",
+            "morphe_ic_sc_speed"
         )
     }
 }

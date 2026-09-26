@@ -74,6 +74,8 @@ As mudanças incluem:
   <string name="morphe_hide_floating_microphone_button_title">Ocultar botão de microfone flutuante</string>
   <string name="morphe_hide_floating_microphone_button_summary">Oculta o botão de microfone flutuante no canto inferior direito da tela de sugestões de pesquisa</string>
   <string name="morphe_hide_get_premium_button_title">Ocultar botão \'Obter Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">Ocultar prateleira do histórico</string>
+  <string name="morphe_hide_history_shelf_summary">Oculta a prateleira do histórico na aba Você</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar prateleiras horizontais</string>
   <string name="morphe_hide_horizontal_shelves_summary">Oculta carrosséis horizontais como Últimas notícias, Postagens da comunidade que você pode gostar, Continuar assistindo, Conheça mais canais, Conheça mais tópicos, Para você, Vídeos mais recentes, Mais relevantes, Postagens da comunidade de criadores, Shopping e Assistir novamente</string>
   <string name="morphe_hide_hyped_label_title">Ocultar rótulo Hypado</string>
@@ -105,6 +107,7 @@ As mudanças incluem:
   <string name="morphe_hide_show_more_button_title">Ocultar botão \'Mostrar mais\'</string>
   <string name="morphe_hide_show_more_button_summary">Oculta o botão de expandir sob vídeos nos resultados da pesquisa</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Esconder a barra de canais assinados</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Ocultar nomes de canais na barra de canais inscritos</string>
   <string name="morphe_hide_surveys_title">Ocultar pesquisas</string>
   <string name="morphe_hide_surveys_summary">Ocultar pesquisas e avisos sobre a precisão das recomendações do feed</string>
   <string name="morphe_hide_ticket_shelf_title">Ocultar seção de ingressos</string>
@@ -253,6 +256,7 @@ As mudanças incluem:
   <string name="morphe_hide_comments_section_in_home_feed_title">Esconder seção de comentários no feed de casa</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ocultar Diretrizes da comunidade</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Ocultar botão \'Criar um Short\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">Ocultar botão Não gostei</string>
   <string name="morphe_hide_comments_emoji_button_title">Ocultar botão Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ocultar opções da barra de filtros</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Oculta todas as opções da barra de filtros, exceto \'Principais\' e \'Mais recentes\'</string>
@@ -262,11 +266,17 @@ As mudanças incluem:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Ocultar barra de doadores do chat ao vivo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Ocultar dicas flutuantes do chat ao vivo</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Oculta pop-ups de dicas exibidos perto da barra de digitação do chat, como o aviso de chat exclusivo para inscritos</string>
+  <string name="morphe_hide_comments_menu_button_title">Ocultar botão do menu</string>
+  <string name="morphe_hide_comments_menu_button_summary">Oculta o botão de menu de <b>3</b> pontos de cada comentário</string>
   <string name="morphe_hide_comments_preview_comment_title">Ocultar prévia de comentário</string>
   <string name="morphe_hide_comments_preview_comment_summary">Oculta a pré-visualização do comentário abaixo do vídeo antes de abrir a seção completa de comentários</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Comentário oculto por Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Ativar botão de comentários minimalista</string>
+  <string name="morphe_minimal_comments_button_summary">Oculta os cartões deslizantes e o seletor de páginas exibidos no botão de comentários</string>
   <string name="morphe_hide_comments_thanks_button_title">Ocultar botão Valeu</string>
   <string name="morphe_hide_comments_timestamp_button_title">Ocultar botão Minutagem</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ocultar o botão \'Top fãs\'</string>
+  <string name="morphe_hide_comments_translate_button_title">Ocultar botão Traduzir</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Sanitiza links de pesquisa destacados</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Sanitiza links de pesquisa destacados, deixando apenas o texto original</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtro de palavras-chave</string>
@@ -383,9 +393,17 @@ As denúncias são públicas e passam por revisão antes de um canal ser adicion
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Pesquisar no canal</string>
   <string name="morphe_channel_search_summary">Ao pesquisar com um canal aberto, a busca é realizada apenas nesse canal</string>
+  <string name="morphe_channel_search_hint">Pesquisar canal</string>
   <string name="morphe_channel_search_results">Resultados da pesquisa de canais</string>
   <string name="morphe_channel_search_no_results">Nada encontrado neste canal</string>
   <string name="morphe_channel_search_failed">Não foi possível pesquisar neste canal</string>
+  <string name="morphe_channel_search_sort_relevance">Relevância</string>
+  <string name="morphe_channel_search_sort_most_viewed">Mais vistos</string>
+  <string name="morphe_channel_search_sort_least_viewed">Menos vistos</string>
+  <string name="morphe_channel_search_sort_newest">Mais recentes</string>
+  <string name="morphe_channel_search_sort_oldest">Mais antigos</string>
+  <string name="morphe_channel_search_sort_shortest">Mais curtos</string>
+  <string name="morphe_channel_search_sort_longest">Mais longos</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Link copiado para a área de transferência</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Link com timestamp copiado para a área de transferência</string>
@@ -670,6 +688,8 @@ Para corrigir isso, ative 'Falsificar streams de vídeo' e altere o 'Cliente pad
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Ocultar botão Perguntar</string>
+  <string name="morphe_hide_channel_profile_button_title">Ocultar canal e botão de Inscrição</string>
+  <string name="morphe_hide_channel_profile_button_summary">Oculta o avatar do canal e o botão de Inscrição no início da barra de ações</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Ocultar botão Clip</string>
   <string name="morphe_hide_clip_button_summary">Isso pode não funcionar para algumas contas de usuário</string>
@@ -741,6 +761,7 @@ Os 'cookies de legenda' devem ser fornecidos"</string>
   <string name="morphe_swap_create_with_notifications_button_title">Troca o botão Criar pelo botão Notificações</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Se alterar esta configuração não tiver efeito, tente mudar para o modo de navegação anônima</string>
   <string name="morphe_hide_navigation_button_labels_title">Ocultar rótulos dos botões de navegação</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Ocultar ponto de conteúdo novo</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegação</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Isso oculta completamente a barra de navegação, incluindo a aba 'Você'.
 
@@ -1046,7 +1067,7 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">Personalize a aparência e o comportamento do mini player minimizado</string>
   <string name="morphe_miniplayer_type_title">Tipo de miniplayer</string>
-  <string name="morphe_miniplayer_hide_title_title">Ocultar título</string>
+  <string name="morphe_miniplayer_hide_title_title">Ocultar título e canal</string>
   <string name="morphe_miniplayer_type_entry_0">Desativado</string>
   <string name="morphe_miniplayer_type_entry_1">Padrão</string>
   <string name="morphe_miniplayer_type_entry_2">Mínimo</string>
@@ -1090,10 +1111,6 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_theme_color_change_foreground_summary">Use a cor do tema para texto e ícones</string>
   <string name="morphe_gradient_loading_screen_title">Ativar tela de carregamento em gradiente</string>
   <string name="morphe_gradient_loading_screen_summary">Mostra um gradiente de fundo na tela de carregamento em vez de uma cor sólida</string>
-  <string name="morphe_splash_screen_animation_style_title">Estilo da tela inicial</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Desativado</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Cor</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monocromático</string>
   <string name="morphe_seekbar_custom_color_title">Ativar cor personalizada da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_primary_title">Cor da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Defina a cor primária da barra de progresso do vídeo</string>
@@ -1159,13 +1176,6 @@ Toque aqui para abrir DeArrow.ajay.app"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Desativar feedback tátil de desfazer busca</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Desativar feedback tátil de toque e segurar</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Desativar zoom tátil</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Controles de mídia da notificação</string>
-  <string name="morphe_notification_media_screen_summary">Personalize os controles de reprodução mostrados na tela de bloqueio e no painel de notificação</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Ocultar botões Anterior e Próximo</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Oculta os botões Anterior e Próximo na notificação, tela de bloqueio e controles de fone de ouvido</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Desativar barra de progresso</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Impede o arrasto da barra de progresso na tela de bloqueio e no painel de notificação</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se você alterou recentemente os detalhes de login da sua conta, desinstale e reinstale o MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1197,6 +1207,8 @@ Toque aqui para abrir DeArrow.ajay.app"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Mostrar botão Qualidade</string>
   <string name="morphe_video_quality_dialog_button_summary">Toque e segure para redefinir a qualidade para o padrão</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Mostrar resolução no botão Qualidade</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Mostrar a resolução, como 1080, em vez de um rótulo como FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menu de velocidade de reprodução personalizado</string>
   <string name="morphe_restore_old_speed_menu_title">Restaurar menu antigo de velocidade de reprodução</string>
@@ -1282,7 +1294,14 @@ A reprodução de vídeos com AV1 pode apresentar travamentos ou perda de frames
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Mostrar cliente simulado nas \'Estatísticas para nerds\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Restaurar barra de ações de vídeo antiga</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Restaura a exibição do botão 'Não gostei' e permite ocultar os botões de ação do vídeo
+  <string name="morphe_restore_old_video_action_bar_summary">"Corrige o problema em que os botões de ação do vídeo não podem ser ocultados
 
-Limitação: Retorna à sobreposição 'Mais vídeos' no estilo antigo"</string>
+Limitação: Reverte para o estilo antigo da sobreposição 'Mais vídeos'"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Estilo do ícone do player</string>
+  <string name="morphe_player_icon_style_entry_auto">Automático</string>
+  <string name="morphe_player_icon_style_entry_default">Padrão</string>
+  <string name="morphe_player_icon_style_entry_regular">Fino</string>
+  <string name="morphe_player_icon_style_entry_bold">Negrito</string>
+  <string name="morphe_shorts_icon_style_title">Estilo do ícone do Shorts</string>
 </resources>

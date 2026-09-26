@@ -75,6 +75,8 @@ Perubahan termasuk:
   <string name="morphe_hide_floating_microphone_button_title">Sembunyikan tombol mikrofon mengambang</string>
   <string name="morphe_hide_floating_microphone_button_summary">Menyembunyikan tombol mikrofon yang mengambang di sudut kanan bawah layar saran pencarian</string>
   <string name="morphe_hide_get_premium_button_title">Sembunyikan tombol \'Dapatkan Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">Sembunyikan rak Riwayat</string>
+  <string name="morphe_hide_history_shelf_summary">Menyembunyikan rak Riwayat di tab Anda</string>
   <string name="morphe_hide_horizontal_shelves_title">Sembunyikan rak-rak mendatar</string>
   <string name="morphe_hide_horizontal_shelves_summary">Rak horizontal disembunyikan, seperti Berita terkini, Postingan komunitas yang mungkin Anda sukai, Lanjutkan menonton, Jelajahi lebih banyak saluran, Jelajahi lebih banyak topik, Untuk Anda, Video terbaru, Paling relevan, Postingan dari Komunitas Kreator, Belanja dan Tonton lagi</string>
   <string name="morphe_hide_hyped_label_title">Sembunyikan label Hype</string>
@@ -106,6 +108,7 @@ Perubahan termasuk:
   <string name="morphe_hide_show_more_button_title">Sembunyikan tombol \'Tampilkan selengkapnya\'</string>
   <string name="morphe_hide_show_more_button_summary">Menyembunyikan tombol perluas di bawah video pada hasil pencarian</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Sembunyikan bilah saluran yang di-subscribe</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Sembunyikan nama saluran di bar saluran yang diikuti</string>
   <string name="morphe_hide_surveys_title">Sembunyikan survei</string>
   <string name="morphe_hide_surveys_summary">Sembunyikan survei dan pengingat mengenai akurasi rekomendasi feed</string>
   <string name="morphe_hide_ticket_shelf_title">Sembunyikan rak tiket</string>
@@ -254,6 +257,7 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_section_in_home_feed_title">Sembunyikan bagian komentar di feed Beranda</string>
   <string name="morphe_hide_comments_community_guidelines_title">Sembunyikan Pedoman Komunitas</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Sembunyikan tombol \'Buat Short\'</string>
+  <string name="morphe_hide_comments_dislike_button_title">Sembunyikan tombol Tidak Suka</string>
   <string name="morphe_hide_comments_emoji_button_title">Sembunyikan tombol Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Sembunyikan opsi bilah penyaring</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Menyembunyikan semua opsi bilah penyaring kecuali \'Teratas\' dan \'Terbaru\'</string>
@@ -263,11 +267,17 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Sembunyikan bilah donatur live chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Sembunyikan tooltip live chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Menyembunyikan pop-up tooltip yang muncul di dekat bilah input chat, seperti pemberitahuan chat khusus subscriber</string>
+  <string name="morphe_hide_comments_menu_button_title">Sembunyikan tombol Menu</string>
+  <string name="morphe_hide_comments_menu_button_summary">Menyembunyikan tombol menu tiga titik pada setiap komentar</string>
   <string name="morphe_hide_comments_preview_comment_title">Sembunyikan pratinjau komentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Menyembunyikan pratinjau komentar di bawah video sebelum membuka bagian komentar penuh</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Komentar disembunyikan oleh Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Aktifkan tombol komentar minimal</string>
+  <string name="morphe_minimal_comments_button_summary">Menyembunyikan kartu geser dan pemilih halamannya, yang ditampilkan pada tombol komentar</string>
   <string name="morphe_hide_comments_thanks_button_title">Sembunyikan tombol Terima Kasih</string>
   <string name="morphe_hide_comments_timestamp_button_title">Sembunyikan tombol Stempel Waktu</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sembunyikan tombol \'Penggemar teratas\'</string>
+  <string name="morphe_hide_comments_translate_button_title">Sembunyikan tombol Terjemahkan</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Bersihkan tautan pencarian yang disorot</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Membersihkan tautan pencarian yang disorot, sehingga hanya menyisakan teks biasa aslinya</string>
   <string name="morphe_hide_keyword_content_screen_title">Penyaring kata kunci</string>
@@ -384,9 +394,17 @@ Laporan bersifat publik dan ditinjau sebelum saluran ditambahkan ke daftar. Peng
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Cari di dalam saluran</string>
   <string name="morphe_channel_search_summary">Pencarian saat saluran terbuka hanya menelusuri saluran tersebut</string>
+  <string name="morphe_channel_search_hint">Cari saluran</string>
   <string name="morphe_channel_search_results">Hasil pencarian saluran</string>
   <string name="morphe_channel_search_no_results">Tidak ada yang ditemukan di saluran ini</string>
   <string name="morphe_channel_search_failed">Tidak dapat mencari di saluran ini</string>
+  <string name="morphe_channel_search_sort_relevance">Relevansi</string>
+  <string name="morphe_channel_search_sort_most_viewed">Paling banyak ditonton</string>
+  <string name="morphe_channel_search_sort_least_viewed">Paling sedikit ditonton</string>
+  <string name="morphe_channel_search_sort_newest">Terbaru</string>
+  <string name="morphe_channel_search_sort_oldest">Terlama</string>
+  <string name="morphe_channel_search_sort_shortest">Terpendek</string>
+  <string name="morphe_channel_search_sort_longest">Terpanjang</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Tautan disalin ke papan klip</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Tautan dengan tanda waktu disalin ke papan klip</string>
@@ -564,7 +582,7 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <!-- interaction.seekbar.seekbarThumbnailPreviewPatch -->
   <string name="morphe_seekbar_thumbnail_preview_title">Aktifkan thumbnail pada bilah geser</string>
   <string name="morphe_seekbar_thumbnail_preview_summary">Menampilkan thumbnail video saat menggeser bilah geser</string>
-  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Paling sering diputar ulang</string>
+  <string name="morphe_seekbar_thumbnail_heatmap_peak_point">Paling sering di-replay</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_live_stream_dvr_not_available">"'Aktifkan siaran langsung DVR' mungkin tidak tersedia
 
@@ -671,6 +689,8 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
+  <string name="morphe_hide_channel_profile_button_title">Sembunyikan tombol saluran dan tombol berlangganan</string>
+  <string name="morphe_hide_channel_profile_button_summary">Menyembunyikan avatar saluran dan tombol berlangganan di awal bilah tindakan</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Sembunyikan tombol Klip</string>
   <string name="morphe_hide_clip_button_summary">Ini mungkin tidak berfungsi untuk beberapa akun pengguna</string>
@@ -733,8 +753,8 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hide_subscriptions_button_title">Sembunyikan tombol Subscription</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_notifications_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_show_search_button_title">Tampilkan tombol Pencarian</string>
-  <string name="morphe_show_search_button_index_title">Posisi tombol Pencarian</string>
+  <string name="morphe_show_search_button_title">Tampilkan tombol Telusuri</string>
+  <string name="morphe_show_search_button_index_title">Posisi tombol Telusuri</string>
   <string name="morphe_show_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_settings_button_index_title">Posisi tombol Setelan</string>
   <string name="morphe_show_settings_button_type_title">Tindakan tombol setelan</string>
@@ -742,6 +762,7 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_swap_create_with_notifications_button_title">Tukar tombol Buat dengan tombol Notifikasi</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Jika mengubah setelan ini tidak berhasil, coba beralih ke mode Penyamaran</string>
   <string name="morphe_hide_navigation_button_labels_title">Sembunyikan label tombol navigasi</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Sembunyikan titik konten baru</string>
   <string name="morphe_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Ini sepenuhnya menyembunyikan bilah navigasi, termasuk tab 'Anda'.
 
@@ -761,7 +782,7 @@ Untuk mengakses Setelan, aktifkan tombol Setelan melalui Umum → Bilah Alat →
   <string name="morphe_hide_toolbar_create_button_title">Sembunyikan tombol Buat</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Sembunyikan tombol Mikrofon</string>
   <string name="morphe_hide_toolbar_notification_button_title">Sembunyikan tombol Notifikasi</string>
-  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Pencarian</string>
+  <string name="morphe_hide_toolbar_search_button_title">Sembunyikan tombol Telusuri</string>
   <string name="morphe_show_toolbar_settings_button_title">Tampilkan tombol Setelan</string>
   <string name="morphe_show_toolbar_settings_button_index_title">Posisi tombol Setelan</string>
   <string name="morphe_show_toolbar_settings_button_type_title">Tindakan tombol Setelan</string>
@@ -952,7 +973,7 @@ Setelan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya secar
   <string name="morphe_player_overlay_opacity_title">Opasitas hamparan pemutar</string>
   <string name="morphe_player_overlay_opacity_summary">Sesuaikan tingkat transparansi (0 adalah transparan, 100 adalah buram)</string>
   <!-- layout.searchbar.wideSearchbarPatch -->
-  <string name="morphe_searchbar_type_title">Bilah pencarian</string>
+  <string name="morphe_searchbar_type_title">Bilah penelusuran</string>
   <string name="morphe_searchbar_type_entry_disabled">Dinonaktifkan</string>
   <string name="morphe_searchbar_type_entry_wide">Lebar</string>
   <string name="morphe_searchbar_type_entry_extra_wide">Ekstra lebar</string>
@@ -1015,7 +1036,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_change_start_page_entry_news">Berita</string>
   <string name="morphe_change_start_page_entry_notifications">Notifikasi</string>
   <string name="morphe_change_start_page_entry_playlists">Daftar Putar</string>
-  <string name="morphe_change_start_page_entry_search">Pencarian</string>
+  <string name="morphe_change_start_page_entry_search">Telusuri</string>
   <string name="morphe_change_start_page_entry_shopping">Belanja</string>
   <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Olahraga</string>
@@ -1047,7 +1068,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_miniplayer_screen_title">Pemutar mini</string>
   <string name="morphe_miniplayer_screen_summary">Kustomisasi tampilan dan perilaku pemutar video yang diperkecil</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>
-  <string name="morphe_miniplayer_hide_title_title">Sembunyikan judul</string>
+  <string name="morphe_miniplayer_hide_title_title">Sembunyikan judul dan saluran</string>
   <string name="morphe_miniplayer_type_entry_0">Dinonaktifkan</string>
   <string name="morphe_miniplayer_type_entry_1">Bawaan</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1091,10 +1112,6 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_theme_color_change_foreground_summary">Gunakan warna tema untuk teks dan ikon</string>
   <string name="morphe_gradient_loading_screen_title">Aktifkan layar pemuatan gradien</string>
   <string name="morphe_gradient_loading_screen_summary">Menampilkan latar belakang gradien pada layar pemuatan daripada warna solid</string>
-  <string name="morphe_splash_screen_animation_style_title">Gaya layar pembuka</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Dinonaktifkan</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Berwarna</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <string name="morphe_seekbar_custom_color_title">Aktifkan warna bilah geser khusus</string>
   <string name="morphe_seekbar_custom_color_primary_title">Warna bilah geser</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Atur warna utama bilah kemajuan video</string>
@@ -1160,13 +1177,6 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Nonaktifkan sentuh getar urungkan pencarian</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Nonaktifkan getar sentuh dan tahan</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Nonaktifkan sentuh getar zoom</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Kontrol media notifikasi</string>
-  <string name="morphe_notification_media_screen_summary">Kustomisasi kontrol pemutaran yang ditampilkan pada layar kunci dan panel notifikasi Anda</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Sembunyikan tombol Sebelumnya &amp; Berikutnya</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Sembunyikan tombol Sebelumnya dan Berikutnya di notifikasi media, layar kunci, dan kontrol headphone</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Nonaktifkan bilah geser</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Mencegah penyeretan bilah pencarian di layar kunci dan panel notifikasi</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot dan pasang ulang MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1198,6 +1208,8 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Tampilkan tombol Kualitas</string>
   <string name="morphe_video_quality_dialog_button_summary">Ketuk dan tahan untuk mereset kualitas ke bawaan</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Tampilkan resolusi pada tombol Kualitas</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Tampilkan resolusi, misalnya 1080, alih-alih label seperti FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menu kecepatan pemutaran khusus</string>
   <string name="morphe_restore_old_speed_menu_title">Kembalikan menu kecepatan pemutaran lama</string>
@@ -1283,7 +1295,14 @@ Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Tampilkan pemalsuan pada \'Informasi statistik\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Kembalikan bilah tindakan video lama</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Memperbaiki masalah Tidak Suka tidak ditampilkan dan tombol tindakan video yang tidak dapat disembunyikan
+  <string name="morphe_restore_old_video_action_bar_summary">"Memperbaiki masalah tombol tindakan video yang tidak dapat disembunyikan
 
 Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Gaya ikon pemutar</string>
+  <string name="morphe_player_icon_style_entry_auto">Otomatis</string>
+  <string name="morphe_player_icon_style_entry_default">Bawaan</string>
+  <string name="morphe_player_icon_style_entry_regular">Tipis</string>
+  <string name="morphe_player_icon_style_entry_bold">Tebal</string>
+  <string name="morphe_shorts_icon_style_title">Gaya ikon Shorts</string>
 </resources>

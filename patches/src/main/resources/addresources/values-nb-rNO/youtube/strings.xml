@@ -75,6 +75,8 @@ Endringer inkluderer:
   <string name="morphe_hide_floating_microphone_button_title">Skjul flytende mikrofonknapp</string>
   <string name="morphe_hide_floating_microphone_button_summary">Skjuler flytende mikrofonknapp i nedre høyre hjørne av søkeforslags-skjermen</string>
   <string name="morphe_hide_get_premium_button_title">Skjul \'Få Premium\'-knappen</string>
+  <string name="morphe_hide_history_shelf_title">Skjul historikkhyllen</string>
+  <string name="morphe_hide_history_shelf_summary">Skjuler historikkhyllen i Du-fanen</string>
   <string name="morphe_hide_horizontal_shelves_title">Skjul horisontale hyller</string>
   <string name="morphe_hide_horizontal_shelves_summary">Skjuler horisontale hyller som Breaking news, Community-innlegg du kanskje liker, Fortsett å se på, Utforsk flere kanaler, Utforsk flere emner, For deg, Nyeste videoer, Mest relevante, Innlegg fra Creator\'s Community, Shopping og Se igjen</string>
   <string name="morphe_hide_hyped_label_title">Skjul \'Hypet\'-etikett</string>
@@ -106,6 +108,7 @@ Endringer inkluderer:
   <string name="morphe_hide_show_more_button_title">Skjul \'Vis mer\'-knapp</string>
   <string name="morphe_hide_show_more_button_summary">Skjuler utvidingsknappen under videoer i søkeresultatene</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Skjul abonnementskanaler-linjen</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Skjul kanalnavn i linjen for abonnerte kanaler</string>
   <string name="morphe_hide_surveys_title">Skjul undersøkelser</string>
   <string name="morphe_hide_surveys_summary">Skjuler undersøkelser og oppfordringer om nøyaktigheten til mates anbefalinger</string>
   <string name="morphe_hide_ticket_shelf_title">Skjul billetthylle</string>
@@ -254,6 +257,7 @@ Endringer inkluderer:
   <string name="morphe_hide_comments_section_in_home_feed_title">Skjul kommentarseksjonen i Hjem-feeden</string>
   <string name="morphe_hide_comments_community_guidelines_title">Skjul retningslinjer for fellesskapet</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Skjul \'Opprett en Short\'-knapp</string>
+  <string name="morphe_hide_comments_dislike_button_title">Skjul misliker-knappen</string>
   <string name="morphe_hide_comments_emoji_button_title">Skjul emojiknapp</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Skjul filterlinjealternativer</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skjuler alle filterlinjealternativer unntatt \'Best\' og \'Nyeste\'</string>
@@ -263,11 +267,17 @@ Endringer inkluderer:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skjul donatorfeltet for livechat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Hide live chat tooltips</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Hides tooltip popups shown near the chat input bar, such as the subscriber-only chat notice</string>
+  <string name="morphe_hide_comments_menu_button_title">Skjul menyknappen</string>
+  <string name="morphe_hide_comments_menu_button_summary">Skjuler menyknappen med tre prikker for hver kommentar</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisningskommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary">Skjuler kommentarforslag under videoen før du åpner hele kommentarfeltet</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Kommentar skjult av Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Aktiver minimal kommentarknapp</string>
+  <string name="morphe_minimal_comments_button_summary">Skjuler de glidende kortene og sidevelgeren deres, som vises på kommentarknappen</string>
   <string name="morphe_hide_comments_thanks_button_title">Skjul takkeknapp</string>
   <string name="morphe_hide_comments_timestamp_button_title">Skjul tidsstempelknapp</string>
   <string name="morphe_hide_comments_top_fans_button_title">Skjul \'Topp fans\'-knappen</string>
+  <string name="morphe_hide_comments_translate_button_title">Skjul oversett-knappen</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Desinfiser fremhevede søkelenker</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Desinfiserer fremhevede søkelenker, og viser kun den originale, rene teksten</string>
   <string name="morphe_hide_keyword_content_screen_title">Nøkkelordfilter</string>
@@ -384,9 +394,17 @@ Rapporter er offentlige og blir gjennomgått før en kanal legges til en liste. 
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Søk i kanalen</string>
   <string name="morphe_channel_search_summary">Når en kanal er åpen, begrenses søket bare til den kanalen</string>
+  <string name="morphe_channel_search_hint">Søk etter kanal</string>
   <string name="morphe_channel_search_results">Søkeresultater for kanalen</string>
   <string name="morphe_channel_search_no_results">Fant ingenting på denne kanalen</string>
   <string name="morphe_channel_search_failed">Kunne ikke søke i denne kanalen</string>
+  <string name="morphe_channel_search_sort_relevance">Relevans</string>
+  <string name="morphe_channel_search_sort_most_viewed">Mest sett</string>
+  <string name="morphe_channel_search_sort_least_viewed">Minst sett</string>
+  <string name="morphe_channel_search_sort_newest">Nyeste</string>
+  <string name="morphe_channel_search_sort_oldest">Eldste</string>
+  <string name="morphe_channel_search_sort_shortest">Korteste</string>
+  <string name="morphe_channel_search_sort_longest">Lengste</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Koblet til utklippstavlen</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Koblet til utklippstavlen med tidsstempel</string>
@@ -671,6 +689,8 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Skjul Spør-knapp</string>
+  <string name="morphe_hide_channel_profile_button_title">Skjul kanal- og Abonner-knappen</string>
+  <string name="morphe_hide_channel_profile_button_summary">Skjuler kanalavataren og Abonner-knappen i starten av handlingslinjen</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Skjul Klipp-knapp</string>
   <string name="morphe_hide_clip_button_summary">Dette fungerer kanskje ikke for enkelte brukerkontoer</string>
@@ -742,6 +762,7 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_swap_create_with_notifications_button_title">Bytt Create-knappen med Notifications-knappen</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Hvis endring av denne innstillingen ikke trer i kraft, kan du prøve å bytte til inkognitomodus</string>
   <string name="morphe_hide_navigation_button_labels_title">Skjul navigasjonsknappetiketter</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Skjul prikk for nytt innhold</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigasjonslinjen</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler fullstendig navigasjonslinjen, inkludert 'Du'-fanen.
 
@@ -1047,7 +1068,7 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_miniplayer_screen_title">Minispiller</string>
   <string name="morphe_miniplayer_screen_summary">Tilpass utseendet og oppførselen til den minimerte videospilleren</string>
   <string name="morphe_miniplayer_type_title">Minispiller type</string>
-  <string name="morphe_miniplayer_hide_title_title">Skjul tittel</string>
+  <string name="morphe_miniplayer_hide_title_title">Skjul tittel og kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Deaktivert</string>
   <string name="morphe_miniplayer_type_entry_1">Standard</string>
   <string name="morphe_miniplayer_type_entry_2">Minimal</string>
@@ -1091,10 +1112,6 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_theme_color_change_foreground_summary">Bruk temafargen for tekst og ikoner</string>
   <string name="morphe_gradient_loading_screen_title">Aktiver gradientlasteskjerm</string>
   <string name="morphe_gradient_loading_screen_summary">Viser en gradientbakgrunn på lasteskjermen i stedet for en solid farge</string>
-  <string name="morphe_splash_screen_animation_style_title">Splash screen-stil</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Deaktivert</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Farge</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <string name="morphe_seekbar_custom_color_title">Aktiver tilpasset søkelinjeklarfarge</string>
   <string name="morphe_seekbar_custom_color_primary_title">Søylediagramfarge</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Angi primærfargen på videofremdriftslinjen</string>
@@ -1158,13 +1175,6 @@ Hvis aktivert, sendes videourler til API-serveren og ingen andre data sendes. Hv
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Deaktiver haptikk for angre-søk</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Deaktiver haptisk tilbakemelding ved trykk og hold</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktiver zoomhaptikk</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Mediekontroller for varsler</string>
-  <string name="morphe_notification_media_screen_summary">Tilpass avspillingskontrollene som vises på låseskjermen og varslingspanelet</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Skjul forrige &amp; neste-knapper</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Skjuler Forrige og Neste knapper i medievarsel, låseskjerm og hodetelefonkontroller</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Deaktiver søkefelt</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Forhindrer at du drar i søkefeltet på låseskjermen og varslingspanelet</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Hvis du nylig har endret innloggingsdetaljene for kontoen din, må du avinstallere og reinstallere MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1196,6 +1206,8 @@ Hvis aktivert, sendes videourler til API-serveren og ingen andre data sendes. Hv
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Vis Kvalitetsknapp</string>
   <string name="morphe_video_quality_dialog_button_summary">Trykk og hold for å tilbakestille kvaliteten til standard</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Vis oppløsning på kvalitetsknappen</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Vis oppløsningen, for eksempel 1080, i stedet for en etikett som FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Tilpasset hastighetsmeny</string>
   <string name="morphe_restore_old_speed_menu_title">Gjenopprett gammel hastighetsmeny</string>
@@ -1281,7 +1293,14 @@ Videospilling med AV1 kan hakke eller miste bilder."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Vis forfalsking i «Stats for nerds»</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Gjenopprett gammel videomeny</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Fikser at ikke-likte ikke vises og at videoaksjonsknapper ikke kan skjules
+  <string name="morphe_restore_old_video_action_bar_summary">"Fikser at videohandlingsknapper ikke kan skjules
 
 Begrensning: Går tilbake til gammel stil for 'Flere videoer'-overlegg"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Spillerikonstil</string>
+  <string name="morphe_player_icon_style_entry_auto">Automatisk</string>
+  <string name="morphe_player_icon_style_entry_default">Standard</string>
+  <string name="morphe_player_icon_style_entry_regular">Tynn</string>
+  <string name="morphe_player_icon_style_entry_bold">Fet</string>
+  <string name="morphe_shorts_icon_style_title">Shorts-ikonstil</string>
 </resources>

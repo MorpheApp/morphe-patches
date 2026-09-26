@@ -100,6 +100,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">隱藏「翻譯」按鈕</string>
   <string name="morphe_music_hide_new_from_shelf_title">隱藏「來自」區塊</string>
   <string name="morphe_music_hide_playlist_shelves_title">隱藏歌單區塊</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">隱藏 Podcast 單集的下載按鈕</string>
   <string name="morphe_music_hide_repeat_button_title">隱藏重複按鈕</string>
   <string name="morphe_music_hide_shuffle_button_title">隱藏隨機播放按鈕</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">隱藏「快速撥號」區塊</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_hide_history_button_title">隱藏歷史記錄按鈕</string>
   <string name="morphe_music_hide_notification_button_title">隱藏通知按鈕</string>
   <string name="morphe_music_hide_search_button_title">隱藏搜尋按鈕</string>
+  <string name="morphe_music_hide_voice_search_button_title">隱藏語音搜尋按鈕</string>
+  <string name="morphe_music_hide_sound_search_button_title">隱藏聲音搜尋按鈕</string>
+  <string name="morphe_music_hide_library_new_button_title">隱藏新增按鈕</string>
+  <string name="morphe_music_hide_library_new_button_summary">隱藏媒體庫分頁中的「新增」按鈕</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">動作按鈕</string>
   <string name="morphe_music_action_buttons_screen_summary">選擇要在播放器下方顯示哪些動作按鈕</string>
@@ -352,12 +357,12 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">使用第三方歌詞</string>
   <string name="morphe_music_lyrics_enabled_summary">從第三方服務顯示歌詞，若找不到則改用內建歌詞</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">檢視歌詞時保持螢幕開啟</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">防止在歌詞面板開啟時螢幕關閉</string>
   <string name="morphe_music_lyrics_section_service_title">歌詞服務</string>
   <string name="morphe_music_lyrics_section_overlay_title">疊加層</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
   <string name="morphe_music_lyrics_section_about_title">關於</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">點擊 ▲/▼ 設定優先順序，並勾選或取消勾選以啟用或停用每個提供者</string>
   <string name="morphe_music_lyrics_source_all_disabled">所有提供者均已停用 — 內建歌詞與嵌入歌詞</string>
   <string name="morphe_music_lyrics_source_reset_title">重設提供者順序？</string>
   <string name="morphe_music_lyrics_source_reset_message">將提供者還原為預設優先順序</string>
@@ -394,9 +399,8 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_deezer_arl_toast_cleared">Could not romanize the lyrics</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer：arl 無效。請檢查後再試一次。</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch：[…] 複製「token」的值</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch無需Token即可運作，因此該欄位可以留空。
-
-新增Token僅用於使用您自己的帳戶。Token必須來自Musixmatch Android應用程式：從 musixmatch.com 複製的Token屬於已淘汰的桌面客戶端，而且 API 會拒絕那些Token。"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">僅在要使用您自己的帳戶時才新增權杖。此權杖必須來自 Musixmatch Android 應用程式：從 musixmatch.com 複製的權杖屬於已停用的桌面用戶端，API 會拒絕這些權杖。</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch 不需要權杖也能運作，因此此欄位可以留空。</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">使用者Token</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch：已儲存使用者Token</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch：已清除使用者Token</string>
@@ -418,9 +422,9 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_show_copy_button_title">顯示複製按鈕</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">點擊可複製純文字歌詞；長按可將原始歌詞來源儲存到下載的歌曲</string>
   <string name="morphe_music_lyrics_show_translate_button_title">顯示翻譯按鈕</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">使用提供者翻譯或Google翻譯去翻譯歌詞</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">輕觸以切換翻譯；長按則僅顯示翻譯。使用提供者提供的翻譯、Google 翻譯或 OpenAI 相容的 API。</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">顯示羅馬拼音按鈕</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">使用提供者的羅馬拼音或Google翻譯的羅馬拼音將歌詞以羅馬拼音方式顯示</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">輕觸以切換羅馬拼音；長按則僅顯示羅馬拼音。使用提供者提供的羅馬拼音、Google 翻譯或 OpenAI 相容的 API。</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">顯示重新整理按鈕</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">已儲存</string>
   <string name="morphe_music_lyrics_saved">已儲存</string>
@@ -436,7 +440,7 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_display_artist_first_summary">切換迷你播放器和媒體工作階段中藝人和標題的顯示順序。 ON「藝人 - 標題」和 OFF「標題 - 藝人」不影響歌詞搜索</string>
   <string name="morphe_settings_music_lyrics_metadata_title">篩選器</string>
   <string name="morphe_music_lyrics_custom_regex_title">元資料正規表示式</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">在尋找歌詞之前，將正規表示式套用於標題、藝人和專輯。留空以停用。預設值會消除常見的混亂內容，例如「官方影片」、「重製版」和「- 主題」</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">套用於標題、演出者和專輯的正規表示式，在查詢歌詞之前以及判斷兩個標題是否相符時使用。留空可同時停用兩者。預設會移除常見的干擾內容，例如「Official Video」、「Remaster」、「【插曲】」和「- Topic」。</string>
   <string name="morphe_music_lyrics_text_filter_title">歌詞篩選器正規表示式</string>
   <string name="morphe_music_lyrics_text_filter_summary">正規表示式僅套用於原始歌詞文字（不適用於翻譯或羅馬拼音）。留空以停用</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">資訊列標記</string>
@@ -453,15 +457,18 @@ YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
   <string name="morphe_music_lyrics_romanized_by_ai">由 %s 進行羅馬拼音翻譯</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">已翻譯</string>
+  <string name="morphe_music_lyrics_translation_language_title">翻譯語言</string>
   <string name="morphe_music_lyrics_translating">正在翻譯…</string>
   <string name="morphe_music_lyrics_translate_failed">無法翻譯歌詞</string>
   <string name="morphe_music_lyrics_romanize_hide">已翻譯成羅馬拼音</string>
   <string name="morphe_music_lyrics_romanizing">正在翻譯成羅馬拼音…</string>
   <string name="morphe_music_lyrics_romanize_failed">無法將歌詞翻譯成羅馬拼音</string>
+  <string name="morphe_music_lyrics_translate_only">僅顯示翻譯</string>
+  <string name="morphe_music_lyrics_romanize_only">僅羅馬拼音</string>
   <string name="morphe_music_lyrics_copied">已複製到剪貼簿</string>
   <string name="morphe_music_lyrics_refreshing">正在重新整理</string>
   <string name="morphe_music_lyrics_refreshed">已重新整理</string>
-  <string name="morphe_music_lyrics_about_summary">"歌詞會依歌曲標題與藝人搜尋，接著依提供者排序。您可以按重新整理按鈕來切換版本。"</string>
+  <string name="morphe_music_lyrics_about_summary">"歌詞會以標題和藝人進行比對，非標準的中繼資料可能找不到任何結果或找到錯誤的版本。使用重新整理來切換版本。標示 * 的提供者需要權杖。所有已啟用的提供者不一定是按照您的順序被要求，而是根據其速度回應。"</string>
   <string name="morphe_music_lyrics_hide_info_title">隱藏來源標示</string>
   <string name="morphe_music_lyrics_hide_info_summary">在歌詞畫面中隱藏來源標示</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交換翻譯和羅馬拼音</string>

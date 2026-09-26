@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Morphe-asetukset nollattiin</string>
   <string name="morphe_settings_import_success">%d asetusta tuotiin</string>
   <string name="morphe_settings_import_failure_parse">Tuonti epäonnistui: %s</string>
+  <string name="morphe_settings_navigate_up">Siirry ylös</string>
   <string name="morphe_settings_search_hint">Hae asetuksista</string>
   <string name="morphe_settings_search_no_results_title">Tuloksia ei löytynyt haulle \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Kokeile toista hakusanaa</string>
   <string name="morphe_settings_search_recent_searches">Viimeisimmät haut</string>
   <string name="morphe_settings_search_remove_message">Poistetaanko hakuhistoriasta?</string>
+  <string name="morphe_settings_search_remove">Poistetaanko hakuhistoriasta</string>
   <string name="morphe_settings_search_clear_history">Tyhjennä hakuhistoria</string>
   <string name="morphe_settings_search_clear_history_message">Haluatko varmasti tyhjentää kaiken hakuhistorian?</string>
   <string name="morphe_settings_search_tips_title">Hakuvinkit</string>

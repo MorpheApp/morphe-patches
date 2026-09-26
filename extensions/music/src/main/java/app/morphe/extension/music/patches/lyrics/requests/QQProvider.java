@@ -75,17 +75,25 @@ public final class QQProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         String keyword = track.title() + " " + track.artist();
         JSONObject song = searchBest(keyword, track);
         if (song == null || !song.has("id")) {
             return null;
         }
-        return fetchFromSong(song);
+        Lyrics lyrics = fetchFromSong(song);
+        if (lyrics == null) {
+            return null;
+        }
+        return FetchResult.of(lyrics,
+                song.optString("title", ""),
+                singers(song),
+                song.optInt("interval", 0),
+                track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         String keyword = track.title() + " " + track.artist();
         List<JSONObject> candidates = searchAll(keyword, track);
 
@@ -110,7 +118,7 @@ public final class QQProvider implements LyricsProvider {
             }
         }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     @Nullable
@@ -142,7 +150,7 @@ public final class QQProvider implements LyricsProvider {
         }
 
         if (qrcOffsetMs != 0) {
-            lines = applyOffset(lines, qrcOffsetMs);
+            lines = LyricsRequests.applyOffset(lines, qrcOffsetMs);
         }
 
         if (lines.isEmpty()) {
@@ -230,15 +238,28 @@ public final class QQProvider implements LyricsProvider {
                 scored.add(item);
             }
         }
-        scored.sort((a, b) -> scoreCandidate(b, track) - scoreCandidate(a, track));
-        return scored;
+        return softGateSort(scored, track);
     }
 
     private static int scoreCandidate(JSONObject item, TrackInfo track) {
         String title = item.optString("title", "");
         String artist = singers(item);
+        JSONObject album = item.optJSONObject("album");
+        String albumName = album != null ? album.optString("name", "") : "";
         return LyricsRequests.scoreTrackCandidate(title, artist,
-                item.optInt("interval", 0), track);
+                item.optInt("interval", 0), albumName, track);
+    }
+
+    private static List<JSONObject> softGateSort(List<JSONObject> items, TrackInfo track) {
+        items.sort((a, b) -> scoreCandidate(b, track) - scoreCandidate(a, track));
+        List<JSONObject> passed = new ArrayList<>();
+        for (JSONObject item : items) {
+            if (scoreCandidate(item, track) >= LyricsRequests.SOFT_MIN) {
+                passed.add(item);
+            }
+        }
+        return passed.isEmpty() && !items.isEmpty()
+                ? List.of(items.get(0)) : passed;
     }
 
     private static String singers(JSONObject item) {
@@ -403,27 +424,6 @@ public final class QQProvider implements LyricsProvider {
             }
         }
         return metadata;
-    }
-
-    private static List<LyricsLine> applyOffset(List<LyricsLine> lines, long offsetMs) {
-        List<LyricsLine> adjusted = new ArrayList<>(lines.size());
-        for (LyricsLine line : lines) {
-            long newStart = line.startTimeMs() + offsetMs;
-            long newEnd = line.endTimeMs() != LyricsLine.NO_TIME
-                    ? line.endTimeMs() + offsetMs : LyricsLine.NO_TIME;
-            List<Word> adjustedWords = new ArrayList<>(line.words().size());
-            for (Word word : line.words()) {
-                adjustedWords.add(new Word(
-                        word.startMs() + offsetMs,
-                        word.endMs() + offsetMs,
-                        word.text(),
-                        word.romaji(),
-                        word.endsWithSpace()));
-            }
-            adjusted.add(new LyricsLine(newStart, newEnd, line.text(), adjustedWords,
-                    line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
-        }
-        return adjusted;
     }
 
     private static List<LyricsLine> parseQrcFormat(String text) {

@@ -17,6 +17,8 @@ import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPrefere
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
@@ -28,9 +30,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
 import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
-import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.copyResources
 
 private const val EXTENSION_CLASS_VIDEO_SCALE =
     "Lapp/morphe/extension/youtube/patches/FullscreenVideoScalePatch;"
@@ -40,21 +40,16 @@ private const val EXTENSION_BUTTON =
 private val fullscreenVideoScaleResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        legacyPlayerControlsPatch
+        legacyPlayerControlsPatch,
+        playerIconStylePatch
     )
 
     execute {
-        copyResources(
+        copyPlayerButtonIcons(
             "fullscreenvideoscalebutton",
-            ResourceGroup(
-                "drawable",
-                "morphe_fullscreen_video_scale_fit.xml",
-                "morphe_fullscreen_video_scale_fit_bold.xml",
-                "morphe_fullscreen_video_scale_stretch.xml",
-                "morphe_fullscreen_video_scale_stretch_bold.xml",
-                "morphe_fullscreen_video_scale_zoom.xml",
-                "morphe_fullscreen_video_scale_zoom_bold.xml"
-            )
+            "morphe_fullscreen_video_scale_fit",
+            "morphe_fullscreen_video_scale_stretch",
+            "morphe_fullscreen_video_scale_zoom"
         )
 
         addLegacyBottomControl("fullscreenvideoscalebutton")

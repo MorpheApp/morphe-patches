@@ -15,8 +15,6 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.PlayerVolumePatch;
@@ -104,7 +102,7 @@ public class MuteVideoButton {
     private static void updateButtonIcon() {
         Utils.verifyOnMainThread();
 
-        final int icon = ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, getIconName());
+        final int icon = PlayerIcons.id(getIconBaseName());
 
         ImageView overlayButton = overlayButtonRef.get();
         if (overlayButton != null) {
@@ -117,11 +115,12 @@ public class MuteVideoButton {
     }
 
     private static String getIconName() {
-        String base = PlayerVolumePatch.isMuted()
+        return PlayerIcons.name(getIconBaseName());
+    }
+
+    private static String getIconBaseName() {
+        return PlayerVolumePatch.isMuted()
                 ? "morphe_mute_video_button_on"
                 : "morphe_mute_video_button_off";
-        return LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                ? base
-                : base + "_bold";
     }
 }

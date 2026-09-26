@@ -8,63 +8,38 @@
 package app.morphe.patches.youtube.layout.player.buttons
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.youtube.layout.miniplayer.EXTENSION_CLASS
 import app.morphe.patches.youtube.misc.addon.EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_29_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import java.lang.ref.WeakReference
 
-private lateinit var exploderButtonMethodRef : WeakReference<MutableMethod>
-private var exploderButtonInsertIndex = -1
-private var exploderButtonInsertRegister = -1
+context(patchContext: BytecodePatchContext)
+fun addPlayerBottomButton(extensionClass: String, extensionMethod: String = "initializeButton") {
+    // Update the insertion index after each add, as other patches
+    // can insert code before the insertion point.
+    ExploderUIFullscreenButtonFingerprint.let {
+        it.clearMatch()
+        ExploderUIFullscreenButtonParentFingerprint.clearMatch() // FIXME: remove after bumping patcher.
+        val lastMatch = it.instructionMatches.last()
+        val register = lastMatch.getInstruction<OneRegisterInstruction>().registerA
 
-fun addPlayerBottomButton(descriptor: String) {
-    exploderButtonMethodRef.get()?.apply {
-        addInstruction(
-            exploderButtonInsertIndex++,
-            "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V"
+        it.method.addInstruction(
+            lastMatch.index + 1,
+            "invoke-static { v$register }, $extensionClass->$extensionMethod(Landroid/view/View;)V"
         )
     }
 }
 
 internal val playerOverlayButtonsHookPatch = bytecodePatch {
     dependsOn(
-        sharedExtensionPatch,
-        versionCheckPatch
+        sharedExtensionPatch
     )
 
     execute {
-        ExploderUIFullscreenButtonFingerprint.let {
-            it.method.apply {
-                exploderButtonMethodRef = WeakReference(it.method)
-                val index = it.instructionMatches[1].index
-                exploderButtonInsertRegister = getInstruction<OneRegisterInstruction>(index).registerA
-                exploderButtonInsertIndex = index + 1
-
-                addInstruction(
-                    exploderButtonInsertIndex++,
-                    "invoke-static { v$exploderButtonInsertRegister }, " +
-                            "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;->" +
-                            "initializeButton(Landroid/view/View;)V"
-                )
-
-                // Fix the fullscreen button tint when the minimal miniplayer type is selected.
-                // The minimal type forces a theme where ytOverlayButtonPrimary resolves to gray
-                // instead of white, making the fullscreen button appear gray instead of white.
-                if (!is_21_29_or_greater) {
-                    addInstruction(
-                        exploderButtonInsertIndex++,
-                        "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS->" +
-                                "fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
-                    )
-                }
-            }
-        }
+        addPlayerBottomButton(
+            "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;"
+        )
 
         // Buttons of add-on patch bundles, which cannot add a button of their own.
         addPlayerBottomButton(EXTENSION_ADD_ON_API_CLASS_DESCRIPTOR)

@@ -27,10 +27,10 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
+import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 
 /**
  * Floating panel shown over the player when creating a new SponsorBlock segment.
@@ -145,17 +145,13 @@ public final class NewSegmentLayout extends FrameLayout {
         ImageButton button = findViewById(ResourceUtils.getIdentifierOrThrow(
                 context, ResourceType.ID, resourceIdentifierName));
 
-        final int background = ResourceUtils.getIdentifierOrThrow(
-                ResourceType.DRAWABLE,
-                LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                        ? imageResourceName
-                        : imageResourceName + "_bold");
-        button.setImageResource(background);
+        button.setImageResource(PlayerIcons.id(imageResourceName));
 
         // Add ripple effect
         button.setBackground(new RippleDrawable(rippleColorStateList, null, null));
         button.setOnClickListener(v -> {
             handler.apply();
+            PlayerIcons.animate(button);
             Logger.printDebug(() -> debugMessage);
         });
     }

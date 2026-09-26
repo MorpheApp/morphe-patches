@@ -100,6 +100,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">ซ่อนปุ่มแปลภาษา</string>
   <string name="morphe_music_hide_new_from_shelf_title">ซ่อนชั้นวาง \'ใหม่จาก\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">ซ่อนชั้นวางเพลย์ลิสต์</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">ซ่อนปุ่มดาวน์โหลดสำหรับตอนพอดแคสต์</string>
   <string name="morphe_music_hide_repeat_button_title">ซ่อนปุ่มเล่นซ้ำ</string>
   <string name="morphe_music_hide_shuffle_button_title">ซ่อนปุ่มสุ่ม</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">ซ่อนชั้นวาง \'โทรด่วน\'</string>
@@ -187,6 +188,10 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_hide_history_button_title">ซ่อนปุ่มประวัติ</string>
   <string name="morphe_music_hide_notification_button_title">ซ่อนปุ่มการแจ้งเตือน</string>
   <string name="morphe_music_hide_search_button_title">ซ่อนปุ่มค้นหา</string>
+  <string name="morphe_music_hide_voice_search_button_title">ซ่อนปุ่มค้นหาด้วยเสียง</string>
+  <string name="morphe_music_hide_sound_search_button_title">ซ่อนปุ่มค้นหาเพลง</string>
+  <string name="morphe_music_hide_library_new_button_title">ซ่อนปุ่ม New</string>
+  <string name="morphe_music_hide_library_new_button_summary">ซ่อนปุ่ม New ในแท็บคลังเพลง</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">ปุ่มการกระทำ</string>
   <string name="morphe_music_action_buttons_screen_summary">เลือกปุ่มการกระทำที่จะแสดงใต้เครื่องเล่น</string>
@@ -352,12 +357,12 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">ใช้เนื้อเพลงของบุคคลที่สาม</string>
   <string name="morphe_music_lyrics_enabled_summary">แสดงเนื้อเพลงจากบริการของบุคคลที่สาม โดยย้อนกลับไปที่เนื้อเพลงในตัวเมื่อไม่พบ</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">เปิดหน้าจอค้างไว้ขณะดูเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">ป้องกันไม่ให้หน้าจอปิดในขณะที่แผงเนื้อเพลงเปิดอยู่</string>
   <string name="morphe_music_lyrics_section_service_title">บริการเนื้อเพลง</string>
   <string name="morphe_music_lyrics_section_overlay_title">โอเวอร์เลย์</string>
   <string name="morphe_music_lyrics_section_sync_title">การซิงโครไนซ์</string>
   <string name="morphe_music_lyrics_section_about_title">เกี่ยวกับ</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">แตะ ▲/▼ เพื่อตั้งลำดับความสำคัญ แล้วแตะช่องทำเครื่องหมายเพื่อเปิดหรือปิดผู้ให้บริการแต่ละราย</string>
   <string name="morphe_music_lyrics_source_all_disabled">ผู้ให้บริการทั้งหมดถูกปิดใช้งาน — เนื้อเพลงในตัวและเนื้อเพลงแบบฝัง</string>
   <string name="morphe_music_lyrics_source_reset_title">รีเซ็ตผู้ให้บริการทั้งหมดหรือไม่</string>
   <string name="morphe_music_lyrics_source_reset_message">คืนค่าผู้ให้บริการกลับไปเป็นลำดับความสำคัญเริ่มต้น</string>
@@ -394,9 +399,8 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl […] อีกครั้ง</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl ไม่ถูกต้อง — โปรดตรวจสอบและลองอีกครั้ง</string>
   <string name="morphe_music_musixmatch_token_title">Musixmatch […] คัดลอกค่าของโทเค็นผู้ใช้</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch ใช้งานได้โดยไม่ต้องมีโทเค็น ดังนั้นช่องนี้จึงเว้นว่างไว้ได้
-
-เพิ่มโทเค็นเฉพาะเมื่อต้องการใช้บัญชีของคุณเองเท่านั้น โทเค็นจะต้องมาจากแอป Musixmatch บน Android: โทเค็นที่คัดลอกจาก musixmatch.com เป็นของโปรแกรมเดสก์ท็อปที่เลิกใช้งานแล้ว และ API จะปฏิเสธโทเค็นเหล่านั้น"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">เพิ่มโทเค็นเฉพาะเมื่อต้องการใช้บัญชีของคุณเองเท่านั้น โทเค็นจะต้องมาจากแอป Musixmatch Android: โทเค็นที่คัดลอกจาก musixmatch.com เป็นของไคลเอนต์เดสก์ท็อปที่เลิกใช้งานแล้ว และ API จะปฏิเสธโทเค็นเหล่านั้น</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch ทำงานได้โดยไม่ต้องมีโทเค็น ดังนั้นช่องนี้จึงเว้นว่างไว้ได้</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">ผู้ใช้ […] อีกครั้ง</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: บันทึกโทเค็นผู้ใช้แล้ว</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: ล้างโทเค็นผู้ใช้แล้ว</string>
@@ -413,9 +417,9 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_lyrics_show_copy_button_title">แสดงปุ่มคัดลอก</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">แตะเพื่อคัดลอกเนื้อเพลงต้นฉบับเป็นข้อความธรรมดา; กดค้างเพื่อบันทึกไฟล์ซอร์สเนื้อเพลงดิบไปยังโฟลเดอร์ดาวน์โหลด</string>
   <string name="morphe_music_lyrics_show_translate_button_title">แสดงปุ่มแปลภาษา</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">แปลเนื้อเพลงโดยใช้คำแปลจากผู้ให้บริการหรือ Google Translate</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">แตะเพื่อสลับการแสดงคำแปล; กดค้างเพื่อแสดงเฉพาะคำแปล ใช้คำแปลจากผู้ให้บริการ, Google Translate หรือ API ที่เข้ากันได้กับ OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">แสดงปุ่มโรมาไนซ์</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">โรมาไนซ์เนื้อเพลงโดยใช้การโรมาไนซ์จากผู้ให้บริการหรือการโรมาไนซ์ของ Google Translate</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">แตะเพื่อสลับการแสดงอักษรโรมัน; กดค้างเพื่อแสดงเฉพาะอักษรโรมัน ใช้การแปลงเป็นอักษรโรมันจากผู้ให้บริการ, Google Translate หรือ API ที่เข้ากันได้กับ OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">แสดงปุ่มรีเฟรช</string>
   <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังตัวเลือกเนื้อเพลงถัดไป; กดค้างเพื่อปิดใช้เนื้อเพลงจากบุคคลที่สามชั่วคราวและแสดงเนื้อเพลงในตัว</string>
   <string name="morphe_music_lyrics_saved">บันทึกแล้ว</string>
@@ -431,7 +435,7 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_lyrics_display_artist_first_summary">สลับลำดับการแสดงชื่อศิลปินและชื่อเพลงในมินิเพลเยอร์และ MediaSession เปิด \"ชื่อศิลปิน - ชื่อเพลง\" และปิด \"ชื่อเพลง - ชื่อศิลปิน\" ไม่ส่งผลต่อการค้นหาเนื้อเพลง</string>
   <string name="morphe_settings_music_lyrics_metadata_title">ตัวกรอง</string>
   <string name="morphe_music_lyrics_custom_regex_title">Metadata: \"รีเจ็กซ์ตัวกรองเนื้อเพลง\"</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">นิพจน์ทั่วไปที่ใช้กับชื่อเพลง ศิลปิน และอัลบั้มก่อนค้นหาเนื้อเพลง เว้นว่างเพื่อปิดใช้ ค่าเริ่มต้นจะลบคำที่ไม่จำเป็นทั่วไป เช่น \"Official Video\" \"Remaster\" และ \"- Topic\"</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">นิพจน์ปกติที่ใช้กับชื่อเพลง ศิลปิน และอัลบั้มก่อนค้นหาเนื้อเพลง และใช้เมื่อให้คะแนนว่าชื่อสองชื่อตรงกันหรือไม่ เว้นว่างไว้เพื่อปิดใช้งานทั้งสองอย่าง ค่าเริ่มต้นจะลบคำที่ไม่จำเป็นทั่วไป เช่น \"Official Video\", \"Remaster\", \"【插曲】\" และ \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">นิพจน์ทั่วไปสำหรับกรองเนื้อเพลง</string>
   <string name="morphe_music_lyrics_text_filter_summary">นิพจน์ทั่วไปที่ใช้กับเนื้อเพลงต้นฉบับเท่านั้น (ไม่รวมคำแปลหรือข้อความแบบโรมัน) เว้นว่างเพื่อปิดใช้งาน</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">…</string>
@@ -448,15 +452,18 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_lyrics_romanized_by_ai">ถอดเป็นอักษรโรมันโดย %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">แปลแล้ว</string>
+  <string name="morphe_music_lyrics_translation_language_title">ภาษาแปล</string>
   <string name="morphe_music_lyrics_translating">กำลังแปล...</string>
   <string name="morphe_music_lyrics_translate_failed">ไม่สามารถแปลเนื้อเพลงได้</string>
   <string name="morphe_music_lyrics_romanize_hide">โรมาไนซ์แล้ว</string>
   <string name="morphe_music_lyrics_romanizing">กำลังโรมาไนซ์…</string>
   <string name="morphe_music_lyrics_romanize_failed">ไม่สามารถโรมาไนซ์เนื้อเพลงได้</string>
+  <string name="morphe_music_lyrics_translate_only">เฉพาะคำแปล</string>
+  <string name="morphe_music_lyrics_romanize_only">เฉพาะอักษรโรมันเท่านั้น</string>
   <string name="morphe_music_lyrics_copied">คัดลอกไปยังคลิปบอร์ดแล้ว</string>
   <string name="morphe_music_lyrics_refreshing">กำลังรีเฟรช</string>
   <string name="morphe_music_lyrics_refreshed">รีเฟรชแล้ว</string>
-  <string name="morphe_music_lyrics_about_summary">"ค้นหาเนื้อเพลงจากชื่อเพลงและศิลปิน […] คุณยังลองใช้ปุ่มรีเฟรชเพื่อสลับเวอร์ชันด้วยตนเองได้ เมื่อไม่พบเนื้อเพลงของบุคคลที่สาม ระบบจะแสดงเนื้อเพลงในตัวหรือเนื้อเพลงแบบฝังแทน […] ผู้ให้บริการที่เปิดใช้ทั้งหมดไม่ได้ถูกเรียกตามลำดับที่คุณเลือกเสมอไป แต่จะตอบสนองตามความเร็วของบริการ"</string>
+  <string name="morphe_music_lyrics_about_summary">"เนื้อเพลงจะจับคู่ตามชื่อเพลงและศิลปิน ข้อมูลเมตาที่ผิดปกติอาจไม่พบอะไรเลยหรือพบเวอร์ชันที่ผิด ใช้การรีเฟรชเพื่อสลับเวอร์ชัน ผู้ให้บริการที่ทำเครื่องหมาย * ต้องใช้โทเค็น ผู้ให้บริการที่เปิดใช้งานทั้งหมดไม่ได้ถูกเรียกใช้ตามลำดับที่คุณตั้งค่าเสมอไป แต่จะตอบสนองตามความเร็วของพวกเขา"</string>
   <string name="morphe_music_lyrics_hide_info_title">ซ่อนบรรทัดเครดิต</string>
   <string name="morphe_music_lyrics_hide_info_summary">ซ่อนบรรทัดเครดิตที่แสดงใต้เนื้อเพลง</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">สลับคำแปลและการโรมาไนซ์</string>

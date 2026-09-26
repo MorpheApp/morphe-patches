@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">إعادة تعيين إعدادات Morphe إلى الوضع الافتراضي</string>
   <string name="morphe_settings_import_success">تم استيراد %d إعدادات</string>
   <string name="morphe_settings_import_failure_parse">فشل الاستيراد: %s</string>
+  <string name="morphe_settings_navigate_up">الانتقال لأعلى</string>
   <string name="morphe_settings_search_hint">بحث الإعدادات</string>
   <string name="morphe_settings_search_no_results_title">لم يتم العثور على نتائج لـ \".%s\"</string>
   <string name="morphe_settings_search_no_results_summary">جرّب كلمة مفتاحية أخرى</string>
   <string name="morphe_settings_search_recent_searches">عمليات البحث الأخيرة</string>
   <string name="morphe_settings_search_remove_message">إزالة من سجل البحث؟</string>
+  <string name="morphe_settings_search_remove">إزالة من سجل البحث</string>
   <string name="morphe_settings_search_clear_history">مسح سجل البحث</string>
   <string name="morphe_settings_search_clear_history_message">هل أنت متأكد أنك تريد مسح كل سجل البحث؟</string>
   <string name="morphe_settings_search_tips_title">نصائح البحث</string>

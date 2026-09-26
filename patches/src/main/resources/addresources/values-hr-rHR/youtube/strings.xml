@@ -77,6 +77,8 @@ Promjene uključuju:
   <string name="morphe_hide_floating_microphone_button_title">Sakrij tipku plivajući mikrofon</string>
   <string name="morphe_hide_floating_microphone_button_summary">Skriva plutajuću tipku mikrofona u donjem desnom kutu zaslona s prijedlozima za pretraživanje</string>
   <string name="morphe_hide_get_premium_button_title">Sakrij gumb \'Nabavi Premium\'</string>
+  <string name="morphe_hide_history_shelf_title">Sakrij policu povijesti</string>
+  <string name="morphe_hide_history_shelf_summary">Sakriva policu povijesti na kartici Ti</string>
   <string name="morphe_hide_horizontal_shelves_title">Sakrij vodoravne kartice</string>
   <string name="morphe_hide_horizontal_shelves_summary">Skriva horizontalne police poput Vijesti u živo, Objava iz zajednice koje možda volite, Nastavak gledanja, Istražite više kanala, Istražite više tema, Za vas, Najnoviji videozapisi, Najrelevantnije, Objava iz zajednice kreatora, Kupovina i Ponovno gledajte</string>
   <string name="morphe_hide_hyped_label_title">Sakrij  Hype oznaku</string>
@@ -108,6 +110,7 @@ Promjene uključuju:
   <string name="morphe_hide_show_more_button_title">Sakrij \'Prikaži više\' tipku</string>
   <string name="morphe_hide_show_more_button_summary">Skriva tipku za proširenje ispod videozapisa u rezultatima pretraživanja</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Sakrij traku za pretplate kanala</string>
+  <string name="morphe_hide_subscribed_channels_bar_names_title">Sakrij nazive kanala u traci pretplaćenih kanala</string>
   <string name="morphe_hide_surveys_title">Sakrij oglase</string>
   <string name="morphe_hide_surveys_summary">Spremi ankete i poticaje o točnosti preporuka vijesti</string>
   <string name="morphe_hide_ticket_shelf_title">Sakrij \'Kanalna traka\'</string>
@@ -256,6 +259,7 @@ Promjene uključuju:
   <string name="morphe_hide_comments_section_in_home_feed_title">Sakrij odjeljak komentara u Home feed-u</string>
   <string name="morphe_hide_comments_community_guidelines_title">Sakrij Smjernice zajednice</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Sakrij \'Prikaži\' odjel</string>
+  <string name="morphe_hide_comments_dislike_button_title">Sakrij gumb „Ne sviđa mi se“</string>
   <string name="morphe_hide_comments_emoji_button_title">Sakrij gumb Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Sakrij opcije trake filtra</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Skriva sve opcije trake filtra osim \'Najbolje\' i \'Najnovije\'</string>
@@ -265,11 +269,17 @@ Promjene uključuju:
   <string name="morphe_hide_comments_live_chat_donators_bar_title">Skriva traku donatora izravnog chata</string>
   <string name="morphe_hide_comments_live_chat_tooltips_title">Sakrij savjete za live chat</string>
   <string name="morphe_hide_comments_live_chat_tooltips_summary">Skriva iskačuće savjete prikazane blizu trake za unos chata, kao što je obavijest o chatu samo za pretplatnike</string>
+  <string name="morphe_hide_comments_menu_button_title">Sakrij gumb izbornika</string>
+  <string name="morphe_hide_comments_menu_button_summary">Sakriva gumb izbornika s tri točke svakog komentara</string>
   <string name="morphe_hide_comments_preview_comment_title">Emoji i Vremenska oznaka tipke su skrivene</string>
   <string name="morphe_hide_comments_preview_comment_summary">Sakriva pregled komentara ispod videa prije otvaranja cijelog odjeljka s komentarima</string>
+  <string name="morphe_hide_comments_preview_comment_hidden">Komentar je sakrio Morphe...</string>
+  <string name="morphe_minimal_comments_button_title">Omogući minimalni gumb komentara</string>
+  <string name="morphe_minimal_comments_button_summary">Sakriva klizne kartice i njihov birač stranica koji su prikazani na gumbu komentara</string>
   <string name="morphe_hide_comments_thanks_button_title">Sakrij dugme za pretraživanje</string>
   <string name="morphe_hide_comments_timestamp_button_title">Sakrij gumb Vremenske oznake</string>
   <string name="morphe_hide_comments_top_fans_button_title">Sakrij tipku \'Najveći obožavatelji\'</string>
+  <string name="morphe_hide_comments_translate_button_title">Sakrij gumb Prevedi</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_title">Očisti istaknute poveznice za pretraživanje</string>
   <string name="morphe_sanitize_comments_highlighted_search_links_summary">Čisti istaknute poveznice za pretraživanje, ostavljajući samo originalni obični tekst</string>
   <string name="morphe_hide_keyword_content_screen_title">Filter po ključnim riječima</string>
@@ -386,9 +396,17 @@ Prijave su javne i pregledavaju se prije nego što se kanal doda na popis. Uklan
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Pretraži unutar kanala</string>
   <string name="morphe_channel_search_summary">Dok je kanal otvoren, pretraga se ograničava samo na taj kanal</string>
+  <string name="morphe_channel_search_hint">Pretraži kanal</string>
   <string name="morphe_channel_search_results">Rezultati pretraživanja kanala</string>
   <string name="morphe_channel_search_no_results">Na ovom kanalu nema rezultata</string>
   <string name="morphe_channel_search_failed">Pretraživanje ovog kanala nije uspjelo</string>
+  <string name="morphe_channel_search_sort_relevance">Relevantnost</string>
+  <string name="morphe_channel_search_sort_most_viewed">Najgledaniji</string>
+  <string name="morphe_channel_search_sort_least_viewed">Najmanje gledani</string>
+  <string name="morphe_channel_search_sort_newest">Najnoviji</string>
+  <string name="morphe_channel_search_sort_oldest">Najstariji</string>
+  <string name="morphe_channel_search_sort_shortest">Najkraći</string>
+  <string name="morphe_channel_search_sort_longest">Najduži</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Poveznica kopirana u međuspremnik</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Poveznica s vremenskim žigom kopirana u međuspremnik</string>
@@ -673,6 +691,8 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Sakrij gumb Pitaj</string>
+  <string name="morphe_hide_channel_profile_button_title">Sakrij kanal i gumb za pretplatu</string>
+  <string name="morphe_hide_channel_profile_button_summary">Skriva avatar kanala i gumb za pretplatu na početku trake radnji</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Sakrij gumb Isječak</string>
   <string name="morphe_hide_clip_button_summary">Ovo možda neće raditi za neke korisničke račune</string>
@@ -744,6 +764,7 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_swap_create_with_notifications_button_title">Zamijeni gumb Izradi s gumbom Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_summary">Ako promjena ove postavke nema učinka, pokušajte prijeći u Inkognito način</string>
   <string name="morphe_hide_navigation_button_labels_title">Sakrij oznake navigacijskih tipki</string>
+  <string name="morphe_hide_navigation_new_content_dot_title">Sakrij točku novog sadržaja</string>
   <string name="morphe_hide_navigation_bar_title">Sakrij navigacijsku traku</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"Ovo potpuno skriva navigacijsku traku, uključujući karticu 'Vi'.
 
@@ -1049,7 +1070,7 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_miniplayer_screen_title">Mini pregleđ</string>
   <string name="morphe_miniplayer_screen_summary">Prilagodite izgled i ponašanje minimiziranog video playera</string>
   <string name="morphe_miniplayer_type_title">Mini pregleđ</string>
-  <string name="morphe_miniplayer_hide_title_title">Sakrij naslov</string>
+  <string name="morphe_miniplayer_hide_title_title">Sakrij naslov i kanal</string>
   <string name="morphe_miniplayer_type_entry_0">Onemogućeno</string>
   <string name="morphe_miniplayer_type_entry_1">Zadano</string>
   <string name="morphe_miniplayer_type_entry_2">Minimalno</string>
@@ -1093,10 +1114,6 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_theme_color_change_foreground_summary">Postavite boju pozadine svijetle teme</string>
   <string name="morphe_gradient_loading_screen_title">Prozirnost nadlaga</string>
   <string name="morphe_gradient_loading_screen_summary">Prikazuje gradijentnu pozadinu na zaslonu za učitavanje umjesto jednobojne boje</string>
-  <string name="morphe_splash_screen_animation_style_title">Omogu gradientno zaslonsko pozadina</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Onemogućeno</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Pozadina će imati gradientni zadnji</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Monokromatski</string>
   <string name="morphe_seekbar_custom_color_title">Omogu oboj za obični seekbar</string>
   <string name="morphe_seekbar_custom_color_primary_title">Boja trake za traženje</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Postavite primarnu boju trake napretka videozapisa</string>
@@ -1162,13 +1179,6 @@ Dodirnite ovdje za otvaranje DeArrow.ajay.app"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Onemogu dugmice za poništavanje pomicanja</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Onemogući haptiku dodirom i držanjem</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogu dugmice za zoom</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Upravljanje medijima u obavijestima</string>
-  <string name="morphe_notification_media_screen_summary">Prilagodite kontrole reprodukcije prikazane na zaključanom zaslonu i ploči obavijesti</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Sakrij gumbove Prethodni &amp; Sljedeći</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Skriva gumbove Prethodni i Sljedeći u obavijesti o medijima, zaključanom zaslonu i kontrolama slušalica</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Onemogući traku za traženje</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Sprječava povlačenje trake za traženje na zaključanom zaslonu i ploči obavijesti</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ako nedavno ste promijenili računski prijavne detalje, morate deinstalirati i ponovo instalirati MicroG.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1200,6 +1210,8 @@ Dodirnite ovdje za otvaranje DeArrow.ajay.app"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Prikaži gumb Kvaliteta</string>
   <string name="morphe_video_quality_dialog_button_summary">Dodirnite i držite za resetiranje kvalitete na zadanu</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Prikaži razlučivost na gumbu Kvaliteta</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Prikaži razlučivost, kao što je 1080, umjesto oznake kao što je FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Custom playback speed menu</string>
   <string name="morphe_restore_old_speed_menu_title">Restore old playback speed menu</string>
@@ -1285,7 +1297,14 @@ Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Prikaži parodiranje u \'Statistici za nerdove\'</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Vrati staru traku s radnjama za videozapise</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja problem gdje se dislike-ovi ne prikazuju i gumbi za radnje videozapisa se ne mogu sakriti
+  <string name="morphe_restore_old_video_action_bar_summary">"Popravlja problem što se gumbi radnji videozapisa ne mogu sakriti
 
-Ograničenje: Vraća na stari stil overlay-a 'Više videozapisa'"</string>
+Ograničenje: Vraća se na stari stil 'More videos' prekrivača"</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_title">Stil ikone playera</string>
+  <string name="morphe_player_icon_style_entry_auto">Automatski</string>
+  <string name="morphe_player_icon_style_entry_default">Zadano</string>
+  <string name="morphe_player_icon_style_entry_regular">Tanko</string>
+  <string name="morphe_player_icon_style_entry_bold">Podebljano</string>
+  <string name="morphe_shorts_icon_style_title">Stil ikone Shorts</string>
 </resources>

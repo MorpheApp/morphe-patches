@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animácia spustenia</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Vypnutý</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Farebná</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monochrómny</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Reštartujte aplikáciu, aby sa dokončila konfigurácia</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie je možné prihlásiť sa do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odhlásené z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token prihlásenia VR, skúste sa znova prihlásiť do VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Ovládacie prvky médií v oznámení</string>
+  <string name="morphe_notification_media_screen_summary">Prispôsobte si ovládacie prvky prehrávania zobrazené na uzamykacej obrazovke a v paneli s upozorneniami.</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skryť predchádzajúce a nasledujúce tlačidlá.</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Skryje predchádzajúce a nasledujúce tlačidlá v mediálnom upozornení, na uzamykacej obrazovke a v ovládacích prvkoch slúchadiel.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Zakázať posuvník.</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Zabraňuje pretiahnutiu posuvníka na uzamykacej obrazovke a v paneli s upozorneniami.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zakázať protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

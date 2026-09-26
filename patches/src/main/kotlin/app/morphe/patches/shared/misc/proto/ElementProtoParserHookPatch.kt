@@ -15,6 +15,8 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.util.cloneMutable
 import java.lang.ref.WeakReference
 
+private var elementprotoParserInsertIndexStep = 2
+private var elementprotoParserInsertIndex = elementprotoParserInsertIndexStep
 private lateinit var elementProtoParserMethodRef: WeakReference<MutableMethod>
 
 /**
@@ -64,10 +66,14 @@ internal fun createElementProtoParserHookPatch(
 
 fun hookElement(
     methodDescriptor: String
-) = elementProtoParserMethodRef.get()!!.addInstructions(
-    2,
-    """
-        invoke-static { p0 }, $methodDescriptor([B)[B
-        move-result-object p0
-    """
-)
+) {
+    elementProtoParserMethodRef.get()!!.addInstructions(
+        elementprotoParserInsertIndex,
+        """
+            invoke-static { p0 }, $methodDescriptor([B)[B
+            move-result-object p0
+        """
+    )
+
+    elementprotoParserInsertIndex += elementprotoParserInsertIndexStep
+}

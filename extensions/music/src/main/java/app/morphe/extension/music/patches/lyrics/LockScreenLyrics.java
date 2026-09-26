@@ -16,6 +16,7 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 
 /**
  * Mirrors the currently sung lyric line into the MediaSession title so it shows on the
@@ -68,31 +69,35 @@ public final class LockScreenLyrics {
      * and original metadata and (re)starts the ticker when the feature is enabled.
      */
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
-        if (session == null || original == null) {
-            return;
-        }
+        try {
+            if (session == null || original == null) {
+                return;
+            }
 
-        sessionRef = new WeakReference<>(session);
-        originalMetadata = original;
-        metadataBuilder = new MediaMetadata.Builder(original);
-        realTitle = original.getString(MediaMetadata.METADATA_KEY_TITLE);
-        realArtist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
+            sessionRef = new WeakReference<>(session);
+            originalMetadata = original;
+            metadataBuilder = new MediaMetadata.Builder(original);
+            realTitle = original.getString(MediaMetadata.METADATA_KEY_TITLE);
+            realArtist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
 
-        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(realTitle, realArtist);
-        cachedCleanedTitle = parsed[1];
-        cachedCleanedArtist = parsed[0];
+            String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(realTitle, realArtist);
+            cachedCleanedTitle = parsed[1];
+            cachedCleanedArtist = parsed[0];
 
-        if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()) {
-            ticker.stop();
+            if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()) {
+                ticker.stop();
+                lastPushedTitle = null;
+                return;
+            }
+
+            android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
+            LyricsManager.getInstance().onDisplayedTrackChanged(realTitle, realArtist, mediaUri);
             lastPushedTitle = null;
-            return;
+            needsRepush = true;
+            ticker.schedule();
+        } catch (Exception ex) {
+            Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
         }
-
-        android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
-        LyricsManager.getInstance().onDisplayedTrackChanged(realTitle, realArtist, mediaUri);
-        lastPushedTitle = null;
-        needsRepush = true;
-        ticker.schedule();
     }
 
     private static void tick() {
@@ -152,9 +157,7 @@ public final class LockScreenLyrics {
         if (builder == null) {
             return null;
         }
-        if (title != null) {
-            builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
-        }
+        builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
         String artist = realArtist == null ? "" : realArtist;
         String trackTitle = realTitle;
         if (matched && trackTitle != null && !trackTitle.isEmpty()) {

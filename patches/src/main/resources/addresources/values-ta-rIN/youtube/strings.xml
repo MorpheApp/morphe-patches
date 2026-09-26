@@ -179,7 +179,6 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.theme.themePatch -->
-  <string name="morphe_splash_screen_animation_style_entry_1">முடக்கப்பட்டது</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
@@ -193,7 +192,6 @@ Second \"item\" text"</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
@@ -213,4 +211,5 @@ Second \"item\" text"</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <!-- layout.player.icons.playerIconStylePatch -->
 </resources>

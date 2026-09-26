@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animazione di avvio</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Disattivato</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Colore</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monocromatico</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Riavvia per completare la configurazione</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Per accedere, premi su Continua di seguito"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossibile accedere ad Android VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Disconnesso da Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token di accesso Android VR non valido, prova ad accedere nuovamente</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Controlli multimediali delle notifiche</string>
+  <string name="morphe_notification_media_screen_summary">Personalizza i controlli di riproduzione visualizzati nella schermata di blocco e nel pannello delle notifiche</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Nascondi i pulsanti Precedente &amp; Successivo</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Nasconde i pulsanti Precedente e Successivo nelle notifiche multimediali, nella schermata di blocco e per i controlli delle cuffie</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Disattiva barra di avanzamento</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Impedisce di trascinare la barra di avanzamento sulla schermata di blocco e nel pannello delle notifiche</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Disabilita il protocollo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
