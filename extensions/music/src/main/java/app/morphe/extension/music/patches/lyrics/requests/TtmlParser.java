@@ -954,9 +954,11 @@ final class TtmlParser {
                             }
                             StringBuilder rRoma = new StringBuilder();
                             for (RomajiSyllable rs : rubyTags) {
+                                //noinspection SizeReplaceableByIsEmpty
                                 if (rRoma.length() > 0) rRoma.append(' ');
                                 rRoma.append(rs.text());
                             }
+                            //noinspection SizeReplaceableByIsEmpty
                             String romaji = rRoma.length() > 0 ? rRoma.toString() : null;
 
                             fullText.append(baseText);
@@ -1099,6 +1101,7 @@ final class TtmlParser {
         }
 
         // Save final BG section
+        //noinspection SizeReplaceableByIsEmpty
         if (inBg && (!bgWords.isEmpty() || bgFullText.length() > 0)) {
             String bgText = normalizeText(bgFullText.toString());
             if (!bgText.trim().isEmpty()) {

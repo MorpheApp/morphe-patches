@@ -541,12 +541,14 @@ public final class LyricsRequests {
             if (Character.isLetterOrDigit(cp)) {
                 cur.appendCodePoint(cp);
             } else {
+                //noinspection SizeReplaceableByIsEmpty
                 if (cur.length() > 0) {
                     out.add(cur.toString());
                     cur.setLength(0);
                 }
             }
         }
+        //noinspection SizeReplaceableByIsEmpty
         if (cur.length() > 0) {
             out.add(cur.toString());
         }

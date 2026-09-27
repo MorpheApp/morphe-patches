@@ -173,6 +173,7 @@ public final class LyricsRomanizer {
                 if (text == null) continue;
                 text = text.trim();
                 if (!text.isEmpty()) {
+                    //noinspection SizeReplaceableByIsEmpty
                     if (merged.length() > 0) merged.append('\n');
                     merged.append(text);
                 }

@@ -813,15 +813,20 @@ public final class CaptionsFetcher {
         if (value.regionMatches(true, 0, "Cookie:", 0, "Cookie:".length())) {
             value = value.substring("Cookie:".length()).trim();
         }
-        if (value.length() >= 2
-                && ((value.charAt(0) == '"' && value.charAt(value.length() - 1) == '"')
-                || (value.charAt(0) == '\'' && value.charAt(value.length() - 1) == '\''))) {
-            value = value.substring(1, value.length() - 1).trim();
+        final int valueLength = value.length();
+        if (valueLength >= 2) {
+            final char firstChar = value.charAt(0);
+            final char lastChar = value.charAt(valueLength - 1);
+            if (((firstChar == '"' && lastChar == '"') || (firstChar == '\'' && lastChar == '\''))) {
+                value = value.substring(1, valueLength - 1).trim();
+            }
         }
-        StringBuilder sb = new StringBuilder(value.length());
+
+        StringBuilder sb = new StringBuilder(valueLength);
         for (String part : value.split("[;\\r\\n]+")) {
             String trimmed = part.trim();
             if (trimmed.isEmpty() || trimmed.indexOf('=') <= 0) continue;
+            //noinspection SizeReplaceableByIsEmpty
             if (sb.length() > 0) sb.append("; ");
             sb.append(trimmed);
         }
