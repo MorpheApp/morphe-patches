@@ -8,16 +8,16 @@
 package app.morphe.extension.music.patches.album;
 
 import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Collection;
-import java.util.LinkedHashMap;
+import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
@@ -29,6 +29,14 @@ import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
  */
 @SuppressWarnings("unused")
 public class PlayAlbumSongsPatch {
+
+    /**
+     * Notified when the streams to serve under a video are known, which can be after the app
+     * has already set up playback of the music video.
+     */
+    public interface SubstitutionListener {
+        void videoIdResolved(String videoId, String resolvedVideoId);
+    }
 
     /**
      * An album track, identified the same way the player response identifies it.
@@ -55,32 +63,15 @@ public class PlayAlbumSongsPatch {
     /**
      * Album track the song streams of each music video came from.
      */
-    @GuardedBy("itself")
-    private static final Map<String, PlaylistRequest.Song> songs = new LinkedHashMap<>() {
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<String, PlaylistRequest.Song> eldest) {
-            return size() > NUMBER_OF_LAST_VIDEO_IDS_TO_TRACK;
-        }
-    };
+    private static final Map<String, PlaylistRequest.Song> songs = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(NUMBER_OF_LAST_VIDEO_IDS_TO_TRACK));
 
     /**
      * Album position of the videos of the most recent player responses.
      */
     @GuardedBy("itself")
-    private static final Map<String, AlbumTrack> albumTracks = new LinkedHashMap<>() {
-        @Override
-        protected boolean removeEldestEntry(Map.Entry<String, AlbumTrack> eldest) {
-            return size() > NUMBER_OF_LAST_VIDEO_IDS_TO_TRACK;
-        }
-    };
-
-    /**
-     * Notified when the streams to serve under a video are known, which can be after the app
-     * has already set up playback of the music video.
-     */
-    public interface SubstitutionListener {
-        void videoIdResolved(@NonNull String videoId, @NonNull String resolvedVideoId);
-    }
+    private static final Map<String, AlbumTrack> albumTracks
+            = Utils.createSizeRestrictedMap(NUMBER_OF_LAST_VIDEO_IDS_TO_TRACK);
 
     private static final Collection<SubstitutionListener> substitutionListeners =
             new CopyOnWriteArrayList<>();
@@ -94,7 +85,7 @@ public class PlayAlbumSongsPatch {
      * @param listener Notified for every video the streams are fetched for, including those
      *                 left playing as the music video.
      */
-    public static void addSubstitutionListener(@NonNull SubstitutionListener listener) {
+    public static void addSubstitutionListener(SubstitutionListener listener) {
         substitutionListeners.add(listener);
     }
 
@@ -105,9 +96,7 @@ public class PlayAlbumSongsPatch {
     /**
      * Injection point.
      */
-    public static void newPlayerResponse(@NonNull String videoId,
-                                         @NonNull String playlistId,
-                                         int playlistIndex) {
+    public static void newPlayerResponse(String videoId, String playlistId, int playlistIndex) {
         try {
             if (!isEnabled()) return;
             if (playlistIndex < 0 || !playlistId.startsWith(YOUTUBE_MUSIC_ALBUM_PREFIX)) {
@@ -125,10 +114,9 @@ public class PlayAlbumSongsPatch {
                     // of its first track. Two videos cannot be the same album track, so this
                     // position is not the one of this video and it keeps playing as is.
                     albumTracks.remove(videoId);
-                    synchronized (songs) {
-                        songs.remove(videoId);
-                    }
-                    Logger.printDebug(() -> "Album position " + playlistIndex
+                    songs.remove(videoId);
+
+                    Logger.printDebug(() -> "Album position: " + playlistIndex
                             + " already belongs to another video, not replacing: " + videoId);
                     return;
                 }
@@ -163,7 +151,7 @@ public class PlayAlbumSongsPatch {
     }
 
     @GuardedBy("albumTracks")
-    private static boolean isPositionOfAnotherVideo(@NonNull String videoId, @NonNull AlbumTrack track) {
+    private static boolean isPositionOfAnotherVideo(String videoId, AlbumTrack track) {
         for (Map.Entry<String, AlbumTrack> entry : albumTracks.entrySet()) {
             if (!entry.getKey().equals(videoId) && entry.getValue().equals(track)) {
                 return true;
@@ -176,17 +164,14 @@ public class PlayAlbumSongsPatch {
      * Stops serving the song of an album to a video that is now played outside of that album,
      * which otherwise keeps the music video replaced until the app is restarted.
      */
-    private static void forgetSubstitution(@NonNull String videoId, @NonNull String playlistId) {
+    private static void forgetSubstitution(String videoId, String playlistId) {
         synchronized (albumTracks) {
             AlbumTrack track = albumTracks.get(videoId);
             // The same album can build the player parameter again without a position,
             // and that is still the album playing rather than the music video itself.
             if (track == null || track.playlistId().equals(playlistId)) return;
             albumTracks.remove(videoId);
-        }
-        synchronized (songs) {
-            songs.remove(videoId);
-        }
+    }
         Logger.printDebug(() -> "No longer playing the song version of: " + videoId);
     }
 
@@ -196,15 +181,13 @@ public class PlayAlbumSongsPatch {
     @Nullable
     public static PlaylistRequest.Song getSong(@Nullable String videoId) {
         if (videoId == null || !isEnabled()) return null;
-        synchronized (songs) {
-            return songs.get(videoId);
-        }
+        return songs.get(videoId);
     }
 
     /**
      * @return Length of the song playing under the given video, or zero if it is not substituted.
      */
-    private static long songLengthSeconds(@NonNull String videoId) {
+    private static long songLengthSeconds(String videoId) {
         PlaylistRequest.Song song = getSong(videoId);
         return song == null ? 0 : song.durationSeconds();
     }
@@ -212,7 +195,7 @@ public class PlayAlbumSongsPatch {
     /**
      * Called off the main thread, just before the streams of the video are fetched.
      */
-    private static String resolveVideoIdToFetch(@NonNull String videoId) {
+    private static String resolveVideoIdToFetch(String videoId) {
         try {
             if (!isEnabled()) return videoId;
 
@@ -232,15 +215,14 @@ public class PlayAlbumSongsPatch {
      * @return The video whose streams to serve for the given video, which is the video itself
      *         when it is not an album track playing as a music video.
      */
-    private static String resolveAlbumSong(@NonNull String videoId) {
+    private static String resolveAlbumSong(String videoId) {
         AlbumTrack track;
         synchronized (albumTracks) {
             track = albumTracks.get(videoId);
         }
         if (track == null) return videoId;
 
-        PlaylistRequest request =
-                PlaylistRequest.getRequestForPlaylistId(track.playlistId());
+        PlaylistRequest request = PlaylistRequest.getRequestForPlaylistId(track.playlistId());
         if (request == null) return videoId;
 
         PlaylistRequest.Song song = request.awaitSong(
@@ -254,9 +236,7 @@ public class PlayAlbumSongsPatch {
             return videoId;
         }
 
-        synchronized (songs) {
-            songs.put(videoId, song);
-        }
+        songs.put(videoId, song);
         return song.videoId();
     }
 }
