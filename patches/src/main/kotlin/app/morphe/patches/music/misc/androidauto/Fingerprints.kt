@@ -43,6 +43,8 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
  * - Read item commands: [PhoneBrowseItemFingerprint], [phoneBrowseItemSingleTapCommandFingerprint].
  * - Read the playlist's Play button and intercept playback: [decodeButtonRendererFingerprint],
  *   [AndroidAutoPlayFromMediaIdFingerprint].
+ * - Observe Library changes and refresh Android Auto: [libraryChangeFutureFingerprint],
+ *   [playlistChangeSuccessFingerprint], [mediaBrowserReloadFingerprint].
  */
 
 private const val PHONE_BROWSE_TABS_PROTO_FIELD = 58_173_949L
@@ -130,6 +132,54 @@ internal object SendEmptyAndroidAutoMediaItemsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Z"),
     strings = listOf("Invalid media id: "),
+)
+
+// Refresh after Library changes
+
+/** YTM's requests that change the Library. */
+internal fun libraryChangeRequestFingerprint(endpoint: String) = Fingerprint(
+    name = "<init>",
+    returnType = "V",
+    strings = listOf(endpoint),
+)
+
+/** Sends a playlist edit or Like/unlike request and returns a future reporting completion. */
+internal fun libraryChangeFutureFingerprint(requestType: String) = Fingerprint(
+    returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
+    parameters = listOf(requestType, "Ljava/util/concurrent/Executor;"),
+    // Like/unlike requests can match both the interface and the method that sends the request.
+    // Using decompiled names from 9.31 and 9.32:
+    // < 9.32: arig.j/k are interface methods; arib.j/k return this.b.b(...) / this.d.b(...).
+    // >= 9.32: only vtq.g/h match; they return this.d.b(...) / this.f.b(...).
+    // Only methods with instructions can receive the refresh hook.
+    custom = { method, _ -> method.implementation != null },
+)
+
+/** Calls the request's success callback with its response. */
+internal fun playlistChangeSuccessFingerprint(requestBaseType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Lcom/google/protobuf/MessageLite;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Ljava/lang/Object;"),
+            returnType = "V",
+        ),
+    ),
+    custom = { method, classDef ->
+        !AccessFlags.STATIC.isSet(method.accessFlags) && classDef.instanceFields.any { field ->
+            field.type == requestBaseType
+        }
+    },
+)
+
+/** Loads an Android Auto list again to refresh its contents without disconnecting. */
+internal fun mediaBrowserReloadFingerprint(baseServiceType: String) = Fingerprint(
+    definingClass = baseServiceType,
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;", "L", "Landroid/os/Bundle;"),
+    strings = listOf("onLoadChildren must call detach() or sendResult() before returning for package="),
 )
 
 // Play a selected playlist: callbacks

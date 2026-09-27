@@ -21,7 +21,9 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
+import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
+import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
@@ -59,6 +61,8 @@ private const val EXTENSION_PLAYLIST_CONTENTS_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PlaylistContents;"
 private const val EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$AndroidAutoBrowseRequest;"
+private const val EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$AndroidAutoFolderReload;"
 private const val EXTENSION_PLAYBACK_CALLBACK_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PlaybackCallback;"
 private const val EXTENSION_PHONE_BROWSE_ITEM_INTERFACE =
@@ -89,8 +93,9 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  * 4. [patchPhoneBrowseItem] provides playlist IDs, titles, and artwork, and distinguishes songs
  *    from the Add a song button.
  * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning YTM's empty list.
- * 6. [patchAndroidAutoPodcastItems] adds Podcasts to Android Auto's tabs and fills it with lists from Home.
- * 7. [installPlaybackCallbackBridges] lets Java load a selected playlist before asking YTM to play it,
+ * 6. [installAndroidAutoFolderRefresh] lets Java refresh Android Auto after Library changes.
+ * 7. [patchAndroidAutoPodcastItems] adds Podcasts to Android Auto's tabs and fills it with lists from Home.
+ * 8. [installPlaybackCallbackBridges] lets Java load a selected playlist before asking YTM to play it,
  *    and cancel pending playback on Pause/Stop.
  */
 @Suppress("unused")
@@ -108,6 +113,7 @@ val supportAndroidAutoPatch = bytecodePatch(
         patchPhoneBrowseResponses()
         patchPhoneBrowseItem()
         patchAndroidAutoPlaylists()
+        installAndroidAutoFolderRefresh()
         patchAndroidAutoPodcastItems()
         installPlaybackCallbackBridges()
     }
@@ -1214,6 +1220,122 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
         """,
         ExternalLabel("resume", handleAndroidAutoRequestMethod.getInstruction<Instruction>(0)),
     )
+}
+
+// endregion
+
+// region Android Auto connections and folder refresh
+
+/**
+ * Refreshes Android Auto after Library changes.
+ * [hookLibraryChangeCompletion] schedules the refresh only after a request succeeds.
+ * Creation and deletion report success through callbacks, hooked by [hookPlaylistCreationAndDeletion].
+ * [addAndroidAutoFolderReload] requests updated Playlists and Home lists without reconnecting Android Auto.
+ */
+private fun BytecodePatchContext.installAndroidAutoFolderRefresh() {
+    // Android Auto requests list updates through MediaBrowserServiceCompat.
+    // MediaBrowserService.notifyChildrenChanged does not reach that connection, so refresh through the compat service.
+    val serviceSuperclass = classDefBy(MUSIC_BROWSER_SERVICE_CLASS).superclass
+        ?: throw PatchException("Could not resolve MusicBrowserService's superclass")
+    val baseServiceType = classDefBy(serviceSuperclass).superclass
+        ?: throw PatchException("Could not resolve the browser service base class above $serviceSuperclass")
+    val reloadMethod = mediaBrowserReloadFingerprint(baseServiceType).originalMethod
+
+    addAndroidAutoFolderReload(baseServiceType, reloadMethod)
+    for (endpoint in listOf("browse/edit_playlist", "like/like", "like/removelike")) {
+        hookLibraryChangeCompletion(endpoint)
+    }
+    hookPlaylistCreationAndDeletion()
+}
+
+/**
+ * Saves the requested Android Auto list and connection in Java's `rememberAndroidAutoSubscription`.
+ * `patch_reloadFolder` repeats the request through YTM. The hook installed by [patchAndroidAutoPlaylists]
+ * fetches the phone Library again for Playlists; Home results pass through the hook installed by
+ * [patchAndroidAutoPodcastItems].
+ */
+private fun BytecodePatchContext.addAndroidAutoFolderReload(
+    baseServiceType: String,
+    reloadMethod: Method,
+) {
+    val connectionType = reloadMethod.parameterTypes[1].toString()
+    val baseServiceClass = mutableClassDefBy(baseServiceType)
+    baseServiceClass.interfaces.add(EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE)
+    baseServiceClass.addInterfaceMethod(
+        interfaceMethod = extensionInterfaceMethod(
+            EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE,
+            "patch_reloadFolder",
+        ),
+        registerCount = 4,
+        instructions = """
+            check-cast p2, $connectionType
+            invoke-virtual { p0, p1, p2, p3 }, $reloadMethod
+            return-void
+        """,
+    )
+    val rememberSubscriptionMethod = "$EXTENSION_CLASS->rememberAndroidAutoSubscription(" +
+        EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE +
+        "Ljava/lang/String;Ljava/lang/Object;)V"
+    baseServiceClass.findMutableMethodOf(reloadMethod).addInstructions(
+        0,
+        """
+            invoke-static/range { p0 .. p2 }, $rememberSubscriptionMethod
+        """,
+    )
+}
+
+/** Uses Java's `watchLibraryChange` to refresh Android Auto when YTM's request succeeds. */
+private fun BytecodePatchContext.hookLibraryChangeCompletion(endpoint: String) {
+    val requestType = libraryChangeRequestFingerprint(endpoint).originalMethod.definingClass
+    val mutableSendChangeMethod = libraryChangeFutureFingerprint(requestType).method
+    val returnIndex = mutableSendChangeMethod.findInstructionIndicesReversed(Opcode.RETURN_OBJECT)
+        .singleOrNull()
+        ?: throw PatchException("Could not find the completion result for $endpoint")
+    val changeFutureRegister = mutableSendChangeMethod
+        .getInstruction<OneRegisterInstruction>(returnIndex).registerA
+    mutableSendChangeMethod.addInstructions(
+        returnIndex,
+        """
+            invoke-static/range { v$changeFutureRegister .. v$changeFutureRegister }, $EXTENSION_CLASS->watchLibraryChange(Lcom/google/common/util/concurrent/ListenableFuture;)V
+        """,
+    )
+}
+
+/** Refreshes Android Auto after playlist creation or deletion. */
+private fun BytecodePatchContext.hookPlaylistCreationAndDeletion() {
+    val createRequestType = libraryChangeRequestFingerprint("playlist/create").originalMethod.definingClass
+    val deleteRequestType = libraryChangeRequestFingerprint("playlist/delete").originalMethod.definingClass
+    val requestBaseType = classDefBy(createRequestType).superclass
+        ?: throw PatchException("Could not resolve the playlist request base class")
+    if (classDefBy(deleteRequestType).superclass != requestBaseType) {
+        throw PatchException("Playlist creation and deletion use different request base classes")
+    }
+
+    // The request factory can select different success callbacks (e.g. apht.y selects apia or apic).
+    // Hook every matching success method so either path refreshes Android Auto.
+    playlistChangeSuccessFingerprint(requestBaseType).matchAll().forEach { match ->
+        // Some callbacks have only the two parameter registers, p0 and p1.
+        // Copy their values before using a register for the request-type checks.
+        val successMethod = match.method.cloneParameters()
+        val requestField = classDefBy(successMethod.definingClass).instanceFields.single { field ->
+            field.type == requestBaseType
+        }
+        val requestRegister = successMethod.findFreeRegister(0)
+        successMethod.addInstructionsWithLabels(
+            0,
+            """
+                iget-object v$requestRegister, p0, $requestField
+                instance-of v$requestRegister, v$requestRegister, $createRequestType
+                if-nez v$requestRegister, :refresh_library
+                iget-object v$requestRegister, p0, $requestField
+                instance-of v$requestRegister, v$requestRegister, $deleteRequestType
+                if-eqz v$requestRegister, :resume
+                :refresh_library
+                invoke-static {}, $EXTENSION_CLASS->scheduleLibraryRefresh()V
+            """,
+            ExternalLabel("resume", successMethod.getInstruction<Instruction>(0)),
+        )
+    }
 }
 
 // endregion
