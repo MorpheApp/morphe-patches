@@ -85,18 +85,26 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  * and adds a Podcasts tab using the podcast lists returned for Android Auto Home.
  *
  * Installation order during patching, before the app runs:
- * 1. [hookPlaylistsTitleMediaIds] identifies Playlists in Android Auto's Library by its translated title.
+ * 1. [hookPlaylistsTitleMediaIds] identifies [Playlists][BuildAndroidAutoMediaItemFingerprint]
+ *    in Android Auto's Library by its translated title.
  * 2. [installPhoneBrowseClientBridges] lets Java fetch the phone Library and selected playlists
- *    through YTM's existing request methods, including Library pagination.
- * 3. [patchPhoneBrowseResponses] lets Java extract Library items, playlist songs, and the playlist's
- *    Play button from the data those requests return.
- * 4. [patchPhoneBrowseItem] provides playlist IDs, titles, and artwork, and distinguishes songs
- *    from the Add a song button.
- * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning YTM's empty list.
- * 6. [installAndroidAutoFolderRefresh] lets Java refresh Android Auto after Library changes.
+ *    through YTM's existing [request methods][CreatePhoneBrowseRequestFingerprint],
+ *    including [Library pagination][gridPaginationCommandsFingerprint].
+ * 3. [patchPhoneBrowseResponses] lets Java extract Library items and playlist songs from
+ *    [page data][PhoneBrowseResponseTabsFingerprint] and [pagination results][LibraryPaginationDecoderFingerprint],
+ *    plus the playlist's [Play button][decodeButtonRendererFingerprint].
+ * 4. [patchPhoneBrowseItem] provides [playlist IDs][PhoneBrowseItemFingerprint], [titles][formatTextFingerprint],
+ *    and [artwork][phoneBrowseItemArtworkFingerprint] converted for [Android Auto][androidAutoMediaDescriptionFingerprint].
+ *    It distinguishes songs from the Add a song button by checking their
+ *    [playback commands][phoneBrowseItemSingleTapCommandFingerprint].
+ * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning
+ *    [YTM's empty list][SendEmptyAndroidAutoMediaItemsFingerprint].
+ * 6. [installAndroidAutoFolderRefresh] observes [Library changes][libraryChangeFutureFingerprint]
+ *    and [playlist creation/deletion][playlistChangeSuccessFingerprint],
+ *    then [refreshes Android Auto][mediaBrowserReloadFingerprint].
  * 7. [patchAndroidAutoPodcastItems] adds Podcasts to Android Auto's tabs and fills it with lists from Home.
- * 8. [installPlaybackCallbackBridges] lets Java load a selected playlist before asking YTM to play it,
- *    and cancel pending playback on Pause/Stop.
+ * 8. [installPlaybackCallbackBridges] lets Java load a [selected playlist][AndroidAutoPlayFromMediaIdFingerprint]
+ *    before asking YTM to play it, and cancel pending playback on Pause/Stop.
  */
 @Suppress("unused")
 val supportAndroidAutoPatch = bytecodePatch(
