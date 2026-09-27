@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -37,7 +38,7 @@ import app.morphe.extension.shared.Utils;
 
 /**
  * Adds YT Music support in Android Auto by intercepting requests for the Playlists folder,
- * loading playlists from the phone Library.
+ * loading playlists from the phone Library, and filling a Podcasts tab from Android Auto Home.
  *
  * <p>During service initialization, {@link #setPhoneBrowseClient} saves the YTM object that requests
  * phone Library and playlist data. {@link #rememberPlaylistsTitleMatch} identifies Playlists in
@@ -49,6 +50,9 @@ import app.morphe.extension.shared.Utils;
  *
  * <p>Selecting a playlist calls {@link #handlePlayFromMediaId}. {@link PlaylistPlaybackRequest}
  * fetches its songs and Play button, then asks YTM to start playback if it contains songs.
+ *
+ * <p>{@link #handleAndroidAutoBrowseResult} adds Podcasts alongside Home and Library, then fills it with
+ * the podcast lists YTM returns for Android Auto Home.
  */
 @SuppressWarnings("unused")
 public final class SupportAndroidAutoPatch {
@@ -61,12 +65,22 @@ public final class SupportAndroidAutoPatch {
     // Return collected playlists when this timeout expires.
     private static final int ANDROID_AUTO_PLAYLISTS_TIMEOUT_MILLISECONDS = 30_000;
     private static final int SELECTED_PLAYLIST_LOAD_TIMEOUT_MILLISECONDS = 30_000;
+    private static final String ANDROID_AUTO_ROOT_MEDIA_ID = "com.google.android.projection.gearhead";
+    private static final String PODCASTS_MEDIA_ID = "morphe:aa:podcasts";
+    private static final String PODCASTS_TITLE_RESOURCE_NAME = "offline_podcasts_shelf_title";
+    private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
     private static final Executor BACKGROUND_EXECUTOR = Utils::runOnBackgroundThread;
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds =
             ConcurrentHashMap.newKeySet();
     // Selecting music or pressing Pause/Stop changes this number; ignore pending requests with older numbers.
     private static final AtomicLong playRequestGeneration = new AtomicLong();
+    @GuardedBy("SupportAndroidAutoPatch.class")
+    private static String androidAutoHomeMediaId;
+    @GuardedBy("SupportAndroidAutoPatch.class")
+    private static List<MediaBrowserCompat.MediaItem> cachedAndroidAutoPodcastFolders =
+            Collections.emptyList();
+
     /** YTM's object for sending phone Library and playlist requests, reused to supply Android Auto. */
     public interface PhoneBrowseClient {
         @NonNull ListenableFuture<PhoneBrowseResponse> patch_requestBrowse(
@@ -116,7 +130,11 @@ public final class SupportAndroidAutoPatch {
     /** A request from Android Auto to load content, such as its main tabs, Playlists, or a podcast list. */
     public interface AndroidAutoBrowseRequest {
         @Nullable String patch_getRequestedMediaId();
-        // YTM may remove items to keep the returned list within its byte limit.
+        /**
+         * Sends the list through YTM. {@link SupportAndroidAutoPatch#handleAndroidAutoBrowseResult}
+         * can add the Podcasts tab or supply its contents before Android Auto receives the list.
+         * YTM may remove items to keep the returned list within its byte limit.
+         */
         void patch_deliverAndroidAutoItems(
                 @NonNull List<MediaBrowserCompat.MediaItem> androidAutoItems);
     }
@@ -454,6 +472,70 @@ public final class SupportAndroidAutoPatch {
 
     private record LibraryPlaylist(
             String playlistBrowseId, String title, String subtitle, Uri artworkUri) {
+    }
+
+    // Podcasts
+
+    /**
+     * Injection point. Add the Podcasts tab.
+     * {@link #initializeAndroidAutoTabs} inserts Podcasts into YTM's Home/Library tab list.
+     * {@link #cacheAndroidAutoPodcastFolders} keeps the podcast lists returned for Home;
+     * these become the contents of Podcasts.
+     */
+    @Nullable
+    public static synchronized List<MediaBrowserCompat.MediaItem> handleAndroidAutoBrowseResult(
+            @NonNull AndroidAutoBrowseRequest request,
+            @Nullable List<MediaBrowserCompat.MediaItem> ytmItems) {
+        try {
+            String parentMediaId = request.patch_getRequestedMediaId();
+            if (ANDROID_AUTO_ROOT_MEDIA_ID.equals(parentMediaId)) {
+                return initializeAndroidAutoTabs(ytmItems);
+            }
+            if (PODCASTS_MEDIA_ID.equals(parentMediaId)) {
+                return new ArrayList<>(cachedAndroidAutoPodcastFolders);
+            }
+            if (parentMediaId != null && parentMediaId.equals(androidAutoHomeMediaId) &&
+                    ytmItems != null) {
+                cacheAndroidAutoPodcastFolders(ytmItems);
+            }
+        } catch (RuntimeException ex) {
+            Logger.printException(() -> "Could not handle Android Auto browse result", ex);
+        }
+        return ytmItems;
+    }
+
+    @Nullable
+    @GuardedBy("SupportAndroidAutoPatch.class")
+    private static List<MediaBrowserCompat.MediaItem> initializeAndroidAutoTabs(
+            @Nullable List<MediaBrowserCompat.MediaItem> rootTabs) {
+        // Do not reuse saved podcast content after the main tabs reload.
+        androidAutoHomeMediaId = null;
+        cachedAndroidAutoPodcastFolders = Collections.emptyList();
+        // Add Podcasts only when YTM supplies Home and Library without a Podcasts tab.
+        if (rootTabs == null || rootTabs.size() != 2) return rootTabs;
+
+        androidAutoHomeMediaId = rootTabs.get(0).a();
+        List<MediaBrowserCompat.MediaItem> updatedRootTabs = new ArrayList<>(rootTabs);
+        MediaDescriptionCompat podcastsDescription = new MediaDescriptionCompat(
+                PODCASTS_MEDIA_ID,
+                ResourceUtils.getString(PODCASTS_TITLE_RESOURCE_NAME),
+                null, null, null, null, null, null);
+        updatedRootTabs.add(1, new MediaBrowserCompat.MediaItem(
+                podcastsDescription, MediaBrowserCompat.MediaItem.FLAG_BROWSABLE));
+        return updatedRootTabs;
+    }
+
+    @GuardedBy("SupportAndroidAutoPatch.class")
+    private static void cacheAndroidAutoPodcastFolders(List<MediaBrowserCompat.MediaItem> homeItems) {
+        List<MediaBrowserCompat.MediaItem> folders = new ArrayList<>();
+        // TODO: The server omits songs and playlists from Android Auto Speed dial; obtain them from phone Home.
+        // Some podcast lists have no layout hint; include them if they are browsable.
+        for (MediaBrowserCompat.MediaItem item : homeItems) {
+            // YTM's upgrade prompt is also browsable; exclude it explicitly.
+            if (!item.b() || UPGRADE_PROMPT_MEDIA_ID.equals(item.a())) continue;
+            folders.add(item);
+        }
+        cachedAndroidAutoPodcastFolders = folders;
     }
 
     // Play a selected playlist

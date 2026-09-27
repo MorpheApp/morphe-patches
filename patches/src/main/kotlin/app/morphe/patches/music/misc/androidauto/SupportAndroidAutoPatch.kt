@@ -78,7 +78,7 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
 
 /**
  * Supplies Android Auto with the playlists available in YTM's phone Library
- * for display and playback.
+ * and adds a Podcasts tab using the podcast lists returned for Android Auto Home.
  *
  * Installation order during patching, before the app runs:
  * 1. [hookPlaylistsTitleMediaIds] identifies Playlists in Android Auto's Library by its translated title.
@@ -89,13 +89,14 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  * 4. [patchPhoneBrowseItem] provides playlist IDs, titles, and artwork, and distinguishes songs
  *    from the Add a song button.
  * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning YTM's empty list.
- * 6. [installPlaybackCallbackBridges] lets Java load a selected playlist before asking YTM to play it,
+ * 6. [patchAndroidAutoPodcastItems] adds Podcasts to Android Auto's tabs and fills it with lists from Home.
+ * 7. [installPlaybackCallbackBridges] lets Java load a selected playlist before asking YTM to play it,
  *    and cancel pending playback on Pause/Stop.
  */
 @Suppress("unused")
 val supportAndroidAutoPatch = bytecodePatch(
-    name = "Restore playlists in Android Auto",
-    description = "Restores YouTube Music playlists in Android Auto.",
+    name = "Restore playlists and podcasts in Android Auto",
+    description = "Restores YouTube Music playlists and podcasts in Android Auto.",
 ) {
     dependsOn(sharedExtensionPatch)
 
@@ -107,6 +108,7 @@ val supportAndroidAutoPatch = bytecodePatch(
         patchPhoneBrowseResponses()
         patchPhoneBrowseItem()
         patchAndroidAutoPlaylists()
+        patchAndroidAutoPodcastItems()
         installPlaybackCallbackBridges()
     }
 }
@@ -1118,6 +1120,7 @@ private fun BytecodePatchContext.patchAndroidAutoPlaylists() {
 
 /**
  * Lets Java identify what Android Auto requested and return a list through YTM's existing response method.
+ * That delivery also passes through the Podcasts hook installed by [patchAndroidAutoPodcastItems].
  */
 private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
     sendEmptyAndroidAutoMediaItemsMethod: Method,
@@ -1210,6 +1213,39 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
             return-void
         """,
         ExternalLabel("resume", handleAndroidAutoRequestMethod.getInstruction<Instruction>(0)),
+    )
+}
+
+// endregion
+
+// region Podcasts
+
+/**
+ * Lets Java change the lists YTM is about to send to Android Auto.
+ * `handleAndroidAutoBrowseResult` adds Podcasts alongside Home and Library, saves the podcast lists
+ * returned for Home, and returns those saved lists when Android Auto opens Podcasts.
+ */
+private fun BytecodePatchContext.patchAndroidAutoPodcastItems() {
+    val androidAutoRequestType =
+        SendEmptyAndroidAutoMediaItemsFingerprint.originalMethod.parameterTypes.first().toString()
+    // Decompiled forwarding example: b(List list) { c(list, null); }
+    // Hook the method accepting both arguments so calls through either method update Podcasts.
+    val deliverAndroidAutoMediaItemsMethod = mutableClassDefBy(androidAutoRequestType).methods.single { method ->
+        method.returnType == "V" &&
+            method.parameterTypes.size == 2 &&
+            method.parameterTypes.first().toString() == "Ljava/util/List;" &&
+            method.parameterTypes.last().toString().startsWith("L")
+    }
+
+    val handleAndroidAutoBrowseResultMethod = "$EXTENSION_CLASS->handleAndroidAutoBrowseResult(" +
+        EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE +
+        "Ljava/util/List;)Ljava/util/List;"
+    deliverAndroidAutoMediaItemsMethod.addInstructions(
+        0,
+        """
+            invoke-static/range { p0 .. p1 }, $handleAndroidAutoBrowseResultMethod
+            move-result-object p1
+        """,
     )
 }
 
