@@ -1193,6 +1193,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
     <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
 
+    <!-- layout.statusbar.hideStatusBarPatch -->
+    <string name="morphe_hide_status_bar_title">Hide status bar</string>
+    <string name="morphe_hide_status_bar_summary">Hides the system status bar. Swipe down from the top edge to show it for a moment</string>
+
     <!-- layout.theme.themePatch -->
     <string name="morphe_theme_color_light_title">Light theme background</string>
     <string name="morphe_theme_color_light_entry_2">White</string>
