@@ -25,6 +25,7 @@ import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -36,7 +37,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
  * - Identify Playlists and return Android Auto items: [BuildAndroidAutoMediaItemFingerprint],
  *   [SendEmptyAndroidAutoMediaItemsFingerprint].
  * - Fetch the phone Library and selected playlists: [CreatePhoneBrowseRequestFingerprint],
- *   [PhoneBrowseResponseTabsFingerprint].
+ *   [PhoneBrowseResponseTabsFingerprint], [gridPaginationCommandsFingerprint], [LibraryPaginationDecoderFingerprint].
  * - Read titles and artwork: [formatTextFingerprint], [phoneBrowseItemArtworkFingerprint],
  *   [androidAutoMediaDescriptionFingerprint].
  * - Read item commands: [PhoneBrowseItemFingerprint], [phoneBrowseItemSingleTapCommandFingerprint].
@@ -49,6 +50,8 @@ private const val TAB_CONTENT_PRESENT_FLAG = 1L
 private const val SECTION_LIST_CONTENTS_FIELD_NAME = "f"
 private const val PHONE_BROWSE_ITEM_PROTO_FIELD = 161_429_595L
 private const val GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG = 0x40000L
+private const val NEXT_COMMAND_PRESENT_FLAG = 0x1L
+private const val RELOAD_COMMAND_PRESENT_FLAG = 0x2L
 private const val PLAY_BUTTON_PROTO_FIELD = 65_153_809L
 private const val THUMBNAIL_PROTO_FIELD = 164_480_666L
 
@@ -335,6 +338,37 @@ internal object GridRendererItemsFingerprint : Fingerprint(
     returnType = "Ljava/util/List;",
     parameters = listOf("L"),
     filters = listOf(literal(GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG)),
+)
+
+// Library pagination commands
+
+/** Returns the commands YTM uses to request more Library items or refresh the Library. */
+internal fun gridPaginationCommandsFingerprint(getGridItemsMethod: Method) = Fingerprint(
+    definingClass = getGridItemsMethod.definingClass,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/util/List;",
+    parameters = getGridItemsMethod.parameterTypes.map(CharSequence::toString),
+    filters = listOf(
+        // These flags indicate whether pagination (NEXT) or refresh (RELOAD) commands are present.
+        literal(NEXT_COMMAND_PRESENT_FLAG),
+        literal(RELOAD_COMMAND_PRESENT_FLAG),
+    ),
+    custom = { method, _ -> method != getGridItemsMethod },
+)
+
+// Library pagination responses
+
+/** Extracts Library items returned by pagination, either directly from the response or from its first section. */
+internal object LibraryPaginationDecoderFingerprint : Fingerprint(
+    classFingerprint = HandleMusicReloadShelfEventFingerprint,
+    accessFlags = listOf(
+        AccessFlags.PROTECTED,
+        AccessFlags.FINAL,
+        AccessFlags.BRIDGE,
+        AccessFlags.SYNTHETIC,
+    ),
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("L"),
 )
 
 // Playlist titles and artwork

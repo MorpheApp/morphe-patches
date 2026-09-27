@@ -19,6 +19,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,7 +40,7 @@ import app.morphe.extension.shared.Utils;
  * Android Auto's Library by its translated title.
  *
  * <p>When Android Auto opens Playlists, {@link #handleAndroidAutoPlaylists} requests the phone Library.
- * {@link #requestLibraryPage} collects the first Library page's playlists with their titles and artwork.
+ * {@link #requestLibraryPage} follows Library pagination and collects playlists with their titles and artwork.
  * {@link #deliverAndroidAutoPlaylists} returns them when loading finishes.
  *
  * <p>{@link #requestEachPlaylist} reads each playlist's Play button before returning the list.
@@ -59,16 +60,21 @@ public final class SupportAndroidAutoPatch {
     public interface PhoneBrowseClient {
         @NonNull ListenableFuture<PhoneBrowseResponse> patch_requestBrowse(
                 @NonNull String browseId, @NonNull Executor executor);
+        @NonNull ListenableFuture<PhoneBrowseResponse> patch_requestLibraryPagination(
+                @NonNull Object paginationCommand, @NonNull Executor executor);
     }
 
     /**
      * Data returned by a request for the phone Library or a playlist's contents.
      * The first Library response and playlist contents use TabRenderer data, then sections containing the items.
+     * Later Library pages use {@link #patch_getPaginatedLibraryGrid} instead.
      * TabRenderer describes the phone page, not Android Auto's Home/Library/Podcasts tabs.
      */
     public interface PhoneBrowseResponse {
         // Wrappers for the TabRenderer data containing the first Library result or playlist contents.
         @NonNull Iterable<PhoneBrowseTab> patch_getTabs();
+        // More Library items returned by pagination.
+        @Nullable GridRenderer patch_getPaginatedLibraryGrid();
         // Command from the Play button above the playlist's songs, encoded as an Android Auto media ID.
         @Nullable String patch_getPlaylistPlayButtonMediaId();
     }
@@ -83,10 +89,12 @@ public final class SupportAndroidAutoPatch {
         @NonNull Iterable<?> patch_getContents();
     }
 
-    /** Items returned by the phone Library. */
+    /** Library items and the commands to request more of them. */
     public interface GridRenderer {
         // Includes artists and podcasts as well as playlists; filter before returning playlists to Android Auto.
         @NonNull Iterable<?> patch_getItems();
+        // YTM's pagination commands: NEXT requests the next Library page; RELOAD refreshes the list.
+        @NonNull Iterable<?> patch_getPaginationCommands();
     }
 
     /** A request from Android Auto to load content, such as its main tabs, Playlists, or a podcast list. */
@@ -158,7 +166,7 @@ public final class SupportAndroidAutoPatch {
             if (!playlistsTitleMatchMediaIds.contains(requestedMediaId)) return false;
             PlaylistsFolderLoad load = new PlaylistsFolderLoad(browseClient);
             try {
-                requestLibraryPage(androidAutoRequest, load);
+                requestLibraryPage(androidAutoRequest, load, null);
             } catch (RuntimeException ex) {
                 // Only this patch should answer the request, including after failure.
                 Logger.printException(() -> "Could not request YTM Library", ex);
@@ -174,22 +182,39 @@ public final class SupportAndroidAutoPatch {
         }
     }
 
-    // Playlist loading
+    // Playlist loading and pagination
 
     /**
-     * Reads the first Library response and requests each playlist's playback command.
+     * Loads the Library one page at a time. Background listeners read the first response with
+     * {@link #appendInitialLibraryPlaylists} and later responses with {@link #appendPaginatedLibraryPlaylists}.
+     * Both collect playlists through {@link #collectPlaylistsFromGrid} and return a pagination command if available.
+     * A command requests the next page; otherwise {@link #deliverAndroidAutoPlaylists} returns the collected list.
      */
     private static void requestLibraryPage(
-            AndroidAutoBrowseRequest androidAutoRequest, PlaylistsFolderLoad load) {
-        ListenableFuture<PhoneBrowseResponse> libraryResponseFuture = load.phoneBrowseClient.patch_requestBrowse(
-                PHONE_LIBRARY_BROWSE_ID, BACKGROUND_EXECUTOR);
+            AndroidAutoBrowseRequest androidAutoRequest, PlaylistsFolderLoad load,
+            @Nullable Object paginationCommand) {
+        boolean firstPage = paginationCommand == null;
+        ListenableFuture<PhoneBrowseResponse> libraryResponseFuture = firstPage
+                ? load.phoneBrowseClient.patch_requestBrowse(
+                        PHONE_LIBRARY_BROWSE_ID, BACKGROUND_EXECUTOR)
+                : load.phoneBrowseClient.patch_requestLibraryPagination(
+                        paginationCommand, BACKGROUND_EXECUTOR);
         libraryResponseFuture.addListener(() -> {
             synchronized (load) {
                 if (load.deliveryPreparationStarted) return;
             }
             try {
                 PhoneBrowseResponse libraryResponse = libraryResponseFuture.get();
-                appendInitialLibraryPlaylists(libraryResponse, load);
+                Object nextPaginationCommand = firstPage
+                        ? appendInitialLibraryPlaylists(libraryResponse, load)
+                        : appendPaginatedLibraryPlaylists(libraryResponse, load);
+                synchronized (load) {
+                    if (load.deliveryPreparationStarted) return;
+                }
+                if (nextPaginationCommand != null) {
+                    requestLibraryPage(androidAutoRequest, load, nextPaginationCommand);
+                    return;
+                }
                 requestEachPlaylist(androidAutoRequest, load);
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
@@ -208,8 +233,9 @@ public final class SupportAndroidAutoPatch {
         }, BACKGROUND_EXECUTOR);
     }
 
-    private static void appendInitialLibraryPlaylists(
+    private static Object appendInitialLibraryPlaylists(
             PhoneBrowseResponse libraryResponse, PlaylistsFolderLoad load) {
+        Object paginationCommand = null;
         for (PhoneBrowseTab tab : libraryResponse.patch_getTabs()) {
             SectionList sectionList = tab.patch_getSectionList();
             if (sectionList == null) continue;
@@ -217,12 +243,29 @@ public final class SupportAndroidAutoPatch {
                 if (!(sectionContent instanceof GridRenderer)) continue;
                 GridRenderer gridRenderer = (GridRenderer) sectionContent;
                 collectPlaylistsFromGrid(gridRenderer, load);
+                if (paginationCommand == null) {
+                    paginationCommand = firstPaginationCommand(gridRenderer);
+                }
             }
         }
         synchronized (load) {
             Logger.printDebug(() -> "Found playlists in phone Library: " +
                     load.libraryPlaylists.size());
         }
+        return paginationCommand;
+    }
+
+    private static Object appendPaginatedLibraryPlaylists(
+            PhoneBrowseResponse libraryResponse, PlaylistsFolderLoad load) {
+        GridRenderer gridRenderer = libraryResponse.patch_getPaginatedLibraryGrid();
+        // An unrecognized pagination result ends loading; keep the playlists collected so far.
+        if (gridRenderer == null) return null;
+        collectPlaylistsFromGrid(gridRenderer, load);
+        synchronized (load) {
+            Logger.printDebug(() -> "Found playlists in phone Library: " +
+                    load.libraryPlaylists.size());
+        }
+        return firstPaginationCommand(gridRenderer);
     }
 
     /**
@@ -239,6 +282,13 @@ public final class SupportAndroidAutoPatch {
                 Logger.printException(() -> "Could not read a phone Library item", ex);
             }
         }
+    }
+
+    @Nullable
+    private static Object firstPaginationCommand(GridRenderer gridRenderer) {
+        // TODO: Check whether pagination needs every command when YTM returns more than one.
+        Iterator<?> commands = gridRenderer.patch_getPaginationCommands().iterator();
+        return commands.hasNext() ? commands.next() : null;
     }
 
     // Playlist titles and artwork
@@ -374,7 +424,7 @@ public final class SupportAndroidAutoPatch {
      * Stores playlists collected for one Android Auto Playlists request.
      */
     private static final class PlaylistsFolderLoad {
-        // Use the same YTM object throughout loading, even if MusicBrowserService restarts.
+        // Use the same YTM object throughout pagination, even if MusicBrowserService restarts.
         private final PhoneBrowseClient phoneBrowseClient;
         @GuardedBy("this")
         private final List<LibraryPlaylist> libraryPlaylists = new ArrayList<>();

@@ -20,6 +20,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.util.cloneMutable
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
@@ -78,7 +79,7 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  * Installation order during patching, before the app runs:
  * 1. [hookPlaylistsTitleMediaIds] identifies Playlists in Android Auto's Library by its translated title.
  * 2. [installPhoneBrowseClientBridges] lets Java fetch the phone Library and selected playlists
- *    through YTM's existing request methods.
+ *    through YTM's existing request methods, including Library pagination.
  * 3. [patchPhoneBrowseResponses] lets Java extract Library items and the playlist's
  *    Play button from the data those requests return.
  * 4. [patchPhoneBrowseItem] provides playlist IDs, titles, and artwork.
@@ -139,8 +140,8 @@ private fun BytecodePatchContext.hookPlaylistsTitleMediaIds() {
 
 /**
  * Reuses the YTM object that sends requests for the phone's Library and playlist contents.
- * [addPhoneBrowseRequestMethod] requests either by page ID.
- * [capturePhoneBrowseClientOnServiceCreate] saves the object for Java to call.
+ * [addPhoneBrowseRequestMethod] requests either by page ID; [addLibraryPaginationRequestMethod]
+ * requests more Library items. [capturePhoneBrowseClientOnServiceCreate] saves the object for Java to call.
  */
 private fun BytecodePatchContext.installPhoneBrowseClientBridges() {
     val createRequestFromBrowseEndpointMethod = CreatePhoneBrowseRequestFingerprint.originalMethod
@@ -172,6 +173,11 @@ private fun BytecodePatchContext.installPhoneBrowseClientBridges() {
         createPhoneBrowseRequestMethod,
         sendPhoneBrowseRequestMethod,
         requestBrowseIdField,
+    )
+    addLibraryPaginationRequestMethod(
+        phoneBrowseClientClass,
+        phoneBrowseRequestType,
+        sendPhoneBrowseRequestMethod,
     )
     capturePhoneBrowseClientOnServiceCreate(phoneBrowseClientType)
 }
@@ -223,6 +229,45 @@ private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
 }
 
 // Library pagination requests
+
+/** Requests the next Library page using the pagination command from the previous response. */
+private fun BytecodePatchContext.addLibraryPaginationRequestMethod(
+    phoneBrowseClientClass: MutableClass,
+    phoneBrowseRequestType: String,
+    sendPhoneBrowseRequestMethod: Method,
+) {
+    val getGridItemsMethod = GridRendererItemsFingerprint.originalMethod
+    val getGridPaginationCommandsMethod = gridPaginationCommandsFingerprint(
+        getGridItemsMethod,
+    ).originalMethod
+    // The pagination request accepts the command type created by getGridPaginationCommandsMethod.
+    val paginationReaderReturnTypes =
+        getGridPaginationCommandsMethod.instructions.asSequence()
+        .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
+        .map { reference -> reference.returnType }
+        .toSet()
+    val createPaginationRequestMethod = classDefBy(phoneBrowseClientClass.type).methods.singleOrNull { method ->
+        method.returnType == phoneBrowseRequestType &&
+            method.parameterTypes.singleOrNull()?.toString() in paginationReaderReturnTypes
+    } ?: throw PatchException("Could not resolve the Library pagination request method")
+    val paginationCommandType = createPaginationRequestMethod
+        .parameterTypes.single().toString()
+    phoneBrowseClientClass.addInterfaceMethod(
+        interfaceMethod = extensionInterfaceMethod(
+            EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE,
+            "patch_requestLibraryPagination",
+        ),
+        registerCount = 3,
+        instructions = """
+            check-cast p1, $paginationCommandType
+            invoke-virtual { p0, p1 }, $createPaginationRequestMethod
+            move-result-object p1
+            invoke-virtual { p0, p1, p2 }, $sendPhoneBrowseRequestMethod
+            move-result-object p1
+            return-object p1
+        """,
+    )
+}
 
 // Obtain YTM's object for sending Library and playlist requests
 
@@ -289,6 +334,7 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
  * YTM nests the lists inside TabRenderer and section data. [addPhoneBrowsePageInterfaces] installs
  * PhoneBrowseTab and SectionList on the YTM objects that read this data, so Java can reach the lists.
  * [addGridRendererInterface] provides Library items.
+ * Pagination may return Library items directly or in its first section; [addPhoneBrowseResponseInterface] handles both.
  */
 private fun BytecodePatchContext.patchPhoneBrowseResponses() {
     addPhoneBrowseResponseInterface()
@@ -296,14 +342,52 @@ private fun BytecodePatchContext.patchPhoneBrowseResponses() {
     addGridRendererInterface()
 }
 
+// Library pagination responses
+
+/**
+ * Reuses YTM's Library pagination parser without creating the phone's Library list UI.
+ * It reads items directly or from the first section. An unrecognized result returns null.
+ */
+private fun BytecodePatchContext.addPaginatedLibraryGridDecoder(
+    decodePaginatedLibraryGridMethod: Method,
+): Method {
+    // YTM's pagination parser only needs the response data.
+    // Copy it as a static method so Android Auto can use it without creating
+    // the object that manages the phone's Library list.
+    val clonedDecoderMethod = decodePaginatedLibraryGridMethod.cloneMutable(
+        name = "patch_decodePaginatedLibraryGrid",
+        accessFlags = AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+        // The original method uses p0 for "this" and p1 for the response.
+        // Keep an unused first argument so the copied code still finds the response in p1.
+        parameters = listOf(
+            ImmutableMethodParameter(decodePaginatedLibraryGridMethod.definingClass, null, null),
+        ) + decodePaginatedLibraryGridMethod.parameters,
+    )
+    mutableClassDefBy(decodePaginatedLibraryGridMethod.definingClass).methods.add(
+        clonedDecoderMethod,
+    )
+    return clonedDecoderMethod
+}
+
 // Read returned Library and playlist data
 
 /**
  * Gives Java access to the lists and playlist Play button in YTM's returned phone data.
+ * The pagination getter uses YTM's parser copied by [addPaginatedLibraryGridDecoder].
  * [addPlaylistPlayButtonMediaIdGetter] adds access to a media ID that starts the selected playlist.
  */
 private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
     val getTabsMethod = PhoneBrowseResponseTabsFingerprint.originalMethod
+    val decodePaginatedLibraryGridMethod = LibraryPaginationDecoderFingerprint.originalMethod
+    val getLibraryPaginationResponseProtoMethod = classDefBy(
+        getTabsMethod.definingClass,
+    ).methods.singleOrNull { method ->
+        !AccessFlags.STATIC.isSet(method.accessFlags) && method.parameterTypes.isEmpty() &&
+        method.returnType == decodePaginatedLibraryGridMethod.parameterTypes.single().toString()
+    } ?: throw PatchException("Could not resolve the Library pagination response method")
+    val paginatedLibraryGridDecoderMethod = addPaginatedLibraryGridDecoder(
+        decodePaginatedLibraryGridMethod,
+    )
     val encodeCommandMediaIdMethod = EncodeCommandMediaIdFingerprint.originalMethod
     val phoneBrowseResponseClass = mutableClassDefBy(getTabsMethod.definingClass)
     phoneBrowseResponseClass.interfaces.add(EXTENSION_PHONE_BROWSE_RESPONSE_INTERFACE)
@@ -324,7 +408,22 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
             return-object p0
         """,
     )
-
+    phoneBrowseResponseClass.addInterfaceMethod(
+        interfaceMethod = extensionInterfaceMethod(
+            EXTENSION_PHONE_BROWSE_RESPONSE_INTERFACE,
+            "patch_getPaginatedLibraryGrid",
+        ),
+        registerCount = 2,
+        instructions = """
+            invoke-virtual { p0 }, $getLibraryPaginationResponseProtoMethod
+            move-result-object p0
+            const/4 v0, 0x0
+            invoke-static { v0, p0 }, $paginatedLibraryGridDecoderMethod
+            move-result-object p0
+            check-cast p0, $EXTENSION_GRID_RENDERER_INTERFACE
+            return-object p0
+        """,
+    )
 }
 
 // Play a selected playlist: the Play button above the song list
@@ -538,8 +637,9 @@ private fun BytecodePatchContext.addSectionListInterface(
 /** Provides the Library's playlists, artists, and podcasts, plus the commands used to load more of them. */
 private fun BytecodePatchContext.addGridRendererInterface() {
     val getItemsMethod = GridRendererItemsFingerprint.originalMethod
+    val getPaginationCommandsMethod = gridPaginationCommandsFingerprint(getItemsMethod).originalMethod
     // The getters below call these private methods from the GridRenderer class.
-    listOf(getItemsMethod).forEach { method ->
+    listOf(getItemsMethod, getPaginationCommandsMethod).forEach { method ->
         mutableClassDefBy(method.definingClass).findMutableMethodOf(method).apply {
             accessFlags = accessFlags.toPublicAccessFlags()
         }
@@ -560,7 +660,18 @@ private fun BytecodePatchContext.addGridRendererInterface() {
             return-object p0
         """,
     )
-
+    gridRendererClass.addInterfaceMethod(
+        interfaceMethod = extensionInterfaceMethod(
+            EXTENSION_GRID_RENDERER_INTERFACE,
+            "patch_getPaginationCommands",
+        ),
+        registerCount = 1,
+        instructions = """
+            invoke-static { p0 }, $getPaginationCommandsMethod
+            move-result-object p0
+            return-object p0
+        """,
+    )
 }
 
 // endregion
