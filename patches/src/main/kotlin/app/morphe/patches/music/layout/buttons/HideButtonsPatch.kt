@@ -33,7 +33,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideBut
 @Suppress("unused")
 val hideButtonsPatch = bytecodePatch(
     name = "Hide buttons",
-    description = "Adds options to hide the cast, history, notification, and search buttons."
+    description = "Adds options to hide the cast, history, notification, search, and search bar microphone buttons."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -46,12 +46,16 @@ val hideButtonsPatch = bytecodePatch(
         val playerOverlayChip = resourceId(ResourceType.ID, "player_overlay_chip")
         val searchButton = resourceId(ResourceType.LAYOUT, "search_button")
         val topBarMenuItemImageView = resourceId(ResourceType.ID, "top_bar_menu_item_image_view")
+        // 1. ADDED: Locate the layout element identifier used for the microphone button layout 
+        val searchMicButton = resourceId(ResourceType.ID, "microphone_button")
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),
             SwitchPreference("morphe_music_hide_history_button"),
             SwitchPreference("morphe_music_hide_notification_button"),
-            SwitchPreference("morphe_music_hide_search_button")
+            SwitchPreference("morphe_music_hide_search_button"),
+            // 2. ADDED: Insert a toggle checkbox preference directly into the user settings menu layout
+            SwitchPreference("morphe_music_hide_search_mic_button")
         )
 
         // Region for hide history button in the top bar.
@@ -85,11 +89,13 @@ val hideButtonsPatch = bytecodePatch(
             )
         }
 
-        // Region for hide cast, search and notification buttons in the top bar.
+        // Region for hide cast, search, notification, and search microphone buttons in the top bar.
+        // 3. UPDATED: Appended the microphone footprint method array loop maps to inject the bytecode instructions
         arrayOf(
             Triple(PlayerOverlayChipFingerprint, playerOverlayChip, "hideCastButton"),
             Triple(SearchActionViewFingerprint, searchButton, "hideSearchButton"),
-            Triple(TopBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton")
+            Triple(TopBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton"),
+            Triple(SearchMicButtonFingerprint, searchMicButton, "hideSearchMicButton")
         ).forEach { (fingerprint, resourceIdLiteral, methodName) ->
             fingerprint.method.apply {
                 val resourceIndex = indexOfFirstLiteralInstructionOrThrow(resourceIdLiteral)
