@@ -43,12 +43,13 @@ import app.morphe.extension.shared.Utils;
  * {@link #requestLibraryPage} follows Library pagination and collects playlists with their titles and artwork.
  * {@link #deliverAndroidAutoPlaylists} returns them when loading finishes.
  *
- * <p>{@link #requestEachPlaylist} reads each playlist's Play button before returning the list.
+ * <p>{@link #requestEachPlaylist} reads each playlist's songs and Play button before returning the list.
  * Android Auto sends the selected item's media ID to YTM for playback.
  */
 @SuppressWarnings("unused")
 public final class SupportAndroidAutoPatch {
     private static final String PHONE_LIBRARY_BROWSE_ID = "FEmusic_library_landing";
+    private static final String LIKED_MUSIC_BROWSE_ID = "VLLM";
     private static final String EPISODES_FOR_LATER_BROWSE_ID = "VLSE";
     private static final String PLAYLISTS_TITLE_RESOURCE_NAME = "library_playlists_shelf_title";
     private static final Executor BACKGROUND_EXECUTOR = Utils::runOnBackgroundThread;
@@ -84,7 +85,7 @@ public final class SupportAndroidAutoPatch {
         @Nullable SectionList patch_getSectionList();
     }
 
-    /** Groups of Library items in a phone response. */
+    /** Groups of Library items ({@link GridRenderer}) or playlist songs ({@link PlaylistContents}) in a phone response. */
     public interface SectionList {
         @NonNull Iterable<?> patch_getContents();
     }
@@ -95,6 +96,11 @@ public final class SupportAndroidAutoPatch {
         @NonNull Iterable<?> patch_getItems();
         // YTM's pagination commands: NEXT requests the next Library page; RELOAD refreshes the list.
         @NonNull Iterable<?> patch_getPaginationCommands();
+    }
+
+    /** Playlist contents include songs and the "Add a song" button. */
+    public interface PlaylistContents {
+        @NonNull Iterable<PhoneBrowseItem> patch_getItems();
     }
 
     /** A request from Android Auto to load content, such as its main tabs, Playlists, or a podcast list. */
@@ -113,6 +119,12 @@ public final class SupportAndroidAutoPatch {
          * {@link SupportAndroidAutoPatch#collectPlaylistsFromGrid} skips that item.
          */
         @Nullable String patch_getPlaylistBrowseId();
+        /**
+         * YTM's media ID for the item's command. {@link #patch_hasPlayableVideoId} checks whether it identifies a song.
+         */
+        @Nullable String patch_getCommandMediaId();
+        // YTM calls a song's identifier a video ID, even when only audio is played.
+        boolean patch_hasPlayableVideoId();
         @Nullable Uri patch_getArtworkUri();
         @Nullable CharSequence patch_getTitle();
         @Nullable CharSequence patch_getSubtitle();
@@ -367,7 +379,11 @@ public final class SupportAndroidAutoPatch {
                 future.addListener(() -> {
                     try {
                         PhoneBrowseResponse response = future.get();
-                        String playbackMediaId = response.patch_getPlaylistPlayButtonMediaId();
+                        PhoneBrowseItem firstSong = findFirstPlayableSong(response);
+                        String playbackMediaId = firstSong == null ? null
+                                : LIKED_MUSIC_BROWSE_ID.equals(playlist.playlistBrowseId)
+                                        ? firstSong.patch_getCommandMediaId()
+                                        : response.patch_getPlaylistPlayButtonMediaId();
                         if (playbackMediaId != null) {
                             synchronized (load) {
                                 items[playlistIndex] = createPlaylistItem(playlist, playbackMediaId);
@@ -444,4 +460,22 @@ public final class SupportAndroidAutoPatch {
             String playlistBrowseId, String title, String subtitle, Uri artworkUri) {
     }
 
+    // Check playlist contents
+
+    private static PhoneBrowseItem findFirstPlayableSong(PhoneBrowseResponse playlistResponse) {
+        for (PhoneBrowseTab tab : playlistResponse.patch_getTabs()) {
+            SectionList sectionList = tab.patch_getSectionList();
+            if (sectionList == null) continue;
+            for (Object sectionContent : sectionList.patch_getContents()) {
+                if (!(sectionContent instanceof PlaylistContents)) continue;
+                for (PhoneBrowseItem playlistItem :
+                        ((PlaylistContents) sectionContent).patch_getItems()) {
+                    // The "Add a song" button has a command but no song ID; exclude it from the song check.
+                    if (!playlistItem.patch_hasPlayableVideoId()) continue;
+                    if (playlistItem.patch_getCommandMediaId() != null) return playlistItem;
+                }
+            }
+        }
+        return null;
+    }
 }

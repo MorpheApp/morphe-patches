@@ -55,6 +55,8 @@ private const val EXTENSION_SECTION_LIST_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$SectionList;"
 private const val EXTENSION_GRID_RENDERER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$GridRenderer;"
+private const val EXTENSION_PLAYLIST_CONTENTS_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PlaylistContents;"
 private const val EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$AndroidAutoBrowseRequest;"
 private const val EXTENSION_PHONE_BROWSE_ITEM_INTERFACE =
@@ -80,9 +82,10 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  * 1. [hookPlaylistsTitleMediaIds] identifies Playlists in Android Auto's Library by its translated title.
  * 2. [installPhoneBrowseClientBridges] lets Java fetch the phone Library and selected playlists
  *    through YTM's existing request methods, including Library pagination.
- * 3. [patchPhoneBrowseResponses] lets Java extract Library items and the playlist's
+ * 3. [patchPhoneBrowseResponses] lets Java extract Library items, playlist songs, and the playlist's
  *    Play button from the data those requests return.
- * 4. [patchPhoneBrowseItem] provides playlist IDs, titles, and artwork.
+ * 4. [patchPhoneBrowseItem] provides playlist IDs, titles, and artwork, and distinguishes songs
+ *    from the Add a song button.
  * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning YTM's empty list.
  */
 @Suppress("unused")
@@ -333,13 +336,14 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
  * Lets Java extract the lists returned by YTM's phone Library and playlist requests.
  * YTM nests the lists inside TabRenderer and section data. [addPhoneBrowsePageInterfaces] installs
  * PhoneBrowseTab and SectionList on the YTM objects that read this data, so Java can reach the lists.
- * [addGridRendererInterface] provides Library items.
+ * [addGridRendererInterface] provides Library items; [addPlaylistContentsInterface] provides playlist songs.
  * Pagination may return Library items directly or in its first section; [addPhoneBrowseResponseInterface] handles both.
  */
 private fun BytecodePatchContext.patchPhoneBrowseResponses() {
     addPhoneBrowseResponseInterface()
     addPhoneBrowsePageInterfaces()
     addGridRendererInterface()
+    addPlaylistContentsInterface()
 }
 
 // Library pagination responses
@@ -674,16 +678,53 @@ private fun BytecodePatchContext.addGridRendererInterface() {
     )
 }
 
+/** Reads playlist contents for the empty-playlist check and Liked Music playback. */
+private fun BytecodePatchContext.addPlaylistContentsInterface() {
+    val phoneBrowseItemType = PhoneBrowseItemFingerprint
+        .instructionMatches
+        .single { match -> match.instruction.opcode == Opcode.CONST_CLASS }
+        .instruction
+        .getReference<TypeReference>()!!
+        .type
+    val getItemsMethod = playlistItemsFingerprint(phoneBrowseItemType).originalMethod
+    // The getter below calls this private method from the playlist contents class.
+    mutableClassDefBy(getItemsMethod.definingClass).findMutableMethodOf(getItemsMethod).apply {
+        accessFlags = accessFlags.toPublicAccessFlags()
+    }
+
+    val playlistContentsType = getItemsMethod.parameterTypes.first().toString()
+    val playlistContentsClass = mutableClassDefBy(playlistContentsType)
+    playlistContentsClass.interfaces.add(EXTENSION_PLAYLIST_CONTENTS_INTERFACE)
+    // YTM can return the song/button data directly or wrap it for the phone's list.
+    // PhoneBrowseItem's getters are installed on the original data type.
+    val createUiObjects = 0x0
+    playlistContentsClass.addInterfaceMethod(
+        interfaceMethod = extensionInterfaceMethod(
+            EXTENSION_PLAYLIST_CONTENTS_INTERFACE,
+            "patch_getItems",
+        ),
+        registerCount = 2,
+        instructions = """
+            const/4 v0, $createUiObjects
+            invoke-static { p0, v0 }, $getItemsMethod
+            move-result-object p0
+            return-object p0
+        """,
+    )
+}
+
 // endregion
 
 // region Library and playlist items
 
 /**
  * YTM uses one item type for Library content, playlist songs, and the Add a song button.
- * [addPlaylistBrowseIdGetter] identifies playlists among Library items.
- * [addTextGetter] provides titles; [findPhoneBrowseItemArtworkField]
+ * [addPlaylistBrowseIdGetter] identifies playlists among Library items; [addVideoIdCheck] identifies
+ * songs among playlist contents. [addTextGetter] provides titles; [findPhoneBrowseItemArtworkField]
  * and [addArtworkUriGetter] use YTM's thumbnail code to provide artwork URIs.
  * YTM's phone list has separate commands for single tap and double tap.
+ * Playback through [addCommandMediaIdGetter] uses the default single tap command,
+ * or double tap if the single tap command is absent. The song ID check must inspect that same command.
  */
 private fun BytecodePatchContext.patchPhoneBrowseItem() {
     val phoneBrowseItemType = PhoneBrowseItemFingerprint
@@ -736,6 +777,22 @@ private fun BytecodePatchContext.patchPhoneBrowseItem() {
         doubleTapCommandField,
         commandToBrowseEndpointMethod,
         browseEndpointBrowseIdField,
+    )
+    val readItemCommand = """
+        iget-object v0, p0, $singleTapCommandField
+        if-nez v0, :have_command
+        iget-object v0, p0, $doubleTapCommandField
+        :have_command
+    """
+    phoneBrowseItemClass.addCommandMediaIdGetter(
+        extensionInterfaceMethod(EXTENSION_PHONE_BROWSE_ITEM_INTERFACE, "patch_getCommandMediaId"),
+        readItemCommand,
+        encodeCommandMediaIdMethod,
+    )
+    phoneBrowseItemClass.addVideoIdCheck(
+        extensionInterfaceMethod(EXTENSION_PHONE_BROWSE_ITEM_INTERFACE, "patch_hasPlayableVideoId"),
+        readItemCommand,
+        findWatchEndpointAccess(itemCommandType),
     )
     phoneBrowseItemClass.addTextGetter(
         extensionInterfaceMethod(EXTENSION_PHONE_BROWSE_ITEM_INTERFACE, "patch_getTitle"),
@@ -790,7 +847,140 @@ private fun MutableClass.addPlaylistBrowseIdGetter(
 
 // Read the playback command attached to a song
 
+/**
+ * Converts a song's playback command into the media ID accepted by YTM's onPlayFromMediaId callback.
+ * [addVideoIdCheck] excludes the Add a song button, whose command can also be converted to a media ID.
+ */
+private fun MutableClass.addCommandMediaIdGetter(
+    interfaceMethod: Method,
+    readItemCommand: String,
+    encodeCommandMediaIdMethod: Method,
+) {
+    addInterfaceMethod(
+        interfaceMethod = interfaceMethod,
+        registerCount = 2,
+        instructions = """
+            $readItemCommand
+            if-nez v0, :encode_command_media_id
+            # Reset v0 to an explicit null so Android's bytecode verifier accepts the String return type.
+            const/4 v0, 0x0
+            goto :return_command_media_id
+
+            :encode_command_media_id
+            invoke-static { v0 }, $encodeCommandMediaIdMethod
+            move-result-object v0
+            check-cast v0, Ljava/lang/String;
+            :return_command_media_id
+            return-object v0
+        """,
+    )
+}
+
 // Check playlist contents
+
+/**
+ * Fields and methods for reading a song ID from WatchEndpoint, YTM's playback command data.
+ */
+private data class WatchEndpointAccess(
+    val protobufExtensionField: FieldReference,
+    val messageType: String,
+    val videoIdField: FieldReference,
+    val protobufExtensionSetField: FieldReference,
+    val protobufExtensionKeyField: FieldReference,
+    val hasProtobufExtensionMethod: Method,
+    val getProtobufExtensionMethod: Method,
+)
+
+/** Identifies where YTM stores a song's ID for the check installed by [addVideoIdCheck]. */
+private fun BytecodePatchContext.findWatchEndpointAccess(commandType: String): WatchEndpointAccess {
+    val watchEndpointInitializer = WatchEndpointExtensionFingerprint.originalMethod
+    val watchEndpointProtobufExtensionField = watchEndpointInitializer.instructions
+        .filter { instruction -> instruction.opcode == Opcode.SPUT_OBJECT }
+        .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
+        .singleOrNull { field -> field.definingClass == watchEndpointInitializer.definingClass }
+        ?: throw PatchException("Could not resolve the WatchEndpoint extension field")
+    val watchEndpointType = watchEndpointInitializer.instructions
+        .filter { instruction -> instruction.opcode == Opcode.CONST_CLASS }
+        .mapNotNull { instruction -> instruction.getReference<TypeReference>()?.type }
+        .singleOrNull()
+        ?: throw PatchException("Could not resolve the WatchEndpoint message type")
+    // YTM's WatchEndpoint resolver checks d for an empty video ID.
+    val watchEndpointVideoIdField = classDefBy(watchEndpointType).fields.singleOrNull { field ->
+        !AccessFlags.STATIC.isSet(field.accessFlags) &&
+            field.name == "d" && field.type == "Ljava/lang/String;"
+    } ?: throw PatchException("Could not resolve WatchEndpoint.videoId")
+
+    val commandSuperclass = classDefBy(commandType).superclass
+        ?: throw PatchException("Could not resolve the command superclass")
+    // YTM reads the inherited j field to check or retrieve a command's protobuf extensions.
+    val protobufExtensionSetField = classDefBy(commandSuperclass).fields.singleOrNull { field ->
+        !AccessFlags.STATIC.isSet(field.accessFlags) && field.name == "j"
+    } ?: throw PatchException("Could not resolve the command extension set")
+    val protobufExtensionSetClass = classDefBy(protobufExtensionSetField.type)
+    val getWatchEndpointMethod = protobufExtensionSetClass.methods.singleOrNull { method ->
+        AccessFlags.PUBLIC.isSet(method.accessFlags) &&
+            !AccessFlags.STATIC.isSet(method.accessFlags) &&
+            method.returnType == "Ljava/lang/Object;" &&
+            method.parameterTypes.singleOrNull()?.startsWith("L") == true
+    } ?: throw PatchException("Could not resolve the method that reads a protobuf extension")
+    // The getter's parameter type identifies the lookup key stored in the extension registration.
+    val protobufExtensionKeyType = getWatchEndpointMethod.parameterTypes.single().toString()
+    val protobufExtensionKeyField = classDefBy(watchEndpointProtobufExtensionField.type).fields.singleOrNull { field ->
+        !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == protobufExtensionKeyType
+    } ?: throw PatchException("Could not resolve the WatchEndpoint extension key")
+    val hasWatchEndpointMethod = protobufExtensionSetClass.methods.singleOrNull { method ->
+        method.returnType == "Z" &&
+            method.parameterTypes.map(CharSequence::toString) == listOf(protobufExtensionKeyType)
+    } ?: throw PatchException("Could not resolve the method that checks for WatchEndpoint")
+
+    return WatchEndpointAccess(
+        protobufExtensionField = watchEndpointProtobufExtensionField,
+        messageType = watchEndpointType,
+        videoIdField = watchEndpointVideoIdField,
+        protobufExtensionSetField = protobufExtensionSetField,
+        protobufExtensionKeyField = protobufExtensionKeyField,
+        hasProtobufExtensionMethod = hasWatchEndpointMethod,
+        getProtobufExtensionMethod = getWatchEndpointMethod,
+    )
+}
+
+/**
+ * The Add a song button can have a media ID, so an ID alone does not prove a playlist contains songs.
+ * [findWatchEndpointAccess] locates the song ID inside a playback command.
+ * Use the same command as [addCommandMediaIdGetter] when checking for that ID.
+ */
+private fun MutableClass.addVideoIdCheck(
+    interfaceMethod: Method,
+    readItemCommand: String,
+    watchEndpoint: WatchEndpointAccess,
+) {
+    addInterfaceMethod(
+        interfaceMethod = interfaceMethod,
+        registerCount = 4,
+        instructions = """
+            $readItemCommand
+            if-eqz v0, :no_video_id
+            iget-object v0, v0, ${watchEndpoint.protobufExtensionSetField}
+            sget-object v1, ${watchEndpoint.protobufExtensionField}
+            iget-object v1, v1, ${watchEndpoint.protobufExtensionKeyField}
+            invoke-virtual { v0, v1 }, ${watchEndpoint.hasProtobufExtensionMethod}
+            move-result v2
+            if-eqz v2, :no_video_id
+            invoke-virtual { v0, v1 }, ${watchEndpoint.getProtobufExtensionMethod}
+            move-result-object v0
+            check-cast v0, ${watchEndpoint.messageType}
+            iget-object v0, v0, ${watchEndpoint.videoIdField}
+            invoke-virtual { v0 }, Ljava/lang/String;->isEmpty()Z
+            move-result v0
+            if-nez v0, :no_video_id
+            const/4 v0, 0x1
+            return v0
+            :no_video_id
+            const/4 v0, 0x0
+            return v0
+        """,
+    )
+}
 
 // Read playlist titles and artwork
 

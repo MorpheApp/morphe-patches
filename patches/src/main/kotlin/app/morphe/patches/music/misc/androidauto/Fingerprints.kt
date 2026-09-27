@@ -54,6 +54,7 @@ private const val NEXT_COMMAND_PRESENT_FLAG = 0x1L
 private const val RELOAD_COMMAND_PRESENT_FLAG = 0x2L
 private const val PLAY_BUTTON_PROTO_FIELD = 65_153_809L
 private const val THUMBNAIL_PROTO_FIELD = 164_480_666L
+private const val WATCH_ENDPOINT_PROTO_FIELD = 48_687_757L
 
 // Bypass certificate checks
 
@@ -356,6 +357,16 @@ internal fun gridPaginationCommandsFingerprint(getGridItemsMethod: Method) = Fin
     custom = { method, _ -> method != getGridItemsMethod },
 )
 
+// Read a selected playlist's songs
+
+/** Reads a playlist's songs and Add a song button. */
+internal fun playlistItemsFingerprint(phoneBrowseItemType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/util/List;",
+    parameters = listOf("L", "Z"),
+    filters = listOf(checkCast(phoneBrowseItemType)),
+)
+
 // Library pagination responses
 
 /** Extracts Library items returned by pagination, either directly from the response or from its first section. */
@@ -498,6 +509,16 @@ internal object EncodeCommandMediaIdFingerprint : Fingerprint(
                 }
         }
     },
+)
+
+// Check playlist contents
+
+/** WatchEndpoint: YTM's data identifying the song or video to play. */
+internal object WatchEndpointExtensionFingerprint : Fingerprint(
+    name = "<clinit>",
+    returnType = "V",
+    parameters = emptyList(),
+    filters = listOf(literal(WATCH_ENDPOINT_PROTO_FIELD)),
 )
 
 // Read the command from the Play button above the playlist's songs
