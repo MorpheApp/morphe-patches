@@ -86,7 +86,7 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
             // Their config must not be overridden, so find out which requests are for the watch page.
             // Some app versions build requests in more than one class (21.16 has two, and the watch
             // page 'next' request uses the second one), so every request class is hooked.
-            BuildInnerTubeProtoRequestUriFingerprint.matchAll().distinctBy { it.classDef.type }.forEach { uriMatch ->
+            BuildInnerTubeProtoRequestUriFingerprint.matchAll().forEach { uriMatch ->
                 // uri.buildUpon().appendEncodedPath("youtubei/v1").appendEncodedPath(this.request.endpoint)
                 val (requestField, endpointField) = uriMatch.method.let { method ->
                     val appendEndpointIndex = method.indexOfFirstInstructionReversedOrThrow(
@@ -132,7 +132,7 @@ internal val restoreOldVideoActionBarPatch = bytecodePatch(
                     )
                 }
 
-                InnerTubeRequestBodyFingerprint.matchAllOrNull(uriMatch.classDef)?.forEach { bodyMatch ->
+                InnerTubeRequestBodyFingerprint.matchAll(uriMatch.classDef).forEach { bodyMatch ->
                     bodyMatch.method.apply {
                         findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                             val register = getInstruction<OneRegisterInstruction>(index).registerA
