@@ -90,7 +90,7 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  *    from the Add a song button.
  * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning YTM's empty list.
  * 6. [installPlaybackCallbackBridges] lets Java load a selected playlist before asking YTM to play it,
- *    using YTM's playback thread.
+ *    and cancel pending playback on Pause/Stop.
  */
 @Suppress("unused")
 val supportAndroidAutoPatch = bytecodePatch(
@@ -1219,6 +1219,7 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
 
 /**
  * [hookPlaylistPlayback] lets Java turn a selected playlist into YTM's playback media ID.
+ * [hookPlaylistPlaybackCancellation] prevents a pending playlist selection from starting after Pause/Stop.
  * [addPlaybackCallbackAccess] keeps playback on YTM's own thread.
  */
 private fun BytecodePatchContext.installPlaybackCallbackBridges() {
@@ -1232,6 +1233,7 @@ private fun BytecodePatchContext.installPlaybackCallbackBridges() {
 
     addPlaybackCallbackAccess(callbackClass, delegateField)
     hookPlaylistPlayback(playFromMediaIdMethod)
+    hookPlaylistPlaybackCancellation(callbackClass)
 }
 
 /** Exposes the callback's Handler so playlist playback runs on YTM's playback thread. */
@@ -1282,6 +1284,23 @@ private fun hookPlaylistPlayback(playFromMediaIdMethod: MutableMethod) {
         """,
         ExternalLabel("resume", playFromMediaIdMethod.getInstruction<Instruction>(0)),
     )
+}
+
+/**
+ * Hooks Pause/Stop so Java's `cancelPendingPlaylistPlayback` prevents a pending selection
+ * from starting playback.
+ */
+private fun hookPlaylistPlaybackCancellation(callbackClass: MutableClass) {
+    // onPause/onStop are Android callback names and are not obfuscated.
+    for (name in listOf("onPause", "onStop")) {
+        val transportMethod = callbackClass.methods.single { method ->
+            method.name == name && method.parameterTypes.isEmpty() && method.returnType == "V"
+        }
+        transportMethod.addInstructions(
+            0,
+            "invoke-static {}, $EXTENSION_CLASS->cancelPendingPlaylistPlayback()V",
+        )
+    }
 }
 
 // endregion

@@ -65,7 +65,7 @@ public final class SupportAndroidAutoPatch {
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds =
             ConcurrentHashMap.newKeySet();
-    // Selecting music changes this number; ignore pending requests with older numbers.
+    // Selecting music or pressing Pause/Stop changes this number; ignore pending requests with older numbers.
     private static final AtomicLong playRequestGeneration = new AtomicLong();
     /** YTM's object for sending phone Library and playlist requests, reused to supply Android Auto. */
     public interface PhoneBrowseClient {
@@ -486,6 +486,14 @@ public final class SupportAndroidAutoPatch {
     }
 
     /**
+     * Injection point. Prevent a pending playlist selection from starting playback after Pause/Stop.
+     */
+    public static void cancelPendingPlaylistPlayback() {
+        // YTM cannot cancel a playback command it has not received yet.
+        playRequestGeneration.incrementAndGet();
+    }
+
+    /**
      * Loads one selected playlist and asks YTM to play it if it contains songs.
      * {@link #start} calls YTM's request method on the caller's thread; the completed response
      * runs through {@link #readResponse} on {@link SupportAndroidAutoPatch#BACKGROUND_EXECUTOR}.
@@ -497,7 +505,7 @@ public final class SupportAndroidAutoPatch {
         // Same object as callback; the added interface exposes its playback thread.
         private final PlaybackCallback callbackAccess;
         private final String playlistBrowseId;
-        // Reject this selection after another selection.
+        // Reject this selection after another selection or Pause/Stop.
         private final long requestGeneration;
         // Discard this selection if YTM replaces the original request client.
         private final PhoneBrowseClient browseClientAtStart;
