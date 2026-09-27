@@ -117,7 +117,7 @@ public final class LyricsTranslator {
                 String model = Settings.LYRICS_AI_MODEL.get();
 
                 List<String> aiCached = LyricsCache.getTranslationAI(
-                        track, source, language, lines.size());
+                        track, source, language, lines);
                 if (aiCached != null) {
                     Utils.runOnMainThread(() -> callback.onTranslated(aiCached, false, true, model));
                     return;
@@ -126,17 +126,17 @@ public final class LyricsTranslator {
                 List<String> aiResult = aiTranslate(lines, language, track.title(),
                         track.artist(), baseUrl, apiToken, model);
                 if (aiResult != null) {
-                    LyricsCache.putTranslationAI(track, source, language, aiResult);
+                    LyricsCache.putTranslationAI(track, source, language, lines, aiResult);
                     Utils.runOnMainThread(() -> callback.onTranslated(aiResult, false, true, model));
                     return;
                 }
             }
 
-            List<String> translated = LyricsCache.getTranslation(track, source, language, lines.size());
+            List<String> translated = LyricsCache.getTranslation(track, source, language, lines);
             if (translated == null) {
                 translated = translateOnline(lines, language);
                 if (translated != null) {
-                    LyricsCache.putTranslation(track, source, language, translated);
+                    LyricsCache.putTranslation(track, source, language, lines, translated);
                 }
             }
 

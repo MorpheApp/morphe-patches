@@ -30,7 +30,9 @@ import app.morphe.extension.shared.Logger;
  * scrobbling observers (which read the original metadata at that site) are never affected.
  *
  * <p>All fields other than title and artist, notably the album art, are preserved by copying
- * the original metadata with {@link MediaMetadata.Builder}.
+ * the original metadata with {@link MediaMetadata.Builder}. The display variants of the title
+ * and of the artist are rewritten as well, because the lock screen prefers them over the plain
+ * ones when both are present.
  */
 @SuppressWarnings("unused")
 public final class LockScreenLyrics {
@@ -101,6 +103,16 @@ public final class LockScreenLyrics {
     }
 
     private static void tick() {
+        try {
+            push();
+        } catch (Exception ex) {
+            Logger.printException(() -> "tick failure", ex);
+            ticker.stop();
+            lastPushedTitle = null;
+        }
+    }
+
+    private static void push() {
         WeakReference<MediaSession> reference = sessionRef;
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()
                 || reference == null || originalMetadata == null) {
@@ -125,9 +137,15 @@ public final class LockScreenLyrics {
             return;
         }
 
+        MediaMetadata metadata = buildMetadata(newTitle, matched);
+        if (metadata == null) {
+            ticker.schedule();
+            return;
+        }
+
+        session.setMetadata(metadata);
         lastPushedTitle = newTitle;
         needsRepush = false;
-        session.setMetadata(buildMetadata(newTitle, matched));
 
         ticker.schedule();
     }
@@ -157,16 +175,17 @@ public final class LockScreenLyrics {
         if (builder == null) {
             return null;
         }
-        builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
         String artist = realArtist == null ? "" : realArtist;
         String trackTitle = realTitle;
+        String display = artist;
         if (matched && trackTitle != null && !trackTitle.isEmpty()) {
-            String display = new TrackInfo(trackTitle, artist, "", 0)
+            display = new TrackInfo(trackTitle, artist, "", 0)
                     .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
-            builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);
-        } else {
-            builder.putString(MediaMetadata.METADATA_KEY_ARTIST, artist);
         }
+        builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
+        builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE, title);
+        builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);
+        builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, display);
         return builder.build();
     }
 }

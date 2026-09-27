@@ -68,7 +68,7 @@ public final class LyricsRomanizer {
                 String model = Settings.LYRICS_AI_MODEL.get();
 
                 List<LyricsLine> aiCached = LyricsCache.getRomanizationAI(
-                        track, source, lines.size());
+                        track, source, lines);
                 if (aiCached != null) {
                     Utils.runOnMainThread(() -> callback.onRomanized(aiCached, false, true, model, false));
                     return;
@@ -78,18 +78,18 @@ public final class LyricsRomanizer {
                         track.artist(), baseUrl, apiToken, model);
                 if (aiResult != null) {
                     List<LyricsLine> aiLines = toLines(aiResult);
-                    LyricsCache.putRomanizationAI(track, source, aiLines);
+                    LyricsCache.putRomanizationAI(track, source, lines, aiLines);
                     Utils.runOnMainThread(() -> callback.onRomanized(aiLines, false, true, model, false));
                     return;
                 }
             }
 
-            List<LyricsLine> romanized = LyricsCache.getRomanization(track, source, lines.size());
+            List<LyricsLine> romanized = LyricsCache.getRomanization(track, source, lines);
             if (romanized == null) {
                 List<String> romanizedText = romanizeOnline(lines);
                 if (romanizedText != null) {
                     romanized = toLines(romanizedText);
-                    LyricsCache.putRomanization(track, source, romanized);
+                    LyricsCache.putRomanization(track, source, lines, romanized);
                 }
             }
 

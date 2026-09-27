@@ -73,60 +73,67 @@ final class LyricsCache {
     static List<String> getTranslation(TrackInfo track,
                                        String source,
                                        String language,
-                                       int expectedLineCount) {
-        return readStringList(translationFile(track, source, language), expectedLineCount);
+                                       List<String> sourceLines) {
+        return readStringList(translationFile(track, source, language, sourceLines), sourceLines);
     }
 
     static void putTranslation(TrackInfo track,
                                 String source,
                                 String language,
+                                List<String> sourceLines,
                                 List<String> lines) {
-        writeStringList(translationFile(track, source, language), lines);
+        writeStringList(translationFile(track, source, language, sourceLines), lines);
     }
 
     @Nullable
     static List<String> getTranslationAI(TrackInfo track, String source,
-            String language, int expectedLineCount) {
-        return readStringList(aiTranslationFile(track, source, language), expectedLineCount);
+            String language, List<String> sourceLines) {
+        return readStringList(aiTranslationFile(track, source, language, sourceLines),
+                sourceLines);
     }
 
     static void putTranslationAI(TrackInfo track, String source,
-            String language, List<String> lines) {
-        writeStringList(aiTranslationFile(track, source, language), lines);
+            String language, List<String> sourceLines, List<String> lines) {
+        writeStringList(aiTranslationFile(track, source, language, sourceLines), lines);
     }
 
     @Nullable
     static List<LyricsLine> getRomanization(TrackInfo track,
                                             String source,
-                                            int expectedLineCount) {
-        return readLyricsLineList(romanizationFile(track, source), expectedLineCount);
+                                            List<String> sourceLines) {
+        return readLyricsLineList(romanizationFile(track, source, sourceLines), sourceLines);
     }
 
     static void putRomanization(TrackInfo track,
                                 String source,
+                                List<String> sourceLines,
                                 List<LyricsLine> lines) {
-        writeLyricsLineList(romanizationFile(track, source), lines);
+        writeLyricsLineList(romanizationFile(track, source, sourceLines), lines);
     }
 
     @Nullable
     static List<LyricsLine> getRomanizationAI(TrackInfo track, String source,
-            int expectedLineCount) {
-        return readLyricsLineList(aiRomanizationFile(track, source), expectedLineCount);
+            List<String> sourceLines) {
+        return readLyricsLineList(aiRomanizationFile(track, source, sourceLines), sourceLines);
     }
 
     static void putRomanizationAI(TrackInfo track, String source,
-            List<LyricsLine> lines) {
-        writeLyricsLineList(aiRomanizationFile(track, source), lines);
+            List<String> sourceLines, List<LyricsLine> lines) {
+        writeLyricsLineList(aiRomanizationFile(track, source, sourceLines), lines);
     }
 
     @Nullable
-    private static List<String> readStringList(@Nullable File file, int expectedLineCount) {
+    private static List<String> readStringList(@Nullable File file, List<String> sourceLines) {
         if (file == null || !file.exists()) {
             return null;
         }
         try {
             List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
-            return lines.size() == expectedLineCount ? lines : null;
+            if (lines.size() == sourceLines.size()) {
+                return lines;
+            }
+            discard(file);
+            return null;
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not read string list from cache", ex);
             return null;
@@ -146,13 +153,15 @@ final class LyricsCache {
     }
 
     @Nullable
-    private static List<LyricsLine> readLyricsLineList(@Nullable File file, int expectedLineCount) {
+    private static List<LyricsLine> readLyricsLineList(@Nullable File file,
+            List<String> sourceLines) {
         if (file == null || !file.exists()) {
             return null;
         }
         try {
             List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
-            if (lines.size() != expectedLineCount) {
+            if (lines.size() != sourceLines.size()) {
+                discard(file);
                 return null;
             }
             List<LyricsLine> result = new ArrayList<>(lines.size());
@@ -163,6 +172,13 @@ final class LyricsCache {
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not read lyrics line list from cache", ex);
             return null;
+        }
+    }
+
+    /** Removes a derived entry that no longer matches the lyrics it was computed for. */
+    private static void discard(File file) {
+        if (file.delete()) {
+            Logger.printDebug(() -> "Dropped a stale lyrics cache entry: " + file);
         }
     }
 
@@ -183,33 +199,52 @@ final class LyricsCache {
     }
 
     @Nullable
-    private static File translationFile(TrackInfo track, String source, String language) {
-        return derivedCacheFile(track, source, "." + language + ".txt");
+    private static File translationFile(TrackInfo track, String source, String language,
+            List<String> sourceLines) {
+        return derivedCacheFile(track, source, "." + language + ".txt", sourceLines);
     }
 
     @Nullable
-    private static File romanizationFile(TrackInfo track, String source) {
-        return derivedCacheFile(track, source, ".rom.txt");
+    private static File romanizationFile(TrackInfo track, String source,
+            List<String> sourceLines) {
+        return derivedCacheFile(track, source, ".rom.txt", sourceLines);
     }
 
     @Nullable
-    private static File aiTranslationFile(TrackInfo track, String source, String language) {
-        return derivedCacheFile(track, source, ".ai." + language + ".txt");
+    private static File aiTranslationFile(TrackInfo track, String source, String language,
+            List<String> sourceLines) {
+        return derivedCacheFile(track, source, ".ai." + language + ".txt", sourceLines);
     }
 
     @Nullable
-    private static File aiRomanizationFile(TrackInfo track, String source) {
-        return derivedCacheFile(track, source, ".ai.rom.txt");
+    private static File aiRomanizationFile(TrackInfo track, String source,
+            List<String> sourceLines) {
+        return derivedCacheFile(track, source, ".ai.rom.txt", sourceLines);
     }
 
     @Nullable
-    private static File derivedCacheFile(TrackInfo track, String source, String suffix) {
+    private static File derivedCacheFile(TrackInfo track, String source, String suffix,
+            List<String> sourceLines) {
         File directory = cacheDirectory();
         if (directory == null) {
             return null;
         }
         return new File(directory,
-                Integer.toHexString(key(track, source).hashCode()) + suffix);
+                Integer.toHexString(key(track, source).hashCode())
+                        + "-" + contentKey(sourceLines) + suffix);
+    }
+
+    private static String contentKey(List<String> sourceLines) {
+        long hash = 0xcbf29ce484222325L;
+        for (String line : sourceLines) {
+            if (line != null) {
+                for (int i = 0; i < line.length(); i++) {
+                    hash = (hash ^ line.charAt(i)) * 0x100000001b3L;
+                }
+            }
+            hash = (hash ^ '\n') * 0x100000001b3L;
+        }
+        return Long.toHexString(hash);
     }
 
     @Nullable
