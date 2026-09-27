@@ -1265,7 +1265,7 @@ public final class LyricsManager {
             shownFingerprints.add(fingerprint(lyrics));
             setState(State.LOADED, lyrics);
             LyricsPanelInstaller.enableLyricsButton();
-            Utils.runOnMainThreadDelayed(LyricsPanelInstaller::onLyricsPanelDetected, 300);
+            Utils.runOnMainThreadDelayed(LyricsPanelInstaller::onLyricsLoaded, 300);
         }
     }
 
@@ -1672,7 +1672,7 @@ public final class LyricsManager {
         if (newState == State.LOADED) {
             // A panel is only detected while the app builds its own lyrics into it, which it
             // never does for a music video, so an open panel is covered from here instead.
-            LyricsPanelInstaller.onLyricsPanelDetected();
+            LyricsPanelInstaller.onLyricsLoaded();
             LyricsPanelInstaller.enableLyricsButton();
         }
     }

@@ -68,6 +68,13 @@ public final class LyricsPanelInstaller {
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
     private static WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
 
+    /**
+     * Whether the app has reported a panel change. The patch hooks this only if it finds
+     * the panel controller, and until then an open lyrics panel can only be told from the
+     * lyrics component being built.
+     */
+    private static boolean panelChangesReported;
+
     private LyricsPanelInstaller() {
     }
 
@@ -100,6 +107,7 @@ public final class LyricsPanelInstaller {
     public static void onEngagementPanelChanged(@Nullable Object panel) {
         try {
             currentPanelReference = new WeakReference<>(panel);
+            panelChangesReported = true;
 
             final boolean isLyricsPanel = isCurrentPanelLyrics();
             Logger.printDebug(() -> "Engagement panel: "
@@ -127,6 +135,17 @@ public final class LyricsPanelInstaller {
      * Called by the litho filter when the lyrics panel is being built.
      */
     public static void onLyricsPanelDetected() {
+        onLyricsPanelDetected(true);
+    }
+
+    /**
+     * Called when lyrics finish loading, which also happens while the lyrics panel is closed.
+     */
+    public static void onLyricsLoaded() {
+        onLyricsPanelDetected(false);
+    }
+
+    private static void onLyricsPanelDetected(boolean panelBuilt) {
         // Whichever panel holds the container while the lyrics component is built is the
         // lyrics panel, which keeps this working without knowing what the app calls it.
         Object panel = currentPanelReference.get();
@@ -134,7 +153,9 @@ public final class LyricsPanelInstaller {
             lyricsPanelReference = new WeakReference<>(panel);
         }
 
-        updateKeepScreenOn(true);
+        // Lyrics also load while the panel is closed, and the app keeps rebuilding the lyrics
+        // component after the panel is closed, so neither means that the panel is open.
+        updateKeepScreenOn(isCurrentPanelLyrics() || (panelBuilt && !panelChangesReported));
 
         if (!Settings.LYRICS_ENABLED.get()) {
             return;
