@@ -33,7 +33,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideBut
 @Suppress("unused")
 val hideButtonsPatch = bytecodePatch(
     name = "Hide buttons",
-    description = "Adds options to hide the cast, history, notification, search, and search bar microphone buttons."
+    description = "Adds options to hide the cast, history, notification, search, search bar microphone, voice search, sound search, and Library New buttons."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -53,7 +53,10 @@ val hideButtonsPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_history_button"),
             SwitchPreference("morphe_music_hide_notification_button"),
             SwitchPreference("morphe_music_hide_search_button"),
-            SwitchPreference("morphe_music_hide_search_mic_button")
+            SwitchPreference("morphe_music_hide_search_mic_button"),
+            SwitchPreference("morphe_music_hide_voice_search_button"),
+            SwitchPreference("morphe_music_hide_sound_search_button"),
+            SwitchPreference("morphe_music_hide_library_new_button", summary = true)
         )
 
         // Region for hide history button in the top bar.
@@ -107,6 +110,33 @@ val hideButtonsPatch = bytecodePatch(
                             "$EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
                 )
             }
+        }
+
+        // Region for hide voice search and sound search buttons in the search bar.
+        SearchVoiceButtonsFingerprint.matchAll().forEach { match ->
+            // Insert at the later index first, so the earlier index stays valid.
+            arrayOf(
+                match.instructionMatches[3] to "hideSoundSearchButton",
+                match.instructionMatches[1] to "hideVoiceSearchButton"
+            ).forEach { (moveResult, methodName) ->
+                val register = moveResult.getInstruction<OneRegisterInstruction>().registerA
+
+                match.method.addInstruction(
+                    moveResult.index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        // Region for hide the floating New button in the Library tab
+        LibraryNewButtonFingerprint.let {
+            val moveResult = it.instructionMatches[1]
+            val register = moveResult.getInstruction<OneRegisterInstruction>().registerA
+
+            it.method.addInstruction(
+                moveResult.index + 1,
+                "invoke-static { v$register }, $EXTENSION_CLASS->hideLibraryNewButton(Landroid/view/View;)V"
+            )
         }
 
         // Region for hide cast button in the player.
