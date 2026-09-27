@@ -202,11 +202,14 @@ private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
         classDef.superclass?.let { superclass -> classDefByOrNull(superclass) }
     }.flatMap { classDef -> classDef.methods.asSequence() }
     val clickTrackingParamsSetterMethod = requestHierarchyMethods
-        .firstOrNull { method ->
-            method.returnType == "V" &&
+        // A public byte[] setter can write the same clickTrackingParams field.
+        // Select the protected setter to avoid matching both.
+        .singleOrNull { method ->
+            AccessFlags.PROTECTED.isSet(method.accessFlags) &&
+                method.returnType == "V" &&
                 method.parameterTypes.map(CharSequence::toString) == listOf("[B")
         }
-        ?: throw PatchException("Could not resolve the click tracking parameter setter")
+        ?: throw PatchException("Could not uniquely resolve the click tracking parameter setter")
     val setRequestBrowseIdMethod = setRequestBrowseIdFingerprint(
         requestBrowseIdField,
     ).originalMethod
