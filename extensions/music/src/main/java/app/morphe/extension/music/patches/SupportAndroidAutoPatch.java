@@ -28,6 +28,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.shared.Logger;
@@ -44,7 +45,7 @@ import app.morphe.extension.shared.Utils;
  *
  * <p>When Android Auto opens Playlists, {@link #handleAndroidAutoPlaylists} requests the phone Library.
  * {@link #requestLibraryPage} follows Library pagination and collects playlists with their titles and artwork.
- * {@link #deliverAndroidAutoPlaylists} returns them when loading finishes.
+ * {@link #deliverAndroidAutoPlaylists} returns them when loading finishes, fails, or times out.
  *
  * <p>Selecting a playlist calls {@link #handlePlayFromMediaId}. {@link PlaylistPlaybackRequest}
  * fetches its songs and Play button, then asks YTM to start playback if it contains songs.
@@ -57,6 +58,9 @@ public final class SupportAndroidAutoPatch {
     // IDs with this prefix contain a playlist page ID; request its playback command when selected.
     private static final String DEFERRED_PLAYLIST_MEDIA_ID_PREFIX = "morphe:aa:playlist:";
     private static final String PLAYLISTS_TITLE_RESOURCE_NAME = "library_playlists_shelf_title";
+    // Return collected playlists when this timeout expires.
+    private static final int ANDROID_AUTO_PLAYLISTS_TIMEOUT_MILLISECONDS = 30_000;
+    private static final int SELECTED_PLAYLIST_LOAD_TIMEOUT_MILLISECONDS = 30_000;
     private static final Executor BACKGROUND_EXECUTOR = Utils::runOnBackgroundThread;
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds =
@@ -174,7 +178,9 @@ public final class SupportAndroidAutoPatch {
      * Injection point. Load playlists when Android Auto opens the Playlists folder.
      * YTM has already called detach() on Android Auto's result object, so the list can be sent after this method returns.
      *
-     * <p>{@link #requestLibraryPage} loads the Library; a failed request returns an empty list.
+     * <p>{@link #requestLibraryPage} starts loading the Library. The timeout can independently
+     * call {@link #deliverAndroidAutoPlaylists} while pagination is still running.
+     * <p>On failure or timeout, return the playlists collected so far, or an empty list if none.
      *
      * @return true once this patch accepts the request, even while loading;
      *         false to let YTM handle the request.
@@ -189,13 +195,13 @@ public final class SupportAndroidAutoPatch {
             if (!playlistsTitleMatchMediaIds.contains(requestedMediaId)) return false;
             PlaylistsFolderLoad load = new PlaylistsFolderLoad(browseClient);
             try {
+                Utils.runOnMainThreadDelayed(
+                        () -> deliverAndroidAutoPlaylists(androidAutoRequest, load, "timed out"),
+                        ANDROID_AUTO_PLAYLISTS_TIMEOUT_MILLISECONDS);
                 requestLibraryPage(androidAutoRequest, load, null);
             } catch (RuntimeException ex) {
                 // Only this patch should answer the request, including after failure.
                 Logger.printException(() -> "Could not request YTM Library", ex);
-                synchronized (load) {
-                    load.libraryPlaylists.clear();
-                }
                 deliverAndroidAutoPlaylists(androidAutoRequest, load, "failed");
             }
             return true;
@@ -212,6 +218,7 @@ public final class SupportAndroidAutoPatch {
      * {@link #appendInitialLibraryPlaylists} and later responses with {@link #appendPaginatedLibraryPlaylists}.
      * Both collect playlists through {@link #collectPlaylistsFromGrid} and return a pagination command if available.
      * A command requests the next page; otherwise {@link #deliverAndroidAutoPlaylists} returns the collected list.
+     * Failure and timeout also return the playlists collected so far.
      */
     private static void requestLibraryPage(
             AndroidAutoBrowseRequest androidAutoRequest, PlaylistsFolderLoad load,
@@ -232,6 +239,7 @@ public final class SupportAndroidAutoPatch {
                         ? appendInitialLibraryPlaylists(libraryResponse, load)
                         : appendPaginatedLibraryPlaylists(libraryResponse, load);
                 synchronized (load) {
+                    // The timeout may have started returning playlists while this Library response was being read.
                     if (load.deliveryPreparationStarted) return;
                 }
                 if (nextPaginationCommand != null) {
@@ -242,15 +250,9 @@ public final class SupportAndroidAutoPatch {
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
                 Logger.printException(() -> "YTM Library request interrupted", ex);
-                synchronized (load) {
-                    load.libraryPlaylists.clear();
-                }
                 deliverAndroidAutoPlaylists(androidAutoRequest, load, "interrupted");
             } catch (ExecutionException | RuntimeException ex) {
                 Logger.printException(() -> "YTM Library request failed", ex);
-                synchronized (load) {
-                    load.libraryPlaylists.clear();
-                }
                 deliverAndroidAutoPlaylists(androidAutoRequest, load, "failed");
             }
         }, BACKGROUND_EXECUTOR);
@@ -347,6 +349,7 @@ public final class SupportAndroidAutoPatch {
                 title,
                 subtitleOrEmpty(libraryItem),
                 artworkUriOrNull(libraryItem));
+        // Read titles and artwork before locking so a slow read cannot block timeout handling.
         synchronized (load) {
             if (load.deliveryPreparationStarted || !load.seenPlaylistBrowseIds.add(playlistBrowseId))
                 return;
@@ -377,7 +380,8 @@ public final class SupportAndroidAutoPatch {
 
     /**
      * Returns the collected playlists as items Android Auto can play.
-     * {@link PlaylistsFolderLoad#takePlaylistsForDelivery} prevents duplicate delivery.
+     * {@link PlaylistsFolderLoad#takePlaylistsForDelivery} stops collection and prevents completion and timeout
+     * from both returning this request's playlists.
      */
     private static void deliverAndroidAutoPlaylists(
             AndroidAutoBrowseRequest androidAutoRequest,
@@ -436,7 +440,7 @@ public final class SupportAndroidAutoPatch {
         }
 
         /**
-         * Allows only one delivery attempt.
+         * Allows only one delivery attempt, whether pagination finishes, fails, or times out.
          *
          * @return a copy of the collected playlists, possibly empty; null if delivery preparation already started
          */
@@ -457,7 +461,7 @@ public final class SupportAndroidAutoPatch {
     /**
      * Injection point. Convert this patch's playlist media ID into YTM's command to start playback.
      *
-     * <p>Empty playlists, request errors, and missing Play commands are logged; playback is left unchanged.
+     * <p>Empty playlists, request errors, timeouts, and missing Play commands are logged; playback is left unchanged.
      *
      * @return true for this patch's media IDs, including failed or pending requests;
      *         false for YTM's own IDs. YTM cannot decode this patch's IDs.
@@ -486,6 +490,7 @@ public final class SupportAndroidAutoPatch {
      * {@link #start} calls YTM's request method on the caller's thread; the completed response
      * runs through {@link #readResponse} on {@link SupportAndroidAutoPatch#BACKGROUND_EXECUTOR}.
      * {@link #postToPlaybackThread} runs playback on YTM's playback thread.
+     * The timeout runs on the main thread and discards responses that arrive too late.
      */
     private static final class PlaylistPlaybackRequest {
         private final MediaSession.Callback callback;
@@ -518,13 +523,23 @@ public final class SupportAndroidAutoPatch {
             }
             // Keep a separate copy of the playback options while the playlist loads.
             Bundle playbackExtras = extras == null ? null : new Bundle(extras);
+            // The timeout discards late responses but lets a response already being read finish.
+            AtomicBoolean waitingForResponse = new AtomicBoolean(true);
+            Utils.runOnMainThreadDelayed(() -> {
+                if (!waitingForResponse.compareAndSet(true, false)) return;
+                if (requestGeneration == playRequestGeneration.get()) {
+                    Logger.printDebug(() -> "Selected Android Auto playlist request timed out");
+                }
+            }, SELECTED_PLAYLIST_LOAD_TIMEOUT_MILLISECONDS);
             try {
                 ListenableFuture<PhoneBrowseResponse> future =
                         browseClientAtStart.patch_requestBrowse(playlistBrowseId, BACKGROUND_EXECUTOR);
                 future.addListener(() -> {
+                    if (!waitingForResponse.compareAndSet(true, false)) return;
                     readResponse(future, callbackHandler, playbackExtras);
                 }, BACKGROUND_EXECUTOR);
             } catch (RuntimeException ex) {
+                waitingForResponse.set(false);
                 Logger.printException(() -> "Could not request YTM playlist: " +
                         playlistBrowseId, ex);
             }
