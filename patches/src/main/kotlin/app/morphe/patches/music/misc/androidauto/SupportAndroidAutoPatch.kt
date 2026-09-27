@@ -100,7 +100,7 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  */
 @Suppress("unused")
 val supportAndroidAutoPatch = bytecodePatch(
-    name = "Restore playlists and podcasts in Android Auto",
+    name = "Support Android Auto",
     description = "Restores YouTube Music playlists and podcasts in Android Auto.",
 ) {
     dependsOn(sharedExtensionPatch)
