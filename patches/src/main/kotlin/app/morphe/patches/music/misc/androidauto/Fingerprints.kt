@@ -41,7 +41,8 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
  * - Read titles and artwork: [formatTextFingerprint], [phoneBrowseItemArtworkFingerprint],
  *   [androidAutoMediaDescriptionFingerprint].
  * - Read item commands: [PhoneBrowseItemFingerprint], [phoneBrowseItemSingleTapCommandFingerprint].
- * - Read the playlist's Play button: [decodeButtonRendererFingerprint].
+ * - Read the playlist's Play button and intercept playback: [decodeButtonRendererFingerprint],
+ *   [AndroidAutoPlayFromMediaIdFingerprint].
  */
 
 private const val PHONE_BROWSE_TABS_PROTO_FIELD = 58_173_949L
@@ -129,6 +130,19 @@ internal object SendEmptyAndroidAutoMediaItemsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "Z"),
     strings = listOf("Invalid media id: "),
+)
+
+// Play a selected playlist: callbacks
+
+/** Receives an Android Auto selection to start playback. */
+internal object AndroidAutoPlayFromMediaIdFingerprint : Fingerprint(
+    name = "onPlayFromMediaId",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;", "Landroid/os/Bundle;"),
+    custom = { _, classDef ->
+        classDef.superclass == "Landroid/media/session/MediaSession\$Callback;"
+    },
 )
 
 // Request Library and playlist pages through YTM

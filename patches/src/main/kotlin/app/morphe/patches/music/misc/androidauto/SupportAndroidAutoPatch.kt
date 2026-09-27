@@ -59,6 +59,8 @@ private const val EXTENSION_PLAYLIST_CONTENTS_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PlaylistContents;"
 private const val EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$AndroidAutoBrowseRequest;"
+private const val EXTENSION_PLAYBACK_CALLBACK_INTERFACE =
+    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PlaybackCallback;"
 private const val EXTENSION_PHONE_BROWSE_ITEM_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PhoneBrowseItem;"
 private const val MUSIC_BROWSER_SERVICE_CLASS =
@@ -87,6 +89,8 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  * 4. [patchPhoneBrowseItem] provides playlist IDs, titles, and artwork, and distinguishes songs
  *    from the Add a song button.
  * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning YTM's empty list.
+ * 6. [installPlaybackCallbackBridges] lets Java load a selected playlist before asking YTM to play it,
+ *    using YTM's playback thread.
  */
 @Suppress("unused")
 val supportAndroidAutoPatch = bytecodePatch(
@@ -103,6 +107,7 @@ val supportAndroidAutoPatch = bytecodePatch(
         patchPhoneBrowseResponses()
         patchPhoneBrowseItem()
         patchAndroidAutoPlaylists()
+        installPlaybackCallbackBridges()
     }
 }
 
@@ -1205,6 +1210,77 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
             return-void
         """,
         ExternalLabel("resume", handleAndroidAutoRequestMethod.getInstruction<Instruction>(0)),
+    )
+}
+
+// endregion
+
+// region Playback callbacks
+
+/**
+ * [hookPlaylistPlayback] lets Java turn a selected playlist into YTM's playback media ID.
+ * [addPlaybackCallbackAccess] keeps playback on YTM's own thread.
+ */
+private fun BytecodePatchContext.installPlaybackCallbackBridges() {
+    val playFromMediaIdMethod = AndroidAutoPlayFromMediaIdFingerprint.method
+    val callbackClass = mutableClassDefBy(playFromMediaIdMethod.definingClass)
+    // YTM forwards onPlayFromMediaId to the object stored in this field.
+    val delegateField = playFromMediaIdMethod.instructions.asSequence()
+        .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
+        .distinct()
+        .single { field -> field.definingClass == callbackClass.type }
+
+    addPlaybackCallbackAccess(callbackClass, delegateField)
+    hookPlaylistPlayback(playFromMediaIdMethod)
+}
+
+/** Exposes the callback's Handler so playlist playback runs on YTM's playback thread. */
+private fun BytecodePatchContext.addPlaybackCallbackAccess(
+    callbackClass: MutableClass,
+    delegateField: FieldReference,
+) {
+    val delegateClass = classDefBy(delegateField.type)
+    val handlerField = delegateClass.fields.singleOrNull { field ->
+        classDefByOrNull(field.type)?.superclass == "Landroid/os/Handler;"
+    } ?: throw PatchException("Could not find media session callback Handler")
+    callbackClass.interfaces.add(EXTENSION_PLAYBACK_CALLBACK_INTERFACE)
+    callbackClass.addInterfaceMethod(
+        interfaceMethod = extensionInterfaceMethod(
+            EXTENSION_PLAYBACK_CALLBACK_INTERFACE,
+            "patch_getCallbackHandler",
+        ),
+        registerCount = 2,
+        instructions = """
+            iget-object v0, p0, $delegateField
+            if-eqz v0, :no_handler
+            iget-object v0, v0, $handlerField
+            return-object v0
+            :no_handler
+            const/4 v0, 0x0
+            return-object v0
+        """,
+    )
+}
+
+/**
+ * The patch's playlist media IDs contain a page ID that YTM cannot play directly.
+ * Java's `handlePlayFromMediaId` loads that playlist and obtains a YTM playback media ID first.
+ * A true return stops the original call; false lets YTM play an ID it already understands.
+ */
+private fun hookPlaylistPlayback(playFromMediaIdMethod: MutableMethod) {
+    val handlePlaylistSelectionMethod = "$EXTENSION_CLASS->handlePlayFromMediaId(" +
+        "Landroid/media/session/MediaSession${'$'}Callback;" +
+        "Ljava/lang/String;Landroid/os/Bundle;)Z"
+    val handledRegister = playFromMediaIdMethod.findFreeRegister(0)
+    playFromMediaIdMethod.addInstructionsWithLabels(
+        0,
+        """
+            invoke-static/range { p0 .. p2 }, $handlePlaylistSelectionMethod
+            move-result v$handledRegister
+            if-eqz v$handledRegister, :resume
+            return-void
+        """,
+        ExternalLabel("resume", playFromMediaIdMethod.getInstruction<Instruction>(0)),
     )
 }
 

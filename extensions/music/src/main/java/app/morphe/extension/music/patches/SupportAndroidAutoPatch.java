@@ -7,7 +7,10 @@
 
 package app.morphe.extension.music.patches;
 
+import android.media.session.MediaSession;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.media.MediaBrowserCompat;
 import android.support.v4.media.MediaDescriptionCompat;
 
@@ -25,7 +28,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
@@ -43,20 +46,23 @@ import app.morphe.extension.shared.Utils;
  * {@link #requestLibraryPage} follows Library pagination and collects playlists with their titles and artwork.
  * {@link #deliverAndroidAutoPlaylists} returns them when loading finishes.
  *
- * <p>{@link #requestEachPlaylist} reads each playlist's songs and Play button before returning the list.
- * Android Auto sends the selected item's media ID to YTM for playback.
+ * <p>Selecting a playlist calls {@link #handlePlayFromMediaId}. {@link PlaylistPlaybackRequest}
+ * fetches its songs and Play button, then asks YTM to start playback if it contains songs.
  */
 @SuppressWarnings("unused")
 public final class SupportAndroidAutoPatch {
     private static final String PHONE_LIBRARY_BROWSE_ID = "FEmusic_library_landing";
     private static final String LIKED_MUSIC_BROWSE_ID = "VLLM";
     private static final String EPISODES_FOR_LATER_BROWSE_ID = "VLSE";
+    // IDs with this prefix contain a playlist page ID; request its playback command when selected.
+    private static final String DEFERRED_PLAYLIST_MEDIA_ID_PREFIX = "morphe:aa:playlist:";
     private static final String PLAYLISTS_TITLE_RESOURCE_NAME = "library_playlists_shelf_title";
     private static final Executor BACKGROUND_EXECUTOR = Utils::runOnBackgroundThread;
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds =
             ConcurrentHashMap.newKeySet();
-
+    // Selecting music changes this number; ignore pending requests with older numbers.
+    private static final AtomicLong playRequestGeneration = new AtomicLong();
     /** YTM's object for sending phone Library and playlist requests, reused to supply Android Auto. */
     public interface PhoneBrowseClient {
         @NonNull ListenableFuture<PhoneBrowseResponse> patch_requestBrowse(
@@ -109,6 +115,11 @@ public final class SupportAndroidAutoPatch {
         // YTM may remove items to keep the returned list within its byte limit.
         void patch_deliverAndroidAutoItems(
                 @NonNull List<MediaBrowserCompat.MediaItem> androidAutoItems);
+    }
+
+    /** Methods installed on YTM's {@link MediaSession.Callback} to use its playback thread. */
+    public interface PlaybackCallback {
+        @Nullable Handler patch_getCallbackHandler();
     }
 
     /** YTM's item type for Library content, playlist songs, and the "Add a song" button. */
@@ -227,7 +238,7 @@ public final class SupportAndroidAutoPatch {
                     requestLibraryPage(androidAutoRequest, load, nextPaginationCommand);
                     return;
                 }
-                requestEachPlaylist(androidAutoRequest, load);
+                deliverAndroidAutoPlaylists(androidAutoRequest, load, "completed");
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
                 Logger.printException(() -> "YTM Library request interrupted", ex);
@@ -316,6 +327,10 @@ public final class SupportAndroidAutoPatch {
         return null;
     }
 
+    /**
+     * Uses titles and artwork supplied by the Library to avoid requesting every playlist's songs
+     * while loading Playlists in Android Auto.
+     */
     private static void addLibraryPlaylist(
             PhoneBrowseItem libraryItem, PlaylistsFolderLoad load) {
         String playlistBrowseId = libraryItem.patch_getPlaylistBrowseId();
@@ -360,77 +375,43 @@ public final class SupportAndroidAutoPatch {
 
     // Return playlists to Android Auto
 
-    /** Requests each playlist's playback command before returning Android Auto's list. */
-    private static void requestEachPlaylist(AndroidAutoBrowseRequest androidAutoRequest, PlaylistsFolderLoad load) {
-        List<LibraryPlaylist> playlists = load.libraryPlaylists;
-        if (playlists.isEmpty()) {
-            deliverAndroidAutoPlaylists(androidAutoRequest, load, "completed");
-            return;
-        }
-        MediaBrowserCompat.MediaItem[] items = new MediaBrowserCompat.MediaItem[playlists.size()];
-        load.androidAutoPlaylists = items;
-        AtomicInteger remaining = new AtomicInteger(playlists.size());
-        for (int index = 0; index < playlists.size(); index++) {
-            int playlistIndex = index;
-            LibraryPlaylist playlist = playlists.get(index);
-            try {
-                ListenableFuture<PhoneBrowseResponse> future = load.phoneBrowseClient.patch_requestBrowse(
-                        playlist.playlistBrowseId, BACKGROUND_EXECUTOR);
-                future.addListener(() -> {
-                    try {
-                        PhoneBrowseResponse response = future.get();
-                        PhoneBrowseItem firstSong = findFirstPlayableSong(response);
-                        String playbackMediaId = firstSong == null ? null
-                                : LIKED_MUSIC_BROWSE_ID.equals(playlist.playlistBrowseId)
-                                        ? firstSong.patch_getCommandMediaId()
-                                        : response.patch_getPlaylistPlayButtonMediaId();
-                        if (playbackMediaId != null) {
-                            synchronized (load) {
-                                items[playlistIndex] = createPlaylistItem(playlist, playbackMediaId);
-                            }
-                        }
-                    } catch (InterruptedException ex) {
-                        Thread.currentThread().interrupt();
-                        Logger.printException(() -> "YTM playlist request interrupted", ex);
-                    } catch (ExecutionException | RuntimeException ex) {
-                        Logger.printException(() -> "YTM playlist request failed", ex);
-                    } finally {
-                        if (remaining.decrementAndGet() == 0) {
-                            deliverAndroidAutoPlaylists(androidAutoRequest, load, "completed");
-                        }
-                    }
-                }, BACKGROUND_EXECUTOR);
-            } catch (RuntimeException ex) {
-                Logger.printException(() -> "Could not request YTM playlist", ex);
-                if (remaining.decrementAndGet() == 0) {
-                    deliverAndroidAutoPlaylists(androidAutoRequest, load, "failed");
-                }
-            }
-        }
-    }
-
+    /**
+     * Returns the collected playlists as items Android Auto can play.
+     * {@link PlaylistsFolderLoad#takePlaylistsForDelivery} prevents duplicate delivery.
+     */
     private static void deliverAndroidAutoPlaylists(
             AndroidAutoBrowseRequest androidAutoRequest,
             PlaylistsFolderLoad load, String logReason) {
-        List<MediaBrowserCompat.MediaItem> items = new ArrayList<>();
-        synchronized (load) {
-            if (load.deliveryPreparationStarted) return;
-            load.deliveryPreparationStarted = true;
-            for (MediaBrowserCompat.MediaItem item : load.androidAutoPlaylists) {
-                if (item != null) items.add(item);
+        List<LibraryPlaylist> collectedPlaylists = load.takePlaylistsForDelivery();
+        if (collectedPlaylists == null) return;
+
+        List<MediaBrowserCompat.MediaItem> androidAutoPlaylistItems =
+                new ArrayList<>(collectedPlaylists.size());
+        for (LibraryPlaylist playlist : collectedPlaylists) {
+            try {
+                androidAutoPlaylistItems.add(createDeferredPlaylistItem(playlist));
+            } catch (RuntimeException ex) {
+                Logger.printException(() -> "Could not build an Android Auto playlist item", ex);
             }
         }
+        Logger.printDebug(() -> "YTM Library " + logReason + "; returning " +
+                androidAutoPlaylistItems.size() + " playlists");
         try {
-            androidAutoRequest.patch_deliverAndroidAutoItems(items);
+            androidAutoRequest.patch_deliverAndroidAutoItems(androidAutoPlaylistItems);
         } catch (RuntimeException ex) {
             Logger.printException(() -> "Could not deliver Android Auto playlists", ex);
         }
     }
 
-    private static MediaBrowserCompat.MediaItem createPlaylistItem(
-            LibraryPlaylist playlist, String playbackMediaId) {
+    /**
+     * Marks the playlist playable so tapping it starts playback instead of opening a song list.
+     * Stores its page ID (VL...) for {@link #handlePlayFromMediaId} to fetch the playback command on selection.
+     */
+    private static MediaBrowserCompat.MediaItem createDeferredPlaylistItem(
+            LibraryPlaylist playlist) {
         MediaDescriptionCompat description = new MediaDescriptionCompat(
-                playbackMediaId, playlist.title, playlist.subtitle, null, null, playlist.artworkUri,
+                DEFERRED_PLAYLIST_MEDIA_ID_PREFIX + playlist.playlistBrowseId,
+                playlist.title, playlist.subtitle, null, null, playlist.artworkUri,
                 null, null);
         return new MediaBrowserCompat.MediaItem(
                 description, MediaBrowserCompat.MediaItem.FLAG_PLAYABLE);
@@ -438,6 +419,7 @@ public final class SupportAndroidAutoPatch {
 
     /**
      * Stores playlists collected for one Android Auto Playlists request.
+     * {@link #takePlaylistsForDelivery} stops collection before Android Auto items are built.
      */
     private static final class PlaylistsFolderLoad {
         // Use the same YTM object throughout pagination, even if MusicBrowserService restarts.
@@ -448,16 +430,156 @@ public final class SupportAndroidAutoPatch {
         private final Set<String> seenPlaylistBrowseIds = new HashSet<>();
         @GuardedBy("this")
         private boolean deliveryPreparationStarted;
-        private MediaBrowserCompat.MediaItem[] androidAutoPlaylists = new MediaBrowserCompat.MediaItem[0];
 
         private PlaylistsFolderLoad(PhoneBrowseClient browseClient) {
             this.phoneBrowseClient = browseClient;
         }
 
+        /**
+         * Allows only one delivery attempt.
+         *
+         * @return a copy of the collected playlists, possibly empty; null if delivery preparation already started
+         */
+        @Nullable
+        private synchronized List<LibraryPlaylist> takePlaylistsForDelivery() {
+            if (deliveryPreparationStarted) return null;
+            deliveryPreparationStarted = true;
+            return new ArrayList<>(libraryPlaylists);
+        }
     }
 
     private record LibraryPlaylist(
             String playlistBrowseId, String title, String subtitle, Uri artworkUri) {
+    }
+
+    // Play a selected playlist
+
+    /**
+     * Injection point. Convert this patch's playlist media ID into YTM's command to start playback.
+     *
+     * <p>Empty playlists, request errors, and missing Play commands are logged; playback is left unchanged.
+     *
+     * @return true for this patch's media IDs, including failed or pending requests;
+     *         false for YTM's own IDs. YTM cannot decode this patch's IDs.
+     */
+    public static boolean handlePlayFromMediaId(
+            @NonNull MediaSession.Callback callback, @Nullable String mediaId,
+            @Nullable Bundle extras) {
+        if (mediaId == null || !mediaId.startsWith(DEFERRED_PLAYLIST_MEDIA_ID_PREFIX)) {
+            // YTM's own selections also cancel pending playlist playback.
+            playRequestGeneration.incrementAndGet();
+            return false;
+        }
+        long requestGeneration = playRequestGeneration.incrementAndGet();
+        String playlistBrowseId = mediaId.substring(DEFERRED_PLAYLIST_MEDIA_ID_PREFIX.length());
+        try {
+            new PlaylistPlaybackRequest(callback, playlistBrowseId, requestGeneration).start(extras);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not start Android Auto playlist request: " +
+                    playlistBrowseId, ex);
+        }
+        return true;
+    }
+
+    /**
+     * Loads one selected playlist and asks YTM to play it if it contains songs.
+     * {@link #start} calls YTM's request method on the caller's thread; the completed response
+     * runs through {@link #readResponse} on {@link SupportAndroidAutoPatch#BACKGROUND_EXECUTOR}.
+     * {@link #postToPlaybackThread} runs playback on YTM's playback thread.
+     */
+    private static final class PlaylistPlaybackRequest {
+        private final MediaSession.Callback callback;
+        // Same object as callback; the added interface exposes its playback thread.
+        private final PlaybackCallback callbackAccess;
+        private final String playlistBrowseId;
+        // Reject this selection after another selection.
+        private final long requestGeneration;
+        // Discard this selection if YTM replaces the original request client.
+        private final PhoneBrowseClient browseClientAtStart;
+
+        private PlaylistPlaybackRequest(
+                MediaSession.Callback callback, String playlistBrowseId, long requestGeneration) {
+            this.callback = callback;
+            this.callbackAccess = (PlaybackCallback) callback;
+            this.playlistBrowseId = playlistBrowseId;
+            this.requestGeneration = requestGeneration;
+            this.browseClientAtStart = phoneBrowseClient;
+        }
+
+        private void start(@Nullable Bundle extras) {
+            if (playlistBrowseId.isEmpty() || browseClientAtStart == null) {
+                Logger.printDebug(() -> "Could not resolve selected Android Auto playlist");
+                return;
+            }
+            Handler callbackHandler = callbackAccess.patch_getCallbackHandler();
+            if (callbackHandler == null) {
+                Logger.printDebug(() -> "Android Auto playback callback is no longer active");
+                return;
+            }
+            // Keep a separate copy of the playback options while the playlist loads.
+            Bundle playbackExtras = extras == null ? null : new Bundle(extras);
+            try {
+                ListenableFuture<PhoneBrowseResponse> future =
+                        browseClientAtStart.patch_requestBrowse(playlistBrowseId, BACKGROUND_EXECUTOR);
+                future.addListener(() -> {
+                    readResponse(future, callbackHandler, playbackExtras);
+                }, BACKGROUND_EXECUTOR);
+            } catch (RuntimeException ex) {
+                Logger.printException(() -> "Could not request YTM playlist: " +
+                        playlistBrowseId, ex);
+            }
+        }
+
+        /**
+         * {@link SupportAndroidAutoPatch#findFirstPlayableSong} checks for songs; an empty playlist can still have a Play button.
+         * Liked Music has no Play button, so it uses the first song's command.
+         * Pass playback to {@link #postToPlaybackThread}.
+         */
+        private void readResponse(
+                ListenableFuture<PhoneBrowseResponse> future, Handler callbackHandler,
+                Bundle playbackExtras) {
+            try {
+                PhoneBrowseResponse response = future.get();
+                PhoneBrowseItem firstPlayableSong = findFirstPlayableSong(response);
+                if (firstPlayableSong == null) {
+                    Logger.printDebug(() ->
+                            "Selected Android Auto playlist has no playable songs");
+                    return;
+                }
+                String ytmPlaybackMediaId = LIKED_MUSIC_BROWSE_ID.equals(playlistBrowseId)
+                        ? firstPlayableSong.patch_getCommandMediaId()
+                        : response.patch_getPlaylistPlayButtonMediaId();
+                if (ytmPlaybackMediaId == null) {
+                    Logger.printDebug(() -> "Selected Android Auto playlist has no playback command");
+                    return;
+                }
+                // onPlayFromMediaId first calls our handlePlayFromMediaId again.
+                // This YTM media ID makes handlePlayFromMediaId return false, so YTM's playback code runs.
+                postToPlaybackThread(callbackHandler, () ->
+                        callback.onPlayFromMediaId(ytmPlaybackMediaId, playbackExtras));
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                Logger.printException(() -> "YTM playlist request interrupted: " +
+                        playlistBrowseId, ex);
+            } catch (ExecutionException | RuntimeException ex) {
+                Logger.printException(() -> "YTM playlist request failed: " +
+                        playlistBrowseId, ex);
+            }
+        }
+
+        /** Runs on YTM's playback thread only if the selection and original {@link PhoneBrowseClient} are unchanged. */
+        private void postToPlaybackThread(Handler callbackHandler, Runnable task) {
+            callbackHandler.post(() -> {
+                if (requestGeneration != playRequestGeneration.get()) return;
+                if (browseClientAtStart != phoneBrowseClient) return;
+                try {
+                    task.run();
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not play Android Auto playlist: " +
+                            playlistBrowseId, ex);
+                }
+            });
+        }
     }
 
     // Check playlist contents
