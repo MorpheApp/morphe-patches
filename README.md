@@ -32,7 +32,7 @@ Morphe Patches are based off the prior work of [ReVanced](https://github.com/ReV
 All modifications made by Morphe, along with their dates, can be found in the Git history.
 
 &nbsp;
-## 🩹 Patches list
+## 🩹 Patches list on Morphe Manager
 
 <!-- PATCHES_START -->
 > **[v1.44.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.44.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;150 patches total
