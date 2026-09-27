@@ -24,10 +24,13 @@ import com.google.common.util.concurrent.ListenableFuture;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
@@ -88,6 +91,12 @@ public final class SupportAndroidAutoPatch {
             ConcurrentHashMap.newKeySet();
     // Selecting music or pressing Pause/Stop changes this number; ignore pending requests with older numbers.
     private static final AtomicLong playRequestGeneration = new AtomicLong();
+    // Give each Library load a number to distinguish earlier requests from later requests.
+    private static final AtomicLong playlistsLoadCounter = new AtomicLong();
+    // Remember which Library load last updated each folder on each Android Auto connection.
+    @GuardedBy("itself")
+    private static final WeakHashMap<Object, Map<String, PlaylistsFolderDelivery>>
+            playlistsFolderDeliveries = new WeakHashMap<>();
     // Android Auto's saved request to receive updates for the Playlists folder.
     @Nullable
     @GuardedBy("SupportAndroidAutoPatch.class")
@@ -153,6 +162,8 @@ public final class SupportAndroidAutoPatch {
     /** A request from Android Auto to load content, such as its main tabs, Playlists, or a podcast list. */
     public interface AndroidAutoBrowseRequest {
         @Nullable String patch_getRequestedMediaId();
+        // The Android Auto connection for this request, or null if unknown.
+        @Nullable Object patch_getBrowserConnection();
         /**
          * Sends the list through YTM. {@link SupportAndroidAutoPatch#handleAndroidAutoBrowseResult}
          * can add the Podcasts tab or supply its contents before Android Auto receives the list.
@@ -245,7 +256,21 @@ public final class SupportAndroidAutoPatch {
             String requestedMediaId = androidAutoRequest.patch_getRequestedMediaId();
             if (requestedMediaId == null) return false;
             if (!playlistsTitleMatchMediaIds.contains(requestedMediaId)) return false;
-            PlaylistsFolderLoad load = new PlaylistsFolderLoad(browseClient);
+            Object connection = androidAutoRequest.patch_getBrowserConnection();
+            PlaylistsFolderDelivery folderDelivery;
+            synchronized (playlistsFolderDeliveries) {
+                if (connection == null) {
+                    // Without the connection, there is no way to identify other requests for this same folder.
+                    folderDelivery = new PlaylistsFolderDelivery();
+                } else {
+                    // Reopening Playlists or refreshing after Library changes can start another load
+                    // before this one finishes.
+                    folderDelivery = playlistsFolderDeliveries
+                            .computeIfAbsent(connection, ignored -> new HashMap<>())
+                            .computeIfAbsent(requestedMediaId, ignored -> new PlaylistsFolderDelivery());
+                }
+            }
+            PlaylistsFolderLoad load = new PlaylistsFolderLoad(browseClient, folderDelivery);
             try {
                 Utils.runOnMainThreadDelayed(
                         () -> deliverAndroidAutoPlaylists(androidAutoRequest, load, "timed out"),
@@ -434,6 +459,7 @@ public final class SupportAndroidAutoPatch {
      * Returns the collected playlists as items Android Auto can play.
      * {@link PlaylistsFolderLoad#takePlaylistsForDelivery} stops collection and prevents completion and timeout
      * from both returning this request's playlists.
+     * {@link PlaylistsFolderDelivery#deliver} prevents an older list from replacing a newer list already returned.
      */
     private static void deliverAndroidAutoPlaylists(
             AndroidAutoBrowseRequest androidAutoRequest,
@@ -450,13 +476,7 @@ public final class SupportAndroidAutoPatch {
                 Logger.printException(() -> "Could not build an Android Auto playlist item", ex);
             }
         }
-        Logger.printDebug(() -> "YTM Library " + logReason + "; returning " +
-                androidAutoPlaylistItems.size() + " playlists");
-        try {
-            androidAutoRequest.patch_deliverAndroidAutoItems(androidAutoPlaylistItems);
-        } catch (RuntimeException ex) {
-            Logger.printException(() -> "Could not deliver Android Auto playlists", ex);
-        }
+        load.folderDelivery.deliver(load.loadNumber, androidAutoRequest, androidAutoPlaylistItems, logReason);
     }
 
     /**
@@ -480,6 +500,8 @@ public final class SupportAndroidAutoPatch {
     private static final class PlaylistsFolderLoad {
         // Use the same YTM object throughout pagination, even if MusicBrowserService restarts.
         private final PhoneBrowseClient phoneBrowseClient;
+        private final long loadNumber = playlistsLoadCounter.incrementAndGet();
+        private final PlaylistsFolderDelivery folderDelivery;
         @GuardedBy("this")
         private final List<LibraryPlaylist> libraryPlaylists = new ArrayList<>();
         @GuardedBy("this")
@@ -487,8 +509,9 @@ public final class SupportAndroidAutoPatch {
         @GuardedBy("this")
         private boolean deliveryPreparationStarted;
 
-        private PlaylistsFolderLoad(PhoneBrowseClient browseClient) {
+        private PlaylistsFolderLoad(PhoneBrowseClient browseClient, PlaylistsFolderDelivery folderDelivery) {
             this.phoneBrowseClient = browseClient;
+            this.folderDelivery = folderDelivery;
         }
 
         /**
@@ -501,6 +524,31 @@ public final class SupportAndroidAutoPatch {
             if (deliveryPreparationStarted) return null;
             deliveryPreparationStarted = true;
             return new ArrayList<>(libraryPlaylists);
+        }
+    }
+
+    /** Shared by loads for the same Playlists folder and Android Auto connection. */
+    private static final class PlaylistsFolderDelivery {
+        @GuardedBy("this")
+        private long lastDeliveredLoadNumber;
+
+        // Keep the check, send, and update together so another load cannot send between them.
+        private synchronized void deliver(
+                long loadNumber, AndroidAutoBrowseRequest androidAutoRequest,
+                List<MediaBrowserCompat.MediaItem> androidAutoPlaylistItems, String logReason) {
+            // A newer load still in progress does not prevent this one from returning playlists.
+            if (loadNumber < lastDeliveredLoadNumber) return;
+            Logger.printDebug(() -> "YTM Library " + logReason + "; returning " +
+                    androidAutoPlaylistItems.size() + " playlists");
+            try {
+                androidAutoRequest.patch_deliverAndroidAutoItems(androidAutoPlaylistItems);
+                // A failed send must not prevent an older load from returning its playlists.
+                lastDeliveredLoadNumber = loadNumber;
+            } catch (RuntimeException ex) {
+                // Do not retry: YTM may already consider this request answered.
+                // Reopening Playlists starts a new request.
+                Logger.printException(() -> "Could not deliver Android Auto playlists", ex);
+            }
         }
     }
 

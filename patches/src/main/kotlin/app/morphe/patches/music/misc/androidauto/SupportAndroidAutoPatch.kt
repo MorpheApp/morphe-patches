@@ -1231,6 +1231,7 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
  * [hookLibraryChangeCompletion] schedules the refresh only after a request succeeds.
  * Creation and deletion report success through callbacks, hooked by [hookPlaylistCreationAndDeletion].
  * [addAndroidAutoFolderReload] requests updated Playlists and Home lists without reconnecting Android Auto.
+ * [addAndroidAutoRequestConnectionGetter] identifies which connection each result belongs to.
  */
 private fun BytecodePatchContext.installAndroidAutoFolderRefresh() {
     // Android Auto requests list updates through MediaBrowserServiceCompat.
@@ -1241,11 +1242,60 @@ private fun BytecodePatchContext.installAndroidAutoFolderRefresh() {
         ?: throw PatchException("Could not resolve the browser service base class above $serviceSuperclass")
     val reloadMethod = mediaBrowserReloadFingerprint(baseServiceType).originalMethod
 
+    addAndroidAutoRequestConnectionGetter(reloadMethod)
     addAndroidAutoFolderReload(baseServiceType, reloadMethod)
     for (endpoint in listOf("browse/edit_playlist", "like/like", "like/removelike")) {
         hookLibraryChangeCompletion(endpoint)
     }
     hookPlaylistCreationAndDeletion()
+}
+
+/** Gives Java the connection to compare loads for the same Playlists list, leaving other connections independent. */
+private fun BytecodePatchContext.addAndroidAutoRequestConnectionGetter(reloadMethod: Method) {
+    val connectionType = reloadMethod.parameterTypes[1].toString()
+    // YTM passes the Android Auto connection to the object that returns the list.
+    val folderResultConstructor = reloadMethod.instructions.asSequence()
+        .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
+        .distinct()
+        .single { method ->
+            method.name == "<init>" && connectionType in method.parameterTypes
+        }
+    val folderResultClass = mutableClassDefBy(folderResultConstructor.definingClass)
+    val resultConnectionField = folderResultClass.fields.single { field ->
+        field.type == connectionType
+    }
+
+    val androidAutoRequestType =
+        SendEmptyAndroidAutoMediaItemsFingerprint.originalMethod.parameterTypes.first().toString()
+    val androidAutoRequestClass = mutableClassDefBy(androidAutoRequestType)
+    // The request can hold other result types; check for the result object that stores the Android Auto connection.
+    val resultBaseType = folderResultClass.superclass
+        ?: throw PatchException("Could not resolve the Android Auto folder result base class")
+    val requestResultField = androidAutoRequestClass.fields.single { field ->
+        field.type == resultBaseType
+    }
+
+    folderResultClass.accessFlags = folderResultClass.accessFlags.toPublicAccessFlags()
+    resultConnectionField.accessFlags = resultConnectionField.accessFlags.toPublicAccessFlags()
+    androidAutoRequestClass.addInterfaceMethod(
+        interfaceMethod = extensionInterfaceMethod(
+            EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE,
+            "patch_getBrowserConnection",
+        ),
+        registerCount = 3,
+        instructions = """
+            iget-object v0, p0, $requestResultField
+            instance-of v1, v0, ${folderResultClass.type}
+            if-eqz v1, :unknown_connection
+            check-cast v0, ${folderResultClass.type}
+            iget-object v0, v0, $resultConnectionField
+            return-object v0
+            :unknown_connection
+            # Without the connection, the patch cannot tell whether two requests update the same Android Auto folder.
+            const/4 v0, 0x0
+            return-object v0
+        """,
+    )
 }
 
 /**
