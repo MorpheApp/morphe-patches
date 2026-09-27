@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animazione di avvio</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Disattivato</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Colore</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monocromatico</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Riavvia per completare la configurazione</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Per accedere, premi su Continua di seguito"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossibile accedere ad Android VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Disconnesso da Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token di accesso Android VR non valido, prova ad accedere nuovamente</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Controlli multimediali delle notifiche</string>
+  <string name="morphe_notification_media_screen_summary">Personalizza i controlli di riproduzione visualizzati nella schermata di blocco e nel pannello delle notifiche</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Nascondi i pulsanti Precedente &amp; Successivo</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Nasconde i pulsanti Precedente e Successivo nelle notifiche multimediali, nella schermata di blocco e per i controlli delle cuffie</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Disattiva barra di avanzamento</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Impedisce di trascinare la barra di avanzamento sulla schermata di blocco e nel pannello delle notifiche</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Disabilita il protocollo QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -254,10 +266,10 @@ Tocca qui per aprire ReturnYouTubeDislike.com"</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeMax_title">Tempo di risposta API, massimo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_title">Tempo di risposta API, ultimo contenuto</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeLast_rate_limit_summary">I \"Non Mi Piace\" temporaneamente non disponibili - limite di frequenza API client attivo</string>
-  <string name="morphe_ryd_statistics_getFetchCallCount_title">API per il recupero dei voti, numero di chiamate</string>
+  <string name="morphe_ryd_statistics_getFetchCallCount_title">Fetch API, numero di chiamate</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_zero_summary">Nessuna chiamata di rete effettuata</string>
   <string name="morphe_ryd_statistics_getFetchCallCount_non_zero_summary">Effettuate %d chiamate di rete</string>
-  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">API per il recupero dei voti, numero di timeout</string>
+  <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_title">Fetch voti API, numero di timeout</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_zero_summary">Nessuna chiamata di rete in timeout</string>
   <string name="morphe_ryd_statistics_getFetchCallNumberOfFailures_non_zero_summary">%d chiamate di rete hanno superato il tempo di attesa</string>
   <string name="morphe_ryd_statistics_getNumberOfRateLimitRequestsEncountered_title">Limiti di frequenza client API</string>

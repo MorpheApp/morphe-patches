@@ -66,7 +66,7 @@ public final class KuGouProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         SongInfo songInfo = resolveHash(track);
         if (songInfo == null || songInfo.hash().isEmpty()) {
             return null;
@@ -144,12 +144,12 @@ public final class KuGouProvider implements LyricsProvider {
                 isChineseLanguage() && LyricsMerge.hasText(romanization) ? romanization : null;
 
         String sourceUrl = "https://www.kugou.com/song/" + id + ".html";
-        return new Lyrics(lines, name(), true, attachedRomanization, translations, null,
-                creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl);
+        return FetchResult.of(new Lyrics(lines, name(), true, attachedRomanization, translations, null,
+                creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl), track);
     }
 
     @Override
-    public List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
+    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         SongInfo songInfo = resolveHash(track);
         if (songInfo == null || songInfo.hash().isEmpty()) {
             return new ArrayList<>();
@@ -193,7 +193,7 @@ public final class KuGouProvider implements LyricsProvider {
             }
         }
 
-        return Lyrics.sortLyricsByScore(scored);
+        return Lyrics.sortScoredByScore(scored);
     }
 
     @Nullable
@@ -249,7 +249,7 @@ public final class KuGouProvider implements LyricsProvider {
     }
 
     private static boolean isChineseLanguage() {
-        return "zh".equals(Locale.getDefault().getLanguage());
+        return "zh".equals(LyricsRequests.deviceLanguage());
     }
 
     @Nullable
@@ -292,7 +292,10 @@ public final class KuGouProvider implements LyricsProvider {
                 bestId = item.optString("id", "");
             }
         }
-        return bestHash != null ? new SongInfo(bestHash, bestId) : null;
+        if (bestHash == null || bestScore < LyricsRequests.SOFT_MIN) {
+            return null;
+        }
+        return new SongInfo(bestHash, bestId);
     }
 
     private static String decryptKrc(byte[] raw) throws IOException {

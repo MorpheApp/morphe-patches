@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/ionic-team/ionicons/blob/d1e2c48641fd5f4910ee42a144dc1c84b1a9a4ee/src/svg/copy-outline.svg
+    https://github.com/ionic-team/ionicons/blob/d1e2c48641fd5f4910ee42a144dc1c84b1a9a4ee/src/svg/time.svg
+    Changes made: This icon is the result of a combination of "Copy" and "Time" icons, added the tap animation.
+
+    The MIT License (MIT)
+
+    Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="512"
+            android:viewportHeight="512">
+            <group
+                android:name="icon_group"
+                android:pivotX="256"
+                android:pivotY="256">
+                <group>
+                    <clip-path android:pathData="M0,0 L512,0 L512,512 L0,512 Z M522.667,384 A138.667,138.667 0 1,0 245.333,384 A138.667,138.667 0 1,0 522.667,384 Z" />
+                    <path
+                        android:strokeColor="@android:color/white"
+                        android:strokeWidth="32"
+                        android:strokeLineCap="butt"
+                        android:strokeLineJoin="round"
+                        android:pathData="M185,128 L407,128 A57,57 0 0,1 464,185 L464,407 A57,57 0 0,1 407,464 L185,464 A57,57 0 0,1 128,407 L128,185 A57,57 0 0,1 185,128 Z" />
+                    <path
+                        android:strokeColor="@android:color/white"
+                        android:strokeWidth="32"
+                        android:strokeLineCap="round"
+                        android:strokeLineJoin="round"
+                        android:pathData="M383.5,128l.5-24a56.16,56.16,0,0,0-56-56H112a64.19,64.19,0,0,0-64,64V328a56.16,56.16,0,0,0,56,56h24" />
+                </group>
+
+                <group
+                    android:pivotX="256"
+                    android:pivotY="256"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:translateX="128"
+                    android:translateY="128">
+                    <path
+                        android:fillColor="@android:color/white"
+                        android:pathData="M256,48C141.13,48,48,141.13,48,256s93.13,208,208,208,208-93.13,208-208S370.87,48,256,48Zm96,240H256a16,16,0,0,1-16-16V128a16,16,0,0,1,32,0V256h80a16,16,0,0,1,0,32Z" />
+                </group>
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <!-- Scale animation -->
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="150"
+                    android:valueFrom="1"
+                    android:valueTo="0.98"
+                    android:interpolator="@android:interpolator/overshoot" />
+
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="150"
+                    android:valueFrom="1"
+                    android:valueTo="0.98"
+                    android:interpolator="@android:interpolator/overshoot" />
+
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="150"
+                    android:startOffset="150"
+                    android:valueFrom="0.98"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/anticipate_overshoot" />
+
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="150"
+                    android:startOffset="150"
+                    android:valueFrom="0.98"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/anticipate_overshoot" />
+
+                <!-- Rotation animation -->
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="200"
+                    android:valueFrom="0"
+                    android:valueTo="15"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="200"
+                    android:startOffset="200"
+                    android:valueFrom="15"
+                    android:valueTo="0"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

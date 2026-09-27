@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -58,10 +59,17 @@ public final class LayoutComponentsFilter extends Filter {
     private static final List<String> channelTabFilterStrings = Utils.getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = Utils.getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
+    @Nullable
+    private static List<?> channelTabs;
+    @Nullable
+    private static List<?> originalChannelTabs;
+
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
     private final StringFilterGroup channelProfile;
-    private final StringFilterGroupList channelProfileGroupList = new StringFilterGroupList();
+    private final StringFilterGroupList channelProfileHeaderButtonsLegacyGroupList = new StringFilterGroupList();
+    private final StringFilterGroup channelProfileHeaderButton;
+    private final ByteArrayFilterGroupList channelProfileHeaderButtonsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup channelFilterBar;
     private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
@@ -81,6 +89,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
+    private final StringFilterGroup subscribedChannelsBarName;
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup surveys;
     private final StringFilterGroup videoLabels;
@@ -195,7 +204,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "channel_profile.e",
                 "page_header.e"
         );
-        channelProfileGroupList.addAll(
+        channelProfileHeaderButtonsLegacyGroupList.addAll(
                 new StringFilterGroup(
                         Settings.HIDE_COMMUNITY_BUTTON,
                         "community_button"
@@ -211,6 +220,20 @@ public final class LayoutComponentsFilter extends Filter {
                 new StringFilterGroup(
                         Settings.HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE,
                         "subscribe_button"
+                )
+        );
+        channelProfileHeaderButton = new StringFilterGroup(
+                null,
+                "|button.e"
+        );
+        channelProfileHeaderButtonsGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_COMMUNITY_BUTTON,
+                        "yt_outline_experimental_person"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_JOIN_BUTTON,
+                        "yt_fill_experimental_star_circle"
                 )
         );
 
@@ -369,6 +392,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "subscriptions_channel_bar"
         );
 
+        // The name under each channel avatar of the bar is the only text of the channel.
+        subscribedChannelsBarName = new StringFilterGroup(
+                Settings.HIDE_SUBSCRIBED_CHANNELS_BAR_NAMES,
+                "subscriptions_channel_bar_channel.e"
+        );
+
         final var subscribersCommunityGuidelines = new StringFilterGroup(
                 Settings.HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES,
                 "sponsorships_comments_upsell"
@@ -460,6 +489,7 @@ public final class LayoutComponentsFilter extends Filter {
                 searchFriction,
                 singleItemInformationPanel,
                 subscribedChannelsBar,
+                subscribedChannelsBarName,
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,
@@ -476,7 +506,7 @@ public final class LayoutComponentsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -510,7 +540,9 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == channelProfile) {
-            return channelProfileGroupList.check(accessibility).isFiltered();
+            return channelProfileHeaderButtonsLegacyGroupList.check(accessibility).isFiltered() ||
+                    (channelProfileHeaderButton.check(path).isFiltered() &&
+                            channelProfileHeaderButtonsGroupList.check(buffer).isFiltered());
         }
 
         if (matchedGroup == chipBar) {
@@ -545,7 +577,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == getPremiumButton) {
-            return path.startsWith("page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
+            return Utils.startsWith(path, "page_header.e") && getPremiumButtonBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == inviteToMessageCard) {
@@ -563,7 +595,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == notificationsMenuHeader) {
-            return path.startsWith("subscribe_menu_notifications.e")
+            return Utils.startsWith(path, "subscribe_menu_notifications.e")
                     && notificationsMenuHeaderBuffer.check(buffer).isFiltered();
         }
 
@@ -574,6 +606,10 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == searchFriction) {
             singleItemInformationPanelIndex.set(0);
             return false;
+        }
+
+        if (matchedGroup == subscribedChannelsBarName) {
+            return Utils.endsWith(path, "|TextType|");
         }
 
         if (matchedGroup == singleItemInformationPanel) {
@@ -958,6 +994,56 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return false;
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called before the channel tabs are copied into the tab list.
+     *
+     * @param tabs         Tab list that hidden channel tabs are removed from.
+     * @param originalTabs All channel tabs, including tabs that are later hidden.
+     */
+    public static void setChannelTabs(List<?> tabs, List<?> originalTabs) {
+        channelTabs = tabs;
+        originalChannelTabs = new ArrayList<>(originalTabs);
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Removing channel tabs shifts the remaining tabs, so the index of the tab to select
+     * (such as the Videos tab opened from a video description) must be remapped.
+     * If the tab to select is hidden, the next visible tab is selected instead.
+     *
+     * @param selectedIndex Index of the tab to select, relative to all channel tabs.
+     * @return Index of the tab to select, relative to the visible channel tabs.
+     */
+    public static int getChannelTabSelectedIndex(int selectedIndex) {
+        List<?> tabs = channelTabs;
+        List<?> originalTabs = originalChannelTabs;
+        channelTabs = null;
+        originalChannelTabs = null;
+
+        try {
+            if (tabs == null || originalTabs == null || tabs.isEmpty()
+                    || tabs.size() == originalTabs.size()
+                    || selectedIndex < 0 || selectedIndex >= originalTabs.size()) {
+                return selectedIndex;
+            }
+
+            int visibleIndex = 0;
+            for (int i = 0; i < selectedIndex; i++) {
+                if (tabs.contains(originalTabs.get(i))) {
+                    visibleIndex++;
+                }
+            }
+
+            return Math.min(visibleIndex, tabs.size() - 1);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getChannelTabSelectedIndex failure", ex);
+            return selectedIndex;
+        }
     }
 
     /**

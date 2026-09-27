@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/phosphor-icons/core/blob/2b75f3ad12b420c9504ef05df8d2564a28f8500e/assets/bold/arrow-clockwise-bold.svg
+    Changes made: Converted to a vector drawable, added the tap animation.
+
+    MIT License
+
+    Copyright (c) 2023 Phosphor Icons
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="256"
+            android:viewportHeight="256">
+            <group
+                android:name="icon_group"
+                android:pivotX="128"
+                android:pivotY="128">
+                <path
+                    android:fillColor="@android:color/white"
+                    android:pathData="M244,56v48a12,12,0,0,1-12,12H184a12,12,0,1,1,0-24H201.1l-19-17.38c-.13-.12-.26-.24-.38-.37A76,76,0,1,0,127,204h1a75.53,75.53,0,0,0,52.15-20.72,12,12,0,0,1,16.49,17.45A99.45,99.45,0,0,1,128,228h-1.37A100,100,0,1,1,198.51,57.06L220,76.72V56a12,12,0,0,1,24,0Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="450"
+                    android:startOffset="80"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="80"
+                    android:valueFrom="1"
+                    android:valueTo="0.92"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="100"
+                    android:startOffset="530"
+                    android:valueFrom="0.92"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="80"
+                    android:valueFrom="1"
+                    android:valueTo="0.92"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="100"
+                    android:startOffset="530"
+                    android:valueFrom="0.92"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

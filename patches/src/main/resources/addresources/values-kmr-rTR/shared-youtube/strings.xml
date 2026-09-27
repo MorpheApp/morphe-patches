@@ -17,6 +17,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">Vemirandî</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Reng</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -120,6 +123,7 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne çawa teqezîya VR bikin: %s.</string>
   <string name="morphe_oauth2_toast_reset">Ji Android VR derketim.</string>
   <string name="morphe_oauth2_toast_invalid">Teqezîya VR bi derexaneyê, zî dosya teqezîya nêzîkê bî.</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protocols QUIC qut bikin</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

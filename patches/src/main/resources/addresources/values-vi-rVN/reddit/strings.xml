@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="reddit_privacy_policy">Chính sách quyền riêng tư của Reddit</string>
-  <string name="morphe_google_signin_not_available_toast">Đăng nhập Google không khả dụng. Hãy sử dụng email để đăng nhập. </string>
+  <string name="morphe_google_signin_not_available_toast">Không thể đăng nhập bằng Google. Hãy dùng email để đăng nhập</string>
   <string name="morphe_screen_ads_title">Quảng cáo</string>
   <string name="morphe_hide_post_ads_title">Ẩn quảng cáo trong bảng tin</string>
   <string name="morphe_hide_comment_ads_title">Ẩn quảng cáo bình luận</string>
@@ -44,7 +44,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_font_failed_to_load">Không thể sử dụng phông chữ này. Hãy thử một tệp khác</string>
   <string name="morphe_disable_modern_home_title">Tắt chế độ hiện đại</string>
   <string name="morphe_disable_screenshot_popup_title">Tắt hộp thoại chụp màn hình</string>
-  <string name="morphe_disable_screenshot_popup_summary">Vô hiệu hộp thoại xuất hiện khi chụp màn hình</string>
+  <string name="morphe_disable_screenshot_popup_summary">Tắt hộp thoại xuất hiện khi chụp màn hình</string>
   <string name="morphe_force_system_font_title">Luôn dùng phông chữ hệ thống</string>
   <string name="morphe_force_system_font_summary">Sử dụng phông chữ hệ thống của thiết bị thay cho Reddit Sans hoặc Roboto. Bật tùy chọn này cũng sẽ tắt cài đặt Tùy chỉnh phông chữ</string>
   <string name="morphe_hide_ask_button_title">Ẩn nút Đặt câu hỏi</string>

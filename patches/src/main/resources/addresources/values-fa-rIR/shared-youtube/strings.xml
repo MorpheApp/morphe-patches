@@ -17,6 +17,10 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_entry_1">غیرفعال</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">رنگی</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">تک‌رنگ</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">برای پایان راه‌اندازی، مجدداً راه‌اندازی کنید</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +135,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">نمی‌توان به VR وارد شد: %s</string>
   <string name="morphe_oauth2_toast_reset">از Android VR خارج شدید</string>
   <string name="morphe_oauth2_toast_invalid">توکن ورود به VR نامعتبر است؛ دوباره به VR وارد شوید</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">کنترل‌های رسانهٔ اعلان</string>
+  <string name="morphe_notification_media_screen_summary">کنترل‌های پخش نمایش‌داده‌شده در صفحهٔ قفل و پنل اعلان را سفارشی کنید</string>
+  <string name="morphe_hide_notification_media_prev_next_title">پنهان‌کردن دکمه‌های قبلی و بعدی</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">دکمه‌های قبلی و بعدی را در اعلان رسانه، صفحهٔ قفل و کنترل‌های هدفون پنهان می‌کند</string>
+  <string name="morphe_disable_notification_media_seekbar_title">غیرفعال‌کردن نوار جست‌وجو</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">از کشیدن نوار جست‌وجو در صفحهٔ قفل و پنل اعلان جلوگیری می‌کند</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">غیرفعال‌کردن پروتکل QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

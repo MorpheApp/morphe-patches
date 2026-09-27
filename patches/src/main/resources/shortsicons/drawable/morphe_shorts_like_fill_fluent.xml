@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/microsoft/fluentui-system-icons/blob/17be10491111b47687d09748fe23a037ecc35881/assets/Thumb%20Like/SVG/ic_fluent_thumb_like_24_filled.svg
+    Changes made: Converted to a vector drawable.
+
+    MIT License
+
+    Copyright (c) 2020 Microsoft Corporation
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M15.0556 9.00361C15.5164 7.57659 15.7491 6.32742 15.7491 5.25034C15.7491 2.85167 14.81 1.00293 13.2491 1.00293C12.4023 1.00293 12.1402 1.50717 11.8123 2.74976C11.8295 2.68483 11.6494 3.38371 11.5968 3.57096C11.4958 3.9297 11.32 4.54045 11.0697 5.40197C11.063 5.42505 11.0532 5.4468 11.0403 5.46688L8.17359 9.95254C7.49554 11.0135 6.49507 11.829 5.31919 12.2792L4.06196 12.7606C3.26859 13.0643 2.80797 13.894 2.96968 14.728L3.65584 18.2667C3.82298 19.1287 4.47629 19.8147 5.32909 20.0237L13.5786 22.0456C16.1098 22.666 18.6682 21.1311 19.3121 18.6057L20.886 12.4331C21.2612 10.9614 20.3723 9.46411 18.9007 9.08887C18.6786 9.03225 18.4504 9.00361 18.2212 9.00361H15.0556Z" />
+</vector>

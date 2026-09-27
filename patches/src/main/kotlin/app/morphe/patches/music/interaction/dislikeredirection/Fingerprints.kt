@@ -8,6 +8,7 @@
 package app.morphe.patches.music.interaction.dislikeredirection
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
@@ -44,6 +45,39 @@ internal object NotificationLikeButtonOnClickListenerFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_INTERFACE,
             returnType = "V",
             parameters = listOf("L")
+        )
+    )
+)
+
+/**
+ * 9.35+
+ * Code that skips to the next track after the current track is disliked. It is found in the
+ * dislike command handler (and on 9.36+ also in the like button click listener):
+ * `String.equals()` -> `queue.canSkip(NEXT)` -> `helper.command(NEXT, null, null)` -> `queue.navigate(command)`.
+ */
+internal object DislikeSkipToNextFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            definingClass = "Ljava/lang/String;",
+            name = "equals"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "Z",
+            parameters = listOf("L"),
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L", "L", "Ljava/util/Map;"),
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            returnType = "V",
+            parameters = listOf("L"),
+            location = MatchAfterWithin(2)
         )
     )
 )

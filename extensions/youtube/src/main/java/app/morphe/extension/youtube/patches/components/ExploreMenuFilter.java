@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
@@ -168,7 +169,7 @@ public final class ExploreMenuFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -176,15 +177,15 @@ public final class ExploreMenuFilter extends Filter {
                               int contentIndex) {
 
         if (matchedGroup == divider) {
-            return path.contains("more_drawer.e");
+            return Utils.contains(path, "more_drawer.e");
         }
 
         if (matchedGroup == exploreMenu) {
-            return path.startsWith("more_drawer.e") && exploreMenuGroupList.check(buffer).isFiltered();
+            return Utils.startsWith(path, "more_drawer.e") && exploreMenuGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == incognitoExploreButton) {
-            return path.startsWith("search_bar_entry_point.e") && incognitoExploreButtonBuffer.check(buffer).isFiltered();
+            return Utils.startsWith(path, "search_bar_entry_point.e") && incognitoExploreButtonBuffer.check(buffer).isFiltered();
         }
 
         return true;

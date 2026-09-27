@@ -17,15 +17,20 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">स्टार्टअप एनीमेशन</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">बंद किया गया</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">रंगीन</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">एक रंग का</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">सेटिंग को पूरा करने के लिए रीस्टार्ट करें</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
-  <string name="morphe_custom_branding_name_title">एप्प नैम</string>
+  <string name="morphe_custom_branding_name_title">ऐप का नाम</string>
   <!-- layout.theme.baseThemePatch -->
-  <string name="morphe_theme_color_dark_title">डार्क थीम की पृष्ठभूमि</string>
-  <string name="morphe_theme_color_dark_entry_2">शुद्ध काला</string>
-  <string name="morphe_theme_color_dark_entry_3">मटेरियल यू (शुद्ध काला)</string>
-  <string name="morphe_theme_color_dark_entry_9">क्लासिक यूट्यूब</string>
+  <string name="morphe_theme_color_dark_title">डार्क थीम बैकग्राउंड</string>
+  <string name="morphe_theme_color_dark_entry_2">एकदम काला</string>
+  <string name="morphe_theme_color_dark_entry_3">मटेरियल यू (एकदम काला)</string>
+  <string name="morphe_theme_color_dark_entry_9">क्लासिक YouTube</string>
   <string name="morphe_theme_color_dark_entry_10">गहरा गुलाबी</string>
   <string name="morphe_theme_color_dark_entry_11">गहरा नीला</string>
   <string name="morphe_theme_color_dark_entry_12">गहरा हरा</string>
@@ -41,48 +46,48 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_7">मटेरियल यू (तृतीयक)</string>
   <string name="morphe_theme_color_custom_entry">कस्टम</string>
   <!-- interaction.downloads.downloadsPatch -->
-  <string name="morphe_external_downloader_screen_title">बाहरी डाउनलोड्स</string>
+  <string name="morphe_external_downloader_screen_title">बाहरी डाउनलोड</string>
   <string name="morphe_external_downloader_name_title">डाउनलोडर पैकेज नाम</string>
   <string name="morphe_external_downloader_name_summary">आपके इंस्टॉल किए गए बाहरी डाउनलोडर ऐप का पैकेज नाम</string>
   <string name="morphe_external_downloader_other_item_hint">पैकेज का नाम दर्ज करें</string>
   <string name="morphe_external_downloader_other_item">अन्य</string>
   <string name="morphe_external_downloader_not_found_title">ऐप इंस्टॉल नहीं है</string>
   <string name="morphe_external_downloader_not_installed_warning">%s इंस्टॉल नहीं है। कृपया इसे इंस्टॉल करें।</string>
-  <string name="morphe_external_downloader_package_not_found_warning">"पैकेज नाम के साथ इंस्टॉल किया गया ऐप नहीं मिला: %s
+  <string name="morphe_external_downloader_package_not_found_warning">"इस पैकेज नाम वाला इंस्टॉल किया गया ऐप नहीं मिला: %s
 
 पुष्टि करें कि पैकेज नाम सही है और ऐप इंस्टॉल है"</string>
   <string name="morphe_external_downloader_empty_warning">पैकेज का नाम खाली नहीं हो सकता</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">कस्टम</string>
-  <string name="morphe_custom_branding_icon_title">एप्प आइकॉन</string>
+  <string name="morphe_custom_branding_icon_title">ऐप आइकन</string>
   <string name="morphe_custom_branding_icon_entry_1">ओरिजिनल</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe काला</string>
-  <string name="morphe_custom_branding_icon_entry_3">मorphe डार्क</string>
-  <string name="morphe_custom_branding_icon_entry_4">Morphe प्रकाश</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe ब्लैक</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe डार्क</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe लाइट</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_5">Morphe प्ले लाइट</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <string name="morphe_custom_branding_icon_entry_6">Morphe प्ले ब्लैक</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_7">कस्टम</string>
-  <string name="morphe_custom_branding_icon_user_dialog_message">"यह आपके ऐप लॉन्चर में दिखाए जाने वाले आइकन को बदलता है।
+  <string name="morphe_custom_branding_icon_user_dialog_message">"यह आपके ऐप लॉन्चर में दिखने वाले आइकन को बदलता है।
 
-यह सेटिंग इनमें से किसी भी स्थान पर आइकन नहीं बदलेगी:
-• डिवाइस सिस्टम सेटिंग की ऐप सूची
-• कुछ पुश सूचनाएँ
-• ‘इसके साथ खोलें’ ऐप पिकर
+यह सेटिंग इनमें से किसी भी जगह आइकन नहीं बदलेगी:
+• डिवाइस सिस्टम सेटिंग्स की ऐप सूची
+• कुछ पुश नोटिफ़िकेशन
+• इसके साथ खोलें ऐप पिकर
 • Android Auto आइकन
 
-हर जगह आइकन बदलने के लिए, फिर से पैच करें और ‘ऐप आइकन’ पैच विकल्प बदलें"</string>
-  <string name="morphe_custom_branding_notification_icon_title">सूचना चिह्न</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">ऐप आइकन से मिलाएं</string>
+हर जगह आइकन बदलने के लिए, फिर से पैच करें और ऐप आइकन पैच विकल्प बदलें"</string>
+  <string name="morphe_custom_branding_notification_icon_title">नोटिफ़िकेशन आइकन</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">ऐप आइकन जैसा रखें</string>
   <string name="morphe_custom_branding_notification_icon_entry_3">Morphe प्ले</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">मorphe नोटिस</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी देखने की जानकारी सहेजी नहीं जा रही है.&lt;br&gt;&lt;br&gt;यह बहुत अधिक संभावना है कि यह DNS विज्ञापन अवरोधक या नेटवर्क प्रॉक्सी के कारण है.&lt;br&gt;&lt;br&gt;इस समस्या को ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS अवरोधकों और प्रॉक्सी को बंद कर दें।</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा दिखाएं मत</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe नोटिस</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी वॉच हिस्ट्री सेव नहीं हो रही है।&lt;br&gt;&lt;br&gt;इसकी सबसे अधिक संभावना किसी DNS ऐड ब्लॉकर या नेटवर्क प्रॉक्सी के कारण है।&lt;br&gt;&lt;br&gt;इसे ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS ऐड ब्लॉकर्स और प्रॉक्सी को बंद कर दें।</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा न दिखाएँ</string>
   <!-- misc.spoof.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम्स को फर्ज़ करें</string>
+  <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम को स्पूफ़ करें</string>
   <string name="morphe_spoof_video_streams_screen_summary">प्लेबैक समस्याओं को रोकने के लिए क्लाइंट स्पूफिंग को कॉन्फ़िगर करें</string>
   <string name="morphe_spoof_video_streams_summary">"अधिकांश उपयोगकर्ताओं के लिए प्लेबैक समस्याओं को ठीक करने के लिए संगत वीडियो स्ट्रीम का अनुरोध करता है।
 
@@ -131,6 +136,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR में प्रवेश नहीं किया जा सकता: %s</string>
   <string name="morphe_oauth2_toast_reset">एंड्रॉइड वीआर से लॉग आउट किया गया</string>
   <string name="morphe_oauth2_toast_invalid">VR प्रवेश टोकन अमान्य है, कृपया VR में पुनः प्रवेश करें</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">नोटिफिकेशन मीडिया नियंत्रण</string>
+  <string name="morphe_notification_media_screen_summary">अपनी लॉक स्क्रीन और नोटिफिकेशन पैनल पर दिखाए जाने वाले प्लेबैक नियंत्रणों को अनुकूलित करें</string>
+  <string name="morphe_hide_notification_media_prev_next_title">पिछला और अगला बटन छिपाएँ</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">मीडिया नोटिफिकेशन, लॉक स्क्रीन और हेडफ़ोन नियंत्रणों में पिछले और अगले बटन छिपाता है</string>
+  <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करें</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">लॉक स्क्रीन और नोटिफिकेशन पैनल पर सीकबार को खींचने से रोकता है</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC प्रोटोकॉल को अक्षम करना</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

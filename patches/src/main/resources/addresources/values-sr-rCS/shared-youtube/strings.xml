@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animacija pri pokretanju</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Onemogućen</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Boja</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monohromni</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Ponovo pokrenite da biste završili postavljanje</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ne mogu se prijaviti na VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odjavljen sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte se ponovno prijaviti na VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Kontrole medija u obaveštenju</string>
+  <string name="morphe_notification_media_screen_summary">Prilagodite kontrole reprodukcije prikazane na zaključanom ekranu i u panelu za obaveštenja</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Sakrij dugmad za prethodni i sledeći video</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Sakriva dugmad za prethodni i sledeći video u medijskom obaveštenju, na zaključanom ekranu i u kontrolama na slušalicama</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Onemogući klizač</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Sprečava prevlačenje klizača na zaključanom ekranu i u panelu za obaveštenja</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Onemogući protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

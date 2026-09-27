@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;
@@ -33,7 +34,14 @@ public final class LyricsTranslator {
     }
 
     public static String deviceLanguage() {
-        return Locale.getDefault().getLanguage();
+        return LyricsRequests.deviceLanguage();
+    }
+
+    private static String translationLanguage() {
+        String language = Settings.LYRICS_TRANSLATION_LANGUAGE.get();
+        return "DEFAULT".equalsIgnoreCase(language)
+                ? deviceLanguage()
+                : language.toLowerCase(Locale.ROOT);
     }
 
     @Nullable
@@ -94,7 +102,7 @@ public final class LyricsTranslator {
             lines.add(line.text());
         }
 
-        String language = deviceLanguage();
+        String language = translationLanguage();
 
         List<String> embedded = embeddedTranslation(lyrics, language, lines.size());
         if (embedded != null) {
@@ -109,7 +117,7 @@ public final class LyricsTranslator {
                 String model = Settings.LYRICS_AI_MODEL.get();
 
                 List<String> aiCached = LyricsCache.getTranslationAI(
-                        track, source, language, lines.size());
+                        track, source, language, lines);
                 if (aiCached != null) {
                     Utils.runOnMainThread(() -> callback.onTranslated(aiCached, false, true, model));
                     return;
@@ -118,17 +126,17 @@ public final class LyricsTranslator {
                 List<String> aiResult = aiTranslate(lines, language, track.title(),
                         track.artist(), baseUrl, apiToken, model);
                 if (aiResult != null) {
-                    LyricsCache.putTranslationAI(track, source, language, aiResult);
+                    LyricsCache.putTranslationAI(track, source, language, lines, aiResult);
                     Utils.runOnMainThread(() -> callback.onTranslated(aiResult, false, true, model));
                     return;
                 }
             }
 
-            List<String> translated = LyricsCache.getTranslation(track, source, language, lines.size());
+            List<String> translated = LyricsCache.getTranslation(track, source, language, lines);
             if (translated == null) {
                 translated = translateOnline(lines, language);
                 if (translated != null) {
-                    LyricsCache.putTranslation(track, source, language, translated);
+                    LyricsCache.putTranslation(track, source, language, lines, translated);
                 }
             }
 
@@ -140,54 +148,8 @@ public final class LyricsTranslator {
     @Nullable
     private static List<String> aiTranslate(List<String> lines, String language,
             String title, String artist, String baseUrl, String apiToken, String model) {
-        int totalChars = 0;
-        for (String line : lines) {
-            totalChars += line.length() + 1;
-        }
-        if (totalChars > OpenAIClient.getMaxChars()) {
-            return null;
-        }
-        String prompt = buildTranslatePrompt(lines, language, title, artist);
-        String response = OpenAIClient.request(baseUrl, apiToken, model,
-                prompt, SYSTEM_PROMPT);
-        if (response == null) {
-            return null;
-        }
-        String[] result = response.split("\n", -1);
-        int end = result.length;
-        while (end > 0 && result[end - 1].trim().isEmpty()) {
-            end--;
-        }
-        if (end == 0) {
-            return null;
-        }
-        boolean allSkip = true;
-        for (int i = 0; i < end; i++) {
-            result[i] = OpenAIClient.stripLineNumber(result[i]);
-            if (!result[i].trim().equalsIgnoreCase("SKIP")) {
-                allSkip = false;
-            }
-        }
-        if (allSkip) {
-            return null;
-        }
-        if (end > lines.size() + 2 || end < lines.size() - 2) {
-            return null;
-        }
-        List<String> out = new ArrayList<>(lines.size());
-        for (int i = 0; i < lines.size(); i++) {
-            if (i < end) {
-                String trimmed = result[i].trim();
-                if (trimmed.equalsIgnoreCase("SKIP") || OpenAIClient.isNoteOrEmptyLine(lines.get(i))) {
-                    out.add("");
-                } else {
-                    out.add(trimmed);
-                }
-            } else {
-                out.add("");
-            }
-        }
-        return out;
+        return OpenAIClient.mapLines(baseUrl, apiToken, model,
+                buildTranslatePrompt(lines, language, title, artist), SYSTEM_PROMPT, lines);
     }
 
     private static String buildTranslatePrompt(List<String> lines, String targetLang,

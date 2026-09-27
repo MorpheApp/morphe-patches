@@ -15,15 +15,14 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
+import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -39,17 +38,11 @@ private val reloadVideoButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch,
+        playerIconStylePatch
     )
 
     execute {
-        copyResources(
-            "reloadbutton",
-            ResourceGroup(
-                resourceDirectoryName = "drawable",
-                "morphe_reload_video_button.xml",
-                "morphe_reload_video_button_bold.xml",
-            ),
-        )
+        copyPlayerButtonIcons("reloadbutton", "morphe_reload_video_button")
     }
 }
 
@@ -91,12 +84,6 @@ val reloadVideoButtonPatch = bytecodePatch(
         )
 
         initializeTopControl(EXTENSION_BUTTON)
-
-        // Main activity is used to launch downloader intent.
-        YouTubeActivityOnCreateFingerprint.method.addInstruction(
-            0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setMainActivity(Landroid/app/Activity;)V"
-        )
 
         val dismissPlayerInnerMethod = MiniAppOpenYtContentCommandEndpointFingerprint
             .instructionMatches.last()

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/microsoft/fluentui-system-icons/blob/17be10491111b47687d09748fe23a037ecc35881/assets/Full%20Screen%20Minimize/SVG/ic_fluent_full_screen_minimize_24_regular.svg
+    Changes made: Converted to a vector drawable.
+
+    MIT License
+
+    Copyright (c) 2020 Microsoft Corporation
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M8.5 3.75C8.5 3.33579 8.16421 3 7.75 3C7.33579 3 7 3.33579 7 3.75V6.25C7 6.66421 6.66421 7 6.25 7H3.75C3.33579 7 3 7.33579 3 7.75C3 8.16421 3.33579 8.5 3.75 8.5H6.25C7.49264 8.5 8.5 7.49264 8.5 6.25V3.75ZM8.5 20.25C8.5 20.6642 8.16421 21 7.75 21C7.33579 21 7 20.6642 7 20.25V17.75C7 17.3358 6.66421 17 6.25 17H3.75C3.33579 17 3 16.6642 3 16.25C3 15.8358 3.33579 15.5 3.75 15.5H6.25C7.49264 15.5 8.5 16.5074 8.5 17.75V20.25ZM16.25 3C15.8358 3 15.5 3.33579 15.5 3.75V6.25C15.5 7.49264 16.5074 8.5 17.75 8.5H20.25C20.6642 8.5 21 8.16421 21 7.75C21 7.33579 20.6642 7 20.25 7H17.75C17.3358 7 17 6.66421 17 6.25V3.75C17 3.33579 16.6642 3 16.25 3ZM15.5 20.25C15.5 20.6642 15.8358 21 16.25 21C16.6642 21 17 20.6642 17 20.25V17.75C17 17.3358 17.3358 17 17.75 17H20.25C20.6642 17 21 16.6642 21 16.25C21 15.8358 20.6642 15.5 20.25 15.5H17.75C16.5074 15.5 15.5 16.5074 15.5 17.75V20.25Z" />
+</vector>

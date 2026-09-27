@@ -120,6 +120,8 @@ internal object RecycleViewScrollingFlagFingerprint : Fingerprint(
 )
 
 internal object NewPlayerOverlaysFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
     filters = listOf(
         literal(45752335L)
     )

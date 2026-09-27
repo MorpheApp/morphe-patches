@@ -295,6 +295,7 @@ public abstract class BaseSearchViewController {
         // Set bold icon if needed.
         MenuItem search = toolbar.getMenu().findItem(ID_ACTION_SEARCH);
         search.setIcon(getSearchIconDrawable());
+        search.setContentDescription(str("morphe_settings_search_hint"));
     }
 
     /**

@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Başlangıç animasyonu</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Tek renk</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Kurulumu tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -130,6 +135,13 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR oturumu açılamadı: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR oturumu kapatıldı</string>
   <string name="morphe_oauth2_toast_invalid">Geçersiz VR oturum açma belirteci, VR\'da tekrar oturum açmayı deneyin</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Bildirim medya kontrolleri</string>
+  <string name="morphe_notification_media_screen_summary">Kilit ekranınızda ve bildirim panelinizde görünen oynatma kontrollerini özelleştirin</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Önceki ve Sonraki butonlarını gizle</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Medya bildirimi, kilit ekranı ve kulaklık kontrollerindeki Önceki ve Sonraki butonlarını gizler</string>
+  <string name="morphe_disable_notification_media_seekbar_title">İlerleme çubuğunu devre dışı bırak</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki ilerleme çubuğunu sürüklemeyi engeller</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

@@ -24,7 +24,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
@@ -523,10 +522,9 @@ public final class LocalLyricsFetcher {
             }
             if (!seg.isEmpty()) {
                 if (tsMs >= 0) {
-                    final long min = tsMs / 60_000;
-                    final long sec = (tsMs / 1000) % 60;
-                    final long cs = (tsMs % 1000) / 10;
-                    sb.append(String.format(Locale.US, "[%02d:%02d.%02d]", min, sec, cs));
+                    sb.append('[')
+                      .append(LrcParser.formatCentiseconds(tsMs))
+                      .append(']');
                 }
                 sb.append(seg).append('\n');
             }

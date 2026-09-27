@@ -17,7 +17,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
-import app.morphe.patches.youtube.layout.hide.general.hideLayoutComponentsPatch
+import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
@@ -50,7 +50,6 @@ val flyoutPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         lithoFilterPatch,
-        hideLayoutComponentsPatch,
         videoInformationPatch,
         elementProtoParserHookPatch,
     )
@@ -206,6 +205,7 @@ val flyoutPatch = bytecodePatch(
             "invoke-static { }, $EXTENSION_UTILS_CLASS->resetVideoMarkedAsForKids()V"
         )
 
+        hookElement("$EXTENSION_UTILS_CLASS->onCommentsLoaded")
         addLithoFilter(
             "Lapp/morphe/extension/youtube/patches/components/ChannelPageFlyoutFilter;"
         )

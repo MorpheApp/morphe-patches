@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/google/material-design-icons/blob/bd8cb85bd4bad964fe6918f79665bb40c3a8efef/symbols/android/autorenew/materialsymbolssharp/autorenew_24px.xml
+    Changes made: Removed the theme tint.
+
+    Copyright 2022 Google
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M204,642Q182,604 171,564Q160,524 160,482Q160,348 253,254Q346,160 480,160L487,160L423,96L479,40L639,200L479,360L423,304L487,240L480,240Q380,240 310,310.5Q240,381 240,482Q240,508 246,533Q252,558 264,582L204,642ZM481,920L321,760L481,600L537,656L473,720L480,720Q580,720 650,649.5Q720,579 720,478Q720,452 714,427Q708,402 696,378L756,318Q778,356 789,396Q800,436 800,478Q800,612 707,706Q614,800 480,800L473,800L537,864L481,920Z" />
+</vector>

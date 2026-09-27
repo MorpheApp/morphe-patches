@@ -23,6 +23,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
@@ -34,11 +35,16 @@ final class DummySpanFilter extends SpanFilter {
 @SuppressWarnings("unused")
 public final class InclusiveSpanPatch {
 
+    private record IdentifierPath(String identifier, CharSequence path) {
+
+    }
+
     /**
      * Simple wrapper to pass the litho parameters through the prefix search.
      */
     private static final class LithoFilterParameters {
-        final String conversionContext;
+        final String identifier;
+        final CharSequence path;
         final SpannableString spannableString;
         final Object span;
         final int start;
@@ -49,9 +55,10 @@ public final class InclusiveSpanPatch {
         final SpanType spanType;
         final boolean isWord;
 
-        public LithoFilterParameters(String conversionContext, SpannableString spannableString,
+        public LithoFilterParameters(String identifier, CharSequence path, SpannableString spannableString,
                                      Object span, int start, int end, int flags) {
-            this.conversionContext = conversionContext;
+            this.identifier = identifier;
+            this.path = path;
             this.spannableString = spannableString;
             this.span = span;
             this.start = start;
@@ -125,7 +132,7 @@ public final class InclusiveSpanPatch {
      * Because litho filtering is multithreaded and the buffer is passed in from a different injection point,
      * the buffer is saved to a ThreadLocal so each calling thread does not interfere with other threads.
      */
-    private static final ThreadLocal<String> conversionContextThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<IdentifierPath> conversionContextThreadLocal = new ThreadLocal<>();
 
     static {
         for (SpanFilter filter : filters) {
@@ -147,18 +154,18 @@ public final class InclusiveSpanPatch {
                 continue;
             }
 
-            for (String pattern : group.filters) {
+            for (CharSequence pattern : group.filters) {
                 InclusiveSpanPatch.searchTree.addPattern(pattern, (textSearched, matchedStartIndex,
                                                                    matchedLength, callbackParameter) -> {
                             if (!group.isEnabled()) return false;
 
                             LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
-                            final boolean isFiltered = filter.skip(parameters.conversionContext, parameters.spannableString,
-                                    parameters.span, parameters.start, parameters.end, parameters.flags, parameters.isWord,
-                                    parameters.spanType, group);
+                            final boolean isFiltered = filter.skip(parameters.identifier, parameters.path,
+                                    parameters.spannableString, parameters.span, parameters.start, parameters.end,
+                                    parameters.flags, parameters.isWord, parameters.spanType, group);
 
                             if (isFiltered && SharedYouTubeSettings.DEBUG_SPANNABLE.get()) {
-                                Logger.printDebug(() -> "Removed " + filterSimpleName
+                                Logger.printDebug(() -> "Removed: " + filterSimpleName
                                         + " setSpan: " + parameters.spanType);
                             }
 
@@ -174,25 +181,26 @@ public final class InclusiveSpanPatch {
      *
      * @param conversionContext ConversionContext is used to identify whether it is a comment thread or not.
      */
-    public static void setConversionContext(Object conversionContext, CharSequence original) {
-        conversionContextThreadLocal.set(conversionContext.toString());
+    public static void setConversionContext(ContextInterface conversionContext, CharSequence original) {
+        conversionContextThreadLocal.set(new IdentifierPath(
+                conversionContext.patch_getIdentifier(), conversionContext.patch_getPathBuilder()));
     }
 
     private static boolean returnEarly(SpannableString spannableString, Object span, int start, int end, int flags) {
         try {
-            String conversionContext = conversionContextThreadLocal.get();
-            if (conversionContext == null || conversionContext.isEmpty()) {
+            IdentifierPath identifierPath = conversionContextThreadLocal.get();
+            if (identifierPath == null) {
                 return false;
             }
 
-            LithoFilterParameters parameter = new LithoFilterParameters(conversionContext,
-                    spannableString, span, start, end, flags);
+            LithoFilterParameters parameter = new LithoFilterParameters(
+                    identifierPath.identifier, identifierPath.path, spannableString, span, start, end, flags);
 
             if (SharedYouTubeSettings.DEBUG_SPANNABLE.get()) {
                 Logger.printDebug(() -> "Searching...\n\u200B\n" + parameter);
             }
 
-            return searchTree.matches(parameter.conversionContext, parameter);
+            return searchTree.matches(parameter.path, parameter);
         } catch (Exception ex) {
             Logger.printException(() -> "Spans filter failure", ex);
         }

@@ -226,25 +226,8 @@ public final class LrcParser {
             return new BodyParse(full.toString().trim(), List.of());
         }
 
-        inferWordEnds(words);
+        inferMissingWordEnds(words, 800);
         return new BodyParse(full.toString().trim(), words);
-    }
-
-    private static void inferWordEnds(List<Word> words) {
-        for (int i = 0; i < words.size() - 1; i++) {
-            Word word = words.get(i);
-            if (word.endMs() == LyricsLine.NO_TIME) {
-                words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(), word.text()));
-            }
-        }
-        if (!words.isEmpty()) {
-            int last = words.size() - 1;
-            Word lastWord = words.get(last);
-            if (lastWord.endMs() == LyricsLine.NO_TIME) {
-                words.set(last, new Word(lastWord.startMs(),
-                        lastWord.startMs() + 800, lastWord.text()));
-            }
-        }
     }
 
     public static String formatLine(LyricsLine line) {
@@ -350,14 +333,7 @@ public final class LrcParser {
                 seconds = Long.parseLong(rest);
             } else {
                 seconds = Long.parseLong(rest.substring(0, dot));
-                String fraction = rest.substring(dot + 1);
-                if (fraction.length() == 1) {
-                    fractionMs = Long.parseLong(fraction) * 100;
-                } else if (fraction.length() == 2) {
-                    fractionMs = Long.parseLong(fraction) * 10;
-                } else {
-                    fractionMs = Long.parseLong(fraction.substring(0, 3));
-                }
+                fractionMs = LyricsRequests.fractionToMs(rest.substring(dot + 1));
             }
 
             return (minutes * 60 + seconds) * 1000 + fractionMs;
@@ -371,16 +347,36 @@ public final class LrcParser {
      * Formats a line level timestamp as {@code [mm:ss.xx]} for the LRC cache.
      */
     private static String formatTimestamp(long timeMs) {
-        final long minutes = timeMs / 60_000;
-        final long seconds = (timeMs / 1000) % 60;
-        final long hundredths = (timeMs % 1000) / 10;
-        return String.format(Locale.US, "[%02d:%02d.%02d]", minutes, seconds, hundredths);
+        return "[" + formatCentiseconds(timeMs) + "]";
     }
 
     private static String formatWordTimestamp(long timeMs) {
+        return formatCentiseconds(timeMs);
+    }
+
+    /** Formats {@code mm:ss.xx} (hundredths) in US locale. */
+    public static String formatCentiseconds(long timeMs) {
         final long minutes = timeMs / 60_000;
         final long seconds = (timeMs / 1000) % 60;
         final long hundredths = (timeMs % 1000) / 10;
         return String.format(Locale.US, "%02d:%02d.%02d", minutes, seconds, hundredths);
+    }
+
+    /** Fills missing word end times: end = next start, last word = start + {@code lastFallbackMs}. */
+    public static void inferMissingWordEnds(List<Word> words, long lastFallbackMs) {
+        for (int i = 0; i < words.size() - 1; i++) {
+            Word word = words.get(i);
+            if (word.endMs() == LyricsLine.NO_TIME) {
+                words.set(i, new Word(word.startMs(), words.get(i + 1).startMs(), word.text()));
+            }
+        }
+        if (!words.isEmpty()) {
+            int last = words.size() - 1;
+            Word lastWord = words.get(last);
+            if (lastWord.endMs() == LyricsLine.NO_TIME) {
+                words.set(last, new Word(lastWord.startMs(),
+                        lastWord.startMs() + lastFallbackMs, lastWord.text()));
+            }
+        }
     }
 }

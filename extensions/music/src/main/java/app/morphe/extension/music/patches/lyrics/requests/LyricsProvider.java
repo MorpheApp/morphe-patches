@@ -25,21 +25,96 @@ public interface LyricsProvider {
      */
     String name();
 
+    record FetchResult(Lyrics lyrics,
+                       @Nullable String sourceTitle,
+                       @Nullable String sourceArtist,
+                       long sourceDurationSec,
+                       @Nullable TrackInfo queriedVariant,
+                       boolean videoIdKeyed) {
+
+        @Nullable
+        public static FetchResult of(@Nullable Lyrics lyrics) {
+            return lyrics == null ? null
+                    : new FetchResult(lyrics, null, null, 0, null, true);
+        }
+
+        @Nullable
+        public static FetchResult blind(@Nullable Lyrics lyrics) {
+            return lyrics == null ? null
+                    : new FetchResult(lyrics, null, null, 0, null, false);
+        }
+
+        @Nullable
+        public static FetchResult of(@Nullable Lyrics lyrics, TrackInfo queriedVariant) {
+            if (lyrics == null) {
+                return null;
+            }
+            return new FetchResult(lyrics,
+                    queriedVariant != null ? queriedVariant.title() : null,
+                    queriedVariant != null ? queriedVariant.artist() : null,
+                    queriedVariant != null ? queriedVariant.durationSeconds() : 0L,
+                    queriedVariant,
+                    false);
+        }
+
+        @Nullable
+        public static FetchResult of(@Nullable Lyrics lyrics, String title, String artist,
+                                     long durationSec, TrackInfo queriedVariant) {
+            if (lyrics == null) {
+                return null;
+            }
+            return new FetchResult(lyrics, title, artist, durationSec, queriedVariant, false);
+        }
+
+        public int matchScore(TrackInfo track) {
+            if (sourceTitle != null && !sourceTitle.isEmpty()) {
+                return LyricsRequests.evaluate(sourceTitle, sourceArtist, sourceDurationSec,
+                        track).score();
+            }
+            if (queriedVariant != null) {
+                return LyricsRequests.evaluate(queriedVariant.title(), queriedVariant.artist(),
+                        queriedVariant.durationSeconds(), track).score();
+            }
+            return videoIdKeyed ? LyricsRequests.VIDEO_ID_TRUST : LyricsRequests.NEUTRAL;
+        }
+
+        /** Whether this result clears the high-match gate for first display. */
+        public boolean isHighMatch(TrackInfo track) {
+            if (sourceTitle != null && !sourceTitle.isEmpty()) {
+                return LyricsRequests.isHighMatch(LyricsRequests.evaluate(
+                        sourceTitle, sourceArtist, sourceDurationSec, track));
+            }
+            if (queriedVariant != null) {
+                return LyricsRequests.isHighMatch(LyricsRequests.evaluate(
+                        queriedVariant.title(), queriedVariant.artist(),
+                        queriedVariant.durationSeconds(), track));
+            }
+            if (videoIdKeyed) {
+                return LyricsRequests.isHighMatch(LyricsRequests.MatchVerdict.videoIdTrust());
+            }
+            return false;
+        }
+    }
+
     /**
      * Fetches lyrics. Always called off the main thread.
      *
-     * @return Lyrics, or {@code null} if this provider has none for the track.
+     * @return result, or {@code null} if this provider has none for the track.
      */
     @Nullable
-    Lyrics fetch(TrackInfo track) throws Exception;
+    FetchResult fetch(TrackInfo track) throws Exception;
 
     /**
-     * Returns all candidate lyrics for the track, ordered by relevance.
-     * The first candidate is typically the best match.
+     * Returns scored candidate lyrics for the track, best first.
+     * Scores use the shared match+sync scale from {@link LyricsRequests}.
      */
-    default List<Lyrics> fetchCandidates(TrackInfo track) throws Exception {
-        Lyrics single = fetch(track);
-        return (single != null) ? Collections.singletonList(single) : Collections.emptyList();
+    default List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        FetchResult result = fetch(track);
+        if (result == null || result.lyrics() == null || result.lyrics() == Lyrics.NOT_FOUND) {
+            return Collections.emptyList();
+        }
+        int score = result.matchScore(track) + LyricsRequests.syncRank(result.lyrics());
+        return Collections.singletonList(new Lyrics.ScoredLyrics(score, result.lyrics()));
     }
 
     /**

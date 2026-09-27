@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.TrieSearch;
 
 public abstract class SpanFilterGroupList<V, T extends SpanFilterGroup<V>> implements Iterable<T> {
@@ -25,7 +24,7 @@ public abstract class SpanFilterGroupList<V, T extends SpanFilterGroup<V>> imple
     private final TrieSearch<V> search = createSearchGraph();
 
     @SafeVarargs
-    public final void addAll(final T... groups) {
+    public final void addAll(T... groups) {
         filterGroups.addAll(Arrays.asList(groups));
 
         for (T group : groups) {

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/ionic-team/ionicons/blob/d1e2c48641fd5f4910ee42a144dc1c84b1a9a4ee/src/svg/refresh-outline.svg
+    Changes made: Converted to a vector drawable, added the tap animation.
+
+    The MIT License (MIT)
+
+    Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="512"
+            android:viewportHeight="512">
+            <group
+                android:name="icon_group"
+                android:pivotX="256"
+                android:pivotY="256">
+                <path
+                    android:strokeColor="@android:color/white"
+                    android:strokeWidth="32"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="miter"
+                    android:strokeMiterLimit="10"
+                    android:pathData="M320,146s24.36-12-64-12A160,160,0,1,0,416,294" />
+                <path
+                    android:strokeColor="@android:color/white"
+                    android:strokeWidth="32"
+                    android:strokeLineCap="round"
+                    android:strokeLineJoin="round"
+                    android:pathData="M256,58 L336,138 L256,218" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="450"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

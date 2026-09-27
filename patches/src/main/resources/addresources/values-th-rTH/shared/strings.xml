@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">การตั้งค่า Morphe ถูกตั้งค่าเป็นค่าเริ่มต้น</string>
   <string name="morphe_settings_import_success">นำเข้าการตั้งค่า %d</string>
   <string name="morphe_settings_import_failure_parse">การนำเข้าล้มเหลว: %s</string>
+  <string name="morphe_settings_navigate_up">นำทางขึ้น</string>
   <string name="morphe_settings_search_hint">ค้นหาในการตั้งค่า</string>
   <string name="morphe_settings_search_no_results_title">ไม่พบผลลัพธ์สำหรับ \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">ลองใช้คำหลักอื่น</string>
   <string name="morphe_settings_search_recent_searches">การค้นหาล่าสุด</string>
   <string name="morphe_settings_search_remove_message">นำออกจากประวัติการค้นหาหรือไม่?</string>
+  <string name="morphe_settings_search_remove">ลบออกจากประวัติการค้นหา</string>
   <string name="morphe_settings_search_clear_history">ล้างประวัติการค้นหา</string>
   <string name="morphe_settings_search_clear_history_message">คุณแน่ใจหรือไม่ว่าต้องการล้างประวัติการค้นหาทั้งหมด?</string>
   <string name="morphe_settings_search_tips_title">เคล็ดลับการค้นหา</string>

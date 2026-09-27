@@ -165,6 +165,7 @@ Second \"item\" text"</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
@@ -179,7 +180,6 @@ Second \"item\" text"</string>
   <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
@@ -199,4 +199,6 @@ Second \"item\" text"</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_default">ડિફૉલ્ટ</string>
 </resources>

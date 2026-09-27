@@ -34,11 +34,7 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
 
     public LyricsLine {
         words = words == null ? List.of() : Collections.unmodifiableList(words);
-    }
-
-    public LyricsLine(long startTimeMs, long endTimeMs, String text, List<Word> words,
-                      @Nullable String agentId, boolean isDuet, boolean isBG) {
-        this(startTimeMs, endTimeMs, text, words, agentId, isDuet, isBG, null);
+        text = text == null ? "" : text;
     }
 
     public LyricsLine(long startTimeMs, String text, List<Word> words,

@@ -18,6 +18,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 
@@ -28,10 +30,6 @@ final class OpenAIClient {
     private static final int MAX_CHARS = 3000;
 
     private OpenAIClient() {
-    }
-
-    static int getMaxChars() {
-        return MAX_CHARS;
     }
 
     @Nullable
@@ -163,14 +161,65 @@ final class OpenAIClient {
         return sb.toString();
     }
 
-    static String stripLineNumber(String line) {
+    private static String stripLineNumber(String line) {
         return line.replaceFirst("^\\d+\\.\\s*", "");
     }
 
-    static boolean isNoteOrEmptyLine(String text) {
+    private static boolean isNoteOrEmptyLine(String text) {
         if (text == null) return true;
         String trimmed = text.trim();
         if (trimmed.isEmpty()) return true;
         return !trimmed.matches(".*\\p{L}.*");
+    }
+
+    @Nullable
+    static List<String> mapLines(String baseUrl, String apiToken, String model,
+            String prompt, String systemPrompt, List<String> sourceLines) {
+        int totalChars = 0;
+        for (String line : sourceLines) {
+            totalChars += line.length() + 1;
+        }
+        if (totalChars > MAX_CHARS) {
+            return null;
+        }
+        String response = request(baseUrl, apiToken, model, prompt, systemPrompt);
+        if (response == null) {
+            return null;
+        }
+        String[] result = response.split("\n", -1);
+        int end = result.length;
+        while (end > 0 && result[end - 1].trim().isEmpty()) {
+            end--;
+        }
+        if (end == 0) {
+            return null;
+        }
+        boolean allSkip = true;
+        for (int i = 0; i < end; i++) {
+            result[i] = stripLineNumber(result[i]);
+            if (!result[i].trim().equalsIgnoreCase("SKIP")) {
+                allSkip = false;
+            }
+        }
+        if (allSkip) {
+            return null;
+        }
+        if (end > sourceLines.size() + 2 || end < sourceLines.size() - 2) {
+            return null;
+        }
+        List<String> out = new ArrayList<>(sourceLines.size());
+        for (int i = 0; i < sourceLines.size(); i++) {
+            if (i < end) {
+                String trimmed = result[i].trim();
+                if (trimmed.equalsIgnoreCase("SKIP") || isNoteOrEmptyLine(sourceLines.get(i))) {
+                    out.add("");
+                } else {
+                    out.add(trimmed);
+                }
+            } else {
+                out.add("");
+            }
+        }
+        return out;
     }
 }

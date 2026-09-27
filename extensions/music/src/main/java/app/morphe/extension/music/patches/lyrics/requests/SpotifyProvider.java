@@ -84,7 +84,7 @@ public final class SpotifyProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         final String spDc = Settings.SPOTIFY_TOKEN.get();
         if (spDc.trim().isEmpty()) {
             return null;
@@ -102,7 +102,7 @@ public final class SpotifyProvider implements LyricsProvider {
         }
 
         final String rawJson = lyricsResponse.toString();
-        return parseLyrics(lyricsResponse, rawJson, sourceUrl);
+        return FetchResult.blind(parseLyrics(lyricsResponse, rawJson, sourceUrl));
     }
 
     @Nullable
@@ -169,11 +169,10 @@ public final class SpotifyProvider implements LyricsProvider {
                 if (trackId != null) {
                     return trackId;
                 }
-                break; // got 200 but no tracks - don't retry, try next hash
+                break;
             }
 
             if (code == 429) {
-                // The loop bound decides whether a retry is left.
                 retryAfterMs = parseRetryAfter(connection);
                 connection.disconnect();
                 continue;
@@ -346,24 +345,6 @@ public final class SpotifyProvider implements LyricsProvider {
         return new Lyrics(lines, providerName, true, null, null, null, null, rawJson, "sp.json", sourceUrl);
     }
 
-    private static List<Word> distributeWords(String[] tokens, long startMs, long durationMs) {
-        final List<Word> words = new ArrayList<>(tokens.length);
-        if (tokens.length == 0) {
-            return words;
-        }
-
-        final long perWord = durationMs / tokens.length;
-        long cursor = startMs;
-
-        for (int j = 0; j < tokens.length; j++) {
-            final long wordEnd = cursor + perWord;
-            final boolean spaceAfter = j < tokens.length - 1;
-            words.add(new Word(cursor, wordEnd, tokens[j], null, spaceAfter));
-            cursor = wordEnd;
-        }
-        return words;
-    }
-
     @Nullable
     private Lyrics parseSyllableLines(JSONArray linesArr, String providerName,
                                        String rawJson, @Nullable String sourceUrl) {
@@ -386,14 +367,7 @@ public final class SpotifyProvider implements LyricsProvider {
             if (syllablesArr != null && syllablesArr.length() > 0) {
                 words = parseSyllables(syllablesArr, text);
             } else {
-                final long nextStartMs;
-                if (i + 1 < linesArr.length()) {
-                    nextStartMs = peekNextStartTime(linesArr, i + 1, startTimeMs + 2000);
-                } else {
-                    nextStartMs = startTimeMs + 2000;
-                }
-                final long lineDuration = Math.max(nextStartMs - startTimeMs, 100);
-                words = distributeWords(text.split("\\s+"), startTimeMs, lineDuration);
+                words = List.of();
             }
 
             lines.add(new LyricsLine(startTimeMs, text, words));
@@ -443,17 +417,6 @@ public final class SpotifyProvider implements LyricsProvider {
             Logger.printDebug(() -> "Could not parse start time in Spotify lyrics line", ex);
             return LyricsLine.NO_TIME;
         }
-    }
-
-    private static long peekNextStartTime(JSONArray linesArr, int index, long fallback) {
-        JSONObject next = linesArr.optJSONObject(index);
-        if (next != null) {
-            final long nextStart = parseStartTimeMs(next);
-            if (nextStart > 0) {
-                return nextStart;
-            }
-        }
-        return fallback;
     }
 
     @Nullable

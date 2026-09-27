@@ -19,6 +19,7 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 
@@ -66,21 +67,26 @@ public final class MiniPlayerLyrics {
     }
 
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
-        if (original == null) {
-            return;
-        }
-        String title = original.getString(MediaMetadata.METADATA_KEY_TITLE);
-        String artist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
-        if (title == null || title.trim().isEmpty() || artist == null || artist.trim().isEmpty()) {
-            return;
-        }
-        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);
-        displayTitle = parsed[1];
-        displayArtist = parsed[0];
-        cachedSubtitle = null; // invalidate on track change
+        try {
+            if (original == null) {
+                return;
+            }
+            String title = original.getString(MediaMetadata.METADATA_KEY_TITLE);
+            String artist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
+            if (title == null || title.trim().isEmpty()
+                    || artist == null || artist.trim().isEmpty()) {
+                return;
+            }
+            String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);
+            displayTitle = parsed[1];
+            displayArtist = parsed[0];
+            cachedSubtitle = null; // invalidate on track change
 
-        android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
-        LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
+            android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
+            LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
+        }
     }
 
     /**

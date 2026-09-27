@@ -24,6 +24,7 @@ import android.media.AudioAttributes;
 import android.media.AudioFocusRequest;
 import android.media.AudioManager;
 import android.media.MediaMetadata;
+import android.media.audiofx.AudioEffect;
 import android.media.MediaPlayer;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
@@ -101,6 +102,7 @@ public final class OfflinePlaybackService extends Service {
     private MediaSession session;
     private AudioManager audioManager;
     private AudioFocusRequest focusRequest;
+    private int audioEffectSessionId;
     private String path = "";
     private String publishedMetadataPath = "";
     private String title = "YouTube Music";
@@ -193,6 +195,7 @@ public final class OfflinePlaybackService extends Service {
             player.setOnPreparedListener(mp -> {
                 if (mp != player) return;
                 prepared = true;
+                openAudioEffectSession(mp);
                 mp.start();
                 publishState();
                 startForeground(NOTIFICATION_ID, notification());
@@ -263,9 +266,31 @@ public final class OfflinePlaybackService extends Service {
         return prepared && player != null;
     }
 
+    private void openAudioEffectSession(MediaPlayer mediaPlayer) {
+        int sessionId = mediaPlayer.getAudioSessionId();
+        if (sessionId <= 0) return;
+
+        audioEffectSessionId = sessionId;
+        sendBroadcast(new Intent(AudioEffect.ACTION_OPEN_AUDIO_EFFECT_CONTROL_SESSION)
+                .putExtra(AudioEffect.EXTRA_AUDIO_SESSION, sessionId)
+                .putExtra(AudioEffect.EXTRA_PACKAGE_NAME, getPackageName())
+                .putExtra(AudioEffect.EXTRA_CONTENT_TYPE, AudioEffect.CONTENT_TYPE_MUSIC));
+    }
+
+    private void closeAudioEffectSession() {
+        int sessionId = audioEffectSessionId;
+        if (sessionId <= 0) return;
+
+        audioEffectSessionId = 0;
+        sendBroadcast(new Intent(AudioEffect.ACTION_CLOSE_AUDIO_EFFECT_CONTROL_SESSION)
+                .putExtra(AudioEffect.EXTRA_AUDIO_SESSION, sessionId)
+                .putExtra(AudioEffect.EXTRA_PACKAGE_NAME, getPackageName()));
+    }
+
     private void releasePlayer() {
         prepared = false;
         progressHandler.removeCallbacks(progressTicker);
+        closeAudioEffectSession();
 
         MediaPlayer released = player;
         if (released == null) return;

@@ -50,7 +50,7 @@ public final class YTMusicProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         final String videoId = VideoInformation.getVideoId();
         if (videoId.isEmpty()) {
             return null;
@@ -64,18 +64,18 @@ public final class YTMusicProvider implements LyricsProvider {
         final Lyrics plainResult = fetchLyrics(browseId, false);
         if (plainResult != null && !plainResult.isEmpty()) {
             if (plainResult.synced()) {
-                return plainResult;
+                return FetchResult.of(plainResult);
             }
             final Lyrics timedResult = fetchLyrics(browseId, true);
             if (timedResult != null && timedResult.synced()) {
-                return timedResult;
+                return FetchResult.of(timedResult);
             }
-            return plainResult;
+            return FetchResult.of(plainResult);
         }
 
         final Lyrics androidResult = fetchLyrics(browseId, true);
         if (androidResult != null && !androidResult.isEmpty()) {
-            return androidResult;
+            return FetchResult.of(androidResult);
         }
 
         return null;

@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Startanimation</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Inaktiverad</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Färg</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Starta om för att slutföra konfigureringen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Det går inte att logga in i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken. Försök logga in i VR igen</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Mediekontroller för avisering</string>
+  <string name="morphe_notification_media_screen_summary">Anpassa de uppspelningskontroller som visas på låsskärmen och i aviseringspanelen</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Dölj föregående och nästa knappar</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Döljer knapparna Föregående och Nästa i medieaviseringen, på låsskärmen och för hörlursstyrning</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Inaktivera sökfältet</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Förhindrar att sökreglaget kan dras på låsskärmen och i aviseringspanelen</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Inaktivera QUIC-protokoll</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

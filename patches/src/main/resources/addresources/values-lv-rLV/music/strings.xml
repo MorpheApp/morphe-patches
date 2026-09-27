@@ -49,6 +49,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_search">Meklēt</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonementi</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
@@ -70,7 +71,6 @@ Second \"item\" text"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- layout.lyrics.lyricsPatch -->
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->

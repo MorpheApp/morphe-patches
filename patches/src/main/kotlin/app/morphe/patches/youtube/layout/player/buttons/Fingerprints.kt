@@ -8,6 +8,8 @@
 package app.morphe.patches.youtube.layout.player.buttons
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
@@ -18,14 +20,16 @@ internal object ExploderUIFullscreenButtonFingerprint : Fingerprint(
     classFingerprint = ExploderUIFullscreenButtonParentFingerprint,
     filters = listOf(
         resourceLiteral(ResourceType.ID, "fullscreen_button"),
-        opcode(Opcode.MOVE_RESULT_OBJECT)
+        methodCall(smali = "Landroid/view/View;->findViewById(I)Landroid/view/View;"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately())
     )
 )
 
-private object ExploderUIFullscreenButtonParentFingerprint : Fingerprint(
+internal object ExploderUIFullscreenButtonParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
         resourceLiteral(ResourceType.ID, "time_bar_live_label")
     )
 )
+

@@ -12,8 +12,6 @@ package app.morphe.extension.youtube.videoplayer;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.AnimatedVectorDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -26,11 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 
 public class LegacyPlayerControlButton {
 
@@ -182,27 +178,23 @@ public class LegacyPlayerControlButton {
         View button = Utils.getChildViewByResourceName(controlsViewGroup, buttonId);
 
         if (imageResourceName != null) {
-            final int iconResourceId = ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE,
-                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                            ? imageResourceName
-                            : imageResourceName + "_bold"
-            );
-            ((ImageView) button).setImageResource(iconResourceId);
+            ((ImageView) button).setImageResource(PlayerIcons.id(imageResourceName));
         }
 
         // Wrap click listener to trigger animation.
         button.setOnClickListener(view -> {
-            animateIcon();
             if (onClickListener != null) {
                 onClickListener.onClick(view);
             }
+            animateIcon();
         });
 
         if (longClickListener != null) {
             // Wrap long click listener to trigger animation.
             button.setOnLongClickListener(view -> {
+                final boolean consumed = longClickListener.onLongClick(view);
                 animateIcon();
-                return longClickListener.onLongClick(view);
+                return consumed;
             });
         }
 
@@ -211,6 +203,7 @@ public class LegacyPlayerControlButton {
         TextView tempTextOverlay = null;
         if (textOverlayId != null) {
             tempTextOverlay = Utils.getChildViewByResourceName(controlsViewGroup, textOverlayId);
+            PlayerIcons.styleText(tempTextOverlay);
         }
         textOverlayRef = new WeakReference<>(tempTextOverlay);
     }
@@ -260,13 +253,7 @@ public class LegacyPlayerControlButton {
      */
     public void animateIcon() {
         try {
-            View button = buttonRef.get();
-            if (button instanceof ImageView imageView) {
-                Drawable drawable = imageView.getDrawable();
-                if (drawable instanceof AnimatedVectorDrawable avd) {
-                    avd.start();
-                }
-            }
+            PlayerIcons.animate(buttonRef.get());
         } catch (Exception ex) {
             Logger.printException(() -> "animateIcon failure", ex);
         }

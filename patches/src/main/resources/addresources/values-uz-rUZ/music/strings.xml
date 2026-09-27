@@ -212,6 +212,7 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <string name="morphe_change_start_page_entry_subscriptions">Obunalar</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Filtr panelini yashirish</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Miniplayerning rangini o\'zgartirish</string>
   <string name="morphe_music_change_miniplayer_color_summary">Miniplayerning rangini to\'liq ekran ijrochiga moslashtiradi</string>
@@ -307,7 +308,6 @@ Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTu
   <string name="morphe_music_lyrics_enabled_title">Uchinchi tomon matnlaridan foydalanish</string>
   <string name="morphe_music_lyrics_enabled_summary">Uchinchi tomon xizmatidan matnlar ko‘rsatiladi, agar topilmasa, o‘rnatilgan matnlarga qaytadi</string>
   <string name="morphe_music_lyrics_section_about_title">Biz haqimizda</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
   <string name="morphe_music_token_dialog_get_token">Tokenni olish</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Satrga teginib, o‘tkazish</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Satrga tegish, qo‘shiqda shu lahzaga o‘tadi</string>

@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animasyon sa pagsisimula</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Nakapatay</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Kulay</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokromo</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Hindi maka-sign in sa VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Nag-log out sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Imbalido ang sign in token ng VR, subukang mag-sign in muli sa VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Mga kontrol ng media sa notification</string>
+  <string name="morphe_notification_media_screen_summary">I-customize ang mga kontrol sa pag-playback na ipinapakita sa iyong lock screen at notification panel.</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Itago ang mga pindutan ng Previous at Next</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Itinatago ang mga pindutan ng Previous at Next sa media notification, lock screen, at mga kontrol ng headphone.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">I-disable ang seekbar</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Pinipigilan ang pag-drag sa seekbar sa lock screen at notification panel.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Animasi startup</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Dinonaktifkan</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Berwarna</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokrom</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Mulai ulang untuk menyelesaikan penyiapan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -39,7 +44,7 @@ Second \"item\" text"</string>
   <string name="morphe_theme_color_entry_5">Material You (Utama)</string>
   <string name="morphe_theme_color_entry_6">Material You (Sekunder)</string>
   <string name="morphe_theme_color_entry_7">Material You (Tersier)</string>
-  <string name="morphe_theme_color_custom_entry">Khusus</string>
+  <string name="morphe_theme_color_custom_entry">Kustom</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Unduhan eksternal</string>
   <string name="morphe_external_downloader_name_title">Nama paket pengunduh</string>
@@ -53,7 +58,7 @@ Second \"item\" text"</string>
 Pastikan nama paket benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_external_downloader_empty_warning">Nama paket tidak boleh kosong</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
-  <string name="morphe_custom_branding_name_entry_5">Khusus</string>
+  <string name="morphe_custom_branding_name_entry_5">Kustom</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
   <string name="morphe_custom_branding_icon_entry_1">Asli</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe hitam</string>
@@ -131,6 +136,13 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Tidak dapat masuk ke VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Kontrol media notifikasi</string>
+  <string name="morphe_notification_media_screen_summary">Kustomisasi kontrol pemutaran yang ditampilkan pada layar kunci dan panel notifikasi Anda</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Sembunyikan tombol Sebelumnya &amp; Berikutnya</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Sembunyikan tombol Sebelumnya dan Berikutnya di notifikasi media, layar kunci, dan kontrol headphone</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Nonaktifkan bilah geser</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Mencegah penyeretan bilah pencarian di layar kunci dan panel notifikasi</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -235,6 +247,8 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_ryd_failure_generic">Dislike tidak tersedia (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">Disembunyikan oleh pemilik</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Tidak suka video ini, bersama dengan %s orang lainnya</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Tidak suka video ini, %s dari suara adalah dislike</string>
   <string name="morphe_ryd_enabled_title">Aktifkan Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">Tampilkan dislike sebagai persentase</string>
   <string name="morphe_ryd_dislike_percentage_summary">Menampilkan jumlah tidak suka sebagai persentase dari jumlah suka, bukan sebagai angka</string>

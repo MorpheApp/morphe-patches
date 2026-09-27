@@ -57,6 +57,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_music_hide_podcast_episode_download_button"),
             PreferenceScreenPreference(
                 key = "morphe_music_custom_filter_screen",
                 titleKey = "morphe_custom_filter_screen_title",

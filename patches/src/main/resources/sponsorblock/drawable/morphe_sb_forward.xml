@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     https://github.com/google/material-design-icons/blob/9beae745bb758f3ad56654fb377ea5cf62be4915/symbols/android/fast_forward/materialsymbolsoutlined/fast_forward_wght200_24px.xml
-    Changes made: Icon has been resized to 30dp.
+    Changes made: Icon has been resized to 30dp, added the tap animation.
 
     Copyright 2022 Google
 
@@ -17,12 +17,43 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="30dp"
-        android:height="30dp"
-        android:viewportWidth="30"
-        android:viewportHeight="30">
-    <path
-            android:fillColor="@android:color/white"
-            android:pathData="M5.12109,20.7695 L5.12109,9.23047 L13.7734,15 Z M16.2266,20.7695 L16.2266,9.23047 L24.8789,15 Z M6.37109,15 Z M17.4766,15 Z M6.37109,18.4375 L11.5352,15 L6.37109,11.5625 Z M17.4766,18.4375 L22.6406,15 L17.4766,11.5625 Z M17.4766,18.4375"/>
-</vector>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="30dp"
+            android:height="30dp"
+            android:viewportWidth="30"
+            android:viewportHeight="30">
+            <group
+                android:name="icon_group"
+                android:pivotX="15"
+                android:pivotY="15">
+                <path
+                        android:fillColor="@android:color/white"
+                        android:pathData="M5.12109,20.7695 L5.12109,9.23047 L13.7734,15 Z M16.2266,20.7695 L16.2266,9.23047 L24.8789,15 Z M6.37109,15 Z M17.4766,15 Z M6.37109,18.4375 L11.5352,15 L6.37109,11.5625 Z M17.4766,18.4375 L22.6406,15 L17.4766,11.5625 Z M17.4766,18.4375"/>
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="translateX"
+                    android:duration="100"
+                    android:valueFrom="0"
+                    android:valueTo="2.5"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="translateX"
+                    android:duration="150"
+                    android:startOffset="100"
+                    android:valueFrom="2.5"
+                    android:valueTo="0"
+                    android:interpolator="@android:interpolator/overshoot" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

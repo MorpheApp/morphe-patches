@@ -16,6 +16,7 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 
 /**
  * Mirrors the currently sung lyric line into the MediaSession title so it shows on the
@@ -29,7 +30,9 @@ import app.morphe.extension.music.settings.Settings;
  * scrobbling observers (which read the original metadata at that site) are never affected.
  *
  * <p>All fields other than title and artist, notably the album art, are preserved by copying
- * the original metadata with {@link MediaMetadata.Builder}.
+ * the original metadata with {@link MediaMetadata.Builder}. The display variants of the title
+ * and of the artist are rewritten as well, because the lock screen prefers them over the plain
+ * ones when both are present.
  */
 @SuppressWarnings("unused")
 public final class LockScreenLyrics {
@@ -68,34 +71,48 @@ public final class LockScreenLyrics {
      * and original metadata and (re)starts the ticker when the feature is enabled.
      */
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
-        if (session == null || original == null) {
-            return;
-        }
+        try {
+            if (session == null || original == null) {
+                return;
+            }
 
-        sessionRef = new WeakReference<>(session);
-        originalMetadata = original;
-        metadataBuilder = new MediaMetadata.Builder(original);
-        realTitle = original.getString(MediaMetadata.METADATA_KEY_TITLE);
-        realArtist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
+            sessionRef = new WeakReference<>(session);
+            originalMetadata = original;
+            metadataBuilder = new MediaMetadata.Builder(original);
+            realTitle = original.getString(MediaMetadata.METADATA_KEY_TITLE);
+            realArtist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
 
-        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(realTitle, realArtist);
-        cachedCleanedTitle = parsed[1];
-        cachedCleanedArtist = parsed[0];
+            String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(realTitle, realArtist);
+            cachedCleanedTitle = parsed[1];
+            cachedCleanedArtist = parsed[0];
 
-        if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()) {
-            ticker.stop();
+            if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()) {
+                ticker.stop();
+                lastPushedTitle = null;
+                return;
+            }
+
+            android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
+            LyricsManager.getInstance().onDisplayedTrackChanged(realTitle, realArtist, mediaUri);
             lastPushedTitle = null;
-            return;
+            needsRepush = true;
+            ticker.schedule();
+        } catch (Exception ex) {
+            Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
         }
-
-        android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
-        LyricsManager.getInstance().onDisplayedTrackChanged(realTitle, realArtist, mediaUri);
-        lastPushedTitle = null;
-        needsRepush = true;
-        ticker.schedule();
     }
 
     private static void tick() {
+        try {
+            push();
+        } catch (Exception ex) {
+            Logger.printException(() -> "tick failure", ex);
+            ticker.stop();
+            lastPushedTitle = null;
+        }
+    }
+
+    private static void push() {
         WeakReference<MediaSession> reference = sessionRef;
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()
                 || reference == null || originalMetadata == null) {
@@ -120,9 +137,15 @@ public final class LockScreenLyrics {
             return;
         }
 
+        MediaMetadata metadata = buildMetadata(newTitle, matched);
+        if (metadata == null) {
+            ticker.schedule();
+            return;
+        }
+
+        session.setMetadata(metadata);
         lastPushedTitle = newTitle;
         needsRepush = false;
-        session.setMetadata(buildMetadata(newTitle, matched));
 
         ticker.schedule();
     }
@@ -152,18 +175,17 @@ public final class LockScreenLyrics {
         if (builder == null) {
             return null;
         }
-        if (title != null) {
-            builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
-        }
         String artist = realArtist == null ? "" : realArtist;
         String trackTitle = realTitle;
+        String display = artist;
         if (matched && trackTitle != null && !trackTitle.isEmpty()) {
-            String display = new TrackInfo(trackTitle, artist, "", 0)
+            display = new TrackInfo(trackTitle, artist, "", 0)
                     .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
-            builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);
-        } else {
-            builder.putString(MediaMetadata.METADATA_KEY_ARTIST, artist);
         }
+        builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
+        builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE, title);
+        builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);
+        builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, display);
         return builder.build();
     }
 }

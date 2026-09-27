@@ -128,7 +128,7 @@ val hideButtonsPatch = bytecodePatch(
             }
         }
 
-        // Region for hide the floating New button in the Library tab
+        // Region for hide the floating New button in the Library tab.
         LibraryNewButtonFingerprint.let {
             val moveResult = it.instructionMatches[1]
             val register = moveResult.getInstruction<OneRegisterInstruction>().registerA

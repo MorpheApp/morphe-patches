@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.Word;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -41,12 +40,12 @@ public final class SimpMusicProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         final String videoId = VideoInformation.getVideoId();
         if (videoId == null || videoId.isEmpty()) {
             return null;
         }
-        return fetchByVideoId(videoId);
+        return FetchResult.of(fetchByVideoId(videoId));
     }
 
     @Nullable
@@ -74,7 +73,7 @@ public final class SimpMusicProvider implements LyricsProvider {
             if (data == null || data.length() == 0) {
                 return null;
             }
-            return pickBestEntry(data);
+            return pickBestEntry(data, videoId);
         } catch (IOException | JSONException ex) {
             Logger.printDebug(() -> "Could not query SimpMusic API", ex);
             return null;
@@ -85,8 +84,12 @@ public final class SimpMusicProvider implements LyricsProvider {
         }
     }
 
+    private static String sourceUrl(String videoId) {
+        return "https://lyrics.simpmusic.org/#/video/" + videoId;
+    }
+
     @Nullable
-    private Lyrics pickBestEntry(JSONArray data) {
+    private Lyrics pickBestEntry(JSONArray data, String videoId) {
         Lyrics best = null;
         int bestVote = Integer.MIN_VALUE;
         for (int i = 0; i < data.length(); i++) {
@@ -98,7 +101,7 @@ public final class SimpMusicProvider implements LyricsProvider {
             if (vote < bestVote) {
                 continue;
             }
-            final Lyrics lyrics = parseEntry(entry);
+            final Lyrics lyrics = parseEntry(entry, videoId);
             if (lyrics != null && !lyrics.isEmpty()) {
                 best = lyrics;
                 bestVote = vote;
@@ -108,29 +111,28 @@ public final class SimpMusicProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics parseEntry(JSONObject entry) {
-        // Prefer rich sync (word-level), then synced (line-level), then plain.
+    private Lyrics parseEntry(JSONObject entry, String videoId) {
         final String richSync = LyricsRequests.optString(entry, "richSyncLyrics");
         if (richSync != null) {
-            return parseLrc(richSync);
+            return parseLrc(richSync, videoId);
         }
         final String synced = LyricsRequests.optString(entry, "syncedLyrics");
         if (synced != null) {
-            return parseLrc(synced);
+            return parseLrc(synced, videoId);
         }
         final String plain = LyricsRequests.optString(entry, "plainLyric");
         if (plain != null) {
             final List<LyricsLine> lines = LrcParser.parsePlain(plain);
             if (!lines.isEmpty()) {
                 return new Lyrics(lines, name(), false,
-                        null, null, null, null, plain, "plain", null);
+                        null, null, null, null, plain, "plain", sourceUrl(videoId));
             }
         }
         return null;
     }
 
     @Nullable
-    private Lyrics parseLrc(String lrc) {
+    private Lyrics parseLrc(String lrc, String videoId) {
         final long[] offsetHolder = {0};
         final String sanitized = sanitizeLrc(lrc, offsetHolder);
         final LrcParser.LrcParseResult result = LrcParser.parseSyncedWithCreditLines(sanitized);
@@ -139,12 +141,12 @@ public final class SimpMusicProvider implements LyricsProvider {
         }
         List<LyricsLine> lines = collapseSpaces(result.lines);
         if (offsetHolder[0] != 0) {
-            lines = applyOffset(lines, offsetHolder[0]);
+            lines = LyricsRequests.applyOffset(lines, offsetHolder[0]);
         }
         return new Lyrics(lines, name(), true,
                 null, null, null,
                 result.creditLines.isEmpty() ? null : result.creditLines,
-                sanitized, "lrc", null);
+                sanitized, "lrc", sourceUrl(videoId));
     }
 
     private static String sanitizeLrc(String lrc, long[] offsetHolder) {
@@ -214,28 +216,5 @@ public final class SimpMusicProvider implements LyricsProvider {
             }
         }
         return result;
-    }
-
-    private static List<LyricsLine> applyOffset(List<LyricsLine> lines, long offsetMs) {
-        List<LyricsLine> adjusted = new ArrayList<>(lines.size());
-        for (LyricsLine line : lines) {
-            long newStart = line.startTimeMs() + offsetMs;
-            long newEnd = line.endTimeMs() != LyricsLine.NO_TIME
-                    ? line.endTimeMs() + offsetMs : LyricsLine.NO_TIME;
-            List<Word> adjustedWords = new ArrayList<>();
-            if (line.words() != null) {
-                for (Word word : line.words()) {
-                    adjustedWords.add(new Word(
-                            word.startMs() + offsetMs,
-                            word.endMs() + offsetMs,
-                            word.text(),
-                            word.romaji(),
-                            word.endsWithSpace()));
-                }
-            }
-            adjusted.add(new LyricsLine(newStart, newEnd, line.text(), adjustedWords,
-                    line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
-        }
-        return adjusted;
     }
 }

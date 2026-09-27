@@ -298,21 +298,6 @@
         <item>CUSTOM</item>
     </string-array>
 
-    <!-- Since the 30fps looks bad, and the 2/5 second styles are not useful
-         (YouTube closes the animation as soon as the feed is loaded),
-         only the 60fps 1 second styles are exposed in the settings.
-         Imported settings data can still be manually edited to force the other styles. -->
-    <string-array name="morphe_splash_screen_animation_style_entries">
-        <item>@string/morphe_splash_screen_animation_style_entry_1</item>
-        <item>@string/morphe_splash_screen_animation_style_entry_2</item>
-        <item>@string/morphe_splash_screen_animation_style_entry_3</item>
-    </string-array>
-    <string-array name="morphe_splash_screen_animation_style_entry_values">
-        <item>DISABLED</item>
-        <item>FPS_60_ONE_SECOND</item>
-        <item>FPS_60_BLACK_AND_WHITE</item>
-    </string-array>
-
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string-array name="morphe_hide_expandable_card_entries">
         <item>@string/morphe_hide_expandable_card_entry_1</item>
@@ -814,5 +799,51 @@
         <item>google</item>
         <item>openrouter</item>
         <item>mymemory</item>
+    </string-array>
+
+    <!-- layout.player.icons.playerIconStylePatch -->
+    <string-array name="morphe_player_icon_style_entries">
+        <item>@string/morphe_player_icon_style_entry_auto</item>
+        <item>@string/morphe_player_icon_style_entry_regular</item>
+        <item>@string/morphe_player_icon_style_entry_bold</item>
+        <item>@string/morphe_player_icon_style_entry_fluent</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_fill</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_duotone</item>
+        <item>@string/morphe_player_icon_style_entry_ionicons</item>
+        <item>@string/morphe_player_icon_style_entry_sharp</item>
+    </string-array>
+    <string-array name="morphe_player_icon_style_entry_values">
+        <item>AUTO</item>
+        <item>REGULAR</item>
+        <item>BOLD</item>
+        <item>FLUENT</item>
+        <item>PHOSPHOR</item>
+        <item>PHOSPHOR_LIGHT</item>
+        <item>PHOSPHOR_FILL</item>
+        <item>PHOSPHOR_DUOTONE</item>
+        <item>IONICONS</item>
+        <item>SHARP</item>
+    </string-array>
+
+    <!-- layout.shortsicons.shortsIconStylePatch -->
+    <string-array name="morphe_shorts_icon_style_entries">
+        <item>@string/morphe_player_icon_style_entry_default</item>
+        <item>@string/morphe_player_icon_style_entry_fluent</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_duotone</item>
+        <item>@string/morphe_player_icon_style_entry_ionicons</item>
+        <item>@string/morphe_player_icon_style_entry_sharp</item>
+    </string-array>
+    <string-array name="morphe_shorts_icon_style_entry_values">
+        <item>AUTO</item>
+        <item>FLUENT</item>
+        <item>PHOSPHOR</item>
+        <item>PHOSPHOR_LIGHT</item>
+        <item>PHOSPHOR_DUOTONE</item>
+        <item>IONICONS</item>
+        <item>SHARP</item>
     </string-array>
 </resources>

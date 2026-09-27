@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/ionic-team/ionicons/blob/d1e2c48641fd5f4910ee42a144dc1c84b1a9a4ee/src/svg/speedometer-outline.svg
+    Changes made: Converted to a vector drawable.
+
+    The MIT License (MIT)
+
+    Copyright (c) 2015-present Ionic (http://ionic.io/)
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M326.1,231.9l-47.5,75.5a31,31,0,0,1-7,7,30.11,30.11,0,0,1-35-49l75.5-47.5a10.23,10.23,0,0,1,11.7,0A10.06,10.06,0,0,1,326.1,231.9Z" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M256,64C132.3,64,32,164.2,32,287.9A223.18,223.18,0,0,0,88.3,436.4c1.1,1.2,2.1,2.4,3.2,3.5a25.19,25.19,0,0,0,37.1-.1,173.13,173.13,0,0,1,254.8,0,25.19,25.19,0,0,0,37.1.1l3.2-3.5A223.18,223.18,0,0,0,480,287.9C480,164.2,379.7,64,256,64Z" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter"
+        android:strokeMiterLimit="10"
+        android:pathData="M256,128 L256,160" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter"
+        android:strokeMiterLimit="10"
+        android:pathData="M416,288 L384,288" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter"
+        android:strokeMiterLimit="10"
+        android:pathData="M128,288 L96,288" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter"
+        android:strokeMiterLimit="10"
+        android:pathData="M165.49,197.49 L142.86,174.86" />
+    <path
+        android:strokeColor="@android:color/white"
+        android:strokeWidth="32"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="miter"
+        android:strokeMiterLimit="10"
+        android:pathData="M346.51,197.49 L369.14,174.86" />
+</vector>

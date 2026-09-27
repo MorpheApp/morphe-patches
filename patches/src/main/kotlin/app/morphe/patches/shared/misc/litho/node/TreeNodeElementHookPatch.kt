@@ -150,6 +150,6 @@ fun hookTreeNodeResult(
 
     method.addInstruction(
         0,
-        "invoke-static { p0, p1 }, $descriptor(Ljava/lang/String;Ljava/util/List;)V"
+        "invoke-static { p0, p1 }, $descriptor(Ljava/lang/CharSequence;Ljava/util/List;)V"
     )
 }

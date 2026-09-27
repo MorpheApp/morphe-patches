@@ -60,19 +60,6 @@ public class ReturnYouTubeDislikePatch {
     //
 
     /**
-     * Injection point.
-     * <p>
-     * Logs if new litho text layout is used.
-     */
-    public static boolean useNewLithoTextCreation(boolean useNewLithoTextCreation) {
-        // Don't force flag on/off unless debugging patch hooks,
-        // because forcing off with newer YT targets causes Shorts player to show no buttons,
-        // presumably because the old litho data isn't in the layout data.
-        Logger.printDebug(() -> "useNewLithoTextCreation: " + useNewLithoTextCreation);
-        return useNewLithoTextCreation;
-    }
-
-    /**
      * Called when a litho text component is created, and also when a Span is later reused
      * (such as scrolling off and back on screen). Usually called off the main thread, and
      * can be called several times for the same element.
@@ -80,8 +67,7 @@ public class ReturnYouTubeDislikePatch {
      * @param original Original char sequence created or reused by Litho.
      * @return The original char sequence, or a replacement that contains the dislikes.
      */
-    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface,
-                                                 CharSequence original) {
+    public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence original) {
         try {
             if (!RYD_ENABLED) {
                 return original;
@@ -93,7 +79,7 @@ public class ReturnYouTubeDislikePatch {
             }
 
             StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
-            if (!pathBuilder.toString().contains("segmented_like_dislike_button.e")) {
+            if (!Utils.contains(pathBuilder, "segmented_like_dislike_button.e")) {
                 return original;
             }
 
@@ -115,13 +101,6 @@ public class ReturnYouTubeDislikePatch {
     // Counts drawn over the like and dislike buttons, shared with YouTube Music.
     //
 
-    /**
-     * The segmented button of the old action bar has a count for the likes only, so the dislike
-     * count is drawn over the button and the button is given room for it.
-     */
-    private static final boolean OLD_ACTION_BAR_ENABLED =
-            RYD_ENABLED && Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get();
-
     static {
         ReturnYouTubeDislikeButtons.setVideoDataSource(() -> currentVideoData);
     }
@@ -130,7 +109,7 @@ public class ReturnYouTubeDislikePatch {
      * Injection point.
      */
     public static void onYogaSetWidth(long nodePointer, float width) {
-        if (OLD_ACTION_BAR_ENABLED) {
+        if (RYD_ENABLED) {
             ReturnYouTubeDislikeButtons.onYogaSetWidth(nodePointer, width);
         }
     }

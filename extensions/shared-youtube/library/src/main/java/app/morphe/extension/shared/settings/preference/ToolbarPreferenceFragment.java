@@ -10,6 +10,8 @@
 
 package app.morphe.extension.shared.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.Insets;
@@ -107,6 +109,7 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
                             Toolbar toolbar = new Toolbar(childScreen.getContext());
                             toolbar.setTitle(childScreen.getTitle());
                             toolbar.setNavigationIcon(getBackButtonDrawable());
+                            toolbar.setNavigationContentDescription(str("morphe_settings_navigate_up"));
                             toolbar.setNavigationOnClickListener(view -> preferenceScreenDialog.dismiss());
 
                             toolbar.setTitleMargin(Dim.dp16, 0, Dim.dp16, 0);
