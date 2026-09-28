@@ -49,6 +49,14 @@ public class PlayerIconStyleListPreference extends IconListPreference {
     };
 
     private static final String SHORTS_SAMPLE_ICON = "morphe_shorts_heart";
+    private static final String[] SHORTS_CUSTOM_SAMPLE_ICONS = {
+            SHORTS_SAMPLE_ICON,
+            "morphe_shorts_like",
+            "morphe_shorts_comment",
+            "morphe_shorts_share",
+            "morphe_shorts_remix",
+            "morphe_shorts_save",
+    };
     // The Shorts player shows the yt_delhi icons since 21.21, and the youtube_shorts icons before.
     private static final String SHORTS_SAMPLE_APP_ICON = PlayerIcons.exists("morphe_yt_delhi_heart_outline_24dp")
             ? "morphe_yt_delhi_heart_outline_24dp"
@@ -90,10 +98,13 @@ public class PlayerIconStyleListPreference extends IconListPreference {
         for (int i = 0; i < values.length; i++) {
             try {
                 PlayerIcons.Style style = PlayerIcons.Style.valueOf(values[i].toString());
+                String styleSample = style == PlayerIcons.Style.CUSTOM
+                        ? findCustomSampleIcon(shorts ? SHORTS_CUSTOM_SAMPLE_ICONS : SAMPLE_ICONS, sample)
+                        : sample;
                 drawables[i] = shorts
                         // The app's Shorts icons carry their own shadow, which a tint would paint over.
-                        ? buildTile(context, PlayerIcons.shorts(style, sample, SHORTS_SAMPLE_APP_ICON), false)
-                        : buildTile(context, PlayerIcons.resolve(style, sample), true);
+                        ? buildTile(context, PlayerIcons.shorts(style, styleSample, SHORTS_SAMPLE_APP_ICON), false)
+                        : buildTile(context, PlayerIcons.resolve(style, styleSample), true);
             } catch (Exception ex) {
                 final int index = i;
                 Logger.printException(() -> "Could not build icon style preview: " + values[index], ex);
@@ -110,6 +121,16 @@ public class PlayerIconStyleListPreference extends IconListPreference {
             }
         }
         return null;
+    }
+
+    // A custom icon set may not have the usual sample, so it shows the first icon it does have.
+    private static String findCustomSampleIcon(String[] candidates, String fallback) {
+        for (String baseName : candidates) {
+            if (PlayerIcons.exists(baseName + PlayerIcons.Style.CUSTOM.suffix)) {
+                return baseName;
+            }
+        }
+        return fallback;
     }
 
     @Nullable

@@ -16,7 +16,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -37,8 +36,7 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 private val reloadVideoButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        legacyPlayerControlsPatch,
-        playerIconStylePatch
+        legacyPlayerControlsPatch
     )
 
     execute {

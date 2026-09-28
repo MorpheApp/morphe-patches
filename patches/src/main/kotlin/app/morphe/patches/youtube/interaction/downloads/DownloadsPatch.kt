@@ -8,7 +8,6 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -20,8 +19,7 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 private val downloadsResourcePatch = resourcePatch {
     dependsOn(
         legacyPlayerControlsPatch,
-        settingsPatch,
-        playerIconStylePatch
+        settingsPatch
     )
 
     execute {

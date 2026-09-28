@@ -43,7 +43,9 @@ public final class PlayerIcons {
         PHOSPHOR_FILL("_phosphor_fill"),
         PHOSPHOR_DUOTONE("_phosphor_duotone"),
         IONICONS("_ionicons"),
-        SHARP("_sharp");
+        SHARP("_sharp"),
+        // Icons of a zip file given to the patch, so any of them can be missing.
+        CUSTOM("_custom");
 
         @Nullable
         public final String suffix;
@@ -60,8 +62,11 @@ public final class PlayerIcons {
     private static final Style STYLE = Settings.PLAYER_ICON_STYLE.get();
     private static final Style SHORTS_STYLE = Settings.SHORTS_ICON_STYLE.get();
 
+    // The stroke weight of custom icons is unknown, so the text keeps the weight of the Automatic style.
     private static final Typeface TEXT_TYPEFACE = textTypeface(
-            STYLE == Style.AUTO ? (AUTO_SUFFIX.isEmpty() ? Style.REGULAR : Style.BOLD) : STYLE);
+            STYLE == Style.AUTO || STYLE == Style.CUSTOM
+                    ? (AUTO_SUFFIX.isEmpty() ? Style.REGULAR : Style.BOLD)
+                    : STYLE);
 
     // Some buttons resolve their icon on every tap.
     private static final Map<String, String> names = new ConcurrentHashMap<>();
