@@ -103,7 +103,7 @@ internal object RenderNextTemplateCheckFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("L", "Ljava/lang/String;", "Ljava/lang/String;"),
     filters = listOf(
-        literal(':'.code.toLong()),
+        literal(58),
         methodCall(smali = "Ljava/lang/String;->indexOf(I)I"),
         methodCall(smali = "Ljava/lang/String;->substring(II)Ljava/lang/String;"),
     )
