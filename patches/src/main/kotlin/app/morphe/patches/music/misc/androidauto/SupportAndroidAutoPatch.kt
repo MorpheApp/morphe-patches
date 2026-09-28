@@ -767,7 +767,7 @@ private fun BytecodePatchContext.addArtworkUriGetter(
 
 // region Intercept Android Auto playlist requests
 
-/** Replaces YTM's empty Playlists result with playlists fetched from the phone Library by Java. */
+/** Lets Java answer Library and Playlists requests with playlists fetched from the phone Library. */
 private fun BytecodePatchContext.patchAndroidAutoPlaylists() {
     val sendEmptyAndroidAutoMediaItemsMethod = SendEmptyAndroidAutoMediaItemsFingerprint.originalMethod
     addAndroidAutoBrowseRequestInterface(sendEmptyAndroidAutoMediaItemsMethod)
