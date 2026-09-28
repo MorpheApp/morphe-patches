@@ -544,10 +544,7 @@ private fun BytecodePatchContext.addGridRendererInterface() {
 
 // region Library items
 
-/**
- * [addPlaylistBrowseIdGetter] identifies playlists among Library items; [addTextGetter] provides titles.
- * [findPhoneBrowseItemArtworkField] and [addArtworkUriGetter] use YTM's thumbnail code for artwork.
- */
+/** Adds getters for a Library item's playlist ID, title, subtitle, and artwork. */
 private fun BytecodePatchContext.patchPhoneBrowseItem() {
     val phoneBrowseItemType = PhoneBrowseItemFingerprint
         .instructionMatches
@@ -562,7 +559,14 @@ private fun BytecodePatchContext.patchPhoneBrowseItem() {
             !AccessFlags.STATIC.isSet(field.accessFlags) && field.name == name
         }
 
-    val artworkContainerField = findPhoneBrowseItemArtworkField(phoneBrowseItemType)
+    // Both phone thumbnail renderers must agree on the container and decoded thumbnail fields.
+    val (artworkContainerField, thumbnailDetailsField) = phoneBrowseItemArtworkFingerprint(phoneBrowseItemType)
+        .matchAll()
+        .map { match ->
+            match.instructionMatches.mapNotNull { it.instruction.getReference<FieldReference>() }
+        }
+        .distinct()
+        .single()
     val titleField = phoneBrowseItemField(TITLE_FIELD_NAME)
     val subtitleField = phoneBrowseItemField(SUBTITLE_FIELD_NAME)
     if (artworkContainerField.type == titleField.type || titleField.type != subtitleField.type) {
@@ -610,7 +614,7 @@ private fun BytecodePatchContext.patchPhoneBrowseItem() {
         subtitleField,
         formatTextMethod,
     )
-    addArtworkUriGetter(phoneBrowseItemClass, artworkContainerField)
+    addArtworkUriGetter(phoneBrowseItemClass, artworkContainerField, thumbnailDetailsField)
 }
 
 /**
@@ -653,27 +657,6 @@ private fun MutableClass.addPlaylistBrowseIdGetter(
 
 // Read playlist titles and artwork
 
-/** Identifies the artwork field read by YTM's playlist and song thumbnail renderer. */
-private fun BytecodePatchContext.findPhoneBrowseItemArtworkField(phoneBrowseItemType: String): FieldReference {
-    val thumbnailInitializer = PhoneBrowseItemThumbnailFingerprint.originalMethod
-    val thumbnailProtobufExtensionField = thumbnailInitializer.instructions
-        .filter { instruction -> instruction.opcode == Opcode.SPUT_OBJECT }
-        .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
-        .singleOrNull { field -> field.definingClass == thumbnailInitializer.definingClass }
-        ?: throw PatchException("Could not resolve the thumbnail extension registration")
-    return phoneBrowseItemArtworkFingerprint(phoneBrowseItemType, thumbnailProtobufExtensionField)
-        .matchAll()
-        .map { match ->
-            val artworkRead = match.instructionMatches.single { instructionMatch ->
-                instructionMatch.instruction.opcode == Opcode.IGET_OBJECT
-            }
-            artworkRead.instruction.getReference<FieldReference>()!!
-        }
-        .distinct()
-        .singleOrNull()
-        ?: throw PatchException("Could not resolve the artwork field used by YTM's thumbnail renderers")
-}
-
 /** Titles and subtitles are stored as YTM text objects; use its formatter to read them. */
 private fun MutableClass.addTextGetter(
     interfaceMethod: Method,
@@ -695,50 +678,21 @@ private fun MutableClass.addTextGetter(
 }
 
 /**
- * Uses the thumbnail URL already included with a Library item. YTM's Android Auto code
- * selects a thumbnail and creates its URI; Android Auto loads the image from that URI.
- * [decodeThumbnailFingerprint] identifies YTM's artwork parser;
- * [androidAutoMediaDescriptionFingerprint] locates an Android Auto item builder that uses the URI conversion.
+ * Adds an artwork getter that decodes the Library item's thumbnail data and calls YTM's Android Auto
+ * URI converter. Android Auto loads the image from the returned URI.
  */
 private fun BytecodePatchContext.addArtworkUriGetter(
     itemClass: MutableClass,
     artworkContainerField: FieldReference,
+    thumbnailDetailsField: FieldReference,
 ) {
-    val artworkPayloadType = PhoneBrowseItemThumbnailFingerprint.instructionMatches
-        .single { match -> match.instruction.opcode == Opcode.CONST_CLASS }
-        .instruction
-        .getReference<TypeReference>()!!
-        .type
-    val artworkPayloadFields = classDefBy(artworkPayloadType).fields
-        .filter { field -> !AccessFlags.STATIC.isSet(field.accessFlags) }
-    val artworkPayloadFieldTypes = artworkPayloadFields.map(FieldReference::getType).toSet()
     val decodeArtworkPayloadMethod = decodeThumbnailFingerprint(
         artworkContainerField.type,
     ).originalMethod
-    // Use the same artwork URI format as YTM's Android Auto items.
-    val androidAutoMediaDescriptionMethod = androidAutoMediaDescriptionFingerprint(
-        artworkPayloadFieldTypes,
-    ).originalMethod
-    val mediaDescriptionReadFieldTypes = androidAutoMediaDescriptionMethod.instructions
-        .filter { instruction -> instruction.opcode == Opcode.IGET_OBJECT }
-        .mapNotNull { instruction -> instruction.getReference<FieldReference>()?.type }
-        .toSet()
-    // Phone Library thumbnails and Android Auto artwork use the same thumbnail data type.
-    // Match the URI converter that accepts it.
-    val createArtworkUriMethod = androidAutoMediaDescriptionMethod.instructions
-        .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
-        .filter { method ->
-            method.returnType == "Landroid/net/Uri;" && method.parameterTypes.size == 1 &&
-                method.parameterTypes.single().toString() in mediaDescriptionReadFieldTypes
-        }
-        .singleOrNull { method ->
-            method.parameterTypes.single().toString() in artworkPayloadFieldTypes
-        }
-        ?: throw PatchException("Could not resolve YTM's Android Auto artwork Uri method")
-    val thumbnailDetailsType = createArtworkUriMethod.parameterTypes.single().toString()
-    val thumbnailDetailsField = artworkPayloadFields.singleOrNull { field ->
-        field.type == thumbnailDetailsType
-    } ?: throw PatchException("Could not resolve the thumbnail details field")
+    // The converter accepts the same thumbnail details type read by the phone's thumbnail renderer.
+    val createArtworkUriMethod = androidAutoMediaDescriptionFingerprint(thumbnailDetailsField.type)
+        .instructionMatches.single { it.instruction.opcode == Opcode.INVOKE_STATIC }
+        .instruction.getReference<MethodReference>()!!
 
     itemClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(

@@ -74,7 +74,6 @@ private const val PHONE_BROWSE_ITEM_PROTO_FIELD = 161_429_595L
 private const val GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG = 0x40000L
 private const val NEXT_COMMAND_PRESENT_FLAG = 0x1L
 private const val RELOAD_COMMAND_PRESENT_FLAG = 0x2L
-private const val THUMBNAIL_PROTO_FIELD = 164_480_666L
 
 // Identify the Playlists folder and how YTM returns its contents to Android Auto
 
@@ -368,25 +367,8 @@ internal fun browseEndpointFromCommandFingerprint(
 
 // Playlist titles and artwork
 
-/** Registers the YTM data type containing thumbnail details for playlists and songs. */
-internal object PhoneBrowseItemThumbnailFingerprint : Fingerprint(
-    name = "<clinit>",
-    returnType = "V",
-    parameters = emptyList(),
-    filters = listOf(
-        opcode(Opcode.CONST_CLASS),
-        literal(
-            THUMBNAIL_PROTO_FIELD,
-            location = MatchAfterWithin(2)
-        )
-    )
-)
-
-/** Reads playlist or song artwork before decoding the thumbnail used by the phone's Library. */
-internal fun phoneBrowseItemArtworkFingerprint(
-    phoneBrowseItemType: String,
-    thumbnailProtobufExtensionField: FieldReference
-) = Fingerprint(
+/** Reads an item's artwork container, decodes it, then reads the thumbnail details. */
+internal fun phoneBrowseItemArtworkFingerprint(phoneBrowseItemType: String) = Fingerprint(
     returnType = "V",
     parameters = listOf("L", phoneBrowseItemType, "I"),
     strings = listOf("thumbnailOverlayColor"),
@@ -395,11 +377,16 @@ internal fun phoneBrowseItemArtworkFingerprint(
             opcode = Opcode.IGET_OBJECT,
             definingClass = phoneBrowseItemType
         ),
-        fieldAccess(
-            reference = thumbnailProtobufExtensionField,
-            opcode = Opcode.SGET_OBJECT,
-            location = MatchAfterWithin(3)
-        )
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L", "L"),
+            returnType = "Lj$/util/Optional;",
+            location = MatchAfterWithin(4)
+        ),
+        methodCall(definingClass = "Lj$/util/Optional;", name = "get"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())
     )
 )
 
@@ -419,28 +406,17 @@ internal fun decodeThumbnailFingerprint(thumbnailFieldType: String) = Fingerprin
 )
 
 /** Creates an Android Auto item and converts its artwork to an image URI. */
-internal fun androidAutoMediaDescriptionFingerprint(thumbnailFieldTypes: Set<String>) = Fingerprint(
-    filters = listOf(MEDIA_DESCRIPTION_CONSTRUCTOR_CALL),
-    custom = { method, _ ->
-        val instructions = method.implementation?.instructions
-        if (method.parameterTypes.size != 1 || instructions == null) {
-            false
-        } else {
-            val readFieldTypes = instructions
-                .filter { instruction -> instruction.opcode == Opcode.IGET_OBJECT }
-                .mapNotNull { instruction -> instruction.getReference<FieldReference>()?.type }
-                .toSet()
-            instructions
-                .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
-                .filter { reference -> reference.returnType == "Landroid/net/Uri;" }
-                .mapNotNull { reference ->
-                    reference.parameterTypes.singleOrNull()?.toString()
-                }
-                .any { parameterType ->
-                    parameterType in thumbnailFieldTypes && parameterType in readFieldTypes
-                }
-        }
-    }
+internal fun androidAutoMediaDescriptionFingerprint(thumbnailDetailsType: String) = Fingerprint(
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = thumbnailDetailsType),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf(thumbnailDetailsType),
+            returnType = "Landroid/net/Uri;"
+        ),
+        MEDIA_DESCRIPTION_CONSTRUCTOR_CALL
+    )
 )
 
 /** Converts playlist and song titles or subtitles into display text. */
