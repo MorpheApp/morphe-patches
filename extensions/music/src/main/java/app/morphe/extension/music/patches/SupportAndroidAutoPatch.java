@@ -62,7 +62,7 @@ import app.morphe.extension.shared.Utils;
  *
  * <p>Library changes include creating, deleting, and editing playlists, liking/unliking songs,
  * and saving/removing playlists or shows. Successful changes reach {@link #scheduleLibraryRefresh}
- * through {@link #watchLibraryChange} or YTM's success callbacks.
+ * through {@link #onRequestSucceeded}.
  * {@link #refreshAndroidAutoLibrary} repeats the Playlists and Home requests saved by
  * {@link #rememberAndroidAutoSubscription}. Updated Home lists also refresh Podcasts.
  */
@@ -575,36 +575,25 @@ public final class SupportAndroidAutoPatch {
         }
     }
 
-    /**
-     * Injection point. Schedule an Android Auto refresh after a successful Library change.
-     * {@link #scheduleLibraryRefresh} combines changes made close together into one refresh.
-     */
-    public static void watchLibraryChange(@Nullable ListenableFuture<?> changeResult) {
-        if (changeResult == null) return;
-        synchronized (SupportAndroidAutoPatch.class) {
-            if (playlistsSubscription == null && homeSubscription == null) return;
-        }
+    /** Injection point. Refresh Android Auto after a successful request changes the Library. */
+    public static void onRequestSucceeded(@Nullable String endpoint) {
+        if (endpoint == null) return;
         try {
-            changeResult.addListener(() -> {
-                try {
-                    // The request has finished; get() throws if it failed.
-                    changeResult.get();
-                } catch (InterruptedException ex) {
-                    Thread.currentThread().interrupt();
-                    return;
-                } catch (ExecutionException | RuntimeException ex) {
-                    Logger.printException(() -> "Library change failed", ex);
-                    return;
-                }
-                scheduleLibraryRefresh();
-            }, BACKGROUND_EXECUTOR);
+            switch (endpoint) {
+                case "browse/edit_playlist":
+                case "like/like":
+                case "like/removelike":
+                case "playlist/create":
+                case "playlist/delete":
+                    scheduleLibraryRefresh();
+            }
         } catch (RuntimeException ex) {
-            Logger.printException(() -> "Could not observe Library change", ex);
+            Logger.printException(() -> "Could not schedule Android Auto Library refresh", ex);
         }
     }
 
-    /** Injection point. Combine completed Library changes into one delayed refresh. */
-    public static synchronized void scheduleLibraryRefresh() {
+    /** Combines completed Library changes into one delayed refresh. */
+    private static synchronized void scheduleLibraryRefresh() {
         if (playlistsSubscription == null && homeSubscription == null) return;
         // Wait for updated playlist artwork before refreshing.
         refreshHandler.removeCallbacks(REFRESH_LIBRARY);

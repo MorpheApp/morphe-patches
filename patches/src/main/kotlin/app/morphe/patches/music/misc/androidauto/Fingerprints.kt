@@ -607,24 +607,13 @@ internal fun libraryChangeRequestFingerprint(endpoint: String) = Fingerprint(
     strings = listOf(endpoint)
 )
 
-/** Sends a playlist edit or Like/unlike request and returns a future reporting completion. */
-internal fun libraryChangeFutureFingerprint(requestType: String) = Fingerprint(
-    returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
-    parameters = listOf(requestType, "Ljava/util/concurrent/Executor;"),
-    // Like/unlike requests can match both the interface and the method that sends the request.
-    // Using decompiled names from 9.31 and 9.32:
-    // < 9.32: arig.j/k are interface methods; arib.j/k return this.b.b(...) / this.d.b(...).
-    // >= 9.32: only vtq.g/h match; they return this.d.b(...) / this.f.b(...).
-    // Only methods with instructions can receive the refresh hook.
-    custom = { method, _ -> method.implementation != null }
-)
-
 /** Calls the request's success callback with its response. */
-internal fun playlistChangeSuccessFingerprint(requestBaseType: String) = Fingerprint(
+internal fun requestSuccessCallbackFingerprint(requestBaseType: String) = Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lcom/google/protobuf/MessageLite;"),
     filters = listOf(
+        methodCall(parameters = emptyList(), returnType = "V"),
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
             parameters = listOf("Ljava/lang/Object;"),
@@ -636,6 +625,36 @@ internal fun playlistChangeSuccessFingerprint(requestBaseType: String) = Fingerp
             field.type == requestBaseType
         }
     }
+)
+
+/** The successful response clears the cached request body before notifying its caller. */
+internal fun requestCompletionFingerprint(method: MethodReference) = Fingerprint(
+    definingClass = method.definingClass,
+    name = method.name,
+    returnType = "V",
+    parameters = emptyList(),
+    filters = listOf(
+        literal(0),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "[B")
+    )
+)
+
+/** Identifies the endpoint that YTM appends to its request URL. */
+internal fun requestUrlFingerprint(requestDataType: String, endpointOwnerType: String) = Fingerprint(
+    definingClass = requestDataType,
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = endpointOwnerType,
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            definingClass = "Landroid/net/Uri\$Builder;",
+            name = "appendEncodedPath",
+            parameters = listOf("Ljava/lang/String;"),
+            returnType = "Landroid/net/Uri\$Builder;"
+        )
+    )
 )
 
 /** Loads an Android Auto list again to refresh its contents without disconnecting. */

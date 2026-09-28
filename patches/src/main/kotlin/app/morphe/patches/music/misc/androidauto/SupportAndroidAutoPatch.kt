@@ -21,9 +21,7 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
-import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
-import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
@@ -99,9 +97,8 @@ private const val PLAY_BUTTON_CONTAINER_FIELD_NAME = "q"
  *    [playback commands][phoneBrowseItemSingleTapCommandFingerprint].
  * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning
  *    [YTM's empty list][SendEmptyAndroidAutoMediaItemsFingerprint].
- * 6. [installAndroidAutoFolderRefresh] observes [Library changes][libraryChangeFutureFingerprint]
- *    and [playlist creation/deletion][playlistChangeSuccessFingerprint],
- *    then [refreshes Android Auto][mediaBrowserReloadFingerprint].
+ * 6. [installAndroidAutoFolderRefresh] observes [successful requests][requestSuccessCallbackFingerprint]
+ *    and [refreshes Android Auto][mediaBrowserReloadFingerprint] after Library changes.
  * 7. [patchAndroidAutoPodcastItems] adds Podcasts to Android Auto's tabs and fills it with lists from Home.
  * 8. [installPlaybackCallbackBridges] lets Java load a [selected playlist][AndroidAutoPlayFromMediaIdFingerprint]
  *    before asking YTM to play it, and cancel pending playback on Pause/Stop.
@@ -1236,8 +1233,7 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
 
 /**
  * Refreshes Android Auto after Library changes.
- * [hookLibraryChangeCompletion] schedules the refresh only after a request succeeds.
- * Creation and deletion report success through callbacks, hooked by [hookPlaylistCreationAndDeletion].
+ * [hookLibraryChangeCompletion] passes successful request endpoints to Java to identify Library changes.
  * [addAndroidAutoFolderReload] requests updated Playlists and Home lists without reconnecting Android Auto.
  * [addAndroidAutoRequestConnectionGetter] identifies which connection each result belongs to.
  */
@@ -1252,10 +1248,7 @@ private fun BytecodePatchContext.installAndroidAutoFolderRefresh() {
 
     addAndroidAutoRequestConnectionGetter(reloadMethod)
     addAndroidAutoFolderReload(baseServiceType, reloadMethod)
-    for (endpoint in listOf("browse/edit_playlist", "like/like", "like/removelike")) {
-        hookLibraryChangeCompletion(endpoint)
-    }
-    hookPlaylistCreationAndDeletion()
+    hookLibraryChangeCompletion()
 }
 
 /** Gives Java the connection to compare loads for the same Playlists list, leaving other connections independent. */
@@ -1342,56 +1335,33 @@ private fun BytecodePatchContext.addAndroidAutoFolderReload(
     )
 }
 
-/** Uses Java's `watchLibraryChange` to refresh Android Auto when YTM's request succeeds. */
-private fun BytecodePatchContext.hookLibraryChangeCompletion(endpoint: String) {
-    val requestType = libraryChangeRequestFingerprint(endpoint).originalMethod.definingClass
-    val mutableSendChangeMethod = libraryChangeFutureFingerprint(requestType).method
-    val returnIndex = mutableSendChangeMethod.findInstructionIndicesReversed(Opcode.RETURN_OBJECT)
-        .singleOrNull()
-        ?: throw PatchException("Could not find the completion result for $endpoint")
-    val changeFutureRegister = mutableSendChangeMethod
-        .getInstruction<OneRegisterInstruction>(returnIndex).registerA
-    mutableSendChangeMethod.addInstructions(
-        returnIndex,
-        """
-            invoke-static/range { v$changeFutureRegister .. v$changeFutureRegister }, $EXTENSION_CLASS->watchLibraryChange(Lcom/google/common/util/concurrent/ListenableFuture;)V
-        """,
-    )
-}
-
-/** Refreshes Android Auto after playlist creation or deletion. */
-private fun BytecodePatchContext.hookPlaylistCreationAndDeletion() {
+/** Refreshes Android Auto when a successful request changes the Library. */
+private fun BytecodePatchContext.hookLibraryChangeCompletion() {
     val createRequestType = libraryChangeRequestFingerprint("playlist/create").originalMethod.definingClass
-    val deleteRequestType = libraryChangeRequestFingerprint("playlist/delete").originalMethod.definingClass
     val requestBaseType = classDefBy(createRequestType).superclass
-        ?: throw PatchException("Could not resolve the playlist request base class")
-    if (classDefBy(deleteRequestType).superclass != requestBaseType) {
-        throw PatchException("Playlist creation and deletion use different request base classes")
-    }
+        ?: throw PatchException("Could not resolve the Library request base class")
+    val endpointOwnerType = classDefBy(requestBaseType).superclass
+        ?: throw PatchException("Could not resolve the request endpoint's declaring class")
 
-    // The request factory can select different success callbacks (e.g. apht.y selects apia or apic).
-    // Hook every matching success method so either path refreshes Android Auto.
-    playlistChangeSuccessFingerprint(requestBaseType).matchAll().forEach { match ->
-        // Some callbacks have only the two parameter registers, p0 and p1.
-        // Copy their values before using a register for the request-type checks.
-        val successMethod = match.method.cloneParameters()
-        val requestField = classDefBy(successMethod.definingClass).instanceFields.single { field ->
-            field.type == requestBaseType
-        }
-        val requestRegister = successMethod.findFreeRegister(0)
-        successMethod.addInstructionsWithLabels(
+    // Callback and future requests both clear their serialized body after a successful response.
+    val completionMethods = requestSuccessCallbackFingerprint(requestBaseType).matchAll()
+        .map { match -> match.instructionMatches.first().instruction.getReference<MethodReference>()!! }
+        .distinct()
+    completionMethods.forEach { completionReference ->
+        val completionMethod = requestCompletionFingerprint(completionReference).method
+        val requestDataClass = classDefBy(completionMethod.definingClass)
+        val requestField = requestDataClass.instanceFields.single { field -> field.type == requestBaseType }
+        // Read the endpoint field used to build the request URL, rather than its obfuscated name.
+        val endpointField = requestUrlFingerprint(requestDataClass.type, endpointOwnerType)
+            .instructionMatches.first().instruction.getReference<FieldReference>()!!
+        val requestRegister = completionMethod.findFreeRegister(0)
+        completionMethod.addInstructions(
             0,
             """
                 iget-object v$requestRegister, p0, $requestField
-                instance-of v$requestRegister, v$requestRegister, $createRequestType
-                if-nez v$requestRegister, :refresh_library
-                iget-object v$requestRegister, p0, $requestField
-                instance-of v$requestRegister, v$requestRegister, $deleteRequestType
-                if-eqz v$requestRegister, :resume
-                :refresh_library
-                invoke-static {}, $EXTENSION_CLASS->scheduleLibraryRefresh()V
+                iget-object v$requestRegister, v$requestRegister, $endpointField
+                invoke-static/range { v$requestRegister .. v$requestRegister }, $EXTENSION_CLASS->onRequestSucceeded(Ljava/lang/String;)V
             """,
-            ExternalLabel("resume", successMethod.getInstruction<Instruction>(0)),
         )
     }
 }
