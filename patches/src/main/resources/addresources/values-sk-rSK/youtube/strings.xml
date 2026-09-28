@@ -691,6 +691,8 @@ Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolen
   <string name="morphe_hide_ask_button_title">Skryť tlačidlo Pýtať</string>
   <string name="morphe_hide_channel_profile_button_title">Skryť kanál a tlačidlo Odoberať</string>
   <string name="morphe_hide_channel_profile_button_summary">Skryje avatar kanála a tlačidlo Odoberať na začiatku panela akcií</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Skryť tlačidlo Odoberať</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Skryje tlačidlá Prihlásiť na odber a Pripojiť sa vedľa avatara kanála na začiatku panela akcií</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Skryť tlačidlo Klip</string>
   <string name="morphe_hide_clip_button_summary">Táto funkcia nemusí fungovať pre niektoré používateľské účty</string>
@@ -1004,6 +1006,7 @@ Rozloženie pre automobil
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozloženie prehrávača
 
 Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrstva 'Ďalšie videá' nemusí byť k dispozícii"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Povolenie tejto funkcie môže narušiť niektoré funkcie rozloženia prehrávača, napríklad sekciu komentárov alebo \'Ďalšie videá\' zobrazené pod prehrávačom.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Obnoviť staré správanie titulkov</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
@@ -1095,6 +1098,9 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tlačidlo späť ukončí informačný kanál</string>
   <string name="morphe_back_button_always_exits_feed_summary">Stlačením tlačidla späť sa vždy ukončí aplikácia namiesto posúvania na začiatok informačného kanála</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Skryť stavový riadok</string>
+  <string name="morphe_hide_status_bar_summary">Skryje systémový stavový riadok. Potiahnite prstom nadol z horného okraja, aby sa na chvíľu zobrazil</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Pozadie svetlého motívu</string>
   <string name="morphe_theme_color_light_entry_2">Biela</string>

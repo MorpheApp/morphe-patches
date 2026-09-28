@@ -691,6 +691,8 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
   <string name="morphe_hide_ask_button_title">Verberg Vra-knoppie</string>
   <string name="morphe_hide_channel_profile_button_title">Versteek kanaal- en intekenknoppie</string>
   <string name="morphe_hide_channel_profile_button_summary">Versteek die kanaalavatar en intekenknoppie aan die begin van die aksiebalk</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Versteek Teken in-knoppie</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Versteek die Teken in- en Sluit aan-knoppies langs die kanaalavatar aan die begin van die aksiebalk</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Hide Clip button</string>
   <string name="morphe_hide_clip_button_summary">Dit werk moontlik nie vir sommige gebruikersrekeninge nie</string>
@@ -1005,6 +1007,7 @@ Motoruitleg
   <string name="morphe_tablet_layout_in_player_summary">"Herstel die ou speleruitleg
 
 Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer video's' oorvleueling nie beskikbaar wees nie"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">As jy dit aktiveer, kan dit sommige uitlegkenmerke van die speler breek, soos die kommentaarafdeling of \'Meer video\'s\' wat onder die speler gewys word.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel ou onderskrifgedrag</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel ou stoor na snelys</string>
@@ -1096,6 +1099,9 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Terugknoppie verlaat die voer</string>
   <string name="morphe_back_button_always_exits_feed_summary">Wanneer jy terug druk, verlaat jy altyd die toepassing in plaas daarvan om na die bokant van die voer te blaai</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Versteek statusbalk</string>
+  <string name="morphe_hide_status_bar_summary">Versteek die stelselstatusbalk. Vee af van die boonste rand om dit vir \'n oomblik te wys</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Ligte tema-agtergrond</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>

@@ -180,6 +180,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_remember_repeat_state_title">পুনরাবৃত্তি অবস্থা মনে রাখুন</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">মিশ্রণ অবস্থা মনে রাখুন</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">প্লেব্যাক গতি</string>
+  <string name="morphe_music_playback_speed_summary">সকল ট্র্যাকের জন্য ব্যবহৃত গতি। 100% হলে অ্যাপের গতি ব্যবহৃত হয়, যেমন পডকাস্ট প্লেব্যাকের গতি।</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">গতির সাথে পিচ পরিবর্তন করুন</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক রিডাইরেকশন নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বোতাম চাপলে পরবর্তী ট্র্যাকে যাওয়া বন্ধ করে</string>
@@ -261,6 +265,9 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_subscriptions">সদস্যতা</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">ফিল্টার বার লুকান</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">পোর্ট্রেট ওরিয়েন্টেশন বাধ্যতামূলক করুন</string>
+  <string name="morphe_music_force_portrait_orientation_summary">ডিভাইসটি ঘোরানো হলে অ্যাপটিকে পোর্ট্রেট ওরিয়েন্টেশনে রাখে</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">মিনিপ্লেয়ারের রঙ পরিবর্তন করুন</string>
   <string name="morphe_music_change_miniplayer_color_summary">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে।</string>
@@ -421,7 +428,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Romanize বাটন দেখান</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">রোমানাইজেশন টগল করতে ট্যাপ করুন; শুধুমাত্র রোমানাইজেশনের জন্য দীর্ঘ চাপ দিন। প্রদানকারীর রোমানাইজেশন, Google Translate, বা OpenAI-সামঞ্জস্যপূর্ণ API ব্যবহার করে।</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">রিফ্রেশ বোতাম দেখান</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">পরবর্তী লিরিক্স প্রার্থীতে যেতে আলতো চাপুন; […]</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">পরবর্তী প্রস্তাবিত গানের কথায় স্যুইচ করতে ট্যাপ করুন; গানের শিরোনাম এবং শিল্পীর নাম দিয়ে গানের কথা অনুসন্ধান করতে দীর্ঘ চাপ দিন।</string>
+  <string name="morphe_music_lyrics_search_dialog_title">গানের কথা অনুসন্ধান</string>
+  <string name="morphe_music_lyrics_search_title_hint">গানের শিরোনাম</string>
+  <string name="morphe_music_lyrics_search_artist_hint">শিল্পী</string>
+  <string name="morphe_music_lyrics_search_empty">একটি গানের শিরোনাম এবং একজন শিল্পীর নাম লিখুন</string>
+  <string name="morphe_music_lyrics_search_no_providers">সক্রিয় কোনো প্রোভাইডারই অন্য গানের জন্য অনুসন্ধান করতে পারে না</string>
   <string name="morphe_music_lyrics_saved">সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_lyrics_word_sync_title">সিঙ্ক্রোনাইজড শব্দ বা সিলেবল হাইলাইট করুন</string>
   <string name="morphe_music_lyrics_word_sync_summary">যখন পাওয়া যায়, শব্দে শব্দে লিরিক্সকে অগ্রাধিকার দিন। যখন লিরিক্সে শব্দের সময় থাকে, তখন সঙ্গীতের সাথে সময় মিলিয়ে প্রতিটি শব্দ বা সিলেবল হাইলাইট হয়।</string>
@@ -475,6 +487,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API এন্ডপয়েন্ট URL (যেমন: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API কী (বেনামী অ্যাক্সেসের জন্য খালি রাখুন)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">মডেলের নাম (যেমন: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">প্রম্পট টেমপ্লেট (ভেরিয়েবল: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI অনুবাদ সেটিংস সংরক্ষিত হয়েছে</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">AI এন্ডপয়েন্টে সংযোগ করা যায়নি। অনুগ্রহ করে আপনার সেটিংস পরীক্ষা করুন।</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI অনুবাদ সেটিংস রিসেট করা হয়েছে</string>

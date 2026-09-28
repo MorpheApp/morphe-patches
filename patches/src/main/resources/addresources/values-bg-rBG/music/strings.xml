@@ -180,6 +180,10 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_remember_repeat_state_title">Запомни състоянието на повторение</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Запомни състоянието на разбъркване</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Скорост на възпроизвеждане</string>
+  <string name="morphe_music_playback_speed_summary">Скорост, използвана за всички песни. При 100% се използва скоростта на приложението, като скоростта на възпроизвеждане на подкаст.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Промяна на височината на тона със скоростта</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Изключване на пренасочването при непонравил се</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Предотвратява преминаването към следващата песен при натискане на бутона \"Не ми харесва\"</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_change_start_page_entry_subscriptions">Абонаменти</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Скриване на филтър лентата</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Принудителна портретна ориентация</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Запазва приложението в портретна ориентация при завъртане на устройството</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Смени цвет на миниплеъра</string>
   <string name="morphe_music_change_miniplayer_color_summary">Цвятът на миниплеера съвпада с цвятът на пълноекранния плеер</string>
@@ -412,7 +419,12 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_show_romanize_button_title">Показване на бутона за романизиране</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Докоснете, за да превключите романизацията; задръжте натиснато за само романизация. Използва романизация от доставчика, Google Translate или API, съвместим с OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показване на бутона за опресняване</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Докоснете, за да преминете към следващия вариант на текста; задръжте натиснато, за да деактивирате временно текстовете от трети страни и да покажете вградените текстове.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Докоснете, за да превключите към следващия вариант на текста; задръжте натиснато, за да търсите текст по заглавие на песен и изпълнител</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Търсене на текст</string>
+  <string name="morphe_music_lyrics_search_title_hint">Заглавие на песен</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Изпълнител</string>
+  <string name="morphe_music_lyrics_search_empty">Въведете заглавие на песен и изпълнител</string>
+  <string name="morphe_music_lyrics_search_no_providers">Никой от активираните доставчици не може да търси други песни</string>
   <string name="morphe_music_lyrics_saved">Запазено</string>
   <string name="morphe_music_lyrics_word_sync_title">Открояване на синхронизираните думи или срички</string>
   <string name="morphe_music_lyrics_word_sync_summary">Дава приоритет на текст по думи, когато е наличен. Когато текстът има тайминг на думите, откроява всяка дума или сричка в синхрон с музиката.</string>
@@ -466,6 +478,7 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL на крайната точка на API (напр. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API ключ (оставете празно за анонимен достъп)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Име на модела (напр. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Шаблон за подкана (променливи: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Настройките за AI превод са запазени</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Не можа да се свърже с AI крайната точка. Моля, проверете настройките си.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Настройките за AI превод са нулирани</string>

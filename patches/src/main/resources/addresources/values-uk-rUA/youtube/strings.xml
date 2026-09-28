@@ -398,9 +398,9 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">Результати пошуку з каналу</string>
   <string name="morphe_channel_search_no_results">Нічого не знайдено на цьому каналі</string>
   <string name="morphe_channel_search_failed">Не вдалося виконати пошук на цьому каналі</string>
-  <string name="morphe_channel_search_sort_relevance">Релевантність</string>
-  <string name="morphe_channel_search_sort_most_viewed">Найбільш переглядані</string>
-  <string name="morphe_channel_search_sort_least_viewed">Найменш переглядані</string>
+  <string name="morphe_channel_search_sort_relevance">Актуальність</string>
+  <string name="morphe_channel_search_sort_most_viewed">Найпопулярніші</string>
+  <string name="morphe_channel_search_sort_least_viewed">Найменш популярні</string>
   <string name="morphe_channel_search_sort_newest">Найновіші</string>
   <string name="morphe_channel_search_sort_oldest">Найстаріші</string>
   <string name="morphe_channel_search_sort_shortest">Найкоротші</string>
@@ -689,8 +689,10 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Приховати кнопку \"Запитати\"</string>
-  <string name="morphe_hide_channel_profile_button_title">Приховати канал і кнопку підписки</string>
-  <string name="morphe_hide_channel_profile_button_summary">Приховує аватар каналу та кнопку підписки на початку панелі дій</string>
+  <string name="morphe_hide_channel_profile_button_title">Приховати канал та кнопку \"Підписатися\"</string>
+  <string name="morphe_hide_channel_profile_button_summary">Приховує аватар каналу та кнопку \"Підписатися\" на початку панелі дій</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Приховати кнопку \"Підписатися\"</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Приховує кнопки \"Підписатися\" та \"Підписатися +\" поруч з аватаром каналу на початку панелі дій</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Приховати кнопку \"Кліп\"</string>
   <string name="morphe_hide_clip_button_summary">Може не працювати для деяких облікових записів</string>
@@ -1004,6 +1006,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"Відновлює старий макет плеєра
 
 Обмеження: якщо \"Відновити стару панель дій відео\" вимкнено, накладка \"Інші відео\" може бути недоступна"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Увімкнення цієї функції може порушити роботу деяких елементів компонування плеєра, як-от розділ коментарів або \"Інші відео\" під плеєром</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Відновити стару поведінку субтитрів</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Відновити старе збереження до списку відтворення</string>
@@ -1095,6 +1098,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Кнопка \"Назад\" виходить зі стрічки</string>
   <string name="morphe_back_button_always_exits_feed_summary">Натискання кнопки \"Назад\" завжди закриває застосунок замість прокручування до початку стрічки</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Приховати панель стану</string>
+  <string name="morphe_hide_status_bar_summary">Приховує системну панель стану. Проведіть донизу від верхнього краю, щоб показати її на мить</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Фон світлої теми</string>
   <string name="morphe_theme_color_light_entry_2">Білий</string>
@@ -1207,8 +1213,8 @@ Second \"item\" text"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Показати кнопку \"Якість\"</string>
   <string name="morphe_video_quality_dialog_button_summary">Натисніть і утримуйте для скидання якості до типової</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">Показати роздільну здатність на кнопці Якість</string>
-  <string name="morphe_video_quality_dialog_button_resolution_summary">Показувати роздільну здатність, наприклад 1080, замість позначки, як-от FHD</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Показувати роздільну здатність на кнопці \"Якість\"</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Показувати роздільну здатність, наприклад 1080, замість позначки, наприклад FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Власне меню швидкості відтворення</string>
   <string name="morphe_restore_old_speed_menu_title">Відновити старе меню швидкості відтворення</string>
@@ -1299,9 +1305,9 @@ Second \"item\" text"</string>
 Обмеження: повертає старий стиль накладки \"Інші відео\""</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Стиль іконок плеєра</string>
-  <string name="morphe_player_icon_style_entry_auto">Автоматично</string>
-  <string name="morphe_player_icon_style_entry_default">Типова</string>
+  <string name="morphe_player_icon_style_entry_auto">Автоматичний</string>
+  <string name="morphe_player_icon_style_entry_default">Типовий</string>
   <string name="morphe_player_icon_style_entry_regular">Тонкий</string>
   <string name="morphe_player_icon_style_entry_bold">Жирний</string>
-  <string name="morphe_shorts_icon_style_title">Стиль іконки Shorts</string>
+  <string name="morphe_shorts_icon_style_title">Стиль іконок Shorts</string>
 </resources>

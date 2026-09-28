@@ -25,6 +25,20 @@ internal object BuildInnerTubeProtoRequestBodyFingerprint : Fingerprint(
     )
 )
 
+/**
+ * [BuildInnerTubeProtoRequestBodyFingerprint] of any request class.
+ */
+internal object InnerTubeRequestBodyFingerprint : Fingerprint(
+    parameters = listOf("L"),
+    returnType = "Lcom/google/protobuf/MessageLite;",
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = CLIENT_INFO_CLASS
+        )
+    )
+)
+
 internal fun getConfigInfoFingerprint(configInfoClass: String) = object : Fingerprint(
     definingClass = configInfoClass,
     name = "<init>",

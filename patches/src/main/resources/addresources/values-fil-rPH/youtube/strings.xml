@@ -691,6 +691,8 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_hide_ask_button_title">Itago ang Ask button</string>
   <string name="morphe_hide_channel_profile_button_title">Itago ang channel at ang Subscribe button</string>
   <string name="morphe_hide_channel_profile_button_summary">Itinatago ang avatar ng channel at ang Subscribe button sa simula ng action bar</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Itago ang button na Mag-subscribe</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Itinatago ang mga pindutan ng Subscribe at Join sa tabi ng avatar ng channel sa simula ng action bar.</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Itago ang Clip button</string>
   <string name="morphe_hide_clip_button_summary">Maaaring hindi ito gumana para sa ilang mga user account.</string>
@@ -1003,6 +1005,7 @@ Layout ng automotive
   <string name="morphe_tablet_layout_in_player_summary">"Ibinabalik ang lumang layout ng player
 
 Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring hindi magamit ang overlay na 'Higit pang mga video'"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Ang pagpapagana nito ay maaaring makasira sa ilang mga tampok ng layout ng player, tulad ng seksyon ng komento o \'Higit pang mga video\' na ipinapakita sa ibaba ng player.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ibalik ang dating pag-uugali ng mga caption</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ibalik ang lumang save sa playlist</string>
@@ -1094,6 +1097,9 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Back button exits the feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pressing back always exits the app instead of scrolling to the top of the feed</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Itago ang status bar</string>
+  <string name="morphe_hide_status_bar_summary">Itinatago ang system status bar. Mag-swipe pababa mula sa tuktok na gilid upang maipakita ito sandali</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Likuran ng maliwanag na tema</string>
   <string name="morphe_theme_color_light_entry_2">Puti</string>

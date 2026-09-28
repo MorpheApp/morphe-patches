@@ -691,6 +691,8 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_hide_ask_button_title">Soru düğmesini gizle</string>
   <string name="morphe_hide_channel_profile_button_title">Kanalı ve Abone Ol düğmesini gizle</string>
   <string name="morphe_hide_channel_profile_button_summary">Eylem çubuğunun başındaki kanal avatarını ve Abone Ol düğmesini gizler.</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Abone ol düğmesini gizle</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Abone Ol ve Katıl düğmelerini, eylem çubuğunun başında kanal avatarının yanında gizler</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Klip düğmesini gizle</string>
   <string name="morphe_hide_clip_button_summary">Bu, bazı kullanıcı hesapları için çalışmayabilir</string>
@@ -1005,6 +1007,7 @@ Otomotiv düzeni
   <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
 
 Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha fazla video' katmanı kullanılamayabilir"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Bunu etkinleştirmek, oynatıcı düzeninin bazı özelliklerini, örneğin yorum bölümünü veya oynatıcının altında gösterilen \'Daha fazla video\' bölümünü bozabilir.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Eski altyazı davranışını geri yükle</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Oynatma listesine kaydetme için eski düzeni geri getir</string>
@@ -1096,6 +1099,9 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Geri düğmesi akıştan çıkar</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geri tuşuna basmak, akışın en üstüne kaydırmak yerine her zaman uygulamadan çıkar.  This is a placeholder to ensure validity.</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Durum çubuğunu gizle</string>
+  <string name="morphe_hide_status_bar_summary">Sistem durum çubuğunu gizler. Bir anlığına göstermek için üst kenardan aşağı kaydırın</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Açık tema arka plan</string>
   <string name="morphe_theme_color_light_entry_2">Beyaz</string>

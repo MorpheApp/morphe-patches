@@ -666,6 +666,7 @@ Second \"item\" text"</string>
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">پنهان‌کردن دکمهٔ پرسش</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">پنهان‌کردن دکمهٔ عضویت</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">پنهان‌کردن دکمهٔ کلیپ</string>
   <string name="morphe_hide_clip_button_summary">ممکن است برای بعضی حساب‌های کاربری کار نکند</string>
@@ -1067,6 +1068,7 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">دکمهٔ برگشت از خوراک خارج می‌شود</string>
   <string name="morphe_back_button_always_exits_feed_summary">فشردن دکمهٔ برگشت همیشه از برنامه خارج می‌شود، نه اینکه به بالای خوراک پیمایش کند</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">پس‌زمینهٔ طرح روشن</string>
   <string name="morphe_theme_color_light_entry_2">سفید</string>

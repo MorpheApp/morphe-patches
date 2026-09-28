@@ -14,6 +14,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.LayoutTransition;
 import android.animation.ValueAnimator;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -28,6 +29,8 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
@@ -41,6 +44,7 @@ import android.text.TextPaint;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.ReplacementSpan;
+import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.GestureDetector;
@@ -48,6 +52,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AbsListView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -66,6 +75,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.function.IntConsumer;
 
 import app.morphe.extension.music.patches.lyrics.Lyrics;
 import app.morphe.extension.music.patches.lyrics.LyricsFileSaver;
@@ -77,6 +87,7 @@ import app.morphe.extension.music.patches.lyrics.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.LyricsTranslator;
 import app.morphe.extension.music.patches.lyrics.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -85,6 +96,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.ViewAnimations;
 
@@ -113,6 +125,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private static final long OVERLAY_CACHE_TTL_MS = 300;
 
     private static final long MIN_TICK_INTERVAL_MS = 50;
+
+    private static final long IDLE_TICK_INTERVAL_MS = 250;
 
     private static final int SCROLL_OFFSET_FRACTION = 3;
     private static final int SCROLL_INSTANT_THRESHOLD_FACTOR = 2;
@@ -161,9 +175,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private static final float ROMAJI_RELATIVE_SIZE = 0.7f;
 
     private static final int ORPHAN_MAX_CHARS = 2;
-    private static final int FIT_STEP_PERCENT = 6;
-    private static final int FIT_MAX_STEPS = 16;
-    private static final int FIT_MIN_SIZE_PX = 6;
+    private static final int FIT_MAX_STEPS = 10;
+    private static final float FIT_LETTER_SPACING_STEP_EM = 0.005f;
+    private static final float FIT_MIN_LETTER_SPACING_EM = -0.05f;
+    private static final float FIT_WIDTH_AXIS_STEP = 1.5f;
+    private static final float FIT_MIN_WIDTH_AXIS = 85f;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable updateTranslateLabelRunnable = this::updateTranslateLabel;
@@ -237,6 +253,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private boolean wholeFadeNextBuild;
     private boolean contentOutPending;
     private OnlyMode displayedOnlyMode = OnlyMode.NONE;
+    private OnlyMode builtOnlyMode = OnlyMode.NONE;
     private ValueAnimator rowHeightAnimator;
 
     private int pendingHideAnchorIndex = -1;
@@ -246,6 +263,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private int scrollAnchorChildTop;
     private float scrollAnchorScreenY;
     private int scrollAnchorBaseContentHeight;
+    private ViewTreeObserver.OnPreDrawListener pendingAnchorScroll;
 
     private boolean growthAnchorValid;
     private int growthAnchorIndex = -1;
@@ -385,9 +403,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private static Layout buildCandidateLayout(TextView view, int sizePx, int width,
-            CharSequence text) {
+            CharSequence text, float letterSpacingEm, @Nullable String fontVariation) {
         final TextPaint paint = new TextPaint(view.getPaint());
         paint.setTextSize(sizePx);
+        paint.setLetterSpacing(letterSpacingEm);
+        paint.setFontVariationSettings(fontVariation);
         final Layout current = view.getLayout();
         final Layout.Alignment alignment = current != null
                 ? current.getAlignment() : Layout.Alignment.ALIGN_NORMAL;
@@ -399,27 +419,123 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 .build();
     }
 
-    private static int nextFittedSize(TextView view, int width, CharSequence text) {
-        final int size = (int) view.getTextSize();
-        final int step = Math.max(1, Math.round(size * FIT_STEP_PERCENT / 100f));
-        for (int i = 1; i <= FIT_MAX_STEPS; i++) {
-            final int candidate = size - i * step;
-            if (candidate < FIT_MIN_SIZE_PX) {
-                break;
+    private static Boolean widthAxisSupport;
+
+    private static boolean widthAxisSupported(TextPaint paint) {
+        if (widthAxisSupport == null) {
+            final TextPaint probe = new TextPaint(paint);
+            probe.setTextSize(100f);
+            final String[] sample = {"WAVEWIDTH", "MOMENT", "LONGERSONGTEXT"};
+            float before = 0f;
+            for (String part : sample) {
+                before += probe.measureText(part);
             }
-            if (!hasOrphanTail(buildCandidateLayout(view, candidate, width, text), text)) {
-                return candidate;
+            probe.setFontVariationSettings("'wdth' 85");
+            float after = 0f;
+            for (String part : sample) {
+                after += probe.measureText(part);
+            }
+            widthAxisSupport = after < before - 0.5f;
+        }
+        return widthAxisSupport;
+    }
+
+    private static final class CompressionFit {
+        final float letterSpacingEm;
+        @Nullable
+        final String fontVariation;
+
+        CompressionFit(float letterSpacingEm, @Nullable String fontVariation) {
+            this.letterSpacingEm = letterSpacingEm;
+            this.fontVariation = fontVariation;
+        }
+    }
+
+    private static final class FittedState {
+        int width = -1;
+        int textSizePx;
+        float letterSpacingEm;
+        @Nullable
+        String fontVariation;
+        @Nullable
+        CharSequence text;
+    }
+
+    @Nullable
+    private static CompressionFit findCompression(TextView view, int sizePx, int width,
+            CharSequence text) {
+        if (!widthAxisSupported(view.getPaint())) {
+            return null;
+        }
+        for (int i = 1; i <= FIT_MAX_STEPS; i++) {
+            final float spacing = Math.max(FIT_MIN_LETTER_SPACING_EM,
+                    -i * FIT_LETTER_SPACING_STEP_EM);
+            final String variation = "'wdth' "
+                    + Math.max(FIT_MIN_WIDTH_AXIS, 100f - i * FIT_WIDTH_AXIS_STEP);
+            if (!hasOrphanTail(buildCandidateLayout(view, sizePx, width, text, spacing,
+                    variation), text)) {
+                return new CompressionFit(spacing, variation);
             }
         }
-        return 0;
+        return null;
+    }
+
+    private static boolean applyOrphanFit(TextView view, int width, CharSequence text,
+            FittedState state) {
+        final int sizePx = (int) view.getTextSize();
+        if (width == state.width && sizePx == state.textSizePx
+                && view.getLetterSpacing() == state.letterSpacingEm
+                && Objects.equals(view.getFontVariationSettings(), state.fontVariation)) {
+            return false;
+        }
+        Layout base = view.getLayout();
+        if (base == null) {
+            return false;
+        }
+        if (view.getLetterSpacing() != 0f || view.getFontVariationSettings() != null) {
+            base = buildCandidateLayout(view, sizePx, width, text, 0f, null);
+        }
+        float spacing = 0f;
+        String variation = null;
+        if (hasOrphanTail(base, text)) {
+            final CompressionFit fit = findCompression(view, sizePx, width, text);
+            if (fit != null) {
+                spacing = fit.letterSpacingEm;
+                variation = fit.fontVariation;
+            }
+        }
+        final boolean changed = view.getLetterSpacing() != spacing
+                || !Objects.equals(view.getFontVariationSettings(), variation);
+        if (view.getLetterSpacing() != spacing) {
+            view.setLetterSpacing(spacing);
+        }
+        if (!Objects.equals(view.getFontVariationSettings(), variation)) {
+            if (variation == null || !view.setFontVariationSettings(variation)) {
+                view.setFontVariationSettings(null);
+                variation = null;
+            }
+        }
+        state.width = width;
+        state.textSizePx = sizePx;
+        state.letterSpacingEm = spacing;
+        state.fontVariation = variation;
+        state.text = text;
+        return changed;
     }
 
     private static final class FittingTextView extends TextView {
-        private int fittedForWidth = -1;
-        private int fittedTextSizePx;
+        private final FittedState fittedState = new FittedState();
 
         FittingTextView(Context context) {
             super(context);
+        }
+
+        @Override
+        public void setText(CharSequence text, BufferType type) {
+            super.setText(text, type);
+            if (fittedState != null && !Objects.equals(fittedState.text, text)) {
+                fittedState.width = -1;
+            }
         }
 
         @Override
@@ -429,27 +545,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (width <= 0) {
                 return;
             }
-            final int size = (int) getTextSize();
-            if (width == fittedForWidth && size == fittedTextSizePx) {
-                return;
-            }
             final CharSequence text = getText();
-            final Layout layout = getLayout();
-            if (layout == null || text.length() == 0) {
+            if (text == null || text.length() == 0) {
                 return;
             }
-            if (!hasOrphanTail(layout, text)) {
-                fittedForWidth = width;
-                fittedTextSizePx = size;
-                return;
-            }
-            final int best = nextFittedSize(this, width, text);
-            if (best > 0) {
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, best);
+            if (applyOrphanFit(this, width, text, fittedState)) {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             }
-            fittedForWidth = width;
-            fittedTextSizePx = (int) getTextSize();
         }
     }
 
@@ -491,12 +593,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             allSung = false;
             cachedLayout = null;
             cachedText = null;
-            fittedForWidth = -1;
+            if (fittedState != null && !Objects.equals(fittedState.text, text)) {
+                fittedState.width = -1;
+            }
             invalidate();
         }
 
-        private int fittedForWidth = -1;
-        private int fittedTextSizePx;
+        private final FittedState fittedState = new FittedState();
 
         private int transStart = -1;
         private int transEnd = -1;
@@ -905,29 +1008,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (width <= 0) {
                 return;
             }
-            final int size = (int) getTextSize();
-            if (width == fittedForWidth && size == fittedTextSizePx) {
-                return;
-            }
             final CharSequence text = getText();
-            final Layout layout = getLayout();
-            if (layout == null || text.length() == 0) {
+            if (text == null || text.length() == 0) {
                 return;
             }
-            if (!hasOrphanTail(layout, text)) {
-                fittedForWidth = width;
-                fittedTextSizePx = size;
-                return;
-            }
-            final int best = nextFittedSize(this, width, text);
-            if (best > 0) {
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, best);
+            if (applyOrphanFit(this, width, text, fittedState)) {
                 cachedLayout = null;
                 cachedText = null;
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             }
-            fittedForWidth = width;
-            fittedTextSizePx = (int) getTextSize();
         }
 
         @Override
@@ -988,7 +1077,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 if (wrappedLine >= 0 && wrappedLine < lineCount) {
                     final int charsOnLine0 = layout.getLineEnd(lineNum) - s;
                     final int charsOnLine1 = e - layout.getLineEnd(lineNum);
-                    if (charsOnLine0 + charsOnLine1 > 0) {
+                    if (charsOnLine1 > 0) {
                         final float line1Progress = Math.max(0f,
                                 (progress * (charsOnLine0 + charsOnLine1) - charsOnLine0)
                                         / (float) charsOnLine1);
@@ -1150,7 +1239,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not update lyrics panel view", ex);
             }
-            handler.postDelayed(this, computeTickInterval());
+            long interval = computeTickInterval();
+            if (lyrics == null || lyrics.isEmpty()) {
+                interval = Math.max(interval, IDLE_TICK_INTERVAL_MS);
+            }
+            handler.postDelayed(this, interval);
         }
     };
 
@@ -1180,71 +1273,41 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         buttonRow.setLayoutTransition(buttonTransition);
         buttonRow.setVisibility(GONE);
 
-        if (Settings.LYRICS_SHOW_COPY_BUTTON.get()) {
-            copyView = new TextView(context);
-            applyButtonStyle(copyView, COPY_ICON);
-            copyView.setOnClickListener(view -> onCopyClicked());
-            copyView.setOnLongClickListener(view -> {
-                onCopyLongPressed();
-                return true;
-            });
-            buttonRow.addView(copyView, new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-        } else {
-            copyView = null;
-        }
+        copyView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_COPY_BUTTON.get(),
+                COPY_ICON,
+                view -> onCopyClicked(),
+                view -> {
+                    onCopyLongPressed();
+                    return true;
+                },
+                false);
 
-        if (Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get()) {
-            translateView = new TextView(context);
-            applyButtonStyle(translateView, APP_TRANSLATE_ICON);
-            translateView.setOnClickListener(view -> onTranslateClicked());
-            translateView.setOnLongClickListener(view -> {
-                onTranslateLongPressed();
-                return true;
-            });
-            LinearLayout.LayoutParams translateParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            translateParams.setMarginStart(Dim.dp12);
-            buttonRow.addView(translateView, translateParams);
-        } else {
-            translateView = null;
-        }
+        translateView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get(),
+                APP_TRANSLATE_ICON,
+                view -> onTranslateClicked(),
+                view -> {
+                    onTranslateLongPressed();
+                    return true;
+                },
+                true);
 
-        if (Settings.LYRICS_SHOW_ROMANIZE_BUTTON.get()) {
-            romanizeView = new TextView(context);
-            applyButtonStyle(romanizeView, APP_ROMANIZE_ICON);
-            romanizeView.setOnClickListener(view -> onRomanizeClicked());
-            romanizeView.setOnLongClickListener(view -> {
-                onRomanizeLongPressed();
-                return true;
-            });
-            LinearLayout.LayoutParams romanizeParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            romanizeParams.setMarginStart(Dim.dp12);
-            buttonRow.addView(romanizeView, romanizeParams);
-        } else {
-            romanizeView = null;
-        }
+        romanizeView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_ROMANIZE_BUTTON.get(),
+                APP_ROMANIZE_ICON,
+                view -> onRomanizeClicked(),
+                view -> {
+                    onRomanizeLongPressed();
+                    return true;
+                },
+                true);
 
-        if (Settings.LYRICS_SHOW_REFRESH_BUTTON.get()) {
-            refreshView = new TextView(context);
-            applyButtonStyle(refreshView, REFRESH_ICON);
-            refreshView.setOnClickListener(view -> onRefreshClicked());
-            refreshView.setOnLongClickListener(view -> {
-                onRefreshLongPressed();
-                return true;
-            });
-            LinearLayout.LayoutParams refreshParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            refreshParams.setMarginStart(Dim.dp12);
-            buttonRow.addView(refreshView, refreshParams);
-        } else {
-            refreshView = null;
-        }
+        refreshView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_REFRESH_BUTTON.get(),
+                REFRESH_ICON,
+                view -> onRefreshClicked(),
+                view -> {
+                    onRefreshLongPressed();
+                    return true;
+                },
+                true);
 
         // The source line lives in a container of its own, so that lyrics lines can be
         // inserted before it without depending on how many views it holds.
@@ -1411,6 +1474,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        if (pendingAnchorScroll != null) {
+            linesContainer.getViewTreeObserver().removeOnPreDrawListener(pendingAnchorScroll);
+            pendingAnchorScroll = null;
+        }
+        setKeepScreenOn(false);
         LyricsManager.getInstance().removeListener(this);
         handler.removeCallbacksAndMessages(null);
         LyricsManager.getInstance().resetTemporaryOffsetMs();
@@ -1487,9 +1555,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         }
                         if (refreshInProgress) {
                             refreshInProgress = false;
-                            setButtonLabel(refreshView, str("morphe_music_lyrics_refreshed"), true);
-                            handler.removeCallbacks(refreshLabelResetRunnable);
-                            handler.postDelayed(refreshLabelResetRunnable, 1500);
+                            flashButtonLabel(refreshView,
+                                    str("morphe_music_lyrics_refreshed"),
+                                    refreshLabelResetRunnable, 1500);
                         }
                     }
                     break;
@@ -1504,6 +1572,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         updateRefreshLabel();
                     }
                     break;
+            }
+            if (newLyrics != null && !newLyrics.isEmpty()) {
+                handler.removeCallbacks(ticker);
+                handler.post(ticker);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLyricsChanged failure", ex);
@@ -1597,6 +1669,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void showLyrics(Lyrics newLyrics) {
+        try {
+            buildLyrics(newLyrics);
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private void buildLyrics(Lyrics newLyrics) {
         if (onlyMode != displayedOnlyMode && !contentOutPending && !lineViews.isEmpty()) {
             contentOutPending = true;
             wholeFadeNextBuild = true;
@@ -1620,8 +1699,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final boolean preserveHidePosition = pendingHideAnchorIndex >= 0;
         final int preserveHideIndex = pendingHideAnchorIndex;
         final float preserveHideScreenY = pendingHideAnchorScreenY;
-        pendingHideAnchorIndex = -1;
-        pendingHideAnchorScreenY = 0f;
+        clearPendingHideAnchor();
         final boolean sameContent = !lineRows.isEmpty() && lastBuiltLyrics == newLyrics;
         final int prevCount = sameContent
                 ? Math.min(lineViews.size(), newLyrics.lines().size()) : 0;
@@ -1651,6 +1729,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         final int generation = buildGeneration;
         final OnlyMode onlySnap = onlyMode;
+        builtOnlyMode = onlySnap;
         final List<LyricsLine> romanizedSnap = romanizedLines;
         final List<String> translatedSnap = translatedLines;
         final boolean perWordRomajiSnap = perWordRomaji;
@@ -1782,7 +1861,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     if (generation != buildGeneration || lyrics != newLyrics) {
                         return;
                     }
-                    allTimings.add(computeWordTimings(newLyrics.lines().get(i)));
+                    allTimings.add(computeWordTimings(newLyrics.lines(), i));
                     allOrigStarts.add(computeOriginalTextStart(newLyrics.lines().get(i), i,
                             onlySnap, romanizedSnap, translatedSnap, perWordRomajiSnap));
                 }
@@ -1962,14 +2041,19 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     new ViewTreeObserver.OnPreDrawListener() {
                         @Override
                         public boolean onPreDraw() {
-                            linesContainer.getViewTreeObserver()
-                                    .removeOnPreDrawListener(this);
                             if (preserveGeneration != buildGeneration
                                     || lyrics == null || !lyrics.synced()
                                     || lineViews.isEmpty() || lineRows.isEmpty()
                                     || seekPending) {
+                                linesContainer.getViewTreeObserver()
+                                        .removeOnPreDrawListener(this);
                                 return true;
                             }
+                            if (rowHeightAnimator != null) {
+                                return true;
+                            }
+                            linesContainer.getViewTreeObserver()
+                                    .removeOnPreDrawListener(this);
                             final int index;
                             if (highlightedIndex >= 0
                                     && highlightedIndex < lineViews.size()
@@ -2032,36 +2116,89 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     }
 
-    private static List<WordTiming> computeWordTimings(LyricsLine line) {
-        List<WordTiming> timings = computeWordTimingsFromWords(line);
-        if (!timings.isEmpty()) {
-            return timings;
+    private static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
+        final LyricsLine line = lines.get(index);
+        if (isSingleWord(line.text())) {
+            long rangeStart = line.startTimeMs();
+            if (rangeStart < 0 && line.hasWords()) {
+                rangeStart = line.words().get(0).startMs();
+            }
+            long rangeEnd = line.endTimeMs();
+            if (rangeEnd <= rangeStart) {
+                rangeEnd = index + 1 < lines.size()
+                        ? lines.get(index + 1).startTimeMs()
+                        : LyricsLine.NO_TIME;
+            }
+            if (rangeEnd <= rangeStart && line.hasWords()) {
+                rangeEnd = line.words().get(line.words().size() - 1).endMs();
+            }
+            if (rangeStart >= 0 && rangeEnd > rangeStart) {
+                final List<WordTiming> synthesized =
+                        synthesizeLineChars(line.text(), rangeStart, rangeEnd);
+                if (!synthesized.isEmpty()) {
+                    return synthesized;
+                }
+            }
         }
-        return synthesizeLineTimings(line);
+        return computeWordTimingsFromWords(line);
     }
 
-    private static List<WordTiming> synthesizeLineTimings(LyricsLine line) {
-        String text = line.text();
-        if (text.isEmpty()) {
+    private static List<WordTiming> synthesizeLineChars(String text, long startMs, long endMs) {
+        final int charCount = text.codePointCount(0, text.length());
+        if (charCount < 2 || endMs <= startMs) {
             return Collections.emptyList();
         }
-        long startMs = line.startTimeMs();
-        long endMs = line.endTimeMs();
-        if (endMs <= startMs) {
-            return Collections.emptyList();
-        }
-        int charCount = text.codePointCount(0, text.length());
-        long perChar = (endMs - startMs) / charCount;
-        List<WordTiming> timings = new ArrayList<>(charCount);
-        int pos = 0;
-        for (int i = 0; i < charCount && pos < text.length(); i++) {
-            int next = pos + Character.charCount(text.codePointAt(pos));
-            timings.add(new WordTiming(pos, next,
-                    startMs + i * perChar,
-                    startMs + (i + 1) * perChar, null));
-            pos = next;
+        final List<WordTiming> timings = new ArrayList<>(charCount);
+        int offset = 0;
+        for (int i = 0; i < charCount; i++) {
+            final int next = offset + Character.charCount(text.codePointAt(offset));
+            final long charStart = startMs + (endMs - startMs) * i / charCount;
+            final long charEnd = i + 1 == charCount
+                    ? endMs
+                    : startMs + (endMs - startMs) * (i + 1) / charCount;
+            timings.add(new WordTiming(offset, next, charStart, charEnd, null));
+            offset = next;
         }
         return timings;
+    }
+
+    private static boolean isSingleWord(String text) {
+        return countWords(text) == 1;
+    }
+
+    private static int countWords(String text) {
+        int words = 0;
+        boolean inWord = false;
+        for (int i = 0; i < text.length(); ) {
+            final int codePoint = text.codePointAt(i);
+            i += Character.charCount(codePoint);
+            if (Character.isWhitespace(codePoint)) {
+                if (inWord) {
+                    words++;
+                    inWord = false;
+                }
+                continue;
+            }
+            if (isCjkCodePoint(codePoint)) {
+                if (inWord) {
+                    words++;
+                    inWord = false;
+                }
+                words++;
+                continue;
+            }
+            inWord = true;
+        }
+        return words + (inWord ? 1 : 0);
+    }
+
+    private static boolean isCjkCodePoint(int codePoint) {
+        return (codePoint >= 0x3400 && codePoint <= 0x4DBF)
+                || (codePoint >= 0x4E00 && codePoint <= 0x9FFF)
+                || (codePoint >= 0xF900 && codePoint <= 0xFAFF)
+                || (codePoint >= 0xAC00 && codePoint <= 0xD7A3)
+                || (codePoint >= 0x3040 && codePoint <= 0x30FF)
+                || (codePoint >= 0x31F0 && codePoint <= 0x31FF);
     }
 
     private static List<WordTiming> computeWordTimingsFromWords(LyricsLine line) {
@@ -2071,28 +2208,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         if (line.words().size() == 1) {
             Word single = line.words().get(0);
-            String wText = single.text();
-            if (wText.length() > 1) {
-                long wordStart = single.startMs();
-                long wordEnd = single.endMs();
-                if (wordEnd <= wordStart) {
-                    return Collections.emptyList();
-                }
-                int charCount = wText.length();
-                long dur = wordEnd - wordStart;
-                long perChar = dur / charCount;
-                List<WordTiming> timings = new ArrayList<>(charCount);
-                int pos = 0;
-                for (int i = 0; i < charCount; i++) {
-                    int next = pos + Character.charCount(wText.codePointAt(pos));
-                    timings.add(new WordTiming(pos, next,
-                            wordStart + i * perChar,
-                            wordStart + (i + 1) * perChar, null));
-                    pos = next;
-                }
-                return timings;
+            if (isWholeLineWord(single.text(), line.text())) {
+                return Collections.emptyList();
             }
-            return Collections.emptyList();
+            if (single.endMs() <= single.startMs()) {
+                return Collections.emptyList();
+            }
         }
 
         List<WordTiming> timings = new ArrayList<>(line.words().size());
@@ -2130,6 +2251,21 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         return timings;
     }
 
+    private static boolean isWholeLineWord(String wordText, String lineText) {
+        return compactText(wordText).equalsIgnoreCase(compactText(lineText));
+    }
+
+    private static String compactText(String value) {
+        final StringBuilder builder = new StringBuilder(value.length());
+        for (int i = 0; i < value.length(); i++) {
+            final char c = value.charAt(i);
+            if (!Character.isWhitespace(c)) {
+                builder.append(c);
+            }
+        }
+        return builder.toString();
+    }
+
     /**
      * Builds the displayed text for a line, appending the translation (when shown) in a
      * smaller, dimmer style and coloring each word sung or unsung for the karaoke
@@ -2158,7 +2294,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         List<String> translated = translatedLines;
         String translation = null;
         if (translated != null && index < translated.size()) {
-            String t = translated.get(index).trim();
+            String raw = translated.get(index);
+            String t = raw == null ? "" : raw.trim();
             if (!t.isEmpty() && !t.equalsIgnoreCase(originalTrimmed)) {
                 translation = t;
             }
@@ -2373,9 +2510,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 }
                 showLyrics(current);
                 if (translatedLines != null) {
-                    setButtonLabel(translateView, str("morphe_music_lyrics_translate_hide"), true);
-                    handler.removeCallbacks(updateTranslateLabelRunnable);
-                    handler.postDelayed(updateTranslateLabelRunnable, 3000);
+                    flashButtonLabel(translateView,
+                            str("morphe_music_lyrics_translate_hide"),
+                            updateTranslateLabelRunnable, 3000);
                 }
             });
         } catch (Exception ex) {
@@ -2423,11 +2560,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             if (translatedLines != null) {
                 onlyMode = OnlyMode.TRANS;
-                enterOnlyModeState();
+                applyOnlyModeState();
                 showLyrics(current);
-                setButtonLabel(translateView, str("morphe_music_lyrics_translate_only"), true);
-                handler.removeCallbacks(updateTranslateLabelRunnable);
-                handler.postDelayed(updateTranslateLabelRunnable, 3000);
+                flashButtonLabel(translateView,
+                        str("morphe_music_lyrics_translate_only"),
+                        updateTranslateLabelRunnable, 3000);
                 return;
             }
             onlyMode = OnlyMode.NONE;
@@ -2453,7 +2590,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
         if (translatedLines != null) {
             onlyMode = OnlyMode.TRANS;
-            enterOnlyModeState();
+            applyOnlyModeState();
             showLyrics(current);
             updateTranslateLabel();
             return;
@@ -2486,11 +2623,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 return;
             }
             onlyMode = OnlyMode.TRANS;
-            enterOnlyModeState();
+            applyOnlyModeState();
             showLyrics(current);
-            setButtonLabel(translateView, str("morphe_music_lyrics_translate_only"), true);
-            handler.removeCallbacks(updateTranslateLabelRunnable);
-            handler.postDelayed(updateTranslateLabelRunnable, 3000);
+            flashButtonLabel(translateView,
+                    str("morphe_music_lyrics_translate_only"),
+                    updateTranslateLabelRunnable, 3000);
         });
     }
 
@@ -2509,7 +2646,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         cancelNormalTranslate();
         if (onlyMode == OnlyMode.TRANS) {
             onlyMode = OnlyMode.NONE;
-            exitOnlyModeState();
+            applyOnlyModeState();
         }
         updateFooter();
     }
@@ -2519,7 +2656,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         cancelNormalRomanize();
         if (onlyMode == OnlyMode.ROMA) {
             onlyMode = OnlyMode.NONE;
-            exitOnlyModeState();
+            applyOnlyModeState();
         }
         updateFooter();
     }
@@ -2592,12 +2729,34 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         wordSyncWasEnabled = Settings.LYRICS_WORD_SYNC.get();
     }
 
-    private void enterOnlyModeState() {
+    private void applyOnlyModeState() {
+        captureOnlyModeScrollAnchor();
         resetOnlyModeKaraokeState();
     }
 
-    private void exitOnlyModeState() {
-        resetOnlyModeKaraokeState();
+    private void clearPendingHideAnchor() {
+        pendingHideAnchorIndex = -1;
+        pendingHideAnchorScreenY = 0f;
+    }
+
+    private void captureOnlyModeScrollAnchor() {
+        clearPendingHideAnchor();
+        if (highlightedIndex < 0 || highlightedIndex >= lineRows.size()
+                || highlightedIndex >= lineViews.size()) {
+            return;
+        }
+        final View row = lineRows.get(highlightedIndex);
+        final TextView child = lineViews.get(highlightedIndex);
+        if (child.getHeight() <= 0 || linesContainer.getHeight() <= 0) {
+            return;
+        }
+        final int mainOffset = builtOnlyMode == OnlyMode.NONE
+                ? mainLineOffsetFor(child)
+                : 0;
+        pendingHideAnchorIndex = highlightedIndex;
+        pendingHideAnchorScreenY = row.getTop() + child.getTop()
+                + child.getTranslationY() + mainOffset
+                - scrollView.getScrollY();
     }
 
     /**
@@ -2757,9 +2916,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 }
                 showLyrics(current);
                 if (romaOk) {
-                    setButtonLabel(romanizeView, str("morphe_music_lyrics_romanize_hide"), true);
-                    handler.removeCallbacks(updateRomanizeLabelRunnable);
-                    handler.postDelayed(updateRomanizeLabelRunnable, 3000);
+                    flashButtonLabel(romanizeView,
+                            str("morphe_music_lyrics_romanize_hide"),
+                            updateRomanizeLabelRunnable, 3000);
                 }
             });
         } catch (Exception ex) {
@@ -2809,11 +2968,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             if (romanizedLines != null || perWordRomaji) {
                 onlyMode = OnlyMode.ROMA;
-                enterOnlyModeState();
+                applyOnlyModeState();
                 showLyrics(current);
-                setButtonLabel(romanizeView, str("morphe_music_lyrics_romanize_only"), true);
-                handler.removeCallbacks(updateRomanizeLabelRunnable);
-                handler.postDelayed(updateRomanizeLabelRunnable, 3000);
+                flashButtonLabel(romanizeView,
+                        str("morphe_music_lyrics_romanize_only"),
+                        updateRomanizeLabelRunnable, 3000);
                 return;
             }
             onlyMode = OnlyMode.NONE;
@@ -2839,7 +2998,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
         if (romanizedLines != null || perWordRomaji) {
             onlyMode = OnlyMode.ROMA;
-            enterOnlyModeState();
+            applyOnlyModeState();
             showLyrics(current);
             updateRomanizeLabel();
             return;
@@ -2874,11 +3033,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 return;
             }
             onlyMode = OnlyMode.ROMA;
-            enterOnlyModeState();
+            applyOnlyModeState();
             showLyrics(current);
-            setButtonLabel(romanizeView, str("morphe_music_lyrics_romanize_only"), true);
-            handler.removeCallbacks(updateRomanizeLabelRunnable);
-            handler.postDelayed(updateRomanizeLabelRunnable, 3000);
+            flashButtonLabel(romanizeView,
+                    str("morphe_music_lyrics_romanize_only"),
+                    updateRomanizeLabelRunnable, 3000);
         });
     }
 
@@ -2911,17 +3070,198 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void onRefreshLongPressed() {
+        showSearchDialog();
+    }
+
+    private void showSearchDialog() {
+        try {
+            openSearchDialog();
+        } catch (Throwable ignored) {
+        }
+    }
+
+    /**
+     * Lets the user type the song and artist they want lyrics for. The terms open prefilled
+     * with what was searched before, or with the filtered metadata of the track, and what
+     * the search finds replaces the whole candidate queue.
+     */
+    private void openSearchDialog() {
         if (refreshView == null) {
             return;
         }
         LyricsManager manager = LyricsManager.getInstance();
-        if (manager.isOverrideNative()) {
-            setButtonLabel(refreshView, null, false);
-            manager.setOverrideNative(false);
-        } else {
-            manager.setOverrideNative(true);
-            setButtonLabel(refreshView, str("morphe_music_lyrics_refreshing"), true);
+        TrackInfo track = manager.getCurrentTrack();
+        if (track == null) {
+            return;
         }
+        if (!manager.hasSearchProviders()) {
+            Utils.showToastShort(str("morphe_music_lyrics_search_no_providers"));
+            return;
+        }
+        final Context context = getContext();
+        if (context == null) {
+            return;
+        }
+
+        AutoCompleteTextView titleInput = createSearchInput(context,
+                str("morphe_music_lyrics_search_title_hint"));
+        AutoCompleteTextView artistInput = createSearchInput(context,
+                str("morphe_music_lyrics_search_artist_hint"));
+
+        final String defaultTitle = track.title() == null ? "" : track.title();
+        final String defaultArtist = track.artist() == null ? "" : track.artist();
+        String[] remembered = manager.rememberedSearchTerms();
+        String initialTitle = remembered != null && remembered[0] != null
+                ? remembered[0] : defaultTitle;
+        String initialArtist = remembered != null && remembered[1] != null
+                ? remembered[1] : defaultArtist;
+        titleInput.setText(initialTitle);
+        titleInput.setSelection(initialTitle.length());
+        artistInput.setText(initialArtist);
+        artistInput.setSelection(initialArtist.length());
+
+        LinearLayout content = new LinearLayout(context);
+        content.setOrientation(LinearLayout.VERTICAL);
+        content.addView(titleInput, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        LinearLayout.LayoutParams artistParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        artistParams.topMargin = Dim.dp8;
+        content.addView(artistInput, artistParams);
+
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                context,
+                str("morphe_music_lyrics_search_dialog_title"),
+                null,
+                null,
+                null,
+                () -> {
+                    String title = titleInput.getText().toString().trim();
+                    String artist = artistInput.getText().toString().trim();
+                    if (title.isEmpty() || artist.isEmpty()) {
+                        Utils.showToastShort(str("morphe_music_lyrics_search_empty"));
+                        return;
+                    }
+                    refreshInProgress = true;
+                    setButtonLabel(refreshView, str("morphe_music_lyrics_refreshing"), true);
+                    boolean defaultTerms = title.equals(defaultTitle)
+                            && artist.equals(defaultArtist);
+                    manager.searchWithCustomQuery(title, artist, defaultTerms);
+                },
+                () -> { },
+                null,
+                null,
+                false
+        );
+
+        Dialog dialog = dialogPair.first;
+        LinearLayout mainLayout = dialogPair.second;
+        mainLayout.addView(content, mainLayout.getChildCount() - 1,
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        }
+        dialog.show();
+
+        // One round of suggestions per dialog, fetched after it is on screen so the keyboard
+        // and the first keystroke never wait for MusicBrainz.
+        final String titleSuggestion = titleInput.getText().toString();
+        final String artistSuggestion = artistInput.getText().toString();
+        Utils.runOnBackgroundThread(() -> {
+            List<String> titles = LyricsRequests.MusicBrainzClient.suggestTitles(titleSuggestion);
+            List<String> artists = LyricsRequests.MusicBrainzClient.suggestArtists(artistSuggestion);
+            Utils.runOnMainThread(() -> {
+                try {
+                    if (titles.isEmpty() && artists.isEmpty()) {
+                        return;
+                    }
+                    if (!dialog.isShowing()) {
+                        return;
+                    }
+                    if (!titles.isEmpty()) {
+                        setSuggestionAdapter(context, titleInput, titles);
+                    }
+                    if (!artists.isEmpty()) {
+                        setSuggestionAdapter(context, artistInput, artists);
+                    }
+                } catch (Throwable ignored) {
+                }
+            });
+        });
+    }
+
+    private static AutoCompleteTextView createSearchInput(Context context, String hint) {
+        AutoCompleteTextView input = new AutoCompleteTextView(context);
+        input.setHint(hint);
+        input.setSingleLine(true);
+        input.setThreshold(1);
+        input.setTextSize(16);
+        input.setTextColor(ThemeUtils.getAppForegroundColor());
+
+        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
+                Dim.roundedCorners(10), null, null));
+        background.getPaint().setColor(ThemeUtils.getEditTextBackground());
+        input.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
+        input.setBackground(background);
+        input.setClipToOutline(true);
+
+        input.addOnLayoutChangeListener((v, left, top, right, bottom,
+                oldLeft, oldTop, oldRight, oldBottom) -> {
+            int width = v.getWidth();
+            if (width > 0) {
+                input.setDropDownWidth(width);
+            }
+        });
+
+        return input;
+    }
+
+    private static final float SUGGESTION_TEXT_SIZE_SP = 14;
+
+    private static TextView createSuggestionRow(Context context) {
+        TextView row = new TextView(context);
+        row.setTextSize(TypedValue.COMPLEX_UNIT_SP, SUGGESTION_TEXT_SIZE_SP);
+        row.setTextColor(ThemeUtils.getAppForegroundColor());
+        row.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
+        row.setLayoutParams(new AbsListView.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        return row;
+    }
+
+    private static final class SuggestionAdapter extends ArrayAdapter<String> {
+        private final AutoCompleteTextView input;
+
+        SuggestionAdapter(Context context, List<String> suggestions, AutoCompleteTextView input) {
+            super(context, 0, suggestions);
+            this.input = input;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView row = convertView instanceof TextView
+                    ? (TextView) convertView : createSuggestionRow(getContext());
+            int width = input.getWidth();
+            if (width > 0) {
+                row.setMaxWidth(width);
+            }
+            row.setText(getItem(position));
+            return row;
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+            return getView(position, convertView, parent);
+        }
+    }
+
+    private static void setSuggestionAdapter(Context context, AutoCompleteTextView input,
+                                             List<String> suggestions) {
+        input.setAdapter(new SuggestionAdapter(context, suggestions, input));
     }
 
     private void updateRefreshLabel() {
@@ -2958,12 +3298,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             rowHeightAnimator = null;
         }
         if (scrollAnchorRowIndex < 0 && growthAnchorValid
-                && growthAnchorIndex == highlightedIndex && onlyMode == OnlyMode.NONE
-                && highlightedIndex >= 0 && highlightedIndex < lineRows.size()
-                && highlightedIndex < lineViews.size() && linesContainer.getHeight() > 0) {
-            final View row = lineRows.get(highlightedIndex);
-            final TextView child = lineViews.get(highlightedIndex);
-            scrollAnchorRowIndex = highlightedIndex;
+                && growthAnchorIndex >= 0 && growthAnchorIndex < lineRows.size()
+                && growthAnchorIndex < lineViews.size()
+                && linesContainer.getHeight() > 0) {
+            final View row = lineRows.get(growthAnchorIndex);
+            final TextView child = lineViews.get(growthAnchorIndex);
+            scrollAnchorRowIndex = growthAnchorIndex;
             scrollAnchorBaseRowTop = row.getTop();
             scrollAnchorChildTop = child.getTop() + mainLineOffset(child);
             scrollAnchorScreenY = growthAnchorContainerY - scrollView.getScrollY();
@@ -3026,6 +3366,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
             @Override
             public void onAnimationEnd(Animator animation) {
+                final int anchorIndex = scrollAnchorRowIndex;
+                final float anchorScreenY = scrollAnchorScreenY;
                 scrollAnchorRowIndex = -1;
                 if (releaseAtEnd) {
                     for (RowResize resize : resizes) {
@@ -3037,6 +3379,20 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 }
                 if (rowHeightAnimator == animation) {
                     rowHeightAnimator = null;
+                }
+                if (!canceled[0] && anchorIndex >= 0 && anchorIndex < lineRows.size()
+                        && anchorIndex < lineViews.size()) {
+                    final int maxScroll = Math.max(0,
+                            linesContainer.getHeight() - scrollView.getHeight());
+                    final int target = Math.max(0, Math.min(maxScroll,
+                            lineRows.get(anchorIndex).getTop()
+                                    + lineViews.get(anchorIndex).getTop()
+                                    + mainLineOffset(lineViews.get(anchorIndex))
+                                    - Math.round(anchorScreenY)));
+                    if (target != scrollView.getScrollY()) {
+                        scrollView.scrollTo(0, target);
+                        lastScrollTarget = target;
+                    }
                 }
                 if (!canceled[0] && onEnd != null) {
                     onEnd.run();
@@ -3063,10 +3419,17 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     /** Height of the region rendered above the original line, i.e. how far the main lyric sits below the row top. */
     private int mainLineOffset(TextView lineView) {
-        if (onlyMode != OnlyMode.NONE || !(lineView instanceof LyricsLineView view)) {
+        if (onlyMode != OnlyMode.NONE) {
             return 0;
         }
-        final Layout layout = lineView.getLayout();
+        return mainLineOffsetFor(lineView);
+    }
+
+    private int mainLineOffsetFor(TextView lineView) {
+        if (!(lineView instanceof LyricsLineView view)) {
+            return 0;
+        }
+        final Layout layout = view.getLayout();
         if (layout == null) {
             return 0;
         }
@@ -3119,8 +3482,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private void captureHideScrollAnchor() {
-        pendingHideAnchorIndex = -1;
-        pendingHideAnchorScreenY = 0f;
+        clearPendingHideAnchor();
         scrollAnchorRowIndex = -1;
         if (onlyMode != OnlyMode.NONE) {
             return;
@@ -3217,8 +3579,19 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         lastScrollTarget = -1;
         seekPending = false;
         scrollAnchorRowIndex = -1;
-        pendingHideAnchorIndex = -1;
-        pendingHideAnchorScreenY = 0f;
+        if (pendingAnchorScroll != null) {
+            linesContainer.getViewTreeObserver().removeOnPreDrawListener(pendingAnchorScroll);
+            pendingAnchorScroll = null;
+        }
+        clearPendingHideAnchor();
+    }
+
+    private void forEachBgLine(int start, Lyrics current, IntConsumer action) {
+        for (int b = 1; start + b < lineViews.size()
+                && start + b < current.lines().size()
+                && current.lines().get(start + b).isBG(); b++) {
+            action.accept(start + b);
+        }
     }
 
     private void updateHighlight() {
@@ -3235,11 +3608,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         if (index == highlightedIndex) {
             if (!karaokeActive && index >= 0 && index < lineViews.size()) {
                 lineViews.get(index).setTextColor(lineTextColor());
-                for (int b = 1; index + b < lineViews.size()
-                        && index + b < current.lines().size()
-                        && current.lines().get(index + b).isBG(); b++) {
-                    lineViews.get(index + b).setTextColor(lineTextColor());
-                }
+                forEachBgLine(index, current,
+                        i -> lineViews.get(i).setTextColor(lineTextColor()));
             }
             applyLineOverlay(index);
             scrollAnchorIntoView(index >= 0 ? index : 0, false);
@@ -3264,14 +3634,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 if (!karaokeActive) {
                     lineViews.get(highlightedIndex).setTextColor(unsungWordColor());
                 }
-                for (int b = 1; highlightedIndex + b < lineViews.size()
-                        && highlightedIndex + b < current.lines().size()
-                        && current.lines().get(highlightedIndex + b).isBG(); b++) {
-                    fadeTo(lineViews.get(highlightedIndex + b), INACTIVE_LINE_ALPHA);
+                forEachBgLine(highlightedIndex, current, i -> {
+                    fadeTo(lineViews.get(i), INACTIVE_LINE_ALPHA);
                     if (!karaokeActive) {
-                        lineViews.get(highlightedIndex + b).setTextColor(unsungWordColor());
+                        lineViews.get(i).setTextColor(unsungWordColor());
                     }
-                }
+                });
             }
         }
         highlightedIndex = index;
@@ -3286,28 +3654,24 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             return;
         }
 
-        final boolean visibilityChanged = applyLineOverlay(index);
+        applyLineOverlay(index);
 
         fadeTo(lineViews.get(index), 1f);
         if (!karaokeActive) {
             lineViews.get(index).setTextColor(lineTextColor());
         }
-        for (int b = 1; index + b < lineViews.size()
-                && index + b < current.lines().size()
-                && current.lines().get(index + b).isBG(); b++) {
-            fadeTo(lineViews.get(index + b), 1f);
+        forEachBgLine(index, current, i -> {
+            fadeTo(lineViews.get(i), 1f);
             if (!karaokeActive) {
-                lineViews.get(index + b).setTextColor(lineTextColor());
+                lineViews.get(i).setTextColor(lineTextColor());
             }
-        }
+        });
 
         if (SystemClock.uptimeMillis() < userScrollUntilUptimeMs) {
             return;
         }
 
-        if (!visibilityChanged) {
-            scrollAnchorIntoView(index, true);
-        }
+        scrollAnchorIntoView(index, true);
     }
 
     private void scrollAnchorIntoView(int anchor, boolean lineChanged) {
@@ -3318,6 +3682,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             return;
         }
         if (SystemClock.uptimeMillis() < userScrollUntilUptimeMs) {
+            return;
+        }
+        if (isLayoutRequested()) {
+            deferScrollToPreDraw(anchor, lineChanged);
             return;
         }
         final int target = lineRows.get(anchor).getTop()
@@ -3337,7 +3705,34 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     }
 
-    private boolean applyLineOverlay(int index) {
+    private void deferScrollToPreDraw(int anchor, boolean lineChanged) {
+        if (!isAttachedToWindow()) {
+            return;
+        }
+        final ViewTreeObserver observer = linesContainer.getViewTreeObserver();
+        if (pendingAnchorScroll != null) {
+            observer.removeOnPreDrawListener(pendingAnchorScroll);
+        }
+        final int generation = buildGeneration;
+        final ViewTreeObserver.OnPreDrawListener listener =
+                new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        linesContainer.getViewTreeObserver().removeOnPreDrawListener(this);
+                        if (pendingAnchorScroll == this) {
+                            pendingAnchorScroll = null;
+                        }
+                        if (generation == buildGeneration) {
+                            scrollAnchorIntoView(anchor, lineChanged);
+                        }
+                        return true;
+                    }
+                };
+        pendingAnchorScroll = listener;
+        observer.addOnPreDrawListener(listener);
+    }
+
+    private void applyLineOverlay(int index) {
         final boolean hidePlayed = Settings.LYRICS_HIDE_PLAYED.get();
         final boolean hideUnplayed = Settings.LYRICS_HIDE_UNPLAYED.get();
         final boolean hideActive = hidePlayed || hideUnplayed;
@@ -3346,29 +3741,26 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         if (!hideActive) {
             if (!modeChanged && index == lastOverlayIndex) {
-                return false;
+                return;
             }
-            boolean visibilityChanged = false;
             linesContainer.suppressLayout(true);
             try {
                 for (int i = 0; i < lineRows.size(); i++) {
                     if (lineRows.get(i).getVisibility() != VISIBLE) {
                         lineRows.get(i).setVisibility(VISIBLE);
-                        visibilityChanged = true;
                     }
                 }
             } finally {
                 linesContainer.suppressLayout(false);
             }
             lastOverlayIndex = index;
-            return visibilityChanged;
+            return;
         }
 
         if (!modeChanged && index == lastOverlayIndex) {
-            return false;
+            return;
         }
 
-        boolean visibilityChanged = false;
         linesContainer.suppressLayout(true);
         try {
             for (int i = 0; i < lineRows.size(); i++) {
@@ -3382,16 +3774,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 } else {
                     newVis = VISIBLE;
                 }
-                if (lineRows.get(i).getVisibility() != newVis) {
-                    visibilityChanged = true;
-                }
                 lineRows.get(i).setVisibility(newVis);
             }
         } finally {
             linesContainer.suppressLayout(false);
         }
         lastOverlayIndex = index;
-        return visibilityChanged;
     }
 
     private void updateOnlyHighlight() {
@@ -3411,12 +3799,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         if (highlightedIndex >= 0 && highlightedIndex < lineViews.size()) {
             fadeTo(lineViews.get(highlightedIndex), INACTIVE_LINE_ALPHA);
             lineViews.get(highlightedIndex).setTextColor(unsungWordColor());
-            for (int b = 1; highlightedIndex + b < lineViews.size()
-                    && highlightedIndex + b < current.lines().size()
-                    && current.lines().get(highlightedIndex + b).isBG(); b++) {
-                fadeTo(lineViews.get(highlightedIndex + b), INACTIVE_LINE_ALPHA);
-                lineViews.get(highlightedIndex + b).setTextColor(unsungWordColor());
-            }
+            forEachBgLine(highlightedIndex, current, i -> {
+                fadeTo(lineViews.get(i), INACTIVE_LINE_ALPHA);
+                lineViews.get(i).setTextColor(unsungWordColor());
+            });
         }
         highlightedIndex = index;
         seekPending = false;
@@ -3430,23 +3816,19 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             return;
         }
 
-        final boolean visibilityChanged = applyLineOverlay(index);
+        applyLineOverlay(index);
 
         fadeTo(lineViews.get(index), 1f);
         lineViews.get(index).setTextColor(lineTextColor());
-        for (int b = 1; index + b < lineViews.size()
-                && index + b < current.lines().size()
-                && current.lines().get(index + b).isBG(); b++) {
-            fadeTo(lineViews.get(index + b), 1f);
-            lineViews.get(index + b).setTextColor(lineTextColor());
-        }
+        forEachBgLine(index, current, i -> {
+            fadeTo(lineViews.get(i), 1f);
+            lineViews.get(i).setTextColor(lineTextColor());
+        });
 
         if (SystemClock.uptimeMillis() < userScrollUntilUptimeMs) {
             return;
         }
-        if (!visibilityChanged) {
-            scrollAnchorIntoView(index, true);
-        }
+        scrollAnchorIntoView(index, true);
     }
 
     private void updateWordSync(long positionMs) {
@@ -3677,6 +4059,28 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
      *
      * @param iconName Drawable name for the button icon, or {@code null} for a text only button.
      */
+    private TextView createToolbarButton(LinearLayout parent, boolean enabled,
+                                         @Nullable String iconName,
+                                         View.OnClickListener onClick,
+                                         View.OnLongClickListener onLongClick,
+                                         boolean startMargin) {
+        if (!enabled) {
+            return null;
+        }
+        TextView button = new TextView(parent.getContext());
+        applyButtonStyle(button, iconName);
+        button.setOnClickListener(onClick);
+        button.setOnLongClickListener(onLongClick);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        if (startMargin) {
+            params.setMarginStart(Dim.dp12);
+        }
+        parent.addView(button, params);
+        return button;
+    }
+
     private void applyButtonStyle(TextView button, @Nullable String iconName) {
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, BUTTON_TEXT_SIZE_SP);
         button.setTextColor(lineTextColor());
@@ -3796,28 +4200,38 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         applyButtonAppearance(button, active);
     }
 
+    private void flashButtonLabel(@Nullable TextView button, @Nullable String text,
+                                  Runnable reset, long durationMs) {
+        setButtonLabel(button, text, true);
+        handler.removeCallbacks(reset);
+        handler.postDelayed(reset, durationMs);
+    }
+
     private static int secondaryTextColor() {
-        // The karaoke highlight needs a color that visibly differs from the sung
-        // (primary) color. Prefer the app's secondary text color, but if that
-        // resource is unavailable fall back to a dimmed primary so the effect is
-        // always visible instead of collapsing to the sung color.
+        ensureColorCache();
+        return cachedSecondaryColor;
+    }
+
+    private static int computeSecondaryColor(int base) {
         int secondary = ResourceUtils.getColor(APP_SECONDARY_TEXT_COLOR, 0);
         if (secondary != 0) {
             return secondary;
         }
-        int base = lineTextColor();
         return Color.argb(0x66, Color.red(base), Color.green(base), Color.blue(base));
     }
 
     private static int cachedLineColor;
     private static int cachedUnsungColor;
+    private static int cachedSecondaryColor;
     private static boolean colorCacheValid;
 
     private static void ensureColorCache() {
         if (!colorCacheValid) {
-            cachedLineColor = computeLineColor();
+            final int base = computeLineColor();
+            cachedLineColor = base;
             cachedUnsungColor = Color.argb(Math.round(UNSUNG_ALPHA * 255f),
-                    Color.red(cachedLineColor), Color.green(cachedLineColor), Color.blue(cachedLineColor));
+                    Color.red(base), Color.green(base), Color.blue(base));
+            cachedSecondaryColor = computeSecondaryColor(base);
             colorCacheValid = true;
         }
     }
@@ -3850,7 +4264,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final int size = Math.min(translated.size(), originals.size());
         for (int i = 0; i < size; i++) {
             String text = translated.get(i);
-            if (!text.isEmpty() && !text.equals(originals.get(i).text())) {
+            if (text != null && !text.isEmpty() && !text.equals(originals.get(i).text())) {
                 return true;
             }
         }
@@ -3899,10 +4313,6 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         void setOffsetMs(int ms) {
             currentOffsetMs = Math.max(-RANGE_MS, Math.min(RANGE_MS, ms));
             invalidate();
-        }
-
-        int getOffsetMs() {
-            return currentOffsetMs;
         }
 
         @Override

@@ -397,10 +397,12 @@ public final class MusixmatchProvider implements LyricsProvider {
         final StringBuilder filtered = new StringBuilder();
         for (String param : query.split("&")) {
             if (!param.toLowerCase().startsWith("utm")) {
+                //noinspection SizeReplaceableByIsEmpty
                 if (filtered.length() > 0) filtered.append('&');
                 filtered.append(param);
             }
         }
+        //noinspection SizeReplaceableByIsEmpty
         return filtered.length() > 0 ? base + "?" + filtered : base;
     }
 
@@ -639,6 +641,7 @@ public final class MusixmatchProvider implements LyricsProvider {
         final StringBuilder sb = new StringBuilder();
         for (int i = 0; i < words.size(); i++) {
             final String t = words.get(i).text();
+            //noinspection SizeReplaceableByIsEmpty
             if (i > 0 && !t.isEmpty() && !t.startsWith(" ")
                     && sb.length() > 0 && sb.charAt(sb.length() - 1) != ' ') {
                 sb.append(' ');

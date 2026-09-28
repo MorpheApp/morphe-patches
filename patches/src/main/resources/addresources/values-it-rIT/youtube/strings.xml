@@ -691,6 +691,8 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_hide_ask_button_title">Nascondi il pulsante Chiedi</string>
   <string name="morphe_hide_channel_profile_button_title">Nascondi il canale e il pulsante Iscriviti</string>
   <string name="morphe_hide_channel_profile_button_summary">Nasconde l\'avatar del canale e il pulsante Iscriviti all\'inizio della barra delle azioni</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Nascondi il pulsante Iscriviti</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Nasconde i pulsanti Iscriviti e Unisciti accanto all\'avatar del canale all\'inizio della barra delle azioni</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Nascondi il pulsante Clip</string>
   <string name="morphe_hide_clip_button_summary">Questa funzione potrebbe non funzionare per alcuni account utente</string>
@@ -1005,6 +1007,7 @@ Layout automotive
   <string name="morphe_tablet_layout_in_player_summary">"Ripristina il layout precedente del player
 
 Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivato, la sovrapposizione \"Altri video\" potrebbe non essere disponibile"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">L\'attivazione di questa opzione potrebbe compromettere alcune funzionalità del layout del player, come la sezione commenti o \'Altri video\' mostrati sotto il player.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Ripristina il vecchio comportamento dei sottotitoli</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Ripristina le vecchie icone del player Shorts</string>
@@ -1096,6 +1099,9 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Il pulsante Indietro esce dal feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Premendo il pulsante Indietro si esce sempre dall\'app invece di scorrere fino all\'inizio del feed</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Nascondi barra di stato</string>
+  <string name="morphe_hide_status_bar_summary">Nasconde la barra di stato di sistema. Scorri verso il basso dal bordo superiore per mostrarla per un attimo</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Sfondo del tema chiaro</string>
   <string name="morphe_theme_color_light_entry_2">Bianco</string>

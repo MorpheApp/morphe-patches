@@ -449,7 +449,7 @@ Ketuk di sini untuk membuka OpenRouter.ai"</string>
   <string name="morphe_vot_openrouter_api_key_title">Kunci API OpenRouter</string>
   <string name="morphe_vot_openrouter_api_key_summary">Kunci API OpenRouter Anda. Buat kunci di OpenRouter.ai &gt; Workspace &gt; API Keys</string>
   <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
-  <string name="morphe_vot_openrouter_model_custom">Khusus</string>
+  <string name="morphe_vot_openrouter_model_custom">Kustom</string>
   <string name="morphe_vot_openrouter_not_configured_title">OpenRouter belum dikonfigurasi</string>
   <string name="morphe_vot_openrouter_not_configured_message">Masukkan kunci API OpenRouter Anda di setelan sebelum memilih penyedia ini</string>
   <string name="morphe_vot_cost_free">Gratis</string>
@@ -691,6 +691,8 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
   <string name="morphe_hide_channel_profile_button_title">Sembunyikan tombol saluran dan tombol berlangganan</string>
   <string name="morphe_hide_channel_profile_button_summary">Menyembunyikan avatar saluran dan tombol berlangganan di awal bilah tindakan</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Sembunyikan tombol Subscribe</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Menyembunyikan tombol Subscribe dan Gabung di samping avatar saluran di awal bilah tindakan</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Sembunyikan tombol Klip</string>
   <string name="morphe_hide_clip_button_summary">Ini mungkin tidak berfungsi untuk beberapa akun pengguna</string>
@@ -1005,6 +1007,7 @@ Tata letak Otomotif
   <string name="morphe_tablet_layout_in_player_summary">"Mengembalikan tata letak pemutar lama
 
 Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Video lainnya' mungkin tidak tersedia"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Mengaktifkan ini dapat merusak beberapa fitur tata letak pemutar, seperti bagian komentar atau \'Video lainnya\' yang ditampilkan di bawah pemutar.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Kembalikan perilaku teks lama</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Kembalikan penyimpanan lama ke daftar putar</string>
@@ -1096,6 +1099,9 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tombol kembali menutup feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Menekan tombol kembali akan selalu menutup aplikasi bukannya menggulir feed ke atas</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Sembunyikan bilah status</string>
+  <string name="morphe_hide_status_bar_summary">Menyembunyikan bilah status sistem. Geser ke bawah dari tepi atas untuk menampilkannya sesaat</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Latar belakang tema terang</string>
   <string name="morphe_theme_color_light_entry_2">Putih</string>
@@ -1124,7 +1130,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_header_logo_entry_1">Bawaan</string>
   <string name="morphe_header_logo_entry_2">Reguler</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
-  <string name="morphe_header_logo_entry_5">Khusus</string>
+  <string name="morphe_header_logo_entry_5">Kustom</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Abaikan pembatasan wilayah gambar</string>
   <string name="morphe_bypass_image_region_restrictions_summary">Mengalihkan permintaan thumbnail ke server alternatif untuk memperbaiki gambar yang hilang di negara yang dibatasi</string>

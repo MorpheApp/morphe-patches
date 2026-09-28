@@ -244,11 +244,8 @@ final class TtmlParser {
                         final String agentId = getAttr(p, NS_TTM, "agent", "ttm:agent");
                         final long pBegin = noTiming ? 0 : parseTime(getAttr(p, null, "begin", "begin"));
                         final long pEnd = noTiming ? 0 : parseTime(getAttr(p, null, "end", "end"));
-                        final boolean hasTimeAttrs = !noTiming && (
-                                getAttr(p, null, "begin", "begin") != null
-                                || getAttr(p, null, "end", "end") != null);
 
-                        final ParsedLine pl = processPElement(p, pBegin, pEnd, hasTimeAttrs);
+                        final ParsedLine pl = processPElement(p, pBegin, pEnd);
 
                         if (pl != null && !pl.text().trim().isEmpty()) {
                             final LyricsLine line = new LyricsLine(
@@ -457,6 +454,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("transliteration".equals(local)) {
@@ -478,6 +478,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("text".equals(local)) {
@@ -507,6 +510,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("span".equals(local)) {
@@ -544,9 +550,12 @@ final class TtmlParser {
             throws XmlPullParserException, IOException {
         int depth = 1;
         int eventCount = 0;
-        while (depth > 0 && eventCount < 20) {
+        while (depth > 0 && eventCount < 100_000) {
             final int event = p.next();
             eventCount++;
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
 
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
@@ -572,6 +581,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("text".equals(local)) {
@@ -614,6 +626,9 @@ final class TtmlParser {
 
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
                 final String local = localName(p.getName());
@@ -775,8 +790,7 @@ final class TtmlParser {
                               @Nullable Map<String, String> bgInlineTranslations,
                               @Nullable Map<String, String> bgInlineRomanizations) {}
 
-    private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd,
-            boolean hasTimeAttrs)
+    private static ParsedLine processPElement(XmlPullParser p, long pBegin, long pEnd)
             throws XmlPullParserException, IOException {
 
         final List<Word> words = new ArrayList<>();
@@ -830,6 +844,9 @@ final class TtmlParser {
 
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
                 final String local = localName(p.getName());
@@ -958,9 +975,11 @@ final class TtmlParser {
                             }
                             StringBuilder rRoma = new StringBuilder();
                             for (RomajiSyllable rs : rubyTags) {
+                                //noinspection SizeReplaceableByIsEmpty
                                 if (rRoma.length() > 0) rRoma.append(' ');
                                 rRoma.append(rs.text());
                             }
+                            //noinspection SizeReplaceableByIsEmpty
                             String romaji = rRoma.length() > 0 ? rRoma.toString() : null;
 
                             fullText.append(baseText);
@@ -1088,10 +1107,6 @@ final class TtmlParser {
             effectiveEnd = LyricsLine.NO_TIME;
         }
 
-        if (words.isEmpty() && hasTimeAttrs && effectiveEnd > effectiveBegin) {
-            words.add(new Word(effectiveBegin, effectiveEnd, lineText, null, false));
-        }
-
         if (!words.isEmpty()) {
             final Word first = words.get(0);
             if (first.text().startsWith(" ")) {
@@ -1107,6 +1122,7 @@ final class TtmlParser {
         }
 
         // Save final BG section
+        //noinspection SizeReplaceableByIsEmpty
         if (inBg && (!bgWords.isEmpty() || bgFullText.length() > 0)) {
             String bgText = normalizeText(bgFullText.toString());
             if (!bgText.trim().isEmpty()) {
@@ -1374,6 +1390,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
             } else if (event == XmlPullParser.END_TAG) {
@@ -1393,6 +1412,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
             } else if (event == XmlPullParser.END_TAG) {

@@ -180,6 +180,10 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_remember_repeat_state_title">Zapamatovat si stav opakování</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Zapamatovat si stav náhodného přehrávání</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Rychlost přehrávání</string>
+  <string name="morphe_music_playback_speed_summary">Rychlost použitá pro všechny skladby. Při 100 % se používá rychlost aplikace, jako je rychlost přehrávání podcastů.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Změnit výšku tónu s rychlostí</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Vypnout přesměrování dislajků</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zabraňuje přeskoku na další skladbu po stisknutí tlačítka \"Dislike\".</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_change_start_page_entry_subscriptions">Odběry</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Skrýt panel filtrů</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Vynutit orientaci na výšku</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Ponechává aplikaci v orientaci na výšku, když je zařízení otočeno</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Změnit barvu minipřehrávače</string>
   <string name="morphe_music_change_miniplayer_color_summary">Barva minipřehrávače odpovídá přehrávači na celou obrazovku</string>
@@ -421,7 +428,12 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_romanize_button_title">Zobrazit tlačítko pro přepis do latinky.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Klepnutím přepínáte romanizaci; dlouhým stisknutím zobrazíte pouze romanizaci. Používá romanizaci poskytovatele, Google Translate nebo API kompatibilní s OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepnete na další návrh textu písně; dlouhým stisknutím vyhledáte text písně podle názvu skladby a interpreta.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Vyhledat text písně</string>
+  <string name="morphe_music_lyrics_search_title_hint">Název skladby</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Interpret</string>
+  <string name="morphe_music_lyrics_search_empty">Zadejte název skladby a interpreta.</string>
+  <string name="morphe_music_lyrics_search_no_providers">Žádný z povolených poskytovatelů nemůže vyhledávat jiné skladby.</string>
   <string name="morphe_music_lyrics_saved">Uloženo</string>
   <string name="morphe_music_lyrics_word_sync_title">Zvýrazňovat synchronizovaná slova nebo slabiky</string>
   <string name="morphe_music_lyrics_word_sync_summary">Upřednostnit texty slovo po slově, pokud jsou k dispozici. Když texty obsahují načasování slov, zvýrazní každé slovo nebo slabiku v rytmu hudby.</string>
@@ -475,6 +487,7 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL koncového bodu API (např. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API klíč (nechte prázdné pro anonymní přístup)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Název modelu (např. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Šablona výzvy (proměnné: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Nastavení AI překladu uloženo</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Nepodařilo se připojit ke koncovému bodu AI. Zkontrolujte prosím svá nastavení.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Nastavení AI překladu resetováno</string>

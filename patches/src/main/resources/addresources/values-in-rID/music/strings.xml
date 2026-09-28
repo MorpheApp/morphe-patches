@@ -180,6 +180,10 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_remember_repeat_state_title">Ingat status ulangi</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Ingat status acak</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Kecepatan pemutaran</string>
+  <string name="morphe_music_playback_speed_summary">Kecepatan yang digunakan untuk semua trek. Pada 100%, kecepatan aplikasi digunakan, seperti kecepatan pemutaran podcast.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Ubah nada sesuai kecepatan</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nonaktifkan pengalihan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Mencegah peralihan ke trek berikutnya saat tombol tidak suka ditekan</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Sembunyikan bilah penyaring</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Paksa orientasi potret</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Menjaga aplikasi tetap pada orientasi potret saat perangkat diputar</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Ubah warna pemutar mini</string>
   <string name="morphe_music_change_miniplayer_color_summary">Menyesuaikan warna pemutar mini dengan pemutar layar penuh</string>
@@ -426,7 +433,12 @@ Langkah-langkah:
   <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Ketuk untuk mengalihkan romanisasi; tekan lama untuk hanya romanisasi. Menggunakan romanisasi penyedia, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk menonaktifkan lirik pihak ketiga sementara waktu dan menampilkan lirik bawaan</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk berpindah ke kandidat lirik berikutnya; tekan lama untuk mencari lirik berdasarkan judul lagu dan artis.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Cari lirik</string>
+  <string name="morphe_music_lyrics_search_title_hint">Judul lagu</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artis</string>
+  <string name="morphe_music_lyrics_search_empty">Masukkan judul lagu dan artis</string>
+  <string name="morphe_music_lyrics_search_no_providers">Tidak ada penyedia yang diaktifkan yang dapat mencari lagu lain.</string>
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
   <string name="morphe_music_lyrics_word_sync_title">Sorot kata atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik kata per kata jika tersedia. Setiap kata atau suku kata akan disorot sesuai irama musik.</string>
@@ -480,6 +492,7 @@ Langkah-langkah:
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (mis. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Kunci API (kosongkan untuk akses anonim)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nama model (mis. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Templat prompt (variabel: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Pengaturan terjemahan AI disimpan</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Tidak dapat terhubung ke titik akhir AI. Periksa pengaturan Anda.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Pengaturan terjemahan AI direset</string>

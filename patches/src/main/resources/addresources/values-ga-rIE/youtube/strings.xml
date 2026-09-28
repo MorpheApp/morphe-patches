@@ -399,8 +399,8 @@ Tá tuairiscí poiblí agus déantar athbhreithniú orthu sula gcuirtear cainéa
   <string name="morphe_channel_search_no_results">Níor aimsíodh aon rud ar an gcainéal seo</string>
   <string name="morphe_channel_search_failed">Níorbh fhéidir an cainéal seo a chuardach</string>
   <string name="morphe_channel_search_sort_relevance">Ábharthacht</string>
-  <string name="morphe_channel_search_sort_most_viewed">Is mó amharc</string>
-  <string name="morphe_channel_search_sort_least_viewed">Is lú amharc</string>
+  <string name="morphe_channel_search_sort_most_viewed">Is mó a breathnaíodh</string>
+  <string name="morphe_channel_search_sort_least_viewed">Is lú a breathnaíodh</string>
   <string name="morphe_channel_search_sort_newest">Is déanaí</string>
   <string name="morphe_channel_search_sort_oldest">Is sine</string>
   <string name="morphe_channel_search_sort_shortest">Is giorra</string>
@@ -691,6 +691,8 @@ Chun é seo a shocrú, cuir 'Spoof video streams' ar siúl agus athraigh an 'Cli
   <string name="morphe_hide_ask_button_title">Folaigh an cnaipe Iarr</string>
   <string name="morphe_hide_channel_profile_button_title">Folaigh an cainéal agus an cnaipe Liostáil</string>
   <string name="morphe_hide_channel_profile_button_summary">Folaíonn sé abhatár an chainéil agus an cnaipe Liostáil ag tús an bharra gníomhaíochta.</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Folaigh an cnaipe Liostála</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Folaíonn sé na cnaipí Liostáil agus Bí Páirteach in aice le híomhá an chainéil ag tús an bharra gníomhaíochta</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Cnaipe Folaigh an Gearrthóg</string>
   <string name="morphe_hide_clip_button_summary">B’fhéidir nach n-oibreoidh sé seo do roinnt cuntas úsáideora</string>
@@ -1005,6 +1007,7 @@ Leagan amach gluaisteán
   <string name="morphe_tablet_layout_in_player_summary">"Athchóiríonn sé leagan amach an tsean-imreoir
 
 Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múchta, b'fhéidir nach mbeidh forleagan 'Tuilleadh físeáin' ar fáil"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Má chuirtear an ghné seo ar siúl, d\'fhéadfadh sé roinnt gnéithe den leagan amach atá ag an seinnteoir a bhriseadh, mar shampla rannóg na dtráchtanna nó \'Tuilleadh físeán\' a thaispeántar thíos faoin seinnteoir.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Athchóirigh iompar fotheidil d\'aois</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Athchóirigh an sean-shábháil chuig an seinmliosta</string>
@@ -1096,6 +1099,9 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Fágann an cnaipe cúil as an bhfotha</string>
   <string name="morphe_back_button_always_exits_feed_summary">Má bhrúnn tú ar ais, fágtar an aip i gcónaí seachas scrollaigh go barr an fhotha</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Folaigh an barra stádais</string>
+  <string name="morphe_hide_status_bar_summary">Folaíonn sé barra stádais an chórais. Svaip anuas ón imeall uachtarach chun é a thaispeáint ar feadh tamaill</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Cúlra téama éadrom</string>
   <string name="morphe_theme_color_light_entry_2">Bán</string>

@@ -180,6 +180,8 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <string name="morphe_music_remember_repeat_state_title">Zapamti stanje ponavljanja</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Zapamti stanje miješanja</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Brzina reprodukcije</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Onemogući preusmjeravanje kod ne sviđa mi se</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Sprečava preskakanje na sljedeću pjesmu kada se pritisne tipka Ne sviđa mi se</string>
@@ -261,6 +263,9 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <string name="morphe_change_start_page_entry_subscriptions">Pretplate</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Sakrij traku filtra</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Prisili portretnu orijentaciju</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Zadržava aplikaciju u portretnoj orijentaciji kada se uređaj rotira</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Promijeni boju miniplayera</string>
   <string name="morphe_music_change_miniplayer_color_summary">Boja miniplayera odgovara boji playera preko cijelog zaslona</string>
@@ -361,8 +366,22 @@ Kako biste osigurali sinkronizaciju scrobblinga tijekom reprodukcije u pozadini,
   <string name="morphe_music_lyrics_keep_screen_on_summary">Sprječava isključivanje zaslona dok je ploča stihova otvorena</string>
   <string name="morphe_music_lyrics_section_service_title">Usluga stihova</string>
   <string name="morphe_music_lyrics_section_overlay_title">Pregač</string>
+  <string name="morphe_music_lyrics_section_sync_title">Sinkronizacija</string>
   <string name="morphe_music_lyrics_section_about_title">O aplikaciji</string>
+  <string name="morphe_music_lyrics_source_all_disabled">Svi pružatelji usluga onemogućeni — ugrađeni tekstovi pjesama i tekstovi ugrađeni u datoteku</string>
+  <string name="morphe_music_lyrics_source_reset_title">Ponovno postaviti redoslijed pružatelja?</string>
+  <string name="morphe_music_lyrics_source_reset_message">Vrati pružatelje na zadani redoslijed prioriteta</string>
+  <string name="morphe_music_token_dialog_get_token">Pribavi token</string>
   <string name="morphe_music_apple_music_token_title">Apple Music Media-user-token</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"Zalijepite kolačić „media-user-token” s web-mjesta music.apple.com
+
+Koraci:
+1. Prijavite se na music.apple.com kao registrirani korisnik
+2. Otvorite DevTools → Application → Cookies → music.apple.com
+3. Kopirajte vrijednost za „media-user-token”"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token spremljen</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token izbrisan</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: nevažeći media-user-token — molimo provjerite i pokušajte ponovno</string>
   <string name="morphe_music_spotify_token_title">Spotify SpDc</string>
   <string name="morphe_music_spotify_token_dialog_instruction">"Zalijepi kolačić sp_dc sa Spotifyja.
 
@@ -412,7 +431,7 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikaži gumb za romanizaciju</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Dodirnite za uključivanje/isključivanje romanizacije; dugi pritisak za samo romanizaciju. Koristi romanizaciju pružatelja usluge, Google Translate ili API kompatibilan s OpenAI-jem.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Prikaži gumb za osvježavanje</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Dodirni za prebacivanje na sljedeći kandidat teksta pjesme; dugo pritisni za privremeno isključivanje tekstova pjesama trećih strana i prikaz ugrađenih tekstova pjesama.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Dodirnite za prebacivanje na sljedećeg kandidata za tekst pjesme; dugo pritisnite za pretraživanje tekstova pjesama po naslovu pjesme i izvođaču.</string>
   <string name="morphe_music_lyrics_saved">Spremljeno</string>
   <string name="morphe_music_lyrics_word_sync_title">Istakni sinkronizirane riječi ili slogove</string>
   <string name="morphe_music_lyrics_word_sync_summary">Daj prednost tekstovima pjesama riječ po riječ kada su dostupni. Kada tekstovi nose vremenske oznake riječi, istakni svaku riječ ili slog u ritmu s glazbom.</string>

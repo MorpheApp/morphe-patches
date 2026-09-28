@@ -178,6 +178,10 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_remember_repeat_state_title">Запомнить состояние повтора</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Запомнить состояние перемешивания</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Скорость воспроизведения</string>
+  <string name="morphe_music_playback_speed_summary">Скорость, используемая для всех треков. При значении 100 % используется скорость приложения, например скорость воспроизведения подкастов</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Изменять высоту тона вместе со скоростью</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Отключить перенаправление дизлайков</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Предотвращает переход к следующему треку при нажатии кнопки \"Не нравится\"</string>
@@ -259,6 +263,9 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_change_start_page_entry_subscriptions">Подписки</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Скрыть панель фильтров</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Принудительная книжная ориентация</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Сохраняет приложение в книжной ориентации при повороте устройства</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Изменить цвет мини-плеера</string>
   <string name="morphe_music_change_miniplayer_color_summary">Цвет мини-плеера соответствует полноэкранному проигрывателю</string>
@@ -419,7 +426,12 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_show_romanize_button_title">Показывать кнопку романизации</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Нажмите, чтобы переключить романизацию; долгое нажатие — только романизация. Использует романизацию провайдера, Google Translate или OpenAI-совместимый API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показывать кнопку «Обновить»</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Сохранено</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Нажмите, чтобы переключиться на следующий вариант текста; долгое нажатие — поиск текста по названию песни и исполнителю</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Поиск текста песни</string>
+  <string name="morphe_music_lyrics_search_title_hint">Название песни</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Исполнитель</string>
+  <string name="morphe_music_lyrics_search_empty">Введите название песни и исполнителя</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ни один из включённых провайдеров не может искать другие песни</string>
   <string name="morphe_music_lyrics_saved">Сохранено</string>
   <string name="morphe_music_lyrics_word_sync_title">Подсвечивать синхронизированные слова по мере воспроизведения, если доступно</string>
   <string name="morphe_music_lyrics_word_sync_summary">Отдавать приоритет посекундному тексту, когда он доступен. Когда в тексте есть тайминги слов, подсвечивать каждое слово или слог в такт музыке.</string>
@@ -473,6 +485,7 @@ YouTube Music версии 8.x — плавный переход работае�
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL конечной точки API (например, https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Ключ API (оставьте пустым для анонимного доступа)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Название модели (например, openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Шаблон промпта (переменные: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Настройки ИИ-перевода сохранены</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Не удалось подключиться к конечной точке ИИ. Проверьте настройки.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Настройки ИИ-перевода сброшены</string>

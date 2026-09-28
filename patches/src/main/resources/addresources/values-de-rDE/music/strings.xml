@@ -180,6 +180,10 @@ YouTube Music 8.x – Nahtlose Wiedergabe funktioniert erst ab Version 9.x."</st
   <string name="morphe_music_remember_repeat_state_title">Zustand der Wiederholung merken</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Zustand der zufälligen Wiedergabe merken</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Wiedergabegeschwindigkeit</string>
+  <string name="morphe_music_playback_speed_summary">Geschwindigkeit für alle Titel. Bei 100 % wird die App-Geschwindigkeit verwendet, z. B. die Wiedergabegeschwindigkeit von Podcasts.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Tonhöhe mit der Geschwindigkeit ändern</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktivieren Sie die Weiterleitung von Nicht-Gefällt-mir-Angaben</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Verhindert das automatische Überspringen zum nächsten Titel, wenn die Taste \"Nicht gefallen\" gedrückt wird</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x – Nahtlose Wiedergabe funktioniert erst ab Version 9.x."</st
   <string name="morphe_change_start_page_entry_subscriptions">Abonnements</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Filterleiste ausblenden</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Hochformat erzwingen</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Behält die App im Hochformat bei, wenn das Gerät gedreht wird</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Farbe des Miniplayers ändern</string>
   <string name="morphe_music_change_miniplayer_color_summary">Miniplayer-Farbe entspricht dem Vollbild-Player</string>
@@ -421,7 +428,12 @@ Erforderliche Cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_romanize_button_title">Schaltfläche „Romanisieren“ anzeigen.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tippen, um die Romanisierung umzuschalten; langes Drücken nur für die Romanisierung. Verwendet die Romanisierung des Anbieters, Google Translate oder eine OpenAI-kompatible API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Schaltfläche „Aktualisieren“ anzeigen</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Tippe, um zum nächsten Songtextkandidaten zu wechseln; drücke lange, um zu speichern.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tippen, um zum nächsten Songtext-Kandidaten zu wechseln; langes Drücken, um anhand von Songtitel und Interpret nach Songtexten zu suchen</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Songtexte suchen</string>
+  <string name="morphe_music_lyrics_search_title_hint">Songtitel</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Interpret</string>
+  <string name="morphe_music_lyrics_search_empty">Songtitel und Interpret eingeben</string>
+  <string name="morphe_music_lyrics_search_no_providers">Keiner der aktivierten Anbieter kann nach anderen Songs suchen</string>
   <string name="morphe_music_lyrics_saved">Gespeichert</string>
   <string name="morphe_music_lyrics_word_sync_title">Hebe synchronisierte Wörter oder Silben hervor.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Bevorzuge wortweise Songtexte, wenn verfügbar. Wenn Songtexte Wort-Timing enthalten, hebt dies jedes Wort oder jede Silbe synchron zur Musik hervor.</string>
@@ -475,6 +487,7 @@ Erforderliche Cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-Endpunkt-URL (z. B. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-Schlüssel (für anonymen Zugriff leer lassen)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modellname (z. B. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Prompt-Vorlage (Variablen: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">KI-Übersetzungseinstellungen gespeichert</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Verbindung zum KI-Endpunkt fehlgeschlagen. Bitte überprüfen Sie Ihre Einstellungen.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">KI-Übersetzungseinstellungen zurückgesetzt</string>

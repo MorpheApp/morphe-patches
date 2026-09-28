@@ -691,6 +691,8 @@ Promene uključuju:
   <string name="morphe_hide_ask_button_title">Саскриј дугме „Питај”</string>
   <string name="morphe_hide_channel_profile_button_title">Сакриј канал и дугме Претплати се</string>
   <string name="morphe_hide_channel_profile_button_summary">Сакрива аватар канала и дугме Претплати се на почетку акционе траке</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Сакриј дугме „Запрати”</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Сакрива дугмад „Претплати се” и „Придружи се” поред аватара канала на почетку траке са акцијама</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Саскриј дугме „Исечак”</string>
   <string name="morphe_hide_clip_button_summary">Ово можда неће радити за неке корисничке налоге</string>
@@ -988,6 +990,7 @@ Promene uključuju:
   <string name="morphe_tablet_layout_in_player_summary">"Враћа стари изглед плејера
 
 Ограничење: Ако је „Враћање старе траке акција видеа“ искључено, преклапање „Више видеа“ можда неће бити доступно"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Омогућавање овога може да поремети неке функције распореда плејера, као што су одељак са коментарима или „Више видеа“ приказани испод плејера.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Врати старо понашање титлова</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Враћа старе иконице плејера</string>
@@ -1079,6 +1082,9 @@ Promene uključuju:
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Дугме назад излази из фида</string>
   <string name="morphe_back_button_always_exits_feed_summary">Притискање назад увек излази из апликације уместо да се помера на врх фида</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Сакриј статусну траку</string>
+  <string name="morphe_hide_status_bar_summary">Сакрива системску статусну траку. Превуците прстом надоле са горње ивице да бисте је накратко приказали</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Позадина светле теме</string>
   <string name="morphe_theme_color_light_entry_2">Бела</string>

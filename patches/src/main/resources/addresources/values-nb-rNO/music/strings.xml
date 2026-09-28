@@ -180,6 +180,10 @@ YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
   <string name="morphe_music_remember_repeat_state_title">Husk gjenta-status</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Husk blandings-status</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Avspillingshastighet</string>
+  <string name="morphe_music_playback_speed_summary">Hastighet som brukes for alle spor. Ved 100 % brukes appens hastighet, for eksempel podcastavspillingshastigheten</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Endre tonehøyde med hastigheten</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiver omdirigering av misliker</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Hindrer hopping til neste spor når misliker-knappen trykkes</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnementer</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Skjul filterlinjen</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Tving portrettorientering</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Beholder appen i portrettorientering når enheten roteres.</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Endre minispillerfarge</string>
   <string name="morphe_music_change_miniplayer_color_summary">Matcher miniplayer-fargen til fullskjermspilleren</string>
@@ -426,7 +433,12 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_show_romanize_button_title">Vis romaniseringsknappen</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Trykk for å slå romaniseringen av/på; trykk og hold for kun romanisering. Bruker romanisering fra leverandøren, Google Translate eller et OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vis oppdater-knappen</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Trykk for å bytte til neste tekstkandidat […] \"Lagret\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Trykk for å bytte til neste tekstkandidat; trykk og hold for å søke etter tekst ved hjelp av sangtittel og artist</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Søk etter sangtekst</string>
+  <string name="morphe_music_lyrics_search_title_hint">Sangtittel</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artistnavn</string>
+  <string name="morphe_music_lyrics_search_empty">Skriv inn en sangtittel og en artist</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ingen av de aktiverte leverandørene kan søke etter andre sanger</string>
   <string name="morphe_music_lyrics_saved">Lagret</string>
   <string name="morphe_music_lyrics_word_sync_title">Marker synkroniserte ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioriter ord-for-ord-tekster når de er tilgjengelige. Når teksten har tidsstempling for ord, vises hvert ord eller hver stavelse synkronisert med musikken</string>
@@ -480,6 +492,7 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-endepunkt-URL (f.eks. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-nøkkel (la stå tom for anonym tilgang)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modellnavn (f.eks. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Promptmal (variabler: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI-oversettelsesinnstillinger lagret</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Kunne ikke koble til AI-endepunktet. Sjekk innstillingene dine.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI-oversettelsesinnstillinger tilbakestilt</string>

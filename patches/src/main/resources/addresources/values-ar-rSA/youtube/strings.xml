@@ -695,6 +695,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_ask_button_title">إخفاء زر طرح سؤال</string>
   <string name="morphe_hide_channel_profile_button_title">إخفاء القناة وزر اشتراك</string>
   <string name="morphe_hide_channel_profile_button_summary">يخفي صورة القناة وزر اشتراك في بداية شريط الإجراءات</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">إخفاء زر اشتراك</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">يخفي زري اشتراك والانضمام بجوار الصورة الرمزية للقناة في بداية شريط الإجراءات</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">إخفاء زر المقطع</string>
   <string name="morphe_hide_clip_button_summary">قد لا يعمل هذا الإعداد لبعض حسابات المستخدمين</string>
@@ -1010,6 +1012,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_tablet_layout_in_player_summary">"استعادة تخطيط المشغل القديم
 
 القيود: إذا تم إيقاف تشغيل 'استعادة شريط إجراءات الفيديو القديم'، فقد لا يتوفر عنصر 'المزيد من الفيديوهات'"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">قد يؤدي تمكين هذا إلى تعطيل بعض ميزات تخطيط المشغل، مثل قسم التعليقات أو \'مزيد من الفيديوهات\' المعروضة أسفل المشغل.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - استعادة سلوك الترجمة القديم</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - استعادة الحفظ القديم إلى قائمة التشغيل</string>
@@ -1101,6 +1104,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">زر الرجوع يخرج من الخلاصة</string>
   <string name="morphe_back_button_always_exits_feed_summary">الضغط على زر الرجوع يؤدي دائمًا إلى الخروج من التطبيق بدلًا من التمرير إلى أعلى الخلاصة</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">إخفاء شريط الحالة</string>
+  <string name="morphe_hide_status_bar_summary">يخفي شريط حالة النظام. اسحب لأسفل من الحافة العلوية لإظهاره للحظة</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">خلفية المظهر الفاتح</string>
   <string name="morphe_theme_color_light_entry_2">أبيض</string>

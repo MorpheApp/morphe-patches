@@ -180,6 +180,10 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_remember_repeat_state_title">记住重复状态</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">记住随机播放状态</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">播放速度</string>
+  <string name="morphe_music_playback_speed_summary">用于所有曲目的速度。在 100% 时，使用应用速度，例如播客播放速度。</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">随速度改变音调</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">禁用不喜欢重定向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_change_start_page_entry_subscriptions">订阅</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">隐藏过滤栏</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">强制竖屏方向</string>
+  <string name="morphe_music_force_portrait_orientation_summary">当设备旋转时，保持应用为竖屏方向</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">更改迷你播放器颜色</string>
   <string name="morphe_music_change_miniplayer_color_summary">迷你播放器颜色与全屏播放器一致</string>
@@ -426,7 +433,12 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_show_romanize_button_title">显示音译按钮</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">点按以切换罗马音；长按仅显示罗马音。使用提供方罗马音、Google 翻译或兼容 OpenAI 的 API</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">显示刷新按钮</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">点按可切换至下一个歌词候选项；长按可暂时禁用第三方歌词并显示原生歌词</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">点按可切换到下一个歌词候选；长按可按歌曲标题和歌手搜索歌词</string>
+  <string name="morphe_music_lyrics_search_dialog_title">搜索歌词</string>
+  <string name="morphe_music_lyrics_search_title_hint">歌曲标题</string>
+  <string name="morphe_music_lyrics_search_artist_hint">歌手</string>
+  <string name="morphe_music_lyrics_search_empty">输入歌曲标题和歌手</string>
+  <string name="morphe_music_lyrics_search_no_providers">已启用的提供商均无法搜索其他歌曲</string>
   <string name="morphe_music_lyrics_saved">已保存</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
   <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
@@ -480,6 +492,7 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端点 URL（例如 https://text.pollinations.ai/openai）</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API 密钥（留空以匿名访问）</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">模型名称（例如 openai-fast、gpt-4o-mini）</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">提示模板（变量：{language}、{task}、{title}、{artist}、{count}、{lines}）</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI 翻译设置已保存</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">无法连接到 AI 端点。请检查您的设置。</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI 翻译设置已重置</string>

@@ -691,6 +691,8 @@ För att åtgärda detta, aktivera 'Spoofa videoströmmar' och ändra 'Standardk
   <string name="morphe_hide_ask_button_title">Dölj knappen Fråga</string>
   <string name="morphe_hide_channel_profile_button_title">Dölj kanal och prenumerera-knappen</string>
   <string name="morphe_hide_channel_profile_button_summary">Döljer kanalavataren och prenumerera-knappen i början av åtgärdsfältet</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Dölj knappen Prenumerera</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Döljer Prenumerera- och Gå med-knapparna bredvid kanalens avatar i början av åtgärdsfältet</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Dölj knappen Klipp</string>
   <string name="morphe_hide_clip_button_summary">Detta kanske inte fungerar för vissa användarkonton</string>
@@ -1005,6 +1007,7 @@ Billayout
   <string name="morphe_tablet_layout_in_player_summary">"Återställer den gamla spelarlayouten
 
 Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan överlägget 'Fler videor' inte vara tillgängligt"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Att aktivera detta kan bryta vissa layoutfunktioner i spelaren, till exempel kommentarssektionen eller \'Fler videor\' som visas nedanför spelaren.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Återställ det gamla undertextbeteendet</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 – Återställ gamla Spara i spellista</string>
@@ -1096,6 +1099,9 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tillbaka-knappen avslutar flödet</string>
   <string name="morphe_back_button_always_exits_feed_summary">Att trycka på Tillbaka avslutar alltid appen istället för att rulla till toppen av flödet</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Dölj statusfältet</string>
+  <string name="morphe_hide_status_bar_summary">Döljer systemets statusfält. Svep nedåt från överkanten för att visa det en stund</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Bakgrundsfärg för ljust tema</string>
   <string name="morphe_theme_color_light_entry_2">Vit</string>

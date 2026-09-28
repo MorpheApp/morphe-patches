@@ -53,6 +53,8 @@ public final class SpotifyProvider implements LyricsProvider {
     private static final int SEARCH_RETRIES = 2;
     private static final int SECRET_FETCH_RETRIES = 2;
 
+    private static final long MAX_RETRY_AFTER_MS = 30_000;
+
     private static final String USER_AGENT =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                     + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
@@ -148,7 +150,7 @@ public final class SpotifyProvider implements LyricsProvider {
         for (int attempt = 0; attempt <= SEARCH_RETRIES; attempt++) {
             if (retryAfterMs > 0) {
                 try {
-                    Thread.sleep(retryAfterMs);
+                    Thread.sleep(Math.min(retryAfterMs, MAX_RETRY_AFTER_MS));
                 } catch (InterruptedException ex) {
                     Logger.printDebug(() -> "Interrupted during search retry sleep", ex);
                     Thread.currentThread().interrupt();
@@ -345,24 +347,6 @@ public final class SpotifyProvider implements LyricsProvider {
         return new Lyrics(lines, providerName, true, null, null, null, null, rawJson, "sp.json", sourceUrl);
     }
 
-    private static List<Word> distributeWords(String[] tokens, long startMs, long durationMs) {
-        final List<Word> words = new ArrayList<>(tokens.length);
-        if (tokens.length == 0) {
-            return words;
-        }
-
-        final long perWord = durationMs / tokens.length;
-        long cursor = startMs;
-
-        for (int j = 0; j < tokens.length; j++) {
-            final long wordEnd = cursor + perWord;
-            final boolean spaceAfter = j < tokens.length - 1;
-            words.add(new Word(cursor, wordEnd, tokens[j], null, spaceAfter));
-            cursor = wordEnd;
-        }
-        return words;
-    }
-
     @Nullable
     private Lyrics parseSyllableLines(JSONArray linesArr, String providerName,
                                        String rawJson, @Nullable String sourceUrl) {
@@ -385,14 +369,7 @@ public final class SpotifyProvider implements LyricsProvider {
             if (syllablesArr != null && syllablesArr.length() > 0) {
                 words = parseSyllables(syllablesArr, text);
             } else {
-                final long nextStartMs;
-                if (i + 1 < linesArr.length()) {
-                    nextStartMs = peekNextStartTime(linesArr, i + 1, startTimeMs + 2000);
-                } else {
-                    nextStartMs = startTimeMs + 2000;
-                }
-                final long lineDuration = Math.max(nextStartMs - startTimeMs, 100);
-                words = distributeWords(text.split("\\s+"), startTimeMs, lineDuration);
+                words = List.of();
             }
 
             lines.add(new LyricsLine(startTimeMs, text, words));
@@ -442,17 +419,6 @@ public final class SpotifyProvider implements LyricsProvider {
             Logger.printDebug(() -> "Could not parse start time in Spotify lyrics line", ex);
             return LyricsLine.NO_TIME;
         }
-    }
-
-    private static long peekNextStartTime(JSONArray linesArr, int index, long fallback) {
-        JSONObject next = linesArr.optJSONObject(index);
-        if (next != null) {
-            final long nextStart = parseStartTimeMs(next);
-            if (nextStart > 0) {
-                return nextStart;
-            }
-        }
-        return fallback;
     }
 
     @Nullable
@@ -793,7 +759,10 @@ public final class SpotifyProvider implements LyricsProvider {
         final String retryAfter = connection.getHeaderField("Retry-After");
         if (retryAfter != null) {
             try {
-                return Long.parseLong(retryAfter) * 1000;
+                final long seconds = Long.parseLong(retryAfter.trim());
+                if (seconds > 0) {
+                    return Math.min(seconds, MAX_RETRY_AFTER_MS / 1000) * 1000;
+                }
             } catch (NumberFormatException ex) {
                 Logger.printDebug(() -> "Could not parse Retry-After header", ex);
             }

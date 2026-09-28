@@ -8,9 +8,12 @@ package app.morphe.extension.youtube.patches;
 
 import android.net.Uri;
 
+import com.google.protobuf.MessageLite;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
@@ -25,6 +28,14 @@ public class RestoreOldVideoActionBarPatch {
         // Methods are added during patching.
         void patch_setColdConfigData(String coldConfigData);
         void patch_setColdHashData(String coldHashData);
+    }
+
+    /**
+     * Interface to use obfuscated methods.
+     */
+    public interface RequestInterface {
+        // Method is added during patching.
+        String patch_getEndpoint();
     }
 
     private static final boolean FIX_VIDEO_ACTION_BAR = Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get()
@@ -43,6 +54,18 @@ public class RestoreOldVideoActionBarPatch {
     private static final String COLD_HASH_DATA_HEADER = "X-Youtube-Cold-Hash-Data";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
     private static boolean needFetch = true;
+    /**
+     * Field number of the continuation token in the body of 'next' requests.
+     * Watch page requests have no continuation. Comment requests do.
+     */
+    private static final int NEXT_REQUEST_CONTINUATION_FIELD = 8;
+    /**
+     * Time when the body of a watch page 'next' request was last built, or zero if none is pending.
+     * Comment requests also use the 'next' endpoint, and overriding their config
+     * prevents newly posted comments from showing until the comment sorting is changed.
+     */
+    private static volatile long watchNextRequestTime;
+    private static final long WATCH_NEXT_REQUEST_TIMEOUT_MILLISECONDS = 10_000;
 
     private static void fetchRequestIfNeeded(String url, Map<String, String> requestHeaders) {
         if (Settings.INNERTUBE_COLD_CONFIG_DATA.isSetToDefault() || Settings.INNERTUBE_COLD_HASH_DATA.isSetToDefault()) {
@@ -89,7 +112,7 @@ public class RestoreOldVideoActionBarPatch {
 
             Uri uri = Uri.parse(url);
             String path = uri.getPath();
-            if (path != null && path.contains("next") && requestHeaders != null) {
+            if (path != null && path.contains("next") && requestHeaders != null && isWatchNextRequest()) {
                 if (requestHeaders.get(COLD_CONFIG_DATA_HEADER) != null) {
                     String coldConfigData = Settings.INNERTUBE_COLD_CONFIG_DATA.get();
                     if (Utils.isNotEmpty(coldConfigData)) {
@@ -106,6 +129,90 @@ public class RestoreOldVideoActionBarPatch {
         }
 
         return requestHeaders;
+    }
+
+    /**
+     * Whether a 'next' request is for the watch page, and not for comments.
+     */
+    private static boolean isWatchNextRequest() {
+        final long requestTime = watchNextRequestTime;
+        watchNextRequestTime = 0;
+        return requestTime != 0
+                && System.currentTimeMillis() - requestTime < WATCH_NEXT_REQUEST_TIMEOUT_MILLISECONDS;
+    }
+
+    /**
+     * Injection point.
+     * Called when the body of an InnerTube request is built.
+     */
+    public static void onBuildRequestBody(MessageLite body, RequestInterface request) {
+        try {
+            if (FIX_VIDEO_ACTION_BAR && body != null && request != null
+                    && "next".equals(request.patch_getEndpoint())
+                    && !hasTopLevelField(body.toByteArray(), NEXT_REQUEST_CONTINUATION_FIELD)) {
+                watchNextRequestTime = System.currentTimeMillis();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onBuildRequestBody failure", ex);
+        }
+    }
+
+    /**
+     * @return If the serialized protocol buffer message has a top level field with the given number.
+     *         If the message cannot be read, true is returned.
+     */
+    private static boolean hasTopLevelField(byte[] message, int fieldNumber) {
+        int position = 0;
+        final int end = message.length;
+        while (position < end) {
+            long tag = 0;
+            int shift = 0;
+            int value;
+            do {
+                // A varint is at most 10 bytes; a larger shift would wrap (shift & 63) and corrupt the tag.
+                if (position >= end || shift >= 64) return true;
+                value = message[position++] & 0xFF;
+                tag |= (long) (value & 0x7F) << shift;
+                shift += 7;
+            } while ((value & 0x80) != 0);
+
+            if ((tag >>> 3) == fieldNumber) return true;
+
+            switch ((int) (tag & 0x7)) {
+                case 0: // Varint.
+                    do {
+                        if (position >= end) return true;
+                    } while ((message[position++] & 0x80) != 0);
+                    break;
+                case 1: // 64-bit.
+                    // Truncated message: subtracting avoids int overflow and stops position running past the end.
+                    if (end - position < 8) return true;
+                    position += 8;
+                    break;
+                case 2: // Length delimited.
+                    long length = 0;
+                    shift = 0;
+                    do {
+                        // Same 10-byte varint limit as the tag loop above.
+                        if (position >= end || shift >= 64) return true;
+                        value = message[position++] & 0xFF;
+                        length |= (long) (value & 0x7F) << shift;
+                        shift += 7;
+                    } while ((value & 0x80) != 0);
+                    // A 10-byte varint can set bit 63, making length negative and moving position backwards.
+                    if (length < 0 || length > end - position) return true;
+                    position += (int) length;
+                    break;
+                case 5: // 32-bit.
+                    // Truncated message: same overflow-safe check as the 64-bit case.
+                    if (end - position < 4) return true;
+                    position += 4;
+                    break;
+                default: // Groups (3, 4) and invalid wire types (6, 7): treat as unreadable.
+                    return true;
+            }
+        }
+        return false;
     }
 
     /**

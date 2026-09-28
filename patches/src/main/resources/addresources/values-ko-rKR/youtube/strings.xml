@@ -398,12 +398,12 @@ Second \"item\" text"</string>
   <string name="morphe_channel_search_results">채널 검색 결과</string>
   <string name="morphe_channel_search_no_results">이 채널에서 아무것도 찾을 수 없습니다</string>
   <string name="morphe_channel_search_failed">이 채널을 검색할 수 없습니다</string>
-  <string name="morphe_channel_search_sort_relevance">관련순</string>
-  <string name="morphe_channel_search_sort_most_viewed">조회순</string>
-  <string name="morphe_channel_search_sort_least_viewed">조회 적은 순</string>
+  <string name="morphe_channel_search_sort_relevance">관련성순</string>
+  <string name="morphe_channel_search_sort_most_viewed">조회수 높은순</string>
+  <string name="morphe_channel_search_sort_least_viewed">조회수 낮은순</string>
   <string name="morphe_channel_search_sort_newest">최신순</string>
   <string name="morphe_channel_search_sort_oldest">오래된순</string>
-  <string name="morphe_channel_search_sort_shortest">최단</string>
+  <string name="morphe_channel_search_sort_shortest">짧은순</string>
   <string name="morphe_channel_search_sort_longest">긴순</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
@@ -693,6 +693,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_ask_button_title">질문하기 버튼 숨기기</string>
   <string name="morphe_hide_channel_profile_button_title">채널 및 구독 버튼 숨기기</string>
   <string name="morphe_hide_channel_profile_button_summary">작업 버튼 바의 시작 부분에서 채널 아바타와 구독 버튼을 숨깁니다</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">구독 버튼 숨기기</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">작업 버튼바 시작 부분의 채널 아바타 옆에 있는 구독 및 가입 버튼을 숨깁니다</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">클립 버튼 숨기기</string>
   <string name="morphe_hide_clip_button_summary">일부 사용자 계정에서는 작동하지 않을 수 있습니다</string>
@@ -1007,6 +1009,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_tablet_layout_in_player_summary">"이전 플레이어 레이아웃을 복원합니다
 
 제한 사항: '이전 동영상 작업 버튼바 복원하기'를 비활성화하면, '동영상 더보기' 오버레이를 사용할 수 없을 수 있습니다"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">이 기능을 활성화하면 플레이어 아래에 표시되는 댓글 섹션이나 \'동영상 더보기\'와 같은 일부 플레이어 레이아웃 기능이 작동하지 않을 수 있습니다</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 이전 자막 동작을 복원합니다</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 이전 \'재생목록에 저장\'을 복원합니다</string>
@@ -1098,6 +1101,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">뒤로가기 버튼으로 피드 나가기</string>
   <string name="morphe_back_button_always_exits_feed_summary">뒤로가기 버튼을 탭하면 피드 상단으로 이동하지 않고 항상 앱이 종료됩니다</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">상태바 숨기기</string>
+  <string name="morphe_hide_status_bar_summary">시스템 상태바 숨깁니다. 상단 가장자리에서 아래로 스와이프하면 잠시 표시됩니다</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">밝은 테마 배경 색상</string>
   <string name="morphe_theme_color_light_entry_2">하얀색</string>
@@ -1210,8 +1216,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">동영상 화질 버튼 표시하기</string>
   <string name="morphe_video_quality_dialog_button_summary">버튼을 길게 탭하여 동영상 화질을 기본값으로 초기화할 수 있습니다</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">품질 버튼에 해상도 표시</string>
-  <string name="morphe_video_quality_dialog_button_resolution_summary">FHD와 같은 레이블 대신 1080과 같은 해상도를 표시합니다.</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">화질 버튼에 해상도 표시</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">FHD와 같은 라벨 대신 1080과 같이 해상도 수치를 표시합니다</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">사용자 정의 동영상 재생 속도 활성화하기</string>
   <string name="morphe_restore_old_speed_menu_title">이전 동영상 재생 속도 메뉴 복원하기</string>
@@ -1304,7 +1310,7 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_player_icon_style_title">플레이어 아이콘 스타일</string>
   <string name="morphe_player_icon_style_entry_auto">자동</string>
   <string name="morphe_player_icon_style_entry_default">기본값</string>
-  <string name="morphe_player_icon_style_entry_regular">가는</string>
+  <string name="morphe_player_icon_style_entry_regular">얇은</string>
   <string name="morphe_player_icon_style_entry_bold">굵은</string>
   <string name="morphe_shorts_icon_style_title">Shorts 아이콘 스타일</string>
 </resources>

@@ -691,6 +691,8 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
   <string name="morphe_hide_ask_button_title">Skrýt tlačítko Zeptejte se</string>
   <string name="morphe_hide_channel_profile_button_title">Skrýt kanál a tlačítko Odebírat</string>
   <string name="morphe_hide_channel_profile_button_summary">Skryje avatar kanálu a tlačítko Odebírat na začátku panelu akcí.</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Skrýt tlačítko „Odebírat“</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Skryje tlačítka Odebírat a Připojit se vedle avatara kanálu na začátku panelu akcí</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Skrýt sekci komentářů</string>
   <string name="morphe_hide_clip_button_summary">Toto nemusí fungovat pro některé uživatelské účty</string>
@@ -1002,6 +1004,7 @@ Rozhraní pro automobily
   <string name="morphe_tablet_layout_in_player_summary">"Obnoví staré rozložení přehrávače
 
 Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překrytí 'Další videa' nemusí být k dispozici"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Povolení této funkce může narušit některé funkce rozložení přehrávače, jako jsou sekce komentářů nebo \'Další videa\' zobrazená pod přehrávačem.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Obnovit staré chování titulků</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré uložení zpět do seznamu přehrávání</string>
@@ -1093,6 +1096,9 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tlačítko Zpět ukončí kanál</string>
   <string name="morphe_back_button_always_exits_feed_summary">Stisknutí tlačítka Zpět vždy ukončí aplikaci místo posunutí na začátek kanálu.</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Skrýt stavový řádek</string>
+  <string name="morphe_hide_status_bar_summary">Skryje systémový stavový řádek. Přejetím prstem dolů z horního okraje jej na chvíli zobrazíte</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Pozadí světlého motivu</string>
   <string name="morphe_theme_color_light_entry_2">Bílá</string>

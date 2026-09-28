@@ -180,6 +180,10 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_remember_repeat_state_title">จำสถานะการเล่นซ้ำ</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">จำสถานะการสุ่มเล่น</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">ความเร็วในการเล่น</string>
+  <string name="morphe_music_playback_speed_summary">ความเร็วที่ใช้สำหรับทุกแทร็ก ที่ 100% จะใช้ความเร็วของแอป เช่น ความเร็วในการเล่นพอดแคสต์</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">เปลี่ยนระดับเสียงตามความเร็ว</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ปิดการเปลี่ยนเพลงเมื่อกดไม่ชอบ</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ป้องกันไม่ให้ข้ามไปยังแทร็กถัดไปเมื่อกดปุ่มไม่ชอบ</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_change_start_page_entry_subscriptions">สมัครสมาชิก</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">ซ่อนแถบตัวกรอง</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">บังคับให้อยู่ในแนวตั้ง</string>
+  <string name="morphe_music_force_portrait_orientation_summary">ทำให้แอปยังคงอยู่ในแนวตั้งเมื่อหมุนอุปกรณ์</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">เปลี่ยนสีมินิเพลเยอร์</string>
   <string name="morphe_music_change_miniplayer_color_summary">สีมินิเพลเยอร์ตรงกับเครื่องเล่นแบบเต็มหน้าจอ</string>
@@ -421,7 +428,12 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_lyrics_show_romanize_button_title">แสดงปุ่มโรมาไนซ์</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">แตะเพื่อสลับการแสดงอักษรโรมัน; กดค้างเพื่อแสดงเฉพาะอักษรโรมัน ใช้การแปลงเป็นอักษรโรมันจากผู้ให้บริการ, Google Translate หรือ API ที่เข้ากันได้กับ OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">แสดงปุ่มรีเฟรช</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังตัวเลือกเนื้อเพลงถัดไป; กดค้างเพื่อปิดใช้เนื้อเพลงจากบุคคลที่สามชั่วคราวและแสดงเนื้อเพลงในตัว</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">แตะเพื่อสลับไปยังเนื้อเพลงตัวเลือกถัดไป; กดค้างเพื่อค้นหาเนื้อเพลงตามชื่อเพลงและศิลปิน</string>
+  <string name="morphe_music_lyrics_search_dialog_title">ค้นหาเนื้อเพลง</string>
+  <string name="morphe_music_lyrics_search_title_hint">ชื่อเพลง</string>
+  <string name="morphe_music_lyrics_search_artist_hint">ศิลปิน</string>
+  <string name="morphe_music_lyrics_search_empty">ป้อนชื่อเพลงและศิลปิน</string>
+  <string name="morphe_music_lyrics_search_no_providers">ไม่มีผู้ให้บริการที่เปิดใช้งานใดสามารถค้นหาเพลงอื่นได้</string>
   <string name="morphe_music_lyrics_saved">บันทึกแล้ว</string>
   <string name="morphe_music_lyrics_word_sync_title">ไฮไลต์คำหรือพยางค์ที่ซิงก์</string>
   <string name="morphe_music_lyrics_word_sync_summary">ให้ความสำคัญกับเนื้อเพลงแบบคำต่อคำเมื่อมีให้บริการ เมื่อเนื้อเพลงมีข้อมูลเวลาของคำ จะไฮไลต์แต่ละคำหรือพยางค์ให้ตรงกับจังหวะเพลง</string>
@@ -475,6 +487,7 @@ YouTube Music 8.x — การเฟดข้ามจะทำงานบน 
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ปลายทาง API (เช่น https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">คีย์ API (เว้นว่างไว้สำหรับการเข้าถึงแบบไม่ระบุตัวตน)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">ชื่อโมเดล (เช่น openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">เทมเพลตพรอมต์ (ตัวแปร: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">บันทึกการตั้งค่าการแปลด้วย AI แล้ว</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">ไม่สามารถเชื่อมต่อกับปลายทาง AI ได้ กรุณาตรวจสอบการตั้งค่าของคุณ</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">รีเซ็ตการตั้งค่าการแปลด้วย AI แล้ว</string>

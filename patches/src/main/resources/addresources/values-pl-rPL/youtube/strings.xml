@@ -257,7 +257,7 @@ Zmiany obejmują:
   <string name="morphe_hide_comments_section_in_home_feed_title">Ukryj sekcję komentarzy na stronie głównej</string>
   <string name="morphe_hide_comments_community_guidelines_title">Ukryj wytyczne społeczności</string>
   <string name="morphe_hide_comments_create_a_short_button_title">Ukryj przycisk \"Utwórz Shorts\"</string>
-  <string name="morphe_hide_comments_dislike_button_title">Ukryj przycisk Nie lubię</string>
+  <string name="morphe_hide_comments_dislike_button_title">Ukryj przycisk \"Nie podoba mi się\"</string>
   <string name="morphe_hide_comments_emoji_button_title">Ukryj przycisk Emoji</string>
   <string name="morphe_hide_comments_filter_bar_options_title">Ukryj opcje paska filtrów</string>
   <string name="morphe_hide_comments_filter_bar_options_summary">Ukrywa wszystkie opcje paska filtrów z wyjątkiem \"Najpopularniejsze\" i \"Najnowsze\"</string>
@@ -399,7 +399,7 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_channel_search_no_results">Nic nie znaleziono na tym kanale</string>
   <string name="morphe_channel_search_failed">Nie udało się przeszukać tego kanału</string>
   <string name="morphe_channel_search_sort_relevance">Trafność</string>
-  <string name="morphe_channel_search_sort_most_viewed">Najczęściej oglądane</string>
+  <string name="morphe_channel_search_sort_most_viewed">Najpopularniejsze</string>
   <string name="morphe_channel_search_sort_least_viewed">Najrzadziej oglądane</string>
   <string name="morphe_channel_search_sort_newest">Najnowsze</string>
   <string name="morphe_channel_search_sort_oldest">Najstarsze</string>
@@ -663,7 +663,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_disable_like_subscribe_glow_title">Wyłącz poświatę przycisków Lubię i Subskrybuj</string>
   <string name="morphe_disable_like_subscribe_glow_summary">Zapobiega podświetlaniu się przycisków Lubię i Subskrybuj, gdy twórca o nich wspomina</string>
   <string name="morphe_hide_action_bar_title">Ukryj pasek akcji</string>
-  <string name="morphe_hide_like_dislike_button_title">Ukryj przyciski Lubię i Nie lubię</string>
+  <string name="morphe_hide_like_dislike_button_title">Ukryj przyciski Lubię i \"Nie podoba mi się\"</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_share_button_title">Ukryj przycisk Udostępnij</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -691,6 +691,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_hide_ask_button_title">Ukryj przycisk Zapytaj</string>
   <string name="morphe_hide_channel_profile_button_title">Ukryj kanał i przycisk Subskrybuj</string>
   <string name="morphe_hide_channel_profile_button_summary">Ukrywa awatar kanału i przycisk Subskrybuj na początku paska akcji</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Ukryj przycisk Subskrybuj</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Ukrywa przyciski Subskrybuj i Wesprzyj obok awatara kanału na początku paska akcji</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Ukryj przycisk Klip</string>
   <string name="morphe_hide_clip_button_summary">Może nie działać na niektórych kontach</string>
@@ -703,7 +705,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_hide_quick_actions_title">Ukryj pasek akcji</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Ukryj przycisk Zapytaj</string>
   <string name="morphe_hide_quick_actions_comments_button_title">Ukryj przycisk Komentarze</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Ukryj przycisk Nie lubię</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Ukryj przycisk \"Nie podoba mi się\"</string>
   <string name="morphe_hide_quick_actions_like_button_title">Ukryj przycisk Lubię</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Ukryj przycisk \"Czat na żywo\"</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Ukryj przycisk Remiks</string>
@@ -1004,6 +1006,7 @@ Układ samochodowy
   <string name="morphe_tablet_layout_in_player_summary">"Przywraca stary układ odtwarzacza
 
 Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączona, nakładka \"Więcej filmów\" może być niedostępna"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Włączenie tej opcji może popsuć niektóre elementy układu odtwarzacza, takie jak sekcja komentarzy lub \"Więcej filmów\" pod odtwarzaczem.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Przywraca stare zachowanie napisów</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Przywraca stare menu dodawania do playlisty</string>
@@ -1095,6 +1098,9 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Przycisk wstecz zamyka kanał</string>
   <string name="morphe_back_button_always_exits_feed_summary">Naciśnięcie wstecz zawsze zamyka aplikację, zamiast przewijać na górę kanału</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Ukryj pasek stanu</string>
+  <string name="morphe_hide_status_bar_summary">Ukrywa systemowy pasek stanu. Przesuń w dół od górnej krawędzi, aby na chwilę go wyświetlić</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Tło jasnego motywu</string>
   <string name="morphe_theme_color_light_entry_2">Białe</string>
@@ -1208,7 +1214,7 @@ Dotknij tutaj, aby otworzyć DeArrow.ajay.app"</string>
   <string name="morphe_video_quality_dialog_button_title">Pokaż przycisk Jakość</string>
   <string name="morphe_video_quality_dialog_button_summary">Przytrzymaj, aby zresetować jakość do domyślnej</string>
   <string name="morphe_video_quality_dialog_button_resolution_title">Pokaż rozdzielczość na przycisku Jakość</string>
-  <string name="morphe_video_quality_dialog_button_resolution_summary">Pokaż rozdzielczość, np. 1080, zamiast etykiety takiej jak FHD</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Wyświetla rozdzielczość (np. 1080) zamiast etykiety (np. FHD)</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Pokaż własne menu prędkości odtwarzania</string>
   <string name="morphe_restore_old_speed_menu_title">Przywróć stare menu prędkości odtwarzania</string>
@@ -1300,8 +1306,8 @@ Ograniczenie: Przywraca stary wygląd nakładki \"Więcej filmów\""</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_title">Styl ikon odtwarzacza</string>
   <string name="morphe_player_icon_style_entry_auto">Automatyczny</string>
-  <string name="morphe_player_icon_style_entry_default">Domyślna</string>
+  <string name="morphe_player_icon_style_entry_default">Domyślny</string>
   <string name="morphe_player_icon_style_entry_regular">Cienki</string>
-  <string name="morphe_player_icon_style_entry_bold">Pogrubienie</string>
-  <string name="morphe_shorts_icon_style_title">Styl ikony Shorts</string>
+  <string name="morphe_player_icon_style_entry_bold">Pogrubiony</string>
+  <string name="morphe_shorts_icon_style_title">Styl ikon Shorts</string>
 </resources>

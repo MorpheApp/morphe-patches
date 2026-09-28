@@ -691,6 +691,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">ซ่อนปุ่มถาม</string>
   <string name="morphe_hide_channel_profile_button_title">ซ่อนช่องและปุ่มติดตาม</string>
   <string name="morphe_hide_channel_profile_button_summary">ซ่อนรูปโปรไฟล์ช่องและปุ่มติดตามที่ตอนต้นของแถบการทำงาน</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">ซ่อนปุ่มติดตาม</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">ซ่อนปุ่มติดตามและปุ่มเข้าร่วมที่อยู่ถัดจากอวตารของช่องที่จุดเริ่มต้นของแถบการทำงาน</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">ซ่อนปุ่มคลิป</string>
   <string name="morphe_hide_clip_button_summary">คุณสมบัตินี้อาจใช้งานไม่ได้กับบางบัญชีผู้ใช้</string>
@@ -1005,6 +1007,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"คืนรูปแบบผู้เล่นแบบเก่า
 
 ข้อจำกัด: หากปิด 'คืนแถบการทำงานของวิดีโอแบบเก่า' การแสดงผล 'วิดีโอเพิ่มเติม' อาจใช้งานไม่ได้"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">การเปิดใช้งานสิ่งนี้อาจทำให้ฟีเจอร์เลย์เอาต์บางอย่างของเครื่องเล่นเสียหาย เช่น ส่วนความคิดเห็นหรือ \'วิดีโอเพิ่มเติม\' ที่แสดงใต้เครื่องเล่น</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - กู้คืนพฤติกรรมคำบรรยายแบบเดิม</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - คืนค่าไอคอนเครื่องเล่น Shorts เก่า</string>
@@ -1096,6 +1099,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">ปุ่มกลับออกจากฟีด</string>
   <string name="morphe_back_button_always_exits_feed_summary">การกดปุ่มกลับจะออกจากแอปเสมอ แทนที่จะเลื่อนไปที่ด้านบนของฟีด</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">ซ่อนแถบสถานะ</string>
+  <string name="morphe_hide_status_bar_summary">ซ่อนแถบสถานะของระบบ ปัดลงจากขอบด้านบนเพื่อแสดงชั่วครู่</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">พื้นหลังธีมสว่าง</string>
   <string name="morphe_theme_color_light_entry_2">สีขาว</string>

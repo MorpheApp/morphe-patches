@@ -691,6 +691,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">隐藏询问按钮</string>
   <string name="morphe_hide_channel_profile_button_title">隐藏频道和订阅按钮</string>
   <string name="morphe_hide_channel_profile_button_summary">在操作栏开头隐藏频道头像和订阅按钮</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">隐藏“订阅”按钮</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">隐藏操作栏开头频道头像旁边的订阅和加入按钮</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">隐藏混剪按钮</string>
   <string name="morphe_hide_clip_button_summary">这对于某些用户帐户可能无法正常工作。</string>
@@ -1005,6 +1007,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"恢复旧版播放器布局
 
 限制：如果关闭“恢复旧版视频操作栏”选项，则“更多视频”叠加层可能不可用"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">启用此功能可能会破坏某些播放器布局功能，例如播放器下方显示的评论部分或“更多视频”。</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 恢复旧版字幕行为</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 恢复旧的保存到播放列表</string>
@@ -1096,6 +1099,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">返回按钮退出信息流</string>
   <string name="morphe_back_button_always_exits_feed_summary">按返回键总是退出应用，而不是滚动到信息流顶部</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">隐藏状态栏</string>
+  <string name="morphe_hide_status_bar_summary">隐藏系统状态栏。从顶部边缘向下滑动可短暂显示它</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">浅色主题背景</string>
   <string name="morphe_theme_color_light_entry_2">白色</string>

@@ -180,6 +180,10 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_remember_repeat_state_title">تذكر حالة التكرار</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">تذكر حالة التشغيل العشوائي</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">سرعة التشغيل</string>
+  <string name="morphe_music_playback_speed_summary">السرعة المستخدمة لجميع المسارات. عند 100%، تُستخدم سرعة التطبيق، مثل سرعة تشغيل البودكاست</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">تغيير درجة الصوت مع السرعة</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">تعطيل إعادة توجيه الإعجاب الشديد</string>
   <string name="morphe_music_disable_dislike_redirection_summary">يمنع الانتقال إلى المقطع التالي عند الضغط على زر عدم الإعجاب</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">إخفاء شريط التصفية</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">فرض الاتجاه العمودي</string>
+  <string name="morphe_music_force_portrait_orientation_summary">يحافظ على التطبيق في الاتجاه العمودي عند تدوير الجهاز</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">تغيير لون المشغل المصغر</string>
   <string name="morphe_music_change_miniplayer_color_summary">يتطابق لون المشغل المصغر مع المشغل بملء الشاشة</string>
@@ -411,7 +418,12 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_show_romanize_button_title">إظهار زر الرومنة</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">اضغط للتبديل بين إظهار الكتابة بالحروف اللاتينية وإخفائها؛ اضغط مطوّلاً لعرض الكتابة بالحروف اللاتينية فقط. يستخدم رومنة المزوّد أو خدمة Google Translate أو واجهة برمجة تطبيقات متوافقة مع OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">إظهار زر التحديث</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">انقر للتبديل إلى مرشّح الكلمات التالي؛ اضغط مطولًا لفتح الخيارات.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">انقر للتبديل إلى مرشح الكلمات التالي؛ اضغط مطولاً للبحث عن الكلمات حسب عنوان الأغنية والفنان</string>
+  <string name="morphe_music_lyrics_search_dialog_title">البحث عن الكلمات</string>
+  <string name="morphe_music_lyrics_search_title_hint">عنوان الأغنية</string>
+  <string name="morphe_music_lyrics_search_artist_hint">الفنان</string>
+  <string name="morphe_music_lyrics_search_empty">أدخل عنوان الأغنية واسم الفنان</string>
+  <string name="morphe_music_lyrics_search_no_providers">لا يمكن لأي من المزودين المفعّلين البحث عن أغانٍ أخرى</string>
   <string name="morphe_music_lyrics_saved">محفوظة</string>
   <string name="morphe_music_lyrics_word_sync_title">قم بتمييز الكلمات والمقاطع اللفظية المتزامنة</string>
   <string name="morphe_music_lyrics_word_sync_summary">أعطِ الأولوية للكلمات المتزامنة كلمةً بكلمة عند توفرها. وعندما تحمل الكلمات توقيتًا للكلمات، يتم تمييز كل كلمة أو مقطع في توقيت مع الموسيقى.</string>
@@ -465,6 +477,7 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_ai_config_base_url_hint">عنوان URL لنقطة نهاية API (مثال: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">مفتاح API (اتركه فارغًا للوصول المجهول)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">اسم النموذج (مثال: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">قالب المطالبة (المتغيرات: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">تم حفظ إعدادات الترجمة بالذكاء الاصطناعي</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">تعذر الاتصال بنقطة نهاية الذكاء الاصطناعي. يرجى التحقق من إعداداتك.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">تمت إعادة تعيين إعدادات الترجمة بالذكاء الاصطناعي</string>

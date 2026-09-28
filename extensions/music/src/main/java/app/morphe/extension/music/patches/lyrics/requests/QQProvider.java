@@ -492,7 +492,6 @@ public final class QQProvider implements LyricsProvider {
             if (words.isEmpty() && !lineContent.isEmpty()) {
                 String stripped = QRC_WORD.matcher(lineContent).replaceAll("").trim();
                 if (!stripped.isEmpty()) {
-                    words.add(new Word(lineStart, lineEnd, stripped));
                     full.append(stripped);
                 }
             }
@@ -501,7 +500,7 @@ public final class QQProvider implements LyricsProvider {
             if (fullText.isEmpty()) {
                 continue;
             }
-            lines.add(new LyricsLine(lineStart, fullText, words));
+            lines.add(new LyricsLine(lineStart, lineEnd, fullText, words));
         }
 
         lines.sort(Comparator.comparingLong(LyricsLine::startTimeMs));

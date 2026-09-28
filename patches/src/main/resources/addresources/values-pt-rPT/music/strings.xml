@@ -180,6 +180,10 @@ YouTube Music 8.x — o crossfade só funciona na versão 9.x e mais recentes"</
   <string name="morphe_music_remember_repeat_state_title">Lembrar estado de repetição</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Lembrar estado de aleatoriedade</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Velocidade de reprodução</string>
+  <string name="morphe_music_playback_speed_summary">Velocidade usada em todas as faixas. A 100%, é usada a velocidade do app, como a velocidade de reprodução de podcasts</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Alterar o tom com a velocidade</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desativar redirecionamento de dislikes</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Impede a passagem para a próxima faixa quando o botão de dislike é pressionado</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — o crossfade só funciona na versão 9.x e mais recentes"</
   <string name="morphe_change_start_page_entry_subscriptions">Inscrições</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Ocultar barra de filtro</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Forçar orientação retrato</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Mantém o aplicativo na orientação retrato quando o dispositivo é girado</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Alterar a cor do minitocador</string>
   <string name="morphe_music_change_miniplayer_color_summary">A cor do minitocador corresponde à do reprodutor em tela cheia</string>
@@ -426,7 +433,12 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostrar botão Romanizar</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Toque para alternar a romanização; toque prolongado para somente romanização. Usa romanização do provedor, Google Tradutor ou uma API compatível com OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botão Atualizar</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Destacar palavras ou sílabas sincronizadas</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Toque para alternar para a próxima letra candidata; toque e segure para pesquisar letras pelo título da música e pelo artista.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Pesquisar letras</string>
+  <string name="morphe_music_lyrics_search_title_hint">Título da música</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
+  <string name="morphe_music_lyrics_search_empty">Digite o título da música e um artista</string>
+  <string name="morphe_music_lyrics_search_no_providers">Nenhum dos provedores ativados consegue pesquisar outras músicas</string>
   <string name="morphe_music_lyrics_saved">Guardado</string>
   <string name="morphe_music_lyrics_word_sync_title">Destacar palavras ou sílabas sincronizadas</string>
   <string name="morphe_music_lyrics_word_sync_summary">Priorizar letras sincronizadas em nível de palavra</string>
@@ -480,6 +492,7 @@ Cookies necessários: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL do endpoint da API (ex.: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Chave da API (deixe em branco para acesso anônimo)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nome do modelo (ex.: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Modelo de prompt (variáveis: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Configurações de tradução por IA salvas</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Não foi possível conectar ao endpoint da IA. Verifique suas configurações.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Configurações de tradução por IA redefinidas</string>

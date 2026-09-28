@@ -691,6 +691,8 @@ Da biste to popravili, uključite 'Spoof video strimovi' i promenite 'Podrazumev
   <string name="morphe_hide_ask_button_title">Sakrij dugme „Pitaj”</string>
   <string name="morphe_hide_channel_profile_button_title">Sakrij kanal i dugme za pretplatu</string>
   <string name="morphe_hide_channel_profile_button_summary">Sakriva avatar kanala i dugme za pretplatu na početku trake sa radnjama</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Sakrij dugme „Zaprati”</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Sakriva dugmiće „Pretplati se“ i „Pridruži se“ pored avatara kanala na početku trake radnji</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Sakrij dugme „Isečak”</string>
   <string name="morphe_hide_clip_button_summary">Ovo možda neće raditi za neke korisničke naloge</string>
@@ -1005,6 +1007,7 @@ Raspored za automobil
   <string name="morphe_tablet_layout_in_player_summary">"Vraća stari raspored plejera
 
 Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prekrivanje \"Više video zapisa\" možda neće biti dostupno"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Omogućavanje ovoga može da pokvari neke funkcije rasporeda plejera, kao što su sekcija komentara ili \'Još video snimaka\' prikazana ispod plejera.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Vrati staro ponašanje titlova</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Vraća stare ikonice Shorts plejera</string>
@@ -1096,6 +1099,9 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Dugme za nazad izlazi iz feed-a</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pritiskanje nazad uvek izlazi iz aplikacije umesto da skrolujete do vrha feed-a</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
+  <string name="morphe_hide_status_bar_summary">Sakriva sistemsku statusnu traku. Prevucite prstom nadole od gornje ivice da biste je na trenutak prikazali</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Pozadina svetle teme</string>
   <string name="morphe_theme_color_light_entry_2">Bela</string>

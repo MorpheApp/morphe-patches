@@ -691,6 +691,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">Активиране на бисквитки за надписи</string>
   <string name="morphe_hide_channel_profile_button_title">Скриване на канала и бутона Абониране</string>
   <string name="morphe_hide_channel_profile_button_summary">Скрива аватара на канала и бутона Абониране в началото на лентата с действия</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Скриване на бутона „Абониране“</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Скрива бутоните „Абониране“ и „Присъединяване“ до аватара на канала в началото на лентата с действия</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Необходими са за правилното функциониране на автоматичния превод на надписи</string>
   <string name="morphe_hide_clip_button_summary">Възможно е това да не работи за някои потребителски акаунти</string>
@@ -1005,6 +1007,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"Възстановява стария вид на плейъра
 
 Ограничение: Ако „Възстановяване на старата лента за действия във видеоклипа“ е изключено, покритието „Още видеоклипове“ може да не е достъпно"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Активирането на това може да наруши някои функции на оформлението на плейъра, като например секцията за коментари или „Още видеоклипове“, показани под плейъра.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Възстановяване на старото поведение на субтитрите</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Възстанови старите запазвания в списъка</string>
@@ -1096,6 +1099,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Бутонът назад излиза от лентата</string>
   <string name="morphe_back_button_always_exits_feed_summary">Натискането на бутона назад винаги излиза от приложението, вместо да превърта до началото на лентата</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Скриване на лентата за състояние</string>
+  <string name="morphe_hide_status_bar_summary">Скрива системната лента за състояние. Плъзнете надолу от горния ръб, за да я покажете за момент</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Фон на светлата тема</string>
   <string name="morphe_theme_color_light_entry_2">Бяло</string>

@@ -654,18 +654,14 @@ public final class NetEaseProvider implements LyricsProvider {
                 full.append(trimmed);
             }
             if (words.isEmpty() && !content.isEmpty()) {
-                words.add(new Word(lineStart, lineEnd, content));
                 full.append(content);
-            }
-            if (words.isEmpty()) {
-                continue;
             }
 
             String fullText = full.toString().trim();
             if (fullText.isEmpty()) {
                 continue;
             }
-            lines.add(new LyricsLine(lineStart, fullText, words));
+            lines.add(new LyricsLine(lineStart, lineEnd, fullText, words));
         }
 
         lines.sort(Comparator.comparingLong(LyricsLine::startTimeMs));

@@ -180,6 +180,10 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_remember_repeat_state_title">זכור מצב חזרה</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">זכור מצב ערבוב</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">מהירות השמעה</string>
+  <string name="morphe_music_playback_speed_summary">המהירות המשמשת לכל הרצועות. ב-100% נעשה שימוש במהירות האפליקציה, כמו מהירות השמעת הפודקאסט</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">שנה גובה צליל עם המהירות</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ביטול הפנייה בלחיצה על \"דיסלייק\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">מניעת דילוג רצועה כאשר לוחצים על \"דיסלייק\"</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_change_start_page_entry_subscriptions">מינויים</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">הסתר סרגל סינון</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">אלץ כיוון לאורך</string>
+  <string name="morphe_music_force_portrait_orientation_summary">שומר על כיוון האפליקציה לאורך כשהמכשיר מסובב</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">שנה צבע מיני-נגן</string>
   <string name="morphe_music_change_miniplayer_color_summary">צבע המיני-נגן תואם לנגן במסך מלא</string>
@@ -426,7 +433,12 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_lyrics_show_romanize_button_title">הצג את כפתור הרומניזציה</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">הקש כדי להפעיל או לכבות רומניזציה; לחיצה ארוכה לרומניזציה בלבד. משתמש ברומניזציה של הספק, ב-Google Translate או ב-API תואם OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">הצג את כפתור הרענון</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">הקש כדי לעבור למועמד הבא של מילות השיר; סמן כ-\"שמור\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">הקש כדי לעבור למועמד המילים הבא; לחץ והחזק כדי לחפש מילים לפי שם השיר והאמן</string>
+  <string name="morphe_music_lyrics_search_dialog_title">חפש מילים</string>
+  <string name="morphe_music_lyrics_search_title_hint">שם השיר</string>
+  <string name="morphe_music_lyrics_search_artist_hint">אמן</string>
+  <string name="morphe_music_lyrics_search_empty">הזן שם שיר ואמן</string>
+  <string name="morphe_music_lyrics_search_no_providers">אף אחד מהספקים המופעלים אינו יכול לחפש שירים אחרים</string>
   <string name="morphe_music_lyrics_saved">נשמר</string>
   <string name="morphe_music_lyrics_word_sync_title">הדגש מילים או הברות מסונכרנות</string>
   <string name="morphe_music_lyrics_word_sync_summary">תעדף מילים מילה-מילה כשהן זמינות. כשמילות השיר כוללות תזמון מילים, הדגש כל מילה או הברה בקצב המוזיקה</string>
@@ -480,6 +492,7 @@ YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומע�
   <string name="morphe_music_lyrics_ai_config_base_url_hint">כתובת URL של נקודת קצה API (לדוגמה https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">מפתח API (השאר ריק לגישה אנונימית)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">שם המודל (לדוגמה openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">תבנית הנחיה (משתנים: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">הגדרות תרגום AI נשמרו</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">לא ניתן היה להתחבר לנקודת הקצה של AI. אנא בדוק את ההגדרות שלך.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">הגדרות תרגום AI אופסו</string>

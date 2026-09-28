@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_title">Reemplazar botón Descargar</string>
   <string name="morphe_external_downloader_action_button_summary">Utiliza el descargador externo seleccionado en lugar del botón de acción de descarga original</string>
   <string name="morphe_external_downloader_flyout_menu_title">Reemplazar menú Descargar</string>
-  <string name="morphe_external_downloader_flyout_menu_summary">Utiliza el descargador externo seleccionado en lugar del menú desplegable de descarga original</string>
+  <string name="morphe_external_downloader_flyout_menu_summary">Utiliza el descargador externo seleccionado en lugar del menú flotante de descarga original</string>
   <string name="morphe_music_in_app_downloads_title">Descargar en la aplicación</string>
   <string name="morphe_music_in_app_downloads_summary">Descarga el audio dentro de YouTube Music en lugar de abrir la aplicación de descarga externa</string>
   <string name="morphe_music_in_app_downloads_user_dialog_message">"Las canciones se guardan en el almacenamiento privado de la aplicación y se eliminan si se desinstala YouTube Music.
@@ -92,14 +92,14 @@ Las pistas descargadas aparecen aquí"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ocultar selector Audio / Vídeo</string>
   <string name="morphe_music_hide_explore_shelf_title">Ocultar estantería Explorar</string>
-  <string name="morphe_music_hide_grid_shelves_title">Ocultar secciones en cuadrícula</string>
-  <string name="morphe_music_hide_horizontal_shelves_title">Ocultar secciones horizontales</string>
-  <string name="morphe_music_hide_list_shelves_title">Ocultar secciones en lista</string>
+  <string name="morphe_music_hide_grid_shelves_title">Ocultar estanterías en cuadrícula</string>
+  <string name="morphe_music_hide_horizontal_shelves_title">Ocultar estanterías horizontales</string>
+  <string name="morphe_music_hide_list_shelves_title">Ocultar estanterías en lista</string>
   <string name="morphe_music_hide_lyrics_panel_category_title">Panel de letras</string>
   <string name="morphe_music_hide_lyrics_share_button_title">Ocultar botón Compartir</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botón Traducir</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ocultar estantería \'Novedades de\'</string>
-  <string name="morphe_music_hide_playlist_shelves_title">Ocultar secciones de listas de reproducción</string>
+  <string name="morphe_music_hide_playlist_shelves_title">Ocultar estanterías de listas de reproducción</string>
   <string name="morphe_music_hide_podcast_episode_download_button_title">Ocultar botón Descargar de episodios de podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Ocultar botón Repetir</string>
   <string name="morphe_music_hide_shuffle_button_title">Ocultar botón Aleatorio</string>
@@ -180,6 +180,10 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_remember_repeat_state_title">Recordar estado de repetición</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Recordar estado de reproducción aleatoria</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Velocidad de reproducción</string>
+  <string name="morphe_music_playback_speed_summary">Velocidad usada para todas las pistas. Al 100% se usa la velocidad de la aplicación, como la velocidad de reproducción de pódcast</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Cambiar el tono con la velocidad</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desactivar redirección de \'No me gusta\'</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar a la siguiente pista cuando se pulsa el botón \'No me gusta\'</string>
@@ -249,9 +253,9 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_hide_flyout_menu_view_song_credit_title">Ocultar menú \'Ver créditos de la canción\'</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Página de inicio</string>
-  <string name="morphe_change_start_page_entry_default">Predeterminada</string>
-  <string name="morphe_change_start_page_entry_charts">Gráficas</string>
-  <string name="morphe_change_start_page_entry_episodes_for_later">Episodios para después</string>
+  <string name="morphe_change_start_page_entry_default">Predeterminado</string>
+  <string name="morphe_change_start_page_entry_charts">Listas de éxitos</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Episodios para más tarde</string>
   <string name="morphe_change_start_page_entry_explore">Explorar</string>
   <string name="morphe_change_start_page_entry_history">Historial</string>
   <string name="morphe_change_start_page_entry_library">Biblioteca</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_change_start_page_entry_subscriptions">Suscripciones</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Ocultar barra de filtro</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Forzar orientación vertical</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Mantiene la aplicación en orientación vertical cuando se gira el dispositivo</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Cambiar color del reproductor en miniatura</string>
   <string name="morphe_music_change_miniplayer_color_summary">Adapta el color del reproductor en miniatura al reproductor de pantalla completa</string>
@@ -312,7 +319,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_listenbrainz_token_title">Cuenta de ListenBrainz</string>
   <string name="morphe_music_listenbrainz_token_summary_logged_in">Has iniciado sesión. Pulsa para administrar la cuenta</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_listenbrainz_token_dialog_instruction">Introduce tu token de usuario de ListenBrainz para habilitar el registro</string>
+  <string name="morphe_music_listenbrainz_token_dialog_instruction">Introduce tu token de usuario de ListenBrainz para habilitar el scrobbling</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
   <string name="morphe_music_listenbrainz_token_dialog_get_token">Obtener token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Verificar</string>
@@ -325,8 +332,8 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_listenbrainz_token_toast_cleared">Token borrado</string>
   <string name="morphe_music_listenbrainz_token_toast_saved">Token guardado</string>
   <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Advertencia: ¡El token guardado no es válido!</string>
-  <string name="morphe_music_lastfm_love_on_like_title">Amar las pistas que te gustan</string>
-  <string name="morphe_music_lastfm_love_on_like_summary">Amar automáticamente las pistas en Last.fm cuando te gusten en YouTube Music (y dejar de amar cuando no te gusten o no te desagraden)</string>
+  <string name="morphe_music_lastfm_love_on_like_title">Marcar como \'Me encanta\' las pistas que te gustan</string>
+  <string name="morphe_music_lastfm_love_on_like_summary">Marca automáticamente las pistas como \'Me encanta\' en Last.fm cuando les des \'Me gusta\' en YouTube Music (y elimina esa marca al quitar el \'Me gusta\' o dar \'No me gusta\')</string>
   <string name="morphe_music_lastfm_token_title">Cuenta de Last.fm</string>
   <string name="morphe_music_lastfm_token_summary_logged_in">Has iniciado sesión como %s. Pulsa para administrar la cuenta</string>
   <string name="morphe_music_lastfm_token_dialog_instruction">Introduce tus credenciales de Last.fm para iniciar sesión</string>
@@ -351,7 +358,7 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Acerca del scrobbling</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_summary">"La sincronización automática (scrobbling) sincroniza tu uso de YouTube Music con tu perfil de Last.fm o ListenBrainz.
+  <string name="morphe_music_scrobbling_about_summary">"El scrobbling sincroniza tu uso de YouTube Music con tu perfil de Last.fm o ListenBrainz.
 
 Para garantizar que la sincronización se realice durante la reproducción en segundo plano, asegúrate de que el uso de la batería de la aplicación YouTube Music esté configurado como \"Sin restricciones\""</string>
   <!-- layout.lyrics.lyricsPatch -->
@@ -426,7 +433,12 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostrar botón Romanizar</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Pulsa para activar o desactivar la romanización; mantén pulsado para solo romanización. Usa la romanización del proveedor, Google Translate o una API compatible con OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostrar botón Actualizar</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Pulsa para cambiar a la siguiente letra candidata; mantén pulsado para desactivar temporalmente las letras de terceros y mostrar las nativas</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Pulsa para cambiar a la siguiente letra candidata; mantén pulsado para buscar letras por título de la canción y artista</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Buscar letras</string>
+  <string name="morphe_music_lyrics_search_title_hint">Título de la canción</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
+  <string name="morphe_music_lyrics_search_empty">Introduce un título de canción y un artista</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ninguno de los proveedores activados puede buscar otras canciones</string>
   <string name="morphe_music_lyrics_saved">Guardado</string>
   <string name="morphe_music_lyrics_word_sync_title">Resaltar palabras o sílabas sincronizadas</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioriza las letras palabra por palabra cuando estén disponibles. Cuando las letras incluyen tiempos por palabra, resalta cada palabra o sílaba al ritmo de la música</string>
@@ -480,6 +492,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL del punto de conexión de la API (p. ej., https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Clave API (dejar en blanco para acceso anónimo)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nombre del modelo (p. ej., openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Plantilla de prompt (variables: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Ajustes de traducción con IA guardados</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">No se pudo conectar con el punto de conexión de la IA. Comprueba tus ajustes.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Ajustes de traducción con IA restablecidos</string>

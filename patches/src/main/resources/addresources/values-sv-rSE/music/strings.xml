@@ -180,6 +180,10 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <string name="morphe_music_remember_repeat_state_title">Kom ihåg repeat-läge</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Kom ihåg shuffle-läge</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Uppspelningshastighet</string>
+  <string name="morphe_music_playback_speed_summary">Hastighet som används för alla spår. Vid 100 % används appens hastighet, till exempel uppspelningshastigheten för poddar.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Ändra tonhöjd med hastigheten</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Inaktivera omdirigering av ogilla</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Förhindrar att hoppa till nästa låt när ogilla-knappen trycks</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <string name="morphe_change_start_page_entry_subscriptions">Prenumerationer</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Dölj filterfält</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Tvinga stående orientering</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Håller appen i stående orientering när enheten roteras</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Ändra minispelarens färg</string>
   <string name="morphe_music_change_miniplayer_color_summary">Minispelarens färg matchar helskärmsspelaren</string>
@@ -421,7 +428,12 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_romanize_button_title">Visa romaniseringsknapp</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tryck för att växla romanisering; tryck och håll för enbart romanisering. Använder leverantörens romanisering, Google Translate eller ett OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Visa uppdatera-knappen</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Tryck för att byta till nästa låttextkandidat; […] :\"Markera synkroniserade ord eller stavelser\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tryck för att växla till nästa sångtextkandidat; tryck länge för att söka sångtext efter låttitel och artist.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Sök sångtext</string>
+  <string name="morphe_music_lyrics_search_title_hint">Låttitel</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
+  <string name="morphe_music_lyrics_search_empty">Ange en låttitel och en artist</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ingen av de aktiverade leverantörerna kan söka efter andra låtar.</string>
   <string name="morphe_music_lyrics_saved">Sparad</string>
   <string name="morphe_music_lyrics_word_sync_title">Markera synkroniserade ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioritera ord-för-ord-text när det finns. När texten har ordtajming markeras varje ord eller stavelse i takt med musiken.</string>
@@ -475,6 +487,7 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-slutpunktens URL (t.ex. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-nyckel (lämna tom för anonym åtkomst)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modellnamn (t.ex. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Promptmall (variabler: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI-översättningsinställningar sparade</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Det gick inte att ansluta till AI-slutpunkten. Kontrollera dina inställningar.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI-översättningsinställningar återställda</string>

@@ -691,6 +691,8 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_hide_ask_button_title">Verberg Vraag-knop</string>
   <string name="morphe_hide_channel_profile_button_title">Verberg kanaal en abonneerknop</string>
   <string name="morphe_hide_channel_profile_button_summary">Verbergt de kanaalavatar en de abonneerknop aan het begin van de actiebalk</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Verberg de knop \"Abonneren\"</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Verbergt de knoppen \'Abonneren\' en \'Lid worden\' naast de kanaalavatar aan het begin van de actiebalk.</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Verberg Clip-knop</string>
   <string name="morphe_hide_clip_button_summary">Dit werkt mogelijk niet voor sommige gebruikersaccounts</string>
@@ -1003,6 +1005,7 @@ Automotive-indeling
   <string name="morphe_tablet_layout_in_player_summary">"Herstelt de oude player layout
 
 Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer video's\" overlay mogelijk niet beschikbaar"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Het inschakelen hiervan kan ertoe leiden dat sommige functies van de spelerlay-out niet meer werken, zoals het opmerkingengedeelte of \'Meer video\'s\' onder de speler.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Herstel het oude gedrag van ondertitels</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Herstel oude Shorts-speler pictogrammen</string>
@@ -1094,6 +1097,9 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">De terugknop verlaat de feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">De terugknop sluit altijd de app af in plaats van naar de bovenkant van de feed te scrollen</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Statusbalk verbergen</string>
+  <string name="morphe_hide_status_bar_summary">Verbergt de systeemstatusbalk. Veeg omlaag vanaf de bovenrand om hem even weer te tonen</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Achtergrond van het lichtthema</string>
   <string name="morphe_theme_color_light_entry_2">Wit</string>

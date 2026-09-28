@@ -403,7 +403,7 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_channel_search_sort_least_viewed">Les moins vues</string>
   <string name="morphe_channel_search_sort_newest">Les plus récentes</string>
   <string name="morphe_channel_search_sort_oldest">Les plus anciennes</string>
-  <string name="morphe_channel_search_sort_shortest">Le plus Short</string>
+  <string name="morphe_channel_search_sort_shortest">Les plus courtes</string>
   <string name="morphe_channel_search_sort_longest">Les plus longues</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">Lien copié dans le presse-papiers</string>
@@ -691,6 +691,8 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_hide_ask_button_title">Masquer le bouton \'Posez une question\'</string>
   <string name="morphe_hide_channel_profile_button_title">Masquer la chaîne et le bouton \'S\'abonner\'</string>
   <string name="morphe_hide_channel_profile_button_summary">Masque l\'avatar de la chaîne et le bouton \'S\'abonner\' au début de la barre d\'actions</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Masquer le bouton \'S\'abonner\'</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Masque les boutons \'S\'abonner\' et \'Rejoindre\' à côté de l\'avatar de la chaîne, au début de la barre d\'actions</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Masquer le bouton \'Clip\'</string>
   <string name="morphe_hide_clip_button_summary">Peut ne pas fonctionner avec certains comptes utilisateurs</string>
@@ -1006,6 +1008,7 @@ Disposition automobile
   <string name="morphe_tablet_layout_in_player_summary">"Restaure l'ancienne disposition du lecteur
 
 Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l'overlay 'Plus de vidéos' peut ne pas être disponible"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">L\'activation de cette option peut entraîner le dysfonctionnement de certaines fonctionnalités de mise en page du lecteur, telles que la section des commentaires ou \'Plus de vidéos\' affichés sous le lecteur.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 – Rétabli l\'ancien comportement des sous-titres</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaure l\'ancien enregistrement dans la playlist</string>
@@ -1097,6 +1100,9 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Le bouton \'Retour\' quitte le flux</string>
   <string name="morphe_back_button_always_exits_feed_summary">Appuyer sur retour quitte toujours l\'application au lieu de faire défiler le flux jusqu\'en haut</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Masquer la barre d\'état</string>
+  <string name="morphe_hide_status_bar_summary">Masque la barre d\'état du système. Balayez vers le bas depuis le bord supérieur pour l\'afficher momentanément</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Arrière-plan du thème clair</string>
   <string name="morphe_theme_color_light_entry_2">Blanc</string>
@@ -1165,11 +1171,11 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Restaurer l\'ancien style de bouton du lecteur</string>
-  <string name="morphe_restore_old_player_buttons_summary">Rétablit les commandes du lecteur vidéo en gras vers l\'ancien style visuel plus fin</string>
+  <string name="morphe_restore_old_player_buttons_summary">Rétablit les commandes épaisses du lecteur vidéo dans leur ancien style visuel, plus fin</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsifier les dimensions de l\'appareil</string>
   <string name="morphe_spoof_device_dimensions_summary">L\'activation de cette option peut débloquer des qualités vidéo plus élevées</string>
-  <string name="morphe_spoof_device_dimensions_user_dialog_message">Activer ceci peut entraîner des saccades lors de la lecture vidéo, une autonomie de batterie réduite et d\'autres effets secondaires imprévus.</string>
+  <string name="morphe_spoof_device_dimensions_user_dialog_message">L\'activation de cette option peut entraîner des saccades lors de la lecture vidéo, une autonomie de batterie réduite et d\'autres effets secondaires imprévus.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">Retour haptique</string>
   <string name="morphe_disable_haptic_feedback_summary">Choisissez quelles interactions déclenchent la vibration de l\'appareil</string>
@@ -1209,8 +1215,8 @@ Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Afficher un bouton \'Qualité\'</string>
   <string name="morphe_video_quality_dialog_button_summary">Appuyez longuement pour réinitialiser la qualité par défaut</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">Afficher la résolution sur le bouton Qualité</string>
-  <string name="morphe_video_quality_dialog_button_resolution_summary">Afficher la résolution, par exemple 1080, au lieu d\'un libellé tel que FHD</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">Afficher la résolution sur le bouton \'Qualité\'</string>
+  <string name="morphe_video_quality_dialog_button_resolution_summary">Afficher la résolution, comme 1080, au lieu d\'un libellé comme FHD</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Personnaliser le menu \'Vitesse de lecture\'</string>
   <string name="morphe_restore_old_speed_menu_title">Restaurer l\'ancien menu de vitesse de lecture</string>
@@ -1305,5 +1311,5 @@ Limitation : Rétablit l'ancien style de l'overlay 'Plus de vidéos'"</string>
   <string name="morphe_player_icon_style_entry_default">Par défaut</string>
   <string name="morphe_player_icon_style_entry_regular">Fin</string>
   <string name="morphe_player_icon_style_entry_bold">Gras</string>
-  <string name="morphe_shorts_icon_style_title">Style de l\'icône Shorts</string>
+  <string name="morphe_shorts_icon_style_title">Style d\'icône Shorts</string>
 </resources>

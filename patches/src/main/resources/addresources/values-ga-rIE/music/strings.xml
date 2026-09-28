@@ -180,6 +180,10 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <string name="morphe_music_remember_repeat_state_title">Cuimhnigh ar an staid athrá</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Cuimhnigh ar an staid mheasctha</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Luas athsheinm</string>
+  <string name="morphe_music_playback_speed_summary">Luas a úsáidtear do gach rian. Ag 100% úsáidtear luas an aip, amhail luas athsheinm an phodchraolta</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Athraigh an airde le luas</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Díchumasaigh atreorú \"díomá\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Coscann sé léim go dtí an chéad rian eile nuair a bhrúitear an cnaipe \'Ní maith liom\'</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <string name="morphe_change_start_page_entry_subscriptions">Síntiúis</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Folaigh barra scagaire</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Cuir treoshuíomh portráide i bhfeidhm</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Coinníonn an aip i dtreoshuíomh portráide nuair a rothlaítear an gléas</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Athraigh dath an mhion-imreora</string>
   <string name="morphe_music_change_miniplayer_color_summary">Meaitseálann sé dath an mhion-imreora leis an imreoir lánscáileáin</string>
@@ -426,7 +433,12 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_romanize_button_title">Taispeáin an cnaipe Rómhánaithe</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tapáil chun rómhánú a scoránú; brúigh fada le haghaidh rómhánú amháin. Úsáideann sé rómhánú an tsoláthraí, Google Translate, nó API atá comhoiriúnach le OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Taispeáin an cnaipe athnuachana</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Tapáil chun aistriú go dtí an chéad rogha eile d’fhocail an amhráin; brúigh go fada chun focail ó fhoinse sheachtrach a dhíghníomhachtú go sealadach agus na focail dhúchásacha a thaispeáint</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tapaigh chun aistriú go dtí an chéad iarrthóir liricí eile; brúigh fada chun liricí a chuardach de réir teideal amhráin agus ealaíontóra</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Cuardaigh liricí</string>
+  <string name="morphe_music_lyrics_search_title_hint">Teideal an amhráin</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Ealaíontóir</string>
+  <string name="morphe_music_lyrics_search_empty">Cuir isteach teideal amhráin agus ealaíontóir</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ní féidir le haon cheann de na soláthraithe atá cumasaithe cuardach a dhéanamh ar amhráin eile</string>
   <string name="morphe_music_lyrics_saved">Sábháilte</string>
   <string name="morphe_music_lyrics_word_sync_title">Aibhsigh focail nó siollaí sioncronaithe</string>
   <string name="morphe_music_lyrics_word_sync_summary">Tabhair tosaíocht do liricí a chuirtear i láthair focal ar fhocal nuair a bhíonn siad ar fáil. Nuair a bhíonn uainiú focal ag gabháil leis na liricí, déantar gach focal nó siolla a aibhsiú i gcomhthráth leis an gceol</string>
@@ -480,6 +492,7 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL pointe críochta API (m.sh. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Eochair API (fág folamh le haghaidh rochtain anaithnid)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Ainm samhail (m.sh. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Teimpléad leide (athróga: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Socruithe aistriúcháin AI sábháilte</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Níorbh fhéidir ceangal le pointe críochta AI. Seiceáil do shocruithe le do thoil.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Socruithe aistriúcháin AI athshocraithe</string>

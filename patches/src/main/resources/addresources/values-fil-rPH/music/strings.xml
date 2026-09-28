@@ -180,6 +180,10 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <string name="morphe_music_remember_repeat_state_title">Tandaan ang paulit-ulit na estado</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Tandaan ang shuffle na estado</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Bilis ng pag-playback</string>
+  <string name="morphe_music_playback_speed_summary">Bilis na ginagamit para sa lahat ng mga track. Sa 100%, ginagamit ang bilis ng app, gaya ng bilis ng pag-playback ng podcast</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Baguhin ang pitch ayon sa bilis</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Huwag paganahin ang pagpapalit ng direksyon ng hindi pagka gusto</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Pinipigilan ang paglaktaw sa susunod na track kapag pinindot ang pindutang hindi pagka gusto</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <string name="morphe_change_start_page_entry_subscriptions">Subkripsyon</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Itago ang filter bar</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Pilitin ang portrait na oryentasyon</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Pinapanatili ang app sa portrait na oryentasyon kapag iniikot ang device</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Baguhin ang kulay ng miniplayer</string>
   <string name="morphe_music_change_miniplayer_color_summary">Tumutugma sa fullscreen na manlalaro ang kulay ng miniplayer</string>
@@ -421,7 +428,12 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_show_romanize_button_title">Ipakita ang Romanize button</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">I-tap upang i-toggle ang romanisasyon; pindutin nang matagal para sa romanisasyon lamang. Gumagamit ng romanisasyon mula sa provider, Google Translate, o isang API na katugma ng OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ipakita ang button na Refresh</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">I-highlight ang mga naka-sync na salita o pantig.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">I-tap upang lumipat sa susunod na kandidatong lyrics; pindutin nang matagal upang maghanap ng lyrics sa pamamagitan ng pamagat ng kanta at ng artist</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Maghanap ng lyrics</string>
+  <string name="morphe_music_lyrics_search_title_hint">Pamagat ng kanta</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
+  <string name="morphe_music_lyrics_search_empty">Maglagay ng pamagat ng kanta at ng artist</string>
+  <string name="morphe_music_lyrics_search_no_providers">Wala sa mga pinaganang provider ang makakapaghanap ng iba pang mga kanta</string>
   <string name="morphe_music_lyrics_saved">Na-save</string>
   <string name="morphe_music_lyrics_word_sync_title">I-highlight ang mga salita o pantig na naka-sync</string>
   <string name="morphe_music_lyrics_word_sync_summary">Unahin ang word-by-word na lyrics kung available. Kapag may word timing ang lyrics, ine-highlight ang bawat salita o pantig na kasabay ng musika.</string>
@@ -475,6 +487,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ng API endpoint (hal. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (iwanang walang laman para sa anonymous na pag-access)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Pangalan ng modelo (hal. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Template ng prompt (mga variable: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Na-save ang mga setting ng pagsasalin ng AI</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Hindi makakonekta sa AI endpoint. Pakisuri ang iyong mga setting.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Na-reset ang mga setting ng pagsasalin ng AI</string>

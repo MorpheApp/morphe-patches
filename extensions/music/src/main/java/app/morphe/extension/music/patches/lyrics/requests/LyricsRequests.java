@@ -8,8 +8,10 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -22,6 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -266,6 +269,131 @@ public final class LyricsRequests {
             }
         }
         lastRequestTime.set(System.currentTimeMillis());
+    }
+
+    public static final class MusicBrainzClient {
+
+        private static final String BASE_URL = "https://musicbrainz.org/ws/2/";
+
+        private static final long REQUEST_THROTTLE_MS = 1100;
+
+        private static final int RESULT_LIMIT = 10;
+
+        private static final AtomicLong lastRequestTime = new AtomicLong();
+
+        private MusicBrainzClient() {
+        }
+
+        /** Recording titles matching {@code query}, most relevant first, de-duplicated. */
+        @NonNull
+        public static List<String> suggestTitles(@NonNull String query) {
+            String clause = phrase("recording", query);
+            if (clause == null) {
+                return List.of();
+            }
+            String url = BASE_URL + "recording?query=" + clause
+                    + "&fmt=json&limit=" + RESULT_LIMIT;
+            try {
+                JSONArray recordings = search(url).optJSONArray("recordings");
+                if (recordings == null) {
+                    return List.of();
+                }
+                LinkedHashSet<String> titles = new LinkedHashSet<>();
+                for (int i = 0; i < recordings.length(); i++) {
+                    JSONObject recording = recordings.optJSONObject(i);
+                    if (recording == null) {
+                        continue;
+                    }
+                    String title = recording.optString("title", "").trim();
+                    if (!title.isEmpty()) {
+                        titles.add(title);
+                    }
+                }
+                return List.copyOf(titles);
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "MusicBrainz title suggestions failed", ex);
+                return List.of();
+            }
+        }
+
+        /** Artist names and aliases matching {@code query}, de-duplicated. */
+        @NonNull
+        public static List<String> suggestArtists(@NonNull String query) {
+            String clause = phrase("artist", query);
+            if (clause == null) {
+                return List.of();
+            }
+            String url = BASE_URL + "artist?query=" + clause
+                    + "&fmt=json&limit=" + RESULT_LIMIT;
+            try {
+                JSONArray artists = search(url).optJSONArray("artists");
+                if (artists == null) {
+                    return List.of();
+                }
+                LinkedHashSet<String> names = new LinkedHashSet<>();
+                for (int i = 0; i < artists.length(); i++) {
+                    JSONObject artist = artists.optJSONObject(i);
+                    if (artist == null) {
+                        continue;
+                    }
+                    String name = artist.optString("name", "").trim();
+                    if (!name.isEmpty()) {
+                        names.add(name);
+                    }
+                    JSONArray aliases = artist.optJSONArray("aliases");
+                    if (aliases == null) {
+                        continue;
+                    }
+                    for (int j = 0; j < aliases.length(); j++) {
+                        JSONObject alias = aliases.optJSONObject(j);
+                        if (alias == null) {
+                            continue;
+                        }
+                        String aliasName = alias.optString("name", "").trim();
+                        if (!aliasName.isEmpty()) {
+                            names.add(aliasName);
+                        }
+                    }
+                }
+                return List.copyOf(names);
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "MusicBrainz artist suggestions failed", ex);
+                return List.of();
+            }
+        }
+
+        private static JSONObject search(String url) throws Exception {
+            throttle(lastRequestTime, REQUEST_THROTTLE_MS);
+            HttpURLConnection connection = openConnection(url);
+            try {
+                if (connection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                    return new JSONObject();
+                }
+                return parseGzipJsonObject(connection);
+            } finally {
+                connection.disconnect();
+            }
+        }
+
+        /**
+         * The Lucene {@code field:"phrase"} clause for the query, URL encoded, or null when the
+         * query says nothing or cannot be encoded. Only quotes and backslashes would end a quoted
+         * phrase, so everything else in the typed term is kept as it is.
+         */
+        @Nullable
+        private static String phrase(String field, String query) {
+            String trimmed = query == null ? "" : query.trim();
+            String cleaned = trimmed.replace("\\", " ").replace("\"", " ").trim();
+            if (cleaned.isEmpty()) {
+                return null;
+            }
+            try {
+                return encode(field + ":\"" + cleaned + "\"");
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "MusicBrainz query encoding failed", ex);
+                return null;
+            }
+        }
     }
 
     public static final int SOFT_MIN = 2;
@@ -541,12 +669,14 @@ public final class LyricsRequests {
             if (Character.isLetterOrDigit(cp)) {
                 cur.appendCodePoint(cp);
             } else {
+                //noinspection SizeReplaceableByIsEmpty
                 if (cur.length() > 0) {
                     out.add(cur.toString());
                     cur.setLength(0);
                 }
             }
         }
+        //noinspection SizeReplaceableByIsEmpty
         if (cur.length() > 0) {
             out.add(cur.toString());
         }
@@ -579,11 +709,6 @@ public final class LyricsRequests {
     public static MatchVerdict evaluate(String title, String artist, long durationSec,
                                         TrackInfo track) {
         return prepare(track).evaluate(title, artist, durationSec, null);
-    }
-
-    public static MatchVerdict evaluate(String title, String artist, long durationSec,
-                                        @Nullable String album, TrackInfo track) {
-        return prepare(track).evaluate(title, artist, durationSec, album);
     }
 
     public static int scoreTrackCandidate(String title, String artist, long durationSec,

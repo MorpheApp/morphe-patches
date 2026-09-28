@@ -398,13 +398,13 @@ AIについて議論するだけのチャンネルや、動画の一部にだけ
   <string name="morphe_channel_search_results">チャンネル内の検索結果</string>
   <string name="morphe_channel_search_no_results">このチャンネルでは見つかりませんでした</string>
   <string name="morphe_channel_search_failed">このチャンネル内を検索できませんでした</string>
-  <string name="morphe_channel_search_sort_relevance">関連性</string>
-  <string name="morphe_channel_search_sort_most_viewed">再生回数が多い</string>
-  <string name="morphe_channel_search_sort_least_viewed">再生回数が少ない</string>
+  <string name="morphe_channel_search_sort_relevance">関連度順</string>
+  <string name="morphe_channel_search_sort_most_viewed">視聴回数が多い順</string>
+  <string name="morphe_channel_search_sort_least_viewed">視聴回数が少ない順</string>
   <string name="morphe_channel_search_sort_newest">新しい順</string>
   <string name="morphe_channel_search_sort_oldest">古い順</string>
-  <string name="morphe_channel_search_sort_shortest">Short の短い順</string>
-  <string name="morphe_channel_search_sort_longest">長い順</string>
+  <string name="morphe_channel_search_sort_shortest">再生時間が短い順</string>
+  <string name="morphe_channel_search_sort_longest">再生時間が長い順</string>
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">タイムスタンプ付きリンクをコピーしました</string>
@@ -691,6 +691,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_hide_ask_button_title">「質問する」ボタンを非表示</string>
   <string name="morphe_hide_channel_profile_button_title">チャンネルとチャンネル登録ボタンを非表示</string>
   <string name="morphe_hide_channel_profile_button_summary">アクションバーの先頭にあるチャンネルのアバターとチャンネル登録ボタンを非表示にします</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">チャンネル カード セクション内のチャンネル登録ボタンを非表示</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">アクションバーの先頭にあるチャンネルアバターの横の「チャンネル登録」ボタンと「メンバーになる」ボタンを非表示にします</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">クリップボタンを非表示</string>
   <string name="morphe_hide_clip_button_summary">この機能は、一部のユーザー アカウントでは正常に動作しない場合があります</string>
@@ -945,7 +947,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_exit_fullscreen_entry_4">縦画面 &amp; 横画面</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <string name="morphe_force_fullscreen_landscape_title">横向きの全画面表示を有効化</string>
-  <string name="morphe_force_fullscreen_landscape_summary">プレーヤーの映像を横向きに回転して表示する全画面表示を、大画面でも有効にします。通常のスマートフォン サイズの画面での動作を、タブレットなどの大画面で再現する機能のため、利用可能なのは大画面デバイスのみです</string>
+  <string name="morphe_force_fullscreen_landscape_summary">プレーヤーの映像を回転して横向きに表示する全画面表示を、大画面でも有効にします。通常のスマートフォン サイズの画面での動作を、タブレットなどの大画面で再現する機能のため、利用可能なのは大画面デバイスのみです</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">全画面表示ジェスチャー</string>
   <string name="morphe_disable_fullscreen_gestures_summary">全画面表示モードに関連するジェスチャー</string>
@@ -1006,6 +1008,7 @@ Automotive レイアウト
   <string name="morphe_tablet_layout_in_player_summary">"動画プレーヤーのレイアウトを以前のスタイルに戻します
 
 制限事項: [アクションバーを旧仕様に戻す] がオフのとき、「その他の動画」オーバーレイが表示されない場合があります"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">これを有効にすると、コメント欄やプレーヤーの下に表示される「その他の動画」など、一部のプレーヤーのレイアウト機能が壊れる可能性があります。</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - 字幕の動作を旧仕様に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 -「再生リストに保存」を旧仕様に戻す</string>
@@ -1097,6 +1100,9 @@ Automotive レイアウト
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">「戻る」ボタンでアプリを終了</string>
   <string name="morphe_back_button_always_exits_feed_summary">ホームタブで「戻る」ボタンをタップしたときに、ホームフィードのスクロール位置が最上部ではない場合でも、最上部にスクロールせずに常にアプリを終了します</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">ステータスバーを非表示</string>
+  <string name="morphe_hide_status_bar_summary">システムのステータスバーを非表示にします。上端から下にスワイプすると、一時的に表示できます</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">ライトモードのテーマ</string>
   <string name="morphe_theme_color_light_entry_2">ホワイト</string>
@@ -1207,7 +1213,7 @@ Automotive レイアウト
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">画質ボタンを表示</string>
   <string name="morphe_video_quality_dialog_button_summary">長押しすると、画質をデフォルトの値にリセットします</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">画質ボタンに解像度を表示する</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">画質ボタンに解像度を表示</string>
   <string name="morphe_video_quality_dialog_button_resolution_summary">FHDなどのラベルの代わりに、1080などの解像度を表示する</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">カスタム再生速度メニュー</string>
@@ -1298,10 +1304,10 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
 
 制限事項:「その他の動画」オーバーレイも以前のスタイルに戻ります"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
-  <string name="morphe_player_icon_style_title">プレイヤーアイコンのスタイル</string>
+  <string name="morphe_player_icon_style_title">プレーヤー アイコンのスタイル</string>
   <string name="morphe_player_icon_style_entry_auto">自動</string>
   <string name="morphe_player_icon_style_entry_default">デフォルト</string>
-  <string name="morphe_player_icon_style_entry_regular">細い</string>
-  <string name="morphe_player_icon_style_entry_bold">太い</string>
-  <string name="morphe_shorts_icon_style_title">Short アイコンスタイル</string>
+  <string name="morphe_player_icon_style_entry_regular">細字</string>
+  <string name="morphe_player_icon_style_entry_bold">太字</string>
+  <string name="morphe_shorts_icon_style_title">ショート アイコンのスタイル</string>
 </resources>

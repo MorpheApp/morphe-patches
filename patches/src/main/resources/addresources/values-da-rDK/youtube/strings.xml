@@ -691,6 +691,8 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_hide_ask_button_title">Skjul Spørg-knappen</string>
   <string name="morphe_hide_channel_profile_button_title">Skjul kanal og Abonner-knap</string>
   <string name="morphe_hide_channel_profile_button_summary">Skjuler kanalens avatar og Abonner-knappen i starten af handlingslinjen</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Skjul knappen Abonnér</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Skjuler knapperne Abonner og Bliv medlem ved siden af kanalavataren i starten af handlingslinjen.</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Aktivér undertekstcookies</string>
   <string name="morphe_hide_clip_button_summary">Denne skjulfunktion fungerer måske ikke for nogle brugerkonti</string>
@@ -1003,6 +1005,7 @@ Bil layout
   <string name="morphe_tablet_layout_in_player_summary">"Gendanner det gamle layout for afspilleren
 
 Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere videoer'-overlejringen muligvis ikke tilgængelig"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Aktivering af dette kan ødelægge nogle layoutfunktioner i afspilleren, f.eks. kommentarsektionen eller \'Flere videoer\', der vises under afspilleren.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Genopret den gamle adfærd for undertekster</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - gendan old save til spilleliste</string>
@@ -1094,6 +1097,9 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tilbageknappen forlader feedet</string>
   <string name="morphe_back_button_always_exits_feed_summary">Tryk på tilbage afslutter altid appen i stedet for at rulle til toppen af feedet</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Skjul statuslinjen</string>
+  <string name="morphe_hide_status_bar_summary">Skjuler systemets statuslinje. Stryg ned fra den øverste kant for at vise den et øjeblik</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Lyst tema baggrund</string>
   <string name="morphe_theme_color_light_entry_2">Hvid</string>

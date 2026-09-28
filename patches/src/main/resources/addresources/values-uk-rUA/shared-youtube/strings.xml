@@ -137,12 +137,12 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">Ви вийшли з Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недійсний токен входу у VR, спробуйте ввійти у VR ще раз</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Елементи керування медіа в сповіщеннях</string>
-  <string name="morphe_notification_media_screen_summary">Налаштування елементів керування відтворенням на екрані блокування та в панелі сповіщень</string>
+  <string name="morphe_notification_media_screen_title">Керування медіа в сповіщеннях</string>
+  <string name="morphe_notification_media_screen_summary">Налаштуйте елементи керування відтворенням на екрані блокування та панелі сповіщень</string>
   <string name="morphe_hide_notification_media_prev_next_title">Приховати кнопки Попереднє та Наступне</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Приховує кнопки \"Попереднє\" та \"Наступне\" у сповіщеннях медіаплеєра, на екрані блокування та в елементах керування навушниками</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Вимкнути повзунок</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Запобігає перетягуванню смуги відтворення на екрані блокування та в панелі сповіщень</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Приховує кнопки \"Попередній\" та \"Наступний\" у сповіщеннях медіа, на екрані блокування та в елементах керування навушниками</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Вимкнути смугу перемотування</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Запобігає перетягуванню смуги перемотування на екрані блокування та панелі сповіщень</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Вимкнути протокол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

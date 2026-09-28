@@ -150,6 +150,7 @@ public final class VideoActionButtonsFilter extends Filter {
     private final StringFilterGroup actionBarGroup;
     private final StringFilterGroup likeSubscribeGlow;
     private final StringFilterGroup moreButton;
+    private final StringFilterGroup subscribeButton;
     private final StringFilterGroupList accessibilityGroupList = new StringFilterGroupList();
     private final ByteArrayFilterGroupList bufferGroupList = new ByteArrayFilterGroupList();
 
@@ -170,7 +171,12 @@ public final class VideoActionButtonsFilter extends Filter {
                 MORE_BUTTON_PATH
         );
 
-        addPathCallbacks(likeSubscribeGlow, moreButton);
+        subscribeButton = new StringFilterGroup(
+                Settings.HIDE_CHANNEL_PROFILE_SUBSCRIBE_BUTTON,
+                "|compact_channel_bar_animated_buttons.e"
+        );
+
+        addPathCallbacks(likeSubscribeGlow, moreButton, subscribeButton);
 
         //
         // All other action buttons.
@@ -217,6 +223,9 @@ public final class VideoActionButtonsFilter extends Filter {
             return Utils.startsWithAny(path, COMPACT_CHANNEL_BAR_PREFIX, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
         } else if (matchedGroup == moreButton) {
             return true;
+        } else if (matchedGroup == subscribeButton) {
+            // Only the Subscribe and Join buttons next to the channel avatar in the action bar.
+            return Utils.startsWithAny(path, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
         } else if (matchedGroup == actionBarGroup) {
             if (Settings.HIDE_ACTION_BAR.get() || accessibilityGroupList.check(accessibility).isFiltered()) {
                 return true;

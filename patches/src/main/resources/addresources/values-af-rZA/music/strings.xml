@@ -180,6 +180,10 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_music_remember_repeat_state_title">Onthou herhalingsstatus</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Onthou skakelstatus</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Afspeelspoed</string>
+  <string name="morphe_music_playback_speed_summary">Spoed wat vir alle snitte gebruik word. Teen 100% word die toepassing se spoed gebruik, soos die podcast-afspeelspoed</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Verander toonhoogte saam met afspeelspoed</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiveer die afkeur-hertoekenning</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Voorkom dat na die volgende snitspring wanneer die afkeur-knoppie gedruk word</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_change_start_page_entry_subscriptions">Inskrywings</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Versteek filterbalk</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Dwing portretoriëntasie</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Hou die toep in portretoriëntasie wanneer die toestel gedraai word</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Verander miniplayer-kleur</string>
   <string name="morphe_music_change_miniplayer_color_summary">Pas die mini-speler se kleur aan die volskerm-speler se kleur aan</string>
@@ -421,7 +428,12 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_romanize_button_title">Wys romaniseer-knoppie</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tik om romanisering te wissel; druk lank vir slegs romanisering. Gebruik die verskaffer se romanisering, Google Translate, of \'n OpenAI-versoenbare API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Wys verfris-knoppie</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Raak om na die volgende liriekkandidaat te wissel; […] :\"Gestoor\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tik om na die volgende lirieke-kandidaat oor te skakel; langdruk om lirieke volgens liedjietitel en kunstenaar te soek</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Soek lirieke</string>
+  <string name="morphe_music_lyrics_search_title_hint">Liedtitel</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Kunstenaar</string>
+  <string name="morphe_music_lyrics_search_empty">Voer \'n liedtitel en \'n kunstenaar in</string>
+  <string name="morphe_music_lyrics_search_no_providers">Geen van die geaktiveerde verskaffers kan na ander liedjies soek nie</string>
   <string name="morphe_music_lyrics_saved">Gestoor</string>
   <string name="morphe_music_lyrics_word_sync_title">Raak aan ▲/▼ om die prioriteitsorde te stel, en die blokkie om elke verskaffer te aktiveer of deaktiveer.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Alle verskaffers gedeaktiveer — ingeboude lirieke en ingebedde lirieke.</string>
@@ -475,6 +487,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-eindpunt URL (bv. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-sleutel (los leeg vir anonieme toegang)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modelnaam (bv. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Promptsjabloon (veranderlikes: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI-vertaalinstellings gestoor</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Kon nie aan AI-eindpunt koppel nie. Kontroleer asseblief jou instellings.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI-vertaalinstellings terugstel</string>

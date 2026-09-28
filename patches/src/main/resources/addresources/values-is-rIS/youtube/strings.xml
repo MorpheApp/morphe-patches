@@ -689,6 +689,8 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_hide_ask_button_title">Felur Spyrja hnappinn</string>
   <string name="morphe_hide_channel_profile_button_title">Fela rás og áskriftarhnapp</string>
   <string name="morphe_hide_channel_profile_button_summary">Felur sniðsmynd rásar og áskriftarhnappinn í byrjun aðgerðastikunnar</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Fela áskriftarhnapp</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Felur áskriftar- og meðlimahnappana við hliðina á prófílmynd rásarinnar í byrjun aðgerðastikunnar</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Felur Clip hnappinn</string>
   <string name="morphe_hide_clip_button_summary">Þetta virkar kannski ekki fyrir sum notendareikninga</string>
@@ -1000,6 +1002,7 @@ Bílaútlit
   <string name="morphe_tablet_layout_in_player_summary">"Endurskipar gamla útlit spilarans
 
 Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleiri myndbönd' lagskiptarinn ekki verið tiltæk"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Ef þetta er virkjað getur það brotið suma spilaraútlitseiginleika, eins og athugasemdahlutann eða \'Fleiri myndbönd\' sem birtast fyrir neðan spilarann.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Endurheimta gamla textahegðun</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Endursafnaðu gamla vistun á spilalista</string>
@@ -1091,6 +1094,9 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Til baka-hnappur fer út úr straumnum</string>
   <string name="morphe_back_button_always_exits_feed_summary">Að ýta á til baka fer alltaf út úr appinu í stað þess að skrilla upp efst í strauminn</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Fela stöðustikuna</string>
+  <string name="morphe_hide_status_bar_summary">Felur stöðustiku kerfisins. Strjúktu niður frá efri brúninni til að sýna hana í smá stund</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Ljósþemabakgrunnur</string>
   <string name="morphe_theme_color_light_entry_2">Hvítur</string>

@@ -691,6 +691,8 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_hide_ask_button_title">Kérdés gomb elrejtése</string>
   <string name="morphe_hide_channel_profile_button_title">Csatorna és Feliratkozás gomb elrejtése</string>
   <string name="morphe_hide_channel_profile_button_summary">Elrejti a csatorna avatárját és a Feliratkozás gombot a műveletsáv elején</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Feliratkozás gomb elrejtése</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Elrejti a Feliratkozás és Csatlakozás gombokat a csatorna avatarja mellett a műveletsáv elején</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Vágás gomb elrejtése</string>
   <string name="morphe_hide_clip_button_summary">Előfordulhat, hogy ez nem működik egyes felhasználói fiókoknál.</string>
@@ -1005,6 +1007,7 @@ Autós elrendezés
   <string name="morphe_tablet_layout_in_player_summary">"A régi lejátszó elrendezés visszaállítása
 
 Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapcsolva, a „További videók” réteg nem jelenhet meg."</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Ennek engedélyezése megtörheti a lejátszó elrendezésének egyes funkcióit, például a hozzászólások szakaszát vagy a lejátszó alatt megjelenő „További videók” részt.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - A régi felirat-viselkedés visszaállítása</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Visszaállítjuk az régi mentést a lejátslóba</string>
@@ -1096,6 +1099,9 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Kilépés a kezdőoldalról a vissza gombbal</string>
   <string name="morphe_back_button_always_exits_feed_summary">A vissza gomb megnyomása esetén kilép az alkalmazásból a kezdőoldal tetejére görgetés helyett</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Állapotsor elrejtése</string>
+  <string name="morphe_hide_status_bar_summary">Elrejti a rendszer állapotsorát. Húzza le az ujját a felső szélétől, hogy egy pillanatra megjelenjen</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Világos téma háttér</string>
   <string name="morphe_theme_color_light_entry_2">Fehér</string>

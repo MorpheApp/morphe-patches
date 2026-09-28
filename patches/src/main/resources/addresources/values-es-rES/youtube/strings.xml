@@ -77,8 +77,8 @@ Los cambios incluyen:
   <string name="morphe_hide_get_premium_button_title">Ocultar botón \'Obtener Premium\'</string>
   <string name="morphe_hide_history_shelf_title">Ocultar estantería Historial</string>
   <string name="morphe_hide_history_shelf_summary">Oculta la estantería Historial en la pestaña Tú</string>
-  <string name="morphe_hide_horizontal_shelves_title">Ocultar secciones horizontales</string>
-  <string name="morphe_hide_horizontal_shelves_summary">Oculta secciones horizontales como Noticias de última hora, Publicaciones de la comunidad que te pueden gustar, Continuar viendo, Explorar más canales, Explorar más temas, Para ti, Vídeos más recientes, Más relevante, Publicaciones de la comunidad del Creador, Compras y Volver a ver</string>
+  <string name="morphe_hide_horizontal_shelves_title">Ocultar estanterías horizontales</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Oculta estanterías horizontales como Noticias de última hora, Publicaciones de la comunidad que te pueden gustar, Continuar viendo, Explorar más canales, Explorar más temas, Para ti, Vídeos más recientes, Más relevante, Publicaciones de la comunidad del Creador, Compras y Volver a ver</string>
   <string name="morphe_hide_hyped_label_title">Ocultar etiqueta Hypeado</string>
   <string name="morphe_hide_image_shelf_title">Ocultar estantería de imágenes</string>
   <string name="morphe_hide_image_shelf_summary">Oculta las estanterías de imágenes en los resultados de búsqueda</string>
@@ -115,7 +115,7 @@ Los cambios incluyen:
   <string name="morphe_hide_upload_time_title">Ocultar hora de subida</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
   <string name="morphe_hide_upload_time_summary">"Limitaciones:
-• Las secciones de Shorts, las páginas de los canales y los resultados de búsqueda pueden seguir mostrando los tiempos de subida.
+• Las estanterías de Shorts, las páginas de los canales y los resultados de búsqueda pueden seguir mostrando los tiempos de subida.
 • Esta función no es compatible con el diseño para automóviles."</string>
   <string name="morphe_hide_video_thumbnail_title">Ocultar miniatura de vídeo</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -124,7 +124,7 @@ Los cambios incluyen:
   <string name="morphe_hide_view_count_title">Ocultar recuento de visualizaciones</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Limitaciones:
-• Las secciones de Shorts, las páginas de los canales y los resultados de búsqueda pueden seguir mostrando el número de visualizaciones.
+• Las estanterías de Shorts, las páginas de los canales y los resultados de búsqueda pueden seguir mostrando el número de visualizaciones.
 • Esta función no es compatible con el diseño para automóviles."</string>
   <string name="morphe_hide_web_search_results_title">Ocultar resultados de búsqueda web</string>
   <string name="morphe_hide_web_search_results_summary">Oculta la sección \'Resultado de la web\' de los resultados de búsqueda</string>
@@ -159,8 +159,8 @@ Los cambios incluyen:
   <string name="morphe_hide_timed_reactions_summary">Oculta la función que permite a los usuarios reaccionar con emojis en la sección de comentarios y el chat en directo</string>
   <string name="morphe_hide_video_title_title">Ocultar título de vídeo</string>
   <string name="morphe_hide_video_title_summary">Oculta el título del vídeo en el modo de pantalla completa</string>
-  <string name="morphe_sanitize_video_subtitle_title">Desinfectar subtítulos de vídeo</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Desinfecta frases como \'#\', \'Recaudación de fondos\', \'Tienda\' y \'productos\' de los subtítulos de los vídeos</string>
+  <string name="morphe_sanitize_video_subtitle_title">Limpiar subtítulos de vídeo</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Limpia frases como \'#\', \'Recaudación de fondos\', \'Tienda\' y \'productos\' de los subtítulos de los vídeos</string>
   <string name="morphe_hide_description_components_screen_title">Descripción del vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Elige qué componentes aparecen en la descripción del vídeo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar sección \'Resumen de vídeo generado por IA\'</string>
@@ -278,8 +278,8 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_timestamp_button_title">Ocultar botón de marca de tiempo</string>
   <string name="morphe_hide_comments_top_fans_button_title">Ocultar botón \'Top Fans\'</string>
   <string name="morphe_hide_comments_translate_button_title">Ocultar botón Traducir</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_title">Desinfectar enlaces de búsqueda resaltados</string>
-  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Desinfecta los enlaces de búsqueda resaltados, dejando solo el texto sin formato original</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_title">Limpiar enlaces de búsqueda resaltados</string>
+  <string name="morphe_sanitize_comments_highlighted_search_links_summary">Limpia los enlaces de búsqueda resaltados, dejando solo el texto original sin formato</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtro de palabras clave</string>
   <string name="morphe_hide_keyword_content_screen_summary">Elige palabras o frases específicas para ocultar vídeos en los feeds y en los resultados de búsqueda</string>
   <string name="morphe_hide_keyword_content_comments_title">Ocultar comentarios por palabras clave</string>
@@ -409,7 +409,7 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_share_copy_link_button_success">Enlace copiado al portapapeles</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">Enlace con marca de tiempo copiado al portapapeles</string>
   <string name="morphe_copy_video_link_button_title">Mostrar botón \'Copiar enlace del vídeo\'</string>
-  <string name="morphe_copy_video_link_button_summary">Pulsa para copiar el enlace del vídeo, toca y mantén pulsado para copiar con la marca de tiempo</string>
+  <string name="morphe_copy_video_link_button_summary">Pulsa para copiar el enlace del vídeo, mantén pulsado para copiar con la marca de tiempo</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Copia la marca de tiempo por defecto</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Intercambia las acciones de pulsar y de tocar y mantener pulsado del botón \'Copiar enlace del vídeo\'</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -445,7 +445,7 @@ Pulsa aquí para abrir MyMemory.translated.net."</string>
   <string name="morphe_vot_mymemory_email_summary">Opcional. Introduce tu dirección de correo electrónico de MyMemory para aumentar el límite diario de 5000 a 50.000 caracteres. Déjalo vacío para utilizar el límite anónimo</string>
   <string name="morphe_vot_openrouter_info_summary">"Traducción con IA de pago mediante OpenRouter. Recarga saldo una sola vez y traduce miles de vídeos. Mistral Nemo es la opción más económica, mientras que Gemma 4 ofrece la mayor calidad.
 
-Toca aquí para abrir OpenRouter.ai."</string>
+Pulsa aquí para abrir OpenRouter.ai"</string>
   <string name="morphe_vot_openrouter_api_key_title">Clave API de OpenRouter</string>
   <string name="morphe_vot_openrouter_api_key_summary">Tu clave de API de OpenRouter. Crea una clave en OpenRouter.ai &gt; Espacio de trabajo &gt; Claves de API</string>
   <string name="morphe_vot_openrouter_model_title">Modelo OpenRouter</string>
@@ -536,7 +536,7 @@ Información: Puede que no funcione en transmisiones en directo"</string>
   <string name="morphe_queue_restore_title">Mantener la cola entre sesiones</string>
   <string name="morphe_queue_restore_summary">La cola se mantiene después de reiniciar la aplicación</string>
   <string name="morphe_swap_save_and_queue_actions_title">Intercambiar las acciones Guardar y Añadir a la cola</string>
-  <string name="morphe_swap_save_and_queue_actions_summary">Toca para ver las opciones de cola, mantén pulsado para guardar en \'Ver más tarde\'</string>
+  <string name="morphe_swap_save_and_queue_actions_summary">Pulsa para ver las opciones de cola, mantén pulsado para guardar en \'Ver más tarde\'</string>
   <string name="morphe_queue_override_flyout_menu_title">Reemplazar botón de cola del menú flotante del feed</string>
   <string name="morphe_queue_override_flyout_menu_summary">Abre la cola de Morphe en lugar de la cola de YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Añadir Cola al menú flotante del feed</string>
@@ -597,7 +597,7 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_slide_to_seek_title">Activar deslizar para buscar</string>
   <string name="morphe_slide_to_seek_summary">Habilita el deslizamiento para buscar en lugar de reproducir a 2x velocidad al tocar y mantener pulsado el reproductor de vídeo</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
-  <string name="morphe_tap_to_seek_title">Activar tocar para buscar</string>
+  <string name="morphe_tap_to_seek_title">Activar pulsar para buscar</string>
   <string name="morphe_tap_to_seek_summary">Simplemente toca la barra de búsqueda para saltar a esa posición sin arrastrarla</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_left_zone_title">Gesto de deslizamiento izquierdo</string>
@@ -691,6 +691,8 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_hide_ask_button_title">Ocultar botón Preguntar</string>
   <string name="morphe_hide_channel_profile_button_title">Ocultar canal y botón Suscribirse</string>
   <string name="morphe_hide_channel_profile_button_summary">Oculta el avatar del canal y el botón Suscribirse al inicio de la barra de acción</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Ocultar botón Suscribirse</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Oculta los botones Suscribirse y Unirme junto al avatar del canal al inicio de la barra de acciones</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Ocultar botón Clip</string>
   <string name="morphe_hide_clip_button_summary">Es posible que esto no funcione para algunas cuentas de usuario</string>
@@ -734,7 +736,7 @@ Se deben proporcionar 'cookies de subtítulos'"</string>
   <string name="morphe_caption_cookies_summary">Cookies que se incluirán en las solicitudes a la API Timed Text (API de datos de subtítulos)</string>
   <string name="morphe_get_caption_cookies_title">Obtener cookies de subtítulos</string>
   <string name="morphe_get_caption_cookies_summary">Pulsa aquí para obtener cookies</string>
-  <string name="morphe_get_caption_cookies_failed">No se pudo obtener las cookies</string>
+  <string name="morphe_get_caption_cookies_failed">Error al obtener las cookies</string>
   <string name="morphe_get_caption_cookies_duplicate">Las cookies ya existen</string>
   <string name="morphe_get_caption_cookies_success">Las cookies se actualizaron correctamente</string>
   <!-- layout.captions.transcriptPatch -->
@@ -926,8 +928,8 @@ Configuración → Reproducción (o Reproducción automática) → Reproducción
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">Ocultar vídeos relacionados</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_player_related_videos_overlay_title">Ocultar superposición de vídeos relacionados</string>
-  <string name="morphe_hide_player_related_videos_overlay_summary">Oculta la superposición de vídeos relacionados que se muestra al deslizar hacia arriba en el modo de pantalla completa</string>
+  <string name="morphe_hide_player_related_videos_overlay_title">Ocultar superposición \'Más vídeos\'</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary">Oculta la superposición \'Más vídeos\' que se muestra al deslizar hacia arriba en el modo de pantalla completa</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">Ocultar fecha y hora de vídeo</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -1005,6 +1007,7 @@ Diseño para automóviles
   <string name="morphe_tablet_layout_in_player_summary">"Restaura el diseño antiguo del reproductor
 
 Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está desactivada, es posible que la superposición 'Más vídeos' no esté disponible"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Activar esto puede hacer que algunas funciones del diseño del reproductor dejen de funcionar, como la sección de comentarios o \'Más vídeos\' debajo del reproductor.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Restaurar comportamiento antiguo de los subtítulos</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restaurar guardado antiguo de lista de reproducción</string>
@@ -1096,6 +1099,9 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">El botón Atrás cierra el feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Al pulsar Atrás, la aplicación siempre se cierra en lugar de desplazarse al principio del feed</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Ocultar barra de estado</string>
+  <string name="morphe_hide_status_bar_summary">Oculta la barra de estado del sistema. Desliza hacia abajo desde el borde superior para mostrarla un momento</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Fondo del tema claro</string>
   <string name="morphe_theme_color_light_entry_2">Blanco</string>
@@ -1145,11 +1151,11 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
 
 Si se activa, las URL de vídeo se enviarán al servidor de la API y no se enviará ningún otro dato. Si un vídeo no tiene miniaturas de DeArrow, entonces se muestran las capturas originales o fijas
 
-Pulsa aquí para saber más sobre DeArrow"</string>
+Pulsa aquí para abrir DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Mostrar alertas de error de conexión</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Muestra una notificación cuando el servidor de DeArrow no está disponible</string>
-  <string name="morphe_alt_thumbnail_dearrow_api_url_title">Endpoint de la API de DeArrow</string>
-  <string name="morphe_alt_thumbnail_dearrow_api_url_summary">La URL del Endpoint de la caché de miniaturas de DeArrow</string>
+  <string name="morphe_alt_thumbnail_dearrow_api_url_title">Punto de conexión de la API de DeArrow</string>
+  <string name="morphe_alt_thumbnail_dearrow_api_url_summary">La URL del punto de conexión de la caché de miniaturas de DeArrow</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Capturas de vídeo fijas</string>
   <string name="morphe_alt_thumbnail_stills_about_summary">Las capturas fijas se toman del principio, la mitad o el final de cada vídeo. Estas imágenes están integradas en YouTube y no se utiliza ninguna API externa</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">Usar capturas fijas rápidas</string>
@@ -1299,10 +1305,10 @@ La reproducción de vídeo con AV1 se puede atascar o perder fotogramas."</strin
 
 Limitación: Vuelve al antiguo estilo de superposición de 'Más vídeos'"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
-  <string name="morphe_player_icon_style_title">Estilo del icono del reproductor</string>
+  <string name="morphe_player_icon_style_title">Estilo de iconos del reproductor</string>
   <string name="morphe_player_icon_style_entry_auto">Automático</string>
   <string name="morphe_player_icon_style_entry_default">Predeterminado</string>
-  <string name="morphe_player_icon_style_entry_regular">Delgado</string>
-  <string name="morphe_player_icon_style_entry_bold">Ancho</string>
-  <string name="morphe_shorts_icon_style_title">Estilo del icono de Shorts</string>
+  <string name="morphe_player_icon_style_entry_regular">Fino</string>
+  <string name="morphe_player_icon_style_entry_bold">Grueso</string>
+  <string name="morphe_shorts_icon_style_title">Estilo de iconos de Shorts</string>
 </resources>

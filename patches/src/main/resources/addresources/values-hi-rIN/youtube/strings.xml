@@ -19,69 +19,69 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_screen_00_about_title">इसके बारे में</string>
-  <string name="morphe_settings_screen_01_ads_title">रекलाम</string>
-  <string name="morphe_settings_screen_02_alt_thumbnails_title">अल्टर्नेट थंबनेल्स</string>
-  <string name="morphe_settings_screen_03_feed_title">खाना</string>
+  <string name="morphe_settings_screen_01_ads_title">विज्ञापन</string>
+  <string name="morphe_settings_screen_02_alt_thumbnails_title">वैकल्पिक थंबनेल</string>
+  <string name="morphe_settings_screen_03_feed_title">फ़ीड</string>
   <string name="morphe_settings_screen_04_general_title">सामान्य</string>
   <string name="morphe_settings_screen_05_player_title">प्लेयर</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">सीकबार</string>
-  <string name="morphe_settings_screen_08_swipe_controls_title">सвайप कंट्रोल्स</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">स्वाइप कंट्रोल्स</string>
   <string name="morphe_settings_screen_11_misc_title">अन्य</string>
   <string name="morphe_settings_screen_12_video_title">वीडियो</string>
-  <string name="morphe_restore_old_settings_menus_title">पुराने YouTube सेटिंग्स स्क्रीन को पुनर्स्थापित करें</string>
+  <string name="morphe_restore_old_settings_menus_title">पुरानी YouTube सेटिंग स्क्रीन वापस लाएँ</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
-  <string name="morphe_remove_background_playback_restrictions_title">पृष्ठभूमि प्लेबैक प्रतिबंध हटाएं</string>
-  <string name="morphe_shorts_disable_background_playback_title">बैकग्राउंड प्ले को अक्षम करें</string>
+  <string name="morphe_remove_background_playback_restrictions_title">बैकग्राउंड प्ले से पाबंदियाँ हटाएँ</string>
+  <string name="morphe_shorts_disable_background_playback_title">बैकग्राउंड प्ले बंद करें</string>
   <string name="morphe_auto_pause_on_screen_lock_title">डिवाइस लॉक होने पर ऑटो पॉज़ करें</string>
-  <string name="morphe_auto_pause_on_screen_lock_off">बंद</string>
+  <string name="morphe_auto_pause_on_screen_lock_off">बंद करें</string>
   <string name="morphe_auto_pause_on_screen_lock_always">लॉक होने पर हमेशा पॉज़ करें</string>
-  <string name="morphe_auto_pause_on_screen_lock_except_wireless">वायरलेस ऑडियो कनेक्ट होने के अलावा पॉज़ करें</string>
+  <string name="morphe_auto_pause_on_screen_lock_except_wireless">वायरलेस ऑडियो कनेक्ट न होने पर ही पॉज़ करें</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
-  <string name="morphe_disable_scrolling_speed_limit_title">स्क्रॉलिंग गति सीमा अक्षम करें</string>
+  <string name="morphe_disable_scrolling_speed_limit_title">स्क्रॉलिंग स्पीड लिमिट बंद करें</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">अपडेट लेआउट को अक्षम करना</string>
+  <string name="morphe_disable_layout_updates_title">लेआउट अपडेट बंद करें</string>
   <string name="morphe_disable_layout_updates_summary">सर्वर को ऐप लेआउट अपडेट करने से रोकता है</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"एप्लिकेशन का लेआउट पहली इंस्टॉल के समय उपयोग किए गए लेआउट पर वापस आ जाता है।
+  <string name="morphe_disable_layout_updates_user_dialog_message">"ऐप लेआउट पहली बार इंस्टॉल किए गए लेआउट पर वापस आ जाएगा।
 
-कुछ सर्वर-साइड लेआउट वापस नहीं आ सकते हैं।
+हो सकता है कुछ सर्वर-साइड लेआउट वापस न आएं।
 
 बदलावों में शामिल हैं:
-• प्लेयर फ्लाईआउट मेनू (या संबंधित सेटिंग्स) के घटक काम नहीं सकते हैं।
-• रोलिंग नंबर्स एनिमेट नहीं होते हैं।
-• लाइब्रेरी टैब दिखाई देता है।
-• वीडियो विवरण में म्यूज़िक सैक्शन काम नहीं सकता है।
-• प्लेयर फ्लाईआउट मेनू आइटम छिपाए नहीं जा सकते हैं।
-• लाइब्रेरी टैब पर अकाउंट स्विच बटन दिखाई नहीं देता है।"</string>
+• प्लेयर फ़्लाईआउट मेनू (या संबंधित सेटिंग्स) के घटक काम नहीं कर सकते हैं।
+• रोलिंग नंबर एनिमेट नहीं होंगे।
+• 'लाइब्रेरी' टैब दिखाई देगा।
+• वीडियो विवरण में म्यूज़िक सेक्शन काम नहीं कर सकता है।
+• प्लेयर फ़्लाईआउट मेनू के आइटम छिपाए नहीं जा सकेंगे।
+• लाइब्रेरी टैब पर अकाउंट स्विच बटन दिखाई नहीं दे सकता है।"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_feed_flyout_menu_title">फ़ीड फ़्लाईआउट मेनू फ़िल्टर को सक्षम करें</string>
+  <string name="morphe_hide_feed_flyout_menu_title">फ़ीड फ़्लाईआउट मेनू फ़िल्टर चालू करें</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">फ़ीड फ़्लाईआउट मेनू फ़िल्टर</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">फ़िल्टर करने के लिए फ़्लाउट मेनू नाम दर्ज करें, नई लाइनों से अलग किए गए</string>
-  <string name="morphe_hide_account_menu_title">लाइब्रेरी को सक्षम करें / आप नीचे मेनू फ़िल्टर</string>
-  <string name="morphe_hide_account_menu_filter_strings_title">लाइब्रेरी / आप नीचे मेनू फ़िल्टर</string>
-  <string name="morphe_hide_account_menu_filter_strings_summary">लाइब्रेरी / आप नीचे मेनू नामों को फ़िल्टर करने के लिए दर्ज करें, नई लाइनों से अलग करें</string>
-  <string name="morphe_hide_album_cards_title">अल्बम कार्ड छुपाएं</string>
-  <string name="morphe_hide_album_cards_summary">कलाकार विवरण के तहत एल्बम कार्ड को छुपाता है</string>
-  <string name="morphe_hide_artist_cards_title">अल्बम कार्ड छुपाएं</string>
-  <string name="morphe_hide_artist_cards_summary">खोज परिणामों के शीर्ष पर कलाकार कार्ड को छुपाता है</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">फ़िल्टर करने के लिए फ़्लाईआउट मेनू के नाम दर्ज करें, प्रत्येक नाम नई लाइन में</string>
+  <string name="morphe_hide_account_menu_title">लाइब्रेरी / आप निचला मेनू फ़िल्टर चालू करें</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">लाइब्रेरी / आप निचला मेनू फ़िल्टर</string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">फ़िल्टर करने के लिए लाइब्रेरी / आप निचले मेनू के नाम दर्ज करें, प्रत्येक नाम नई लाइन में</string>
+  <string name="morphe_hide_album_cards_title">एल्बम कार्ड छिपाएँ</string>
+  <string name="morphe_hide_album_cards_summary">कलाकार के विवरण के नीचे दिखने वाले एल्बम कार्ड छिपाता है</string>
+  <string name="morphe_hide_artist_cards_title">कलाकार कार्ड छिपाएँ</string>
+  <string name="morphe_hide_artist_cards_summary">सर्च नतीजों में सबसे ऊपर दिखने वाले कलाकार कार्ड छिपाता है</string>
   <string name="morphe_hide_auto_dubbed_label_title">\'ऑटो-डब\' लेबल छुपाएं</string>
   <string name="morphe_hide_community_posts_title">समुदाय पोस्ट छुपाएं</string>
-  <string name="morphe_hide_compact_banner_title">छुपाएं संक्षिप्त बैनर</string>
-  <string name="morphe_hide_compact_banner_summary">कॉम्पैक्ट बैनर और कुछ घटकों के बीच दूरी को छुपाता है</string>
-  <string name="morphe_hide_expandable_card_title">वीडियो के नीचे विस्तार योग्य कार्ड</string>
-  <string name="morphe_hide_expandable_card_entry_1">सभी दिखाएं</string>
+  <string name="morphe_hide_compact_banner_title">कॉम्पैक्ट बैनर छिपाएँ</string>
+  <string name="morphe_hide_compact_banner_summary">कॉम्पैक्ट बैनर और कुछ घटकों के बीच का खाली स्पेस छिपाता है</string>
+  <string name="morphe_hide_expandable_card_title">वीडियो के नीचे खुलने वाले कार्ड</string>
+  <string name="morphe_hide_expandable_card_entry_1">सभी दिखाएँ</string>
   <string name="morphe_hide_expandable_card_entry_2">सारांश कार्ड केवल छिपाएं</string>
   <string name="morphe_hide_expandable_card_entry_3">सभी छिपाएं</string>
-  <string name="morphe_hide_floating_microphone_button_title">छुपाएं तैरती माइक्रोफोन बटन</string>
-  <string name="morphe_hide_floating_microphone_button_summary">खोज सुझाव स्क्रीन के निचले-दाएं कोने में फ्लोटिंग माइक्रोफ़ोन बटन को छुपाता है</string>
-  <string name="morphe_hide_get_premium_button_title">\'Get Premium\' बटन छिपाएं</string>
+  <string name="morphe_hide_floating_microphone_button_title">फ़्लोटिंग माइक्रोफ़ोन बटन छिपाएँ</string>
+  <string name="morphe_hide_floating_microphone_button_summary">सर्च सुझाव स्क्रीन के नीचे दाईं ओर दिखने वाला फ़्लोटिंग माइक्रोफ़ोन बटन छिपाता है</string>
+  <string name="morphe_hide_get_premium_button_title">\'Premium की सदस्यता लें\' बटन छिपाएँ</string>
   <string name="morphe_hide_history_shelf_title">इतिहास शेल्फ़ छिपाएँ</string>
   <string name="morphe_hide_history_shelf_summary">आप टैब में इतिहास शेल्फ़ छिपाता है</string>
-  <string name="morphe_hide_horizontal_shelves_title">छुपाएं क्षैतिज रैक</string>
-  <string name="morphe_hide_horizontal_shelves_summary">ब्रेकिंग न्यूज़, कम्युनिटी पोस्ट जिन्हें आप पसंद कर सकते हैं, देखना जारी रखें, और अधिक चैनल देखें, और अधिक विषय देखें, आपके लिए, नवीनतम वीडियो, सबसे प्रासंगिक, क्रिएटर के कम्युनिटी से पोस्ट, शॉपिंग और फिर से देखें जैसे क्षैतिज शेल्फ़ को छुपाता है</string>
-  <string name="morphe_hide_hyped_label_title">हाइप लेबल छुपाएं</string>
-  <string name="morphe_hide_image_shelf_title">छिपाएं चित्र शेल्फ</string>
-  <string name="morphe_hide_image_shelf_summary">खोज परिणामों में छवि शेल्फ को छुपाता है</string>
+  <string name="morphe_hide_horizontal_shelves_title">हॉरिजॉन्टल शेल्फ़ छिपाएँ</string>
+  <string name="morphe_hide_horizontal_shelves_summary">ताज़ा खबरें, आपके पसंद आ सकने वाले पोस्ट, देखना जारी रखें, और चैनल एक्सप्लोर करें, और विषय एक्सप्लोर करें, आपके लिए, नए वीडियो, सबसे प्रासंगिक, क्रिएटर कम्युनिटी पोस्ट, शॉपिंग और दोबारा देखें जैसी हॉरिज़ॉन्टल शेल्फ़ छिपाता है</string>
+  <string name="morphe_hide_hyped_label_title">हाइप लेबल छिपाएँ</string>
+  <string name="morphe_hide_image_shelf_title">इमेज शेल्फ़ छिपाएँ</string>
+  <string name="morphe_hide_image_shelf_summary">सर्च नतीजों में इमेज शेल्फ़ छिपाता है</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
   <string name="morphe_hide_invite_to_message_card_title">\'संदेश के लिए अन्य लोगों को आमंत्रित करें\' कार्ड छुपाएं</string>
@@ -691,6 +691,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_ask_button_title">पूछें बटन छुपाएं</string>
   <string name="morphe_hide_channel_profile_button_title">चैनल और सब्सक्राइब बटन छिपाएँ</string>
   <string name="morphe_hide_channel_profile_button_summary">एक्शन बार की शुरुआत में चैनल अवतार और सब्सक्राइब बटन छिपाता है</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Subscribe बटन छिपाएँ</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">चैनल अवतार के बगल में एक्शन बार की शुरुआत में Subscribe और Join बटन छिपाता है</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">क्लिप बटन छुपाएं</string>
   <string name="morphe_hide_clip_button_summary">यह कुछ उपयोगकर्ता खातों के लिए काम नहीं कर सकता है।</string>
@@ -1005,6 +1007,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_tablet_layout_in_player_summary">"पुराने प्लेयर लेआउट को पुनर्स्थापित करता है
 
 सीमा: यदि 'पुराने वीडियो एक्शन बार को पुनर्स्थापित करें' बंद कर दिया गया है, तो 'अधिक वीडियो' ओवरले उपलब्ध नहीं हो सकता है"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">इसे चालू करने से प्लेयर लेआउट के कुछ फ़ीचर्स ठीक से काम न करें, जैसे कि टिप्पणियाँ या प्लेयर के नीचे दिखने वाले \'ज़्यादा वीडियो\'।</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - पुराने कैप्शन व्यवहार को पुनर्स्थापित करें</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुराने सेव को प्लेलिस्ट में पुन: स्थापित करें</string>
@@ -1096,6 +1099,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">बैक बटन फ़ीड से बाहर निकलता है</string>
   <string name="morphe_back_button_always_exits_feed_summary">बैक दबाने से हमेशा ऐप से बाहर निकलता है, फ़ीड के शीर्ष पर स्क्रॉल करने के बजाय</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">स्टेटस बार छिपाएँ</string>
+  <string name="morphe_hide_status_bar_summary">सिस्टम स्टेटस बार छिपाता है। इसे एक पल के लिए दिखाने के लिए ऊपरी किनारे से नीचे की ओर स्वाइप करें</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">लाइट थीम की पृष्ठभूमि</string>
   <string name="morphe_theme_color_light_entry_2">सफेद</string>

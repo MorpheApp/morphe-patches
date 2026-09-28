@@ -152,6 +152,7 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <string name="morphe_music_remember_repeat_state_title">به‌خاطر سپردن وضعیت تکرار</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">به‌خاطر سپردن وضعیت پخش تصادفی</string>
+  <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">غیرفعال‌کردن هدایت dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">هنگام فشردن دکمهٔ dislike، از رفتن به آهنگ بعدی جلوگیری می‌کند</string>
@@ -229,6 +230,7 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <string name="morphe_change_start_page_entry_subscriptions">عضویت‌ها</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">پنهان‌کردن نوار فیلتر</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">تغییر رنگ مینی‌پخش‌کننده</string>
   <string name="morphe_music_change_miniplayer_color_summary">رنگ مینی‌پخش‌کننده را با پخش‌کنندهٔ تمام‌صفحه هماهنگ می‌کند</string>

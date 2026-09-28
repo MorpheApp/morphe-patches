@@ -180,6 +180,10 @@ YouTube Music 8.x – prehod deluje samo v 9.x in novejših različicah."</strin
   <string name="morphe_music_remember_repeat_state_title">Zapomni stanje ponavljanja</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Zapomni stanje naključnega vrstnega reda</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Hitrost predvajanja</string>
+  <string name="morphe_music_playback_speed_summary">Hitrost, uporabljena za vse skladbe. Pri 100 % se uporabi hitrost aplikacije, kot je hitrost predvajanja podcasta</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Spremeni višino tona s hitrostjo</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Onemogoči preusmeritev všečka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Preprečuje preskok na nasledno skladbo, ko je pritisnjen gumb »ne všeč«</string>
@@ -261,6 +265,9 @@ YouTube Music 8.x – prehod deluje samo v 9.x in novejših različicah."</strin
   <string name="morphe_change_start_page_entry_subscriptions">Naročnine</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Skrij pas filtrov</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Vsili pokončno usmerjenost</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Ohranja aplikacijo v pokončni usmerjenosti, ko je naprava zasukana</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Spremeni barvo mini predvajalnika</string>
   <string name="morphe_music_change_miniplayer_color_summary">Uskladi barvo mini predvajalnika z barvo predvajalnika na celotnem zaslonu</string>
@@ -414,7 +421,12 @@ Zahtevani piškotki: SID, HSID, SSID, SAPISID, __Secure-3APISID, __Secure-1APISI
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikažite gumb za romanizacijo</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tapnite za preklapljanje romanizacije; dolg pritisk za samo romanizacijo. Uporablja ponudnikovo romanizacijo, Google Prevajalnik ali API, združljiv z OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Prikaži gumb Osveži</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Dotaknite se, da preklopite na naslednjega kandidata za besedilo; dolgo pritisnite, da začasno onemogočite besedila tretjih oseb in prikažete izvirno besedilo.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tapnite za preklop na naslednjega kandidata za besedilo; dolg pritisk za iskanje besedila po naslovu pesmi in izvajalcu.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Iskanje besedila</string>
+  <string name="morphe_music_lyrics_search_title_hint">Naslov pesmi</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Izvajalec</string>
+  <string name="morphe_music_lyrics_search_empty">Vnesite naslov pesmi in izvajalca</string>
+  <string name="morphe_music_lyrics_search_no_providers">Noben od omogočenih ponudnikov ne more iskati drugih pesmi</string>
   <string name="morphe_music_lyrics_saved">Shranjeno</string>
   <string name="morphe_music_lyrics_word_sync_title">Poudarite sinhronizirane besede ali zloge</string>
   <string name="morphe_music_lyrics_word_sync_summary">Dajte prednost besedilom po posameznih besedah, kadar so na voljo. Ko ima besedilo časovne podatke za besede, poudari vsako besedo ali zlog v skladu z glasbo.</string>
@@ -468,6 +480,7 @@ Zahtevani piškotki: SID, HSID, SSID, SAPISID, __Secure-3APISID, __Secure-1APISI
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL končne točke API (npr. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API ključ (pustite prazno za anonimen dostop)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Ime modela (npr. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Predloga poziva (spremenljivke: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Nastavitve AI prevajanja so shranjene</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Ni se mogoče povezati s končno točko AI. Preverite svoje nastavitve.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Nastavitve AI prevajanja so ponastavljene</string>

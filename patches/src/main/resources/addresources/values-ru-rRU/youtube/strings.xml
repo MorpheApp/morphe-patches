@@ -693,6 +693,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">Скрыть кнопку \"Спросить\"</string>
   <string name="morphe_hide_channel_profile_button_title">Скрыть канал и кнопку подписки</string>
   <string name="morphe_hide_channel_profile_button_summary">Скрывает аватар канала и кнопку подписки в начале панели действий.</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Скрыть кнопку \"Подписаться\"</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Скрывает кнопки «Подписаться» и «Вступить» рядом с аватаром канала в начале панели действий</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Скрыть кнопку \"Создать клип\"</string>
   <string name="morphe_hide_clip_button_summary">Эта функция может не работать для некоторых учетных записей пользователей</string>
@@ -1007,6 +1009,7 @@ Second \"item\" text"</string>
   <string name="morphe_tablet_layout_in_player_summary">"Восстанавливает старый макет плеера
 
 Ограничение: Если «Восстановить старую панель управления видео» отключена, наложение «Ещё видео» может быть недоступно"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Включение этой опции может нарушить работу некоторых элементов макета плеера, например раздела комментариев или блока «Другие видео», которые отображаются под плеером.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Восстановить прежнее поведение субтитров</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Восстановить старое сохранение в список воспроизведения</string>
@@ -1098,6 +1101,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Кнопка «Назад» выходит из ленты</string>
   <string name="morphe_back_button_always_exits_feed_summary">Нажатие кнопки «Назад» всегда выходит из приложения вместо прокрутки к началу ленты</string>
+  <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Скрыть строку состояния</string>
+  <string name="morphe_hide_status_bar_summary">Скрывает системную строку состояния. Проведите вниз от верхнего края, чтобы на мгновение показать её</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Фон светлой темы</string>
   <string name="morphe_theme_color_light_entry_2">Белый</string>

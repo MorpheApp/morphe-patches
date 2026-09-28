@@ -132,13 +132,25 @@ public final class LrcParser {
             final long lineStartMs = Math.max(0, timestamps.get(0) + fileOffsetMs);
             BodyParse body = parseBody(line.substring(index), lineStartMs);
             String text = body.text.trim();
-            if (!body.words.isEmpty()) {
+            List<Word> words = body.words;
+            String agentMarker = agentMarker(text);
+            String agentId = null;
+            boolean isDuet = false;
+            if (agentMarker != null) {
+                text = text.substring(agentMarker.length()).trim();
+                words = stripAgentMarker(words, agentMarker);
+                agentId = agentMarker.substring(0, agentMarker.length() - 1);
+                isDuet = isDuetAgent(agentId);
+            }
+            if (!words.isEmpty()) {
                 for (long time : timestamps) {
-                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text, body.words));
+                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text, words,
+                            agentId, isDuet, false));
                 }
             } else if (!text.isEmpty()) {
                 for (long time : timestamps) {
-                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text));
+                    lines.add(new LyricsLine(Math.max(0, time + fileOffsetMs), text, List.of(),
+                            agentId, isDuet, false));
                 }
             }
         }
@@ -230,8 +242,49 @@ public final class LrcParser {
         return new BodyParse(full.toString().trim(), words);
     }
 
+    @Nullable
+    private static String agentMarker(@Nullable String text) {
+        if (text == null || text.isEmpty() || text.charAt(0) != 'v') {
+            return null;
+        }
+        int index = 1;
+        while (index < text.length() && Character.isDigit(text.charAt(index))) {
+            index++;
+        }
+        if (index == 1 || index >= text.length() || text.charAt(index) != ':') {
+            return null;
+        }
+        return text.substring(0, index + 1);
+    }
+
+    private static List<Word> stripAgentMarker(List<Word> words, String agentMarker) {
+        if (words.isEmpty()) {
+            return words;
+        }
+        Word first = words.get(0);
+        if (!first.text().startsWith(agentMarker)) {
+            return words;
+        }
+        String remainder = first.text().substring(agentMarker.length()).stripLeading();
+        List<Word> stripped = new ArrayList<>(words);
+        if (remainder.isEmpty()) {
+            stripped.remove(0);
+        } else {
+            stripped.set(0, new Word(first.startMs(), first.endMs(), remainder));
+        }
+        return stripped;
+    }
+
+    private static boolean isDuetAgent(String agentId) {
+        return (agentId.charAt(agentId.length() - 1) - '0') % 2 == 0;
+    }
+
     public static String formatLine(LyricsLine line) {
         StringBuilder builder = new StringBuilder(formatTimestamp(line.startTimeMs()));
+        String agentMarker = agentMarker(line.agentId() == null ? null : line.agentId() + ":");
+        if (agentMarker != null) {
+            builder.append(agentMarker);
+        }
         if (line.hasWords()) {
             for (Word word : line.words()) {
                 builder.append('<')
