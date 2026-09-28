@@ -15,9 +15,8 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.music.video.information.musicVideoTimeHook
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.video.information.addExoPlayerHooks
 
 private const val EXTENSION_CLASS =
@@ -39,25 +38,17 @@ val playbackSpeedPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            PreferenceScreenPreference(
-                key = "morphe_music_playback_speed_screen",
-                sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    NonInteractivePreference(
-                        key = "morphe_music_playback_speed",
-                        tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-                        selectable = true
-                    ),
-                    SwitchPreference("morphe_music_playback_speed_change_pitch", summary = true),
-                )
+            noTitleUnsortedPreferenceCategory(
+                NonInteractivePreference(
+                    key = "morphe_music_playback_speed",
+                    tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+                    selectable = true
+                ),
+                SwitchPreference("morphe_music_playback_speed_change_pitch")
             )
         )
 
-        // region ExoPlayerImpl.
-
         addExoPlayerHooks(EXTENSION_CLASS)
-
-        // endregion
 
         // Apply a changed speed setting without waiting for the next track.
         musicVideoTimeHook(EXTENSION_CLASS, "setVideoTime")
