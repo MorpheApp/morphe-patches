@@ -473,7 +473,12 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_show_romanize_button_title">Show Romanize button</string>
     <string name="morphe_music_lyrics_show_romanize_button_summary">Tap to toggle romanization; long press for romanization only. Uses provider romanization, Google Translate, or an OpenAI-compatible API</string>
     <string name="morphe_music_lyrics_show_refresh_button_title">Show Refresh button</string>
-    <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long press to temporarily disable third-party lyrics and show native lyrics</string>
+    <string name="morphe_music_lyrics_show_refresh_button_summary">Tap to switch to next lyrics candidate; long press to search lyrics by song title and artist</string>
+    <string name="morphe_music_lyrics_search_dialog_title">Search lyrics</string>
+    <string name="morphe_music_lyrics_search_title_hint">Song title</string>
+    <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
+    <string name="morphe_music_lyrics_search_empty">Enter a song title and an artist</string>
+    <string name="morphe_music_lyrics_search_no_providers">None of the enabled providers can search for other songs</string>
     <string name="morphe_music_lyrics_saved">Saved</string>
     <string name="morphe_music_lyrics_word_sync_title">Highlight synced words or syllables</string>
     <string name="morphe_music_lyrics_word_sync_summary">Prioritize word-by-word lyrics when available. When lyrics carry word timing, highlights each word or syllable in time with the music</string>
@@ -527,6 +532,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (e.g. https://text.pollinations.ai/openai)</string>
     <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (leave empty for anonymous access)</string>
     <string name="morphe_music_lyrics_ai_config_model_hint">Model name (e.g. openai-fast, gpt-4o-mini)</string>
+    <string name="morphe_music_lyrics_ai_config_prompt_hint">Prompt template (variables: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
     <string name="morphe_music_lyrics_ai_config_toast_saved">AI translation settings saved</string>
     <string name="morphe_music_lyrics_ai_config_toast_invalid">Could not connect to AI endpoint. Please check your settings.</string>
     <string name="morphe_music_lyrics_ai_config_toast_reset">AI translation settings reset</string>

@@ -73,19 +73,16 @@ public final class LyricsPanelInstaller {
 
     private static void updateKeepScreenOn(boolean lyricsPanelOpen) {
         Utils.runOnMainThreadNowOrLater(() -> {
-            LyricsPanelView panelView = panelReference.get();
-            if (panelView == null) {
-                return;
-            }
+            try {
+                LyricsPanelView panelView = panelReference.get();
+                if (panelView == null) {
+                    return;
+                }
 
-            // The app sets and clears the keep screen on window flag itself, such as when
-            // the next track starts, so a window flag set here would not last. A view flag
-            // is OR-ed into the window flags on every layout update instead, and putting it
-            // on the panel view scopes it: the system only collects the flag from attached
-            // visible views, so closing the panel or leaving for another screen turns it off
-            // even when no engagement panel callback fires, such as on a lyrics load.
-            panelView.setKeepScreenOn(
-                    Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen);
+                panelView.setKeepScreenOn(
+                        Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen);
+            } catch (Throwable ignored) {
+            }
         });
     }
 
@@ -129,6 +126,14 @@ public final class LyricsPanelInstaller {
      * Called by the litho filter when the lyrics panel is being built.
      */
     public static void onLyricsPanelDetected() {
+        try {
+            detectLyricsPanel();
+        } catch (Throwable ignored) {
+            installPending = false;
+        }
+    }
+
+    private static void detectLyricsPanel() {
         // Whichever panel holds the container while the lyrics component is built is the
         // lyrics panel, which keeps this working without knowing what the app calls it.
         Object panel = currentPanelReference.get();
@@ -170,12 +175,23 @@ public final class LyricsPanelInstaller {
                     installPending = false;
                     return;
                 }
-                scheduleInstall(deadlineUptimeMs, INSTALL_RETRY_MILLISECONDS);
+                scheduleInstall(deadlineUptimeMs, retryDelay(deadlineUptimeMs));
             } catch (Exception ex) {
                 installPending = false;
                 Logger.printException(() -> "Could not install the lyrics panel", ex);
             }
         }, delay);
+    }
+
+    private static long retryDelay(long deadlineUptimeMs) {
+        final long left = deadlineUptimeMs - SystemClock.uptimeMillis();
+        if (left > 1700) {
+            return INSTALL_RETRY_MILLISECONDS;
+        }
+        if (left > 1000) {
+            return 50;
+        }
+        return 200;
     }
 
     /**
@@ -411,6 +427,14 @@ public final class LyricsPanelInstaller {
     private static boolean enableButtonWalkPending;
 
     public static void enableLyricsButton() {
+        try {
+            walkForLyricsButton();
+        } catch (Throwable ignored) {
+            enableButtonWalkPending = false;
+        }
+    }
+
+    private static void walkForLyricsButton() {
         if (enableButtonWalkPending) {
             return;
         }
@@ -437,10 +461,9 @@ public final class LyricsPanelInstaller {
                 ? ENABLE_BUTTON_DELAYS_MS[0]
                 : ENABLE_BUTTON_DELAYS_MS[step] - ENABLE_BUTTON_DELAYS_MS[step - 1];
         Utils.runOnMainThreadDelayed(() -> {
-            boolean matched = false;
             boolean scheduledNext = false;
             try {
-                matched = enableLyricsButtonPass(root, title, title.toLowerCase(Locale.ROOT));
+                boolean matched = enableLyricsButtonPass(root, title, title.toLowerCase(Locale.ROOT));
                 if (!matched && step + 1 < ENABLE_BUTTON_DELAYS_MS.length) {
                     scheduleEnableButtonPass(root, title, step + 1);
                     scheduledNext = true;

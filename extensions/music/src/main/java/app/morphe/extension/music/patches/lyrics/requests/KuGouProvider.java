@@ -114,38 +114,16 @@ public final class KuGouProvider implements LyricsProvider {
             return null;
         }
 
-        byte[] raw = Base64.decode(content, Base64.DEFAULT);
-        KrcResult krcResult;
-        String rawFormat;
-        String formatType;
-        if (raw.length > 4 && raw[0] == 'k' && raw[1] == 'r' && raw[2] == 'c' && raw[3] == '1') {
-            rawFormat = decryptKrc(raw);
-            krcResult = parseKrc(rawFormat);
-            formatType = "krc";
-        } else {
-            // Some tracks only expose plain LRC even when KRC is requested.
-            rawFormat = new String(raw, StandardCharsets.UTF_8);
-            List<String> metadataCreditLines = LrcParser.extractCreditMetadata(rawFormat);
-            krcResult = new KrcResult(LrcParser.parseSynced(rawFormat), metadataCreditLines, null, null);
-            formatType = "lrc";
-        }
-        List<LyricsLine> lines = krcResult.lines();
-        List<String> creditLines = new ArrayList<>(krcResult.creditLines());
-        if (lines.isEmpty()) {
+        DecodedKrc decoded = decodeContent(content);
+        if (decoded == null) {
             return null;
         }
 
-        List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, krcResult.romanization());
-        List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, krcResult.translation());
-        Map<String, List<LyricsLine>> translations =
-                LyricsMerge.singleLanguageTranslations(translation, "zh");
-
-        List<LyricsLine> attachedRomanization =
-                isChineseLanguage() && LyricsMerge.hasText(romanization) ? romanization : null;
-
         String sourceUrl = "https://www.kugou.com/song/" + id + ".html";
-        return FetchResult.of(new Lyrics(lines, name(), true, attachedRomanization, translations, null,
-                creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl), track);
+        return FetchResult.of(new Lyrics(decoded.lines(), name(), true,
+                decoded.attachedRomanization(), decoded.translations(), null,
+                decoded.creditLines(), decoded.rawFormat(), decoded.formatType(), sourceUrl),
+                track);
     }
 
     @Override
@@ -216,6 +194,25 @@ public final class KuGouProvider implements LyricsProvider {
             return null;
         }
 
+        DecodedKrc decoded = decodeContent(content);
+        if (decoded == null) {
+            return null;
+        }
+
+        return new Lyrics(decoded.lines(), name(), true, decoded.attachedRomanization(),
+                decoded.translations(), null, decoded.creditLines(), decoded.rawFormat(),
+                decoded.formatType(), sourceUrl);
+    }
+
+    /** The decoded payload of a download, ready to be turned into lyrics. */
+    private record DecodedKrc(List<LyricsLine> lines, @Nullable List<String> creditLines,
+                              @Nullable List<LyricsLine> attachedRomanization,
+                              @Nullable Map<String, List<LyricsLine>> translations,
+                              String rawFormat, String formatType) {
+    }
+
+    @Nullable
+    private DecodedKrc decodeContent(String content) throws IOException {
         byte[] raw = Base64.decode(content, Base64.DEFAULT);
         KrcResult krcResult;
         String rawFormat;
@@ -231,21 +228,18 @@ public final class KuGouProvider implements LyricsProvider {
             formatType = "lrc";
         }
         List<LyricsLine> lines = krcResult.lines();
-        List<String> creditLines = new ArrayList<>(krcResult.creditLines());
         if (lines.isEmpty()) {
             return null;
         }
-
+        List<String> creditLines = new ArrayList<>(krcResult.creditLines());
         List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, krcResult.romanization());
         List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, krcResult.translation());
         Map<String, List<LyricsLine>> translations =
                 LyricsMerge.singleLanguageTranslations(translation, "zh");
-
         List<LyricsLine> attachedRomanization =
                 isChineseLanguage() && LyricsMerge.hasText(romanization) ? romanization : null;
-
-        return new Lyrics(lines, name(), true, attachedRomanization, translations, null,
-                creditLines.isEmpty() ? null : creditLines, rawFormat, formatType, sourceUrl);
+        return new DecodedKrc(lines, creditLines.isEmpty() ? null : creditLines,
+                attachedRomanization, translations, rawFormat, formatType);
     }
 
     private static boolean isChineseLanguage() {

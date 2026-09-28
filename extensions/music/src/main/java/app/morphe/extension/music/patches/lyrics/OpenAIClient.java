@@ -20,10 +20,12 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 
-final class OpenAIClient {
+public final class OpenAIClient {
 
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
@@ -221,5 +223,87 @@ final class OpenAIClient {
             }
         }
         return out;
+    }
+
+    /**
+     * The prompt template sent to the AI endpoint. One template covers both tasks;
+     * {@link #renderPrompt} fills in its variables:
+     * <ul>
+     *   <li>{@code {task}} - "translation" or "romanization"</li>
+     *   <li>{@code {language}} - the target language</li>
+     *   <li>{@code {title}}, {@code {artist}} - the song</li>
+     *   <li>{@code {count}} - the number of lines</li>
+     *   <li>{@code {lines}} - the lyric lines, one per line</li>
+     * </ul>
+     * Unknown variables are left as typed.
+     */
+    public static final String DEFAULT_PROMPT =
+            "You are a professional lyrics {task} engine. Perform {task} on every line below for "
+                    + "{language}, keeping the original meaning, tone and punctuation.\n"
+                    + "Song: {title} by {artist}\n"
+                    + "\n"
+                    + "Output format: Number every result on its own line, like:\n"
+                    + "1. first result\n"
+                    + "2. second result\n"
+                    + "\n"
+                    + "CRITICAL RULES:\n"
+                    + "- Output exactly {count} numbered lines (same as input count)\n"
+                    + "- Number format: \"N. text\" (number, period, space, text)\n"
+                    + "- Do NOT include the original lines in your output\n"
+                    + "- Do NOT use \"Line N:\" format\n"
+                    + "- Follow the standard {language} conventions for {task}; no annotations, "
+                    + "notes or tone marks\n"
+                    + "- If a line already needs no {task}, output one \"SKIP\" for it\n"
+                    + "- Output ONLY the {task}. No reasoning, no explanations, no "
+                    + "step-by-step thinking.\n"
+                    + "\n"
+                    + "{lines}";
+
+    private static final Pattern PROMPT_VARIABLE = Pattern.compile("\\{(\\w+)\\}");
+
+    public static String renderPrompt(String template, String task, String language,
+            String title, String artist, List<String> lines) {
+        if (template == null || template.isEmpty()) {
+            template = DEFAULT_PROMPT;
+        }
+        StringBuilder linesText = new StringBuilder();
+        for (String line : lines) {
+            linesText.append(line != null ? line : "").append('\n');
+        }
+        String count = String.valueOf(lines.size());
+        Matcher matcher = PROMPT_VARIABLE.matcher(template);
+        StringBuilder out = new StringBuilder(template.length() + 256);
+        while (matcher.find()) {
+            String name = matcher.group(1);
+            String value = promptValue(name, task, language, title, artist, count,
+                    linesText.toString());
+            matcher.appendReplacement(out,
+                    Matcher.quoteReplacement(value != null ? value : matcher.group()));
+        }
+        matcher.appendTail(out);
+        return out.toString();
+    }
+
+    private static String promptValue(String name, String task, String language,
+            String title, String artist, String count, String lines) {
+        if ("task".equals(name)) {
+            return task;
+        }
+        if ("language".equals(name)) {
+            return language;
+        }
+        if ("title".equals(name)) {
+            return title != null ? title : "";
+        }
+        if ("artist".equals(name)) {
+            return artist != null ? artist : "";
+        }
+        if ("count".equals(name)) {
+            return count;
+        }
+        if ("lines".equals(name)) {
+            return lines;
+        }
+        return null;
     }
 }

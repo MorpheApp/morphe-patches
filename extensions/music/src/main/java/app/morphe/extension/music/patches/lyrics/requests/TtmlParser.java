@@ -454,6 +454,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("transliteration".equals(local)) {
@@ -475,6 +478,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("text".equals(local)) {
@@ -504,6 +510,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("span".equals(local)) {
@@ -541,9 +550,12 @@ final class TtmlParser {
             throws XmlPullParserException, IOException {
         int depth = 1;
         int eventCount = 0;
-        while (depth > 0 && eventCount < 20) {
+        while (depth > 0 && eventCount < 100_000) {
             final int event = p.next();
             eventCount++;
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
 
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
@@ -569,6 +581,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 final String local = localName(p.getName());
                 if ("text".equals(local)) {
@@ -611,6 +626,9 @@ final class TtmlParser {
 
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
                 final String local = localName(p.getName());
@@ -826,6 +844,9 @@ final class TtmlParser {
 
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
                 final String local = localName(p.getName());
@@ -1369,6 +1390,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
             } else if (event == XmlPullParser.END_TAG) {
@@ -1388,6 +1412,9 @@ final class TtmlParser {
         int depth = 1;
         while (depth > 0) {
             final int event = p.next();
+            if (event == XmlPullParser.END_DOCUMENT) {
+                break;
+            }
             if (event == XmlPullParser.START_TAG) {
                 depth++;
             } else if (event == XmlPullParser.END_TAG) {
