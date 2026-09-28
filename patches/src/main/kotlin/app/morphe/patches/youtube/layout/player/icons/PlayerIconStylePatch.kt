@@ -46,7 +46,9 @@ private val logger = Logger.getLogger(ResourcePatchContext::class.java.name)
  * Only the icons of the included patches are copied, so the file can have more than those.
  */
 internal class CustomIcons(path: String) {
-    private val icons: Map<String, ByteArray>
+    private class Icon(val bytes: ByteArray, val png: Boolean)
+
+    private val icons: Map<String, Icon>
     private val copied = mutableSetOf<String>()
 
     init {
@@ -54,7 +56,7 @@ internal class CustomIcons(path: String) {
         if (!source.exists()) throw PatchException("Custom icons file not found: ${source.absolutePath}")
 
         // Archives made on macOS carry a "._" metadata file next to every file.
-        fun isIcon(name: String) = name.endsWith(".xml") && !name.startsWith("._")
+        fun isIcon(name: String) = (name.endsWith(".xml") || name.endsWith(".png")) && !name.startsWith("._")
 
         // A folder works too, which is easier than a zip file when patching with the CLI.
         val files: List<Pair<String, ByteArray>> = if (source.isDirectory) {
@@ -69,9 +71,16 @@ internal class CustomIcons(path: String) {
             }
         }
 
-        icons = files
-            .onEach { (name, bytes) -> validate(name, bytes) }
-            .associate { (name, bytes) -> name.removeSuffix(".xml") to bytes }
+        icons = files.groupBy { (name, _) -> name.substringBeforeLast('.') }.mapValues { (baseName, found) ->
+            // Two files for one icon, either in both formats or in two folders, leave it unclear which one to use.
+            if (found.size > 1) {
+                throw PatchException("Custom icon $baseName is in the file more than once: ${found.joinToString { it.first }}")
+            }
+            val (name, bytes) = found.single()
+            val png = name.endsWith(".png")
+            if (png) validatePng(name, bytes) else validateVector(name, bytes)
+            Icon(bytes, png)
+        }
 
         if (icons.isEmpty()) throw PatchException("No icons found in: ${source.absolutePath}")
     }
@@ -79,7 +88,13 @@ internal class CustomIcons(path: String) {
     fun copy(context: ResourcePatchContext, baseNames: Array<out String>) {
         baseNames.forEach { baseName ->
             val icon = icons[baseName] ?: return@forEach
-            context["res/drawable/${baseName}_custom.xml"].writeBytes(icon)
+            // A bitmap of the highest density, the system scales it down for the other densities.
+            val file = if (icon.png) {
+                context["res/drawable-xxxhdpi/${baseName}_custom.png"].also { it.parentFile.mkdirs() }
+            } else {
+                context["res/drawable/${baseName}_custom.xml"]
+            }
+            file.writeBytes(icon.bytes)
             copied += baseName
         }
     }
@@ -95,7 +110,23 @@ internal class CustomIcons(path: String) {
     }
 
     private companion object {
-        fun validate(name: String, bytes: ByteArray) {
+        val PNG_SIGNATURE = byteArrayOf(0x89.toByte(), 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
+
+        fun validatePng(name: String, bytes: ByteArray) {
+            // The signature is followed by the IHDR chunk, which starts with the width and height.
+            if (bytes.size < 24 || !bytes.copyOfRange(0, 8).contentEquals(PNG_SIGNATURE)) {
+                throw PatchException("Custom icon $name is not a PNG image")
+            }
+            fun int(offset: Int) = (0 until 4).fold(0) { value, i -> (value shl 8) or (bytes[offset + i].toInt() and 0xFF) }
+            val width = int(16)
+            val height = int(20)
+            // The buttons are square, a different shape would be squeezed.
+            if (width != height) {
+                throw PatchException("Custom icon $name must be square, found ${width}x$height")
+            }
+        }
+
+        fun validateVector(name: String, bytes: ByteArray) {
             val root = try {
                 DocumentBuilderFactory.newInstance().apply {
                     isNamespaceAware = true
@@ -169,7 +200,8 @@ internal fun ResourcePatchContext.copyPlayerIconStyles(resourceDirectory: String
 internal fun customIconsOptionDescription(example: String) = """
     Zip file with icons to use as the 'Custom' icon style.
 
-    Each icon is a vector drawable named after the icon it replaces, such as '$example'.
+    Each icon is named after the icon it replaces, such as '$example'.
+    An icon is a vector drawable (.xml), or a white square PNG image (.png, 96x96 pixels is recommended).
     Icons missing from the file keep the 'Automatic' style.
 """
 
