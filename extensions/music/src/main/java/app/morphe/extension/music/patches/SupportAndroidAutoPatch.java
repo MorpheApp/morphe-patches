@@ -595,11 +595,9 @@ public final class SupportAndroidAutoPatch {
     // Podcasts
 
     /**
-     * Injection point. Add the Podcasts tab.
-     * {@link #initializeAndroidAutoTabs} inserts Podcasts into YTM's Home/Library tab list.
-     * {@link #cacheAndroidAutoPodcastFolders} keeps the podcast lists returned for Home;
-     * these become the contents of Podcasts. {@link #refreshPodcastsAfterHomeLoad} refreshes
-     * a previously opened Podcasts tab whenever new Home results arrive.
+     * Injection point. Modify lists before YTM sends them to Android Auto.
+     * Add the Podcasts tab to the root list, cache Home's podcast lists, and return them for Podcasts.
+     * New Home results also refresh Podcasts if it has been opened.
      */
     @Nullable
     public static synchronized List<MediaBrowserCompat.MediaItem> handleAndroidAutoBrowseResult(

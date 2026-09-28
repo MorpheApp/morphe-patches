@@ -70,7 +70,6 @@ private const val PHONE_BROWSE_TABS_PROTO_FIELD = 58_173_949L
 private const val TAB_RENDERER_PROTO_FIELD = 58_174_010L
 private const val TAB_CONTENT_PRESENT_FLAG = 1L
 private const val SECTION_LIST_CONTENTS_FIELD_NAME = "f"
-private const val PHONE_BROWSE_ITEM_PROTO_FIELD = 161_429_595L
 private const val GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG = 0x40000L
 private const val NEXT_COMMAND_PRESENT_FLAG = 0x1L
 private const val RELOAD_COMMAND_PRESENT_FLAG = 0x2L
@@ -291,7 +290,10 @@ internal object GridRendererItemsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Ljava/util/List;",
     parameters = listOf("L"),
-    filters = listOf(literal(GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG))
+    filters = listOf(
+        literal(GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterWithin(3))
+    )
 )
 
 /** Returns the commands YTM uses to request more Library items or refresh the Library. */
@@ -322,20 +324,6 @@ internal object LibraryPaginationDecoderFingerprint : Fingerprint(
 )
 
 // Read individual Library and playlist items
-
-/** YTM's shared item type for playlists, songs, and the Add a song button. */
-internal object PhoneBrowseItemFingerprint : Fingerprint(
-    name = "<clinit>",
-    returnType = "V",
-    parameters = emptyList(),
-    filters = listOf(
-        opcode(Opcode.CONST_CLASS),
-        literal(
-            PHONE_BROWSE_ITEM_PROTO_FIELD,
-            location = MatchAfterWithin(2)
-        )
-    )
-)
 
 /** Returns the command for a single tap on a playlist or song in YTM's phone list. */
 internal fun phoneBrowseItemSingleTapCommandFingerprint(

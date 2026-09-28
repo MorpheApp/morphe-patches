@@ -73,22 +73,10 @@ private const val SUBTITLE_FIELD_NAME = "h"
  * Supplies Android Auto with the playlists available in YTM's phone Library
  * and adds a Podcasts tab using the podcast lists returned for Android Auto Home.
  *
- * Installation order during patching, before the app runs:
- * 1. [hookPlaylistsTitleMediaIds] identifies [Playlists][BuildAndroidAutoMediaItemFingerprint]
- *    in Android Auto's Library by its translated title.
- * 2. [installPhoneBrowseClientBridges] lets Java fetch the phone Library through YTM's existing
- *    [request methods][CreatePhoneBrowseRequestFingerprint], including [Library pagination][gridPaginationCommandsFingerprint].
- * 3. [patchPhoneBrowseResponses] lets Java extract Library items from
- *    [page data][PhoneBrowseResponseTabsFingerprint] and [pagination results][LibraryPaginationDecoderFingerprint].
- * 4. [patchPhoneBrowseItem] provides [playlist IDs][PhoneBrowseItemFingerprint], [titles][formatTextFingerprint],
- *    and [artwork][phoneBrowseItemArtworkFingerprint] converted for [Android Auto][androidAutoMediaDescriptionFingerprint].
- * 5. [patchAndroidAutoPlaylists] lets Java answer requests for Playlists instead of returning
- *    [YTM's empty list][SendEmptyAndroidAutoMediaItemsFingerprint].
- * 6. [installAndroidAutoFolderRefresh] observes [successful requests][requestSuccessCallbackFingerprint]
- *    and [refreshes Android Auto][mediaBrowserReloadFingerprint] after Library changes.
- * 7. [patchAndroidAutoPodcastItems] adds Podcasts to Android Auto's tabs and fills it with lists from Home.
- * 8. [installPlaylistMediaIdBuilder] uses YTM's [playlist command builder][playlistPlaybackCommandFingerprint]
- *    and [media ID encoder][EncodeCommandMediaIdFingerprint] so YTM can play the selected playlist directly.
+ * Java handles Android Auto's Library and Playlists requests using those interfaces.
+ * [hookAndroidAutoBrowseResults] lets Java add a Podcasts tab containing Home's podcast lists.
+ * [installAndroidAutoFolderRefresh] lets Java reload playlists and podcasts after Library changes.
+ * [installPlaylistMediaIdBuilder] supplies the media IDs used to play playlist cards.
  */
 @Suppress("unused")
 val supportAndroidAutoPatch = bytecodePatch(
@@ -106,7 +94,6 @@ val supportAndroidAutoPatch = bytecodePatch(
         patchPhoneBrowseItem()
         patchAndroidAutoPlaylists()
         installAndroidAutoFolderRefresh()
-        patchAndroidAutoPodcastItems()
         installPlaylistMediaIdBuilder()
     }
 }
@@ -546,11 +533,12 @@ private fun BytecodePatchContext.addGridRendererInterface() {
 
 /** Adds getters for a Library item's playlist ID, title, subtitle, and artwork. */
 private fun BytecodePatchContext.patchPhoneBrowseItem() {
-    val phoneBrowseItemType = PhoneBrowseItemFingerprint
+    // The field read after YTM's presence check identifies the class used for Library items.
+    val phoneBrowseItemType = GridRendererItemsFingerprint
         .instructionMatches
-        .single { match -> match.instruction.opcode == Opcode.CONST_CLASS }
+        .single { match -> match.instruction.opcode == Opcode.IGET_OBJECT }
         .instruction
-        .getReference<TypeReference>()!!
+        .getReference<FieldReference>()!!
         .type
     val phoneBrowseItemFields = classDefBy(phoneBrowseItemType).fields.toList()
 
@@ -732,8 +720,8 @@ private fun BytecodePatchContext.patchAndroidAutoPlaylists() {
 }
 
 /**
- * Lets Java identify what Android Auto requested and return a list through YTM's existing response method.
- * That delivery also passes through the Podcasts hook installed by [patchAndroidAutoPodcastItems].
+ * Adds methods to read the requested media ID and send results through YTM.
+ * Hooks the same result method for the main tabs and Podcasts.
  */
 private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
     sendEmptyAndroidAutoMediaItemsMethod: Method,
@@ -753,16 +741,14 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
             field.type == "Ljava/lang/String;"
     }
 
-    val deliverAndroidAutoMediaItemsMethod = sendEmptyAndroidAutoMediaItemsMethod.instructions.asSequence()
-        .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
-        .distinct()
-        .single { reference ->
-            val parameters = reference.parameterTypes.map(CharSequence::toString)
-            reference.definingClass == androidAutoRequestType && reference.returnType == "V" &&
-                parameters.size in 1..2 &&
-                parameters.firstOrNull() == "Ljava/util/List;" &&
-                parameters.drop(1).all { it.startsWith("L") || it.startsWith("[") }
-        }
+    // YTM 9.15's one-argument overload forwards the list and null to this two-argument method.
+    // Newer supported versions call it directly, so the patch can use the same method for all versions.
+    val deliverAndroidAutoMediaItemsMethod = androidAutoRequestClass.methods.single { method ->
+        method.returnType == "V" &&
+            method.parameterTypes.size == 2 &&
+            method.parameterTypes.first().toString() == "Ljava/util/List;" &&
+            method.parameterTypes.last().toString().startsWith("L")
+    }
 
     androidAutoRequestClass.interfaces.add(EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE)
     androidAutoRequestClass.addInterfaceMethod(
@@ -777,27 +763,19 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
             return-object p0
         """,
     )
-    // YTM passes null for the optional second argument when returning an empty list.
-    val usesTwoArgumentDeliveryMethod = deliverAndroidAutoMediaItemsMethod.parameterTypes.size == 2
     androidAutoRequestClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
             EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE,
             "patch_deliverAndroidAutoItems",
         ),
-        registerCount = if (usesTwoArgumentDeliveryMethod) 3 else 2,
-        instructions = if (usesTwoArgumentDeliveryMethod) {
-            """
-                const/4 v0, 0x0
-                invoke-virtual { p0, p1, v0 }, $deliverAndroidAutoMediaItemsMethod
-                return-void
-            """
-        } else {
-            """
-                invoke-virtual { p0, p1 }, $deliverAndroidAutoMediaItemsMethod
-                return-void
-            """
-        },
+        registerCount = 3,
+        instructions = """
+            const/4 v0, 0x0
+            invoke-virtual { p0, p1, v0 }, $deliverAndroidAutoMediaItemsMethod
+            return-void
+        """,
     )
+    hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod)
 }
 
 /**
@@ -902,10 +880,8 @@ private fun BytecodePatchContext.addAndroidAutoRequestConnectionGetter(reloadMet
 }
 
 /**
- * Saves the requested Android Auto list and connection in Java's `rememberAndroidAutoSubscription`.
- * `patch_reloadFolder` repeats the request through YTM. The hook installed by [patchAndroidAutoPlaylists]
- * fetches the phone Library again for Playlists; Home results pass through the hook installed by
- * [patchAndroidAutoPodcastItems].
+ * Passes folder requests and their connections to Java's `rememberAndroidAutoSubscription`.
+ * Adds `patch_reloadFolder` to repeat those requests through YTM's existing reload method.
  */
 private fun BytecodePatchContext.addAndroidAutoFolderReload(
     baseServiceType: String,
@@ -970,25 +946,12 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
 
 // endregion
 
-// region Podcasts
+// region Android Auto browse results
 
 /**
- * Lets Java change the lists YTM is about to send to Android Auto.
- * `handleAndroidAutoBrowseResult` adds Podcasts alongside Home and Library, saves the podcast lists
- * returned for Home, and returns those saved lists when Android Auto opens Podcasts.
+ * Passes browse results through Java's `handleAndroidAutoBrowseResult` before YTM sends them to Android Auto.
  */
-private fun BytecodePatchContext.patchAndroidAutoPodcastItems() {
-    val androidAutoRequestType =
-        SendEmptyAndroidAutoMediaItemsFingerprint.originalMethod.parameterTypes.first().toString()
-    // Decompiled forwarding example: b(List list) { c(list, null); }
-    // Hook the method accepting both arguments so calls through either method update Podcasts.
-    val deliverAndroidAutoMediaItemsMethod = mutableClassDefBy(androidAutoRequestType).methods.single { method ->
-        method.returnType == "V" &&
-            method.parameterTypes.size == 2 &&
-            method.parameterTypes.first().toString() == "Ljava/util/List;" &&
-            method.parameterTypes.last().toString().startsWith("L")
-    }
-
+private fun hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod: MutableMethod) {
     val handleAndroidAutoBrowseResultMethod = "$EXTENSION_CLASS->handleAndroidAutoBrowseResult(" +
         EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE +
         "Ljava/util/List;)Ljava/util/List;"
