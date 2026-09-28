@@ -74,9 +74,7 @@ private const val PHONE_BROWSE_ITEM_PROTO_FIELD = 161_429_595L
 private const val GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG = 0x40000L
 private const val NEXT_COMMAND_PRESENT_FLAG = 0x1L
 private const val RELOAD_COMMAND_PRESENT_FLAG = 0x2L
-private const val PLAY_BUTTON_PROTO_FIELD = 65_153_809L
 private const val THUMBNAIL_PROTO_FIELD = 164_480_666L
-private const val WATCH_ENDPOINT_PROTO_FIELD = 48_687_757L
 
 // Identify the Playlists folder and how YTM returns its contents to Android Auto
 
@@ -211,8 +209,7 @@ internal fun setRequestBrowseIdFingerprint(requestBrowseIdField: FieldReference)
     )
 )
 
-// Read the contents returned by Library and playlist requests
-// The first Library response and playlist contents use TabRenderer and section data; pagination has a separate parser.
+// Read the initial Library response; pagination has a separate parser.
 
 /** Returns YTM's wrappers for TabRenderer data containing Library items or playlist songs. */
 internal object PhoneBrowseResponseTabsFingerprint : Fingerprint(
@@ -262,7 +259,7 @@ internal fun getSectionListFingerprint(tabWrapperType: String) = Fingerprint(
     )
 )
 
-/** Returns each section's Library items (GridRenderer) or playlist songs (PlaylistContents). */
+/** Returns the lists in a phone Library section. */
 internal fun sectionListContentsFingerprint(
     sectionListType: String,
     sectionContentsType: String
@@ -453,118 +450,23 @@ internal fun formatTextFingerprint(textType: String) = Fingerprint(
     parameters = listOf(textType, "Ljava/lang/String;")
 )
 
-// Play a selected playlist: callbacks
+// Play a selected playlist
 
-/** Receives an Android Auto selection to start playback. */
-internal object AndroidAutoPlayFromMediaIdFingerprint : Fingerprint(
-    name = "onPlayFromMediaId",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("Ljava/lang/String;", "Landroid/os/Bundle;"),
-    custom = { _, classDef ->
-        classDef.superclass == "Landroid/media/session/MediaSession\$Callback;"
-    }
-)
-
-// Read a selected playlist's songs
-
-/** Reads a playlist's songs and Add a song button. */
-internal fun playlistItemsFingerprint(phoneBrowseItemType: String) = Fingerprint(
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
-    returnType = "Ljava/util/List;",
-    parameters = listOf("L", "Z"),
-    filters = listOf(checkCast(phoneBrowseItemType))
-)
-
-// Check playlist contents
-
-/** WatchEndpoint: YTM's data identifying the song or video to play. */
-internal object WatchEndpointExtensionFingerprint : Fingerprint(
-    name = "<clinit>",
-    returnType = "V",
-    parameters = emptyList(),
-    filters = listOf(literal(WATCH_ENDPOINT_PROTO_FIELD))
-)
-
-// Read the command from the Play button above the playlist's songs
-
-/** Registers ButtonRenderer, the data describing buttons such as Play above a playlist's songs. */
-internal fun playButtonRendererFingerprint(commandType: String) = Fingerprint(
-    name = "<clinit>",
-    returnType = "V",
-    parameters = emptyList(),
-    filters = listOf(literal(PLAY_BUTTON_PROTO_FIELD)),
-    // FeedbackEndpoint uses the same protobuf field number for a command. The Play button has a different data type.
-    custom = { method, _ ->
-        val playButtonMessageType = method.instructions
-            .filter { instruction -> instruction.opcode == Opcode.SGET_OBJECT }
-            .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
-            .firstOrNull { field -> field.definingClass == field.type }
-            ?.type
-        playButtonMessageType != null && playButtonMessageType != commandType
-    }
-)
-
-/** Reads the Play button from the playlist data containing it. */
-internal fun decodeButtonRendererFingerprint(
-    playButtonContainerType: String,
-    buttonRendererType: String,
-    playButtonProtobufExtensionField: FieldReference
-) = Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = buttonRendererType,
-    parameters = listOf("Z", playButtonContainerType),
+/** YTM's playback command builder accepts a playlist ID without a song ID. */
+internal fun playlistPlaybackCommandFingerprint(commandType: String) = Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(
+        "Ljava/lang/String;", "Ljava/lang/String;", "I", "F",
+        "Ljava/lang/String;", "Ljava/lang/String;", "Z"
+    ),
     filters = listOf(
         fieldAccess(
-            reference = playButtonProtobufExtensionField,
+            definingClass = commandType,
+            type = commandType,
             opcode = Opcode.SGET_OBJECT
         )
     )
-)
-
-/**
- * The playlist Play button and live chat button store their commands in the same field of YTM's button data.
- * Use the live chat button's code to identify that field.
- */
-internal fun buttonRendererCommandCopyFingerprint(
-    buttonRendererType: String,
-    commandType: String
-) = Fingerprint(
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = buttonRendererType,
-            type = commandType
-        ),
-        fieldAccess(
-            opcode = Opcode.IPUT_OBJECT,
-            type = commandType,
-            location = MatchAfterWithin(4)
-        )
-    ),
-    custom = { method, _ ->
-        val instructions = method.implementation?.instructions?.toList().orEmpty()
-        val copiedCommandFields = instructions.mapIndexedNotNull { index, instruction ->
-            val buttonField = instruction.getReference<FieldReference>()
-            if (instruction.opcode == Opcode.IGET_OBJECT &&
-                buttonField?.definingClass == buttonRendererType &&
-                buttonField.type == commandType
-            ) {
-                val commandCopied = instructions.drop(index + 1).take(4).any { nearby ->
-                    val target = nearby.getReference<FieldReference>()
-                    nearby.opcode == Opcode.IPUT_OBJECT &&
-                        target?.definingClass != buttonRendererType &&
-                        target?.type == commandType
-                }
-                buttonField.takeIf { commandCopied }
-            } else {
-                null
-            }
-        }.distinct()
-        copiedCommandFields.size == 1
-    }
 )
 
 // Encode item commands for Android Auto
