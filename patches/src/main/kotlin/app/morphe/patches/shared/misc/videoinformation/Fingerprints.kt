@@ -4,7 +4,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -52,6 +51,9 @@ internal object PlaybackParametersToStringFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         fieldAccess(definingClass = "this", opcode = Opcode.IGET, type = "F"),
-        string("PlaybackParameters(speed=%.2f, pitch=%.2f)")
+        fieldAccess(opcode = Opcode.IGET, type = "F")
+    ),
+    strings = listOf(
+        "PlaybackParameters(speed=%.2f, pitch=%.2f)"
     )
 )

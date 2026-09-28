@@ -1,13 +1,11 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3295
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.music.patches;
-
-import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,18 +15,11 @@ import java.util.WeakHashMap;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.ExoPlayerInterface;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 
 @SuppressWarnings("unused")
 public class PlaybackSpeedPatch {
-
-    /**
-     * Interface to use obfuscated methods.
-     */
-    public interface ExoPlayerImpl {
-        // Method is added during patching.
-        void patch_setPlaybackParameters(float speed, float pitch);
-    }
 
     private static final float DEFAULT_PLAYBACK_SPEED = 1.0f;
 
@@ -36,7 +27,7 @@ public class PlaybackSpeedPatch {
      * Speed and pitch last applied to each player.
      * More than one player can be alive at the same time, such as when crossfading.
      */
-    private static final Map<ExoPlayerImpl, float[]> players =
+    private static final Map<ExoPlayerInterface, float[]> players =
             Collections.synchronizedMap(new WeakHashMap<>());
 
     private static float getPlaybackSpeed() {
@@ -46,12 +37,12 @@ public class PlaybackSpeedPatch {
     /**
      * Injection point.
      */
-    public static void initializeExoPlayerImpl(@NonNull ExoPlayerImpl player) {
+    public static void initializeExoPlayer(ExoPlayerInterface player) {
         try {
             // A new player starts with the default playback parameters.
             players.put(player, new float[]{DEFAULT_PLAYBACK_SPEED, DEFAULT_PLAYBACK_SPEED});
         } catch (Exception ex) {
-            Logger.printException(() -> "initializeExoPlayerImpl failure", ex);
+            Logger.printException(() -> "initializeExoPlayer failure", ex);
         }
     }
 
@@ -91,13 +82,13 @@ public class PlaybackSpeedPatch {
                     ? speed
                     : DEFAULT_PLAYBACK_SPEED;
 
-            List<Map.Entry<ExoPlayerImpl, float[]>> entries;
+            List<Map.Entry<ExoPlayerInterface, float[]>> entries;
             synchronized (players) {
                 entries = new ArrayList<>(players.entrySet());
             }
 
-            for (Map.Entry<ExoPlayerImpl, float[]> entry : entries) {
-                ExoPlayerImpl player = entry.getKey();
+            for (Map.Entry<ExoPlayerInterface, float[]> entry : entries) {
+                ExoPlayerInterface player = entry.getKey();
                 float[] applied = entry.getValue();
                 if (player == null || (applied[0] == speed && applied[1] == pitch)) {
                     continue;
