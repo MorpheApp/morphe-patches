@@ -579,8 +579,16 @@ public final class SupportAndroidAutoPatch {
     // Podcasts
 
     /**
+     * Injection point for YTM's media-ID getter. Returns true for the added Podcasts tab,
+     * whose literal string ID cannot be decoded as a Base64-encoded protobuf.
+     */
+    public static boolean isAndroidAutoPodcastsMediaId(@Nullable String mediaId) {
+        return PODCASTS_MEDIA_ID.equals(mediaId);
+    }
+
+    /**
      * Injection point. Modify lists before YTM sends them to Android Auto.
-     * Add the Podcasts tab to the root list, cache Home's podcast lists, and return them for Podcasts.
+     * Add a Podcasts tab, cache Home's podcast folders, and return them when that tab is requested.
      * New Home results also refresh Podcasts if it has been opened.
      */
     @Nullable

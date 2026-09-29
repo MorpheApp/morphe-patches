@@ -661,6 +661,7 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
         field.definingClass == requestedMediaIdHolderField.type &&
             field.type == "Ljava/lang/String;"
     }
+    skipPodcastsMediaIdDecoding(requestedMediaIdField)
 
     // YTM 9.15's one-argument overload forwards the list and null to this two-argument method.
     // Newer supported versions call it directly, so the patch can use the same method for all versions.
@@ -697,6 +698,28 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
         """,
     )
     hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod)
+}
+
+/**
+ * Hooks YTM's decoded media-ID getter for the Podcasts tab added by this patch.
+ * The tab's literal `morphe:aa:podcasts` ID is not a Base64-encoded protobuf, so parsing logs a warning.
+ * The hook returns null for this ID, matching the getter's result after a failed parse.
+ */
+private fun BytecodePatchContext.skipPodcastsMediaIdDecoding(requestedMediaIdField: FieldReference) {
+    val decodedMediaIdMethod = decodedMediaIdFingerprint(requestedMediaIdField.definingClass).method
+    val mediaIdRegister = decodedMediaIdMethod.findFreeRegister(0)
+    decodedMediaIdMethod.addInstructionsWithLabels(
+        0,
+        """
+            iget-object v$mediaIdRegister, p0, $requestedMediaIdField
+            invoke-static/range { v$mediaIdRegister .. v$mediaIdRegister }, $EXTENSION_CLASS->isAndroidAutoPodcastsMediaId(Ljava/lang/String;)Z
+            move-result v$mediaIdRegister
+            if-eqz v$mediaIdRegister, :resume
+            const/4 v$mediaIdRegister, 0x0
+            return-object v$mediaIdRegister
+        """,
+        ExternalLabel("resume", decodedMediaIdMethod.getInstruction<Instruction>(0)),
+    )
 }
 
 /**

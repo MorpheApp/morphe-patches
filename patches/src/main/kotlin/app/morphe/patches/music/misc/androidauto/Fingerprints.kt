@@ -68,6 +68,27 @@ private const val RELOAD_COMMAND_PRESENT_FLAG = 0x2L
 // Identify the Playlists folder and how YTM returns its contents to Android Auto
 
 /**
+ * Matches YTM's getter for the decoded media-ID protobuf.
+ * It unwraps the lazy decoding result and returns null if that result contains a failure.
+ */
+internal fun decodedMediaIdFingerprint(mediaIdType: String) = Fingerprint(
+    definingClass = mediaIdType,
+    returnType = "L",
+    parameters = emptyList(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = emptyList(),
+            returnType = "Ljava/lang/Object;"
+        ),
+        opcode(Opcode.INSTANCE_OF),
+        literal(0),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+/**
  * Matches the constructor that stores an Android Auto item's ID, title, and artwork.
  * [BuildAndroidAutoMediaItemFingerprint] uses it to find where YTM creates the Playlists folder;
  * [androidAutoMediaDescriptionFingerprint] uses it to find YTM's artwork conversion.
