@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/google/material-design-icons/blob/13d360945bfd12cdeec837adc14f82875410584b/symbols/android/picture_in_picture_alt/materialsymbolsoutlined/picture_in_picture_alt_wght200gradN25_24px.xml
+    Changes made: Removed the theme tint, added the tap animation.
+
+    Copyright 2022 Google
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="960"
+            android:viewportHeight="960">
+            <group
+                android:name="icon_group"
+                android:pivotX="480"
+                android:pivotY="480">
+                <path
+                    android:fillColor="@android:color/white"
+                    android:pathData="M187.52,754.46Q161.75,754.46 143.95,736.66Q126.15,718.86 126.15,693.08L126.15,266.92Q126.15,241.14 143.95,223.34Q161.75,205.54 187.52,205.54L772.48,205.54Q798.25,205.54 816.05,223.34Q833.85,241.14 833.85,266.92L833.85,693.08Q833.85,718.86 816.05,736.66Q798.25,754.46 772.48,754.46L187.52,754.46ZM187.69,717.54L772.31,717.54Q781.54,717.54 789.23,709.85Q796.92,702.15 796.92,692.92L796.92,267.08Q796.92,257.85 789.23,250.15Q781.54,242.46 772.31,242.46L187.69,242.46Q178.46,242.46 170.77,250.15Q163.08,257.85 163.08,267.08L163.08,692.92Q163.08,702.15 170.77,709.85Q178.46,717.54 187.69,717.54ZM163.08,717.54Q163.08,717.54 163.08,709.85Q163.08,702.15 163.08,692.92L163.08,267.08Q163.08,257.85 163.08,250.15Q163.08,242.46 163.08,242.46L163.08,242.46Q163.08,242.46 163.08,250.15Q163.08,257.85 163.08,267.08L163.08,692.92Q163.08,702.15 163.08,709.85Q163.08,717.54 163.08,717.54L163.08,717.54ZM453.54,676.62L757.54,676.62L757.54,452L453.54,452L453.54,676.62ZM490.46,639.69L490.46,488.92L720.62,488.92L720.62,639.69L490.46,639.69Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="250"
+                    android:valueFrom="0.8"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/overshoot" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="250"
+                    android:valueFrom="0.8"
+                    android:valueTo="1"
+                    android:interpolator="@android:interpolator/overshoot" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>
