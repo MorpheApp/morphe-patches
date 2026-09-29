@@ -319,24 +319,6 @@ internal object LibraryPaginationDecoderFingerprint : Fingerprint(
     parameters = listOf("L")
 )
 
-// Read individual Library and playlist items
-
-/** Returns the command for a single tap on a playlist or song in YTM's phone list. */
-internal fun phoneBrowseItemSingleTapCommandFingerprint(
-    phoneBrowseItemType: String,
-    commandType: String
-) = Fingerprint(
-    returnType = commandType,
-    parameters = listOf(phoneBrowseItemType),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = phoneBrowseItemType,
-            type = commandType
-        )
-    )
-)
-
 // Read the playlist ID from an item's command
 
 /** Reads the BrowseEndpoint, which identifies the YTM page a command opens. */

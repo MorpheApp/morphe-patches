@@ -540,13 +540,11 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     val encodeCommandMediaIdMethod = encodeCommandMatch.instruction.getReference<MethodReference>()!!
     val createArtworkUriMethod = artworkUriMatch.instruction.getReference<MethodReference>()!!
     val itemCommandType = encodeCommandMediaIdMethod.parameterTypes.single().toString()
-    val singleTapCommandField = phoneBrowseItemSingleTapCommandFingerprint(phoneBrowseItemType, itemCommandType)
-        .instructionMatches.single().instruction.getReference<FieldReference>()!!
-    // YTM's phone list uses the other command field for double tap.
-    val doubleTapCommandField = phoneBrowseItemFields.singleOrNull { field ->
-        !AccessFlags.STATIC.isSet(field.accessFlags) &&
-            field.type == itemCommandType && field != singleTapCommandField
-    } ?: throw PatchException("Could not resolve the phone item's double tap command")
+    // Both tap commands are read; resolvePlaylistBrowseId does not depend on their order.
+    val commandFields = phoneBrowseItemFields.filter { field ->
+        !AccessFlags.STATIC.isSet(field.accessFlags) && field.type == itemCommandType
+    }
+    if (commandFields.size != 2) throw PatchException("Expected two phone item commands")
 
     val commandToBrowseEndpointMethod = browseEndpointFromCommandFingerprint(
         itemCommandType,
@@ -559,8 +557,8 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     phoneBrowseItemClass.interfaces.add(EXTENSION_PHONE_BROWSE_ITEM_INTERFACE)
     phoneBrowseItemClass.addPlaylistBrowseIdGetter(
         extensionInterfaceMethod(EXTENSION_PHONE_BROWSE_ITEM_INTERFACE, "patch_getPlaylistBrowseId"),
-        singleTapCommandField,
-        doubleTapCommandField,
+        commandFields[0],
+        commandFields[1],
         commandToBrowseEndpointMethod,
         browseEndpointBrowseIdField,
     )
@@ -583,8 +581,8 @@ private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
  */
 private fun MutableClass.addPlaylistBrowseIdGetter(
     interfaceMethod: Method,
-    singleTapCommandField: FieldReference,
-    doubleTapCommandField: FieldReference,
+    firstCommandField: FieldReference,
+    secondCommandField: FieldReference,
     commandToBrowseEndpointMethod: Method,
     browseEndpointBrowseIdField: FieldReference,
 ) {
@@ -594,15 +592,15 @@ private fun MutableClass.addPlaylistBrowseIdGetter(
         registerCount = 4,
         instructions = """
             const/4 v0, 0x0
-            iget-object v2, p0, $singleTapCommandField
-            if-eqz v2, :check_double_tap_command
+            iget-object v2, p0, $firstCommandField
+            if-eqz v2, :check_second_command
             invoke-static { v2 }, $commandToBrowseEndpointMethod
             move-result-object v2
             iget-object v0, v2, $browseEndpointBrowseIdField
 
-            :check_double_tap_command
+            :check_second_command
             const/4 v1, 0x0
-            iget-object v2, p0, $doubleTapCommandField
+            iget-object v2, p0, $secondCommandField
             if-eqz v2, :resolve_playlist_id
             invoke-static { v2 }, $commandToBrowseEndpointMethod
             move-result-object v2

@@ -353,11 +353,11 @@ public final class SupportAndroidAutoPatch {
     /** Injection point. Exclude artists and shows; skip commands that identify different playlists. */
     @Nullable
     public static String resolvePlaylistBrowseId(
-            @Nullable String singleTapBrowseId, @Nullable String doubleTapBrowseId) {
-        if (singleTapBrowseId != null && !singleTapBrowseId.startsWith("VL")) singleTapBrowseId = null;
-        if (doubleTapBrowseId != null && !doubleTapBrowseId.startsWith("VL")) doubleTapBrowseId = null;
-        if (singleTapBrowseId == null) return doubleTapBrowseId;
-        if (doubleTapBrowseId == null || singleTapBrowseId.equals(doubleTapBrowseId)) return singleTapBrowseId;
+            @Nullable String firstBrowseId, @Nullable String secondBrowseId) {
+        if (firstBrowseId != null && !firstBrowseId.startsWith("VL")) firstBrowseId = null;
+        if (secondBrowseId != null && !secondBrowseId.startsWith("VL")) secondBrowseId = null;
+        if (firstBrowseId == null) return secondBrowseId;
+        if (secondBrowseId == null || firstBrowseId.equals(secondBrowseId)) return firstBrowseId;
         return null;
     }
 
