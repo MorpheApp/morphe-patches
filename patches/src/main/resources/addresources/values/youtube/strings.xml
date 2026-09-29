@@ -1317,6 +1317,14 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_external_browser_title">Open links in browser</string>
     <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
 
+    <!-- video.buffer.playbackBufferPatch -->
+    <string name="morphe_playback_buffer_size_title">Playback buffer size</string>
+    <string name="morphe_playback_buffer_size_summary">Higher values increase buffer length ahead of playback, but increase memory and data usage</string>
+    <string name="morphe_playback_buffer_size_entry_default">Default</string>
+    <string name="morphe_playback_buffer_size_entry_low">Low</string>
+    <string name="morphe_playback_buffer_size_entry_medium">Medium</string>
+    <string name="morphe_playback_buffer_size_entry_maximum">Maximum</string>
+
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
     <string name="morphe_video_quality_default_entry_1">Auto</string>

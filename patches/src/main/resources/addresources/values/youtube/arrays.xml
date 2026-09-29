@@ -585,6 +585,20 @@
         <item>END</item>
     </string-array>
 
+    <!-- video.buffer.playbackBufferPatch -->
+    <string-array name="morphe_playback_buffer_size_entries">
+        <item>@string/morphe_playback_buffer_size_entry_default</item>
+        <item>@string/morphe_playback_buffer_size_entry_low</item>
+        <item>@string/morphe_playback_buffer_size_entry_medium</item>
+        <item>@string/morphe_playback_buffer_size_entry_maximum</item>
+    </string-array>
+    <string-array name="morphe_playback_buffer_size_entry_values">
+        <item>DEFAULT</item>
+        <item>LOW</item>
+        <item>MEDIUM</item>
+        <item>MAXIMUM</item>
+    </string-array>
+
     <!-- video.quality.rememberVideoQualityPatch -->
     <string-array name="morphe_video_quality_default_entries">
         <item>@string/morphe_video_quality_default_entry_1</item>
