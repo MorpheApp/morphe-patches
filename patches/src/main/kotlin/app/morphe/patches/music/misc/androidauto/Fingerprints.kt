@@ -14,7 +14,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -22,7 +21,6 @@ import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.util.findInstructionIndicesReversed
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
@@ -391,10 +389,15 @@ internal fun decodeThumbnailFingerprint(thumbnailFieldType: String) = Fingerprin
     )
 )
 
-/** Creates an Android Auto item and converts its artwork to an image URI. */
+/** Creates an Android Auto item using YTM's command encoder and artwork URI converter. */
 internal fun androidAutoMediaDescriptionFingerprint(thumbnailDetailsType: String) = Fingerprint(
     parameters = listOf("L"),
     filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("L"),
+            returnType = "Ljava/lang/String;"
+        ),
         fieldAccess(opcode = Opcode.IGET_OBJECT, type = thumbnailDetailsType),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,
@@ -429,37 +432,6 @@ internal fun playlistPlaybackCommandFingerprint(commandType: String) = Fingerpri
             opcode = Opcode.SGET_OBJECT
         )
     )
-)
-
-// Encode item commands for Android Auto
-
-/** Converts the command for a selected item into the media ID YTM accepts from Android Auto. */
-internal object EncodeCommandMediaIdFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Ljava/lang/String;",
-    parameters = listOf("L"),
-    custom = { method, _ ->
-        val commandType = method.parameterTypes.single().toString()
-        if (commandType == "Ljava/lang/String;") {
-            false
-        } else {
-            // YTM stores the command in another object, then converts that object to a media ID string.
-            val commandWrapperType = method.instructions
-                .filter { instruction -> instruction.opcode == Opcode.IPUT_OBJECT }
-                .mapNotNull { instruction -> instruction.getReference<FieldReference>() }
-                .filter { field -> field.type == commandType }
-                .distinct()
-                .singleOrNull()
-                ?.definingClass
-            commandWrapperType != null && method.instructions
-                .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
-                .any { reference ->
-                    reference.parameterTypes.map(CharSequence::toString) ==
-                        listOf(commandWrapperType) &&
-                        reference.returnType == "Ljava/lang/String;"
-                }
-        }
-    }
 )
 
 // Refresh after Library changes

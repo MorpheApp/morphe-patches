@@ -91,10 +91,10 @@ val supportAndroidAutoPatch = bytecodePatch(
         hookPlaylistsTitleMediaIds()
         installPhoneBrowseClientBridges()
         patchPhoneBrowseResponses()
-        patchPhoneBrowseItem()
+        val encodeCommandMediaIdMethod = patchPhoneBrowseItem()
         patchAndroidAutoPlaylists()
         installAndroidAutoFolderRefresh()
-        installPlaylistMediaIdBuilder()
+        installPlaylistMediaIdBuilder(encodeCommandMediaIdMethod)
     }
 }
 
@@ -530,8 +530,11 @@ private fun BytecodePatchContext.addGridRendererInterface() {
 
 // region Library items
 
-/** Adds getters for a Library item's playlist ID, title, subtitle, and artwork. */
-private fun BytecodePatchContext.patchPhoneBrowseItem() {
+/**
+ * Adds getters for a Library item's playlist ID, title, subtitle, and artwork.
+ * Returns YTM's media ID encoder for [installPlaylistMediaIdBuilder].
+ */
+private fun BytecodePatchContext.patchPhoneBrowseItem(): MethodReference {
     // The field read after YTM's presence check identifies the class used for Library items.
     val phoneBrowseItemType = GridRendererItemsFingerprint
         .instructionMatches
@@ -565,7 +568,11 @@ private fun BytecodePatchContext.patchPhoneBrowseItem() {
         .instruction
         .getReference<FieldReference>()
         ?: throw PatchException("Could not resolve the BrowseEndpoint browse ID field")
-    val encodeCommandMediaIdMethod = EncodeCommandMediaIdFingerprint.originalMethod
+    // The native item builder encodes its command before converting its artwork.
+    val (encodeCommandMatch, _, artworkUriMatch) =
+        androidAutoMediaDescriptionFingerprint(thumbnailDetailsField.type).instructionMatches
+    val encodeCommandMediaIdMethod = encodeCommandMatch.instruction.getReference<MethodReference>()!!
+    val createArtworkUriMethod = artworkUriMatch.instruction.getReference<MethodReference>()!!
     val itemCommandType = encodeCommandMediaIdMethod.parameterTypes.single().toString()
     val singleTapCommandField = phoneBrowseItemSingleTapCommandFingerprint(phoneBrowseItemType, itemCommandType)
         .instructionMatches.single().instruction.getReference<FieldReference>()!!
@@ -601,7 +608,8 @@ private fun BytecodePatchContext.patchPhoneBrowseItem() {
         subtitleField,
         formatTextMethod,
     )
-    addArtworkUriGetter(phoneBrowseItemClass, artworkContainerField, thumbnailDetailsField)
+    addArtworkUriGetter(phoneBrowseItemClass, artworkContainerField, thumbnailDetailsField, createArtworkUriMethod)
+    return encodeCommandMediaIdMethod
 }
 
 /**
@@ -672,15 +680,11 @@ private fun BytecodePatchContext.addArtworkUriGetter(
     itemClass: MutableClass,
     artworkContainerField: FieldReference,
     thumbnailDetailsField: FieldReference,
+    createArtworkUriMethod: MethodReference,
 ) {
     val decodeArtworkPayloadMethod = decodeThumbnailFingerprint(
         artworkContainerField.type,
     ).originalMethod
-    // The converter accepts the same thumbnail details type read by the phone's thumbnail renderer.
-    val createArtworkUriMethod = androidAutoMediaDescriptionFingerprint(thumbnailDetailsField.type)
-        .instructionMatches.single { it.instruction.opcode == Opcode.INVOKE_STATIC }
-        .instruction.getReference<MethodReference>()!!
-
     itemClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
             EXTENSION_PHONE_BROWSE_ITEM_INTERFACE,
@@ -967,8 +971,7 @@ private fun hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod: Mut
  * Replaces Java's `createPlaylistMediaId` stub with YTM's playlist command builder and media ID encoder.
  * YTM loads the queue when Android Auto plays the resulting media ID.
  */
-private fun BytecodePatchContext.installPlaylistMediaIdBuilder() {
-    val encodeCommandMediaIdMethod = EncodeCommandMediaIdFingerprint.originalMethod
+private fun BytecodePatchContext.installPlaylistMediaIdBuilder(encodeCommandMediaIdMethod: MethodReference) {
     val commandType = encodeCommandMediaIdMethod.parameterTypes.single().toString()
     val createPlaybackCommandMethod = playlistPlaybackCommandFingerprint(commandType).originalMethod
     val buildCommandMethod = createPlaybackCommandMethod.instructions
