@@ -24,7 +24,6 @@ import app.morphe.util.findInstructionIndicesReversed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 // region BypassCertificateChecksPatch.kt: Certificate checks that block Android Auto.
@@ -171,34 +170,35 @@ internal object CreatePhoneBrowseRequestFingerprint : Fingerprint(
     custom = { method, _ -> method.returnType != "Ljava/lang/Object;" }
 )
 
-/** Sends a Library or playlist request and returns a future for the response. */
-internal fun sendPhoneBrowseRequestFingerprint(
-    phoneBrowseClientType: String,
-    phoneBrowseRequestType: String
-) = Fingerprint(
-    definingClass = phoneBrowseClientType,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Lcom/google/common/util/concurrent/ListenableFuture;",
-    parameters = listOf(phoneBrowseRequestType, "Ljava/util/concurrent/Executor;"),
+/**
+ * Playlist search creates a Browse request, sets its page ID and empty tracking data, then sends it.
+ * The Library request bridge reuses these four methods with the Library's page ID.
+ */
+internal object PhoneBrowseRequestCallsFingerprint : Fingerprint(
     filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            definingClass = phoneBrowseRequestType,
-            type = "Ljava/lang/String;"
-        )
-    )
-)
-
-/** Sets the Library or playlist page ID on a YTM request. */
-internal fun setRequestBrowseIdFingerprint(requestBrowseIdField: FieldReference) = Fingerprint(
-    definingClass = requestBrowseIdField.definingClass,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("Ljava/lang/String;"),
-    filters = listOf(
-        fieldAccess(
-            reference = requestBrowseIdField,
-            opcode = Opcode.IPUT_OBJECT
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = emptyList(),
+            returnType = "L"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        string("FEplaylist_filter_search", location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("Ljava/lang/String;"),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = emptyList(),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L", "Ljava/util/concurrent/Executor;"),
+            returnType = "Lcom/google/common/util/concurrent/ListenableFuture;"
         )
     )
 )

@@ -139,35 +139,21 @@ private fun BytecodePatchContext.hookPlaylistsTitleMediaIds() {
  * requests more Library items. [capturePhoneBrowseClientOnServiceCreate] saves the object for Java to call.
  */
 private fun BytecodePatchContext.installPhoneBrowseClientBridges() {
-    val createRequestFromBrowseEndpointMethod = CreatePhoneBrowseRequestFingerprint.originalMethod
-    val phoneBrowseRequestType = createRequestFromBrowseEndpointMethod.returnType
-    val createPhoneBrowseRequestMethod = createRequestFromBrowseEndpointMethod.instructions.asSequence()
-        .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
-        .filter { reference ->
-            reference.parameterTypes.isEmpty() &&
-                reference.returnType == phoneBrowseRequestType
+    val (createPhoneBrowseRequestMethod, setRequestBrowseIdMethod, initializeTrackingMethod, sendPhoneBrowseRequestMethod) =
+        PhoneBrowseRequestCallsFingerprint.instructionMatches.mapNotNull { match ->
+            match.instruction.getReference<MethodReference>()
         }
-        .distinct()
-        .singleOrNull()
-        ?: throw PatchException("Could not resolve the method that creates a phone Browse request")
-    // YTM creates and sends Library requests from the same class.
+    val phoneBrowseRequestType = createPhoneBrowseRequestMethod.returnType
     val phoneBrowseClientType = createPhoneBrowseRequestMethod.definingClass
-    val phoneBrowseRequestSenderFingerprint = sendPhoneBrowseRequestFingerprint(
-        phoneBrowseClientType,
-        phoneBrowseRequestType,
-    )
-    val sendPhoneBrowseRequestMethod = phoneBrowseRequestSenderFingerprint.originalMethod
-    val requestBrowseIdField = phoneBrowseRequestSenderFingerprint.instructionMatches.single()
-        .instruction
-        .getReference<FieldReference>()!!
 
     val phoneBrowseClientClass = mutableClassDefBy(phoneBrowseClientType)
     phoneBrowseClientClass.interfaces.add(EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE)
     addPhoneBrowseRequestMethod(
         phoneBrowseClientClass,
         createPhoneBrowseRequestMethod,
+        setRequestBrowseIdMethod,
+        initializeTrackingMethod,
         sendPhoneBrowseRequestMethod,
-        requestBrowseIdField,
     )
     addLibraryPaginationRequestMethod(
         phoneBrowseClientClass,
@@ -184,41 +170,21 @@ private fun BytecodePatchContext.installPhoneBrowseClientBridges() {
 private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
     phoneBrowseClientClass: MutableClass,
     createPhoneBrowseRequestMethod: MethodReference,
-    sendPhoneBrowseRequestMethod: Method,
-    requestBrowseIdField: FieldReference,
+    setRequestBrowseIdMethod: MethodReference,
+    initializeTrackingMethod: MethodReference,
+    sendPhoneBrowseRequestMethod: MethodReference,
 ) {
-    val phoneBrowseRequestType = createPhoneBrowseRequestMethod.returnType
-    val requestHierarchyMethods = generateSequence(
-        classDefBy(phoneBrowseRequestType),
-    ) { classDef ->
-        classDef.superclass?.let { superclass -> classDefByOrNull(superclass) }
-    }.flatMap { classDef -> classDef.methods.asSequence() }
-    val clickTrackingParamsSetterMethod = requestHierarchyMethods
-        // A public byte[] setter can write the same clickTrackingParams field.
-        // Select the protected setter to avoid matching both.
-        .singleOrNull { method ->
-            AccessFlags.PROTECTED.isSet(method.accessFlags) &&
-                method.returnType == "V" &&
-                method.parameterTypes.map(CharSequence::toString) == listOf("[B")
-        }
-        ?: throw PatchException("Could not uniquely resolve the click tracking parameter setter")
-    val setRequestBrowseIdMethod = setRequestBrowseIdFingerprint(
-        requestBrowseIdField,
-    ).originalMethod
     phoneBrowseClientClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
             EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE,
             "patch_requestBrowse",
         ),
-        registerCount = 5,
+        registerCount = 4,
         instructions = """
             invoke-virtual { p0 }, $createPhoneBrowseRequestMethod
             move-result-object v0
             invoke-virtual { v0, p1 }, $setRequestBrowseIdMethod
-            # YTM rejects null clickTrackingParams, so pass an empty byte array.
-            const/4 v1, 0x0
-            new-array v1, v1, [B
-            invoke-virtual { v0, v1 }, $clickTrackingParamsSetterMethod
+            invoke-virtual { v0 }, $initializeTrackingMethod
             invoke-virtual { p0, v0, p2 }, $sendPhoneBrowseRequestMethod
             move-result-object v0
             return-object v0
@@ -232,7 +198,7 @@ private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
 private fun BytecodePatchContext.addLibraryPaginationRequestMethod(
     phoneBrowseClientClass: MutableClass,
     phoneBrowseRequestType: String,
-    sendPhoneBrowseRequestMethod: Method,
+    sendPhoneBrowseRequestMethod: MethodReference,
 ) {
     val getGridItemsMethod = GridRendererItemsFingerprint.originalMethod
     val getGridPaginationCommandsMethod = gridPaginationCommandsFingerprint(
