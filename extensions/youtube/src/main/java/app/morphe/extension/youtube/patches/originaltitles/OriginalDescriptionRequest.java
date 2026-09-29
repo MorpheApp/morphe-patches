@@ -7,7 +7,6 @@
 
 package app.morphe.extension.youtube.patches.originaltitles;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONObject;
@@ -52,7 +51,7 @@ final class OriginalDescriptionRequest {
         this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId));
     }
 
-    static OriginalDescriptionRequest fetchRequestIfNeeded(@NonNull String videoId) {
+    static OriginalDescriptionRequest fetchRequestIfNeeded(String videoId) {
         return cache.computeIfAbsent(videoId, OriginalDescriptionRequest::new);
     }
 
@@ -90,13 +89,12 @@ final class OriginalDescriptionRequest {
 
             final int responseCode = connection.getResponseCode();
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
-                JSONObject videoDetails = Requester.parseJSONObjectAndDisconnect(connection)
+                JSONObject videoDetails = Requester.parseJSONObject(connection)
                         .optJSONObject("videoDetails");
                 String description = videoDetails == null ? "" : videoDetails.optString("shortDescription");
                 return description.isEmpty() ? null : description;
             }
 
-            connection.disconnect();
             Logger.printDebug(() -> "Description request failed for: " + videoId + " code: " + responseCode);
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not fetch original description of: " + videoId, ex);

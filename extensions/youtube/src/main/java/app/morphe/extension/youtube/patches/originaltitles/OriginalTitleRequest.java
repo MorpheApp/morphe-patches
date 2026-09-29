@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -97,7 +98,7 @@ final class OriginalTitleRequest {
     private static String fetchTitle(String videoId) {
         try {
             String url = "https://www.youtube.com/oembed?format=json&url="
-                    + URLEncoder.encode("https://www.youtube.com/watch?v=" + videoId, "UTF-8");
+                    + URLEncoder.encode("https://www.youtube.com/watch?v=" + videoId, StandardCharsets.UTF_8);
 
             HttpURLConnection connection = Requester.openConnection(url);
             connection.setConnectTimeout(CONNECTION_TIMEOUT_MILLISECONDS);
@@ -105,11 +106,9 @@ final class OriginalTitleRequest {
 
             final int responseCode = connection.getResponseCode();
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
-                String title = Requester.parseJSONObjectAndDisconnect(connection).optString("title");
+                String title = Requester.parseJSONObject(connection).optString("title");
                 return title.isEmpty() ? null : title;
             }
-
-            connection.disconnect();
             Logger.printDebug(() -> "oEmbed request failed for: " + videoId + " code: " + responseCode);
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not fetch original title of: " + videoId, ex);
