@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     https://github.com/google/material-design-icons/blob/bd8cb85bd4bad964fe6918f79665bb40c3a8efef/symbols/android/picture_in_picture_alt/materialsymbolssharp/picture_in_picture_alt_24px.xml
-    Changes made: Removed the theme tint, added the tap animation.
+    Changes made: Removed the theme tint, added the tap animation, scaled up to match the size of the other buttons.
 
     Copyright 2022 Google
 
@@ -27,12 +27,18 @@
             android:viewportWidth="960"
             android:viewportHeight="960">
             <group
-                android:name="icon_group"
                 android:pivotX="480"
-                android:pivotY="480">
-                <path
-                    android:fillColor="@android:color/white"
-                    android:pathData="M80,800L80,160L880,160L880,800L80,800ZM160,720L800,720L800,240L160,240L160,720ZM160,720L160,240L160,240L160,720L160,720ZM440,680L760,680L760,440L440,440L440,680ZM520,600L520,520L680,520L680,600L520,600Z" />
+                android:pivotY="480"
+                android:scaleX="1.1"
+                android:scaleY="1.1">
+                <group
+                    android:name="icon_group"
+                    android:pivotX="480"
+                    android:pivotY="480">
+                    <path
+                        android:fillColor="@android:color/white"
+                        android:pathData="M80,800L80,160L880,160L880,800L80,800ZM160,720L800,720L800,240L160,240L160,720ZM160,720L160,240L160,240L160,720L160,720ZM440,680L760,680L760,440L440,440L440,680ZM520,600L520,520L680,520L680,600L520,600Z" />
+                </group>
             </group>
         </vector>
     </aapt:attr>
