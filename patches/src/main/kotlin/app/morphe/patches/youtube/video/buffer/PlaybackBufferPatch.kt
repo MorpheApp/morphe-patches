@@ -21,7 +21,7 @@ private const val PLAYBACK_BUFFER_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/PlaybackBufferPatch;"
 
 @Suppress("unused")
-val playbackBufferPatch = bytecodePatch(
+val playbackBufferPatch = bytecodePatch( // TODO: Make this an internal patch of "Video quality" patch?
     name = "Playback buffer",
     description = "Adds an option to change the video playback buffer size."
 ) {
