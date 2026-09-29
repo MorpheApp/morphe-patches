@@ -1161,6 +1161,16 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static void hideInThisVideoButton(View view) {
+        if (view != null && Settings.HIDE_IN_THIS_VIDEO_BUTTON.get()) {
+            Utils.hideViewByLayoutParams(view);
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean hideSnackbar() {
         return Settings.HIDE_SNACKBAR.get();
     }

@@ -810,6 +810,18 @@ internal object HideTimeBarEntryPointContainerFingerprint : Fingerprint(
     )
 )
 
+internal object HideTimeBarTimelineTitleFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "time_bar_timeline_title"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45752241)
