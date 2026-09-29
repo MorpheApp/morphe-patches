@@ -109,7 +109,6 @@ public final class SupportAndroidAutoPatch {
      */
     public interface PhoneBrowseResponse {
         @NonNull Iterable<PhoneBrowseTab> patch_getTabs();
-        // More Library items returned by pagination.
         @Nullable GridRenderer patch_getPaginatedLibraryGrid();
     }
 
@@ -123,7 +122,7 @@ public final class SupportAndroidAutoPatch {
         @NonNull Iterable<?> patch_getContents();
     }
 
-    /** Library items and the commands to request more of them. */
+    /** Added to YTM's Library grid to read its items and pagination commands. */
     public interface GridRenderer {
         // Includes artists and podcasts as well as playlists; filter before returning playlists to Android Auto.
         @NonNull Iterable<?> patch_getItems();
@@ -131,27 +130,27 @@ public final class SupportAndroidAutoPatch {
         @NonNull Iterable<?> patch_getPaginationCommands();
     }
 
-    /** A request from Android Auto to load content, such as its main tabs, Playlists, or a podcast list. */
+    /** Added to YTM's Android Auto request class to read the requested ID and return its contents. */
     public interface AndroidAutoBrowseRequest {
         @Nullable String patch_getRequestedMediaId();
         // The Android Auto connection for this request, or null if unknown.
         @Nullable Object patch_getBrowserConnection();
         /**
-         * Sends the list through YTM. {@link SupportAndroidAutoPatch#handleAndroidAutoBrowseResult}
-         * can add the Podcasts tab or supply its contents before Android Auto receives the list.
+         * Sends the list through YTM, including the hook for
+         * {@link SupportAndroidAutoPatch#handleAndroidAutoBrowseResult}.
          * YTM may remove items to keep the returned list within its byte limit.
          */
         void patch_deliverAndroidAutoItems(
                 @NonNull List<MediaBrowserCompat.MediaItem> androidAutoItems);
     }
 
-    /** Refreshes Home, Playlists, or Podcasts without reconnecting Android Auto. */
+    /** Added to YTM's browser service to repeat saved Android Auto folder requests. */
     public interface AndroidAutoFolderReload {
         void patch_reloadFolder(
                 @NonNull String parentMediaId, @NonNull Object connection, @Nullable Bundle options);
     }
 
-    /** YTM's item type for Library content, playlist songs, and the "Add a song" button. */
+    /** Added to YTM's Library item class to read playlist IDs, titles, subtitles, and artwork. */
     public interface PhoneBrowseItem {
         /**
          * Returns a playlist page ID, or null if none is found or the item's commands identify different playlists.
@@ -253,11 +252,8 @@ public final class SupportAndroidAutoPatch {
     // Playlist loading and pagination
 
     /**
-     * Loads the Library one page at a time. Background listeners read the first response with
-     * {@link #appendInitialLibraryPlaylists} and later responses with {@link #appendPaginatedLibraryPlaylists}.
-     * Both collect playlists through {@link #collectPlaylistsFromGrid} and return a pagination command if available.
-     * A command requests the next page; otherwise {@link #deliverAndroidAutoPlaylists} returns the collected list.
-     * Failure and timeout also return the playlists collected so far.
+     * Reads Library responses on background threads and follows pagination until no command remains.
+     * The first page and later pages have different response formats and need separate parsers.
      */
     private static void requestLibraryPage(
             AndroidAutoBrowseRequest androidAutoRequest, PlaylistsFolderLoad load,
@@ -332,10 +328,7 @@ public final class SupportAndroidAutoPatch {
         return firstPaginationCommand(gridRenderer);
     }
 
-    /**
-     * {@link #addLibraryPlaylist} keeps playlist IDs, titles, and artwork from each Library item.
-     * Skip an unreadable item without discarding the remaining playlists.
-     */
+    /** Skips unreadable Library items so one failure does not discard the remaining playlists. */
     private static void collectPlaylistsFromGrid(
             GridRenderer gridRenderer, PlaylistsFolderLoad load) {
         for (Object libraryItem : gridRenderer.patch_getItems()) {
@@ -420,10 +413,7 @@ public final class SupportAndroidAutoPatch {
     // Return playlists to Android Auto
 
     /**
-     * Returns the collected playlists as items Android Auto can play.
-     * {@link PlaylistsFolderLoad#takePlaylistsForDelivery} stops collection and prevents completion and timeout
-     * from both returning this request's playlists.
-     * {@link PlaylistsFolderDelivery#deliver} prevents an older list from replacing a newer list already returned.
+     * Stops collection before sending the result so a concurrent timeout cannot send it twice.
      */
     private static void deliverAndroidAutoPlaylists(
             AndroidAutoBrowseRequest androidAutoRequest,
@@ -469,7 +459,7 @@ public final class SupportAndroidAutoPatch {
         }
     }
 
-    /** Shared by loads for the same Playlists folder and Android Auto connection. */
+    /** Prevents older results from replacing newer results for the same folder and Android Auto connection. */
     private static final class PlaylistsFolderDelivery {
         @GuardedBy("this")
         private long lastDeliveredLoadNumber;
@@ -559,8 +549,7 @@ public final class SupportAndroidAutoPatch {
     }
 
     /**
-     * Android Auto's request to receive updates for Playlists, Home, or Podcasts.
-     * Saves the list ID and connection needed to refresh its contents.
+     * Saves an Android Auto list's ID, service, and connection so its contents can be requested again.
      */
     private static final class AndroidAutoSubscription {
         private final WeakReference<AndroidAutoFolderReload> browserService;

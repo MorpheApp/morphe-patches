@@ -70,8 +70,8 @@ private const val TITLE_FIELD_NAME = "g"
 private const val SUBTITLE_FIELD_NAME = "h"
 
 /**
- * Supplies Android Auto with the playlists available in YTM's phone Library
- * and adds a Podcasts tab using the podcast lists returned for Android Auto Home.
+ * Connects the Java extension to YTM's Library requests, browse results, and playlist playback.
+ * Injected interfaces let Java request Library pages and read their playlist IDs, text, and artwork.
  *
  * Java handles Android Auto's Library and Playlists requests using those interfaces.
  * [hookAndroidAutoBrowseResults] lets Java add a Podcasts tab containing Home's podcast lists.
@@ -267,11 +267,10 @@ private fun BytecodePatchContext.addLibraryPaginationRequestMethod(
     )
 }
 
-// Obtain YTM's object for sending Library and playlist requests
+// Obtain YTM's phone browse client
 
 /**
- * Saves the object YTM creates for Library and playlist requests when MusicBrowserService starts.
- * Java's `setPhoneBrowseClient` keeps it for requests made while Android Auto is connected.
+ * Passes YTM's phone browse client to Java's `setPhoneBrowseClient` when MusicBrowserService starts.
  */
 private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBrowseClientType: String) {
     val phoneBrowseClientProviderCandidates =
@@ -446,7 +445,7 @@ private fun BytecodePatchContext.addPhoneBrowsePageInterfaces() {
     addSectionListInterface(getSectionContentsMethod)
 }
 
-/** Provides the section list inside a TabRenderer; [addSectionListInterface] reads the Library items or songs inside it. */
+/** Adds a getter for the section list inside YTM's TabRenderer wrapper. */
 private fun BytecodePatchContext.addPhoneBrowseTabInterface(
     getSectionListMethod: Method,
 ) {
@@ -467,7 +466,7 @@ private fun BytecodePatchContext.addPhoneBrowseTabInterface(
     )
 }
 
-/** Exposes the lists inside a Library or playlist response so their contents can be collected. */
+/** Adds a getter for the section contents so Java can find the Library grids. */
 private fun BytecodePatchContext.addSectionListInterface(
     getSectionContentsMethod: Method,
 ) {
@@ -779,9 +778,8 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
 }
 
 /**
- * Gives Java's `handleAndroidAutoPlaylists` the request before YTM can return an empty Playlists list.
- * If Java accepts it, stop here while Java loads the phone Library and returns the playlists.
- * Otherwise continue YTM's code for the requested Android Auto list.
+ * Calls Java's `handleAndroidAutoPlaylists` before YTM dispatches the request to its content providers.
+ * When Java accepts the request, skip YTM's handlers so only Java returns a result.
  */
 private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
     androidAutoRequestHandlerType: String,
@@ -812,10 +810,7 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
 // region Android Auto connections and folder refresh
 
 /**
- * Refreshes Android Auto after Library changes.
- * [hookLibraryChangeCompletion] passes successful request endpoints to Java to identify Library changes.
- * [addAndroidAutoFolderReload] requests updated Playlists and Home lists without reconnecting Android Auto.
- * [addAndroidAutoRequestConnectionGetter] identifies which connection each result belongs to.
+ * Hooks successful Library changes and lets Java reload folders through YTM's browser service.
  */
 private fun BytecodePatchContext.installAndroidAutoFolderRefresh() {
     // Android Auto requests list updates through MediaBrowserServiceCompat.
@@ -831,7 +826,7 @@ private fun BytecodePatchContext.installAndroidAutoFolderRefresh() {
     hookLibraryChangeCompletion()
 }
 
-/** Gives Java the connection to compare loads for the same Playlists list, leaving other connections independent. */
+/** Exposes the connection so Java can identify requests that update the same Android Auto folder. */
 private fun BytecodePatchContext.addAndroidAutoRequestConnectionGetter(reloadMethod: Method) {
     val connectionType = reloadMethod.parameterTypes[1].toString()
     // YTM passes the Android Auto connection to the object that returns the list.

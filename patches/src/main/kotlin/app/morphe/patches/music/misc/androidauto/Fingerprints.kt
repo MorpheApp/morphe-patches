@@ -51,10 +51,8 @@ internal object GoogleCertificatesRemoteFingerprint : Fingerprint(
 )
 
 /**
- * [GoogleSignatureVerifier.c(String)][defpackage.tcn.c] — the boolean entry-point
- * that [AllowlistManager.g][defpackage.kxo.g] calls to decide whether the caller
- * is Google-signed.  Scoped to [GoogleCertificatesRemoteFingerprint] so the
- * patcher never picks up an unrelated `(String)→boolean` method.
+ * Checks whether the caller is Google-signed. [GoogleCertificatesRemoteFingerprint] limits the match
+ * to the certificate verifier class; the method signature alone also matches unrelated methods.
  */
 internal object IsGoogleSignedFingerprint : Fingerprint(
     classFingerprint = GoogleCertificatesRemoteFingerprint,
@@ -116,9 +114,9 @@ internal object SendEmptyAndroidAutoMediaItemsFingerprint : Fingerprint(
     strings = listOf("Invalid media id: ")
 )
 
-// Request Library and playlist pages through YTM
+// Locate YTM's phone browse client and request methods
 
-/** MusicBrowserService initialization, where the patch obtains YTM's object for Library and playlist requests. */
+/** MusicBrowserService initialization, where the patch obtains YTM's phone browse client. */
 internal fun musicBrowserServiceSuperclassOnCreateFingerprint(
     musicBrowserServiceType: String,
     generatedComponentType: String
