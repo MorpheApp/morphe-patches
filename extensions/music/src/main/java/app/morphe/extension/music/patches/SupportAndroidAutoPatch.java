@@ -112,14 +112,9 @@ public final class SupportAndroidAutoPatch {
         @Nullable GridRenderer patch_getPaginatedLibraryGrid();
     }
 
-    /** Added to YTM's TabRenderer wrapper to read the Library's sections. */
+    /** Added to YTM's TabRenderer wrapper to read its section contents, including Library grids. */
     public interface PhoneBrowseTab {
-        @Nullable SectionList patch_getSectionList();
-    }
-
-    /** Added to YTM's section list to read its contents, including {@link GridRenderer} objects. */
-    public interface SectionList {
-        @NonNull Iterable<?> patch_getContents();
+        @Nullable Iterable<?> patch_getSectionContents();
     }
 
     /** Added to YTM's Library grid to read its items and pagination commands. */
@@ -297,9 +292,9 @@ public final class SupportAndroidAutoPatch {
             PhoneBrowseResponse libraryResponse, PlaylistsFolderLoad load) {
         Object paginationCommand = null;
         for (PhoneBrowseTab tab : libraryResponse.patch_getTabs()) {
-            SectionList sectionList = tab.patch_getSectionList();
-            if (sectionList == null) continue;
-            for (Object sectionContent : sectionList.patch_getContents()) {
+            Iterable<?> sectionContents = tab.patch_getSectionContents();
+            if (sectionContents == null) continue;
+            for (Object sectionContent : sectionContents) {
                 if (!(sectionContent instanceof GridRenderer)) continue;
                 GridRenderer gridRenderer = (GridRenderer) sectionContent;
                 collectPlaylistsFromGrid(gridRenderer, load);

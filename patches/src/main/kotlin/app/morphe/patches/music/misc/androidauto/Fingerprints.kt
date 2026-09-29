@@ -17,7 +17,6 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.util.findInstructionIndicesReversed
@@ -62,9 +61,6 @@ internal object IsGoogleSignedFingerprint : Fingerprint(
 // region SupportAndroidAutoPatch.kt: Playlists, podcasts, playback, and Library refresh in Android Auto.
 
 private const val PHONE_BROWSE_TABS_PROTO_FIELD = 58_173_949L
-private const val TAB_RENDERER_PROTO_FIELD = 58_174_010L
-private const val TAB_CONTENT_PRESENT_FLAG = 1L
-private const val SECTION_LIST_CONTENTS_FIELD_NAME = "f"
 private const val GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG = 0x40000L
 private const val NEXT_COMMAND_PRESENT_FLAG = 0x1L
 private const val RELOAD_COMMAND_PRESENT_FLAG = 0x2L
@@ -214,58 +210,31 @@ internal object PhoneBrowseResponseTabsFingerprint : Fingerprint(
     ),
     returnType = "L",
     parameters = emptyList(),
+    filters = listOf(literal(PHONE_BROWSE_TABS_PROTO_FIELD))
+)
+
+/** Finds the section and contents readers called while YTM creates each phone tab. */
+internal object PhoneBrowseTabContentsFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/util/List;"),
+    strings = listOf("swipe-to-refresh", "FEmusic_trending"),
     filters = listOf(
-        literal(PHONE_BROWSE_TABS_PROTO_FIELD),
+        methodCall(definingClass = "Ljava/util/Iterator;", name = "next"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
         methodCall(
-            definingClass = "Lj$/util/stream/Stream;",
-            name = "filter",
-            parameters = listOf("Ljava/util/function/Predicate;"),
-            returnType = "Lj$/util/stream/Stream;"
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = emptyList(),
+            returnType = "L",
+            location = MatchAfterImmediately()
         ),
-        newInstance("L", location = MatchAfterWithin(2))
-    )
-)
-
-/** Creates YTM's object for reading the sections in TabRenderer data. */
-internal fun createPhoneBrowseTabFingerprint(tabMapperType: String) = Fingerprint(
-    definingClass = tabMapperType,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/Object;",
-    parameters = listOf("Ljava/lang/Object;"),
-    filters = listOf(
-        newInstance("L"),
-        literal(
-            TAB_RENDERER_PROTO_FIELD,
-            location = MatchAfterWithin(3)
-        )
-    )
-)
-
-/** Extracts the sections containing Library items or playlist songs from YTM's TabRenderer data. */
-internal fun getSectionListFingerprint(tabWrapperType: String) = Fingerprint(
-    definingClass = tabWrapperType,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "L",
-    parameters = emptyList(),
-    filters = listOf(
-        // YTM checks this flag before reading content from TabRenderer.
-        literal(TAB_CONTENT_PRESENT_FLAG)
-    )
-)
-
-/** Returns the lists in a phone Library section. */
-internal fun sectionListContentsFingerprint(
-    sectionListType: String,
-    sectionContentsType: String
-) = Fingerprint(
-    definingClass = sectionListType,
-    returnType = sectionContentsType,
-    parameters = emptyList(),
-    filters = listOf(
-        fieldAccess(
-            opcode = Opcode.IGET_OBJECT,
-            // Field f contains the Library grid or playlist song list.
-            name = SECTION_LIST_CONTENTS_FIELD_NAME
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = emptyList(),
+            returnType = "L",
+            location = MatchAfterImmediately()
         )
     )
 )

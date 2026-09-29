@@ -36,7 +36,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstructio
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
-import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -48,8 +47,6 @@ private const val EXTENSION_PHONE_BROWSE_RESPONSE_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PhoneBrowseResponse;"
 private const val EXTENSION_PHONE_BROWSE_TAB_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PhoneBrowseTab;"
-private const val EXTENSION_SECTION_LIST_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$SectionList;"
 private const val EXTENSION_GRID_RENDERER_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$GridRenderer;"
 private const val EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE =
@@ -294,14 +291,14 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
 
 /**
  * Lets Java extract the lists returned by YTM's phone Library requests.
- * YTM nests the lists inside TabRenderer and section data. [addPhoneBrowsePageInterfaces] installs
- * PhoneBrowseTab and SectionList on the YTM objects that read this data, so Java can reach the lists.
+ * YTM nests the lists inside TabRenderer and section data. [addPhoneBrowseTabInterface] lets Java
+ * read each tab's section contents through YTM's readers.
  * [addGridRendererInterface] provides Library items.
  * Pagination may return Library items directly or in its first section; [addPhoneBrowseResponseInterface] handles both.
  */
 private fun BytecodePatchContext.patchPhoneBrowseResponses() {
     addPhoneBrowseResponseInterface()
-    addPhoneBrowsePageInterfaces()
+    addPhoneBrowseTabInterface()
     addGridRendererInterface()
 }
 
@@ -382,71 +379,28 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
     )
 }
 
-/** Connects Java's PhoneBrowseTab and SectionList methods to the nested lists in YTM's phone response. */
-private fun BytecodePatchContext.addPhoneBrowsePageInterfaces() {
-    val getTabsMethod = PhoneBrowseResponseTabsFingerprint.originalMethod
-    val tabMapperMatch = PhoneBrowseResponseTabsFingerprint.instructionMatches.single { match ->
-        match.instruction.opcode == Opcode.NEW_INSTANCE
-    }
-    val tabMapperType = tabMapperMatch
-        .instruction
-        .getReference<TypeReference>()!!
-        .type
-    val tabWrapperMatch = createPhoneBrowseTabFingerprint(
-        tabMapperType,
-    ).instructionMatches.single { match ->
-        match.instruction.opcode == Opcode.NEW_INSTANCE
-    }
-    val tabWrapperType = tabWrapperMatch
-        .instruction
-        .getReference<TypeReference>()!!
-        .type
-    val getSectionListMethod = getSectionListFingerprint(tabWrapperType).originalMethod
-    val getSectionContentsMethod = sectionListContentsFingerprint(
-        getSectionListMethod.returnType,
-        getTabsMethod.returnType,
-    ).originalMethod
-
-    addPhoneBrowseTabInterface(getSectionListMethod)
-    addSectionListInterface(getSectionContentsMethod)
-}
-
-/** Adds a getter for the section list inside YTM's TabRenderer wrapper. */
-private fun BytecodePatchContext.addPhoneBrowseTabInterface(
-    getSectionListMethod: Method,
-) {
+/** Reads a phone tab's section contents without exposing the section wrapper to Java. */
+private fun BytecodePatchContext.addPhoneBrowseTabInterface() {
+    val (getSectionListMethod, getSectionContentsMethod) = PhoneBrowseTabContentsFingerprint
+        .instructionMatches.filter { it.instruction.opcode == Opcode.INVOKE_VIRTUAL }
+        .map { it.instruction.getReference<MethodReference>()!! }
     val phoneBrowseTabClass = mutableClassDefBy(getSectionListMethod.definingClass)
     phoneBrowseTabClass.interfaces.add(EXTENSION_PHONE_BROWSE_TAB_INTERFACE)
     phoneBrowseTabClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
             EXTENSION_PHONE_BROWSE_TAB_INTERFACE,
-            "patch_getSectionList",
+            "patch_getSectionContents",
         ),
         registerCount = 1,
         instructions = """
             invoke-virtual { p0 }, $getSectionListMethod
             move-result-object p0
-            check-cast p0, $EXTENSION_SECTION_LIST_INTERFACE
-            return-object p0
-        """,
-    )
-}
-
-/** Adds a getter for the section contents so Java can find the Library grids. */
-private fun BytecodePatchContext.addSectionListInterface(
-    getSectionContentsMethod: Method,
-) {
-    val sectionListClass = mutableClassDefBy(getSectionContentsMethod.definingClass)
-    sectionListClass.interfaces.add(EXTENSION_SECTION_LIST_INTERFACE)
-    sectionListClass.addInterfaceMethod(
-        interfaceMethod = extensionInterfaceMethod(
-            EXTENSION_SECTION_LIST_INTERFACE,
-            "patch_getContents",
-        ),
-        registerCount = 1,
-        instructions = """
+            if-eqz p0, :no_sections
             invoke-virtual { p0 }, $getSectionContentsMethod
             move-result-object p0
+            return-object p0
+            :no_sections
+            const/4 p0, 0x0
             return-object p0
         """,
     )
