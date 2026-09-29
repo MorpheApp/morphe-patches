@@ -15,8 +15,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.NarrowLiteralInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val PLAYBACK_BUFFER_CLASS_DESCRIPTOR =
@@ -39,34 +37,34 @@ val playbackBufferPatch = bytecodePatch(
             ListPreference("morphe_playback_buffer_size")
         )
 
-        ShouldContinueLoadingFingerprint.method.apply {
-            val bufferedIndex = implementation!!.instructions.indexOfFirst {
-                it.opcode == Opcode.IGET_WIDE
-            }
-            val register = getInstruction<TwoRegisterInstruction>(bufferedIndex).registerA
+        ShouldContinueLoadingFingerprint.let {
+            it.method.apply {
+                val bufferedIndex = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(bufferedIndex).registerA
 
-            addInstructions(
-                bufferedIndex + 1,
-                """
-                    invoke-static/range { v$register .. v${register + 1} }, $PLAYBACK_BUFFER_CLASS_DESCRIPTOR->scaleBufferedDurationUs(J)J
-                    move-result-wide v$register
-                """
-            )
+                addInstructions(
+                    bufferedIndex + 1,
+                    """
+                        invoke-static/range { v$register .. v${register + 1} }, $PLAYBACK_BUFFER_CLASS_DESCRIPTOR->scaleBufferedDurationUs(J)J
+                        move-result-wide v$register
+                    """
+                )
+            }
         }
 
-        TracksSelectedFingerprint.method.apply {
-            val limitIndex = implementation!!.instructions.indexOfFirst {
-                it.opcode == Opcode.MUL_INT_LIT16 && (it as NarrowLiteralInstruction).narrowLiteral == 1024
-            }
-            val register = getInstruction<TwoRegisterInstruction>(limitIndex).registerA
+        TracksSelectedFingerprint.let {
+            it.method.apply {
+                val limitIndex = it.instructionMatches.last().index
+                val register = getInstruction<TwoRegisterInstruction>(limitIndex).registerA
 
-            addInstructions(
-                limitIndex + 1,
-                """
-                    invoke-static/range { v$register .. v$register }, $PLAYBACK_BUFFER_CLASS_DESCRIPTOR->scaleByteLimit(I)I
-                    move-result v$register
-                """
-            )
+                addInstructions(
+                    limitIndex + 1,
+                    """
+                        invoke-static/range { v$register .. v$register }, $PLAYBACK_BUFFER_CLASS_DESCRIPTOR->scaleByteLimit(I)I
+                        move-result v$register
+                    """
+                )
+            }
         }
     }
 }
