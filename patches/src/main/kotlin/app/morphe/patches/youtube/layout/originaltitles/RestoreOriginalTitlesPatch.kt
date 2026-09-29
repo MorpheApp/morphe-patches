@@ -25,9 +25,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/originaltitles/RestoreOriginalTitlesPatch;"
@@ -68,16 +66,17 @@ val restoreOriginalTitlesPatch = bytecodePatch(
         // The playlist panel on the watch page does not use Litho.
         PlaylistPanelVideoBindFingerprint.matchAll().forEach {
             it.method.apply {
-                val titleViewField = it.instructionMatches.first().instruction.getReference<FieldReference>()!!
+                val titleViewField = it.instructionMatches.first().getFieldAccessed()
                 // Video id is stored in a field of the view holder.
                 val videoIdIndex = it.instructionMatches.last().index
+                val insertIndex = videoIdIndex + 1
                 val videoIdInstruction = getInstruction<TwoRegisterInstruction>(videoIdIndex)
                 val videoIdRegister = videoIdInstruction.registerA
                 val viewHolderRegister = videoIdInstruction.registerB
-                val titleViewRegister = findFreeRegister(videoIdIndex + 1, videoIdRegister, viewHolderRegister)
+                val titleViewRegister = findFreeRegister(insertIndex, videoIdRegister, viewHolderRegister)
 
                 addInstructions(
-                    videoIdIndex + 1,
+                    insertIndex,
                     """
                         iget-object v$titleViewRegister, v$viewHolderRegister, $titleViewField
                         invoke-static { v$titleViewRegister, v$videoIdRegister }, $EXTENSION_CLASS->restoreOriginalTitle(Landroid/widget/TextView;Ljava/lang/String;)V

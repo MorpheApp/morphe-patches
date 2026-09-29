@@ -7,6 +7,8 @@
 
 package app.morphe.patches.shared.misc.litho.relayout
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
@@ -35,28 +37,29 @@ val lithoRelayoutPatch = bytecodePatch(
     execute {
         // Verify stubbed classes are not obfuscated.
         classDefBy(COMPONENT_HOST_CLASS)
-        classDefBy("Lcom/facebook/litho/TextContent;")
+        classDefBy(COMPONENT_TEXT_CONTENT)
 
         LithoViewOnMeasureFingerprint.let {
             val (readFlag, clearFlag) = it.instructionMatches.take(2).map { match ->
                 match.instruction.getReference<FieldReference>()!!
             }
             if (readFlag != clearFlag) {
-                throw PatchException("Could not find the force layout field")
+                throw PatchException("Unexpected fields, read: $readFlag clear: $clearFlag")
             }
-            val forceLayoutField = readFlag
 
             // Check the views again when attached again without mounting the texts.
             mapOf(
                 "onAttachedToWindow" to "onLithoViewAttached",
                 "onDetachedFromWindow" to "onLithoViewDetached"
             ).forEach { (methodName, hookName) ->
-                it.classDef.methods.firstOrNull { method ->
-                    method.name == methodName && method.parameterTypes.isEmpty()
-                }?.addInstructions(
+                Fingerprint(
+                    definingClass = it.classDef.toString(),
+                    name = methodName,
+                    parameters = listOf()
+                ).method.addInstructions(
                     0,
                     "invoke-static { p0 }, $EXTENSION_CLASS->$hookName(Landroid/view/View;)V"
-                ) ?: throw PatchException("Could not find $methodName")
+                )
             }
 
             it.classDef.apply {
@@ -76,7 +79,7 @@ val lithoRelayoutPatch = bytecodePatch(
                             0,
                             """
                                 const/4 v0, 0x1
-                                iput-boolean v0, p0, $forceLayoutField
+                                iput-boolean v0, p0, $readFlag
                                 invoke-virtual { p0 }, $type->requestLayout()V
                                 return-void
                             """
@@ -93,11 +96,11 @@ val lithoRelayoutPatch = bytecodePatch(
                 val textInstruction = getInstruction<TwoRegisterInstruction>(textIndex)
                 val textDrawableType = getInstruction(textIndex)
                     .getReference<FieldReference>()!!.definingClass
-                if ("Lcom/facebook/litho/TextContent;" !in classDefBy(textDrawableType).interfaces) {
+                if (COMPONENT_TEXT_CONTENT !in classDefBy(textDrawableType).interfaces) {
                     throw PatchException("Could not find the Litho text drawable")
                 }
 
-                addInstructions(
+                addInstruction(
                     textIndex + 1,
                     "invoke-static { v${textInstruction.registerB}, v${textInstruction.registerA} }, " +
                             "$EXTENSION_CLASS->onLithoTextMounted(Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;)V"

@@ -17,6 +17,7 @@ import com.android.tools.smali.dexlib2.Opcode
 
 internal const val COMPONENT_HOST_CLASS = "Lcom/facebook/litho/ComponentHost;"
 internal const val COMPONENT_TREE_CLASS = "Lcom/facebook/litho/ComponentTree;"
+internal const val COMPONENT_TEXT_CONTENT = "Lcom/facebook/litho/TextContent;"
 
 /**
  * Measures the Litho view. The force layout flag is read and cleared,
