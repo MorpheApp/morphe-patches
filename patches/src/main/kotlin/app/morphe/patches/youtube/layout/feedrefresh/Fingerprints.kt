@@ -9,6 +9,7 @@ package app.morphe.patches.youtube.layout.feedrefresh
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
@@ -24,8 +25,22 @@ internal object FeedExpirationFingerprint : Fingerprint(
         string("FEmemberships_and_purchases"),
         string("FEmembership_detail"),
         opcode(Opcode.ADD_LONG),
-        fieldAccess(opcode = Opcode.IPUT_WIDE, location = InstructionLocation.MatchAfterImmediately()),
-        opcode(Opcode.ADD_LONG_2ADDR, InstructionLocation.MatchAfterWithin(10)),
-        fieldAccess(opcode = Opcode.IPUT_WIDE, location = InstructionLocation.MatchAfterImmediately())
+        fieldAccess(
+            opcode = Opcode.IPUT_WIDE,
+            definingClass = "this",
+            type = "J",
+            location = InstructionLocation.MatchAfterImmediately()
+        ),
+        anyInstruction(
+            opcode(Opcode.ADD_LONG),
+            opcode(Opcode.ADD_LONG_2ADDR),
+            location = InstructionLocation.MatchAfterWithin(10)
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_WIDE,
+            definingClass = "this",
+            type = "J",
+            location = InstructionLocation.MatchAfterImmediately()
+        )
     )
 )
