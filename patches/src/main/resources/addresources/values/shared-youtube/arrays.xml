@@ -92,6 +92,26 @@
         <item>PORTRAIT_FULLSCREEN</item>
     </string-array>
     
+    <!-- misc.audio.silence.skipSilencePatch -->
+    <string-array name="morphe_skip_silence_minimum_pause_entries" translatable="false">
+        <item>0.5 seconds</item>
+        <item>0.7 seconds</item>
+        <item>1 second</item>
+        <item>2 seconds</item>
+        <item>3 seconds</item>
+        <item>5 seconds</item>
+        <item>10 seconds</item>
+    </string-array>
+    <string-array name="morphe_skip_silence_minimum_pause_entry_values" translatable="false">
+        <item>MS_500</item>
+        <item>MS_700</item>
+        <item>S_1</item>
+        <item>S_2</item>
+        <item>S_3</item>
+        <item>S_5</item>
+        <item>S_10</item>
+    </string-array>
+
     <!-- layout.theme.baseThemePatch -->
     <string-array name="morphe_theme_color_dark_entries">
         <item>@string/morphe_theme_color_entry_1</item>
