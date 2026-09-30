@@ -10,8 +10,8 @@
 
 package app.morphe.extension.youtube.shared;
 
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -95,6 +95,32 @@ public final class NavigationBar {
      */
     public static void searchBarResultsViewLoaded(View searchbarResults) {
         searchBarResultsRef = new WeakReference<>(searchbarResults);
+        isSearchBarAttached = searchbarResults.isAttachedToWindow();
+
+        searchbarResults.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(View view) {
+                if (view == closingSearchBarResultsRef.get()) {
+                    // Search was not closed, or was opened again.
+                    closingSearchBarResultsRef = new WeakReference<>(null);
+                }
+                if (view == searchBarResultsRef.get()) {
+                    isSearchBarAttached = true;
+                }
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(View view) {
+                if (view == closingSearchBarResultsRef.get()) {
+                    Logger.printDebug(() -> "Search bar closed");
+                    closingSearchBarResultsRef = new WeakReference<>(null);
+                }
+                if (view == searchBarResultsRef.get()) {
+                    // View#isShown() is still true while the detach listeners are called.
+                    isSearchBarAttached = false;
+                }
+            }
+        });
     }
 
     /**
@@ -120,7 +146,61 @@ public final class NavigationBar {
      */
     public static boolean isSearchBarActive() {
         View searchbarResults = searchBarResultsRef.get();
-        return searchbarResults != null && searchbarResults.isShown();
+        return searchbarResults != null
+                && searchbarResults != closingSearchBarResultsRef.get()
+                && isSearchBarAttached
+                && searchbarResults.isShown();
+    }
+
+    /**
+     * If the last loaded search bar is attached to the window.
+     */
+    private static volatile boolean isSearchBarAttached;
+
+    /**
+     * Search bar closed by the back button/gesture or by a navigation button.
+     * <p>
+     * Litho starts filtering the tab below the search before the search bar is detached,
+     * and without this the tab is filtered as search results. Waiting on the Litho thread
+     * for the detach is not possible, because the main thread can wait for the same Litho layout
+     * before it detaches the search bar.
+     * <p>
+     * Only this search bar is considered closed, so a search bar loaded again
+     * (such as going back to the previous search) is active as soon as it is shown.
+     * Cleared when this search bar is detached (closed) or attached again.
+     */
+    private static volatile WeakReference<View> closingSearchBarResultsRef = new WeakReference<>(null);
+
+    /**
+     * Safety limit if a closed search bar is still attached, so a search that was unexpectedly
+     * not closed is not filtered as the tab below it.
+     * Normally the search bar is detached after the exit animation (300-500ms).
+     */
+    private static final long SEARCH_BAR_CLOSING_TIMEOUT_MILLISECONDS = 5000;
+
+    /**
+     * Must be called on the main thread.
+     */
+    private static void setSearchBarClosingIfShown() {
+        View searchbarResults = searchBarResultsRef.get();
+        // Search is not shown if the player is maximized over it,
+        // and then the back button minimizes the player instead.
+        if (searchbarResults == null || !isSearchBarAttached || !searchbarResults.isShown()) {
+            return;
+        }
+
+        Logger.printDebug(() -> "Search bar closing");
+        closingSearchBarResultsRef = new WeakReference<>(searchbarResults);
+
+        Utils.runOnMainThreadDelayed(() -> {
+            if (closingSearchBarResultsRef.get() == searchbarResults) {
+                // Log as exception level, only if debug is enabled.
+                if (Settings.DEBUG.get()) {
+                    Logger.printException(() -> "Search bar was not closed");
+                }
+                closingSearchBarResultsRef = new WeakReference<>(null);
+            }
+        }, SEARCH_BAR_CLOSING_TIMEOUT_MILLISECONDS);
     }
 
     public static boolean isBackButtonVisible() {
@@ -219,6 +299,57 @@ public final class NavigationBar {
             Logger.printException(() -> "Latch wait interrupted", ex);
             Thread.currentThread().interrupt(); // Restore interrupt status flag.
         }
+    }
+
+    /**
+     * Navigation button touched down, if the touch can be a tap on it.
+     * Accessed only on the main thread.
+     */
+    @Nullable
+    private static NavigationButton touchedNavigationButton;
+
+    /**
+     * Injection point.
+     * <p>
+     * Tapping a navigation tab while the search is on screen closes the search,
+     * but does not select the tab again if it is already selected.
+     */
+    public static void navigationBarTouched(MotionEvent event) {
+        try {
+            switch (event.getActionMasked()) {
+                case MotionEvent.ACTION_DOWN -> touchedNavigationButton = getNavigationButtonAt(event);
+                case MotionEvent.ACTION_UP -> {
+                    NavigationButton button = getNavigationButtonAt(event);
+                    if (button != null && button == touchedNavigationButton && button.closesSearch()) {
+                        setSearchBarClosingIfShown();
+                    }
+                    touchedNavigationButton = null;
+                }
+                case MotionEvent.ACTION_CANCEL -> touchedNavigationButton = null;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "navigationBarTouched failure", ex);
+        }
+    }
+
+    @Nullable
+    private static NavigationButton getNavigationButtonAt(MotionEvent event) {
+        final float x = event.getRawX();
+        final float y = event.getRawY();
+        int[] location = new int[2];
+
+        for (Map.Entry<View, NavigationButton> entry : viewToButtonMap.entrySet()) {
+            View view = entry.getKey();
+            if (!view.isShown()) {
+                continue;
+            }
+            view.getLocationOnScreen(location);
+            if (x >= location[0] && x < location[0] + view.getWidth()
+                    && y >= location[1] && y < location[1] + view.getHeight()) {
+                return entry.getValue();
+            }
+        }
+        return null;
     }
 
     /**
@@ -323,9 +454,20 @@ public final class NavigationBar {
     /**
      * Injection point.
      */
-    public static void onBackPressed(Activity activity) {
+    public static void onBackPressed() {
         Logger.printDebug(() -> "Back button pressed");
         createNavButtonLatch();
+        setSearchBarClosingIfShown();
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Predictive back gesture, which does not call {@link #onBackPressed()}.
+     */
+    public static void onBackInvoked() {
+        Logger.printDebug(() -> "Back invoked");
+        setSearchBarClosingIfShown();
     }
 
     /** @noinspection EmptyMethod*/
@@ -401,6 +543,14 @@ public final class NavigationBar {
 
         @Nullable
         private static volatile NavigationButton selectedNavigationButton;
+
+        /**
+         * @return If tapping the button opens a tab, which closes the search if it is on screen.
+         */
+        boolean closesSearch() {
+            return this == HOME || this == SHORTS || this == SUBSCRIPTIONS
+                    || this == NOTIFICATIONS || this == LIBRARY;
+        }
 
         /**
          * This will return null only if the currently selected tab is unknown.

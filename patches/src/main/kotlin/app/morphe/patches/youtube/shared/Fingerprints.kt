@@ -150,21 +150,6 @@ internal object YouTubeMainActivityConstructorFingerprint : Fingerprint(
     parameters = listOf()
 )
 
-internal object YouTubeMainActivityOnBackPressedFingerprint : Fingerprint(
-    definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
-    name = "onBackPressed",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_SUPER,
-            name = "onBackPressed"
-        ),
-        opcode(Opcode.RETURN_VOID)
-    )
-)
-
 internal object YouTubeActivityOnCreateFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
     name = "onCreate",

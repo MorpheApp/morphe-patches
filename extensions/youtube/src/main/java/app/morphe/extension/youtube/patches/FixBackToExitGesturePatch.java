@@ -37,9 +37,10 @@ public class FixBackToExitGesturePatch {
     private static volatile boolean isTopView = false;
 
     /**
+     * Injection point.
      * Handle the event after clicking the back button.
      */
-    public static void onBackPressed() {
+    public static void onBackInvoked() {
         Activity activity = Utils.getActivity();
 
         if (activity == null) {

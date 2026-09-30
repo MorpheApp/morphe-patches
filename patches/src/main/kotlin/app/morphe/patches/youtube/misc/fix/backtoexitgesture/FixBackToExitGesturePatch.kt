@@ -13,13 +13,14 @@ package app.morphe.patches.youtube.misc.fix.backtoexitgesture
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.backgesture.addBackPressedHook
+import app.morphe.patches.youtube.misc.backgesture.addPredictiveBackGestureHook
+import app.morphe.patches.youtube.misc.backgesture.backGesturePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -36,6 +37,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         playerTypeHookPatch,
+        backGesturePatch,
         versionCheckPatch,
         settingsPatch,
     )
@@ -71,23 +73,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             )
         }
 
-        YouTubeMainActivityOnBackPressedFingerprint.let {
-            it.clearMatch()
-            it.method.apply {
-                val index = it.instructionMatches.first().index + 1
-
-                addInstructionsAtControlFlowLabel(
-                    index,
-                    "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
-                )
-            }
-        }
-
-        if (is_20_40_or_greater) {
-            PredictiveGesturesOnBackInvokedFingerprint.method.addInstruction(
-                0,
-                "invoke-static { }, $EXTENSION_CLASS->onBackPressed()V"
-            )
-        }
+        addBackPressedHook(EXTENSION_CLASS, "onBackInvoked", afterActivityBackPressed = true)
+        addPredictiveBackGestureHook(EXTENSION_CLASS)
     }
 }

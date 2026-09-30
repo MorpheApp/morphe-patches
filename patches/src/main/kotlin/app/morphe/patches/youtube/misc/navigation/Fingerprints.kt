@@ -121,6 +121,13 @@ internal object PivotBarButtonsViewSetSelectedFingerprint : Fingerprint(
     )
 )
 
+internal object PivotBarDispatchTouchEventFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
+    name = "dispatchTouchEvent",
+    returnType = "Z",
+    parameters = listOf("Landroid/view/MotionEvent;")
+)
+
 internal object PivotBarConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
