@@ -153,6 +153,7 @@ public final class CatalogParser {
                                 title,
                                 Math.max(0, duration),
                                 video.optBoolean("isPlayable", !id.isEmpty())
+                                        && !upcoming(video)
                                         && !"[Private video]".equals(title)
                                         && !"[Deleted video]".equals(title),
                                 text(video.optJSONObject("videoInfo"))));
@@ -175,6 +176,20 @@ public final class CatalogParser {
                 throw new JSONException("Unsupported playlist row");
             }
         }
+    }
+
+    private static boolean upcoming(JSONObject video) {
+        // A premiere waiting room can be isPlayable=true and already have a duration.
+        // Trust the server's current status, not localized labels or the scheduled time:
+        // a premiere may still be waiting after its announced start time.
+        if (video.optJSONObject("upcomingEventData") != null) return true;
+        JSONArray overlays = video.optJSONArray("thumbnailOverlays");
+        if (overlays != null)
+            for (int i = 0; i < overlays.length(); i++)
+                if ("UPCOMING".equals(
+                        object(overlays.optJSONObject(i), "thumbnailOverlayTimeStatusRenderer")
+                                .optString("style"))) return true;
+        return false;
     }
 
     static JSONObject object(JSONObject node, String key) {
