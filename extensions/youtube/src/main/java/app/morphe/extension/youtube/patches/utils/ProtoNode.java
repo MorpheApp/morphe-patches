@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches.originaltitles;
+package app.morphe.extension.youtube.patches.utils;
 
 import androidx.annotation.Nullable;
 
@@ -21,6 +21,7 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ import java.util.List;
  * All other fields are written back unchanged.
  * Fields reference the parsed bytes instead of copying them.
  */
-final class ProtoNode {
+public final class ProtoNode {
 
     private static final int MAX_DEPTH = 64;
 
@@ -50,9 +51,9 @@ final class ProtoNode {
     private final boolean lengthDelimited;
 
     @Nullable
-    List<ProtoNode> children;
+    public List<ProtoNode> children;
     @Nullable
-    String text;
+    private String text;
     @Nullable
     private Long varint;
     /**
@@ -75,7 +76,7 @@ final class ProtoNode {
      * @return The fields of the message, or null if the bytes are not a valid proto message.
      */
     @Nullable
-    static List<ProtoNode> parse(byte[] bytes) {
+    public static List<ProtoNode> parse(byte[] bytes) {
         CharsetDecoder decoder = StandardCharsets.UTF_8.newDecoder()
                 .onMalformedInput(CodingErrorAction.REPORT)
                 .onUnmappableCharacter(CodingErrorAction.REPORT);
@@ -163,16 +164,41 @@ final class ProtoNode {
     }
 
     /**
+     * @return If this field is a text.
+     */
+    public boolean isText() {
+        return text != null;
+    }
+
+    /**
+     * @return The text of a text field, such as the fields returned by {@link #textNodes(List)}.
+     * @throws IllegalStateException If this field is not a text.
+     */
+    public String getText() {
+        if (text == null) {
+            throw new IllegalStateException("Not a text field: " + fieldNumber);
+        }
+        return text;
+    }
+
+    /**
      * @return The payload decoded as UTF-8, including text with line breaks
      *         that is not parsed as text.
      */
-    String decodeUtf8() {
+    public String decodeUtf8() {
         return text != null
                 ? text
                 : new String(bytes, valueStart, valueEnd - valueStart, StandardCharsets.UTF_8);
     }
 
-    void setText(String text) {
+    /**
+     * @return A copy of the payload as parsed, or the value of fields that are not length delimited.
+     */
+    public byte[] getPayload() {
+        return Arrays.copyOfRange(bytes, valueStart, valueEnd);
+    }
+
+    public void setText(String text) {
         this.text = text;
         children = null;
         setModified();
@@ -182,7 +208,7 @@ final class ProtoNode {
      * @return The value, or null if this is not a varint field.
      */
     @Nullable
-    Long getVarint() {
+    public Long getVarint() {
         if (varint == null && !lengthDelimited && valueEnd - valueStart <= 10) {
             try {
                 varint = CodedInputStream.newInstance(bytes, valueStart, valueEnd - valueStart)
@@ -194,15 +220,23 @@ final class ProtoNode {
         return varint;
     }
 
-    void setVarint(long value) {
+    public void setVarint(long value) {
         varint = value;
         setModified();
     }
 
     /**
+     * @return The field that contains this field, or null if this is a field of the root message.
+     */
+    @Nullable
+    public ProtoNode getParent() {
+        return parent;
+    }
+
+    /**
      * Removes this field from its parent message.
      */
-    void remove() {
+    public void remove() {
         List<ProtoNode> siblings = parent == null ? null : parent.children;
         if (siblings != null) {
             siblings.remove(this);
@@ -220,7 +254,7 @@ final class ProtoNode {
      * @return The first field with the field number, or null if not found.
      */
     @Nullable
-    static ProtoNode field(List<ProtoNode> message, int fieldNumber) {
+    public static ProtoNode field(List<ProtoNode> message, int fieldNumber) {
         for (ProtoNode node : message) {
             if (node.fieldNumber == fieldNumber) {
                 return node;
@@ -229,7 +263,7 @@ final class ProtoNode {
         return null;
     }
 
-    static byte[] write(List<ProtoNode> message) throws IOException {
+    public static byte[] write(List<ProtoNode> message) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         CodedOutputStream output = CodedOutputStream.newInstance(bytes);
         write(message, output);
@@ -246,7 +280,7 @@ final class ProtoNode {
                 output.writeByteArray(node.fieldNumber, write(children));
             } else if (node.text != null) {
                 output.writeString(node.fieldNumber, node.text);
-            } else {
+            } else if (node.varint != null) {
                 output.writeUInt64(node.fieldNumber, node.varint);
             }
         }
@@ -255,7 +289,7 @@ final class ProtoNode {
     /**
      * @return All text fields of the message, in order.
      */
-    static List<ProtoNode> textNodes(List<ProtoNode> message) {
+    public static List<ProtoNode> textNodes(List<ProtoNode> message) {
         List<ProtoNode> textNodes = new ArrayList<>();
         addTextNodes(message, textNodes);
         return textNodes;
@@ -276,7 +310,7 @@ final class ProtoNode {
      * @return The messages whose field numbers from the root message end with the suffix.
      *         Messages inside matching messages are not included.
      */
-    static List<ProtoNode> findMessages(List<ProtoNode> message, int... pathSuffix) {
+    public static List<ProtoNode> findMessages(List<ProtoNode> message, int... pathSuffix) {
         List<ProtoNode> messages = new ArrayList<>();
         addMessages(message, pathSuffix, messages);
         return messages;
@@ -299,7 +333,7 @@ final class ProtoNode {
     /**
      * @return If the field numbers from the root message to this field end with the suffix.
      */
-    boolean pathEndsWith(int... suffix) {
+    public boolean pathEndsWith(int... suffix) {
         ProtoNode node = this;
         for (int i = suffix.length - 1; i >= 0; i--) {
             if (node == null || node.fieldNumber != suffix[i]) {

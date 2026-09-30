@@ -627,6 +627,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
+        // region hide page header buttons
+
+        hookElement("$LAYOUT_COMPONENTS_FILTER->hidePageHeaderButtons")
+
+        // endregion
+
         // region hide comments carousel
 
         hookElement("$COMMENTS_FILTER->onCommentsLoaded")

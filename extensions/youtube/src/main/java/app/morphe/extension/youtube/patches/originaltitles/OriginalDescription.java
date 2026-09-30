@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Queue;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 
 /**
  * Replaces the auto-translated description of the description panel with the original description.
@@ -142,7 +143,7 @@ final class OriginalDescription {
         int linkStart = description.length();
         int linkEnd = -1;
         for (ProtoNode node : ProtoNode.textNodes(attachment)) {
-            String text = node.text;
+            String text = node.getText();
             final int textLength = text.length();
             for (int index = description.indexOf(text, from); index >= 0 && index < linkStart;
                  index = description.indexOf(text, index + 1)) {
@@ -298,7 +299,7 @@ final class OriginalDescription {
     private static List<String> findUrls(List<ProtoNode> run) {
         List<String> urls = new ArrayList<>();
         for (ProtoNode node : ProtoNode.textNodes(run)) {
-            Uri uri = Uri.parse(node.text);
+            Uri uri = Uri.parse(node.getText());
             String host = uri.getHost();
             if (host == null) {
                 continue;
@@ -343,18 +344,19 @@ final class OriginalDescription {
             start = 0;
             length = restoredLength;
         }
-        if (start < 0) {
+        List<ProtoNode> runFields = run.children;
+        List<ProtoNode> rangeMessage = runFields == null ? null : findRangeMessage(runFields);
+        ProtoNode startNode = rangeMessage == null ? null : ProtoNode.field(rangeMessage, RANGE_START_FIELD);
+        if (start < 0 || startNode == null) {
             run.remove();
             return;
         }
 
-        List<ProtoNode> rangeMessage = findRangeMessage(run.children);
-        ProtoNode startNode = ProtoNode.field(rangeMessage, RANGE_START_FIELD);
         ProtoNode lengthNode = ProtoNode.field(rangeMessage, RANGE_LENGTH_FIELD);
-        if (startNode.getVarint() != start) {
+        if (!Long.valueOf(start).equals(startNode.getVarint())) {
             startNode.setVarint(start);
         }
-        if (lengthNode != null && lengthNode.getVarint() != length) {
+        if (lengthNode != null && !Long.valueOf(length).equals(lengthNode.getVarint())) {
             lengthNode.setVarint(length);
         }
     }
@@ -369,10 +371,11 @@ final class OriginalDescription {
         if (rangeMessage == null) {
             return null;
         }
+        ProtoNode startNode = ProtoNode.field(rangeMessage, RANGE_START_FIELD);
         ProtoNode lengthNode = ProtoNode.field(rangeMessage, RANGE_LENGTH_FIELD);
-        Long start = ProtoNode.field(rangeMessage, RANGE_START_FIELD).getVarint();
+        Long start = startNode == null ? null : startNode.getVarint();
         Long length = lengthNode == null ? Long.valueOf(0) : lengthNode.getVarint();
-        if (length == null || start > Integer.MAX_VALUE || length > Integer.MAX_VALUE) {
+        if (start == null || length == null || start > Integer.MAX_VALUE || length > Integer.MAX_VALUE) {
             return null;
         }
         return new int[]{start.intValue(), (int) (start + length)};

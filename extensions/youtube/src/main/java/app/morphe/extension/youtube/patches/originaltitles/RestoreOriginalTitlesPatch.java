@@ -43,6 +43,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -195,7 +196,7 @@ public final class RestoreOriginalTitlesPatch {
             List<ProtoNode> textNodes = ProtoNode.textNodes(root);
             String identifier = null;
             for (ProtoNode node : textNodes) {
-                String text = node.text;
+                String text = node.getText();
                 if (IDENTIFIER_PATTERN.matcher(text).matches()) {
                     identifier = text;
                     break;
@@ -371,7 +372,7 @@ public final class RestoreOriginalTitlesPatch {
 
         // Links of the description are redirects that include the video id.
         for (ProtoNode node : textNodes) {
-            Uri uri = Uri.parse(node.text);
+            Uri uri = Uri.parse(node.getText());
             if (DESCRIPTION_REDIRECT_PATH.equals(uri.getPath()) && uri.getHost() != null
                     && !videoId.equals(uri.getQueryParameter("v"))) {
                 return false;
@@ -387,7 +388,6 @@ public final class RestoreOriginalTitlesPatch {
 
         return OriginalDescription.restore(root, originalDescription);
     }
-
 
     /**
      * Loads the Litho texts that show the loading title again when the title is fetched,
@@ -428,7 +428,7 @@ public final class RestoreOriginalTitlesPatch {
     private static Set<String> findThumbnailVideoIds(List<ProtoNode> textNodes) {
         Set<String> videoIds = new HashSet<>();
         for (ProtoNode node : textNodes) {
-            addThumbnailVideoIds(node.text, videoIds);
+            addThumbnailVideoIds(node.getText(), videoIds);
         }
         return videoIds;
     }
@@ -459,10 +459,10 @@ public final class RestoreOriginalTitlesPatch {
                 continue;
             }
 
-            String text = node.text;
-            if (text == null) {
+            if (!node.isText()) {
                 continue;
             }
+            String text = node.getText();
             if (!thumbnailVideoIds.isEmpty()) {
                 if (thumbnailVideoIds.contains(text)) {
                     videoIds.add(text);
@@ -478,7 +478,7 @@ public final class RestoreOriginalTitlesPatch {
                     while (matcher.find()) {
                         videoIds.add(matcher.group(1));
                     }
-                } catch (IllegalArgumentException ex) {
+                } catch (IllegalArgumentException ignored) {
                     // Not base64.
                 }
             }
@@ -523,7 +523,7 @@ public final class RestoreOriginalTitlesPatch {
         List<ProtoNode> textNodes = ProtoNode.textNodes(message);
         Set<String> texts = new LinkedHashSet<>();
         for (ProtoNode node : textNodes) {
-            String text = node.text.trim();
+            String text = node.getText().trim();
             if (text.contains(PLAYLIST_URL)) {
                 return false;
             }
@@ -564,7 +564,7 @@ public final class RestoreOriginalTitlesPatch {
         boolean modified = false;
 
         for (ProtoNode node : textNodes) {
-            String text = node.text.trim();
+            String text = node.getText().trim();
             String videoId = text.length() >= MIN_TITLE_LENGTH
                     ? translatedTitles.get(text)
                     : null;
@@ -613,12 +613,15 @@ public final class RestoreOriginalTitlesPatch {
             }
         }
 
-        List<String> labels = new ArrayList<>(containedCounts.keySet());
+        List<Map.Entry<String, Integer>> labels = new ArrayList<>(containedCounts.entrySet());
         labels.sort((a, b) -> {
-            final int countComparison = Integer.compare(containedCounts.get(b), containedCounts.get(a));
-            return countComparison != 0 ? countComparison : Integer.compare(b.length(), a.length());
+            final int countComparison = Integer.compare(b.getValue(), a.getValue());
+            return countComparison != 0
+                    ? countComparison
+                    : Integer.compare(b.getKey().length(), a.getKey().length());
         });
-        for (String label : labels) {
+        for (Map.Entry<String, Integer> entry : labels) {
+            String label = entry.getKey();
             String title = findTitleOfLabel(label, texts);
             if (title != null) {
                 return new String[]{label, title};
@@ -680,7 +683,7 @@ public final class RestoreOriginalTitlesPatch {
 
         for (ProtoNode node : textNodes) {
             if (node.pathEndsWith(titlePath)) {
-                String title = node.text.trim();
+                String title = node.getText().trim();
                 return title.isEmpty() ? null : title;
             }
         }
@@ -708,7 +711,7 @@ public final class RestoreOriginalTitlesPatch {
         final boolean replaceInsideTexts = translatedLength >= MIN_TITLE_LENGTH;
 
         for (ProtoNode node : textNodes) {
-            String nodeText = node.text;
+            String nodeText = node.getText();
             String text = nodeText.trim();
             if (text.equals(translatedTitle)) {
                 node.setText(originalTitle);
