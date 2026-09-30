@@ -1323,6 +1323,10 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_external_browser_title">Open links in browser</string>
     <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
 
+    <!-- video.audio.soundBoostPatch -->
+    <string name="morphe_volume_boost_title">Volume boost</string>
+    <string name="morphe_volume_boost_summary">Swiping up past maximum volume boosts it, which can distort loud audio</string>
+
     <!-- video.buffer.playbackBufferPatch -->
     <string name="morphe_playback_buffer_size_title">Playback buffer size</string>
     <string name="morphe_playback_buffer_size_entry_default">Default</string>

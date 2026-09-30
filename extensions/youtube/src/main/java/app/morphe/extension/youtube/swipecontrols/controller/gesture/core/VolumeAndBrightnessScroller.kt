@@ -86,7 +86,7 @@ class VolumeAndBrightnessScrollerImpl(
         ) { _, _, direction ->
             volumeController?.run {
                 adjustVolumeBySteps(direction)
-                overlayController.onVolumeChanged(steppedVolume, steppedMaxVolume)
+                overlayController.onVolumeChanged(steppedVolume, steppedMaxVolume, boostStep)
             }
         }
 
