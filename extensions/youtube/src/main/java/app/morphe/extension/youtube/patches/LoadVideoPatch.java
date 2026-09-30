@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -38,15 +37,7 @@ public final class LoadVideoPatch {
         Parcelable patch_getIntentParcelable(Intent intent);
     }
 
-    private static WeakReference<Activity> mainActivityRef = new WeakReference<>(null);
     private static WeakReference<PlayerInterface> playerInterfaceRef = new WeakReference<>(null);
-
-    /**
-     * Injection point.
-     */
-    public static void setMainActivity(Activity mainActivity) {
-        mainActivityRef = new WeakReference<>(mainActivity);
-    }
 
     /**
      * Injection point.
@@ -143,7 +134,7 @@ public final class LoadVideoPatch {
     public static void openVideoIntentWithInternalContext(String videoIDWithParams) {
         PlayerInterface playerInterface;
         if ((playerInterface = getPlayerInterface()) != null) {
-            Context context = mainActivityRef.get();
+            Context context = Utils.getActivity();
             // No videoID is needed to put inside the Intent initialization.
             Intent reloadVideoIntent = new Intent();
             reloadVideoIntent.setComponent(new ComponentName(

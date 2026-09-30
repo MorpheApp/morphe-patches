@@ -19,13 +19,13 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -47,13 +47,6 @@ val channelSearchPatch = bytecodePatch(
     execute {
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_channel_search", summary = true)
-        )
-
-        // Activity is used as the context of the result dialog.
-        YouTubeActivityOnCreateFingerprint.method.addInstruction(
-            0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
-                    "setMainActivity(Landroid/app/Activity;)V",
         )
 
         // A channel page browses by its channel id, which is what the search is scoped to.
@@ -119,6 +112,23 @@ val channelSearchPatch = bytecodePatch(
             0,
             "invoke-static { }, $EXTENSION_CLASS->clearBrowseId()V"
         )
+
+        // The search box otherwise still reads as a search of all of YouTube.
+        // Only the default hint is replaced, not the hint of Shorts or playlist search.
+        SearchBoxHintFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->getSearchHint(Ljava/lang/String;)Ljava/lang/String;
+                        move-result-object v$register
+                    """
+                )
+            }
+        }
 
         SearchSubmitFingerprint.method.addInstructionsWithLabels(
             0,

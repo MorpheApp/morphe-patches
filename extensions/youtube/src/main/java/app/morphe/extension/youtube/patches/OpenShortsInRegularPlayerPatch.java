@@ -1,8 +1,6 @@
 package app.morphe.extension.youtube.patches;
 
-import android.app.Activity;
-
-import java.lang.ref.WeakReference;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
@@ -22,13 +20,6 @@ public class OpenShortsInRegularPlayerPatch {
     /**
      * Injection point.
      */
-    public static void setMainActivity(Activity activity) {
-        WeakReference<Activity> mainActivityRef = new WeakReference<>(activity);
-    }
-
-    /**
-     * Injection point.
-     */
     public static boolean overrideBackPressToExit(boolean original) {
         if (overrideBackPressToExit) {
             Logger.printDebug(() -> "Overriding back press to exit activity");
@@ -41,7 +32,7 @@ public class OpenShortsInRegularPlayerPatch {
     /**
      * Injection point.
      */
-    public static boolean openShort(String videoId) {
+    public static boolean onVideoIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         try {
             ShortsPlayerType type = Settings.SHORTS_PLAYER_TYPE.get();
             if (type == ShortsPlayerType.SHORTS_PLAYER) {

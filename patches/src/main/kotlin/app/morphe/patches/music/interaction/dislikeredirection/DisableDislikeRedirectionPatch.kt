@@ -14,6 +14,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_32_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_35_or_greater
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -52,12 +53,20 @@ val disableDislikeRedirectionPatch = bytecodePatch(
             val notificationOnClickIndex = notificationFingerprint.instructionMatches.last().index
             notificationFingerprint.method.injectRedirectionGuard(notificationOnClickIndex)
 
-            DislikeButtonOnClickListenerFingerprint.method.apply {
-                val onClickIndex = indexOfFirstInstructionReversedOrThrow {
-                    (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_VIRTUAL) &&
-                            getReference<MethodReference>()?.returnType == "V"
+            if (is_9_35_or_greater) {
+                // Skips to the next track in more than one place (dislike command handler
+                // and, on 9.36+, the like button click listener).
+                DislikeSkipToNextFingerprint.matchAll().forEach { match ->
+                    match.method.injectRedirectionGuard(match.instructionMatches.last().index)
                 }
-                injectRedirectionGuard(onClickIndex)
+            } else {
+                DislikeButtonOnClickListenerFingerprint.method.apply {
+                    val onClickIndex = indexOfFirstInstructionReversedOrThrow {
+                        (opcode == Opcode.INVOKE_INTERFACE || opcode == Opcode.INVOKE_VIRTUAL) &&
+                                getReference<MethodReference>()?.returnType == "V"
+                    }
+                    injectRedirectionGuard(onClickIndex)
+                }
             }
         } else {
             // The notification and player handlers share the same onClick dispatch interface method,

@@ -77,7 +77,6 @@ public final class KrcParser {
                 full.append(text);
             }
             if (words.isEmpty() && !content.isEmpty()) {
-                words.add(new Word(lineStart, lineEnd, content));
                 full.append(content);
             }
 
@@ -85,7 +84,7 @@ public final class KrcParser {
             if (text.isEmpty()) {
                 continue;
             }
-            lines.add(new LyricsLine(lineStart, text, words));
+            lines.add(new LyricsLine(lineStart, lineEnd, text, words));
         }
 
         lines.sort(Comparator.comparingLong(LyricsLine::startTimeMs));

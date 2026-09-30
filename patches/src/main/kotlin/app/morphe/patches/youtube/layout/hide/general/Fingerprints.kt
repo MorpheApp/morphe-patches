@@ -15,6 +15,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
 import app.morphe.patcher.StringComparisonType
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -22,9 +23,9 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.parametersMatch
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -453,6 +454,31 @@ internal object ChannelTabRendererFingerprint : Fingerprint(
         "L",
         "Ljava/util/List;",
         "I"
+    ),
+    filters = listOf(
+        opcode(Opcode.IF_EQ),
+        anyInstruction(
+            methodCall(
+                opcode = Opcode.INVOKE_INTERFACE,
+                returnType = "V",
+                parameters = listOf("I", "Z", "Z", "Z")
+            ),
+            methodCall( // ~21.25
+                opcode = Opcode.INVOKE_INTERFACE,
+                returnType = "V",
+                parameters = listOf("I", "Z", "Z")
+            ),
+            methodCall( // ~21.16 and older
+                opcode = Opcode.INVOKE_INTERFACE,
+                returnType = "V",
+                parameters = listOf("I")
+            ),
+            location = MatchAfterWithin(3)
+        ),
+        opcode(
+            Opcode.RETURN_VOID,
+            MatchAfterImmediately()
+        )
     ),
     strings = listOf(
         "TabRenderer.content contains SectionListRenderer but the tab does not have a section list controller."

@@ -175,33 +175,6 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // endregion
 
-        // region Hide autoplay button.
-
-        LayoutConstructorFingerprint.method.apply {
-            val constIndex = indexOfFirstResourceIdOrThrow("autonav_toggle")
-            val constRegister = getInstruction<OneRegisterInstruction>(constIndex).registerA
-
-            // Add a conditional branch around the code that inflates and adds the auto-repeat button.
-            val gotoIndex = indexOfFirstInstructionOrThrow(constIndex) {
-                val parameterTypes = getReference<MethodReference>()?.parameterTypes
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                    parameterTypes?.size == 2 &&
-                    parameterTypes.first() == "Landroid/view/ViewStub;"
-            } + 1
-
-            addInstructionsWithLabels(
-                constIndex,
-                """
-                    invoke-static {}, $EXTENSION_CLASS->hideAutoplayButton()Z
-                    move-result v$constRegister
-                    if-nez v$constRegister, :hidden
-                """,
-                ExternalLabel("hidden", getInstruction(gotoIndex)),
-            )
-        }
-
-        // endregion
-
         // region Hide collapse button.
 
         TitleAnchorFingerprint.let {
@@ -267,6 +240,33 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                     """
                 )
             }
+        }
+
+        // endregion
+
+        // region Hide autoplay button.
+
+        LayoutConstructorFingerprint.method.apply {
+            val constIndex = indexOfFirstResourceIdOrThrow("autonav_toggle")
+            val constRegister = getInstruction<OneRegisterInstruction>(constIndex).registerA
+
+            // Add a conditional branch around the code that inflates and adds the auto-repeat button.
+            val gotoIndex = indexOfFirstInstructionOrThrow(constIndex) {
+                val parameterTypes = getReference<MethodReference>()?.parameterTypes
+                opcode == Opcode.INVOKE_VIRTUAL &&
+                        parameterTypes?.size == 2 &&
+                        parameterTypes.first() == "Landroid/view/ViewStub;"
+            } + 1
+
+            addInstructionsWithLabels(
+                constIndex,
+                """
+                    invoke-static {}, $EXTENSION_CLASS->hideAutoplayButton()Z
+                    move-result v$constRegister
+                    if-nez v$constRegister, :hidden
+                """,
+                ExternalLabel("hidden", getInstruction(gotoIndex)),
+            )
         }
 
         // endregion

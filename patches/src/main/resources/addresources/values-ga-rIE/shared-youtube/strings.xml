@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Beochan tosaithe</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Díchumasaithe</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Dath</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monacrómach</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logáilte amach as Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Comhartha síniú isteach VR neamhbhailí, déan iarracht síniú isteach i VR arís</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Rialuithe fógraí meáin</string>
+  <string name="morphe_notification_media_screen_summary">Saincheap na rialuithe athsheinm a thaispeántar ar do scáileán glasála agus ar do phainéal fógraí</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Folaigh Roimhe Seo &amp; Ar Aghaidh</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Folaíonn sé cnaipí Roimhe Seo agus Ar Aghaidh i bhfógraí meán, scáileán glasála, agus rialuithe cluasán</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Díchumasaigh an barra cuardaigh</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Coscann sé an barra cuardaigh a tharraingt ar an scáileán glasála agus ar an bpainéal fógraí</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Díchumasaigh prótacal QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -235,6 +247,8 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_ryd_failure_generic">Níl na \"dí-mhaith\" ar fáil (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">I bhfolach ag an úinéir</string>
+  <string name="morphe_ryd_accessibility_dislike_count">Cuir in iúl nach dtaitníonn an físeán seo leat, mar aon le %s duine eile</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">Cuir in iúl nach dtaitníonn an físeán seo leat; is vótaí diúltacha iad %s de na vótaí</string>
   <string name="morphe_ryd_enabled_title">Cumasaigh Filleadh ar Dhí-Thaitin YouTube</string>
   <string name="morphe_ryd_dislike_percentage_title">Taispeáin nach maith liom mar chéatadán</string>
   <string name="morphe_ryd_dislike_percentage_summary">Taispeánann sé nach maith leat mar chéatadán de na maith leat seachas uimhir</string>

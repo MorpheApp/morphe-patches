@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Ajustes de Morphe restablecidos a los valores predeterminados</string>
   <string name="morphe_settings_import_success">Ajustes importados: %d</string>
   <string name="morphe_settings_import_failure_parse">Importación fallida: %s</string>
+  <string name="morphe_settings_navigate_up">Navegar hacia arriba</string>
   <string name="morphe_settings_search_hint">Buscar ajustes</string>
   <string name="morphe_settings_search_no_results_title">No se encontraron resultados para «%s»</string>
   <string name="morphe_settings_search_no_results_summary">Prueba con otra palabra clave</string>
   <string name="morphe_settings_search_recent_searches">Búsquedas recientes</string>
   <string name="morphe_settings_search_remove_message">¿Eliminar del historial de búsqueda?</string>
+  <string name="morphe_settings_search_remove">Eliminar del historial de búsqueda</string>
   <string name="morphe_settings_search_clear_history">Borrar historial de búsqueda</string>
   <string name="morphe_settings_search_clear_history_message">¿Realmente quieres borrar todo el historial de búsqueda?</string>
   <string name="morphe_settings_search_tips_title">Consejos de búsqueda</string>
@@ -75,7 +77,7 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_links_body_version_current">Estás usando la última versión de Morphe Patches: &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Estás usando la versión de Morphe Patches: &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Actualización disponible: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para actualizar tus parches, usa Morphe para volver a parchear esta aplicación</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>
-  <string name="morphe_settings_about_links_dev_body">Esta versión es preliminar y podrías experimentar problemas inesperados</string>
+  <string name="morphe_settings_about_links_dev_body">Esta es una versión pre-lanzamiento y podrías experimentar problemas inesperados</string>
   <string name="morphe_settings_about_links_header">Enlaces oficiales</string>
   <string name="morphe_settings_about_links_website">Sitio web</string>
   <string name="morphe_settings_about_links_donate">Donar</string>
@@ -94,9 +96,9 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
   <string name="morphe_debug_screen_summary">Configura opciones avanzadas de desarrollador y registros de diagnóstico</string>
-  <string name="morphe_debug_title">Registro de depuración</string>
+  <string name="morphe_debug_title">Activar registro de depuración</string>
   <string name="morphe_debug_stacktrace_title">Registro de depuración de la traza de pila</string>
-  <string name="morphe_debug_stacktrace_summary">Incluye rastreos de pila en los registros de depuración para ayudar a identificar errores</string>
+  <string name="morphe_debug_stacktrace_summary">Incluye trazas de pila en los registros de depuración para ayudar a identificar errores</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar aviso de error en Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de Morphe.
 

@@ -150,8 +150,8 @@ public final class AddOnApi {
      * The same {@code addOnId} always uses the same slot, and the number of slots is limited.
      * Call this from a {@link #addLegacyPlayerControlsListener} listener.
      * <p>
-     * The drawable is resolved the same way as for the built-in legacy buttons, which means a
-     * {@code _bold} variant of the drawable is used unless the user restored the old player buttons.
+     * The drawable follows the player icon style the same way as the built-in buttons: a style
+     * variant such as {@code _fluent} if the add-on ships one, otherwise the default icon.
      *
      * @param addOnId       Identifier of the add-on, such as its patch name. Must be stable.
      * @param controlsView  The view passed to the legacy player controls listener.

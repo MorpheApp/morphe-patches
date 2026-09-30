@@ -13,10 +13,16 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object ShareSheetPanelContentInitializationFingerprint : Fingerprint(
+/**
+ * Command resolver of the share endpoint.
+ * Builds and sends the `share/get_share_panel` request,
+ * whose response opens the in-app (Litho) share sheet.
+ */
+internal object ShareEndpointCommandFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Ljava/util/Map;"),
@@ -58,5 +64,19 @@ internal object ShareSheetPanelContentInitializationFingerprint : Fingerprint(
             smali = "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z",
             location = MatchAfterImmediately(),
         )
+    )
+)
+
+/**
+ * Action sheet controller method that handles `ShowActionSheetCommand`.
+ * The share button in flyout menus opens an empty action sheet (loading spinner)
+ * and then resolves the share endpoint to fill it.
+ */
+internal object ShowActionSheetCommandFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L"),
+    filters = listOf(
+        string("ShowActionSheetCommand needs to provided.")
     )
 )

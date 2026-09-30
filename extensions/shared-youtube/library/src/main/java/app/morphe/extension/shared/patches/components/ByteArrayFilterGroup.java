@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.patches.components;
 
 import app.morphe.extension.shared.ByteTrieSearch;
@@ -13,15 +23,15 @@ public class ByteArrayFilterGroup extends FilterGroup<byte[]> {
 
     private volatile int[][] skipTables;
 
-    private static int indexOf(final byte[] data, final byte[] pattern, final int[] skipTable) {
+    private static int indexOf(final byte[] data, final byte[] pattern, final int[] skipTable, final int fromIndex) {
         // Finds the first occurrence of the pattern in the byte array using
         // Boyer-Moore-Horspool algorithm.
         int dataLength = data.length;
         int patternLength = pattern.length;
         int difference = dataLength - patternLength;
-        if (patternLength == 0) return 0; // Edge case
+        if (patternLength == 0) return fromIndex; // Edge case
         
-        for (int index = 0; index <= difference; ) {
+        for (int index = fromIndex; index <= difference; ) {
             int lastCharLength = patternLength - 1;
             
             while (lastCharLength >= 0 && data[index + lastCharLength] == pattern[lastCharLength]) {
@@ -78,6 +88,13 @@ public class ByteArrayFilterGroup extends FilterGroup<byte[]> {
 
     @Override
     public FilterGroupResult check(final byte[] bytes) {
+        return check(bytes, 0);
+    }
+
+    /**
+     * Same as {@link #check(byte[])}, but only searches the bytes starting at the given index.
+     */
+    public FilterGroupResult check(final byte[] bytes, final int fromIndex) {
         int matchedLength = 0;
         int matchedIndex = -1;
         if (isEnabled()) {
@@ -88,7 +105,7 @@ public class ByteArrayFilterGroup extends FilterGroup<byte[]> {
             }
             for (int i = 0, length = filters.length; i < length; i++) {
                 byte[] filter = filters[i];
-                matchedIndex = indexOf(bytes, filter, tables[i]);
+                matchedIndex = indexOf(bytes, filter, tables[i], fromIndex);
                 if (matchedIndex >= 0) {
                     matchedLength = filter.length;
                     break;

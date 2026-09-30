@@ -78,6 +78,8 @@ public final class ReturnYouTubeDislikeButtons {
         oldBarCountTextSizeSp = textSp;
         oldBarCountStartMargin = Dim.dp(startMarginDp);
         oldBarCountPaint = null;
+        useAppForegroundForSegmentedCount = true;
+        findsUntaggedDislikeButton = true;
     }
 
     @Nullable
@@ -119,6 +121,7 @@ public final class ReturnYouTubeDislikeButtons {
             ThreadLocal.withInitial(() -> new float[2]);
 
     private static Paint oldBarCountPaint;
+    private static volatile boolean useAppForegroundForSegmentedCount;
 
     private static float exactDp(float dp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Dim.getMetrics());
@@ -148,10 +151,13 @@ public final class ReturnYouTubeDislikeButtons {
 
     /**
      * The count of the segmented button is drawn by the layout engine and not by the text view
-     * beside it, so its color cannot be changed. The count drawn here takes the color of that
-     * view instead, which is the one the engine draws with.
+     * beside it, so its color cannot be changed. YouTube uses the color of that view, while
+     * YouTube Music uses the app foreground color because its view can report black incorrectly.
      */
     private static int oldBarCountColor(View host) {
+        if (useAppForegroundForSegmentedCount) {
+            return ThemeUtils.getAppForegroundColor();
+        }
         TextView text = barTextOf(barOf(host), 0);
         return text == null ? ThemeUtils.getAppForegroundColor() : text.getCurrentTextColor();
     }
@@ -309,7 +315,8 @@ public final class ReturnYouTubeDislikeButtons {
                     host.getOverlay().remove(existing);
                     iconButtonCounts.remove(host);
                 }
-                if (accessibilityId == null && description != null && segmentedMarginGiven) {
+                if (accessibilityId == null && description != null
+                        && findsUntaggedDislikeButton && segmentedMarginGiven) {
                     // Laid out and mounted only after this.
                     host.post(() -> addCountToUntaggedDislikeButton(host));
                 }
@@ -342,6 +349,12 @@ public final class ReturnYouTubeDislikeButtons {
      * needs to be found, since it tags neither of its buttons.
      */
     private static volatile boolean segmentedMarginGiven;
+
+    /**
+     * YouTube tags its dislike button, and a search by place there also matches the share and
+     * comment buttons of community posts, which sit beside a like button with an animated icon.
+     */
+    private static volatile boolean findsUntaggedDislikeButton;
 
     private static void addCountToUntaggedDislikeButton(ComponentHost host) {
         try {

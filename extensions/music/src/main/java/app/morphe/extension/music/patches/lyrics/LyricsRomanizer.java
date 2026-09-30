@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;
@@ -28,9 +29,6 @@ public final class LyricsRomanizer {
                          boolean perWord);
     }
 
-    private static final String SYSTEM_PROMPT =
-            "You are a romanization specialist. Output ONLY the romanized text. No reasoning, no explanations, no step-by-step thinking.";
-
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private LyricsRomanizer() {
@@ -39,21 +37,6 @@ public final class LyricsRomanizer {
     public static void romanize(TrackInfo track, Lyrics lyrics, String source, Callback callback) {
         Utils.verifyOnMainThread();
 
-        List<LyricsLine> embedded = lyrics.romanization();
-        if (embedded == null || embedded.isEmpty()) {
-            Map<String, List<LyricsLine>> romanizations = lyrics.romanizations();
-            if (romanizations != null && !romanizations.isEmpty()) {
-                embedded = collectMatchingRomanizations(romanizations, lyrics.lines());
-            }
-        }
-
-        final boolean perWord = LyricsMerge.anyWordHasRomaji(lyrics.lines());
-        if (LyricsMerge.hasText(embedded) || perWord) {
-            List<LyricsLine> result = embedded;
-            Utils.runOnMainThread(() -> callback.onRomanized(result, false, false, null, perWord));
-            return;
-        }
-
         List<String> lines = new ArrayList<>(lyrics.lines().size());
         for (LyricsLine line : lyrics.lines()) {
             String text = line.text();
@@ -61,115 +44,71 @@ public final class LyricsRomanizer {
         }
 
         executor.execute(() -> {
-            if (Settings.LYRICS_USE_AI_TRANSLATION.get()) {
-                String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
-                String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
-                String model = Settings.LYRICS_AI_MODEL.get();
+            try {
+                List<LyricsLine> embedded = lyrics.romanization();
+                if (embedded == null || embedded.isEmpty()) {
+                    Map<String, List<LyricsLine>> romanizations = lyrics.romanizations();
+                    if (romanizations != null && !romanizations.isEmpty()) {
+                        embedded = collectMatchingRomanizations(romanizations, lyrics.lines());
+                    }
+                }
 
-                List<LyricsLine> aiCached = LyricsCache.getRomanizationAI(
-                        track, source, lines.size());
-                if (aiCached != null) {
-                    Utils.runOnMainThread(() -> callback.onRomanized(aiCached, false, true, model, false));
+                final boolean perWord = LyricsMerge.anyWordHasRomaji(lyrics.lines());
+                if (LyricsMerge.hasText(embedded) || perWord) {
+                    List<LyricsLine> result = embedded;
+                    Utils.runOnMainThread(
+                            () -> callback.onRomanized(result, false, false, null, perWord));
                     return;
                 }
 
-                List<String> aiResult = aiRomanize(lines, deviceLanguage(), track.title(),
-                        track.artist(), baseUrl, apiToken, model);
-                if (aiResult != null) {
-                    List<LyricsLine> aiLines = toLines(aiResult);
-                    LyricsCache.putRomanizationAI(track, source, aiLines);
-                    Utils.runOnMainThread(() -> callback.onRomanized(aiLines, false, true, model, false));
-                    return;
-                }
-            }
+                if (Settings.LYRICS_USE_AI_TRANSLATION.get()) {
+                    String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
+                    String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
+                    String model = Settings.LYRICS_AI_MODEL.get();
 
-            List<LyricsLine> romanized = LyricsCache.getRomanization(track, source, lines.size());
-            if (romanized == null) {
-                List<String> romanizedText = romanizeOnline(lines);
-                if (romanizedText != null) {
-                    romanized = toLines(romanizedText);
-                    LyricsCache.putRomanization(track, source, romanized);
-                }
-            }
+                    List<LyricsLine> aiCached = LyricsCache.getRomanizationAI(
+                            track, source, lines);
+                    if (aiCached != null) {
+                        Utils.runOnMainThread(() -> callback.onRomanized(
+                                aiCached, false, true, model, false));
+                        return;
+                    }
 
-            List<LyricsLine> result = romanized;
-            Utils.runOnMainThread(() -> callback.onRomanized(result, result != null, false, null, false));
+                    List<String> aiResult = aiRomanize(lines, LyricsRequests.deviceLanguage(), track.title(),
+                            track.artist(), baseUrl, apiToken, model);
+                    if (aiResult != null) {
+                        List<LyricsLine> aiLines = toLines(aiResult);
+                        LyricsCache.putRomanizationAI(track, source, lines, aiLines);
+                        Utils.runOnMainThread(() -> callback.onRomanized(
+                                aiLines, false, true, model, false));
+                        return;
+                    }
+                }
+
+                List<LyricsLine> romanized = LyricsCache.getRomanization(track, source, lines);
+                if (romanized == null) {
+                    List<String> romanizedText = romanizeOnline(lines);
+                    if (romanizedText != null) {
+                        romanized = toLines(romanizedText);
+                        LyricsCache.putRomanization(track, source, lines, romanized);
+                    }
+                }
+
+                List<LyricsLine> result = romanized;
+                Utils.runOnMainThread(
+                        () -> callback.onRomanized(result, result != null, false, null, false));
+            } catch (Throwable ignored) {
+                Utils.runOnMainThread(() -> callback.onRomanized(null, false, false, null, false));
+            }
         });
     }
 
     @Nullable
     private static List<String> aiRomanize(List<String> lines, String targetLanguage,
             String title, String artist, String baseUrl, String apiToken, String model) {
-        int totalChars = 0;
-        for (String line : lines) {
-            totalChars += line.length() + 1;
-        }
-        if (totalChars > OpenAIClient.getMaxChars()) {
-            return null;
-        }
-        String prompt = buildRomanizePrompt(lines, targetLanguage, title, artist);
-        String response = OpenAIClient.request(baseUrl, apiToken, model,
-                prompt, SYSTEM_PROMPT);
-        if (response == null) {
-            return null;
-        }
-        String[] result = response.split("\n", -1);
-        int end = result.length;
-        while (end > 0 && result[end - 1].trim().isEmpty()) {
-            end--;
-        }
-        if (end == 0) {
-            return null;
-        }
-        boolean allSkip = true;
-        for (int i = 0; i < end; i++) {
-            result[i] = OpenAIClient.stripLineNumber(result[i]);
-            if (!result[i].trim().equalsIgnoreCase("SKIP")) {
-                allSkip = false;
-            }
-        }
-        if (allSkip) {
-            return null;
-        }
-        if (end > lines.size() + 2 || end < lines.size() - 2) {
-            return null;
-        }
-        List<String> out = new ArrayList<>(lines.size());
-        for (int i = 0; i < lines.size(); i++) {
-            if (i < end) {
-                String trimmed = result[i].trim();
-                if (trimmed.equalsIgnoreCase("SKIP") || OpenAIClient.isNoteOrEmptyLine(lines.get(i))) {
-                    out.add("");
-                } else {
-                    out.add(trimmed);
-                }
-            } else {
-                out.add("");
-            }
-        }
-        return out;
-    }
-
-    private static String buildRomanizePrompt(List<String> lines, String targetLang,
-            String title, String artist) {
-        StringBuilder sb = new StringBuilder(200 + lines.size() * 50);
-        sb.append("You are a professional romanization specialist. Convert each line below to ")
-                .append(targetLang).append(" Latin script.\n");
-        sb.append("Song: ").append(title).append(" by ").append(artist).append("\n\n");
-        sb.append("Output format: Number every romanized line, like:\n");
-        sb.append("1. first romanization\n");
-        sb.append("2. second romanization\n\n");
-        sb.append("CRITICAL RULES:\n");
-        sb.append("- Output exactly ").append(lines.size()).append(" numbered lines (same as input count)\n");
-        sb.append("- Number format: \"N. romanized text\" (number, period, space, text)\n");
-        sb.append("- Do NOT include the original lyrics in your output\n");
-        sb.append("- Do NOT use \"Line N:\" format\n");
-        sb.append("- Use standard ").append(targetLang).append(" romanization without tone marks\n");
-        sb.append("- If the lyrics are already in Latin script, output one \"SKIP\" per line\n\n");
-        for (String line : lines) {
-            sb.append(line).append("\n");
-        }
-        return sb.toString();
+        String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_PROMPT.get(),
+                "romanization", targetLanguage, title, artist, lines);
+        return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, null, lines);
     }
 
     private static List<LyricsLine> collectMatchingRomanizations(
@@ -218,6 +157,7 @@ public final class LyricsRomanizer {
                 if (text == null) continue;
                 text = text.trim();
                 if (!text.isEmpty()) {
+                    //noinspection SizeReplaceableByIsEmpty
                     if (merged.length() > 0) merged.append('\n');
                     merged.append(text);
                 }
@@ -270,7 +210,4 @@ public final class LyricsRomanizer {
                 });
     }
 
-    public static String deviceLanguage() {
-        return Locale.getDefault().getLanguage();
-    }
 }

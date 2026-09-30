@@ -7,6 +7,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -14,13 +15,11 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.ResourceGroup
-import app.morphe.util.copyResources
 
 private val downloadsResourcePatch = resourcePatch {
     dependsOn(
         legacyPlayerControlsPatch,
-        settingsPatch,
+        settingsPatch
     )
 
     execute {
@@ -39,14 +38,7 @@ private val downloadsResourcePatch = resourcePatch {
             )
         )
 
-        copyResources(
-            "downloads",
-            ResourceGroup(
-                "drawable",
-                "morphe_yt_download_button.xml",
-                "morphe_yt_download_button_bold.xml",
-            )
-        )
+        copyPlayerButtonIcons("downloads", "morphe_yt_download_button")
     }
 
     finalize {

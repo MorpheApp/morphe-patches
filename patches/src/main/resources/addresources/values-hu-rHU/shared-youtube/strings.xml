@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Indítási animáció</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Kikapcsolva</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Színes</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Monokróm</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Indíts újra a beállítások befejezéséhez</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nem tud bejelentkezni a VR-ba: %s</string>
   <string name="morphe_oauth2_toast_reset">Kijelentkezett az Android VR-ből</string>
   <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja meg újra a bejelentkezést a VR-ba</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Médiavezérlők az értesítésben</string>
+  <string name="morphe_notification_media_screen_summary">A lezárási képernyőn és az értesítési panelen megjelenő lejátszásvezérlők testreszabása</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Előző és következő gombok elrejtése</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Elrejti az előző és következő gombokat a médiaértesítésben, a lezárási képernyőn és a fejhallgató-vezérlőkben</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Seekbar letiltása</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Megakadályozza a seekbar húzását a lezárási képernyőn és az értesítési panelen</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokoll letiltása</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

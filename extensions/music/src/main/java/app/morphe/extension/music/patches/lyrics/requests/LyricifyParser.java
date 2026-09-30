@@ -189,14 +189,7 @@ final class LyricifyParser {
             fractionMs = 0;
         } else {
             seconds = Long.parseLong(secPart.substring(0, dot));
-            final String frac = secPart.substring(dot + 1);
-            if (frac.length() == 1) {
-                fractionMs = Long.parseLong(frac) * 100;
-            } else if (frac.length() == 2) {
-                fractionMs = Long.parseLong(frac) * 10;
-            } else {
-                fractionMs = Long.parseLong(frac.substring(0, 3));
-            }
+            fractionMs = LyricsRequests.fractionToMs(secPart.substring(dot + 1));
         }
         return (minutes * 60 + seconds) * 1000 + fractionMs;
     }

@@ -100,6 +100,7 @@ Melodiile descărcate apar aici"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ascunde butonul Traducere</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ascunde raftul „New from”</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ascunde rafturile listelor de redare</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Ascunde butonul de descărcare pentru episodul de podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Ascunde butonul Repetare</string>
   <string name="morphe_music_hide_shuffle_button_title">Ascunde butonul Aleatoriu</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ascunde raftul „Speed dial”</string>
@@ -179,6 +180,10 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_remember_repeat_state_title">Reține starea de repetare</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Reține starea de amestecare</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Viteza de redare</string>
+  <string name="morphe_music_playback_speed_summary">Viteza folosită pentru toate melodiile. La 100% se folosește viteza aplicației, cum ar fi viteza de redare a podcastului.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Schimbă tonalitatea odată cu viteza</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Dezactivează redirecționarea dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Împiedică trecerea la următoarea melodie când este apăsat butonul dislike</string>
@@ -187,6 +192,10 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_hide_history_button_title">Ascunde butonul de istoric</string>
   <string name="morphe_music_hide_notification_button_title">Ascunde butonul de notificare</string>
   <string name="morphe_music_hide_search_button_title">Ascunde butonul de căutare</string>
+  <string name="morphe_music_hide_voice_search_button_title">Ascunde butonul de căutare vocală</string>
+  <string name="morphe_music_hide_sound_search_button_title">Ascunde butonul de căutare sonoră</string>
+  <string name="morphe_music_hide_library_new_button_title">Ascunde butonul Nou</string>
+  <string name="morphe_music_hide_library_new_button_summary">Ascunde butonul Nou din fila Biblioteca</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Butoane de acțiune</string>
   <string name="morphe_music_action_buttons_screen_summary">Alege ce butoane de acțiune să apară sub player</string>
@@ -256,6 +265,9 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_change_start_page_entry_subscriptions">Abonamente</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Ascunde bara de filtre</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Forțează orientarea portret</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Menține aplicația în orientarea portret atunci când dispozitivul este rotit</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Schimbă culoarea miniplayer-ului</string>
   <string name="morphe_music_change_miniplayer_color_summary">Culoarea miniplayer-ului se potrivește cu player-ul pe ecran complet</string>
@@ -358,8 +370,6 @@ Pentru a te asigura că scrobbling-ul este sincronizat în timpul redării în f
   <string name="morphe_music_lyrics_section_overlay_title">Suprapunere</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizare</string>
   <string name="morphe_music_lyrics_section_about_title">Despre</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Atingeți ▲/▼ pentru a seta ordinea de prioritate, iar bifa pentru a activa sau dezactiva fiecare furnizor</string>
   <string name="morphe_music_lyrics_source_all_disabled">Toți furnizorii dezactivați — versuri integrate și versuri încorporate.</string>
   <string name="morphe_music_lyrics_source_reset_title">Resetați ordinea furnizorilor?</string>
   <string name="morphe_music_lyrics_source_reset_message">Restabiliți ordinea implicită de prioritate a furnizorilor.</string>
@@ -384,9 +394,8 @@ Pași:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl nevalid, încercați din nou.</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl nevalid — te rugăm să verifici și să încerci din nou</string>
   <string name="morphe_music_musixmatch_token_title">Deezer: token media-user salvat.</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funcționează fără un token, așa că acest câmp poate rămâne gol.
-
-Adaugă un token doar pentru a-ți folosi propriul cont. Trebuie să provină din aplicația Android Musixmatch: tokenurile copiate de pe musixmatch.com aparțin clientului desktop retras, iar API-ul le refuză"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Adaugă un token doar pentru a-ți folosi propriul cont. Acesta trebuie să provină din aplicația Musixmatch pentru Android: tokenurile copiate de pe musixmatch.com aparțin clientului desktop scos din uz, iar API-ul le refuză.</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funcționează fără token, deci acest câmp poate rămâne gol.</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">Musixmatch: token de utilizator nevalid, încercați din nou.</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Deezer: token media-user expirat.</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Cookie-uri YouTube</string>
@@ -403,11 +412,16 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_copy_button_title">Arată butonul de copiere</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Faceți clic aici pentru a copia valoarea.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Arată butonul de traducere</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Traduceți textul în limba română.</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Atingeți pentru a comuta traducerea; apăsați lung pentru doar traducere. Utilizează traducerile furnizorului, Google Translate sau un API compatibil cu OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Afișați butonul Romanize.</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Romanizați textul în limba română.</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Atingeți pentru a comuta romanizarea; apăsați lung pentru doar romanizare. Utilizează romanizarea furnizorului, Google Translate sau un API compatibil cu OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afișați butonul Reîmprospătare.</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Atingeți pentru a comuta la următoarea sugestie de vers.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Atingeți pentru a trece la următorul candidat de versuri; apăsați lung pentru a căuta versuri după titlul melodiei și artist.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Căutare versuri</string>
+  <string name="morphe_music_lyrics_search_title_hint">Titlul melodiei</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
+  <string name="morphe_music_lyrics_search_empty">Introduceți un titlu de melodie și un artist</string>
+  <string name="morphe_music_lyrics_search_no_providers">Niciunul dintre furnizorii activați nu poate căuta alte melodii</string>
   <string name="morphe_music_lyrics_saved">Salvat</string>
   <string name="morphe_music_lyrics_word_sync_title">Evidențiați cuvintele sau silabele sincronizate</string>
   <string name="morphe_music_lyrics_word_sync_summary">Nu s-a putut face romanizarea versurilor.</string>
@@ -421,7 +435,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_display_artist_first_summary">Comutați vizibilitatea miniplayer-ului.</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Afișați titlul.</string>
   <string name="morphe_music_lyrics_custom_regex_title">Afișați subtitlul.</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Afișați descrierea.</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Expresie regulată aplicată titlurilor, artiștilor și albumelor înainte de a căuta versurile și atunci când se stabilește dacă două titluri se potrivesc. Lăsați gol pentru a dezactiva ambele. Valoarea implicită elimină etichetele comune precum \"Official Video\", \"Remaster\", \"【插曲】\" și \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Afișați butonul de redare.</string>
   <string name="morphe_music_lyrics_text_filter_summary">Afișați butonul următor.</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Afișați butonul anterior.</string>
@@ -444,10 +458,12 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_romanize_hide">Redare reluată.</string>
   <string name="morphe_music_lyrics_romanizing">Se romanizează…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nu s-a putut face romanizarea versurilor.</string>
+  <string name="morphe_music_lyrics_translate_only">Doar traducerea</string>
+  <string name="morphe_music_lyrics_romanize_only">Doar romanizat</string>
   <string name="morphe_music_lyrics_copied">Copiat în clipboard</string>
   <string name="morphe_music_lyrics_refreshing">Se încarcă…</string>
   <string name="morphe_music_lyrics_refreshed">Reîmprospătat</string>
-  <string name="morphe_music_lyrics_about_summary">"Redare în curs de pe alt dispozitiv."</string>
+  <string name="morphe_music_lyrics_about_summary">"Versurile sunt potrivite după titlu și artist, metadatele neobișnuite pot să nu găsească nimic sau versiunea greșită. Folosiți reîmprospătarea pentru a comuta versiunile. Furnizorii marcați cu * necesită un token. Furnizorii activați nu sunt solicitați întotdeauna în ordinea ta, ci răspund în funcție de viteza lor."</string>
   <string name="morphe_music_lyrics_hide_info_title">Redare în curs pe acest dispozitiv.</string>
   <string name="morphe_music_lyrics_hide_info_summary">Redare în curs pe un alt dispozitiv.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Redare în curs pe acest dispozitiv.</string>
@@ -459,6 +475,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (de ex. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Cheie API (lasă gol pentru acces anonim)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nume model (de ex. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Șablon de prompt (variabile: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Setări de traducere AI salvate</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Nu s-a putut conecta la endpoint-ul AI. Verifică setările.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Setări de traducere AI resetate</string>

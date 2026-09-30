@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.layout.branding
 
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
+import app.morphe.patches.youtube.layout.theme.splashAnimationPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_MAIN_ACTIVITY_NAME
 import app.morphe.patches.youtube.misc.gms.Constants.YOUTUBE_PACKAGE_NAME
@@ -21,7 +22,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 @Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
     // The launcher icon the app declares in its manifest. The unused 'ic_launcher'
-    // is the pre 2024 icon and does not match what an unpatched install shows.
+    // is the pre-2024 icon and does not match what an unpatched install shows.
     originalLauncherIconName = "ringo2_ic_launcher",
     originalNotificationIconName = "ic_stat_yt_notification_logo",
     originalAppName = "@string/application_name",
@@ -34,7 +35,11 @@ val customBrandingPatch = baseCustomBrandingPatch(
     preferenceScreen = PreferenceScreen.GENERAL,
 
     block = {
-        dependsOn(sharedExtensionPatch)
+        dependsOn(
+            sharedExtensionPatch,
+            // Owns the hook that loads the startup animation.
+            splashAnimationPatch
+        )
 
         compatibleWith(COMPATIBILITY_YOUTUBE)
     }

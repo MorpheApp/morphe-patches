@@ -199,16 +199,18 @@ public final class FlyoutUtils {
     }
 
     /**
-     * DO NOT INJECT THE CALL TO THIS METHOD INDEPENDENTLY.
-     * This method must be executed before 'Hide Comments Carousel', in
-     * order to prevent the necessary component from being filtered.
+     * Injection point.
+     * Detect specific elements for videos marked as for kids, displayed
+     * via the video player's comments button.
      */
-    public static void onCommentsLoaded(byte[] bytes) {
+    public static byte[] onCommentsLoaded(byte[] bytes) {
         List<Integer> kidsVideoElementsBytesIndexes = byteIndexesOf(bytes, KIDS_VIDEO_ELEMENTS_BYTES);
         if (!kidsVideoElementsBytesIndexes.isEmpty() &&
                 kidsVideoElementsBytesIndexes.size() == KIDS_VIDEO_ELEMENTS_BYTES.size() - 1) {
             videoMarkedAsForKids = true;
         }
+
+        return bytes;
     }
 
     /**

@@ -32,11 +32,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">將 Morphe 設定重設為預設值</string>
   <string name="morphe_settings_import_success">已匯入 %d 個設定</string>
   <string name="morphe_settings_import_failure_parse">無法匯入：%s</string>
+  <string name="morphe_settings_navigate_up">向上瀏覽</string>
   <string name="morphe_settings_search_hint">搜尋設定</string>
   <string name="morphe_settings_search_no_results_title">沒有找到「%s」的結果</string>
   <string name="morphe_settings_search_no_results_summary">嘗試其他關鍵字</string>
   <string name="morphe_settings_search_recent_searches">最近搜尋</string>
   <string name="morphe_settings_search_remove_message">要從搜尋記錄中移除嗎？</string>
+  <string name="morphe_settings_search_remove">從搜尋記錄中移除</string>
   <string name="morphe_settings_search_clear_history">清除搜尋記錄</string>
   <string name="morphe_settings_search_clear_history_message">您確定要清除所有搜尋記錄嗎？</string>
   <string name="morphe_settings_search_tips_title">搜尋秘訣</string>
@@ -75,7 +77,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_body_version_current">您正在使用 Morphe 修補版本 <i>%s</i></string>
   <string name="morphe_settings_about_links_body_version_outdated">您正在使用 Morphe 修補版本 &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;有可用更新: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;若要更新您的修補程式，請使用 Morphe 重新修補此應用程式</string>
   <string name="morphe_settings_about_links_dev_header">注意</string>
-  <string name="morphe_settings_about_links_dev_body">這個版本為預先發布版，你可能會遇到非預期的問題</string>
+  <string name="morphe_settings_about_links_dev_body">這個版本為預先發佈版，你可能會遇到非預期的問題</string>
   <string name="morphe_settings_about_links_header">官方連結</string>
   <string name="morphe_settings_about_links_website">網站</string>
   <string name="morphe_settings_about_links_donate">捐贈</string>

@@ -51,7 +51,7 @@ public final class LyricifyProvider implements LyricsProvider {
 
     @Nullable
     @Override
-    public Lyrics fetch(TrackInfo track) throws Exception {
+    public FetchResult fetch(TrackInfo track) throws Exception {
         final String cacheKey = track.title().toLowerCase(Locale.ROOT)
                 + "|" + track.artist().toLowerCase(Locale.ROOT);
         String isrc = isrcCache.get(cacheKey);
@@ -122,7 +122,7 @@ public final class LyricifyProvider implements LyricsProvider {
         }
 
         final Map<String, List<LyricsLine>> translations;
-        final String deviceLang = Locale.getDefault().getLanguage();
+        final String deviceLang = LyricsRequests.deviceLanguage();
         if ("zh".equals(deviceLang) && trans != null && !trans.isEmpty()) {
             final List<String> translatedTexts = LyricifyParser.parseTranslation(trans, offset);
             if (!translatedTexts.isEmpty()) {
@@ -150,7 +150,7 @@ public final class LyricifyProvider implements LyricsProvider {
         }
 
         final String formatType = isSyllable ? "lys" : "lyl";
-        return new Lyrics(
+        return FetchResult.blind(new Lyrics(
                 lines,
                 name(),
                 true,
@@ -160,7 +160,7 @@ public final class LyricifyProvider implements LyricsProvider {
                 creditLines.isEmpty() ? null : creditLines,
                 text,
                 formatType,
-                null);
+                null));
     }
 
     private static HttpURLConnection openApi(String url) throws IOException {

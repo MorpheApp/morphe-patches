@@ -15,6 +15,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
 
@@ -58,9 +59,12 @@ val disablePlaylistAutoplayPatch = bytecodePatch(
                 }
             }
         ).matchAll().forEach { match ->
-            val method = match.method
-            val freeRegister = method.findFreeRegister(0)
+            var method = match.method
+            if (method.implementation!!.registerCount <= 2) {
+                method = method.cloneParameters()
+            }
 
+            val freeRegister = method.findFreeRegister(0)
             method.addInstructionsWithLabels(
                 0,
                 """

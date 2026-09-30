@@ -13,7 +13,6 @@ import android.graphics.Rect;
 import android.os.SystemClock;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -69,34 +68,20 @@ public final class LyricsPanelInstaller {
     /** Panel the lyrics were last built into, kept to recognize it when it comes back. */
     private static WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
 
-    /**
-     * Whether this class added the window flag, so an existing app-owned flag is never cleared.
-     */
-    private static boolean keepScreenOnFlagAdded;
-
     private LyricsPanelInstaller() {
     }
 
     private static void updateKeepScreenOn(boolean lyricsPanelOpen) {
         Utils.runOnMainThreadNowOrLater(() -> {
-            Activity activity = Utils.getActivity();
-            if (activity == null) {
-                return;
-            }
-
-            final int keepScreenOnFlag = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
-            final boolean shouldKeepScreenOn =
-                    Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen;
-
-            if (shouldKeepScreenOn) {
-                if (!keepScreenOnFlagAdded
-                        && (activity.getWindow().getAttributes().flags & keepScreenOnFlag) == 0) {
-                    activity.getWindow().addFlags(keepScreenOnFlag);
-                    keepScreenOnFlagAdded = true;
+            try {
+                LyricsPanelView panelView = panelReference.get();
+                if (panelView == null) {
+                    return;
                 }
-            } else if (keepScreenOnFlagAdded) {
-                activity.getWindow().clearFlags(keepScreenOnFlag);
-                keepScreenOnFlagAdded = false;
+
+                panelView.setKeepScreenOn(
+                        Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen);
+            } catch (Throwable ignored) {
             }
         });
     }
@@ -141,6 +126,14 @@ public final class LyricsPanelInstaller {
      * Called by the litho filter when the lyrics panel is being built.
      */
     public static void onLyricsPanelDetected() {
+        try {
+            detectLyricsPanel();
+        } catch (Throwable ignored) {
+            installPending = false;
+        }
+    }
+
+    private static void detectLyricsPanel() {
         // Whichever panel holds the container while the lyrics component is built is the
         // lyrics panel, which keeps this working without knowing what the app calls it.
         Object panel = currentPanelReference.get();
@@ -182,12 +175,23 @@ public final class LyricsPanelInstaller {
                     installPending = false;
                     return;
                 }
-                scheduleInstall(deadlineUptimeMs, INSTALL_RETRY_MILLISECONDS);
+                scheduleInstall(deadlineUptimeMs, retryDelay(deadlineUptimeMs));
             } catch (Exception ex) {
                 installPending = false;
                 Logger.printException(() -> "Could not install the lyrics panel", ex);
             }
         }, delay);
+    }
+
+    private static long retryDelay(long deadlineUptimeMs) {
+        final long left = deadlineUptimeMs - SystemClock.uptimeMillis();
+        if (left > 1700) {
+            return INSTALL_RETRY_MILLISECONDS;
+        }
+        if (left > 1000) {
+            return 50;
+        }
+        return 200;
     }
 
     /**
@@ -222,11 +226,13 @@ public final class LyricsPanelInstaller {
         if (existing != null && existing.getParent() == panel) {
             // Reopening the panel makes the app restore its own content, so the
             // overlay state has to be reapplied rather than assumed still correct.
+            existing.setKeepScreenOn(Settings.LYRICS_KEEP_SCREEN_ON.get());
             existing.syncOverlay();
             return true;
         }
 
         LyricsPanelView panelView = new LyricsPanelView(panel.getContext());
+        panelView.setKeepScreenOn(Settings.LYRICS_KEEP_SCREEN_ON.get());
         panel.addView(panelView, new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.MATCH_PARENT));
@@ -413,7 +419,29 @@ public final class LyricsPanelInstaller {
         return lyricsTitle;
     }
 
+    private static final long[] ENABLE_BUTTON_DELAYS_MS = {0, 150, 500, 1000, 2000};
+
+    private static final long ENABLE_BUTTON_MIN_INTERVAL_MS = 2000;
+
+    private static long lastEnableButtonWalkUptimeMs;
+    private static boolean enableButtonWalkPending;
+
     public static void enableLyricsButton() {
+        try {
+            walkForLyricsButton();
+        } catch (Throwable ignored) {
+            enableButtonWalkPending = false;
+        }
+    }
+
+    private static void walkForLyricsButton() {
+        if (enableButtonWalkPending) {
+            return;
+        }
+        final long now = SystemClock.uptimeMillis();
+        if (now - lastEnableButtonWalkUptimeMs < ENABLE_BUTTON_MIN_INTERVAL_MS) {
+            return;
+        }
         Activity activity = Utils.getActivity();
         if (activity == null) {
             return;
@@ -422,20 +450,32 @@ public final class LyricsPanelInstaller {
         if (title == null) {
             return;
         }
-        View root = activity.getWindow().getDecorView();
-        for (long delay : ENABLE_BUTTON_DELAYS_MS) {
-            Utils.runOnMainThreadDelayed(() -> enableLyricsButtonPass(root, title), delay);
-        }
+        final View root = activity.getWindow().getDecorView();
+        enableButtonWalkPending = true;
+        lastEnableButtonWalkUptimeMs = now;
+        scheduleEnableButtonPass(root, title, 0);
     }
 
-    private static final long[] ENABLE_BUTTON_DELAYS_MS = {0, 150, 500, 1000, 2000};
-
-    private static void enableLyricsButtonPass(@Nullable View root, String title) {
-        if (root == null) {
-            return;
-        }
-        String titleLower = title.toLowerCase(Locale.ROOT);
-        enableLyricsButtonPass(root, title, titleLower);
+    private static void scheduleEnableButtonPass(final View root, final String title, final int step) {
+        final long delay = step == 0
+                ? ENABLE_BUTTON_DELAYS_MS[0]
+                : ENABLE_BUTTON_DELAYS_MS[step] - ENABLE_BUTTON_DELAYS_MS[step - 1];
+        Utils.runOnMainThreadDelayed(() -> {
+            boolean scheduledNext = false;
+            try {
+                boolean matched = enableLyricsButtonPass(root, title, title.toLowerCase(Locale.ROOT));
+                if (!matched && step + 1 < ENABLE_BUTTON_DELAYS_MS.length) {
+                    scheduleEnableButtonPass(root, title, step + 1);
+                    scheduledNext = true;
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "enableLyricsButton pass failure", ex);
+            } finally {
+                if (!scheduledNext) {
+                    enableButtonWalkPending = false;
+                }
+            }
+        }, delay);
     }
 
     private static boolean enableLyricsButtonPass(View view, String title, String titleLower) {

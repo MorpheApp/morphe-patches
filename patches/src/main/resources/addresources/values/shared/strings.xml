@@ -32,11 +32,13 @@ Second \"item\" text"</string>
     <string name="morphe_settings_import_reset">Morphe settings reset to default</string>
     <string name="morphe_settings_import_success">Imported %d settings</string>
     <string name="morphe_settings_import_failure_parse">Import failed: %s</string>
+    <string name="morphe_settings_navigate_up">Navigate up</string>
     <string name="morphe_settings_search_hint">Search settings</string>
     <string name="morphe_settings_search_no_results_title">No results found for \'%s\'</string>
     <string name="morphe_settings_search_no_results_summary">Try another keyword</string>
     <string name="morphe_settings_search_recent_searches">Recent searches</string>
     <string name="morphe_settings_search_remove_message">Remove from search history?</string>
+    <string name="morphe_settings_search_remove">Remove from search history</string>
     <string name="morphe_settings_search_clear_history">Clear search history</string>
     <string name="morphe_settings_search_clear_history_message">Are you sure you want to clear all search history?</string>
     <string name="morphe_settings_search_tips_title">Search Tips</string>

@@ -133,6 +133,7 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_remember_repeat_state_title">पुनरावृत्ती स्थिती लक्षात ठेवा</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">शफल स्थिती लक्षात ठेवा</string>
+  <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">अनापसंद पुनर्निर्देशन अक्षम करा</string>
   <string name="morphe_music_disable_dislike_redirection_summary">अनापसंद बटण दाबल्यावर पुढील गाण्यावर जाण्यापासून प्रतिबंधित करते</string>
@@ -208,6 +209,7 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_change_start_page_entry_subscriptions">सबस्क्रिप्शन</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">फिल्टर बार लपवा</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">मिनीप्लेअर रंग बदला</string>
   <string name="morphe_music_change_miniplayer_color_summary">मिनीप्लेअरचा रंग फुलस्क्रीन प्लेअरशी जुळवतो</string>
@@ -295,7 +297,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">तृतीय-पक्ष गीतांचा वापर करा</string>
   <string name="morphe_music_lyrics_enabled_summary">तृतीय-पक्ष सेवेतून गीत दर्शवते, जेव्हा कोणतेही गीत उपलब्ध नसेल तेव्हा अंगभूत गीतांवर परत येते</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
   <string name="morphe_music_lyrics_tap_to_seek_title">ओळ टॅप करून गाणे पुढे न्या</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">ओळीवर टॅप केल्यास गाण्याचा तो क्षण सुरू होतो</string>
   <string name="morphe_music_lyrics_show_copy_button_title">कॉपी बटण दाखवा</string>

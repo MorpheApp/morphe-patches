@@ -896,6 +896,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_playback_in_feeds_entry_always_on">\u0932\u093e\u0938\u093e\u0928\u0937\u0930\u093e \u092a\u093e\u0935\u0930</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">\u0932\u093e\u0938\u093e\u0928\u0937\u0930 Wi-Fi \u092b\u093e\u0935\u093e\u0928\u093f</string>
   <string name="morphe_playback_in_feeds_entry_off">\u092c\u0926\u094d\u0926</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेअर पुन्हा सुरू करणे अक्षम करा</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'Continue watching\' मिनीप्लेअर अक्षम करते, YouTube Premium चे वैशिष्ट्य जे ॲप सुरू झाल्यावर दिसते.</string>
@@ -921,6 +922,7 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_miniplayer_opacity_title">ओव्हरले अपारदर्शकता</string>
   <string name="morphe_miniplayer_opacity_summary">ओव्हरले (Overlay) पातळी समायोजित (Adjust) करा (0 म्हणजे पारदर्शक, 100 म्हणजे अपारदर्शक)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">लाइट थीम पार्श्वभूमी</string>
   <string name="morphe_theme_color_light_entry_2">पांढरा</string>
@@ -935,10 +937,6 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_theme_color_change_foreground_title">अग्रभागाचा रंग बदला</string>
   <string name="morphe_gradient_loading_screen_title">ग्रेडियंट लोडिंग स्क्रीन सक्षम करा</string>
   <string name="morphe_gradient_loading_screen_summary">लोडिंग (Loading) स्क्रीनवर सॉलिड (Solid) रंगाऐवजी ग्रेडियंट (Gradient) पार्श्वभूमी दर्शवते</string>
-  <string name="morphe_splash_screen_animation_style_title">स्प्लॅश स्क्रीन शैली</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">अक्षम</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">रंग</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">मोनोक्रोम (Monochrome)</string>
   <string name="morphe_seekbar_custom_color_title">सानुकूलseekbar रंग सक्षम करा</string>
   <string name="morphe_seekbar_custom_color_primary_title"> SeekBar चा रंग</string>
   <string name="morphe_seekbar_custom_color_primary_summary">व्हिडिओ प्रगती बारचा प्राथमिक रंग सेट करा</string>
@@ -1004,13 +1002,6 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Undo Haptics अक्षम करा</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">टॅप आणि होल्ड हॅप्टिक्स अक्षम करा</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoom Haptics अक्षम करा</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">सूचना माध्यम नियंत्रणे</string>
-  <string name="morphe_notification_media_screen_summary">लॉक स्क्रीन (Lock screen) आणि सूचना पॅनेलवरील (Notification panel) प्लेबॅक नियंत्रणे (Playback controls) सानुकूलित (Customize) करा</string>
-  <string name="morphe_hide_notification_media_prev_next_title">मागील &amp; पुढील बटणे लपवा</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">मीडिया (Media) सूचना, लॉक स्क्रीन (Lock screen) आणि हेडफोन नियंत्रणांमधील (Headphone controls) मागील (Previous) आणि पुढील (Next) बटणे लपवते</string>
-  <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करा</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">लॉक स्क्रीन (Lock screen) आणि सूचना पॅनेलवर (Notification panel) SeekBar ला ड्रॅग (Drag) करण्यापासून प्रतिबंधित (Prevent) करते</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">तुम्ही नुकतेच तुमचे खाते लॉगिन तपशील बदलले असल्यास, MicroG अनइंस्टॉल आणि रीइंस्टॉल करा.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1019,6 +1010,7 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">ब्राउझरमध्ये लिंक उघडा</string>
   <string name="morphe_external_browser_summary">इन-ॲप ब्राउझरऐवजी (in-app browser) बाह्य ब्राउझरमध्ये (external browser) लिंक्स उघडते</string>
+  <!-- video.buffer.playbackBufferPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">स्वयंचलित</string>
@@ -1105,4 +1097,5 @@ AV1 सह व्हिडिओ प्लेबॅक स्टटर किं
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">\'Stats for nerds\' मध्ये स्पूफिंग दाखवा</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">व्हिडिओ ॲक्शन बार पूर्वीसारखे पुनर्संचयित करा</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
 </resources>

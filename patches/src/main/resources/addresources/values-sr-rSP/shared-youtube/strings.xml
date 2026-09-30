@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Анимација покретања</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Онемогућен</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Боја</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Монохромно</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Поново покрените да бисте завршили постављање</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Не може се ући у VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Одјављен са Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Неважећи токен за улаз у VR, покушајте поново да уђете у VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Контроле медија у обавештењу</string>
+  <string name="morphe_notification_media_screen_summary">Прилагодите контроле репродукције приказане на закључаном екрану и панелу обавештења</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Сакриј дугмад за претходну и следећу нумеру</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Сакрива дугмад за претходну и следећу нумеру у медијском обавештењу, на закључаном екрану и у контролама слушалица</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Онемогући траку за премотавање</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Спречава превлачење траке за премотавање на закључаном екрану и панелу обавештења</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Oнемогући протокол QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

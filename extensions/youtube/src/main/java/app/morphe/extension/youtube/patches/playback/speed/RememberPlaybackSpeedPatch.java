@@ -19,6 +19,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.requests.GetMixPlaylistRequest;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
 import app.morphe.extension.youtube.whitelist.WhitelistType;
 
@@ -160,6 +161,13 @@ public final class RememberPlaybackSpeedPatch {
                     ? reloadPlaybackSpeed
                     : Settings.PLAYBACK_SPEED_DEFAULT.get();
             reloadPlaybackSpeed = -2.0f;
+
+            // The Shorts player does not support playback speed overrides yet.
+            // Avoid leaking the regular player's remembered speed when returning to Shorts.
+            if (ShortsPlayerState.isOpen()) {
+                return;
+            }
+
             if (!useReloadPlaybackSpeed && defaultSpeed != 1.0f) {
                 if (ChannelWhitelist.isCurrentChannelWhitelisted(WhitelistType.PLAYBACK_SPEED)) {
                     Logger.printDebug(() -> "Overriding whitelisted channel video speed to 1.0x");

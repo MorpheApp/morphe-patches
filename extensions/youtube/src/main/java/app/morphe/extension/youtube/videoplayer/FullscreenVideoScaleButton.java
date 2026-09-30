@@ -15,8 +15,6 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
@@ -111,26 +109,19 @@ public class FullscreenVideoScaleButton {
     private static void updateButtonIcon(VideoScaleMode mode) {
         Utils.verifyOnMainThread();
 
+        final int icon = PlayerIcons.id(mode.iconBaseName);
+
         ImageView overlayButton = overlayButtonRef.get();
         if (overlayButton != null) {
-            overlayButton.setImageResource(ResourceUtils.getIdentifierOrThrow(
-                    ResourceType.DRAWABLE,
-                    getIconName(mode)
-            ));
+            overlayButton.setImageResource(icon);
         }
 
         if (legacy != null) {
-            legacy.setIcon(ResourceUtils.getIdentifierOrThrow(
-                    ResourceType.DRAWABLE,
-                    getIconName(mode)
-            ));
+            legacy.setIcon(icon);
         }
     }
 
     private static String getIconName(VideoScaleMode mode) {
-        String base = mode.iconBaseName;
-        return LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                ? base
-                : base + "_bold";
+        return PlayerIcons.name(mode.iconBaseName);
     }
 }

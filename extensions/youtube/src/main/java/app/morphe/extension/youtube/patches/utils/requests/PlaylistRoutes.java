@@ -60,7 +60,11 @@ public final class PlaylistRoutes {
                     "?fields=contents.singleColumnWatchNextResults." +
                     "playlist.playlist.contents.playlistPanelVideoRenderer." +
                     "navigationEndpoint.coWatchWatchEndpointWrapperCommand." +
-                    "watchEndpoint.watchEndpoint.playerParams&prettyPrint=false"
+                    "watchEndpoint.watchEndpoint.playerParams" +
+                    ",contents.singleColumnWatchNextResults." +
+                    "playlist.playlist.contents.playlistPanelVideoRenderer." +
+                    "navigationEndpoint.watchEndpoint.playerParams" +
+                    "&prettyPrint=false"
     ).compile();
 
     private PlaylistRoutes() {

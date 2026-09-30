@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Zagonska animacija</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Onemogočeno</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Barva</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Enobarvno</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Za dokončanje nastavitve znova zaženite aplikacijo</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ni se mogoče prijaviti v VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Odjavljeni ste iz VR</string>
   <string name="morphe_oauth2_toast_invalid">Neveljavni znak prijave v VR, poskusite se znova prijaviti v VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Nadzor predvajanja v obvestilih</string>
+  <string name="morphe_notification_media_screen_summary">Prilagodite kontrolnike predvajanja, ki so prikazani na zaklenjenem zaslonu in plošči z obvestili.</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skrij gumba za prejšnjo in naslednjo skladbo.</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Skrije gumba za prejšnjo in naslednjo skladbo v medijskem obvestilu, na zaklenjenem zaslonu in v kontrolnikih za slušalke.</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Onemogoči drsnik.</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Prepreči vlečenje drsnika na zaklenjenem zaslonu in plošči z obvestili.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Onemogoči protokol QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

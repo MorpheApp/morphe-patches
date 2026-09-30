@@ -179,20 +179,11 @@ public class VideoQualityDialogButton {
                     : quality.patch_getResolution();
 
             SpannableStringBuilder text = new SpannableStringBuilder();
-            String qualityText = switch (resolution) {
-                case VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE -> "";
-                case 144, 240, 360 -> "LD";
-                case 480  -> "SD";
-                case 720  -> "HD";
-                case 1080 -> "FHD";
-                case 1440 -> "QHD";
-                case 2160 -> "4K";
-                default   -> "?"; // Should never happen.
-            };
+            String qualityText = qualityText(resolution);
             text.append(qualityText);
 
             if (quality != null && VideoInformation.isPremiumVideoQuality(quality)) {
-                // Underline the entire "FHD" text for 1080p Premium.
+                // Underline the entire "FHD" or "1080" text for 1080p Premium.
                 text.setSpan(new UnderlineSpan(), 0, qualityText.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
 
@@ -208,6 +199,21 @@ public class VideoQualityDialogButton {
         } catch (Exception ex) {
             Logger.printException(() -> "updateButtonText failure", ex);
         }
+    }
+
+    private static String qualityText(int resolution) {
+        if (resolution == VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE) return "";
+        if (Settings.VIDEO_QUALITY_DIALOG_BUTTON_RESOLUTION.get()) return String.valueOf(resolution);
+
+        return switch (resolution) {
+            case 144, 240, 360 -> "LD";
+            case 480  -> "SD";
+            case 720  -> "HD";
+            case 1080 -> "FHD";
+            case 1440 -> "QHD";
+            case 2160 -> "4K";
+            default   -> "?"; // Should never happen.
+        };
     }
 
     /**

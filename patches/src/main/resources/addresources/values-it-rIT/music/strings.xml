@@ -99,6 +99,7 @@ Mentre questa opzione è attiva, la scheda Download elenca questi brani invece d
   <string name="morphe_music_hide_lyrics_translate_button_title">Nascondi il pulsante Traduci</string>
   <string name="morphe_music_hide_new_from_shelf_title">Nascondi sezione \"Nuovi da...\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Nascondi sezioni playlist</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Nascondi il pulsante di download dell\'episodio del podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Nascondi pulsante Ripeti</string>
   <string name="morphe_music_hide_shuffle_button_title">Nascondi pulsante Shuffle</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Nascondi sezione \"Componi velocemente\"</string>
@@ -178,6 +179,10 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_remember_repeat_state_title">Ricorda stato ripetizione</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Ricorda stato riproduzione casuale</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Velocità di riproduzione</string>
+  <string name="morphe_music_playback_speed_summary">Velocità usata per tutti i brani. Al 100% viene utilizzata la velocità dell\'app, come la velocità di riproduzione dei podcast</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Cambia il tono con la velocità</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Disabilita il reindirizzamento dei \"non mi piace\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Impedisce il passaggio alla traccia successiva quando viene premuto il pulsante \"non mi piace\"</string>
@@ -186,6 +191,10 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_hide_history_button_title">Nascondi pulsante cronologia</string>
   <string name="morphe_music_hide_notification_button_title">Nascondi pulsante notifica</string>
   <string name="morphe_music_hide_search_button_title">Nascondi pulsante ricerca</string>
+  <string name="morphe_music_hide_voice_search_button_title">Nascondi il pulsante di ricerca vocale</string>
+  <string name="morphe_music_hide_sound_search_button_title">Nascondi il pulsante di ricerca audio</string>
+  <string name="morphe_music_hide_library_new_button_title">Nascondi il pulsante Nuovo</string>
+  <string name="morphe_music_hide_library_new_button_summary">Nasconde il pulsante Nuovo nella scheda Libreria</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Pulsanti azione</string>
   <string name="morphe_music_action_buttons_screen_summary">Scegli quali pulsanti visualizzare sotto il lettore</string>
@@ -255,6 +264,9 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_change_start_page_entry_subscriptions">Iscrizioni</string>
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Nascondi barra dei filtri</string>
+  <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Forza orientamento verticale</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Mantiene l\'app in orientamento verticale quando il dispositivo viene ruotato</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Modifica il colore del Lettore minimizzato</string>
   <string name="morphe_music_change_miniplayer_color_summary">Il colore del lettore minimizzato corrisponde a quello del lettore a schermo intero</string>
@@ -357,8 +369,6 @@ Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in bac
   <string name="morphe_music_lyrics_section_overlay_title">Sovrapposizione</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizzazione</string>
   <string name="morphe_music_lyrics_section_about_title">A proposito di</string>
-  <!-- Shown under the preference; the actual priority list is rendered live by the custom preference. -->
-  <string name="morphe_music_lyrics_source_summary">Tocca ▲/▼ per impostare l\'ordine di priorità e la casella per abilitare o disabilitare ogni provider</string>
   <string name="morphe_music_lyrics_source_all_disabled">Tutti i provider disabilitati — testi integrati e testi incorporati</string>
   <string name="morphe_music_lyrics_source_reset_title">Reimpostare l\'ordine dei provider?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ripristina i provider all\'ordine di priorità predefinito</string>
@@ -395,9 +405,8 @@ Passaggi:
   <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl cancellato</string>
   <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl non valido — controlla e riprova</string>
   <string name="morphe_music_musixmatch_token_title">Token Musixmatch</string>
-  <string name="morphe_music_musixmatch_token_dialog_instruction">"Musixmatch funziona senza token, quindi questo campo può restare vuoto.
-
-Aggiungi un token solo per usare il tuo account. Deve provenire dall'app Android di Musixmatch: i token copiati da musixmatch.com appartengono al client desktop dismesso e l'API li rifiuta"</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">Aggiungi un token solo per usare il tuo account. Deve provenire dall\'app Android di Musixmatch: i token copiati da musixmatch.com appartengono al client desktop dismesso e l\'API li rifiuta</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch funziona senza token, quindi questo campo può rimanere vuoto</string>
   <string name="morphe_music_musixmatch_token_dialog_hint">token utente</string>
   <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: token utente salvato</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: token utente cancellato</string>
@@ -414,11 +423,16 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_show_copy_button_title">Mostra il pulsante di copia</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tocca per copiare i testi originali come testo normale; tieni premuto per salvare il file sorgente dei testi non elaborati in Download</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Mostra il pulsante Traduci</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Tocca per passare al candidato successivo; tieni premuto per selezionare una fonte di testi</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Tocca per attivare/disattivare la traduzione; pressione lunga per la sola traduzione. Usa le traduzioni del fornitore, Google Translate o un\'API compatibile con OpenAI.</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Mostra il pulsante Romanizza</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Tocca per passare al candidato precedente; tieni premuto per selezionare una fonte di testi</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Tocca per attivare/disattivare la romanizzazione; pressione lunga per la sola romanizzazione. Usa la romanizzazione del fornitore, Google Translate o un\'API compatibile con OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Mostra il pulsante Aggiorna</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Tocca per passare alla fonte di testi successiva; tieni premuto per selezionare una fonte di testi</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tocca per passare al testo candidato successivo; tieni premuto per cercare i testi per titolo del brano e artista</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Cerca testi</string>
+  <string name="morphe_music_lyrics_search_title_hint">Titolo del brano</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artista</string>
+  <string name="morphe_music_lyrics_search_empty">Inserisci il titolo di un brano e un artista</string>
+  <string name="morphe_music_lyrics_search_no_providers">Nessuno dei provider abilitati può cercare altri brani</string>
   <string name="morphe_music_lyrics_saved">Salvato</string>
   <string name="morphe_music_lyrics_word_sync_title">Lingua dei testi</string>
   <string name="morphe_music_lyrics_word_sync_summary">Mostra i testi</string>
@@ -432,7 +446,7 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_display_artist_first_summary">Alterna l\'ordine di visualizzazione di Artista e Titolo nel Miniplayer e in MediaSession. ON \"Artista - Titolo\" e OFF \"Titolo - Artista\" Non influisce sulla ricerca dei testi</string>
   <string name="morphe_settings_music_lyrics_metadata_title">Filtri</string>
   <string name="morphe_music_lyrics_custom_regex_title">Regex filtro testi</string>
-  <string name="morphe_music_lyrics_custom_regex_summary">Espressione regolare applicata a titoli, artisti e album prima della ricerca dei testi. Lascia vuoto per disattivare. L\'espressione predefinita rimuove elementi superflui comuni come \"Official Video\", \"Remaster\" e \"- Topic\"</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">Espressione regolare applicata a titoli, artisti e album prima di cercare i testi e quando si valuta se due titoli corrispondono. Lascia vuoto per disabilitare entrambe. L\'impostazione predefinita rimuove i soliti elementi superflui come \"Official Video\", \"Remaster\", \"【插曲】\" e \"- Topic\".</string>
   <string name="morphe_music_lyrics_text_filter_title">Regex del filtro testi</string>
   <string name="morphe_music_lyrics_text_filter_summary">L\'espressione regolare viene applicata solo al testo originale dei testi (non alle traduzioni o alle romanizzazioni). Lascia vuoto per disattivare</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Indicatori di riga delle informazioni</string>
@@ -455,10 +469,12 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_romanize_hide">Romanizzato</string>
   <string name="morphe_music_lyrics_romanizing">Romanizzazione…</string>
   <string name="morphe_music_lyrics_romanize_failed">Nessun testo trovato</string>
+  <string name="morphe_music_lyrics_translate_only">Solo traduzione</string>
+  <string name="morphe_music_lyrics_romanize_only">Solo romanizzato</string>
   <string name="morphe_music_lyrics_copied">Copiato negli appunti</string>
   <string name="morphe_music_lyrics_refreshing">Aggiornamento in corso</string>
   <string name="morphe_music_lyrics_refreshed">Aggiornato</string>
-  <string name="morphe_music_lyrics_about_summary">"Testi non disponibili"</string>
+  <string name="morphe_music_lyrics_about_summary">"I testi vengono abbinati in base al titolo e all'artista; metadati insoliti potrebbero non trovare nulla o la versione sbagliata. Usa Aggiorna per cambiare versione. I provider contrassegnati con * richiedono un token. Non tutti i provider abilitati vengono sempre interrogati nell'ordine che hai impostato, ma rispondono in base alla loro velocità."</string>
   <string name="morphe_music_lyrics_hide_info_title">Nascondi la riga dei crediti</string>
   <string name="morphe_music_lyrics_hide_info_summary">Caricamento testi...</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Scambia traduzione e romanizzazione</string>
@@ -470,6 +486,7 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL dell\'endpoint API (es. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Chiave API (lasciare vuota per accesso anonimo)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nome del modello (es. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Modello del prompt (variabili: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Impostazioni di traduzione AI salvate</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Impossibile connettersi all\'endpoint AI. Controlla le tue impostazioni.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Impostazioni di traduzione AI ripristinate</string>

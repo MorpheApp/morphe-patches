@@ -23,6 +23,7 @@ import app.morphe.extension.youtube.patches.VideoInformation.*;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import j$.util.Optional;
+import kotlin.Unit;
 
 @SuppressWarnings({"rawtypes", "unused"})
 public class RememberVideoQualityPatch {
@@ -31,6 +32,17 @@ public class RememberVideoQualityPatch {
     private static final IntegerSetting videoQualityMobile = Settings.VIDEO_QUALITY_DEFAULT_MOBILE;
     private static final IntegerSetting shortsQualityWifi = Settings.SHORTS_QUALITY_DEFAULT_WIFI;
     private static final IntegerSetting shortsQualityMobile = Settings.SHORTS_QUALITY_DEFAULT_MOBILE;
+
+    static {
+        ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
+            if (!isOpen) {
+                // A regular video that stayed loaded while a Short played is not started again,
+                // so it would otherwise be given the quality of the Short.
+                VideoInformation.setDesiredVideoResolution(getDefaultQualityResolution());
+            }
+            return Unit.INSTANCE;
+        });
+    }
 
     public static boolean shouldRememberVideoQuality() {
         BooleanSetting preference = ShortsPlayerState.isOpen()

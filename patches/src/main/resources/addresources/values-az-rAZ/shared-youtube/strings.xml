@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">Başlanğıc animasiyası</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">Qapalıdı</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Rəng</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">Saya</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-a daxil olmaq olmur: %s</string>
   <string name="morphe_oauth2_toast_reset">Android VR-dan Çıxıldı</string>
   <string name="morphe_oauth2_toast_invalid">Token-dəki etibarsız VR girişi, VR-a təkrar daxil olmağa cəhd et</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Bildiriş media nəzarətçiləri</string>
+  <string name="morphe_notification_media_screen_summary">Kilid ekranınızda və bildiriş lövhənizdə görünən oynatma nəzarətçilərini fərdiləşdirin</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Əvvəlki &amp; Növbəti düymələrini gizlət</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">Media bildirişlərində, kilid ekranında və qulaqlıq idarəetmələrində Əvvəlki və Növbəti düyməsini gizlədir</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Çevirmə cizgisin qapat</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">Kilid ekranında və bildiriş panelində çevirmə cizgisinin sürüklənməsinə mane olur</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolunu qeyri-aktiv et</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

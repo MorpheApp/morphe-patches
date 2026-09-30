@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/google/material-design-icons/blob/bd8cb85bd4bad964fe6918f79665bb40c3a8efef/symbols/android/restart_alt/materialsymbolssharp/restart_alt_24px.xml
+    Changes made: Removed the theme tint, added the tap animation.
+
+    Copyright 2022 Google
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="960"
+            android:viewportHeight="960">
+            <group
+                android:name="icon_group"
+                android:pivotX="480"
+                android:pivotY="480">
+                <path
+                    android:fillColor="@android:color/white"
+                    android:pathData="M440,838Q319,823 239.5,732.5Q160,642 160,520Q160,454 186,393.5Q212,333 260,288L317,345Q279,379 259.5,424Q240,469 240,520Q240,608 296,675.5Q352,743 440,758L440,838ZM520,838L520,758Q607,742 663.5,675Q720,608 720,520Q720,420 650,350Q580,280 480,280L477,280L521,324L465,380L325,240L465,100L521,156L477,200L480,200Q614,200 707,293Q800,386 800,520Q800,641 720.5,731.5Q641,822 520,838Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="rotation"
+                    android:duration="450"
+                    android:valueFrom="0"
+                    android:valueTo="360"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

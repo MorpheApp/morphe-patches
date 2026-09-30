@@ -10,21 +10,18 @@
 
 package app.morphe.patches.youtube.layout.shortsplayer
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.interaction.reload.reloadVideoButtonPatch
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
-import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
+import app.morphe.patches.youtube.shared.hookVideoIntent
+import app.morphe.patches.youtube.shared.openVideoIntentPatch
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenShortsInRegularPlayerPatch;"
@@ -37,6 +34,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        openVideoIntentPatch,
         openVideosFullscreenHookPatch,
         reloadVideoButtonPatch,
         navigationBarHookPatch,
@@ -50,35 +48,6 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
             ListPreference("morphe_shorts_player_type")
         )
 
-        // Activity is used as the context to launch an Intent.
-        YouTubeActivityOnCreateFingerprint.method.addInstruction(
-            0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
-                    "setMainActivity(Landroid/app/Activity;)V",
-        )
-
-        val playbackStartVideoIdMethodName = PlaybackStartDescriptorToStringFingerprint
-            .instructionMatches[1].getMethodCalled().name
-
-        // Same method is modified by openChannelOfLiveAvatarPatch,
-        // and by coincidence that patch runs after this patch which is critical
-        // because that patch behavior is prioritized over this patch.
-        (if (is_21_20_or_greater) ShortsPlaybackIntentFingerprint
-        else ShortsPlaybackIntentFingerprintLegacy).method.addInstructionsWithLabels(
-            0,
-            """
-                move-object/from16 v0, p1
-                
-                invoke-virtual { v0 }, ${PlaybackStartDescriptorToStringFingerprint.classDef}->$playbackStartVideoIdMethodName()Ljava/lang/String;
-                move-result-object v1
-                invoke-static { v1 }, $EXTENSION_CLASS->openShort(Ljava/lang/String;)Z
-                move-result v1
-                if-eqz v1, :disabled
-                return-void
-                
-                :disabled
-                nop
-            """
-        )
+        hookVideoIntent(EXTENSION_CLASS, detectVideo = false, detectShorts = true)
     }
 }

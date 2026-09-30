@@ -12,28 +12,27 @@ package app.morphe.extension.youtube.patches;
 
 import android.icu.text.NumberFormat;
 
-import java.util.Locale;
-
 import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.patches.ExoPlayerInterface;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.Event;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
-import app.morphe.extension.youtube.patches.playback.speed.RememberPlaybackSpeedPatch;
-import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Hooking class for the current playing video.
@@ -54,14 +53,6 @@ public final class VideoInformation {
     public interface PlaybackSpeedMenuInterface {
         // Method is added during patching.
         void patch_setSpeed(float speed);
-    }
-
-    /**
-     * Interface to use obfuscated methods.
-     */
-    public interface ExoPlayerImpl {
-        // Method is added during patching.
-        void patch_setPlaybackParameters(float speed, float pitch);
     }
 
     /**
@@ -120,7 +111,7 @@ public final class VideoInformation {
 
     private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
-    private static WeakReference<ExoPlayerImpl> exoPlayerImplRef = new WeakReference<>(null);
+    private static WeakReference<ExoPlayerInterface> exoPlayerImplRef = new WeakReference<>(null);
     private static String channelId = "";
     private static String channelName = "";
     private static String videoTitle = "";
@@ -234,7 +225,7 @@ public final class VideoInformation {
      *
      * @param playerController player controller object.
      */
-    public static void initialize(@NonNull PlaybackController playerController) {
+    public static void initialize(PlaybackController playerController) {
         try {
             Logger.printDebug(() -> "newVideoStarted");
 
@@ -286,14 +277,35 @@ public final class VideoInformation {
     /**
      * Injection point.
      *
-     * @param exoPlayerImpl instance that can set the playback parameters directly.
+     * @param exoPlayerInterface instance that can set the playback parameters directly.
      */
-    public static void initializeExoPlayerImpl(@NonNull ExoPlayerImpl exoPlayerImpl) {
+    public static void initializeExoPlayer(ExoPlayerInterface exoPlayerInterface) {
         try {
-            exoPlayerImplRef = new WeakReference<>(Objects.requireNonNull(exoPlayerImpl));
+            exoPlayerImplRef = new WeakReference<>(Objects.requireNonNull(exoPlayerInterface));
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to initialize ExoPlayer", ex);
+            Logger.printException(() -> "initializeExoPlayer failure", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param speed Playback speed the app is setting.
+     * @return Playback speed to use.
+     */
+    public static float overridePlaybackSpeed(float speed) {
+        return speed;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @param speed Playback speed the app is setting.
+     * @param pitch Playback pitch the app is setting.
+     * @return Playback pitch to use.
+     */
+    public static float overridePlaybackPitch(float speed, float pitch) {
+        return pitch;
     }
 
     /**
@@ -315,7 +327,6 @@ public final class VideoInformation {
         Logger.printDebug(() -> "Extracted Channel Name: " + channelName);
     }
 
-    @NonNull
     public static String getChannelName() {
         return channelName;
     }
@@ -328,7 +339,6 @@ public final class VideoInformation {
         Logger.printDebug(() -> "Extracted Video Title: " + videoTitle);
     }
 
-    @NonNull
     public static String getVideoTitle() {
         return videoTitle;
     }
@@ -338,7 +348,7 @@ public final class VideoInformation {
      *
      * @param newlyLoadedVideoId ID of the current video
      */
-    public static void setVideoId(@NonNull String newlyLoadedVideoId) {
+    public static void setVideoId(String newlyLoadedVideoId) {
         if (!videoId.equals(newlyLoadedVideoId)) {
             Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
             videoId = newlyLoadedVideoId;
@@ -348,14 +358,14 @@ public final class VideoInformation {
     /**
      * @return If the player parameters are for a Short.
      */
-    public static boolean playerParametersAreShort(@NonNull String parameters) {
+    public static boolean playerParametersAreShort(String parameters) {
         return parameters.startsWith(SHORTS_PLAYER_PARAMETERS);
     }
 
     /**
      * Injection point.
      */
-    public static String newPlayerResponseSignature(@NonNull String signature, String videoId, boolean isShortAndOpeningOrPlaying) {
+    public static String newPlayerResponseSignature(String signature, String videoId, boolean isShortAndOpeningOrPlaying) {
         final boolean isShort = playerParametersAreShort(signature);
         playerResponseVideoIdIsShort = isShort;
         if (!isShort || isShortAndOpeningOrPlaying) {
@@ -390,7 +400,7 @@ public final class VideoInformation {
      *
      * @param videoId The ID of the last video loaded.
      */
-    public static void setPlayerResponseVideoId(@NonNull String videoId, boolean isShortAndOpeningOrPlaying) {
+    public static void setPlayerResponseVideoId(String videoId, boolean isShortAndOpeningOrPlaying) {
         if (!playerResponseVideoId.equals(videoId)) {
             Logger.printDebug(() -> "New player response video ID: " + videoId);
             playerResponseVideoId = videoId;
@@ -675,7 +685,6 @@ public final class VideoInformation {
     /**
      * @return The channel ID of the current video.
      */
-    @NonNull
     public static String getChannelId() {
         return channelId;
     }
@@ -686,7 +695,6 @@ public final class VideoInformation {
      * @return The ID of the video, or an empty string if no videos have been opened yet.
      *         With 21.15+ this returns an empty string if no video is currently opened.
      */
-    @NonNull
     public static String getVideoId() {
         return videoId;
     }
@@ -697,7 +705,6 @@ public final class VideoInformation {
      *
      * @return The playlist id of the video.
      */
-    @NonNull
     public static String getPlaylistId() {
         return playerResponsePlaylistId;
     }
@@ -713,7 +720,6 @@ public final class VideoInformation {
      *
      * @return The ID of the last video loaded, or an empty string if no videos have been loaded yet.
      */
-    @NonNull
     public static String getPlayerResponseVideoId() {
         return playerResponseVideoId;
     }
@@ -862,9 +868,9 @@ public final class VideoInformation {
             return;
         }
 
-        ExoPlayerImpl exoPlayerImpl = exoPlayerImplRef.get();
-        if (exoPlayerImpl != null) {
-            exoPlayerImpl.patch_setPlaybackParameters(speed, pitch);
+        ExoPlayerInterface exoPlayerInterface = exoPlayerImplRef.get();
+        if (exoPlayerInterface != null) {
+            exoPlayerInterface.patch_setPlaybackParameters(speed, pitch);
             Logger.printDebug(() -> "Video playbackParameters changed, speed: " + speed + " pitch: " + pitch);
         } else {
             Logger.LogMessage logMessage = () -> "Debug: Cannot change speed parameters, menu interface is null";
@@ -886,27 +892,25 @@ public final class VideoInformation {
     /**
      * Injection point.
      */
-    public static void onNativePlaybackSpeedPanelLoaded(Object context, CharSequence original) {
-        if (context instanceof ContextInterface contextInterface) {
-            try {
-                String identifier = contextInterface.patch_getIdentifier();
-                if (identifier == null || !identifier.startsWith("playback_rate_selector_menu_sheet.e")) {
-                    return;
-                }
-                String path = contextInterface.patch_getPathBuilder().toString();
-                if (!path.endsWith("|ContainerType|ContainerType|ContainerType|TextType|")) {
-                    return;
-                }
-                String text = Objects.toString(original);
-                if (text.length() == 5) {
-                    Matcher matcher = PLAYBACK_SPEED_PATTERN.matcher(text);
-                    if (matcher.matches()) {
-                        setPlaybackSpeedFormattedString(text, Float.parseFloat(text.substring(0, 4)));
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.printException(() -> "onNativePlaybackSpeedPanelLoaded failed", ex);
+    public static void onNativePlaybackSpeedPanelLoaded(ContextInterface context, CharSequence original) {
+        try {
+            String identifier = context.patch_getIdentifier();
+            if (identifier == null || !identifier.startsWith("playback_rate_selector_menu_sheet.e")) {
+                return;
             }
+            StringBuilder path = context.patch_getPathBuilder();
+            if (!Utils.endsWith(path, "|ContainerType|ContainerType|ContainerType|TextType|")) {
+                return;
+            }
+            if (original.length() == 5) {
+                Matcher matcher = PLAYBACK_SPEED_PATTERN.matcher(original);
+                if (matcher.matches()) {
+                    String text = original.toString();
+                    setPlaybackSpeedFormattedString(text, Float.parseFloat(text.substring(0, 4)));
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onNativePlaybackSpeedPanelLoaded failed", ex);
         }
     }
 
@@ -1101,7 +1105,7 @@ public final class VideoInformation {
         return originalQualityIndex;
     }
 
-    public static boolean isPremiumVideoQuality(@NonNull VideoQualityInterface quality) {
+    public static boolean isPremiumVideoQuality(VideoQualityInterface quality) {
         String qualityName = quality.patch_getQualityName();
         return qualityName != null && qualityName.contains(VIDEO_QUALITY_PREMIUM_NAME);
     }

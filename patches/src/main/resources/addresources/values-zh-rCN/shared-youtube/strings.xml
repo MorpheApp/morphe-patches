@@ -17,6 +17,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">启动动画</string>
+  <string name="morphe_splash_screen_animation_style_entry_1">已禁用</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">颜色</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">单色</string>
   <!-- misc.initialization.initializationPatch -->
   <string name="morphe_restart_first_run">重启以完成设置</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
@@ -131,6 +136,13 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">无法登录 VR：%s</string>
   <string name="morphe_oauth2_toast_reset">已从 Android VR 登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">通知媒体控件</string>
+  <string name="morphe_notification_media_screen_summary">自定义锁屏和通知面板上显示的播放控件</string>
+  <string name="morphe_hide_notification_media_prev_next_title">隐藏上一个和下一个按钮</string>
+  <string name="morphe_hide_notification_media_prev_next_summary">在媒体通知、锁屏和耳机控制中隐藏上一个和下一个按钮</string>
+  <string name="morphe_disable_notification_media_seekbar_title">禁用进度条</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">防止在锁屏和通知面板上拖动进度条</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->

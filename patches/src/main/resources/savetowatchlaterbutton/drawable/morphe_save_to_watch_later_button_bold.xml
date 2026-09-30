@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+    Changes made: Added the tap animation.
+
     Copyright 2022 Google
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +16,46 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="24.0dip"
-    android:width="24.0dip"
-    android:viewportWidth="24.0"
-    android:viewportHeight="24.0">
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
 
-  <path
-      android:fillColor="@android:color/white"
-      android:pathData="M19,2H5a2,2 0,0 0,-2 2v16.887c0,1.266 1.382,2.048 2.469,1.399L12,18.366l6.531,3.919c1.087,0.652 2.469,-0.131 2.469,-1.397V4a2,2 0,0 0,-2 -2ZM5,20.233V4h14v16.233l-6.485,-3.89 -0.515,-0.309 -0.515,0.309L5,20.233Z" />
-</vector>
+    <aapt:attr name="android:drawable">
+        <vector
+            android:height="24.0dip"
+            android:width="24.0dip"
+            android:viewportWidth="24.0"
+            android:viewportHeight="24.0">
+            <group
+                android:name="icon_group"
+                android:pivotX="12"
+                android:pivotY="12">
+              <path
+                  android:fillColor="@android:color/white"
+                  android:pathData="M19,2H5a2,2 0,0 0,-2 2v16.887c0,1.266 1.382,2.048 2.469,1.399L12,18.366l6.531,3.919c1.087,0.652 2.469,-0.131 2.469,-1.397V4a2,2 0,0 0,-2 -2ZM5,20.233V4h14v16.233l-6.485,-3.89 -0.515,-0.309 -0.515,0.309L5,20.233Z" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="120"
+                    android:valueFrom="1"
+                    android:valueTo="1.14"
+                    android:repeatCount="1"
+                    android:repeatMode="reverse"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="120"
+                    android:valueFrom="1"
+                    android:valueTo="1.14"
+                    android:repeatCount="1"
+                    android:repeatMode="reverse"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

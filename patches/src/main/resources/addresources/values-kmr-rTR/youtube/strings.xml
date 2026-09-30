@@ -946,6 +946,7 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_playback_in_feeds_entry_always_on">Her tim hemî de</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Tenê ser Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Dabe</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mîni-lîstikê vekirin qedexe kirin</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Mînîlîstê \'Devamkirina dîkirinê\' asteng dike, fektorek premîum a YouTube ku di destpêka sepanê de xuya dibe</string>
@@ -976,6 +977,7 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_miniplayer_opacity_title">Astê dorpelê</string>
   <string name="morphe_miniplayer_opacity_summary">Rengê têkildar ê Sebarê</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Paşxaneya temaya ronî</string>
   <string name="morphe_theme_color_light_entry_2">Spî</string>
@@ -991,10 +993,6 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_theme_color_change_foreground_title">Rengê pêşberê biguherîne</string>
   <string name="morphe_gradient_loading_screen_title">Çalak bike ekranê barkerdina gradyantê</string>
   <string name="morphe_gradient_loading_screen_summary">Destbîne ranga duyem a barkê pêşkeftina vîdeoyê</string>
-  <string name="morphe_splash_screen_animation_style_title">Şeklê ekranê dabînîkirî</string>
-  <string name="morphe_splash_screen_animation_style_entry_1">Qefal kirin</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Reng</string>
-  <string name="morphe_splash_screen_animation_style_entry_3">Bersiva konferansê dema ku ji qewirên qedexe kirî dema ku şefşew bi ewqasî wî şefî biherîn</string>
   <string name="morphe_seekbar_custom_color_title">Sêwîna rengên xwekêşandî çalak bike</string>
   <string name="morphe_seekbar_custom_color_primary_title">Bo tabê Home</string>
   <string name="morphe_seekbar_custom_color_primary_summary">Bo tableya Abonan</string>
@@ -1060,13 +1058,6 @@ Bike li vir da vekirina DeArrow.ajay.app"</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">Jêbire jêbirina paşê</string>
   <string name="morphe_disable_haptic_feedback_tap_and_hold_title">Haptîka xistina li ser dane bin</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Jêbire gava jêbirina zoomê</string>
-  <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Kontrolên medyaya notifîkasyonê</string>
-  <string name="morphe_notification_media_screen_summary">Kontrolên lêkirinê yên ku li ser ekrana qefilê û panela agahdarkirinê de xuya dibin, xweser bike</string>
-  <string name="morphe_hide_notification_media_prev_next_title">Bişkokên Pêşî &amp; Paşê veşêre.</string>
-  <string name="morphe_hide_notification_media_prev_next_summary">Bişêwirîna Guherîna Pêşîn û Paşîn li ser agahdarkirina medyayê, ekrana qefilê, û kontrolên gulî</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Barê barkirinê neçalak bike</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">Nişana rêjê li ser ekrana qefilê û panela agahdarkirinê rakîr bike</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dibe ku nûvekirina detalên login-a hesabê xwe kir, MicroG-yê saz bike û ji nûve saz bike.</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
@@ -1075,6 +1066,8 @@ Bike li vir da vekirina DeArrow.ajay.app"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Lînkên vekin li navigerê</string>
   <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_entry_default">Bixweber</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Otomatîk</string>
@@ -1167,4 +1160,7 @@ Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Sexandinê di \'Stats for nerds\' de nîşan bide</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Çêkirina dîskê ya pelê vîdyoya kevnê</string>
+  <!-- layout.player.icons.playerIconStylePatch -->
+  <string name="morphe_player_icon_style_entry_auto">Otomatîk</string>
+  <string name="morphe_player_icon_style_entry_default">Bixweber</string>
 </resources>

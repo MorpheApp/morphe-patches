@@ -47,7 +47,7 @@ public final class VideoActionButtonsFilter extends Filter {
                 "yt_fill_experimental_spark",
                 "yt_fill_spark"
         ),
-        CHANNEL_PROFILE(false),
+        CHANNEL_PROFILE(Settings.HIDE_CHANNEL_PROFILE_BUTTON.get()),
         CLIP(Settings.HIDE_CLIP_BUTTON.get()),
         COMMENTS(
                 Settings.HIDE_COMMENTS_BUTTON.get(),
@@ -118,7 +118,7 @@ public final class VideoActionButtonsFilter extends Filter {
     }
 
     /**
-     * Whether to perform {@link #onLazilyConvertedElementLoaded(String, List)}.
+     * Whether to perform {@link #onLazilyConvertedElementLoaded(CharSequence, List)}.
      */
     private static final boolean HIDE_ACTION_BUTTON;
 
@@ -150,6 +150,7 @@ public final class VideoActionButtonsFilter extends Filter {
     private final StringFilterGroup actionBarGroup;
     private final StringFilterGroup likeSubscribeGlow;
     private final StringFilterGroup moreButton;
+    private final StringFilterGroup subscribeButton;
     private final StringFilterGroupList accessibilityGroupList = new StringFilterGroupList();
     private final ByteArrayFilterGroupList bufferGroupList = new ByteArrayFilterGroupList();
 
@@ -170,7 +171,12 @@ public final class VideoActionButtonsFilter extends Filter {
                 MORE_BUTTON_PATH
         );
 
-        addPathCallbacks(likeSubscribeGlow, moreButton);
+        subscribeButton = new StringFilterGroup(
+                Settings.HIDE_CHANNEL_PROFILE_SUBSCRIBE_BUTTON,
+                "|compact_channel_bar_animated_buttons.e"
+        );
+
+        addPathCallbacks(likeSubscribeGlow, moreButton, subscribeButton);
 
         //
         // All other action buttons.
@@ -207,7 +213,7 @@ public final class VideoActionButtonsFilter extends Filter {
     public boolean isFiltered(ContextInterface contextInterface,
                               String identifier,
                               String accessibility,
-                              String path,
+                              CharSequence path,
                               byte[] buffer,
                               BufferAsciiStrings asciiStrings,
                               StringFilterGroup matchedGroup,
@@ -217,10 +223,13 @@ public final class VideoActionButtonsFilter extends Filter {
             return Utils.startsWithAny(path, COMPACT_CHANNEL_BAR_PREFIX, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
         } else if (matchedGroup == moreButton) {
             return true;
+        } else if (matchedGroup == subscribeButton) {
+            // Only the Subscribe and Join buttons next to the channel avatar in the action bar.
+            return Utils.startsWithAny(path, COMPACTIFY_VIDEO_ACTION_BAR_PREFIX, VIDEO_ACTION_BAR_PREFIX);
         } else if (matchedGroup == actionBarGroup) {
             if (Settings.HIDE_ACTION_BAR.get() || accessibilityGroupList.check(accessibility).isFiltered()) {
                 return true;
-            } else if (accessibility != null && accessibility.startsWith(ELEMENT_BUTTON_ID) && !path.contains(MORE_BUTTON_PATH)) {
+            } else if (accessibility != null && accessibility.startsWith(ELEMENT_BUTTON_ID) && !Utils.contains(path, MORE_BUTTON_PATH)) {
                 return bufferGroupList.check(buffer).isFiltered();
             }
             return false;
@@ -233,7 +242,7 @@ public final class VideoActionButtonsFilter extends Filter {
      * Injection point.
      * Called after {@link #onSingleColumnWatchNextResultsLoaded(MessageLite)}.
      */
-    public static void onLazilyConvertedElementLoaded(String identifier, List<Object> treeNodeResultList) {
+    public static void onLazilyConvertedElementLoaded(CharSequence identifier, List<Object> treeNodeResultList) {
         // Check if hide video action buttons is enabled.
         if (!HIDE_ACTION_BUTTON) {
             return;

@@ -19,6 +19,7 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 
@@ -47,6 +48,8 @@ public final class MiniPlayerLyrics {
     @Nullable
     private static String cachedSubtitle;
 
+    private static boolean mirrored;
+
     /** Drives the periodic check that mirrors the current line into the mini player. */
     private static final LyricsTicker ticker = new LyricsTicker(MiniPlayerLyrics::tick);
 
@@ -61,26 +64,32 @@ public final class MiniPlayerLyrics {
     }
 
     private static void disableFeature() {
+        restoreIfMirrored();
         ticker.stop();
         LyricsManager.getInstance().removeListener(lyricsListener);
     }
 
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
-        if (original == null) {
-            return;
-        }
-        String title = original.getString(MediaMetadata.METADATA_KEY_TITLE);
-        String artist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
-        if (title == null || title.trim().isEmpty() || artist == null || artist.trim().isEmpty()) {
-            return;
-        }
-        String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);
-        displayTitle = parsed[1];
-        displayArtist = parsed[0];
-        cachedSubtitle = null; // invalidate on track change
+        try {
+            if (original == null) {
+                return;
+            }
+            String title = original.getString(MediaMetadata.METADATA_KEY_TITLE);
+            String artist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
+            if (title == null || title.trim().isEmpty()
+                    || artist == null || artist.trim().isEmpty()) {
+                return;
+            }
+            String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);
+            displayTitle = parsed[1];
+            displayArtist = parsed[0];
+            cachedSubtitle = null; // invalidate on track change
 
-        android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
-        LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
+            android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
+            LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
+        }
     }
 
     /**
@@ -92,6 +101,13 @@ public final class MiniPlayerLyrics {
             return;
         }
 
+        try {
+            captureMiniPlayer(view);
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static void captureMiniPlayer(View view) {
         if (titleId == 0) {
             titleId = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player_title");
         }
@@ -126,6 +142,14 @@ public final class MiniPlayerLyrics {
     }
 
     private static void tick() {
+        try {
+            update();
+        } catch (Throwable ignored) {
+            ticker.stop();
+        }
+    }
+
+    private static void update() {
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()) {
             disableFeature();
             return;
@@ -161,15 +185,30 @@ public final class MiniPlayerLyrics {
             if (!TextUtils.equals(cachedSubtitle, subtitle.getText())) {
                 subtitle.setText(cachedSubtitle);
             }
+            mirrored = true;
         } else {
-            if (!TextUtils.equals(track.title(), title.getText())) {
-                title.setText(track.title());
-            }
-            if (!TextUtils.equals(track.artist(), subtitle.getText())) {
-                subtitle.setText(track.artist());
-            }
+            restoreIfMirrored();
         }
 
         ticker.schedule();
+    }
+
+    private static void restoreIfMirrored() {
+        if (!mirrored) {
+            return;
+        }
+        mirrored = false;
+        TextView title = titleRef.get();
+        TextView subtitle = subtitleRef.get();
+        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+        if (title == null || subtitle == null || track == null) {
+            return;
+        }
+        if (!TextUtils.equals(track.title(), title.getText())) {
+            title.setText(track.title());
+        }
+        if (!TextUtils.equals(track.artist(), subtitle.getText())) {
+            subtitle.setText(track.artist());
+        }
     }
 }

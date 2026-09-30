@@ -21,17 +21,13 @@
             android:layout_height="match_parent"
             android:paddingTop="6.0dp"
             android:paddingBottom="0dp"
-            android:scaleType="center"
-            android:src="@drawable/morphe_video_quality_dialog_button_rectangle" />
+            android:scaleType="center" />
 
         <TextView
             android:id="@+id/morphe_video_quality_dialog_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="sans-serif-condensed"
-            android:paddingTop="5.5dp"
-            android:textColor="@android:color/white"
-            android:textSize="10dp" />
+            android:paddingTop="5.5dp" />
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>
