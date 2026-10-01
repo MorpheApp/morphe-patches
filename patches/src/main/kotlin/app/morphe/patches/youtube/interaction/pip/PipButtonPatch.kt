@@ -12,6 +12,8 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.addPlayerFlyoutMenuPreferences
+import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.playerFlyoutPreferences
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -38,7 +40,7 @@ private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/
 @Suppress("unused")
 val pipButtonPatch = bytecodePatch(
     name = "Picture-in-picture button",
-    description = "Adds an option to display a Picture-in-picture button in the video player.",
+    description = "Adds an option to display a picture-in-picture button in the video player."
 ) {
     dependsOn(
         pipButtonResourcePatch,
@@ -46,6 +48,7 @@ val pipButtonPatch = bytecodePatch(
         settingsPatch,
         legacyPlayerControlsPatch,
         playerOverlayButtonsSettingsPatch,
+        playerFlyoutPreferences,
         bytecodePatch {
             finalize {
                 addTopControl(
@@ -61,7 +64,9 @@ val pipButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_pip_button_overlay"),
+            SwitchPreference("morphe_pip_button_overlay")
+        )
+        addPlayerFlyoutMenuPreferences(
             SwitchPreference("morphe_pip_button_flyout")
         )
 
