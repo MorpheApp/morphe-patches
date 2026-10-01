@@ -17,9 +17,17 @@ import android.view.View;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 
 @SuppressWarnings("unused")
 public class PipButtonPatch {
+
+    public static final class PipButtonPatchAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return isPipSupported();
+        }
+    }
 
     private static final Rational DEFAULT_ASPECT_RATIO = new Rational(16, 9);
 

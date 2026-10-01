@@ -33,8 +33,7 @@ private val pipButtonResourcePatch = resourcePatch {
     }
 }
 
-private const val EXTENSION_BUTTON =
-    "Lapp/morphe/extension/youtube/videoplayer/PipButton;"
+private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/PipButton;"
 
 @Suppress("unused")
 val pipButtonPatch = bytecodePatch(
@@ -55,7 +54,7 @@ val pipButtonPatch = bytecodePatch(
                     "@+id/morphe_pip_button",
                 )
             }
-        },
+        }
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
