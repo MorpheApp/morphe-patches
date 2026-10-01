@@ -17,7 +17,7 @@ import app.morphe.extension.youtube.settings.Settings;
 public class PipButton {
 
     static {
-        if (Settings.PIP_BUTTON.get() && PipButtonPatch.isPipSupported()) {
+        if (Settings.PIP_BUTTON_OVERLAY.get() && PipButtonPatch.isPipSupported()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
@@ -32,7 +32,7 @@ public class PipButton {
                     "morphe_pip_button",
                     null,
                     "morphe_pip_button",
-                    () -> (Settings.PIP_BUTTON.get() && PipButtonPatch.isPipSupported())
+                    () -> (Settings.PIP_BUTTON_OVERLAY.get() && PipButtonPatch.isPipSupported())
                             ? LegacyPlayerControlButton.ButtonVisibility.ENABLED
                             : LegacyPlayerControlButton.ButtonVisibility.DISABLED,
                     v -> PipButtonPatch.enterPictureInPicture(),

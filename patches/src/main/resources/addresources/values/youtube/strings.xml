@@ -543,8 +543,9 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_loop_video_range_invalid_time">Invalid time range</string>
 
     <!-- interaction.pip.pipButtonPatch -->
-    <string name="morphe_pip_button_title">Show Picture-in-picture button</string>
-    <string name="morphe_pip_button_name">Switch to Picture-in-picture</string>
+    <string name="morphe_pip_button_overlay_title">Show Picture-in-picture overlay button</string>
+    <string name="morphe_pip_button_flyout_title">Show Picture-in-picture flyout button</string>
+    <string name="morphe_pip_button_flyout_name">Switch to Picture-in-picture</string>
 
     <!-- interaction.playall.playAllButtonPatch -->
     <string name="morphe_play_all_button_title">Show Play all button</string>

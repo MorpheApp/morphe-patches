@@ -416,7 +416,7 @@ public final class FlyoutUtils {
             }
         }
 
-        if (Settings.PIP_BUTTON.get() &&
+        if (Settings.PIP_BUTTON_FLYOUT.get() &&
                 (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible() || isShortFlyout)) {
             nextButtonIndex = addFlyoutButton(
                     flyoutPanel,

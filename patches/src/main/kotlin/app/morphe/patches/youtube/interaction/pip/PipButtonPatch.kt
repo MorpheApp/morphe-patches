@@ -61,7 +61,8 @@ val pipButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_pip_button"),
+            SwitchPreference("morphe_pip_button_overlay"),
+            SwitchPreference("morphe_pip_button_flyout")
         )
 
         initializeTopControl(EXTENSION_BUTTON)
