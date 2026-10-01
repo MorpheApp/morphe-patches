@@ -52,6 +52,7 @@ import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
+import app.morphe.extension.youtube.patches.PipButtonPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
@@ -126,18 +127,22 @@ public final class FlyoutUtils {
                             ? "yt_outline_clock_black_24"
                             : "yt_outline_experimental_clock_vd_theme_24"
             );
-    private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
     private static final Drawable aiSListSubmitDrawable =
             ResourceUtils.getDrawable(
                     LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
                             ? "yt_outline_flag_black_24"
                             : "yt_outline_experimental_flag_vd_theme_24"
             );
-    private static final String aiSListSubmitButtonName = str("morphe_aislist_submit_title");
-    private static final Drawable adWhitelistDrawable =
+    private static final Drawable adWhitelistButtonDrawable =
             getSettingsScreenDrawable("morphe_settings_screen_01_ads");
-    private static final Drawable playbackSpeedWhitelistDrawable =
+    private static final Drawable playbackSpeedWhitelistButtonDrawable =
             getSettingsScreenDrawable("morphe_settings_screen_12_video");
+    private static final Drawable pipButtonDrawable =
+            getSettingsScreenDrawable("morphe_settings_screen_12_video");
+
+    private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
+    private static final String aiSListSubmitButtonName = str("morphe_aislist_submit_title");
+    private static final String pipButtonName = str("morphe_pip_button_name");
 
     private static final List<WeakReference<TextView>> customItemTextRefs = new ArrayList<>();
 
@@ -395,7 +400,7 @@ public final class FlyoutUtils {
                     nextButtonIndex = addWhitelistButton(
                             flyoutPanel,
                             WhitelistType.ADS,
-                            adWhitelistDrawable,
+                            adWhitelistButtonDrawable,
                             nextButtonIndex
                     );
                 }
@@ -404,11 +409,22 @@ public final class FlyoutUtils {
                     nextButtonIndex = addWhitelistButton(
                             flyoutPanel,
                             WhitelistType.PLAYBACK_SPEED,
-                            playbackSpeedWhitelistDrawable,
+                            playbackSpeedWhitelistButtonDrawable,
                             nextButtonIndex
                     );
                 }
             }
+        }
+
+        if (Settings.PIP_BUTTON.get() &&
+                (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible() || isShortFlyout)) {
+            nextButtonIndex = addFlyoutButton(
+                    flyoutPanel,
+                    pipButtonDrawable,
+                    pipButtonName,
+                    v -> PipButtonPatch.enterPictureInPicture(),
+                    nextButtonIndex
+            );
         }
 
         final String saveToWatchLaterButtonVideoId;
