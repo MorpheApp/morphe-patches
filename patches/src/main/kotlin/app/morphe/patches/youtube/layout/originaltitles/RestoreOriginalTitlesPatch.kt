@@ -33,7 +33,7 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val restoreOriginalTitlesPatch = bytecodePatch(
     name = "Restore original titles",
-    description = "Adds an option to show the original video titles and descriptions instead of the auto-translated ones.",
+    description = "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
 ) {
     dependsOn(
         sharedExtensionPatch,

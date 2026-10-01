@@ -174,6 +174,20 @@ final class OriginalDescription {
     }
 
     /**
+     * Replaces a text that is not part of the description element, such as the channel description.
+     * If the text is the content of an attributed string, the runs (links, styles) are moved too.
+     */
+    static void restore(ProtoNode content, String originalText) {
+        ProtoNode parent = content.getParent();
+        List<ProtoNode> text = parent == null ? null : parent.children;
+        if (text != null && ProtoNode.field(text, TEXT_CONTENT_FIELD) == content) {
+            restoreText(text, originalText);
+        } else {
+            content.setText(originalText);
+        }
+    }
+
+    /**
      * Replaces the content with the original text, and moves the runs to the same texts.
      *
      * @return If the text was replaced.

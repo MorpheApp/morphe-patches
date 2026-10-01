@@ -21,7 +21,6 @@ import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -189,13 +188,6 @@ public final class ProtoNode {
         return text != null
                 ? text
                 : new String(bytes, valueStart, valueEnd - valueStart, StandardCharsets.UTF_8);
-    }
-
-    /**
-     * @return A copy of the payload as parsed, or the value of fields that are not length delimited.
-     */
-    public byte[] getPayload() {
-        return Arrays.copyOfRange(bytes, valueStart, valueEnd);
     }
 
     public void setText(String text) {

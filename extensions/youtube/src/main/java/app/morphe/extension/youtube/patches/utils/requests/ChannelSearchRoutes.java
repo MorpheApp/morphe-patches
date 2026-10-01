@@ -27,7 +27,8 @@ import app.morphe.extension.shared.requests.Route;
 /**
  * Searching inside a channel is a browse request for the channel "Search" tab. The backend of
  * this app is not served that tab, so the request is sent unauthenticated as the mobile web
- * client, which is.
+ * client, which is. The channel description is fetched the same way, as unauthenticated
+ * requests are not auto-translated.
  */
 public final class ChannelSearchRoutes {
 
@@ -49,25 +50,38 @@ public final class ChannelSearchRoutes {
             "browse?prettyPrint=false"
     ).compile();
 
+    /**
+     * The channel description in the default language of the channel, regardless of the language
+     * of the request. The description of the channel metadata is instead in the language of
+     * the request, if the uploader added a translation of the description.
+     */
+    public static final Route.CompiledRoute GET_CHANNEL_DESCRIPTION = new Route(
+            Route.Method.POST,
+            "browse" +
+                    "?prettyPrint=false" +
+                    "&fields=microformat.microformatDataRenderer.channelProfileMicroformatDetails.profilePage.description"
+    ).compile();
+
     private ChannelSearchRoutes() {
+    }
+
+    public static byte[] createChannelBody(String channelId, Locale locale) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", createContext(locale));
+            body.put("browseId", channelId);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createChannelBody failed", ex);
+        }
+        return new byte[0];
     }
 
     public static byte[] createBody(String channelId, String query, Locale locale) {
         try {
-            String hl = orDefault(locale.getLanguage(), DEFAULT_LANGUAGE);
-            String gl = orDefault(locale.getCountry(), DEFAULT_COUNTRY);
-
-            JSONObject client = new JSONObject();
-            client.put("clientName", CLIENT_NAME);
-            client.put("clientVersion", CLIENT_VERSION);
-            client.put("hl", hl);
-            client.put("gl", gl);
-
-            JSONObject context = new JSONObject();
-            context.put("client", client);
-
             JSONObject body = new JSONObject();
-            body.put("context", context);
+            body.put("context", createContext(locale));
             body.put("browseId", channelId);
             body.put("params", createSearchTabParams(query));
             body.put("query", query);
@@ -81,20 +95,8 @@ public final class ChannelSearchRoutes {
 
     public static byte[] createContinuationBody(String continuationToken, Locale locale) {
         try {
-            String hl = orDefault(locale.getLanguage(), DEFAULT_LANGUAGE);
-            String gl = orDefault(locale.getCountry(), DEFAULT_COUNTRY);
-
-            JSONObject client = new JSONObject();
-            client.put("clientName", CLIENT_NAME);
-            client.put("clientVersion", CLIENT_VERSION);
-            client.put("hl", hl);
-            client.put("gl", gl);
-
-            JSONObject context = new JSONObject();
-            context.put("client", client);
-
             JSONObject body = new JSONObject();
-            body.put("context", context);
+            body.put("context", createContext(locale));
             body.put("continuation", continuationToken);
 
             return body.toString().getBytes(StandardCharsets.UTF_8);
@@ -102,6 +104,18 @@ public final class ChannelSearchRoutes {
             Logger.printException(() -> "createContinuationBody failed", ex);
         }
         return new byte[0];
+    }
+
+    private static JSONObject createContext(Locale locale) throws JSONException {
+        JSONObject client = new JSONObject();
+        client.put("clientName", CLIENT_NAME);
+        client.put("clientVersion", CLIENT_VERSION);
+        client.put("hl", orDefault(locale.getLanguage(), DEFAULT_LANGUAGE));
+        client.put("gl", orDefault(locale.getCountry(), DEFAULT_COUNTRY));
+
+        JSONObject context = new JSONObject();
+        context.put("client", client);
+        return context;
     }
 
     private static String orDefault(String value, String fallback) {
