@@ -341,12 +341,17 @@ private fun BytecodePatchContext.addPaginatedLibraryGridDecoder(
 private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
     val getTabsMethod = PhoneBrowseResponseTabsFingerprint.originalMethod
     val decodePaginatedLibraryGridMethod = LibraryPaginationDecoderFingerprint.originalMethod
-    val getLibraryPaginationResponseProtoMethod = classDefBy(
-        getTabsMethod.definingClass,
-    ).methods.singleOrNull { method ->
-        !AccessFlags.STATIC.isSet(method.accessFlags) && method.parameterTypes.isEmpty() &&
-        method.returnType == decodePaginatedLibraryGridMethod.parameterTypes.single().toString()
-    } ?: throw PatchException("Could not resolve the Library pagination response method")
+
+    val getLibraryPaginationResponseProtoMethod = Fingerprint(
+        definingClass = getTabsMethod.definingClass,
+        returnType = decodePaginatedLibraryGridMethod
+            .parameterTypes.single().toString(),
+        parameters = listOf(),
+        custom = { method, _ ->
+            !AccessFlags.STATIC.isSet(method.accessFlags)
+        }
+    ).method
+
     val paginatedLibraryGridDecoderMethod = addPaginatedLibraryGridDecoder(
         decodePaginatedLibraryGridMethod,
     )
@@ -735,23 +740,20 @@ private fun BytecodePatchContext.hookAndroidAutoPlaylistsRequest(
     androidAutoRequestHandlerType: String,
     androidAutoRequestType: String,
 ) {
-    val handleAndroidAutoRequestMethod = mutableClassDefBy(
-        androidAutoRequestHandlerType,
-    ).methods.single { method ->
-        method.returnType == "V" &&
-            method.parameterTypes.map(CharSequence::toString) == listOf(androidAutoRequestType)
-    }
-    val handledRegister = handleAndroidAutoRequestMethod.findFreeRegister(0)
-
-    handleAndroidAutoRequestMethod.addInstructionsWithLabels(
+    Fingerprint(
+        definingClass = androidAutoRequestHandlerType,
+        returnType = "V",
+        parameters = listOf(androidAutoRequestType)
+    ).matchSingle().method.addInstructionsWithLabels(
         0,
         """
             invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->handleAndroidAutoPlaylists($EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE)Z
-            move-result v$handledRegister
-            if-eqz v$handledRegister, :resume
+            move-result v0
+            if-eqz v0, :resume
             return-void
-        """,
-        ExternalLabel("resume", handleAndroidAutoRequestMethod.getInstruction<Instruction>(0)),
+            :resume
+            nop
+        """
     )
 }
 
