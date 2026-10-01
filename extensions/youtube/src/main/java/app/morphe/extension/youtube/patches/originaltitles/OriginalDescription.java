@@ -33,11 +33,12 @@ import app.morphe.extension.youtube.patches.utils.ProtoNode;
 final class OriginalDescription {
 
     /**
-     * Field numbers from the root message to the segments, as of YouTube 21.39.
+     * Field of the segments in the message that lists them. The path to that message
+     * depends on the app version, so the message is found by the segments it includes.
      */
-    private static final int[] SEGMENT_PATH = {1597, 1};
+    private static final int SEGMENT_FIELD = 1;
     private static final int SEGMENT_TEXT_FIELD = 1;
-    private static final int TEXT_CONTENT_FIELD = 1;
+    static final int TEXT_CONTENT_FIELD = 1;
     private static final int RANGE_START_FIELD = 1;
     private static final int RANGE_LENGTH_FIELD = 2;
 
@@ -66,10 +67,35 @@ final class OriginalDescription {
      * @return If the description was replaced.
      */
     static boolean restore(List<ProtoNode> root, String originalDescription) {
-        List<ProtoNode> segments = ProtoNode.findMessages(root, SEGMENT_PATH);
+        // The segments are listed by the message whose segments include the most text.
+        List<ProtoNode> segments = new ArrayList<>();
+        findSegments(root, segments, new int[]{0});
+        if (segments.isEmpty()) {
+            Logger.printDebug(() -> "Description segments not found");
+            return false;
+        }
         List<String> originalTexts = splitAtAttachments(segments, originalDescription);
         if (originalTexts == null) {
-            return false;
+            // The shown description is not a translation of the original description,
+            // such as a description localized by the uploader with other attachments.
+            // The original description replaces the first text, and the other segments are removed.
+            ProtoNode firstText = null;
+            for (ProtoNode segment : segments) {
+                ProtoNode text = ProtoNode.field(segment.children, SEGMENT_TEXT_FIELD);
+                if (firstText == null && text != null && text.children != null) {
+                    firstText = text;
+                }
+            }
+            if (firstText == null || !restoreText(firstText.children, originalDescription)) {
+                return false;
+            }
+            for (ProtoNode segment : segments) {
+                if (firstText.getParent() != segment) {
+                    segment.remove();
+                }
+            }
+            Logger.printDebug(() -> "Restored description that does not match the original attachments");
+            return true;
         }
 
         boolean modified = false;
@@ -89,6 +115,64 @@ final class OriginalDescription {
             Logger.printDebug(() -> "Restored description");
         }
         return modified;
+    }
+
+    /**
+     * Finds the segments of the description, the fields of the message whose segments include the most text.
+     */
+    private static void findSegments(List<ProtoNode> message, List<ProtoNode> segments, int[] segmentsTextLength) {
+        List<ProtoNode> candidates = new ArrayList<>();
+        int textLength = 0;
+        for (ProtoNode field : message) {
+            List<ProtoNode> children = field.children;
+            if (children == null) {
+                continue;
+            }
+            if (field.getFieldNumber() == SEGMENT_FIELD) {
+                candidates.add(field);
+                textLength += segmentTextLength(children);
+            }
+            findSegments(children, segments, segmentsTextLength);
+        }
+        if (textLength > segmentsTextLength[0]) {
+            segments.clear();
+            segments.addAll(candidates);
+            segmentsTextLength[0] = textLength;
+        }
+    }
+
+    /**
+     * Content with line breaks is not parsed as text, so the content is any field
+     * that decodes as text, and not a message of other fields.
+     *
+     * @return The length of the content of a text segment, or 0 if the segment is not a text.
+     */
+    private static int segmentTextLength(List<ProtoNode> segment) {
+        ProtoNode text = ProtoNode.field(segment, SEGMENT_TEXT_FIELD);
+        if (text == null || text.children == null) {
+            return 0;
+        }
+        ProtoNode content = ProtoNode.field(text.children, TEXT_CONTENT_FIELD);
+        if (content == null || content.getVarint() != null) {
+            return 0;
+        }
+        String decoded = decodeText(content);
+        return decoded == null ? 0 : decoded.length();
+    }
+
+    /**
+     * @return The field decoded as text, or null if the field is not a text, such as bytes of other data.
+     */
+    @Nullable
+    static String decodeText(ProtoNode field) {
+        String decoded = field.decodeUtf8();
+        for (int i = 0, length = decoded.length(); i < length; i++) {
+            final char c = decoded.charAt(i);
+            if (c == '\uFFFD' || (Character.isISOControl(c) && c != '\n' && c != '\r' && c != '\t')) {
+                return null;
+            }
+        }
+        return decoded;
     }
 
     /**

@@ -162,6 +162,10 @@ public final class ProtoNode {
         }
     }
 
+    public int getFieldNumber() {
+        return fieldNumber;
+    }
+
     /**
      * @return If this field is a text.
      */

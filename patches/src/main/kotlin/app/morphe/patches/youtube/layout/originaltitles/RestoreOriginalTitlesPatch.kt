@@ -14,7 +14,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.proto.hookElement
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -33,7 +33,8 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val restoreOriginalTitlesPatch = bytecodePatch(
     name = "Restore original titles",
-    description = "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
+    description = "Adds an option to show the original video titles, video descriptions and channel descriptions " +
+            "instead of the auto-translated ones, or the video titles submitted to DeArrow.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -49,7 +50,10 @@ val restoreOriginalTitlesPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("morphe_restore_original_titles", summary = true)
+            ListPreference(
+                key = "morphe_restore_original_titles_type",
+                titleKey = "morphe_restore_original_titles_title"
+            )
         )
 
         // Elements are parsed on the main thread, where the original title cannot be fetched.

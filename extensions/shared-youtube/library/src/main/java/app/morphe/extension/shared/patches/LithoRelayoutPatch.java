@@ -8,21 +8,18 @@
 package app.morphe.extension.shared.patches;
 
 import android.graphics.drawable.Drawable;
+import android.text.Spanned;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.facebook.litho.ComponentHost;
 import com.facebook.litho.TextContent;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
-import java.util.function.Predicate;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -32,9 +29,9 @@ import app.morphe.extension.shared.Utils;
  * Litho otherwise keeps the calculated layout until the view is bound again,
  * such as after scrolling the view off screen and back.
  * <p>
- * Texts can be mounted after the views are checked, such as texts scrolled into view,
- * and views can be detached and attached again without mounting the texts again.
- * So the texts are also checked when mounted, and the views when attached.
+ * Only the texts with a {@link RelayoutSpan} are laid out again, such as loading texts.
+ * The mounted text drawables of these texts are remembered, so a relayout checks only
+ * these drawables and lays out only the Litho views that show an outdated text.
  */
 @SuppressWarnings("unused")
 public final class LithoRelayoutPatch {
@@ -50,180 +47,128 @@ public final class LithoRelayoutPatch {
     }
 
     /**
-     * Filters of the texts to lay out again. Accessed only on the main thread.
+     * Span of a Litho text that is laid out again when outdated, such as a loading text.
      */
-    private static final Set<Predicate<CharSequence>> textFilters = new LinkedHashSet<>();
+    public interface RelayoutSpan {
+        /**
+         * Called on the main thread.
+         *
+         * @return If the text is outdated, and laying it out again changes it.
+         */
+        boolean isOutdated();
+    }
 
     /**
-     * Litho views attached to any window. Accessed only on the main thread.
+     * Relayouts requested at about the same time, such as titles fetched at the same time,
+     * are done with a single pass.
      */
-    private static final Set<View> attachedLithoViews = Collections.newSetFromMap(new WeakHashMap<>());
+    private static final long RELAYOUT_DELAY_MILLISECONDS = 100;
 
     /**
-     * Litho views to check for texts to lay out again. Accessed only on the main thread.
+     * Mounted text drawables that showed a text with a {@link RelayoutSpan}.
+     * Accessed only on the main thread.
      */
-    private static final Set<View> pendingLithoViews = new LinkedHashSet<>();
+    private static final Set<Drawable> relayoutTextDrawables = Collections.newSetFromMap(new WeakHashMap<>());
 
-    /**
-     * Mounted text drawables with texts to lay out again. Accessed only on the main thread.
-     */
-    private static final List<Drawable> pendingTextDrawables = new ArrayList<>();
-
-    private static boolean checkScheduled;
+    private static volatile boolean relayoutScheduled;
 
     private LithoRelayoutPatch() {
     }
 
     /**
-     * Forces the Litho views that show a text matching the filter to calculate the layout again.
-     * The filter is also used for the texts mounted later, so it must match
-     * only the texts that are outdated. Requests made at the same time are done
-     * with a single pass over the views. Can be called on any thread.
-     *
-     * @param textFilter Filter of the texts. The same instance should be used for the same texts,
-     *                   so the filter is used only once.
+     * Forces the Litho views that show an outdated text to calculate the layout again.
+     * Can be called on any thread.
      */
-    public static void relayoutViewsShowingText(Predicate<CharSequence> textFilter) {
-        Utils.runOnMainThread(() -> {
-            textFilters.add(textFilter);
-            pendingLithoViews.addAll(attachedLithoViews);
-            scheduleCheck();
-        });
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void onLithoViewAttached(View view) {
-        try {
-            attachedLithoViews.add(view);
-            checkLater(view);
-        } catch (Exception ex) {
-            Logger.printException(() -> "onLithoViewAttached failure", ex);
+    public static void relayoutOutdatedTexts() {
+        if (!relayoutScheduled) {
+            relayoutScheduled = true;
+            // Delayed, so the layouts calculated in the current frame are mounted.
+            Utils.runOnMainThreadDelayed(LithoRelayoutPatch::relayoutOutdatedViews, RELAYOUT_DELAY_MILLISECONDS);
         }
     }
 
     /**
      * Injection point.
-     */
-    public static void onLithoViewDetached(View view) {
-        attachedLithoViews.remove(view);
-    }
-
-    /**
-     * Injection point.
      * <p>
-     * Called before the text drawable is added to its host, so the host is found later.
+     * Called on the main thread before the text drawable is added to its host, so the host is found later.
      */
     public static void onLithoTextMounted(Drawable textDrawable, CharSequence text) {
         try {
-            if (text != null && matchesTextFilters(text)) {
-                pendingTextDrawables.add(textDrawable);
-                scheduleCheck();
+            Boolean outdated = isOutdated(text);
+            if (outdated != null) {
+                relayoutTextDrawables.add(textDrawable);
+                // The text can be outdated before it's mounted, such as a title fetched meanwhile.
+                if (outdated) {
+                    relayoutOutdatedTexts();
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextMounted failure", ex);
         }
     }
 
-    private static void checkLater(View view) {
-        if (textFilters.isEmpty()) {
-            return;
-        }
-        pendingLithoViews.add(view);
-        scheduleCheck();
-    }
-
-    private static void scheduleCheck() {
-        if (!checkScheduled) {
-            checkScheduled = true;
-            // Posted, so the layouts calculated in the current frame are mounted.
-            Utils.runOnMainThread(LithoRelayoutPatch::checkPendingViews);
-        }
-    }
-
-    private static void checkPendingViews() {
-        checkScheduled = false;
-        List<View> lithoViews = new ArrayList<>(pendingLithoViews);
-        pendingLithoViews.clear();
-        List<Drawable> textDrawables = new ArrayList<>(pendingTextDrawables);
-        pendingTextDrawables.clear();
+    private static void relayoutOutdatedViews() {
+        relayoutScheduled = false;
 
         try {
             Set<LithoViewInterface> relayoutViews = new LinkedHashSet<>();
-            for (View lithoView : lithoViews) {
-                if (lithoView.isAttachedToWindow() && showsText(lithoView)) {
-                    relayoutViews.add((LithoViewInterface) lithoView);
-                }
-            }
-            for (Drawable textDrawable : textDrawables) {
+            for (Drawable textDrawable : new ArrayList<>(relayoutTextDrawables)) {
                 // The callback is the host, or null if the text was unmounted.
-                if (textDrawable.getCallback() instanceof View host) {
-                    LithoViewInterface lithoView = findLithoView(host);
-                    if (lithoView != null) {
+                if (!(textDrawable.getCallback() instanceof View host)
+                        || !(textDrawable instanceof TextContent textContent)) {
+                    relayoutTextDrawables.remove(textDrawable);
+                    continue;
+                }
+
+                // Drawables are reused for other texts, so the current texts are checked.
+                boolean showsRelayoutText = false;
+                boolean showsOutdatedText = false;
+                for (CharSequence text : textContent.getTextItems()) {
+                    Boolean outdated = isOutdated(text);
+                    if (outdated != null) {
+                        showsRelayoutText = true;
+                        showsOutdatedText |= outdated;
+                    }
+                }
+
+                if (!showsRelayoutText) {
+                    relayoutTextDrawables.remove(textDrawable);
+                } else if (showsOutdatedText) {
+                    // The closest Litho view calculates the layout of the host.
+                    View view = host;
+                    while (!(view instanceof LithoViewInterface) && view.getParent() instanceof View parent) {
+                        view = parent;
+                    }
+                    if (view instanceof LithoViewInterface lithoView) {
                         relayoutViews.add(lithoView);
+                        // Texts that are still outdated after the relayout are mounted again.
+                        relayoutTextDrawables.remove(textDrawable);
                     }
                 }
             }
+
             for (LithoViewInterface lithoView : relayoutViews) {
                 lithoView.patch_forceRelayout();
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "checkPendingViews failure", ex);
+            Logger.printException(() -> "relayoutOutdatedViews failure", ex);
         }
     }
 
     /**
-     * @return If a host laid out by the Litho view shows a text matching the filters.
-     *         Nested Litho views calculate their own layout, and are checked separately.
-     */
-    private static boolean showsText(View view) {
-        if (view instanceof ComponentHost host && hostShowsText(host)) {
-            return true;
-        }
-
-        if (view instanceof ViewGroup group) {
-            for (int i = 0, count = group.getChildCount(); i < count; i++) {
-                View child = group.getChildAt(i);
-                if (!(child instanceof LithoViewInterface) && showsText(child)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * @return The closest Litho view, which calculates the layout of the host.
+     * @return If any {@link RelayoutSpan} of the text is outdated, or null if the text has none.
      */
     @Nullable
-    private static LithoViewInterface findLithoView(View host) {
-        View view = host;
-        while (!(view instanceof LithoViewInterface)) {
-            if (!(view.getParent() instanceof View parent)) {
-                return null;
-            }
-            view = parent;
+    private static Boolean isOutdated(@Nullable CharSequence text) {
+        if (!(text instanceof Spanned spanned)) {
+            return null;
         }
-        return (LithoViewInterface) view;
-    }
-
-    private static boolean hostShowsText(ComponentHost host) {
-        TextContent textContent = host.getTextContent();
-        if (textContent == null) {
-            return false;
+        RelayoutSpan[] spans = spanned.getSpans(0, spanned.length(), RelayoutSpan.class);
+        if (spans.length == 0) {
+            return null;
         }
-        for (CharSequence text : textContent.getTextItems()) {
-            if (text != null && matchesTextFilters(text)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean matchesTextFilters(CharSequence text) {
-        for (Predicate<CharSequence> textFilter : textFilters) {
-            if (textFilter.test(text)) {
+        for (RelayoutSpan span : spans) {
+            if (span.isOutdated()) {
                 return true;
             }
         }
