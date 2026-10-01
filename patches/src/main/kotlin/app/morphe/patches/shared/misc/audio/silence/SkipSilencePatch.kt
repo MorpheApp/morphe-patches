@@ -8,12 +8,13 @@
 package app.morphe.patches.shared.misc.audio.silence
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
+import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/SkipSilencePatch;"
@@ -30,8 +31,10 @@ internal fun skipSilencePatch(
 
     execute {
         preferenceScreen.addPreferences(
-            SwitchPreference("morphe_skip_silence", summary = true),
-            ListPreference("morphe_skip_silence_minimum_pause")
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_skip_silence", summary = true),
+                ListPreference("morphe_skip_silence_minimum_pause")
+            )
         )
 
         ApplySkipSilenceFingerprint.apply {
@@ -45,15 +48,15 @@ internal fun skipSilencePatch(
                     move-result v$booleanRegister
                 """
             )
-
-            SetSkipSilenceEnabledFingerprint.match(classDef).method.addInstructions(
-                0,
-                """
-                    invoke-static { p1 }, $EXTENSION_CLASS->isSkipSilenceEnabled(Z)Z
-                    move-result p1
-                """
-            )
         }
+
+        SetSkipSilenceEnabledFingerprint.matchSingle().method.addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->isSkipSilenceEnabled(Z)Z
+                move-result p1
+            """
+        )
 
         SilenceSkippingProcessorConstructorFingerprint.method.addInstructions(
             0,
