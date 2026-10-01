@@ -20,7 +20,7 @@ import com.android.tools.smali.dexlib2.Opcode
 internal object AudioTrackSessionIdFingerprint : Fingerprint(
     classFingerprint = Fingerprint(
         filters = listOf(
-            string("DefaultAudioSink")
+            string("ExoPlayer:AudioTrackReleaseThread")
         )
     ),
     filters = listOf(

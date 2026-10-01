@@ -14,6 +14,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 
+/**
+ * All fields are guarded by class lock.
+ */
 @SuppressWarnings("unused")
 public class SoundBoostPatch {
 
@@ -108,7 +111,7 @@ public class SoundBoostPatch {
             }
             effect.setTargetGain(boostStep * BOOST_STEP_MILLIBELS);
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to apply volume boost", ex);
+            Logger.printException(() -> "applyBoost failure", ex);
             releaseEffect();
         }
     }
