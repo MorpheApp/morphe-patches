@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3341
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
@@ -43,7 +43,9 @@ internal object CheckCertificateFingerprint : Fingerprint(
 internal object GoogleCertificatesRemoteFingerprint : Fingerprint(
     returnType = "L",
     parameters = listOf("Ljava/lang/String;"),
-    strings = listOf("Failed to get Google certificates from remote")
+    filters = listOf(
+        string("Failed to get Google certificates from remote")
+    )
 )
 
 /**
@@ -125,7 +127,9 @@ internal object SendEmptyAndroidAutoMediaItemsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "Z"),
-    strings = listOf("Invalid media id: ")
+    filters = listOf(
+        string("Invalid media id: ")
+    )
 )
 
 // Locate YTM's phone browse client and request methods
@@ -238,7 +242,6 @@ internal object PhoneBrowseResponseTabsFingerprint : Fingerprint(
 internal object PhoneBrowseTabContentsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/util/List;"),
-    strings = listOf("swipe-to-refresh", "FEmusic_trending"),
     filters = listOf(
         methodCall(definingClass = "Ljava/util/Iterator;", name = "next"),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
@@ -257,7 +260,8 @@ internal object PhoneBrowseTabContentsFingerprint : Fingerprint(
             returnType = "L",
             location = MatchAfterImmediately()
         )
-    )
+    ),
+    strings = listOf("swipe-to-refresh", "FEmusic_trending")
 )
 
 // Library items and pagination
@@ -327,7 +331,6 @@ internal fun browseEndpointFromCommandFingerprint(
 internal fun phoneBrowseItemArtworkFingerprint(phoneBrowseItemType: String) = Fingerprint(
     returnType = "V",
     parameters = listOf("L", phoneBrowseItemType, "I"),
-    strings = listOf("thumbnailOverlayColor"),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -343,7 +346,8 @@ internal fun phoneBrowseItemArtworkFingerprint(phoneBrowseItemType: String) = Fi
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
         fieldAccess(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately())
-    )
+    ),
+    strings = listOf("thumbnailOverlayColor")
 )
 
 /** Decodes the artwork message containing a playlist or song's thumbnail details. */
@@ -428,8 +432,8 @@ internal fun requestSuccessCallbackFingerprint(requestBaseType: String) = Finger
             returnType = "V"
         )
     ),
-    custom = { method, classDef ->
-        !AccessFlags.STATIC.isSet(method.accessFlags) && classDef.instanceFields.any { field ->
+    custom = { _, classDef ->
+        classDef.instanceFields.any { field ->
             field.type == requestBaseType
         }
     }
@@ -470,7 +474,9 @@ internal fun mediaBrowserReloadFingerprint(baseServiceType: String) = Fingerprin
     definingClass = baseServiceType,
     returnType = "V",
     parameters = listOf("Ljava/lang/String;", "L", "Landroid/os/Bundle;"),
-    strings = listOf("onLoadChildren must call detach() or sendResult() before returning for package=")
+    filters = listOf(
+        string("onLoadChildren must call detach() or sendResult() before returning for package=")
+    )
 )
 
 // endregion

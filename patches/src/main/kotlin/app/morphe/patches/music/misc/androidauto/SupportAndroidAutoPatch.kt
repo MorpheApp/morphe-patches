@@ -7,6 +7,8 @@
 
 package app.morphe.patches.music.misc.androidauto
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -25,6 +27,7 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
+import app.morphe.util.matchSingle
 import app.morphe.util.p0Register
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -102,28 +105,23 @@ val supportAndroidAutoPatch = bytecodePatch(
  * `rememberPlaylistsTitleMatch`, which recognizes it by its translated title.
  */
 private fun BytecodePatchContext.hookPlaylistsTitleMediaIds() {
-    val buildAndroidAutoMediaItemMethod = BuildAndroidAutoMediaItemFingerprint.method
-
-    buildAndroidAutoMediaItemMethod
+    BuildAndroidAutoMediaItemFingerprint.method.apply {
         // Capture the Playlists folder ID and title regardless of which branch creates it.
-        .findInstructionIndicesReversedOrThrow(MEDIA_DESCRIPTION_CONSTRUCTOR_CALL)
-        .forEach { index ->
-            val instruction =
-                buildAndroidAutoMediaItemMethod.getInstruction<RegisterRangeInstruction>(
-                    index,
-                )
-            val mediaDescriptionMediaIdRegister =
-                instruction.startRegister + MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET
-            val titleRegister =
-                instruction.startRegister + MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET
+        findInstructionIndicesReversedOrThrow(
+            MEDIA_DESCRIPTION_CONSTRUCTOR_CALL
+        ).forEach { index ->
+            val instructionStartRegister = getInstruction<RegisterRangeInstruction>(index).startRegister
 
-            buildAndroidAutoMediaItemMethod.addInstructions(
+            val mediaDescriptionMediaIdRegister = instructionStartRegister + MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET
+            val titleRegister = instructionStartRegister + MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET
+
+            addInstruction(
                 index,
-                """
-                    invoke-static/range { v$mediaDescriptionMediaIdRegister .. v$titleRegister }, $EXTENSION_CLASS->rememberPlaylistsTitleMatch(Ljava/lang/String;Ljava/lang/CharSequence;)V
-                """,
+                "invoke-static/range { v$mediaDescriptionMediaIdRegister .. v$titleRegister }, " +
+                        "$EXTENSION_CLASS->rememberPlaylistsTitleMatch(Ljava/lang/String;Ljava/lang/CharSequence;)V"
             )
         }
+    }
 }
 
 // endregion
@@ -185,7 +183,7 @@ private fun BytecodePatchContext.addPhoneBrowseRequestMethod(
             invoke-virtual { p0, v0, p2 }, $sendPhoneBrowseRequestMethod
             move-result-object v0
             return-object v0
-        """,
+        """
     )
 }
 
@@ -197,22 +195,24 @@ private fun BytecodePatchContext.addLibraryPaginationRequestMethod(
     phoneBrowseRequestType: String,
     sendPhoneBrowseRequestMethod: MethodReference,
 ) {
-    val getGridItemsMethod = GridRendererItemsFingerprint.originalMethod
     val getGridPaginationCommandsMethod = gridPaginationCommandsFingerprint(
-        getGridItemsMethod,
+        GridRendererItemsFingerprint.originalMethod,
     ).originalMethod
+
     // The pagination request accepts the command type created by getGridPaginationCommandsMethod.
     val paginationReaderReturnTypes =
         getGridPaginationCommandsMethod.instructions.asSequence()
         .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
         .map { reference -> reference.returnType }
         .toSet()
-    val createPaginationRequestMethod = classDefBy(phoneBrowseClientClass.type).methods.singleOrNull { method ->
-        method.returnType == phoneBrowseRequestType &&
-            method.parameterTypes.singleOrNull()?.toString() in paginationReaderReturnTypes
-    } ?: throw PatchException("Could not resolve the Library pagination request method")
+    val createPaginationRequestMethod = classDefBy(phoneBrowseClientClass.type)
+        .methods.singleOrNull { method ->
+            method.returnType == phoneBrowseRequestType &&
+                    method.parameterTypes.singleOrNull()?.toString() in paginationReaderReturnTypes
+        } ?: throw PatchException("Could not resolve the Library pagination request method")
     val paginationCommandType = createPaginationRequestMethod
         .parameterTypes.single().toString()
+
     phoneBrowseClientClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
             EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE,
@@ -226,7 +226,7 @@ private fun BytecodePatchContext.addLibraryPaginationRequestMethod(
             invoke-virtual { p0, p1, p2 }, $sendPhoneBrowseRequestMethod
             move-result-object p1
             return-object p1
-        """,
+        """
     )
 }
 
@@ -242,7 +242,8 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
             .map { match ->
                 val (providerFieldMatch, providerGetMatch) = match.instructionMatches
                 val providerField = providerFieldMatch.instruction.getReference<FieldReference>()!!
-                val providerGetMethod = providerGetMatch.instruction.getReference<MethodReference>()!!
+                val providerGetMethod =
+                    providerGetMatch.instruction.getReference<MethodReference>()!!
                 providerField to providerGetMethod
             }
             .distinctBy { (field, _) -> field }
@@ -273,6 +274,7 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
         generatedComponentReadIndex + 1,
         mutableOnCreateMethod.p0Register,
     )
+
     mutableOnCreateMethod.addInstructions(
         generatedComponentReadIndex + 1,
         """
@@ -281,7 +283,7 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
             move-result-object v$phoneBrowseClientRegister
             check-cast v$phoneBrowseClientRegister, $EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE
             invoke-static/range { v$phoneBrowseClientRegister .. v$phoneBrowseClientRegister }, $EXTENSION_CLASS->setPhoneBrowseClient($EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE)V
-        """,
+        """
     )
 }
 
@@ -320,7 +322,8 @@ private fun BytecodePatchContext.addPaginatedLibraryGridDecoder(
         // The original method uses p0 for "this" and p1 for the response.
         // Keep an unused first argument so the copied code still finds the response in p1.
         parameters = listOf(
-            ImmutableMethodParameter(decodePaginatedLibraryGridMethod.definingClass, null, null),
+            ImmutableMethodParameter(decodePaginatedLibraryGridMethod.definingClass,
+                null, null),
         ) + decodePaginatedLibraryGridMethod.parameters,
     )
     mutableClassDefBy(decodePaginatedLibraryGridMethod.definingClass).methods.add(
@@ -359,8 +362,9 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
             invoke-virtual { p0 }, $getTabsMethod
             move-result-object p0
             return-object p0
-        """,
+        """
     )
+
     phoneBrowseResponseClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
             EXTENSION_PHONE_BROWSE_RESPONSE_INTERFACE,
@@ -375,7 +379,7 @@ private fun BytecodePatchContext.addPhoneBrowseResponseInterface() {
             move-result-object p0
             check-cast p0, $EXTENSION_GRID_RENDERER_INTERFACE
             return-object p0
-        """,
+        """
     )
 }
 
@@ -402,7 +406,7 @@ private fun BytecodePatchContext.addPhoneBrowseTabInterface() {
             :no_sections
             const/4 p0, 0x0
             return-object p0
-        """,
+        """
     )
 }
 
@@ -430,7 +434,7 @@ private fun BytecodePatchContext.addGridRendererInterface() {
             invoke-static { p0 }, $getItemsMethod
             move-result-object p0
             return-object p0
-        """,
+        """
     )
     gridRendererClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
@@ -442,7 +446,7 @@ private fun BytecodePatchContext.addGridRendererInterface() {
             invoke-static { p0 }, $getPaginationCommandsMethod
             move-result-object p0
             return-object p0
-        """,
+        """
     )
 }
 
@@ -564,7 +568,7 @@ private fun MutableClass.addPlaylistBrowseIdGetter(
             invoke-static { v0, v1 }, $EXTENSION_CLASS->resolvePlaylistBrowseId(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
             move-result-object v0
             return-object v0
-        """,
+        """
     )
 }
 
@@ -586,7 +590,7 @@ private fun MutableClass.addTextGetter(
             invoke-static { v0, v1 }, $formatTextMethod
             move-result-object v0
             return-object v0
-        """,
+        """
     )
 }
 
@@ -622,7 +626,7 @@ private fun BytecodePatchContext.addArtworkUriGetter(
             :no_artwork
             const/4 v0, 0x0
             return-object v0
-        """,
+        """
     )
 }
 
@@ -683,8 +687,9 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
             iget-object p0, p0, $requestedMediaIdHolderField
             iget-object p0, p0, $requestedMediaIdField
             return-object p0
-        """,
+        """
     )
+
     androidAutoRequestClass.addInterfaceMethod(
         interfaceMethod = extensionInterfaceMethod(
             EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE,
@@ -695,7 +700,7 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
             const/4 v0, 0x0
             invoke-virtual { p0, p1, v0 }, $deliverAndroidAutoMediaItemsMethod
             return-void
-        """,
+        """
     )
     hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod)
 }
@@ -815,7 +820,7 @@ private fun BytecodePatchContext.addAndroidAutoRequestConnectionGetter(reloadMet
             # Without the connection, the patch cannot tell whether two requests update the same Android Auto folder.
             const/4 v0, 0x0
             return-object v0
-        """,
+        """
     )
 }
 
@@ -840,7 +845,7 @@ private fun BytecodePatchContext.addAndroidAutoFolderReload(
             check-cast p2, $connectionType
             invoke-virtual { p0, p1, p2, p3 }, $reloadMethod
             return-void
-        """,
+        """
     )
     val rememberSubscriptionMethod = "$EXTENSION_CLASS->rememberAndroidAutoSubscription(" +
         EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE +
@@ -849,7 +854,7 @@ private fun BytecodePatchContext.addAndroidAutoFolderReload(
         0,
         """
             invoke-static/range { p0 .. p2 }, $rememberSubscriptionMethod
-        """,
+        """
     )
 }
 
@@ -879,7 +884,7 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
                 iget-object v$requestRegister, p0, $requestField
                 iget-object v$requestRegister, v$requestRegister, $endpointField
                 invoke-static/range { v$requestRegister .. v$requestRegister }, $EXTENSION_CLASS->onRequestSucceeded(Ljava/lang/String;)V
-            """,
+            """
         )
     }
 }
@@ -895,12 +900,13 @@ private fun hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod: Mut
     val handleAndroidAutoBrowseResultMethod = "$EXTENSION_CLASS->handleAndroidAutoBrowseResult(" +
         EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE +
         "Ljava/util/List;)Ljava/util/List;"
+
     deliverAndroidAutoMediaItemsMethod.addInstructions(
         0,
         """
             invoke-static/range { p0 .. p1 }, $handleAndroidAutoBrowseResultMethod
             move-result-object p1
-        """,
+        """
     )
 }
 
@@ -941,7 +947,7 @@ private fun BytecodePatchContext.installPlaylistMediaIdBuilder(encodeCommandMedi
             invoke-static { v0 }, $encodeCommandMediaIdMethod
             move-result-object v0
             return-object v0
-        """,
+        """
     )
     extensionClass.methods.remove(stub)
     extensionClass.methods.add(method)
@@ -977,7 +983,7 @@ private fun MutableClass.addInterfaceMethod(
             MutableMethodImplementation(registerCount),
         ).toMutable().apply {
             addInstructions(0, instructions)
-        },
+        }
     )
 }
 
