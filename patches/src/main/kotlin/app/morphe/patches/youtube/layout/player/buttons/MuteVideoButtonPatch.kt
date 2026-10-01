@@ -14,7 +14,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
@@ -30,8 +29,7 @@ private const val EXTENSION_BUTTON =
 private val muteVideoButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        legacyPlayerControlsPatch,
-        playerIconStylePatch
+        legacyPlayerControlsPatch
     )
 
     execute {

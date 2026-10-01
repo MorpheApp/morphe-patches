@@ -90,6 +90,8 @@ Vissa layouter på serversidan kanske inte återställs.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Dölj knappen Senaste videorna</string>
   <string name="morphe_hide_latest_videos_button_summary">Döljer den blå Senaste videorna-bannern som visas högst upp i hemflödet</string>
+  <string name="morphe_hide_live_streams_title">Dölj direktsändningar</string>
+  <string name="morphe_hide_live_streams_summary">Döljer videor som sänds live just nu i hemflödet och sökresultaten</string>
   <string name="morphe_hide_mix_playlists_title">Dölj mix-spellistor</string>
   <string name="morphe_hide_movies_section_title">Dölj filmavsnitt</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Begränsning: Om 'Återställ gammalt videoåtgärdsfält' är avstängt kan öv
   <string name="morphe_playback_in_feeds_entry_always_on">Alltid på</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Endast Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Av</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Återställ originaltitlar</string>
+  <string name="morphe_restore_original_titles_summary">Visar de ursprungliga videotitlarna, videobeskrivningarna och kanalbeskrivningarna istället för de automatöversatta</string>
+  <string name="morphe_restore_original_titles_loading">Laddar titel…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Inaktivera automatisk flödesuppdatering</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Förhindrar att flöden uppdateras automatiskt efter att de blivit inaktuella</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Inaktivera att minispelaren fortsätter</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Inaktiverar minispelaren \'Fortsätt titta\', en YouTube Premium-funktion som visas vid appstart</string>
@@ -1191,6 +1200,12 @@ Tryck här för att öppna DeArrow.ajay.app"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Öppna länkar i webbläsaren</string>
   <string name="morphe_external_browser_summary">Öppnar länkar i en extern webbläsare istället för webbläsaren i appen</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Uppspelningsbuffertens storlek</string>
+  <string name="morphe_playback_buffer_size_entry_default">Standard</string>
+  <string name="morphe_playback_buffer_size_entry_low">Låg</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Medel</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maximal</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatiskt</string>
@@ -1310,5 +1325,6 @@ Begränsning: Återgår till gammal stil för 'Fler videor'-överlägget"</strin
   <string name="morphe_player_icon_style_entry_default">Standard</string>
   <string name="morphe_player_icon_style_entry_regular">Tunn</string>
   <string name="morphe_player_icon_style_entry_bold">Fet</string>
+  <string name="morphe_player_icon_style_entry_custom">Eget</string>
   <string name="morphe_shorts_icon_style_title">Ikonstil för Shorts</string>
 </resources>

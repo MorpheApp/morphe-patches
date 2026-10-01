@@ -179,6 +179,8 @@ Second \"item\" text"</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_entry_off">Apagat</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
@@ -199,6 +201,7 @@ Second \"item\" text"</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
+  <!-- video.buffer.playbackBufferPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <!-- video.speed.button.playbackSpeedButtonPatch -->

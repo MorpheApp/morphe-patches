@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Ažuriraj domaćinov Jam patch da koristi pauzu i nastavak.</string>
+  <string name="morphe_music_jam_probe_title">Deljenje Jam redosleda</string>
+  <string name="morphe_music_jam_probe_summary">Budi domaćin ili se pridruži obližnjem Jam-u i uređuj njegov redosled preko Jam Layer-a.</string>
+  <string name="morphe_music_jam_enabled_title">Omogući deljenje Jam redosleda</string>
+  <string name="morphe_music_jam_enabled_summary">Omogućava Jam integraciju nakon što se YouTube Music ponovo pokrene.</string>
+  <string name="morphe_music_jam_download_title">Preuzmi Jam Layer da bi proradio</string>
+  <string name="morphe_music_jam_download_summary">Otvori najnovije izdanje Jam Layer-a u pregledaču.</string>
+  <string name="morphe_music_jam_controls_title">Jam kontrole</string>
+  <string name="morphe_music_jam_controls_summary">Budi domaćin ili se pridruži obližnjem Jam-u i upravljaj sesijom.</string>
+  <string name="morphe_music_jam_companion_package_title">Paket Jam Layer-a</string>
+  <string name="morphe_music_jam_companion_package_summary">Izaberi instaliranu prateću aplikaciju koja se koristi za deljenje redosleda sa obližnjim uređajima.</string>
+  <string name="morphe_music_jam_package_message">Koristi instalirani prateći paket. Povezivanje zahteva tvoje odobrenje i lokalni token sposobnosti.</string>
+  <string name="morphe_music_jam_wifi_title">Uključi Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">Uključi Wi-Fi, pa zatim pokušaj ponovo da započneš ili se pridružiš Jam-u.</string>
+  <string name="morphe_music_jam_wifi_settings">Otvori Wi-Fi podešavanja</string>
+  <string name="morphe_music_jam_cancel">Otkaži</string>
+  <string name="morphe_music_jam_use_package">Koristi paket</string>
+  <string name="morphe_music_jam_invalid_package">Unesi ispravan naziv Android paketa</string>
+  <string name="morphe_music_jam_package_saved">Paket sačuvan. Podesi Jam Layer za povezivanje</string>
+  <string name="morphe_music_jam_disconnected">Veza sa Jam-om je prekinuta</string>
+  <string name="morphe_music_jam_enable_layer_first">Prvo omogući Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">Omogući deljenje Jam redosleda u podešavanjima, a zatim ponovo pokreni YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Prvo instaliraj izabrani paket Jam Layer-a</string>
+  <string name="morphe_music_jam_join_hint">Unesi kod prikazan na domaćinu. Wi-Fi Aware može da poveže obližnje uređaje čak i kada su im lokalne mreže različite.</string>
+  <string name="morphe_music_jam_join_with_code">Pridruži se pomoću koda</string>
+  <string name="morphe_music_jam_join">Pridruži se</string>
+  <string name="morphe_music_jam_scan_qr">Skeniraj QR</string>
+  <string name="morphe_music_jam_invalid_invite">Unesi kod od osam znakova ili nalepi pozivnicu</string>
+  <string name="morphe_music_jam_join_your_jam">Pridruži se svom Jam-u</string>
+  <string name="morphe_music_jam_copy_code">Kopiraj kod</string>
+  <string name="morphe_music_jam_code_clip">Jam kod</string>
+  <string name="morphe_music_jam_show_qr">Prikaži QR</string>
+  <string name="morphe_music_jam_done">Gotovo</string>
+  <string name="morphe_music_jam_invite_title">Pozovi u svoj Jam</string>
+  <string name="morphe_music_jam_invite_message">Skeniraj da se pridružiš i uređuješ ovaj redosled. Završetkom Jam-a pozivnica prestaje da važi.</string>
+  <string name="morphe_music_jam_copy_link">Kopiraj link</string>
+  <string name="morphe_music_jam_invitation_clip">Jam pozivnica</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam se ponovo povezuje; pokušaj ponovo uskoro</string>
+  <string name="morphe_music_jam_added_to_jam">Dodato u Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam je nedostupan; numera nije dodata</string>
+  <string name="morphe_music_jam_your_jam">Tvoj Jam</string>
+  <string name="morphe_music_jam_listening_together">Zajedničko slušanje</string>
+  <string name="morphe_music_jam_joining_jam">Pridruživanje Jam-u</string>
+  <string name="morphe_music_jam_listen_together">Slušaj zajedno</string>
+  <string name="morphe_music_jam_updating">Ažuriranje Jam-a…</string>
+  <string name="morphe_music_jam_finding_host">Pronalaženje tvog domaćina na Wi-Fi mreži…</string>
+  <string name="morphe_music_jam_waiting_people">Čekanje na učesnike</string>
+  <string name="morphe_music_jam_one_connected">Povezan je %d učesnik</string>
+  <string name="morphe_music_jam_many_connected">Povezano je %d učesnika</string>
+  <string name="morphe_music_jam_code_expires">Unesi ovaj kod na obližnjem uređaju. Wi-Fi Aware radi na različitim lokalnim mrežama kada je to podržano. Ističe za %d min.</string>
+  <string name="morphe_music_jam_seek_to">Premotaj na %s?</string>
+  <string name="morphe_music_jam_edits_open">Izmene su otvorene</string>
+  <string name="morphe_music_jam_edits_locked">Izmene su zaključane</string>
+  <string name="morphe_music_jam_connected_aware">Povezano preko Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Povezano preko Wi-Fi-ja</string>
+  <string name="morphe_music_jam_connected_bluetooth">Povezano preko Bluetooth-a</string>
+  <string name="morphe_music_jam_unsupported">Nije podržano tokom Jam-a</string>
+  <string name="morphe_music_jam_cancelled">Pridruživanje je otkazano</string>
+  <string name="morphe_music_jam_reconnecting_host">Ponovno povezivanje sa tvojim domaćinom…</string>
+  <string name="morphe_music_jam_share_prompt">Podeli redosled. Neka svi dodaju numere.</string>
+  <string name="morphe_music_jam_invite_people">Pozovi učesnike</string>
+  <string name="morphe_music_jam_guest_edits">Gosti mogu da uređuju redosled</string>
+  <string name="morphe_music_jam_end_jam">Završi Jam</string>
+  <string name="morphe_music_jam_participant_help">Domaćin reprodukuje muziku. Dodaj, premesti ili ukloni numere direktno u redosled na YouTube Music-u.</string>
+  <string name="morphe_music_jam_joining_help">Drži oba uređaja blizu. Možeš da otkažeš dok tražimo domaćina.</string>
+  <string name="morphe_music_jam_cancel_joining">Otkaži pridruživanje</string>
+  <string name="morphe_music_jam_leave_jam">Napusti Jam</string>
+  <string name="morphe_music_jam_start_jam">Pokreni Jam</string>
+  <string name="morphe_music_jam_setup_layer">Podesi Jam Layer</string>
+  <string name="morphe_music_jam_manage">Upravljaj</string>
+  <string name="morphe_music_jam_details">Detalji</string>
+  <string name="morphe_music_jam_open">Otvori</string>
+  <string name="morphe_music_jam_loading_song_options">Učitavanje opcija numere…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Opcije numere nisu dostupne; pokušaj ponovo</string>
+  <string name="morphe_music_jam_song_options_failed">Otvaranje opcija numere nije uspelo.</string>
+  <string name="morphe_music_jam_no_browser">Nema dostupnog pregledača za preuzimanje Jam Layer-a</string>
+  <string name="morphe_music_jam_waiting_host_queue">Čekanje na domaćinov redosled</string>
+  <string name="morphe_music_jam_open_song_first">Prvo otvori numeru u YouTube Music-u</string>
+  <string name="morphe_music_jam_play_on_host">Reprodukuj na domaćinu</string>
+  <string name="morphe_music_jam_quit_and_play">Izađi iz Jam-a i reprodukuj lokalno</string>
+  <string name="morphe_music_jam_play_next">Reprodukuj sledeću u Jam-u</string>
+  <string name="morphe_music_jam_add_to_queue">Dodaj u Jam redosled</string>
+  <string name="morphe_music_jam_play_track">Reprodukuj ovu Jam numeru</string>
+  <string name="morphe_music_jam_choose_playback">Izaberi gde će se reprodukovati</string>
+  <string name="morphe_music_jam_move_host_here">Premesti domaćina ovde</string>
+  <string name="morphe_music_jam_seek_not_ready">Numera nije postala spremna za premotavanje</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Redosled se promenio; pokušaj ponovo isti pokret</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotip u zaglavlju</string>
@@ -179,6 +266,10 @@ YouTube Music 8.x — prelazni efekat radi samo na 9.x i novijim verzijama"</str
   <string name="morphe_music_remember_repeat_state_title">Zapamti stanje ponavljanja</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Zapamti stanje nasumičnog sviranja</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Brzina reprodukcije</string>
+  <string name="morphe_music_playback_speed_summary">Brzina koja se koristi za sve numere. Na 100% koristi se brzina aplikacije, kao što je brzina reprodukcije podkasta</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Promeni visinu tona sa brzinom</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Onemogući preusmerBravljenje pri negađenNji</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Sprečava preskakanje na sledeCdeću numeru kada se pritisne dugme za negaNje</string>
@@ -419,7 +510,12 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_romanize_button_title">Prikaži dugme za romanizaciju.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Dodirnite da biste uključili/isključili romanizaciju; dugo pritisnite za samo romanizaciju. Koristi romanizaciju provajdera, Google Translate ili API kompatibilan sa OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Nije moguće romanizovati pesmu.</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Osveženo.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Dodirnite da biste prešli na sledećeg kandidata za tekst pesme; dugo pritisnite da biste pretražili tekst pesme po naslovu i izvođaču</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Pretraga tekstova pesama</string>
+  <string name="morphe_music_lyrics_search_title_hint">Naslov pesme</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Izvođač</string>
+  <string name="morphe_music_lyrics_search_empty">Unesite naslov pesme i izvođača</string>
+  <string name="morphe_music_lyrics_search_no_providers">Nijedan od omogućenih provajdera ne može da pretražuje druge pesme</string>
   <string name="morphe_music_lyrics_saved">Tekst se traži po naslovu numere i izvođaču, […] Možete i da pritisnete dugme za osvežavanje da biste ručno promenili verzije. […] Svi omogućeni izvori se ne traže uvek po vašem redosledu, već odgovaraju prema svojoj brzini.</string>
   <string name="morphe_music_lyrics_word_sync_title">Istakni sinhronizovane reči ili slogove.</string>
   <string name="morphe_music_lyrics_word_sync_summary">Daj prednost tekstu reč po reč kada je dostupan.</string>
@@ -473,6 +569,7 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API endpoint URL (npr. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API ključ (ostavite prazno za anonimni pristup)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Naziv modela (npr. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Šablon upita (promenljive: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Podešavanja AI prevođenja su sačuvana</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Ne mogu da se povežem sa AI endpoint-om. Proverite svoja podešavanja.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Podešavanja AI prevođenja su resetovana</string>

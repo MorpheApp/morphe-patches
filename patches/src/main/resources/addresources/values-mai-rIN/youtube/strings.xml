@@ -438,6 +438,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_player_type_regular_player_fullscreen">रेगुलर प्लेयर फुलस्क्रीन</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेयरको पुन: सुरुवात अक्षम गर्नुहोस्</string>
   <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
@@ -501,6 +503,7 @@ Second \"item\" text"</string>
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">लिंक ब्राउजर में खोलि</string>
+  <!-- video.buffer.playbackBufferPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">ऑटो</string>

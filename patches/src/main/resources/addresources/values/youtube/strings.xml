@@ -95,6 +95,8 @@ Changes include:
           This button usually appears in the Home feed for refreshing the feed. -->
     <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
     <string name="morphe_hide_latest_videos_button_summary">Hides the blue \'Latest videos\' banner that appears at the top of the Home feed</string>
+    <string name="morphe_hide_live_streams_title">Hide live streams</string>
+    <string name="morphe_hide_live_streams_summary">Hides videos that are live now in the home feed and search results</string>
     <string name="morphe_hide_mix_playlists_title">Hide mix playlists</string>
     <string name="morphe_hide_movies_section_title">Hide movies section</string>
     <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1160,6 +1162,15 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi only</string>
     <string name="morphe_playback_in_feeds_entry_off">Off</string>
 
+    <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+    <string name="morphe_restore_original_titles_title">Restore original titles</string>
+    <string name="morphe_restore_original_titles_summary">Shows the original video titles, video descriptions and channel descriptions instead of the auto-translated ones</string>
+    <string name="morphe_restore_original_titles_loading">Loading title…</string>
+
+    <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+    <string name="morphe_disable_auto_feed_refresh_title">Disable auto feed refresh</string>
+    <string name="morphe_disable_auto_feed_refresh_summary">Prevents feeds from refreshing automatically after they become outdated</string>
+
     <!-- layout.miniplayer.miniplayerPatch -->
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
     <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
@@ -1312,6 +1323,13 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_external_browser_title">Open links in browser</string>
     <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
 
+    <!-- video.buffer.playbackBufferPatch -->
+    <string name="morphe_playback_buffer_size_title">Playback buffer size</string>
+    <string name="morphe_playback_buffer_size_entry_default">Default</string>
+    <string name="morphe_playback_buffer_size_entry_low">Low</string>
+    <string name="morphe_playback_buffer_size_entry_medium">Medium</string>
+    <string name="morphe_playback_buffer_size_entry_maximum">Maximum</string>
+
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
     <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1450,5 +1468,6 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="morphe_player_icon_style_entry_phosphor_duotone" translatable="false">Phosphor Duotone</string>
     <string name="morphe_player_icon_style_entry_ionicons" translatable="false">Ionicons</string>
     <string name="morphe_player_icon_style_entry_sharp" translatable="false">Sharp</string>
+    <string name="morphe_player_icon_style_entry_custom">Custom</string>
     <string name="morphe_shorts_icon_style_title">Shorts icon style</string>
 </resources>

@@ -90,6 +90,8 @@ Muutoksia ovat muun muassa:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Piilota \"Uusimmat videot\" -nappi</string>
   <string name="morphe_hide_latest_videos_button_summary">Piilottaa sinisen \"Uusimmat videot\" -bannerin, joka näkyy Aloitusnäytön yläreunassa</string>
+  <string name="morphe_hide_live_streams_title">Piilota suorat lähetykset</string>
+  <string name="morphe_hide_live_streams_summary">Piilottaa parhaillaan suorana olevat videot etusivun syötteessä ja hakutuloksissa.</string>
   <string name="morphe_hide_mix_playlists_title">Piilota mix-soittolistat</string>
   <string name="morphe_hide_movies_section_title">Piilota elokuvat-osio</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_playback_in_feeds_entry_always_on">Aina päällä</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Vain Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Pois päältä</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Palauta alkuperäiset otsikot</string>
+  <string name="morphe_restore_original_titles_summary">Näyttää alkuperäiset videoiden otsikot, videoiden kuvaukset ja kanavien kuvaukset automaattisesti käännettyjen sijaan</string>
+  <string name="morphe_restore_original_titles_loading">Ladataan otsikkoa…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Poista syötteen automaattinen päivitys käytöstä</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Estää syötteiden automaattisen päivityksen, kun ne vanhenevat</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Poista minisoittimen jatkamisen käytöstä</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Poistaa käytöstä ’Jatka katselua’ -minisoittimen, YouTube Premium -ominaisuuden, joka ilmestyy sovelluksen käynnistyessä</string>
@@ -1191,6 +1200,12 @@ Napauta tästä saadaksesi lisätietoja DeArrowista"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Avaa linkit selaimessa</string>
   <string name="morphe_external_browser_summary">Avaa linkit ulkoisessa selaimessa sovelluksen sisäisen selaimen sijaan</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Toistopuskurin koko</string>
+  <string name="morphe_playback_buffer_size_entry_default">Oletus</string>
+  <string name="morphe_playback_buffer_size_entry_low">Matala</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Keskitaso</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maksimi</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automaattinen</string>
@@ -1310,5 +1325,6 @@ Rajoitus: Palauttaa vanhan tyylin 'Lisää videoita' -peittokuvan"</string>
   <string name="morphe_player_icon_style_entry_default">Oletus</string>
   <string name="morphe_player_icon_style_entry_regular">Ohut</string>
   <string name="morphe_player_icon_style_entry_bold">Lihavoitu</string>
+  <string name="morphe_player_icon_style_entry_custom">Mukautettu</string>
   <string name="morphe_shorts_icon_style_title">Shorts-kuvakkeen tyyli</string>
 </resources>

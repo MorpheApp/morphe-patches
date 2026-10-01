@@ -90,6 +90,8 @@ Veranderings sluit in:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Versteek \'Nuutste video\'s\' knoppie</string>
   <string name="morphe_hide_latest_videos_button_summary">Verberg die blou \'Latest videos\' banier wat bo-aan die Home feed verskyn</string>
+  <string name="morphe_hide_live_streams_title">Versteek regstreekse strome</string>
+  <string name="morphe_hide_live_streams_summary">Versteek video\'s wat tans regstreeks is in die tuisvoer en soekresultate</string>
   <string name="morphe_hide_mix_playlists_title">Verberg mengsnelysies</string>
   <string name="morphe_hide_movies_section_title">Verberg fliek afdeling</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_playback_in_feeds_entry_always_on">Altyd aan</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Slegs Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Af</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Herstel oorspronklike titels</string>
+  <string name="morphe_restore_original_titles_summary">Wys die oorspronklike videotitels, videobeskrywings en kanaalbeskrywings in plaas van die outomaties vertaalde weergawes</string>
+  <string name="morphe_restore_original_titles_loading">Laai titel…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Deaktiveer outomatiese voerverversing</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Voorkom dat voere outomaties verfris word nadat hulle verouderd geraak het</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Deaktiveer hervatting van mini-speler</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiveer die \'Gaan voort om te kyk\' minispeler, \'n YouTube Premium-funksie wat op app-opstart verskyn</string>
@@ -1191,6 +1200,12 @@ Tik hier om DeArrow.ajay.app oop te maak"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Opening van skakels in eksterne blaaier</string>
   <string name="morphe_external_browser_summary">Maak skakels oop in \'n eksterne blaaier in plaas van die in-app blaaier</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Afspeelbuffergrootte</string>
+  <string name="morphe_playback_buffer_size_entry_default">Verstek</string>
+  <string name="morphe_playback_buffer_size_entry_low">Laag</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Medium</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Onthou video kwaliteit veranderings</string>
@@ -1310,5 +1325,6 @@ Beperking: Keer terug na ou-styl 'Meer video's'-oorleg"</string>
   <string name="morphe_player_icon_style_entry_default">Verstek</string>
   <string name="morphe_player_icon_style_entry_regular">Dun</string>
   <string name="morphe_player_icon_style_entry_bold">Vet</string>
+  <string name="morphe_player_icon_style_entry_custom">Pasgemaak</string>
   <string name="morphe_shorts_icon_style_title">Shorts-ikoonstyl</string>
 </resources>

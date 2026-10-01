@@ -9,7 +9,6 @@ import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSet
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -22,8 +21,7 @@ private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/
 private val copyVideoLinkButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        legacyPlayerControlsPatch,
-        playerIconStylePatch
+        legacyPlayerControlsPatch
     )
 
     execute {

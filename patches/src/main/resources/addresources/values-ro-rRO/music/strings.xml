@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Actualizează patch-ul Jam al gazdei pentru a folosi pauza și reluarea.</string>
+  <string name="morphe_music_jam_probe_title">Partajarea cozii Jam</string>
+  <string name="morphe_music_jam_probe_summary">Găzduiește sau alătură-te unei sesiuni Jam din apropiere și editează-i coada prin Jam Layer.</string>
+  <string name="morphe_music_jam_enabled_title">Activează partajarea cozii Jam</string>
+  <string name="morphe_music_jam_enabled_summary">Activează integrarea Jam după repornirea YouTube Music.</string>
+  <string name="morphe_music_jam_download_title">Descarcă Jam Layer pentru a-l face să funcționeze</string>
+  <string name="morphe_music_jam_download_summary">Deschide cea mai recentă versiune a Jam Layer în browser.</string>
+  <string name="morphe_music_jam_controls_title">Comenzi Jam</string>
+  <string name="morphe_music_jam_controls_summary">Găzduiește sau alătură-te unei sesiuni Jam din apropiere și gestionează sesiunea.</string>
+  <string name="morphe_music_jam_companion_package_title">Pachetul Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Alege aplicația parteneră instalată, folosită pentru partajarea cozii în apropiere.</string>
+  <string name="morphe_music_jam_package_message">Folosește un pachet partener instalat. Asocierea necesită aprobarea ta și un token local de capabilitate.</string>
+  <string name="morphe_music_jam_wifi_title">Activezi Wi-Fi-ul?</string>
+  <string name="morphe_music_jam_wifi_message">Activează Wi-Fi-ul, apoi încearcă din nou să pornești sau să te alături sesiunii Jam.</string>
+  <string name="morphe_music_jam_wifi_settings">Deschide setările Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">Anulează</string>
+  <string name="morphe_music_jam_use_package">Folosește pachetul</string>
+  <string name="morphe_music_jam_invalid_package">Introdu un nume de pachet Android valid</string>
+  <string name="morphe_music_jam_package_saved">Pachet salvat. Configurează Jam Layer pentru a te conecta.</string>
+  <string name="morphe_music_jam_disconnected">Jam deconectat</string>
+  <string name="morphe_music_jam_enable_layer_first">Activează mai întâi Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">Activează partajarea cozii Jam din setări, apoi repornește YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Instalează mai întâi pachetul Jam Layer selectat</string>
+  <string name="morphe_music_jam_join_hint">Introdu codul afișat pe gazdă. Wi-Fi Aware poate conecta dispozitivele din apropiere chiar și atunci când rețelele lor locale diferă.</string>
+  <string name="morphe_music_jam_join_with_code">Alătură-te cu un cod</string>
+  <string name="morphe_music_jam_join">Alătură-te</string>
+  <string name="morphe_music_jam_scan_qr">Scanează codul QR</string>
+  <string name="morphe_music_jam_invalid_invite">Introdu codul de opt caractere sau lipește o invitație</string>
+  <string name="morphe_music_jam_join_your_jam">Alătură-te sesiunii tale Jam</string>
+  <string name="morphe_music_jam_copy_code">Copiază codul</string>
+  <string name="morphe_music_jam_code_clip">Cod Jam</string>
+  <string name="morphe_music_jam_show_qr">Arată codul QR</string>
+  <string name="morphe_music_jam_done">Gata</string>
+  <string name="morphe_music_jam_invite_title">Invită în sesiunea ta Jam</string>
+  <string name="morphe_music_jam_invite_message">Scanează pentru a te alătura și a edita această coadă. Încheierea sesiunii Jam revocă invitația.</string>
+  <string name="morphe_music_jam_copy_link">Copiază linkul</string>
+  <string name="morphe_music_jam_invitation_clip">Invitație Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam se reconectează; încearcă din nou în scurt timp</string>
+  <string name="morphe_music_jam_added_to_jam">Adăugat la Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam este indisponibil; melodia nu a fost adăugată.</string>
+  <string name="morphe_music_jam_your_jam">Sesiunea ta Jam</string>
+  <string name="morphe_music_jam_listening_together">Ascultare împreună</string>
+  <string name="morphe_music_jam_joining_jam">Se alătură sesiunii Jam</string>
+  <string name="morphe_music_jam_listen_together">Ascultă împreună</string>
+  <string name="morphe_music_jam_updating">Se actualizează Jam…</string>
+  <string name="morphe_music_jam_finding_host">Se caută gazda ta în rețeaua Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Se așteaptă participanții</string>
+  <string name="morphe_music_jam_one_connected">%d persoană conectată</string>
+  <string name="morphe_music_jam_many_connected">%d persoane conectate</string>
+  <string name="morphe_music_jam_code_expires">Introdu acest cod pe un dispozitiv din apropiere. Wi-Fi Aware funcționează între rețele locale separate, dacă este suportat. Expiră în %d minute.</string>
+  <string name="morphe_music_jam_seek_to">Sari la %s?</string>
+  <string name="morphe_music_jam_edits_open">Editări deschise</string>
+  <string name="morphe_music_jam_edits_locked">Editări blocate</string>
+  <string name="morphe_music_jam_connected_aware">Conectat prin Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Conectat prin Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Conectat prin Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Neacceptat în timpul sesiunii Jam</string>
+  <string name="morphe_music_jam_cancelled">Alăturarea a fost anulată</string>
+  <string name="morphe_music_jam_reconnecting_host">Se reconectează la gazda ta…</string>
+  <string name="morphe_music_jam_share_prompt">Partajează o coadă. Lasă-i pe toți să adauge melodii.</string>
+  <string name="morphe_music_jam_invite_people">Invită persoane</string>
+  <string name="morphe_music_jam_guest_edits">Invitații pot edita coada</string>
+  <string name="morphe_music_jam_end_jam">Încheie sesiunea Jam</string>
+  <string name="morphe_music_jam_participant_help">Gazda redă muzica. Adaugă, mută sau elimină melodii direct în coada YouTube Music.</string>
+  <string name="morphe_music_jam_joining_help">Păstrează ambele dispozitive în apropiere. Poți anula în timp ce căutăm gazda.</string>
+  <string name="morphe_music_jam_cancel_joining">Anulează alăturarea</string>
+  <string name="morphe_music_jam_leave_jam">Ieși din Jam</string>
+  <string name="morphe_music_jam_start_jam">Începe o sesiune Jam</string>
+  <string name="morphe_music_jam_setup_layer">Configurează Jam Layer</string>
+  <string name="morphe_music_jam_manage">Gestionează</string>
+  <string name="morphe_music_jam_details">Detalii</string>
+  <string name="morphe_music_jam_open">Deschide</string>
+  <string name="morphe_music_jam_loading_song_options">Se încarcă opțiunile melodiei…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Opțiunile melodiei sunt indisponibile; încearcă din nou</string>
+  <string name="morphe_music_jam_song_options_failed">Nu s-au putut deschide opțiunile melodiei</string>
+  <string name="morphe_music_jam_no_browser">Niciun browser nu este disponibil pentru a descărca Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">Se așteaptă coada gazdei</string>
+  <string name="morphe_music_jam_open_song_first">Deschide mai întâi o melodie în YouTube Music</string>
+  <string name="morphe_music_jam_play_on_host">Redă pe gazdă</string>
+  <string name="morphe_music_jam_quit_and_play">Ieși din Jam și redă local</string>
+  <string name="morphe_music_jam_play_next">Redă în continuare în Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Adaugă în coada Jam</string>
+  <string name="morphe_music_jam_play_track">Redă această melodie Jam</string>
+  <string name="morphe_music_jam_choose_playback">Alege unde să redai</string>
+  <string name="morphe_music_jam_move_host_here">Mută gazda aici</string>
+  <string name="morphe_music_jam_seek_not_ready">Melodia nu a devenit pregătită pentru derulare</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Coada s-a schimbat; încearcă din nou gestul</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Siglă antet</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și v
   <string name="morphe_music_remember_repeat_state_title">Reține starea de repetare</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Reține starea de amestecare</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Viteza de redare</string>
+  <string name="morphe_music_playback_speed_summary">Viteza folosită pentru toate melodiile. La 100% se folosește viteza aplicației, cum ar fi viteza de redare a podcastului.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Schimbă tonalitatea odată cu viteza</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Dezactivează redirecționarea dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Împiedică trecerea la următoarea melodie când este apăsat butonul dislike</string>
@@ -412,7 +503,12 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_show_romanize_button_title">Afișați butonul Romanize.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Atingeți pentru a comuta romanizarea; apăsați lung pentru doar romanizare. Utilizează romanizarea furnizorului, Google Translate sau un API compatibil cu OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Afișați butonul Reîmprospătare.</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Atingeți pentru a comuta la următoarea sugestie de vers.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Atingeți pentru a trece la următorul candidat de versuri; apăsați lung pentru a căuta versuri după titlul melodiei și artist.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Căutare versuri</string>
+  <string name="morphe_music_lyrics_search_title_hint">Titlul melodiei</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
+  <string name="morphe_music_lyrics_search_empty">Introduceți un titlu de melodie și un artist</string>
+  <string name="morphe_music_lyrics_search_no_providers">Niciunul dintre furnizorii activați nu poate căuta alte melodii</string>
   <string name="morphe_music_lyrics_saved">Salvat</string>
   <string name="morphe_music_lyrics_word_sync_title">Evidențiați cuvintele sau silabele sincronizate</string>
   <string name="morphe_music_lyrics_word_sync_summary">Nu s-a putut face romanizarea versurilor.</string>
@@ -466,6 +562,7 @@ Cookie-uri necesare: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL endpoint API (de ex. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Cheie API (lasă gol pentru acces anonim)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nume model (de ex. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Șablon de prompt (variabile: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Setări de traducere AI salvate</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Nu s-a putut conecta la endpoint-ul AI. Verifică setările.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Setări de traducere AI resetate</string>

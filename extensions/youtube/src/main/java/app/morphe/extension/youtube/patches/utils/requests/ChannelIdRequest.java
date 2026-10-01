@@ -9,8 +9,6 @@ package app.morphe.extension.youtube.patches.utils.requests;
 
 import android.util.Pair;
 
-import androidx.annotation.NonNull;
-
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
@@ -65,7 +63,7 @@ public class ChannelIdRequest {
         return null;
     }
 
-    public static ChannelIdRequest fetchRequestIfNeeded(@NonNull String videoId) {
+    public static ChannelIdRequest fetchRequestIfNeeded(String videoId) {
         return cache.computeIfAbsent(
                 videoId,
                 ChannelIdRequest::new

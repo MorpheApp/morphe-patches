@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Скриване на бутона \"Последни видеа\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Скрива синия банер „Последни видеа“, който се показва в горната част на началната страница</string>
+  <string name="morphe_hide_live_streams_title">Скриване на потоците на живо</string>
+  <string name="morphe_hide_live_streams_summary">Скрива видеоклиповете, които са на живо в момента, в началната емисия и в резултатите от търсенето</string>
   <string name="morphe_hide_mix_playlists_title">Скриване на микс плейлист</string>
   <string name="morphe_hide_movies_section_title">Скриване на раздела за филми</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Винаги включено</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Само Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Изключено</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Възстановяване на оригиналните заглавия</string>
+  <string name="morphe_restore_original_titles_summary">Показва оригиналните заглавия на видеоклиповете, описанията на видеоклиповете и описанията на каналите вместо автоматично преведените</string>
+  <string name="morphe_restore_original_titles_loading">Зареждане на заглавието…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Изключване на автоматичното опресняване на емисията</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Предотвратява автоматичното опресняване на емисиите, след като остареят</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Изключване на продължаването на мини-плеъра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Деактивира мини плейъра „Продължи да гледаш“, функция на YouTube Premium, която се появява при стартиране на приложението</string>
@@ -1191,6 +1200,12 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Запазите видеа</string>
   <string name="morphe_external_browser_summary">Отваря връзки в външен браузър вместо в браузъра в приложението</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Размер на буфера за възпроизвеждане</string>
+  <string name="morphe_playback_buffer_size_entry_default">По подразбиране</string>
+  <string name="morphe_playback_buffer_size_entry_low">Малък</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Среден</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Максимален</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1310,5 +1325,6 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_default">По подразбиране</string>
   <string name="morphe_player_icon_style_entry_regular">Тънък</string>
   <string name="morphe_player_icon_style_entry_bold">Удебелен</string>
+  <string name="morphe_player_icon_style_entry_custom">По избор</string>
   <string name="morphe_shorts_icon_style_title">Стил на икона за Shorts</string>
 </resources>

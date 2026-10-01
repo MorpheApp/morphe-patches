@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">최신 동영상 버튼 숨기기</string>
   <string name="morphe_hide_latest_videos_button_summary">홈 피드 상단에 표시되는 파란색 \'최신 동영상\' 배너를 숨깁니다</string>
+  <string name="morphe_hide_live_streams_title">실시간 스트림 숨기기</string>
+  <string name="morphe_hide_live_streams_summary">홈 피드 및 검색 결과에서 현재 라이브 중인 동영상을 숨깁니다</string>
   <string name="morphe_hide_mix_playlists_title">믹스 재생목록 숨기기</string>
   <string name="morphe_hide_movies_section_title">영화 선반 숨기기</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -692,9 +694,9 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">질문하기 버튼 숨기기</string>
   <string name="morphe_hide_channel_profile_button_title">채널 및 구독 버튼 숨기기</string>
-  <string name="morphe_hide_channel_profile_button_summary">작업 버튼 바의 시작 부분에서 채널 아바타와 구독 버튼을 숨깁니다</string>
+  <string name="morphe_hide_channel_profile_button_summary">작업 버튼바 시작 부분에서 채널 아바타 및 구독 버튼을 숨깁니다</string>
   <string name="morphe_hide_channel_profile_subscribe_button_title">구독 버튼 숨기기</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">액션 바 시작 부분의 채널 아바타 옆에 있는 구독 및 가입 버튼을 숨깁니다</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">작업 버튼바 시작 부분에서 채널 아바타 옆에 있는 구독 및 가입 버튼을 숨깁니다</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">클립 버튼 숨기기</string>
   <string name="morphe_hide_clip_button_summary">일부 사용자 계정에서는 작동하지 않을 수 있습니다</string>
@@ -1067,6 +1069,13 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_playback_in_feeds_entry_always_on">항상 사용</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi 전용</string>
   <string name="morphe_playback_in_feeds_entry_off">사용 안함</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">원문 제목 복원하기</string>
+  <string name="morphe_restore_original_titles_summary">자동 번역된 동영상 제목, 동영상 설명 및 채널 설명 대신 원문 동영상 제목, 동영상 설명 및 채널 설명을 표시합니다</string>
+  <string name="morphe_restore_original_titles_loading">제목을 불러오는 중…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">자동 피드 새로고침 비활성화하기</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">피드가 만료된 후 자동으로 새로 고쳐지지 않도록 합니다</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">미니 플레이어 다시 시작 비활성화하기</string>
   <string name="morphe_miniplayer_disable_resuming_summary">앱 시작 시 \'이어서 시청하기\' 미니플레이어가 나타나지 않도록 합니다. 이 기능은 YouTube Premium 기능입니다</string>
@@ -1102,8 +1111,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_back_button_always_exits_feed_title">뒤로가기 버튼으로 피드 나가기</string>
   <string name="morphe_back_button_always_exits_feed_summary">뒤로가기 버튼을 탭하면 피드 상단으로 이동하지 않고 항상 앱이 종료됩니다</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
-  <string name="morphe_hide_status_bar_title">상태 표시줄 숨기기</string>
-  <string name="morphe_hide_status_bar_summary">시스템 상태 표시줄을 숨깁니다. 위쪽 가장자리에서 아래로 스와이프하면 잠시 표시됩니다</string>
+  <string name="morphe_hide_status_bar_title">상태바 숨기기</string>
+  <string name="morphe_hide_status_bar_summary">시스템 상태바를 숨깁니다. 상단 가장자리에서 아래로 스와이프하면 잠시 표시됩니다</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">밝은 테마 배경 색상</string>
   <string name="morphe_theme_color_light_entry_2">하얀색</string>
@@ -1193,6 +1202,12 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">외부 브라우저 사용하기</string>
   <string name="morphe_external_browser_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저 대신 외부 브라우저를 사용합니다</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">재생 버퍼 크기</string>
+  <string name="morphe_playback_buffer_size_entry_default">기본값</string>
+  <string name="morphe_playback_buffer_size_entry_low">낮음</string>
+  <string name="morphe_playback_buffer_size_entry_medium">중간</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">최대</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">자동</string>
@@ -1216,7 +1231,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">동영상 화질 버튼 표시하기</string>
   <string name="morphe_video_quality_dialog_button_summary">버튼을 길게 탭하여 동영상 화질을 기본값으로 초기화할 수 있습니다</string>
-  <string name="morphe_video_quality_dialog_button_resolution_title">화질 버튼에 해상도 표시</string>
+  <string name="morphe_video_quality_dialog_button_resolution_title">동영상 화질 버튼에 해상도 표시하기</string>
   <string name="morphe_video_quality_dialog_button_resolution_summary">FHD와 같은 라벨 대신 1080과 같이 해상도 수치를 표시합니다</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">사용자 정의 동영상 재생 속도 활성화하기</string>
@@ -1312,5 +1327,6 @@ AV1이 사용된 동영상 재생이 끊기거나 프레임이 손실될 수 있
   <string name="morphe_player_icon_style_entry_default">기본값</string>
   <string name="morphe_player_icon_style_entry_regular">얇은</string>
   <string name="morphe_player_icon_style_entry_bold">굵은</string>
+  <string name="morphe_player_icon_style_entry_custom">사용자 정의</string>
   <string name="morphe_shorts_icon_style_title">Shorts 아이콘 스타일</string>
 </resources>

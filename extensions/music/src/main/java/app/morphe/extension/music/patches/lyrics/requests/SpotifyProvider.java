@@ -53,6 +53,8 @@ public final class SpotifyProvider implements LyricsProvider {
     private static final int SEARCH_RETRIES = 2;
     private static final int SECRET_FETCH_RETRIES = 2;
 
+    private static final long MAX_RETRY_AFTER_MS = 30_000;
+
     private static final String USER_AGENT =
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                     + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
@@ -148,7 +150,7 @@ public final class SpotifyProvider implements LyricsProvider {
         for (int attempt = 0; attempt <= SEARCH_RETRIES; attempt++) {
             if (retryAfterMs > 0) {
                 try {
-                    Thread.sleep(retryAfterMs);
+                    Thread.sleep(Math.min(retryAfterMs, MAX_RETRY_AFTER_MS));
                 } catch (InterruptedException ex) {
                     Logger.printDebug(() -> "Interrupted during search retry sleep", ex);
                     Thread.currentThread().interrupt();
@@ -757,7 +759,10 @@ public final class SpotifyProvider implements LyricsProvider {
         final String retryAfter = connection.getHeaderField("Retry-After");
         if (retryAfter != null) {
             try {
-                return Long.parseLong(retryAfter) * 1000;
+                final long seconds = Long.parseLong(retryAfter.trim());
+                if (seconds > 0) {
+                    return Math.min(seconds, MAX_RETRY_AFTER_MS / 1000) * 1000;
+                }
             } catch (NumberFormatException ex) {
                 Logger.printDebug(() -> "Could not parse Retry-After header", ex);
             }

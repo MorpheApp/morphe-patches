@@ -90,6 +90,8 @@ Dəyişikliklər ehtiva edir:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">\"Ən son videolar\" düyməsini gizlət</string>
   <string name="morphe_hide_latest_videos_button_summary">Ev axınının yuxarısında görünən mavi \"Ən son videolar\" panelin gizlədir</string>
+  <string name="morphe_hide_live_streams_title">Canlı yayımları gizlət</string>
+  <string name="morphe_hide_live_streams_summary">Əsas səhifədə və axtarış nəticələrində canlı yayımlanan videoları gizlədir</string>
   <string name="morphe_hide_mix_playlists_title">Mix pleylistlərin gizlət</string>
   <string name="morphe_hide_movies_section_title">Filmlər bölməsini gizlət</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -692,6 +694,7 @@ Bunu düzəltmək üçün 'Video yayımlarını saxtalaşdır'-ı aktivləşdir 
   <string name="morphe_hide_channel_profile_button_title">Kanalı və Abunə ol düyməsini gizlət</string>
   <string name="morphe_hide_channel_profile_button_summary">Fəaliyyət cərgəsinin əvvəlindəki kanal avatarını və Abunə ol düyməsini gizlədir</string>
   <string name="morphe_hide_channel_profile_subscribe_button_title">Abunə ol düyməsini gizlət</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Fəaliyyət panelinin əvvəlində, kanal avatarı ilə yanaşı olan Abunə ol və Qoşul düymələrini gizlədir</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Kəsmə düyməsini gizlət</string>
   <string name="morphe_hide_clip_button_summary">Bu, bəzi istifadəçi hesabları üçün işləməyə bilər</string>
@@ -1006,6 +1009,7 @@ Avtomobil tərtibatı
   <string name="morphe_tablet_layout_in_player_summary">"Köhnə oynadıcı tərtibatını bərpa edir
 
 Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'Daha çox video' örtüyü mövcud olmaya bilər"</string>
+  <string name="morphe_tablet_layout_in_player_user_dialog_message">Bunun aktivləşdirilməsi oynadıcı tərtibatının bəzi xüsusiyyətlərini, məsələn, şərh bölməsini və ya oynadıcının altında göstərilən \'Daha çox video\' hissəsini sıradan çıxara bilər.</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_target_entry_21_11">21.11.48 - Köhnə titrlərin davranışını bərpa et</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Köhnə pleylistdə saxlanı bərpa et</string>
@@ -1063,6 +1067,13 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_playback_in_feeds_entry_always_on">Həmişə aktiv</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Yalnız Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Qapalı</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Orijinal başlıqları bərpa et</string>
+  <string name="morphe_restore_original_titles_summary">Avtomatik tərcümə olunmuşlar əvəzinə orijinal video başlıqlarını, video təsvirlərini və kanal təsvirlərini göstərir</string>
+  <string name="morphe_restore_original_titles_loading">Başlıq yüklənilir…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Avtomatik axın yeniləməsini qapat</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Axınların köhnəldikdən sonra avtomatik yenilənməsinin qarşısını alır</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Kiçik oynadıcı davam etdirilməsini qapat</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Tətbiqin açılışında görünən, YouTube Premium xüsusiyyəti olan \"İzləməyə davam et\" kiçik oynadıcısını qapadır</string>
@@ -1098,6 +1109,8 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_back_button_always_exits_feed_title">Geri düyməsi axından çıxarır</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geriyə basmaq, axının yuxarısına sürüşdürmək əvəzinə, həmişə tətbiqdən çıxır</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
+  <string name="morphe_hide_status_bar_title">Status panelini gizlət</string>
+  <string name="morphe_hide_status_bar_summary">Sistem status panelini gizlədir. Onu bir anlıq göstərmək üçün yuxarı kənardan aşağı sürüşdür</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">İşıqlı kolorit fonu</string>
   <string name="morphe_theme_color_light_entry_2">Ağ</string>
@@ -1187,6 +1200,12 @@ DeArrow.ajay.app 'i açmaq üçün buraya toxun"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Bağlantıları brauzerdə aç</string>
   <string name="morphe_external_browser_summary">Linkləri tətbiqdaxili brauzer əvəzinə, xarici brauzerdə açır</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Oynatma buferinin həcmi</string>
+  <string name="morphe_playback_buffer_size_entry_default">İlkin</string>
+  <string name="morphe_playback_buffer_size_entry_low">Aşağı</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Orta</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Ən yüksək</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Avtomatik</string>
@@ -1306,5 +1325,6 @@ Məhdudiyyət: Köhnə üslub üçün \"Daha çox video\" örtüyünə qayıdır
   <string name="morphe_player_icon_style_entry_default">İlkin</string>
   <string name="morphe_player_icon_style_entry_regular">Nazik</string>
   <string name="morphe_player_icon_style_entry_bold">Qalın</string>
+  <string name="morphe_player_icon_style_entry_custom">Fərdi</string>
   <string name="morphe_shorts_icon_style_title">Shorts simvol üslubu</string>
 </resources>

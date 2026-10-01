@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">隐藏“最新视频”按钮</string>
   <string name="morphe_hide_latest_videos_button_summary">隐藏主页信息流顶部的蓝色“最新视频”横幅</string>
+  <string name="morphe_hide_live_streams_title">隐藏直播</string>
+  <string name="morphe_hide_live_streams_summary">隐藏首页信息流和搜索结果中当前正在直播的视频</string>
   <string name="morphe_hide_mix_playlists_title">隐藏合辑播放列表</string>
   <string name="morphe_hide_movies_section_title">隐藏电影部分</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">始终开启</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">仅限 Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">关闭</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">恢复原标题</string>
+  <string name="morphe_restore_original_titles_summary">显示原始视频标题、视频描述和频道描述，而不是自动翻译的内容</string>
+  <string name="morphe_restore_original_titles_loading">正在加载标题…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">关闭信息流自动刷新</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">防止信息流在过期后自动刷新</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">禁用恢复迷你播放器</string>
   <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示</string>
@@ -1191,6 +1200,12 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">在浏览器中打开链接</string>
   <string name="morphe_external_browser_summary">在外部浏览器而不是应用内浏览器中打开链接</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">播放缓冲区大小</string>
+  <string name="morphe_playback_buffer_size_entry_default">默认</string>
+  <string name="morphe_playback_buffer_size_entry_low">低</string>
+  <string name="morphe_playback_buffer_size_entry_medium">中等</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">最大</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自动</string>
@@ -1310,5 +1325,6 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_default">默认</string>
   <string name="morphe_player_icon_style_entry_regular">细体</string>
   <string name="morphe_player_icon_style_entry_bold">粗体</string>
+  <string name="morphe_player_icon_style_entry_custom">自定义</string>
   <string name="morphe_shorts_icon_style_title">Shorts 图标样式</string>
 </resources>

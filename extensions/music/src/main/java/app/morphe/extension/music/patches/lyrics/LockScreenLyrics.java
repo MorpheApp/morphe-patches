@@ -116,8 +116,8 @@ public final class LockScreenLyrics {
         WeakReference<MediaSession> reference = sessionRef;
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()
                 || reference == null || originalMetadata == null) {
+            restoreIfPushed();
             ticker.stop();
-            lastPushedTitle = null;
             return;
         }
 
@@ -129,15 +129,19 @@ public final class LockScreenLyrics {
             return;
         }
 
-        boolean matched = lyricsMatch();
+        if (!lyricsMatch()) {
+            restoreIfPushed();
+            ticker.schedule();
+            return;
+        }
 
-        String newTitle = getCurrentLine(matched);
+        String newTitle = getCurrentLine();
         if (!needsRepush && newTitle.equals(lastPushedTitle)) {
             ticker.schedule();
             return;
         }
 
-        MediaMetadata metadata = buildMetadata(newTitle, matched);
+        MediaMetadata metadata = buildMetadata(newTitle);
         if (metadata == null) {
             ticker.schedule();
             return;
@@ -148,6 +152,20 @@ public final class LockScreenLyrics {
         needsRepush = false;
 
         ticker.schedule();
+    }
+
+    private static void restoreIfPushed() {
+        if (lastPushedTitle == null) {
+            return;
+        }
+        WeakReference<MediaSession> reference = sessionRef;
+        MediaSession session = reference != null ? reference.get() : null;
+        MediaMetadata original = originalMetadata;
+        if (session != null && original != null) {
+            session.setMetadata(original);
+        }
+        lastPushedTitle = null;
+        needsRepush = false;
     }
 
     private static boolean lyricsMatch() {
@@ -161,25 +179,23 @@ public final class LockScreenLyrics {
                 && manager.areLyricsSynced();
     }
 
-    private static String getCurrentLine(boolean matched) {
-        LyricsManager manager = LyricsManager.getInstance();
-        String line = matched ? manager.getCurrentLineText() : null;
+    private static String getCurrentLine() {
+        String line = LyricsManager.getInstance().getCurrentLineText();
         if (line == null || line.isEmpty()) {
             return realTitle == null ? "" : realTitle;
         }
         return line;
     }
 
-    private static MediaMetadata buildMetadata(String title, boolean matched) {
+    private static MediaMetadata buildMetadata(String title) {
         MediaMetadata.Builder builder = metadataBuilder;
         if (builder == null) {
             return null;
         }
         String artist = realArtist == null ? "" : realArtist;
-        String trackTitle = realTitle;
         String display = artist;
-        if (matched && trackTitle != null && !trackTitle.isEmpty()) {
-            display = new TrackInfo(trackTitle, artist, "", 0)
+        if (realTitle != null && !realTitle.isEmpty()) {
+            display = new TrackInfo(realTitle, artist, "", 0)
                     .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
         }
         builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);

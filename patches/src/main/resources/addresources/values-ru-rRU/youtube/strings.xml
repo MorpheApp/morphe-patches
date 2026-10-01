@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Скрыть кнопку \"Последние видео\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Скрывает синий баннер \"Последние видео\", который появляется в верхней части ленты Home</string>
+  <string name="morphe_hide_live_streams_title">Скрывать прямые эфиры</string>
+  <string name="morphe_hide_live_streams_summary">Скрывает видео, которые сейчас идут в прямом эфире, в ленте на главной странице и в результатах поиска</string>
   <string name="morphe_hide_mix_playlists_title">Скрыть плейлисты \"Джем\"</string>
   <string name="morphe_hide_movies_section_title">Скрыть раздел фильмов</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1067,6 +1069,13 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Всегда</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Только по Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Выкл.</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Восстановить исходные названия</string>
+  <string name="morphe_restore_original_titles_summary">Показывает оригинальные названия видео, описания видео и описания каналов вместо автоматически переведённых</string>
+  <string name="morphe_restore_original_titles_loading">Загрузка названия…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Отключить автоматическое обновление ленты</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Предотвращает автоматическое обновление лент после их устаревания</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Отключить возобновление мини-плеера</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Отключает мини-плеер \"Продолжить просмотр\", функцию YouTube Premium, которая появляется при запуске приложения</string>
@@ -1193,6 +1202,12 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Открывать ссылки в браузере</string>
   <string name="morphe_external_browser_summary">Открывает ссылки во внешнем браузере, а не во встроенном браузере</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Размер буфера воспроизведения</string>
+  <string name="morphe_playback_buffer_size_entry_default">По умолчанию</string>
+  <string name="morphe_playback_buffer_size_entry_low">Низкий</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Средний</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Максимальный</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
@@ -1312,5 +1327,6 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_default">По умолчанию</string>
   <string name="morphe_player_icon_style_entry_regular">Тонкий</string>
   <string name="morphe_player_icon_style_entry_bold">Жирный</string>
+  <string name="morphe_player_icon_style_entry_custom">Пользовательское</string>
   <string name="morphe_shorts_icon_style_title">Стиль значка Shorts</string>
 </resources>

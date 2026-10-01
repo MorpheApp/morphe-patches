@@ -90,6 +90,8 @@ Perubahan termasuk:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sembunyikan tombol \'Video terbaru\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Menyembunyikan spanduk biru \'Video terbaru\' yang muncul di bagian atas feed Beranda</string>
+  <string name="morphe_hide_live_streams_title">Sembunyikan siaran langsung</string>
+  <string name="morphe_hide_live_streams_summary">Menyembunyikan video yang sedang ditayangkan langsung di feed beranda dan hasil penelusuran</string>
   <string name="morphe_hide_mix_playlists_title">Sembunyikan daftar putar campuran</string>
   <string name="morphe_hide_movies_section_title">Sembunyikan bagian film</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -449,7 +451,7 @@ Ketuk di sini untuk membuka OpenRouter.ai"</string>
   <string name="morphe_vot_openrouter_api_key_title">Kunci API OpenRouter</string>
   <string name="morphe_vot_openrouter_api_key_summary">Kunci API OpenRouter Anda. Buat kunci di OpenRouter.ai &gt; Workspace &gt; API Keys</string>
   <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
-  <string name="morphe_vot_openrouter_model_custom">Khusus</string>
+  <string name="morphe_vot_openrouter_model_custom">Kustom</string>
   <string name="morphe_vot_openrouter_not_configured_title">OpenRouter belum dikonfigurasi</string>
   <string name="morphe_vot_openrouter_not_configured_message">Masukkan kunci API OpenRouter Anda di setelan sebelum memilih penyedia ini</string>
   <string name="morphe_vot_cost_free">Gratis</string>
@@ -690,9 +692,9 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
   <string name="morphe_hide_channel_profile_button_title">Sembunyikan tombol saluran dan tombol berlangganan</string>
-  <string name="morphe_hide_channel_profile_button_summary">Menyembunyikan avatar saluran dan tombol berlangganan di awal bilah tindakan</string>
+  <string name="morphe_hide_channel_profile_button_summary">Menyembunyikan avatar saluran dan tombol Subscribe di awal bilah tindakan</string>
   <string name="morphe_hide_channel_profile_subscribe_button_title">Sembunyikan tombol Subscribe</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">Menyembunyikan tombol Subscribe dan Join di samping avatar saluran di awal bilah tindakan</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Menyembunyikan tombol Subscribe dan Gabung di samping avatar saluran di awal bilah tindakan</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Sembunyikan tombol Klip</string>
   <string name="morphe_hide_clip_button_summary">Ini mungkin tidak berfungsi untuk beberapa akun pengguna</string>
@@ -1065,6 +1067,13 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_playback_in_feeds_entry_always_on">Selalu aktif</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi saja</string>
   <string name="morphe_playback_in_feeds_entry_off">Nonaktif</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Pulihkan judul asli</string>
+  <string name="morphe_restore_original_titles_summary">Menampilkan judul video asli, deskripsi video, dan deskripsi saluran, bukan yang diterjemahkan otomatis</string>
+  <string name="morphe_restore_original_titles_loading">Memuat judul…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Nonaktifkan penyegaran feed otomatis</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Mencegah feed agar tidak disegarkan secara otomatis setelah kedaluwarsa</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Nonaktifkan melanjutkan pemutar mini</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>
@@ -1130,7 +1139,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_header_logo_entry_1">Bawaan</string>
   <string name="morphe_header_logo_entry_2">Reguler</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_7'. -->
-  <string name="morphe_header_logo_entry_5">Khusus</string>
+  <string name="morphe_header_logo_entry_5">Kustom</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">Abaikan pembatasan wilayah gambar</string>
   <string name="morphe_bypass_image_region_restrictions_summary">Mengalihkan permintaan thumbnail ke server alternatif untuk memperbaiki gambar yang hilang di negara yang dibatasi</string>
@@ -1191,6 +1200,12 @@ Ketuk di sini untuk membuka DeArrow.ajay.app"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Buka tautan di peramban</string>
   <string name="morphe_external_browser_summary">Membuka tautan di peramban eksternal daripada peramban dalam aplikasi</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Ukuran buffer pemutaran</string>
+  <string name="morphe_playback_buffer_size_entry_default">Bawaan</string>
+  <string name="morphe_playback_buffer_size_entry_low">Rendah</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Sedang</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Otomatis</string>
@@ -1310,5 +1325,6 @@ Batasan: Mengembalikan tampilan hamparan 'Video lainnya' ke gaya lama"</string>
   <string name="morphe_player_icon_style_entry_default">Bawaan</string>
   <string name="morphe_player_icon_style_entry_regular">Tipis</string>
   <string name="morphe_player_icon_style_entry_bold">Tebal</string>
+  <string name="morphe_player_icon_style_entry_custom">Kustom</string>
   <string name="morphe_shorts_icon_style_title">Gaya ikon Shorts</string>
 </resources>

@@ -189,6 +189,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_title">Automātiski atskaņot īsos video</string>
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_entry_off">Izslēgts</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">Atspējots</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
@@ -210,6 +212,7 @@ Second \"item\" text"</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
+  <!-- video.buffer.playbackBufferPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_shorts_quality_default_wifi_title">Īso video noklusējuma kvalitāte, kad izmanto bezvadu, Wi-Fi, tīklu</string>

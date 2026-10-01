@@ -48,6 +48,8 @@ public final class MiniPlayerLyrics {
     @Nullable
     private static String cachedSubtitle;
 
+    private static boolean mirrored;
+
     /** Drives the periodic check that mirrors the current line into the mini player. */
     private static final LyricsTicker ticker = new LyricsTicker(MiniPlayerLyrics::tick);
 
@@ -62,6 +64,7 @@ public final class MiniPlayerLyrics {
     }
 
     private static void disableFeature() {
+        restoreIfMirrored();
         ticker.stop();
         LyricsManager.getInstance().removeListener(lyricsListener);
     }
@@ -98,6 +101,13 @@ public final class MiniPlayerLyrics {
             return;
         }
 
+        try {
+            captureMiniPlayer(view);
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static void captureMiniPlayer(View view) {
         if (titleId == 0) {
             titleId = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player_title");
         }
@@ -132,6 +142,14 @@ public final class MiniPlayerLyrics {
     }
 
     private static void tick() {
+        try {
+            update();
+        } catch (Throwable ignored) {
+            ticker.stop();
+        }
+    }
+
+    private static void update() {
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()) {
             disableFeature();
             return;
@@ -167,15 +185,30 @@ public final class MiniPlayerLyrics {
             if (!TextUtils.equals(cachedSubtitle, subtitle.getText())) {
                 subtitle.setText(cachedSubtitle);
             }
+            mirrored = true;
         } else {
-            if (!TextUtils.equals(track.title(), title.getText())) {
-                title.setText(track.title());
-            }
-            if (!TextUtils.equals(track.artist(), subtitle.getText())) {
-                subtitle.setText(track.artist());
-            }
+            restoreIfMirrored();
         }
 
         ticker.schedule();
+    }
+
+    private static void restoreIfMirrored() {
+        if (!mirrored) {
+            return;
+        }
+        mirrored = false;
+        TextView title = titleRef.get();
+        TextView subtitle = subtitleRef.get();
+        TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
+        if (title == null || subtitle == null || track == null) {
+            return;
+        }
+        if (!TextUtils.equals(track.title(), title.getText())) {
+            title.setText(track.title());
+        }
+        if (!TextUtils.equals(track.artist(), subtitle.getText())) {
+            subtitle.setText(track.artist());
+        }
     }
 }

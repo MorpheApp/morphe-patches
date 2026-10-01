@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">「新着動画」ボタンを非表示</string>
   <string name="morphe_hide_latest_videos_button_summary">ホームフィードの最上部に表示される青色の「新着動画」バナーを非表示にします</string>
+  <string name="morphe_hide_live_streams_title">ライブ配信を非表示</string>
+  <string name="morphe_hide_live_streams_summary">ホームフィードと検索結果で現在ライブ配信中の動画を非表示にします</string>
   <string name="morphe_hide_mix_playlists_title">ミックスリストを非表示</string>
   <string name="morphe_hide_movies_section_title">映画セクションを非表示</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -341,27 +343,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_aislist_attribution_summary">"AiSList からデータを取得しています
 
 ここをタップすると AiSlopList.com を開きます。詳細の確認や、他のプラットフォーム版のダウンロードが可能です"</string>
-  <string name="morphe_aislist_submit_category_title">AIチャンネルを報告</string>
-  <string name="morphe_aislist_submit_flyout_menu_title">動画メニューに報告項目を追加</string>
-  <string name="morphe_aislist_submit_flyout_menu_summary">動画メニューに、動画のチャンネルをAiSListに報告する項目を追加します</string>
+  <string name="morphe_aislist_submit_category_title">AI チャンネルを報告</string>
+  <string name="morphe_aislist_submit_flyout_menu_title">動画のメニューに報告項目を追加</string>
+  <string name="morphe_aislist_submit_flyout_menu_summary">動画を投稿したチャンネルを AiSList に報告する項目を、動画のフライアウト メニューに追加します</string>
   <string name="morphe_aislist_submit_username_title">報告者名</string>
-  <string name="morphe_aislist_submit_username_summary">公開されているAiSListのリーダーボードで、あなたの報告の横に表示される名前です。この欄が空の間は報告できません。</string>
-  <string name="morphe_aislist_submit_title">AIチャンネルを報告</string>
-  <string name="morphe_aislist_submit_dialog_message">"この動画を証拠として、%sをAiSListに送信しますか？
+  <string name="morphe_aislist_submit_username_summary">AiSList で公開されているランキングで、報告と共に表示される名前です。ここを空欄にして報告することはできません</string>
+  <string name="morphe_aislist_submit_title">AI チャンネルを報告</string>
+  <string name="morphe_aislist_submit_dialog_message">"この動画を根拠として、%s を AiSList に報告しますか？
 
-報告するチャンネルは次のいずれかに該当するものだけにしてください：
-• AIの音声、映像、スクリプト、または音楽を主なコンテンツとして使用している
-• AIツールで大量のコンテンツを、人の手をほとんど使わずに制作している
+次の条件に該当するチャンネルのみを報告してください:
 
-AIについて議論するだけのチャンネルや、動画の一部にだけAIを使用しているチャンネルは報告しないでください。
+• AI 生成による音声、映像、台本、音楽を主なコンテンツとして使用している
+• AI ツールを使用し、人の手による作業をほとんど行わずにコンテンツを大量生産している
 
-報告は公開され、チャンネルがリストに追加される前に審査されます。削除はGitHubでのリクエストによってのみ可能です。"</string>
-  <string name="morphe_aislist_submit_already_blocklisted">このチャンネルはすでにAiSListのブロックリストに登録されています</string>
-  <string name="morphe_aislist_submit_already_warnlisted">このチャンネルはすでにAiSListの警告リストに登録されています</string>
+AI について扱っているだけのチャンネルや、動画の一部に AI を使用しているだけのチャンネルは報告しないでください。
+
+報告は公開され、チャンネルがリストに追加される前に審査されます。リストから削除するには、 Github での申請が必要です。"</string>
+  <string name="morphe_aislist_submit_already_blocklisted">このチャンネルは、すでに AiSList のブロックリストに登録されています</string>
+  <string name="morphe_aislist_submit_already_warnlisted">このチャンネルは、すでに AiSList の要注意リストに登録されています</string>
   <string name="morphe_aislist_submit_dialog_confirm">報告</string>
-  <string name="morphe_aislist_submit_no_username">チャンネルを報告するには、AIチャンネルフィルターの設定で報告者名を設定してください</string>
+  <string name="morphe_aislist_submit_no_username">チャンネルを報告するには、[AI チャンネル フィルタ] の [報告者名] を設定してください</string>
   <string name="morphe_aislist_submit_resolving">チャンネルを検索中…</string>
-  <string name="morphe_aislist_submit_failed_channel">この動画のチャンネルが見つかりません</string>
+  <string name="morphe_aislist_submit_failed_channel">この動画のチャンネルが見つかりませんでした</string>
   <string name="morphe_aislist_submit_success">チャンネルを報告しました。審査待ちです</string>
   <string name="morphe_aislist_submit_failed_conflict">AiSListは報告を保存できませんでした。後でもう一度お試しください</string>
   <string name="morphe_aislist_submit_failed_rate_limit">短時間に送信された報告が多すぎます。後でもう一度お試しください</string>
@@ -947,7 +950,7 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_exit_fullscreen_entry_4">縦画面 &amp; 横画面</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <string name="morphe_force_fullscreen_landscape_title">横向きの全画面表示を有効化</string>
-  <string name="morphe_force_fullscreen_landscape_summary">プレーヤーの映像を横向きに回転して表示する全画面表示を、大画面でも有効にします。通常のスマートフォン サイズの画面での動作を、タブレットなどの大画面で再現する機能のため、利用可能なのは大画面デバイスのみです</string>
+  <string name="morphe_force_fullscreen_landscape_summary">プレーヤーの映像を回転して横向きに表示する全画面表示を、大画面でも有効にします。通常のスマートフォン サイズの画面での動作を、タブレットなどの大画面で再現する機能のため、利用可能なのは大画面デバイスのみです</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
   <string name="morphe_disable_fullscreen_gestures_title">全画面表示ジェスチャー</string>
   <string name="morphe_disable_fullscreen_gestures_summary">全画面表示モードに関連するジェスチャー</string>
@@ -1066,6 +1069,13 @@ Automotive レイアウト
   <string name="morphe_playback_in_feeds_entry_always_on">常に有効</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi のみ</string>
   <string name="morphe_playback_in_feeds_entry_off">オフ</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">タイトルを原文に戻す</string>
+  <string name="morphe_restore_original_titles_summary">自動翻訳されたものではなく、元の動画タイトル、動画の説明、チャンネルの説明を表示します</string>
+  <string name="morphe_restore_original_titles_loading">タイトルを読み込み中…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">自動フィード更新を無効にする</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">フィードが古くなった後に自動的に更新されるのを防ぎます。</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">ミニプレーヤーの再開を無効化</string>
   <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する YouTube Premium 機能「続きを見る」を無効にします</string>
@@ -1190,6 +1200,12 @@ Automotive レイアウト
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">リンクをブラウザで開く</string>
   <string name="morphe_external_browser_summary">アプリ内ブラウザではなく外部ブラウザでリンクを開きます</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">再生バッファサイズ</string>
+  <string name="morphe_playback_buffer_size_entry_default">デフォルト</string>
+  <string name="morphe_playback_buffer_size_entry_low">低</string>
+  <string name="morphe_playback_buffer_size_entry_medium">中</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">最大</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">自動</string>
@@ -1309,5 +1325,6 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <string name="morphe_player_icon_style_entry_default">デフォルト</string>
   <string name="morphe_player_icon_style_entry_regular">細字</string>
   <string name="morphe_player_icon_style_entry_bold">太字</string>
+  <string name="morphe_player_icon_style_entry_custom">カスタム</string>
   <string name="morphe_shorts_icon_style_title">ショート アイコンのスタイル</string>
 </resources>

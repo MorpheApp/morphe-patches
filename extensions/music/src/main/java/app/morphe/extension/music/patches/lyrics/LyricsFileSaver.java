@@ -39,6 +39,15 @@ public final class LyricsFileSaver {
 
     @Nullable
     public static String save(Context context, TrackInfo track, Lyrics lyrics) {
+        try {
+            return saveUnchecked(context, track, lyrics);
+        } catch (Throwable ignored) {
+            return null;
+        }
+    }
+
+    @Nullable
+    private static String saveUnchecked(Context context, TrackInfo track, Lyrics lyrics) {
         String content = lyrics.rawFormat();
         String formatType = lyrics.formatType();
 
@@ -88,11 +97,17 @@ public final class LyricsFileSaver {
 
         values.put(MediaStore.Downloads.IS_PENDING, 1);
 
-        Uri insertUri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+        Uri insertUri;
+        try {
+            insertUri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+        } catch (Throwable ignored) {
+            return null;
+        }
         if (insertUri == null) {
             return null;
         }
 
+        boolean written = false;
         try (OutputStream out = resolver.openOutputStream(insertUri)) {
             if (out == null) {
                 resolver.delete(insertUri, null, null);
@@ -100,15 +115,24 @@ public final class LyricsFileSaver {
             }
             out.write(content.getBytes(StandardCharsets.UTF_8));
             out.flush();
+            written = true;
             return Environment.DIRECTORY_DOWNLOADS + "/" + directoryName + "/" + fileName;
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not save lyrics file", ex);
-            resolver.delete(insertUri, null, null);
+            try {
+                resolver.delete(insertUri, null, null);
+            } catch (Throwable ignored) {
+            }
             return null;
         } finally {
-            values.clear();
-            values.put(MediaStore.Downloads.IS_PENDING, 0);
-            resolver.update(insertUri, values, null, null);
+            if (written) {
+                try {
+                    values.clear();
+                    values.put(MediaStore.Downloads.IS_PENDING, 0);
+                    resolver.update(insertUri, values, null, null);
+                } catch (Throwable ignored) {
+                }
+            }
         }
     }
 

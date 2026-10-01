@@ -90,6 +90,8 @@ Değişiklikler şunları içerir:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Son videolar düğmesini gizle</string>
   <string name="morphe_hide_latest_videos_button_summary">Ana sayfa akışının üst kısmında görünen mavi \"En yeni videolar\" afişini gizler</string>
+  <string name="morphe_hide_live_streams_title">Canlı yayınları gizle</string>
+  <string name="morphe_hide_live_streams_summary">Ana sayfa akışındaki ve arama sonuçlarındaki canlı videoları gizler</string>
   <string name="morphe_hide_mix_playlists_title">Mix oynatma listelerini gizle</string>
   <string name="morphe_hide_movies_section_title">Filmler kısmını gizle</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_playback_in_feeds_entry_always_on">Her zaman açık</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Yalnızca Wi-Fi üzerinde</string>
   <string name="morphe_playback_in_feeds_entry_off">Kapalı</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Orijinal başlıkları geri yükle</string>
+  <string name="morphe_restore_original_titles_summary">Orijinal video başlıklarını, video açıklamalarını ve kanal açıklamalarını otomatik çevrilenlerin yerine gösterir</string>
+  <string name="morphe_restore_original_titles_loading">Başlık yükleniyor…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Otomatik akış yenilemeyi devre dışı bırak</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Akışların güncelliğini yitirdikten sonra otomatik olarak yenilenmesini engeller</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini oynatıcıyı sürdürmeyi devre dışı bırak</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Uygulama başlangıcında görünen YouTube Premium özelliği \'İzlemeye devam edin\' mini oynatıcısını devre dışı bırakır</string>
@@ -1191,6 +1200,12 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Bağlantıları tarayıcıda aç</string>
   <string name="morphe_external_browser_summary">Bağlantıları uygulama içi tarayıcı yerine harici bir tarayıcıda açar</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Oynatma arabellek boyutu</string>
+  <string name="morphe_playback_buffer_size_entry_default">Varsayılan</string>
+  <string name="morphe_playback_buffer_size_entry_low">Düşük</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Orta</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Oto</string>
@@ -1310,5 +1325,6 @@ Sınırlama: Eski stil 'Diğer videolar' katmanına geri döner"</string>
   <string name="morphe_player_icon_style_entry_default">Varsayılan</string>
   <string name="morphe_player_icon_style_entry_regular">İnce</string>
   <string name="morphe_player_icon_style_entry_bold">Kalın</string>
+  <string name="morphe_player_icon_style_entry_custom">Özel</string>
   <string name="morphe_shorts_icon_style_title">Shorts simge stili</string>
 </resources>

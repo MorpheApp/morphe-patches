@@ -92,6 +92,8 @@ Promjene uključuju:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sakrij dugme \'Latest videos\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Skriva plavu natpisnu traku \'Noviji videozapisi\' koja se pojavljuje na vrhu početnog zaslona</string>
+  <string name="morphe_hide_live_streams_title">Sakrij prijenose uživo</string>
+  <string name="morphe_hide_live_streams_summary">Skriva videozapise koji se trenutno prenose uživo na početnom feedu i u rezultatima pretraživanja.</string>
   <string name="morphe_hide_mix_playlists_title">Sakrij sveske</string>
   <string name="morphe_hide_movies_section_title">Sakrij sekcije s filmovima</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1067,6 +1069,13 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_playback_in_feeds_entry_always_on">Uvijek uključeno</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Samo Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Isključeno</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Vrati izvorne naslove</string>
+  <string name="morphe_restore_original_titles_summary">Prikazuje izvorne naslove videozapisa, opise videozapisa i opise kanala umjesto automatski prevedenih</string>
+  <string name="morphe_restore_original_titles_loading">Učitavanje naslova…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Onemogući automatsko osvježavanje feeda</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Sprječava automatsko osvježavanje feedova nakon što postanu zastarjeli</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Onemogući nastavak reprodukcije u miniplayeru</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogućuje miniplayer \'Nastavi gledati\', značajku YouTube Premiuma koja se pojavljuje pri pokretanju aplikacije</string>
@@ -1193,6 +1202,12 @@ Dodirnite ovdje za otvaranje DeArrow.ajay.app"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Otvori linkove u pregledniku</string>
   <string name="morphe_external_browser_summary">Otvara poveznice u vanjskom pregledniku umjesto onog u aplikaciji</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Veličina međuspremnika za reprodukciju</string>
+  <string name="morphe_playback_buffer_size_entry_default">Zadano</string>
+  <string name="morphe_playback_buffer_size_entry_low">Nisko</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Srednje</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maksimalno</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatski</string>
@@ -1312,5 +1327,6 @@ Ograničenje: Vraća se na stari stil 'More videos' prekrivača"</string>
   <string name="morphe_player_icon_style_entry_default">Zadano</string>
   <string name="morphe_player_icon_style_entry_regular">Tanko</string>
   <string name="morphe_player_icon_style_entry_bold">Podebljano</string>
+  <string name="morphe_player_icon_style_entry_custom">Prilagođeno</string>
   <string name="morphe_shorts_icon_style_title">Stil ikone Shorts</string>
 </resources>

@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">更新主机的 Jam 补丁，以支持暂停和恢复。</string>
+  <string name="morphe_music_jam_probe_title">Jam 队列共享</string>
+  <string name="morphe_music_jam_probe_summary">发起或加入附近的 Jam，并通过 Jam Layer 编辑其队列。</string>
+  <string name="morphe_music_jam_enabled_title">启用 Jam 队列共享</string>
+  <string name="morphe_music_jam_enabled_summary">在 YouTube Music 重启后启用 Jam 集成。</string>
+  <string name="morphe_music_jam_download_title">下载 Jam Layer 以开始使用</string>
+  <string name="morphe_music_jam_download_summary">在浏览器中打开最新的 Jam Layer 版本。</string>
+  <string name="morphe_music_jam_controls_title">Jam 控制</string>
+  <string name="morphe_music_jam_controls_summary">发起或加入附近的 Jam 并管理会话。</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer 软件包</string>
+  <string name="morphe_music_jam_companion_package_summary">选择用于附近队列共享的已安装配套应用。</string>
+  <string name="morphe_music_jam_package_message">使用已安装的配套软件包。配对需要你的批准和本地能力令牌。</string>
+  <string name="morphe_music_jam_wifi_title">开启 Wi-Fi？</string>
+  <string name="morphe_music_jam_wifi_message">开启 Wi-Fi，然后重新尝试发起或加入 Jam。</string>
+  <string name="morphe_music_jam_wifi_settings">打开 Wi-Fi 设置</string>
+  <string name="morphe_music_jam_cancel">取消</string>
+  <string name="morphe_music_jam_use_package">使用软件包</string>
+  <string name="morphe_music_jam_invalid_package">输入有效的 Android 软件包名称</string>
+  <string name="morphe_music_jam_package_saved">软件包已保存。请设置 Jam Layer 以进行连接。</string>
+  <string name="morphe_music_jam_disconnected">Jam 已断开连接</string>
+  <string name="morphe_music_jam_enable_layer_first">请先启用 Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">在设置中启用 Jam 队列共享，然后重启 YouTube Music。</string>
+  <string name="morphe_music_jam_install_layer_first">请先安装所选 Jam Layer 软件包</string>
+  <string name="morphe_music_jam_join_hint">输入主机上显示的代码。即使附近设备的局域网不同，Wi-Fi Aware 也可以连接它们。</string>
+  <string name="morphe_music_jam_join_with_code">使用代码加入</string>
+  <string name="morphe_music_jam_join">加入</string>
+  <string name="morphe_music_jam_scan_qr">扫描二维码</string>
+  <string name="morphe_music_jam_invalid_invite">输入八位代码或粘贴邀请</string>
+  <string name="morphe_music_jam_join_your_jam">加入你的 Jam</string>
+  <string name="morphe_music_jam_copy_code">复制代码</string>
+  <string name="morphe_music_jam_code_clip">Jam 代码</string>
+  <string name="morphe_music_jam_show_qr">显示二维码</string>
+  <string name="morphe_music_jam_done">完成</string>
+  <string name="morphe_music_jam_invite_title">邀请加入你的 Jam</string>
+  <string name="morphe_music_jam_invite_message">扫码加入并编辑此队列。结束 Jam 将撤销邀请。</string>
+  <string name="morphe_music_jam_copy_link">复制链接</string>
+  <string name="morphe_music_jam_invitation_clip">Jam 邀请</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam 正在重新连接，请稍后重试。</string>
+  <string name="morphe_music_jam_added_to_jam">已添加到 Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam 不可用，未添加曲目。</string>
+  <string name="morphe_music_jam_your_jam">你的 Jam</string>
+  <string name="morphe_music_jam_listening_together">一起聆听</string>
+  <string name="morphe_music_jam_joining_jam">正在加入 Jam</string>
+  <string name="morphe_music_jam_listen_together">一起听</string>
+  <string name="morphe_music_jam_updating">正在更新 Jam…</string>
+  <string name="morphe_music_jam_finding_host">正在通过 Wi-Fi 查找你的主机…</string>
+  <string name="morphe_music_jam_waiting_people">正在等待其他人加入</string>
+  <string name="morphe_music_jam_one_connected">%d 人已连接</string>
+  <string name="morphe_music_jam_many_connected">%d 人已连接</string>
+  <string name="morphe_music_jam_code_expires">在附近的设备上输入此代码。Wi-Fi Aware 在支持的情况下可跨不同的局域网工作。代码将在 %d 分钟后过期。</string>
+  <string name="morphe_music_jam_seek_to">要跳转到 %s 吗？</string>
+  <string name="morphe_music_jam_edits_open">编辑已开启</string>
+  <string name="morphe_music_jam_edits_locked">编辑已锁定</string>
+  <string name="morphe_music_jam_connected_aware">已通过 Wi-Fi Aware 连接</string>
+  <string name="morphe_music_jam_connected_wifi">已通过 Wi-Fi 连接</string>
+  <string name="morphe_music_jam_connected_bluetooth">已通过蓝牙连接</string>
+  <string name="morphe_music_jam_unsupported">Jam 期间不支持</string>
+  <string name="morphe_music_jam_cancelled">已取消加入</string>
+  <string name="morphe_music_jam_reconnecting_host">正在重新连接到你的主机…</string>
+  <string name="morphe_music_jam_share_prompt">共享一个队列，让每个人都能添加歌曲。</string>
+  <string name="morphe_music_jam_invite_people">邀请他人</string>
+  <string name="morphe_music_jam_guest_edits">访客可以编辑队列</string>
+  <string name="morphe_music_jam_end_jam">结束 Jam</string>
+  <string name="morphe_music_jam_participant_help">主机播放音乐。可以直接在 YouTube Music 队列中添加、移动或移除歌曲。</string>
+  <string name="morphe_music_jam_joining_help">让两台设备保持靠近。在查找主机时，你可以取消。</string>
+  <string name="morphe_music_jam_cancel_joining">取消加入</string>
+  <string name="morphe_music_jam_leave_jam">离开 Jam</string>
+  <string name="morphe_music_jam_start_jam">开始 Jam</string>
+  <string name="morphe_music_jam_setup_layer">设置 Jam Layer</string>
+  <string name="morphe_music_jam_manage">管理</string>
+  <string name="morphe_music_jam_details">详细信息</string>
+  <string name="morphe_music_jam_open">打开</string>
+  <string name="morphe_music_jam_loading_song_options">正在加载歌曲选项…</string>
+  <string name="morphe_music_jam_song_options_unavailable">歌曲选项不可用，请重试</string>
+  <string name="morphe_music_jam_song_options_failed">无法打开歌曲选项</string>
+  <string name="morphe_music_jam_no_browser">没有可用于下载 Jam Layer 的浏览器</string>
+  <string name="morphe_music_jam_waiting_host_queue">正在等待主机队列</string>
+  <string name="morphe_music_jam_open_song_first">请先在 YouTube Music 中打开一首歌曲</string>
+  <string name="morphe_music_jam_play_on_host">在主机上播放</string>
+  <string name="morphe_music_jam_quit_and_play">退出 Jam 并在本地播放</string>
+  <string name="morphe_music_jam_play_next">在 Jam 中下一首播放</string>
+  <string name="morphe_music_jam_add_to_queue">添加到 Jam 队列</string>
+  <string name="morphe_music_jam_play_track">播放此 Jam 曲目</string>
+  <string name="morphe_music_jam_choose_playback">选择播放位置</string>
+  <string name="morphe_music_jam_move_host_here">将主机移到这里</string>
+  <string name="morphe_music_jam_seek_not_ready">歌曲未能进入可跳转状态</string>
+  <string name="morphe_music_jam_queue_changed_gesture">队列已更改，请重试该手势。</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">标题logo</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_remember_repeat_state_title">记住重复状态</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">记住随机播放状态</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">播放速度</string>
+  <string name="morphe_music_playback_speed_summary">用于所有曲目的速度。在 100% 时，使用应用速度，例如播客播放速度。</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">随速度改变音调</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">禁用不喜欢重定向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
@@ -429,7 +520,12 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_show_romanize_button_title">显示音译按钮</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">点按以切换罗马音；长按仅显示罗马音。使用提供方罗马音、Google 翻译或兼容 OpenAI 的 API</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">显示刷新按钮</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">点按可切换至下一个歌词候选项；长按可暂时禁用第三方歌词并显示原生歌词</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">点按可切换到下一个歌词候选；长按可按歌曲标题和歌手搜索歌词</string>
+  <string name="morphe_music_lyrics_search_dialog_title">搜索歌词</string>
+  <string name="morphe_music_lyrics_search_title_hint">歌曲标题</string>
+  <string name="morphe_music_lyrics_search_artist_hint">歌手</string>
+  <string name="morphe_music_lyrics_search_empty">输入歌曲标题和歌手</string>
+  <string name="morphe_music_lyrics_search_no_providers">已启用的提供商均无法搜索其他歌曲</string>
   <string name="morphe_music_lyrics_saved">已保存</string>
   <string name="morphe_music_lyrics_word_sync_title">高亮显示同步的单词或音节</string>
   <string name="morphe_music_lyrics_word_sync_summary">优先考虑可用逐字歌词。当歌词带有时间标志，随着音乐及时高亮每个单词或音节</string>
@@ -483,6 +579,7 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API 端点 URL（例如 https://text.pollinations.ai/openai）</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API 密钥（留空以匿名访问）</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">模型名称（例如 openai-fast、gpt-4o-mini）</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">提示模板（变量：{language}、{task}、{title}、{artist}、{count}、{lines}）</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI 翻译设置已保存</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">无法连接到 AI 端点。请检查您的设置。</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI 翻译设置已重置</string>

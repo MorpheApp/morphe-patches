@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">I-update ang Jam patch ng host upang gumamit ng pause at resume.</string>
+  <string name="morphe_music_jam_probe_title">Pagbabahagi ng queue ng Jam</string>
+  <string name="morphe_music_jam_probe_summary">Mag-host o sumali sa kalapit na Jam at i-edit ang queue nito sa pamamagitan ng Jam Layer.</string>
+  <string name="morphe_music_jam_enabled_title">I-enable ang pagbabahagi ng queue ng Jam</string>
+  <string name="morphe_music_jam_enabled_summary">Pinapagana ang Jam integration pagkatapos i-restart ang YouTube Music.</string>
+  <string name="morphe_music_jam_download_title">I-download ang Jam Layer para gumana</string>
+  <string name="morphe_music_jam_download_summary">Buksan ang pinakabagong bersyon ng Jam Layer sa iyong browser.</string>
+  <string name="morphe_music_jam_controls_title">Mga kontrol sa Jam</string>
+  <string name="morphe_music_jam_controls_summary">Mag-host o sumali sa kalapit na Jam at pamahalaan ang session.</string>
+  <string name="morphe_music_jam_companion_package_title">Package ng Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Piliin ang naka-install na kasamang app na ginagamit para sa pagbabahagi ng queue sa mga kalapit na device.</string>
+  <string name="morphe_music_jam_package_message">Gumamit ng naka-install na kasamang package. Ang pagpapares ay nangangailangan ng iyong pag-apruba at isang lokal na capability token.</string>
+  <string name="morphe_music_jam_wifi_title">I-on ang Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">I-on ang Wi-Fi, pagkatapos subukang simulan o salihan muli ang Jam.</string>
+  <string name="morphe_music_jam_wifi_settings">Buksan ang mga setting ng Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">Ikansela</string>
+  <string name="morphe_music_jam_use_package">Gamitin ang package</string>
+  <string name="morphe_music_jam_invalid_package">Maglagay ng wastong pangalan ng Android package</string>
+  <string name="morphe_music_jam_package_saved">Na-save ang package. I-set up ang Jam Layer para kumonekta.</string>
+  <string name="morphe_music_jam_disconnected">Nadiskonekta ang Jam</string>
+  <string name="morphe_music_jam_enable_layer_first">I-enable muna ang Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">I-enable ang pagbabahagi ng queue ng Jam sa mga setting, pagkatapos i-restart ang YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">I-install muna ang napiling package ng Jam Layer</string>
+  <string name="morphe_music_jam_join_hint">Ilagay ang code na ipinapakita sa host. Maaaring ikonekta ng Wi-Fi Aware ang mga kalapit na device kahit magkaiba ang kanilang mga LAN.</string>
+  <string name="morphe_music_jam_join_with_code">Sumali gamit ang code</string>
+  <string name="morphe_music_jam_join">Sumali</string>
+  <string name="morphe_music_jam_scan_qr">I-scan ang QR</string>
+  <string name="morphe_music_jam_invalid_invite">Ilagay ang walong karakter na code o i-paste ang isang imbitasyon</string>
+  <string name="morphe_music_jam_join_your_jam">Sumali sa iyong Jam</string>
+  <string name="morphe_music_jam_copy_code">Kopyahin ang code</string>
+  <string name="morphe_music_jam_code_clip">Code ng Jam</string>
+  <string name="morphe_music_jam_show_qr">Ipakita ang QR</string>
+  <string name="morphe_music_jam_done">Tapos</string>
+  <string name="morphe_music_jam_invite_title">Mag-imbita sa iyong Jam</string>
+  <string name="morphe_music_jam_invite_message">I-scan para sumali at i-edit ang queue na ito. Kinakansela ng pagtatapos ng Jam ang imbitasyon.</string>
+  <string name="morphe_music_jam_copy_link">Kopyahin ang link</string>
+  <string name="morphe_music_jam_invitation_clip">Imbitasyon sa Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Nagre-reconnect ang Jam; subukang muli sa ilang sandali</string>
+  <string name="morphe_music_jam_added_to_jam">Naidagdag sa Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Hindi available ang Jam; hindi naidagdag ang track</string>
+  <string name="morphe_music_jam_your_jam">Iyong Jam</string>
+  <string name="morphe_music_jam_listening_together">Nakikinig nang magkasama</string>
+  <string name="morphe_music_jam_joining_jam">Sumasali sa Jam</string>
+  <string name="morphe_music_jam_listen_together">Makinig nang magkasama</string>
+  <string name="morphe_music_jam_updating">Ina-update ang Jam…</string>
+  <string name="morphe_music_jam_finding_host">Hinahanap ang iyong host sa Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Naghihintay ng mga tao</string>
+  <string name="morphe_music_jam_one_connected">%d tao ang nakakonekta</string>
+  <string name="morphe_music_jam_many_connected">%d na tao ang nakakonekta</string>
+  <string name="morphe_music_jam_code_expires">Ilagay ang code na ito sa isang kalapit na device. Gumagana ang Wi-Fi Aware sa magkahiwalay na LAN kapag suportado. Mag-e-expire sa loob ng %d minuto.</string>
+  <string name="morphe_music_jam_seek_to">Mag-seek sa %s?</string>
+  <string name="morphe_music_jam_edits_open">Bukas ang mga pag-edit</string>
+  <string name="morphe_music_jam_edits_locked">Naka-lock ang mga pag-edit</string>
+  <string name="morphe_music_jam_connected_aware">Konektado sa pamamagitan ng Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Konektado sa pamamagitan ng Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Konektado sa pamamagitan ng Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Hindi sinusuportahan habang nasa Jam</string>
+  <string name="morphe_music_jam_cancelled">Kinansela ang pagsali</string>
+  <string name="morphe_music_jam_reconnecting_host">Nagre-reconnect sa iyong host…</string>
+  <string name="morphe_music_jam_share_prompt">Magbahagi ng queue. Hayaang magdagdag ng mga kanta ang lahat.</string>
+  <string name="morphe_music_jam_invite_people">Mag-imbita ng mga tao</string>
+  <string name="morphe_music_jam_guest_edits">Maaaring i-edit ng mga bisita ang queue</string>
+  <string name="morphe_music_jam_end_jam">Tapusin ang Jam</string>
+  <string name="morphe_music_jam_participant_help">Ang host ang nagpapatugtog ng musika. Magdagdag, maglipat, o mag-alis ng mga kanta nang direkta sa queue ng YouTube Music.</string>
+  <string name="morphe_music_jam_joining_help">Panatilihing magkalapit ang dalawang device. Maaari kang magkansela habang hinahanap namin ang host.</string>
+  <string name="morphe_music_jam_cancel_joining">Kanselahin ang pagsali</string>
+  <string name="morphe_music_jam_leave_jam">Umalis sa Jam</string>
+  <string name="morphe_music_jam_start_jam">Magsimula ng Jam</string>
+  <string name="morphe_music_jam_setup_layer">I-set up ang Jam Layer</string>
+  <string name="morphe_music_jam_manage">Pamahalaan</string>
+  <string name="morphe_music_jam_details">Mga Detalye</string>
+  <string name="morphe_music_jam_open">Buksan</string>
+  <string name="morphe_music_jam_loading_song_options">Naglo-load ng mga opsyon sa kanta…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Hindi available ang mga opsyon sa kanta; subukang muli</string>
+  <string name="morphe_music_jam_song_options_failed">Hindi mabuksan ang mga opsyon sa kanta</string>
+  <string name="morphe_music_jam_no_browser">Walang available na browser para i-download ang Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">Naghihintay sa queue ng host</string>
+  <string name="morphe_music_jam_open_song_first">Magbukas muna ng kanta sa YouTube Music</string>
+  <string name="morphe_music_jam_play_on_host">I-play sa host</string>
+  <string name="morphe_music_jam_quit_and_play">Umalis sa Jam at magpatugtog nang lokal</string>
+  <string name="morphe_music_jam_play_next">I-play ang susunod sa Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Idagdag sa queue ng Jam</string>
+  <string name="morphe_music_jam_play_track">I-play ang track na ito sa Jam</string>
+  <string name="morphe_music_jam_choose_playback">Piliin kung saan i-play</string>
+  <string name="morphe_music_jam_move_host_here">Ilipat ang host dito</string>
+  <string name="morphe_music_jam_seek_not_ready">Hindi naging handa ang kanta para mag-seek</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Nagbago ang queue; subukang muli ang gesture</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo ng Header</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string
   <string name="morphe_music_remember_repeat_state_title">Tandaan ang paulit-ulit na estado</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Tandaan ang shuffle na estado</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Bilis ng pag-playback</string>
+  <string name="morphe_music_playback_speed_summary">Bilis na ginagamit para sa lahat ng mga track. Sa 100%, ginagamit ang bilis ng app, gaya ng bilis ng pag-playback ng podcast</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Baguhin ang pitch ayon sa bilis</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Huwag paganahin ang pagpapalit ng direksyon ng hindi pagka gusto</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Pinipigilan ang paglaktaw sa susunod na track kapag pinindot ang pindutang hindi pagka gusto</string>
@@ -424,7 +515,12 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_show_romanize_button_title">Ipakita ang Romanize button</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">I-tap upang i-toggle ang romanisasyon; pindutin nang matagal para sa romanisasyon lamang. Gumagamit ng romanisasyon mula sa provider, Google Translate, o isang API na katugma ng OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Ipakita ang button na Refresh</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">I-highlight ang mga naka-sync na salita o pantig.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">I-tap upang lumipat sa susunod na lyrics; pindutin nang matagal upang maghanap ng lyrics sa pamamagitan ng pamagat ng kanta at ng artist</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Maghanap ng lyrics</string>
+  <string name="morphe_music_lyrics_search_title_hint">Pamagat ng kanta</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artist</string>
+  <string name="morphe_music_lyrics_search_empty">Ilagay ang pangalan ng kanta at ang kumanta nito</string>
+  <string name="morphe_music_lyrics_search_no_providers">Wala sa mga pinaganang provider ang makakapaghanap ng iba pang mga kanta</string>
   <string name="morphe_music_lyrics_saved">Na-save</string>
   <string name="morphe_music_lyrics_word_sync_title">I-highlight ang mga salita o pantig na naka-sync</string>
   <string name="morphe_music_lyrics_word_sync_summary">Unahin ang word-by-word na lyrics kung available. Kapag may word timing ang lyrics, ine-highlight ang bawat salita o pantig na kasabay ng musika.</string>
@@ -478,6 +574,7 @@ Mga kinakailangang cookie: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL ng API endpoint (hal. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API key (iwanang walang laman para sa anonymous na pag-access)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Pangalan ng modelo (hal. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Template ng prompt (mga variable: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Na-save ang mga setting ng pagsasalin ng AI</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Hindi makakonekta sa AI endpoint. Pakisuri ang iyong mga setting.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Na-reset ang mga setting ng pagsasalin ng AI</string>

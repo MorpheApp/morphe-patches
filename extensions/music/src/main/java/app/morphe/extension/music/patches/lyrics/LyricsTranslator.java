@@ -33,14 +33,10 @@ public final class LyricsTranslator {
     private LyricsTranslator() {
     }
 
-    public static String deviceLanguage() {
-        return LyricsRequests.deviceLanguage();
-    }
-
     private static String translationLanguage() {
         String language = Settings.LYRICS_TRANSLATION_LANGUAGE.get();
         return "DEFAULT".equalsIgnoreCase(language)
-                ? deviceLanguage()
+                ? LyricsRequests.deviceLanguage()
                 : language.toLowerCase(Locale.ROOT);
     }
 
@@ -91,9 +87,6 @@ public final class LyricsTranslator {
         return (idx >= 0 ? lang.substring(0, idx) : lang).toLowerCase(Locale.ROOT);
     }
 
-    private static final String SYSTEM_PROMPT =
-            "You are a translator. Output ONLY the translation. No reasoning, no explanations, no step-by-step thinking.";
-
     public static void translate(TrackInfo track, Lyrics lyrics, String source, Callback callback) {
         Utils.verifyOnMainThread();
 
@@ -111,67 +104,54 @@ public final class LyricsTranslator {
         }
 
         executor.execute(() -> {
-            if (Settings.LYRICS_USE_AI_TRANSLATION.get()) {
-                String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
-                String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
-                String model = Settings.LYRICS_AI_MODEL.get();
+            try {
+                if (Settings.LYRICS_USE_AI_TRANSLATION.get()) {
+                    String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
+                    String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
+                    String model = Settings.LYRICS_AI_MODEL.get();
 
-                List<String> aiCached = LyricsCache.getTranslationAI(
+                    List<String> aiCached = LyricsCache.getTranslationAI(
+                            track, source, language, lines);
+                    if (aiCached != null) {
+                        Utils.runOnMainThread(
+                                () -> callback.onTranslated(aiCached, false, true, model));
+                        return;
+                    }
+
+                    List<String> aiResult = aiTranslate(lines, language, track.title(),
+                            track.artist(), baseUrl, apiToken, model);
+                    if (aiResult != null) {
+                        LyricsCache.putTranslationAI(track, source, language, lines, aiResult);
+                        Utils.runOnMainThread(
+                                () -> callback.onTranslated(aiResult, false, true, model));
+                        return;
+                    }
+                }
+
+                List<String> translated = LyricsCache.getTranslation(
                         track, source, language, lines);
-                if (aiCached != null) {
-                    Utils.runOnMainThread(() -> callback.onTranslated(aiCached, false, true, model));
-                    return;
+                if (translated == null) {
+                    translated = translateOnline(lines, language);
+                    if (translated != null) {
+                        LyricsCache.putTranslation(track, source, language, lines, translated);
+                    }
                 }
 
-                List<String> aiResult = aiTranslate(lines, language, track.title(),
-                        track.artist(), baseUrl, apiToken, model);
-                if (aiResult != null) {
-                    LyricsCache.putTranslationAI(track, source, language, lines, aiResult);
-                    Utils.runOnMainThread(() -> callback.onTranslated(aiResult, false, true, model));
-                    return;
-                }
+                List<String> result = translated;
+                Utils.runOnMainThread(
+                        () -> callback.onTranslated(result, result != null, false, null));
+            } catch (Throwable ignored) {
+                Utils.runOnMainThread(() -> callback.onTranslated(null, false, false, null));
             }
-
-            List<String> translated = LyricsCache.getTranslation(track, source, language, lines);
-            if (translated == null) {
-                translated = translateOnline(lines, language);
-                if (translated != null) {
-                    LyricsCache.putTranslation(track, source, language, lines, translated);
-                }
-            }
-
-            List<String> result = translated;
-            Utils.runOnMainThread(() -> callback.onTranslated(result, result != null, false, null));
         });
     }
 
     @Nullable
     private static List<String> aiTranslate(List<String> lines, String language,
             String title, String artist, String baseUrl, String apiToken, String model) {
-        return OpenAIClient.mapLines(baseUrl, apiToken, model,
-                buildTranslatePrompt(lines, language, title, artist), SYSTEM_PROMPT, lines);
-    }
-
-    private static String buildTranslatePrompt(List<String> lines, String targetLang,
-            String title, String artist) {
-        StringBuilder sb = new StringBuilder(200 + lines.size() * 50);
-        sb.append("You are a professional lyrics translator. Translate each line below to ")
-                .append(targetLang).append(", preserving the emotional tone and poetic style of the original.\n");
-        sb.append("Song: ").append(title).append(" by ").append(artist).append("\n\n");
-        sb.append("Output format: Number every translated line, like:\n");
-        sb.append("1. first translation\n");
-        sb.append("2. second translation\n\n");
-        sb.append("CRITICAL RULES:\n");
-        sb.append("- Output exactly ").append(lines.size()).append(" numbered lines (same as input count)\n");
-        sb.append("- Number format: \"N. translated text\" (number, period, space, text)\n");
-        sb.append("- Do NOT include the original lyrics in your output\n");
-        sb.append("- Do NOT use \"Line N:\" format\n");
-        sb.append("- If the lyrics are already in ").append(targetLang)
-                .append(", output one \"SKIP\" per line\n\n");
-        for (String line : lines) {
-            sb.append(line).append("\n");
-        }
-        return sb.toString();
+        String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_PROMPT.get(),
+                "translation", language, title, artist, lines);
+        return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, null, lines);
     }
 
     @Nullable

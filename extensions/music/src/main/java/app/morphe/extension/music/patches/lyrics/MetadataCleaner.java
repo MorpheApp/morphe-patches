@@ -40,71 +40,80 @@ final class MetadataCleaner {
     private static final int CONNECT_TIMEOUT_MS = 5_000;
     private static final int READ_TIMEOUT_MS = 5_000;
 
+    private static final int MAX_DOWNLOAD_CHARS = 256 * 1024;
+
+    private static final int MAX_CACHED_PATTERNS = 8;
+
     private static final ConcurrentMap<String, String> resolveCache = new ConcurrentHashMap<>();
     private static final ConcurrentMap<String, ResolveTask> pendingResolves = new ConcurrentHashMap<>();
-    private static final ExecutorService resolveExecutor = Executors.newCachedThreadPool();
+    private static final ExecutorService resolveExecutor = Executors.newFixedThreadPool(1);
+    private static final ConcurrentMap<String, Pattern> compiledPatterns = new ConcurrentHashMap<>();
 
     private MetadataCleaner() {
     }
 
     static String resolveSetting(@Nullable String value) {
-        if (value == null || value.trim().isEmpty()) {
-            return value == null ? "" : value;
+        SettingLookup lookup = classifySetting(value);
+        if (!lookup.remote()) {
+            return lookup.local();
         }
-
-        String trimmed = value.trim();
-        if (!trimmed.startsWith("http://") && !trimmed.startsWith("https://")) {
-            return trimmed;
+        if (lookup.local() == null) {
+            pendingResolves.computeIfAbsent(lookup.trimmed(), ResolveTask::new).schedule();
+            return "";
         }
-
-        String cached = resolveCache.get(trimmed);
-        if (cached != null) {
-            return cached;
-        }
-
-        pendingResolves.computeIfAbsent(trimmed, ResolveTask::new).schedule();
-        return "";
+        return lookup.local();
     }
 
     static String resolveSettingBlocking(@Nullable String value) {
-        if (value == null || value.trim().isEmpty()) {
-            return value == null ? "" : value;
+        SettingLookup lookup = classifySetting(value);
+        if (!lookup.remote()) {
+            return lookup.local();
+        }
+        if (lookup.local() != null) {
+            return lookup.local();
         }
 
-        String trimmed = value.trim();
-        if (!trimmed.startsWith("http://") && !trimmed.startsWith("https://")) {
-            return trimmed;
-        }
-
-        String cached = resolveCache.get(trimmed);
-        if (cached != null) {
-            return cached;
-        }
-
-        ResolveTask task = pendingResolves.computeIfAbsent(trimmed, ResolveTask::new);
+        ResolveTask task = pendingResolves.computeIfAbsent(lookup.trimmed(), ResolveTask::new);
         task.schedule();
 
         task.await();
-        cached = resolveCache.get(trimmed);
+        String cached = resolveCache.get(lookup.trimmed());
         if (cached != null) {
             return cached;
         }
 
         try {
-            cached = download(trimmed);
-            resolveCache.put(trimmed, cached);
+            cached = download(lookup.trimmed());
+            resolveCache.put(lookup.trimmed(), cached);
             return cached;
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Failed to download setting: " + trimmed, ex);
-            return trimmed;
+            Logger.printDebug(() -> "Failed to download setting: " + lookup.trimmed(), ex);
+            return lookup.trimmed();
         }
     }
 
-    static String cleanTitle(@Nullable String title) {
-        if (title == null) {
-            return "";
+    /**
+     * Splits a setting value into the value a caller returns as is and whether it is a remote
+     * URL that still has to be resolved; {@code local} holds the resolved answer in that case.
+     */
+    private record SettingLookup(String trimmed, boolean remote, @Nullable String local) {
+    }
+
+    private static SettingLookup classifySetting(@Nullable String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return new SettingLookup("", false, value == null ? "" : value);
         }
-        return collapseWhitespace(applyRegex(title, resolveSetting(Settings.LYRICS_CUSTOM_REGEX.get())));
+
+        String trimmed = value.trim();
+        if (!trimmed.startsWith("http://") && !trimmed.startsWith("https://")) {
+            return new SettingLookup(trimmed, false, trimmed);
+        }
+
+        return new SettingLookup(trimmed, true, resolveCache.get(trimmed));
+    }
+
+    static String cleanTitle(@Nullable String title) {
+        return cleanField(title);
     }
 
     static String cleanArtist(@Nullable String artist) {
@@ -119,31 +128,34 @@ final class MetadataCleaner {
         if (separator > 0) {
             clean = clean.substring(0, separator);
         }
-        return collapseWhitespace(applyRegex(clean, resolveSetting(Settings.LYRICS_CUSTOM_REGEX.get())));
+        return cleanField(clean);
     }
 
     static String cleanAlbum(@Nullable String album) {
-        if (album == null) {
-            return "";
-        }
-        return collapseWhitespace(applyRegex(album, resolveSetting(Settings.LYRICS_CUSTOM_REGEX.get())));
+        return cleanField(album);
     }
 
-    @Nullable
-    private static volatile String cachedRegexSource;
-    @Nullable
-    private static volatile Pattern cachedRegex;
+    /** Null safe regex cleanup shared by the title, artist and album fields. */
+    private static String cleanField(@Nullable String value) {
+        if (value == null) {
+            return "";
+        }
+        return collapseWhitespace(
+                applyRegex(value, resolveSetting(Settings.LYRICS_CUSTOM_REGEX.get())));
+    }
 
     static String applyRegex(String input, String regex) {
         if (regex == null || regex.trim().isEmpty()) {
             return input;
         }
         try {
-            Pattern pattern = cachedRegex;
-            if (pattern == null || !regex.equals(cachedRegexSource)) {
+            Pattern pattern = compiledPatterns.get(regex);
+            if (pattern == null) {
                 pattern = Pattern.compile(regex);
-                cachedRegex = pattern;
-                cachedRegexSource = regex;
+                if (compiledPatterns.size() >= MAX_CACHED_PATTERNS) {
+                    compiledPatterns.clear();
+                }
+                compiledPatterns.put(regex, pattern);
             }
             return pattern.matcher(CharactersConverter.normalizePreserveCase(input)).replaceAll("");
         } catch (Exception ex) {
@@ -229,7 +241,7 @@ final class MetadataCleaner {
     }
 
     private static final String[] ARTIST_SEPARATORS =
-            {" & ", ", ", " x ", " X ", " feat. ", " feat ", " ft. ", " ft ", " с ", " 和 ", " 和 ", "/", "×"};
+            {" & ", ", ", " x ", " X ", " feat. ", " feat ", " ft. ", " ft ", " с ", " 和 ", "/", "×"};
 
     private static int indexOfFirstSeparator(String artist) {
         int result = -1;
@@ -254,8 +266,10 @@ final class MetadataCleaner {
         return parts.toArray(new String[0]);
     }
 
+    private static final Pattern WHITESPACE = Pattern.compile("\\s+");
+
     private static String collapseWhitespace(String value) {
-        return value.replaceAll("\\s+", " ").trim();
+        return WHITESPACE.matcher(value).replaceAll(" ").trim();
     }
 
     @NonNull
@@ -288,6 +302,9 @@ final class MetadataCleaner {
                         sb.append('\n');
                     }
                     sb.append(line);
+                    if (sb.length() > MAX_DOWNLOAD_CHARS) {
+                        break;
+                    }
                 }
             }
             return sb.toString().trim();

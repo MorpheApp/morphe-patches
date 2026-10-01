@@ -21,8 +21,9 @@ import java.util.List;
  * @param text        Full line text. For word synced lines it is the concatenation of
  *                    every {@link #words()} entry, so translation and copy stay correct.
  * @param words       Word level timing, empty when only the line is synced.
- * @param agentId     Agent ID (e.g. "v1", "v2") from {@code ttm:agent}, or {@code null}.
- * @param isDuet      Right-aligned duet line derived from agent alternation.
+ * @param agentId     Agent ID (e.g. "v1", "v2") from {@code ttm:agent} or from an enhanced
+ *                    LRC vocal agent marker, or {@code null}.
+ * @param isDuet      Right-aligned duet line derived from agent alternation or number parity.
  * @param isBG        Background vocal line.
  * @param songPart    Song section label (e.g. "Verse", "Chorus"), or {@code null}.
  */

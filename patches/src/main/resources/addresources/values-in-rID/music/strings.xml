@@ -16,6 +16,15 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Perbarui patch Jam pada host untuk menggunakan jeda dan lanjutkan.</string>
+  <string name="morphe_music_jam_cancel">Batalkan</string>
+  <string name="morphe_music_jam_join">Gabung</string>
+  <string name="morphe_music_jam_scan_qr">Pindai QR</string>
+  <string name="morphe_music_jam_copy_code">Salin kode</string>
+  <string name="morphe_music_jam_show_qr">Tampilkan QR</string>
+  <string name="morphe_music_jam_done">Selesai</string>
+  <string name="morphe_music_jam_details">Rincian</string>
+  <string name="morphe_music_jam_open">Buka</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo Header</string>
@@ -180,6 +189,10 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_remember_repeat_state_title">Ingat status ulangi</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Ingat status acak</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Kecepatan pemutaran</string>
+  <string name="morphe_music_playback_speed_summary">Kecepatan yang digunakan untuk semua trek. Pada 100%, kecepatan aplikasi digunakan, seperti kecepatan pemutaran podcast.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Ubah nada sesuai kecepatan</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Nonaktifkan pengalihan tidak suka</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Mencegah peralihan ke trek berikutnya saat tombol tidak suka ditekan</string>
@@ -191,7 +204,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <string name="morphe_music_hide_voice_search_button_title">Sembunyikan tombol pencarian Suara</string>
   <string name="morphe_music_hide_sound_search_button_title">Sembunyikan tombol pencarian suara</string>
   <string name="morphe_music_hide_library_new_button_title">Sembunyikan tombol Baru</string>
-  <string name="morphe_music_hide_library_new_button_summary">Menyembunyikan tombol Baru di tab Pustaka</string>
+  <string name="morphe_music_hide_library_new_button_summary">Menyembunyikan tombol Baru di tab Koleksi</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">Tombol tindakan</string>
   <string name="morphe_music_action_buttons_screen_summary">Pilih tombol tindakan mana yang akan ditampilkan di bawah pemutar</string>
@@ -286,7 +299,7 @@ YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_samples_button_title">Sembunyikan tombol Sampel</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Sembunyikan tombol Jelajahi</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Sembunyikan tombol Eksplorasi</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_library_button_title">Sembunyikan tombol Koleksi</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
@@ -411,12 +424,12 @@ Langkah-langkah:
   <string name="morphe_music_youtube_cookies_title">Cookie YouTube</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Tempelkan cookie YouTube Anda untuk mengambil subtitle dan teks waktu dari YouTube.
 
-​Langkah-langkah:
-​Buka youtube.com di peramban (browser) dan masuk (login)
-​Buka DevTools (F12) → Application → Cookies → youtube.com
-​Salin seluruh string cookie (pasangan kunci=nilai yang dipisahkan dengan titik koma)
+Langkah-langkah:
+1. Buka youtube.com di peramban dan masuk
+2. Buka DevTools (F12) → Application → Cookies → youtube.com
+3. Salin seluruh string cookie (pasangan key=value yang dipisahkan oleh titik koma)
 
-​Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie disimpan</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookie dihapus</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie tidak valid — periksa kembali dan coba lagi.</string>
@@ -425,11 +438,16 @@ Langkah-langkah:
   <string name="morphe_music_lyrics_show_copy_button_title">Tampilkan tombol Salin</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Ketuk untuk menyalin lirik asli sebagai teks biasa; tekan lama untuk menyimpan file sumber lirik mentah ke Unduhan.</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Tampilkan tombol Terjemahan</string>
-  <string name="morphe_music_lyrics_show_translate_button_summary">Ketuk untuk mengalihkan terjemahan; tekan lama untuk hanya terjemahan. Menggunakan terjemahan penyedia, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">Ketuk untuk mengalihkan terjemahan; tekan lama untuk hanya terjemahan. Menggunakan penyedia terjemahan, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_show_romanize_button_title">Tampilkan tombol Romanisasi</string>
-  <string name="morphe_music_lyrics_show_romanize_button_summary">Ketuk untuk mengalihkan romanisasi; tekan lama untuk hanya romanisasi. Menggunakan romanisasi penyedia, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">Ketuk untuk mengalihkan romanisasi; tekan lama untuk hanya romanisasi. Menggunakan penyedia romanisasi, Google Terjemahan, atau API yang kompatibel dengan OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Tampilkan tombol Segarkan</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk beralih ke kandidat lirik berikutnya; tekan lama untuk menonaktifkan lirik pihak ketiga sementara waktu dan menampilkan lirik bawaan</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Ketuk untuk berpindah ke kandidat lirik berikutnya; tekan lama untuk mencari lirik berdasarkan judul lagu dan artis.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Cari lirik</string>
+  <string name="morphe_music_lyrics_search_title_hint">Judul lagu</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artis</string>
+  <string name="morphe_music_lyrics_search_empty">Masukkan judul lagu dan artis</string>
+  <string name="morphe_music_lyrics_search_no_providers">Tidak ada penyedia yang diaktifkan yang dapat mencari lagu lain.</string>
   <string name="morphe_music_lyrics_saved">Tersimpan</string>
   <string name="morphe_music_lyrics_word_sync_title">Sorot kata atau suku kata yang disinkronkan</string>
   <string name="morphe_music_lyrics_word_sync_summary">Utamakan lirik kata per kata jika tersedia. Setiap kata atau suku kata akan disorot sesuai irama musik.</string>
@@ -483,6 +501,7 @@ Langkah-langkah:
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL titik akhir API (mis. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Kunci API (kosongkan untuk akses anonim)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nama model (mis. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Templat prompt (variabel: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Pengaturan terjemahan AI disimpan</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Tidak dapat terhubung ke titik akhir AI. Periksa pengaturan Anda.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Pengaturan terjemahan AI direset</string>

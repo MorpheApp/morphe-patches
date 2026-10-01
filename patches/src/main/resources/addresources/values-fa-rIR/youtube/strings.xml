@@ -1035,6 +1035,8 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">همیشه روشن</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">فقط Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">خاموش</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">غیرفعال‌کردن ادامهٔ پخش در مینی‌پخش‌کننده</string>
   <string name="morphe_miniplayer_disable_resuming_summary">مینی‌پخش‌کنندهٔ «ادامهٔ تماشا» را که یکی از قابلیت‌های YouTube Premium است و هنگام راه‌اندازی برنامه ظاهر می‌شود غیرفعال می‌کند</string>
@@ -1158,6 +1160,8 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">بازکردن پیوندها در مرورگر</string>
   <string name="morphe_external_browser_summary">پیوندها را به‌جای مرورگر درون‌برنامه‌ای، در مرورگر خارجی باز می‌کند</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_entry_default">پیش‌فرض</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">خودکار</string>
@@ -1269,4 +1273,5 @@ Second \"item\" text"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_auto">خودکار</string>
   <string name="morphe_player_icon_style_entry_default">پیش‌فرض</string>
+  <string name="morphe_player_icon_style_entry_custom">سفارشی</string>
 </resources>

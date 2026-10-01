@@ -16,6 +16,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_cancel">Ακύρωση</string>
+  <string name="morphe_music_jam_done">Τέλος</string>
+  <string name="morphe_music_jam_details">Λεπτομέρειες</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Λογότυπο κεφαλίδας</string>
@@ -180,6 +183,10 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_remember_repeat_state_title">Απομνημόνευση κατάστασης επανάληψης</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Απομνημόνευση κατάστασης τυχαιοποίησης</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Ταχύτητα αναπαραγωγής</string>
+  <string name="morphe_music_playback_speed_summary">Ταχύτητα που χρησιμοποιείται για όλα τα κομμάτια. Στο 100% χρησιμοποιείται η ταχύτητα της εφαρμογής, όπως η ταχύτητα αναπαραγωγής podcast</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Αλλαγή τόνου με την ταχύτητα</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Απενεργοποίηση ανακατεύθυνσης αποδοκιμασίας</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Αποτρέπει τη μετάβαση στο επόμενο κομμάτι όταν πατηθεί το κουμπί αποδοκιμασίας</string>
@@ -424,7 +431,12 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_lyrics_show_romanize_button_title">Εμφάνιση κουμπιού μεταγραφής.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Πατήστε για εναλλαγή λατινοποίησης· παρατεταμένο πάτημα για λατινοποίηση μόνο. Χρησιμοποιεί λατινοποίηση παρόχου, Google Translate ή ένα API συμβατό με OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Εμφάνιση κουμπιού ανανέωσης</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Επισήμανση συγχρονισμένων λέξεων ή συλλαβών.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Πατήστε για εναλλαγή στην επόμενη υποψήφια επιλογή στίχων· παρατεταμένο πάτημα για αναζήτηση στίχων με βάση τον τίτλο τραγουδιού και τον καλλιτέχνη</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Αναζήτηση στίχων</string>
+  <string name="morphe_music_lyrics_search_title_hint">Τίτλος τραγουδιού</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Καλλιτέχνης</string>
+  <string name="morphe_music_lyrics_search_empty">Εισαγάγετε τίτλο τραγουδιού και καλλιτέχνη</string>
+  <string name="morphe_music_lyrics_search_no_providers">Κανένας από τους ενεργοποιημένους παρόχους δεν μπορεί να αναζητήσει άλλα τραγούδια</string>
   <string name="morphe_music_lyrics_saved">Αποθηκεύτηκε</string>
   <string name="morphe_music_lyrics_word_sync_title">Επισήμανση συγχρονισμένων λέξεων ή συλλαβών</string>
   <string name="morphe_music_lyrics_word_sync_summary">Δώστε προτεραιότητα στους στίχους λέξη-λέξη όταν είναι διαθέσιμοι. Όταν οι στίχοι έχουν χρονισμό λέξεων, επισημαίνεται κάθε λέξη ή συλλαβή σε συγχρονισμό με τη μουσική.</string>
@@ -478,6 +490,7 @@ YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκ
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL τελικού σημείου API (π.χ. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Κλειδί API (αφήστε κενό για ανώνυμη πρόσβαση)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Όνομα μοντέλου (π.χ. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Πρότυπο προτροπής (μεταβλητές: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Οι ρυθμίσεις μετάφρασης AI αποθηκεύτηκαν</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Δεν ήταν δυνατή η σύνδεση με το τελικό σημείο AI. Ελέγξτε τις ρυθμίσεις σας.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Οι ρυθμίσεις μετάφρασης AI επαναφέρθηκαν</string>

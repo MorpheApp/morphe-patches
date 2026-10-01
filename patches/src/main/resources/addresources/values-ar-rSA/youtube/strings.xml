@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">إخفاء زر \'أحدث الفيديوهات\'</string>
   <string name="morphe_hide_latest_videos_button_summary">يخفي اللافتة الزرقاء \'أحدث مقاطع الفيديو\' التي تظهر في الجزء العلوي من خلاصة الصفحة الرئيسية</string>
+  <string name="morphe_hide_live_streams_title">إخفاء البث المباشر</string>
+  <string name="morphe_hide_live_streams_summary">يخفي الفيديوهات المباشرة الآن في خلاصة الصفحة الرئيسية ونتائج البحث</string>
   <string name="morphe_hide_mix_playlists_title">إخفاء قوائم تشغيل التشكيلة</string>
   <string name="morphe_hide_movies_section_title">إخفاء قسم الأفلام</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1070,6 +1072,13 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_playback_in_feeds_entry_always_on">مفعّل دائمًا</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">فقط Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">متوقف</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">استعادة العناوين الأصلية</string>
+  <string name="morphe_restore_original_titles_summary">يعرض عناوين الفيديو الأصلية وأوصاف الفيديو وأوصاف القناة بدلًا من العناوين والأوصاف المترجمة تلقائيًا</string>
+  <string name="morphe_restore_original_titles_loading">جارٍ تحميل العنوان…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">تعطيل تحديث الخلاصة تلقائيًا</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">يمنع الخلاصات من التحديث تلقائيًا بعد أن تصبح قديمة</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">تعطيل استئناف مشغل الفيديو المصغر</string>
   <string name="morphe_miniplayer_disable_resuming_summary">يعطّل مشغل \'متابعة المشاهدة\' المصغر، وهي ميزة YouTube Premium تظهر عند بدء تشغيل التطبيق</string>
@@ -1196,6 +1205,12 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">فتح الروابط في المتصفح</string>
   <string name="morphe_external_browser_summary">يفتح الروابط في متصفح خارجي بدلًا من المتصفح داخل التطبيق</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">حجم المخزن المؤقت للتشغيل</string>
+  <string name="morphe_playback_buffer_size_entry_default">الوضع الافتراضي</string>
+  <string name="morphe_playback_buffer_size_entry_low">منخفض</string>
+  <string name="morphe_playback_buffer_size_entry_medium">متوسط</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">الحد الأقصى</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">تلقائي</string>
@@ -1315,5 +1330,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_player_icon_style_entry_default">الافتراضي</string>
   <string name="morphe_player_icon_style_entry_regular">نحيف</string>
   <string name="morphe_player_icon_style_entry_bold">عريض</string>
+  <string name="morphe_player_icon_style_entry_custom">مخصّص</string>
   <string name="morphe_shorts_icon_style_title">نمط أيقونة Shorts</string>
 </resources>

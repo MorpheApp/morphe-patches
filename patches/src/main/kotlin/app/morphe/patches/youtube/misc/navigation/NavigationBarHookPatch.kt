@@ -19,12 +19,14 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.youtube.misc.backgesture.addBackPressedHook
+import app.morphe.patches.youtube.misc.backgesture.addPredictiveBackGestureHook
+import app.morphe.patches.youtube.misc.backgesture.backGesturePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.ActionBarSearchResultsFingerprint
-import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
@@ -85,6 +87,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
     dependsOn(
         sharedExtensionPatch,
         versionCheckPatch,
+        backGesturePatch,
         playerTypeHookPatch, // Required to detect the search bar in all situations.
         resourcePatch {
             // Copy missing notification icon.
@@ -167,12 +170,17 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
         }
 
+        // Hook onto navigation bar touches. Needed to detect a tap on the selected
+        // navigation button closes the search, as the button is not selected again.
+        PivotBarDispatchTouchEventFingerprint.method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->navigationBarTouched(Landroid/view/MotionEvent;)V",
+        )
+
         // Hook onto back button pressed. Needed to fix race problem with
         // Litho filtering based on navigation tab before the tab is updated.
-        YouTubeMainActivityOnBackPressedFingerprint.method.addInstruction(
-            0,
-            "invoke-static { p0 }, $EXTENSION_CLASS->onBackPressed(Landroid/app/Activity;)V",
-        )
+        addBackPressedHook(EXTENSION_CLASS)
+        addPredictiveBackGestureHook(EXTENSION_CLASS)
 
         // Hook the search bar.
 

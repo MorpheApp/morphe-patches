@@ -14,8 +14,4 @@ public record Word(long startMs, long endMs, String text, @Nullable String romaj
     public Word(long startMs, long endMs, String text) {
         this(startMs, endMs, text, null, false);
     }
-
-    public Word(long startMs, long endMs, String text, @Nullable String romaji) {
-        this(startMs, endMs, text, romaji, false);
-    }
 }

@@ -90,6 +90,8 @@ Endringer inkluderer:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skjul \'Siste videoer\'-knappen</string>
   <string name="morphe_hide_latest_videos_button_summary">Skjuler den blå «Nyeste videoer»-banneren som vises øverst på Hjem-feeden</string>
+  <string name="morphe_hide_live_streams_title">Skjul direktesendinger</string>
+  <string name="morphe_hide_live_streams_summary">Skjuler videoer som er direktesendt nå i hjemmefeeden og søkeresultatene</string>
   <string name="morphe_hide_mix_playlists_title">Skjul mikse-spellister</string>
   <string name="morphe_hide_movies_section_title">Skjul filmseksjon</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_playback_in_feeds_entry_always_on">Alltid på</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Kun Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Av</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Gjenopprett originale titler</string>
+  <string name="morphe_restore_original_titles_summary">Viser de originale videotitlene, videobeskrivelsene og kanalbeskrivelsene i stedet for de automatisk oversatte</string>
+  <string name="morphe_restore_original_titles_loading">Laster tittel…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedoppdatering</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Forhindrer at feedene oppdateres automatisk etter at de blir utdaterte</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Deaktiver gjenopptak av miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiverer minispilleren «Fortsett å se på», en YouTube Premium-funksjon som vises ved oppstart av appen</string>
@@ -1189,6 +1198,12 @@ Hvis aktivert, sendes videourler til API-serveren og ingen andre data sendes. Hv
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Åpne lenker i nettleser</string>
   <string name="morphe_external_browser_summary">Åpner lenker i en ekstern nettleser i stedet for nettleseren i appen</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Bufferstørrelse for avspilling</string>
+  <string name="morphe_playback_buffer_size_entry_default">Standard</string>
+  <string name="morphe_playback_buffer_size_entry_low">Lav</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Middels</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maksimum</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1308,5 +1323,6 @@ Begrensning: Går tilbake til gammel stil for 'Flere videoer'-overlegg"</string>
   <string name="morphe_player_icon_style_entry_default">Standard</string>
   <string name="morphe_player_icon_style_entry_regular">Tynn</string>
   <string name="morphe_player_icon_style_entry_bold">Fet</string>
+  <string name="morphe_player_icon_style_entry_custom">Egendefinert</string>
   <string name="morphe_shorts_icon_style_title">Shorts-ikonstil</string>
 </resources>

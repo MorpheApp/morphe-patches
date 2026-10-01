@@ -90,6 +90,8 @@ Folgende Änderungen werden vorgenommen:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Schaltfläche „Neueste Videos“ ausblenden</string>
   <string name="morphe_hide_latest_videos_button_summary">Verbirgt das blaue Banner „Neueste Videos“, das oben im Home-Feed angezeigt wird</string>
+  <string name="morphe_hide_live_streams_title">Live-Streams ausblenden</string>
+  <string name="morphe_hide_live_streams_summary">Blendet Videos aus, die gerade live im Startseiten-Feed und in den Suchergebnissen sind.</string>
   <string name="morphe_hide_mix_playlists_title">Mix-Wiedergabelisten ausblenden</string>
   <string name="morphe_hide_movies_section_title">Film-Bereich ausblenden</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1066,6 +1068,13 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_playback_in_feeds_entry_always_on">Immer an</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Nur über WLAN</string>
   <string name="morphe_playback_in_feeds_entry_off">Aus</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Originaltitel wiederherstellen</string>
+  <string name="morphe_restore_original_titles_summary">Zeigt die ursprünglichen Videotitel, Videobeschreibungen und Kanalbeschreibungen anstelle der automatisch übersetzten</string>
+  <string name="morphe_restore_original_titles_loading">Titel wird geladen…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Automatische Feed-Aktualisierung deaktivieren</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Verhindert, dass Feeds automatisch aktualisiert werden, nachdem sie veraltet sind</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Fortsetzen des Miniplayers deaktivieren</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiviert den Miniplayer „Weiter ansehen“, ein YouTube Premium-Feature, das beim Starten der App angezeigt wird.</string>
@@ -1192,6 +1201,12 @@ Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Links im Browser öffnen</string>
   <string name="morphe_external_browser_summary">Öffnet Links in einem externen Browser anstelle des In-App-Browsers</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Puffergröße der Wiedergabe</string>
+  <string name="morphe_playback_buffer_size_entry_default">Standard</string>
+  <string name="morphe_playback_buffer_size_entry_low">Niedrig</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Mittel</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maximal</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Autom</string>
@@ -1311,5 +1326,6 @@ Einschränkung: Kehrt zum alten Overlay 'Weitere Videos' zurück."</string>
   <string name="morphe_player_icon_style_entry_default">Standard</string>
   <string name="morphe_player_icon_style_entry_regular">Dünn</string>
   <string name="morphe_player_icon_style_entry_bold">Fett</string>
+  <string name="morphe_player_icon_style_entry_custom">Benutzerdefiniert</string>
   <string name="morphe_shorts_icon_style_title">Shorts-Symbolstil</string>
 </resources>

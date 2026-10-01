@@ -7,9 +7,12 @@
 
 package app.morphe.patches.youtube.layout.shortsicons
 
+import app.morphe.patcher.patch.filePathOption
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.youtube.layout.player.icons.copyPlayerIconStyles
+import app.morphe.patches.youtube.layout.player.icons.CustomIcons
+import app.morphe.patches.youtube.layout.player.icons.copyIconStyles
+import app.morphe.patches.youtube.layout.player.icons.customIconsOptionDescription
 import app.morphe.patches.youtube.layout.player.icons.wrapAppBitmapIcon
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -56,27 +59,50 @@ val shortsIconStylePatch = resourcePatch(
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
+    val customIcons by filePathOption(
+        key = "customIcons",
+        title = "Custom icons",
+        description = customIconsOptionDescription("morphe_shorts_heart.xml"),
+        allowedExtensions = listOf("zip"),
+    )
+
+    var custom: CustomIcons? = null
+
     execute {
+        custom = customIcons?.takeIf { it.isNotBlank() }?.let(::CustomIcons)
+
         PreferenceScreen.SHORTS.addPreferences(
-            ListPreference(
-                key = "morphe_shorts_icon_style",
-                tag = "app.morphe.extension.youtube.settings.preference.PlayerIconStyleListPreference"
-            )
+            if (custom == null) {
+                ListPreference(
+                    key = "morphe_shorts_icon_style",
+                    tag = "app.morphe.extension.youtube.settings.preference.PlayerIconStyleListPreference"
+                )
+            } else {
+                ListPreference(
+                    key = "morphe_shorts_icon_style",
+                    tag = "app.morphe.extension.youtube.settings.preference.PlayerIconStyleListPreference",
+                    entriesKey = "morphe_shorts_icon_style_custom_entries",
+                    entryValuesKey = "morphe_shorts_icon_style_custom_entry_values"
+                )
+            }
         )
 
-        copyPlayerIconStyles(
+        copyIconStyles(
             "shortsicons",
-            "morphe_shorts_heart",
-            "morphe_shorts_heart_fill",
-            "morphe_shorts_comment",
-            "morphe_shorts_save",
-            "morphe_shorts_save_fill",
-            "morphe_shorts_share",
-            "morphe_shorts_remix",
-            "morphe_shorts_like",
-            "morphe_shorts_like_fill",
-            "morphe_shorts_dislike",
-            "morphe_shorts_dislike_fill"
+            arrayOf(
+                "morphe_shorts_heart",
+                "morphe_shorts_heart_fill",
+                "morphe_shorts_comment",
+                "morphe_shorts_save",
+                "morphe_shorts_save_fill",
+                "morphe_shorts_share",
+                "morphe_shorts_remix",
+                "morphe_shorts_like",
+                "morphe_shorts_like_fill",
+                "morphe_shorts_dislike",
+                "morphe_shorts_dislike_fill"
+            ),
+            custom
         )
 
         // The buttons are Litho components that load these by resource id, so the resource itself is replaced.
@@ -84,5 +110,9 @@ val shortsIconStylePatch = resourcePatch(
         shortsIcons.forEach { (appName, wrapperClass) ->
             wrapAppBitmapIcon(appName, wrapperClass, originalName = "morphe_$appName")
         }
+    }
+
+    finalize {
+        custom?.warnUnused()
     }
 }

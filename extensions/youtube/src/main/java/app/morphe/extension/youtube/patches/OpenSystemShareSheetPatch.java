@@ -8,12 +8,8 @@
 package app.morphe.extension.youtube.patches;
 
 import android.content.Intent;
-import android.os.SystemClock;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Pair;
-import android.view.MotionEvent;
-import android.view.View;
 
 import java.lang.ref.WeakReference;
 
@@ -28,22 +24,41 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetPatch {
 
-    public static WeakReference<RecyclerView> flyoutMenuRecyclerView = new WeakReference<>(null);
-    private static boolean waitUntilClosingDone;
+    public interface ActionSheetControllerInterface {
+        // Method is added during patching.
+        void patch_dismissActionSheet();
+    }
+
+    private static WeakReference<ActionSheetControllerInterface> actionSheetControllerRef = new WeakReference<>(null);
 
     /**
      * Injection point.
      */
-    public static void onFlyoutMenuCreate(final RecyclerView recyclerView) {
-        flyoutMenuRecyclerView = new WeakReference<>(recyclerView);
+    public static void setActionSheetController(ActionSheetControllerInterface actionSheetController) {
+        actionSheetControllerRef = new WeakReference<>(actionSheetController);
+    }
+
+    /**
+     * Dismisses the empty action sheet that is opened before the share endpoint is resolved.
+     */
+    private static void dismissActionSheet() {
+        // Post to the main thread, so the action sheet opened in the same call is already shown.
+        Utils.runOnMainThread(() -> {
+            ActionSheetControllerInterface actionSheetController = actionSheetControllerRef.get();
+            if (actionSheetController != null) {
+                actionSheetController.patch_dismissActionSheet();
+            }
+        });
     }
 
     /**
      * Injection point.
+     *
+     * @return If the in-app share sheet must not be opened.
      */
-    public static void openSystemShareSheet() {
+    public static boolean openSystemShareSheet() {
         if (!Settings.OPEN_SYSTEM_SHARE_SHEET.get()) {
-            return;
+            return false;
         }
 
         final String longURLPrefix = "https://www.youtube.com";
@@ -87,51 +102,12 @@ public final class OpenSystemShareSheetPatch {
             } catch (Exception ex) {
                 Logger.printException(() -> "Can not open System Share panel: " + intentUrl, ex);
             }
+        } else {
+            Logger.printDebug(() -> "Can not open System Share panel: no URL found");
         }
-    }
 
-    public static void closeLithoAppShareSheet() {
-        if (waitUntilClosingDone) {
-            return;
-        }
-        waitUntilClosingDone = true;
-
-        final RecyclerView shareSheetRecyclerView = flyoutMenuRecyclerView.get();
-        if (shareSheetRecyclerView != null) {
-            final View decorView = shareSheetRecyclerView.getRootView();
-
-            if (decorView != null) {
-                float clickX = decorView.getWidth() * 0.5f;
-                float clickY = decorView.getHeight() * 0.25f;
-
-                if (clickX <= 0 || clickY <= 0) {
-                    clickX = clickY = 200.0f;
-                }
-
-                final long eventTime = SystemClock.uptimeMillis();
-
-                for (int i = 0; i < 2; i++) {
-                    final boolean firstIteration = i == 0;
-                    final MotionEvent touchEvent = MotionEvent.obtain(
-                            eventTime,
-                            firstIteration ? eventTime : eventTime + 10,
-                            firstIteration ? MotionEvent.ACTION_DOWN : MotionEvent.ACTION_UP,
-                            clickX,
-                            clickY,
-                            0
-                    );
-                    decorView.dispatchTouchEvent(touchEvent);
-                    touchEvent.recycle();
-                }
-
-                // Given the speed of Litho's elements renders, disable 'waitUntilClosingDone'
-                // after a 500ms delay to ensure that only a single filtered
-                // Litho object triggers the panel's closure.
-                Utils.runOnMainThreadDelayed(
-                        () -> waitUntilClosingDone = false,
-                        500
-                );
-            }
-        }
+        // The in-app share sheet is never opened.
+        dismissActionSheet();
+        return true;
     }
 }

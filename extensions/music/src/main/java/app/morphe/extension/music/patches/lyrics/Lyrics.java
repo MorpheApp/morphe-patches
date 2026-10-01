@@ -62,10 +62,6 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
         romanizations = (romanizations == null) ? null : unmodifiableTranslations(romanizations);
     }
 
-    public Lyrics(List<LyricsLine> lines, String providerName, boolean synced) {
-        this(lines, providerName, synced, null, null, null, null, null, null, null);
-    }
-
     private static Map<String, List<LyricsLine>> unmodifiableTranslations(
             Map<String, List<LyricsLine>> in) {
         Map<String, List<LyricsLine>> out = new HashMap<>(2 * in.size());

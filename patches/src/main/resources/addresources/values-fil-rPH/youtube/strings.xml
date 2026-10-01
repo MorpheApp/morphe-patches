@@ -90,6 +90,8 @@ Kasama sa mga pagbabago ang:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Itago ang button na \'Mga pinakabagong video\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Itinatago ang asul na \'Latest videos\' banner na lumilitaw sa itaas ng Home feed</string>
+  <string name="morphe_hide_live_streams_title">Itago ang mga live stream</string>
+  <string name="morphe_hide_live_streams_summary">Itinatago ang mga video na live ngayon sa home feed at sa mga resulta ng paghahanap</string>
   <string name="morphe_hide_mix_playlists_title">Itago ang mga nakahalong playlist</string>
   <string name="morphe_hide_movies_section_title">Itago ang seksyon ng mga pelikula</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1063,6 +1065,13 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_playback_in_feeds_entry_always_on">Palaging naka-on</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi lamang</string>
   <string name="morphe_playback_in_feeds_entry_off">Naka-off</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Ibalik ang orihinal na mga pamagat</string>
+  <string name="morphe_restore_original_titles_summary">Ipinapakita ang orihinal na mga pamagat ng video, mga paglalarawan ng video at mga paglalarawan ng channel sa halip na ang mga awtomatikong isinalin</string>
+  <string name="morphe_restore_original_titles_loading">Naglo-load ng pamagat…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">I-disable ang awtomatikong pag-refresh ng feed</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Pinipigilan ang mga feed na awtomatikong mag-refresh kapag lipas na ang mga ito</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Huwag paganahin ang pagpapatuloy ng miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>
@@ -1189,6 +1198,12 @@ I-tap dito upang buksan ang DeArrow.ajay.app"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Buksan ang mga link sa browser</string>
   <string name="morphe_external_browser_summary">Binubuksan ang mga link sa isang external browser sa halip na sa in-app browser</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Laki ng buffer ng playback</string>
+  <string name="morphe_playback_buffer_size_entry_default">Awtomatiko</string>
+  <string name="morphe_playback_buffer_size_entry_low">Mababa</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Katamtaman</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Pinakamataas</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Auto</string>
@@ -1308,5 +1323,6 @@ Limitasyon: Bumabalik sa lumang istilo ng overlay na 'Higit pang mga video'"</st
   <string name="morphe_player_icon_style_entry_default">Awtomatiko</string>
   <string name="morphe_player_icon_style_entry_regular">Manipis</string>
   <string name="morphe_player_icon_style_entry_bold">Makapal</string>
+  <string name="morphe_player_icon_style_entry_custom">Pasadya</string>
   <string name="morphe_shorts_icon_style_title">Estilo ng icon ng Shorts</string>
 </resources>

@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Приховати кнопку \"Останні відео\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Приховує синій банер \"Найновіші відео\", що з\'являється у верхній частині стрічки головної сторінки</string>
+  <string name="morphe_hide_live_streams_title">Приховати прямі трансляції</string>
+  <string name="morphe_hide_live_streams_summary">Приховує відео, що зараз транслюються наживо, у головній стрічці та результатах пошуку</string>
   <string name="morphe_hide_mix_playlists_title">Приховати \"Мікс плейлисти\"</string>
   <string name="morphe_hide_movies_section_title">Приховати секцію фільмів</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -692,7 +694,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_channel_profile_button_title">Приховати канал та кнопку \"Підписатися\"</string>
   <string name="morphe_hide_channel_profile_button_summary">Приховує аватар каналу та кнопку \"Підписатися\" на початку панелі дій</string>
   <string name="morphe_hide_channel_profile_subscribe_button_title">Приховати кнопку \"Підписатися\"</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">Ховає кнопки «Підписатися» та «Приєднатися» поруч з аватаром каналу на початку панелі дій</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Приховує кнопки \"Підписатися\" та \"Підписатися +\" поруч з аватаром каналу на початку панелі дій</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Приховати кнопку \"Кліп\"</string>
   <string name="morphe_hide_clip_button_summary">Може не працювати для деяких облікових записів</string>
@@ -1064,6 +1066,13 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Завжди ввімкнено</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Лише Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Вимкнено</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Відновити оригінальні назви</string>
+  <string name="morphe_restore_original_titles_summary">Показує оригінальні назви відео, описи відео та описи каналів замість автоматично перекладених</string>
+  <string name="morphe_restore_original_titles_loading">Завантаження назви…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Вимкнути автоматичне оновлення стрічки</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Запобігає автоматичному оновленню стрічок після того, як вони застарівають</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Вимкнути відновлення мініплеєра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Вимикає мініплеєр \"Продовжити перегляд\", функцію YouTube Premium, що з\'являється при запуску застосунку</string>
@@ -1099,8 +1108,8 @@ Second \"item\" text"</string>
   <string name="morphe_back_button_always_exits_feed_title">Кнопка \"Назад\" виходить зі стрічки</string>
   <string name="morphe_back_button_always_exits_feed_summary">Натискання кнопки \"Назад\" завжди закриває застосунок замість прокручування до початку стрічки</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
-  <string name="morphe_hide_status_bar_title">Приховати рядок стану</string>
-  <string name="morphe_hide_status_bar_summary">Приховує системний рядок стану. Проведіть вниз від верхнього краю, щоб на мить показати його</string>
+  <string name="morphe_hide_status_bar_title">Приховати панель стану</string>
+  <string name="morphe_hide_status_bar_summary">Приховує системну панель стану. Проведіть донизу від верхнього краю, щоб показати її на мить</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Фон світлої теми</string>
   <string name="morphe_theme_color_light_entry_2">Білий</string>
@@ -1190,6 +1199,12 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Відкривати посилання у браузері</string>
   <string name="morphe_external_browser_summary">Відкриває посилання у зовнішньому браузері замість вбудованого</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Розмір буфера відтворення</string>
+  <string name="morphe_playback_buffer_size_entry_default">Типовий</string>
+  <string name="morphe_playback_buffer_size_entry_low">Низький</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Середній</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Максимальний</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Авто</string>
@@ -1309,5 +1324,6 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_default">Типовий</string>
   <string name="morphe_player_icon_style_entry_regular">Тонкий</string>
   <string name="morphe_player_icon_style_entry_bold">Жирний</string>
+  <string name="morphe_player_icon_style_entry_custom">Власний</string>
   <string name="morphe_shorts_icon_style_title">Стиль іконок Shorts</string>
 </resources>

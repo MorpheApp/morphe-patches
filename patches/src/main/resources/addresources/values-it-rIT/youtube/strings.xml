@@ -90,6 +90,8 @@ I cambiamenti riguarderanno:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Nascondi il pulsante \'Video recenti\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Nasconde il banner blu \'Video più recenti\' che compare in cima alla home page</string>
+  <string name="morphe_hide_live_streams_title">Nascondi le dirette</string>
+  <string name="morphe_hide_live_streams_summary">Nasconde i video in diretta nel feed della home e nei risultati di ricerca</string>
   <string name="morphe_hide_mix_playlists_title">Nascondi le playlist miste</string>
   <string name="morphe_hide_movies_section_title">Nascondi la sezione film</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -203,7 +205,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_channel_tab_filter_strings_title">Filtro della scheda del canale</string>
   <string name="morphe_hide_channel_tab_filter_strings_summary">Inserisci i nomi delle schede del canale da filtrare, separati da nuove righe</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">Nascondi il pulsante Commenti</string>
+  <string name="morphe_hide_community_button_title">Nascondi il pulsante Community</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Nascondi il pulsante Abbonati</string>
   <string name="morphe_hide_links_preview_title">Nascondi anteprima link</string>
@@ -214,7 +216,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_members_shelf_summary">Nasconde l\'elenco dei membri del canale</string>
   <string name="morphe_hide_posts_shelf_title">Nascondi la sezione dei post</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">Nascondi il pulsante Condividi</string>
+  <string name="morphe_hide_store_button_title">Nascondi il pulsante Negozio</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Nascondi il pulsante Iscriviti</string>
   <string name="morphe_explore_menu_screen_title">Esplora menu</string>
@@ -1015,7 +1017,7 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Ripristina il nome del canale in fondo al lettore video</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione di sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato duranre la condivisione di un contenuto</string>
+  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato durante la condivisione di un contenuto</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Sovrascrivi i pulsanti di YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Apre l\'app musicale preferita anziché l\'app YouTube Music integrata</string>
@@ -1065,6 +1067,13 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_playback_in_feeds_entry_always_on">Sempre attivo</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Solo Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Disattivato</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Ripristina i titoli originali</string>
+  <string name="morphe_restore_original_titles_summary">Mostra i titoli video originali, le descrizioni video e le descrizioni dei canali invece delle versioni auto-tradotte</string>
+  <string name="morphe_restore_original_titles_loading">Caricamento del titolo…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Disattiva l\'aggiornamento automatico dei feed</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Impedisce l\'aggiornamento automatico dei feed dopo che sono diventati obsoleti</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Disabilita la ripresa del lettore minimizzato</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Impedisce al lettore minimizzato \'Continua a guardare\' di essere mostrato all\'avvio dell\'app</string>
@@ -1191,6 +1200,12 @@ Tocca qui per saperne di più su DeArrow"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Apri link nel browser</string>
   <string name="morphe_external_browser_summary">Apre i link in un browser esterno anziché nel browser in-app</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Dimensione del buffer di riproduzione</string>
+  <string name="morphe_playback_buffer_size_entry_default">Predefinita</string>
+  <string name="morphe_playback_buffer_size_entry_low">Bassa</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Media</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Massima</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatico</string>
@@ -1310,5 +1325,6 @@ Limitazione: ripristina il vecchio stile della sovrapposizione 'Altri video'"</s
   <string name="morphe_player_icon_style_entry_default">Predefinita</string>
   <string name="morphe_player_icon_style_entry_regular">Sottile</string>
   <string name="morphe_player_icon_style_entry_bold">Grassetto</string>
+  <string name="morphe_player_icon_style_entry_custom">Personalizzato</string>
   <string name="morphe_shorts_icon_style_title">Stile icona Short</string>
 </resources>

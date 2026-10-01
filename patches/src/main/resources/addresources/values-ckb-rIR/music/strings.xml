@@ -16,6 +16,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_cancel">پاشگەز</string>
+  <string name="morphe_music_jam_details">وردەکاری</string>
+  <string name="morphe_music_jam_open">کردنەوە</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">لۆگۆی سەرەوە</string>
@@ -78,6 +81,7 @@ Second \"item\" text"</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">دوگمەی پەخشکردن بشارەوە</string>

@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-26T08:12:44",
-  "description": "## [1.45.0-dev.17](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.16...v1.45.0-dev.17) (2026-09-26)\n\n### 🚀 Updated App Support\n\n* **YouTube:** Add experimental support for `21.39.522` ([#3290](https://github.com/MorpheApp/morphe-patches/issues/3290)) ([5687e86](https://github.com/MorpheApp/morphe-patches/commit/5687e86075418094937fbb7449e79406f7400ca9))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.45.0-dev.17/patches-1.45.0-dev.17.mpp",
+  "created_at": "2026-10-01T08:55:56",
+  "description": "## [1.45.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.21...v1.45.0-dev.22) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Hide live streams\" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))\n* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))\n* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))\n* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.45.0-dev.22/patches-1.45.0-dev.22.mpp",
   "signature_download_url": "",
-  "version": "1.45.0-dev.17"
+  "version": "1.45.0-dev.22"
 }

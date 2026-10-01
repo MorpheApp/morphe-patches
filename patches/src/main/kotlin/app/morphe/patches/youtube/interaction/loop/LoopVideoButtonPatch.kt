@@ -8,7 +8,6 @@ import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPrefere
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
@@ -19,8 +18,7 @@ import app.morphe.patches.youtube.shared.StartVideoInformerFingerprint
 
 private val loopVideoButtonResourcePatch = resourcePatch {
     dependsOn(
-        legacyPlayerControlsResourcePatch,
-        playerIconStylePatch
+        legacyPlayerControlsResourcePatch
     )
 
     execute {

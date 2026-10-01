@@ -16,6 +16,9 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_cancel">Откажи</string>
+  <string name="morphe_music_jam_done">Готово</string>
+  <string name="morphe_music_jam_details">Детали</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Лого на заглавието</string>
@@ -76,6 +79,7 @@ Second \"item\" text"</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->

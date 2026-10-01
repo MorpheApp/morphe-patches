@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Oppdater vertens Jam-patch til å bruke pause og gjenopptak.</string>
+  <string name="morphe_music_jam_probe_title">Jam-kødeling</string>
+  <string name="morphe_music_jam_probe_summary">Vær vert for eller bli med i en Jam i nærheten, og rediger køen gjennom Jam Layer.</string>
+  <string name="morphe_music_jam_enabled_title">Aktiver Jam-kødeling</string>
+  <string name="morphe_music_jam_enabled_summary">Aktiverer Jam-integrasjonen etter at YouTube Music startes på nytt.</string>
+  <string name="morphe_music_jam_download_title">Last ned Jam Layer for å få det til å fungere.</string>
+  <string name="morphe_music_jam_download_summary">Åpne den nyeste Jam Layer-utgivelsen i nettleseren din.</string>
+  <string name="morphe_music_jam_controls_title">Jam-kontroller</string>
+  <string name="morphe_music_jam_controls_summary">Vær vert for eller bli med i en Jam i nærheten, og administrer økten.</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer-pakke</string>
+  <string name="morphe_music_jam_companion_package_summary">Velg den installerte følgeappen som brukes til kødeling i nærheten.</string>
+  <string name="morphe_music_jam_package_message">Bruk en installert følgepakke. Paring krever din godkjenning og et lokalt kapabilitetstoken.</string>
+  <string name="morphe_music_jam_wifi_title">Slå på Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">Slå på Wi-Fi, og prøv å starte eller bli med i Jam igjen.</string>
+  <string name="morphe_music_jam_wifi_settings">Åpne Wi-Fi-innstillingene</string>
+  <string name="morphe_music_jam_cancel">Avbryt</string>
+  <string name="morphe_music_jam_use_package">Bruk pakken</string>
+  <string name="morphe_music_jam_invalid_package">Skriv inn et gyldig Android-pakkenavn</string>
+  <string name="morphe_music_jam_package_saved">Pakken ble lagret. Sett opp Jam Layer for å koble til.</string>
+  <string name="morphe_music_jam_disconnected">Jam ble frakoblet</string>
+  <string name="morphe_music_jam_enable_layer_first">Aktiver Jam Layer først</string>
+  <string name="morphe_music_jam_enable_patch_first">Aktiver Jam-kødeling i innstillingene, og start deretter YouTube Music på nytt</string>
+  <string name="morphe_music_jam_install_layer_first">Installer den valgte Jam Layer-pakken først</string>
+  <string name="morphe_music_jam_join_hint">Skriv inn koden som vises på verten. Wi-Fi Aware kan koble til enheter i nærheten selv om LAN-ene deres er forskjellige.</string>
+  <string name="morphe_music_jam_join_with_code">Bli med via kode</string>
+  <string name="morphe_music_jam_join">Bli med</string>
+  <string name="morphe_music_jam_scan_qr">Skann QR-kode</string>
+  <string name="morphe_music_jam_invalid_invite">Skriv inn den åtte tegn lange koden eller lim inn en invitasjon</string>
+  <string name="morphe_music_jam_join_your_jam">Bli med i Jam-en din</string>
+  <string name="morphe_music_jam_copy_code">Kopier kode</string>
+  <string name="morphe_music_jam_code_clip">Jam-kode</string>
+  <string name="morphe_music_jam_show_qr">Vis QR-kode</string>
+  <string name="morphe_music_jam_done">Ferdig</string>
+  <string name="morphe_music_jam_invite_title">Inviter til Jam-en din</string>
+  <string name="morphe_music_jam_invite_message">Skann for å bli med og redigere denne køen. Hvis du avslutter Jam-en, tilbakekalles invitasjonen.</string>
+  <string name="morphe_music_jam_copy_link">Kopier lenke</string>
+  <string name="morphe_music_jam_invitation_clip">Jam-invitasjon</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam kobler til igjen; prøv igjen om litt</string>
+  <string name="morphe_music_jam_added_to_jam">Lagt til i Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam er utilgjengelig; sporet ble ikke lagt til</string>
+  <string name="morphe_music_jam_your_jam">Din Jam</string>
+  <string name="morphe_music_jam_listening_together">Lytter sammen</string>
+  <string name="morphe_music_jam_joining_jam">Blir med i Jam</string>
+  <string name="morphe_music_jam_listen_together">Lytt sammen</string>
+  <string name="morphe_music_jam_updating">Oppdaterer Jam…</string>
+  <string name="morphe_music_jam_finding_host">Finner verten din på Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Venter på folk</string>
+  <string name="morphe_music_jam_one_connected">%d person tilkoblet</string>
+  <string name="morphe_music_jam_many_connected">%d personer tilkoblet</string>
+  <string name="morphe_music_jam_code_expires">Skriv inn denne koden på en enhet i nærheten. Wi-Fi Aware fungerer på tvers av separate LAN når det støttes. Utløper om %d minutter.</string>
+  <string name="morphe_music_jam_seek_to">Spol til %s?</string>
+  <string name="morphe_music_jam_edits_open">Redigering åpen</string>
+  <string name="morphe_music_jam_edits_locked">Redigering låst</string>
+  <string name="morphe_music_jam_connected_aware">Koblet til via Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Koblet til via Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Koblet til via Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Støttes ikke under Jam</string>
+  <string name="morphe_music_jam_cancelled">Kobling til Jam avbrutt</string>
+  <string name="morphe_music_jam_reconnecting_host">Kobler til verten din igjen…</string>
+  <string name="morphe_music_jam_share_prompt">Del en kø. La alle legge til sanger.</string>
+  <string name="morphe_music_jam_invite_people">Inviter folk</string>
+  <string name="morphe_music_jam_guest_edits">Gjester kan redigere køen</string>
+  <string name="morphe_music_jam_end_jam">Avslutt Jam</string>
+  <string name="morphe_music_jam_participant_help">Verten spiller musikken. Legg til, flytt eller fjern sanger direkte i YouTube Music-køen.</string>
+  <string name="morphe_music_jam_joining_help">Hold begge enhetene i nærheten. Du kan avbryte mens vi leter etter verten.</string>
+  <string name="morphe_music_jam_cancel_joining">Avbryt tilkobling</string>
+  <string name="morphe_music_jam_leave_jam">Forlat Jam</string>
+  <string name="morphe_music_jam_start_jam">Start en Jam</string>
+  <string name="morphe_music_jam_setup_layer">Sett opp Jam Layer</string>
+  <string name="morphe_music_jam_manage">Administrer</string>
+  <string name="morphe_music_jam_details">Detaljer</string>
+  <string name="morphe_music_jam_open">Åpne</string>
+  <string name="morphe_music_jam_loading_song_options">Laster inn sangalternativer…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Sangalternativer er utilgjengelige; prøv igjen</string>
+  <string name="morphe_music_jam_song_options_failed">Kunne ikke åpne sangalternativene</string>
+  <string name="morphe_music_jam_no_browser">Ingen nettleser er tilgjengelig for å laste ned Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">Venter på vertens kø</string>
+  <string name="morphe_music_jam_open_song_first">Åpne en sang i YouTube Music først</string>
+  <string name="morphe_music_jam_play_on_host">Spill på verten</string>
+  <string name="morphe_music_jam_quit_and_play">Avslutt Jam og spill lokalt</string>
+  <string name="morphe_music_jam_play_next">Spill neste i Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Legg til i Jam-køen</string>
+  <string name="morphe_music_jam_play_track">Spill dette Jam-sporet</string>
+  <string name="morphe_music_jam_choose_playback">Velg hvor du vil spille</string>
+  <string name="morphe_music_jam_move_host_here">Flytt verten hit</string>
+  <string name="morphe_music_jam_seek_not_ready">Sangen ble ikke klar for spoling</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Køen ble endret; prøv bevegelsen igjen</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Header-logo</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
   <string name="morphe_music_remember_repeat_state_title">Husk gjenta-status</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Husk blandings-status</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Avspillingshastighet</string>
+  <string name="morphe_music_playback_speed_summary">Hastighet som brukes for alle spor. Ved 100 % brukes appens hastighet, for eksempel podcastavspillingshastigheten</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Endre tonehøyde med hastigheten</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiver omdirigering av misliker</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Hindrer hopping til neste spor når misliker-knappen trykkes</string>
@@ -429,7 +520,12 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_show_romanize_button_title">Vis romaniseringsknappen</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Trykk for å slå romaniseringen av/på; trykk og hold for kun romanisering. Bruker romanisering fra leverandøren, Google Translate eller et OpenAI-kompatibelt API.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Vis oppdater-knappen</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Trykk for å bytte til neste tekstkandidat […] \"Lagret\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Trykk for å bytte til neste tekstkandidat; trykk og hold for å søke etter tekst ved hjelp av sangtittel og artist</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Søk etter sangtekst</string>
+  <string name="morphe_music_lyrics_search_title_hint">Sangtittel</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Artistnavn</string>
+  <string name="morphe_music_lyrics_search_empty">Skriv inn en sangtittel og en artist</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ingen av de aktiverte leverandørene kan søke etter andre sanger</string>
   <string name="morphe_music_lyrics_saved">Lagret</string>
   <string name="morphe_music_lyrics_word_sync_title">Marker synkroniserte ord eller stavelser</string>
   <string name="morphe_music_lyrics_word_sync_summary">Prioriter ord-for-ord-tekster når de er tilgjengelige. Når teksten har tidsstempling for ord, vises hvert ord eller hver stavelse synkronisert med musikken</string>
@@ -483,6 +579,7 @@ Nødvendige informasjonskapsler: SID, HSID, SSID, SAPISID, __Secure-1PAPISID, __
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API-endepunkt-URL (f.eks. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API-nøkkel (la stå tom for anonym tilgang)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Modellnavn (f.eks. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Promptmal (variabler: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI-oversettelsesinnstillinger lagret</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Kunne ikke koble til AI-endepunktet. Sjekk innstillingene dine.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI-oversettelsesinnstillinger tilbakestilt</string>

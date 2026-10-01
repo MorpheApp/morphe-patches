@@ -896,6 +896,8 @@ OpenRouter.ai उघडण्यासाठी येथे टॅप करा
   <string name="morphe_playback_in_feeds_entry_always_on">\u0932\u093e\u0938\u093e\u0928\u0937\u0930\u093e \u092a\u093e\u0935\u0930</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">\u0932\u093e\u0938\u093e\u0928\u0937\u0930 Wi-Fi \u092b\u093e\u0935\u093e\u0928\u093f</string>
   <string name="morphe_playback_in_feeds_entry_off">\u092c\u0926\u094d\u0926</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेअर पुन्हा सुरू करणे अक्षम करा</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'Continue watching\' मिनीप्लेअर अक्षम करते, YouTube Premium चे वैशिष्ट्य जे ॲप सुरू झाल्यावर दिसते.</string>
@@ -1009,6 +1011,7 @@ DeArrow.ajay.app उघडण्यासाठी येथे टॅप कर
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">ब्राउझरमध्ये लिंक उघडा</string>
   <string name="morphe_external_browser_summary">इन-ॲप ब्राउझरऐवजी (in-app browser) बाह्य ब्राउझरमध्ये (external browser) लिंक्स उघडते</string>
+  <!-- video.buffer.playbackBufferPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">स्वयंचलित</string>

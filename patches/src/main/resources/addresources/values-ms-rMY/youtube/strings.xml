@@ -306,6 +306,8 @@ Automotive layout
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.playbackinfeeds.playbackInFeedsPatch -->
   <string name="morphe_playback_in_feeds_entry_off">Mati</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">Dilumpuhkan</string>
   <string name="morphe_miniplayer_type_entry_1">Lalai</string>
@@ -336,6 +338,8 @@ Automotive layout
   <string name="morphe_bypass_link_redirects_title">Memirau ubah hala pautan</string>
   <string name="morphe_bypass_link_redirects_summary">Membuka pautan asli secara terus, memirau pautan penjejakan (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_entry_default">Lalai</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatik</string>
@@ -360,4 +364,5 @@ Automotive layout
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_auto">Automatik</string>
   <string name="morphe_player_icon_style_entry_default">Lalai</string>
+  <string name="morphe_player_icon_style_entry_custom">Tersuai</string>
 </resources>

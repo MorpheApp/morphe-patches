@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Aktualizujte patch Jamu hostitele, aby podporoval pozastavení a obnovení.</string>
+  <string name="morphe_music_jam_probe_title">Sdílení fronty Jamu</string>
+  <string name="morphe_music_jam_probe_summary">Hostujte Jam v okolí nebo se k němu připojte a upravujte jeho frontu přes Jam Layer.</string>
+  <string name="morphe_music_jam_enabled_title">Zapnout sdílení fronty Jamu</string>
+  <string name="morphe_music_jam_enabled_summary">Po restartu YouTube Music povolí integraci Jamu.</string>
+  <string name="morphe_music_jam_download_title">Stáhnout Jam Layer, aby to fungovalo.</string>
+  <string name="morphe_music_jam_download_summary">Otevřete nejnovější verzi Jam Layer v prohlížeči.</string>
+  <string name="morphe_music_jam_controls_title">Ovládání Jamu</string>
+  <string name="morphe_music_jam_controls_summary">Hostujte Jam v okolí nebo se k němu připojte a spravujte relaci.</string>
+  <string name="morphe_music_jam_companion_package_title">Balíček Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Vyberte nainstalovanou doprovodnou aplikaci používanou pro sdílení fronty v okolí.</string>
+  <string name="morphe_music_jam_package_message">Použijte nainstalovaný doprovodný balíček. Párování vyžaduje váš souhlas a lokální token oprávnění.</string>
+  <string name="morphe_music_jam_wifi_title">Zapnout Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">Zapněte Wi-Fi a pak zkuste Jam znovu spustit nebo se k němu připojit.</string>
+  <string name="morphe_music_jam_wifi_settings">Otevřít nastavení Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">Zrušit</string>
+  <string name="morphe_music_jam_use_package">Použít balíček</string>
+  <string name="morphe_music_jam_invalid_package">Zadejte platný název balíčku Android</string>
+  <string name="morphe_music_jam_package_saved">Balíček uložen. Nastavte Jam Layer pro připojení.</string>
+  <string name="morphe_music_jam_disconnected">Odpojeno od Jamu</string>
+  <string name="morphe_music_jam_enable_layer_first">Nejprve zapněte Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">V nastavení zapněte sdílení fronty Jamu a poté restartujte YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Nejprve nainstalujte vybraný balíček Jam Layer</string>
+  <string name="morphe_music_jam_join_hint">Zadejte kód zobrazený na hostiteli. Wi-Fi Aware dokáže propojit zařízení v okolí, i když se jejich LAN liší.</string>
+  <string name="morphe_music_jam_join_with_code">Připojit se kódem</string>
+  <string name="morphe_music_jam_join">Připojit se</string>
+  <string name="morphe_music_jam_scan_qr">Naskenovat QR kód</string>
+  <string name="morphe_music_jam_invalid_invite">Zadejte osmiznakový kód nebo vložte pozvánku.</string>
+  <string name="morphe_music_jam_join_your_jam">Připojte se ke svému Jamu</string>
+  <string name="morphe_music_jam_copy_code">Kopírovat kód</string>
+  <string name="morphe_music_jam_code_clip">Kód Jamu</string>
+  <string name="morphe_music_jam_show_qr">Zobrazit QR kód</string>
+  <string name="morphe_music_jam_done">Hotovo</string>
+  <string name="morphe_music_jam_invite_title">Pozvat do svého Jamu</string>
+  <string name="morphe_music_jam_invite_message">Naskenujte pro připojení a úpravu této fronty. Ukončení Jamu pozvánku odvolá.</string>
+  <string name="morphe_music_jam_copy_link">Kopírovat odkaz</string>
+  <string name="morphe_music_jam_invitation_clip">Pozvánka do Jamu</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam se znovu připojuje; zkuste to za chvíli.</string>
+  <string name="morphe_music_jam_added_to_jam">Přidáno do Jamu</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam není dostupný; skladba nebyla přidána.</string>
+  <string name="morphe_music_jam_your_jam">Váš Jam</string>
+  <string name="morphe_music_jam_listening_together">Společný poslech</string>
+  <string name="morphe_music_jam_joining_jam">Připojování k Jamu</string>
+  <string name="morphe_music_jam_listen_together">Poslouchat společně</string>
+  <string name="morphe_music_jam_updating">Aktualizace Jamu…</string>
+  <string name="morphe_music_jam_finding_host">Hledání vašeho hostitele přes Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Čekání na lidi</string>
+  <string name="morphe_music_jam_one_connected">Připojena %d osoba</string>
+  <string name="morphe_music_jam_many_connected">Připojeno %d lidí</string>
+  <string name="morphe_music_jam_code_expires">Zadejte tento kód na zařízení v okolí. Wi-Fi Aware v případě podpory funguje i mezi oddělenými LAN. Platnost vyprší za %d minut.</string>
+  <string name="morphe_music_jam_seek_to">Přetočit na %s?</string>
+  <string name="morphe_music_jam_edits_open">Úpravy povoleny</string>
+  <string name="morphe_music_jam_edits_locked">Úpravy uzamčeny</string>
+  <string name="morphe_music_jam_connected_aware">Připojeno přes Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Připojeno přes Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Připojeno přes Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Během Jamu není podporováno</string>
+  <string name="morphe_music_jam_cancelled">Připojování zrušeno</string>
+  <string name="morphe_music_jam_reconnecting_host">Opětovné připojování k vašemu hostiteli…</string>
+  <string name="morphe_music_jam_share_prompt">Sdílejte frontu. Nechte všechny přidávat skladby.</string>
+  <string name="morphe_music_jam_invite_people">Pozvat lidi</string>
+  <string name="morphe_music_jam_guest_edits">Hosté mohou upravovat frontu.</string>
+  <string name="morphe_music_jam_end_jam">Ukončit Jam</string>
+  <string name="morphe_music_jam_participant_help">Hudbu přehrává hostitel. Přidávejte, přesouvejte nebo odebírejte skladby přímo ve frontě YouTube Music.</string>
+  <string name="morphe_music_jam_joining_help">Mějte obě zařízení blízko u sebe. Během hledání hostitele můžete připojování zrušit.</string>
+  <string name="morphe_music_jam_cancel_joining">Zrušit připojování</string>
+  <string name="morphe_music_jam_leave_jam">Opustit Jam</string>
+  <string name="morphe_music_jam_start_jam">Zahájit Jam</string>
+  <string name="morphe_music_jam_setup_layer">Nastavit Jam Layer</string>
+  <string name="morphe_music_jam_manage">Spravovat</string>
+  <string name="morphe_music_jam_details">Podrobnosti</string>
+  <string name="morphe_music_jam_open">Otevřít</string>
+  <string name="morphe_music_jam_loading_song_options">Načítání možností skladby…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Možnosti skladby nejsou dostupné; zkuste to znovu.</string>
+  <string name="morphe_music_jam_song_options_failed">Možnosti skladby se nepodařilo otevřít.</string>
+  <string name="morphe_music_jam_no_browser">Pro stažení Jam Layer není k dispozici žádný prohlížeč.</string>
+  <string name="morphe_music_jam_waiting_host_queue">Čekání na frontu hostitele.</string>
+  <string name="morphe_music_jam_open_song_first">Nejprve otevřete skladbu v YouTube Music.</string>
+  <string name="morphe_music_jam_play_on_host">Přehrát na hostiteli</string>
+  <string name="morphe_music_jam_quit_and_play">Ukončit Jam a přehrávat lokálně.</string>
+  <string name="morphe_music_jam_play_next">Přehrát jako další v Jamu</string>
+  <string name="morphe_music_jam_add_to_queue">Přidat do fronty Jamu</string>
+  <string name="morphe_music_jam_play_track">Přehrát tuto skladbu v Jamu</string>
+  <string name="morphe_music_jam_choose_playback">Vyberte, kde přehrávat</string>
+  <string name="morphe_music_jam_move_host_here">Přesunout hostování sem</string>
+  <string name="morphe_music_jam_seek_not_ready">Skladba nebyla připravena k přetočení.</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Fronta se změnila; zkuste gesto znovu.</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo záhlaví</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x – plynulé přecházení funguje pouze ve verzích 9.x a vy�
   <string name="morphe_music_remember_repeat_state_title">Zapamatovat si stav opakování</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Zapamatovat si stav náhodného přehrávání</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Rychlost přehrávání</string>
+  <string name="morphe_music_playback_speed_summary">Rychlost použitá pro všechny skladby. Při 100 % se používá rychlost aplikace, jako je rychlost přehrávání podcastů.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Změnit výšku tónu s rychlostí</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Vypnout přesměrování dislajků</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zabraňuje přeskoku na další skladbu po stisknutí tlačítka \"Dislike\".</string>
@@ -424,7 +515,12 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_show_romanize_button_title">Zobrazit tlačítko pro přepis do latinky.</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Klepnutím přepínáte romanizaci; dlouhým stisknutím zobrazíte pouze romanizaci. Používá romanizaci poskytovatele, Google Translate nebo API kompatibilní s OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepnete na další navrhovaný text; […] : \"Uloženo\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Klepnutím přepnete na další návrh textu písně; dlouhým stisknutím vyhledáte text písně podle názvu skladby a interpreta.</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Vyhledat text písně</string>
+  <string name="morphe_music_lyrics_search_title_hint">Název skladby</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Interpret</string>
+  <string name="morphe_music_lyrics_search_empty">Zadejte název skladby a interpreta.</string>
+  <string name="morphe_music_lyrics_search_no_providers">Žádný z povolených poskytovatelů nemůže vyhledávat jiné skladby.</string>
   <string name="morphe_music_lyrics_saved">Uloženo</string>
   <string name="morphe_music_lyrics_word_sync_title">Zvýrazňovat synchronizovaná slova nebo slabiky</string>
   <string name="morphe_music_lyrics_word_sync_summary">Upřednostnit texty slovo po slově, pokud jsou k dispozici. Když texty obsahují načasování slov, zvýrazní každé slovo nebo slabiku v rytmu hudby.</string>
@@ -478,6 +574,7 @@ Požadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL koncového bodu API (např. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API klíč (nechte prázdné pro anonymní přístup)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Název modelu (např. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Šablona výzvy (proměnné: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Nastavení AI překladu uloženo</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Nepodařilo se připojit ke koncovému bodu AI. Zkontrolujte prosím svá nastavení.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Nastavení AI překladu resetováno</string>

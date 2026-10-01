@@ -18,7 +18,6 @@ import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSet
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
@@ -40,8 +39,7 @@ private const val EXTENSION_BUTTON =
 private val fullscreenVideoScaleResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        legacyPlayerControlsPatch,
-        playerIconStylePatch
+        legacyPlayerControlsPatch
     )
 
     execute {

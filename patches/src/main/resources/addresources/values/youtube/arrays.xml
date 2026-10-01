@@ -585,6 +585,20 @@
         <item>END</item>
     </string-array>
 
+    <!-- video.buffer.playbackBufferPatch -->
+    <string-array name="morphe_playback_buffer_size_entries">
+        <item>@string/morphe_playback_buffer_size_entry_default</item>
+        <item>@string/morphe_playback_buffer_size_entry_low</item>
+        <item>@string/morphe_playback_buffer_size_entry_medium</item>
+        <item>@string/morphe_playback_buffer_size_entry_maximum</item>
+    </string-array>
+    <string-array name="morphe_playback_buffer_size_entry_values">
+        <item>DEFAULT</item>
+        <item>LOW</item>
+        <item>MEDIUM</item>
+        <item>MAXIMUM</item>
+    </string-array>
+
     <!-- video.quality.rememberVideoQualityPatch -->
     <string-array name="morphe_video_quality_default_entries">
         <item>@string/morphe_video_quality_default_entry_1</item>
@@ -826,6 +840,32 @@
         <item>IONICONS</item>
         <item>SHARP</item>
     </string-array>
+    <string-array name="morphe_player_icon_style_custom_entries">
+        <item>@string/morphe_player_icon_style_entry_auto</item>
+        <item>@string/morphe_player_icon_style_entry_regular</item>
+        <item>@string/morphe_player_icon_style_entry_bold</item>
+        <item>@string/morphe_player_icon_style_entry_fluent</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_fill</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_duotone</item>
+        <item>@string/morphe_player_icon_style_entry_ionicons</item>
+        <item>@string/morphe_player_icon_style_entry_sharp</item>
+        <item>@string/morphe_player_icon_style_entry_custom</item>
+    </string-array>
+    <string-array name="morphe_player_icon_style_custom_entry_values">
+        <item>AUTO</item>
+        <item>REGULAR</item>
+        <item>BOLD</item>
+        <item>FLUENT</item>
+        <item>PHOSPHOR</item>
+        <item>PHOSPHOR_LIGHT</item>
+        <item>PHOSPHOR_FILL</item>
+        <item>PHOSPHOR_DUOTONE</item>
+        <item>IONICONS</item>
+        <item>SHARP</item>
+        <item>CUSTOM</item>
+    </string-array>
 
     <!-- layout.shortsicons.shortsIconStylePatch -->
     <string-array name="morphe_shorts_icon_style_entries">
@@ -845,5 +885,25 @@
         <item>PHOSPHOR_DUOTONE</item>
         <item>IONICONS</item>
         <item>SHARP</item>
+    </string-array>
+    <string-array name="morphe_shorts_icon_style_custom_entries">
+        <item>@string/morphe_player_icon_style_entry_default</item>
+        <item>@string/morphe_player_icon_style_entry_fluent</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_light</item>
+        <item>@string/morphe_player_icon_style_entry_phosphor_duotone</item>
+        <item>@string/morphe_player_icon_style_entry_ionicons</item>
+        <item>@string/morphe_player_icon_style_entry_sharp</item>
+        <item>@string/morphe_player_icon_style_entry_custom</item>
+    </string-array>
+    <string-array name="morphe_shorts_icon_style_custom_entry_values">
+        <item>AUTO</item>
+        <item>FLUENT</item>
+        <item>PHOSPHOR</item>
+        <item>PHOSPHOR_LIGHT</item>
+        <item>PHOSPHOR_DUOTONE</item>
+        <item>IONICONS</item>
+        <item>SHARP</item>
+        <item>CUSTOM</item>
     </string-array>
 </resources>

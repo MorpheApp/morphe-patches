@@ -90,6 +90,8 @@ Wijzigingen zijn:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Verberg \'Laatste video\'s\' knop</string>
   <string name="morphe_hide_latest_videos_button_summary">Verbergt de blauwe \'Nieuwste video\'s\'-banner die bovenaan de Home-feed verschijnt</string>
+  <string name="morphe_hide_live_streams_title">Livestreams verbergen</string>
+  <string name="morphe_hide_live_streams_summary">Verbergt video\'s die nu live zijn in de homefeed en zoekresultaten.</string>
   <string name="morphe_hide_mix_playlists_title">Mix-afspeellijsten verbergen</string>
   <string name="morphe_hide_movies_section_title">Verberg films sectie</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1063,6 +1065,13 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_playback_in_feeds_entry_always_on">Altijd aan</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Alleen Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Uit</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Originele titels herstellen</string>
+  <string name="morphe_restore_original_titles_summary">Toont de originele videotitels, videobeschrijvingen en kanaalbeschrijvingen in plaats van de automatisch vertaalde versies</string>
+  <string name="morphe_restore_original_titles_loading">Titel laden…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Automatische feedvernieuwing uitschakelen</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Voorkomt dat feeds automatisch worden vernieuwd nadat ze verouderd zijn</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Schakel het hervatten van de miniplayer uit</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Schakelt de \'Doorgaan met kijken\'-minispeler uit, een functie van YouTube Premium die verschijnt bij het opstarten van de app</string>
@@ -1189,6 +1198,12 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Koppelingen openen in browser</string>
   <string name="morphe_external_browser_summary">Opent links in een externe browser in plaats van de in-app browser</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Afspeelbuffergrootte</string>
+  <string name="morphe_playback_buffer_size_entry_default">Standaard</string>
+  <string name="morphe_playback_buffer_size_entry_low">Laag</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Gemiddeld</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maximaal</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatisch</string>
@@ -1308,5 +1323,6 @@ Beperking: keert terug naar de oude stijl van de overlay 'Meer video's'."</strin
   <string name="morphe_player_icon_style_entry_default">Standaard</string>
   <string name="morphe_player_icon_style_entry_regular">Dun</string>
   <string name="morphe_player_icon_style_entry_bold">Vet</string>
+  <string name="morphe_player_icon_style_entry_custom">Aangepast</string>
   <string name="morphe_shorts_icon_style_title">Shorts-pictogramstijl</string>
 </resources>

@@ -75,7 +75,7 @@ val conversionContextPatch = bytecodePatch(
                 const-string v1, " "
                 invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
                 iget-object v1, v2, $stringBuilderField
- 
+
                 if-eqz v1, :morphe_cc_no_path
                 invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
                 :morphe_cc_no_path

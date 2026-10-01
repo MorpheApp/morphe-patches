@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">حدِّث تصحيح Jam الخاص بالمضيف لاستخدام الإيقاف المؤقت والاستئناف.</string>
+  <string name="morphe_music_jam_probe_title">مشاركة قائمة انتظار Jam</string>
+  <string name="morphe_music_jam_probe_summary">استضف Jam قريبًا أو انضم إليه وعدّل قائمة انتظاره من خلال Jam Layer.</string>
+  <string name="morphe_music_jam_enabled_title">تفعيل مشاركة قائمة انتظار Jam</string>
+  <string name="morphe_music_jam_enabled_summary">يُفعّل تكامل Jam بعد إعادة تشغيل YouTube Music.</string>
+  <string name="morphe_music_jam_download_title">نزّل Jam Layer ليعمل.</string>
+  <string name="morphe_music_jam_download_summary">افتح أحدث إصدار من Jam Layer في متصفحك.</string>
+  <string name="morphe_music_jam_controls_title">أدوات التحكم في Jam</string>
+  <string name="morphe_music_jam_controls_summary">استضف Jam قريبًا أو انضم إليه وأدر الجلسة.</string>
+  <string name="morphe_music_jam_companion_package_title">حزمة Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">اختر التطبيق المصاحب المثبّت المستخدم لمشاركة قائمة الانتظار بين الأجهزة القريبة.</string>
+  <string name="morphe_music_jam_package_message">استخدم حزمة مصاحبة مثبّتة. يتطلب الإقران موافقتك ورمز قدرة محليًا.</string>
+  <string name="morphe_music_jam_wifi_title">هل تريد تشغيل Wi-Fi؟</string>
+  <string name="morphe_music_jam_wifi_message">شغّل Wi-Fi، ثم حاول بدء Jam أو الانضمام إليه مرة أخرى.</string>
+  <string name="morphe_music_jam_wifi_settings">فتح إعدادات Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">إلغاء</string>
+  <string name="morphe_music_jam_use_package">استخدام الحزمة</string>
+  <string name="morphe_music_jam_invalid_package">أدخل اسم حزمة Android صالحًا.</string>
+  <string name="morphe_music_jam_package_saved">تم حفظ الحزمة. قم بإعداد Jam Layer للاتصال.</string>
+  <string name="morphe_music_jam_disconnected">انقطع اتصال Jam</string>
+  <string name="morphe_music_jam_enable_layer_first">فعّل Jam Layer أولاً</string>
+  <string name="morphe_music_jam_enable_patch_first">فعّل مشاركة قائمة انتظار Jam في الإعدادات، ثم أعد تشغيل YouTube Music.</string>
+  <string name="morphe_music_jam_install_layer_first">ثبّت حزمة Jam Layer المحددة أولاً</string>
+  <string name="morphe_music_jam_join_hint">أدخل الرمز المعروض على المضيف. يمكن لـ Wi-Fi Aware توصيل الأجهزة القريبة حتى عندما تختلف شبكات LAN الخاصة بها.</string>
+  <string name="morphe_music_jam_join_with_code">انضم باستخدام رمز</string>
+  <string name="morphe_music_jam_join">انضمام</string>
+  <string name="morphe_music_jam_scan_qr">مسح رمز QR</string>
+  <string name="morphe_music_jam_invalid_invite">أدخل الرمز المكوّن من ثمانية أحرف أو الصق دعوة.</string>
+  <string name="morphe_music_jam_join_your_jam">انضم إلى Jam الخاص بك</string>
+  <string name="morphe_music_jam_copy_code">نسخ الرمز</string>
+  <string name="morphe_music_jam_code_clip">رمز Jam</string>
+  <string name="morphe_music_jam_show_qr">إظهار رمز QR</string>
+  <string name="morphe_music_jam_done">تم</string>
+  <string name="morphe_music_jam_invite_title">دعوة إلى Jam الخاص بك</string>
+  <string name="morphe_music_jam_invite_message">امسح الرمز للانضمام وتعديل قائمة الانتظار هذه. إنهاء Jam يلغي الدعوة.</string>
+  <string name="morphe_music_jam_copy_link">نسخ الرابط</string>
+  <string name="morphe_music_jam_invitation_clip">دعوة Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">يعيد Jam الاتصال؛ حاول مرة أخرى بعد قليل.</string>
+  <string name="morphe_music_jam_added_to_jam">تمت الإضافة إلى Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam غير متاح؛ لم تتم إضافة المقطع.</string>
+  <string name="morphe_music_jam_your_jam">Jam الخاص بك</string>
+  <string name="morphe_music_jam_listening_together">الاستماع معًا</string>
+  <string name="morphe_music_jam_joining_jam">جارٍ الانضمام إلى Jam</string>
+  <string name="morphe_music_jam_listen_together">استمعوا معًا</string>
+  <string name="morphe_music_jam_updating">جارٍ تحديث Jam…</string>
+  <string name="morphe_music_jam_finding_host">جارٍ البحث عن المضيف عبر Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">في انتظار الأشخاص</string>
+  <string name="morphe_music_jam_one_connected">%d شخص متصل</string>
+  <string name="morphe_music_jam_many_connected">%d أشخاص متصلون</string>
+  <string name="morphe_music_jam_code_expires">أدخل هذا الرمز على جهاز قريب. تعمل Wi-Fi Aware عبر شبكات LAN منفصلة عندما يكون ذلك مدعومًا. تنتهي صلاحية الرمز خلال %d دقيقة.</string>
+  <string name="morphe_music_jam_seek_to">الانتقال إلى %s؟</string>
+  <string name="morphe_music_jam_edits_open">التعديلات مفتوحة</string>
+  <string name="morphe_music_jam_edits_locked">التعديلات مقفلة</string>
+  <string name="morphe_music_jam_connected_aware">متصل عبر Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">متصل عبر Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">متصل عبر Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">غير مدعوم أثناء Jam</string>
+  <string name="morphe_music_jam_cancelled">تم إلغاء الانضمام</string>
+  <string name="morphe_music_jam_reconnecting_host">جارٍ إعادة الاتصال بمضيفك…</string>
+  <string name="morphe_music_jam_share_prompt">شارك قائمة انتظار، ودع الجميع يضيفون الأغاني.</string>
+  <string name="morphe_music_jam_invite_people">دعوة أشخاص</string>
+  <string name="morphe_music_jam_guest_edits">يمكن للضيوف تعديل قائمة الانتظار</string>
+  <string name="morphe_music_jam_end_jam">إنهاء Jam</string>
+  <string name="morphe_music_jam_participant_help">المضيف يشغّل الموسيقى. يمكنك إضافة الأغاني أو نقلها أو إزالتها مباشرةً في قائمة انتظار YouTube Music.</string>
+  <string name="morphe_music_jam_joining_help">أبقِ الجهازين قريبين. يمكنك الإلغاء بينما نبحث عن المضيف.</string>
+  <string name="morphe_music_jam_cancel_joining">إلغاء الانضمام</string>
+  <string name="morphe_music_jam_leave_jam">مغادرة Jam</string>
+  <string name="morphe_music_jam_start_jam">بدء Jam</string>
+  <string name="morphe_music_jam_setup_layer">إعداد Jam Layer</string>
+  <string name="morphe_music_jam_manage">إدارة</string>
+  <string name="morphe_music_jam_details">التفاصيل</string>
+  <string name="morphe_music_jam_open">فتح</string>
+  <string name="morphe_music_jam_loading_song_options">جارٍ تحميل خيارات الأغنية…</string>
+  <string name="morphe_music_jam_song_options_unavailable">خيارات الأغنية غير متاحة؛ حاول مرة أخرى</string>
+  <string name="morphe_music_jam_song_options_failed">تعذّر فتح خيارات الأغنية</string>
+  <string name="morphe_music_jam_no_browser">لا يتوفر متصفح لتنزيل Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">في انتظار قائمة انتظار المضيف</string>
+  <string name="morphe_music_jam_open_song_first">افتح أغنية في YouTube Music أولاً</string>
+  <string name="morphe_music_jam_play_on_host">تشغيل على المضيف</string>
+  <string name="morphe_music_jam_quit_and_play">الخروج من Jam والتشغيل محليًا</string>
+  <string name="morphe_music_jam_play_next">تشغيل التالي في Jam</string>
+  <string name="morphe_music_jam_add_to_queue">إضافة إلى قائمة انتظار Jam</string>
+  <string name="morphe_music_jam_play_track">تشغيل هذا المقطع في Jam</string>
+  <string name="morphe_music_jam_choose_playback">اختر مكان التشغيل</string>
+  <string name="morphe_music_jam_move_host_here">نقل المضيف إلى هنا</string>
+  <string name="morphe_music_jam_seek_not_ready">لم تصبح الأغنية جاهزة للانتقال</string>
+  <string name="morphe_music_jam_queue_changed_gesture">تغيّرت قائمة الانتظار؛ حاول الإيماءة مرة أخرى</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">علامة الشعار</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_remember_repeat_state_title">تذكر حالة التكرار</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">تذكر حالة التشغيل العشوائي</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">سرعة التشغيل</string>
+  <string name="morphe_music_playback_speed_summary">السرعة المستخدمة لجميع المسارات. عند 100%، تُستخدم سرعة التطبيق، مثل سرعة تشغيل البودكاست</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">تغيير درجة الصوت مع السرعة</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">تعطيل إعادة توجيه الإعجاب الشديد</string>
   <string name="morphe_music_disable_dislike_redirection_summary">يمنع الانتقال إلى المقطع التالي عند الضغط على زر عدم الإعجاب</string>
@@ -414,7 +505,12 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_show_romanize_button_title">إظهار زر الرومنة</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">اضغط للتبديل بين إظهار الكتابة بالحروف اللاتينية وإخفائها؛ اضغط مطوّلاً لعرض الكتابة بالحروف اللاتينية فقط. يستخدم رومنة المزوّد أو خدمة Google Translate أو واجهة برمجة تطبيقات متوافقة مع OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">إظهار زر التحديث</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">انقر للتبديل إلى مرشّح الكلمات التالي؛ اضغط مطولًا لفتح الخيارات.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">انقر للتبديل إلى مرشح الكلمات التالي؛ اضغط مطولاً للبحث عن الكلمات حسب عنوان الأغنية والفنان</string>
+  <string name="morphe_music_lyrics_search_dialog_title">البحث عن الكلمات</string>
+  <string name="morphe_music_lyrics_search_title_hint">عنوان الأغنية</string>
+  <string name="morphe_music_lyrics_search_artist_hint">الفنان</string>
+  <string name="morphe_music_lyrics_search_empty">أدخل عنوان الأغنية واسم الفنان</string>
+  <string name="morphe_music_lyrics_search_no_providers">لا يمكن لأي من المزودين المفعّلين البحث عن أغانٍ أخرى</string>
   <string name="morphe_music_lyrics_saved">محفوظة</string>
   <string name="morphe_music_lyrics_word_sync_title">قم بتمييز الكلمات والمقاطع اللفظية المتزامنة</string>
   <string name="morphe_music_lyrics_word_sync_summary">أعطِ الأولوية للكلمات المتزامنة كلمةً بكلمة عند توفرها. وعندما تحمل الكلمات توقيتًا للكلمات، يتم تمييز كل كلمة أو مقطع في توقيت مع الموسيقى.</string>
@@ -468,6 +564,7 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_ai_config_base_url_hint">عنوان URL لنقطة نهاية API (مثال: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">مفتاح API (اتركه فارغًا للوصول المجهول)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">اسم النموذج (مثال: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">قالب المطالبة (المتغيرات: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">تم حفظ إعدادات الترجمة بالذكاء الاصطناعي</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">تعذر الاتصال بنقطة نهاية الذكاء الاصطناعي. يرجى التحقق من إعداداتك.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">تمت إعادة تعيين إعدادات الترجمة بالذكاء الاصطناعي</string>

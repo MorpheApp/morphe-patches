@@ -20,7 +20,6 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
@@ -41,8 +40,7 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/swipecontrol
 private val swipeControlsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        versionCheckPatch,
-        playerIconStylePatch
+        versionCheckPatch
     )
 
     execute {

@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Актуализирайте кръпката за Jam на домакина, за да използва пауза и възобновяване.</string>
+  <string name="morphe_music_jam_probe_title">Споделяне на опашката на Jam</string>
+  <string name="morphe_music_jam_probe_summary">Стартирайте или се присъединете към Jam наблизо и редактирайте опашката му чрез Jam Layer.</string>
+  <string name="morphe_music_jam_enabled_title">Активиране на споделянето на опашката на Jam</string>
+  <string name="morphe_music_jam_enabled_summary">Активира интеграцията с Jam след рестартиране на YouTube Music.</string>
+  <string name="morphe_music_jam_download_title">Изтеглете Jam Layer, за да заработи</string>
+  <string name="morphe_music_jam_download_summary">Отворете най-новата версия на Jam Layer в браузъра си.</string>
+  <string name="morphe_music_jam_controls_title">Контроли за Jam</string>
+  <string name="morphe_music_jam_controls_summary">Стартирайте или се присъединете към Jam наблизо и управлявайте сесията.</string>
+  <string name="morphe_music_jam_companion_package_title">Пакет Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Изберете инсталираното придружаващо приложение, използвано за споделяне на опашката наблизо.</string>
+  <string name="morphe_music_jam_package_message">Използвайте инсталиран пакет на придружаващото приложение. Сдвояването изисква вашето одобрение и локален токен за възможности.</string>
+  <string name="morphe_music_jam_wifi_title">Да включите ли Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">Включете Wi-Fi и след това опитайте отново да стартирате или да се присъедините към Jam.</string>
+  <string name="morphe_music_jam_wifi_settings">Отворете настройките за Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">Отказ</string>
+  <string name="morphe_music_jam_use_package">Използвайте пакета</string>
+  <string name="morphe_music_jam_invalid_package">Въведете валидно име на Android пакет</string>
+  <string name="morphe_music_jam_package_saved">Пакетът е запазен. Настройте Jam Layer, за да се свърже.</string>
+  <string name="morphe_music_jam_disconnected">Сесията Jam е прекъсната</string>
+  <string name="morphe_music_jam_enable_layer_first">Първо активирайте Jam Layer</string>
+  <string name="morphe_music_jam_enable_patch_first">Активирайте споделянето на опашката на Jam в настройките и след това рестартирайте YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Първо инсталирайте избрания пакет Jam Layer</string>
+  <string name="morphe_music_jam_join_hint">Въведете кода, показан на домакина. Wi-Fi Aware може да свързва близки устройства, дори когато локалните им мрежи се различават.</string>
+  <string name="morphe_music_jam_join_with_code">Присъединяване с код</string>
+  <string name="morphe_music_jam_join">Присъединяване</string>
+  <string name="morphe_music_jam_scan_qr">Сканиране на QR</string>
+  <string name="morphe_music_jam_invalid_invite">Въведете кода от осем знака или поставете покана</string>
+  <string name="morphe_music_jam_join_your_jam">Присъединете се към вашия Jam</string>
+  <string name="morphe_music_jam_copy_code">Копиране на кода</string>
+  <string name="morphe_music_jam_code_clip">Код за Jam</string>
+  <string name="morphe_music_jam_show_qr">Показване на QR</string>
+  <string name="morphe_music_jam_done">Готово</string>
+  <string name="morphe_music_jam_invite_title">Поканете във вашия Jam</string>
+  <string name="morphe_music_jam_invite_message">Сканирайте, за да се присъедините и редактирате тази опашка. Приключването на Jam отменя поканата.</string>
+  <string name="morphe_music_jam_copy_link">Копиране на връзката</string>
+  <string name="morphe_music_jam_invitation_clip">Покана за Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam се свързва отново; опитайте отново след малко</string>
+  <string name="morphe_music_jam_added_to_jam">Добавено към Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam не е наличен; песента не беше добавена</string>
+  <string name="morphe_music_jam_your_jam">Вашият Jam</string>
+  <string name="morphe_music_jam_listening_together">Слушане заедно</string>
+  <string name="morphe_music_jam_joining_jam">Присъединяване към Jam</string>
+  <string name="morphe_music_jam_listen_together">Слушайте заедно</string>
+  <string name="morphe_music_jam_updating">Актуализиране на Jam…</string>
+  <string name="morphe_music_jam_finding_host">Търсене на домакина ви в Wi-Fi мрежата…</string>
+  <string name="morphe_music_jam_waiting_people">Изчакване на хора</string>
+  <string name="morphe_music_jam_one_connected">%d човек е свързан</string>
+  <string name="morphe_music_jam_many_connected">%d души са свързани</string>
+  <string name="morphe_music_jam_code_expires">Въведете този код на близко устройство. Wi-Fi Aware работи в отделни локални мрежи, когато се поддържа. Изтича след %d минути.</string>
+  <string name="morphe_music_jam_seek_to">Премини към %s?</string>
+  <string name="morphe_music_jam_edits_open">Редакциите са отворени</string>
+  <string name="morphe_music_jam_edits_locked">Редакциите са заключени</string>
+  <string name="morphe_music_jam_connected_aware">Свързано чрез Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Свързано чрез Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Свързано чрез Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Не се поддържа по време на Jam</string>
+  <string name="morphe_music_jam_cancelled">Присъединяването е отменено</string>
+  <string name="morphe_music_jam_reconnecting_host">Повторно свързване с домакина ви…</string>
+  <string name="morphe_music_jam_share_prompt">Споделете опашка. Нека всички добавят песни.</string>
+  <string name="morphe_music_jam_invite_people">Поканете хора</string>
+  <string name="morphe_music_jam_guest_edits">Гостите могат да редактират опашката</string>
+  <string name="morphe_music_jam_end_jam">Приключване на Jam</string>
+  <string name="morphe_music_jam_participant_help">Домакинът пуска музиката. Добавяйте, местете или премахвайте песни директно в опашката на YouTube Music.</string>
+  <string name="morphe_music_jam_joining_help">Дръжте двете устройства наблизо. Можете да отмените, докато търсим домакина.</string>
+  <string name="morphe_music_jam_cancel_joining">Отмяна на присъединяването</string>
+  <string name="morphe_music_jam_leave_jam">Напускане на Jam</string>
+  <string name="morphe_music_jam_start_jam">Стартиране на Jam</string>
+  <string name="morphe_music_jam_setup_layer">Настройване на Jam Layer</string>
+  <string name="morphe_music_jam_manage">Управление</string>
+  <string name="morphe_music_jam_details">Подробности</string>
+  <string name="morphe_music_jam_open">Отваряне</string>
+  <string name="morphe_music_jam_loading_song_options">Зареждане на опциите за песента…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Опциите за песента не са налични; опитайте отново</string>
+  <string name="morphe_music_jam_song_options_failed">Опциите за песента не можаха да бъдат отворени</string>
+  <string name="morphe_music_jam_no_browser">Няма наличен браузър за изтегляне на Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">Изчакване на опашката на домакина</string>
+  <string name="morphe_music_jam_open_song_first">Първо отворете песен в YouTube Music</string>
+  <string name="morphe_music_jam_play_on_host">Пускане при домакина</string>
+  <string name="morphe_music_jam_quit_and_play">Напуснете Jam и пуснете локално</string>
+  <string name="morphe_music_jam_play_next">Пускане на следващата в Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Добавяне към опашката на Jam</string>
+  <string name="morphe_music_jam_play_track">Пускане на тази песен в Jam</string>
+  <string name="morphe_music_jam_choose_playback">Изберете къде да се пуска</string>
+  <string name="morphe_music_jam_move_host_here">Преместване на домакина тук</string>
+  <string name="morphe_music_jam_seek_not_ready">Песента не стана готова за превъртане</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Опашката е променена; опитайте отново с жеста</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Лого на заглавието</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_remember_repeat_state_title">Запомни състоянието на повторение</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Запомни състоянието на разбъркване</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Скорост на възпроизвеждане</string>
+  <string name="morphe_music_playback_speed_summary">Скорост, използвана за всички песни. При 100% се използва скоростта на приложението, като скоростта на възпроизвеждане на подкаст.</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Промяна на височината на тона със скоростта</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Изключване на пренасочването при непонравил се</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Предотвратява преминаването към следващата песен при натискане на бутона \"Не ми харесва\"</string>
@@ -415,7 +506,12 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_show_romanize_button_title">Показване на бутона за романизиране</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Докоснете, за да превключите романизацията; задръжте натиснато за само романизация. Използва романизация от доставчика, Google Translate или API, съвместим с OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Показване на бутона за опресняване</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Докоснете, за да преминете към следващия вариант на текста; задръжте натиснато, за да деактивирате временно текстовете от трети страни и да покажете вградените текстове.</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Докоснете, за да превключите към следващия вариант на текста; задръжте натиснато, за да търсите текст по заглавие на песен и изпълнител</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Търсене на текст</string>
+  <string name="morphe_music_lyrics_search_title_hint">Заглавие на песен</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Изпълнител</string>
+  <string name="morphe_music_lyrics_search_empty">Въведете заглавие на песен и изпълнител</string>
+  <string name="morphe_music_lyrics_search_no_providers">Никой от активираните доставчици не може да търси други песни</string>
   <string name="morphe_music_lyrics_saved">Запазено</string>
   <string name="morphe_music_lyrics_word_sync_title">Открояване на синхронизираните думи или срички</string>
   <string name="morphe_music_lyrics_word_sync_summary">Дава приоритет на текст по думи, когато е наличен. Когато текстът има тайминг на думите, откроява всяка дума или сричка в синхрон с музиката.</string>
@@ -469,6 +565,7 @@ YouTube Music 8.x — кросфейдът работи само в 9.x и по-
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL на крайната точка на API (напр. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API ключ (оставете празно за анонимен достъп)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Име на модела (напр. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Шаблон за подкана (променливи: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Настройките за AI превод са запазени</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Не можа да се свърже с AI крайната точка. Моля, проверете настройките си.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Настройките за AI превод са нулирани</string>

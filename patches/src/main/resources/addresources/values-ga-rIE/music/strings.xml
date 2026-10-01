@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Nuashonraigh paiste Jam an óstaigh chun sos agus atosú a úsáid.</string>
+  <string name="morphe_music_jam_probe_title">Comhroinnt cioróil Jam</string>
+  <string name="morphe_music_jam_probe_summary">Óstáil nó glac páirt i Jam in aice láimhe agus cuir a chioról in eagar trí Jam Layer.</string>
+  <string name="morphe_music_jam_enabled_title">Cumasaigh comhroinnt cioróil Jam</string>
+  <string name="morphe_music_jam_enabled_summary">Cumasaíonn sé an comhtháthú Jam tar éis do YouTube Music atosú.</string>
+  <string name="morphe_music_jam_download_title">Íoslódáil Jam Layer chun é a chur ag obair.</string>
+  <string name="morphe_music_jam_download_summary">Oscail an leagan is déanaí de Jam Layer i do bhrabhsálaí.</string>
+  <string name="morphe_music_jam_controls_title">Rialtáin Jam</string>
+  <string name="morphe_music_jam_controls_summary">Óstáil nó glac páirt i Jam in aice láimhe agus bainistigh an seisiún.</string>
+  <string name="morphe_music_jam_companion_package_title">Pacáiste Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Roghnaigh an aip chompánach shuiteáilte a úsáidtear le haghaidh comhroinnt cioróil in aice láimhe.</string>
+  <string name="morphe_music_jam_package_message">Úsáid pacáiste compánach suiteáilte. Éilíonn péireáil do cheadú agus comhartha cumais áitiúil.</string>
+  <string name="morphe_music_jam_wifi_title">An gcuirfidh tú Wi-Fi ar siúl?</string>
+  <string name="morphe_music_jam_wifi_message">Cuir Wi-Fi ar siúl, ansin déan iarracht an Jam a thosú nó páirt a ghlacadh ann arís.</string>
+  <string name="morphe_music_jam_wifi_settings">Oscail socruithe Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">Cealaigh</string>
+  <string name="morphe_music_jam_use_package">Úsáid pacáiste</string>
+  <string name="morphe_music_jam_invalid_package">Cuir isteach ainm bailí pacáiste Android</string>
+  <string name="morphe_music_jam_package_saved">Pacáiste sábháilte. Cumraigh Jam Layer chun ceangal.</string>
+  <string name="morphe_music_jam_disconnected">Jam dícheangailte</string>
+  <string name="morphe_music_jam_enable_layer_first">Cumasaigh Jam Layer ar dtús</string>
+  <string name="morphe_music_jam_enable_patch_first">Cumasaigh comhroinnt cioróil Jam sna socruithe, ansin atosaigh YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Suiteáil an pacáiste roghnaithe Jam Layer ar dtús</string>
+  <string name="morphe_music_jam_join_hint">Cuir isteach an cód a thaispeántar ar an óstach. Is féidir le Wi-Fi Aware gléasanna in aice láimhe a nascadh fiú nuair a bhíonn a líonraí áitiúla éagsúil.</string>
+  <string name="morphe_music_jam_join_with_code">Glac páirt le cód</string>
+  <string name="morphe_music_jam_join">Glac páirt</string>
+  <string name="morphe_music_jam_scan_qr">Scan QR</string>
+  <string name="morphe_music_jam_invalid_invite">Cuir isteach an cód ocht gcarachtar nó greamaigh cuireadh.</string>
+  <string name="morphe_music_jam_join_your_jam">Glac páirt i do Jam</string>
+  <string name="morphe_music_jam_copy_code">Cóipeáil cód</string>
+  <string name="morphe_music_jam_code_clip">Cód Jam</string>
+  <string name="morphe_music_jam_show_qr">Taispeáin QR</string>
+  <string name="morphe_music_jam_done">Déanta</string>
+  <string name="morphe_music_jam_invite_title">Tabhair cuireadh chuig do Jam</string>
+  <string name="morphe_music_jam_invite_message">Scan chun páirt a ghlacadh agus an cioról seo a chur in eagar. Má chuirtear deireadh leis an Jam, cuirtear an cuireadh ar ceal.</string>
+  <string name="morphe_music_jam_copy_link">Cóipeáil nasc</string>
+  <string name="morphe_music_jam_invitation_clip">Cuireadh Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Tá an Jam ag athnascadh; bain triail as arís go luath.</string>
+  <string name="morphe_music_jam_added_to_jam">Curtha le Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Níl an Jam ar fáil; níor cuireadh an rian leis.</string>
+  <string name="morphe_music_jam_your_jam">Do Jam</string>
+  <string name="morphe_music_jam_listening_together">Ag éisteacht le chéile</string>
+  <string name="morphe_music_jam_joining_jam">Ag glacadh páirte i Jam</string>
+  <string name="morphe_music_jam_listen_together">Éist le chéile</string>
+  <string name="morphe_music_jam_updating">Ag nuashonrú Jam…</string>
+  <string name="morphe_music_jam_finding_host">Ag lorg d\'óstaigh ar Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Ag fanacht le daoine</string>
+  <string name="morphe_music_jam_one_connected">Tá %d duine nasctha</string>
+  <string name="morphe_music_jam_many_connected">Tá %d daoine nasctha</string>
+  <string name="morphe_music_jam_code_expires">Cuir isteach an cód seo ar ghléas in aice láimhe. Oibríonn Wi-Fi Aware thar líonraí áitiúla éagsúla nuair a thacaítear leis. Rachaidh sé in éag i gceann %d nóiméad.</string>
+  <string name="morphe_music_jam_seek_to">Cuardaigh go dtí %s?</string>
+  <string name="morphe_music_jam_edits_open">Eagarthóireacht ar oscailt</string>
+  <string name="morphe_music_jam_edits_locked">Eagarthóireacht faoi ghlas</string>
+  <string name="morphe_music_jam_connected_aware">Ceangailte trí Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Ceangailte trí Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Ceangailte trí Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Ní thacaítear leis le linn Jam</string>
+  <string name="morphe_music_jam_cancelled">Cealaíodh glacadh páirte</string>
+  <string name="morphe_music_jam_reconnecting_host">Ag athnascadh le d\'óstach…</string>
+  <string name="morphe_music_jam_share_prompt">Roinn cioról. Lig do gach duine amhráin a chur leis.</string>
+  <string name="morphe_music_jam_invite_people">Tabhair cuireadh do dhaoine</string>
+  <string name="morphe_music_jam_guest_edits">Is féidir le haíonna an cioról a chur in eagar</string>
+  <string name="morphe_music_jam_end_jam">Cuir deireadh le Jam</string>
+  <string name="morphe_music_jam_participant_help">Seinneann an t-óstach an ceol. Cuir amhráin leis, bog nó bain iad go díreach i gcioról YouTube Music.</string>
+  <string name="morphe_music_jam_joining_help">Coinnigh an dá ghléas in aice láimhe. Is féidir leat cealú agus muid ag lorg an óstaigh.</string>
+  <string name="morphe_music_jam_cancel_joining">Cealaigh glacadh páirte</string>
+  <string name="morphe_music_jam_leave_jam">Fág Jam</string>
+  <string name="morphe_music_jam_start_jam">Tosaigh Jam</string>
+  <string name="morphe_music_jam_setup_layer">Cumraigh Jam Layer</string>
+  <string name="morphe_music_jam_manage">Bainistigh</string>
+  <string name="morphe_music_jam_details">Sonraí</string>
+  <string name="morphe_music_jam_open">Oscail</string>
+  <string name="morphe_music_jam_loading_song_options">Ag lódáil roghanna an amhráin…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Níl roghanna an amhráin ar fáil; bain triail as arís</string>
+  <string name="morphe_music_jam_song_options_failed">Níorbh fhéidir roghanna an amhráin a oscailt</string>
+  <string name="morphe_music_jam_no_browser">Níl aon bhrabhsálaí ar fáil chun Jam Layer a íoslódáil</string>
+  <string name="morphe_music_jam_waiting_host_queue">Ag fanacht le cioról an óstaigh</string>
+  <string name="morphe_music_jam_open_song_first">Oscail amhrán in YouTube Music ar dtús</string>
+  <string name="morphe_music_jam_play_on_host">Seinn ar an óstach</string>
+  <string name="morphe_music_jam_quit_and_play">Éirigh as Jam agus seinn go háitiúil</string>
+  <string name="morphe_music_jam_play_next">Seinn an chéad cheann eile i Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Cuir le cioról Jam</string>
+  <string name="morphe_music_jam_play_track">Seinn an rian Jam seo</string>
+  <string name="morphe_music_jam_choose_playback">Roghnaigh cá háit le seinm</string>
+  <string name="morphe_music_jam_move_host_here">Bog an t-óstach anseo</string>
+  <string name="morphe_music_jam_seek_not_ready">Níor éirigh an t-amhrán réidh le cuardach</string>
+  <string name="morphe_music_jam_queue_changed_gesture">D\'athraigh an cioról; bain triail as an ngotha arís</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Lógó ceanntásca</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x — ní ritheann an traschéimniú ach ar 9.x agus níos nuaí
   <string name="morphe_music_remember_repeat_state_title">Cuimhnigh ar an staid athrá</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Cuimhnigh ar an staid mheasctha</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Luas athsheinm</string>
+  <string name="morphe_music_playback_speed_summary">Luas a úsáidtear do gach rian. Ag 100% úsáidtear luas an aip, amhail luas athsheinm an phodchraolta</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Athraigh an airde le luas</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Díchumasaigh atreorú \"díomá\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Coscann sé léim go dtí an chéad rian eile nuair a bhrúitear an cnaipe \'Ní maith liom\'</string>
@@ -429,7 +520,12 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_show_romanize_button_title">Taispeáin an cnaipe Rómhánaithe</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Tapáil chun rómhánú a scoránú; brúigh fada le haghaidh rómhánú amháin. Úsáideann sé rómhánú an tsoláthraí, Google Translate, nó API atá comhoiriúnach le OpenAI</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Taispeáin an cnaipe athnuachana</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Tapáil chun aistriú go dtí an chéad rogha eile d’fhocail an amhráin; brúigh go fada chun focail ó fhoinse sheachtrach a dhíghníomhachtú go sealadach agus na focail dhúchásacha a thaispeáint</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Tapaigh chun aistriú go dtí an chéad iarrthóir liricí eile; brúigh fada chun liricí a chuardach de réir teideal amhráin agus ealaíontóra</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Cuardaigh liricí</string>
+  <string name="morphe_music_lyrics_search_title_hint">Teideal an amhráin</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Ealaíontóir</string>
+  <string name="morphe_music_lyrics_search_empty">Cuir isteach teideal amhráin agus ealaíontóir</string>
+  <string name="morphe_music_lyrics_search_no_providers">Ní féidir le haon cheann de na soláthraithe atá cumasaithe cuardach a dhéanamh ar amhráin eile</string>
   <string name="morphe_music_lyrics_saved">Sábháilte</string>
   <string name="morphe_music_lyrics_word_sync_title">Aibhsigh focail nó siollaí sioncronaithe</string>
   <string name="morphe_music_lyrics_word_sync_summary">Tabhair tosaíocht do liricí a chuirtear i láthair focal ar fhocal nuair a bhíonn siad ar fáil. Nuair a bhíonn uainiú focal ag gabháil leis na liricí, déantar gach focal nó siolla a aibhsiú i gcomhthráth leis an gceol</string>
@@ -483,6 +579,7 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL pointe críochta API (m.sh. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Eochair API (fág folamh le haghaidh rochtain anaithnid)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Ainm samhail (m.sh. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Teimpléad leide (athróga: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Socruithe aistriúcháin AI sábháilte</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Níorbh fhéidir ceangal le pointe críochta AI. Seiceáil do shocruithe le do thoil.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Socruithe aistriúcháin AI athshocraithe</string>

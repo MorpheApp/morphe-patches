@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">ホストの Jam パッチを更新して、一時停止と再開を使用するようにします。</string>
+  <string name="morphe_music_jam_probe_title">Jam キューの共有</string>
+  <string name="morphe_music_jam_probe_summary">近くの Jam をホストするか参加して、Jam Layer 経由でそのキューを編集します。</string>
+  <string name="morphe_music_jam_enabled_title">Jam キューの共有を有効にする</string>
+  <string name="morphe_music_jam_enabled_summary">YouTube Music の再起動後に Jam 連携を有効にします。</string>
+  <string name="morphe_music_jam_download_title">Jam Layer をダウンロードして利用できるようにする</string>
+  <string name="morphe_music_jam_download_summary">最新の Jam Layer リリースをブラウザで開きます。</string>
+  <string name="morphe_music_jam_controls_title">Jam コントロール</string>
+  <string name="morphe_music_jam_controls_summary">近くの Jam をホストするか参加して、セッションを管理します。</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer パッケージ</string>
+  <string name="morphe_music_jam_companion_package_summary">近くのデバイスとのキュー共有に使用する、インストール済みのコンパニオン アプリを選択してください。</string>
+  <string name="morphe_music_jam_package_message">インストール済みのコンパニオン パッケージを使用してください。ペアリングには、承認とローカル ケイパビリティ トークンが必要です。</string>
+  <string name="morphe_music_jam_wifi_title">Wi-Fi をオンにしますか？</string>
+  <string name="morphe_music_jam_wifi_message">Wi-Fi をオンにしてから、Jam の開始または参加を再度お試しください。</string>
+  <string name="morphe_music_jam_wifi_settings">Wi-Fi 設定を開く</string>
+  <string name="morphe_music_jam_cancel">キャンセル</string>
+  <string name="morphe_music_jam_use_package">パッケージを使用</string>
+  <string name="morphe_music_jam_invalid_package">有効な Android パッケージ名を入力してください</string>
+  <string name="morphe_music_jam_package_saved">パッケージを保存しました。接続するには Jam Layer をセットアップしてください。</string>
+  <string name="morphe_music_jam_disconnected">Jam が切断されました</string>
+  <string name="morphe_music_jam_enable_layer_first">先に Jam Layer を有効にしてください</string>
+  <string name="morphe_music_jam_enable_patch_first">設定で Jam キューの共有を有効にしてから、YouTube Music を再起動してください</string>
+  <string name="morphe_music_jam_install_layer_first">先に選択した Jam Layer パッケージをインストールしてください</string>
+  <string name="morphe_music_jam_join_hint">ホストに表示されているコードを入力してください。Wi-Fi Aware は、LAN が異なる場合でも近くのデバイスを接続できます。</string>
+  <string name="morphe_music_jam_join_with_code">コードで参加</string>
+  <string name="morphe_music_jam_join">参加</string>
+  <string name="morphe_music_jam_scan_qr">QR コードをスキャン</string>
+  <string name="morphe_music_jam_invalid_invite">8 文字のコードを入力するか、招待を貼り付けてください</string>
+  <string name="morphe_music_jam_join_your_jam">あなたの Jam に参加</string>
+  <string name="morphe_music_jam_copy_code">コードをコピー</string>
+  <string name="morphe_music_jam_code_clip">Jam コード</string>
+  <string name="morphe_music_jam_show_qr">QR コードを表示</string>
+  <string name="morphe_music_jam_done">完了</string>
+  <string name="morphe_music_jam_invite_title">あなたの Jam に招待</string>
+  <string name="morphe_music_jam_invite_message">スキャンして、このキューに参加・編集できます。Jam を終了すると招待は無効になります。</string>
+  <string name="morphe_music_jam_copy_link">リンクをコピー</string>
+  <string name="morphe_music_jam_invitation_clip">Jam の招待</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam は再接続中です。しばらくしてもう一度お試しください</string>
+  <string name="morphe_music_jam_added_to_jam">Jam に追加しました</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam を利用できないため、トラックは追加されませんでした</string>
+  <string name="morphe_music_jam_your_jam">あなたの Jam</string>
+  <string name="morphe_music_jam_listening_together">一緒に聴いています</string>
+  <string name="morphe_music_jam_joining_jam">Jam に参加中</string>
+  <string name="morphe_music_jam_listen_together">一緒に聴く</string>
+  <string name="morphe_music_jam_updating">Jam を更新中…</string>
+  <string name="morphe_music_jam_finding_host">Wi-Fi でホストを探しています…</string>
+  <string name="morphe_music_jam_waiting_people">参加者を待っています</string>
+  <string name="morphe_music_jam_one_connected">%d 人が接続しています</string>
+  <string name="morphe_music_jam_many_connected">%d 人が接続しています</string>
+  <string name="morphe_music_jam_code_expires">このコードを近くのデバイスで入力してください。Wi-Fi Aware は、対応している場合は別々の LAN 間でも動作します。有効期限は %d 分後です。</string>
+  <string name="morphe_music_jam_seek_to">%s にシークしますか？</string>
+  <string name="morphe_music_jam_edits_open">編集を許可</string>
+  <string name="morphe_music_jam_edits_locked">編集をロック</string>
+  <string name="morphe_music_jam_connected_aware">Wi-Fi Aware で接続済み</string>
+  <string name="morphe_music_jam_connected_wifi">Wi-Fi で接続済み</string>
+  <string name="morphe_music_jam_connected_bluetooth">Bluetooth で接続済み</string>
+  <string name="morphe_music_jam_unsupported">Jam 中は非対応</string>
+  <string name="morphe_music_jam_cancelled">参加をキャンセルしました</string>
+  <string name="morphe_music_jam_reconnecting_host">ホストに再接続しています…</string>
+  <string name="morphe_music_jam_share_prompt">キューを共有しましょう。みんなが曲を追加できます。</string>
+  <string name="morphe_music_jam_invite_people">人を招待</string>
+  <string name="morphe_music_jam_guest_edits">ゲストはキューを編集できます</string>
+  <string name="morphe_music_jam_end_jam">Jam を終了</string>
+  <string name="morphe_music_jam_participant_help">ホストが音楽を再生します。YouTube Music のキューで曲を直接追加、移動、削除できます。</string>
+  <string name="morphe_music_jam_joining_help">両方のデバイスを近くに置いてください。ホストを探している間にキャンセルできます。</string>
+  <string name="morphe_music_jam_cancel_joining">参加をキャンセル</string>
+  <string name="morphe_music_jam_leave_jam">Jam から退出</string>
+  <string name="morphe_music_jam_start_jam">Jam を開始</string>
+  <string name="morphe_music_jam_setup_layer">Jam Layer をセットアップ</string>
+  <string name="morphe_music_jam_manage">管理</string>
+  <string name="morphe_music_jam_details">詳細</string>
+  <string name="morphe_music_jam_open">開く</string>
+  <string name="morphe_music_jam_loading_song_options">曲のオプションを読み込んでいます…</string>
+  <string name="morphe_music_jam_song_options_unavailable">曲のオプションを利用できません。もう一度お試しください</string>
+  <string name="morphe_music_jam_song_options_failed">曲のオプションを開けませんでした</string>
+  <string name="morphe_music_jam_no_browser">Jam Layer をダウンロードするためのブラウザが利用できません。</string>
+  <string name="morphe_music_jam_waiting_host_queue">ホストのキューを待っています</string>
+  <string name="morphe_music_jam_open_song_first">先に YouTube Music で曲を開いてください</string>
+  <string name="morphe_music_jam_play_on_host">ホストで再生</string>
+  <string name="morphe_music_jam_quit_and_play">Jam を終了してローカルで再生</string>
+  <string name="morphe_music_jam_play_next">Jam で次に再生</string>
+  <string name="morphe_music_jam_add_to_queue">Jam キューに追加</string>
+  <string name="morphe_music_jam_play_track">この Jam トラックを再生</string>
+  <string name="morphe_music_jam_choose_playback">再生先を選択</string>
+  <string name="morphe_music_jam_move_host_here">ホストをここに移動</string>
+  <string name="morphe_music_jam_seek_not_ready">曲がシークできる状態になりませんでした</string>
+  <string name="morphe_music_jam_queue_changed_gesture">キューが変更されました。もう一度ジェスチャーをお試しください</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">ヘッダーロゴ</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_remember_repeat_state_title">リピート再生の状態を保存</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">シャッフル再生の状態を保存</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">再生速度</string>
+  <string name="morphe_music_playback_speed_summary">すべてのトラックに使用される速度です。100%の場合、ポッドキャストの再生速度など、アプリの速度が使用されます</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">速度に合わせてピッチを変更</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">低評価によるスキップを無効化</string>
   <string name="morphe_music_disable_dislike_redirection_summary">低評価ボタンを押したときに次の曲にスキップする機能を無効にします</string>
@@ -350,7 +441,7 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_scrobbling_parse_title_title">タイトルから曲名とアーティスト名を取得</string>
   <string name="morphe_music_scrobbling_parse_title_summary">動画のタイトルを「 - 」で分割し、前半を曲名として、後半をアーティスト名として取得します。この機能は、動画タイトル全体が曲名として、チャンネル名がアーティスト名として取得される場合がある、非公式動画で有用です。</string>
   <string name="morphe_music_scrobbling_guess_album_title">アルバム名を補完</string>
-  <string name="morphe_music_scrobbling_guess_album_summary">楽曲からアルバム名を取得できない場合に、Last.fm で検索し Scrobble に追加します</string>
+  <string name="morphe_music_scrobbling_guess_album_summary">楽曲からアルバム名を取得できない場合に、Last.fm で検索して Scrobble に登録します</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_title">Scrobble について</string>
   <!-- 'scrobbling' must be kept untranslated -->
@@ -422,7 +513,12 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_show_romanize_button_title">ローマ字化ボタンを表示</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">タップでローマ字表記を切り替え、長押しでローマ字表記のみ表示します。プロバイダー提供のローマ字表記、Google翻訳、またはOpenAI互換APIを使用します。</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">更新ボタンを表示</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">タップすると次の歌詞候補に切り替わります; \"Saved\"</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">タップして次の歌詞候補に切り替え、長押しして曲名とアーティストで歌詞を検索します</string>
+  <string name="morphe_music_lyrics_search_dialog_title">歌詞を検索</string>
+  <string name="morphe_music_lyrics_search_title_hint">曲名</string>
+  <string name="morphe_music_lyrics_search_artist_hint">アーティスト</string>
+  <string name="morphe_music_lyrics_search_empty">曲名とアーティストを入力してください</string>
+  <string name="morphe_music_lyrics_search_no_providers">有効なプロバイダーのどれも、他の曲を検索できません</string>
   <string name="morphe_music_lyrics_saved">保存しました</string>
   <string name="morphe_music_lyrics_word_sync_title">同期された単語または音節をハイライト</string>
   <string name="morphe_music_lyrics_word_sync_summary">利用可能な場合は単語ごとの歌詞を優先します。歌詞に単語タイミングがある場合、音楽に合わせて各単語または音節をハイライトします</string>
@@ -476,6 +572,7 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API エンドポイント URL (例: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API キー (認証なしの場合は空欄)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">モデル名 (例: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">プロンプトテンプレート（変数: {language}, {task}, {title}, {artist}, {count}, {lines}）</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI 翻訳の設定を保存しました</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">AI エンドポイントに接続できませんでした。設定を確認してください。</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI 翻訳の設定をリセットしました</string>

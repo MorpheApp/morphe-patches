@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">पॉज़ और रिज़्यूम इस्तेमाल करने के लिए होस्ट का Jam पैच अपडेट करें।</string>
+  <string name="morphe_music_jam_probe_title">Jam कतार शेयरिंग</string>
+  <string name="morphe_music_jam_probe_summary">आस-पास कोई Jam होस्ट करें या उससे जुड़ें और Jam Layer के ज़रिए उसकी कतार में बदलाव करें।</string>
+  <string name="morphe_music_jam_enabled_title">Jam कतार शेयरिंग चालू करें</string>
+  <string name="morphe_music_jam_enabled_summary">YouTube Music को दोबारा चालू करने के बाद Jam इंटीग्रेशन चालू करता है।</string>
+  <string name="morphe_music_jam_download_title">इसे काम करने के लिए Jam Layer डाउनलोड करें</string>
+  <string name="morphe_music_jam_download_summary">अपने ब्राउज़र में Jam Layer का नवीनतम रिलीज़ खोलें।</string>
+  <string name="morphe_music_jam_controls_title">Jam कंट्रोल</string>
+  <string name="morphe_music_jam_controls_summary">आस-पास कोई Jam होस्ट करें या उससे जुड़ें और सेशन मैनेज करें।</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer पैकेज</string>
+  <string name="morphe_music_jam_companion_package_summary">आस-पास कतार शेयर करने के लिए इंस्टॉल किया गया कंपैनियन ऐप चुनें।</string>
+  <string name="morphe_music_jam_package_message">इंस्टॉल किए गए कंपैनियन पैकेज का इस्तेमाल करें। पेयर करने के लिए आपकी मंज़ूरी और लोकल कैपेबिलिटी टोकन ज़रूरी है।</string>
+  <string name="morphe_music_jam_wifi_title">वाई-फ़ाई चालू करें?</string>
+  <string name="morphe_music_jam_wifi_message">वाई-फ़ाई चालू करें, फिर Jam शुरू करने या उससे जुड़ने की दोबारा कोशिश करें।</string>
+  <string name="morphe_music_jam_wifi_settings">वाई-फ़ाई सेटिंग खोलें</string>
+  <string name="morphe_music_jam_cancel">रद्द करें</string>
+  <string name="morphe_music_jam_use_package">पैकेज का इस्तेमाल करें</string>
+  <string name="morphe_music_jam_invalid_package">मान्य Android पैकेज नाम डालें</string>
+  <string name="morphe_music_jam_package_saved">पैकेज सेव हो गया। कनेक्ट करने के लिए Jam Layer सेट अप करें।</string>
+  <string name="morphe_music_jam_disconnected">Jam डिसकनेक्ट हो गया</string>
+  <string name="morphe_music_jam_enable_layer_first">पहले Jam Layer चालू करें</string>
+  <string name="morphe_music_jam_enable_patch_first">सेटिंग में जाकर Jam कतार शेयरिंग चालू करें, फिर YouTube Music को दोबारा शुरू करें</string>
+  <string name="morphe_music_jam_install_layer_first">पहले चुना गया Jam Layer पैकेज इंस्टॉल करें</string>
+  <string name="morphe_music_jam_join_hint">होस्ट पर दिख रहा कोड डालें। अलग-अलग LAN होने पर भी Wi-Fi Aware आस-पास के डिवाइस कनेक्ट कर सकता है।</string>
+  <string name="morphe_music_jam_join_with_code">कोड से जुड़ें</string>
+  <string name="morphe_music_jam_join">जुड़ें</string>
+  <string name="morphe_music_jam_scan_qr">QR स्कैन करें</string>
+  <string name="morphe_music_jam_invalid_invite">आठ अंकों वाला कोड डालें या इन्विटेशन पेस्ट करें</string>
+  <string name="morphe_music_jam_join_your_jam">अपने Jam से जुड़ें</string>
+  <string name="morphe_music_jam_copy_code">कोड कॉपी करें</string>
+  <string name="morphe_music_jam_code_clip">Jam कोड</string>
+  <string name="morphe_music_jam_show_qr">QR दिखाएँ</string>
+  <string name="morphe_music_jam_done">हो गया</string>
+  <string name="morphe_music_jam_invite_title">अपने Jam में इनवाइट करें</string>
+  <string name="morphe_music_jam_invite_message">जुड़ने के लिए स्कैन करें और इस कतार में बदलाव करें। Jam खत्म करने पर इनवाइट रद्द हो जाएगा।</string>
+  <string name="morphe_music_jam_copy_link">लिंक कॉपी करें</string>
+  <string name="morphe_music_jam_invitation_clip">Jam इनवाइट</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam दोबारा कनेक्ट हो रहा है; थोड़ी देर बाद कोशिश करें</string>
+  <string name="morphe_music_jam_added_to_jam">Jam में जोड़ दिया गया</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam उपलब्ध नहीं है; गाना नहीं जोड़ा गया</string>
+  <string name="morphe_music_jam_your_jam">आपका Jam</string>
+  <string name="morphe_music_jam_listening_together">साथ में सुन रहे हैं</string>
+  <string name="morphe_music_jam_joining_jam">Jam से जुड़ रहे हैं</string>
+  <string name="morphe_music_jam_listen_together">साथ मिलकर सुनें</string>
+  <string name="morphe_music_jam_updating">Jam अपडेट हो रहा है…</string>
+  <string name="morphe_music_jam_finding_host">वाई-फ़ाई पर आपके होस्ट को खोजा जा रहा है…</string>
+  <string name="morphe_music_jam_waiting_people">लोगों के जुड़ने का इंतज़ार है</string>
+  <string name="morphe_music_jam_one_connected">%d व्यक्ति जुड़ा हुआ है</string>
+  <string name="morphe_music_jam_many_connected">%d लोग जुड़े हुए हैं</string>
+  <string name="morphe_music_jam_code_expires">आस-पास के डिवाइस में यह कोड डालें। सपोर्ट होने पर Wi-Fi Aware अलग-अलग LAN पर भी काम करता है। %d मिनट में एक्सपायर हो जाएगा।</string>
+  <string name="morphe_music_jam_seek_to">क्या %s पर ले जाएँ?</string>
+  <string name="morphe_music_jam_edits_open">संपादन खुले हैं</string>
+  <string name="morphe_music_jam_edits_locked">संपादन बंद हैं</string>
+  <string name="morphe_music_jam_connected_aware">Wi-Fi Aware से कनेक्टेड</string>
+  <string name="morphe_music_jam_connected_wifi">Wi-Fi से कनेक्टेड</string>
+  <string name="morphe_music_jam_connected_bluetooth">Bluetooth से कनेक्टेड</string>
+  <string name="morphe_music_jam_unsupported">Jam के दौरान समर्थित नहीं है</string>
+  <string name="morphe_music_jam_cancelled">जॉइन करना रद्द किया गया</string>
+  <string name="morphe_music_jam_reconnecting_host">आपके होस्ट से दोबारा कनेक्ट हो रहा है…</string>
+  <string name="morphe_music_jam_share_prompt">एक कतार साझा करें. सभी को गाने जोड़ने दें.</string>
+  <string name="morphe_music_jam_invite_people">लोगों को आमंत्रित करें</string>
+  <string name="morphe_music_jam_guest_edits">अतिथि कतार संपादित कर सकते हैं</string>
+  <string name="morphe_music_jam_end_jam">Jam समाप्त करें</string>
+  <string name="morphe_music_jam_participant_help">होस्ट संगीत चलाता है। YouTube Music कतार में सीधे गाने जोड़ें, क्रम बदलें या हटाएँ।</string>
+  <string name="morphe_music_jam_joining_help">दोनों डिवाइस पास रखें। होस्ट को खोजे जाने के दौरान आप इसे रद्द कर सकते हैं।</string>
+  <string name="morphe_music_jam_cancel_joining">जुड़ना रद्द करें</string>
+  <string name="morphe_music_jam_leave_jam">Jam से बाहर निकलें</string>
+  <string name="morphe_music_jam_start_jam">Jam शुरू करें</string>
+  <string name="morphe_music_jam_setup_layer">Jam Layer सेट करें</string>
+  <string name="morphe_music_jam_manage">मैनेज करें</string>
+  <string name="morphe_music_jam_details">विवरण</string>
+  <string name="morphe_music_jam_open">खोलें</string>
+  <string name="morphe_music_jam_loading_song_options">गाने के विकल्प लोड हो रहे हैं…</string>
+  <string name="morphe_music_jam_song_options_unavailable">गाने के विकल्प उपलब्ध नहीं हैं; फिर से कोशिश करें</string>
+  <string name="morphe_music_jam_song_options_failed">गाने के विकल्प खोले नहीं जा सके</string>
+  <string name="morphe_music_jam_no_browser">Jam Layer डाउनलोड करने के लिए कोई ब्राउज़र उपलब्ध नहीं है</string>
+  <string name="morphe_music_jam_waiting_host_queue">होस्ट की कतार का इंतज़ार किया जा रहा है</string>
+  <string name="morphe_music_jam_open_song_first">पहले YouTube Music में कोई गाना खोलें</string>
+  <string name="morphe_music_jam_play_on_host">होस्ट पर चलाएँ</string>
+  <string name="morphe_music_jam_quit_and_play">Jam छोड़ें और इस डिवाइस पर चलाएँ</string>
+  <string name="morphe_music_jam_play_next">Jam में अगला गाना चलाएँ</string>
+  <string name="morphe_music_jam_add_to_queue">Jam कतार में जोड़ें</string>
+  <string name="morphe_music_jam_play_track">यह Jam ट्रैक चलाएँ</string>
+  <string name="morphe_music_jam_choose_playback">चुनें कि कहाँ चलाना है</string>
+  <string name="morphe_music_jam_move_host_here">होस्ट को यहाँ ले जाएँ</string>
+  <string name="morphe_music_jam_seek_not_ready">गाना आगे या पीछे करने के लिए तैयार नहीं हुआ</string>
+  <string name="morphe_music_jam_queue_changed_gesture">कतार बदल गई है; जेस्चर दोबारा आज़माएँ</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">हेडर लोगो</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_remember_repeat_state_title">दोहराने की स्थिति याद रखें</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">शफल स्थिति याद रखें</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">प्लेबैक गति</string>
+  <string name="morphe_music_playback_speed_summary">सभी ट्रैक के लिए उपयोग की जाने वाली गति। 100% पर ऐप की गति उपयोग की जाती है, जैसे पॉडकास्ट प्लेबैक गति।</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">गति के साथ पिच बदलें</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">अनापसंद पुनर्निर्देशन को अक्षम करें</string>
   <string name="morphe_music_disable_dislike_redirection_summary">जब अनापसंद बटन दबाया जाता है तो अगले ट्रैक पर जाने से रोकता है</string>
@@ -424,7 +515,12 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_show_romanize_button_title">रोमनाइज़ बटन दिखाएँ</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">रोमनकरण टॉगल करने के लिए टैप करें; केवल रोमनकरण के लिए देर तक दबाएँ। प्रदाता रोमनकरण, Google Translate, या OpenAI-संगत API का उपयोग करता है।</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">रिफ़्रेश बटन दिखाएँ</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">अगले गीत विकल्प पर जाने के लिए टैप करें; तृतीय-पक्ष गीतों को अस्थायी रूप से अक्षम करने और अंतर्निहित गीत दिखाने के लिए देर तक दबाएँ</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">लिरिक्स के अगले विकल्प पर जाने के लिए टैप करें; गाने के नाम और आर्टिस्ट से लिरिक्स खोजने के लिए दबाकर रखें</string>
+  <string name="morphe_music_lyrics_search_dialog_title">लिरिक्स खोजें</string>
+  <string name="morphe_music_lyrics_search_title_hint">गाने का नाम</string>
+  <string name="morphe_music_lyrics_search_artist_hint">आर्टिस्ट</string>
+  <string name="morphe_music_lyrics_search_empty">गाने का नाम और आर्टिस्ट डालें</string>
+  <string name="morphe_music_lyrics_search_no_providers">चालू किए गए प्रोवाइडर्स में से कोई भी दूसरे गाने नहीं खोज सकता</string>
   <string name="morphe_music_lyrics_saved">सहेजा गया</string>
   <string name="morphe_music_lyrics_word_sync_title">सिंक किए गए शब्दों या अक्षरों को हाइलाइट करें</string>
   <string name="morphe_music_lyrics_word_sync_summary">जब उपलब्ध हों तो शब्द-दर-शब्द गीतों को प्राथमिकता दें। जब गीतों में शब्द टाइमिंग होती है, तो संगीत के साथ समय पर प्रत्येक शब्द या अक्षर को हाइलाइट करता है</string>
@@ -478,6 +574,7 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API एंडपॉइंट URL (उदा. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API कुंजी (अनाम पहुंच के लिए खाली छोड़ें)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">मॉडल नाम (उदा. openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">प्रॉम्प्ट टेम्प्लेट (वेरिएबल्स: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">AI अनुवाद सेटिंग्स सहेजी गईं</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">AI एंडपॉइंट से कनेक्ट नहीं हो सका। कृपया अपनी सेटिंग्स जांचें।</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">AI अनुवाद सेटिंग्स रीसेट हो गईं</string>

@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Απόκρυψη κουμπιού \"Τελευταία βίντεο\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Απόκρυψη της μπλε μπάρας \"Τελευταία βίντεο\" που εμφανίζεται στο πάνω μέρος της Κεντρικής σελίδας</string>
+  <string name="morphe_hide_live_streams_title">Απόκρυψη ζωντανών μεταδόσεων</string>
+  <string name="morphe_hide_live_streams_summary">Αποκρύπτει βίντεο που είναι ζωντανά τώρα στην αρχική ροή και στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_mix_playlists_title">Απόκρυψη \"Λίστες αναπαραγωγής μίξης\"</string>
   <string name="morphe_hide_movies_section_title">Απόκρυψη \"Ενότητας ταινιών\"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -691,8 +693,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού Αποθήκευσης</string>
   <string name="morphe_hide_channel_profile_button_title">Απόκρυψη καναλιού και κουμπιού Εγγραφής</string>
   <string name="morphe_hide_channel_profile_button_summary">Αποκρύπτει το avatar του καναλιού και το κουμπί Εγγραφής στην αρχή της γραμμής ενεργειών</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_title">Κουμπί «Εγγραφή»</string>
-  <string name="morphe_hide_channel_profile_subscribe_button_summary">Αποκρύπτει τα κουμπιά Εγγραφής και Συμμετοχής δίπλα στο avatar του καναλιού στην αρχή της γραμμής ενεργειών</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_title">Απόκρυψη κουμπιού «Εγγραφή»</string>
+  <string name="morphe_hide_channel_profile_subscribe_button_summary">Αποκρύπτει τα κουμπιά «Εγγραφής» και «Συμμετοχής» δίπλα στο avatar του καναλιού στην αρχή της γραμμής ενεργειών</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_clip_button_title">Επιλέξτε ποια στοιχεία εμφανίζονται στην οθόνη του αναλογικού πίνακα</string>
   <string name="morphe_hide_clip_button_summary">Ενδέχεται να μην λειτουργεί για ορισμένους λογαριασμούς χρηστών</string>
@@ -1050,6 +1052,13 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_always_on">Πάντα ενεργό</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Μόνο Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Απενεργό</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Επαναφορά αρχικών τίτλων</string>
+  <string name="morphe_restore_original_titles_summary">Εμφανίζει τους πρωτότυπους τίτλους βίντεο, τις πρωτότυπες περιγραφές βίντεο και καναλιών αντί για τις αυτόματα μεταφρασμένες</string>
+  <string name="morphe_restore_original_titles_loading">Φόρτωση τίτλου…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Απενεργοποίηση αυτόματης ανανέωσης ροής</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Αποτρέπει την αυτόματη ανανέωση των ροών όταν αυτές καταστούν ξεπερασμένες</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Απενεργοποίηση συνέχισης του miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Απενεργοποιεί το μίνι player \"Συνέχιση παρακολούθησης\", μια λειτουργία YouTube Premium που εμφανίζεται κατά την εκκίνηση της εφαρμογής</string>
@@ -1176,6 +1185,9 @@ Second \"item\" text"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Άνοιγμα συνδέσμων σε πρόγραμμα περιήγησης</string>
   <string name="morphe_external_browser_summary">Ανοίγει συνδέσμους σε έναν εξωτερικό φυλλομετρητή αντί για τον ενσωματωμένο φυλλομετρητή</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Μέγεθος buffer αναπαραγωγής</string>
+  <string name="morphe_playback_buffer_size_entry_default">Προεπιλογή</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Αυτόματη</string>
@@ -1295,5 +1307,6 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_default">Προεπιλογή</string>
   <string name="morphe_player_icon_style_entry_regular">Λεπτό</string>
   <string name="morphe_player_icon_style_entry_bold">Έντονο</string>
+  <string name="morphe_player_icon_style_entry_custom">Προσαρμοσμένο</string>
   <string name="morphe_shorts_icon_style_title">Στυλ εικονιδίων Shorts</string>
 </resources>

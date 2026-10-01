@@ -16,6 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_cancel">Atšaukti</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Antraštės logotipas</string>
@@ -86,6 +87,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade funkcija sukūrė VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->

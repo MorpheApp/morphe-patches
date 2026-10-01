@@ -16,6 +16,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Cập nhật bản vá Jam của máy chủ để sử dụng tạm dừng và tiếp tục.</string>
+  <string name="morphe_music_jam_cancel">Thôi</string>
+  <string name="morphe_music_jam_done">Xong</string>
+  <string name="morphe_music_jam_details">Chi tiết</string>
+  <string name="morphe_music_jam_open">Mở</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo đầu trang</string>
@@ -180,6 +185,10 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_remember_repeat_state_title">Nhớ trạng thái lặp lại</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Nhớ trạng thái trộn bài</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Tốc độ phát</string>
+  <string name="morphe_music_playback_speed_summary">Tốc độ dùng cho tất cả các bản nhạc. Ở mức 100%, tốc độ của ứng dụng sẽ được dùng, chẳng hạn như tốc độ phát podcast</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Thay đổi cao độ theo tốc độ</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Tắt chuyển bài khi bấm không thích</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Không chuyển sang bài tiếp theo khi bạn bấm nút Không thích</string>
@@ -420,7 +429,12 @@ Các bước:
   <string name="morphe_music_lyrics_show_romanize_button_title">Hiển thị nút Romanize</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Chạm để bật/tắt phiên âm; nhấn giữ để chỉ hiển thị phiên âm. Sử dụng phiên âm từ nhà cung cấp, Google Translate hoặc API tương thích với OpenAI.</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Hiển thị nút Làm mới</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Nhấn để chuyển sang lời bài hát ứng viên tiếp theo; nhấn giữ để tạm thời vô hiệu hóa lời bài hát của bên thứ ba và hiển thị lời bài hát gốc</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Chạm để chuyển sang lời bài hát tiềm năng tiếp theo; nhấn giữ để tìm kiếm lời bài hát theo tên bài hát và nghệ sĩ</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Tìm kiếm lời bài hát</string>
+  <string name="morphe_music_lyrics_search_title_hint">Tên bài hát</string>
+  <string name="morphe_music_lyrics_search_artist_hint">Nghệ sĩ</string>
+  <string name="morphe_music_lyrics_search_empty">Nhập tên bài hát và nghệ sĩ</string>
+  <string name="morphe_music_lyrics_search_no_providers">Không có nhà cung cấp nào được bật có thể tìm kiếm các bài hát khác</string>
   <string name="morphe_music_lyrics_saved">Đã lưu</string>
   <string name="morphe_music_lyrics_word_sync_title">Đánh dấu các từ hoặc âm tiết đồng bộ</string>
   <string name="morphe_music_lyrics_word_sync_summary">Ưu tiên lời bài hát từng từ khi có sẵn. Khi lời bài hát có thời gian cho từng từ, đánh dấu từng từ hoặc âm tiết theo nhạc</string>
@@ -474,6 +488,7 @@ Các bước:
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL điểm cuối API (ví dụ: https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Khóa API (để trống để truy cập ẩn danh)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Tên mô hình (ví dụ: openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Mẫu lời nhắc (các biến: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Đã lưu cài đặt dịch AI</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Không thể kết nối tới điểm cuối AI. Vui lòng kiểm tra cài đặt của bạn.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Đã đặt lại cài đặt dịch AI</string>

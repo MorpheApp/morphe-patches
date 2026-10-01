@@ -52,6 +52,7 @@ import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResponse;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResult;
@@ -564,6 +565,7 @@ public final class ChannelSearchPatch {
 
         TextView title = new TextView(activity);
         title.setText(result.title);
+        RestoreOriginalTitlesPatch.restoreOriginalTitle(title, result.videoId);
         title.setTextColor(ThemeUtils.getAppForegroundColor());
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         title.setMaxLines(2);

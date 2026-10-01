@@ -16,6 +16,93 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_update_host_controls">Fasilə veri və davam eti istifadə etmək üçün ev sahibinin Jam yamağını yenilə.</string>
+  <string name="morphe_music_jam_probe_title">Jam növbəsinin paylaşılması</string>
+  <string name="morphe_music_jam_probe_summary">Yaxınlıqdakı Jam-ə ev sahibliyi et yaxud qoşul və onun növbəsinə Jam Layer vasitəsilə düzəliş et.</string>
+  <string name="morphe_music_jam_enabled_title">Jam növbəsinin paylaşılmasını aktivləşdir</string>
+  <string name="morphe_music_jam_enabled_summary">YouTube Music yenidən başladıqdan sonra Jam inteqrasiyasını aktivləşdirir.</string>
+  <string name="morphe_music_jam_download_title">İşləməsi üçün Jam Layer-i yüklə</string>
+  <string name="morphe_music_jam_download_summary">Jam Layer-in ən son buraxılışını brauzerinizdə açın.</string>
+  <string name="morphe_music_jam_controls_title">Jam idarəetmələri</string>
+  <string name="morphe_music_jam_controls_summary">Yaxınlıqdakı Jam-ə ev sahibliyi et və ya qoşul, sessiyanı idarə et.</string>
+  <string name="morphe_music_jam_companion_package_title">Jam Layer paketi</string>
+  <string name="morphe_music_jam_companion_package_summary">Yaxınlıqdakı növbəni paylaşmaq üçün quraşdırılmış ortaq tətbiqi seç.</string>
+  <string name="morphe_music_jam_package_message">Quraşdırılmış ortaq paketi istifadə edin. Qoşalaşdırma sizin təsdiqinizi və yerli imkan tokenini tələb edir.</string>
+  <string name="morphe_music_jam_wifi_title">Wi-Fi açılsın?</string>
+  <string name="morphe_music_jam_wifi_message">Wi-Fi-ı açın, sonra Jam-i başlatmağı və ya ona qoşulmağı təkrar sınayın.</string>
+  <string name="morphe_music_jam_wifi_settings">Wi-Fi tənzimləmələrini aç</string>
+  <string name="morphe_music_jam_cancel">Ləğv et</string>
+  <string name="morphe_music_jam_use_package">Paketi istifadə et</string>
+  <string name="morphe_music_jam_invalid_package">Etibarlı Android paket adı daxil et</string>
+  <string name="morphe_music_jam_package_saved">Paket saxlanıldı. Bağlantı yaratmaq üçün Jam Layer-i quraşdırın.</string>
+  <string name="morphe_music_jam_disconnected">Jam bağlantısı kəsildi</string>
+  <string name="morphe_music_jam_enable_layer_first">Əvvəlcə Jam Layer-i aktivləşdir</string>
+  <string name="morphe_music_jam_enable_patch_first">Tənzimləmələrdə Jam növbə paylaşımını aktivləşdirin, sonra YouTube Music-i yenidən başlat</string>
+  <string name="morphe_music_jam_install_layer_first">Əvvəlcə seçilmiş Jam Layer paketini quraşdır</string>
+  <string name="morphe_music_jam_join_hint">Host-da göstərilən kodu daxil edin. Wi-Fi Aware fərqli LAN şəbəkələrində olsalar belə, yaxınlıqdakı cihazları qoşa bilir.</string>
+  <string name="morphe_music_jam_join_with_code">Kodla qoşul</string>
+  <string name="morphe_music_jam_join">Qoşul</string>
+  <string name="morphe_music_jam_scan_qr">QR-ı Skanla</string>
+  <string name="morphe_music_jam_invalid_invite">Səkkiz simvollu kodu daxil et və ya dəvəti yapışdır</string>
+  <string name="morphe_music_jam_join_your_jam">Jam-inizə qoşulun</string>
+  <string name="morphe_music_jam_copy_code">Kodu köçür</string>
+  <string name="morphe_music_jam_code_clip">Jam kodu</string>
+  <string name="morphe_music_jam_show_qr">QR-ı Göstər</string>
+  <string name="morphe_music_jam_done">Bitdi</string>
+  <string name="morphe_music_jam_invite_title">Jam-inizə dəvət edin</string>
+  <string name="morphe_music_jam_invite_message">Bu növbəyə qoşulmaq və düzəliş etmək üçün skanla. Jam-i bitirmək dəvəti ləğv edir.</string>
+  <string name="morphe_music_jam_copy_link">Linki köçür</string>
+  <string name="morphe_music_jam_invitation_clip">Jam dəvəti</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam yenidən qoşulur; bir az sonra təkrar sına</string>
+  <string name="morphe_music_jam_added_to_jam">Jam-ə Əlavə Edildi</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam əlçatmazdır; trek əlavə olunmadı</string>
+  <string name="morphe_music_jam_your_jam">Sizin Jam</string>
+  <string name="morphe_music_jam_listening_together">Birlikdə dinləmə</string>
+  <string name="morphe_music_jam_joining_jam">Jam-ə Qoşulur</string>
+  <string name="morphe_music_jam_listen_together">Birlikdə dinlə</string>
+  <string name="morphe_music_jam_updating">Jam-i Yeniləyir…</string>
+  <string name="morphe_music_jam_finding_host">Wi-Fi üzərindən hostunuz axtarılır…</string>
+  <string name="morphe_music_jam_waiting_people">İnsanlar gözlənilir</string>
+  <string name="morphe_music_jam_one_connected">%d şəxs qoşuldu</string>
+  <string name="morphe_music_jam_many_connected">%d nəfər qoşuldu</string>
+  <string name="morphe_music_jam_code_expires">Bu kodu yaxınlıqdakı cihazda daxil edin. Wi-Fi Aware dəstəkləndikdə ayrı LAN-lar arasında da işləyir. %d dəqiqəyə vaxtı bitir.</string>
+  <string name="morphe_music_jam_seek_to">%s mövqeyinə keçilsin?</string>
+  <string name="morphe_music_jam_edits_open">Düzəlişlər açıqdır</string>
+  <string name="morphe_music_jam_edits_locked">Düzəlişlər kilidlənib</string>
+  <string name="morphe_music_jam_connected_aware">Wi-Fi Aware vasitəsilə qoşulub</string>
+  <string name="morphe_music_jam_connected_wifi">Wi-Fi vasitəsilə qoşulub</string>
+  <string name="morphe_music_jam_connected_bluetooth">Bluetooth vasitəsilə qoşulub</string>
+  <string name="morphe_music_jam_unsupported">Jam seansında dəstəklənmir</string>
+  <string name="morphe_music_jam_cancelled">Qoşulma ləğv edildi</string>
+  <string name="morphe_music_jam_reconnecting_host">Hostunuza yenidən qoşulur…</string>
+  <string name="morphe_music_jam_share_prompt">Növbəni paylaş. Hər kəsin mahnı əlavə etməsinə şərait yarat.</string>
+  <string name="morphe_music_jam_invite_people">İnsanları dəvət et</string>
+  <string name="morphe_music_jam_guest_edits">Qonaqlar növbəyə düzəliş edə bilər</string>
+  <string name="morphe_music_jam_end_jam">Jam-i Bitir</string>
+  <string name="morphe_music_jam_participant_help">Musiqini sahibi səsləndirir. Mahnıları birbaşa YouTube Music növbəsində əlavə edin, yerini dəyişin və ya silin.</string>
+  <string name="morphe_music_jam_joining_help">Hər iki cihazı yaxında saxlayın. Host axtarılarkən imtina edə bilərsiniz.</string>
+  <string name="morphe_music_jam_cancel_joining">Qoşulmanı ləğv et</string>
+  <string name="morphe_music_jam_leave_jam">Jam-dən Çıx</string>
+  <string name="morphe_music_jam_start_jam">Jam-i Başlat</string>
+  <string name="morphe_music_jam_setup_layer">Jam Layer-i Quraşdır</string>
+  <string name="morphe_music_jam_manage">İdarə et</string>
+  <string name="morphe_music_jam_details">Təfərrüatlar</string>
+  <string name="morphe_music_jam_open">Aç</string>
+  <string name="morphe_music_jam_loading_song_options">Mahnı seçimləri yüklənilir…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Mahnı seçimləri əlçatan deyil; təkrar cəhd et</string>
+  <string name="morphe_music_jam_song_options_failed">Mahnı seçimlərini açmaq olmadı</string>
+  <string name="morphe_music_jam_no_browser">Jam Layer-i yükləmək üçün brauzer mövcud deyil</string>
+  <string name="morphe_music_jam_waiting_host_queue">Hostun növbəsi gözlənilir</string>
+  <string name="morphe_music_jam_open_song_first">Əvvəlcə YouTube Music-də mahnı aç</string>
+  <string name="morphe_music_jam_play_on_host">Hostda səsləndir</string>
+  <string name="morphe_music_jam_quit_and_play">Jam-dən çıx və yerli olaraq səsləndir</string>
+  <string name="morphe_music_jam_play_next">Növbətini Jam-də Səsləndir</string>
+  <string name="morphe_music_jam_add_to_queue">Jam növbəsinə əlavə et</string>
+  <string name="morphe_music_jam_play_track">Bu Jam trekini səsləndir</string>
+  <string name="morphe_music_jam_choose_playback">Harada səsləndiriləcəyini seç</string>
+  <string name="morphe_music_jam_move_host_here">Hostu buraya köçür</string>
+  <string name="morphe_music_jam_seek_not_ready">Mahnı keçid üçün hazır olmadı</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Növbə dəyişdi; jesti təkrar sına</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Sərlövhə simvolu</string>
@@ -180,6 +267,10 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_remember_repeat_state_title">Təkrarlanma vəziyyətini xatırla</string>
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">Qarışdırma vəziyyətini xatırla</string>
+  <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">Oynatma sürəti</string>
+  <string name="morphe_music_playback_speed_summary">Bütün treklər üçün istifadə olunan sürət. 100% olduqda tətbiqin sürəti, məsələn, podkastın oynatma sürəti istifadə olunur</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">Ucalığı sürət ilə dəyiş</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Bəyənməmə yönləndirilməsini qapat</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Bəyənməmə düyməsi basıldıqda növbəti trekə keçməyə mane olur</string>
@@ -262,6 +353,8 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <!-- layout.compactheader.hideFilterBarPatch -->
   <string name="morphe_music_hide_filter_bar_title">Filtr cərgəsini gizlət</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">Portret istiqamətinə məcbur et</string>
+  <string name="morphe_music_force_portrait_orientation_summary">Cihaz fırladıldıqda tətbiqi portret istiqamətində saxlayır</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Kiçik səsləndirici rəngini dəyişdir</string>
   <string name="morphe_music_change_miniplayer_color_summary">Kiçik səsləndirici rəngini tam ekran səsləndiriciyə uyuşdurur</string>
@@ -427,7 +520,12 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_lyrics_show_romanize_button_title">Oxunuş düyməsini göstər</string>
   <string name="morphe_music_lyrics_show_romanize_button_summary">Transkripsiyanı dəyişmək üçün toxun; yalnız transkripsiya üçün uzun bas. Təminatçı transkripsiyasını, Google Tərcüməni və ya OpenAI uyğun API-sini istifadə edir</string>
   <string name="morphe_music_lyrics_show_refresh_button_title">Yeniləmə düyməsini göstər</string>
-  <string name="morphe_music_lyrics_show_refresh_button_summary">Növbəti söz variantına keçmək üçün toxun; üçüncü tərəf mahnı sözlərini müvəqqəti qapatmaq və yerli sözləri göstərmək üçün basıb saxla</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">Növbəti mahnı sözləri variantına keçmək üçün toxun; mahnı başlığı və ifaçıya görə axtarmaq üçün uzun bas</string>
+  <string name="morphe_music_lyrics_search_dialog_title">Mahnı sözlərini axtar</string>
+  <string name="morphe_music_lyrics_search_title_hint">Mahnı başlığı</string>
+  <string name="morphe_music_lyrics_search_artist_hint">İfaçı</string>
+  <string name="morphe_music_lyrics_search_empty">Mahnı adını və ifaçını daxil et</string>
+  <string name="morphe_music_lyrics_search_no_providers">Aktivləşdirilmiş təminatçıların heç biri digər mahnıları axtara bilmir</string>
   <string name="morphe_music_lyrics_saved">Saxlanıldı</string>
   <string name="morphe_music_lyrics_word_sync_title">Sinxronlaşdırılmış sözləri və ya hecaları vurğula</string>
   <string name="morphe_music_lyrics_word_sync_summary">Mümkün olduqda sözbəsöz sözlərə üstünlük verir. Sözlərdə zamanlama olduqda, musiqi ilə eyni vaxtda hər bir sözü və ya hecanı vurğulayır</string>
@@ -481,6 +579,7 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_lyrics_ai_config_base_url_hint">API son nöqtəsi URL-si (məsələn, https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">API açarı (gizli giriş üçün boş qoy)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Model adı (məsələn, openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">Şablon sorğu (dəyişənlər: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
   <string name="morphe_music_lyrics_ai_config_toast_saved">Süni intellekt tərcümə tənzimləmələri saxlanıldı</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Süni intellekt son nöqtəsinə qoşulmaq olmadı. Zəhmət olmasa, tənzimləmələrinizi yoxlayın.</string>
   <string name="morphe_music_lyrics_ai_config_toast_reset">Süni intellekt tərcümə tənzimləmələri sıfırlandı</string>

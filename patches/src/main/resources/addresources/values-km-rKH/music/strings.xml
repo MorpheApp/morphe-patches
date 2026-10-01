@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_cancel">បោះបង់</string>
+  <string name="morphe_music_jam_details">ព័ត៌មានលម្អិត</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_entry_3">ផ្ទាល់ខ្លួន</string>
@@ -41,6 +43,7 @@ Second \"item\" text"</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->

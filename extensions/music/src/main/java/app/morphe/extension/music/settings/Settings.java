@@ -14,6 +14,7 @@ import app.morphe.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
+import app.morphe.extension.music.patches.lyrics.OpenAIClient;
 import app.morphe.extension.music.sponsorblock.MusicSponsorBlockConfig;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -28,6 +29,9 @@ import app.morphe.extension.shared.spoof.ClientType;
 
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class Settings extends SharedYouTubeSettings {
+
+    // Jam queue sharing
+    public static final BooleanSetting JAM_ENABLED = new BooleanSetting("morphe_music_jam_enabled", FALSE, true);
 
     // Ads
     public static final BooleanSetting HIDE_GET_PREMIUM_LABEL = new BooleanSetting("morphe_music_hide_get_premium_label", TRUE, true);
@@ -86,6 +90,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SHUFFLE_BUTTON = new BooleanSetting("morphe_music_hide_shuffle_button", FALSE, true);
     public static final BooleanSetting MINIPLAYER_NEXT_BUTTON = new BooleanSetting("morphe_music_miniplayer_next_button", TRUE, true);
     public static final BooleanSetting MINIPLAYER_PREVIOUS_BUTTON = new BooleanSetting("morphe_music_miniplayer_previous_button", TRUE, true);
+    public static final IntegerSetting PLAYBACK_SPEED = new IntegerSetting("morphe_music_playback_speed", 100);
+    public static final BooleanSetting PLAYBACK_SPEED_CHANGE_PITCH = new BooleanSetting("morphe_music_playback_speed_change_pitch", FALSE);
     public static final BooleanSetting REMEMBER_REPEAT_STATE = new BooleanSetting("morphe_music_remember_repeat_state", FALSE, true, parentNot(HIDE_REPEAT_BUTTON));
     public static final BooleanSetting REMEMBER_SHUFFLE_STATE = new BooleanSetting("morphe_music_remember_shuffle_state", FALSE, true, parentNot(HIDE_SHUFFLE_BUTTON));
     public static final BooleanSetting SAVED_SHUFFLE_STATE = new BooleanSetting("morphe_music_saved_shuffle_state", FALSE, parent(REMEMBER_SHUFFLE_STATE));
@@ -201,6 +207,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting LYRICS_AI_BASE_URL = new StringSetting("morphe_music_lyrics_ai_base_url", "https://text.pollinations.ai/openai", true, parent(LYRICS_USE_AI_TRANSLATION));
     public static final StringSetting LYRICS_AI_API_TOKEN = new StringSetting("morphe_music_lyrics_ai_api_token", "", true, parent(LYRICS_USE_AI_TRANSLATION));
     public static final StringSetting LYRICS_AI_MODEL = new StringSetting("morphe_music_lyrics_ai_model", "openai-fast", true, parent(LYRICS_USE_AI_TRANSLATION));
+    public static final StringSetting LYRICS_AI_PROMPT = new StringSetting("morphe_music_lyrics_ai_prompt", OpenAIClient.DEFAULT_PROMPT, true, parent(LYRICS_USE_AI_TRANSLATION));
     public static final BooleanSetting LYRICS_SHOW_ROMANIZE_BUTTON = new BooleanSetting("morphe_music_lyrics_show_romanize_button", TRUE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_SHOW_REFRESH_BUTTON = new BooleanSetting("morphe_music_lyrics_show_refresh_button", TRUE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_HIDE_INFO = new BooleanSetting("morphe_music_lyrics_hide_info", FALSE, true, parent(LYRICS_ENABLED));
@@ -356,6 +363,8 @@ public class Settings extends SharedYouTubeSettings {
                 14, 40, 2, "sp"));
         SeekBarPreference.register(new SeekBarConfig(LYRICS_OFFSET_MS,
                 -2000, 2000, 100, "ms"));
+        SeekBarPreference.register(new SeekBarConfig(PLAYBACK_SPEED,
+                25, 300, 5, "%"));
 
         // Must run before any code reads a SegmentCategory setting.
         MusicSponsorBlockConfig.install();

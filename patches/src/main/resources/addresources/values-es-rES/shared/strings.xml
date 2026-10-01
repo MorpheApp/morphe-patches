@@ -96,9 +96,9 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
   <string name="morphe_debug_screen_summary">Configura opciones avanzadas de desarrollador y registros de diagnóstico</string>
-  <string name="morphe_debug_title">Registro de depuración</string>
+  <string name="morphe_debug_title">Activar registro de depuración</string>
   <string name="morphe_debug_stacktrace_title">Registro de depuración de la traza de pila</string>
-  <string name="morphe_debug_stacktrace_summary">Incluye rastreos de pila en los registros de depuración para ayudar a identificar errores</string>
+  <string name="morphe_debug_stacktrace_summary">Incluye trazas de pila en los registros de depuración para ayudar a identificar errores</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar aviso de error en Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de Morphe.
 

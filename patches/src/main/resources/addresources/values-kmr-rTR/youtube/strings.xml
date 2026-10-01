@@ -946,6 +946,8 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_playback_in_feeds_entry_always_on">Her tim hemî de</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Tenê ser Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Dabe</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mîni-lîstikê vekirin qedexe kirin</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Mînîlîstê \'Devamkirina dîkirinê\' asteng dike, fektorek premîum a YouTube ku di destpêka sepanê de xuya dibe</string>
@@ -1065,6 +1067,8 @@ Bike li vir da vekirina DeArrow.ajay.app"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Lînkên vekin li navigerê</string>
   <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_entry_default">Bixweber</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Otomatîk</string>

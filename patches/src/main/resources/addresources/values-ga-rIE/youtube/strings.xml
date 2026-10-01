@@ -90,6 +90,8 @@ I measc na n-athruithe tá:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Folaigh an cnaipe \'Físeáin is déanaí\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Folaíonn sé an meirge gorm \'Físeáin is Déanaí\' a thaispeántar ag barr an bheatha Baile</string>
+  <string name="morphe_hide_live_streams_title">Folaigh sruthanna beo</string>
+  <string name="morphe_hide_live_streams_summary">Folaíonn sé físeáin atá beo anois sa bhfotha baile agus i dtorthaí cuardaigh</string>
   <string name="morphe_hide_mix_playlists_title">Folaigh seinmliostaí meascán</string>
   <string name="morphe_hide_movies_section_title">Folaigh an chuid scannán</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1065,6 +1067,13 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_playback_in_feeds_entry_always_on">I gcónaí ar siúl</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi amháin</string>
   <string name="morphe_playback_in_feeds_entry_off">As</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Athchóirigh na bunteidil</string>
+  <string name="morphe_restore_original_titles_summary">Taispeánann sé na bunleaganacha de na teidil físeán, de na tuairiscí físeán agus de na tuairiscí cainéal in ionad na leaganacha aistrithe go huathoibríoch</string>
+  <string name="morphe_restore_original_titles_loading">Ag lódáil an teidil…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Díchumasaigh athnuachan uathoibríoch fothaí</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Cuireann sé cosc ar athnuachan uathoibríoch fothaí tar éis dóibh dul as dáta.</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Díchumasaigh atosú an mhionimreoir</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Díchumasaíonn sé an miniplayer \'Lean ar aghaidh ag breathnú\', gné de chuid YouTube Premium a thaispeántar nuair a thosaítear an aip</string>
@@ -1191,6 +1200,9 @@ Tapáil anseo chun DeArrow.ajay.app a oscailt."</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Oscail naisc sa bhrabhsála</string>
   <string name="morphe_external_browser_summary">Osclaíonn sé naisc i mbrabhsálaí seachtrach seachas sa bhrabhsálaí san aip</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Méid an mhaoláin athsheinm</string>
+  <string name="morphe_playback_buffer_size_entry_default">Réamhshocrú</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Uathoibríoch</string>
@@ -1310,5 +1322,6 @@ Teorannú: Filleann sé ar an leagan sean-stíle den fhorleagan 'Tuilleadh físe
   <string name="morphe_player_icon_style_entry_default">Réamhshocrú</string>
   <string name="morphe_player_icon_style_entry_regular">Tanaí</string>
   <string name="morphe_player_icon_style_entry_bold">Trom</string>
+  <string name="morphe_player_icon_style_entry_custom">Custamach</string>
   <string name="morphe_shorts_icon_style_title">Stíl deilbhín Shorts</string>
 </resources>

@@ -90,6 +90,8 @@ Breytingarnar fela í sér:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Fela hnappinn „Nýjustu myndbönd“</string>
   <string name="morphe_hide_latest_videos_button_summary">Felur bláa borðann „Nýjustu myndbönd“ sem birtist efst í heimastreymi</string>
+  <string name="morphe_hide_live_streams_title">Fela streymi í beinni</string>
+  <string name="morphe_hide_live_streams_summary">Felur myndbönd sem eru núna í beinni á heimasíðunni og í leitarniðurstöðum</string>
   <string name="morphe_hide_mix_playlists_title">Fela blandaða spilunarlista</string>
   <string name="morphe_hide_movies_section_title">Fela kvikmyndadeild</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1060,6 +1062,13 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_playback_in_feeds_entry_always_on">Alltaf ákveikt</string>
   <string name="morphe_playback_in_feeds_entry_wifi_only">Aðeins Wi-Fi</string>
   <string name="morphe_playback_in_feeds_entry_off">Slökkt</string>
+  <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
+  <string name="morphe_restore_original_titles_title">Endurheimta upprunalega titla</string>
+  <string name="morphe_restore_original_titles_summary">Sýnir upprunalega myndbandstitla, myndbandslýsingar og rásalýsingar í stað hinna sjálfþýddu</string>
+  <string name="morphe_restore_original_titles_loading">Hleð titil…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Slökkva á sjálfvirkri endurnýjun straums</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Kemur í veg fyrir að straumar endurnýjist sjálfkrafa eftir að þeir eru orðnir úreltir.</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Lokað rætingarspilarann</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Gerir óvirkt \'Halda áfram að horfa\' litla spilara, YouTube Premium eiginleika sem birtist þegar appið ræsir</string>
@@ -1186,6 +1195,9 @@ Bankaðu hér til að opna DeArrow.ajay.app"</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Opnaðu tengla í vafra</string>
   <string name="morphe_external_browser_summary">Opnaðu tenglar í utanfærs vörpun á stað inni í appinu</string>
+  <!-- video.buffer.playbackBufferPatch -->
+  <string name="morphe_playback_buffer_size_title">Spilunarbiðminnisstærð</string>
+  <string name="morphe_playback_buffer_size_entry_default">Sjálfgefið</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Sjálfvirkt</string>
@@ -1305,5 +1317,6 @@ Takmörkun: Snýr aftur í gamla 'Fleiri myndbönd' yfirlagsstílinn"</string>
   <string name="morphe_player_icon_style_entry_default">Sjálfgefið</string>
   <string name="morphe_player_icon_style_entry_regular">Þunnur</string>
   <string name="morphe_player_icon_style_entry_bold">Feitletraður</string>
+  <string name="morphe_player_icon_style_entry_custom">Sérsniðið</string>
   <string name="morphe_shorts_icon_style_title">Stíll Shorts-táknsins</string>
 </resources>

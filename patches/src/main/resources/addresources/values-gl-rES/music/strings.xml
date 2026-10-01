@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="morphe_music_jam_cancel">Cancelar</string>
+  <string name="morphe_music_jam_details">Detalles</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotipo da cabeceira</string>
@@ -42,6 +44,7 @@ Second \"item\" text"</string>
   <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
+  <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
