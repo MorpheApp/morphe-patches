@@ -1,6 +1,14 @@
-package app.morphe.extension.youtube.patches;
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
 
-import static app.morphe.extension.shared.StringRef.str;
+package app.morphe.extension.youtube.patches;
 
 import android.net.Uri;
 
@@ -23,6 +31,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.youtube.patches.utils.requests.DeArrowRequester;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -139,16 +148,6 @@ public final class AlternativeThumbnailsPatch {
      */
     private static final String deArrowAPIURLPrefix;
 
-    /**
-     * How long to temporarily turn off DeArrow if it fails for any reason.
-     */
-    private static final long DEARROW_FAILURE_API_BACKOFF_MILLISECONDS = 5 * 60 * 1000; // 5 Minutes.
-
-    /**
-     * If non-zero, then the system time of when DeArrow API calls can resume.
-     */
-    private static volatile long timeToResumeDeArrowAPICalls;
-
     static {
         dearrowAPIURI = validateSettings();
         final int port = dearrowAPIURI.getPort();
@@ -246,35 +245,6 @@ public final class AlternativeThumbnailsPatch {
     }
 
     /**
-     * @return If this client has not recently experienced any DeArrow API errors.
-     */
-    private static boolean canUseDeArrowAPI() {
-        if (timeToResumeDeArrowAPICalls == 0) {
-            return true;
-        }
-        if (timeToResumeDeArrowAPICalls < System.currentTimeMillis()) {
-            Logger.printDebug(() -> "Resuming DeArrow API calls");
-            timeToResumeDeArrowAPICalls = 0;
-            return true;
-        }
-        return false;
-    }
-
-    private static void handleDeArrowError(@NonNull String url, int statusCode) {
-        Logger.printDebug(() -> "Encountered DeArrow error.  URL: " + url);
-        final long now = System.currentTimeMillis();
-        if (timeToResumeDeArrowAPICalls < now) {
-            timeToResumeDeArrowAPICalls = now + DEARROW_FAILURE_API_BACKOFF_MILLISECONDS;
-            if (Settings.ALT_THUMBNAIL_DEARROW_CONNECTION_TOAST.get()) {
-                String toastMessage = (statusCode != 0)
-                        ? str("morphe_alt_thumbnail_dearrow_error", statusCode)
-                        : str("morphe_alt_thumbnail_dearrow_error_generic");
-                Utils.showToastLong(toastMessage);
-            }
-        }
-    }
-
-    /**
      * Injection point. Called off the main thread and by multiple threads at the same time.
      *
      * @param originalURL Image URL for all URL images loaded, including video thumbnails.
@@ -302,7 +272,7 @@ public final class AlternativeThumbnailsPatch {
 
             String sanitizedReplacementURL;
             final boolean includeTracking;
-            if (option.useDeArrow && canUseDeArrowAPI()) {
+            if (option.useDeArrow && DeArrowRequester.canUseDeArrowAPI()) {
                 includeTracking = false; // Do not include view tracking parameters with API call.
                 String fallbackURL = null;
                 if (option.useStillImages) {
@@ -355,7 +325,7 @@ public final class AlternativeThumbnailsPatch {
                     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304
                     return; // Normal response.
                 }
-                handleDeArrowError(url, statusCode);
+                DeArrowRequester.handleDeArrowError(url, statusCode);
                 return;
             }
 
@@ -409,7 +379,7 @@ public final class AlternativeThumbnailsPatch {
                 final int statusCode = (responseInfo != null)
                         ? responseInfo.getHttpStatusCode()
                         : 0;
-                handleDeArrowError(url, statusCode);
+                DeArrowRequester.handleDeArrowError(url, statusCode);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Callback failure error", ex);

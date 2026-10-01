@@ -63,10 +63,21 @@ final class OriginalChannelDescriptionRequest {
         return fetch(channelId).getNow(null);
     }
 
+    /**
+     * @return If the description is being fetched.
+     */
+    static boolean isPending(String channelId) {
+        CompletableFuture<String> future = cache.get(channelId);
+        return future != null && !future.isDone();
+    }
+
     @Nullable
     private static String fetchDescription(String channelId) {
         try {
-            byte[] requestBody = ChannelSearchRoutes.createChannelBody(channelId, Locale.getDefault());
+            // The original description does not depend on the country, and the endpoint
+            // rejects some countries, such as CN, so the default country is used.
+            byte[] requestBody = ChannelSearchRoutes.createChannelBody(channelId,
+                    new Locale(Locale.getDefault().getLanguage()));
             HttpURLConnection connection = ChannelSearchRoutes.getConnection(
                     ChannelSearchRoutes.GET_CHANNEL_DESCRIPTION);
             connection.setFixedLengthStreamingMode(requestBody.length);
