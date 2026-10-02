@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.video.buffer
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -38,6 +39,9 @@ internal object TracksSelectedFingerprint : Fingerprint(
     filters = listOf(
         literal(389),
         literal(38),
-        literal(1024, listOf(Opcode.MUL_INT_LIT16)),
+        anyInstruction(
+            literal(1024, listOf(Opcode.MUL_INT_LIT16)),
+            literal(10, listOf(Opcode.SHL_INT_LIT8)) // 21.40+
+        )
     )
 )
