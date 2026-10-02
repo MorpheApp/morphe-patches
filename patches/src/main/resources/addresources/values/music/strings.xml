@@ -301,6 +301,14 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
     <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
 
+    <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+    <string name="morphe_music_playlist_track_tap_action_title">Playlist track tap action</string>
+    <string name="morphe_music_playlist_track_tap_action_entry_default">Play the playlist</string>
+    <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Play only the selected track</string>
+    <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Add the selected track to the queue</string>
+    <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+    <string name="morphe_music_playlist_track_tap_added_to_queue">Added to queue</string>
+
     <!-- layout.buttons.hideButtonsPatch -->
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
     <string name="morphe_music_hide_history_button_title">Hide History button</string>
