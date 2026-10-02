@@ -106,4 +106,11 @@ public class DisableVideoCodecsPatch {
     public static boolean allowVP9() {
         return !Settings.FORCE_AVC_CODEC.get();
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean allowCodec(String mimeType) {
+        return !(Settings.FORCE_VP9_CODEC.get() && "video/av01".equals(mimeType));
+    }
 }

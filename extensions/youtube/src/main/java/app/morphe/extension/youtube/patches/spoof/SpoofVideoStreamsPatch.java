@@ -32,7 +32,8 @@ public class SpoofVideoStreamsPatch {
         // Use [Android XR, Android XR Downgraded, visonOS 1.03] client that has AV1 if user settings allow it.
         // AVC cannot be forced with [Android XR, Android XR Downgraded, visonOS 1.03] because it uses VP9 and AV1.
         // If both settings are on, then force AVC takes priority and [Android VR, Android VR Downgraded, visonOS 1.02] is used.
-        if (Settings.SPOOF_VIDEO_STREAMS_AV1.get() && !Settings.FORCE_AVC_CODEC.get() ) {
+        // Force VP9 blocks AV1, so the AV1 clients are not used.
+        if (Settings.SPOOF_VIDEO_STREAMS_AV1.get() && !Settings.FORCE_AVC_CODEC.get() && !Settings.FORCE_VP9_CODEC.get()) {
             if (client == ClientType.ANDROID_VR_DASH) {
                 client = ClientType.ANDROID_XR_DASH;
             } else if (client == ClientType.ANDROID_VR_SABR) {
