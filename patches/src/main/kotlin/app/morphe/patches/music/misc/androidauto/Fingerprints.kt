@@ -60,7 +60,7 @@ internal object IsGoogleSignedFingerprint : Fingerprint(
 
 // endregion
 
-// region SupportAndroidAutoPatch.kt: Playlists, podcasts, playback, and Library refresh in Android Auto.
+// region AndroidAutoPatch.kt: Playlists, podcasts, playback, and Library refresh in Android Auto.
 
 private const val PHONE_BROWSE_TABS_PROTO_FIELD = 58_173_949L
 private const val GRID_PHONE_BROWSE_ITEM_PRESENT_FLAG = 0x40000L

@@ -43,21 +43,21 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch;"
+    "Lapp/morphe/extension/music/patches/AndroidAutoPatch;"
 private const val EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PhoneBrowseClient;"
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$PhoneBrowseClient;"
 private const val EXTENSION_PHONE_BROWSE_RESPONSE_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PhoneBrowseResponse;"
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$PhoneBrowseResponse;"
 private const val EXTENSION_PHONE_BROWSE_TAB_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PhoneBrowseTab;"
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$PhoneBrowseTab;"
 private const val EXTENSION_GRID_RENDERER_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$GridRenderer;"
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$GridRenderer;"
 private const val EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$AndroidAutoBrowseRequest;"
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$AndroidAutoBrowseRequest;"
 private const val EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$AndroidAutoFolderReload;"
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$AndroidAutoFolderReload;"
 private const val EXTENSION_PHONE_BROWSE_ITEM_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/SupportAndroidAutoPatch$PhoneBrowseItem;"
+    $$"Lapp/morphe/extension/music/patches/AndroidAutoPatch$PhoneBrowseItem;"
 private const val MUSIC_BROWSER_SERVICE_CLASS =
     "Lcom/google/android/apps/youtube/music/mediabrowser/MusicBrowserService;"
 
@@ -79,8 +79,8 @@ private const val SUBTITLE_FIELD_NAME = "h"
  * [installPlaylistMediaIdBuilder] supplies the media IDs used to play playlist cards.
  */
 @Suppress("unused")
-val supportAndroidAutoPatch = bytecodePatch(
-    name = "Support Android Auto",
+val androidAutoPatch = bytecodePatch(
+    name = "Android Auto",
     description = "Restores YouTube Music playlists and podcasts in Android Auto.",
 ) {
     dependsOn(sharedExtensionPatch)

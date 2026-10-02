@@ -51,7 +51,7 @@ import app.morphe.extension.shared.Utils;
  * Library or Playlists request and Home through YTM's browser service. New Home results update Podcasts.
  */
 @SuppressWarnings("unused")
-public final class SupportAndroidAutoPatch {
+public final class AndroidAutoPatch {
 
     /** Added to YTM's phone browse client to request the Library and its later pages. */
     public interface PhoneBrowseClient {
@@ -99,7 +99,7 @@ public final class SupportAndroidAutoPatch {
 
         /**
          * Sends the list through YTM, including the hook for
-         * {@link SupportAndroidAutoPatch#handleAndroidAutoBrowseResult}.
+         * {@link AndroidAutoPatch#handleAndroidAutoBrowseResult}.
          * YTM may remove items to keep the returned list within its byte limit.
          */
         void patch_deliverAndroidAutoItems(List<MediaBrowserCompat.MediaItem> androidAutoItems);
@@ -115,7 +115,7 @@ public final class SupportAndroidAutoPatch {
         /**
          * Returns a playlist page ID, or null if none is found or the item's commands identify different playlists.
          * A command that does not open a page makes YTM's converter throw;
-         * {@link SupportAndroidAutoPatch#collectPlaylistsFromGrid} skips that item.
+         * {@link AndroidAutoPatch#collectPlaylistsFromGrid} skips that item.
          */
         @Nullable String patch_getPlaylistBrowseId();
         @Nullable Uri patch_getArtworkUri();
@@ -221,7 +221,7 @@ public final class SupportAndroidAutoPatch {
     
     private static final Executor BACKGROUND_EXECUTOR = Utils::runOnBackgroundThread;
     private static final Handler refreshHandler = new Handler(Looper.getMainLooper());
-    private static final Runnable REFRESH_LIBRARY = SupportAndroidAutoPatch::refreshAndroidAutoLibrary;
+    private static final Runnable REFRESH_LIBRARY = AndroidAutoPatch::refreshAndroidAutoLibrary;
     
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds = ConcurrentHashMap.newKeySet();
@@ -235,25 +235,25 @@ public final class SupportAndroidAutoPatch {
     
     // Saved request for playlist updates from Library or the nested Playlists folder.
     @Nullable
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static AndroidAutoSubscription playlistsSubscription;
     @Nullable
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static AndroidAutoSubscription podcastsSubscription;
     @Nullable
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static AndroidAutoSubscription homeSubscription;
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static String androidAutoHomeMediaId;
     @Nullable
     private static volatile String androidAutoLibraryMediaId;
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static List<MediaBrowserCompat.MediaItem> cachedAndroidAutoPodcastFolders = Collections.emptyList();
 
     @Nullable
     private static volatile PhoneBrowseClient phoneBrowseClient;
 
-    private SupportAndroidAutoPatch() {
+    private AndroidAutoPatch() {
     }
 
     // Capture YTM's Library request methods and identify the Playlists folder
@@ -574,7 +574,7 @@ public final class SupportAndroidAutoPatch {
         AndroidAutoSubscription playlists;
         AndroidAutoSubscription home;
         // Refresh the current connection if Android Auto reconnected during the delay.
-        synchronized (SupportAndroidAutoPatch.class) {
+        synchronized (AndroidAutoPatch.class) {
             playlists = playlistsSubscription;
             home = homeSubscription;
         }
@@ -624,7 +624,7 @@ public final class SupportAndroidAutoPatch {
     }
 
     @Nullable
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static List<MediaBrowserCompat.MediaItem> initializeAndroidAutoTabs(
             @Nullable List<MediaBrowserCompat.MediaItem> rootTabs) {
         // Do not reuse saved requests or podcast content after the main tabs reload.
@@ -652,14 +652,14 @@ public final class SupportAndroidAutoPatch {
         return updatedRootTabs;
     }
 
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static void refreshPodcastsAfterHomeLoad() {
         AndroidAutoSubscription subscription = podcastsSubscription;
         if (subscription == null) return;
         // New Home results can change the podcast folder IDs.
         // Always queue the reload so handleAndroidAutoBrowseResult releases its lock first.
         refreshHandler.post(() -> {
-            synchronized (SupportAndroidAutoPatch.class) {
+            synchronized (AndroidAutoPatch.class) {
                 // Reloading the main tabs or reconnecting replaces the saved Podcasts request.
                 if (podcastsSubscription != subscription) return;
             }
@@ -667,7 +667,7 @@ public final class SupportAndroidAutoPatch {
         });
     }
 
-    @GuardedBy("SupportAndroidAutoPatch.class")
+    @GuardedBy("AndroidAutoPatch.class")
     private static void cacheAndroidAutoPodcastFolders(List<MediaBrowserCompat.MediaItem> homeItems) {
         List<MediaBrowserCompat.MediaItem> folders = new ArrayList<>();
         // TODO: The server omits songs and playlists from Android Auto Speed dial; obtain them from phone Home.
