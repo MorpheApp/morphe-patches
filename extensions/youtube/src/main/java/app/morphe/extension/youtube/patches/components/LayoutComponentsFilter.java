@@ -645,8 +645,7 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == youTabChannelHandle) {
             // The identifier is also used by the metadata of videos, so only the header
             // of the You tab is filtered, not the one of a channel page.
-            return NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY
-                    && Utils.startsWith(path, "page_header.e");
+            return Utils.startsWith(path, "page_header.e") && NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY;
         }
 
         if (matchedGroup == singleItemInformationPanel) {
