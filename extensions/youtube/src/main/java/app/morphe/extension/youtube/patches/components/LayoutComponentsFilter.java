@@ -95,6 +95,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup videoRecommendationLabels;
+    private final StringFilterGroup youTabChannelHandle;
 
     public enum ExpandableCardStyle {
         SHOW_ALL,
@@ -434,6 +435,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "endorsement_header_footer.e"
         );
 
+        // The @handle under the account name in the header of the You tab.
+        youTabChannelHandle = new StringFilterGroup(
+                Settings.HIDE_YOU_TAB_CHANNEL_HANDLE,
+                "content_metadata.e"
+        );
+
         final var webLinkPanel = new StringFilterGroup(
                 Settings.HIDE_WEB_SEARCH_RESULTS,
                 "web_link_panel",
@@ -477,7 +484,8 @@ public final class LayoutComponentsFilter extends Filter {
                 videoLabels,
                 videoTitle,
                 videoRecommendationLabels,
-                webLinkPanel
+                webLinkPanel,
+                youTabChannelHandle
         );
     }
 
@@ -632,6 +640,13 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == subscribedChannelsBarName) {
             return Utils.endsWith(path, "|TextType|");
+        }
+
+        if (matchedGroup == youTabChannelHandle) {
+            // The identifier is also used by the metadata of videos, so only the header
+            // of the You tab is filtered, not the one of a channel page.
+            return NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY
+                    && Utils.startsWith(path, "page_header.e");
         }
 
         if (matchedGroup == singleItemInformationPanel) {

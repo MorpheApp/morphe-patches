@@ -444,6 +444,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_web_search_results", summary = true),
+            SwitchPreference("morphe_hide_you_tab_channel_handle", summary = true),
             SwitchPreference("morphe_hide_youtube_doodles", summary = true)
         )
 
