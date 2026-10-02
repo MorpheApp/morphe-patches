@@ -13,7 +13,6 @@ package app.morphe.patches.youtube.layout.seekbar
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -97,10 +96,13 @@ internal object PlayerLinearGradientFingerprint : Fingerprint(
 
 internal object LottieSplashScreenFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        anyInstruction(
-            literal(268507948L), // 20.21.37
-            literal(1073814316L)
-        )
+        literal(1073814316L)
+    )
+)
+
+internal object LottieSplashScreenFeatureFlagLegacyFingerprint : Fingerprint(
+    filters = listOf(
+        literal(268507948L), // 20.21.37
     )
 )
 

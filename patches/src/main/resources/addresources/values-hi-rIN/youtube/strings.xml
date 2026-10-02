@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">छुपाएं \'नवीन वीडियो\' बटन</string>
   <string name="morphe_hide_latest_videos_button_summary">होम फ़ीड के शीर्ष पर दिखने वाले नीले \'नवीनतम वीडियो\' बैनर को छुपाता है</string>
+  <string name="morphe_hide_live_streams_title">लाइव स्ट्रीम छिपाएँ</string>
+  <string name="morphe_hide_live_streams_summary">होम फ़ीड और सर्च नतीजों में अभी लाइव चल रहे वीडियो छिपाता है</string>
   <string name="morphe_hide_mix_playlists_title">छुपाएं मिश्रित प्लेलिस्ट</string>
   <string name="morphe_hide_movies_section_title">छुपाएं फिल्मों का अनुभाग</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_loop_video_range_clear">खाली करें</string>
   <string name="morphe_loop_video_range_toast_on">%1$s से %2$s लूपिंग</string>
   <string name="morphe_loop_video_range_invalid_time">अमान्य समय सीमा</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">पिक्चर-इन-पिक्चर ओवरले बटन दिखाएं</string>
+  <string name="morphe_pip_button_flyout_title">पिक्चर-इन-पिक्चर फ़्लायआउट बटन दिखाएं</string>
+  <string name="morphe_pip_button_flyout_name">पिक्चर-इन-पिक्चर पर स्विच करें</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">प्ले ऑल बटन दिखाएं</string>
   <string name="morphe_play_all_button_summary">"प्लेलिस्ट उत्पन्न करने के लिए टैप करें चैनल के सभी वीडियो का, टैप और होल्ड करके पूर्ववत करें
@@ -637,6 +643,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_swipe_volume_distance_title"> Volume स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_volume_distance_summary">उच्च मानों के लिए प्रति वॉल्यूम चरण अधिक स्वाइपिंग की आवश्यकता होती है</string>
   <string name="morphe_swipe_volume_steps_title">वॉल्यूम चरण</string>
+  <string name="morphe_volume_boost_title">वॉल्यूम बूस्ट</string>
+  <string name="morphe_volume_boost_summary">अधिकतम वॉल्यूम के बाद ऊपर स्वाइप करने पर यह बूस्ट हो जाता है, जिससे तेज़ आवाज़ फट सकती है</string>
   <string name="morphe_swipe_volume_steps_entry_default">डिवाइस डिफ़ॉल्ट</string>
   <string name="morphe_swipe_brightness_sensitivity_title">चमक स्वाइप संवेदनशीलता</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">उच्च मान प्रति चमक चरण के लिए अधिक स्वाइपिंग की आवश्यकता होती है</string>
@@ -1067,8 +1075,14 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_playback_in_feeds_entry_off">बंद</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">ओरिजिनल टाइटल वापस लाएँ</string>
-  <string name="morphe_restore_original_titles_summary">अपने आप ट्रांसलेट हुए टाइटल और डिस्क्रिप्शन के बजाय वीडियो के ओरिजिनल टाइटल और डिस्क्रिप्शन दिखाता है।</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">अनुवाद किया गया</string>
+  <string name="morphe_restore_original_titles_type_entry_original">ओरिजिनल</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow के ज़रिए अनुवादित</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow के साथ ओरिजिनल</string>
   <string name="morphe_restore_original_titles_loading">टाइटल लोड हो रहा है…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">फ़ीड का अपने आप रीफ़्रेश होना बंद करें</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">फ़ीड के पुराने होने पर उसे अपने आप रीफ़्रेश होने से रोकता है</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेयर में फिर से शुरू करने की सुविधा बंद करें</string>
   <string name="morphe_miniplayer_disable_resuming_summary">\'जारी रखें देखें\' मिनीप्लेयर को अक्षम करता है, एक YouTube प्रीमियम सुविधा जो ऐप शुरू होने पर दिखाई देती है।</string>

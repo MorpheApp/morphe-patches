@@ -45,6 +45,7 @@ final class TrackerRuntime {
         if (privacyGeneration != currentPrivacyGeneration) {
             reducer.clear();
 
+            SeriesPlayback.privacyChanged(currentPrivacyGeneration);
             privacyGeneration = currentPrivacyGeneration;
         }
         PlaybackBridge.Source source = PlaybackBridge.source();
@@ -67,6 +68,7 @@ final class TrackerRuntime {
                 waiting = false;
                 pending = null;
             }
+            SeriesPlayback.observed(before);
             TrackerService tracker = service();
             if (!Settings.SERIES_TRACKER_RECORD_PROGRESS.get()
                     || !RecordingPrivacy.allowsRecording()
@@ -133,13 +135,19 @@ final class TrackerRuntime {
                 650);
     }
 
+    static boolean launchPending() {
+        return waiting;
+    }
+
     static void cancelLaunch() {
+        SeriesPlayback.clear();
         waiting = false;
         pending = null;
         launchToken++;
     }
 
     static void clear() {
+        SeriesPlayback.clear();
         reducer.clear();
     }
 

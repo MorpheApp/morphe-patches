@@ -15,7 +15,10 @@ import app.morphe.patches.shared.misc.lottie.LOTTIE_ANIMATION_VIEW_CLASS_TYPE
 import app.morphe.patches.shared.misc.lottie.LottieAnimationViewSetAnimationIntFingerprint
 import app.morphe.patches.shared.misc.lottie.lottieAnimationPatch
 import app.morphe.patches.youtube.layout.seekbar.LottieSplashScreenFeatureFlagFingerprint
+import app.morphe.patches.youtube.layout.seekbar.LottieSplashScreenFeatureFlagLegacyFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -30,11 +33,15 @@ private const val EXTENSION_CLASS =
  */
 val splashAnimationPatch = bytecodePatch {
 
-    dependsOn(sharedExtensionPatch, lottieAnimationPatch)
+    dependsOn(sharedExtensionPatch, lottieAnimationPatch, versionCheckPatch)
 
     execute {
         // Force newer Lottie animation.
-        LottieSplashScreenFeatureFlagFingerprint.matchAll().forEach {
+        (if (is_20_31_or_greater) {
+            LottieSplashScreenFeatureFlagFingerprint
+        } else {
+            LottieSplashScreenFeatureFlagLegacyFingerprint
+        }).matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->useLotteLaunchSplashScreen(Z)Z"

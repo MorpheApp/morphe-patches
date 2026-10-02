@@ -76,6 +76,7 @@ public final class TrackerModels {
         public final long revision, cursorRevision, fetchedAt, activity;
         public final int cursorOrdinal, newEpisodeCount;
         public final boolean startHere, reverseOrder, hideWatched;
+        public final String recoveryId;
         public final List<Episode> episodes;
         public final Map<String, Progress> progress;
 
@@ -170,6 +171,49 @@ public final class TrackerModels {
                 int newEpisodeCount,
                 boolean reverseOrder,
                 boolean hideWatched) {
+            this(
+                    id,
+                    name,
+                    epoch,
+                    revision,
+                    cursorId,
+                    cursorOrdinal,
+                    cursorRevision,
+                    bookmarkId,
+                    status,
+                    error,
+                    fetchedAt,
+                    activity,
+                    episodes,
+                    progress,
+                    startHere,
+                    newEpisodeCount,
+                    reverseOrder,
+                    hideWatched,
+                    "");
+        }
+
+        public Series(
+                String id,
+                String name,
+                String epoch,
+                long revision,
+                String cursorId,
+                int cursorOrdinal,
+                long cursorRevision,
+                String bookmarkId,
+                String status,
+                String error,
+                long fetchedAt,
+                long activity,
+                List<Episode> episodes,
+                Map<String, Progress> progress,
+                boolean startHere,
+                int newEpisodeCount,
+                boolean reverseOrder,
+                boolean hideWatched,
+                String recoveryId) {
+            this.recoveryId = recoveryId;
             this.reverseOrder = reverseOrder;
             this.hideWatched = hideWatched;
             this.startHere = startHere;

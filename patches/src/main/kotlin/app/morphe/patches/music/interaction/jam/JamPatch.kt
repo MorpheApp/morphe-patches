@@ -10,7 +10,6 @@ package app.morphe.patches.music.interaction.jam
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -22,26 +21,12 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findElementByAttributeValueOrThrow
-import java.util.logging.Logger
 
-internal val supportedJamVersions = setOf("9.15.51", "9.35.54", "9.36.50", "9.37.54")
-
-internal fun isSupportedJamVersion(version: String): Boolean = version in supportedJamVersions
-
-private fun warnUnsupportedJamVersion(version: String) {
-    Logger.getLogger("Jam queue sharing")
-        .warning(
-            "Skipping Jam queue sharing on YouTube Music $version. " +
-                "Supported versions: ${supportedJamVersions.joinToString()}. No Jam changes will be applied."
-        )
-}
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/jam/JamUi;"
 
 private val jamResources = resourcePatch {
     dependsOn(versionCheckPatch)
     execute {
-        if (!isSupportedJamVersion(packageMetadata.versionName)) {
-            return@execute warnUnsupportedJamVersion(packageMetadata.versionName)
-        }
         document("AndroidManifest.xml").use { doc ->
             val permissions = doc.getElementsByTagName("uses-permission")
             if (
@@ -69,6 +54,7 @@ private val jamResources = resourcePatch {
                 }
             )
         }
+
         document("res/layout/player_bottom_sheet.xml").use { doc ->
             val root = doc.documentElement
             val tabs =
@@ -84,6 +70,7 @@ private val jamResources = resourcePatch {
                 tabs,
             )
         }
+
         document("res/layout/watch_while_layout.xml").use { doc ->
             doc.documentElement.setAttribute("app:bottomSheetPeekHeight", "68dp")
         }
@@ -95,65 +82,56 @@ private val jamResources = resourcePatch {
  * in [JamAbi] and [JamUiAbi]; generated methods are small access or interception bridges.
  */
 @Suppress("unused")
-val jamQueueProbePatch =
-    bytecodePatch(
-        name = "Jam queue sharing",
-        description =
-            "Shares the host queue and playback controls through an authenticated Jam bridge. " +
-                "Root installation is not supported.",
-        default = true,
-    ) {
-        dependsOn(
-            sharedExtensionPatch,
-            settingsPatch,
-            jamResources,
-            musicVideoInformationPatch,
-            resourceMappingPatch,
-            versionCheckPatch,
+val jamQueueSharingPatch = bytecodePatch(
+    name = "Jam queue sharing",
+    description = "Shares the host queue and playback controls through an authenticated Jam bridge. "
+            + "Root installation is not supported."
+) {
+    dependsOn(
+        sharedExtensionPatch,
+        settingsPatch,
+        jamResources,
+        musicVideoInformationPatch,
+        versionCheckPatch,
+    )
+    compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
+
+    execute {
+        val baseQueue = resolveJamQueueAbi()
+        val ui = resolveJamUiAbi(baseQueue)
+        val queue = baseQueue.copy(item = baseQueue.item.copy(menuPayload = ui.queueRow.menuPayload))
+
+        installJamQueueBridges(queue)
+        installJamUiBridges(ui, queue)
+
+        MusicActivityOnCreateFingerprint.method.addInstructions(
+            0,
+            "invoke-static/range {p0 .. p0}, $EXTENSION_CLASS->install(Landroid/app/Activity;)V",
         )
-        compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
-        execute {
-            if (!isSupportedJamVersion(packageMetadata.versionName)) {
-                return@execute warnUnsupportedJamVersion(packageMetadata.versionName)
-            }
-            val baseQueue = resolveJamQueueAbi()
-            val ui = resolveJamUiAbi(baseQueue)
-            val queue =
-                baseQueue.copy(item = baseQueue.item.copy(menuPayload = ui.queueRow.menuPayload))
-
-            installJamQueueBridges(queue)
-            installJamUiBridges(ui, queue)
-
-            MusicActivityOnCreateFingerprint.method.addInstructions(
-                0,
-                "invoke-static/range {p0 .. p0}, Lapp/morphe/extension/music/jam/JamUi;->install(Landroid/app/Activity;)V",
-            )
-            PreferenceScreen.PLAYER.addPreferences(
-                PreferenceScreenPreference(
-                    key = "morphe_music_jam_probe",
-                    sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-                    preferences =
-                        setOf(
-                            SwitchPreference(key = "morphe_music_jam_enabled", summary = true),
-                            NonInteractivePreference(
-                                key = "morphe_music_jam_download",
-                                tag = "app.morphe.extension.music.jam.JamDownloadPreference",
-                                selectable = true,
-                            ),
-                            NonInteractivePreference(
-                                key = "morphe_music_jam_controls",
-                                tag = "app.morphe.extension.music.jam.JamProbePreference",
-                                selectable = true,
-                            ),
-                            NonInteractivePreference(
-                                key = "morphe_music_jam_companion_package",
-                                tag =
-                                    "app.morphe.extension.music.jam.JamCompanionPackagePreference",
-                                selectable = true,
-                            ),
-                        ),
+        PreferenceScreen.PLAYER.addPreferences(
+            PreferenceScreenPreference(
+                key = "morphe_music_jam_probe",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference(key = "morphe_music_jam_enabled", summary = true),
+                    NonInteractivePreference(
+                        key = "morphe_music_jam_download",
+                        tag = "app.morphe.extension.music.jam.JamDownloadPreference",
+                        selectable = true,
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_jam_controls",
+                        tag = "app.morphe.extension.music.jam.JamProbePreference",
+                        selectable = true,
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_jam_companion_package",
+                        tag = "app.morphe.extension.music.jam.JamCompanionPackagePreference",
+                        selectable = true
+                    )
                 )
             )
-        }
+        )
     }
+}

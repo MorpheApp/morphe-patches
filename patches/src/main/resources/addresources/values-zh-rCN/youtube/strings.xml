@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">隐藏“最新视频”按钮</string>
   <string name="morphe_hide_latest_videos_button_summary">隐藏主页信息流顶部的蓝色“最新视频”横幅</string>
+  <string name="morphe_hide_live_streams_title">隐藏直播</string>
+  <string name="morphe_hide_live_streams_summary">隐藏首页信息流和搜索结果中当前正在直播的视频</string>
   <string name="morphe_hide_mix_playlists_title">隐藏合辑播放列表</string>
   <string name="morphe_hide_movies_section_title">隐藏电影部分</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">清除</string>
   <string name="morphe_loop_video_range_toast_on">循环播放 %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">无效的时间范围</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">显示画中画悬浮按钮</string>
+  <string name="morphe_pip_button_flyout_title">显示画中画弹出按钮</string>
+  <string name="morphe_pip_button_flyout_name">切换到画中画</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">需要先按住才能识别滑动势</string>
   <string name="morphe_play_all_button_summary">"点击生成频道中所有视频的播放列表，长按撤销
@@ -637,6 +643,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_distance_title">音量滑动灵敏度</string>
   <string name="morphe_swipe_volume_distance_summary">数值越高，每个音量步进所需的滑动次数越多。</string>
   <string name="morphe_swipe_volume_steps_title">音量步进</string>
+  <string name="morphe_volume_boost_title">音量增强</string>
+  <string name="morphe_volume_boost_summary">向上滑动超过最大音量可增强音量，这可能会导致响亮音频失真</string>
   <string name="morphe_swipe_volume_steps_entry_default">设备默认</string>
   <string name="morphe_swipe_brightness_sensitivity_title">亮度滑动灵敏度</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">较高的值需要每个亮度级别更多地滑动</string>
@@ -1067,8 +1075,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">关闭</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">恢复原标题</string>
-  <string name="morphe_restore_original_titles_summary">显示原始视频标题和描述，而不是自动翻译的标题和描述</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">译文</string>
+  <string name="morphe_restore_original_titles_type_entry_original">原始</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">由 DeArrow 翻译</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow 原始标题</string>
   <string name="morphe_restore_original_titles_loading">正在加载标题…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">关闭信息流自动刷新</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">防止信息流在过期后自动刷新</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">禁用恢复迷你播放器</string>
   <string name="morphe_miniplayer_disable_resuming_summary">禁用“继续观看”迷你播放器，这是 YouTube Premium 的一项功能，该功能会在应用启动时显示</string>

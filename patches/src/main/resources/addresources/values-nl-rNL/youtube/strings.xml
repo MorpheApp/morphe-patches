@@ -90,6 +90,8 @@ Wijzigingen zijn:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Verberg \'Laatste video\'s\' knop</string>
   <string name="morphe_hide_latest_videos_button_summary">Verbergt de blauwe \'Nieuwste video\'s\'-banner die bovenaan de Home-feed verschijnt</string>
+  <string name="morphe_hide_live_streams_title">Livestreams verbergen</string>
+  <string name="morphe_hide_live_streams_summary">Verbergt video\'s die nu live zijn in de homefeed en zoekresultaten.</string>
   <string name="morphe_hide_mix_playlists_title">Mix-afspeellijsten verbergen</string>
   <string name="morphe_hide_movies_section_title">Verberg films sectie</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Uw API-sleutel mag nooit worden gedeeld. Iedereen met toegang tot deze sleutel k
   <string name="morphe_loop_video_range_clear">Wissen</string>
   <string name="morphe_loop_video_range_toast_on">Herhalen %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ongeldige tijd opgegeven</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Toon de overlayknop voor beeld-in-beeld</string>
+  <string name="morphe_pip_button_flyout_title">Toon de flyoutknop voor beeld-in-beeld</string>
+  <string name="morphe_pip_button_flyout_name">Overschakelen naar beeld-in-beeld</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Toon Speel alles-knop</string>
   <string name="morphe_play_all_button_summary">"Tik om een afspeellijst van alle video's van het kanaal te genereren, houd ingedrukt om ongedaan te maken
@@ -637,6 +643,8 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
   <string name="morphe_swipe_volume_distance_title">Gevoeligheid volumegest</string>
   <string name="morphe_swipe_volume_distance_summary">Hogere waarden vereisen meer vegen per volumestap</string>
   <string name="morphe_swipe_volume_steps_title">Volumestappen</string>
+  <string name="morphe_volume_boost_title">Volumeboost</string>
+  <string name="morphe_volume_boost_summary">Als je voorbij het maximale volume omhoog veegt, wordt het volume extra verhoogd, wat hard geluid kan vervormen</string>
   <string name="morphe_swipe_volume_steps_entry_default">Apparaatstandaard</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Veeggevoeligheid helderheid</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Hogere waarden vereisen meer vegen per helderheidsstap</string>
@@ -1065,8 +1073,14 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_playback_in_feeds_entry_off">Uit</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Originele titels herstellen</string>
-  <string name="morphe_restore_original_titles_summary">Toont de originele videotitels en -beschrijvingen in plaats van de automatisch vertaalde.</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Vertaald</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Origineel</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Vertaald met DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Origineel met DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Titel laden…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Automatische feedvernieuwing uitschakelen</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Voorkomt dat feeds automatisch worden vernieuwd nadat ze verouderd zijn</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Schakel het hervatten van de miniplayer uit</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Schakelt de \'Doorgaan met kijken\'-minispeler uit, een functie van YouTube Premium die verschijnt bij het opstarten van de app</string>

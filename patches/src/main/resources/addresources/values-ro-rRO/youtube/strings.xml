@@ -90,6 +90,8 @@ Schimbari incluse:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Ascunde butonul \'Ultimul video\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Ascunde bannerul albastru \"Videoclipuri recente\" care apare în partea de sus a fluxului principal</string>
+  <string name="morphe_hide_live_streams_title">Ascunde transmisiunile live</string>
+  <string name="morphe_hide_live_streams_summary">Ascunde videoclipurile care sunt live acum în fluxul de acasă și în rezultatele căutării</string>
   <string name="morphe_hide_mix_playlists_title">Ascunde amestecul playlisturilor</string>
   <string name="morphe_hide_movies_section_title">Ascunde secțiunea de filme</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Cheia API nu trebuie niciodată distribuită. Oricine are acces la aceasta poate
   <string name="morphe_loop_video_range_clear">Golește</string>
   <string name="morphe_loop_video_range_toast_on">Buclează %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Interval de timp invalid</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Afișează butonul suprapus pentru Imagine în imagine</string>
+  <string name="morphe_pip_button_flyout_title">Afișează butonul pop-up pentru Imagine în imagine</string>
+  <string name="morphe_pip_button_flyout_name">Comută la Imagine în imagine</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Reține nivelul luminozității la intrarea/ieșirea din modul ecran complet</string>
   <string name="morphe_play_all_button_summary">"Atinge pentru a genera o listă de redare a tuturor videoclipurilor dintr-un canal, atinge și menține apăsat pentru a anula
@@ -637,6 +643,8 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <string name="morphe_swipe_volume_distance_title">Sensibilitate glisare volum</string>
   <string name="morphe_swipe_volume_distance_summary">Valorile mai mari necesită mai multă glisare pe pas de volum</string>
   <string name="morphe_swipe_volume_steps_title">Trepte de volum</string>
+  <string name="morphe_volume_boost_title">Amplificare volum</string>
+  <string name="morphe_volume_boost_summary">Glisarea în sus peste volumul maxim îl amplifică, ceea ce poate distorsiona sunetul puternic</string>
   <string name="morphe_swipe_volume_steps_entry_default">Implicit dispozitiv</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilitate glisare luminozitate</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Valorile mai mari necesită mai multe glisări pentru fiecare pas de luminozitate</string>
@@ -1067,8 +1075,14 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_playback_in_feeds_entry_off">Oprit</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Restaurați titlurile originale</string>
-  <string name="morphe_restore_original_titles_summary">Afișează titlurile și descrierile originale ale videoclipurilor în locul celor traduse automat.</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Traduse</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Originalul</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Tradus cu DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original cu DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Se încarcă titlul…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Dezactivează reîmprospătarea automată a fluxurilor</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Împiedică reîmprospătarea automată a fluxurilor după ce acestea devin învechite</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Dezactivează reluarea miniplayer-ului</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Dezactivează playerul mini „Urmărește mai departe”, o funcție YouTube Premium care apare la pornirea aplicației</string>

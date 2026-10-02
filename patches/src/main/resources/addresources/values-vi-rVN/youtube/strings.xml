@@ -89,6 +89,8 @@ Ví dụ:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Ẩn nút \"Video mới nhất\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Ẩn banner “Video mới nhất” màu xanh xuất hiện ở đầu Trang chủ</string>
+  <string name="morphe_hide_live_streams_title">Ẩn video phát trực tiếp</string>
+  <string name="morphe_hide_live_streams_summary">Ẩn các video đang phát trực tiếp trong nguồn cấp dữ liệu trang chủ và kết quả tìm kiếm</string>
   <string name="morphe_hide_mix_playlists_title">Ẩn danh sách phát kết hợp</string>
   <string name="morphe_hide_movies_section_title">Ẩn phần phim</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -495,6 +497,10 @@ Tuyệt đối không được chia sẻ khoá API. Bởi vì, bất kỳ ai có
   <string name="morphe_loop_video_range_clear">Xóa</string>
   <string name="morphe_loop_video_range_toast_on">Lặp từ %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Thời gian đã đặt không hợp lệ</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Hiển thị nút lớp phủ hình trong hình</string>
+  <string name="morphe_pip_button_flyout_title">Hiển thị nút flyout hình trong hình</string>
+  <string name="morphe_pip_button_flyout_name">Chuyển sang hình trong hình</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Hiện nút Phát tất cả</string>
   <string name="morphe_play_all_button_summary">"Chạm để tạo danh sách phát của tất cả các video từ kênh, nhấn giữ để hoàn tác
@@ -636,6 +642,8 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_swipe_volume_distance_title">Độ nhạy vuốt âm lượng</string>
   <string name="morphe_swipe_volume_distance_summary">Giá trị cao hơn yêu cầu vuốt nhiều hơn cho mỗi bước âm lượng</string>
   <string name="morphe_swipe_volume_steps_title">Các bước âm lượng</string>
+  <string name="morphe_volume_boost_title">Tăng cường âm lượng</string>
+  <string name="morphe_volume_boost_summary">Vuốt lên vượt quá mức âm lượng tối đa sẽ tăng cường âm lượng, điều này có thể làm méo âm thanh lớn</string>
   <string name="morphe_swipe_volume_steps_entry_default">Mặc định của thiết bị</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Độ nhạy vuốt chỉnh độ sáng</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Giá trị càng cao, vuốt càng dài hơn để chỉnh độ sáng</string>
@@ -1066,8 +1074,14 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <string name="morphe_playback_in_feeds_entry_off">Tắt</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Khôi phục tiêu đề gốc</string>
-  <string name="morphe_restore_original_titles_summary">Hiển thị tiêu đề và mô tả gốc của video thay vì các bản dịch tự động</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Đã dịch</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Gốc</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Được dịch bằng DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Bản gốc với DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Đang tải tiêu đề…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Tắt tự động làm mới nguồn cấp dữ liệu</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Ngăn các nguồn cấp dữ liệu tự động làm mới sau khi chúng trở nên lỗi thời</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Tắt tiếp tục phát trong trình phát thu nhỏ</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Ngăn không cho trình phát thu nhỏ \"tiếp tục xem\" khi mở ứng dụng (một tính năng Premium)</string>

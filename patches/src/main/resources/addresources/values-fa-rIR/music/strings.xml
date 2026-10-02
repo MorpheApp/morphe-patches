@@ -16,6 +16,11 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_cancel">لغو</string>
+  <string name="morphe_music_jam_done">انجام شد</string>
+  <string name="morphe_music_jam_details">جزئیات</string>
+  <string name="morphe_music_jam_open">بازکردن</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">لوگوی سربرگ</string>

@@ -500,10 +500,6 @@ private fun Method.parameters(): List<String> = parameterTypes.map { it.toString
 
 private fun MethodReference.parameters(): List<String> = parameterTypes.map { it.toString() }
 
-private fun String.isReferenceType(): Boolean = startsWith("L") || startsWith("[")
-
-private fun <T> T?.requireValue(concept: String): T = this ?: error("Unable to resolve $concept")
-
 private fun BytecodePatchContext.resolveAutoplayUi(queue: JamQueueAbi): AutoplayUiAbi {
     val owner =
         autoplaySectionOwnerFingerprint(queue.managerType, queue.displays.autoplay.type)
@@ -512,18 +508,15 @@ private fun BytecodePatchContext.resolveAutoplayUi(queue: JamQueueAbi): Autoplay
     val refresh = autoplaySectionRefreshFingerprint(owner.type).matchSingle()
     val setLimit = refresh.instructionMatches[1].instruction.getReference<MethodReference>()!!
     val method = refresh.originalMethod
-    val limiter =
-        method
-            .findInstructionIndicesReversedOrThrow(
-                fieldAccess(
-                    definingClass = owner.type,
-                    type = setLimit.definingClass,
-                    opcode = Opcode.IGET_OBJECT,
-                )
-            )
-            .map { method.getInstruction(it).getReference<FieldReference>()!! }
-            .distinct()
-            .singleOrNull() ?: error("Missing or ambiguous Jam autoplay display limiter")
+    val limiter = method.findInstructionIndicesReversedOrThrow(
+        fieldAccess(
+            definingClass = owner.type,
+            type = setLimit.definingClass,
+            opcode = Opcode.IGET_OBJECT,
+        )
+    ).map { method.getInstruction(it).getReference<FieldReference>()!! }
+        .distinct()
+        .singleOrNull() ?: error("Missing or ambiguous Jam autoplay display limiter")
     val clear = refresh.instructionMatches[2]
     val headerInstruction = method.getInstruction(clear.index - 1)
     val header =
@@ -534,12 +527,9 @@ private fun BytecodePatchContext.resolveAutoplayUi(queue: JamQueueAbi): Autoplay
     }
     val headerCreation = autoplayHeaderCreationFingerprint(header).match(method, owner)
     val headerStart = headerCreation.instructionMatches[0].index
-    val addHeader =
-        method
-            .findInstructionIndicesReversedOrThrow(
-                methodCall(name = "add", parameters = listOf("I", OBJECT), returnType = "V")
-            )
-            .single()
+    val addHeader = method.findInstructionIndicesReversedOrThrow(
+        methodCall(name = "add", parameters = listOf("I", OBJECT), returnType = "V")
+    ).single()
     val headerIndexRegister = method.getInstruction<FiveRegisterInstruction>(addHeader).registerD
     check(headerIndexRegister < method.p0Register && method.p0Register > 0) {
         "Unexpected Jam autoplay header index register"

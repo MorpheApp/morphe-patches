@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Скриване на бутона \"Последни видеа\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Скрива синия банер „Последни видеа“, който се показва в горната част на началната страница</string>
+  <string name="morphe_hide_live_streams_title">Скриване на потоците на живо</string>
+  <string name="morphe_hide_live_streams_summary">Скрива видеоклиповете, които са на живо в момента, в началната емисия и в резултатите от търсенето</string>
   <string name="morphe_hide_mix_playlists_title">Скриване на микс плейлист</string>
   <string name="morphe_hide_movies_section_title">Скриване на раздела за филми</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Изчистване</string>
   <string name="morphe_loop_video_range_toast_on">Повтаряне от %1$s до %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Невалиден времеви диапазон</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Показване на бутона за наслагване „Картина в картина“</string>
+  <string name="morphe_pip_button_flyout_title">Показване на бутона в изскачащия прозорец „Картина в картина“</string>
+  <string name="morphe_pip_button_flyout_name">Превключване към „Картина в картина“</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Изисква натискане и задържане, преди жестът за плъзгане да бъде разпознат</string>
   <string name="morphe_play_all_button_summary">"Докоснете, за да генерирате плейлист с всички видеа от канала, докоснете и задръжте, за да отмените
@@ -637,6 +643,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_distance_title">Чувствителност на плъзването за силата на звука</string>
   <string name="morphe_swipe_volume_distance_summary">По-високите стойности изискват повече плъзване за стъпка на силата на звука</string>
   <string name="morphe_swipe_volume_steps_title">Стъпки на силата на звука</string>
+  <string name="morphe_volume_boost_title">Усилване на звука</string>
+  <string name="morphe_volume_boost_summary">Плъзгането нагоре отвъд максималната сила на звука я усилва, което може да изкриви силния звук</string>
   <string name="morphe_swipe_volume_steps_entry_default">По подразбиране на устройството</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чувствителност при плъзгане за яркост</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">По-високите стойности изискват повече плъзгане за всяка стъпка на яркостта.</string>
@@ -1067,8 +1075,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Изключено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Възстановяване на оригиналните заглавия</string>
-  <string name="morphe_restore_original_titles_summary">Показва оригиналните заглавия и описанията на видеоклиповете вместо автоматично преведените</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Преведени</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Оригинал</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Преведено с DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Оригинал с DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Зареждане на заглавието…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Изключване на автоматичното опресняване на емисията</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Предотвратява автоматичното опресняване на емисиите, след като остареят</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Изключване на продължаването на мини-плеъра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Деактивира мини плейъра „Продължи да гледаш“, функция на YouTube Premium, която се появява при стартиране на приложението</string>

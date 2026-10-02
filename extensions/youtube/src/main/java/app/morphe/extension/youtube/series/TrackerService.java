@@ -42,7 +42,9 @@ public final class TrackerService {
     private final Map<String, TrackerRepository.FetchTicket> refreshTickets = new HashMap<>();
     private final ArrayDeque<String> quietQueue = new ArrayDeque<>();
     private volatile String epoch, storageError = "";
-    private volatile TrackerRepository.Undo bulkUndo;
+    private volatile TrackerRepository.Undo lastUndo;
+    private volatile long undoUntil, undoSerial;
+    private volatile String undoMessage = "";
     private long lastPrune;
     private volatile Set<String> trackedVideos = Collections.emptySet();
 
@@ -208,7 +210,45 @@ public final class TrackerService {
     }
 
     public boolean canUndo() {
-        return bulkUndo != null;
+        return lastUndo != null && android.os.SystemClock.uptimeMillis() < undoUntil;
+    }
+
+    String undoMessage() {
+        return undoMessage;
+    }
+
+    long undoSerial() {
+        return undoSerial;
+    }
+
+    private void rememberUndo(TrackerRepository.Undo value, String message) {
+        lastUndo = value;
+        long serial = ++undoSerial;
+        undoMessage = message;
+        long duration = 8000;
+        Context context = app.morphe.extension.shared.Utils.getContext();
+        if (context != null) {
+            android.view.accessibility.AccessibilityManager manager =
+                    (android.view.accessibility.AccessibilityManager)
+                            context.getSystemService(Context.ACCESSIBILITY_SERVICE);
+            if (manager != null && android.os.Build.VERSION.SDK_INT >= 29)
+                duration =
+                        manager.getRecommendedTimeoutMillis(
+                                8000,
+                                android.view.accessibility.AccessibilityManager.FLAG_CONTENT_TEXT
+                                        | android.view.accessibility.AccessibilityManager
+                                                .FLAG_CONTENT_CONTROLS);
+            else if (manager != null && manager.isEnabled()) duration = 20000;
+        }
+        undoUntil = android.os.SystemClock.uptimeMillis() + duration;
+        main.postDelayed(
+                () -> {
+                    if (undoSerial == serial) {
+                        lastUndo = null; // Removed progress is retained in memory only during Undo.
+                        changed();
+                    }
+                },
+                duration + 1);
     }
 
     public <T> void read(Supplier<T> work, Consumer<T> done, Consumer<String> error) {
@@ -234,13 +274,25 @@ public final class TrackerService {
 
     /** UI-thread entry point; coalesces navigation, foregrounding and Continue checks. */
     public void syncYouTube(boolean force, Runnable done) {
+        syncYouTube(force, "", done);
+    }
+
+    public void syncYouTube(String seriesId, Runnable done) {
+        syncYouTube(true, seriesId, done);
+    }
+
+    private void syncYouTube(boolean force, String selectedSeries, Runnable done) {
         if (!RecordingPrivacy.allowsSync()) {
             done.run();
             return;
         }
         long now = android.os.SystemClock.elapsedRealtime();
         if (syncingYouTube) {
-            syncWaiters.add(done);
+            // A foreground one-page check must not replace a selected-series catch-up.
+            syncWaiters.add(
+                    selectedSeries.isEmpty()
+                            ? done
+                            : () -> syncYouTube(true, selectedSeries, done));
             return;
         }
         if (!force && lastYouTubeAttempt > 0 && now - lastYouTubeAttempt < 30_000) {
@@ -274,7 +326,8 @@ public final class TrackerService {
                                                                 .Settings
                                                                 .SERIES_TRACKER_COMPLETION_SECONDS
                                                                 .get(),
-                                                        force);
+                                                        force,
+                                                        selectedSeries);
                                         if (!submit(
                                                 () -> {
                                                     try {
@@ -538,8 +591,9 @@ public final class TrackerService {
         mutation(
                 () -> {
                     requireCurrent(s);
-                    repository.startHere(
-                            s.id, s.revision, e.ordinal, e.videoId, System.currentTimeMillis());
+                    rememberUndo(
+                            repository.startHereWithUndo(s, e, System.currentTimeMillis()),
+                            "series_tracker_start_saved");
                     updateTrackedVideos();
                 },
                 done,
@@ -574,28 +628,36 @@ public final class TrackerService {
 
     public void mark(
             String videoId, TrackerModels.Override value, Runnable done, Consumer<String> error) {
-        mutation(() -> repository.mark(videoId, value, System.currentTimeMillis()), done, error);
+        mutation(
+                () ->
+                        rememberUndo(
+                                repository.mark(videoId, value, System.currentTimeMillis()),
+                                "series_tracker_ui_status_saved"),
+                done,
+                error);
     }
 
     public void through(Series s, int ordinal, Runnable done, Consumer<String> error) {
         mutation(
                 () -> {
                     requireCurrent(s);
-                    bulkUndo =
+                    rememberUndo(
                             repository.markThrough(
-                                    s.id, s.revision, ordinal, System.currentTimeMillis());
+                                    s.id, s.revision, ordinal, System.currentTimeMillis()),
+                            "series_tracker_marked");
                 },
                 done,
                 error);
     }
 
     public void undo(Runnable done, Consumer<String> error) {
-        TrackerRepository.Undo undo = bulkUndo;
-        if (undo == null) return;
+        TrackerRepository.Undo undo = lastUndo;
+        if (undo == null || !canUndo()) return;
         mutation(
                 () -> {
                     repository.undo(undo, System.currentTimeMillis());
-                    if (bulkUndo == undo) bulkUndo = null;
+                    updateTrackedVideos();
+                    if (lastUndo == undo) lastUndo = null;
                 },
                 done,
                 error);
@@ -623,7 +685,7 @@ public final class TrackerService {
                     Future<?> job = refreshing.remove(id);
                     if (job != null) job.cancel(true);
                     quietQueue.remove(id);
-                    repository.remove(id);
+                    rememberUndo(repository.removeWithUndo(id), "series_tracker_removed");
                     updateTrackedVideos();
                 },
                 done,
@@ -638,9 +700,38 @@ public final class TrackerService {
                 () -> {
                     repository.clearHistory(newEpoch);
                     updateTrackedVideos();
-                    bulkUndo = null;
+                    lastUndo = null;
                 },
                 done,
+                error);
+    }
+
+    void exportBackup(Consumer<String> done, Consumer<String> error) {
+        TrackerRuntime.flush();
+        read(repository::backup, done, error);
+    }
+
+    void previewBackup(
+            String text, BiConsumer<LibraryBackup.Data, Integer> done, Consumer<String> error) {
+        read(
+                () -> LibraryBackup.decode(text),
+                data ->
+                        read(
+                                () -> repository.missingSeries(data),
+                                count -> done.accept(data, count),
+                                error),
+                error);
+    }
+
+    void restoreBackup(LibraryBackup.Data data, Consumer<Integer> done, Consumer<String> error) {
+        int[] added = {0};
+        mutation(
+                () -> {
+                    added[0] = repository.restoreMissing(data, System.currentTimeMillis());
+                    lastUndo = null;
+                    updateTrackedVideos();
+                },
+                () -> done.accept(added[0]),
                 error);
     }
 

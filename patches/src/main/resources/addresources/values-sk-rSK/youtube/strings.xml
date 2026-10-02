@@ -90,6 +90,8 @@ Zmeny zahŕňajú:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skryť tlačidlo \'Najnovšie videá\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Skryje modrý banner \'Najnovšie videá\', ktorý sa zobrazuje v hornej časti domovskej stránky</string>
+  <string name="morphe_hide_live_streams_title">Skryť živé prenosy</string>
+  <string name="morphe_hide_live_streams_summary">Skryje videá, ktoré sú práve naživo v domácom informačnom kanáli a vo výsledkoch vyhľadávania</string>
   <string name="morphe_hide_mix_playlists_title">Skryť mixy</string>
   <string name="morphe_hide_movies_section_title">Skryť sekciu filmov</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Váš API kľúč by sa nikdy nemal zdieľať. Každý, kto k nemu má prístup,
   <string name="morphe_loop_video_range_clear">Vyčistiť</string>
   <string name="morphe_loop_video_range_toast_on">Opakovanie %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Zadali ste nesprávny čas</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Zobraziť tlačidlo prekrytia obraz v obraze</string>
+  <string name="morphe_pip_button_flyout_title">Zobraziť tlačidlo rozbaľovacej ponuky Obraz v obraze</string>
+  <string name="morphe_pip_button_flyout_name">Prepnúť na Obraz v obraze</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Zobraziť tlačidlo Prehrať všetko</string>
   <string name="morphe_play_all_button_summary">"Ťuknite na vytvorenie playlistu všetkých videí z kanála, ťuknite a podržte na zrušenie
@@ -637,6 +643,8 @@ Ak to chcete vyriešiť, zapnite 'Spoofovať video streamy' a zmeňte 'Predvolen
   <string name="morphe_swipe_volume_distance_title">Citlivosť ovládania hlasitosti posúvaním</string>
   <string name="morphe_swipe_volume_distance_summary">Vyššie hodnoty vyžadujú viac potiahnutí na jeden krok hlasitosti</string>
   <string name="morphe_swipe_volume_steps_title">Kroky hlasitosti</string>
+  <string name="morphe_volume_boost_title">Zosilnenie hlasitosti</string>
+  <string name="morphe_volume_boost_summary">Potiahnutím nahor za maximálnu hlasitosť ju zvýšite, čo môže skresliť hlasný zvuk</string>
   <string name="morphe_swipe_volume_steps_entry_default">Predvolené zariadenia</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Citlivosť posúvania jasu</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Vyššie hodnoty vyžadujú viac posúvania pre každý krok jasu</string>
@@ -1066,8 +1074,14 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_playback_in_feeds_entry_off">Vypnuté</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Obnoviť pôvodné názvy</string>
-  <string name="morphe_restore_original_titles_summary">Zobrazuje pôvodné názvy a popisy videí namiesto automaticky preložených.</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Preložené</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Pôvodná</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Preložené s DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Originál s DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Načítava sa názov…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Zakázať automatické obnovovanie kanála</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Zabraňuje automatickému obnovovaniu kanálov po tom, čo zastarajú</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Zakázať obnovovanie mini-prehrávača</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Zakáže miniplayer s pokračovaním sledovania, funkciu YouTube Premium, ktorá sa zobrazuje pri spustení aplikácie</string>

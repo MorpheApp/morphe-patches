@@ -115,6 +115,12 @@ val seriesTrackerPatch =
                                 "$EXTENSION_PACKAGE.SyncPreference",
                             ),
                             preference(
+                                "series_tracker_backup_title",
+                                "series_tracker_backup_title",
+                                "series_tracker_backup_summary",
+                                "$EXTENSION_PACKAGE.BackupPreference",
+                            ),
+                            preference(
                                 "series_tracker_completion",
                                 "series_tracker_completion_title",
                                 null,
@@ -125,6 +131,7 @@ val seriesTrackerPatch =
             )
             wirePlaybackSource()
             wirePlaybackSession()
+            wireSeriesPlayback()
             val accountContract = wirePrivacy()
             wireHistory()
             wireNativeHistory(accountContract)

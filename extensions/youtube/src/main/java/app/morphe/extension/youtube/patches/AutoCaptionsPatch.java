@@ -31,15 +31,20 @@ public class AutoCaptionsPatch {
      * Injection point.
      */
     public static boolean disableAutoCaptions(boolean original) {
+        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
+
+        // 'Always show' overrides a manual caption-off, including after the guard window.
+        if (style == AutoCaptionsStyle.BOTH_ENABLED) {
+            return false;
+        }
+
         // After the guard window (150ms), respect the user's manual CC button toggle.
         if (captionsButtonStatus.get()) {
             return original;
         }
 
         // During the initial video load window, force captions on or off based on setting.
-        AutoCaptionsStyle style = Settings.AUTO_CAPTIONS_STYLE.get();
-        boolean wantCaptions = (style == AutoCaptionsStyle.BOTH_ENABLED)
-                || (style == AutoCaptionsStyle.WITH_VOLUME_ONLY);
+        boolean wantCaptions = style == AutoCaptionsStyle.WITH_VOLUME_ONLY;
         return !wantCaptions;
     }
 

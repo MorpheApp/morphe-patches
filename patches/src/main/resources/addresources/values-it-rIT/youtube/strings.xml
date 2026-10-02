@@ -38,7 +38,7 @@ Second \"item\" text"</string>
   <string name="morphe_auto_pause_on_screen_lock_always">Pausa sempre quando il dispositivo è bloccato</string>
   <string name="morphe_auto_pause_on_screen_lock_except_wireless">Pausa a meno che non sia connesso un audio wireless</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
-  <string name="morphe_disable_scrolling_speed_limit_title">Disabilita la velocità di scorrimento</string>
+  <string name="morphe_disable_scrolling_speed_limit_title">Disabilita il limite della velocità di scorrimento</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Disabilita aggiornamenti del layout</string>
   <string name="morphe_disable_layout_updates_summary">Impedisce al server di aggiornare il layout dell\'app</string>
@@ -90,6 +90,8 @@ I cambiamenti riguarderanno:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Nascondi il pulsante \'Video recenti\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Nasconde il banner blu \'Video più recenti\' che compare in cima alla home page</string>
+  <string name="morphe_hide_live_streams_title">Nascondi le dirette</string>
+  <string name="morphe_hide_live_streams_summary">Nasconde i video in diretta nel feed della home e nei risultati di ricerca</string>
   <string name="morphe_hide_mix_playlists_title">Nascondi le playlist miste</string>
   <string name="morphe_hide_movies_section_title">Nascondi la sezione film</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -203,7 +205,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_channel_tab_filter_strings_title">Filtro della scheda del canale</string>
   <string name="morphe_hide_channel_tab_filter_strings_summary">Inserisci i nomi delle schede del canale da filtrare, separati da nuove righe</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_community_button_title">Nascondi il pulsante Commenti</string>
+  <string name="morphe_hide_community_button_title">Nascondi il pulsante Community</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_join_button_title">Nascondi il pulsante Abbonati</string>
   <string name="morphe_hide_links_preview_title">Nascondi anteprima link</string>
@@ -214,7 +216,7 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_members_shelf_summary">Nasconde l\'elenco dei membri del canale</string>
   <string name="morphe_hide_posts_shelf_title">Nascondi la sezione dei post</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_store_button_title">Nascondi il pulsante Condividi</string>
+  <string name="morphe_hide_store_button_title">Nascondi il pulsante Negozio</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_subscribe_button_in_channel_page_title">Nascondi il pulsante Iscriviti</string>
   <string name="morphe_explore_menu_screen_title">Esplora menu</string>
@@ -496,6 +498,10 @@ La tua chiave API non deve mai essere condivisa. Chiunque vi abbia accesso può 
   <string name="morphe_loop_video_range_clear">Disattiva</string>
   <string name="morphe_loop_video_range_toast_on">Ripetizione impostata da %1$s a %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Intervallo di tempo non valido</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Mostra il pulsante Picture-in-picture in sovrapposizione</string>
+  <string name="morphe_pip_button_flyout_title">Mostra il pulsante Picture-in-picture del menu a comparsa</string>
+  <string name="morphe_pip_button_flyout_name">Passa a Picture-in-picture</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mostra pulsante Riproduci tutto</string>
   <string name="morphe_play_all_button_summary">"Tocca per generare una playlist di tutti i video del canale, tieni premuto per annullare.
@@ -637,6 +643,8 @@ Per risolvere, attiva 'Spoof dei flussi video' e cambia il 'Client predefinito' 
   <string name="morphe_swipe_volume_distance_title">Sensibilità allo scorrimento del volume</string>
   <string name="morphe_swipe_volume_distance_summary">Valori più alti richiedono più trascinamenti per passo del volume.</string>
   <string name="morphe_swipe_volume_steps_title">Passi del volume</string>
+  <string name="morphe_volume_boost_title">Aumenta il volume</string>
+  <string name="morphe_volume_boost_summary">Scorrere oltre il volume massimo amplifica l\'audio, ma può causare distorsioni ad alto volume.</string>
   <string name="morphe_swipe_volume_steps_entry_default">Predefinito del dispositivo</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilità allo scorrimento della luminosità</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Valori più elevati richiedono più scorrimenti per ogni passo di luminosità</string>
@@ -1015,7 +1023,7 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Ripristina il nome del canale in fondo al lettore video</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione di sistema</string>
-  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato duranre la condivisione di un contenuto</string>
+  <string name="morphe_open_system_share_sheet_summary">Apre il pannello di condivisione di sistema anziché quello integrato durante la condivisione di un contenuto</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">Sovrascrivi i pulsanti di YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary">Apre l\'app musicale preferita anziché l\'app YouTube Music integrata</string>
@@ -1067,8 +1075,14 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <string name="morphe_playback_in_feeds_entry_off">Disattivato</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Ripristina i titoli originali</string>
-  <string name="morphe_restore_original_titles_summary">Mostra i titoli e le descrizioni originali dei video invece di quelli tradotti automaticamente</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Tradotto</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Originale</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Tradotto con DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Originale con DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Caricamento del titolo…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Disattiva l\'aggiornamento automatico dei feed</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Impedisce l\'aggiornamento automatico dei feed dopo che sono diventati obsoleti</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Disabilita la ripresa del lettore minimizzato</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Impedisce al lettore minimizzato \'Continua a guardare\' di essere mostrato all\'avvio dell\'app</string>

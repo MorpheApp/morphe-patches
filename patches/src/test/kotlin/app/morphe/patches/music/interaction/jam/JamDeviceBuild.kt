@@ -34,10 +34,10 @@ import app.morphe.patches.music.layout.lyrics.lyricsPatch
 import app.morphe.patches.music.layout.miniplayer.miniplayerPreviousNextButtonsPatch
 import app.morphe.patches.music.misc.backgroundplayback.backgroundPlaybackPatch
 import app.morphe.patches.music.misc.gms.gmsCoreSupportPatch
-import java.io.File
-import java.nio.file.Files
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
+import java.io.File
+import java.nio.file.Files
 
 private const val PROBE_PACKAGE = "app.morphe.jam.next.music"
 
@@ -56,7 +56,7 @@ fun main(arguments: Array<String>) {
         setOf(
             gmsCoreSupportPatch,
             hideAdsPatch,
-            jamQueueProbePatch,
+            jamQueueSharingPatch,
             lyricsPatch,
             miniplayerPreviousNextButtonsPatch,
             backgroundPlaybackPatch,

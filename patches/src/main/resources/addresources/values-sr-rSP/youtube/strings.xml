@@ -90,6 +90,8 @@ Promene uključuju:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Сакриј дугме \'Најновије видео\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Саскрива плави банер „Најновији видео снимци” који се појављује на врху почетне странице</string>
+  <string name="morphe_hide_live_streams_title">Сакриј стримове уживо</string>
+  <string name="morphe_hide_live_streams_summary">Сакрива видео записе који су тренутно уживо у почетном фиду и резултатима претраге</string>
   <string name="morphe_hide_mix_playlists_title">Сакриј микс плејлисте</string>
   <string name="morphe_hide_movies_section_title">Сакриј одељак за филмове</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Promene uključuju:
   <string name="morphe_loop_video_range_clear">Обриши</string>
   <string name="morphe_loop_video_range_toast_on">Поновно пуштање %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Дато је неважеће време</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Прикажи преклопно дугме слике у слици</string>
+  <string name="morphe_pip_button_flyout_title">Прикажи искачуће дугме слике у слици</string>
+  <string name="morphe_pip_button_flyout_name">Пребаци на слику у слици</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Прикажи дугме „Пусти све”</string>
   <string name="morphe_play_all_button_summary">"Додините да бисте генерисали листу свих видео снимака са канала, додините и задржите да бисте поништили
@@ -637,6 +643,8 @@ Promene uključuju:
   <string name="morphe_swipe_volume_distance_title">Осетљивост превлачења за јачину звука</string>
   <string name="morphe_swipe_volume_distance_summary">Веће вредности захтевају висе превлачења по степену јачине звука</string>
   <string name="morphe_swipe_volume_steps_title">Степени јачине звука</string>
+  <string name="morphe_volume_boost_title">Појачање јачине звука</string>
+  <string name="morphe_volume_boost_summary">Превлачење нагоре преко максималне јачине звука је појачава, што може да изобличи гласан звук</string>
   <string name="morphe_swipe_volume_steps_entry_default">Подразумевано за уређај</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Осетљивост превлачења за осветљење</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Веће вредности захтевају више превлачења по кораку осветљења</string>
@@ -1050,8 +1058,14 @@ Promene uključuju:
   <string name="morphe_playback_in_feeds_entry_off">Искључено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Врати оригиналне наслове</string>
-  <string name="morphe_restore_original_titles_summary">Приказује оригиналне наслове и описе видео записа уместо аутоматски преведених</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Преведено</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Оригинална</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Преведено са DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Оригинал са DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Учитавање наслова…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Онемогући аутоматско освежавање фидова</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Спречава да се фидови аутоматски освежавају након што застаре</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Онемогући наставак репродукције мини-плејера</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Онемогућава мини-плејер „Настави гледање“, функцију YouTube Premium која се појављује при покретању апликације</string>

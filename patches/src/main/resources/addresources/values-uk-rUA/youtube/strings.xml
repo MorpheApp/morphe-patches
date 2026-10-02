@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Приховати кнопку \"Останні відео\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Приховує синій банер \"Найновіші відео\", що з\'являється у верхній частині стрічки головної сторінки</string>
+  <string name="morphe_hide_live_streams_title">Приховати прямі трансляції</string>
+  <string name="morphe_hide_live_streams_summary">Приховує відео, що зараз транслюються наживо, у головній стрічці та результатах пошуку</string>
   <string name="morphe_hide_mix_playlists_title">Приховати \"Мікс плейлисти\"</string>
   <string name="morphe_hide_movies_section_title">Приховати секцію фільмів</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Очистити</string>
   <string name="morphe_loop_video_range_toast_on">Повтор %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Недійсний діапазон часу</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Показувати кнопку \"Картинка в картинці\"</string>
+  <string name="morphe_pip_button_flyout_title">Показувати кнопку спливного меню \"Картинка в картинці\"</string>
+  <string name="morphe_pip_button_flyout_name">Перейти в режим \"Картинка в картинці\"</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Показати кнопку \"Відтворити все\"</string>
   <string name="morphe_play_all_button_summary">"Натисніть, щоб створити список відтворення з усіх відео каналу, утримуйте, щоб скасувати
@@ -637,6 +643,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_distance_title">Чутливість жесту гучності</string>
   <string name="morphe_swipe_volume_distance_summary">Вищі значення потребують більшого свайпу на один крок гучності</string>
   <string name="morphe_swipe_volume_steps_title">Кроки гучності</string>
+  <string name="morphe_volume_boost_title">Підсилення гучності</string>
+  <string name="morphe_volume_boost_summary">Проведення пальцем вгору понад максимальну гучність підсилює її, що може спотворити гучний звук</string>
   <string name="morphe_swipe_volume_steps_entry_default">Типова для пристрою</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чутливість жесту яскравості</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Вищі значення потребують більшого свайпу на один крок яскравості</string>
@@ -1066,8 +1074,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Вимкнено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Відновити оригінальні назви</string>
-  <string name="morphe_restore_original_titles_summary">Показує оригінальні назви та описи відео замість автоматично перекладених</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Перекладено</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Оригінал</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Перекладено за допомогою DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Оригінал із DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Завантаження назви…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Вимкнути автоматичне оновлення стрічки</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Запобігає автоматичному оновленню стрічок після того, як вони застарівають</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Вимкнути відновлення мініплеєра</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Вимикає мініплеєр \"Продовжити перегляд\", функцію YouTube Premium, що з\'являється при запуску застосунку</string>

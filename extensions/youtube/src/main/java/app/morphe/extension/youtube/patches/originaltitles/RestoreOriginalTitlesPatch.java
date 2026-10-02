@@ -65,8 +65,17 @@ public final class RestoreOriginalTitlesPatch {
     private static final String DESCRIPTION_REDIRECT_PATH = "/redirect";
 
     /**
+     * Header of the channel page, with the first line of the channel description.
+     */
+    private static final String CHANNEL_HEADER_IDENTIFIER = "page_header.eml";
+    /**
+     * Panel opened from the channel header, with the entire channel description.
+     */
+    private static final String CHANNEL_ABOUT_IDENTIFIER = "about_channel_view.eml";
+
+    /**
      * Elements with video thumbnails, the watch page title elements without thumbnails,
-     * and the description of the description panel.
+     * the description of the description panel, and the channel description.
      */
     private static final ByteTrieSearch elementSearch = new ByteTrieSearch(
             ByteTrieSearch.convertStringsToBytes(
@@ -74,7 +83,9 @@ public final class RestoreOriginalTitlesPatch {
                     "/vi_webp/",
                     "video_metadata.eml",
                     "player_overlay_video_heading.eml",
-                    DESCRIPTION_IDENTIFIER
+                    DESCRIPTION_IDENTIFIER,
+                    CHANNEL_HEADER_IDENTIFIER,
+                    CHANNEL_ABOUT_IDENTIFIER
             ));
 
     /**
@@ -132,6 +143,9 @@ public final class RestoreOriginalTitlesPatch {
     private static final Pattern IDENTIFIER_PATTERN =
             Pattern.compile("^\\S+\\|[0-9a-f]{16}$");
 
+    private static final Pattern CHANNEL_ID_PATTERN = Pattern.compile("^UC[A-Za-z0-9_-]{22}$");
+
+
     private static final Pattern LETTER_PATTERN = Pattern.compile("\\p{L}");
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\s");
     private static final Pattern TOKEN_PATTERN = Pattern.compile("[_./:=|-]");
@@ -162,6 +176,39 @@ public final class RestoreOriginalTitlesPatch {
      * Video id of the opened video.
      */
     private static volatile String openedVideoId;
+
+    /**
+     * Description preview of a channel header, and the translated description it shows.
+     * The preview also includes the truncation text that opens the description panel, such as '...more'.
+     */
+    private record ChannelPreview(String channelId, String translatedDescription) {
+    }
+
+    /**
+     * Shown text of a translated description preview -> preview.
+     */
+    private static final Map<String, ChannelPreview> translatedChannelPreviews =
+            Collections.synchronizedMap(Utils.createSizeRestrictedMap(50));
+
+    /**
+     * Length of the longest translated description preview, so longer texts are ignored without copying them.
+     */
+    private static final AtomicInteger maxTranslatedChannelPreviewLength = new AtomicInteger();
+
+    /**
+     * Channel id of the opened channel page, and its translated description preview.
+     * The description panel does not include the channel id.
+     */
+    private static volatile String openedChannelId;
+    private static volatile String openedChannelPreview;
+
+    /**
+     * Translated description previews whose original description was fetched after the
+     * header was laid out. Previews of descriptions that are not translated are not matched,
+     * as laying them out again does not change them.
+     */
+    private static final Predicate<CharSequence> TRANSLATED_CHANNEL_PREVIEW_FILTER =
+            text -> restoreChannelPreviewText(text) != null;
 
     /**
      * Injection point.
@@ -203,8 +250,16 @@ public final class RestoreOriginalTitlesPatch {
                 }
             }
 
-            if (identifier != null && identifier.startsWith(DESCRIPTION_IDENTIFIER)) {
-                return restoreDescription(root, textNodes) ? ProtoNode.write(root) : bytes;
+            if (identifier != null) {
+                if (identifier.startsWith(DESCRIPTION_IDENTIFIER)) {
+                    return restoreDescription(root, textNodes) ? ProtoNode.write(root) : bytes;
+                }
+                if (identifier.startsWith(CHANNEL_HEADER_IDENTIFIER)) {
+                    return restoreChannelHeader(textNodes) ? ProtoNode.write(root) : bytes;
+                }
+                if (identifier.startsWith(CHANNEL_ABOUT_IDENTIFIER)) {
+                    return restoreChannelAbout(root) ? ProtoNode.write(root) : bytes;
+                }
             }
 
             Map<List<ProtoNode>, Set<String>> messageVideoIds = new IdentityHashMap<>();
@@ -227,8 +282,16 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence text) {
         try {
-            if (!Settings.RESTORE_ORIGINAL_TITLES.get() || text == null
-                    || text.length() > maxTranslatedTitleLength.get()) {
+            if (!Settings.RESTORE_ORIGINAL_TITLES.get() || text == null) {
+                return text;
+            }
+
+            CharSequence channelPreview = restoreChannelPreview(text);
+            if (channelPreview != null) {
+                return channelPreview;
+            }
+
+            if (text.length() > maxTranslatedTitleLength.get()) {
                 return text;
             }
 
@@ -246,33 +309,79 @@ public final class RestoreOriginalTitlesPatch {
                     return text;
                 }
                 originalTitle = LOADING_TITLE.toString();
-                relayoutWhenFetched(videoId);
+                relayoutWhenFetched(OriginalTitleRequest.fetch(videoId), LOADED_TITLE_FILTER);
             }
             if (originalTitle.equals(translatedTitle)) {
                 return text;
             }
 
-            // Only spans that style the entire text can be applied to a different text.
             SpannableString replacement = new SpannableString(originalTitle);
             if (loading) {
                 replacement.setSpan(new LoadingTitleSpan(videoId), 0, replacement.length(),
                         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
-            if (text instanceof Spanned spanned) {
-                final int translatedLength = spanned.length();
-                final int replacementLength = replacement.length();
-                for (Object span : spanned.getSpans(0, translatedLength, Object.class)) {
-                    if (spanned.getSpanStart(span) == 0 && spanned.getSpanEnd(span) == translatedLength) {
-                        replacement.setSpan(span, 0, replacementLength, spanned.getSpanFlags(span));
-                    }
-                }
-            }
+            copyEntireTextSpans(text, replacement);
             return replacement;
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }
 
         return text;
+    }
+
+    /**
+     * Only spans that style the entire text can be applied to a different text.
+     */
+    private static void copyEntireTextSpans(CharSequence text, SpannableString replacement) {
+        if (text instanceof Spanned spanned) {
+            final int translatedLength = spanned.length();
+            final int replacementLength = replacement.length();
+            for (Object span : spanned.getSpans(0, translatedLength, Object.class)) {
+                if (spanned.getSpanStart(span) == 0 && spanned.getSpanEnd(span) == translatedLength) {
+                    replacement.setSpan(span, 0, replacementLength, spanned.getSpanFlags(span));
+                }
+            }
+        }
+    }
+
+    /**
+     * Replaces the description preview of the channel header when it's laid out,
+     * if the original description was not yet fetched when the element was parsed.
+     *
+     * @return The original description preview, or null if the text is not a translated preview.
+     */
+    @Nullable
+    private static CharSequence restoreChannelPreview(CharSequence text) {
+        String restoredText = restoreChannelPreviewText(text);
+        if (restoredText == null) {
+            return null;
+        }
+
+        SpannableString replacement = new SpannableString(restoredText);
+        copyEntireTextSpans(text, replacement);
+        return replacement;
+    }
+
+    /**
+     * @return The text with the original description, or null if the text is not a translated preview,
+     *         or the original description is not yet fetched or is the same.
+     */
+    @Nullable
+    private static String restoreChannelPreviewText(CharSequence text) {
+        if (text.length() > maxTranslatedChannelPreviewLength.get()) {
+            return null;
+        }
+
+        String translatedText = text.toString();
+        ChannelPreview preview = translatedChannelPreviews.get(translatedText.trim());
+        if (preview == null) {
+            return null;
+        }
+
+        String originalPreview = getOriginalChannelPreview(preview.channelId());
+        return originalPreview == null || originalPreview.equals(preview.translatedDescription())
+                ? null
+                : translatedText.replace(preview.translatedDescription(), originalPreview);
     }
 
     /**
@@ -390,20 +499,263 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
-     * Loads the Litho texts that show the loading title again when the title is fetched,
-     * or failed to fetch and the translated title is shown.
+     * Loads the Litho texts that match the filter again when the request is done, such as
+     * the texts that show the loading title, or the translated description preview of a channel.
      * Each request lays out the texts once, including requests made again after a failure.
      */
-    private static void relayoutWhenFetched(String videoId) {
-        CompletableFuture<String> request = OriginalTitleRequest.fetch(videoId);
+    private static void relayoutWhenFetched(CompletableFuture<String> request,
+                                            Predicate<CharSequence> textFilter) {
         if (!relayoutRequests.add(request)) {
             return;
         }
 
         request.thenRun(() -> {
             relayoutRequests.remove(request);
-            LithoRelayoutPatch.relayoutViewsShowingText(LOADED_TITLE_FILTER);
+            LithoRelayoutPatch.relayoutViewsShowingText(textFilter);
         });
+    }
+
+    /**
+     * Replaces the description preview of the channel header, and its accessibility label.
+     * If the original description is not yet fetched, the preview is replaced
+     * by the text hook when the header is laid out again.
+     *
+     * @return If the preview was replaced.
+     */
+    private static boolean restoreChannelHeader(List<ProtoNode> textNodes) {
+        ProtoNode[] previewAndLabel = findChannelPreview(textNodes);
+        if (previewAndLabel == null) {
+            Logger.printDebug(() -> "Channel description preview not found");
+            return false;
+        }
+        ProtoNode preview = previewAndLabel[0];
+        ProtoNode label = previewAndLabel[1];
+
+        // The preview message includes the truncation text and the command that opens
+        // the description panel of the channel.
+        ProtoNode previewText = preview.getParent();
+        ProtoNode previewMessage = previewText == null ? null : previewText.getParent();
+        List<ProtoNode> previewTextNodes = previewMessage == null || previewMessage.children == null
+                ? textNodes
+                : ProtoNode.textNodes(previewMessage.children);
+
+        String channelId = findChannelId(previewTextNodes);
+        if (channelId == null) {
+            channelId = findChannelId(textNodes);
+            if (channelId == null) {
+                return false;
+            }
+        }
+
+        String shownPreview = preview.getText();
+        String truncationText = findTruncationText(preview, previewTextNodes);
+        String translatedPreview = (truncationText == null
+                ? shownPreview
+                : shownPreview.substring(0, shownPreview.length() - truncationText.length())).trim();
+
+        openedChannelId = channelId;
+        openedChannelPreview = translatedPreview;
+        translatedChannelPreviews.put(shownPreview.trim(), new ChannelPreview(channelId, translatedPreview));
+        maxTranslatedChannelPreviewLength.accumulateAndGet(shownPreview.length(), Math::max);
+
+        String originalPreview = getOriginalChannelPreview(channelId);
+        if (originalPreview == null) {
+            relayoutWhenFetched(OriginalChannelDescriptionRequest.fetch(channelId),
+                    TRANSLATED_CHANNEL_PREVIEW_FILTER);
+            return false;
+        }
+        if (originalPreview.equals(translatedPreview)) {
+            return false;
+        }
+
+        OriginalDescription.restore(preview, shownPreview.replace(translatedPreview, originalPreview));
+        restoreChannelPreviewLabel(label, translatedPreview, originalPreview);
+
+        final String restoredChannelId = channelId;
+        Logger.printDebug(() -> "Restored description preview of channel: " + restoredChannelId);
+        return true;
+    }
+
+    /**
+     * The preview ends with the localized truncation text that opens the description panel,
+     * such as '...more', which is also a text of the preview message.
+     *
+     * @return The longest other text of the preview message that ends the preview, or null if none.
+     */
+    @Nullable
+    private static String findTruncationText(ProtoNode preview, List<ProtoNode> previewTextNodes) {
+        String previewText = preview.getText();
+        String truncationText = null;
+        for (ProtoNode node : previewTextNodes) {
+            String text = node.getText();
+            if (node != preview && !text.trim().isEmpty() && text.length() < previewText.length()
+                    && previewText.endsWith(text)
+                    && (truncationText == null || text.length() > truncationText.length())) {
+                truncationText = text;
+            }
+        }
+        return truncationText;
+    }
+
+    @Nullable
+    private static String findChannelId(List<ProtoNode> textNodes) {
+        for (ProtoNode node : textNodes) {
+            String text = node.getText();
+            if (CHANNEL_ID_PATTERN.matcher(text).matches()) {
+                return text;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Replaces the start of the preview in the accessibility label,
+     * which can be truncated, such as 'Description. First line of the descr… Tap to read more.'
+     */
+    private static void restoreChannelPreviewLabel(ProtoNode label, String translatedPreview,
+                                                   String originalPreview) {
+        String labelText = label.getText();
+        final int prefixLength = previewPrefixLength(labelText, translatedPreview);
+        if (prefixLength == 0) {
+            return;
+        }
+        final int prefixStart = labelText.indexOf(translatedPreview.substring(0, prefixLength));
+        int restoredLength = prefixLength == translatedPreview.length()
+                ? originalPreview.length()
+                : Math.min(prefixLength, originalPreview.length());
+        if (restoredLength < originalPreview.length()
+                && Character.isHighSurrogate(originalPreview.charAt(restoredLength - 1))) {
+            restoredLength--;
+        }
+        label.setText(labelText.substring(0, prefixStart)
+                + originalPreview.substring(0, restoredLength)
+                + labelText.substring(prefixStart + prefixLength));
+    }
+
+    /**
+     * The preview is the first line of the description, and the preview message includes
+     * the accessibility label of the preview, which includes the start of the preview and other texts.
+     * The label is used to find the preview, as the label and the preview texts are localized.
+     *
+     * @return The description preview and its accessibility label, or null if not found.
+     */
+    @Nullable
+    private static ProtoNode[] findChannelPreview(List<ProtoNode> textNodes) {
+        ProtoNode preview = null;
+        ProtoNode label = null;
+        int longestPrefix = MIN_TITLE_LENGTH - 1;
+
+        for (ProtoNode node : textNodes) {
+            String text = node.getText().trim();
+            ProtoNode previewText = node.getParent();
+            ProtoNode previewMessage = previewText == null ? null : previewText.getParent();
+            if (!isLabelCandidate(text) || previewMessage == null || previewMessage.children == null) {
+                continue;
+            }
+            for (ProtoNode labelNode : ProtoNode.textNodes(previewMessage.children)) {
+                String labelText = labelNode.getText();
+                final int prefixLength = previewPrefixLength(labelText, text);
+                // The label also includes other texts, such as 'Description' and 'Tap to read more'.
+                // Copies of the same text, such as copies of the label, are not a preview and its label.
+                if (prefixLength > longestPrefix && prefixLength < labelText.trim().length()) {
+                    preview = node;
+                    label = labelNode;
+                    longestPrefix = prefixLength;
+                }
+            }
+        }
+
+        return preview == null ? null : new ProtoNode[]{preview, label};
+    }
+
+    /**
+     * @return The length of the start of the preview that the label includes,
+     *         or 0 if the label does not include the start of the preview.
+     */
+    private static int previewPrefixLength(String label, String preview) {
+        if (preview.length() < MIN_TITLE_LENGTH) {
+            return 0;
+        }
+        final int start = label.indexOf(preview.substring(0, MIN_TITLE_LENGTH));
+        if (start < 0) {
+            return 0;
+        }
+        int length = MIN_TITLE_LENGTH;
+        while (length < preview.length() && start + length < label.length()
+                && label.charAt(start + length) == preview.charAt(length)) {
+            length++;
+        }
+        return length;
+    }
+
+    /**
+     * Replaces the description of the panel opened from the channel header,
+     * which starts with the translated preview of the header.
+     *
+     * @return If the description was replaced.
+     */
+    private static boolean restoreChannelAbout(List<ProtoNode> root) {
+        String channelId = openedChannelId;
+        String translatedPreview = openedChannelPreview;
+        if (channelId == null || translatedPreview == null) {
+            return false;
+        }
+
+        String originalDescription = OriginalChannelDescriptionRequest.getIfAvailable(channelId);
+        if (originalDescription == null) {
+            Logger.printDebug(() -> "Original description is not yet available for channel: " + channelId);
+            return false;
+        }
+
+        ProtoNode description = findContentStartingWith(root, translatedPreview);
+        if (description == null || description.decodeUtf8().trim().equals(originalDescription)) {
+            return false;
+        }
+
+        OriginalDescription.restore(description, originalDescription);
+        Logger.printDebug(() -> "Restored description of channel: " + channelId);
+        return true;
+    }
+
+    /**
+     * Texts with line breaks, such as a description with more than one line, are not text nodes,
+     * as control characters are not parsed as text.
+     *
+     * @return The first length delimited field that is not a message and starts with the text.
+     */
+    @Nullable
+    private static ProtoNode findContentStartingWith(List<ProtoNode> message, String text) {
+        for (ProtoNode node : message) {
+            List<ProtoNode> children = node.children;
+            if (children != null) {
+                ProtoNode content = findContentStartingWith(children, text);
+                if (content != null) {
+                    return content;
+                }
+            } else if (node.getVarint() == null && node.decodeUtf8().trim().startsWith(text)) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return The first line of the original channel description,
+     *         or null if not yet fetched or the channel has no description.
+     */
+    @Nullable
+    private static String getOriginalChannelPreview(String channelId) {
+        String description = OriginalChannelDescriptionRequest.getIfAvailable(channelId);
+        if (description == null) {
+            return null;
+        }
+        for (String line : description.split("\n")) {
+            String trimmed = line.trim();
+            if (!trimmed.isEmpty()) {
+                return trimmed;
+            }
+        }
+        return null;
     }
 
     /**

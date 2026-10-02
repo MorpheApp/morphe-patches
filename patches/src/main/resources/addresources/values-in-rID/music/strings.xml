@@ -16,6 +16,94 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">Perbarui patch Jam host untuk menggunakan jeda dan lanjutkan</string>
+  <string name="morphe_music_jam_probe_title">Berbagi antrean Jam</string>
+  <string name="morphe_music_jam_probe_summary">Selenggarakan atau ikuti Jam di sekitar dan ubah antreannya melalui Jam Layer</string>
+  <string name="morphe_music_jam_enabled_title">Aktifkan berbagi antrean Jam</string>
+  <string name="morphe_music_jam_enabled_summary">Mengaktifkan integrasi Jam setelah YouTube Music dimulai ulang.</string>
+  <string name="morphe_music_jam_download_title">Unduh Jam Layer agar berfungsi</string>
+  <string name="morphe_music_jam_download_summary">Buka rilis Jam Layer terbaru di peramban Anda</string>
+  <string name="morphe_music_jam_controls_title">Kontrol Jam</string>
+  <string name="morphe_music_jam_controls_summary">Selenggarakan atau ikuti Jam di sekitar dan kelola sesinya</string>
+  <string name="morphe_music_jam_companion_package_title">Paket Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">Pilih aplikasi pendamping terpasang yang digunakan untuk berbagi antrean di sekitar</string>
+  <string name="morphe_music_jam_package_message">Gunakan paket pendamping terpasang. Pemasangan memerlukan persetujuan Anda dan token kapabilitas lokal</string>
+  <string name="morphe_music_jam_wifi_title">Aktifkan Wi-Fi?</string>
+  <string name="morphe_music_jam_wifi_message">Aktifkan Wi-Fi, lalu coba memulai atau bergabung dengan Jam lagi</string>
+  <string name="morphe_music_jam_wifi_settings">Buka pengaturan Wi-Fi</string>
+  <string name="morphe_music_jam_cancel">Batalkan</string>
+  <string name="morphe_music_jam_use_package">Gunakan paket</string>
+  <string name="morphe_music_jam_invalid_package">Masukkan nama paket Android yang valid</string>
+  <string name="morphe_music_jam_package_saved">Paket disimpan. Siapkan Jam Layer untuk terhubung</string>
+  <string name="morphe_music_jam_disconnected">Jam terputus</string>
+  <string name="morphe_music_jam_enable_layer_first">Aktifkan Jam Layer terlebih dahulu</string>
+  <string name="morphe_music_jam_enable_patch_first">Aktifkan berbagi antrean Jam di setelan, lalu mulai ulang YouTube Music</string>
+  <string name="morphe_music_jam_install_layer_first">Pasang paket Jam Layer yang dipilih terlebih dahulu</string>
+  <string name="morphe_music_jam_join_hint">Masukkan kode yang ditampilkan pada perangkat host. Wi-Fi Aware dapat menghubungkan perangkat di sekitar meskipun jaringan LAN-nya berbeda</string>
+  <string name="morphe_music_jam_join_with_code">Gabung dengan kode</string>
+  <string name="morphe_music_jam_join">Gabung</string>
+  <string name="morphe_music_jam_scan_qr">Pindai QR</string>
+  <string name="morphe_music_jam_invalid_invite">Masukkan kode delapan karakter atau tempelkan undangan</string>
+  <string name="morphe_music_jam_join_your_jam">Gabung dengan Jam Anda</string>
+  <string name="morphe_music_jam_copy_code">Salin kode</string>
+  <string name="morphe_music_jam_code_clip">Kode Jam</string>
+  <string name="morphe_music_jam_show_qr">Tampilkan QR</string>
+  <string name="morphe_music_jam_done">Selesai</string>
+  <string name="morphe_music_jam_invite_title">Undang ke Jam Anda</string>
+  <string name="morphe_music_jam_invite_message">Pindai untuk bergabung dan mengedit antrean ini. Mengakhiri Jam akan membatalkan undangan</string>
+  <string name="morphe_music_jam_copy_link">Salin tautan</string>
+  <string name="morphe_music_jam_invitation_clip">Undangan Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam sedang menghubungkan ulang; coba lagi sebentar lagi</string>
+  <string name="morphe_music_jam_added_to_jam">Ditambahkan ke Jam</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam tidak tersedia; trek tidak ditambahkan.</string>
+  <string name="morphe_music_jam_your_jam">Jam Anda</string>
+  <string name="morphe_music_jam_listening_together">Mendengarkan bersama</string>
+  <string name="morphe_music_jam_joining_jam">Bergabung dengan Jam</string>
+  <string name="morphe_music_jam_listen_together">Dengarkan bersama</string>
+  <string name="morphe_music_jam_updating">Memperbarui Jam…</string>
+  <string name="morphe_music_jam_finding_host">Mencari host Anda di Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">Menunggu orang lain</string>
+  <string name="morphe_music_jam_one_connected">%d orang terhubung</string>
+  <string name="morphe_music_jam_many_connected">%d orang terhubung</string>
+  <string name="morphe_music_jam_code_expires">Masukkan kode ini pada perangkat di dekat Anda. Wi-Fi Aware dapat beroperasi lintas LAN terpisah jika didukung. Kedaluwarsa dalam %d menit.</string>
+  <string name="morphe_music_jam_seek_to">Pindah ke %s?</string>
+  <string name="morphe_music_jam_edits_open">Edit terbuka</string>
+  <string name="morphe_music_jam_edits_locked">Edit terkunci</string>
+  <string name="morphe_music_jam_connected_aware">Terhubung melalui Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">Terhubung melalui Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">Terhubung melalui Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">Tidak didukung selama Jam</string>
+  <string name="morphe_music_jam_cancelled">Bergabung dibatalkan</string>
+  <string name="morphe_music_jam_reconnecting_host">Menghubungkan ulang ke host Anda…</string>
+  <string name="morphe_music_jam_share_prompt">Bagikan antrean. Biarkan semua orang menambahkan lagu.</string>
+  <string name="morphe_music_jam_invite_people">Undang orang</string>
+  <string name="morphe_music_jam_guest_edits">Tamu dapat mengedit antrean</string>
+  <string name="morphe_music_jam_end_jam">Akhiri Jam</string>
+  <string name="morphe_music_jam_participant_help">Host memutar musik. Tambahkan, pindahkan, atau hapus lagu secara langsung di antrean YouTube Music.</string>
+  <string name="morphe_music_jam_joining_help">Dekatkan kedua perangkat. Anda dapat membatalkan sementara kami mencari host.</string>
+  <string name="morphe_music_jam_cancel_joining">Batalkan bergabung</string>
+  <string name="morphe_music_jam_leave_jam">Tinggalkan Jam</string>
+  <string name="morphe_music_jam_start_jam">Mulai Jam</string>
+  <string name="morphe_music_jam_setup_layer">Siapkan Jam Layer</string>
+  <string name="morphe_music_jam_manage">Kelola</string>
+  <string name="morphe_music_jam_details">Rincian</string>
+  <string name="morphe_music_jam_open">Buka</string>
+  <string name="morphe_music_jam_loading_song_options">Memuat opsi lagu…</string>
+  <string name="morphe_music_jam_song_options_unavailable">Pilihan lagu tidak tersedia; coba lagi</string>
+  <string name="morphe_music_jam_song_options_failed">Tidak dapat membuka opsi lagu</string>
+  <string name="morphe_music_jam_no_browser">Tidak ada peramban yang tersedia untuk mengunduh Jam Layer</string>
+  <string name="morphe_music_jam_waiting_host_queue">Menunggu antrean host</string>
+  <string name="morphe_music_jam_open_song_first">Buka lagu di YouTube Music terlebih dahulu</string>
+  <string name="morphe_music_jam_play_on_host">Putar di host</string>
+  <string name="morphe_music_jam_quit_and_play">Keluar dari Jam dan putar secara lokal</string>
+  <string name="morphe_music_jam_play_next">Putar berikutnya di Jam</string>
+  <string name="morphe_music_jam_add_to_queue">Tambahkan ke antrean Jam</string>
+  <string name="morphe_music_jam_play_track">Putar trek Jam ini</string>
+  <string name="morphe_music_jam_choose_playback">Pilih perangkat untuk memutar</string>
+  <string name="morphe_music_jam_move_host_here">Pindahkan host ke sini</string>
+  <string name="morphe_music_jam_seek_not_ready">Lagu belum siap untuk digeser</string>
+  <string name="morphe_music_jam_queue_changed_gesture">Antrean berubah; coba usap lagi</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo Header</string>
@@ -415,12 +503,12 @@ Langkah-langkah:
   <string name="morphe_music_youtube_cookies_title">Cookie YouTube</string>
   <string name="morphe_music_youtube_cookies_dialog_instruction">"Tempelkan cookie YouTube Anda untuk mengambil subtitle dan teks waktu dari YouTube.
 
-​Langkah-langkah:
-​Buka youtube.com di peramban (browser) dan masuk (login)
-​Buka DevTools (F12) → Application → Cookies → youtube.com
-​Salin seluruh string cookie (pasangan kunci=nilai yang dipisahkan dengan titik koma)
+Langkah-langkah:
+1. Buka youtube.com di peramban dan masuk
+2. Buka DevTools (F12) → Application → Cookies → youtube.com
+3. Salin seluruh string cookie (pasangan key=value yang dipisahkan oleh titik koma)
 
-​Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
+Cookie yang diperlukan: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">YouTube: cookie disimpan</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">YouTube: cookie dihapus</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: cookie tidak valid — periksa kembali dan coba lagi.</string>

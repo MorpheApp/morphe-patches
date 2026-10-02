@@ -181,12 +181,34 @@ final class FollowFlow {
             return;
         }
         String name = catalog != null && !catalog.title.isEmpty() ? catalog.title : id;
+        PlaybackBridge.Source followSource = PlaybackBridge.source();
+        long followGeneration = RecordingPrivacy.generation();
         Runnable saved =
                 () -> {
                     activity.getSharedPreferences("series_tracker_ui", Context.MODE_PRIVATE)
                             .edit()
                             .putBoolean("follow_explained", true)
                             .apply();
+                    if (!startVideo.isEmpty()) {
+                        PlaybackBridge.Source source = followSource;
+                        long generation = followGeneration;
+                        service.series(
+                                id,
+                                series -> {
+                                    try {
+                                        if (source != null
+                                                && source == PlaybackBridge.source()
+                                                && startVideo.equals(source.seriesTrackerVideoId())
+                                                && RecordingPrivacy.acceptsManualPosition(
+                                                        generation))
+                                            SeriesPlayback.activate(
+                                                    series, startVideo, series.cursorOrdinal);
+                                    } catch (RuntimeException ignored) {
+                                        /* Playback moved while saving. */
+                                    }
+                                },
+                                message -> {});
+                    }
                     if (active()) complete();
                 };
         if (startVideo.isEmpty()) {

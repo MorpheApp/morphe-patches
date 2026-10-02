@@ -20,6 +20,7 @@ import app.morphe.extension.shared.ResourceType
 import app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow
 import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.shared.ui.ViewAnimations
+import app.morphe.extension.youtube.patches.SoundBoostPatch
 import app.morphe.extension.youtube.patches.VideoInformation
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
@@ -34,6 +35,9 @@ import kotlin.math.round
 fun Float.toDisplayPixels(): Float {
     return this * Resources.getSystem().displayMetrics.density
 }
+
+private const val VOLUME_BOOST_PERCENT_PER_STEP = 25
+private const val VOLUME_BOOST_PROGRESS_COLOR = 0xBFFF7043.toInt()
 
 /**
  * Main overlay layout for displaying volume, brightness, and playback speed level with circular, horizontal and vertical progress bars.
@@ -170,7 +174,14 @@ class SwipeControlsOverlayLayout(
     /**
      * Displays the progress bar with the appropriate value, icon, and type (brightness or volume).
      */
-    private fun showFeedbackView(value: String, progress: Int, max: Int, icon: Drawable, isBrightness: Boolean) {
+    private fun showFeedbackView(
+        value: String,
+        progress: Int,
+        max: Int,
+        icon: Drawable,
+        isBrightness: Boolean,
+        isBoosted: Boolean = false
+    ) {
         feedbackHideHandler.removeCallbacks(feedbackHideCallback)
         feedbackHideHandler.postDelayed(feedbackHideCallback, config.overlayShowTimeoutMillis)
 
@@ -185,14 +196,13 @@ class SwipeControlsOverlayLayout(
         }
         viewToShow.apply {
             // Set the appropriate progress color.
-            if (this is CircularProgressView || this is HorizontalProgressView) {
-                setProgressColor(
-                    if (isBrightness)
-                        config.overlayBrightnessProgressColor
-                    else
-                        config.overlayVolumeProgressColor
-                )
-            }
+            setProgressColor(
+                when {
+                    isBrightness -> config.overlayBrightnessProgressColor
+                    isBoosted -> VOLUME_BOOST_PROGRESS_COLOR
+                    else -> config.overlayVolumeProgressColor
+                }
+            )
             setProgress(progress, max, value, isBrightness)
             this.icon = icon
             fadeIn()
@@ -220,7 +230,8 @@ class SwipeControlsOverlayLayout(
     }
 
     // Handle volume change.
-    override fun onVolumeChanged(newVolume: Int, maximumVolume: Int) {
+    override fun onVolumeChanged(newVolume: Int, maximumVolume: Int, boostStep: Int) {
+        val isBoosted = boostStep > 0
         val volumePercentage = (newVolume.toFloat() / maximumVolume) * 100
         val icon = when {
             newVolume == 0 -> mutedVolumeIcon
@@ -228,7 +239,22 @@ class SwipeControlsOverlayLayout(
             volumePercentage < 50 -> normalVolumeIcon
             else -> fullVolumeIcon
         }
-        showFeedbackView("$newVolume", newVolume, maximumVolume, icon, isBrightness = false)
+
+        // Levels above 100% only exist when volume boost is allowed, so it is the only case
+        // where the level is shown as a percentage, and it fills the bar.
+        val text = when {
+            isBoosted -> "${100 + boostStep * VOLUME_BOOST_PERCENT_PER_STEP}%"
+            SoundBoostPatch.isBoostAllowed() -> "${round(volumePercentage).toInt()}%"
+            else -> "$newVolume"
+        }
+        showFeedbackView(
+            text,
+            newVolume,
+            maximumVolume,
+            icon,
+            isBrightness = false,
+            isBoosted = isBoosted
+        )
     }
 
     // Handle brightness change.

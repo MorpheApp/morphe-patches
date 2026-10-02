@@ -32,8 +32,8 @@ final class LibraryDialog {
     private final Runnable listener = this::reload;
     private String selected = "";
     private int page, request, restoreScroll = -1;
-    private boolean closed, continuing, resumed = true;
-    private int continueToken;
+    private boolean closed, selecting, resumed = true;
+    private final ContinueRequest continuation = new ContinueRequest();
     private final Runnable syncTick =
             new Runnable() {
                 public void run() {
@@ -43,7 +43,8 @@ final class LibraryDialog {
                     root.postDelayed(this, 30_000);
                 }
             };
-    private long undoUntil;
+    private final LinearLayout undoBar;
+    private long displayedUndo = -1;
     private final Application.ActivityLifecycleCallbacks lifecycle =
             new Application.ActivityLifecycleCallbacks() {
                 public void onActivityDestroyed(Activity a) {
@@ -240,6 +241,12 @@ final class LibraryDialog {
         scroll.setFillViewport(true);
         scroll.addView(content);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
+        undoBar = new LinearLayout(activity);
+        undoBar.setGravity(android.view.Gravity.CENTER_VERTICAL);
+        undoBar.setPadding(HistoryUi.dp(activity, 16), 0, HistoryUi.dp(activity, 8), 0);
+        undoBar.setVisibility(View.GONE);
+        undoBar.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+        root.addView(undoBar, new LinearLayout.LayoutParams(-1, -2));
         scroll.setClipToPadding(false);
         search.setOnEditorActionListener(
                 (v, action, event) -> {
@@ -309,6 +316,7 @@ final class LibraryDialog {
     }
 
     private void close() {
+        cancelContinue();
         closed = true;
         root.removeCallbacks(syncTick);
         service.unlisten(listener);
@@ -373,24 +381,21 @@ final class LibraryDialog {
                     "series_tracker_ui_retry_saving",
                     () -> service.retryStorage(this::error));
         }
-        if (service.canUndo() && android.os.SystemClock.uptimeMillis() < undoUntil) {
-            LinearLayout notice = new LinearLayout(activity);
-            notice.setGravity(android.view.Gravity.CENTER_VERTICAL);
-            notice.addView(
-                    label(null, "series_tracker_marked", 14),
-                    new LinearLayout.LayoutParams(0, -2, 1));
-            notice.addView(
-                    action(
-                            "series_tracker_undo",
-                            () ->
-                                    service.undo(
-                                            () -> {
-                                                undoUntil = 0;
-                                                reload();
-                                            },
-                                            this::error),
-                            false));
-            content.addView(notice);
+        long currentUndo = service.canUndo() ? service.undoSerial() : -1;
+        if (displayedUndo != currentUndo) {
+            displayedUndo = currentUndo;
+            undoBar.removeAllViews();
+            undoBar.setVisibility(currentUndo >= 0 ? View.VISIBLE : View.GONE);
+            if (currentUndo >= 0) {
+                undoBar.addView(
+                        label(null, service.undoMessage(), 14),
+                        new LinearLayout.LayoutParams(0, -2, 1));
+                undoBar.addView(
+                        action(
+                                "series_tracker_undo",
+                                () -> service.undo(this::reload, this::error),
+                                false));
+            }
         }
     }
 
@@ -556,6 +561,8 @@ final class LibraryDialog {
             content.addView(
                     continueButton(() -> continueSeries(s.id)),
                     new LinearLayout.LayoutParams(-2, -2));
+        } else if (plan.kind == ResumePlanner.Kind.CHOOSE) {
+            recovery(s);
         } else if (plan.kind != ResumePlanner.Kind.CAUGHT_UP) label(content, plan.messageKey, 14);
         pausedNotice();
         if (!s.bookmarkId.isEmpty() && (!s.complete() || plan.kind == ResumePlanner.Kind.CHOOSE))
@@ -668,6 +675,43 @@ final class LibraryDialog {
                     });
     }
 
+    private void recovery(Series series) {
+        List<Episode> matches = new ArrayList<>();
+        for (Episode e : series.episodes)
+            if (e.available && e.videoId.equals(series.cursorId)) matches.add(e);
+        label(
+                content,
+                matches.size() > 1
+                        ? "series_tracker_recovery_duplicate"
+                        : "series_tracker_recovery_missing",
+                14);
+        List<Episode> candidates = new ArrayList<>(matches);
+        if (candidates.isEmpty() && !series.recoveryId.isEmpty())
+            for (Episode e : series.episodes)
+                if (e.available && e.videoId.equals(series.recoveryId)) candidates.add(e);
+        for (Episode e : candidates) {
+            String caption =
+                    UiText.format(
+                            activity,
+                            "series_tracker_recovery_continue",
+                            series.episodeNumber(e.ordinal),
+                            UiText.episodeTitle(activity, e));
+            button(
+                    content,
+                    caption,
+                    () ->
+                            play(
+                                    series,
+                                    e.videoId,
+                                    e.ordinal,
+                                    series.progress(e.videoId).watched()
+                                            ? 0
+                                            : series.progress(e.videoId).positionMs,
+                                    series.progress(e.videoId).watched()));
+        }
+        label(content, "series_tracker_recovery_choose", 14);
+    }
+
     private void episodeMenu(Series s, Episode e) {
         List<String> labels = new ArrayList<>();
         List<Runnable> actions = new ArrayList<>();
@@ -698,8 +742,7 @@ final class LibraryDialog {
             actions.add(
                     () -> {
                         TrackerRuntime.flush();
-                        service.startHere(
-                                s, e, () -> toast("series_tracker_start_saved"), this::error);
+                        service.startHere(s, e, this::reload, this::error);
                     });
         }
         labels.add(
@@ -721,19 +764,7 @@ final class LibraryDialog {
         actions.add(
                 () -> {
                     TrackerRuntime.flush();
-                    service.through(
-                            s,
-                            e.ordinal,
-                            () -> {
-                                undoUntil = android.os.SystemClock.uptimeMillis() + 8000;
-                                reload();
-                                root.postDelayed(
-                                        () -> {
-                                            if (alive()) reload();
-                                        },
-                                        8100);
-                            },
-                            this::error);
+                    service.through(s, e.ordinal, this::reload, this::error);
                 });
         choice(
                 s.episodeNumber(e.ordinal) + ". " + UiText.episodeTitle(activity, e),
@@ -743,49 +774,50 @@ final class LibraryDialog {
 
     private void mark(Episode e, TrackerModels.Override value) {
         TrackerRuntime.flush();
-        service.mark(e.videoId, value, () -> toast("series_tracker_ui_status_saved"), this::error);
+        service.mark(e.videoId, value, this::reload, this::error);
     }
 
     private void cancelContinue() {
-        continueToken++;
-        continuing = false;
+        continuation.cancel();
+        if (selecting) {
+            selecting = false;
+            TrackerRuntime.cancelLaunch();
+        }
     }
 
     private void continueSeries(String id) {
-        if (continuing) return;
-        continuing = true;
-        int token = ++continueToken;
+        if (continuation.waiting()) return;
+        int token = continuation.begin();
         TrackerRuntime.flush();
-        service.syncYouTube(
-                true,
-                () -> {
-                    if (!alive() || token != continueToken) {
-                        continuing = false;
-                        return;
+        // The deadline bounds the user's wait even when a background check is already running.
+        Runnable finish = () -> finishContinue(id, token);
+        root.postDelayed(finish, 2500);
+        service.syncYouTube(id, finish);
+    }
+
+    private void finishContinue(String id, int token) {
+        if (!alive() || !resumed || !continuation.claim(token)) return;
+        service.series(
+                id,
+                fresh -> {
+                    if (!alive() || !resumed || !continuation.current(token)) return;
+                    ResumePlanner.Plan plan = ResumePlanner.plan(fresh);
+                    if (plan.playable())
+                        play(fresh, plan.videoId, plan.ordinal, plan.positionMs, false);
+                    else if (plan.kind == ResumePlanner.Kind.CHOOSE) openSeries(id);
+                    else {
+                        reload();
+                        toast(plan.messageKey);
                     }
-                    service.series(
-                            id,
-                            fresh -> {
-                                continuing = false;
-                                if (!alive() || token != continueToken) return;
-                                ResumePlanner.Plan plan = ResumePlanner.plan(fresh);
-                                if (plan.playable())
-                                    play(fresh, plan.videoId, plan.ordinal, plan.positionMs, false);
-                                else {
-                                    reload();
-                                    toast(plan.messageKey);
-                                }
-                            },
-                            message -> {
-                                continuing = false;
-                                if (alive()) error(message);
-                            });
-                });
+                },
+                this::error);
     }
 
     private void play(Series s, String id, int ordinal, long position, boolean restart) {
-        continueToken++;
-        continuing = false;
+        cancelContinue();
+        int token = continuation.begin();
+        continuation.claim(token); // Protect the queued selection until its launch callback.
+        selecting = true;
         TrackerRuntime.prepareLaunch();
         service.select(
                 s,
@@ -793,17 +825,23 @@ final class LibraryDialog {
                 ordinal,
                 restart,
                 () -> {
-                    if (!alive()) {
+                    if (!continuation.current(token)) return;
+                    selecting = false;
+                    if (!alive() || !resumed) {
                         TrackerRuntime.cancelLaunch();
                         return;
                     }
                     try {
+                        SeriesPlayback.activate(s, id, ordinal);
                         ResumeLauncher.launch(activity, new LaunchRequest(id, s.id, position));
                     } catch (RuntimeException failure) {
+                        SeriesPlayback.clear();
                         toast("series_tracker_open_failed");
                     }
                 },
                 message -> {
+                    if (!continuation.current(token)) return;
+                    selecting = false;
                     TrackerRuntime.cancelLaunch();
                     error(message);
                 });
@@ -841,21 +879,15 @@ final class LibraryDialog {
                         () -> rename(s),
                         () -> openPlaylist(s),
                         () ->
-                                confirm(
-                                        UiText.format(
-                                                activity, "series_tracker_remove_confirm", s.name),
-                                        "series_tracker_remove_detail",
-                                        "series_tracker_ui_remove",
-                                        () ->
-                                                service.remove(
-                                                        s.id,
-                                                        () -> {
-                                                            selected = "";
-                                                            episodeReveal.cancel();
-                                                            page = 0;
-                                                            reload();
-                                                        },
-                                                        this::error))));
+                                service.remove(
+                                        s.id,
+                                        () -> {
+                                            selected = "";
+                                            episodeReveal.cancel();
+                                            page = 0;
+                                            reload();
+                                        },
+                                        this::error)));
     }
 
     private void orderMenu(Series s) {

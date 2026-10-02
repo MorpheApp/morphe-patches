@@ -50,17 +50,14 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
     }
 
-    private final ByteArrayFilterGroup overflowMenuItem = new ByteArrayFilterGroup(
-            null,
-            "overflow_menu_item.e"
-    );
     private final ByteArrayFilterGroup videoPlayerSettingsQualityButton = new ByteArrayFilterGroup(
             null,
             "quality_sheet_header.e"
     );
     private final ByteArrayFilterGroup shortsPlayerSettingsCaptionsButton = new ByteArrayFilterGroup(
             null,
-            "closed_captions"
+            "closed_captions",
+            "closed_caption_" // 20.21
     );
     private final ByteArrayFilterGroup shortsPlayerSettingsAudioTrackButton = new ByteArrayFilterGroup(
             null,
@@ -210,11 +207,11 @@ public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
             // Verify that the open flyout menu is the first one and not the 'others'
             // one, by checking the filtering of its first button (quality menu).
+            // The path already starts with the overflow menu item, while the buffer
+            // does not always contain it (20.21 keeps it in a separate buffer).
             boolean videoPlayerFlyout = PlayerType.getCurrent().isMaximizedOrFullscreen()
-                    && overflowMenuItem.check(buffer).isFiltered()
                     && videoPlayerSettingsQualityButton.check(buffer).isFiltered();
             boolean shortsPlayerFlyout = ShortsPlayerState.isOpen()
-                    && overflowMenuItem.check(buffer).isFiltered()
                     && shortsPlayerSettingsCaptionsButton.check(buffer).isFiltered();
             if (videoPlayerFlyout || shortsPlayerFlyout) {
                 topFlyoutMenuVisible = true;

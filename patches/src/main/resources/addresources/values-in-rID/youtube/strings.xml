@@ -90,6 +90,8 @@ Perubahan termasuk:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sembunyikan tombol \'Video terbaru\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Menyembunyikan spanduk biru \'Video terbaru\' yang muncul di bagian atas feed Beranda</string>
+  <string name="morphe_hide_live_streams_title">Sembunyikan siaran langsung</string>
+  <string name="morphe_hide_live_streams_summary">Menyembunyikan video yang sedang ditayangkan langsung di feed beranda dan hasil penelusuran</string>
   <string name="morphe_hide_mix_playlists_title">Sembunyikan daftar putar campuran</string>
   <string name="morphe_hide_movies_section_title">Sembunyikan bagian film</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Kunci API Anda tidak boleh dibagikan. Siapa pun yang memiliki akses ke kunci ter
   <string name="morphe_loop_video_range_clear">Hapus</string>
   <string name="morphe_loop_video_range_toast_on">Melakukan perulangan %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Rentang waktu tidak sah</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Tampilkan tombol overlay Picture-in-picture</string>
+  <string name="morphe_pip_button_flyout_title">Tampilkan tombol flyout Picture-in-picture</string>
+  <string name="morphe_pip_button_flyout_name">Beralih ke Picture-in-picture</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Tampilkan tombol Putar semua</string>
   <string name="morphe_play_all_button_summary">"Ketuk untuk membuat daftar putar dari semua video dari saluran, ketuk dan tahan untuk membatalkan
@@ -637,6 +643,8 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <string name="morphe_swipe_volume_distance_title">Sensitivitas volume usap</string>
   <string name="morphe_swipe_volume_distance_summary">Nilai yang lebih tinggi memerlukan lebih banyak gesekan per langkah volume</string>
   <string name="morphe_swipe_volume_steps_title">Langkah volume</string>
+  <string name="morphe_volume_boost_title">Penguat volume</string>
+  <string name="morphe_volume_boost_summary">Menggeser ke atas melewati volume maksimum akan meningkatkannya, yang dapat menyebabkan distorsi pada audio yang keras</string>
   <string name="morphe_swipe_volume_steps_entry_default">Default perangkat</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensitivitas usap kecerahan</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Nilai yang lebih tinggi memerlukan lebih banyak usapan per langkah kecerahan</string>
@@ -689,7 +697,7 @@ Untuk mengatasinya, aktifkan 'Palsukan aliran video' dan ubah 'Klien bawaan' men
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
   <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
-  <string name="morphe_hide_channel_profile_button_title">Sembunyikan tombol saluran dan tombol berlangganan</string>
+  <string name="morphe_hide_channel_profile_button_title">Sembunyikan tombol saluran dan Subscribe</string>
   <string name="morphe_hide_channel_profile_button_summary">Menyembunyikan avatar saluran dan tombol Subscribe di awal bilah tindakan</string>
   <string name="morphe_hide_channel_profile_subscribe_button_title">Sembunyikan tombol Subscribe</string>
   <string name="morphe_hide_channel_profile_subscribe_button_summary">Menyembunyikan tombol Subscribe dan Gabung di samping avatar saluran di awal bilah tindakan</string>
@@ -1067,8 +1075,14 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_playback_in_feeds_entry_off">Nonaktif</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Pulihkan judul asli</string>
-  <string name="morphe_restore_original_titles_summary">Menampilkan judul dan deskripsi video asli, bukan yang diterjemahkan secara otomatis</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Diterjemahkan</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Asli</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Diterjemahkan dengan DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Asli dengan DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Memuat judul…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Nonaktifkan penyegaran feed otomatis</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Mencegah feed agar tidak disegarkan secara otomatis setelah kedaluwarsa</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Nonaktifkan melanjutkan pemutar mini</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Menonaktifkan pemutar mini \'Lanjutkan menonton\', fitur YouTube Premium yang muncul saat aplikasi dimulai</string>

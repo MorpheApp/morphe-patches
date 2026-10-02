@@ -23,7 +23,6 @@ final class HistoryMergePolicy {
             int percentage,
             int seconds) {
         if (!local.videoId.equals(row.id)
-                || local.override != TrackerModels.Override.AUTO
                 || observedAt <= local.playedAt
                 || observedAt <= 0
                 || duration <= 0
@@ -34,7 +33,9 @@ final class HistoryMergePolicy {
         Long position = row.positionMs;
         if (position != null && (position < 0 || position > duration)) position = null;
         boolean completed =
-                row.percent != null && row.percent >= CompletionPolicy.percent(percentage)
+                row.percent != null
+                                && CompletionPolicy.completedPercentage(
+                                        row.percent, duration, percentage)
                         || position != null
                                 && CompletionPolicy.completed(
                                         position, duration, percentage, seconds);

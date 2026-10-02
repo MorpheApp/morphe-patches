@@ -90,6 +90,8 @@ Los cambios incluyen:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Ocultar botón \'Vídeos recientes\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Oculta el banner azul \'Vídeos recientes\' que aparece en la parte superior del feed de Inicio</string>
+  <string name="morphe_hide_live_streams_title">Ocultar directos</string>
+  <string name="morphe_hide_live_streams_summary">Oculta los vídeos que están en directo ahora en el feed de Inicio y en los resultados de búsqueda</string>
   <string name="morphe_hide_mix_playlists_title">Ocultar listas de reproducción Mix</string>
   <string name="morphe_hide_movies_section_title">Ocultar sección de películas</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Tu clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede us
   <string name="morphe_loop_video_range_clear">Borrar</string>
   <string name="morphe_loop_video_range_toast_on">Repetición de %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Tiempo no válido</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Mostrar botón superpuesto de imagen en imagen</string>
+  <string name="morphe_pip_button_flyout_title">Mostrar botón de imagen en imagen en el menú flotante</string>
+  <string name="morphe_pip_button_flyout_name">Cambiar a imagen en imagen</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mostrar botón \'Reproducir todo\'</string>
   <string name="morphe_play_all_button_summary">"Pulsa para generar una lista de reproducción de todos los vídeos del canal. Mantén pulsado para deshacer.
@@ -637,6 +643,8 @@ Para solucionar esto, activa 'Falsificar transmisiones de vídeo' y cambia 'Clie
   <string name="morphe_swipe_volume_distance_title">Sensibilidad del deslizamiento de volumen</string>
   <string name="morphe_swipe_volume_distance_summary">Los valores más altos requieren más deslizamiento por paso de volumen</string>
   <string name="morphe_swipe_volume_steps_title">Pasos de volumen</string>
+  <string name="morphe_volume_boost_title">Aumento de volumen</string>
+  <string name="morphe_volume_boost_summary">Deslizar hacia arriba más allá del volumen máximo lo aumenta, lo que puede distorsionar el audio con volumen alto</string>
   <string name="morphe_swipe_volume_steps_entry_default">Predeterminado del dispositivo</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensibilidad del deslizamiento de brillo</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Los valores más altos requieren más deslizamiento por cada nivel de brillo</string>
@@ -1067,8 +1075,14 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_playback_in_feeds_entry_off">Desactivada</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Restaurar títulos originales</string>
-  <string name="morphe_restore_original_titles_summary">Muestra los títulos y las descripciones originales de los vídeos en lugar de los traducidos automáticamente</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Traducido</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Original</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Traducido con DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original con DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Cargando título…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Desactivar actualización automática del feed</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Evita que los feeds se actualicen automáticamente cuando quedan desactualizados</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Desactivar reanudación del reproductor en miniatura</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Desactiva el reproductor en miniatura de \'Seguir viendo\', una función de YouTube Premium que aparece al iniciar la aplicación.</string>

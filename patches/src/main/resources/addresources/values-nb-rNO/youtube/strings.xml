@@ -90,6 +90,8 @@ Endringer inkluderer:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skjul \'Siste videoer\'-knappen</string>
   <string name="morphe_hide_latest_videos_button_summary">Skjuler den blå «Nyeste videoer»-banneren som vises øverst på Hjem-feeden</string>
+  <string name="morphe_hide_live_streams_title">Skjul direktesendinger</string>
+  <string name="morphe_hide_live_streams_summary">Skjuler videoer som er direktesendt nå i hjemmefeeden og søkeresultatene</string>
   <string name="morphe_hide_mix_playlists_title">Skjul mikse-spellister</string>
   <string name="morphe_hide_movies_section_title">Skjul filmseksjon</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ API-nøkkelen din bør aldri deles. Alle med tilgang til den kan bruke OpenRoute
   <string name="morphe_loop_video_range_clear">Tøm</string>
   <string name="morphe_loop_video_range_toast_on">Looper %1$s – %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ugyldig tidsperiode</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Vis overleggsknapp for bilde-i-bilde</string>
+  <string name="morphe_pip_button_flyout_title">Vis uttrekksknapp for bilde-i-bilde</string>
+  <string name="morphe_pip_button_flyout_name">Bytt til bilde-i-bilde</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Vis Spill alle-knapp</string>
   <string name="morphe_play_all_button_summary">"Trykk for å generere en spilleliste over alle videoer fra kanalen, trykk og hold for å angre
@@ -637,6 +643,8 @@ For å fikse dette, slå på 'Forfalsk videostrømmer' og endre 'Standardklient'
   <string name="morphe_swipe_volume_distance_title">Volum-sveipefølsomhet</string>
   <string name="morphe_swipe_volume_distance_summary">Høyere verdier krever mer sveiping per volumtrinn</string>
   <string name="morphe_swipe_volume_steps_title">Volumtrinn</string>
+  <string name="morphe_volume_boost_title">Volumforsterkning</string>
+  <string name="morphe_volume_boost_summary">Å sveipe opp forbi maksimumsvolumet øker volumet ytterligere, noe som kan forvrenge høy lyd</string>
   <string name="morphe_swipe_volume_steps_entry_default">Enhetsstandard</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sveipefølsomhet for lysstyrke</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Høyere verdier krever mer sveiping per lysstyrketrinn</string>
@@ -1067,8 +1075,14 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_playback_in_feeds_entry_off">Av</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Gjenopprett originale titler</string>
-  <string name="morphe_restore_original_titles_summary">Viser de originale videotitlene og -beskrivelsene i stedet for de automatisk oversatte</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Oversatt</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Opprinnelig</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Oversatt med DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original med DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Laster tittel…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedoppdatering</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Forhindrer at feedene oppdateres automatisk etter at de blir utdaterte</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Deaktiver gjenopptak av miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiverer minispilleren «Fortsett å se på», en YouTube Premium-funksjon som vises ved oppstart av appen</string>

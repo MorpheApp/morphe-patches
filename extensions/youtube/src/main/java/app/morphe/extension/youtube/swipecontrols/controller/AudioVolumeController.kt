@@ -14,6 +14,7 @@ import android.content.Context
 import android.media.AudioManager
 import android.os.Build
 import app.morphe.extension.shared.Logger.printException
+import app.morphe.extension.youtube.patches.SoundBoostPatch
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
 import app.morphe.extension.youtube.swipecontrols.misc.clamp
@@ -114,12 +115,39 @@ class AudioVolumeController(
         get() = maxVolume / volumeStepSize
 
     /**
+     * The current boost above the maximum volume, in steps. Always zero if volume boost is off.
+     */
+    val boostStep: Int
+        get() = SoundBoostPatch.getBoostStep()
+
+    /**
      * Adjusts the volume by whole steps, snapping to a multiple of [volumeStepSize]
      * so the levels stay the same ones the device volume UI uses.
+     * If volume boost is allowed, steps up at the maximum volume raise the boost,
+     * and steps down first remove the boost before lowering the volume.
      *
      * @param steps The number of steps to adjust by, negative to lower the volume.
      */
     fun adjustVolumeBySteps(steps: Int) {
+        if (!isAvailable) return
+
+        var remaining = steps
+        while (remaining != 0) {
+            val direction = if (remaining > 0) 1 else -1
+            remaining -= direction
+
+            if (direction > 0 && volume >= maxVolume) {
+                SoundBoostPatch.adjustBoostStep(1)
+                continue
+            }
+            if (direction < 0 && SoundBoostPatch.adjustBoostStep(-1)) {
+                continue
+            }
+            adjustSystemVolumeBySteps(direction)
+        }
+    }
+
+    private fun adjustSystemVolumeBySteps(steps: Int) {
         val stepSize = volumeStepSize
         if (stepSize == 1) {
             volume += steps

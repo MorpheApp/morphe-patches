@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">「新着動画」ボタンを非表示</string>
   <string name="morphe_hide_latest_videos_button_summary">ホームフィードの最上部に表示される青色の「新着動画」バナーを非表示にします</string>
+  <string name="morphe_hide_live_streams_title">ライブ配信を非表示</string>
+  <string name="morphe_hide_live_streams_summary">ホームフィードと検索結果で現在ライブ配信中の動画を非表示にします</string>
   <string name="morphe_hide_mix_playlists_title">ミックスリストを非表示</string>
   <string name="morphe_hide_movies_section_title">映画セクションを非表示</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -497,6 +499,10 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_loop_video_range_clear">消去</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s をリピートします</string>
   <string name="morphe_loop_video_range_invalid_time">無効なリピート区間です</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">ピクチャーインピクチャーのオーバーレイボタンを表示</string>
+  <string name="morphe_pip_button_flyout_title">ピクチャーインピクチャーのフライアウトボタンを表示</string>
+  <string name="morphe_pip_button_flyout_name">ピクチャーインピクチャーに切り替え</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">「すべて再生」ボタンを表示</string>
   <string name="morphe_play_all_button_summary">"タップするとチャンネルのすべての動画から成るプレイリストを生成します。長押しすると元の状態に戻ります
@@ -638,6 +644,8 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_swipe_volume_distance_title">音量ジェスチャーのスワイプ感度</string>
   <string name="morphe_swipe_volume_distance_summary">この値を大きくすると、音量の増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
   <string name="morphe_swipe_volume_steps_title">音量レベルの段階数</string>
+  <string name="morphe_volume_boost_title">音量ブースト</string>
+  <string name="morphe_volume_boost_summary">最大音量を超えて上にスワイプすると音量がブーストされ、大音量のオーディオが歪む可能性があります</string>
   <string name="morphe_swipe_volume_steps_entry_default">端末のデフォルト</string>
   <string name="morphe_swipe_brightness_sensitivity_title">明るさジェスチャーのスワイプ感度</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">この値を大きくすると、明るさの増減に必要なスワイプ距離が大きくなり、細かい調整がスムーズになります</string>
@@ -1069,8 +1077,14 @@ Automotive レイアウト
   <string name="morphe_playback_in_feeds_entry_off">オフ</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">タイトルを原文に戻す</string>
-  <string name="morphe_restore_original_titles_summary">動画のタイトルと説明文の自動翻訳を無効にし、原文を表示します</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">翻訳済み</string>
+  <string name="morphe_restore_original_titles_type_entry_original">原文</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow で翻訳</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow でオリジナル</string>
   <string name="morphe_restore_original_titles_loading">タイトルを読み込み中…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">自動フィード更新を無効にする</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">フィードが古くなった後に自動的に更新されるのを防ぎます。</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">ミニプレーヤーの再開を無効化</string>
   <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する YouTube Premium 機能「続きを見る」を無効にします</string>

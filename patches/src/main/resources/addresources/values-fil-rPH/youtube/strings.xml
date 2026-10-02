@@ -90,6 +90,8 @@ Kasama sa mga pagbabago ang:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Itago ang button na \'Mga pinakabagong video\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Itinatago ang asul na \'Latest videos\' banner na lumilitaw sa itaas ng Home feed</string>
+  <string name="morphe_hide_live_streams_title">Itago ang mga live stream</string>
+  <string name="morphe_hide_live_streams_summary">Itinatago ang mga video na live ngayon sa home feed at sa mga resulta ng paghahanap</string>
   <string name="morphe_hide_mix_playlists_title">Itago ang mga nakahalong playlist</string>
   <string name="morphe_hide_movies_section_title">Itago ang seksyon ng mga pelikula</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring guma
   <string name="morphe_loop_video_range_clear">Alisin</string>
   <string name="morphe_loop_video_range_toast_on">Pag-uulit %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Hindi balido ang saklaw ng oras</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Ipakita ang button ng overlay ng Picture-in-picture</string>
+  <string name="morphe_pip_button_flyout_title">Ipakita ang button ng flyout ng Picture-in-picture</string>
+  <string name="morphe_pip_button_flyout_name">Lumipat sa Picture-in-picture</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Ipakita ang button na magpatugtog ng lahat</string>
   <string name="morphe_play_all_button_summary">"I-tap upang makabuo ng playlist ng lahat ng mga video mula sa channel, i-tap at hawakan upang i-undo
@@ -637,6 +643,8 @@ Para ayusin ito, i-on ang 'I-spoof ang mga video stream' at baguhin ang 'Default
   <string name="morphe_swipe_volume_distance_title">Sensitivity ng pag-swipe ng volume</string>
   <string name="morphe_swipe_volume_distance_summary">Kapag mas mataas ang value, mas maraming swipe ang kailangan para madagdagan ng isang level ang volume</string>
   <string name="morphe_swipe_volume_steps_title">Mga hakbang ng volume</string>
+  <string name="morphe_volume_boost_title">Pagpapalakas ng volume</string>
+  <string name="morphe_volume_boost_summary">Ang pag-swipe pataas nang lampas sa pinakamataas na volume ay nagpapalakas nito, na maaaring mag-distort ng malakas na audio</string>
   <string name="morphe_swipe_volume_steps_entry_default">Default ng device</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Sensitibidad ng paggalaw ng liwanag</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Ang mas mataas na halaga ay nangangailangan ng mas maraming paggalaw sa bawat hakbang ng liwanag</string>
@@ -1065,8 +1073,14 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_playback_in_feeds_entry_off">Naka-off</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Ibalik ang orihinal na mga pamagat</string>
-  <string name="morphe_restore_original_titles_summary">Ipinapakita ang orihinal na mga pamagat ng video at mga paglalarawan sa halip na ang mga awtomatikong isinalin</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Isinalin</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Orihinal</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Isinalin gamit ang DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Orihinal na may DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Naglo-load ng pamagat…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">I-disable ang awtomatikong pag-refresh ng feed</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Pinipigilan ang mga feed na awtomatikong mag-refresh kapag lipas na ang mga ito</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Huwag paganahin ang pagpapatuloy ng miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Hindi pinapagana ang \'Continue watching\' miniplayer, isang tampok ng YouTube Premium na lumalabas sa paglunsad ng app.</string>

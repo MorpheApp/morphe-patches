@@ -98,7 +98,7 @@ final class OriginalTitleRequest {
     private static String fetchTitle(String videoId) {
         try {
             String url = "https://www.youtube.com/oembed?format=json&url="
-                    + URLEncoder.encode("https://www.youtube.com/watch?v=" + videoId, StandardCharsets.UTF_8);
+                    + URLEncoder.encode("https://www.youtube.com/watch?v=" + videoId, StandardCharsets.UTF_8.name());
 
             HttpURLConnection connection = Requester.openConnection(url);
             connection.setConnectTimeout(CONNECTION_TIMEOUT_MILLISECONDS);

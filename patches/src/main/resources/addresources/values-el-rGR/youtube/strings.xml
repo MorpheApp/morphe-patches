@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Απόκρυψη κουμπιού \"Τελευταία βίντεο\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Απόκρυψη της μπλε μπάρας \"Τελευταία βίντεο\" που εμφανίζεται στο πάνω μέρος της Κεντρικής σελίδας</string>
+  <string name="morphe_hide_live_streams_title">Απόκρυψη ζωντανών μεταδόσεων</string>
+  <string name="morphe_hide_live_streams_summary">Αποκρύπτει βίντεο που είναι ζωντανά τώρα στην αρχική ροή και στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_mix_playlists_title">Απόκρυψη \"Λίστες αναπαραγωγής μίξης\"</string>
   <string name="morphe_hide_movies_section_title">Απόκρυψη \"Ενότητας ταινιών\"</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Διαγραφή</string>
   <string name="morphe_loop_video_range_toast_on">Επανάληψη %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Δόθηκε μη έγκυρος χρόνος</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Εμφάνιση κουμπιού επικάλυψης για εικόνα σε εικόνα</string>
+  <string name="morphe_pip_button_flyout_title">Εμφάνιση κουμπιού αναδυόμενου μενού για εικόνα σε εικόνα</string>
+  <string name="morphe_pip_button_flyout_name">Μετάβαση σε εικόνα σε εικόνα</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Απαιτείται πίεση και κράτημα πριν αναγνωριστεί μια χειρονομία σάρωσης</string>
   <string name="morphe_play_all_button_summary">"Πατήστε για να δημιουργήσετε μια λίστα αναπαραγωγής με όλα τα βίντεο από το κανάλι, πατήστε και κρατήστε για να αναιρέσετε
@@ -637,6 +643,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_distance_title">Ευαισθησία σάρωσης έντασης ήχου</string>
   <string name="morphe_swipe_volume_distance_summary">Οι υψηλότερες τιμές απαιτούν περισσότερο σύρσιμο ανά βήμα έντασης.</string>
   <string name="morphe_swipe_volume_steps_title">Βήματα έντασης</string>
+  <string name="morphe_volume_boost_title">Ενίσχυση έντασης</string>
+  <string name="morphe_volume_boost_summary">Το σάρωμα προς τα πάνω πέρα από τη μέγιστη ένταση την ενισχύει, κάτι που μπορεί να παραμορφώσει τον δυνατό ήχο</string>
   <string name="morphe_swipe_volume_steps_entry_default">Προεπιλογή συσκευής</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Ευαισθησία σάρωσης φωτεινότητας</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Υψηλότερες τιμές απαιτούν περισσότερες σαρώσεις ανά βήμα φωτεινότητας</string>
@@ -1052,8 +1060,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Απενεργό</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Επαναφορά αρχικών τίτλων</string>
-  <string name="morphe_restore_original_titles_summary">Εμφανίζει τους αρχικούς τίτλους και τις περιγραφές βίντεο αντί για τις αυτόματα μεταφρασμένες εκδοχές.</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Μεταφρασμένο</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Αρχικό</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Μεταφρασμένο με το DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Πρωτότυπο με το DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Φόρτωση τίτλου…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Απενεργοποίηση αυτόματης ανανέωσης ροής</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Αποτρέπει την αυτόματη ανανέωση των ροών όταν αυτές καταστούν ξεπερασμένες</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Απενεργοποίηση συνέχισης του miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Απενεργοποιεί το μίνι player \"Συνέχιση παρακολούθησης\", μια λειτουργία YouTube Premium που εμφανίζεται κατά την εκκίνηση της εφαρμογής</string>
@@ -1183,6 +1197,9 @@ Second \"item\" text"</string>
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Μέγεθος buffer αναπαραγωγής</string>
   <string name="morphe_playback_buffer_size_entry_default">Προεπιλογή</string>
+  <string name="morphe_playback_buffer_size_entry_low">Χαμηλό</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Μεσαίο</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Μέγιστο</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Αυτόματη</string>

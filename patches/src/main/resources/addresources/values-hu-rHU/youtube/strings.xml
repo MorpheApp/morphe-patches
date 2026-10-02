@@ -90,6 +90,8 @@ A változások a következőket tartalmazzák:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">„Legújabb videók” gomb elrejtése</string>
   <string name="morphe_hide_latest_videos_button_summary">A Kezdőlap tetején megjelenő kék „Legújabb videók” sáv elrejtése</string>
+  <string name="morphe_hide_live_streams_title">Élő közvetítések elrejtése</string>
+  <string name="morphe_hide_live_streams_summary">Elrejti a jelenleg élő videókat a kezdőlapi hírfolyamban és a keresési találatokban</string>
   <string name="morphe_hide_mix_playlists_title">Egyveleg lejátszási listák elrejtése</string>
   <string name="morphe_hide_movies_section_title">Filmek szekció elrejtése</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ A API kulcsodat soha nem szabad megosztani. Bárki, akinek hozzáférése van ho
   <string name="morphe_loop_video_range_clear">Törlés</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s ciklusban</string>
   <string name="morphe_loop_video_range_invalid_time">Érvénytelen idő van megadva</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Kép a képben átfedő gomb megjelenítése</string>
+  <string name="morphe_pip_button_flyout_title">Kép a képben kinyíló gomb megjelenítése</string>
+  <string name="morphe_pip_button_flyout_name">Váltás kép a képben módra</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mind lejátszási gomb megjelenítése</string>
   <string name="morphe_play_all_button_summary">"Koppintson meg a csatorna összes videójának lejátszási listájának létrehozásához, hosszan megnyomva a művelet visszavonásához
@@ -637,6 +643,8 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_swipe_volume_distance_title">Hangerő-görgetés érzékenysége</string>
   <string name="morphe_swipe_volume_distance_summary">A magasabb értékek több húzást igényelnek hangerőlépésenként.</string>
   <string name="morphe_swipe_volume_steps_title">Hangerőlépések</string>
+  <string name="morphe_volume_boost_title">Hangerőnövelés</string>
+  <string name="morphe_volume_boost_summary">A maximális hangerőn túli felfelé húzás felerősíti a hangot, ami torzíthatja a hangos hanganyagot</string>
   <string name="morphe_swipe_volume_steps_entry_default">Eszköz alapértelmezése</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Fényerő-húzásérzékenység</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">A nagyobb értékek több húzást igényelnek a fényerő lépésenkénti változásához</string>
@@ -1067,8 +1075,14 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_playback_in_feeds_entry_off">Ki</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Eredeti címek visszaállítása</string>
-  <string name="morphe_restore_original_titles_summary">Az eredeti videócímeket és videóleírásokat mutatja az automatikusan lefordítottak helyett</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Fordított</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Eredeti</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow-val fordított</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow-val eredeti</string>
   <string name="morphe_restore_original_titles_loading">Cím betöltése…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Automatikus hírcsatorna-frissítés letiltása</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Megakadályozza, hogy a hírcsatornák automatikusan frissüljenek, miután elavulttá válnak</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">A miniplayer folytatásának letiltása</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Letiltja a „Folytatás” minilejátszót, a YouTube Premium funkciót, amely az alkalmazás indításakor jelenik meg.</string>
@@ -1198,6 +1212,9 @@ Ha engedélyezve van, akkor a videók URL-jeit elküldjük az API kiszolgálóna
   <!-- video.buffer.playbackBufferPatch -->
   <string name="morphe_playback_buffer_size_title">Lejátszási puffer mérete</string>
   <string name="morphe_playback_buffer_size_entry_default">Alapértelmezett</string>
+  <string name="morphe_playback_buffer_size_entry_low">Alacsony</string>
+  <string name="morphe_playback_buffer_size_entry_medium">Közepes</string>
+  <string name="morphe_playback_buffer_size_entry_maximum">Maximális</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">Automatikus</string>

@@ -28,6 +28,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeMainActivityConstructorFingerprint
+import app.morphe.patches.youtube.video.audio.soundBoostPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.transformMethods
@@ -40,7 +41,8 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/swipecontrol
 private val swipeControlsResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        soundBoostPatch
     )
 
     execute {
@@ -94,6 +96,7 @@ private val swipeControlsResourcePatch = resourcePatch {
                 "morphe_swipe_volume_steps",
                 tag = "app.morphe.extension.youtube.settings.preference.SwipeVolumeStepsPreference"
             ),
+            SwitchPreference("morphe_volume_boost", summary = true),
             NonInteractivePreference(
                 key = "morphe_swipe_speed_sensitivity",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"

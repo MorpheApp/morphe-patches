@@ -47,6 +47,18 @@ public final class HideStatusBarPatch {
         }
     }
 
+    /**
+     * Injection point.
+     * <p>
+     * The status bar background view is sized with the stable status bar inset,
+     * so when the status bar is hidden it covers the search bar and channel page top bar.
+     */
+    public static void hideStatusBarBackground(View view) {
+        if (Settings.HIDE_STATUS_BAR.get()) {
+            view.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private static boolean isStatusBarVisible(View decorView) {
         WindowInsets insets = decorView.getRootWindowInsets();
         if (insets == null) {

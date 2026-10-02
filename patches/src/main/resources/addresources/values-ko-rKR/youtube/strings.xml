@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">최신 동영상 버튼 숨기기</string>
   <string name="morphe_hide_latest_videos_button_summary">홈 피드 상단에 표시되는 파란색 \'최신 동영상\' 배너를 숨깁니다</string>
+  <string name="morphe_hide_live_streams_title">실시간 스트림 숨기기</string>
+  <string name="morphe_hide_live_streams_summary">홈 피드 및 검색 결과에서 현재 라이브 중인 동영상을 숨깁니다</string>
   <string name="morphe_hide_mix_playlists_title">믹스 재생목록 숨기기</string>
   <string name="morphe_hide_movies_section_title">영화 선반 숨기기</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_loop_video_range_clear">지우기</string>
   <string name="morphe_loop_video_range_toast_on">\'%1$s ~ %2$s\' 연속 재생</string>
   <string name="morphe_loop_video_range_invalid_time">잘못된 시간 범위입니다</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">PIP 모드 오버레이 버튼 표시하기</string>
+  <string name="morphe_pip_button_flyout_title">PIP 모드 메뉴 표시하기</string>
+  <string name="morphe_pip_button_flyout_name">PIP 모드로 전환</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">모두 재생 버튼 표시하기</string>
   <string name="morphe_play_all_button_summary">"버튼을 탭하여 채널의 모든 동영상 재생목록을 생성할 수 있습니다
@@ -639,6 +645,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_swipe_volume_distance_title">볼륨 스와이프 민감도</string>
   <string name="morphe_swipe_volume_distance_summary">값이 높을수록 볼륨 단계당 더 많은 스와이프가 필요합니다.</string>
   <string name="morphe_swipe_volume_steps_title">볼륨 단계</string>
+  <string name="morphe_volume_boost_title">볼륨 부스트</string>
+  <string name="morphe_volume_boost_summary">최대 볼륨을 넘어서 위로 스와이프하면 볼륨이 더 커지지만, 큰 소리의 오디오가 왜곡될 수 있습니다</string>
   <string name="morphe_swipe_volume_steps_entry_default">기기 기본값</string>
   <string name="morphe_swipe_brightness_sensitivity_title">밝기 스와이프 민감도</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">값이 높을수록 밝기 단계를 변경하려면 더 많이 스와이프해야 합니다</string>
@@ -1068,9 +1076,15 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_playback_in_feeds_entry_wifi_only">Wi-Fi 전용</string>
   <string name="morphe_playback_in_feeds_entry_off">사용 안함</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
-  <string name="morphe_restore_original_titles_title">원문 제목 복원하기</string>
-  <string name="morphe_restore_original_titles_summary">자동 번역된 동영상 제목과 설명 대신 원문 제목과 설명을 표시합니다</string>
+  <string name="morphe_restore_original_titles_title">원본 제목 복원하기</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">번역본</string>
+  <string name="morphe_restore_original_titles_type_entry_original">원본</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow 번역본</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow 원본</string>
   <string name="morphe_restore_original_titles_loading">제목을 불러오는 중…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">자동 피드 새로고침 비활성화하기</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">피드가 만료된 후 자동으로 새로 고쳐지지 않도록 합니다</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">미니 플레이어 다시 시작 비활성화하기</string>
   <string name="morphe_miniplayer_disable_resuming_summary">앱 시작 시 \'이어서 시청하기\' 미니플레이어가 나타나지 않도록 합니다. 이 기능은 YouTube Premium 기능입니다</string>

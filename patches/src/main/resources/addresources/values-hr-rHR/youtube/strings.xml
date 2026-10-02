@@ -92,6 +92,8 @@ Promjene uključuju:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sakrij dugme \'Latest videos\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Skriva plavu natpisnu traku \'Noviji videozapisi\' koja se pojavljuje na vrhu početnog zaslona</string>
+  <string name="morphe_hide_live_streams_title">Sakrij prijenose uživo</string>
+  <string name="morphe_hide_live_streams_summary">Skriva videozapise koji se trenutno prenose uživo na početnom feedu i u rezultatima pretraživanja.</string>
   <string name="morphe_hide_mix_playlists_title">Sakrij sveske</string>
   <string name="morphe_hide_movies_section_title">Sakrij sekcije s filmovima</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -498,6 +500,10 @@ Vaš API ključ nikada ne smijete dijeliti. Bilo tko s pristupom njemu može kor
   <string name="morphe_loop_video_range_clear">Izbriši</string>
   <string name="morphe_loop_video_range_toast_on">Petlja %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Neispravan vremenski raspon</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Prikaži gumb preklopa za sliku u slici</string>
+  <string name="morphe_pip_button_flyout_title">Prikaži iskočni gumb za sliku u slici</string>
+  <string name="morphe_pip_button_flyout_name">Prebaci na sliku u slici</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Prikaži tipku Reproduciraj sve</string>
   <string name="morphe_play_all_button_summary">"Dodirnite za generiranje popisa pjesama, dodirnite i držite da biste poništili
@@ -639,6 +645,8 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
   <string name="morphe_swipe_volume_distance_title">Osjetljivost klizanja za glasnoću</string>
   <string name="morphe_swipe_volume_distance_summary">Veće vrijednosti zahtijevaju više klizanja po koraku glasnoće</string>
   <string name="morphe_swipe_volume_steps_title">Koraci glasnoće</string>
+  <string name="morphe_volume_boost_title">Pojačanje glasnoće</string>
+  <string name="morphe_volume_boost_summary">Povlačenjem prema gore preko maksimalne glasnoće pojačava se zvuk, što može izobličiti glasan audio</string>
   <string name="morphe_swipe_volume_steps_entry_default">Zadano za uređaj</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Osjetljivost povlačenja svjetline</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Veće vrijednosti zahtijevaju više povlačenja po koraku svjetline</string>
@@ -1069,8 +1077,14 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_playback_in_feeds_entry_off">Isključeno</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Vrati izvorne naslove</string>
-  <string name="morphe_restore_original_titles_summary">Prikazuje izvorne naslove i opise videozapisa umjesto automatski prevedenih</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Prevedeni</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Izvorni</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Prevedeni s DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Izvorni s DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Učitavanje naslova…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Onemogući automatsko osvježavanje feeda</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Sprječava automatsko osvježavanje feedova nakon što postanu zastarjeli</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Onemogući nastavak reprodukcije u miniplayeru</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Onemogućuje miniplayer \'Nastavi gledati\', značajku YouTube Premiuma koja se pojavljuje pri pokretanju aplikacije</string>

@@ -90,6 +90,8 @@ Nogle server-side layouts kan ikke vende tilbage.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skjul knappen \'Seneste videoer\'</string>
   <string name="morphe_hide_latest_videos_button_summary">Skjuler det blå \'Seneste videoer\'-banner, der vises øverst i startfeedet</string>
+  <string name="morphe_hide_live_streams_title">Skjul live-streams</string>
+  <string name="morphe_hide_live_streams_summary">Skjuler videoer, der er live lige nu i hjemmefeeden og søgeresultaterne</string>
   <string name="morphe_hide_mix_playlists_title">Skjul mix-playlister</string>
   <string name="morphe_hide_movies_section_title">Skjul filmsektion</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Din API-nøgle bør aldrig deles. Enhver med adgang til den kan bruge dine OpenR
   <string name="morphe_loop_video_range_clear">Ryd</string>
   <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ugyldigt tidsinterval</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Vis billede-i-billede-overlay-knap</string>
+  <string name="morphe_pip_button_flyout_title">Vis billede-i-billede-flyout-knap</string>
+  <string name="morphe_pip_button_flyout_name">Skift til billede-i-billede</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Kræver tryk og hold, før en strygebevægelse genkendes</string>
   <string name="morphe_play_all_button_summary">"Tryk for at generere en playliste over alle videoer fra kanalen, tryk og hold for at fortryde
@@ -637,6 +643,8 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
   <string name="morphe_swipe_volume_distance_title">Lydstyrke strygefølsomhed</string>
   <string name="morphe_swipe_volume_distance_summary">Højere værdier kræver mere strygning pr. lydstyrketrin.</string>
   <string name="morphe_swipe_volume_steps_title">Lydstyrketrin</string>
+  <string name="morphe_volume_boost_title">Lydstyrkeboost</string>
+  <string name="morphe_volume_boost_summary">Hvis du stryger op forbi maksimal lydstyrke, forstærkes lyden, hvilket kan forvrænge høj lyd</string>
   <string name="morphe_swipe_volume_steps_entry_default">Enhedens standard</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Lysstyrke strygefølsomhed</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Højere værdier kræver flere strygninger pr. lysstyrketrin</string>
@@ -1065,8 +1073,14 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_playback_in_feeds_entry_off">Slukket</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Gendan originale titler</string>
-  <string name="morphe_restore_original_titles_summary">Viser de originale videotitler og -beskrivelser i stedet for de automatisk oversatte</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Oversat</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Oprindelig</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Oversat med DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original med DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Indlæser titel…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedopdatering</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Forhindrer feeds i automatisk at opdatere, efter at de er forældede</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Deaktiver fortsættelse af miniplayer</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiverer \'Fortsæt med at se\'-miniafspilleren, en YouTube Premium-funktion, der vises, når appen startes</string>

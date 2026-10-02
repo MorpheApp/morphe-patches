@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 
 import com.google.protobuf.MessageLite;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -133,12 +134,23 @@ public final class VideoActionButtonsFilter extends Filter {
         HIDE_ACTION_BUTTON = hideActionButton;
     }
 
+    private static final int MAX_CACHED_VIDEOS = 10;
+
     /**
      * Caches a list of action buttons based on video ID.
      */
     @GuardedBy("itself")
     private static final Map<String, List<ActionButton>> actionButtonLookup =
-            Utils.createSizeRestrictedMap(10);
+            Utils.createSizeRestrictedMap(MAX_CACHED_VIDEOS);
+
+    /**
+     * Responses that have already been parsed.
+     * The app can load the same response again (such as when selecting a chapter),
+     * but other patches may have changed the response in place since it was first parsed.
+     * Serializing it again then fails, because its cached serialized size is no longer valid.
+     */
+    @GuardedBy("actionButtonLookup")
+    private static final List<WeakReference<MessageLite>> parsedResponses = new ArrayList<>();
 
     private static final String COMPACT_CHANNEL_BAR_PREFIX = "compact_channel_bar.e";
     private static final String COMPACTIFY_VIDEO_ACTION_BAR_PREFIX = "compactify_video_action_bar.e";
@@ -279,6 +291,24 @@ public final class VideoActionButtonsFilter extends Filter {
         }
     }
 
+    @GuardedBy("actionButtonLookup")
+    private static boolean isResponseAlreadyParsed(MessageLite messageLite) {
+        parsedResponses.removeIf(ref -> ref.get() == null);
+        for (WeakReference<MessageLite> ref : parsedResponses) {
+            if (ref.get() == messageLite) {
+                return true;
+            }
+        }
+
+        // Keep the list as small as the action button lookup.
+        if (parsedResponses.size() >= MAX_CACHED_VIDEOS) {
+            parsedResponses.remove(0);
+        }
+        parsedResponses.add(new WeakReference<>(messageLite));
+
+        return false;
+    }
+
     /**
      * Injection point.
      * Invoke as soon as the endpoint response is received.
@@ -293,6 +323,10 @@ public final class VideoActionButtonsFilter extends Filter {
         }
         synchronized (actionButtonLookup) {
             try {
+                if (isResponseAlreadyParsed(messageLite)) {
+                    return;
+                }
+
                 var singleColumnWatchNextResults = SingleColumnWatchNextResults.parseFrom(messageLite.toByteArray());
                 var primaryResults = singleColumnWatchNextResults.getPrimaryResults();
                 var secondaryResults = primaryResults.getSecondaryResults();

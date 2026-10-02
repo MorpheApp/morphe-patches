@@ -90,6 +90,8 @@ Folgende Änderungen werden vorgenommen:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Schaltfläche „Neueste Videos“ ausblenden</string>
   <string name="morphe_hide_latest_videos_button_summary">Verbirgt das blaue Banner „Neueste Videos“, das oben im Home-Feed angezeigt wird</string>
+  <string name="morphe_hide_live_streams_title">Live-Streams ausblenden</string>
+  <string name="morphe_hide_live_streams_summary">Blendet Videos aus, die gerade live im Startseiten-Feed und in den Suchergebnissen sind.</string>
   <string name="morphe_hide_mix_playlists_title">Mix-Wiedergabelisten ausblenden</string>
   <string name="morphe_hide_movies_section_title">Film-Bereich ausblenden</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -497,6 +499,10 @@ Ein API-Key sollte niemals weitergegeben werden! Jeder mit Zugriff darauf kann d
   <string name="morphe_loop_video_range_clear">Löschen</string>
   <string name="morphe_loop_video_range_toast_on">Wiederholung von %1$s bis %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ungültiger Zeitbereich</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Bild-im-Bild-Overlay-Schaltfläche anzeigen</string>
+  <string name="morphe_pip_button_flyout_title">Bild-im-Bild-Flyout-Schaltfläche anzeigen</string>
+  <string name="morphe_pip_button_flyout_name">Zu Bild-im-Bild wechseln</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Alle abspielen-Schaltfläche anzeigen</string>
   <string name="morphe_play_all_button_summary">"Tippe, um eine Wiedergabeliste aus allen Videos eines Kanals zu erstellen. Tippe und halte gedrückt, um dies rückgängig zu machen
@@ -638,6 +644,8 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
   <string name="morphe_swipe_volume_distance_title">Empfindlichkeit der Lautstärken-Gestensteuerung</string>
   <string name="morphe_swipe_volume_distance_summary">Höhere Werte erfordern mehr Wischen pro Lautstärkestufe</string>
   <string name="morphe_swipe_volume_steps_title">Lautstärkestufen</string>
+  <string name="morphe_volume_boost_title">Lautstärke-Boost</string>
+  <string name="morphe_volume_boost_summary">Wenn du über die maximale Lautstärke hinaus nach oben wischst, wird sie verstärkt, was laute Audios verzerren kann</string>
   <string name="morphe_swipe_volume_steps_entry_default">Gerätestandard</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Empfindlichkeit der Helligkeits-Gestensteuerung</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Höhere Werte erfordern mehr Wischbewegungen pro Helligkeitsstufe</string>
@@ -1068,8 +1076,14 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <string name="morphe_playback_in_feeds_entry_off">Aus</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Originaltitel wiederherstellen</string>
-  <string name="morphe_restore_original_titles_summary">Zeigt die Originaltitel und -beschreibungen der Videos anstelle der automatisch übersetzten an.</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Übersetzt</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Original</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Übersetzt mit DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original mit DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Titel wird geladen…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Automatische Feed-Aktualisierung deaktivieren</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Verhindert, dass Feeds automatisch aktualisiert werden, nachdem sie veraltet sind</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Fortsetzen des Miniplayers deaktivieren</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Deaktiviert den Miniplayer „Weiter ansehen“, ein YouTube Premium-Feature, das beim Starten der App angezeigt wird.</string>

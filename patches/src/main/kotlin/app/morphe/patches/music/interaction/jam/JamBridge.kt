@@ -92,14 +92,13 @@ internal fun BytecodePatchContext.installNativeAccessor(
         if (opaqueReceiver) listOf("Ljava/lang/Object;") else emptyList(),
         resultType,
         (if (wide) 2 else 1) + (if (opaqueReceiver) 2 else 1),
-        body =
-            buildString {
-                if (opaqueReceiver) appendLine("check-cast p1, ${accessor.definingClass}")
-                if (receiverField != null) appendLine("iget-object v0, p0, $receiverField")
-                appendLine("${invokeKind(accessor)} {$receiver}, $accessor")
-                appendLine("move-result$suffix v0")
-                appendLine("return$suffix v0")
-            },
+        body = buildString {
+            if (opaqueReceiver) appendLine("check-cast p1, ${accessor.definingClass}")
+            if (receiverField != null) appendLine("iget-object v0, p0, $receiverField")
+            appendLine("${invokeKind(accessor)} {$receiver}, $accessor")
+            appendLine("move-result$suffix v0")
+            appendLine("return$suffix v0")
+        }
     )
 }
 
@@ -111,10 +110,9 @@ internal fun MutableClass.addReferenceGetter(name: String, field: FieldReference
         emptyList(),
         field.type,
         2,
-        body =
-            """
-        iget-object v0, p0, $field
-        return-object v0
-    """,
+        body = """
+            iget-object v0, p0, $field
+            return-object v0
+        """
     )
 }

@@ -92,6 +92,32 @@ public final class ResumePlanner {
         return state(Kind.CAUGHT_UP, "series_tracker_plan_caught_up");
     }
 
+    static int occurrence(Series before, String video, int ordinal, Series current) {
+        if (!before.id.equals(current.id) || !before.epoch.equals(current.epoch)) return -1;
+        int found = -1, count = 0;
+        for (Episode e : current.episodes) {
+            if (!e.available || !e.videoId.equals(video)) continue;
+            if (before.revision == current.revision && e.ordinal == ordinal) return ordinal;
+            found = e.ordinal;
+            count++;
+        }
+        return before.revision != current.revision && count == 1 ? found : -1;
+    }
+
+    static Episode adjacent(Series series, String videoId, int ordinal, boolean previous) {
+        int step = previous ? -1 : 1;
+        for (int i = 0; i < series.episodes.size(); i++) {
+            Episode current = series.episodes.get(i);
+            if (current.ordinal != ordinal || !current.videoId.equals(videoId)) continue;
+            for (int j = i + step; j >= 0 && j < series.episodes.size(); j += step) {
+                Episode candidate = series.episodes.get(j);
+                if (candidate.available) return candidate;
+            }
+            return null;
+        }
+        return null;
+    }
+
     public static String time(long ms) {
         long seconds = Math.max(0, ms) / 1000;
         return seconds >= 3600

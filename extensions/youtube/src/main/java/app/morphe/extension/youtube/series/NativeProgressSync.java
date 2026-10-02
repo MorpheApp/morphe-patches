@@ -19,11 +19,50 @@ final class NativeProgressSync {
     static Result fetch(
             List<Series> library, long generation, int percent, int seconds, boolean force)
             throws Exception {
+        return fetch(library, generation, percent, seconds, force, "");
+    }
+
+    static Result fetch(
+            List<Series> library,
+            long generation,
+            int percent,
+            int seconds,
+            boolean force,
+            String selectedSeries)
+            throws Exception {
         Result result = new Result();
         result.account = RecordingPrivacy.syncScope(generation);
         if (result.account.isEmpty()) throw new CancellationException("Account changed");
         result.percent = percent;
         result.seconds = seconds;
+        return fetchPages(
+                library,
+                force,
+                selectedSeries,
+                result,
+                (continuation, maxAge, remaining) ->
+                        NativeHistoryTransport.page(continuation, generation, maxAge, remaining),
+                System::nanoTime);
+    }
+
+    interface Pages {
+        NativeHistoryTransport.Page get(String continuation, long maxAge, long remaining)
+                throws Exception;
+    }
+
+    static Result fetchPages(
+            List<Series> library,
+            boolean force,
+            String selectedSeries,
+            Result result,
+            Pages pages,
+            java.util.function.LongSupplier clock)
+            throws Exception {
+        if (!selectedSeries.isEmpty()) {
+            List<Series> focused = new ArrayList<>();
+            for (Series series : library) if (series.id.equals(selectedSeries)) focused.add(series);
+            library = focused;
+        }
         Set<String> scope = new HashSet<>();
         for (Series series : library) {
             for (Episode ep : series.episodes)
@@ -44,18 +83,19 @@ final class NativeProgressSync {
             }
         }
         if (scope.isEmpty()) return result;
-        long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(8);
+        long deadline =
+                clock.getAsLong()
+                        + TimeUnit.MILLISECONDS.toNanos(selectedSeries.isEmpty() ? 8000 : 2500);
         Set<String> tokens = new HashSet<>();
         String continuation = "";
         for (int n = 0; n < (force ? 3 : 1); n++) {
-            long remaining = deadline - System.nanoTime();
+            long remaining = deadline - clock.getAsLong();
             if (remaining <= 0) {
                 result.complete = false;
                 break;
             }
             NativeHistoryTransport.Page response =
-                    NativeHistoryTransport.page(
-                            continuation, generation, force ? 10_000 : 30_000, remaining);
+                    pages.get(continuation, force ? 10_000 : 30_000, remaining);
             for (NativeHistoryPage.Row row : response.value.rows.values()) {
                 if (!scope.contains(row.id) || result.rows.containsKey(row.id)) continue;
                 result.rows.put(row.id, row);

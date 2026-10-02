@@ -90,6 +90,8 @@ Değişiklikler şunları içerir:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Son videolar düğmesini gizle</string>
   <string name="morphe_hide_latest_videos_button_summary">Ana sayfa akışının üst kısmında görünen mavi \"En yeni videolar\" afişini gizler</string>
+  <string name="morphe_hide_live_streams_title">Canlı yayınları gizle</string>
+  <string name="morphe_hide_live_streams_summary">Ana sayfa akışındaki ve arama sonuçlarındaki canlı videoları gizler</string>
   <string name="morphe_hide_mix_playlists_title">Mix oynatma listelerini gizle</string>
   <string name="morphe_hide_movies_section_title">Filmler kısmını gizle</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ API anahtarınız asla paylaşılmamalıdır. Ona erişimi olan herkes OpenRoute
   <string name="morphe_loop_video_range_clear">Temizle</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s arasında döngü</string>
   <string name="morphe_loop_video_range_invalid_time">Geçersiz zaman aralığı</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Resim içinde resim katman düğmesini göster</string>
+  <string name="morphe_pip_button_flyout_title">Resim içinde resim açılır düğmesini göster</string>
+  <string name="morphe_pip_button_flyout_name">Resim içinde resim moduna geç</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Tümünü oynat düğmesini göster</string>
   <string name="morphe_play_all_button_summary">"Kanaldaki tüm videoların oynatma listesini oluşturmak için dokunun, geri almak için basılı tutun
@@ -637,6 +643,8 @@ Bunu düzeltmek için 'Video akışlarını taklit et' seçeneğini etkinleştir
   <string name="morphe_swipe_volume_distance_title">Ses kaydırma hassasiyeti</string>
   <string name="morphe_swipe_volume_distance_summary">Daha yüksek değerler, ses seviyesi adımı başına daha fazla kaydırma gerektirir.</string>
   <string name="morphe_swipe_volume_steps_title">Ses seviyesi adımları</string>
+  <string name="morphe_volume_boost_title">Ses güçlendirme</string>
+  <string name="morphe_volume_boost_summary">Maksimum ses seviyesinin ötesine kaydırmak sesi güçlendirir, bu da yüksek seslerin bozulmasına neden olabilir</string>
   <string name="morphe_swipe_volume_steps_entry_default">Cihaz varsayılanı</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Parlaklık kaydırma hassasiyeti</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Daha yüksek değerler, her parlaklık adımı için daha fazla kaydırma gerektirir</string>
@@ -1067,8 +1075,14 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_playback_in_feeds_entry_off">Kapalı</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Orijinal başlıkları geri yükle</string>
-  <string name="morphe_restore_original_titles_summary">Otomatik çevrilenler yerine orijinal video başlıklarını ve açıklamalarını gösterir.</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Çevrildi</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Orijinal</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow ile çevrildi</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow ile orijinal</string>
   <string name="morphe_restore_original_titles_loading">Başlık yükleniyor…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Otomatik akış yenilemeyi devre dışı bırak</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Akışların güncelliğini yitirdikten sonra otomatik olarak yenilenmesini engeller</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini oynatıcıyı sürdürmeyi devre dışı bırak</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Uygulama başlangıcında görünen YouTube Premium özelliği \'İzlemeye devam edin\' mini oynatıcısını devre dışı bırakır</string>

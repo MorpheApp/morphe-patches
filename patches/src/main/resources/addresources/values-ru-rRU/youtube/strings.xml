@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Скрыть кнопку \"Последние видео\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Скрывает синий баннер \"Последние видео\", который появляется в верхней части ленты Home</string>
+  <string name="morphe_hide_live_streams_title">Скрывать прямые эфиры</string>
+  <string name="morphe_hide_live_streams_summary">Скрывает видео, которые сейчас идут в прямом эфире, в ленте на главной странице и в результатах поиска</string>
   <string name="morphe_hide_mix_playlists_title">Скрыть плейлисты \"Джем\"</string>
   <string name="morphe_hide_movies_section_title">Скрыть раздел фильмов</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_range_clear">Очистить</string>
   <string name="morphe_loop_video_range_toast_on">Цикл %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Указано неверное время</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Показывать кнопку оверлея «Картинка в картинке»</string>
+  <string name="morphe_pip_button_flyout_title">Показывать кнопку всплывающего меню «Картинка в картинке»</string>
+  <string name="morphe_pip_button_flyout_name">Переключиться в режим «Картинка в картинке»</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Показать кнопку \"Воспроизвести все\"</string>
   <string name="morphe_play_all_button_summary">"Кнопка «Воспроизвести все» показана
@@ -639,6 +645,8 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_volume_distance_title">Чувствительность жеста регулировки громкости</string>
   <string name="morphe_swipe_volume_distance_summary">Более высокие значения требуют больше смахиваний на шаг громкости</string>
   <string name="morphe_swipe_volume_steps_title">Шаги громкости</string>
+  <string name="morphe_volume_boost_title">Усиление громкости</string>
+  <string name="morphe_volume_boost_summary">Проведение вверх за пределы максимальной громкости усиливает её, что может искажать громкий звук</string>
   <string name="morphe_swipe_volume_steps_entry_default">По умолчанию</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Чувствительность жеста регулировки яркости</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Более высокие значения требуют большего свайпа для каждого шага яркости</string>
@@ -1069,8 +1077,14 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Выкл.</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Восстановить исходные названия</string>
-  <string name="morphe_restore_original_titles_summary">Показывает исходные названия и описания видео вместо автоматически переведённых</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Переведённые</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Оригинальная</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Перевод с DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Оригинал с DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Загрузка названия…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Отключить автоматическое обновление ленты</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Предотвращает автоматическое обновление лент после их устаревания</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Отключить возобновление мини-плеера</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Отключает мини-плеер \"Продолжить просмотр\", функцию YouTube Premium, которая появляется при запуске приложения</string>

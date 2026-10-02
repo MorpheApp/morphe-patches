@@ -90,6 +90,8 @@ Zmiany obejmują:
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Ukryj przycisk \"Najnowsze filmy\"</string>
   <string name="morphe_hide_latest_videos_button_summary">Ukrywa niebieski baner \"Najnowsze filmy\" pojawiający się na górze strony głównej</string>
+  <string name="morphe_hide_live_streams_title">Ukryj transmisje na żywo</string>
+  <string name="morphe_hide_live_streams_summary">Ukrywa trwające transmisje na żywo na stronie głównej i w wynikach wyszukiwania</string>
   <string name="morphe_hide_mix_playlists_title">Ukryj składanki</string>
   <string name="morphe_hide_movies_section_title">Ukryj sekcję filmów kinowych</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -496,6 +498,10 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_loop_video_range_clear">Wyczyść</string>
   <string name="morphe_loop_video_range_toast_on">Zapętlanie %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Nieprawidłowy zakres czasu</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Pokaż przycisk \"Obraz w obrazie\" na nakładce</string>
+  <string name="morphe_pip_button_flyout_title">Pokaż przycisk \"Obraz w obrazie\" w wysuwanym menu</string>
+  <string name="morphe_pip_button_flyout_name">Przełącz na \"Obraz w obrazie\"</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Pokaż przycisk Odtwórz wszystko</string>
   <string name="morphe_play_all_button_summary">"Dotknij, aby wygenerować playlistę wszystkich filmów z kanału. Przytrzymaj, aby cofnąć
@@ -637,6 +643,8 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_swipe_volume_distance_title">Czułość gestu głośności</string>
   <string name="morphe_swipe_volume_distance_summary">Wyższe wartości wymagają dłuższego przesunięcia palcem dla każdej zmiany głośności</string>
   <string name="morphe_swipe_volume_steps_title">Kroki głośności</string>
+  <string name="morphe_volume_boost_title">Wzmocnienie głośności</string>
+  <string name="morphe_volume_boost_summary">Przesunięcie w górę powyżej maksymalnej głośności wzmacnia ją, co może zniekształcać głośny dźwięk</string>
   <string name="morphe_swipe_volume_steps_entry_default">Domyślnie dla urządzenia</string>
   <string name="morphe_swipe_brightness_sensitivity_title">Czułość gestu jasności</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">Wyższe wartości wymagają dłuższego przesunięcia przy zmianie poziomu jasności</string>
@@ -1066,8 +1074,14 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_playback_in_feeds_entry_off">Wyłączone</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Przywróć oryginalne tytuły</string>
-  <string name="morphe_restore_original_titles_summary">Wyświetla oryginalne tytuły i opisy filmów zamiast tłumaczeń automatycznych</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">Przetłumaczone</string>
+  <string name="morphe_restore_original_titles_type_entry_original">Oryginał</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Przetłumaczone przez DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Oryginał z DeArrow</string>
   <string name="morphe_restore_original_titles_loading">Wczytywanie tytułu…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">Wyłącz automatyczne odświeżanie</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">Zapobiega automatycznemu odświeżaniu treści, gdy stają się nieaktualne</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Wyłącz wznawianie filmu w miniodtwarzaczu</string>
   <string name="morphe_miniplayer_disable_resuming_summary">Wyłącza miniodtwarzacz \"Kontynuuj oglądanie\", funkcję YouTube Premium wyświetlaną przy starcie aplikacji</string>

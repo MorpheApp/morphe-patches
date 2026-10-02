@@ -90,6 +90,8 @@ Second \"item\" text"</string>
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">إخفاء زر \'أحدث الفيديوهات\'</string>
   <string name="morphe_hide_latest_videos_button_summary">يخفي اللافتة الزرقاء \'أحدث مقاطع الفيديو\' التي تظهر في الجزء العلوي من خلاصة الصفحة الرئيسية</string>
+  <string name="morphe_hide_live_streams_title">إخفاء البث المباشر</string>
+  <string name="morphe_hide_live_streams_summary">يخفي الفيديوهات المباشرة الآن في خلاصة الصفحة الرئيسية ونتائج البحث</string>
   <string name="morphe_hide_mix_playlists_title">إخفاء قوائم تشغيل التشكيلة</string>
   <string name="morphe_hide_movies_section_title">إخفاء قسم الأفلام</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -499,6 +501,10 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_loop_video_range_clear">مسح</string>
   <string name="morphe_loop_video_range_toast_on">تكرار ‎%1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">الوقت المحدد غير صحيح</string>
+  <!-- interaction.pip.pipButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">عرض زر عنصر صورة داخل صورة</string>
+  <string name="morphe_pip_button_flyout_title">عرض زر صورة داخل صورة في القائمة المنبثقة</string>
+  <string name="morphe_pip_button_flyout_name">التبديل إلى صورة داخل صورة</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">عرض زر تشغيل الكل</string>
   <string name="morphe_play_all_button_summary">"انقر لإنشاء قائمة تشغيل لجميع فيديوهات القناة
@@ -641,6 +647,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_swipe_volume_distance_title">حساسية تمرير مستوى الصوت</string>
   <string name="morphe_swipe_volume_distance_summary">تتطلب القيم الأعلى مزيدًا من التمرير لكل درجة مستوى الصوت</string>
   <string name="morphe_swipe_volume_steps_title">درجات مستوى الصوت</string>
+  <string name="morphe_volume_boost_title">تضخيم الصوت</string>
+  <string name="morphe_volume_boost_summary">التمرير لأعلى بعد تجاوز الحد الأقصى للصوت يزيد مستوى الصوت، قد يتسبب بتشويه الصوت العالي</string>
   <string name="morphe_swipe_volume_steps_entry_default">إعداد الجهاز الافتراضي</string>
   <string name="morphe_swipe_brightness_sensitivity_title">حساسية تمرير مستوى السطوع</string>
   <string name="morphe_swipe_brightness_sensitivity_summary">القيم الأعلى تتطلب التمرير أكثر لكل مستوى سطوع</string>
@@ -1072,8 +1080,14 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_playback_in_feeds_entry_off">متوقف</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">استعادة العناوين الأصلية</string>
-  <string name="morphe_restore_original_titles_summary">يعرض عناوين الفيديو الأصلية وأوصافها بدلًا من تلك المترجمة تلقائيًا</string>
+  <string name="morphe_restore_original_titles_type_entry_translated">مترجمة</string>
+  <string name="morphe_restore_original_titles_type_entry_original">الأصلية</string>
+  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">تمت الترجمة باستخدام DeArrow</string>
+  <string name="morphe_restore_original_titles_type_entry_original_dearrow">العنوان الأصلي مع DeArrow</string>
   <string name="morphe_restore_original_titles_loading">جارٍ تحميل العنوان…</string>
+  <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
+  <string name="morphe_disable_auto_feed_refresh_title">تعطيل تحديث الخلاصة تلقائيًا</string>
+  <string name="morphe_disable_auto_feed_refresh_summary">يمنع الخلاصات من التحديث تلقائيًا بعد أن تصبح قديمة</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">تعطيل استئناف مشغل الفيديو المصغر</string>
   <string name="morphe_miniplayer_disable_resuming_summary">يعطّل مشغل \'متابعة المشاهدة\' المصغر، وهي ميزة YouTube Premium تظهر عند بدء تشغيل التطبيق</string>

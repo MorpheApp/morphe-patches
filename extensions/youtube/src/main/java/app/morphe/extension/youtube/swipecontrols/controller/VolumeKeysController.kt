@@ -53,7 +53,7 @@ class VolumeKeysController(
         if (event.action == KeyEvent.ACTION_DOWN) {
             controller.audio?.apply {
                 adjustVolumeBySteps(if (volumeUp) 1 else -1)
-                controller.overlay.onVolumeChanged(steppedVolume, steppedMaxVolume)
+                controller.overlay.onVolumeChanged(steppedVolume, steppedMaxVolume, boostStep)
             }
         }
 

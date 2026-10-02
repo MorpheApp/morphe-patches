@@ -542,6 +542,11 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
     <string name="morphe_loop_video_range_invalid_time">Invalid time range</string>
 
+    <!-- interaction.pip.pipButtonPatch -->
+    <string name="morphe_pip_button_overlay_title">Show Picture-in-picture overlay button</string>
+    <string name="morphe_pip_button_flyout_title">Show Picture-in-picture flyout button</string>
+    <string name="morphe_pip_button_flyout_name">Switch to Picture-in-picture</string>
+
     <!-- interaction.playall.playAllButtonPatch -->
     <string name="morphe_play_all_button_title">Show Play all button</string>
     <string name="morphe_play_all_button_summary">"Tap to generate a playlist of all videos from channel, tap and hold to undo
@@ -692,6 +697,8 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_swipe_volume_distance_title">Volume swipe sensitivity</string>
     <string name="morphe_swipe_volume_distance_summary">Higher values require more swiping per volume step</string>
     <string name="morphe_swipe_volume_steps_title">Volume steps</string>
+    <string name="morphe_volume_boost_title">Volume boost</string>
+    <string name="morphe_volume_boost_summary">Swiping up past maximum volume boosts it, which can distort loud audio</string>
     <string name="morphe_swipe_volume_steps_entry_default">Device default</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
@@ -1164,7 +1171,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
 
     <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
     <string name="morphe_restore_original_titles_title">Restore original titles</string>
-    <string name="morphe_restore_original_titles_summary">Shows the original video titles and descriptions instead of the auto-translated ones</string>
+    <string name="morphe_restore_original_titles_summary">Shows the original video titles, video descriptions and channel descriptions instead of the auto-translated ones</string>
     <string name="morphe_restore_original_titles_loading">Loading title…</string>
 
     <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
@@ -1569,8 +1576,8 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="series_tracker_view_count">"%1$s views"</string>
     <string name="series_tracker_view_count_one">"%1$s view"</string>
     <string name="series_tracker_completion_title">Mark episodes watched</string>
-    <string name="series_tracker_completion_summary">%1$d%% watched or %2$d seconds remaining</string>
-    <string name="series_tracker_completion_explanation">Automatically mark an episode watched after either threshold. The remaining-time rule applies to videos longer than one minute; set it to 0 to disable it. Changes apply to future progress updates. Manual watched/unwatched choices are kept.</string>
+    <string name="series_tracker_completion_summary">"At least %1$d%% watched with at most 90 seconds left, or %2$d seconds remaining"</string>
+    <string name="series_tracker_completion_explanation">"Automatically mark an episode watched after either threshold. The percentage rule also requires no more than 90 seconds left, to protect long episode endings. The remaining-time rule applies to videos longer than one minute; set it to 0 to disable it. Changes apply to future updates; manual choices are kept."</string>
     <string name="series_tracker_completion_percent">Percentage watched (1–100)</string>
     <string name="series_tracker_completion_seconds">Seconds remaining (0–300; 0 disables)</string>
     <string name="series_tracker_completion_save">Save</string>
@@ -1602,4 +1609,21 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <string name="morphe_player_icon_style_entry_sharp" translatable="false">Sharp</string>
     <string name="morphe_player_icon_style_entry_custom">Custom</string>
     <string name="morphe_shorts_icon_style_title">Shorts icon style</string>
+    <string name="series_tracker_backup_title">"Backup and restore"</string>
+    <string name="series_tracker_backup_summary">"Save your series library to a file or restore a backup."</string>
+    <string name="series_tracker_backup_explanation">"Save followed series, episode positions and watched choices. Recording and account permissions are not included."</string>
+    <string name="series_tracker_backup_save">"Save backup"</string>
+    <string name="series_tracker_backup_restore">"Restore backup"</string>
+    <string name="series_tracker_backup_preview">"Add %1$d series. Keep %2$d series already in your library. Existing video progress will be kept."</string>
+    <string name="series_tracker_backup_saved">"Series backup saved"</string>
+    <string name="series_tracker_backup_restored">"Restored %1$d series"</string>
+    <string name="series_tracker_error_backup_invalid">"This file is not a supported Series backup, or is too large. Your library was not changed."</string>
+    <string name="series_tracker_error_backup_write">"Could not save the backup. Try another location."</string>
+    <string name="series_tracker_removed">"Series removed"</string>
+    <string name="series_tracker_recovery_duplicate">"This episode now appears more than once. Choose which occurrence to continue from."</string>
+    <string name="series_tracker_recovery_missing">"Your saved episode is no longer available in this playlist. Your saved position is kept."</string>
+    <string name="series_tracker_recovery_continue">"Continue with episode %1$d · %2$s"</string>
+    <string name="series_tracker_recovery_choose">"You can also choose any episode below. Earlier episodes will stay unchanged."</string>
+    <string name="series_tracker_playback_changed">"This playlist changed. Open Series to choose where to continue."</string>
+    <string name="series_tracker_playback_boundary">"No more episodes in this direction"</string>
 </resources>

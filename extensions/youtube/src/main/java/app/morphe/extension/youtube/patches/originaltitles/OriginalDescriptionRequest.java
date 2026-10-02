@@ -22,7 +22,6 @@ import java.util.concurrent.Future;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 
 /**
@@ -30,13 +29,6 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
  * which always returns the description as set by the uploader.
  */
 final class OriginalDescriptionRequest {
-
-    private static final Route.CompiledRoute GET_DESCRIPTION = new Route(
-            Route.Method.POST,
-            "player" +
-                    "?prettyPrint=false" +
-                    "&fields=videoDetails.shortDescription"
-    ).compile();
 
     /**
      * Only the descriptions of opened videos are fetched. Requests that fail
@@ -81,7 +73,7 @@ final class OriginalDescriptionRequest {
 
         try {
             byte[] requestBody = ChannelIdRoutes.createBody(videoId);
-            HttpURLConnection connection = ChannelIdRoutes.getConnection(GET_DESCRIPTION);
+            HttpURLConnection connection = ChannelIdRoutes.getConnection(ChannelIdRoutes.GET_DESCRIPTION);
             connection.setFixedLengthStreamingMode(requestBody.length);
             try (OutputStream output = connection.getOutputStream()) {
                 output.write(requestBody);
