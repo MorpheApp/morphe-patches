@@ -9,11 +9,13 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
+import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringReference
 
 private const val USER_AGENT_STRING_BUILDER_APPEND_METHOD_REFERENCE =
     "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
@@ -23,17 +25,15 @@ fun userAgentClientSpoofPatch(originalPackageName: String) = bytecodePatch(
 ) {
     execute {
         val getPackageNameCall = methodCall(
-            definingClass = "Landroid/content/Context;",
-            name = "getPackageName",
-            parameters = emptyList(),
-            returnType = "Ljava/lang/String;"
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Landroid/content/Context;->getPackageName()Ljava/lang/String;"
         )
 
         Fingerprint(
             filters = listOf(getPackageNameCall),
             custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/extension") }
         ).matchAll().forEach { match ->
-            match.method.apply {
+            match.originalMethod.apply {
                 val resourceOrGmsStringInstructionIndex = indexOfFirstInstruction {
                     val reference = getReference<StringReference>()
                     opcode == Opcode.CONST_STRING &&
@@ -61,9 +61,13 @@ fun userAgentClientSpoofPatch(originalPackageName: String) = bytecodePatch(
                         return@forEach
                     }
 
-                    replaceInstruction(
+                    match.method.replaceInstruction(
                         index + 1,
-                        "const-string v$targetRegister, \"$originalPackageName\""
+                        BuilderInstruction21c(
+                            Opcode.CONST_STRING,
+                            targetRegister,
+                            ImmutableStringReference(originalPackageName),
+                        )
                     )
                 }
             }

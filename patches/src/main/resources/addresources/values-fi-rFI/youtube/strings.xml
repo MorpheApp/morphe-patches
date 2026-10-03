@@ -159,6 +159,8 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_sync_button_title">Piilota \"Synkronoi videoon\" -painike</string>
   <string name="morphe_hide_timed_reactions_title">Piilota ajoitetut reaktiot</string>
   <string name="morphe_hide_timed_reactions_summary">Piilottaa ominaisuuden, jonka avulla käyttäjät voivat reagoida emoji-hymiöillä kommenttiosiossa ja suoratoistossa</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Piilota kanavan @-tunniste Sinä-välilehdellä</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Piilottaa kanavan @-tunnisteen tilin nimen alla Sinä-välilehdellä</string>
   <string name="morphe_hide_video_title_title">Piilota videon otsikko</string>
   <string name="morphe_hide_video_title_summary">Piilottaa videotunnisteen koko näytön tilassa</string>
   <string name="morphe_sanitize_video_subtitle_title">Puhdista videon tekstitys</string>
@@ -1075,10 +1077,7 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <string name="morphe_playback_in_feeds_entry_off">Pois päältä</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Palauta alkuperäiset otsikot</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Käännetty</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Alkuperäinen</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Käännetty DeArrowilla</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Alkuperäinen DeArrowilla</string>
+  <string name="morphe_restore_original_titles_summary">Näyttää alkuperäiset videoiden otsikot, videoiden kuvaukset ja kanavien kuvaukset automaattisesti käännettyjen sijaan</string>
   <string name="morphe_restore_original_titles_loading">Ladataan otsikkoa…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Poista syötteen automaattinen päivitys käytöstä</string>

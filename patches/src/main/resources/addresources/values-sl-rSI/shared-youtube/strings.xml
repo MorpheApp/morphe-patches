@@ -150,6 +150,11 @@ Pritisnite \"nadaljujte\", da se prijavite"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Sili izvorno jezikovno sledi</string>
   <string name="morphe_force_original_audio_summary">Vedno predvaja prvotno zvočno pot videoposnetka namesto sinhronizirane različice</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Preskoči tišino</string>
+  <string name="morphe_skip_silence_summary">Samodejno preskakuje tihe premore v zvočnem posnetku videa</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Najmanjše trajanje premora</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Skrajšajo se samo premori, ki trajajo vsaj toliko. Začne veljati ob začetku naslednjega videa</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Omrežni proxy</string>
   <string name="morphe_proxy_screen_summary">Usmerjanje podpršanih omrežnih zahtev prek proxyja</string>

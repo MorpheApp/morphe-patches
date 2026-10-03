@@ -22,9 +22,9 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -136,7 +136,7 @@ private object PlayerTypeEnumFingerprint : Fingerprint(
 )
 
 internal fun BytecodePatchContext.getPlayerTypeFingerprint() = object : Fingerprint(
-    definingClass = "/YouTubePlayerOverlaysLayout;",
+    definingClass = "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(

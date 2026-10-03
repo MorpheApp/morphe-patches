@@ -82,8 +82,7 @@ internal object PlayerDragGestureInitFingerprint : Fingerprint(
 )
 
 internal object YouTubePlayerOverlaysLayoutConstructorFingerprint : Fingerprint(
-    definingClass = "/YouTubePlayerOverlaysLayout;",
-    name = "<init>",
+    definingClass = "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),

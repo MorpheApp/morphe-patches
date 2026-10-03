@@ -159,6 +159,8 @@ Schimbari incluse:
   <string name="morphe_hide_sync_button_title">Ascunde butonul „Sincronizare cu video”</string>
   <string name="morphe_hide_timed_reactions_title">Ascunde reacţiile cronologie </string>
   <string name="morphe_hide_timed_reactions_summary">Ascunde funcția care permite utilizatorilor să reacționeze cu emoji-uri în secțiunea de comentarii și chat live</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Ascunde handle-ul canalului în fila Tu</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Ascunde handle-ul canalului sub numele contului în fila Tu</string>
   <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>
   <string name="morphe_hide_video_title_summary">Ascunde titlul videoclipului în modul ecran complet</string>
   <string name="morphe_sanitize_video_subtitle_title">Curăță subtitrările video</string>
@@ -1075,10 +1077,7 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <string name="morphe_playback_in_feeds_entry_off">Oprit</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Restaurați titlurile originale</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Traduse</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Originalul</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Tradus cu DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original cu DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Afișează titlurile originale ale videoclipurilor, descrierile video și descrierile canalelor în locul celor traduse automat</string>
   <string name="morphe_restore_original_titles_loading">Se încarcă titlul…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Dezactivează reîmprospătarea automată a fluxurilor</string>

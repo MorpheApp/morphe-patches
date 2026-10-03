@@ -159,6 +159,8 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_sync_button_title">„Szinkronizálás videóval” gomb elrejtése</string>
   <string name="morphe_hide_timed_reactions_title">Időzített reakciók elrejtése</string>
   <string name="morphe_hide_timed_reactions_summary">Kikapcsolja az emojikkal való reagálást a kommenteknél és az élő chaten</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Csatorna azonosító elrejtése a Neked lapon</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Elrejti a csatorna azonosítóját a fióknév alatt a Neked lapon</string>
   <string name="morphe_hide_video_title_title">Videócímek elrejtése</string>
   <string name="morphe_hide_video_title_summary">Elrejti a videó címét teljes képernyős módban</string>
   <string name="morphe_sanitize_video_subtitle_title">Videofeliratok ellenőrzése</string>
@@ -1075,10 +1077,7 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_playback_in_feeds_entry_off">Ki</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Eredeti címek visszaállítása</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Fordított</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Eredeti</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow-val fordított</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow-val eredeti</string>
+  <string name="morphe_restore_original_titles_summary">Az eredeti videócímek, videóleírások és csatornaleírások megjelenítése az automatikusan lefordítottak helyett</string>
   <string name="morphe_restore_original_titles_loading">Cím betöltése…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Automatikus hírcsatorna-frissítés letiltása</string>

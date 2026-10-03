@@ -13,6 +13,7 @@ import app.morphe.extension.shared.patches.CustomBrandingPatch;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.BrandingTheme;
 import app.morphe.extension.shared.patches.CustomBrandingPatch.NotificationIconTheme;
 import app.morphe.extension.shared.patches.PoTokenProviderPatch.PoTokenProviderAvailability;
+import app.morphe.extension.shared.patches.SkipSilencePatch.MinimumPause;
 import app.morphe.extension.shared.patches.SplashAnimationPatch.SplashScreenAnimationStyle;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
@@ -47,6 +48,8 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final BooleanSetting DISABLE_DRC_AUDIO = new BooleanSetting("morphe_disable_drc_audio", FALSE, true);
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
+    public static final BooleanSetting SKIP_SILENCE = new BooleanSetting("morphe_skip_silence", FALSE, true);
+    public static final EnumSetting<MinimumPause> SKIP_SILENCE_MINIMUM_PAUSE = new EnumSetting<>("morphe_skip_silence_minimum_pause", MinimumPause.MS_700, true, parent(SKIP_SILENCE));
 
     // Ads
     public static final BooleanSetting HIDE_FULLSCREEN_ADS = new BooleanSetting("morphe_hide_fullscreen_ads", TRUE);

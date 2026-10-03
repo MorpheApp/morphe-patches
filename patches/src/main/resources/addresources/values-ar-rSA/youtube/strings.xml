@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">إخفاء زر \'مزامنة مع الفيديو\'</string>
   <string name="morphe_hide_timed_reactions_title">إخفاء ردود الفعل المؤقتة</string>
   <string name="morphe_hide_timed_reactions_summary">يخفي الميزة التي تسمح للمستخدمين بالتفاعل باستخدام الرموز التعبيرية في قسم التعليقات والمحادثة المباشرة</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">إخفاء معرف القناة في تبويب أنت</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">يخفي معرف القناة تحت اسم الحساب في تبويب أنت</string>
   <string name="morphe_hide_video_title_title">إخفاء عنوان الفيديو</string>
   <string name="morphe_hide_video_title_summary">يخفي عنوان الفيديو في وضع ملء الشاشة</string>
   <string name="morphe_sanitize_video_subtitle_title">تنظيف النص الفرعي للفيديو</string>
@@ -845,7 +847,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء قائمة المشاهدة في الوضع الافتراضي</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">إخفاء عرض التشغيل التلقائي</string>
-  <string name="morphe_hide_autoplay_preview_summary">يخفي عرض مشاهدة الفيديو التالي بـملء الشاشة قبل بدء التشغيل التلقائي</string>
+  <string name="morphe_hide_autoplay_preview_summary">يخفي عرض مشاهدة الفيديو التالي بملء الشاشة قبل بدء التشغيل التلقائي</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_overlay_buttons_screen_title">أزرار الواجهة</string>
   <string name="morphe_overlay_buttons_screen_summary">اختر الأزرار التي تظهر فوق مشغل الفيديو</string>
@@ -981,7 +983,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_fullscreen_video_scale_button_title">عرض زر مقياس الفيديو</string>
   <string name="morphe_fullscreen_video_scale_button_summary">انقر للتنقل بين الوضع الافتراضي، التمديد، والتكبير</string>
   <string name="morphe_fullscreen_video_scale_button_fullscreen_only_title">العرض في وضع ملء الشاشة فقط</string>
-  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">إخفاء زر ضبط حجم الفيديو في مشغل الوضع الرأسي</string>
+  <string name="morphe_fullscreen_video_scale_button_fullscreen_only_summary">إخفاء زر ضبط مقياس الفيديو في مشغل الوضع الرأسي</string>
   <!-- layout.player.buttons.muteVideoButtonPatch -->
   <string name="morphe_mute_video_button_title">عرض زر كتم الصوت</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -1080,10 +1082,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_playback_in_feeds_entry_off">متوقف</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">استعادة العناوين الأصلية</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">مترجمة</string>
-  <string name="morphe_restore_original_titles_type_entry_original">الأصلية</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">تمت الترجمة باستخدام DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">العنوان الأصلي مع DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">يعرض عناوين الفيديو الأصلية، أوصاف الفيديو وأوصاف القناة بدلًا من العناوين والأوصاف المترجمة تلقائيًا</string>
   <string name="morphe_restore_original_titles_loading">جارٍ تحميل العنوان…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">تعطيل تحديث الخلاصة تلقائيًا</string>

@@ -159,6 +159,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_sync_button_title">Skjul knappen \'Synkroniser til video\'</string>
   <string name="morphe_hide_timed_reactions_title">Skjul tidsreaktioner</string>
   <string name="morphe_hide_timed_reactions_summary">Skjuler funktionen, der giver brugerne mulighed for at reagere med emojis i kommentarsektionen og livechatten</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Skjul kanalens handle i You-fanen</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Skjuler kanalens handle under kontonavnet i You-fanen</string>
   <string name="morphe_hide_video_title_title">Skjul videotitel</string>
   <string name="morphe_hide_video_title_summary">Skjuler videotitlen i fuldskærmstilstand</string>
   <string name="morphe_sanitize_video_subtitle_title">Rens video undertekst</string>
@@ -1073,10 +1075,7 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_playback_in_feeds_entry_off">Slukket</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Gendan originale titler</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Oversat</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Oprindelig</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Oversat med DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original med DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Viser de originale videotitler, videobeskrivelser og kanalbeskrivelser i stedet for de automatisk oversatte</string>
   <string name="morphe_restore_original_titles_loading">Indlæser titel…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedopdatering</string>

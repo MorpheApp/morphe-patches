@@ -51,7 +51,7 @@ public class SponsorBlockSettings {
                     // Older Morphe SB exports lack an opacity value.
                     if (categoryObject.has("color") && categoryObject.has("opacity")) {
                         category.setColorWithOpacity(categoryObject.getString("color"));
-                        category.setOpacity((float) categoryObject.getDouble("opacity"));
+                        category.setOpacity(categoryObject.getDouble("opacity"));
                     }
                 }
             }
@@ -68,7 +68,7 @@ public class SponsorBlockSettings {
                 final int desktopValue = categorySelectionObject.getInt("option");
                 CategoryBehaviour behaviour = CategoryBehaviour.byDesktopKeyValue(desktopValue);
                 if (behaviour == null) {
-                    Utils.showToastLong(categoryKey + " unknown behavior key: " + categoryKey);
+                    Utils.showToastLong(categoryKey + " unknown behavior key: " + desktopValue);
                 } else if (category == SegmentCategory.HIGHLIGHT && behaviour == CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE) {
                     Utils.showToastLong("Skip-once behavior not allowed for " + category.keyValue);
                     category.setBehaviour(CategoryBehaviour.SKIP_AUTOMATICALLY); // Use the closest match.
@@ -174,11 +174,10 @@ public class SponsorBlockSettings {
     }
 
     /**
-     * Export the categories using flatten JSON (no embedded dictionaries or arrays).
+     * Warns that the export contains the private user ID, unless the user dismissed the warning.
      */
     private static void showExportWarningIfNeeded(@Nullable Activity activity) {
         Utils.verifyOnMainThread();
-        initialize();
 
         // If user has a SponsorBlock user ID then show a warning.
         if (activity != null && SponsorBlockHelpers.userHasSBPrivateID()
@@ -199,16 +198,5 @@ public class SponsorBlockSettings {
 
             Utils.showDialog(activity, dialogPair.first, false, null);
         }
-    }
-
-    private static boolean initialized;
-
-    public static void initialize() {
-        if (initialized) {
-            return;
-        }
-        initialized = true;
-
-        SegmentCategory.updateEnabledCategories();
     }
 }

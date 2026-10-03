@@ -19,9 +19,9 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import app.morphe.patches.shared.FormatStreamModelToStringFingerprint
 import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.shared.VideoStreamingDataToStringFingerprint
@@ -54,7 +54,7 @@ internal object AllowSwipingUpGestureFingerprint : Fingerprint(
 )
 
 internal object DisableFastForwardGestureFingerprint : Fingerprint(
-    definingClass = "/NextGenWatchLayout;",
+    definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),

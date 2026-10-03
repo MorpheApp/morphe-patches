@@ -150,6 +150,11 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
   <string name="morphe_force_original_audio_summary">ডাব করা সংস্করণের পরিবর্তে ভিডিওর মূল অডিও ট্র্যাক সবসময় প্লে করে</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">নীরবতা এড়িয়ে যান</string>
+  <string name="morphe_skip_silence_summary">ভিডিও অডিওর নীরব বিরতিগুলি স্বয়ংক্রিয়ভাবে এড়িয়ে যাওয়া হয়</string>
+  <string name="morphe_skip_silence_minimum_pause_title">সর্বনিম্ন বিরতির দৈর্ঘ্য</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">কেবলমাত্র এই দৈর্ঘ্যের বা তার বেশি দীর্ঘ বিরতিগুলো সংক্ষিপ্ত করা হয়। পরবর্তী ভিডিও শুরু হলে এটি কার্যকর হয়</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">নেটওয়ার্ক প্রক্সি</string>
   <string name="morphe_proxy_screen_summary">প্রক্সির মাধ্যমে সমর্থিত নেটওয়ার্ক রিকোয়েস্ট পাঠান</string>

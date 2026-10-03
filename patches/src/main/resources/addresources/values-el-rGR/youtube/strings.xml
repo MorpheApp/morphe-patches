@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">Απόκρυψη κουμπιού \"Συγχρονισμός με βίντεο\"</string>
   <string name="morphe_hide_timed_reactions_title">Συγχρονισμένες αντιδράσεις</string>
   <string name="morphe_hide_timed_reactions_summary">Απόκρυψη της λειτουργίας που επιτρέπει στους χρήστες να αντιδρούν με emoji στην ενότητα σχολίων και στη ζωντανή συνομιλία</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Απόκρυψη της λαβής του καναλιού στην καρτέλα Εσείς</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Αποκρύπτει τη λαβή του καναλιού κάτω από το όνομα του λογαριασμού στην καρτέλα Εσείς</string>
   <string name="morphe_hide_video_title_title">Τίτλος του βίντεο</string>
   <string name="morphe_hide_video_title_summary">Απόκρυψη του τίτλου του βίντεο στην οθόνη πλήρους προβολής</string>
   <string name="morphe_sanitize_video_subtitle_title">Καθαρισμός υπότιτλων βίντεο</string>
@@ -1060,10 +1062,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Απενεργό</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Επαναφορά αρχικών τίτλων</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Μεταφρασμένο</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Αρχικό</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Μεταφρασμένο με το DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Πρωτότυπο με το DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Εμφανίζει τους πρωτότυπους τίτλους βίντεο, τις περιγραφές βίντεο και τις περιγραφές καναλιών αντί των αυτόματα μεταφρασμένων</string>
   <string name="morphe_restore_original_titles_loading">Φόρτωση τίτλου…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Απενεργοποίηση αυτόματης ανανέωσης ροής</string>

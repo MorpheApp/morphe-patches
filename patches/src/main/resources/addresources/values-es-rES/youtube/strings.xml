@@ -159,6 +159,8 @@ Los cambios incluyen:
   <string name="morphe_hide_sync_button_title">Ocultar botón \'Sincronizar con vídeo\'</string>
   <string name="morphe_hide_timed_reactions_title">Ocultar reacciones sincronizadas</string>
   <string name="morphe_hide_timed_reactions_summary">Oculta la función que permite a los usuarios reaccionar con emojis en la sección de comentarios y el chat en directo</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Ocultar identificador del canal en la pestaña Tú</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Oculta el identificador del canal debajo del nombre de la cuenta en la pestaña Tú</string>
   <string name="morphe_hide_video_title_title">Ocultar título de vídeo</string>
   <string name="morphe_hide_video_title_summary">Oculta el título del vídeo en el modo de pantalla completa</string>
   <string name="morphe_sanitize_video_subtitle_title">Limpiar subtítulos de vídeo</string>
@@ -1075,10 +1077,7 @@ Limitación: si la opción 'Restaurar antigua barra de acciones de vídeo' está
   <string name="morphe_playback_in_feeds_entry_off">Desactivada</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Restaurar títulos originales</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Traducido</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Original</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Traducido con DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original con DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Muestra los títulos y las descripciones originales de los vídeos y las descripciones de los canales en lugar de las versiones traducidas automáticamente</string>
   <string name="morphe_restore_original_titles_loading">Cargando título…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Desactivar actualización automática del feed</string>

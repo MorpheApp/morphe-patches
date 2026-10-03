@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Drawn for Morphe in the style of Ionicons (https://github.com/ionic-team/ionicons/tree/d1e2c48641fd5f4910ee42a144dc1c84b1a9a4ee).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:fillType="evenOdd"
+        android:pathData="M104,96 L408,96 A72,72 0 0 1 480,168 L480,344 A72,72 0 0 1 408,416 L104,416 A72,72 0 0 1 32,344 L32,168 A72,72 0 0 1 104,96 Z M227.71,203.91 A68,68 0 1 0 227.71,308.09 A16,16 0 0 0 207.14,283.58 A36,36 0 1 1 207.14,228.42 A16,16 0 0 0 227.71,203.91 Z M371.71,203.91 A68,68 0 1 0 371.71,308.09 A16,16 0 0 0 351.14,283.58 A36,36 0 1 1 351.14,228.42 A16,16 0 0 0 371.71,203.91 Z" />
+</vector>

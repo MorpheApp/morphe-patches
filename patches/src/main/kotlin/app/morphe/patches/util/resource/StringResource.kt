@@ -35,6 +35,8 @@ class StringResource(
 }
 
 object StringResourceSanitizer {
+    private val logger = Logger.getLogger(StringResourceSanitizer::class.java.name)
+
     // Matches unescaped double quotes.
     private val UNESCAPED_DOUBLE_QUOTE = Regex("(?<!\\\\)\"")
 
@@ -54,7 +56,6 @@ object StringResourceSanitizer {
         filePath: String? = null,
         throwException: Boolean = false
     ): String {
-        val logger = Logger.getLogger(StringResourceSanitizer::class.java.name)
         var sanitized = value
 
         // Could check for other invalid strings, but for now just check quotes.
@@ -74,7 +75,8 @@ object StringResourceSanitizer {
                 logger.warning(message)
             }
 
-            if (UNESCAPED_QUOTE.containsMatchIn(value)) {
+            // Most strings have no quotes, and checking for them first is much faster than the regex.
+            if ((value.contains('\'') || value.contains('"')) && UNESCAPED_QUOTE.containsMatchIn(value)) {
                 val message = "$filePath String $key contains unescaped quotes: $value"
                 if (throwException) throw IllegalArgumentException(message)
                 logger.warning(message)

@@ -46,16 +46,15 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 }
 
-private fun gmsCoreSupportResourcePatch() =
-    gmsCoreSupportResourcePatch(
-        fromPackageName = YOUTUBE_PACKAGE_NAME,
-        toPackageNameDefault = MORPHE_YOUTUBE_PACKAGE_NAME,
-        spoofedPackageSignature = "24bb24c05e47e0aefa68a58a766179d9b613a600",
-        screen = PreferenceScreen.MISC,
-        block = {
-            dependsOn(
-                settingsPatch,
-                accountCredentialsInvalidTextPatch
-            )
-        }
-    )
+private fun gmsCoreSupportResourcePatch() = gmsCoreSupportResourcePatch(
+    fromPackageName = YOUTUBE_PACKAGE_NAME,
+    toPackageNameDefault = MORPHE_YOUTUBE_PACKAGE_NAME,
+    spoofedPackageSignature = "24bb24c05e47e0aefa68a58a766179d9b613a600",
+    screen = PreferenceScreen.MISC,
+    block = {
+        dependsOn(
+            settingsPatch,
+            accountCredentialsInvalidTextPatch
+        )
+    }
+)

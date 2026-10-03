@@ -14,7 +14,7 @@ import app.morphe.patcher.Fingerprint
  * Draws segment markers on the compact/mini player seekbar.
  */
 internal object MusicTimeBarDrawFingerprint : Fingerprint(
-    definingClass = "/MusicPlaybackControlsTimeBar;",
+    definingClass = "Lcom/google/android/apps/youtube/music/watchpage/MusicPlaybackControlsTimeBar;",
     name = "draw",
     returnType = "V"
 )
@@ -24,7 +24,7 @@ internal object MusicTimeBarDrawFingerprint : Fingerprint(
  * Resolves the Rect field used for seekbar bounds.
  */
 internal object MusicTimeBarOnMeasureFingerprint : Fingerprint(
-    definingClass = "/MusicPlaybackControlsTimeBar;",
+    definingClass = "Lcom/google/android/apps/youtube/music/watchpage/MusicPlaybackControlsTimeBar;",
     name = "onMeasure",
     returnType = "V"
 )

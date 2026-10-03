@@ -51,6 +51,8 @@ import app.morphe.extension.shared.ui.ViewAnimations;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.videoplayer.PlayPauseIcons;
+import app.morphe.extension.youtube.videoplayer.PlayerIcons;
 import kotlin.Unit;
 
 /**
@@ -250,7 +252,8 @@ public final class MinimalMiniplayerPatch {
             if (close != null) {
                 close.setOnClickListener(v -> closeBar());
                 holdTouch(close);
-                setIcon(close, "yt_outline_experimental_x_vd_theme_24", "yt_outline_x_black_24");
+                setIcon(close, "morphe_player_close",
+                        "yt_outline_experimental_x_vd_theme_24", "yt_outline_x_black_24");
                 styleButton(close);
             }
 
@@ -1049,11 +1052,11 @@ public final class MinimalMiniplayerPatch {
         if (morph && startIconMorph(playPause)) return;
 
         if (playing) {
-            setIcon(playPause, "yt_fill_experimental_pause_vd_theme_24",
-                    "yt_fill_pause_vd_theme_24");
+            setIcon(playPause, PlayPauseIcons.PAUSE,
+                    "yt_fill_experimental_pause_vd_theme_24", "yt_fill_pause_vd_theme_24");
         } else {
-            setIcon(playPause, "yt_fill_experimental_play_vd_theme_24",
-                    "yt_fill_play_arrow_vd_theme_24");
+            setIcon(playPause, PlayPauseIcons.PLAY,
+                    "yt_fill_experimental_play_vd_theme_24", "yt_fill_play_arrow_vd_theme_24");
         }
     }
 
@@ -1106,8 +1109,15 @@ public final class MinimalMiniplayerPatch {
 
         if (!(drawable instanceof AnimatedVectorDrawable morph)) return false;
 
-        view.setImageDrawable(morph);
-        morph.start();
+        // A player icon style swaps its own icons instead, and starts that on its first draw.
+        if (playing) {
+            PlayPauseIcons.setPlayToPause(view, morph);
+        } else {
+            PlayPauseIcons.setPauseToPlay(view, morph);
+        }
+        if (view.getDrawable() == morph) {
+            morph.start();
+        }
 
         return true;
     }
@@ -1131,9 +1141,13 @@ public final class MinimalMiniplayerPatch {
 
     /**
      * The bar layout still points at the thin icon set, so the bold one is used when the app has it.
+     * A player icon style other than the app's own replaces both.
      */
-    private static void setIcon(ImageView view, String boldName, String legacyName) {
-        Drawable drawable = getDrawable(view, boldName, legacyName);
+    private static void setIcon(ImageView view, String styleBaseName, String boldName, String legacyName) {
+        Drawable drawable = PlayerIcons.styledDrawable(styleBaseName);
+        if (drawable == null) {
+            drawable = getDrawable(view, boldName, legacyName);
+        }
         if (drawable != null) {
             view.setImageDrawable(drawable);
         }

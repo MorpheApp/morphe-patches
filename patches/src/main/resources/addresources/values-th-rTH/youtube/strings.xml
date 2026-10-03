@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">ซ่อนปุ่ม \'ซิงค์กับวิดีโอ\'</string>
   <string name="morphe_hide_timed_reactions_title">ซ่อนปฏิกิริยาตามเวลา</string>
   <string name="morphe_hide_timed_reactions_summary">ซ่อนคุณสมบัติที่ช่วยให้ผู้ใช้แสดงความรู้สึกด้วยอิโมจิในส่วนความคิดเห็นและแชทสด</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">ซ่อนแฮนเดิลช่องในแท็บคุณ</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">ซ่อนแฮนเดิลช่องใต้ชื่อบัญชีในแท็บคุณ</string>
   <string name="morphe_hide_video_title_title">ซ่อนชื่อวิดีโอ</string>
   <string name="morphe_hide_video_title_summary">ซ่อนชื่อวิดีโอในโหมดเต็มหน้าจอ</string>
   <string name="morphe_sanitize_video_subtitle_title">ล้างข้อความคำบรรยายวิดีโอ</string>
@@ -1075,10 +1077,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">ปิด</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">กู้คืนชื่อวิดีโอต้นฉบับ</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">แปลแล้ว</string>
-  <string name="morphe_restore_original_titles_type_entry_original">ต้นฉบับ</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">แปลด้วย DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">ต้นฉบับพร้อม DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">แสดงชื่อวิดีโอ คำอธิบายวิดีโอ และคำอธิบายช่องต้นฉบับแทนรายการที่แปลอัตโนมัติ</string>
   <string name="morphe_restore_original_titles_loading">กำลังโหลดชื่อวิดีโอ…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">ปิดการรีเฟรชฟีดอัตโนมัติ</string>

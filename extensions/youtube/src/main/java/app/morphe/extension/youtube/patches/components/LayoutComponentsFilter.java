@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
@@ -46,6 +48,9 @@ import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
+    public static final int CONTAINER_ID = ResourceUtils.getIdentifier(
+            ResourceType.ID, "time_bar_chapter_title_container");
+
     private static final ByteArrayFilterGroup mixPlaylistUrlBuffer = new ByteArrayFilterGroup(
             null,
             "?list=RD",
@@ -95,6 +100,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup videoRecommendationLabels;
+    private final StringFilterGroup youTabChannelHandle;
 
     public enum ExpandableCardStyle {
         SHOW_ALL,
@@ -434,6 +440,12 @@ public final class LayoutComponentsFilter extends Filter {
                 "endorsement_header_footer.e"
         );
 
+        // The @handle under the account name in the header of the You tab.
+        youTabChannelHandle = new StringFilterGroup(
+                Settings.HIDE_YOU_TAB_CHANNEL_HANDLE,
+                "content_metadata.e"
+        );
+
         final var webLinkPanel = new StringFilterGroup(
                 Settings.HIDE_WEB_SEARCH_RESULTS,
                 "web_link_panel",
@@ -477,7 +489,8 @@ public final class LayoutComponentsFilter extends Filter {
                 videoLabels,
                 videoTitle,
                 videoRecommendationLabels,
-                webLinkPanel
+                webLinkPanel,
+                youTabChannelHandle
         );
     }
 
@@ -632,6 +645,12 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == subscribedChannelsBarName) {
             return Utils.endsWith(path, "|TextType|");
+        }
+
+        if (matchedGroup == youTabChannelHandle) {
+            // The identifier is also used by the metadata of videos, so only the header
+            // of the You tab is filtered, not the one of a channel page.
+            return Utils.startsWith(path, "page_header.e") && NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY;
         }
 
         if (matchedGroup == singleItemInformationPanel) {
@@ -1296,33 +1315,37 @@ public final class LayoutComponentsFilter extends Filter {
     }
 
     private static void hideAccountItem(View textView, CharSequence menuTitleCharSequence, int[] depths) {
-        if (!Settings.HIDE_ACCOUNT_MENU.get() || menuTitleCharSequence == null) return;
-        if (accountMenuFilterStrings.isEmpty()) return;
+        try {
+            if (!Settings.HIDE_ACCOUNT_MENU.get() || menuTitleCharSequence == null) return;
+            if (accountMenuFilterStrings.isEmpty()) return;
 
-        String menuTitleString = menuTitleCharSequence.toString();
+            String menuTitleString = menuTitleCharSequence.toString();
 
-        boolean matches = false;
-        String menuTitleLower = menuTitleString.toLowerCase();
-        for (String filter : accountMenuFilterStrings) {
-            if (menuTitleLower.contains(filter.toLowerCase())) {
-                matches = true;
-                break;
-            }
-        }
-        if (!matches) return;
-
-        // Not all versions have the same depth. So perform a scan
-        // along all available depths, to find the right one.
-        for (int depth : depths) {
-            ViewParent parent = Utils.getParentView(textView, depth);
-            if (parent instanceof View current) {
-                Utils.hideViewByLayoutParams(current);
-                current.setVisibility(View.GONE);
-                if (current.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
-                    marginParams.setMargins(0, 0, 0, 0);
-                    current.setLayoutParams(marginParams);
+            boolean matches = false;
+            String menuTitleLower = menuTitleString.toLowerCase();
+            for (String filter : accountMenuFilterStrings) {
+                if (menuTitleLower.contains(filter.toLowerCase())) {
+                    matches = true;
+                    break;
                 }
             }
+            if (!matches) return;
+
+            // Not all versions have the same depth. So perform a scan
+            // along all available depths, to find the right one.
+            for (int depth : depths) {
+                ViewParent parent = Utils.getParentView(textView, depth);
+                if (parent instanceof View current) {
+                    Utils.hideViewByLayoutParams(current);
+                    current.setVisibility(View.GONE);
+                    if (current.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
+                        marginParams.setMargins(0, 0, 0, 0);
+                        current.setLayoutParams(marginParams);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideAccountItem failure", ex);
         }
     }
 
@@ -1334,6 +1357,56 @@ public final class LayoutComponentsFilter extends Filter {
             Utils.hideViewByLayoutParams(view);
             view.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Some app targets show the chapter title next to the timestamp as its own view, instead
+     * of inside the entry point button hidden by {@link #hideChaptersTimelineButton(View)}.
+     */
+    public static void hideChapterTitle(View view) {
+        if (view == null || !Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+            return;
+        }
+
+        try {
+            Utils.hideViewByLayoutParams(view);
+            view.setVisibility(View.GONE);
+
+            // The chip around the title is a separate parent view.
+            if (CONTAINER_ID != 0 && view.getParent() instanceof View parent && parent.getId() == CONTAINER_ID) {
+                Utils.hideViewByLayoutParams(parent);
+                parent.setVisibility(View.GONE);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideChapterTitle failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called with the measure spec of a row of an app bar menu. The 'Help &amp; feedback' row is
+     * measured at no height, so it takes no space in the menu.
+     */
+    public static int hideHelpFeedbackMenuRow(View row, int heightMeasureSpec) {
+        if (!Settings.HIDE_HELP_FEEDBACK_MENU.get()) {
+            return heightMeasureSpec;
+        }
+
+        try {
+            View title = row.findViewById(ResourceUtils.getIdentifier(ResourceType.ID, "title"));
+            int helpStringId = ResourceUtils.getIdentifier(ResourceType.STRING, "menu_help");
+            if (title instanceof TextView textView && helpStringId != 0
+                    && row.getContext().getString(helpStringId).contentEquals(textView.getText())) {
+                return View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.EXACTLY);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideHelpFeedbackMenuRow failure", ex);
+        }
+
+        return heightMeasureSpec;
     }
 
     /**

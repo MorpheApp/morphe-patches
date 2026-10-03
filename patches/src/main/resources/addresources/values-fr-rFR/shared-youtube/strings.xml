@@ -150,6 +150,11 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forcer la langue audio d\'origine</string>
   <string name="morphe_force_original_audio_summary">Lit toujours la piste audio originale de la vidéo au lieu d\'une version doublée</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Passer les silences</string>
+  <string name="morphe_skip_silence_summary">Passe automatiquement les pauses silencieuses dans l\'audio des vidéos</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Durée minimale de pause</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Seules les pauses d\'au moins cette durée sont raccourcies. Prend effet au démarrage de la vidéo suivante</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy réseau</string>
   <string name="morphe_proxy_screen_summary">Acheminer les requêtes réseau prises en charge via un proxy</string>

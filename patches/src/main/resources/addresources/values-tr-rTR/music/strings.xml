@@ -22,7 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_probe_summary">Yakındaki bir Jam\'e ev sahipliği yapın veya katılın ve Jam Layer üzerinden sırasını düzenleyin</string>
   <string name="morphe_music_jam_enabled_title">Jam sırası paylaşımını etkinleştir</string>
   <string name="morphe_music_jam_enabled_summary">YouTube Music yeniden başlatıldıktan sonra Jam entegrasyonunu etkinleştirir</string>
-  <string name="morphe_music_jam_download_title">Çalışması için Jam Layer\'i  indirin</string>
+  <string name="morphe_music_jam_download_title">Çalışması için Jam Layer\'i indirin</string>
   <string name="morphe_music_jam_download_summary">En son Jam Layer sürümünü tarayıcınızda görüntüleyin</string>
   <string name="morphe_music_jam_controls_title">Jam kontrolleri</string>
   <string name="morphe_music_jam_controls_summary">Yakınlardaki bir Jam\'e ev sahipliği yapın veya katılın ve oturumu yönetin</string>
@@ -30,8 +30,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_companion_package_summary">Yakınlardaki sıra paylaşımı için kullanılan yüklü yardımcı uygulamayı seçin</string>
   <string name="morphe_music_jam_package_message">Yüklü bir yardımcı paket kullanın. Eşleştirme onayınızı ve yerel bir yetki belirteci (token) gerektirir</string>
   <string name="morphe_music_jam_wifi_title">Wi-Fi açılsın mı?</string>
-  <string name="morphe_music_jam_wifi_message">Wi-Fi\'yi açın, ardından Jam\'i yeniden başlatmayı veya Jam\'e katılmayı deneyin</string>
-  <string name="morphe_music_jam_wifi_settings">Wi-fi Ayarlarını Aç</string>
+  <string name="morphe_music_jam_wifi_message">Wi-Fi\'ı açın, ardından Jam\'i yeniden başlatmayı veya Jam\'e katılmayı deneyin</string>
+  <string name="morphe_music_jam_wifi_settings">Wi-Fi Ayarlarını Aç</string>
   <string name="morphe_music_jam_cancel">İptal</string>
   <string name="morphe_music_jam_use_package">Paketi kullan</string>
   <string name="morphe_music_jam_invalid_package">Geçerli bir Android paket adı girin</string>
@@ -44,12 +44,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_join_with_code">Kod ile katıl</string>
   <string name="morphe_music_jam_join">Katıl</string>
   <string name="morphe_music_jam_scan_qr">Karekodu Okut</string>
-  <string name="morphe_music_jam_invalid_invite">Enter the eight-character code or paste an invitation</string>
+  <string name="morphe_music_jam_invalid_invite">Sekiz karakterli kodu girin veya bir daveti yapıştırın</string>
   <string name="morphe_music_jam_join_your_jam">Jam’ine katılın</string>
   <string name="morphe_music_jam_copy_code">Kodu kopyala</string>
   <string name="morphe_music_jam_code_clip">Jam kodu</string>
   <string name="morphe_music_jam_show_qr">Karekodu göster</string>
-  <string name="morphe_music_jam_done">Hazır</string>
+  <string name="morphe_music_jam_done">Bitti</string>
   <string name="morphe_music_jam_invite_title">Jam\'inize davet edin</string>
   <string name="morphe_music_jam_invite_message">Bu sıraya katılmak ve düzenlemek için tarayın. Jam’in sona ermesi, daveti geçersiz kılar.</string>
   <string name="morphe_music_jam_copy_link">Bağlantıyı kopyala</string>
@@ -58,7 +58,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_added_to_jam">Jam\'e eklendi</string>
   <string name="morphe_music_jam_unavailable_toast">Jam mevcut değil; parça eklenmemiş</string>
   <string name="morphe_music_jam_your_jam">Senin Jam\'in</string>
-  <string name="morphe_music_jam_listening_together">Birlikte dinle</string>
+  <string name="morphe_music_jam_listening_together">Birlikte dinleyin</string>
   <string name="morphe_music_jam_joining_jam">Jam\'e katılınıyor</string>
   <string name="morphe_music_jam_listen_together">Beraber Dinle</string>
   <string name="morphe_music_jam_updating">Jam güncelleniyor...</string>

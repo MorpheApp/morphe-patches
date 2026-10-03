@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\'ভিডিওর সাথে সিঙ্ক করুন\' বোতামটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_timed_reactions_title">সময় অনুযায়ী প্রতিক্রিয়া লুকান</string>
   <string name="morphe_hide_timed_reactions_summary">মন্তব্য এবং লাইভ চ্যাট বিভাগে ইমোজি দিয়ে প্রতিক্রিয়া জানানোর বৈশিষ্ট্যটি লুকায়</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">You ট্যাবে চ্যানেল হ্যান্ডেল লুকান</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">You ট্যাবে অ্যাকাউন্টের নামের নীচে চ্যানেল হ্যান্ডেল লুকিয়ে রাখে</string>
   <string name="morphe_hide_video_title_title">ভিডিওর শিরোনাম লুকান</string>
   <string name="morphe_hide_video_title_summary">ফুলস্ক্রিন মোডে ভিডিওর শিরোনাম লুকায়</string>
   <string name="morphe_sanitize_video_subtitle_title">ভিডিও সাবটাইটেল স্যানিটাইজ করুন</string>
@@ -1060,10 +1062,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_playback_in_feeds_entry_off">বন্ধ</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">মূল শিরোনাম পুনরুদ্ধার করুন</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">অনূদিত</string>
-  <string name="morphe_restore_original_titles_type_entry_original">মূল</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow দিয়ে অনুবাদিত</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow সহ মূল</string>
+  <string name="morphe_restore_original_titles_summary">স্বয়ংক্রিয় অনুবাদগুলির পরিবর্তে মূল ভিডিও শিরোনাম, ভিডিও বিবরণ এবং চ্যানেলের বিবরণ দেখায়</string>
   <string name="morphe_restore_original_titles_loading">শিরোনাম লোড হচ্ছে…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">স্বয়ংক্রিয় ফিড রিফ্রেশ নিষ্ক্রিয় করুন</string>

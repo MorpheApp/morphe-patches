@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Objects;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
@@ -38,6 +39,15 @@ import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
  * flags cover concepts that cannot be inferred from settings alone.
  */
 public final class SponsorBlockApi {
+
+    private static final CategoryBehaviour[] ALL_BEHAVIORS = CategoryBehaviour.values();
+
+    private static final CategoryBehaviour[] HIGHLIGHT_BEHAVIORS = {
+            CategoryBehaviour.SKIP_AUTOMATICALLY,
+            CategoryBehaviour.MANUAL_SKIP,
+            CategoryBehaviour.SHOW_IN_SEEKBAR,
+            CategoryBehaviour.IGNORE
+    };
 
     @Nullable
     private static volatile Configuration configuration;
@@ -104,16 +114,7 @@ public final class SponsorBlockApi {
          * repeatedly. Hosts without a skip-button overlay should restrict the returned set.
          */
         default @NonNull CategoryBehaviour[] availableBehaviors(@NonNull SegmentCategory category) {
-            if (category == SegmentCategory.HIGHLIGHT) {
-                CategoryBehaviour[] all = CategoryBehaviour.values();
-                CategoryBehaviour[] filtered = new CategoryBehaviour[all.length - 1];
-                int j = 0;
-                for (CategoryBehaviour b : all) {
-                    if (b != CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE) filtered[j++] = b;
-                }
-                return filtered;
-            }
-            return CategoryBehaviour.values();
+            return category == SegmentCategory.HIGHLIGHT ? HIGHLIGHT_BEHAVIORS : ALL_BEHAVIORS;
         }
     }
 
@@ -206,7 +207,6 @@ public final class SponsorBlockApi {
         void showSkipHighlightButton(@NonNull SponsorSegment highlight);
         void hideSkipHighlightButton();
         void hideAll();
-        @Nullable android.content.Context overlayContext();
 
         /**
          * Shown on submit/vote API errors that may carry long, server-supplied text.
@@ -232,9 +232,8 @@ public final class SponsorBlockApi {
             @Override public void showSkipHighlightButton(@NonNull SponsorSegment highlight) {}
             @Override public void hideSkipHighlightButton() {}
             @Override public void hideAll() {}
-            @Override public @Nullable android.content.Context overlayContext() { return null; }
             @Override public void showErrorDialog(@NonNull String message) {
-                app.morphe.extension.shared.Utils.showToastLong(message);
+                Utils.showToastLong(message);
             }
             @Override public void notifyNewSegmentPreviewed() {}
             @Override public void clearUnsubmittedSegmentTimes() {}

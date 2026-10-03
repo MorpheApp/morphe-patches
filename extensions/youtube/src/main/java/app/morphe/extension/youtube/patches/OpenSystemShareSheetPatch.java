@@ -68,7 +68,11 @@ public final class OpenSystemShareSheetPatch {
 
         final String intentUrl;
         // Make sure to check channelId at the end, since it is never reset.
-        if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty()) {
+        if (!FlyoutUtils.getFlyoutPostId().isEmpty()) {
+            intentUrl = longURLPrefix + "/post/" + FlyoutUtils.getFlyoutPostId();
+
+            FlyoutUtils.resetFlyoutPostId();
+        } else if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty()) {
             intentUrl = longURLPrefix + "/playlist?list=" + FlyoutUtils.getFlyoutPlaylistId();
         } else if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
             intentUrl = videoURLPrefix.first + FlyoutUtils.getFlyoutVideoId();

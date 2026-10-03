@@ -150,6 +150,11 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary">始终播放视频的原始音频轨道，而不是配音版本</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">跳过静音</string>
+  <string name="morphe_skip_silence_summary">自动跳过视频音频中的静音停顿</string>
+  <string name="morphe_skip_silence_minimum_pause_title">最短暂停时长</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">只有至少达到此长度的暂停才会被缩短。在下一个视频开始时生效</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">网络代理</string>
   <string name="morphe_proxy_screen_summary">通过代理路由支持的网络请求</string>

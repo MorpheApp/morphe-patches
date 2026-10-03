@@ -150,6 +150,11 @@ Para iniciar sesión, pulsa en Continuar"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forzar idioma original del audio</string>
   <string name="morphe_force_original_audio_summary">Siempre reproduce la pista de audio original del vídeo en lugar de una versión doblada</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Omitir silencios</string>
+  <string name="morphe_skip_silence_summary">Omite automáticamente las pausas silenciosas en el audio del vídeo</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Duración mínima de la pausa</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Solo se acortan las pausas que duren al menos este tiempo. Se aplica cuando empieza el siguiente vídeo</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de red</string>
   <string name="morphe_proxy_screen_summary">Enruta las solicitudes de red a través de un proxy</string>

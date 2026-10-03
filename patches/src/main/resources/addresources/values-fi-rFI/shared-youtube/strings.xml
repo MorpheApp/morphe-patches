@@ -150,6 +150,11 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
   <string name="morphe_force_original_audio_summary">Toistaa aina videon alkuperäisen ääniraidan dubatun version sijaan</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Ohita hiljaisuus</string>
+  <string name="morphe_skip_silence_summary">Ohittaa automaattisesti videon äänen hiljaiset tauot</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Tauon vähimmäispituus</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Vain vähintään tämän pituiset tauot lyhennetään. Tulee voimaan, kun seuraava video alkaa</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Verkkoproksi</string>
   <string name="morphe_proxy_screen_summary">Reititä tuetut verkkopyynnöt välityspalvelimen kautta</string>

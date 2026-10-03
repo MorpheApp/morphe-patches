@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">הסתר כפתור \'סנכרן לסרטון\'</string>
   <string name="morphe_hide_timed_reactions_title">הסתר תגובות באמוג\'י מתוזמנות</string>
   <string name="morphe_hide_timed_reactions_summary">מסתיר את התכונה המאפשרת למשתמשים להגיב באמצעות אימוג\'ים בסעיף התגובות ובצ\'אט החי</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">הסתר את כינוי הערוץ בכרטיסייה \'אתה\'</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">מסתיר את כינוי הערוץ מתחת לשם החשבון בכרטיסייה \'אתה\'</string>
   <string name="morphe_hide_video_title_title">הסתר כותרת סרטון</string>
   <string name="morphe_hide_video_title_summary">מסתיר את כותרת הסרטון במצב מסך מלא</string>
   <string name="morphe_sanitize_video_subtitle_title">ניקוי כתובית וידאו</string>
@@ -1075,10 +1077,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">כבוי</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">שחזור כותרות מקוריות</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">מתורגם</string>
-  <string name="morphe_restore_original_titles_type_entry_original">מקורי</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">תורגם עם DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">מקורי עם DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">מציג את כותרות הסרטונים המקוריות, את תיאורי הסרטונים ואת תיאורי הערוצים במקום אלה המתורגמים אוטומטית</string>
   <string name="morphe_restore_original_titles_loading">טוען כותרת…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">השבת רענון אוטומטי של עדכונים</string>

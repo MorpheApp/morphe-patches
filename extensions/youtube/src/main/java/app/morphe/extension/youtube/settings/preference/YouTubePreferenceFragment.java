@@ -18,6 +18,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
+import app.morphe.extension.youtube.patches.HideStatusBarPatch;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 
 /**
@@ -88,6 +89,8 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
      */
     @Override
     protected void onPostToolbarSetup(Toolbar toolbar, Dialog preferenceScreenDialog) {
+        HideStatusBarPatch.hideStatusBar(preferenceScreenDialog);
+
         if (YouTubeActivityHook.searchViewController != null
                 && YouTubeActivityHook.searchViewController.isSearchActive()) {
             toolbar.post(() -> YouTubeActivityHook.searchViewController.closeSearch());

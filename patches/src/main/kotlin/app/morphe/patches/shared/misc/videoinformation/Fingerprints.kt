@@ -2,8 +2,10 @@ package app.morphe.patches.shared.misc.videoinformation
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -11,8 +13,7 @@ internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_DIRECT_RANGE,
         Opcode.IGET_OBJECT
-    ),
-    strings = listOf("Media progress reported outside media playback: ")
+    ) + string("Media progress reported outside media playback: ", comparison = StringComparisonType.CONTAINS)
 )
 
 /**

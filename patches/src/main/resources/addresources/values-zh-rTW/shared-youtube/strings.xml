@@ -150,6 +150,11 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">強制使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary">一律播放影片的原始音軌，而非配音版本</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">跳過無聲停頓</string>
+  <string name="morphe_skip_silence_summary">自動跳過影片音訊中的無聲停頓</string>
+  <string name="morphe_skip_silence_minimum_pause_title">最短無聲停頓長度</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">無聲停頓至少要足夠這個時間長度才會被縮短。會在下一段影片開始時生效。</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">網路代理</string>
   <string name="morphe_proxy_screen_summary">透過代理路由支援網路請求</string>

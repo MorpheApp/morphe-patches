@@ -150,6 +150,11 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tving originalt lydsprog</string>
   <string name="morphe_force_original_audio_summary">Spiller altid videoens originale lydspor i stedet for en dubbet version</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Spring over stilhed</string>
+  <string name="morphe_skip_silence_summary">Spring automatisk over stilhedspauser i video-lyd</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Minimum pauselængde</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Kun pauser af mindst denne længde forkortes. Træder i kraft, når den næste video starter</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netværksproxy</string>
   <string name="morphe_proxy_screen_summary">Send understøttede netværksanmodninger gennem en proxy</string>

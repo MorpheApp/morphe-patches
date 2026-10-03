@@ -150,6 +150,11 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Fórsaigh teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary">Seinneann sé rian fuaime bunaidh an fhíseáin i gcónaí in ionad leagan dubáilte</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Scipeáil ciúnas</string>
+  <string name="morphe_skip_silence_summary">Scipeálann sé go huathoibríoch sosanna ciúine i bhfuaim físeáin</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Fad íosta an tsosa</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Ní ghiorraítear ach sosanna atá chomh fada seo ar a laghad. Tagann sé i bhfeidhm nuair a thosaíonn an chéad fhíseán eile</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Seachfhreastalaí líonra</string>
   <string name="morphe_proxy_screen_summary">Iarratais líonra tacaithe a threorú trí sheachfhreastalaí</string>

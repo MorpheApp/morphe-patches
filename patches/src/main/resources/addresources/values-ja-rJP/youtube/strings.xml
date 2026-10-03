@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">「動画に同期」ボタンを非表示</string>
   <string name="morphe_hide_timed_reactions_title">Timed Reaction を非表示</string>
   <string name="morphe_hide_timed_reactions_summary">コメント欄やライブ配信のチャット欄で絵文字を使ってリアクションする機能 (ハート アイコン ボタン) を非表示にします</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">You タブでチャンネルハンドルを非表示にする</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">You タブのアカウント名の下に表示されるチャンネルハンドルを非表示にします</string>
   <string name="morphe_hide_video_title_title">動画のタイトルを非表示</string>
   <string name="morphe_hide_video_title_summary">全画面表示モードでの動画のタイトルを非表示にします</string>
   <string name="morphe_sanitize_video_subtitle_title">動画のタグを非表示</string>
@@ -500,9 +502,9 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s をリピートします</string>
   <string name="morphe_loop_video_range_invalid_time">無効なリピート区間です</string>
   <!-- interaction.pip.pipButtonPatch -->
-  <string name="morphe_pip_button_overlay_title">ピクチャーインピクチャーのオーバーレイボタンを表示</string>
-  <string name="morphe_pip_button_flyout_title">ピクチャーインピクチャーのフライアウトボタンを表示</string>
-  <string name="morphe_pip_button_flyout_name">ピクチャーインピクチャーに切り替え</string>
+  <string name="morphe_pip_button_overlay_title">ピクチャー イン ピクチャーのオーバーレイ ボタンを表示</string>
+  <string name="morphe_pip_button_flyout_title">ピクチャー イン ピクチャーのフライアウト ボタンを表示</string>
+  <string name="morphe_pip_button_flyout_name">ピクチャー イン ピクチャーに切り替え</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">「すべて再生」ボタンを表示</string>
   <string name="morphe_play_all_button_summary">"タップするとチャンネルのすべての動画から成るプレイリストを生成します。長押しすると元の状態に戻ります
@@ -1077,10 +1079,7 @@ Automotive レイアウト
   <string name="morphe_playback_in_feeds_entry_off">オフ</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">タイトルを原文に戻す</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">翻訳済み</string>
-  <string name="morphe_restore_original_titles_type_entry_original">原文</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow で翻訳</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow でオリジナル</string>
+  <string name="morphe_restore_original_titles_summary">自動翻訳されたものではなく、元の動画タイトル、動画の説明、チャンネルの説明を表示します</string>
   <string name="morphe_restore_original_titles_loading">タイトルを読み込み中…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">自動フィード更新を無効にする</string>

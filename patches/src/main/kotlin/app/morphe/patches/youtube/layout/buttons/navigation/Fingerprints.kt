@@ -107,7 +107,7 @@ internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprin
 )
 
 internal object PivotBarStyleFingerprint : Fingerprint(
-    definingClass = "/PivotBar;",
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     returnType = "V",
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(
@@ -118,7 +118,7 @@ internal object PivotBarStyleFingerprint : Fingerprint(
 )
 
 internal object PivotBarChangedFingerprint : Fingerprint(
-    definingClass = "/PivotBar;",
+    definingClass = "Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;",
     name = "onConfigurationChanged",
     returnType = "V",
     filters = OpcodesFilter.opcodesToFilters(

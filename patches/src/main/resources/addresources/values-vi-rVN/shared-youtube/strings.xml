@@ -150,6 +150,11 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Buộc ngôn ngữ âm thanh gốc</string>
   <string name="morphe_force_original_audio_summary">Luôn phát âm thanh gốc của video thay vì bản lồng tiếng</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Bỏ qua khoảng lặng</string>
+  <string name="morphe_skip_silence_summary">Tự động bỏ qua các khoảng dừng im lặng trong âm thanh video</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Độ dài khoảng dừng tối thiểu</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Chỉ những khoảng dừng dài ít nhất khoảng thời gian này mới được rút ngắn. Có hiệu lực khi video tiếp theo bắt đầu</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy mạng</string>
   <string name="morphe_proxy_screen_summary">Định tuyến các kết nối mạng được hỗ trợ qua proxy</string>

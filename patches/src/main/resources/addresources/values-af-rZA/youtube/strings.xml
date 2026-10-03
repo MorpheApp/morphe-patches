@@ -159,6 +159,8 @@ Veranderings sluit in:
   <string name="morphe_hide_sync_button_title">Versteek \'Sinkroniseer met video\'-knoppie</string>
   <string name="morphe_hide_timed_reactions_title">Verberg tydelike reaksies</string>
   <string name="morphe_hide_timed_reactions_summary">Verberg die funksie wat gebruikers toelaat om met emojis in die kommentaar afdeling en lewendige klets te reageer</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Versteek kanaalhandvatsel in Jy-oortjie</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Versteek die kanaalhandvatsel onder die rekeningnaam in die Jy-oortjie</string>
   <string name="morphe_hide_video_title_title">Versteek video-titel</string>
   <string name="morphe_hide_video_title_summary">Verberg die video-titel in die volskermmodus</string>
   <string name="morphe_sanitize_video_subtitle_title">Maak video-onderskrifte skoon</string>
@@ -1075,10 +1077,7 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_playback_in_feeds_entry_off">Af</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Herstel oorspronklike titels</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Vertaal</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Oorspronklik</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Vertaal met DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Oorspronklik met DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Wys die oorspronklike videotitels, videobeskrywings en kanaalbeskrywings in plaas van die outomaties vertaalde</string>
   <string name="morphe_restore_original_titles_loading">Laai titel…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Deaktiveer outomatiese voerverversing</string>

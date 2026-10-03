@@ -159,6 +159,8 @@ Endringer inkluderer:
   <string name="morphe_hide_sync_button_title">Skjul knappen \"Synkroniser til video\"</string>
   <string name="morphe_hide_timed_reactions_title">Skjul tidsstyrte reaksjoner</string>
   <string name="morphe_hide_timed_reactions_summary">Skjuler funksjonen som lar brukere reagere med emojier i kommentarfeltet og direktekamp-chatten</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Skjul kanalens @-navn i Du-fanen</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Skjuler kanalens @-navn under kontonavnet i Du-fanen</string>
   <string name="morphe_hide_video_title_title">Skjul videotittel</string>
   <string name="morphe_hide_video_title_summary">Skjuler videotittelen i fullskjermmodus</string>
   <string name="morphe_sanitize_video_subtitle_title">Rens video undertekst</string>
@@ -1075,10 +1077,7 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <string name="morphe_playback_in_feeds_entry_off">Av</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Gjenopprett originale titler</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Oversatt</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Opprinnelig</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Oversatt med DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original med DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Viser de originale videotitlene, videobeskrivelsene og kanalbeskrivelsene i stedet for de automatisk oversatte</string>
   <string name="morphe_restore_original_titles_loading">Laster tittel…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Deaktiver automatisk feedoppdatering</string>

@@ -95,10 +95,11 @@ public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
                                     Insets navInsets = insets.getInsets(WindowInsets.Type.navigationBars());
                                     Insets cutoutInsets = insets.getInsets(WindowInsets.Type.displayCutout());
 
-                                    // Apply padding for display cutout in landscape.
+                                    // Apply padding for display cutout in landscape,
+                                    // and in portrait if the status bar is hidden.
                                     int leftPadding = cutoutInsets.left;
                                     int rightPadding = cutoutInsets.right;
-                                    int topPadding = statusInsets.top;
+                                    int topPadding = Math.max(statusInsets.top, cutoutInsets.top);
                                     int bottomPadding = navInsets.bottom;
 
                                     v.setPadding(leftPadding, topPadding, rightPadding, bottomPadding);

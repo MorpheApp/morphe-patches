@@ -25,14 +25,6 @@ import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
 
 public class SkipSponsorButton extends FrameLayout {
     /**
-     * Adds a high contrast border around the skip button.
-     * <p>
-     * This feature is not currently used.
-     * If this is added, it needs an additional button width change because
-     * as-is the skip button text is clipped when this is on.
-     */
-    private static final boolean highContrast = false;
-    /**
      * Extra vertical padding for SB buttons when using bold player layouts.
      * YT seems to use the same skip button vertical padding for both the old and
      * new player layouts, and it's not enough for the bold layout and the SB buttons clip
@@ -45,7 +37,7 @@ public class SkipSponsorButton extends FrameLayout {
     private final LinearLayout skipSponsorBtnContainer;
     private final TextView skipSponsorTextView;
     private final Paint background;
-    private final Paint border;
+    private final RectF backgroundRect = new RectF();
     private SponsorSegment segment;
     final int defaultBottomMargin;
     final int ctaBottomMargin;
@@ -76,11 +68,6 @@ public class SkipSponsorButton extends FrameLayout {
         background.setColor(ResourceUtils.getColor("skip_ad_button_background_color"));
         background.setStyle(Paint.Style.FILL);
 
-        border = new Paint();
-        border.setColor(ResourceUtils.getColor("skip_ad_button_border_color"));
-        border.setStrokeWidth(ResourceUtils.getDimension("ad_skip_ad_button_border_width"));
-        border.setStyle(Paint.Style.STROKE);
-
         skipSponsorTextView = Objects.requireNonNull(findViewById(ResourceUtils.getIdentifier(context,
                 ResourceType.ID, "morphe_sb_skip_sponsor_button_text")));
         ctaBottomMargin = ResourceUtils.getDimensionPixelSize("skip_button_cta_bottom_margin"); // Same as skip_button_default_portrait_bottom_margin
@@ -105,26 +92,14 @@ public class SkipSponsorButton extends FrameLayout {
         final int right = left + skipSponsorBtnContainer.getWidth();
         final int bottom = top + skipSponsorBtnContainer.getHeight();
 
-        // Determine corner radius for rounded button
-        float cornerRadius = skipSponsorBtnContainer.getHeight() / 2f;
-
         if (Settings.SB_SQUARE_LAYOUT.get()) {
             // Square button.
             canvas.drawRect(left, top, right, bottom, background);
-            if (highContrast) {
-                canvas.drawLines(new float[]{
-                                right, top, left, top,
-                                left, top, left, bottom,
-                                left, bottom, right, bottom},
-                        border); // Draw square border.
-            }
         } else {
             // Rounded button.
-            RectF rect = new RectF(left, top, right, bottom);
-            canvas.drawRoundRect(rect, cornerRadius, cornerRadius, background); // Draw rounded background.
-            if (highContrast) {
-                canvas.drawRoundRect(rect, cornerRadius, cornerRadius, border); // Draw rounded border.
-            }
+            final float cornerRadius = skipSponsorBtnContainer.getHeight() / 2f;
+            backgroundRect.set(left, top, right, bottom);
+            canvas.drawRoundRect(backgroundRect, cornerRadius, cornerRadius, background);
         }
 
         super.dispatchDraw(canvas);

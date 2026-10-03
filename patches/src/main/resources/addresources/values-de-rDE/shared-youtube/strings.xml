@@ -150,6 +150,11 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Original-Audiotrack erzwingen</string>
   <string name="morphe_force_original_audio_summary">Spielt immer die Original-Audiospur des Videos ab, anstatt eine synchronisierte Version</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Stille überspringen</string>
+  <string name="morphe_skip_silence_summary">Überspringt automatisch Stillepausen in Video-Audio</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Minimale Pausenlänge</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Nur Pausen, die mindestens so lang sind, werden verkürzt. Wirkt sich erst aus, wenn das nächste Video startet</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netzwerkproxy</string>
   <string name="morphe_proxy_screen_summary">Leite unterstützte Netzwerkabfragen über einen Proxy weiter</string>

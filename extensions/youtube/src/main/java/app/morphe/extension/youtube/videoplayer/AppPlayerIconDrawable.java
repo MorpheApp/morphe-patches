@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3287
+ * https://github.com/MorpheApp/morphe-patches/pull/3451
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -64,6 +65,36 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
     public static final class FullscreenExitAlt extends AppPlayerIconDrawable {
         public FullscreenExitAlt() {
             super("morphe_fullscreen_exit", "morphe_yt_player_full_exit_alt");
+        }
+    }
+
+    public static final class SkipNext extends AppPlayerIconDrawable {
+        public SkipNext() {
+            super("morphe_player_next", "quantum_ic_skip_next_white_36");
+        }
+    }
+
+    public static final class SkipNextDisabled extends AppPlayerIconDrawable {
+        public SkipNextDisabled() {
+            super("morphe_player_next", "quantum_ic_skip_next_white_36", true);
+        }
+    }
+
+    public static final class SkipPrevious extends AppPlayerIconDrawable {
+        public SkipPrevious() {
+            super("morphe_player_previous", "quantum_ic_skip_previous_white_36");
+        }
+    }
+
+    public static final class SkipPreviousDisabled extends AppPlayerIconDrawable {
+        public SkipPreviousDisabled() {
+            super("morphe_player_previous", "quantum_ic_skip_previous_white_36", true);
+        }
+    }
+
+    public static final class Settings extends AppPlayerIconDrawable {
+        public Settings() {
+            super("morphe_player_settings", "yt_outline_gear_white_24");
         }
     }
 
@@ -205,7 +236,12 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
         }
     }
 
+    // The opacity of the app's disabled transport icons, white at 30 percent.
+    private static final int DISABLED_ALPHA = 77;
+
     private final String drawableName;
+    private final String originalName;
+    private final boolean disabled;
     // The style icons are plain vectors, while the Shorts originals are bitmaps with a shadow.
     private final boolean shortsStyled;
     private final int shortsSize;
@@ -213,8 +249,17 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
     private Bitmap shadow;
 
     private AppPlayerIconDrawable(String styleBaseName, String originalName) {
+        this(styleBaseName, originalName, false);
+    }
+
+    /**
+     * @param disabled Draws the icon faded, for the disabled item of an app selector.
+     */
+    private AppPlayerIconDrawable(String styleBaseName, String originalName, boolean disabled) {
         super(null);
         drawableName = PlayerIcons.name(styleBaseName, originalName, originalName);
+        this.originalName = originalName;
+        this.disabled = disabled;
         shortsStyled = false;
         shortsSize = 0;
     }
@@ -225,6 +270,8 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
     private AppPlayerIconDrawable(int shortsSize, String styleBaseName, String originalName) {
         super(null);
         drawableName = PlayerIcons.shorts(styleBaseName, originalName);
+        this.originalName = originalName;
+        disabled = false;
         shortsStyled = !drawableName.equals(originalName);
         this.shortsSize = shortsSize;
     }
@@ -235,6 +282,10 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
                         @NonNull AttributeSet attrs, @Nullable Resources.Theme theme)
             throws XmlPullParserException, IOException {
         super.inflate(r, parser, attrs, theme);
+        // A wrapper inside an app selector names the app icon in android:drawable,
+        // which differs per screen size, so the default style keeps that one.
+        if (getDrawable() != null && drawableName.equals(originalName)) return;
+
         try {
             setDrawable(r.getDrawable(
                     ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, drawableName), theme));
@@ -261,6 +312,15 @@ public abstract class AppPlayerIconDrawable extends DrawableWrapper {
 
     @Override
     public void draw(@NonNull Canvas canvas) {
+        if (disabled) {
+            Rect bounds = getBounds();
+            final int save = canvas.saveLayerAlpha(
+                    bounds.left, bounds.top, bounds.right, bounds.bottom, DISABLED_ALPHA);
+            super.draw(canvas);
+            canvas.restoreToCount(save);
+            return;
+        }
+
         if (shortsStyled && IconShadow.isAvailable()) {
             Drawable icon = getDrawable();
             Rect bounds = getBounds();

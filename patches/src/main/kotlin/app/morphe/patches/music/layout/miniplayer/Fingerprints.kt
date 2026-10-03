@@ -102,7 +102,7 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
  *   >= 9.x: WatchWhileLayout
  */
 internal object MppWatchWhileLayoutFingerprint : Fingerprint(
-    definingClass = "/WatchWhileLayout;",
+    definingClass = "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;",
     returnType = "V",
     parameters = listOf(),
     filters = listOf(

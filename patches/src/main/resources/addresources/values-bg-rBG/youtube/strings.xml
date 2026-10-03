@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">Скриване на бутона \"Синхронизиране с видео\"</string>
   <string name="morphe_hide_timed_reactions_title">Списъка на общността за абонати е скрита</string>
   <string name="morphe_hide_timed_reactions_summary">Скрива функцията, която позволява на потребителите да реагират с емотикони в секцията с коментари и чата на живо</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Скриване на хендъла на канала в раздела „Ти“</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Скрива хендъла на канала под името на акаунта в раздела „Ти“</string>
   <string name="morphe_hide_video_title_title">Скриване на заглавието на видеото</string>
   <string name="morphe_hide_video_title_summary">Скрива заглавието на видеото в режим на цял екран</string>
   <string name="morphe_sanitize_video_subtitle_title">Почистване на субтитрите на видео</string>
@@ -1075,10 +1077,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Изключено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Възстановяване на оригиналните заглавия</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Преведени</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Оригинал</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Преведено с DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Оригинал с DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Показва оригиналните заглавия на видеоклиповете, описанията на видеоклиповете и описанията на каналите вместо автоматично преведените</string>
   <string name="morphe_restore_original_titles_loading">Зареждане на заглавието…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Изключване на автоматичното опресняване на емисията</string>

@@ -26,6 +26,7 @@
 
 package app.morphe.patches.all.misc.clone
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
@@ -38,8 +39,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.util.asSequence
 import app.morphe.util.findElementByAttributeValue
-import app.morphe.util.findInstructionIndicesReversed
-import app.morphe.util.findMutableMethodOf
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import org.w3c.dom.Element
@@ -71,40 +71,30 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
  * Selectively changes usage of Context.getPackageName() to the original package name.
  */
 context(patchContext: BytecodePatchContext)
-private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: String) {
-    patchContext.classDefForEach { classDef ->
-        if (!classesToChange.any { classToChange ->
-                classDef.type.startsWith(classToChange)
-            }
-        ) return@classDefForEach
+private fun applyGetPackageName(oldPackageName: String, classToChange: String) {
+    val filter = methodCall(
+        opcode = Opcode.INVOKE_VIRTUAL,
+        smali = "Landroid/content/Context;->getPackageName()Ljava/lang/String;"
+    )
 
-        val mutableClass by lazy {
-            patchContext.mutableClassDefBy(classDef)
-        }
-
-        classDef.methods.forEach { method ->
-            if (method.implementation == null) return@forEach
-
-            val mutableMethod by lazy {
-                mutableClass.findMutableMethodOf(method)
-            }
-
-            method.findInstructionIndicesReversed(
-                methodCall(
-                    opcode = Opcode.INVOKE_VIRTUAL,
-                    smali = "Landroid/content/Context;->getPackageName()Ljava/lang/String;"
-                )
-            ).forEach { index ->
+    // Same code as morphe-patches-library matchAllMethodIndicesForEach()
+    // but copied here to make this patch more portable.
+    Fingerprint(
+        definingClass = classToChange,
+        filters = listOf(filter)
+    ).matchAllOrNull()?.forEach { match ->
+        match.method.apply {
+            findInstructionIndicesReversedOrThrow(filter).forEach { index ->
                 val moveResultIndex = index + 1
 
                 // Ignore calls to getPackageName() that do not use the return value.
-                val returnInstruction = method.getInstruction(moveResultIndex)
+                val returnInstruction = getInstruction(moveResultIndex)
                 if (returnInstruction.opcode != Opcode.MOVE_RESULT_OBJECT) {
                     return@forEach
                 }
 
                 val register = (returnInstruction as OneRegisterInstruction).registerA
-                mutableMethod.replaceInstruction(
+                replaceInstruction(
                     moveResultIndex,
                     """
                         # Replace return-object with constant string
@@ -138,18 +128,18 @@ val cloneAppPatch = resourcePatch(
 
     val updatePermissionsOption = booleanOption(
         key = "updatePermissions",
-        default = false,
+        default = true,
         title = "Update permissions",
         description = "Update custom permissions declared by the app. " +
-            "Enabling this can fix installation conflicts, but this can also break features in certain apps.",
+            "Fixes installation conflicts, but can break features in certain apps.",
     )
 
     val updateProvidersOption = booleanOption(
         key = "updateProviders",
-        default = false,
+        default = true,
         title = "Update providers",
         description = "Update provider names declared by the app. " +
-            "Enabling this can fix installation conflicts, but this can also break features in certain apps.",
+            "Fixes installation conflicts, but can break features in certain apps.",
     )
 
     fun getReplacementPackageName(originalPackageName: String) : String {

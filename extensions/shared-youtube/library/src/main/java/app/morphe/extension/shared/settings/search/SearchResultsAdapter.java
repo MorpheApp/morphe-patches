@@ -50,6 +50,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.ColorPickerPreference;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.settings.preference.URLLinkPreference;
+import app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.ColorDot;
 
@@ -271,6 +272,8 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
         bindTitleAndSummary(prefItem, holder.titleView, holder.summaryView,
                 searchViewController.getCurrentQueryPattern());
         ColorDot.applyColorDot(holder.colorDot, prefItem.getColor(), prefItem.preference.isEnabled());
+        SegmentCategoryPreference.bindColorTarget(holder.colorDot,
+                prefItem.preference instanceof SegmentCategoryPreference categoryPref ? categoryPref : null);
         setupPreferenceView(view, holder.titleView, holder.summaryView, prefItem.preference,
                 () -> handlePreferenceClick(prefItem),
                 () -> navigateAndScrollToPreference(item));

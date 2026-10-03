@@ -150,6 +150,11 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудительно оригинальная звуковая дорожка</string>
   <string name="morphe_force_original_audio_summary">Всегда воспроизводит оригинальную аудиодорожку видео вместо дублированной версии</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Пропускать тишину</string>
+  <string name="morphe_skip_silence_summary">Автоматически пропускает паузы тишины в аудиодорожке видео</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Минимальная длительность паузы</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Сокращаются только паузы длительностью не менее этого значения. Вступает в силу при запуске следующего видео</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Сетевой прокси</string>
   <string name="morphe_proxy_screen_summary">Настройте маршрутизацию сетевых запросов через прокси</string>

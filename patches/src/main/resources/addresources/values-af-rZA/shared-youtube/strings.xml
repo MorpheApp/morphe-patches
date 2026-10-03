@@ -150,6 +150,11 @@ Om aan te meld, druk voort hieronder"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Dwing oorspronklike oudiotaal af</string>
   <string name="morphe_force_original_audio_summary">Speel altyd die oorspronklike klou van die video in plaas van \'n dubbingweergawe</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Slaan stilte oor</string>
+  <string name="morphe_skip_silence_summary">Slaan outomaties stil pouses in video-oudio oor</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Minimum pouselengte</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Slegs pouses van minstens hierdie lengte word verkort. Dit tree in werking wanneer die volgende video begin</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Netwerkproxy</string>
   <string name="morphe_proxy_screen_summary">Lei die netwerkversoeke deur \'n proxy</string>

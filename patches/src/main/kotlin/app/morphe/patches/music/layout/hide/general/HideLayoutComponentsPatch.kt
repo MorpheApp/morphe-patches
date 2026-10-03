@@ -22,7 +22,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.util.injectHideViewCall
+import app.morphe.patches.youtube.ad.injectHideViewCall
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val COMMENTS_FILTER =

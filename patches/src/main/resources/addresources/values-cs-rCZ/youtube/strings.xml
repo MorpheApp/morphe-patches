@@ -159,6 +159,8 @@ Změny zahrnují:
   <string name="morphe_hide_sync_button_title">Skrýt tlačítko „Synchronizovat s videem“</string>
   <string name="morphe_hide_timed_reactions_title">Skrýt reakce v konkrétním čase</string>
   <string name="morphe_hide_timed_reactions_summary">Skryje funkci, která umožňuje uživatelům reagovat emotikony v komentářích a živém chatu</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Skrýt popisek kanálu na kartě Ty</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Skryje popisek kanálu pod jménem účtu na kartě Ty</string>
   <string name="morphe_hide_video_title_title">Skrýt název videa</string>
   <string name="morphe_hide_video_title_summary">Skryje název videa v režimu na celou obrazovku</string>
   <string name="morphe_sanitize_video_subtitle_title">Vyčistit podtitul videa</string>
@@ -1072,10 +1074,7 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <string name="morphe_playback_in_feeds_entry_off">Vypnuto</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Obnovit původní názvy</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Přeložené</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Původní</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Přeložený s DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Původní s DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Zobrazuje původní názvy videí, popisy videí a popisy kanálů místo automaticky přeložených</string>
   <string name="morphe_restore_original_titles_loading">Načítání názvu…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Zakázat automatické obnovování kanálů</string>

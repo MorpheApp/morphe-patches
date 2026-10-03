@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.ad
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -17,7 +18,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
-import app.morphe.patcher.resource.resourceId
+import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
@@ -37,15 +39,12 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.BuildClientContextBodyConstructorFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findMutableMethodOf
-import app.morphe.util.injectHideViewCall
+import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction31i
-import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
 
@@ -206,47 +205,25 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide ad views
 
-        var adAttributionId = resourceId(ResourceType.ID, "ad_attribution")
+        resourceLiteral(
+            ResourceType.ID, "ad_attribution"
+        ).matchAllMethodIndicesForEach { index ->
+            val insertIndex = index + 1
 
-        classDefForEach { classDef ->
-            val mutableClassDef by lazy {
-                mutableClassDefBy(classDef)
+            // Call to get the view with the id adAttribution
+            val invokeInstruction = getInstruction(insertIndex)
+            if (invokeInstruction.opcode != Opcode.INVOKE_VIRTUAL) {
+                return@matchAllMethodIndicesForEach
             }
-            classDef.methods.forEach { method ->
-                val mutableMethod by lazy {
-                    mutableClassDef.findMutableMethodOf(method)
-                }
 
-                with(method.implementation) {
-                    this?.instructions?.forEachIndexed { index, instruction ->
-                        if (instruction.opcode != Opcode.CONST) {
-                            return@forEachIndexed
-                        }
-                        // Instruction to store the id adAttribution into a register
-                        if ((instruction as Instruction31i).wideLiteral != adAttributionId) {
-                            return@forEachIndexed
-                        }
-
-                        val insertIndex = index + 1
-
-                        // Call to get the view with the id adAttribution
-                        with(instructions.elementAt(insertIndex)) {
-                            if (opcode != Opcode.INVOKE_VIRTUAL) {
-                                return@forEachIndexed
-                            }
-
-                            // Hide the view
-                            val viewRegister = (this as Instruction35c).registerC
-                            mutableMethod.injectHideViewCall(
-                                insertIndex,
-                                viewRegister,
-                                EXTENSION_CLASS,
-                                "hideAdAttributionView",
-                            )
-                        }
-                    }
-                }
-            }
+            // Hide the view
+            val viewRegister = (invokeInstruction as FiveRegisterInstruction).registerC
+            injectHideViewCall(
+                insertIndex,
+                viewRegister,
+                EXTENSION_CLASS,
+                "hideAdAttributionView",
+            )
         }
 
         // Hide paid promotion label in miniplayer
@@ -294,3 +271,39 @@ val hideAdsPatch = bytecodePatch(
         )
     }
 }
+
+/**
+ * Inject a call to a method that hides a view.
+ *
+ * @param moveIndex The index of MOVE_RESULT_OBJECT.
+ * @param classDescriptor The descriptor of the class that contains the method.
+ * @param targetMethod The name of the method to call.
+ */
+internal fun MutableMethod.injectHideViewCall(
+    moveIndex: Int,
+    classDescriptor: String,
+    targetMethod: String,
+) = injectHideViewCall(
+    moveIndex + 1,
+    getInstruction<OneRegisterInstruction>(moveIndex).registerA,
+    classDescriptor,
+    targetMethod
+)
+
+/**
+ * Inject a call to a method that hides a view.
+ *
+ * @param insertIndex The index to insert the call at.
+ * @param viewRegister The register of the view to hide.
+ * @param classDescriptor The descriptor of the class that contains the method.
+ * @param targetMethod The name of the method to call.
+ */
+internal fun MutableMethod.injectHideViewCall(
+    insertIndex: Int,
+    viewRegister: Int,
+    classDescriptor: String,
+    targetMethod: String,
+) = addInstruction(
+    insertIndex,
+    "invoke-static { v$viewRegister }, $classDescriptor->$targetMethod(Landroid/view/View;)V",
+)

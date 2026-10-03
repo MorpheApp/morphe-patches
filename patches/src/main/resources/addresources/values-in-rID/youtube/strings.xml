@@ -159,6 +159,8 @@ Perubahan termasuk:
   <string name="morphe_hide_sync_button_title">Sembunyikan tombol \'Sinkronkan ke video\'</string>
   <string name="morphe_hide_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
   <string name="morphe_hide_timed_reactions_summary">Menyembunyikan fitur yang memungkinkan pengguna memberikan reaksi dengan emoji di bagian komentar dan live chat</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Sembunyikan handle saluran pada tab Anda</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Menyembunyikan handle saluran di bawah nama akun pada tab Anda</string>
   <string name="morphe_hide_video_title_title">Sembunyikan judul video</string>
   <string name="morphe_hide_video_title_summary">Menyembunyikan judul video dalam mode layar penuh</string>
   <string name="morphe_sanitize_video_subtitle_title">Bersihkan teks subtitel video</string>
@@ -1075,10 +1077,7 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_playback_in_feeds_entry_off">Nonaktif</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Pulihkan judul asli</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Diterjemahkan</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Asli</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Diterjemahkan dengan DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Asli dengan DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Menampilkan judul video asli, deskripsi video, dan deskripsi saluran, bukan yang diterjemahkan secara otomatis</string>
   <string name="morphe_restore_original_titles_loading">Memuat judul…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Nonaktifkan penyegaran feed otomatis</string>

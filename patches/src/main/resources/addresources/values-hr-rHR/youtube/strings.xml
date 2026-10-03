@@ -161,6 +161,8 @@ Promjene uključuju:
   <string name="morphe_hide_sync_button_title">Sakrij gumb \'Sinkroniziraj s videom\'</string>
   <string name="morphe_hide_timed_reactions_title">Sakrij \'Korak je ovo video stvoreno\'</string>
   <string name="morphe_hide_timed_reactions_summary">Skriva značajku koja korisnicima omogućuje reagiranje emotikonima u odjeljku s komentarima i razgovor uživo</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Sakrij handle kanala na kartici Ti</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Sakriva handle kanala ispod imena računa na kartici Ti</string>
   <string name="morphe_hide_video_title_title">Sakrij naslov videa</string>
   <string name="morphe_hide_video_title_summary">Skriva naslov videozapisa u načinu rada preko cijelog zaslona</string>
   <string name="morphe_sanitize_video_subtitle_title">Očisti titlove videozapisa</string>
@@ -1077,10 +1079,7 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_playback_in_feeds_entry_off">Isključeno</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Vrati izvorne naslove</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Prevedeni</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Izvorni</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Prevedeni s DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Izvorni s DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Prikazuje izvorne naslove videozapisa, opise videozapisa i opise kanala umjesto automatski prevedenih</string>
   <string name="morphe_restore_original_titles_loading">Učitavanje naslova…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Onemogući automatsko osvježavanje feeda</string>

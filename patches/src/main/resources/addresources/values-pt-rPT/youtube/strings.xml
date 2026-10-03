@@ -159,6 +159,8 @@ As mudanças incluem:
   <string name="morphe_hide_sync_button_title">Ocultar botão \'Sincronizar com vídeo\'</string>
   <string name="morphe_hide_timed_reactions_title">Esconder reações cronometradas</string>
   <string name="morphe_hide_timed_reactions_summary">Oculta o recurso que permite aos usuários reagir com emojis na seção de comentários e no chat ao vivo</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Ocultar o identificador do canal na guia Você</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Oculta o identificador do canal abaixo do nome da conta na guia Você</string>
   <string name="morphe_hide_video_title_title">Ocultar título do vídeo</string>
   <string name="morphe_hide_video_title_summary">Oculta o título do vídeo no modo de tela cheia</string>
   <string name="morphe_sanitize_video_subtitle_title">Sanitizar legenda do vídeo</string>
@@ -1075,10 +1077,7 @@ Limitação: Se 'Restaurar a barra de ação de vídeo antiga' estiver desativad
   <string name="morphe_playback_in_feeds_entry_off">Desligado</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Restaurar títulos originais</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Traduzido</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Original</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Traduzido com DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original com DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Mostra os títulos originais de vídeo, as descrições de vídeo e as descrições de canal em vez das versões traduzidas automaticamente</string>
   <string name="morphe_restore_original_titles_loading">Carregando título…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Desativar a atualização automática de feed</string>

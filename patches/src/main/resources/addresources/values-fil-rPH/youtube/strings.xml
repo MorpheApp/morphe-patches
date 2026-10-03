@@ -159,6 +159,8 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_sync_button_title">Itago ang button na \'I-sync sa video\'</string>
   <string name="morphe_hide_timed_reactions_title">Itago ang mga nakatakdang reaksyon</string>
   <string name="morphe_hide_timed_reactions_summary">Itinatago ang feature na nagbibigay-daan sa mga user na mag-react gamit ang mga emoji sa seksyon ng mga komento at live chat</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Itago ang handle ng channel sa tab na You</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Itinatago ang handle ng channel sa ilalim ng pangalan ng account sa tab na You</string>
   <string name="morphe_hide_video_title_title">Itago ang pamagat ng video</string>
   <string name="morphe_hide_video_title_summary">Itinatago ang pamagat ng video sa fullscreen mode</string>
   <string name="morphe_sanitize_video_subtitle_title">Linisin ang subtitle ng video</string>
@@ -1073,10 +1075,7 @@ Limitasyon: Kung ang 'Ibalik ang lumang video action bar' ay naka-off, maaaring 
   <string name="morphe_playback_in_feeds_entry_off">Naka-off</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Ibalik ang orihinal na mga pamagat</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Isinalin</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Orihinal</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Isinalin gamit ang DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Orihinal na may DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Ipinapakita ang orihinal na mga pamagat ng video, mga paglalarawan ng video at mga paglalarawan ng channel sa halip na mga awtomatikong isinalin</string>
   <string name="morphe_restore_original_titles_loading">Naglo-load ng pamagat…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">I-disable ang awtomatikong pag-refresh ng feed</string>

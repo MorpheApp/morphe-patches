@@ -159,6 +159,8 @@ Zmiany obejmują:
   <string name="morphe_hide_sync_button_title">Ukryj przycisk \"Zsynchronizuj z filmem\"</string>
   <string name="morphe_hide_timed_reactions_title">Ukryj reakcje czasowe</string>
   <string name="morphe_hide_timed_reactions_summary">Ukrywa funkcję umożliwiającą reagowanie emotikonami w sekcji komentarzy i na czacie na żywo</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Ukryj identyfikator kanału w zakładce Ty</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Ukrywa identyfikator kanału pod nazwą konta w zakładce Ty</string>
   <string name="morphe_hide_video_title_title">Ukryj tytuł filmu</string>
   <string name="morphe_hide_video_title_summary">Ukrywa tytuł filmu w trybie pełnoekranowym</string>
   <string name="morphe_sanitize_video_subtitle_title">Oczyść tekst pod tytułem filmu</string>
@@ -1074,10 +1076,7 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_playback_in_feeds_entry_off">Wyłączone</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Przywróć oryginalne tytuły</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Przetłumaczone</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Oryginał</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Przetłumaczone przez DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Oryginał z DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Wyświetla oryginalne tytuły, opisy filmów i kanałów zamiast tłumaczeń automatycznych</string>
   <string name="morphe_restore_original_titles_loading">Wczytywanie tytułu…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Wyłącz automatyczne odświeżanie</string>

@@ -150,6 +150,11 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary">תמיד מנגן את רצועת האודיו המקורית של הסרטון במקום גרסה מדובבת</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">דילוג על שקט</string>
+  <string name="morphe_skip_silence_summary">מדלג אוטומטית על הפסקות שקט באודיו של וידאו</string>
+  <string name="morphe_skip_silence_minimum_pause_title">אורך הפסקה מינימלי</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">רק הפסקות שאורכן לפחות משך זה יתקצרו. ההגדרה תיכנס לתוקף כשהסרטון הבא מתחיל</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">פרוקסי רשת</string>
   <string name="morphe_proxy_screen_summary">נתב בקשות רשת נתמכות דרך פרוקסי</string>

@@ -1,3 +1,29 @@
+## [1.46.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0...v1.46.0-dev.1) (2026-10-03)
+
+### 🐛 Bug Fixes
+
+* **Clone app:** Change update permission and update provider to default on ([296aadc](https://github.com/MorpheApp/morphe-patches/commit/296aadc68a930e8e67cb6a382c83b45b417d8ef1))
+* **YouTube - PiP button:** Wrong flyout drawable ([#3448](https://github.com/MorpheApp/morphe-patches/issues/3448)) ([88e23e1](https://github.com/MorpheApp/morphe-patches/commit/88e23e11a5fbb7aa860a7341267641951d2dc94f))
+* **YouTube - SponsorBlock:** Keep the segment opacity when importing settings and simplify the SponsorBlock code ([9e6e464](https://github.com/MorpheApp/morphe-patches/commit/9e6e464682f03347467e31e3acee2b41de214b04))
+* **YouTube - SponsorBlock:** Undo skip toast blocks touches on some devices ([503606a](https://github.com/MorpheApp/morphe-patches/commit/503606ac9a6ff404984a313034922e6ac543c174))
+* **YouTube - SponsorBlock:** Video length without segments is sometimes not shown ([fb7a029](https://github.com/MorpheApp/morphe-patches/commit/fb7a0297049b3397b6b89be919ab0d2cf005b89b))
+* **YouTube:** Chapters error when selecting ([501e66e](https://github.com/MorpheApp/morphe-patches/commit/501e66ec5d941f9d688481992621d291f7bf66f0))
+* **YouTube:** Player flyout menu not scrollable in landscape mode ([e3bfa8b](https://github.com/MorpheApp/morphe-patches/commit/e3bfa8b70c1176c2932811dbc0b48483403c4aba))
+
+### ✨ New Features
+
+* **SponsorBlock:** Show the skip behavior on the category preference ([38925c8](https://github.com/MorpheApp/morphe-patches/commit/38925c8e219daf38e85408beba4a001d74b18c2f))
+* **YouTube - Hide layout components:** Add Hide channel handle in You tab ([#3459](https://github.com/MorpheApp/morphe-patches/issues/3459)) ([acd4ab7](https://github.com/MorpheApp/morphe-patches/commit/acd4ab725c4f6dc022587740338d4b36a2aca4a0))
+* **YouTube - Player icon style:** Apply the icon style to the player's own controls ([#3451](https://github.com/MorpheApp/morphe-patches/issues/3451)) ([415bf3c](https://github.com/MorpheApp/morphe-patches/commit/415bf3c5f7c9753eb00a9b4924dcbfe15af427cd))
+* **YouTube - Player icon style:** Style the cast button and add the missing Ionicons icons ([f721305](https://github.com/MorpheApp/morphe-patches/commit/f721305ee34225fdacd41ebcfbb17546058b7ec6))
+* **YouTube Music:** Add `Android Auto` patch ([#3341](https://github.com/MorpheApp/morphe-patches/issues/3341)) ([a6d2dae](https://github.com/MorpheApp/morphe-patches/commit/a6d2dae48732917e834a800bc83e68afc9c6a09f))
+* **YouTube:** Add `Skip silence` patch ([#3467](https://github.com/MorpheApp/morphe-patches/issues/3467)) ([7a702fc](https://github.com/MorpheApp/morphe-patches/commit/7a702fcddad7a1ef48a84672fe2567b71ade14d5))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.39.52` ([cfc0435](https://github.com/MorpheApp/morphe-patches/commit/cfc0435c8f1c4ca09ad76734daae8e4a5acfe4ca))
+* **YouTube Music:** Add support for `9.20.53` ([edd808c](https://github.com/MorpheApp/morphe-patches/commit/edd808c1e954f6c43e2d4c7226c2689f7ae17da7))
+
 ## [1.45.0](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0...v1.45.0) (2026-10-02)
 
 ### 🐛 Bug Fixes

@@ -159,6 +159,8 @@ Spremembe vključujejo:
   <string name="morphe_hide_sync_button_title">Skrij gumb \'Sinhroniziraj z videoposnetkom\'</string>
   <string name="morphe_hide_timed_reactions_title">Skrij časovne reakcije</string>
   <string name="morphe_hide_timed_reactions_summary">Skrije funkcijo, ki uporabnikom omogoča reakcije z emojiji v oddelku za komentarje in klepetu v živo</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Skrij ročaj kanala na zavihku Ti</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Skrije ročaj kanala pod imenom računa na zavihku Ti</string>
   <string name="morphe_hide_video_title_title">Skrij naslov videa</string>
   <string name="morphe_hide_video_title_summary">Skrije naslov videoposnetka v celozaslonskem načinu</string>
   <string name="morphe_sanitize_video_subtitle_title">Očisti podnapise videoposnetka</string>
@@ -1075,10 +1077,7 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_playback_in_feeds_entry_off">Izklopljeno</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Obnovi izvirne naslove</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Prevedeno</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Izvirnik</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Prevedeno z DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Izvirno z DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Prikaže izvirne naslove videoposnetkov, opise videoposnetkov in opise kanalov namesto samodejno prevedenih</string>
   <string name="morphe_restore_original_titles_loading">Nalaganje naslova…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Onemogoči samodejno osveževanje virov</string>

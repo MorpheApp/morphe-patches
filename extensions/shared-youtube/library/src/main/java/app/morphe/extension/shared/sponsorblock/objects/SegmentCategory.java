@@ -79,7 +79,7 @@ public enum SegmentCategory {
             MUSIC_OFFTOPIC
     };
 
-    public static final String COLOR_DOT_STRING = "⬤";
+    private static final String COLOR_DOT_STRING = "⬤";
 
     public static final float CATEGORY_DEFAULT_OPACITY = 0.7f;
 
@@ -317,18 +317,22 @@ public enum SegmentCategory {
      * Sets the segment color with opacity from a color string in #AARRGGBB format.
      */
     public void setColorWithOpacity(String colorString) throws IllegalArgumentException {
-        int colorWithOpacity = Color.parseColor(colorString);
-        colorSetting().save(String.format(Locale.US, "#%08X", colorWithOpacity));
-        color = colorWithOpacity;
-        paint.setColor(color);
+        setColor(Color.parseColor(colorString));
     }
 
     /**
+     * Sets the opacity of the current color and saves it to settings.
+     *
      * @param opacity [0, 1] opacity value.
      */
     public void setOpacity(double opacity) {
-        color = Color.argb((int) (opacity * 255), Color.red(color), Color.green(color), Color.blue(color));
-        paint.setColor(color);
+        setColor(Color.argb((int) (opacity * 255), Color.red(color), Color.green(color), Color.blue(color)));
+    }
+
+    private void setColor(@ColorInt int colorWithOpacity) {
+        colorSetting().save(String.format(Locale.US, "#%08X", colorWithOpacity));
+        color = colorWithOpacity;
+        paint.setColor(colorWithOpacity);
     }
 
     /**
@@ -361,13 +365,6 @@ public enum SegmentCategory {
     public double getOpacity() {
         double opacity = Color.alpha(color) / 255.0;
         return Math.round(opacity * 100.0) / 100.0; // Round to 2 decimal digits.
-    }
-
-    /**
-     * Gets the title of the category.
-     */
-    public StringRef getTitle() {
-        return title;
     }
 
     /**
@@ -410,16 +407,8 @@ public enum SegmentCategory {
                     : skipSponsorTextCompact;
         }
 
-        if (videoLength == 0) {
-            return skipButtonTextBeginning; // Video is still loading. Assume it's the beginning.
-        }
-        final float position = segmentStartTime / (float) videoLength;
-        if (position < 0.25f) {
-            return skipButtonTextBeginning;
-        } else if (position < 0.75f) {
-            return skipButtonTextMiddle;
-        }
-        return skipButtonTextEnd;
+        return byPosition(segmentStartTime, videoLength,
+                skipButtonTextBeginning, skipButtonTextMiddle, skipButtonTextEnd);
     }
 
     /**
@@ -430,15 +419,24 @@ public enum SegmentCategory {
      * @return The skipped segment toast message.
      */
     public StringRef getSkippedToastText(long segmentStartTime, long videoLength) {
+        return byPosition(segmentStartTime, videoLength,
+                skippedToastBeginning, skippedToastMiddle, skippedToastEnd);
+    }
+
+    /**
+     * @return The text for the first quarter, the middle half or the last quarter of the video.
+     */
+    private static StringRef byPosition(long segmentStartTime, long videoLength,
+                                        StringRef beginning, StringRef middle, StringRef end) {
         if (videoLength == 0) {
-            return skippedToastBeginning; // Video is still loading. Assume it's the beginning.
+            return beginning; // Video is still loading. Assume it's the beginning.
         }
         final float position = segmentStartTime / (float) videoLength;
         if (position < 0.25f) {
-            return skippedToastBeginning;
+            return beginning;
         } else if (position < 0.75f) {
-            return skippedToastMiddle;
+            return middle;
         }
-        return skippedToastEnd;
+        return end;
     }
 }

@@ -59,7 +59,7 @@ public final class SponsorBlockHelpers {
     }
 
     public static boolean isValidSBUserID(@NonNull String userID) {
-        return !userID.isEmpty() && userID.length() >= SB_PRIVATE_USER_ID_MINIMUM_LENGTH;
+        return userID.length() >= SB_PRIVATE_USER_ID_MINIMUM_LENGTH;
     }
 
     /**

@@ -159,6 +159,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_sync_button_title">\'Videoyla senkronize et\' düğmesini gizle</string>
   <string name="morphe_hide_timed_reactions_title">Süreli tepkileri gizle</string>
   <string name="morphe_hide_timed_reactions_summary">Kullanıcıların yorum bölümünde ve canlı sohbette emojilerle tepki vermesini sağlayan özelliği gizler</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">\"Siz\" sekmesinde kanal kullanıcı adını gizle</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">\"Siz\" sekmesinde, hesap adının altındaki kanal kullanıcı adını gizler.</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
   <string name="morphe_hide_video_title_summary">Tam ekran modunda video başlığını gizler</string>
   <string name="morphe_sanitize_video_subtitle_title">Video altyazısını temizle</string>
@@ -1075,10 +1077,7 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_playback_in_feeds_entry_off">Kapalı</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Orijinal başlıkları geri yükle</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Çevrildi</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Orijinal</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow ile çevrildi</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow ile orijinal</string>
+  <string name="morphe_restore_original_titles_summary">Orijinal video başlıklarını, video açıklamalarını ve kanal açıklamalarını otomatik çevrilenlerin yerine gösterir</string>
   <string name="morphe_restore_original_titles_loading">Başlık yükleniyor…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Otomatik akış yenilemeyi devre dışı bırak</string>

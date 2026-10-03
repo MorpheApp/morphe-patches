@@ -21,9 +21,11 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.util.findFreeRegister
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
+import app.morphe.util.p0Register
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -45,7 +47,6 @@ val hideButtonsPatch = bytecodePatch(
     execute {
         val playerOverlayChip = resourceId(ResourceType.ID, "player_overlay_chip")
         val searchButton = resourceId(ResourceType.LAYOUT, "search_button")
-        val topBarMenuItemImageView = resourceId(ResourceType.ID, "top_bar_menu_item_image_view")
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),
@@ -88,11 +89,10 @@ val hideButtonsPatch = bytecodePatch(
             )
         }
 
-        // Region for hide cast, search and notification buttons in the top bar.
+        // Region for hide cast and search buttons in the top bar.
         arrayOf(
             Triple(PlayerOverlayChipFingerprint, playerOverlayChip, "hideCastButton"),
-            Triple(SearchActionViewFingerprint, searchButton, "hideSearchButton"),
-            Triple(TopBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton")
+            Triple(SearchActionViewFingerprint, searchButton, "hideSearchButton")
         ).forEach { (fingerprint, resourceIdLiteral, methodName) ->
             fingerprint.method.apply {
                 val resourceIndex = indexOfFirstLiteralInstructionOrThrow(resourceIdLiteral)
@@ -105,6 +105,30 @@ val hideButtonsPatch = bytecodePatch(
                     targetIndex + 1,
                     "invoke-static { v$targetRegister }, " +
                             "$EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        // Region for hide notification button in the top bar.
+        // Every top bar button of a page is built by this one method, for example the search button
+        // on an artist page. Only the notification button is created with a notification count
+        // key (an Optional field of the class), so that tells it apart from the others.
+        TopBarMenuItemImageViewFingerprint.let {
+            it.method.apply {
+                val targetIndex = it.instructionMatches[1].index
+                val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+                val optionalField = it.instructionMatches.last().getFieldAccessed()
+
+                // Before this point only the inflated layout and the image view are still in use.
+                val insertIndex = targetIndex + 1
+                val freeRegister = findFreeRegister(insertIndex, targetRegister, p0Register)
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        iget-object v$freeRegister, p0, $optionalField
+                        invoke-static { v$targetRegister, v$freeRegister }, $EXTENSION_CLASS->hideNotificationButton(Landroid/view/View;Ljava/lang/Object;)V
+                    """
                 )
             }
         }

@@ -14,6 +14,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.resource.ResourceType
@@ -61,7 +62,7 @@ internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
 )
 
 internal object SearchActionViewFingerprint : Fingerprint(
-    definingClass = "/SearchActionProvider;",
+    definingClass = "Lcom/google/android/apps/youtube/music/search/SearchActionProvider;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",
     parameters = listOf(),
@@ -88,7 +89,13 @@ internal object TopBarMenuItemImageViewFingerprint : Fingerprint(
     returnType = "Landroid/view/View;",
     parameters = listOf(),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "top_bar_menu_item_image_view")
+        resourceLiteral(ResourceType.ID, "top_bar_menu_item_image_view"),
+        opcode(Opcode.MOVE_RESULT_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Lj$/util/Optional;"
+        )
     )
 )
 

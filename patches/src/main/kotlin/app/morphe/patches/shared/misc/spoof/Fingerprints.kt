@@ -14,7 +14,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter.Companion.opcodesToFilters
-import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -244,17 +243,9 @@ internal object MediaFetchHotConfigFingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT,
             location = MatchAfterWithin(3)
         ),
-        anyInstruction(
-            opcode(
-                opcode = Opcode.IF_EQZ,
-                location = MatchAfterWithin(5)
-            ),
-            // Only for YouTube Music 7.29.52
-            fieldAccess(
-                opcode = Opcode.IPUT_BOOLEAN,
-                definingClass = "this",
-                location = MatchAfterWithin(5)
-            )
+        opcode(
+            opcode = Opcode.IF_EQZ,
+            location = MatchAfterWithin(5)
         )
     )
 )

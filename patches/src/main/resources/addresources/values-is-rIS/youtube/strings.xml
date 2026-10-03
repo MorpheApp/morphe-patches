@@ -159,6 +159,8 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_sync_button_title">Fela \'Samstilla við myndband\' hnappinn</string>
   <string name="morphe_hide_timed_reactions_title">Fela tímabilsbundnar viðbrögð</string>
   <string name="morphe_hide_timed_reactions_summary">Felur eiginleikann sem gerir notendum kleift að bregðast við með emojis í athugasmdum og lifandi streymi</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Fela rásarauðkenni í Þú-flipanum</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Felur rásarauðkennið undir reikningsnafninu í Þú-flipanum</string>
   <string name="morphe_hide_video_title_title">Fela myndbandsheiti</string>
   <string name="morphe_hide_video_title_summary">Felur vídeótitilinn í fullskjástillingu</string>
   <string name="morphe_sanitize_video_subtitle_title">Hreinsa undirtitla myndbands</string>
@@ -1070,10 +1072,7 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_playback_in_feeds_entry_off">Slökkt</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Endurheimta upprunalega titla</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Þýtt</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Upprunalegur</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Þýddur með DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Upprunalegur með DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Sýnir upprunalega myndbandstitla, myndbandslýsingar og rásarlýsingar í stað sjálfþýddra</string>
   <string name="morphe_restore_original_titles_loading">Hleð titil…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Slökkva á sjálfvirkri endurnýjun straums</string>

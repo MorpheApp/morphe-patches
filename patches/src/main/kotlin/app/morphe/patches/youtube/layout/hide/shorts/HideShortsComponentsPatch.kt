@@ -17,7 +17,7 @@ import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.resource.ResourceType
-import app.morphe.patcher.resource.resourceId
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -35,9 +35,9 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findElementByAttributeValueOrThrow
-import app.morphe.util.forEachLiteralValueInstruction
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.removeFromParent
 import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -187,9 +187,9 @@ val hideShortsComponentsPatch = bytecodePatch(
         // region Hide sound button.
 
         if (!is_21_05_or_greater) {
-            forEachLiteralValueInstruction(
-                resourceId(ResourceType.DIMEN, "reel_player_right_pivot_v2_size")
-            ) { literalInstructionIndex ->
+            resourceLiteral(
+                ResourceType.DIMEN, "reel_player_right_pivot_v2_size"
+            ).matchAllMethodIndicesForEach { literalInstructionIndex ->
                 val targetIndex = indexOfFirstInstructionOrThrow(literalInstructionIndex) {
                     getReference<MethodReference>()?.name == "getDimensionPixelSize"
                 } + 1

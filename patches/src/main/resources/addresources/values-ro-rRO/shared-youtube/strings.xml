@@ -150,6 +150,11 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary">Redă întotdeauna piesa audio originală a videoclipului în loc de o versiune dublată</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Sari peste tăcere</string>
+  <string name="morphe_skip_silence_summary">Sare automat peste pauzele de tăcere din sunetul video</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Durata minimă a pauzei</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Doar pauzele de cel puțin această durată sunt scurtate. Are efect când începe următorul videoclip</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy de rețea</string>
   <string name="morphe_proxy_screen_summary">Direcționează cererile de rețea prin intermediul unui proxy</string>

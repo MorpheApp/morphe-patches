@@ -15,13 +15,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
+import app.morphe.patcher.resourceLiteral
 import app.morphe.patcher.util.Document
 import app.morphe.patches.shared.layout.branding.header.CUSTOM_HEADER_RESOURCE_NAME
 import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findElementByAttributeValueOrThrow
-import app.morphe.util.forEachLiteralValueInstruction
+import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -55,12 +56,12 @@ private val changeHeaderBytecodePatch = bytecodePatch {
             "ytWordmarkHeader",
             "ytPremiumWordmarkHeader"
         ).forEach { resourceName ->
-            val resourceId = resourceId(ResourceType.ATTR, resourceName)
-
-            forEachLiteralValueInstruction(resourceId) { literalIndex ->
-                val register = getInstruction<OneRegisterInstruction>(literalIndex).registerA
+            resourceLiteral(
+                ResourceType.ATTR, resourceName
+            ).matchAllMethodIndicesForEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
                 addInstructions(
-                    literalIndex + 1,
+                    index + 1,
                     """
                         invoke-static { v$register }, $EXTENSION_CLASS->getHeaderAttributeId(I)I
                         move-result v$register    

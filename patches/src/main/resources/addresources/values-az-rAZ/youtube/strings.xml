@@ -1075,10 +1075,7 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_playback_in_feeds_entry_off">Qapalı</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Orijinal başlıqları bərpa et</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Tərcümə edildi</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Orijinal</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow ilə tərcümə olunub</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow ilə orijinal</string>
+  <string name="morphe_restore_original_titles_summary">Avtomatik tərcümə olunmuşlar əvəzinə orijinal video başlıqlarını, video təsvirlərini və kanal təsvirlərini göstərir</string>
   <string name="morphe_restore_original_titles_loading">Başlıq yüklənilir…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Avtomatik axın yeniləməsini qapat</string>

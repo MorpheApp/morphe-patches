@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">隱藏「同步到影片」按鈕</string>
   <string name="morphe_hide_timed_reactions_title">隱藏直播即時反應</string>
   <string name="morphe_hide_timed_reactions_summary">隱藏評論區和直播聊天中以表情符號回覆的功能</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">在 You 分頁中隱藏頻道代稱</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">在 You 分頁中，隱藏帳號名稱下方的頻道代稱</string>
   <string name="morphe_hide_video_title_title">隱藏影片標題</string>
   <string name="morphe_hide_video_title_summary">隱藏全螢幕模式下的影片標題</string>
   <string name="morphe_sanitize_video_subtitle_title">清理影片字幕</string>
@@ -1075,10 +1077,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">關閉</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">還原原始標題</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">翻譯</string>
-  <string name="morphe_restore_original_titles_type_entry_original">原始</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">由 DeArrow 翻譯的標題</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">由 DeArrow 提供的原始標題</string>
+  <string name="morphe_restore_original_titles_summary">顯示原始影片標題、影片說明和頻道說明，而非自動翻譯的內容</string>
   <string name="morphe_restore_original_titles_loading">正在載入標題…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">停用動態消息自動重新整理</string>

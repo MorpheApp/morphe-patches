@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">Приховати кнопку \"Синхронізувати з відео\"</string>
   <string name="morphe_hide_timed_reactions_title">Приховати тимчасові реакції</string>
   <string name="morphe_hide_timed_reactions_summary">Приховує функцію реакцій емодзі в секції коментарів і чаті трансляцій</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Приховати псевдонім каналу у вкладці «Ви»</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Приховує псевдонім каналу під іменем облікового запису у вкладці «Ви»</string>
   <string name="morphe_hide_video_title_title">Приховати назву відео</string>
   <string name="morphe_hide_video_title_summary">Приховує назву відео в повноекранному режимі</string>
   <string name="morphe_sanitize_video_subtitle_title">Очищувати підзаголовок відео</string>
@@ -1074,10 +1076,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_in_feeds_entry_off">Вимкнено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Відновити оригінальні назви</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Перекладено</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Оригінал</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Перекладено за допомогою DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Оригінал із DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Показує оригінальні назви відео, описи відео та описи каналів замість автоматично перекладених</string>
   <string name="morphe_restore_original_titles_loading">Завантаження назви…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Вимкнути автоматичне оновлення стрічки</string>

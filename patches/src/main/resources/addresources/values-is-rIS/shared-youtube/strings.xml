@@ -150,6 +150,11 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Neysla á upprunalegu hljóðrás</string>
   <string name="morphe_force_original_audio_summary">Spilar alltaf upprunalega hljóðrás myndbandsins stað þess sem eru dubbuð</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Sleppa þögn</string>
+  <string name="morphe_skip_silence_summary">Sleppir sjálfkrafa hljóðlátum hléum í myndbandshljóði</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Lágmarkslengd hlés</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Aðeins hlé sem eru að minnsta kosti svona löng verða stytt. Tekur gildi þegar næsta myndband byrjar</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Staðanets umboð</string>
   <string name="morphe_proxy_screen_summary">Leiða samsetningu nettbeiðna í gegnum umboð</string>

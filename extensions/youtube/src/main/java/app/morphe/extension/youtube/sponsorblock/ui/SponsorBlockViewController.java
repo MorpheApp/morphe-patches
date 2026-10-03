@@ -256,7 +256,7 @@ public class SponsorBlockViewController {
 
             NewSegmentLayout newSegmentLayout = newSegmentLayoutRef.get();
             setNewSegmentLayoutMargins(newSegmentLayout, isWatchFullScreen);
-            setViewVisibility(newSegmentLayoutRef.get(), newSegmentLayoutVisible);
+            setViewVisibility(newSegmentLayout, newSegmentLayoutVisible);
 
             SkipSponsorButton skipHighlightButton = skipHighlightButtonRef.get();
             setSkipButtonMargins(skipHighlightButton, isWatchFullScreen);
@@ -284,7 +284,7 @@ public class SponsorBlockViewController {
                                          int defaultBottomMargin, int ctaBottomMargin) {
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
         if (params == null) {
-            Logger.printException(() -> "Unable to setNewSegmentLayoutMargins (params are null)");
+            Logger.printException(() -> "Unable to setLayoutMargins (params are null)");
             return;
         }
         params.bottomMargin = fullScreen ? ctaBottomMargin : defaultBottomMargin;

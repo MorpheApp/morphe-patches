@@ -7,7 +7,10 @@
 
 package app.morphe.patches.youtube.layout.music
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -16,12 +19,10 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findMutableMethodOf
+import app.morphe.util.fiveRegisters
+import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicButtonsPatch;"
 
@@ -57,8 +58,7 @@ val overrideYouTubeMusicButtonsPatch = bytecodePatch(
     name = "Override YouTube Music buttons",
     description = "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
 ) {
-    dependsOn(settingsPatch)
-    dependsOn(overrideYouTubeMusicManifestPatch())
+    dependsOn(settingsPatch, overrideYouTubeMusicManifestPatch())
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
@@ -69,59 +69,33 @@ val overrideYouTubeMusicButtonsPatch = bytecodePatch(
             )
         )
 
-        classDefForEach { classDef ->
-            if (classDef.type == EXTENSION_CLASS) return@classDefForEach
-            var needsPatch = false
-            classDef.methods.forEach { method ->
-                if (method.implementation?.instructions?.any {
-                        it.opcode == Opcode.INVOKE_VIRTUAL &&
-                                (it as? ReferenceInstruction)?.reference?.let { ref ->
-                                    val mRef = ref as? MethodReference
-                                    mRef?.definingClass == "Landroid/content/Intent;" &&
-                                            (mRef.name == "setPackage" || mRef.name == "setData" || mRef.name == "setComponent")
-                                } == true
-                    } == true) {
-                    needsPatch = true
+        arrayOf(
+            "Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;"
+                    to "overrideSetPackage(Landroid/content/Intent;Ljava/lang/String;)Landroid/content/Intent;",
+            "Landroid/content/Intent;->setData(Landroid/net/Uri;)Landroid/content/Intent;"
+                    to "overrideSetData(Landroid/content/Intent;Landroid/net/Uri;)Landroid/content/Intent;",
+            "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+                    to "overrideSetComponent(Landroid/content/Intent;Landroid/content/ComponentName;)Landroid/content/Intent;",
+        ).forEach { (smali, methodDescriptor) ->
+            Fingerprint(
+                filters = listOf(
+                    methodCall(opcode = Opcode.INVOKE_VIRTUAL, smali = smali)
+                ),
+                custom = { _, classDef ->
+                    classDef.type != EXTENSION_CLASS
                 }
-            }
-
-            if (needsPatch) {
-                val mutableClass = mutableClassDefBy(classDef.type)
-                classDef.methods.forEach { method ->
-                    val instructions = method.implementation?.instructions?.toList() ?: return@forEach
-                    val targetIndices = instructions.mapIndexedNotNull { index, instruction ->
-                        if (instruction.opcode == Opcode.INVOKE_VIRTUAL) {
-                            val ref = (instruction as? ReferenceInstruction)?.reference as? MethodReference
-                            if (ref?.definingClass == "Landroid/content/Intent;") {
-                                if (ref.name == "setPackage" && ref.parameterTypes == listOf("Ljava/lang/String;")) {
-                                    index to "overrideSetPackage(Landroid/content/Intent;Ljava/lang/String;)Landroid/content/Intent;"
-                                } else if (ref.name == "setData" && ref.parameterTypes == listOf("Landroid/net/Uri;")) {
-                                    index to "overrideSetData(Landroid/content/Intent;Landroid/net/Uri;)Landroid/content/Intent;"
-                                } else if (ref.name == "setComponent" && ref.parameterTypes == listOf("Landroid/content/ComponentName;")) {
-                                    index to "overrideSetComponent(Landroid/content/Intent;Landroid/content/ComponentName;)Landroid/content/Intent;"
-                                } else null
-                            } else null
-                        } else null
-                    }
-
-                    if (targetIndices.isNotEmpty()) {
-                        val mutableMethod = mutableClass.findMutableMethodOf(method)
-                        targetIndices.reversed().forEach { (index, methodDescriptor) ->
-                            val instruction = instructions[index]
-                            val invokeString = if (instruction is RegisterRangeInstruction) {
-                                "invoke-static/range {v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1}}"
-                            } else {
-                                val i = instruction as FiveRegisterInstruction
-                                "invoke-static {v${i.registerC}, v${i.registerD}}"
-                            }
-
-                            mutableMethod.replaceInstruction(
-                                index,
-                                "$invokeString, $EXTENSION_CLASS->$methodDescriptor"
-                            )
-                        }
-                    }
+            ).matchAllMethodIndicesForEach { index ->
+                val instruction = getInstruction(index)
+                val invokeString = if (instruction is RegisterRangeInstruction) {
+                    "invoke-static/range { v${instruction.startRegister} .. v${instruction.startRegister + instruction.registerCount - 1} }"
+                } else {
+                    "invoke-static { ${fiveRegisters(index)} }"
                 }
+
+                replaceInstruction(
+                    index,
+                    "$invokeString, $EXTENSION_CLASS->$methodDescriptor"
+                )
             }
         }
     }

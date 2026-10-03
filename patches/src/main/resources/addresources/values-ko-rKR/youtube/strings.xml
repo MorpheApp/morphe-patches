@@ -159,6 +159,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
   <string name="morphe_hide_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
   <string name="morphe_hide_timed_reactions_summary">댓글 섹션 및 실시간 채팅에서 이모티콘으로 반응할 수 있는 기능을 숨깁니다</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">내 페이지 탭에서 채널 핸들 숨기기</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">내 페이지 탭에서 계정 이름 아래에 있는 채널 핸들을 숨깁니다</string>
   <string name="morphe_hide_video_title_title">동영상 제목 숨기기</string>
   <string name="morphe_hide_video_title_summary">전체 화면 모드에서 동영상 제목을 숨깁니다</string>
   <string name="morphe_sanitize_video_subtitle_title">동영상 제목 하단 정리하기</string>
@@ -1077,10 +1079,7 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_playback_in_feeds_entry_off">사용 안함</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">원본 제목 복원하기</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">번역본</string>
-  <string name="morphe_restore_original_titles_type_entry_original">원본</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">DeArrow 번역본</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">DeArrow 원본</string>
+  <string name="morphe_restore_original_titles_summary">자동 번역된 동영상 제목, 동영상 설명 및 채널 설명 대신 원본 동영상 제목, 동영상 설명 및 채널 설명을 표시합니다</string>
   <string name="morphe_restore_original_titles_loading">제목을 불러오는 중…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">자동 피드 새로고침 비활성화하기</string>

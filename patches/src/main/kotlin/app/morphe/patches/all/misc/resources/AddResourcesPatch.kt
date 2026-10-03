@@ -24,6 +24,7 @@
 package app.morphe.patches.all.misc.resources
 
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.Document
 import app.morphe.patches.util.resource.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
@@ -33,7 +34,6 @@ import org.w3c.dom.Node
 import java.io.File
 import java.util.Locale
 import java.util.logging.Logger
-import kotlin.collections.listOf
 
 /**
  * If any added string resources replace existing strings in the target app.
@@ -317,6 +317,15 @@ internal fun createResourceDestinationDirectoryIfNeeded(
     }
 }
 
+/**
+ * A destination resource file that is kept open while all apps add their resources to it.
+ */
+private class DestinationFile(
+    val document: Document,
+    val resourcesNode: Node,
+    val existingNodes: MutableMap<Pair<String, String>, Node>
+)
+
 internal val addResourcesPatch = resourcePatch(
     description = "Add resources such as strings or arrays to the app."
 ) {
@@ -325,6 +334,40 @@ internal val addResourcesPatch = resourcePatch(
 
     finalize {
         val logger = Logger.getLogger(AppLocale.Companion::class.java.name)
+
+        // Default resources added by each app and by the apps before it.
+        val appDefaultResources = mutableMapOf<String, Set<String>>()
+
+        // Destination files of the locale being processed. Multiple apps add resources to the
+        // same files, and keeping them open parses and writes each file only once.
+        val destinationFiles = mutableMapOf<String, DestinationFile>()
+
+        fun openDestinationFile(locale: AppLocale, destSubPath: String): DestinationFile {
+            destinationFiles[destSubPath]?.let { return it }
+
+            val destFile = this@finalize[destSubPath]
+            createResourceDestinationDirectoryIfNeeded(locale, logger, destSubPath, destFile)
+
+            val destDoc = document(destSubPath)
+            val destResourceNode = destDoc.getNode("resources")
+
+            val existingNodes = HashMap<Pair<String, String>, Node>()
+            if (patchStringsReplaceExisting) {
+                // Build lookup table once per destination file.
+                val children = destResourceNode.childNodes
+                for (i in 0 until children.length) {
+                    val node = children.item(i)
+                    if (node.nodeType == Node.ELEMENT_NODE) {
+                        val el = node as Element
+                        existingNodes[el.tagName to el.getAttribute("name")] = el
+                    }
+                }
+            }
+
+            return DestinationFile(destDoc, destResourceNode, existingNodes).also {
+                destinationFiles[destSubPath] = it
+            }
+        }
 
         fun addResourcesFromFile(
             appId: String,
@@ -349,95 +392,86 @@ internal val addResourcesPatch = resourcePatch(
             }
 
             srcStream.use {
-                val destFile = this@finalize[destSubPath]
-                createResourceDestinationDirectoryIfNeeded(locale, logger, destSubPath, destFile)
+                val destination = openDestinationFile(locale, destSubPath)
+                val destDoc = destination.document
+                val destResourceNode = destination.resourcesNode
+                val existingNodes = destination.existingNodes
+                val defaultResources = appDefaultResources[appId]
 
-                document(destSubPath).use { destDoc ->
-                    val destResourceNode = destDoc.getNode("resources")
+                document(srcStream).use { srcDoc ->
+                    val localeStringsAdded = mutableSetOf<String>()
 
-                    val existingNodes = if (patchStringsReplaceExisting) {
-                        val children = destResourceNode.childNodes
-
-                        // Build lookup table once per destination file.
-                        HashMap<Pair<String, String>, Node>(
-                            2 * children.length, 0.5f
-                        ).also {
-                            for (i in 0 until children.length) {
-                                val node = children.item(i)
-                                if (node.nodeType == Node.ELEMENT_NODE) {
-                                    val el = node as Element
-                                    val key = el.tagName to el.getAttribute("name")
-                                    it[key] = el
-                                }
+                    srcDoc.getElementsByTagName(
+                        "resources"
+                    ).item(0)?.forEachChildElement { srcNode ->
+                        val resourceName = srcNode.getAttributeNode("name").value
+                        if (resourceType == BundledResourceType.STRINGS) {
+                            // Check for bad text strings that will fail resource compilation.
+                            val textContent = srcNode.textContent
+                            val sanitized = sanitizeAndroidResourceString(
+                                resourceName, textContent, destSubPath
+                            )
+                            if (textContent != sanitized) {
+                                srcNode.textContent = sanitized
                             }
                         }
-                    } else {
-                        emptyMap()
-                    }
 
-                    document(srcStream).use { srcDoc ->
-                        val localeStringsAdded = mutableSetOf<String>()
+                        if (!localeStringsAdded.add(resourceName)) {
+                            logger.warning(
+                                "Duplicate string resource is declared: $srcFolderName " +
+                                        "resource: $resourceName"
+                            )
+                            return@forEachChildElement
+                        }
 
-                        srcDoc.getElementsByTagName(
-                            "resources"
-                        ).item(0)?.forEachChildElement { srcNode ->
-                            val resourceName = srcNode.getAttributeNode("name").value
-                            if (resourceType == BundledResourceType.STRINGS) {
-                                // Check for bad text strings that will fail resource compilation.
-                                val textContent = srcNode.textContent
-                                val sanitized = sanitizeAndroidResourceString(
-                                    resourceName, textContent, destSubPath
-                                )
-                                if (textContent != sanitized) {
-                                    srcNode.textContent = sanitized
-                                }
+                        if (isDefaultLocale) {
+                            // Duplicate check already handled above.
+                            defaultResourcesAdded.add(resourceName)
+                        } else if (defaultResources?.contains(resourceName) != true) {
+                            logger.fine {
+                                "Ignoring removed default resource for locale " +
+                                        "(Issue will be fixed after next Crowdin sync): " +
+                                        "$srcFolderName resource: $resourceName"
                             }
+                            return@forEachChildElement
+                        }
 
-                            if (!localeStringsAdded.add(resourceName)) {
-                                logger.warning(
-                                    "Duplicate string resource is declared: $srcFolderName " +
-                                            "resource: $resourceName"
-                                )
-                                return@forEachChildElement
+                        // Remove existing resources with the same name.
+                        // ARSCLib doesn't check for duplicates and uses the last added,
+                        // but Apktool crashes if duplicates exist.
+                        val key = srcNode.tagName to resourceName
+                        if (patchStringsReplaceExisting) {
+                            existingNodes[key]?.let { existing ->
+                                destResourceNode.removeChild(existing)
                             }
+                        }
 
-                            if (isDefaultLocale) {
-                                // Duplicate check already handled above.
-                                defaultResourcesAdded.add(resourceName)
-                            } else if (!defaultResourcesAdded.contains(resourceName)) {
-                                logger.fine {
-                                    "Ignoring removed default resource for locale " +
-                                            "(Issue will be fixed after next Crowdin sync): " +
-                                            "$srcFolderName resource: $resourceName"
-                                }
-                                return@forEachChildElement
-                            }
+                        // Import and append.
+                        val imported = destDoc.importNode(srcNode, true)
+                        destResourceNode.appendChild(imported)
 
-                            // Remove existing resources with the same name.
-                            // ARSCLib doesn't check for duplicates and uses the last added,
-                            // but Apktool crashes if duplicates exist.
-                            if (patchStringsReplaceExisting) {
-                                val key = srcNode.tagName to resourceName
-                                existingNodes[key]?.let { existing ->
-                                    destResourceNode.removeChild(existing)
-                                }
-                            }
-
-                            // Import and append.
-                            val imported = destDoc.importNode(srcNode, true)
-                            destResourceNode.appendChild(imported)
+                        if (patchStringsReplaceExisting) {
+                            // Resources of the next apps replace this one.
+                            existingNodes[key] = imported
                         }
                     }
                 }
             }
         }
 
-        appsToInclude.forEach { app ->
-            locales.forEach { locale ->
+        locales.forEach { locale ->
+            appsToInclude.forEach { app ->
                 BundledResourceType.entries.forEach { type ->
                     addResourcesFromFile(app, locale, type)
                 }
+
+                if (locale.isDefaultLocale()) {
+                    appDefaultResources[app] = defaultResourcesAdded.toSet()
+                }
             }
+
+            destinationFiles.values.forEach { it.document.close() }
+            destinationFiles.clear()
         }
     }
 }

@@ -28,6 +28,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.function.IntConsumer;
+
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -195,13 +197,13 @@ public class CustomDialogListPreference extends ListPreference {
         showDialog(null);
     }
 
-    @Override
-    protected void showDialog(Bundle state) {
-        Context context = getContext();
-
-        CharSequence[] entriesToShow = getEntriesForDialog();
-        CharSequence[] entryValues = getEntryValues();
-
+    /**
+     * Creates the styled single choice dialog without showing it, for any preference.
+     * Picking an entry passes its index to {@code onSelected} and dismisses the dialog.
+     */
+    public static Dialog createListDialog(Context context, String title,
+                                          CharSequence[] entries, CharSequence[] entryValues,
+                                          @Nullable String selectedValue, IntConsumer onSelected) {
         // Create ListView.
         ListView listView = new ListView(context);
         listView.setId(android.R.id.list);
@@ -212,17 +214,16 @@ public class CustomDialogListPreference extends ListPreference {
         ListPreferenceArrayAdapter adapter = new ListPreferenceArrayAdapter(
                 context,
                 LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED,
-                entriesToShow,
+                entries,
                 entryValues,
-                getValue()
+                selectedValue
         );
         listView.setAdapter(adapter);
 
         // Set checked item.
-        String currentValue = getValue();
-        if (currentValue != null) {
+        if (selectedValue != null) {
             for (int i = 0, length = entryValues.length; i < length; i++) {
-                if (currentValue.equals(entryValues[i].toString())) {
+                if (selectedValue.equals(entryValues[i].toString())) {
                     listView.setItemChecked(i, true);
                     listView.setSelection(i);
                     break;
@@ -233,20 +234,18 @@ public class CustomDialogListPreference extends ListPreference {
         // Create the custom dialog without OK button.
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
-                getTitle() != null ? getTitle().toString() : "",
+                title,
                 null,
                 null,
                 null,
                 null,
-                this::clearHighlightedEntriesForDialog, // Cancel button action.
+                () -> {}, // Cancel button action.
                 null,
                 null,
                 true
         );
 
         Dialog dialog = dialogPair.first;
-        // Add a listener to clear when the dialog is closed in any way.
-        dialog.setOnDismissListener(dialogInterface -> clearHighlightedEntriesForDialog());
 
         // Add the ListView to the main layout.
         LinearLayout mainLayout = dialogPair.second;
@@ -259,26 +258,41 @@ public class CustomDialogListPreference extends ListPreference {
 
         // Handle item click to select value and dismiss dialog.
         listView.setOnItemClickListener((parent, view, position, id) -> {
-            String selectedValue = entryValues[position].toString();
-            if (callChangeListener(selectedValue)) {
-                setValue(selectedValue);
-
-                // Update summaries from the original entries (without highlighting).
-                if (staticSummary == null) {
-                    CharSequence[] originalEntries = getEntries();
-                    if (originalEntries != null && position < originalEntries.length) {
-                        setSummary(originalEntries[position]);
-                    }
-                }
-
-                adapter.setSelectedValue(selectedValue);
-                adapter.notifyDataSetChanged();
-            }
-
-            // Clear highlighted entries before closing.
-            clearHighlightedEntriesForDialog();
+            onSelected.accept(position);
             dialog.dismiss();
         });
+
+        return dialog;
+    }
+
+    @Override
+    protected void showDialog(Bundle state) {
+        CharSequence[] entryValues = getEntryValues();
+
+        Dialog dialog = createListDialog(
+                getContext(),
+                getTitle() != null ? getTitle().toString() : "",
+                getEntriesForDialog(),
+                entryValues,
+                getValue(),
+                position -> {
+                    String selectedValue = entryValues[position].toString();
+                    if (callChangeListener(selectedValue)) {
+                        setValue(selectedValue);
+
+                        // Update summaries from the original entries (without highlighting).
+                        if (staticSummary == null) {
+                            CharSequence[] originalEntries = getEntries();
+                            if (originalEntries != null && position < originalEntries.length) {
+                                setSummary(originalEntries[position]);
+                            }
+                        }
+                    }
+                }
+        );
+
+        // Add a listener to clear when the dialog is closed in any way.
+        dialog.setOnDismissListener(dialogInterface -> clearHighlightedEntriesForDialog());
 
         // Show the dialog.
         dialog.show();

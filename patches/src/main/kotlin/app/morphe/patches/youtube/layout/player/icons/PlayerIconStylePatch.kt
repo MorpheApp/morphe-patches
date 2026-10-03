@@ -1,16 +1,25 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/3287
+ * https://github.com/MorpheApp/morphe-patches/pull/3451
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.player.icons
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.ResourcePatchContext
+import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.filePathOption
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.resource.ResourceType
+import app.morphe.patcher.resource.resourceId
+import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -18,7 +27,17 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
+import app.morphe.util.findInstructionIndicesReversed
+import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionReversed
 import app.morphe.util.inputStreamFromBundledResource
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import org.w3c.dom.Element
 import java.io.File
 import java.util.logging.Logger
 import java.util.zip.ZipFile
@@ -226,6 +245,18 @@ private val appPlayerBitmapIcons = listOf(
     "yt_outline_experimental_player_full_exit_alt_black_24" to "FullscreenExitAlt",
 )
 
+// Selectors the skip buttons show without the bold player, and the wrapper of their icons.
+private val appSkipSelectors = listOf(
+    "player_next" to "SkipNext",
+    "player_prev" to "SkipPrevious",
+)
+
+// Every configuration of a resource type, such as drawable-xxhdpi for drawable.
+private fun ResourcePatchContext.resourceDirectories(type: String) =
+    get("res", false).listFiles { file ->
+        file.isDirectory && file.name.startsWith(type)
+    }.orEmpty()
+
 /**
  * Replaces an app icon that exists only as density specific bitmaps with a wrapper.
  * A density specific bitmap wins over a default drawable, so every bitmap is removed.
@@ -238,9 +269,7 @@ internal fun ResourcePatchContext.wrapAppBitmapIcon(
     wrapperClass: String,
     originalName: String? = null,
 ): Boolean {
-    val bitmaps = get("res", false).listFiles { file ->
-        file.isDirectory && file.name.startsWith("drawable")
-    }.orEmpty().flatMap { directory ->
+    val bitmaps = resourceDirectories("drawable").flatMap { directory ->
         listOf("png", "webp").map { extension -> directory.resolve("$appName.$extension") }
     }.filter { it.exists() }
     if (bitmaps.isEmpty()) return false
@@ -256,16 +285,197 @@ internal fun ResourcePatchContext.wrapAppBitmapIcon(
     return true
 }
 
-private fun appPlayerIconWrapper(wrapperClass: String) =
-    $$"""
+/**
+ * @param appIcon The app icon the wrapper keeps for the default style, or null if the wrapper class names it.
+ */
+private fun appPlayerIconWrapper(wrapperClass: String, appIcon: String? = null): String {
+    val drawable = appIcon?.let { " android:drawable=\"$it\"" }.orEmpty()
+    return $$"""
     <?xml version="1.0" encoding="utf-8"?>
     <drawable xmlns:android="http://schemas.android.com/apk/res/android"
-        class="$${APP_PLAYER_ICON_DRAWABLE}$$${wrapperClass}" />
+        class="$${APP_PLAYER_ICON_DRAWABLE}$$${wrapperClass}"$$drawable />
     """.trimIndent()
+}
+
+/**
+ * Puts a wrapper around every icon of an app selector, which keeps its states.
+ * The wrapper gets the app icon as android:drawable, since the icon differs per screen size.
+ */
+private fun ResourcePatchContext.wrapAppSelectorIcons(selectorName: String, wrapperClass: String) {
+    resourceDirectories("drawable").filter { it.resolve("$selectorName.xml").exists() }.forEach { directory ->
+        document("res/${directory.name}/$selectorName.xml").use { document ->
+            val items = document.getElementsByTagName("item")
+            for (i in 0 until items.length) {
+                val item = items.item(i) as Element
+                // The disabled item is a tinted <bitmap> child instead of an android:drawable attribute.
+                val bitmap = item.getElementsByTagName("bitmap").item(0) as Element?
+                val icon = item.getAttribute("android:drawable").ifEmpty {
+                    bitmap?.getAttribute("android:src").orEmpty()
+                }
+                if (icon.isEmpty()) continue
+
+                item.removeAttribute("android:drawable")
+                bitmap?.let(item::removeChild)
+                val disabled = if (item.getAttribute("android:state_enabled") == "false") "Disabled" else ""
+                item.appendChild(document.createElement("drawable").apply {
+                    setAttribute("class", $$"$${APP_PLAYER_ICON_DRAWABLE}$$${wrapperClass}$${disabled}")
+                    setAttribute("android:drawable", icon)
+                })
+            }
+        }
+    }
+}
+
+private const val EXTENSION_PLAY_PAUSE_ICONS =
+    "Lapp/morphe/extension/youtube/videoplayer/PlayPauseIcons;"
+
+// The cast button, which loads the icon of each cast state itself.
+private const val MDX_ENTRY_POINT_BUTTON_CLASS =
+    "Lcom/google/android/libraries/youtube/mdx/mediaroute/entrypoint/MdxEntryPointButton;"
+
+private const val EXTENSION_PLAYER_BUTTON_ICONS =
+    "Lapp/morphe/extension/youtube/videoplayer/PlayerButtonIcons;"
+
+// The extension takes an ImageView, so only calls on these classes can be redirected to it.
+private val imageViewClasses = listOf(
+    "Landroid/widget/ImageView;",
+    "Lcom/google/android/libraries/youtube/common/ui/TouchImageView;",
+)
+
+private val drawableLoaderClasses = listOf(
+    "Landroid/content/res/Resources;",
+    "Landroid/content/Context;",
+)
+
+/**
+ * Routes the icons a class sets by resource id through the extension, which swaps in the style icon.
+ * Calls with other icons keep their original behavior.
+ */
+private fun MutableClass.hookIconsSetFromCode() {
+    methods.filter { it.implementation != null }.forEach { method ->
+        method.apply {
+            imageViewClasses.forEach { imageViewClass ->
+                findInstructionIndicesReversed(
+                    methodCall(
+                        opcode = Opcode.INVOKE_VIRTUAL,
+                        definingClass = imageViewClass,
+                        name = "setImageResource",
+                        parameters = listOf("I")
+                    )
+                ).forEach { index ->
+                    val call = getInstruction<FiveRegisterInstruction>(index)
+                    replaceInstruction(
+                        index,
+                        "invoke-static { v${call.registerC}, v${call.registerD} }, " +
+                                "$EXTENSION_PLAYER_BUTTON_ICONS->setImageResource(Landroid/widget/ImageView;I)V"
+                    )
+                }
+            }
+
+            // Loads the icon by id to tint it before setting it. Same registers, same result type.
+            drawableLoaderClasses.forEach { loaderClass ->
+                findInstructionIndicesReversed(
+                    methodCall(
+                        opcode = Opcode.INVOKE_VIRTUAL,
+                        definingClass = loaderClass,
+                        name = "getDrawable",
+                        parameters = listOf("I")
+                    )
+                ).forEach { index ->
+                    val call = getInstruction<FiveRegisterInstruction>(index)
+                    replaceInstruction(
+                        index,
+                        "invoke-static { v${call.registerC}, v${call.registerD} }, $EXTENSION_PLAYER_BUTTON_ICONS->" +
+                                "getDrawable(${loaderClass}I)Landroid/graphics/drawable/Drawable;"
+                    )
+                }
+            }
+
+            // A helper that loads the icon by id and adds its own effects, the style replaces its result.
+            // It returns nothing, so no move-result has to stay right after it.
+            findInstructionIndicesReversed(
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL_RANGE,
+                    returnType = "V",
+                    parameters = listOf("Landroid/widget/ImageView;", "I", "I", "I", "I", "I")
+                )
+            ).forEach { index ->
+                val view = getInstruction<RegisterRangeInstruction>(index).startRegister + 1
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$view, v${view + 1} }, " +
+                            "$EXTENSION_PLAYER_BUTTON_ICONS->applyStyle(Landroid/widget/ImageView;I)Z"
+                )
+            }
+        }
+    }
+}
+
+/**
+ * Applies the style to the app's player buttons that get their icons from code.
+ */
+private val playerButtonIconStylePatch = bytecodePatch {
+    dependsOn(sharedExtensionPatch)
+
+    execute {
+        // The same icons are on screens outside the player, so only these classes are changed.
+        // Any can be missing on a target, which then keeps the app icons of that button.
+        PlayerOverlayControlsFingerprint.classDefOrNull?.hookIconsSetFromCode()
+        PlayerControlIconLoaderFingerprint.classDefOrNull?.hookIconsSetFromCode()
+        PlayerCaptionsButtonFingerprint.classDefOrNull?.hookIconsSetFromCode()
+        mutableClassDefByOrNull(MDX_ENTRY_POINT_BUTTON_CLASS)?.hookIconsSetFromCode()
+
+        PlayPauseButtonStateFingerprint.methodOrNull?.apply {
+            val play = resourceId(ResourceType.STRING, "accessibility_play")
+            val pause = resourceId(ResourceType.STRING, "accessibility_pause")
+            val replay = resourceId(ResourceType.STRING, "accessibility_replay")
+            val states = setOf(play, pause, replay)
+
+            findInstructionIndicesReversed(
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    definingClass = "Landroid/widget/ImageView;",
+                    name = "setImageDrawable"
+                )
+            ).forEach { index ->
+                // Every state first sets its content description, which tells what the button shows.
+                val stateIndex = indexOfFirstInstructionReversed(index) {
+                    this is WideLiteralInstruction && wideLiteral in states
+                }
+                if (stateIndex < 0) return@forEach
+                val state = getInstruction<WideLiteralInstruction>(stateIndex).wideLiteral
+                val call = getInstruction<FiveRegisterInstruction>(index)
+
+                // The morph animations are animated vector drawables, the still icons are plain drawables.
+                fun animated(): Boolean {
+                    val fieldIndex = indexOfFirstInstructionReversed(index) {
+                        opcode == Opcode.IGET_OBJECT && (this as TwoRegisterInstruction).registerA == call.registerD
+                    }
+                    if (fieldIndex < 0) return false
+                    return getInstruction(fieldIndex).getReference<FieldReference>()?.type !=
+                            "Landroid/graphics/drawable/Drawable;"
+                }
+
+                val hook = when (state) {
+                    play -> if (animated()) "setPauseToPlay" else "setPlay"
+                    pause -> if (animated()) "setPlayToPause" else "setPause"
+                    else -> "setReplay"
+                }
+
+                // The app may use the drawable register again after this call, so it is left untouched.
+                replaceInstruction(
+                    index,
+                    "invoke-static { v${call.registerC}, v${call.registerD} }, $EXTENSION_PLAY_PAUSE_ICONS->$hook" +
+                            "(Landroid/widget/ImageView;Landroid/graphics/drawable/Drawable;)V"
+                )
+            }
+        }
+    }
+}
 
 /**
  * Adds the player icon style picker, shared by the player buttons and the swipe controls,
- * and applies the style to the app's own fullscreen button.
+ * and applies the style to the app's own player buttons.
  */
 val playerIconStylePatch = resourcePatch(
     name = "Player icon style",
@@ -274,6 +484,7 @@ val playerIconStylePatch = resourcePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        playerButtonIconStylePatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -321,6 +532,53 @@ val playerIconStylePatch = resourcePatch(
         // A bitmap wrapper falls back to the vector copy, so it is only safe where that copy exists.
         appPlayerBitmapIcons.filter { (_, wrapperClass) -> wrapperClass in wrapped }
             .forEach { (appName, wrapperClass) -> wrapAppBitmapIcon(appName, wrapperClass) }
+
+        // The app has its own icons for these in every style, so only the style variants are copied.
+        copyPlayerIconStyles(
+            "playericons",
+            "morphe_player_play",
+            "morphe_player_pause",
+            "morphe_player_replay",
+            "morphe_player_next",
+            "morphe_player_previous",
+            "morphe_player_settings",
+            "morphe_player_captions_on",
+            "morphe_player_captions_off",
+            "morphe_player_cast",
+            // The minimal miniplayer's close button.
+            "morphe_player_close",
+        )
+
+        // Older players show these selectors from the layout, the bold player sets its icons from code.
+        appSkipSelectors.forEach { (selectorName, wrapperClass) ->
+            wrapAppSelectorIcons(selectorName, wrapperClass)
+        }
+
+        // Without the bold player the settings button keeps the gear of its layout, which other screens share,
+        // so only the button points to a wrapper. The wrapper keeps whatever icon the layout had.
+        var settingsIcon: String? = null
+        resourceDirectories("layout")
+            .flatMap { it.listFiles().orEmpty().toList() }
+            .filter { it.readText().contains("\"@id/player_overflow_button\"") }
+            .forEach { layout ->
+                document("res/${layout.parentFile.name}/${layout.name}").use { document ->
+                    val elements = document.getElementsByTagName("*")
+                    for (i in 0 until elements.length) {
+                        val element = elements.item(i) as Element
+                        if (element.getAttribute("android:id") != "@id/player_overflow_button") continue
+
+                        val icon = element.getAttribute("android:src")
+                        // Only the icon of the first layout goes into the wrapper, another icon stays as it is.
+                        if (icon.isEmpty() || (settingsIcon != null && icon != settingsIcon)) continue
+
+                        settingsIcon = icon
+                        element.setAttribute("android:src", "@drawable/morphe_player_settings_app")
+                    }
+                }
+            }
+        settingsIcon?.let {
+            get("res/drawable/morphe_player_settings_app.xml").writeText(appPlayerIconWrapper("Settings", it))
+        }
     }
 
     finalize {

@@ -150,6 +150,11 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Puwersahan ang orihinal na tunog ng wika</string>
   <string name="morphe_force_original_audio_summary">Palaging pinatutugtog ang orihinal na audio track ng video sa halip na isang dubbed na bersyon</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Laktawan ang katahimikan</string>
+  <string name="morphe_skip_silence_summary">Awtomatikong nilalaktawan ang mga tahimik na paghinto sa audio ng video</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Pinakamababang haba ng paghinto</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Tanging ang mga paghinto na hindi bababa sa habang ito ang paiikliin. Magkakabisa ito kapag nagsimula ang susunod na video</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Proxy ng network</string>
   <string name="morphe_proxy_screen_summary">Iruta ang mga suportadong kahilingan ng network sa pamamagitan ng isang proxy</string>

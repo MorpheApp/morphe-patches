@@ -159,6 +159,8 @@ Promene uključuju:
   <string name="morphe_hide_sync_button_title">Сакриј дугме „Синхронизуј са видео снимком“</string>
   <string name="morphe_hide_timed_reactions_title">Сакриј временске реакције</string>
   <string name="morphe_hide_timed_reactions_summary">Саскрива функцију која корисницима омогућава да реагују емотиконима у одељку за коментаре и чату уживо</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Сакриј хендл канала у картици Ти</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Сакрива хендл канала испод имена налога у картици Ти</string>
   <string name="morphe_hide_video_title_title">Сакриј наслов Shorts видеа</string>
   <string name="morphe_hide_video_title_summary">Саскрива наслов видеа у пуном режиму</string>
   <string name="morphe_sanitize_video_subtitle_title">Очисти титлове видеа</string>
@@ -1058,10 +1060,7 @@ Promene uključuju:
   <string name="morphe_playback_in_feeds_entry_off">Искључено</string>
   <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
   <string name="morphe_restore_original_titles_title">Врати оригиналне наслове</string>
-  <string name="morphe_restore_original_titles_type_entry_translated">Преведено</string>
-  <string name="morphe_restore_original_titles_type_entry_original">Оригинална</string>
-  <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Преведено са DeArrow</string>
-  <string name="morphe_restore_original_titles_type_entry_original_dearrow">Оригинал са DeArrow</string>
+  <string name="morphe_restore_original_titles_summary">Приказује оригиналне наслове видео записа, описе видео записа и описе канала уместо аутоматски преведених</string>
   <string name="morphe_restore_original_titles_loading">Учитавање наслова…</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <string name="morphe_disable_auto_feed_refresh_title">Онемогући аутоматско освежавање фидова</string>

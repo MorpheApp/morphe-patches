@@ -150,6 +150,11 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">원본 오디오 언어 강제로 활성화하기</string>
   <string name="morphe_force_original_audio_summary">더빙 버전 대신 동영상의 원본 오디오 트랙을 항상 재생합니다</string>
+  <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">무음 건너뛰기</string>
+  <string name="morphe_skip_silence_summary">동영상 오디오에서 무음 구간을 자동으로 건너뜁니다</string>
+  <string name="morphe_skip_silence_minimum_pause_title">최소 일시 정지 길이</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">최소 이 시간 이상 일시 정지하는 경우에만 단축됩니다. 다음 동영상이 시작될 때 적용됩니다</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">네트워크 프록시</string>
   <string name="morphe_proxy_screen_summary">프록시를 통해 지원되는 네트워크 요청을 라우팅합니다</string>
