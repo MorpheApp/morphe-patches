@@ -13,6 +13,7 @@ package app.morphe.patches.music.layout.buttons
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resource.resourceId
@@ -21,12 +22,15 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideButtonsPatch;"
 
@@ -88,11 +92,10 @@ val hideButtonsPatch = bytecodePatch(
             )
         }
 
-        // Region for hide cast, search and notification buttons in the top bar.
+        // Region for hide cast and search buttons in the top bar.
         arrayOf(
             Triple(PlayerOverlayChipFingerprint, playerOverlayChip, "hideCastButton"),
-            Triple(SearchActionViewFingerprint, searchButton, "hideSearchButton"),
-            Triple(TopBarMenuItemImageViewFingerprint, topBarMenuItemImageView, "hideNotificationButton")
+            Triple(SearchActionViewFingerprint, searchButton, "hideSearchButton")
         ).forEach { (fingerprint, resourceIdLiteral, methodName) ->
             fingerprint.method.apply {
                 val resourceIndex = indexOfFirstLiteralInstructionOrThrow(resourceIdLiteral)
@@ -107,6 +110,38 @@ val hideButtonsPatch = bytecodePatch(
                             "$EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
                 )
             }
+        }
+
+        // Region for hide notification button in the top bar.
+        // Every top bar button of a page is built by this one method, for example the search button
+        // on an artist page. Only the notification button is created with a notification count
+        // key (an Optional field of the class), so that tells it apart from the others.
+        TopBarMenuItemImageViewFingerprint.method.apply {
+            val resourceIndex = indexOfFirstLiteralInstructionOrThrow(topBarMenuItemImageView)
+            val targetIndex = indexOfFirstInstructionOrThrow(resourceIndex, Opcode.MOVE_RESULT_OBJECT)
+            val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+
+            val optionalFieldIndex = indexOfFirstInstructionOrThrow {
+                opcode == Opcode.IGET_OBJECT &&
+                        getReference<FieldReference>()?.let {
+                            it.type == "Lj$/util/Optional;" && it.definingClass == definingClass
+                        } == true
+            }
+            val optionalField = getInstruction<ReferenceInstruction>(optionalFieldIndex).reference
+
+            // Before this point only the inflated layout and the image view are still in use.
+            val inflatedLayoutRegister = getInstruction<FiveRegisterInstruction>(targetIndex - 1).registerC
+            val freeRegister = (0 until implementation!!.registerCount - parameters.size - 1)
+                .firstOrNull { it != targetRegister && it != inflatedLayoutRegister }
+                ?: throw PatchException("No free register to read the notification key")
+
+            addInstructions(
+                targetIndex + 1,
+                """
+                    iget-object v$freeRegister, p0, $optionalField
+                    invoke-static { v$targetRegister, v$freeRegister }, $EXTENSION_CLASS->hideNotificationButton(Landroid/view/View;Ljava/lang/Object;)V
+                """
+            )
         }
 
         // Region for hide voice search and sound search buttons in the search bar.
