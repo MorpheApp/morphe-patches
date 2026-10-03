@@ -36,6 +36,7 @@ import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.getReference
 import app.morphe.util.matchAllMethodIndicesForEach
+import app.morphe.util.matchSingle
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
@@ -188,6 +189,19 @@ fun gmsCoreSupportPatch(
 
         // Specific method that needs to be patched.
         primeMethodFingerprint?.let { transformPrimeMethod(toPackageName) }
+
+        // GNP expects the original Google package even when the installed app is renamed.
+        GnpRegistrationTargetFingerprint.matchSingle().let { match ->
+            val result = match.instructionMatches[1]
+            match.method.replaceInstruction(
+                result.index,
+                BuilderInstruction21c(
+                    Opcode.CONST_STRING,
+                    (result.instruction as OneRegisterInstruction).registerA,
+                    ImmutableStringReference(fromPackageName),
+                ),
+            )
+        }
 
         // Return these methods early to prevent the app from crashing.
         earlyReturnFingerprints.forEach {
