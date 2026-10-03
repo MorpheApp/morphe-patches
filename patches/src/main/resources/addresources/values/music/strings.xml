@@ -123,6 +123,10 @@ Second \"item\" text"</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
     <string name="morphe_music_play_album_songs_summary">Play the album audio only version of songs instead of a music video. Requires \'Spoof video streams\'</string>
 
+    <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+    <string name="morphe_music_enable_audio_video_switch_title">Enable audio/video switch</string>
+    <string name="morphe_music_enable_audio_video_switch_summary">Try to switch ATV and OMV by redirecting to a new videoId, and your play queue will be lost, please operate with caution.</string>
+
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
     <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
