@@ -8,10 +8,7 @@
 package app.morphe.patches.shared.misc.audio.silence
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.patch.BytecodePatchBuilder
-import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -23,17 +20,11 @@ import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/SkipSilencePatch;"
 
-// A fingerprint with a class fingerprint throws, instead of returning null, when the class is missing.
-private fun BytecodePatchContext.isMatched(fingerprint: Fingerprint) = try {
-    fingerprint.matchOrNull() != null
-} catch (_: PatchException) {
-    false
-}
-
 @Suppress("unused")
 internal fun skipSilencePatch(
     block: BytecodePatchBuilder.() -> Unit,
-    preferenceScreen: BasePreferenceScreen.Screen,
+    targetCompatible: BytecodePatchBuilder.() -> Boolean = { true },
+    preferenceScreen: BasePreferenceScreen.Screen
 ) = bytecodePatch(
     name = "Skip silence",
     description = "Adds an option to automatically skip silent pauses in audio playback."
@@ -41,14 +32,10 @@ internal fun skipSilencePatch(
     block()
 
     execute {
-        // Older app versions use an older Media3 with a different silence skipping
-        // processor. Skip the patch there instead of failing the whole patching.
-        if (!isMatched(ApplySkipSilenceFingerprint) ||
-            !isMatched(SetSkipSilenceEnabledFingerprint) ||
-            !isMatched(SilenceSkippingProcessorConstructorFingerprint)
-        ) {
+        // Older app versions use an older Media3 with a different silence skipping processor.
+        if (!targetCompatible()) {
             return@execute Logger.getLogger(this::class.java.name).warning(
-                "'Skip silence' does not support this app version."
+                "'Skip silence' does not support older legacy app targets."
             )
         }
 
