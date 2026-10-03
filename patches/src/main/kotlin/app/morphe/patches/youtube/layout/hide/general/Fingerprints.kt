@@ -820,6 +820,21 @@ internal object ListMenuItemViewOnMeasureFingerprint : Fingerprint(
     parameters = listOf("I", "I")
 )
 
+/**
+ * Binds the chapter title shown next to the timestamp.
+ */
+internal object HideTimeBarChapterTitleFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "time_bar_chapter_title"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45752241)

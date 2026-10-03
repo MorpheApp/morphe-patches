@@ -1355,6 +1355,28 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      * <p>
+     * Some app targets show the chapter title next to the timestamp as its own view, instead
+     * of inside the entry point button hidden by {@link #hideChaptersTimelineButton(View)}.
+     */
+    public static void hideChapterTitle(View view) {
+        if (view == null || !Settings.HIDE_CHAPTERS_TIMELINE_BUTTON.get()) {
+            return;
+        }
+
+        Utils.hideViewByLayoutParams(view);
+        view.setVisibility(View.GONE);
+
+        // The chip around the title is a separate parent view.
+        int containerId = ResourceUtils.getIdentifier(ResourceType.ID, "time_bar_chapter_title_container");
+        if (containerId != 0 && view.getParent() instanceof View parent && parent.getId() == containerId) {
+            Utils.hideViewByLayoutParams(parent);
+            parent.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * Called with the measure spec of a row of an app bar menu. The 'Help &amp; feedback' row is
      * measured at no height, so it takes no space in the menu.
      */
