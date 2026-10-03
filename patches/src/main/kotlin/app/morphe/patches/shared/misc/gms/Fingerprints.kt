@@ -19,19 +19,16 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object GnpRegistrationTargetFingerprint : Fingerprint(
-    strings = listOf(
-        "Failed to get android ID.",
-        "Exception reading GServices key.",
-    ),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = "Landroid/content/Context;->getPackageName()Ljava/lang/String;",
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-    ),
+        string("Failed to get android ID."),
+        string("Exception reading GServices key.")
+    )
 )
-
 internal object GooglePlayUtilityFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "I",
