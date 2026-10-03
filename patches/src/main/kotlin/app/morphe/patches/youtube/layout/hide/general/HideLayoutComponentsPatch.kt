@@ -103,7 +103,6 @@ private const val SEARCH_LINKS_FILTER =
 val hideLayoutComponentsPatch = bytecodePatch(
     name = "Hide layout components",
     description = "Adds options to hide general layout components."
-
 ) {
     dependsOn(
         lithoFilterPatch,

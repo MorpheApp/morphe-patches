@@ -124,11 +124,12 @@ internal object SlideToSeekFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "F"),
     filters = listOf(
-        opcode(Opcode.INVOKE_VIRTUAL),
+        methodCall(
+            returnType = "Z",
+            parameters = listOf(),
+            location = MatchAfterWithin(10) // Match close to start of method.
+        ),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
-        opcode(Opcode.GOTO_16, location = MatchAfterImmediately()),
-
         literal(67108864)
     )
 )

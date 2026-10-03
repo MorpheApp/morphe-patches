@@ -22,7 +22,7 @@ import app.morphe.patches.youtube.shared.CLIENT_INFO_CLASS
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.indexOfFirstInstruction
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -98,7 +98,7 @@ val clientContextHookPatch = bytecodePatch(
         val messageLiteBuilderMethod : MethodReference
         (if (is_21_33_or_greater) AuthenticationChangeListenerFingerprint
         else AuthenticationChangeListenerLegacyFingerprint).method.apply {
-            val messageLiteBuilderIndex = indexOfFirstInstruction(
+            val messageLiteBuilderIndex = indexOfFirstInstructionOrThrow(
                 filter = methodCall(
                     opcode = Opcode.INVOKE_VIRTUAL,
                     parameters = emptyList(),

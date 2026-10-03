@@ -68,7 +68,8 @@ val disablePlaylistAutoplayPatch = bytecodePatch(
             method.addInstructionsWithLabels(
                 0,
                 """
-                    iget-object v$freeRegister, p1, $enumField
+                    move-object/from16 v$freeRegister, p1
+                    iget-object v$freeRegister, v$freeRegister, $enumField
                     invoke-static { v$freeRegister }, $EXTENSION_CLASS->shouldSkipPlaylistAutoplay(Ljava/lang/Enum;)Z
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :continue
