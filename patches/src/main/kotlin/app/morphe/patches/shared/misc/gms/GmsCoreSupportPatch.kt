@@ -190,19 +190,6 @@ fun gmsCoreSupportPatch(
         // Specific method that needs to be patched.
         primeMethodFingerprint?.let { transformPrimeMethod(toPackageName) }
 
-        // GNP expects the original Google package even when the installed app is renamed.
-        GnpRegistrationTargetFingerprint.matchSingle().let { match ->
-            val result = match.instructionMatches[1]
-            match.method.replaceInstruction(
-                result.index,
-                BuilderInstruction21c(
-                    Opcode.CONST_STRING,
-                    (result.instruction as OneRegisterInstruction).registerA,
-                    ImmutableStringReference(fromPackageName),
-                ),
-            )
-        }
-
         // Return these methods early to prevent the app from crashing.
         earlyReturnFingerprints.forEach {
             it.method.apply {
@@ -229,6 +216,19 @@ fun gmsCoreSupportPatch(
         GmsCoreSupportFingerprint.method.returnEarly(
             GMS_CORE_VENDOR_GROUP_ID
         )
+
+        // GNP expects the original Google package even when the installed app is renamed.
+        GnpRegistrationTargetFingerprint.matchSingle().let { match ->
+            val result = match.instructionMatches[1]
+            match.method.replaceInstruction(
+                result.index,
+                BuilderInstruction21c(
+                    Opcode.CONST_STRING,
+                    (result.instruction as OneRegisterInstruction).registerA,
+                    ImmutableStringReference(fromPackageName),
+                ),
+            )
+        }
 
         executeBlock()
     }
