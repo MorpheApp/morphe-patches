@@ -1303,7 +1303,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide player chapters & timeline button
 
         // Hook the later instruction first: both can be in the same method.
-        HideTimeBarChapterTitleFingerprint.matchOrNull()?.let {
+        HideTimeBarChapterTitleFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
