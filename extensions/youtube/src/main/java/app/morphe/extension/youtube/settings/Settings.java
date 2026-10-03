@@ -11,6 +11,7 @@ import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.MANUAL_SKIP;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE;
+import static app.morphe.extension.youtube.patches.utils.requests.DeArrowRequester.DEARROW_API_URL;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -56,6 +57,7 @@ import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.WideSearchBarPatch.SearchbarType;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter.ExpandableCardStyle;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAudioFlyoutMenuAvailability;
+import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch.TitleType;
 import app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.patches.PlaybackBufferPatch.PlaybackBufferSize;
@@ -163,7 +165,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_YOU_MAY_LIKE_SECTION = new BooleanSetting("morphe_hide_you_may_like_section", TRUE, true);
     public static final BooleanSetting HIDE_YOUTUBE_DOODLES = new BooleanSetting("morphe_hide_youtube_doodles", TRUE, true, "morphe_hide_youtube_doodles_user_dialog_message");
     public static final IntegerSetting PLAYBACK_IN_FEEDS = new IntegerSetting("morphe_playback_in_feeds", PlaybackInFeedsPatch.MODE_ALWAYS_ON, true);
-    public static final BooleanSetting RESTORE_ORIGINAL_TITLES = new BooleanSetting("morphe_restore_original_titles", FALSE, true);
+    public static final EnumSetting<TitleType> RESTORE_ORIGINAL_TITLES_TYPE = new EnumSetting<>("morphe_restore_original_titles_type", TitleType.TRANSLATED, true);
     public static final BooleanSetting DISABLE_AUTO_FEED_REFRESH = new BooleanSetting("morphe_disable_auto_feed_refresh", FALSE);
 
     // AiSList
@@ -672,7 +674,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SB_TRACK_SKIP_COUNT = new BooleanSetting("morphe_sb_track_skip_count", TRUE, parent(SB_ENABLED));
     public static final FloatSetting SB_SEGMENT_MIN_DURATION = new FloatSetting("morphe_sb_min_segment_duration", 0F, parent(SB_ENABLED));
     public static final BooleanSetting SB_VIDEO_LENGTH_WITHOUT_SEGMENTS = new BooleanSetting("morphe_sb_video_length_without_segments", FALSE, parent(SB_ENABLED));
-    public static final StringSetting SB_API_URL = new StringSetting("morphe_sb_api_url", "https://sponsor.ajay.app", parent(SB_ENABLED));
+    public static final StringSetting SB_API_URL = new StringSetting("morphe_sb_api_url", DEARROW_API_URL, parent(SB_ENABLED));
     public static final BooleanSetting SB_USER_IS_VIP = new BooleanSetting("morphe_sb_user_is_vip", FALSE);
     public static final IntegerSetting SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS = new IntegerSetting("morphe_sb_local_time_saved_number_segments", 0, parent(SB_ENABLED));
     public static final LongSetting SB_LOCAL_TIME_SAVED_MILLISECONDS = new LongSetting("morphe_sb_local_time_saved_milliseconds", 0L, parent(SB_ENABLED));
@@ -729,6 +731,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("morphe_reload_video", FALSE);
     private static final BooleanSetting DEPRECATED_REMEMBER_LIVESTREAM_POSITION = new BooleanSetting("morphe_remember_livestream_position", FALSE, "morphe_remember_livestream_position_user_dialog_message");
     private static final StringSetting DEPRECATED_REMEMBER_LIVESTREAM_POSITION_TIMES = new StringSetting("morphe_remember_livestream_position_times", "", false, false);
+    private static final BooleanSetting DEPRECATED_RESTORE_ORIGINAL_TITLES = new BooleanSetting("morphe_restore_original_titles", FALSE, true);
     private static final BooleanSetting DEPRECATED_SANITIZE_COMMENTS_CATEGORY_BAR = new BooleanSetting("morphe_sanitize_comments_category_bar", FALSE);
     private static final BooleanSetting DEPRECATED_SEEKBAR_TAPPING = new BooleanSetting("morphe_seekbar_tapping", FALSE);
     private static final BooleanSetting DEPRECATED_SWIPE_BRIGHTNESS = new BooleanSetting("morphe_swipe_brightness", FALSE);
@@ -753,7 +756,7 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_SB_TRACK_SKIP_COUNT = new BooleanSetting("sb_track_skip_count", TRUE, false, false);
     private static final FloatSetting   DEPRECATED_SB_SEGMENT_MIN_DURATION = new FloatSetting("sb_min_segment_duration", 0F, false, false);
     private static final BooleanSetting DEPRECATED_SB_VIDEO_LENGTH_WITHOUT_SEGMENTS = new BooleanSetting("sb_video_length_without_segments", FALSE, false, false);
-    private static final StringSetting  DEPRECATED_SB_API_URL = new StringSetting("sb_api_url", "https://sponsor.ajay.app", false, false);
+    private static final StringSetting  DEPRECATED_SB_API_URL = new StringSetting("sb_api_url", DEARROW_API_URL, false, false);
     private static final BooleanSetting DEPRECATED_SB_USER_IS_VIP = new BooleanSetting("sb_user_is_vip", FALSE, false, false);
     private static final IntegerSetting DEPRECATED_SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS = new IntegerSetting("sb_local_time_saved_number_segments", 0, false, false);
     private static final LongSetting    DEPRECATED_SB_LOCAL_TIME_SAVED_MILLISECONDS = new LongSetting("sb_local_time_saved_milliseconds", 0L, false, false);
@@ -816,6 +819,7 @@ public class Settings extends SharedYouTubeSettings {
         migrateSwipeGestureToZone(DEPRECATED_SWIPE_SPEED, SWIPE_TOP_ZONE, SwipeZoneAction.SPEED);
 
         migrateWideSearchbarToType();
+        migrateRestoreOriginalTitlesToType();
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
         migrateOldSettingToNew(DEPRECATED_SB_ENABLED, SB_ENABLED);
@@ -922,6 +926,16 @@ public class Settings extends SharedYouTubeSettings {
                     : SearchbarType.EXTRA_WIDE);
         }
         DEPRECATED_WIDE_SEARCHBAR.resetToDefault();
+    }
+
+    private static void migrateRestoreOriginalTitlesToType() {
+        if (DEPRECATED_RESTORE_ORIGINAL_TITLES.isSetToDefault()) {
+            return;
+        }
+        if (RESTORE_ORIGINAL_TITLES_TYPE.isSetToDefault()) {
+            RESTORE_ORIGINAL_TITLES_TYPE.save(TitleType.ORIGINAL);
+        }
+        DEPRECATED_RESTORE_ORIGINAL_TITLES.resetToDefault();
     }
 
     /**

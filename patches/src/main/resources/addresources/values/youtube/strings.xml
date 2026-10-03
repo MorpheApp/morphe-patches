@@ -1176,7 +1176,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
 
     <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
     <string name="morphe_restore_original_titles_title">Restore original titles</string>
-    <string name="morphe_restore_original_titles_summary">Shows the original video titles, video descriptions and channel descriptions instead of the auto-translated ones</string>
+    <string name="morphe_restore_original_titles_type_entry_translated">Translated</string>
+    <string name="morphe_restore_original_titles_type_entry_original">Original</string>
+    <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Translated with DeArrow</string>
+    <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original with DeArrow</string>
     <string name="morphe_restore_original_titles_loading">Loading title…</string>
 
     <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->

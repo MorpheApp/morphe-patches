@@ -7,7 +7,6 @@
 
 package app.morphe.patches.shared.misc.litho.relayout
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -47,21 +46,6 @@ val lithoRelayoutPatch = bytecodePatch(
                 throw PatchException("Unexpected fields, read: $readFlag clear: $clearFlag")
             }
 
-            // Check the views again when attached again without mounting the texts.
-            mapOf(
-                "onAttachedToWindow" to "onLithoViewAttached",
-                "onDetachedFromWindow" to "onLithoViewDetached"
-            ).forEach { (methodName, hookName) ->
-                Fingerprint(
-                    definingClass = it.classDef.toString(),
-                    name = methodName,
-                    parameters = listOf()
-                ).method.addInstructions(
-                    0,
-                    "invoke-static { p0 }, $EXTENSION_CLASS->$hookName(Landroid/view/View;)V"
-                )
-            }
-
             it.classDef.apply {
                 interfaces.add(EXTENSION_LITHO_VIEW_INTERFACE)
                 methods.add(
@@ -89,7 +73,7 @@ val lithoRelayoutPatch = bytecodePatch(
             }
         }
 
-        // Check the texts mounted later, such as texts scrolled into view.
+        // Remember the mounted texts that are laid out again when outdated.
         LithoTextMountFingerprint.let {
             it.method.apply {
                 val textIndex = it.instructionMatches.last().index

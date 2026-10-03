@@ -62,7 +62,49 @@ public final class ChannelSearchRoutes {
                     "&fields=microformat.microformatDataRenderer.channelProfileMicroformatDetails.profilePage.description"
     ).compile();
 
+    /**
+     * The title of a video in the language of the request, if the uploader added a translation
+     * of the title. Titles that are not translated by the uploader are the original title.
+     */
+    public static final Route.CompiledRoute GET_LOCALIZED_VIDEO_TITLE = new Route(
+            Route.Method.POST,
+            "next" +
+                    "?prettyPrint=false" +
+                    "&fields=playerOverlays.playerOverlayRenderer.videoDetails.playerOverlayVideoDetailsRenderer.title"
+    ).compile();
+
     private ChannelSearchRoutes() {
+    }
+
+    /**
+     * The language of the request includes the country, as titles can be translated
+     * to a regional variant of the language, such as zh-CN and zh-TW.
+     * The country of the request is the default country, as the server rejects some countries.
+     */
+    public static byte[] createVideoBody(String videoId, Locale locale) {
+        try {
+            String language = orDefault(locale.getLanguage(), DEFAULT_LANGUAGE);
+            if (!locale.getCountry().isEmpty()) {
+                language += "-" + locale.getCountry();
+            }
+            JSONObject client = new JSONObject();
+            client.put("clientName", CLIENT_NAME);
+            client.put("clientVersion", CLIENT_VERSION);
+            client.put("hl", language);
+            client.put("gl", DEFAULT_COUNTRY);
+
+            JSONObject context = new JSONObject();
+            context.put("client", client);
+
+            JSONObject body = new JSONObject();
+            body.put("context", context);
+            body.put("videoId", videoId);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createVideoBody failed", ex);
+        }
+        return new byte[0];
     }
 
     public static byte[] createChannelBody(String channelId, Locale locale) {
