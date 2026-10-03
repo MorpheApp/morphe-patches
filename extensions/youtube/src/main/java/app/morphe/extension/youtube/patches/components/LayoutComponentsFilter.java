@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
@@ -1348,6 +1350,31 @@ public final class LayoutComponentsFilter extends Filter {
             Utils.hideViewByLayoutParams(view);
             view.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Called with the measure spec of a row of an app bar menu. The 'Help &amp; feedback' row is
+     * measured at no height, so it takes no space in the menu.
+     */
+    public static int hideHelpFeedbackMenuRow(View row, int heightMeasureSpec) {
+        if (!Settings.HIDE_HELP_FEEDBACK_MENU.get()) {
+            return heightMeasureSpec;
+        }
+
+        try {
+            View title = row.findViewById(ResourceUtils.getIdentifier(ResourceType.ID, "title"));
+            int helpStringId = ResourceUtils.getIdentifier(ResourceType.STRING, "menu_help");
+            if (title instanceof TextView textView && helpStringId != 0
+                    && row.getContext().getString(helpStringId).contentEquals(textView.getText())) {
+                return View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.EXACTLY);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideHelpFeedbackMenuRow failure", ex);
+        }
+
+        return heightMeasureSpec;
     }
 
     /**

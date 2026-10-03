@@ -810,6 +810,16 @@ internal object HideTimeBarEntryPointContainerFingerprint : Fingerprint(
     )
 )
 
+/**
+ * A row of an app bar menu.
+ */
+internal object ListMenuItemViewOnMeasureFingerprint : Fingerprint(
+    definingClass = "Landroid/support/v7/view/menu/ListMenuItemView;",
+    name = "onMeasure",
+    returnType = "V",
+    parameters = listOf("I", "I")
+)
+
 internal object CommentReplyPaddingFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45752241)
