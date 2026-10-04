@@ -28,7 +28,7 @@ import app.morphe.extension.shared.Utils;
 /**
  * Forces Litho views to calculate their layout again, which loads their texts again.
  * Litho otherwise keeps the calculated layout until the view is bound again,
- * such as after scrolling the view off screen and back.
+ * such as after scrolling the view off-screen and back.
  * <p>
  * Only the texts with a {@link RelayoutSpan} are laid out again, such as loading texts.
  * The mounted text drawables of these texts are remembered, so a relayout checks only

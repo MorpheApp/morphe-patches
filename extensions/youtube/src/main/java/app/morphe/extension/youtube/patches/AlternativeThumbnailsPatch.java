@@ -31,7 +31,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.youtube.patches.utils.requests.DeArrowRequester;
+import app.morphe.extension.youtube.patches.originaltitles.DeArrowTitleRequest;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -272,7 +272,7 @@ public final class AlternativeThumbnailsPatch {
 
             String sanitizedReplacementURL;
             final boolean includeTracking;
-            if (option.useDeArrow && DeArrowRequester.canUseDeArrowAPI()) {
+            if (option.useDeArrow && DeArrowTitleRequest.canUseDeArrowAPI()) {
                 includeTracking = false; // Do not include view tracking parameters with API call.
                 String fallbackURL = null;
                 if (option.useStillImages) {
@@ -325,7 +325,7 @@ public final class AlternativeThumbnailsPatch {
                     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304
                     return; // Normal response.
                 }
-                DeArrowRequester.handleDeArrowError(url, statusCode);
+                DeArrowTitleRequest.handleDeArrowError(url, statusCode);
                 return;
             }
 
@@ -379,7 +379,7 @@ public final class AlternativeThumbnailsPatch {
                 final int statusCode = (responseInfo != null)
                         ? responseInfo.getHttpStatusCode()
                         : 0;
-                DeArrowRequester.handleDeArrowError(url, statusCode);
+                DeArrowTitleRequest.handleDeArrowError(url, statusCode);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Callback failure error", ex);

@@ -7,7 +7,7 @@
 
 package app.morphe.extension.youtube.patches.originaltitles;
 
-import static app.morphe.extension.youtube.patches.utils.requests.DeArrowRequester.DEARROW_API_URL;
+import static app.morphe.extension.shared.StringRef.str;
 
 import androidx.annotation.Nullable;
 
@@ -22,14 +22,28 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
-import app.morphe.extension.youtube.patches.utils.requests.DeArrowRequester;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Fetches the video titles submitted to DeArrow (<a href="https://dearrow.ajay.app">...</a>).
+ * Fetches the video titles submitted to DeArrow (<a href="https://dearrow.ajay.app">...</a>)
+ * and manages DeArrow API state shared with alternative thumbnails.
  */
-final class DeArrowTitleRequest {
+public final class DeArrowTitleRequest {
+
+    public static final String DEARROW_API_URL = "https://sponsor.ajay.app";
+
+    /**
+     * How long to temporarily turn off DeArrow if it fails for any reason.
+     */
+    private static final long DEARROW_FAILURE_API_BACKOFF_MILLISECONDS = 5 * 60 * 1000; // 5 Minutes.
+
+    /**
+     * If non-zero, then the system time of when DeArrow API calls can resume.
+     */
+    private static volatile long timeToResumeDeArrowAPICalls;
 
     /**
      * Videos are requested by the start of the SHA-256 hash of the video id,
@@ -53,6 +67,35 @@ final class DeArrowTitleRequest {
     }
 
     /**
+     * @return If this client has not recently experienced any DeArrow API errors.
+     */
+    public static boolean canUseDeArrowAPI() {
+        if (timeToResumeDeArrowAPICalls == 0) {
+            return true;
+        }
+        if (timeToResumeDeArrowAPICalls < System.currentTimeMillis()) {
+            Logger.printDebug(() -> "Resuming DeArrow API calls");
+            timeToResumeDeArrowAPICalls = 0;
+            return true;
+        }
+        return false;
+    }
+
+    public static void handleDeArrowError(String url, int statusCode) {
+        Logger.printDebug(() -> "Encountered DeArrow error, URL: " + url);
+        final long now = System.currentTimeMillis();
+        if (timeToResumeDeArrowAPICalls < now) {
+            timeToResumeDeArrowAPICalls = now + DEARROW_FAILURE_API_BACKOFF_MILLISECONDS;
+            if (Settings.ALT_THUMBNAIL_DEARROW_CONNECTION_TOAST.get()) {
+                String toastMessage = (statusCode != 0)
+                        ? str("morphe_alt_thumbnail_dearrow_error", statusCode)
+                        : str("morphe_alt_thumbnail_dearrow_error_generic");
+                Utils.showToastLong(toastMessage);
+            }
+        }
+    }
+
+    /**
      * @return The DeArrow title, or null if the video has no DeArrow title
      *         or DeArrow keeps the original title.
      * @throws IOException If DeArrow is not available or the title failed to fetch,
@@ -60,7 +103,7 @@ final class DeArrowTitleRequest {
      */
     @Nullable
     static String fetchTitle(String videoId) throws IOException {
-        if (!DeArrowRequester.canUseDeArrowAPI()) {
+        if (!canUseDeArrowAPI()) {
             throw new IOException("DeArrow is not available");
         }
 
@@ -86,7 +129,7 @@ final class DeArrowTitleRequest {
             responseCode = connection.getResponseCode();
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not fetch DeArrow title of: " + videoId, ex);
-            DeArrowRequester.handleDeArrowError(DEARROW_API_URL + route.getCompiledRoute(), 0);
+            handleDeArrowError(DEARROW_API_URL + route.getCompiledRoute(), 0);
             throw ex;
         }
 
@@ -95,7 +138,7 @@ final class DeArrowTitleRequest {
             return null;
         }
         if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
-            DeArrowRequester.handleDeArrowError(DEARROW_API_URL + route.getCompiledRoute(), responseCode);
+            handleDeArrowError(DEARROW_API_URL + route.getCompiledRoute(), responseCode);
             throw new IOException("DeArrow response code: " + responseCode);
         }
 
