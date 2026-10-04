@@ -762,7 +762,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ).registerA
 
             addInstructions(
-                applyDimensionIndex - 1,
+                applyDimensionIndex,
                 """
                     invoke-static { v$returnStringRegister, v$floatDimensionRegister }, $LAYOUT_COMPONENTS_FILTER->modifyFeedSubtitleSpan(Landroid/text/SpannableString;F)Landroid/text/SpannableString;
                     move-result-object v$returnStringRegister
