@@ -8,7 +8,9 @@
 package app.morphe.extension.youtube.patches.dearrow;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
@@ -17,14 +19,15 @@ import android.text.style.ReplacementSpan;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Shows the DeArrow icon before the titles submitted to DeArrow,
  * so they can be told apart from the titles of the uploader.
  * <p>
- * The icon is drawn with the color of the title, so it matches the theme
- * without using any resources.
+ * The icon is the DeArrow icon of the settings, tinted with the color of the title
+ * so it matches the theme.
  */
 public final class DeArrowTitleIcon {
 
@@ -40,6 +43,12 @@ public final class DeArrowTitleIcon {
      * Separates the icon from the title.
      */
     private static final String ICON_SEPARATOR = " ";
+
+    /**
+     * Icon of the DeArrow settings, or null if not loaded.
+     * The icon is only drawn on the main thread, so it can be shared by all titles.
+     */
+    private static final Drawable ICON = ResourceUtils.getDrawable("morphe_settings_screen_02_dearrow_bold");
 
     private DeArrowTitleIcon() {
     }
@@ -76,21 +85,32 @@ public final class DeArrowTitleIcon {
      * @param text Text returned by {@link #addIcon(String)}, with the spans of the title.
      */
     public static void setIconSpan(Spannable text) {
-        text.setSpan(new IconSpan(), 0, ICON_PLACEHOLDER.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        // Without the icon, the placeholder character is shown instead.
+        if (ICON != null) {
+            text.setSpan(new IconSpan(ICON), 0, ICON_PLACEHOLDER.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
     }
 
     /**
-     * Draws the DeArrow logo, a ring with a dot in the center.
-     * https://github.com/ajayyy/DeArrow/blob/4d9e85b41382de0cc8ec2053789455b374b7a70d/public/icons/logo.svg
-     * Logo copyright 2023 Ajay Ramachandran <dev@ajay.app>
+     * Draws the DeArrow icon with the color of the title.
      */
     private static final class IconSpan extends ReplacementSpan {
         /**
          * Size of the icon relative to the text size.
          */
         private static final float ICON_SIZE = 0.85f;
-        private static final float RING_WIDTH = 0.14f;
-        private static final float DOT_RADIUS = 0.15f;
+        /**
+         * Opacity of the icon relative to the title, so the icon is visible but less prominent
+         * than the title. The transparent icon is blended with any background, such as the
+         * background of the app or of a video.
+         */
+        private static final float ICON_OPACITY = 0.5f;
+
+        private final Drawable drawable;
+
+        IconSpan(Drawable drawable) {
+            this.drawable = drawable;
+        }
 
         @Override
         public int getSize(@NonNull Paint paint, CharSequence text, int start, int end,
@@ -105,31 +125,18 @@ public final class DeArrowTitleIcon {
         @Override
         public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end,
                          float x, int top, int y, int bottom, @NonNull Paint paint) {
-            final float size = paint.getTextSize() * ICON_SIZE;
-            final float radius = size / 2;
-            final float ringWidth = size * RING_WIDTH;
+            final int size = Math.round(paint.getTextSize() * ICON_SIZE);
             Paint.FontMetrics metrics = paint.getFontMetrics();
             // Centered on the text, which is above the baseline.
-            final float centerX = x + radius;
-            final float centerY = y + (metrics.ascent + metrics.descent) / 2;
+            final int left = Math.round(x);
+            final int iconTop = Math.round(y + (metrics.ascent + metrics.descent) / 2 - size / 2f);
 
-            final int color = paint.getColor();
-            final Paint.Style style = paint.getStyle();
-            final float strokeWidth = paint.getStrokeWidth();
-            final boolean antiAlias = paint.isAntiAlias();
-
-            paint.setColor(textColor(text, start, color));
-            paint.setAntiAlias(true);
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(ringWidth);
-            canvas.drawCircle(centerX, centerY, radius - ringWidth / 2, paint);
-            paint.setStyle(Paint.Style.FILL);
-            canvas.drawCircle(centerX, centerY, size * DOT_RADIUS, paint);
-
-            paint.setColor(color);
-            paint.setStyle(style);
-            paint.setStrokeWidth(strokeWidth);
-            paint.setAntiAlias(antiAlias);
+            final int textColor = textColor(text, start, paint.getColor());
+            // The tint is opaque, and the opacity of the icon is set separately.
+            drawable.setTint(textColor | 0xFF000000);
+            drawable.setAlpha(Math.round(Color.alpha(textColor) * ICON_OPACITY));
+            drawable.setBounds(left, iconTop, left + size, iconTop + size);
+            drawable.draw(canvas);
         }
 
         /**
