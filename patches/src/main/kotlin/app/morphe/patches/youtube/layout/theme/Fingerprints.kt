@@ -96,18 +96,15 @@ internal object ShowSplashScreenFingerprint : Fingerprint(
             opcode = Opcode.MOVE_RESULT,
             location = MatchAfterImmediately()
         ),
-        opcode(
-            opcode = Opcode.IF_EQZ,
+        anyInstruction(
+            opcode(Opcode.IF_EQZ),
+            opcode(Opcode.IF_NEZ),
             location = MatchAfterImmediately()
-        ),
-        opcode(
-            opcode = Opcode.GOTO,
-            location = MatchAfterWithin(2)
         ),
         anyInstruction(
             opcode(Opcode.CONST_4),
             opcode(Opcode.CONST_16),
-            location = MatchAfterImmediately()
+            location = MatchAfterWithin(1)
         ),
         opcode(
             opcode = Opcode.IF_NE,
