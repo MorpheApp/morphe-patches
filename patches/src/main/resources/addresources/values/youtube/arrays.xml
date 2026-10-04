@@ -391,20 +391,6 @@
         <item>0</item>
     </string-array>
 
-    <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
-    <string-array name="morphe_restore_original_titles_type_entries">
-        <item>@string/morphe_restore_original_titles_type_entry_translated</item>
-        <item>@string/morphe_restore_original_titles_type_entry_original</item>
-        <item>@string/morphe_restore_original_titles_type_entry_translated_dearrow</item>
-        <item>@string/morphe_restore_original_titles_type_entry_original_dearrow</item>
-    </string-array>
-    <string-array name="morphe_restore_original_titles_type_entry_values">
-        <item>TRANSLATED</item>
-        <item>ORIGINAL</item>
-        <item>TRANSLATED_DEARROW</item>
-        <item>ORIGINAL_DEARROW</item>
-    </string-array>
-
     <!-- layout.miniplayer.miniplayerPatch -->
     <string-array name="morphe_miniplayer_type_entries">
         <item>@string/morphe_miniplayer_type_entry_0</item>
@@ -575,25 +561,25 @@
         <item>REGULAR_PLAYER_FULLSCREEN</item>
     </string-array>
 
-    <!-- layout.thumbnails.alternativeThumbnailsPatch -->
-    <string-array name="morphe_alt_thumbnail_options_entries">
-        <item>@string/morphe_alt_thumbnail_options_entry_1</item>
-        <item>@string/morphe_alt_thumbnail_options_entry_2</item>
-        <item>@string/morphe_alt_thumbnail_options_entry_3</item>
-        <item>@string/morphe_alt_thumbnail_options_entry_4</item>
+    <!-- layout.dearrow.deArrowPatch -->
+    <string-array name="morphe_dearrow_thumbnail_options_entries">
+        <item>@string/morphe_dearrow_thumbnail_options_entry_1</item>
+        <item>@string/morphe_dearrow_thumbnail_options_entry_2</item>
+        <item>@string/morphe_dearrow_thumbnail_options_entry_3</item>
+        <item>@string/morphe_dearrow_thumbnail_options_entry_4</item>
     </string-array>
-    <string-array name="morphe_alt_thumbnail_options_entry_values">
+    <string-array name="morphe_dearrow_thumbnail_options_entry_values">
         <item>ORIGINAL</item>
         <item>DEARROW</item>
         <item>DEARROW_STILL_IMAGES</item>
         <item>STILL_IMAGES</item>
     </string-array>
-    <string-array name="morphe_alt_thumbnail_stills_time_entries">
-        <item>@string/morphe_alt_thumbnail_stills_time_entry_1</item>
-        <item>@string/morphe_alt_thumbnail_stills_time_entry_2</item>
-        <item>@string/morphe_alt_thumbnail_stills_time_entry_3</item>
+    <string-array name="morphe_dearrow_thumbnail_stills_time_entries">
+        <item>@string/morphe_dearrow_thumbnail_stills_time_entry_1</item>
+        <item>@string/morphe_dearrow_thumbnail_stills_time_entry_2</item>
+        <item>@string/morphe_dearrow_thumbnail_stills_time_entry_3</item>
     </string-array>
-    <string-array name="morphe_alt_thumbnail_stills_time_entry_values">
+    <string-array name="morphe_dearrow_thumbnail_stills_time_entry_values">
         <item>BEGINNING</item>
         <item>MIDDLE</item>
         <item>END</item>

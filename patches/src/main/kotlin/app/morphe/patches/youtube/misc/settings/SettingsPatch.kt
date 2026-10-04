@@ -127,8 +127,8 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_00_about_bold.xml",
                 "morphe_settings_screen_01_ads.xml",
                 "morphe_settings_screen_01_ads_bold.xml",
-                "morphe_settings_screen_02_alt_thumbnails.xml",
-                "morphe_settings_screen_02_alt_thumbnails_bold.xml",
+                "morphe_settings_screen_02_dearrow.xml",
+                "morphe_settings_screen_02_dearrow_bold.xml",
                 "morphe_settings_screen_03_feed.xml",
                 "morphe_settings_screen_03_feed_bold.xml",
                 "morphe_settings_screen_04_general.xml",
@@ -475,11 +475,11 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_01_ads_bold",
         layout = "@layout/preference_with_icon"
     )
-    val ALTERNATIVE_THUMBNAILS = Screen(
-        key = "morphe_settings_screen_02_alt_thumbnails",
+    val DEARROW = Screen(
+        key = "morphe_settings_screen_02_dearrow",
         summaryKey = null,
-        icon = "@drawable/morphe_settings_screen_02_alt_thumbnails",
-        iconBold = "@drawable/morphe_settings_screen_02_alt_thumbnails_bold",
+        icon = "@drawable/morphe_settings_screen_02_dearrow",
+        iconBold = "@drawable/morphe_settings_screen_02_dearrow_bold",
         layout = "@layout/preference_with_icon",
         sorting = Sorting.UNSORTED
     )

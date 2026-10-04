@@ -54,7 +54,9 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Replaces the auto-translated video titles and descriptions with the original titles and descriptions,
- * or replaces the video titles with the titles submitted to DeArrow.
+ * and replaces the video titles with the titles submitted to DeArrow if enabled by the DeArrow patch.
+ * DeArrow titles are used instead of the original titles, and videos without a DeArrow title
+ * show the original title only if original titles are restored.
  * <p>
  * Responses do not include the original title, so it's fetched with {@link OriginalTitleRequest}.
  * The original description of the opened video is fetched with {@link OriginalDescriptionRequest}
@@ -75,43 +77,17 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class RestoreOriginalTitlesPatch {
 
-    public enum TitleType {
-        /**
-         * Titles and descriptions as shown by YouTube.
-         */
-        TRANSLATED(false, false),
-        /**
-         * Original titles and descriptions.
-         */
-        ORIGINAL(true, false),
-        /**
-         * DeArrow titles, or the titles shown by YouTube if DeArrow has no title.
-         * Descriptions as shown by YouTube.
-         */
-        TRANSLATED_DEARROW(false, true),
-        /**
-         * DeArrow titles, or the original titles if DeArrow has no title.
-         * Original descriptions.
-         */
-        ORIGINAL_DEARROW(true, true);
+    /**
+     * If the original titles and descriptions are restored.
+     */
+    static final boolean RESTORE_ORIGINAL = Settings.RESTORE_ORIGINAL_TITLES.get();
 
-        /**
-         * If the original titles and descriptions are restored.
-         */
-        final boolean restoresOriginal;
-        final boolean usesDeArrow;
+    /**
+     * If the titles are replaced with the DeArrow titles.
+     */
+    static final boolean USE_DEARROW = Settings.DEARROW_TITLES.get();
 
-        TitleType(boolean restoresOriginal, boolean usesDeArrow) {
-            this.restoresOriginal = restoresOriginal;
-            this.usesDeArrow = usesDeArrow;
-        }
-
-        boolean replacesTitles() {
-            return restoresOriginal || usesDeArrow;
-        }
-    }
-
-    static final TitleType TITLE_TYPE = Settings.RESTORE_ORIGINAL_TITLES_TYPE.get();
+    private static final boolean REPLACE_TITLES = RESTORE_ORIGINAL || USE_DEARROW;
 
     private static final String DESCRIPTION_IDENTIFIER = "description_rich_text_list.eml";
     /**
@@ -347,12 +323,12 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static void newVideoLoaded(String videoId) {
         try {
-            if (!TITLE_TYPE.replacesTitles() || videoId == null || videoId.isEmpty()) {
+            if (!REPLACE_TITLES || videoId == null || videoId.isEmpty()) {
                 return;
             }
 
             openedVideoId = videoId;
-            if (TITLE_TYPE.restoresOriginal) {
+            if (RESTORE_ORIGINAL) {
                 OriginalDescriptionRequest.fetchRequestIfNeeded(videoId);
             }
         } catch (Exception ex) {
@@ -366,7 +342,7 @@ public final class RestoreOriginalTitlesPatch {
      * @return The title that replaces the title of the video, or the title if not replaced or not yet fetched.
      */
     public static String getTitle(String videoId, String title) {
-        if (!TITLE_TYPE.replacesTitles() || videoId.isEmpty()) {
+        if (!REPLACE_TITLES || videoId.isEmpty()) {
             return title;
         }
 
@@ -384,7 +360,7 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static byte[] restoreOriginalTitle(byte[] bytes) {
         try {
-            if (!TITLE_TYPE.replacesTitles() || !elementSearch.matches(bytes)) {
+            if (!REPLACE_TITLES || !elementSearch.matches(bytes)) {
                 return bytes;
             }
             clearIfLanguageChanged();
@@ -407,15 +383,15 @@ public final class RestoreOriginalTitlesPatch {
             if (identifier != null) {
                 final boolean isShortsDescription = identifier.startsWith(SHORTS_DESCRIPTION_IDENTIFIER);
                 if (isShortsDescription || identifier.startsWith(DESCRIPTION_IDENTIFIER)) {
-                    return TITLE_TYPE.restoresOriginal && restoreDescription(root, textNodes, isShortsDescription)
+                    return RESTORE_ORIGINAL && restoreDescription(root, textNodes, isShortsDescription)
                             ? ProtoNode.write(root) : bytes;
                 }
                 if (identifier.startsWith(CHANNEL_HEADER_IDENTIFIER)) {
-                    return TITLE_TYPE.restoresOriginal && restoreChannelHeader(textNodes)
+                    return RESTORE_ORIGINAL && restoreChannelHeader(textNodes)
                             ? ProtoNode.write(root) : bytes;
                 }
                 if (identifier.startsWith(CHANNEL_ABOUT_IDENTIFIER)) {
-                    return TITLE_TYPE.restoresOriginal && restoreChannelAbout(root)
+                    return RESTORE_ORIGINAL && restoreChannelAbout(root)
                             ? ProtoNode.write(root) : bytes;
                 }
             }
@@ -499,7 +475,7 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence text) {
         try {
-            if (!TITLE_TYPE.replacesTitles() || text == null) {
+            if (!REPLACE_TITLES || text == null) {
                 return text;
             }
 
@@ -671,7 +647,7 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static void restoreOriginalTitle(TextView view, String videoId) {
         try {
-            if (!TITLE_TYPE.replacesTitles() || view == null || videoId == null) {
+            if (!REPLACE_TITLES || view == null || videoId == null) {
                 return;
             }
 
@@ -726,7 +702,7 @@ public final class RestoreOriginalTitlesPatch {
 
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
-                if (!TITLE_TYPE.replacesTitles()) {
+                if (!REPLACE_TITLES) {
                     return;
                 }
 
@@ -1443,7 +1419,7 @@ public final class RestoreOriginalTitlesPatch {
                 if (title == null || !isLabelCandidate(title) || isChannelHandle(title, texts)) {
                     // Saves the texts of the element, so the title path of the component is learned
                     // if the title is not translated.
-                    if (TITLE_TYPE.restoresOriginal) {
+                    if (RESTORE_ORIGINAL) {
                         TitleLayouts.addCandidates(component, videoId, paths, nodeTexts);
                         OriginalTitleRequest.OriginalVideo originalVideo = OriginalTitleRequest.getOriginalIfFetched(videoId);
                         if (originalVideo != null) {

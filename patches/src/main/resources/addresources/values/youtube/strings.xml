@@ -20,7 +20,7 @@ Second \"item\" text"</string>
     <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
     <string name="morphe_settings_screen_00_about_title">About</string>
     <string name="morphe_settings_screen_01_ads_title">Ads</string>
-    <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternative thumbnails</string>
+    <string name="morphe_settings_screen_02_dearrow_title" translatable="false">DeArrow</string>
     <string name="morphe_settings_screen_03_feed_title">Feed</string>
     <string name="morphe_settings_screen_04_general_title">General</string>
     <string name="morphe_settings_screen_05_player_title">Player</string>
@@ -1176,10 +1176,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
 
     <!-- layout.originaltitles.restoreOriginalTitlesPatch -->
     <string name="morphe_restore_original_titles_title">Restore original titles</string>
-    <string name="morphe_restore_original_titles_type_entry_translated">Translated</string>
-    <string name="morphe_restore_original_titles_type_entry_original">Original</string>
-    <string name="morphe_restore_original_titles_type_entry_translated_dearrow">Translated with DeArrow</string>
-    <string name="morphe_restore_original_titles_type_entry_original_dearrow">Original with DeArrow</string>
+    <string name="morphe_restore_original_titles_summary">Shows the original video titles, video descriptions and channel descriptions instead of the auto-translated ones</string>
     <string name="morphe_restore_original_titles_loading">Loading title…</string>
 
     <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
@@ -1268,40 +1265,42 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_bypass_image_region_restrictions_title">Bypass image region restrictions</string>
     <string name="morphe_bypass_image_region_restrictions_summary">Redirects thumbnail requests to an alternative server to fix missing images in restricted countries</string>
 
-    <!-- layout.thumbnails.alternativeThumbnailsPatch -->
+    <!-- layout.dearrow.deArrowPatch -->
+    <string name="morphe_dearrow_titles_title">DeArrow titles</string>
+    <string name="morphe_dearrow_titles_summary">Replaces video titles with the crowdsourced titles submitted to DeArrow</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-    <string name="morphe_alt_thumbnail_home_title">For Home tab</string>
+    <string name="morphe_dearrow_thumbnail_home_title">For Home tab</string>
     <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-    <string name="morphe_alt_thumbnail_subscription_title">For Subscriptions tab</string>
+    <string name="morphe_dearrow_thumbnail_subscription_title">For Subscriptions tab</string>
     <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-    <string name="morphe_alt_thumbnail_library_title">For You tab</string>
-    <string name="morphe_alt_thumbnail_player_title">For player playlists &amp; recommendations</string>
-    <string name="morphe_alt_thumbnail_search_title">For search results</string>
-    <string name="morphe_alt_thumbnail_options_entry_1">Original thumbnails</string>
-    <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Original thumbnails</string>
-    <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Still captures</string>
-    <string name="morphe_alt_thumbnail_options_entry_4">Still captures</string>
-    <string name="morphe_alt_thumbnail_dearrow_about_title" translatable="false">DeArrow</string>
-    <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow provides crowdsourced thumbnails for YouTube videos. These thumbnails are often more relevant than those provided by YouTube
+    <string name="morphe_dearrow_thumbnail_library_title">For You tab</string>
+    <string name="morphe_dearrow_thumbnail_player_title">For player playlists &amp; recommendations</string>
+    <string name="morphe_dearrow_thumbnail_search_title">For search results</string>
+    <string name="morphe_dearrow_thumbnail_options_entry_1">Original thumbnails</string>
+    <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; Original thumbnails</string>
+    <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; Still captures</string>
+    <string name="morphe_dearrow_thumbnail_options_entry_4">Still captures</string>
+    <string name="morphe_dearrow_about_title" translatable="false">DeArrow</string>
+    <string name="morphe_dearrow_about_summary">"DeArrow provides crowdsourced titles and thumbnails for YouTube videos. These are often more relevant than those provided by YouTube
 
 If enabled, video URLs will be sent to the API server and no other data is sent. If a video does not have DeArrow thumbnails, then the original or still captures are shown
 
 Tap here to open DeArrow.ajay.app"</string>
-    <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Show connection error alerts</string>
-    <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Shows a notification when the DeArrow server is unavailable</string>
-    <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
-    <string name="morphe_alt_thumbnail_dearrow_api_url_summary">The URL of the DeArrow thumbnail cache endpoint</string>
-    <string name="morphe_alt_thumbnail_stills_about_title">Still video captures</string>
-    <string name="morphe_alt_thumbnail_stills_about_summary">Still captures are taken from the beginning / middle / end of each video. These images are built into YouTube and no external API is used</string>
-    <string name="morphe_alt_thumbnail_stills_fast_title">Use fast still captures</string>
-    <string name="morphe_alt_thumbnail_stills_fast_summary">Improves loading speeds by using medium-quality images. Live streams, unreleased and older videos may display blank thumbnails</string>
-    <string name="morphe_alt_thumbnail_stills_time_title">Extract video frame from</string>
-    <string name="morphe_alt_thumbnail_stills_time_entry_1">Beginning</string>
-    <string name="morphe_alt_thumbnail_stills_time_entry_2">Middle</string>
-    <string name="morphe_alt_thumbnail_stills_time_entry_3">End</string>
+    <string name="morphe_dearrow_connection_toast_title">Show connection error alerts</string>
+    <string name="morphe_dearrow_connection_toast_summary">Shows a notification when the DeArrow server is unavailable</string>
+    <string name="morphe_dearrow_api_url_title">DeArrow API endpoint</string>
+    <string name="morphe_dearrow_api_url_summary">The URL of the DeArrow thumbnail cache endpoint</string>
+    <string name="morphe_dearrow_thumbnail_stills_about_title">Still video captures</string>
+    <string name="morphe_dearrow_thumbnail_stills_about_summary">Still captures are taken from the beginning / middle / end of each video. These images are built into YouTube and no external API is used</string>
+    <string name="morphe_dearrow_thumbnail_stills_fast_title">Use fast still captures</string>
+    <string name="morphe_dearrow_thumbnail_stills_fast_summary">Improves loading speeds by using medium-quality images. Live streams, unreleased and older videos may display blank thumbnails</string>
+    <string name="morphe_dearrow_thumbnail_stills_time_title">Extract video frame from</string>
+    <string name="morphe_dearrow_thumbnail_stills_time_entry_1">Beginning</string>
+    <string name="morphe_dearrow_thumbnail_stills_time_entry_2">Middle</string>
+    <string name="morphe_dearrow_thumbnail_stills_time_entry_3">End</string>
     <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-    <string name="morphe_alt_thumbnail_dearrow_error">DeArrow is temporarily not available (status code: %s)</string>
-    <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow is temporarily not available</string>
+    <string name="morphe_dearrow_error">DeArrow is temporarily not available (status code: %s)</string>
+    <string name="morphe_dearrow_error_generic">DeArrow is temporarily not available</string>
 
     <!-- misc.announcements.announcementsPatch -->
     <string name="morphe_announcements_title" translatable="false">Show Morphe announcements</string>

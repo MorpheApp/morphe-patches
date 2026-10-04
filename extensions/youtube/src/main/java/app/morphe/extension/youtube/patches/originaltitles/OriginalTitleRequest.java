@@ -23,14 +23,14 @@ import java.util.concurrent.CompletableFuture;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleRequest;
 
 /**
  * Fetches the titles that replace the titles shown by YouTube.
  * <p>
  * Original titles are fetched from the public oEmbed endpoint, which always returns the title
  * as set by the uploader. DeArrow titles are fetched with {@link DeArrowTitleRequest},
- * and if DeArrow has no title then the original title or no title is used,
- * depending on the {@link RestoreOriginalTitlesPatch.TitleType}.
+ * and if DeArrow has no title then the original title is used if original titles are restored.
  */
 final class OriginalTitleRequest {
 
@@ -113,8 +113,7 @@ final class OriginalTitleRequest {
 
     @Nullable
     private static String fetchTitle(String videoId) {
-        RestoreOriginalTitlesPatch.TitleType type = RestoreOriginalTitlesPatch.TITLE_TYPE;
-        if (type.usesDeArrow) {
+        if (RestoreOriginalTitlesPatch.USE_DEARROW) {
             try {
                 String title = DeArrowTitleRequest.fetchTitle(videoId);
                 if (title != null) {
@@ -125,7 +124,7 @@ final class OriginalTitleRequest {
                 retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
             }
         }
-        return type.restoresOriginal ? fetchOriginalTitle(videoId) : null;
+        return RestoreOriginalTitlesPatch.RESTORE_ORIGINAL ? fetchOriginalTitle(videoId) : null;
     }
 
     @Nullable
