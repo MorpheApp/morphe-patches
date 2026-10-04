@@ -1266,6 +1266,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_bypass_image_region_restrictions_summary">Redirects thumbnail requests to an alternative server to fix missing images in restricted countries</string>
 
     <!-- layout.dearrow.deArrowPatch -->
+    <!-- "DeArrow" must be kept untranslated. -->
     <string name="morphe_dearrow_titles_title">DeArrow titles</string>
     <string name="morphe_dearrow_titles_summary">Replaces video titles with the crowdsourced titles submitted to DeArrow</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
