@@ -158,6 +158,9 @@ As mudanças incluem:
   <string name="morphe_hide_sync_button_title">Ocultar botão \'Sincronizar com vídeo\'</string>
   <string name="morphe_hide_timed_reactions_title">Ocultar reações com emojis</string>
   <string name="morphe_hide_timed_reactions_summary">Oculta o recurso que permite reagir com emojis na seção de comentários e no chat ao vivo</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Ocultar \'Ajuda &amp; feedback\' nos menus</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Oculta \'Ajuda &amp; feedback\' nos menus de três pontos da barra do app, como o menu de resultados de pesquisa</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Ocultar identificador do canal na guia Você</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Oculta o identificador do canal abaixo do nome da conta na guia Você</string>
   <string name="morphe_hide_video_title_title">Ocultar título do vídeo</string>

@@ -159,6 +159,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_sync_button_title">Skjul knappen \'Synkroniser til video\'</string>
   <string name="morphe_hide_timed_reactions_title">Skjul tidsreaktioner</string>
   <string name="morphe_hide_timed_reactions_summary">Skjuler funktionen, der giver brugerne mulighed for at reagere med emojis i kommentarsektionen og livechatten</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Skjul \'Hjælp &amp; feedback\' i menuer</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Skjuler \'Hjælp og feedback\' i app-bjælkens trepunktsmenuer, såsom søgeresultatmenuen.</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Skjul kanalens handle i You-fanen</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Skjuler kanalens handle under kontonavnet i You-fanen</string>
   <string name="morphe_hide_video_title_title">Skjul videotitel</string>

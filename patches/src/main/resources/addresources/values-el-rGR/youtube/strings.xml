@@ -159,6 +159,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">Απόκρυψη κουμπιού \"Συγχρονισμός με βίντεο\"</string>
   <string name="morphe_hide_timed_reactions_title">Συγχρονισμένες αντιδράσεις</string>
   <string name="morphe_hide_timed_reactions_summary">Απόκρυψη της λειτουργίας που επιτρέπει στους χρήστες να αντιδρούν με emoji στην ενότητα σχολίων και στη ζωντανή συνομιλία</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Απόκρυψη του \'Βοήθεια &amp; σχόλια\' στα μενού</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Αποκρύπτει το \'Βοήθεια &amp; σχόλια\' στα μενού με τις τρεις τελείες της γραμμής εφαρμογής, όπως το μενού των αποτελεσμάτων αναζήτησης</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Απόκρυψη της λαβής του καναλιού στην καρτέλα Εσείς</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Αποκρύπτει τη λαβή του καναλιού κάτω από το όνομα του λογαριασμού στην καρτέλα Εσείς</string>
   <string name="morphe_hide_video_title_title">Τίτλος του βίντεο</string>

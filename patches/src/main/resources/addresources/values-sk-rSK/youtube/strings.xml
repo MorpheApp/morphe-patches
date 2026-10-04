@@ -159,6 +159,9 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_sync_button_title">Skryť tlačidlo \'Synchronizovať s videom\'</string>
   <string name="morphe_hide_timed_reactions_title">Skryť časované reakcie</string>
   <string name="morphe_hide_timed_reactions_summary">Skryje funkciu, ktorá umožňuje používateľom reagovať emodži v sekcii komentárov a živom chate</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Skryť \'Pomoc &amp; spätná väzba\' v ponukách</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Skryje \'Pomoc &amp; spätná väzba\' v trojbodkových ponukách panela aplikácie, napríklad v ponuke výsledkov vyhľadávania</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Skryť handle kanála na karte You</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Skryje handle kanála pod menom účtu na karte You</string>
   <string name="morphe_hide_video_title_title">Skryť názov videa</string>

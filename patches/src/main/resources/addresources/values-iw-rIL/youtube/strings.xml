@@ -159,6 +159,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">הסתר כפתור \'סנכרן לסרטון\'</string>
   <string name="morphe_hide_timed_reactions_title">הסתר תגובות באמוג\'י מתוזמנות</string>
   <string name="morphe_hide_timed_reactions_summary">מסתיר את התכונה המאפשרת למשתמשים להגיב באמצעות אימוג\'ים בסעיף התגובות ובצ\'אט החי</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">הסתר את \'עזרה &amp; משוב\' בתפריטים</string>
+  <string name="morphe_hide_help_feedback_menu_summary">מסתיר את \'עזרה &amp; משוב\' בתפריטי שלוש הנקודות של סרגל האפליקציה, כגון תפריט תוצאות החיפוש</string>
   <string name="morphe_hide_you_tab_channel_handle_title">הסתר את כינוי הערוץ בכרטיסייה \'אתה\'</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">מסתיר את כינוי הערוץ מתחת לשם החשבון בכרטיסייה \'אתה\'</string>
   <string name="morphe_hide_video_title_title">הסתר כותרת סרטון</string>

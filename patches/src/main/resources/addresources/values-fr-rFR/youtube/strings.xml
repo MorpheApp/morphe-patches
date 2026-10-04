@@ -159,6 +159,9 @@ Les changements incluent :
   <string name="morphe_hide_sync_button_title">Masquer le bouton \'Synchroniser avec la vidéo\'</string>
   <string name="morphe_hide_timed_reactions_title">Masquer les réactions en temps réel</string>
   <string name="morphe_hide_timed_reactions_summary">Masque la fonctionnalité permettant aux utilisateurs de réagir avec des émojis dans la section des commentaires et le chat en direct</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Masquer \'Aide et commentaires\' dans les menus</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Masquer \'Aide et commentaires\' dans les menus à trois points de la barre d\'application, comme celui des résultats de recherche</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Masquer le nom d\'utilisateur de la chaîne dans l\'onglet \'Vous\'</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Masque le nom d\'utilisateur de la chaîne sous le nom du compte dans l\'onglet \'Vous\'</string>
   <string name="morphe_hide_video_title_title">Masquer le titre de la vidéo</string>
@@ -819,7 +822,7 @@ Pour afficher le menu 'Piste audio', changez 'Falsifier les flux vidéo' et sél
   <string name="morphe_hide_player_flyout_captions_footer_title">Masquer le pied de page du menu \'Sous-titres\'</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Masquer l\'en-tête du menu \'Sous-titres\'</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_help_title">Masquer le menu \'Aide &amp; commentaires\'</string>
+  <string name="morphe_hide_player_flyout_help_title">Masquer le menu \'Aide et commentaires\'</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Masquer le menu \'Écouter avec YouTube Music\'</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1039,7 +1042,7 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <string name="morphe_change_start_page_entry_browse">Parcourir les chaînes</string>
   <string name="morphe_change_start_page_entry_courses">Savoirs / Cultures</string>
   <string name="morphe_change_start_page_entry_explore">Explorer</string>
-  <string name="morphe_change_start_page_entry_fashion">Mode &amp; beauté</string>
+  <string name="morphe_change_start_page_entry_fashion">Mode et beauté</string>
   <string name="morphe_change_start_page_entry_gaming">Jeux vidéo</string>
   <string name="morphe_change_start_page_entry_history">Historique</string>
   <string name="morphe_change_start_page_entry_library">Bibliothèque</string>

@@ -159,6 +159,9 @@ Promene uključuju:
   <string name="morphe_hide_sync_button_title">Сакриј дугме „Синхронизуј са видео снимком“</string>
   <string name="morphe_hide_timed_reactions_title">Сакриј временске реакције</string>
   <string name="morphe_hide_timed_reactions_summary">Саскрива функцију која корисницима омогућава да реагују емотиконима у одељку за коментаре и чату уживо</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Сакриј \'Помоћ &amp; повратне информације\' у менијима</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Сакрива \'Помоћ &amp; повратне информације\' у менијима са три тачке траке апликације, као што је мени резултата претраге</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Сакриј хендл канала у картици Ти</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Сакрива хендл канала испод имена налога у картици Ти</string>
   <string name="morphe_hide_video_title_title">Сакриј наслов Shorts видеа</string>

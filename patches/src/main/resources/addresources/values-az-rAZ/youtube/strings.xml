@@ -159,6 +159,11 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_sync_button_title">\'Videoya sinxronlaşdırın\' düyməsin gizlət</string>
   <string name="morphe_hide_timed_reactions_title">Vaxtlı reaksiyaları gizlət</string>
   <string name="morphe_hide_timed_reactions_summary">İstifadəçilərə şərh bölməsində və canlı söhbətdə emojilərlə qarşılıq verməyə imkan verən xüsusiyyəti gizlədir</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Menyularda \'Yardım və geri əlaqəni\' gizlət</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Axtarış nəticələri menyusu kimi tətbiq cərgəsinin üç nöqtəli menyularında \'Yardım və geri əlaqəni\' gizlədir</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Siz panelində kanalın dəstəyini gizlət</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Siz bölməsində hesab adının altındakı kanalın dəstəyini gizlədir</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizlət</string>
   <string name="morphe_hide_video_title_summary">Tam ekran rejimindəki video başlığı gizlədilir</string>
   <string name="morphe_sanitize_video_subtitle_title">Video titrin təmizlə</string>

@@ -159,6 +159,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">إخفاء زر \'مزامنة مع الفيديو\'</string>
   <string name="morphe_hide_timed_reactions_title">إخفاء ردود الفعل المؤقتة</string>
   <string name="morphe_hide_timed_reactions_summary">يخفي الميزة التي تسمح للمستخدمين بالتفاعل باستخدام الرموز التعبيرية في قسم التعليقات والمحادثة المباشرة</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">إخفاء \'المساعدة والملاحظات\' في القوائم</string>
+  <string name="morphe_hide_help_feedback_menu_summary">يخفي \'المساعدة والملاحظات في قوائم الثلاث نقاط بشريط التطبيق، مثل قائمة نتائج البحث</string>
   <string name="morphe_hide_you_tab_channel_handle_title">إخفاء معرف القناة في تبويب أنت</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">يخفي معرف القناة تحت اسم الحساب في تبويب أنت</string>
   <string name="morphe_hide_video_title_title">إخفاء عنوان الفيديو</string>

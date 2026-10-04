@@ -159,8 +159,11 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">Приховати кнопку \"Синхронізувати з відео\"</string>
   <string name="morphe_hide_timed_reactions_title">Приховати тимчасові реакції</string>
   <string name="morphe_hide_timed_reactions_summary">Приховує функцію реакцій емодзі в секції коментарів і чаті трансляцій</string>
-  <string name="morphe_hide_you_tab_channel_handle_title">Приховати псевдонім каналу у вкладці «Ви»</string>
-  <string name="morphe_hide_you_tab_channel_handle_summary">Приховує псевдонім каналу під іменем облікового запису у вкладці «Ви»</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Приховати \"Довідка й відгук\" у меню</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Приховує \"Довідка й відгук\" у меню з трьома крапками панелі застосунку, наприклад у меню результатів пошуку</string>
+  <string name="morphe_hide_you_tab_channel_handle_title">Приховати ідентифікатор каналу на вкладці \"Ви\"</string>
+  <string name="morphe_hide_you_tab_channel_handle_summary">Приховує ідентифікатор каналу під іменем облікового запису на вкладці \"Ви\"</string>
   <string name="morphe_hide_video_title_title">Приховати назву відео</string>
   <string name="morphe_hide_video_title_summary">Приховує назву відео в повноекранному режимі</string>
   <string name="morphe_sanitize_video_subtitle_title">Очищувати підзаголовок відео</string>

@@ -159,6 +159,10 @@ Perubahan termasuk:
   <string name="morphe_hide_sync_button_title">Sembunyikan tombol \'Sinkronkan ke video\'</string>
   <string name="morphe_hide_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
   <string name="morphe_hide_timed_reactions_summary">Menyembunyikan fitur yang memungkinkan pengguna memberikan reaksi dengan emoji di bagian komentar dan live chat</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Sembunyikan \'Bantuan &amp; 
+saran\' di menu</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Menyembunyikan \'Bantuan &amp; saran\' di menu tiga titik pada bilah aplikasi, seperti menu hasil penelusuran</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Sembunyikan handle saluran pada tab Anda</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Menyembunyikan handle saluran di bawah nama akun pada tab Anda</string>
   <string name="morphe_hide_video_title_title">Sembunyikan judul video</string>

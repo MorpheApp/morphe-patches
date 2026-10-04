@@ -159,6 +159,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">隐藏“同步到视频”按钮</string>
   <string name="morphe_hide_timed_reactions_title">隐藏限时反应</string>
   <string name="morphe_hide_timed_reactions_summary">隐藏评论区和直播聊天中用表情符号互动的功能</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">在菜单中隐藏“帮助 &amp; 反馈”</string>
+  <string name="morphe_hide_help_feedback_menu_summary">在应用栏的三点菜单中，例如搜索结果菜单，隐藏“帮助 &amp; 反馈”</string>
   <string name="morphe_hide_you_tab_channel_handle_title">在“You”标签页中隐藏频道句柄</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">在“You”标签页中隐藏账户名下的频道句柄</string>
   <string name="morphe_hide_video_title_title">隐藏视频标题</string>

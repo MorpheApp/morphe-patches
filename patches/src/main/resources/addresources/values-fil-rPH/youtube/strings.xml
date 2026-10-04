@@ -159,6 +159,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_sync_button_title">Itago ang button na \'I-sync sa video\'</string>
   <string name="morphe_hide_timed_reactions_title">Itago ang mga nakatakdang reaksyon</string>
   <string name="morphe_hide_timed_reactions_summary">Itinatago ang feature na nagbibigay-daan sa mga user na mag-react gamit ang mga emoji sa seksyon ng mga komento at live chat</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Itago ang \'Tulong at feedback\' sa mga menu</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Itinatago ang \'Tulong at feedback\' sa mga menu na may tatlong tuldok ng app bar, tulad ng menu ng mga resulta ng paghahanap</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Itago ang handle ng channel sa tab na You</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Itinatago ang handle ng channel sa ilalim ng pangalan ng account sa tab na You</string>
   <string name="morphe_hide_video_title_title">Itago ang pamagat ng video</string>

@@ -159,6 +159,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">ซ่อนปุ่ม \'ซิงค์กับวิดีโอ\'</string>
   <string name="morphe_hide_timed_reactions_title">ซ่อนปฏิกิริยาตามเวลา</string>
   <string name="morphe_hide_timed_reactions_summary">ซ่อนคุณสมบัติที่ช่วยให้ผู้ใช้แสดงความรู้สึกด้วยอิโมจิในส่วนความคิดเห็นและแชทสด</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">ซ่อน \'ความช่วยเหลือ &amp; ข้อเสนอแนะ\' ในเมนู</string>
+  <string name="morphe_hide_help_feedback_menu_summary">ซ่อน \'ความช่วยเหลือ &amp; ข้อเสนอแนะ\' ในเมนูสามจุดของแถบแอป เช่น เมนูผลการค้นหา</string>
   <string name="morphe_hide_you_tab_channel_handle_title">ซ่อนแฮนเดิลช่องในแท็บคุณ</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">ซ่อนแฮนเดิลช่องใต้ชื่อบัญชีในแท็บคุณ</string>
   <string name="morphe_hide_video_title_title">ซ่อนชื่อวิดีโอ</string>

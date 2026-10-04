@@ -159,6 +159,9 @@ Změny zahrnují:
   <string name="morphe_hide_sync_button_title">Skrýt tlačítko „Synchronizovat s videem“</string>
   <string name="morphe_hide_timed_reactions_title">Skrýt reakce v konkrétním čase</string>
   <string name="morphe_hide_timed_reactions_summary">Skryje funkci, která umožňuje uživatelům reagovat emotikony v komentářích a živém chatu</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Skrýt \'Nápověda &amp; zpětná vazba\' v nabídkách</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Skryje \'Nápověda a zpětná vazba\' v nabídkách se třemi tečkami v panelu aplikace, jako je nabídka výsledků vyhledávání</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Skrýt popisek kanálu na kartě Ty</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Skryje popisek kanálu pod jménem účtu na kartě Ty</string>
   <string name="morphe_hide_video_title_title">Skrýt název videa</string>

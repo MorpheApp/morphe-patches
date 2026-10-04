@@ -159,6 +159,9 @@ Schimbari incluse:
   <string name="morphe_hide_sync_button_title">Ascunde butonul „Sincronizare cu video”</string>
   <string name="morphe_hide_timed_reactions_title">Ascunde reacţiile cronologie </string>
   <string name="morphe_hide_timed_reactions_summary">Ascunde funcția care permite utilizatorilor să reacționeze cu emoji-uri în secțiunea de comentarii și chat live</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Ascunde \'Ajutor &amp; feedback\' din meniuri</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Ascunde \'Ajutor &amp; feedback\' din meniurile cu trei puncte ale barei aplicației, cum ar fi meniul rezultatelor căutării</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Ascunde handle-ul canalului în fila Tu</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Ascunde handle-ul canalului sub numele contului în fila Tu</string>
   <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>

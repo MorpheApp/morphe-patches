@@ -159,6 +159,9 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_sync_button_title">Dölj knappen Synkronisera till video</string>
   <string name="morphe_hide_timed_reactions_title">Dölj tidsbaserade reaktioner</string>
   <string name="morphe_hide_timed_reactions_summary">Döljer funktionen som låter användare reagera med emojis i kommentarsfältet och livechatten</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Dölj \'Hjälp &amp; feedback\' i menyer</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Döljer \'Hjälp &amp; feedback\' i appfältets trepunktsmenyer, till exempel sökresultatmenyn</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Dölj kanalhandtaget på Du-fliken</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Döljer kanalhandtaget under kontonamnet på Du-fliken</string>
   <string name="morphe_hide_video_title_title">Dölj videotitel</string>

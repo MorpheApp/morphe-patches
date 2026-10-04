@@ -151,6 +151,10 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_force_original_audio_title">Orijinal səs dilini zorla</string>
   <string name="morphe_force_original_audio_summary">Həmişə videonun dublyaj olunan versiyası əvəzinə əsil audio trekini oynadır</string>
   <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">Səssizliyi ötür</string>
+  <string name="morphe_skip_silence_summary">Video səsindəki səssiz fasilələri avtomatik ötürür</string>
+  <string name="morphe_skip_silence_minimum_pause_title">Ən qısa fasilə uzunluğu</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">Yalnız ən azı bu uzunluqda olan fasilələr qısaldılır. Növbəti video başlayanda qüvvədə olur</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">Şəbəkə proksisi</string>
   <string name="morphe_proxy_screen_summary">Dəstəklənən şəbəkə sorğularını proksi vasitəsilə yönləndir</string>

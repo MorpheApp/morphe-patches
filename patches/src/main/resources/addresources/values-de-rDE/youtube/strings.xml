@@ -160,6 +160,9 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_sync_button_title">Schaltfläche „Mit Video synchronisieren“ ausblenden</string>
   <string name="morphe_hide_timed_reactions_title">Zeitliche Reaktionen ausblenden</string>
   <string name="morphe_hide_timed_reactions_summary">Verbirgt die Funktion, mit der Nutzer mit Emojis im Kommentarbereich und im Live-Chat reagieren können</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">„Hilfe &amp; Feedback“ in Menüs ausblenden</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Versteckt \"Hilfe &amp; Feedback\" im 3-Punkte Menü der App Leiste, sowie im Menü der gesuchten Sachen.</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Kanal-Handle im Tab „Du“ ausblenden</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Blendet das Kanal-Handle unter dem Kontonamen im Tab „Du“ aus</string>
   <string name="morphe_hide_video_title_title">Videotitel ausblenden</string>

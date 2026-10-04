@@ -159,6 +159,9 @@ Endringer inkluderer:
   <string name="morphe_hide_sync_button_title">Skjul knappen \"Synkroniser til video\"</string>
   <string name="morphe_hide_timed_reactions_title">Skjul tidsstyrte reaksjoner</string>
   <string name="morphe_hide_timed_reactions_summary">Skjuler funksjonen som lar brukere reagere med emojier i kommentarfeltet og direktekamp-chatten</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Skjul \'Hjelp &amp; tilbakemelding\' i menyer</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Skjuler \'Hjelp &amp; tilbakemelding\' i trepunktsmenyene i applinjen, for eksempel søkeresultatmenyen</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Skjul kanalens @-navn i Du-fanen</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Skjuler kanalens @-navn under kontonavnet i Du-fanen</string>
   <string name="morphe_hide_video_title_title">Skjul videotittel</string>

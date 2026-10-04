@@ -158,6 +158,9 @@ Ví dụ:
   <string name="morphe_hide_sync_button_title">Ẩn nút \"Đồng bộ với video\"</string>
   <string name="morphe_hide_timed_reactions_title">Ẩn phản ứng theo thời gian</string>
   <string name="morphe_hide_timed_reactions_summary">Ẩn tính năng cho phép người dùng phản hồi bằng biểu tượng cảm xúc trong phần bình luận và trò chuyện trực tiếp</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Ẩn mục \'Trợ giúp &amp; phản hồi\' trong menu</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Ẩn mục \'Trợ giúp &amp; phản hồi\' trong menu ba chấm của thanh ứng dụng, chẳng hạn như menu kết quả tìm kiếm</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Ẩn tên kênh trong tab Bạn</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Ẩn tên kênh dưới tên tài khoản trong tab Bạn</string>
   <string name="morphe_hide_video_title_title">Ẩn tiêu đề video</string>

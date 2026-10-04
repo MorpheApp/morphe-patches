@@ -159,6 +159,9 @@ Zmiany obejmują:
   <string name="morphe_hide_sync_button_title">Ukryj przycisk \"Zsynchronizuj z filmem\"</string>
   <string name="morphe_hide_timed_reactions_title">Ukryj reakcje czasowe</string>
   <string name="morphe_hide_timed_reactions_summary">Ukrywa funkcję umożliwiającą reagowanie emotikonami w sekcji komentarzy i na czacie na żywo</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Ukryj \"Pomoc i opinie\" w menu</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Ukrywa opcję \"Pomoc i opinie\" w menu z trzema kropkami na pasku aplikacji, na przykład w menu wyników wyszukiwania</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Ukryj identyfikator kanału w zakładce Ty</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Ukrywa identyfikator kanału pod nazwą konta w zakładce Ty</string>
   <string name="morphe_hide_video_title_title">Ukryj tytuł filmu</string>

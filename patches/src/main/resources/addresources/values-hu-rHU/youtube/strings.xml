@@ -159,6 +159,9 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_sync_button_title">„Szinkronizálás videóval” gomb elrejtése</string>
   <string name="morphe_hide_timed_reactions_title">Időzített reakciók elrejtése</string>
   <string name="morphe_hide_timed_reactions_summary">Kikapcsolja az emojikkal való reagálást a kommenteknél és az élő chaten</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">„Súgó &amp; visszajelzés” elrejtése a menükben</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Elrejti a „Súgó &amp; visszajelzés” elemet az alkalmazássáv hárompontos menüiben, például a keresési találatok menüjében</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Csatorna azonosító elrejtése a Neked lapon</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Elrejti a csatorna azonosítóját a fióknév alatt a Neked lapon</string>
   <string name="morphe_hide_video_title_title">Videócímek elrejtése</string>

@@ -159,6 +159,9 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_sync_button_title">Fela \'Samstilla við myndband\' hnappinn</string>
   <string name="morphe_hide_timed_reactions_title">Fela tímabilsbundnar viðbrögð</string>
   <string name="morphe_hide_timed_reactions_summary">Felur eiginleikann sem gerir notendum kleift að bregðast við með emojis í athugasmdum og lifandi streymi</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Fela \'Hjálp &amp; endurgjöf\' í valmyndum</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Felur \'Hjálp &amp; endurgjöf\' í þriggja punkta valmyndum verkstikunnar, eins og leitarniðurstöðuvalmyndinni</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Fela rásarauðkenni í Þú-flipanum</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Felur rásarauðkennið undir reikningsnafninu í Þú-flipanum</string>
   <string name="morphe_hide_video_title_title">Fela myndbandsheiti</string>

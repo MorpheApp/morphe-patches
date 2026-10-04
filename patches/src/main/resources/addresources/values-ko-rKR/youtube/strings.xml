@@ -159,6 +159,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
   <string name="morphe_hide_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
   <string name="morphe_hide_timed_reactions_summary">댓글 섹션 및 실시간 채팅에서 이모티콘으로 반응할 수 있는 기능을 숨깁니다</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">고객센터 메뉴 숨기기</string>
+  <string name="morphe_hide_help_feedback_menu_summary">검색 결과 메뉴와 같은 앱 바의 세 점 메뉴에서 고객센터 메뉴를 숨깁니다</string>
   <string name="morphe_hide_you_tab_channel_handle_title">내 페이지 탭에서 채널 핸들 숨기기</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">내 페이지 탭에서 계정 이름 아래에 있는 채널 핸들을 숨깁니다</string>
   <string name="morphe_hide_video_title_title">동영상 제목 숨기기</string>

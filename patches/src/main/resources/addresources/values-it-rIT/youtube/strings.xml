@@ -159,6 +159,9 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_sync_button_title">Nascondi il pulsante \'Sincronizza con video\'</string>
   <string name="morphe_hide_timed_reactions_title">Nascondi le reazioni a tempo</string>
   <string name="morphe_hide_timed_reactions_summary">Nasconde la funzionalità che consente agli utenti di reagire con emoji nella sezione commenti e nella chat live</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Nascondi \'Guida &amp; feedback\' nei menu</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Nasconde \'Guida &amp; feedback\' nei menu a tre puntini della barra dell\'app, ad esempio il menu dei risultati di ricerca</string>
   <string name="morphe_hide_you_tab_channel_handle_title">Nascondi l\'handle del canale nella scheda Tu</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">Nasconde l\'handle del canale sotto il nome dell\'account nella scheda Tu</string>
   <string name="morphe_hide_video_title_title">Nascondi il titolo del video</string>

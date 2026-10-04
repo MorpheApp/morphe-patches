@@ -159,6 +159,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_sync_button_title">\'Videoyla senkronize et\' düğmesini gizle</string>
   <string name="morphe_hide_timed_reactions_title">Süreli tepkileri gizle</string>
   <string name="morphe_hide_timed_reactions_summary">Kullanıcıların yorum bölümünde ve canlı sohbette emojilerle tepki vermesini sağlayan özelliği gizler</string>
+  <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Menülerde \'Yardım &amp; geri bildirim\' seçeneğini gizle</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Arama sonuçları menüsü gibi uygulama çubuğundaki üç nokta menülerinde “Yardım &amp; geri bildirim” seçeneğini gizler</string>
   <string name="morphe_hide_you_tab_channel_handle_title">\"Siz\" sekmesinde kanal kullanıcı adını gizle</string>
   <string name="morphe_hide_you_tab_channel_handle_summary">\"Siz\" sekmesinde, hesap adının altındaki kanal kullanıcı adını gizler.</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
