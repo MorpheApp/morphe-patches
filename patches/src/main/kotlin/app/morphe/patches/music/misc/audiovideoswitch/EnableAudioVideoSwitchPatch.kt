@@ -17,9 +17,7 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/EnableAudioVideoSwitchPatch;"
@@ -38,35 +36,21 @@ val enableAudioVideoSwitchPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        val log by lazy { Logger.getLogger(this::class.java.name) }
-
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_music_enable_audio_video_switch", summary = true)
         )
 
         AudioVideoSwitchPillContainerFingerprint.matchAll().forEach { match ->
-            val method = match.method
-            val instructions = method.implementation!!.instructions
+            match.method.apply {
+                var moveResultIndex = match.instructionMatches.last().index
+                val viewRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
-            var moveResultIndex = match.instructionMatches.last().index
-            while (moveResultIndex < instructions.size &&
-                instructions[moveResultIndex].opcode != Opcode.MOVE_RESULT_OBJECT
-            ) {
-                moveResultIndex++
+                addInstruction(
+                    moveResultIndex + 1,
+                    "invoke-static { v$viewRegister }, $EXTENSION_CLASS->" +
+                            "installAudioVideoSwitchInterceptor(Landroid/view/View;)V"
+                )
             }
-            if (moveResultIndex >= instructions.size) {
-                log.warning("Audio/video switch pill: view register not found.")
-                return@forEach
-            }
-
-            val viewRegister =
-                method.getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
-
-            method.addInstruction(
-                moveResultIndex + 1,
-                "invoke-static { v$viewRegister }, $EXTENSION_CLASS->" +
-                        "installAudioVideoSwitchInterceptor(Landroid/view/View;)V"
-            )
         }
     }
 }

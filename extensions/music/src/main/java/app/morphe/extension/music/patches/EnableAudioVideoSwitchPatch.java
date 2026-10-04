@@ -11,17 +11,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -37,9 +35,23 @@ import java.util.Set;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Requester;
 
 @SuppressWarnings("unused")
 public final class EnableAudioVideoSwitchPatch {
+
+    private static final class Item {
+        final String videoId;
+        String type;
+        String title;
+
+        Item(String videoId, String type, String title) {
+            this.videoId = videoId;
+            this.type = type;
+            this.title = title;
+        }
+    }
 
     private static final String OEMBED_URL = "https://www.youtube.com/oembed?format=json&url="
         + "https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D";
@@ -59,7 +71,7 @@ public final class EnableAudioVideoSwitchPatch {
     public static void installAudioVideoSwitchInterceptor(View pill) {
         try {
             if (pill == null || !Settings.ENABLE_AUDIO_VIDEO_SWITCH.get()) return;
-            final Context context = pill.getContext();
+            Context context = pill.getContext();
             pill.post(() -> attachInterceptor(pill, context));
         } catch (Exception ex) {
             Logger.printException(() -> "installAudioVideoSwitchInterceptor failed", ex);
@@ -70,12 +82,14 @@ public final class EnableAudioVideoSwitchPatch {
         try {
             if (view == null) return;
             view.setOnTouchListener((target, event) -> {
-                if (!Settings.ENABLE_AUDIO_VIDEO_SWITCH.get()) return false;
+                if (!Settings.ENABLE_AUDIO_VIDEO_SWITCH.get()) {
+                    return false;
+                }
                 if (event.getActionMasked() == MotionEvent.ACTION_UP) openCounterpart(context);
                 return true;
             });
             if (view instanceof ViewGroup group) {
-                for (int i = 0; i < group.getChildCount(); i++) {
+                for (int i = 0, childCound = group.getChildCount(); i < childCound; i++) {
                     attachInterceptor(group.getChildAt(i), context);
                 }
             }
@@ -84,29 +98,29 @@ public final class EnableAudioVideoSwitchPatch {
         }
     }
 
-    private static void openCounterpart(final Context context) {
-        final String currentId = VideoInformation.getVideoId();
+    private static void openCounterpart(Context context) {
+        String currentId = VideoInformation.getVideoId();
         if (!isVideoId(currentId) || busy) return;
 
         busy = true;
-        new Thread(() -> {
+        Utils.runOnBackgroundThread(() -> {
             try {
                 String targetId = resolveCounterpart(currentId);
-                if (isVideoId(targetId) && !targetId.equals(currentId)) {
+                if (targetId != null && isVideoId(targetId) && !targetId.equals(currentId)) {
                     openWatch(context, targetId);
                 } else {
                     Logger.printDebug(() -> "audio/video switch: no counterpart for " + currentId);
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "audio/video switch failed", ex);
+                Logger.printException(() -> "openCounterpart failure", ex);
             } finally {
                 busy = false;
             }
-        }, "morphe-av-switch").start();
+        });
     }
 
-    private static void openWatch(final Context context, final String videoId) {
-        new Handler(Looper.getMainLooper()).post(() -> {
+    private static void openWatch(Context context, String videoId) {
+        Utils.runOnMainThread(() -> {
             try {
                 Intent intent = new Intent(
                     Intent.ACTION_VIEW,
@@ -119,21 +133,20 @@ public final class EnableAudioVideoSwitchPatch {
                 context.startActivity(intent);
                 Logger.printDebug(() -> "audio/video switch: opened " + videoId);
             } catch (Exception ex) {
-                Logger.printException(() -> "audio/video switch: could not open counterpart", ex);
+                Logger.printException(() -> "openWatch failure", ex);
             }
         });
     }
 
+    @Nullable
     private static String resolveCounterpart(String currentId) throws Exception {
         JSONObject metadata = requestJson(OEMBED_URL + currentId, null);
-        if (metadata == null) return null;
 
         String title = metadata.optString("title", "");
         String author = metadata.optString("author_name", "");
         if (title.trim().isEmpty()) return null;
 
         JSONObject response = requestJson(SEARCH_URL, buildQuery(title, author));
-        if (response == null) return null;
 
         Map<String, Item> items = new LinkedHashMap<>();
         collectItems(response, "", items);
@@ -161,10 +174,10 @@ public final class EnableAudioVideoSwitchPatch {
                 best = item;
             }
         }
-        final String resolved = best == null ? null : best.videoId;
+        String resolved = best == null ? null : best.videoId;
         final double resolvedScore = bestScore;
         Logger.printDebug(() -> "audio/video switch: " + currentId + " (" + resolvedType
-            + ") -> " + resolved + " score=" + resolvedScore);
+            + ") -> " + resolved + " score: " + resolvedScore);
         return resolved;
     }
 
@@ -175,6 +188,7 @@ public final class EnableAudioVideoSwitchPatch {
             .replaceFirst("(?i)\\s*VEVO\\s*$", "")
             .trim();
         if (!channel.isEmpty() && !channel.equalsIgnoreCase(query.toString())) {
+            //noinspection SizeReplaceableByIsEmpty
             if (query.length() > 0) query.append(' ');
             query.append(channel);
         }
@@ -278,9 +292,10 @@ public final class EnableAudioVideoSwitchPatch {
         }
         if (value instanceof JSONArray array) {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < array.length(); i++) {
+            for (int i = 0, length = array.length(); i < length; i++) {
                 String text = flatten(array.opt(i), depth + 1);
                 if (text.isEmpty()) continue;
+                //noinspection SizeReplaceableByIsEmpty
                 if (builder.length() > 0) builder.append(' ');
                 builder.append(text);
             }
@@ -318,25 +333,19 @@ public final class EnableAudioVideoSwitchPatch {
             }
         }
 
-        int status = connection.getResponseCode();
-        try (InputStream input = status < 400
-            ? connection.getInputStream()
-            : connection.getErrorStream()) {
-            if (input == null) return null;
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-            byte[] chunk = new byte[8192];
-            int read;
-            while ((read = input.read(chunk)) != -1) buffer.write(chunk, 0, read);
-            if (status >= 400) return null;
-            return new JSONObject(new String(buffer.toByteArray(), StandardCharsets.UTF_8));
-        } finally {
-            connection.disconnect();
+        final int status = connection.getResponseCode();
+        if (status < 400) {
+            return Requester.parseJSONObject(connection);
         }
+        return new JSONObject(Requester.parseErrorString(connection));
     }
 
     private static boolean isVideoId(String value) {
-        if (value == null || value.length() != 11) return false;
-        for (int i = 0; i < value.length(); i++) {
+        final int length = value.length();
+        if (length != 11) {
+            return false;
+        }
+        for (int i = 0; i < length; i++) {
             char c = value.charAt(i);
             boolean valid = (c >= 'a' && c <= 'z')
                 || (c >= 'A' && c <= 'Z')
@@ -345,17 +354,5 @@ public final class EnableAudioVideoSwitchPatch {
             if (!valid) return false;
         }
         return true;
-    }
-
-    private static final class Item {
-        final String videoId;
-        String type;
-        String title;
-
-        Item(String videoId, String type, String title) {
-            this.videoId = videoId;
-            this.type = type;
-            this.title = title;
-        }
     }
 }
