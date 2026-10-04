@@ -16,10 +16,13 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.Collections;
 import java.util.Locale;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 
@@ -50,7 +53,21 @@ public final class DeArrowTitleRequest {
      */
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 2 * 1000;
 
+    /**
+     * DeArrow titles that were fetched. Titles replaced before they are laid out
+     * are only known by their text.
+     */
+    private static final Set<String> fetchedTitles = Collections.newSetFromMap(
+            Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000)));
+
     private DeArrowTitleRequest() {
+    }
+
+    /**
+     * @return If the title is a DeArrow title that was fetched.
+     */
+    public static boolean isDeArrowTitle(String title) {
+        return fetchedTitles.contains(title);
     }
 
     /**
@@ -121,7 +138,11 @@ public final class DeArrowTitleRequest {
 
                 // Words that are not auto formatted by the DeArrow extension start with '>'.
                 String text = FORMATTER_OVERRIDE_PATTERN.matcher(title.optString("title")).replaceAll("$1").trim();
-                return text.isEmpty() ? null : text;
+                if (text.isEmpty()) {
+                    return null;
+                }
+                fetchedTitles.add(text);
+                return text;
             }
             return null;
         } catch (IOException ex) {

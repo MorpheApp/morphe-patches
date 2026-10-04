@@ -183,6 +183,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // DeArrow
     public static final BooleanSetting DEARROW_TITLES = new BooleanSetting("morphe_dearrow_titles", FALSE, true);
+    public static final BooleanSetting DEARROW_TITLES_ICON = new BooleanSetting("morphe_dearrow_titles_icon", TRUE, true, parent(DEARROW_TITLES));
     public static final EnumSetting<ThumbnailOption> DEARROW_THUMBNAIL_HOME = new EnumSetting<>("morphe_dearrow_thumbnail_home", ThumbnailOption.ORIGINAL);
     public static final EnumSetting<ThumbnailOption> DEARROW_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_dearrow_thumbnail_subscription", ThumbnailOption.ORIGINAL);
     public static final EnumSetting<ThumbnailOption> DEARROW_THUMBNAIL_LIBRARY = new EnumSetting<>("morphe_dearrow_thumbnail_library", ThumbnailOption.ORIGINAL);

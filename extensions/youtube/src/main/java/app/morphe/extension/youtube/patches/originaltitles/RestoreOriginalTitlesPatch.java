@@ -49,6 +49,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleIcon;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -475,7 +476,7 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static CharSequence onLithoTextLoaded(ContextInterface contextInterface, CharSequence text) {
         try {
-            if (!REPLACE_TITLES || text == null) {
+            if (!REPLACE_TITLES || text == null || DeArrowTitleIcon.hasIcon(text)) {
                 return text;
             }
 
@@ -498,6 +499,10 @@ public final class RestoreOriginalTitlesPatch {
             final int length = trimmedText.length();
             if (length == 0) {
                 return translatedText;
+            }
+            if (markerStart < 0 && DeArrowTitleIcon.isShown(trimmedText)) {
+                // The title was replaced when the element was parsed.
+                return titleText(translatedText, translatedText.toString(), null);
             }
 
             String videoId = null;
@@ -553,12 +558,29 @@ public final class RestoreOriginalTitlesPatch {
                 return translatedText;
             }
 
-            return spannedText(translatedText, originalTitle, loading ? new LoadingTitleSpan(videoId) : null);
+            return loading
+                    ? spannedText(translatedText, originalTitle, new LoadingTitleSpan(videoId))
+                    : titleText(translatedText, originalTitle, null);
         } catch (Exception ex) {
             Logger.printException(() -> "onLithoTextLoaded failure", ex);
         }
 
         return text;
+    }
+
+    /**
+     * Same as {@link #spannedText(CharSequence, CharSequence, LithoRelayoutPatch.RelayoutSpan)},
+     * and shows the DeArrow icon before the title if the title is a DeArrow title.
+     */
+    private static SpannableString titleText(CharSequence text, String title,
+                                             @Nullable LithoRelayoutPatch.RelayoutSpan relayoutSpan) {
+        if (!DeArrowTitleIcon.isShown(title)) {
+            return spannedText(text, title, relayoutSpan);
+        }
+        // Spans of the entire text are also applied to the icon, such as the color of the text.
+        SpannableString spannedTitle = spannedText(text, DeArrowTitleIcon.addIcon(title), relayoutSpan);
+        DeArrowTitleIcon.setIconSpan(spannedTitle);
+        return spannedTitle;
     }
 
     /**
@@ -653,8 +675,9 @@ public final class RestoreOriginalTitlesPatch {
 
             CharSequence translatedTitle = view.getText();
             String translatedTitleText = translatedTitle.toString().trim();
-            // Reused views can still show the loading title.
-            if (!translatedTitleText.isEmpty() && !translatedTitleText.equals(LOADING_TITLE.toString())) {
+            // Reused views can still show the loading title or a DeArrow title.
+            if (!translatedTitleText.isEmpty() && !translatedTitleText.equals(LOADING_TITLE.toString())
+                    && !DeArrowTitleIcon.hasIcon(translatedTitle)) {
                 putTranslatedTitle(translatedTitleText, Collections.emptySet(), videoId);
             }
 
@@ -673,7 +696,9 @@ public final class RestoreOriginalTitlesPatch {
                 if (titleView == null || !titleViewVideoIds.remove(titleView, videoId)) {
                     return;
                 }
-                CharSequence title = originalTitle == null ? translatedTitle : originalTitle;
+                CharSequence title = originalTitle == null
+                        ? translatedTitle
+                        : titleText(translatedTitle, originalTitle, null);
                 // Setting the same text again would notify the text listeners again.
                 if (!TextUtils.equals(title, titleView.getText())) {
                     titleView.setText(title);
@@ -707,7 +732,7 @@ public final class RestoreOriginalTitlesPatch {
                 }
 
                 String title = text.toString().trim();
-                if (title.equals(LOADING_TITLE.toString())) {
+                if (title.equals(LOADING_TITLE.toString()) || DeArrowTitleIcon.hasIcon(text)) {
                     return;
                 }
 
@@ -951,7 +976,7 @@ public final class RestoreOriginalTitlesPatch {
         OriginalDescription.restore(preview, shownPreview.replace(translatedPreview, originalPreview));
 
         // Replaces the start of the preview in the accessibility label,
-        // which can be truncated, such as 'Description. First line of the descr… Tap to read more.'
+        // which can be truncated, such as 'Description. First line of the descr... Tap to read more.'
         String labelText = label.getText();
         final int prefixLength = previewPrefixLength(labelText, translatedPreview);
         if (prefixLength > 0) {
@@ -1079,7 +1104,7 @@ public final class RestoreOriginalTitlesPatch {
 
     /**
      * Saves the translated title of the video, and the texts that are the title truncated with an ellipsis.
-     * Elements can show the title truncated, such as 'Start of the title…', and the entire title
+     * Elements can show the title truncated, such as 'Start of the title...', and the entire title
      * in other texts. The truncated title can also be in other texts, such as the accessibility label.
      *
      * @param texts Texts of the element of the title.
@@ -1405,7 +1430,7 @@ public final class RestoreOriginalTitlesPatch {
                 title = labeledTitle;
                 // The label of a long title can include the title truncated, and the element the entire title.
                 // Texts that include the truncated title with the ellipsis are not the entire title,
-                // such as the accessibility label 'Start of the title… - play Short'.
+                // such as the accessibility label 'Start of the title... - play Short'.
                 for (String text : texts) {
                     if (isTruncatedTitle(labeledTitle, text) && !text.contains(labeledTitle)) {
                         title = text;
@@ -1501,7 +1526,7 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
-     * Elements can show the title truncated, such as 'Start of the title…'.
+     * Elements can show the title truncated, such as 'Start of the title...'.
      *
      * @param titles Titles that the text can be, from {@link #verifiedTitles(String)}.
      * @return The text that is a title seen before for the video or one of the titles,
@@ -1822,7 +1847,7 @@ public final class RestoreOriginalTitlesPatch {
 
     /**
      * Elements without an accessibility label can have other texts that start with a text,
-     * such as the views and date 'Views · Date', or a title that starts with the channel name
+     * such as the views and date 'Views - Date', or a title that starts with the channel name
      * 'Channel - Song'. The accessibility label of a video also includes the other texts
      * of the video after the title, such as the channel or the views.
      * The accessibility label of a channel includes the channel handle after the channel name.
@@ -1830,8 +1855,8 @@ public final class RestoreOriginalTitlesPatch {
      * such as 'Title - play Short' of a Short without views or with a long title.
      *
      * @param afterColon If the title follows a colon instead of starting the label, as the labels
-     *                   of some languages, such as the Russian label 'Воспроизвести видео "Duration"
-     *                   – на канале "Channel"; – продолжительность: Title – Channel - Views - Date'.
+     *                   of some languages, such as the Russian label that translates to
+     *                   'Play video "Duration" - on channel "Channel"; - duration: Title - Channel - Views - Date'.
      * @return The title, which is the longest text that starts the accessibility label
      *         and is followed by a punctuation separator, such as 'Title - 10 minutes'.
      *         Any text can be the title, including titles that look like keys such as 'a-ha'.

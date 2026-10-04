@@ -51,6 +51,7 @@ val deArrowPatch = bytecodePatch(
         val values = "morphe_dearrow_thumbnail_options_entry_values"
         PreferenceScreen.DEARROW.addPreferences(
             SwitchPreference("morphe_dearrow_titles", summary = true),
+            SwitchPreference("morphe_dearrow_titles_icon", summary = true),
             ListPreference(
                 key = "morphe_dearrow_thumbnail_home",
                 entriesKey = entries,
