@@ -76,9 +76,11 @@ public final class LayoutComponentsFilter extends Filter {
     private final ByteArrayFilterGroup channelProfileSubscribeButtonBuffer;
     private final ByteArrayFilterGroup buttonComponentBuffer;
     private final StringFilterGroup channelFilterBar;
+    private final StringFilterGroup channelHandle;
     private final StringFilterGroup channelMembersOnlyChipId;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup communityPosts;
+    private final StringFilterGroup compactChannel;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
@@ -100,7 +102,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup videoLabels;
     private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup videoRecommendationLabels;
-    private final StringFilterGroup youTabChannelHandle;
 
     public enum ExpandableCardStyle {
         SHOW_ALL,
@@ -233,6 +234,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "button.e"
         );
 
+        channelHandle = new StringFilterGroup(
+                Settings.HIDE_HANDLE,
+                "content_metadata.e"
+        );
+
         final var channelWatermark = new StringFilterGroup(
                 Settings.HIDE_CHANNEL_WATERMARK,
                 "featured_channel_watermark_overlay"
@@ -248,14 +254,14 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_banner"
         );
 
+        compactChannel = new StringFilterGroup(
+                Settings.HIDE_CHANNEL_BUTTONS,
+                "compact_channel.e"
+        );
+
         final var compactChannelBar = new StringFilterGroup(
                 Settings.HIDE_CHANNEL_BAR,
                 "compact_channel_bar"
-        );
-
-        final var compactChannelCommunityButton = new StringFilterGroup(
-                Settings.HIDE_COMMUNITY_BUTTON,
-                "compact_channel$FEcommunity"
         );
 
         compactChannelBarInner = new StringFilterGroup(
@@ -440,12 +446,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "endorsement_header_footer.e"
         );
 
-        // The @handle under the account name in the header of the You tab.
-        youTabChannelHandle = new StringFilterGroup(
-                Settings.HIDE_YOU_TAB_CHANNEL_HANDLE,
-                "content_metadata.e"
-        );
-
         final var webLinkPanel = new StringFilterGroup(
                 Settings.HIDE_WEB_SEARCH_RESULTS,
                 "web_link_panel",
@@ -456,6 +456,7 @@ public final class LayoutComponentsFilter extends Filter {
                 artistCard,
                 audioTrackButton,
                 channelFilterBar,
+                channelHandle,
                 channelLinksPreview,
                 channelMembersShelf,
                 channelProfileSubscribeButton,
@@ -463,7 +464,7 @@ public final class LayoutComponentsFilter extends Filter {
                 chipBar,
                 compactBanner,
                 compactChannelBar,
-                compactChannelCommunityButton,
+                compactChannel,
                 compactChannelBarInner,
                 communityPosts,
                 crowdfundingBox,
@@ -489,8 +490,7 @@ public final class LayoutComponentsFilter extends Filter {
                 videoLabels,
                 videoTitle,
                 videoRecommendationLabels,
-                webLinkPanel,
-                youTabChannelHandle
+                webLinkPanel
         );
     }
 
@@ -574,6 +574,11 @@ public final class LayoutComponentsFilter extends Filter {
             return false;
         }
 
+        if (matchedGroup == channelHandle) {
+            return Utils.startsWith(path, "page_header.e")
+                    && NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY;
+        }
+
         if (matchedGroup == channelProfileSubscribeButton) {
             return isChannelProfileSubscribeButtonHidden(path, buffer, asciiStrings);
         }
@@ -585,6 +590,10 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == communityPosts) {
             return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
+        }
+
+        if (matchedGroup == compactChannel) {
+            return Utils.contains(path, "button.e");
         }
 
         if (matchedGroup == compactChannelBarInner) {
@@ -645,12 +654,6 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == subscribedChannelsBarName) {
             return Utils.endsWith(path, "|TextType|");
-        }
-
-        if (matchedGroup == youTabChannelHandle) {
-            // The identifier is also used by the metadata of videos, so only the header
-            // of the You tab is filtered, not the one of a channel page.
-            return Utils.startsWith(path, "page_header.e") && NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY;
         }
 
         if (matchedGroup == singleItemInformationPanel) {
@@ -801,13 +804,15 @@ public final class LayoutComponentsFilter extends Filter {
                         // The header keeps the space of the subscribe button if it's removed,
                         // so it's hidden by the Litho filter.
                         hasHiddenSubscribeButton = Settings.HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE.get();
-                    } else if (ProtoNode.field(fields, BUTTON_VIEW_MODEL_FIELD) == null) {
-                        continue;
-                    } else if (isPageHeaderButtonHidden(fields)) {
-                        button.remove();
-                        modified = true;
                     } else {
-                        visibleButtons++;
+                        if (ProtoNode.field(fields, BUTTON_VIEW_MODEL_FIELD) != null) {
+                            if (isPageHeaderButtonHidden(fields)) {
+                                button.remove();
+                                modified = true;
+                            } else {
+                                visibleButtons++;
+                            }
+                        }
                     }
                 }
 

@@ -28,6 +28,9 @@ public final class DescriptionComponentsFilter extends Filter {
 
     private static final String INFOCARDS_SECTION_PATH = "infocards_section.e";
 
+    private final StringFilterGroup attributesSection;
+    private final ByteArrayFilterGroup attributesSectionBuffer;
+    private final ByteArrayFilterGroup podcastSectionBuffer;
     private final StringFilterGroup featuredSection;
     private final ByteArrayFilterGroupList featuredSectionGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup hashtagSection;
@@ -46,6 +49,22 @@ public final class DescriptionComponentsFilter extends Filter {
         final StringFilterGroup aiGeneratedVideoSummarySection = new StringFilterGroup(
                 Settings.HIDE_AI_GENERATED_VIDEO_SUMMARY_SECTION,
                 "cell_expandable_metadata.e"
+        );
+
+        attributesSection = new StringFilterGroup(
+                null,
+                "card.e"
+        );
+
+        attributesSectionBuffer = new ByteArrayFilterGroup(
+                Settings.HIDE_ATTRIBUTES_SECTION,
+                "album_hero_card",
+                "gaming_hero_card"
+        );
+
+        podcastSectionBuffer = new ByteArrayFilterGroup(
+                null,
+                "podcast_hero_card"
         );
 
         final StringFilterGroup askSection = new StringFilterGroup(
@@ -203,6 +222,7 @@ public final class DescriptionComponentsFilter extends Filter {
 
         addPathCallbacks(
                 aiGeneratedVideoSummarySection,
+                attributesSection,
                 askSection,
                 correctionsSection,
                 courseProgressSection,
@@ -237,6 +257,13 @@ public final class DescriptionComponentsFilter extends Filter {
         if (!EngagementPanel.isDescription() && !(PlayerType.getCurrent().isMaximizedOrFullscreen() ||
                 LayoutReloadObserverPatch.isActionBarVisible.get() || ShortsPlayerState.isOpen())) {
             return false;
+        }
+
+        if (matchedGroup == attributesSection) {
+            return attributesSectionBuffer.check(buffer).isFiltered()
+                    || ((Settings.HIDE_EXPLORE_SECTION.get()
+                    || Settings.HIDE_EXPLORE_PODCAST_SECTION.get())
+                    && podcastSectionBuffer.check(buffer).isFiltered());
         }
 
         if (matchedGroup == featuredSection) {

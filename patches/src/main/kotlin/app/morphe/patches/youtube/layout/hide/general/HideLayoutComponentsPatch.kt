@@ -385,6 +385,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_album_cards", summary = true),
             SwitchPreference("morphe_hide_artist_cards", summary = true),
             SwitchPreference("morphe_hide_auto_dubbed_label"),
+            SwitchPreference("morphe_hide_channel_buttons", summary = true),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner", summary = true),
             if (is_20_26_or_greater) {
@@ -412,10 +413,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ),
             SwitchPreference("morphe_hide_floating_microphone_button", summary = true),
             SwitchPreference("morphe_hide_get_premium_button"),
-            SwitchPreference("morphe_hide_history_shelf", summary = true),
+            SwitchPreference("morphe_hide_history_shelf"),
             SwitchPreference("morphe_hide_horizontal_shelves", summary = true),
             SwitchPreference("morphe_hide_hyped_label"),
             SwitchPreference("morphe_hide_image_shelf", summary = true),
+            SwitchPreference("morphe_hide_handle", summary = true),
             SwitchPreference("morphe_hide_help_feedback_menu", summary = true),
             SwitchPreference("morphe_hide_invite_to_message_card", summary = true),
             SwitchPreference("morphe_hide_latest_videos_button", summary = true),
@@ -428,7 +430,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_search_term_thumbnails", summary = true),
             SwitchPreference("morphe_hide_show_more_button", summary = true),
             SwitchPreference("morphe_hide_subscribed_channels_bar"),
-            SwitchPreference("morphe_hide_subscribed_channels_bar_names"),
+            SwitchPreference("morphe_hide_subscribed_channels_bar_names", summary = true),
             SwitchPreference("morphe_hide_surveys", summary = true),
             SwitchPreference("morphe_hide_ticket_shelf"),
             SwitchPreference(
@@ -444,7 +446,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_web_search_results", summary = true),
-            SwitchPreference("morphe_hide_you_tab_channel_handle", summary = true),
             SwitchPreference("morphe_hide_youtube_doodles", summary = true)
         )
 

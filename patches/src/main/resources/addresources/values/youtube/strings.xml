@@ -70,6 +70,8 @@ Changes include:
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
     <string name="morphe_hide_artist_cards_summary">Hides the artist card at the top of the search results</string>
     <string name="morphe_hide_auto_dubbed_label_title">Hide \'Auto-dubbed\' label</string>
+    <string name="morphe_hide_channel_buttons_title">Hide channel buttons</string>
+    <string name="morphe_hide_channel_buttons_summary">Hides buttons such as Subscribe, View Channel, Community, and YouTube Music from channel profiles in search results</string>
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary">Hides compact banners and spacing between some components</string>
@@ -81,7 +83,6 @@ Changes include:
     <string name="morphe_hide_floating_microphone_button_summary">Hides floating microphone button in the lower-right corner of search suggestions screen</string>
     <string name="morphe_hide_get_premium_button_title">Hide \'Get Premium\' button</string>
     <string name="morphe_hide_history_shelf_title">Hide History shelf</string>
-    <string name="morphe_hide_history_shelf_summary">Hides the History shelf in the You tab</string>
     <string name="morphe_hide_horizontal_shelves_title">Hide horizontal shelves</string>
     <string name="morphe_hide_horizontal_shelves_summary">Hides horizontal shelves such as Breaking news, Community posts you may like, Continue watching, Explore more channels, Explore more topics, For You, Latest videos, Most relevant, Posts from Creator\'s Community, Shopping, and Watch it again</string>
     <string name="morphe_hide_hyped_label_title">Hide Hyped label</string>
@@ -115,7 +116,8 @@ Changes include:
     <string name="morphe_hide_show_more_button_title">Hide \'Show more\' button</string>
     <string name="morphe_hide_show_more_button_summary">Hides the expand button under videos in the search results</string>
     <string name="morphe_hide_subscribed_channels_bar_title">Hide subscribed channels bar</string>
-    <string name="morphe_hide_subscribed_channels_bar_names_title">Hide channel names in subscribed channels bar</string>
+    <string name="morphe_hide_subscribed_channels_bar_names_title">Hide subscribed channel names</string>
+    <string name="morphe_hide_subscribed_channels_bar_names_summary">Hides the channel names in subscribed channels bar</string>
     <string name="morphe_hide_surveys_title">Hide surveys</string>
     <string name="morphe_hide_surveys_summary">Hide surveys and nudges about feed recommendation accuracy</string>
     <string name="morphe_hide_ticket_shelf_title">Hide ticket shelf</string>
@@ -168,8 +170,8 @@ Changes include:
     <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_help_feedback_menu_title">Hide \'Help &amp; feedback\' in menus</string>
     <string name="morphe_hide_help_feedback_menu_summary">Hides \'Help &amp; feedback\' in the three-dot menus of the app bar, such as the search results menu</string>
-    <string name="morphe_hide_you_tab_channel_handle_title">Hide channel handle in You tab</string>
-    <string name="morphe_hide_you_tab_channel_handle_summary">Hides the channel handle under the account name in the You tab</string>
+    <string name="morphe_hide_handle_title">Hide handle</string>
+    <string name="morphe_hide_handle_summary">Hides your channel handle in the 'You' tab</string>
     <string name="morphe_hide_video_title_title">Hide video title</string>
     <string name="morphe_hide_video_title_summary">Hides the video title in the fullscreen mode</string>
     <string name="morphe_sanitize_video_subtitle_title">Sanitize video subtitle</string>
@@ -741,7 +743,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_connect_button_title">Hide Connect button</string>
     <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears on live streamed videos. -->
+          This button usually appears on live stream videos. -->
     <string name="morphe_hide_report_button_title">Hide Report button</string>
     <!-- 'Remix' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_remix_button_title">Hide Remix button</string>
