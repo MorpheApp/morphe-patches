@@ -35,7 +35,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.patches.lyrics.parsers.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -157,10 +157,10 @@ public final class NetEaseProvider implements LyricsProvider {
 
         List<String> creditLines = parseYrcCredits(yrc);
 
-        List<LyricsLine> romaLines = romalrc.isEmpty() ? null : LrcParser.parseSynced(romalrc);
+        List<LyricsLine> romaLines = romalrc.isEmpty() ? null : LRCParser.parseSynced(romalrc);
         List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, romaLines);
 
-        List<LyricsLine> transLines = tlyric.isEmpty() ? null : LrcParser.parseSynced(tlyric);
+        List<LyricsLine> transLines = tlyric.isEmpty() ? null : LRCParser.parseSynced(tlyric);
         List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, transLines);
         Map<String, List<LyricsLine>> translations =
                 LyricsMerge.singleLanguageTranslations(translation, "zh");
@@ -601,6 +601,7 @@ public final class NetEaseProvider implements LyricsProvider {
         return parseLrc(lrc);
     }
 
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static List<LyricsLine> parseYrc(String text) {
         List<LyricsLine> lines = new ArrayList<>();
         if (text == null || text.isEmpty()) {

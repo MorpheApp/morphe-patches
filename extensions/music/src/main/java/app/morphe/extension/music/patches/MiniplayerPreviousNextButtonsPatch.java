@@ -19,7 +19,7 @@ import android.view.KeyEvent;
 import android.view.View;
 
 import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.music.jam.JamPlayback;
+import app.morphe.extension.music.patches.jam.JamPlayback;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;

@@ -176,6 +176,7 @@ final class LocalizedTitleRequest {
     /**
      * @param listTitle If the title is the title shown in the lists.
      */
+    @SuppressWarnings("deprecation")
     @Nullable
     private static String fetchTitle(String key, String videoId, Locale locale, boolean listTitle) {
         String language = locale.toLanguageTag();

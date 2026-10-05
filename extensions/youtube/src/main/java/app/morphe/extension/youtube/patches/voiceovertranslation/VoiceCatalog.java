@@ -74,7 +74,7 @@ final class VoiceCatalog {
 
         private static String countryToFlag(String countryCode) {
             if (countryCode == null || countryCode.length() != 2) return "";
-            String code = countryCode.toUpperCase();
+            String code = countryCode.toUpperCase(Locale.ROOT);
             final int firstChar = code.charAt(0) - 'A' + 0x1F1E6;
             final int secondChar = code.charAt(1) - 'A' + 0x1F1E6;
             return new String(Character.toChars(firstChar)) + new String(Character.toChars(secondChar));

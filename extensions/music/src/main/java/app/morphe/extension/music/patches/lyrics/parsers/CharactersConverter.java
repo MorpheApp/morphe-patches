@@ -8,6 +8,7 @@
 package app.morphe.extension.music.patches.lyrics.parsers;
 
 import android.icu.text.Transliterator;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,7 +54,9 @@ public final class CharactersConverter {
     private static Transliterator create(String... ids) {
         for (String id : ids) {
             try {
-                return Transliterator.getInstance(id);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    return Transliterator.getInstance(id);
+                }
             } catch (RuntimeException ex) {
                 Logger.printDebug(() -> "Could not create Transliterator for ID: " + id, ex);
                 // Try the next candidate id.
@@ -81,8 +84,11 @@ public final class CharactersConverter {
         // instances above, so locking on it serializes the calls against that one instance.
         //noinspection SynchronizationOnLocalVariableOrMethodParameter
         synchronized (transliterator) {
-            return transliterator.transliterate(text);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                return transliterator.transliterate(text);
+            }
         }
+        return text;
     }
 
     /**
@@ -131,7 +137,7 @@ public final class CharactersConverter {
      *   <li>Latin → ASCII (removes diacritics, e.g. Beyoncé → Beyonce)</li>
      *   <li>Hiragana ↔ Katakana (Japanese)</li>
      * </ul>
-     * Variants are generated independently from the original (not chained) to keep the number
+     * Variants are generated independently of the original (not chained) to keep the number
      * manageable. Variants identical to the original or to each other are omitted.
      * <p>
      * The order follows expected usefulness: CJK script variants first, then normalization,

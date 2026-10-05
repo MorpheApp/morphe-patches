@@ -24,7 +24,7 @@ import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 /**
  * Plays the song version of an album track that the app queued as a music video.
  *
- * <p>The track is not reopened. Instead the streams of the song are served under the video id of
+ * <p>The track is not reopened. Instead, the streams of the song are served under the video id of
  * the music video, so the app keeps the album queue it built and never restarts the player.
  */
 @SuppressWarnings("unused")
@@ -112,7 +112,7 @@ public class PlayAlbumSongsPatch {
                 if (isPositionOfAnotherVideo(videoId, track)) {
                     // An album added to the queue gives every one of its tracks the position
                     // of its first track. Two videos cannot be the same album track, so this
-                    // position is not the one of this video and it keeps playing as is.
+                    // position is not the one of this video, and it keeps playing as is.
                     albumTracks.remove(videoId);
                     songs.remove(videoId);
 

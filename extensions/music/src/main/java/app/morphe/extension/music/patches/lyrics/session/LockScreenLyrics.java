@@ -107,10 +107,13 @@ public final class LockScreenLyrics {
             sessionRef = new WeakReference<>(session);
             originalMetadata = original;
             metadataBuilder = new MediaMetadata.Builder(original);
-            realTitle = original.getString(MediaMetadata.METADATA_KEY_TITLE);
-            realArtist = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
 
-            String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(realTitle, realArtist);
+            String rt = original.getString(MediaMetadata.METADATA_KEY_TITLE);
+            String ra = original.getString(MediaMetadata.METADATA_KEY_ARTIST);
+            realTitle = rt;
+            realArtist = ra;
+
+            String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(rt, ra);
             cachedCleanedTitle = parsed[1];
             cachedCleanedArtist = parsed[0];
 
@@ -122,7 +125,7 @@ public final class LockScreenLyrics {
             }
 
             android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
-            LyricsManager.getInstance().onDisplayedTrackChanged(realTitle, realArtist, mediaUri);
+            LyricsManager.getInstance().onDisplayedTrackChanged(rt, ra, mediaUri);
             LyricsManager.getInstance().addListener(lyricsListener);
             lastPushedTitle = null;
             needsRepush = true;
@@ -267,8 +270,9 @@ public final class LockScreenLyrics {
 
     private static String getCurrentLine() {
         String line = LyricsManager.getInstance().getCurrentLineText();
-        if (line == null || line.isEmpty()) {
-            return realTitle == null ? "" : realTitle;
+        if (line.isEmpty()) {
+            String rt = realTitle;
+            return rt == null ? "" : rt;
         }
         return line;
     }
@@ -278,12 +282,17 @@ public final class LockScreenLyrics {
         if (builder == null) {
             return null;
         }
-        String artist = realArtist == null ? "" : realArtist;
+
+        String ra = realArtist;
+        String artist = ra == null ? "" : ra;
         String display = artist;
-        if (realTitle != null && !realTitle.isEmpty()) {
-            display = new TrackInfo(realTitle, artist, "", 0)
+
+        String rt = realTitle;
+        if (rt != null && !rt.isEmpty()) {
+            display = new TrackInfo(rt, artist, "", 0)
                     .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
         }
+
         builder.putString(MediaMetadata.METADATA_KEY_TITLE, title);
         builder.putString(MediaMetadata.METADATA_KEY_DISPLAY_TITLE, title);
         builder.putString(MediaMetadata.METADATA_KEY_ARTIST, display);

@@ -15,7 +15,7 @@ import java.net.HttpURLConnection;
 
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.music.patches.lyrics.parsers.TtmlParser;
+import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 
 public final class BlyricsProvider implements LyricsProvider {
 
@@ -55,7 +55,7 @@ public final class BlyricsProvider implements LyricsProvider {
             if (ttml == null) {
                 return null;
             }
-            return FetchResult.blind(TtmlParser.ttmlToLyrics(ttml, name(), null));
+            return FetchResult.blind(TTMLParser.ttmlToLyrics(ttml, name(), null));
         } finally {
             if (connection != null) {
                 connection.disconnect();

@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +40,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;
 
-import app.morphe.extension.music.jam.QueueCommand;
+import app.morphe.extension.music.patches.jam.QueueCommand;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -76,19 +77,18 @@ public final class EnableAudioVideoSwitchPatch {
     }
 
     private static final String OEMBED_URL = "https://www.youtube.com/oembed?format=json&url="
-        + "https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D";
+            + "https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D";
     private static final String SEARCH_URL =
-        "https://music.youtube.com/youtubei/v1/search?key=AIzaSyAOghZGza2MQSZkY_zfZ370N-PUdXEo8AI";
+            "https://music.youtube.com/youtubei/v1/search?key=AIzaSyAOghZGza2MQSZkY_zfZ370N-PUdXEo8AI";
     private static final String USER_AGENT =
-        "com.google.android.apps.youtube.music/7.27.52 (Linux; U; Android 14)";
+            "com.google.android.apps.youtube.music/7.27.52 (Linux; U; Android 14)";
 
     private static final String AUDIO_TYPE = "MUSIC_VIDEO_TYPE_ATV";
     private static final String VIDEO_TYPE = "MUSIC_VIDEO_TYPE_OMV";
 
     private static volatile boolean busy;
 
-    private static volatile WeakReference<QueueAccess> queue =
-        new WeakReference<>(null);
+    private static volatile WeakReference<QueueAccess> queue = new WeakReference<>(null);
 
     private EnableAudioVideoSwitchPatch() {
     }
@@ -107,6 +107,7 @@ public final class EnableAudioVideoSwitchPatch {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private static void attachInterceptor(View pill, View view, Context context) {
         try {
             if (view == null) return;
@@ -131,7 +132,7 @@ public final class EnableAudioVideoSwitchPatch {
                 return true;
             });
             if (view instanceof ViewGroup group) {
-                for (int i = 0, childCound = group.getChildCount(); i < childCound; i++) {
+                for (int i = 0, childCount = group.getChildCount(); i < childCount; i++) {
                     attachInterceptor(pill, group.getChildAt(i), context);
                 }
             }
@@ -231,7 +232,7 @@ public final class EnableAudioVideoSwitchPatch {
                 return false;
             }
 
-            dispatchMediaKeyEvent(context, KeyEvent.KEYCODE_MEDIA_NEXT);
+            dispatchMediaKeyEvent(context);
             if (!await(
                     () -> access.patch_atvCurrentIndex() == index + 1
                             && targetId.equals(videoAt(access, index + 1)),
@@ -307,16 +308,16 @@ public final class EnableAudioVideoSwitchPatch {
         }
     }
 
+    @SuppressWarnings({"BooleanMethodIsAlwaysInverted", "BusyWait"})
     private static boolean await(Condition condition, long timeoutMs) {
         long deadline = SystemClock.uptimeMillis() + timeoutMs;
-        while (true) {
+        while (SystemClock.uptimeMillis() < deadline) {
             try {
                 if (condition.ok()) return true;
             } catch (Exception ex) {
                 Logger.printException(() -> "audio/video switch: queue poll failed", ex);
                 return false;
             }
-            if (SystemClock.uptimeMillis() >= deadline) return false;
             try {
                 Thread.sleep(50);
             } catch (InterruptedException ex) {
@@ -324,6 +325,7 @@ public final class EnableAudioVideoSwitchPatch {
                 return false;
             }
         }
+        return false;
     }
 
     /**
@@ -331,14 +333,14 @@ public final class EnableAudioVideoSwitchPatch {
      * headsets and does not require any special permissions. Both ACTION_DOWN and ACTION_UP are
      * sent, as some players ignore events without a matching up event.
      */
-    private static void dispatchMediaKeyEvent(Context context, int keyCode) {
+    private static void dispatchMediaKeyEvent(Context context) {
         if (context.getSystemService(Context.AUDIO_SERVICE) instanceof AudioManager audioManager) {
             try {
                 long now = SystemClock.uptimeMillis();
                 audioManager.dispatchMediaKeyEvent(
-                        new KeyEvent(now, now, KeyEvent.ACTION_DOWN, keyCode, 0));
+                        new KeyEvent(now, now, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT, 0));
                 audioManager.dispatchMediaKeyEvent(
-                        new KeyEvent(now, now, KeyEvent.ACTION_UP, keyCode, 0));
+                        new KeyEvent(now, now, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_NEXT, 0));
             } catch (Exception ex) {
                 Logger.printException(() -> "dispatchMediaKeyEvent failure", ex);
             }
@@ -349,8 +351,8 @@ public final class EnableAudioVideoSwitchPatch {
         Utils.runOnMainThread(() -> {
             try {
                 Intent intent = new Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://music.youtube.com/watch?v=" + videoId)
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://music.youtube.com/watch?v=" + videoId)
                 );
                 intent.setPackage(context.getPackageName());
                 if (!(context instanceof Activity)) {
@@ -403,16 +405,16 @@ public final class EnableAudioVideoSwitchPatch {
         String resolved = best == null ? null : best.videoId;
         final double resolvedScore = bestScore;
         Logger.printDebug(() -> "audio/video switch: " + currentId + " (" + resolvedType
-            + ") -> " + resolved + " score: " + resolvedScore);
+                + ") -> " + resolved + " score: " + resolvedScore);
         return resolved;
     }
 
     private static String buildQuery(String title, String author) {
         StringBuilder query = new StringBuilder(stripDecorations(title).trim());
         String channel = stripDecorations(author)
-            .replaceFirst("(?i)\\s*-\\s*Topic\\s*$", "")
-            .replaceFirst("(?i)\\s*VEVO\\s*$", "")
-            .trim();
+                .replaceFirst("(?i)\\s*-\\s*Topic\\s*$", "")
+                .replaceFirst("(?i)\\s*VEVO\\s*$", "")
+                .trim();
         if (!channel.isEmpty() && !channel.equalsIgnoreCase(query.toString())) {
             //noinspection SizeReplaceableByIsEmpty
             if (query.length() > 0) query.append(' ');
@@ -423,7 +425,7 @@ public final class EnableAudioVideoSwitchPatch {
 
     private static String stripDecorations(String value) {
         if (value == null) return "";
-        return value.replaceAll("\\s*[\\(\\[].*?[\\)\\]]", " ");
+        return value.replaceAll("\\s*[(\\[].*?[)\\]]", " ");
     }
 
     private static double score(String expected, String actual) {
@@ -442,7 +444,7 @@ public final class EnableAudioVideoSwitchPatch {
         for (String token : a) {
             if (b.contains(token)) common++;
         }
-        return (double) common / Math.max(1, Math.min(a.size(), b.size()));
+        return (double) common / Math.min(a.size(), b.size());
     }
 
     private static String normalize(String value) {
@@ -541,16 +543,16 @@ public final class EnableAudioVideoSwitchPatch {
         } else {
             connection.setRequestProperty("User-Agent", USER_AGENT);
             byte[] body = new JSONObject()
-                .put("query", searchQuery)
-                .put("context", new JSONObject()
-                    .put("client", new JSONObject()
-                        .put("clientName", "ANDROID_MUSIC")
-                        .put("clientVersion", "7.27.52")
-                        .put("androidSdkVersion", 34)
-                        .put("hl", "en")
-                        .put("gl", "US")))
-                .toString()
-                .getBytes(StandardCharsets.UTF_8);
+                    .put("query", searchQuery)
+                    .put("context", new JSONObject()
+                            .put("client", new JSONObject()
+                                    .put("clientName", "ANDROID_MUSIC")
+                                    .put("clientVersion", "7.27.52")
+                                    .put("androidSdkVersion", 34)
+                                    .put("hl", "en")
+                                    .put("gl", "US")))
+                    .toString()
+                    .getBytes(StandardCharsets.UTF_8);
             connection.setRequestMethod("POST");
             connection.setDoOutput(true);
             connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
@@ -566,6 +568,7 @@ public final class EnableAudioVideoSwitchPatch {
         return new JSONObject(Requester.parseErrorString(connection));
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isVideoId(String value) {
         final int length = value.length();
         if (length != 11) {
@@ -574,9 +577,9 @@ public final class EnableAudioVideoSwitchPatch {
         for (int i = 0; i < length; i++) {
             char c = value.charAt(i);
             boolean valid = (c >= 'a' && c <= 'z')
-                || (c >= 'A' && c <= 'Z')
-                || (c >= '0' && c <= '9')
-                || c == '_' || c == '-';
+                    || (c >= 'A' && c <= 'Z')
+                    || (c >= '0' && c <= '9')
+                    || c == '_' || c == '-';
             if (!valid) return false;
         }
         return true;

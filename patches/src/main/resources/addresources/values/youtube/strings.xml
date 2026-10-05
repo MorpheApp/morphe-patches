@@ -168,8 +168,8 @@ Changes include:
     <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
     <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_help_feedback_menu_title">Hide \'Help &amp; feedback\' in menus</string>
-    <string name="morphe_hide_help_feedback_menu_summary">Hides \'Help &amp; feedback\' in the three-dot menus of the app bar, such as the search results menu</string>
+    <string name="morphe_hide_help_feedback_menu_title">Hide \'Help &amp; feedback\' menu</string>
+    <string name="morphe_hide_help_feedback_menu_summary">Hides \'Help &amp; feedback\' in the three-dot menus of the app bar, such as from the search results</string>
     <string name="morphe_hide_handle_title">Hide handle</string>
     <string name="morphe_hide_handle_summary">Hides your channel handle in the \'You\' tab</string>
     <string name="morphe_hide_video_title_title">Hide video title</string>
@@ -556,10 +556,10 @@ Your API key should never be shared. Anyone with access to it can use your OpenR
     <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
     <string name="morphe_loop_video_range_invalid_time">Invalid time range</string>
 
-    <!-- interaction.pip.pipButtonPatch -->
-    <string name="morphe_pip_button_overlay_title">Show Picture-in-picture overlay button</string>
-    <string name="morphe_pip_button_flyout_title">Show Picture-in-picture flyout button</string>
-    <string name="morphe_pip_button_flyout_name">Switch to Picture-in-picture</string>
+    <!-- interaction.pctureinpicture.pictureinPictureButtonPatch -->
+    <string name="morphe_pip_button_overlay_title">Show Picture-in-Picture button</string>
+    <string name="morphe_pip_button_flyout_title">Show Picture-in-Picture menu</string>
+    <string name="morphe_pip_button_flyout_name">Switch to Picture-in-Picture</string>
 
     <!-- interaction.playall.playAllButtonPatch -->
     <string name="morphe_play_all_button_title">Show Play all button</string>

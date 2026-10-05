@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -26,10 +27,10 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.parsers.KRCParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.music.patches.lyrics.parsers.KrcParser;
-import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 
 public final class LunaProvider implements LyricsProvider {
 
@@ -87,8 +88,8 @@ public final class LunaProvider implements LyricsProvider {
         List<ScoredSong> scored = new ArrayList<>();
         for (JSONObject trackObj : tracks) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
-            String trackId = trackObj.optString("id", null);
-            if (trackId == null || trackId.isEmpty()) {
+            String trackId = trackObj.optString("id", "");
+            if (trackId.isEmpty()) {
                 continue;
             }
             try {
@@ -141,7 +142,7 @@ public final class LunaProvider implements LyricsProvider {
         return label != null && label.optBoolean("is_original", false);
     }
 
-    @Nullable
+    @NonNull
     private List<JSONObject> searchTracks(TrackInfo track) throws Exception {
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
 
@@ -212,8 +213,8 @@ public final class LunaProvider implements LyricsProvider {
                 if (entity == null) continue;
                 JSONObject trackObj = entity.optJSONObject("track");
                 if (trackObj == null) continue;
-                String id = trackObj.optString("id", null);
-                if (id != null && !id.isEmpty()) {
+                String id = trackObj.optString("id", "");
+                if (!id.isEmpty()) {
                     trackList.add(trackObj);
                 }
             }
@@ -269,16 +270,16 @@ public final class LunaProvider implements LyricsProvider {
         String formatType;
 
         if ("krc".equals(type)) {
-            List<LyricsLine> yrcLines = KrcParser.parse(content);
+            List<LyricsLine> yrcLines = KRCParser.parse(content);
             if (!yrcLines.isEmpty()) {
                 lines = yrcLines;
                 formatType = "krc";
             } else {
-                lines = LrcParser.parseSynced(content);
+                lines = LRCParser.parseSynced(content);
                 formatType = lines.isEmpty() ? "txt" : "lrc";
             }
         } else {
-            List<LyricsLine> lrcLines = LrcParser.parseSynced(content);
+            List<LyricsLine> lrcLines = LRCParser.parseSynced(content);
             if (!lrcLines.isEmpty()) {
                 lines = lrcLines;
                 formatType = "lrc";
@@ -318,9 +319,9 @@ public final class LunaProvider implements LyricsProvider {
 
                 List<LyricsLine> transLines;
                 if ("krc".equals(transType)) {
-                    transLines = KrcParser.parse(transContent);
+                    transLines = KRCParser.parse(transContent);
                 } else {
-                    transLines = LrcParser.parseSynced(transContent);
+                    transLines = LRCParser.parseSynced(transContent);
                 }
 
                 if (!transLines.isEmpty()) {
@@ -339,7 +340,7 @@ public final class LunaProvider implements LyricsProvider {
                 if (translations != null) {
                     String cnContent = LyricsRequests.optString(translations, "cn");
                     if (cnContent != null && !cnContent.isEmpty()) {
-                        List<LyricsLine> cnLines = LrcParser.parseSynced(cnContent);
+                        List<LyricsLine> cnLines = LRCParser.parseSynced(cnContent);
                         if (!cnLines.isEmpty()) {
                             List<LyricsLine> merged = LyricsMerge.mergeRomanization(original, cnLines);
                             if (LyricsMerge.hasText(merged)) {

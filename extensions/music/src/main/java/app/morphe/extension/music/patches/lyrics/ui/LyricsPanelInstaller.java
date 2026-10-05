@@ -23,7 +23,7 @@ import java.lang.ref.WeakReference;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
-import app.morphe.extension.music.patches.lyrics.session.MiniPlayerLyrics;
+import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -104,7 +104,7 @@ public final class LyricsPanelInstaller {
                 } else {
                     uninstallLyricsPanel();
                 }
-                MiniPlayerLyrics.onSettingsChanged();
+                MiniplayerLyrics.onSettingsChanged();
                 return;
             }
             if (Settings.LYRICS_SOURCE.key.equals(key)
@@ -120,7 +120,7 @@ public final class LyricsPanelInstaller {
             }
             if (Settings.LYRICS_MINIPLAYER.key.equals(key)
                     || Settings.LYRICS_DISPLAY_ARTIST_FIRST.key.equals(key)) {
-                MiniPlayerLyrics.onSettingsChanged();
+                MiniplayerLyrics.onSettingsChanged();
                 return;
             }
             final LyricsPanelView panelView = panelReference.get();

@@ -13,13 +13,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.util.getMutableMethod
 import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assumptions.assumeTrue
+import kotlin.io.path.Path
 import kotlin.io.path.createTempDirectory
 import kotlin.io.path.readText
 import kotlin.io.path.walk
@@ -36,7 +36,6 @@ class JamPatchRegressionTest {
             "Pass -PjamApk to verify both native player layouts"
         }
         val fixture = bytecodePatch {
-            dependsOn(resourceMappingPatch)
             execute {
                 val ui = resolveJamUiAbi(resolveJamQueueAbi())
                 val presenter = PlayerMetadataViewsFingerprint.matchSingle().originalClassDef
@@ -46,7 +45,7 @@ class JamPatchRegressionTest {
                 for (click in miniClicks + fullClicks) {
                     assertTrue(ui.buttons.any { it.click == click.originalMethod })
                 }
-                // Both surfaces must feed the same renderer. Otherwise only one icon would mirror.
+                // Both surfaces must feed the same renderer. Otherwise, only one icon would mirror.
                 for (owner in listOf(presenter, controls)) {
                     assertTrue(owner.fields.any { it.type == ui.playbackIcon.render.definingClass })
                 }
@@ -54,14 +53,14 @@ class JamPatchRegressionTest {
             }
         }
         val workspace = createTempDirectory("jam-player-layouts")
-        Patcher(PatcherConfig(kotlin.io.path.Path(apkPath).toFile(), workspace.toFile())).use {
-            patcher ->
+        Patcher(PatcherConfig(Path(apkPath).toFile(), workspace.toFile())).use { patcher ->
             patcher += setOf(fixture)
             runBlocking {
                 patcher().collect { result ->
-                    assertTrue(
-                        result.exception == null,
-                        result.exception?.stackTraceToString().orEmpty(),
+                    assertEquals(
+                        null,
+                        result.exception,
+                        result.exception?.stackTraceToString().orEmpty()
                     )
                 }
             }
@@ -84,14 +83,14 @@ class JamPatchRegressionTest {
                 val manager = mutableClassDefBy(queue.managerType)
                 val extraDispatcher =
                     ImmutableField(
-                            manager.type,
-                            "jamUnusedDispatcher",
-                            queue.menu.dispatcher.type,
-                            AccessFlags.PRIVATE.value,
-                            null,
-                            null,
-                            null,
-                        )
+                        manager.type,
+                        "jamUnusedDispatcher",
+                        queue.menu.dispatcher.type,
+                        AccessFlags.PRIVATE.value,
+                        null,
+                        null,
+                        null,
+                    )
                         .toMutable()
                 manager.fields.add(extraDispatcher)
 
@@ -108,14 +107,14 @@ class JamPatchRegressionTest {
             }
         }
         val workspace = createTempDirectory("jam-dispatcher-resolution")
-        Patcher(PatcherConfig(kotlin.io.path.Path(apkPath).toFile(), workspace.toFile())).use {
-            patcher ->
+        Patcher(PatcherConfig(Path(apkPath).toFile(), workspace.toFile())).use { patcher ->
             patcher += setOf(fixture)
             runBlocking {
                 patcher().collect { result ->
-                    assertTrue(
-                        result.exception == null,
-                        result.exception?.stackTraceToString().orEmpty(),
+                    assertEquals(
+                        null,
+                        result.exception,
+                        result.exception?.stackTraceToString().orEmpty()
                     )
                 }
             }
@@ -147,14 +146,14 @@ class JamPatchRegressionTest {
             }
         }
         val workspace = createTempDirectory("jam-negative-resolution")
-        Patcher(PatcherConfig(kotlin.io.path.Path(apkPath).toFile(), workspace.toFile())).use {
-            patcher ->
+        Patcher(PatcherConfig(Path(apkPath).toFile(), workspace.toFile())).use { patcher ->
             patcher += setOf(fixture)
             runBlocking {
                 patcher().collect { result ->
-                    assertTrue(
-                        result.exception == null,
-                        result.exception?.stackTraceToString().orEmpty(),
+                    assertEquals(
+                        null,
+                        result.exception,
+                        result.exception?.stackTraceToString().orEmpty()
                     )
                 }
             }
@@ -163,8 +162,7 @@ class JamPatchRegressionTest {
 
     @Test
     fun `Jam discovery has no version branches or implementation class anchors`() {
-        val sourceRoot =
-            kotlin.io.path.Path("src/main/kotlin/app/morphe/patches/music/interaction/jam")
+        val sourceRoot = Path("src/main/kotlin/app/morphe/patches/music/interaction/jam")
         val prohibited =
             listOf(
                 Regex("\\b\\d+\\.\\d+\\.\\d+\\b"),
@@ -177,13 +175,13 @@ class JamPatchRegressionTest {
                 .walk()
                 .filter {
                     it.fileName.toString().endsWith("Fingerprints.kt") ||
-                        it.fileName.toString().endsWith("Abi.kt")
+                            it.fileName.toString().endsWith("Abi.kt")
                 }
                 .flatMap { path ->
                     val name = path.fileName
                     val source = path.readText()
                     prohibited.flatMap { pattern ->
-                        pattern.findAll(source).map { "$name: ${it.value}" }.toList()
+                        pattern.findAll(source).map { "$name:${it.value}" }.toList()
                     }
                 }
         assertTrue(violations.toList().isEmpty(), violations.joinToString("\n"))
@@ -191,15 +189,14 @@ class JamPatchRegressionTest {
 
     @Test
     fun `Jam patch sources do not encode host obfuscation descriptors`() {
-        val sourceRoot =
-            kotlin.io.path.Path("src/main/kotlin/app/morphe/patches/music/interaction/jam")
+        val sourceRoot = Path("src/main/kotlin/app/morphe/patches/music/interaction/jam")
         val descriptors = Regex("(?<![A-Za-z0-9_/])L[a-z]{1,6};")
         val matches =
             sourceRoot
                 .walk()
                 .filter { it.toString().endsWith(".kt") }
                 .flatMap { source ->
-                    descriptors.findAll(source.readText()).map { "${source.fileName}: ${it.value}" }
+                    descriptors.findAll(source.readText()).map { "${source.fileName}:${it.value}" }
                 }
                 .toList()
         assertTrue(
@@ -215,14 +212,14 @@ class JamPatchRegressionTest {
             "Jam APK resolution test skipped; pass -PjamApk=/absolute/path/to/ytm.apk"
         }
         val workspace = createTempDirectory("jam-patch-resolution")
-        Patcher(PatcherConfig(kotlin.io.path.Path(apkPath).toFile(), workspace.toFile())).use {
-            patcher ->
+        Patcher(PatcherConfig(Path(apkPath).toFile(), workspace.toFile())).use { patcher ->
             patcher += setOf(jamQueueSharingPatch)
             runBlocking {
                 patcher().collect { result ->
-                    assertTrue(
-                        result.exception == null,
-                        result.exception?.stackTraceToString().orEmpty(),
+                    assertEquals(
+                        null,
+                        result.exception,
+                        result.exception?.stackTraceToString().orEmpty()
                     )
                 }
             }

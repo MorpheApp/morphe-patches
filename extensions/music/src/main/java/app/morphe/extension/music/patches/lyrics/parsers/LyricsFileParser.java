@@ -101,7 +101,7 @@ public final class LyricsFileParser {
 
         Object plainObject = top.get("plain");
         if (plainObject instanceof String) {
-            List<LyricsLine> plain = LrcParser.parsePlain((String) plainObject);
+            List<LyricsLine> plain = LRCParser.parsePlain((String) plainObject);
             if (!plain.isEmpty()) {
                 return fileLyrics(plain, providerName, false, creditLinesOut, yaml, sourceUrl);
             }
@@ -156,7 +156,7 @@ public final class LyricsFileParser {
             text = builder.toString();
         }
 
-        LrcParser.inferMissingWordEnds(words, 800);
+        LRCParser.inferMissingWordEnds(words, 800);
 
         return new LyricsLine(asLong(map.get("start_ms")), text, words);
     }

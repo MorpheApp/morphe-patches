@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -64,13 +65,13 @@ public final class MetadataCleaner {
         return lookup.local();
     }
 
-    public static String resolveSettingBlocking(@Nullable String value) {
+    public static void resolveSettingBlocking(@Nullable String value) {
         SettingLookup lookup = classifySetting(value);
         if (!lookup.remote()) {
-            return lookup.local();
+            return;
         }
         if (lookup.local() != null) {
-            return lookup.local();
+            return;
         }
 
         ResolveTask task = pendingResolves.computeIfAbsent(lookup.trimmed(), ResolveTask::new);
@@ -79,16 +80,14 @@ public final class MetadataCleaner {
         task.await();
         String cached = resolveCache.get(lookup.trimmed());
         if (cached != null) {
-            return cached;
+            return;
         }
 
         try {
             cached = download(lookup.trimmed());
             resolveCache.put(lookup.trimmed(), cached);
-            return cached;
         } catch (Exception ex) {
             Logger.printDebug(() -> "Failed to download setting: " + lookup.trimmed(), ex);
-            return lookup.trimmed();
         }
     }
 
@@ -333,25 +332,31 @@ public final class MetadataCleaner {
                 }
             }
 
-            StringBuilder sb = new StringBuilder(4096);
-            try (BufferedReader br = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream(), charset))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    //noinspection SizeReplaceableByIsEmpty
-                    if (sb.length() > 0) {
-                        sb.append('\n');
-                    }
-                    sb.append(line);
-                    if (sb.length() > MAX_DOWNLOAD_CHARS) {
-                        break;
-                    }
-                }
-            }
+            StringBuilder sb = createStringBuilder(conn, charset);
             return sb.toString().trim();
         } finally {
             conn.disconnect();
         }
+    }
+
+    @NonNull
+    private static StringBuilder createStringBuilder(HttpURLConnection conn, String charset) throws IOException {
+        StringBuilder sb = new StringBuilder(4096);
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(conn.getInputStream(), charset))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                //noinspection SizeReplaceableByIsEmpty
+                if (sb.length() > 0) {
+                    sb.append('\n');
+                }
+                sb.append(line);
+                if (sb.length() > MAX_DOWNLOAD_CHARS) {
+                    break;
+                }
+            }
+        }
+        return sb;
     }
 
     private static final class ResolveTask {
@@ -380,7 +385,10 @@ public final class MetadataCleaner {
 
         void await() {
             try {
-                latch.await(READ_TIMEOUT_MS + 1000, TimeUnit.MILLISECONDS);
+                boolean completed = latch.await(READ_TIMEOUT_MS + 1000, TimeUnit.MILLISECONDS);
+                if (!completed) {
+                    Logger.printDebug(() -> "Timeout waiting for resolve task: " + url);
+                }
             } catch (InterruptedException ex) {
                 Logger.printDebug(() -> "Interrupted waiting for resolve task", ex);
                 Thread.currentThread().interrupt();

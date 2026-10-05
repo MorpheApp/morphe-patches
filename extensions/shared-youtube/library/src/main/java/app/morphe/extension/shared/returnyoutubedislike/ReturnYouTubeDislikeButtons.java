@@ -826,6 +826,7 @@ public final class ReturnYouTubeDislikeButtons {
             paint.setColorFilter(colorFilter);
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;

@@ -18,6 +18,8 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Matcher;
@@ -194,8 +196,7 @@ public final class MusixmatchProvider implements LyricsProvider {
                 .append("&q_artist=").append(LyricsRequests.encode(track.artist()))
                 .append("&usertoken=").append(LyricsRequests.encode(token))
                 .append("&format=json")
-                .append("&app_id=" + APP_ID)
-                .append("&t=" + requestId());
+                .append("&app_id=" + APP_ID).append("&t=").append(requestId());
 
         if (durationSec > 0) {
             url.append("&q_duration=").append((int) durationSec);
@@ -412,7 +413,7 @@ public final class MusixmatchProvider implements LyricsProvider {
         final String query = url.substring(queryStart + 1);
         final StringBuilder filtered = new StringBuilder();
         for (String param : query.split("&")) {
-            if (!param.toLowerCase().startsWith("utm")) {
+            if (!param.toLowerCase(Locale.ROOT).startsWith("utm")) {
                 //noinspection SizeReplaceableByIsEmpty
                 if (filtered.length() > 0) filtered.append('&');
                 filtered.append(param);
@@ -521,8 +522,8 @@ public final class MusixmatchProvider implements LyricsProvider {
             if (line.isEmpty()) continue;
             final Matcher m = LRC_LINE_PATTERN.matcher(line);
             if (!m.matches()) continue;
-            final int min = Integer.parseInt(m.group(1));
-            final int sec = Integer.parseInt(m.group(2));
+            final int min = Integer.parseInt(Objects.requireNonNull(m.group(1)));
+            final int sec = Integer.parseInt(Objects.requireNonNull(m.group(2)));
             final String text = m.group(3);
             if (text == null || text.isEmpty()) continue;
             final long startMs = min * 60_000L + sec * 1_000L;
@@ -548,9 +549,9 @@ public final class MusixmatchProvider implements LyricsProvider {
             JSONObject time = line.optJSONObject("time");
             final double total = time != null ? time.optDouble("total", 0) : 0;
             final long startMs = (long) (total * 1000);
-            String text = line.optString("text", "\u266A");
+            String text = line.optString("text", "♪");
             if (text.isEmpty()) {
-                text = "\u266A";
+                text = "♪";
             }
             result.add(new LyricsLine(startMs, text));
         }

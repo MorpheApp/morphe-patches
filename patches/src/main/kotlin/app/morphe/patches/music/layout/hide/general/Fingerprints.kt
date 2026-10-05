@@ -26,6 +26,16 @@ internal object AudioVideoSwitchPillContainerFingerprint : Fingerprint(
     )
 )
 
+internal object ChipCloudFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "chip_cloud"),
+        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_STATIC, location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
 internal object InformationButtonFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(

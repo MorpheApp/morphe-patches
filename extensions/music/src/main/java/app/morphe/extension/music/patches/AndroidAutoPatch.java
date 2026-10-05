@@ -141,6 +141,21 @@ public final class AndroidAutoPatch {
             this.folderDelivery = folderDelivery;
         }
 
+        private synchronized boolean isDeliveryPreparationStarted() {
+            return deliveryPreparationStarted;
+        }
+
+        private synchronized void addPlaylistIfNew(String browseId, MediaBrowserCompat.MediaItem playlist) {
+            if (deliveryPreparationStarted || !seenPlaylistBrowseIds.add(browseId)) {
+                return;
+            }
+            libraryPlaylists.add(playlist);
+        }
+
+        private synchronized int getPlaylistCount() {
+            return libraryPlaylists.size();
+        }
+
         /**
          * Allows only one delivery attempt, whether pagination finishes, fails, or times out.
          *
@@ -218,21 +233,21 @@ public final class AndroidAutoPatch {
     private static final String PODCASTS_TITLE_RESOURCE_NAME = "offline_podcasts_shelf_title";
     private static final String UPGRADE_PROMPT_MEDIA_ID = "promotion_version_1";
     private static final String FORCE_REFRESH = "com.google.android.apps.youtube.music.mediabrowser.force_refresh";
-    
+
     private static final Executor BACKGROUND_EXECUTOR = Utils::runOnBackgroundThread;
     private static final Handler refreshHandler = new Handler(Looper.getMainLooper());
     private static final Runnable REFRESH_LIBRARY = AndroidAutoPatch::refreshAndroidAutoLibrary;
-    
+
     // A user's playlist can also be named "Playlists"; do not use these title matches for playback.
     private static final Set<String> playlistsTitleMatchMediaIds = ConcurrentHashMap.newKeySet();
     // Give each Library load a number to distinguish earlier requests from later requests.
     private static final AtomicLong playlistsLoadCounter = new AtomicLong();
     // Remember which Library load last updated each folder on each Android Auto connection.
-    
+
     @GuardedBy("itself")
     private static final WeakHashMap<Object, Map<String, PlaylistsFolderDelivery>>
             playlistsFolderDeliveries = new WeakHashMap<>();
-    
+
     // Saved request for playlist updates from Library or the nested Playlists folder.
     @Nullable
     @GuardedBy("AndroidAutoPatch.class")
@@ -349,22 +364,21 @@ public final class AndroidAutoPatch {
         boolean firstPage = paginationCommand == null;
         ListenableFuture<PhoneBrowseResponse> libraryResponseFuture = firstPage
                 ? load.phoneBrowseClient.patch_requestBrowse(
-                        PHONE_LIBRARY_BROWSE_ID, BACKGROUND_EXECUTOR)
+                PHONE_LIBRARY_BROWSE_ID, BACKGROUND_EXECUTOR)
                 : load.phoneBrowseClient.patch_requestLibraryPagination(
-                        paginationCommand, BACKGROUND_EXECUTOR);
+                paginationCommand, BACKGROUND_EXECUTOR);
         libraryResponseFuture.addListener(() -> {
-            synchronized (load) {
-                if (load.deliveryPreparationStarted) return;
-            }
+            if (load.isDeliveryPreparationStarted()) return;
+
             try {
                 PhoneBrowseResponse libraryResponse = libraryResponseFuture.get();
                 Object nextPaginationCommand = firstPage
                         ? appendInitialLibraryPlaylists(libraryResponse, load)
                         : appendPaginatedLibraryPlaylists(libraryResponse, load);
-                synchronized (load) {
-                    // The timeout may have started returning playlists while this Library response was being read.
-                    if (load.deliveryPreparationStarted) return;
-                }
+
+                // The timeout may have started returning playlists while this Library response was being read.
+                if (load.isDeliveryPreparationStarted()) return;
+
                 if (nextPaginationCommand != null) {
                     requestLibraryPage(androidAutoRequest, load, nextPaginationCommand);
                     return;
@@ -396,11 +410,7 @@ public final class AndroidAutoPatch {
             }
         }
 
-        Logger.printDebug(() -> {
-            synchronized (load) {
-                return "Found playlists in phone Library: " + load.libraryPlaylists.size();
-            }
-        });
+        Logger.printDebug(() -> "Found playlists in phone Library: " + load.getPlaylistCount());
         return paginationCommand;
     }
 
@@ -410,11 +420,7 @@ public final class AndroidAutoPatch {
         // An unrecognized pagination result ends loading; keep the playlists collected so far.
         if (gridRenderer == null) return null;
         collectPlaylistsFromGrid(gridRenderer, load);
-        Logger.printDebug(() -> {
-            synchronized (load) {
-                return "Found playlists in phone Library: " + load.libraryPlaylists.size();
-            }
-        });
+        Logger.printDebug(() -> "Found playlists in phone Library: " + load.getPlaylistCount());
         return firstPaginationCommand(gridRenderer);
     }
 
@@ -473,13 +479,9 @@ public final class AndroidAutoPatch {
                 artworkUriOrNull(libraryItem), null, null);
         MediaBrowserCompat.MediaItem playlist = new MediaBrowserCompat.MediaItem(
                 description, MediaBrowserCompat.MediaItem.FLAG_PLAYABLE);
+
         // Metadata reads stay outside the lock so they cannot delay timeout handling.
-        synchronized (load) {
-            if (load.deliveryPreparationStarted || !load.seenPlaylistBrowseIds.add(playlistBrowseId)) {
-                return;
-            }
-            load.libraryPlaylists.add(playlist);
-        }
+        load.addPlaylistIfNew(playlistBrowseId, playlist);
     }
 
     private static String subtitleOrEmpty(PhoneBrowseItem libraryItem) {

@@ -34,7 +34,7 @@ class JamQueueCommandTest {
                 .map {
                     File(
                         it,
-                        "extensions/music/src/main/java/app/morphe/extension/music/jam/QueueCommand.java",
+                        "extensions/music/src/main/java/app/morphe/extension/music/patches/jam/QueueCommand.java",
                     )
                 }
                 .first { it.isFile }
@@ -46,7 +46,7 @@ class JamQueueCommandTest {
                     .run(null, null, null, "--release", "11", "-d", output.path, source.path),
             )
             URLClassLoader(arrayOf(output.toURI().toURL()), null).use { loader ->
-                val decoder = loader.loadClass("app.morphe.extension.music.jam.QueueCommand")
+                val decoder = loader.loadClass("app.morphe.extension.music.patches.jam.QueueCommand")
                 fun decode(bytes: ByteArray) =
                     decoder.getMethod("decode", ByteArray::class.java).invoke(null, bytes)
                 fun watch(bytes: ByteArray) =

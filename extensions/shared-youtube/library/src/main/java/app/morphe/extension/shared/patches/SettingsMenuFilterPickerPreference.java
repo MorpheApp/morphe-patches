@@ -39,6 +39,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import app.morphe.extension.shared.Utils;
@@ -115,7 +116,7 @@ public class SettingsMenuFilterPickerPreference extends Preference {
                 Row row = adapter.getItem(position);
                 if (row == null || isLockedByParent(row, selectedLower)) return;
                 boolean nowSelected = BaseSettingsMenuFilter.toggleInFilter(row.title());
-                String key = row.title().toLowerCase();
+                String key = row.title().toLowerCase(Locale.ROOT);
                 if (nowSelected) selectedLower.add(key);
                 else selectedLower.remove(key);
                 adapter.notifyDataSetChanged();
@@ -195,7 +196,7 @@ public class SettingsMenuFilterPickerPreference extends Preference {
     private static boolean isLockedByParent(Row row, Set<String> selectedLower) {
         return row.type() == RowType.CHILD
                 && row.parentTitle() != null
-                && selectedLower.contains(row.parentTitle().toLowerCase());
+                && selectedLower.contains(row.parentTitle().toLowerCase(Locale.ROOT));
     }
 
     private enum RowType { CATEGORY, LEAF, CHILD }
@@ -261,7 +262,7 @@ public class SettingsMenuFilterPickerPreference extends Preference {
                     holder.itemText.getPaddingBottom());
 
             boolean parentSelected = isLockedByParent(row, selectedLower);
-            boolean visualChecked = parentSelected || selectedLower.contains(row.title().toLowerCase());
+            boolean visualChecked = parentSelected || selectedLower.contains(row.title().toLowerCase(Locale.ROOT));
 
             holder.checkIcon.setVisibility(visualChecked ? View.VISIBLE : View.GONE);
             holder.checkIcon.setColorFilter(foregroundColor);

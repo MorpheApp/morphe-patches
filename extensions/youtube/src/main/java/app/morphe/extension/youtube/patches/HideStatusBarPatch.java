@@ -29,7 +29,7 @@ import java.util.WeakHashMap;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "deprecation"})
 public final class HideStatusBarPatch {
 
     /**
@@ -170,9 +170,7 @@ public final class HideStatusBarPatch {
             } else {
                 // The status bar is a part of the system window insets, which have no top inset when it's hidden.
                 DisplayCutout cutout = insets.getDisplayCutout();
-                //noinspection deprecation
                 if (cutout != null && cutout.getSafeInsetTop() > insets.getSystemWindowInsetTop()) {
-                    //noinspection deprecation
                     insets = insets.replaceSystemWindowInsets(insets.getSystemWindowInsetLeft(),
                             cutout.getSafeInsetTop(), insets.getSystemWindowInsetRight(),
                             insets.getSystemWindowInsetBottom());
@@ -190,7 +188,6 @@ public final class HideStatusBarPatch {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             return insets.isVisible(WindowInsets.Type.statusBars());
         }
-        //noinspection deprecation
         return (decorView.getSystemUiVisibility() & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0;
     }
 
@@ -203,7 +200,6 @@ public final class HideStatusBarPatch {
             }
             return;
         }
-        //noinspection deprecation
         decorView.setSystemUiVisibility(decorView.getSystemUiVisibility()
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);

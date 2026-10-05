@@ -48,7 +48,7 @@ import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerOverlayOpa
 import app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch.OpenFullscreenMode;
-import app.morphe.extension.youtube.patches.PipButtonPatch.PipButtonPatchAvailability;
+import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch.PipButtonPatchAvailability;
 import app.morphe.extension.youtube.patches.PlaybackBufferPatch.PlaybackBufferSize;
 import app.morphe.extension.youtube.patches.PlaybackInFeedsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;

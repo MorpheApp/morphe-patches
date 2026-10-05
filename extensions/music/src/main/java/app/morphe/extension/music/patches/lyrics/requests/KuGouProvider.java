@@ -35,10 +35,10 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.parsers.KRCParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.music.patches.lyrics.parsers.KrcParser;
-import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 
 /**
  * KuGou lyrics, used as a fallback because it covers many tracks LRCLIB does not.
@@ -225,8 +225,8 @@ public final class KuGouProvider implements LyricsProvider {
             formatType = "krc";
         } else {
             rawFormat = new String(raw, StandardCharsets.UTF_8);
-            List<String> metadataCreditLines = LrcParser.extractCreditMetadata(rawFormat);
-            krcResult = new KrcResult(LrcParser.parseSynced(rawFormat), metadataCreditLines, null, null);
+            List<String> metadataCreditLines = LRCParser.extractCreditMetadata(rawFormat);
+            krcResult = new KrcResult(LRCParser.parseSynced(rawFormat), metadataCreditLines, null, null);
             formatType = "lrc";
         }
         List<LyricsLine> lines = krcResult.lines();
@@ -355,7 +355,7 @@ public final class KuGouProvider implements LyricsProvider {
                 continue;
             }
 
-            Matcher meta = LrcParser.LRC_META.matcher(line);
+            Matcher meta = LRCParser.LRC_META.matcher(line);
             if (meta.matches()) {
                 String key = meta.group(1);
                 String value = meta.group(2);
@@ -371,7 +371,7 @@ public final class KuGouProvider implements LyricsProvider {
                     }
                 } else if (name.equals("language")) {
                     languageTag = value;
-                } else if (LrcParser.CREDIT_META_KEYS.contains(name)) {
+                } else if (LRCParser.CREDIT_META_KEYS.contains(name)) {
                     String trimmed = value.trim();
                     if (!trimmed.isEmpty()) {
                         creditLines.add(key + ":" + trimmed);
@@ -380,7 +380,7 @@ public final class KuGouProvider implements LyricsProvider {
             }
         }
 
-        List<LyricsLine> lines = applyFileOffset(KrcParser.parse(krc), fileOffsetMs);
+        List<LyricsLine> lines = applyFileOffset(KRCParser.parse(krc), fileOffsetMs);
         KrcAuxiliary auxiliary = languageTag == null ? null : parseKrcLanguageTag(languageTag, lines);
         return new KrcResult(lines, creditLines,
                 auxiliary == null ? null : auxiliary.romanization(),

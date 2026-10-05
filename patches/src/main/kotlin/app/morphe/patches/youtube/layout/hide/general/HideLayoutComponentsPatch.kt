@@ -1260,7 +1260,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region hide help & feedback in menus
+        // region hide help & feedback menu
 
         ListMenuItemViewOnMeasureFingerprint.method.addInstructions(
             0,

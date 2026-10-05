@@ -47,8 +47,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
+            SwitchPreference("morphe_music_hide_download_button_in_podcast", summary = true),
             SwitchPreference("morphe_music_hide_explore_shelf"),
             SwitchPreference("morphe_music_hide_grid_shelves"),
+            SwitchPreference("morphe_music_hide_filter_bar"),
             SwitchPreference("morphe_music_hide_horizontal_shelves"),
             SwitchPreference("morphe_music_hide_list_shelves"),
             SwitchPreference("morphe_music_hide_new_from_shelf"),
@@ -57,7 +59,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_music_hide_podcast_episode_download_button"),
             PreferenceScreenPreference(
                 key = "morphe_music_custom_filter_screen",
                 titleKey = "morphe_custom_filter_screen_title",
@@ -114,6 +115,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 match.instructionMatches.last().index,
                 LAYOUT_COMPONENTS_FILTER,
                 "hideAudioVideoToggle"
+            )
+        }
+        // endregion
+
+        // region hide filter bar
+        ChipCloudFingerprint.method.apply {
+            val targetIndex = ChipCloudFingerprint.instructionMatches.last().index
+            val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+
+            addInstruction(
+                targetIndex + 1,
+                "invoke-static { v$targetRegister }, $LAYOUT_COMPONENTS_FILTER->hideFilterBar(Landroid/view/View;)V"
             )
         }
         // endregion

@@ -56,7 +56,7 @@ import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
-import app.morphe.extension.youtube.patches.PipButtonPatch;
+import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -532,13 +532,13 @@ public final class FlyoutUtils {
             }
         }
 
-        if (PipButtonPatch.isPatchIncluded() && Settings.PIP_BUTTON_FLYOUT.get() &&
+        if (PictureinPictureButtonPatch.isPatchIncluded() && Settings.PIP_BUTTON_FLYOUT.get() &&
                 (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible() || isShortFlyout)) {
             nextButtonIndex = addFlyoutButton(
                     flyoutPanel,
                     getSettingsScreenDrawable("morphe_pip_button"),
                     pipButtonName,
-                    v -> PipButtonPatch.enterPictureInPicture(),
+                    v -> PictureinPictureButtonPatch.enterPictureInPicture(),
                     nextButtonIndex
             );
         }

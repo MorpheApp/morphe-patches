@@ -71,6 +71,7 @@ final class OriginalChannelDescriptionRequest {
         return future != null && !future.isDone();
     }
 
+    @SuppressWarnings("deprecation")
     @Nullable
     private static String fetchDescription(String channelId) {
         try {

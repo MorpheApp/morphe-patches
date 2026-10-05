@@ -28,11 +28,11 @@ import java.util.Locale;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
-import app.morphe.extension.music.patches.lyrics.parsers.TtmlParser;
 
 public final class UnisonProvider implements LyricsProvider {
 
@@ -183,9 +183,9 @@ public final class UnisonProvider implements LyricsProvider {
     private Lyrics parseLyrics(String format, String lyrics, String videoId) {
         switch (format.toLowerCase(Locale.ROOT)) {
             case "ttml":
-                return TtmlParser.ttmlToLyrics(lyrics, name(), sourceUrl(videoId));
+                return TTMLParser.ttmlToLyrics(lyrics, name(), sourceUrl(videoId));
             case "lrc":
-                LrcParser.LrcParseResult result = LrcParser.parseSyncedWithCreditLines(lyrics);
+                LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lyrics);
                 if (result.lines.isEmpty()) {
                     return null;
                 }
@@ -193,7 +193,7 @@ public final class UnisonProvider implements LyricsProvider {
                         result.creditLines.isEmpty() ? null : result.creditLines,
                         lyrics, "lrc", sourceUrl(videoId));
             case "plain":
-                final List<LyricsLine> plain = LrcParser.parsePlain(lyrics);
+                final List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
                 if (plain.isEmpty()) {
                     return null;
                 }

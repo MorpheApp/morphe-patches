@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
@@ -1327,9 +1328,9 @@ public final class LayoutComponentsFilter extends Filter {
             String menuTitleString = menuTitleCharSequence.toString();
 
             boolean matches = false;
-            String menuTitleLower = menuTitleString.toLowerCase();
+            String menuTitleLower = menuTitleString.toLowerCase(Locale.ROOT);
             for (String filter : accountMenuFilterStrings) {
-                if (menuTitleLower.contains(filter.toLowerCase())) {
+                if (menuTitleLower.contains(filter.toLowerCase(Locale.ROOT))) {
                     matches = true;
                     break;
                 }

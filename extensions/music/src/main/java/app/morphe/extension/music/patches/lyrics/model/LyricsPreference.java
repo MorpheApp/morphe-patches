@@ -20,7 +20,7 @@ import java.util.List;
  * @param preferred    the lyric to show first on the next playback of the track
  * @param queue        fingerprints of the remaining candidates, in the order they were left in
  * @param fingerprint  fingerprint the preferred lyric had before it was written to disk, or
- *                     null when it was never computed. Writing the lines back drops the raw
+ *                     null when it was never computed. Writing the lines backdrops the raw
  *                     text the fingerprint was taken from, so it cannot be taken again.
  */
 public record LyricsPreference(@Nullable String queryTitle,

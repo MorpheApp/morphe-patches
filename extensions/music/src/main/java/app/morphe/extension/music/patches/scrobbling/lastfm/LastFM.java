@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
@@ -158,7 +159,7 @@ public class LastFM {
     public static String fetchAlbum(String artist, String track) {
         if (!Settings.SCROBBLING_GUESS_ALBUM.get()) return null;
         if (artist == null || artist.isBlank() || track == null || track.isBlank()) return null;
-        String key = artist.toLowerCase() + "\u0000" + track.toLowerCase();
+        String key = artist.toLowerCase(Locale.ROOT) + "\u0000" + track.toLowerCase(Locale.ROOT);
 
         CacheEntry cached = albumCache.get(key);
         if (cached != null && cached.isValid()) {
@@ -178,6 +179,7 @@ public class LastFM {
 
     @Nullable
     private static String fetchAlbumNetwork(String artist, String track) throws Exception {
+        //noinspection CharsetObjectCanBeUsed
         String url = BASE_URL + "?method=track.getInfo&api_key=" + URLEncoder.encode(API_KEY, "UTF-8")
                 + "&artist=" + URLEncoder.encode(artist, "UTF-8")
                 + "&track=" + URLEncoder.encode(track, "UTF-8")
@@ -200,7 +202,7 @@ public class LastFM {
         JSONObject albumObj = trackObj.optJSONObject("album");
         if (albumObj == null) return null;
         String title = albumObj.optString("title", "");
-        if (title == null || title.isBlank()) return null;
+        if (title.isBlank()) return null;
         return title.trim();
     }
 

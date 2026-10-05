@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics.ui;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -59,6 +60,7 @@ final class LyricsLineView extends TextView {
     private CharSequence cachedText;
     private String cachedTextStr;
 
+    @SuppressWarnings("ConstantValue")
     @Override
     public void setText(CharSequence text, BufferType type) {
         super.setText(text, type);
@@ -241,6 +243,7 @@ final class LyricsLineView extends TextView {
         return null;
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -403,17 +406,17 @@ final class LyricsLineView extends TextView {
     private void drawBaseText(Canvas canvas) {
         final Layout layout = getLayout();
         if (layout == null) {
-            super.onDraw(canvas);
+            super.draw(canvas);
             return;
         }
         if (getWidth() <= 0 || getHeight() <= 0) {
-            super.onDraw(canvas);
+            super.draw(canvas);
             return;
         }
 
         final int lineCount = layout.getLineCount();
         if (lineCount <= 0) {
-            super.onDraw(canvas);
+            super.draw(canvas);
             return;
         }
 
@@ -475,6 +478,7 @@ final class LyricsLineView extends TextView {
         return layout.getLineForOffset(first ? start : end - 1);
     }
 
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -493,6 +497,8 @@ final class LyricsLineView extends TextView {
         }
     }
 
+    @SuppressLint("DrawAllocation")
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onDraw(Canvas canvas) {
         drawBaseText(canvas);

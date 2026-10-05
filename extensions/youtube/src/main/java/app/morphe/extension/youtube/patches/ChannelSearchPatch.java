@@ -11,6 +11,7 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.shared.StringRef.sf;
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -106,10 +107,8 @@ public final class ChannelSearchPatch {
                     final int cmp = Long.compare(b.viewCount, a.viewCount);
                     return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
                 });
-                case LEAST_VIEWED -> results.sort((a, b) -> {
-                    final int cmp = Long.compare(a.viewCount, b.viewCount);
-                    return cmp != 0 ? cmp : Integer.compare(a.originalIndex, b.originalIndex);
-                });
+                case LEAST_VIEWED -> results.sort(Comparator.comparingLong((ChannelSearchResult a)
+                        -> a.viewCount).thenComparingInt(a -> a.originalIndex));
                 case SHORTEST -> results.sort((a, b) -> {
                     if (a.lengthSeconds == 0 && b.lengthSeconds == 0) {
                         return Integer.compare(a.originalIndex, b.originalIndex);
@@ -508,6 +507,7 @@ public final class ChannelSearchPatch {
                 updateButtonText();
             }
 
+            @SuppressLint("SetTextI18n")
             private void updateButtonText() {
                 sortButton.setText(controller.getActiveSort().sortName + "  ▼");
             }

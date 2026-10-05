@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.requests;
 
 import android.util.Base64;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -29,7 +30,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 
 public final class PetitLyricsProvider implements LyricsProvider {
 
@@ -57,11 +58,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
     @Override
     public String name() {
         return "PetitLyrics";
-    }
-
-    @Override
-    public boolean hasCandidates() {
-        return false;
     }
 
     @Nullable
@@ -287,14 +283,15 @@ public final class PetitLyricsProvider implements LyricsProvider {
             return null;
         }
         String text = stash.plainText;
-        LrcParser.LrcParseResult lrc = LrcParser.parseSyncedWithCreditLines(text);
+        LRCParser.LrcParseResult lrc = LRCParser.parseSyncedWithCreditLines(text);
         if (!lrc.lines.isEmpty()) {
             List<String> credits = mergeCredits(stash.creditLines, lrc.creditLines);
+            assert credits != null;
             return new Lyrics(lrc.lines, name(), true, null, null, null,
                     credits.isEmpty() ? null : credits,
                     text, "lrc", sourceUrl(stash.sourceLyricsId));
         }
-        List<LyricsLine> plain = LrcParser.parsePlain(text);
+        List<LyricsLine> plain = LRCParser.parsePlain(text);
         if (plain.isEmpty()) {
             return null;
         }
@@ -310,7 +307,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return SOURCE_URL_PREFIX + lyricsId.trim();
     }
 
-    @Nullable
+    @NonNull
     private static List<String> creditLinesOf(Song song) {
         List<String> credits = new ArrayList<>(4);
         addCredit(credits, "Artist", song.artist);
@@ -354,15 +351,14 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private Response request(TrackInfo track, int lyricsType) throws Exception {
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
 
-        StringBuilder form = new StringBuilder();
-        form.append("clientAppId=").append(LyricsRequests.encode(CLIENT_APP_ID));
-        form.append("&terminalType=").append(LyricsRequests.encode(TERMINAL_TYPE));
-        form.append("&lyricsType=").append(lyricsType);
-        form.append("&key_title=").append(LyricsRequests.encode(track.title()));
-        form.append("&key_artist=").append(LyricsRequests.encode(track.artist()));
-        form.append("&key_album=").append(LyricsRequests.encode(track.album()));
+        String form = "clientAppId=" + LyricsRequests.encode(CLIENT_APP_ID) +
+                "&terminalType=" + LyricsRequests.encode(TERMINAL_TYPE) +
+                "&lyricsType=" + lyricsType +
+                "&key_title=" + LyricsRequests.encode(track.title()) +
+                "&key_artist=" + LyricsRequests.encode(track.artist()) +
+                "&key_album=" + LyricsRequests.encode(track.album());
 
-        var connection = LyricsRequests.postForm(API_URL, form.toString());
+        var connection = LyricsRequests.postForm(API_URL, form);
         int httpCode = connection.getResponseCode();
         if (httpCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
             LyricsRequests.logFailure(name(), connection);
@@ -405,7 +401,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                     case XmlPullParser.TEXT -> {
                         if (field != null && current != null) {
                             text.append(parser.getText());
-                        } else if (field != null && "status".equals(field)) {
+                        } else if ("status".equals(field)) {
                             text.append(parser.getText());
                         }
                     }
@@ -672,16 +668,15 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 wraps++;
             }
             prev = cs;
-            out.add((long) (cs + wraps * LSY_WRAP_CS));
+            out.add(cs + (long) wraps * LSY_WRAP_CS);
         }
         return out;
     }
 
-    private static int deriveLsyKey(int protectionId, boolean switchFlag) {
+    private static int deriveLsyKey(int k, boolean switchFlag) {
         if (!switchFlag) {
-            return protectionId;
+            return k;
         }
-        int k = protectionId;
         return (k & 0x0003)
                 | ((k & 0x000c) << 2)
                 | ((k & 0x0030) >> 2)
@@ -727,7 +722,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         StringBuilder sb = new StringBuilder(50 * lines.size());
         for (LyricsLine line : lines) {
             sb.append('[')
-              .append(LrcParser.formatCentiseconds(Math.max(0, line.startTimeMs())))
+              .append(LRCParser.formatCentiseconds(Math.max(0, line.startTimeMs())))
               .append(']')
               .append(line.text())
               .append('\n');

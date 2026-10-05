@@ -233,8 +233,7 @@ public final class DeezerProvider implements LyricsProvider {
 
         HttpURLConnection connection;
         try {
-            connection = LyricsRequests.openConnection(url, 10000, 15000,
-                    Map.of("Accept", "application/json"));
+            connection = LyricsRequests.openConnection(url, Map.of("Accept", "application/json"));
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not open Deezer search connection", ex);
             return null;

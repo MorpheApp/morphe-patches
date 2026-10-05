@@ -36,7 +36,7 @@ private const val VIEW = "Landroid/view/View;"
 
 /**
  * The queue operation emits stable diagnostic strings from YouTube Music's queue manager. Every
- * other queue member is derived from this semantic entry point in [JamAbi].
+ * other queue member is derived from this semantic entry point in [JamQueueAbi].
  */
 internal object QueueEnqueueFingerprint : Fingerprint(
     returnType = "V",

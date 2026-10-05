@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.lyrics.storage;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -29,7 +30,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsPreference;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -65,7 +66,7 @@ public final class LyricsCache {
     private static final String RAW_SUFFIX = ".raw";
 
     private static final Map<String, Lyrics> memoryCache = Collections.synchronizedMap(
-            new LinkedHashMap<String, Lyrics>(MEMORY_ENTRIES, 0.75f, true) {
+            new LinkedHashMap<>(MEMORY_ENTRIES, 0.75f, true) {
                 @Override
                 protected boolean removeEldestEntry(Map.Entry<String, Lyrics> eldest) {
                     return size() > MEMORY_MAX_ENTRIES;
@@ -255,12 +256,12 @@ public final class LyricsCache {
         }
         for (LyricsLine line : lyrics.lines()) {
             fileLines.add(lyrics.synced()
-                    ? LrcParser.formatLine(line)
+                    ? LRCParser.formatLine(line)
                     : line.text());
         }
     }
 
-    @Nullable
+    @NonNull
     private static String name(@Nullable File file) {
         return file == null ? "null" : file.getName();
     }
@@ -533,8 +534,7 @@ public final class LyricsCache {
     }
 
     @Nullable
-    private static Lyrics parseContent(File file, List<String> lines, int contentStart,
-            TrackInfo track) throws Exception {
+    private static Lyrics parseContent(File file,List<String> lines, int contentStart, TrackInfo track) {
         Header header = parseHeaders(lines, contentStart);
         String content = String.join("\n",
                 lines.subList(header.contentStart(), lines.size()));
@@ -603,8 +603,8 @@ public final class LyricsCache {
                                             @Nullable String formatType,
                                             @Nullable String rawFormat, String key) {
         List<LyricsLine> parsed = synced
-                ? LrcParser.parseSynced(content)
-                : LrcParser.parsePlain(content);
+                ? LRCParser.parseSynced(content)
+                : LRCParser.parsePlain(content);
         if (parsed.isEmpty()) {
             return null;
         }
@@ -653,6 +653,7 @@ public final class LyricsCache {
                 Files.deleteIfExists(sidecar.toPath());
                 return;
             }
+            //noinspection ReadWriteStringCanBeUsed
             Files.write(sidecar.toPath(), raw.getBytes(StandardCharsets.UTF_8));
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not write the lyrics raw cache", ex);
@@ -666,6 +667,7 @@ public final class LyricsCache {
             return null;
         }
         try {
+            //noinspection ReadWriteStringCanBeUsed
             String raw = new String(Files.readAllBytes(sidecar.toPath()),
                     StandardCharsets.UTF_8);
             return raw.isEmpty() ? null : raw;

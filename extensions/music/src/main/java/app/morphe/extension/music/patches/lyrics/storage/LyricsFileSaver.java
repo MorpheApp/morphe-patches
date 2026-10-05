@@ -11,6 +11,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 
@@ -27,7 +28,7 @@ import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 
@@ -93,7 +94,10 @@ public final class LyricsFileSaver {
 
         values.put(MediaStore.Downloads.IS_PENDING, 1);
 
-        Uri insertUri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+        Uri insertUri = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            insertUri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+        }
         if (insertUri == null) {
             return null;
         }
@@ -154,7 +158,7 @@ public final class LyricsFileSaver {
         StringBuilder sb = new StringBuilder(50 * lines.size());
         for (LyricsLine line : lines) {
             sb.append('[')
-              .append(LrcParser.formatCentiseconds(line.startTimeMs()))
+              .append(LRCParser.formatCentiseconds(line.startTimeMs()))
               .append(']')
               .append(line.text())
               .append('\n');
@@ -212,7 +216,7 @@ public final class LyricsFileSaver {
             JSONObject obj = new JSONObject();
             try {
                 final long ms = line.startTimeMs();
-                obj.put("lrcTimestamp", "[" + LrcParser.formatCentiseconds(ms) + "]");
+                obj.put("lrcTimestamp", "[" + LRCParser.formatCentiseconds(ms) + "]");
                 obj.put("line", line.text());
                 obj.put("milliseconds", ms);
                 obj.put("duration", line.endTimeMs() - line.startTimeMs());

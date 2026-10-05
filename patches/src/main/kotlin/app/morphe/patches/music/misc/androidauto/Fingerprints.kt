@@ -24,8 +24,6 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-// region BypassCertificateChecksPatch.kt: Certificate checks that block Android Auto.
-
 internal object CheckCertificateFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("L"),
@@ -461,10 +459,10 @@ internal fun requestUrlFingerprint(requestDataType: String, endpointOwnerType: S
             type = "Ljava/lang/String;"
         ),
         methodCall(
-            definingClass = "Landroid/net/Uri\$Builder;",
+            definingClass = $$"Landroid/net/Uri$Builder;",
             name = "appendEncodedPath",
             parameters = listOf("Ljava/lang/String;"),
-            returnType = "Landroid/net/Uri\$Builder;"
+            returnType = $$"Landroid/net/Uri$Builder;"
         )
     )
 )
