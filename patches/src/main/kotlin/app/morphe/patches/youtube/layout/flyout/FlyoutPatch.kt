@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/2934
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
@@ -18,13 +18,17 @@ import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
+import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.shared.StartVideoInformerFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.cloneParameters
+import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
+import app.morphe.util.numberOfParameterRegisters
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -146,7 +150,7 @@ val flyoutPatch = bytecodePatch(
         FeedFlyoutBufferObjectFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p2 .. p2 }, $EXTENSION_UTILS_CLASS->" +
-                "extractFlyoutIdFromMap(Ljava/util/Map;)V"
+                    "extractFlyoutIdFromMap(Ljava/util/Map;)V"
         )
 
         OnClickLithoButtonBufferObjectFingerprint.let {
@@ -157,7 +161,7 @@ val flyoutPatch = bytecodePatch(
             it.method.addInstruction(
                 index + 1,
                 "invoke-static { v$register }, $EXTENSION_UTILS_CLASS->" +
-                    "extractFlyoutIdFromLithoButton(Ljava/util/Map;)V"
+                        "extractFlyoutIdFromLithoButton(Ljava/util/Map;)V"
             )
         }
 
@@ -169,11 +173,9 @@ val flyoutPatch = bytecodePatch(
             it.method.addInstruction(
                 index + 1,
                 "invoke-static { v$register }, $EXTENSION_UTILS_CLASS->" +
-                    "extractFlyoutIdFromObject(Ljava/lang/Object;)V"
+                        "extractFlyoutIdFromObject(Ljava/lang/Object;)V"
             )
         }
-
-        // end region
 
         FeedBottomSheetFlyoutFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
@@ -181,7 +183,7 @@ val flyoutPatch = bytecodePatch(
                 addInstruction(
                     index,
                     "invoke-static { v$register }, $EXTENSION_UTILS_CLASS->" +
-                        "setBottomSheetFlyout(Landroid/app/Dialog;)V"
+                            "setBottomSheetFlyout(Landroid/app/Dialog;)V"
                 )
             }
         }
@@ -195,7 +197,7 @@ val flyoutPatch = bytecodePatch(
                 addInstruction(
                     instructionIndex,
                     "invoke-static { v$instructionRegister }, $EXTENSION_UTILS_CLASS->" +
-                        "setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
+                            "setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
                 )
             }
         }
@@ -209,5 +211,51 @@ val flyoutPatch = bytecodePatch(
         addLithoFilter(
             "Lapp/morphe/extension/youtube/patches/components/ChannelPageFlyoutFilter;"
         )
+
+        // Track and initialize flyout menu buttons generically.
+        FeedFlyoutButtonsInitializerFingerprint.let { mainFingerprint ->
+            val mainFingerprintMatches = mainFingerprint.instructionMatches
+            val getCharSequenceReference = mainFingerprintMatches.first().getInstruction<ReferenceInstruction>().reference
+            val enumMethodRegister = mainFingerprintMatches[1].getInstruction<OneRegisterInstruction>().registerA
+            val charCheckIndex = mainFingerprintMatches[4].index
+            val enumIntField = mainFingerprintMatches[6].getInstruction<ReferenceInstruction>().reference
+            val enumMethodCall = mainFingerprintMatches[7].getInstruction<ReferenceInstruction>().reference
+            val charCheckRegister = mainFingerprintMatches.last().getInstruction<OneRegisterInstruction>().registerA
+
+            mainFingerprint.method.apply {
+                val freeRegister = findFreeRegister(charCheckIndex, charCheckRegister, enumMethodRegister)
+                addInstructions(
+                    charCheckIndex,
+                    """
+                        iget v$freeRegister, v$enumMethodRegister, $enumIntField
+                        invoke-static { v$freeRegister }, $enumMethodCall
+                        move-result-object v$freeRegister
+                        invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_UTILS_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V
+                    """
+                )
+            }
+
+            ContextualMenuItemBuilderFingerprint.let {
+                it.method.cloneParameters().apply {
+                    val targetInstructionIndex = it.instructionMatches[3].index + numberOfParameterRegisters
+                    val targetInstructionRegister = it.instructionMatches[3]
+                        .getInstruction<FiveRegisterInstruction>().registerC
+                    val secondButtonInfoParameterRegister = it.instructionMatches[2]
+                        .getInstruction<FiveRegisterInstruction>().registerC
+
+                    addInstructions(
+                        targetInstructionIndex,
+                        """
+                            invoke-static { v$targetInstructionRegister }, $getCharSequenceReference
+                            move-result-object p0
+                            iget p0, p0, $enumIntField
+                            invoke-static { p0 }, $enumMethodCall
+                            move-result-object p0
+                            invoke-static { p0, v$secondButtonInfoParameterRegister }, $EXTENSION_UTILS_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/Object;)V
+                        """
+                    )
+                }
+            }
+        }
     }
 }
