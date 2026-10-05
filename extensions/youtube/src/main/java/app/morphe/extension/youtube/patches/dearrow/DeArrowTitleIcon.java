@@ -57,7 +57,7 @@ public final class DeArrowTitleIcon {
      * @return If the icon is shown before the title.
      */
     public static boolean isShown(@Nullable String title) {
-        return SHOW_ICON && title != null && DeArrowTitleRequest.isDeArrowTitle(title.trim());
+        return SHOW_ICON && title != null && DeArrowBrandingRequest.isDeArrowTitle(title.trim());
     }
 
     /**

@@ -23,13 +23,13 @@ import java.util.concurrent.CompletableFuture;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleRequest;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
 
 /**
  * Fetches the titles that replace the titles shown by YouTube.
  * <p>
  * Original titles are fetched from the public oEmbed endpoint, which always returns the title
- * as set by the uploader. DeArrow titles are fetched with {@link DeArrowTitleRequest},
+ * as set by the uploader. DeArrow titles are fetched with {@link DeArrowBrandingRequest},
  * and if DeArrow has no title then the original title is used if original titles are restored.
  */
 final class OriginalTitleRequest {
@@ -115,11 +115,11 @@ final class OriginalTitleRequest {
     private static String fetchTitle(String videoId) {
         if (RestoreOriginalTitlesPatch.USE_DEARROW) {
             try {
-                String title = DeArrowTitleRequest.fetchTitle(videoId);
+                String title = DeArrowBrandingRequest.fetchTitle(videoId);
                 if (title != null) {
                     return title;
                 }
-            } catch (IOException ex) {
+            } catch (DeArrowBrandingRequest.DeArrowException ex) {
                 // The DeArrow title is fetched again later, and the original title is used meanwhile.
                 retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
             }
@@ -130,6 +130,7 @@ final class OriginalTitleRequest {
     @Nullable
     private static String fetchOriginalTitle(String videoId) {
         try {
+            //noinspection CharsetObjectCanBeUsed
             String url = "https://www.youtube.com/oembed?format=json&url="
                     + URLEncoder.encode("https://www.youtube.com/watch?v=" + videoId, StandardCharsets.UTF_8.name());
 

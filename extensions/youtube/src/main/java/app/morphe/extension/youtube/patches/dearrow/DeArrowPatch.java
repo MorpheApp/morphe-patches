@@ -39,14 +39,18 @@ import app.morphe.extension.youtube.shared.PlayerType;
  * DeArrow titles and alternative YouTube thumbnails.
  * <p>
  * Titles are replaced by {@link app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch},
- * which fetches them with {@link DeArrowTitleRequest}.
+ * which fetches them with {@link DeArrowBrandingRequest}.
  * <p>
  * Can show YouTube provided screen captures of beginning/middle/end of the video.
  * (ie: sd1.jpg, sd2.jpg, sd3.jpg).
  * <p>
  * Or can show crowdsourced thumbnails provided by DeArrow (<a href="http://dearrow.ajay.app">...</a>).
+ * The DeArrow thumbnail is fetched with {@link DeArrowBrandingRequest}, and the original thumbnail is
+ * used if the video has no crowdsourced thumbnail. The thumbnail cache API is not used without
+ * a crowdsourced thumbnail, as it can return a random video frame that was cached for other clients.
  * <p>
  * Or can use DeArrow and fall back to screen captures if DeArrow is not available.
+ * Any thumbnail the DeArrow thumbnail cache API provides is used, without waiting for the branding.
  * <p>
  * Still captures are used without first verifying if the image exists, so the UI loading time
  * is the same as using original thumbnails. Still captures are not available for live streams,
@@ -178,6 +182,11 @@ public final class DeArrowPatch {
     private static final long DEARROW_FAILURE_API_BACKOFF_MILLISECONDS = 5 * 60 * 1000; // 5 Minutes.
 
     /**
+     * How long to wait for the DeArrow branding before using the original thumbnail.
+     */
+    private static final long DEARROW_BRANDING_TIMEOUT_MILLISECONDS = 2 * 1000;
+
+    /**
      * If non-zero, then the system time of when DeArrow API calls can resume.
      */
     private static volatile long timeToResumeDeArrowAPICalls;
@@ -252,22 +261,32 @@ public final class DeArrowPatch {
             return null;
         }
 
-        return decodedURL.createStillsURL(quality, false);
+        return decodedURL.createStillsURL(quality);
     }
 
     /**
      * Build the alternative thumbnail URL using DeArrow thumbnail cache.
      *
      * @param videoId ID of the video to get a thumbnail of.  Can be any video (regular or Short).
+     * @param thumbnailTime Time in seconds of the video frame of the crowdsourced thumbnail,
+     *                      or null to use any thumbnail the thumbnail cache has for the video.
      * @param fallbackURL URL to fall back to in case.
      * @return The alternative thumbnail URL, without tracking parameters.
      */
-    private static String buildDeArrowThumbnailURL(String videoId, String fallbackURL) {
+    private static String buildDeArrowThumbnailURL(String videoId, @Nullable Double thumbnailTime,
+                                                   String fallbackURL) {
         // Build thumbnail request URL.
-        // See https://github.com/ajayyy/DeArrowThumbnailCache/blob/a947f33787b8fe2568abc53c86894368e3b61b24/app.py#L38
-        return dearrowAPIURI
+        // See https://github.com/ajayyy/DeArrowThumbnailCache/blob/d5e9ae6844e214aeedfbb2ae8d563942f72dc0a1/app.py#L38
+        Uri.Builder builder = dearrowAPIURI
                 .buildUpon()
-                .appendQueryParameter("videoID", videoId)
+                .appendQueryParameter("videoID", videoId);
+        if (thumbnailTime != null) {
+            // The time of the crowdsourced thumbnail, which the thumbnail cache also uses
+            // for requests without a time.
+            builder.appendQueryParameter("time", String.valueOf(thumbnailTime))
+                    .appendQueryParameter("officialTime", "true");
+        }
+        return builder
                 .appendQueryParameter("redirectUrl", fallbackURL)
                 .build()
                 .toString();
@@ -341,15 +360,21 @@ public final class DeArrowPatch {
             final boolean includeTracking;
             if (option.useDeArrow && canUseDeArrowAPI()) {
                 includeTracking = false; // Do not include view tracking parameters with API call.
-                String fallbackURL = null;
                 if (option.useStillImages) {
-                    fallbackURL = buildYouTubeVideoStillURL(decodedURL, qualityToUse);
+                    // Any thumbnail of the thumbnail cache is used, and the still capture otherwise.
+                    String stillURL = buildYouTubeVideoStillURL(decodedURL, qualityToUse);
+                    sanitizedReplacementURL = buildDeArrowThumbnailURL(decodedURL.videoId, null,
+                            stillURL != null ? stillURL : decodedURL.sanitizedURL);
+                } else {
+                    // Without a time, the thumbnail cache can return a random video frame.
+                    Double thumbnailTime = DeArrowBrandingRequest.fetchThumbnailTime(
+                            decodedURL.videoId, DEARROW_BRANDING_TIMEOUT_MILLISECONDS);
+                    if (thumbnailTime == null) {
+                        return originalURL; // No crowdsourced thumbnail.
+                    }
+                    sanitizedReplacementURL = buildDeArrowThumbnailURL(decodedURL.videoId, thumbnailTime,
+                            decodedURL.sanitizedURL);
                 }
-                if (fallbackURL == null) {
-                    fallbackURL = decodedURL.sanitizedURL;
-                }
-
-                sanitizedReplacementURL = buildDeArrowThumbnailURL(decodedURL.videoId, fallbackURL);
             } else if (option.useStillImages) {
                 includeTracking = true; // Include view tracking parameters if present.
                 sanitizedReplacementURL = buildYouTubeVideoStillURL(decodedURL, qualityToUse);
@@ -433,9 +458,10 @@ public final class DeArrowPatch {
      * - A non-existent domain.
      * - A url path of something incorrect (ie: /v1/nonExistentEndPoint).
      * <p>
-     * Cronet uses a very timeout (several minutes), so if the API never responds this hook can take a while to be called.
-     * But this does not appear to be a problem, as the DeArrow API has not been observed to 'go silent'
-     * Instead if there's a problem it returns an error code status response, which is handled in this patch.
+     * Cronet uses a very long timeout (several minutes), so if the API never responds
+     * this hook can take a while to be called. But this does not appear to be a problem,
+     * as the DeArrow API has not been observed to 'go silent' Instead if there's a problem
+     * it returns an error code status response, which is handled in this patch.
      */
     public static void handleCronetFailure(UrlRequest request,
                                            @Nullable UrlResponseInfo responseInfo,
@@ -613,7 +639,7 @@ public final class DeArrowPatch {
     }
 
     /**
-     * YouTube video thumbnail url, decoded into it's relevant parts.
+     * YouTube video thumbnail url, decoded into its relevant parts.
      */
     private static class DecodedThumbnailURL {
         private static final String YOUTUBE_THUMBNAIL_DOMAIN = "https://i.ytimg.com/";
@@ -668,8 +694,10 @@ public final class DeArrowPatch {
                     ? "" : fullURL.substring(imageExtensionEndIndex);
         }
 
-        @SuppressWarnings("SameParameterValue")
-        String createStillsURL(ThumbnailQuality qualityToUse, boolean includeViewTracking) {
+        /**
+         * @return The still capture URL, without view tracking parameters.
+         */
+        String createStillsURL(ThumbnailQuality qualityToUse) {
             // Images could be upgraded to webp if they are not already, but this fails quite often,
             // especially for new videos uploaded in the last hour.
             // And even if alt webp images do exist, sometimes they can load much slower than the original jpg alt images.
@@ -682,9 +710,6 @@ public final class DeArrowPatch {
             builder.append(videoId).append('/');
             builder.append(qualityToUse.getAltImageNameToUse());
             builder.append('.').append(imageExtension);
-            if (includeViewTracking) {
-                builder.append(viewTrackingParameters);
-            }
             return builder.toString();
         }
     }
