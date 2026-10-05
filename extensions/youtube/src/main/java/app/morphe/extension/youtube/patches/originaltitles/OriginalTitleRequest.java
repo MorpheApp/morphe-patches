@@ -10,9 +10,11 @@ package app.morphe.extension.youtube.patches.originaltitles;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -24,13 +26,16 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
+import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 
 /**
  * Fetches the titles that replace the titles shown by YouTube.
  * <p>
  * Original titles are fetched from the public oEmbed endpoint, which always returns the title
- * as set by the uploader. DeArrow titles are fetched with {@link DeArrowBrandingRequest},
- * and if DeArrow has no title then the original title is used if original titles are restored.
+ * as set by the uploader. Titles that oEmbed does not return, such as the titles of the videos
+ * whose embedding is disabled, are fetched from the player endpoint without an account.
+ * DeArrow titles are fetched with {@link DeArrowBrandingRequest}, and if DeArrow has no title
+ * then the original title is used if original titles are restored.
  */
 final class OriginalTitleRequest {
 
@@ -50,7 +55,8 @@ final class OriginalTitleRequest {
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
     /**
-     * Original title and name of the channel of a video, as returned by the oEmbed endpoint.
+     * Original title and name of the channel of a video, as returned by the oEmbed endpoint,
+     * or by the player endpoint if oEmbed does not return the title.
      */
     record OriginalVideo(String title, String channelName) {
     }
@@ -145,11 +151,13 @@ final class OriginalTitleRequest {
                 if (title.isEmpty()) {
                     return null;
                 }
-                originalVideos.put(videoId, new OriginalVideo(title, json.optString("author_name").trim()));
-                TitleLayouts.originalTitleFetched(videoId, title);
-                return title;
+                return originalTitleFetched(videoId, title, json.optString("author_name"));
             }
             Logger.printDebug(() -> "oEmbed request failed for: " + videoId + " code: " + responseCode);
+
+            // oEmbed does not return the title of some videos,
+            // such as the videos whose embedding is disabled by the uploader (code 401).
+            return fetchPlayerTitle(videoId);
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not fetch original title of: " + videoId, ex);
             retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
@@ -157,5 +165,39 @@ final class OriginalTitleRequest {
             Logger.printException(() -> "fetchOriginalTitle failure", ex);
         }
         return null;
+    }
+
+    /**
+     * Fetches the original title from the player endpoint without an account,
+     * which returns the title as set by the uploader, and not the translated title.
+     */
+    @Nullable
+    private static String fetchPlayerTitle(String videoId) throws IOException, JSONException {
+        byte[] requestBody = ChannelIdRoutes.createBody(videoId);
+        HttpURLConnection connection = ChannelIdRoutes.getConnection(ChannelIdRoutes.GET_TITLE);
+        connection.setFixedLengthStreamingMode(requestBody.length);
+        try (OutputStream output = connection.getOutputStream()) {
+            output.write(requestBody);
+        }
+
+        final int responseCode = connection.getResponseCode();
+        if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
+            Logger.printDebug(() -> "Player title request failed for: " + videoId + " code: " + responseCode);
+            return null;
+        }
+        JSONObject videoDetails = Requester.parseJSONObject(connection).optJSONObject("videoDetails");
+        String title = videoDetails == null ? "" : videoDetails.optString("title");
+        if (title.isEmpty()) {
+            Logger.printDebug(() -> "Player response has no title for: " + videoId);
+            return null;
+        }
+        Logger.printDebug(() -> "Original title fetched from the player endpoint for: " + videoId);
+        return originalTitleFetched(videoId, title, videoDetails.optString("author"));
+    }
+
+    private static String originalTitleFetched(String videoId, String title, String channelName) {
+        originalVideos.put(videoId, new OriginalVideo(title, channelName.trim()));
+        TitleLayouts.originalTitleFetched(videoId, title);
+        return title;
     }
 }
