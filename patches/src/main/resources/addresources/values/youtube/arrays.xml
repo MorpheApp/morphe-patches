@@ -340,6 +340,170 @@
         <item>BOTH_DISABLED</item>
     </string-array>
 
+    <!-- layout.captions.preferredCaptionLanguagePatch -->
+    <string-array name="morphe_preferred_caption_language_entries">
+        <item>@string/morphe_preferred_caption_language_entry_off</item>
+        <item>@string/morphe_language_DEFAULT</item>
+        <item>한국어</item>
+        <item>English</item>
+        <item>日本語</item>
+        <item>Afrikaans</item>
+        <item>Azərbaycan</item>
+        <item>Bahasa Melayu</item>
+        <item>Basa Jawa</item>
+        <item>Basa Sunda</item>
+        <item>Bokmål</item>
+        <item>Български</item>
+        <item>Bosanski</item>
+        <item>Català</item>
+        <item>Čeština</item>
+        <item>Српски</item>
+        <item>Cymraeg</item>
+        <item>Dansk</item>
+        <item>Deutsch</item>
+        <item>Eesti</item>
+        <item>Ελληνικά</item>
+        <item>Español</item>
+        <item>Filipino</item>
+        <item>Français</item>
+        <item>Gaeilge</item>
+        <item>Galego</item>
+        <item>Hrvatski</item>
+        <item>Indonesia</item>
+        <item>isiZulu</item>
+        <item>Íslenska</item>
+        <item>Italiano</item>
+        <item>Kiswahili</item>
+        <item>Қазақша</item>
+        <item>Latviešu</item>
+        <item>Lietuvių</item>
+        <item>Македонски</item>
+        <item>Magyar</item>
+        <item>Malti</item>
+        <item>Монгол</item>
+        <item>Nederlands</item>
+        <item>Oʻzbekcha</item>
+        <item>Polski</item>
+        <item>Português (Brasil)</item>
+        <item>Português (Portugal)</item>
+        <item>Română</item>
+        <item>Shqip</item>
+        <item>Slovenčina</item>
+        <item>Slovenščina</item>
+        <item>Soomaali</item>
+        <item>Suomi</item>
+        <item>Svenska</item>
+        <item>Tiếng Việt</item>
+        <item>Türkçe</item>
+        <item>Русский</item>
+        <item>Українська</item>
+        <item>አማርኛ</item>
+        <item>العربية</item>
+        <item>বাংলা</item>
+        <item>فارسی</item>
+        <item>ગુજરાતી</item>
+        <item>עברית</item>
+        <item>हिन्दी</item>
+        <item>ᐃᓄᒃᑎᑐᑦ</item>
+        <item>ქართული</item>
+        <item>ភាសាខ្មែរ</item>
+        <item>ಕನ್ನಡ</item>
+        <item>ລາວ</item>
+        <item>മലയാളം</item>
+        <item>मराठी</item>
+        <item>မြန်မာစာ</item>
+        <item>नेपाली</item>
+        <item>پښتو</item>
+        <item>සිංහල</item>
+        <item>தமிழ்</item>
+        <item>తెలుగు</item>
+        <item>ไทย</item>
+        <item>اردو</item>
+        <item>中文 (简体)</item>
+        <item>中文 (繁體)</item>
+    </string-array>
+    <string-array name="morphe_preferred_caption_language_entry_values">
+        <item>off</item>
+        <item>default</item>
+        <item>ko</item>
+        <item>en</item>
+        <item>ja</item>
+        <item>af</item>
+        <item>az</item>
+        <item>ms</item>
+        <item>jv</item>
+        <item>su</item>
+        <item>nb</item>
+        <item>bg</item>
+        <item>bs</item>
+        <item>ca</item>
+        <item>cs</item>
+        <item>sr</item>
+        <item>cy</item>
+        <item>da</item>
+        <item>de</item>
+        <item>et</item>
+        <item>el</item>
+        <item>es</item>
+        <item>fil</item>
+        <item>fr</item>
+        <item>ga</item>
+        <item>gl</item>
+        <item>hr</item>
+        <item>id</item>
+        <item>zu</item>
+        <item>is</item>
+        <item>it</item>
+        <item>sw</item>
+        <item>kk</item>
+        <item>lv</item>
+        <item>lt</item>
+        <item>mk</item>
+        <item>hu</item>
+        <item>mt</item>
+        <item>mn</item>
+        <item>nl</item>
+        <item>uz</item>
+        <item>pl</item>
+        <item>pt-BR</item>
+        <item>pt-PT</item>
+        <item>ro</item>
+        <item>sq</item>
+        <item>sk</item>
+        <item>sl</item>
+        <item>so</item>
+        <item>fi</item>
+        <item>sv</item>
+        <item>vi</item>
+        <item>tr</item>
+        <item>ru</item>
+        <item>uk</item>
+        <item>am</item>
+        <item>ar</item>
+        <item>bn</item>
+        <item>fa</item>
+        <item>gu</item>
+        <item>he</item>
+        <item>hi</item>
+        <item>iu</item>
+        <item>ka</item>
+        <item>km</item>
+        <item>kn</item>
+        <item>lo</item>
+        <item>ml</item>
+        <item>mr</item>
+        <item>my</item>
+        <item>ne</item>
+        <item>ps</item>
+        <item>si</item>
+        <item>ta</item>
+        <item>te</item>
+        <item>th</item>
+        <item>ur</item>
+        <item>zh-CN</item>
+        <item>zh-TW</item>
+    </string-array>
+
     <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
     <string-array name="morphe_open_videos_fullscreen_entries">
         <item>@string/morphe_open_videos_fullscreen_entry_1</item>

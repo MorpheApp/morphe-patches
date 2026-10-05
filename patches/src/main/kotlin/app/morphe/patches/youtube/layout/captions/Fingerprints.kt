@@ -73,3 +73,23 @@ internal object TimedTextUrlFingerprint : Fingerprint(
         )
     )
 )
+
+internal object DefaultCaptionTrackFingerprint : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall("Landroid/view/accessibility/CaptioningManager;->isEnabled()Z"),
+    )
+)
+
+internal object SetSubtitleTrackFingerprint : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        string("setSubtitleTrack name:%s languageCode:%s languageName:%s format:%d trackName:%s vssid:%s videoid:%s")
+    )
+)
+
