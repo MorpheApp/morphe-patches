@@ -23,7 +23,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
-import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
@@ -69,11 +68,6 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_self_sponsor_ads"),
             SwitchPreference("morphe_hide_shopping_links"),
             SwitchPreference("morphe_hide_video_ads"),
-            NonInteractivePreference(
-                key = "morphe_ads_channel_whitelist",
-                tag = "app.morphe.extension.youtube.settings.preference.ChannelWhitelistPreference",
-                selectable = true
-            ),
             SwitchPreference("morphe_hide_youtube_premium_promotions"),
         )
 
