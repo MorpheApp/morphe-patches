@@ -6,7 +6,6 @@
 package app.morphe.patches.youtube.misc.whitelist
 
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -16,8 +15,14 @@ import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 
 private const val PREFERENCE_CLASS = "app.morphe.extension.youtube.settings.preference.ChannelWhitelistPreference"
 
-val channelWhitelistResourcePatch = resourcePatch {
+@Suppress("unused")
+val channelWhitelistPatch = bytecodePatch(
+    name = "Channel whitelist",
+    description = "Adds options to allow whitelisting specific channels to show ads or override playback speeds."
+) {
     dependsOn(settingsPatch)
+
+    compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
         PreferenceScreen.ADS.addPreferences(
@@ -41,14 +46,4 @@ val channelWhitelistResourcePatch = resourcePatch {
             SwitchPreference("morphe_playback_speed_channel_whitelist_flyout_menu", summary = true)
         )
     }
-}
-
-@Suppress("unused")
-val channelWhitelistPatch = bytecodePatch(
-    name = "Channel whitelist",
-    description = "Adds options to allow whitelisting specific channels to show ads or override playback speeds."
-) {
-    dependsOn(channelWhitelistResourcePatch)
-    compatibleWith(COMPATIBILITY_YOUTUBE)
-    execute {}
 }
