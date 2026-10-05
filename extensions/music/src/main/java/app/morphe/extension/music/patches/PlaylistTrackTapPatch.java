@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.ByteArrayOutputStream;
@@ -30,6 +29,29 @@ import app.morphe.extension.shared.Utils;
  */
 @SuppressWarnings("unused")
 public final class PlaylistTrackTapPatch {
+
+    /**
+     * Added to the app's command class, which holds a watch endpoint or other endpoint extensions.
+     * The methods use the obfuscated proto classes of the app, so they are implemented by the patch.
+     */
+    public interface Command {
+        /**
+         * @return The watch endpoint of the command, or null if the command is not a watch endpoint.
+         */
+        @Nullable
+        Object patch_getWatchEndpoint();
+
+        /**
+         * @return Copy of the command, with the playlist id and index cleared from its watch endpoint.
+         */
+        Object patch_createSingleTrackCommand(Object watchEndpoint);
+
+        /**
+         * @param queueAddEndpoint Serialized QueueAddEndpoint.
+         * @return New command holding the queue add endpoint.
+         */
+        Object patch_createQueueAddCommand(byte[] queueAddEndpoint);
+    }
 
     public enum TapAction {
         /**
@@ -89,27 +111,26 @@ public final class PlaylistTrackTapPatch {
      * @param command Command about to be resolved.
      * @return The command to resolve instead, or the original command.
      */
-    public static Object overrideCommand(@Nullable Object command) {
+    public static Object overrideCommand(@Nullable Command command) {
         try {
             if (command == null) return null;
 
             TapAction action = Settings.PLAYLIST_TRACK_TAP_ACTION.get();
             if (action == TapAction.DEFAULT) return command;
 
-            Object watchEndpoint = getWatchEndpoint(command);
+            Object watchEndpoint = command.patch_getWatchEndpoint();
             if (watchEndpoint == null) return command;
 
             WatchEndpointFields fields = parseWatchEndpoint(serialize(watchEndpoint));
             if (!isPlaylistTrackTap(fields)) return command;
 
-            String videoId = fields.videoId;
             if (action == TapAction.PLAY_SINGLE_TRACK) {
-                Logger.printDebug(() -> "Playing only video: " + videoId + " of playlist: " + fields.playlistId);
-                return createSingleTrackCommand(command, watchEndpoint);
+                Logger.printDebug(() -> "Playing only video: " + fields.videoId + " of playlist: " + fields.playlistId);
+                return command.patch_createSingleTrackCommand(watchEndpoint);
             }
 
-            Logger.printDebug(() -> "Adding to queue video: " + videoId + " of playlist: " + fields.playlistId);
-            Object queueAddCommand = createQueueAddCommand(buildQueueAddEndpoint(videoId));
+            Logger.printDebug(() -> "Adding to queue video: " + fields.videoId + " of playlist: " + fields.playlistId);
+            Object queueAddCommand = command.patch_createQueueAddCommand(buildQueueAddEndpoint(fields.videoId));
             Utils.showToastShort(str("morphe_music_playlist_track_tap_added_to_queue"));
             return queueAddCommand;
         } catch (Exception ex) {
@@ -123,7 +144,7 @@ public final class PlaylistTrackTapPatch {
      * and no params. The play and shuffle buttons of the page and mixes carry params and no entry id.
      * A track tapped in the queue carries both, as the queue jumps to the track instead.
      */
-    private static boolean isPlaylistTrackTap(@NonNull WatchEndpointFields fields) {
+    private static boolean isPlaylistTrackTap(WatchEndpointFields fields) {
         return !fields.videoId.isEmpty()
                 && !fields.playlistId.isEmpty()
                 && !fields.playlistSetVideoId.isEmpty()
@@ -133,8 +154,7 @@ public final class PlaylistTrackTapPatch {
     /**
      * Uses the unobfuscated {@code MessageLite.toByteArray()} of the proto.
      */
-    @NonNull
-    private static byte[] serialize(@NonNull Object message) throws Exception {
+    private static byte[] serialize(Object message) throws Exception {
         Method method = toByteArrayMethod;
         if (method == null) {
             method = message.getClass().getMethod("toByteArray");
@@ -143,8 +163,7 @@ public final class PlaylistTrackTapPatch {
         return (byte[]) method.invoke(message);
     }
 
-    @NonNull
-    private static WatchEndpointFields parseWatchEndpoint(@NonNull byte[] data) {
+    private static WatchEndpointFields parseWatchEndpoint(byte[] data) {
         WatchEndpointFields fields = new WatchEndpointFields();
         int[] position = {0};
         while (position[0] < data.length) {
@@ -193,7 +212,7 @@ public final class PlaylistTrackTapPatch {
     /**
      * @return Serialized QueueAddEndpoint that appends the video to the end of the queue.
      */
-    private static byte[] buildQueueAddEndpoint(@NonNull String videoId) {
+    private static byte[] buildQueueAddEndpoint(String videoId) {
         ByteArrayOutputStream queueTarget = new ByteArrayOutputStream();
         writeLengthDelimited(queueTarget, QUEUE_TARGET_VIDEO_ID_FIELD,
                 videoId.getBytes(StandardCharsets.UTF_8));
@@ -218,33 +237,5 @@ public final class PlaylistTrackTapPatch {
             value >>>= 7;
         }
         stream.write(value);
-    }
-
-    // The methods below are implemented by the patch,
-    // as they use the obfuscated proto classes of the app.
-
-    /**
-     * @return The watch endpoint of the command, or null if the command is not a watch endpoint.
-     */
-    @Nullable
-    private static Object getWatchEndpoint(@NonNull Object command) {
-        return null;
-    }
-
-    /**
-     * @return Copy of the command, with the playlist id and index cleared from its watch endpoint.
-     */
-    @NonNull
-    private static Object createSingleTrackCommand(@NonNull Object command, @NonNull Object watchEndpoint) {
-        return command;
-    }
-
-    /**
-     * @param queueAddEndpoint Serialized QueueAddEndpoint.
-     * @return Command holding the queue add endpoint.
-     */
-    @NonNull
-    private static Object createQueueAddCommand(@NonNull byte[] queueAddEndpoint) {
-        throw new IllegalStateException("Not patched");
     }
 }
