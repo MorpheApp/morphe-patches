@@ -343,6 +343,7 @@ public class Settings extends SharedYouTubeSettings {
 
     // Captions
     public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
+    public static final StringSetting PREFERRED_CAPTION_LANGUAGE = new StringSetting("morphe_preferred_caption_language", "off", true);
     public static final BooleanSetting SET_CAPTION_COOKIES = new BooleanSetting("morphe_set_caption_cookies", FALSE, true);
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);

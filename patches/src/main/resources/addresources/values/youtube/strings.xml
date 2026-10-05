@@ -802,6 +802,11 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
     <string name="morphe_auto_captions_style_legacy_entry_1">Show auto captions</string>
     <string name="morphe_auto_captions_style_legacy_entry_2">Hide auto captions</string>
 
+    <!-- layout.captions.preferredCaptionLanguagePatch -->
+    <string name="morphe_preferred_caption_language_title">Preferred caption language</string>
+    <string name="morphe_preferred_caption_language_summary">Selects provider subtitles first, then automatically translates to the preferred language</string>
+    <string name="morphe_preferred_caption_language_entry_off">Off</string>
+
     <!-- layout.captions.captionCookiesPatch -->
     <string name="morphe_set_caption_cookies_title">Set caption cookies</string>
     <string name="morphe_set_caption_cookies_summary">"Fixes a stock YouTube bug where the auto-translate captions may not be available due to missing cookies
