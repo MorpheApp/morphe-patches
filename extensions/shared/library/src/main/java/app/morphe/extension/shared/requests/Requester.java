@@ -202,6 +202,7 @@ public class Requester {
      *
      * @see #parseJSONArray(HttpURLConnection)
      */
+    @SuppressWarnings("unused")
     public static JSONArray parseJSONArrayAndDisconnect(HttpURLConnection connection) throws JSONException, IOException  {
         JSONArray array = parseJSONArray(connection);
         connection.disconnect();

@@ -108,7 +108,7 @@ public final class LyricsRomanizer {
             String title, String artist, String baseUrl, String apiToken, String model) {
         String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_PROMPT.get(),
                 "romanization", targetLanguage, title, artist, lines);
-        return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, null, lines);
+        return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, lines);
     }
 
     private static List<LyricsLine> collectMatchingRomanizations(
