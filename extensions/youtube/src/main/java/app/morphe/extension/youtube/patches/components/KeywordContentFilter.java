@@ -37,6 +37,7 @@ import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferHideStatsTracker;
 import app.morphe.extension.shared.patches.components.BufferPhraseFilter;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -226,7 +227,7 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
     }
 
     @Override
-    protected boolean isActiveForFeedContext() {
+    protected boolean isActiveForFeedContext(ContextInterface contextInterface) {
         // Must check player type first, as search bar can be active behind the player.
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
             // For now, consider the under video results the same as the home feed.
@@ -245,7 +246,8 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
             return false;
         }
 
-        NavigationBar.NavigationButton selectedNavButton = NavigationBar.NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton selectedNavButton =
+                NavigationBar.NavigationButton.getSelectedNavigationButton(contextInterface);
         if (selectedNavButton == null) {
             return hideHome; // Unknown tab, treat the same as home.
         }
@@ -260,12 +262,13 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
 
     @Override
     @Nullable
-    protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup) {
+    protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
+                                 ContextInterface contextInterface) {
         ByteTrieSearch search = bufferSearch;
         if (search == null) return null;
         MutableReference<String> matchRef = new MutableReference<>();
         if (!search.matches(buffer, matchRef)) return null;
-        recordHide(matchedGroup, buffer);
+        recordHide(matchedGroup, buffer, contextInterface);
         return matchRef.value;
     }
 
@@ -274,8 +277,8 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         Utils.showToastLong(str("morphe_hide_keyword_toast_invalid_broad", matched));
     }
 
-    private void recordHide(StringFilterGroup matchedGroup, byte[] buffer) {
-        Source source = detectSource(matchedGroup);
+    private void recordHide(StringFilterGroup matchedGroup, byte[] buffer, ContextInterface contextInterface) {
+        Source source = detectSource(matchedGroup, contextInterface);
         String videoId = getVideoIdForSource(source, buffer);
         // If ID extraction fails the hide still happens; only stats are skipped
         // to avoid double-counting the same card as it re-enters the viewport.
@@ -287,12 +290,12 @@ public final class KeywordContentFilter extends BufferPhraseFilter {
         }
     }
 
-    private Source detectSource(StringFilterGroup matchedGroup) {
+    private Source detectSource(StringFilterGroup matchedGroup, ContextInterface contextInterface) {
         if (matchedGroup == commentsFilter) return Source.COMMENTS;
         // Player fullscreen: treat under-video results as home (mirrors isActiveForFeedContext).
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) return Source.HOME;
         if (NavigationBar.isSearchBarActive()) return Source.SEARCH;
-        NavigationBar.NavigationButton nav = NavigationBar.NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton nav = NavigationBar.NavigationButton.getSelectedNavigationButton(contextInterface);
         return nav == NavigationBar.NavigationButton.SUBSCRIPTIONS ? Source.SUBSCRIPTIONS : Source.HOME;
     }
 

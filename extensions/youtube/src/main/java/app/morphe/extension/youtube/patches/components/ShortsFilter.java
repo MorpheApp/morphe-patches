@@ -465,7 +465,7 @@ public final class ShortsFilter extends Filter {
                 return !NavigationBar.isSearchBarActive();
             }
 
-            return shouldHideShortsFeedItems();
+            return shouldHideShortsFeedItems(contextInterface);
         }
 
         if (contentType == FilterContentType.PATH) {
@@ -480,7 +480,7 @@ public final class ShortsFilter extends Filter {
             }
 
             if (matchedGroup == shortsCompactFeedVideo) {
-                return shouldHideShortsFeedItems()
+                return shouldHideShortsFeedItems(contextInterface)
                         // When a video is autoplaying in the feed, no new components are drawn on the screen.
                         // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
                         && PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL
@@ -503,7 +503,7 @@ public final class ShortsFilter extends Filter {
                     return !NavigationBar.isSearchBarActive() && channelProfileShelfHeader.check(buffer).isFiltered();
                 }
 
-                return shouldHideShortsFeedItems();
+                return shouldHideShortsFeedItems(contextInterface);
             }
 
             // Video action buttons (comment, share, remix) have the same path.
@@ -536,7 +536,7 @@ public final class ShortsFilter extends Filter {
         return false;
     }
 
-    private boolean shouldHideShortsFeedItems() {
+    private boolean shouldHideShortsFeedItems(ContextInterface contextInterface) {
         // Known issue if hide home is on but at least one other hide is off:
         //
         // Shorts suggestions will load in the background if a video is opened and
@@ -575,7 +575,8 @@ public final class ShortsFilter extends Filter {
         }
 
         // Check navigation absolutely last since the check may block this thread.
-        NavigationBar.NavigationButton selectedNavButton = NavigationBar.NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton selectedNavButton =
+                NavigationBar.NavigationButton.getSelectedNavigationButton(contextInterface);
         if (selectedNavButton == null) {
             return hideHome; // Unknown tab, treat the same as home.
         }

@@ -548,7 +548,7 @@ public final class LayoutComponentsFilter extends Filter {
                               FilterContentType contentType,
                               int contentIndex) {
         if (matchedGroup == exploreTopicsShelf) {
-            return NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
+            return NavigationButton.getSelectedNavigationButton(contextInterface) != NavigationButton.LIBRARY;
         }
 
         // The groups are excluded from the filter due to the exceptions list below.
@@ -576,7 +576,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == channelHandle) {
             return Utils.startsWith(path, "page_header.e")
-                    && NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY;
+                    && NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationButton.LIBRARY;
         }
 
         if (matchedGroup == channelProfileSubscribeButton) {
@@ -585,7 +585,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         if (matchedGroup == chipBar) {
             return contentIndex == 0 &&
-                    NavigationButton.getSelectedNavigationButton() == NavigationBar.NavigationButton.LIBRARY;
+                    NavigationButton.getSelectedNavigationButton(contextInterface) == NavigationBar.NavigationButton.LIBRARY;
         }
 
         if (matchedGroup == communityPosts) {

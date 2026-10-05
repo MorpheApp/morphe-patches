@@ -19,6 +19,7 @@ import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferHideStatsTracker;
 import app.morphe.extension.shared.patches.components.BufferPhraseFilter;
+import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.LongSetting;
@@ -196,20 +197,21 @@ public final class AiSListFilter extends BufferPhraseFilter {
     }
 
     @Override
-    protected boolean isActiveForFeedContext() {
+    protected boolean isActiveForFeedContext(ContextInterface contextInterface) {
         // Any feed-scope toggle enables the base's guard; matchBuffer performs the per-list check.
-        return blocklistActiveForFeedContext() || warnlistActiveForFeedContext();
+        return blocklistActiveForFeedContext(contextInterface) || warnlistActiveForFeedContext(contextInterface);
     }
 
-    private static boolean blocklistActiveForFeedContext() {
-        return activeFor(Settings.HIDE_AISLIST_BLOCKLIST_HOME, Settings.HIDE_AISLIST_BLOCKLIST_SEARCH);
+    private static boolean blocklistActiveForFeedContext(ContextInterface contextInterface) {
+        return activeFor(Settings.HIDE_AISLIST_BLOCKLIST_HOME, Settings.HIDE_AISLIST_BLOCKLIST_SEARCH, contextInterface);
     }
 
-    private static boolean warnlistActiveForFeedContext() {
-        return activeFor(Settings.HIDE_AISLIST_WARNLIST_HOME, Settings.HIDE_AISLIST_WARNLIST_SEARCH);
+    private static boolean warnlistActiveForFeedContext(ContextInterface contextInterface) {
+        return activeFor(Settings.HIDE_AISLIST_WARNLIST_HOME, Settings.HIDE_AISLIST_WARNLIST_SEARCH, contextInterface);
     }
 
-    private static boolean activeFor(BooleanSetting homeSetting, BooleanSetting searchSetting) {
+    private static boolean activeFor(BooleanSetting homeSetting, BooleanSetting searchSetting,
+                                     ContextInterface contextInterface) {
         // Player fullscreen: treat under-video results as home.
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
             return homeSetting.get();
@@ -217,7 +219,7 @@ public final class AiSListFilter extends BufferPhraseFilter {
         if (NavigationBar.isSearchBarActive()) {
             return searchSetting.get();
         }
-        NavigationBar.NavigationButton nav = NavigationBar.NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton nav = NavigationBar.NavigationButton.getSelectedNavigationButton(contextInterface);
         // Unknown tab defaults to home; other tabs (Subscriptions, Library, Notifications) are skipped.
         if (nav == null || nav == NavigationBar.NavigationButton.HOME) return homeSetting.get();
         return false;
@@ -225,23 +227,24 @@ public final class AiSListFilter extends BufferPhraseFilter {
 
     @Override
     @Nullable
-    protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup) {
+    protected String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
+                                 ContextInterface contextInterface) {
         ByteTrieSearch bl = blocklistSearch;
-        final boolean blActive = blocklistActiveForFeedContext();
+        final boolean blActive = blocklistActiveForFeedContext(contextInterface);
         if (bl != null && blActive) {
             MutableReference<String> ref = new MutableReference<>();
             if (bl.matches(buffer, ref)) {
-                recordHide(matchedGroup, buffer);
+                recordHide(matchedGroup, buffer, contextInterface);
                 return ref.value;
             }
         }
 
         ByteTrieSearch wl = warnlistSearch;
-        final boolean wlActive = warnlistActiveForFeedContext();
+        final boolean wlActive = warnlistActiveForFeedContext(contextInterface);
         if (wl != null && wlActive) {
             MutableReference<String> ref = new MutableReference<>();
             if (wl.matches(buffer, ref)) {
-                recordHide(matchedGroup, buffer);
+                recordHide(matchedGroup, buffer, contextInterface);
                 return ref.value;
             }
         }
@@ -249,8 +252,8 @@ public final class AiSListFilter extends BufferPhraseFilter {
         return null;
     }
 
-    private void recordHide(StringFilterGroup matchedGroup, byte[] buffer) {
-        Source source = detectSource(matchedGroup);
+    private void recordHide(StringFilterGroup matchedGroup, byte[] buffer, ContextInterface contextInterface) {
+        Source source = detectSource(matchedGroup, contextInterface);
         String videoId = extractVideoIdFromBuffer(buffer);
         // If ID extraction fails the hide still happens; only stats are skipped
         // to avoid double-counting the same card as it re-enters the viewport.
@@ -262,11 +265,11 @@ public final class AiSListFilter extends BufferPhraseFilter {
         }
     }
 
-    private Source detectSource(StringFilterGroup matchedGroup) {
+    private Source detectSource(StringFilterGroup matchedGroup, ContextInterface contextInterface) {
         // Player fullscreen: treat under-video results as home (mirrors activeFor).
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) return Source.HOME;
         if (NavigationBar.isSearchBarActive()) return Source.SEARCH;
-        NavigationBar.NavigationButton nav = NavigationBar.NavigationButton.getSelectedNavigationButton();
+        NavigationBar.NavigationButton nav = NavigationBar.NavigationButton.getSelectedNavigationButton(contextInterface);
         return nav == NavigationBar.NavigationButton.SUBSCRIPTIONS ? Source.SUBSCRIPTIONS : Source.HOME;
     }
 

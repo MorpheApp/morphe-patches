@@ -177,19 +177,22 @@ public abstract class BufferPhraseFilter extends Filter {
     protected abstract void reparseIfNeeded();
 
     /**
+     * @param contextInterface Context of the Litho element that is filtered.
      * @return whether filtering is active for the current feed / search context.
      * Only consulted when the matched group is {@link #startsWithFilter} or
      * {@link #containsFilter}. Extra path callbacks are assumed to be self-gated
      * by their own {@link app.morphe.extension.shared.settings.BooleanSetting}.
      */
-    protected abstract boolean isActiveForFeedContext();
+    protected abstract boolean isActiveForFeedContext(ContextInterface contextInterface);
 
     /**
+     * @param contextInterface Context of the Litho element that is filtered.
      * @return the matched phrase if the buffer contains a match, or {@code null} otherwise.
      * Called after the path-exception check has passed.
      */
     @Nullable
-    protected abstract String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup);
+    protected abstract String matchBuffer(byte[] buffer, StringFilterGroup matchedGroup,
+                                          ContextInterface contextInterface);
 
     /**
      * Optional hook invoked when a hide is confirmed. Subclasses can override to record stats.
@@ -214,7 +217,7 @@ public abstract class BufferPhraseFilter extends Filter {
 
         reparseIfNeeded();
 
-        if (isBaseFeedGroup(matchedGroup) && !isActiveForFeedContextGuarded()) {
+        if (isBaseFeedGroup(matchedGroup) && !isActiveForFeedContextGuarded(contextInterface)) {
             return false;
         }
 
@@ -222,7 +225,7 @@ public abstract class BufferPhraseFilter extends Filter {
             return false; // Do not update statistics.
         }
 
-        String matched = matchBuffer(buffer, matchedGroup);
+        String matched = matchBuffer(buffer, matchedGroup, contextInterface);
         if (matched != null) {
             updateStats(true, matched);
             onHideConfirmed(matched);
@@ -238,10 +241,10 @@ public abstract class BufferPhraseFilter extends Filter {
     }
 
     /**
-     * Wraps {@link #isActiveForFeedContext()} with the shared backoff timer used by
+     * Wraps {@link #isActiveForFeedContext(ContextInterface)} with the shared backoff timer used by
      * broad-filter detection.
      */
-    private boolean isActiveForFeedContextGuarded() {
+    private boolean isActiveForFeedContextGuarded(ContextInterface contextInterface) {
         if (timeToResumeFiltering != 0) {
             if (System.currentTimeMillis() < timeToResumeFiltering) {
                 return false;
@@ -250,7 +253,7 @@ public abstract class BufferPhraseFilter extends Filter {
             filteredVideosPercentage = 0;
             Logger.printDebug(() -> "Resuming filtering: " + getClass().getSimpleName());
         }
-        return isActiveForFeedContext();
+        return isActiveForFeedContext(contextInterface);
     }
 
     private void updateStats(boolean videoWasHidden, @Nullable String matched) {
