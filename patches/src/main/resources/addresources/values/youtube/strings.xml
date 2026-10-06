@@ -1405,6 +1405,10 @@ Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_playback_audio_time_stretching_title">Audio time stretching</string>
     <string name="morphe_playback_audio_time_stretching_summary">Allows setting speed and pitch independently, may cause audio artifacts</string>
 
+    <!-- video.playback.rememberPlaybackPositionPatch -->
+    <string name="morphe_remember_playback_position_title">Remember playback position</string>
+    <string name="morphe_remember_playback_position_summary">Videos resume where you left off, even when they auto-advance in a playlist</string>
+
     <!-- video.livestream.rememberLiveStreamPositionPatch -->
     <string name="morphe_remember_live_stream_position_title">Remember live stream playback position</string>
     <string name="morphe_remember_live_stream_position_summary">For ongoing live streams, remembers and resumes your playback position instead of seeking to the current live position</string>
