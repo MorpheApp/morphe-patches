@@ -27,6 +27,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -205,7 +207,7 @@ public final class MinimalMiniplayerPatch {
      */
     private static String previousVideoTitle = "";
     private static String previousChannelTitle = "";
-
+    private static Boolean videoDetailsFetched;
 
     /**
      * Injection point.
@@ -1029,12 +1031,37 @@ public final class MinimalMiniplayerPatch {
         updatePlayPauseIcon(false);
     }
 
-    private static void updateText() {
-        if (!ShortsPlayerState.isOpen()) {
-            previousVideoTitle = VideoInformation.getVideoTitle();
-            previousChannelTitle = VideoInformation.getChannelName();
-        }
+    /**
+     * Injection point.
+     * Executed once, when a video is opened.
+     */
+    public static boolean onVideoIntentLoaded(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
+        videoDetailsFetched = false;
 
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * Executed twice, when a video is loaded and player minimization is finished.
+     */
+    public static void updateVideoDetails() {
+        if (!videoDetailsFetched) {
+            // Introduce a slight delay in order to allow the
+            // video title and channel name to be set.
+            Utils.runOnMainThreadDelayed(
+                    () -> {
+                        previousVideoTitle = VideoInformation.getVideoTitle();
+                        previousChannelTitle = VideoInformation.getChannelName();
+                        Log.d("LOLOLOLOLO", VideoInformation.getVideoTitle());
+                    }, 30
+            );
+
+            videoDetailsFetched = true;
+        }
+    }
+
+    private static void updateText() {
         setText(titleRef.get(), previousVideoTitle);
 
         TextView subtitle = subtitleRef.get();
