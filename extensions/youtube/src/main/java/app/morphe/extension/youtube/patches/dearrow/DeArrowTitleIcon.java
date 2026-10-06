@@ -31,7 +31,8 @@ import app.morphe.extension.youtube.settings.Settings;
  */
 public final class DeArrowTitleIcon {
 
-    private static final boolean SHOW_ICON = Settings.DEARROW_TITLES.get() && Settings.DEARROW_TITLES_ICON.get();
+    private static final boolean SHOW_ICON = DeArrowPatch.DeArrowTitlesAvailability.usingDeArrowTitlesAnywhere()
+            && Settings.DEARROW_TITLES_ICON.get();
 
     /**
      * Bullseye character that the icon is drawn over. The text of the title is not used to find the icon,

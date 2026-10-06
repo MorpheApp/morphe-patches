@@ -1270,9 +1270,17 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <!-- layout.dearrow.deArrowPatch -->
     <!-- "DeArrow" must be kept untranslated. -->
     <string name="morphe_dearrow_titles_title">DeArrow titles</string>
-    <string name="morphe_dearrow_titles_summary">Replaces video titles with the crowdsourced titles submitted to DeArrow</string>
+    <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+    <string name="morphe_dearrow_titles_home_title">For Home tab</string>
+    <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+    <string name="morphe_dearrow_titles_subscription_title">For Subscriptions tab</string>
+    <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+    <string name="morphe_dearrow_titles_library_title">For You tab</string>
+    <string name="morphe_dearrow_titles_player_title">For player playlists &amp; recommendations</string>
+    <string name="morphe_dearrow_titles_search_title">For search results</string>
     <string name="morphe_dearrow_titles_icon_title">Show DeArrow icon</string>
     <string name="morphe_dearrow_titles_icon_summary">Shows the DeArrow icon on crowdsourced video titles</string>
+    <string name="morphe_dearrow_thumbnails_title">DeArrow thumbnails</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_dearrow_thumbnail_home_title">For Home tab</string>
     <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -1285,6 +1293,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; Original thumbnails</string>
     <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; Still captures</string>
     <string name="morphe_dearrow_thumbnail_options_entry_4">Still captures</string>
+    <string name="morphe_dearrow_about_category_title">About</string>
     <string name="morphe_dearrow_about_title" translatable="false">DeArrow</string>
     <string name="morphe_dearrow_about_summary">"DeArrow provides crowdsourced titles and thumbnails for YouTube videos. These are often more relevant than those provided by YouTube
 

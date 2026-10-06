@@ -26,6 +26,8 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAvailability;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 
 /**
@@ -36,6 +38,9 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
  * whose embedding is disabled, are fetched from the player endpoint without an account.
  * DeArrow titles are fetched with {@link DeArrowBrandingRequest}, and if DeArrow has no title
  * then the original title is used if original titles are restored.
+ * <p>
+ * DeArrow titles can be used only for some navigations, such as only for the search results,
+ * so the title that replaces the title is chosen when the title is shown.
  */
 final class OriginalTitleRequest {
 
@@ -48,10 +53,34 @@ final class OriginalTitleRequest {
     private static final long FAILED_FETCH_RETRY_MILLISECONDS = 30_000;
 
     /**
-     * Video id -> title. A null title means the video has no available title,
-     * such as a private video, or the title failed to fetch because of network errors.
+     * Titles that can replace the title of a video.
+     *
+     * @param deArrowTitle  The DeArrow title, or null if the video has no DeArrow title,
+     *                      DeArrow titles are not used, or it failed to fetch.
+     * @param originalTitle The original title, or null if original titles are not restored,
+     *                      the video has no available title such as a private video,
+     *                      the DeArrow title is used for all navigations, or it failed to fetch.
      */
-    private static final Map<String, CompletableFuture<String>> cache =
+    record Titles(@Nullable String deArrowTitle, @Nullable String originalTitle) {
+        /**
+         * Can be called on any thread.
+         *
+         * @return The title that replaces the title of the video for the current navigation,
+         *         or null if the title is not replaced.
+         */
+        @Nullable
+        String replacement() {
+            if (deArrowTitle != null && DeArrowPatch.useDeArrowTitlesForCurrentNavigation()) {
+                return deArrowTitle;
+            }
+            return originalTitle;
+        }
+    }
+
+    /**
+     * Video id -> titles.
+     */
+    private static final Map<String, CompletableFuture<Titles>> cache =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
     /**
@@ -74,13 +103,13 @@ final class OriginalTitleRequest {
     private static final Map<String, Long> retryTimes =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
-    static CompletableFuture<String> fetch(String videoId) {
+    static CompletableFuture<Titles> fetch(String videoId) {
         synchronized (cache) {
-            CompletableFuture<String> future = cache.get(videoId);
+            CompletableFuture<Titles> future = cache.get(videoId);
             Long retryTime = retryTimes.get(videoId);
             if (future == null || (retryTime != null && System.currentTimeMillis() >= retryTime)) {
                 retryTimes.remove(videoId);
-                future = CompletableFuture.supplyAsync(() -> fetchTitle(videoId), Utils::runOnBackgroundThread);
+                future = CompletableFuture.supplyAsync(() -> fetchTitles(videoId), Utils::runOnBackgroundThread);
                 cache.put(videoId, future);
             }
             return future;
@@ -90,11 +119,13 @@ final class OriginalTitleRequest {
     /**
      * Starts fetching the title if needed, and does not wait for it.
      *
-     * @return The original title, or null if not yet available.
+     * @return The title that replaces the title of the video for the current navigation,
+     *         or null if not yet available or the title is not replaced.
      */
     @Nullable
     static String getIfAvailable(String videoId) {
-        return fetch(videoId).getNow(null);
+        Titles titles = fetch(videoId).getNow(null);
+        return titles == null ? null : titles.replacement();
     }
 
     /**
@@ -113,24 +144,24 @@ final class OriginalTitleRequest {
      *         are not pending until they are fetched again.
      */
     static boolean isPending(String videoId) {
-        CompletableFuture<String> future = cache.get(videoId);
+        CompletableFuture<Titles> future = cache.get(videoId);
         return future == null || !future.isDone();
     }
 
-    @Nullable
-    private static String fetchTitle(String videoId) {
+    private static Titles fetchTitles(String videoId) {
+        String deArrowTitle = null;
         if (RestoreOriginalTitlesPatch.USE_DEARROW) {
             try {
-                String title = DeArrowBrandingRequest.fetchTitle(videoId);
-                if (title != null) {
-                    return title;
-                }
+                deArrowTitle = DeArrowBrandingRequest.fetchTitle(videoId);
             } catch (DeArrowBrandingRequest.DeArrowException ex) {
                 // The DeArrow title is fetched again later, and the original title is used meanwhile.
                 retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
             }
         }
-        return RestoreOriginalTitlesPatch.RESTORE_ORIGINAL ? fetchOriginalTitle(videoId) : null;
+        // The original title is not needed if the DeArrow title is used for all navigations.
+        final boolean fetchOriginal = RestoreOriginalTitlesPatch.RESTORE_ORIGINAL
+                && (deArrowTitle == null || !DeArrowTitlesAvailability.usingDeArrowTitlesEverywhere());
+        return new Titles(deArrowTitle, fetchOriginal ? fetchOriginalTitle(videoId) : null);
     }
 
     @Nullable

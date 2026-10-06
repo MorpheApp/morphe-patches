@@ -14,6 +14,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.originaltitles.restoreOriginalTitlesPatch
@@ -50,46 +52,54 @@ val deArrowPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val entries = "morphe_dearrow_thumbnail_options_entries"
-        val values = "morphe_dearrow_thumbnail_options_entry_values"
+        fun thumbnailPreference(key: String) = ListPreference(
+            key = key,
+            entriesKey = "morphe_dearrow_thumbnail_options_entries",
+            entryValuesKey = "morphe_dearrow_thumbnail_options_entry_values"
+        )
+
         PreferenceScreen.DEARROW.addPreferences(
-            SwitchPreference("morphe_dearrow_titles", summary = true),
-            SwitchPreference("morphe_dearrow_titles_icon", summary = true),
-            ListPreference(
-                key = "morphe_dearrow_thumbnail_home",
-                entriesKey = entries,
-                entryValuesKey = values
+            PreferenceCategory(
+                key = "morphe_dearrow_titles_category",
+                titleKey = "morphe_dearrow_titles_title",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_dearrow_titles_home"),
+                    SwitchPreference("morphe_dearrow_titles_subscription"),
+                    SwitchPreference("morphe_dearrow_titles_library"),
+                    SwitchPreference("morphe_dearrow_titles_player"),
+                    SwitchPreference("morphe_dearrow_titles_search"),
+                    SwitchPreference("morphe_dearrow_titles_icon", summary = true),
+                )
             ),
-            ListPreference(
-                key = "morphe_dearrow_thumbnail_subscription",
-                entriesKey = entries,
-                entryValuesKey = values
+            PreferenceCategory(
+                key = "morphe_dearrow_thumbnails_category",
+                titleKey = "morphe_dearrow_thumbnails_title",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    thumbnailPreference("morphe_dearrow_thumbnail_home"),
+                    thumbnailPreference("morphe_dearrow_thumbnail_subscription"),
+                    thumbnailPreference("morphe_dearrow_thumbnail_library"),
+                    thumbnailPreference("morphe_dearrow_thumbnail_player"),
+                    thumbnailPreference("morphe_dearrow_thumbnail_search"),
+                    TextPreference("morphe_dearrow_api_url"),
+                    NonInteractivePreference("morphe_dearrow_thumbnail_stills_about"),
+                    ListPreference("morphe_dearrow_thumbnail_stills_time"),
+                )
             ),
-            ListPreference(
-                key = "morphe_dearrow_thumbnail_library",
-                entriesKey = entries,
-                entryValuesKey = values
-            ),
-            ListPreference(
-                key = "morphe_dearrow_thumbnail_player",
-                entriesKey = entries,
-                entryValuesKey = values
-            ),
-            ListPreference(
-                key = "morphe_dearrow_thumbnail_search",
-                entriesKey = entries,
-                entryValuesKey = values
-            ),
-            NonInteractivePreference(
-                "morphe_dearrow_about",
-                // Custom about preference with link to the DeArrow website.
-                tag = "app.morphe.extension.youtube.settings.preference.DeArrowAboutPreference",
-                selectable = true,
-            ),
-            SwitchPreference("morphe_dearrow_connection_toast", summary = true),
-            TextPreference("morphe_dearrow_api_url"),
-            NonInteractivePreference("morphe_dearrow_thumbnail_stills_about"),
-            ListPreference("morphe_dearrow_thumbnail_stills_time"),
+            PreferenceCategory(
+                key = "morphe_dearrow_about_category",
+                sorting = Sorting.UNSORTED,
+                preferences = setOf(
+                    NonInteractivePreference(
+                        "morphe_dearrow_about",
+                        // Custom about preference with link to the DeArrow website.
+                        tag = "app.morphe.extension.youtube.settings.preference.DeArrowAboutPreference",
+                        selectable = true,
+                    ),
+                    SwitchPreference("morphe_dearrow_connection_toast", summary = true),
+                )
+            )
         )
 
         addImageURLHook(EXTENSION_CLASS)

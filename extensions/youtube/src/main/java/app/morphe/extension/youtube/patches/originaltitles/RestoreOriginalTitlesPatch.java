@@ -49,6 +49,7 @@ import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.patches.components.ContextInterface;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowTitleIcon;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
@@ -84,9 +85,9 @@ public final class RestoreOriginalTitlesPatch {
     static final boolean RESTORE_ORIGINAL = Settings.RESTORE_ORIGINAL_TITLES.get();
 
     /**
-     * If the titles are replaced with the DeArrow titles.
+     * If the titles are replaced with the DeArrow titles, for any navigation.
      */
-    static final boolean USE_DEARROW = Settings.DEARROW_TITLES.get();
+    static final boolean USE_DEARROW = DeArrowPatch.DeArrowTitlesAvailability.usingDeArrowTitlesAnywhere();
 
     private static final boolean REPLACE_TITLES = RESTORE_ORIGINAL || USE_DEARROW;
 
@@ -270,7 +271,7 @@ public final class RestoreOriginalTitlesPatch {
     /**
      * Title requests that lay out the loading texts again when done.
      */
-    private static final Set<CompletableFuture<String>> relayoutRequests = ConcurrentHashMap.newKeySet();
+    private static final Set<CompletableFuture<?>> relayoutRequests = ConcurrentHashMap.newKeySet();
 
     /**
      * Video id of the opened video.
@@ -338,6 +339,16 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
+     * DeArrow titles can be used only for some navigations, such as only for the search results.
+     * Can be called on any thread.
+     *
+     * @return If titles are replaced for the current navigation.
+     */
+    private static boolean replacesTitlesForCurrentNavigation() {
+        return RESTORE_ORIGINAL || DeArrowPatch.useDeArrowTitlesForCurrentNavigation();
+    }
+
+    /**
      * Does not wait for the title to be fetched.
      *
      * @return The title that replaces the title of the video, or the title if not replaced or not yet fetched.
@@ -361,7 +372,7 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static byte[] restoreOriginalTitle(byte[] bytes) {
         try {
-            if (!REPLACE_TITLES || !elementSearch.matches(bytes)) {
+            if (!REPLACE_TITLES || !elementSearch.matches(bytes) || !replacesTitlesForCurrentNavigation()) {
                 return bytes;
             }
             clearIfLanguageChanged();
@@ -478,6 +489,11 @@ public final class RestoreOriginalTitlesPatch {
         try {
             if (!REPLACE_TITLES || text == null || DeArrowTitleIcon.hasIcon(text)) {
                 return text;
+            }
+            if (!replacesTitlesForCurrentNavigation()) {
+                // A title can be marked when the element was parsed for another navigation.
+                final int markerStart = findTitleMarker(text);
+                return markerStart < 0 ? text : text.subSequence(0, markerStart);
             }
 
             CharSequence channelPreview = restoreChannelPreview(text);
@@ -669,7 +685,7 @@ public final class RestoreOriginalTitlesPatch {
      */
     public static void restoreOriginalTitle(TextView view, String videoId) {
         try {
-            if (!REPLACE_TITLES || view == null || videoId == null) {
+            if (!REPLACE_TITLES || view == null || videoId == null || !replacesTitlesForCurrentNavigation()) {
                 return;
             }
 
@@ -691,11 +707,12 @@ public final class RestoreOriginalTitlesPatch {
 
             // The title is null if the video has no available title, or if it failed to fetch.
             WeakReference<TextView> viewRef = new WeakReference<>(view);
-            OriginalTitleRequest.fetch(videoId).thenAccept(originalTitle -> Utils.runOnMainThreadNowOrLater(() -> {
+            OriginalTitleRequest.fetch(videoId).thenAccept(titles -> Utils.runOnMainThreadNowOrLater(() -> {
                 TextView titleView = viewRef.get();
                 if (titleView == null || !titleViewVideoIds.remove(titleView, videoId)) {
                     return;
                 }
+                String originalTitle = titles.replacement();
                 CharSequence title = originalTitle == null
                         ? translatedTitle
                         : titleText(translatedTitle, originalTitle, null);
@@ -727,7 +744,7 @@ public final class RestoreOriginalTitlesPatch {
 
             @Override
             public void onTextChanged(CharSequence text, int start, int before, int count) {
-                if (!REPLACE_TITLES) {
+                if (!REPLACE_TITLES || !replacesTitlesForCurrentNavigation()) {
                     return;
                 }
 
@@ -870,7 +887,7 @@ public final class RestoreOriginalTitlesPatch {
      * that show the loading title, or the translated description preview of a channel.
      * Each request lays out the texts once, including requests made again after a failure.
      */
-    private static void relayoutWhenFetched(CompletableFuture<String> request) {
+    private static void relayoutWhenFetched(CompletableFuture<?> request) {
         if (!relayoutRequests.add(request)) {
             return;
         }
@@ -1471,7 +1488,7 @@ public final class RestoreOriginalTitlesPatch {
      *              The title in the language of the app is then not fetched.
      */
     private static void requestVerification(String videoId, @Nullable Set<String> texts) {
-        CompletableFuture<String> originalRequest = OriginalTitleRequest.fetch(videoId);
+        CompletableFuture<?> originalRequest = OriginalTitleRequest.fetch(videoId);
         if (originalRequest.isDone()) {
             if (texts != null) {
                 requestLocalizedTitleIfNeeded(videoId, texts);
