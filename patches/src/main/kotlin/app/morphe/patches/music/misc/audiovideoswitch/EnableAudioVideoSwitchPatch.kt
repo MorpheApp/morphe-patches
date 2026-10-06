@@ -52,5 +52,7 @@ val enableAudioVideoSwitchPatch = bytecodePatch(
                 )
             }
         }
+
+        installAudioVideoSwitchQueue(resolveAudioVideoQueue())
     }
 }

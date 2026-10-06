@@ -207,7 +207,7 @@ internal fun BytecodePatchContext.resolveProto(type: String?, concept: String): 
     return ProtoAbi(type, defaultInstance, parser)
 }
 
-private fun BytecodePatchContext.resolveStorage(
+internal fun BytecodePatchContext.resolveStorage(
     manager: ClassDef,
     enqueue: Method,
 ): QueueStorageAbi {
@@ -303,7 +303,7 @@ private fun BytecodePatchContext.resolveLocalMode(mode: MethodReference): FieldR
         .getFieldAccessed()
 }
 
-private fun BytecodePatchContext.resolveDisplays(
+internal fun BytecodePatchContext.resolveDisplays(
     manager: ClassDef,
     constructor: Method,
     storage: QueueStorageAbi,

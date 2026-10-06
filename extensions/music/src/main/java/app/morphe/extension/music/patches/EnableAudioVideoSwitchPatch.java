@@ -10,7 +10,10 @@ package app.morphe.extension.music.patches;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.net.Uri;
+import android.os.SystemClock;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -31,7 +35,11 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
 
+import app.morphe.extension.music.jam.QueueCommand;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -40,6 +48,16 @@ import app.morphe.extension.shared.requests.Requester;
 
 @SuppressWarnings("unused")
 public final class EnableAudioVideoSwitchPatch {
+
+    public interface QueueAccess {
+        void patch_atvEnqueue(byte[] command);
+        Executor patch_atvExecutor();
+        int patch_atvCurrentIndex();
+        Object[] patch_atvItems();
+        String patch_atvVideoId(Object item);
+        void patch_atvRemove(Object item);
+        boolean patch_atvLocal();
+    }
 
     private static final class Item {
         final String videoId;
@@ -51,6 +69,10 @@ public final class EnableAudioVideoSwitchPatch {
             this.type = type;
             this.title = title;
         }
+    }
+
+    private interface Condition {
+        boolean ok();
     }
 
     private static final String OEMBED_URL = "https://www.youtube.com/oembed?format=json&url="
@@ -65,32 +87,52 @@ public final class EnableAudioVideoSwitchPatch {
 
     private static volatile boolean busy;
 
+    private static volatile WeakReference<QueueAccess> queue =
+        new WeakReference<>(null);
+
     private EnableAudioVideoSwitchPatch() {
+    }
+
+    public static void capture(QueueAccess access) {
+        queue = new WeakReference<>(access);
     }
 
     public static void installAudioVideoSwitchInterceptor(View pill) {
         try {
             if (pill == null || !Settings.ENABLE_AUDIO_VIDEO_SWITCH.get()) return;
             Context context = pill.getContext();
-            pill.post(() -> attachInterceptor(pill, context));
+            pill.post(() -> attachInterceptor(pill, pill, context));
         } catch (Exception ex) {
             Logger.printException(() -> "installAudioVideoSwitchInterceptor failed", ex);
         }
     }
 
-    private static void attachInterceptor(View view, Context context) {
+    private static void attachInterceptor(View pill, View view, Context context) {
         try {
             if (view == null) return;
+            final boolean[] claimed = {false};
             view.setOnTouchListener((target, event) -> {
                 if (!Settings.ENABLE_AUDIO_VIDEO_SWITCH.get()) {
+                    claimed[0] = false;
                     return false;
                 }
+                switch (event.getActionMasked()) {
+                    case MotionEvent.ACTION_DOWN:
+                        claimed[0] = isLeftHalf(pill, event);
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        claimed[0] = false;
+                        break;
+                    default:
+                        break;
+                }
+                if (!claimed[0]) return false;
                 if (event.getActionMasked() == MotionEvent.ACTION_UP) openCounterpart(context);
                 return true;
             });
             if (view instanceof ViewGroup group) {
                 for (int i = 0, childCound = group.getChildCount(); i < childCound; i++) {
-                    attachInterceptor(group.getChildAt(i), context);
+                    attachInterceptor(pill, group.getChildAt(i), context);
                 }
             }
         } catch (Exception ex) {
@@ -98,18 +140,32 @@ public final class EnableAudioVideoSwitchPatch {
         }
     }
 
-    private static void openCounterpart(Context context) {
-        String currentId = VideoInformation.getVideoId();
-        if (!isVideoId(currentId) || busy) return;
+    private static boolean isLeftHalf(View pill, MotionEvent event) {
+        int[] location = new int[2];
+        pill.getLocationOnScreen(location);
+        return event.getRawX() - location[0] < pill.getWidth() / 2f;
+    }
 
+    private static void openCounterpart(Context context) {
+        if (busy) return;
         busy = true;
+
         Utils.runOnBackgroundThread(() -> {
             try {
+                QueueAccess access = queue.get();
+                String currentId = currentQueueVideoId(access);
+                if (!isVideoId(currentId)) {
+                    Logger.printDebug(() -> "audio/video switch: no current video");
+                    return;
+                }
                 String targetId = resolveCounterpart(currentId);
-                if (targetId != null && isVideoId(targetId) && !targetId.equals(currentId)) {
+                if (targetId == null || !isVideoId(targetId) || targetId.equals(currentId)) {
+                    Logger.printDebug(
+                            () -> "audio/video switch: no counterpart for " + currentId);
+                    return;
+                }
+                if (!switchInQueue(context, access, currentId, targetId)) {
                     openWatch(context, targetId);
-                } else {
-                    Logger.printDebug(() -> "audio/video switch: no counterpart for " + currentId);
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "openCounterpart failure", ex);
@@ -117,6 +173,176 @@ public final class EnableAudioVideoSwitchPatch {
                 busy = false;
             }
         });
+    }
+
+    /**
+     * The queue's own current item is authoritative for switching; the watch-page videoId may lag
+     * behind after an in-queue track change. Falls back to the watch page when no queue exists.
+     */
+    private static String currentQueueVideoId(QueueAccess access) {
+        if (access != null) {
+            try {
+                String id = videoAt(access, access.patch_atvCurrentIndex());
+                if (id != null) return id;
+            } catch (Exception ex) {
+                Logger.printException(() -> "currentQueueVideoId failure", ex);
+            }
+        }
+        return VideoInformation.getVideoId();
+    }
+
+    /**
+     * Returns false before playback advanced, so the caller can fall back to a watch deep link.
+     */
+    private static boolean switchInQueue(
+            Context context,
+            @Nullable QueueAccess access,
+            String currentId,
+            String targetId
+    ) {
+        if (access == null) return false;
+        try {
+            if (!access.patch_atvLocal()) {
+                Logger.printDebug(() -> "audio/video switch: queue is not local");
+                return false;
+            }
+            Executor executor = access.patch_atvExecutor();
+            if (executor == null) return false;
+
+            byte[] command = QueueCommand.encode(targetId, true);
+            int[] queuedIndex = new int[] {-1};
+            runOnQueueExecutor(executor, () -> {
+                Object[] items = access.patch_atvItems();
+                int index = access.patch_atvCurrentIndex();
+                if (items == null || index < 0 || index >= items.length) return;
+                if (!currentId.equals(access.patch_atvVideoId(items[index]))) {
+                    Logger.printDebug(
+                            () -> "audio/video switch: current queue item is not " + currentId);
+                    return;
+                }
+                access.patch_atvEnqueue(command);
+                queuedIndex[0] = index;
+            });
+            final int index = queuedIndex[0];
+            if (index < 0) return false;
+
+            if (!await(() -> targetId.equals(videoAt(access, index + 1)), 2_000)) {
+                Logger.printDebug(() -> "audio/video switch: counterpart was not queued next");
+                return false;
+            }
+
+            dispatchMediaKeyEvent(context, KeyEvent.KEYCODE_MEDIA_NEXT);
+            if (!await(
+                    () -> access.patch_atvCurrentIndex() == index + 1
+                            && targetId.equals(videoAt(access, index + 1)),
+                    3_000
+            )) {
+                Logger.printDebug(
+                        () -> "audio/video switch: playback did not advance to " + targetId);
+                return false;
+            }
+
+            removePrevious(access, currentId);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "switchInQueue failure", ex);
+            return false;
+        }
+    }
+
+    private static void removePrevious(QueueAccess access, String currentId) {
+        try {
+            Executor executor = access.patch_atvExecutor();
+            if (executor == null) return;
+            runOnQueueExecutor(executor, () -> {
+                Object[] items = access.patch_atvItems();
+                int index = access.patch_atvCurrentIndex();
+                Object previous = null;
+                if (items != null) {
+                    if (index - 1 >= 0 && index - 1 < items.length
+                            && currentId.equals(access.patch_atvVideoId(items[index - 1]))) {
+                        previous = items[index - 1];
+                    } else {
+                        for (Object item : items) {
+                            if (currentId.equals(access.patch_atvVideoId(item))) {
+                                previous = item;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (previous != null) {
+                    access.patch_atvRemove(previous);
+                } else {
+                    Logger.printDebug(
+                            () -> "audio/video switch: previous queue item not found");
+                }
+            });
+        } catch (Exception ex) {
+            Logger.printException(() -> "removePrevious failure", ex);
+        }
+    }
+
+    private static String videoAt(QueueAccess access, int index) {
+        Object[] items = access.patch_atvItems();
+        if (items == null || index < 0 || index >= items.length) return null;
+        return access.patch_atvVideoId(items[index]);
+    }
+
+    /** Native queue mutations only ever run on YouTube Music's own queue executor. */
+    private static void runOnQueueExecutor(Executor executor, Runnable task)
+            throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(1);
+        executor.execute(() -> {
+            try {
+                task.run();
+            } catch (Exception ex) {
+                Logger.printException(() -> "audio/video switch: queue task failed", ex);
+            } finally {
+                latch.countDown();
+            }
+        });
+        if (!latch.await(5, TimeUnit.SECONDS)) {
+            Logger.printDebug(() -> "audio/video switch: queue task timed out");
+        }
+    }
+
+    private static boolean await(Condition condition, long timeoutMs) {
+        long deadline = SystemClock.uptimeMillis() + timeoutMs;
+        while (true) {
+            try {
+                if (condition.ok()) return true;
+            } catch (Exception ex) {
+                Logger.printException(() -> "audio/video switch: queue poll failed", ex);
+                return false;
+            }
+            if (SystemClock.uptimeMillis() >= deadline) return false;
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+                return false;
+            }
+        }
+    }
+
+    /**
+     * Dispatches a media key event via AudioManager. This is the same mechanism used by Bluetooth
+     * headsets and does not require any special permissions. Both ACTION_DOWN and ACTION_UP are
+     * sent, as some players ignore events without a matching up event.
+     */
+    private static void dispatchMediaKeyEvent(Context context, int keyCode) {
+        if (context.getSystemService(Context.AUDIO_SERVICE) instanceof AudioManager audioManager) {
+            try {
+                long now = SystemClock.uptimeMillis();
+                audioManager.dispatchMediaKeyEvent(
+                        new KeyEvent(now, now, KeyEvent.ACTION_DOWN, keyCode, 0));
+                audioManager.dispatchMediaKeyEvent(
+                        new KeyEvent(now, now, KeyEvent.ACTION_UP, keyCode, 0));
+            } catch (Exception ex) {
+                Logger.printException(() -> "dispatchMediaKeyEvent failure", ex);
+            }
+        }
     }
 
     private static void openWatch(Context context, String videoId) {

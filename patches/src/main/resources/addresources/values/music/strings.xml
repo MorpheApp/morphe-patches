@@ -125,7 +125,7 @@ Second \"item\" text"</string>
 
     <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
     <string name="morphe_music_enable_audio_video_switch_title">Enable audio/video switch</string>
-    <string name="morphe_music_enable_audio_video_switch_summary">Try to switch ATV and OMV by redirecting to a new videoId. This may cause the play queue to be lost</string>
+    <string name="morphe_music_enable_audio_video_switch_summary">Try to switch Audio Track Version and Official Music Video</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
