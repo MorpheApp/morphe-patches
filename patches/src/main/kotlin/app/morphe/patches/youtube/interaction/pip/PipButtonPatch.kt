@@ -12,6 +12,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.addPlayerFlyoutMenuPreferences
 import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.playerFlyoutPreferences
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
@@ -22,6 +23,7 @@ import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.setExtensionIsPatchIncluded
 
 private val pipButtonResourcePatch = resourcePatch {
     dependsOn(
@@ -36,6 +38,7 @@ private val pipButtonResourcePatch = resourcePatch {
 }
 
 private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/PipButton;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PipButtonPatch;"
 
 @Suppress("unused")
 val pipButtonPatch = bytecodePatch(
@@ -49,6 +52,7 @@ val pipButtonPatch = bytecodePatch(
         legacyPlayerControlsPatch,
         playerOverlayButtonsSettingsPatch,
         playerFlyoutPreferences,
+        flyoutPatch,
         bytecodePatch {
             finalize {
                 addTopControl(
@@ -71,5 +75,7 @@ val pipButtonPatch = bytecodePatch(
         )
 
         initializeTopControl(EXTENSION_BUTTON)
+
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

@@ -15,6 +15,9 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.speed.remember.rememberPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
+import app.morphe.util.setExtensionIsPatchIncluded
+
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/whitelist/ChannelWhitelist;"
 
 private const val PREFERENCE_CLASS = "app.morphe.extension.youtube.settings.preference.ChannelWhitelistPreference"
 
@@ -53,5 +56,7 @@ val channelWhitelistPatch = bytecodePatch(
             SwitchPreference("morphe_ads_channel_whitelist_flyout_menu", summary = true),
             SwitchPreference("morphe_playback_speed_channel_whitelist_flyout_menu", summary = true)
         )
+
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

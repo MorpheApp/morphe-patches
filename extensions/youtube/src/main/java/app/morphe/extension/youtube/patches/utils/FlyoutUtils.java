@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.AddToQueuePatch.registerFlyoutProvider;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -56,6 +55,7 @@ import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.youtube.patches.AddToQueuePatch;
 import app.morphe.extension.youtube.patches.PipButtonPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
@@ -379,7 +379,9 @@ public final class FlyoutUtils {
         }
         flyoutVisibilityHandlerRunning = true;
 
-        registerFlyoutProvider();
+        if (AddToQueuePatch.isPatchIncluded()) {
+            AddToQueuePatch.registerFlyoutProvider();
+        }
 
         flyoutVisibilityHandler.removeCallbacksAndMessages(null);
         flyoutVisibilityHandler.post(
@@ -495,7 +497,7 @@ public final class FlyoutUtils {
                 );
             }
 
-            if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
+            if (AiSListSubmitDialog.isPatchIncluded() && Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
                 nextButtonIndex = addFlyoutButton(
                         flyoutPanel,
                         aiSListSubmitDrawable,
@@ -509,7 +511,7 @@ public final class FlyoutUtils {
                 );
             }
 
-            if (!isMyTabHistoryFlyout) {
+            if (!isMyTabHistoryFlyout && ChannelWhitelist.isPatchIncluded()) {
                 if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
                     nextButtonIndex = addWhitelistButton(
                             flyoutPanel,
@@ -530,7 +532,7 @@ public final class FlyoutUtils {
             }
         }
 
-        if (Settings.PIP_BUTTON_FLYOUT.get() &&
+        if (PipButtonPatch.isPatchIncluded() && Settings.PIP_BUTTON_FLYOUT.get() &&
                 (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible() || isShortFlyout)) {
             nextButtonIndex = addFlyoutButton(
                     flyoutPanel,
@@ -542,7 +544,9 @@ public final class FlyoutUtils {
         }
 
         final String saveToWatchLaterButtonVideoId;
-        if (!flyoutVideoId.isEmpty()) {
+        if (!SaveToWatchLaterPatch.isPatchIncluded()) {
+            saveToWatchLaterButtonVideoId = "";
+        } else if (!flyoutVideoId.isEmpty()) {
             if (Settings.KIDS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
                     videoMarkedAsForKids) {
                 saveToWatchLaterButtonVideoId = flyoutVideoId;

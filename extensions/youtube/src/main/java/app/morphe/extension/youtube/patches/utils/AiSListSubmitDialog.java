@@ -31,6 +31,10 @@ public final class AiSListSubmitDialog {
     private AiSListSubmitDialog() {
     }
 
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
     /**
      * Resolves the channel of the video, then asks for confirmation before submitting.
      */

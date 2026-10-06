@@ -35,6 +35,10 @@ public final class ChannelWhitelist {
     private static final Map<WhitelistType, Map<String, String>> cachedChannels =
             new EnumMap<>(WhitelistType.class);
 
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
     /**
      * @return An ordered map of channel id to channel name, which is empty if the name is unknown.
      */
