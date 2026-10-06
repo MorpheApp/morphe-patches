@@ -608,6 +608,20 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_override_flyout_menu_summary">Opens the Morphe queue instead of the YouTube queue</string>
     <string name="morphe_queue_add_flyout_menu_title">Add feed flyout queue menu item</string>
     <string name="morphe_queue_add_flyout_menu_summary">Adds an additional flyout item. Enable this if \"Add to queue\" is not shown</string>
+    <string name="morphe_local_queue_title">Premium-style queue</string>
+    <string name="morphe_local_queue_summary">Replaces the Morphe queue with one that lives on the device, plays through on its own, and can be reordered by dragging</string>
+    <string name="morphe_local_queue_sheet_title">Queue</string>
+    <string name="morphe_local_queue_open">Queue (%d)</string>
+    <string name="morphe_local_queue_clear">Clear all</string>
+    <string name="morphe_local_queue_empty">Nothing queued</string>
+    <string name="morphe_local_queue_empty_hint">Use Play next in queue on any video</string>
+    <string name="morphe_local_queue_now_playing">Now playing</string>
+    <string name="morphe_local_queue_play_next">Play next in queue</string>
+    <string name="morphe_local_queue_reorder">Reorder</string>
+    <string name="morphe_local_queue_remove">Remove</string>
+    <string name="morphe_local_queue_added">Added to queue</string>
+    <string name="morphe_local_queue_full">Queue is full</string>
+    <string name="morphe_local_queue_play_failed">Could not start the video</string>
     <string name="morphe_ads_channel_whitelist_flyout_menu_title">Ad whitelist in flyout menu</string>
     <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Adds a flyout item that lets ads play on the channel of that video</string>
     <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->

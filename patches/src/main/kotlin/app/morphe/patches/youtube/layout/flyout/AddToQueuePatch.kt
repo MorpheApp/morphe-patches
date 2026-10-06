@@ -14,6 +14,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
+import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
@@ -22,12 +23,20 @@ import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.playerStatusMethodRef
+import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AddToQueuePatch;"
+
+private const val EXTENSION_LOCAL_QUEUE_CLASS =
+    "Lapp/morphe/extension/youtube/patches/LocalQueuePatch;"
 
 @Suppress("unused")
 val addToQueuePatch = bytecodePatch(
@@ -40,7 +49,8 @@ val addToQueuePatch = bytecodePatch(
         sharedExtensionPatch,
         elementProtoParserHookPatch,
         authHookPatch,
-        loadVideoHookPatch
+        loadVideoHookPatch,
+        videoInformationPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -48,6 +58,7 @@ val addToQueuePatch = bytecodePatch(
     execute {
         PreferenceScreen.FEED.addPreferences(
             noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_local_queue", summary = true),
                 SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
                 SwitchPreference("morphe_queue_add_flyout_menu", summary = true)
             )
@@ -116,6 +127,25 @@ val addToQueuePatch = bytecodePatch(
                     """ + getReplaceOnItemClickPatch("p2", "p2")
                 )
             }
+        }
+
+        navigationIntentHook(EXTENSION_LOCAL_QUEUE_CLASS, "shouldCancelNavigation")
+
+        playerStatusMethodRef.get()!!.apply {
+            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT)
+            val freeRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
+            addInstructionsWithLabels(
+                insertIndex,
+                """
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_LOCAL_QUEUE_CLASS->shouldCancelEndOfVideo(Ljava/lang/Enum;)Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :continue_end_of_video
+                    return-void
+                    :continue_end_of_video
+                    nop
+                """
+            )
         }
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

@@ -19,10 +19,12 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
+import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import app.morphe.extension.youtube.patches.utils.LocalQueueSheet;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -60,7 +62,9 @@ public class SaveToWatchLaterButton {
         try {
             // Start syncing queue playlist items in the background so that by the time
             // the user opens the queue menu, lastVideoIds is already populated.
-            PlaylistPatch.syncIfNeeded();
+            if (!LocalQueuePatch.isEnabled()) {
+                PlaylistPatch.syncIfNeeded();
+            }
 
             final boolean swapSaveAndQueue = Settings.SWAP_SAVE_AND_QUEUE_ACTIONS.get();
             //noinspection ExtractMethodRecommender
@@ -73,7 +77,11 @@ public class SaveToWatchLaterButton {
                         Logger.printException(() -> "Context is null");
                         return null;
                     }
-                    PlaylistPatch.prepareDialogBuilder(controls.getContext(), VideoInformation.getVideoId());
+                    if (LocalQueuePatch.isEnabled()) {
+                        LocalQueueSheet.show(controls.getContext());
+                    } else {
+                        PlaylistPatch.prepareDialogBuilder(controls.getContext(), VideoInformation.getVideoId());
+                    }
                 } else {
                     SaveToWatchLaterPatch.saveVideo(VideoInformation.getVideoId());
                 }
