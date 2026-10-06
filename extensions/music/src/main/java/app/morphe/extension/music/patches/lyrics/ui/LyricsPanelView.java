@@ -1389,9 +1389,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         offsetGestureDetector = new GestureDetector(context,
                 new GestureDetector.SimpleOnGestureListener() {
                     @Override
-                    public boolean onScroll(@NonNull MotionEvent e1, @Nullable MotionEvent e2,
-                            float distanceX, float distanceY) {
-                        if (e2 == null) {
+                    public boolean onScroll(@Nullable MotionEvent e1, @Nullable MotionEvent e2,
+                                            float distanceX, float distanceY) {
+                        if (e1 == null || e2 == null) {
                             return false;
                         }
                         if (isOffsetAdjusting) {
@@ -1473,25 +1473,33 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        LyricsManager.getInstance().addListener(this);
-        handler.removeCallbacks(ticker);
-        handler.post(ticker);
+        try {
+            LyricsManager.getInstance().addListener(this);
+            handler.removeCallbacks(ticker);
+            handler.post(ticker);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onAttachedToWindow failure", ex);
+        }
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (pendingAnchorScroll != null) {
-            linesContainer.getViewTreeObserver().removeOnPreDrawListener(pendingAnchorScroll);
-            pendingAnchorScroll = null;
-        }
-        setKeepScreenOn(false);
-        LyricsManager.getInstance().removeListener(this);
-        handler.removeCallbacksAndMessages(null);
-        LyricsManager.getInstance().resetTemporaryOffsetMs();
-        offsetRulerView.setVisibility(GONE);
-        if (!LyricsPanelInstaller.isOtherPanelForeground()) {
-            restoreHiddenSiblings();
+        try {
+            if (pendingAnchorScroll != null) {
+                linesContainer.getViewTreeObserver().removeOnPreDrawListener(pendingAnchorScroll);
+                pendingAnchorScroll = null;
+            }
+            setKeepScreenOn(false);
+            LyricsManager.getInstance().removeListener(this);
+            handler.removeCallbacksAndMessages(null);
+            LyricsManager.getInstance().resetTemporaryOffsetMs();
+            offsetRulerView.setVisibility(GONE);
+            if (!LyricsPanelInstaller.isOtherPanelForeground()) {
+                restoreHiddenSiblings();
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onDetachedFromWindow failure", ex);
         }
     }
 
@@ -1688,7 +1696,10 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private void showLyrics(Lyrics newLyrics) {
         try {
             buildLyrics(newLyrics);
-        } catch (Throwable ignored) {
+        } catch (Throwable ex) {
+            if (Settings.DEBUG.get()) {
+                Logger.printException(() -> "Debug: buildLyrics failure", ex);
+            }
         }
     }
 
@@ -3193,20 +3204,17 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             List<String> titles = LyricsRequests.MusicBrainzClient.suggestTitles(titleSuggestion);
             List<String> artists = LyricsRequests.MusicBrainzClient.suggestArtists(artistSuggestion);
             Utils.runOnMainThread(() -> {
-                try {
-                    if (titles.isEmpty() && artists.isEmpty()) {
-                        return;
-                    }
-                    if (!dialog.isShowing()) {
-                        return;
-                    }
-                    if (!titles.isEmpty()) {
-                        setSuggestionAdapter(context, titleInput, titles);
-                    }
-                    if (!artists.isEmpty()) {
-                        setSuggestionAdapter(context, artistInput, artists);
-                    }
-                } catch (Throwable ignored) {
+                if (titles.isEmpty() && artists.isEmpty()) {
+                    return;
+                }
+                if (!dialog.isShowing()) {
+                    return;
+                }
+                if (!titles.isEmpty()) {
+                    setSuggestionAdapter(context, titleInput, titles);
+                }
+                if (!artists.isEmpty()) {
+                    setSuggestionAdapter(context, artistInput, artists);
                 }
             });
         });
