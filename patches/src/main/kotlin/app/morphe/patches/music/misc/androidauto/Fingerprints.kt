@@ -19,7 +19,6 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.findInstructionIndicesReversed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
@@ -98,6 +97,7 @@ internal fun decodedMediaIdFingerprint(mediaIdType: String) = Fingerprint(
 internal val MEDIA_DESCRIPTION_CONSTRUCTOR_CALL = methodCall(
     definingClass = "Landroid/support/v4/media/MediaDescriptionCompat;",
     name = "<init>",
+    returnType = "V",
     parameters = listOf(
         "Ljava/lang/String;",
         "Ljava/lang/CharSequence;",
@@ -107,19 +107,19 @@ internal val MEDIA_DESCRIPTION_CONSTRUCTOR_CALL = methodCall(
         "Landroid/net/Uri;",
         "Landroid/os/Bundle;",
         "Landroid/net/Uri;"
-    ),
-    returnType = "V"
+    )
 )
 
 /** Creates Android Auto media items, including the Playlists folder. */
 internal object BuildAndroidAutoMediaItemFingerprint : Fingerprint(
     returnType = "Lj$/util/Optional;",
     parameters = listOf("L", "Ljava/util/Set;", "L"),
-    filters = listOf(MEDIA_DESCRIPTION_CONSTRUCTOR_CALL),
-    custom = { method, _ ->
+    filters = listOf(
         // Three constructor calls cover media items that can be opened, played, or both.
-        method.findInstructionIndicesReversed(MEDIA_DESCRIPTION_CONSTRUCTOR_CALL).size == 3
-    }
+        MEDIA_DESCRIPTION_CONSTRUCTOR_CALL,
+        MEDIA_DESCRIPTION_CONSTRUCTOR_CALL,
+        MEDIA_DESCRIPTION_CONSTRUCTOR_CALL
+    )
 )
 
 /** Returns an empty Android Auto list for an unrecognized media ID. */

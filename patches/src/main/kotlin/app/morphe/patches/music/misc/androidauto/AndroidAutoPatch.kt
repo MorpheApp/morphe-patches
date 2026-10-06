@@ -24,7 +24,6 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
 import app.morphe.util.findFreeRegister
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.matchSingle
@@ -105,21 +104,21 @@ val androidAutoPatch = bytecodePatch(
  * `rememberPlaylistsTitleMatch`, which recognizes it by its translated title.
  */
 private fun BytecodePatchContext.hookPlaylistsTitleMediaIds() {
-    BuildAndroidAutoMediaItemFingerprint.method.apply {
-        // Capture the Playlists folder ID and title regardless of which branch creates it.
-        findInstructionIndicesReversedOrThrow(
-            MEDIA_DESCRIPTION_CONSTRUCTOR_CALL
-        ).forEach { index ->
-            val instructionStartRegister = getInstruction<RegisterRangeInstruction>(index).startRegister
+    BuildAndroidAutoMediaItemFingerprint.let {
+        it.method.apply {
+            // Capture the Playlists folder ID and title regardless of which branch creates it.
+            it.instructionMatches.reversed().forEach { match ->
+                val instructionStartRegister = match.getInstruction<RegisterRangeInstruction>().startRegister
 
-            val mediaDescriptionMediaIdRegister = instructionStartRegister + MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET
-            val titleRegister = instructionStartRegister + MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET
+                val mediaDescriptionMediaIdRegister = instructionStartRegister + MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET
+                val titleRegister = instructionStartRegister + MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET
 
-            addInstruction(
-                index,
-                "invoke-static/range { v$mediaDescriptionMediaIdRegister .. v$titleRegister }, " +
-                        "$EXTENSION_CLASS->rememberPlaylistsTitleMatch(Ljava/lang/String;Ljava/lang/CharSequence;)V"
-            )
+                addInstruction(
+                    match.index,
+                    "invoke-static/range { v$mediaDescriptionMediaIdRegister .. v$titleRegister }, " +
+                            "$EXTENSION_CLASS->rememberPlaylistsTitleMatch(Ljava/lang/String;Ljava/lang/CharSequence;)V"
+                )
+            }
         }
     }
 }

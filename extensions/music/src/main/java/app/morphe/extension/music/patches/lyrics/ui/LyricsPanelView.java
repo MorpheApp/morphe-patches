@@ -46,8 +46,8 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.ReplacementSpan;
 import android.util.Pair;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -815,7 +815,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 final WordTiming timing = timings.get(i);
                 final int s = timing.start() + origStart;
                 final int e = Math.min(timing.end() + origStart, text.length());
-                if (s >= text.length() || s >= e) {
+                if (s < 0 || s >= text.length() || s >= e) {
                     cachedWordWrappedLine[i] = -1;
                     continue;
                 }
@@ -1022,121 +1022,128 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         @Override
         protected void onDraw(Canvas canvas) {
             drawBaseText(canvas);
-            if (contentReveal <= 0f
-                    || unsungColor == 0 || (wordTimings.isEmpty() && !allSung)) {
-                return;
-            }
-
-            Layout layout = getLayout();
-            if (layout == null) {
-                return;
-            }
-            CharSequence text = getText();
-            Paint tp = getPaint();
-            final int origStart = originalTextStart;
-
-            ensureWordCache(layout, text, tp, wordTimings, origStart);
-
-            final int lineCount = cachedLineCount;
-            if (lineMaxSungX == null || lineMaxSungX.length != lineCount) {
-                lineMaxSungX = new float[lineCount];
-            }
-            Arrays.fill(lineMaxSungX, 0, lineCount, Float.NaN);
-            int firstSungLine = -1;
-
-            for (int i = 0; i < cachedWordCount; i++) {
-                final WordTiming timing = wordTimings.get(i);
-                final int s = timing.start() + origStart;
-                final int e = Math.min(timing.end() + origStart, text.length());
-                if (s >= text.length() || s >= e) {
-                    continue;
+            try {
+                if (contentReveal <= 0f
+                        || unsungColor == 0 || (wordTimings.isEmpty() && !allSung)) {
+                    return;
                 }
-                float progress;
-                if (allSung) {
-                    progress = 1f;
-                } else if (positionMs >= timing.endMs()) {
-                    progress = 1f;
-                } else if (positionMs <= timing.startMs()) {
-                    progress = 0f;
-                } else {
-                    progress = (float) (positionMs - timing.startMs())
-                            / (float) (timing.endMs() - timing.startMs());
+
+                Layout layout = getLayout();
+                if (layout == null) {
+                    return;
                 }
-                if (progress <= 0f) {
-                    continue;
+                CharSequence text = getText();
+                if (text == null || text.length() == 0) {
+                    return;
                 }
-                final int lineNum = cachedWordLine[i];
-                if (firstSungLine < 0) {
-                    firstSungLine = lineNum;
+                Paint tp = getPaint();
+                final int origStart = originalTextStart;
+
+                ensureWordCache(layout, text, tp, wordTimings, origStart);
+
+                final int lineCount = cachedLineCount;
+                if (lineMaxSungX == null || lineMaxSungX.length != lineCount) {
+                    lineMaxSungX = new float[lineCount];
                 }
-                final float lead = cachedWordLeadX[i];
-                final float edge = lead + (cachedWordTrailX[i] - lead) * progress;
-                lineMaxSungX[lineNum] = extendSung(lineMaxSungX[lineNum], edge,
-                        isRightToLeftLine(layout, lineNum));
-                final int wrappedLine = cachedWordWrappedLine[i];
-                if (wrappedLine >= 0 && wrappedLine < lineCount) {
-                    final int charsOnLine0 = layout.getLineEnd(lineNum) - s;
-                    final int charsOnLine1 = e - layout.getLineEnd(lineNum);
-                    if (charsOnLine1 > 0) {
-                        final float line1Progress = Math.max(0f,
-                                (progress * (charsOnLine0 + charsOnLine1) - charsOnLine0)
-                                        / (float) charsOnLine1);
-                        if (line1Progress > 0f) {
-                            final float line1Edge = layout.getLineLeft(wrappedLine)
-                                    + (layout.getLineRight(wrappedLine)
-                                            - layout.getLineLeft(wrappedLine))
-                                            * line1Progress;
-                            lineMaxSungX[wrappedLine] = extendSung(
-                                    lineMaxSungX[wrappedLine], line1Edge,
-                                    isRightToLeftLine(layout, wrappedLine));
+                Arrays.fill(lineMaxSungX, 0, lineCount, Float.NaN);
+                int firstSungLine = -1;
+
+                for (int i = 0; i < cachedWordCount; i++) {
+                    final WordTiming timing = wordTimings.get(i);
+                    final int s = timing.start() + origStart;
+                    final int e = Math.min(timing.end() + origStart, text.length());
+                    if (s < 0 || s >= text.length() || s >= e) {
+                        continue;
+                    }
+                    float progress;
+                    if (allSung) {
+                        progress = 1f;
+                    } else if (positionMs >= timing.endMs()) {
+                        progress = 1f;
+                    } else if (positionMs <= timing.startMs()) {
+                        progress = 0f;
+                    } else {
+                        progress = (float) (positionMs - timing.startMs())
+                                / (float) (timing.endMs() - timing.startMs());
+                    }
+                    if (progress <= 0f) {
+                        continue;
+                    }
+                    final int lineNum = cachedWordLine[i];
+                    if (firstSungLine < 0) {
+                        firstSungLine = lineNum;
+                    }
+                    final float lead = cachedWordLeadX[i];
+                    final float edge = lead + (cachedWordTrailX[i] - lead) * progress;
+                    lineMaxSungX[lineNum] = extendSung(lineMaxSungX[lineNum], edge,
+                            isRightToLeftLine(layout, lineNum));
+                    final int wrappedLine = cachedWordWrappedLine[i];
+                    if (wrappedLine >= 0 && wrappedLine < lineCount) {
+                        final int charsOnLine0 = layout.getLineEnd(lineNum) - s;
+                        final int charsOnLine1 = e - layout.getLineEnd(lineNum);
+                        if (charsOnLine1 > 0) {
+                            final float line1Progress = Math.max(0f,
+                                    (progress * (charsOnLine0 + charsOnLine1) - charsOnLine0)
+                                            / (float) charsOnLine1);
+                            if (line1Progress > 0f) {
+                                final float line1Edge = layout.getLineLeft(wrappedLine)
+                                        + (layout.getLineRight(wrappedLine)
+                                        - layout.getLineLeft(wrappedLine))
+                                        * line1Progress;
+                                lineMaxSungX[wrappedLine] = extendSung(
+                                        lineMaxSungX[wrappedLine], line1Edge,
+                                        isRightToLeftLine(layout, wrappedLine));
+                            }
                         }
                     }
                 }
-            }
 
-            if (allSung && firstSungLine < 0 && origStart < text.length()) {
-                final int lastChar = originalEnd(text, origStart) - 1;
-                final int firstLine = layout.getLineForOffset(origStart);
-                final int lastLine = layout.getLineForOffset(Math.max(lastChar, origStart));
-                for (int ln = firstLine; ln <= lastLine && ln < lineCount; ln++) {
-                    lineMaxSungX[ln] = isRightToLeftLine(layout, ln)
-                            ? cachedLineLeft[ln] : cachedLineRight[ln];
+                if (allSung && firstSungLine < 0 && origStart >= 0 && origStart < text.length()) {
+                    final int lastChar = originalEnd(text, origStart) - 1;
+                    final int firstLine = layout.getLineForOffset(origStart);
+                    final int lastLine = layout.getLineForOffset(Math.max(lastChar, origStart));
+                    for (int ln = firstLine; ln <= lastLine && ln < lineCount; ln++) {
+                        lineMaxSungX[ln] = isRightToLeftLine(layout, ln)
+                                ? cachedLineLeft[ln] : cachedLineRight[ln];
+                    }
                 }
-            }
 
-            final ColorFilter prevFilter = tp.getColorFilter();
-            tp.setColorFilter(new PorterDuffColorFilter(
-                    sungColor | 0xFF000000, PorterDuff.Mode.SRC_IN));
+                final ColorFilter prevFilter = tp.getColorFilter();
+                tp.setColorFilter(new PorterDuffColorFilter(
+                        sungColor | 0xFF000000, PorterDuff.Mode.SRC_IN));
 
-            canvas.save();
-            if (contentReveal < 1f) {
-                layerPaint.setColor(Color.WHITE);
-                layerPaint.setAlpha(Math.round(255f * contentReveal));
-                canvas.saveLayer(0f, 0f, getWidth(), getHeight(), layerPaint);
-            }
-            canvas.translate(textOriginX(), textOriginY());
-            for (int ln = 0; ln < lineCount; ln++) {
-                final float edge = lineMaxSungX[ln];
-                if (Float.isNaN(edge)) {
-                    continue;
-                }
                 canvas.save();
-                final int clipTop = ln == 0 ? -textOriginY() : cachedLineTop[ln];
-                if (isRightToLeftLine(layout, ln)) {
-                    canvas.clipRect(edge, clipTop,
-                            cachedLineRight[ln], cachedLineBottom[ln]);
-                } else {
-                    canvas.clipRect(cachedLineLeft[ln], clipTop,
-                            edge, cachedLineBottom[ln]);
+                if (contentReveal < 1f) {
+                    layerPaint.setColor(Color.WHITE);
+                    layerPaint.setAlpha(Math.round(255f * contentReveal));
+                    canvas.saveLayer(0f, 0f, getWidth(), getHeight(), layerPaint);
                 }
-                layout.draw(canvas);
+                canvas.translate(textOriginX(), textOriginY());
+                for (int ln = 0; ln < lineCount; ln++) {
+                    final float edge = lineMaxSungX[ln];
+                    if (Float.isNaN(edge)) {
+                        continue;
+                    }
+                    canvas.save();
+                    final int clipTop = ln == 0 ? -textOriginY() : cachedLineTop[ln];
+                    if (isRightToLeftLine(layout, ln)) {
+                        canvas.clipRect(edge, clipTop,
+                                cachedLineRight[ln], cachedLineBottom[ln]);
+                    } else {
+                        canvas.clipRect(cachedLineLeft[ln], clipTop,
+                                edge, cachedLineBottom[ln]);
+                    }
+                    layout.draw(canvas);
+                    canvas.restore();
+                }
                 canvas.restore();
+                if (contentReveal < 1f) {
+                    canvas.restore();
+                }
+                tp.setColorFilter(prevFilter);
+            } catch (Exception ex) {
+                Logger.printException(() -> "LyricsPanelView onDraw failure", ex);
             }
-            canvas.restore();
-            if (contentReveal < 1f) {
-                canvas.restore();
-            }
-            tp.setColorFilter(prevFilter);
         }
 
         private static boolean isRightToLeftLine(Layout layout, int line) {
