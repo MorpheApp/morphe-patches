@@ -24,11 +24,12 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.TtmlParser;
 
 public final class LunaBeatProvider implements LyricsProvider {
 

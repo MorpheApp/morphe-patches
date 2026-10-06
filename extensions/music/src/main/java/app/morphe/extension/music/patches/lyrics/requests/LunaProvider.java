@@ -22,12 +22,14 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicLong;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.LyricsMerge;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.KrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 
 public final class LunaProvider implements LyricsProvider {
 

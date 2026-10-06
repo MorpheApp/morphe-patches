@@ -25,12 +25,14 @@ import java.security.spec.ECGenParameterSpec;
 import java.util.List;
 import java.util.Locale;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.TtmlParser;
 
 public final class UnisonProvider implements LyricsProvider {
 
@@ -54,7 +56,10 @@ public final class UnisonProvider implements LyricsProvider {
         }
         final String title = track.title() != null ? track.title() : "";
         final String artist = track.artist() != null ? track.artist() : "";
-        final int duration = track.durationSeconds();
+        final long videoLengthMs = VideoInformation.getVideoLength();
+        final int duration = videoLengthMs > 0
+                ? (int) (videoLengthMs / 1000)
+                : track.durationSeconds();
         final String album = track.album();
 
         return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));

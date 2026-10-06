@@ -41,9 +41,9 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
-private const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPanelInstaller;"
-private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LockScreenLyrics;"
-private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/MiniPlayerLyrics;"
+private const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
+private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
+private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniPlayerLyrics;"
 
 private const val LYRICS_PANEL_FILTER =
     "Lapp/morphe/extension/music/patches/components/LyricsPanelFilter;"
@@ -153,6 +153,7 @@ val lyricsPatch = bytecodePatch(
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     ),
+                    SwitchPreference("morphe_music_lyrics_sb_matching", summary = true),
                     SwitchPreference("morphe_music_lyrics_miniplayer"),
                     SwitchPreference("morphe_music_lyrics_mediasession"),
                     SwitchPreference("morphe_music_lyrics_display_artist_first", summary = true)

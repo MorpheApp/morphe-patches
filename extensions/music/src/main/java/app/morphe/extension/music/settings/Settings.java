@@ -15,7 +15,7 @@ import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
 import app.morphe.extension.music.patches.PlaylistTrackTapPatch.TapAction;
-import app.morphe.extension.music.patches.lyrics.OpenAIClient;
+import app.morphe.extension.music.patches.lyrics.translate.OpenAIClient;
 import app.morphe.extension.music.sponsorblock.MusicSponsorBlockConfig;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
@@ -222,6 +222,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting LYRICS_HIDE_UNPLAYED = new BooleanSetting("morphe_music_lyrics_hide_unplayed", FALSE, true, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_TEXT_SIZE = new IntegerSetting("morphe_music_lyrics_text_size", 24, true, parent(LYRICS_ENABLED));
     public static final IntegerSetting LYRICS_OFFSET_MS = new IntegerSetting("morphe_music_lyrics_offset_ms", 0, true, parent(LYRICS_ENABLED));
+    public static final BooleanSetting LYRICS_SB_MATCHING = new BooleanSetting("morphe_music_lyrics_sb_matching", TRUE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_MEDIASESSION = new BooleanSetting("morphe_music_lyrics_mediasession", FALSE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_MINIPLAYER = new BooleanSetting("morphe_music_lyrics_miniplayer", FALSE, true, parent(LYRICS_ENABLED));
     public static final BooleanSetting LYRICS_DISPLAY_ARTIST_FIRST = new BooleanSetting("morphe_music_lyrics_display_artist_first", FALSE, true, parent(LYRICS_ENABLED));

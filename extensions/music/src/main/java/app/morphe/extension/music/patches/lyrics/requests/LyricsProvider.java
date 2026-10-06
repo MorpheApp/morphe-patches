@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 
 /**
  * A third party lyrics backend.

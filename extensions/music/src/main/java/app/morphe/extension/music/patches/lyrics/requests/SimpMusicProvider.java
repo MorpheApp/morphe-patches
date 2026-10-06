@@ -20,12 +20,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 
 public final class SimpMusicProvider implements LyricsProvider {
 

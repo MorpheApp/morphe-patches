@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.requests;
+package app.morphe.extension.music.patches.lyrics.parsers;
 
 import android.annotation.SuppressLint;
 import android.util.Base64;
@@ -30,16 +30,16 @@ import app.morphe.extension.shared.Logger;
  * <p>These mirror the encryption the upstream web clients use: NetEase relies on
  * AES-ECB with PKCS5 padding, QQ on triple-DES-ECB with zlib compressed payloads.
  */
-final class LyricsCrypto {
+public final class LyricsCrypto {
 
     private LyricsCrypto() {
     }
 
-    static String md5Hex(String input) {
+    public static String md5Hex(String input) {
         return toHex(md5Bytes(input.getBytes(StandardCharsets.UTF_8)));
     }
 
-    static byte[] md5Bytes(byte[] input) {
+    public static byte[] md5Bytes(byte[] input) {
         try {
             return MessageDigest.getInstance("MD5").digest(input);
         } catch (Exception ex) {
@@ -47,7 +47,7 @@ final class LyricsCrypto {
         }
     }
 
-    static String toHex(byte[] data) {
+    public static String toHex(byte[] data) {
         StringBuilder builder = new StringBuilder(data.length * 2);
         for (byte value : data) {
             builder.append(Character.forDigit((value >> 4) & 0xf, 16));
@@ -61,7 +61,7 @@ final class LyricsCrypto {
      * encrypts with, so anything else would simply fail to decrypt.
      */
     @SuppressLint("GetInstance")
-    static String aesEcbPkcs5EncryptHex(String data, String key) {
+    public static String aesEcbPkcs5EncryptHex(String data, String key) {
         try {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "AES"));
@@ -76,7 +76,7 @@ final class LyricsCrypto {
      * encrypts with, so anything else would simply fail to decrypt.
      */
     @SuppressLint("GetInstance")
-    static String aesEcbPkcs5DecryptBase64ToString(String base64Data, String key) {
+    public static String aesEcbPkcs5DecryptBase64ToString(String base64Data, String key) {
         try {
             byte[] raw = Base64.decode(base64Data, Base64.DEFAULT);
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
@@ -94,7 +94,7 @@ final class LyricsCrypto {
      * order (last 8 bytes, middle 8, first 8) that does not match the JCE {@code DESede} key
      * layout, so the cipher is reimplemented here verbatim from the reference client.
      */
-    static byte[] tripleDesEcbDecrypt(byte[] data, String key) {
+    public static byte[] tripleDesEcbDecrypt(byte[] data, String key) {
         if (data == null || data.length == 0 || data.length % 8 != 0) {
             return new byte[0];
         }
@@ -239,7 +239,7 @@ final class LyricsCrypto {
     }
 
     /** Inflates a zlib stream (used by both QQ QRC and KuGou KRC payloads). */
-    static String inflate(byte[] data) {
+    public static String inflate(byte[] data) {
         if (data == null || data.length == 0) {
             return "";
         }
@@ -258,7 +258,7 @@ final class LyricsCrypto {
         }
     }
 
-    static byte[] hexToBytes(String hex) {
+    public static byte[] hexToBytes(String hex) {
         if (hex == null) {
             return new byte[0];
         }

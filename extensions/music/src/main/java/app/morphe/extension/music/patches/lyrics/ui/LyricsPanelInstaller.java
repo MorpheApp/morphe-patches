@@ -6,7 +6,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.app.Activity;
 import android.graphics.Rect;
@@ -21,12 +21,12 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.Locale;
 
-import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelView;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.music.patches.lyrics.LyricsManager;
 
 /**
  * Puts the third party lyrics panel into the lyrics engagement panel.

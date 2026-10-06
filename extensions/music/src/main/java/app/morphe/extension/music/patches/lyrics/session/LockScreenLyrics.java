@@ -5,16 +5,21 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.session;
 
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
+import android.media.session.PlaybackState;
+import android.os.SystemClock;
 
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.Objects;
 
+import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
@@ -33,6 +38,11 @@ import app.morphe.extension.shared.Logger;
  * the original metadata with {@link MediaMetadata.Builder}. The display variants of the title
  * and of the artist are rewritten as well, because the lock screen prefers them over the plain
  * ones when both are present.
+ *
+ * <p>The MediaSession push only supports Android 11 and above: Android 10 lock screens render
+ * the media notification (whose text is baked into the RemoteViews at post time) instead of
+ * reading session metadata, so a line pushed here would never be shown there. Android 10 and
+ * older are not adapted.
  */
 @SuppressWarnings("unused")
 public final class LockScreenLyrics {
@@ -63,6 +73,24 @@ public final class LockScreenLyrics {
     /** Drives the periodic check that mirrors the current line into the MediaSession. */
     private static final LyricsTicker ticker = new LyricsTicker(LockScreenLyrics::tick);
 
+    /**
+     * Re-arms the ticker whenever lyrics arrive or disappear, so a late lookup does not
+     * leave the mirror stuck on the track title.
+     */
+    private static final LyricsManager.Listener lyricsListener = (state, lyrics) -> {
+        if (state == LyricsManager.State.LOADED || state == LyricsManager.State.NOT_FOUND) {
+            ticker.schedule();
+        }
+    };
+
+    @Nullable
+    private static volatile PlaybackState playbackState;
+
+    private static volatile long observedPositionMs;
+    private static volatile long observedAtElapsedMs;
+
+    private static final long MAX_NUDGE_RECEIPT_AGE_MS = 6 * 60 * 60 * 1000L;
+
     private LockScreenLyrics() {
     }
 
@@ -87,6 +115,7 @@ public final class LockScreenLyrics {
             cachedCleanedArtist = parsed[0];
 
             if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()) {
+                LyricsManager.getInstance().removeListener(lyricsListener);
                 ticker.stop();
                 lastPushedTitle = null;
                 return;
@@ -94,6 +123,7 @@ public final class LockScreenLyrics {
 
             android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
             LyricsManager.getInstance().onDisplayedTrackChanged(realTitle, realArtist, mediaUri);
+            LyricsManager.getInstance().addListener(lyricsListener);
             lastPushedTitle = null;
             needsRepush = true;
             ticker.schedule();
@@ -102,13 +132,34 @@ public final class LockScreenLyrics {
         }
     }
 
+    /**
+     * Observed at the app's {@code MediaSession.setPlaybackState} call site. Captures the
+     * latest playback state so a refresh nudge can be attached to line pushes, and revives
+     * the ticker when the feature is enabled, because state updates keep arriving while no
+     * metadata pushes are running.
+     */
+    public static void onPlaybackState(@Nullable PlaybackState state) {
+        if (state == null) {
+            return;
+        }
+
+        observedPositionMs = state.getPosition();
+        observedAtElapsedMs = SystemClock.elapsedRealtime();
+        playbackState = state;
+
+        if (Settings.LYRICS_ENABLED.get() && Settings.LYRICS_MEDIASESSION.get()
+                && sessionRef != null) {
+            ticker.schedule();
+        }
+    }
+
     private static void tick() {
         try {
             push();
         } catch (Exception ex) {
             Logger.printException(() -> "tick failure", ex);
-            ticker.stop();
             lastPushedTitle = null;
+            ticker.schedule();
         }
     }
 
@@ -117,6 +168,7 @@ public final class LockScreenLyrics {
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MEDIASESSION.get()
                 || reference == null || originalMetadata == null) {
             restoreIfPushed();
+            LyricsManager.getInstance().removeListener(lyricsListener);
             ticker.stop();
             return;
         }
@@ -150,8 +202,41 @@ public final class LockScreenLyrics {
         session.setMetadata(metadata);
         lastPushedTitle = newTitle;
         needsRepush = false;
+        nudgePlaybackState(session);
 
         ticker.schedule();
+    }
+
+    /**
+     * Re-dispatches the app's playback state with a rebased position so media surfaces that
+     * refresh their metadata only when the playback state changes pick up the line that was
+     * just pushed. The position continues from the receipt-time reading on the
+     * {@link SystemClock#elapsedRealtime} timebase that {@link PlaybackState} mandates, so
+     * the system seek bar keeps advancing instead of jumping backwards. The push goes
+     * through the framework directly and does not re-enter the hooked app call site.
+     */
+    private static void nudgePlaybackState(MediaSession session) {
+        PlaybackState captured = playbackState;
+        if (captured == null) {
+            return;
+        }
+
+        final long now = SystemClock.elapsedRealtime();
+        final long receiptAge = now - observedAtElapsedMs;
+        final float speed = captured.getPlaybackSpeed();
+
+        if (captured.getState() != PlaybackState.STATE_PLAYING || speed <= 0f
+                || observedAtElapsedMs == 0
+                || receiptAge < 0 || receiptAge > MAX_NUDGE_RECEIPT_AGE_MS) {
+            session.setPlaybackState(captured);
+            return;
+        }
+
+        long position = observedPositionMs + (long) (receiptAge * speed);
+        PlaybackState nudged = new PlaybackState.Builder(captured)
+                .setState(captured.getState(), position, speed, now)
+                .build();
+        session.setPlaybackState(nudged);
     }
 
     private static void restoreIfPushed() {
@@ -163,6 +248,7 @@ public final class LockScreenLyrics {
         MediaMetadata original = originalMetadata;
         if (session != null && original != null) {
             session.setMetadata(original);
+            nudgePlaybackState(session);
         }
         lastPushedTitle = null;
         needsRepush = false;

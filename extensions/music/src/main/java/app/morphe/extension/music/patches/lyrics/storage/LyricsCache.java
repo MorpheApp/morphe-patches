@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.storage;
 
 import android.content.Context;
 
@@ -24,7 +24,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import app.morphe.extension.music.patches.lyrics.requests.LrcParser;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.model.LyricsPreference;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -33,7 +38,7 @@ import app.morphe.extension.shared.Utils;
  * Two level lyrics cache: an in memory map for the current session,
  * and a disk cache so that replaying a track needs no network.
  */
-final class LyricsCache {
+public final class LyricsCache {
 
     private static final int MEMORY_ENTRIES = 200;
     private static final int MEMORY_MAX_ENTRIES = 500;
@@ -68,7 +73,7 @@ final class LyricsCache {
     }
 
     @Nullable
-    static Lyrics get(TrackInfo track, String source) {
+    public static Lyrics get(TrackInfo track, String source) {
         final String key = key(track, source);
         final Lyrics cached = memoryCache.get(key);
         if (cached != null) {
@@ -81,7 +86,7 @@ final class LyricsCache {
         return read;
     }
 
-    static void put(TrackInfo track, String source, Lyrics lyrics) {
+    public static void put(TrackInfo track, String source, Lyrics lyrics) {
         String key = key(track, source);
         memoryCache.put(key, lyrics);
         writeToDisk(key, lyrics);
@@ -93,7 +98,7 @@ final class LyricsCache {
      * left in, and the custom search terms that produced them. Read on a background thread.
      */
     @Nullable
-    static LyricsPreference getPreference(@Nullable String videoId, TrackInfo track) {
+    public static LyricsPreference getPreference(@Nullable String videoId, TrackInfo track) {
         File videoFile = preferenceFile(videoId, track);
         File file = (videoFile != null && videoFile.exists()) ? videoFile
                 : preferenceFile(null, track);
@@ -156,7 +161,7 @@ final class LyricsCache {
      * The lyric is written under the video id, which one playback never changes, and again
      * under the track alone, which answers while the video id is not known yet.
      */
-    static void putPreference(@Nullable String videoId, TrackInfo track,
+    public static void putPreference(@Nullable String videoId, TrackInfo track,
                               @Nullable String queryTitle,
                               @Nullable String queryArtist, Lyrics preferred,
                               List<String> queue, @Nullable String fingerprint) {
@@ -226,14 +231,14 @@ final class LyricsCache {
     }
 
     @Nullable
-    static List<String> getTranslation(TrackInfo track,
+    public static List<String> getTranslation(TrackInfo track,
                                        String source,
                                        String language,
                                        List<String> sourceLines) {
         return readStringList(translationFile(track, source, language, sourceLines), sourceLines);
     }
 
-    static void putTranslation(TrackInfo track,
+    public static void putTranslation(TrackInfo track,
                                 String source,
                                 String language,
                                 List<String> sourceLines,
@@ -242,25 +247,25 @@ final class LyricsCache {
     }
 
     @Nullable
-    static List<String> getTranslationAI(TrackInfo track, String source,
+    public static List<String> getTranslationAI(TrackInfo track, String source,
             String language, List<String> sourceLines) {
         return readStringList(aiTranslationFile(track, source, language, sourceLines),
                 sourceLines);
     }
 
-    static void putTranslationAI(TrackInfo track, String source,
+    public static void putTranslationAI(TrackInfo track, String source,
             String language, List<String> sourceLines, List<String> lines) {
         writeStringList(aiTranslationFile(track, source, language, sourceLines), lines);
     }
 
     @Nullable
-    static List<LyricsLine> getRomanization(TrackInfo track,
+    public static List<LyricsLine> getRomanization(TrackInfo track,
                                             String source,
                                             List<String> sourceLines) {
         return readLyricsLineList(romanizationFile(track, source, sourceLines), sourceLines);
     }
 
-    static void putRomanization(TrackInfo track,
+    public static void putRomanization(TrackInfo track,
                                 String source,
                                 List<String> sourceLines,
                                 List<LyricsLine> lines) {
@@ -268,12 +273,12 @@ final class LyricsCache {
     }
 
     @Nullable
-    static List<LyricsLine> getRomanizationAI(TrackInfo track, String source,
+    public static List<LyricsLine> getRomanizationAI(TrackInfo track, String source,
             List<String> sourceLines) {
         return readLyricsLineList(aiRomanizationFile(track, source, sourceLines), sourceLines);
     }
 
-    static void putRomanizationAI(TrackInfo track, String source,
+    public static void putRomanizationAI(TrackInfo track, String source,
             List<String> sourceLines, List<LyricsLine> lines) {
         writeLyricsLineList(aiRomanizationFile(track, source, sourceLines), lines);
     }

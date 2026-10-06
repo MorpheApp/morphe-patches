@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.requests;
+package app.morphe.extension.music.patches.lyrics.parsers;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 
 public final class KrcParser {
 

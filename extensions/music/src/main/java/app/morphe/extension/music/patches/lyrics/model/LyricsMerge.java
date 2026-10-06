@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.model;
 
 import androidx.annotation.Nullable;
 
@@ -72,7 +72,7 @@ public final class LyricsMerge {
     }
 
     @Nullable
-    static List<String> mapLinesOnline(List<String> lines,
+    public static List<String> mapLinesOnline(List<String> lines,
                                        Function<List<String>, List<String>> batch) {
         if (!Utils.isNetworkConnected()) {
             return null;

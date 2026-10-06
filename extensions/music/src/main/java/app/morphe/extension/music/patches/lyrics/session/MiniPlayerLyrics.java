@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.session;
 
 import android.media.MediaMetadata;
 import android.media.session.MediaSession;
@@ -18,6 +18,9 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.Objects;
 
+import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -45,10 +48,33 @@ public final class MiniPlayerLyrics {
     @Nullable
     private static String displayArtist;
 
+    /**
+     * The metadata's untouched title and artist. {@link LyricsManager#getCurrentTrack()}
+     * carries the cleaned pair that the lyrics lookup wants, whose regex normalization folds
+     * fullwidth punctuation to ASCII, so the mirrored text is built from these instead - the
+     * same strings the media session shows.
+     */
+    @Nullable
+    private static String rawDisplayTitle;
+    @Nullable
+    private static String rawDisplayArtist;
+
     @Nullable
     private static String cachedSubtitle;
 
     private static boolean mirrored;
+
+    @Nullable
+    private static CharSequence preMirrorTitle;
+    @Nullable
+    private static CharSequence preMirrorSubtitle;
+    @Nullable
+    private static TrackInfo preMirrorTrack;
+
+    @Nullable
+    private static String lastMirrorTitle;
+    @Nullable
+    private static String lastMirrorSubtitle;
 
     /** Drives the periodic check that mirrors the current line into the mini player. */
     private static final LyricsTicker ticker = new LyricsTicker(MiniPlayerLyrics::tick);
@@ -83,6 +109,8 @@ public final class MiniPlayerLyrics {
             String[] parsed = MetadataCleaner.parseCleanTitleAndArtist(title, artist);
             displayTitle = parsed[1];
             displayArtist = parsed[0];
+            rawDisplayTitle = title;
+            rawDisplayArtist = artist;
             cachedSubtitle = null; // invalidate on track change
 
             android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
@@ -175,16 +203,23 @@ public final class MiniPlayerLyrics {
 
         if (synced) {
             String line = manager.getCurrentLineText();
-            String newTitle = line.isEmpty() ? track.title() : line;
+            String newTitle = line.isEmpty() ? displayTitleOr(track) : line;
+            if (cachedSubtitle == null) {
+                cachedSubtitle = buildSubtitle(track);
+            }
+            if (!mirrored) {
+                preMirrorTitle = title.getText();
+                preMirrorSubtitle = subtitle.getText();
+                preMirrorTrack = track;
+            }
             if (!TextUtils.equals(newTitle, title.getText())) {
                 title.setText(newTitle);
             }
-            if (cachedSubtitle == null) {
-                cachedSubtitle = track.displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
-            }
+            lastMirrorTitle = newTitle;
             if (!TextUtils.equals(cachedSubtitle, subtitle.getText())) {
                 subtitle.setText(cachedSubtitle);
             }
+            lastMirrorSubtitle = cachedSubtitle;
             mirrored = true;
         } else {
             restoreIfMirrored();
@@ -204,11 +239,51 @@ public final class MiniPlayerLyrics {
         if (title == null || subtitle == null || track == null) {
             return;
         }
-        if (!TextUtils.equals(track.title(), title.getText())) {
-            title.setText(track.title());
+        final boolean sameTrack = track.equals(preMirrorTrack);
+        restoreField(title, lastMirrorTitle, sameTrack ? preMirrorTitle : null, displayTitleOr(track));
+        restoreField(subtitle, lastMirrorSubtitle, sameTrack ? preMirrorSubtitle : null,
+                displayArtistOr(track));
+    }
+
+    /** The title the app itself shows: the untouched metadata title when it is known. */
+    private static String displayTitleOr(TrackInfo track) {
+        final String raw = rawDisplayTitle;
+        return raw != null && !raw.trim().isEmpty() ? raw : track.title();
+    }
+
+    /** The artist the app itself shows: the untouched metadata artist when it is known. */
+    private static String displayArtistOr(TrackInfo track) {
+        final String raw = rawDisplayArtist;
+        return raw != null && !raw.trim().isEmpty() ? raw : track.artist();
+    }
+
+    /**
+     * The {@code "artist - title"} line the app and the media session show. The cleaned track
+     * feeds the lyrics lookup only: its regex normalization strips decorations and folds
+     * fullwidth punctuation to ASCII, which must not leak into what is displayed.
+     */
+    private static String buildSubtitle(TrackInfo track) {
+        final String rawTitle = rawDisplayTitle;
+        final String rawArtist = rawDisplayArtist;
+        if (rawTitle == null || rawTitle.trim().isEmpty()
+                || rawArtist == null || rawArtist.trim().isEmpty()) {
+            return track.displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
         }
-        if (!TextUtils.equals(track.artist(), subtitle.getText())) {
-            subtitle.setText(track.artist());
+        return new TrackInfo(rawTitle, rawArtist, "", 0)
+                .displayWith(Settings.LYRICS_DISPLAY_ARTIST_FIRST.get());
+    }
+
+    private static void restoreField(TextView view, @Nullable String lastMirrored,
+            @Nullable CharSequence preMirror, @Nullable String fallback) {
+        final CharSequence current = view.getText();
+        if (!TextUtils.equals(current, lastMirrored)) {
+            return;
+        }
+        final CharSequence restore = (preMirror != null && !preMirror.toString().isEmpty())
+                ? preMirror
+                : fallback;
+        if (restore != null && !TextUtils.equals(current, restore)) {
+            view.setText(restore);
         }
     }
 }

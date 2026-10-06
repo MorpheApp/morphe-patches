@@ -19,11 +19,13 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LyricsFileParser;
 
 /**
  * LRCLIB, the open lyrics database used by Metrolist, InnerTune and ViMusic.
@@ -60,13 +62,11 @@ public final class LrcLibProvider implements LyricsProvider {
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
 
-        // Exact match first
         Lyrics exact = fetchExact(track);
         if (exact != null) {
             scored.add(new Lyrics.ScoredLyrics(LyricsRequests.scoreSingleResult(exact), exact));
         }
 
-        // Then search results, sorted by combined score
         String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
         HttpURLConnection connection = LyricsRequests.openConnection(url);

@@ -5,10 +5,9 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.requests;
+package app.morphe.extension.music.patches.lyrics.parsers;
 
 import android.icu.text.Transliterator;
-import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +17,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.Logger;
 
 public final class CharactersConverter {
@@ -52,12 +51,6 @@ public final class CharactersConverter {
 
     @Nullable
     private static Transliterator create(String... ids) {
-        // Transliterator arrived in Android 10. Below it the fields stay null and every
-        // conversion returns its input, which is why a missing class must not be reached:
-        // it would throw an Error that the RuntimeException below does not catch.
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            return null;
-        }
         for (String id : ids) {
             try {
                 return Transliterator.getInstance(id);
@@ -81,7 +74,7 @@ public final class CharactersConverter {
 
     @NonNull
     private static String transliterate(@Nullable Transliterator transliterator, @NonNull String text) {
-        if (transliterator == null || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        if (transliterator == null) {
             return text;
         }
         // Transliterator is not thread safe, and the argument is always one of the shared

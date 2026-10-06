@@ -30,13 +30,15 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.LyricsMerge;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LyricsCrypto;
 
 /**
  * NetEase Cloud Music lyrics. Uses the EAPI endpoint, which exposes word-synced

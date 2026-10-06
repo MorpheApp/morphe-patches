@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.requests;
+package app.morphe.extension.music.patches.lyrics.parsers;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,10 +15,11 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 
-final class LyricifyParser {
+public final class LyricifyParser {
 
     private static final Pattern LINE_TIMING =
             Pattern.compile("^\\[(\\d+),(\\d+)](.*)");
@@ -32,7 +33,7 @@ final class LyricifyParser {
     private LyricifyParser() {
     }
 
-    static List<LyricsLine> parseLines(String text, int offsetMs) {
+    public static List<LyricsLine> parseLines(String text, int offsetMs) {
         if (text == null || text.isEmpty()) {
             return Collections.emptyList();
         }
@@ -68,7 +69,7 @@ final class LyricifyParser {
         return lines;
     }
 
-    static List<LyricsLine> parseSyllable(String text, int offsetMs) {
+    public static List<LyricsLine> parseSyllable(String text, int offsetMs) {
         if (text == null || text.isEmpty()) {
             return Collections.emptyList();
         }
@@ -138,7 +139,7 @@ final class LyricifyParser {
         return sb.toString();
     }
 
-    static List<String> parseTranslation(String trans, int offsetMs) {
+    public static List<String> parseTranslation(String trans, int offsetMs) {
         if (trans == null || trans.isEmpty()) {
             return Collections.emptyList();
         }

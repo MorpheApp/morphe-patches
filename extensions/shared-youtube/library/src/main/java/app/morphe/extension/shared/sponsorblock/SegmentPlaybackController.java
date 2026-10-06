@@ -252,6 +252,11 @@ public class SegmentPlaybackController {
         return segments;
     }
 
+    @Nullable
+    public static String getCurrentVideoId() {
+        return currentVideoId;
+    }
+
     private static void setSegments(SponsorSegment[] videoSegments) {
         Arrays.sort(videoSegments);
         segments = videoSegments;

@@ -23,12 +23,13 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 
 public final class PetitLyricsProvider implements LyricsProvider {
 

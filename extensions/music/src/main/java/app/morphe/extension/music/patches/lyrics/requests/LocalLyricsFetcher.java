@@ -13,7 +13,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.MediaStore;
 
 import androidx.annotation.Nullable;
@@ -25,10 +24,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
+import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 
 public final class LocalLyricsFetcher {
 
@@ -799,9 +800,6 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static Lyrics fallbackViaMediaMetadataRetriever(Context context, Uri uri) {
-        if (Build.VERSION.SDK_INT < 30) {
-            return null;
-        }
         try (MediaMetadataRetriever retriever = new MediaMetadataRetriever()) {
             retriever.setDataSource(context, uri);
             String raw = retriever.extractMetadata(METADATA_KEY_LYRICS);

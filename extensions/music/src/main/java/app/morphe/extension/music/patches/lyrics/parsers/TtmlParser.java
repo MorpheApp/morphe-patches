@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.requests;
+package app.morphe.extension.music.patches.lyrics.parsers;
 
 import androidx.annotation.Nullable;
 
@@ -24,10 +24,10 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.LyricsMerge;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.shared.Logger;
 
 /**
@@ -38,7 +38,7 @@ import app.morphe.extension.shared.Logger;
  * agent-based duet/right-alignment, inline + sidecar translations/romanizations,
  * IoU romanization alignment, and Ruby annotation support.
  */
-final class TtmlParser {
+public final class TtmlParser {
 
     private static final Pattern TIME_UNIT = Pattern.compile("(-?\\d+(?:\\.\\d+)?)(ms|h|m|s)");
     private static final Pattern TIME_COLON = Pattern.compile(
@@ -183,7 +183,7 @@ final class TtmlParser {
                                       @Nullable String bgText, @Nullable List<Word> bgWords) {}
 
     @Nullable
-    static TtmlResult parse(String ttml) {
+    public static TtmlResult parse(String ttml) {
         if (ttml == null || ttml.isEmpty()) {
             return null;
         }
@@ -277,7 +277,6 @@ final class TtmlParser {
 
                             buildTranslations(lineId, sidecarTrans, translations, mainLineCount);
 
-                            // Merge inline translations into translations map
                             if (pl.inlineTranslations() != null) {
                                 for (Map.Entry<String, String> e : pl.inlineTranslations().entrySet()) {
                                     final String lang = e.getKey();
@@ -290,7 +289,6 @@ final class TtmlParser {
                                     }
                                     langLines.add(new LyricsLine(LyricsLine.NO_TIME, text));
                                 }
-                                // Ensure all existing languages have entries
                                 for (Map.Entry<String, List<LyricsLine>> e : translations.entrySet()) {
                                     while (e.getValue().size() < lines.size()) {
                                         e.getValue().add(new LyricsLine(LyricsLine.NO_TIME, ""));
@@ -298,7 +296,6 @@ final class TtmlParser {
                                 }
                             }
 
-                            // Merge inline romanizations into romanizations map
                             if (pl.inlineRomanizations() != null) {
                                 for (Map.Entry<String, String> e : pl.inlineRomanizations().entrySet()) {
                                     final String lang = e.getKey();
@@ -313,7 +310,6 @@ final class TtmlParser {
                                 }
                             }
 
-                            // Merge BG inline translations into translations map
                             if (pl.bgInlineTranslations() != null) {
                                 for (Map.Entry<String, String> e : pl.bgInlineTranslations().entrySet()) {
                                     final String lang = "bg:" + e.getKey();
@@ -328,7 +324,6 @@ final class TtmlParser {
                                 }
                             }
 
-                            // Merge BG inline romanizations into romanizations map
                             if (pl.bgInlineRomanizations() != null) {
                                 for (Map.Entry<String, String> e : pl.bgInlineRomanizations().entrySet()) {
                                     final String lang = "bg:" + e.getKey();
@@ -662,7 +657,6 @@ final class TtmlParser {
             } else if (event == XmlPullParser.END_TAG) {
                 depth--;
                 if (depth <= 1) {
-                    // Closing main or bg span
                     if (inBgWord) {
                         inBgWord = false;
                         final String normalized = normalizeTextRaw(bgWordBuf.toString());
@@ -796,7 +790,6 @@ final class TtmlParser {
         final List<Word> words = new ArrayList<>();
         final StringBuilder fullText = new StringBuilder();
 
-        // Inline translation/roman state
         boolean inTranslation = false;
         final StringBuilder transBuf = new StringBuilder();
         String transLang = null;
@@ -804,13 +797,11 @@ final class TtmlParser {
         final StringBuilder romanBuf = new StringBuilder();
         String romanLang = null;
 
-        // Collected inline translations/romanizations for this <p>
         final Map<String, String> inlineTrans = new HashMap<>();
         final Map<String, String> inlineRoma = new HashMap<>();
         final Map<String, String> bgInlineTrans = new HashMap<>();
         final Map<String, String> bgInlineRoma = new HashMap<>();
 
-        // Background vocal state
         boolean inBg = false;
         final List<Word> bgWords = new ArrayList<>();
         final StringBuilder bgFullText = new StringBuilder();
@@ -1121,7 +1112,6 @@ final class TtmlParser {
             }
         }
 
-        // Save final BG section
         //noinspection SizeReplaceableByIsEmpty
         if (inBg && (!bgWords.isEmpty() || bgFullText.length() > 0)) {
             String bgText = normalizeText(bgFullText.toString());
@@ -1279,7 +1269,6 @@ final class TtmlParser {
             Map<String, List<RomajiSyllable>> sidecarRoman,
             List<Word> words,
             Map<String, List<LyricsLine>> romanizations) {
-        // Find all sidecar romanization entries for this line
         // Keys may be "lang:lineId" or just "lineId" (no language)
         for (Map.Entry<String, List<RomajiSyllable>> entry : sidecarRoman.entrySet()) {
             final String key = entry.getKey();
@@ -1373,7 +1362,6 @@ final class TtmlParser {
             langLines.add(new LyricsLine(LyricsLine.NO_TIME, st.bgText(), st.bgWords()));
         }
 
-        // Ensure all existing languages have entries for this line
         for (Map.Entry<String, List<LyricsLine>> entry : translations.entrySet()) {
             final List<LyricsLine> langLines = entry.getValue();
             while (langLines.size() < lineCount) {
@@ -1381,8 +1369,6 @@ final class TtmlParser {
             }
         }
     }
-
-    // ── Utility ───────────────────────────────────────────────────────────
 
     private static String readTextContent(XmlPullParser p)
             throws XmlPullParserException, IOException {
@@ -1423,7 +1409,7 @@ final class TtmlParser {
         }
     }
 
-    static long parseTime(@Nullable String raw) {
+    public static long parseTime(@Nullable String raw) {
         if (raw == null || raw.isEmpty()) return 0;
         final String trimmed = raw.trim();
 
@@ -1504,7 +1490,7 @@ final class TtmlParser {
     }
 
     @Nullable
-    static Lyrics ttmlToLyrics(String ttml, String providerName,
+    public static Lyrics ttmlToLyrics(String ttml, String providerName,
             @Nullable String sourceUrl) {
         if (ttml == null || ttml.isEmpty()) return null;
         TtmlResult result = parse(ttml);

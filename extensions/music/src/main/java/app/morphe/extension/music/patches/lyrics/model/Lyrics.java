@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.model;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -210,8 +210,9 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             final int lastIdx = words.size() - 1;
             Word lastWord = words.get(lastIdx);
             long effectiveEnd = lastWord.endMs();
+            long nextStart = LyricsLine.NO_TIME;
             if (i + 1 < size) {
-                final long nextStart = out.get(i + 1).startTimeMs();
+                nextStart = out.get(i + 1).startTimeMs();
                 if (nextStart != LyricsLine.NO_TIME) {
                     effectiveEnd = Math.min(effectiveEnd, nextStart);
                 }
@@ -220,7 +221,15 @@ public record Lyrics(List<LyricsLine> lines, String providerName, boolean synced
             if (line.endTimeMs() != LyricsLine.NO_TIME) {
                 effectiveEnd = Math.min(effectiveEnd, line.endTimeMs());
             }
-            effectiveEnd = Math.max(effectiveEnd, lastWord.startMs() + 200);
+            // The floor keeps the last word on screen, but it must not reach into the next
+            // line: ranges crossing a line boundary chain the karaoke highlight over several
+            // lines at once, and the single slot the panel keeps for one retiring highlight
+            // then loses an unfinished line that nothing clears afterwards.
+            long floor = lastWord.startMs() + 200;
+            if (nextStart != LyricsLine.NO_TIME && nextStart > lastWord.startMs()) {
+                floor = Math.min(floor, nextStart);
+            }
+            effectiveEnd = Math.max(effectiveEnd, floor);
             if (effectiveEnd != lastWord.endMs()) {
                 List<Word> newWords = new ArrayList<>(words);
                 newWords.set(lastIdx, new Word(lastWord.startMs(), effectiveEnd,

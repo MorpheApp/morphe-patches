@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.translate;
 
 import androidx.annotation.Nullable;
 
@@ -16,7 +16,12 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.translation.TextTranslator;

@@ -10,6 +10,7 @@ package app.morphe.extension.music.patches.lyrics;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 
+import app.morphe.extension.music.patches.lyrics.session.LockScreenLyrics;
 import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
@@ -37,6 +38,11 @@ public final class LyricsPatch {
             LyricsManager.getInstance().onSetPlaybackState(playbackState);
         } catch (Exception ex) {
             Logger.printException(() -> "onSetPlaybackState failure", ex);
+        }
+        try {
+            LockScreenLyrics.onPlaybackState(playbackState);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onSetPlaybackState lock screen failure", ex);
         }
     }
 }

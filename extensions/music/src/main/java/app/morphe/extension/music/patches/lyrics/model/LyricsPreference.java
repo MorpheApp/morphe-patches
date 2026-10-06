@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.model;
 
 import androidx.annotation.Nullable;
 
@@ -23,7 +23,7 @@ import java.util.List;
  *                     null when it was never computed. Writing the lines back drops the raw
  *                     text the fingerprint was taken from, so it cannot be taken again.
  */
-record LyricsPreference(@Nullable String queryTitle,
+public record LyricsPreference(@Nullable String queryTitle,
                         @Nullable String queryArtist,
                         Lyrics preferred,
                         List<String> queue,

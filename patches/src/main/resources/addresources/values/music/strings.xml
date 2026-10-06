@@ -610,6 +610,9 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
     <string name="morphe_music_lyrics_offset_ms_title">Timing offset</string>
     <string name="morphe_music_lyrics_offset_ms_summary">Synced lyrics follow playback. If they drift, adjust the timing offset. Shift synced lyrics forwards or backwards. Use a positive value if the lyrics run ahead of the song</string>
+    <string name="morphe_music_lyrics_sb_matching_title">Use SponsorBlock segments for lyrics offset</string>
+    <string name="morphe_music_lyrics_sb_matching_summary">Search with the video minus the segments SponsorBlock would skip, and shift the playing lyric onto the released audio. Off makes requests, matching and alignment ignore SponsorBlock entirely</string>
+    <string name="morphe_music_lyrics_sb_no_video">This track has no video id to submit</string>
     <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
     <string name="morphe_music_lyrics_translated_by_google">Translated by Google</string>

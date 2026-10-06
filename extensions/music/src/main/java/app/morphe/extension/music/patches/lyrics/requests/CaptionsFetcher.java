@@ -29,9 +29,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -131,7 +131,7 @@ public final class CaptionsFetcher {
 
         @Override
         @Nullable
-        public FetchResult fetch(app.morphe.extension.music.patches.lyrics.TrackInfo track) throws Exception {
+        public FetchResult fetch(TrackInfo track) throws Exception {
             CaptionsOutcome outcome = CaptionsFetcher.fetch();
 
             if (outcome.errorReason != null) {

@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.requests;
+package app.morphe.extension.music.patches.lyrics.parsers;
 
 import androidx.annotation.Nullable;
 
@@ -18,9 +18,10 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 
 /**
  * Parser for the LRC format used by both LRCLIB and KuGou.
@@ -30,9 +31,9 @@ public final class LrcParser {
     /** Tags such as {@code [ar:Artist]} that are not timestamps. */
     private static final String METADATA_TAG_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
 
-    static final Set<String> CREDIT_META_KEYS = Set.of("ti", "ar", "al", "au");
+    public static final Set<String> CREDIT_META_KEYS = Set.of("ti", "ar", "al", "au");
 
-    static final Pattern LRC_META = Pattern.compile("^\\[(\\w+):([^]]*)]$");
+    public static final Pattern LRC_META = Pattern.compile("^\\[(\\w+):([^]]*)]$");
 
     public static final class LrcParseResult {
         public final List<LyricsLine> lines;

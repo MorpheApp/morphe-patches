@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics;
+package app.morphe.extension.music.patches.lyrics.model;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.requests.CharactersConverter;
+import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -35,7 +35,7 @@ import app.morphe.extension.shared.Logger;
  * <p>All cleanup is driven by the user-configured {@link Settings#LYRICS_CUSTOM_REGEX}.
  * When the regex is blank no filtering is applied.
  */
-final class MetadataCleaner {
+public final class MetadataCleaner {
 
     private static final int CONNECT_TIMEOUT_MS = 5_000;
     private static final int READ_TIMEOUT_MS = 5_000;
@@ -52,7 +52,7 @@ final class MetadataCleaner {
     private MetadataCleaner() {
     }
 
-    static String resolveSetting(@Nullable String value) {
+    public static String resolveSetting(@Nullable String value) {
         SettingLookup lookup = classifySetting(value);
         if (!lookup.remote()) {
             return lookup.local();
@@ -64,7 +64,7 @@ final class MetadataCleaner {
         return lookup.local();
     }
 
-    static String resolveSettingBlocking(@Nullable String value) {
+    public static String resolveSettingBlocking(@Nullable String value) {
         SettingLookup lookup = classifySetting(value);
         if (!lookup.remote()) {
             return lookup.local();
@@ -131,7 +131,7 @@ final class MetadataCleaner {
         return cleanField(clean);
     }
 
-    static String cleanAlbum(@Nullable String album) {
+    public static String cleanAlbum(@Nullable String album) {
         return cleanField(album);
     }
 
@@ -148,6 +148,47 @@ final class MetadataCleaner {
         if (regex == null || regex.trim().isEmpty()) {
             return input;
         }
+        final Pattern pattern = compiled(regex);
+        if (pattern == null) {
+            return input;
+        }
+        try {
+            return pattern.matcher(CharactersConverter.normalizePreserveCase(input)).replaceAll("");
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Failed to apply regex", ex);
+            return input;
+        }
+    }
+
+    /**
+     * Like {@link #applyRegex}, but a pattern that matches nothing returns the input
+     * untouched instead of its normalized form. Lyrics line text passes through this
+     * before display, so rebuilding an untouched line from the normalizer output would
+     * fold its fullwidth punctuation ({@code ，！？～（）} …) to ASCII even though the
+     * filter never fired on it.
+     */
+    public static String applyRegexPreserveOriginal(String input, String regex) {
+        if (regex == null || regex.trim().isEmpty()) {
+            return input;
+        }
+        final Pattern pattern = compiled(regex);
+        if (pattern == null) {
+            return input;
+        }
+        try {
+            final String normalized = CharactersConverter.normalizePreserveCase(input);
+            if (!pattern.matcher(normalized).find()) {
+                return input;
+            }
+            return pattern.matcher(normalized).replaceAll("");
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Failed to apply regex", ex);
+            return input;
+        }
+    }
+
+    @Nullable
+    private static Pattern compiled(String regex) {
         try {
             Pattern pattern = compiledPatterns.get(regex);
             if (pattern == null) {
@@ -157,10 +198,10 @@ final class MetadataCleaner {
                 }
                 compiledPatterns.put(regex, pattern);
             }
-            return pattern.matcher(CharactersConverter.normalizePreserveCase(input)).replaceAll("");
+            return pattern;
         } catch (Exception ex) {
             Logger.printDebug(() -> "Failed to apply regex", ex);
-            return input;
+            return null;
         }
     }
 
@@ -183,12 +224,12 @@ final class MetadataCleaner {
         return new String[]{ left, right };
     }
 
-    static String[] parseCleanTitleAndArtist(@Nullable String rawTitle, @Nullable String rawArtist) {
+    public static String[] parseCleanTitleAndArtist(@Nullable String rawTitle, @Nullable String rawArtist) {
         return new String[]{ cleanArtist(rawArtist), cleanTitle(rawTitle) };
     }
 
     @Nullable
-    static TrackInfo trustedDashSplit(@Nullable String rawTitle, @Nullable String rawArtist,
+    public static TrackInfo trustedDashSplit(@Nullable String rawTitle, @Nullable String rawArtist,
                                       @Nullable String album, int durationSeconds) {
         String[] sides = splitDashRaw(rawTitle);
         if (sides == null || rawArtist == null || rawArtist.trim().isEmpty()) {
@@ -206,7 +247,7 @@ final class MetadataCleaner {
     }
 
     @Nullable
-    static TrackInfo anyDashSplit(@Nullable String rawTitle, @Nullable String album,
+    public static TrackInfo anyDashSplit(@Nullable String rawTitle, @Nullable String album,
                                   int durationSeconds) {
         String[] sides = splitDashRaw(rawTitle);
         if (sides == null) {
@@ -216,7 +257,7 @@ final class MetadataCleaner {
     }
 
     @Nullable
-    static TrackInfo anyDashSplitReversed(@Nullable String rawTitle, @Nullable String album,
+    public static TrackInfo anyDashSplitReversed(@Nullable String rawTitle, @Nullable String album,
                                           int durationSeconds) {
         String[] sides = splitDashRaw(rawTitle);
         if (sides == null) {
@@ -254,7 +295,7 @@ final class MetadataCleaner {
         return result;
     }
 
-    static String[] splitArtists(String artist) {
+    public static String[] splitArtists(String artist) {
         String[] raw = artist.split("\\s*(?:和|&|feat\\.?|ft\\.?|,|/|×)\\s*");
         List<String> parts = new ArrayList<>();
         for (String part : raw) {
