@@ -578,8 +578,7 @@ public final class NavigationBar {
 
             NavigationButton selectedButton = NavigationButton.selectedNavigationButton;
             NavigationButton openedFromButton = openedFromNavigationButton;
-            final boolean isVerifiedTab = selectedButton == NavigationButton.LIBRARY
-                    && (openedFromButton == NavigationButton.HOME || openedFromButton == NavigationButton.SUBSCRIPTIONS);
+            final boolean isVerifiedTab = openedFromButton == NavigationButton.HOME;
             if (!isVerifiedTab) {
                 return;
             }
