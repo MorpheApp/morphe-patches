@@ -16,7 +16,6 @@ import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.addPlayerFlyoutMenuPreferences
 import app.morphe.patches.youtube.layout.hide.player.flyoutmenu.playerFlyoutPreferences
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
-import app.morphe.patches.youtube.layout.player.icons.playerIconStylePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
@@ -29,7 +28,6 @@ private val pipButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch,
-        playerIconStylePatch,
     )
 
     execute {
