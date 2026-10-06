@@ -16,7 +16,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.youtube.layout.originaltitles.restoreOriginalTitlesPatch
+import app.morphe.patches.youtube.layout.originaltitles.videoTitlesHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.imageurlhook.addImageURLErrorCallbackHook
 import app.morphe.patches.youtube.misc.imageurlhook.addImageURLHook
@@ -44,7 +44,7 @@ val deArrowPatch = bytecodePatch(
         // Thumbnails that fail to load are loaded again by mounting the Litho views again.
         lithoRelayoutPatch,
         // Titles are replaced by the same hooks that restore the original titles.
-        restoreOriginalTitlesPatch,
+        videoTitlesHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
