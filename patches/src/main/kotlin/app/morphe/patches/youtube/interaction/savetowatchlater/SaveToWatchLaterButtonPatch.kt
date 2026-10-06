@@ -18,6 +18,7 @@ import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerIconStyles
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -53,6 +54,7 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         videoInformationPatch,
         authHookPatch,
         flyoutPatch,
+        loadVideoHookPatch,
         bytecodePatch {
             finalize {
                 addTopControl(
