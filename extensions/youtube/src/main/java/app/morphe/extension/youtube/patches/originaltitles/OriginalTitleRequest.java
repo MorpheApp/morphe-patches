@@ -70,10 +70,16 @@ final class OriginalTitleRequest {
          */
         @Nullable
         String replacement() {
-            if (deArrowTitle != null && DeArrowPatch.useDeArrowTitlesForCurrentNavigation()) {
-                return deArrowTitle;
-            }
-            return originalTitle;
+            return replacement(deArrowTitle != null && DeArrowPatch.useDeArrowTitlesForCurrentNavigation());
+        }
+
+        /**
+         * @param useDeArrow If the DeArrow title is used if the video has one.
+         * @return The title that replaces the title of the video, or null if the title is not replaced.
+         */
+        @Nullable
+        String replacement(boolean useDeArrow) {
+            return useDeArrow && deArrowTitle != null ? deArrowTitle : originalTitle;
         }
     }
 

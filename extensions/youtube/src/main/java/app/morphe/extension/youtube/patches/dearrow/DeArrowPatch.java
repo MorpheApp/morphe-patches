@@ -448,14 +448,38 @@ public final class DeArrowPatch {
     }
 
     /**
+     * Changed during patching, so other patches only use DeArrow if this patch is included.
+     */
+    private static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
      * Injection point. Called off the main thread and by multiple threads at the same time.
      *
      * @param originalURL Image URL for all URL images loaded, including video thumbnails.
      */
     public static String overrideImageURL(String originalURL) {
-        try {
-            ThumbnailOption option = thumbnailOptionForCurrentNavigation();
+        return replaceImageURL(originalURL, thumbnailOptionForCurrentNavigation());
+    }
 
+    /**
+     * For the thumbnail of a search result that is not loaded by the app, such as a result shown by
+     * another patch. The thumbnail is not loaded again with the fallback thumbnail if it fails to load.
+     * Can wait for the DeArrow branding, so it must be called off the main thread.
+     *
+     * @return The thumbnail URL for the search results setting, or the original URL if not replaced
+     *         or if this patch is not included.
+     */
+    public static String getSearchResultThumbnailURL(String originalURL) {
+        if (!isPatchIncluded()) {
+            return originalURL;
+        }
+        return replaceImageURL(originalURL, Settings.DEARROW_THUMBNAIL_SEARCH.get());
+    }
+
+    private static String replaceImageURL(String originalURL, ThumbnailOption option) {
+        try {
             if (option == ThumbnailOption.ORIGINAL) {
                 return originalURL;
             }
@@ -509,7 +533,7 @@ public final class DeArrowPatch {
                     ? sanitizedReplacementURL + decodedURL.viewTrackingParameters
                     : sanitizedReplacementURL;
         } catch (Exception ex) {
-            Logger.printException(() -> "overrideImageURL failure", ex);
+            Logger.printException(() -> "replaceImageURL failure", ex);
             return originalURL;
         }
     }

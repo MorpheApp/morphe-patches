@@ -52,6 +52,7 @@ import app.morphe.extension.shared.settings.search.BaseSearchViewController;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelSearchRequest.ChannelSearchResponse;
@@ -565,7 +566,7 @@ public final class ChannelSearchPatch {
 
         TextView title = new TextView(activity);
         title.setText(result.title);
-        RestoreOriginalTitlesPatch.restoreOriginalTitle(title, result.videoId);
+        RestoreOriginalTitlesPatch.restoreSearchResultTitle(title, result.videoId);
         title.setTextColor(ThemeUtils.getAppForegroundColor());
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         title.setMaxLines(2);
@@ -599,17 +600,17 @@ public final class ChannelSearchPatch {
         WeakReference<ImageView> viewRef = new WeakReference<>(view);
         Utils.runOnBackgroundThread(() -> {
             try {
-                HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-                connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
-                connection.setReadTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
-
-                Bitmap bitmap;
-                try (InputStream stream = connection.getInputStream()) {
-                    bitmap = BitmapFactory.decodeStream(stream);
+                // The thumbnail can be replaced by DeArrow, which can wait for DeArrow off the main thread.
+                String replacementUrl = DeArrowPatch.getSearchResultThumbnailURL(url);
+                Bitmap downloaded = downloadThumbnail(replacementUrl);
+                if (downloaded == null && !replacementUrl.equals(url)) {
+                    // The replacement can be not available, such as a still capture of a live stream.
+                    downloaded = downloadThumbnail(url);
                 }
-                if (bitmap == null) {
+                if (downloaded == null) {
                     return;
                 }
+                Bitmap bitmap = downloaded;
 
                 thumbnailCache.put(url, bitmap);
                 Utils.runOnMainThread(() -> {
@@ -621,9 +622,31 @@ public final class ChannelSearchPatch {
                     }
                 });
             } catch (Exception ex) {
-                Logger.printInfo(() -> "Could not load thumbnail: " + url, ex);
+                Logger.printException(() -> "loadThumbnail failure", ex);
             }
         });
+    }
+
+    /**
+     * @return The thumbnail, or null if it could not be loaded.
+     */
+    @Nullable
+    private static Bitmap downloadThumbnail(String url) {
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setConnectTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
+            connection.setReadTimeout(THUMBNAIL_TIMEOUT_MILLISECONDS);
+            // A response without an image, such as no content, is not decoded.
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                return null;
+            }
+            try (InputStream stream = connection.getInputStream()) {
+                return BitmapFactory.decodeStream(stream);
+            }
+        } catch (Exception ex) {
+            Logger.printInfo(() -> "Could not load thumbnail: " + url, ex);
+            return null;
+        }
     }
 
     /**

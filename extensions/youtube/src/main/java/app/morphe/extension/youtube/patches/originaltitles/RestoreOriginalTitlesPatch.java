@@ -684,8 +684,24 @@ public final class RestoreOriginalTitlesPatch {
      * such as a video of the playlist panel.
      */
     public static void restoreOriginalTitle(TextView view, String videoId) {
+        restoreViewTitle(view, videoId, USE_DEARROW && DeArrowPatch.useDeArrowTitlesForCurrentNavigation());
+    }
+
+    /**
+     * Same as {@link #restoreOriginalTitle(TextView, String)}, for a view that shows a search result
+     * that is not shown by the app, such as a result of another patch. DeArrow titles are used
+     * if they are used for the search results.
+     */
+    public static void restoreSearchResultTitle(TextView view, String videoId) {
+        restoreViewTitle(view, videoId, USE_DEARROW && Settings.DEARROW_TITLES_SEARCH.get());
+    }
+
+    /**
+     * @param useDeArrow If the DeArrow title is used if the video has one.
+     */
+    private static void restoreViewTitle(@Nullable TextView view, @Nullable String videoId, boolean useDeArrow) {
         try {
-            if (!REPLACE_TITLES || view == null || videoId == null || !replacesTitlesForCurrentNavigation()) {
+            if (!REPLACE_TITLES || view == null || videoId == null || !(RESTORE_ORIGINAL || useDeArrow)) {
                 return;
             }
 
@@ -712,7 +728,7 @@ public final class RestoreOriginalTitlesPatch {
                 if (titleView == null || !titleViewVideoIds.remove(titleView, videoId)) {
                     return;
                 }
-                String originalTitle = titles.replacement();
+                String originalTitle = titles.replacement(useDeArrow);
                 CharSequence title = originalTitle == null
                         ? translatedTitle
                         : titleText(translatedTitle, originalTitle, null);

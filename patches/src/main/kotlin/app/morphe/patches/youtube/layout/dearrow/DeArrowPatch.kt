@@ -28,6 +28,7 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/dearrow/DeArrowPatch;"
@@ -89,6 +90,7 @@ val deArrowPatch = bytecodePatch(
             ),
             PreferenceCategory(
                 key = "morphe_dearrow_about_category",
+                titleKey = "morphe_hide_about_category_title",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
@@ -101,6 +103,9 @@ val deArrowPatch = bytecodePatch(
                 )
             )
         )
+
+        // Other patches use DeArrow only if this patch is included.
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
 
         addImageURLHook(EXTENSION_CLASS)
         addImageURLSuccessCallbackHook(EXTENSION_CLASS)
