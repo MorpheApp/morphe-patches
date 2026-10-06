@@ -237,4 +237,8 @@ If battery optimizations are not changed then you may experience:
 If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
     <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
     <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
+
+    <!-- misc.crashlog.crashLogPatch -->
+    <string name="morphe_crash_log_saved_documents">Crash log saved to user documents: %s</string>
+    <string name="morphe_crash_log_saved">Crash log saved: %s</string>
 </resources>
