@@ -35,10 +35,10 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
-import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.music.patches.lyrics.parsers.LrcParser;
 import app.morphe.extension.music.patches.lyrics.parsers.LyricsCrypto;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.requests.Requester;
 
 /**
  * NetEase Cloud Music lyrics. Uses the EAPI endpoint, which exposes word-synced
@@ -644,13 +644,15 @@ public final class NetEaseProvider implements LyricsProvider {
                 int segmentStart = marks.get(i)[1];
                 int segmentEnd = i + 1 < marks.size() ? marks.get(i + 1)[0] : content.length();
                 String wordText = content.substring(segmentStart, segmentEnd);
-                if (wordText.isEmpty()) {
+                full.append(wordText);
+                String trimmed = wordText.trim();
+                if (trimmed.isEmpty()) {
+                    // A timed space between words is kept in the line text only.
                     continue;
                 }
                 boolean endsWithSpace =
                         Character.isWhitespace(wordText.charAt(wordText.length() - 1));
-                words.add(new Word(wordStart, wordEnd, wordText.trim(), null, endsWithSpace));
-                full.append(wordText);
+                words.add(new Word(wordStart, wordEnd, trimmed, null, endsWithSpace));
             }
             if (words.isEmpty() && full.length() == 0 && !content.isEmpty()) {
                 full.append(content);

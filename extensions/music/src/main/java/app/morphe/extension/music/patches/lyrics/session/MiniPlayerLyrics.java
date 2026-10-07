@@ -95,6 +95,11 @@ public final class MiniPlayerLyrics {
         LyricsManager.getInstance().removeListener(lyricsListener);
     }
 
+    /**
+     * Starts or stops mirroring to match the current settings. Called when a lyrics setting
+     * changes and when the displayed track changes, so toggling the feature takes effect
+     * without recreating the miniplayer.
+     */
     public static void onSettingsChanged() {
         cachedSubtitle = null;
         if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()
@@ -143,7 +148,8 @@ public final class MiniPlayerLyrics {
 
         try {
             captureMiniPlayer(view);
-        } catch (Throwable ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "onMiniPlayerViewCreated failure", ex);
         }
     }
 
@@ -172,19 +178,14 @@ public final class MiniPlayerLyrics {
             displayArtist = current.artist();
         }
 
-        if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()) {
-            disableFeature();
-            return;
-        }
-
-        LyricsManager.getInstance().addListener(lyricsListener);
-        ticker.schedule();
+        onSettingsChanged();
     }
 
     private static void tick() {
         try {
             update();
-        } catch (Throwable ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "tick failure", ex);
             ticker.stop();
         }
     }

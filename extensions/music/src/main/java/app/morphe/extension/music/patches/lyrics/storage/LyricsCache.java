@@ -698,8 +698,8 @@ public final class LyricsCache {
         for (int i = 0; i < deleteCount; i++) {
             File file = mains.get(oldestFirst[i]);
             File sidecar = rawFile(file);
-            if (sidecar.exists()) {
-                sidecar.delete();
+            if (sidecar.exists() && !sidecar.delete()) {
+                Logger.printDebug(() -> "Could not delete a cached lyrics file: " + sidecar);
             }
             if (!file.delete()) {
                 Logger.printDebug(() -> "Could not delete a cached lyrics file: " + file);

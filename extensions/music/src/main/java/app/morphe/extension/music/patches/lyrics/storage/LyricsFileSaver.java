@@ -44,7 +44,8 @@ public final class LyricsFileSaver {
     public static String save(Context context, TrackInfo track, Lyrics lyrics) {
         try {
             return saveUnchecked(context, track, lyrics);
-        } catch (Throwable ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "save failure", ex);
             return null;
         }
     }
@@ -92,12 +93,7 @@ public final class LyricsFileSaver {
 
         values.put(MediaStore.Downloads.IS_PENDING, 1);
 
-        Uri insertUri;
-        try {
-            insertUri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
-        } catch (Throwable ignored) {
-            return null;
-        }
+        Uri insertUri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
         if (insertUri == null) {
             return null;
         }
@@ -113,10 +109,11 @@ public final class LyricsFileSaver {
             written = true;
             return Environment.DIRECTORY_DOWNLOADS + "/" + directoryName + "/" + fileName;
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not save lyrics file", ex);
+            Logger.printException(() -> "Could not save lyrics file", ex);
             try {
                 resolver.delete(insertUri, null, null);
-            } catch (Throwable ignored) {
+            } catch (Exception deleteEx) {
+                Logger.printException(() -> "Could not delete partial lyrics file", deleteEx);
             }
             return null;
         } finally {
@@ -125,7 +122,8 @@ public final class LyricsFileSaver {
                     values.clear();
                     values.put(MediaStore.Downloads.IS_PENDING, 0);
                     resolver.update(insertUri, values, null, null);
-                } catch (Throwable ignored) {
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Could not publish saved lyrics file", ex);
                 }
             }
         }

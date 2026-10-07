@@ -22,14 +22,14 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.Locale;
 
+import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.session.MiniPlayerLyrics;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.music.patches.lyrics.LyricsManager;
-import app.morphe.extension.music.patches.lyrics.session.MiniPlayerLyrics;
 
 /**
  * Puts the third party lyrics panel into the lyrics engagement panel.
@@ -167,7 +167,8 @@ public final class LyricsPanelInstaller {
 
                 panelView.setKeepScreenOn(
                         Settings.LYRICS_KEEP_SCREEN_ON.get() && lyricsPanelOpen);
-            } catch (Throwable ignored) {
+            } catch (Exception ex) {
+                Logger.printException(() -> "updateKeepScreenOn failure", ex);
             }
         });
     }
@@ -214,7 +215,8 @@ public final class LyricsPanelInstaller {
     public static void onLyricsPanelDetected() {
         try {
             detectLyricsPanel();
-        } catch (Throwable ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "onLyricsPanelDetected failure", ex);
             installPending = false;
         }
     }
@@ -518,7 +520,8 @@ public final class LyricsPanelInstaller {
     public static void enableLyricsButton() {
         try {
             walkForLyricsButton();
-        } catch (Throwable ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "enableLyricsButton failure", ex);
             enableButtonWalkPending = false;
         }
     }
