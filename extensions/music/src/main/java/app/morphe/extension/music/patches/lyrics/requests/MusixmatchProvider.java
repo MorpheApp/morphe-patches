@@ -63,12 +63,28 @@ public final class MusixmatchProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        final List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
+        List<ScoredSong> candidates = fetchScoredSongs(track);
+        if (candidates.isEmpty()) {
+            return null;
+        }
+        ScoredSong top = candidates.get(0);
+        return FetchResult.of(top.lyrics(), top.title(), top.artist(),
+                top.durationSec(), track);
     }
 
     @Override
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (ScoredSong candidate : fetchScoredSongs(track)) {
+            scored.add(new Lyrics.ScoredLyrics(candidate.score(), candidate.lyrics()));
+        }
+        return scored;
+    }
+
+    private record ScoredSong(int score, Lyrics lyrics, String title, String artist,
+                              long durationSec) {}
+
+    private List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         final String token = ensureToken();
         if (token == null) {
             return Collections.emptyList();
@@ -85,9 +101,8 @@ public final class MusixmatchProvider implements LyricsProvider {
             return Collections.emptyList();
         }
 
-        final List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        Lyrics firstAccepted = null;
-        int firstAcceptedScore = -1;
+        final List<ScoredSong> scored = new ArrayList<>();
+        ScoredSong firstAccepted = null;
         for (JSONObject trackObj : trackObjs) {
             final int trackId = trackObj.optInt("track_id", -1);
             if (trackId <= 0) continue;
@@ -99,26 +114,27 @@ public final class MusixmatchProvider implements LyricsProvider {
                 continue;
             }
             if (lyrics != null) {
+                String title = trackObj.optString("track_name", "");
+                String artist = trackObj.optString("artist_name", "");
+                long durationSec = trackObj.optInt("track_length", 0);
                 int score = LyricsRequests.scoreLyricsCandidate(
-                        trackObj.optString("track_name", ""),
-                        trackObj.optString("artist_name", ""),
-                        trackObj.optInt("track_length", 0),
-                        lyrics, track);
+                        title, artist, durationSec, lyrics, track);
+                ScoredSong candidate = new ScoredSong(score, lyrics, title, artist, durationSec);
                 if (firstAccepted == null) {
-                    firstAccepted = lyrics;
-                    firstAcceptedScore = score;
+                    firstAccepted = candidate;
                 }
                 if (score >= LyricsRequests.SOFT_MIN + LyricsRequests.syncRank(lyrics)) {
-                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+                    scored.add(candidate);
                     break;
                 }
             }
         }
         if (scored.isEmpty() && firstAccepted != null) {
-            scored.add(new Lyrics.ScoredLyrics(firstAcceptedScore, firstAccepted));
+            scored.add(firstAccepted);
         }
 
-        return Lyrics.sortScoredByScore(scored);
+        scored.sort((a, b) -> Integer.compare(b.score(), a.score()));
+        return scored;
     }
 
     @Nullable

@@ -60,6 +60,7 @@ public final class LyricsCache {
     private static final String HEADER_QUERY_ARTIST = "#queryArtist=";
     private static final String HEADER_QUEUE = "#queue=";
     private static final String HEADER_FINGERPRINT = "#fp=";
+    private static final String HEADER_TRACK = "#track=";
     private static final String NOT_FOUND_MARKER = "#notfound";
     private static final String RAW_SUFFIX = ".raw";
 
@@ -102,8 +103,8 @@ public final class LyricsCache {
     @Nullable
     public static LyricsPreference getPreference(@Nullable String videoId, TrackInfo track) {
         File videoFile = preferenceFile(videoId, track);
-        File file = (videoFile != null && videoFile.exists()) ? videoFile
-                : preferenceFile(null, track);
+        File trackFile = preferenceFile(null, track);
+        File file = (videoFile != null && videoFile.exists()) ? videoFile : trackFile;
         if (file == null || !file.exists()) {
             Logger.printInfo(() -> "LyricsPref read miss: videoId=" + videoId
                     + " videoFile=" + name(videoFile) + " trackFile=" + name(file));
@@ -112,6 +113,29 @@ public final class LyricsCache {
         final File source = file;
         Logger.printInfo(() -> "LyricsPref read: " + source.getName());
 
+        LyricsPreference preference = readPreferenceFile(source, track);
+        if (preference == null) {
+            return null;
+        }
+        String expectedKey = trackKey(track);
+        if (preference.trackKey() != null && !preference.trackKey().equals(expectedKey)) {
+            if (!source.equals(videoFile) || trackFile == null || !trackFile.exists()
+                    || trackFile.equals(videoFile)) {
+                return null;
+            }
+            preference = readPreferenceFile(trackFile, track);
+            if (preference == null) {
+                return null;
+            }
+            if (preference.trackKey() != null && !preference.trackKey().equals(expectedKey)) {
+                return null;
+            }
+        }
+        return preference;
+    }
+
+    @Nullable
+    private static LyricsPreference readPreferenceFile(File file, TrackInfo track) {
         try {
             List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
             if (lines.isEmpty()) {
@@ -121,6 +145,7 @@ public final class LyricsCache {
             String queryTitle = null;
             String queryArtist = null;
             String fingerprint = null;
+            String storedTrackKey = null;
             List<String> queue = new ArrayList<>();
             int contentStart = 0;
 
@@ -139,6 +164,8 @@ public final class LyricsCache {
                     }
                 } else if (line.startsWith(HEADER_FINGERPRINT)) {
                     fingerprint = emptyToNull(line.substring(HEADER_FINGERPRINT.length()));
+                } else if (line.startsWith(HEADER_TRACK)) {
+                    storedTrackKey = emptyToNull(line.substring(HEADER_TRACK.length()));
                 } else {
                     // The lyric's own headers and its content start here.
                     break;
@@ -151,7 +178,7 @@ public final class LyricsCache {
                 return null;
             }
             return new LyricsPreference(queryTitle, queryArtist, preferred,
-                    List.copyOf(queue), fingerprint);
+                    List.copyOf(queue), fingerprint, storedTrackKey);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not read the lyrics preference", ex);
             return null;
@@ -176,6 +203,7 @@ public final class LyricsCache {
 
         try {
             List<String> fileLines = new ArrayList<>();
+            fileLines.add(HEADER_TRACK + trackKey(track));
             if (queryTitle != null && !queryTitle.isEmpty()) {
                 fileLines.add(HEADER_QUERY_TITLE + queryTitle);
             }
@@ -469,6 +497,10 @@ public final class LyricsCache {
      */
     private static String key(TrackInfo track, String source) {
         return track.cacheKey() + "|" + source;
+    }
+
+    private static String trackKey(TrackInfo track) {
+        return track.artist() + "␟" + track.title();
     }
 
     @Nullable

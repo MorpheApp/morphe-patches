@@ -57,18 +57,34 @@ public final class LunaProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
+        List<ScoredSong> candidates = fetchScoredSongs(track);
+        if (candidates.isEmpty()) {
+            return null;
+        }
+        ScoredSong top = candidates.get(0);
+        return FetchResult.of(top.lyrics(), top.title(), top.artist(),
+                top.durationSec(), track);
     }
 
     @Override
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (ScoredSong candidate : fetchScoredSongs(track)) {
+            scored.add(new Lyrics.ScoredLyrics(candidate.score(), candidate.lyrics()));
+        }
+        return scored;
+    }
+
+    private record ScoredSong(int score, Lyrics lyrics, String title, String artist,
+                              long durationSec) {}
+
+    private List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         List<JSONObject> tracks = searchTracks(track);
         if (tracks.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        List<ScoredSong> scored = new ArrayList<>();
         for (JSONObject trackObj : tracks) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
             String trackId = trackObj.optString("id", null);
@@ -78,19 +94,20 @@ public final class LunaProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchLyricsByTrackId(trackId);
                 if (lyrics != null) {
+                    String title = trackObj.optString("name", "");
+                    String artist = firstArtistName(trackObj);
+                    long durationSec = trackObj.optLong("duration", 0) / 1000;
                     int score = LyricsRequests.scoreLyricsCandidate(
-                            trackObj.optString("name", ""),
-                            firstArtistName(trackObj),
-                            trackObj.optLong("duration", 0) / 1000,
-                            lyrics, track);
-                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+                            title, artist, durationSec, lyrics, track);
+                    scored.add(new ScoredSong(score, lyrics, title, artist, durationSec));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch Luna lyrics for a track id", ex);
             }
         }
 
-        return Lyrics.sortScoredByScore(scored);
+        scored.sort((a, b) -> Integer.compare(b.score(), a.score()));
+        return scored;
     }
 
     private static String firstArtistName(JSONObject trackObj) {

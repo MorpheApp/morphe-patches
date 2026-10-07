@@ -68,12 +68,16 @@ public interface LyricsProvider {
 
         public int matchScore(TrackInfo track) {
             if (sourceTitle != null && !sourceTitle.isEmpty()) {
-                return LyricsRequests.evaluate(sourceTitle, sourceArtist, sourceDurationSec,
-                        track).score();
+                LyricsRequests.MatchVerdict v = LyricsRequests.evaluate(sourceTitle, sourceArtist,
+                        sourceDurationSec, track);
+                return LyricsRequests.isCustomMatchMode()
+                        ? LyricsRequests.rankScore(v) : v.score();
             }
             if (queriedVariant != null) {
-                return LyricsRequests.evaluate(queriedVariant.title(), queriedVariant.artist(),
-                        queriedVariant.durationSeconds(), track).score();
+                LyricsRequests.MatchVerdict v = LyricsRequests.evaluate(queriedVariant.title(),
+                        queriedVariant.artist(), queriedVariant.durationSeconds(), track);
+                return LyricsRequests.isCustomMatchMode()
+                        ? LyricsRequests.rankScore(v) : v.score();
             }
             return videoIdKeyed ? LyricsRequests.VIDEO_ID_TRUST : LyricsRequests.NEUTRAL;
         }

@@ -633,7 +633,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_refreshing">Refreshing</string>
     <string name="morphe_music_lyrics_refreshed">Refreshed</string>
     <string name="morphe_music_lyrics_about_summary">"Lyrics are matched by title and artist, unusual metadata may find nothing or the wrong version. Use refresh to switch versions. Providers marked * require a token. All enabled providers are not always requested in your order, but respond based on their speed"</string>
-    <string name="morphe_music_lyrics_source_advice_summary">"Don't enable every provider. Only use the ones you know, or keep the default, so frequent requests don't add up to a DDoS on small community lyrics sites"</string>
+    <string name="morphe_music_lyrics_source_advice_summary">Only enable the providers you use, or keep the default — constant requests can overwhelm small community lyrics sites</string>
     <string name="morphe_music_lyrics_hide_info_title">Hide credit line</string>
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>

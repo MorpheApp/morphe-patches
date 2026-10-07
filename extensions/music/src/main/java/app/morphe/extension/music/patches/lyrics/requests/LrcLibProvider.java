@@ -51,20 +51,22 @@ public final class LrcLibProvider implements LyricsProvider {
     public FetchResult fetch(TrackInfo track) throws Exception {
         // The exact endpoint matches on duration as well, which gives the best timings,
         // but it fails for any track whose duration differs from the database entry.
-        Lyrics exact = fetchExact(track);
-        if (exact != null && exact != Lyrics.NOT_FOUND) {
-            return FetchResult.of(exact, track);
+        FetchResult exact = fetchExact(track);
+        if (exact != null && exact.lyrics() != Lyrics.NOT_FOUND) {
+            return exact;
         }
-        return FetchResult.of(fetchSearch(track), track);
+        return fetchSearch(track);
     }
 
     @Override
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
         List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
 
-        Lyrics exact = fetchExact(track);
+        FetchResult exact = fetchExact(track);
         if (exact != null) {
-            scored.add(new Lyrics.ScoredLyrics(LyricsRequests.scoreSingleResult(exact), exact));
+            Lyrics exactLyrics = exact.lyrics();
+            scored.add(new Lyrics.ScoredLyrics(
+                    LyricsRequests.scoreSingleResult(exactLyrics), exactLyrics));
         }
 
         String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
@@ -92,6 +94,9 @@ public final class LrcLibProvider implements LyricsProvider {
             final int scoreB = scoreCandidate(b, track);
             if (scoreA != scoreB) {
                 return scoreB - scoreA;
+            }
+            if (track.durationSeconds() <= 0) {
+                return 0;
             }
             final int deltaA = Math.abs(a.optInt("duration", 0) - track.durationSeconds());
             final int deltaB = Math.abs(b.optInt("duration", 0) - track.durationSeconds());
@@ -134,7 +139,7 @@ public final class LrcLibProvider implements LyricsProvider {
     }
 
     @Nullable
-    private Lyrics fetchExact(TrackInfo track) throws Exception {
+    private FetchResult fetchExact(TrackInfo track) throws Exception {
         StringBuilder url = new StringBuilder(BASE_URL);
         url.append("get?track_name=").append(LyricsRequests.encode(track.title()));
         url.append("&artist_name=").append(LyricsRequests.encode(track.artist()));
@@ -149,11 +154,18 @@ public final class LrcLibProvider implements LyricsProvider {
         if (response == null) {
             return null;
         }
-        return toLyrics(response);
+        Lyrics lyrics = toLyrics(response);
+        if (lyrics == null) {
+            return null;
+        }
+        return FetchResult.of(lyrics,
+                response.optString("trackName", ""),
+                response.optString("artistName", ""),
+                response.optLong("duration", 0), track);
     }
 
     @Nullable
-    private Lyrics fetchSearch(TrackInfo track) throws Exception {
+    private FetchResult fetchSearch(TrackInfo track) throws Exception {
         String url = BASE_URL + "search?track_name=" + LyricsRequests.encode(track.title())
                 + "&artist_name=" + LyricsRequests.encode(track.artist());
 
@@ -169,7 +181,7 @@ public final class LrcLibProvider implements LyricsProvider {
             return null;
         }
 
-        Lyrics bestLyrics = null;
+        FetchResult best = null;
         int bestCombined = -1;
         for (int i = 0; i < resultsLength; i++) {
             JSONObject candidate = results.optJSONObject(i);
@@ -187,14 +199,17 @@ public final class LrcLibProvider implements LyricsProvider {
                     int trackScore = combined - LyricsRequests.syncRank(candidateLyrics);
                     if (trackScore >= LyricsRequests.SOFT_MIN && combined > bestCombined) {
                         bestCombined = combined;
-                        bestLyrics = candidateLyrics;
+                        best = FetchResult.of(candidateLyrics,
+                                candidate.optString("trackName", ""),
+                                candidate.optString("artistName", ""),
+                                candidate.optInt("duration", 0), track);
                     }
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Failed to process LrcLib candidate", ex);
             }
         }
-        return bestLyrics;
+        return best;
     }
 
     @Nullable

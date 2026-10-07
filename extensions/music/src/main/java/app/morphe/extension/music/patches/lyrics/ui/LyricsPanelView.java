@@ -488,8 +488,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                         }
                         if (isOffsetAdjusting) {
                             float dx = e2.getX() - offsetSwipeStartX;
-                            int deltaMs = Math.round(dx / getResources().getDisplayMetrics().density) * 10;
-                            int newMs = Math.max(-20000, Math.min(20000, offsetSwipeStartMs + deltaMs));
+                            int deltaMs = Math.round(-dx / getResources().getDisplayMetrics().density) * 10;
+                            int newMs = Math.max(-30000, Math.min(30000, offsetSwipeStartMs + deltaMs));
                             LyricsManager.getInstance().setTemporaryOffsetMs(newMs);
                             offsetRulerView.setOffsetMs(newMs);
                             scheduleHideOffsetRuler();
@@ -658,6 +658,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             // until a replacement arrives.
             if (state == LyricsManager.State.LOADING && newLyrics == lyrics
                     && newLyrics != null && !newLyrics.isEmpty()) {
+                return;
+            }
+            if (state == LyricsManager.State.LOADED && newLyrics == lyrics
+                    && newLyrics != null && !newLyrics.isEmpty()) {
+                if (refreshInProgress) {
+                    refreshInProgress = false;
+                    handler.removeCallbacks(refreshLabelResetRunnable);
+                    updateRefreshLabel();
+                }
                 return;
             }
             TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
@@ -1912,6 +1921,9 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         if (refreshView == null) {
             return;
         }
+        if (refreshInProgress || LyricsManager.getInstance().getCurrentTrack() == null) {
+            return;
+        }
         refreshInProgress = true;
         setButtonLabel(refreshView, str("morphe_music_lyrics_refreshing"), true);
         LyricsManager.getInstance().fetchNextCandidate();
@@ -3017,7 +3029,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     }
 
     private final class OffsetRulerView extends View {
-        private static final int RANGE_MS = 20000;
+        private static final int RANGE_MS = 30000;
 
         private final Paint valuePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 

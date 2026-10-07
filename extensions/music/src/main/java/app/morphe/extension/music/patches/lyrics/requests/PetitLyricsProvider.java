@@ -72,17 +72,17 @@ public final class PetitLyricsProvider implements LyricsProvider {
         collectTier(track, TIER_WORD_SYNC, stash);
         Lyrics result = tryWordSync(stash);
         if (result != null) {
-            return FetchResult.of(result, track);
+            return FetchResult.of(result, stash.sourceTitle, stash.sourceArtist, stash.sourceDurationSec, track);
         }
 
         collectTier(track, TIER_LINE_SYNC, stash);
         result = tryWordSync(stash);
         if (result != null) {
-            return FetchResult.of(result, track);
+            return FetchResult.of(result, stash.sourceTitle, stash.sourceArtist, stash.sourceDurationSec, track);
         }
         result = tryLineSync(track, stash);
         if (result != null) {
-            return FetchResult.of(result, track);
+            return FetchResult.of(result, stash.sourceTitle, stash.sourceArtist, stash.sourceDurationSec, track);
         }
 
         if (stash.plainText == null && !stash.plainRequested) {
@@ -96,7 +96,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
         result = tryText(stash);
         if (result != null) {
-            return FetchResult.of(result, track);
+            return FetchResult.of(result, stash.sourceTitle, stash.sourceArtist, stash.sourceDurationSec, track);
         }
         return null;
     }
@@ -171,6 +171,9 @@ public final class PetitLyricsProvider implements LyricsProvider {
                         if (!text.trim().isEmpty()) {
                             stash.zipText = text;
                             stash.zipLyricsId = idMatch.lyricsId;
+                            stash.sourceTitle = idMatch.title;
+                            stash.sourceArtist = idMatch.artist;
+                            stash.sourceDurationSec = idMatch.durationMs / 1000;
                             if (stash.sourceLyricsId == null) {
                                 stash.sourceLyricsId = idMatch.lyricsId;
                             }
@@ -205,6 +208,9 @@ public final class PetitLyricsProvider implements LyricsProvider {
                             stash.wordLines = lines;
                             stash.wsyRaw = toUtf8(payload);
                             stash.sourceLyricsId = song.lyricsId;
+                            stash.sourceTitle = song.title;
+                            stash.sourceArtist = song.artist;
+                            stash.sourceDurationSec = song.durationMs / 1000;
                         }
                     }
                 }
@@ -215,6 +221,9 @@ public final class PetitLyricsProvider implements LyricsProvider {
                             stash.lsyTimings = timings;
                             stash.lsyLyricsId = song.lyricsId;
                             stash.sourceLyricsId = song.lyricsId;
+                            stash.sourceTitle = song.title;
+                            stash.sourceArtist = song.artist;
+                            stash.sourceDurationSec = song.durationMs / 1000;
                         }
                     }
                 }
@@ -224,6 +233,9 @@ public final class PetitLyricsProvider implements LyricsProvider {
                         if (!text.trim().isEmpty()) {
                             stash.plainText = text;
                             stash.sourceLyricsId = song.lyricsId;
+                            stash.sourceTitle = song.title;
+                            stash.sourceArtist = song.artist;
+                            stash.sourceDurationSec = song.durationMs / 1000;
                         }
                     }
                 }
@@ -759,6 +771,11 @@ public final class PetitLyricsProvider implements LyricsProvider {
         List<String> creditLines;
         @Nullable
         String sourceLyricsId;
+        @Nullable
+        String sourceTitle;
+        @Nullable
+        String sourceArtist;
+        long sourceDurationSec;
     }
 
     private static final class Response {

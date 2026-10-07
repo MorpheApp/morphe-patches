@@ -51,7 +51,17 @@ public final class LyricsRequests {
     private static final int CONNECT_TIMEOUT_MILLISECONDS = 5 * 1000;
     private static final int READ_TIMEOUT_MILLISECONDS = 5 * 1000;
 
+    private static volatile boolean customMatchMode;
+
     private LyricsRequests() {
+    }
+
+    public static void setCustomMatchMode(boolean on) {
+        customMatchMode = on;
+    }
+
+    public static boolean isCustomMatchMode() {
+        return customMatchMode;
     }
 
     static String userAgent() {
@@ -724,6 +734,9 @@ public final class LyricsRequests {
      * Artist mismatch is a hard veto.
      */
     public static boolean isHighMatch(MatchVerdict v) {
+        if (customMatchMode) {
+            return true;
+        }
         if (v.title() == Evidence.NONE || v.title() == Evidence.MISSING) {
             return false;
         }
@@ -756,7 +769,17 @@ public final class LyricsRequests {
         // Reject counter-evidence before adapters replace candidate metadata with the
         // query metadata in FetchResult.of(lyrics, track).
         MatchVerdict verdict = prepare(track).evaluate(title, artist, durationSec, album);
+        if (customMatchMode) {
+            return rankScore(verdict);
+        }
         return isHighMatch(verdict) ? verdict.score() : -1;
+    }
+
+    static int rankScore(MatchVerdict v) {
+        if (v.artist() == Evidence.MISMATCH) {
+            return 2;
+        }
+        return Math.max(v.score(), 5);
     }
 
     public static int syncRank(Lyrics lyrics) {

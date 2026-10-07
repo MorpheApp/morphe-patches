@@ -27,5 +27,6 @@ public record LyricsPreference(@Nullable String queryTitle,
                         @Nullable String queryArtist,
                         Lyrics preferred,
                         List<String> queue,
-                        @Nullable String fingerprint) {
+                        @Nullable String fingerprint,
+                        @Nullable String trackKey) {
 }
