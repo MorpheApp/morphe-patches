@@ -54,12 +54,14 @@ public final class LyricsCache {
     private static final String HEADER_PROVIDER = "#provider=";
     private static final String HEADER_SYNCED = "#synced=";
     private static final String HEADER_SOURCE_URL = "#sourceUrl=";
+    private static final String HEADER_FORMAT_TYPE = "#formatType=";
     private static final String HEADER_SONGWRITERS = "#songwriters=";
     private static final String HEADER_QUERY_TITLE = "#queryTitle=";
     private static final String HEADER_QUERY_ARTIST = "#queryArtist=";
     private static final String HEADER_QUEUE = "#queue=";
     private static final String HEADER_FINGERPRINT = "#fp=";
     private static final String NOT_FOUND_MARKER = "#notfound";
+    private static final String RAW_SUFFIX = ".raw";
 
     private static final Map<String, Lyrics> memoryCache = Collections.synchronizedMap(
             new LinkedHashMap<String, Lyrics>(MEMORY_ENTRIES, 0.75f, true) {
@@ -144,7 +146,7 @@ public final class LyricsCache {
                 contentStart++;
             }
 
-            Lyrics preferred = parseContent(lines, contentStart, track);
+            Lyrics preferred = parseContent(file, lines, contentStart, track);
             if (preferred == null || preferred == Lyrics.NOT_FOUND) {
                 return null;
             }
@@ -189,8 +191,10 @@ public final class LyricsCache {
             appendLyrics(fileLines, preferred);
 
             writePreferenceFile(file, fileLines);
+            writeRaw(file, preferred.rawFormat());
             if (fileByTrack != null && !fileByTrack.equals(file)) {
                 writePreferenceFile(fileByTrack, fileLines);
+                writeRaw(fileByTrack, preferred.rawFormat());
             }
             noteCacheWrite();
         } catch (Exception ex) {
@@ -214,6 +218,9 @@ public final class LyricsCache {
         fileLines.add(HEADER_SYNCED + lyrics.synced());
         if (lyrics.sourceUrl() != null) {
             fileLines.add(HEADER_SOURCE_URL + lyrics.sourceUrl());
+        }
+        if (lyrics.formatType() != null) {
+            fileLines.add(HEADER_FORMAT_TYPE + lyrics.formatType());
         }
         if (lyrics.songwriters() != null && !lyrics.songwriters().isEmpty()) {
             fileLines.add(HEADER_SONGWRITERS + String.join("␟", lyrics.songwriters()));
@@ -485,7 +492,8 @@ public final class LyricsCache {
             String content = String.join("\n",
                     lines.subList(header.contentStart(), lines.size()));
             return parseContentLines(content, header.synced(), header.provider(),
-                    header.songwriters(), header.sourceUrl(), key);
+                    header.songwriters(), header.sourceUrl(), header.formatType(),
+                    readRaw(file), key);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not read lyrics from disk cache", ex);
             return null;
@@ -493,18 +501,19 @@ public final class LyricsCache {
     }
 
     @Nullable
-    private static Lyrics parseContent(List<String> lines, int contentStart, TrackInfo track)
-            throws Exception {
+    private static Lyrics parseContent(File file, List<String> lines, int contentStart,
+            TrackInfo track) throws Exception {
         Header header = parseHeaders(lines, contentStart);
         String content = String.join("\n",
                 lines.subList(header.contentStart(), lines.size()));
         return parseContentLines(content, header.synced(), header.provider(),
-                header.songwriters(), header.sourceUrl(), key(track, header.provider()));
+                header.songwriters(), header.sourceUrl(), header.formatType(), readRaw(file),
+                key(track, header.provider()));
     }
 
     /** The header lines of a cached lyrics file and the index its content starts at. */
     private record Header(boolean notFound, String provider, boolean synced,
-                          @Nullable String sourceUrl,
+                          @Nullable String sourceUrl, @Nullable String formatType,
                           @Nullable List<String> songwriters, int contentStart) {
     }
 
@@ -512,6 +521,7 @@ public final class LyricsCache {
         String provider = "";
         boolean synced = false;
         String sourceUrl = null;
+        String formatType = null;
         List<String> songwriters = null;
         int contentStart = from;
         boolean notFound = false;
@@ -529,6 +539,8 @@ public final class LyricsCache {
                 synced = Boolean.parseBoolean(line.substring(HEADER_SYNCED.length()));
             } else if (line.startsWith(HEADER_SOURCE_URL)) {
                 sourceUrl = emptyToNull(line.substring(HEADER_SOURCE_URL.length()));
+            } else if (line.startsWith(HEADER_FORMAT_TYPE)) {
+                formatType = emptyToNull(line.substring(HEADER_FORMAT_TYPE.length()));
             } else if (line.startsWith(HEADER_SONGWRITERS)) {
                 String value = line.substring(HEADER_SONGWRITERS.length());
                 if (!value.isEmpty()) {
@@ -548,13 +560,16 @@ public final class LyricsCache {
             }
             contentStart = i + 1;
         }
-        return new Header(notFound, provider, synced, sourceUrl, songwriters, contentStart);
+        return new Header(notFound, provider, synced, sourceUrl, formatType, songwriters,
+                contentStart);
     }
 
     @Nullable
     private static Lyrics parseContentLines(String content, boolean synced, String provider,
                                             @Nullable List<String> songwriters,
-                                            @Nullable String sourceUrl, String key) {
+                                            @Nullable String sourceUrl,
+                                            @Nullable String formatType,
+                                            @Nullable String rawFormat, String key) {
         List<LyricsLine> parsed = synced
                 ? LrcParser.parseSynced(content)
                 : LrcParser.parsePlain(content);
@@ -562,7 +577,7 @@ public final class LyricsCache {
             return null;
         }
         return new Lyrics(parsed, provider, synced, readEmbeddedRomanization(key),
-                null, null, songwriters, null, null, sourceUrl);
+                null, null, songwriters, rawFormat, formatType, sourceUrl);
     }
 
     @Nullable
@@ -585,9 +600,46 @@ public final class LyricsCache {
             }
 
             Files.write(file.toPath(), fileLines, StandardCharsets.UTF_8);
+            writeRaw(file, lyrics.rawFormat());
             noteCacheWrite();
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not write the lyrics cache", ex);
+        }
+    }
+
+    private static File rawFile(File file) {
+        return new File(file.getParentFile(), file.getName() + RAW_SUFFIX);
+    }
+
+    private static void writeRaw(@Nullable File file, @Nullable String raw) {
+        if (file == null) {
+            return;
+        }
+        File sidecar = rawFile(file);
+        try {
+            if (raw == null || raw.isEmpty()) {
+                Files.deleteIfExists(sidecar.toPath());
+                return;
+            }
+            Files.write(sidecar.toPath(), raw.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not write the lyrics raw cache", ex);
+        }
+    }
+
+    @Nullable
+    private static String readRaw(File file) {
+        File sidecar = rawFile(file);
+        if (!sidecar.exists()) {
+            return null;
+        }
+        try {
+            String raw = new String(Files.readAllBytes(sidecar.toPath()),
+                    StandardCharsets.UTF_8);
+            return raw.isEmpty() ? null : raw;
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not read the lyrics raw cache", ex);
+            return null;
         }
     }
 
@@ -614,21 +666,41 @@ public final class LyricsCache {
         }
 
         File[] files = directory.listFiles();
-        if (files == null || files.length <= DISK_ENTRIES) {
+        if (files == null) {
             return;
         }
 
-        final long[] modified = new long[files.length];
-        final Integer[] oldestFirst = new Integer[files.length];
-        for (int i = 0; i < files.length; i++) {
-            modified[i] = files[i].lastModified();
+        List<File> mains = new ArrayList<>(files.length);
+        for (File file : files) {
+            String name = file.getName();
+            if (name.endsWith(RAW_SUFFIX)) {
+                if (!new File(directory, name.substring(0, name.length() - RAW_SUFFIX.length()))
+                        .exists()) {
+                    discard(file);
+                }
+                continue;
+            }
+            mains.add(file);
+        }
+        if (mains.size() <= DISK_ENTRIES) {
+            return;
+        }
+
+        final long[] modified = new long[mains.size()];
+        final Integer[] oldestFirst = new Integer[mains.size()];
+        for (int i = 0; i < mains.size(); i++) {
+            modified[i] = mains.get(i).lastModified();
             oldestFirst[i] = i;
         }
         Arrays.sort(oldestFirst, Comparator.comparingLong(i -> modified[i]));
 
-        final int deleteCount = files.length - DISK_ENTRIES;
+        final int deleteCount = mains.size() - DISK_ENTRIES;
         for (int i = 0; i < deleteCount; i++) {
-            File file = files[oldestFirst[i]];
+            File file = mains.get(oldestFirst[i]);
+            File sidecar = rawFile(file);
+            if (sidecar.exists()) {
+                sidecar.delete();
+            }
             if (!file.delete()) {
                 Logger.printDebug(() -> "Could not delete a cached lyrics file: " + file);
             }

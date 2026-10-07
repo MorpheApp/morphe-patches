@@ -95,6 +95,17 @@ public final class MiniPlayerLyrics {
         LyricsManager.getInstance().removeListener(lyricsListener);
     }
 
+    public static void onSettingsChanged() {
+        cachedSubtitle = null;
+        if (!Settings.LYRICS_ENABLED.get() || !Settings.LYRICS_MINIPLAYER.get()
+                || titleRef.get() == null || subtitleRef.get() == null) {
+            disableFeature();
+            return;
+        }
+        LyricsManager.getInstance().addListener(lyricsListener);
+        ticker.schedule();
+    }
+
     public static void onMediaSessionSetMetadata(MediaSession session, MediaMetadata original) {
         try {
             if (original == null) {
@@ -115,6 +126,7 @@ public final class MiniPlayerLyrics {
 
             android.net.Uri mediaUri = LyricsManager.parseMediaUri(original);
             LyricsManager.getInstance().onDisplayedTrackChanged(title, artist, mediaUri);
+            onSettingsChanged();
         } catch (Exception ex) {
             Logger.printException(() -> "onMediaSessionSetMetadata failure", ex);
         }

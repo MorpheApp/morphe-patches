@@ -541,7 +541,8 @@ public final class MusixmatchProvider implements LyricsProvider {
         if (result.isEmpty()) {
             return null;
         }
-        return new Lyrics(result, name(), true, null, null, null, null, null, "lrc", sourceUrl);
+        return new Lyrics(result, name(), true, null, null, null, null, body, "mxm.json",
+                sourceUrl);
     }
 
     @Nullable
@@ -550,7 +551,7 @@ public final class MusixmatchProvider implements LyricsProvider {
         if (result.isEmpty()) {
             return null;
         }
-        return new Lyrics(result, name(), false, null, null, null, null, null, null, sourceUrl);
+        return new Lyrics(result, name(), false, null, null, null, null, body, "txt", sourceUrl);
     }
 
     private HttpURLConnection openApi(String url) throws IOException {

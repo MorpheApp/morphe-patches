@@ -29,6 +29,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.session.MiniPlayerLyrics;
 
 /**
  * Puts the third party lyrics panel into the lyrics engagement panel.
@@ -103,6 +104,7 @@ public final class LyricsPanelInstaller {
                 } else {
                     uninstallLyricsPanel();
                 }
+                MiniPlayerLyrics.onSettingsChanged();
                 return;
             }
             if (Settings.LYRICS_SOURCE.key.equals(key)
@@ -114,6 +116,11 @@ public final class LyricsPanelInstaller {
             }
             if (Settings.LYRICS_KEEP_SCREEN_ON.key.equals(key)) {
                 updateKeepScreenOn(isLyricsPanelOpen());
+                return;
+            }
+            if (Settings.LYRICS_MINIPLAYER.key.equals(key)
+                    || Settings.LYRICS_DISPLAY_ARTIST_FIRST.key.equals(key)) {
+                MiniPlayerLyrics.onSettingsChanged();
                 return;
             }
             final LyricsPanelView panelView = panelReference.get();

@@ -1659,7 +1659,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 return;
             }
             Lyrics current = lyrics;
-            if (current == null || current.rawFormat() == null) {
+            if (current == null) {
                 return;
             }
             TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
