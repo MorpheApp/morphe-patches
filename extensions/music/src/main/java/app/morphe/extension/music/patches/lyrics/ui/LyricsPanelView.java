@@ -63,16 +63,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.IntConsumer;
 
-import app.morphe.extension.music.patches.lyrics.model.Lyrics;
-import app.morphe.extension.music.patches.lyrics.storage.LyricsFileSaver;
-import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
-import app.morphe.extension.music.patches.lyrics.translate.LyricsRomanizer;
-import app.morphe.extension.music.patches.lyrics.translate.LyricsTranslator;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
+import app.morphe.extension.music.patches.lyrics.storage.LyricsFileSaver;
+import app.morphe.extension.music.patches.lyrics.translate.LyricsRomanizer;
+import app.morphe.extension.music.patches.lyrics.translate.LyricsTranslator;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -586,7 +586,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (context == null) {
                 return;
             }
-            SbSubmitDialog.show(context, videoId, startMs, stopMs,
+            SponsorBlockMusicSubmitDialog.show(context, videoId, startMs, stopMs,
                     offsetRulerView::setOffsetMs, this::scheduleHideOffsetRuler);
             return;
         }
@@ -3060,7 +3060,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             String offsetText = (currentOffsetMs >= 0 ? "+" : "") + currentOffsetMs + "ms";
             String text = recordTimeMs == null
                     ? offsetText
-                    : SbSubmitDialog.formatTimeMs(recordTimeMs) + " " + offsetText;
+                    : SponsorBlockMusicSubmitDialog.formatTimeMs(recordTimeMs) + " " + offsetText;
             valuePaint.setTextSize(13 * density);
             canvas.drawText(text, w / 2f, h / 2f + 5 * density, valuePaint);
         }

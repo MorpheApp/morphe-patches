@@ -1,6 +1,6 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/pull/2269
+ * https://github.com/MorpheApp/morphe-patches/pull/3575
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -31,50 +31,40 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
+import java.util.Arrays;
 import java.util.Locale;
-import java.util.UUID;
 import java.util.function.IntConsumer;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 import app.morphe.extension.music.patches.lyrics.SkipSegments;
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
+import app.morphe.extension.shared.sponsorblock.objects.SegmentCategory;
+import app.morphe.extension.shared.sponsorblock.requests.SBRequester;
+import app.morphe.extension.shared.sponsorblock.requests.SBRequester.SegmentSubmitAction;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
-final class SbSubmitDialog {
+/**
+ * YouTube Music dialog that submits the span recorded in the lyrics panel as a SponsorBlock
+ * segment, so lyrics written against the released audio line up with the music video. While
+ * the dialog is open the span is previewed: the lyrics skip it as if it were already stored.
+ */
+final class SponsorBlockMusicSubmitDialog {
 
-    private static final String[] CATEGORY_KEYS = {
-            "sponsor", "selfpromo", "interaction", "intro", "outro",
-            "preview", "hook", "filler", "music_offtopic"};
-    private static final String[] CATEGORY_TITLE_KEYS = {
-            "morphe_sb_segments_sponsor",
-            "morphe_sb_segments_selfpromo",
-            "morphe_sb_segments_interaction",
-            "morphe_sb_segments_intro",
-            "morphe_sb_segments_outro",
-            "morphe_sb_segments_preview",
-            "morphe_sb_segments_hook",
-            "morphe_sb_segments_filler",
-            "morphe_sb_segments_nomusic"};
-    private static final int DEFAULT_CATEGORY_INDEX = defaultCategoryIndex();
-    private static final Route SUBMIT_ROUTE = new Route(Route.Method.POST,
-            "/api/skipSegments?userID={user_id}&videoID={video_id}&category={category}"
-                    + "&startTime={start_time}&endTime={end_time}"
-                    + "&videoDuration={duration}&actionType={action_type}"
-                    + "&userAgent={user_agent}");
+    /** Highlights are a single point in time and cannot shift lyrics. */
+    private static final SegmentCategory[] CATEGORIES =
+            SegmentCategory.categoriesWithoutHighlights();
+    private static final int DEFAULT_CATEGORY_INDEX =
+            Arrays.asList(CATEGORIES).indexOf(SegmentCategory.MUSIC_OFFTOPIC);
 
+    /** How long the server takes before a new segment is returned by segment requests. */
     private static final long REFRESH_DELAY_MS = 10_000;
 
-    private SbSubmitDialog() {
+    private SponsorBlockMusicSubmitDialog() {
     }
 
     static String formatTimeMs(long ms) {
@@ -89,15 +79,6 @@ final class SbSubmitDialog {
 
     static String formatOffsetMs(long offsetMs) {
         return (offsetMs >= 0 ? "+" : "") + offsetMs + "ms";
-    }
-
-    private static int defaultCategoryIndex() {
-        for (int i = 0; i < CATEGORY_KEYS.length; i++) {
-            if ("music_offtopic".equals(CATEGORY_KEYS[i])) {
-                return i;
-            }
-        }
-        return 0;
     }
 
     static void show(Context context, String videoId, long startMs, long endMs,
@@ -171,9 +152,11 @@ final class SbSubmitDialog {
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         content.addView(offsetRow, blockParams(Dim.dp28));
 
-        final String[] categoryTitles = new String[CATEGORY_KEYS.length];
-        for (int i = 0; i < CATEGORY_KEYS.length; i++) {
-            categoryTitles[i] = str(CATEGORY_TITLE_KEYS[i]);
+        final String[] categoryTitles = new String[CATEGORIES.length];
+        final String[] categoryKeys = new String[CATEGORIES.length];
+        for (int i = 0; i < CATEGORIES.length; i++) {
+            categoryTitles[i] = CATEGORIES[i].title.toString();
+            categoryKeys[i] = CATEGORIES[i].keyValue;
         }
 
         final Button categoryButton = CustomDialog.createButton(context, null,
@@ -181,7 +164,7 @@ final class SbSubmitDialog {
         categoryButton.setOnClickListener(v -> {
             final Dialog picker = CustomDialogListPreference.createListDialog(
                     context, str("morphe_sb_new_segment_choose_category"),
-                    categoryTitles, CATEGORY_KEYS, CATEGORY_KEYS[selected[0]],
+                    categoryTitles, categoryKeys, categoryKeys[selected[0]],
                     index -> {
                         selected[0] = index;
                         categoryButton.setText(categoryTitles[index]);
@@ -204,11 +187,10 @@ final class SbSubmitDialog {
                                 str("morphe_sb_new_segment_start_is_before_end"));
                         return;
                     }
-                    final int categoryIndex = selected[0];
+                    final SegmentCategory category = CATEGORIES[selected[0]];
                     submitted[0] = true;
                     Utils.runOnBackgroundThread(() -> submitSegment(
-                            videoId, CATEGORY_KEYS[categoryIndex], start, end,
-                            videoLength, manager));
+                            videoId, category, start, end, videoLength, manager));
                 },
                 () -> { },
                 str("morphe_sb_settings_copy"),
@@ -229,49 +211,27 @@ final class SbSubmitDialog {
                         LinearLayout.LayoutParams.WRAP_CONTENT));
         try {
             dialog.show();
-        } catch (WindowManager.BadTokenException ignored) {
+        } catch (WindowManager.BadTokenException ex) {
+            Logger.printException(() -> "Could not show the submit dialog", ex);
             // No dismissal listener will ever fire, so the preview must be dropped here.
             manager.clearDialogSegment();
         }
     }
 
-    private static void submitSegment(String videoId, String category,
+    /** Submits on a background thread. {@link SBRequester} reports the outcome to the user. */
+    private static void submitSegment(String videoId, SegmentCategory category,
                                       long startMs, long endMs, long videoLength,
                                       LyricsManager manager) {
+        boolean stored = false;
         try {
-            final String userId = (UUID.randomUUID().toString() + UUID.randomUUID()
-                    + UUID.randomUUID()).replace("-", "");
-            final HttpURLConnection connection = Requester.getConnectionFromRoute(
-                    Settings.SB_API_URL.get(), SUBMIT_ROUTE, userId, videoId, category,
-                    formatSeconds(startMs), formatSeconds(endMs),
-                    formatSeconds(videoLength), "skip",
-                    "Morphe/" + Utils.getAppVersionName());
-            final int code = connection.getResponseCode();
-            if (code == Requester.HTTP_STATUS_CODE_SUCCESS) {
-                connection.disconnect();
-                Utils.showToastLong(str("morphe_sb_submit_succeeded"));
-                scheduleSegmentRefresh(videoId, manager);
-                return;
-            }
-            if (code == 409) {
-                connection.disconnect();
-                Utils.showToastLong(str("morphe_sb_submit_failed_duplicate"));
-                scheduleSegmentRefresh(videoId, manager);
-                return;
-            }
-            final String message = switch (code) {
-                case 429 -> str("morphe_sb_submit_failed_rate_limit");
-                default -> str("morphe_sb_submit_failed_unknown_error",
-                        code, connection.getResponseMessage());
-            };
-            connection.disconnect();
-            Utils.showToastLong(message);
-            dropDialogPreview(manager, videoId, startMs, endMs);
-        } catch (IOException ex) {
-            Utils.showToastLong(str("morphe_sb_sponsorblock_connection_failure_generic"));
-            dropDialogPreview(manager, videoId, startMs, endMs);
+            stored = SBRequester.submitSegments(videoId, category, SegmentSubmitAction.SKIP,
+                    startMs, endMs, videoLength);
         } catch (Exception ex) {
-            Logger.printException(() -> "failed to submit sponsorblock segment", ex);
+            Logger.printException(() -> "submitSegment failure", ex);
+        }
+        if (stored) {
+            scheduleSegmentRefresh(videoId, manager);
+        } else {
             dropDialogPreview(manager, videoId, startMs, endMs);
         }
     }
@@ -428,10 +388,6 @@ final class SbSubmitDialog {
         void setValue(int ms) {
             offsetMs = clamp(ms);
             invalidate();
-        }
-
-        void reset() {
-            apply(0);
         }
 
         private static int clamp(int ms) {

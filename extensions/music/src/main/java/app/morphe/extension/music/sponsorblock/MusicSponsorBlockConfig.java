@@ -157,7 +157,7 @@ public final class MusicSponsorBlockConfig implements Configuration {
         @Override public @Nullable BooleanSetting toastOnWhitelistedChannel()   { return null; }
         @Override public @Nullable BooleanSetting autoHideSkipButton()          { return null; }
         @Override public @Nullable BooleanSetting userIsVip()                   { return null; }
-        @Override public @Nullable StringSetting  privateUserId()               { return null; }
+        @Override public @Nullable StringSetting  privateUserId()               { return Settings.SB_PRIVATE_USER_ID; }
         @Override public @Nullable FloatSetting   segmentMinDurationSeconds()   { return null; }
         @Override public @Nullable LongSetting    lastVipCheck()                { return null; }
         @Override public @Nullable BooleanSetting trackSkipCount()              { return null; }
