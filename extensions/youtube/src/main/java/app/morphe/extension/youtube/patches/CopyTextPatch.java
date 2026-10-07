@@ -243,29 +243,42 @@ public final class CopyTextPatch {
                 return null;
             }
 
+            // A comment can start with the comment it quotes,
+            // but the comment that is shown matches for longer.
+            String bestComment = null;
+            int bestLength = -1;
             for (String comment : commentTexts.keySet()) {
-                if (isShownText(text, comment)) {
-                    return comment;
+                final int length = shownLength(text, comment);
+                if (length > bestLength) {
+                    bestComment = comment;
+                    bestLength = length;
                 }
             }
-            return null;
+            return bestComment;
         }
     }
 
-    /**
-     * @return If the shown text is the full text, or the full text truncated by Litho.
-     */
     private static boolean isShownText(String shownText, String fullText) {
+        return shownLength(shownText, fullText) >= 0;
+    }
+
+    /**
+     * @return The length of the full text that is shown, if the shown text is the full text
+     *         or the full text truncated by Litho, or -1 if not.
+     */
+    private static int shownLength(String shownText, String fullText) {
         if (fullText.isEmpty()) {
-            return false;
+            return -1;
         }
         if (shownText.equals(fullText)) {
-            return true;
+            return fullText.length();
         }
         final int prefixLength = commonPrefixLength(shownText, fullText);
         return prefixLength >= MIN_TRUNCATED_TEXT_LENGTH
                 && prefixLength < fullText.length()
-                && shownText.length() - prefixLength <= MAX_ELLIPSIS_LENGTH;
+                && shownText.length() - prefixLength <= MAX_ELLIPSIS_LENGTH
+                ? prefixLength
+                : -1;
     }
 
     private static int commonPrefixLength(String first, String second) {
