@@ -804,7 +804,7 @@ To fix this, turn on \'Spoof video streams\' and change the \'Default client\' t
 
     <!-- layout.captions.preferredCaptionLanguagePatch -->
     <string name="morphe_preferred_caption_language_title">Preferred caption language</string>
-    <string name="morphe_preferred_caption_language_summary">Selects provider or auto-generated subtitles first, then automatically translates to the preferred language</string>
+    <string name="morphe_preferred_caption_language_summary">Selects provider subtitles first, then automatically translates to the preferred language</string>
     <string name="morphe_preferred_caption_language_entry_off">Off</string>
 
     <!-- layout.captions.captionCookiesPatch -->

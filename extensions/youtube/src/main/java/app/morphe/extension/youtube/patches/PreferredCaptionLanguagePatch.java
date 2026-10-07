@@ -10,7 +10,6 @@ package app.morphe.extension.youtube.patches;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -53,25 +52,23 @@ public class PreferredCaptionLanguagePatch {
                 return originalTrack;
             }
 
-            initReflection(subtitleManager);
-            if (originalTrack != null) {
-                initTrackFields(originalTrack);
-            }
-
             // CC off guard: Preserve explicitly disabled caption option
             if (isExplicitlyDisabled(originalTrack)) {
                 return originalTrack;
             }
 
             String prefLang = Settings.PREFERRED_CAPTION_LANGUAGE.get();
-            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: getPreferredCaptionTrack entry, orig=" + originalTrack + ", prefLang=" + prefLang);
+            final Object effectiveSm = subtitleManager;
+            final Object effectiveOrig = originalTrack;
+            final String effectivePrefLang = prefLang;
+            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: getPreferredCaptionTrack entry, sm=" + (effectiveSm != null) + ", orig=" + effectiveOrig + ", prefLang=" + effectivePrefLang);
 
             if (prefLang == null || "off".equalsIgnoreCase(prefLang)) {
                 return originalTrack;
             }
 
             if (userSelectedTrack.get()) {
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: User manually selected caption track, preserving: " + originalTrack);
+                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: User manually selected caption track, preserving: " + effectiveOrig);
                 return originalTrack;
             }
 
@@ -87,8 +84,6 @@ public class PreferredCaptionLanguagePatch {
             }
 
             targetLang = normalizeLanguageCode(targetLang);
-            final String effectiveTargetLang = targetLang;
-            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Effective target language: " + effectiveTargetLang);
             if (targetLang.isEmpty()) {
                 return originalTrack;
             }
@@ -107,10 +102,8 @@ public class PreferredCaptionLanguagePatch {
             resolveListMethods(tracksManager);
 
             // 1. Direct tracks (Priority 1: Provider subtitle, or Native language subtitle)
-            Object bestProviderTrack = null;
-            int bestProviderScore = 0;
-            Object bestNativeAsrTrack = null;
-            int bestNativeAsrScore = 0;
+            Object providerTrack = null;
+            Object nativeAsrTrack = null;
             boolean autoTranslateAvailable = false;
 
             if (directTracksMethod != null) {
@@ -132,18 +125,14 @@ public class PreferredCaptionLanguagePatch {
                             continue;
                         }
 
-                        int score = getLanguageMatchScore(lang, targetLang);
-                        if (score > 0) {
+                        if (matchesLanguage(lang, targetLang)) {
                             if (vssId != null && vssId.startsWith(".")) {
-                                if (score > bestProviderScore) {
-                                    bestProviderScore = score;
-                                    bestProviderTrack = track;
-                                }
-                            } else {
-                                if (score > bestNativeAsrScore) {
-                                    bestNativeAsrScore = score;
-                                    bestNativeAsrTrack = track;
-                                }
+                                // Creator / Provider subtitle in target language!
+                                providerTrack = track;
+                                break;
+                            } else if (nativeAsrTrack == null) {
+                                // Native language track (video audio is in target language)
+                                nativeAsrTrack = track;
                             }
                         }
                     }
@@ -151,21 +140,19 @@ public class PreferredCaptionLanguagePatch {
             }
 
             // Provider subtitle in target language has highest priority
-            if (bestProviderTrack != null) {
-                final Object selectedProviderTrack = bestProviderTrack;
-                final int score = bestProviderScore;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 1 (Provider subtitle, score=" + score + "): " + selectedProviderTrack);
-                recordProgrammaticSelection(bestProviderTrack);
-                return bestProviderTrack;
+            if (providerTrack != null) {
+                final Object selectedProviderTrack = providerTrack;
+                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 1 (Provider subtitle): " + selectedProviderTrack);
+                recordProgrammaticSelection(providerTrack);
+                return providerTrack;
             }
 
             // If the video itself is in the target language (native ASR), keep native
-            if (bestNativeAsrTrack != null) {
-                final Object selectedNativeAsrTrack = bestNativeAsrTrack;
-                final int score = bestNativeAsrScore;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 1b (Native target language track, score=" + score + "): " + selectedNativeAsrTrack);
-                recordProgrammaticSelection(bestNativeAsrTrack);
-                return bestNativeAsrTrack;
+            if (nativeAsrTrack != null) {
+                final Object selectedNativeAsrTrack = nativeAsrTrack;
+                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 1b (Native target language track): " + selectedNativeAsrTrack);
+                recordProgrammaticSelection(nativeAsrTrack);
+                return nativeAsrTrack;
             }
 
             // 2. Auto-translated tracks (Priority 2: Auto-translate to target language)
@@ -173,30 +160,17 @@ public class PreferredCaptionLanguagePatch {
             if (autoTranslateAvailable && autoTranslateTracksMethod != null) {
                 List<?> autoTracks = (List<?>) autoTranslateTracksMethod.invoke(tracksManager);
                 if (autoTracks != null) {
-                    Object bestAutoTrack = null;
-                    int bestAutoScore = 0;
-
                     for (Object track : autoTracks) {
                         if (track == null) continue;
                         initTrackFields(track);
 
                         String lang = getTrackLanguage(track);
-                        if (lang == null || isPseudoOption(lang)) continue;
-
-                        int score = getLanguageMatchScore(lang, targetLang);
-                        if (score > bestAutoScore) {
-                            bestAutoScore = score;
-                            bestAutoTrack = track;
-                            if (score == 3) break; // Exact match found, stop searching
+                        if (lang != null && matchesLanguage(lang, targetLang)) {
+                            final Object selectedAutoTrack = track;
+                            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 2 (Auto-translated subtitle): " + selectedAutoTrack);
+                            recordProgrammaticSelection(track);
+                            return track;
                         }
-                    }
-
-                    if (bestAutoTrack != null) {
-                        final Object selectedAutoTrack = bestAutoTrack;
-                        final int score = bestAutoScore;
-                        Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 2 (Auto-translated subtitle, score=" + score + "): " + selectedAutoTrack);
-                        recordProgrammaticSelection(bestAutoTrack);
-                        return bestAutoTrack;
                     }
                 }
             } else if (!autoTranslateAvailable) {
@@ -339,17 +313,20 @@ public class PreferredCaptionLanguagePatch {
             for (Field field : smClass.getDeclaredFields()) {
                 if (Modifier.isStatic(field.getModifiers())) continue;
                 Class<?> type = field.getType();
-                List<Method> listMethods = new ArrayList<>();
+                Method directM = null;
+                Method autoM = null;
                 for (Method m : type.getDeclaredMethods()) {
                     if (Modifier.isStatic(m.getModifiers())) continue;
                     if (List.class.isAssignableFrom(m.getReturnType()) && m.getParameterTypes().length == 0) {
-                        listMethods.add(m);
+                        if (directM == null) {
+                            directM = m;
+                        } else if (autoM == null) {
+                            autoM = m;
+                        }
                     }
                 }
 
-                if (listMethods.size() == 2) {
-                    Method directM = listMethods.get(0);
-                    Method autoM = listMethods.get(1);
+                if (directM != null && autoM != null) {
                     field.setAccessible(true);
                     captionTracksManagerField = field;
 
@@ -449,7 +426,7 @@ public class PreferredCaptionLanguagePatch {
                         String s = (String) val;
                         if (DISABLE_OPTION.equals(s) || AUTO_TRANSLATE_OPTION.equals(s)) {
                             langF = f;
-                        } else if (vssF == null && ("-".equals(s) || s.startsWith(".") || s.startsWith("a.") || s.startsWith("t.") || s.startsWith("ta."))) {
+                        } else if ("-".equals(s) || s.startsWith(".") || s.startsWith("a.") || s.startsWith("t.") || s.startsWith("ta.")) {
                             vssF = f;
                         }
                     }
@@ -464,9 +441,8 @@ public class PreferredCaptionLanguagePatch {
                         Object val = f.get(track);
                         if (val instanceof String) {
                             String s = (String) val;
-                            // Strictly match ISO 639-1/2 or BCP-47 tag (e.g. en, ko, zh-Hans). Never match languageName (e.g. English, Korean) or track kinds.
-                            if (s.matches("(?i)^[a-z]{2,3}(-[a-zA-Z0-9]+)?$") && !s.contains(" ") && !s.contains("/")
-                                    && !"asr".equalsIgnoreCase(s) && !"forcing".equalsIgnoreCase(s)) {
+                            // Strictly match ISO 639-1/2 or BCP-47 tag (e.g. en, ko, zh-Hans). Never match languageName (e.g. English, Korean).
+                            if (s.matches("(?i)^[a-z]{2,3}(-[a-zA-Z0-9]+)?$") && !s.contains(" ") && !s.contains("/")) {
                                 langF = f;
                                 break;
                             }
@@ -551,49 +527,25 @@ public class PreferredCaptionLanguagePatch {
         return s;
     }
 
-    private static boolean isTraditionalChinese(String s) {
-        return s.contains("hant") || s.contains("tw") || s.contains("hk") || s.contains("mo");
-    }
-
-    private static boolean isSimplifiedChinese(String s) {
-        return s.contains("hans") || s.contains("cn") || s.contains("sg") || s.contains("my");
-    }
-
-    private static int getLanguageMatchScore(String trackLang, String targetLang) {
-        if (trackLang == null || targetLang == null) return 0;
+    private static boolean matchesLanguage(String trackLang, String targetLang) {
+        if (trackLang == null || targetLang == null) return false;
         String t1 = normalizeLanguageCode(trackLang);
         String t2 = normalizeLanguageCode(targetLang);
+        if (t1.equals(t2)) return true;
+        if (t1.startsWith(t2 + "-") || t2.startsWith(t1 + "-")) return true;
 
-        // 1. Cross-script matching between Simplified and Traditional Chinese is strictly prohibited
-        if ((isSimplifiedChinese(t1) && isTraditionalChinese(t2)) ||
-            (isTraditionalChinese(t1) && isSimplifiedChinese(t2))) {
-            return 0;
+        // Prevent cross-matching between Simplified and Traditional Chinese
+        boolean t1Traditional = t1.contains("hant") || t1.contains("tw") || t1.contains("hk");
+        boolean t1Simplified = t1.contains("hans") || t1.contains("cn");
+        boolean t2Traditional = t2.contains("hant") || t2.contains("tw") || t2.contains("hk");
+        boolean t2Simplified = t2.contains("hans") || t2.contains("cn");
+
+        if ((t1Simplified && t2Traditional) || (t1Traditional && t2Simplified)) {
+            return false;
         }
-
-        // Tier 1: Exact match (3 points)
-        if (t1.equals(t2)) return 3;
 
         String p1 = t1.contains("-") ? t1.substring(0, t1.indexOf('-')) : t1;
         String p2 = t2.contains("-") ? t2.substring(0, t2.indexOf('-')) : t2;
-        if (!p1.equals(p2)) return 0;
-
-        // Chinese script compatibility (e.g. zh-Hans <-> zh-CN, zh-Hant <-> zh-TW)
-        if ((isSimplifiedChinese(t1) && isSimplifiedChinese(t2)) ||
-            (isTraditionalChinese(t1) && isTraditionalChinese(t2))) {
-            if (t1.contains("hans") || t2.contains("hans") || t1.contains("hant") || t2.contains("hant")) {
-                return 2;
-            }
-        }
-
-        // Tier 2: Base language compatibility (one side has no region/script, e.g. ko-KR <-> ko, es-419 <-> es)
-        if (!t1.contains("-") || !t2.contains("-")) {
-            if ("zh".equals(t1) || "zh".equals(t2)) {
-                return 1;
-            }
-            return 2;
-        }
-
-        // Tier 3: Same language, compatible script, different region dialect (e.g. zh-TW <-> zh-HK, es-419 <-> es-MX)
-        return 1;
+        return p1.equals(p2);
     }
 }
