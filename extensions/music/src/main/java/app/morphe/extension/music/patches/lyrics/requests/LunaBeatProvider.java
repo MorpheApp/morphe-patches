@@ -23,6 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -36,6 +37,10 @@ public final class LunaBeatProvider implements LyricsProvider {
     private static final String BASE_URL = "https://2755337087.github.io/ttml-hub/";
     private static final String MANIFEST_URL = BASE_URL + "api/v1/manifest.json";
     private static final String SONGS_URL = BASE_URL + "api/v1/songs.json";
+
+    private static final long REQUEST_THROTTLE_MS = 500;
+
+    private static final AtomicLong lastRequestTime = new AtomicLong(0);
 
     private static volatile List<Song> lunabeatSongs = Collections.emptyList();
     private static volatile String lunabeatCachedRevision;
@@ -77,6 +82,7 @@ public final class LunaBeatProvider implements LyricsProvider {
     private static String fetchRevision() {
         HttpURLConnection conn = null;
         try {
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             conn = LyricsRequests.openConnection(MANIFEST_URL);
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
@@ -95,6 +101,7 @@ public final class LunaBeatProvider implements LyricsProvider {
     private static List<Song> fetchSongIndex() {
         HttpURLConnection conn = null;
         try {
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             conn = LyricsRequests.openConnection(SONGS_URL);
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
@@ -222,6 +229,7 @@ public final class LunaBeatProvider implements LyricsProvider {
         String url = BASE_URL + song.path;
         HttpURLConnection conn = null;
         try {
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             conn = LyricsRequests.openConnection(url);
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;

@@ -223,6 +223,7 @@ public final class LyricsManager {
         PlayAlbumSongsPatch.addSubstitutionListener(
                 (videoId, resolvedVideoId) -> reloadCurrentTrack());
         VideoInformation.addVideoIdListener(videoId -> reloadCurrentTrack());
+        LyricsPanelInstaller.registerSettingsListener();
         runOnFetchThread(LunaBeatProvider::preloadIndex);
         runOnFetchThread(() -> {
             MetadataCleaner.resolveSettingBlocking(Settings.LYRICS_CUSTOM_REGEX.get());
@@ -413,7 +414,7 @@ public final class LyricsManager {
      * The song of an album, and the video id of the app itself, can both land after the metadata
      * of a track, so the track is read again whenever either of them arrives.
      */
-    private void reloadCurrentTrack() {
+    public void reloadCurrentTrack() {
         Utils.runOnMainThread(() -> {
             MediaMetadata metadata = currentMetadata;
             if (metadata != null) {
@@ -421,6 +422,11 @@ public final class LyricsManager {
             }
             ensureLoadedForCurrentVideo();
         });
+    }
+
+    public void reloadAfterSettingsChange() {
+        loadedForVideoId = "";
+        reloadCurrentTrack();
     }
 
     private void loadTrackOf(MediaMetadata metadata) {
@@ -1639,7 +1645,7 @@ public final class LyricsManager {
 
         boolean accept(@Nullable ProviderFetch pf, List<ScoredCandidate> scoreCandidates,
                        boolean stage12) {
-            if (pf == null || !pf.highMatch()) {
+            if (pf == null || (!pf.highMatch() && !pf.blind())) {
                 return false;
             }
             Lyrics fetched = pf.lyrics();
@@ -1650,6 +1656,10 @@ public final class LyricsManager {
             final int rank = LyricsRequests.syncRank(fetched);
             final int composite = LyricsRequests.composite(match, fetched, pf.penalty());
             scoreCandidates.add(new ScoredCandidate(composite, rank, fetched));
+
+            if (!pf.highMatch()) {
+                return false;
+            }
 
             if (rank > bestFallbackRank) {
                 bestFallback = fetched;
@@ -1681,7 +1691,7 @@ public final class LyricsManager {
     }
 
     private record ProviderFetch(@Nullable Lyrics lyrics, int matchScore, boolean highMatch,
-                                 int penalty) {}
+                                 boolean blind, int penalty) {}
 
     private ProviderFetch fetchOne(LyricsProvider provider, VariantQuery vq,
                                    Set<String> attempted, Set<String> withResults,
@@ -1695,7 +1705,7 @@ public final class LyricsManager {
             withResults.add(provider.name());
             TrackInfo query = vq.track();
             return new ProviderFetch(fr.lyrics(), fr.matchScore(query), fr.isHighMatch(query),
-                    vq.penalty());
+                    fr.isBlind(), vq.penalty());
         } catch (InterruptedException | java.util.concurrent.CancellationException ex) {
             Thread.currentThread().interrupt();
             return null;

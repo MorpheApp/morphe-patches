@@ -24,6 +24,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -40,10 +41,16 @@ public final class LyricifyProvider implements LyricsProvider {
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                     + "(KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36";
 
+    private static final long REQUEST_THROTTLE_MS = 500;
+
+    private static final AtomicLong lastRequestTime = new AtomicLong(0);
+
     private static final Random RNG = new Random();
 
-    private static final ConcurrentHashMap<String, String> isrcCache =
+    private static final ConcurrentHashMap<String, Resolved> resolvedCache =
             new ConcurrentHashMap<>();
+
+    private record Resolved(String isrc, List<String> titles, List<String> artists) {}
 
     @Override
     public String name() {
@@ -55,16 +62,17 @@ public final class LyricifyProvider implements LyricsProvider {
     public FetchResult fetch(TrackInfo track) throws Exception {
         final String cacheKey = track.title().toLowerCase(Locale.ROOT)
                 + "|" + track.artist().toLowerCase(Locale.ROOT);
-        String isrc = isrcCache.get(cacheKey);
-        if (isrc == null) {
-            isrc = fetchIsrcFromCreditsFm(track.title(), track.artist());
-            if (isrc != null && !isrc.isEmpty()) {
-                isrcCache.put(cacheKey, isrc);
+        Resolved resolved = resolvedCache.get(cacheKey);
+        if (resolved == null) {
+            resolved = resolveFromCreditsFm(track.title(), track.artist());
+            if (resolved != null) {
+                resolvedCache.put(cacheKey, resolved);
             }
         }
-        if (isrc == null || isrc.isEmpty()) {
+        if (resolved == null) {
             return null;
         }
+        final String isrc = resolved.isrc();
 
         final String username = generateUsername();
         final String isrcParam = base64NoWrap(isrc);
@@ -74,6 +82,7 @@ public final class LyricifyProvider implements LyricsProvider {
                 + "?username=" + username
                 + "&isrc=" + isrcEncoded;
 
+        LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
         final HttpURLConnection conn = openApi(url);
 
         final int code = conn.getResponseCode();
@@ -151,7 +160,7 @@ public final class LyricifyProvider implements LyricsProvider {
         }
 
         final String formatType = isSyllable ? "lys" : "lyl";
-        return FetchResult.blind(new Lyrics(
+        return FetchResult.searched(new Lyrics(
                 lines,
                 name(),
                 true,
@@ -161,7 +170,8 @@ public final class LyricifyProvider implements LyricsProvider {
                 creditLines.isEmpty() ? null : creditLines,
                 text,
                 formatType,
-                null));
+                null),
+                resolved.titles(), resolved.artists(), 0L, track);
     }
 
     private static HttpURLConnection openApi(String url) throws IOException {
@@ -177,10 +187,11 @@ public final class LyricifyProvider implements LyricsProvider {
     }
 
     @Nullable
-    private static String fetchIsrcFromCreditsFm(String title, String artist) {
+    private static Resolved resolveFromCreditsFm(String title, String artist) {
         HttpURLConnection connection = null;
         try {
             final String url = "https://api.credits.fm/v1/resolve/track";
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             connection = (HttpURLConnection) new java.net.URL(url).openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
@@ -209,10 +220,21 @@ public final class LyricifyProvider implements LyricsProvider {
                 }
                 JSONObject response = new JSONObject(responseBody);
                 final String isrc = LyricsRequests.optString(response, "isrc");
-                if (isrc != null && !isrc.isEmpty()) {
-                    return isrc;
+                if (isrc == null || isrc.isEmpty()) {
+                    return null;
                 }
-                return null;
+                final List<String> titles = new ArrayList<>(2);
+                final String recordingTitle =
+                        LyricsRequests.optString(response, "recording_title");
+                if (recordingTitle != null) {
+                    titles.add(recordingTitle);
+                }
+                final String songTitle = LyricsRequests.optString(response, "song_title");
+                if (songTitle != null && !titles.contains(songTitle)) {
+                    titles.add(songTitle);
+                }
+                return new Resolved(isrc, titles,
+                        LyricsRequests.stringList(response, "artist_names"));
             }
         } catch (Exception e) {
             Logger.printDebug(() -> "Could not read the ISRC", e);

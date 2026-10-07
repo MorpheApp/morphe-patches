@@ -153,14 +153,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private final TextView creditView;
     private final TextView footerView;
     @Nullable
-    private final TextView translateView;
+    private TextView translateView;
     @Nullable
-    private final TextView romanizeView;
+    private TextView romanizeView;
     /** Copy button, or {@code null} when hidden by settings. */
     @Nullable
-    private final TextView copyView;
+    private TextView copyView;
     @Nullable
-    private final TextView refreshView;
+    private TextView refreshView;
     private final LinearLayout footerContainer;
     private final LinearLayout buttonRow;
     private final ProgressBar progressBar;
@@ -405,41 +405,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         buttonRow.setLayoutTransition(buttonTransition);
         buttonRow.setVisibility(GONE);
 
-        copyView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_COPY_BUTTON.get(),
-                COPY_ICON,
-                view -> onCopyClicked(),
-                view -> {
-                    onCopyLongPressed();
-                    return true;
-                },
-                false);
-
-        translateView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get(),
-                APP_TRANSLATE_ICON,
-                view -> onTranslateClicked(),
-                view -> {
-                    onTranslateLongPressed();
-                    return true;
-                },
-                true);
-
-        romanizeView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_ROMANIZE_BUTTON.get(),
-                APP_ROMANIZE_ICON,
-                view -> onRomanizeClicked(),
-                view -> {
-                    onRomanizeLongPressed();
-                    return true;
-                },
-                true);
-
-        refreshView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_REFRESH_BUTTON.get(),
-                REFRESH_ICON,
-                view -> onRefreshClicked(),
-                view -> {
-                    onRefreshLongPressed();
-                    return true;
-                },
-                true);
+        createToolbarButtons();
 
         // The source line lives in a container of its own, so that lyrics lines can be
         // inserted before it without depending on how many views it holds.
@@ -2792,6 +2758,70 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         // The secondary color alone is brighter than the app draws this line, which
         // sits dimmer than even the inactive lyrics above it.
         footer.setAlpha(FOOTER_ALPHA);
+    }
+
+    private void createToolbarButtons() {
+        copyView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_COPY_BUTTON.get(),
+                COPY_ICON,
+                view -> onCopyClicked(),
+                view -> {
+                    onCopyLongPressed();
+                    return true;
+                },
+                false);
+
+        translateView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_TRANSLATE_BUTTON.get(),
+                APP_TRANSLATE_ICON,
+                view -> onTranslateClicked(),
+                view -> {
+                    onTranslateLongPressed();
+                    return true;
+                },
+                true);
+
+        romanizeView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_ROMANIZE_BUTTON.get(),
+                APP_ROMANIZE_ICON,
+                view -> onRomanizeClicked(),
+                view -> {
+                    onRomanizeLongPressed();
+                    return true;
+                },
+                true);
+
+        refreshView = createToolbarButton(buttonRow, Settings.LYRICS_SHOW_REFRESH_BUTTON.get(),
+                REFRESH_ICON,
+                view -> onRefreshClicked(),
+                view -> {
+                    onRefreshLongPressed();
+                    return true;
+                },
+                true);
+    }
+
+    public void applyToolbarButtonSettings() {
+        buttonRow.removeAllViews();
+        createToolbarButtons();
+        updateTranslateLabel();
+        updateRomanizeLabel();
+        updateRefreshLabel();
+    }
+
+    public void applyTextSize() {
+        final int textSize = Settings.LYRICS_TEXT_SIZE.get();
+        for (TextView lineView : lineViews) {
+            lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        }
+    }
+
+    public void applyHideInfo() {
+        final CharSequence info = creditView.getText();
+        final boolean visible = !Settings.LYRICS_HIDE_INFO.get()
+                && info != null && info.length() > 0;
+        creditView.setVisibility(visible ? VISIBLE : GONE);
+    }
+
+    public void applyLineOverlaySettings() {
+        applyLineOverlay(highlightedIndex);
     }
 
     /**

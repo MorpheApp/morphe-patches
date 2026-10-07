@@ -235,6 +235,24 @@ public final class LyricsRequests {
         return value.trim().isEmpty() ? null : value;
     }
 
+    static List<String> stringList(JSONArray array) {
+        if (array == null) {
+            return List.of();
+        }
+        final List<String> out = new ArrayList<>(array.length());
+        for (int i = 0; i < array.length(); i++) {
+            final String value = array.optString(i, "").trim();
+            if (!value.isEmpty()) {
+                out.add(value);
+            }
+        }
+        return out;
+    }
+
+    static List<String> stringList(JSONObject object, String key) {
+        return stringList(object.optJSONArray(key));
+    }
+
     static String parseGzipString(HttpURLConnection connection) throws IOException {
         final InputStream raw = connection.getInputStream();
         final InputStream stream = "gzip".equalsIgnoreCase(connection.getContentEncoding())

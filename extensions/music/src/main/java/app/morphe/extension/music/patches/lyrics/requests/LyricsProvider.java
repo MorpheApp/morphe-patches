@@ -94,6 +94,40 @@ public interface LyricsProvider {
             }
             return false;
         }
+
+        public boolean isBlind() {
+            return (sourceTitle == null || sourceTitle.isEmpty())
+                    && queriedVariant == null
+                    && !videoIdKeyed;
+        }
+
+        @Nullable
+        public static FetchResult searched(@Nullable Lyrics lyrics,
+                                           @Nullable List<String> titles,
+                                           @Nullable List<String> artists,
+                                           long durationSec, TrackInfo track) {
+            if (lyrics == null) {
+                return null;
+            }
+            if (titles == null || titles.isEmpty()) {
+                return blind(lyrics);
+            }
+            final List<String> artistNames =
+                    artists == null || artists.isEmpty() ? List.of("") : artists;
+            for (String title : titles) {
+                if (title == null || title.isEmpty()) {
+                    continue;
+                }
+                for (String artist : artistNames) {
+                    FetchResult result = new FetchResult(lyrics, title,
+                            artist == null ? "" : artist, durationSec, null, false);
+                    if (result.isHighMatch(track)) {
+                        return result;
+                    }
+                }
+            }
+            return blind(lyrics);
+        }
     }
 
     /**

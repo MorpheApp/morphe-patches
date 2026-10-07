@@ -608,10 +608,10 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_credit_line_regex_summary">If lyrics are incorrectly filtered to the bottom, adjust or clear this. Comma-separated markers: lines containing a marker followed by a colon are shown as credit info at the bottom. Leave empty to disable</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
-    <string name="morphe_music_lyrics_offset_ms_title">Timing offset</string>
+    <string name="morphe_music_lyrics_offset_ms_title">Global timing offset</string>
     <string name="morphe_music_lyrics_offset_ms_summary">Synced lyrics follow playback. If they drift, adjust the timing offset. Shift synced lyrics forwards or backwards. Use a positive value if the lyrics run ahead of the song</string>
     <string name="morphe_music_lyrics_sb_matching_title">Use SponsorBlock segments for lyrics offset</string>
-    <string name="morphe_music_lyrics_sb_matching_summary">Search with the video minus the segments SponsorBlock would skip, and shift the playing lyric onto the released audio. Off makes requests, matching and alignment ignore SponsorBlock entirely</string>
+    <string name="morphe_music_lyrics_sb_matching_summary">Match without the segments SponsorBlock skips and shift lyrics onto the released audio. Off ignores SponsorBlock entirely</string>
     <string name="morphe_music_lyrics_sb_no_video">This track has no video id to submit</string>
     <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
@@ -633,6 +633,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_refreshing">Refreshing</string>
     <string name="morphe_music_lyrics_refreshed">Refreshed</string>
     <string name="morphe_music_lyrics_about_summary">"Lyrics are matched by title and artist, unusual metadata may find nothing or the wrong version. Use refresh to switch versions. Providers marked * require a token. All enabled providers are not always requested in your order, but respond based on their speed"</string>
+    <string name="morphe_music_lyrics_source_advice_summary">"Don't enable every provider. Only use the ones you know, or keep the default, so frequent requests don't add up to a DDoS on small community lyrics sites"</string>
     <string name="morphe_music_lyrics_hide_info_title">Hide credit line</string>
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>

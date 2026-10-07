@@ -9,6 +9,7 @@
 package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.SystemClock;
 import android.view.View;
@@ -26,6 +27,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
 
 /**
@@ -69,6 +71,83 @@ public final class LyricsPanelInstaller {
     private static WeakReference<Object> lyricsPanelReference = new WeakReference<>(null);
 
     private LyricsPanelInstaller() {
+    }
+
+    private static boolean settingsListenerRegistered;
+
+    private static final SharedPreferences.OnSharedPreferenceChangeListener SETTINGS_LISTENER =
+            (prefs, key) -> {
+                if (key == null || !key.startsWith("morphe_music_lyrics")) {
+                    return;
+                }
+                Utils.runOnMainThreadNowOrLater(() -> onLyricsSettingChanged(key));
+            };
+
+    public static void registerSettingsListener() {
+        if (settingsListenerRegistered) {
+            return;
+        }
+        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(
+                SETTINGS_LISTENER);
+        settingsListenerRegistered = true;
+    }
+
+    private static void onLyricsSettingChanged(String key) {
+        try {
+            if (Settings.LYRICS_ENABLED.key.equals(key)) {
+                if (Settings.LYRICS_ENABLED.get()) {
+                    if (isLyricsPanelOpen()) {
+                        onLyricsPanelDetected();
+                    }
+                    LyricsManager.getInstance().reloadAfterSettingsChange();
+                } else {
+                    uninstallLyricsPanel();
+                }
+                return;
+            }
+            if (Settings.LYRICS_SOURCE.key.equals(key)
+                    || Settings.LYRICS_CUSTOM_REGEX.key.equals(key)
+                    || Settings.LYRICS_TEXT_FILTER.key.equals(key)
+                    || Settings.LYRICS_CREDIT_LINE_REGEX.key.equals(key)) {
+                LyricsManager.getInstance().reloadAfterSettingsChange();
+                return;
+            }
+            if (Settings.LYRICS_KEEP_SCREEN_ON.key.equals(key)) {
+                updateKeepScreenOn(isLyricsPanelOpen());
+                return;
+            }
+            final LyricsPanelView panelView = panelReference.get();
+            if (panelView == null) {
+                return;
+            }
+            if (Settings.LYRICS_SHOW_COPY_BUTTON.key.equals(key)
+                    || Settings.LYRICS_SHOW_TRANSLATE_BUTTON.key.equals(key)
+                    || Settings.LYRICS_SHOW_ROMANIZE_BUTTON.key.equals(key)
+                    || Settings.LYRICS_SHOW_REFRESH_BUTTON.key.equals(key)) {
+                panelView.applyToolbarButtonSettings();
+            } else if (Settings.LYRICS_TEXT_SIZE.key.equals(key)) {
+                panelView.applyTextSize();
+            } else if (Settings.LYRICS_HIDE_INFO.key.equals(key)) {
+                panelView.applyHideInfo();
+            } else if (Settings.LYRICS_HIDE_PLAYED.key.equals(key)
+                    || Settings.LYRICS_HIDE_UNPLAYED.key.equals(key)) {
+                panelView.applyLineOverlaySettings();
+            }
+        } catch (Throwable ex) {
+            Logger.printException(() -> "Could not apply lyrics setting change", ex);
+        }
+    }
+
+    private static void uninstallLyricsPanel() {
+        installPending = false;
+        final LyricsPanelView panelView = panelReference.get();
+        if (panelView == null) {
+            return;
+        }
+        if (panelView.getParent() instanceof ViewGroup parent) {
+            parent.removeView(panelView);
+        }
+        panelReference.clear();
     }
 
     private static void updateKeepScreenOn(boolean lyricsPanelOpen) {
@@ -198,6 +277,9 @@ public final class LyricsPanelInstaller {
      * @return Whether the panel is in place, so that no further attempt is needed.
      */
     private static boolean install() {
+        if (!Settings.LYRICS_ENABLED.get()) {
+            return true;
+        }
         Activity activity = Utils.getActivity();
         if (activity == null) {
             return false;

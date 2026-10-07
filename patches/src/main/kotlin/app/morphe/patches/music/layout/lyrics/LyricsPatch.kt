@@ -87,6 +87,12 @@ val lyricsPatch = bytecodePatch(
                         tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
                         selectable = false,
                         dependency = "morphe_music_lyrics_enabled"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_source_advice",
+                        titleKey = null,
+                        summaryKey = "morphe_music_lyrics_source_advice_summary",
+                        dependency = "morphe_music_lyrics_enabled"
                     )
                 )
             ),

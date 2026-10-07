@@ -13,7 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
+import java.util.concurrent.atomic.AtomicLong;
 
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -22,6 +24,10 @@ import app.morphe.extension.music.patches.lyrics.parsers.TtmlParser;
 public final class AmllProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://api.amll.dev/v1/lyrics";
+
+    private static final long REQUEST_THROTTLE_MS = 500;
+
+    private static final AtomicLong lastRequestTime = new AtomicLong(0);
 
     @Override
     public String name() {
@@ -46,6 +52,7 @@ public final class AmllProvider implements LyricsProvider {
 
         HttpURLConnection getConnection = null;
         try {
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             getConnection = LyricsRequests.openConnection(
                     BASE_URL + "/get?id=" + lyricId + "&format=ttml");
             if (getConnection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
@@ -61,7 +68,11 @@ public final class AmllProvider implements LyricsProvider {
             if (ttml == null) {
                 return null;
             }
-            return FetchResult.blind(TtmlParser.ttmlToLyrics(ttml, name(), sourceUrl(getData, best)));
+            Lyrics lyrics = TtmlParser.ttmlToLyrics(ttml, name(), sourceUrl(getData, best));
+            return FetchResult.searched(lyrics,
+                    LyricsRequests.stringList(best, "musicNames"),
+                    LyricsRequests.stringList(best, "artistNames"),
+                    0L, track);
         } finally {
             if (getConnection != null) {
                 getConnection.disconnect();
@@ -107,6 +118,7 @@ public final class AmllProvider implements LyricsProvider {
                 searchUrl += "&albumName=" + LyricsRequests.encode(album);
             }
 
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             searchConnection = LyricsRequests.openConnection(searchUrl);
             if (searchConnection.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;

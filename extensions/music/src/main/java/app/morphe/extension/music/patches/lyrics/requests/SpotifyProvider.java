@@ -92,23 +92,26 @@ public final class SpotifyProvider implements LyricsProvider {
             return null;
         }
 
-        String trackId  = searchTrack(spDc, track.title(), track.artist());
-        if (trackId == null) {
+        SearchHit hit = searchTrack(spDc, track.title(), track.artist());
+        if (hit == null) {
             return null;
         }
 
-        final String sourceUrl = "https://open.spotify.com/track/" + trackId;
-        JSONObject lyricsResponse = fetchLyrics(spDc, trackId);
+        final String sourceUrl = "https://open.spotify.com/track/" + hit.id();
+        JSONObject lyricsResponse = fetchLyrics(spDc, hit.id());
         if (lyricsResponse == null) {
             return null;
         }
 
         final String rawJson = lyricsResponse.toString();
-        return FetchResult.blind(parseLyrics(lyricsResponse, rawJson, sourceUrl));
+        return FetchResult.searched(parseLyrics(lyricsResponse, rawJson, sourceUrl),
+                List.of(hit.title()), hit.artists(), 0L, track);
     }
 
+    private record SearchHit(String id, String title, List<String> artists) {}
+
     @Nullable
-    private String searchTrack(String spDc, String title, String artist) throws Exception {
+    private SearchHit searchTrack(String spDc, String title, String artist) throws Exception {
         final String accessToken = getAccessToken(spDc);
         if (accessToken == null) {
             return null;
@@ -132,9 +135,9 @@ public final class SpotifyProvider implements LyricsProvider {
                             .put("offset", 0))
                     .toString();
 
-            String trackId  = executeSearch(accessToken, clientToken, body);
-            if (trackId != null) {
-                return trackId;
+            SearchHit hit = executeSearch(accessToken, clientToken, body);
+            if (hit != null) {
+                return hit;
             }
         }
 
@@ -142,8 +145,8 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     @Nullable
-    private String executeSearch(String accessToken, @Nullable String clientToken,
-                                  String body) throws Exception {
+    private SearchHit executeSearch(String accessToken, @Nullable String clientToken,
+                                    String body) throws Exception {
         final byte[] bodyBytes = body.getBytes(StandardCharsets.UTF_8);
         long retryAfterMs = 0;
 
@@ -167,9 +170,9 @@ public final class SpotifyProvider implements LyricsProvider {
                 final String json = Requester.parseString(connection);
                 connection.disconnect();
 
-                String trackId  = parseSearchResult(json);
-                if (trackId != null) {
-                    return trackId;
+                SearchHit hit = parseSearchResult(json);
+                if (hit != null) {
+                    return hit;
                 }
                 break;
             }
@@ -216,7 +219,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     @Nullable
-    private String parseSearchResult(String json) {
+    private SearchHit parseSearchResult(String json) {
         try {
             JSONObject root = new JSONObject(json);
             JSONObject data = root.optJSONObject("data");
@@ -243,7 +246,7 @@ public final class SpotifyProvider implements LyricsProvider {
                 return null;
             }
 
-            return extractTrackId(items);
+            return extractSearchHit(items);
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not search Spotify track ID", ex);
             return null;
@@ -251,7 +254,7 @@ public final class SpotifyProvider implements LyricsProvider {
     }
 
     @Nullable
-    private String extractTrackId(JSONArray items) {
+    private SearchHit extractSearchHit(JSONArray items) {
         for (int i = 0; i < items.length(); i++) {
             JSONObject itemWrapper = items.optJSONObject(i);
             if (itemWrapper == null) continue;
@@ -267,11 +270,53 @@ public final class SpotifyProvider implements LyricsProvider {
                 }
             }
             if (id != null && !id.isEmpty()) {
-                return id;
+                final String title = LyricsRequests.optString(node, "name");
+                return new SearchHit(id, title != null ? title : "", artistNames(node));
             }
         }
 
         return null;
+    }
+
+    private static List<String> artistNames(JSONObject node) {
+        final List<String> out = new ArrayList<>();
+        final JSONArray artists = node.optJSONArray("artists");
+        if (artists != null) {
+            for (int i = 0; i < artists.length(); i++) {
+                final JSONObject artist = artists.optJSONObject(i);
+                if (artist == null) continue;
+                final String name = LyricsRequests.optString(artist, "name");
+                if (name != null) {
+                    out.add(name);
+                }
+            }
+            if (!out.isEmpty()) {
+                return out;
+            }
+        }
+        final JSONObject connection = node.optJSONObject("artists");
+        if (connection != null) {
+            final JSONArray edges = connection.optJSONArray("edges");
+            if (edges != null) {
+                for (int i = 0; i < edges.length(); i++) {
+                    final JSONObject edge = edges.optJSONObject(i);
+                    final JSONObject artistNode =
+                            edge != null ? edge.optJSONObject("node") : null;
+                    final String name = artistNode != null
+                            ? LyricsRequests.optString(artistNode, "name") : null;
+                    if (name != null) {
+                        out.add(name);
+                    }
+                }
+            }
+        }
+        if (out.isEmpty()) {
+            final String artist = LyricsRequests.optString(node, "artist");
+            if (artist != null) {
+                out.add(artist);
+            }
+        }
+        return out;
     }
 
     @Nullable

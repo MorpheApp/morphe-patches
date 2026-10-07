@@ -392,6 +392,7 @@ final class SbSubmitDialog {
     private static final class OffsetSliderView extends View {
         private static final int RANGE_MS = 20000;
         private static final int STEP_MS = 10;
+        private static final float DRAG_DIVISOR = 5f;
         private static final long LONG_PRESS_MS = 1000;
 
         private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -474,7 +475,8 @@ final class SbSubmitDialog {
                     }
                     if (dragging) {
                         final int delta = Math.round(
-                                (x - downX) / Math.max(1, getWidth()) * (2f * RANGE_MS));
+                                (x - downX) / Math.max(1, getWidth())
+                                        * (2f * RANGE_MS) / DRAG_DIVISOR);
                         apply(downValue + delta);
                     }
                     return true;
