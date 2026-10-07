@@ -452,6 +452,14 @@ Reports are public and are reviewed before a channel is added to a list. Removal
     <string name="morphe_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
     <string name="morphe_copy_video_link_with_timestamp_button_summary">Reverses the tap and tap-and-hold actions of \'Copy video link\' button</string>
 
+    <!-- interaction.copytext.copyTextPatch -->
+    <string name="morphe_copy_video_title_title">Copy video title</string>
+    <string name="morphe_copy_video_title_summary">Tap and hold the title of the video to copy it</string>
+    <string name="morphe_copy_video_title_success">Video title copied to clipboard</string>
+    <string name="morphe_copy_comments_title">Copy comments</string>
+    <string name="morphe_copy_comments_summary">Tap and hold a comment to copy it</string>
+    <string name="morphe_copy_comments_success">Comment copied to clipboard</string>
+
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
     <string name="morphe_disable_connect_your_devices_popup_title">Disable \'Connect your devices\' popup</string>
