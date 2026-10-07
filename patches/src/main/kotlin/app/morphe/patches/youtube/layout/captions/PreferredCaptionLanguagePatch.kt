@@ -1,8 +1,8 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/3566
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.captions
@@ -60,6 +60,18 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             throw PatchException("Expected exactly 1 method calling ${defaultMethod.name} in ${subtitleManagerClass.type}, found ${callingMethods.size}")
         }
         val targetMethod = callingMethods.first()
+        val callCount = targetMethod.implementation?.instructions?.count { insn ->
+            insn.opcode == Opcode.INVOKE_VIRTUAL &&
+            insn.getReference<MethodReference>()?.let { ref ->
+                ref.name == defaultMethod.name &&
+                ref.definingClass == subtitleManagerClass.type &&
+                ref.returnType == defaultMethod.returnType &&
+                ref.parameterTypes == defaultMethod.parameterTypes
+            } == true
+        } ?: 0
+        if (callCount != 1) {
+            throw PatchException("Expected exactly 1 call to ${defaultMethod.name} in ${targetMethod.name}, found $callCount")
+        }
         val invokeIndex = targetMethod.indexOfFirstInstructionOrThrow {
             opcode == Opcode.INVOKE_VIRTUAL &&
             getReference<MethodReference>()?.let { ref ->
