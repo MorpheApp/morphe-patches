@@ -26,22 +26,22 @@ public class PreferredCaptionLanguagePatch {
 
     private static final AtomicBoolean userSelectedTrack = new AtomicBoolean(false);
     private static final AtomicBoolean userInteractionAllowed = new AtomicBoolean(false);
-    private static volatile long videoStartTime = 0;
+    private static volatile long videoStartTime;
 
-    private static volatile String lastProgrammaticTrackLang = null;
-    private static volatile String lastProgrammaticTrackVss = null;
+    private static volatile String lastProgrammaticTrackLang;
+    private static volatile String lastProgrammaticTrackVss;
 
     // Reflection caches
-    private static volatile boolean reflectionInitialized = false;
-    private static Field captionTracksManagerField = null; // Field on SubtitleManager
-    private static Method directTracksMethod = null;        // returns List of direct tracks on CaptionTracksManager
-    private static Method autoTranslateTracksMethod = null; // returns List of auto-translated tracks on CaptionTracksManager
-    private static Method listMethod1 = null;
-    private static Method listMethod2 = null;
+    private static volatile boolean reflectionInitialized;
+    private static Field captionTracksManagerField; // Field on SubtitleManager
+    private static Method directTracksMethod;        // returns List of direct tracks on CaptionTracksManager
+    private static Method autoTranslateTracksMethod; // returns List of auto-translated tracks on CaptionTracksManager
+    private static Method listMethod1;
+    private static Method listMethod2;
 
-    private static volatile boolean trackFieldsInitialized = false;
-    private static Field trackLanguageField = null; // Field on CaptionTrack (e.g. "ko", "en")
-    private static Field trackVssIdField = null;    // Field on CaptionTrack (e.g. ".ko", "a.en", "t.ko")
+    private static volatile boolean trackFieldsInitialized;
+    private static Field trackLanguageField; // Field on CaptionTrack (e.g. "ko", "en")
+    private static Field trackVssIdField;    // Field on CaptionTrack (e.g. ".ko", "a.en", "t.ko")
 
     /**
      * Injection point: Called after SubtitleManager.getDefaultCaptionTrack() at caller-site.
@@ -61,14 +61,15 @@ public class PreferredCaptionLanguagePatch {
             final Object effectiveSm = subtitleManager;
             final Object effectiveOrig = originalTrack;
             final String effectivePrefLang = prefLang;
-            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: getPreferredCaptionTrack entry, sm=" + (effectiveSm != null) + ", orig=" + effectiveOrig + ", prefLang=" + effectivePrefLang);
+            Logger.printDebug(() -> "getPreferredCaptionTrack entry " +
+                    "orig: " + effectiveOrig + " prefLang: " + effectivePrefLang);
 
-            if (prefLang == null || "off".equalsIgnoreCase(prefLang)) {
+            if ("off".equalsIgnoreCase(prefLang)) {
                 return originalTrack;
             }
 
             if (userSelectedTrack.get()) {
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: User manually selected caption track, preserving: " + effectiveOrig);
+                Logger.printDebug(() -> "User manually selected caption track, preserving: " + effectiveOrig);
                 return originalTrack;
             }
 
@@ -76,7 +77,7 @@ public class PreferredCaptionLanguagePatch {
             if ("default".equalsIgnoreCase(prefLang) || "app".equalsIgnoreCase(prefLang)) {
                 Locale appLocale = Requester.getAppLocale();
                 String tag = appLocale.toLanguageTag();
-                targetLang = (tag != null && !tag.isEmpty() && !"und".equalsIgnoreCase(tag))
+                targetLang = !tag.isEmpty() && !"und".equalsIgnoreCase(tag)
                         ? tag
                         : appLocale.getLanguage();
             } else {
@@ -142,7 +143,7 @@ public class PreferredCaptionLanguagePatch {
             // Provider subtitle in target language has highest priority
             if (providerTrack != null) {
                 final Object selectedProviderTrack = providerTrack;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 1 (Provider subtitle): " + selectedProviderTrack);
+                Logger.printDebug(() -> "Selected Priority 1 (Provider subtitle): " + selectedProviderTrack);
                 recordProgrammaticSelection(providerTrack);
                 return providerTrack;
             }
@@ -150,7 +151,7 @@ public class PreferredCaptionLanguagePatch {
             // If the video itself is in the target language (native ASR), keep native
             if (nativeAsrTrack != null) {
                 final Object selectedNativeAsrTrack = nativeAsrTrack;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 1b (Native target language track): " + selectedNativeAsrTrack);
+                Logger.printDebug(() -> "Selected Priority 1b (Native target language track): " + selectedNativeAsrTrack);
                 recordProgrammaticSelection(nativeAsrTrack);
                 return nativeAsrTrack;
             }
@@ -165,25 +166,25 @@ public class PreferredCaptionLanguagePatch {
                         initTrackFields(track);
 
                         String lang = getTrackLanguage(track);
-                        if (lang != null && matchesLanguage(lang, targetLang)) {
+                        if (matchesLanguage(lang, targetLang)) {
                             final Object selectedAutoTrack = track;
-                            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Selected Priority 2 (Auto-translated subtitle): " + selectedAutoTrack);
+                            Logger.printDebug(() -> "Selected Priority 2 (Auto-translated subtitle): " + selectedAutoTrack);
                             recordProgrammaticSelection(track);
                             return track;
                         }
                     }
                 }
             } else if (!autoTranslateAvailable) {
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Auto-translation not available for this video, skipping Priority 2");
+                Logger.printDebug(() -> "Auto-translation not available for this video, skipping Priority 2");
             }
 
             // 3. Fallback: YouTube original selection
             final Object fallbackOrig = originalTrack;
-            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Falling back to original track: " + fallbackOrig);
+            Logger.printDebug(() -> "Falling back to original track: " + fallbackOrig);
             recordProgrammaticSelection(originalTrack);
             return originalTrack;
-        } catch (Throwable t) {
-            Logger.printException(() -> "PreferredCaptionLanguagePatch: Error getting preferred caption track", t);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Error getting preferred caption track", ex);
             return originalTrack;
         }
     }
@@ -194,14 +195,12 @@ public class PreferredCaptionLanguagePatch {
      */
     public static Object onSetSubtitleTrack(Object subtitleManager, Object track, Object selectType) {
         try {
-            final Object finalTrack = track;
-            final Object finalSelectType = selectType;
             final boolean interactionAllowed = userInteractionAllowed.get();
             final boolean isUserLocked = userSelectedTrack.get();
-            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: onSetSubtitleTrack called: track=" + finalTrack
-                    + ", selectType=" + finalSelectType
-                    + ", interactionAllowed=" + interactionAllowed
-                    + ", userSelectedTrack=" + isUserLocked);
+            Logger.printDebug(() -> "onSetSubtitleTrack called track: " + track
+                    + " selectType: " + selectType
+                    + " interactionAllowed: " + interactionAllowed
+                    + " userSelectedTrack: " + isUserLocked);
 
             if (subtitleManager == null) {
                 return track;
@@ -209,38 +208,38 @@ public class PreferredCaptionLanguagePatch {
 
             initReflection(subtitleManager);
 
-            boolean isExplicitSelect = selectType != null && "PREFERRED_TRACK".equals(selectType.toString());
+            final boolean isExplicitSelect = selectType != null && "PREFERRED_TRACK".equals(selectType.toString());
 
             // Respect explicit user selection only after the initial video load window
             if (interactionAllowed && (System.currentTimeMillis() - videoStartTime > 500)) {
                 if (isExplicitSelect) {
                     if (isSameTrack(track, lastProgrammaticTrackLang, lastProgrammaticTrackVss)) {
-                        Logger.printDebug(() -> "PreferredCaptionLanguagePatch: onSetSubtitleTrack ignoring PREFERRED_TRACK as it matches programmatic selection");
+                        Logger.printDebug(() -> "onSetSubtitleTrack ignoring PREFERRED_TRACK as it matches programmatic selection");
                         return track;
                     }
                     userSelectedTrack.set(true);
-                    Logger.printDebug(() -> "PreferredCaptionLanguagePatch: User explicitly selected subtitle track: " + finalTrack);
+                    Logger.printDebug(() -> "User explicitly selected subtitle track: " + track);
                     return track;
                 }
             }
 
             if (userSelectedTrack.get()) {
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: User manually selected caption track previously, preserving: " + finalTrack);
+                Logger.printDebug(() -> "User manually selected caption track previously, preserving: " + track);
                 return track;
             }
 
             if (isDisableTrack(track)) {
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Track is disable option or null, preserving: " + finalTrack);
+                Logger.printDebug(() -> "Track is disable option or null, preserving: " + track);
                 return track;
             }
 
             Object preferred = getPreferredCaptionTrack(subtitleManager, track);
             if (preferred != null) {
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Overriding subtitle track with preferred track: " + preferred);
+                Logger.printDebug(() -> "Overriding subtitle track with preferred track: " + preferred);
                 return preferred;
             }
-        } catch (Throwable t) {
-            Logger.printException(() -> "PreferredCaptionLanguagePatch: Error tracking subtitle track selection", t);
+        } catch (Throwable ex) {
+            Logger.printException(() -> "onSetSubtitleTrack failure", ex);
         }
         return track;
     }
@@ -279,7 +278,7 @@ public class PreferredCaptionLanguagePatch {
             if (targetVss == null || targetVss.isEmpty() || vss == null || vss.isEmpty()) {
                 return true;
             }
-            return targetVss.equals(vss);
+            return targetVss.equals(vss); // FIXME: this is always false
         }
         return false;
     }
@@ -292,17 +291,17 @@ public class PreferredCaptionLanguagePatch {
         userSelectedTrack.set(false);
         recordProgrammaticSelection(null);
         videoStartTime = System.currentTimeMillis();
-        Logger.printDebug(() -> "PreferredCaptionLanguagePatch: newVideoStarted, user interaction locked, startTime=" + videoStartTime);
+        Logger.printDebug(() -> "newVideoStarted, user interaction locked startTime: " + videoStartTime);
     }
 
     /**
      * Injection point: Video information loaded hook
      */
     public static void videoInformationLoaded() {
-        Logger.printDebug(() -> "PreferredCaptionLanguagePatch: videoInformationLoaded called, scheduling 300ms unlock");
+        Logger.printDebug(() -> "videoInformationLoaded called, scheduling 300ms unlock");
         Utils.runOnMainThreadDelayed(() -> {
             userInteractionAllowed.set(true);
-            Logger.printDebug(() -> "PreferredCaptionLanguagePatch: videoInformationLoaded delayed runnable executed, user interaction unlocked");
+            Logger.printDebug(() -> "videoInformationLoaded delayed runnable executed, user interaction unlocked");
         }, 300);
     }
 
@@ -341,12 +340,12 @@ public class PreferredCaptionLanguagePatch {
                         resolveListMethods(managerObj);
                     }
                     reflectionInitialized = true;
-                    Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Initialized CaptionTracksManager reflection: " + field.getName());
+                    Logger.printDebug(() -> "Initialized CaptionTracksManager reflection: " + field.getName());
                     break;
                 }
             }
         } catch (Throwable t) {
-            Logger.printException(() -> "PreferredCaptionLanguagePatch: Failed to initialize SubtitleManager reflection", t);
+            Logger.printException(() -> "Failed to initialize SubtitleManager reflection", t);
         }
     }
 
@@ -361,22 +360,22 @@ public class PreferredCaptionLanguagePatch {
             if (containsDisableOption(l1)) {
                 directTracksMethod = listMethod1;
                 autoTranslateTracksMethod = listMethod2;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Resolved directTracksMethod=" + listMethod1.getName() + ", autoTranslateTracksMethod=" + listMethod2.getName());
+                Logger.printDebug(() -> "Resolved directTracksMethod=" + listMethod1.getName() + ", autoTranslateTracksMethod=" + listMethod2.getName());
             } else if (containsDisableOption(l2)) {
                 directTracksMethod = listMethod2;
                 autoTranslateTracksMethod = listMethod1;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Resolved directTracksMethod=" + listMethod2.getName() + ", autoTranslateTracksMethod=" + listMethod1.getName());
+                Logger.printDebug(() -> "Resolved directTracksMethod=" + listMethod2.getName() + ", autoTranslateTracksMethod=" + listMethod1.getName());
             } else if (containsAutoTranslateTrack(l1)) {
                 directTracksMethod = listMethod2;
                 autoTranslateTracksMethod = listMethod1;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Resolved via t.: directTracksMethod=" + listMethod2.getName() + ", autoTranslateTracksMethod=" + listMethod1.getName());
+                Logger.printDebug(() -> "Resolved via t.: directTracksMethod=" + listMethod2.getName() + ", autoTranslateTracksMethod=" + listMethod1.getName());
             } else if (containsAutoTranslateTrack(l2)) {
                 directTracksMethod = listMethod1;
                 autoTranslateTracksMethod = listMethod2;
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Resolved via t.: directTracksMethod=" + listMethod1.getName() + ", autoTranslateTracksMethod=" + listMethod2.getName());
+                Logger.printDebug(() -> "Resolved via t.: directTracksMethod=" + listMethod1.getName() + ", autoTranslateTracksMethod=" + listMethod2.getName());
             }
         } catch (Throwable t) {
-            Logger.printException(() -> "PreferredCaptionLanguagePatch: Failed resolving list methods", t);
+            Logger.printException(() -> "Failed resolving list methods", t);
         }
     }
 
@@ -392,20 +391,22 @@ public class PreferredCaptionLanguagePatch {
 
     private static boolean containsDisableOption(List<?> list) {
         if (list == null || list.isEmpty()) return false;
-        for (Object item : list) {
-            if (item == null) continue;
-            for (Field f : item.getClass().getDeclaredFields()) {
-                if (f.getType() == String.class && !Modifier.isStatic(f.getModifiers())) {
-                    try {
+        try {
+            for (Object item : list) {
+                if (item == null) continue;
+                for (Field f : item.getClass().getDeclaredFields()) {
+                    if (f.getType() == String.class && !Modifier.isStatic(f.getModifiers())) {
                         f.setAccessible(true);
                         Object val = f.get(item);
                         if (DISABLE_OPTION.equals(val) || AUTO_TRANSLATE_OPTION.equals(val)) {
                             initTrackFields(item);
                             return true;
                         }
-                    } catch (Throwable ignored) {}
+                    }
                 }
             }
+        } catch (IllegalAccessException ex) {
+            Logger.printException(() -> "containsDisableOption failure");
         }
         return false;
     }
@@ -420,34 +421,28 @@ public class PreferredCaptionLanguagePatch {
             for (Field f : clazz.getDeclaredFields()) {
                 if (Modifier.isStatic(f.getModifiers()) || f.getType() != String.class) continue;
                 f.setAccessible(true);
-                try {
-                    Object val = f.get(track);
-                    if (val instanceof String) {
-                        String s = (String) val;
-                        if (DISABLE_OPTION.equals(s) || AUTO_TRANSLATE_OPTION.equals(s)) {
-                            langF = f;
-                        } else if ("-".equals(s) || s.startsWith(".") || s.startsWith("a.") || s.startsWith("t.") || s.startsWith("ta.")) {
-                            vssF = f;
-                        }
+                Object val = f.get(track);
+                if (val instanceof String s) {
+                    if (DISABLE_OPTION.equals(s) || AUTO_TRANSLATE_OPTION.equals(s)) {
+                        langF = f;
+                    } else if ("-".equals(s) || s.startsWith(".") || s.startsWith("a.") || s.startsWith("t.") || s.startsWith("ta.")) {
+                        vssF = f;
                     }
-                } catch (Throwable ignored) {}
+                }
             }
 
             if (vssF != null && langF == null) {
                 for (Field f : clazz.getDeclaredFields()) {
                     if (Modifier.isStatic(f.getModifiers()) || f.getType() != String.class || f.equals(vssF)) continue;
                     f.setAccessible(true);
-                    try {
-                        Object val = f.get(track);
-                        if (val instanceof String) {
-                            String s = (String) val;
-                            // Strictly match ISO 639-1/2 or BCP-47 tag (e.g. en, ko, zh-Hans). Never match languageName (e.g. English, Korean).
-                            if (s.matches("(?i)^[a-z]{2,3}(-[a-zA-Z0-9]+)?$") && !s.contains(" ") && !s.contains("/")) {
-                                langF = f;
-                                break;
-                            }
+                    Object val = f.get(track);
+                    if (val instanceof String s) {
+                        // Strictly match ISO 639-1/2 or BCP-47 tag (e.g. en, ko, zh-Hans). Never match languageName (e.g. English, Korean).
+                        if (s.matches("(?i)^[a-z]{2,3}(-[a-zA-Z0-9]+)?$") && !s.contains(" ") && !s.contains("/")) {
+                            langF = f;
+                            break;
                         }
-                    } catch (Throwable ignored) {}
+                    }
                 }
             }
 
@@ -457,55 +452,56 @@ public class PreferredCaptionLanguagePatch {
             // Only mark fully initialized when both are safely found
             if (trackLanguageField != null && trackVssIdField != null) {
                 trackFieldsInitialized = true;
-                final String langName = trackLanguageField.getName();
-                final String vssName = trackVssIdField.getName();
-                Logger.printDebug(() -> "PreferredCaptionLanguagePatch: Initialized CaptionTrack fields: lang=" + langName + ", vss=" + vssName);
+                String langName = trackLanguageField.getName();
+                String vssName = trackVssIdField.getName();
+                Logger.printDebug(() -> "Initialized CaptionTrack fields: lang=" + langName + ", vss=" + vssName);
             }
         } catch (Throwable t) {
-            Logger.printException(() -> "PreferredCaptionLanguagePatch: Failed to initialize track fields", t);
+            Logger.printException(() -> "Failed to initialize track fields", t);
         }
     }
 
     private static String getTrackLanguage(Object track) {
         if (track == null) return null;
-        if (trackLanguageField != null) {
-            try {
+        try {
+            if (trackLanguageField != null) {
                 Object val = trackLanguageField.get(track);
                 if (val instanceof String) return (String) val;
-            } catch (Throwable ignored) {}
-        }
-        for (Field f : track.getClass().getDeclaredFields()) {
-            if (f.getType() == String.class && !Modifier.isStatic(f.getModifiers())) {
-                try {
+            }
+            for (Field f : track.getClass().getDeclaredFields()) {
+                if (f.getType() == String.class && !Modifier.isStatic(f.getModifiers())) {
                     f.setAccessible(true);
                     String s = (String) f.get(track);
                     if (s != null && !s.isEmpty() && !s.startsWith(".") && !s.startsWith("a.") && !s.startsWith("t.") && !s.startsWith("ta.") && !"-".equals(s) && !s.contains("&tlang=")) {
                         return s;
                     }
-                } catch (Throwable ignored) {}
+                }
             }
+        } catch (IllegalAccessException ex) {
+            Logger.printException(() -> "containsDisableOption failure");
         }
         return null;
     }
 
     private static String getTrackVssId(Object track) {
         if (track == null) return null;
-        if (trackVssIdField != null) {
-            try {
+        try {
+            if (trackVssIdField != null) {
                 Object val = trackVssIdField.get(track);
                 if (val instanceof String) return (String) val;
-            } catch (Throwable ignored) {}
-        }
-        for (Field f : track.getClass().getDeclaredFields()) {
-            if (f.getType() == String.class && !Modifier.isStatic(f.getModifiers())) {
-                try {
+            }
+            for (Field f : track.getClass().getDeclaredFields()) {
+                if (f.getType() == String.class && !Modifier.isStatic(f.getModifiers())) {
                     f.setAccessible(true);
                     String s = (String) f.get(track);
-                    if (s != null && (s.startsWith(".") || s.startsWith("a.") || s.startsWith("t.") || s.startsWith("ta.") || "-".equals(s))) {
+                    if (s != null && (s.startsWith(".") || s.startsWith("a.")
+                            || s.startsWith("t.") || s.startsWith("ta.") || "-".equals(s))) {
                         return s;
                     }
-                } catch (Throwable ignored) {}
+                }
             }
+        } catch (IllegalAccessException ex) {
+            Logger.printException(() -> "containsDisableOption failure");
         }
         return null;
     }
@@ -516,6 +512,9 @@ public class PreferredCaptionLanguagePatch {
 
     private static String normalizeLanguageCode(String code) {
         if (code == null) return "";
+        if (code.length() < 3) {
+            return code;
+        }
         String s = code.trim().toLowerCase(Locale.ROOT).replace('_', '-');
         if (s.equals("iw") || s.startsWith("iw-")) {
             s = "he" + s.substring(2);
@@ -535,10 +534,10 @@ public class PreferredCaptionLanguagePatch {
         if (t1.startsWith(t2 + "-") || t2.startsWith(t1 + "-")) return true;
 
         // Prevent cross-matching between Simplified and Traditional Chinese
-        boolean t1Traditional = t1.contains("hant") || t1.contains("tw") || t1.contains("hk");
-        boolean t1Simplified = t1.contains("hans") || t1.contains("cn");
-        boolean t2Traditional = t2.contains("hant") || t2.contains("tw") || t2.contains("hk");
-        boolean t2Simplified = t2.contains("hans") || t2.contains("cn");
+        final boolean t1Traditional = t1.contains("hant") || t1.contains("tw") || t1.contains("hk");
+        final boolean t1Simplified = t1.contains("hans") || t1.contains("cn");
+        final boolean t2Traditional = t2.contains("hant") || t2.contains("tw") || t2.contains("hk");
+        final boolean t2Simplified = t2.contains("hans") || t2.contains("cn");
 
         if ((t1Simplified && t2Traditional) || (t1Traditional && t2Simplified)) {
             return false;

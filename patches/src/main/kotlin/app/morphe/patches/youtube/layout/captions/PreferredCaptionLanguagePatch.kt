@@ -29,7 +29,8 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch;"
 
 internal val preferredCaptionLanguagePatch = bytecodePatch(
-    description = "Adds an option to automatically select captions in your preferred language (provider subtitles first, then auto-translated).",
+    description = "Adds an option to automatically select captions in your preferred language " +
+            "(provider subtitles first, then auto-translated).",
 ) {
     dependsOn(
         sharedExtensionPatch,
