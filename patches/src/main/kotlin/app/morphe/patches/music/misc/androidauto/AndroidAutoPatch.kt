@@ -292,10 +292,10 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
     mutableOnCreateMethod.addInstructions(
         generatedComponentReadIndex + 1,
         """
-            iget-object v$phoneBrowseClientRegister, v$generatedComponentRegister,$providerField
-            invoke-interface/range { v$phoneBrowseClientRegister .. v$phoneBrowseClientRegister },$providerGetMethod
+            iget-object v$phoneBrowseClientRegister, v$generatedComponentRegister, $providerField
+            invoke-interface/range { v$phoneBrowseClientRegister .. v$phoneBrowseClientRegister }, $providerGetMethod
             move-result-object v$phoneBrowseClientRegister
-            check-cast v$phoneBrowseClientRegister,$EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE
+            check-cast v$phoneBrowseClientRegister, $EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE
             invoke-static/range { v$phoneBrowseClientRegister .. v$phoneBrowseClientRegister }, $EXTENSION_CLASS->setPhoneBrowseClient($EXTENSION_PHONE_BROWSE_CLIENT_INTERFACE)V
         """
     )
