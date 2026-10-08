@@ -39,7 +39,7 @@ val disableContinueWatchingPromptPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_disable_continue_watching_prompt", summary = true)
+            SwitchPreference("morphe_disable_continue_watching_prompt")
         )
 
         AutoplayInactivityLimitFingerprint.let {
