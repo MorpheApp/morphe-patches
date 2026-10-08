@@ -19,14 +19,13 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.video.information.playerStatusMethodRef
+import app.morphe.patches.youtube.video.information.playerStatusOverrideHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -55,30 +54,11 @@ val loopVideoPatch = bytecodePatch(
 
         videoTimeHook(EXTENSION_CLASS, "videoTimeChanged")
 
-        playerStatusMethodRef.get()!!.apply {
-            // Add call to start playback again, but must not allow exit fullscreen patch call
-            // to be reached if the video is looped.
-            val insertIndex =
-                indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT)
-            // Since instructions are added just above Opcode.SGET_OBJECT, instead of calling findFreeRegister(),
-            // a register from Opcode.SGET_OBJECT is used.
-            val freeRegister =
-                getInstruction<OneRegisterInstruction>(insertIndex).registerA
-
-            // Since 'videoInformationPatch' is used as a dependency of this patch,
-            // the loop is implemented through 'VideoInformation.seekTo(0)'.
-            addInstructionsWithLabels(
-                insertIndex,
-                """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->shouldLoopVideo(Ljava/lang/Enum;)Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :do_not_loop
-                    return-void
-                    :do_not_loop
-                    nop
-                """
-            )
-        }
+        // Start playback again, but must not allow exit fullscreen patch call
+        // to be reached if the video is looped.
+        // Since 'videoInformationPatch' is used as a dependency of this patch,
+        // the loop is implemented through 'VideoInformation.seekTo(0)'.
+        playerStatusOverrideHook(EXTENSION_CLASS, "shouldLoopVideo")
 
         SleepTimerCancelMethodFingerprint.method.apply {
             val stateFieldGetIndex = indexOfFirstInstructionOrThrow(Opcode.IGET_OBJECT)

@@ -13,6 +13,7 @@ import android.util.LruCache;
 
 import androidx.annotation.Nullable;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ import java.util.function.Consumer;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.patches.LocalQueuePatch;
 
 /**
  * Small anonymous thumbnails for the queue sheet. Must be used from the main thread.
@@ -70,8 +72,8 @@ final class QueueThumbnails {
         try {
             HttpURLConnection connection = Requester.openConnection(
                     "https://i.ytimg.com/vi/" + videoId + "/mqdefault.jpg");
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(LocalQueuePatch.CONNECTION_TIMEOUT_MILLISECONDS);
+            connection.setReadTimeout(LocalQueuePatch.CONNECTION_TIMEOUT_MILLISECONDS);
             try (InputStream stream = connection.getInputStream()) {
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inSampleSize = 2;
@@ -80,9 +82,11 @@ final class QueueThumbnails {
             } finally {
                 connection.disconnect();
             }
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "Could not load thumbnail of: " + videoId, ex);
         } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not load thumbnail for " + videoId, ex);
-            return null;
+            Logger.printException(() -> "download failure", ex);
         }
+        return null;
     }
 }

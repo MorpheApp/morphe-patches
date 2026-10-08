@@ -21,6 +21,7 @@ import android.graphics.Outline;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.text.TextUtils;
@@ -45,6 +46,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.theme.ThemeUtils;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -63,6 +65,16 @@ public final class LocalQueueSheet {
     private static final int REVEAL_COLOR = 0xFFD93025;
     private static final long SETTLE_MILLISECONDS = 160;
     private static final long SHIFT_MILLISECONDS = 120;
+    private static final int DIALOG_ANIMATION_DURATION_MILLISECONDS = 300;
+    private static final long EQUALIZER_CYCLE_MILLISECONDS = 900;
+    /**
+     * Rows that load a thumbnail before the list is laid out.
+     */
+    private static final int INITIAL_THUMBNAIL_ROWS = 8;
+    private static final int AUTO_SCROLL_EDGE_DP = 56;
+    private static final int AUTO_SCROLL_MAX_STEP_DP = 14;
+    private static final float SWIPE_DISMISS_WIDTH_FRACTION = 0.35f;
+    private static final int SWIPE_DISMISS_FLING_VELOCITY_DP = 700;
 
     private final Context context;
     private final int backgroundColor = ThemeUtils.getDialogBackgroundColor();
@@ -95,13 +107,13 @@ public final class LocalQueueSheet {
         LinearLayout header = new LinearLayout(context);
         header.setOrientation(LinearLayout.HORIZONTAL);
         header.setGravity(Gravity.CENTER_VERTICAL);
-        header.setPadding(dp(20), dp(8), dp(12), dp(4));
+        header.setPadding(Dim.dp20, Dim.dp8, Dim.dp12, Dim.dp4);
 
         TextView title = new TextView(context);
         title.setText(str("morphe_local_queue_sheet_title"));
         title.setTextColor(foregroundColor);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-        title.setTypeface(title.getTypeface(), android.graphics.Typeface.BOLD);
+        title.setTypeface(title.getTypeface(), Typeface.BOLD);
         header.addView(title);
 
         countView = new TextView(context);
@@ -109,7 +121,7 @@ public final class LocalQueueSheet {
         countView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         LinearLayout.LayoutParams countParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        countParams.setMarginStart(dp(8));
+        countParams.setMarginStart(Dim.dp8);
         header.addView(countView, countParams);
 
         header.addView(new View(context), new LinearLayout.LayoutParams(0, 1, 1));
@@ -118,9 +130,9 @@ public final class LocalQueueSheet {
         clearButton.setText(str("morphe_local_queue_clear"));
         clearButton.setTextColor(foregroundColor);
         clearButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        clearButton.setTypeface(clearButton.getTypeface(), android.graphics.Typeface.BOLD);
-        clearButton.setPadding(dp(12), dp(10), dp(12), dp(10));
-        clearButton.setBackground(createRipple(Color.TRANSPARENT, dp(18)));
+        clearButton.setTypeface(clearButton.getTypeface(), Typeface.BOLD);
+        clearButton.setPadding(Dim.dp12, Dim.dp10, Dim.dp12, Dim.dp10);
+        clearButton.setBackground(createRipple(Color.TRANSPARENT, Dim.dp(18)));
         clearButton.setOnClickListener(v -> LocalQueuePatch.clear());
         header.addView(clearButton);
         mainLayout.addView(header);
@@ -128,12 +140,12 @@ public final class LocalQueueSheet {
         scrollView = SheetBottomDialog.createCappedScrollView(context);
         list = new LinearLayout(context);
         list.setOrientation(LinearLayout.VERTICAL);
-        list.setPadding(0, 0, 0, dp(12));
+        list.setPadding(0, 0, 0, Dim.dp12);
         scrollView.addView(list);
         scrollView.setOnScrollChangeListener((v, x, y, oldX, oldY) -> loadVisibleThumbnails());
         mainLayout.addView(scrollView);
 
-        dialog = SheetBottomDialog.createSlideDialog(context, mainLayout, 300);
+        dialog = SheetBottomDialog.createSlideDialog(context, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
         render();
 
         LocalQueuePatch.setChangeListener(this::requestRender);
@@ -201,13 +213,13 @@ public final class LocalQueueSheet {
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setGravity(Gravity.CENTER_HORIZONTAL);
-        layout.setPadding(dp(32), dp(36), dp(32), dp(28));
+        layout.setPadding(Dim.dp32, Dim.dp36, Dim.dp32, Dim.dp28);
 
         TextView title = new TextView(context);
         title.setText(str("morphe_local_queue_empty"));
         title.setTextColor(foregroundColor);
         title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-        title.setTypeface(title.getTypeface(), android.graphics.Typeface.BOLD);
+        title.setTypeface(title.getTypeface(), Typeface.BOLD);
         title.setGravity(Gravity.CENTER);
         layout.addView(title);
 
@@ -216,7 +228,7 @@ public final class LocalQueueSheet {
         hint.setTextColor(mutedColor);
         hint.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         hint.setGravity(Gravity.CENTER);
-        hint.setPadding(0, dp(6), 0, 0);
+        hint.setPadding(0, Dim.dp6, 0, 0);
         layout.addView(hint);
         return layout;
     }
@@ -224,7 +236,9 @@ public final class LocalQueueSheet {
     private final class Row {
         final String videoId;
         final int index;
-        final boolean locked;
+        /**
+         * Null for the now playing row.
+         */
         @Nullable
         final LocalQueuePatch.Item item;
         final SwipeRevealRow root;
@@ -236,12 +250,11 @@ public final class LocalQueueSheet {
         final View channelBar;
         float shift;
 
-        Row(String videoId, int index, boolean locked, @Nullable LocalQueuePatch.Item item,
+        Row(String videoId, int index, @Nullable LocalQueuePatch.Item item,
             SwipeRevealRow root, LinearLayout foreground, ImageView thumbnail, TextView titleView,
             TextView channelView, View titleBar, View channelBar) {
             this.videoId = videoId;
             this.index = index;
-            this.locked = locked;
             this.item = item;
             this.root = root;
             this.foreground = foreground;
@@ -266,15 +279,15 @@ public final class LocalQueueSheet {
     }
 
     private Row createRow(LocalQueuePatch.Item item, int index) {
-        return buildRow(item.videoId, index, false, item, false);
+        return buildRow(item.videoId, index, item);
     }
 
     private Row createNowPlayingRow(String videoId) {
-        return buildRow(videoId, -1, true, null, true);
+        return buildRow(videoId, -1, null);
     }
 
-    private Row buildRow(String videoId, int index, boolean locked, @Nullable LocalQueuePatch.Item item,
-                         boolean nowPlaying) {
+    private Row buildRow(String videoId, int index, @Nullable LocalQueuePatch.Item item) {
+        final boolean nowPlaying = item == null;
         final int rowColor = nowPlaying ? blend(backgroundColor, foregroundColor, 0.08f) : backgroundColor;
 
         SwipeRevealRow root = new SwipeRevealRow(context);
@@ -283,9 +296,9 @@ public final class LocalQueueSheet {
         reveal.setVisibility(View.INVISIBLE);
         TrashIconView trash = new TrashIconView(context);
         trash.setContentDescription(str("morphe_local_queue_remove"));
-        FrameLayout.LayoutParams trashParams = new FrameLayout.LayoutParams(dp(24), dp(24),
+        FrameLayout.LayoutParams trashParams = new FrameLayout.LayoutParams(Dim.dp24, Dim.dp24,
                 Gravity.CENTER_VERTICAL | Gravity.END);
-        trashParams.setMarginEnd(dp(28));
+        trashParams.setMarginEnd(Dim.dp28);
         reveal.addView(trash, trashParams);
         root.addView(reveal, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -293,7 +306,7 @@ public final class LocalQueueSheet {
         LinearLayout foreground = new LinearLayout(context);
         foreground.setOrientation(LinearLayout.HORIZONTAL);
         foreground.setGravity(Gravity.CENTER_VERTICAL);
-        foreground.setPadding(dp(16), dp(8), dp(4), dp(8));
+        foreground.setPadding(Dim.dp16, Dim.dp8, Dim.dp4, Dim.dp8);
         foreground.setBackground(createRipple(rowColor, 0));
         root.addView(foreground, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -302,7 +315,7 @@ public final class LocalQueueSheet {
         thumbnailFrame.setOutlineProvider(new ViewOutlineProvider() {
             @Override
             public void getOutline(View view, Outline outline) {
-                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), dp(8));
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), Dim.dp8);
             }
         });
         thumbnailFrame.setClipToOutline(true);
@@ -312,20 +325,20 @@ public final class LocalQueueSheet {
         thumbnailFrame.addView(thumbnail, new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         if (nowPlaying) {
-            FrameLayout.LayoutParams badgeParams = new FrameLayout.LayoutParams(dp(24), dp(18),
+            FrameLayout.LayoutParams badgeParams = new FrameLayout.LayoutParams(Dim.dp24, Dim.dp(18),
                     Gravity.BOTTOM | Gravity.START);
-            badgeParams.setMargins(dp(6), 0, 0, dp(6));
+            badgeParams.setMargins(Dim.dp6, 0, 0, Dim.dp6);
             thumbnailFrame.addView(new EqualizerView(context), badgeParams);
         }
-        foreground.addView(thumbnailFrame, new LinearLayout.LayoutParams(dp(104), dp(58)));
+        foreground.addView(thumbnailFrame, new LinearLayout.LayoutParams(Dim.dp(104), Dim.dp(58)));
 
         LinearLayout texts = new LinearLayout(context);
         texts.setOrientation(LinearLayout.VERTICAL);
         texts.setGravity(Gravity.CENTER_VERTICAL);
         LinearLayout.LayoutParams textsParams = new LinearLayout.LayoutParams(0,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-        textsParams.setMarginStart(dp(12));
-        textsParams.setMarginEnd(dp(4));
+        textsParams.setMarginStart(Dim.dp12);
+        textsParams.setMarginEnd(Dim.dp4);
         foreground.addView(texts, textsParams);
 
         if (nowPlaying) {
@@ -333,7 +346,7 @@ public final class LocalQueueSheet {
             label.setText(str("morphe_local_queue_now_playing"));
             label.setTextColor(mutedColor);
             label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
-            label.setTypeface(label.getTypeface(), android.graphics.Typeface.BOLD);
+            label.setTypeface(label.getTypeface(), Typeface.BOLD);
             texts.addView(label);
         }
 
@@ -343,7 +356,7 @@ public final class LocalQueueSheet {
         titleView.setMaxLines(2);
         titleView.setEllipsize(TextUtils.TruncateAt.END);
         texts.addView(titleView);
-        View titleBar = createPlaceholderBar(dp(150), dp(12));
+        View titleBar = createPlaceholderBar(Dim.dp(150), Dim.dp12);
         texts.addView(titleBar);
 
         TextView channelView = new TextView(context);
@@ -351,35 +364,30 @@ public final class LocalQueueSheet {
         channelView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         channelView.setMaxLines(1);
         channelView.setEllipsize(TextUtils.TruncateAt.END);
-        channelView.setPadding(0, dp(2), 0, 0);
+        channelView.setPadding(0, Dim.dp2, 0, 0);
         texts.addView(channelView);
-        View channelBar = createPlaceholderBar(dp(90), dp(10));
+        View channelBar = createPlaceholderBar(Dim.dp(90), Dim.dp10);
         texts.addView(channelBar);
 
-        Row row = new Row(videoId, index, locked, item, root, foreground, thumbnail, titleView,
+        Row row = new Row(videoId, index, item, root, foreground, thumbnail, titleView,
                 channelView, titleBar, channelBar);
         if (nowPlaying) {
             row.bindText(VideoInformation.getVideoTitle(), VideoInformation.getChannelName());
-        } else {
-            row.bindText(item.title, item.author);
+            return row;
         }
 
-        if (!nowPlaying) {
-            DragHandleView handle = new DragHandleView(context, mutedColor);
-            handle.setContentDescription(str("morphe_local_queue_reorder"));
-            foreground.addView(handle, new LinearLayout.LayoutParams(dp(44), dp(44)));
-            if (locked) {
-                handle.setVisibility(View.INVISIBLE);
-            } else {
-                handle.setOnTouchListener((v, event) -> onHandleTouch(row, event));
-            }
+        row.bindText(item.title, item.author);
 
-            foreground.setOnClickListener(v -> {
-                dialog.dismiss();
-                LocalQueuePatch.playItem(row.index);
-            });
-            root.configure(foreground, reveal, !locked, () -> LocalQueuePatch.remove(row.index));
-        }
+        DragHandleView handle = new DragHandleView(context, mutedColor);
+        handle.setContentDescription(str("morphe_local_queue_reorder"));
+        handle.setOnTouchListener((v, event) -> onHandleTouch(row, event));
+        foreground.addView(handle, new LinearLayout.LayoutParams(Dim.dp(44), Dim.dp(44)));
+
+        foreground.setOnClickListener(v -> {
+            dialog.dismiss();
+            LocalQueuePatch.playItem(row.index);
+        });
+        root.configure(foreground, reveal, () -> LocalQueuePatch.remove(row.index));
 
         return row;
     }
@@ -388,10 +396,10 @@ public final class LocalQueueSheet {
         View bar = new View(context);
         GradientDrawable shape = new GradientDrawable();
         shape.setColor(placeholderColor);
-        shape.setCornerRadius(dp(4));
+        shape.setCornerRadius(Dim.dp4);
         bar.setBackground(shape);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width, height);
-        params.topMargin = dp(4);
+        params.topMargin = Dim.dp4;
         bar.setLayoutParams(params);
         return bar;
     }
@@ -405,8 +413,6 @@ public final class LocalQueueSheet {
     }
 
     private void loadVisibleThumbnails() {
-        if (scrollView == null) return;
-
         final int height = scrollView.getHeight();
         final int margin = height / 2;
         final int top = scrollView.getScrollY() - margin;
@@ -417,7 +423,7 @@ public final class LocalQueueSheet {
         }
         for (Row row : rows) {
             boolean visible = height == 0
-                    ? row.index < 8
+                    ? row.index < INITIAL_THUMBNAIL_ROWS
                     : row.root.getBottom() >= top && row.root.getTop() <= bottom;
             if (visible) {
                 bindThumbnail(row);
@@ -437,7 +443,7 @@ public final class LocalQueueSheet {
     }
 
     private void onThumbnailLoaded(String videoId) {
-        if (dialog == null || !dialog.isShowing()) return;
+        if (!dialog.isShowing()) return;
 
         Bitmap bitmap = QueueThumbnails.get(videoId);
         if (bitmap == null) return;
@@ -468,14 +474,14 @@ public final class LocalQueueSheet {
 
                 int[] location = new int[2];
                 scrollView.getLocationOnScreen(location);
-                final float edge = dp(56);
+                final float edge = Dim.dp(AUTO_SCROLL_EDGE_DP);
                 final float top = location[1];
                 final float bottom = top + scrollView.getHeight();
                 int step = 0;
                 if (lastRawY < top + edge) {
-                    step = -Math.round((top + edge - lastRawY) / edge * dp(14));
+                    step = -Math.round((top + edge - lastRawY) / edge * Dim.dp(AUTO_SCROLL_MAX_STEP_DP));
                 } else if (lastRawY > bottom - edge) {
-                    step = Math.round((lastRawY - (bottom - edge)) / edge * dp(14));
+                    step = Math.round((lastRawY - (bottom - edge)) / edge * Dim.dp(AUTO_SCROLL_MAX_STEP_DP));
                 }
                 if (step != 0) {
                     scrollView.scrollBy(0, step);
@@ -509,7 +515,7 @@ public final class LocalQueueSheet {
                 row.root.getParent().requestDisallowInterceptTouchEvent(true);
                 beginInteraction();
                 drag = new DragSession(row, event.getRawY());
-                row.foreground.setElevation(dp(8));
+                row.foreground.setElevation(Dim.dp8);
                 row.root.setScaleX(1.02f);
                 row.root.setScaleY(1.02f);
                 scrollView.postOnAnimation(drag.autoScroll);
@@ -554,7 +560,7 @@ public final class LocalQueueSheet {
                 others[n++] = session.tops[j] + session.heights[j] / 2f;
             }
         }
-        session.target = QueueListLogic.dropIndex(center, others);
+        session.target = dropIndex(center, others);
 
         final float draggedHeight = session.heights[origin];
         for (int j = 0; j <= last; j++) {
@@ -616,29 +622,32 @@ public final class LocalQueueSheet {
 
     private final class SwipeRevealRow extends FrameLayout {
         private final int touchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+        /**
+         * Null if the row cannot be swiped away.
+         */
+        @Nullable
         private View foreground;
         private View reveal;
-        private boolean swipeEnabled;
         private Runnable onDismiss;
         private float downX;
         private float downY;
         private boolean swiping;
+        @Nullable
         private VelocityTracker velocityTracker;
 
         SwipeRevealRow(Context context) {
             super(context);
         }
 
-        void configure(View foreground, View reveal, boolean swipeEnabled, Runnable onDismiss) {
+        void configure(View foreground, View reveal, Runnable onDismiss) {
             this.foreground = foreground;
             this.reveal = reveal;
-            this.swipeEnabled = swipeEnabled;
             this.onDismiss = onDismiss;
         }
 
         @Override
         public boolean onInterceptTouchEvent(MotionEvent event) {
-            if (!swipeEnabled || foreground == null) return false;
+            if (foreground == null) return false;
 
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN:
@@ -699,8 +708,8 @@ public final class LocalQueueSheet {
                     recycleTracker();
                     swiping = false;
 
-                    final boolean far = Math.abs(offset) > getWidth() * 0.35f;
-                    final boolean fling = Math.abs(velocity) > dp(700) && velocity * offset > 0;
+                    final boolean far = Math.abs(offset) > getWidth() * SWIPE_DISMISS_WIDTH_FRACTION;
+                    final boolean fling = Math.abs(velocity) > Dim.dp(SWIPE_DISMISS_FLING_VELOCITY_DP) && velocity * offset > 0;
                     if (event.getActionMasked() == MotionEvent.ACTION_UP && (far || fling)) {
                         dismiss(offset >= 0 ? 1 : -1);
                     } else {
@@ -816,6 +825,7 @@ public final class LocalQueueSheet {
     private static final class EqualizerView extends View {
         private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final RectF rect = new RectF();
+        @Nullable
         private ValueAnimator animator;
         private float phase;
 
@@ -827,7 +837,7 @@ public final class LocalQueueSheet {
         protected void onAttachedToWindow() {
             super.onAttachedToWindow();
             animator = ValueAnimator.ofFloat(0f, 1f);
-            animator.setDuration(900);
+            animator.setDuration(EQUALIZER_CYCLE_MILLISECONDS);
             animator.setRepeatCount(ValueAnimator.INFINITE);
             animator.setInterpolator(null);
             animator.addUpdateListener(a -> {
@@ -866,16 +876,25 @@ public final class LocalQueueSheet {
         }
     }
 
+    /**
+     * Index a dragged row ends at, from the center of the dragged row and the centers of the other
+     * rows in their current order.
+     */
+    private static int dropIndex(float draggedCenter, float[] otherCenters) {
+        int before = 0;
+        for (float center : otherCenters) {
+            if (center < draggedCenter) {
+                before++;
+            }
+        }
+        return before;
+    }
+
     private RippleDrawable createRipple(int color, int radius) {
         GradientDrawable content = new GradientDrawable();
         content.setColor(color);
         content.setCornerRadius(radius);
         return new RippleDrawable(ColorStateList.valueOf(withAlpha(foregroundColor, 0.16f)), content, null);
-    }
-
-    private int dp(float value) {
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value,
-                context.getResources().getDisplayMetrics()));
     }
 
     private static int withAlpha(int color, float alpha) {

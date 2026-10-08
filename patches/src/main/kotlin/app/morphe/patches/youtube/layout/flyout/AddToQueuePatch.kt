@@ -23,12 +23,9 @@ import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.video.information.playerStatusMethodRef
+import app.morphe.patches.youtube.video.information.playerStatusOverrideHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -131,22 +128,7 @@ val addToQueuePatch = bytecodePatch(
 
         navigationIntentHook(EXTENSION_LOCAL_QUEUE_CLASS, "shouldCancelNavigation")
 
-        playerStatusMethodRef.get()!!.apply {
-            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT)
-            val freeRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
-
-            addInstructionsWithLabels(
-                insertIndex,
-                """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_LOCAL_QUEUE_CLASS->shouldCancelEndOfVideo(Ljava/lang/Enum;)Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :continue_end_of_video
-                    return-void
-                    :continue_end_of_video
-                    nop
-                """
-            )
-        }
+        playerStatusOverrideHook(EXTENSION_LOCAL_QUEUE_CLASS, "shouldCancelEndOfVideo")
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

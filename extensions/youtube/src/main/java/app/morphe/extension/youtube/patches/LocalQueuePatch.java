@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ import java.util.function.Consumer;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import app.morphe.extension.youtube.patches.utils.QueueListLogic;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -56,6 +56,8 @@ public final class LocalQueuePatch {
     private static final long ADVANCE_GUARD_MILLISECONDS = 5000;
 
     private static final long END_OF_VIDEO_TOLERANCE_MILLISECONDS = 5000;
+
+    public static final int CONNECTION_TIMEOUT_MILLISECONDS = 5000;
 
     private static final Object LOCK = new Object();
     private static final List<Item> items = new ArrayList<>();
@@ -99,7 +101,7 @@ public final class LocalQueuePatch {
      */
     public static void add(String videoId) {
         try {
-            if (videoId == null || videoId.isEmpty()) {
+            if (videoId.isEmpty()) {
                 return;
             }
 
@@ -115,7 +117,7 @@ public final class LocalQueuePatch {
                 load();
                 final int existing = indexOf(videoId);
                 if (existing >= 0) {
-                    QueueListLogic.move(items, existing, 0);
+                    items.add(0, items.remove(existing));
                 } else {
                     if (items.size() >= MAX_ITEMS) {
                         Utils.showToastShort(str("morphe_local_queue_full"));
@@ -151,7 +153,8 @@ public final class LocalQueuePatch {
     public static void remove(int index) {
         synchronized (LOCK) {
             load();
-            if (!QueueListLogic.remove(items, index)) return;
+            if (index < 0 || index >= items.size()) return;
+            items.remove(index);
             save();
         }
         notifyChanged();
@@ -163,7 +166,11 @@ public final class LocalQueuePatch {
     public static void moveTo(int from, int to) {
         synchronized (LOCK) {
             load();
-            if (!QueueListLogic.move(items, from, to)) return;
+            final int size = items.size();
+            if (from < 0 || from >= size) return;
+            to = Math.max(0, Math.min(to, size - 1));
+            if (to == from) return;
+            items.add(to, items.remove(from));
             save();
         }
     }
@@ -171,7 +178,8 @@ public final class LocalQueuePatch {
     public static void clear() {
         synchronized (LOCK) {
             load();
-            if (!QueueListLogic.clear(items)) return;
+            if (items.isEmpty()) return;
+            items.clear();
             save();
         }
         notifyChanged();
@@ -203,7 +211,7 @@ public final class LocalQueuePatch {
      */
     public static boolean shouldCancelNavigation(Enum<?> navigationIntent) {
         try {
-            if (!isEnabled() || navigationIntent == null) {
+            if (!isEnabled()) {
                 return false;
             }
 
@@ -355,7 +363,7 @@ public final class LocalQueuePatch {
                 }
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to load queue", ex);
+            Logger.printException(() -> "load failure", ex);
             items.clear();
         }
     }
@@ -378,7 +386,7 @@ public final class LocalQueuePatch {
             }
             Settings.LOCAL_QUEUE_ITEMS.save(array.toString());
         } catch (Exception ex) {
-            Logger.printException(() -> "Failed to save queue", ex);
+            Logger.printException(() -> "save failure", ex);
         }
     }
 
@@ -388,8 +396,8 @@ public final class LocalQueuePatch {
                 String watchUrl = URLEncoder.encode("https://www.youtube.com/watch?v=" + item.videoId, "UTF-8");
                 HttpURLConnection connection = Requester.openConnection(
                         "https://www.youtube.com/oembed?format=json&url=" + watchUrl);
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT_MILLISECONDS);
+                connection.setReadTimeout(CONNECTION_TIMEOUT_MILLISECONDS);
                 JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
                 String title = json.optString("title");
                 String author = json.optString("author_name");
@@ -405,8 +413,10 @@ public final class LocalQueuePatch {
                 if (listener != null) {
                     Utils.runOnMainThread(() -> listener.accept(item.videoId));
                 }
+            } catch (IOException ex) {
+                Logger.printInfo(() -> "Could not fetch metadata of: " + item.videoId, ex);
             } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not fetch metadata for " + item.videoId, ex);
+                Logger.printException(() -> "fetchMetadata failure", ex);
             }
         });
     }
