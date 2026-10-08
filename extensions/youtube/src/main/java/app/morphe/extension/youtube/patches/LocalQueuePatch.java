@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.view.View;
 
+import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -21,7 +22,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
@@ -60,9 +63,16 @@ public final class LocalQueuePatch {
     public static final int CONNECTION_TIMEOUT_MILLISECONDS = 5000;
 
     private static final Object LOCK = new Object();
+    @GuardedBy("LOCK")
     private static final List<Item> items = new ArrayList<>();
+    @GuardedBy("LOCK")
     private static boolean loaded;
-    private static long lastAdvanceTime;
+    /**
+     * Video ids with a metadata request in progress.
+     */
+    @GuardedBy("LOCK")
+    private static final Set<String> metadataLoading = new HashSet<>();
+    private static volatile long lastAdvanceTime;
 
     @Nullable
     private static volatile Runnable changeListener;
@@ -73,12 +83,21 @@ public final class LocalQueuePatch {
         return Settings.LOCAL_QUEUE.get();
     }
 
-    public static void setChangeListener(@Nullable Runnable listener) {
-        changeListener = listener;
+    public static void setListeners(Runnable onChange, Consumer<String> onMetadata) {
+        changeListener = onChange;
+        metadataListener = onMetadata;
     }
 
-    public static void setMetadataListener(@Nullable Consumer<String> listener) {
-        metadataListener = listener;
+    /**
+     * Clears the listeners if they were not replaced by a newer queue sheet.
+     */
+    public static void clearListeners(Runnable onChange, Consumer<String> onMetadata) {
+        if (changeListener == onChange) {
+            changeListener = null;
+        }
+        if (metadataListener == onMetadata) {
+            metadataListener = null;
+        }
     }
 
     public static List<Item> getItems() {
@@ -96,10 +115,18 @@ public final class LocalQueuePatch {
     }
 
     /**
-     * Puts a video right after the one that is playing, so it plays next. If nothing is playing and
-     * the queue is empty, the video starts playing.
+     * @return If the queue is used and has a video to play next.
      */
-    public static void add(String videoId) {
+    public static boolean hasQueuedVideos() {
+        return isEnabled() && size() > 0;
+    }
+
+    /**
+     * Puts a video at the start of the queue so it plays next, or at the end of the queue.
+     * A video already in the queue is moved. If nothing is playing and the queue is empty,
+     * the video starts playing.
+     */
+    public static void add(String videoId, boolean playNext) {
         try {
             if (videoId.isEmpty()) {
                 return;
@@ -116,18 +143,19 @@ public final class LocalQueuePatch {
             synchronized (LOCK) {
                 load();
                 final int existing = indexOf(videoId);
+                final Item item;
                 if (existing >= 0) {
-                    items.add(0, items.remove(existing));
+                    item = items.remove(existing);
                 } else {
                     if (items.size() >= MAX_ITEMS) {
                         Utils.showToastShort(str("morphe_local_queue_full"));
                         return;
                     }
-                    Item item = new Item(videoId, null, null);
-                    items.add(0, item);
-                    fetchMetadata(item);
+                    item = new Item(videoId, null, null);
                 }
+                items.add(playNext ? 0 : items.size(), item);
                 save();
+                fetchMetadataIfNeeded(item);
             }
 
             Utils.showToastShort(str("morphe_local_queue_added"));
@@ -137,39 +165,25 @@ public final class LocalQueuePatch {
         }
     }
 
-    public static void removeVideoId(String videoId) {
+    public static void remove(String videoId) {
         synchronized (LOCK) {
             load();
-            int index = indexOf(videoId);
-            if (index < 0) {
-                return;
-            }
-            items.remove(index);
-            save();
-        }
-        notifyChanged();
-    }
-
-    public static void remove(int index) {
-        synchronized (LOCK) {
-            load();
-            if (index < 0 || index >= items.size()) return;
-            items.remove(index);
+            if (!items.removeIf(item -> item.videoId.equals(videoId))) return;
             save();
         }
         notifyChanged();
     }
 
     /**
-     * Moves an entry. The change is saved but listeners are not notified, the caller already shows it.
+     * Moves a video to the position of another video.
+     * The change is saved but listeners are not notified, the caller already shows it.
      */
-    public static void moveTo(int from, int to) {
+    public static void moveTo(String videoId, String targetVideoId) {
         synchronized (LOCK) {
             load();
-            final int size = items.size();
-            if (from < 0 || from >= size) return;
-            to = Math.max(0, Math.min(to, size - 1));
-            if (to == from) return;
+            final int from = indexOf(videoId);
+            final int to = indexOf(targetVideoId);
+            if (from < 0 || to < 0 || from == to) return;
             items.add(to, items.remove(from));
             save();
         }
@@ -188,17 +202,10 @@ public final class LocalQueuePatch {
     /**
      * Plays a queued video now and removes it from the queue.
      */
-    public static void playItem(int index) {
-        final Item item;
-        synchronized (LOCK) {
-            load();
-            if (index < 0 || index >= items.size()) return;
-            item = items.get(index);
-        }
-
-        if (startPlayback(item.videoId)) {
+    public static void play(String videoId) {
+        if (startPlayback(videoId)) {
             lastAdvanceTime = System.currentTimeMillis();
-            removeVideoId(item.videoId);
+            remove(videoId);
         } else {
             Utils.showToastShort(str("morphe_local_queue_play_failed"));
         }
@@ -286,17 +293,26 @@ public final class LocalQueuePatch {
         }
 
         lastAdvanceTime = System.currentTimeMillis();
-        Utils.runOnMainThreadNowOrLater(() -> {
-            if (!startPlayback(next.videoId)) {
-                synchronized (LOCK) {
-                    items.add(0, next);
-                    save();
-                }
-                lastAdvanceTime = 0;
-            }
-            notifyChanged();
-        });
+        if (Utils.isCurrentlyOnMainThread()) {
+            return startNext(next);
+        }
+
+        // The result is not known yet. The video is put back in the queue if it does not start.
+        Utils.runOnMainThread(() -> startNext(next));
         return true;
+    }
+
+    private static boolean startNext(Item next) {
+        final boolean started = startPlayback(next.videoId);
+        if (!started) {
+            synchronized (LOCK) {
+                items.add(0, next);
+                save();
+            }
+            lastAdvanceTime = 0;
+        }
+        notifyChanged();
+        return started;
     }
 
     private static boolean canStartPlayback() {
@@ -356,11 +372,7 @@ public final class LocalQueuePatch {
 
                 String title = object.optString("title");
                 String author = object.optString("author");
-                Item item = new Item(videoId, title.isEmpty() ? null : title, author.isEmpty() ? null : author);
-                items.add(item);
-                if (item.title == null || item.author == null) {
-                    fetchMetadata(item);
-                }
+                items.add(new Item(videoId, title.isEmpty() ? null : title, author.isEmpty() ? null : author));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "load failure", ex);
@@ -390,7 +402,16 @@ public final class LocalQueuePatch {
         }
     }
 
-    private static void fetchMetadata(Item item) {
+    /**
+     * Fetches the title and channel name of a video, if they are not known and not already being fetched.
+     */
+    public static void fetchMetadataIfNeeded(Item item) {
+        if (item.title != null && item.author != null) return;
+
+        synchronized (LOCK) {
+            if (!metadataLoading.add(item.videoId)) return;
+        }
+
         Utils.runOnBackgroundThread(() -> {
             try {
                 String watchUrl = URLEncoder.encode("https://www.youtube.com/watch?v=" + item.videoId, "UTF-8");
@@ -416,7 +437,11 @@ public final class LocalQueuePatch {
             } catch (IOException ex) {
                 Logger.printInfo(() -> "Could not fetch metadata of: " + item.videoId, ex);
             } catch (Exception ex) {
-                Logger.printException(() -> "fetchMetadata failure", ex);
+                Logger.printException(() -> "fetchMetadataIfNeeded failure", ex);
+            } finally {
+                synchronized (LOCK) {
+                    metadataLoading.remove(item.videoId);
+                }
             }
         });
     }

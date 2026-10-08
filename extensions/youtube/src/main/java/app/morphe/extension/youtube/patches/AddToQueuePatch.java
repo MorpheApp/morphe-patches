@@ -137,6 +137,8 @@ public final class AddToQueuePatch {
                         Activity activity = Utils.getActivity();
                         if (activity != null && !activity.isFinishing() && !activity.isDestroyed()) {
                             LocalQueueSheet.show(activity);
+                        } else {
+                            Logger.printException(() -> "Could not open queue sheet, activity is not available");
                         }
                     },
                     index
@@ -224,11 +226,7 @@ public final class AddToQueuePatch {
         try {
             if (queueButtonOriginalNames.contains(buttonName)) {
                 if (LocalQueuePatch.isEnabled()) {
-                    if (!queueButtonOriginalNames.get(0).equals(buttonName)) {
-                        return false;
-                    }
-
-                    LocalQueuePatch.add(videoId);
+                    LocalQueuePatch.add(videoId, queueButtonOriginalNames.get(0).equals(buttonName));
                     FlyoutUtils.dismissFlyout();
                     return true;
                 }

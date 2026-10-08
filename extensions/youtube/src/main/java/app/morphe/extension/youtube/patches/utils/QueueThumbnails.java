@@ -40,7 +40,6 @@ final class QueueThumbnails {
     };
 
     private static final Set<String> loading = new HashSet<>();
-    private static final Set<String> failed = new HashSet<>();
 
     @Nullable
     static Bitmap get(String videoId) {
@@ -48,21 +47,18 @@ final class QueueThumbnails {
     }
 
     static void load(String videoId, Consumer<String> onLoaded) {
-        if (cache.get(videoId) != null || loading.contains(videoId) || failed.contains(videoId)) {
+        if (cache.get(videoId) != null || !loading.add(videoId)) {
             return;
         }
 
-        loading.add(videoId);
         Utils.runOnBackgroundThread(() -> {
             Bitmap bitmap = download(videoId);
             Utils.runOnMainThread(() -> {
                 loading.remove(videoId);
-                if (bitmap == null) {
-                    failed.add(videoId);
-                    return;
+                if (bitmap != null) {
+                    cache.put(videoId, bitmap);
+                    onLoaded.accept(videoId);
                 }
-                cache.put(videoId, bitmap);
-                onLoaded.accept(videoId);
             });
         });
     }

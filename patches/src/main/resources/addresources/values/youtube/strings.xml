@@ -609,7 +609,9 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_add_flyout_menu_title">Add feed flyout queue menu item</string>
     <string name="morphe_queue_add_flyout_menu_summary">Adds an additional flyout item. Enable this if \"Add to queue\" is not shown</string>
     <string name="morphe_local_queue_title">Premium-style queue</string>
-    <string name="morphe_local_queue_summary">Replaces the Morphe queue with one that lives on the device, plays through on its own, and can be reordered by dragging</string>
+    <string name="morphe_local_queue_summary">"Replaces the Morphe queue with one that lives on the device, plays through on its own, and can be reordered by dragging
+
+Info: The next queued video only starts while YouTube is on screen"</string>
     <string name="morphe_local_queue_sheet_title">Queue</string>
     <string name="morphe_local_queue_open">Queue (%d)</string>
     <string name="morphe_local_queue_clear">Clear all</string>

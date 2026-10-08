@@ -42,7 +42,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Consumer;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.theme.ThemeUtils;
@@ -89,6 +92,13 @@ public final class LocalQueueSheet {
     private TextView clearButton;
 
     private final List<Row> rows = new ArrayList<>();
+    /**
+     * Videos this sheet requested the thumbnail and metadata of.
+     * Failed requests are retried the next time the queue is opened.
+     */
+    private final Set<String> requestedVideoIds = new HashSet<>();
+    private final Runnable changeListener = this::requestRender;
+    private final Consumer<String> metadataListener = this::onMetadata;
     @Nullable
     private Row nowPlayingRow;
 
@@ -142,17 +152,15 @@ public final class LocalQueueSheet {
         list.setOrientation(LinearLayout.VERTICAL);
         list.setPadding(0, 0, 0, Dim.dp12);
         scrollView.addView(list);
-        scrollView.setOnScrollChangeListener((v, x, y, oldX, oldY) -> loadVisibleThumbnails());
+        scrollView.setOnScrollChangeListener((v, x, y, oldX, oldY) -> loadVisibleRows());
         mainLayout.addView(scrollView);
 
         dialog = SheetBottomDialog.createSlideDialog(context, mainLayout, DIALOG_ANIMATION_DURATION_MILLISECONDS);
         render();
 
-        LocalQueuePatch.setChangeListener(this::requestRender);
-        LocalQueuePatch.setMetadataListener(this::onMetadata);
+        LocalQueuePatch.setListeners(changeListener, metadataListener);
         dialog.setOnDismissListener(d -> {
-            LocalQueuePatch.setChangeListener(null);
-            LocalQueuePatch.setMetadataListener(null);
+            LocalQueuePatch.clearListeners(changeListener, metadataListener);
             scrollView.setOnScrollChangeListener(null);
             drag = null;
         });
@@ -206,7 +214,7 @@ public final class LocalQueueSheet {
             list.addView(row.root);
         }
 
-        scrollView.post(this::loadVisibleThumbnails);
+        scrollView.post(this::loadVisibleRows);
     }
 
     private View createEmptyState() {
@@ -385,9 +393,9 @@ public final class LocalQueueSheet {
 
         foreground.setOnClickListener(v -> {
             dialog.dismiss();
-            LocalQueuePatch.playItem(row.index);
+            LocalQueuePatch.play(row.videoId);
         });
-        root.configure(foreground, reveal, () -> LocalQueuePatch.remove(row.index));
+        root.configure(foreground, reveal, () -> LocalQueuePatch.remove(row.videoId));
 
         return row;
     }
@@ -412,33 +420,40 @@ public final class LocalQueueSheet {
         }
     }
 
-    private void loadVisibleThumbnails() {
+    private void loadVisibleRows() {
         final int height = scrollView.getHeight();
         final int margin = height / 2;
         final int top = scrollView.getScrollY() - margin;
         final int bottom = scrollView.getScrollY() + height + margin;
 
         if (nowPlayingRow != null) {
-            bindThumbnail(nowPlayingRow);
+            loadRow(nowPlayingRow);
         }
         for (Row row : rows) {
             boolean visible = height == 0
                     ? row.index < INITIAL_THUMBNAIL_ROWS
                     : row.root.getBottom() >= top && row.root.getTop() <= bottom;
             if (visible) {
-                bindThumbnail(row);
+                loadRow(row);
             }
         }
     }
 
-    private void bindThumbnail(Row row) {
-        if (row.thumbnail.getDrawable() != null) return;
+    private void loadRow(Row row) {
+        if (row.thumbnail.getDrawable() == null) {
+            Bitmap bitmap = QueueThumbnails.get(row.videoId);
+            if (bitmap != null) {
+                row.thumbnail.setImageBitmap(bitmap);
+            }
+        }
 
-        Bitmap bitmap = QueueThumbnails.get(row.videoId);
-        if (bitmap != null) {
-            row.thumbnail.setImageBitmap(bitmap);
-        } else {
+        if (!requestedVideoIds.add(row.videoId)) return;
+
+        if (row.thumbnail.getDrawable() == null) {
             QueueThumbnails.load(row.videoId, this::onThumbnailLoaded);
+        }
+        if (row.item != null) {
+            LocalQueuePatch.fetchMetadataIfNeeded(row.item);
         }
     }
 
@@ -611,7 +626,7 @@ public final class LocalQueueSheet {
                             drag = null;
                         }
                         if (target != origin) {
-                            LocalQueuePatch.moveTo(origin, target);
+                            LocalQueuePatch.moveTo(session.row.videoId, rows.get(target).videoId);
                             renderPending = true;
                         }
                         endInteraction();
