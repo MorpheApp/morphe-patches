@@ -16,7 +16,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -54,21 +53,17 @@ val disableContinueWatchingPromptPatch = bytecodePatch(
             }
         }
 
-        AutoplayConfirmDialogEnabledFingerprint.matchOrNull()?.method?.apply {
-            val register = findFreeRegister(0)
-
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->disableConfirmDialog()Z
-                    move-result v$register
-                    if-eqz v$register, :original
-                    const/4 v$register, 0x0
-                    return v$register
-                    :original
-                    nop
-                """
-            )
-        }
+        AutoplayConfirmDialogEnabledFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->disableConfirmDialog()Z
+                move-result v0
+                if-eqz v0, :original
+                const/4 v0, 0x0
+                return v0
+                :original
+                nop
+            """
+        )
     }
 }
