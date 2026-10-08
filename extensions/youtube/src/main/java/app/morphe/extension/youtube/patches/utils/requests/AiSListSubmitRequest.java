@@ -173,7 +173,7 @@ public final class AiSListSubmitRequest {
                     && codePoint != '_'
                     && codePoint != '-'
                     && codePoint != '.'
-                    && codePoint != '\u00B7') {
+                    && codePoint != '·') {
                 return false;
             }
 
