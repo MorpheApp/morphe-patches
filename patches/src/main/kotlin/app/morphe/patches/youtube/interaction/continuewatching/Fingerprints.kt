@@ -12,6 +12,7 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -61,9 +62,40 @@ internal object AutoplayConfirmDialogEnabledFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
+        literal(45381478L),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf("J", "Z"),
+            returnType = "Z",
+            location = MatchAfterWithin(2)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "I",
+            location = MatchAfterWithin(6)
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Lj\$/util/Optional;",
+            name = "isPresent",
+            location = MatchAfterWithin(6)
+        )
+    )
+)
+
+/**
+ * Same as [AutoplayConfirmDialogEnabledFingerprint], but the feature flag is read
+ * through a wrapper method. 21.29 and lower.
+ */
+internal object AutoplayConfirmDialogEnabledLegacyFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
             returnType = "Z"
         ),
         methodCall(

@@ -13,6 +13,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -24,11 +26,13 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val disableContinueWatchingPromptPatch = bytecodePatch(
     name = "Disable continue watching prompt",
-    description = "Adds an option to keep autoplay going instead of pausing with a Continue watching prompt after a period of inactivity.",
+    description = "Adds an option to keep autoplay going instead of pausing with a " +
+            "\"Continue watching\" prompt after a period of inactivity.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        versionCheckPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -53,7 +57,8 @@ val disableContinueWatchingPromptPatch = bytecodePatch(
             }
         }
 
-        AutoplayConfirmDialogEnabledFingerprint.method.addInstructionsWithLabels(
+        (if (is_21_30_or_greater) AutoplayConfirmDialogEnabledFingerprint
+        else AutoplayConfirmDialogEnabledLegacyFingerprint).method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS->disableConfirmDialog()Z
