@@ -104,9 +104,7 @@ public class SaveToWatchLaterButton {
     public static int addFlyoutButton(Object flyoutPanel, int nextButtonIndex, String flyoutVideoId,
                                       boolean videoMarkedAsForKids, boolean isShortFlyout, boolean isTopFlyout) {
         final String saveToWatchLaterButtonVideoId;
-        if (!SaveToWatchLaterPatch.isPatchIncluded()) {
-            saveToWatchLaterButtonVideoId = "";
-        } else if (!flyoutVideoId.isEmpty()) {
+        if (!flyoutVideoId.isEmpty()) {
             if (Settings.KIDS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
                     videoMarkedAsForKids) {
                 saveToWatchLaterButtonVideoId = flyoutVideoId;

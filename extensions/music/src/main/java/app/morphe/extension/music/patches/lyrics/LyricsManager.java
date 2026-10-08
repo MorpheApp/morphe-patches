@@ -45,7 +45,7 @@ import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
-import app.morphe.extension.music.patches.lyrics.requests.AMlLProvider;
+import app.morphe.extension.music.patches.lyrics.requests.AMLLProvider;
 import app.morphe.extension.music.patches.lyrics.requests.AppleMusicProvider;
 import app.morphe.extension.music.patches.lyrics.requests.BinimumProvider;
 import app.morphe.extension.music.patches.lyrics.requests.BlyricsProvider;
@@ -2003,7 +2003,7 @@ public final class LyricsManager {
     }
 
     /**
-     * The track the provider search asks with: the released audios duration, the video
+     * The track the provider search asks with: the released audio's duration, the video
      * minus the sponsorblock segments, so candidates written against it pass the duration
      * filter. The user's choice ({@link Settings#LYRICS_SB_MATCHING}) gates this and the
      * rest of the segment pipeline alike: with it off, nothing is requested, the search
@@ -2264,7 +2264,7 @@ public final class LyricsManager {
         }
         String beforeSep = sepIdx >= 0 ? normalized.substring(0, sepIdx) : normalized;
 
-        boolean hasRealSeparator = isHasRealSeparator(sepIdx, normalizedWithSpaces);
+        boolean hasRealSeparator = hasRealSeparator(sepIdx, normalizedWithSpaces);
 
         for (String variant : allVariants) {
             if (variant.isEmpty()) {
@@ -2293,7 +2293,7 @@ public final class LyricsManager {
         return false;
     }
 
-    private static boolean isHasRealSeparator(int sepIdx, String normalizedWithSpaces) {
+    private static boolean hasRealSeparator(int sepIdx, String normalizedWithSpaces) {
         if (sepIdx < 0) return false;
         int realSepIdx = -1;
         int spaceSepIdx = normalizedWithSpaces.indexOf(' ');
@@ -2632,7 +2632,7 @@ public final class LyricsManager {
             case "BiniLyrics" -> new BinimumProvider();
             case "Unison" -> new UnisonProvider();
             case "SimpMusic" -> new SimpMusicProvider();
-            case "AMLL" -> new AMlLProvider();
+            case "AMLL" -> new AMLLProvider();
             case "LunaBeat" -> new LunaBeatProvider();
             case "Apple" -> new AppleMusicProvider();
             case "Spotify" -> new SpotifyProvider();

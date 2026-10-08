@@ -40,7 +40,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_VIDEO_ADS = new BooleanSetting("morphe_music_hide_video_ads", TRUE, true);
 
     // Feed
-    public static final BooleanSetting HIDE_DOWNLOAD_BUTTON_IN_PODCAST = new BooleanSetting("morphe_music_hide_download_button_in_podcast", FALSE, true);
+    public static final BooleanSetting HIDE_DOWNLOAD_BUTTON_IN_PODCAST = new BooleanSetting("morphe_music_hide_podcast_episode_download_button", FALSE, true);
     public static final BooleanSetting HIDE_EXPLORE_SHELF = new BooleanSetting("morphe_music_hide_explore_shelf", FALSE, true);
     public static final BooleanSetting HIDE_GRID_SHELVES = new BooleanSetting("morphe_music_hide_grid_shelves", FALSE, true);
     public static final BooleanSetting HIDE_HORIZONTAL_SHELVES = new BooleanSetting("morphe_music_hide_horizontal_shelves", FALSE, true);

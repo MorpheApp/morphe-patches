@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.requests;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -142,7 +141,6 @@ public final class LunaProvider implements LyricsProvider {
         return label != null && label.optBoolean("is_original", false);
     }
 
-    @NonNull
     private List<JSONObject> searchTracks(TrackInfo track) throws Exception {
         LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
 

@@ -132,6 +132,7 @@ public final class LunaBeatProvider implements LyricsProvider {
                 String id = obj.optString("id", "");
                 String title = obj.optString("title", "");
                 String path = obj.optString("path", "");
+                if (id.isEmpty() || title.isEmpty() || path.isEmpty()) continue;
 
                 JSONArray artistsArr = obj.optJSONArray("artists");
                 String[] artists = new String[artistsArr != null ? artistsArr.length() : 0];
@@ -278,7 +279,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             }
             String ttml = sb.toString();
 
-            Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, name(), "");
+            Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, name(), null);
             if (lyrics == null) return null;
 
             Map<String, List<LyricsLine>> translations = lyrics.translations();
@@ -297,7 +298,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             }
 
             return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
-                    lyrics.romanization(), Collections.emptyMap(), lyrics.romanizations(),
+                    lyrics.romanization(), null, lyrics.romanizations(),
                     lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(),
                     lyrics.sourceUrl());
         } catch (Exception ex) {

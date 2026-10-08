@@ -1254,7 +1254,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             }
                             linesContainer.getViewTreeObserver()
                                     .removeOnPreDrawListener(this);
-                            final int index = getIndex(preserveIndex);
+                            final int index = restoreAnchorIndex(preserveIndex);
                             final boolean preserved = index == preserveIndex;
                             final int maxScroll = Math.max(0,
                                     linesContainer.getHeight() - scrollView.getHeight());
@@ -1305,7 +1305,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     }
 
-    private int getIndex(int preserveIndex) {
+    private int restoreAnchorIndex(int preserveIndex) {
         final int index;
         if (highlightedIndex >= 0
                 && highlightedIndex < lineViews.size()

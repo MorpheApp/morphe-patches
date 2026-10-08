@@ -22,7 +22,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class PictureinPictureButton {
 
-    private static final String pipButtonName = str("morphe_pip_flyout_button_name");
+    private static final String pipButtonName = str("morphe_pip_button_flyout_name");
 
     static {
         if (Settings.PIP_OVERLAY_BUTTON.get() && PictureinPictureButtonPatch.isPipSupported()) {
@@ -52,8 +52,7 @@ public class PictureinPictureButton {
     }
 
     public static int addFlyoutButton(Object flyoutPanel, int nextButtonIndex, boolean isTopFlyout, boolean isShortFlyout) {
-        if (PictureinPictureButtonPatch.isPatchIncluded() && Settings.PIP_FLYOUT_BUTTON.get() &&
-                (isTopFlyout || isShortFlyout)) {
+        if (Settings.PIP_FLYOUT_BUTTON.get() && (isTopFlyout || isShortFlyout)) {
 
             Drawable icon = ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
                     ? "morphe_pip_button_bold"

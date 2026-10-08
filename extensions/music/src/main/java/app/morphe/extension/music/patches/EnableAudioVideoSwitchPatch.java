@@ -311,13 +311,14 @@ public final class EnableAudioVideoSwitchPatch {
     @SuppressWarnings({"BooleanMethodIsAlwaysInverted", "BusyWait"})
     private static boolean await(Condition condition, long timeoutMs) {
         long deadline = SystemClock.uptimeMillis() + timeoutMs;
-        while (SystemClock.uptimeMillis() < deadline) {
+        while (true) {
             try {
                 if (condition.ok()) return true;
             } catch (Exception ex) {
                 Logger.printException(() -> "audio/video switch: queue poll failed", ex);
                 return false;
             }
+            if (SystemClock.uptimeMillis() >= deadline) return false;
             try {
                 Thread.sleep(50);
             } catch (InterruptedException ex) {
@@ -325,7 +326,6 @@ public final class EnableAudioVideoSwitchPatch {
                 return false;
             }
         }
-        return false;
     }
 
     /**

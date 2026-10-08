@@ -332,15 +332,13 @@ public final class MetadataCleaner {
                 }
             }
 
-            StringBuilder sb = createStringBuilder(conn, charset);
-            return sb.toString().trim();
+            return readBody(conn, charset).toString().trim();
         } finally {
             conn.disconnect();
         }
     }
 
-    @NonNull
-    private static StringBuilder createStringBuilder(HttpURLConnection conn, String charset) throws IOException {
+    private static StringBuilder readBody(HttpURLConnection conn, String charset) throws IOException {
         StringBuilder sb = new StringBuilder(4096);
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(conn.getInputStream(), charset))) {

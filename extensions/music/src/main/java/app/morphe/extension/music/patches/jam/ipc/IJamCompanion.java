@@ -134,9 +134,10 @@ public interface IJamCompanion extends IInterface {
                 IBinder.FIRST_CALL_TRANSACTION;
     }
 
+    // Must match the descriptor used by the Jam companion app, so it does not follow the package name.
     /** @hide */
     String DESCRIPTOR =
-        "app.morphe.extension.music.patches.jam.ipc.IJamCompanion";
+        "app.morphe.jam.ipc.IJamCompanion";
     String call(
         String capability,
         String request

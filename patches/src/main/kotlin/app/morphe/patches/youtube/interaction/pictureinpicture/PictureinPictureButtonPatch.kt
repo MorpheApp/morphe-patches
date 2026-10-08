@@ -39,9 +39,9 @@ private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/PictureinPictureButtonPatch;"
 
 @Suppress("unused")
-val pctureinPictureButtonPatch = bytecodePatch(
-    name = "Picture-in-Picture",
-    description = "Adds an option to display Picture-in-Picture button in the video player."
+val pictureinPictureButtonPatch = bytecodePatch(
+    name = "Picture-in-picture button",
+    description = "Adds an option to display a picture-in-picture button in the video player."
 ) {
     dependsOn(
         pictureinPictureButtonResourcePatch,
@@ -66,10 +66,10 @@ val pctureinPictureButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_pip_overlay_button")
+            SwitchPreference("morphe_pip_button_overlay")
         )
         addPlayerFlyoutMenuPreferences(
-            SwitchPreference("morphe_pip_flyout_button")
+            SwitchPreference("morphe_pip_button_flyout")
         )
 
         initializeTopControl(EXTENSION_BUTTON)

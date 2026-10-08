@@ -28,18 +28,18 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val CLOCK = "Lapp/morphe/extension/music/jam/JamClock;"
+private const val CLOCK = "Lapp/morphe/extension/music/patches/jam/JamClock;"
 private const val OBJECT = "Ljava/lang/Object;"
-private const val CLOCK_BAR = $$"Lapp/morphe/extension/music/jam/JamClock$Bar;"
-private const val PALETTE = "Lapp/morphe/extension/music/jam/JamPalette;"
-private const val PALETTE_SOURCE = $$"Lapp/morphe/extension/music/jam/JamPalette$Source;"
-private const val PLAYBACK = "Lapp/morphe/extension/music/jam/JamPlayback;"
-private const val ROUTER_ACCESS = $$"Lapp/morphe/extension/music/jam/JamPlayback$Router;"
-private const val NOW_ACCESS = $$"Lapp/morphe/extension/music/jam/JamPlayback$NowUi;"
-private const val PLAYER_ICON = $$"Lapp/morphe/extension/music/jam/JamPlayerState$Icon;"
-private const val PLAYER_STATE = "Lapp/morphe/extension/music/jam/JamPlayerState;"
-private const val MENU_ROW = $$"Lapp/morphe/extension/music/jam/JamMenu$Row;"
-private const val ITEM_ACCESS = $$"Lapp/morphe/extension/music/jam/YtmBridge$ItemAccess;"
+private const val CLOCK_BAR = $$"Lapp/morphe/extension/music/patches/jam/JamClock$Bar;"
+private const val PALETTE = "Lapp/morphe/extension/music/patches/jam/JamPalette;"
+private const val PALETTE_SOURCE = $$"Lapp/morphe/extension/music/patches/jam/JamPalette$Source;"
+private const val PLAYBACK = "Lapp/morphe/extension/music/patches/jam/JamPlayback;"
+private const val ROUTER_ACCESS = $$"Lapp/morphe/extension/music/patches/jam/JamPlayback$Router;"
+private const val NOW_ACCESS = $$"Lapp/morphe/extension/music/patches/jam/JamPlayback$NowUi;"
+private const val PLAYER_ICON = $$"Lapp/morphe/extension/music/patches/jam/JamPlayerState$Icon;"
+private const val PLAYER_STATE = "Lapp/morphe/extension/music/patches/jam/JamPlayerState;"
+private const val MENU_ROW = $$"Lapp/morphe/extension/music/patches/jam/JamMenu$Row;"
+private const val ITEM_ACCESS = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$ItemAccess;"
 
 /** Installs presentation bridges after [JamUiAbi] has resolved each native relationship. */
 internal fun BytecodePatchContext.installJamUiBridges(ui: JamUiAbi, queue: JamQueueAbi) {
@@ -324,7 +324,7 @@ private fun BytecodePatchContext.installCurrentItem(current: CurrentItemAbi) {
         2,
         local.accessFlags,
         """
-            invoke-static {}, Lapp/morphe/extension/music/jam/JamMirror;->now()Ljava/lang/Object;
+            invoke-static {}, $JAM_MIRROR->now()Ljava/lang/Object;
             move-result-object v0
             if-eqz v0, :local
             invoke-static {v0}, Lj$/util/Optional;->of(Ljava/lang/Object;)Lj$/util/Optional;
@@ -360,8 +360,7 @@ private fun BytecodePatchContext.installNowPlaying(now: NowPlayingAbi, item: Que
         val call = instructions[index] as ReferenceInstruction
         val receiver = call.registerAt(0) ?: error("Missing player text receiver")
         val text = call.registerAt(1) ?: error("Missing player text argument")
-        val target =
-            "Lapp/morphe/extension/music/jam/JamMetadata;->setText(Landroid/widget/TextView;Ljava/lang/CharSequence;)V"
+        val target = "$JAM_METADATA->setText(Landroid/widget/TextView;Ljava/lang/CharSequence;)V"
         replaceInstruction(
             index,
             if (call is RegisterRangeInstruction) {
@@ -425,7 +424,7 @@ private fun BytecodePatchContext.installArtwork(artwork: ArtworkAbi) {
         local.accessFlags,
         """
             iget-object v0, p0, ${artwork.image}
-            invoke-static {v0, p1}, Lapp/morphe/extension/music/jam/JamArtwork;->choose(Landroid/widget/ImageView;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+            invoke-static {v0, p1}, $JAM_ARTWORK->choose(Landroid/widget/ImageView;Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
             move-result-object p1
             ${invokeKind(artwork.update)} {p0, p1}, $local
             return-void
@@ -481,7 +480,7 @@ private fun BytecodePatchContext.installQueueRow(row: QueueRowAbi, item: QueueIt
             ${invokeKind(row.bind)} {p0, p1, p2, p3}, $bind
             ${invokeKind(row.rootView)} {p0}, ${row.rootView}
             move-result-object v0
-            invoke-static {v0, p0, p3}, Lapp/morphe/extension/music/jam/JamMenu;->bind(Landroid/view/View;${MENU_ROW}Ljava/lang/Object;)V
+            invoke-static {v0, p0, p3}, $JAM_MENU->bind(Landroid/view/View;${MENU_ROW}Ljava/lang/Object;)V
             return-void
         """
     )
@@ -536,8 +535,8 @@ private fun Method.parameters(): List<String> = parameterTypes.map { it.toString
 private fun MethodReference.parameters(): List<String> = parameterTypes.map { it.toString() }
 
 private fun BytecodePatchContext.installAutoplayUi(abi: AutoplayUiAbi) {
-    val extension = "Lapp/morphe/extension/music/jam/JamMirror;"
-    val contract = $$"Lapp/morphe/extension/music/jam/JamMirror$AutoplayUi;"
+    val extension = "Lapp/morphe/extension/music/patches/jam/JamMirror;"
+    val contract = $$"Lapp/morphe/extension/music/patches/jam/JamMirror$AutoplayUi;"
     val owner = mutableClassDefBy(abi.refresh.definingClass)
     owner.interfaces.add(contract)
     val refresh = abi.refresh.getMutableMethod()

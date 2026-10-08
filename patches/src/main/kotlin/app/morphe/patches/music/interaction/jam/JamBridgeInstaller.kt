@@ -17,15 +17,18 @@ import app.morphe.util.numberOfParameterRegisters
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val BRIDGE = "Lapp/morphe/extension/music/jam/YtmBridge;"
-private const val ACCESS = $$"Lapp/morphe/extension/music/jam/YtmBridge$QueueAccess;"
-private const val ITEM_ACCESS = $$"Lapp/morphe/extension/music/jam/YtmBridge$ItemAccess;"
-private const val ARTWORK_ACCESS = $$"Lapp/morphe/extension/music/jam/YtmBridge$ArtworkAccess;"
-private const val THUMBNAIL_ACCESS = $$"Lapp/morphe/extension/music/jam/YtmBridge$ThumbnailAccess;"
-private const val NATIVE_LIST = "Lapp/morphe/extension/music/jam/NativeQueueList;"
-private const val JAM_MIRROR = "Lapp/morphe/extension/music/jam/JamMirror;"
-private const val JAM_COMPLETION = "Lapp/morphe/extension/music/jam/JamCompletion;"
-private const val JAM_UI = "Lapp/morphe/extension/music/jam/JamUi;"
+private const val BRIDGE = "Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge;"
+private const val ACCESS = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$QueueAccess;"
+private const val ITEM_ACCESS = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$ItemAccess;"
+private const val ARTWORK_ACCESS = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$ArtworkAccess;"
+private const val THUMBNAIL_ACCESS = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$ThumbnailAccess;"
+private const val NATIVE_LIST = "Lapp/morphe/extension/music/patches/jam/NativeQueueList;"
+private const val JAM_COMPLETION = "Lapp/morphe/extension/music/patches/jam/JamCompletion;"
+private const val JAM_UI = "Lapp/morphe/extension/music/patches/jam/JamUI;"
+internal const val JAM_MIRROR = "Lapp/morphe/extension/music/patches/jam/JamMirror;"
+internal const val JAM_METADATA = "Lapp/morphe/extension/music/patches/jam/JamMetadata;"
+internal const val JAM_ARTWORK = "Lapp/morphe/extension/music/patches/jam/JamArtwork;"
+internal const val JAM_MENU = "Lapp/morphe/extension/music/patches/jam/JamMenu;"
 
 /** Installs the queue-facing native bridges selected by [resolveJamQueueAbi]. */
 internal fun BytecodePatchContext.installJamQueueBridges(queue: JamQueueAbi) {
@@ -471,7 +474,7 @@ private fun BytecodePatchContext.installNativeQueueListAdapter(storage: QueueSto
 private fun BytecodePatchContext.installQueueItemAccess(item: QueueItemAbi) {
     val menuPayload =
         requireNotNull(item.menuPayload) { "Unable to install Jam queue-item menu payload bridge" }
-    val metadataAccess = $$"Lapp/morphe/extension/music/jam/YtmBridge$MetadataAccess;"
+    val metadataAccess = $$"Lapp/morphe/extension/music/patches/jam/YouTubeMusicBridge$MetadataAccess;"
     concreteImplementationsOf(item.metadataType).forEach { implementation ->
         val metadata = mutableClassDefBy(implementation.type)
         metadata.interfaces.add(metadataAccess)

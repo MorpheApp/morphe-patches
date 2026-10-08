@@ -314,7 +314,6 @@ public final class JamClock {
                 position = next.optLong("position", -1);
         double speed = next.optDouble("speed", 1);
 
-        // Updated to use invalid() instead of !valid()
         if (JamTime.invalid(position, duration, speed)) return;
 
         String video = next.optString("videoId");

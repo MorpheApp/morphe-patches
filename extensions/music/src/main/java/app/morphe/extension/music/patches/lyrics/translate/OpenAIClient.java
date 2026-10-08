@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.translate;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -148,13 +147,11 @@ public final class OpenAIClient {
         if (blockEnd == -1) {
             return null;
         }
-        StringBuilder sb = getStringBuilder(blockEnd, lines);
-        return sb.toString();
+        return joinNumberedBlock(blockEnd, lines).toString();
     }
 
     @SuppressWarnings("SizeReplaceableByIsEmpty")
-    @NonNull
-    private static StringBuilder getStringBuilder(int blockEnd, String[] lines) {
+    private static StringBuilder joinNumberedBlock(int blockEnd, String[] lines) {
         int blockStart = blockEnd;
         while (blockStart > 0 && lines[blockStart - 1].trim().matches("\\d+\\..+")) {
             blockStart--;
@@ -271,7 +268,9 @@ public final class OpenAIClient {
 
     public static String renderPrompt(String template, String task, String language,
                                       String title, String artist, List<String> lines) {
-        template = Objects.requireNonNullElse(template == null || template.isEmpty() ? null : template, DEFAULT_PROMPT);
+        if (template == null || template.isEmpty()) {
+            template = DEFAULT_PROMPT;
+        }
         StringBuilder linesText = new StringBuilder();
         for (String line : lines) {
             linesText.append(Objects.requireNonNullElse(line, "")).append('\n');

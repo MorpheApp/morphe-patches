@@ -53,6 +53,8 @@ import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.AddToQueuePatch;
+import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch;
+import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
@@ -554,21 +556,27 @@ public final class FlyoutUtils {
             nextButtonIndex = ChannelWhitelist.addFlyoutButtons(flyoutPanel, nextButtonIndex, isMyTabHistoryFlyout);
         }
 
-        nextButtonIndex = PictureinPictureButton.addFlyoutButton(
-                flyoutPanel,
-                nextButtonIndex,
-                PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible(),
-                isShortFlyout
-        );
+        // Check the patch first. Loading the button classes runs their static
+        // initializer, which counts the overlay button even if the patch is excluded.
+        if (PictureinPictureButtonPatch.isPatchIncluded()) {
+            nextButtonIndex = PictureinPictureButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible(),
+                    isShortFlyout
+            );
+        }
 
-        nextButtonIndex = SaveToWatchLaterButton.addFlyoutButton(
-                flyoutPanel,
-                nextButtonIndex,
-                flyoutVideoId,
-                videoMarkedAsForKids,
-                isShortFlyout,
-                PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
-        );
+        if (SaveToWatchLaterPatch.isPatchIncluded()) {
+            nextButtonIndex = SaveToWatchLaterButton.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    flyoutVideoId,
+                    videoMarkedAsForKids,
+                    isShortFlyout,
+                    PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
+            );
+        }
 
         if (nextButtonIndex > 0) {
             addDivider(flyoutPanel, nextButtonIndex);

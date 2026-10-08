@@ -494,7 +494,7 @@ public class CrossfadePatch {
 
     /**
      * #1671: how long after a dismiss-trigger ({@link #onQueueDismissed}) we treat
-     * an incoming stopVideo as part of to dismiss (and pass it through WITHOUT
+     * an incoming stopVideo as part of the dismiss (and pass it through WITHOUT
      * starting a crossfade).  YTM tears down playback on dismiss via the same
      * stopVideo(5) a manual skip uses, so the dismiss UI triggers set this window
      * to tell us "the next stop is a dismiss, not a skip."  Kept short so a real
@@ -2027,7 +2027,7 @@ public class CrossfadePatch {
                         // crossfade is audio-only, so chxp must stay at audio-preferred to
                         // keep the album-art UI subscriber in sync.  Restoring video would
                         // make YTM's UI swap to the video-player fragment, which has no
-                        // stream to render → black box.  User can restore video by long-pressing
+                        // stream to render -> black box.  User can restore video by long-pressing
                         // to pause crossfade (handled in shouldBlockVideoToggle).
                         audioModeWasForced = false;
 
@@ -3010,7 +3010,7 @@ public class CrossfadePatch {
      * for the user's session (onPlayVideo) so the UI properly switches to album-art
      * display.  Cost: brief stream reload to the audio-only stream.  Cannot be used
      * during the crossfade SWAP itself (onBeforeStopVideo / onBeforePlayNext) because
-     * the broadcast triggers a nmi-driven stopVideo(5) jump that would re-enter our
+     * the broadcast triggers an nmi-driven stopVideo(5) jump that would re-enter our
      * own hook and corrupt the swap-in-progress.
      */
     private static void forceAudioModeBroadcastIfNeeded() {

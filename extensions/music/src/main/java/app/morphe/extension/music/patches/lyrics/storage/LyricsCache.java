@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.lyrics.storage;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -261,7 +260,6 @@ public final class LyricsCache {
         }
     }
 
-    @NonNull
     private static String name(@Nullable File file) {
         return file == null ? "null" : file.getName();
     }

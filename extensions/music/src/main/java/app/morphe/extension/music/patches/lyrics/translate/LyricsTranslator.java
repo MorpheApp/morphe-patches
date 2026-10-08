@@ -7,7 +7,6 @@
 
 package app.morphe.extension.music.patches.lyrics.translate;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -61,13 +60,12 @@ public final class LyricsTranslator {
             if (lines == null || lines.size() != lineCount || !LyricsMerge.hasText(lines)) {
                 continue;
             }
-            return createOut(lyrics, lines);
+            return embeddedTranslationLines(lyrics, lines);
         }
         return null;
     }
 
-    @NonNull
-    private static List<String> createOut(Lyrics lyrics, List<LyricsLine> lines) {
+    private static List<String> embeddedTranslationLines(Lyrics lyrics, List<LyricsLine> lines) {
         List<String> out = new ArrayList<>(lines.size());
         for (LyricsLine line : lines) {
             String text = line.text();

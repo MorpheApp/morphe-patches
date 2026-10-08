@@ -403,21 +403,21 @@ final class LyricsLineView extends TextView {
         canvas.restore();
     }
 
-    private void drawBaseText(Canvas canvas) {
+    /**
+     * @return False if nothing was drawn and the default text drawing should be used.
+     */
+    private boolean drawBaseText(Canvas canvas) {
         final Layout layout = getLayout();
         if (layout == null) {
-            super.draw(canvas);
-            return;
+            return false;
         }
         if (getWidth() <= 0 || getHeight() <= 0) {
-            super.draw(canvas);
-            return;
+            return false;
         }
 
         final int lineCount = layout.getLineCount();
         if (lineCount <= 0) {
-            super.draw(canvas);
-            return;
+            return false;
         }
 
         final float contentNow = contentReveal;
@@ -441,7 +441,7 @@ final class LyricsLineView extends TextView {
         final boolean regionRevealing = transReveal < 1f || romaReveal < 1f;
         if (!hasSecondary || (secondaryAlpha == mainAlpha && !regionRevealing)) {
             drawTextRun(canvas, layout, 0, lineCount - 1, mainAlpha);
-            return;
+            return true;
         }
 
         final int romaFirst = rangeLine(layout, romaStart, romaEnd, true);
@@ -469,6 +469,7 @@ final class LyricsLineView extends TextView {
                 }
             }
         }
+        return true;
     }
 
     private static int rangeLine(Layout layout, int start, int end, boolean first) {
@@ -501,7 +502,9 @@ final class LyricsLineView extends TextView {
     @SuppressWarnings("SizeReplaceableByIsEmpty")
     @Override
     protected void onDraw(Canvas canvas) {
-        drawBaseText(canvas);
+        if (!drawBaseText(canvas)) {
+            super.onDraw(canvas);
+        }
         try {
             if (contentReveal <= 0f
                     || unsungColor == 0 || (wordTimings.isEmpty() && !allSung)) {

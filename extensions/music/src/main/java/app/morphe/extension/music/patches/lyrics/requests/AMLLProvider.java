@@ -21,7 +21,7 @@ import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
-public final class AMlLProvider implements LyricsProvider {
+public final class AMLLProvider implements LyricsProvider {
 
     private static final String BASE_URL = "https://api.amll.dev/v1/lyrics";
 

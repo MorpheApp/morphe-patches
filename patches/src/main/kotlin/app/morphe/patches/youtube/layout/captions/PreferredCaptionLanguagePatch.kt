@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -20,7 +19,8 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.StartVideoInformerFingerprint
+import app.morphe.patches.youtube.shared.hookVideoStarted
+import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.getReference
@@ -68,6 +68,7 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        startVideoInformerPatch,
         videoInformationPatch
     )
 
@@ -181,9 +182,6 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
         onCreateHook(EXTENSION_CLASS, "newVideoStarted")
 
-        StartVideoInformerFingerprint.method.addInstruction(
-            0,
-            "invoke-static { }, $EXTENSION_CLASS->videoInformationLoaded()V"
-        )
+        hookVideoStarted("$EXTENSION_CLASS->videoInformationLoaded()V")
     }
 }

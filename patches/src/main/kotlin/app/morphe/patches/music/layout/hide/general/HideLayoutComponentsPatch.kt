@@ -47,7 +47,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("morphe_music_hide_download_button_in_podcast", summary = true),
+            SwitchPreference("morphe_music_hide_podcast_episode_download_button", summary = true),
             SwitchPreference("morphe_music_hide_explore_shelf"),
             SwitchPreference("morphe_music_hide_grid_shelves"),
             SwitchPreference("morphe_music_hide_filter_bar"),

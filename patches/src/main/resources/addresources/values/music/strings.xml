@@ -200,9 +200,10 @@ Downloaded tracks appear here"</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string name="morphe_music_hide_audio_video_toggle_title">Hide Audio / Video toggle</string>
-    <string name="morphe_music_hide_download_button_in_podcast_title">Hide Download button</string>
-    <string name="morphe_music_hide_download_button_in_podcast_summary">Hides the Download button in podcast show</string>
+    <string name="morphe_music_hide_podcast_episode_download_button_title">Hide Download button</string>
+    <string name="morphe_music_hide_podcast_episode_download_button_summary">Hides the Download button in podcast show</string>
     <string name="morphe_music_hide_explore_shelf_title">Hide Explore shelf</string>
+    <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
     <string name="morphe_music_hide_grid_shelves_title">Hide grid shelves</string>
     <string name="morphe_music_hide_horizontal_shelves_title">Hide horizontal shelves</string>
     <string name="morphe_music_hide_list_shelves_title">Hide list shelves</string>
@@ -393,9 +394,6 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_change_start_page_entry_playlists">Playlists</string>
     <string name="morphe_change_start_page_entry_search">Search</string>
     <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
-
-    <!-- layout.compactheader.hideFilterBarPatch -->
-    <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
 
     <!-- layout.orientation.forcePortraitOrientationPatch -->
     <string name="morphe_music_force_portrait_orientation_title">Force portrait orientation</string>

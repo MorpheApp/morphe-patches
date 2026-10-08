@@ -22,7 +22,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findElementByAttributeValueOrThrow
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/jam/JamUi;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/jam/JamUI;"
 
 private val jamResources = resourcePatch {
     dependsOn(versionCheckPatch)
@@ -42,7 +42,7 @@ private val jamResources = resourcePatch {
                 )
             }
             val service = doc.createElement("service")
-            service.setAttribute("android:name", "app.morphe.extension.music.jam.JamBridgeService")
+            service.setAttribute("android:name", "app.morphe.extension.music.patches.jam.JamBridgeService")
             service.setAttribute("android:exported", "true")
             doc.getElementsByTagName("application").item(0).appendChild(service)
             val queries =
@@ -63,7 +63,7 @@ private val jamResources = resourcePatch {
                     "@id/bottom_sheet_tabbed_view",
                 )
             root.insertBefore(
-                doc.createElement("app.morphe.extension.music.jam.JamBar").apply {
+                doc.createElement("app.morphe.extension.music.patches.jam.JamBar").apply {
                     setAttribute("android:layout_width", "match_parent")
                     setAttribute("android:layout_height", "48dp")
                 },
@@ -117,17 +117,17 @@ val jamQueueSharingPatch = bytecodePatch(
                     SwitchPreference(key = "morphe_music_jam_enabled", summary = true),
                     NonInteractivePreference(
                         key = "morphe_music_jam_download",
-                        tag = "app.morphe.extension.music.jam.JamDownloadPreference",
+                        tag = "app.morphe.extension.music.patches.jam.JamDownloadPreference",
                         selectable = true,
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_jam_controls",
-                        tag = "app.morphe.extension.music.jam.JamProbePreference",
+                        tag = "app.morphe.extension.music.patches.jam.JamProbePreference",
                         selectable = true,
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_jam_companion_package",
-                        tag = "app.morphe.extension.music.jam.JamCompanionPackagePreference",
+                        tag = "app.morphe.extension.music.patches.jam.JamCompanionPackagePreference",
                         selectable = true
                     )
                 )

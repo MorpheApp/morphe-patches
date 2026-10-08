@@ -45,30 +45,30 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/music/patches/CrossfadeManager;"
+    "Lapp/morphe/extension/music/patches/CrossfadePatch;"
 
 private const val COORDINATOR_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$PlayerCoordinatorAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$PlayerCoordinatorAccess;"
 private const val EXO_PLAYER_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$ExoPlayerAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$ExoPlayerAccess;"
 private const val SESSION_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$SessionAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$SessionAccess;"
 private const val FACTORY_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$PlayerFactoryAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$PlayerFactoryAccess;"
 private const val SHARED_STATE_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$SharedStateAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$SharedStateAccess;"
 private const val SHARED_CALLBACK_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$SharedCallbackAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$SharedCallbackAccess;"
 private const val VIDEO_SURFACE_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$VideoSurfaceAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$VideoSurfaceAccess;"
 private const val MEDIALIB_PLAYER_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$MedialibPlayerAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$MedialibPlayerAccess;"
 private const val VIDEO_TOGGLE_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$VideoToggleAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$VideoToggleAccess;"
 private const val DELEGATE_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$DelegateAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$DelegateAccess;"
 private const val LISTENER_WRAPPER_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadeManager$ListenerWrapperAccess;"
+    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$ListenerWrapperAccess;"
 
 private const val EXO_PLAYER_TYPE = "Landroidx/media3/exoplayer/ExoPlayer;"
 
@@ -1449,7 +1449,7 @@ val crossfadePatch = bytecodePatch(
         // the new player.
         //
         // Fix: inject an early-return at the top of cwh.U()V that checks the static
-        // CrossfadeManager.suppressCwhU flag. releasePlayer() sets it true before
+        // CrossfadePatch.suppressCwhU flag. releasePlayer() sets it true before
         // calling patch_release() and false in a finally block — synchronously blocking
         // the Runnable from ever being posted, leaving cwh.b intact.
         if (eventDispatchField9x != null && forwardingPlayerField9x != null) {
@@ -1785,7 +1785,7 @@ val crossfadePatch = bytecodePatch(
         //
         // We discover chxp.m34891ax - the internal setter that writes the
         // value via AtomicReference.lazySet WITHOUT iterating subscribers.
-        // Bridge methods let CrossfadeManager silently set/restore mode.
+        // Bridge methods let CrossfadePatch silently set/restore mode.
 
         // 1. From setStateMethod's bytecode, find the chxp field on nlw
         val chxpFieldRef = setStateMethodFingerprint.instructionMatches.first()

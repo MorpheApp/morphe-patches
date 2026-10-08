@@ -9,7 +9,6 @@ package app.morphe.extension.music.patches.lyrics.requests;
 
 import android.util.Base64;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -307,7 +306,6 @@ public final class PetitLyricsProvider implements LyricsProvider {
         return SOURCE_URL_PREFIX + lyricsId.trim();
     }
 
-    @NonNull
     private static List<String> creditLinesOf(Song song) {
         List<String> credits = new ArrayList<>(4);
         addCredit(credits, "Artist", song.artist);

@@ -21,7 +21,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
@@ -186,7 +185,6 @@ public class PlaylistPatch {
         return row;
     }
 
-    @NonNull
     private static LinearLayout createRow(Context context) {
         LinearLayout row = new LinearLayout(context);
         row.setOrientation(LinearLayout.HORIZONTAL);
