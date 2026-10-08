@@ -66,10 +66,10 @@ val pctureinPictureButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_pip_button_overlay")
+            SwitchPreference("morphe_pip_overlay_button")
         )
         addPlayerFlyoutMenuPreferences(
-            SwitchPreference("morphe_pip_button_flyout")
+            SwitchPreference("morphe_pip_flyout_button")
         )
 
         initializeTopControl(EXTENSION_BUTTON)

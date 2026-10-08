@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.utils.FlyoutUtils.getFlyoutVideoId;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
@@ -41,63 +40,54 @@ public final class AddToQueuePatch {
     private static final int SECONDARY_CONTAINER_ID =
             ResourceUtils.getIdentifier(ResourceType.ID, "list_item_secondary_container");
 
-    private static final FlyoutUtils.FlyoutButtonProvider FLYOUT_BUTTON_PROVIDER =
-            new FlyoutUtils.FlyoutButtonProvider() {
-                @Override
-                public int addQueueButton(Object flyoutPanel, int index, String videoId) {
-                    if (!Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
-                            !FlyoutUtils.getFlyoutPlaylistId().isEmpty() ||
-                            videoId.isEmpty()) {
-                        return index;
-                    }
-
-                    return FlyoutUtils.addFlyoutButton(
-                            flyoutPanel,
-                            queueButtonDrawable,
-                            queueButtonName,
-                            v -> flyoutButtonClickLogic(
-                                    queueButtonOriginalNames.get(0),
-                                    videoId
-                            ),
-                            index
-                    );
-                }
-
-                @Override
-                public void onListBound(ViewGroup itemList) {
-                    if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()
-                            || SECONDARY_CONTAINER_ID == 0) {
-                        return;
-                    }
-
-                    int itemIndex = -1;
-                    for (var button : FlyoutUtils.getVisibleFlyoutButtons()) {
-                        if (queueButtonOriginalNames.contains(button.first)) {
-                            itemIndex = button.second - 1;
-                            break;
-                        }
-                    }
-
-                    if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
-                        return;
-                    }
-
-                    var badge = itemList.getChildAt(itemIndex)
-                            .findViewById(SECONDARY_CONTAINER_ID);
-
-                    if (badge != null && badge.getVisibility() != android.view.View.GONE) {
-                        Logger.printDebug(() -> "Hiding the menu item secondary icon");
-                        badge.setVisibility(android.view.View.GONE);
-                    }
-                }
-            };
-
     public static boolean isPatchIncluded() {
         return false; // Modified during patching.
     }
 
-    public static void registerFlyoutProvider() {
-        FlyoutUtils.setFlyoutButtonProvider(FLYOUT_BUTTON_PROVIDER);
+    public static int addFlyoutButton(Object flyoutPanel, int index, String videoId) {
+        if (!isPatchIncluded() || !Settings.QUEUE_ADD_FLYOUT_MENU.get() ||
+                !FlyoutUtils.getFlyoutPlaylistId().isEmpty() ||
+                videoId.isEmpty()) {
+            return index;
+        }
+
+        return FlyoutUtils.addFlyoutButton(
+                flyoutPanel,
+                queueButtonDrawable,
+                queueButtonName,
+                v -> flyoutButtonClickLogic(
+                        queueButtonOriginalNames.get(0),
+                        videoId
+                ),
+                index
+        );
+    }
+
+    public static void onListBound(ViewGroup itemList) {
+        if (!isPatchIncluded() || !Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()
+                || SECONDARY_CONTAINER_ID == 0) {
+            return;
+        }
+
+        int itemIndex = -1;
+        for (var button : FlyoutUtils.getVisibleFlyoutButtons()) {
+            if (queueButtonOriginalNames.contains(button.first)) {
+                itemIndex = button.second - 1;
+                break;
+            }
+        }
+
+        if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
+            return;
+        }
+
+        var badge = itemList.getChildAt(itemIndex)
+                .findViewById(SECONDARY_CONTAINER_ID);
+
+        if (badge != null && badge.getVisibility() != android.view.View.GONE) {
+            Logger.printDebug(() -> "Hiding the menu item secondary icon");
+            badge.setVisibility(android.view.View.GONE);
+        }
     }
 
     /**
@@ -108,7 +98,7 @@ public final class AddToQueuePatch {
             return original;
         }
 
-        if (getFlyoutVideoId().isEmpty()) {
+        if (FlyoutUtils.getFlyoutVideoId().isEmpty()) {
             Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
             return original;
         }
@@ -126,7 +116,7 @@ public final class AddToQueuePatch {
                 return false;
             }
 
-            if (getFlyoutVideoId().isEmpty()) {
+            if (FlyoutUtils.getFlyoutVideoId().isEmpty()) {
                 Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
                 return false;
             }
@@ -144,10 +134,10 @@ public final class AddToQueuePatch {
                 if (buttonIndex >= 0) {
                     return flyoutButtonClickLogic(
                             FlyoutUtils.getVisibleFlyoutButtons().get(buttonIndex).first,
-                            getFlyoutVideoId()
+                            FlyoutUtils.getFlyoutVideoId()
                     );
                 } else if (!buttonName.isEmpty()) {
-                    return flyoutButtonClickLogic(buttonName, getFlyoutVideoId());
+                    return flyoutButtonClickLogic(buttonName, FlyoutUtils.getFlyoutVideoId());
                 }
             }
         } catch (Exception ex) {
@@ -162,7 +152,7 @@ public final class AddToQueuePatch {
                 // Reset index logic goes here if needed between UI clicks
                 FlyoutUtils.resetCurrentButtonIndex();
 
-                if (flyoutButtonClickLogic(buttonName, getFlyoutVideoId())) {
+                if (flyoutButtonClickLogic(buttonName, FlyoutUtils.getFlyoutVideoId())) {
                     return;
                 }
             } catch (Exception ex) {
