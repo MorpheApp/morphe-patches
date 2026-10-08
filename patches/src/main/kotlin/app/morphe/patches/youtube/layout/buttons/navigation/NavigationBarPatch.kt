@@ -26,6 +26,7 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
 import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -67,7 +68,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
-private const val EXTENSION_CLASS =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 
 private const val EXTENSION_SETTING_INTERFACE =
@@ -686,6 +687,33 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        //
+        // Toolbar create button upload
+        //
+
+        // The commands of the toolbar buttons are extensions, which are parsed only with the extension registry.
+        GetGeneratedRegistryFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                move-result-object v0
+                return-object v0
+            """
+        )
+
+        parseByteArrayWithRegistryMethodRef.get()!!.let { parseMethod ->
+            ParseWithRegistryFingerprint.method.addInstructions(
+                0,
+                """
+                    check-cast p0, ${parseMethod.parameterTypes.first()}
+                    invoke-static { p0, p1, p2 }, $parseMethod
+                    move-result-object p0
+                    check-cast p0, Lcom/google/protobuf/MessageLite;
+                    return-object p0
+                """
+            )
+        }
+
         TopBarRendererSecondaryFilterFingerprint.let {
             it.method.apply {
                 var buttonsClass: String? = null
@@ -703,37 +731,6 @@ val navigationBarPatch = bytecodePatch(
                 val freeRegisters = getFreeRegisterProvider(protoListIndex, 2)
                 val protoListFreeRegister = freeRegisters.getFreeRegister()
                 val byteRegister = freeRegisters.getFreeRegister()
-
-                // The commands of the buttons are extensions, which are parsed only with the extension registry.
-                val parseByteArrayMethod = parseByteArrayMethodRef.get()!!
-                mutableClassDefBy(parseByteArrayMethod.definingClass).methods.firstOrNull { method ->
-                    method.name == "parseFrom" && method.parameterTypes.map { type -> type.toString() } == listOf(
-                        parseByteArrayMethod.parameterTypes.first().toString(),
-                        "[B",
-                        "Lcom/google/protobuf/ExtensionRegistryLite;"
-                    )
-                }?.let { parseWithRegistryMethod ->
-                    val messageType = parseWithRegistryMethod.parameterTypes.first()
-                    val extensionMethods = mutableClassDefBy(EXTENSION_CLASS).methods
-                    extensionMethods.first { method -> method.name == "getGeneratedRegistry" }.addInstructions(
-                        0,
-                        """
-                            invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
-                            move-result-object v0
-                            return-object v0
-                        """
-                    )
-                    extensionMethods.first { method -> method.name == "parseWithRegistry" }.addInstructions(
-                        0,
-                        """
-                            check-cast p0, $messageType
-                            invoke-static { p0, p1, p2 }, $parseWithRegistryMethod
-                            move-result-object p0
-                            check-cast p0, Lcom/google/protobuf/MessageLite;
-                            return-object p0
-                        """
-                    )
-                }
 
                 addInstructionsWithLabels(
                     protoListIndex,

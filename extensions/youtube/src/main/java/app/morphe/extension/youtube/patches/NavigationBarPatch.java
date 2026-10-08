@@ -546,13 +546,10 @@ public final class NavigationBarPatch {
                 if (createButton == null) {
                     return;
                 }
-                ExtensionRegistryLite registry = getGeneratedRegistry();
-                MessageLite fixedButtons = registry == null ? null : parseWithRegistry(rawButtons,
-                        buttons.toBuilder().setButtonRenderer(createButton).build().toByteArray(), registry);
-                if (fixedButtons != null) {
-                    rawButtonList.set(i, fixedButtons);
-                    Logger.printDebug(() -> "Toolbar create button opens the upload in the creation modes");
-                }
+                rawButtonList.set(i, parseWithRegistry(rawButtons,
+                        buttons.toBuilder().setButtonRenderer(createButton).build().toByteArray(),
+                        getGeneratedRegistry()));
+                Logger.printDebug(() -> "Toolbar create button opens the upload in the creation modes");
                 return;
             }
         } catch (Exception ex) {
@@ -565,17 +562,14 @@ public final class NavigationBarPatch {
      * which are lost if the message is parsed without the registry.
      *
      * @param message Message of the class to parse.
-     * @return The parsed message, or null if the parse method was not found during patching.
      */
-    @Nullable
     private static MessageLite parseWithRegistry(MessageLite message, byte[] bytes, ExtensionRegistryLite registry) {
         return null; // Modified during patching.
     }
 
     /**
-     * @return The extension registry of the app, or null if not found during patching.
+     * @return The extension registry of the app.
      */
-    @Nullable
     private static ExtensionRegistryLite getGeneratedRegistry() {
         return null; // Modified during patching.
     }

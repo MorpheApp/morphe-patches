@@ -36,6 +36,14 @@ internal object ProtobufClassParseByteArrayFingerprint : Fingerprint(
     parameters = listOf("L", "[B")
 )
 
+internal object ProtobufClassParseByteArrayWithRegistryFingerprint : Fingerprint(
+    classFingerprint = ProtobufClassParseByteArrayFingerprint,
+    name = "parseFrom",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "[B", "Lcom/google/protobuf/ExtensionRegistryLite;")
+)
+
 internal object StreamingDataOuterClassFingerprint : Fingerprint(
     definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

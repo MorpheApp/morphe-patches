@@ -7,10 +7,9 @@
 
 package app.morphe.extension.shared.spoof.potoken;
 
-import android.annotation.SuppressLint;
+import android.os.SystemClock;
 import android.webkit.CookieManager;
 
-import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -18,9 +17,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 public class PoTokenGenerator {
-    @SuppressLint("SimpleDateFormat")
-    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-
     private final ReentrantLock webPoTokenGenLock = new ReentrantLock();
     private String webPoTokenSessionIdentifier;
     private String webPoTokenStreamingPot;
@@ -112,7 +108,7 @@ public class PoTokenGenerator {
             final long expirationMs = state.expirationMs;
             Logger.printDebug(() -> "poToken for " + videoId + ": playerPot=" + playerPot +
                     ", streamingPot=" + streamingPot + ", sessionIdentifier=" + webPoTokenSessionIdentifier +
-                    ", expirationDate=" + sdf.format(expirationMs)
+                    ", expiresInSeconds=" + (expirationMs - SystemClock.elapsedRealtime()) / 1000
             );
             return new PoTokenResult(playerPot, streamingPot, expirationMs);
         } catch (Throwable throwable) {

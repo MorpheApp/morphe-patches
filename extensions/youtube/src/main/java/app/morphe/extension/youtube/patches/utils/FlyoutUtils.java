@@ -12,7 +12,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -83,20 +83,32 @@ public final class FlyoutUtils {
 
     /**
      * Holds the injected items apart from the app list, and scrolls them on its own
-     * when they do not all fit. It dynamically constrains its height based on the
-     * host container or window height.
+     * when they do not all fit. Its height is limited by the space that the menu can use
+     * in the window, which depends on the orientation and the window size, such as in split
+     * screen, minus the space of the other items of the menu, so the whole menu fits.
      */
     private static final class InjectedItemsScrollView extends ScrollView {
-        private static final float LANDSCAPE_MAX_HEIGHT_RATIO = 0.25f;
-        private static final float PORTRAIT_MAX_HEIGHT_RATIO = 0.45f;
+        /**
+         * Maximum part of the window that the injected items can use, so the app items stay visible.
+         */
+        private static final float MAX_WINDOW_HEIGHT_RATIO = 0.5f;
+        /**
+         * Minimum height in items, so a part of the next item is visible when the items scroll.
+         */
+        private static final float MIN_VISIBLE_ITEMS = 1.5f;
 
         private final LinearLayout itemsContainer;
-        private final ViewGroup parentContainer;
-        private int maxAllowedHeight = -1;
+        private final ViewGroup menuContainer;
+        /**
+         * Popup window of the menu, or null if the menu is a bottom sheet.
+         */
+        @Nullable
+        private final PopupWindow popupWindow;
 
-        InjectedItemsScrollView(Context context, ViewGroup parentContainer) {
+        InjectedItemsScrollView(Context context, ViewGroup menuContainer, @Nullable PopupWindow popupWindow) {
             super(context);
-            this.parentContainer = parentContainer;
+            this.menuContainer = menuContainer;
+            this.popupWindow = popupWindow;
 
             setVerticalScrollBarEnabled(false);
 
@@ -109,48 +121,123 @@ public final class FlyoutUtils {
 
             setNestedScrollingEnabled(false);
             setOverScrollMode(OVER_SCROLL_IF_CONTENT_SCROLLS);
-
-            initHeightTracking(context);
         }
 
-        private void initHeightTracking(Context context) {
-            int containerHeight = parentContainer.getHeight();
+        /**
+         * The visible frame of a popup window is not limited to the screen, so the visible frame
+         * of the window of the app is used, which excludes the system bars and the keyboard,
+         * and is the window of the app in split screen.
+         *
+         * @return The height of the window that the menu can use.
+         */
+        private int getWindowHeight() {
+            Activity activity = Utils.getActivity();
+            View frameView = activity == null ? this : activity.getWindow().getDecorView();
+            Rect visibleFrame = new Rect();
+            frameView.getWindowVisibleDisplayFrame(visibleFrame);
+            return visibleFrame.height() > 0 ? visibleFrame.height() : Dim.getScreenHeight();
+        }
 
-            if (containerHeight <= 0 && context instanceof Activity activity) {
-                View decorView = activity.getWindow().getDecorView();
-                containerHeight = decorView.getHeight();
-            }
-
-            if (containerHeight > 0) {
-                updateMaxHeight(containerHeight);
-            }
-
-            parentContainer.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-                int currentHeight = parentContainer.getHeight();
-                if (currentHeight > 0) {
-                    updateMaxHeight(currentHeight);
+        /**
+         * @return The height of the other items of the menu as measured in the last layout,
+         *         with the paddings of the menu and the margins of the injected items.
+         */
+        private int getOtherItemsHeight() {
+            int height = menuContainer.getPaddingTop() + menuContainer.getPaddingBottom()
+                    + getVerticalMargins(this);
+            for (int i = 0, count = menuContainer.getChildCount(); i < count; i++) {
+                View child = menuContainer.getChildAt(i);
+                if (child != this && child.getVisibility() != GONE) {
+                    height += child.getMeasuredHeight() + getVerticalMargins(child);
                 }
-            });
+            }
+            return height;
         }
 
-        private void updateMaxHeight(int containerHeight) {
-            float ratio = getResources().getConfiguration().orientation ==
-                    Configuration.ORIENTATION_LANDSCAPE
-                    ? LANDSCAPE_MAX_HEIGHT_RATIO
-                    : PORTRAIT_MAX_HEIGHT_RATIO;
-
-            int newMaxHeight = (int) (containerHeight * ratio);
-            if (this.maxAllowedHeight != newMaxHeight) {
-                this.maxAllowedHeight = newMaxHeight;
-                requestLayout();
+        /**
+         * The list of the app is measured after the injected items, and is shrunk to the space they leave,
+         * so the items after the injected items are measured without a height limit.
+         *
+         * @return The height of the items of the menu after the injected items.
+         */
+        private int getFollowingItemsHeight(int widthMeasureSpec) {
+            final int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(
+                    MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY);
+            final int childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+            int height = 0;
+            for (int i = menuContainer.indexOfChild(this) + 1, count = menuContainer.getChildCount(); i < count; i++) {
+                View child = menuContainer.getChildAt(i);
+                if (child.getVisibility() != GONE) {
+                    child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+                    height += child.getMeasuredHeight() + getVerticalMargins(child);
+                }
             }
+            return height;
+        }
+
+        private static int getVerticalMargins(View view) {
+            return view.getLayoutParams() instanceof MarginLayoutParams margins
+                    ? margins.topMargin + margins.bottomMargin
+                    : 0;
+                    }
+
+        /**
+         * @return The height of a part of the second item, so the items can be seen to scroll.
+         */
+        private int getMinHeight() {
+            View firstItem = itemsContainer.getChildAt(0);
+            return firstItem == null ? 0 : (int) (firstItem.getMeasuredHeight() * MIN_VISIBLE_ITEMS);
+        }
+
+        /**
+         * @return The maximum height: the space left in the window by the other items of the menu,
+         *         up to a part of the window, and at least a part of the second item so the items
+         *         can be seen to scroll. The menu is taller than the window only if the other items
+         *         take almost all the space.
+         */
+        private int getMaxHeight() {
+            final int windowHeight = getWindowHeight();
+            final int maxHeight = Math.min(windowHeight - getOtherItemsHeight(),
+                    (int) (windowHeight * MAX_WINDOW_HEIGHT_RATIO));
+            return Math.max(maxHeight, getMinHeight());
         }
 
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-            if (maxAllowedHeight > 0) {
-                heightMeasureSpec =
-                        MeasureSpec.makeMeasureSpec(maxAllowedHeight, MeasureSpec.AT_MOST);
+            // The menu can measure its items again with their measured height as a fixed height,
+            // to give all the items the same width, so the measured height is kept.
+            if (getLayoutParams() != null && getLayoutParams().height >= 0) {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                return;
+            }
+
+            // The height given by a bottom sheet is ignored, as the bottom sheet can be measured
+            // before the injected items are added, and it's resized afterward.
+            int maxHeight = getMaxHeight();
+
+            if (popupWindow != null) {
+                // A popup window is as wide as the widest item of the menu, up to most of the window width,
+                // so the injected items are not made wider than the minimum width that the app gives to the menu,
+                // and their long texts wrap as in the items of the app.
+                final int menuWidth = menuContainer.getMinimumWidth()
+                        - menuContainer.getPaddingLeft() - menuContainer.getPaddingRight();
+                if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST
+                        && menuWidth > 0 && menuWidth < MeasureSpec.getSize(widthMeasureSpec)) {
+                    widthMeasureSpec = MeasureSpec.makeMeasureSpec(menuWidth, MeasureSpec.AT_MOST);
+                }
+
+                // A popup window keeps the space that the app chose for the menu when it was shown,
+                // before the injected items were added, so the injected items use the space left
+                // by the other items, and the items of the app are not cut.
+                if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.AT_MOST) {
+                    final int menuSpace = MeasureSpec.getSize(heightMeasureSpec)
+                            - getFollowingItemsHeight(widthMeasureSpec);
+                    maxHeight = Math.min(maxHeight, Math.max(menuSpace, getMinHeight()));
+                }
+            }
+
+            if (maxHeight > 0) {
+                heightMeasureSpec = MeasureSpec.makeMeasureSpec(maxHeight, MeasureSpec.AT_MOST);
             }
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
@@ -618,7 +705,7 @@ public final class FlyoutUtils {
                 );
             } else {
                 if (currentInjectedItems == null) {
-                    currentInjectedItems = new InjectedItemsScrollView(context, menuContainer);
+                    currentInjectedItems = new InjectedItemsScrollView(context, menuContainer, menuInfo.popupWindow());
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT

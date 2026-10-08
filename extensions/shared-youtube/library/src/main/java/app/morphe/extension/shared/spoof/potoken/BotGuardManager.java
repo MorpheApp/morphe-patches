@@ -7,6 +7,8 @@
 
 package app.morphe.extension.shared.spoof.potoken;
 
+import android.os.SystemClock;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -22,6 +24,7 @@ import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
@@ -31,6 +34,16 @@ import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 public final class BotGuardManager {
+
+    /**
+     * @param expirationMs {@link SystemClock#elapsedRealtime()} when the token expires.
+     */
+    public record IntegrityToken(String token, long expirationMs) {
+    }
+
+    private record Challenge(String key, String data) {
+    }
+
     private static final String BOT_GUARD_URL = "https://www.youtube.com/api/jnn/v1/GenerateIT";
     private static final String BOT_GUARD_REQUEST_KEY = "O43z0dpjhgX20SCx4KAo";
     private static final String YOUTUBE_CONFIG_URL = "https://www.youtube.com/tv_config?action_get_config=true";
@@ -58,55 +71,32 @@ public final class BotGuardManager {
     @NonNull
     private volatile static String challengeRequestKey = BOT_GUARD_REQUEST_KEY;
 
+    /**
+     * {@link SystemClock#elapsedRealtime()} when the challenge was fetched.
+     * A monotonic clock is used so changes to the device time cannot extend or shorten its lifetime.
+     */
     private volatile static long challengeFetchedTime = -1L;
 
-    private static final CompletableFuture<Challenge> challengeFuture = CompletableFuture.supplyAsync(() -> downloadUrl(YOUTUBE_CONFIG_URL))
-            .thenApplyAsync(jsonString -> {
-                if (jsonString != null && jsonString.startsWith(")]}'")) {
-                    try {
-                        JSONObject json = new JSONObject(jsonString.substring(4));
-                        String challengeRequestKey = json.getString("challengeRequestKey");
-                        String rawData = json.getJSONObject("challengeParams").getString("R");
-                        JSONObject scrambled = new JSONObject(rawData);
-                        JSONObject bgChallenge = scrambled.getJSONObject("bgChallenge");
-                        String interpreterHash = bgChallenge.getString("interpreterHash");
-                        String program = bgChallenge.getString("program");
-                        String globalName = bgChallenge.getString("globalName");
-                        String clientExperimentsStateBlob = bgChallenge.getString("clientExperimentsStateBlob");
-                        String privateDoNotAccessOrElseTrustedResourceUrlWrappedValue = bgChallenge
-                                .getJSONObject("interpreterUrl")
-                                .getString("privateDoNotAccessOrElseTrustedResourceUrlWrappedValue");
-                        String privateDoNotAccessOrElseSafeScriptWrappedValue =
-                                downloadUrl("https:" + privateDoNotAccessOrElseTrustedResourceUrlWrappedValue);
-
-                        JSONObject interpreterJavascript = new JSONObject();
-                        interpreterJavascript.put("privateDoNotAccessOrElseSafeScriptWrappedValue", privateDoNotAccessOrElseSafeScriptWrappedValue);
-                        interpreterJavascript.put("privateDoNotAccessOrElseTrustedResourceUrlWrappedValue", privateDoNotAccessOrElseTrustedResourceUrlWrappedValue);
-
-                        JSONObject challengeData = new JSONObject();
-                        challengeData.put("interpreterJavascript", interpreterJavascript);
-                        challengeData.put("interpreterHash", interpreterHash);
-                        challengeData.put("program", program);
-                        challengeData.put("globalName", globalName);
-                        challengeData.put("clientExperimentsStateBlob", clientExperimentsStateBlob);
-
-                        return new Challenge(challengeRequestKey, challengeData.toString());
-                    } catch (Exception ex) {
-                        Logger.printException(() -> "Failed to parse challenge data", ex);
-                    }
-                }
-
-                return null;
-            });
+    /**
+     * Margin subtracted from the integrity token lifetime the server gives,
+     * so a token is not used right as it expires.
+     */
+    private static final long INTEGRITY_TOKEN_EXPIRATION_MARGIN_SECONDS = 5 * 60;
 
     private BotGuardManager() {
     }
 
+    /**
+     * Must be called off the main thread.
+     */
     @Nullable
-    public static String getChallengeData() {
+    public static synchronized String getChallengeData() {
         if (isChallengeDataNotExpired()) {
             return challengeData;
         }
+        // Previously fetched data is expired and must not be used,
+        // even if a new challenge cannot be fetched.
+        challengeData = null;
         Challenge challenge = downloadChallenge();
         if (challenge != null) {
             challengeData = challenge.data;
@@ -114,20 +104,60 @@ public final class BotGuardManager {
             if (Utils.isNotEmpty(requestKey)) {
                 challengeRequestKey = requestKey;
             }
-            challengeFetchedTime = System.currentTimeMillis();
+            challengeFetchedTime = SystemClock.elapsedRealtime();
         }
         return challengeData;
+    }
+
+    @Nullable
+    private static Challenge fetchChallenge() {
+        String jsonString = downloadUrl(YOUTUBE_CONFIG_URL);
+        if (jsonString == null || !jsonString.startsWith(")]}'")) {
+            return null;
+        }
+
+        try {
+            JSONObject json = new JSONObject(jsonString.substring(4));
+            String challengeRequestKey = json.getString("challengeRequestKey");
+            String rawData = json.getJSONObject("challengeParams").getString("R");
+            JSONObject scrambled = new JSONObject(rawData);
+            JSONObject bgChallenge = scrambled.getJSONObject("bgChallenge");
+            String interpreterHash = bgChallenge.getString("interpreterHash");
+            String program = bgChallenge.getString("program");
+            String globalName = bgChallenge.getString("globalName");
+            String clientExperimentsStateBlob = bgChallenge.getString("clientExperimentsStateBlob");
+            String privateDoNotAccessOrElseTrustedResourceUrlWrappedValue = bgChallenge
+                    .getJSONObject("interpreterUrl")
+                    .getString("privateDoNotAccessOrElseTrustedResourceUrlWrappedValue");
+            String privateDoNotAccessOrElseSafeScriptWrappedValue =
+                    downloadUrl("https:" + privateDoNotAccessOrElseTrustedResourceUrlWrappedValue);
+            if (privateDoNotAccessOrElseSafeScriptWrappedValue == null) {
+                return null;
+            }
+
+            JSONObject interpreterJavascript = new JSONObject();
+            interpreterJavascript.put("privateDoNotAccessOrElseSafeScriptWrappedValue", privateDoNotAccessOrElseSafeScriptWrappedValue);
+            interpreterJavascript.put("privateDoNotAccessOrElseTrustedResourceUrlWrappedValue", privateDoNotAccessOrElseTrustedResourceUrlWrappedValue);
+
+            JSONObject challengeData = new JSONObject();
+            challengeData.put("interpreterJavascript", interpreterJavascript);
+            challengeData.put("interpreterHash", interpreterHash);
+            challengeData.put("program", program);
+            challengeData.put("globalName", globalName);
+            challengeData.put("clientExperimentsStateBlob", clientExperimentsStateBlob);
+
+            return new Challenge(challengeRequestKey, challengeData.toString());
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to parse challenge data", ex);
+        }
+
+        return null;
     }
 
     public static String getUserAgent() {
         return USER_AGENT;
     }
 
-    public record Challenge(String key, String data) {
-    }
-
-    public record IntegrityToken(String token, long expirationMs) {
-    }
 
     @Nullable
     public static IntegrityToken getIntegrityToken(@Nullable String botGuardResult) {
@@ -135,12 +165,23 @@ public final class BotGuardManager {
                 .thenApply(botGuardResponse -> {
                     if (botGuardResponse != null) {
                         try {
-                            long expirationSecond = -1L;
                             int length = botGuardResponse.length();
-                            if (length > 1) {
-                                expirationSecond = Math.max(botGuardResponse.getLong(1), 7200L);
+                            final long lifetimeSeconds = length > 1
+                                    ? botGuardResponse.optLong(1, -1L)
+                                    : -1L;
+                            final long currentTime = SystemClock.elapsedRealtime();
+                            final long expirationMs;
+                            if (lifetimeSeconds > INTEGRITY_TOKEN_EXPIRATION_MARGIN_SECONDS) {
+                                expirationMs = currentTime
+                                        + (lifetimeSeconds - INTEGRITY_TOKEN_EXPIRATION_MARGIN_SECONDS) * 1000;
+                            } else {
+                                // Lifetime is unknown or too short to leave a margin.
+                                // Use the token only for the current request,
+                                // and a new token is fetched for the next request.
+                                Logger.printException(() -> "Integrity token has no usable lifetime: "
+                                        + lifetimeSeconds + ", response length: " + length);
+                                expirationMs = currentTime;
                             }
-                            long expirationMs = System.currentTimeMillis() + ((expirationSecond - 300L) * 1000);
 
                             for (int i = length - 1; i >= 0; i--) {
                                 if (botGuardResponse.get(i) instanceof String rawValue) {
@@ -174,12 +215,17 @@ public final class BotGuardManager {
     }
 
     private static boolean isChallengeDataNotExpired() {
-        return Utils.isNotEmpty(challengeData) && System.currentTimeMillis()
+        return Utils.isNotEmpty(challengeData) && SystemClock.elapsedRealtime()
                 - challengeFetchedTime < CHALLENGE_DATA_EXPIRATION_MS;
     }
 
+    /**
+     * Always downloads a new challenge. A failed or timed out download
+     * does not prevent a later call from trying again.
+     */
     @Nullable
     private static Challenge downloadChallenge() {
+        Future<Challenge> challengeFuture = Utils.submitOnBackgroundThread(BotGuardManager::fetchChallenge);
         try {
             return challengeFuture.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {

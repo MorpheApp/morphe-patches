@@ -372,3 +372,19 @@ internal object SettingIntentFingerprint : Fingerprint(
         )
     }
 )
+
+internal object GetGeneratedRegistryFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "getGeneratedRegistry",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Lcom/google/protobuf/ExtensionRegistryLite;",
+    parameters = listOf()
+)
+
+internal object ParseWithRegistryFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "parseWithRegistry",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Lcom/google/protobuf/MessageLite;",
+    parameters = listOf("Lcom/google/protobuf/MessageLite;", "[B", "Lcom/google/protobuf/ExtensionRegistryLite;")
+)

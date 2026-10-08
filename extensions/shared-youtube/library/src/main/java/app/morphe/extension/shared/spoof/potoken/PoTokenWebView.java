@@ -10,6 +10,7 @@ package app.morphe.extension.shared.spoof.potoken;
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -190,12 +191,15 @@ public class PoTokenWebView {
         }
     }
 
+    /**
+     * @return {@link SystemClock#elapsedRealtime()} when the integrity token expires.
+     */
     public long getExpirationMs() {
         return expirationMs;
     }
 
     public boolean isExpired() {
-        return System.currentTimeMillis() > expirationMs;
+        return SystemClock.elapsedRealtime() >= expirationMs;
     }
 
     private void onInitializationErrorCloseAndCancel(Throwable error) {
