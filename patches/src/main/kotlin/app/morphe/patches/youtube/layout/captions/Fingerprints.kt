@@ -12,7 +12,6 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -76,7 +75,6 @@ internal object TimedTextUrlFingerprint : Fingerprint(
 
 internal object DefaultCaptionTrackFingerprint : Fingerprint(
     classFingerprint = SubtitleManagerFingerprintClassFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
     filters = listOf(
