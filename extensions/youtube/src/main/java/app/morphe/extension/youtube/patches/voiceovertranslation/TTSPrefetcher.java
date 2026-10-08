@@ -19,11 +19,11 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Background prefetcher that synthesizes upcoming TTS audio into {@link TtsCache} ahead of
+ * Background prefetcher that synthesizes upcoming TTS audio into {@link TTSCache} ahead of
  * playback. Throttles by distance from the play head: aggressive for the next 30s, moderate
  * out to 60s, slow for everything further, with exponential backoff on server errors.
  */
-final class TtsPrefetcher {
+final class TTSPrefetcher {
 
     // Adaptive delay tiers based on segment distance (time) from play head.
     private static final int DISTANCE_IMMEDIATE_MS = 30_000;
@@ -59,7 +59,7 @@ final class TtsPrefetcher {
     @GuardedBy("lock")
     private static volatile CountDownLatch loadingLatch;
 
-    private static final TtsEngine engine = TtsEngine.INSTANCE;
+    private static final TTSEngine engine = TTSEngine.INSTANCE;
 
     private record NextFetch(int index, int distance, TranscriptSegment seg) {}
 
@@ -252,7 +252,7 @@ final class TtsPrefetcher {
                 // A failed translation batch leaves segments in the source language; skip them
                 // so we don't cache source-language TTS while the user expects the target language.
                 if (TranscriptFetcher.isSpokenLanguageDifferent(lang, seg.lang)) continue;
-                if (TtsCache.notCached(videoId, i, voice, lang, seg.text)) {
+                if (TTSCache.notCached(videoId, i, voice, lang, seg.text)) {
                     return new NextFetch(i, i - firstFutureIndex, seg);
                 }
             }
@@ -262,7 +262,7 @@ final class TtsPrefetcher {
         for (int i = firstFutureIndex - 1; i >= 0; i--) {
             TranscriptSegment seg = segments.get(i);
             if (TranscriptFetcher.isSpokenLanguageDifferent(lang, seg.lang)) continue;
-            if (TtsCache.notCached(videoId, i, voice, lang, seg.text)) {
+            if (TTSCache.notCached(videoId, i, voice, lang, seg.text)) {
                 return new NextFetch(i, firstFutureIndex - i, seg);
             }
         }
@@ -276,8 +276,8 @@ final class TtsPrefetcher {
             final long start = System.currentTimeMillis();
             final byte[] data = engine.prefetch(seg.text, voice, lang);
             if (data.length > 0) {
-                TtsCache.put(videoId, index, voice, lang, seg.text, data);
-                seg.durationMs = TtsEngine.mp3DurationMs(data.length);
+                TTSCache.put(videoId, index, voice, lang, seg.text, data);
+                seg.durationMs = TTSEngine.mp3DurationMs(data.length);
                 engine.adjustPlaybackTimes(currentSegments, index,
                         VoiceOverTranslationPatch.getLastSpokenIndex(),
                         videoId, voice, lang);

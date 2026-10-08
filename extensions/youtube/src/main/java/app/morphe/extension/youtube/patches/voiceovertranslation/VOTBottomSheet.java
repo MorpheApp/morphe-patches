@@ -62,11 +62,11 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PipDismissHelper;
 
 /**
- * Builds the VoT bottom-sheet UI shown from the player overlay button: caption language,
+ * Builds the VOT bottom-sheet UI shown from the player overlay button: caption language,
  * translation service, TTS engine/voice, plus sliders for volumes and speech rate cap.
  * Sub-pickers (language, voice, service) slide up over this sheet as separate dialogs.
  */
-public final class VotBottomSheet {
+public final class VOTBottomSheet {
 
     private static final int DRAWABLE_CHEVRON_RIGHT = ResourceUtils.getIdentifier(
             ResourceType.DRAWABLE, "yt_outline_chevron_right_black_18");
@@ -301,7 +301,7 @@ public final class VotBottomSheet {
                 }
                 Settings.VOT_TRANSLATION_SERVICE.save(value);
                 VoiceOverTranslationPatch.reloadTranscript();
-                VotBottomSheet.show(context);
+                VOTBottomSheet.show(context);
                 pickerDialog.dismiss();
             });
 
@@ -310,7 +310,7 @@ public final class VotBottomSheet {
 
         pickerRoot.addView(listLayout);
         mainDialog.dismiss();
-        pickerDialog.setOnCancelListener(d -> VotBottomSheet.show(context));
+        pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));
         PipDismissHelper.dismissOnPip(pickerDialog);
         pickerDialog.show();
     }
@@ -405,7 +405,7 @@ public final class VotBottomSheet {
 
         pickerRoot.addView(scroll);
         mainDialog.dismiss();
-        pickerDialog.setOnCancelListener(d -> VotBottomSheet.show(context));
+        pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));
         PipDismissHelper.dismissOnPip(pickerDialog);
         pickerDialog.show();
     }
@@ -456,7 +456,7 @@ public final class VotBottomSheet {
             }
             VoiceOverTranslationPatch.resetPlaybackState();
             VoiceOverTranslationPatch.interruptSpeech();
-            VotBottomSheet.show(context);
+            VOTBottomSheet.show(context);
             pickerDialog.dismiss();
         });
 
@@ -564,13 +564,13 @@ public final class VotBottomSheet {
             Settings.VOT_CAPTION_LANGUAGE.save(langValues[position]);
             VoiceOverTranslationPatch.reloadTranscript();
             VoiceOverTranslationPatch.preloadTestVoices();
-            VotBottomSheet.show(context);
+            VOTBottomSheet.show(context);
             pickerDialog.dismiss();
         });
 
         pickerRoot.addView(listView);
         mainDialog.dismiss();
-        pickerDialog.setOnCancelListener(d -> VotBottomSheet.show(context));
+        pickerDialog.setOnCancelListener(d -> VOTBottomSheet.show(context));
         PipDismissHelper.dismissOnPip(pickerDialog);
         pickerDialog.show();
     }

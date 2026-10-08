@@ -53,9 +53,9 @@ import app.morphe.extension.youtube.patches.VideoInformation;
  *
  * <p>State management is performed on the main thread to avoid complex synchronization.
  */
-final class TtsEngine {
+final class TTSEngine {
 
-    public static final TtsEngine INSTANCE = new TtsEngine();
+    public static final TTSEngine INSTANCE = new TTSEngine();
 
     private static final String WS_HOST            = "speech.platform.bing.com";
     private static final int    WS_PORT            = 443;
@@ -104,7 +104,7 @@ final class TtsEngine {
     @GuardedBy("synthesisLock")
     private boolean configSent;
 
-    private TtsEngine() {}
+    private TTSEngine() {}
 
     boolean isSpeaking() {
         Utils.verifyOnMainThread();
@@ -395,7 +395,7 @@ final class TtsEngine {
             TranscriptSegment s = segments.get(i);
             long duration = s.durationMs;
             if (duration <= 0) {
-                duration = TtsCache.getDuration(videoId, i, voice, lang, s.text);
+                duration = TTSCache.getDuration(videoId, i, voice, lang, s.text);
                 if (duration > 0) s.durationMs = duration;
             }
             if (duration <= 0) {
@@ -447,7 +447,7 @@ final class TtsEngine {
             TranscriptSegment s = segments.get(i);
             long spoken = s.durationMs;
             if (spoken <= 0) {
-                spoken = TtsCache.getDuration(videoId, i, voice, lang, s.text);
+                spoken = TTSCache.getDuration(videoId, i, voice, lang, s.text);
                 if (spoken > 0) s.durationMs = spoken;
             }
             if (spoken <= 0) spoken = s.text.length() * ESTIMATED_MS_PER_CHAR;

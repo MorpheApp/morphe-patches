@@ -30,7 +30,7 @@ import app.morphe.extension.shared.Utils;
  * <p>Test voice samples are also persisted to disk so they survive app restarts
  * and do not require re-synthesis on subsequent sessions.
  */
-final class TtsCache {
+final class TTSCache {
 
     private static final Map<String, byte[]> cache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(1000));
@@ -55,7 +55,7 @@ final class TtsCache {
     static long getDuration(String videoId, int segmentIndex, String voice, String lang, String text) {
         if (TTS_ENGINE_SYSTEM.equals(voice)) return -1;
         byte[] data = cache.get(key(videoId, segmentIndex, voice, lang, text));
-        return data != null ? TtsEngine.mp3DurationMs(data.length) : -1;
+        return data != null ? TTSEngine.mp3DurationMs(data.length) : -1;
     }
 
     static byte[] getTestSampleFromDisk(String voiceId, String lang) {

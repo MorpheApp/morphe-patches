@@ -26,7 +26,7 @@ public final class TranscriptSegment {
 
     /**
      * Playback window for the TTS audio. Initially equal to {@link #startMs}/{@link #endMs}
-     * but may be shifted by {@link TtsEngine#adjustPlaybackTimes} once the actual audio
+     * but may be shifted by {@link TTSEngine#adjustPlaybackTimes} once the actual audio
      * length is known, so longer-than-slot speech can borrow time from neighboring gaps.
      */
     public volatile long playbackStartMs;
