@@ -10,6 +10,7 @@ package app.morphe.patches.youtube.layout.font
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 /**
  * Typeface registry lookup: context, font type, weight, style, font settings.
@@ -19,7 +20,12 @@ internal object TypefaceRegistryFingerprint : Fingerprint(
     returnType = "Landroid/graphics/Typeface;",
     parameters = listOf("Landroid/content/Context;", "I", "I", "I", "Ljava/lang/String;"),
     filters = listOf(
-        methodCall(smali = "Landroid/content/Context;->getApplicationContext()Landroid/content/Context;")
+        // Font provider lookup: context, weight, style, font settings.
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            parameters = listOf("Landroid/content/Context;", "I", "I", "Ljava/lang/String;"),
+            returnType = "Landroid/graphics/Typeface;"
+        )
     )
 )
 

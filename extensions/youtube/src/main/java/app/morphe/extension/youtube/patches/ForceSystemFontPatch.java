@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -23,11 +24,16 @@ public final class ForceSystemFontPatch {
 
     private static final int DEFAULT_WEIGHT = 400;
 
+    private static boolean isYouTubeSansName(String name) {
+        name = name.toLowerCase(Locale.ENGLISH);
+        return name.startsWith("youtube_sans") || name.startsWith("ytsans");
+    }
+
     private static int weightFromName(String name) {
         name = name.toLowerCase(Locale.ENGLISH);
         if (name.contains("extrabold")) return 800;
         if (name.contains("semibold")) return 600;
-        if (name.contains("black")) return 900;
+        if (name.contains("black") || name.contains("heavy")) return 900;
         if (name.contains("bold")) return 700;
         if (name.contains("medium")) return 500;
         if (name.contains("light")) return 300;
@@ -35,31 +41,67 @@ public final class ForceSystemFontPatch {
         return DEFAULT_WEIGHT;
     }
 
-    private static Typeface create(int weight, int style) {
+    private static Typeface create(int weight, int style, boolean italic) {
         if ((style & Typeface.BOLD) != 0) {
             weight = Math.max(weight, 700);
         }
-        return Typeface.create(Typeface.DEFAULT, weight, (style & Typeface.ITALIC) != 0);
+        italic |= (style & Typeface.ITALIC) != 0;
+
+        if (Utils.isSDKAbove(28)) {
+            return Typeface.create(Typeface.DEFAULT, weight, italic);
+        }
+
+        // Before Android 9, a weight can only be selected using the font family name.
+        final String family;
+        int legacyStyle = italic ? Typeface.ITALIC : Typeface.NORMAL;
+        if (weight >= 900) {
+            family = "sans-serif-black";
+        } else if (weight >= 600) {
+            family = "sans-serif";
+            legacyStyle |= Typeface.BOLD;
+        } else if (weight >= 500) {
+            family = "sans-serif-medium";
+        } else if (weight >= 400) {
+            family = "sans-serif";
+        } else if (weight >= 300) {
+            family = "sans-serif-light";
+        } else {
+            family = "sans-serif-thin";
+        }
+        return Typeface.create(family, legacyStyle);
+    }
+
+    private static Typeface createFromName(String name, int style) {
+        return create(weightFromName(name), style, name.toLowerCase(Locale.ENGLISH).contains("italic"));
     }
 
     /**
      * Injection point.
+     *
+     * @param original Typeface from the font provider.
+     * @return The system typeface, or the original typeface if it should not be replaced.
      */
     @Nullable
-    public static Typeface getSystemTypeface(int weight, int style, @Nullable String fontSettings) {
-        if (!Settings.FORCE_SYSTEM_FONT.get()) {
-            return null;
-        }
+    public static Typeface getSystemTypeface(@Nullable Typeface original, int weight, int style,
+                                             @Nullable String fontSettings) {
+        try {
+            if (!Settings.FORCE_SYSTEM_FONT.get()) {
+                return original;
+            }
 
-        // Other fonts are chosen by the user, such as the Shorts text styles.
-        if (fontSettings != null && !fontSettings.isEmpty() && !fontSettings.contains("YouTube Sans")) {
-            return null;
-        }
+            // Other fonts are chosen by the user, such as the Shorts text styles.
+            if (fontSettings != null && !fontSettings.isEmpty() && !fontSettings.contains("YouTube Sans")) {
+                return original;
+            }
 
-        if (weight < 1 || weight > 1000) {
-            weight = DEFAULT_WEIGHT;
+            if (weight < 1 || weight > 1000) {
+                weight = DEFAULT_WEIGHT;
+            }
+            return create(weight, style, false);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getSystemTypeface failure", ex);
+            return original;
         }
-        return create(weight, style);
     }
 
     /**
@@ -67,14 +109,23 @@ public final class ForceSystemFontPatch {
      */
     @Nullable
     public static Typeface getSystemTypeface(Context context, int fontResourceId, int style) {
-        if (!Settings.FORCE_SYSTEM_FONT.get()) {
-            return null;
-        }
-
         try {
-            return create(weightFromName(context.getResources().getResourceEntryName(fontResourceId)), style);
+            if (!Settings.FORCE_SYSTEM_FONT.get()) {
+                return null;
+            }
+
+            String name = context.getResources().getResourceEntryName(fontResourceId);
+
+            // Other bundled fonts, such as icon or monospace fonts, are left unchanged.
+            if (!isYouTubeSansName(name)) {
+                return null;
+            }
+            return createFromName(name, style);
         } catch (Resources.NotFoundException ex) {
-            Logger.printDebug(() -> "Font resource not found: " + fontResourceId);
+            Logger.printDebug(() -> "Font resource not found: 0x" + Integer.toHexString(fontResourceId));
+            return null;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getSystemTypeface failure", ex);
             return null;
         }
     }
@@ -85,14 +136,19 @@ public final class ForceSystemFontPatch {
      */
     @Nullable
     public static Typeface getSystemTypeface(Enum<?> font, int style) {
-        if (!Settings.FORCE_SYSTEM_FONT.get()) {
-            return null;
-        }
+        try {
+            if (!Settings.FORCE_SYSTEM_FONT.get()) {
+                return null;
+            }
 
-        String name = font.name();
-        if (!name.startsWith("YOUTUBE_SANS_") && !name.startsWith("YTSANS_")) {
+            String name = font.name();
+            if (!isYouTubeSansName(name)) {
+                return null;
+            }
+            return createFromName(name, style);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getSystemTypeface failure", ex);
             return null;
         }
-        return create(weightFromName(name), style);
     }
 }
