@@ -167,7 +167,7 @@ public final class TTMLParser {
     private static final String AGENT_TYPE_GROUP = "group";
     private static final String AGENT_TYPE_OTHER = "other";
 
-    record TtmlResult(List<LyricsLine> lines,
+    public record TtmlResult(List<LyricsLine> lines,
                       @Nullable List<LyricsLine> romanization,
                       @Nullable Map<String, List<LyricsLine>> translations,
                       @Nullable Map<String, List<LyricsLine>> romanizations,

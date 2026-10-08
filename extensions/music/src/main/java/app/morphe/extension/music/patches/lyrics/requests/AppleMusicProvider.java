@@ -115,8 +115,8 @@ public final class AppleMusicProvider implements LyricsProvider {
             return null;
         }
         JSONObject song = songs.get(0);
-        String songId = song.optString("id", null);
-        if (songId == null) {
+        String songId = song.optString("id");
+        if (songId.isEmpty()) {
             return null;
         }
         Lyrics lyrics = fetchLyrics(ctx.userToken, ctx.storefront, ctx.language, songId);
@@ -153,8 +153,8 @@ public final class AppleMusicProvider implements LyricsProvider {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) {
                 break;
             }
-            String songId = song.optString("id", null);
-            if (songId == null) {
+            String songId = song.optString("id");
+            if (songId.isEmpty()) {
                 continue;
             }
             try {
