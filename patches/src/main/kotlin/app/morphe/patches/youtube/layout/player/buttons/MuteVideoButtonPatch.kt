@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.layout.player.buttons
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -20,7 +19,8 @@ import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomCont
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.StartVideoInformerFingerprint
+import app.morphe.patches.youtube.shared.hookVideoStarted
+import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.volume.playerVolumeHookPatch
 
 private const val EXTENSION_BUTTON =
@@ -47,6 +47,7 @@ val muteVideoButtonPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        startVideoInformerPatch,
         playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
@@ -65,9 +66,6 @@ val muteVideoButtonPatch = bytecodePatch(
         initializeLegacyBottomControl(EXTENSION_BUTTON)
 
         // Mute is per video, not a saved setting.
-        StartVideoInformerFingerprint.method.addInstruction(
-            0,
-            "invoke-static { }, $EXTENSION_BUTTON->resetMuteButton()V"
-        )
+        hookVideoStarted("$EXTENSION_BUTTON->resetMuteButton()V")
     }
 }

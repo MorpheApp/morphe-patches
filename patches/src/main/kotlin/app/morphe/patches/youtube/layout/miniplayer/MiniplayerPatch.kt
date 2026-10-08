@@ -40,9 +40,10 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.StartVideoInformerFingerprint
 import app.morphe.patches.youtube.shared.hookVideoIntent
+import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.openVideoIntentPatch
+import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -80,6 +81,7 @@ val miniplayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        startVideoInformerPatch,
         versionCheckPatch,
         playerOverlayButtonsHookPatch,
         videoFormatPatch,
@@ -683,11 +685,7 @@ val miniplayerPatch = bytecodePatch(
         // Region Update video details
 
         hookVideoIntent(MINIMAL_EXTENSION_CLASS, detectVideo = true, detectShorts = false)
-
-        StartVideoInformerFingerprint.method.addInstruction(
-            0,
-            "invoke-static { }, $MINIMAL_EXTENSION_CLASS->updateVideoDetails()V"
-        )
+        hookVideoStarted("$MINIMAL_EXTENSION_CLASS->updateVideoDetails()V")
 
         // end region
 
