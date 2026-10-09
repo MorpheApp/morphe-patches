@@ -232,9 +232,16 @@ final class LocalizedTitleRequest {
             final int responseCode = connection.getResponseCode();
             if (responseCode == Requester.HTTP_STATUS_CODE_SUCCESS) {
                 JSONObject json = Requester.parseJSONObject(connection);
-                JSONArray runs = listTitle
-                        ? findListTitleRuns(json, videoId)
-                        : findTitleRuns(json);
+                JSONArray runs;
+                if (listTitle) {
+                    runs = findListTitleRuns(json, videoId);
+                } else {
+                    JSONObject titleJson = json;
+                    for (String pathKey : TITLE_PATH) {
+                        titleJson = titleJson == null ? null : titleJson.optJSONObject(pathKey);
+                    }
+                    runs = titleJson == null ? null : titleJson.optJSONArray("runs");
+                }
                 if (runs == null) {
                     return null;
                 }
@@ -269,17 +276,6 @@ final class LocalizedTitleRequest {
             Logger.printException(() -> "fetchTitle failure", ex);
         }
         return null;
-    }
-
-    @Nullable
-    private static JSONArray findTitleRuns(JSONObject json) {
-        for (String pathKey : TITLE_PATH) {
-            json = json.optJSONObject(pathKey);
-            if (json == null) {
-                return null;
-            }
-        }
-        return json.optJSONArray("runs");
     }
 
     /**

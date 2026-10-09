@@ -8,7 +8,10 @@
 
 package app.morphe.extension.youtube.patches.originaltitles;
 
+import android.media.MediaMetadata;
+import android.media.session.MediaSession;
 import android.net.Uri;
+import android.os.Build;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -266,6 +269,11 @@ public final class RestoreOriginalTitlesPatch {
             Collections.synchronizedMap(new WeakHashMap<>());
 
     /**
+     * Views that replace the translated titles seen before, such as the title of the next video of a playlist.
+     */
+    private static final Set<TextView> knownTitleViews = Collections.newSetFromMap(new WeakHashMap<>());
+
+    /**
      * Translated title -> video ids of the videos with the title, of the titles that are verified.
      * Different videos can have the same title, such as a video and its reupload.
      */
@@ -279,6 +287,13 @@ public final class RestoreOriginalTitlesPatch {
      */
     private static final Map<String, Set<String>> pendingTitleTexts =
             Collections.synchronizedMap(Utils.createSizeRestrictedMap(2000));
+
+    /**
+     * Video id -> text found as the title by the layout of the element, such as the title of the opened video,
+     * which is replaced even if no request returns the text, such as a title tested by the uploader.
+     */
+    private static final Map<String, String> layoutTitles =
+            Collections.synchronizedMap(Utils.createSizeRestrictedMap(1000));
 
     /**
      * Requests of the titles in the language of the app that register the title when done.
@@ -419,6 +434,14 @@ public final class RestoreOriginalTitlesPatch {
      * Video id of the opened video.
      */
     private static volatile String openedVideoId;
+
+    /**
+     * Metadata of the media notification, as set by the app, and its media session.
+     * The metadata is set again if the original title is fetched after the metadata is set.
+     */
+    @Nullable
+    private static volatile MediaMetadata mediaMetadata;
+    private static volatile WeakReference<MediaSession> mediaSessionRef = new WeakReference<>(null);
 
     /**
      * Language of the app when the translated titles were found. The language can be changed
@@ -676,9 +699,21 @@ public final class RestoreOriginalTitlesPatch {
                 }
                 videoId = findVerifiedVideoId(videoIds, trimmedText);
                 if (videoId == null) {
-                    CandidateRetry retry = findCandidateRetry(videoIds);
-                    if (retry != null) {
-                        return spannedText(translatedText, LOADING_TITLE.toString(), new RetryTitleSpan(retry));
+                    // The other titles of the text are fetched again, and the fetching is not yet started.
+                    for (String candidateVideoId : videoIds) {
+                        CandidateRetry retry = candidateRetries.get(candidateKey(candidateVideoId));
+                        if (retry != null && !retry.started && !retry.done.isDone()) {
+                            return spannedText(translatedText, LOADING_TITLE.toString(), new RetryTitleSpan(retry));
+                        }
+                    }
+                    // The title found by the layout of the element is replaced even if no request verified it.
+                    for (String layoutVideoId : videoIds) {
+                        String replacement = trimmedText.equals(layoutTitles.get(layoutVideoId))
+                                ? OriginalTitleRequest.getIfAvailable(layoutVideoId)
+                                : null;
+                        if (replacement != null && !replacement.trim().equals(trimmedText)) {
+                            return titleText(translatedText, replacement, null);
+                        }
                     }
                 }
             }
@@ -690,7 +725,18 @@ public final class RestoreOriginalTitlesPatch {
             if (videoId == null) {
                 // The text can be the title of an element whose title was not yet verified,
                 // which is found in the same component for short texts.
-                videoIds = findPendingVideoIds(textComponent(contextInterface), trimmedText);
+                // The component is the name of the element, such as 'video_lockup_with_attachment.eml-fe'.
+                String component = contextInterface == null ? null : contextInterface.patch_getIdentifier();
+                if (component != null && component.indexOf('|') >= 0) {
+                    component = component.substring(0, component.indexOf('|'));
+                }
+                if (component == null && length < MIN_TITLE_LENGTH) {
+                    return translatedText;
+                }
+                synchronized (pendingTitleTexts) {
+                    Set<String> pendingVideoIds = pendingTitleTexts.get((component == null ? "" : component) + '\n' + trimmedText);
+                    videoIds = pendingVideoIds == null ? null : new HashSet<>(pendingVideoIds);
+                }
                 if (videoIds == null) {
                     return translatedText;
                 }
@@ -747,20 +793,6 @@ public final class RestoreOriginalTitlesPatch {
         SpannableString spannedTitle = spannedText(text, DeArrowTitleIcon.addIcon(title), relayoutSpan);
         DeArrowTitleIcon.setIconSpan(spannedTitle);
         return spannedTitle;
-    }
-
-    /**
-     * @return The component name of the element of a Litho text, such as 'video_lockup_with_attachment.eml-fe',
-     *         or null if not known.
-     */
-    @Nullable
-    private static String textComponent(@Nullable ContextInterface contextInterface) {
-        String identifier = contextInterface == null ? null : contextInterface.patch_getIdentifier();
-        if (identifier == null) {
-            return null;
-        }
-        final int separator = identifier.indexOf('|');
-        return separator < 0 ? identifier : identifier.substring(0, separator);
     }
 
     /**
@@ -856,7 +888,7 @@ public final class RestoreOriginalTitlesPatch {
             }
 
             CharSequence translatedTitle = view.getText();
-            String translatedTitleText = translatedTitle.toString().trim();
+            String translatedTitleText = removeTitleMarker(translatedTitle.toString()).trim();
             // Reused views can still show the loading title or a DeArrow title.
             if (!translatedTitleText.isEmpty() && !translatedTitleText.equals(LOADING_TITLE.toString())
                     && !DeArrowTitleIcon.hasIcon(translatedTitle)) {
@@ -914,7 +946,8 @@ public final class RestoreOriginalTitlesPatch {
      * for a view that shows a title without the video id.
      */
     public static void restoreKnownTitles(TextView view) {
-        if (view == null) {
+        // Views can be bound again for other videos, and only need one listener.
+        if (view == null || !knownTitleViews.add(view)) {
             return;
         }
 
@@ -934,7 +967,12 @@ public final class RestoreOriginalTitlesPatch {
                     return;
                 }
 
-                String videoId = findVideoIdOfTitle(title, null);
+                // The title of the element that opened the video can be marked with the video id,
+                // such as the title shown on the watch page while the video is loading.
+                final int markerStart = findTitleMarker(text);
+                String videoId = markerStart >= 0
+                        ? decodeTitleMarker(text, markerStart)
+                        : findVideoIdOfTitle(title, null);
                 if (videoId == null) {
                     titleViewVideoIds.remove(view);
                     return;
@@ -948,6 +986,91 @@ public final class RestoreOriginalTitlesPatch {
             public void afterTextChanged(Editable text) {
             }
         });
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * Replaces the translated title of the media notification.
+     *
+     * @return The metadata with the title replaced, or the same metadata if the title is not replaced.
+     */
+    public static MediaMetadata restoreMediaMetadataTitle(MediaSession session, MediaMetadata metadata) {
+        try {
+            if (!REPLACE_TITLES || metadata == null) {
+                return metadata;
+            }
+
+            mediaMetadata = metadata;
+            mediaSessionRef = new WeakReference<>(session);
+            return replaceMediaMetadataTitle(metadata);
+        } catch (Exception ex) {
+            Logger.printException(() -> "restoreMediaMetadataTitle failure", ex);
+            return metadata;
+        }
+    }
+
+    /**
+     * The title is shown as loading until it's fetched, or until the fetch is no longer retried.
+     */
+    private static MediaMetadata replaceMediaMetadataTitle(MediaMetadata metadata) {
+        String title = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
+        if (title == null || title.isBlank()) {
+            return metadata;
+        }
+
+        // The media notification is of the opened video, unless the title is of another video.
+        String titleVideoId = findVideoIdOfTitle(title.trim(), openedVideoId);
+        String videoId = titleVideoId == null ? openedVideoId : titleVideoId;
+        if (videoId == null) {
+            return metadata;
+        }
+
+        CompletableFuture<OriginalTitleRequest.Titles> future = OriginalTitleRequest.fetch(videoId);
+        OriginalTitleRequest.Titles titles = future.getNow(null);
+        if (!future.isDone()) {
+            future.whenComplete((result, ex) -> Utils.runOnMainThread(() -> setMediaMetadataAgain(metadata)));
+            return withMediaMetadataTitle(metadata, LOADING_TITLE.toString());
+        }
+        if (OriginalTitleRequest.isPending(videoId)) {
+            // The title is fetched again after the retry time.
+            Utils.runOnMainThreadDelayed(() -> setMediaMetadataAgain(metadata),
+                    OriginalTitleRequest.retryRemainingMilliseconds(videoId));
+            return withMediaMetadataTitle(metadata, LOADING_TITLE.toString());
+        }
+
+        // The media notification shows the same title as the player, from any navigation.
+        String replacement = titles == null ? null : titles.replacement(Settings.DEARROW_TITLES_PLAYER.get());
+        if (replacement == null || replacement.equals(title)) {
+            return metadata;
+        }
+
+        Logger.printDebug(() -> "Restored media notification title: " + replacement);
+        return withMediaMetadataTitle(metadata, replacement);
+    }
+
+    private static MediaMetadata withMediaMetadataTitle(MediaMetadata metadata, String title) {
+        MediaMetadata.Builder builder = new MediaMetadata.Builder(metadata)
+                .putString(MediaMetadata.METADATA_KEY_TITLE, title);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            // The images are not scaled again, as scaling some images fails, such as on YouTube 20.21.
+            // The media session scales them when the metadata is set.
+            builder.setBitmapDimensionLimit(Integer.MAX_VALUE);
+        }
+        return builder.build();
+    }
+
+    private static void setMediaMetadataAgain(MediaMetadata metadata) {
+        try {
+            MediaSession session = mediaSessionRef.get();
+            if (session == null || mediaMetadata != metadata) {
+                return; // The metadata was changed meanwhile.
+            }
+
+            session.setMetadata(replaceMediaMetadataTitle(metadata));
+        } catch (Exception ex) {
+            Logger.printException(() -> "setMediaMetadataAgain failure", ex);
+        }
     }
 
     /**
@@ -1360,22 +1483,6 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
-     * @return The title with the marker of the video id.
-     */
-    private static String addTitleMarker(String title, String videoId) {
-        StringBuilder builder = new StringBuilder(title.length() + TITLE_MARKER_LENGTH)
-                .append(title)
-                .append(TITLE_MARKER_START);
-        for (int i = 0; i < VIDEO_ID_LENGTH; i++) {
-            final int value = VIDEO_ID_CHARACTERS.indexOf(videoId.charAt(i));
-            for (int shift = 2 * (TITLE_MARKER_DIGITS_PER_CHARACTER - 1); shift >= 0; shift -= 2) {
-                builder.append((char) (TITLE_MARKER_FIRST_DIGIT + ((value >> shift) & 3)));
-            }
-        }
-        return builder.toString();
-    }
-
-    /**
      * @return The index of the title marker at the end of the text, or -1 if the text has no marker.
      */
     private static int findTitleMarker(CharSequence text) {
@@ -1424,7 +1531,17 @@ public final class RestoreOriginalTitlesPatch {
             String nodeText = node.getText();
             String text = nodeText.trim();
             if (findTitleMarker(nodeText) < 0 && (text.equals(translatedTitle) || truncatedTitles.contains(text))) {
-                node.setText(addTitleMarker(nodeText, videoId));
+                // The marker of the video id is added after the title.
+                StringBuilder builder = new StringBuilder(nodeText.length() + TITLE_MARKER_LENGTH)
+                        .append(nodeText)
+                        .append(TITLE_MARKER_START);
+                for (int i = 0; i < VIDEO_ID_LENGTH; i++) {
+                    final int value = VIDEO_ID_CHARACTERS.indexOf(videoId.charAt(i));
+                    for (int shift = 2 * (TITLE_MARKER_DIGITS_PER_CHARACTER - 1); shift >= 0; shift -= 2) {
+                        builder.append((char) (TITLE_MARKER_FIRST_DIGIT + ((value >> shift) & 3)));
+                    }
+                }
+                node.setText(builder.toString());
                 marked = true;
             }
         }
@@ -1530,8 +1647,17 @@ public final class RestoreOriginalTitlesPatch {
         Set<String> texts = new LinkedHashSet<>();
         for (ProtoNode node : textNodes) {
             String text = removeTitleMarker(node.getText()).trim();
-            if (isListUrl(text)) {
-                return false;
+            // Lists use the thumbnail of the first video, but show the list title, such as a playlist
+            // or a mix. Their urls include the list, but not the index of a video in the list.
+            if (text.contains("list=")) {
+                try {
+                    Uri uri = Uri.parse(text);
+                    if (uri.isHierarchical() && uri.getQueryParameter("list") != null
+                            && uri.getQueryParameter("index") == null) {
+                        return false;
+                    }
+                } catch (Exception ignored) {
+                }
             }
             nodeTexts.add(text);
             if (!text.isEmpty()) {
@@ -1540,6 +1666,14 @@ public final class RestoreOriginalTitlesPatch {
         }
 
         return restoreTitle(textNodes, texts, videoId, component,
+                // The title found by the layout of the element, and not only by its text: the title
+                // of the opened video that expands the description, or the title that starts the accessibility label.
+                () -> {
+                    String layoutTitle = videoId.equals(openedVideoId) ? findOpenedVideoTitle(textNodes, texts) : null;
+                    return layoutTitle == null && elementVideoId
+                            ? findLabeledCandidateTitle(textNodes, texts)
+                            : layoutTitle;
+                },
                 () -> findCandidateTitle(textNodes, nodeTexts, texts, videoId, elementVideoId, component),
                 title -> {
                     if (elementVideoId) {
@@ -1553,36 +1687,45 @@ public final class RestoreOriginalTitlesPatch {
      * is verified, the text found as the title is shown as loading.
      *
      * @param texts             Texts of the element that can be the title.
+     * @param findLayoutTitle   Finds the title by the layout of the element, or null to not find it.
+     *                          The title found by the layout is replaced even if no text is verified to be the title.
      * @param findCandidate     Finds the text that can be the title, which is shown as loading until verified.
      * @param onTitleVerified   Called with the text that is verified to be the title, or null if none.
      * @return If the title was replaced, or the element was marked.
      */
     private static boolean restoreTitle(List<ProtoNode> textNodes, Set<String> texts, String videoId,
-                                        String component, Supplier<String> findCandidate,
+                                        String component, @Nullable Supplier<String> findLayoutTitle,
+                                        Supplier<String> findCandidate,
                                         @Nullable Consumer<String> onTitleVerified) {
         requestVerification(videoId, texts);
         List<String> titles = verifiedTitles(videoId);
-        if (titles == null) {
-            addPendingTitleTexts(texts, videoId, component);
+        String title = titles == null ? null : findTitle(videoId, texts, titles);
+        if (title == null) {
+            // The titles can be verified before the element was parsed, such as for another element
+            // of the video, and the element can show the title auto-translated or in another language.
+            if (titles == null) {
+                addPendingTitleTexts(texts, videoId, component);
+            }
             String candidate = findCandidate.get();
             if (candidate == null || isChannelName(videoId, candidate)) {
                 return false;
             }
-            requestCandidateTitle(videoId, texts, candidate);
-            return markTitle(textNodes, candidate, Collections.emptySet(), videoId);
-        }
-
-        String title = findTitle(videoId, texts, titles);
-        if (title == null) {
-            // The titles were verified before the element was parsed, such as for another element
-            // of the video, and the element can show the title auto-translated or in another language.
-            String candidate = findCandidate.get();
-            if (candidate == null || isChannelName(videoId, candidate)
-                    || !requestCandidateTitle(videoId, texts, candidate)) {
-                return false;
+            final boolean layoutTitle = findLayoutTitle != null && candidate.equals(findLayoutTitle.get());
+            if (requestCandidateTitle(videoId, texts, candidate) || titles == null) {
+                if (titles != null) {
+                    addPendingTitleTexts(texts, videoId, component);
+                }
+                if (layoutTitle) {
+                    layoutTitles.put(videoId, candidate);
+                }
+                return markTitle(textNodes, candidate, Collections.emptySet(), videoId);
             }
-            addPendingTitleTexts(texts, videoId, component);
-            return markTitle(textNodes, candidate, Collections.emptySet(), videoId);
+            // The video can show a title that no request returns, such as a title tested by the uploader.
+            // The title is not saved as a translated title, as no request verified it.
+            String replacement = layoutTitle ? OriginalTitleRequest.getIfAvailable(videoId) : null;
+            return replacement != null && !candidate.equals(replacement.trim())
+                    && replaceTitle(textNodes, candidate, Collections.emptySet(), replacement,
+                    findLabelOfTitle(candidate, texts));
         }
         if (isChannelName(videoId, title)) {
             return false;
@@ -1639,21 +1782,8 @@ public final class RestoreOriginalTitlesPatch {
                 return null;
             }
 
-            String[] labelAndTitle = findLabeledTitle(texts);
-            String labeledLabel = labelAndTitle == null ? null : labelAndTitle[0];
-            String labeledTitle = labelAndTitle == null ? null : labelAndTitle[1];
-            if (labeledTitle != null && isLabelOfTitle(textNodes, labeledLabel, labeledTitle)) {
-                title = labeledTitle;
-                // The label of a long title can include the title truncated, and the element the entire title.
-                // Texts that include the truncated title with the ellipsis are not the entire title,
-                // such as the accessibility label 'Start of the title... - play Short'.
-                for (String text : texts) {
-                    if (isTruncatedTitle(labeledTitle, text) && !text.contains(labeledTitle)) {
-                        title = text;
-                        break;
-                    }
-                }
-            } else {
+            title = findLabeledCandidateTitle(textNodes, texts);
+            if (title == null) {
                 // The title at the title path learned for the component.
                 List<String> paths = TitleLayouts.fieldPaths(textNodes);
                 title = TitleLayouts.findTitle(component, paths, nodeTexts);
@@ -1672,6 +1802,28 @@ public final class RestoreOriginalTitlesPatch {
             }
         }
         return isChannelName(videoId, title) ? null : title;
+    }
+
+    /**
+     * @return The title that starts the accessibility label of the video, or null if none.
+     */
+    @Nullable
+    private static String findLabeledCandidateTitle(List<ProtoNode> textNodes, Set<String> texts) {
+        String[] labelAndTitle = findLabeledTitle(texts);
+        String labeledLabel = labelAndTitle == null ? null : labelAndTitle[0];
+        String labeledTitle = labelAndTitle == null ? null : labelAndTitle[1];
+        if (labeledTitle == null || !isLabelOfTitle(textNodes, labeledLabel, labeledTitle)) {
+            return null;
+        }
+        // The label of a long title can include the title truncated, and the element the entire title.
+        // Texts that include the truncated title with the ellipsis are not the entire title,
+        // such as the accessibility label 'Start of the title... - play Short'.
+        for (String text : texts) {
+            if (isTruncatedTitle(labeledTitle, text) && !text.contains(labeledTitle)) {
+                return text;
+            }
+        }
+        return labeledTitle;
     }
 
     /**
@@ -1936,7 +2088,11 @@ public final class RestoreOriginalTitlesPatch {
                 startRetry(retry);
             } else if (hideNotShown) {
                 Logger.printDebug(() -> "Title of: " + retry.videoId + " is not shown, fetched again when shown");
-                hideRetry(retry);
+                hiddenRetries.add(retry);
+                if (hiddenRetries.size() > MAX_PENDING_RETRIES) {
+                    cancelRetry(hiddenRetries.remove(0));
+                }
+                LithoRelayoutPatch.setLithoViewMeasuredListener(RestoreOriginalTitlesPatch::onLithoViewMeasured);
             }
         }
         if (startedVideoIds.isEmpty()) {
@@ -1956,17 +2112,6 @@ public final class RestoreOriginalTitlesPatch {
         if (hiddenRetries.isEmpty()) {
             LithoRelayoutPatch.setLithoViewMeasuredListener(null);
         }
-    }
-
-    /**
-     * Must be called on the main thread.
-     */
-    private static void hideRetry(CandidateRetry retry) {
-        hiddenRetries.add(retry);
-        if (hiddenRetries.size() > MAX_PENDING_RETRIES) {
-            cancelRetry(hiddenRetries.remove(0));
-        }
-        LithoRelayoutPatch.setLithoViewMeasuredListener(RestoreOriginalTitlesPatch::onLithoViewMeasured);
     }
 
     /**
@@ -2056,21 +2201,6 @@ public final class RestoreOriginalTitlesPatch {
             // The text shows the loading text until the title is verified.
             LithoRelayoutPatch.relayoutOutdatedTexts();
         });
-    }
-
-    /**
-     * @return The fetching again of the other titles of a text of the videos that is not yet started,
-     *         or null if none.
-     */
-    @Nullable
-    private static CandidateRetry findCandidateRetry(Set<String> videoIds) {
-        for (String videoId : videoIds) {
-            CandidateRetry retry = candidateRetries.get(candidateKey(videoId));
-            if (retry != null && !retry.started && !retry.done.isDone()) {
-                return retry;
-            }
-        }
-        return null;
     }
 
     /**
@@ -2210,25 +2340,6 @@ public final class RestoreOriginalTitlesPatch {
     }
 
     /**
-     * @param component Component of the Litho text, or null if not known.
-     * @return A copy of the video ids of the elements of the component with the text,
-     *         whose title was not yet verified when the element was parsed, or null if none.
-     */
-    @Nullable
-    private static Set<String> findPendingVideoIds(@Nullable String component, String text) {
-        if (component == null) {
-            if (text.length() < MIN_TITLE_LENGTH) {
-                return null;
-            }
-            component = "";
-        }
-        synchronized (pendingTitleTexts) {
-            Set<String> videoIds = pendingTitleTexts.get(component + '\n' + text);
-            return videoIds == null ? null : new HashSet<>(videoIds);
-        }
-    }
-
-    /**
      * Starts fetching the titles that verify the text if not yet fetched.
      *
      * @return A video whose title is being verified, or null if the titles of all the videos are verified.
@@ -2305,7 +2416,7 @@ public final class RestoreOriginalTitlesPatch {
             if (videoIdNode != null && isLabelCandidate(title)
                     && isNearby(linkNode, titleNode) && isNearby(linkNode, videoIdNode)) {
                 modified |= restoreTitle(Arrays.asList(videoIdNode, titleNode, linkNode),
-                        Collections.singleton(title), videoIdNode.getText().trim(), component, () -> title, null);
+                        Collections.singleton(title), videoIdNode.getText().trim(), component, null, () -> title, null);
             }
         }
         return modified;
@@ -2584,24 +2695,6 @@ public final class RestoreOriginalTitlesPatch {
      */
     private static boolean isChannelHandle(String text, Set<String> texts) {
         return texts.contains("/" + text);
-    }
-
-    /**
-     * Lists use the thumbnail of the first video, but show the list title, such as a playlist
-     * or a mix. Their urls include the list, but not the index of a video in the list.
-     */
-    private static boolean isListUrl(String text) {
-        if (!text.contains("list=")) {
-            return false;
-        }
-        try {
-            Uri uri = Uri.parse(text);
-            return uri.isHierarchical()
-                    && uri.getQueryParameter("list") != null
-                    && uri.getQueryParameter("index") == null;
-        } catch (Exception ex) {
-            return false;
-        }
     }
 
     /**

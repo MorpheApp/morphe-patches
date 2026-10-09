@@ -67,22 +67,19 @@ final class RequestBackoff {
         if (isPaused()) {
             return;
         }
-        final long pause = Math.max(PAUSE_MILLISECONDS, retryAfterMilliseconds(connection));
-        pausedUntil = System.currentTimeMillis() + pause;
-        Logger.printInfo(() -> "Title requests failed with code: " + responseCode
-                + ", paused for: " + pause / 1000 + " seconds");
-    }
-
-    private static long retryAfterMilliseconds(HttpURLConnection connection) {
+        long retryAfter = 0;
         try {
-            String retryAfter = connection.getHeaderField("Retry-After");
-            if (retryAfter != null) {
-                final long seconds = Long.parseLong(retryAfter.trim());
-                return Math.min(seconds * 1000, MAX_PAUSE_MILLISECONDS);
+            String retryAfterHeader = connection.getHeaderField("Retry-After");
+            if (retryAfterHeader != null) {
+                final long seconds = Long.parseLong(retryAfterHeader.trim());
+                retryAfter = Math.min(seconds * 1000, MAX_PAUSE_MILLISECONDS);
             }
         } catch (NumberFormatException ignored) {
             // The time can also be a date, which is not used.
         }
-        return 0;
+        final long pause = Math.max(PAUSE_MILLISECONDS, retryAfter);
+        pausedUntil = System.currentTimeMillis() + pause;
+        Logger.printInfo(() -> "Title requests failed with code: " + responseCode
+                + ", paused for: " + pause / 1000 + " seconds");
     }
 }

@@ -109,6 +109,16 @@ internal object FormatStreamModelToStringFingerprint : Fingerprint(
     )
 )
 
+internal object MediaSessionSetMetadataFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/media/session/MediaSession;",
+            name = "setMetadata",
+            parameters = listOf("Landroid/media/MediaMetadata;")
+        )
+    )
+)
+
 internal object MediaSessionSetPlaybackStateFingerprint : Fingerprint(
     filters = listOf(
         methodCall(

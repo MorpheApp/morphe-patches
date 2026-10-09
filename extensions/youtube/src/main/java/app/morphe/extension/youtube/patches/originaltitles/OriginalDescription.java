@@ -139,7 +139,16 @@ final class OriginalDescription {
                 isBody = true;
             } else if (field.getFieldNumber() == SEGMENT_FIELD && field.children != null) {
                 segments.add(field);
-                hasText |= segmentTextLength(field.children) > 0;
+                // Content with line breaks is not parsed as text, so the content is any field
+                // that decodes as text, and not a message of other fields.
+                ProtoNode segmentText = ProtoNode.field(field.children, SEGMENT_TEXT_FIELD);
+                ProtoNode content = segmentText == null || segmentText.children == null
+                        ? null
+                        : ProtoNode.field(segmentText.children, TEXT_CONTENT_FIELD);
+                if (content != null && content.getVarint() == null) {
+                    String decoded = decodeText(content);
+                    hasText |= decoded != null && !decoded.isEmpty();
+                }
             }
         }
         if (isBody && hasText) {
@@ -155,25 +164,6 @@ final class OriginalDescription {
             }
         }
         return null;
-    }
-
-    /**
-     * Content with line breaks is not parsed as text, so the content is any field
-     * that decodes as text, and not a message of other fields.
-     *
-     * @return The length of the content of a text segment, or 0 if the segment is not a text.
-     */
-    private static int segmentTextLength(List<ProtoNode> segment) {
-        ProtoNode text = ProtoNode.field(segment, SEGMENT_TEXT_FIELD);
-        if (text == null || text.children == null) {
-            return 0;
-        }
-        ProtoNode content = ProtoNode.field(text.children, TEXT_CONTENT_FIELD);
-        if (content == null || content.getVarint() != null) {
-            return 0;
-        }
-        String decoded = decodeText(content);
-        return decoded == null ? 0 : decoded.length();
     }
 
     /**
@@ -249,7 +239,11 @@ final class OriginalDescription {
                  index = description.indexOf(text, index + 1)) {
                 final int end = index + textLength;
                 final int start = tokenStart(description, index, from);
-                if (isLinkPart(description, start, index, end)) {
+                // The text is a whole part of a link, such as a path segment or a query value.
+                if (index > start
+                        && description.lastIndexOf('/', index - 1) >= start
+                        && !isNameCharacter(description.codePointBefore(index))
+                        && (end == description.length() || !isNameCharacter(description.codePointAt(end)))) {
                     linkStart = start;
                     linkEnd = tokenEnd(description, end);
                     break;
@@ -257,16 +251,6 @@ final class OriginalDescription {
             }
         }
         return linkEnd < 0 ? null : new int[]{linkStart, linkEnd};
-    }
-
-    /**
-     * @return If the text is a whole part of a link, such as a path segment or a query value.
-     */
-    private static boolean isLinkPart(String description, int linkStart, int start, int end) {
-        return start > linkStart
-                && description.lastIndexOf('/', start - 1) >= linkStart
-                && !isNameCharacter(description.codePointBefore(start))
-                && (end == description.length() || !isNameCharacter(description.codePointAt(end)));
     }
 
     private static boolean isNameCharacter(int codePoint) {
@@ -347,12 +331,21 @@ final class OriginalDescription {
             if (run == content || runFields == null) {
                 continue;
             }
-            int[] range = getRange(runFields);
-            if (range == null) {
+            // The range of the run is the start and length fields of the run or of the closest sub message.
+            List<ProtoNode> rangeMessage = findRangeMessage(runFields);
+            if (rangeMessage == null) {
                 continue; // Not a run.
             }
-            final int start = range[0];
-            final int end = range[1];
+            ProtoNode startNode = ProtoNode.field(rangeMessage, RANGE_START_FIELD);
+            ProtoNode lengthNode = ProtoNode.field(rangeMessage, RANGE_LENGTH_FIELD);
+            Long rangeStart = startNode == null ? null : startNode.getVarint();
+            Long rangeLength = lengthNode == null ? Long.valueOf(0) : lengthNode.getVarint();
+            if (rangeStart == null || rangeLength == null
+                    || rangeStart > Integer.MAX_VALUE || rangeLength > Integer.MAX_VALUE) {
+                continue; // Not a run.
+            }
+            final int start = rangeStart.intValue();
+            final int end = (int) (rangeStart + rangeLength);
             if (start < 0 || end < start || end > textLength) {
                 run.remove();
                 continue;
@@ -473,26 +466,6 @@ final class OriginalDescription {
         if (lengthNode != null && !Long.valueOf(length).equals(lengthNode.getVarint())) {
             lengthNode.setVarint(length);
         }
-    }
-
-    /**
-     * @return The range of the run, which is the start and length fields of the run
-     *         or of the closest sub message. Null if the run has no range.
-     */
-    @Nullable
-    private static int[] getRange(List<ProtoNode> run) {
-        List<ProtoNode> rangeMessage = findRangeMessage(run);
-        if (rangeMessage == null) {
-            return null;
-        }
-        ProtoNode startNode = ProtoNode.field(rangeMessage, RANGE_START_FIELD);
-        ProtoNode lengthNode = ProtoNode.field(rangeMessage, RANGE_LENGTH_FIELD);
-        Long start = startNode == null ? null : startNode.getVarint();
-        Long length = lengthNode == null ? Long.valueOf(0) : lengthNode.getVarint();
-        if (start == null || length == null || start > Integer.MAX_VALUE || length > Integer.MAX_VALUE) {
-            return null;
-        }
-        return new int[]{start.intValue(), (int) (start + length)};
     }
 
     @Nullable
