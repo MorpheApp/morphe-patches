@@ -33,7 +33,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val NAV = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
-private const val OUR_NAV = "${OUR_PREFIX}HistoryNavigation;"
+private const val OUR_NAV = "${SERIES_TRACKER_EXTENSION_PREFIX}HistoryNavigation;"
 
 internal fun BytecodePatchContext.wireHistory() {
     // Build native History pivot items from the same renderer factory YouTube uses.
@@ -133,7 +133,7 @@ internal fun BytecodePatchContext.wireHistory() {
     YouTubeMainActivityOnBackPressedFingerprint.method.addInstructions(
         0,
         """
-            invoke-static { }, ${OUR_PREFIX}HistoryUi;->onBack()Z
+            invoke-static { }, ${SERIES_TRACKER_EXTENSION_PREFIX}HistoryUi;->onBack()Z
             move-result v0
             if-eqz v0, :native_back
             return-void
@@ -176,7 +176,7 @@ internal fun BytecodePatchContext.wireHistory() {
                         iget-object v0, p0, $endpointField
                         invoke-static { v0 }, $routeMethod
                         move-result-object v0
-                        invoke-static { p1, v0 }, ${OUR_PREFIX}HistoryUi;->wrap(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
+                        invoke-static { p1, v0 }, ${SERIES_TRACKER_EXTENSION_PREFIX}HistoryUi;->wrap(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
                         move-result-object v0
                         return-object v0
                     """
@@ -208,7 +208,7 @@ internal fun BytecodePatchContext.wireHistory() {
 
     // The playlist toolbar populates its own Menu, independently of the activity menu.
     ToolbarMenuFingerprint.let {
-        it.classDef.interfaces.add("${OUR_PREFIX}PlaylistMenu\$ToolbarSource;")
+        it.classDef.interfaces.add("${SERIES_TRACKER_EXTENSION_PREFIX}PlaylistMenu\$ToolbarSource;")
         it.classDef.methods.add(
             ImmutableMethod(
                 it.classDef.type,

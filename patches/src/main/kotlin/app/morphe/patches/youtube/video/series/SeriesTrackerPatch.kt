@@ -7,8 +7,12 @@
 
 package app.morphe.patches.youtube.video.series
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -24,16 +28,27 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.PlayerInitFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.information.videoTimeHook
+import app.morphe.patches.youtube.video.videoid.VideoIdFingerprint
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.util.logging.Logger
 
-private const val EXTENSION_CLASS = "${OUR_PREFIX}SeriesTrackerPatch;"
-private const val BUTTON = "${OUR_PREFIX}SeriesPlayerButton;"
+internal const val SERIES_TRACKER_EXTENSION_PREFIX = "Lapp/morphe/extension/youtube/series/"
+private const val EXTENSION_CLASS = "${SERIES_TRACKER_EXTENSION_PREFIX}SeriesTrackerPatch;"
+private const val BUTTON = "${SERIES_TRACKER_EXTENSION_PREFIX}SeriesPlayerButton;"
 private const val EXTENSION_PACKAGE = "app.morphe.extension.youtube.series"
+
+internal fun MethodReference.signature() =
+    name + "(" + parameterTypes.joinToString("") + ")" + returnType
 
 private val seriesTrackerResourcesPatch = resourcePatch {
     dependsOn(legacyPlayerControlsResourcePatch)
@@ -107,13 +122,75 @@ val seriesTrackerPatch = bytecodePatch(
                         summaryKey = null,
                         tag = "$EXTENSION_PACKAGE.CompletionPreference",
                         selectable = true
-                    ),
-                ),
+                    )
+                )
             )
         )
 
-        wirePlaybackSource()
-        wirePlaybackSession()
+        PlayerInitFingerprint.classDef.apply {
+            val idGetter = ControllerVideoIdFingerprint(
+                VideoIdFingerprint.instructionMatches.first().getMethodCalled()
+            ).originalMethod
+
+            interfaces.add("${SERIES_TRACKER_EXTENSION_PREFIX}PlaybackBridge\$Source;")
+
+            fun addGetter(name: String, returnType: String, target: String, wide: Boolean) {
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        name,
+                        null,
+                        returnType,
+                        AccessFlags.PUBLIC.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(if (wide) 3 else 2),
+                    ).toMutable().apply {
+                        val suffix = if (wide) "wide" else "object"
+                        addInstructions(
+                            0,
+                            """
+                                $target
+                                move-result-$suffix v0
+                                return-$suffix v0
+                            """
+                        )
+                    }
+                )
+            }
+
+            val invoke = if (AccessFlags.PRIVATE.isSet(idGetter.accessFlags)) {
+                "invoke-direct"
+            } else {
+                "invoke-virtual"
+            }
+            addGetter(
+                "patch_seriesTrackerVideoId",
+                "Ljava/lang/String;",
+                "$invoke { p0 }, $type->${idGetter.signature()}",
+                false
+            )
+            addGetter(
+                "patch_seriesTrackerPosition",
+                "J",
+                "invoke-virtual { p0 }, $type->patch_getVideoTime()J",
+                true
+            )
+        }
+
+        MediaSessionFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = this.getInstruction<FiveRegisterInstruction>(index).registerC
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static/range { v$register .. v$register }, " +
+                            "${SERIES_TRACKER_EXTENSION_PREFIX}PlaybackSession;->attach(Landroid/media/session/MediaSession;)V"
+                )
+            }
+        }
+
         val accountContract = wirePrivacy()
         wireHistory()
         wireNativeHistory(accountContract)
@@ -122,3 +199,4 @@ val seriesTrackerPatch = bytecodePatch(
         initializeTopControl(BUTTON)
     }
 }
+
