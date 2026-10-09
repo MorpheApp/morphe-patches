@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/1065
+ * https://github.com/MorpheApp/morphe-patches/pull/3635
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -392,6 +393,9 @@ public class CrossfadePatch {
     private static int suppressedReasonCount = 0;
     private static int lastAtadIdentity = 0;
 
+    /**
+     * Injection point.
+     */
     public static boolean onBeforeStopVideo(Object atadInstance, int reason) {
         if (!CROSSFADE_ENABLED) return false;
 
@@ -823,7 +827,7 @@ public class CrossfadePatch {
         // The native call then fires stopVideo(5), where onBeforeStopVideo starts the crossfade.
         if (monitorTriggeredSkip) {
             monitorTriggeredSkip = false;
-            logDebug(() -> "PlayNext: monitor-triggered, allowing native auih.y()V (stopVideo intercepted by onBeforeStopVideo)");
+            logDebug(() -> "PlayNext: monitor-triggered, allowing the native call (its stopVideo(5) starts the crossfade)");
             return false;
         }
 
@@ -964,7 +968,7 @@ public class CrossfadePatch {
                 preStartOutgoingFadeOut(outgoing);
             }
         }
-        logDebug(() -> "9.x: onBeforeLoadVideo atzq=@" + System.identityHashCode(newAtzqInstance)
+        logDebug(() -> "onBeforeLoadVideo medialibPlayer=@" + System.identityHashCode(newAtzqInstance)
                 + " descriptor=@" + System.identityHashCode(descriptor)
                 + " crossfadeInProgress=" + crossfadeInProgress
                 + " autoAdvActive=" + autoAdvanceCrossfadeActive

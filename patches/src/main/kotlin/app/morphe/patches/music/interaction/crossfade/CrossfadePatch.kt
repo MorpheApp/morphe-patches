@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/1065
+ * https://github.com/MorpheApp/morphe-patches/pull/3635
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -122,8 +123,7 @@ private val crossfadeBannerResourcePatch = resourcePatch {
 @Suppress("unused")
 val crossfadePatch = bytecodePatch(
     name = "Crossfade",
-    description = "Adds a true dual-player crossfade between consecutive tracks. " +
-            "Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
+    description = "Adds a true dual-player crossfade between consecutive tracks.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -285,8 +285,7 @@ val crossfadePatch = bytecodePatch(
                         "onLoopStateChanged(Ljava/lang/Object;)V"
             )
         }.onFailure {
-            log.warning("Loop-state adapter not found, REPEAT_SINGLE " +
-                    "crossfade disabled (#repeat): ${it.message}")
+            log.warning("Loop-state adapter not found, repeat-one is not crossfaded: ${it.message}")
         }
 
         // The end of song sleep timer waits for the track to end naturally, which a crossfade
@@ -535,8 +534,8 @@ val crossfadePatch = bytecodePatch(
             it.name == sharedCallbackFieldRef.name && it.type == sharedCallbackFieldRef.type
         }.also { f ->
             if (f == null) log.warning(
-                "9.x: Lctr (cwh) field not found on coordinator, crh.j fix skipped"
-            ) else log.fine { "9.x: coordinator cwh field (auih.c) = $f" }
+                "AnalyticsCollector field not found on coordinator, MediaSession listener fix skipped"
+            ) else log.fine { "Coordinator AnalyticsCollector field = $f" }
         }
 
         val lctrType = forwardingPlayerField9x?.type
@@ -544,8 +543,8 @@ val crossfadePatch = bytecodePatch(
             exoPlayerCwhField9x = exoPlayerImplClass.fields.firstOrNull { f ->
                 !AccessFlags.STATIC.isSet(f.accessFlags) && f.type == lctrType
             }.also { f ->
-                if (f == null) log.warning("9.x: crh.j (Lctr on ExoPlayer) not found, crh.j fix skipped")
-                else log.fine { "9.x: ExoPlayer cwh field (crh.j) = $f" }
+                if (f == null) log.warning("AnalyticsCollector field not found on ExoPlayer, MediaSession listener fix skipped")
+                else log.fine { "ExoPlayer AnalyticsCollector field = $f" }
             }
 
             // cwh.addListener, recognized by forwarding to ListenerSet.add instead of by name.
@@ -561,7 +560,7 @@ val crossfadePatch = bytecodePatch(
                 } == true
             }
             cwhListenerType = cwhAddListenerMethod?.parameterTypes?.first()?.toString()
-            log.fine { "9.x: cwh listener interface (Lctu) = $cwhListenerType via $cwhAddListenerMethod" }
+            log.fine { "AnalyticsCollector listener type = $cwhListenerType via $cwhAddListenerMethod" }
 
             if (cwhListenerType != null) {
                 coordinatorCwhListenerField9x = coordinatorClass.fields.firstOrNull { f ->
@@ -570,15 +569,15 @@ val crossfadePatch = bytecodePatch(
                             && f.type != lctrType
                             && try { cwhListenerType in classDefBy(f.type).interfaces } catch (_: Exception) { false }
                 }.also { f ->
-                    if (f == null) log.warning("9.x: coordinator cwh listener field (auih.k) not found, crh.j fix skipped")
-                    else log.fine { "9.x: coordinator cwh listener field (auih.k) = $f" }
+                    if (f == null) log.warning("Coordinator MediaSession listener field not found, MediaSession listener fix skipped")
+                    else log.fine { "Coordinator MediaSession listener field = $f" }
                 }
             }
 
             // cwh is removed from the outgoing player's ListenerSet before release, so the
             // release's isPlayingChanged(false) does not reach the MediaSession.
             eventDispatchField9x = listenerWrapperField
-            log.fine { "9.x: ExoPlayer event dispatch field (crh.h:Lcgd) = $eventDispatchField9x" }
+            log.fine { "ExoPlayer ListenerSet field = $eventDispatchField9x" }
         }
 
         val setVolumeName = Fingerprint(
@@ -909,8 +908,8 @@ val crossfadePatch = bytecodePatch(
         val directListenerSetField = exoImplFields.firstOrNull {
             it.type == copyOnWriteSetType
         }.also { f ->
-            if (f == null) log.warning("9.x: direct listener set field (Lcrh.N) not found on ${exoPlayerImplClass.type}")
-            else log.fine { "9.x: direct listener set field = $f" }
+            if (f == null) log.warning("Audio offload listener set not found on ${exoPlayerImplClass.type}")
+            else log.fine { "Audio offload listener set = $f" }
         }
 
         // Typed by the method that adds to that set. Matching cau.add's Object parameter
@@ -1003,7 +1002,7 @@ val crossfadePatch = bytecodePatch(
                             nop
                         """
                     )
-                    log.fine { "9.x: injected suppressCwhU into cwh.${cwhReleaseRef.name}()V (lctrType=$cwhLctrType)" }
+                    log.fine { "Injected suppressCwhU into $cwhLctrType->${cwhReleaseRef.name}()V" }
                 } else {
                     // 9.28+ inlines cwh.U() into release, so the posted Runnable is swapped instead.
                     val cwhHandlerIndex = releaseInstructions.indexOfFirst { insn ->
