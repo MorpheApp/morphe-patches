@@ -24,9 +24,18 @@ public final class ForceSystemFontPatch {
 
     private static final int DEFAULT_WEIGHT = 400;
 
+    /**
+     * Brand fonts bundled in the app. Roboto and the Material font families are already the
+     * system font family, and monospace, icon and emoji fonts must keep their look.
+     */
     private static boolean isYouTubeSansName(String name) {
         name = name.toLowerCase(Locale.ENGLISH);
-        return name.startsWith("youtube_sans") || name.startsWith("ytsans");
+        return name.startsWith("youtube_sans")
+                || name.startsWith("ytsans")
+                || name.startsWith("youtubemarquee")
+                || name.startsWith("google_sans")
+                || name.startsWith("gm3_ref_typeface")
+                || name.startsWith("yt_ref_typography");
     }
 
     private static int weightFromName(String name) {
@@ -42,6 +51,10 @@ public final class ForceSystemFontPatch {
     }
 
     private static Typeface create(int weight, int style, boolean italic) {
+        // A negative style means the caller did not ask for one, which must not read as bold italic.
+        if (style < 0) {
+            style = Typeface.NORMAL;
+        }
         if ((style & Typeface.BOLD) != 0) {
             weight = Math.max(weight, 700);
         }
