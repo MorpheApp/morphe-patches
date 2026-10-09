@@ -147,6 +147,7 @@ public final class HistoryUi extends LinearLayout {
     }
 
     public static View wrap(View view, String browseId) {
+        if (!SeriesTrackerPatch.ENABLED) return view;
 
         PlaylistMenu.bind(view, browseId);
         if (!"FEhistory".equals(browseId) || activity(view.getContext()) == null) return view;
@@ -390,6 +391,7 @@ public final class HistoryUi extends LinearLayout {
     }
 
     public static boolean onBack() {
+        if (!SeriesTrackerPatch.ENABLED) return false;
         if (!pageExposed()) return false;
         HistoryUi ui = current.get();
         if (ui == null || !ui.isShown() || !ui.series) return false;

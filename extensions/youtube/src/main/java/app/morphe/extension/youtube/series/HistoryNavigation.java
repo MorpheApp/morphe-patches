@@ -37,11 +37,12 @@ public final class HistoryNavigation {
     }
 
     public static synchronized void capture(Object nativeItem, MessageLite proto) {
+        if (!SeriesTrackerPatch.ENABLED || !Settings.SERIES_TRACKER_HISTORY_TAB.get()) return;
         try {
             byte[] data = proto.toByteArray();
             String kind = NavigationProto.kind(data);
             kinds.put(nativeItem, kind);
-            if (kind.equals("home") && Settings.SERIES_TRACKER_HISTORY_TAB.get()) {
+            if (kind.equals("home")) {
                 String title = UiText.get(Utils.getContext(), "morphe_series_tracker_ui_history");
                 // A language/theme change can recreate the Activity without restarting the process.
                 if (history == null || !title.equals(historyTitle) || !Arrays.equals(home, data)) {
@@ -57,7 +58,7 @@ public final class HistoryNavigation {
     }
 
     public static boolean keepButton(Enum<?> button) {
-        if (!Settings.SERIES_TRACKER_HISTORY_TAB.get()) return false;
+        if (!SeriesTrackerPatch.ENABLED || !Settings.SERIES_TRACKER_HISTORY_TAB.get()) return false;
         String name = button.name();
         return name.equals("HOME")
                 || name.equals("SUBSCRIPTIONS")
@@ -66,7 +67,9 @@ public final class HistoryNavigation {
     }
 
     public static synchronized List<Object> navigation(List<Object> items) {
-        if (!Settings.SERIES_TRACKER_HISTORY_TAB.get() || history == null) return items;
+        if (!SeriesTrackerPatch.ENABLED
+                || !Settings.SERIES_TRACKER_HISTORY_TAB.get()
+                || history == null) return items;
         Map<String, Object> present = new HashMap<>();
         for (Object item : items) {
             String kind = kinds.get(item);

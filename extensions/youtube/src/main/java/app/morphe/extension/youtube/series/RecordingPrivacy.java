@@ -43,6 +43,7 @@ public final class RecordingPrivacy {
 
     /** Called from both native current-account provider implementations. */
     public static void attach(Source provider) {
+        if (!SeriesTrackerPatch.ENABLED) return;
         source = provider;
     }
 

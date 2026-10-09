@@ -9,19 +9,31 @@ package app.morphe.extension.youtube.series;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.VideoState;
 
 /** Direct targets of Morphe's playback hooks. */
 public final class SeriesTrackerPatch {
+    /**
+     * Changing the setting requires an app restart. When disabled, every hook returns
+     * immediately and the app behaves as if the patch was not included.
+     */
+    static final boolean ENABLED = Settings.SERIES_TRACKER.get();
+
     static {
-        app.morphe.extension.youtube.shared.VideoState.getOnChange()
-                .addObserver(
-                        state -> {
-                            videoStateChanged(state);
-                            return kotlin.Unit.INSTANCE;
-                        });
+        if (ENABLED) {
+            VideoState.getOnChange().addObserver(state -> {
+                videoStateChanged(state);
+                return kotlin.Unit.INSTANCE;
+            });
+        }
     }
 
+    /**
+     * Injection point.
+     */
     public static void newVideoStarted(VideoInformation.PlaybackController controller) {
+        if (!ENABLED) return;
         try {
             PlaybackBridge.attach(
                     controller instanceof PlaybackBridge.Source
@@ -29,24 +41,28 @@ public final class SeriesTrackerPatch {
                             : null);
             TrackerRuntime.initialize();
             TrackerRuntime.newVideo();
-        } catch (Exception e) {
-            Logger.printException(() -> "Series controller initialization", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "newVideoStarted failure", ex);
         }
     }
 
+    /**
+     * Injection point.
+     */
     public static void videoTimeChanged(long time) {
+        if (!ENABLED) return;
         try {
             TrackerRuntime.sample();
-        } catch (Exception e) {
-            Logger.printException(() -> "Series progress sampling", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "videoTimeChanged failure", ex);
         }
     }
 
-    public static void videoStateChanged(Enum<?> state) {
+    private static void videoStateChanged(Enum<?> state) {
         try {
             TrackerRuntime.state(state.name());
-        } catch (Exception e) {
-            Logger.printException(() -> "Series playback state", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "videoStateChanged failure", ex);
         }
     }
 
