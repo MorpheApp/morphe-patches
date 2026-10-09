@@ -19,7 +19,9 @@ import java.util.Set;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.TimeUnit;
 
-/** One recent native History page per automatic check; bounded catch-up on Continue. */
+/**
+ * One recent native History page per automatic check; bounded catch-up on Continue.
+ */
 final class NativeProgressSync {
     static final class Result {
         final Map<String, NativeHistoryPage.Row> rows = new LinkedHashMap<>();
@@ -43,10 +45,9 @@ final class NativeProgressSync {
             for (Episode ep : series.episodes)
                 if (ep.available) {
                     scope.add(ep.videoId);
-                    long duration =
-                            ep.durationMs > 0
-                                    ? ep.durationMs
-                                    : series.progress(ep.videoId).durationMs;
+                    long duration = ep.durationMs > 0
+                            ? ep.durationMs
+                            : series.progress(ep.videoId).durationMs;
                     result.durations.merge(ep.videoId, duration, Math::max);
                 }
             if (!series.bookmarkId.isEmpty()) {
@@ -67,9 +68,8 @@ final class NativeProgressSync {
                 result.complete = false;
                 break;
             }
-            NativeHistoryTransport.Page response =
-                    NativeHistoryTransport.page(
-                            continuation, generation, force ? 10_000 : 30_000, remaining);
+            NativeHistoryTransport.Page response = NativeHistoryTransport.page(
+                    continuation, generation, force ? 10_000 : 30_000, remaining);
             for (NativeHistoryPage.Row row : response.value.rows.values()) {
                 if (!scope.contains(row.id) || result.rows.containsKey(row.id)) continue;
                 result.rows.put(row.id, row);
@@ -97,5 +97,6 @@ final class NativeProgressSync {
         return result;
     }
 
-    private NativeProgressSync() {}
+    private NativeProgressSync() {
+    }
 }

@@ -12,7 +12,7 @@ import java.util.function.IntSupplier;
 
 /** Pure observation reducer. It never reads changing host getters or writes storage. */
 public final class PlaybackReducer {
-    public static final long CHECKPOINT_MS = 5000;
+    private static final long CHECKPOINT_MS = 5000;
 
     public static final class Snapshot {
         public final String videoId;
@@ -119,19 +119,16 @@ public final class PlaybackReducer {
             if (now - candidateAt < 500 || !advancing) return;
             valid = true;
         }
-        boolean finite =
-                !growingDuration
-                        && duration > 0
-                        && duration <= 7L * 24 * 3600000
-                        && now - stableDurationAt >= 3000;
-        boolean reachedEnd =
-                finite
-                        && CompletionPolicy.completed(
-                                positionMs,
-                                duration,
-                                completionPercent.getAsInt(),
-                                completionSeconds.getAsInt());
-        boolean newlyCompleted = !completed && reachedEnd;
+        final boolean finite = !growingDuration
+                && duration > 0
+                && duration <= 7L * 24 * 3600000
+                && now - stableDurationAt >= 3000;
+        final boolean reachedEnd = finite && CompletionPolicy.completed(
+                positionMs,
+                duration,
+                completionPercent.getAsInt(),
+                completionSeconds.getAsInt());
+        final boolean newlyCompleted = !completed && reachedEnd;
         if (position != positionMs || newlyCompleted || sampleAt == 0) {
             position = positionMs;
             completed |= reachedEnd;
@@ -151,15 +148,14 @@ public final class PlaybackReducer {
 
     public void flush(long now) {
         if (valid && dirty) {
-            output.accept(
-                    new Snapshot(
-                            id,
-                            generation,
-                            sequence,
-                            position,
-                            growingDuration ? 0 : duration,
-                            completed,
-                            playedAt));
+            output.accept(new Snapshot(
+                    id,
+                    generation,
+                    sequence,
+                    position,
+                    growingDuration ? 0 : duration,
+                    completed,
+                    playedAt));
             queuedAt = now;
         }
     }

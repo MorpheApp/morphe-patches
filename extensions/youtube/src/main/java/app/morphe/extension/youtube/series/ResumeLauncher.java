@@ -15,12 +15,11 @@ import app.morphe.extension.youtube.patches.LoadVideoPatch;
 
 public final class ResumeLauncher {
     public static Intent intent(Context context, LaunchRequest request) {
-        Uri.Builder uri =
-                new Uri.Builder()
-                        .scheme("https")
-                        .authority("www.youtube.com")
-                        .path("watch")
-                        .appendQueryParameter("v", request.videoId);
+        Uri.Builder uri = new Uri.Builder()
+                .scheme("https")
+                .authority("www.youtube.com")
+                .path("watch")
+                .appendQueryParameter("v", request.videoId);
         if (!request.playlistId.isEmpty()) uri.appendQueryParameter("list", request.playlistId);
         // Include zero explicitly: omitting it can restore YouTube's own remembered position.
         uri.appendQueryParameter("t", request.seconds() + "s");

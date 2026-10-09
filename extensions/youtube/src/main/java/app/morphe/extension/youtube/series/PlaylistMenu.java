@@ -15,6 +15,8 @@ import android.view.ViewTreeObserver;
 
 import java.lang.ref.WeakReference;
 
+import app.morphe.extension.shared.ResourceUtils;
+
 /** Adds Follow series to the native playlist toolbar. */
 public final class PlaylistMenu {
     public interface ToolbarSource {
@@ -29,45 +31,41 @@ public final class PlaylistMenu {
     static void bind(View view, String browseId) {
         String id = browseId != null && browseId.startsWith("VL") ? browseId.substring(2) : "";
         if (!PlaylistInput.suggestible(id)) return;
-        view.addOnAttachStateChangeListener(
-                new View.OnAttachStateChangeListener() {
-                    ViewTreeObserver observer;
-                    final ViewTreeObserver.OnGlobalLayoutListener layout =
-                            () -> {
-                                if (page.get() == view) update();
-                            };
+        view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            ViewTreeObserver observer;
+            final ViewTreeObserver.OnGlobalLayoutListener layout =
+                    () -> {
+                        if (page.get() == view) update();
+                    };
 
-                    public void onViewAttachedToWindow(View v) {
-                        page = new WeakReference<>(v);
-                        playlist = id;
-                        update();
-                        observer = v.getViewTreeObserver();
-                        observer.addOnGlobalLayoutListener(layout);
-                    }
+            public void onViewAttachedToWindow(View v) {
+                page = new WeakReference<>(v);
+                playlist = id;
+                update();
+                observer = v.getViewTreeObserver();
+                observer.addOnGlobalLayoutListener(layout);
+            }
 
-                    public void onViewDetachedFromWindow(View v) {
-                        if (observer != null && observer.isAlive())
-                            observer.removeOnGlobalLayoutListener(layout);
-                        observer = null;
-                        if (page.get() == v) {
-                            page.clear();
-                            playlist = "";
-                            update();
-                        }
-                    }
-                });
+            public void onViewDetachedFromWindow(View v) {
+                if (observer != null && observer.isAlive())
+                    observer.removeOnGlobalLayoutListener(layout);
+                observer = null;
+                if (page.get() == v) {
+                    page.clear();
+                    playlist = "";
+                    update();
+                }
+            }
+        });
     }
 
     private static Menu toolbarMenu(View view) {
-        int id =
-                view.getResources()
-                        .getIdentifier("toolbar", "id", view.getContext().getPackageName());
-        for (View node = view;
-                node != null;
-                node = node.getParent() instanceof View ? (View) node.getParent() : null) {
+        final int id = ResourceUtils.getIdIdentifier("toolbar");
+        for (View node = view; node != null; node = node.getParent() instanceof View ? (View) node.getParent() : null) {
             View toolbar = node.findViewById(id);
-            if (toolbar instanceof ToolbarSource)
+            if (toolbar instanceof ToolbarSource) {
                 return ((ToolbarSource) toolbar).patch_seriesTrackerMenu();
+            }
         }
         return null;
     }
@@ -91,7 +89,7 @@ public final class PlaylistMenu {
         Activity activity = HistoryUi.activity(view.getContext());
         if (activity == null) return;
         String id = playlist;
-        MenuItem item = target.add(0, ITEM_ID, 0, UiText.get(activity, "morphe_series_tracker_follow"));
+        MenuItem item = target.add(0, ITEM_ID, 0, UiText.get("morphe_series_tracker_follow"));
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         item.setOnMenuItemClickListener(
                 clicked -> {
@@ -99,25 +97,24 @@ public final class PlaylistMenu {
                             activity, id, selected -> HistoryUi.openSeries(activity, selected));
                     return true;
                 });
-        TrackerService.get(activity)
-                .library(
-                        rows -> {
-                            if (page.get() != view
-                                    || menu.get() != target
-                                    || target.findItem(ITEM_ID) != item) return;
-                            for (TrackerModels.Series s : rows)
-                                if (s.id.equals(id)) {
-                                    item.setTitle(
-                                            UiText.get(activity, "morphe_series_tracker_view_series"));
-                                    item.setOnMenuItemClickListener(
-                                            clicked -> {
-                                                HistoryUi.openSeries(activity, id);
-                                                return true;
-                                            });
-                                    break;
-                                }
-                        },
-                        message -> {});
+        TrackerService.get(activity).library(rows -> {
+                    if (page.get() != view
+                            || menu.get() != target
+                            || target.findItem(ITEM_ID) != item) return;
+                    for (TrackerModels.Series s : rows)
+                        if (s.id.equals(id)) {
+                            item.setTitle(
+                                    UiText.get("morphe_series_tracker_view_series"));
+                            item.setOnMenuItemClickListener(
+                                    clicked -> {
+                                        HistoryUi.openSeries(activity, id);
+                                        return true;
+                                    });
+                            break;
+                        }
+                },
+                message -> {
+                });
     }
 
     private PlaylistMenu() {}

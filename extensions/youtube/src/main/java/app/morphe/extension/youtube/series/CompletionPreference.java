@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.series;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.preference.Preference;
 import android.text.InputType;
@@ -15,7 +16,7 @@ import android.widget.EditText;
 
 import app.morphe.extension.youtube.settings.Settings;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"unused", "deprecation"})
 public final class CompletionPreference extends Preference {
     public CompletionPreference(Context context, AttributeSet attributes) {
         super(context, attributes);
@@ -25,9 +26,7 @@ public final class CompletionPreference extends Preference {
 
     private void summary() {
         setSummary(
-                UiText.format(
-                        getContext(),
-                        "morphe_series_tracker_completion_summary",
+                UiText.format("morphe_series_tracker_completion_summary",
                         CompletionPolicy.percent(Settings.SERIES_TRACKER_COMPLETION_PERCENT.get()),
                         CompletionPolicy.seconds(
                                 Settings.SERIES_TRACKER_COMPLETION_SECONDS.get())));
@@ -62,13 +61,15 @@ public final class CompletionPreference extends Preference {
         sheet.show();
     }
 
+    // The text is parsed back as a plain integer, so it must not use localized digits.
+    @SuppressLint("SetTextI18n")
     private EditText number(NativeSheet sheet, String label, int value) {
         sheet.message(label);
         EditText input = new EditText(getContext());
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
         input.setSingleLine(true);
-        input.setTextColor(HistoryUi.foreground(getContext()));
-        input.setContentDescription(UiText.get(getContext(), label));
+        input.setTextColor(HistoryUi.foreground());
+        input.setContentDescription(UiText.get(label));
         input.setText(Integer.toString(value));
         sheet.body.addView(input);
         return input;
@@ -80,7 +81,7 @@ public final class CompletionPreference extends Preference {
             int n = Integer.parseInt(text);
             if (n >= min && n <= max) return n;
         }
-        input.setError(UiText.format(getContext(), "morphe_series_tracker_completion_range", min, max));
+        input.setError(UiText.format("morphe_series_tracker_completion_range", min, max));
         return null;
     }
 }

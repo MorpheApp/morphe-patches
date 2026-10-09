@@ -25,15 +25,14 @@ public final class SeriesPlayerButton {
     public static void initializeLegacyButton(View view) {
         if (!SeriesTrackerPatch.ENABLED) return;
         try {
-            legacy =
-                    new LegacyPlayerControlButton(
-                            view,
-                            "morphe_series_tracker_button",
-                            null,
-                            "morphe_series_tracker_button",
-                            Settings.SERIES_TRACKER_BUTTON,
-                            v -> PlayerSeriesAction.open(v.getContext()),
-                            null);
+            legacy = new LegacyPlayerControlButton(
+                    view,
+                    "morphe_series_tracker_button",
+                    null,
+                    "morphe_series_tracker_button",
+                    Settings.SERIES_TRACKER_BUTTON,
+                    v -> PlayerSeriesAction.open(v.getContext()),
+                    null);
         } catch (Exception e) {
             Logger.printException(() -> "Series top button", e);
         }

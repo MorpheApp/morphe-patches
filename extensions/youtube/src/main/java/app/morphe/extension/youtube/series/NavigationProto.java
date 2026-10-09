@@ -152,11 +152,10 @@ final class NavigationProto {
         item = replace(item, 4, field(75730170, text(2, title)));
         ByteArrayOutputStream value = new ByteArrayOutputStream();
         writeVarint(value, icon);
-        item =
-                replace(
-                        item,
-                        5,
-                        encode(Collections.singletonList(new Field(1, 0, value.toByteArray()))));
+        item = replace(
+                item,
+                5,
+                encode(Collections.singletonList(new Field(1, 0, value.toByteArray()))));
         // Tracking and target IDs belong to the original Home tab and must not be copied.
         List<Field> fields = read(item);
         fields.removeIf(f -> f.number == 10);

@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.series;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,8 +42,9 @@ final class NativeHistoryPage {
 
     static List<byte[]> children(byte[] message, int number) {
         List<byte[]> result = new ArrayList<>();
-        for (NavigationProto.Field field : NavigationProto.read(message, 4 * 1024 * 1024))
+        for (NavigationProto.Field field : NavigationProto.read(message, 4 * 1024 * 1024)) {
             if (field.number == number && field.wire == 2) result.add(field.value);
+        }
         return result;
     }
 
@@ -50,7 +53,9 @@ final class NativeHistoryPage {
         for (int number : path) {
             List<byte[]> next = new ArrayList<>();
             for (byte[] node : nodes) next.addAll(children(node, number));
-            if (next.size() > 1000) throw new IllegalArgumentException("Too many history rows");
+            if (next.size() > 1000) {
+                throw new IllegalArgumentException("Too many history rows");
+            }
             nodes = next;
         }
         return nodes;
@@ -78,11 +83,11 @@ final class NativeHistoryPage {
                 for (byte[] endpoint : path(row, 8, 48687757)) {
                     if (!id.equals(NavigationProto.string(endpoint, 1))) continue;
                     for (NavigationProto.Field field : NavigationProto.read(endpoint)) {
-                        if (field.number != 7 || field.wire != 5 || field.value.length != 4)
+                        if (field.number != 7 || field.wire != 5 || field.value.length != 4) {
                             continue;
-                        float seconds =
-                                java.nio.ByteBuffer.wrap(field.value)
-                                        .order(java.nio.ByteOrder.LITTLE_ENDIAN)
+                        }
+                        float seconds = ByteBuffer.wrap(field.value)
+                                        .order(ByteOrder.LITTLE_ENDIAN)
                                         .getFloat();
                         // Match the host converter: truncate seconds before converting to ms.
                         if (Float.isFinite(seconds) && seconds >= 0 && seconds <= 604800)

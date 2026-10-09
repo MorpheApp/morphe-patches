@@ -81,6 +81,7 @@ final class UiIcon extends Drawable {
     @Override
     public void setColorFilter(ColorFilter filter) {}
 
+    @SuppressWarnings({"deprecation", "RedundantSuppression"})
     @Override
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;

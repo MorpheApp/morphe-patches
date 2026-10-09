@@ -54,8 +54,7 @@ public final class RecordingPrivacy {
             return;
         }
         if (preferences == null) {
-            preferences =
-                    context.getSharedPreferences("morphe_series_tracker_privacy", Context.MODE_PRIVATE);
+            preferences = context.getSharedPreferences("morphe_series_tracker_privacy", Context.MODE_PRIVATE);
             consentAccount = preferences.getString("consent_account", null);
             syncAccount = preferences.getString("sync_account", null);
             salt = preferences.getString("salt", UUID.randomUUID().toString());
@@ -68,15 +67,14 @@ public final class RecordingPrivacy {
             if (identity != null && identity.key != null) {
                 incognito = identity.incognito;
                 // Only the digest of the opaque identity is persisted for consent matching.
-                byte[] digest =
-                        MessageDigest.getInstance("SHA-256")
-                                .digest(
-                                        (salt + "\0" + identity.key)
-                                                .getBytes(StandardCharsets.UTF_8));
+                byte[] digest = MessageDigest.getInstance("SHA-256").digest(
+                        (salt + "\0" + identity.key)
+                                .getBytes(StandardCharsets.UTF_8));
                 StringBuilder hex = new StringBuilder(64);
-                for (byte b : digest)
+                for (byte b : digest) {
                     hex.append(Character.forDigit((b & 255) >>> 4, 16))
                             .append(Character.forDigit(b & 15, 16));
+                }
                 account = hex.toString();
             }
         } catch (Exception ex) {
@@ -130,7 +128,7 @@ public final class RecordingPrivacy {
     }
 
     static synchronized void disable() {
-        ((Setting<Boolean>) Settings.SERIES_TRACKER_RECORD_PROGRESS).save(false);
+        Settings.SERIES_TRACKER_RECORD_PROGRESS.save(false);
         policy.invalidate();
         refresh();
     }

@@ -17,10 +17,25 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.RippleDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -32,15 +47,19 @@ import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 
 /** Activity-scoped native UI. Catalog pages contain at most 100 views. */
 final class LibraryDialog {
@@ -74,15 +93,15 @@ final class LibraryDialog {
     private long undoUntil;
     private final Application.ActivityLifecycleCallbacks lifecycle =
             new Application.ActivityLifecycleCallbacks() {
-                public void onActivityDestroyed(Activity a) {
+                public void onActivityDestroyed(@NonNull Activity a) {
                     if (a == activity) close();
                 }
 
-                public void onActivityCreated(Activity a, Bundle b) {}
+                public void onActivityCreated(@NonNull Activity a, Bundle b) {}
 
-                public void onActivityStarted(Activity a) {}
+                public void onActivityStarted(@NonNull Activity a) {}
 
-                public void onActivityResumed(Activity a) {
+                public void onActivityResumed(@NonNull Activity a) {
                     if (a == activity) {
                         resumed = true;
                         if (alive() && HistoryUi.libraryExposed())
@@ -92,7 +111,7 @@ final class LibraryDialog {
                     }
                 }
 
-                public void onActivityPaused(Activity a) {
+                public void onActivityPaused(@NonNull Activity a) {
                     if (a == activity) {
                         resumed = false;
                         root.removeCallbacks(syncTick);
@@ -100,9 +119,9 @@ final class LibraryDialog {
                     }
                 }
 
-                public void onActivityStopped(Activity a) {}
+                public void onActivityStopped(@NonNull Activity a) {}
 
-                public void onActivitySaveInstanceState(Activity a, Bundle b) {}
+                public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
             };
 
     static LibraryDialog embedded(Activity activity) {
@@ -140,9 +159,8 @@ final class LibraryDialog {
 
     void hideSearchKeyboard() {
         search.clearFocus();
-        android.view.inputmethod.InputMethodManager keyboard =
-                (android.view.inputmethod.InputMethodManager)
-                        activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager keyboard = (InputMethodManager)
+                activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (keyboard != null) keyboard.hideSoftInputFromWindow(search.getWindowToken(), 0);
     }
 
@@ -188,32 +206,32 @@ final class LibraryDialog {
         TrackerRuntime.flush();
         root = new LinearLayout(activity);
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setBackgroundColor(HistoryUi.surface(activity));
+        root.setBackgroundColor(HistoryUi.surface());
         LinearLayout toolbar = new LinearLayout(activity);
-        toolbar.setGravity(android.view.Gravity.CENTER_VERTICAL);
+        toolbar.setGravity(Gravity.CENTER_VERTICAL);
         toolbar.setPadding(
-                HistoryUi.dp(activity, 4),
-                HistoryUi.dp(activity, 4),
-                HistoryUi.dp(activity, 4),
-                HistoryUi.dp(activity, 4));
+                HistoryUi.dp(4),
+                HistoryUi.dp(4),
+                HistoryUi.dp(4),
+                HistoryUi.dp(4));
         backAction = new ImageButton(activity);
         backAction.setImageDrawable(
                 new UiIcon(
-                        UiIcon.BACK, HistoryUi.foreground(activity), HistoryUi.dp(activity, 24)));
-        backAction.setBackground(HistoryUi.ripple(activity, false));
+                        UiIcon.BACK, HistoryUi.foreground(), HistoryUi.dp(24)));
+        backAction.setBackground(HistoryUi.ripple(false));
         backAction.setOnClickListener(v -> HistoryUi.onBack());
         toolbar.addView(
                 backAction,
                 new LinearLayout.LayoutParams(
-                        HistoryUi.dp(activity, 48), HistoryUi.dp(activity, 48)));
+                        HistoryUi.dp(48), HistoryUi.dp(48)));
         heading = new TextView(activity);
         heading.setTextSize(20);
         heading.setMaxLines(1);
-        heading.setEllipsize(android.text.TextUtils.TruncateAt.END);
-        heading.setTextColor(HistoryUi.foreground(activity));
-        heading.setTypeface(android.graphics.Typeface.create("sans-serif-medium", 0));
-        toolbar.addView(heading, new LinearLayout.LayoutParams(0, HistoryUi.dp(activity, 48), 1));
-        heading.setGravity(android.view.Gravity.CENTER_VERTICAL);
+        heading.setEllipsize(TextUtils.TruncateAt.END);
+        heading.setTextColor(HistoryUi.foreground());
+        heading.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+        toolbar.addView(heading, new LinearLayout.LayoutParams(0, HistoryUi.dp(48), 1));
+        heading.setGravity(Gravity.CENTER_VERTICAL);
         addAction = action("morphe_series_tracker_add_icon", this::follow, false);
         toolbar.addView(addAction);
         moreAction = action("morphe_series_tracker_ui_more_options", this::menu, false);
@@ -222,46 +240,42 @@ final class LibraryDialog {
         // Match native History's full-width, 48dp search surface and leading icon.
         root.setFocusableInTouchMode(true);
         searchBar = new LinearLayout(activity);
-        searchBar.setGravity(android.view.Gravity.CENTER_VERTICAL);
-        searchBar.setBackgroundColor(HistoryUi.dark(activity) ? 0xff191919 : 0xfff2f2f2);
+        searchBar.setGravity(Gravity.CENTER_VERTICAL);
+        searchBar.setBackgroundColor(HistoryUi.dark() ? 0xff191919 : 0xfff2f2f2);
         ImageView searchIcon = new ImageView(activity);
         searchIcon.setImageDrawable(
                 new UiIcon(
-                        UiIcon.SEARCH, HistoryUi.secondary(activity), HistoryUi.dp(activity, 24)));
+                        UiIcon.SEARCH, HistoryUi.secondary(), HistoryUi.dp(24)));
         searchIcon.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
-        searchIcon.setPadding(HistoryUi.dp(activity, 16), 0, HistoryUi.dp(activity, 12), 0);
+        searchIcon.setPadding(HistoryUi.dp(16), 0, HistoryUi.dp(12), 0);
         searchBar.addView(
                 searchIcon,
                 new LinearLayout.LayoutParams(
-                        HistoryUi.dp(activity, 52), HistoryUi.dp(activity, 48)));
+                        HistoryUi.dp(52), HistoryUi.dp(48)));
         search = new EditText(activity);
         search.setSingleLine(true);
         search.setTextSize(16);
-        search.setTextColor(HistoryUi.foreground(activity));
-        search.setHintTextColor(HistoryUi.secondary(activity));
-        search.setHint(UiText.get(activity, "morphe_series_tracker_search_series"));
-        search.setContentDescription(UiText.get(activity, "morphe_series_tracker_search_series"));
+        search.setTextColor(HistoryUi.foreground());
+        search.setHintTextColor(HistoryUi.secondary());
+        search.setHint(UiText.get("morphe_series_tracker_search_series"));
+        search.setContentDescription(UiText.get("morphe_series_tracker_search_series"));
         search.setBackground(null);
-        search.setPadding(HistoryUi.dp(activity, 4), 0, 0, 0);
+        search.setPadding(HistoryUi.dp(4), 0, 0, 0);
         search.setInputType(InputType.TYPE_CLASS_TEXT);
-        search.setImeOptions(
-                android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
-                        | android.view.inputmethod.EditorInfo.IME_FLAG_NO_EXTRACT_UI);
-        search.setMinHeight(HistoryUi.dp(activity, 48));
+        search.setImeOptions(EditorInfo.IME_ACTION_SEARCH
+                | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
+        search.setMinHeight(HistoryUi.dp(48));
         searchBar.addView(search, new LinearLayout.LayoutParams(0, -2, 1));
         ImageButton clear = new ImageButton(activity);
-        clear.setImageDrawable(
-                new UiIcon(
-                        UiIcon.CLOSE, HistoryUi.foreground(activity), HistoryUi.dp(activity, 24)));
-        clear.setBackground(HistoryUi.ripple(activity, false));
-        clear.setContentDescription(UiText.get(activity, "morphe_series_tracker_clear_search"));
+        clear.setImageDrawable(new UiIcon(UiIcon.CLOSE, HistoryUi.foreground(), HistoryUi.dp(24)));
+        clear.setBackground(HistoryUi.ripple(false));
+        clear.setContentDescription(UiText.get("morphe_series_tracker_clear_search"));
         clear.setVisibility(View.GONE);
         clear.setOnClickListener(v -> search.setText(""));
         searchBar.addView(
                 clear,
-                new LinearLayout.LayoutParams(
-                        HistoryUi.dp(activity, 48), HistoryUi.dp(activity, 48)));
-        searchBar.setPadding(0, 0, HistoryUi.dp(activity, 16), 0);
+                new LinearLayout.LayoutParams(HistoryUi.dp(48), HistoryUi.dp(48)));
+        searchBar.setPadding(0, 0, HistoryUi.dp(16), 0);
         root.addView(searchBar, new LinearLayout.LayoutParams(-1, -2));
         content = column();
         scroll = new SeriesScrollView(activity);
@@ -269,71 +283,65 @@ final class LibraryDialog {
         scroll.addView(content);
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
         scroll.setClipToPadding(false);
-        search.setOnEditorActionListener(
-                (v, action, event) -> {
-                    if (action != android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH)
-                        return false;
-                    hideSearchKeyboard();
-                    return true;
-                });
-        search.addTextChangedListener(
-                new android.text.TextWatcher() {
-                    public void beforeTextChanged(
-                            CharSequence s, int start, int count, int after) {}
+        search.setOnEditorActionListener((v, action, event) -> {
+            if (action != EditorInfo.IME_ACTION_SEARCH) {
+                return false;
+            }
+            hideSearchKeyboard();
+            return true;
+        });
+        search.addTextChangedListener(new TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        clear.setVisibility(s.length() == 0 ? View.GONE : View.VISIBLE);
-                        if (selected.isEmpty() && alive()) {
-                            scroll.scrollTo(0, 0);
-                            renderLibrary(libraryRows);
-                        }
-                    }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //noinspection SizeReplaceableByIsEmpty
+                clear.setVisibility(s.length() == 0 ? View.GONE : View.VISIBLE);
+                if (selected.isEmpty() && alive()) {
+                    scroll.scrollTo(0, 0);
+                    renderLibrary(libraryRows);
+                }
+            }
 
-                    public void afterTextChanged(android.text.Editable s) {}
-                });
-        android.view.ViewTreeObserver.OnGlobalLayoutListener layout =
-                () -> {
-                    int id =
-                            activity.getResources()
-                                    .getIdentifier(
-                                            "bottom_bar_container",
-                                            "id",
-                                            activity.getPackageName());
-                    View bar = activity.findViewById(id);
-                    int padding = HistoryUi.dp(activity, 24);
-                    if (bar != null && bar.isShown()) {
-                        int[] top = new int[2], bottom = new int[2];
-                        bar.getLocationOnScreen(top);
-                        scroll.getLocationOnScreen(bottom);
-                        padding += Math.max(0, bottom[1] + scroll.getHeight() - top[1]);
-                    }
-                    if (scroll.getPaddingBottom() != padding) scroll.setPadding(0, 0, 0, padding);
-                };
-        root.addOnAttachStateChangeListener(
-                new View.OnAttachStateChangeListener() {
-                    private android.view.ViewTreeObserver observer;
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        ViewTreeObserver.OnGlobalLayoutListener layout = () -> {
+            final int id = ResourceUtils.getIdIdentifier("bottom_bar_container");
+            View bar = activity.findViewById(id);
+            int padding = HistoryUi.dp(24);
+            if (bar != null && bar.isShown()) {
+                int[] top = new int[2], bottom = new int[2];
+                bar.getLocationOnScreen(top);
+                scroll.getLocationOnScreen(bottom);
+                padding += Math.max(0, bottom[1] + scroll.getHeight() - top[1]);
+            }
+            if (scroll.getPaddingBottom() != padding) scroll.setPadding(0, 0, 0, padding);
+        };
+        root.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            private ViewTreeObserver observer;
 
-                    public void onViewAttachedToWindow(View v) {
-                        observer = root.getViewTreeObserver();
-                        observer.addOnGlobalLayoutListener(layout);
-                        activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);
-                        service.listen(listener);
-                        reload();
-                        root.post(syncTick);
-                    }
+            public void onViewAttachedToWindow(View v) {
+                observer = root.getViewTreeObserver();
+                observer.addOnGlobalLayoutListener(layout);
+                activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);
+                service.listen(listener);
+                reload();
+                root.post(syncTick);
+            }
 
-                    public void onViewDetachedFromWindow(View v) {
-                        cancelContinue();
-                        if (observer != null && observer.isAlive())
-                            observer.removeOnGlobalLayoutListener(layout);
-                        observer = null;
-                        activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);
-                        service.unlisten(listener);
-                        root.removeCallbacks(syncTick);
-                        for (Dialog child : new ArrayList<>(children)) child.dismiss();
-                    }
-                });
-        label(content, UiText.get(activity, "morphe_series_tracker_ui_loading_saved_series"), 16);
+            public void onViewDetachedFromWindow(View v) {
+                cancelContinue();
+                if (observer != null && observer.isAlive())
+                    observer.removeOnGlobalLayoutListener(layout);
+                observer = null;
+                activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);
+                service.unlisten(listener);
+                root.removeCallbacks(syncTick);
+                for (Dialog child : new ArrayList<>(children)) child.dismiss();
+            }
+        });
+        label(content, UiText.get("morphe_series_tracker_ui_loading_saved_series"), 16);
     }
 
     private void close() {
@@ -355,13 +363,12 @@ final class LibraryDialog {
     private void reload() {
         if (!alive()) return;
         int version = ++request;
-        if (selected.isEmpty())
-            service.library(
-                    rows -> {
+        if (selected.isEmpty()) {
+            service.library(rows -> {
                         if (alive() && version == request) renderLibrary(rows);
                     },
                     this::readError);
-        else
+        } else {
             service.series(
                     selected,
                     s -> {
@@ -375,20 +382,19 @@ final class LibraryDialog {
                         error(message);
                         reload();
                     });
+        }
     }
 
     private void startRender(String title) {
         renderGeneration = episodeReveal.beginRender();
-        int y = restoreScroll >= 0 ? restoreScroll : scroll.getScrollY();
+        final int y = restoreScroll >= 0 ? restoreScroll : scroll.getScrollY();
         restoreScroll = -1;
         content.removeAllViews();
         heading.setText(title);
         searchBar.setVisibility(selected.isEmpty() ? View.VISIBLE : View.GONE);
         heading.setTextSize(20);
         backAction.setContentDescription(
-                UiText.get(
-                        activity,
-                        selected.isEmpty()
+                UiText.get(selected.isEmpty()
                                 ? "morphe_series_tracker_ui_watch_history"
                                 : "morphe_series_tracker_ui_all_series"));
         addAction.setVisibility(selected.isEmpty() ? View.VISIBLE : View.GONE);
@@ -401,23 +407,19 @@ final class LibraryDialog {
                     "morphe_series_tracker_ui_retry_saving",
                     () -> service.retryStorage(this::error));
         }
-        if (service.canUndo() && android.os.SystemClock.uptimeMillis() < undoUntil) {
+        if (service.canUndo() && SystemClock.uptimeMillis() < undoUntil) {
             LinearLayout notice = new LinearLayout(activity);
-            notice.setGravity(android.view.Gravity.CENTER_VERTICAL);
+            notice.setGravity(Gravity.CENTER_VERTICAL);
             notice.addView(
                     label(null, "morphe_series_tracker_marked", 14),
                     new LinearLayout.LayoutParams(0, -2, 1));
-            notice.addView(
-                    action(
-                            "morphe_series_tracker_undo",
-                            () ->
-                                    service.undo(
-                                            () -> {
-                                                undoUntil = 0;
-                                                reload();
-                                            },
-                                            this::error),
-                            false));
+            notice.addView(action("morphe_series_tracker_undo", () ->
+                            service.undo(() -> {
+                                        undoUntil = 0;
+                                        reload();
+                                    },
+                                    this::error),
+                    false));
             content.addView(notice);
         }
     }
@@ -427,21 +429,20 @@ final class LibraryDialog {
         if (!status.isEmpty()) label(content, status, 14);
         if (RecordingPrivacy.allowsRecording()) return;
         LinearLayout notice = new LinearLayout(activity);
-        notice.setGravity(android.view.Gravity.CENTER_VERTICAL);
+        notice.setGravity(Gravity.CENTER_VERTICAL);
         notice.addView(
                 label(null, "morphe_series_tracker_tracking_paused", 14),
                 new LinearLayout.LayoutParams(0, -2, 1));
-        notice.addView(
-                action(
-                        "morphe_series_tracker_enable_short",
-                        () -> RecordingPreference.requestEnable(activity, this::reload),
-                        false));
+        notice.addView(action(
+                "morphe_series_tracker_enable_short",
+                () -> RecordingPreference.requestEnable(activity, this::reload),
+                false));
         content.addView(notice);
     }
 
     private void renderLibrary(List<Series> rows) {
         libraryRows = rows;
-        startRender(UiText.get(activity, "morphe_series_tracker_ui_series"));
+        startRender(UiText.get("morphe_series_tracker_ui_series"));
         if (rows.isEmpty()) {
             addAction.setVisibility(View.GONE);
             moreAction.setVisibility(View.GONE);
@@ -454,9 +455,8 @@ final class LibraryDialog {
         String query = searchKey(query());
         for (Series row : rows) if (searchKey(row.name).contains(query)) ordered.add(row);
         if (ordered.isEmpty()) label(content, "morphe_series_tracker_no_search_results", 14);
-        ordered.sort(
-                java.util.Comparator.comparingInt(
-                        s -> ResumePlanner.plan(s).kind == ResumePlanner.Kind.CAUGHT_UP ? 1 : 0));
+        ordered.sort(Comparator.comparingInt(
+                s -> ResumePlanner.plan(s).kind == ResumePlanner.Kind.CAUGHT_UP ? 1 : 0));
         for (Series s : ordered) {
             ResumePlanner.Plan plan = ResumePlanner.plan(s);
             Episode cover = null;
@@ -466,46 +466,38 @@ final class LibraryDialog {
                     break;
                 }
             if (cover == null && !s.episodes.isEmpty()) cover = s.episodes.get(0);
-            String subtitle =
-                    plan.playable()
-                            ? (plan.ordinal > 0
-                                    ? UiText.format(
-                                            activity,
-                                            "morphe_series_tracker_episode_position",
-                                            s.episodeNumber(plan.ordinal),
-                                            ResumePlanner.time(plan.positionMs))
-                                    : UiText.format(
-                                            activity,
-                                            "morphe_series_tracker_saved_position",
-                                            ResumePlanner.time(plan.positionMs)))
-                            : UiText.get(activity, plan.messageKey);
+            String subtitle = plan.playable()
+                    ? (plan.ordinal > 0
+                       ? UiText.format("morphe_series_tracker_episode_position",
+                    s.episodeNumber(plan.ordinal),
+                    ResumePlanner.time(plan.positionMs))
+                       : UiText.format("morphe_series_tracker_saved_position",
+                    ResumePlanner.time(plan.positionMs)))
+                    : UiText.get(plan.messageKey);
             if (s.newEpisodeCount > 0 && plan.playable() && plan.positionMs == 0)
-                subtitle =
-                        s.newEpisodeCount == 1
-                                ? UiText.get(activity, "morphe_series_tracker_new_episode")
-                                : UiText.format(
-                                        activity, "morphe_series_tracker_new_episodes", s.newEpisodeCount);
+                subtitle = s.newEpisodeCount == 1
+                        ? UiText.get("morphe_series_tracker_new_episode")
+                        : UiText.format("morphe_series_tracker_new_episodes", s.newEpisodeCount);
             if (cover != null && cover.available) {
                 String releaseAge = EpisodeInfo.releaseAge(activity, cover.videoInfo, s.fetchedAt);
                 if (!releaseAge.isEmpty()) subtitle += " · " + releaseAge;
             }
-            LinearLayout row =
-                    mediaRow(
-                            cover == null ? s.bookmarkId : cover.videoId,
-                            s.name,
-                            "",
-                            subtitle,
-                            () -> openSeries(s.id),
-                            () -> seriesMenu(s),
-                            plan.positionMs,
-                            cover == null ? 0 : cover.durationMs,
-                            true);
+            LinearLayout row = mediaRow(
+                    cover == null ? s.bookmarkId : cover.videoId,
+                    s.name,
+                    "",
+                    subtitle,
+                    () -> openSeries(s.id),
+                    () -> seriesMenu(s),
+                    plan.positionMs,
+                    cover == null ? 0 : cover.durationMs,
+                    true);
             if (plan.playable()) resumeThumbnail((FrameLayout) row.getChildAt(0), s);
             else if (plan.kind == ResumePlanner.Kind.CAUGHT_UP) {
                 FrameLayout thumbnail = (FrameLayout) row.getChildAt(0);
                 thumbnailBadge(thumbnail, UiIcon.CHECK);
                 thumbnail.setContentDescription(
-                        s.name + ", " + UiText.get(activity, plan.messageKey));
+                        s.name + ", " + UiText.get(plan.messageKey));
             }
             content.addView(row);
         }
@@ -520,34 +512,33 @@ final class LibraryDialog {
 
     private void thumbnailBadge(FrameLayout thumbnail, int icon) {
         ImageView play = new ImageView(activity);
-        play.setImageDrawable(
-                new UiIcon(icon, android.graphics.Color.WHITE, HistoryUi.dp(activity, 24)));
+        play.setImageDrawable(new UiIcon(icon, Color.WHITE, HistoryUi.dp(24)));
         play.setPadding(
-                HistoryUi.dp(activity, 6),
-                HistoryUi.dp(activity, 6),
-                HistoryUi.dp(activity, 6),
-                HistoryUi.dp(activity, 6));
-        play.setBackground(HistoryUi.rounded(activity, 0xaa000000, 18));
+                HistoryUi.dp(6),
+                HistoryUi.dp(6),
+                HistoryUi.dp(6),
+                HistoryUi.dp(6));
+        play.setBackground(HistoryUi.rounded(0xaa000000, 18));
         play.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         thumbnail.addView(
                 play,
                 new FrameLayout.LayoutParams(
-                        HistoryUi.dp(activity, 36),
-                        HistoryUi.dp(activity, 36),
-                        android.view.Gravity.CENTER));
+                        HistoryUi.dp(36),
+                        HistoryUi.dp(36),
+                        Gravity.CENTER));
     }
 
     private void resumeThumbnail(FrameLayout thumbnail, Series series) {
         thumbnailBadge(thumbnail, UiIcon.PLAY);
-        thumbnail.setForeground(HistoryUi.ripple(activity, false));
+        thumbnail.setForeground(HistoryUi.ripple(false));
         thumbnail.setFocusable(true);
-        thumbnail.setContentDescription(
-                UiText.format(activity, "morphe_series_tracker_continue_series", series.name));
+        thumbnail.setContentDescription(UiText.format(
+                "morphe_series_tracker_continue_series", series.name));
         thumbnail.setAccessibilityDelegate(
                 new View.AccessibilityDelegate() {
                     @Override
                     public void onInitializeAccessibilityNodeInfo(
-                            View host, android.view.accessibility.AccessibilityNodeInfo info) {
+                            @NonNull View host, @NonNull AccessibilityNodeInfo info) {
                         super.onInitializeAccessibilityNodeInfo(host, info);
                         info.setClassName(Button.class.getName());
                     }
@@ -556,29 +547,27 @@ final class LibraryDialog {
     }
 
     private void renderSeries(Series s) {
-        startRender(UiText.get(activity, "morphe_series_tracker_ui_all_series"));
+        startRender(UiText.get("morphe_series_tracker_ui_all_series"));
         LinearLayout header = new LinearLayout(activity);
-        header.setGravity(android.view.Gravity.TOP);
+        header.setGravity(Gravity.TOP);
         TextView title = label(null, s.name, 20);
-        title.setTypeface(android.graphics.Typeface.create("sans-serif-medium", 0));
+        title.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
         header.addView(title, new LinearLayout.LayoutParams(0, -2, 1));
         header.addView(
                 action("morphe_series_tracker_ui_more_options", () -> seriesMenu(s), false),
                 new LinearLayout.LayoutParams(
-                        HistoryUi.dp(activity, 48), HistoryUi.dp(activity, 48)));
+                        HistoryUi.dp(48), HistoryUi.dp(48)));
         content.addView(header);
         ResumePlanner.Plan plan = ResumePlanner.plan(s);
         label(
                 content,
                 plan.kind == ResumePlanner.Kind.CAUGHT_UP
-                        ? UiText.get(activity, plan.messageKey)
+                        ? UiText.get(plan.messageKey)
                         : s.complete()
-                                ? UiText.format(
-                                        activity,
-                                        "morphe_series_tracker_watched_count",
+                                ? UiText.format("morphe_series_tracker_watched_count",
                                         s.watchedCount(),
                                         s.playableCount())
-                                : UiText.get(activity, "morphe_series_tracker_ui_playlist_bookmark"),
+                                : UiText.get("morphe_series_tracker_ui_playlist_bookmark"),
                 14);
         if (plan.playable()) {
             content.addView(
@@ -592,18 +581,18 @@ final class LibraryDialog {
                     "morphe_series_tracker_ui_open_saved_video",
                     () -> play(s, s.bookmarkId, -1, s.progress(s.bookmarkId).positionMs, false));
         if (s.status.equals("loading"))
-            label(content, UiText.get(activity, "morphe_series_tracker_ui_refreshing_episodes"), 12);
+            label(content, UiText.get("morphe_series_tracker_ui_refreshing_episodes"), 12);
         if (!s.error.isEmpty()) label(content, s.error, 12);
         if (!s.complete()) {
             label(content, "morphe_series_tracker_catalog_unavailable", 14);
             return;
         }
         Switch hide = new Switch(activity);
-        hide.setText(UiText.get(activity, "morphe_series_tracker_hide_watched"));
+        hide.setText(UiText.get("morphe_series_tracker_hide_watched"));
         hide.setTextSize(14);
-        hide.setTextColor(HistoryUi.foreground(activity));
-        hide.setMinHeight(HistoryUi.dp(activity, 48));
-        hide.setSwitchPadding(HistoryUi.dp(activity, 16));
+        hide.setTextColor(HistoryUi.foreground());
+        hide.setMinHeight(HistoryUi.dp(48));
+        hide.setSwitchPadding(HistoryUi.dp(16));
         hide.setChecked(s.hideWatched);
         hide.setOnCheckedChangeListener(
                 (button, checked) -> {
@@ -636,9 +625,7 @@ final class LibraryDialog {
         if (available.size() > 100)
             label(
                     content,
-                    UiText.format(
-                            activity,
-                            "morphe_series_tracker_episode_range",
+                    UiText.format("morphe_series_tracker_episode_range",
                             from + 1,
                             to,
                             available.size()),
@@ -659,7 +646,7 @@ final class LibraryDialog {
             LinearLayout row =
                     mediaRow(
                             e.videoId,
-                            UiText.episodeTitle(activity, e),
+                            UiText.episodeTitle(e),
                             EpisodeInfo.format(activity, e.videoInfo, s.fetchedAt),
                             "",
                             () ->
@@ -677,9 +664,9 @@ final class LibraryDialog {
                 FrameLayout thumbnail = (FrameLayout) row.getChildAt(0);
                 thumbnailBadge(thumbnail, UiIcon.CHECK);
                 thumbnail.setContentDescription(
-                        UiText.episodeTitle(activity, e)
+                        UiText.episodeTitle(e)
                                 + ", "
-                                + UiText.get(activity, "morphe_series_tracker_watched"));
+                                + UiText.get("morphe_series_tracker_watched"));
             }
             content.addView(row);
             if (i == currentIndex) episodeReveal.revealAfterLayout(scroll, row, renderGeneration);
@@ -704,9 +691,7 @@ final class LibraryDialog {
             labels.add(
                     p.watched()
                             ? "morphe_series_tracker_ui_play_again_from_0_00"
-                            : UiText.format(
-                                    activity,
-                                    "morphe_series_tracker_resume_at",
+                            : UiText.format("morphe_series_tracker_resume_at",
                                     ResumePlanner.time(p.positionMs)));
             actions.add(
                     () ->
@@ -753,7 +738,7 @@ final class LibraryDialog {
                             s,
                             e.ordinal,
                             () -> {
-                                undoUntil = android.os.SystemClock.uptimeMillis() + 8000;
+                                undoUntil = SystemClock.uptimeMillis() + 8000;
                                 reload();
                                 root.postDelayed(
                                         () -> {
@@ -764,7 +749,7 @@ final class LibraryDialog {
                             this::error);
                 });
         choice(
-                s.episodeNumber(e.ordinal) + ". " + UiText.episodeTitle(activity, e),
+                s.episodeNumber(e.ordinal) + ". " + UiText.episodeTitle(e),
                 labels,
                 actions);
     }
@@ -872,8 +857,7 @@ final class LibraryDialog {
                         () -> openPlaylist(s),
                         () ->
                                 confirm(
-                                        UiText.format(
-                                                activity, "morphe_series_tracker_remove_confirm", s.name),
+                                        UiText.format("morphe_series_tracker_remove_confirm", s.name),
                                         "morphe_series_tracker_remove_detail",
                                         "morphe_series_tracker_ui_remove",
                                         () ->
@@ -895,25 +879,24 @@ final class LibraryDialog {
         for (int i = 0; i < labels.length; i++) {
             final boolean reverse = i == 1;
             RadioButton option = new RadioButton(activity);
-            option.setText(UiText.get(activity, labels[i]));
-            option.setTextColor(HistoryUi.foreground(activity));
+            option.setText(UiText.get(labels[i]));
+            option.setTextColor(HistoryUi.foreground());
             option.setTextSize(16);
-            option.setMinHeight(HistoryUi.dp(activity, 48));
+            option.setMinHeight(HistoryUi.dp(48));
             option.setChecked(s.reverseOrder == reverse);
-            option.setOnClickListener(
-                    v ->
-                            service.seriesOptions(
-                                    s,
-                                    reverse,
-                                    s.hideWatched,
-                                    () -> {
-                                        sheet.dialog.dismiss();
-                                        episodeReveal.cancel();
-                                        page = 0;
-                                        scroll.scrollTo(0, 0);
-                                        reload();
-                                    },
-                                    this::error));
+            option.setOnClickListener(v ->
+                    service.seriesOptions(
+                            s,
+                            reverse,
+                            s.hideWatched,
+                            () -> {
+                                sheet.dialog.dismiss();
+                                episodeReveal.cancel();
+                                page = 0;
+                                scroll.scrollTo(0, 0);
+                                reload();
+                            },
+                            this::error));
             options.addView(option, new RadioGroup.LayoutParams(-1, -2));
         }
         sheet.body.addView(options);
@@ -929,12 +912,11 @@ final class LibraryDialog {
         sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
         sheet.action(
                 "morphe_series_tracker_ui_save",
-                () ->
-                        service.rename(
-                                s.id,
-                                name.getText().toString(),
-                                sheet.dialog::dismiss,
-                                this::error),
+                () -> service.rename(
+                        s.id,
+                        name.getText().toString(),
+                        sheet.dialog::dismiss,
+                        this::error),
                 true);
         children.add(sheet.dialog);
         sheet.onDismiss(() -> children.remove(sheet.dialog));
@@ -944,36 +926,30 @@ final class LibraryDialog {
     private void menu() {
         choice(
                 "morphe_series_tracker_ui_library_options",
-                Arrays.asList("morphe_series_tracker_ui_clear_all_local_progress"),
-                Arrays.asList(
-                        () ->
-                                confirm(
-                                        "morphe_series_tracker_clear_progress_title",
-                                        "morphe_series_tracker_clear_progress_message",
-                                        "morphe_series_tracker_ui_clear_history",
-                                        () ->
-                                                service.clearHistory(
-                                                        () ->
-                                                                toast(
-                                                                        "morphe_series_tracker_ui_local_progress_cleared"),
-                                                        this::error))));
+                List.of("morphe_series_tracker_ui_clear_all_local_progress"),
+                List.of(() -> confirm(
+                        "morphe_series_tracker_clear_progress_title",
+                        "morphe_series_tracker_clear_progress_message",
+                        "morphe_series_tracker_ui_clear_history",
+                        () -> service.clearHistory(
+                                () -> toast("morphe_series_tracker_ui_local_progress_cleared"),
+                                this::error))));
     }
 
     private void choice(String title, List<String> labels, List<Runnable> actions) {
         if (!alive()) return;
         NativeSheet sheet = new NativeSheet(activity, title);
         sheet.footer.setVisibility(View.GONE);
-        for (int i = 0; i < labels.size(); i++) {
+        for (int i = 0, labelsSize = labels.size(); i < labelsSize; i++) {
             final int index = i;
-            TextView item =
-                    action(
+            TextView item = action(
                             labels.get(i),
                             () -> {
                                 sheet.dialog.dismiss();
                                 actions.get(index).run();
                             },
                             false);
-            item.setGravity(android.view.Gravity.START | android.view.Gravity.CENTER_VERTICAL);
+            item.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             sheet.body.addView(item, new LinearLayout.LayoutParams(-1, -2));
         }
         children.add(sheet.dialog);
@@ -1016,104 +992,95 @@ final class LibraryDialog {
     }
 
     private void toast(String message) {
-        Toast.makeText(
-                        activity.getApplicationContext(),
-                        UiText.get(activity, message),
-                        Toast.LENGTH_LONG)
-                .show();
+        Utils.showToastLong(UiText.get(message));
     }
 
     private LinearLayout column() {
         LinearLayout box = new LinearLayout(activity);
         box.setOrientation(LinearLayout.VERTICAL);
-        int p = (int) (16 * activity.getResources().getDisplayMetrics().density);
+        final int p = (int) (16 * activity.getResources().getDisplayMetrics().density);
         box.setPadding(p, p / 2, p, p / 2);
         return box;
     }
 
     private TextView label(LinearLayout parent, String text, int size) {
         TextView v = new TextView(activity);
-        v.setText(UiText.get(activity, text));
+        v.setText(UiText.get(text));
         v.setTextSize(size);
-        v.setTextColor(size <= 14 ? HistoryUi.secondary(activity) : HistoryUi.foreground(activity));
-        v.setPadding(0, HistoryUi.dp(activity, 4), 0, HistoryUi.dp(activity, 4));
+        v.setTextColor(size <= 14 ? HistoryUi.secondary() : HistoryUi.foreground());
+        v.setPadding(0, HistoryUi.dp(4), 0, HistoryUi.dp(4));
         if (parent != null) parent.addView(v);
         return v;
     }
 
     private Button button(LinearLayout parent, String text, Runnable action) {
         Button b = new Button(activity);
-        b.setText(UiText.get(activity, text));
+        b.setText(UiText.get(text));
         b.setTextSize(14);
-        b.setTextColor(HistoryUi.foreground(activity));
+        b.setTextColor(HistoryUi.foreground());
         b.setAllCaps(false);
-        b.setBackground(HistoryUi.ripple(activity, true));
-        b.setMinHeight(HistoryUi.dp(activity, 48));
+        b.setBackground(HistoryUi.ripple(true));
+        b.setMinHeight(HistoryUi.dp(48));
         b.setOnClickListener(v -> action.run());
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(-1, -2);
-        lp.topMargin = HistoryUi.dp(activity, 8);
-        lp.bottomMargin = HistoryUi.dp(activity, 8);
+        lp.topMargin = HistoryUi.dp(8);
+        lp.bottomMargin = HistoryUi.dp(8);
         parent.addView(b, lp);
         return b;
     }
 
     private Button continueButton(Runnable work) {
         Button button = new Button(activity);
-        int ink = HistoryUi.surface(activity);
-        button.setText(UiText.get(activity, "morphe_series_tracker_continue"));
+        int ink = HistoryUi.surface();
+        button.setText(UiText.get("morphe_series_tracker_continue"));
         button.setTextSize(14);
         button.setTextColor(ink);
         button.setAllCaps(false);
-        button.setTypeface(android.graphics.Typeface.create("sans-serif-medium", 0));
+        button.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
         button.setIncludeFontPadding(false);
-        button.setGravity(android.view.Gravity.CENTER);
+        button.setGravity(Gravity.CENTER);
         button.setMinWidth(0);
         button.setMinimumWidth(0);
-        button.setMinHeight(HistoryUi.dp(activity, 48));
-        button.setMinimumHeight(HistoryUi.dp(activity, 48));
+        button.setMinHeight(HistoryUi.dp(48));
+        button.setMinimumHeight(HistoryUi.dp(48));
         button.setStateListAnimator(null);
         button.setBackgroundTintList(null);
-        android.graphics.drawable.Drawable pill =
-                new android.graphics.drawable.RippleDrawable(
-                        android.content.res.ColorStateList.valueOf(
-                                HistoryUi.dark(activity) ? 0x22000000 : 0x33ffffff),
-                        HistoryUi.rounded(activity, HistoryUi.foreground(activity), 24),
-                        HistoryUi.rounded(activity, android.graphics.Color.WHITE, 24));
+        Drawable pill = new RippleDrawable(
+                ColorStateList.valueOf(HistoryUi.dark() ? 0x22000000 : 0x33ffffff),
+                HistoryUi.rounded(HistoryUi.foreground(), 24),
+                HistoryUi.rounded(Color.WHITE, 24));
         // A 36 dp visible pill keeps the full 48 dp touch target.
         button.setBackground(
-                new android.graphics.drawable.InsetDrawable(
-                        pill, 0, HistoryUi.dp(activity, 6), 0, HistoryUi.dp(activity, 6)));
+                new InsetDrawable(pill, 0, HistoryUi.dp(6), 0, HistoryUi.dp(6)));
         button.setPadding(
-                HistoryUi.dp(activity, 12),
-                HistoryUi.dp(activity, 8),
-                HistoryUi.dp(activity, 16),
-                HistoryUi.dp(activity, 8));
+                HistoryUi.dp(12),
+                HistoryUi.dp(8),
+                HistoryUi.dp(16),
+                HistoryUi.dp(8));
         button.setCompoundDrawablesRelative(
-                new UiIcon(UiIcon.PLAY, ink, HistoryUi.dp(activity, 20)), null, null, null);
-        button.setCompoundDrawablePadding(HistoryUi.dp(activity, 6));
+                new UiIcon(UiIcon.PLAY, ink, HistoryUi.dp(20)), null, null, null);
+        button.setCompoundDrawablePadding(HistoryUi.dp(6));
         button.setOnClickListener(v -> work.run());
         return button;
     }
 
     private TextView action(String title, Runnable work, boolean pill) {
         TextView v = NativeSheet.button(activity, title, work, pill);
-        v.setMinWidth(HistoryUi.dp(activity, 48));
+        v.setMinWidth(HistoryUi.dp(48));
         if (title.equals("morphe_series_tracker_ui_more_options")
                 || title.equals("morphe_series_tracker_add_icon")) {
             v.setText("");
-            v.setPadding(HistoryUi.dp(activity, 12), 0, HistoryUi.dp(activity, 12), 0);
+            v.setPadding(HistoryUi.dp(12), 0, HistoryUi.dp(12), 0);
             v.setCompoundDrawables(
                     new UiIcon(
                             title.equals("morphe_series_tracker_add_icon") ? UiIcon.ADD : UiIcon.MORE,
-                            HistoryUi.foreground(activity),
-                            HistoryUi.dp(activity, 24)),
+                            HistoryUi.foreground(),
+                            HistoryUi.dp(24)),
                     null,
                     null,
                     null);
             v.setContentDescription(
-                    UiText.get(
-                            activity,
-                            title.equals("morphe_series_tracker_add_icon")
+                    UiText.get(title.equals("morphe_series_tracker_add_icon")
                                     ? "morphe_series_tracker_follow"
                                     : title));
         }
@@ -1131,25 +1098,16 @@ final class LibraryDialog {
             long duration,
             boolean compact) {
         LinearLayout row = new LinearLayout(activity);
-        row.setGravity(android.view.Gravity.TOP);
-        row.setPadding(0, HistoryUi.dp(activity, compact ? 8 : 12), 0, HistoryUi.dp(activity, 8));
+        row.setGravity(Gravity.TOP);
+        row.setPadding(0, HistoryUi.dp(compact ? 8 : 12), 0, HistoryUi.dp(8));
         FrameLayout thumbnail = new FrameLayout(activity);
-        int width =
-                compact
-                        ? 120
-                        : Math.min(
-                                128,
-                                (int)
-                                        (activity.getResources().getDisplayMetrics().widthPixels
-                                                / activity.getResources()
-                                                        .getDisplayMetrics()
-                                                        .density
-                                                * .34));
-        row.addView(
-                thumbnail,
-                new LinearLayout.LayoutParams(
-                        HistoryUi.dp(activity, width), HistoryUi.dp(activity, width * 9f / 16)));
-        thumbnail.setBackground(HistoryUi.rounded(activity, HistoryUi.control(activity), 8));
+        final int width = compact
+                ? 120
+                : Math.min(128, (int) (activity.getResources().getDisplayMetrics().widthPixels
+                                       / activity.getResources().getDisplayMetrics().density * .34));
+        row.addView(thumbnail,
+                new LinearLayout.LayoutParams(HistoryUi.dp(width), HistoryUi.dp(width * 9f / 16)));
+        thumbnail.setBackground(HistoryUi.rounded(HistoryUi.control(), 8));
         thumbnail.setClipToOutline(true);
         ImageView picture = new ImageView(activity);
         picture.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -1158,12 +1116,11 @@ final class LibraryDialog {
         if (duration > 0 && !compact) {
             TextView badge = label(null, ResumePlanner.time(duration), 12);
             badge.setTextColor(0xfff1f1f1);
-            badge.setBackground(HistoryUi.rounded(activity, 0xbb000000, 4));
-            badge.setPadding(HistoryUi.dp(activity, 4), 0, HistoryUi.dp(activity, 4), 0);
-            FrameLayout.LayoutParams bp =
-                    new FrameLayout.LayoutParams(
-                            -2, -2, android.view.Gravity.BOTTOM | android.view.Gravity.END);
-            bp.setMargins(0, 0, HistoryUi.dp(activity, 4), HistoryUi.dp(activity, 6));
+            badge.setBackground(HistoryUi.rounded(0xbb000000, 4));
+            badge.setPadding(HistoryUi.dp(4), 0, HistoryUi.dp(4), 0);
+            FrameLayout.LayoutParams bp = new FrameLayout.LayoutParams(
+                    -2, -2, Gravity.BOTTOM | Gravity.END);
+            bp.setMargins(0, 0, HistoryUi.dp(4), HistoryUi.dp(6));
             thumbnail.addView(badge, bp);
         }
         if (position > 0 && duration > 0) {
@@ -1172,36 +1129,35 @@ final class LibraryDialog {
             thumbnail.addView(
                     bar,
                     new FrameLayout.LayoutParams(
-                            HistoryUi.dp(
-                                    activity, width * Math.min(1f, (float) position / duration)),
-                            HistoryUi.dp(activity, 3),
-                            android.view.Gravity.BOTTOM));
+                            HistoryUi.dp(width * Math.min(1f, (float) position / duration)),
+                            HistoryUi.dp(3),
+                            Gravity.BOTTOM));
         }
         LinearLayout info = new LinearLayout(activity);
         info.setOrientation(LinearLayout.VERTICAL);
-        info.setPadding(HistoryUi.dp(activity, 12), 0, 0, 0);
+        info.setPadding(HistoryUi.dp(12), 0, 0, 0);
         row.addView(info, new LinearLayout.LayoutParams(0, -2, 1));
         TextView name = label(info, title, compact ? 16 : 14);
-        name.setTextColor(HistoryUi.foreground(activity));
+        name.setTextColor(HistoryUi.foreground());
         name.setPadding(0, 0, 0, 0);
         name.setMaxLines(compact ? 2 : 3);
-        name.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        name.setEllipsize(TextUtils.TruncateAt.END);
         if (!metadata.isEmpty()) {
             TextView stats = label(info, metadata, 12);
             stats.setMaxLines(2);
-            stats.setEllipsize(android.text.TextUtils.TruncateAt.END);
+            stats.setEllipsize(TextUtils.TruncateAt.END);
         }
         if (!subtitle.isEmpty()) label(info, subtitle, 12);
         TextView menu = action("morphe_series_tracker_ui_more_options", more, false);
         LinearLayout.LayoutParams mp =
                 new LinearLayout.LayoutParams(
-                        HistoryUi.dp(activity, 48), HistoryUi.dp(activity, 48));
+                        HistoryUi.dp(48), HistoryUi.dp(48));
         menu.setMinWidth(0);
-        menu.setPadding(HistoryUi.dp(activity, 12), 0, 0, 0);
+        menu.setPadding(HistoryUi.dp(12), 0, 0, 0);
         row.addView(menu, mp);
         thumbnail.setOnClickListener(v -> primary.run());
         info.setOnClickListener(v -> primary.run());
-        info.setBackground(HistoryUi.ripple(activity, false));
+        info.setBackground(HistoryUi.ripple(false));
         info.setFocusable(true);
         thumbnail.setContentDescription(title);
         return row;
@@ -1212,7 +1168,7 @@ final class LibraryDialog {
         EditText edit = new EditText(activity);
         edit.setSingleLine();
         edit.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        edit.setContentDescription(UiText.get(activity, title));
+        edit.setContentDescription(UiText.get(title));
         edit.setText(value);
         parent.addView(edit);
         return edit;

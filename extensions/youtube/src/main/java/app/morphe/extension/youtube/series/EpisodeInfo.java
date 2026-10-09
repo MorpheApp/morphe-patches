@@ -28,20 +28,21 @@ import app.morphe.extension.shared.Logger;
  */
 final class EpisodeInfo {
     private static final Pattern VIEWS = Pattern.compile("(?i)^(no|[0-9][0-9,.]*)([KMB]?) views?$");
-    private static final Pattern AGE =
-            Pattern.compile(
-                    "(?i)^(?:streamed |premiered )?([0-9]+)"
-                            + " (second|minute|hour|day|week|month|year)s? ago$");
+    private static final Pattern AGE = Pattern.compile(
+            "(?i)^(?:streamed |premiered )?([0-9]+)"
+                    + " (second|minute|hour|day|week|month|year)s? ago$");
     private static final String[] UNITS = {
         "second", "minute", "hour", "day", "week", "month", "year"
     };
     private static final long[] SECONDS = {1, 60, 3600, 86400, 604800, 2592000, 31536000};
     private static final RelativeDateTimeFormatter.RelativeUnit[] RELATIVE = {
-        RelativeDateTimeFormatter.RelativeUnit.SECONDS,
-                RelativeDateTimeFormatter.RelativeUnit.MINUTES,
-        RelativeDateTimeFormatter.RelativeUnit.HOURS, RelativeDateTimeFormatter.RelativeUnit.DAYS,
-        RelativeDateTimeFormatter.RelativeUnit.WEEKS, RelativeDateTimeFormatter.RelativeUnit.MONTHS,
-        RelativeDateTimeFormatter.RelativeUnit.YEARS
+            RelativeDateTimeFormatter.RelativeUnit.SECONDS,
+            RelativeDateTimeFormatter.RelativeUnit.MINUTES,
+            RelativeDateTimeFormatter.RelativeUnit.HOURS,
+            RelativeDateTimeFormatter.RelativeUnit.DAYS,
+            RelativeDateTimeFormatter.RelativeUnit.WEEKS,
+            RelativeDateTimeFormatter.RelativeUnit.MONTHS,
+            RelativeDateTimeFormatter.RelativeUnit.YEARS
     };
 
     static String encode(List<TrackerModels.Episode> episodes) {
@@ -88,19 +89,18 @@ final class EpisodeInfo {
         Matcher match = AGE.matcher(part.trim());
         if (!match.matches()) return "";
         try {
-            long quantity = Long.parseLong(match.group(1));
+            final long quantity = Long.parseLong(match.group(1));
             if (quantity > 1000000) return "";
             int unit = Arrays.asList(UNITS).indexOf(match.group(2).toLowerCase(Locale.ROOT));
-            long elapsed = fetchedAt > 0 && now > fetchedAt ? (now - fetchedAt) / 1000 : 0;
-            long seconds = quantity * SECONDS[unit] + elapsed;
+            final long elapsed = fetchedAt > 0 && now > fetchedAt ? (now - fetchedAt) / 1000 : 0;
+            final long seconds = quantity * SECONDS[unit] + elapsed;
             // The source age is rounded, not an exact publication timestamp.
             while (unit < SECONDS.length - 1
                     && seconds >= (unit == 3 ? 2 * SECONDS[unit + 1] : SECONDS[unit + 1])) unit++;
-            return RelativeDateTimeFormatter.getInstance(locale)
-                    .format(
-                            seconds / SECONDS[unit],
-                            RelativeDateTimeFormatter.Direction.LAST,
-                            RELATIVE[unit]);
+            return RelativeDateTimeFormatter.getInstance(locale).format(
+                    seconds / SECONDS[unit],
+                    RelativeDateTimeFormatter.Direction.LAST,
+                    RELATIVE[unit]);
         } catch (NumberFormatException ex) {
             Logger.printDebug(() -> "Unknown age: " + part, ex);
             return "";
@@ -128,21 +128,17 @@ final class EpisodeInfo {
         Locale locale = context.getResources().getConfiguration().getLocales().get(0);
         String views = "", age = "";
         for (String part : raw.split("[•·]")) {
-            double count = views(part);
+            final double count = views(part);
             if (count >= 0) {
-                CompactDecimalFormat formatter =
-                        CompactDecimalFormat.getInstance(
-                                ULocale.forLocale(locale), CompactDecimalFormat.CompactStyle.SHORT);
+                CompactDecimalFormat formatter = CompactDecimalFormat.getInstance(
+                        ULocale.forLocale(locale), CompactDecimalFormat.CompactStyle.SHORT);
                 formatter.setMaximumSignificantDigits(3);
-                views =
-                        UiText.format(
-                                context,
-                                count == 1
-                                        ? "morphe_series_tracker_view_count_one"
-                                        : count >= 1000000
-                                                ? "morphe_series_tracker_view_count_large"
-                                                : "morphe_series_tracker_view_count",
-                                formatter.format(count));
+                views = UiText.format(count == 1
+                                ? "morphe_series_tracker_view_count_one"
+                                : count >= 1000000
+                                  ? "morphe_series_tracker_view_count_large"
+                                  : "morphe_series_tracker_view_count",
+                        formatter.format(count));
             }
             String relative = age(part, locale, fetchedAt, System.currentTimeMillis());
             if (!relative.isEmpty()) age = relative;

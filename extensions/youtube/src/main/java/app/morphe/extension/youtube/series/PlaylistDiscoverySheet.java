@@ -107,8 +107,8 @@ final class PlaylistDiscoverySheet {
         for (PlaylistDiscovery.Match match : matches) {
             LinearLayout row = new LinearLayout(activity);
             row.setGravity(android.view.Gravity.CENTER_VERTICAL);
-            row.setPadding(0, HistoryUi.dp(activity, 8), 0, HistoryUi.dp(activity, 8));
-            row.setBackground(HistoryUi.ripple(activity, false));
+            row.setPadding(0, HistoryUi.dp(8), 0, HistoryUi.dp(8));
+            row.setBackground(HistoryUi.ripple(false));
             row.setFocusable(true);
             row.setContentDescription(
                     match.title + (match.owner.isEmpty() ? "" : ", " + match.owner));
@@ -118,11 +118,11 @@ final class PlaylistDiscoverySheet {
             row.addView(
                     thumbnail,
                     new LinearLayout.LayoutParams(
-                            HistoryUi.dp(activity, 96), HistoryUi.dp(activity, 54)));
+                            HistoryUi.dp(96), HistoryUi.dp(54)));
             ThumbnailLoader.load(thumbnail, match.thumbnailVideo);
             LinearLayout labels = new LinearLayout(activity);
             labels.setOrientation(LinearLayout.VERTICAL);
-            labels.setPadding(HistoryUi.dp(activity, 12), 0, 0, 0);
+            labels.setPadding(HistoryUi.dp(12), 0, 0, 0);
             labels.setImportantForAccessibility(
                     View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
             TextView title = NativeSheet.text(activity, match.title, 16);
@@ -131,7 +131,7 @@ final class PlaylistDiscoverySheet {
             labels.addView(title);
             if (!match.owner.isEmpty()) {
                 TextView owner = NativeSheet.text(activity, match.owner, 12);
-                owner.setTextColor(HistoryUi.secondary(activity));
+                owner.setTextColor(HistoryUi.secondary());
                 owner.setMaxLines(1);
                 labels.addView(owner);
             }

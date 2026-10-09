@@ -31,11 +31,13 @@ public final class PlaybackSession {
         if (session == null || !session.isActive()) return false;
         PlaybackState state = session.getController().getPlaybackState();
         if (state == null) return false;
-        int value = state.getState();
-        if (value == PlaybackState.STATE_PLAYING || value == PlaybackState.STATE_BUFFERING)
+        final int value = state.getState();
+        if (value == PlaybackState.STATE_PLAYING || value == PlaybackState.STATE_BUFFERING) {
             return true;
-        if (value != PlaybackState.STATE_PAUSED && value != PlaybackState.STATE_STOPPED)
+        }
+        if (value != PlaybackState.STATE_PAUSED && value != PlaybackState.STATE_STOPPED) {
             return false;
+        }
         session.getController().getTransportControls().play();
         return true;
     }

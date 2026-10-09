@@ -43,6 +43,7 @@ public final class PlaylistInput {
             for (String part : query.split("&")) {
                 String[] pair = part.split("=", 2);
                 if (pair.length == 2 && pair[0].equals("list")) {
+                    //noinspection CharsetObjectCanBeUsed
                     String id = URLDecoder.decode(pair[1], StandardCharsets.UTF_8.name());
                     if (id.matches(ID_PATTERN)) return id;
                 }

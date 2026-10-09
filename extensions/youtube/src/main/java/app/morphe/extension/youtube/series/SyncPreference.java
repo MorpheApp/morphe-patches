@@ -12,9 +12,11 @@ import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.Toast;
+
+import app.morphe.extension.shared.Utils;
 
 /** Explicit consent; enabling from a settings import cannot bind consent to another account. */
+@SuppressWarnings({"unused", "deprecation"})
 public final class SyncPreference extends SwitchPreference {
     public SyncPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -34,16 +36,13 @@ public final class SyncPreference extends SwitchPreference {
         super.onBindView(view);
         // SwitchPreference's widget listener bypasses onClick(). Route widget taps
         // through the same consent action as row/accessibility clicks.
-        int switchId = getContext().getResources().getIdentifier("switch_widget", "id", "android");
-        View widget = view.findViewById(switchId);
-        if (widget instanceof CompoundButton) {
-            CompoundButton toggle = (CompoundButton) widget;
+        View widget = view.findViewById(android.R.id.switch_widget);
+        if (widget instanceof CompoundButton toggle) {
             toggle.setOnCheckedChangeListener(null);
-            toggle.setOnClickListener(
-                    v -> {
-                        toggle.setChecked(RecordingPrivacy.allowsSync());
-                        onClick();
-                    });
+            toggle.setOnClickListener(v -> {
+                toggle.setChecked(RecordingPrivacy.allowsSync());
+                onClick();
+            });
         }
     }
 
@@ -59,11 +58,7 @@ public final class SyncPreference extends SwitchPreference {
 
     static void requestEnable(Context context, Runnable done) {
         if (!RecordingPrivacy.canEnable()) {
-            Toast.makeText(
-                            context,
-                            UiText.get(context, "morphe_series_tracker_identity_unavailable"),
-                            Toast.LENGTH_LONG)
-                    .show();
+            Utils.showToastLong(UiText.get("morphe_series_tracker_identity_unavailable"));
             return;
         }
         long consentGeneration = RecordingPrivacy.generation();
@@ -75,11 +70,7 @@ public final class SyncPreference extends SwitchPreference {
                 () -> {
                     boolean enabled = RecordingPrivacy.enableSync(consentGeneration);
                     if (!enabled)
-                        Toast.makeText(
-                                        context,
-                                        UiText.get(context, "morphe_series_tracker_identity_unavailable"),
-                                        Toast.LENGTH_LONG)
-                                .show();
+                        Utils.showToastLong(UiText.get("morphe_series_tracker_identity_unavailable"));
                     if (enabled) TrackerService.get(context).syncYouTube(true, () -> {});
                     done.run();
                 });

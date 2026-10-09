@@ -35,6 +35,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.settings.Settings;
 
 /** One ordered mutation stream, two bounded network workers, callbacks on the UI thread. */
 public final class TrackerService {
@@ -54,11 +55,10 @@ public final class TrackerService {
     private final ExecutorService network;
     private final TrackerRepository repository;
     private final CatalogClient catalogs;
-    private final PlaylistDiscovery discovery =
-            new PlaylistDiscovery(
-                    CatalogClient::request,
-                    android.os.SystemClock::elapsedRealtime,
-                    error -> Logger.printException(() -> "Playlist discovery", error));
+    private final PlaylistDiscovery discovery = new PlaylistDiscovery(
+            CatalogClient::request,
+            android.os.SystemClock::elapsedRealtime,
+            error -> Logger.printException(() -> "Playlist discovery", error));
     private final CopyOnWriteArrayList<Runnable> listeners = new CopyOnWriteArrayList<>();
     private final ArrayDeque<Mutation> pending = new ArrayDeque<>(); // storage thread only
     private final Map<String, Future<?>> refreshing = new HashMap<>();
@@ -109,16 +109,15 @@ public final class TrackerService {
         this.catalogs = catalogs;
         this.storage = storage;
         this.network = network;
-        submit(
-                () -> {
-                    try {
-                        initializeStorage();
-                    } catch (RuntimeException failure) {
-                        storageError = "morphe_series_tracker_error_storage_unavailable";
-                        Logger.printException(() -> storageError, failure);
-                    }
-                    changed();
-                });
+        submit(() -> {
+            try {
+                initializeStorage();
+            } catch (RuntimeException failure) {
+                storageError = "morphe_series_tracker_error_storage_unavailable";
+                Logger.printException(() -> storageError, failure);
+            }
+            changed();
+        });
     }
 
     private void initializeStorage() {
@@ -137,10 +136,9 @@ public final class TrackerService {
     }
 
     private void changed() {
-        main.post(
-                () -> {
-                    for (Runnable listener : listeners) listener.run();
-                });
+        main.post(() -> {
+            for (Runnable listener : listeners) listener.run();
+        });
     }
 
     private boolean submit(Runnable work) {
@@ -184,6 +182,7 @@ public final class TrackerService {
             changed();
             return true;
         } catch (SQLiteConstraintException failure) {
+            Logger.printDebug(() -> "Series already saved or changed", failure);
             main.post(() -> command.error.accept("morphe_series_tracker_error_conflict"));
             return true;
         } catch (SQLiteException failure) {
@@ -200,23 +199,22 @@ public final class TrackerService {
     }
 
     public void retryStorage(Consumer<String> error) {
-        if (!submit(
-                () -> {
-                    try {
-                        if (epoch == null) initializeStorage();
-                        storageError = "";
-                        while (!pending.isEmpty()) {
-                            Mutation next = pending.removeFirst();
-                            if (!execute(next)) return;
-                        }
-                        changed();
-                    } catch (RuntimeException failure) {
-                        storageError = "morphe_series_tracker_error_storage_unavailable";
-                        Logger.printException(() -> "retryStorage failure", failure);
-                        main.post(() -> error.accept(storageError));
-                        changed();
-                    }
-                })) busy(error);
+        if (!submit(() -> {
+            try {
+                if (epoch == null) initializeStorage();
+                storageError = "";
+                while (!pending.isEmpty()) {
+                    Mutation next = pending.removeFirst();
+                    if (!execute(next)) return;
+                }
+                changed();
+            } catch (RuntimeException failure) {
+                storageError = "morphe_series_tracker_error_storage_unavailable";
+                Logger.printException(() -> "retryStorage failure", failure);
+                main.post(() -> error.accept(storageError));
+                changed();
+            }
+        })) busy(error);
     }
 
     public String storageError() {
@@ -237,15 +235,14 @@ public final class TrackerService {
     }
 
     public <T> void read(Supplier<T> work, Consumer<T> done, Consumer<String> error) {
-        if (!submit(
-                () -> {
-                    try {
-                        T value = work.get();
-                        main.post(() -> done.accept(value));
-                    } catch (RuntimeException failure) {
-                        main.post(() -> error.accept(message(failure)));
-                    }
-                })) busy(error);
+        if (!submit(() -> {
+            try {
+                T value = work.get();
+                main.post(() -> done.accept(value));
+            } catch (RuntimeException failure) {
+                main.post(() -> error.accept(message(failure)));
+            }
+        })) busy(error);
     }
 
     private boolean syncingYouTube;
@@ -278,71 +275,61 @@ public final class TrackerService {
         syncWaiters.add(done);
         changed();
         long generation = RecordingPrivacy.generation();
-        if (!submit(
-                () -> {
+        if (!submit(() -> {
+            try {
+                String capturedEpoch = repository.historyEpoch();
+                long revision = repository.manualRevision();
+                List<Series> snapshot = repository.library();
+                network.execute(() -> {
                     try {
-                        String capturedEpoch = repository.historyEpoch();
-                        long revision = repository.manualRevision();
-                        List<Series> snapshot = repository.library();
-                        network.execute(
-                                () -> {
-                                    try {
-                                        NativeProgressSync.Result result =
-                                                NativeProgressSync.fetch(
-                                                        snapshot,
-                                                        generation,
-                                                        app.morphe.extension.youtube.settings
-                                                                .Settings
-                                                                .SERIES_TRACKER_COMPLETION_PERCENT
-                                                                .get(),
-                                                        app.morphe.extension.youtube.settings
-                                                                .Settings
-                                                                .SERIES_TRACKER_COMPLETION_SECONDS
-                                                                .get(),
-                                                        force);
-                                        if (!submit(
-                                                () -> {
-                                                    try {
-                                                        if (RecordingPrivacy.acceptsSync(
-                                                                generation))
-                                                            repository.mergeRemote(
-                                                                    capturedEpoch,
-                                                                    revision,
-                                                                    snapshot,
-                                                                    result,
-                                                                    System.currentTimeMillis());
-                                                        finishYouTubeSync(
-                                                                result.complete
-                                                                        ? ""
-                                                                        : "morphe_series_tracker_sync_partial");
-                                                    } catch (RuntimeException failure) {
-                                                        Logger.printException(() -> "mergeRemote failure", failure);
-                                                        finishYouTubeSync(
-                                                                "morphe_series_tracker_sync_failed");
-                                                    }
-                                                })) finishYouTubeSync("morphe_series_tracker_sync_failed");
-                                    } catch (Exception failure) {
-                                        Logger.printInfo(() -> "YouTube progress fetch failed", failure);
-                                        finishYouTubeSync("morphe_series_tracker_sync_failed");
-                                    }
-                                });
-                    } catch (RuntimeException failure) {
-                        Logger.printException(() -> "syncYouTube failure", failure);
+                        NativeProgressSync.Result result = NativeProgressSync.fetch(
+                                snapshot,
+                                generation,
+                                Settings.SERIES_TRACKER_COMPLETION_PERCENT.get(),
+                                Settings.SERIES_TRACKER_COMPLETION_SECONDS.get(),
+                                force);
+                        if (!submit(() -> {
+                            try {
+                                if (RecordingPrivacy.acceptsSync(generation))
+                                    repository.mergeRemote(
+                                            capturedEpoch,
+                                            revision,
+                                            snapshot,
+                                            result,
+                                            System.currentTimeMillis());
+                                finishYouTubeSync(result.complete
+                                        ? ""
+                                        : "morphe_series_tracker_sync_partial");
+                            } catch (RuntimeException failure) {
+                                Logger.printException(() -> "mergeRemote failure", failure);
+                                finishYouTubeSync("morphe_series_tracker_sync_failed");
+                            }
+                        })) {
+                            finishYouTubeSync("morphe_series_tracker_sync_failed");
+                        }
+                    } catch (Exception failure) {
+                        Logger.printInfo(() -> "YouTube progress fetch failed", failure);
                         finishYouTubeSync("morphe_series_tracker_sync_failed");
                     }
-                })) finishYouTubeSync("morphe_series_tracker_sync_failed");
+                });
+            } catch (RuntimeException failure) {
+                Logger.printException(() -> "syncYouTube failure", failure);
+                finishYouTubeSync("morphe_series_tracker_sync_failed");
+            }
+        })) {
+            finishYouTubeSync("morphe_series_tracker_sync_failed");
+        }
     }
 
     private void finishYouTubeSync(String status) {
-        main.post(
-                () -> {
-                    syncingYouTube = false;
-                    syncStatus = status;
-                    List<Runnable> callbacks = new ArrayList<>(syncWaiters);
-                    syncWaiters.clear();
-                    changed();
-                    for (Runnable callback : callbacks) callback.run();
-                });
+        main.post(() -> {
+            syncingYouTube = false;
+            syncStatus = status;
+            List<Runnable> callbacks = new ArrayList<>(syncWaiters);
+            syncWaiters.clear();
+            changed();
+            for (Runnable callback : callbacks) callback.run();
+        });
     }
 
     public void library(Consumer<List<Series>> done, Consumer<String> error) {
@@ -356,11 +343,10 @@ public final class TrackerService {
     void checkpoint(
             PlaybackReducer.Snapshot snapshot, long privacyGeneration, Runnable acknowledged) {
         String capturedEpoch = epoch;
-        mutation(
-                () -> {
+        mutation(() -> {
                     if (RecordingPrivacy.accepts(privacyGeneration)
                             && repository.checkpoint(
-                                    snapshot, capturedEpoch == null ? epoch : capturedEpoch)) {
+                            snapshot, capturedEpoch == null ? epoch : capturedEpoch)) {
                         if (System.currentTimeMillis() - lastPrune > 3600000) {
                             repository.prune(System.currentTimeMillis());
                             lastPrune = System.currentTimeMillis();
@@ -368,22 +354,22 @@ public final class TrackerService {
                     }
                 },
                 acknowledged,
-                error -> {});
+                error -> {
+                });
     }
 
     public Future<?> discover(
             String video, Consumer<List<PlaylistDiscovery.Match>> done, Consumer<String> error) {
         try {
-            return network.submit(
-                    () -> {
-                        try {
-                            List<PlaylistDiscovery.Match> matches = discovery.find(video);
-                            main.post(() -> done.accept(matches));
-                        } catch (Exception failure) {
-                            Logger.printInfo(() -> "Playlist discovery failed", failure);
-                            main.post(() -> error.accept("morphe_series_tracker_discovery_unavailable"));
-                        }
-                    });
+            return network.submit(() -> {
+                try {
+                    List<PlaylistDiscovery.Match> matches = discovery.find(video);
+                    main.post(() -> done.accept(matches));
+                } catch (Exception failure) {
+                    Logger.printInfo(() -> "Playlist discovery failed", failure);
+                    main.post(() -> error.accept("morphe_series_tracker_discovery_unavailable"));
+                }
+            });
         } catch (RejectedExecutionException failure) {
             Logger.printDebug(() -> "Catalog queue is full", failure);
             main.post(() -> error.accept("morphe_series_tracker_error_catalog_busy"));
@@ -391,18 +377,16 @@ public final class TrackerService {
         }
     }
 
-    public Future<?> preview(
-            String id, Consumer<CatalogClient.Catalog> done, Consumer<String> error) {
+    public Future<?> preview(String id, Consumer<CatalogClient.Catalog> done, Consumer<String> error) {
         try {
-            return network.submit(
-                    () -> {
-                        try {
-                            CatalogClient.Catalog result = catalogs.fetch(id);
-                            main.post(() -> done.accept(result));
-                        } catch (Exception failure) {
-                            main.post(() -> error.accept(message(failure)));
-                        }
-                    });
+            return network.submit(() -> {
+                try {
+                    CatalogClient.Catalog result = catalogs.fetch(id);
+                    main.post(() -> done.accept(result));
+                } catch (Exception failure) {
+                    main.post(() -> error.accept(message(failure)));
+                }
+            });
         } catch (RejectedExecutionException failure) {
             Logger.printDebug(() -> "Catalog queue is full", failure);
             main.post(() -> error.accept("morphe_series_tracker_error_catalog_busy"));
@@ -461,24 +445,23 @@ public final class TrackerService {
 
     /** Called only when the Series page becomes visible, never by a playback/UI update. */
     public void refreshStale() {
-        submit(
-                () -> {
-                    if (!storageError.isEmpty()) return;
-                    try {
-                        long now = System.currentTimeMillis();
-                        for (Series s : repository.library())
-                            if (!refreshing.containsKey(s.id)
-                                    && !quietQueue.contains(s.id)
-                                    && CatalogRefreshPolicy.due(
-                                            repository.hasEpisodeInfo(s.id) ? s.fetchedAt : 0,
-                                            repository.lastRefreshAttempt(s.id),
-                                            repository.refreshRetryAt(s.id),
-                                            now)) quietQueue.add(s.id);
-                        pumpQuiet();
-                    } catch (RuntimeException failure) {
-                        Logger.printException(() -> "Could not check catalog freshness", failure);
-                    }
-                });
+        submit(() -> {
+            if (!storageError.isEmpty()) return;
+            try {
+                final long now = System.currentTimeMillis();
+                for (Series s : repository.library())
+                    if (!refreshing.containsKey(s.id)
+                            && !quietQueue.contains(s.id)
+                            && CatalogRefreshPolicy.due(
+                            repository.hasEpisodeInfo(s.id) ? s.fetchedAt : 0,
+                            repository.lastRefreshAttempt(s.id),
+                            repository.refreshRetryAt(s.id),
+                            now)) quietQueue.add(s.id);
+                pumpQuiet();
+            } catch (RuntimeException failure) {
+                Logger.printException(() -> "Could not check catalog freshness", failure);
+            }
+        });
     }
 
     private void pumpQuiet() {
@@ -504,7 +487,7 @@ public final class TrackerService {
 
     private void beginFetch(String id, boolean quiet, Consumer<String> error) {
         if (refreshing.containsKey(id)) return;
-        long now = System.currentTimeMillis(), remaining = repository.refreshRetryAt(id) - now;
+        final long now = System.currentTimeMillis(), remaining = repository.refreshRetryAt(id) - now;
         if (remaining > 0) {
             if (!quiet) main.post(() -> error.accept("morphe_series_tracker_error_retry_later"));
             return;
@@ -613,9 +596,8 @@ public final class TrackerService {
         mutation(
                 () -> {
                     requireCurrent(s);
-                    bulkUndo =
-                            repository.markThrough(
-                                    s.id, s.revision, ordinal, System.currentTimeMillis());
+                    bulkUndo = repository.markThrough(
+                            s.id, s.revision, ordinal, System.currentTimeMillis());
                 },
                 done,
                 error);

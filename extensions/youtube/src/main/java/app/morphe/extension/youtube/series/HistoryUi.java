@@ -7,15 +7,18 @@
 
 package app.morphe.extension.youtube.series;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -23,13 +26,17 @@ import android.view.WindowInsets;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+import androidx.annotation.RequiresApi;
 
 import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.theme.ThemeUtils;
 
 /** Switches between the complete native History page and the compact Series page. */
+@SuppressLint("ViewConstructor")
 public final class HistoryUi extends LinearLayout {
     private static WeakReference<HistoryUi> current = new WeakReference<>(null);
     private static long openSeriesUntil;
@@ -49,42 +56,42 @@ public final class HistoryUi extends LinearLayout {
                 return true;
             };
 
-    static int dp(Context c, float n) {
+    static int dp(float n) {
         return app.morphe.extension.shared.ui.Dim.dp(n);
     }
 
-    static boolean dark(Context c) {
+    static boolean dark() {
         return app.morphe.extension.shared.Utils.isDarkModeEnabled();
     }
 
-    static int foreground(Context c) {
-        return app.morphe.extension.shared.theme.ThemeUtils.getAppForegroundColor();
+    static int foreground() {
+        return ThemeUtils.getAppForegroundColor();
     }
 
-    static int secondary(Context c) {
-        return dark(c) ? 0xffaaaaaa : 0xff606060;
+    static int secondary() {
+        return dark() ? 0xffaaaaaa : 0xff606060;
     }
 
-    static int surface(Context c) {
-        return app.morphe.extension.shared.theme.ThemeUtils.getAppBackgroundColor();
+    static int surface() {
+        return ThemeUtils.getAppBackgroundColor();
     }
 
-    static int control(Context c) {
-        return dark(c) ? 0xff272727 : 0xfff2f2f2;
+    static int control() {
+        return dark() ? 0xff272727 : 0xfff2f2f2;
     }
 
-    static GradientDrawable rounded(Context c, int color, int radius) {
+    static GradientDrawable rounded(int color, int radius) {
         GradientDrawable d = new GradientDrawable();
         d.setColor(color);
-        d.setCornerRadius(dp(c, radius));
+        d.setCornerRadius(dp(radius));
         return d;
     }
 
-    static android.graphics.drawable.Drawable ripple(Context c, boolean pill) {
+    static Drawable ripple(boolean pill) {
         return new RippleDrawable(
-                android.content.res.ColorStateList.valueOf(dark(c) ? 0x33ffffff : 0x22000000),
-                pill ? rounded(c, control(c), 24) : null,
-                rounded(c, Color.WHITE, pill ? 24 : 4));
+                android.content.res.ColorStateList.valueOf(dark() ? 0x33ffffff : 0x22000000),
+                pill ? rounded(control(), 24) : null,
+                rounded(Color.WHITE, pill ? 24 : 4));
     }
 
     static Activity activity(Context c) {
@@ -136,13 +143,7 @@ public final class HistoryUi extends LinearLayout {
             Logger.printException(() -> "Could not open History", e);
             openSeriesUntil = 0;
             openSeriesId = "";
-            Toast.makeText(
-                            c,
-                            UiText.get(
-                                    c,
-                                    "morphe_series_tracker_ui_open_history_from_you_to_view_your_series"),
-                            Toast.LENGTH_LONG)
-                    .show();
+            Utils.showToastLong(UiText.get("morphe_series_tracker_ui_open_history_from_you_to_view_your_series"));
         }
     }
 
@@ -156,21 +157,16 @@ public final class HistoryUi extends LinearLayout {
 
     private HistoryUi(View view) {
         super(view.getContext());
-        setId(
-                getResources()
-                        .getIdentifier(
-                                "morphe_series_tracker_history_root",
-                                "id",
-                                getContext().getPackageName()));
+        setId(ResourceUtils.getIdIdentifier("morphe_series_tracker_history_root"));
         watch = view;
         setOrientation(VERTICAL);
-        setBackgroundColor(surface(getContext()));
+        setBackgroundColor(surface());
         FrameLayout tabs = new FrameLayout(getContext());
         tabs.setPadding(
-                dp(getContext(), 16), dp(getContext(), 4),
-                dp(getContext(), 16), dp(getContext(), 4));
-        watchTab = tab(UiText.get(getContext(), "morphe_series_tracker_ui_watch_history"), false);
-        seriesTab = tab(UiText.get(getContext(), "morphe_series_tracker_ui_series"), true);
+                dp(16), dp(4),
+                dp(16), dp(4));
+        watchTab = tab(UiText.get("morphe_series_tracker_ui_watch_history"), false);
+        seriesTab = tab(UiText.get("morphe_series_tracker_ui_series"), true);
         switcher = new HistorySwitcher(getContext(), watchTab, seriesTab);
         tabs.addView(switcher, new FrameLayout.LayoutParams(-1, -2));
         pane = new FrameLayout(getContext());
@@ -203,7 +199,10 @@ public final class HistoryUi extends LinearLayout {
                         if (observer != null && observer.isAlive())
                             observer.removeOnPreDrawListener(layout);
                         observer = null;
-                        if (backRegistration != null) backRegistration.release();
+                        if (backRegistration != null
+                                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                            backRegistration.release();
+                        }
                         if (current.get() == HistoryUi.this) current.clear();
                     }
                 });
@@ -214,15 +213,14 @@ public final class HistoryUi extends LinearLayout {
         t.setText(title);
         t.setTextSize(14);
         t.setGravity(Gravity.CENTER);
-        t.setTypeface(Typeface.create("sans-serif-medium", 0));
-        Context c = getContext();
+        t.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
         t.setBackground(
                 new RippleDrawable(
                         android.content.res.ColorStateList.valueOf(0x227f7f7f),
                         null,
-                        rounded(c, Color.WHITE, 22)));
-        t.setPaddingRelative(dp(c, 38), dp(c, 10), dp(c, 12), dp(c, 10));
-        t.setMinHeight(dp(c, 48));
+                        rounded(Color.WHITE, 22)));
+        t.setPaddingRelative(dp(38), dp(10), dp(12), dp(10));
+        t.setMinHeight(dp(48));
         t.setMaxLines(2);
         t.setFocusable(true);
         return t;
@@ -244,6 +242,8 @@ public final class HistoryUi extends LinearLayout {
         updateBack();
     }
 
+    // getStableInsetBottom is deprecated in Android 11, but still works and covers Android 8+.
+    @SuppressWarnings("deprecation")
     private void updateLayout() {
         updateBack();
         if (!isAttachedToWindow() || getHeight() == 0) return;
@@ -256,9 +256,7 @@ public final class HistoryUi extends LinearLayout {
         WindowInsets insets = getRootWindowInsets();
         if (insets != null) availableBottom -= insets.getStableInsetBottom();
         Activity activity = activity(getContext());
-        int id =
-                getResources()
-                        .getIdentifier("bottom_bar_container", "id", getContext().getPackageName());
+        int id = ResourceUtils.getIdIdentifier("bottom_bar_container");
         View navigation = activity == null || id == 0 ? null : activity.findViewById(id);
         if (navigation != null && navigation.isShown()) {
             navigation.getLocationOnScreen(position);
@@ -271,17 +269,20 @@ public final class HistoryUi extends LinearLayout {
     }
 
     private void updateBack() {
-        if (android.os.Build.VERSION.SDK_INT < 33) return;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) return;
         if (backRegistration == null) backRegistration = new BackRegistration(this);
         backRegistration.update(isAttachedToWindow() && isShown() && series && pageExposed());
     }
 
     /** Android 13+ dispatches Back through the window, bypassing Activity.onBackPressed. */
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private static final class BackRegistration {
         final HistoryUi view;
         android.window.OnBackInvokedDispatcher dispatcher;
         final android.window.OnBackInvokedCallback callback;
 
+        // Falls back to the default Activity back handling when the Series page does not consume it.
+        @SuppressWarnings("deprecation")
         BackRegistration(HistoryUi view) {
             this.view = view;
             callback =

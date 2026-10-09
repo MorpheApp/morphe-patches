@@ -184,13 +184,13 @@ final class PlaylistDiscovery {
     private List<Match> remember(String video, List<Match> found) throws InterruptedIOException {
         if (Thread.currentThread().isInterrupted())
             throw new InterruptedIOException("Discovery cancelled");
-        List<Match> result = Collections.unmodifiableList(new ArrayList<>(found));
+        List<Match> result = List.copyOf(found);
         synchronized (cache) {
-            cache.put(
-                    video,
-                    new Cached(
-                            clock.getAsLong() + (result.isEmpty() ? MISS_TTL : HIT_TTL), result));
-            while (cache.size() > 32) cache.remove(cache.keySet().iterator().next());
+            cache.put(video, new Cached(
+                    clock.getAsLong() + (result.isEmpty() ? MISS_TTL : HIT_TTL), result));
+            while (cache.size() > 32) {
+                cache.remove(cache.keySet().iterator().next());
+            }
         }
         return result;
     }
@@ -206,20 +206,20 @@ final class PlaylistDiscovery {
             if (checked.size() >= MAX_CANDIDATES || found.size() >= 4) return;
             if (!checked.add(candidate.id)) continue;
             try {
-                CatalogClient.Catalog catalog =
-                        new CatalogClient(
-                                        (body, timeout, bytes) ->
-                                                budget.request("browse", body, bytes),
-                                        clock)
-                                .fetch(candidate.id);
-                if (catalog.episodes.stream()
-                        .noneMatch(e -> e.available && e.videoId.equals(video))) continue;
-                String image =
-                        catalog.episodes.stream()
-                                .filter(e -> e.available)
-                                .map(e -> e.videoId)
-                                .findFirst()
-                                .orElse(video);
+                CatalogClient.Catalog catalog = new CatalogClient(
+                        (body, timeout, bytes) ->
+                                budget.request("browse", body, bytes),
+                        clock)
+                        .fetch(candidate.id);
+                if (catalog.episodes.stream().noneMatch(e ->
+                        e.available && e.videoId.equals(video))) {
+                    continue;
+                }
+                String image = catalog.episodes.stream()
+                        .filter(e -> e.available)
+                        .map(e -> e.videoId)
+                        .findFirst()
+                        .orElse(video);
                 found.add(
                         new Match(
                                 candidate.id,
@@ -242,7 +242,7 @@ final class PlaylistDiscovery {
         boolean incomplete;
 
         CatalogClient.Reply request(String endpoint, String body, int limit) throws IOException {
-            long remaining = deadline - clock.getAsLong();
+            final long remaining = deadline - clock.getAsLong();
             if (Thread.currentThread().isInterrupted()
                     || remaining <= 0
                     || requests >= MAX_REQUESTS
@@ -251,31 +251,31 @@ final class PlaylistDiscovery {
             if (clock.getAsLong() < retryUntil) throw new IOException("Discovery throttled");
             requests++;
             int allowed = Math.min(Math.min(CatalogClient.PAGE_BYTES, MAX_BYTES - bytes), limit);
-            CatalogClient.Reply reply =
-                    transport.request(endpoint, body, (int) Math.min(remaining, 12000), allowed);
+            CatalogClient.Reply reply = transport.request(
+                    endpoint, body, (int) Math.min(remaining, 12000), allowed);
             bytes += reply.bytes;
-            if (reply.bytes > allowed || clock.getAsLong() >= deadline)
+            if (reply.bytes > allowed || clock.getAsLong() >= deadline) {
                 throw new InterruptedIOException("Discovery limit reached");
-            if (reply.status == 429 || reply.status == 503)
-                retryUntil =
-                        clock.getAsLong() + Math.max(30000, Math.min(3600000, reply.retryAfterMs));
-            if (reply.status != 200)
-                throw new IOException(
-                        "Discovery request failed: " + endpoint + " HTTP " + reply.status);
+            }
+            if (reply.status == 429 || reply.status == 503) {
+                retryUntil = clock.getAsLong() + Math.max(30000, Math.min(3600000, reply.retryAfterMs));
+            }
+            if (reply.status != 200) {
+                throw new IOException("Discovery request failed: " + endpoint + " HTTP " + reply.status);
+            }
             return reply;
         }
 
         JSONObject webBrowse(JSONObject payload) throws IOException, JSONException {
             payload.put(
                     "context",
-                    new JSONObject()
-                            .put(
-                                    "client",
-                                    new JSONObject()
-                                            .put("clientName", "WEB")
-                                            .put("clientVersion", "2.20260910.00.00")
-                                            .put("hl", "en")
-                                            .put("gl", "US")));
+                    new JSONObject().put(
+                            "client",
+                            new JSONObject()
+                                    .put("clientName", "WEB")
+                                    .put("clientVersion", "2.20260910.00.00")
+                                    .put("hl", "en")
+                                    .put("gl", "US")));
             return new JSONObject(
                     request("browse", payload.toString(), CatalogClient.PAGE_BYTES).body);
         }
@@ -283,15 +283,14 @@ final class PlaylistDiscovery {
         JSONObject json(String endpoint, JSONObject payload) throws IOException, JSONException {
             payload.put(
                     "context",
-                    new JSONObject()
-                            .put(
-                                    "client",
-                                    new JSONObject()
-                                            .put("clientName", "ANDROID")
-                                            .put("clientVersion", CatalogClient.CLIENT_VERSION)
-                                            .put("androidSdkVersion", 30)
-                                            .put("hl", "en")
-                                            .put("gl", "US")));
+                    new JSONObject().put(
+                            "client",
+                            new JSONObject()
+                                    .put("clientName", "ANDROID")
+                                    .put("clientVersion", CatalogClient.CLIENT_VERSION)
+                                    .put("androidSdkVersion", 30)
+                                    .put("hl", "en")
+                                    .put("gl", "US")));
             return new JSONObject(
                     request(endpoint, payload.toString(), CatalogClient.PAGE_BYTES).body);
         }
@@ -299,9 +298,8 @@ final class PlaylistDiscovery {
 
     static List<String> descriptionPlaylists(String description) {
         Set<String> ids = new LinkedHashSet<>();
-        Matcher urls =
-                Pattern.compile("https?://[^\\s<>\"]+")
-                        .matcher(description.substring(0, Math.min(description.length(), 20000)));
+        Matcher urls = Pattern.compile("https?://[^\\s<>\"]+")
+                .matcher(description.substring(0, Math.min(description.length(), 20000)));
         while (urls.find() && ids.size() < 4) {
             String id = PlaylistInput.parseOrNull(urls.group().replaceAll("[).,;]+$", ""));
             if (id != null && eligible(id)) ids.add(id);
@@ -313,8 +311,7 @@ final class PlaylistDiscovery {
         return PlaylistInput.suggestible(id) && !id.startsWith("UU") && !id.startsWith("UUL");
     }
 
-    private static final Pattern SEASON =
-            Pattern.compile("(?i)\\b(?:season|series)\\s+0*(\\d{1,3})\\b");
+    private static final Pattern SEASON = Pattern.compile("(?i)\\b(?:season|series)\\s+0*(\\d{1,3})\\b");
 
     private static String seasonNumber(String title) {
         Matcher matcher = SEASON.matcher(title);
@@ -335,17 +332,15 @@ final class PlaylistDiscovery {
                 if (!part.matches("(?i)(?:full\\s+episodes?|official\\s+video|4k|hd)"))
                     series = part;
             }
-            series =
-                    series.replaceAll(
-                                    "\\[[^\\]]*\\]|(?i)\\b(?:episode|ep|part)\\s*#?\\s*\\d+|#\\d+",
-                                    " ")
-                            .replaceAll("\\s+", " ")
-                            .trim();
+            series = series.replaceAll(
+                            "\\[[^\\]]*\\]|(?i)\\b(?:episode|ep|part)\\s*#?\\s*\\d+|#\\d+",
+                            " ")
+                    .replaceAll("\\s+", " ")
+                    .trim();
         }
-        String primary =
-                series.toLowerCase(Locale.ROOT).contains(author.toLowerCase(Locale.ROOT))
-                        ? series
-                        : author + " " + series;
+        String primary = series.toLowerCase(Locale.ROOT).contains(author.toLowerCase(Locale.ROOT))
+                ? series
+                : author + " " + series;
         LinkedHashSet<String> queries = new LinkedHashSet<>();
         for (String value : new String[] {primary, author + " " + title}) {
             value = value.trim();
@@ -354,14 +349,7 @@ final class PlaylistDiscovery {
         return new ArrayList<>(queries);
     }
 
-    private static final class Candidate {
-        final Match match;
-        final int score;
-
-        Candidate(Match match, int score) {
-            this.match = match;
-            this.score = score;
-        }
+    private record Candidate(Match match, int score) {
     }
 
     static List<Candidate> candidates(JSONObject response, String title, String channel) {
@@ -385,18 +373,16 @@ final class PlaylistDiscovery {
             Map<String, Candidate> result,
             int depth,
             int[] visits) {
-        if (depth > 24 || visits[0]++ > 20000 || result.size() >= ChannelPlaylists.MAX_ITEMS)
+        if (depth > 24 || visits[0]++ > 20000 || result.size() >= ChannelPlaylists.MAX_ITEMS) {
             return;
-        if (node instanceof JSONArray) {
-            JSONArray array = (JSONArray) node;
+        }
+        if (node instanceof JSONArray array) {
             for (int i = 0; i < array.length(); i++)
                 collect(array.opt(i), title, channel, result, depth + 1, visits);
-        } else if (node instanceof JSONObject) {
-            JSONObject object = (JSONObject) node;
-            for (String key :
-                    new String[] {
-                        "compactPlaylistRenderer", "playlistRenderer", "gridPlaylistRenderer"
-                    }) {
+        } else if (node instanceof JSONObject object) {
+            for (String key : new String[]{
+                    "compactPlaylistRenderer", "playlistRenderer", "gridPlaylistRenderer"
+            }) {
                 JSONObject playlist = object.optJSONObject(key);
                 if (playlist == null) continue;
                 String id = playlist.optString("playlistId");
@@ -407,7 +393,7 @@ final class PlaylistDiscovery {
                 String owner = CatalogParser.text(byline);
                 boolean creator = false;
                 JSONArray runs = byline == null ? null : byline.optJSONArray("runs");
-                if (runs != null)
+                if (runs != null) {
                     for (int i = 0; i < runs.length(); i++) {
                         JSONObject run = runs.optJSONObject(i);
                         String ownerId =
@@ -417,17 +403,21 @@ final class PlaylistDiscovery {
                                         .optString("browseId");
                         if (!channel.isEmpty() && channel.equals(ownerId)) creator = true;
                     }
+                }
                 int score = creator ? 1000 : 0;
                 String expectedSeason = seasonNumber(title), candidateSeason = seasonNumber(name);
-                if (!expectedSeason.isEmpty() && !candidateSeason.isEmpty())
+                if (!expectedSeason.isEmpty() && !candidateSeason.isEmpty()) {
                     score += expectedSeason.equals(candidateSeason) ? 100 : -100;
-                for (String word : name.toLowerCase(Locale.ROOT).split("[^\\p{L}\\p{N}]+"))
+                }
+                for (String word : name.toLowerCase(Locale.ROOT).split("[^\\p{L}\\p{N}]+")) {
                     if (word.length() > 2 && title.contains(word)) score++;
+                }
                 result.putIfAbsent(id, new Candidate(new Match(id, name, owner, ""), score));
             }
             Iterator<String> keys = object.keys();
-            while (keys.hasNext())
+            while (keys.hasNext()) {
                 collect(object.opt(keys.next()), title, channel, result, depth + 1, visits);
+            }
         }
     }
 }
