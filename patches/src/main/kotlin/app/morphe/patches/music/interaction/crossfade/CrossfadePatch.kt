@@ -291,6 +291,27 @@ val crossfadePatch = bytecodePatch(
                     "crossfade disabled (#repeat): ${it.message}")
         }
 
+        // The end of song sleep timer waits for the track to end naturally, which a crossfade
+        // never lets happen (#2017). Optional: without it the timer keeps being skipped.
+        runCatching {
+            val sleepTimerStateType = SleepTimerStateFingerprint.classDef.type
+            // The UI also has a (state)V method, the timer manager is the class with the getter too.
+            Fingerprint(
+                returnType = "V",
+                parameters = listOf(sleepTimerStateType),
+                custom = { method, classDef ->
+                    !AccessFlags.STATIC.isSet(method.accessFlags) && classDef.methods.any {
+                        it.parameterTypes.isEmpty() && it.returnType == sleepTimerStateType
+                    }
+                }
+            ).method.addInstruction(
+                0,
+                "invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->onSleepTimerStateChanged(Ljava/lang/Object;)V"
+            )
+        }.onFailure {
+            log.warning("Sleep timer state setter not found, end of song timer is not detected (#2017): ${it.message}")
+        }
+
         val musicActivityClass = MusicActivityOnCreateFingerprint.classDef
         musicActivityClass.methods.first { it.name == "onStop" && it.parameterTypes.isEmpty() }
             .addInstruction(

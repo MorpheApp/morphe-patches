@@ -506,8 +506,8 @@ public class CrossfadePatch {
                         + (isAutoAdvanceFinal ? "auto-advance" : "manual skip"), e);
             }
 
-            if (isAutoAdvance && !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
-                logDebug(() -> "stopVideo(5): skip, auto-advance crossfade disabled");
+            if (isAutoAdvance && (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get() || sleepTimerEndOfTrack)) {
+                logDebug(() -> "stopVideo(5): skip, auto-advance crossfade disabled or end of song sleep timer");
                 return false;
             }
             if (!isAutoAdvance && !Settings.CROSSFADE_ON_SKIP.get()) {
@@ -825,8 +825,8 @@ public class CrossfadePatch {
             return false;
         }
 
-        if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
-            logDebug(() -> "PlayNext: skip, auto-advance crossfade disabled");
+        if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get() || sleepTimerEndOfTrack) {
+            logDebug(() -> "PlayNext: skip, auto-advance crossfade disabled or end of song sleep timer");
             return false;
         }
 
@@ -890,6 +890,19 @@ public class CrossfadePatch {
      * Loop enum order: LOOP_OFF, LOOP_ALL, LOOP_ONE, LOOP_DISABLED.
      */
     private static final int LOOP_ONE_ORDINAL = 2;
+    private static volatile boolean sleepTimerEndOfTrack = false;
+
+    /**
+     * Injection point.
+     */
+    public static void onSleepTimerStateChanged(Object state) {
+        boolean endOfTrack = state instanceof Enum<?> e && "ACTIVE_END_OF_TRACK".equals(e.name());
+        if (endOfTrack != sleepTimerEndOfTrack) {
+            sleepTimerEndOfTrack = endOfTrack;
+            logInfo(() -> "onSleepTimerStateChanged: endOfTrack=" + endOfTrack);
+        }
+    }
+
     private static volatile boolean repeatSingleActive = false;
     private static volatile Object lastLoadDescriptor = null;
 
@@ -1236,8 +1249,9 @@ public class CrossfadePatch {
                     return;
                 }
 
-                // Keeps polling, so it resumes once casting stops (#1549).
-                if (isAudioRoutedToCast()) {
+                // Keeps polling, so it resumes once casting stops (#1549) or the
+                // end of song sleep timer is cleared (#2017).
+                if (isAudioRoutedToCast() || sleepTimerEndOfTrack) {
                     mainHandler.postDelayed(this, MONITOR_POLL_MS);
                     return;
                 }

@@ -83,3 +83,11 @@ internal object HandleDismissWatchEventFingerprint : Fingerprint(
         method.parameterTypes.size == 1
     }
 )
+
+/**
+ * The sleep timer state enum keeps its constant names, which makes it stable to match.
+ */
+internal object SleepTimerStateFingerprint : Fingerprint(
+    name = "<clinit>",
+    strings = listOf("INACTIVE", "ACTIVE_TIMER", "ACTIVE_END_OF_TRACK")
+)
