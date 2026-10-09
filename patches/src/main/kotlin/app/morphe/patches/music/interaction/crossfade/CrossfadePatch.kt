@@ -572,6 +572,11 @@ val crossfadePatch = bytecodePatch(
             returnType = "V",
             parameters = listOf("Z"),
         ).method.name
+        val setVideoSurfaceName = Fingerprint(
+            definingClass = playerInterfaceType,
+            returnType = "V",
+            parameters = listOf("Landroid/view/Surface;"),
+        ).method.name
         val releaseName = Fingerprint(
             definingClass = EXO_PLAYER_TYPE,
             returnType = "V",
@@ -878,6 +883,7 @@ val crossfadePatch = bytecodePatch(
         addExoBridge("patch_setVolume", setVolumeName, "V", "F")
         addExoBridge("patch_setPlayWhenReady", setPlayWhenReadyName, "V", "Z")
         addExoBridge("patch_release", releaseName, "V")
+        addExoBridge("patch_setVideoSurface", setVideoSurfaceName, "V", "Landroid/view/Surface;")
 
         // The audio offload listener set. The coordinator's listener lives here and
         // has to move to the new player on a swap.

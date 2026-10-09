@@ -24,6 +24,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.os.VibratorManager;
 import android.view.KeyEvent;
+import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -91,6 +92,7 @@ public class CrossfadePatch {
         long patch_getDuration();
         void patch_setVolume(float volume);
         void patch_setPlayWhenReady(boolean play);
+        void patch_setVideoSurface(Surface surface);
         void patch_release();
         Object patch_getListenerSet();
         void patch_setDltCallback(Object dlt);
@@ -253,6 +255,11 @@ public class CrossfadePatch {
      * player cannot eat into it.
      */
     private static volatile boolean outgoingFadePreStarted = false;
+    /**
+     * Its fade-out waits for the next track's load, so a load that never comes (offline)
+     * does not fade the end of the song away (#2433).
+     */
+    private static volatile ExoPlayerAccess outgoingAwaitingLoad = null;
 
     /**
      * Keeps the release of an outgoing player from releasing the shared cwh listener set.
@@ -569,7 +576,7 @@ public class CrossfadePatch {
             }
 
             if (isAutoAdvance && outgoingWasPlaying) {
-                preStartOutgoingFadeOut(currentExo);
+                outgoingAwaitingLoad = currentExo;
             }
 
             pollForNewTrackReady(newExo);
@@ -668,6 +675,16 @@ public class CrossfadePatch {
      */
     private static void swapCoordinatorPlayer(PlayerCoordinatorAccess coordinator,
                                               ExoPlayerAccess outgoing, ExoPlayerAccess incoming) {
+        // In video mode the outgoing keeps rendering into the surface that is rebound for the
+        // next track, and the failing video decoder stops its audio as well.
+        if (outgoing != null) {
+            try {
+                outgoing.patch_setVideoSurface(null);
+            } catch (Exception e) {
+                logWarn(() -> "swap: clearing outgoing video surface failed: " + e.getMessage());
+            }
+        }
+
         Object listener = null;
         try {
             listener = coordinator.patch_getCoordinatorListener();
@@ -704,8 +721,8 @@ public class CrossfadePatch {
     }
 
     /**
-     * The new player loads cold, which can take longer than the outgoing has left,
-     * so waiting for READY would shorten or skip the fade-out.
+     * Started when the load is issued, not at READY: the new player loads cold, which can take
+     * longer than the outgoing has left, so waiting for READY would shorten or skip the fade-out.
      */
     private static void preStartOutgoingFadeOut(ExoPlayerAccess outgoing) {
         long duration = getCrossfadeDurationMs();
@@ -904,6 +921,11 @@ public class CrossfadePatch {
         // Content is on its way, so the idle recovery must not abandon a slow load.
         if (crossfadeInProgress) {
             pendingLoadIssued = true;
+            ExoPlayerAccess outgoing = outgoingAwaitingLoad;
+            if (outgoing != null) {
+                outgoingAwaitingLoad = null;
+                preStartOutgoingFadeOut(outgoing);
+            }
         }
         logDebug(() -> "9.x: onBeforeLoadVideo atzq=@" + System.identityHashCode(newAtzqInstance)
                 + " descriptor=@" + System.identityHashCode(descriptor)
@@ -1009,7 +1031,7 @@ public class CrossfadePatch {
 
                     if (state == STATE_ENDED) {
                         logError(() -> "Pending player ENDED unexpectedly, aborting");
-                        resetCrossfade();
+                        recoverFailedLoad();
                         return;
                     }
 
@@ -1021,7 +1043,7 @@ public class CrossfadePatch {
                         } else if (System.currentTimeMillis() - pollIdleStreakStartMs >= IDLE_LOAD_FAIL_MS) {
                             logInfo(() -> "Pending player stuck IDLE, queue dismissed/ended; "
                                     + "recovering " + dumpState());
-                            resetCrossfade();
+                            recoverFailedLoad();
                             return;
                         }
                     } else {
@@ -1035,15 +1057,49 @@ public class CrossfadePatch {
 
                     if (System.currentTimeMillis() > deadline) {
                         logError(() -> "Timeout waiting for new track");
-                        resetCrossfade();
+                        recoverFailedLoad();
                         return;
                     }
 
                     mainHandler.postDelayed(this, READY_POLL_MS);
                 } catch (Exception e) {
                     logError(()-> "Poll error", e);
-                    resetCrossfade();
+                    recoverFailedLoad();
                 }
+            }
+        }, READY_POLL_MS);
+    }
+
+    /**
+     * On auto-advance the outgoing is close to its end, so it plays out instead of being cut
+     * when the next track never loads (#2433). After a manual skip it would play on for minutes.
+     */
+    private static void recoverFailedLoad() {
+        ExoPlayerAccess outgoing = pendingOutPlayer;
+        if (outgoing != null && autoAdvanceCrossfadeActive) {
+            pendingOutPlayer = null;
+            removeFromFading(outgoing);
+            try { outgoing.patch_setVolume(1.0f); } catch (Exception ignored) {}
+            releaseWhenEnded(outgoing);
+        }
+        resetCrossfade();
+    }
+
+    private static void releaseWhenEnded(ExoPlayerAccess player) {
+        long remaining = 0;
+        try {
+            remaining = Math.max(0, player.patch_getDuration() - player.patch_getCurrentPosition());
+        } catch (Exception ignored) {}
+        final long deadline = System.currentTimeMillis() + Math.min(remaining, READY_TIMEOUT_MS) + 1000;
+        logInfo(() -> "Next track did not load, letting @" + System.identityHashCode(player) + " play out");
+        mainHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isReady(player) && System.currentTimeMillis() < deadline) {
+                    mainHandler.postDelayed(this, READY_POLL_MS);
+                    return;
+                }
+                releasePlayer(player);
             }
         }, READY_POLL_MS);
     }
@@ -1334,7 +1390,7 @@ public class CrossfadePatch {
 
             currentExo.patch_setPlayWhenReady(true);
             currentExo.patch_setVolume(1.0f);
-            preStartOutgoingFadeOut(currentExo);
+            outgoingAwaitingLoad = currentExo;
 
             logInfo(() -> "repeat-single: re-issuing loadVideo (same song) onto @"
                     + System.identityHashCode(newExo) + " descriptor=@"
@@ -1384,6 +1440,7 @@ public class CrossfadePatch {
             }
         }
 
+        removeFromFading(pendOut);
         if (inp != null && inp != bestPlayer) releasePlayer(inp);
         if (pending != null && pending != bestPlayer) releasePlayer(pending);
         if (pendOut != null && pendOut != bestPlayer) releasePlayer(pendOut);
@@ -1415,6 +1472,7 @@ public class CrossfadePatch {
         autoAdvanceCrossfadeActive = false;
         queueAdvancedByMonitor = false;
         outgoingFadePreStarted = false;
+        outgoingAwaitingLoad = null;
         currentFadeInVolume = 0.0f;
     }
 
@@ -1623,6 +1681,16 @@ public class CrossfadePatch {
         }
     }
 
+    /**
+     * The outgoing can be both pending and fading, and must be released only once.
+     */
+    private static void removeFromFading(ExoPlayerAccess player) {
+        if (player == null) return;
+        synchronized (fadingOutPlayers) {
+            fadingOutPlayers.removeIf(fp -> fp.player == player);
+        }
+    }
+
     private static void releaseAllFadingPlayers() {
         synchronized (fadingOutPlayers) {
             for (FadingPlayer fp : fadingOutPlayers) {
@@ -1645,6 +1713,7 @@ public class CrossfadePatch {
     private static void cleanupAllPlayers(boolean stopKeptPlayer) {
         // Not logError: cleanup is routine on every dismissal, and logError shows an error toast.
         logInfo(() -> "CLEANUP (reset crossfade state): " + dumpState());
+        removeFromFading(pendingOutPlayer);
         releaseAllFadingPlayers();
         // The coordinator already uses this player, so it is kept (#1671). Its volume was
         // zeroed for the fade, and left at 0 the next track would play silently.
@@ -1751,6 +1820,7 @@ public class CrossfadePatch {
         }
         logInfo(() -> "onActivityDestroy, releasing in-flight crossfade state " + dumpState());
         stopAutoAdvanceMonitor();
+        removeFromFading(pendingOutPlayer);
         releaseAllFadingPlayers();
         ExoPlayerAccess pi = pendingInPlayer;
         if (pi != null) { releasePlayer(pi); pendingInPlayer = null; }
