@@ -17,6 +17,7 @@ public final class PlaybackSession {
     private static volatile WeakReference<MediaSession> current = new WeakReference<>(null);
 
     public static void attach(MediaSession session) {
+        if (!SeriesTrackerPatch.ENABLED) return;
         current = new WeakReference<>(session);
     }
 

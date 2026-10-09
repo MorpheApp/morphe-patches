@@ -89,6 +89,7 @@ val seriesTrackerPatch = bytecodePatch(
                 key = "morphe_series_tracker_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
+                    SwitchPreference("morphe_series_tracker", summary = true),
                     SwitchPreference("morphe_series_tracker_show_history_tab", summary = true),
                     SwitchPreference("morphe_series_tracker_show_button", summary = true),
                     SwitchPreference(

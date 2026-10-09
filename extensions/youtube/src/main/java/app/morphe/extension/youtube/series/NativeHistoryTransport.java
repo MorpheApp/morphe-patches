@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.BooleanSupplier;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.settings.Settings;
 
 /** Account-bound native browse requests. No credentials, HTTP client, or player prefetch. */
 public final class NativeHistoryTransport {
@@ -73,11 +74,14 @@ public final class NativeHistoryTransport {
     private static final int MAX_RESPONSE_BYTES = 4 * 1024 * 1024;
 
     public static void attach(Source current) {
+        if (!SeriesTrackerPatch.ENABLED) return;
         source = current;
     }
 
     /** Called before the host consumes/reuses request registers. Never throws into YouTube. */
     public static Ticket before(Source source, Object request) {
+        // Checked before any other work, as this runs for every browse request.
+        if (!SeriesTrackerPatch.ENABLED || !Settings.SERIES_TRACKER_YOUTUBE_PROGRESS.get()) return null;
         try {
             if (!(request instanceof Request)) return null;
             Request r = (Request) request;

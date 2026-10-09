@@ -48,6 +48,11 @@ final class TrackerRuntime {
     }
 
     static void sample() {
+        // Checked first, as this runs for every playback time update.
+        if (!waiting && !Settings.SERIES_TRACKER_RECORD_PROGRESS.get()) {
+            reducer.clear();
+            return;
+        }
         long currentPrivacyGeneration = RecordingPrivacy.generation();
         if (privacyGeneration != currentPrivacyGeneration) {
             reducer.clear();

@@ -1497,6 +1497,8 @@ Limitation: Reverts to old style \'More videos\' overlay"</string>
     <!-- video.series.seriesTrackerPatch -->
     <string name="morphe_series_tracker_screen_title">Series Tracker</string>
     <string name="morphe_series_tracker_screen_summary">Follow playlists as series and keep your place</string>
+    <string name="morphe_series_tracker_title">Enable series tracking</string>
+    <string name="morphe_series_tracker_summary">Adds a Series page to History and a Follow series option to playlists. Restart YouTube after changing this setting.</string>
     <string name="morphe_series_tracker_show_button_title">Show Series Tracker button</string>
     <string name="morphe_series_tracker_show_button_summary">Restart YouTube after changing this setting</string>
     <string name="morphe_series_tracker_record_followed_progress_title">"Record followed-series progress"</string>
