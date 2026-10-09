@@ -70,84 +70,40 @@ private const val VIDEO_TOGGLE_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/CrossfadePatch$VideoToggleAccess;"
 private const val DELEGATE_INTERFACE =
     $$"Lapp/morphe/extension/music/patches/CrossfadePatch$DelegateAccess;"
-private const val LISTENER_WRAPPER_INTERFACE =
-    $$"Lapp/morphe/extension/music/patches/CrossfadePatch$ListenerWrapperAccess;"
 
 private const val EXO_PLAYER_TYPE = "Landroidx/media3/exoplayer/ExoPlayer;"
 
-private fun MutableClass.addFieldGetter(
-    methodName: String,
-    fieldRef: Any,
+private fun MutableClass.addBridge(
+    name: String,
+    parameters: List<String>,
+    returnType: String,
+    registers: Int,
+    smali: String,
 ) {
-    val isStatic = (fieldRef as? Field)?.let {
-        AccessFlags.STATIC.isSet(it.accessFlags)
-    } ?: false
-
     methods.add(
         ImmutableMethod(
             type,
-            methodName,
-            listOf(),
-            "Ljava/lang/Object;",
+            name,
+            parameters.map { ImmutableMethodParameter(it, null, null) },
+            returnType,
             AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
             null,
             null,
-            MutableMethodImplementation(2)
-        ).toMutable().apply {
-            addInstructions(
-                0,
-                if (isStatic) {
-                    """
-                        sget-object v0, $fieldRef
-                        return-object v0
-                    """
-                } else {
-                    """
-                        iget-object v0, p0, $fieldRef
-                        return-object v0
-                    """
-                }
-            )
-        }
+            MutableMethodImplementation(registers),
+        ).toMutable().apply { addInstructions(0, smali) }
     )
 }
 
-private fun MutableClass.addFieldSetter(
-    methodName: String,
-    fieldRef: Any,
-) {
-    val fieldType = (fieldRef as FieldReference).type
-    val isStatic = (fieldRef as? Field)?.let {
-        AccessFlags.STATIC.isSet(it.accessFlags)
-    } ?: false
-    methods.add(
-        ImmutableMethod(
-            type, methodName,
-            listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-            "V",
-            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-            null,
-            null,
-            MutableMethodImplementation(2),
-        ).toMutable().apply {
-            addInstructions(
-                0,
-                if (isStatic) {
-                    """
-                        check-cast p1, $fieldType
-                        sput-object p1, $fieldRef
-                        return-void
-                    """
-                } else {
-                    """
-                        check-cast p1, $fieldType
-                        iput-object p1, p0, $fieldRef
-                        return-void
-                    """
-                }
-            )
-        }
-    )
+private fun FieldReference.isStaticField() = (this as? Field)?.let { AccessFlags.STATIC.isSet(it.accessFlags) } == true
+
+private fun MutableClass.addFieldGetter(methodName: String, fieldRef: FieldReference) {
+    val read = if (fieldRef.isStaticField()) "sget-object v0, $fieldRef" else "iget-object v0, p0, $fieldRef"
+    addBridge(methodName, emptyList(), "Ljava/lang/Object;", 2, "$read\nreturn-object v0")
+}
+
+private fun MutableClass.addFieldSetter(methodName: String, fieldRef: FieldReference) {
+    val write = if (fieldRef.isStaticField()) "sput-object p1, $fieldRef" else "iput-object p1, p0, $fieldRef"
+    addBridge(methodName, listOf("Ljava/lang/Object;"), "V", 2, "check-cast p1, ${fieldRef.type}\n$write\nreturn-void")
 }
 
 /**
@@ -538,11 +494,8 @@ val crossfadePatch = bytecodePatch(
                     && method.callsCopyOnWriteSet("add")
                     && method.implementation!!.instructions.any { it.opcode == Opcode.NEW_INSTANCE }
         }
-        val cauAddParamType = cauAddMethod.parameterTypes.first().toString()
         val cauAddInstructions = cauAddMethod.implementation!!.instructions.toList()
         val holderIndex = cauAddInstructions.indexOfFirst { it.opcode == Opcode.NEW_INSTANCE }
-        val listenerElementType =
-            (cauAddInstructions[holderIndex] as ReferenceInstruction).reference.toString()
         // The last wrapper field read before the holder is allocated, the earlier one is the lock.
         val listenerSetInWrapper = cauAddInstructions.subList(0, holderIndex)
             .filter { it.opcode == Opcode.IGET_OBJECT }
@@ -717,16 +670,10 @@ val crossfadePatch = bytecodePatch(
         val dltFieldOnExo = exoPlayerImplClass.fields.firstOrNull { it.type == dltCallbackTypeOnShared.type }
             ?: error("DLT field of type ${dltCallbackTypeOnShared.type} not found on ${exoPlayerImplClass.type}")
 
-        // R8 keeps declaration order, and the internal listener is declared right after the clock.
-        val allExoFields = exoPlayerImplClass.fields.toList()
-        val dltIdx = allExoFields.indexOf(dltFieldOnExo)
-        val internalListenerField = allExoFields.getOrNull(dltIdx + 1)
-            ?: error("Internal listener field (after DLT at index $dltIdx) not found on ${exoPlayerImplClass.type}")
-
         // The shared state's timeline field, saved and restored around player creation.
-        // Its type is the non-Looper parameter of a (X, Looper) method somewhere in the hierarchy.
+        // Its type is the non-Looper parameter of a (X, Looper) method, and 9.x without one
+        // falls back to the first non-library instance field.
         val sharedStateMethodPool = buildList {
-            addAll(sharedStateClass.methods)
             addAll(allMethodsInHierarchy(sharedStateClass.type))
             if (sharedStateFieldRef.type != sharedStateClass.type) {
                 try { addAll(classDefBy(sharedStateFieldRef.type).methods) } catch (_: Exception) {}
@@ -745,7 +692,14 @@ val crossfadePatch = bytecodePatch(
                 } catch (_: Exception) { break }
             }
         }
-        var bxkType = sharedStateMethodPool.firstNotNullOfOrNull { method ->
+        val standardTypes = setOf(
+            "Ljava/lang/Object;", "Ljava/lang/String;",
+            "Ljava/util/List;", "Ljava/util/Map;", "Ljava/util/Set;",
+            "Ljava/util/ArrayList;", "Ljava/util/HashMap;",
+            "Landroid/util/SparseArray;", "Landroid/os/Handler;",
+            "Landroid/os/Looper;", "Ljava/util/concurrent/CopyOnWriteArraySet;",
+        )
+        val bxkType = sharedStateMethodPool.firstNotNullOfOrNull { method ->
             if (method.parameterTypes.size != 2) return@firstNotNullOfOrNull null
             val types = method.parameterTypes.map { it.toString() }
             when {
@@ -753,36 +707,14 @@ val crossfadePatch = bytecodePatch(
                 types[0] == "Landroid/os/Looper;" -> types[1]
                 else -> null
             }
-        }
-
-        // 9.x has no such method, there the first non-library instance field is used.
-        if (bxkType == null) {
-            val standardTypes = setOf(
-                "Ljava/lang/Object;", "Ljava/lang/String;",
-                "Ljava/util/List;", "Ljava/util/Map;", "Ljava/util/Set;",
-                "Ljava/util/ArrayList;", "Ljava/util/HashMap;",
-                "Landroid/util/SparseArray;", "Landroid/os/Handler;",
-                "Landroid/os/Looper;", "Ljava/util/concurrent/CopyOnWriteArraySet;",
-            )
-            val knownTypes = setOf(
-                sessionFieldRef.type, loadControlType, sharedCallbackFieldRef.type,
-            )
-            val candidate = sharedStateClass.fields.firstOrNull { field ->
-                field.type.startsWith("L")
-                        && field.type !in standardTypes
-                        && !AccessFlags.STATIC.isSet(field.accessFlags)
-            }
-            bxkType = candidate?.type
-            if (bxkType != null) {
-                log.fine { "bxk fallback: found via concrete-field heuristic: $bxkType" }
-            }
-        }
-
-        if (bxkType == null) {
-            error("bxk type not found on ${sharedStateClass.type} - " +
-                    "no V(X,Looper) method and no concrete-field fallback. " +
-                    "Fields: ${sharedStateClass.fields.map { "${it.name}:${it.type}" }}")
-        }
+        } ?: sharedStateClass.fields.firstOrNull { field ->
+            field.type.startsWith("L")
+                    && field.type !in standardTypes
+                    && !AccessFlags.STATIC.isSet(field.accessFlags)
+        }?.type ?: error(
+            "bxk type not found on ${sharedStateClass.type}, " +
+                    "fields: ${sharedStateClass.fields.map { "${it.name}:${it.type}" }}"
+        )
         val timelineField = sharedStateClass.fields.firstOrNull { it.type == bxkType }
             ?: error("Timeline field of type $bxkType not found on ${sharedStateClass.type}")
 
@@ -821,12 +753,6 @@ val crossfadePatch = bytecodePatch(
             )
         }
 
-        // The listener holder keeps the listener in its first Object field.
-        val listenerElementClass = mutableClassDefBy(listenerElementType)
-        val listenerElementField = listenerElementClass.fields.first {
-            it.type == "Ljava/lang/Object;"
-        }
-
         log.fine {
             """
                 CrossfadePatch discovery:
@@ -840,15 +766,13 @@ val crossfadePatch = bytecodePatch(
                 medialibPlayer = ${medialibPlayerClass.type}
                 videoToggle    = ${videoToggleClass.type}
                 delegateChain  = ${delegateClasses.joinToString { "${it.first.type}(${it.second})" }}
-                listenerElem   = ${listenerElementClass.type} (field: $listenerElementField)
                 timelineField  = $timelineField (bxk type: $bxkType)
                 cqbField       = $cqbField (definingClass: ${cqbField.definingClass})
                 dltOnShared    = $dltCallbackTypeOnShared
                 dltOnExo       = $dltFieldOnExo
-                internalLsnr   = $internalListenerField
                 listenerWrap   = $listenerWrapperField -> $listenerSetInWrapper
                 playerChain    = $playerChainField
-                guardField     = ${guardField?.let { "$guardAbstractType->${it.name}:${it.type}" } ?: "n/a (8.x)"}
+                guardField     = ${guardField?.let { "$guardAbstractType->${it.name}:${it.type}" } ?: "n/a"}
             """
         }
 
@@ -869,67 +793,28 @@ val crossfadePatch = bytecodePatch(
         coordinatorClass.addFieldGetter("patch_getLoadControl", loadControlField)
         coordinatorClass.addFieldGetter("patch_getSharedState", sharedStateFieldRef)
         coordinatorClass.addFieldGetter("patch_getSharedCallback", sharedCallbackFieldRef)
-
         coordinatorClass.addFieldGetter("patch_getVideoSurface", videoSurfaceField)
-
-        // MedialibPlayer.playNextInQueue goes through an interface the coordinator does not
-        // implement, so it never reaches the hooked coordinator method.
-        val coordinatorPlayNextMethod = PlayNextInQueueFingerprint.method
-        coordinatorClass.methods.add(
-            ImmutableMethod(
-                coordinatorType,
-                "patch_playNextInQueueDirect",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(1)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-virtual { p0 }, $coordinatorPlayNextMethod
-                        return-void
-                    """
-                )
-            }
-        )
 
         // A coordinator setter that also moves its listeners to the new player is preferred
         // over a raw field write. None of the supported 9.x versions has one.
         val exoFieldName = exoPlayerField.name
-        val exoCompatibleTypes = buildSet {
-            add(EXO_PLAYER_TYPE)
-            add(playerInterfaceType)
-            add("Ljava/lang/Object;")
-            add(exoPlayerField.type)
+        val exoCompatibleTypes = setOf(EXO_PLAYER_TYPE, playerInterfaceType, "Ljava/lang/Object;", exoPlayerField.type)
+        val coordinatorPlayerTransitionMethod = coordinatorClass.methods.firstOrNull { method ->
+            val instructions = method.implementation?.instructions
+            !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
+                    && !AccessFlags.STATIC.isSet(method.accessFlags)
+                    && method.parameterTypes.size == 1
+                    && method.parameterTypes.first().toString() in exoCompatibleTypes
+                    && instructions != null
+                    && instructions.any { insn ->
+                insn.opcode == Opcode.IPUT_OBJECT
+                        && ((insn as ReferenceInstruction).reference as FieldReference).let {
+                    it.name == exoFieldName && it.definingClass == coordinatorType
+                }
+            }
+                    && instructions.any { it.opcode == Opcode.INVOKE_VIRTUAL || it.opcode == Opcode.INVOKE_INTERFACE }
         }
-        val coordinatorPlayerTransitionMethod = coordinatorClass.methods
-            .filter { method ->
-                !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
-                        && !AccessFlags.STATIC.isSet(method.accessFlags)
-                        && method.parameterTypes.size == 1
-                        && method.implementation != null
-                        && method.parameterTypes.first().toString() in exoCompatibleTypes
-            }
-            .firstOrNull { method ->
-                val insns = method.implementation!!.instructions
-                val hasExoFieldWrite = insns.any { insn ->
-                    insn is ReferenceInstruction
-                            && insn.opcode == Opcode.IPUT_OBJECT
-                            && (insn.reference as? FieldReference)?.let { fr ->
-                        fr.name == exoFieldName && fr.definingClass == coordinatorType
-                    } == true
-                }
-                val virtualCallCount = insns.count { insn ->
-                    insn.opcode == Opcode.INVOKE_VIRTUAL || insn.opcode == Opcode.INVOKE_INTERFACE
-                }
-                hasExoFieldWrite && virtualCallCount >= 1
-            }
-
-        val transitionParamType = coordinatorPlayerTransitionMethod
-            ?.parameterTypes?.first()?.toString()
+        val transitionParamType = coordinatorPlayerTransitionMethod?.parameterTypes?.first()?.toString()
             ?: exoPlayerField.type
 
         log.fine {
@@ -939,172 +824,69 @@ val crossfadePatch = bytecodePatch(
                 "Coordinator player-transition method NOT found, patch_setPlayerWithBindings uses raw iput-object fallback"
         }
 
-        coordinatorClass.methods.add(
-            ImmutableMethod(
-                coordinatorType,
-                "patch_setPlayerWithBindings",
-                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(4)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    if (coordinatorPlayerTransitionMethod != null) {
-                        """
-                            check-cast p1, $transitionParamType
-                            invoke-virtual { p0, p1 }, $coordinatorPlayerTransitionMethod
-                            return-void
-                        """
-                    } else if (forwardingPlayerField9x != null && exoPlayerCwhField9x != null && coordinatorCwhListenerField9x != null && cwhAddListenerMethod != null) {
-                        // Registers the MediaSession listener on the new player's cwh, see above.
-                        val lctrType = forwardingPlayerField9x.type
-                        val concreteExoType = exoPlayerImplClass.type
-                        // 9.28+ has no Lctr interface, cwh is a plain class there.
-                        val invokeOpcode = if (AccessFlags.INTERFACE.isSet(classDefBy(lctrType).accessFlags))
-                            "invoke-interface" else "invoke-virtual"
-                        val addListenerName = cwhAddListenerMethod.name
-                        """
-                            check-cast p1, $concreteExoType
-                            iget-object v0, p1, $exoPlayerCwhField9x
-                            iget-object v1, p0, $coordinatorCwhListenerField9x
-                            $invokeOpcode { v0, v1 }, $lctrType->$addListenerName($cwhListenerType)V
-                            iput-object p1, p0, $exoPlayerField
-                            return-void
-                        """
-                    } else {
-                        """
-                            check-cast p1, $transitionParamType
-                            iput-object p1, p0, $exoPlayerField
-                            return-void
-                        """
-                    }
-                )
+        coordinatorClass.addBridge(
+            "patch_setPlayerWithBindings", listOf("Ljava/lang/Object;"), "V", 4,
+            if (coordinatorPlayerTransitionMethod != null) {
+                """
+                    check-cast p1, $transitionParamType
+                    invoke-virtual { p0, p1 }, $coordinatorPlayerTransitionMethod
+                    return-void
+                """
+            } else if (forwardingPlayerField9x != null && exoPlayerCwhField9x != null && coordinatorCwhListenerField9x != null && cwhAddListenerMethod != null) {
+                // Registers the MediaSession listener on the new player's cwh, see above.
+                val lctrType = forwardingPlayerField9x.type
+                // 9.28+ has no Lctr interface, cwh is a plain class there.
+                val invokeOpcode = if (AccessFlags.INTERFACE.isSet(classDefBy(lctrType).accessFlags))
+                    "invoke-interface" else "invoke-virtual"
+                """
+                    check-cast p1, ${exoPlayerImplClass.type}
+                    iget-object v0, p1, $exoPlayerCwhField9x
+                    iget-object v1, p0, $coordinatorCwhListenerField9x
+                    $invokeOpcode { v0, v1 }, $lctrType->${cwhAddListenerMethod.name}($cwhListenerType)V
+                    iput-object p1, p0, $exoPlayerField
+                    return-void
+                """
+            } else {
+                """
+                    check-cast p1, $transitionParamType
+                    iput-object p1, p0, $exoPlayerField
+                    return-void
+                """
             }
         )
 
         exoPlayerImplClass.interfaces.add(EXO_PLAYER_INTERFACE)
 
-        fun MutableClass.addExoBridgeInt(bridgeName: String, targetName: String) {
-            val target = exoImplMethods.firstOrNull {
-                it.name == targetName && it.returnType == "I" && it.parameterTypes.isEmpty()
-            } ?: error("Bridge target $targetName()I not found in ${exoPlayerImplClass.type} hierarchy")
-
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    bridgeName,
-                    listOf(),
-                    "I",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $target
-                            move-result v0
-                            return v0
-                        """
-                    )
-                }
-            )
+        fun addExoBridge(bridgeName: String, targetName: String, returnType: String, paramType: String? = null) {
+            val parameters = listOfNotNull(paramType)
+            val target = exoImplMethods.firstOrNull { method ->
+                method.name == targetName && method.returnType == returnType
+                        && method.parameterTypes.map { it.toString() } == parameters
+            } ?: error("Bridge target $targetName($parameters)$returnType not found in ${exoPlayerImplClass.type} hierarchy")
+            val invoke = if (paramType != null) "invoke-virtual { p0, p1 }, $target" else "invoke-virtual { p0 }, $target"
+            val (registers, result) = when (returnType) {
+                "I" -> 2 to "move-result v0\nreturn v0"
+                "J" -> 3 to "move-result-wide v0\nreturn-wide v0"
+                else -> 2 to "return-void"
+            }
+            exoPlayerImplClass.addBridge(bridgeName, parameters, returnType, registers, "$invoke\n$result")
         }
 
-        fun MutableClass.addExoBridgeLong(bridgeName: String, targetName: String) {
-            val target = exoImplMethods.firstOrNull {
-                it.name == targetName && it.returnType == "J" && it.parameterTypes.isEmpty()
-            } ?: error("Bridge target $targetName()J not found in ${exoPlayerImplClass.type} hierarchy")
-
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    bridgeName,
-                    listOf(),
-                    "J",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(3)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            invoke-virtual { p0 }, $target
-                            move-result-wide v0
-                            return-wide v0
-                        """
-                    )
-                }
-            )
-        }
-
-        fun MutableClass.addExoBridgeVoid(
-            bridgeName: String,
-            targetName: String,
-            paramType: String? = null,
-        ) {
-            val target = exoImplMethods.firstOrNull {
-                it.name == targetName && it.returnType == "V"
-                        && if (paramType != null) it.parameterTypes.toList() == listOf(paramType)
-                else it.parameterTypes.isEmpty()
-            } ?: error("Bridge target $targetName(${paramType ?: ""})V not found in ${exoPlayerImplClass.type} hierarchy")
-
-            val params = if (paramType != null)
-                listOf(ImmutableMethodParameter(paramType, null, null))
-            else listOf()
-
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    bridgeName,
-                    params,
-                    "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2)
-                ).toMutable().apply {
-                    val invoke = if (paramType != null) {
-                        "invoke-virtual { p0, p1 }, $target"
-                    } else {
-                        "invoke-virtual { p0 }, $target"
-                    }
-                    addInstructions(
-                        0,
-                        """
-                            $invoke
-                            return-void
-                        """
-                    )
-                }
-            )
-        }
-
-        exoPlayerImplClass.addExoBridgeInt("patch_getPlaybackState", getPlaybackStateName)
-        exoPlayerImplClass.addExoBridgeLong("patch_getCurrentPosition", getCurrentPositionName)
-        exoPlayerImplClass.addExoBridgeLong("patch_getDuration", getDurationName)
-        exoPlayerImplClass.addExoBridgeVoid("patch_setVolume", setVolumeName, "F")
-        exoPlayerImplClass.addExoBridgeVoid("patch_setPlayWhenReady", setPlayWhenReadyName, "Z")
-        exoPlayerImplClass.addExoBridgeVoid("patch_release", releaseName)
-
-        log.fine {
-            "patch_addListener -> ${listenerWrapperClass.type}->${cauAddMethod.name}($cauAddParamType) [via wrapper]"
-        }
+        addExoBridge("patch_getPlaybackState", getPlaybackStateName, "I")
+        addExoBridge("patch_getCurrentPosition", getCurrentPositionName, "J")
+        addExoBridge("patch_getDuration", getDurationName, "J")
+        addExoBridge("patch_setVolume", setVolumeName, "V", "F")
+        addExoBridge("patch_setPlayWhenReady", setPlayWhenReadyName, "V", "Z")
+        addExoBridge("patch_release", releaseName, "V")
 
         // The audio offload listener set. The coordinator's listener lives here and
         // has to move to the new player on a swap.
-        val directListenerSetField =
-            exoImplFields.firstOrNull {
-                it.type == copyOnWriteSetType
-            }.also { f ->
-                if (f == null) log.warning("9.x: direct listener set field (Lcrh.N) not found on ${exoPlayerImplClass.type}")
-                else log.fine { "9.x: direct listener set field = $f" }
-            }
+        val directListenerSetField = exoImplFields.firstOrNull {
+            it.type == copyOnWriteSetType
+        }.also { f ->
+            if (f == null) log.warning("9.x: direct listener set field (Lcrh.N) not found on ${exoPlayerImplClass.type}")
+            else log.fine { "9.x: direct listener set field = $f" }
+        }
 
         // Typed by the method that adds to that set. Matching cau.add's Object parameter
         // instead picks the coordinator's lock object.
@@ -1127,134 +909,45 @@ val crossfadePatch = bytecodePatch(
             if (f == null) log.warning("9.x: coordinator listener field (type $directListenerType) not found on ${coordinatorClass.type}")
             else log.fine { "9.x: coordinator listener field = $f" }
         }
-        exoPlayerImplClass.methods.add(
-            ImmutableMethod(
-                exoPlayerImplClass.type, "patch_addListener",
-                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                "V", AccessFlags.PUBLIC.value or AccessFlags.FINAL.value, null, null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $listenerWrapperField
-                        check-cast p1, $cauAddParamType
-                        invoke-virtual { v0, p1 }, $cauAddMethod
-                        return-void
-                    """
-                )
-            }
-        )
 
-        exoPlayerImplClass.methods.add(
-            ImmutableMethod(
-                exoPlayerImplClass.type,
-                "patch_getListenerSet",
-                listOf(),
-                "Ljava/lang/Object;",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(2)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $listenerWrapperField
-                        iget-object v0, v0, $listenerSetInWrapper
-                        return-object v0
-                    """
-                )
-            }
+        exoPlayerImplClass.addBridge(
+            "patch_getListenerSet", emptyList(), "Ljava/lang/Object;", 2,
+            """
+                iget-object v0, p0, $listenerWrapperField
+                iget-object v0, v0, $listenerSetInWrapper
+                return-object v0
+            """
         )
-
-        exoPlayerImplClass.addFieldGetter("patch_getInternalListener", internalListenerField)
         exoPlayerImplClass.addFieldSetter("patch_setDltCallback", dltFieldOnExo)
 
         if (coordinatorListenerField != null) {
             coordinatorClass.addFieldGetter("patch_getCoordinatorListener", coordinatorListenerField)
-            log.fine { "9.x: injected patch_getCoordinatorListener on ${coordinatorClass.type} (field: $coordinatorListenerField)" }
         }
 
         if (directListenerSetField != null) {
-            exoPlayerImplClass.methods.add(
-                ImmutableMethod(
-                    exoPlayerImplClass.type, "patch_addDirectListener",
-                    listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                    "V", AccessFlags.PUBLIC.value or AccessFlags.FINAL.value, null, null,
-                    MutableMethodImplementation(3)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $directListenerSetField
-                            invoke-virtual { v0, p1 }, Ljava/util/concurrent/CopyOnWriteArraySet;->add(Ljava/lang/Object;)Z
-                            return-void
-                        """
-                    )
-                }
-            )
-            exoPlayerImplClass.methods.add(
-                ImmutableMethod(
-                    exoPlayerImplClass.type, "patch_removeDirectListener",
-                    listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                    "V", AccessFlags.PUBLIC.value or AccessFlags.FINAL.value, null, null,
-                    MutableMethodImplementation(3)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $directListenerSetField
-                            invoke-virtual { v0, p1 }, Ljava/util/concurrent/CopyOnWriteArraySet;->remove(Ljava/lang/Object;)Z
-                            return-void
-                        """
-                    )
-                }
-            )
-            exoPlayerImplClass.methods.add(
-                ImmutableMethod(
-                    exoPlayerImplClass.type, "patch_getDirectListenerCount",
-                    listOf(),
-                    "I", AccessFlags.PUBLIC.value or AccessFlags.FINAL.value, null, null,
-                    MutableMethodImplementation(2)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $directListenerSetField
-                            invoke-virtual { v0 }, Ljava/util/concurrent/CopyOnWriteArraySet;->size()I
-                            move-result v0
-                            return v0
-                        """
-                    )
-                }
-            )
-            log.fine { "9.x: injected patch_addDirectListener / patch_removeDirectListener / patch_getDirectListenerCount on ${exoPlayerImplClass.type}" }
+            for ((bridgeName, setMethod) in listOf("patch_addDirectListener" to "add", "patch_removeDirectListener" to "remove")) {
+                exoPlayerImplClass.addBridge(
+                    bridgeName, listOf("Ljava/lang/Object;"), "V", 3,
+                    """
+                        iget-object v0, p0, $directListenerSetField
+                        invoke-virtual { v0, p1 }, $copyOnWriteSetType->$setMethod(Ljava/lang/Object;)Z
+                        return-void
+                    """
+                )
+            }
         }
 
         if (eventDispatchField9x != null && exoPlayerCwhField9x != null) {
-            log.fine { "9.x: Lcgd remove method resolved -> $cauRemoveMethod" }
-
-            exoPlayerImplClass.methods.add(
-                ImmutableMethod(
-                    exoPlayerImplClass.type, "patch_detachCwhFromEventDispatch",
-                    listOf(), "V",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null, null,
-                    MutableMethodImplementation(3)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $eventDispatchField9x
-                            iget-object v1, p0, $exoPlayerCwhField9x
-                            invoke-virtual { v0, v1 }, $cauRemoveMethod
-                            return-void
-                        """
-                    )
-                }
+            exoPlayerImplClass.addBridge(
+                "patch_detachCwhFromEventDispatch", emptyList(), "V", 3,
+                """
+                    iget-object v0, p0, $eventDispatchField9x
+                    iget-object v1, p0, $exoPlayerCwhField9x
+                    invoke-virtual { v0, v1 }, $cauRemoveMethod
+                    return-void
+                """
             )
-            log.fine { "9.x: injected patch_detachCwhFromEventDispatch on ${exoPlayerImplClass.type} (crh.h=${eventDispatchField9x}, cwh=${exoPlayerCwhField9x})" }
+            log.fine { "9.x: patch_detachCwhFromEventDispatch removes $exoPlayerCwhField9x from $eventDispatchField9x via $cauRemoveMethod" }
         }
 
         // Releasing a player also releases its cwh listener set, which the incoming player shares,
@@ -1320,8 +1013,7 @@ val crossfadePatch = bytecodePatch(
         sessionClass.addFieldGetter("patch_getFactory", factoryFieldRef)
 
         factoryClass.interfaces.add(FACTORY_INTERFACE)
-        val needsGuardClear = guardField != null
-        val guardClearSmali = if (needsGuardClear) {
+        val guardClearSmali = if (guardField != null) {
             """
                 iget-object v0, p1, $sharedStateFieldRef
                 check-cast v0, $guardAbstractType
@@ -1329,33 +1021,18 @@ val crossfadePatch = bytecodePatch(
                 iput-object v1, v0, $guardField
             """
         } else ""
-        factoryClass.methods.add(
-            ImmutableMethod(
-                factoryClass.type, "patch_createPlayer",
-                listOf(
-                    ImmutableMethodParameter("Ljava/lang/Object;", null, null),
-                    ImmutableMethodParameter("Ljava/lang/Object;", null, null),
-                    ImmutableMethodParameter("I", null, null),
-                ),
-                "Ljava/lang/Object;",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                // Clearing the guard needs locals that do not overlap the 4 parameter registers.
-                MutableMethodImplementation(if (needsGuardClear) 7 else 4)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        check-cast p1, $coordinatorType
-                        check-cast p2, $loadControlType
-                        $guardClearSmali
-                        invoke-virtual { p0, p1, p2, p3 }, $factoryMethod
-                        move-result-object v0
-                        return-object v0
-                    """
-                )
-            }
+        factoryClass.addBridge(
+            "patch_createPlayer", listOf("Ljava/lang/Object;", "Ljava/lang/Object;", "I"), "Ljava/lang/Object;",
+            // Clearing the guard needs locals that do not overlap the 4 parameter registers.
+            if (guardField != null) 7 else 4,
+            """
+                check-cast p1, $coordinatorType
+                check-cast p2, $loadControlType
+                $guardClearSmali
+                invoke-virtual { p0, p1, p2, p3 }, $factoryMethod
+                move-result-object v0
+                return-object v0
+            """
         )
 
         sharedStateClass.interfaces.add(SHARED_STATE_INTERFACE)
@@ -1373,93 +1050,22 @@ val crossfadePatch = bytecodePatch(
 
         medialibPlayerClass.interfaces.add(MEDIALIB_PLAYER_INTERFACE)
         medialibPlayerClass.addFieldGetter("patch_getPlayerChain", playerChainField)
-        medialibPlayerClass.methods.add(
-            ImmutableMethod(
-                medialibPlayerClass.type,
-                "patch_playNextInQueue",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(1)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-virtual { p0 }, $playNextInQueueMethod
-                        return-void
-                    """
-                )
-            }
-        )
-        // 5 is REASON_DIRECTOR_RESET.
-        medialibPlayerClass.methods.add(
-            ImmutableMethod(
-                medialibPlayerClass.type,
-                "patch_forceStopVideo",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(2)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        const/4 v0, 0x5
-                        invoke-virtual { p0, v0 }, ${StopVideoFingerprint.method}
-                        return-void
-                    """
-                )
-            }
-        )
-        // stopVideo(1) is what starts loadVideo on the swapped player, stopVideo(5) alone does not.
-        medialibPlayerClass.methods.add(
-            ImmutableMethod(
-                medialibPlayerClass.type,
-                "patch_forceLoadVideo",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(2)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        const/4 v0, 0x1
-                        invoke-virtual { p0, v0 }, ${StopVideoFingerprint.method}
-                        return-void
-                    """
-                )
-            }
+        medialibPlayerClass.addBridge(
+            "patch_playNextInQueue", emptyList(), "V", 1,
+            """
+                invoke-virtual { p0 }, $playNextInQueueMethod
+                return-void
+            """
         )
         // Repeat-one reloads the cached descriptor instead of advancing the queue.
         val loadVideoMethod = LoadVideoFingerprint.method
-        val loadVideoDescriptorType = loadVideoMethod.parameterTypes.first().toString()
-        medialibPlayerClass.methods.add(
-            ImmutableMethod(
-                medialibPlayerClass.type,
-                "patch_loadVideoWith",
-                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(2)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        check-cast p1, $loadVideoDescriptorType
-                        invoke-virtual { p0, p1 }, $loadVideoMethod
-                        return-void
-                    """
-                )
-            }
+        medialibPlayerClass.addBridge(
+            "patch_loadVideoWith", listOf("Ljava/lang/Object;"), "V", 2,
+            """
+                check-cast p1, ${loadVideoMethod.parameterTypes.first()}
+                invoke-virtual { p0, p1 }, $loadVideoMethod
+                return-void
+            """
         )
 
         videoToggleClass.interfaces.add(VIDEO_TOGGLE_INTERFACE)
@@ -1479,12 +1085,12 @@ val crossfadePatch = bytecodePatch(
             } catch (_: Exception) { false }
         }
 
-        val videoToggleClassStateProviderField = videoToggleClass.fields.first { field ->
+        val stateProviderField = videoToggleClass.fields.first { field ->
             field.type.startsWith("L") && try {
                 classDefBy(field.type).getStateMethodOrNull() != null
             } catch (_: Exception) { false }
         }
-        val stateProviderClass = mutableClassDefBy(videoToggleClassStateProviderField.type)
+        val stateProviderClass = mutableClassDefBy(stateProviderField.type)
 
         val getStateMethod = stateProviderClass.getStateMethodOrNull()!!
         val stateType = getStateMethod.returnType
@@ -1495,29 +1101,16 @@ val crossfadePatch = bytecodePatch(
                     && method.parameterTypes.map { it.toString() } == listOf(stateType)
         }.maxBy { it.implementation?.instructions?.count() ?: 0 }
 
-        videoToggleClass.methods.add(
-            ImmutableMethod(
-                videoToggleClass.type,
-                "patch_isAudioMode",
-                listOf(),
-                "Z",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $videoToggleClassStateProviderField
-                        invoke-virtual { v0 }, $getStateMethod
-                        move-result-object v0
-                        invoke-static { v0 }, $isAudioModeMethod
-                        move-result v0
-                        return v0
-                    """
-                )
-            }
+        videoToggleClass.addBridge(
+            "patch_isAudioMode", emptyList(), "Z", 3,
+            """
+                iget-object v0, p0, $stateProviderField
+                invoke-virtual { v0 }, $getStateMethod
+                move-result-object v0
+                invoke-static { v0 }, $isAudioModeMethod
+                move-result v0
+                return v0
+            """
         )
 
         val setStateMethodFingerprint = Fingerprint(
@@ -1534,57 +1127,14 @@ val crossfadePatch = bytecodePatch(
         )
         val setStateMethod = setStateMethodFingerprint.method
 
-        // ATV_PREFERRED (audio) is the first constant.
-        val atvPreferredField = classDefBy(stateType).fields.first { field ->
+        // ATV_PREFERRED (audio) is the first constant and OMV_PREFERRED (video) the second.
+        val stateEnumStaticFields = classDefBy(stateType).fields.filter { field ->
             field.type == stateType
                     && AccessFlags.STATIC.isSet(field.accessFlags)
                     && AccessFlags.FINAL.isSet(field.accessFlags)
         }
-
-        videoToggleClass.methods.add(
-            ImmutableMethod(
-                videoToggleClass.type,
-                "patch_forceAudioMode",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $videoToggleClassStateProviderField
-                        sget-object v1, $atvPreferredField
-                        invoke-virtual { v0, v1 }, $setStateMethod
-                        return-void
-                    """
-                )
-            }
-        )
-
-        val toggleMethod = AudioVideoToggleFingerprint.method
-        videoToggleClass.methods.add(
-            ImmutableMethod(
-                videoToggleClass.type,
-                "patch_triggerToggle",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(2)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-virtual { p0 }, $toggleMethod
-                        return-void
-                    """
-                )
-            }
-        )
+        val atvPreferredField = stateEnumStaticFields[0]
+        val omvPreferredField = stateEnumStaticFields[1]
 
         // setState notifies a subscriber that fires stopVideo(5) and breaks loading on repeated
         // video to audio crossfades, so the broadcast's internal setter is used to skip notifying.
@@ -1618,142 +1168,53 @@ val crossfadePatch = bytecodePatch(
         val silentSetMethodRef = broadcastMethodFingerprint.instructionMatches.first()
             .getInstruction<ReferenceInstruction>().getReference<MethodReference>()!!
 
-        // OMV_PREFERRED (video) is the second constant.
-        val stateEnumStaticFields = classDefBy(stateType).fields.filter { field ->
-            field.type == stateType
-                    && AccessFlags.STATIC.isSet(field.accessFlags)
-                    && AccessFlags.FINAL.isSet(field.accessFlags)
-        }
-        val omvPreferredField = stateEnumStaticFields[1]
-
         log.fine {
             """
                 Silent mode discovery:
                 chxpField       = $chxpFieldRef
                 chxpType        = $chxpType
                 broadcastMethod = ${broadcastMethodRef.definingClass}->${broadcastMethodRef.name}
-                silentSetMethod = $silentSetMethodRef.definingClass}->${silentSetMethodRef.name}
-                omvPreferred    = $omvPreferredField    
+                silentSetMethod = $silentSetMethodRef
+                omvPreferred    = $omvPreferredField
             """
         }
 
-        val mutableChxpClass = mutableClassDefBy(chxpType)
-        mutableChxpClass.methods.add(
-            ImmutableMethod(
-                chxpType,
-                "patch_silentSet",
-                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        invoke-virtual { p0, p1 }, $silentSetMethodRef
-                        return-void
-                    """
-                )
-            }
+        mutableClassDefBy(chxpType).addBridge(
+            "patch_silentSet", listOf("Ljava/lang/Object;"), "V", 3,
+            """
+                invoke-virtual { p0, p1 }, $silentSetMethodRef
+                return-void
+            """
         )
 
-        val silentSetOnChxp = "$chxpType->patch_silentSet(Ljava/lang/Object;)V"
-        stateProviderClass.methods.add(
-            ImmutableMethod(
-                stateProviderClass.type,
-                "patch_silentSetState",
-                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $chxpFieldRef
-                        check-cast v0, $chxpType
-                        invoke-virtual {v0, p1}, $silentSetOnChxp
-                        return-void
-                    """
-                )
-            }
+        stateProviderClass.addBridge(
+            "patch_silentSetState", listOf("Ljava/lang/Object;"), "V", 3,
+            """
+                iget-object v0, p0, $chxpFieldRef
+                check-cast v0, $chxpType
+                invoke-virtual { v0, p1 }, $chxpType->patch_silentSet(Ljava/lang/Object;)V
+                return-void
+            """
         )
+
+        fun addSetStateBridge(bridgeName: String, stateField: Field, setter: String) {
+            videoToggleClass.addBridge(
+                bridgeName, emptyList(), "V", 3,
+                """
+                    iget-object v0, p0, $stateProviderField
+                    sget-object v1, $stateField
+                    invoke-virtual { v0, v1 }, $setter
+                    return-void
+                """
+            )
+        }
 
         val silentSetOnProvider = "${stateProviderClass.type}->patch_silentSetState(Ljava/lang/Object;)V"
-        videoToggleClass.methods.add(
-            ImmutableMethod(
-                videoToggleClass.type,
-                "patch_forceAudioModeSilent",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $videoToggleClassStateProviderField
-                        sget-object v1, $atvPreferredField
-                        invoke-virtual { v0, v1 }, $silentSetOnProvider
-                        return-void
-                    """
-                )
-            }
-        )
-
-        videoToggleClass.methods.add(
-            ImmutableMethod(
-                videoToggleClass.type,
-                "patch_restoreVideoModeSilent",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $videoToggleClassStateProviderField
-                        sget-object v1, $omvPreferredField
-                        invoke-virtual { v0, v1 }, $silentSetOnProvider
-                        return-void
-                    """
-                )
-            }
-        )
-
+        addSetStateBridge("patch_forceAudioModeSilent", atvPreferredField, silentSetOnProvider)
+        addSetStateBridge("patch_restoreVideoModeSilent", omvPreferredField, silentSetOnProvider)
         // Broadcasting variant, so subscribers left stale by silent changes resync. Otherwise, the
         // next video toggle is skipped as a no-op and shows a black screen.
-        videoToggleClass.methods.add(
-            ImmutableMethod(
-                videoToggleClass.type,
-                "patch_restoreVideoMode",
-                listOf(),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(3)
-            ).toMutable().apply {
-                addInstructions(
-                    0,
-                    """
-                        iget-object v0, p0, $videoToggleClassStateProviderField
-                        sget-object v1, $omvPreferredField
-                        invoke-virtual { v0, v1 }, $setStateMethod
-                        return-void
-                    """
-                )
-            }
-        )
+        addSetStateBridge("patch_restoreVideoMode", omvPreferredField, setStateMethod.toString())
 
         // The toggle hook only runs when the user taps the toggle, so without this the
         // toggle instance is never captured for tracks started from the feed.
@@ -1773,11 +1234,6 @@ val crossfadePatch = bytecodePatch(
                 interfaces.add(DELEGATE_INTERFACE)
                 addFieldGetter("patch_getDelegate", delegateField)
             }
-        }
-
-        listenerElementClass.apply {
-            interfaces.add(LISTENER_WRAPPER_INTERFACE)
-            addFieldGetter("patch_getWrappedListener", listenerElementField)
         }
     }
 }
