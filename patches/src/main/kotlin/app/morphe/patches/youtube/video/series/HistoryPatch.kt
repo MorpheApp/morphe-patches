@@ -25,7 +25,6 @@ import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -156,8 +155,7 @@ internal fun BytecodePatchContext.wireHistory() {
             .match(browse.originalClassDef)
             .instructionMatches
             .single()
-            .getInstruction<ReferenceInstruction>()
-            .reference as MethodReference
+            .getMethodCalled()
 
         fragment.methods.add(
             ImmutableMethod(

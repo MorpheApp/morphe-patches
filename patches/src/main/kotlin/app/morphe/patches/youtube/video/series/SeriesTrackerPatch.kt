@@ -159,15 +159,10 @@ val seriesTrackerPatch = bytecodePatch(
                 )
             }
 
-            val invoke = if (AccessFlags.PRIVATE.isSet(idGetter.accessFlags)) {
-                "invoke-direct"
-            } else {
-                "invoke-virtual"
-            }
             addGetter(
                 "patch_seriesTrackerVideoId",
                 "Ljava/lang/String;",
-                "$invoke { p0 }, $type->${idGetter.signature()}",
+                "invoke-virtual { p0 }, $idGetter",
                 false
             )
             addGetter(

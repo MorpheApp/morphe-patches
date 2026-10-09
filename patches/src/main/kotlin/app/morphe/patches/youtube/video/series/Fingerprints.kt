@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.extensions.InstructionExtensions.instructionsOrNull
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -21,143 +21,140 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal object MediaSessionFingerprint :
-    Fingerprint(
-        filters =
-            listOf(
-                methodCall(
-                    definingClass = "Landroid/media/session/MediaSession;",
-                    name = "setMetadata",
-                    parameters = listOf("Landroid/media/MediaMetadata;"),
-                )
-            )
+internal object MediaSessionFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(smali = "Landroid/media/session/MediaSession;->setMetadata(Landroid/media/MediaMetadata;)V")
     )
+)
 
-internal object BrowseFragmentFingerprint :
-    Fingerprint(
-        parameters =
-            listOf(
-                "Landroid/view/LayoutInflater;",
-                "Landroid/view/ViewGroup;",
-                "Landroid/os/Bundle;",
-            ),
-        returnType = "Landroid/view/View;",
-        filters =
-            listOf(string("Browse Fragment was given a navigation endpoint without browse data.")),
+internal object BrowseFragmentFingerprint : Fingerprint(
+    parameters = listOf(
+        "Landroid/view/LayoutInflater;",
+        "Landroid/view/ViewGroup;",
+        "Landroid/os/Bundle;",
+    ),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        string("Browse Fragment was given a navigation endpoint without browse data.")
     )
+)
 
-internal object AccountIdentityFingerprint :
-    Fingerprint(
-        name = "toString",
-        strings = listOf("AccountIdentity{getId=", ", isIncognito="),
+internal object AccountIdentityFingerprint : Fingerprint(
+    name = "toString",
+    filters = listOf(
+        string("AccountIdentity{getId="),
+        string(", isIncognito=")
     )
+)
 
-internal object SignedOutIdentityFingerprint : Fingerprint(strings = listOf("PseudonymousIdentity"))
-
-internal object CurrentAccountProviderFingerprint :
-    Fingerprint(strings = listOf("NEXT_INCOGNITO_SESSION_INDEX"))
-
-internal class RegisteredParseFingerprint(parse: MethodReference) :
-    Fingerprint(
-        definingClass = parse.definingClass,
-        name = "parseFrom",
-        parameters =
-            parse.parameterTypes.map(CharSequence::toString) +
-                "Lcom/google/protobuf/ExtensionRegistryLite;",
-        returnType = parse.returnType,
+internal object SignedOutIdentityFingerprint : Fingerprint(
+    filters = listOf(
+        string("PseudonymousIdentity")
     )
+)
 
-internal object GeneratedRegistryFingerprint :
-    Fingerprint(
-        definingClass = "Lcom/google/protobuf/ExtensionRegistryLite;",
-        name = "getGeneratedRegistry",
-        parameters = emptyList(),
-        returnType = "Lcom/google/protobuf/ExtensionRegistryLite;",
+internal object CurrentAccountProviderFingerprint : Fingerprint(
+    filters = listOf(
+        string("NEXT_INCOGNITO_SESSION_INDEX")
     )
+)
 
-internal object HistoryNavigationBuilderFingerprint :
-    Fingerprint(
-        definingClass = "Lapp/morphe/extension/youtube/series/HistoryNavigation;",
-        name = "buildNative",
-        parameters = listOf("[B"),
-        returnType = "Ljava/lang/Object;",
-    )
+internal class RegisteredParseFingerprint(parse: MethodReference) : Fingerprint(
+    definingClass = parse.definingClass,
+    name = "parseFrom",
+    parameters = parse.parameterTypes.map(CharSequence::toString) +
+            "Lcom/google/protobuf/ExtensionRegistryLite;",
+    returnType = parse.returnType,
+)
 
-internal object NavigationTabCreatedFingerprint :
-    Fingerprint(
-        definingClass = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;",
-        name = "navigationTabCreated",
-        parameters = listOf("L", "Landroid/view/View;"),
-        returnType = "V",
-    )
+internal object GeneratedRegistryFingerprint : Fingerprint(
+    definingClass = "Lcom/google/protobuf/ExtensionRegistryLite;",
+    name = "getGeneratedRegistry",
+    parameters = listOf(),
+    returnType = "Lcom/google/protobuf/ExtensionRegistryLite;",
+)
 
-internal class BrowseRouteFingerprint(endpointType: String) :
-    Fingerprint(
-        classFingerprint = BrowseFragmentFingerprint,
-        filters =
-            listOf(
-                methodCall(
-                    opcode = Opcode.INVOKE_STATIC,
-                    parameters = listOf(endpointType),
-                    returnType = "Ljava/lang/String;",
-                )
-            ),
-    )
+internal object HistoryNavigationBuilderFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/youtube/series/HistoryNavigation;",
+    name = "buildNative",
+    parameters = listOf("[B"),
+    returnType = "Ljava/lang/Object;",
+)
 
-internal object ToolbarMenuFingerprint :
-    Fingerprint(
-        definingClass = "Landroid/support/v7/widget/Toolbar;",
-        parameters = emptyList(),
-        returnType = "Landroid/view/Menu;",
-        custom = { method, _ ->
-            AccessFlags.PUBLIC.isSet(method.accessFlags) &&
-                !AccessFlags.STATIC.isSet(method.accessFlags)
-        },
-    )
+internal object NavigationTabCreatedFingerprint : Fingerprint(
+    definingClass = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;",
+    name = "navigationTabCreated",
+    parameters = listOf(
+        "Lapp/morphe/extension/youtube/shared/NavigationBar\$NavigationButton;",
+        "Landroid/view/View;"
+    ),
+    returnType = "V",
+)
 
-internal class ControllerVideoIdFingerprint(accessor: MethodReference) :
-    Fingerprint(
-        classFingerprint = PlayerInitFingerprint,
-        parameters = emptyList(),
-        returnType = "Ljava/lang/String;",
-        filters = listOf(methodCall(accessor)),
-        custom = { method, _ -> !AccessFlags.STATIC.isSet(method.accessFlags) },
+internal class BrowseRouteFingerprint(endpointType: String) : Fingerprint(
+    classFingerprint = BrowseFragmentFingerprint,
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf(endpointType),
+            returnType = "Ljava/lang/String;",
+        )
     )
+)
 
-internal class IdentityFieldGetterFingerprint(field: FieldReference) :
-    Fingerprint(
-        parameters = emptyList(),
-        returnType = field.type,
-        filters = listOf(fieldAccess(field)),
-        custom = { method, _ -> method.name != "toString" },
-    )
+internal object ToolbarMenuFingerprint : Fingerprint(
+    definingClass = "Landroid/support/v7/widget/Toolbar;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "Landroid/view/Menu;",
+)
 
-internal class IdentityInterfaceMethodFingerprint(method: MethodReference) :
-    Fingerprint(
-        name = method.name,
-        parameters = method.parameterTypes.map(CharSequence::toString),
-        returnType = method.returnType,
+internal class ControllerVideoIdFingerprint(accessor: MethodReference) : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        methodCall(accessor)
     )
+)
 
-// Signed-out identities return false for incognito, but true for unauthenticated.
-internal class SignedOutIncognitoFingerprint(candidate: MethodReference) :
-    Fingerprint(
-        name = candidate.name,
-        parameters = emptyList(),
-        returnType = "Z",
-        filters = listOf(literal(0), opcode(Opcode.RETURN, location = MatchAfterImmediately())),
-        custom = { method, _ ->
-            method.instructionsOrNull?.toList()?.let {
-                it.size == 2 && it.first().opcode == Opcode.CONST_4
-            } == true
-        },
+/**
+ * Getter of an account identity field. toString also reads the field, but not first.
+ */
+internal class IdentityFieldGetterFingerprint(field: FieldReference) : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = field.type,
+    filters = listOf(
+        fieldAccess(field, location = MatchFirst())
     )
+)
 
-internal class CurrentAccountGetterFingerprint(accountType: String) :
-    Fingerprint(
-        parameters = emptyList(),
-        returnType = accountType,
-        custom = { method, _ ->
-            AccessFlags.PUBLIC.isSet(method.accessFlags) && method.implementation != null
-        },
+internal class IdentityInterfaceMethodFingerprint(method: MethodReference) : Fingerprint(
+    name = method.name,
+    parameters = method.parameterTypes.map(CharSequence::toString),
+    returnType = method.returnType,
+)
+
+/**
+ * Signed-out identities return false for incognito, but true for unauthenticated.
+ */
+internal class SignedOutIncognitoFingerprint(candidate: MethodReference) : Fingerprint(
+    name = candidate.name,
+    parameters = listOf(),
+    returnType = "Z",
+    filters = listOf(
+        literal(0, location = MatchFirst()),
+        opcode(Opcode.RETURN, location = MatchAfterImmediately())
     )
+)
+
+/**
+ * Each current-account provider has one getter for the identity.
+ * The getter of one provider is synchronized and the other is not.
+ */
+internal class CurrentAccountGetterFingerprint(accountType: String) : Fingerprint(
+    parameters = listOf(),
+    returnType = accountType,
+)
