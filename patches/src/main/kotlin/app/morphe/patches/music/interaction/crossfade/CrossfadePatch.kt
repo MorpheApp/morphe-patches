@@ -200,9 +200,7 @@ val crossfadePatch = bytecodePatch(
                                 layout = "@layout/morphe_crossfade_about_banner",
                             ),
                             NonInteractivePreference("morphe_music_crossfade_about_how"),
-                            NonInteractivePreference("morphe_music_crossfade_about_best"),
                             NonInteractivePreference("morphe_music_crossfade_about_quirks"),
-                            NonInteractivePreference("morphe_music_crossfade_about_known"),
                             NonInteractivePreference("morphe_music_crossfade_about_unsupported"),
                             NonInteractivePreference("morphe_music_crossfade_about_credit"),
                         )
