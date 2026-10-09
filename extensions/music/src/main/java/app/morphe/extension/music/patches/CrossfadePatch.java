@@ -1092,8 +1092,9 @@ public class CrossfadePatch {
                         lastPollState = state;
                     }
 
+                    // A slow or failed stream, not a crossfade error, so no error toast (#1949).
                     if (System.currentTimeMillis() > deadline) {
-                        logError(() -> "Timeout waiting for new track");
+                        logWarn(() -> "Timeout waiting for new track " + dumpState());
                         recoverFailedLoad();
                         return;
                     }
