@@ -9,16 +9,23 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.layout.buttons.navigation.PivotBarRendererFingerprint
 import app.morphe.patches.youtube.layout.buttons.navigation.PivotBarRendererListFingerprint
-import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
+import app.morphe.patches.youtube.misc.backgesture.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import com.android.tools.smali.dexlib2.*
-import com.android.tools.smali.dexlib2.iface.*
-import com.android.tools.smali.dexlib2.iface.instruction.*
-import com.android.tools.smali.dexlib2.iface.reference.*
-import com.android.tools.smali.dexlib2.immutable.*
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.Instruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val NAV = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 private const val OUR_NAV = "${OUR_PREFIX}HistoryNavigation;"
