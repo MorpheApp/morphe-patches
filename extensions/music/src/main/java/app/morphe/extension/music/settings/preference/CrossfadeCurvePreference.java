@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
+
 package app.morphe.extension.music.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -33,10 +34,6 @@ import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ui.Dim;
 
-/**
- * Custom preference that renders a live preview of the selected crossfade curve.
- * Polls the Settings values to detect changes and re-renders.
- */
 @SuppressWarnings({"unused", "deprecation"})
 public final class CrossfadeCurvePreference extends Preference
         implements SharedPreferences.OnSharedPreferenceChangeListener {
