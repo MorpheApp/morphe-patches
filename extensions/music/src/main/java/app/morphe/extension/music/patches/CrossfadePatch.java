@@ -418,6 +418,16 @@ public class CrossfadePatch {
      */
     public static volatile boolean suppressCwhU = false;
 
+    private static final Runnable NO_OP_RUNNABLE = () -> {};
+
+    /**
+     * Injection point. 9.28+ inlines cwh.U() into ExoPlayer.release(), so the release
+     * Runnable is swapped for a no-op here instead of returning early from cwh.U().
+     */
+    public static Runnable filterAnalyticsRelease(Runnable runnable) {
+        return suppressCwhU ? NO_OP_RUNNABLE : runnable;
+    }
+
     /**
      * Read once at class init.  Pairs with {@code rebootApp=true} on
      * {@link Settings#CROSSFADE_ENABLED}: toggling the setting requires
