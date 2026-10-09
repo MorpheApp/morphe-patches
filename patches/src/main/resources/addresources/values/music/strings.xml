@@ -262,6 +262,7 @@ Downloaded tracks appear here"</string>
     <string name="morphe_music_crossfade_paused_toast">Crossfade paused for this session</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
+    <string name="morphe_music_crossfade_sabr_toast">Crossfade is off with SABR playback</string>
     <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is paused while casting or mirroring audio. Crossfade over cast/mirror is unstable and may never be fixable</string>
     <string name="morphe_music_crossfade_about_title">About</string>
     <string name="morphe_music_crossfade_about_summary">How crossfade works — and when it does not</string>
@@ -287,6 +288,8 @@ The lock screen or notification can briefly show a stale state mid-transition"</
 Pausing crossfade to watch a music video can leave some videos black (the ones whose audio comes from the video itself). Pausing crossfade before you pick the song avoids it"</string>
     <string name="morphe_music_crossfade_about_unsupported_title">Doesn\'t work at all</string>
     <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring) — crossfade pauses because it\'s unstable there and may never be fixable.
+
+SABR playback (Spoof video streams turned off). YouTube Music stops loading the old song as soon as the next one starts, so there is nothing left to fade out
 
 YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_crossfade_about_credit_title">Credit</string>

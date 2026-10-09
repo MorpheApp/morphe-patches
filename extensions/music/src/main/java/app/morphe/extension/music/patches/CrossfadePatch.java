@@ -39,6 +39,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 /**
  * Crossfades by keeping the outgoing ExoPlayer alive and loading the next track into a second
@@ -515,6 +516,14 @@ public class CrossfadePatch {
                 return false;
             }
 
+            // SABR feeds the outgoing only through YouTube Music's session, which stops on the track
+            // change. The old song falls silent within about a second, whatever its buffer reports (#2748).
+            if (isSabrStream()) {
+                logDebug(() -> "stopVideo(5): skip, SABR stream");
+                showSabrToastOnce();
+                return false;
+            }
+
             // The monitor is already fading the outgoing out, the natural transition creates the incoming.
             if (isAutoAdvance && autoAdvanceCrossfadeActive) {
                 logDebug(() -> "9.x: volume-fade auto-advance, allowing stopVideo(5) (outgoing fade running)");
@@ -733,6 +742,21 @@ public class CrossfadePatch {
                 + " over " + duration + "ms");
     }
 
+    /**
+     * Native SABR playback or a spoofed client that falls back to SABR.
+     */
+    private static boolean isSabrStream() {
+        return !SpoofVideoStreamsPatch.disableSABR();
+    }
+
+    private static volatile boolean sabrToastShown = false;
+
+    private static void showSabrToastOnce() {
+        if (sabrToastShown) return;
+        sabrToastShown = true;
+        Utils.showToastShort(str("morphe_music_crossfade_sabr_toast"));
+    }
+
     private static ExoPlayerAccess createNewPlayer(PlayerCoordinatorAccess coordinator) {
         try {
             SessionAccess session = (SessionAccess) coordinator.patch_getSession();
@@ -825,8 +849,8 @@ public class CrossfadePatch {
             return false;
         }
 
-        if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get() || sleepTimerEndOfTrack) {
-            logDebug(() -> "PlayNext: skip, auto-advance crossfade disabled or end of song sleep timer");
+        if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get() || sleepTimerEndOfTrack || isSabrStream()) {
+            logDebug(() -> "PlayNext: skip, auto-advance crossfade disabled, end of song sleep timer or SABR");
             return false;
         }
 
@@ -1249,9 +1273,9 @@ public class CrossfadePatch {
                     return;
                 }
 
-                // Keeps polling, so it resumes once casting stops (#1549) or the
-                // end of song sleep timer is cleared (#2017).
-                if (isAudioRoutedToCast() || sleepTimerEndOfTrack) {
+                // Keeps polling, so it resumes once casting stops (#1549), the end of song
+                // sleep timer is cleared (#2017) or the stream is no longer SABR (#2748).
+                if (isAudioRoutedToCast() || sleepTimerEndOfTrack || isSabrStream()) {
                     mainHandler.postDelayed(this, MONITOR_POLL_MS);
                     return;
                 }
