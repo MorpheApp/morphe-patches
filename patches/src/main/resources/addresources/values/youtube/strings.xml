@@ -69,7 +69,6 @@ Changes include:
     <string name="morphe_hide_album_cards_summary">Hides the album cards under the artist description</string>
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
     <string name="morphe_hide_artist_cards_summary">Hides the artist card at the top of the search results</string>
-    <string name="morphe_hide_auto_dubbed_label_title">Hide \'Auto-dubbed\' label</string>
     <string name="morphe_hide_channel_buttons_title">Hide channel buttons</string>
     <string name="morphe_hide_channel_buttons_summary">Hides buttons such as Subscribe, View Channel, Community, and YouTube Music from channel profiles in search results</string>
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
@@ -85,7 +84,6 @@ Changes include:
     <string name="morphe_hide_history_shelf_title">Hide History shelf</string>
     <string name="morphe_hide_horizontal_shelves_title">Hide horizontal shelves</string>
     <string name="morphe_hide_horizontal_shelves_summary">Hides horizontal shelves such as Breaking news, Community posts you may like, Continue watching, Explore more channels, Explore more topics, For You, Latest videos, Most relevant, Posts from Creator\'s Community, Shopping, and Watch it again</string>
-    <string name="morphe_hide_hyped_label_title">Hide Hyped label</string>
     <string name="morphe_hide_image_shelf_title">Hide image shelf</string>
     <string name="morphe_hide_image_shelf_summary">Hides image shelves in search results</string>
     <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -127,9 +125,9 @@ Changes include:
 • Shorts shelves, channel pages, and search results may still show upload times
 • Does not work with automotive layout"</string>
     <string name="morphe_hide_video_thumbnail_title">Hide video thumbnail</string>
-    <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-    <string name="morphe_hide_video_recommendation_labels_title">Hide video recommendation labels</string>
-    <string name="morphe_hide_video_recommendation_labels_summary">Hides \'People also watched\' and \'You might also like\' labels in search results</string>
+    <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+    <string name="morphe_hide_video_labels_title">Hide video labels</string>
+    <string name="morphe_hide_video_labels_summary">Hides labels like \'Auto-dubbed\' / \'Dubbed\', \'Earns commission\', \'Hyped\', \'People also watched\', \'product(s)\' and \'You might also like\'</string>
     <string name="morphe_hide_view_count_title">Hide view count</string>
     <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
     <string name="morphe_hide_view_count_summary">"Limitations:
@@ -177,7 +175,7 @@ Changes include:
     <string name="morphe_hide_video_title_title">Hide video title</string>
     <string name="morphe_hide_video_title_summary">Hides the video title in the fullscreen mode</string>
     <string name="morphe_sanitize_video_subtitle_title">Sanitize video subtitle</string>
-    <string name="morphe_sanitize_video_subtitle_summary">Sanitizes phrases like \'#\', \'Fundraiser\', \'Shop\', and \'products\' from video subtitle</string>
+    <string name="morphe_sanitize_video_subtitle_summary">Sanitizes phrases like \'#\', \'Fundraiser\', \'product(s)\', and \'Shop\' from video subtitle</string>
 
     <string name="morphe_hide_description_components_screen_title">Video description</string>
     <string name="morphe_hide_description_components_screen_summary">Choose which components appear in the video description</string>

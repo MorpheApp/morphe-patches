@@ -101,7 +101,7 @@ public final class LayoutComponentsFilter extends Filter {
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup surveys;
     private final StringFilterGroup videoLabels;
-    private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
+    private final ByteArrayFilterGroup videoLabelsBuffer;
     private final StringFilterGroup videoRecommendationLabels;
 
     public enum ExpandableCardStyle {
@@ -421,20 +421,13 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         videoLabels = new StringFilterGroup(
+                Settings.HIDE_VIDEO_LABELS,
+                "|ContainerType|ContainerType|ContainerType|ContainerType|"
+        );
+
+        videoLabelsBuffer = new ByteArrayFilterGroup(
                 null,
                 "badge.e"
-        );
-        videoLabelsGroupList.addAll(
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_AUTO_DUBBED_LABEL,
-                        "yt_outline_person_radar",
-                        "yt_outline_experimental_person_waves"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_HYPED_LABEL,
-                        "yt_fill_star_shooting",
-                        "yt_fill_experimental_hype"
-                )
         );
 
         final var videoTitle = new StringFilterGroup(
@@ -443,7 +436,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         videoRecommendationLabels = new StringFilterGroup(
-                Settings.HIDE_VIDEO_RECOMMENDATION_LABELS,
+                Settings.HIDE_VIDEO_LABELS,
                 "endorsement_header_footer.e"
         );
 
@@ -673,7 +666,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == videoLabels) {
-            return videoLabelsGroupList.check(buffer).isFiltered();
+            return videoLabelsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == videoRecommendationLabels) {

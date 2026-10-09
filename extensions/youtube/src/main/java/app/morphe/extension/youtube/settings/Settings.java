@@ -133,7 +133,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting HIDE_ACCOUNT_MENU_FILTER_STRINGS = new StringSetting("morphe_hide_account_menu_filter_strings", "", true, parent(HIDE_ACCOUNT_MENU));
     public static final BooleanSetting HIDE_ALBUM_CARDS = new BooleanSetting("morphe_hide_album_cards", FALSE, true);
     public static final BooleanSetting HIDE_ARTIST_CARDS = new BooleanSetting("morphe_hide_artist_cards", FALSE);
-    public static final BooleanSetting HIDE_AUTO_DUBBED_LABEL = new BooleanSetting("morphe_hide_auto_dubbed_label", FALSE);
     public static final BooleanSetting HIDE_CHANNEL_BUTTONS = new BooleanSetting("morphe_hide_channel_buttons", FALSE);
     public static final BooleanSetting HIDE_COMMUNITY_POSTS = new BooleanSetting("morphe_hide_community_posts", FALSE);
     public static final BooleanSetting HIDE_COMPACT_BANNER = new BooleanSetting("morphe_hide_compact_banner", TRUE, true);
@@ -143,7 +142,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_FLOATING_MICROPHONE_BUTTON = new BooleanSetting("morphe_hide_floating_microphone_button", TRUE, true);
     public static final BooleanSetting HIDE_GET_PREMIUM_BUTTON = new BooleanSetting("morphe_hide_get_premium_button", FALSE);
     public static final BooleanSetting HIDE_HORIZONTAL_SHELVES = new BooleanSetting("morphe_hide_horizontal_shelves", TRUE);
-    public static final BooleanSetting HIDE_HYPED_LABEL = new BooleanSetting("morphe_hide_hyped_label", FALSE);
     public static final BooleanSetting HIDE_IMAGE_SHELF = new BooleanSetting("morphe_hide_image_shelf", TRUE);
     public static final BooleanSetting HIDE_HISTORY_SHELF = new BooleanSetting("morphe_hide_history_shelf", FALSE);
     public static final BooleanSetting HIDE_INVITE_TO_MESSAGE_CARD = new BooleanSetting("morphe_hide_invite_to_message_card", FALSE);
@@ -161,8 +159,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SURVEYS = new BooleanSetting("morphe_hide_surveys", TRUE);
     public static final BooleanSetting HIDE_TICKET_SHELF = new BooleanSetting("morphe_hide_ticket_shelf", FALSE);
     public static final BooleanSetting HIDE_UPLOAD_TIME = new BooleanSetting("morphe_hide_upload_time", FALSE);
+    public static final BooleanSetting HIDE_VIDEO_LABELS = new BooleanSetting("morphe_hide_video_labels", TRUE);
     public static final BooleanSetting HIDE_VIDEO_THUMBNAIL = new BooleanSetting("morphe_hide_video_thumbnail", FALSE);
-    public static final BooleanSetting HIDE_VIDEO_RECOMMENDATION_LABELS = new BooleanSetting("morphe_hide_video_recommendation_labels", TRUE);
     public static final BooleanSetting HIDE_VIEW_COUNT = new BooleanSetting("morphe_hide_view_count", FALSE);
     public static final BooleanSetting HIDE_WEB_SEARCH_RESULTS = new BooleanSetting("morphe_hide_web_search_results", TRUE);
     public static final BooleanSetting HIDE_YOU_MAY_LIKE_SECTION = new BooleanSetting("morphe_hide_you_may_like_section", TRUE, true);

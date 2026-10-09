@@ -315,7 +315,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ),
             SwitchPreference("morphe_hide_album_cards", summary = true),
             SwitchPreference("morphe_hide_artist_cards", summary = true),
-            SwitchPreference("morphe_hide_auto_dubbed_label"),
             SwitchPreference("morphe_hide_channel_buttons", summary = true),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner", summary = true),
@@ -346,7 +345,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_get_premium_button"),
             SwitchPreference("morphe_hide_history_shelf"),
             SwitchPreference("morphe_hide_horizontal_shelves", summary = true),
-            SwitchPreference("morphe_hide_hyped_label"),
             SwitchPreference("morphe_hide_image_shelf", summary = true),
             SwitchPreference("morphe_hide_handle", summary = true),
             SwitchPreference("morphe_hide_help_feedback_menu", summary = true),
@@ -370,7 +368,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_video_thumbnail"),
-            SwitchPreference("morphe_hide_video_recommendation_labels", summary = true),
+            SwitchPreference("morphe_hide_video_labels", summary = true),
             SwitchPreference(
                 "morphe_hide_view_count",
                 summary = true,
