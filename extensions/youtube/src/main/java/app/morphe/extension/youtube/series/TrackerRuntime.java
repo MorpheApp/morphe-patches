@@ -10,7 +10,6 @@ package app.morphe.extension.youtube.series;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.widget.Toast;
 
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -20,16 +19,15 @@ import app.morphe.extension.youtube.shared.PlayerType;
 /** Main-thread adapter: ID and time are sampled from the same active controller. */
 final class TrackerRuntime {
     private static long privacyGeneration;
-    private static final PlaybackReducer reducer =
-            new PlaybackReducer(
-                    snapshot -> {
-                        TrackerService service = service();
-                        if (service != null)
-                            service.checkpoint(
-                                    snapshot, privacyGeneration, () -> reducerAck(snapshot));
-                    },
-                    () -> Settings.SERIES_TRACKER_COMPLETION_PERCENT.get(),
-                    () -> Settings.SERIES_TRACKER_COMPLETION_SECONDS.get());
+    private static final PlaybackReducer reducer = new PlaybackReducer(
+            snapshot -> {
+                TrackerService service = service();
+                if (service != null)
+                    service.checkpoint(
+                            snapshot, privacyGeneration, () -> reducerAck(snapshot));
+            },
+            Settings.SERIES_TRACKER_COMPLETION_PERCENT::get,
+            Settings.SERIES_TRACKER_COMPLETION_SECONDS::get);
     private static final Handler main = new Handler(Looper.getMainLooper());
     private static boolean waiting;
     private static LaunchRequest pending;
@@ -125,15 +123,7 @@ final class TrackerRuntime {
                         if (!waiting) return;
                         if (SystemClock.elapsedRealtime() - requestedAt >= 15000) {
                             cancelLaunch();
-                            if (Utils.getContext() != null)
-                                Toast.makeText(
-                                                Utils.getContext(),
-                                                UiText.get(
-                                                        Utils.getContext(),
-                                                        "morphe_series_tracker_error_resume"),
-                                                Toast.LENGTH_LONG)
-                                        .show();
-
+                            Utils.showToastLong(UiText.get("morphe_series_tracker_error_resume"));
                         } else main.postDelayed(this, 250);
                     }
                 },

@@ -9,10 +9,10 @@ package app.morphe.extension.youtube.series;
 
 import android.app.Activity;
 import android.content.Context;
-import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** Player actions capture their context at the tap; following never launches another video. */
@@ -36,66 +36,56 @@ final class PlayerSeriesAction {
             HistoryUi.open(activity);
             return;
         }
-        String playlist =
-                playlist(
-                        video,
-                        VideoInformation.getPlayerResponseVideoId(),
-                        VideoInformation.getPlaylistId());
+        String playlist = playlist(
+                video,
+                VideoInformation.getPlayerResponseVideoId(),
+                VideoInformation.getPlaylistId());
         pending = new WeakReference<>(activity);
-        TrackerService.get(activity)
-                .library(
-                        rows -> {
-                            pending.clear();
-                            if (activity.isFinishing() || activity.isDestroyed()) return;
-                            // A player transition while storage was busy must not open the previous
-                            // video's series.
-                            if (!video.equals(activeVideo())) return;
-                            String followed = followedSeries(rows, playlist, video);
-                            if (!followed.isEmpty()) {
-                                HistoryUi.openSeries(activity, followed);
-                                return;
-                            }
-                            java.util.function.Consumer<String> done =
-                                    id ->
-                                            Toast.makeText(
-                                                            activity,
-                                                            UiText.get(
-                                                                    activity,
-                                                                    "morphe_series_tracker_followed"),
-                                                            Toast.LENGTH_SHORT)
-                                                    .show();
-                            if (playlist.isEmpty()) {
-                                java.util.List<PlaylistDiscovery.Match> saved =
-                                        new java.util.ArrayList<>();
-                                for (TrackerModels.Series series : rows) {
-                                    if (series.bookmarkId.equals(video)
-                                            || series.episodes.stream()
-                                                    .anyMatch(e -> e.videoId.equals(video)))
-                                        saved.add(
-                                                new PlaylistDiscovery.Match(
-                                                        series.id, series.name, "", video));
-                                }
-                                if (saved.size() > 1)
-                                    PlaylistDiscoverySheet.saved(activity, video, done, saved);
-                                else PlaylistDiscoverySheet.show(activity, video, done);
-                            } else FollowFlow.fromPlayer(activity, playlist, video, done);
-                        },
-                        message -> {
-                            pending.clear();
-                            if (!activity.isFinishing() && !activity.isDestroyed())
-                                Toast.makeText(
-                                                activity,
-                                                UiText.get(activity, message),
-                                                Toast.LENGTH_LONG)
-                                        .show();
-                        });
+        TrackerService.get(activity).library(rows -> {
+                    pending.clear();
+                    if (activity.isFinishing() || activity.isDestroyed()) return;
+                    // A player transition while storage was busy must not open the previous
+                    // video's series.
+                    if (!video.equals(activeVideo())) return;
+                    String followed = followedSeries(rows, playlist, video);
+                    if (!followed.isEmpty()) {
+                        HistoryUi.openSeries(activity, followed);
+                        return;
+                    }
+                    java.util.function.Consumer<String> done =
+                            id ->
+                                    Utils.showToastShort(UiText.get("morphe_series_tracker_followed"));
+                    if (playlist.isEmpty()) {
+                        java.util.List<PlaylistDiscovery.Match> saved =
+                                new java.util.ArrayList<>();
+                        for (TrackerModels.Series series : rows) {
+                            if (series.bookmarkId.equals(video)
+                                    || series.episodes.stream()
+                                    .anyMatch(e -> e.videoId.equals(video)))
+                                saved.add(
+                                        new PlaylistDiscovery.Match(
+                                                series.id, series.name, "", video));
+                        }
+                        if (saved.size() > 1)
+                            PlaylistDiscoverySheet.saved(activity, video, done, saved);
+                        else PlaylistDiscoverySheet.show(activity, video, done);
+                    } else FollowFlow.fromPlayer(activity, playlist, video, done);
+                },
+                message -> {
+                    pending.clear();
+                    if (!activity.isFinishing() && !activity.isDestroyed())
+                        Utils.showToastLong(UiText.get(message));
+                });
     }
 
     static String followedSeries(
             java.util.List<TrackerModels.Series> rows, String playlist, String video) {
         if (!playlist.isEmpty()) {
-            for (TrackerModels.Series series : rows)
-                if (series.id.equals(playlist)) return series.id;
+            for (TrackerModels.Series series : rows) {
+                if (series.id.equals(playlist)) {
+                    return series.id;
+                }
+            }
             return "";
         }
         String match = "";
@@ -103,7 +93,9 @@ final class PlayerSeriesAction {
             if (series.bookmarkId.equals(video)
                     || series.episodes.stream().anyMatch(e -> e.videoId.equals(video))) {
                 // Do not arbitrarily pick between two saved playlists containing the same video.
-                if (!match.isEmpty()) return "";
+                if (!match.isEmpty()) {
+                    return "";
+                }
                 match = series.id;
             }
         }

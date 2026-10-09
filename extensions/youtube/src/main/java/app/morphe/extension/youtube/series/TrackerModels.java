@@ -70,10 +70,9 @@ public final class TrackerModels {
                 long duration,
                 boolean available,
                 String videoInfo) {
-            this.videoInfo =
-                    videoInfo == null
-                            ? ""
-                            : videoInfo.substring(0, Math.min(240, videoInfo.length()));
+            this.videoInfo = videoInfo == null
+                    ? ""
+                    : videoInfo.substring(0, Math.min(240, videoInfo.length()));
             this.ordinal = ordinal;
             videoId = id == null ? "" : id;
             this.title = title == null ? "" : title;

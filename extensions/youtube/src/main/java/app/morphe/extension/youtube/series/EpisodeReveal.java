@@ -64,15 +64,14 @@ final class EpisodeReveal {
 
     private void afterLayout(ScrollView scroll, int render, Runnable work) {
         ViewTreeObserver observer = scroll.getViewTreeObserver();
-        observer.addOnPreDrawListener(
-                new ViewTreeObserver.OnPreDrawListener() {
-                    @Override
-                    public boolean onPreDraw() {
-                        if (observer.isAlive()) observer.removeOnPreDrawListener(this);
-                        if (generation == render && scroll.isAttachedToWindow() && scroll.isShown())
-                            work.run();
-                        return true;
-                    }
-                });
+        observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if (observer.isAlive()) observer.removeOnPreDrawListener(this);
+                if (generation == render && scroll.isAttachedToWindow() && scroll.isShown())
+                    work.run();
+                return true;
+            }
+        });
     }
 }

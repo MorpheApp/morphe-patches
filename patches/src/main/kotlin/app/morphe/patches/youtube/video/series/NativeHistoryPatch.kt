@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.getMutableMethod
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -22,6 +21,9 @@ private const val HISTORY_TICKET =
     "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Ticket;"
 private const val HISTORY_SOURCE =
     "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Source;"
+private const val HISTORY_REQUEST =
+    "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Request;"
+private const val IDENTITY = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy\$Identity;"
 
 /** Keep host changes limited to typed bridges; resolve every host member before mutation. */
 internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContract) {
@@ -31,9 +33,6 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
     val mutable = mutableClassDefBy(service.type)
     mutable.interfaces.add(HISTORY_SOURCE)
     fun bridge(name: String, args: List<String>, result: String, registers: Int, body: String) {
-        if (mutable.methods.any { it.name == name && it.parameterTypes == args }) {
-            throw PatchException("Series Tracker: native History bridge collision: $name")
-        }
         val method = ImmutableMethod(
             service.type,
             name,
@@ -47,18 +46,16 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
         method.addInstructions(0, body.trimIndent())
         mutable.methods.add(method)
     }
+    // Builds a History request. Authorization is also checked here,
+    // so an unauthorized request is never dispatched.
     bridge(
         "patch_seriesTrackerHistory",
         listOf("Ljava/lang/String;", "Ljava/util/concurrent/Executor;"),
         "Ljava/util/concurrent/Future;",
         5,
         """
-            ${
-                if (contract.factory.parameterTypes.isEmpty())
-                    "invoke-virtual {p0}, ${contract.factory}"
-                else
-                    "const/4 v0, 0x0\ninvoke-virtual {p0, v0}, ${contract.factory}"
-            }
+            const/4 v0, 0x0
+            invoke-virtual {p0, v0}, ${contract.factory}
             move-result-object v0
             invoke-virtual {p1}, Ljava/lang/String;->isEmpty()Z
             move-result v1
@@ -107,15 +104,10 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
         0,
         "invoke-static/range {p0 .. p0}, $TRANSPORT->attach($HISTORY_SOURCE)V",
     )
-    val requestInterface = "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Request;"
-    val identity = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy\$Identity;"
     val requestClass = mutableClassDefBy(request.type)
-    requestClass.interfaces.add(requestInterface)
+    requestClass.interfaces.add(HISTORY_REQUEST)
 
     fun requestBridge(name: String, result: String, registers: Int, body: String) {
-        if (requestClass.methods.any { it.name == name }) {
-            throw PatchException("Series Tracker: native History request bridge collision: $name")
-        }
         val method = ImmutableMethod(
             request.type,
             name,
@@ -149,7 +141,7 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
     )
     requestBridge(
         "patch_seriesTrackerRequestIdentity",
-        identity,
+        IDENTITY,
         5,
         """
             invoke-virtual {p0}, ${contract.identity}
@@ -159,8 +151,8 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
             move-result-object v1
             invoke-interface {v0}, ${account.type}->${account.incognito}
             move-result v2
-            new-instance v3, $identity
-            invoke-direct {v3, v1, v2}, $identity-><init>(Ljava/lang/String;Z)V
+            new-instance v3, $IDENTITY
+            invoke-direct {v3, v1, v2}, $IDENTITY-><init>(Ljava/lang/String;Z)V
             return-object v3
             :unknown
             const/4 v0, 0x0
@@ -169,13 +161,10 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
     )
     // Save the request before the native implementation reuses its parameter registers.
     // Retain the exact future: the extension never cancels a host-owned request.
-    val ticket = "${SERIES_TRACKER_EXTENSION_PREFIX}NativeHistoryTransport\$Ticket;"
     for (target in listOf(contract.dispatch) + contract.genericDispatches) {
         val original = target.getMutableMethod()
         val name = original.name
         val alias = "patch_seriesTrackerNative$name"
-        if (mutable.methods.any { it.name == alias })
-            throw PatchException("Series Tracker: native History alias collision")
         val args = original.parameterTypes.map { it.toString() }
         val result = original.returnType
         mutable.methods.remove(original)
@@ -187,15 +176,11 @@ internal fun BytecodePatchContext.wireNativeHistory(account: NativeAccountContra
             result,
             args.size + 3,
             """
-                invoke-static {p0, p1}, $TRANSPORT->before(${HISTORY_SOURCE}Ljava/lang/Object;)$ticket
+                invoke-static {p0, p1}, $TRANSPORT->before(${HISTORY_SOURCE}Ljava/lang/Object;)$HISTORY_TICKET
                 move-result-object v0
-                invoke-virtual/range {p0 .. p${args.size}}, ${service.type}->$alias(${
-                    args.joinToString(
-                        ""
-                    )
-                })$result
+                invoke-virtual/range {p0 .. p${args.size}}, ${service.type}->$alias(${args.joinToString("")})$result
                 move-result-object v1
-                invoke-static {v0, v1}, $TRANSPORT->after(${ticket}Ljava/util/concurrent/Future;)V
+                invoke-static {v0, v1}, $TRANSPORT->after(${HISTORY_TICKET}Ljava/util/concurrent/Future;)V
                 return-object v1
             """
         )

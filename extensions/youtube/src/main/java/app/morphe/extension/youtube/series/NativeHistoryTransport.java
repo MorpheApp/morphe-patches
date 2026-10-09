@@ -83,12 +83,11 @@ public final class NativeHistoryTransport {
         // Checked before any other work, as this runs for every browse request.
         if (!SeriesTrackerPatch.ENABLED || !Settings.SERIES_TRACKER_YOUTUBE_PROGRESS.get()) return null;
         try {
-            if (!(request instanceof Request)) return null;
-            Request r = (Request) request;
+            if (!(request instanceof Request r)) return null;
             if (!"FEhistory".equals(r.patch_seriesTrackerRoute())
                     && (r.patch_seriesTrackerContinuation() == null
                             || r.patch_seriesTrackerContinuation().isEmpty())) return null;
-            long generation = RecordingPrivacy.requestGeneration(r.patch_seriesTrackerRequestIdentity());
+            final long generation = RecordingPrivacy.requestGeneration(r.patch_seriesTrackerRequestIdentity());
             return generation < 0 ? null : new Ticket(source, r, generation);
         } catch (Exception ex) {
             Logger.printException(() -> "before failure", ex);
@@ -104,7 +103,9 @@ public final class NativeHistoryTransport {
             if (observed.size() >= 4) observed.remove(observed.keySet().iterator().next());
             observed.put(future, value);
             if ("FEhistory".equals(ticket.request.patch_seriesTrackerRoute())
-                    && (recent == null || ticket.elapsed >= recent.ticket.elapsed)) recent = value;
+                    && (recent == null || ticket.elapsed >= recent.ticket.elapsed)) {
+                recent = value;
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "after failure", ex);
         }
@@ -138,19 +139,15 @@ public final class NativeHistoryTransport {
         }
         try {
             Observed selected = value;
-            byte[] bytes =
-                    await(
-                            value.ticket.source,
-                            value.future,
-                            () ->
-                                    RecordingPrivacy.acceptsSync(generation)
-                                            && RecordingPrivacy.requestGeneration(
-                                                            selected.ticket.request
-                                                                    .patch_seriesTrackerRequestIdentity())
-                                                    == generation,
-                            timeoutNanos,
-                            TimeUnit.NANOSECONDS,
-                            owned);
+            byte[] bytes = await(
+                    value.ticket.source,
+                    value.future,
+                    () -> RecordingPrivacy.acceptsSync(generation)
+                            && RecordingPrivacy.requestGeneration(
+                            selected.ticket.request.patch_seriesTrackerRequestIdentity()) == generation,
+                    timeoutNanos,
+                    TimeUnit.NANOSECONDS,
+                    owned);
             return new Page(NativeHistoryPage.parse(bytes), value.ticket.startedAt);
         } catch (Exception error) {
             synchronized (NativeHistoryTransport.class) {

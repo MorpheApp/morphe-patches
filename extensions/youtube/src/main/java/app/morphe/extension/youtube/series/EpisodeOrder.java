@@ -23,31 +23,30 @@ final class EpisodeOrder {
         UNKNOWN
     }
 
-    private static final Pattern COMPACT =
-            Pattern.compile("(?iu)(?<![\\p{L}\\p{N}_])S(\\d{1,3})[ ._-]*E(\\d{1,4})(?!\\d)");
-    private static final Pattern EPISODE =
-            Pattern.compile(
-                    "(?iu)(?<![\\p{L}\\p{N}_])(?:episode|épisode|ep\\.?)\\s*#?\\s*(\\d{1,4})(?!\\d)");
-    private static final Pattern SEASON =
-            Pattern.compile("(?iu)(?<![\\p{L}\\p{N}_])(?:season|saison)\\s*(\\d{1,3})(?!\\d)");
-    private static final Pattern AGE =
-            Pattern.compile(
-                    "(?iu)^(?:streamed |premiered )?(\\d{1,6})"
-                            + " (second|minute|hour|day|week|month|year)s? ago$");
+    private static final Pattern COMPACT = Pattern.compile(
+            "(?iu)(?<![\\p{L}\\p{N}_])S(\\d{1,3})[ ._-]*E(\\d{1,4})(?!\\d)");
+    private static final Pattern EPISODE = Pattern.compile(
+            "(?iu)(?<![\\p{L}\\p{N}_])(?:episode|épisode|ep\\.?)\\s*#?\\s*(\\d{1,4})(?!\\d)");
+    private static final Pattern SEASON = Pattern.compile(
+            "(?iu)(?<![\\p{L}\\p{N}_])(?:season|saison)\\s*(\\d{1,3})(?!\\d)");
+    private static final Pattern AGE = Pattern.compile(
+            "(?iu)^(?:streamed |premiered )?(\\d{1,6})"
+                    + " (second|minute|hour|day|week|month|year)s? ago$");
 
     static Direction infer(List<TrackerModels.Episode> catalog) {
         List<TrackerModels.Episode> episodes = new ArrayList<>();
         Set<String> seen = new HashSet<>();
-        for (TrackerModels.Episode e : catalog)
+        for (TrackerModels.Episode e : catalog) {
             if (e.available && seen.add(e.videoId)) episodes.add(e);
+        }
         if (episodes.size() < 2) return Direction.UNKNOWN;
         List<Long> numbers = new ArrayList<>();
         Boolean seasonal = null;
         boolean mixed = false;
         for (TrackerModels.Episode e : episodes) {
-            long[] number = number(e.title);
+            final long[] number = number(e.title);
             if (number == null) continue;
-            boolean hasSeason = number[0] >= 0;
+            final boolean hasSeason = number[0] >= 0;
             if (seasonal != null && seasonal != hasSeason) mixed = true;
             seasonal = hasSeason;
             numbers.add(Math.max(0, number[0]) * 10000 + number[1]);
@@ -71,10 +70,10 @@ final class EpisodeOrder {
             dates++;
             // Compare with all earlier rows via their extremes. Overlapping rounded ages
             // do not provide evidence; conflicting pairs reject the whole suggestion.
-            boolean older = age[0] >= earliestUpper;
-            boolean newer = age[1] <= latestLower;
+            final boolean older = age[0] >= earliestUpper;
+            final boolean newer = age[1] <= latestLower;
             if (older && newer) return Direction.UNKNOWN;
-            int next = older ? -1 : newer ? 1 : 0;
+            final int next = older ? -1 : newer ? 1 : 0;
             if (next != 0) {
                 if (direction != 0 && next != direction) return Direction.UNKNOWN;
                 direction = next;
@@ -95,7 +94,7 @@ final class EpisodeOrder {
         }
         Matcher episode = EPISODE.matcher(title);
         if (!episode.find()) return null;
-        long n = Long.parseLong(episode.group(1));
+        final long n = Long.parseLong(episode.group(1));
         if (episode.find()) return null; // Episode ranges and compilations are ambiguous.
         Matcher season = SEASON.matcher(title);
         return new long[] {season.find() ? Long.parseLong(season.group(1)) : -1, n};

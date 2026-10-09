@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchContext
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -50,22 +49,14 @@ internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
             SignedOutIncognitoFingerprint(candidate).matchOrNull(signedOut) != null
         }
     val contract = identity.interfaces.single { type ->
-            classDefByOrNull(type)?.let {
-                IdentityInterfaceMethodFingerprint(idGetter).matchOrNull(it)
-            } != null
-        }
-    val providers =
-        CurrentAccountProviderFingerprint.matchAll()
-            .map { it.originalClassDef }
-            .distinctBy { it.type }
-    if (
-        providers.size != 2 ||
-            providers.any { c ->
-                c.fields.none { it.type == "Landroid/content/SharedPreferences;" }
-            }
-    ) {
-        throw PatchException("Series Tracker: expected two native current-account providers")
+        classDefByOrNull(type)?.let {
+            IdentityInterfaceMethodFingerprint(idGetter).matchOrNull(it)
+        } != null
     }
+    // There are two current-account providers. Either one can be the active provider.
+    val providers = CurrentAccountProviderFingerprint.matchAll()
+        .map { it.originalClassDef }
+        .distinctBy { it.type }
     providers.forEach { provider ->
         val currentMatch = CurrentAccountGetterFingerprint(contract).match(provider)
         val current = currentMatch.originalMethod
@@ -85,7 +76,7 @@ internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
         bridge.addInstructions(
             0,
             """
-                invoke-virtual {p0}, ${provider.type}->${current.signature()}
+                invoke-virtual {p0}, $current
                 move-result-object v0
                 if-eqz v0, :unknown
                 invoke-interface {v0}, $contract->${idGetter.signature()}

@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -43,7 +42,7 @@ public final class HistoryNavigation {
             String kind = NavigationProto.kind(data);
             kinds.put(nativeItem, kind);
             if (kind.equals("home")) {
-                String title = UiText.get(Utils.getContext(), "morphe_series_tracker_ui_history");
+                String title = UiText.get("morphe_series_tracker_ui_history");
                 // A language/theme change can recreate the Activity without restarting the process.
                 if (history == null || !title.equals(historyTitle) || !Arrays.equals(home, data)) {
                     Object replacement = buildNative(NavigationProto.history(data, title));
@@ -86,9 +85,7 @@ public final class HistoryNavigation {
                                 NavigationProto.destination(
                                         home,
                                         "FEsubscriptions",
-                                        UiText.get(
-                                                Utils.getContext(),
-                                                "morphe_series_tracker_ui_subscriptions"),
+                                        UiText.get("morphe_series_tracker_ui_subscriptions"),
                                         cairo ? 1155 : 408)));
             if (!present.containsKey("notifications"))
                 present.put(
@@ -97,9 +94,7 @@ public final class HistoryNavigation {
                                 NavigationProto.destination(
                                         home,
                                         "FEactivity",
-                                        UiText.get(
-                                                Utils.getContext(),
-                                                "morphe_series_tracker_ui_notifications"),
+                                        UiText.get("morphe_series_tracker_ui_notifications"),
                                         cairo ? 1156 : 355)));
         } catch (RuntimeException error) {
             Logger.printException(() -> "Cannot prepare five-tab navigation", error);

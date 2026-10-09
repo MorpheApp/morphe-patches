@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.series;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
@@ -23,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /** One moving selection surface, with native text, focus, and touch semantics. */
+@SuppressLint("ViewConstructor")
 final class HistorySwitcher extends LinearLayout {
     private final TextView watch, series;
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -47,7 +49,7 @@ final class HistorySwitcher extends LinearLayout {
     }
 
     private int dp(float value) {
-        return HistoryUi.dp(getContext(), value);
+        return HistoryUi.dp(value);
     }
 
     void select(boolean value) {
@@ -80,16 +82,16 @@ final class HistorySwitcher extends LinearLayout {
     }
 
     private void updateColors() {
-        boolean dark = HistoryUi.dark(getContext());
+        boolean dark = HistoryUi.dark();
         int ink = dark ? 0xff0f0f0f : 0xfff1f1f1;
-        int muted = HistoryUi.secondary(getContext());
+        int muted = HistoryUi.secondary();
         watch.setTextColor((int) colors.evaluate(position, ink, muted));
         series.setTextColor((int) colors.evaluate(position, muted, ink));
     }
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        boolean dark = HistoryUi.dark(getContext());
+        boolean dark = HistoryUi.dark();
         float radius = dp(22);
         bounds.set(dp(0.5f), dp(0.5f), getWidth() - dp(0.5f), getHeight() - dp(0.5f));
         paint.setStyle(Paint.Style.FILL);
@@ -145,7 +147,7 @@ final class HistorySwitcher extends LinearLayout {
                     getHeight() - dp(1));
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(dp(2));
-            paint.setColor(HistoryUi.foreground(getContext()));
+            paint.setColor(HistoryUi.foreground());
             canvas.drawRoundRect(bounds, dp(22), dp(22), paint);
             paint.setStyle(Paint.Style.FILL);
         }
@@ -158,6 +160,7 @@ final class HistorySwitcher extends LinearLayout {
     }
 
     /** Icons are drawn alongside the text block, so short labels remain optically centered. */
+    @SuppressLint("ViewConstructor")
     static final class Label extends TextView {
         private final boolean collection;
         private final Paint glyph = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -206,7 +209,7 @@ final class HistorySwitcher extends LinearLayout {
                 glyph.setColor(
                         isSelected()
                                 ? 0xffff0033
-                                : HistoryUi.dark(getContext()) ? 0xff191919 : 0xffeeeeee);
+                                : HistoryUi.dark() ? 0xff191919 : 0xffeeeeee);
                 path.reset();
                 path.moveTo(7, 9.5f);
                 path.lineTo(11.5f, 12.5f);

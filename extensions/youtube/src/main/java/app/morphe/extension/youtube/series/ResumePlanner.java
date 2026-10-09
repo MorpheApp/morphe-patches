@@ -70,16 +70,20 @@ public final class ResumePlanner {
         }
         if (!s.cursorId.isEmpty()) {
             Episode cursor = null;
-            for (Episode e : s.episodes)
+            for (Episode e : s.episodes) {
                 if (e.ordinal == s.cursorOrdinal && e.videoId.equals(s.cursorId)) cursor = e;
-            if (s.cursorRevision != s.revision || cursor == null || !cursor.available)
+            }
+            if (s.cursorRevision != s.revision || cursor == null || !cursor.available) {
                 return state(Kind.CHOOSE, "morphe_series_tracker_plan_changed");
-            if (s.startHere || !s.progress(cursor.videoId).watched())
+            }
+            if (s.startHere || !s.progress(cursor.videoId).watched()) {
                 return play(s, cursor, Kind.RESUME);
+            }
             boolean after = false;
             for (Episode e : s.episodes) {
-                if (after && e.available && !s.progress(e.videoId).watched())
+                if (after && e.available && !s.progress(e.videoId).watched()) {
                     return play(s, e, Kind.NEXT);
+                }
                 if (e.ordinal == cursor.ordinal) after = true;
             }
             return state(Kind.CAUGHT_UP, "morphe_series_tracker_plan_caught_up");
@@ -104,7 +108,7 @@ public final class ResumePlanner {
     }
 
     public static String time(long ms) {
-        long seconds = Math.max(0, ms) / 1000;
+        final long seconds = Math.max(0, ms) / 1000;
         return seconds >= 3600
                 ? String.format(
                         Locale.ROOT,
