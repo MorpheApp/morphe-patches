@@ -15,6 +15,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.video.information.PlayerInitFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -116,6 +117,7 @@ internal object ToolbarMenuFingerprint :
 
 internal class ControllerVideoIdFingerprint(accessor: MethodReference) :
     Fingerprint(
+        classFingerprint = PlayerInitFingerprint,
         parameters = emptyList(),
         returnType = "Ljava/lang/String;",
         filters = listOf(methodCall(accessor)),

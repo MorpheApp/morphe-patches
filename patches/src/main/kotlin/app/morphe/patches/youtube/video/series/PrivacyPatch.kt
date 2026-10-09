@@ -18,9 +18,9 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val PRIVACY = "${OUR_PREFIX}RecordingPrivacy;"
-private const val SOURCE = "${OUR_PREFIX}RecordingPrivacy\$Source;"
-private const val IDENTITY = "${OUR_PREFIX}RecordingPrivacy\$Identity;"
+private const val PRIVACY = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy;"
+private const val SOURCE = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy\$Source;"
+private const val IDENTITY = "${SERIES_TRACKER_EXTENSION_PREFIX}RecordingPrivacy\$Identity;"
 
 /** Resolve the current-account providers, never an arbitrary identity getter or request header. */
 internal data class NativeAccountContract(val type: String, val id: String, val incognito: String)
@@ -28,6 +28,7 @@ internal data class NativeAccountContract(val type: String, val id: String, val 
 internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
     val identity = AccountIdentityFingerprint.originalClassDef
     val diagnostic = AccountIdentityFingerprint.originalMethod
+
     fun getters(field: FieldReference): List<Method> =
         IdentityFieldGetterFingerprint(field)
             .matchAll(identity)
@@ -39,21 +40,16 @@ internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
                     } != null
                 }
             }
-    val idGetter =
-        getters(diagnostic.findFieldFromToString("AccountIdentity{getId=")).singleOrNull()
-            ?: throw PatchException("Series Tracker: account ID accessor is ambiguous")
+    val idGetter = getters(diagnostic.findFieldFromToString("AccountIdentity{getId="))
+        .single()
     val signedOut = SignedOutIdentityFingerprint.originalClassDef
     // Two accessors read the same field on a signed-in identity. On a pseudonymous identity,
     // one means unauthenticated (true) and the actual incognito accessor is false.
-    val incognitoGetter =
-        getters(diagnostic.findFieldFromToString(", isIncognito=")).singleOrNull { candidate ->
+    val incognitoGetter = getters(diagnostic.findFieldFromToString(", isIncognito="))
+        .single { candidate ->
             SignedOutIncognitoFingerprint(candidate).matchOrNull(signedOut) != null
         }
-            ?: throw PatchException(
-                "Series Tracker: cannot distinguish signed-out and incognito identities"
-            )
-    val contract =
-        identity.interfaces.single { type ->
+    val contract = identity.interfaces.single { type ->
             classDefByOrNull(type)?.let {
                 IdentityInterfaceMethodFingerprint(idGetter).matchOrNull(it)
             } != null
@@ -71,41 +67,38 @@ internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
         throw PatchException("Series Tracker: expected two native current-account providers")
     }
     providers.forEach { provider ->
-        val currentMatch =
-            CurrentAccountGetterFingerprint(contract).match(provider)
+        val currentMatch = CurrentAccountGetterFingerprint(contract).match(provider)
         val current = currentMatch.originalMethod
         val mutable = currentMatch.classDef
         mutable.interfaces.add(SOURCE)
-        val bridge =
-            ImmutableMethod(
-                    provider.type,
-                    "patch_seriesTrackerIdentity",
-                    null,
-                    IDENTITY,
-                    AccessFlags.PUBLIC.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(5),
-                )
-                .toMutable()
+        val bridge = ImmutableMethod(
+            provider.type,
+            "patch_seriesTrackerIdentity",
+            null,
+            IDENTITY,
+            AccessFlags.PUBLIC.value,
+            null,
+            null,
+            MutableMethodImplementation(5),
+        ).toMutable()
+
         bridge.addInstructions(
             0,
             """
-            invoke-virtual {p0}, ${provider.type}->${current.signature()}
-            move-result-object v0
-            if-eqz v0, :unknown
-            invoke-interface {v0}, $contract->${idGetter.signature()}
-            move-result-object v1
-            invoke-interface {v0}, $contract->${incognitoGetter.signature()}
-            move-result v2
-            new-instance v3, $IDENTITY
-            invoke-direct {v3, v1, v2}, $IDENTITY-><init>(Ljava/lang/String;Z)V
-            return-object v3
-            :unknown
-            const/4 v0, 0x0
-            return-object v0
-        """
-                .trimIndent(),
+                invoke-virtual {p0}, ${provider.type}->${current.signature()}
+                move-result-object v0
+                if-eqz v0, :unknown
+                invoke-interface {v0}, $contract->${idGetter.signature()}
+                move-result-object v1
+                invoke-interface {v0}, $contract->${incognitoGetter.signature()}
+                move-result v2
+                new-instance v3, $IDENTITY
+                invoke-direct {v3, v1, v2}, $IDENTITY-><init>(Ljava/lang/String;Z)V
+                return-object v3
+                :unknown
+                const/4 v0, 0x0
+                return-object v0
+            """
         )
         mutable.methods.add(bridge)
         // Capture only when YouTube actually uses the current-account getter. Constructor order
