@@ -1,11 +1,33 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.LongSupplier;
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /** On-demand public discovery. Search results are candidates, never proof of membership. */
 final class PlaylistDiscovery {
@@ -281,11 +303,8 @@ final class PlaylistDiscovery {
                 Pattern.compile("https?://[^\\s<>\"]+")
                         .matcher(description.substring(0, Math.min(description.length(), 20000)));
         while (urls.find() && ids.size() < 4) {
-            try {
-                String id = PlaylistInput.parse(urls.group().replaceAll("[).,;]+$", ""));
-                if (eligible(id)) ids.add(id);
-            } catch (IllegalArgumentException ignored) {
-            }
+            String id = PlaylistInput.parseOrNull(urls.group().replaceAll("[).,;]+$", ""));
+            if (id != null && eligible(id)) ids.add(id);
         }
         return new ArrayList<>(ids);
     }

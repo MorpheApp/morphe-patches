@@ -1,14 +1,24 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.app.Activity;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewTreeObserver;
 
 import java.lang.ref.WeakReference;
 
 /** Adds Follow series to the native playlist toolbar. */
 public final class PlaylistMenu {
     public interface ToolbarSource {
-        Menu seriesTrackerMenu();
+        Menu patch_seriesTrackerMenu();
     }
 
     private static final int ITEM_ID = 0x53745231;
@@ -57,7 +67,7 @@ public final class PlaylistMenu {
                 node = node.getParent() instanceof View ? (View) node.getParent() : null) {
             View toolbar = node.findViewById(id);
             if (toolbar instanceof ToolbarSource)
-                return ((ToolbarSource) toolbar).seriesTrackerMenu();
+                return ((ToolbarSource) toolbar).patch_seriesTrackerMenu();
         }
         return null;
     }
@@ -81,7 +91,7 @@ public final class PlaylistMenu {
         Activity activity = HistoryUi.activity(view.getContext());
         if (activity == null) return;
         String id = playlist;
-        MenuItem item = target.add(0, ITEM_ID, 0, UiText.get(activity, "series_tracker_follow"));
+        MenuItem item = target.add(0, ITEM_ID, 0, UiText.get(activity, "morphe_series_tracker_follow"));
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         item.setOnMenuItemClickListener(
                 clicked -> {
@@ -98,7 +108,7 @@ public final class PlaylistMenu {
                             for (TrackerModels.Series s : rows)
                                 if (s.id.equals(id)) {
                                     item.setTitle(
-                                            UiText.get(activity, "series_tracker_view_series"));
+                                            UiText.get(activity, "morphe_series_tracker_view_series"));
                                     item.setOnMenuItemClickListener(
                                             clicked -> {
                                                 HistoryUi.openSeries(activity, id);

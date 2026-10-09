@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.content.Context;
@@ -54,7 +61,7 @@ public final class SyncPreference extends SwitchPreference {
         if (!RecordingPrivacy.canEnable()) {
             Toast.makeText(
                             context,
-                            UiText.get(context, "series_tracker_identity_unavailable"),
+                            UiText.get(context, "morphe_series_tracker_identity_unavailable"),
                             Toast.LENGTH_LONG)
                     .show();
             return;
@@ -62,15 +69,15 @@ public final class SyncPreference extends SwitchPreference {
         long consentGeneration = RecordingPrivacy.generation();
         NativeSheet.confirm(
                 context,
-                "series_tracker_sync_title",
-                "series_tracker_sync_consent",
-                "series_tracker_enable_short",
+                "morphe_series_tracker_youtube_progress_title",
+                "morphe_series_tracker_sync_consent",
+                "morphe_series_tracker_enable_short",
                 () -> {
                     boolean enabled = RecordingPrivacy.enableSync(consentGeneration);
                     if (!enabled)
                         Toast.makeText(
                                         context,
-                                        UiText.get(context, "series_tracker_identity_unavailable"),
+                                        UiText.get(context, "morphe_series_tracker_identity_unavailable"),
                                         Toast.LENGTH_LONG)
                                 .show();
                     if (enabled) TrackerService.get(context).syncYouTube(true, () -> {});

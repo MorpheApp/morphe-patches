@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.content.Context;
@@ -23,21 +30,13 @@ public final class ResumeLauncher {
     }
 
     static void launch(Context context, LaunchRequest request) {
-
         Intent launch = intent(context, request);
         TrackerRuntime.prepareLaunch();
         TrackerRuntime.awaitLaunch(request);
         try {
-            String active;
-            try {
-                active = PlaybackBridge.videoId();
-            } catch (RuntimeException ignored) {
-                active = "";
-            }
-            if (request.videoId.equals(active)) {
+            if (request.videoId.equals(PlaybackBridge.videoId())) {
                 // Measured on 21.13.164: an ordinary watch intent leaves a paused
                 // same-video player at its old timestamp. Recreate it via the host.
-
                 LoadVideoPatch.openVideoIntent(launch.getDataString(), true);
             } else {
                 context.startActivity(launch);

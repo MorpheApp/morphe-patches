@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.view.View;
@@ -20,9 +27,9 @@ public final class SeriesPlayerButton {
             legacy =
                     new LegacyPlayerControlButton(
                             view,
-                            "series_tracker_button",
+                            "morphe_series_tracker_button",
                             null,
-                            "series_tracker_button",
+                            "morphe_series_tracker_button",
                             Settings.SERIES_TRACKER_BUTTON,
                             v -> PlayerSeriesAction.open(v.getContext()),
                             null);

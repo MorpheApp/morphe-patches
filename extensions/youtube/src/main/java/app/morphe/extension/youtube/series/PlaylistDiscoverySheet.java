@@ -1,8 +1,17 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.app.Activity;
 import android.view.View;
-import android.widget.*;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.List;
 import java.util.concurrent.Future;
@@ -37,10 +46,10 @@ final class PlaylistDiscoverySheet {
         this.activity = activity;
         this.video = video;
         this.done = done;
-        sheet = new NativeSheet(activity, "series_tracker_follow");
-        sheet.message("series_tracker_finding_playlists");
-        sheet.action("series_tracker_ui_cancel", this::dismiss, false);
-        sheet.action("series_tracker_paste_playlist", () -> choose(""), false);
+        sheet = new NativeSheet(activity, "morphe_series_tracker_follow");
+        sheet.message("morphe_series_tracker_finding_playlists");
+        sheet.action("morphe_series_tracker_ui_cancel", this::dismiss, false);
+        sheet.action("morphe_series_tracker_paste_playlist", () -> choose(""), false);
         sheet.onDismiss(
                 () -> {
                     finished = true;

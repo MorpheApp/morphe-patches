@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android">
     <com.google.android.libraries.youtube.common.ui.TouchImageView
-        android:id="@+id/series_tracker_button"
+        android:id="@+id/morphe_series_tracker_button"
         style="@style/YouTubePlayerButton"
         android:layout_width="@dimen/controls_overlay_action_button_size"
         android:layout_height="@dimen/controls_overlay_action_button_size"
@@ -9,7 +9,7 @@
         android:layout_marginTop="2dp"
         android:padding="@dimen/controls_overlay_action_button_padding"
         android:layout_toStartOf="@id/music_app_deeplink_button"
-        android:contentDescription="@string/series_tracker_title"
+        android:contentDescription="@string/morphe_series_tracker_screen_title"
         android:visibility="gone"
-        android:src="@drawable/series_tracker_button" />
+        android:src="@drawable/morphe_series_tracker_button" />
 </RelativeLayout>

@@ -1,13 +1,36 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import static app.morphe.extension.youtube.series.TrackerModels.*;
+import static app.morphe.extension.youtube.series.TrackerModels.Episode;
+import static app.morphe.extension.youtube.series.TrackerModels.Progress;
+import static app.morphe.extension.youtube.series.TrackerModels.Series;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.*;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import app.morphe.extension.shared.Logger;
 
 /** Synchronous SQLite boundary. Production calls are serialized on TrackerService's worker. */
 public final class TrackerRepository extends SQLiteOpenHelper {
@@ -282,8 +305,9 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                         previous =
                                 new HistoryMergePolicy.Baseline(
                                         stored[1], Long.parseLong(stored[2]));
-                    } catch (NumberFormatException ignored) {
-                        /* Treat damaged baseline as unknown. */
+                    } catch (NumberFormatException ex) {
+                        // Treat damaged baseline as unknown.
+                        Logger.printException(() -> "Invalid History baseline", ex);
                     }
                 }
                 if (previous != null && observedAt <= previous.seenAt) continue;
@@ -396,7 +420,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                                     + " FROM series WHERE playlist_id=?",
                                 new String[] {id})) {
             if (!c.moveToFirst())
-                throw new IllegalStateException("series_tracker_error_series_changed");
+                throw new IllegalStateException("morphe_series_tracker_error_series_changed");
             List<Episode> episodes = new ArrayList<>();
             org.json.JSONObject videoInfo = EpisodeInfo.decode(meta("episode_info", id));
             Map<String, Progress> progress = new HashMap<>();
@@ -494,7 +518,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                     }
                 }
             if (start == null)
-                throw new IllegalArgumentException("series_tracker_video_not_in_playlist");
+                throw new IllegalArgumentException("morphe_series_tracker_video_not_in_playlist");
         }
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
@@ -643,7 +667,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
         try {
             Series s = series(id);
             if (s.revision != revision)
-                throw new IllegalStateException("series_tracker_error_playlist_changed");
+                throw new IllegalStateException("morphe_series_tracker_error_playlist_changed");
             if (ordinal > 0
                     && s.episodes.stream()
                             .noneMatch(
@@ -651,7 +675,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                                             e.ordinal == ordinal
                                                     && e.videoId.equals(videoId)
                                                     && e.available))
-                throw new IllegalStateException("series_tracker_error_episode_unavailable");
+                throw new IllegalStateException("morphe_series_tracker_error_episode_unavailable");
             db.execSQL(
                     "UPDATE series SET cursor_id=?,cursor_ordinal=?,cursor_revision=?,bookmark_id=?"
                             + " WHERE playlist_id=?",
@@ -676,7 +700,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
         db.beginTransaction();
         try {
             if (ordinal <= 0)
-                throw new IllegalArgumentException("series_tracker_error_episode_unavailable");
+                throw new IllegalArgumentException("morphe_series_tracker_error_episode_unavailable");
             select(id, revision, ordinal, videoId, false);
             meta("start_here", id, videoId);
             db.execSQL("UPDATE series SET activity=? WHERE playlist_id=?", new Object[] {now, id});
@@ -708,7 +732,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
         try {
             Series series = series(playlist);
             if (!series.complete() || series.revision != revision)
-                throw new IllegalStateException("series_tracker_error_playlist_changed");
+                throw new IllegalStateException("morphe_series_tracker_error_playlist_changed");
             Set<String> ids = new LinkedHashSet<>();
             boolean found = false;
             for (Episode e : series.episodes) {
@@ -718,7 +742,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
                     break;
                 }
             }
-            if (!found) throw new IllegalStateException("series_tracker_error_playlist_changed");
+            if (!found) throw new IllegalStateException("morphe_series_tracker_error_playlist_changed");
             Undo undo = markIds(ids, TrackerModels.Override.WATCHED, now);
             db.setTransactionSuccessful();
             return undo;
@@ -781,7 +805,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
         try {
             Series old = series(id);
             if (old.revision != revision)
-                throw new IllegalStateException("series_tracker_error_playlist_changed");
+                throw new IllegalStateException("morphe_series_tracker_error_playlist_changed");
             meta("reverse_order", id, reverse ? "true" : "");
             meta("hide_watched", id, hideWatched ? "true" : "");
             if (old.reverseOrder != reverse && old.complete())
@@ -798,7 +822,7 @@ public final class TrackerRepository extends SQLiteOpenHelper {
 
     public void rename(String id, String name) {
         if (name.trim().isEmpty())
-            throw new IllegalArgumentException("series_tracker_error_name_required");
+            throw new IllegalArgumentException("morphe_series_tracker_error_name_required");
         getWritableDatabase()
                 .execSQL(
                         "UPDATE series SET name=? WHERE playlist_id=?",

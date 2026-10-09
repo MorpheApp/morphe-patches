@@ -1,12 +1,25 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
+
+import com.google.protobuf.MessageLite;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
-
-import com.google.protobuf.MessageLite;
-
-import java.util.*;
 
 /**
  * Native pivot construction is supplied by the patch, so endpoints and selection remain
@@ -23,13 +36,13 @@ public final class HistoryNavigation {
         throw new IllegalStateException("Native navigation bridge missing");
     }
 
-    public static synchronized void capture(MessageLite proto, Object nativeItem) {
+    public static synchronized void capture(Object nativeItem, MessageLite proto) {
         try {
             byte[] data = proto.toByteArray();
             String kind = NavigationProto.kind(data);
             kinds.put(nativeItem, kind);
             if (kind.equals("home") && Settings.SERIES_TRACKER_HISTORY_TAB.get()) {
-                String title = UiText.get(Utils.getContext(), "series_tracker_ui_history");
+                String title = UiText.get(Utils.getContext(), "morphe_series_tracker_ui_history");
                 // A language/theme change can recreate the Activity without restarting the process.
                 if (history == null || !title.equals(historyTitle) || !Arrays.equals(home, data)) {
                     Object replacement = buildNative(NavigationProto.history(data, title));
@@ -72,7 +85,7 @@ public final class HistoryNavigation {
                                         "FEsubscriptions",
                                         UiText.get(
                                                 Utils.getContext(),
-                                                "series_tracker_ui_subscriptions"),
+                                                "morphe_series_tracker_ui_subscriptions"),
                                         cairo ? 1155 : 408)));
             if (!present.containsKey("notifications"))
                 present.put(
@@ -83,7 +96,7 @@ public final class HistoryNavigation {
                                         "FEactivity",
                                         UiText.get(
                                                 Utils.getContext(),
-                                                "series_tracker_ui_notifications"),
+                                                "morphe_series_tracker_ui_notifications"),
                                         cairo ? 1156 : 355)));
         } catch (RuntimeException error) {
             Logger.printException(() -> "Cannot prepare five-tab navigation", error);

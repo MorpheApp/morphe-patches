@@ -1,8 +1,19 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import static app.morphe.extension.youtube.series.TrackerModels.*;
+import static app.morphe.extension.youtube.series.TrackerModels.Episode;
+import static app.morphe.extension.youtube.series.TrackerModels.Progress;
+import static app.morphe.extension.youtube.series.TrackerModels.Series;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /** Deterministic navigation. Catalog occurrences stay distinct; progress is shared by video. */
 public final class ResumePlanner {
@@ -41,7 +52,7 @@ public final class ResumePlanner {
     private static Plan play(Series s, Episode e, Kind kind) {
         Progress p = s.progress(e.videoId);
         long position = p.watched() ? 0 : p.positionMs;
-        return new Plan(kind, e.videoId, e.ordinal, position, "series_tracker_episode_position");
+        return new Plan(kind, e.videoId, e.ordinal, position, "morphe_series_tracker_episode_position");
     }
 
     public static Plan plan(Series s) {
@@ -53,16 +64,16 @@ public final class ResumePlanner {
                         s.bookmarkId,
                         -1,
                         p.watched() ? 0 : p.positionMs,
-                        "series_tracker_saved_position");
+                        "morphe_series_tracker_saved_position");
             }
-            return state(Kind.OPEN_PLAYLIST, "series_tracker_plan_open");
+            return state(Kind.OPEN_PLAYLIST, "morphe_series_tracker_plan_open");
         }
         if (!s.cursorId.isEmpty()) {
             Episode cursor = null;
             for (Episode e : s.episodes)
                 if (e.ordinal == s.cursorOrdinal && e.videoId.equals(s.cursorId)) cursor = e;
             if (s.cursorRevision != s.revision || cursor == null || !cursor.available)
-                return state(Kind.CHOOSE, "series_tracker_plan_changed");
+                return state(Kind.CHOOSE, "morphe_series_tracker_plan_changed");
             if (s.startHere || !s.progress(cursor.videoId).watched())
                 return play(s, cursor, Kind.RESUME);
             boolean after = false;
@@ -71,9 +82,9 @@ public final class ResumePlanner {
                     return play(s, e, Kind.NEXT);
                 if (e.ordinal == cursor.ordinal) after = true;
             }
-            return state(Kind.CAUGHT_UP, "series_tracker_plan_caught_up");
+            return state(Kind.CAUGHT_UP, "morphe_series_tracker_plan_caught_up");
         }
-        if (s.playableCount() == 0) return state(Kind.NO_PLAYABLE, "series_tracker_plan_none");
+        if (s.playableCount() == 0) return state(Kind.NO_PLAYABLE, "morphe_series_tracker_plan_none");
         Map<String, Integer> occurrences = new HashMap<>();
         for (Episode e : s.episodes) occurrences.merge(e.videoId, 1, Integer::sum);
         Episode recent = null;
@@ -89,7 +100,7 @@ public final class ResumePlanner {
         if (recent != null) return play(s, recent, Kind.RESUME);
         for (Episode e : s.episodes)
             if (e.available && !s.progress(e.videoId).watched()) return play(s, e, Kind.RESUME);
-        return state(Kind.CAUGHT_UP, "series_tracker_plan_caught_up");
+        return state(Kind.CAUGHT_UP, "morphe_series_tracker_plan_caught_up");
     }
 
     public static String time(long ms) {

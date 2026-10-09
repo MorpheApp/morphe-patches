@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -14,248 +21,214 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
+import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.Instruction
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val NAV = "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 private const val OUR_NAV = "${OUR_PREFIX}HistoryNavigation;"
 
 internal fun BytecodePatchContext.wireHistory() {
+    // Build native History pivot items from the same renderer factory YouTube uses.
     val factory = PivotBarRendererFingerprint.method
-    if (factory.parameterTypes.size != 1 || !AccessFlags.STATIC.isSet(factory.accessFlags))
-        throw PatchException("Series Tracker: pivot factory changed")
-    val instructions = factory.implementation!!.instructions.toList()
-    val parseIndex =
-        factory.indexOfFirstInstructionOrThrow(
-            methodCall(name = "parseFrom", parameters = listOf("L", "[B"))
-        )
-    val parse = instructions[parseIndex].getReference<MethodReference>()!!
-    val registeredParse = RegisteredParseFingerprint(parse).matchAll(1..1).single().method
-    val registry = GeneratedRegistryFingerprint.matchAll(1..1).single().method
+    val parseIndex = factory.indexOfFirstInstructionOrThrow(
+        methodCall(name = "parseFrom", parameters = listOf("L", "[B"))
+    )
+    val parse = factory.getInstruction(parseIndex).getReference<MethodReference>()!!
+    val registeredParse = RegisteredParseFingerprint(parse).method
+    val registry = GeneratedRegistryFingerprint.method
     val wrapperType = factory.parameterTypes.single().toString()
-    val wrapper = classDefBy(wrapperType)
-    val default =
-        wrapper.fields.single { it.type == wrapperType && AccessFlags.STATIC.isSet(it.accessFlags) }
-    val bridgeMatch = HistoryNavigationBuilderFingerprint.matchAll(1..1).single()
-    val bridge = bridgeMatch.classDef
-    bridge.methods.remove(bridgeMatch.method)
-    val builder =
-        ImmutableMethod(
+    val default = classDefBy(wrapperType).fields.single {
+        it.type == wrapperType && AccessFlags.STATIC.isSet(it.accessFlags)
+    }
+
+    // Replace the extension placeholder with a method that calls the obfuscated factory.
+    HistoryNavigationBuilderFingerprint.let {
+        it.classDef.methods.remove(it.method)
+        it.classDef.methods.add(
+            ImmutableMethod(
                 OUR_NAV,
                 "buildNative",
-                listOf(ImmutableMethodParameter("[B", emptySet(), null)),
+                listOf(ImmutableMethodParameter("[B", null, null)),
                 "Ljava/lang/Object;",
                 AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
-                emptySet(),
-                emptySet(),
-                ImmutableMethodImplementation(3, emptyList(), emptyList(), emptyList()),
-            )
-            .toMutable()
-    builder.addInstructions(
-        0,
-        """
-        sget-object v0, ${default.definingClass}->${default.name}:${default.type}
-        invoke-static {}, $registry
-        move-result-object v1
-        invoke-static {v0, p0, v1}, ${registeredParse.definingClass}->${registeredParse.signature()}
-        move-result-object v0
-        check-cast v0, $wrapperType
-        invoke-static {v0}, ${factory.definingClass}->${factory.signature()}
-        move-result-object v0
-        const/4 v1, 0x0
-        invoke-virtual {v0, v1}, ${factory.returnType}->orElse(Ljava/lang/Object;)Ljava/lang/Object;
-        move-result-object v0
-        return-object v0
-    """
-            .trimIndent(),
-    )
-    bridge.methods.add(builder)
-    val captures = factory.findInstructionIndicesReversedOrThrow {
-        getReference<MethodReference>()?.let { ref ->
-            ref.name == "<init>" &&
-                ref.definingClass == factory.definingClass &&
-                ref.parameterTypes.firstOrNull() == "Lcom/google/protobuf/MessageLite;"
-        } == true
-    }
-    if (captures.size !in 4..5)
-        throw PatchException(
-            "Series Tracker: expected four or five native pivot constructors, found ${captures.size}"
+                null,
+                null,
+                MutableMethodImplementation(3),
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        sget-object v0, $default
+                        invoke-static { }, $registry
+                        move-result-object v1
+                        invoke-static { v0, p0, v1 }, $registeredParse
+                        move-result-object v0
+                        check-cast v0, $wrapperType
+                        invoke-static { v0 }, $factory
+                        move-result-object v0
+                        const/4 v1, 0x0
+                        invoke-virtual { v0, v1 }, ${factory.returnType}->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+                        move-result-object v0
+                        return-object v0
+                    """
+                )
+            }
         )
-    captures.forEach { index ->
-        val range =
-            instructions[index] as? RegisterRangeInstruction
-                ?: throw PatchException("Series Tracker: pivot constructor register shape changed")
-        val instance = range.startRegister
+    }
+
+    // Capture each native pivot item together with the renderer it was built from.
+    factory.findInstructionIndicesReversedOrThrow(
+        methodCall(
+            definingClass = factory.definingClass,
+            name = "<init>",
+            parameters = listOf(
+                "Lcom/google/protobuf/MessageLite;", "L", "L", "L", "L", "Z", "L", "L", "L"
+            )
+        )
+    ).forEach { index ->
+        val instance = factory.getInstruction<RegisterRangeInstruction>(index).startRegister
         val proto = instance + 1
-        if (proto > 15) throw PatchException("Series Tracker: pivot registers exceed safe range")
         factory.addInstructions(
             index + 1,
-            "invoke-static {v$proto, v$instance}, $OUR_NAV->capture(Lcom/google/protobuf/MessageLite;Ljava/lang/Object;)V",
+            "invoke-static/range { v$instance .. v$proto }, " +
+                    "$OUR_NAV->capture(Ljava/lang/Object;Lcom/google/protobuf/MessageLite;)V"
         )
     }
-    val listMethod = PivotBarRendererListFingerprint.method
-    val listIndices =
-        listMethod.findInstructionIndicesReversedOrThrow(
+
+    PivotBarRendererListFingerprint.method.apply {
+        val index = indexOfFirstInstructionOrThrow(
             methodCall(definingClass = NAV, name = "getPivotBarRendererList")
         )
-    if (listIndices.size != 1)
-        throw PatchException(
-            "Series Tracker: expected one native pivot list, found ${listIndices.size}"
+        val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
+
+        addInstructions(
+            index + 2,
+            """
+                invoke-static/range { v$register .. v$register }, $OUR_NAV->navigation(Ljava/util/List;)Ljava/util/List;
+                move-result-object v$register
+            """
         )
-    val listIndex = listIndices.single()
-    val resultInstruction = listMethod.getInstruction<Instruction>(listIndex + 1)
-    if (
-        resultInstruction.opcode != Opcode.MOVE_RESULT_OBJECT ||
-            resultInstruction !is OneRegisterInstruction
-    )
-        throw PatchException("Series Tracker: native pivot list return changed")
-    val listRegister = resultInstruction.registerA
-    listMethod.addInstructions(
-        listIndex + 2,
+    }
+
+    NavigationTabCreatedFingerprint.method.addInstructions(
+        0,
         """
-        invoke-static/range {v$listRegister .. v$listRegister}, $OUR_NAV->navigation(Ljava/util/List;)Ljava/util/List;
-        move-result-object v$listRegister
+            invoke-static { p0 }, $OUR_NAV->keepButton(Ljava/lang/Enum;)Z
+            move-result v0
+            if-eqz v0, :native_visibility
+            return-void
+            :native_visibility
+            nop
         """
-            .trimIndent(),
     )
 
-    val visibility = NavigationTabCreatedFingerprint.matchAll(1..1).single().method
-    if (visibility.implementation!!.registerCount < 3)
-        throw PatchException("Series Tracker: navigation visibility needs a local register")
-    visibility.addInstructions(
+    YouTubeMainActivityOnBackPressedFingerprint.method.addInstructions(
         0,
         """
-        invoke-static {p0}, $OUR_NAV->keepButton(Ljava/lang/Enum;)Z
-        move-result v0
-        if-eqz v0, :native_visibility
-        return-void
-        :native_visibility
-        nop
-    """
-            .trimIndent(),
-    )
-    val back = YouTubeMainActivityOnBackPressedFingerprint.method
-    if (back.implementation!!.registerCount < 2)
-        throw PatchException("Series Tracker: back navigation needs a local register")
-    back.addInstructions(
-        0,
+            invoke-static { }, ${OUR_PREFIX}HistoryUi;->onBack()Z
+            move-result v0
+            if-eqz v0, :native_back
+            return-void
+            :native_back
+            nop
         """
-        invoke-static {}, ${OUR_PREFIX}HistoryUi;->onBack()Z
-        move-result v0
-        if-eqz v0, :native_back
-        return-void
-        :native_back
-        nop
-    """
-            .trimIndent(),
     )
 
     // Match the History browse fragment by its route diagnostic, then wrap the page and toolbar.
-    val browse = BrowseFragmentFingerprint.matchAll(1..1).single()
-    val fragment = browse.originalClassDef
-    val create = browse.originalMethod
-    val createIns = create.implementation!!.instructions.toList()
-    val diagnostic = browse.instructionMatches.single().index
-    val endpointIndex =
-        create.indexOfFirstInstructionReversedOrThrow(
+    BrowseFragmentFingerprint.let { browse ->
+        val fragment = browse.classDef
+        val create = browse.method
+        val diagnostic = browse.instructionMatches.single().index
+        val endpointIndex = create.indexOfFirstInstructionReversedOrThrow(
             diagnostic,
             fieldAccess(definingClass = "this", type = "L"),
         )
-    val endpointField = createIns[endpointIndex].getReference<FieldReference>()!!
-    val routeMethod =
-        BrowseRouteFingerprint(endpointField.type)
-            .match(fragment)
+        val endpointField = create.getInstruction(endpointIndex).getReference<FieldReference>()!!
+        val routeMethod = BrowseRouteFingerprint(endpointField.type)
+            .match(browse.originalClassDef)
             .instructionMatches
             .single()
             .getInstruction<ReferenceInstruction>()
             .reference as MethodReference
-    val mutableFragment = browse.classDef
-    val hook =
-        ImmutableMethod(
+
+        fragment.methods.add(
+            ImmutableMethod(
                 fragment.type,
-                "seriesTrackerHistoryView",
-                listOf(ImmutableMethodParameter("Landroid/view/View;", emptySet(), null)),
+                "patch_seriesTrackerHistoryView",
+                listOf(ImmutableMethodParameter("Landroid/view/View;", null, null)),
                 "Landroid/view/View;",
                 AccessFlags.PUBLIC.value,
-                emptySet(),
-                emptySet(),
-                ImmutableMethodImplementation(4, emptyList(), emptyList(), emptyList()),
-            )
-            .toMutable()
-    hook.addInstructions(
-        0,
-        """
-        iget-object v0, p0, ${endpointField.definingClass}->${endpointField.name}:${endpointField.type}
-        invoke-static {v0}, $routeMethod
-        move-result-object v0
-        invoke-static {p1, v0}, ${OUR_PREFIX}HistoryUi;->wrap(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
-        move-result-object v0
-        return-object v0
-    """
-            .trimIndent(),
-    )
-    mutableFragment.methods.add(hook)
-    // Common toolbar wrapper is the final one-View -> View call in onCreateView.
-    val contentIndex =
-        create.indexOfFirstInstructionReversedOrThrow(
+                null,
+                null,
+                MutableMethodImplementation(3),
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        iget-object v0, p0, $endpointField
+                        invoke-static { v0 }, $routeMethod
+                        move-result-object v0
+                        invoke-static { p1, v0 }, ${OUR_PREFIX}HistoryUi;->wrap(Landroid/view/View;Ljava/lang/String;)Landroid/view/View;
+                        move-result-object v0
+                        return-object v0
+                    """
+                )
+            }
+        )
+
+        // Common toolbar wrapper is the final one-View -> View call in onCreateView.
+        val contentIndex = create.indexOfFirstInstructionReversedOrThrow(
             methodCall(
                 parameters = listOf("Landroid/view/View;"),
                 returnType = "Landroid/view/View;",
             )
         )
-    val call = createIns[contentIndex] as FiveRegisterInstruction
-    val result = createIns.getOrNull(contentIndex + 1)
-    if (result?.opcode != Opcode.MOVE_RESULT_OBJECT || result !is OneRegisterInstruction)
-        throw PatchException("Series Tracker: native page wrapper result missing")
-    val view = result.registerA
-    val instance = call.registerC
-    if (view == instance)
-        throw PatchException("Series Tracker: native page wrapper overwrites fragment receiver")
-    browse.method.addInstructions(
-        contentIndex + 2,
-        """
-        invoke-virtual {v$instance, v$view}, ${fragment.type}->seriesTrackerHistoryView(Landroid/view/View;)Landroid/view/View;
-        move-result-object v$view
-    """
-            .trimIndent(),
-    )
+        val instance = create.getInstruction(contentIndex).registersUsed.first()
+        val view = create.getInstruction<OneRegisterInstruction>(contentIndex + 1).registerA
+        if (view == instance) {
+            throw PatchException("Native page wrapper overwrites the fragment register")
+        }
+
+        create.addInstructions(
+            contentIndex + 2,
+            """
+                invoke-virtual { v$instance, v$view }, ${fragment.type}->patch_seriesTrackerHistoryView(Landroid/view/View;)Landroid/view/View;
+                move-result-object v$view
+            """
+        )
+    }
 
     // The playlist toolbar populates its own Menu, independently of the activity menu.
-    val toolbarMatch = ToolbarMenuFingerprint.matchAll(1..1).single()
-    val toolbar = toolbarMatch.originalClassDef
-    val menuGetter = toolbarMatch.originalMethod
-    val mutableToolbar = toolbarMatch.classDef
-    mutableToolbar.interfaces.add("${OUR_PREFIX}PlaylistMenu\$ToolbarSource;")
-    val menuBridge =
-        ImmutableMethod(
-                toolbar.type,
-                "seriesTrackerMenu",
-                emptyList(),
+    ToolbarMenuFingerprint.let {
+        it.classDef.interfaces.add("${OUR_PREFIX}PlaylistMenu\$ToolbarSource;")
+        it.classDef.methods.add(
+            ImmutableMethod(
+                it.classDef.type,
+                "patch_seriesTrackerMenu",
+                null,
                 "Landroid/view/Menu;",
                 AccessFlags.PUBLIC.value,
-                emptySet(),
-                emptySet(),
-                ImmutableMethodImplementation(2, emptyList(), emptyList(), emptyList()),
-            )
-            .toMutable()
-    menuBridge.addInstructions(
-        0,
-        """
-        invoke-virtual {p0}, $menuGetter
-        move-result-object v0
-        return-object v0
-    """
-            .trimIndent(),
-    )
-    mutableToolbar.methods.add(menuBridge)
+                null,
+                null,
+                MutableMethodImplementation(2),
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        invoke-virtual { p0 }, ${it.method}
+                        move-result-object v0
+                        return-object v0
+                    """
+                )
+            }
+        )
+    }
 }

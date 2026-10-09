@@ -1,6 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import static app.morphe.extension.youtube.series.TrackerModels.*;
+import static app.morphe.extension.youtube.series.TrackerModels.Progress;
 
 /** History snapshots have observation time, not a last-watch timestamp. */
 final class HistoryMergePolicy {

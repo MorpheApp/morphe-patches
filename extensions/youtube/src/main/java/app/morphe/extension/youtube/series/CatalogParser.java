@@ -1,10 +1,23 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import static app.morphe.extension.youtube.series.TrackerModels.Episode;
 
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 /** Explicit playlist containers only: recommendations and other shelves are never traversed. */
 public final class CatalogParser {
@@ -139,13 +152,7 @@ public final class CatalogParser {
                 if (!id.matches("[A-Za-z0-9_-]{11}")) id = "";
                 String title = text(video.optJSONObject("title"));
                 // Keep absent titles empty; the UI selects a fallback in the current locale.
-                long duration = 0;
-                try {
-                    duration =
-                            Math.multiplyExact(
-                                    Long.parseLong(video.optString("lengthSeconds")), 1000L);
-                } catch (NumberFormatException | ArithmeticException ignored) {
-                }
+                long duration = video.optLong("lengthSeconds") * 1000;
                 entries.add(
                         new Episode(
                                 offset + entries.size() + 1,

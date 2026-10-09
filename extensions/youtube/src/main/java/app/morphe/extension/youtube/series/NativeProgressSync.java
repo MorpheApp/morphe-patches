@@ -1,9 +1,23 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import static app.morphe.extension.youtube.series.TrackerModels.*;
+import static app.morphe.extension.youtube.series.TrackerModels.Episode;
+import static app.morphe.extension.youtube.series.TrackerModels.Series;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.TimeUnit;
 
 /** One recent native History page per automatic check; bounded catch-up on Continue. */
 final class NativeProgressSync {

@@ -1,20 +1,28 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.Setting;
-import app.morphe.extension.youtube.settings.Settings;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.UUID;
 
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.youtube.settings.Settings;
+
 /** Reads the native current-account provider; never reads names, tokens or request headers. */
 public final class RecordingPrivacy {
     public interface Source {
-        Identity seriesTrackerIdentity();
+        Identity patch_seriesTrackerIdentity();
     }
 
     public static final class Identity {
@@ -46,7 +54,7 @@ public final class RecordingPrivacy {
         }
         if (preferences == null) {
             preferences =
-                    context.getSharedPreferences("series_tracker_privacy", Context.MODE_PRIVATE);
+                    context.getSharedPreferences("morphe_series_tracker_privacy", Context.MODE_PRIVATE);
             consentAccount = preferences.getString("consent_account", null);
             syncAccount = preferences.getString("sync_account", null);
             salt = preferences.getString("salt", UUID.randomUUID().toString());
@@ -55,7 +63,7 @@ public final class RecordingPrivacy {
         boolean incognito = false;
         try {
             Source provider = source;
-            Identity identity = provider == null ? null : provider.seriesTrackerIdentity();
+            Identity identity = provider == null ? null : provider.patch_seriesTrackerIdentity();
             if (identity != null && identity.key != null) {
                 incognito = identity.incognito;
                 // Only the digest of the opaque identity is persisted for consent matching.
@@ -70,8 +78,9 @@ public final class RecordingPrivacy {
                             .append(Character.forDigit(b & 15, 16));
                 account = hex.toString();
             }
-        } catch (Exception | LinkageError unavailable) {
-            // Identity unavailable: fail closed, without logging account information.
+        } catch (Exception ex) {
+            // Identity unavailable: fail closed. The exception holds no account information.
+            Logger.printException(() -> "refresh failure", ex);
         }
         policy.observe(account, incognito, Settings.SERIES_TRACKER_RECORD_PROGRESS.get());
     }
@@ -136,14 +145,15 @@ public final class RecordingPrivacy {
     static synchronized long requestGeneration(Identity origin) {
         if (!allowsSync() || origin == null || origin.incognito) return -1;
         try {
-            Identity current = source.seriesTrackerIdentity();
+            Identity current = source.patch_seriesTrackerIdentity();
             return current != null
                             && !current.incognito
                             && current.key != null
                             && current.key.equals(origin.key)
                     ? policy.generation()
                     : -1;
-        } catch (Exception | LinkageError unavailable) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "requestGeneration failure", ex);
             return -1;
         }
     }
