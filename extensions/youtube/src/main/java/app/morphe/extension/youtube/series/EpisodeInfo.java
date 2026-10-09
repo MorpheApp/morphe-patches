@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.content.Context;
@@ -5,10 +12,16 @@ import android.icu.text.CompactDecimalFormat;
 import android.icu.text.RelativeDateTimeFormatter;
 import android.icu.util.ULocale;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.*;
-import java.util.regex.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import app.morphe.extension.shared.Logger;
 
 /**
  * Optional public playlist metadata. Missing or unknown values never become invented statistics.
@@ -36,16 +49,19 @@ final class EpisodeInfo {
         try {
             for (TrackerModels.Episode e : episodes)
                 if (!e.videoInfo.isEmpty()) result.put(e.videoId, e.videoInfo);
-        } catch (JSONException ignored) {
+        } catch (JSONException ex) {
+            Logger.printException(() -> "encode failure", ex);
             return "{}";
         }
         return result.toString();
     }
 
     static JSONObject decode(String value) {
+        if (value.isEmpty()) return new JSONObject();
         try {
             return new JSONObject(value);
-        } catch (JSONException ignored) {
+        } catch (JSONException ex) {
+            Logger.printException(() -> "decode failure", ex);
             return new JSONObject();
         }
     }
@@ -62,7 +78,8 @@ final class EpisodeInfo {
                             ? 1000
                             : suffix.equals("M") ? 1000000 : suffix.equals("B") ? 1000000000 : 1;
             return Double.isFinite(number) && number >= 0 ? number : -1;
-        } catch (NumberFormatException ignored) {
+        } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Unknown view count: " + part, ex);
             return -1;
         }
     }
@@ -84,7 +101,8 @@ final class EpisodeInfo {
                             seconds / SECONDS[unit],
                             RelativeDateTimeFormatter.Direction.LAST,
                             RELATIVE[unit]);
-        } catch (NumberFormatException ignored) {
+        } catch (NumberFormatException ex) {
+            Logger.printDebug(() -> "Unknown age: " + part, ex);
             return "";
         }
     }
@@ -120,10 +138,10 @@ final class EpisodeInfo {
                         UiText.format(
                                 context,
                                 count == 1
-                                        ? "series_tracker_view_count_one"
+                                        ? "morphe_series_tracker_view_count_one"
                                         : count >= 1000000
-                                                ? "series_tracker_view_count_large"
-                                                : "series_tracker_view_count",
+                                                ? "morphe_series_tracker_view_count_large"
+                                                : "morphe_series_tracker_view_count",
                                 formatter.format(count));
             }
             String relative = age(part, locale, fetchedAt, System.currentTimeMillis());

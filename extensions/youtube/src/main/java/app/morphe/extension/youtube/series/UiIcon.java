@@ -1,6 +1,17 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 
 /** Density-independent toolbar glyphs, with the host foreground color. */

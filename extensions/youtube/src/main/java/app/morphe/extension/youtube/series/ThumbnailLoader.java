@@ -1,14 +1,31 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import android.graphics.*;
-import android.os.*;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.LruCache;
 import android.widget.ImageView;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
-import java.net.*;
-import java.util.concurrent.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+import app.morphe.extension.shared.Logger;
 
 /**
  * Fixed public thumbnail origin; bounded queue/cache, no account credentials, no main-thread I/O.
@@ -77,7 +94,8 @@ final class ThumbnailLoader {
                                     if (v != null && id.equals(v.getTag()))
                                         v.setImageBitmap(bitmap);
                                 });
-                    } catch (IOException ignored) {
+                    } catch (IOException ex) {
+                        Logger.printDebug(() -> "Thumbnail failure: " + id, ex);
                     } finally {
                         if (connection != null) connection.disconnect();
                     }

@@ -1,23 +1,36 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BooleanSupplier;
+
+import app.morphe.extension.shared.Logger;
 
 /** Account-bound native browse requests. No credentials, HTTP client, or player prefetch. */
 public final class NativeHistoryTransport {
     public interface Source {
-        Future<?> seriesTrackerHistory(String continuation, Executor executor);
+        Future<?> patch_seriesTrackerHistory(String continuation, Executor executor);
 
-        byte[] seriesTrackerHistoryBytes(Object response);
+        byte[] patch_seriesTrackerHistoryBytes(Object response);
     }
 
     public interface Request {
-        String seriesTrackerRoute();
+        String patch_seriesTrackerRoute();
 
-        String seriesTrackerContinuation();
+        String patch_seriesTrackerContinuation();
 
-        RecordingPrivacy.Identity seriesTrackerRequestIdentity();
+        RecordingPrivacy.Identity patch_seriesTrackerRequestIdentity();
     }
 
     public static final class Ticket {
@@ -68,12 +81,13 @@ public final class NativeHistoryTransport {
         try {
             if (!(request instanceof Request)) return null;
             Request r = (Request) request;
-            if (!"FEhistory".equals(r.seriesTrackerRoute())
-                    && (r.seriesTrackerContinuation() == null
-                            || r.seriesTrackerContinuation().isEmpty())) return null;
-            long generation = RecordingPrivacy.requestGeneration(r.seriesTrackerRequestIdentity());
+            if (!"FEhistory".equals(r.patch_seriesTrackerRoute())
+                    && (r.patch_seriesTrackerContinuation() == null
+                            || r.patch_seriesTrackerContinuation().isEmpty())) return null;
+            long generation = RecordingPrivacy.requestGeneration(r.patch_seriesTrackerRequestIdentity());
             return generation < 0 ? null : new Ticket(source, r, generation);
-        } catch (RuntimeException | LinkageError unavailable) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "before failure", ex);
             return null;
         }
     }
@@ -85,10 +99,10 @@ public final class NativeHistoryTransport {
             Observed value = new Observed(ticket, future);
             if (observed.size() >= 4) observed.remove(observed.keySet().iterator().next());
             observed.put(future, value);
-            if ("FEhistory".equals(ticket.request.seriesTrackerRoute())
+            if ("FEhistory".equals(ticket.request.patch_seriesTrackerRoute())
                     && (recent == null || ticket.elapsed >= recent.ticket.elapsed)) recent = value;
-        } catch (RuntimeException | LinkageError unavailable) {
-            /* Host must continue normally. */
+        } catch (Exception ex) {
+            Logger.printException(() -> "after failure", ex);
         }
     }
 
@@ -109,7 +123,7 @@ public final class NativeHistoryTransport {
             if (!RecordingPrivacy.acceptsSync(generation)) throw new CancellationException();
             Source current = source;
             if (current == null) throw new IllegalStateException("Native History unavailable");
-            Future<?> future = current.seriesTrackerHistory(continuation, Runnable::run);
+            Future<?> future = current.patch_seriesTrackerHistory(continuation, Runnable::run);
             synchronized (NativeHistoryTransport.class) {
                 value = observed.get(future);
             }
@@ -128,7 +142,7 @@ public final class NativeHistoryTransport {
                                     RecordingPrivacy.acceptsSync(generation)
                                             && RecordingPrivacy.requestGeneration(
                                                             selected.ticket.request
-                                                                    .seriesTrackerRequestIdentity())
+                                                                    .patch_seriesTrackerRequestIdentity())
                                                     == generation,
                             timeoutNanos,
                             TimeUnit.NANOSECONDS,
@@ -145,7 +159,7 @@ public final class NativeHistoryTransport {
     }
 
     private static byte[] bytes(Source current, Object response) {
-        byte[] bytes = current.seriesTrackerHistoryBytes(response);
+        byte[] bytes = current.patch_seriesTrackerHistoryBytes(response);
         if (bytes == null || bytes.length == 0 || bytes.length > MAX_RESPONSE_BYTES)
             throw new IllegalStateException("Unsupported native history response");
         return bytes;

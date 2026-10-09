@@ -1,12 +1,19 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
-import app.morphe.extension.youtube.patches.VideoInformation;
-
 import java.lang.ref.WeakReference;
+
+import app.morphe.extension.youtube.patches.VideoInformation;
 
 /** Player actions capture their context at the tap; following never launches another video. */
 final class PlayerSeriesAction {
@@ -54,7 +61,7 @@ final class PlayerSeriesAction {
                                                             activity,
                                                             UiText.get(
                                                                     activity,
-                                                                    "series_tracker_followed"),
+                                                                    "morphe_series_tracker_followed"),
                                                             Toast.LENGTH_SHORT)
                                                     .show();
                             if (playlist.isEmpty()) {
@@ -104,13 +111,7 @@ final class PlayerSeriesAction {
     }
 
     static String activeVideo() {
-        try {
-            String video = PlaybackBridge.videoId();
-            return video == null ? "" : video;
-        } catch (RuntimeException ignored) {
-            // The controller may still be constructing, or may just have been released.
-            return "";
-        }
+        return PlaybackBridge.videoId();
     }
 
     private PlayerSeriesAction() {}

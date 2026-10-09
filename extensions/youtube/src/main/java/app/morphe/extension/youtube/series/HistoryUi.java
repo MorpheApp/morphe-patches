@@ -1,15 +1,33 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.app.Activity;
-import android.content.*;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.*;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.RippleDrawable;
 import android.net.Uri;
-import android.view.*;
-import android.widget.*;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.WindowInsets;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
+
+import app.morphe.extension.shared.Logger;
 
 /** Switches between the complete native History page and the compact Series page. */
 public final class HistoryUi extends LinearLayout {
@@ -115,13 +133,14 @@ public final class HistoryUi extends LinearLayout {
                             .setPackage(c.getPackageName())
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } catch (RuntimeException e) {
+            Logger.printException(() -> "Could not open History", e);
             openSeriesUntil = 0;
             openSeriesId = "";
             Toast.makeText(
                             c,
                             UiText.get(
                                     c,
-                                    "series_tracker_ui_open_history_from_you_to_view_your_series"),
+                                    "morphe_series_tracker_ui_open_history_from_you_to_view_your_series"),
                             Toast.LENGTH_LONG)
                     .show();
         }
@@ -139,7 +158,7 @@ public final class HistoryUi extends LinearLayout {
         setId(
                 getResources()
                         .getIdentifier(
-                                "series_tracker_history_root",
+                                "morphe_series_tracker_history_root",
                                 "id",
                                 getContext().getPackageName()));
         watch = view;
@@ -149,8 +168,8 @@ public final class HistoryUi extends LinearLayout {
         tabs.setPadding(
                 dp(getContext(), 16), dp(getContext(), 4),
                 dp(getContext(), 16), dp(getContext(), 4));
-        watchTab = tab(UiText.get(getContext(), "series_tracker_ui_watch_history"), false);
-        seriesTab = tab(UiText.get(getContext(), "series_tracker_ui_series"), true);
+        watchTab = tab(UiText.get(getContext(), "morphe_series_tracker_ui_watch_history"), false);
+        seriesTab = tab(UiText.get(getContext(), "morphe_series_tracker_ui_series"), true);
         switcher = new HistorySwitcher(getContext(), watchTab, seriesTab);
         tabs.addView(switcher, new FrameLayout.LayoutParams(-1, -2));
         pane = new FrameLayout(getContext());

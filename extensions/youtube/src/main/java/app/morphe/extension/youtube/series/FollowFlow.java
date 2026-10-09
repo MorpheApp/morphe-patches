@@ -1,9 +1,19 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.app.Activity;
 import android.content.Context;
 import android.text.InputType;
-import android.widget.*;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 import java.util.function.Consumer;
 
@@ -40,28 +50,28 @@ final class FollowFlow {
         this.activity = activity;
         this.done = done;
         service = TrackerService.get(activity);
-        sheet = new NativeSheet(activity, "series_tracker_follow");
+        sheet = new NativeSheet(activity, "morphe_series_tracker_follow");
         if (playlist.isEmpty()) {
             link = new EditText(activity);
             link.setSingleLine();
             link.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
             link.setTextColor(HistoryUi.foreground(activity));
             link.setHintTextColor(HistoryUi.secondary(activity));
-            link.setHint(UiText.get(activity, "series_tracker_ui_playlist_link_or_id"));
+            link.setHint(UiText.get(activity, "morphe_series_tracker_ui_playlist_link_or_id"));
             link.setContentDescription(
-                    UiText.get(activity, "series_tracker_ui_playlist_link_or_id"));
+                    UiText.get(activity, "morphe_series_tracker_ui_playlist_link_or_id"));
             sheet.body.addView(link);
         } else {
             link = null;
             id = PlaylistInput.parse(playlist);
         }
         boolean explain =
-                !activity.getSharedPreferences("series_tracker_ui", Context.MODE_PRIVATE)
+                !activity.getSharedPreferences("morphe_series_tracker_ui", Context.MODE_PRIVATE)
                         .getBoolean("follow_explained", false);
-        if (explain) sheet.message("series_tracker_follow_consent");
+        if (explain) sheet.message("morphe_series_tracker_follow_consent");
         if (!RecordingPrivacy.allowsRecording() && (explain || !startVideo.isEmpty())) {
             record = new CheckBox(activity);
-            record.setText(UiText.get(activity, "series_tracker_record_short"));
+            record.setText(UiText.get(activity, "morphe_series_tracker_record_short"));
             record.setTextColor(HistoryUi.foreground(activity));
             record.setChecked(false);
             record.setEnabled(RecordingPrivacy.canEnable());
@@ -70,8 +80,8 @@ final class FollowFlow {
         consentGeneration = RecordingPrivacy.generation();
         status = sheet.message("");
         status.setVisibility(android.view.View.GONE);
-        sheet.action("series_tracker_ui_cancel", sheet.dialog::dismiss, false);
-        follow = sheet.action("series_tracker_follow", this::follow, true);
+        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        follow = sheet.action("morphe_series_tracker_follow", this::follow, true);
         sheet.show();
         sheet.onDismiss(
                 () -> {
@@ -90,18 +100,20 @@ final class FollowFlow {
 
     private void follow() {
         if (busy || !active()) return;
-        try {
-            id = link == null ? id : PlaylistInput.parse(link.getText().toString());
-        } catch (IllegalArgumentException e) {
-            failure(e.getMessage());
-            return;
+        if (link != null) {
+            String parsed = PlaylistInput.parseOrNull(link.getText().toString());
+            if (parsed == null) {
+                failure("morphe_series_tracker_error_playlist_input");
+                return;
+            }
+            id = parsed;
         }
         catalog = null;
         busy = true;
         follow.setEnabled(false);
         if (link != null) link.setEnabled(false);
         status.setVisibility(android.view.View.VISIBLE);
-        status.setText(UiText.get(activity, "series_tracker_ui_loading_episodes"));
+        status.setText(UiText.get(activity, "morphe_series_tracker_ui_loading_episodes"));
         service.library(
                 rows -> {
                     if (!active()) return;
@@ -127,7 +139,7 @@ final class FollowFlow {
                                             if (startVideo.isEmpty()) save();
                                             else if (value.episodes.stream()
                                                     .noneMatch(e -> e.videoId.equals(startVideo))) {
-                                                failure("series_tracker_video_not_in_playlist");
+                                                failure("morphe_series_tracker_video_not_in_playlist");
                                             } else {
                                                 busy = false;
                                                 startingOptions();
@@ -155,11 +167,11 @@ final class FollowFlow {
                                             status.setText(
                                                     UiText.get(
                                                             activity,
-                                                            "series_tracker_follow_unavailable"));
+                                                            "morphe_series_tracker_follow_unavailable"));
                                             follow.setText(
                                                     UiText.get(
                                                             activity,
-                                                            "series_tracker_ui_save_bookmark"));
+                                                            "morphe_series_tracker_ui_save_bookmark"));
                                             follow.setEnabled(true);
                                             follow.setOnClickListener(
                                                     v -> {
@@ -177,13 +189,13 @@ final class FollowFlow {
 
     private void save() {
         if (record != null && record.isChecked() && !RecordingPrivacy.enable(consentGeneration)) {
-            failure("series_tracker_identity_unavailable");
+            failure("morphe_series_tracker_identity_unavailable");
             return;
         }
         String name = catalog != null && !catalog.title.isEmpty() ? catalog.title : id;
         Runnable saved =
                 () -> {
-                    activity.getSharedPreferences("series_tracker_ui", Context.MODE_PRIVATE)
+                    activity.getSharedPreferences("morphe_series_tracker_ui", Context.MODE_PRIVATE)
                             .edit()
                             .putBoolean("follow_explained", true)
                             .apply();
@@ -226,7 +238,7 @@ final class FollowFlow {
             resume = sheet.message("");
             order =
                     NativeSheet.button(
-                            activity, "series_tracker_playlist_order", this::chooseOrder, false);
+                            activity, "morphe_series_tracker_playlist_order", this::chooseOrder, false);
             order.setGravity(android.view.Gravity.START | android.view.Gravity.CENTER_VERTICAL);
             order.setPadding(0, HistoryUi.dp(activity, 6), 0, HistoryUi.dp(activity, 6));
             order.setCompoundDrawablesRelative(
@@ -242,7 +254,7 @@ final class FollowFlow {
             order.setEllipsize(android.text.TextUtils.TruncateAt.END);
             sheet.body.addView(order);
             watchedBefore = new CheckBox(activity);
-            watchedBefore.setText(UiText.get(activity, "series_tracker_watch_previous"));
+            watchedBefore.setText(UiText.get(activity, "morphe_series_tracker_watch_previous"));
             watchedBefore.setTextColor(HistoryUi.foreground(activity));
             watchedBefore.setTextSize(14);
             watchedBefore.setMinHeight(HistoryUi.dp(activity, 48));
@@ -258,7 +270,7 @@ final class FollowFlow {
         if (position >= 0)
             resume.setText(
                     UiText.format(
-                            activity, "series_tracker_resume_at", ResumePlanner.time(position)));
+                            activity, "morphe_series_tracker_resume_at", ResumePlanner.time(position)));
         updateOrder();
     }
 
@@ -267,7 +279,7 @@ final class FollowFlow {
         order.setText(
                 UiText.format(
                         activity,
-                        "series_tracker_order_starts_with",
+                        "morphe_series_tracker_order_starts_with",
                         first == null ? "" : UiText.episodeTitle(activity, first)));
         boolean previous = !FollowStart.previous(catalog.episodes, startVideo, reverse).isEmpty();
         watchedBefore.setVisibility(previous ? android.view.View.VISIBLE : android.view.View.GONE);
@@ -276,8 +288,8 @@ final class FollowFlow {
 
     private void chooseOrder() {
         if (busy || catalog == null) return;
-        NativeSheet choices = new NativeSheet(activity, "series_tracker_episode_order");
-        String[] labels = {"series_tracker_playlist_order", "series_tracker_reverse_order"};
+        NativeSheet choices = new NativeSheet(activity, "morphe_series_tracker_episode_order");
+        String[] labels = {"morphe_series_tracker_playlist_order", "morphe_series_tracker_reverse_order"};
         for (int i = 0; i < labels.length; i++) {
             final boolean selected = i == 1;
             RadioButton option = new RadioButton(activity);
@@ -301,7 +313,7 @@ final class FollowFlow {
                     });
             choices.body.addView(option);
         }
-        choices.action("series_tracker_ui_cancel", choices.dialog::dismiss, false);
+        choices.action("morphe_series_tracker_ui_cancel", choices.dialog::dismiss, false);
         choices.show();
     }
 
@@ -320,7 +332,7 @@ final class FollowFlow {
             order.setVisibility(android.view.View.GONE);
             resume.setVisibility(android.view.View.GONE);
         }
-        follow.setText(UiText.get(activity, "series_tracker_follow"));
+        follow.setText(UiText.get(activity, "morphe_series_tracker_follow"));
         follow.setOnClickListener(v -> follow());
         follow.setEnabled(true);
         if (link != null) link.setEnabled(true);

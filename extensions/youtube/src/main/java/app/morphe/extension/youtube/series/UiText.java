@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.content.Context;
@@ -6,7 +13,7 @@ import app.morphe.extension.shared.StringRef;
 
 final class UiText {
     static String get(Context context, String key) {
-        return key.startsWith("series_tracker_") ? StringRef.str(key) : key;
+        return key.startsWith("morphe_series_tracker_") ? StringRef.str(key) : key;
     }
 
     static String format(Context context, String key, Object... values) {
@@ -24,8 +31,8 @@ final class UiText {
                 || episode.title.equals("Untitled episode")
                 || episode.title.equals("Unavailable episode")) {
             return episode.available
-                    ? "series_tracker_untitled_episode"
-                    : "series_tracker_unavailable_episode";
+                    ? "morphe_series_tracker_untitled_episode"
+                    : "morphe_series_tracker_unavailable_episode";
         }
         return episode.title;
     }

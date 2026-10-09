@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.patches.youtube.video.series
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -6,10 +13,10 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
-import com.android.tools.smali.dexlib2.immutable.ImmutableMethodImplementation
 
 private const val PRIVACY = "${OUR_PREFIX}RecordingPrivacy;"
 private const val SOURCE = "${OUR_PREFIX}RecordingPrivacy\$Source;"
@@ -19,7 +26,7 @@ private const val IDENTITY = "${OUR_PREFIX}RecordingPrivacy\$Identity;"
 internal data class NativeAccountContract(val type: String, val id: String, val incognito: String)
 
 internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
-    val identity = AccountIdentityFingerprint.matchAll(1..1).single().originalClassDef
+    val identity = AccountIdentityFingerprint.originalClassDef
     val diagnostic = AccountIdentityFingerprint.originalMethod
     fun getters(field: FieldReference): List<Method> =
         IdentityFieldGetterFingerprint(field)
@@ -35,7 +42,7 @@ internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
     val idGetter =
         getters(diagnostic.findFieldFromToString("AccountIdentity{getId=")).singleOrNull()
             ?: throw PatchException("Series Tracker: account ID accessor is ambiguous")
-    val signedOut = SignedOutIdentityFingerprint.matchAll(1..1).single().originalClassDef
+    val signedOut = SignedOutIdentityFingerprint.originalClassDef
     // Two accessors read the same field on a signed-in identity. On a pseudonymous identity,
     // one means unauthenticated (true) and the actual incognito accessor is false.
     val incognitoGetter =
@@ -65,20 +72,20 @@ internal fun BytecodePatchContext.wirePrivacy(): NativeAccountContract {
     }
     providers.forEach { provider ->
         val currentMatch =
-            CurrentAccountGetterFingerprint(contract).matchAll(provider, 1..1).single()
+            CurrentAccountGetterFingerprint(contract).match(provider)
         val current = currentMatch.originalMethod
         val mutable = currentMatch.classDef
         mutable.interfaces.add(SOURCE)
         val bridge =
             ImmutableMethod(
                     provider.type,
-                    "seriesTrackerIdentity",
-                    emptyList(),
+                    "patch_seriesTrackerIdentity",
+                    null,
                     IDENTITY,
                     AccessFlags.PUBLIC.value,
-                    emptySet(),
-                    emptySet(),
-                    ImmutableMethodImplementation(5, emptyList(), emptyList(), emptyList()),
+                    null,
+                    null,
+                    MutableMethodImplementation(5),
                 )
                 .toMutable()
         bridge.addInstructions(

@@ -1,6 +1,19 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import java.util.*;
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 /** The explicit starting point of a newly followed playlist. */
 final class FollowStart {
@@ -15,15 +28,10 @@ final class FollowStart {
         this.watchedBefore = watchedBefore;
     }
 
-    static long position(PlaybackBridge.Source source, String video) {
-        try {
-            if (source == null || video.isEmpty() || !video.equals(source.seriesTrackerVideoId()))
-                return -1;
-            long position = source.seriesTrackerPosition();
-            return video.equals(source.seriesTrackerVideoId()) ? Math.max(-1, position) : -1;
-        } catch (RuntimeException unavailable) {
-            return -1;
-        }
+    static long position(@Nullable PlaybackBridge.Source source, String video) {
+        if (video.isEmpty() || !video.equals(PlaybackBridge.videoId(source))) return -1;
+        long position = PlaybackBridge.position(source);
+        return video.equals(PlaybackBridge.videoId(source)) ? Math.max(-1, position) : -1;
     }
 
     static Set<String> previous(
@@ -35,6 +43,6 @@ final class FollowStart {
             if (e.available && e.videoId.equals(video)) return ids;
             if (e.available && !e.videoId.equals(video)) ids.add(e.videoId);
         }
-        throw new IllegalArgumentException("series_tracker_video_not_in_playlist");
+        throw new IllegalArgumentException("morphe_series_tracker_video_not_in_playlist");
     }
 }

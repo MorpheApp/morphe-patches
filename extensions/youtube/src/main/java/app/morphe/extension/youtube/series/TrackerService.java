@@ -1,17 +1,40 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
-import static app.morphe.extension.youtube.series.TrackerModels.*;
+import static app.morphe.extension.youtube.series.TrackerModels.Episode;
+import static app.morphe.extension.youtube.series.TrackerModels.Series;
 
 import android.content.Context;
-import android.database.sqlite.*;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteException;
 import android.os.Handler;
 import android.os.Looper;
 
-import app.morphe.extension.shared.Logger;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
+import app.morphe.extension.shared.Logger;
 
 /** One ordered mutation stream, two bounded network workers, callbacks on the UI thread. */
 public final class TrackerService {
@@ -91,7 +114,7 @@ public final class TrackerService {
                     try {
                         initializeStorage();
                     } catch (RuntimeException failure) {
-                        storageError = "series_tracker_error_storage_unavailable";
+                        storageError = "morphe_series_tracker_error_storage_unavailable";
                         Logger.printException(() -> storageError, failure);
                     }
                     changed();
@@ -125,12 +148,13 @@ public final class TrackerService {
             storage.execute(work);
             return true;
         } catch (RejectedExecutionException failure) {
+            Logger.printDebug(() -> "Storage queue is full", failure);
             return false;
         }
     }
 
     private void busy(Consumer<String> error) {
-        main.post(() -> error.accept("series_tracker_error_storage_busy"));
+        main.post(() -> error.accept("morphe_series_tracker_error_storage_busy"));
     }
 
     private void mutation(Runnable work, Runnable success, Consumer<String> error) {
@@ -142,7 +166,7 @@ public final class TrackerService {
         if (!storageError.isEmpty()) {
             // Network completions are already accepted work, bounded by the network pool.
             if (completion || pending.size() < 256) pending.add(command);
-            else main.post(() -> command.error.accept("series_tracker_error_pending_full"));
+            else main.post(() -> command.error.accept("morphe_series_tracker_error_pending_full"));
             return;
         }
         execute(command);
@@ -160,10 +184,10 @@ public final class TrackerService {
             changed();
             return true;
         } catch (SQLiteConstraintException failure) {
-            main.post(() -> command.error.accept("series_tracker_error_conflict"));
+            main.post(() -> command.error.accept("morphe_series_tracker_error_conflict"));
             return true;
         } catch (SQLiteException failure) {
-            storageError = "series_tracker_error_storage_save";
+            storageError = "morphe_series_tracker_error_storage_save";
             Logger.printException(() -> storageError, failure);
             pending.addFirst(command);
             main.post(() -> command.error.accept(storageError));
@@ -187,7 +211,8 @@ public final class TrackerService {
                         }
                         changed();
                     } catch (RuntimeException failure) {
-                        storageError = "series_tracker_error_storage_unavailable";
+                        storageError = "morphe_series_tracker_error_storage_unavailable";
+                        Logger.printException(() -> "retryStorage failure", failure);
                         main.post(() -> error.accept(storageError));
                         changed();
                     }
@@ -248,7 +273,7 @@ public final class TrackerService {
             return;
         }
         syncingYouTube = true;
-        syncStatus = force ? "series_tracker_sync_checking" : "";
+        syncStatus = force ? "morphe_series_tracker_sync_checking" : "";
         lastYouTubeAttempt = now;
         syncWaiters.add(done);
         changed();
@@ -289,20 +314,23 @@ public final class TrackerService {
                                                         finishYouTubeSync(
                                                                 result.complete
                                                                         ? ""
-                                                                        : "series_tracker_sync_partial");
+                                                                        : "morphe_series_tracker_sync_partial");
                                                     } catch (RuntimeException failure) {
+                                                        Logger.printException(() -> "mergeRemote failure", failure);
                                                         finishYouTubeSync(
-                                                                "series_tracker_sync_failed");
+                                                                "morphe_series_tracker_sync_failed");
                                                     }
-                                                })) finishYouTubeSync("series_tracker_sync_failed");
+                                                })) finishYouTubeSync("morphe_series_tracker_sync_failed");
                                     } catch (Exception failure) {
-                                        finishYouTubeSync("series_tracker_sync_failed");
+                                        Logger.printInfo(() -> "YouTube progress fetch failed", failure);
+                                        finishYouTubeSync("morphe_series_tracker_sync_failed");
                                     }
                                 });
                     } catch (RuntimeException failure) {
-                        finishYouTubeSync("series_tracker_sync_failed");
+                        Logger.printException(() -> "syncYouTube failure", failure);
+                        finishYouTubeSync("morphe_series_tracker_sync_failed");
                     }
-                })) finishYouTubeSync("series_tracker_sync_failed");
+                })) finishYouTubeSync("morphe_series_tracker_sync_failed");
     }
 
     private void finishYouTubeSync(String status) {
@@ -352,11 +380,13 @@ public final class TrackerService {
                             List<PlaylistDiscovery.Match> matches = discovery.find(video);
                             main.post(() -> done.accept(matches));
                         } catch (Exception failure) {
-                            main.post(() -> error.accept("series_tracker_discovery_unavailable"));
+                            Logger.printInfo(() -> "Playlist discovery failed", failure);
+                            main.post(() -> error.accept("morphe_series_tracker_discovery_unavailable"));
                         }
                     });
         } catch (RejectedExecutionException failure) {
-            main.post(() -> error.accept("series_tracker_error_catalog_busy"));
+            Logger.printDebug(() -> "Catalog queue is full", failure);
+            main.post(() -> error.accept("morphe_series_tracker_error_catalog_busy"));
             return null;
         }
     }
@@ -374,7 +404,8 @@ public final class TrackerService {
                         }
                     });
         } catch (RejectedExecutionException failure) {
-            main.post(() -> error.accept("series_tracker_error_catalog_busy"));
+            Logger.printDebug(() -> "Catalog queue is full", failure);
+            main.post(() -> error.accept("morphe_series_tracker_error_catalog_busy"));
             return null;
         }
     }
@@ -419,7 +450,7 @@ public final class TrackerService {
                 () -> {
                     if (selection.positionMs >= 0
                             && !RecordingPrivacy.acceptsManualPosition(privacyGeneration))
-                        throw new IllegalStateException("series_tracker_identity_unavailable");
+                        throw new IllegalStateException("morphe_series_tracker_identity_unavailable");
                     repository.saveSeries(
                             id, name, "", catalog, selection, System.currentTimeMillis());
                     updateTrackedVideos();
@@ -475,7 +506,7 @@ public final class TrackerService {
         if (refreshing.containsKey(id)) return;
         long now = System.currentTimeMillis(), remaining = repository.refreshRetryAt(id) - now;
         if (remaining > 0) {
-            if (!quiet) main.post(() -> error.accept("series_tracker_error_retry_later"));
+            if (!quiet) main.post(() -> error.accept("morphe_series_tracker_error_retry_later"));
             return;
         }
         TrackerRepository.FetchTicket ticket = repository.beginRefresh(id);
@@ -485,8 +516,9 @@ public final class TrackerService {
             Future<?> future = network.submit(() -> fetchAndPublish(ticket, quiet, error));
             refreshing.put(id, future);
         } catch (RejectedExecutionException failure) {
+            Logger.printDebug(() -> "Catalog queue is full", failure);
             refreshTickets.remove(id);
-            repository.fetchFailed(ticket, "series_tracker_error_catalog_busy");
+            repository.fetchFailed(ticket, "morphe_series_tracker_error_catalog_busy");
             repository.refreshRetry(id, now + CatalogRefreshPolicy.RETRY_MS);
         }
     }
@@ -552,7 +584,7 @@ public final class TrackerService {
 
     private void requireCurrent(Series s) {
         if (!repository.series(s.id).epoch.equals(s.epoch))
-            throw new IllegalStateException("series_tracker_error_series_changed");
+            throw new IllegalStateException("morphe_series_tracker_error_series_changed");
     }
 
     public void select(
@@ -645,10 +677,11 @@ public final class TrackerService {
     }
 
     private static String message(Exception failure) {
+        Logger.printInfo(() -> "Series tracker operation failed", failure);
         String text = failure.getMessage();
-        if (text != null && text.startsWith("series_tracker_error_")) return text;
+        if (text != null && text.startsWith("morphe_series_tracker_error_")) return text;
         if (failure instanceof java.io.IOException)
-            return "series_tracker_error_catalog_unavailable";
-        return "series_tracker_error_operation";
+            return "morphe_series_tracker_error_catalog_unavailable";
+        return "morphe_series_tracker_error_operation";
     }
 }

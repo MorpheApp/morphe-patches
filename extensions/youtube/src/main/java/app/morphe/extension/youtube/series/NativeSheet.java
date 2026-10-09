@@ -1,10 +1,19 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
-import android.view.*;
-import android.widget.*;
+import android.view.Gravity;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 /** Small native-view sheet using the host palette and standard Android accessibility. */
 final class NativeSheet {
@@ -113,7 +122,7 @@ final class NativeSheet {
     static void confirm(Context c, String title, String message, String action, Runnable work) {
         NativeSheet sheet = new NativeSheet(c, title);
         sheet.message(message);
-        sheet.action("series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
         sheet.action(
                 action,
                 () -> {

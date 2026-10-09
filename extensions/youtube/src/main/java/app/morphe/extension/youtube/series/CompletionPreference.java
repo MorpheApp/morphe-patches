@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.content.Context;
@@ -20,7 +27,7 @@ public final class CompletionPreference extends Preference {
         setSummary(
                 UiText.format(
                         getContext(),
-                        "series_tracker_completion_summary",
+                        "morphe_series_tracker_completion_summary",
                         CompletionPolicy.percent(Settings.SERIES_TRACKER_COMPLETION_PERCENT.get()),
                         CompletionPolicy.seconds(
                                 Settings.SERIES_TRACKER_COMPLETION_SECONDS.get())));
@@ -28,21 +35,21 @@ public final class CompletionPreference extends Preference {
 
     @Override
     protected void onClick() {
-        NativeSheet sheet = new NativeSheet(getContext(), "series_tracker_completion_title");
-        sheet.message("series_tracker_completion_explanation");
+        NativeSheet sheet = new NativeSheet(getContext(), "morphe_series_tracker_completion_title");
+        sheet.message("morphe_series_tracker_completion_explanation");
         EditText percent =
                 number(
                         sheet,
-                        "series_tracker_completion_percent",
+                        "morphe_series_tracker_completion_percent",
                         CompletionPolicy.percent(Settings.SERIES_TRACKER_COMPLETION_PERCENT.get()));
         EditText seconds =
                 number(
                         sheet,
-                        "series_tracker_completion_seconds",
+                        "morphe_series_tracker_completion_seconds",
                         CompletionPolicy.seconds(Settings.SERIES_TRACKER_COMPLETION_SECONDS.get()));
-        sheet.action("series_tracker_ui_cancel", sheet.dialog::dismiss, false);
+        sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
         sheet.action(
-                "series_tracker_completion_save",
+                "morphe_series_tracker_completion_save",
                 () -> {
                     Integer p = value(percent, 1, 100), s = value(seconds, 0, 300);
                     if (p == null || s == null) return;
@@ -68,12 +75,12 @@ public final class CompletionPreference extends Preference {
     }
 
     private Integer value(EditText input, int min, int max) {
-        try {
-            int n = Integer.parseInt(input.getText().toString().trim());
+        String text = input.getText().toString().trim();
+        if (text.matches("[0-9]{1,3}")) {
+            int n = Integer.parseInt(text);
             if (n >= min && n <= max) return n;
-        } catch (NumberFormatException ignored) {
         }
-        input.setError(UiText.format(getContext(), "series_tracker_completion_range", min, max));
+        input.setError(UiText.format(getContext(), "morphe_series_tracker_completion_range", min, max));
         return null;
     }
 }

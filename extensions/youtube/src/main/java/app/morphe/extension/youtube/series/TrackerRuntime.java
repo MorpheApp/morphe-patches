@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import android.os.Handler;
@@ -49,48 +56,43 @@ final class TrackerRuntime {
         }
         PlaybackBridge.Source source = PlaybackBridge.source();
         if (source == null) return;
-        try {
-            String before = source.seriesTrackerVideoId();
-            long position = source.seriesTrackerPosition();
-            long duration = VideoInformation.getVideoLength();
-            boolean shorts = VideoInformation.lastVideoIdIsShort();
-            String after = source.seriesTrackerVideoId();
-            if (source != PlaybackBridge.source() || before == null || !before.equals(after))
-                return;
-            if (waiting) {
-                if (pending == null
-                        || SystemClock.elapsedRealtime() - requestedAt < 600
-                        || !pending.videoId.equals(before)
-                        || Math.abs(position - pending.seconds() * 1000) > 3000
-                        || !PlaybackSession.play()) return;
+        String before = PlaybackBridge.videoId(source);
+        long position = PlaybackBridge.position(source);
+        long duration = VideoInformation.getVideoLength();
+        boolean shorts = VideoInformation.lastVideoIdIsShort();
+        String after = PlaybackBridge.videoId(source);
+        if (source != PlaybackBridge.source() || before.isEmpty() || !before.equals(after)) return;
+        if (waiting) {
+            if (pending == null
+                    || SystemClock.elapsedRealtime() - requestedAt < 600
+                    || !pending.videoId.equals(before)
+                    || Math.abs(position - pending.seconds() * 1000) > 3000
+                    || !PlaybackSession.play()) return;
 
-                waiting = false;
-                pending = null;
-            }
-            TrackerService tracker = service();
-            if (!Settings.SERIES_TRACKER_RECORD_PROGRESS.get()
-                    || !RecordingPrivacy.allowsRecording()
-                    || tracker == null
-                    || !tracker.isTracked(before)) {
-                reducer.clear();
-                return;
-            }
-            String type = PlayerType.getCurrent().name();
-            boolean excluded =
-                    shorts
-                            || type.equals("INLINE_MINIMAL")
-                            || (!type.startsWith("WATCH_WHILE_") && !PlaybackSession.active());
-            reducer.sample(
-                    before,
-                    after,
-                    position,
-                    duration,
-                    excluded,
-                    SystemClock.elapsedRealtime(),
-                    System.currentTimeMillis());
-        } catch (RuntimeException ignored) {
-            /* Constructor-time metadata is not ready yet. */
+            waiting = false;
+            pending = null;
         }
+        TrackerService tracker = service();
+        if (!Settings.SERIES_TRACKER_RECORD_PROGRESS.get()
+                || !RecordingPrivacy.allowsRecording()
+                || tracker == null
+                || !tracker.isTracked(before)) {
+            reducer.clear();
+            return;
+        }
+        String type = PlayerType.getCurrent().name();
+        boolean excluded =
+                shorts
+                        || type.equals("INLINE_MINIMAL")
+                        || (!type.startsWith("WATCH_WHILE_") && !PlaybackSession.active());
+        reducer.sample(
+                before,
+                after,
+                position,
+                duration,
+                excluded,
+                SystemClock.elapsedRealtime(),
+                System.currentTimeMillis());
     }
 
     static void state(String value) {
@@ -123,7 +125,7 @@ final class TrackerRuntime {
                                                 Utils.getContext(),
                                                 UiText.get(
                                                         Utils.getContext(),
-                                                        "series_tracker_error_resume"),
+                                                        "morphe_series_tracker_error_resume"),
                                                 Toast.LENGTH_LONG)
                                         .show();
 

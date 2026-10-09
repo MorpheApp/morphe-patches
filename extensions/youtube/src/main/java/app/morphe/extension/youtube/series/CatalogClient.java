@@ -1,14 +1,35 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3114
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.series;
 
 import static app.morphe.extension.youtube.series.TrackerModels.Episode;
 
-import org.json.*;
+import androidx.annotation.Nullable;
 
-import java.io.*;
-import java.net.*;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InterruptedIOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.function.LongSupplier;
+
+import app.morphe.extension.shared.Logger;
 
 /** Bounded unauthenticated browse adapter. Only complete recognized catalogs are returned. */
 public final class CatalogClient {
@@ -140,28 +161,23 @@ public final class CatalogClient {
                 30000);
     }
 
-    static long retryDelay(String value, long now) {
+    static long retryDelay(@Nullable String value, long now) {
         if (value == null) return 30000;
-        try {
-            return Math.max(
-                    30000, Math.min(3600000, Math.multiplyExact(Long.parseLong(value), 1000)));
-        } catch (NumberFormatException | ArithmeticException ignored) {
+        long delay;
+        if (value.matches("[0-9]{1,9}")) {
+            delay = Long.parseLong(value) * 1000;
+        } else {
+            try {
+                delay = java.time.ZonedDateTime.parse(
+                                value, java.time.format.DateTimeFormatter.RFC_1123_DATE_TIME)
+                        .toInstant()
+                        .toEpochMilli() - now;
+            } catch (java.time.format.DateTimeParseException ex) {
+                Logger.printDebug(() -> "Unknown Retry-After: " + value, ex);
+                return 30000;
+            }
         }
-        try {
-            return Math.max(
-                    30000,
-                    Math.min(
-                            3600000,
-                            java.time.ZonedDateTime.parse(
-                                                    value,
-                                                    java.time.format.DateTimeFormatter
-                                                            .RFC_1123_DATE_TIME)
-                                            .toInstant()
-                                            .toEpochMilli()
-                                    - now));
-        } catch (java.time.format.DateTimeParseException ignored) {
-            return 30000;
-        }
+        return Math.max(30000, Math.min(3600000, delay));
     }
 
     private static Reply request(String body, int remainingMs, int maxBytes) throws IOException {
