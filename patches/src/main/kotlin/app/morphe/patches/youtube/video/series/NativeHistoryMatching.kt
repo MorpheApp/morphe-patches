@@ -69,6 +69,6 @@ internal fun BytecodePatchContext.resolveNativeHistory(accountType: String): Nat
         continuation = continuation,
         clickTracking = clickTracking,
         payload = NativeBrowseResponsePayloadFingerprint.instructionMatches.first()
-            .instruction.getReference<FieldReference>()!!,
+            .instruction.getReference<FieldReference>()!!
     )
 }
