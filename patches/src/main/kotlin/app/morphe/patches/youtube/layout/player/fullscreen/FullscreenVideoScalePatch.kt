@@ -26,7 +26,6 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.getPlayerTypeFingerprint
 import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -87,12 +86,6 @@ val fullscreenVideoScalePatch = bytecodePatch(
         addPlayerBottomButton(EXTENSION_BUTTON)
         initializeLegacyBottomControl(EXTENSION_BUTTON)
         hookAdaptiveFormat("$EXTENSION_CLASS_VIDEO_SCALE->setVideoAspectRatio")
-
-        getPlayerTypeFingerprint().method.addInstruction(
-            0,
-            "invoke-static { p0 }, $EXTENSION_CLASS_VIDEO_SCALE->" +
-                    "attachPlayerOverlay(Landroid/view/View;)V"
-        )
 
         YouTubePlayerOverlaysLayoutConstructorFingerprint.matchAll().forEach {
             it.method.addInstruction(
