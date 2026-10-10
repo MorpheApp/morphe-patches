@@ -28,6 +28,8 @@ public final class DescriptionComponentsFilter extends Filter {
 
     private static final String INFOCARDS_SECTION_PATH = "infocards_section.e";
 
+    private final StringFilterGroup askGeminiButton;
+    private final ByteArrayFilterGroup askGeminiButtonBuffer;
     private final StringFilterGroup attributesSection;
     private final ByteArrayFilterGroup attributesSectionBuffer;
     private final ByteArrayFilterGroup podcastSectionBuffer;
@@ -71,6 +73,17 @@ public final class DescriptionComponentsFilter extends Filter {
                 Settings.HIDE_ASK_SECTION,
                 "input_composer_button.e",
                 "youchat_entrypoint.e"
+        );
+
+        // 'Ask Gemini' Play Store promo button inside the Ask about this video panel (chat_footer).
+        // Only match button paths so the chat_footer root (which holds the text input) is kept.
+        askGeminiButton = new StringFilterGroup(
+                null,
+                "chat_footer.e"
+        );
+        askGeminiButtonBuffer = new ByteArrayFilterGroup(
+                Settings.HIDE_ASK_GEMINI_BUTTON,
+                "com.google.android.apps.bard"
         );
 
         final StringFilterGroup correctionsSection = new StringFilterGroup(
@@ -223,6 +236,7 @@ public final class DescriptionComponentsFilter extends Filter {
         addPathCallbacks(
                 aiGeneratedVideoSummarySection,
                 attributesSection,
+                askGeminiButton,
                 askSection,
                 correctionsSection,
                 courseProgressSection,
@@ -252,6 +266,12 @@ public final class DescriptionComponentsFilter extends Filter {
                               StringFilterGroup matchedGroup,
                               FilterContentType contentType,
                               int contentIndex) {
+        // Ask Gemini lives in the PAyouchat engagement panel, not the description panel.
+        if (matchedGroup == askGeminiButton) {
+            return Utils.contains(path, "button.e")
+                    && askGeminiButtonBuffer.check(buffer).isFiltered();
+        }
+
         // Immediately after the layout is refreshed, litho components are updated before the UI is drawn.
         // In this case, EngagementPanel.isDescription() cannot be used, and isActionBarVisible.get() should be used.
         if (!EngagementPanel.isDescription() && !(PlayerType.getCurrent().isMaximizedOrFullscreen() ||
