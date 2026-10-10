@@ -224,7 +224,7 @@ public enum ClientType {
             "PS4",
             "PlayStation 4",
             "",
-            "7.20260707.07.00",
+            "7.20261007.13.00",
             "GAME_CONSOLE",
             "Mozilla/5.0 (PS4; Leanback Shell) Gecko/20100101 Firefox/65.0 LeanbackShell/01.00.01.75 Sony PS4/ (PS4, , no, CH)",
             true,
@@ -235,6 +235,32 @@ public enum ClientType {
             false,
             true,
             "TV"
+    ),
+    /**
+     * Same as {@code TV_SABR} but uses another device.
+     * This client cannot be selected in the settings and is used only if {@code TV_SABR} fails.
+     * <p>
+     * User agent: <a href="https://console.maban.co.uk/device/wiiu">console.maban.co.uk/device/wiiu</a>.
+     * Keep "WiiU" without a space, YouTube reads "Nintendo Wii U" as a Wii and asks it for a PoToken.
+     */
+    TV_SABR_WII_U(
+            TV_SABR.id,
+            TV_SABR.clientName,
+            "Nintendo",
+            "Wii U",
+            "Nintendo WiiU",
+            TV_SABR.osVersion,
+            TV_SABR.clientVersion,
+            TV_SABR.clientPlatform,
+            "Mozilla/5.0 (Nintendo WiiU) AppleWebKit/534.52 (KHTML, like Gecko) NX/2.1.0.8.23 NintendoBrowser/1.1.0.7579.EU",
+            TV_SABR.canLogin,
+            TV_SABR.requireLogin,
+            TV_SABR.supportsMultiAudioTracks,
+            TV_SABR.supportsVRImmersiveMode,
+            TV_SABR.requireJS,
+            TV_SABR.requirePoToken,
+            TV_SABR.requireSABR,
+            "TV Wii U"
     ),
     /**
      * Same as {@code TV_SABR} but supports dash streams.
