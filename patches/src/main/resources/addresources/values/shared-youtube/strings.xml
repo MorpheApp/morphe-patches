@@ -102,6 +102,12 @@ To change the icon everywhere, patch again and change the 'App icon' patch optio
 
 If you are a YouTube Premium user, this setting may not be required"</string>
     <string name="morphe_spoof_video_streams_no_clients_toast">Could not fetch any client streams</string>
+    <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+    <string name="morphe_spoof_video_streams_client_failing_dialog_title">Default client does not work</string>
+    <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s did not work several times in a row, but %2$s did.
+
+Make %2$s the default client?"</string>
+    <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Switch</string>
     <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues.</string>
     <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -247,6 +253,12 @@ To use this feature, turn off \'Spoof video streams\'"</string>
     <string name="morphe_external_potoken_provider_about_summary">"This feature is currently under development and may not work
 
 Tap here to download PotHelper"</string>
+    <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper no longer works</string>
+    <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+    <string name="morphe_external_potoken_provider_expired_dialog_message">"The token built into this version of PotHelper no longer works
+
+Turn on \'Spoof video streams\' to fix playback"</string>
+    <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Turn on</string>
 
     <!-- misc.spoof.appversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>
