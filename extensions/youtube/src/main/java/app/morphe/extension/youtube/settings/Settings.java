@@ -382,6 +382,7 @@ public class Settings extends SharedYouTubeSettings {
     // Description
     public static final BooleanSetting HIDE_AI_GENERATED_VIDEO_SUMMARY_SECTION = new BooleanSetting("morphe_hide_ai_generated_video_summary_section", FALSE);
     public static final BooleanSetting HIDE_ASK_SECTION = new BooleanSetting("morphe_hide_ask_section", FALSE);
+    public static final BooleanSetting HIDE_ASK_GEMINI_BUTTON = new BooleanSetting("morphe_hide_ask_gemini_button", FALSE);
     public static final BooleanSetting HIDE_ATTRIBUTES_SECTION = new BooleanSetting("morphe_hide_attributes_section", FALSE);
     public static final BooleanSetting HIDE_CHAPTERS_SECTION = new BooleanSetting("morphe_hide_chapters_section", FALSE);
     public static final BooleanSetting HIDE_CORRECTIONS_SECTION = new BooleanSetting("morphe_hide_corrections_section", FALSE);
