@@ -36,8 +36,10 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         YouTubeActivityOnCreateFingerprint,
         YouTubeApplicationInitFingerprint
     ),
-    fixMediaFetchHotConfig = {
-        !is_21_41_or_greater
+    fixCronetOnesie = {
+        // 21.41 removed the stream config replacement flag,
+        // and the native player always sends the Onesie request.
+        is_21_41_or_greater
     },
     fixMediaFetchHotConfigAlternative = {
         // In 20.14 the flag was merged with 20.03 start playback flag.

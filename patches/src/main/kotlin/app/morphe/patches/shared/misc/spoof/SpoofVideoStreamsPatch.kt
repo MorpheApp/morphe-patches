@@ -86,7 +86,7 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
     mainActivityOnCreateFingerprints: List<Fingerprint>,
-    fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean,
+    fixCronetOnesie: BytecodePatchBuilder.() -> Boolean,
     fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean,
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
@@ -434,7 +434,24 @@ internal fun spoofVideoStreamsPatch(
 
         // region Turn off stream config replacement feature flag.
 
-        if (fixMediaFetchHotConfig()) {
+        if (fixCronetOnesie()) {
+            // The flag was removed and the native player sends the Onesie /initplayback
+            // request itself, which never reaches the Java /initplayback hook.
+            NativeNetFetchFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.first().index
+                    val urlRegister = getInstruction(index).registersUsed[1]
+
+                    addInstructions(
+                        index,
+                        """
+                            invoke-static/range { v$urlRegister .. v$urlRegister }, $EXTENSION_CLASS->blockInitPlaybackRequest(Ljava/lang/String;)Ljava/lang/String;
+                            move-result-object v$urlRegister
+                        """
+                    )
+                }
+            }
+        } else {
             MediaFetchHotConfigFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
