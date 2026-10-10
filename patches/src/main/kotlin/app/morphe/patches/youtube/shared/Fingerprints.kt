@@ -135,8 +135,9 @@ private object PlayerTypeEnumFingerprint : Fingerprint(
     )
 )
 
+// 21.41+ YouTubePlayerOverlaysLayout is no longer a player type listener.
 internal fun BytecodePatchContext.getPlayerTypeFingerprint() = object : Fingerprint(
-    definingClass = "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;",
+    definingClass = "Lcom/google/android/apps/youtube/app/player/YouTubePlayerViewNotForReflection;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(

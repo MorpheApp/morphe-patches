@@ -23,6 +23,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_13_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -35,6 +36,9 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         YouTubeActivityOnCreateFingerprint,
         YouTubeApplicationInitFingerprint
     ),
+    fixMediaFetchHotConfig = {
+        !is_21_41_or_greater
+    },
     fixMediaFetchHotConfigAlternative = {
         // In 20.14 the flag was merged with 20.03 start playback flag.
         false

@@ -11,8 +11,10 @@
 package app.morphe.patches.youtube.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -51,11 +53,39 @@ internal object BackgroundPlaybackManagerFingerprint : Fingerprint(
     )
 )
 
+/**
+ * 21.23+
+ */
 internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
+    returnType = "Ljava/lang/Object;",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        // Background playback allowed.
+        methodCall(opcode = Opcode.INVOKE_VIRTUAL, returnType = "Z", parameters = listOf()),
+        methodCall(
+            smali = "Ljava/lang/Boolean;->booleanValue()Z",
+            location = MatchAfterWithin(2)
+        ),
+        resourceLiteral(
+            ResourceType.STRING,
+            "pref_background_and_offline_category",
+            location = MatchAfterWithin(10)
+        ),
+        resourceLiteral(ResourceType.STRING, "pref_background_category")
+    )
+)
+
+/**
+ * 21.22 and lower.
+ */
+internal object BackgroundPlaybackSettingsLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     filters = listOf(
+        methodCall(returnType = "Z"),
+        // Background playback allowed.
+        methodCall(returnType = "Z"),
         resourceLiteral(ResourceType.STRING, "pref_background_and_offline_category"),
         resourceLiteral(ResourceType.STRING, "pref_background_category")
     )
