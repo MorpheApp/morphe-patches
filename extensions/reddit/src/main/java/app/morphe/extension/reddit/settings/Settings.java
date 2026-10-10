@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
+import app.morphe.extension.shared.settings.FloatSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.SharedPrefCategory;
@@ -26,7 +27,9 @@ public class Settings extends BaseSettings {
     public static final StringSetting CUSTOM_FONT_FILE_PATH = new StringSetting("morphe_custom_font_file_path", "", true);
     public static final BooleanSetting DISABLE_MODERN_HOME = new BooleanSetting("morphe_disable_modern_home", FALSE, true);
     public static final BooleanSetting DISABLE_SCREENSHOT_POPUP = new BooleanSetting("morphe_disable_screenshot_popup", TRUE, true);
+    public static final FloatSetting FEED_MEDIA_MAX_HEIGHT = new FloatSetting("morphe_feed_media_max_height", 1.33f);
     public static final BooleanSetting FORCE_SYSTEM_FONT = new BooleanSetting("morphe_force_system_font", FALSE, true);
+    public static final BooleanSetting FULL_WIDTH_FEED_MEDIA = new BooleanSetting("morphe_full_width_feed_media", FALSE, true);
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("morphe_hide_ask_button", FALSE, true);
     public static final BooleanSetting HIDE_ANSWERS_BUTTON = new BooleanSetting("morphe_hide_answers_button", FALSE, true);
     public static final BooleanSetting HIDE_CHAT_BUTTON = new BooleanSetting("morphe_hide_chat_button", FALSE, true);
@@ -34,12 +37,17 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_CREATE_BUTTON = new BooleanSetting("morphe_hide_create_button", FALSE, true);
     public static final BooleanSetting HIDE_DISCOVER_BUTTON = new BooleanSetting("morphe_hide_discover_button", FALSE, true);
     public static final BooleanSetting HIDE_GAMES_BUTTON = new BooleanSetting("morphe_hide_games_button", FALSE, true);
+    public static final BooleanSetting HIDE_JOIN_CONVERSATION_BUTTON = new BooleanSetting("morphe_hide_join_conversation_button", FALSE);
+    public static final BooleanSetting HIDE_MEDIA_VIEWER_OVERLAY = new BooleanSetting("morphe_hide_media_viewer_overlay", FALSE);
     public static final BooleanSetting HIDE_ABOUT_SHELF = new BooleanSetting("morphe_hide_about_shelf", FALSE, true);
     public static final BooleanSetting HIDE_GAMES_ON_REDDIT_SHELF = new BooleanSetting("morphe_hide_games_on_reddit_shelf", FALSE, true);
     public static final BooleanSetting HIDE_RECENTLY_VISITED_SHELF = new BooleanSetting("morphe_hide_recently_visited_shelf", FALSE, true);
     public static final BooleanSetting HIDE_RESOURCES_SHELF = new BooleanSetting("morphe_hide_resources_shelf", FALSE, true);
     public static final BooleanSetting HIDE_REDDIT_PRO_SHELF = new BooleanSetting("morphe_hide_reddit_pro_shelf", FALSE, true);
     public static final BooleanSetting HIDE_TRENDING_SHELVES = new BooleanSetting("morphe_hide_trending_shelves", FALSE, true);
+    public static final BooleanSetting KEEP_FEED_POSITION = new BooleanSetting("morphe_keep_feed_position", TRUE);
+    public static final BooleanSetting MEDIA_VIEWER_BLACK_BACKGROUND = new BooleanSetting("morphe_media_viewer_black_background", FALSE);
+    public static final FloatSetting MEDIA_VIEWER_FADE = new FloatSetting("morphe_media_viewer_fade", 1f);
     public static final BooleanSetting REMOVE_NSFW_DIALOG = new BooleanSetting("morphe_remove_nsfw_dialog", FALSE, true);
     public static final BooleanSetting REMOVE_NOTIFICATION_DIALOG = new BooleanSetting("morphe_remove_notification_dialog", FALSE, true);
     public static final BooleanSetting SHOW_VIEW_COUNT = new BooleanSetting("morphe_show_view_count", FALSE, true);
