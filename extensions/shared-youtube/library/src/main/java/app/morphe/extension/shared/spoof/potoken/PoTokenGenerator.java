@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2533
+ * https://github.com/MorpheApp/morphe-patches/pull/3663
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -72,6 +73,10 @@ public class PoTokenGenerator {
                 if (oldGen != null) {
                     Utils.runOnMainThread(oldGen::close);
                 }
+
+                // The WebView only asks for the challenge after it has loaded,
+                // so download it while the WebView is still being created.
+                Utils.runOnBackgroundThread(BotGuardManager::getChallengeData);
 
                 try {
                     // Blocks until initialized

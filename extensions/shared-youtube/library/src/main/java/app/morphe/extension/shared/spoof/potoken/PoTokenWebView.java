@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2533
+ * https://github.com/MorpheApp/morphe-patches/pull/3663
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -19,6 +20,8 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import androidx.annotation.NonNull;
 
 import java.util.Locale;
 import java.util.Map;
@@ -64,15 +67,16 @@ public class PoTokenWebView {
 
         // A WebView not attached to a window does not count towards the priority of its renderer,
         // which then becomes a cached process that can be frozen and stall BotGuard indefinitely.
+        //noinspection WrongConstant
         webView.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false);
         webView.setVisibility(View.INVISIBLE);
         webView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
             @Override
-            public void onViewAttachedToWindow(View view) {
+            public void onViewAttachedToWindow(@NonNull View view) {
             }
 
             @Override
-            public void onViewDetachedFromWindow(View view) {
+            public void onViewDetachedFromWindow(@NonNull View view) {
                 // The activity was destroyed, so do not keep it alive through its decor view.
                 mainHandler.post(() -> {
                     if (!webView.isAttachedToWindow()) {

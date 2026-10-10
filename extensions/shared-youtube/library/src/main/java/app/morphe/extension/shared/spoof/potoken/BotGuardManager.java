@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2533
+ * https://github.com/MorpheApp/morphe-patches/pull/3663
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -8,6 +9,7 @@
 package app.morphe.extension.shared.spoof.potoken;
 
 import android.os.SystemClock;
+import android.util.Base64;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,10 +18,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
@@ -27,6 +33,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -49,6 +56,8 @@ public final class BotGuardManager {
     private static final String YOUTUBE_CONFIG_URL = "https://www.youtube.com/tv_config?action_get_config=true";
     private static final String YOUTUBE_URL = "https://www.youtube.com/";
     private static final String YOUTUBE_TV_URL = "https://www.youtube.com/tv";
+    private static final String INTERPRETER_FILE_PREFIX = "botguard_interpreter_";
+    private static final Pattern INTERPRETER_HASH_PATTERN = Pattern.compile("[A-Za-z0-9_-]{43}");
     private static final String USER_AGENT = "Mozilla/5.0 (SMART-TV; Linux; Tizen 8.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/7.0 Chrome/108.0.5359.1 TV Safari/537.36";
     /**
      * TCP connection and HTTP read timeout.
@@ -129,8 +138,8 @@ public final class BotGuardManager {
             String privateDoNotAccessOrElseTrustedResourceUrlWrappedValue = bgChallenge
                     .getJSONObject("interpreterUrl")
                     .getString("privateDoNotAccessOrElseTrustedResourceUrlWrappedValue");
-            String privateDoNotAccessOrElseSafeScriptWrappedValue =
-                    downloadUrl("https:" + privateDoNotAccessOrElseTrustedResourceUrlWrappedValue);
+            String privateDoNotAccessOrElseSafeScriptWrappedValue = getInterpreterScript(
+                    "https:" + privateDoNotAccessOrElseTrustedResourceUrlWrappedValue, interpreterHash);
             if (privateDoNotAccessOrElseSafeScriptWrappedValue == null) {
                 return null;
             }
@@ -152,6 +161,65 @@ public final class BotGuardManager {
         }
 
         return null;
+    }
+
+    /**
+     * The interpreter is named after the SHA-256 of its content, so a saved copy stays valid
+     * for as long as the challenge names the same hash. Only the challenge itself must be fresh.
+     */
+    @Nullable
+    private static String getInterpreterScript(String url, String hash) {
+        if (!INTERPRETER_HASH_PATTERN.matcher(hash).matches()) {
+            return downloadUrl(url);
+        }
+
+        File cacheDir = Utils.getContext().getCacheDir();
+        File file = new File(cacheDir, INTERPRETER_FILE_PREFIX + hash + ".js");
+        try {
+            if (file.isFile()) {
+                // Files.readString and Files.writeString need Android 13.
+                //noinspection ReadWriteStringCanBeUsed
+                String script = new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+                if (hash.equals(sha256(script))) {
+                    Logger.printDebug(() -> "BotGuard interpreter cache found: " + hash);
+                    return script;
+                }
+                Logger.printDebug(() -> "Ignoring BotGuard interpreter cache that does not match its hash");
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not read BotGuard interpreter cache", ex);
+        }
+
+        String script = downloadUrl(url);
+        try {
+            if (script != null && hash.equals(sha256(script))) {
+                // A partly written file would fail the hash check, but writing it fully first avoids a wasted download.
+                File temp = new File(file.getPath() + ".tmp");
+                //noinspection ReadWriteStringCanBeUsed
+                Files.write(temp.toPath(), script.getBytes(StandardCharsets.UTF_8));
+                if (temp.renameTo(file)) {
+                    File[] files = cacheDir.listFiles((dir, name) ->
+                            name.startsWith(INTERPRETER_FILE_PREFIX) && !name.equals(file.getName()));
+                    if (files != null) {
+                        for (File old : files) {
+                            //noinspection ResultOfMethodCallIgnored
+                            old.delete();
+                        }
+                    }
+                } else {
+                    //noinspection ResultOfMethodCallIgnored
+                    temp.delete();
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not save BotGuard interpreter cache", ex);
+        }
+        return script;
+    }
+
+    private static String sha256(String content) throws NoSuchAlgorithmException {
+        byte[] digest = MessageDigest.getInstance("SHA-256").digest(content.getBytes(StandardCharsets.UTF_8));
+        return Base64.encodeToString(digest, Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP);
     }
 
     public static String getUserAgent() {
