@@ -54,6 +54,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -109,7 +110,7 @@ private var setPlaybackSpeedMethodIndex = -1
 private lateinit var setPlaybackRateMethodRef : WeakReference<MutableMethod>
 private var setPlaybackRateMethodIndex = -1
 
-internal lateinit var playerStatusMethodRef : WeakReference<MutableMethod>
+private lateinit var playerStatusMethodRef : WeakReference<MutableMethod>
 
 val videoInformationPatch = bytecodePatch(
     description = "Hooks YouTube to get information about the current playing video.",
@@ -822,6 +823,30 @@ fun playerStatusHook(targetMethodClass: String, targetMethodName: String) {
         addInstruction(
             insertIndex,
             "invoke-static/range { p1 .. p1 }, $targetMethodClass->$targetMethodName(Ljava/lang/Enum;)V"
+        )
+    }
+}
+
+/**
+ * Hook the player status, and skip the rest of the status change if the target method returns true.
+ * The hook runs before [playerStatusHook] hooks, so those are not called if the status change is skipped.
+ */
+fun playerStatusOverrideHook(targetMethodClass: String, targetMethodName: String) {
+    playerStatusMethodRef.get()!!.apply {
+        val insertIndex = indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT)
+        // Instructions are added just above the SGET_OBJECT, so its register is free to use.
+        val freeRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+
+        addInstructionsWithLabels(
+            insertIndex,
+            """
+                invoke-static/range { p1 .. p1 }, $targetMethodClass->$targetMethodName(Ljava/lang/Enum;)Z
+                move-result v$freeRegister
+                if-eqz v$freeRegister, :continue
+                return-void
+                :continue
+                nop
+            """
         )
     }
 }

@@ -46,6 +46,10 @@ public final class LoadVideoPatch {
         playerInterfaceRef = new WeakReference<>(Objects.requireNonNull(playerInterfaceInit));
     }
 
+    public static boolean isPlayerInterfaceAvailable() {
+        return playerInterfaceRef.get() != null;
+    }
+
     @SuppressWarnings("ExtractMethodRecommender")
     public static void initializeReloadVideo() {
         try {
