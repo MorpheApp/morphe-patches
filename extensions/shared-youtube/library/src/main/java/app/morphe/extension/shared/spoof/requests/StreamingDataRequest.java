@@ -40,6 +40,7 @@ import app.morphe.extension.shared.oauth2.requests.OAuth2Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.PreferredClientCheck;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
@@ -537,6 +538,8 @@ public class StreamingDataRequest {
                 // Stats for nerds describes what is playing, which a download never changes.
                 if (!isDownload) {
                     lastSpoofedClientType = clientType;
+                    // The first attempt is with the default client.
+                    PreferredClientCheck.onStreamsFetched(videoId, i == 1, clientType);
                 }
 
                 if (clientType.requireJS) {

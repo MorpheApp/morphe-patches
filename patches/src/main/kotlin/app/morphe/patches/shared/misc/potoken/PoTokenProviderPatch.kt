@@ -7,6 +7,7 @@
 
 package app.morphe.patches.shared.misc.potoken
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.InstallerType
@@ -97,6 +98,16 @@ internal fun poTokenProviderPatch(
                 )
             }
         }
+
+        // Watch media responses for the server rejecting the token the helper made.
+        NetFetchStartFetchTaskFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p1 .. p2 }, $EXTENSION_CLASS->onMediaRequest(Ljava/lang/Object;Ljava/lang/Object;)V"
+        )
+        NetFetchResponseChunkFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->onMediaResponseChunk(Ljava/lang/Object;Ljava/nio/ByteBuffer;)V"
+        )
 
         preferenceScreen.addPreferences(
             PreferenceScreenPreference(
