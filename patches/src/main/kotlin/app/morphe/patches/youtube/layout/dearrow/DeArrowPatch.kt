@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.layout.dearrow
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.litho.relayout.lithoRelayoutPatch
+import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
@@ -72,7 +73,9 @@ val deArrowPatch = bytecodePatch(
                     SwitchPreference("morphe_dearrow_titles_library"),
                     SwitchPreference("morphe_dearrow_titles_player"),
                     SwitchPreference("morphe_dearrow_titles_search"),
-                    SwitchPreference("morphe_dearrow_titles_icon", summary = true)
+                    SwitchPreference("morphe_dearrow_titles_icon", summary = true),
+                    SwitchPreference("morphe_dearrow_casual_mode", summary = true),
+                    TextPreference("morphe_dearrow_casual_mode_min_votes", inputType = InputType.NUMBER)
                 )
             ),
             PreferenceCategory(

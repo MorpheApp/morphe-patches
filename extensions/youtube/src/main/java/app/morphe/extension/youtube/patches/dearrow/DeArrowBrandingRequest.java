@@ -18,6 +18,7 @@ import java.net.HttpURLConnection;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -31,6 +32,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Fetches the video titles and thumbnails submitted to DeArrow (<a href="https://dearrow.ajay.app">...</a>).
@@ -69,15 +71,55 @@ public final class DeArrowBrandingRequest {
     private static final int CONNECTION_TIMEOUT_MILLISECONDS = 2 * 1000;
 
     /**
+     * DeArrow title of a video.
+     *
+     * @param title        The DeArrow title, or null if the video has no DeArrow title
+     *                     or DeArrow keeps the original title.
+     * @param casualTitles The original titles in lowercase with enough casual votes, for which casual mode
+     *                     shows the original title instead of the DeArrow title. An empty title is of votes
+     *                     that do not include the original title, and are for any original title.
+     *                     Empty if casual mode is off.
+     */
+    public record DeArrowTitle(@Nullable String title, Set<String> casualTitles) {
+        static final DeArrowTitle NONE = new DeArrowTitle(null, Collections.emptySet());
+
+        /**
+         * @return If the original title is needed to choose the title, as casual mode applies only
+         *         if the casual votes are for the current original title.
+         */
+        public boolean needsOriginalTitle() {
+            return title != null && !casualTitles.isEmpty() && !casualTitles.contains("");
+        }
+
+        /**
+         * @param originalTitle The original title, or null if not needed or it failed to fetch.
+         * @return The DeArrow title, or null if the video has no DeArrow title, DeArrow keeps
+         *         the original title, or casual mode shows the original title.
+         */
+        @Nullable
+        public String titleFor(@Nullable String originalTitle) {
+            if (title == null) {
+                return null;
+            }
+            if (casualTitles.contains("") || (originalTitle != null
+                    && casualTitles.contains(originalTitle.trim().toLowerCase(Locale.ROOT)))) {
+                Logger.printDebug(() -> "Casual mode shows the original title instead of: " + title);
+                return null;
+            }
+            fetchedTitles.add(title);
+            return title;
+        }
+    }
+
+    /**
      * DeArrow title and thumbnail of a video.
      *
-     * @param title         The DeArrow title, or null if the video has no DeArrow title
-     *                      or DeArrow keeps the original title.
+     * @param title         The DeArrow title.
      * @param thumbnailTime The time in seconds of the video frame of the DeArrow thumbnail, or null if the
      *                      video has no DeArrow thumbnail or DeArrow keeps the original thumbnail.
      */
-    private record Branding(@Nullable String title, @Nullable Double thumbnailTime) {
-        static final Branding NONE = new Branding(null, null);
+    private record Branding(DeArrowTitle title, @Nullable Double thumbnailTime) {
+        static final Branding NONE = new Branding(DeArrowTitle.NONE, null);
     }
 
     /**
@@ -106,13 +148,10 @@ public final class DeArrowBrandingRequest {
     /**
      * Waits until the branding is fetched.
      *
-     * @return The DeArrow title, or null if the video has no DeArrow title
-     *         or DeArrow keeps the original title.
      * @throws DeArrowException If DeArrow is not available or the title failed to fetch,
      *                          so it can be fetched again later.
      */
-    @Nullable
-    public static String fetchTitle(String videoId) throws DeArrowException {
+    public static DeArrowTitle fetchTitle(String videoId) throws DeArrowException {
         try {
             return fetch(videoId).get().title();
         } catch (ExecutionException ex) {
@@ -213,7 +252,8 @@ public final class DeArrowBrandingRequest {
             if (branding == null) {
                 return Branding.NONE;
             }
-            return new Branding(parseTitle(branding.optJSONArray("titles")),
+            return new Branding(new DeArrowTitle(parseTitle(branding.optJSONArray("titles")),
+                    parseCasualTitles(branding.optJSONArray("casualVotes"))),
                     parseThumbnailTime(branding.optJSONArray("thumbnails")));
         } catch (IOException ex) {
             Logger.printInfo(() -> "Could not read DeArrow branding of: " + videoId, ex);
@@ -255,11 +295,35 @@ public final class DeArrowBrandingRequest {
 
         // Words that are not auto formatted by the DeArrow extension start with '>'.
         String text = FORMATTER_OVERRIDE_PATTERN.matcher(title.optString("title")).replaceAll("$1").trim();
-        if (text.isEmpty()) {
-            return null;
+        return text.isEmpty() ? null : text;
+    }
+
+    /**
+     * Users of casual mode vote for the original titles they like, in categories such as 'funny'.
+     * As done by the DeArrow extension, casual mode shows the original title if any category
+     * has enough votes. The server subtracts the votes against the original title from the counts.
+     *
+     * @return The original titles in lowercase with enough casual votes,
+     *         or an empty title for votes that do not include the original title.
+     */
+    private static Set<String> parseCasualTitles(@Nullable JSONArray casualVotes) {
+        if (casualVotes == null || !Settings.DEARROW_CASUAL_MODE.get()) {
+            return Collections.emptySet();
         }
-        fetchedTitles.add(text);
-        return text;
+        final int minimumVotes = Settings.DEARROW_CASUAL_MODE_MIN_VOTES.get();
+        final int casualVoteCount = casualVotes.length();
+        Set<String> titles = new HashSet<>(2 * casualVoteCount);
+
+        for (int i = 0; i < casualVoteCount; i++) {
+            JSONObject vote = casualVotes.optJSONObject(i);
+            if (vote != null && vote.optInt("count") >= minimumVotes) {
+                // optString() returns "null" for a null value.
+                titles.add(vote.isNull("title")
+                        ? ""
+                        : vote.optString("title").trim().toLowerCase(Locale.ROOT));
+            }
+        }
+        return titles;
     }
 
     @Nullable

@@ -1282,6 +1282,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
     <string name="morphe_dearrow_titles_search_title">Search results</string>
     <string name="morphe_dearrow_titles_icon_title">Show DeArrow icon</string>
     <string name="morphe_dearrow_titles_icon_summary">Shows the DeArrow icon on crowdsourced video titles</string>
+    <string name="morphe_dearrow_casual_mode_title">Casual mode</string>
+    <string name="morphe_dearrow_casual_mode_summary">Shows the original title instead of the DeArrow title if DeArrow users voted they like the original title</string>
+    <string name="morphe_dearrow_casual_mode_min_votes_title">Minimum casual votes to show original title</string>
+    <string name="morphe_dearrow_casual_mode_min_votes_summary">The number of casual votes in a single category, such as funny or creative, needed to show the original title</string>
     <string name="morphe_dearrow_thumbnails_title">DeArrow thumbnails</string>
     <string name="morphe_dearrow_thumbnail_options_entry_1">Original thumbnails</string>
     <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; Original thumbnails</string>

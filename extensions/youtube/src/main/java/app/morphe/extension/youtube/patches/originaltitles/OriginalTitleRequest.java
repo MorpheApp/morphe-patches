@@ -27,6 +27,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.LithoRelayoutPatch;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest;
+import app.morphe.extension.youtube.patches.dearrow.DeArrowBrandingRequest.DeArrowTitle;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch;
 import app.morphe.extension.youtube.patches.dearrow.DeArrowPatch.DeArrowTitlesAvailability;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
@@ -39,6 +40,8 @@ import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
  * whose embedding is disabled, are fetched from the player endpoint without an account.
  * DeArrow titles are fetched with {@link DeArrowBrandingRequest}, and if DeArrow has no title
  * then the original title is used if original titles are restored.
+ * Casual mode of DeArrow also needs the original title, to check if the casual votes are for
+ * the current original title.
  * <p>
  * DeArrow titles can be used only for some navigations, such as only for the search results,
  * so the title that replaces the title is chosen when the title is shown.
@@ -141,10 +144,14 @@ final class OriginalTitleRequest {
                     CompletableFuture<Titles> fetchedFuture = future;
                     Utils.runOnBackgroundThread(() -> {
                         try {
-                            String deArrowTitle = DeArrowBrandingRequest.fetchTitle(videoId);
+                            DeArrowTitle deArrow = DeArrowBrandingRequest.fetchTitle(videoId);
+                            String originalTitle = fetchedTitles.originalTitle();
+                            if (originalTitle == null && deArrow.needsOriginalTitle()) {
+                                originalTitle = fetchOriginalTitle(videoId);
+                            }
                             // Not replaced if the titles were fetched again meanwhile.
                             cache.replace(videoId, fetchedFuture, CompletableFuture.completedFuture(
-                                    new Titles(deArrowTitle, fetchedTitles.originalTitle())));
+                                    new Titles(deArrow.titleFor(originalTitle), fetchedTitles.originalTitle())));
                         } catch (DeArrowBrandingRequest.DeArrowException ex) {
                             // The DeArrow title is fetched again later,
                             // and the titles fetched before are used meanwhile.
@@ -155,9 +162,16 @@ final class OriginalTitleRequest {
                 }
                 future = CompletableFuture.supplyAsync(() -> {
                     String deArrowTitle = null;
+                    String originalTitle = null;
+                    boolean originalFetched = false;
                     if (RestoreOriginalTitlesPatch.USE_DEARROW) {
                         try {
-                            deArrowTitle = DeArrowBrandingRequest.fetchTitle(videoId);
+                            DeArrowTitle deArrow = DeArrowBrandingRequest.fetchTitle(videoId);
+                            if (deArrow.needsOriginalTitle()) {
+                                originalTitle = fetchOriginalTitle(videoId);
+                                originalFetched = true;
+                            }
+                            deArrowTitle = deArrow.titleFor(originalTitle);
                         } catch (DeArrowBrandingRequest.DeArrowException ex) {
                             // The DeArrow title is fetched again later, and the original title is used meanwhile.
                             retryTimes.put(videoId, System.currentTimeMillis() + FAILED_FETCH_RETRY_MILLISECONDS);
@@ -166,7 +180,10 @@ final class OriginalTitleRequest {
                     // The original title is not needed if the DeArrow title is used for all navigations.
                     final boolean fetchOriginal = RestoreOriginalTitlesPatch.RESTORE_ORIGINAL
                             && (deArrowTitle == null || !DeArrowTitlesAvailability.usingDeArrowTitlesEverywhere());
-                    return new Titles(deArrowTitle, fetchOriginal ? fetchOriginalTitle(videoId) : null);
+                    if (fetchOriginal && !originalFetched) {
+                        originalTitle = fetchOriginalTitle(videoId);
+                    }
+                    return new Titles(deArrowTitle, fetchOriginal ? originalTitle : null);
                 }, Utils::runOnBackgroundThread);
                 cache.put(videoId, future);
             }
