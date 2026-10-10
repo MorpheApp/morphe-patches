@@ -673,6 +673,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting VOT_SHOW_HTTP_ERROR_DIALOG = new BooleanSetting("morphe_vot_show_http_error_dialog", TRUE);
     public static final BooleanSetting VOT_HIDE_EXPORT_WARNING = new BooleanSetting("morphe_vot_hide_export_warning", FALSE, false, false);
 
+    // Series tracking. Consent is account-bound and excluded from settings import/export.
+    public static final BooleanSetting SERIES_TRACKER = new BooleanSetting("morphe_series_tracker", FALSE, true);
+    public static final BooleanSetting SERIES_TRACKER_HISTORY_TAB = new BooleanSetting("morphe_series_tracker_show_history_tab", FALSE, true, parent(SERIES_TRACKER));
+    public static final BooleanSetting SERIES_TRACKER_BUTTON = new BooleanSetting("morphe_series_tracker_show_button", FALSE, true, parent(SERIES_TRACKER));
+    public static final BooleanSetting SERIES_TRACKER_RECORD_PROGRESS = new BooleanSetting("morphe_series_tracker_record_followed_progress", FALSE, false, false, null, parent(SERIES_TRACKER));
+    public static final BooleanSetting SERIES_TRACKER_YOUTUBE_PROGRESS = new BooleanSetting("morphe_series_tracker_youtube_progress", FALSE, false, false, null, parent(SERIES_TRACKER));
+    public static final IntegerSetting SERIES_TRACKER_COMPLETION_PERCENT = new IntegerSetting("morphe_series_tracker_completion_percent", 92, parent(SERIES_TRACKER));
+    public static final IntegerSetting SERIES_TRACKER_COMPLETION_SECONDS = new IntegerSetting("morphe_series_tracker_completion_seconds", 30, parent(SERIES_TRACKER));
+
     // ReturnYoutubeDislike settings are declared in SharedYouTubeSettings, since they are shared with YouTube Music.
 
     // SponsorBlock
