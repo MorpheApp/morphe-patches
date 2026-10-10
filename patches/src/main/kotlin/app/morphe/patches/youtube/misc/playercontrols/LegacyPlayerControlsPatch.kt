@@ -12,6 +12,7 @@ package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchContext
@@ -40,10 +41,14 @@ import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.findFreeRegister
+import app.morphe.util.findInstructionIndicesReversed
+import app.morphe.util.getReference
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import org.w3c.dom.Node
 import java.lang.ref.WeakReference
 
@@ -206,11 +211,35 @@ internal fun disableNewPlayerControlsFeatureFlag() {
     }
 
     if (is_21_04_or_greater) {
-        NewPlayerOverlaysFeatureFlagFingerprint.matchAll().forEach {
+        val flagMethods = NewPlayerOverlaysFeatureFlagFingerprint.matchAll().map {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                false
+                "$EXTENSION_CLASS->disableNewPlayerOverlays(Z)Z"
             )
+            it.method
+        }
+
+        if (is_21_36_or_greater) {
+            // With the flag off the autonav end screen is laid out over the miniplayer
+            // as if it was the full player, so it is given the value the app has.
+            AutonavEndscreenOverlayFingerprint.classDef.methods.forEach { method ->
+                method.findInstructionIndicesReversed {
+                    val reference = getReference<MethodReference>()
+                    opcode == Opcode.INVOKE_VIRTUAL && flagMethods.any {
+                        reference?.definingClass == it.definingClass && reference.name == it.name
+                                && reference.returnType == "Z" && reference.parameterTypes.isEmpty()
+                    }
+                }.forEach { index ->
+                    val register = method.getInstruction<OneRegisterInstruction>(index + 1).registerA
+                    method.addInstructions(
+                        index + 2,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->getOriginalNewPlayerOverlays(Z)Z
+                            move-result v$register
+                        """
+                    )
+                }
+            }
         }
     }
 }
