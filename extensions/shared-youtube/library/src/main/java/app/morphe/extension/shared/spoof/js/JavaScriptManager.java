@@ -227,6 +227,7 @@ public final class JavaScriptManager {
                     cachedPlayerJs = playerJs;
                     saveToFile(cacheFile, playerJs);
                     Logger.printDebug(() -> "Saved Player js cache: " + cacheFileName);
+                    deleteOtherPlayerJsFiles(cacheFile);
                 }
             } else {
                 Logger.printException(() -> "playerJsUrl not found");
@@ -274,8 +275,7 @@ public final class JavaScriptManager {
 
             if (isNotEmpty(cachedPlayerJsHash)) {
                 cachedPlayerJsFile = new File(Utils.getContext().getCacheDir(),
-                        "player_js_" + PLAYER_JS_VARIANT.name().toLowerCase(Locale.ROOT)
-                                + "_" + cachedPlayerJsHash + ".js");
+                        getPlayerJsFilePrefix(PLAYER_JS_VARIANT) + cachedPlayerJsHash + ".js");
                 cachedPlayerJsUrl = String.format(BASE_JS_PLAYER_URL_FORMAT, cachedPlayerJsHash);
             }
         }
@@ -571,6 +571,30 @@ public final class JavaScriptManager {
             Logger.printException(() -> "Failed to read file", ex);
             return null;
         }
+    }
+
+    /**
+     * A new player is released every few days, so the old ones of every variant would pile up.
+     */
+    private static void deleteOtherPlayerJsFiles(File current) {
+        File[] files = current.getParentFile().listFiles((dir, name) -> {
+            if (name.equals(current.getName())) return false;
+            for (JavaScriptVariant variant : JavaScriptVariant.values()) {
+                if (name.startsWith(getPlayerJsFilePrefix(variant))) return true;
+            }
+            return false;
+        });
+        if (files != null) {
+            for (File old : files) {
+                Logger.printDebug(() -> "Deleting old Player js cache: " + old.getName());
+                //noinspection ResultOfMethodCallIgnored
+                old.delete();
+            }
+        }
+    }
+
+    private static String getPlayerJsFilePrefix(JavaScriptVariant variant) {
+        return "player_js_" + variant.name().toLowerCase(Locale.ROOT) + "_";
     }
 
     private static void saveToFile(File file, String content) {
