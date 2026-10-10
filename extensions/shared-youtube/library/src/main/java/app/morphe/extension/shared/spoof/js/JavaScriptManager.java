@@ -1,15 +1,15 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/340
+ * https://github.com/MorpheApp/morphe-patches/pull/3655
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.shared.spoof.js;
 
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.File;
@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -109,34 +110,62 @@ public final class JavaScriptManager {
      * Class used to deobfuscate, powered by SmartTube.
      */
     @Nullable
-    private volatile static PlayerDataExtractor cachedPlayerDataExtractor = null;
+    private volatile static PlayerDataExtractor cachedPlayerDataExtractor;
     /**
      * JavaScript contents.
      */
     @Nullable
-    private volatile static String cachedPlayerJs = null;
+    private volatile static String cachedPlayerJs;
     /**
      * JavaScript file to be saved in the cache directory.
      */
     @Nullable
-    private volatile static File cachedPlayerJsFile = null;
+    private volatile static File cachedPlayerJsFile;
     /**
      * JavaScript url hash.
      */
     @Nullable
-    private volatile static String cachedPlayerJsHash = null;
+    private volatile static String cachedPlayerJsHash;
     /**
      * JavaScript url.
      */
     @Nullable
-    private volatile static String cachedPlayerJsUrl = null;
+    private volatile static String cachedPlayerJsUrl;
     /**
      * Field value included when sending a request.
      */
     @Nullable
-    private volatile static Integer cachedSignatureTimestamp = null;
+    private volatile static Integer cachedSignatureTimestamp;
+
+    /**
+     * Separate from the player js lock, so the signature timestamp is not blocked while the engine starts.
+     */
+    private static final Object EXTRACTOR_LOCK = new Object();
+    private static final Object PLAYER_JS_LOCK = new Object();
+    private static final AtomicBoolean warmUpStarted = new AtomicBoolean();
 
     private JavaScriptManager() {
+    }
+
+    /**
+     * Starts the JavaScript engine while the player request is still on the network,
+     * instead of after its response.
+     */
+    public static void warmUpInBackground() {
+        if (cachedPlayerDataExtractor != null || !warmUpStarted.compareAndSet(false, true)) {
+            return;
+        }
+        Utils.runOnBackgroundThread(() -> {
+            try {
+                final long start = System.currentTimeMillis();
+                getPlayerDataExtractor();
+                Logger.printDebug(() -> "JavaScript warm up took: " + (System.currentTimeMillis() - start) + "ms");
+            } catch (Exception ex) {
+                Logger.printException(() -> "JavaScript warm up failure", ex);
+            } finally {
+                warmUpStarted.set(false);
+            }
+        });
     }
 
     private static void handleDebugToast(String message) {
@@ -149,20 +178,29 @@ public final class JavaScriptManager {
 
     @Nullable
     private static PlayerDataExtractor getPlayerDataExtractor() {
-        if (cachedPlayerDataExtractor == null) {
-            String playerJs = getPlayerJs();
-            if (isNotEmpty(playerJs)) {
-                cachedPlayerDataExtractor = new PlayerDataExtractor(playerJs, Objects.requireNonNull(cachedPlayerJsHash));
-            } else {
-                Logger.printException(() -> "playerJs not found");
+        synchronized (EXTRACTOR_LOCK) {
+            if (cachedPlayerDataExtractor == null) {
+                String playerJs = getPlayerJs();
+                if (isNotEmpty(playerJs)) {
+                    cachedPlayerDataExtractor = new PlayerDataExtractor(playerJs, Objects.requireNonNull(cachedPlayerJsHash));
+                } else {
+                    Logger.printException(() -> "playerJs not found");
+                }
             }
-        }
 
-        return cachedPlayerDataExtractor;
+            return cachedPlayerDataExtractor;
+        }
     }
 
     @Nullable
     private static String getPlayerJs() {
+        synchronized (PLAYER_JS_LOCK) {
+            return getPlayerJsLocked();
+        }
+    }
+
+    @Nullable
+    private static String getPlayerJsLocked() {
         if (cachedPlayerJs == null) {
             String playerJsUrl = getPlayerJsUrl();
             if (isNotEmpty(playerJsUrl)) {
@@ -235,7 +273,9 @@ public final class JavaScriptManager {
             }
 
             if (isNotEmpty(cachedPlayerJsHash)) {
-                cachedPlayerJsFile = new File(Utils.getContext().getCacheDir(), "player_js_" + PLAYER_JS_VARIANT.name().toLowerCase(Locale.ROOT) + "_" + cachedPlayerJsHash + ".js");
+                cachedPlayerJsFile = new File(Utils.getContext().getCacheDir(),
+                        "player_js_" + PLAYER_JS_VARIANT.name().toLowerCase(Locale.ROOT)
+                                + "_" + cachedPlayerJsHash + ".js");
                 cachedPlayerJsUrl = String.format(BASE_JS_PLAYER_URL_FORMAT, cachedPlayerJsHash);
             }
         }
@@ -274,13 +314,12 @@ public final class JavaScriptManager {
         return cachedPlayerJsHash;
     }
 
-    @NonNull
     public static String getJavaScriptVariant() {
         return PLAYER_JS_VARIANT.name();
     }
 
     @Nullable
-    public static String downloadUrl(@NonNull String url) {
+    public static String downloadUrl(String url) {
         if (!Utils.isNetworkConnected()) {
             Logger.printDebug(() -> "No internet connection: " + url);
             return null;
@@ -309,7 +348,7 @@ public final class JavaScriptManager {
                 Logger.printDebug(() -> "Ignoring response code: " + responseCode);
                 content = null;
             }
-            connection.disconnect();
+            // Don't disconnect, as connection may be reused in the near future.
 
             Logger.printDebug(() -> "Download took: " + (System.currentTimeMillis() - start) + "ms for URL: " + url);
             return content;
@@ -415,7 +454,7 @@ public final class JavaScriptManager {
 
             // formats or adaptiveFormats have a signatureCipher or a url.
             // Therefore, the computation time can be reduced by checking whether the first format has a signatureCipher or not.
-            boolean hasSignatureCipher = isNotEmpty(formats.get(0).getSignatureCipher());
+            final boolean hasSignatureCipher = isNotEmpty(formats.get(0).getSignatureCipher());
 
             for (Format format : formats) {
                 // If a signatureCipher is present, the url field must be assembled while iterating over each format.

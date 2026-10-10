@@ -148,6 +148,7 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
             }
             if (cause instanceof EvaluationFailedException jsError) {
                 if (jsError.getMessage() != null && jsError.getMessage().contains("Invalid or unexpected token")) {
+                    clearPreprocessedPlayer(getPlayerJSHash());
                     try {
                         cacheService.clear(CACHE_SECTION);
                     } catch (CacheError ce) {

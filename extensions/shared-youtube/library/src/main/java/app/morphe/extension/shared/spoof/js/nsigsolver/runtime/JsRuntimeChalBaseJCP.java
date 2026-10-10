@@ -1,12 +1,26 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/340
+ * https://github.com/MorpheApp/morphe-patches/pull/3655
+ *
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.spoof.js.nsigsolver.runtime;
 
 import static app.morphe.extension.shared.Utils.isNotEmpty;
+
+import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -16,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 import app.morphe.extension.shared.spoof.js.nsigsolver.common.*;
 import app.morphe.extension.shared.spoof.js.nsigsolver.provider.*;
@@ -96,8 +111,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
 
             if (playerChanged) {
                 // Try to get preprocessed player from cache
-                CachedData data = cacheService.get(CACHE_SECTION, "player:" + playerJSHash);
-                String player = (data != null) ? data.getCode() : null;
+                String player = readPreprocessedPlayer(playerJSHash);
                 boolean preprocessed = (player != null);
 
                 if (!preprocessed) {
@@ -113,7 +127,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
                 try {
                     SolverOutput loadOutput = gson.fromJson(loadResult, SOLVER_OUTPUT_TYPE);
                     if (loadOutput != null && loadOutput.getPreprocessedPlayer() != null) {
-                        cacheService.save(CACHE_SECTION, "player:" + playerJSHash, new CachedData(loadOutput.getPreprocessedPlayer()));
+                        savePreprocessedPlayer(playerJSHash, loadOutput.getPreprocessedPlayer());
                     }
                 } catch (JsonSyntaxException ex) {
                     // Ignore parse errors for load result - the important thing is the player is loaded
@@ -171,6 +185,75 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
         }
 
         return responses;
+    }
+
+    /**
+     * The preprocessed player is a few MB, too large for SharedPreferences,
+     * which keep the whole file in memory and rewrite it on every save.
+     */
+    private static final String PREPROCESSED_PLAYER_PREFIX = "player_js_preprocessed_";
+    private boolean legacyPlayerCacheRemoved;
+
+    private static File getPreprocessedPlayerFile(String playerHash) {
+        return new File(Utils.getContext().getCacheDir(), PREPROCESSED_PLAYER_PREFIX + playerHash + ".js");
+    }
+
+    @Nullable
+    private String readPreprocessedPlayer(String playerHash) {
+        if (!legacyPlayerCacheRemoved) {
+            legacyPlayerCacheRemoved = true;
+            try {
+                cacheService.removePlayerEntries(CACHE_SECTION);
+            } catch (CacheError ex) {
+                Logger.printDebug(() -> "Ignoring legacy player cache error", ex);
+            }
+        }
+
+        File file = getPreprocessedPlayerFile(playerHash);
+        if (!file.isFile()) {
+            return null;
+        }
+        try {
+            return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            Logger.printDebug(() -> "Could not read preprocessed player", ex);
+            return null;
+        }
+    }
+
+    private static void savePreprocessedPlayer(String playerHash, String player) {
+        File file = getPreprocessedPlayerFile(playerHash);
+        // A partly written file would be loaded as broken JavaScript, so write it fully before renaming.
+        File temp = new File(file.getPath() + ".tmp");
+        try {
+            Files.write(temp.toPath(), player.getBytes(StandardCharsets.UTF_8));
+            if (!temp.renameTo(file)) {
+                throw new IOException("Could not rename " + temp);
+            }
+        } catch (IOException ex) {
+            Logger.printException(() -> "Failed to save preprocessed player", ex);
+            //noinspection ResultOfMethodCallIgnored
+            temp.delete();
+            return;
+        }
+
+        File[] files = file.getParentFile().listFiles((dir, name) ->
+                name.startsWith(PREPROCESSED_PLAYER_PREFIX) && !name.equals(file.getName()));
+        if (files != null) {
+            for (File old : files) {
+                //noinspection ResultOfMethodCallIgnored
+                old.delete();
+            }
+        }
+    }
+
+    protected static void clearPreprocessedPlayer(String playerHash) {
+        //noinspection ResultOfMethodCallIgnored
+        getPreprocessedPlayerFile(playerHash).delete();
+    }
+
+    protected String getPlayerJSHash() {
+        return playerJSHash;
     }
 
     /**

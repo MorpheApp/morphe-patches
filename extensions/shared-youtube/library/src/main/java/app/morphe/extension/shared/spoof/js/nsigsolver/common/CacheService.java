@@ -45,6 +45,13 @@ public class CacheService {
         pref.clear();
     }
 
+    /**
+     * Removes the preprocessed players saved by older versions, which now live in files.
+     */
+    public void removePlayerEntries(String section) throws CacheError {
+        prunePlayerEntries(getSharedPrefs(getPrefsName(section)), "");
+    }
+
     public CachedData get(String section, String key) throws CacheError {
         SharedPrefCategory pref = getSharedPrefs(getPrefsName(section));
         prunePlayerEntries(pref, key.startsWith(PLAYER_KEY_PREFIX) ? key : null);

@@ -517,6 +517,10 @@ public class StreamingDataRequest {
             // A download reports its own failure, so it never adds a toast of its own here.
             final boolean showErrorToast = ((++i == clientOrder.length) || debugEnabled) && !isDownload;
 
+            if (clientType.requireJS) {
+                JavaScriptManager.warmUpInBackground();
+            }
+
             HttpURLConnection connection =
                     send(clientType, videoId, authorization, showErrorToast, includeVideoDetails);
             StreamData streamingData = buildPlayerResponseBuffer(clientType, connection, videoId, isInline);
