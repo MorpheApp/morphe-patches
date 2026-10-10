@@ -85,7 +85,7 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
-    mainActivityOnCreateFingerprint: Fingerprint,
+    mainActivityOnCreateFingerprints: List<Fingerprint>,
     fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean,
     fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
@@ -108,12 +108,12 @@ internal fun spoofVideoStreamsPatch(
     )
 
     execute {
-        mainActivityOnCreateFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { }, $extensionClass->setClientOrderToUse()V   
-            """
-        )
+        mainActivityOnCreateFingerprints.forEach { fingerprint ->
+            fingerprint.method.addInstruction(
+                0,
+                "invoke-static { }, $extensionClass->setClientOrderToUse()V"
+            )
+        }
 
         // region Enable extension helper method used by other patches
 
