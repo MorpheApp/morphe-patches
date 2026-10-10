@@ -31,8 +31,8 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         MusicActivityOnCreateFingerprint,
         YouTubeMusicApplicationInitFingerprint
     ),
-    fixMediaFetchHotConfig = {
-        true
+    fixCronetOnesie = {
+        false
     },
     // Only 8.11 to 8.14 needed this, and those versions are no longer supported.
     fixMediaFetchHotConfigAlternative = { false },
