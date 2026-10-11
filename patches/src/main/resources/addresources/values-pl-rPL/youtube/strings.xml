@@ -1119,6 +1119,9 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Przycisk wstecz zamyka kanał</string>
   <string name="morphe_back_button_always_exits_feed_summary">Naciśnięcie wstecz zawsze zamyka aplikację, zamiast przewijać na górę kanału</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Wymuś czcionkę systemową</string>
+  <string name="morphe_force_system_font_summary">Wyświetla aplikację z czcionką urządzenia zamiast YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ukryj pasek stanu</string>
   <string name="morphe_hide_status_bar_summary">Ukrywa systemowy pasek stanu. Przesuń w dół od górnej krawędzi, aby na chwilę go wyświetlić</string>
@@ -1168,9 +1171,9 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_dearrow_titles_icon_title">Pokaż ikonę DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Wyświetla ikonę DeArrow przy społecznościowych tytułach filmów</string>
   <string name="morphe_dearrow_casual_mode_title">Tryb swobodny</string>
-  <string name="morphe_dearrow_casual_mode_summary">Pokazuje oryginalny tytuł zamiast tytułu DeArrow, jeśli użytkownicy DeArrow zagłosowali, że podoba im się oryginalny tytuł</string>
-  <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalna liczba zwykłych głosów, aby pokazać oryginalny tytuł</string>
-  <string name="morphe_dearrow_casual_mode_min_votes_summary">Liczba zwykłych głosów w jednej kategorii, takiej jak zabawna lub kreatywna, potrzebna do pokazania oryginalnego tytułu</string>
+  <string name="morphe_dearrow_casual_mode_summary">Wyświetla oryginalny tytuł zamiast tytułu DeArrow, jeśli użytkownicy DeArrow zagłosowali, że podoba im się oryginał</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Minimalna liczba głosów, aby pokazać oryginalny tytuł</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">Liczba głosów w pojedynczej kategorii, takiej jak zabawny lub kreatywny, wymagana do wyświetlenia oryginalnego tytułu</string>
   <string name="morphe_dearrow_thumbnails_title">Miniaturki DeArrow</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">Oryginalne miniaturki</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow i oryginalne miniaturki</string>

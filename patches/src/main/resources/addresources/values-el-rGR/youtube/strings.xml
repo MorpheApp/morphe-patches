@@ -788,6 +788,8 @@ Second \"item\" text"</string>
 Για να έχετε πρόσβαση στις Ρυθμίσεις, ενεργοποιήστε το κουμπί Ρυθμίσεις μέσω Γενικά → Εργαλειοθήκη → Εμφάνιση Ρυθμίσεων."</string>
   <string name="morphe_narrow_navigation_buttons_title">Ενεργοποίηση στενών κουμπιών πλοήγησης</string>
   <string name="morphe_narrow_navigation_buttons_summary">Απόκρυψη κουμπιού Σύμπτυξης</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Απενεργοποίηση κουμπιών πλοήγησης χωρίς ετικέτες</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Εμφανίζει τα κουμπιά πλοήγησης με ετικέτες, εάν το YouTube τα στέλνει χωρίς ετικέτες</string>
   <string name="morphe_navigation_bar_animations_title">Ενεργοποίηση κινούμενων εικόνων στη γραμμή πλοήγησης</string>
   <string name="morphe_navigation_bar_animations_summary">Απόκρυψη κουμπιού Πλήρης οθόνη</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Απενεργοποίηση αυτόματης απόκρυψης της γραμμής πλοήγησης</string>
@@ -1105,6 +1107,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Το κουμπί πίσω βγαίνει από τη ροή</string>
   <string name="morphe_back_button_always_exits_feed_summary">Πατώντας πίσω βγαίνετε πάντα από την εφαρμογή αντί να μεταφέρεστε στην κορυφή της ροής.</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Υποχρεωτική γραμματοσειρά συστήματος</string>
+  <string name="morphe_force_system_font_summary">Εμφανίζει την εφαρμογή με τη γραμματοσειρά της συσκευής αντί για το YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Απόκρυψη γραμμής κατάστασης</string>
   <string name="morphe_hide_status_bar_summary">Αποκρύπτει τη γραμμή κατάστασης του συστήματος. Σύρετε προς τα κάτω από το πάνω άκρο για να εμφανιστεί για μια στιγμή</string>

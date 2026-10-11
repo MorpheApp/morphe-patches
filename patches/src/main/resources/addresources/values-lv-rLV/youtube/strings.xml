@@ -18,9 +18,20 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">Par</string>
   <string name="morphe_settings_screen_01_ads_title">Reklāmas</string>
+  <string name="morphe_settings_screen_03_feed_title">Plūsma</string>
+  <string name="morphe_settings_screen_04_general_title">Vispārīgi</string>
+  <string name="morphe_settings_screen_05_player_title">Atskaņotājs</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Atskaņošanas josla</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">Vilkšanu kontroles</string>
+  <string name="morphe_settings_screen_11_misc_title">Dažādi</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
+  <string name="morphe_restore_old_settings_menus_title">Atgriezt vecos YouTube iestatījuma ekrānu</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Noņemt atskaņošanas fonā ierobežojumus</string>
+  <string name="morphe_shorts_disable_background_playback_title">Atspējot atskaņošanu fonā</string>
   <string name="morphe_auto_pause_on_screen_lock_off">Izslēgts</string>
   <!-- layout.disableScrollSpeedLimitPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -200,6 +211,7 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_type_entry_0">Atspējots</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
+  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->

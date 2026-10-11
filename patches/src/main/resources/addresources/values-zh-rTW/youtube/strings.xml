@@ -788,6 +788,8 @@ Second \"item\" text"</string>
 要存取設定，請透過「一般」→「工具列」→「顯示設定」啟用設定按鈕。"</string>
   <string name="morphe_narrow_navigation_buttons_title">啟用窄導航按鈕</string>
   <string name="morphe_narrow_navigation_buttons_summary">減少按鈕之間的水平間距</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">停用沒有標籤的導覽按鈕</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">如果 YouTube 傳送的導覽按鈕沒有標籤，則顯示帶有標籤的導覽按鈕</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary">在切換分頁時，讓轉換效果更生動</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">停用自動隱藏導航欄</string>
@@ -1120,6 +1122,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">返回按鈕會結束動態消息</string>
   <string name="morphe_back_button_always_exits_feed_summary">按返回鍵一律結束應用程式，而不是捲動到動態消息頂端</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">強制系統字型</string>
+  <string name="morphe_force_system_font_summary">以系統字型顯示應用程式，而非 YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隱藏狀態列</string>
   <string name="morphe_hide_status_bar_summary">隱藏系統狀態列。從頂端邊緣向下滑動可暫時顯示狀態列</string>

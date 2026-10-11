@@ -788,6 +788,8 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
 সেটিংস অ্যাক্সেস করতে, জেনারেল → টুলবার → সেটিংস দেখান -এর মাধ্যমে সেটিংস বোতামটি সক্রিয় করুন।"</string>
   <string name="morphe_narrow_navigation_buttons_title">নেভিগেশন বাটনগুলোকে সংকুচিত করুন</string>
   <string name="morphe_narrow_navigation_buttons_summary">বাটনগুলির মধ্যে অনুভূমিক ব্যবধান কমিয়ে দেয়</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">লেবেল ছাড়া নেভিগেশন বাটন নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">YouTube যদি নেভিগেশন বাটনগুলো লেবেল ছাড়া পাঠায়, তাহলে সেগুলো লেবেলসহ দেখায়</string>
   <string name="morphe_navigation_bar_animations_title">নেভিগেশন বার অ্যানিমেশন সক্ষম করুন</string>
   <string name="morphe_navigation_bar_animations_summary">ট্যাবের মধ্যে পরিবর্তন করার সময় অ্যানিমেশন তৈরি করে</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">স্বয়ংক্রিয়ভাবে নেভিগেশন বার লুকানো নিষ্ক্রিয় করুন</string>
@@ -1105,6 +1107,9 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">ব্যাক বাটন ফিড থেকে বেরিয়ে যায়</string>
   <string name="morphe_back_button_always_exits_feed_summary">ব্যাক চাপলে সর্বদা অ্যাপ থেকে বেরিয়ে যায়, ফিডের উপরের দিকে স্ক্রল করার পরিবর্তে</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">সিস্টেম ফন্ট জোর করুন</string>
+  <string name="morphe_force_system_font_summary">ডিভাইস ফন্ট সহ অ্যাপটি দেখায়, YouTube Sans এর পরিবর্তে</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">স্ট্যাটাস বার লুকান</string>
   <string name="morphe_hide_status_bar_summary">সিস্টেম স্ট্যাটাস বার লুকিয়ে রাখে। উপরের প্রান্ত থেকে নিচের দিকে সোয়াইপ করলে কিছুক্ষণের জন্য এটি দেখাবে</string>

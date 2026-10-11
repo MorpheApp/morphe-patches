@@ -789,6 +789,8 @@ Um das zu beheben, aktiviere 'Video-Streams vortäuschen' und ändere den 'Stand
 Um auf die Einstellungen zuzugreifen, aktiviere den Einstellungen-Button über Allgemein → Toolbar → Einstellungen anzeigen. "</string>
   <string name="morphe_narrow_navigation_buttons_title">Schmale Navigationsschaltflächen aktivieren</string>
   <string name="morphe_narrow_navigation_buttons_summary">Verringert den horizontalen Abstand zwischen den Schaltflächen</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Navigationsschaltflächen ohne Beschriftungen deaktivieren</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Zeigt die Navigationsschaltflächen mit Beschriftungen an, wenn YouTube sie ohne Beschriftungen sendet</string>
   <string name="morphe_navigation_bar_animations_title">Navigation bar animations aktivieren</string>
   <string name="morphe_navigation_bar_animations_summary">Audio Track-Menü-Fußzeile ausblenden</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Auto-Ausblenden der Navigationsleiste deaktivieren</string>
@@ -1121,6 +1123,9 @@ Einschränkung: Wenn \"Alte Video-Aktionsleiste wiederherstellen\" deaktiviert i
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Zurück-Taste verlässt den Feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Durch Drücken der Zurück-Taste wird die App immer beendet, anstatt zum Anfang des Feeds zu scrollen.</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Systemschriftart erzwingen</string>
+  <string name="morphe_force_system_font_summary">Zeigt die App mit der Geräteschriftart anstelle von YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Statusleiste ausblenden</string>
   <string name="morphe_hide_status_bar_summary">Blendet die Systemstatusleiste aus. Wischen Sie vom oberen Bildschirmrand nach unten, um sie kurz einzublenden</string>

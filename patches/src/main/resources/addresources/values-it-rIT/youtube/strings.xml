@@ -1120,6 +1120,9 @@ Limitazione: se \"Ripristina la vecchia barra delle azioni video\" è disattivat
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Il pulsante Indietro esce dal feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Premendo il pulsante Indietro si esce sempre dall\'app invece di scorrere fino all\'inizio del feed</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Carattere di sistema forzato</string>
+  <string name="morphe_force_system_font_summary">Mostra l\'app con il font del dispositivo invece di YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Nascondi barra di stato</string>
   <string name="morphe_hide_status_bar_summary">Nasconde la barra di stato di sistema. Scorri verso il basso dal bordo superiore per mostrarla per un attimo</string>

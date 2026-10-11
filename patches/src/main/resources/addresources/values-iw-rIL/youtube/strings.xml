@@ -788,6 +788,8 @@ Second \"item\" text"</string>
 כדי לגשת להגדרות, הפעילו את כפתור ההגדרות דרך כללי → סרגל כלים → הצג הגדרות."</string>
   <string name="morphe_narrow_navigation_buttons_title">הפעלת כפתורי ניווט צרים</string>
   <string name="morphe_narrow_navigation_buttons_summary">מצמצם את המרווח האופקי בין הכפתורים</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">השבת לחצני ניווט ללא תוויות</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">מציג את לחצני הניווט עם תוויות, אם YouTube שולח אותם ללא תוויות</string>
   <string name="morphe_navigation_bar_animations_title">הפעלת אנימציות של שורת הניווט</string>
   <string name="morphe_navigation_bar_animations_summary">מבצע אנימציות מעברים בעת מעבר בין כרטיסיות</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">השבת הסתרת אוטומטית של סרגל הניווט</string>
@@ -1120,6 +1122,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">כפתור חזרה יוצא מהפיד</string>
   <string name="morphe_back_button_always_exits_feed_summary">לחיצה על כפתור חזרה תמיד יוצאת מהאפליקציה במקום לגלול לראש הפיד</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">אלץ גופן מערכת</string>
+  <string name="morphe_force_system_font_summary">מציג את האפליקציה עם גופן המכשיר במקום YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">הסתר את שורת הסטטוס</string>
   <string name="morphe_hide_status_bar_summary">מסתיר את שורת הסטטוס של המערכת. החלק מטה מהקצה העליון כדי להציג אותה לרגע</string>

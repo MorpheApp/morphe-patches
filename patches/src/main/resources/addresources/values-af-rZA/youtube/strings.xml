@@ -788,6 +788,8 @@ Om dit reg te stel, skakel 'Vervals videostrome' aan en verander die 'Verstekkli
 Om Instellings te open, aktiveer die Instellings-knoppie via Algemeen → Toolbar → Wys Instellings."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiveer nou navigasieknoppie</string>
   <string name="morphe_narrow_navigation_buttons_summary">Keeps the navigation bar visible while scrolling</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Deaktiveer navigasieknoppies sonder etikette</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Wys die navigasieknoppies met etikette as YouTube hulle sonder etikette stuur</string>
   <string name="morphe_navigation_bar_animations_title">Aktiveer navigasiebalkanimasies</string>
   <string name="morphe_navigation_bar_animations_summary">Makes the status bar fully opaque</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiveer outomatiese verberg van navigasiebalk</string>
@@ -1120,6 +1122,9 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Terugknoppie verlaat die voer</string>
   <string name="morphe_back_button_always_exits_feed_summary">Wanneer jy terug druk, verlaat jy altyd die toepassing in plaas daarvan om na die bokant van die voer te blaai</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Forceer stelselfont</string>
+  <string name="morphe_force_system_font_summary">Wys die app met die toestellettertipe in plaas van YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Versteek statusbalk</string>
   <string name="morphe_hide_status_bar_summary">Versteek die stelselstatusbalk. Vee af van die boonste rand om dit vir \'n oomblik te wys</string>

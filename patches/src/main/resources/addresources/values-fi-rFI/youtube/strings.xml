@@ -788,6 +788,8 @@ Korjaa tämä ottamalla käyttöön 'Väärennä videovirrat' ja vaihtamalla 'Ol
 Saadaksesi asetukset, ota Asetukset-painike käyttöön kohdasta Yleiset → Työkalupalkki → Näytä asetukset."</string>
   <string name="morphe_narrow_navigation_buttons_title">Ota käyttöön kapeat navigointipainikkeet</string>
   <string name="morphe_narrow_navigation_buttons_summary">Kapeuttaa pystysuoraa väliä painikkeiden välillä</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Poista käytöstä navigointipainikkeet ilman tekstejä</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Näyttää navigointipainikkeet teksteillä, jos YouTube lähettää ne ilman tekstejä</string>
   <string name="morphe_navigation_bar_animations_title">Ota käyttöön navigaatiopalkin animaatiot</string>
   <string name="morphe_navigation_bar_animations_summary">Animoi siirtymät välilehtien välillä</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Poista automaattisen piilottamisen käytöstä navigointipalkissa</string>
@@ -1120,6 +1122,9 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Takaisin-painike sulkee syötteen</string>
   <string name="morphe_back_button_always_exits_feed_summary">Takaisin-painikkeen painaminen sulkee aina sovelluksen sen sijaan, että se vierittäisi syötteen alkuun</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Pakota järjestelmän fontti</string>
+  <string name="morphe_force_system_font_summary">Näyttää sovelluksen laitteen fontilla YouTube Sansin sijaan</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Piilota tilapalkki</string>
   <string name="morphe_hide_status_bar_summary">Piilottaa järjestelmän tilapalkin. Pyyhkäise yläreunasta alaspäin, niin se näkyy hetkeksi</string>

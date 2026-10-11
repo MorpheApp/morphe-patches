@@ -786,6 +786,8 @@ Chcete-li to opravit, zapněte 'Spoof video streams' a změňte 'Default client'
 Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nástrojová lišta → Zobrazit Nastavení."</string>
   <string name="morphe_narrow_navigation_buttons_title">Povolit úzké tlačítka na navigaci</string>
   <string name="morphe_narrow_navigation_buttons_summary">Zmenší vodorovné mezery mezi tlačítky</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Zakázat navigační tlačítka bez popisků</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Zobrazí navigační tlačítka s popisky, pokud je YouTube dodává bez popisků</string>
   <string name="morphe_navigation_bar_animations_title">Povolit animace navigační lišty</string>
   <string name="morphe_navigation_bar_animations_summary">Animuje přechody při přepínání mezi kartami</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Vypnout automatické skrývání navigační lišty</string>
@@ -1118,6 +1120,9 @@ Omezení: Pokud je vypnutá možnost 'Obnovit starou lištu akcí videa', překr
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tlačítko Zpět ukončí kanál</string>
   <string name="morphe_back_button_always_exits_feed_summary">Stisknutí tlačítka Zpět vždy ukončí aplikaci místo posunutí na začátek kanálu.</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Vynutit systémové písmo</string>
+  <string name="morphe_force_system_font_summary">Zobrazuje aplikaci s písmem zařízení místo písma YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skrýt stavový řádek</string>
   <string name="morphe_hide_status_bar_summary">Skryje systémový stavový řádek. Přejetím prstem dolů z horního okraje jej na chvíli zobrazíte</string>

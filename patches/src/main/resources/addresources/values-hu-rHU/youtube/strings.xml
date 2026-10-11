@@ -788,6 +788,8 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
 A Beállítások eléréséhez engedje a Beállítások gombot a Általános → Eszköztár → Mutassa meg a Beállításokat menüpontban."</string>
   <string name="morphe_narrow_navigation_buttons_title">Szeletelt navigációs gombok engedélyezése</string>
   <string name="morphe_narrow_navigation_buttons_summary">Csökkenti a gombok közötti vízszintes távolságot</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Címkék nélküli navigációs gombok letiltása</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Megjeleníti a navigációs gombokat címkékkel, ha a YouTube címkék nélkül küldi azokat</string>
   <string name="morphe_navigation_bar_animations_title">Navigációs sáv animációinak engedélyezése</string>
   <string name="morphe_navigation_bar_animations_summary">Animálja az átmeneteket a lapok között váltáskor</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Kapcsold ki az automatikus elrejtést a navigációs sávra</string>
@@ -1120,6 +1122,9 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Kilépés a kezdőoldalról a vissza gombbal</string>
   <string name="morphe_back_button_always_exits_feed_summary">A vissza gomb megnyomása esetén kilép az alkalmazásból a kezdőoldal tetejére görgetés helyett</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Rendszerbetűtípus kényszerítése</string>
+  <string name="morphe_force_system_font_summary">Az alkalmazást az eszköz betűtípusával jeleníti meg a YouTube Sans helyett</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Állapotsor elrejtése</string>
   <string name="morphe_hide_status_bar_summary">Elrejti a rendszer állapotsorát. Húzza le az ujját a felső szélétől, hogy egy pillanatra megjelenjen</string>

@@ -790,6 +790,8 @@ Da biste to popravili, uključite \"Lažiranje video streamova\" i promijenite \
 Za pristup Postavkama, omogućite gumb Postavke putem Općenito $\rightarrow$ Traka s alatima $\rightarrow$ Prikaži Postavke."</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogući uske tipke za navigaciju</string>
   <string name="morphe_narrow_navigation_buttons_summary">Smanjuje vodoravni razmak između gumba</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Onemogući navigacijske gumbe bez natpisa</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Prikazuje navigacijske gumbe s natpisima ako ih YouTube šalje bez natpisa</string>
   <string name="morphe_navigation_bar_animations_title">Animacije na navigacijskoj traci su animirane</string>
   <string name="morphe_navigation_bar_animations_summary">Animira prijelaze pri prebacivanju između kartica</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Onemogući automatsko skrivanje navigacijske trake</string>
@@ -1122,6 +1124,9 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Gumb natrag izlazi iz feeda</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pritiskanje gumba natrag uvijek izlazi iz aplikacije umjesto pomicanja na vrh feeda</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Prisili korištenje fonta sustava</string>
+  <string name="morphe_force_system_font_summary">Prikazuje aplikaciju s fontom uređaja umjesto YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
   <string name="morphe_hide_status_bar_summary">Skriva statusnu traku sustava. Povucite prstom prema dolje s gornjeg ruba da biste je na trenutak prikazali.</string>

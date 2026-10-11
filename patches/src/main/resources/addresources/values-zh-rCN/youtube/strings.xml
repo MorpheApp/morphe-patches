@@ -788,6 +788,8 @@ Second \"item\" text"</string>
 要访问设置，请通过“常规”→“工具栏”→“显示设置”启用“设置”按钮。"</string>
   <string name="morphe_narrow_navigation_buttons_title">启用狭窄导航按钮</string>
   <string name="morphe_narrow_navigation_buttons_summary">减少按钮之间的水平间距</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">禁用无标签的导航按钮</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">如果 YouTube 发送的导航按钮没有标签，则显示带标签的导航按钮</string>
   <string name="morphe_navigation_bar_animations_title">启用导航栏动画</string>
   <string name="morphe_navigation_bar_animations_summary">软光上子检查些“通过”软光浩通的新闻</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">禁用自动隐藏导航栏</string>
@@ -1120,6 +1122,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">返回按钮退出信息流</string>
   <string name="morphe_back_button_always_exits_feed_summary">按返回键总是退出应用，而不是滚动到信息流顶部</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">强制系统字体</string>
+  <string name="morphe_force_system_font_summary">使用设备字体而非 YouTube Sans 显示应用</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隐藏状态栏</string>
   <string name="morphe_hide_status_bar_summary">隐藏系统状态栏。从顶部边缘向下滑动可短暂显示它</string>

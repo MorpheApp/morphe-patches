@@ -793,6 +793,8 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 عام ← شريط الأدوات ← عرض الإعدادات."</string>
   <string name="morphe_narrow_navigation_buttons_title">تمكين أزرار التنقل الضيقة</string>
   <string name="morphe_narrow_navigation_buttons_summary">يقلل المسافة الأفقية بين الأزرار</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">تعطيل أزرار التنقل بدون تسميات</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">يعرض أزرار التنقل مع تسميات، إذا أرسلها YouTube بدون تسميات</string>
   <string name="morphe_navigation_bar_animations_title">تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary">يُفعّل الانتقالات المتحركة عند التبديل بين علامات التبويب</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">تعطيل إخفاء شريط التنقل تلقائيًا</string>
@@ -1125,6 +1127,9 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">زر الرجوع يخرج من الخلاصة</string>
   <string name="morphe_back_button_always_exits_feed_summary">الضغط على زر الرجوع يؤدي دائمًا إلى الخروج من التطبيق بدلًا من التمرير إلى أعلى الخلاصة</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">فرض خط النظام</string>
+  <string name="morphe_force_system_font_summary">يعرض التطبيق بخط الجهاز بدلًا من خط YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">إخفاء شريط الحالة</string>
   <string name="morphe_hide_status_bar_summary">يخفي شريط حالة النظام. اسحب لأسفل من الحافة العلوية لإظهاره للحظة</string>
@@ -1174,7 +1179,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_dearrow_titles_icon_title">عرض أيقونة DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">يُظهر أيقونة DeArrow على عناوين الفيديو المُقدَّمة من المجتمع</string>
   <string name="morphe_dearrow_casual_mode_title">الوضع العادي</string>
-  <string name="morphe_dearrow_casual_mode_summary">DeArrow</string>
+  <string name="morphe_dearrow_casual_mode_summary">يعرض العنوان الأصلي بدلًا من عنوان DeArrow إذا صَوَّت مستخدمو DeArrow بأنهم يفضلون العنوان الأصلي</string>
   <string name="morphe_dearrow_casual_mode_min_votes_title">الحد الأدنى من الأصوات العادية لإظهار العنوان الأصلي</string>
   <string name="morphe_dearrow_casual_mode_min_votes_summary">عدد الأصوات العادية في فئة واحدة، مثل مضحكة أو إبداعية، المطلوب لإظهار العنوان الأصلي</string>
   <string name="morphe_dearrow_thumbnails_title">صور DeArrow المصغرة</string>

@@ -1119,6 +1119,9 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Botão Voltar sai do feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pressionar voltar sempre sai do aplicativo em vez de rolar até o topo do feed</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Forçar fonte do sistema</string>
+  <string name="morphe_force_system_font_summary">Mostra o aplicativo com a fonte do dispositivo em vez de YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ocultar barra de status</string>
   <string name="morphe_hide_status_bar_summary">Oculta a barra de status do sistema. Deslize para baixo a partir da borda superior para mostrá-la por um momento</string>

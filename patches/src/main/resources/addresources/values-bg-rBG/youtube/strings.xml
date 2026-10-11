@@ -788,6 +788,8 @@ Second \"item\" text"</string>
 За да получите достъп до Настройки, активирайте бутона Настройки чрез Общи → Инструменти → Показване на Настройки."</string>
   <string name="morphe_narrow_navigation_buttons_title">Включи тесни навигационни бутони</string>
   <string name="morphe_narrow_navigation_buttons_summary">Скрий менюто „Заключване на екрана“</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Деактивиране на навигационните бутони без етикети</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Показва навигационните бутони с етикети, ако YouTube ги изпраща без етикети</string>
   <string name="morphe_navigation_bar_animations_title">Превключванията на навигацията са анимирани</string>
   <string name="morphe_navigation_bar_animations_summary">Анимира преходите при превключване между табовете</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Забрани автоматичното скриване на навигационната лента</string>
@@ -1120,6 +1122,9 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Бутонът назад излиза от лентата</string>
   <string name="morphe_back_button_always_exits_feed_summary">Натискането на бутона назад винаги излиза от приложението, вместо да превърта до началото на лентата</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Принудителен системен шрифт</string>
+  <string name="morphe_force_system_font_summary">Показва приложението с устройствения шрифт вместо YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Скриване на лентата за състояние</string>
   <string name="morphe_hide_status_bar_summary">Скрива системната лента за състояние. Плъзнете надолу от горния ръб, за да я покажете за момент</string>

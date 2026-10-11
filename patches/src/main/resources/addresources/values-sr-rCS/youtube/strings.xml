@@ -1120,6 +1120,9 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Dugme za nazad izlazi iz feed-a</string>
   <string name="morphe_back_button_always_exits_feed_summary">Pritiskanje nazad uvek izlazi iz aplikacije umesto da skrolujete do vrha feed-a</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Форсирај системски фонт</string>
+  <string name="morphe_force_system_font_summary">Prikazuje aplikaciju sa fontom uređaja umesto YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Sakrij statusnu traku</string>
   <string name="morphe_hide_status_bar_summary">Sakriva sistemsku statusnu traku. Prevucite prstom nadole od gornje ivice da biste je na trenutak prikazali</string>

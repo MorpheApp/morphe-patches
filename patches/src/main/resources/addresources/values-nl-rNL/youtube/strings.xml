@@ -786,6 +786,8 @@ Om dit op te lossen, schakel 'Videostreams vervalsen' in en wijzig de 'Standaard
 Om Instellingen te openen, schakelt u de knop Instellingen in via Algemeen → Werkbalk → Instellingen weergeven."</string>
   <string name="morphe_narrow_navigation_buttons_title">Smalle navigatieknoppen inschakelen</string>
   <string name="morphe_narrow_navigation_buttons_summary">Vermindert de horizontale ruimte tussen knoppen</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Navigatieknoppen zonder labels uitschakelen</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Toont de navigatieknoppen met labels, als YouTube ze zonder labels verzendt</string>
   <string name="morphe_navigation_bar_animations_title">Navigatiebalkanimaties inschakelen</string>
   <string name="morphe_navigation_bar_animations_summary">Maakt de navigatiebalk volledig ondoorzichtig in de lichte modus</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Automatisch verbergen van navigatiebalk uitschakelen</string>
@@ -1118,6 +1120,9 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">De terugknop verlaat de feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">De terugknop sluit altijd de app af in plaats van naar de bovenkant van de feed te scrollen</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Systeemlettertype forceren</string>
+  <string name="morphe_force_system_font_summary">Toont de app met het apparaatlettertype in plaats van YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Statusbalk verbergen</string>
   <string name="morphe_hide_status_bar_summary">Verbergt de systeemstatusbalk. Veeg omlaag vanaf de bovenrand om hem even weer te tonen</string>

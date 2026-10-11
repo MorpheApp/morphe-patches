@@ -788,6 +788,8 @@ Les 'Cookies des sous-titres' doivent être fournis"</string>
 Pour accéder aux paramètres, activez le bouton 'Paramètres' via Général → Barre d'outils → Afficher 'Paramètres'"</string>
   <string name="morphe_narrow_navigation_buttons_title">Activer les boutons de navigation compacts</string>
   <string name="morphe_narrow_navigation_buttons_summary">Réduit l\'espacement horizontal entre les boutons</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Désactiver les boutons de navigation sans libellés</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Affiche les boutons de navigation avec des libellés, si YouTube les envoie sans libellés</string>
   <string name="morphe_navigation_bar_animations_title">Activer les animations de la barre de navigation</string>
   <string name="morphe_navigation_bar_animations_summary">Anime les transitions lors du passage d\'un onglet à un autre</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Désactiver le masquage automatique de la barre de navigation</string>
@@ -1121,6 +1123,9 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Le bouton \'Retour\' quitte le flux</string>
   <string name="morphe_back_button_always_exits_feed_summary">Appuyer sur retour quitte toujours l\'application au lieu de faire défiler le flux jusqu\'en haut</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Forcer la police système</string>
+  <string name="morphe_force_system_font_summary">Affiche l\'application avec la police de l\'appareil au lieu de YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Masquer la barre d\'état</string>
   <string name="morphe_hide_status_bar_summary">Masque la barre d\'état du système. Balayez vers le bas depuis le bord supérieur pour l\'afficher momentanément</string>

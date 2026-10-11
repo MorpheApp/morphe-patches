@@ -788,6 +788,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 सेटिंग्स तक पहुंचने के लिए, जनरल → टूलबार → शो सेटिंग्स के माध्यम से सेटिंग्स बटन को सक्षम करें।"</string>
   <string name="morphe_narrow_navigation_buttons_title">नarrow नैविगेशन बटनें सक्षम करें</string>
   <string name="morphe_narrow_navigation_buttons_summary">स्क्रॉल करते समय नेविगेशन बार को दृश्यमान रखता है</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">बिना लेबल वाले नेविगेशन बटनों को अक्षम करें</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">यदि YouTube उन्हें बिना लेबल भेजता है, तो नेविगेशन बटनों को लेबल के साथ दिखाता है</string>
   <string name="morphe_navigation_bar_animations_title">नेविगेशन बार एनिमेशन सक्षम करें</string>
   <string name="morphe_navigation_bar_animations_summary">स्टेटस बार को पूरी तरह से अपारदर्शी बनाता है</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ऑटो-हाइडिंग नेविगेशन बार को निष्क्रिय करें</string>
@@ -1120,6 +1122,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">बैक बटन फ़ीड से बाहर निकलता है</string>
   <string name="morphe_back_button_always_exits_feed_summary">बैक दबाने से हमेशा ऐप से बाहर निकलता है, फ़ीड के शीर्ष पर स्क्रॉल करने के बजाय</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">सिस्टम फ़ॉन्ट अनिवार्य रूप से लागू करें</string>
+  <string name="morphe_force_system_font_summary">ऐप को YouTube Sans के बजाय डिवाइस फ़ॉन्ट के साथ दिखाता है</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">स्टेटस बार छिपाएँ</string>
   <string name="morphe_hide_status_bar_summary">सिस्टम स्टेटस बार छिपाता है। इसे एक पल के लिए दिखाने के लिए ऊपरी किनारे से नीचे की ओर स्वाइप करें</string>

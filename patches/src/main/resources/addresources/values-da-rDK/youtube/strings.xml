@@ -784,6 +784,8 @@ For at løse dette skal du slå 'Spoof video streams' til og ændre 'Standardkli
 For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via Generelt → Værktøjslinje → Vis Indstillinger."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiver smalle navigationsknapper</string>
   <string name="morphe_narrow_navigation_buttons_summary">Reducerer den vandrette afstand mellem knapperne</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Deaktiver navigationsknapper uden etiketter</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Viser navigationsknapperne med etiketter, hvis YouTube sender dem uden etiketter</string>
   <string name="morphe_navigation_bar_animations_title">Aktivér animationer i navigationslinjen</string>
   <string name="morphe_navigation_bar_animations_summary">Animerer overgange, når der skiftes mellem faner</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling af navigationslinjen</string>
@@ -1116,6 +1118,9 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tilbageknappen forlader feedet</string>
   <string name="morphe_back_button_always_exits_feed_summary">Tryk på tilbage afslutter altid appen i stedet for at rulle til toppen af feedet</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Tving systemskrifttype</string>
+  <string name="morphe_force_system_font_summary">Viser appen med enhedens skrifttype i stedet for YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skjul statuslinjen</string>
   <string name="morphe_hide_status_bar_summary">Skjuler systemets statuslinje. Stryg ned fra den øverste kant for at vise den et øjeblik</string>

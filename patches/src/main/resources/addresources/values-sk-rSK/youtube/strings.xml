@@ -1119,6 +1119,9 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tlačidlo späť ukončí informačný kanál</string>
   <string name="morphe_back_button_always_exits_feed_summary">Stlačením tlačidla späť sa vždy ukončí aplikácia namiesto posúvania na začiatok informačného kanála</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Vynútiť systémové písmo</string>
+  <string name="morphe_force_system_font_summary">Zobrazuje aplikáciu s písmom zariadenia namiesto YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skryť stavový riadok</string>
   <string name="morphe_hide_status_bar_summary">Skryje systémový stavový riadok. Potiahnite prstom nadol z horného okraja, aby sa na chvíľu zobrazil</string>

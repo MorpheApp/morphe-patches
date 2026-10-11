@@ -1119,6 +1119,9 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Bấm quay lại để thoát trang video</string>
   <string name="morphe_back_button_always_exits_feed_summary">Bấm nút quay lại sẽ luôn luôn thoát ứng dụng thay vì lướt lên đầu trang video</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Luôn dùng phông chữ hệ thống</string>
+  <string name="morphe_force_system_font_summary">Hiển thị ứng dụng với phông chữ của thiết bị thay vì YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ẩn thanh trạng thái</string>
   <string name="morphe_hide_status_bar_summary">Ẩn thanh trạng thái hệ thống. Vuốt xuống từ mép trên để hiện thanh trạng thái trong giây lát</string>

@@ -1120,6 +1120,9 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Butonul Înapoi iese din feed</string>
   <string name="morphe_back_button_always_exits_feed_summary">Apăsarea butonului Înapoi închide întotdeauna aplicația, în loc să deruleze la începutul feedului</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Forțează fontul de sistem</string>
+  <string name="morphe_force_system_font_summary">Afișează aplicația cu fontul dispozitivului în loc de YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ascunde bara de stare</string>
   <string name="morphe_hide_status_bar_summary">Ascunde bara de stare a sistemului. Glisează în jos din partea de sus pentru a o afișa pentru o clipă</string>

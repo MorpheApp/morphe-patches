@@ -1120,6 +1120,9 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Grįžimo mygtukas išeina iš sklaidos kanalo</string>
   <string name="morphe_back_button_always_exits_feed_summary">Paspaudus grįžimo mygtuką programa visada uždaroma, o ne slenkama į sklaidos kanalo viršų</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Priverstinai naudoti sistemos šriftą</string>
+  <string name="morphe_force_system_font_summary">Rodo programėlę su įrenginio šriftu vietoj YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Slėpti būsenos juostą</string>
   <string name="morphe_hide_status_bar_summary">Paslepia sistemos būsenos juostą. Braukite žemyn nuo viršutinio krašto, kad ją trumpam parodytumėte</string>

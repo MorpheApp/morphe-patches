@@ -1120,6 +1120,9 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Fágann an cnaipe cúil as an bhfotha</string>
   <string name="morphe_back_button_always_exits_feed_summary">Má bhrúnn tú ar ais, fágtar an aip i gcónaí seachas scrollaigh go barr an fhotha</string>
+  <!-- layout.font.forceSystemFontPatch -->
+  <string name="morphe_force_system_font_title">Fórsáil cló an chórais</string>
+  <string name="morphe_force_system_font_summary">Taispeánann sé an aip le cló an ghléis in ionad YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Folaigh an barra stádais</string>
   <string name="morphe_hide_status_bar_summary">Folaíonn sé barra stádais an chórais. Svaip anuas ón imeall uachtarach chun é a thaispeáint ar feadh tamaill</string>
