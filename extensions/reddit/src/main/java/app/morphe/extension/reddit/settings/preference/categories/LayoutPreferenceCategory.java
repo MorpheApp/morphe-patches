@@ -12,10 +12,10 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.CopyTextPatch;
+import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
-import app.morphe.extension.reddit.patches.EnableTextSelectionPatch;
-import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideCommunitiesShelf;
@@ -39,7 +39,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public boolean getSettingsStatus() {
         return DisableModernHomePatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
-                EnableTextSelectionPatch.isPatchIncluded() ||
+                CopyTextPatch.isPatchIncluded() ||
                 CustomFontPatch.isPatchIncluded() ||
                 ForceSystemFontPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
@@ -50,6 +50,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public void addPreferences(Context context) {
+        if (CopyTextPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.COPY_TEXT
+            ));
+        }
+
         if (CustomFontPatch.isPatchIncluded()) {
             addPreference(new CustomFontTogglePreference(context));
             addPreference(new CustomFontFilePreference(
@@ -69,13 +76,6 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_SCREENSHOT_POPUP
-            ));
-        }
-
-        if (EnableTextSelectionPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.ENABLE_TEXT_SELECTION
             ));
         }
 

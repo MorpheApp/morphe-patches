@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.patches.reddit.layout.textselection
+package app.morphe.patches.reddit.layout.copytext
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -26,20 +26,20 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 internal const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/reddit/patches/EnableTextSelectionPatch;"
+    "Lapp/morphe/extension/reddit/patches/CopyTextPatch;"
 
 private const val EXTENSION_RICH_TEXT_CONTENT_CLASS =
-    $$"Lapp/morphe/extension/reddit/patches/EnableTextSelectionPatch$RichTextContent;"
+    $$"Lapp/morphe/extension/reddit/patches/CopyTextPatch$RichTextContent;"
 
 private const val EXTENSION_SELECTION_MANAGER_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/patches/EnableTextSelectionPatch$SelectionManagerInterface;"
+    $$"Lapp/morphe/extension/reddit/patches/CopyTextPatch$SelectionManagerInterface;"
 
 // Arbitrary Compose group key of the lambda passed to SelectionContainer.
 private const val SELECTION_CONTENT_LAMBDA_KEY = 0x4D4F5250
 
 @Suppress("unused")
-val enableTextSelectionPatch = bytecodePatch(
-    name = "Enable text selection",
+val copyTextPatch = bytecodePatch(
+    name = "Copy text",
     description = "Adds an option to make post and comment text selectable and copyable. " +
         "Disables collapsing comments."
 ) {

@@ -22,7 +22,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
-public final class EnableTextSelectionPatch {
+public final class CopyTextPatch {
 
     /**
      * Interface to use obfuscated methods of the selection container's SelectionManager.
@@ -64,7 +64,7 @@ public final class EnableTextSelectionPatch {
      */
     public static boolean shouldWrapRichText() {
         try {
-            return Settings.ENABLE_TEXT_SELECTION.get() && IN_SELECTION_CONTAINER.get() == null;
+            return Settings.COPY_TEXT.get() && IN_SELECTION_CONTAINER.get() == null;
         } catch (Exception ex) {
             Logger.printException(() -> "shouldWrapRichText failure", ex);
             return false;
@@ -122,7 +122,7 @@ public final class EnableTextSelectionPatch {
      * @return If the click should be ignored.
      */
     public static boolean shouldBlockCommentCollapse(boolean collapsed) {
-        return Settings.ENABLE_TEXT_SELECTION.get() && !collapsed;
+        return Settings.COPY_TEXT.get() && !collapsed;
     }
 
     // endregion
@@ -136,7 +136,7 @@ public final class EnableTextSelectionPatch {
      * was a tap, which clears the selection, or a drag.
      */
     public static void beginSelectionTapDetection() {
-        tapDetectionStartTime = Settings.ENABLE_TEXT_SELECTION.get() ? System.nanoTime() : 0;
+        tapDetectionStartTime = Settings.COPY_TEXT.get() ? System.nanoTime() : 0;
     }
 
     /**
@@ -166,7 +166,7 @@ public final class EnableTextSelectionPatch {
      * Injection point. Called when a selection container clears its selection.
      */
     public static void onSelectionRelease(SelectionManagerInterface selectionManager) {
-        if (!Settings.ENABLE_TEXT_SELECTION.get()) return;
+        if (!Settings.COPY_TEXT.get()) return;
 
         SELECTION_MANAGERS_WITH_SELECTION.remove(selectionManager);
     }
@@ -175,7 +175,7 @@ public final class EnableTextSelectionPatch {
      * Injection point. Called when a selection container changes its selection.
      */
     public static void onSelectionChanged(SelectionManagerInterface selectionManager, @Nullable Object selection) {
-        if (!Settings.ENABLE_TEXT_SELECTION.get()) return;
+        if (!Settings.COPY_TEXT.get()) return;
 
         if (selection == null) {
             SELECTION_MANAGERS_WITH_SELECTION.remove(selectionManager);
@@ -195,7 +195,7 @@ public final class EnableTextSelectionPatch {
      */
     public static boolean shouldBlockFocusClear() {
         try {
-            if (SELECTION_MANAGERS_WITH_SELECTION.isEmpty() || !Settings.ENABLE_TEXT_SELECTION.get()) {
+            if (SELECTION_MANAGERS_WITH_SELECTION.isEmpty() || !Settings.COPY_TEXT.get()) {
                 return false;
             }
 
@@ -222,7 +222,7 @@ public final class EnableTextSelectionPatch {
      */
     public static void onComposeTouchEvent(MotionEvent event) {
         try {
-            if (!Settings.ENABLE_TEXT_SELECTION.get()) return;
+            if (!Settings.COPY_TEXT.get()) return;
 
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN:

@@ -1,4 +1,4 @@
-package app.morphe.patches.reddit.layout.textselection
+package app.morphe.patches.reddit.layout.copytext
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
@@ -10,8 +10,6 @@ import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-// Compose group keys are used as anchors where possible, they survive R8 renaming.
 
 /**
  * Compose rich text renderer, used for post and comment bodies.
@@ -130,12 +128,10 @@ internal object PointersUpSlopDetectionFingerprint : Fingerprint(
  * SelectionManager.onRelease(): clears the selection and hides the toolbar.
  */
 internal object SelectionReleaseFingerprint : Fingerprint(
+    definingClass = "Landroidx/compose/foundation/text/selection/",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
-    custom = { _, classDef ->
-        classDef.type.startsWith("Landroidx/compose/foundation/text/selection/")
-    },
     filters = listOf(
         methodCall(name = "setValue"),
         methodCall(
@@ -150,12 +146,10 @@ internal object SelectionReleaseFingerprint : Fingerprint(
  * SelectionManager.setSelection(selection).
  */
 internal object SelectionChangedFingerprint : Fingerprint(
+    definingClass = "Landroidx/compose/foundation/text/selection/",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
-    custom = { _, classDef ->
-        classDef.type.startsWith("Landroidx/compose/foundation/text/selection/")
-    },
     filters = listOf(
         methodCall(name = "setValue"),
         methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = listOf(), returnType = "V")
@@ -167,12 +161,10 @@ internal object SelectionChangedFingerprint : Fingerprint(
  * which also clears the text selection.
  */
 internal object FocusClearFingerprint : Fingerprint(
+    definingClass = "Landroidx/compose/ui/focus/",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
-    custom = { _, classDef ->
-        classDef.type.startsWith("Landroidx/compose/ui/focus/")
-    },
     filters = listOf(
         literal(8L),
         methodCall(opcode = Opcode.INVOKE_VIRTUAL, parameters = listOf("I", "Z", "Z"), returnType = "Z")
@@ -183,10 +175,8 @@ internal object FocusClearFingerprint : Fingerprint(
  * AndroidComposeView.dispatchTouchEvent(MotionEvent): every touch that enters Compose.
  */
 internal object ComposeDispatchTouchEventFingerprint : Fingerprint(
+    definingClass = "Landroidx/compose/ui/platform/",
     name = "dispatchTouchEvent",
     returnType = "Z",
-    parameters = listOf("Landroid/view/MotionEvent;"),
-    custom = { _, classDef ->
-        classDef.type.startsWith("Landroidx/compose/ui/platform/")
-    }
+    parameters = listOf("Landroid/view/MotionEvent;")
 )
