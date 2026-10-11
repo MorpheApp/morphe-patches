@@ -132,7 +132,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 preferences = setOf(
                     SwitchPreference("morphe_hide_ai_generated_video_summary_section"),
                     SwitchPreference("morphe_hide_ask_section"),
-                    SwitchPreference("morphe_hide_ask_gemini_button", summary = true),
                     SwitchPreference("morphe_hide_attributes_section", summary = true),
                     SwitchPreference("morphe_hide_channel_links_section"),
                     SwitchPreference("morphe_hide_chapters_section"),
@@ -198,6 +197,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 ),
                 sorting = Sorting.UNSORTED
             ),
+            SwitchPreference("morphe_hide_ask_gemini_button", summary = true),
             SwitchPreference("morphe_hide_channel_bar"),
             SwitchPreference("morphe_hide_channel_watermark"),
             SwitchPreference("morphe_hide_chapters_timeline_button"),

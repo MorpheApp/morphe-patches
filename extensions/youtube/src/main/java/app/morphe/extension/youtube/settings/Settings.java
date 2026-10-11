@@ -257,6 +257,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<FullscreenMode> EXIT_FULLSCREEN = new EnumSetting<>("morphe_exit_fullscreen", FullscreenMode.DISABLED);
     public static final BooleanSetting FORCE_FULLSCREEN_LANDSCAPE = new BooleanSetting("morphe_force_fullscreen_landscape", FALSE, new LargeScreenAvailability());
     public static final EnumSetting<VideoScaleMode> FULLSCREEN_VIDEO_SCALE = new EnumSetting<>("morphe_fullscreen_video_scale", VideoScaleMode.DEFAULT);
+    public static final BooleanSetting HIDE_ASK_GEMINI_BUTTON = new BooleanSetting("morphe_hide_ask_gemini_button", FALSE);
     public static final BooleanSetting HIDE_AUTOPLAY_PREVIEW = new BooleanSetting("morphe_hide_autoplay_preview", FALSE, true);
     public static final BooleanSetting HIDE_CHANNEL_BAR = new BooleanSetting("morphe_hide_channel_bar", FALSE);
     public static final BooleanSetting HIDE_CHANNEL_WATERMARK = new BooleanSetting("morphe_hide_channel_watermark", TRUE);
@@ -398,7 +399,6 @@ public class Settings extends SharedYouTubeSettings {
     // Description
     public static final BooleanSetting HIDE_AI_GENERATED_VIDEO_SUMMARY_SECTION = new BooleanSetting("morphe_hide_ai_generated_video_summary_section", FALSE);
     public static final BooleanSetting HIDE_ASK_SECTION = new BooleanSetting("morphe_hide_ask_section", FALSE);
-    public static final BooleanSetting HIDE_ASK_GEMINI_BUTTON = new BooleanSetting("morphe_hide_ask_gemini_button", FALSE);
     public static final BooleanSetting HIDE_ATTRIBUTES_SECTION = new BooleanSetting("morphe_hide_attributes_section", FALSE);
     public static final BooleanSetting HIDE_CHAPTERS_SECTION = new BooleanSetting("morphe_hide_chapters_section", FALSE);
     public static final BooleanSetting HIDE_CORRECTIONS_SECTION = new BooleanSetting("morphe_hide_corrections_section", FALSE);
