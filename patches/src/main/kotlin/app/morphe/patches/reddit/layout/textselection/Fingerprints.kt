@@ -1,9 +1,13 @@
 package app.morphe.patches.reddit.layout.textselection
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
+import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -21,13 +25,24 @@ internal object ComposeRichTextFingerprint : Fingerprint(
 )
 
 /**
+ * Extension method that invokes the rich text renderer.
+ */
+internal object InvokeRichTextFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "invokeRichText",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "V",
+    parameters = listOf("[Ljava/lang/Object;", "Ljava/lang/Object;")
+)
+
+/**
  * Compose foundation SelectionContainer(modifier, content).
  * Shape: (int changed, int default, Composer, Modifier, ComposableLambdaImpl) -> void.
  */
 internal object ComposeSelectionContainerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("I", "I", "L", "L", "Landroidx/compose/runtime/internal/a;"),
+    parameters = listOf("I", "I", "L", "L", "Landroidx/compose/runtime/internal/"),
     filters = listOf(
         literal(1949207773L)
     )
@@ -38,10 +53,10 @@ internal object ComposeSelectionContainerFingerprint : Fingerprint(
  */
 internal object ComposeComposableLambdaFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
-    returnType = "Landroidx/compose/runtime/internal/a;",
+    returnType = "Landroidx/compose/runtime/internal/",
     parameters = listOf("I", "L", "L"),
     filters = listOf(
-        newInstance("Landroidx/compose/runtime/internal/a;")
+        newInstance("Landroidx/compose/runtime/internal/")
     )
 )
 
@@ -52,7 +67,18 @@ internal object CommentClickEventHandlerFingerprint : Fingerprint(
     returnType = "Ljava/lang/Object;",
     parameters = listOf("L", "Lkotlin/coroutines/jvm/internal/ContinuationImpl;"),
     filters = listOf(
-        newInstance($$"Lcom/reddit/comments/events/handler/OnClickCommentEventHandler$handle$1;")
+        newInstance($$"Lcom/reddit/comments/events/handler/OnClickCommentEventHandler$handle$1;"),
+        methodCall(
+            definingClass = "Lcom/reddit/domain/model/Comment;",
+            name = "getCollapsed"
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        // Branch to collapse the comment if it is expanded.
+        opcode(Opcode.IF_EQZ, MatchAfterWithin(1)),
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            definingClass = "Lkotlin/Unit;"
+        )
     )
 )
 
@@ -95,7 +121,8 @@ internal object PointersUpSlopDetectionFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_STATIC,
             returnType = "F",
             parameters = listOf("L", "I")
-        )
+        ),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately())
     )
 )
 

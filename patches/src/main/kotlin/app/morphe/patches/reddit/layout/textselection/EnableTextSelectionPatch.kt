@@ -13,24 +13,29 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.util.findFreeRegister
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val EXTENSION_CLASS =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/EnableTextSelectionPatch;"
+
+private const val EXTENSION_RICH_TEXT_CONTENT_CLASS =
+    $$"Lapp/morphe/extension/reddit/patches/EnableTextSelectionPatch$RichTextContent;"
+
+private const val EXTENSION_SELECTION_MANAGER_INTERFACE =
+    $$"Lapp/morphe/extension/reddit/patches/EnableTextSelectionPatch$SelectionManagerInterface;"
 
 // Arbitrary Compose group key of the lambda passed to SelectionContainer.
 private const val SELECTION_CONTENT_LAMBDA_KEY = 0x4D4F5250
-
-private fun MutableMethod.smaliReference() =
-    "$definingClass->$name(${parameterTypes.joinToString("")})$returnType"
 
 @Suppress("unused")
 val enableTextSelectionPatch = bytecodePatch(
@@ -48,17 +53,11 @@ val enableTextSelectionPatch = bytecodePatch(
         val richTextMethod = ComposeRichTextFingerprint.method
         val paramTypes = richTextMethod.parameterTypes.map { it.toString() }
 
-        // The trailing int parameters are the Compose $changed/$default flags and the
-        // parameter before them is the Composer.
-        val composerIndex = paramTypes.indexOfLast { it != "I" }
-        if (composerIndex < 0 || composerIndex == paramTypes.size - 1) {
-            throw PatchException("Unexpected Compose rich text signature: $paramTypes")
-        }
-        val composerRegister = "p$composerIndex"
-
+        // rememberComposableLambda(key, block, composer)
         val composableLambdaMethod = ComposeComposableLambdaFingerprint.method
         val blockType = composableLambdaMethod.parameterTypes[1]
-        val selectionContainerMethod = ComposeSelectionContainerFingerprint.method
+        val composerIndex = paramTypes.indexOf(composableLambdaMethod.parameterTypes[2].toString())
+        val composerRegister = "p$composerIndex"
 
         // Parameter registers are above v15, which is why range invokes and
         // move-object/from16 are used.
@@ -95,21 +94,19 @@ val enableTextSelectionPatch = bytecodePatch(
                 const/16 v0, ${paramTypes.size}
                 new-array v0, v0, [Ljava/lang/Object;
                 $packArguments
-                const-class v1, ${richTextMethod.definingClass}
-                const-string v2, "${richTextMethod.name}"
-                invoke-static { v1, v2, v0 }, $EXTENSION_CLASS->createRichTextContent(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/Object;
+                invoke-static { v0 }, $EXTENSION_CLASS->createRichTextContent([Ljava/lang/Object;)Ljava/lang/Object;
                 move-result-object v1
                 check-cast v1, $blockType
                 const v2, $SELECTION_CONTENT_LAMBDA_KEY
                 move-object/from16 v3, $composerRegister
-                invoke-static { v2, v1, v3 }, ${composableLambdaMethod.smaliReference()}
+                invoke-static { v2, v1, v3 }, $composableLambdaMethod
                 move-result-object v1
 
                 const/16 v0, 48
                 const/4 v2, 0x1
                 move-object/from16 v3, $composerRegister
                 const/4 v4, 0x0
-                invoke-static { v0, v2, v3, v4, v1 }, ${selectionContainerMethod.smaliReference()}
+                invoke-static { v0, v2, v3, v4, v1 }, ${ComposeSelectionContainerFingerprint.method}
                 return-void
 
                 :morphe_original
@@ -117,67 +114,124 @@ val enableTextSelectionPatch = bytecodePatch(
             """
         )
 
+        // Add a method that invokes the rich text renderer with arguments packed by the code above.
+        // The composer argument is replaced with the composer of the SelectionContainer content.
+        // The registers v0 to v(n-1) hold the arguments, v(n) is the array index.
+        val indexRegister = paramTypes.size
+        val unpackArguments = buildString {
+            paramTypes.forEachIndexed { index, type ->
+                if (index == composerIndex) {
+                    appendLine("move-object/from16 v$index, p1")
+                    return@forEachIndexed
+                }
+
+                appendLine("const/16 v$indexRegister, $index")
+                appendLine("aget-object v$index, p0, v$indexRegister")
+                when (type) {
+                    "Z" -> appendLine(
+                        """
+                            check-cast v$index, Ljava/lang/Boolean;
+                            invoke-virtual/range { v$index .. v$index }, Ljava/lang/Boolean;->booleanValue()Z
+                            move-result v$index
+                        """
+                    )
+                    "I" -> appendLine(
+                        """
+                            check-cast v$index, Ljava/lang/Integer;
+                            invoke-virtual/range { v$index .. v$index }, Ljava/lang/Integer;->intValue()I
+                            move-result v$index
+                        """
+                    )
+                    else -> appendLine("check-cast v$index, $type")
+                }
+            }
+        }
+
+        val invokeRichTextMethod = ImmutableMethod(
+            richTextMethod.definingClass,
+            "patch_invokeRichText",
+            listOf(
+                ImmutableMethodParameter("[Ljava/lang/Object;", null, null),
+                ImmutableMethodParameter("Ljava/lang/Object;", null, null)
+            ),
+            "V",
+            AccessFlags.PUBLIC.value or AccessFlags.STATIC.value,
+            null,
+            null,
+            MutableMethodImplementation(paramTypes.size + 3)
+        ).toMutable().apply {
+            addInstructions(
+                0,
+                """
+                    $unpackArguments
+                    invoke-static/range { v0 .. v${paramTypes.size - 1} }, $richTextMethod
+                    return-void
+                """
+            )
+        }
+        ComposeRichTextFingerprint.classDef.methods.add(invokeRichTextMethod)
+
+        InvokeRichTextFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { p0, p1 }, $invokeRichTextMethod
+                return-void
+            """
+        )
+
+        // Make the SelectionContainer content a Compose lambda.
+        mutableClassDefBy(EXTENSION_RICH_TEXT_CONTENT_CLASS).apply {
+            interfaces.add("Lkotlin/jvm/functions/Function2;")
+            methods.add(
+                ImmutableMethod(
+                    type,
+                    "invoke",
+                    listOf(
+                        ImmutableMethodParameter("Ljava/lang/Object;", null, null),
+                        ImmutableMethodParameter("Ljava/lang/Object;", null, null)
+                    ),
+                    "Ljava/lang/Object;",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(4)
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            invoke-virtual { p0, p1 }, $type->render(Ljava/lang/Object;)V
+                            const/4 v0, 0x0
+                            return-object v0
+                        """
+                    )
+                }
+            )
+        }
+
         // endregion
 
         // region Disable collapsing comments, expanding a collapsed comment keeps working.
 
-        CommentClickEventHandlerFingerprint.method.apply {
-            val instructions = implementation!!.instructions
+        CommentClickEventHandlerFingerprint.let {
+            it.method.apply {
+                val branchIndex = it.instructionMatches[3].index
+                val collapsedRegister = getInstruction<OneRegisterInstruction>(branchIndex).registerA
+                val freeRegister = findFreeRegister(branchIndex, collapsedRegister)
+                val unitField = getInstruction<ReferenceInstruction>(it.instructionMatches.last().index).reference
 
-            // Find the branch that collapses an expanded comment:
-            //   invoke-virtual { comment }, Comment->getCollapsed()Z
-            //   move-result vX
-            //   if-eqz vX, :collapse
-            var branchIndex = -1
-            var collapsedRegister = -1
-            for (i in 0 until instructions.size - 3) {
-                val call = instructions[i]
-                if (call.opcode != Opcode.INVOKE_VIRTUAL) continue
-                val reference = (call as? ReferenceInstruction)?.reference as? MethodReference
-                if (reference?.name != "getCollapsed") continue
-
-                val result = instructions[i + 1]
-                if (result.opcode != Opcode.MOVE_RESULT) continue
-                val register = (result as OneRegisterInstruction).registerA
-
-                for (j in i + 2..i + 3) {
-                    val branch = instructions[j]
-                    if (branch.opcode == Opcode.IF_EQZ &&
-                        (branch as OneRegisterInstruction).registerA == register
-                    ) {
-                        branchIndex = j
-                        collapsedRegister = register
-                        break
-                    }
-                }
-                if (branchIndex >= 0) break
+                addInstructionsWithLabels(
+                    branchIndex,
+                    """
+                        invoke-static/range { v$collapsedRegister .. v$collapsedRegister }, $EXTENSION_CLASS->shouldBlockCommentCollapse(Z)Z
+                        move-result v$freeRegister
+                        if-eqz v$freeRegister, :morphe_collapse_allowed
+                        sget-object v$freeRegister, $unitField
+                        return-object v$freeRegister
+                        :morphe_collapse_allowed
+                        nop
+                    """
+                )
             }
-            if (branchIndex < 0) throw PatchException("Could not find comment collapsed check")
-
-            val unitInstance = instructions
-                .filterIsInstance<ReferenceInstruction>()
-                .firstOrNull {
-                    it.opcode == Opcode.SGET_OBJECT &&
-                        (it.reference as? FieldReference)?.definingClass == "Lkotlin/Unit;"
-                }?.reference ?: throw PatchException("Could not find Unit instance field")
-
-            // The register is zero when the comment is expanded, the next instruction then
-            // collapses it. Return early instead, but only if the setting is on.
-            addInstructionsWithLabels(
-                branchIndex,
-                """
-                    if-nez v$collapsedRegister, :morphe_comment_collapsed
-                    invoke-static { }, $EXTENSION_CLASS->shouldBlockCommentCollapse()Z
-                    move-result v$collapsedRegister
-                    if-eqz v$collapsedRegister, :morphe_comment_collapse_allowed
-                    sget-object v$collapsedRegister, $unitInstance
-                    return-object v$collapsedRegister
-                    :morphe_comment_collapse_allowed
-                    const/16 v$collapsedRegister, 0x0
-                    :morphe_comment_collapsed
-                    nop
-                """
-            )
         }
 
         // endregion
@@ -193,18 +247,14 @@ val enableTextSelectionPatch = bytecodePatch(
 
         PointersUpSlopDetectionFingerprint.let {
             it.method.apply {
-                val callIndex = it.instructionMatches.first().index
-                val moveResult = getInstruction<OneRegisterInstruction>(callIndex + 1)
-                if (moveResult.opcode != Opcode.MOVE_RESULT) {
-                    throw PatchException("Unexpected instruction after touch slop call")
-                }
-                val slopRegister = moveResult.registerA
+                val index = it.instructionMatches.last().index
+                val register = this.getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstructions(
-                    callIndex + 2,
+                    index + 1,
                     """
-                        invoke-static/range { v$slopRegister .. v$slopRegister }, $EXTENSION_CLASS->adjustSelectionTapSlop(F)F
-                        move-result v$slopRegister
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->adjustSelectionTapSlop(F)F
+                        move-result v$register
                     """
                 )
             }
@@ -214,19 +264,41 @@ val enableTextSelectionPatch = bytecodePatch(
 
         // region Keep the selection while touching and scrolling, a tap clears it.
 
-        val releaseMethod = SelectionReleaseFingerprint.method
-        releaseMethod.addInstruction(
-            0,
-            "invoke-static { p0 }, $EXTENSION_CLASS->onSelectionRelease(Ljava/lang/Object;)V"
-        )
+        SelectionReleaseFingerprint.let {
+            // The extension clears selections by calling the release method.
+            it.classDef.apply {
+                interfaces.add(EXTENSION_SELECTION_MANAGER_INTERFACE)
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_release",
+                        listOf(),
+                        "V",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(1)
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                invoke-virtual { p0 }, ${it.method}
+                                return-void
+                            """
+                        )
+                    }
+                )
+            }
 
-        // The extension clears selections by calling the release method.
-        SelectionChangedFingerprint.method.addInstructions(
+            it.method.addInstruction(
+                0,
+                "invoke-static { p0 }, $EXTENSION_CLASS->onSelectionRelease($EXTENSION_SELECTION_MANAGER_INTERFACE)V"
+            )
+        }
+
+        SelectionChangedFingerprint.method.addInstruction(
             0,
-            """
-                const-string v0, "${releaseMethod.name}"
-                invoke-static { p0, p1, v0 }, $EXTENSION_CLASS->onSelectionChanged(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/String;)V
-            """
+            "invoke-static { p0, p1 }, $EXTENSION_CLASS->onSelectionChanged(${EXTENSION_SELECTION_MANAGER_INTERFACE}Ljava/lang/Object;)V"
         )
 
         ComposeDispatchTouchEventFingerprint.method.addInstruction(

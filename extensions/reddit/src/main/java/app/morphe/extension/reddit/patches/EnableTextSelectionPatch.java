@@ -10,11 +10,8 @@ package app.morphe.extension.reddit.patches;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Proxy;
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
@@ -26,6 +23,14 @@ import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class EnableTextSelectionPatch {
+
+    /**
+     * Interface to use obfuscated methods of the selection container's SelectionManager.
+     */
+    public interface SelectionManagerInterface {
+        // Method is added during patching.
+        void patch_release();
+    }
 
     /**
      * Fraction of the touch slop a touch may move and still count as a tap.
@@ -52,8 +57,6 @@ public final class EnableTextSelectionPatch {
      */
     private static final ThreadLocal<Boolean> IN_SELECTION_CONTAINER = new ThreadLocal<>();
 
-    private static Method richTextMethod;
-
     /**
      * Injection point. Called at the start of the Compose rich text renderer.
      *
@@ -71,109 +74,41 @@ public final class EnableTextSelectionPatch {
     /**
      * Injection point. Creates the content of the SelectionContainer, which invokes the original
      * rich text renderer with the original arguments.
-     * <p>
-     * A proxy is used because the Compose runtime expects the app's own (R8 renamed)
-     * function interface, which can only be referenced by name at runtime.
      */
-    public static Object createRichTextContent(Class<?> owner, String methodName, Object[] args) {
-        try {
-            ClassLoader loader = owner.getClassLoader();
-            Class<?> function2 = Class.forName("kotlin.jvm.functions.Function2", false, loader);
-            return Proxy.newProxyInstance(loader, new Class<?>[]{function2},
-                    new RichTextContent(owner, methodName, args));
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
+    public static Object createRichTextContent(Object[] args) {
+        return new RichTextContent(args);
     }
 
-    private static final class RichTextContent implements InvocationHandler {
-        private final Class<?> owner;
-        private final String methodName;
+    /**
+     * Content lambda of the SelectionContainer. Implements the Compose Function2 interface,
+     * the interface and its invoke(composer, changed) bridge method are added during patching.
+     */
+    public static final class RichTextContent {
         private final Object[] args;
 
-        RichTextContent(Class<?> owner, String methodName, Object[] args) {
-            this.owner = owner;
-            this.methodName = methodName;
+        RichTextContent(Object[] args) {
             this.args = args;
         }
 
-        @Override
-        public Object invoke(Object proxy, Method method, Object[] methodArgs) {
-            if (method.getDeclaringClass() == Object.class) {
-                switch (method.getName()) {
-                    case "equals":
-                        return proxy == methodArgs[0];
-                    case "hashCode":
-                        return System.identityHashCode(proxy);
-                    default:
-                        return toString();
-                }
-            }
-
-            // Function2.invoke(composer, changed)
-            if (methodArgs != null && methodArgs.length == 2) {
-                invokeRichText(methodArgs[0]);
-            }
-            return null;
-        }
-
-        private void invokeRichText(Object composer) {
-            Object[] callArgs = args.clone();
-
-            // The trailing Integer arguments are the Compose $changed/$default flags,
-            // the argument before them is the Composer. The flags are passed unchanged
-            // because the composable applies its default parameter values depending on them.
-            int composerIndex = callArgs.length - 1;
-            while (composerIndex >= 0 && callArgs[composerIndex] instanceof Integer) {
-                composerIndex--;
-            }
-            callArgs[composerIndex] = composer;
-
+        /**
+         * Called by the invoke(composer, changed) bridge method.
+         */
+        public void render(Object composer) {
             IN_SELECTION_CONTAINER.set(Boolean.TRUE);
             try {
-                findRichTextMethod(owner, methodName, callArgs).invoke(null, callArgs);
-            } catch (InvocationTargetException ex) {
-                Throwable cause = ex.getCause();
-                if (cause instanceof RuntimeException) throw (RuntimeException) cause;
-                if (cause instanceof Error) throw (Error) cause;
-                throw new RuntimeException(cause);
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
+                invokeRichText(args, composer);
             } finally {
                 IN_SELECTION_CONTAINER.remove();
             }
         }
     }
 
-    private static synchronized Method findRichTextMethod(
-            Class<?> owner, String name, Object[] args) throws NoSuchMethodException {
-        if (richTextMethod != null) return richTextMethod;
-
-        for (Method method : owner.getDeclaredMethods()) {
-            Class<?>[] types = method.getParameterTypes();
-            if (!method.getName().equals(name)
-                    || !Modifier.isStatic(method.getModifiers())
-                    || types.length != args.length) {
-                continue;
-            }
-
-            boolean matches = true;
-            for (int i = 0; i < types.length && matches; i++) {
-                matches = isCompatible(types[i], args[i]);
-            }
-            if (matches) {
-                method.setAccessible(true);
-                richTextMethod = method;
-                return method;
-            }
-        }
-        throw new NoSuchMethodException(owner.getName() + "." + name);
-    }
-
-    private static boolean isCompatible(Class<?> type, Object arg) {
-        if (type == boolean.class) return arg instanceof Boolean;
-        if (type == int.class) return arg instanceof Integer;
-        return arg == null || type.isInstance(arg);
+    /**
+     * Invokes the original rich text renderer with the given arguments, but with the composer
+     * of the SelectionContainer content.
+     */
+    private static void invokeRichText(Object[] args, Object composer) {
+        // Modified during patching.
     }
 
     // endregion
@@ -181,11 +116,13 @@ public final class EnableTextSelectionPatch {
     // region Disable collapsing comments.
 
     /**
-     * Injection point. Called when an expanded comment is about to be collapsed.
+     * Injection point. Called when a comment is clicked, before it is collapsed or expanded.
      * Collapsing is triggered by the same touch that starts a text selection.
+     *
+     * @return If the click should be ignored.
      */
-    public static boolean shouldBlockCommentCollapse() {
-        return Settings.ENABLE_TEXT_SELECTION.get();
+    public static boolean shouldBlockCommentCollapse(boolean collapsed) {
+        return Settings.ENABLE_TEXT_SELECTION.get() && !collapsed;
     }
 
     // endregion
@@ -222,26 +159,23 @@ public final class EnableTextSelectionPatch {
     /**
      * Selection containers that currently have a selection.
      */
-    private static final Set<Object> SELECTION_MANAGERS_WITH_SELECTION =
+    private static final Set<SelectionManagerInterface> SELECTION_MANAGERS_WITH_SELECTION =
             Collections.newSetFromMap(new WeakHashMap<>());
-
-    /**
-     * Name of the method that clears a selection, set during patching.
-     */
-    private static String selectionReleaseMethodName;
 
     /**
      * Injection point. Called when a selection container clears its selection.
      */
-    public static void onSelectionRelease(Object selectionManager) {
+    public static void onSelectionRelease(SelectionManagerInterface selectionManager) {
+        if (!Settings.ENABLE_TEXT_SELECTION.get()) return;
+
         SELECTION_MANAGERS_WITH_SELECTION.remove(selectionManager);
     }
 
     /**
      * Injection point. Called when a selection container changes its selection.
      */
-    public static void onSelectionChanged(Object selectionManager, Object selection, String releaseMethodName) {
-        selectionReleaseMethodName = releaseMethodName;
+    public static void onSelectionChanged(SelectionManagerInterface selectionManager, @Nullable Object selection) {
+        if (!Settings.ENABLE_TEXT_SELECTION.get()) return;
 
         if (selection == null) {
             SELECTION_MANAGERS_WITH_SELECTION.remove(selectionManager);
@@ -324,13 +258,10 @@ public final class EnableTextSelectionPatch {
         }
     }
 
-    private static void releaseSelections() throws ReflectiveOperationException {
-        if (selectionReleaseMethodName == null) return;
-
-        for (Object manager : new ArrayList<>(SELECTION_MANAGERS_WITH_SELECTION)) {
-            Method release = manager.getClass().getDeclaredMethod(selectionReleaseMethodName);
-            release.setAccessible(true);
-            release.invoke(manager);
+    private static void releaseSelections() {
+        // Releasing removes the manager from the set.
+        for (SelectionManagerInterface manager : new ArrayList<>(SELECTION_MANAGERS_WITH_SELECTION)) {
+            manager.patch_release();
         }
     }
 
