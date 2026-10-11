@@ -34,11 +34,25 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings({"unused", "JavaReflectionMemberAccess"})
 public final class CustomFontPatch {
 
+    public enum FontType {
+        DEFAULT,
+        SYSTEM,
+        CUSTOM
+    }
+
     private static final String FONT_FILE_NAME = "morphe_custom_font";
     private static final String TEMP_FONT_FILE_NAME = "morphe_custom_font.tmp";
 
+    private static final int MIN_WEIGHT = 1;
+    private static final int MAX_WEIGHT = 1000;
+    private static final int THIN_WEIGHT = 100;
+    private static final int LIGHT_WEIGHT = 300;
     private static final int DEFAULT_WEIGHT = 400;
+    private static final int MEDIUM_WEIGHT = 500;
+    private static final int SEMI_BOLD_WEIGHT = 600;
     private static final int BOLD_WEIGHT = 700;
+    private static final int EXTRA_BOLD_WEIGHT = 800;
+    private static final int BLACK_WEIGHT = 900;
 
     /**
      * Sans serif system font families and their weight.
@@ -56,15 +70,15 @@ public final class CustomFontPatch {
             "roboto",
     };
     private static final int[] SYSTEM_FAMILY_WEIGHTS = {
-            400,
-            100,
-            300,
-            500,
-            900,
-            400,
-            300,
-            500,
-            400,
+            DEFAULT_WEIGHT,
+            THIN_WEIGHT,
+            LIGHT_WEIGHT,
+            MEDIUM_WEIGHT,
+            BLACK_WEIGHT,
+            DEFAULT_WEIGHT,
+            LIGHT_WEIGHT,
+            MEDIUM_WEIGHT,
+            DEFAULT_WEIGHT,
     };
 
     /**
@@ -160,7 +174,7 @@ public final class CustomFontPatch {
                 Utils.setContext(context);
             }
 
-            if (!Settings.CUSTOM_FONT.get()) {
+            if (Settings.CUSTOM_FONT_TYPE.get() != FontType.CUSTOM) {
                 return;
             }
 
@@ -182,7 +196,7 @@ public final class CustomFontPatch {
         // Do not show the restart dialog for this change.
         AbstractPreferenceFragment.settingImportInProgress = true;
         try {
-            Settings.CUSTOM_FONT.save(false);
+            Settings.CUSTOM_FONT_TYPE.save(FontType.DEFAULT);
         } catch (Exception ex) {
             Logger.printException(() -> "disableCustomFont failure", ex);
         } finally {
@@ -271,19 +285,38 @@ public final class CustomFontPatch {
         }
     }
 
+    private static boolean isSystemFont() {
+        return Settings.CUSTOM_FONT_TYPE.get() == FontType.SYSTEM;
+    }
+
     /**
-     * @return The custom font with the weight and italic, or null if the custom font is not used.
+     * @return If the app fonts are replaced with the custom font or the system font.
+     */
+    private static boolean isFontReplaced() {
+        return baseTypeface != null || isSystemFont();
+    }
+
+    /**
+     * @return The custom font or the system font with the weight and italic,
+     *         or null if the app fonts are not replaced.
      */
     @Nullable
     private static Typeface getTypeface(int weight, boolean italic) {
-        Typeface base = baseTypeface;
-        if (base == null) {
-            return null;
-        }
-
-        if (weight < 1 || weight > 1000) {
+        if (weight < MIN_WEIGHT || weight > MAX_WEIGHT) {
             weight = DEFAULT_WEIGHT;
         }
+
+        Typeface base = baseTypeface;
+        if (base != null) {
+            return createCustomTypeface(base, weight, italic);
+        }
+        if (isSystemFont()) {
+            return createSystemTypeface(weight, italic);
+        }
+        return null;
+    }
+
+    private static Typeface createCustomTypeface(Typeface base, int weight, boolean italic) {
         final int key = (weight << 1) | (italic ? 1 : 0);
         Typeface cached = typefaceCache.get(key);
         if (cached != null) {
@@ -295,7 +328,7 @@ public final class CustomFontPatch {
             typeface = Typeface.create(base, weight, italic);
         } else {
             // Before Android 9 only bold and italic can be selected.
-            int style = weight >= 600 ? Typeface.BOLD : Typeface.NORMAL;
+            int style = weight >= SEMI_BOLD_WEIGHT ? Typeface.BOLD : Typeface.NORMAL;
             if (italic) {
                 style |= Typeface.ITALIC;
             }
@@ -304,6 +337,31 @@ public final class CustomFontPatch {
 
         typefaceCache.put(key, typeface);
         return typeface;
+    }
+
+    private static Typeface createSystemTypeface(int weight, boolean italic) {
+        if (Utils.isSDKAbove(28)) {
+            return Typeface.create(Typeface.DEFAULT, weight, italic);
+        }
+
+        // Before Android 9, a weight can only be selected using the font family name.
+        final String family;
+        int style = italic ? Typeface.ITALIC : Typeface.NORMAL;
+        if (weight >= BLACK_WEIGHT) {
+            family = "sans-serif-black";
+        } else if (weight >= SEMI_BOLD_WEIGHT) {
+            family = "sans-serif";
+            style |= Typeface.BOLD;
+        } else if (weight >= MEDIUM_WEIGHT) {
+            family = "sans-serif-medium";
+        } else if (weight >= DEFAULT_WEIGHT) {
+            family = "sans-serif";
+        } else if (weight >= LIGHT_WEIGHT) {
+            family = "sans-serif-light";
+        } else {
+            family = "sans-serif-thin";
+        }
+        return Typeface.create(family, style);
     }
 
     @Nullable
@@ -337,13 +395,13 @@ public final class CustomFontPatch {
     }
 
     private static int weightFromName(String name) {
-        if (name.contains("extrabold")) return 800;
-        if (name.contains("semibold")) return 600;
-        if (name.contains("black") || name.contains("heavy")) return 900;
-        if (name.contains("bold")) return 700;
-        if (name.contains("medium")) return 500;
-        if (name.contains("light")) return 300;
-        if (name.contains("thin")) return 100;
+        if (name.contains("extrabold")) return EXTRA_BOLD_WEIGHT;
+        if (name.contains("semibold")) return SEMI_BOLD_WEIGHT;
+        if (name.contains("black") || name.contains("heavy")) return BLACK_WEIGHT;
+        if (name.contains("bold")) return BOLD_WEIGHT;
+        if (name.contains("medium")) return MEDIUM_WEIGHT;
+        if (name.contains("light")) return LIGHT_WEIGHT;
+        if (name.contains("thin")) return THIN_WEIGHT;
         return DEFAULT_WEIGHT;
     }
 
@@ -360,13 +418,13 @@ public final class CustomFontPatch {
      * Injection point.
      *
      * @param original Typeface from the font provider.
-     * @return The custom font, or the original typeface if it should not be replaced.
+     * @return The custom font or the system font, or the original typeface if it should not be replaced.
      */
     @Nullable
     public static Typeface getCustomTypeface(@Nullable Typeface original, int weight, int style,
                                              @Nullable String fontSettings) {
         try {
-            if (baseTypeface == null) {
+            if (!isFontReplaced()) {
                 return original;
             }
 
@@ -389,7 +447,7 @@ public final class CustomFontPatch {
     @Nullable
     public static Typeface getCustomTypeface(Context context, int fontResourceId, int style) {
         try {
-            if (baseTypeface == null) {
+            if (!isFontReplaced()) {
                 return null;
             }
 
@@ -410,7 +468,7 @@ public final class CustomFontPatch {
     @Nullable
     public static Typeface getCustomTypeface(Enum<?> font, int style) {
         try {
-            if (baseTypeface == null) {
+            if (!isFontReplaced()) {
                 return null;
             }
 

@@ -1,5 +1,6 @@
 /*
  * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3579
  * https://github.com/MorpheApp/morphe-patches/pull/3673
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
@@ -28,6 +29,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.youtube.patches.CustomFontPatch;
+import app.morphe.extension.youtube.patches.CustomFontPatch.FontType;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -125,7 +127,7 @@ public class CustomFontFilePreference extends Preference {
                 preference.updateSummary();
             }
 
-            if (Settings.CUSTOM_FONT.get()) {
+            if (Settings.CUSTOM_FONT_TYPE.get() == FontType.CUSTOM) {
                 AbstractPreferenceFragment.showRestartDialog(context);
             }
         } catch (Exception ex) {

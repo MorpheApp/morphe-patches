@@ -1,5 +1,6 @@
 /*
  * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches/pull/3579
  * https://github.com/MorpheApp/morphe-patches/pull/3673
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
@@ -14,8 +15,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
-import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.hooks.YouTubeApplicationInitFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_32_or_greater
@@ -30,12 +32,11 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/CustomFontPatch;"
 
-private const val PREFERENCES_PACKAGE = "app.morphe.extension.youtube.settings.preference"
-
 @Suppress("unused")
 val customFontPatch = bytecodePatch(
     name = "Custom font",
-    description = "Adds an option to show the app with a custom TTF or OTF font file.",
+    description = "Adds an option to show the app with the device system font or a custom TTF " +
+            "or OTF font file instead of YouTube Sans.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -47,20 +48,21 @@ val customFontPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference(
-                key = "morphe_custom_font",
-                summary = true,
-                tag = "$PREFERENCES_PACKAGE.CustomFontSwitchPreference"
-            ),
-            NonInteractivePreference(
-                key = "morphe_custom_font_file",
-                tag = "$PREFERENCES_PACKAGE.CustomFontFilePreference",
-                selectable = true
+            noTitleUnsortedPreferenceCategory(
+                ListPreference(
+                    key = "morphe_custom_font_type",
+                    tag = "app.morphe.extension.youtube.settings.preference.CustomFontTypePreference"
+                ),
+                NonInteractivePreference(
+                    key = "morphe_custom_font_file",
+                    tag = "app.morphe.extension.youtube.settings.preference.CustomFontFilePreference",
+                    selectable = true
+                )
             )
         )
 
         // Most text uses the platform default typeface, so the default typefaces
-        // must be replaced before any view is created.
+        // must be replaced with the custom font before any view is created.
         YouTubeApplicationInitFingerprint.method.addInstruction(
             0,
             "invoke-static { p0 }, $EXTENSION_CLASS->applyCustomFont(Landroid/content/Context;)V"
