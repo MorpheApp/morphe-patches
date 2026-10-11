@@ -169,6 +169,8 @@ Zmiany obejmują:
   <string name="morphe_hide_video_title_summary">Ukrywa tytuł filmu w trybie pełnoekranowym</string>
   <string name="morphe_sanitize_video_subtitle_title">Oczyść tekst pod tytułem filmu</string>
   <string name="morphe_sanitize_video_subtitle_summary">Usuwa frazy takie jak \"#\", \"Zbiórka funduszy\", \"produkt(y)\" i \"Sklep\" z informacji pod filmem</string>
+  <string name="morphe_hide_ask_gemini_button_title">Ukryj przycisk \"Zapytaj Gemini\"</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Ukrywa przycisk \"Zapytaj Gemini\" na dole panelu \"Zapytaj o ten film\"</string>
   <string name="morphe_hide_description_components_screen_title">Opis filmu</string>
   <string name="morphe_hide_description_components_screen_summary">Zdecyduj, które elementy będą wyświetlane w opisie filmu</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ukryj sekcję \"Podsumowanie filmu wygenerowane przez AI\"</string>
@@ -789,7 +791,7 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_narrow_navigation_buttons_title">Włącz wąskie przyciski nawigacji</string>
   <string name="morphe_narrow_navigation_buttons_summary">Zmniejsza poziome odstępy między przyciskami</string>
   <string name="morphe_disable_icon_only_navigation_buttons_title">Wyłącz przyciski nawigacji bez etykiet</string>
-  <string name="morphe_disable_icon_only_navigation_buttons_summary">Pokazuje przyciski nawigacji z etykietami, jeśli YouTube przesyła je bez etykiet</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Wyświetla przyciski nawigacji z etykietami, jeśli YouTube przesyła je bez nich</string>
   <string name="morphe_navigation_bar_animations_title">Włącz animacje paska nawigacji</string>
   <string name="morphe_navigation_bar_animations_summary">Animuje przejścia podczas przełączania między kartami</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Wyłącz automatyczne ukrywanie paska nawigacji</string>

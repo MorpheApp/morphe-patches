@@ -169,6 +169,8 @@ Promene uključuju:
   <string name="morphe_hide_video_title_summary">Саскрива наслов видеа у пуном режиму</string>
   <string name="morphe_sanitize_video_subtitle_title">Очисти титлове видеа</string>
   <string name="morphe_sanitize_video_subtitle_summary">Чисти изразе попут \'#\', \'Прикупљање средстава\', \'производ(и)\' и \'Продавница\' из титла видеа</string>
+  <string name="morphe_hide_ask_gemini_button_title">Сакриј дугме „Ask Gemini“</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Сакрива дугме „Ask Gemini“ на дну панела „Ask about this video“</string>
   <string name="morphe_hide_description_components_screen_title">Опис видеа</string>
   <string name="morphe_hide_description_components_screen_summary">Изаберите које компоненте ће се појавити у опису видеа</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Саскриј одељак „Резиме видеа генерисаног вештачком интелигенцијом”</string>

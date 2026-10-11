@@ -15,6 +15,7 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.HideAdsPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("deprecation")
 public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
@@ -38,5 +39,7 @@ public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
                 context,
                 Settings.HIDE_POST_ADS
         ));
+
+        Utils.setPreferenceTitlesToMultiLine(this);
     }
 }

@@ -169,6 +169,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_summary">Απόκρυψη του τίτλου του βίντεο στην οθόνη πλήρους προβολής</string>
   <string name="morphe_sanitize_video_subtitle_title">Καθαρισμός υπότιτλων βίντεο</string>
   <string name="morphe_sanitize_video_subtitle_summary">Αφαιρεί φράσεις όπως «#», «Έρανος», «προϊόν(τα)» και «Κατάστημα» από τον υπότιτλο βίντεο</string>
+  <string name="morphe_hide_ask_gemini_button_title">Απόκρυψη του κουμπιού «Ρωτήστε το Gemini»</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Αποκρύπτει το κουμπί «Ρωτήστε το Gemini» στο κάτω μέρος του πλαισίου «Ρωτήστε για αυτό το βίντεο»</string>
   <string name="morphe_hide_description_components_screen_title">Περιγραφή βίντεο</string>
   <string name="morphe_hide_description_components_screen_summary">Επιλέξτε ποια στοιχεία εμφανίζονται στην περιγραφή του βίντεο</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Απόκρυψη τμήματος \"Σύνοψη βίντεο που δημιουργήθηκε από AI\"</string>

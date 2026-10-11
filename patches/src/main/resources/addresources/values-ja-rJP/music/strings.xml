@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- app.morphe.patches.music.interaction.jam -->
-  <string name="morphe_music_jam_update_host_controls">ホストのJamパッチを一時停止と再開を使用するように更新</string>
+  <string name="morphe_music_jam_update_host_controls">一時停止 / 再開を使用するには、ホスト側の Jam パッチを更新してください</string>
   <string name="morphe_music_jam_probe_title">Jam キューの共有</string>
   <string name="morphe_music_jam_probe_summary">近くのJamをホストするか参加して、Jam Layerでそのキューを編集します</string>
   <string name="morphe_music_jam_enabled_title">Jam キューの共有を有効にする</string>
@@ -177,7 +177,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">歌詞</string>
   <string name="morphe_settings_music_screen_9_misc_title">その他</string>
   <string name="morphe_music_app_language_title">YouTube Music の言語</string>
-  <string name="morphe_music_app_language_summary_default">システム言語</string>
+  <string name="morphe_music_app_language_summary_default">デバイスの言語</string>
   <string name="morphe_music_app_language_summary_unsupported">Android 13 以降が必要です</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">「Music Premium に登録」ラベルを非表示</string>

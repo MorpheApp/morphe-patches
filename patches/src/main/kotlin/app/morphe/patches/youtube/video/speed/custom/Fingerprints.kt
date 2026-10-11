@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.video.speed.custom
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
@@ -126,5 +127,44 @@ internal object TapAndHoldSpeedFingerprint : Fingerprint(
         opcode(Opcode.IF_NEZ),
         opcode(Opcode.IGET_OBJECT),
         literal(2.0f)
+    )
+)
+
+/**
+ * Checks if the audio offload supports changing the playback speed.
+ */
+internal object AudioOffloadVariableRateSupportedFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        string("offloadVariableRateSupported")
+    )
+)
+
+/**
+ * Checks if the audio offload is enabled.
+ */
+internal object AudioOffloadEnabledFingerprint : Fingerprint(
+    classFingerprint = AudioOffloadVariableRateSupportedFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.IGET_BOOLEAN,
+        Opcode.CONST_4,
+        Opcode.IF_NEZ,
+        Opcode.IGET_BOOLEAN,
+        Opcode.CONST_4,
+        Opcode.IF_NEZ,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.IGET_BOOLEAN,
+        Opcode.IF_NEZ,
+        Opcode.RETURN,
+        Opcode.RETURN,
+        Opcode.RETURN
     )
 )

@@ -169,6 +169,8 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_video_title_summary">Piilottaa videotunnisteen koko näytön tilassa</string>
   <string name="morphe_sanitize_video_subtitle_title">Puhdista videon tekstitys</string>
   <string name="morphe_sanitize_video_subtitle_summary">Puhdistaa videon tekstityksestä lausekkeet, kuten \'#\', \'Varainkeruu\', \'tuote(t)\' ja \'Kauppa\' edit</string>
+  <string name="morphe_hide_ask_gemini_button_title">Piilota \'Ask Gemini\' -painike</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Piilottaa \'Ask Gemini\' -painikkeen \'Ask about this video\' -paneelin alaosassa</string>
   <string name="morphe_hide_description_components_screen_title">Videon kuvaus</string>
   <string name="morphe_hide_description_components_screen_summary">Valitse, mitkä komponentit näkyvät videokuvauksen yhteydessä</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Piilota \"tekoälyn luoma videoyhteenveto\" -osio</string>

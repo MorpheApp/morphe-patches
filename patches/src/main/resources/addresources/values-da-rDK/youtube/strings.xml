@@ -169,6 +169,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_video_title_summary">Skjuler videotitlen i fuldskærmstilstand</string>
   <string name="morphe_sanitize_video_subtitle_title">Rens video undertekst</string>
   <string name="morphe_sanitize_video_subtitle_summary">Fjerner udtryk som \'#\', \'Fundraiser\', \'produkt(er)\' og \'Shop\' fra videoens undertekster</string>
+  <string name="morphe_hide_ask_gemini_button_title">Skjul \'Spørg Gemini\'-knappen</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Skjuler \'Spørg Gemini\'-knappen nederst på panelet \'Spørg om denne video\'</string>
   <string name="morphe_hide_description_components_screen_title">Videobeskrivelse</string>
   <string name="morphe_hide_description_components_screen_summary">Vælg hvilke komponenter der vises i videobeskrivelsen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Skjul sektionen \"AI-genereret videooversigt\"</string>

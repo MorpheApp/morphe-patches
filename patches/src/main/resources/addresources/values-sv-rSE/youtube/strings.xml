@@ -169,6 +169,8 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_video_title_summary">Döljer videotiteln i helskärm</string>
   <string name="morphe_sanitize_video_subtitle_title">Rensa videoundertitel</string>
   <string name="morphe_sanitize_video_subtitle_summary">Sanerar fraser som \'#\', \'Insamling\', \'produkt(er)\' och \'Shop\' från videoundertext</string>
+  <string name="morphe_hide_ask_gemini_button_title">Dölj knappen \'Fråga Gemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Döljer knappen \'Fråga Gemini\' längst ner i panelen \'Fråga om den här videon\'</string>
   <string name="morphe_hide_description_components_screen_title">Videobeskrivning</string>
   <string name="morphe_hide_description_components_screen_summary">Välj vilka komponenter som visas i videobeskrivningen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Dölj avsnittet AI-genererad videoöversikt</string>

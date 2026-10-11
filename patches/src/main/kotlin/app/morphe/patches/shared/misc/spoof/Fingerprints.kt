@@ -46,6 +46,27 @@ internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Cronet implementation of the native media library network fetch,
+ * used by the native player for its own requests such as the Onesie /initplayback request.
+ */
+internal object NativeNetFetchFingerprint : Fingerprint(
+    returnType = "Lcom/google/android/libraries/youtube/media/interfaces/NetFetchTask;",
+    parameters = listOf(
+        "Lcom/google/android/libraries/youtube/media/interfaces/HttpRequest;",
+        "Lcom/google/android/libraries/youtube/media/interfaces/NetFetchCallbacks;"
+    ),
+    filters = listOf(
+        methodCall(
+            definingClass = "Lorg/chromium/net/CronetEngine;",
+            name = "newUrlRequestBuilder"
+        )
+    ),
+    custom = { _, classDef ->
+        classDef.superclass == "Lcom/google/android/libraries/youtube/media/interfaces/NetFetch;"
+    }
+)
+
 private object CreateStreamingDataParentFingerprint : Fingerprint(
     strings = listOf("Invalid playback type; streaming data is not playable")
 )

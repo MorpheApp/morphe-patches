@@ -21,7 +21,7 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * 21.30+
+ * 21.41+
  */
 internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
     filters = listOf(
@@ -33,7 +33,26 @@ internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT_RANGE,
             name = "<init>",
-            parameters = listOf("L", "L", "L", "L", "L", "L",  "Ljava/lang/String;"),
+            parameters = listOf("L", "L", "L", "L", "L", "Ljava/lang/String;"),
+            location = InstructionLocation.MatchAfterWithin(50)
+        )
+    )
+)
+
+/**
+ * 21.30 - 21.40
+ */
+internal object UserWasInShortsEvaluateLegacy2130Fingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT_RANGE,
+            name = "<init>",
+            parameters = listOf("L", "Z", "Z", "L", "Z")
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT_RANGE,
+            name = "<init>",
+            parameters = listOf("L", "L", "L", "L", "L", "L", "Ljava/lang/String;"),
             location = InstructionLocation.MatchAfterWithin(50)
         )
     )
@@ -42,7 +61,7 @@ internal object UserWasInShortsEvaluateFingerprint : Fingerprint(
 /**
  * 21.03 - 21.29
  */
-internal object UserWasInShortsEvaluateLegacyFingerprint : Fingerprint(
+internal object UserWasInShortsEvaluateLegacy2103Fingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT_RANGE,

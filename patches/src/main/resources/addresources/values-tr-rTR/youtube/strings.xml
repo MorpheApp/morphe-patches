@@ -169,6 +169,8 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_video_title_summary">Tam ekran modunda video başlığını gizler</string>
   <string name="morphe_sanitize_video_subtitle_title">Video altyazısını temizle</string>
   <string name="morphe_sanitize_video_subtitle_summary">#, \'Bağış toplama\', \'ürün(ler)\' ve \'Mağaza\' gibi ifadeleri video alt yazısından temizler</string>
+  <string name="morphe_hide_ask_gemini_button_title">\'Ask Gemini\' düğmesini gizle</string>
+  <string name="morphe_hide_ask_gemini_button_summary">\'Ask Gemini\' düğmesini \'Bu video hakkında sor\' panelinin altında gizler</string>
   <string name="morphe_hide_description_components_screen_title">Video açıklaması</string>
   <string name="morphe_hide_description_components_screen_summary">Video açıklamasında hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'Yapay zeka tarafından oluşturulmuş video özeti\' bölümünü gizle</string>

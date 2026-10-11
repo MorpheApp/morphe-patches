@@ -171,6 +171,8 @@ Promjene uključuju:
   <string name="morphe_hide_video_title_summary">Skriva naslov videozapisa u načinu rada preko cijelog zaslona</string>
   <string name="morphe_sanitize_video_subtitle_title">Očisti titlove videozapisa</string>
   <string name="morphe_sanitize_video_subtitle_summary">Čisti izraze poput \'#\', \'Prikupljanje sredstava\', \'proizvod(i)\' i \'Trgovina\' iz podnaslova videozapisa</string>
+  <string name="morphe_hide_ask_gemini_button_title">Sakrij gumb \'Ask Gemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Sakriva gumb \'Ask Gemini\' na dnu ploče \'Ask about this video\'</string>
   <string name="morphe_hide_description_components_screen_title">Video opis</string>
   <string name="morphe_hide_description_components_screen_summary">Odaberite koje komponente trebaju se pojaviti u opisu videa</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Sakrij odjeljak \"Videosažetak generiran umjetnom inteligencijom\".</string>

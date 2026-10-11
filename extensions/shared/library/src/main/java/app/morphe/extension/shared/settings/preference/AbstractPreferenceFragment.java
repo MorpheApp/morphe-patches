@@ -349,7 +349,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         PreferenceScreen screen = getPreferenceScreen();
         sortPreferenceGroups(screen);
-        Utils.setPreferenceTitlesToMultiLineIfNeeded(screen);
+        Utils.setPreferenceTitlesToMultiLine(screen);
     }
 
     private void showSettingUserDialogConfirmation(Preference pref, Setting<?> setting) {

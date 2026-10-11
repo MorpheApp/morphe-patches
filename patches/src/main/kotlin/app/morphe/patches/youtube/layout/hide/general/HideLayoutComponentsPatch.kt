@@ -197,6 +197,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 ),
                 sorting = Sorting.UNSORTED
             ),
+            SwitchPreference("morphe_hide_ask_gemini_button", summary = true),
             SwitchPreference("morphe_hide_channel_bar"),
             SwitchPreference("morphe_hide_channel_watermark"),
             SwitchPreference("morphe_hide_chapters_timeline_button"),

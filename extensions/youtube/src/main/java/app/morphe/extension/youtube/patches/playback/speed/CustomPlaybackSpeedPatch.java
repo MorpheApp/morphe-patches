@@ -177,6 +177,14 @@ public class CustomPlaybackSpeedPatch {
 
     /**
      * Injection point.
+     * With audio offload the device hardware decodes the audio, and usually does not support changing the pitch.
+     */
+    public static boolean disableAudioOffload(boolean original) {
+        return original && !Settings.ENABLE_PLAYBACK_AUDIO_PITCH.get();
+    }
+
+    /**
+     * Injection point.
      */
     public static float getTapAndHoldSpeed() {
         return TAP_AND_HOLD_SPEED;
