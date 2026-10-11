@@ -22,6 +22,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.lang.ref.WeakReference
 
 internal lateinit var parseByteArrayMethodRef: WeakReference<MutableMethod>
+internal lateinit var parseByteArrayWithRegistryMethodRef: WeakReference<MutableMethod>
 internal lateinit var immutableMethodRef : WeakReference<MethodReference>
 internal lateinit var mutableCopyMethodRef : WeakReference<MethodReference>
 
@@ -77,6 +78,7 @@ internal val fixProtoLibraryPatch = bytecodePatch(
         }
 
         parseByteArrayMethodRef = WeakReference(ProtobufClassParseByteArrayFingerprint.method)
+        parseByteArrayWithRegistryMethodRef = WeakReference(ProtobufClassParseByteArrayWithRegistryFingerprint.method)
 
         StreamingDataOuterClassFingerprint.let {
             it.method.apply {

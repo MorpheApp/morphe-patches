@@ -15,12 +15,14 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
+import app.morphe.patches.all.misc.crashlog.crashLogPatch
 import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
 import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
+import app.morphe.patches.reddit.misc.extension.hooks.RedditActivityOnCreateFingerprint
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
@@ -57,6 +59,9 @@ val settingsPatch = bytecodePatch(
         removeLinkVerification,
         addResourcesPatch,
         versionCheckPatch,
+        crashLogPatch(
+            mainActivityFingerprint = RedditActivityOnCreateFingerprint
+        ),
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
             recommendedAppVersion = COMPATIBILITY_REDDIT.targets.first { !it.isExperimental }.version!!
@@ -83,9 +88,6 @@ val settingsPatch = bytecodePatch(
                         "morphe_ic_dialog_alert.xml",
                         "morphe_settings_custom_checkmark.xml",
                         "morphe_settings_custom_checkmark_bold.xml"
-                    ),
-                    ResourceGroup("layout",
-                        "morphe_custom_list_item_checked.xml"
                     )
                 )
             }

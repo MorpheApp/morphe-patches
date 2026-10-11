@@ -108,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"تسجيل الدخول إلى Android VR يمكنه إصلاح مشكلات التشغيل لبعض المستخدمين
 
 لتسجيل الدخول، اضغط على 'متابعة' بالأسفل"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">متابعة</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">تسجيل خروج</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">تعليمات</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"رمز التفعيل: %s
 
 1. انقر على 'فتح الموقع' أدناه لفتح موقع 'ربط جهاز'
@@ -119,7 +118,6 @@ Second \"item\" text"</string>
 3. تسجل الدخول إلى Google إذا طلب ذلك. إذا كان لديك أكثر من حساب، فاختر حساب YouTube هذا
 4.انقر على 'السماح بالوصول إلى YouTube VR'
 5. ارجع إلى هذا التطبيق بعد الوصول إلى رسالة 'تم توصيل الجهاز'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">فتح الموقع</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">فشل في إصدار رمز التفعيل</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">فشل في إصدار رمز المصادقة</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">تم تسجيل الدخول بنجاح</string>
@@ -153,7 +151,7 @@ Second \"item\" text"</string>
   <!-- misc.audio.silence.skipSilencePatch -->
   <string name="morphe_skip_silence_title">تخطي الصمت</string>
   <string name="morphe_skip_silence_summary">يتخطى تلقائيًا فترات الصمت في صوت الفيديو</string>
-  <string name="morphe_skip_silence_minimum_pause_title">الحد الأدنى لطول التوقف</string>
+  <string name="morphe_skip_silence_minimum_pause_title">الحد الأدنى لمدة التوقف</string>
   <string name="morphe_skip_silence_minimum_pause_summary">يتم تقصير فترات التوقف التي تبلغ هذه المدة أو أكثر فقط. ويسري هذا عند بدء الفيديو التالي</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">وكيل الشبكة</string>
@@ -198,7 +196,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">فلتر مخصص</string>
   <string name="morphe_custom_filter_screen_summary">تكوين فلاتر مخصصة لإخفاء أي مكون</string>
   <string name="morphe_custom_filter_title">تمكين الفلتر المخصص</string>
-  <string name="morphe_custom_filter_strings_title">فلتر مخصص</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">قائمة بسلاسل بناء مسار المكونات المراد تصفيتها، مفصولة بأسطر جديدة</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">فلتر مخصص غير صالح: %s</string>
@@ -261,9 +258,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">يعرض عددًا تقديريًا للإعجابات في الفيديوهات التي قام المنشئ بتعطيل الإعجابات فيها</string>
   <string name="morphe_ryd_toast_on_connection_error_title">عرض تنبيهات خطأ الاتصال</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">يعرض إشعارًا عند تعذر توفر خادم Return YouTube Dislike</string>
-  <string name="morphe_ryd_attribution_summary">"يتم توفير البيانات بواسطة Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"يعيد Return YouTube Dislike عرض عدد مرات عدم الإعجاب التي أخفاها YouTube في عام 2021. تأتي الأعداد من بيانات مؤرشفة قبل الإزالة وتُقدَّر للفيديوهات الأحدث من خلال أصوات مستخدميه، لذا فهي تقريبية وتُحدَّث كل بضعة أيام
 
-انقر هنا لفتح ReturnYouTubeDislike.com"</string>
+يتم إرسال معرف الفيديو الذي تشاهده إلى واجهة برمجة تطبيقات Return YouTube Dislike، ويتم إرسال إعجاباتك وعدم إعجاباتك بشكل مجهول لتحسين التقديرات"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike إحصائيات API لهذا الجهاز</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">وقت استجابة API، المتوسط</string>

@@ -21,9 +21,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -70,12 +70,28 @@ public final class DeezerProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
+        List<ScoredSong> candidates = fetchScoredSongs(track);
+        if (candidates.isEmpty()) {
+            return null;
+        }
+        ScoredSong top = candidates.get(0);
+        return FetchResult.of(top.lyrics(), top.title(), top.artist(),
+                top.durationSec(), track);
     }
 
     @Override
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (ScoredSong candidate : fetchScoredSongs(track)) {
+            scored.add(new Lyrics.ScoredLyrics(candidate.score(), candidate.lyrics()));
+        }
+        return scored;
+    }
+
+    private record ScoredSong(int score, Lyrics lyrics, String title, String artist,
+                              long durationSec) {}
+
+    private List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         String arl = getArl();
         if (arl == null) {
             return Collections.emptyList();
@@ -93,7 +109,7 @@ public final class DeezerProvider implements LyricsProvider {
 
         List<JSONObject> sorted = sortCandidates(searchResults, track);
 
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        List<ScoredSong> scored = new ArrayList<>();
         for (JSONObject item : sorted) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
 
@@ -103,19 +119,20 @@ public final class DeezerProvider implements LyricsProvider {
             try {
                 Lyrics lyrics = fetchLyricsByTrackId(trackId, arl);
                 if (lyrics != null) {
+                    String title = item.optString("title", "");
+                    String artist = artistName(item);
+                    long durationSec = item.optInt("duration", 0);
                     int score = LyricsRequests.scoreLyricsCandidate(
-                            item.optString("title", ""),
-                            artistName(item),
-                            item.optInt("duration", 0),
-                            lyrics, track);
-                    scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+                            title, artist, durationSec, lyrics, track);
+                    scored.add(new ScoredSong(score, lyrics, title, artist, durationSec));
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Could not fetch Deezer lyrics by track ID", ex);
             }
         }
 
-        return Lyrics.sortScoredByScore(scored);
+        scored.sort((a, b) -> Integer.compare(b.score(), a.score()));
+        return scored;
     }
 
     private static String artistName(JSONObject item) {
@@ -216,8 +233,7 @@ public final class DeezerProvider implements LyricsProvider {
 
         HttpURLConnection connection;
         try {
-            connection = LyricsRequests.openConnection(url, 10000, 15000,
-                    Map.of("Accept", "application/json"));
+            connection = LyricsRequests.openConnection(url, Map.of("Accept", "application/json"));
         } catch (IOException ex) {
             Logger.printDebug(() -> "Could not open Deezer search connection", ex);
             return null;

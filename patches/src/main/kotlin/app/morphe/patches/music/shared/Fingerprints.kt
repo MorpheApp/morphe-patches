@@ -13,7 +13,6 @@ package app.morphe.patches.music.shared
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
@@ -24,16 +23,6 @@ internal object MusicActivityOnCreateFingerprint : Fingerprint(
     name = "onCreate",
     returnType = "V",
     parameters = listOf("Landroid/os/Bundle;")
-)
-
-internal object MediaSessionSetMetadataFingerprint : Fingerprint(
-    filters = listOf(
-        methodCall(
-            definingClass = "Landroid/media/session/MediaSession;",
-            name = "setMetadata",
-            parameters = listOf("Landroid/media/MediaMetadata;")
-        )
-    )
 )
 
 /**

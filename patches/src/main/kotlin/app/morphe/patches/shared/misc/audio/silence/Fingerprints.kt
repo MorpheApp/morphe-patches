@@ -10,6 +10,7 @@ package app.morphe.patches.shared.misc.audio.silence
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -68,4 +69,43 @@ internal object SilenceSkippingProcessorConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     parameters = listOf("J", "F", "J", "I", "S"),
+)
+
+/**
+ * Silence skipping processor's queueInput, which receives the decoded audio.
+ */
+internal object SilenceSkippingProcessorQueueInputFingerprint : Fingerprint(
+    classFingerprint = SilenceSkippingProcessorConstructorFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/nio/ByteBuffer;")
+)
+
+/**
+ * Silence skipping processor's isNoise, which compares an audio sample with the silence threshold level.
+ */
+internal object SilenceSkippingProcessorIsNoiseFingerprint : Fingerprint(
+    classFingerprint = SilenceSkippingProcessorConstructorFingerprint,
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf("B", "B"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_SHORT,
+            definingClass = "this"
+        )
+    )
+)
+
+/**
+ * Silence skipping processor's onFlush, the only method without parameters that allocates the silence buffers.
+ */
+internal object SilenceSkippingProcessorFlushFingerprint : Fingerprint(
+    classFingerprint = SilenceSkippingProcessorConstructorFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        opcode(Opcode.NEW_ARRAY)
+    )
 )

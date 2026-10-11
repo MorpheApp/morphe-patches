@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- app.morphe.patches.music.interaction.jam -->
-  <string name="morphe_music_jam_update_host_controls">호스트의 잼 패치를 일시 정지 및 재개 기능을 사용하도록 업데이트하세요</string>
+  <string name="morphe_music_jam_update_host_controls">호스트의 잼 패치를 일시정지 및 재개 기능을 사용하도록 업데이트하세요</string>
   <string name="morphe_music_jam_probe_title">잼 재생목록 공유</string>
   <string name="morphe_music_jam_probe_summary">근처 잼을 호스트하거나 참여하여 잼 레이어를 통해 재생목록을 편집하세요</string>
   <string name="morphe_music_jam_enabled_title">잼 재생목록 공유 활성화하기</string>
@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">앨범 오디오 트랙 재생하기</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">뮤직 비디오 대신 앨범 오디오 버전만 재생합니다. \'동영상 스트림 속이기\'가 필요합니다</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">오디오/동영상 스위치 활성화하기</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">오디오 트랙 버전과 공식 뮤직비디오로 전환할 수 있습니다</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱을 사용하여 뮤직비디오, 팟캐스트 또는 노래를 다운로드할 수 있습니다</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_player_title">플레이어</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">가사</string>
   <string name="morphe_settings_music_screen_9_misc_title">기타</string>
+  <string name="morphe_music_app_language_title">YouTube Music 언어</string>
+  <string name="morphe_music_app_language_summary_default">시스템 언어</string>
+  <string name="morphe_music_app_language_summary_unsupported">Android 13 이상 필요</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Music Premium 가입 라벨 숨기기</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Music Premium 프로모션 숨기기</string>
   <string name="morphe_music_hide_video_ads_title">동영상 광고 숨기기</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">노래 / 동영상 토글 숨기기</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">오프라인 저장 버튼 숨기기</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">팟캐스트 쇼에서 오프라인 저장 버튼을 숨깁니다 </string>
   <string name="morphe_music_hide_explore_shelf_title">\'둘러보기\' 선반 숨기기</string>
+  <string name="morphe_music_hide_filter_bar_title">필터 바 숨기기</string>
   <string name="morphe_music_hide_grid_shelves_title">그리드 선반 숨기기</string>
   <string name="morphe_music_hide_horizontal_shelves_title">좌우 슬라이드 선반 숨기기</string>
   <string name="morphe_music_hide_list_shelves_title">리스트 선반 숨기기</string>
@@ -188,7 +197,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">번역 버튼 숨기기</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'(아티스트)의 새로운 음악\' 선반 숨기기</string>
   <string name="morphe_music_hide_playlist_shelves_title">재생목록 선반 숨기기</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">팟캐스트 에피소드 오프라인 저장 버튼 숨기기</string>
   <string name="morphe_music_hide_repeat_button_title">반복 버튼 숨기기</string>
   <string name="morphe_music_hide_shuffle_button_title">셔플 버튼 숨기기</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">빠른 선곡 선반 숨기기</string>
@@ -236,32 +244,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">이 세션에서 크로스페이드를 일시 중지하였습니다</string>
   <string name="morphe_music_crossfade_resumed_toast">크로스페이드를 다시 시작하였습니다</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">크로스페이드가 활성화된 동안에는 동영상 모드를 사용할 수 없습니다</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">오디오를 캐스팅하거나 미러링하는 동안에는 크로스페이드가 일시 중지됩니다. 캐스팅/미러링 환경에서의 크로스페이드는 불안정하며, 영구적으로 해결되지 않을 수도 있습니다</string>
-  <string name="morphe_music_crossfade_about_title">정보</string>
-  <string name="morphe_music_crossfade_about_summary">크로스페이드 작동 방식과 제한 사항</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">SABR 재생 시 크로스페이드가 비활성화됩니다</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">캐스팅 중에는 크로스페이드가 비활성화됩니다</string>
   <string name="morphe_music_crossfade_about_how_title">작동 방식</string>
-  <string name="morphe_music_crossfade_about_how_summary">"크로스페이드는 한 트랙이 끝날 때 다음 트랙의 시작 부분을 겹쳐 재생하며, 설정한 지속 시간과 곡선에 따라 한 트랙의 음량은 줄이고 다른 트랙의 음량은 높입니다
+  <string name="morphe_music_crossfade_about_how_summary">"크로스페이드는 한 곡의 끝부분과 다음 곡의 시작 부분을 겹쳐 재생하는 기능으로, 설정한 지속 시간과 곡선에 따라 크로스페이드를 적용합니다
 
-자동으로 다음 트랙이 재생될 때(트랙이 자연스럽게 끝난 경우)와 수동으로 트랙을 건너뛸 때 모두 작동하며, 각각은 위에서 개별적으로 설정할 수 있습니다. 자동 전환 시에는 트랙이 끝나기 몇 초 전부터 크로스페이드가 시작됩니다
+이 기능은 자동 다음 곡 재생과 수동으로 곡을 건너뛸 때 작동하며, 각각 별도로 활성화하거나 비활성화할 수 있습니다. 자동 다음 곡 재생에서는 곡이 끝나기 몇 초 전부터 크로스페이드가 시작됩니다"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">제한 사항</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"크로스페이드가 활성화되어 있으면 뮤직비디오는 오디오만 재생됩니다. 셔플 버튼을 길게 탭하여 크로스페이드를 일시 중지하면 동영상을 시청할 수 있습니다
 
-이 기능을 사용하려면 YouTube Music 9.x 이상이 필요합니다"</string>
-  <string name="morphe_music_crossfade_about_best_title">가장 잘 작동하는 경우</string>
-  <string name="morphe_music_crossfade_about_best_summary">일반적인 트랙 간 재생 및 자동 다음 트랙 재생, 한 트랙 반복(트랙이 자기 자신으로 크로스페이드됨), 그리고 휴대폰 스피커, 유선 이어폰/헤드폰, Bluetooth, USB 등 로컬 오디오 환경에서 가장 잘 작동합니다</string>
-  <string name="morphe_music_crossfade_about_quirks_title">제대로 작동하지 않는 경우</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"크로스페이드가 활성화되어 있는 동안에는 뮤직 비디오가 오디오 전용으로 재생됩니다 (동영상을 시청하려면 셔플 버튼을 길게 탭하여 크로스페이드를 일시 중지하세요)
+재생이 시작된 뮤직비디오는 다음 곡이 재생될 때까지 동영상 모드로 유지됩니다
 
-트랙의 길이가 설정한 크로스페이드 시간보다 짧은 경우 크로스페이드가 적용되지 않을 수 있습니다
+페이드 지속 시간보다 재생 시간이 짧은 곡에는 크로스페이드가 적용되지 않습니다
 
-트랙 전환 중에는 잠금 화면이나 알림에 이전 재생 상태가 잠시 표시될 수 있습니다"</string>
-  <string name="morphe_music_crossfade_about_known_title">알려진 문제점</string>
-  <string name="morphe_music_crossfade_about_known_summary">"첫 번째 트랙으로 설정된 뮤직 비디오나 현재 재생목록 외부에서 시작된 뮤직 비디오는 오디오 전용 모드가 적용되기 전까지 잠시 동영상으로 표시될 수 있습니다
+전환 중에는 잠금 화면이나 알림에 이전 상태가 일시적으로 표시될 수 있습니다
 
-뮤직 비디오를 시청하기 위해 크로스페이드를 일시 중지하면 일부 동영상(자체 오디오를 사용하는 동영상)이 검은 화면으로 표시될 수 있습니다. 이를 방지하려면 트랙을 선택하기 전에 크로스페이드를 일시 중지하세요"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">전혀 작동하지 않는 경우</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"오디오를 캐스팅하거나 미러링하는 동안에는 크로스페이드가 일시 중지됩니다. 캐스트/미러링 환경에서의 크로스페이드는 불안정하며, 영구적으로 해결되지 않을 수도 있습니다
+뮤직비디오를 시청하기 위해 크로스페이드를 일시 중지하면 일부 동영상 화면이 검게 표시될 수 있습니다. 이를 방지하려면 곡을 선택하기 전에 크로스페이드를 일시 중지하세요"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">지원되지 않음</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"오디오 캐스팅 또는 미러링 (Chromecast, 화면 또는 오디오 미러링)
 
-YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크로스페이드는 YouTube Music 9.x 이상에서만 지원됩니다"</string>
+SABR 재생 (동영상 스트림 속이기가 비활성화된 경우)"</string>
   <string name="morphe_music_crossfade_about_credit_title">크레딧</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG의 크로스페이드 기능</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">싫어요 리다이렉션 비활성화하기</string>
   <string name="morphe_music_disable_dislike_redirection_summary">싫어요 버튼을 탭했을 경우에 다음 트랙으로 건너뛰는 것을 방지합니다</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">재생목록 트랙 탭 작업</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">재생목록 재생</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">선택한 트랙만 재생</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">선택한 트랙을 현재 재생목록에 추가</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">현재 재생목록에 추가하였습니다</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">크롬캐스트 버튼 숨기기</string>
   <string name="morphe_music_hide_history_button_title">기록 버튼 숨기기</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_change_start_page_entry_playlists">재생목록</string>
   <string name="morphe_change_start_page_entry_search">검색</string>
   <string name="morphe_change_start_page_entry_subscriptions">구독</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">필터 바 숨기기</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">세로 방향 강제 활성화하기</string>
   <string name="morphe_music_force_portrait_orientation_summary">기기를 회전해도 앱이 세로 방향을 유지합니다</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_hide_navigation_bar_title">하단바 숨기기</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">하단바 버튼 라벨 숨기기</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fm 및 ListenBrainz 연동을 설정할 수 있습니다</string>
   <string name="morphe_music_scrobbling_summary_logged_out">로그인되어 있지 않습니다. 설정하려면 탭하세요</string>
   <string name="morphe_music_scrobbling_log_out">로그아웃</string>
   <string name="morphe_music_scrobbling_logged_out_toast">로그아웃하였습니다</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">스크로블링을 활성화하려면 ListenBrainz 사용자 토큰을 입력하세요</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">토큰</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">토큰 가져오기</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">검증</string>
   <string name="morphe_music_listenbrainz_token_status_empty">토큰을 입력하세요</string>
   <string name="morphe_music_listenbrainz_token_status_validating">유효성 검사하는 중…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_scrobbling_guess_album_title">누락된 앨범 채우기</string>
   <string name="morphe_music_scrobbling_guess_album_summary">음악에 앨범이 포함되어 있지 않는 경우에 Last.fm에서 검색하여 스크로블을 완료하세요</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">스크로블링에 대한 정보</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"스크로블링은 YouTube Music의 사용 기록을 Last.fm 또는 ListenBrainz 프로필과 자동으로 동기화합니다
 
 백그라운드 재생 중에도 스크로블링이 동기화되도록 하려면 YouTube Music의 앱 배터리 사용 설정을 '제한 없음'으로 설정하세요"</string>
@@ -457,7 +460,6 @@ YouTube Music 8.x에서는 크로스페이드가 작동하지 않습니다. 크�
   <string name="morphe_music_lyrics_section_service_title">가사 서비스</string>
   <string name="morphe_music_lyrics_section_overlay_title">오버레이</string>
   <string name="morphe_music_lyrics_section_sync_title">동기화</string>
-  <string name="morphe_music_lyrics_section_about_title">정보</string>
   <string name="morphe_music_lyrics_source_all_disabled">모든 제공자가 비활성화됨 - 내장 가사 및 삽입 가사</string>
   <string name="morphe_music_lyrics_source_reset_title">제공자 순서를 초기화하시겠습니까?</string>
   <string name="morphe_music_lyrics_source_reset_message">제공자를 기본 우선순위 순서로 복원합니다</string>
@@ -549,8 +551,11 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">가사가 잘못 필터링되어 하단으로 내려가는 경우 이 설정을 조정하거나 비워 두세요. 쉼표로 구분된 마커: 마커가 포함된 줄에 콜론(:)이 뒤따르면 해당 줄은 크레딧 정보로 간주되어 하단에 표시됩니다. 비워두면 비활성화됩니다</string>
   <string name="morphe_music_lyrics_text_size_title">텍스트 크기</string>
   <string name="morphe_music_lyrics_text_size_summary">가사 텍스트 크기</string>
-  <string name="morphe_music_lyrics_offset_ms_title">타이밍 오프셋</string>
+  <string name="morphe_music_lyrics_offset_ms_title">전역 타이밍 오프셋</string>
   <string name="morphe_music_lyrics_offset_ms_summary">싱크된 가사는 재생에 맞춰 따라갑니다. 가사가 음악과 어긋나는 경우 타이밍 오프셋을 조정하세요. 싱크된 가사를 앞으로 또는 뒤로 이동할 수 있습니다. 가사가 노래보다 앞서 나오는 경우에는 양수 값을 사용하세요</string>
+  <string name="morphe_music_lyrics_sb_matching_title">SponsorBlock 구간을 가사 오프셋에 사용</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">SponsorBlock이 건너뛰는 구간을 제외하고 매칭하여 가사를 공개된 오디오에 맞춥니다. 끄면 SponsorBlock을 완전히 무시합니다</string>
+  <string name="morphe_music_lyrics_sb_no_video">이 트랙에는 제출할 동영상 ID가 없습니다</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">출처: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Google에 의해 번역됨</string>
@@ -571,6 +576,7 @@ LOGIN_INFO"</string>
   <string name="morphe_music_lyrics_refreshing">새로고침 중</string>
   <string name="morphe_music_lyrics_refreshed">새로고침됨</string>
   <string name="morphe_music_lyrics_about_summary">"가사는 제목과 아티스트를 기준으로 일치하는 항목을 찾습니다. 특이한 메타데이터가 있으면 아무것도 찾지 못하거나 다른 버전의 곡을 찾을 수 있습니다. 새로고침을 사용하면 다른 버전으로 전환할 수 있습니다. * 표시가 있는 제공자는 토큰이 필요합니다. 활성화된 모든 제공지가 설정한 순서대로 항상 요청되는 것은 아니며, 응답 속도에 따라 결과가 제공됩니다"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">사용하는 제공자만 활성화하거나 기본값을 유지하세요. 지속적인 요청은 소규모 커뮤니티 가사 사이트에 과부하를 줄 수 있습니다</string>
   <string name="morphe_music_lyrics_hide_info_title">크레딧 라인 숨기기</string>
   <string name="morphe_music_lyrics_hide_info_summary">가사 아래에 표시되는 크레딧 라인을 숨깁니다</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">번역과 로마자 표기 위치 바꾸기</string>

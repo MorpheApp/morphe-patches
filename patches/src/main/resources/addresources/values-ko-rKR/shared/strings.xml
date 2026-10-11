@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">설정을 가져올 수 없습니다: %s</string>
   <string name="morphe_settings_navigate_up">위로 이동</string>
   <string name="morphe_settings_search_hint">설정 검색</string>
+  <string name="morphe_settings_screen_info_title">정보</string>
   <string name="morphe_settings_search_no_results_title">\'%s\'에 대한 검색 결과가 없습니다</string>
   <string name="morphe_settings_search_no_results_summary">다른 키워드를 검색해 보세요</string>
   <string name="morphe_settings_search_recent_searches">최근 검색어</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 예상되지 않은 이벤트에 대한 알림을 받지 못할 수 있습니다."</string>
   <string name="morphe_debug_export_logs_title">디버그 로그 내보내기</string>
   <string name="morphe_debug_export_logs_summary">Morphe 디버그 로그를 내보낼 수 있습니다</string>
-  <string name="morphe_debug_export_logs_file">파일로 내보내기</string>
   <string name="morphe_debug_export_logs_success">디버그 로그를 성공적으로 내보냈습니다</string>
   <string name="morphe_debug_export_logs_failed">디버그 로그를 내보낼 수 없습니다</string>
   <string name="morphe_debug_logs_search_hint">디버그 로그 검색…</string>
@@ -225,4 +225,7 @@ MicroG 앱 배터리 최적화를 비활성화(제한 없음)하더라도, 배�
   <string name="morphe_experimental_app_version_dialog_message">"실험 앱 버전 ⚠️ &lt;b&gt;%1$s&lt;/b&gt; ⚠️ 을 사용 중입니다.&lt;br/&gt;&lt;br/&gt;🔧 이 앱 버전에 맞게 패치를 최적화하는 과정에 있으므로, 예상되지 않은 동작이나 알 수 없는 버그가 발생할 수 있습니다.&lt;br/&gt;&lt;br/&gt;안정적으로 앱을 사용하기를 원한다면, &lt;b&gt;이 앱을 제거&lt;/b&gt;하고 권장 앱 버전 ✅ &lt;b&gt;%2$s&lt;/b&gt; ✅ 으로 패치하세요."</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 실험 버전을 사용하겠습니다</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 안정 버전을 사용하겠습니다</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">충돌 로그가 사용자 문서에 저장됨: %s</string>
+  <string name="morphe_crash_log_saved">충돌 로그가 저장됨: %s</string>
 </resources>

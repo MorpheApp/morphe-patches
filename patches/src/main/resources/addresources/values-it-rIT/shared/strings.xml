@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importazione non riuscita: %s</string>
   <string name="morphe_settings_navigate_up">Torna su</string>
   <string name="morphe_settings_search_hint">Cerca impostazioni</string>
+  <string name="morphe_settings_screen_info_title">A proposito di</string>
   <string name="morphe_settings_search_no_results_title">Nessun risultato trovato per \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Prova con un\'altra parola chiave</string>
   <string name="morphe_settings_search_recent_searches">Ricerche recenti</string>
@@ -105,7 +106,6 @@ Per tradurre nuove lingue o migliorare le traduzioni esistenti, visita morphe.so
 Non sarai notificato di eventi imprevisti."</string>
   <string name="morphe_debug_export_logs_title">Esporta i registri di debug</string>
   <string name="morphe_debug_export_logs_summary">Esporta i registri di debug Morphe</string>
-  <string name="morphe_debug_export_logs_file">Esporta su file</string>
   <string name="morphe_debug_export_logs_success">Registri di debug esportati con successo</string>
   <string name="morphe_debug_export_logs_failed">Esportazione dei registri di debug non riuscita</string>
   <string name="morphe_debug_logs_search_hint">Cerca registro di debug…</string>
@@ -229,4 +229,7 @@ Se le ottimizzazioni della batteria non vengono modificate, potrebbero verificar
 Se desideri un'esperienza più stabile, allora &lt;b&gt;disinstalla&lt;/b&gt; questa versione e passa ad una consigliata ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Voglio la versione sperimentale</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Voglio la versione stabile</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Registro degli arresti anomali salvato nei documenti utente: %s</string>
+  <string name="morphe_crash_log_saved">Registro degli arresti anomali salvato: %s</string>
 </resources>

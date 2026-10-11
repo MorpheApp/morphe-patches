@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">İçe aktarılamadı: %s</string>
   <string name="morphe_settings_navigate_up">Yukarı git</string>
   <string name="morphe_settings_search_hint">Ayarları ara</string>
+  <string name="morphe_settings_screen_info_title">Hakkında</string>
   <string name="morphe_settings_search_no_results_title">\'%s\' için sonuç bulunamadı</string>
   <string name="morphe_settings_search_no_results_summary">Başka bir anahtar kelime deneyin</string>
   <string name="morphe_settings_search_recent_searches">Son aramalar</string>
@@ -105,7 +106,6 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
 Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
   <string name="morphe_debug_export_logs_title">Hata ayıklama kayıtlarını dışa aktar</string>
   <string name="morphe_debug_export_logs_summary">Morphe hata ayıklama kayıtlarını dışa aktar</string>
-  <string name="morphe_debug_export_logs_file">Dosyaya aktar</string>
   <string name="morphe_debug_export_logs_success">Hata ayıklama kayıtları başarıyla dışa aktarıldı</string>
   <string name="morphe_debug_export_logs_failed">Hata ayıklama kayıtlarını dışa aktarma başarısız oldu</string>
   <string name="morphe_debug_logs_search_hint">Hata ayıklama günlüklerini ara…</string>
@@ -229,4 +229,7 @@ Pil optimizasyonu değiştirilmezse şu durumlarla karşılaşabilirsiniz:
 En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve önerilen ✅ &lt;b&gt;%2$s&lt;/b&gt; sürümünü yamalayın"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel istiyorum</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Stabil istiyorum</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Çökme günlüğü kullanıcı belgelerine kaydedildi: %s</string>
+  <string name="morphe_crash_log_saved">Çökme günlüğü kaydedildi: %s</string>
 </resources>

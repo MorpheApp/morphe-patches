@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">A importação falhou: %s</string>
   <string name="morphe_settings_navigate_up">Navegar para cima</string>
   <string name="morphe_settings_search_hint">Configurações de pesquisa</string>
+  <string name="morphe_settings_screen_info_title">Acerca de</string>
   <string name="morphe_settings_search_no_results_title">Nenhum resultado encontrado para \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Tente outra palavra-chave</string>
   <string name="morphe_settings_search_recent_searches">Pesquisas recentes</string>
@@ -105,7 +106,6 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe
 Não será notificado de quaisquer eventos inesperados."</string>
   <string name="morphe_debug_export_logs_title">Exportar registos de depuração</string>
   <string name="morphe_debug_export_logs_summary">Exportar registos de depuração Morphe</string>
-  <string name="morphe_debug_export_logs_file">Exportar para ficheiro</string>
   <string name="morphe_debug_export_logs_success">Registos de depuração exportados com sucesso</string>
   <string name="morphe_debug_export_logs_failed">Falha ao exportar registos de depuração</string>
   <string name="morphe_debug_logs_search_hint">Pesquisar registos de depuração…</string>
@@ -229,4 +229,7 @@ Se as otimizações de bateria não forem alteradas, você poderá experimentar:
 Se você deseja a experiência mais tranquila, então &lt;b&gt;desinstale&lt;/b&gt; este e atualize a versão recomendada do aplicativo ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Log de falhas salvo nos documentos do usuário: %s</string>
+  <string name="morphe_crash_log_saved">Log de falhas salvo: %s</string>
 </resources>

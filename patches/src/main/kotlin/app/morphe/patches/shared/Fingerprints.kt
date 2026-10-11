@@ -74,7 +74,9 @@ internal object BuildInnerTubeProtoRequestUriLegacyFingerprint : Fingerprint(
         string("key"),
         string("asig"),
         checkCast("Ljava/lang/String;"),
-        methodCall($$"Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;")
+        methodCall($$"Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;"),
+        // Must be last. Above appendQueryParameter can be inside a loop that is not always executed.
+        methodCall($$"Landroid/net/Uri$Builder;->build()Landroid/net/Uri;")
     )
 )
 
@@ -104,6 +106,16 @@ internal object FormatStreamModelToStringFingerprint : Fingerprint(
         ),
         string("FormatStream(itag="),
         string(" mimeType=")
+    )
+)
+
+internal object MediaSessionSetMetadataFingerprint : Fingerprint(
+    filters = listOf(
+        methodCall(
+            definingClass = "Landroid/media/session/MediaSession;",
+            name = "setMetadata",
+            parameters = listOf("Landroid/media/MediaMetadata;")
+        )
     )
 )
 

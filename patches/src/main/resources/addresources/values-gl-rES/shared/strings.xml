@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">Configuracións %d importadas</string>
   <string name="morphe_settings_import_failure_parse">Importación falida: %s</string>
   <string name="morphe_settings_search_hint">Buscar axustes</string>
+  <string name="morphe_settings_screen_info_title">Acerca de</string>
   <string name="morphe_settings_search_no_results_title">Sen resultados para \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Probe outra palabra clave</string>
   <string name="morphe_settings_search_recent_searches">Buscas recentes</string>
@@ -93,4 +94,5 @@ Non se lle notificará de ningún evento inesperado."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

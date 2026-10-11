@@ -1,16 +1,16 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2533
+ * https://github.com/MorpheApp/morphe-patches/pull/3663
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
 package app.morphe.extension.shared.spoof.potoken;
 
-import android.annotation.SuppressLint;
+import android.os.SystemClock;
 import android.webkit.CookieManager;
 
-import java.text.SimpleDateFormat;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -18,9 +18,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 public class PoTokenGenerator {
-    @SuppressLint("SimpleDateFormat")
-    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-
     private final ReentrantLock webPoTokenGenLock = new ReentrantLock();
     private String webPoTokenSessionIdentifier;
     private String webPoTokenStreamingPot;
@@ -77,6 +74,10 @@ public class PoTokenGenerator {
                     Utils.runOnMainThread(oldGen::close);
                 }
 
+                // The WebView only asks for the challenge after it has loaded,
+                // so download it while the WebView is still being created.
+                Utils.runOnBackgroundThread(BotGuardManager::getChallengeData);
+
                 try {
                     // Blocks until initialized
                     webPoTokenGenerator = PoTokenWebView.newPoTokenGenerator().get();
@@ -112,7 +113,7 @@ public class PoTokenGenerator {
             final long expirationMs = state.expirationMs;
             Logger.printDebug(() -> "poToken for " + videoId + ": playerPot=" + playerPot +
                     ", streamingPot=" + streamingPot + ", sessionIdentifier=" + webPoTokenSessionIdentifier +
-                    ", expirationDate=" + sdf.format(expirationMs)
+                    ", expiresInSeconds=" + (expirationMs - SystemClock.elapsedRealtime()) / 1000
             );
             return new PoTokenResult(playerPot, streamingPot, expirationMs);
         } catch (Throwable throwable) {

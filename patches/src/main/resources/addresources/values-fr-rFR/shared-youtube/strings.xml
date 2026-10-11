@@ -108,10 +108,9 @@ Si vous êtes un utilisateur YouTube Premium, ce paramètre peut ne pas être n�
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Se connecter à Android VR peut résoudre les problèmes de lecture pour certains utilisateurs.
 
 Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continuer</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Se déconnecter</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Code d'activation : %s
 
 1. Appuyez sur 'Ouvrir le site web' ci-dessous pour ouvrir la page 'Connecter un appareil'
@@ -119,7 +118,6 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
 3. Connectez-vous à Google si demandé. Si vous avez plusieurs comptes, choisissez celui associé à ce compte YouTube
 4. Appuyez sur 'Autoriser l'accès YouTube VR'
 5. Revenez à cette application une fois que le message 'Appareil connecté' apparaît"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Ouvrir le site web</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Échec de l\'obtention du code d\'activation</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Échec de l\'obtention d\'un jeton d\'authentification</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Connecté avec succès</string>
@@ -198,7 +196,6 @@ Cependant, activer cette option entraînera également l'enregistrement de certa
   <string name="morphe_custom_filter_screen_title">Filtre personnalisé</string>
   <string name="morphe_custom_filter_screen_summary">Configurez des filtres personnalisés pour masquer n\'importe quel composant</string>
   <string name="morphe_custom_filter_title">Activer le filtre personnalisé</string>
-  <string name="morphe_custom_filter_strings_title">Filtre personnalisé</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste des chaînes du générateur de chemins de composants à filtrer, séparées par des sauts de ligne</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtre personnalisé invalide : %s</string>
@@ -261,9 +258,9 @@ Si vous désactivez cette option par la suite, il est recommandé d'effacer les 
   <string name="morphe_ryd_estimated_like_summary">Affiche un nombre estimé de \'J\'aime\' sur les vidéos où le créateur a désactivé les \'J\'aime\'</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afficher les alertes d\'erreur de connexion</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Affiche une notification lorsque le serveur Return YouTube Dislike est indisponible</string>
-  <string name="morphe_ryd_attribution_summary">"Les données sont fournies par l'API Return YouTube Dislike.
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike rétablit le nombre de 'Je n'aime pas' que YouTube a masqué en 2021. Les chiffres proviennent de données archivées avant la suppression et sont estimés pour les vidéos plus récentes à partir des votes de ses utilisateurs. Ils sont donc approximatifs et sont mis à jour tous les quelques jours
 
-Appuyez ici pour ouvrir ReturnYouTubeDislike.com"</string>
+L'identifiant de la vidéo que vous regardez est envoyé à l'API de Return YouTube Dislike, et vos 'J'aime' et 'Je n'aime pas' sont également transmises de manière anonyme afin d'améliorer les estimations"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistiques de l\'API Return YouTube Dislike de cet appareil</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Temps de réponse de l\'API, moyen</string>

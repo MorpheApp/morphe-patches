@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Sikertelen importálás: %s</string>
   <string name="morphe_settings_navigate_up">Feljebb navigálás</string>
   <string name="morphe_settings_search_hint">Beállítások keresése</string>
+  <string name="morphe_settings_screen_info_title">Névjegy</string>
   <string name="morphe_settings_search_no_results_title">Nincs találat erre: „%s”</string>
   <string name="morphe_settings_search_no_results_summary">Próbáljon ki egy másik kulcsszót</string>
   <string name="morphe_settings_search_recent_searches">Legutóbbi keresések</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 Nem fog értesülni semmilyen váratlan eseményről."</string>
   <string name="morphe_debug_export_logs_title">Hibakeresési naplók exportálása</string>
   <string name="morphe_debug_export_logs_summary">Morphe hibakeresési naplók exportálása</string>
-  <string name="morphe_debug_export_logs_file">Exportálás fájlba</string>
   <string name="morphe_debug_export_logs_success">A hibakeresési naplók sikeresen exportálva</string>
   <string name="morphe_debug_export_logs_failed">Nem sikerült exportálni a hibakeresési naplókat</string>
   <string name="morphe_debug_logs_search_hint">Keresés a hibakeresési naplókban…</string>
@@ -229,4 +229,7 @@ Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
 A legkényelmesebb élmény érdekében &lt;b&gt;eltávolítsa&lt;/b&gt; ezt, és javítsa a ✅ &lt;b&gt;%2$s&lt;/b&gt; ajánlott alkalmazás verzióját."</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Szeretném kísérleti</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Szeretném stabil</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Összeomlási napló mentve a felhasználói dokumentumok közé: %s</string>
+  <string name="morphe_crash_log_saved">Összeomlási napló mentve: %s</string>
 </resources>

@@ -7,6 +7,7 @@
 
 package app.morphe.patches.shared.misc.audio.silence
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
@@ -78,5 +79,29 @@ internal fun skipSilencePatch(
                 move-result p7
             """
         )
+
+        // Lower the silence threshold for quiet audio.
+        SilenceSkippingProcessorQueueInputFingerprint.matchSingle().method.addInstruction(
+            0,
+            "invoke-static { p1 }, $EXTENSION_CLASS->updateSilenceThresholdLevel(Ljava/nio/ByteBuffer;)V"
+        )
+
+        SilenceSkippingProcessorFlushFingerprint.method.addInstruction(
+            0,
+            "invoke-static { }, $EXTENSION_CLASS->resetSilenceThresholdLevel()V"
+        )
+
+        SilenceSkippingProcessorIsNoiseFingerprint.apply {
+            val match = instructionMatches.first()
+            val thresholdRegister = match.getInstruction<TwoRegisterInstruction>().registerA
+
+            method.addInstructions(
+                match.index + 1,
+                """
+                    invoke-static { v$thresholdRegister }, $EXTENSION_CLASS->adaptiveSilenceThresholdLevel(S)S
+                    move-result v$thresholdRegister
+                """
+            )
+        }
     }
 }

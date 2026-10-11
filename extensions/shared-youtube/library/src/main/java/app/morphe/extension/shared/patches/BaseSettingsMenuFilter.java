@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.WeakHashMap;
 
@@ -100,7 +101,7 @@ public abstract class BaseSettingsMenuFilter {
         if (!raw.isBlank()) {
             Set<String> reserved = reservedNeedles();
             for (String line : raw.split("\n")) {
-                String trimmed = line.trim().toLowerCase();
+                String trimmed = line.trim().toLowerCase(Locale.ROOT);
                 if (trimmed.isEmpty()) continue;
                 if (reserved.contains(trimmed)) {
                     Logger.printDebug(() -> "SettingsMenuFilter ignoring reserved needle: " + trimmed);
@@ -128,7 +129,7 @@ public abstract class BaseSettingsMenuFilter {
     }
 
     private static void addLoweredIfPresent(Set<String> target, @Nullable String value) {
-        if (value != null) target.add(value.toLowerCase());
+        if (value != null) target.add(value.toLowerCase(Locale.ROOT));
     }
 
     /**
@@ -136,7 +137,7 @@ public abstract class BaseSettingsMenuFilter {
      */
     public static boolean equalsAny(@Nullable CharSequence text, String[] needles) {
         if (text == null) return false;
-        String haystack = text.toString().toLowerCase();
+        String haystack = text.toString().toLowerCase(Locale.ROOT);
         for (String needle : needles) {
             if (haystack.equals(needle)) return true;
         }
@@ -194,7 +195,7 @@ public abstract class BaseSettingsMenuFilter {
 
         String cleanTitle = clean(title);
         if (cleanTitle == null) return;
-        if (reservedNeedles().contains(cleanTitle.toLowerCase())) return;
+        if (reservedNeedles().contains(cleanTitle.toLowerCase(Locale.ROOT))) return;
 
         String cleanParent = clean(parent);
         DiscoveredNode node = new DiscoveredNode(cleanParent, cleanTitle);
@@ -295,7 +296,7 @@ public abstract class BaseSettingsMenuFilter {
         if (self == null) return Collections.emptySet();
         Set<String> result = new HashSet<>();
         for (String line : self.entriesSetting.get().split("\n")) {
-            String trimmed = line.trim().toLowerCase();
+            String trimmed = line.trim().toLowerCase(Locale.ROOT);
             if (!trimmed.isEmpty()) result.add(trimmed);
         }
         return result;
@@ -320,12 +321,12 @@ public abstract class BaseSettingsMenuFilter {
         BaseSettingsMenuFilter self = instance();
         if (self == null) return false;
 
-        String needle = title.trim().toLowerCase();
+        String needle = title.trim().toLowerCase(Locale.ROOT);
         String raw = self.entriesSetting.get();
         List<String> kept = new ArrayList<>();
         boolean removed = false;
         for (String line : raw.split("\n")) {
-            if (line.trim().toLowerCase().equals(needle)) {
+            if (line.trim().toLowerCase(Locale.ROOT).equals(needle)) {
                 removed = true;
                 continue;
             }

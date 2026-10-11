@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importeren mislukt: %s</string>
   <string name="morphe_settings_navigate_up">Omhoog navigeren</string>
   <string name="morphe_settings_search_hint">Zoekinstellingen</string>
+  <string name="morphe_settings_screen_info_title">Over</string>
   <string name="morphe_settings_search_no_results_title">Geen resultaten gevonden voor \", %s\"</string>
   <string name="morphe_settings_search_no_results_summary">Probeer een ander trefwoord</string>
   <string name="morphe_settings_search_recent_searches">Recente zoekopdrachten</string>
@@ -105,7 +106,6 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
 U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen."</string>
   <string name="morphe_debug_export_logs_title">Foutopsporingslogboeken exporteren</string>
   <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
-  <string name="morphe_debug_export_logs_file">Exporteren naar bestand</string>
   <string name="morphe_debug_export_logs_success">Debuglogboeken succesvol geëxporteerd</string>
   <string name="morphe_debug_export_logs_failed">Mislukt om debuglogboeken te exporteren</string>
   <string name="morphe_debug_logs_search_hint">Zoek in foutopsporingslogboeken…</string>
@@ -229,4 +229,7 @@ Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
 Als u de meest probleemloze ervaring wilt, &lt;b&gt;verwijder&lt;/b&gt; dit dan en patch de aanbevolen app-versie van ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ik wil experimenteel</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ik wil stabiel</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Crashlog opgeslagen in gebruikersdocumenten: %s</string>
+  <string name="morphe_crash_log_saved">Crashlog opgeslagen: %s</string>
 </resources>

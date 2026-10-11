@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Reproducir pistas de audio del álbum</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Reproduce la versión solo audio de las canciones del álbum, en lugar del videoclip. Requiere \'Falsificar transmisiones de vídeo\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Activar cambio de audio/vídeo</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Intenta cambiar entre la versión de pista de audio y el vídeo musical oficial</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Descarga vídeos musicales, podcasts o canciones con aplicaciones de descarga de terceros</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Las pistas descargadas aparecen aquí"</string>
   <string name="morphe_settings_music_screen_4_player_title">Reproductor</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Letras</string>
   <string name="morphe_settings_music_screen_9_misc_title">Otros</string>
+  <string name="morphe_music_app_language_title">Idioma de YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Idioma del sistema</string>
+  <string name="morphe_music_app_language_summary_unsupported">Requiere Android 13 o posterior</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ocultar etiqueta \'Obtener Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Ocultar promociones de Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ocultar selector Audio / Vídeo</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Ocultar botón Descargar</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Oculta el botón Descargar en la página del podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Ocultar estantería Explorar</string>
+  <string name="morphe_music_hide_filter_bar_title">Ocultar barra de filtro</string>
   <string name="morphe_music_hide_grid_shelves_title">Ocultar estanterías en cuadrícula</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ocultar estanterías horizontales</string>
   <string name="morphe_music_hide_list_shelves_title">Ocultar estanterías en lista</string>
@@ -188,7 +197,6 @@ Las pistas descargadas aparecen aquí"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ocultar botón Traducir</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ocultar estantería \'Novedades de\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ocultar estanterías de listas de reproducción</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ocultar botón Descargar de episodios de podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Ocultar botón Repetir</string>
   <string name="morphe_music_hide_shuffle_button_title">Ocultar botón Aleatorio</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ocultar estantería \'Acceso rápido\'</string>
@@ -236,32 +244,26 @@ Las pistas descargadas aparecen aquí"</string>
   <string name="morphe_music_crossfade_paused_toast">Fundido entre canciones pausado para esta sesión</string>
   <string name="morphe_music_crossfade_resumed_toast">Fundido entre canciones reanudado</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">El modo de vídeo no está disponible mientras el fundido entre canciones está activado</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">El fundido entre canciones se pausa mientras se transmite o duplica el audio. El fundido entre canciones durante la transmisión o duplicación de audio es inestable y es posible que nunca pueda corregirse</string>
-  <string name="morphe_music_crossfade_about_title">Acerca de</string>
-  <string name="morphe_music_crossfade_about_summary">Cómo funciona el fundido entre canciones, y cuándo no</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">El fundido entre canciones está desactivado con la reproducción SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">El fundido entre canciones está desactivado durante la transmisión</string>
   <string name="morphe_music_crossfade_about_how_title">Cómo funciona</string>
-  <string name="morphe_music_crossfade_about_how_summary">"El fundido entre canciones superpone el final de una canción con el comienzo de la siguiente, reduciendo el volumen de una mientras aumenta el volumen de la otra durante la duración y la curva que hayas elegido.
+  <string name="morphe_music_crossfade_about_how_summary">"El crossfade superpone el final de una canción con el inicio de la siguiente, usando tu duración y curva
 
-Funciona con el avance automático (cuando una canción termina por sí sola) y con los cambios manuales, cada uno tiene su propio botón de activación. Con el avance automático, la mezcla comienza unos segundos antes de que termine la canción.
+Se ejecuta en avance automático y en salto manual, cada uno con su propio interruptor. En avance automático, la mezcla comienza unos segundos antes de que la canción termine"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Limitaciones</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Los vídeos musicales se reproducen solo como audio mientras el fundido entre canciones está activado. Mantén pulsado el botón de reproducción aleatoria para pausar el fundido y ver el vídeo
 
-Requiere YouTube Music 9.x o posterior."</string>
-  <string name="morphe_music_crossfade_about_best_title">Funciona mejor con</string>
-  <string name="morphe_music_crossfade_about_best_summary">La reproducción normal de canción a canción y el avance automático, la repetición de una canción (la canción se funde consigo misma) y el audio local (altavoz del teléfono, auriculares con cable, Bluetooth o USB).</string>
-  <string name="morphe_music_crossfade_about_quirks_title">No funciona del todo bien</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Los vídeos musicales se reproducen solo con audio cuando el fundido entre canciones está activado (mantén pulsado el botón de reproducción aleatoria para pausarlo si quieres ver el vídeo)
+Un vídeo musical que empieza a reproducirse permanece en modo de vídeo hasta la siguiente canción
 
-Las canciones más cortas que la duración del fundido pueden omitir el efecto
+Las canciones más cortas que la duración del fundido no llegan a fundirse
 
-La pantalla de bloqueo o la notificación pueden mostrar brevemente un estado desactualizado durante la transición"</string>
-  <string name="morphe_music_crossfade_about_known_title">Problemas conocidos</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Un vídeo musical establecido como primera canción, o iniciado fuera de la cola actual, puede mostrarse brevemente como vídeo antes de cambiar al modo solo audio
+La pantalla de bloqueo o la notificación pueden mostrar brevemente un estado desactualizado durante la transición
 
-Pausar el fundido para ver un vídeo musical puede dejar algunos vídeos en negro (los que usan el audio del propio vídeo). Pausa el fundido antes de elegir la canción para evitarlo"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">No funciona en absoluto</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Transmisión o duplicación de audio (Chromecast, duplicación de pantalla o de audio): el fundido entre canciones se pausa porque es inestable en estos casos y puede que nunca pueda corregirse.
+Pausar el fundido para ver un vídeo musical puede dejar algunos vídeos en negro. Pausar el fundido antes de elegir la canción evita este problema"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">No compatible</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Transmisión o duplicación de audio (Chromecast, duplicación de pantalla o de audio)
 
-YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y posteriores"</string>
+Reproducción SABR (con 'Falsificar transmisiones de vídeo' desactivado)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Créditos</string>
   <string name="morphe_music_crossfade_about_credit_summary">Característica de fundido entre canciones por VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Desactivar redirección de \'No me gusta\'</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Evita saltar a la siguiente pista cuando se pulsa el botón \'No me gusta\'</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Acción al pulsar una pista de la lista de reproducción</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Reproducir la lista de reproducción</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Reproducir solo la pista seleccionada</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Añadir la pista seleccionada a la cola</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Añadido a la cola</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ocultar botón Transmitir</string>
   <string name="morphe_music_hide_history_button_title">Ocultar botón Historial</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_change_start_page_entry_playlists">Listas de reproducción</string>
   <string name="morphe_change_start_page_entry_search">Búsqueda</string>
   <string name="morphe_change_start_page_entry_subscriptions">Suscripciones</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Ocultar barra de filtro</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Forzar orientación vertical</string>
   <string name="morphe_music_force_portrait_orientation_summary">Mantiene la aplicación en orientación vertical cuando se gira el dispositivo</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_hide_navigation_bar_title">Ocultar barra de navegación</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar etiquetas de botones de navegación</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Configura la integración de Last.fm y ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">No has iniciado sesión. Pulsa para configurar</string>
   <string name="morphe_music_scrobbling_log_out">Cerrar sesión</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Sesión cerrada</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Introduce tu token de usuario de ListenBrainz para habilitar el scrobbling</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Obtener token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Verificar</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Por favor, introduce un token</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Validando…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x: el fundido entre canciones solo funciona en la versión 9.x y
   <string name="morphe_music_scrobbling_guess_album_title">Rellenar álbum faltante</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Cuando la música no incluye un álbum, lo busca en Last.fm para que tu scrobble esté completo</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Acerca del scrobbling</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"El scrobbling sincroniza tu uso de YouTube Music con tu perfil de Last.fm o ListenBrainz.
 
 Para garantizar que la sincronización se realice durante la reproducción en segundo plano, asegúrate de que el uso de la batería de la aplicación YouTube Music esté configurado como \"Sin restricciones\""</string>
@@ -457,7 +460,6 @@ Para garantizar que la sincronización se realice durante la reproducción en se
   <string name="morphe_music_lyrics_section_service_title">Servicio de letras</string>
   <string name="morphe_music_lyrics_section_overlay_title">Superposición</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronización</string>
-  <string name="morphe_music_lyrics_section_about_title">Acerca de</string>
   <string name="morphe_music_lyrics_source_all_disabled">Todos los proveedores desactivados: letras integradas y letras incrustadas</string>
   <string name="morphe_music_lyrics_source_reset_title">¿Restablecer orden de proveedores?</string>
   <string name="morphe_music_lyrics_source_reset_message">Restaura los proveedores al orden de prioridad predeterminado</string>
@@ -547,8 +549,11 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_credit_line_regex_summary">Si las letras se filtran incorrectamente al final, ajusta o borra esto. Marcadores separados por comas: las líneas que contienen un marcador seguido de dos puntos se muestran como información de créditos al final. Déjalo vacío para desactivarlo</string>
   <string name="morphe_music_lyrics_text_size_title">Tamaño del texto</string>
   <string name="morphe_music_lyrics_text_size_summary">Tamaño del texto de las letras</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Desfase de tiempo</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Desfase de tiempo global</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Las letras sincronizadas siguen la reproducción. Si se desvían, ajusta el desfase de tiempo. Desplaza las letras sincronizadas hacia adelante o hacia atrás. Usa un valor positivo si las letras van por delante de la canción</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Usar segmentos de SponsorBlock para el desfase de las letras</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Sincroniza las letras sin los segmentos que omite SponsorBlock y las ajusta al audio resultante. Desactivado ignora SponsorBlock por completo</string>
+  <string name="morphe_music_lyrics_sb_no_video">Esta pista no tiene ID de vídeo que enviar</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Fuente: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Traducido por Google</string>
@@ -569,6 +574,7 @@ Cookies requeridas: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_refreshing">Actualizando</string>
   <string name="morphe_music_lyrics_refreshed">Actualizado</string>
   <string name="morphe_music_lyrics_about_summary">"Las letras se buscan por título y artista; unos metadatos inusuales pueden no encontrar nada o encontrar la versión incorrecta. Usa Actualizar para cambiar de versión. Los proveedores marcados con * requieren un token. No siempre se consultan todos los proveedores activados en el orden que establezcas, sino que responden según su velocidad"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Activa solo los proveedores que uses, o mantén el predeterminado: las peticiones constantes pueden saturar los pequeños sitios de letras comunitarios</string>
   <string name="morphe_music_lyrics_hide_info_title">Ocultar línea de créditos</string>
   <string name="morphe_music_lyrics_hide_info_summary">Oculta la línea de créditos que se muestra debajo de las letras</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Intercambiar traducción y romanización</string>

@@ -95,10 +95,9 @@ Agar siz YouTube Premium foydalanuvchisi bo‘lsangiz, ushbu sozlash talab qilin
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Ba’zi foydalanuvchilar uchun o‘ynatish muammolarini hal qilish uchun Android VR ga kirish mumkin
 
 Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Davom etish</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Chiqib ketish</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Ko‘rsatmalar</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Foydalanish kodi: %s
 
 1. 'Veb-saytni ochish' tugmasini bosib, 'Moxiyatni ulang' veb-saytini oching
@@ -106,7 +105,6 @@ Kirish uchun quyida 'Davom etish' tugmasini bosing"</string>
 3. Agar so‘ralsa, Google ga kiring. Agar bir nechta akkauntlaringiz bo‘lsa, ushbu YouTube akkauntini tanlang
 4. 'YouTube VR kirishiga ruxsat berish' tugmasini bosing
 5. 'Moxiyat ulang' xabarini olgandan so‘ng ushbu ilovaga qayting"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Veb-saytni ochish</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Faollashtirish kodini yaratishda xatolik</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Tasdiqlash tokenini yaratishda xatolik</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Muammosiz kirish amalga oshirildi</string>
@@ -175,7 +173,6 @@ Shu bilan birga, bu sizning IP-manzilingiz kabi ba'zi foydalanuvchi ma'lumotlari
   <string name="morphe_custom_filter_screen_title">Maxsus filtr</string>
   <string name="morphe_custom_filter_screen_summary">Yashirish uchun maxsus filtrni sozlang</string>
   <string name="morphe_custom_filter_title">Maxsus filtrni yoqish</string>
-  <string name="morphe_custom_filter_strings_title">Maxsus filtr</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Yangi qatorlar bilan ajratilgan komponent yo\'l quruvchi satrlar ro\'yxati</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Noto\'g\'ri maxsus filtr: %s</string>
@@ -229,9 +226,6 @@ Keyinchalik o'chirilganda, UI xatolarini oldini olish uchun ilova ma'lumotlarini
   <string name="morphe_ryd_estimated_like_summary">Yaratuvchi Like funksiyasini o\'chirgan videolar uchun taxminiy Like sonini ko\'rsatadi</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Ulanish xatoligi haqida bildirishnomalar ko\'rsatish</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike serveri mavjud bo\'lmaganda bildirishnoma ko\'rsatadi</string>
-  <string name="morphe_ryd_attribution_summary">"Ma'lumot Return YouTube Dislike API tomonidan taqdim etiladi
-
-Batafsil ma'lumot olish uchun ReturnYouTubeDislike.com saytiga tashrif buyuring"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistikasi (ushbu qurilma)</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API javob vaqti, o\'rtacha</string>

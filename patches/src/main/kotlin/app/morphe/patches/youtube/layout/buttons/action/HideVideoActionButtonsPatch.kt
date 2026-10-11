@@ -91,18 +91,18 @@ val hideVideoActionButtonsPatch = bytecodePatch(
                                 key = "morphe_quick_actions_top_margin",
                                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference"
                             ),
-                            SwitchPreference("morphe_hide_quick_actions"),
-                            SwitchPreference("morphe_hide_quick_actions_ask_button"),
-                            SwitchPreference("morphe_hide_quick_actions_comments_button"),
+                            SwitchPreference("morphe_hide_quick_actions", titleKey = "morphe_hide_action_bar_title"),
+                            SwitchPreference("morphe_hide_quick_actions_ask_button", titleKey = "morphe_hide_ask_button_title"),
+                            SwitchPreference("morphe_hide_quick_actions_comments_button", titleKey = "morphe_hide_comments_button_title"),
                             SwitchPreference("morphe_hide_quick_actions_dislike_button"),
                             SwitchPreference("morphe_hide_quick_actions_like_button"),
                             SwitchPreference("morphe_hide_quick_actions_live_chat_button"),
                             SwitchPreference("morphe_hide_quick_actions_mix_button"),
-                            SwitchPreference("morphe_hide_quick_actions_more_button"),
+                            SwitchPreference("morphe_hide_quick_actions_more_button", titleKey = "morphe_hide_more_button_title"),
                             SwitchPreference("morphe_hide_quick_actions_more_videos_button"),
                             SwitchPreference("morphe_hide_quick_actions_playlist_button"),
-                            SwitchPreference("morphe_hide_quick_actions_save_button"),
-                            SwitchPreference("morphe_hide_quick_actions_share_button")
+                            SwitchPreference("morphe_hide_quick_actions_save_button", titleKey = "morphe_hide_save_button_title"),
+                            SwitchPreference("morphe_hide_quick_actions_share_button", titleKey = "morphe_hide_share_button_title")
                         )
                     )
                 )

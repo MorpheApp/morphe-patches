@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">%d sazkar hatin imported kirin</string>
   <string name="morphe_settings_import_failure_parse">Importe kirin ne serket: %s</string>
   <string name="morphe_settings_search_hint">Dizimên sazkarê bigere</string>
+  <string name="morphe_settings_screen_info_title">Derbarê</string>
   <string name="morphe_settings_search_no_results_title">Ji bo \'%s\' tu encam ne dîtin</string>
   <string name="morphe_settings_search_no_results_summary">Pêşniyarê din bilêvêre</string>
   <string name="morphe_settings_search_recent_searches">Dizimên nêzîk</string>
@@ -96,7 +97,6 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
 Tu nedaî belav bibe de kû dabeş bendê neqezbîn."</string>
   <string name="morphe_debug_export_logs_title">Rapora logên çepkirinê</string>
   <string name="morphe_debug_export_logs_summary">Logs debug ên Morphe vekişîne</string>
-  <string name="morphe_debug_export_logs_file">Bê ser kontrolê vekişîne</string>
   <string name="morphe_debug_export_logs_success">Logs debug bi serketî hatin vekirin</string>
   <string name="morphe_debug_export_logs_failed">Logs debug serketin nakin vekirin</string>
   <string name="morphe_debug_logs_search_hint">Logên debugê bigerin…</string>
@@ -167,4 +167,5 @@ Ger optimîzasyonên bateriyê neyhatin guherandin, dê we kêfa:
 Ger hûn ezmûnek bêkêmasî dixwazin, &lt;b&gt;veguherînin&lt;/b&gt; evê û pêşçavaniya versiyona ku hat pêşniyar kirin ✅ &lt;b&gt;%2$s&lt;/b&gt; bişîne "</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ez versiyona lêgerînî dixwazim</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ez versiyona pêşbaz dixwazim</string>
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

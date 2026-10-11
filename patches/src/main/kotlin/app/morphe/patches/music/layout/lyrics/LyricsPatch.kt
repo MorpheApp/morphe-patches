@@ -18,9 +18,9 @@ import app.morphe.patches.music.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.music.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.music.shared.hookMediaSessionArgument
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
+import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -30,6 +30,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.getReference
@@ -41,9 +42,9 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPatch;"
-private const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LyricsPanelInstaller;"
-private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/LockScreenLyrics;"
-private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/MiniPlayerLyrics;"
+private const val PANEL_INSTALLER_CLASS = "Lapp/morphe/extension/music/patches/lyrics/ui/LyricsPanelInstaller;"
+private const val LOCKSCREEN_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/LockScreenLyrics;"
+private const val MINIPLAYER_LYRICS_CLASS = "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
 
 private const val LYRICS_PANEL_FILTER =
     "Lapp/morphe/extension/music/patches/components/LyricsPanelFilter;"
@@ -86,6 +87,12 @@ val lyricsPatch = bytecodePatch(
                         summaryKey = null,
                         tag = "app.morphe.extension.music.settings.preference.LyricsOrderedListPreference",
                         selectable = false,
+                        dependency = "morphe_music_lyrics_enabled"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_music_lyrics_source_advice",
+                        titleKey = null,
+                        summaryKey = "morphe_music_lyrics_source_advice_summary",
                         dependency = "morphe_music_lyrics_enabled"
                     )
                 )
@@ -153,14 +160,14 @@ val lyricsPatch = bytecodePatch(
                         selectable = true,
                         dependency = "morphe_music_lyrics_enabled"
                     ),
+                    SwitchPreference("morphe_music_lyrics_sb_matching", summary = true),
                     SwitchPreference("morphe_music_lyrics_miniplayer"),
                     SwitchPreference("morphe_music_lyrics_mediasession"),
                     SwitchPreference("morphe_music_lyrics_display_artist_first", summary = true)
                 )
             ),
-            PreferenceCategory(
+            screenInfoPreferenceCategory(
                 key = "morphe_music_lyrics_section_about",
-                sorting = Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_music_lyrics_about",

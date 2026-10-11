@@ -1,8 +1,9 @@
 /*
  * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches
+ * https://github.com/MorpheApp/morphe-patches/pull/340
+ * https://github.com/MorpheApp/morphe-patches/pull/3655
  *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
+ * See the included NOTICE file for GPLv3 Section 7 terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.shared.spoof.js.nsigsolver.impl;
@@ -91,19 +92,6 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
         }
     }
 
-    private void resetIsolate() {
-        if (jsIsolate != null) {
-            try {
-                jsIsolate.close();
-            } catch (Exception e) {
-                // Ignore close errors.
-            }
-            jsIsolate = null;
-        }
-        executeCount = 0;
-        Logger.printDebug(() -> "Closed the JavaScript isolate");
-    }
-
     @Override
     protected String runJsRuntime(String stdin) throws JsChallengeProviderError {
         warmup();
@@ -116,12 +104,6 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
                 ensureIsolate();
 
                 String result = jsIsolate.evaluateJavaScriptAsync(stdin).get();
-                // Periodically reset the isolate to prevent memory leaks.
-                /*
-                if (!warmup) {
-                    resetIsolate();
-                }
-                 */
                 executeCount++;
 
                 return result;
@@ -148,6 +130,7 @@ public class JsEngineChallengeProvider extends JsRuntimeChalBaseJCP {
             }
             if (cause instanceof EvaluationFailedException jsError) {
                 if (jsError.getMessage() != null && jsError.getMessage().contains("Invalid or unexpected token")) {
+                    clearPreprocessedPlayer(getPlayerJSHash());
                     try {
                         cacheService.clear(CACHE_SECTION);
                     } catch (CacheError ce) {

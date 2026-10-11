@@ -60,6 +60,7 @@ import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory;
+import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -80,6 +81,7 @@ public abstract class BaseSearchViewController {
     protected final List<BaseSearchResultItem> filteredSearchItems;
     protected final Map<String, BaseSearchResultItem> keyToSearchItem;
     protected final Toolbar toolbar;
+    protected MenuItem searchMenuItem;
     protected FrameLayout overlayContainer;
     protected FrameLayout searchContainer;
     protected Object nativeBackCallback;
@@ -105,12 +107,8 @@ public abstract class BaseSearchViewController {
             ResourceType.ID, "morphe_search_view");
     protected static final int ID_MORPHE_SEARCH_VIEW_CONTAINER = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_search_view_container");
-    protected static final int ID_ACTION_SEARCH = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "action_search");
     protected static final int ID_MORPHE_SETTINGS_FRAGMENTS = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "morphe_settings_fragments");
-    protected static final int MENU_MORPHE_SEARCH_MENU = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.MENU, "morphe_search_menu");
 
     /**
      * @return The search icon, bold or not depending on the Morphe UI setting, and colored like
@@ -118,15 +116,7 @@ public abstract class BaseSearchViewController {
      *         which is not the foreground color of the app.
      */
     public static Drawable getSearchIconDrawable() {
-        Drawable icon = ResourceUtils.getDrawableOrThrow(
-                Utils.appIsUsingBoldIcons()
-                        ? "morphe_settings_search_icon_bold"
-                        : "morphe_settings_search_icon");
-
-        // Mutate, otherwise every user of the same drawable is colored as well.
-        Drawable mutated = icon.mutate();
-        mutated.setTint(ThemeUtils.getAppForegroundColor());
-        return mutated;
+        return ToolbarPreferenceFragment.getToolbarIconDrawable("morphe_settings_search_icon");
     }
 
     /**
@@ -283,19 +273,12 @@ public abstract class BaseSearchViewController {
      * Sets up the toolbar menu for the search action.
      */
     protected void setupToolbarMenu() {
-        toolbar.inflateMenu(MENU_MORPHE_SEARCH_MENU);
-        toolbar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == ID_ACTION_SEARCH && !isSearchActive) {
-                openSearch();
-                return true;
-            }
-            return false;
-        });
-
-        // Set bold icon if needed.
-        MenuItem search = toolbar.getMenu().findItem(ID_ACTION_SEARCH);
-        search.setIcon(getSearchIconDrawable());
-        search.setContentDescription(str("morphe_settings_search_hint"));
+        searchMenuItem = ToolbarPreferenceFragment.addToolbarButton(toolbar,
+                "morphe_settings_search_icon", str("morphe_settings_search_hint"), () -> {
+                    if (!isSearchActive) {
+                        openSearch();
+                    }
+                });
     }
 
     /**
@@ -528,7 +511,7 @@ public abstract class BaseSearchViewController {
             nativeBackCallback = PredictiveBackHandler.register(activity, this::handleBackPress);
         }
 
-        toolbar.getMenu().findItem(ID_ACTION_SEARCH).setVisible(false);
+        searchMenuItem.setVisible(false);
         toolbar.setTitle("");
         searchContainer.setVisibility(View.VISIBLE);
         searchView.requestFocus();
@@ -560,7 +543,7 @@ public abstract class BaseSearchViewController {
         filteredSearchItems.clear();
 
         searchContainer.setVisibility(View.GONE);
-        toolbar.getMenu().findItem(ID_ACTION_SEARCH).setVisible(true);
+        searchMenuItem.setVisible(true);
         toolbar.setTitle(originalTitle);
         searchView.setQuery("", false);
         // Hide keyboard and reset soft input mode.

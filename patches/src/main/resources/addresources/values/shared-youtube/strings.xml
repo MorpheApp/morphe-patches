@@ -117,10 +117,9 @@ If you are a YouTube Premium user, this setting may not be required"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing in to Android VR can fix playback issues for some users
 
 To sign in, press continue below"</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continue</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sign out</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
-    <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+    <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
     <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
 
 1. Tap \'Open website\' below to open the \'Connect a device\' website
@@ -128,7 +127,6 @@ To sign in, press continue below"</string>
 3. Sign in to Google if prompted. If you have multiple accounts then choose this YouTube account
 4. Tap \'Allow YouTube VR\' access
 5. Return to this app after reaching the \'Device connected\' message"</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Open website</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed in</string>
@@ -218,7 +216,6 @@ However, enabling this will also log some user data such as your IP address."</s
     <string name="morphe_custom_filter_screen_title">Custom filter</string>
     <string name="morphe_custom_filter_screen_summary">Configure custom filters to hide any component</string>
     <string name="morphe_custom_filter_title">Enable custom filter</string>
-    <string name="morphe_custom_filter_strings_title">Custom filter</string>
     <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
     <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
     <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
@@ -288,10 +285,9 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_ryd_estimated_like_summary">Shows an estimated like count on videos where the creator has disabled likes</string>
     <string name="morphe_ryd_toast_on_connection_error_title">Show connection error alerts</string>
     <string name="morphe_ryd_toast_on_connection_error_summary">Shows a notification when the Return YouTube Dislike server is unavailable</string>
-    <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike</string>
-    <string name="morphe_ryd_attribution_summary">"Data is provided by the Return YouTube Dislike API
+    <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restores the dislike counts YouTube hid in 2021. Counts come from data archived before the removal and are estimated for newer videos from the votes of its users, so they are approximate and update every few days
 
-Tap here to open ReturnYouTubeDislike.com"</string>
+The ID of the video you watch is sent to the Return YouTube Dislike API, and your likes and dislikes are sent anonymously to improve the estimates"</string>
     <string name="morphe_ryd_screen_title" translatable="false">Return YouTube Dislike</string>
     <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
     <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>

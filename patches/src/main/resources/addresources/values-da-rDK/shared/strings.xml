@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Import mislykkedes: %s</string>
   <string name="morphe_settings_navigate_up">Naviger op</string>
   <string name="morphe_settings_search_hint">Søg i indstillinger</string>
+  <string name="morphe_settings_screen_info_title">Om</string>
   <string name="morphe_settings_search_no_results_title">Ingen resultater fundet for \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Prøv et andet søgeord</string>
   <string name="morphe_settings_search_recent_searches">Seneste søgninger</string>
@@ -105,7 +106,6 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
 Du modtager ikke notifikationer om uventede hændelser."</string>
   <string name="morphe_debug_export_logs_title">Eksportér fejlfindingslogfiler</string>
   <string name="morphe_debug_export_logs_summary">Eksportér Morphe fejlfindingslogfiler</string>
-  <string name="morphe_debug_export_logs_file">Eksportér til fil</string>
   <string name="morphe_debug_export_logs_success">Fejlfindingslogge eksporteret med succes</string>
   <string name="morphe_debug_export_logs_failed">Kunne ikke eksportere logfiler: %s</string>
   <string name="morphe_debug_logs_search_hint">Søg efter fejlfindingslogfiler</string>
@@ -229,4 +229,7 @@ Hvis batterioptimeringer ikke ændres, kan du opleve:
 Hvis du ønsker den mest problemfrie oplevelse, så &lt;b&gt;afinstaller&lt;/b&gt; denne og opdater den anbefalede app-version af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jeg vil have eksperimentel</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jeg vil have stabil</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Crash-log gemt i brugerdokumenter: %s</string>
+  <string name="morphe_crash_log_saved">Crash-log gemt: %s</string>
 </resources>

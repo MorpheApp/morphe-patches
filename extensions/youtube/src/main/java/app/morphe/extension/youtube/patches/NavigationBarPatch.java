@@ -27,6 +27,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.apps.youtube.app.application.Shell_SettingsActivity;
 import com.google.android.gms.common.api.GoogleApiActivity;
+import com.google.protobuf.ExtensionRegistryLite;
 import com.google.protobuf.MessageLite;
 
 import java.lang.ref.WeakReference;
@@ -45,7 +46,16 @@ import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Accessibil
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.AccessibilityData;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonRendererAccessibilityData;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.ButtonSheetRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.Buttons;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationEntrySheetEndpoint;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationMode;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesCommand;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesControlsRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesControlsRendererHolder;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.CreationModesSwitcherRendererHolder;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.NavigationEndpoint;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.RendererAccessibilityData;
 import app.morphe.extension.youtube.innertube.IconOuterClass.Icon;
@@ -509,6 +519,120 @@ public final class NavigationBarPatch {
         if (SHOW_TOOLBAR_SETTINGS_BUTTON || SHOW_SETTINGS_BUTTON) {
             settingsControllerRef = new WeakReference<>(settingsController);
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * The toolbar create button of the Android Automotive layout, which swaps the create button with the
+     * notifications button, opens a bottom sheet whose video button uses the upload endpoint, which the app
+     * handles only in the creation modes. The upload endpoint is opened in the creation modes instead,
+     * as the create button of the phone layout does.
+     */
+    public static void fixToolbarCreateButtonUpload(List<MessageLite> rawButtonList) {
+        if (HIDE_TOOLBAR_CREATE_BUTTON || rawButtonList == null || rawButtonList.isEmpty()) return;
+
+        try {
+            for (int i = 0, size = rawButtonList.size(); i < size; i++) {
+                MessageLite rawButtons = rawButtonList.get(i);
+                Buttons buttons = Buttons.parseFrom(rawButtons.toByteArray());
+                if (!buttons.hasButtonRenderer() || !buttons.getButtonRenderer().hasIcon()
+                        || !Utils.equalsAny(buttons.getButtonRenderer().getIcon().getYtIconType().name(),
+                        CREATE_BUTTON_ENUMS)) {
+                    continue;
+                }
+
+                ButtonRenderer createButton = openUploadInCreationModes(buttons.getButtonRenderer());
+                if (createButton == null) {
+                    return;
+                }
+                rawButtonList.set(i, parseWithRegistry(rawButtons,
+                        buttons.toBuilder().setButtonRenderer(createButton).build().toByteArray(),
+                        getGeneratedRegistry()));
+                Logger.printDebug(() -> "Toolbar create button opens the upload in the creation modes");
+                return;
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "fixToolbarCreateButtonUpload failure", ex);
+        }
+    }
+
+    /**
+     * Parses a message with the extension registry. The commands of the buttons are extensions,
+     * which are lost if the message is parsed without the registry.
+     *
+     * @param message Message of the class to parse.
+     */
+    private static MessageLite parseWithRegistry(MessageLite message, byte[] bytes, ExtensionRegistryLite registry) {
+        return null; // Modified during patching.
+    }
+
+    /**
+     * @return The extension registry of the app.
+     */
+    private static ExtensionRegistryLite getGeneratedRegistry() {
+        return null; // Modified during patching.
+    }
+
+    /**
+     * @return The create button whose upload buttons open the upload endpoint in the creation modes,
+     *         or null if the create button has no upload button.
+     */
+    @Nullable
+    private static ButtonRenderer openUploadInCreationModes(ButtonRenderer createButton) {
+        NavigationEndpoint endpoint = createButton.getNavigationEndpoint();
+        if (!endpoint.hasCreationEntrySheetEndpoint()) {
+            return null;
+        }
+        CreationEntrySheetEndpoint sheetEndpoint = endpoint.getCreationEntrySheetEndpoint();
+        ButtonSheetRenderer sheet = sheetEndpoint.getButtonSheetSupportedRenderers().getButtonSheetRenderer();
+        ButtonSheetRenderer.Builder sheetBuilder = sheet.toBuilder();
+        boolean replaced = false;
+
+        for (int i = 0, count = sheet.getButtonsCount(); i < count; i++) {
+            Buttons button = sheet.getButtons(i);
+            ButtonRenderer buttonRenderer = button.getButtonRenderer();
+            NavigationEndpoint uploadEndpoint = buttonRenderer.getNavigationEndpoint();
+            if (!button.hasButtonRenderer() || !uploadEndpoint.hasShortsCreationEndpoint()) {
+                continue;
+            }
+
+            // The only mode button of the creation modes opens the upload endpoint.
+            ButtonRenderer modeButton = buttonRenderer.toBuilder()
+                    .clearNavigationEndpoint()
+                    .setCommand(uploadEndpoint)
+                    .build();
+            CreationModesSwitcherRenderer switcher = CreationModesSwitcherRenderer.newBuilder()
+                    .addModeButtons(Buttons.newBuilder().setButtonRenderer(modeButton))
+                    .addModes(CreationMode.CREATION_MODE_UPLOADS)
+                    .setDefaultMode(CreationMode.CREATION_MODE_UPLOADS)
+                    .build();
+            CreationModesCommand creationModesCommand = CreationModesCommand.newBuilder()
+                    .setCreationModesControlsRenderer(CreationModesControlsRendererHolder.newBuilder()
+                            .setCreationModesControlsRenderer(CreationModesControlsRenderer.newBuilder()
+                                    .setCreationModesSwitcherRenderer(CreationModesSwitcherRendererHolder.newBuilder()
+                                            .setCreationModesSwitcherRenderer(switcher))))
+                    .build();
+
+            NavigationEndpoint creationModesEndpoint = uploadEndpoint.toBuilder()
+                    .clearShortsCreationEndpoint()
+                    .setCreationModesCommand(creationModesCommand)
+                    .build();
+            sheetBuilder.setButtons(i, button.toBuilder().setButtonRenderer(
+                    buttonRenderer.toBuilder().setNavigationEndpoint(creationModesEndpoint)));
+            replaced = true;
+        }
+        if (!replaced) {
+            return null;
+        }
+
+        CreationEntrySheetEndpoint creationModesSheetEndpoint = sheetEndpoint.toBuilder()
+                .setButtonSheetSupportedRenderers(sheetEndpoint.getButtonSheetSupportedRenderers().toBuilder()
+                        .setButtonSheetRenderer(sheetBuilder))
+                .build();
+        return createButton.toBuilder()
+                .setNavigationEndpoint(endpoint.toBuilder().setCreationEntrySheetEndpoint(creationModesSheetEndpoint))
+                .build();
     }
 
     /**

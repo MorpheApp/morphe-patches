@@ -108,10 +108,9 @@ Om du är en YouTube Premium-användare kan det hända att den här inställning
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Att logga in i Android VR kan åtgärda uppspelningsproblem för vissa användare
 
 Tryck på Fortsätt nedan för att logga in"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Fortsätt</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Logga ut</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruktioner</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktiveringskod: %s
 
 1. Tryck på Öppna webbplats nedan för att öppna webbplatsen Anslut en enhet
@@ -119,7 +118,6 @@ Tryck på Fortsätt nedan för att logga in"</string>
 3. Logga in på Google om du blir ombedd. Om du har flera konton väljer du det här YouTube-kontot
 4. Tryck på Tillåt för YouTube VR-åtkomst
 5. Öppna den här appen igen när du når meddelandet Enheten är ansluten"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Öppna webbplats</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Det gick inte att utfärda en aktiveringskod</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Det gick inte att utfärda en autentiseringstoken</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Inloggningen lyckades</string>
@@ -198,7 +196,6 @@ Men om du aktiverar detta kommer även vissa användardata, t.ex. din IP-adress,
   <string name="morphe_custom_filter_screen_title">Anpassat filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurera anpassade filter för att dölja valfri komponent</string>
   <string name="morphe_custom_filter_title">Aktivera anpassat filter</string>
-  <string name="morphe_custom_filter_strings_title">Anpassat filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista över path builder-strängar för komponenter som ska filtreras bort, åtskilda av nya rader</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Det anpassade filtret är ogiltigt: %s</string>
@@ -261,9 +258,9 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_ryd_estimated_like_summary">Visar ett uppskattat antal gilla-markeringar för videor där kreatören har inaktiverat gilla-markeringar</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Visar ett meddelande när Return YouTube Dislike-servern inte är tillgänglig</string>
-  <string name="morphe_ryd_attribution_summary">"Data tillhandahålls av Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike återställer antalet ogilla-markeringar som YouTube dolde 2021. Antalen kommer från data som arkiverades före borttagningen och uppskattas för nyare videor från användarnas röster, så de är ungefärliga och uppdateras med några dagars mellanrum
 
-Tryck här för att öppna ReturnYouTubeDislike.com"</string>
+ID för videon du tittar på skickas till Return YouTube Dislike API, och dina gilla- och ogilla-markeringar skickas anonymt för att förbättra uppskattningarna"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API-statistik för den här enheten</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-svarstid, genomsnitt</string>

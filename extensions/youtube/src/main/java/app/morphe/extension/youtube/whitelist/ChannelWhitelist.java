@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.whitelist;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.graphics.drawable.Drawable;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -20,8 +22,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
+import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Channels a {@link WhitelistType} feature is turned off for.
@@ -34,6 +39,70 @@ public final class ChannelWhitelist {
             new EnumMap<>(WhitelistType.class);
     private static final Map<WhitelistType, Map<String, String>> cachedChannels =
             new EnumMap<>(WhitelistType.class);
+
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    public static int addFlyoutButtons(Object flyoutPanel, int nextButtonIndex, boolean isMyTabHistoryFlyout) {
+        if (isMyTabHistoryFlyout || !isPatchIncluded()) {
+            return nextButtonIndex;
+        }
+
+        if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+            Drawable icon = ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
+                    ? "morphe_settings_screen_01_ads_bold" : "morphe_settings_screen_01_ads");
+            nextButtonIndex = addWhitelistButton(flyoutPanel, WhitelistType.ADS, icon, nextButtonIndex);
+        }
+
+        if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
+            Drawable icon = ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
+                    ? "morphe_settings_screen_12_video_bold" : "morphe_settings_screen_12_video");
+            nextButtonIndex = addWhitelistButton(flyoutPanel, WhitelistType.PLAYBACK_SPEED, icon, nextButtonIndex);
+        }
+
+        return nextButtonIndex;
+    }
+
+    private static int addWhitelistButton(
+            Object flyoutPanel,
+            WhitelistType type,
+            Drawable icon,
+            int index
+    ) {
+        String currentChannelId =
+                !FlyoutUtils.getFlyoutChannelId().isEmpty()
+                        ? FlyoutUtils.getFlyoutChannelId()
+                        : VideoInformation.getChannelId();
+        String currentChannelName =
+                !currentChannelId.isEmpty()
+                        ? FlyoutUtils.getFlyoutChannelName()
+                        : VideoInformation.getChannelName();
+
+        if (currentChannelId.isEmpty()) {
+            return index;
+        }
+
+        final boolean isWhitelisted = isChannelWhitelisted(
+                type,
+                currentChannelId
+        );
+        return FlyoutUtils.addFlyoutButton(
+                flyoutPanel,
+                icon,
+                type.getFlyoutTitle(isWhitelisted),
+                v -> {
+                    toggleChannel(
+                            type,
+                            currentChannelId,
+                            currentChannelName
+                    );
+
+                    FlyoutUtils.dismissFlyout();
+                },
+                index
+        );
+    }
 
     /**
      * @return An ordered map of channel id to channel name, which is empty if the name is unknown.

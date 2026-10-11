@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Album audiotracks afspelen</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Speel de audio-only versie van albumnummers af in plaats van een muziekvideo. Vereist \'Videostreams vervalsen\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Audio/video-omschakeling inschakelen</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Probeer over te schakelen tussen audiotrackversie en officiële muziekvideo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Download muziekvideo\'s, podcasts of nummers met apps van derden</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Gedownloade nummers verschijnen hier"</string>
   <string name="morphe_settings_music_screen_4_player_title">Speler</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Songteksten</string>
   <string name="morphe_settings_music_screen_9_misc_title">Diversen</string>
+  <string name="morphe_music_app_language_title">YouTube Music-taal</string>
+  <string name="morphe_music_app_language_summary_default">Systeemtaal</string>
+  <string name="morphe_music_app_language_summary_unsupported">Vereist Android 13 of later</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'Muziek Premium krijgen\' label verbergen</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Verberg Music Premium promoties</string>
   <string name="morphe_music_hide_video_ads_title">Videoadvertenties verbergen</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Audio/Video-toggle verbergen</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Downloadknop verbergen</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Verbergt de downloadknop in podcastshows</string>
   <string name="morphe_music_hide_explore_shelf_title">Explore-plank verbergen</string>
+  <string name="morphe_music_hide_filter_bar_title">Verberg filterbalk</string>
   <string name="morphe_music_hide_grid_shelves_title">Planken verbergen</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Horizontale planken verbergen</string>
   <string name="morphe_music_hide_list_shelves_title">Lijstplanken verbergen</string>
@@ -188,7 +197,6 @@ Gedownloade nummers verschijnen hier"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Verberg de \"Vertalen\" knop</string>
   <string name="morphe_music_hide_new_from_shelf_title">\"Nieuw van\"-plank verbergen</string>
   <string name="morphe_music_hide_playlist_shelves_title">Afspeellijstplanken verbergen</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Verberg de downloadknop voor podcastafleveringen</string>
   <string name="morphe_music_hide_repeat_button_title">Herhaal-knop verbergen</string>
   <string name="morphe_music_hide_shuffle_button_title">Shuffle-knop verbergen</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\"Speed dial\"-plank verbergen</string>
@@ -236,32 +244,26 @@ Gedownloade nummers verschijnen hier"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade gepauzeerd voor deze sessie</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade hervat</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videomodus is niet beschikbaar wanneer crossfade is ingeschakeld</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is gepauzeerd tijdens het casten of spiegelen van audio. Crossfade over cast/mirror is instabiel en kan mogelijk niet worden opgelost.</string>
-  <string name="morphe_music_crossfade_about_title">Over</string>
-  <string name="morphe_music_crossfade_about_summary">Hoe crossfade werkt – en wanneer het niet werkt</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade staat uit bij SABR-weergave</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade staat uit tijdens het casten</string>
   <string name="morphe_music_crossfade_about_how_title">Hoe het werkt</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Crossfade laat het einde van het ene nummer overlappen met het begin van het volgende, waarbij het ene nummer zachter wordt terwijl het andere omhoog komt over de door jou gekozen duur en curve.
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlapt het einde van het ene nummer met het begin van het volgende, met gebruik van jouw duur en curve
 
-Het werkt op automatisch doorspelen (wanneer een nummer vanzelf eindigt) en op handmatig overslaan - elk heeft zijn eigen schakelaar hierboven. Bij automatisch doorspelen begint de overgang een paar seconden voordat het nummer eindigt.
+Het werkt bij automatisch doorgaan en bij handmatig overslaan, elk met eigen schakelaar. Bij automatisch doorgaan begint de overgang een paar seconden voordat het nummer eindigt"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Beperkingen</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Muziekvideo's worden alleen als audio afgespeeld terwijl crossfade aan staat. Houd shuffle ingedrukt om crossfade te pauzeren en de video te bekijken
 
-Vereist YouTube Music 9.x of nieuwer."</string>
-  <string name="morphe_music_crossfade_about_best_title">Werkt het beste met</string>
-  <string name="morphe_music_crossfade_about_best_summary">Normaal afspelen van nummer naar nummer en automatisch doorspelen, herhaal-één (het nummer vervaagt in zichzelf), en lokale audio – telefoonspeaker, bedrade hoofdtelefoon, Bluetooth of USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Werkt niet helemaal goed</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Muziekvideo's worden afgespeeld als audio-only terwijl crossfade is ingeschakeld (houd shuffle ingedrukt om te pauzeren als je de video wilt zien)
+Een muziekvideo die met afspelen begint, blijft in de videomodus tot het volgende nummer
 
-Nummers die korter zijn dan de duur van je fade, kunnen de fade overslaan
+Nummers korter dan de fade-duur worden niet gecrossfadet
 
-Het vergrendelscherm of de melding kan kort een verouderde status laten zien tijdens de overgang"</string>
-  <string name="morphe_music_crossfade_about_known_title">Bekende problemen</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Een muziekvideo die als eerste nummer is ingesteld - of die van buiten de huidige wachtrij is gestart - kan kort als video worden weergegeven voordat de audio-only modus wordt ingeschakeld
+Het vergrendelscherm of de melding kan tijdens de overgang kort een verouderde status tonen
 
-Pauzeren van crossfade om een muziekvideo te bekijken, kan sommige video's zwart maken (de video's waarvan de audio rechtstreeks van de video komt). Pauzeren van crossfade voordat je het nummer kiest, voorkomt dit"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Werkt helemaal niet</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casten of spiegelen van audio (Chromecast, scherm of audiospiegeling) - crossfade pauzeert omdat het daar onstabiel is en mogelijk nooit kan worden opgelost.
+Crossfade pauzeren om een muziekvideo te bekijken kan sommige video's zwart achterlaten. Crossfade pauzeren voordat je het nummer kiest, voorkomt dit"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Niet ondersteund</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Audio casten of spiegelen (Chromecast, scherm- of audiospiegeling)
 
-YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
+SABR-weergave (vervalsen van videostreams uitgeschakeld)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Credit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-functie door VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Schakel dislike omleiding uit</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Voorkomt dat naar het volgende nummer wordt gesprongen wanneer op de dislike-knop wordt gedrukt</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Tikactie voor afspeellijstnummers</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Speel de afspeellijst af</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Speel alleen het geselecteerde nummer af</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Voeg het geselecteerde nummer toe aan de wachtrij</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Toegevoegd aan wachtrij</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Cast-knop verbergen</string>
   <string name="morphe_music_hide_history_button_title">Geschiedenisknop verbergen</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <string name="morphe_change_start_page_entry_playlists">Afspeellijsten</string>
   <string name="morphe_change_start_page_entry_search">Zoeken</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnementen</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Verberg filterbalk</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Forceer portretstand</string>
   <string name="morphe_music_force_portrait_orientation_summary">Houdt de app in portretstand wanneer het apparaat wordt gedraaid</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <string name="morphe_music_hide_navigation_bar_title">Navigatiebalk verbergen</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Labels van navigatieknoppen verbergen</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Configure Last.fm en ListenBrainz integratie</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Niet ingelogd. Tik om te configureren</string>
   <string name="morphe_music_scrobbling_log_out">Afmelden</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Uitgelogd</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Voer uw ListenBrainz-gebruikerstoken in om scrobbling in te schakelen</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Token ophalen</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Verifiëren</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Voer een token in</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Bezig met valideren…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
   <string name="morphe_music_scrobbling_guess_album_title">Vul ontbrekend album in</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Wanneer de muziek geen album bevat, zoek het op op Last.fm zodat je scrobble volledig is</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Over scrobbelen</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling synchroniseert automatisch jouw YouTube Music gebruik met je Last.fm of ListenBrainz profiel
 
 Om ervoor te zorgen dat scrobbling tijdens het afspelen op de achtergrond wordt gesynchroniseerd, zorg er dan voor dat de batterijgebruik van YouTube Music is ingesteld op \"Onbeperkt\""</string>
@@ -457,7 +460,6 @@ Om ervoor te zorgen dat scrobbling tijdens het afspelen op de achtergrond wordt 
   <string name="morphe_music_lyrics_section_service_title">Songtekstenservice</string>
   <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronisatie</string>
-  <string name="morphe_music_lyrics_section_about_title">Over</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle providers uitgeschakeld — ingebouwde songteksten en ingesloten songteksten</string>
   <string name="morphe_music_lyrics_source_reset_title">Providerorder resetten?</string>
   <string name="morphe_music_lyrics_source_reset_message">Providers terugzetten naar de standaardprioriteitsvolgorde</string>
@@ -537,8 +539,11 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_credit_line_regex_summary">Als songteksten onterecht naar de onderkant worden gefilterd, pas dit dan aan of wis dit. […] Leeg laten om uit te schakelen.</string>
   <string name="morphe_music_lyrics_text_size_title">Tekstgrootte</string>
   <string name="morphe_music_lyrics_text_size_summary">Grootte van de songtekst</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Timing offset</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Globale timing-offset</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Gesynchroniseerde songteksten volgen de weergave. Als ze afwijken, pas dan de timing-offset aan. […] Gebruik een positieve waarde als de songteksten voorlopen op het nummer.</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Gebruik SponsorBlock-segmenten voor de songtekst-offset</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Afstemmen zonder de segmenten die SponsorBlock overslaat en verschuif songteksten naar de uitgebrachte audio. Uit negeert SponsorBlock volledig</string>
+  <string name="morphe_music_lyrics_sb_no_video">Dit nummer heeft geen video-id om in te dienen</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Bron: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Vertaald door Google</string>
@@ -559,6 +564,7 @@ Vereiste cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_refreshing">Vernieuwen</string>
   <string name="morphe_music_lyrics_refreshed">Vernieuwd</string>
   <string name="morphe_music_lyrics_about_summary">"Songteksten worden op titel en artiest gematched; ongebruikelijke metadata kunnen niets of de verkeerde versie opleveren. Gebruik verversen om van versie te wisselen. Providers gemarkeerd met * vereisen een token. Niet alle ingeschakelde providers worden altijd in uw volgorde opgevraagd, maar reageren op basis van hun snelheid."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Schakel alleen de providers in die je gebruikt, of behoud de standaardinstelling — constante verzoeken kunnen kleine community-songtekstsites overweldigen</string>
   <string name="morphe_music_lyrics_hide_info_title">Verberg creditregel</string>
   <string name="morphe_music_lyrics_hide_info_summary">Verberg de creditregel die onder de songteksten wordt weergegeven</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Wissel vertaling en romanisatie om</string>

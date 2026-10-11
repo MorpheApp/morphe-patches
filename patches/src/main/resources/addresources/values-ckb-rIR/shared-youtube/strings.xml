@@ -67,10 +67,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Te'îl kirin ji Android VR dikare berhetiyên xendina we çareser bike
 
 Da te'îl bikin, li ser berdewam bikin xwarê"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">بڕواییدان</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">خەڵادانەوە</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">ئامۆژگار</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"كۆدي كاركردنة: %s
 
 1. دابەزینە \"Open website\" خوارە بۆ كرێكردنی سایتی 'Connect a device'
@@ -78,7 +77,6 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
 3. بةبێ ئەگەر پێویست بوو، لە Google داخڵ بن. ئەگەر حساباته كۆمەڵةكانيان هەيە، حساباتی YouTube يان بيگرە
 4. دابەزینە 'Allow YouTube VR' ڕازەكان
 5. گەڕابە سەر ئەم بەرنامەیە دواتر كاتێك كە پێغەیە لەگەڵ 'Device connected' بەرنامەیە"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">کردنەوەی ماڵپەڕ</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"‌ڕێكخستن هه‌ڵگیراوه
 
 • ڕێكخستنه‌كانی Morphe-ت ناهێننه‌وه‌/نه‌هاته‌وه‌ Android VR

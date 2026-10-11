@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">播放专辑音频曲目</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Play the album audio only version of songs instead of a music video. Requires \'Spoof video streams\' and more.</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">启用音频/视频切换</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">尝试切换音轨版本和官方音乐视频</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">使用第三方下载应用下载音乐视频、播客或歌曲</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_player_title">播放器</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">歌词</string>
   <string name="morphe_settings_music_screen_9_misc_title">其他</string>
+  <string name="morphe_music_app_language_title">YouTube Music 语言</string>
+  <string name="morphe_music_app_language_summary_default">系统语言</string>
+  <string name="morphe_music_app_language_summary_unsupported">需要 Android 13 或更高版本</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">隐藏“订阅 Music Premium”标签</string>
   <string name="morphe_music_hide_music_premium_promotions_title">隐藏 Music Premium 促销推广</string>
   <string name="morphe_music_hide_video_ads_title">隐藏视频广告</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">隐藏音视频切换开关</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">隐藏下载按钮</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">隐藏播客节目中的下载按钮</string>
   <string name="morphe_music_hide_explore_shelf_title">隐藏探索区域</string>
+  <string name="morphe_music_hide_filter_bar_title">隐藏过滤栏</string>
   <string name="morphe_music_hide_grid_shelves_title">隐藏网格展示区域</string>
   <string name="morphe_music_hide_horizontal_shelves_title">隐藏横向展示区域</string>
   <string name="morphe_music_hide_list_shelves_title">隐藏列表展示区域</string>
@@ -188,7 +197,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">隐藏翻译按钮</string>
   <string name="morphe_music_hide_new_from_shelf_title">隐藏“最新”区域</string>
   <string name="morphe_music_hide_playlist_shelves_title">隐藏歌单展示区域</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">隐藏播客单集下载按钮</string>
   <string name="morphe_music_hide_repeat_button_title">隐藏重复播放按钮</string>
   <string name="morphe_music_hide_shuffle_button_title">隐藏随机播放按钮</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">隐藏“快速拨号”区域</string>
@@ -236,32 +244,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">此会话已暂停交叉淡入</string>
   <string name="morphe_music_crossfade_resumed_toast">交叉淡入已恢复</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">启用交叉淡入时，视频模式不可用</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">在投射或镜像音频时，交叉淡入淡出已暂停。通过投射/镜像的交叉淡入淡出不稳定，可能无法修复。</string>
-  <string name="morphe_music_crossfade_about_title">关于</string>
-  <string name="morphe_music_crossfade_about_summary">交叉淡入淡出的工作原理及其不适用的情况</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">使用 SABR 播放时交叉淡化已关闭</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">投射时交叉淡化已关闭</string>
   <string name="morphe_music_crossfade_about_how_title">它的工作原理</string>
-  <string name="morphe_music_crossfade_about_how_summary">"交叉淡入淡出将一首歌的结尾与下一首歌的开头重叠，在您选择的持续时间和曲线中逐渐降低一首歌的音量，同时逐渐提高另一首歌的音量。
+  <string name="morphe_music_crossfade_about_how_summary">"交叉淡化会将一首歌曲的结尾与下一首歌曲的开头重叠，并使用您设置的时长和曲线
 
-它在自动前进（一首歌自动结束时）和手动跳过时运行——两者都有自己独立的切换选项。在自动前进的情况下，混合会在歌曲结束前几秒钟开始。
+它可在自动播放和手动跳过时运行，两者各有独立开关。在自动播放时，交叉淡化会在歌曲结束前几秒开始"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">限制</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"开启交叉淡化时，音乐视频将仅作为音频播放。长按随机播放按钮可暂停交叉淡化并观看视频
 
-需要 YouTube Music 9.x 或更高版本。"</string>
-  <string name="morphe_music_crossfade_about_best_title">最佳使用场景</string>
-  <string name="morphe_music_crossfade_about_best_summary">正常的歌曲播放和自动前进、单曲循环（歌曲淡入淡出到自身）、本地音频——手机扬声器、有线耳机、蓝牙或 USB。</string>
-  <string name="morphe_music_crossfade_about_quirks_title">效果不太好</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"在开启交叉淡入时，音乐视频仅播放音频（如果您想暂停视频，请长按“随机播放”按钮）
+音乐视频开始播放后，将保持视频模式，直到下一首歌曲开始播放
 
-短于淡入持续时间的歌曲可能会跳过淡入
+时长短于淡化时长的歌曲不会进行交叉淡化
 
-锁屏或通知可能会短暂显示过时的状态，尤其是在过渡期间"</string>
-  <string name="morphe_music_crossfade_about_known_title">已知问题</string>
-  <string name="morphe_music_crossfade_about_known_summary">"将音乐视频设置为第一首歌曲，或者从当前队列外部启动的歌曲，可能会在仅音频模式开始之前短暂显示为视频
+锁屏或通知可能会在过渡期间短暂显示过时状态
 
-暂停交叉淡入以观看音乐视频可能会导致一些视频画面变黑（那些音频来自视频本身的视频）。在选择歌曲之前暂停交叉淡入可以避免这种情况"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">完全无法工作</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"投屏或镜像音频（Chromecast、屏幕或音频镜像）——交叉淡入会暂停，因为它在那里的稳定性较差，并且可能无法修复。
+暂停交叉淡化来观看音乐视频可能会导致某些视频黑屏。在选歌前暂停交叉淡化可避免此问题"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">不支持</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"投射或镜像音频（Chromecast、屏幕或音频镜像）
 
-YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</string>
+SABR 播放（模拟视频流已关闭）"</string>
   <string name="morphe_music_crossfade_about_credit_title">鸣谢</string>
   <string name="morphe_music_crossfade_about_credit_summary">交叉淡入功能由 VazerOG 提供</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">禁用不喜欢重定向</string>
   <string name="morphe_music_disable_dislike_redirection_summary">防止按下不喜欢按钮时跳转到下一曲</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">播放列表曲目点按操作</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">播放该播放列表</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">仅播放所选曲目</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">将所选曲目添加到队列</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">已添加到队列</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">隐藏投屏按钮</string>
   <string name="morphe_music_hide_history_button_title">隐藏历史记录按钮</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_change_start_page_entry_playlists">播放列表</string>
   <string name="morphe_change_start_page_entry_search">搜索</string>
   <string name="morphe_change_start_page_entry_subscriptions">订阅</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">隐藏过滤栏</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">强制竖屏方向</string>
   <string name="morphe_music_force_portrait_orientation_summary">当设备旋转时，保持应用为竖屏方向</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_hide_navigation_bar_title">隐藏导航栏</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">隐藏导航按钮标签</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">配置 Last.fm 和 ListenBrainz 集成</string>
   <string name="morphe_music_scrobbling_summary_logged_out">未登录。点击进行配置</string>
   <string name="morphe_music_scrobbling_log_out">登出</string>
   <string name="morphe_music_scrobbling_logged_out_toast">已登出</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">输入您的 ListenBrainz 用户令牌以启用播放记录</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">令牌</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">获取令牌</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">验证</string>
   <string name="morphe_music_listenbrainz_token_status_empty">请输入令牌</string>
   <string name="morphe_music_listenbrainz_token_status_validating">验证中…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_scrobbling_guess_album_title">补全缺失的专辑</string>
   <string name="morphe_music_scrobbling_guess_album_summary">当音乐不包含专辑时，请在 Last.fm 上查询，以便你的 scrobble 完整。</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">关于播放记录</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling 会自动将您的 YouTube Music 使用情况同步到您的 Last.fm 或 ListenBrainz 个人资料。
 
 为了确保在后台播放期间同步 scrobbling，请确保 YouTube Music 的应用电池使用量设置为“无限制”。"</string>
@@ -457,7 +460,6 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_section_service_title">歌词服务</string>
   <string name="morphe_music_lyrics_section_overlay_title">叠加层</string>
   <string name="morphe_music_lyrics_section_sync_title">同步</string>
-  <string name="morphe_music_lyrics_section_about_title">关于</string>
   <string name="morphe_music_lyrics_source_all_disabled">所有提供程序均已禁用 — 内置歌词与内嵌歌词</string>
   <string name="morphe_music_lyrics_source_reset_title">重置提供程序顺序？</string>
   <string name="morphe_music_lyrics_source_reset_message">将提供程序恢复为默认优先级顺序</string>
@@ -547,8 +549,11 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_credit_line_regex_summary">如果歌词被错误地过滤到底部，请调整或清除此项。以逗号分隔的标记：包含标记且后跟冒号的行会作为署名信息显示在底部。留空以禁用</string>
   <string name="morphe_music_lyrics_text_size_title">文本大小</string>
   <string name="morphe_music_lyrics_text_size_summary">歌词文本的大小</string>
-  <string name="morphe_music_lyrics_offset_ms_title">时间偏移</string>
+  <string name="morphe_music_lyrics_offset_ms_title">全局时间偏移</string>
   <string name="morphe_music_lyrics_offset_ms_summary">同步歌词会跟随播放。如果出现偏移，请调整时间偏移。将同步歌词向前或向后移动。如果歌词比歌曲超前，请使用正值</string>
+  <string name="morphe_music_lyrics_sb_matching_title">使用 SponsorBlock 片段进行歌词偏移</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">匹配时排除 SponsorBlock 跳过的片段，并将歌词对齐到已发布的音频。关闭则完全忽略 SponsorBlock</string>
+  <string name="morphe_music_lyrics_sb_no_video">此曲目没有可提交的视频 id</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">来源：%s</string>
   <string name="morphe_music_lyrics_translated_by_google">由 Google 翻译</string>
@@ -569,6 +574,7 @@ YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</strin
   <string name="morphe_music_lyrics_refreshing">正在刷新</string>
   <string name="morphe_music_lyrics_refreshed">已刷新</string>
   <string name="morphe_music_lyrics_about_summary">"歌词根据标题和艺术家进行匹配，异常的元数据可能导致找不到结果或匹配到错误的版本。使用刷新以切换版本。标有 * 的提供程序需要令牌。并非所有已启用的提供程序都会按您的顺序被请求，而是根据其速度进行响应。"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">只启用你使用的提供方，或保持默认——持续请求可能会压垮小型社区歌词网站</string>
   <string name="morphe_music_lyrics_hide_info_title">隐藏署名行</string>
   <string name="morphe_music_lyrics_hide_info_summary">隐藏显示在歌词下方的署名行</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">交换翻译和音译</string>

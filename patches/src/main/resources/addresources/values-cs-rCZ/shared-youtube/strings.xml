@@ -108,10 +108,9 @@ Pokud jste uživatel YouTube Premium, toto nastavení nemusí být potřeba."</s
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Přihlášení do Android VR může vyřešit problémy s přehráváním pro některé uživatele
 
 Pro přihlášení stiskněte pokračovat níže"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Pokračovat</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odhlásit se</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Nálepky</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kód pro aktivaci: %s
 
 1. Stiskněte Otevřít web níže, aby otevřeli webovou stránku Connect a device (Připojit zařízení)
@@ -119,7 +118,6 @@ Pro přihlášení stiskněte pokračovat níže"</string>
 3. Přihlašte se do Googlu, pokud bude požadováno. Pokud máte několik účtů, zvolte tento účet YouTube
 4. Stiskněte Povolit přístup YouTube VR
 5. Po dosažení zprávy Device connected (Zařízení připojeno) vraťte se do této aplikace."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otevřít web</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Selhalo vydání kódu pro aktivaci</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Selhalo přidání ověřovacího tokenu</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Přihlášení bylo úspěšné</string>
@@ -198,7 +196,6 @@ Povolením této možnosti se však budou zaznamenávat i některá uživatelsk�
   <string name="morphe_custom_filter_screen_title">Vlastní filtr</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurujte vlastní filtry pro skrytí libovolné komponenty</string>
   <string name="morphe_custom_filter_title">Povolit vlastní filtr</string>
-  <string name="morphe_custom_filter_strings_title">Vlastní filtr</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Seznam řetězců builderu cest komponent oddělených novými řádky</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Neplatný vlastní filtr: %s</string>
@@ -261,9 +258,11 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet lajků u videí, kde tvůrce zakázal lajky</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobrazovat upozornění na chyby připojení</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zobrazí se upozornění, pokud server Return YouTube Dislike není dostupný</string>
-  <string name="morphe_ryd_attribution_summary">"Data jsou poskytována rozhraním Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike obnovuje počty disliků, které YouTube skryl v roce 2021.
 
-Klepněte sem pro otevření ReturnYouTubeDislike.com"</string>
+Počty pocházejí z dat archivovaných před odstraněním a pro novější videa jsou odhadovány na základě hlasů uživatelů, takže jsou přibližné a aktualizují se každých pár dní.
+
+ID videa, které sledujete, je odesláno do API Return YouTube Dislike a vaše likes a dislikes jsou odesílány anonymně pro zlepšení odhadů"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistiky Return YouTube Dislike pro toto zařízení</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Doba odezvy API, průměr</string>

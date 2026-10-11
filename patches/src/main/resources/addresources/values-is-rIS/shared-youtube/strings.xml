@@ -108,10 +108,9 @@ Ef þú ert YouTube Premium notandi gæti þessi stilling verið óþarf"</strin
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Að skrá þig inn á Android VR getur lagað vandamál með spilun fyrir suma notendur
 
 Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Halda áfram</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Skrá út</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Leiðbeiningar</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Virkjunar kóði: %s
 
 1. Ýttu á 'Opna vefsíðu' hér að neðan til að opna vefsíðuna 'Tengja tæki'
@@ -119,7 +118,6 @@ Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
 3. Skráðu þig inn á Google ef þess er óskað. Ef þú ert með fleiri reikninga skaltu velja þennan YouTube reikning
 4. Ýttu á 'Leyfa YouTube VR' aðgang
 5. Snúðu aftur á þetta forrit eftir að hafa náð 'Tæki tengt' skilaboðinu"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Opna vefsíðu</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ekki tókst að gefa út virkjunar kóða</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ekki tókst að gefa út staðfestingartakann</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Skráning tókst</string>
@@ -198,7 +196,6 @@ Athugaðu að einnig kunna að vera skráð ákveðin notendagögn, svo sem IP-t
   <string name="morphe_custom_filter_screen_title">Sérstakur síubreyting</string>
   <string name="morphe_custom_filter_screen_summary">Stilltu sérstakar síubreytingar til að fela þáttinn</string>
   <string name="morphe_custom_filter_title">Virkja sérstaka síu</string>
-  <string name="morphe_custom_filter_strings_title">Sérstakur síubreyting</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Listi yfir Litho UI útlitseininga strengja til að síu, aðskilin með nýjum línum</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ógild sérstök síubreyting: %s</string>
@@ -261,9 +258,9 @@ Ef þú slökkvir þetta síðar er mælt með því að eyða gögnum appsins t
   <string name="morphe_ryd_estimated_like_summary">Sýnir álíkaðan like fjölda á myndböndum þar sem búðandi hefur slökkt á likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Sýna tengingu villuskilaboð</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Sýnir tilkynningu þegar Return YouTube Dislike netþjónninn er óskár</string>
-  <string name="morphe_ryd_attribution_summary">"Gögn eru veitt af Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike endurheimtir fjölda mislíka sem YouTube faldi árið 2021. Tölurnar koma frá gögnum sem safnað var fyrir fjarlæginguna og eru áætlaðar fyrir nýrri myndbönd út frá atkvæðum notenda þess, svo þær eru ekki nákvæmar og uppfærast á nokkurra daga fresti
 
-Tappaðu hér til að opna ReturnYouTubeDislike.com"</string>
+Auðkenni myndbandsins sem þú horfir á er sent til Return YouTube Dislike API, og líkar og mislíkar þínar eru sendar nafnlaust til að bæta áætlanirnar"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API tölfræði þessa tækis</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Svarstími API, meðaltal</string>

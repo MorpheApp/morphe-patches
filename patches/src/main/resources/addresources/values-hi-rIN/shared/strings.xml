@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">इंपोर्ट नहीं हो सका: %s</string>
   <string name="morphe_settings_navigate_up">वापस जाएँ</string>
   <string name="morphe_settings_search_hint">सेटिंग्स खोजें</string>
+  <string name="morphe_settings_screen_info_title">इसके बारे में</string>
   <string name="morphe_settings_search_no_results_title">\'%s\' के लिए कोई परिणाम नहीं मिला</string>
   <string name="morphe_settings_search_no_results_summary">कोई दूसरा शब्द आज़माएँ</string>
   <string name="morphe_settings_search_recent_searches">हाल ही में की गई खोजें</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 आप अप्रत्याशित घटनाओं से सूचित नहीं किए जाएंगे।"</string>
   <string name="morphe_debug_export_logs_title">डीबग लॉग एक्सपोर्ट करें</string>
   <string name="morphe_debug_export_logs_summary">Morphe डिबग लॉग्स एक्सपोर्ट करें</string>
-  <string name="morphe_debug_export_logs_file">फ़ाइल में एक्सपोर्ट करें</string>
   <string name="morphe_debug_export_logs_success">डिबग लॉग्स सफलतापूर्वक एक्सपोर्ट किए गए</string>
   <string name="morphe_debug_export_logs_failed">डिबग लॉग्स एक्सपोर्ट करने में विफल।</string>
   <string name="morphe_debug_logs_search_hint">डिबग लॉग खोजें…</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 यदि आप सबसे परेशानी मुक्त अनुभव चाहते हैं, तो इस ऐप को &lt;b&gt;अनइंस्टॉल&lt;/b&gt; कर दें और ✅ &lt;b&gt;%2$s&lt;/b&gt; के अनुशंसित ऐप संस्करण को पैच करें।"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ मुझे प्रायोगिक चाहिए</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ मुझे स्थिर चाहिए</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">क्रैश लॉग दस्तावेज़ों फ़ोल्डर में सेव हुआ: %s</string>
+  <string name="morphe_crash_log_saved">क्रैश लॉग सेव हुआ: %s</string>
 </resources>

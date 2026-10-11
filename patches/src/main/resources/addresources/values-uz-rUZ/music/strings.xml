@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Albom audio treklarini ijro etish</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Qo\'shiqlarning faqat audio versiyasini musiqiy video o\'rniga ijro eting. \'Video oqimlarini soxtalashtirish\' talab qiladi.</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Uchinchi tomon yuklab olish ilovalari yordamida musiqa videolari, podkastlar yoki qo‘shiqlarni yuklab oling</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -48,7 +49,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Reklamalarni yashirish</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Audio / Video ni yashirish tugmasini ko‘rsatish/yashirish</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Yuklab olish tugmasini yashirish</string>
   <string name="morphe_music_hide_explore_shelf_title">Kashf qilish javoni ni yashirish</string>
+  <string name="morphe_music_hide_filter_bar_title">Filtr panelini yashirish</string>
   <string name="morphe_music_hide_grid_shelves_title">Tarmoq javonlarini yashirish</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Gorizontal javonlarni yashirish</string>
   <string name="morphe_music_hide_list_shelves_title">Ro‘yxat javonlarini yashirish</string>
@@ -104,32 +107,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Krosfeyd ushbu seans davomida pauza qilindi</string>
   <string name="morphe_music_crossfade_resumed_toast">Krosfeyd tiklandi</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Krosfeyd yoqilganda video rejimidan foydalanib bo‘lmaydi</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Audio uzatilayotganda yoki ekranga aks ettirilayotganda krosfeydda xatolik bo‘lishi sababli pauza qilinadi.</string>
-  <string name="morphe_music_crossfade_about_title">Biz haqimizda</string>
-  <string name="morphe_music_crossfade_about_summary">Krosfeyd qanday ishlaydi va qachon ishlamaydi?</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">Qanday ishlaydi</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Krosfeyd bir qo‘shiqning oxirini keyingi qo‘shiqning boshlanishi bilan ustma-ust qo‘yadi va tanlangan davomiylik hamda egri chiziq asosida biri pasayib, ikkinchisi asta-sekin kuchayib boradi.
-
-U avtomatik o‘tishda (qo‘shiq o‘z-o‘zidan tugaganda) va qo‘lda o‘tkazishda ishlaydi — har biri uchun yuqorida alohida yoqish/o‘chirish sozlamasi mavjud. Avtomatik o‘tishda krosfeyd qo‘shiq tugashidan bir necha soniya oldin boshlanadi.
-
-YouTube Music 9.x yoki undan yangiroq versiya talab etiladi."</string>
-  <string name="morphe_music_crossfade_about_best_title">Muammosiz ishlash uchun</string>
-  <string name="morphe_music_crossfade_about_best_summary">Oddiy qo‘shiqlar almashinuvi va avtomatik o‘tish, bitta qo‘shiqni takroriy ijro etish (qo‘shiq o‘ziga o‘zi krossfeyd bilan o‘tadi), shuningdek mahalliy audio — telefon karnayi, simli quloqchinlar, Bluetooth yoki USB orqali ishlaydi.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Kutilganidek ishlamaydi</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Krosfeyd yoqilganda musiqiy videolar faqat audio rejimida ijro etiladi. Videoni ko‘rish uchun Tasodifiy tugmasini uzoq bosib krosfeydni pauza qiling
-
-So‘nish davomiyligidan qisqaroq qo‘shiqlar krosfeydni o‘tkazib yuborishi mumkin
-
-Qulflangan ekran yoki bildirishnoma chiqish vaqtida qisqa muddat noto‘g‘ri  holatni ko‘rsatishi mumkin"</string>
-  <string name="morphe_music_crossfade_about_known_title">Muayyan muammolar</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Joriy navbatdan tashqaridan boshlangan yoki birinchi qo‘shiq sifatida ijro etilgan musiqiy video audio-only rejimi yoqilishidan oldin qisqa vaqt video ko‘rinishida ko‘rinishi mumkin.
-
-Musiqiy videoni tomosha qilish uchun krosfeyd funksiyasini ijro paytida o‘chirib qo‘ysangiz, ayrim videolar qora ekran bo‘lib qolishi mumkin (ayniqsa audiosi videoning o‘zidan olinadigan videolar). Buning oldini olish uchun crossfade funksiyasini qo‘shiqni tanlashdan oldin o‘chirib qo‘ying."</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Mutlaqo ishlamaydi</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Audio uzatish yoki aks ettirish (Chromecast, ekran yoki audio mirroring) — bu holatda krosfeyd beqaror ishlagani sababli vaqtincha to‘xtatiladi va bu muammo hech qachon tuzatilmasligi mumkin.
-
-Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</string>
   <string name="morphe_music_crossfade_about_credit_title">Mualliflar</string>
   <string name="morphe_music_crossfade_about_credit_summary">Krosfeyd funksiyasi VazerOG tomonidan yaratilgan</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -140,6 +118,8 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">\"Yoqtirmadi\" tugmasi yo‘naltirilishini o‘chirish</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Yoqmaslik tugmasi bosilganda keyingi trekga o\'tishning oldi olinadi</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Chromecast tugmasini yashirish</string>
   <string name="morphe_music_hide_history_button_title">Ko‘rishlar tarixi tugmasini yashirish</string>
@@ -212,8 +192,6 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <string name="morphe_change_start_page_entry_playlists">Pleylistlar</string>
   <string name="morphe_change_start_page_entry_search">Qidiruv</string>
   <string name="morphe_change_start_page_entry_subscriptions">Obunalar</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Filtr panelini yashirish</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Miniplayerning rangini o\'zgartirish</string>
@@ -245,7 +223,6 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <string name="morphe_music_hide_navigation_bar_title">Navigatsiya panelini yashirish</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Navigatsiya tugmalarining yozuvlarini yashirish</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fm va ListenBrainz integratsiyasini sozlang</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Kirish qilinmagan. Sozlash uchun bosing</string>
   <string name="morphe_music_scrobbling_log_out">Profildan chiqish</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Profildan chiqilgan</string>
@@ -268,7 +245,6 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Ijro tarixini qayd etishni yoqish uchun ListenBrainz foydalanuvchi tokeningizni kiriting</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Tokenni olish</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Tekshirish</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Iltimos, token kiriting</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Tekshirish davom etmoqda…</string>
@@ -301,15 +277,12 @@ Krosfeyd YouTube Music'ning 8.x va 9.x undan yuqori versiyalarda ishlaydi"</stri
   <string name="morphe_music_scrobbling_parse_title_title">Ijroni titrdan ajratish</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Qo\'shiq titri, ijrochi nomini ajratib olish uchun \" - \" ajratuvchisidan foydalanish. Qo\'shilgan kontent uchun ijrochi nomi kanal nomi sifatida ishlatilsa foydali bo\'ladi.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Scrobbling haqida</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"\"Scrobbling\" sizning YouTube Music foydalanish ma'lumotlaringizni avtomatik ravishda sizning Last.fm yoki ListenBrainz profilingiz bilan sinxronlashtiradi.
 
 Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTube Music ilovasining batareya sozlamalarini \"Cheklanmagan\" ga o'rnating."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Uchinchi tomon matnlaridan foydalanish</string>
   <string name="morphe_music_lyrics_enabled_summary">Uchinchi tomon xizmatidan matnlar ko‘rsatiladi, agar topilmasa, o‘rnatilgan matnlarga qaytadi</string>
-  <string name="morphe_music_lyrics_section_about_title">Biz haqimizda</string>
   <string name="morphe_music_token_dialog_get_token">Tokenni olish</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Satrga teginib, o‘tkazish</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Satrga tegish, qo‘shiqda shu lahzaga o‘tadi</string>
@@ -317,7 +290,6 @@ Foydalanish ma'lumotlari fon tartibda ham sinxronlashini ta'minlash uchun, YouTu
   <string name="morphe_music_lyrics_show_translate_button_title">Tarjima tugmasini ko‘rsatish</string>
   <string name="morphe_music_lyrics_text_size_title">Matn hajmi</string>
   <string name="morphe_music_lyrics_text_size_summary">Lirikalar matnining hajmi</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Vaqtni sozlash</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Manba: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->

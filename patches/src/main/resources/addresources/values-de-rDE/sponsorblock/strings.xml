@@ -228,8 +228,7 @@ Wenn Sie keine Markierung senden, tippen Sie auf Abbrechen und markieren Sie die
   <string name="morphe_sb_stats_saved_second_format">%s Sekunden</string>
   <string name="morphe_sb_color_opacity_label">Deckkraft:</string>
   <string name="morphe_sb_color_dot_label">Farbe:</string>
-  <string name="morphe_sb_about_title">Über</string>
-  <string name="morphe_sb_about_api_summary">"Daten werden von der SponsorBlock API bereitgestellt.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock ist eine Crowdsourcing-Datenbank für Videosegmente wie Sponsoren, Intros, Outros und Erinnerungen zum Abonnieren. Segmente werden von der Community eingereicht und bewertet, und die Datenbank ist offen und kostenlos herunterladbar
 
-Tippen Sie hier, um Sponsor.ajay.app zu öffnen und Downloads für andere Plattformen anzuzeigen"</string>
+Die ID des Videos, das Sie ansehen, wird an die SponsorBlock-API gesendet, um dessen Segmente zu erhalten"</string>
 </resources>

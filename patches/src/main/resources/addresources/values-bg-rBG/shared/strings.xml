@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Неуспешно импортиране: %s</string>
   <string name="morphe_settings_navigate_up">Навигация нагоре</string>
   <string name="morphe_settings_search_hint">Търсене на настройки</string>
+  <string name="morphe_settings_screen_info_title">Отношение</string>
   <string name="morphe_settings_search_no_results_title">Не са открити резултати за \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Опитайте друга ключова дума</string>
   <string name="morphe_settings_search_recent_searches">Последни търсения</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 Няма да бъдете уведомени за неочаквани събития."</string>
   <string name="morphe_debug_export_logs_title">Експортиране на логове за отстраняване на грешки</string>
   <string name="morphe_debug_export_logs_summary">Експортиране на логове за отстраняване на грешки на Morphe</string>
-  <string name="morphe_debug_export_logs_file">Експортиране във файл</string>
   <string name="morphe_debug_export_logs_success">Логовете за отстраняване на грешки бяха експортирани успешно</string>
   <string name="morphe_debug_export_logs_failed">Неуспешно експортиране на логове за отстраняване на грешки: %s</string>
   <string name="morphe_debug_logs_search_hint">Търсене в логовете за отстраняване на грешки…</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 Ако искате най-безпроблемното изживяване, тогава &lt;b&gt;премахнете&lt;/b&gt; това и актуализирайте препоръчителната версия на приложението ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Искам експериментална</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Искам стабилна</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Дневникът на сривовете е запазен в потребителските документи: %s</string>
+  <string name="morphe_crash_log_saved">Дневникът на сривовете е запазен: %s</string>
 </resources>

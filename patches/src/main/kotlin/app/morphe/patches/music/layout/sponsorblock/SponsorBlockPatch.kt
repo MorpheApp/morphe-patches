@@ -25,6 +25,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.youtube.layout.sponsorblock.categoryPreference
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
@@ -118,12 +119,12 @@ val musicSponsorBlockPatch = bytecodePatch(
                 )
             ),
 
-            PreferenceCategory(
+            screenInfoPreferenceCategory(
                 key = "morphe_sb_about",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_sb_about_api",
+                        titleKey = null,
                         tag = "app.morphe.extension.shared.sponsorblock.ui.SponsorBlockAboutPreference",
                         selectable = true
                     )

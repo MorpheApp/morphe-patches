@@ -80,7 +80,6 @@ public class SettingsNamePreference extends CustomDialogListPreference {
 
         ListPreferenceArrayAdapter adapter = new ListPreferenceArrayAdapter(
                 context,
-                LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED,
                 getEntries(),
                 entryValues,
                 selectedValue[0]

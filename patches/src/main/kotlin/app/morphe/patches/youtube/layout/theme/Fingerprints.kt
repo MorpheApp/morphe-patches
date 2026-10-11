@@ -104,7 +104,7 @@ internal object ShowSplashScreenFingerprint : Fingerprint(
         anyInstruction(
             opcode(Opcode.CONST_4),
             opcode(Opcode.CONST_16),
-            location = MatchAfterWithin(1)
+            location = MatchAfterWithin(3)
         ),
         opcode(
             opcode = Opcode.IF_NE,

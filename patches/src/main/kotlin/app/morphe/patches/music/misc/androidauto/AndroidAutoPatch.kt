@@ -21,14 +21,15 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.util.cloneMutable
 import app.morphe.util.findFreeRegister
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
 import app.morphe.util.matchSingle
 import app.morphe.util.p0Register
+import app.morphe.util.returnEarly
 import app.morphe.util.toPublicAccessFlags
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -81,13 +82,27 @@ private const val SUBTITLE_FIELD_NAME = "h"
 @Suppress("unused")
 val androidAutoPatch = bytecodePatch(
     name = "Android Auto",
-    description = "Restores YouTube Music playlists and podcasts in Android Auto.",
+    description = "Bypasses certificate checks and restores YouTube Music playlists and podcasts in Android Auto.",
 ) {
-    dependsOn(sharedExtensionPatch)
+    dependsOn(
+        sharedExtensionPatch,
+        settingsPatch
+    )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
+        // region Bypass certificate checks
+        CheckCertificateFingerprint.method.returnEarly(true)
+
+        // Devices with real Google Play services installed alongside microG crash inside
+        // the Dynamite-based Google signature verifier (IllegalStateException:
+        // "Missing DynamiteApplicationContext") before the fingerprint check above is
+        // even evaluated.  Report "not Google-signed" immediately, without touching
+        // Dynamite; authorization still succeeds via the fingerprint patch above.
+        IsGoogleSignedFingerprint.method.returnEarly(false)
+        // endregion
+
         hookPlaylistsTitleMediaIds()
         installPhoneBrowseClientBridges()
         patchPhoneBrowseResponses()
@@ -105,21 +120,21 @@ val androidAutoPatch = bytecodePatch(
  * `rememberPlaylistsTitleMatch`, which recognizes it by its translated title.
  */
 private fun BytecodePatchContext.hookPlaylistsTitleMediaIds() {
-    BuildAndroidAutoMediaItemFingerprint.method.apply {
-        // Capture the Playlists folder ID and title regardless of which branch creates it.
-        findInstructionIndicesReversedOrThrow(
-            MEDIA_DESCRIPTION_CONSTRUCTOR_CALL
-        ).forEach { index ->
-            val instructionStartRegister = getInstruction<RegisterRangeInstruction>(index).startRegister
+    BuildAndroidAutoMediaItemFingerprint.let {
+        it.method.apply {
+            // Capture the Playlists folder ID and title regardless of which branch creates it.
+            it.instructionMatches.reversed().forEach { match ->
+                val instructionStartRegister = match.getInstruction<RegisterRangeInstruction>().startRegister
 
-            val mediaDescriptionMediaIdRegister = instructionStartRegister + MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET
-            val titleRegister = instructionStartRegister + MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET
+                val mediaDescriptionMediaIdRegister = instructionStartRegister + MEDIA_DESCRIPTION_MEDIA_ID_REGISTER_OFFSET
+                val titleRegister = instructionStartRegister + MEDIA_DESCRIPTION_TITLE_REGISTER_OFFSET
 
-            addInstruction(
-                index,
-                "invoke-static/range { v$mediaDescriptionMediaIdRegister .. v$titleRegister }, " +
-                        "$EXTENSION_CLASS->rememberPlaylistsTitleMatch(Ljava/lang/String;Ljava/lang/CharSequence;)V"
-            )
+                addInstruction(
+                    match.index,
+                    "invoke-static/range { v$mediaDescriptionMediaIdRegister .. v$titleRegister }, " +
+                            "$EXTENSION_CLASS->rememberPlaylistsTitleMatch(Ljava/lang/String;Ljava/lang/CharSequence;)V"
+                )
+            }
         }
     }
 }
@@ -202,9 +217,9 @@ private fun BytecodePatchContext.addLibraryPaginationRequestMethod(
     // The pagination request accepts the command type created by getGridPaginationCommandsMethod.
     val paginationReaderReturnTypes =
         getGridPaginationCommandsMethod.instructions.asSequence()
-        .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
-        .map { reference -> reference.returnType }
-        .toSet()
+            .mapNotNull { instruction -> instruction.getReference<MethodReference>() }
+            .map { reference -> reference.returnType }
+            .toSet()
     val createPaginationRequestMethod = classDefBy(phoneBrowseClientClass.type)
         .methods.singleOrNull { method ->
             method.returnType == phoneBrowseRequestType &&
@@ -264,8 +279,7 @@ private fun BytecodePatchContext.capturePhoneBrowseClientOnServiceCreate(phoneBr
     val mutableOnCreateMethod = onCreateMatch.method
     val generatedComponentReadIndex = onCreateMatch.instructionMatches.single { match ->
         val field = match.instruction.getReference<FieldReference>()
-        match.instruction.opcode == Opcode.IGET_OBJECT &&
-            field?.type == providerField.definingClass
+        match.instruction.opcode == Opcode.IGET_OBJECT && field?.type == providerField.definingClass
     }.index
     val generatedComponentRegister = mutableOnCreateMethod
         .getInstruction<TwoRegisterInstruction>(generatedComponentReadIndex)
@@ -667,8 +681,7 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
         field.definingClass == androidAutoRequestType
     }
     val requestedMediaIdField = androidAutoRequestFields.single { field ->
-        field.definingClass == requestedMediaIdHolderField.type &&
-            field.type == "Ljava/lang/String;"
+        field.definingClass == requestedMediaIdHolderField.type && field.type == "Ljava/lang/String;"
     }
     skipPodcastsMediaIdDecoding(requestedMediaIdField)
 
@@ -676,9 +689,9 @@ private fun BytecodePatchContext.addAndroidAutoBrowseRequestInterface(
     // Newer supported versions call it directly, so the patch can use the same method for all versions.
     val deliverAndroidAutoMediaItemsMethod = androidAutoRequestClass.methods.single { method ->
         method.returnType == "V" &&
-            method.parameterTypes.size == 2 &&
-            method.parameterTypes.first().toString() == "Ljava/util/List;" &&
-            method.parameterTypes.last().toString().startsWith("L")
+                method.parameterTypes.size == 2 &&
+                method.parameterTypes.first().toString() == "Ljava/util/List;" &&
+                method.parameterTypes.last().toString().startsWith("L")
     }
 
     androidAutoRequestClass.interfaces.add(EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE)
@@ -850,8 +863,8 @@ private fun BytecodePatchContext.addAndroidAutoFolderReload(
         """
     )
     val rememberSubscriptionMethod = "$EXTENSION_CLASS->rememberAndroidAutoSubscription(" +
-        EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE +
-        "Ljava/lang/String;Ljava/lang/Object;)V"
+            EXTENSION_ANDROID_AUTO_FOLDER_RELOAD_INTERFACE +
+            "Ljava/lang/String;Ljava/lang/Object;)V"
     baseServiceClass.findMutableMethodOf(reloadMethod).addInstructions(
         0,
         """
@@ -900,8 +913,8 @@ private fun BytecodePatchContext.hookLibraryChangeCompletion() {
  */
 private fun hookAndroidAutoBrowseResults(deliverAndroidAutoMediaItemsMethod: MutableMethod) {
     val handleAndroidAutoBrowseResultMethod = "$EXTENSION_CLASS->handleAndroidAutoBrowseResult(" +
-        EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE +
-        "Ljava/util/List;)Ljava/util/List;"
+            EXTENSION_ANDROID_AUTO_BROWSE_REQUEST_INTERFACE +
+            "Ljava/util/List;)Ljava/util/List;"
 
     deliverAndroidAutoMediaItemsMethod.addInstructions(
         0,

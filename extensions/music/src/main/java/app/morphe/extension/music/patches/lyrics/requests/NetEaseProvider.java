@@ -30,11 +30,13 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.LyricsMerge;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -155,10 +157,10 @@ public final class NetEaseProvider implements LyricsProvider {
 
         List<String> creditLines = parseYrcCredits(yrc);
 
-        List<LyricsLine> romaLines = romalrc.isEmpty() ? null : LrcParser.parseSynced(romalrc);
+        List<LyricsLine> romaLines = romalrc.isEmpty() ? null : LRCParser.parseSynced(romalrc);
         List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, romaLines);
 
-        List<LyricsLine> transLines = tlyric.isEmpty() ? null : LrcParser.parseSynced(tlyric);
+        List<LyricsLine> transLines = tlyric.isEmpty() ? null : LRCParser.parseSynced(tlyric);
         List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, transLines);
         Map<String, List<LyricsLine>> translations =
                 LyricsMerge.singleLanguageTranslations(translation, "zh");
@@ -599,6 +601,7 @@ public final class NetEaseProvider implements LyricsProvider {
         return parseLrc(lrc);
     }
 
+    @SuppressWarnings("SizeReplaceableByIsEmpty")
     private static List<LyricsLine> parseYrc(String text) {
         List<LyricsLine> lines = new ArrayList<>();
         if (text == null || text.isEmpty()) {
@@ -623,37 +626,36 @@ public final class NetEaseProvider implements LyricsProvider {
 
             List<Long> starts = new ArrayList<>();
             List<Long> durations = new ArrayList<>();
-            List<String> texts = new ArrayList<>();
+            List<int[]> marks = new ArrayList<>();
             Matcher wordMatch = YRC_WORD.matcher(content);
             while (wordMatch.find()) {
                 starts.add(Long.parseLong(Objects.requireNonNull(wordMatch.group(1))));
                 durations.add(Long.parseLong(Objects.requireNonNull(wordMatch.group(2))));
-                texts.add(wordMatch.group(3));
+                marks.add(new int[]{wordMatch.start(), wordMatch.start(3)});
             }
 
             List<Word> words = new ArrayList<>();
             StringBuilder full = new StringBuilder();
+            if (!marks.isEmpty() && marks.get(0)[0] > 0) {
+                full.append(content, 0, marks.get(0)[0]);
+            }
             for (int i = 0; i < starts.size(); i++) {
                 long wordStart = starts.get(i);
                 long wordEnd = wordStart + durations.get(i);
-                String wordText = texts.get(i);
-                if (wordText.isEmpty()) {
+                int segmentStart = marks.get(i)[1];
+                int segmentEnd = i + 1 < marks.size() ? marks.get(i + 1)[0] : content.length();
+                String wordText = content.substring(segmentStart, segmentEnd);
+                full.append(wordText);
+                String trimmed = wordText.trim();
+                if (trimmed.isEmpty()) {
+                    // A timed space between words is kept in the line text only.
                     continue;
                 }
                 boolean endsWithSpace =
                         Character.isWhitespace(wordText.charAt(wordText.length() - 1));
-                String trimmed = wordText.trim();
-                if (trimmed.isEmpty()) {
-                    continue;
-                }
-                //noinspection SizeReplaceableByIsEmpty
-                if (full.length() > 0 && needsSpaceBetween(full.toString(), trimmed)) {
-                    full.append(' ');
-                }
                 words.add(new Word(wordStart, wordEnd, trimmed, null, endsWithSpace));
-                full.append(trimmed);
             }
-            if (words.isEmpty() && !content.isEmpty()) {
+            if (words.isEmpty() && full.length() == 0 && !content.isEmpty()) {
                 full.append(content);
             }
 
@@ -806,29 +808,5 @@ public final class NetEaseProvider implements LyricsProvider {
 
     private static String generateClientSign() {
         return randomMac() + "@@@" + randomChars(8, "ABCDEFGHIJKLMNOPQRSTUVWXYZ") + "@@@@@@" + randomChars(64, "0123456789abcdef");
-    }
-
-    private static boolean isCjk(char c) {
-        Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
-        return block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
-                || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
-                || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
-                || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
-                || block == Character.UnicodeBlock.CJK_SYMBOLS_AND_PUNCTUATION
-                || block == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS
-                || block == Character.UnicodeBlock.HIRAGANA
-                || block == Character.UnicodeBlock.KATAKANA
-                || block == Character.UnicodeBlock.HANGUL_JAMO
-                || block == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO
-                || block == Character.UnicodeBlock.HANGUL_SYLLABLES;
-    }
-
-    private static boolean needsSpaceBetween(String a, String b) {
-        if (a.isEmpty() || b.isEmpty()) {
-            return false;
-        }
-        char last = a.charAt(a.length() - 1);
-        char first = b.charAt(0);
-        return !(isCjk(last) || isCjk(first));
     }
 }

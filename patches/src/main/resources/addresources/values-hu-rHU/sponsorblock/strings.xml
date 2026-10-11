@@ -227,8 +227,7 @@ Ha nem szeretne kiemelést küldeni, nyomja meg a Mégse gombot, és jelölje me
   <string name="morphe_sb_stats_saved_second_format">%s másodperc</string>
   <string name="morphe_sb_color_opacity_label">Áttetszőség:</string>
   <string name="morphe_sb_color_dot_label">Szín:</string>
-  <string name="morphe_sb_about_title">Rólunk</string>
-  <string name="morphe_sb_about_api_summary">"Az adatokat a SponsorBlock API biztosítja.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock egy közösségi adatbázis, amely videórészleteket tartalmaz, például szponzorokat, intrókat, extrókat és feliratkozási emlékeztetőket. A szegmenseket a közösség küldi be és szavazza meg, az adatbázis pedig nyílt és ingyenesen letölthető
 
-Érintse meg ide a Sponsor.ajay.app megnyitásához, és tekintse meg a letöltéseket más platformokra"</string>
+A megtekintett videó azonosítója elküldésre kerül a SponsorBlock API-nak, hogy lekérje a videó szegmenseit"</string>
 </resources>

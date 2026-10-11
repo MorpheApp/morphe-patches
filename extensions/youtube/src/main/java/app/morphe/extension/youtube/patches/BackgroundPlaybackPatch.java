@@ -206,13 +206,13 @@ public class BackgroundPlaybackPatch {
      * Injection point.
      */
     public static boolean isAutomaticForegroundPlaybackAllowed(boolean original) {
-        return !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
+        return original && !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
     }
 
     /**
      * Injection point.
      */
     public static boolean isAutomaticPlaybackPauseInFlyout(boolean original) {
-        return !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
+        return original && !REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
     }
 }

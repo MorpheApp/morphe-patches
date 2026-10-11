@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">%d ta sozlamalar import qilindi</string>
   <string name="morphe_settings_import_failure_parse">Import xatosi: %s</string>
   <string name="morphe_settings_search_hint">Sozlamalarni qidirish</string>
+  <string name="morphe_settings_screen_info_title">Biz haqimizda</string>
   <string name="morphe_settings_search_no_results_title">\'%s\' uchun natijalar topilmadi</string>
   <string name="morphe_settings_search_no_results_summary">Boshqa kalit so\'zni sinab ko\'ring</string>
   <string name="morphe_settings_search_recent_searches">Yaqinda qidirilganlar</string>
@@ -97,7 +98,6 @@ Yangi tillarni tarjima qilish yoki mavjud tarjimalarni yaxshilash uchun morphe.s
 Siz hech qanday kutilmagan voqealar haqida xabardor qilinmaysiz."</string>
   <string name="morphe_debug_export_logs_title">Debug loglarini eksport qilish</string>
   <string name="morphe_debug_export_logs_summary">Morphe debug loglarini eksport qilish</string>
-  <string name="morphe_debug_export_logs_file">Faylga eksport qilish</string>
   <string name="morphe_debug_export_logs_success">Debug loglari muvaffaqiyatli eksport qilindi</string>
   <string name="morphe_debug_export_logs_failed">Debug loglarini eksport qilishda xato yuz berdi</string>
   <string name="morphe_debug_logs_search_hint">Debug jurnallarini qidir…</string>
@@ -210,4 +210,5 @@ Agar batareya optimallashtiruvlari o'zgartirilmasa, quyidagilar yuz berishi mumk
 Agar siz eng muammosiz tajribani xohlasangiz, unda buni &lt;b&gt;o'chirib tashlang&lt;/b&gt; va ✅ &lt;b&gt;%2$s&lt;/b&gt; tavsiya etilgan ilova versiyasini patch qiling"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Menga eksperimental versiya kerak</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Menga barqaror versiya kerak</string>
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

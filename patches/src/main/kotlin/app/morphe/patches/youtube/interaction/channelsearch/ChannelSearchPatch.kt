@@ -14,11 +14,16 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.misc.toolbar.hookToolBar
+import app.morphe.patches.youtube.misc.toolbar.toolBarHookPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -41,13 +46,25 @@ val channelSearchPatch = bytecodePatch(
 
     dependsOn(
         addResourcesPatch,
-        settingsPatch
+        settingsPatch,
+        toolBarHookPatch,
+        resourcePatch {
+            execute {
+                copyResources(
+                    "channelsearch",
+                    ResourceGroup("drawable", "morphe_channel_search_button.xml")
+                )
+            }
+        }
     )
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_channel_search", summary = true)
         )
+
+        // Add a dedicated channel-search action while keeping YouTube's original icon global.
+        hookToolBar("$EXTENSION_CLASS->setSearchButtonView")
 
         // A channel page browses by its channel id, which is what the search is scoped to.
         BrowseFragmentOnCreateViewFingerprint.let {

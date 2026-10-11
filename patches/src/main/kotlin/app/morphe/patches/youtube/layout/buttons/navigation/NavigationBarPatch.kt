@@ -26,6 +26,7 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.immutableMethodRef
 import app.morphe.patches.shared.misc.fix.proto.mutableCopyMethodRef
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethodRef
+import app.morphe.patches.shared.misc.fix.proto.parseByteArrayWithRegistryMethodRef
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -67,7 +68,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
-private const val EXTENSION_CLASS =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 
 private const val EXTENSION_SETTING_INTERFACE =
@@ -154,6 +155,7 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_navigation_bar"),
             SwitchPreference("morphe_narrow_navigation_buttons", summary = true),
             SwitchPreference("morphe_hide_navigation_button_labels"),
+            SwitchPreference("morphe_disable_icon_only_navigation_buttons", summary = true),
             SwitchPreference("morphe_hide_navigation_new_content_dot"),
             SwitchPreference("morphe_navigation_bar_animations", summary = true),
             SwitchPreference("morphe_disable_translucent_navigation", summary = true)
@@ -488,6 +490,36 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        //
+        // Disable the A/B layout with navigation buttons without labels.
+        //
+
+        // Inserted at the start of the method after the other hooks of the method,
+        // so the instruction indexes of their matches are still valid.
+        PivotBarRendererFingerprint.method.apply {
+            val pivotBarItemType = parameterTypes.first().toString()
+
+            addInstructionsWithLabels(
+                0,
+                """
+                    # The parameter register can be higher than 15.
+                    invoke-static/range { p0 .. p0 }, $EXTENSION_SUBSCRIPTIONS_CLASS->convertIconOnlyPivotBarItem(Lcom/google/protobuf/MessageLite;)[B
+                    move-result-object v0
+                    if-eqz v0, :not_icon_only
+
+                    # The endpoints are extensions, which are lost if parsed without the registry.
+                    sget-object v1, $pivotBarItemType->a:$pivotBarItemType
+                    invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                    move-result-object v2
+                    invoke-static { v1, v0, v2 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
+                    move-result-object p0
+                    check-cast p0, $pivotBarItemType
+                    :not_icon_only
+                    nop
+                """
+            )
+        }
+
         TopBarRendererPrimaryFilterFingerprint.let {
             it.method.apply {
                 val onClickListenerIndex = it.instructionMatches[3].index
@@ -514,13 +546,13 @@ val navigationBarPatch = bytecodePatch(
         val toolbarPreferences = mutableSetOf(
             SwitchPreference("morphe_hide_toolbar_cast_button"),
             SwitchPreference("morphe_hide_toolbar_chat_button"),
-            SwitchPreference("morphe_hide_toolbar_create_button"),
+            SwitchPreference("morphe_hide_toolbar_create_button", titleKey = "morphe_hide_create_button_title"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
-            SwitchPreference("morphe_hide_toolbar_notification_button"),
+            SwitchPreference("morphe_hide_toolbar_notification_button", titleKey = "morphe_hide_notifications_button_title"),
             SwitchPreference("morphe_hide_toolbar_search_button"),
-            SwitchPreference("morphe_show_toolbar_settings_button"),
-            ListPreference("morphe_show_toolbar_settings_button_index"),
-            SwitchPreference("morphe_show_toolbar_settings_button_type", summary = true)
+            SwitchPreference("morphe_show_toolbar_settings_button", titleKey = "morphe_show_settings_button_title"),
+            ListPreference("morphe_show_toolbar_settings_button_index", titleKey = "morphe_show_settings_button_index_title"),
+            SwitchPreference("morphe_show_toolbar_settings_button_type", titleKey = "morphe_show_settings_button_type_title", summary = true)
         )
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -686,6 +718,33 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        //
+        // Toolbar create button upload
+        //
+
+        // The commands of the toolbar buttons are extensions, which are parsed only with the extension registry.
+        GetGeneratedRegistryFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
+                move-result-object v0
+                return-object v0
+            """
+        )
+
+        parseByteArrayWithRegistryMethodRef.get()!!.let { parseMethod ->
+            ParseWithRegistryFingerprint.method.addInstructions(
+                0,
+                """
+                    check-cast p0, ${parseMethod.parameterTypes.first()}
+                    invoke-static { p0, p1, p2 }, $parseMethod
+                    move-result-object p0
+                    check-cast p0, Lcom/google/protobuf/MessageLite;
+                    return-object p0
+                """
+            )
+        }
+
         TopBarRendererSecondaryFilterFingerprint.let {
             it.method.apply {
                 var buttonsClass: String? = null
@@ -716,6 +775,9 @@ val navigationBarPatch = bytecodePatch(
                         # If mutable, copy the ProtoList.
                         invoke-static { v$protoListRegister }, ${mutableCopyMethodRef.get()}
                         move-result-object v$protoListRegister
+                        
+                        # Replace the create button whose video button has an endpoint the app does not handle.
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS->fixToolbarCreateButtonUpload(Ljava/util/List;)V
                         
                         # Generate Settings Button Bytes (BEFORE modifying list)
                         invoke-static { v$protoListRegister }, $EXTENSION_CLASS->createToolbarSettingsButton(Ljava/util/List;)[B

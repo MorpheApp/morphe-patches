@@ -230,8 +230,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s 秒</string>
   <string name="morphe_sb_color_opacity_label">不透明度：</string>
   <string name="morphe_sb_color_dot_label">颜色:</string>
-  <string name="morphe_sb_about_title">关于</string>
-  <string name="morphe_sb_about_api_summary">"数据由 SponsorBlock API 提供。
+  <string name="morphe_sb_about_api_summary">"SponsorBlock 是一个众包的视频片段数据库，包含赞助商、片头、片尾和订阅提醒等片段。片段由社区提交并投票，数据库开放且可免费下载
 
-点击此处打开 Sponsor.ajay.app，查看其他平台的下载内容"</string>
+您观看的视频 ID 会发送到 SponsorBlock API 以获取其片段"</string>
 </resources>

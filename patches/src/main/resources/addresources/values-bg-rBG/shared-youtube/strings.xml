@@ -100,10 +100,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вход в Android VR може да реши проблеми с възпроизвеждане за някои потребители
 
 За да се влезете, натиснете \"Продължи\" отдолу"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продължи</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Изход</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код за активация: %s
 
 1. Натиснете 'Отвори уебсайт' отдолу, за да отворите уебсайта 'Приклейте уебсайт'
@@ -111,7 +110,6 @@ Second \"item\" text"</string>
 3. Влезте в Google, ако ви е нужно. Ако имате повече сметки, изберете тази сметка YouTube
 4. Натиснете 'Разрешете YouTube VR' достъп
 5. Върнете се в това приложение след като достигнете съобщението 'Уебсайт приклеен'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Отвори уебсайта</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Неуспешно издаване на код за активация</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Неуспешно издаване на код за авторизация</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешно се влязохте</string>
@@ -190,7 +188,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">Персонализиран филтър</string>
   <string name="morphe_custom_filter_screen_summary">Конфигурирайте персонализирани филтри, за да скриете всеки компонент</string>
   <string name="morphe_custom_filter_title">Активиране на персонализиран филтър</string>
-  <string name="morphe_custom_filter_strings_title">Персонализиран филтър</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Списък на низове на градителите на пътища на компоненти за филтриране, разделени с нови редове</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Невалиден персонализиран филтър: %s</string>
@@ -253,9 +250,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Показва приблизителен брой харесвания на видеа, където създателят е деактивирал харесванията</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показване на съобщения за грешка при връзката</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показва известие, когато сървърът на Return YouTube Dislike не е достъпен</string>
-  <string name="morphe_ryd_attribution_summary">"Данните са предоставени от Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike възстановява броячите на нехаресвания, които YouTube скри през 2021 г. Броячите идват от данни, архивирани преди премахването, и за по-нови видеоклипове се оценяват по гласовете на потребителите, така че са приблизителни и се актуализират на всеки няколко дни
 
-Натиснете тук, за да отворите ReturnYouTubeDislike.com"</string>
+Идентификаторът на видеоклипа, който гледате, се изпраща до API на Return YouTube Dislike, а вашите харесвания и нехаресвания се изпращат анонимно, за да се подобрят оценките"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика на Return YouTube Dislike API за това устройство</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време за отговор на API, средно</string>

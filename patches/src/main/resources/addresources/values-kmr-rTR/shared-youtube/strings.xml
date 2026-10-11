@@ -97,10 +97,9 @@ Ger hûn bikarhênerê YouTube Premium nebin, ev mîheng dikare pêwîst nebe."<
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Teqezîya nêzîkê Android VR bikê da ku vexalên lêpêvirîna malandaran ji hin rêzên bidê.
 
 Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Bidawaze</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Derveke</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Amûreyên</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Koda aktivasyonê: %s
 
 1. Kilatek 'Malperê veke' li jêr bitarînin da ku malpera 'Cihaskirina alavê' vebxe.
@@ -108,7 +107,6 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
 3. Ger hat pêşbazkirin, bi Google-ê têxin nêzîk. Ger mêreka hesabê heya, ev hesabê YouTube-yê hilbijêrin.
 4. Li 'Dibe alavê VR YouTube' bitarînin
 5. Piştî gihîşîya peyamê 'Alav pêwendiya', vegerin serdana ev sepan."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Malperê veke</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ne başa kodu aktivasyonê dabî.</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ne başa nîşana otantîkasyonê dabî.</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Bi ser ket teqezîya nêzîkê.</string>
@@ -174,7 +172,6 @@ Lê belê, çalak kirina wê dê hin agahiyên bikarhêner wekî navnîşana IP-
   <string name="morphe_custom_filter_screen_title">Filtra niştecî</string>
   <string name="morphe_custom_filter_screen_summary">Mîhengkirina fîltreên niştecî da ku her pêkhateyek veşêrin</string>
   <string name="morphe_custom_filter_title">Filtra niştecî bidomîne</string>
-  <string name="morphe_custom_filter_strings_title">Filtra niştecî</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lîsteya stringên avakera rêya pêkhateyan da ku bi rêyên nû veqetandî fîltre bikin</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtra niştecî ne heq e: %s</string>
@@ -228,9 +225,6 @@ Ger paşê were veqetandîn, pêşniyar dike ku daneyê sepanê were paqijkirin 
   <string name="morphe_ryd_estimated_like_summary">Hejmara nexweşiyên texmînî li ser vîdyoyên ku afirîner nexweşiyan dezaktîv kiriye nîşan dide</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Îşaretên çewtîyê nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Dê îşaretê nîşan bide gava ku servera Return YouTube Dislike hewîr be</string>
-  <string name="morphe_ryd_attribution_summary">"Daneyê ji hêla API-ya Return YouTube Dislike ve tê peyda kirin
-
-Li vir bikirtîne da ku ReturnYouTubeDislike.com veke"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statîstîkên API-ya Return YouTube Dislike ya vê cîhazê</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Demê bersîva API-yê, bi navînî</string>

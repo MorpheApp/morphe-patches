@@ -26,6 +26,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
@@ -100,7 +101,7 @@ public final class LayoutComponentsFilter extends Filter {
     private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup surveys;
     private final StringFilterGroup videoLabels;
-    private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
+    private final ByteArrayFilterGroup videoLabelsBuffer;
     private final StringFilterGroup videoRecommendationLabels;
 
     public enum ExpandableCardStyle {
@@ -420,20 +421,13 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         videoLabels = new StringFilterGroup(
+                Settings.HIDE_VIDEO_LABELS,
+                "|ContainerType|ContainerType|ContainerType|ContainerType|"
+        );
+
+        videoLabelsBuffer = new ByteArrayFilterGroup(
                 null,
                 "badge.e"
-        );
-        videoLabelsGroupList.addAll(
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_AUTO_DUBBED_LABEL,
-                        "yt_outline_person_radar",
-                        "yt_outline_experimental_person_waves"
-                ),
-                new ByteArrayFilterGroup(
-                        Settings.HIDE_HYPED_LABEL,
-                        "yt_fill_star_shooting",
-                        "yt_fill_experimental_hype"
-                )
         );
 
         final var videoTitle = new StringFilterGroup(
@@ -442,7 +436,7 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         videoRecommendationLabels = new StringFilterGroup(
-                Settings.HIDE_VIDEO_RECOMMENDATION_LABELS,
+                Settings.HIDE_VIDEO_LABELS,
                 "endorsement_header_footer.e"
         );
 
@@ -672,7 +666,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == videoLabels) {
-            return videoLabelsGroupList.check(buffer).isFiltered();
+            return videoLabelsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == videoRecommendationLabels) {
@@ -1327,9 +1321,9 @@ public final class LayoutComponentsFilter extends Filter {
             String menuTitleString = menuTitleCharSequence.toString();
 
             boolean matches = false;
-            String menuTitleLower = menuTitleString.toLowerCase();
+            String menuTitleLower = menuTitleString.toLowerCase(Locale.ROOT);
             for (String filter : accountMenuFilterStrings) {
-                if (menuTitleLower.contains(filter.toLowerCase())) {
+                if (menuTitleLower.contains(filter.toLowerCase(Locale.ROOT))) {
                     matches = true;
                     break;
                 }
@@ -1445,5 +1439,33 @@ public final class LayoutComponentsFilter extends Filter {
      */
     public static void hideSyncButton(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SYNC_BUTTON, view);
+    }
+
+    /**
+     * Touch and playback speed callbacks all run on the main thread.
+     */
+    private static boolean tapAndHoldActive;
+
+    /**
+     * Injection point.
+     */
+    public static void onTapAndHoldStart() {
+        tapAndHoldActive = true;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onTapAndHoldEnd() {
+        tapAndHoldActive = false;
+    }
+
+    /**
+     * Injection point.
+     *
+     * @return If the player controls should not be shown by a vertical drag.
+     */
+    public static boolean hideTapAndHoldGradient() {
+        return tapAndHoldActive && Settings.HIDE_TAP_AND_HOLD_GRADIENT.get();
     }
 }

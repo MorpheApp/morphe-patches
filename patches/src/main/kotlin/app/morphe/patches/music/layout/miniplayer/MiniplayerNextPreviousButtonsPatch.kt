@@ -27,7 +27,7 @@ import org.w3c.dom.Element
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/MiniplayerPreviousNextButtonsPatch;"
 private const val MINIPLAYER_LYRICS_CLASS =
-    "Lapp/morphe/extension/music/patches/lyrics/MiniPlayerLyrics;"
+    "Lapp/morphe/extension/music/patches/lyrics/session/MiniplayerLyrics;"
 
 private const val IMAGE_VIEW_TAG =
     "com.google.android.libraries.youtube.common.ui.TouchImageView"

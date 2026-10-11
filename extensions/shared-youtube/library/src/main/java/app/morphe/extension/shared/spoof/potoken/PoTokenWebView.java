@@ -1,6 +1,7 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches/pull/2533
+ * https://github.com/MorpheApp/morphe-patches/pull/3663
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
@@ -8,13 +9,19 @@
 package app.morphe.extension.shared.spoof.potoken;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.ConsoleMessage;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
+import androidx.annotation.NonNull;
 
 import java.util.Locale;
 import java.util.Map;
@@ -58,6 +65,28 @@ public class PoTokenWebView {
 
         webView.addJavascriptInterface(this, JS_INTERFACE);
 
+        // A WebView not attached to a window does not count towards the priority of its renderer,
+        // which then becomes a cached process that can be frozen and stall BotGuard indefinitely.
+        //noinspection WrongConstant
+        webView.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false);
+        webView.setVisibility(View.INVISIBLE);
+        webView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(@NonNull View view) {
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(@NonNull View view) {
+                // The activity was destroyed, so do not keep it alive through its decor view.
+                mainHandler.post(() -> {
+                    if (!webView.isAttachedToWindow()) {
+                        detachFromActivity();
+                    }
+                });
+            }
+        });
+        attachToCurrentActivity();
+
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onConsoleMessage(ConsoleMessage m) {
@@ -68,6 +97,29 @@ public class PoTokenWebView {
                 return super.onConsoleMessage(m);
             }
         });
+    }
+
+    /**
+     * The generator outlives activities, so it is moved to the current one before it is used.
+     * Must be called on the main thread.
+     */
+    private void attachToCurrentActivity() {
+        Activity activity = Utils.getActivity();
+        if (activity == null || activity.isFinishing() || activity.isDestroyed()) {
+            return;
+        }
+        ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
+        if (webView.getParent() == decorView) {
+            return;
+        }
+        detachFromActivity();
+        decorView.addView(webView, new ViewGroup.LayoutParams(1, 1));
+    }
+
+    private void detachFromActivity() {
+        if (webView.getParent() instanceof ViewGroup parent) {
+            parent.removeView(webView);
+        }
     }
 
     public static CompletableFuture<PoTokenWebView> newPoTokenGenerator() {
@@ -159,7 +211,10 @@ public class PoTokenWebView {
             }
             """, identifier, u8Identifier, JS_INTERFACE, JS_INTERFACE);
 
-        mainHandler.post(() -> webView.evaluateJavascript(js, null));
+        mainHandler.post(() -> {
+            attachToCurrentActivity();
+            webView.evaluateJavascript(js, null);
+        });
 
         return future;
     }
@@ -190,12 +245,15 @@ public class PoTokenWebView {
         }
     }
 
+    /**
+     * @return {@link SystemClock#elapsedRealtime()} when the integrity token expires.
+     */
     public long getExpirationMs() {
         return expirationMs;
     }
 
     public boolean isExpired() {
-        return System.currentTimeMillis() > expirationMs;
+        return SystemClock.elapsedRealtime() >= expirationMs;
     }
 
     private void onInitializationErrorCloseAndCancel(Throwable error) {
@@ -213,6 +271,7 @@ public class PoTokenWebView {
             return;
         }
 
+        detachFromActivity();
         webView.clearHistory();
         webView.clearCache(true);
         webView.loadUrl("about:blank");

@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">การนำเข้าล้มเหลว: %s</string>
   <string name="morphe_settings_navigate_up">นำทางขึ้น</string>
   <string name="morphe_settings_search_hint">ค้นหาในการตั้งค่า</string>
+  <string name="morphe_settings_screen_info_title">เกี่ยวกับ</string>
   <string name="morphe_settings_search_no_results_title">ไม่พบผลลัพธ์สำหรับ \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">ลองใช้คำหลักอื่น</string>
   <string name="morphe_settings_search_recent_searches">การค้นหาล่าสุด</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 คุณจะไม่ได้รับแจ้งเกี่ยวกับเหตุการณ์ที่ไม่คาดคิดใดๆ"</string>
   <string name="morphe_debug_export_logs_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_export_logs_summary">ส่งออกบันทึกการแก้ไขข้อบกพร่อง Morphe</string>
-  <string name="morphe_debug_export_logs_file">ส่งออกเป็นไฟล์</string>
   <string name="morphe_debug_export_logs_success">ส่งออกบันทึกการแก้ไขข้อบกพร่องเรียบร้อยแล้ว</string>
   <string name="morphe_debug_export_logs_failed">ส่งออกบันทึกการแก้ไขข้อบกพร่องไม่สำเร็จ</string>
   <string name="morphe_debug_logs_search_hint">ค้นหาบันทึกการแก้ไขข้อบกพร่อง…</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 หากคุณต้องการประสบการณ์ที่ไม่ยุ่งยากเท่าที่จะเป็นไปได้ ให้ &lt;b&gt;ถอนการติดตั้ง&lt;/b&gt; และแพตช์แอปเวอร์ชันที่แนะนำของ ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ ผมต้องการเวอร์ชันทดลอง</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ ผมต้องการเวอร์ชันที่เสถียร</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">บันทึกการขัดข้องถูกบันทึกไปยังเอกสารผู้ใช้แล้ว: %s</string>
+  <string name="morphe_crash_log_saved">บันทึกการขัดข้องถูกบันทึกแล้ว: %s</string>
 </resources>

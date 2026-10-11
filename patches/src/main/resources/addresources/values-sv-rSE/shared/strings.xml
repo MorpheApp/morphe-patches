@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importen misslyckades: %s</string>
   <string name="morphe_settings_navigate_up">Navigera upp</string>
   <string name="morphe_settings_search_hint">Sök i inställningar</string>
+  <string name="morphe_settings_screen_info_title">Om</string>
   <string name="morphe_settings_search_no_results_title">Inga resultat hittades för \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Försök med ett annat sökord</string>
   <string name="morphe_settings_search_recent_searches">Senaste sökningar</string>
@@ -105,7 +106,6 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
 Du kommer inte att bli meddelad om oväntade händelser."</string>
   <string name="morphe_debug_export_logs_title">Exportera felsökningsloggar</string>
   <string name="morphe_debug_export_logs_summary">Exportera Morphe-felsökningsloggar</string>
-  <string name="morphe_debug_export_logs_file">Exportera till fil</string>
   <string name="morphe_debug_export_logs_success">Felsökningsloggar har exporterats</string>
   <string name="morphe_debug_export_logs_failed">Det gick inte att exportera felsökningsloggar</string>
   <string name="morphe_debug_logs_search_hint">Sök i felsökningsloggarna…</string>
@@ -229,4 +229,7 @@ Om batterioptimeringarna inte ändras kan du uppleva att
 Om du vill ha den mest problemfria upplevelsen &lt;b&gt;avinstallerar&lt;/b&gt; du den här och modifierar den rekommenderade appversionen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jag vill ha experimentellt</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jag vill ha stabilt</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Kraschlogg har sparats i användardokument: %s</string>
+  <string name="morphe_crash_log_saved">Kraschlogg har sparats: %s</string>
 </resources>

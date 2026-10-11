@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Riproduci le tracce audio dell\'album</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Riproduci la versione solo audio delle canzoni dell\'album invece di un video musicale. Richiede \'Simula i flussi video\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Abilita il passaggio audio/video</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Prova a commutare tra la versione audio e il video musicale ufficiale</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Scarica video musicali, podcast o canzoni con app di download di terze parti</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -172,13 +175,19 @@ Mentre questa opzione è attiva, la scheda Download elenca questi brani invece d
   <string name="morphe_settings_music_screen_4_player_title">Lettore</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Testi</string>
   <string name="morphe_settings_music_screen_9_misc_title">Varie</string>
+  <string name="morphe_music_app_language_title">Lingua di YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Lingua di sistema</string>
+  <string name="morphe_music_app_language_summary_unsupported">Richiede Android 13 o versioni successive</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Nascondi l\'etichetta \'Ottieni Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Nascondi le promozioni di Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Nascondi annunci video</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Nascondi attivatore Audio / Video</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Nascondi il pulsante Download</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Nasconde il pulsante di download nel programma podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Nascondi sezione Esplora</string>
+  <string name="morphe_music_hide_filter_bar_title">Nascondi barra dei filtri</string>
   <string name="morphe_music_hide_grid_shelves_title">Nascondi sezioni a griglia</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Nascondi sezioni orizzontali</string>
   <string name="morphe_music_hide_list_shelves_title">Nascondi sezioni a elenco</string>
@@ -187,7 +196,6 @@ Mentre questa opzione è attiva, la scheda Download elenca questi brani invece d
   <string name="morphe_music_hide_lyrics_translate_button_title">Nascondi il pulsante Traduci</string>
   <string name="morphe_music_hide_new_from_shelf_title">Nascondi sezione \"Nuovi da...\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Nascondi sezioni playlist</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Nascondi il pulsante di download dell\'episodio del podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Nascondi pulsante Ripeti</string>
   <string name="morphe_music_hide_shuffle_button_title">Nascondi pulsante Shuffle</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Nascondi sezione \"Componi velocemente\"</string>
@@ -235,32 +243,26 @@ Mentre questa opzione è attiva, la scheda Download elenca questi brani invece d
   <string name="morphe_music_crossfade_paused_toast">Dissolvenza incrociata in pausa per questa sessione</string>
   <string name="morphe_music_crossfade_resumed_toast">Dissolvenza incrociata ripresa</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">La modalità video non è disponibile quando la dissolvenza incrociata è abilitata</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Il crossfade è in pausa durante il casting o la condivisione dell\'audio. Il crossfade con il casting/la condivisione è instabile e potrebbe non essere mai risolvibile.</string>
-  <string name="morphe_music_crossfade_about_title">A proposito di</string>
-  <string name="morphe_music_crossfade_about_summary">Come funziona il crossfade e quando non funziona</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Il crossfade è disattivato con la riproduzione SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Il crossfade è disattivato durante il casting</string>
   <string name="morphe_music_crossfade_about_how_title">Come funziona</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Il crossfade sovrappone la fine di una canzone all'inizio della successiva, attenuando gradualmente il volume di una canzone mentre il volume dell'altra aumenta, in base alla durata e alla curva scelte.
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade sovrappone la fine di una canzone con l'inizio della successiva, usando la durata e la curva impostate
 
-Funziona con l'avanzamento automatico (quando una canzone termina da sola) e con la riproduzione manuale: ognuno ha un interruttore dedicato sopra. Con l'avanzamento automatico, la transizione inizia pochi secondi prima della fine della canzone.
+Funziona con avanzamento automatico e con salto manuale, ciascuno con il proprio interruttore. Con l'avanzamento automatico, la dissolvenza inizia pochi secondi prima della fine della canzone"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Limitazioni</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"I video musicali vengono riprodotti solo come audio mentre il crossfade è attivo. Tieni premuto il pulsante di riproduzione casuale per mettere in pausa il crossfade e guardare il video
 
-Richiede YouTube Music 9.x o versioni successive."</string>
-  <string name="morphe_music_crossfade_about_best_title">Funziona meglio con</string>
-  <string name="morphe_music_crossfade_about_best_summary">La riproduzione normale da canzone a canzone e l\'avanzamento automatico, la ripetizione di una canzone (la canzone si dissolve in sé stessa) e l\'audio locale: altoparlante del telefono, cuffie cablate, Bluetooth o USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Non funziona perfettamente</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"I video musicali vengono riprodotti solo con l'audio quando il crossfade è attivo (tieni premuto shuffle per mettere in pausa se vuoi vedere il video)
+Un video musicale che viene avviato rimane in modalità video fino alla canzone successiva
 
-Le canzoni più brevi della durata del fade potrebbero saltare il fade
+Le canzoni più brevi della durata del crossfade non vengono mescolate
 
-La schermata di blocco o la notifica potrebbero mostrare brevemente uno stato obsoleto durante la transizione"</string>
-  <string name="morphe_music_crossfade_about_known_title">Problemi noti</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Un video musicale impostato come prima canzone, o uno avviato al di fuori della coda corrente, potrebbe apparire brevemente come video prima che si attivi la modalità solo audio.
+La schermata di blocco o la notifica può mostrare brevemente uno stato non aggiornato a metà transizione
 
-Mettere in pausa il crossfade per guardare un video musicale potrebbe lasciare alcuni video neri (quelli il cui audio proviene dal video stesso). Mettere in pausa il crossfade prima di selezionare la canzone lo evita."</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Non funziona affatto</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Trasmissione o mirroring dell'audio (Chromecast, mirroring dello schermo o dell'audio): il crossfade si mette in pausa perché è instabile e potrebbe non essere risolvibile.
+Mettere in pausa il crossfade per guardare un video musicale può lasciare neri alcuni video. Mettere in pausa il crossfade prima di scegliere la canzone evita il problema"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Non supportato</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting o mirroring dell'audio (Chromecast, mirroring dello schermo o dell'audio)
 
-YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</string>
+Riproduzione SABR (simulazione dei flussi video disattivata)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Crediti</string>
   <string name="morphe_music_crossfade_about_credit_summary">Funzione crossfade di VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -274,6 +276,13 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Disabilita il reindirizzamento dei \"non mi piace\"</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Impedisce il passaggio alla traccia successiva quando viene premuto il pulsante \"non mi piace\"</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Azione al tocco sulla traccia della playlist</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Riproduci la playlist</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Riproduci solo la traccia selezionata</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Aggiungi la traccia selezionata alla coda</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Aggiunto alla coda</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Nascondi pulsante trasmetti</string>
   <string name="morphe_music_hide_history_button_title">Nascondi pulsante cronologia</string>
@@ -350,8 +359,6 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_change_start_page_entry_playlists">Playlist</string>
   <string name="morphe_change_start_page_entry_search">Cerca</string>
   <string name="morphe_change_start_page_entry_subscriptions">Iscrizioni</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Nascondi barra dei filtri</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Forza orientamento verticale</string>
   <string name="morphe_music_force_portrait_orientation_summary">Mantiene l\'app in orientamento verticale quando il dispositivo viene ruotato</string>
@@ -385,7 +392,6 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_hide_navigation_bar_title">Nascondi la barra di navigazione</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Nascondi le etichette dei pulsanti di navigazione</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Configura l\'integrazione con Last.fm e ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Non effettuato l\'accesso. Tocca per configurare</string>
   <string name="morphe_music_scrobbling_log_out">Esci</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Disconnesso</string>
@@ -408,7 +414,6 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Inserisci il token utente ListenBrainz per abilitare lo scrobbling</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Ottieni token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Verifica</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Inserisci un token</string>
   <string name="morphe_music_listenbrainz_token_status_validating">In convalida…</string>
@@ -443,8 +448,6 @@ YouTube Music 8.x: il crossfade funziona solo su 9.x e versioni successive"</str
   <string name="morphe_music_scrobbling_guess_album_title">Compila l\'album mancante</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Quando la musica non include un album, cercalo su Last.fm così il tuo scrobble è completo</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Informazioni sullo scrobbling</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Lo scrobbling sincronizza automaticamente il tuo utilizzo di YouTube Music con il tuo profilo Last.fm o ListenBrainz
 
 Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in background, assicurati che l'utilizzo della batteria dell'app YouTube Music sia impostato su \"Illimitato\""</string>
@@ -456,7 +459,6 @@ Per garantire che lo scrobbling sia sincronizzato durante la riproduzione in bac
   <string name="morphe_music_lyrics_section_service_title">Servizio di testi</string>
   <string name="morphe_music_lyrics_section_overlay_title">Sovrapposizione</string>
   <string name="morphe_music_lyrics_section_sync_title">Sincronizzazione</string>
-  <string name="morphe_music_lyrics_section_about_title">A proposito di</string>
   <string name="morphe_music_lyrics_source_all_disabled">Tutti i provider disabilitati — testi integrati e testi incorporati</string>
   <string name="morphe_music_lyrics_source_reset_title">Reimpostare l\'ordine dei provider?</string>
   <string name="morphe_music_lyrics_source_reset_message">Ripristina i provider all\'ordine di priorità predefinito</string>
@@ -541,8 +543,11 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_credit_line_regex_summary">Sincronizza i testi con la musica</string>
   <string name="morphe_music_lyrics_text_size_title">Dimensione del testo</string>
   <string name="morphe_music_lyrics_text_size_summary">Dimensione del testo dei brani</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Offset temporale</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Offset temporale globale</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Regola la sincronizzazione dei testi</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Usa i segmenti di SponsorBlock per l\'offset dei testi</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Abbina senza i segmenti che SponsorBlock salta e sposta i testi sull\'audio pubblicato. Se disattivato, SponsorBlock viene completamente ignorato</string>
+  <string name="morphe_music_lyrics_sb_no_video">Questa traccia non ha alcun id video da inviare</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Fonte: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Tradotto da Google</string>
@@ -563,6 +568,7 @@ Cookie richiesti: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_refreshing">Aggiornamento in corso</string>
   <string name="morphe_music_lyrics_refreshed">Aggiornato</string>
   <string name="morphe_music_lyrics_about_summary">"I testi vengono abbinati in base al titolo e all'artista; metadati insoliti potrebbero non trovare nulla o la versione sbagliata. Usa Aggiorna per cambiare versione. I provider contrassegnati con * richiedono un token. Non tutti i provider abilitati vengono sempre interrogati nell'ordine che hai impostato, ma rispondono in base alla loro velocità."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Abilita solo i provider che usi, o mantieni l\'impostazione predefinita — le richieste costanti possono sovraccaricare i piccoli siti di testi della community</string>
   <string name="morphe_music_lyrics_hide_info_title">Nascondi la riga dei crediti</string>
   <string name="morphe_music_lyrics_hide_info_summary">Caricamento testi...</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Scambia traduzione e romanizzazione</string>

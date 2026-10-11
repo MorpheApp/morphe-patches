@@ -41,7 +41,7 @@ Second \"item\" text"</string>
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_upload_time_title">Жүктөлгөн убакытты жашыруу</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
@@ -60,13 +60,13 @@ Second \"item\" text"</string>
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_hide_about_category_title">Маалымат</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_video_ads_title">Видео жарнамаларын жашыруу</string>
   <!-- Channel whitelist dialog, shared by ad.hideAdsPatch and layout.sponsorblock.sponsorBlockPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <!-- interaction.copytext.copyTextPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -75,7 +75,7 @@ Second \"item\" text"</string>
   <!-- %s is dollar cost, e.g., $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
-  <!-- interaction.pip.pipButtonPatch -->
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
@@ -113,6 +113,8 @@ Second \"item\" text"</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_entry_off">Өчүк</string>
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
@@ -128,10 +130,7 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_index_title">Издөө баскычынын оорду</string>
   <string name="morphe_show_settings_button_title">Оңдоолор баскычын көрсөтүү</string>
   <string name="morphe_show_settings_button_index_title">Оңдоолор баскычынын оорду</string>
-  <string name="morphe_hide_toolbar_create_button_title">Жасоо баскычын жашыруу</string>
   <string name="morphe_hide_toolbar_search_button_title">Издөө баскычын жашыруу</string>
-  <string name="morphe_show_toolbar_settings_button_title">Оңдоолор баскычын көрсөтүү</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">Оңдоолор баскычынын оорду</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -171,6 +170,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->

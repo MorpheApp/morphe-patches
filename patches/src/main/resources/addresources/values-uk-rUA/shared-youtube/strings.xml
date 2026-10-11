@@ -108,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вхід в Android VR може виправити проблеми з відтворенням для деяких користувачів
 
 Щоб увійти, натисніть \"Продовжити\" нижче"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продовжити</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Вийти</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Інструкції</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код активації: %s
 
 1. Натисніть \"Відкрити вебсайт\" нижче, щоб відкрити вебсайт \"Підключити пристрій\"
@@ -119,7 +118,6 @@ Second \"item\" text"</string>
 3. Увійдіть до Google, за потреби. Якщо у вас є кілька облікових записів, виберіть цей обліковий запис YouTube
 4. Натисніть \"Дозволити доступ до YouTube VR\"
 5. Поверніться до застосунку після того, як побачите повідомлення \"Пристрій підключено\""</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Відкрити вебсайт</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Не вдалося створити код активації</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Не вдалося створити токен автентифікації</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Вхід виконано успішно</string>
@@ -198,7 +196,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">Власний фільтр</string>
   <string name="morphe_custom_filter_screen_summary">Налаштуйте власні фільтри для приховування будь-яких елементів</string>
   <string name="morphe_custom_filter_title">Увімкнути власний фільтр</string>
-  <string name="morphe_custom_filter_strings_title">Власний фільтр</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Список рядків конструктора шляху компонента, які потрібно приховати, кожен з нового рядка</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Недійсний власний фільтр: %s</string>
@@ -261,9 +258,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Показує приблизну кількість лайків на відео, де автор вимкнув лайки</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показувати сповіщення про помилки з’єднання</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показує сповіщення, коли сервер Return YouTube Dislike недоступний</string>
-  <string name="morphe_ryd_attribution_summary">"Дані надаються API Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike повертає кількість дизлайків, яку YouTube приховав у 2021 році. Дані беруться з архіву, створеного до видалення, а для новіших відео оцінюються за голосами користувачів розширення, тож вони приблизні й оновлюються кожні кілька днів
 
-Торкніться тут, щоб відкрити ReturnYouTubeDislike.com"</string>
+Ідентифікатор відео, яке ви дивитеся, надсилається до API Return YouTube Dislike, а ваші лайки та дизлайки надсилаються анонімно для покращення оцінок"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика Return YouTube Dislike для цього пристрою</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Час відповіді API, середній</string>

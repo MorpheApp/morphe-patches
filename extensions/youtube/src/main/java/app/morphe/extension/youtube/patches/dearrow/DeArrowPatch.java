@@ -39,7 +39,8 @@ import app.morphe.extension.youtube.shared.PlayerType;
  * DeArrow titles and alternative YouTube thumbnails.
  * <p>
  * Titles are replaced by {@link app.morphe.extension.youtube.patches.originaltitles.RestoreOriginalTitlesPatch},
- * which fetches them with {@link DeArrowBrandingRequest}.
+ * which fetches them with {@link DeArrowBrandingRequest}. Titles and thumbnails each have a setting
+ * for the player, the search results, and each navigation tab.
  * <p>
  * Can show YouTube provided screen captures of beginning/middle/end of the video.
  * (ie: sd1.jpg, sd2.jpg, sd3.jpg).
@@ -68,6 +69,40 @@ public final class DeArrowPatch {
 
     // These must be class declarations if declared here,
     // otherwise the app will not load due to cyclic initialization errors.
+    public static final class DeArrowTitlesAvailability implements Setting.Availability {
+        public static boolean usingDeArrowTitlesAnywhere() {
+            return Settings.DEARROW_TITLES_HOME.get()
+                    || Settings.DEARROW_TITLES_SUBSCRIPTIONS.get()
+                    || Settings.DEARROW_TITLES_LIBRARY.get()
+                    || Settings.DEARROW_TITLES_PLAYER.get()
+                    || Settings.DEARROW_TITLES_SEARCH.get();
+        }
+
+        public static boolean usingDeArrowTitlesEverywhere() {
+            return Settings.DEARROW_TITLES_HOME.get()
+                    && Settings.DEARROW_TITLES_SUBSCRIPTIONS.get()
+                    && Settings.DEARROW_TITLES_LIBRARY.get()
+                    && Settings.DEARROW_TITLES_PLAYER.get()
+                    && Settings.DEARROW_TITLES_SEARCH.get();
+        }
+
+        @Override
+        public boolean isAvailable() {
+            return usingDeArrowTitlesAnywhere();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(
+                    Settings.DEARROW_TITLES_HOME,
+                    Settings.DEARROW_TITLES_SUBSCRIPTIONS,
+                    Settings.DEARROW_TITLES_LIBRARY,
+                    Settings.DEARROW_TITLES_PLAYER,
+                    Settings.DEARROW_TITLES_SEARCH
+            );
+        }
+    }
+
     public static final class DeArrowThumbnailsAvailability implements Setting.Availability {
         public static boolean usingDeArrowThumbnailsAnywhere() {
             return Settings.DEARROW_THUMBNAIL_HOME.get().useDeArrow
@@ -100,14 +135,18 @@ public final class DeArrowPatch {
     public static final class DeArrowAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return Settings.DEARROW_TITLES.get()
+            return DeArrowTitlesAvailability.usingDeArrowTitlesAnywhere()
                     || DeArrowThumbnailsAvailability.usingDeArrowThumbnailsAnywhere();
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(
-                    Settings.DEARROW_TITLES,
+                    Settings.DEARROW_TITLES_HOME,
+                    Settings.DEARROW_TITLES_SUBSCRIPTIONS,
+                    Settings.DEARROW_TITLES_LIBRARY,
+                    Settings.DEARROW_TITLES_PLAYER,
+                    Settings.DEARROW_TITLES_SEARCH,
                     Settings.DEARROW_THUMBNAIL_HOME,
                     Settings.DEARROW_THUMBNAIL_SUBSCRIPTIONS,
                     Settings.DEARROW_THUMBNAIL_LIBRARY,
@@ -230,37 +269,67 @@ public final class DeArrowPatch {
         return apiURI;
     }
 
-    private static ThumbnailOption optionSettingForCurrentNavigation() {
+    /**
+     * @return The value of the setting of the current navigation: the player, the search results,
+     *         or the selected navigation tab.
+     */
+    private static <T> T settingForCurrentNavigation(Setting<T> player, Setting<T> search, Setting<T> home,
+                                                     Setting<T> subscriptions, Setting<T> library) {
         // Must check player type first, as search bar can be active behind the player.
         if (PlayerType.getCurrent().isMaximizedOrFullscreen()) {
-            return Settings.DEARROW_THUMBNAIL_PLAYER.get();
+            return player.get();
         }
 
         // Must check second, as search can be from any tab.
         if (NavigationBar.isSearchBarActive()) {
-            return Settings.DEARROW_THUMBNAIL_SEARCH.get();
+            return search.get();
         }
 
         // Avoid checking which navigation button is selected, if all other settings are the same.
-        ThumbnailOption homeOption = Settings.DEARROW_THUMBNAIL_HOME.get();
-        ThumbnailOption subscriptionsOption = Settings.DEARROW_THUMBNAIL_SUBSCRIPTIONS.get();
-        ThumbnailOption libraryOption = Settings.DEARROW_THUMBNAIL_LIBRARY.get();
-        if ((homeOption == subscriptionsOption) && (homeOption == libraryOption)) {
-            return homeOption; // All are the same option.
+        T homeValue = home.get();
+        T subscriptionsValue = subscriptions.get();
+        T libraryValue = library.get();
+        if (homeValue.equals(subscriptionsValue) && homeValue.equals(libraryValue)) {
+            return homeValue; // All are the same value.
         }
 
         NavigationBar.NavigationButton selectedNavButton = NavigationBar.NavigationButton.getSelectedNavigationButton();
         if (selectedNavButton == null) {
             // Unknown tab, treat as the home tab;
-            return homeOption;
+            return homeValue;
         }
 
         return switch (selectedNavButton) {
-            case SUBSCRIPTIONS, NOTIFICATIONS -> subscriptionsOption;
-            case LIBRARY -> libraryOption;
+            case SUBSCRIPTIONS, NOTIFICATIONS -> subscriptionsValue;
+            case LIBRARY -> libraryValue;
             // Home or explore tab.
-            default -> homeOption;
+            default -> homeValue;
         };
+    }
+
+    private static ThumbnailOption thumbnailOptionForCurrentNavigation() {
+        return settingForCurrentNavigation(
+                Settings.DEARROW_THUMBNAIL_PLAYER,
+                Settings.DEARROW_THUMBNAIL_SEARCH,
+                Settings.DEARROW_THUMBNAIL_HOME,
+                Settings.DEARROW_THUMBNAIL_SUBSCRIPTIONS,
+                Settings.DEARROW_THUMBNAIL_LIBRARY
+        );
+    }
+
+    /**
+     * Can be called on any thread.
+     *
+     * @return If DeArrow titles are shown for the current navigation.
+     */
+    public static boolean useDeArrowTitlesForCurrentNavigation() {
+        return settingForCurrentNavigation(
+                Settings.DEARROW_TITLES_PLAYER,
+                Settings.DEARROW_TITLES_SEARCH,
+                Settings.DEARROW_TITLES_HOME,
+                Settings.DEARROW_TITLES_SUBSCRIPTIONS,
+                Settings.DEARROW_TITLES_LIBRARY
+        );
     }
 
     /**
@@ -379,14 +448,38 @@ public final class DeArrowPatch {
     }
 
     /**
+     * Changed during patching, so other patches only use DeArrow if this patch is included.
+     */
+    private static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
+    /**
      * Injection point. Called off the main thread and by multiple threads at the same time.
      *
      * @param originalURL Image URL for all URL images loaded, including video thumbnails.
      */
     public static String overrideImageURL(String originalURL) {
-        try {
-            ThumbnailOption option = optionSettingForCurrentNavigation();
+        return replaceImageURL(originalURL, thumbnailOptionForCurrentNavigation());
+    }
 
+    /**
+     * For the thumbnail of a search result that is not loaded by the app, such as a result shown by
+     * another patch. The thumbnail is not loaded again with the fallback thumbnail if it fails to load.
+     * Can wait for the DeArrow branding, so it must be called off the main thread.
+     *
+     * @return The thumbnail URL for the search results setting, or the original URL if not replaced
+     *         or if this patch is not included.
+     */
+    public static String getSearchResultThumbnailURL(String originalURL) {
+        if (!isPatchIncluded()) {
+            return originalURL;
+        }
+        return replaceImageURL(originalURL, Settings.DEARROW_THUMBNAIL_SEARCH.get());
+    }
+
+    private static String replaceImageURL(String originalURL, ThumbnailOption option) {
+        try {
             if (option == ThumbnailOption.ORIGINAL) {
                 return originalURL;
             }
@@ -440,7 +533,7 @@ public final class DeArrowPatch {
                     ? sanitizedReplacementURL + decodedURL.viewTrackingParameters
                     : sanitizedReplacementURL;
         } catch (Exception ex) {
-            Logger.printException(() -> "overrideImageURL failure", ex);
+            Logger.printException(() -> "replaceImageURL failure", ex);
             return originalURL;
         }
     }

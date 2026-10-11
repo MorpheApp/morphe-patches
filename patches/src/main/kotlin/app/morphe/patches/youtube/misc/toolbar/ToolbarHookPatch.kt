@@ -14,9 +14,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ToolBarPatch;"
@@ -38,17 +36,20 @@ val toolBarHookPatch = bytecodePatch(
                 val enumRegister = getInstruction<OneRegisterInstruction>(enumIndex).registerA
 
                 val imageViewIndex = it.instructionMatches[6].index
-                val imageViewReference = getInstruction<ReferenceInstruction>(imageViewIndex).reference
+                val imageViewRegister = getInstruction<OneRegisterInstruction>(imageViewIndex).registerA
 
-                val insertIndex = enumIndex + 1
-                val freeRegister = findFreeRegister(insertIndex, enumRegister)
-
+                // Capture each value at the instruction where its type is known. YouTube reuses
+                // the enum register before the ImageView load, and free locals can be live on
+                // another verifier path in newer builds, so do not carry either through a temp.
                 addInstructionsAtControlFlowLabel(
-                    insertIndex,
+                    imageViewIndex + 1,
                     """
-                        iget-object v$freeRegister, p0, $imageViewReference
-                        invoke-static { v$enumRegister, v$freeRegister }, $EXTENSION_CLASS->hookToolBar(Ljava/lang/Enum;Landroid/widget/ImageView;)V
+                        invoke-static { v$imageViewRegister }, $EXTENSION_CLASS->setToolbarImageView(Landroid/widget/ImageView;)V
                     """
+                )
+                addInstructionsAtControlFlowLabel(
+                    enumIndex + 1,
+                    "invoke-static { v$enumRegister }, $EXTENSION_CLASS->setToolbarIconEnum(Ljava/lang/Enum;)V"
                 )
             }
         }

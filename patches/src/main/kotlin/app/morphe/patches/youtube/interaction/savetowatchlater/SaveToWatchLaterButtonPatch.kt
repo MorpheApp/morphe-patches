@@ -13,10 +13,12 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerIconStyles
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
@@ -24,6 +26,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.util.setExtensionIsPatchIncluded
 
 private val saveToWatchLaterButtonResourcePatch = resourcePatch {
     execute {
@@ -34,6 +37,8 @@ private val saveToWatchLaterButtonResourcePatch = resourcePatch {
 
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/SaveToWatchLaterButton;"
+private const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/youtube/patches/SaveToWatchLaterPatch;"
 
 @Suppress("unused")
 val saveToWatchLaterButtonPatch = bytecodePatch(
@@ -48,6 +53,8 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         sharedExtensionPatch,
         videoInformationPatch,
         authHookPatch,
+        flyoutPatch,
+        loadVideoHookPatch,
         bytecodePatch {
             finalize {
                 addTopControl(
@@ -80,5 +87,7 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         )
 
         initializeTopControl(EXTENSION_BUTTON)
+
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

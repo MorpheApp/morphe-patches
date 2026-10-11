@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Uvoz je spodletel: %s</string>
   <string name="morphe_settings_navigate_up">Pomakni se nazaj</string>
   <string name="morphe_settings_search_hint">Iskanje nastavitev</string>
+  <string name="morphe_settings_screen_info_title">O nas</string>
   <string name="morphe_settings_search_no_results_title">Ni rezultatov za \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Poskusite z drugo ključno besedo</string>
   <string name="morphe_settings_search_recent_searches">Nedavna iskanja</string>
@@ -105,7 +106,6 @@ Za prevajanje novih jezikov ali izboljšanje že obstoječih prevodov obiščite
 Pričakujete dogodke."</string>
   <string name="morphe_debug_export_logs_title">Izvozi strežilnik za hrošče</string>
   <string name="morphe_debug_export_logs_summary">Izvozi strežilnik za hrošče Morphe</string>
-  <string name="morphe_debug_export_logs_file">Izvozi v datoteko</string>
   <string name="morphe_debug_export_logs_success">Strežilnik za hrošče je bil uspešno izvožen</string>
   <string name="morphe_debug_export_logs_failed">Izvoz strežilnika za hrošče je spodletel</string>
   <string name="morphe_debug_logs_search_hint">Išči v zapisih za odpravljanje napak…</string>
@@ -229,4 +229,7 @@ Tapnite gumb Nadaljuj in dovolite spremembe optimizacij."</string>
 Če želite najbolj brezhibno izkušnjo, potem &lt;b&gt;odinstalirajte&lt;/b&gt; to in posodobite priporočeno različico aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalno</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilno</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Dnevnik zrušitve shranjen v uporabniške dokumente: %s</string>
+  <string name="morphe_crash_log_saved">Dnevnik zrušitve shranjen: %s</string>
 </resources>

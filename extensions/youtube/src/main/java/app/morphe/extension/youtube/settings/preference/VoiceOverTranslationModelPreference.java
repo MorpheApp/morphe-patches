@@ -21,7 +21,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Pair;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -34,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -104,8 +102,6 @@ public class VoiceOverTranslationModelPreference extends CustomDialogListPrefere
 
         final int fg = ThemeUtils.getAppForegroundColor();
         final int secondaryFg = Color.argb(153, Color.red(fg), Color.green(fg), Color.blue(fg));
-        final int checkmarkRes = Utils.appIsUsingBoldIcons() ? DRAWABLE_CHECKMARK_BOLD : DRAWABLE_CHECKMARK;
-        LayoutInflater inflater = LayoutInflater.from(context);
 
         LinearLayout contentLayout = new LinearLayout(context);
         contentLayout.setOrientation(LinearLayout.VERTICAL);
@@ -129,10 +125,9 @@ public class VoiceOverTranslationModelPreference extends CustomDialogListPrefere
             String value = entryValues[i].toString();
             final boolean isPresetEntry = !value.equals(CUSTOM_SENTINEL);
 
-            View row = inflater.inflate(LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED, listLayout, false);
+            LinearLayout row = createCheckedListItem(context);
 
             ImageView check = row.findViewById(ID_MORPHE_CHECK_ICON);
-            check.setImageResource(checkmarkRes);
             check.setColorFilter(fg);
             View checkPlaceholder = row.findViewById(ID_MORPHE_CHECK_ICON_PLACEHOLDER);
 
@@ -155,16 +150,15 @@ public class VoiceOverTranslationModelPreference extends CustomDialogListPrefere
             textContainer.setLayoutParams(existingLp);
             itemText.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            LinearLayout rowLayout = (LinearLayout) row;
-            final int idx = rowLayout.indexOfChild(itemText);
-            rowLayout.removeView(itemText);
+            final int idx = row.indexOfChild(itemText);
+            row.removeView(itemText);
             textContainer.addView(itemText);
 
             TextView costView = new TextView(context);
             costView.setTextColor(secondaryFg);
             costView.setTextSize(12);
             textContainer.addView(costView);
-            rowLayout.addView(textContainer, idx);
+            row.addView(textContainer, idx);
 
             if (isPresetEntry) {
                 VoiceOverTranslationPatch.fetchOpenRouterModelCost(value, cost ->

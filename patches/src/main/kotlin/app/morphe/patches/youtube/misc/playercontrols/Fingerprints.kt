@@ -127,6 +127,12 @@ internal object NewPlayerOverlaysFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+internal object AutonavEndscreenOverlayFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    strings = listOf("player_overlay_player_autonav_endscreen")
+)
+
 internal object PlayerSeekbarFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
         literal(45698813)

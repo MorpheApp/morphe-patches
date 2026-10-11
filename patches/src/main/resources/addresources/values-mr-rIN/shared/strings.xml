@@ -95,7 +95,6 @@ Second \"item\" text"</string>
 तुम्हाला कोणत्याही अनपेक्षित घटनांची सूचना मिळणार नाही."</string>
   <string name="morphe_debug_export_logs_title">डीबग लॉग एक्सपोर्ट करा</string>
   <string name="morphe_debug_export_logs_summary">मॉर्फे डीबग लॉग एक्सपोर्ट करा</string>
-  <string name="morphe_debug_export_logs_file">फाईलमध्ये एक्सपोर्ट करा</string>
   <string name="morphe_debug_export_logs_success">डीबग लॉग यशस्वीरित्या एक्सपोर्ट केले</string>
   <string name="morphe_debug_export_logs_failed">डीबग लॉग एक्सपोर्ट करण्यात अयशस्वी</string>
   <string name="morphe_debug_logs_search_hint">डीबग लॉग शोधा…</string>
@@ -162,4 +161,5 @@ MicroG साठी बॅटरी ऑप्टिमायझेशन अक�
 सर्वात बिनधास्त अनुभव घेण्यासाठी, हे &lt;b&gt;अनइंस्टॉल&lt;/b&gt; करा आणि ✅ &lt;b&gt;%2$s&lt;/b&gt; या शिफारस केलेल्या ॲप आवृत्तीला स्थापित करा."</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ मला प्रायोगिक हवे आहे</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ मला स्थिर हवे आहे</string>
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

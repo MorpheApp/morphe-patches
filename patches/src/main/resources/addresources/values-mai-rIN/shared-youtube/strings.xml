@@ -62,10 +62,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"कुछ यूजरस के प्लेबैक समस्यास के ठीक करबाक लेल Android VR में साइन इन करबा सकैत अछि
 
 साइन इन करबाक लेल, नीचे जारी रखू पर क्लिक करू।"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">जारी रखू</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">साइन आउट करू</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">निर्देश</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"एक्टिवेशन कोड: %s
 
 1. ‘डिवाइस कनेक्ट करबा’ वेबसाइट खोलबाक लेल नीचे ‘वेबसाइट खोलू’ पर टैप करू।
@@ -73,7 +72,6 @@ Second \"item\" text"</string>
 3. संकेतित भए Google में साइन इन करू। यदि तहुँ मे कईटा अकाउंटमे सँ एक चुनुने पडतअ ताहि YouTube अकाउंट चुनु।
 4. ‘YouTube VR एक्सेसक अनुमति देबू’ पर टैप करू।
 5. ‘डिवाइस कनेक्ट कएल गेल’ संदेश पहुँचेला बाद एह एप्प में वापस आउ।"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">वेबसाइट खोलू</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">एक्टिवेशन कोड निर्गमन में विफलता</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">प्रमाणीकरण टोकन निर्गमन में विफलता</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">सफलतापूर्वक साइन इन कएल गेल</string>

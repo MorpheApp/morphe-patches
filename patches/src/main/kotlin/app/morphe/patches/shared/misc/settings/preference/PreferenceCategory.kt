@@ -48,3 +48,17 @@ internal fun noTitleUnsortedPreferenceCategory(
     preferences = preferences
 )
 
+/**
+ * Preferences shown in a dialog from the info button of the screen toolbar.
+ * Must be a direct child of the screen.
+ */
+internal fun screenInfoPreferenceCategory(
+    key: String,
+    preferences: Set<BasePreference>
+) = PreferenceCategory(
+    key = key,
+    titleKey = null,
+    sorting = Sorting.UNSORTED,
+    tag = "app.morphe.extension.shared.settings.preference.ScreenInfoCategory",
+    preferences = preferences
+)

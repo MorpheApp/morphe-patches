@@ -63,7 +63,6 @@ Schimbari incluse:
   <string name="morphe_hide_album_cards_summary">Ascunde cardurile de albume de sub descrierea artistului</string>
   <string name="morphe_hide_artist_cards_title">Ascunde cărțile artistului</string>
   <string name="morphe_hide_artist_cards_summary">Ascunde cardul artistului din partea de sus a rezultatelor căutării</string>
-  <string name="morphe_hide_auto_dubbed_label_title">Ascunde eticheta \"Dublat automat\"</string>
   <string name="morphe_hide_channel_buttons_title">Ascunde butoanele canalului</string>
   <string name="morphe_hide_channel_buttons_summary">Ascunde butoane precum Abonare, Vezi canalul, Comunitate și YouTube Music din profilurile canalelor din rezultatele căutării</string>
   <string name="morphe_hide_community_posts_title">Ascunde postările comunității</string>
@@ -79,7 +78,6 @@ Schimbari incluse:
   <string name="morphe_hide_history_shelf_title">Ascunde secțiunea Istoric</string>
   <string name="morphe_hide_horizontal_shelves_title">Ascunde rafturile orizontale</string>
   <string name="morphe_hide_horizontal_shelves_summary">Ascunde rafturile orizontale, cum ar fi Știri de ultimă oră, Postări din comunitate care s-ar putea să-ți placă, Continuă să urmărești, Explorează mai multe canale, Explorează mai multe subiecte, Pentru tine, Ultimele videoclipuri, Cele mai relevante, Postări din comunitatea creatorului, Cumpărături și Urmărește din nou</string>
-  <string name="morphe_hide_hyped_label_title">Ascunde eticheta \"În tendințe\"</string>
   <string name="morphe_hide_image_shelf_title">Ascunde raftul de imagini</string>
   <string name="morphe_hide_image_shelf_summary">Ascunde rafturile de imagini în rezultatele căutării</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -121,9 +119,9 @@ Schimbari incluse:
 • Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare orele de încărcare
 • Această funcție nu funcționează cu factorul de formă auto"</string>
   <string name="morphe_hide_video_thumbnail_title">Ascunde miniatura video</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">Ascunde etichetele de recomandare video</string>
-  <string name="morphe_hide_video_recommendation_labels_summary">Ascunde etichetele \"Persoane care au urmărit, de asemenea\" și \"S-ar putea să vă placă și\" în rezultatele căutării</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">Ascunde etichetele video</string>
+  <string name="morphe_hide_video_labels_summary">Ascunde etichete precum \'Auto-dublat\' / \'Dublat\', \'Primește comision\', \'Popular\', \'Vizionat și de alții\', \'produs(e)\' și \'Ți-ar putea plăcea\'</string>
   <string name="morphe_hide_view_count_title">Ascunde numărul de vizualizări</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Limitări:
@@ -158,17 +156,19 @@ Schimbari incluse:
   <string name="morphe_hide_snackbar_title">Ascunde bara de gustări</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ascunde ghidurile comunității abonaților</string>
   <string name="morphe_hide_sync_button_title">Ascunde butonul „Sincronizare cu video”</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Ascunde gradientul de atingere și menținere</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Ascunde gradientul controalelor playerului când glisezi degetul în timp ce ții apăsat pentru a accelera</string>
   <string name="morphe_hide_timed_reactions_title">Ascunde reacţiile cronologie </string>
   <string name="morphe_hide_timed_reactions_summary">Ascunde funcția care permite utilizatorilor să reacționeze cu emoji-uri în secțiunea de comentarii și chat live</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Ascunde \'Ajutor &amp; feedback\' din meniuri</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Ascunde \'Ajutor &amp; feedback\' din meniurile cu trei puncte ale barei aplicației, cum ar fi meniul rezultatelor căutării</string>
+  <string name="morphe_hide_help_feedback_menu_title">Ascunde meniul \'Ajutor &amp; feedback\'</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Ascunde meniul \'Ajutor &amp; feedback\' atunci când folosești butonul cu trei puncte, cum ar fi în rezultatele căutării</string>
   <string name="morphe_hide_handle_title">Ascunde identificatorul</string>
   <string name="morphe_hide_handle_summary">Ascunde identificatorul canalului tău în fila „Tu”</string>
   <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>
   <string name="morphe_hide_video_title_summary">Ascunde titlul videoclipului în modul ecran complet</string>
   <string name="morphe_sanitize_video_subtitle_title">Curăță subtitrările video</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Curăță fraze precum „#”, „Strângere de fonduri”, „Magazin” și „produse” din subtitrările video</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Sanitizează fraze precum \'#\', \'Strângere de fonduri\', \'produse\' și \'Magazin\' din subtitrările videoclipurilor</string>
   <string name="morphe_hide_description_components_screen_title">Descriere video</string>
   <string name="morphe_hide_description_components_screen_summary">Alegeți ce componente apar în descrierea video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ascunde secțiunea \"Rezumat video generat de AI\"</string>
@@ -327,7 +327,6 @@ Limitări:
   <string name="morphe_hide_stats_hidden_all_title">Videoclipuri ascunse, total</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">Resetați contorul ultimelor 24 de ore?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">Resetezi contorul de timp?</string>
-  <string name="morphe_hide_about_category_title">Despre</string>
   <string name="morphe_hide_aislist_screen_title">Filtru canale AI</string>
   <string name="morphe_hide_aislist_screen_summary">Ascunde videoclipuri de la canalele marcate ca fiind conținut generat de AI de către lista comunității AiSList</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Listă neagră: Încredere ridicată</string>
@@ -346,9 +345,9 @@ Limitări:
 Limitări:
 • Scurtmetrajele AI filtrate pot apărea ca un spațiu gol
 • Unele videoclipuri AI pot apărea totuși"</string>
-  <string name="morphe_hide_aislist_attribution_summary">"Datele sunt furnizate de AiSList
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList este o listă open source de canale YouTube care publică conținut generat de AI, întreținută de voluntari. Canalele sunt raportate de utilizatori și revizuite înainte de a fi adăugate
 
-Atingeți aici pentru a deschide AiSlopList.com și a vedea descărcările pentru alte platforme"</string>
+Lista este descărcată de pe GitHub și videoclipurile sunt filtrate pe dispozitivul tău"</string>
   <string name="morphe_aislist_submit_category_title">Raportează canale AI</string>
   <string name="morphe_aislist_submit_flyout_menu_title">Adaugă o intrare de raportare în meniul videoclipului</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">Adaugă o intrare în meniul videoclipului care raportează canalul unui videoclip către AiSList</string>
@@ -401,7 +400,7 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Căutare în canal</string>
-  <string name="morphe_channel_search_summary">Căutarea în timp ce un canal este deschis se limitează la acel canal.</string>
+  <string name="morphe_channel_search_summary">Adaugă un al doilea buton de căutare pe paginile canalelor pentru a căuta doar în acel canal</string>
   <string name="morphe_channel_search_hint">Caută canal</string>
   <string name="morphe_channel_search_results">Rezultatele căutării în canal</string>
   <string name="morphe_channel_search_no_results">Nu s-a găsit nimic în acest canal.</string>
@@ -420,6 +419,13 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <string name="morphe_copy_video_link_button_summary">Atingeți pentru a copia linkul video, atingeți și mențineți apăsat pentru a copia cu marcaj temporal</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Copiază timestamp-ul implicit</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Inversează acțiunile de atingere și atingere-menținere ale butonului \"Copiere link video\"</string>
+  <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">Copiază titlul videoclipului</string>
+  <string name="morphe_copy_video_title_summary">Atingeți și țineți apăsat pe titlul videoclipului pentru a-l copia</string>
+  <string name="morphe_copy_video_title_success">Titlul videoclipului a fost copiat în clipboard</string>
+  <string name="morphe_copy_comments_title">Copiază comentariile</string>
+  <string name="morphe_copy_comments_summary">Atingeți și țineți apăsat pe un comentariu pentru a-l copia</string>
+  <string name="morphe_copy_comments_success">Comentariul a fost copiat în clipboard</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Dezactivare pop-up Conectare la televizor</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Dezactivează fereastra pop-up \'Conectează-ți dispozitivele\'</string>
@@ -436,7 +442,6 @@ Rapoartele sunt publice și sunt analizate înainte ca un canal să fie adăugat
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
   <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
-  <string name="morphe_vot_enabled_title">Traducere cu voce peste</string>
   <string name="morphe_vot_enabled_summary">Afișează un buton suprapus în playerul video. Atingeți pentru a comuta traducerea, atingeți și mențineți apăsat pentru setări rapide</string>
   <string name="morphe_vot_caption_language_title">Limba</string>
   <string name="morphe_vot_translation_service_title">Furnizor de traducere</string>
@@ -504,10 +509,10 @@ Cheia API nu trebuie niciodată distribuită. Oricine are acces la aceasta poate
   <string name="morphe_loop_video_range_clear">Golește</string>
   <string name="morphe_loop_video_range_toast_on">Buclează %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Interval de timp invalid</string>
-  <!-- interaction.pip.pipButtonPatch -->
-  <string name="morphe_pip_button_overlay_title">Afișează butonul suprapus pentru Imagine în imagine</string>
-  <string name="morphe_pip_button_flyout_title">Afișează butonul pop-up pentru Imagine în imagine</string>
-  <string name="morphe_pip_button_flyout_name">Comută la Imagine în imagine</string>
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Afișează butonul Picture-in-Picture</string>
+  <string name="morphe_pip_button_flyout_title">Afișează meniul Picture-in-Picture</string>
+  <string name="morphe_pip_button_flyout_name">Comută la Picture-in-Picture</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Reține nivelul luminozității la intrarea/ieșirea din modul ecran complet</string>
   <string name="morphe_play_all_button_summary">"Atinge pentru a genera o listă de redare a tuturor videoclipurilor dintr-un canal, atinge și menține apăsat pentru a anula
@@ -716,18 +721,12 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <string name="morphe_hide_save_button_title">Cookie-urile sunt folosite pentru a autentifica cererile API pentru text în timp real pentru subtitrări</string>
   <string name="morphe_hide_more_button_title">Ascunde butonul Mai multe</string>
   <string name="morphe_fullscreen_buttons">Butoane modul ecran complet</string>
-  <string name="morphe_hide_quick_actions_title">Ascunde bara de acțiune</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Recuperează și salvează automat cookie-urile dacă sunt valide</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Ascunde butonul Comentarii</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Ascunde butonul Dislike</string>
   <string name="morphe_hide_quick_actions_like_button_title">Ascunde butonul Like</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Ascunde butonul Microfon</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Ascunde butonul Notificări</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Ascunde butonul Căutare</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">Afișează butonul Setări</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">Poziția butonului Setări</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Când este activat, atingerea deschide setările Morphe și menținerea apăsată deschide setările YouTube, dezactivează pentru a schimba</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Ascunde butonul Distribuie</string>
   <string name="morphe_quick_actions_top_margin_title">Marginea superioară a acțiunilor rapide</string>
   <string name="morphe_quick_actions_top_margin_summary">Stabiliți marginea superioară a barei de acțiuni rapide (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
@@ -741,6 +740,10 @@ Pentru a remedia, activează 'Falsifică fluxurile video' și schimbă 'clientul
   <string name="morphe_auto_captions_style_entry_4">Arată când mut</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Arată subtitrări automate</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Ascunde subtitrări automate</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">Limba preferată pentru subtitrări</string>
+  <string name="morphe_preferred_caption_language_summary">Selectează mai întâi subtitrările furnizorului, apoi traduce automat în limba preferată</string>
+  <string name="morphe_preferred_caption_language_entry_off">Oprit</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Setează cookie-urile pentru subtitrări</string>
   <string name="morphe_set_caption_cookies_summary">"Corectează o eroare standard YouTube în care subtitrările cu traducere automată ar putea să nu fie disponibile din cauza lipsei cookie-urilor
@@ -795,13 +798,8 @@ Pentru a accesa Setări, activați butonul Setări prin General → Bara de inst
   <string name="morphe_toolbar_screen_summary">Ascunde previzualizarea videoclipului următor în ecran complet înainte de începerea redării automate</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ascunde butonul Distribuție</string>
   <string name="morphe_hide_toolbar_chat_button_title">Ascunde butonul Chat</string>
-  <string name="morphe_hide_toolbar_create_button_title">Ascunde butonul Retrage</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Ascunde butonul Ecran complet</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Ascunde butonul de notificări</string>
   <string name="morphe_hide_toolbar_search_button_title">Ascunde butonul de căutare</string>
-  <string name="morphe_show_toolbar_settings_button_title">Afișează butonul Setări</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">Poziția butonului Setări</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">Acțiunea butonului Setări</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Când este activat, atingerea deschide setările Morphe, iar apăsarea lungă deschide setările YouTube, dezactivează pentru a inversa</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
@@ -952,6 +950,8 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Dezactivează redarea automată a playlistului</string>
   <string name="morphe_disable_playlist_autoplay_summary">Previne avansarea automată a playlistelor la următorul videoclip</string>
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">Dezactivează promptul \'Continuați vizionarea\'</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Ieșire din modul ecran complet la sfârșitul videoclipului</string>
   <string name="morphe_exit_fullscreen_entry_1">Dezactivat</string>
@@ -1158,29 +1158,31 @@ Limitare: Dacă 'Restaurare bara de acțiuni video veche' este dezactivată, str
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">Titluri DeArrow</string>
-  <string name="morphe_dearrow_titles_summary">Înlocuiește titlurile video cu titlurile create de comunitate trimise către DeArrow</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_home_title">Fila \"Acasă\"</string>
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_subscription_title">Fila Abonamente</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_library_title">Fila ta</string>
+  <string name="morphe_dearrow_titles_player_title">Liste de redare player &amp; recomandări</string>
+  <string name="morphe_dearrow_titles_search_title">Rezultatele căutării</string>
   <string name="morphe_dearrow_titles_icon_title">Afișează pictograma DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Afișează pictograma DeArrow pe titlurile video de la comunitate</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_home_title">Pentru fila Principală</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_subscription_title">Pentru fila Abonnamente</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_library_title">Pentru fila Ta</string>
-  <string name="morphe_dearrow_thumbnail_player_title">Pentru listele de redare și recomandările playerului</string>
-  <string name="morphe_dearrow_thumbnail_search_title">Pentru rezultatele căutării</string>
+  <string name="morphe_dearrow_casual_mode_title">Modul casual</string>
+  <string name="morphe_dearrow_casual_mode_summary">Afișează titlul original în locul titlului DeArrow dacă utilizatorii DeArrow au votat că le place titlul original</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Voturi casual minime pentru afișarea titlului original</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">Numărul de voturi casual dintr-o singură categorie, cum ar fi amuzant sau creativ, necesar pentru a afișa titlul original</string>
+  <string name="morphe_dearrow_thumbnails_title">Miniaturi DeArrow</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">Miniaturi originale</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">Săgeată &amp; Miniaturi originale</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; Capturi statice</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">Capturi statice</string>
-  <string name="morphe_dearrow_about_summary">"DeArrow oferă titluri și miniaturi furnizate de comunitate pentru videoclipurile YouTube. Acestea sunt adesea mai relevante decât cele oferite de YouTube
+  <string name="morphe_dearrow_about_summary">"DeArrow înlocuiește titlurile și miniaturile clickbait cu cele furnizate de comunitate, care sunt mai precise și mai puțin senzaționale. Titlurile sunt scrise și votate de comunitate, iar miniaturile sunt cadre extrase din videoclip
 
-Dacă este activată, adresele URL ale videoclipurilor vor fi trimise către serverul API și nu se trimit alte date. Dacă un videoclip nu are miniaturi DeArrow, atunci se afișează cele originale sau capturile statice
-
-Atingeți aici pentru a deschide DeArrow.ajay.app"</string>
+Videoclipurile sunt solicitate printr-un prefix scurt al ID-ului video cu hash, astfel încât serverul nu poate spune exact la ce videoclip te uiți. Dacă un videoclip nu are miniatură DeArrow, se afișează originalul sau o captură statică"</string>
   <string name="morphe_dearrow_connection_toast_title">Afișează alerte de eroare de conexiune</string>
   <string name="morphe_dearrow_connection_toast_summary">Afișează o notificare atunci când serverul DeArrow este indisponibil</string>
-  <string name="morphe_dearrow_api_url_title">Endpoint API DeArrow</string>
+  <string name="morphe_dearrow_api_url_title">Endpoint API</string>
   <string name="morphe_dearrow_api_url_summary">URL-ul punctului final al cache-ului DeArrow pentru miniaturi</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">Capturi video statice</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">Capturile statice sunt preluate de la începutul/mijlocul/sfârșitul fiecărui videoclip. Aceste imagini sunt integrate în YouTube și nu se folosește nicio API externă</string>

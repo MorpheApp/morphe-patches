@@ -17,6 +17,7 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.preference.Preference;
@@ -24,6 +25,7 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +55,7 @@ import app.morphe.extension.shared.settings.preference.URLLinkPreference;
 import app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.ColorDot;
+import app.morphe.extension.shared.ui.Dim;
 
 /**
  * Adapter for displaying search results in overlay ListView with ViewHolder pattern.
@@ -71,8 +74,6 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
             ResourceType.ID, "preference_title");
     protected static final int ID_PREFERENCE_SUMMARY = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "preference_summary");
-    protected static final int ID_PREFERENCE_PATH = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "preference_path");
     protected static final int ID_PREFERENCE_SWITCH = ResourceUtils.getIdentifierOrThrow(
             ResourceType.ID, "preference_switch");
     protected static final int ID_PREFERENCE_COLOR_DOT = ResourceUtils.getIdentifierOrThrow(
@@ -166,7 +167,26 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
     }
 
     protected View inflateViewForType(BaseSearchResultItem.ViewType viewType, ViewGroup parent) {
+        if (viewType == BaseSearchResultItem.ViewType.GROUP_HEADER) {
+            return createGroupHeaderView(parent.getContext());
+        }
         return inflater.inflate(viewType.getLayoutResourceId(), parent, false);
+    }
+
+    private static TextView createGroupHeaderView(Context context) {
+        TextView view = new TextView(context);
+        view.setPadding(Dim.dp16, Dim.dp4, Dim.dp16, Dim.dp4);
+        ThemeUtils.setThemeTextStyle(view, android.R.attr.textAppearanceSmall,
+                android.R.attr.textColorTertiary);
+        view.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
+        view.setTypeface(view.getTypeface(), Typeface.ITALIC);
+        view.setEllipsize(TextUtils.TruncateAt.END);
+        view.setMaxLines(1);
+        view.setBackgroundResource(ThemeUtils.getThemeResourceId(
+                context, android.R.attr.selectableItemBackground));
+        view.setClickable(true);
+        view.setFocusable(true);
+        return view;
     }
 
     protected void createViewHolderForType(View view, BaseSearchResultItem.ViewType viewType) {
@@ -193,7 +213,7 @@ public class SearchResultsAdapter extends ArrayAdapter<BaseSearchResultItem> {
             }
             case GROUP_HEADER -> {
                 GroupHeaderViewHolder groupHolder = new GroupHeaderViewHolder();
-                groupHolder.pathView = view.findViewById(ID_PREFERENCE_PATH);
+                groupHolder.pathView = (TextView) view;
                 view.setTag(groupHolder);
             }
             case NO_RESULTS -> {

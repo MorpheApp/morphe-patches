@@ -16,8 +16,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 
 public final class BinimumProvider implements LyricsProvider {
 
@@ -44,7 +45,7 @@ public final class BinimumProvider implements LyricsProvider {
                 return null;
             }
             String ttml = Requester.parseString(connection);
-            return FetchResult.blind(TtmlParser.ttmlToLyrics(ttml, name(), null));
+            return FetchResult.blind(TTMLParser.ttmlToLyrics(ttml, name(), null));
         } finally {
             if (connection != null) {
                 connection.disconnect();

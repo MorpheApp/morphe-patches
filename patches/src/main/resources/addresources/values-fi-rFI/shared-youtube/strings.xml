@@ -108,10 +108,9 @@ Jos olet YouTube Premium -käyttäjä, tämä asetus ei välttämättä ole tarp
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Kirjautuminen Android VR -tilaan voi korjata toisto-ongelmia joillakin käyttäjillä.
 
 Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Jatka</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Kirjaudu ulos</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Ohjeet</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivointikoodi: %s
 
 1. Napauta alta ”Avaa verkkosivusto” avataksesi ”Yhdistä laite” -sivun
@@ -119,7 +118,6 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
 3. Kirjaudu sisään Google-tilillesi, jos sitä pyydetään. Jos sinulla on useita tilejä, valitse tämä YouTube-tili
 4. Napauta ”Salli YouTube VR -pääsy”
 5. Palaa tähän sovellukseen, kun olet päässyt ”Laite yhdistetty” -ilmoitukseen"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Avaa verkkosivusto</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Aktivointikoodin luominen epäonnistui</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Tunnistautumistunnuksen luominen epäonnistui</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Kirjautuminen onnistui</string>
@@ -198,7 +196,6 @@ Tämän käyttöönotto kirjaa myös joitakin käyttäjätietoja, kuten IP-osoit
   <string name="morphe_custom_filter_screen_title">Mukautettu suodatin</string>
   <string name="morphe_custom_filter_screen_summary">Määritä mukautetut suodattimet piilottaaksesi minkä tahansa komponentin</string>
   <string name="morphe_custom_filter_title">Ota mukautettu suodatin käyttöön</string>
-  <string name="morphe_custom_filter_strings_title">Mukautettu suodatin</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Luettelo komponentin polun rakentajan merkkijonoista suodatettavaksi, erotettuna uudella rivillä</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Virheellinen mukautettu suodatin: %s</string>
@@ -261,9 +258,9 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_ryd_estimated_like_summary">Näyttää arvioidun tykkäysmäärän videoissa, joissa luoja on poistanut tykkäykset käytöstä</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Näytä yhteysvirheilmoitukset</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Näyttää ilmoituksen, kun Return YouTube Dislike -palvelin ei ole käytettävissä</string>
-  <string name="morphe_ryd_attribution_summary">"Data on tarjotaan Return YouTube Dislike API:n avulla
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike palauttaa dislike-laskurit, jotka YouTube piilotti vuonna 2021. Laskurit perustuvat ennen poistoa arkistoituihin tietoihin, ja uudempien videoiden osalta ne arvioidaan käyttäjien äänistä, joten ne ovat likimääräisiä ja päivittyvät muutaman päivän välein
 
-Napauta tästä avataksesi ReturnYouTubeDislike.com"</string>
+Katsomasi videon tunnus lähetetään Return YouTube Dislike -rajapintaan, ja tykkäyksesi ja dislike-tykkäyksesi lähetetään nimettömästi arvioiden parantamiseksi"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike -sovelluksen API-tilastot tällä laitteella</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-vastausajan keskiarvo</string>

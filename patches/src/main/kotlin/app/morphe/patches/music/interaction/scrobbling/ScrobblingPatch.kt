@@ -14,19 +14,20 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.music.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.music.shared.hookMediaSessionArgument
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.shared.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.EndpointServiceNameFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.likeEndpointParserFingerprint
 import app.morphe.patches.shared.layout.returnyoutubedislike.requestParameterCheckFingerprint
+import app.morphe.patches.shared.MediaSessionSetMetadataFingerprint
 import app.morphe.patches.shared.MediaSessionSetPlaybackStateFingerprint
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -144,10 +145,15 @@ val scrobblingPatch = bytecodePatch(
                     SwitchPreference("morphe_music_scrobbling_guess_album", summary = true)
                 )
             ),
-            NonInteractivePreference(
-                key = "morphe_music_scrobbling_about",
-                titleKey = "morphe_music_scrobbling_about_title",
-                summaryKey = "morphe_music_scrobbling_about_summary"
+            screenInfoPreferenceCategory(
+                key = "morphe_music_scrobbling_about_category",
+                preferences = setOf(
+                    NonInteractivePreference(
+                        key = "morphe_music_scrobbling_about",
+                        titleKey = null,
+                        summaryKey = "morphe_music_scrobbling_about_summary"
+                    )
+                )
             )
         )
 

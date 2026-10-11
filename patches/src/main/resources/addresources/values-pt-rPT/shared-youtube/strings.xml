@@ -108,10 +108,9 @@ Se você é um usuário do YouTube Premium, esta configuração pode não ser ne
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Entrar na conta Android VR pode resolver problemas de reprodução para alguns usuários
 
 Para entrar, pressione continuar abaixo"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continuar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Desconectar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruções</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Código de ativação: %s
 
 1. Toque em 'Abrir site' abaixo para acessar o site 'Conectar um dispositivo'
@@ -119,7 +118,6 @@ Para entrar, pressione continuar abaixo"</string>
 3. Faça login no Google se solicitado. Se você tiver múltiplas contas, escolha esta conta do YouTube
 4. Toque em 'Permitir acesso do YouTube VR'
 5. Volte para este aplicativo após ver a mensagem 'Dispositivo conectado'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Abrir site</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Falha ao emitir um código de ativação</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Falha ao emitir um token de autenticação</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Conexão bem-sucedida</string>
@@ -198,7 +196,6 @@ No entanto, ativar isto também irá registar alguns dados do utilizador, como o
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Configure filtros personalizados para ocultar qualquer componente</string>
   <string name="morphe_custom_filter_title">Ativar filtro personalizado</string>
-  <string name="morphe_custom_filter_strings_title">Filtro personalizado</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista de strings de construção de caminhos de componente para filtrar, separadas por quebras de linha</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado inválido: %s</string>
@@ -261,9 +258,9 @@ Se desativado posteriormente, recomenda-se limpar os dados do aplicativo para ev
   <string name="morphe_ryd_estimated_like_summary">Mostra uma contagem estimada de likes em vídeos onde o criador desativou os likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor Return YouTube Dislike não estiver disponível</string>
-  <string name="morphe_ryd_attribution_summary">"Os dados são fornecidos pela API Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura as contagens de dislikes que o YouTube escondeu em 2021. As contagens vêm de dados arquivados antes da remoção e são estimadas para vídeos mais recentes a partir dos votos de seus usuários, portanto são aproximadas e atualizadas a cada poucos dias
 
-Toque aqui para abrir ReturnYouTubeDislike.com"</string>
+O ID do vídeo que você assiste é enviado para a API do Return YouTube Dislike, e seus likes e dislikes são enviados anonimamente para melhorar as estimativas"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estatísticas da API Return YouTube Dislike deste dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo de resposta da API, média</string>

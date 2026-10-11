@@ -108,10 +108,9 @@ Jika Anda pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"</strin
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Masuk ke Android VR dapat memperbaiki masalah pemutaran untuk beberapa pengguna
 
 Untuk masuk, tekan lanjutkan di bawah ini"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Lanjutkan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Keluar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Petunjuk</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kode aktivasi: %s
 
 1. Ketuk 'Buka situs web' di bawah ini untuk membuka situs web 'Hubungkan perangkat'
@@ -119,7 +118,6 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 3. Masuk ke Google jika diminta. Jika Anda memiliki beberapa akun, pilih akun YouTube ini
 4. Ketuk 'Izinkan akses YouTube VR'
 5. Kembali ke aplikasi ini setelah muncul pesan 'Perangkat terhubung'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Buka situs web</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Gagal dalam menghasilkan kode aktivasi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Gagal dalam menghasilkan token autentikasi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Berhasil masuk</string>
@@ -198,7 +196,6 @@ Namun, mengaktifkan ini juga akan mencatat beberapa data pengguna seperti alamat
   <string name="morphe_custom_filter_screen_title">Penyaring khusus</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurasikan penyaring khusus untuk menyembunyikan komponen apa pun</string>
   <string name="morphe_custom_filter_title">Aktifkan penyaring khusus</string>
-  <string name="morphe_custom_filter_strings_title">Penyaring khusus</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Daftar string pembuat jalur komponen yang akan disaring, dipisahkan oleh baris baru</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Penyaring khusus tidak sah: %s</string>
@@ -261,9 +258,9 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_ryd_estimated_like_summary">Menampilkan perkiraan jumlah suka pada video di mana pembuatnya telah menonaktifkan fitur suka</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Tampilkan peringatan kesalahan sambungan</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Menampilkan notifikasi saat server Return YouTube Dislike tidak tersedia</string>
-  <string name="morphe_ryd_attribution_summary">"Data disediakan oleh API Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike mengembalikan jumlah dislike yang disembunyikan YouTube pada tahun 2021. Jumlah tersebut berasal dari data yang diarsipkan sebelum penghapusan dan diperkirakan untuk video yang lebih baru dari suara penggunanya, sehingga bersifat perkiraan dan diperbarui setiap beberapa hari
 
-Ketuk di sini untuk membuka ReturnYouTubeDislike.com"</string>
+ID video yang Anda tonton dikirim ke API Return YouTube Dislike, dan suka dan tidak suka Anda dikirim secara anonim untuk meningkatkan perkiraan.}"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistik API Return YouTube Dislike untuk perangkat ini</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Waktu respons API, rata-rata</string>

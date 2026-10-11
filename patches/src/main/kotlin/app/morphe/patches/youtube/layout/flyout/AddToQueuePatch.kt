@@ -16,11 +16,13 @@ import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPrefere
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderOnClickFingerprint
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -37,7 +39,8 @@ val addToQueuePatch = bytecodePatch(
         settingsPatch,
         sharedExtensionPatch,
         elementProtoParserHookPatch,
-        authHookPatch
+        authHookPatch,
+        loadVideoHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -114,5 +117,7 @@ val addToQueuePatch = bytecodePatch(
                 )
             }
         }
+
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

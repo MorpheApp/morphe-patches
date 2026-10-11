@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importation échouée : %s</string>
   <string name="morphe_settings_navigate_up">Revenir en haut</string>
   <string name="morphe_settings_search_hint">Rechercher des paramètres</string>
+  <string name="morphe_settings_screen_info_title">À propos</string>
   <string name="morphe_settings_search_no_results_title">Aucun résultat trouvé pour \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Essayez un autre mot-clé</string>
   <string name="morphe_settings_search_recent_searches">Recherches récentes</string>
@@ -106,7 +107,6 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
 Vous ne serez plus averti en cas d'événements inattendus."</string>
   <string name="morphe_debug_export_logs_title">Exporter les journaux de débogage</string>
   <string name="morphe_debug_export_logs_summary">Exporter les journaux de débogage de Morphe</string>
-  <string name="morphe_debug_export_logs_file">Exporter vers un fichier</string>
   <string name="morphe_debug_export_logs_success">Les journaux de débogage ont été exportés avec succès</string>
   <string name="morphe_debug_export_logs_failed">Échec de l\'exportation des journaux de débogage</string>
   <string name="morphe_debug_logs_search_hint">Rechercher des journaux de débogage</string>
@@ -230,4 +230,7 @@ Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencon
 Si vous souhaitez une expérience la plus stable possible, &lt;b&gt;désinstallez&lt;/b&gt; cette version et patchez la version recommandée de l'application ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Je veux l\'expérimentale</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Je veux la stable</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Le journal de plantage a été enregistré dans les documents de l\'utilisateur : %s</string>
+  <string name="morphe_crash_log_saved">Journal de plantage enregistré : %s</string>
 </resources>

@@ -18,6 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_screen_info_title">O Morphe</string>
   <string name="morphe_settings_name_default_item">The </string>
   <!-- String is also duplicated in Reddit about preference -->
   <!-- misc.debugging.enableDebuggingPatch -->
@@ -34,4 +35,5 @@ Second \"item\" text"</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

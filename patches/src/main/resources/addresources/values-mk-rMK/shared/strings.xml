@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">Импортирани %d паденија</string>
   <string name="morphe_settings_import_failure_parse">Импортирањето не успеа: %s</string>
   <string name="morphe_settings_search_hint">Пребарување на паденија</string>
+  <string name="morphe_settings_screen_info_title">Филмови</string>
   <string name="morphe_settings_search_no_results_title">Не се пронајдени резултати за „%s“</string>
   <string name="morphe_settings_search_no_results_summary">Обидете се со друг клуч</string>
   <string name="morphe_settings_search_recent_searches">Неодамнешни пребарувања</string>
@@ -95,7 +96,6 @@ Second \"item\" text"</string>
 Не ќе бидете известени за какви било неочекувани настани."</string>
   <string name="morphe_debug_export_logs_title">Извези ги завршните поруки за грешки</string>
   <string name="morphe_debug_export_logs_summary">Извези завршни поруки за грешки од Morphe</string>
-  <string name="morphe_debug_export_logs_file">Извези во датотека</string>
   <string name="morphe_debug_export_logs_success">Завршни поруки за грешки се извезони успешно</string>
   <string name="morphe_debug_export_logs_failed">Неуспешно извезување на завршни поруки за грешки</string>
   <string name="morphe_debug_export_logs_clear">Обриши</string>
@@ -164,4 +164,5 @@ Second \"item\" text"</string>
 Ако сакате најбезбедно искуство, тогаш &lt;b&gt;деинсталирајте&lt;/b&gt; го ова и повторно закачете ја препорачаната верзија на апликацијата од ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Сакам експериментално</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Сакам стабилно</string>
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

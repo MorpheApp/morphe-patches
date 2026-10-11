@@ -25,6 +25,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.youtube.layout.player.icons.copyPlayerButtonIcons
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -165,12 +166,12 @@ private val sponsorBlockResourcePatch = resourcePatch {
                 preferences = emptySet(), // Preferences are added by custom class at runtime.
                 tag = "app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockStatsPreferenceCategory"
             ),
-            PreferenceCategory(
+            screenInfoPreferenceCategory(
                 key = "morphe_sb_about",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     NonInteractivePreference(
                         key = "morphe_sb_about_api",
+                        titleKey = null,
                         tag = "app.morphe.extension.shared.sponsorblock.ui.SponsorBlockAboutPreference",
                         selectable = true
                     )

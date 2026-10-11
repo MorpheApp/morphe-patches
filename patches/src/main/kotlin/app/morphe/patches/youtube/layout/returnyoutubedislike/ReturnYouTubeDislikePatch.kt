@@ -22,6 +22,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.screenInfoPreferenceCategory
 import app.morphe.patches.shared.misc.textcomponent.hookLithoSpannableString
 import app.morphe.patches.shared.misc.textcomponent.lithoSpannableStringPatch
 import app.morphe.patches.shared.misc.textcomponent.textComponentPatch
@@ -44,7 +45,7 @@ private const val EXTENSION_CLASS =
 
 val returnYouTubeDislikePatch = bytecodePatch(
     name = "Return YouTube Dislike",
-    description = "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
+    description = "Adds an option to show the dislike count of videos with Return YouTube Dislike."
 ) {
     dependsOn(
         settingsPatch,
@@ -53,7 +54,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         lithoSpannableStringPatch,
         videoIdPatch,
         playerTypeHookPatch,
-        restoreOldVideoActionBarPatch,
+        restoreOldVideoActionBarPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -64,10 +65,16 @@ val returnYouTubeDislikePatch = bytecodePatch(
             SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
             SwitchPreference("morphe_ryd_estimated_like", summary = true),
             SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
-            NonInteractivePreference(
-                key = "morphe_ryd_attribution",
-                tag = "app.morphe.extension.shared.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",
-                selectable = true,
+            screenInfoPreferenceCategory(
+                key = "morphe_ryd_about",
+                preferences = setOf(
+                    NonInteractivePreference(
+                        key = "morphe_ryd_attribution",
+                        titleKey = null,
+                        tag = "app.morphe.extension.shared.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",
+                        selectable = true
+                    )
+                )
             ),
             PreferenceCategory(
                 key = "morphe_ryd_statistics_category",

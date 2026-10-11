@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">एल्बम ऑडियो ट्रैक चलाएँ</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">म्यूज़िक वीडियो के बजाय गानों का केवल ऑडियो वर्ज़न चलाएँ। इसके लिए \'स्पूफ़ वीडियो स्ट्रीम्स\' चालू होना ज़रूरी है</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">ऑडियो/वीडियो स्विच चालू करें</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">ऑडियो ट्रैक और ऑफ़िशियल म्यूज़िक वीडियो के बीच स्विच करने की कोशिश करें</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">थर्ड-पार्टी डाउनलोडर ऐप्स से म्यूज़िक वीडियो, पॉडकास्ट या गाने डाउनलोड करें</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_player_title">प्लेयर</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">गीत</string>
   <string name="morphe_settings_music_screen_9_misc_title">मिसलेनियस</string>
+  <string name="morphe_music_app_language_title">YouTube Music भाषा</string>
+  <string name="morphe_music_app_language_summary_default">सिस्टम भाषा</string>
+  <string name="morphe_music_app_language_summary_unsupported">Android 13 या उसके बाद के संस्करण की आवश्यकता है</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'गेट म्यूज़िक प्रीमियम\' लेबल छिपाएं</string>
   <string name="morphe_music_hide_music_premium_promotions_title">संगीत प्रीमियम प्रचार छुपाएं</string>
   <string name="morphe_music_hide_video_ads_title">विडियो विज्ञापन छिपाएं</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">ऑडियो / वीडियो टॉगल छुपाएं</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">डाउनलोड बटन छिपाएँ</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">पॉडकास्ट शो में डाउनलोड बटन को छिपाता है</string>
   <string name="morphe_music_hide_explore_shelf_title">एक्सप्लोर शेल्फ छुपाएं</string>
+  <string name="morphe_music_hide_filter_bar_title">फ़िल्टर बार छुपाएं</string>
   <string name="morphe_music_hide_grid_shelves_title">ग्रिड शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_horizontal_shelves_title">क्षैतिज शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_list_shelves_title">सूची शेल्फ छुपाएं</string>
@@ -188,7 +197,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">अनुवाद बटन छुपाएं</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'नया से\' शेल्फ छुपाएं</string>
   <string name="morphe_music_hide_playlist_shelves_title">प्लेलिस्ट शेल्फ छुपाएं</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">पॉडकास्ट एपिसोड डाउनलोड बटन छिपाएँ</string>
   <string name="morphe_music_hide_repeat_button_title">दोहराव बटन छुपाएं</string>
   <string name="morphe_music_hide_shuffle_button_title">शफल बटन छुपाएं</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'स्पीड डायल\' शेल्फ छुपाएं</string>
@@ -236,32 +244,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">इस सत्र के लिए क्रॉसफ़ेड रोका गया</string>
   <string name="morphe_music_crossfade_resumed_toast">क्रॉसफ़ेड फिर से शुरू हुआ</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">क्रॉसफ़ेड सक्षम होने पर वीडियो मोड उपलब्ध नहीं है</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">ऑडियो कास्ट या मिरर करते समय क्रॉसफ़ेड को रोका गया है। कास्ट/मिरर पर क्रॉसफ़ेड अस्थिर है और इसे ठीक नहीं किया जा सकता है।</string>
-  <string name="morphe_music_crossfade_about_title">इसके बारे में</string>
-  <string name="morphe_music_crossfade_about_summary">क्रॉसफ़ेड कैसे काम करता है — और कब यह काम नहीं करता है</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">SABR प्लेबैक के साथ क्रॉसफ़ेड बंद है</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">कास्टिंग करते समय क्रॉसफ़ेड बंद है</string>
   <string name="morphe_music_crossfade_about_how_title">यह कैसे काम करता है</string>
-  <string name="morphe_music_crossfade_about_how_summary">"क्रॉसफ़ेड एक गाने के अंत को अगले गाने की शुरुआत के साथ ओवरलैप करता है, आपके चुने हुए अवधि और वक्र पर एक को फीका करते हुए दूसरे को ऊपर उठाता है।
+  <string name="morphe_music_crossfade_about_how_summary">"क्रॉसफेड आपकी अवधि और वक्र का उपयोग करते हुए, एक गाने के अंत को अगले गाने की शुरुआत के साथ ओवरलैप करता है
 
-यह ऑटो-एडवांस (जब कोई गाना अपने आप खत्म हो जाता है) और मैनुअल स्किप पर चलता है — प्रत्येक के लिए ऊपर एक अलग टॉगल होता है। ऑटो-एडवांस पर, मिश्रण गाने के खत्म होने से कुछ सेकंड पहले शुरू होता है।
+यह ऑटो-एडवांस और मैनुअल स्किप पर चलता है, प्रत्येक का अपना टॉगल होता है। ऑटो-एडवांस पर, ब्लेंड गाने के समाप्त होने से कुछ सेकंड पहले शुरू होता है"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">सीमाएँ</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"जब क्रॉसफ़ेड चालू होता है, तो म्यूज़िक वीडियो केवल ऑडियो के रूप में चलते हैं। क्रॉसफ़ेड को रोकने और वीडियो देखने के लिए शफ़ल को लॉन्ग-प्रेस करें
 
-इसके लिए YouTube Music 9.x या उसके बाद के संस्करण की आवश्यकता है।"</string>
-  <string name="morphe_music_crossfade_about_best_title">यह सबसे अच्छा किसके साथ काम करता है</string>
-  <string name="morphe_music_crossfade_about_best_summary">सामान्य गाने से गाने का प्लेबैक और ऑटो-एडवांस, रिपीट-वन (गाना खुद में क्रॉसफ़ेड होता है), और स्थानीय ऑडियो — फोन स्पीकर, वायर्ड हेडफ़ोन, ब्लूटूथ या यूएसबी।</string>
-  <string name="morphe_music_crossfade_about_quirks_title">ठीक से काम नहीं कर रहा है</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"क्रॉसफ़ेड चालू रहने पर संगीत वीडियो केवल ऑडियो के रूप में चलते हैं (वीडियो देखने के लिए शफ़ल को लंबे समय तक दबाएं)
+जो म्यूज़िक वीडियो चलना शुरू होता है, वह अगले गाने तक वीडियो मोड में रहता है
 
-आपके फ़ेड अवधि से कम गाने फ़ेड को छोड़ सकते हैं
+फ़ेड अवधि से छोटे गाने क्रॉसफ़ेड नहीं होते
 
-लॉक स्क्रीन या अधिसूचना संक्रमण के बीच एक पुरानी स्थिति दिखा सकती है"</string>
-  <string name="morphe_music_crossfade_about_known_title">ज्ञात मुद्दे</string>
-  <string name="morphe_music_crossfade_about_known_summary">"पहले गाने के रूप में सेट एक संगीत वीडियो - या क्यू के बाहर से शुरू किया गया एक - ऑडियो-ओनली मोड शुरू होने से पहले वीडियो के रूप में दिखाई दे सकता है
+लॉक स्क्रीन या नोटिफिकेशन संक्रमण के बीच में संक्षेप में पुरानी स्थिति दिखा सकते हैं
 
-संगीत वीडियो देखने के लिए क्रॉसफ़ेड को रोकने से कुछ वीडियो काले हो सकते हैं (जिनकी ऑडियो स्वयं वीडियो से आती है)। गाने चुनने से पहले क्रॉसफ़ेड को रोकें"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">बिल्कुल काम नहीं करता</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"कास्टिंग या ऑडियो मिररिंग (क्रोमकास्ट, स्क्रीन या ऑडियो मिररिंग) - क्रॉसफ़ेड रुक जाएगा क्योंकि यह वहां अस्थिर है और शायद कभी भी ठीक नहीं हो पाएगा.
+म्यूज़िक वीडियो देखने के लिए क्रॉसफ़ेड रोकने पर कुछ वीडियो काले हो सकते हैं। गाना चुनने से पहले क्रॉसफ़ेड रोकने से यह टाला जा सकता है"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">समर्थित नहीं</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"ऑडियो कास्टिंग या मिररिंग (Chromecast, स्क्रीन या ऑडियो मिररिंग)
 
-YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उसके बाद के संस्करणों पर चलता है"</string>
+SABR प्लेबैक (स्पूफ वीडियो स्ट्रीम बंद)"</string>
   <string name="morphe_music_crossfade_about_credit_title">श्रेय</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG द्वारा क्रॉसफ़ेड सुविधा</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">अनापसंद पुनर्निर्देशन को अक्षम करें</string>
   <string name="morphe_music_disable_dislike_redirection_summary">जब अनापसंद बटन दबाया जाता है तो अगले ट्रैक पर जाने से रोकता है</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">प्लेलिस्ट ट्रैक टैप ऐक्शन</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">प्लेलिस्ट चलाएँ</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">सिर्फ चुना हुआ ट्रैक चलाएँ</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">चुने हुए ट्रैक को कतार में जोड़ें</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">कतार में जोड़ा गया</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">कास्ट बटन छुपाएं</string>
   <string name="morphe_music_hide_history_button_title">इतिहास बटन छुपाएं</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_change_start_page_entry_playlists">प्लेलिस्ट</string>
   <string name="morphe_change_start_page_entry_search">खोज करना</string>
   <string name="morphe_change_start_page_entry_subscriptions">सब्सक्रिप्शंस</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">फ़िल्टर बार छुपाएं</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">पोर्ट्रेट ओरिएंटेशन बलपूर्वक लागू करें</string>
   <string name="morphe_music_force_portrait_orientation_summary">जब डिवाइस घुमाया जाए, ऐप को पोर्ट्रेट ओरिएंटेशन में रखता है</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_hide_navigation_bar_title">नविगेशन बार छिपाएं</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">नविगेशन बटन लेबल छिपाएं</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fm और ListenBrainz एकीकरण कॉन्फ़िगर करें</string>
   <string name="morphe_music_scrobbling_summary_logged_out">लॉग इन नहीं किया गया। कॉन्फ़िगर करने के लिए टैप करें</string>
   <string name="morphe_music_scrobbling_log_out">लॉग आउट करें</string>
   <string name="morphe_music_scrobbling_logged_out_toast">लॉग आउट किया गया</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">स्क्रबिंग सक्षम करने के लिए अपना ListenBrainz यूजर टोकन दर्ज करें</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">टोकन</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">टोकन प्राप्त करें</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">सत्यापित करें</string>
   <string name="morphe_music_listenbrainz_token_status_empty">कृपया एक टोकन दर्ज करें</string>
   <string name="morphe_music_listenbrainz_token_status_validating">मान्य किया जा रहा है…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_scrobbling_guess_album_title">लापता एल्बम भरें</string>
   <string name="morphe_music_scrobbling_guess_album_summary">जब संगीत में एल्बम शामिल न हो, तो उसे Last.fm पर खोजें ताकि आपका scrobble पूरा हो जाए</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">स्क्रबिंग के बारे में</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"स्क्रोबलिंग स्वचालित रूप से आपके YouTube Music उपयोग को आपके Last.fm या ListenBrainz प्रोफ़ाइल के साथ सिंक करता है
 
 यह सुनिश्चित करने के लिए कि बैकग्राउंड प्लेबैक के दौरान स्क्रोबलिंग सिंक हो, सुनिश्चित करें कि YouTube Music के ऐप बैटरी उपयोग को \"अनियंत्रित\" पर सेट किया गया है।"</string>
@@ -457,7 +460,6 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_section_service_title">गीत बोल सेवा</string>
   <string name="morphe_music_lyrics_section_overlay_title">ओवरले</string>
   <string name="morphe_music_lyrics_section_sync_title">सिंक्रनाइज़ेशन</string>
-  <string name="morphe_music_lyrics_section_about_title">इसके बारे में</string>
   <string name="morphe_music_lyrics_source_all_disabled">सभी प्रदाता अक्षम हैं — अंतर्निहित गीत और एम्बेडेड गीत।</string>
   <string name="morphe_music_lyrics_source_reset_title">प्रदाता क्रम रीसेट करें?</string>
   <string name="morphe_music_lyrics_source_reset_message">प्रदाताओं को डिफ़ॉल्ट प्राथमिकता क्रम पर पुनर्स्थापित करें।</string>
@@ -542,8 +544,11 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_credit_line_regex_summary">यदि गीत गलत तरीके से नीचे फ़िल्टर हो जाते हैं, तो इसे समायोजित करें या साफ़ करें। अल्पविराम से अलग किए गए मार्कर: जिन पंक्तियों में मार्कर के बाद कोलन होता है, वे नीचे क्रेडिट जानकारी के रूप में दिखाई जाती हैं। अक्षम करने के लिए खाली छोड़ें</string>
   <string name="morphe_music_lyrics_text_size_title">टेक्स्ट का आकार</string>
   <string name="morphe_music_lyrics_text_size_summary">गीत टेक्स्ट का आकार</string>
-  <string name="morphe_music_lyrics_offset_ms_title">समय का अंतर</string>
+  <string name="morphe_music_lyrics_offset_ms_title">वैश्विक समय ऑफ़सेट</string>
   <string name="morphe_music_lyrics_offset_ms_summary">सिंक किए गए गीत प्लेबैक का अनुसरण करते हैं। यदि वे विचलित होते हैं, तो टाइमिंग ऑफ़सेट समायोजित करें। सिंक किए गए गीतों को आगे या पीछे स्थानांतरित करें। यदि गीत गाने से आगे चलते हैं तो सकारात्मक मान का उपयोग करें</string>
+  <string name="morphe_music_lyrics_sb_matching_title">SponsorBlock सेगमेंट का उपयोग गीत ऑफ़सेट के लिए करें</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">SponsorBlock जिन सेगमेंटों को छोड़ता है, उनके बिना मिलान करें और गीतों को रिलीज़ किए गए ऑडियो पर स्थानांतरित करें। बंद करने पर SponsorBlock को पूरी तरह अनदेखा किया जाता है</string>
+  <string name="morphe_music_lyrics_sb_no_video">इस ट्रैक में सबमिट करने के लिए कोई वीडियो आईडी नहीं है</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">स्रोत: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Google द्वारा अनुवादित</string>
@@ -564,6 +569,7 @@ YouTube Music 8.x - क्रॉसफ़ेड केवल 9.x और उस�
   <string name="morphe_music_lyrics_refreshing">रिफ़्रेश हो रहा है</string>
   <string name="morphe_music_lyrics_refreshed">रीफ़्रेश किया गया</string>
   <string name="morphe_music_lyrics_about_summary">"गीत शीर्षक और कलाकार द्वारा मिलान किए जाते हैं, असामान्य मेटाडेटा कुछ नहीं या गलत संस्करण खोज सकता है। संस्करण बदलने के लिए रीफ्रेश का उपयोग करें। * चिह्नित प्रदाताओं को टोकन की आवश्यकता होती है। सभी सक्षम प्रदाताओं से हमेशा आपके क्रम में अनुरोध नहीं किया जाता है, बल्कि वे अपनी गति के आधार पर प्रतिक्रिया देते हैं।"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">केवल उन्हीं प्रदाताओं को सक्षम करें जिनका आप उपयोग करते हैं, या डिफ़ॉल्ट रखें — लगातार अनुरोध छोटे सामुदायिक गीत साइटों को अतिभारित कर सकते हैं</string>
   <string name="morphe_music_lyrics_hide_info_title">क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_hide_info_summary">गीतों के नीचे दिखाई जाने वाली क्रेडिट लाइन छिपाएँ</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">अनुवाद और रोमनीकरण आपस में बदलें</string>

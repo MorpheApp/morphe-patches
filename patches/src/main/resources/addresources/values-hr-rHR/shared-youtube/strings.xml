@@ -108,10 +108,9 @@ Ako ste korisnik YouTube Premiuma, ova postavka možda nije potrebna"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava na Android VR može riješiti problema s reprodukcijom za neka korisnika
 
 Za prijavu, pritisnite nastavak ispod"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Nastavi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjava</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Upute</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod za aktivaciju: %s
 
 1. Pritisnite \"Otvori web stranicu\" ispod da bi se otvorila stranica \"Poveži uređaj\"
@@ -119,7 +118,6 @@ Za prijavu, pritisnite nastavak ispod"</string>
 3. Prijavite se na Google ako vam je to zapovijeđeno. Ako imate više računa, odaberite ovaj YouTube račun
 4. Pritisnite \"Dozvoli YouTube VR\" pristup
 5. Vratite se u ovu aplikaciju nakon što se pojavi poruka \"Uređaj povezan\""</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Dijeli web stranicu</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nije moguće izdati kod za aktivaciju</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nije moguće izdati autentikacijski token</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uspješno prijavljeni</string>
@@ -198,7 +196,6 @@ Međutim, omogućavanjem ove postavke zabilježit će se i neki korisnički poda
   <string name="morphe_custom_filter_screen_title">Prilagođeni filtar</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurirajte prilagođene filtre za skrivanje bilo kojeg komponenta</string>
   <string name="morphe_custom_filter_title">Omogući prilagođeni filtar</string>
-  <string name="morphe_custom_filter_strings_title">Prilagođeni filtar</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Popis nizova alata za izradu putanja komponenti za filtriranje, odvojenih novim retcima</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Nevaljan prilagođeni filtar: %s</string>
@@ -261,9 +258,9 @@ Ako se kasnije isključi, preporučuje se obrisati podatke aplikacije kako bi se
   <string name="morphe_ryd_estimated_like_summary">Prikaže procijenjeni broj likeova na videozapisima gdje je kreator onemogućio likeove</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Prikaži upozorenja o pogrešci pri povezivanju</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Prikaže obavijest kada Return YouTube Dislike poslužitelj nije dostupan</string>
-  <string name="morphe_ryd_attribution_summary">"Podatke dostavlja Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike vraća broj nesviđanja koje je YouTube sakrio 2021. Brojevi dolaze iz podataka arhiviranih prije uklanjanja, a za novije videozapise procjenjuju se na temelju glasova korisnika, pa su približni i ažuriraju se svakih nekoliko dana
 
-Dodirnite ovdje za otvaranje ReturnYouTubeDislike.com"</string>
+ID videozapisa koji gledate šalje se u Return YouTube Dislike API, a vaša sviđanja i nesviđanja šalju se anonimno kako bi se poboljšale procjene"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistika Return YouTube Dislike API-ja za ovaj uređaj</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Prosječno vrijeme odziva API-ja</string>

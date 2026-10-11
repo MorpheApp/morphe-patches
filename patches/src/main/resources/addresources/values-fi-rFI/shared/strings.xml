@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Tuonti epäonnistui: %s</string>
   <string name="morphe_settings_navigate_up">Siirry ylös</string>
   <string name="morphe_settings_search_hint">Hae asetuksista</string>
+  <string name="morphe_settings_screen_info_title">Tietoja</string>
   <string name="morphe_settings_search_no_results_title">Tuloksia ei löytynyt haulle \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Kokeile toista hakusanaa</string>
   <string name="morphe_settings_search_recent_searches">Viimeisimmät haut</string>
@@ -105,7 +106,6 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
 Et saa ilmoituksia mistään odottamattomista tapahtumista."</string>
   <string name="morphe_debug_export_logs_title">Vie virheenkorjauslokit</string>
   <string name="morphe_debug_export_logs_summary">Vie virheenkorjauslokit</string>
-  <string name="morphe_debug_export_logs_file">Vie tiedostoon</string>
   <string name="morphe_debug_export_logs_success">Asetusten tuonti onnistui</string>
   <string name="morphe_debug_export_logs_failed">Lokien vienti epäonnistui: %s</string>
   <string name="morphe_debug_logs_search_hint">Hae virheenkorjauslokit…</string>
@@ -227,4 +227,7 @@ Jos akun optimointeja ei muuteta, voit kokea:
 Jos haluat mahdollisimman toimintavarman kokemuksen, &lt;b&gt;poista&lt;/b&gt; tämä asennus ja muokkaa suositeltu sovellusversio: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellisen</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaan</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Kaatumisloki tallennettu käyttäjän asiakirjoihin: %s</string>
+  <string name="morphe_crash_log_saved">Kaatumisloki tallennettu: %s</string>
 </resources>

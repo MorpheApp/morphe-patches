@@ -108,10 +108,9 @@ Se você for um usuário do YouTube Premium, esta configuração pode não ser n
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Fazer login no Android VR pode corrigir problemas de reprodução para alguns usuários
 
 Para fazer login, pressione continuar abaixo"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continuar</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sair</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruções</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Código de ativação: %s
 
 1. Toque em \"Abrir site\" abaixo para abrir o site \"Conectar um dispositivo\"
@@ -119,7 +118,6 @@ Para fazer login, pressione continuar abaixo"</string>
 3. Faça login no Google, se solicitado. Se você tiver várias contas, escolha esta conta do YouTube
 4. Toque em \"Permitir acesso ao YouTube VR\"
 5. Retorne a este aplicativo após chegar à mensagem \"Dispositivo conectado\""</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Abrir site</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Falha ao emitir código de ativação</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Falha ao emitir um token de autenticação</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Login realizado com sucesso</string>
@@ -198,7 +196,6 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_custom_filter_screen_title">Filtro personalizado</string>
   <string name="morphe_custom_filter_screen_summary">Configure filtros personalizados para ocultar qualquer componente</string>
   <string name="morphe_custom_filter_title">Ativar filtro personalizado</string>
-  <string name="morphe_custom_filter_strings_title">Filtro personalizado</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lista de strings de componente de construção de caminhos para filtrar, separadas por novas linhas</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtro personalizado inválido: %s</string>
@@ -207,7 +204,7 @@ No entanto, ativar isso também registrará alguns dados do usuário, como seu e
   <string name="morphe_settings_menu_filter_screen_summary">Ocultar itens na tela de configurações do aplicativo padrão pelo nome visível</string>
   <string name="morphe_settings_menu_filter_picker_empty">Abra a tela de configurações do aplicativo padrão uma vez para preencher a lista</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">Remover diálogo de discrição do espectador</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">Remover aviso de conteúdo sensível</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Isso não ignora a restrição de idade. Apenas a aceita automaticamente</string>
   <!-- misc.potoken.poTokenProviderPatch -->
   <string name="morphe_potoken_provider_screen_title">Provedor de PoToken</string>
@@ -261,9 +258,9 @@ Se esta opção for desativada posteriormente, é recomendável limpar os dados 
   <string name="morphe_ryd_estimated_like_summary">Mostra uma contagem de \'Gostei\' estimada em vídeos onde o criador os desativou</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de erro de conexão</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor do Return YouTube Dislike estiver indisponível</string>
-  <string name="morphe_ryd_attribution_summary">"Dados fornecidos pela API do Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restaura as contagens de dislikes que o YouTube escondeu em 2021. As contagens vêm de dados arquivados antes da remoção e são estimadas para vídeos mais novos a partir dos votos dos seus usuários, por isso são aproximadas e atualizadas a cada poucos dias
 
-Toque aqui para abrir ReturnYouTubeDislike.com"</string>
+O ID do vídeo que você assiste é enviado para a API do Return YouTube Dislike, e seus likes e dislikes são enviados anonimamente para melhorar as estimativas"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estatísticas da API do Return YouTube Dislike deste dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo de resposta da API, média</string>

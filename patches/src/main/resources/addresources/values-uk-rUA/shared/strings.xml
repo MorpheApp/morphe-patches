@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Не вдалося імпортувати: %s</string>
   <string name="morphe_settings_navigate_up">Перейти вгору</string>
   <string name="morphe_settings_search_hint">Пошук налаштувань</string>
+  <string name="morphe_settings_screen_info_title">Про сервіс</string>
   <string name="morphe_settings_search_no_results_title">За запитом \'%s\' нічого не знайдено</string>
   <string name="morphe_settings_search_no_results_summary">Спробуйте інше ключове слово</string>
   <string name="morphe_settings_search_recent_searches">Нещодавні пошуки</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 Ви не отримуватимете сповіщення про будь-які неочікувані події."</string>
   <string name="morphe_debug_export_logs_title">Експорт журналів налагодження</string>
   <string name="morphe_debug_export_logs_summary">Експортувати журнали налагодження Morphe</string>
-  <string name="morphe_debug_export_logs_file">Експорт до файлу</string>
   <string name="morphe_debug_export_logs_success">Журнали налагодження успішно експортовано</string>
   <string name="morphe_debug_export_logs_failed">Не вдалося експортувати журнали налагодження</string>
   <string name="morphe_debug_logs_search_hint">Пошук журналів налагодження…</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 Якщо ви хочете отримати максимально безпроблемний досвід, тоді &lt;b&gt;видаліть&lt;/b&gt; це та пропатчіть рекомендовану версію застосунку ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хочу експериментальну</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хочу стабільну</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Журнал збою збережено в документах користувача: %s</string>
+  <string name="morphe_crash_log_saved">Журнал збою збережено: %s</string>
 </resources>

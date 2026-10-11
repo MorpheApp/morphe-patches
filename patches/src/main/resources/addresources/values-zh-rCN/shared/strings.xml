@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">导入失败：%s</string>
   <string name="morphe_settings_navigate_up">向上导航</string>
   <string name="morphe_settings_search_hint">搜索设置</string>
+  <string name="morphe_settings_screen_info_title">关于</string>
   <string name="morphe_settings_search_no_results_title">未找到“%s”的结果</string>
   <string name="morphe_settings_search_no_results_summary">尝试其他关键字</string>
   <string name="morphe_settings_search_recent_searches">最近搜索</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 您不会收到任何意外事件的通知。"</string>
   <string name="morphe_debug_export_logs_title">导出调试日志</string>
   <string name="morphe_debug_export_logs_summary">导出Morphe调试日志</string>
-  <string name="morphe_debug_export_logs_file">导出到文件</string>
   <string name="morphe_debug_export_logs_success">调试日志导出成功</string>
   <string name="morphe_debug_export_logs_failed">导出调试日志失败</string>
   <string name="morphe_debug_logs_search_hint">搜索调试日志…</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 如果您想要最无忧无虑的体验，请&lt;b&gt;卸载&lt;/b&gt;此应用，并更新 ✅ &lt;b&gt;%2$s&lt;/b&gt;的推荐应用版本。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我想要实验</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我想要稳定</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">崩溃日志已保存到用户文档：%s</string>
+  <string name="morphe_crash_log_saved">崩溃日志已保存：%s</string>
 </resources>

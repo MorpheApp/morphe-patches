@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Import fehlgeschlagen: %s</string>
   <string name="morphe_settings_navigate_up">Nach oben navigieren</string>
   <string name="morphe_settings_search_hint">Sucheinstellungen</string>
+  <string name="morphe_settings_screen_info_title">Über</string>
   <string name="morphe_settings_search_no_results_title">Keine Ergebnisse für „%s“ gefunden</string>
   <string name="morphe_settings_search_no_results_summary">Versuchen Sie ein anderes Schlüsselwort</string>
   <string name="morphe_settings_search_recent_searches">Kürzliche Suchen</string>
@@ -105,7 +106,6 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
 Sie werden nicht über unerwartete Ereignisse informiert."</string>
   <string name="morphe_debug_export_logs_title">Debug-Logs exportieren</string>
   <string name="morphe_debug_export_logs_summary">Morphe Debug-Logs exportieren</string>
-  <string name="morphe_debug_export_logs_file">In Datei exportieren</string>
   <string name="morphe_debug_export_logs_success">Debug-Logs erfolgreich exportiert</string>
   <string name="morphe_debug_export_logs_failed">Fehler beim Exportieren der Debug-Logs</string>
   <string name="morphe_debug_logs_search_hint">Debug-Logs suchen</string>
@@ -229,4 +229,7 @@ Wird die Akkuoptimierung nicht geändert, kann es zu folgenden Problemen kommen:
 Wenn Sie die problemloseste Erfahrung wünschen, dann &lt;b&gt;deinstallieren&lt;/b&gt; Sie diese und patchen Sie die empfohlene App-Version ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ich möchte experimentell</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ich möchte stabil</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Absturzprotokoll in Benutzerdokumenten gespeichert: %s</string>
+  <string name="morphe_crash_log_saved">Absturzprotokoll gespeichert: %s</string>
 </resources>

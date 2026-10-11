@@ -10,7 +10,6 @@
 
 package app.morphe.patches.youtube.layout.captions
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
@@ -19,7 +18,8 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.StartVideoInformerFingerprint
+import app.morphe.patches.youtube.shared.hookVideoStarted
+import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.insertLiteralOverride
@@ -34,6 +34,7 @@ internal val autoCaptionsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        startVideoInformerPatch,
         versionCheckPatch,
         videoInformationPatch
     )
@@ -68,10 +69,7 @@ internal val autoCaptionsPatch = bytecodePatch(
 
         onCreateHook(EXTENSION_CLASS, "newVideoStarted")
 
-        StartVideoInformerFingerprint.method.addInstruction(
-            0,
-            "invoke-static { }, $EXTENSION_CLASS->videoInformationLoaded()V"
-        )
+        hookVideoStarted("$EXTENSION_CLASS->videoInformationLoaded()V")
 
         if (is_20_26_or_greater) {
             NoVolumeCaptionsFeatureFlagFingerprint.matchAll().forEach {

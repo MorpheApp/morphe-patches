@@ -74,7 +74,7 @@ Second \"item\" text"</string>
 
 此設定不會變更以下任何位置的圖示：
 • 裝置系統設定中的應用程式清單
-• 部分推播通知
+• 部份推播通知
 • 「開啟方式」應用程式選擇器
 • Android Auto 圖示
 
@@ -105,13 +105,12 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">如要使用這項功能，請將「預設用戶端」改為 Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">登入 Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登入 Android VR 可解決部分使用者的播放問題
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登入 Android VR 可解決部份使用者的播放問題
 
 如要登入，請按下下方的「繼續」按鈕"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">繼續</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">登出</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">說明</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"啟動碼：%s
 
 1. 輕觸下方「開啟網站」以開啟「連線裝置」網站
@@ -119,7 +118,6 @@ Second \"item\" text"</string>
 3. 如果系統提示，請登入 Google 帳戶。如果你有多個帳戶， 請選擇這個 YouTube 帳戶
 4. 輕觸「允許 YouTube VR」存取權
 5. 看到「裝置已連結」訊息後，請返回這個應用程式"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">開啟網站</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">無法發出啟動碼</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">無法頒發驗證權杖</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">成功登入</string>
@@ -189,16 +187,15 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">偵錯日誌協定緩衝區</string>
   <string name="morphe_debug_protobuffer_summary">為開發者新增額外的紀錄資訊，以便識別應用程式元件</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"啟用這項設定將會記錄額外的版面配置資料，包括部分使用者介面元件上的螢幕文字。
+  <string name="morphe_debug_protobuffer_user_dialog_message">"啟用這項設定將會記錄額外的版面配置資料，包括部份使用者介面元件上的螢幕文字。
 
 這有助於在建立自訂篩選器時識別元件。
 
-然而，啟用這項功能也會記錄部分使用者資料，例如你的 IP 位址。"</string>
+然而，啟用這項功能也會記錄部份使用者資料，例如你的 IP 位址。"</string>
   <!-- Custom filter -->
   <string name="morphe_custom_filter_screen_title">自訂篩選器</string>
   <string name="morphe_custom_filter_screen_summary">設定自訂篩選器以隱藏任何元件</string>
   <string name="morphe_custom_filter_title">啟用自訂篩選器</string>
-  <string name="morphe_custom_filter_strings_title">自訂篩選器</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">以換行符號分隔的元件路徑建構器字串清單，用於篩選</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">無效的自訂篩選器：%s</string>
@@ -261,9 +258,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">在創作者停用「讚」功能時，顯示預估的「讚」人數</string>
   <string name="morphe_ryd_toast_on_connection_error_title">顯示連線錯誤警示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">在 Return YouTube Dislike 伺服器無法使用時顯示通知</string>
-  <string name="morphe_ryd_attribution_summary">"資料由 Return YouTube Dislike API 提供
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike 會還原 YouTube 於 2021 年隱藏的不喜歡計數。計數來自移除前存檔的數據，而對於較新的影片，則根據用戶的投票進行估算，因此數字為近似值，且每隔幾天更新一次
 
-點擊這裡開啟 ReturnYouTubeDislike.com"</string>
+您觀看的影片 ID 會傳送至 Return YouTube Dislike API，而您的喜歡與不喜歡會以匿名方式傳送，以改善估算"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">此裝置的 Return YouTube Dislike API 統計資料</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API 回應時間，平均值</string>

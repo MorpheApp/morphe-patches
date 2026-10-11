@@ -22,7 +22,8 @@ import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderF
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
-import app.morphe.patches.youtube.shared.StartVideoInformerFingerprint
+import app.morphe.patches.youtube.shared.hookVideoStarted
+import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
@@ -54,6 +55,7 @@ val flyoutPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         lithoFilterPatch,
+        startVideoInformerPatch,
         videoInformationPatch,
         elementProtoParserHookPatch,
     )
@@ -202,10 +204,7 @@ val flyoutPatch = bytecodePatch(
             }
         }
 
-        StartVideoInformerFingerprint.method.addInstruction(
-            0,
-            "invoke-static { }, $EXTENSION_UTILS_CLASS->resetVideoMarkedAsForKids()V"
-        )
+        hookVideoStarted("$EXTENSION_UTILS_CLASS->resetVideoMarkedAsForKids()V")
 
         hookElement("$EXTENSION_UTILS_CLASS->onCommentsLoaded")
         addLithoFilter(

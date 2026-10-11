@@ -108,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"התחברות לאנדרואיד VR תוכל לתקן בעיות תצוגה עבור כמה משתמשים
 
 להתחברות, לחץ על המשך למטה"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продолжить</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Выйти</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код активации: %s
 
 1. Нажмите «Открыть сайт» ниже, чтобы открыть сайт «Подключить устройство»
@@ -119,7 +118,6 @@ Second \"item\" text"</string>
 3. Войдите в Google при запросе. Если у вас несколько аккаунтов, выберите этот аккаунт YouTube
 4. Нажмите «Разрешить доступ YouTube VR»
 5. Вернитесь в это приложение после появления сообщения «Устройство подключено»"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Открыть сайт</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Не удалось выдать код активации</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Не удалось получить токен аутентификации</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешный вход</string>
@@ -198,7 +196,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">מסנן מותאם אישית</string>
   <string name="morphe_custom_filter_screen_summary">הגדר מסננים מותאמים אישית כדי להסתיר כל רכיב</string>
   <string name="morphe_custom_filter_title">הפעל מסנן מותאם אישית</string>
-  <string name="morphe_custom_filter_strings_title">מסנן מותאם אישית</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">רשימה של מחרוזות בונה נתיב רכיבים לסינון מופרדות על ידי שורות חדשות</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">מסנן מותאם אישית לא חוקי: %s</string>
@@ -261,9 +258,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">מציג ספירת לייקים משוערת בסרטונים שהיוצר השבית את הלייקים בהם</string>
   <string name="morphe_ryd_toast_on_connection_error_title">הצג התראות שגיאת חיבור</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">מציג התראה כאשר שרת Return YouTube Dislike אינו זמין</string>
-  <string name="morphe_ryd_attribution_summary">"הנתונים מסופקים על ידי ה-Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike משחזר את מספרי הדיסלייקים ש-YouTube הסתיר ב-2021. המספרים מגיעים מנתונים שנשמרו בארכיון לפני ההסרה והם מוערכים עבור סרטונים חדשים יותר מההצבעות של משתמשיה, לכן הם מקורבים ומתעדכנים כל כמה ימים
 
-הקש כאן כדי לפתוח את ReturnYouTubeDislike.com"</string>
+מזהה הסרטון שאתה צופה בו נשלח ל-API של Return YouTube Dislike, והלייקים והדיסלייקים שלך נשלחים באופן אנונימי כדי לשפר את ההערכות"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">סטטיסטיקות API של Return YouTube Dislike במכשיר זה</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">זמן תגובת API, ממוצע</string>

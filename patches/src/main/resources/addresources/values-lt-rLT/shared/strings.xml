@@ -17,25 +17,219 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Nustatymai</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Ar tikrai norite tęsti?</string>
+  <string name="morphe_settings_save">Išsaugoti</string>
+  <string name="morphe_settings_reset">Atstatyti</string>
+  <string name="morphe_settings_reset_color">Atstatyti spalvą</string>
+  <string name="morphe_settings_color_invalid">Neteisinga spalva</string>
+  <string name="morphe_settings_restart_title">Reikia iš naujo paleisti</string>
+  <string name="morphe_settings_restart_dialog_message">Kad šis pakeitimas įsigaliotų, paleiskite programėlę iš naujo.</string>
+  <string name="morphe_settings_restart">Paleisti iš naujo</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Importuoti</string>
+  <string name="morphe_settings_import_copy">Kopijuoti</string>
+  <string name="morphe_settings_import_reset">Morphe nustatymai atstatyti į numatytuosius</string>
+  <string name="morphe_settings_import_success">Importuota nustatymų: %d</string>
+  <string name="morphe_settings_import_failure_parse">Nepavyko importuoti: %s</string>
+  <string name="morphe_settings_navigate_up">Grįžti atgal</string>
+  <string name="morphe_settings_search_hint">Ieškoti nustatymuose</string>
+  <string name="morphe_settings_screen_info_title">Apie</string>
+  <string name="morphe_settings_search_no_results_title">Rezultatų pagal „%s“ nerasta</string>
+  <string name="morphe_settings_search_no_results_summary">Išbandykite kitą raktinį žodį</string>
+  <string name="morphe_settings_search_recent_searches">Paskutinės paieškos</string>
+  <string name="morphe_settings_search_remove_message">Pašalinti iš paieškos istorijos?</string>
+  <string name="morphe_settings_search_remove">Pašalinti iš paieškos istorijos</string>
+  <string name="morphe_settings_search_clear_history">Išvalyti paieškos istoriją</string>
+  <string name="morphe_settings_search_clear_history_message">Ar tikrai norite išvalyti visą paieškos istoriją?</string>
+  <string name="morphe_settings_search_tips_title">Paieškos patarimai</string>
+  <string name="morphe_settings_search_tips_summary">"• Bakstelėkite kelią, kad pereitumėte į jį
+• Paspauskite ir palaikykite nustatymą, kad pereitumėte į jį
+• Paspauskite Enter, kad išsaugotumėte paieškos užklausą istorijoje
+• Paieška nekreipia dėmesio į didžiąsias raides ir skyrybos ženklus
+• Pagrindiniai nustatymai rodomi virš išjungtų antrinių nustatymų"</string>
+  <string name="morphe_settings_search_empty_history_title">Paieškos istorija tuščia</string>
+  <string name="morphe_settings_search_empty_history_summary">Norėdami išsaugoti paieškos istoriją, įveskite paieškos užklausą ir paspauskite Enter</string>
+  <string name="morphe_settings_search_history_title">Rodyti nustatymų paieškos istoriją</string>
+  <string name="morphe_settings_name_title">Morphe nustatymų pavadinimas</string>
   <string name="morphe_settings_name_default_item">Numatytasis</string>
+  <string name="morphe_settings_name_entry_2">Papildymai</string>
+  <string name="morphe_settings_name_entry_3">Patobulinimai</string>
+  <string name="morphe_settings_name_entry_4">Morfingo laikas</string>
   <string name="morphe_settings_name_custom_item">Savo</string>
+  <string name="morphe_settings_name_custom_item_hint">Įveskite pavadinimą</string>
+  <string name="morphe_settings_name_empty_warning">Pavadinimas negali būti tuščias</string>
+  <string name="morphe_show_menu_icons_title">Rodyti Morphe nustatymų piktogramas</string>
+  <string name="morphe_settings_menu_copy_path">Nukopijuota: %s</string>
+  <string name="morphe_language_title">Morphe kalba</string>
+  <string name="morphe_language_user_dialog_message">"Kai kurių kalbų vertimai gali būti trūkstami arba neišsamūs.
+
+Norėdami išversti naujas kalbas ar pagerinti esamus vertimus, apsilankykite morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Programėlės kalba</string>
+  <string name="morphe_pref_import_export_title">Importas / eksportas</string>
+  <string name="morphe_pref_import_export_summary">Importuoti / eksportuoti Morphe nustatymus</string>
+  <string name="morphe_settings_import_file">Importuoti iš failo</string>
+  <string name="morphe_settings_import_file_success">Nustatymai sėkmingai importuoti, bakstelėkite „Išsaugoti“, kad pritaikytumėte</string>
+  <string name="morphe_settings_import_file_failed">Nepavyko importuoti nustatymų</string>
+  <string name="morphe_settings_export_file">Eksportuoti į failą</string>
+  <string name="morphe_settings_export_file_success">Nustatymai sėkmingai eksportuoti</string>
+  <string name="morphe_settings_export_file_failed">Nepavyko eksportuoti nustatymų</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Naudojate naujausią Morphe Patches versiją &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Naudojate Morphe Patches versiją &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Yra naujinimas: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Norėdami atnaujinti pataisas, naudokite Morphe, kad iš naujo pataisytumėte šią programėlę</string>
+  <string name="morphe_settings_about_links_dev_header">Pastaba</string>
+  <string name="morphe_settings_about_links_dev_body">Ši versija yra išankstinio leidimo, todėl galite susidurti su netikėtomis problemomis</string>
+  <string name="morphe_settings_about_links_header">Oficialios nuorodos</string>
+  <string name="morphe_settings_about_links_website">Svetainė</string>
+  <string name="morphe_settings_about_links_donate">Aukoti</string>
+  <string name="morphe_settings_about_links_translations">Vertimai</string>
+  <string name="morphe_settings_about_links_credits">Padėkos</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Atnaujinta</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Yra atnaujinimas</string>
+  <string name="morphe_settings_about_contributors_current">Dabartiniai kūrėjai</string>
+  <string name="morphe_settings_about_contributors_prior">Ankstesni kūrėjai</string>
+  <string name="morphe_settings_about_links_morphe">Aktyvus kūrimas</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licencijų pranešimai</string>
+  <string name="morphe_settings_about_licenses_loading">Įkeliama…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Derinimas</string>
+  <string name="morphe_debug_screen_summary">Konfigūruoti išplėstines kūrėjo parinktis ir diagnostikos žurnalus</string>
+  <string name="morphe_debug_title">Įjungti derinimo žurnalų registravimą</string>
+  <string name="morphe_debug_stacktrace_title">Derinimo žurnalo iškvietimų seka</string>
+  <string name="morphe_debug_stacktrace_summary">Įtraukia iškvietimų sekas į derinimo žurnalus, kad padėtų nustatyti klaidas</string>
+  <string name="morphe_debug_toast_on_error_title">Rodyti Morphe klaidos pranešimą</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Išjungus klaidų pranešimus, visi Morphe klaidų pranešimai bus paslėpti.
+
+Apie netikėtus įvykius nebūsite informuojami."</string>
+  <string name="morphe_debug_export_logs_title">Eksportuoti derinimo žurnalus</string>
+  <string name="morphe_debug_export_logs_summary">Eksportuoti Morphe derinimo žurnalus</string>
+  <string name="morphe_debug_export_logs_success">Derinimo žurnalai sėkmingai eksportuoti</string>
+  <string name="morphe_debug_export_logs_failed">Nepavyko eksportuoti derinimo žurnalų</string>
+  <string name="morphe_debug_logs_search_hint">Ieškoti derinimo žurnaluose…</string>
+  <string name="morphe_debug_export_logs_clear">Išvalyti</string>
+  <string name="morphe_debug_logs_disabled">Derinimo žurnalų registravimas išjungtas</string>
+  <string name="morphe_debug_logs_none_found">Derinimo žurnalų nerasta</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Derinimo žurnalai nukopijuoti</string>
+  <string name="morphe_debug_logs_failed_to_export">Nepavyko eksportuoti derinimo žurnalų: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Derinimo žurnalai išvalyti</string>
+  <string name="morphe_debug_feature_flags_manager_title">Funkcijų vėliavėlių tvarkyklė</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Tvarkyti logines funkcijų vėliavėles</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Ieškoti funkcijų vėliavėlių…</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_inactive">Neaktyvios (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_active">Aktyvios (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_blocked">Užblokuotos (%s)</string>
   <!-- Keep short, four of these are shown in one row. -->
+  <string name="morphe_debug_feature_flags_manager_filter_forced">Priverstinės (%s)</string>
   <!-- Keep short, shown as a badge and as a button. -->
+  <string name="morphe_debug_feature_flags_manager_state_auto">Automatinis</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_blocked">Ne</string>
   <!-- Keep short, shown as a badge and as a button. -->
   <string name="morphe_debug_feature_flags_manager_state_forced">Taip</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_on">Priverstinai įjungti</string>
+  <string name="morphe_debug_feature_flags_manager_action_force_off">Blokuoti</string>
   <string name="morphe_debug_feature_flags_manager_action_remove">Pašalinti</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Funkcijų vėliavėlės išsaugotos</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Funkcijų vėliavėlės atstatytos</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Funkcijų vėliavėlės nukopijuotos į iškarpinę</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Kad šis nustatymas būtų pritaikytas, paleiskite programėlę iš naujo</string>
+  <string name="morphe_debug_feature_flags_manager_import_export_title">Eksportuoti ir importuoti</string>
+  <string name="morphe_debug_feature_flags_manager_import_success">Importuota funkcijų vėliavėlių: %s</string>
+  <string name="morphe_debug_feature_flags_manager_import_failed">Funkcijų vėliavėlių nerasta</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_success">Funkcijų vėliavėlės sėkmingai eksportuotos</string>
+  <string name="morphe_debug_feature_flags_manager_export_file_failed">Nepavyko eksportuoti funkcijų vėliavėlių</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_success">Funkcijų vėliavėlės įkeltos, bakstelėkite „Išsaugoti“, kad pritaikytumėte</string>
+  <string name="morphe_debug_feature_flags_manager_import_file_failed">Nepavyko perskaityti failo</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_title">Dvejetainė paieška</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_message">"Nustato, kuri funkcijų vėliavėlė sukelia programėlės elgesį.
+
+Pusė iš %s vėliavėlių yra užblokuota, o po kiekvieno perkrovimo jūs nurodote, ar elgesys vis dar yra.
+
+Prieš pradėdami vieną kartą atkurkite tą elgesį, kitaip paieškoje trūks vėliavėlių, kurių programėlė dar nepaprašė"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_start_button">Pradėti</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_no_candidates">"Nėra funkcijų vėliavėlių, tinkamų paieškai.
+
+Dvejetainėje paieškoje gali būti naudojamos tik tos vėliavėlės, prie kurių programėlė jau kreipėsi ir kurios šiuo metu nėra priverstinai įjungtos"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_status">"Žingsnis %1$s
+
+Liko %2$s vėliavėlių, %3$s iš jų užblokuota šiam žingsniui.
+
+Paleiskite programėlę iš naujo, patikrinkite, ar elgesys pasireiškia, tada atsakykite žemiau"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_in_progress">Vyksta funkcijų vėliavėlių paieška</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_present">Elgesys pasireiškia</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_absent">Elgesys nepasireiškia</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_cancel">Atšaukti dvejetainę paiešką</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_canceled">Dvejetainė paieška atšaukta</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_found">"Funkcijų vėliavėlė %s sukelia šį elgesį.
+
+Dabar ji užblokuota"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted">"Nepavyko rasti funkcijų vėliavėlės.
+
+Atrodo, kad programėlės elgesio nekontroliuoja funkcijų vėliavėlė"</string>
+  <string name="morphe_debug_feature_flags_manager_bisect_exhausted_multiple">"Nepavyko rasti nė vienos funkcijų vėliavėlės.
+
+Elgesys išnyko anksčiau paieškos metu, todėl gali būti susijusios kelios vėliavėlės arba vienas iš atsakymų buvo neteisingas"</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Atidaryti MicroG nustatymus</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG neįdiegtas. Įdiekite jį.</string>
+  <string name="gms_core_dialog_title">Reikalingas veiksmas</string>
+  <string name="gms_core_dialog_outdated_message">"Jūsų MicroG v%1s yra pasenęs ir gali sukelti problemų.
+
+Atnaujinkite MicroG iki naujausios versijos v%2s."</string>
+  <string name="gms_core_dialog_update_text">Naujinti</string>
+  <string name="gms_core_dialog_ignore_text">Ignoruoti</string>
+  <string name="gms_core_dialog_conflict_message">"Įdiegtas MicroG nerekomenduojamas Morphe:
+
+%1s
+
+Bakstelėkite, kad jį pašalintumėte, tada iš naujo atidarykite šią programėlę ir įdiekite MicroG RE."</string>
+  <string name="gms_core_dialog_uninstall_text">Išdiegti</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG neturi leidimo veikti fone.
+
+Vadovaukitės savo telefono „Don't kill my app“ vadovu ir pritaikykite nurodymus savo MicroG diegimui.
+
+Tai būtina, kad programa veiktų."</string>
+  <string name="gms_core_dialog_open_website_text">Atidaryti svetainę</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Norint išvengti problemų, MicroG akumuliatoriaus optimizavimas turi būti išjungtas.
+
+Išjungus MicroG akumuliatoriaus optimizavimą, tai neturės neigiamos įtakos akumuliatoriaus naudojimui.
+
+Bakstelėkite mygtuką „Tęsti“ ir leiskite atlikti optimizavimo pakeitimus."</string>
+  <string name="gms_core_dialog_continue_text">Tęsti</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Rodyti „MicroG“ akumuliatoriaus optimizavimo dialogI langą</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Išjungus tai bus paslėptas MicroG akumuliatoriaus optimizavimo raginimas.
+
+Jei akumuliatoriaus optimizavimo nustatymai nebus pakeisti, galite susidurti su:
+• Programėlė gali atsitiktinai užsidaryti
+• Pranešimai gali neveikti
+• Atkūrimas fone gali neveikti"</string>
   <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Programos nuorodų tvarkymas</string>
+  <string name="morphe_link_handling_summary">Konfigūruoti nuorodas, kad jos atsidarytų šioje programėlėje</string>
+  <string name="morphe_link_handling_step1_title">1 žingsnis: išjungti originalios programėlės nuorodas</string>
+  <string name="morphe_link_handling_step1_message">Atidarykite originalios programėlės nustatymus ir išjunkite visas domenų nuorodas</string>
+  <string name="morphe_link_handling_step2_title">2 žingsnis: įjungti pataisytos programėlės nuorodas</string>
+  <string name="morphe_link_handling_step2_message">Atidarykite pataisytos programėlės nustatymus ir įjunkite visas domenų nuorodas</string>
+  <string name="morphe_link_handling_open">Atidaryti nustatymus</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentinis įspėjimas 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Naudojate eksperimentinę programėlės versiją ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Tikėkitės neįprasto programėlės elgesio ar nenustatytų klaidų, kol deriname šios programėlės versijos pataisas.
+&lt;br/&gt;&lt;br/&gt;
+Jei norite kuo sklandesnės patirties, &lt;b&gt;pašalinkite&lt;/b&gt; šią versiją ir įdiekite pataisas rekomenduojamai programėlės versijai ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Noriu eksperimentinio</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Noriu stabilaus</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Klaidos žurnalas išsaugotas vartotojo dokumentuose: %s</string>
+  <string name="morphe_crash_log_saved">Klaidos žurnalas išsaugotas: %s</string>
 </resources>

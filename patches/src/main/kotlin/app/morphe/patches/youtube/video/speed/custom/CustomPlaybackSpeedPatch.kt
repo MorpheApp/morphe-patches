@@ -344,6 +344,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // region Custom tap and hold 2x speed.
 
         TapAndHoldSpeedFingerprint.let {
+            it.clearMatch()
             it.method.apply {
                 val speedIndex = it.instructionMatches.last().index
                 val speedRegister = getInstruction<OneRegisterInstruction>(speedIndex).registerA

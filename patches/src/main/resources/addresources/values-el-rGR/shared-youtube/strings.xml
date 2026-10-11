@@ -108,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Η είσοδος στο Android VR μπορεί να επιλύσει τα προβλήματα αναπαραγωγής για ορισμένους χρήστες
 
 Για να εισέλθετε, πατήστε \"Συνέχεια\" παρακάτω"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Συνέχεια</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Αποσύνδεση</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Οδηγίες</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Κωδικός ενεργοποίησης: %s
 
 1. Πατήστε 'Άνοιγμα ιστοσελίδας' παρακάτω για να ανοίξετε την ιστοσελίδα 'Σύνδεση συσκευής'
@@ -119,7 +118,6 @@ Second \"item\" text"</string>
 3. Εισέλθετε στο Google εάν σας ζητηθεί. Εάν έχετε πολλαπλούς λογαριασμούς τότε επιλέξτε \"YouTube account\"
 4. Πατήστε 'Allow YouTube VR' access
 5. Επιστρέψτε σε αυτήν την εφαρμογή αφού φτάσετε στο μήνυμα 'Συσκευή συνδεδεμένη'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Άνοιγμα ιστοσελίδας</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Αποτυχία έκδοσης κωδικού ενεργοποίησης</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Αποτυχία έκδοσης κλειδιού ταυτοποίησης</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Η είσοδος ολοκληρώθηκε με επιτυχία</string>
@@ -198,7 +196,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">Προσαρμοσμένο φίλτρο</string>
   <string name="morphe_custom_filter_screen_summary">Διαμόρφωση προσαρμοσμένων φίλτρων για απόκρυψη οποιουδήποτε στοιχείου</string>
   <string name="morphe_custom_filter_title">Χρήση προσαρμοσμένου φίλτρου</string>
-  <string name="morphe_custom_filter_strings_title">Προσαρμοσμένο φίλτρο</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Λίστα συμβολοσειρών στοιχείων δημιουργού διαδρομής για φιλτράρισμα, διαχωρισμένες με νέες γραμμές</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Μη έγκυρο προσαρμοσμένο φίλτρο: %s</string>
@@ -257,9 +254,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Εμφανίζει μια εκτιμώμενη μέτρηση like σε βίντεο όπου ο δημιουργός έχει απενεργοποιήσει τα like</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Εμφάνιση ειδοποιήσεων σφάλματος σύνδεσης</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Εμφανίζει μια ειδοποίηση όταν ο διακομιστής Return YouTube Dislike δεν είναι διαθέσιμος</string>
-  <string name="morphe_ryd_attribution_summary">"Τα δεδομένα παρέχονται από το Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Το Return YouTube Dislike επαναφέρει τους μετρητές dislikes που έκρυψε το YouTube το 2021. Τα στοιχεία προέρχονται από δεδομένα που αρχειοθετήθηκαν πριν από την αφαίρεση και εκτιμώνται για νεότερα βίντεο από τις ψήφους των χρηστών του, οπότε είναι κατά προσέγγιση και ενημερώνονται κάθε λίγες ημέρες
 
-Πατήστε εδώ για να ανοίξετε το ReturnYouTubeDislike.com"</string>
+Το αναγνωριστικό του βίντεο που παρακολουθείτε αποστέλλεται στο API του Return YouTube Dislike, και τα likes και dislikes σας αποστέλλονται ανώνυμα για να βελτιωθούν οι εκτιμήσεις"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Στατιστικά στοιχεία Return YouTube Dislike API αυτής της συσκευής</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Χρόνος απόκρισης API, μέσος όρος</string>

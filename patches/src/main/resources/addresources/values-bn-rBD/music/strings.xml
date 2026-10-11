@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">অ্যালবাম অডিও ট্র্যাক চালান</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">মিউজিক ভিডিওর পরিবর্তে শুধুমাত্র অডিও সংস্করণ চালান। \'স্পুফ ভিডিও স্ট্রিম\' প্রয়োজন।</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">অডিও/ভিডিও সুইচ সক্ষম করুন</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">অডিও ট্র্যাক সংস্করণ এবং অফিসিয়াল মিউজিক ভিডিও স্যুইচ করার চেষ্টা করুন</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">থার্ড-পার্টি ডাউনলোড করার অ্যাপের মাধ্যমে মিউজিক ভিডিও, পডকাস্ট বা গান ডাউনলোড করুন</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_player_title">প্লেয়ার</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">লিরিকস</string>
   <string name="morphe_settings_music_screen_9_misc_title">বিবিধ</string>
+  <string name="morphe_music_app_language_title">YouTube Music ভাষা</string>
+  <string name="morphe_music_app_language_summary_default">সিস্টেম ভাষা</string>
+  <string name="morphe_music_app_language_summary_unsupported">Android 13 বা তার পরবর্তী সংস্করণ প্রয়োজন</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
   <string name="morphe_music_hide_music_premium_promotions_title">মিউজিক প্রিমিয়াম প্রচার লুকান</string>
   <string name="morphe_music_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">অডিও / ভিডিও toggle লুকান</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">ডাউনলোড বোতাম লুকান</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">পডকাস্ট শোতে ডাউনলোড বোতামটি লুকিয়ে রাখে</string>
   <string name="morphe_music_hide_explore_shelf_title">এক্সপ্লোর শেল্ফ লুকান</string>
+  <string name="morphe_music_hide_filter_bar_title">ফিল্টার বার লুকান</string>
   <string name="morphe_music_hide_grid_shelves_title">গ্রিড শেল্ফগুলো লুকান</string>
   <string name="morphe_music_hide_horizontal_shelves_title">অনুভূমিক শেল্ফ লুকান</string>
   <string name="morphe_music_hide_list_shelves_title">তালিকা শেল্ফগুলো লুকান</string>
@@ -188,7 +197,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">অনুবাদ বোতামটি লুকান</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'নতুন\' শেল্ফ লুকান</string>
   <string name="morphe_music_hide_playlist_shelves_title">প্লেলিস্ট শেল্ফগুলো লুকান</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">পডকাস্ট পর্বের ডাউনলোড বোতাম লুকান</string>
   <string name="morphe_music_hide_repeat_button_title">রিপিট বোতাম লুকান</string>
   <string name="morphe_music_hide_shuffle_button_title">শাফল বোতাম লুকান</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'স্পীড ডায়াল\' শেল্ফ লুকান</string>
@@ -236,32 +244,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">এই সেশনের জন্য ক্রসফেড সাময়িকভাবে বন্ধ করা হয়েছে</string>
   <string name="morphe_music_crossfade_resumed_toast">ক্রসফেড পুনরায় শুরু করা হয়েছে</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">ক্রসফেড চালু থাকা অবস্থায় ভিডিও মোড উপলব্ধ নয়</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">কাস্টিং বা অডিও মিররিং করার সময় ক্রসফেড সাময়িকভাবে বন্ধ থাকে। কাস্ট অথবা মিরর চলাকালীন ক্রসফেড ফিচারটি কিছুটা অস্থিতিশীল এবং এটি হয়তো কখনোই পুরোপুরি ঠিক করা সম্ভব নাও হতে পারে।</string>
-  <string name="morphe_music_crossfade_about_title">মর্ফ সম্পর্কে</string>
-  <string name="morphe_music_crossfade_about_summary">ক্রসফেড যেভাবে কাজ করে — এবং এটি যখন কাজ করে না</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">SABR প্লেব্যাকের সময় ক্রসফেড বন্ধ থাকে</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">কাস্টিংয়ের সময় ক্রসফেড বন্ধ থাকে</string>
   <string name="morphe_music_crossfade_about_how_title">এটি যেভাবে কাজ করে</string>
-  <string name="morphe_music_crossfade_about_how_summary">"ক্রসফেড ফিচারটি আপনার পছন্দ করা সময় এবং কার্ভ অনুযায়ী একটি গানের ভলিউম কমিয়ে অন্য গানটি চালু করার মাধ্যমে প্রথম গানের শেষের সাথে পরের গানের শুরুকে মিলিয়ে দেয়।
+  <string name="morphe_music_crossfade_about_how_summary">"ক্রসফেড একটি গানের শেষ অংশের সাথে পরের গানের শুরুর অংশ ওভারল্যাপ করে, আপনার নির্ধারিত সময়কাল এবং কার্ভ ব্যবহার করে।
 
-এটি অটো-অ্যাডভান্স (যখন একটি গান নিজে থেকেই শেষ হয়) এবং ম্যানুয়াল স্কিপ — উভয় ক্ষেত্রেই কাজ করে। ওপরের টগলগুলো থেকে প্রতিটির জন্য আলাদা সেটিংস বেছে নেওয়া যাবে। অটো-অ্যাডভান্সের ক্ষেত্রে গানটি শেষ হওয়ার কয়েক সেকেন্ড আগেই মিশ্রণটি শুরু হয়ে যায়।
+এটি অটো-অ্যাডভান্স এবং ম্যানুয়াল স্কিপ উভয় ক্ষেত্রেই কাজ করে, প্রতিটির জন্য আলাদা টগল রয়েছে। অটো-অ্যাডভান্সে, গান শেষ হওয়ার কয়েক সেকেন্ড আগে ব্লেন্ড শুরু হয়"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">সীমাবদ্ধতা</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"ক্রসফেড চালু থাকলে মিউজিক ভিডিওগুলো শুধুমাত্র অডিও হিসেবে চলে। ক্রসফেড বিরাম দিতে এবং ভিডিওটি দেখতে শাফলে দীর্ঘ চাপ দিন।
 
-এর জন্য ইউটিউব মিউজিক ৯.এক্স (YouTube Music 9.x) বা এর চেয়ে নতুন সংস্করণের প্রয়োজন হবে।"</string>
-  <string name="morphe_music_crossfade_about_best_title">সবচেয়ে ভালো কাজ করে যার সাথে</string>
-  <string name="morphe_music_crossfade_about_best_summary">স্বাভাবিকভাবে একের পর এক গান বাজালে এবং অটো-অ্যাডভান্সের ক্ষেত্রে, রিপিট-ওয়ান (যেখানে গানটি নিজের সাথেই ক্রসফেড হয়) চালু থাকলে, এবং লোকাল অডিও — যেমন ফোনের স্পিকার, তারযুক্ত হেডফোন, ব্লুটুথ কিংবা ইউএসবি-র মাধ্যমে শোনার সময়।</string>
-  <string name="morphe_music_crossfade_about_quirks_title">ঠিকঠাক কাজ করছে না</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"ক্রসফেড চালু থাকা অবস্থায় মিউজিক ভিডিওগুলো শুধু অডিও হিসেবে চলবে (ভিডিও দেখতে চাইলে শাফেল বাটনে লং-প্রেস করে এটি পজ করে নিন)
+যে মিউজিক ভিডিওটি বাজতে শুরু করে, সেটি পরের গান পর্যন্ত ভিডিও মোডে থাকে।
 
-আপনার সেট করা ফেড টাইমের চেয়ে ছোট গানের ক্ষেত্রে ফেড স্কিপ হতে পারে
+ফেডের সময়কালের চেয়ে ছোট গানগুলো ক্রসফেড করা হয় না।
 
-গান পরিবর্তনের মাঝামাঝি সময়ে লক স্ক্রিন বা নোটিফিকেশনে সাময়িকভাবে আগের তথ্য দেখাতে পারে"</string>
-  <string name="morphe_music_crossfade_about_known_title">পরিচিত সমস্যাগুলো</string>
-  <string name="morphe_music_crossfade_about_known_summary">"প্রথম গান হিসেবে কোনো মিউজিক ভিডিও প্লে করলে — অথবা বর্তমান কিউ-এর (Queue) বাইরে থেকে কোনো গান শুরু করলে — অডিও-অনলি মোড চালু হওয়ার আগে সেটি অল্প সময়ের জন্য ভিডিও হিসেবে দেখা যেতে পারে
+লক স্ক্রিনে বা বিজ্ঞপ্তিতে ট্রানজিশনের মাঝখানে সাময়িকভাবে একটি পুরোনো অবস্থা দেখা যেতে পারে।
 
-মিউজিক ভিডিও দেখার জন্য ক্রসফেড পজ করলে কিছু ভিডিওর স্ক্রিন কালো হয়ে থাকতে পারে (বিশেষ করে যেসব ভিডিওর অডিও সরাসরি ভিডিও ফাইল থেকেই আসে)। গানটি প্লে করার আগেই ক্রসফেড পজ করে নিলে এই সমস্যাটি এড়ানো সম্ভব"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">একদমই কাজ করছে না</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"অডিও কাস্ট বা মিরর করার সময় (যেমন ক্রোমকাস্ট, স্ক্রিন বা অডিও মিররিং) — ক্রসফেড সাময়িকভাবে বন্ধ থাকে, কারণ এই মোডে এটি ঠিকঠাক কাজ করে না এবং সমস্যাটি হয়তো কখনোই পুরোপুরি ঠিক করা যাবে না।
+মিউজিক ভিডিও দেখতে ক্রসফেড বিরাম দিলে কিছু ভিডিও কালো হয়ে যেতে পারে। গানটি বেছে নেওয়ার আগে ক্রসফেড বিরাম দিলে এটি এড়ানো যায়"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">সমর্থিত নয়</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"অডিও কাস্টিং বা মিররিং (Chromecast, স্ক্রিন বা অডিও মিররিং)
 
-ইউটিউব মিউজিক ৮.এক্স (YouTube Music 8.x) সংস্করণে — ক্রসফেড ফিচারটি কেবল ৯.এক্স বা এর চেয়ে নতুন সংস্করণে কাজ করে"</string>
+SABR প্লেব্যাক (ভিডিও স্ট্রিম স্পুফ করা বন্ধ থাকলে)"</string>
   <string name="morphe_music_crossfade_about_credit_title">কৃতজ্ঞতা স্বীকার</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG-এর তৈরি ক্রসফেড ফিচার</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ Second \"item\" text"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">ডিসলাইক রিডাইরেকশন নিষ্ক্রিয় করুন</string>
   <string name="morphe_music_disable_dislike_redirection_summary">ডিসলাইক বোতাম চাপলে পরবর্তী ট্র্যাকে যাওয়া বন্ধ করে</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">প্লেলিস্ট ট্র্যাক ট্যাপ অ্যাকশন</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">প্লেলিস্ট চালান</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">শুধুমাত্র নির্বাচিত ট্র্যাকটি চালান</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">নির্বাচিত ট্র্যাকটি সারিতে যোগ করুন</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">ভিডিও তালিকায় যুক্ত করা হয়েছে</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
   <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
@@ -351,8 +360,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">চ্লাস ন৊টিস্য়াসেগ</string>
   <string name="morphe_change_start_page_entry_search">অনুসন্ধান</string>
   <string name="morphe_change_start_page_entry_subscriptions">সদস্যতা</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">ফিল্টার বার লুকান</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">পোর্ট্রেট ওরিয়েন্টেশন বাধ্যতামূলক করুন</string>
   <string name="morphe_music_force_portrait_orientation_summary">ডিভাইসটি ঘোরানো হলে অ্যাপটিকে পোর্ট্রেট ওরিয়েন্টেশনে রাখে</string>
@@ -386,7 +393,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">নেভিগেশন বোতামের লেবেলগুলি লুকান</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fm এবং ListenBrainz ইন্টিগ্রেশন কনফিগার করুন</string>
   <string name="morphe_music_scrobbling_summary_logged_out">লগ ইন করা হয়নি। কনফিগার করতে ট্যাপ করুন</string>
   <string name="morphe_music_scrobbling_log_out">লগ আউট করুন</string>
   <string name="morphe_music_scrobbling_logged_out_toast">লগ আউট করা হয়েছে</string>
@@ -409,7 +415,6 @@ Second \"item\" text"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">স্ক্রবলিং সক্ষম করতে আপনার ListenBrainz ব্যবহারকারী টোকেন লিখুন</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">টোকেন</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">টোকেন পান</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">যাচাই করুন</string>
   <string name="morphe_music_listenbrainz_token_status_empty">অনুগ্রহ করে একটি টোকেন লিখুন</string>
   <string name="morphe_music_listenbrainz_token_status_validating">বৈধতা যাচাই করা হচ্ছে…</string>
@@ -444,8 +449,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_scrobbling_guess_album_title">অনুপস্থিত অ্যালবাম পূরণ করুন</string>
   <string name="morphe_music_scrobbling_guess_album_summary">যখন সংগীতে অ্যালবাম থাকে না, তখন Last.fm-এ এটি খুঁজে দেখুন যাতে আপনার scrobble সম্পূর্ণ হয়।</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">স্ক্রবলিং সম্পর্কে</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"স্ক্রবিং স্বয়ংক্রিয়ভাবে আপনার YouTube Music ব্যবহার আপনার Last.fm বা ListenBrainz প্রোফাইলের সাথে সিঙ্ক করে।
 
 ব্যাকগ্রাউন্ড প্লেব্যাকের সময় স্ক্রবিং সিঙ্ক করা হয়েছে কিনা তা নিশ্চিত করতে, নিশ্চিত করুন যে YouTube Music-এর অ্যাপ ব্যাটারি ব্যবহার \"Unrestricted\" তে সেট করা আছে।"</string>
@@ -457,7 +460,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_section_service_title">লিরিক্স পরিষেবা</string>
   <string name="morphe_music_lyrics_section_overlay_title">ওভারলে</string>
   <string name="morphe_music_lyrics_section_sync_title">সিঙ্ক্রোনাইজেশন</string>
-  <string name="morphe_music_lyrics_section_about_title">মর্ফ সম্পর্কে</string>
   <string name="morphe_music_lyrics_source_all_disabled">সব প্রদানকারী অক্ষম — বিল্ট-ইন লিরিক্স এবং এমবেড করা লিরিক্স</string>
   <string name="morphe_music_lyrics_source_reset_title">প্রদানকারীর ক্রম পুনরায় সেট করবেন?</string>
   <string name="morphe_music_lyrics_source_reset_message">প্রদানকারীদের ডিফল্ট অগ্রাধিকার ক্রমে পুনরুদ্ধার করুন</string>
@@ -542,8 +544,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_credit_line_regex_summary">যদি লিরিক্স ভুলভাবে নিচে ফিল্টার করা হয়, তবে এটি সামঞ্জস্য করুন বা মুছে ফেলুন। কমা-বিভাজিত মার্কার: একটি মার্কারের পরে কোলন থাকে এমন লাইনগুলো নিচে ক্রেডিট তথ্য হিসেবে দেখানো হয়। খালি রাখলে এটি নিষ্ক্রিয় থাকবে।</string>
   <string name="morphe_music_lyrics_text_size_title">টেক্সট আকার</string>
   <string name="morphe_music_lyrics_text_size_summary">লিরিক্স টেক্সটের আকার</string>
-  <string name="morphe_music_lyrics_offset_ms_title">সময় অফসেট</string>
+  <string name="morphe_music_lyrics_offset_ms_title">বৈশ্বিক সময় অফসেট</string>
   <string name="morphe_music_lyrics_offset_ms_summary">সিংক করা লিরিক্স প্লেব্যাক অনুসরণ করে। যদি সেগুলো সামনে-পিছনে সরে যায়, টাইমিং অফসেট সামঞ্জস্য করুন। সিংক করা লিরিক্স সামনে বা পিছনে সরান। লিরিক্স গানের চেয়ে এগিয়ে থাকলে একটি ধনাত্মক মান ব্যবহার করুন।</string>
+  <string name="morphe_music_lyrics_sb_matching_title">গানের কথার অফসেটের জন্য SponsorBlock সেগমেন্ট ব্যবহার করুন</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">SponsorBlock যে সেগমেন্টগুলো স্কিপ করে সেগুলো বাদ দিয়ে ম্যাচ করুন এবং গানের কথা প্রকাশিত অডিওর সাথে সমন্বয় করুন। বন্ধ করলে SponsorBlock সম্পূর্ণ উপেক্ষা করা হয়</string>
+  <string name="morphe_music_lyrics_sb_no_video">এই ট্র্যাকে জমা দেওয়ার জন্য কোনো ভিডিও আইডি নেই</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">উৎস: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Google দ্বারা অনুবাদিত</string>
@@ -564,6 +569,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_lyrics_refreshing">লিরিক্স খোঁজার সময় শিরোনাম, শিল্পী এবং অ্যালবাম অনুসারে একটি ট্র্যাক খুঁজে পাওয়া যায় না, অথবা ভুল সংস্করণ পাওয়া যায়। আপনি ম্যানুয়ালি সঠিক সংস্করণটি নির্বাচন করতে পারেন, অথবা অনুসন্ধানটি আবার চেষ্টা করতে পারেন।</string>
   <string name="morphe_music_lyrics_refreshed">ক্রেডিট লাইন লুকান</string>
   <string name="morphe_music_lyrics_about_summary">"গানের কথা শিরোনাম এবং শিল্পীর নাম দ্বারা মেলানো হয়; অস্বাভাবিক মেটাডেটা কিছুই খুঁজে নাও পেতে পারে বা ভুল সংস্করণ খুঁজে পেতে পারে। সংস্করণ পরিবর্তন করতে রিফ্রেশ ব্যবহার করুন। * চিহ্নিত প্রদানকারীদের একটি টোকেন প্রয়োজন। সক্রিয় করা সমস্ত প্রদানকারী সবসময় আপনার ক্রমে অনুরোধ করা হয় না, বরং তাদের গতির ভিত্তিতে সাড়া দেয়।"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">শুধুমাত্র আপনি যে প্রোভাইডারগুলো ব্যবহার করেন সেগুলো সক্রিয় করুন, অথবা ডিফল্ট রাখুন — অবিরাম অনুরোধ ছোট কমিউনিটি গানের কথা সাইটগুলোকে ওভারলোড করতে পারে</string>
   <string name="morphe_music_lyrics_hide_info_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>
   <string name="morphe_music_lyrics_hide_info_summary">ON রোমানাইজেশনকে লিরিক্সের নিচে এবং অনুবাদকে উপরে রাখে; OFF রোমানাইজেশনকে উপরে এবং অনুবাদকে নিচে রাখে</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">অনুবাদ এবং রোমানাইজেশন অদলবদল করুন</string>

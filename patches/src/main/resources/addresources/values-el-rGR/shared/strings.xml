@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Η εισαγωγή απέτυχε: %s</string>
   <string name="morphe_settings_navigate_up">Μετάβαση προς τα πάνω</string>
   <string name="morphe_settings_search_hint">Ρυθμίσεις αναζήτησης</string>
+  <string name="morphe_settings_screen_info_title">Πληροφορίες</string>
   <string name="morphe_settings_search_no_results_title">Δε βρέθηκαν αποτελέσματα για \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Δοκιμάστε άλλη λέξη-κλειδί</string>
   <string name="morphe_settings_search_recent_searches">Πρόσφατες αναζητήσεις</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 Δε θα ειδοποιηθείτε για τυχόν απρόβλεπτα γεγονότα."</string>
   <string name="morphe_debug_export_logs_title">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
   <string name="morphe_debug_export_logs_summary">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων του Morphe</string>
-  <string name="morphe_debug_export_logs_file">Εξαγωγή σε αρχείο</string>
   <string name="morphe_debug_export_logs_success">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εξήχθησαν επιτυχώς</string>
   <string name="morphe_debug_export_logs_failed">Αποτυχία εξαγωγής αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
   <string name="morphe_debug_logs_search_hint">Αναζήτηση στα αρχεία καταγραφής εντοπισμού σφαλμάτων</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 Εάν θέλετε μια εμπειρία χωρίς σφάλματα, τότε &lt;b&gt; απεγκαταστήστε την &lt;/b&gt; και τροποποιήσετε την συνιστώμενη έκδοση της εφαρμογής ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Θέλω πειραματική έκδοση</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Θέλω σταθερή έκδοση</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Το αρχείο καταγραφής σφαλμάτων αποθηκεύτηκε στα έγγραφα του χρήστη: %s</string>
+  <string name="morphe_crash_log_saved">Το αρχείο καταγραφής σφαλμάτων αποθηκεύτηκε: %s</string>
 </resources>

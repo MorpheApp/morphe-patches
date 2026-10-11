@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Prehrať audio skladby albumu</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Prehráva iba audio verziu skladieb albumu namiesto hudobného videa. Vyžaduje \'Spoof video streamy\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Povoliť prepínanie audio/video</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Pokúsiť sa prepnúť verziu zvukovej stopy a oficiálne hudobné video</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Stiahnite si hudobné videá, podcasty alebo piesne pomocou sťahovacích aplikácií tretích strán</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Stiahnuté skladby sa zobrazia tu"</string>
   <string name="morphe_settings_music_screen_4_player_title">Prehrávač</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Texty</string>
   <string name="morphe_settings_music_screen_9_misc_title">Ostatné</string>
+  <string name="morphe_music_app_language_title">Jazyk YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Jazyk systému</string>
+  <string name="morphe_music_app_language_summary_unsupported">Vyžaduje Android 13 alebo novší</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Skryť tlačidlo \'Získať Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Skryť promo akcie Premium</string>
   <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Skryť prepínač zvuku/videa</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Skryť tlačidlo Stiahnuť</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Skryje tlačidlo Stiahnuť v podcaste</string>
   <string name="morphe_music_hide_explore_shelf_title">Skryť poličku Preskúmať</string>
+  <string name="morphe_music_hide_filter_bar_title">Skryť filterový panel</string>
   <string name="morphe_music_hide_grid_shelves_title">Skryť mriežkové poličky</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Skryť horizontálne poličky</string>
   <string name="morphe_music_hide_list_shelves_title">Skryť zoznamové poličky</string>
@@ -188,7 +197,6 @@ Stiahnuté skladby sa zobrazia tu"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Skryť tlačidlo Preložiť</string>
   <string name="morphe_music_hide_new_from_shelf_title">Skryť poličku \'Novinky od\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Skryť poličky zoznamov skladieb</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Skryť tlačidlo na stiahnutie epizódy podcastu</string>
   <string name="morphe_music_hide_repeat_button_title">Skryť tlačidlo Opakovať</string>
   <string name="morphe_music_hide_shuffle_button_title">Skryť tlačidlo Náhodné prehrávanie</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Skryť poličku \'Rýchla voľba\'</string>
@@ -236,32 +244,26 @@ Stiahnuté skladby sa zobrazia tu"</string>
   <string name="morphe_music_crossfade_paused_toast">Prechodové zmiznutie zvuku pozastavené v tejto relácii</string>
   <string name="morphe_music_crossfade_resumed_toast">Prechodové zmiznutie zvuku obnovené</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Režim videa nie je dostupný, keď je zapnuté prechodové zmiznutie zvuku</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Funkcia plynulého prechodu je pozastavená počas vysielania alebo zrkadlenia zvuku. Plynulý prechod počas vysielania/zrkadlenia je nestabilný a nemusí sa to nikdy podariť opraviť.</string>
-  <string name="morphe_music_crossfade_about_title">O aplikácii</string>
-  <string name="morphe_music_crossfade_about_summary">Ako funguje plynulý prechod – a kedy nefunguje</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade je vypnutý pri prehrávaní SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade je vypnutý počas castovania</string>
   <string name="morphe_music_crossfade_about_how_title">Ako to funguje</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Plynulý prechod prekrýva koniec jednej skladby s začiatkom ďalšej, pričom postupne znižuje hlasitosť jednej skladby a zvyšuje hlasitosť druhej počas vami zvolenej dĺžky a krivky.
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade prekrýva koniec jednej skladby so začiatkom ďalšej, pričom používa vašu dĺžku a krivku
 
-Funguje pri automatickom prechode (keď sa skladba skončí sama) a pri manuálnom preskočení – obe majú svoje vlastné prepínače vyššie. Pri automatickom prechode sa miešanie začne niekoľko sekúnd pred koncom skladby.
+Funguje pri automatickom prechode aj pri manuálnom preskočení, každý s vlastným prepínačom. Pri automatickom prechode sa prelínanie začína niekoľko sekúnd pred koncom skladby"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Obmedzenia</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Keď je crossfade zapnutý, hudobné videá sa prehrávajú iba ako zvuk. Dlhým stlačením tlačidla náhodného prehrávania pozastavíte crossfade a budete môcť sledovať video
 
-Vyžaduje YouTube Music 9.x alebo novší."</string>
-  <string name="morphe_music_crossfade_about_best_title">Najlepšie funguje s</string>
-  <string name="morphe_music_crossfade_about_best_summary">Štandardné prehrávanie skladieb, automatický prechod, opakovanie jednej skladby (skladba plynulo prechádza do seba) a lokálne audio – reproduktor telefónu, káblové slúchadlá, Bluetooth alebo USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Nefunguje celkom správne</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Hudobné videá sa počas zapnutého crossfade prehrávajú iba so zvukom (dlhým stlačením tlačidla náhodného výberu pozastavíte, ak chcete aj video)
+Hudobné video, ktoré začne prehrávanie, zostane vo video režime až do nasledujúcej skladby
 
-Piesne kratšie ako trvanie prechodu môžu vynechať plynulý prechod
+Skladby kratšie ako trvanie prelínania nie sú prelínané
 
-Obrazovka uzamknutia alebo notifikácia môžu na krátky čas zobrazovať zastaraný stav počas prechodu"</string>
-  <string name="morphe_music_crossfade_about_known_title">Známe problémy</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Hudobné video nastavené ako prvá pieseň – alebo spustené mimo aktuálnej fronty – sa môže na krátky čas zobraziť ako video, kým sa neaktivuje režim iba so zvukom
+Zámková obrazovka alebo upozornenie môže uprostred prechodu krátko zobraziť neaktuálny stav
 
-Pauznutie crossfade na prezeranie hudobného videa môže spôsobiť, že niektoré videá zostanú čierne (tie, ktorých zvuk pochádza priamo z videa). Pauznutie crossfade pred výberom skladby tomu zabráni"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Nefunguje vôbec</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Prehrávanie obsahu pomocou technológie Cast alebo zrkadlenie obrazovky (Chromecast, zrkadlenie obrazovky alebo zvuku) – crossfade sa pozastaví, pretože to nie je stabilné a nemusí to byť nikdy opravené.
+Pozastavenie crossfade kvôli sledovaniu hudobného videa môže spôsobiť, že niektoré videá zostanú čierne. Pozastavenie crossfade pred výberom skladby tomu predíde"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Nepodporované</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Vysielanie alebo zrkadlenie zvuku (Chromecast, zrkadlenie obrazovky alebo zvuku)
 
-YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
+Prehrávanie SABR (spoofovanie video streamov vypnuté)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Poďakovanie</string>
   <string name="morphe_music_crossfade_about_credit_summary">Funkcia Crossfade od VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Zakázať presmerovanie dislajkov</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zabraňuje preskočeniu na ďalšiu skladbu po stlačení tlačidla dislajku</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Akcia po klepnutí na skladbu v zozname skladieb</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Prehrať zoznam skladieb</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Prehrať iba vybranú skladbu</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Pridať vybranú skladbu do frontu</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Pridané do frontu</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo Prenos</string>
   <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_change_start_page_entry_playlists">Zoznamy</string>
   <string name="morphe_change_start_page_entry_search">Hľadať</string>
   <string name="morphe_change_start_page_entry_subscriptions">Odbery</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Skryť filterový panel</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Vynútiť orientáciu na výšku</string>
   <string name="morphe_music_force_portrait_orientation_summary">Ponechá aplikáciu v orientácii na výšku, keď je zariadenie otočené</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_hide_navigation_bar_title">Skryť navigačný panel</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skryť označenia tlačidiel navigačného panela</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Konfigurácia integrácie Last.fm a ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Neprihlásený. Klepnite na tlačidlo na konfiguráciu</string>
   <string name="morphe_music_scrobbling_log_out">Odhlásiť sa</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Odhlásený</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Zadajte svoj používateľský token ListenBrainz na povolenie scrobovania</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Získať token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Overiť</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Prosím, zadajte token</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Overovanie…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
   <string name="morphe_music_scrobbling_guess_album_title">Doplniť chýbajúci album</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Keď skladba neobsahuje album, vyhľadajte ju na Last.fm, aby bol váš scrobble úplný.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">O scrobovaní</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling automaticky synchronizuje vaše používanie YouTube Music s vaším profilom Last.fm alebo ListenBrainz.
 
 Na zabezpečenie synchronizácie scrobblingu počas prehrievania na pozadí sa uistite, že používanie aplikácie YouTube Music v batérii je nastavené na \"Nekontrolované\""</string>
@@ -457,7 +460,6 @@ Na zabezpečenie synchronizácie scrobblingu počas prehrievania na pozadí sa u
   <string name="morphe_music_lyrics_section_service_title">Služba textov piesní</string>
   <string name="morphe_music_lyrics_section_overlay_title">Prekrytie</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronizácia</string>
-  <string name="morphe_music_lyrics_section_about_title">O aplikácii</string>
   <string name="morphe_music_lyrics_source_all_disabled">Všetci poskytovatelia sú vypnutí – vstavané texty a vložené texty.</string>
   <string name="morphe_music_lyrics_source_reset_title">Obnoviť poradie poskytovateľov?</string>
   <string name="morphe_music_lyrics_source_reset_message">Obnoviť poskytovateľov do predvoleného poradia priority.</string>
@@ -542,8 +544,11 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_credit_line_regex_summary">Skryť pôvodný text piesne</string>
   <string name="morphe_music_lyrics_text_size_title">Veľkosť textu</string>
   <string name="morphe_music_lyrics_text_size_summary">Veľkosť textu piesne</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Posun časovania</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Globálny časový posun</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Zobraziť preklad</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Použiť segmenty SponsorBlock na posun textu piesne</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Synchronizovať bez segmentov, ktoré SponsorBlock preskakuje, a posunúť text piesne na vydaný zvuk. Vypnuté úplne ignoruje SponsorBlock</string>
+  <string name="morphe_music_lyrics_sb_no_video">Táto skladba nemá id videa na odoslanie</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Zdroj: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Skryť preklad</string>
@@ -564,6 +569,7 @@ Vyžadované cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAP
   <string name="morphe_music_lyrics_refreshing">Skryť prepis</string>
   <string name="morphe_music_lyrics_refreshed">Prepis</string>
   <string name="morphe_music_lyrics_about_summary">"Texty piesní sa priraďujú podľa názvu a interpreta, nezvyčajné metadáta môžu nenájsť nič alebo nesprávnu verziu. Pomocou obnovenia prepínajte verzie. Poskytovatelia označení * vyžadujú token. Nie všetci povolení poskytovatelia sú vždy vyžiadaní v nastavenom poradí, ale odpovedajú podľa svojej rýchlosti."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Povoľte iba poskytovateľov, ktorých používate, alebo ponechajte predvolené nastavenie — neustále požiadavky môžu zahltiť malé komunitné stránky s textami piesní</string>
   <string name="morphe_music_lyrics_hide_info_title">Nahlásiť problém s prekladom</string>
   <string name="morphe_music_lyrics_hide_info_summary">Nahlásiť problém s textom piesne</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Problém bol nahlásený</string>

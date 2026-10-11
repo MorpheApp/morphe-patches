@@ -23,12 +23,17 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.music.settings.Settings;
 
 public final class LunaBeatProvider implements LyricsProvider {
 
@@ -36,15 +41,30 @@ public final class LunaBeatProvider implements LyricsProvider {
     private static final String MANIFEST_URL = BASE_URL + "api/v1/manifest.json";
     private static final String SONGS_URL = BASE_URL + "api/v1/songs.json";
 
+    private static final long REQUEST_THROTTLE_MS = 500;
+
+    private static final AtomicLong lastRequestTime = new AtomicLong(0);
+
     private static volatile List<Song> lunabeatSongs = Collections.emptyList();
     private static volatile String lunabeatCachedRevision;
     private static final CountDownLatch lunabeatIndexLatch = new CountDownLatch(1);
+    private static final AtomicBoolean lunabeatLoadStarted = new AtomicBoolean(false);
 
     record Song(String id, String title, String[] artists, String album,
                 String path, String sha256) {
     }
 
     public static void preloadIndex() {
+        if (!Settings.LYRICS_ENABLED.get() || !LyricsManager.isProviderEnabled("LunaBeat")) {
+            return;
+        }
+        startIndexLoad();
+    }
+
+    private static void startIndexLoad() {
+        if (!lunabeatLoadStarted.compareAndSet(false, true)) {
+            return;
+        }
         try {
             doPreloadIndex();
         } catch (Exception ex) {
@@ -76,12 +96,14 @@ public final class LunaBeatProvider implements LyricsProvider {
     private static String fetchRevision() {
         HttpURLConnection conn = null;
         try {
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             conn = LyricsRequests.openConnection(MANIFEST_URL);
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
             }
             JSONObject manifest = Requester.parseJSONObject(conn);
-            return manifest.optString("revision", null);
+            String revision = manifest.optString("revision");
+            return revision.isEmpty() ? null : revision;
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not fetch LunaBeat manifest revision", ex);
             return null;
@@ -94,6 +116,7 @@ public final class LunaBeatProvider implements LyricsProvider {
     private static List<Song> fetchSongIndex() {
         HttpURLConnection conn = null;
         try {
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             conn = LyricsRequests.openConnection(SONGS_URL);
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
@@ -106,15 +129,15 @@ public final class LunaBeatProvider implements LyricsProvider {
             for (int i = 0; i < songs.length(); i++) {
                 JSONObject obj = songs.optJSONObject(i);
                 if (obj == null) continue;
-                String id = obj.optString("id", null);
-                String title = obj.optString("title", null);
-                String path = obj.optString("path", null);
-                if (id == null || title == null || path == null) continue;
+                String id = obj.optString("id", "");
+                String title = obj.optString("title", "");
+                String path = obj.optString("path", "");
+                if (id.isEmpty() || title.isEmpty() || path.isEmpty()) continue;
 
                 JSONArray artistsArr = obj.optJSONArray("artists");
                 String[] artists = new String[artistsArr != null ? artistsArr.length() : 0];
                 for (int a = 0; a < artists.length; a++) {
-                    artists[a] = artistsArr != null ? artistsArr.optString(a, "") : "";
+                    artists[a] = artistsArr.optString(a, "");
                 }
 
                 String album = obj.optString("album", "");
@@ -144,12 +167,26 @@ public final class LunaBeatProvider implements LyricsProvider {
     @Nullable
     @Override
     public FetchResult fetch(TrackInfo track) throws Exception {
-        List<Lyrics.ScoredLyrics> candidates = fetchCandidates(track);
-        return candidates.isEmpty() ? null : FetchResult.of(candidates.get(0).lyrics(), track);
+        List<ScoredSong> candidates = fetchScoredSongs(track);
+        if (candidates.isEmpty()) {
+            return null;
+        }
+        ScoredSong top = candidates.get(0);
+        return FetchResult.of(top.lyrics(), top.title(), top.artist(), 0, track);
     }
 
     @Override
     public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
+        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
+        for (ScoredSong candidate : fetchScoredSongs(track)) {
+            scored.add(new Lyrics.ScoredLyrics(candidate.score(), candidate.lyrics()));
+        }
+        return scored;
+    }
+
+    private record ScoredSong(int score, Lyrics lyrics, String title, String artist) {}
+
+    private List<ScoredSong> fetchScoredSongs(TrackInfo track) {
         ensureIndexLoaded();
 
         List<Song> matches = searchLunabeatIndex(track);
@@ -157,7 +194,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             return Collections.emptyList();
         }
 
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>(matches.size());
+        List<ScoredSong> scored = new ArrayList<>(matches.size());
         for (Song song : matches) {
             if (scored.size() >= LyricsRequests.MAX_CANDIDATES) break;
             String artist = song.artists.length > 0 ? song.artists[0] : "";
@@ -168,30 +205,36 @@ public final class LunaBeatProvider implements LyricsProvider {
             Lyrics lyrics = fetchLunabeatLyrics(song);
             if (lyrics != null && !lyrics.isEmpty()) {
                 int score = scoreLunabeatCandidate(
-                        song.title(), artist, 0, lyrics, track);
-                scored.add(new Lyrics.ScoredLyrics(score, lyrics));
+                        song.title(), artist, lyrics, track);
+                scored.add(new ScoredSong(score, lyrics, song.title(), artist));
             }
         }
 
-        return Lyrics.sortScoredByScore(scored);
+        scored.sort((a, b) -> Integer.compare(b.score(), a.score()));
+        return scored;
     }
 
     private static void ensureIndexLoaded() {
         if (lunabeatSongs != null && !lunabeatSongs.isEmpty()) {
             return;
         }
+        startIndexLoad();
         try {
-            lunabeatIndexLatch.await(5, TimeUnit.SECONDS);
+            boolean completed = lunabeatIndexLatch.await(5, TimeUnit.SECONDS);
+            if (!completed) {
+                Logger.printDebug(() -> "Timeout waiting for LunaBeat index latch");
+            }
         } catch (InterruptedException ex) {
             Logger.printDebug(() -> "Interrupted waiting for LunaBeat index latch", ex);
             Thread.currentThread().interrupt();
         }
     }
 
-    private static String normalizeLunabeat(String s) {
+    private static String normalizeLunabeat(@Nullable String s) {
+        if (s == null) return "";
         return Normalizer.normalize(s, Normalizer.Form.NFKC)
                 .toLowerCase(Locale.ROOT)
-                .replaceAll("[\\s\u00b7\u30fb.\\-_]", "");
+                .replaceAll("[\\s·・.\\-_]", "");
     }
 
     private List<Song> searchLunabeatIndex(TrackInfo track) {
@@ -221,6 +264,7 @@ public final class LunaBeatProvider implements LyricsProvider {
         String url = BASE_URL + song.path;
         HttpURLConnection conn = null;
         try {
+            LyricsRequests.throttle(lastRequestTime, REQUEST_THROTTLE_MS);
             conn = LyricsRequests.openConnection(url);
             if (conn.getResponseCode() != Requester.HTTP_STATUS_CODE_SUCCESS) {
                 return null;
@@ -235,7 +279,7 @@ public final class LunaBeatProvider implements LyricsProvider {
             }
             String ttml = sb.toString();
 
-            Lyrics lyrics = TtmlParser.ttmlToLyrics(ttml, name(), null);
+            Lyrics lyrics = TTMLParser.ttmlToLyrics(ttml, name(), null);
             if (lyrics == null) return null;
 
             Map<String, List<LyricsLine>> translations = lyrics.translations();
@@ -266,8 +310,8 @@ public final class LunaBeatProvider implements LyricsProvider {
     }
 
     private static int scoreLunabeatCandidate(String title, String artist,
-            long durationSec, Lyrics lyrics, TrackInfo track) {
-        int trackScore = LyricsRequests.scoreTrackCandidate(title, artist, durationSec, track);
+                                              Lyrics lyrics, TrackInfo track) {
+        int trackScore = LyricsRequests.scoreTrackCandidate(title, artist, 0, track);
         return trackScore + LyricsRequests.syncRank(lyrics);
     }
 }

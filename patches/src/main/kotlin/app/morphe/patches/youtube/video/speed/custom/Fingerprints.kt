@@ -11,15 +11,14 @@
 package app.morphe.patches.youtube.video.speed.custom
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
 import app.morphe.patcher.resource.ResourceType
 import app.morphe.patcher.resourceLiteral
+import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.InitializePlaybackSpeedValuesFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -125,6 +124,7 @@ internal object TapAndHoldSpeedFingerprint : Fingerprint(
             type = "Z"
         ),
         opcode(Opcode.IF_NEZ),
+        opcode(Opcode.IGET_OBJECT),
         literal(2.0f)
     )
 )

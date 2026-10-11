@@ -48,12 +48,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">फिड फ्लाईआउट मेनु फिल्टर</string>
   <string name="morphe_hide_album_cards_title">एल्बम कार्ड छिपाएं</string>
   <string name="morphe_hide_artist_cards_title">कलाकार कार्ड छिपाएं</string>
-  <string name="morphe_hide_auto_dubbed_label_title">\'स्वचालित रूपमा डब गरिएको\' लेबल लुकाउनुहोस्</string>
   <string name="morphe_hide_community_posts_title">सामुदायिक पोस्ट छिपाएं</string>
   <string name="morphe_hide_compact_banner_title">कॉम्पैक्ट बैनर छिपाएं</string>
   <string name="morphe_hide_floating_microphone_button_title">फ़्लोटिंग माइक्रोफ़ोन बटन छिपाएं</string>
   <string name="morphe_hide_horizontal_shelves_title">क्षैतिज शेल्फ छिपाएं</string>
-  <string name="morphe_hide_hyped_label_title">हाइप्ड लेबल लुकाउनुहोस्</string>
   <string name="morphe_hide_image_shelf_title">छवि शेल्फ छिपाएं</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
           for the card in the Messages section at the top of the Notifications tab. -->
@@ -76,8 +74,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ticket_shelf_title">टिकट शेल्फ छिपाएं</string>
   <string name="morphe_hide_upload_time_title">खोज परिणाम कीवर्ड द्वारा फ़िल्टर नहीं किए गए हैं</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">वीडियो अनुशंसा लेबल छिपाएं</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_view_count_title">होम टैब में वीडियो कीवर्ड द्वारा फ़िल्टर किए गए हैं</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_web_search_results_title">वेब खोज परिणाम छिपाएं</string>
@@ -149,7 +146,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड बहुत छोटा है और उद्धरण की आवश्यकता है: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सभी वीडियो छिपा देगा: %s</string>
   <string name="morphe_hide_stats_category_title">सांख्यिकी</string>
-  <string name="morphe_hide_about_category_title">के बारे में</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">क्रिएटर स्टोर शेल्फ छिपाएं</string>
   <string name="morphe_hide_end_screen_store_banner_title">एंड स्क्रीन स्टोर बैनर छिपाएं</string>
@@ -164,6 +160,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <!-- interaction.copytext.copyTextPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीव्ही में साइन इन करी\' पॉपअप अक्षम करी</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -180,7 +177,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_toast_off">लूप वीडियो बंद अछि</string>
   <string name="morphe_loop_video_range_label_start">शुरू</string>
   <string name="morphe_loop_video_range_label_end">अंत</string>
-  <!-- interaction.pip.pipButtonPatch -->
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_type_title">प्लेसूची मोड उत्पन्न गर्नुहोस्</string>
   <string name="morphe_play_all_button_type_entry_0">सबै सामग्री (समय अनुसार क्रमबद्ध गर्नुहोस्, बढ्दो)</string>
@@ -258,7 +255,6 @@ Second \"item\" text"</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_fullscreen_buttons">फुलस्क्रीन बटनहरू</string>
-  <string name="morphe_hide_quick_actions_title">कारबाही बार लुकाउनुहोस्</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">क्याप्शनहरू</string>
   <!-- layout.captions.autoCaptionsPatch -->
@@ -267,6 +263,7 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">म्यूटित कब स देखाइत अछि</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कैप्शन दिखाओ</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कैप्शन छिपाइ</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_caption_cookies_title">क्याप्शन कुकीहरू</string>
   <string name="morphe_get_caption_cookies_title">कुकीहरू प्राप्त गर्न क्लिक गर्नुहोस्
@@ -294,7 +291,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">नेभिगेशन बार एनिमेसनहरू सक्षम गर्नुहोस्</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">स्वचालित रूपमा लुकाउने नेभिगेसन बारलाई अक्षम गर्नुहोस्</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">सेटिङ बटन कार्य</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">फ्लाईआउट मेनु</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -384,6 +380,7 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">प्लेयर पपअप प्यानलहरू अक्षम गर्नुहोस्</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">निष्क्रिय</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
@@ -478,7 +475,6 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow र मौलिक थम्बनेलहरू</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow र स्थिर क्याप्चरहरू</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">अभी के कैप्चर</string>
-  <string name="morphe_dearrow_api_url_title">DeArrow API अन्त बिन्दु</string>
   <string name="morphe_dearrow_api_url_summary">DeArrow थम्बनेल क्याशे endpoint क URL</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">स्टिल वीडियो कैप्चर</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">स्टिल कैप्चर प्रत्येक वीडियो क शुरुआत / बीच / अंत स लेल जाइत अछि। एहि इमेजेस YouTube में बनेल अछि आ बाहरी API क उपयोग नहि कएल जाईत अछि।</string>

@@ -26,6 +26,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Personalizado</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- misc.settings.settingsPatch -->
@@ -41,12 +42,12 @@ Second \"item\" text"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
-  <string name="morphe_music_crossfade_about_title">Acerca de</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -67,7 +68,6 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">Listas de reprodución</string>
   <string name="morphe_change_start_page_entry_search">Busca</string>
   <string name="morphe_change_start_page_entry_subscriptions">Subscripcións</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Cambiar cor do reprodutor minimizado</string>
@@ -93,9 +93,7 @@ Second \"item\" text"</string>
   <!-- 'scrobble' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
-  <!-- 'scrobbling' must be kept untranslated -->
   <!-- layout.lyrics.lyricsPatch -->
-  <string name="morphe_music_lyrics_section_about_title">Acerca de</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->

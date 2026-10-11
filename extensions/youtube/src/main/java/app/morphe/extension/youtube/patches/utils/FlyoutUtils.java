@@ -7,15 +7,12 @@
 
 package app.morphe.extension.youtube.patches.utils;
 
-import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.patches.AddToQueuePatch.registerFlyoutProvider;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -23,7 +20,6 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Pair;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -53,12 +49,11 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
-import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.patches.PipButtonPatch;
+import app.morphe.extension.youtube.patches.AddToQueuePatch;
+import app.morphe.extension.youtube.patches.PictureinPictureButtonPatch;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
-import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
@@ -66,8 +61,9 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
+import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
+import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
-import app.morphe.extension.youtube.whitelist.WhitelistType;
 
 @SuppressWarnings("unused")
 public final class FlyoutUtils {
@@ -80,12 +76,6 @@ public final class FlyoutUtils {
         String patch_getVideoId();
     }
 
-    public interface FlyoutButtonProvider {
-        int addQueueButton(Object flyoutPanel, int index, String videoId);
-
-        void onListBound(ViewGroup itemList);
-    }
-
     public record FlyoutMenuInfo(
             LinearLayout menuContainer,
             int adjustedIndex,
@@ -94,20 +84,32 @@ public final class FlyoutUtils {
 
     /**
      * Holds the injected items apart from the app list, and scrolls them on its own
-     * when they do not all fit. It dynamically constrains its height based on the
-     * host container or window height.
+     * when they do not all fit. Its height is limited by the space that the menu can use
+     * in the window, which depends on the orientation and the window size, such as in split
+     * screen, minus the space of the other items of the menu, so the whole menu fits.
      */
     private static final class InjectedItemsScrollView extends ScrollView {
-        private static final float LANDSCAPE_MAX_HEIGHT_RATIO = 0.25f;
-        private static final float PORTRAIT_MAX_HEIGHT_RATIO = 0.45f;
+        /**
+         * Maximum part of the window that the injected items can use, so the app items stay visible.
+         */
+        private static final float MAX_WINDOW_HEIGHT_RATIO = 0.5f;
+        /**
+         * Minimum height in items, so a part of the next item is visible when the items scroll.
+         */
+        private static final float MIN_VISIBLE_ITEMS = 1.5f;
 
         private final LinearLayout itemsContainer;
-        private final ViewGroup parentContainer;
-        private int maxAllowedHeight = -1;
+        private final ViewGroup menuContainer;
+        /**
+         * Popup window of the menu, or null if the menu is a bottom sheet.
+         */
+        @Nullable
+        private final PopupWindow popupWindow;
 
-        InjectedItemsScrollView(Context context, ViewGroup parentContainer) {
+        InjectedItemsScrollView(Context context, ViewGroup menuContainer, @Nullable PopupWindow popupWindow) {
             super(context);
-            this.parentContainer = parentContainer;
+            this.menuContainer = menuContainer;
+            this.popupWindow = popupWindow;
 
             setVerticalScrollBarEnabled(false);
 
@@ -120,48 +122,123 @@ public final class FlyoutUtils {
 
             setNestedScrollingEnabled(false);
             setOverScrollMode(OVER_SCROLL_IF_CONTENT_SCROLLS);
-
-            initHeightTracking(context);
         }
 
-        private void initHeightTracking(Context context) {
-            int containerHeight = parentContainer.getHeight();
+        /**
+         * The visible frame of a popup window is not limited to the screen, so the visible frame
+         * of the window of the app is used, which excludes the system bars and the keyboard,
+         * and is the window of the app in split screen.
+         *
+         * @return The height of the window that the menu can use.
+         */
+        private int getWindowHeight() {
+            Activity activity = Utils.getActivity();
+            View frameView = activity == null ? this : activity.getWindow().getDecorView();
+            Rect visibleFrame = new Rect();
+            frameView.getWindowVisibleDisplayFrame(visibleFrame);
+            return visibleFrame.height() > 0 ? visibleFrame.height() : Dim.getScreenHeight();
+        }
 
-            if (containerHeight <= 0 && context instanceof Activity activity) {
-                View decorView = activity.getWindow().getDecorView();
-                containerHeight = decorView.getHeight();
-            }
-
-            if (containerHeight > 0) {
-                updateMaxHeight(containerHeight);
-            }
-
-            parentContainer.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-                int currentHeight = parentContainer.getHeight();
-                if (currentHeight > 0) {
-                    updateMaxHeight(currentHeight);
+        /**
+         * @return The height of the other items of the menu as measured in the last layout,
+         *         with the paddings of the menu and the margins of the injected items.
+         */
+        private int getOtherItemsHeight() {
+            int height = menuContainer.getPaddingTop() + menuContainer.getPaddingBottom()
+                    + getVerticalMargins(this);
+            for (int i = 0, count = menuContainer.getChildCount(); i < count; i++) {
+                View child = menuContainer.getChildAt(i);
+                if (child != this && child.getVisibility() != GONE) {
+                    height += child.getMeasuredHeight() + getVerticalMargins(child);
                 }
-            });
+            }
+            return height;
         }
 
-        private void updateMaxHeight(int containerHeight) {
-            float ratio = getResources().getConfiguration().orientation ==
-                    Configuration.ORIENTATION_LANDSCAPE
-                            ? LANDSCAPE_MAX_HEIGHT_RATIO
-                            : PORTRAIT_MAX_HEIGHT_RATIO;
-
-            int newMaxHeight = (int) (containerHeight * ratio);
-            if (this.maxAllowedHeight != newMaxHeight) {
-                this.maxAllowedHeight = newMaxHeight;
-                requestLayout();
+        /**
+         * The list of the app is measured after the injected items, and is shrunk to the space they leave,
+         * so the items after the injected items are measured without a height limit.
+         *
+         * @return The height of the items of the menu after the injected items.
+         */
+        private int getFollowingItemsHeight(int widthMeasureSpec) {
+            final int childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(
+                    MeasureSpec.getSize(widthMeasureSpec), MeasureSpec.EXACTLY);
+            final int childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+            int height = 0;
+            for (int i = menuContainer.indexOfChild(this) + 1, count = menuContainer.getChildCount(); i < count; i++) {
+                View child = menuContainer.getChildAt(i);
+                if (child.getVisibility() != GONE) {
+                    child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+                    height += child.getMeasuredHeight() + getVerticalMargins(child);
+                }
             }
+            return height;
+        }
+
+        private static int getVerticalMargins(View view) {
+            return view.getLayoutParams() instanceof MarginLayoutParams margins
+                    ? margins.topMargin + margins.bottomMargin
+                    : 0;
+                    }
+
+        /**
+         * @return The height of a part of the second item, so the items can be seen to scroll.
+         */
+        private int getMinHeight() {
+            View firstItem = itemsContainer.getChildAt(0);
+            return firstItem == null ? 0 : (int) (firstItem.getMeasuredHeight() * MIN_VISIBLE_ITEMS);
+        }
+
+        /**
+         * @return The maximum height: the space left in the window by the other items of the menu,
+         *         up to a part of the window, and at least a part of the second item so the items
+         *         can be seen to scroll. The menu is taller than the window only if the other items
+         *         take almost all the space.
+         */
+        private int getMaxHeight() {
+            final int windowHeight = getWindowHeight();
+            final int maxHeight = Math.min(windowHeight - getOtherItemsHeight(),
+                    (int) (windowHeight * MAX_WINDOW_HEIGHT_RATIO));
+            return Math.max(maxHeight, getMinHeight());
         }
 
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-            if (maxAllowedHeight > 0) {
-                heightMeasureSpec =
-                        MeasureSpec.makeMeasureSpec(maxAllowedHeight, MeasureSpec.AT_MOST);
+            // The menu can measure its items again with their measured height as a fixed height,
+            // to give all the items the same width, so the measured height is kept.
+            if (getLayoutParams() != null && getLayoutParams().height >= 0) {
+                super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                return;
+            }
+
+            // The height given by a bottom sheet is ignored, as the bottom sheet can be measured
+            // before the injected items are added, and it's resized afterward.
+            int maxHeight = getMaxHeight();
+
+            if (popupWindow != null) {
+                // A popup window is as wide as the widest item of the menu, up to most of the window width,
+                // so the injected items are not made wider than the minimum width that the app gives to the menu,
+                // and their long texts wrap as in the items of the app.
+                final int menuWidth = menuContainer.getMinimumWidth()
+                        - menuContainer.getPaddingLeft() - menuContainer.getPaddingRight();
+                if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST
+                        && menuWidth > 0 && menuWidth < MeasureSpec.getSize(widthMeasureSpec)) {
+                    widthMeasureSpec = MeasureSpec.makeMeasureSpec(menuWidth, MeasureSpec.AT_MOST);
+                }
+
+                // A popup window keeps the space that the app chose for the menu when it was shown,
+                // before the injected items were added, so the injected items use the space left
+                // by the other items, and the items of the app are not cut.
+                if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.AT_MOST) {
+                    final int menuSpace = MeasureSpec.getSize(heightMeasureSpec)
+                            - getFollowingItemsHeight(widthMeasureSpec);
+                    maxHeight = Math.min(maxHeight, Math.max(menuSpace, getMinHeight()));
+                }
+            }
+
+            if (maxHeight > 0) {
+                heightMeasureSpec = MeasureSpec.makeMeasureSpec(maxHeight, MeasureSpec.AT_MOST);
             }
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
@@ -226,34 +303,8 @@ public final class FlyoutUtils {
     );
     private static final int ITEM_TEXT_ID = ResourceUtils.getIdentifier(
             ResourceType.ID, "list_item_text");
-    // Flyout menus keep the experimental icons even with old player buttons restored.
-    private static final boolean USE_EXPERIMENTAL_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
-            && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
-    private static final Drawable saveToWatchLaterDrawable = ResourceUtils.getDrawable(
-            USE_EXPERIMENTAL_ICONS
-                    ? "yt_outline_experimental_clock_vd_theme_24"
-                    : "yt_outline_clock_black_24"
-    );
-    private static final Drawable aiSListSubmitDrawable = ResourceUtils.getDrawable(
-            USE_EXPERIMENTAL_ICONS
-                    ? "yt_outline_experimental_flag_vd_theme_24"
-                    : "yt_outline_flag_black_24"
-    );
-    private static final Drawable adWhitelistButtonDrawable = getSettingsScreenDrawable(
-            "morphe_settings_screen_01_ads");
-    private static final Drawable playbackSpeedWhitelistButtonDrawable = getSettingsScreenDrawable(
-            "morphe_settings_screen_12_video");
-    private static final Drawable pipButtonDrawable = getSettingsScreenDrawable(
-            "morphe_pip_button");
-
-    private static final String saveToWatchLaterButtonName = str("morphe_save_to_watch_later_flyout_title");
-    private static final String aiSListSubmitButtonName = str("morphe_aislist_submit_title");
-    private static final String pipButtonName = str("morphe_pip_button_flyout_name");
 
     private static final List<WeakReference<TextView>> customItemTextRefs = new ArrayList<>();
-
-    @Nullable
-    private static FlyoutButtonProvider flyoutButtonProvider;
 
     private static String currentButtonName = "";
     private static int currentButtonIndex;
@@ -284,12 +335,6 @@ public final class FlyoutUtils {
     private static boolean isShortFlyout;
     private static ChannelIdRequest flyoutChannelIdRequest;
 
-    private static Drawable getSettingsScreenDrawable(String drawableName) {
-        return ResourceUtils.getDrawable(Utils.appIsUsingBoldIcons()
-                ? drawableName + "_bold"
-                : drawableName);
-    }
-
     public static byte[] getAsciiBytes(String string) {
         return string.getBytes(StandardCharsets.US_ASCII);
     }
@@ -308,6 +353,14 @@ public final class FlyoutUtils {
 
     public static String getFlyoutPostId() {
         return flyoutPostId;
+    }
+
+    public static String getFlyoutChannelId() {
+        return flyoutChannelId;
+    }
+
+    public static String getFlyoutChannelName() {
+        return flyoutChannelName;
     }
 
     public static void resetFlyoutPostId() {
@@ -381,42 +434,40 @@ public final class FlyoutUtils {
         }
         flyoutVisibilityHandlerRunning = true;
 
-        registerFlyoutProvider();
-
         flyoutVisibilityHandler.removeCallbacksAndMessages(null);
         flyoutVisibilityHandler.post(
-            new Runnable() {
-                @Override
-                public void run() {
-                    if (flyoutDialog == null && flyoutPopupWindow == null) {
-                        flyoutVisibilityHandlerRunning = false;
-                        return;
-                    }
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        if (flyoutDialog == null && flyoutPopupWindow == null) {
+                            flyoutVisibilityHandlerRunning = false;
+                            return;
+                        }
 
-                    final boolean isDialogShowing =
-                            flyoutDialog != null && flyoutDialog.isShowing();
-                    final boolean isPopupWindowShowing =
-                            flyoutPopupWindow != null && flyoutPopupWindow.isShowing();
-                    final boolean blockFlyoutVisibilityHandler =
-                            isDialogShowing || isPopupWindowShowing;
+                        final boolean isDialogShowing =
+                                flyoutDialog != null && flyoutDialog.isShowing();
+                        final boolean isPopupWindowShowing =
+                                flyoutPopupWindow != null && flyoutPopupWindow.isShowing();
+                        final boolean blockFlyoutVisibilityHandler =
+                                isDialogShowing || isPopupWindowShowing;
 
-                    if (blockFlyoutVisibilityHandler) {
-                        final Object targetPanel = isDialogShowing ? flyoutDialog : flyoutPopupWindow;
+                        if (blockFlyoutVisibilityHandler) {
+                            final Object targetPanel = isDialogShowing ? flyoutDialog : flyoutPopupWindow;
 
-                        // give a delay to ensure the flyout animation is finished.
-                        Utils.runOnMainThreadDelayed(
-                                () -> {
-                                    runFlyoutIdsResetHandler();
-                                    addFlyoutElements(targetPanel);
-                                    onFlyoutListBound(targetPanel);
-                                },
-                                30
-                        );
-                    } else {
-                        flyoutVisibilityHandler.postDelayed(this, 10);
+                            // give a delay to ensure the flyout animation is finished.
+                            Utils.runOnMainThreadDelayed(
+                                    () -> {
+                                        runFlyoutIdsResetHandler();
+                                        addFlyoutElements(targetPanel);
+                                        onFlyoutListBound(targetPanel);
+                                    },
+                                    30
+                            );
+                        } else {
+                            flyoutVisibilityHandler.postDelayed(this, 10);
+                        }
                     }
                 }
-            }
         );
     }
 
@@ -428,44 +479,44 @@ public final class FlyoutUtils {
 
         flyoutIdsResetHandler.removeCallbacksAndMessages(null);
         flyoutIdsResetHandler.post(
-            new Runnable() {
-                @Override
-                public void run() {
-                    final boolean isDialogClosed =
-                            flyoutDialog == null || !flyoutDialog.isShowing();
-                    final boolean isPopupWindowClosed =
-                            flyoutPopupWindow == null || !flyoutPopupWindow.isShowing();
-                    final boolean blockFlyoutIdsResetHandler =
-                            isDialogClosed && isPopupWindowClosed;
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        final boolean isDialogClosed =
+                                flyoutDialog == null || !flyoutDialog.isShowing();
+                        final boolean isPopupWindowClosed =
+                                flyoutPopupWindow == null || !flyoutPopupWindow.isShowing();
+                        final boolean blockFlyoutIdsResetHandler =
+                                isDialogClosed && isPopupWindowClosed;
 
-                    if (blockFlyoutIdsResetHandler) {
-                        // Give a delay to wait for the system sharing panel to be called.
-                        Utils.runOnMainThreadDelayed(
-                                () -> {
-                                    visibleFlyoutButtons.clear();
-                                    currentButtonIndex = 0;
-                                    flyoutVideoId = "";
-                                    flyoutPlaylistId = "";
-                                    flyoutPostId = "";
-                                    flyoutChannelId = "";
-                                    flyoutChannelName = "";
-                                    isMyTabHistoryFlyout = false;
-                                    isShortFlyout = false;
+                        if (blockFlyoutIdsResetHandler) {
+                            // Give a delay to wait for the system sharing panel to be called.
+                            Utils.runOnMainThreadDelayed(
+                                    () -> {
+                                        visibleFlyoutButtons.clear();
+                                        currentButtonIndex = 0;
+                                        flyoutVideoId = "";
+                                        flyoutPlaylistId = "";
+                                        flyoutPostId = "";
+                                        flyoutChannelId = "";
+                                        flyoutChannelName = "";
+                                        isMyTabHistoryFlyout = false;
+                                        isShortFlyout = false;
 
-                                    flyoutVisibilityHandlerRunning = false;
-                                    flyoutIdsResetHandlerRunning = false;
-                                },
-                                // The delay used to prevent the system share sheet from failing to
-                                // display, sometimes causes the injected buttons to appear in the
-                                // YouTube share sheet. For this reason, the delay is set to zero
-                                // when the setting to display the system share sheet is disabled.
-                                Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 100 : 0
-                        );
-                    } else {
-                        flyoutIdsResetHandler.postDelayed(this, 10);
+                                        flyoutVisibilityHandlerRunning = false;
+                                        flyoutIdsResetHandlerRunning = false;
+                                    },
+                                    // The delay used to prevent the system share sheet from failing to
+                                    // display, sometimes causes the injected buttons to appear in the
+                                    // YouTube share sheet. For this reason, the delay is set to zero
+                                    // when the setting to display the system share sheet is disabled.
+                                    Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 100 : 0
+                            );
+                        } else {
+                            flyoutIdsResetHandler.postDelayed(this, 10);
+                        }
                     }
                 }
-            }
         );
     }
 
@@ -489,92 +540,42 @@ public final class FlyoutUtils {
         }
 
         if (!allButtonsVideoId.isEmpty()) {
-            if (flyoutButtonProvider != null) {
-                nextButtonIndex = flyoutButtonProvider.addQueueButton(
-                        flyoutPanel,
-                        nextButtonIndex,
-                        allButtonsVideoId
-                );
-            }
+            nextButtonIndex = AddToQueuePatch.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    allButtonsVideoId
+            );
 
-            if (Settings.AISLIST_SUBMIT_FLYOUT_MENU.get()) {
-                nextButtonIndex = addFlyoutButton(
-                        flyoutPanel,
-                        aiSListSubmitDrawable,
-                        aiSListSubmitButtonName,
-                        v -> {
-                            AiSListSubmitDialog.show(allButtonsVideoId);
+            nextButtonIndex = AiSListSubmitDialog.addFlyoutButton(
+                    flyoutPanel,
+                    nextButtonIndex,
+                    allButtonsVideoId
+            );
 
-                            dismissFlyout();
-                        },
-                        nextButtonIndex
-                );
-            }
-
-            if (!isMyTabHistoryFlyout) {
-                if (Settings.ADS_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
-                    nextButtonIndex = addWhitelistButton(
-                            flyoutPanel,
-                            WhitelistType.ADS,
-                            adWhitelistButtonDrawable,
-                            nextButtonIndex
-                    );
-                }
-
-                if (Settings.PLAYBACK_SPEED_CHANNEL_WHITELIST_FLYOUT_MENU.get()) {
-                    nextButtonIndex = addWhitelistButton(
-                            flyoutPanel,
-                            WhitelistType.PLAYBACK_SPEED,
-                            playbackSpeedWhitelistButtonDrawable,
-                            nextButtonIndex
-                    );
-                }
-            }
+            nextButtonIndex = ChannelWhitelist.addFlyoutButtons(flyoutPanel, nextButtonIndex, isMyTabHistoryFlyout);
         }
 
-        if (Settings.PIP_BUTTON_FLYOUT.get() &&
-                (PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible() || isShortFlyout)) {
-            nextButtonIndex = addFlyoutButton(
+        // Check the patch first. Loading the button classes runs their static
+        // initializer, which counts the overlay button even if the patch is excluded.
+        if (PictureinPictureButtonPatch.isPatchIncluded()) {
+            nextButtonIndex = PictureinPictureButton.addFlyoutButton(
                     flyoutPanel,
-                    pipButtonDrawable,
-                    pipButtonName,
-                    v -> PipButtonPatch.enterPictureInPicture(),
-                    nextButtonIndex
+                    nextButtonIndex,
+                    PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible(),
+                    isShortFlyout
             );
         }
 
-        final String saveToWatchLaterButtonVideoId;
-        if (!flyoutVideoId.isEmpty()) {
-            if (Settings.KIDS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
-                    videoMarkedAsForKids) {
-                saveToWatchLaterButtonVideoId = flyoutVideoId;
-            } else if (Settings.SHORTS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
-                    isShortFlyout) {
-                saveToWatchLaterButtonVideoId = flyoutVideoId;
-            } else {
-                saveToWatchLaterButtonVideoId = "";
-            }
-        } else if (Settings.SAVE_TO_WATCH_LATER_FLYOUT_BUTTON.get() &&
-                PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()) {
-            saveToWatchLaterButtonVideoId = VideoInformation.getVideoId();
-        } else {
-            saveToWatchLaterButtonVideoId = "";
-        }
-
-        if (!saveToWatchLaterButtonVideoId.isEmpty()) {
-            nextButtonIndex = addFlyoutButton(
+        if (SaveToWatchLaterPatch.isPatchIncluded()) {
+            nextButtonIndex = SaveToWatchLaterButton.addFlyoutButton(
                     flyoutPanel,
-                    saveToWatchLaterDrawable,
-                    saveToWatchLaterButtonName,
-                    v -> {
-                        SaveToWatchLaterPatch.saveVideo(saveToWatchLaterButtonVideoId);
-
-                        dismissFlyout(); // Must dismiss after showing dialog.
-                    },
-                    nextButtonIndex
+                    nextButtonIndex,
+                    flyoutVideoId,
+                    videoMarkedAsForKids,
+                    isShortFlyout,
+                    PlayerFlyoutMenuComponentsFilter.getTopFlyoutMenuVisible()
             );
         }
-        // end region
 
         if (nextButtonIndex > 0) {
             addDivider(flyoutPanel, nextButtonIndex);
@@ -583,46 +584,6 @@ public final class FlyoutUtils {
         // Reset 'topFlyoutMenuVisible' field, once the buttons have been injected into the player's
         // overlay settings, to prevent them from also being added into nested menus.
         PlayerFlyoutMenuComponentsFilter.resetTopFlyoutMenuVisible();
-    }
-
-    private static int addWhitelistButton(
-            Object flyoutPanel,
-            WhitelistType type,
-            Drawable icon,
-            int index
-    ) {
-        String currentChannelId =
-                !flyoutChannelId.isEmpty()
-                        ? flyoutChannelId
-                        : VideoInformation.getChannelId();
-        String currentChannelName =
-                !currentChannelId.isEmpty()
-                        ? flyoutChannelName
-                        : VideoInformation.getChannelName();
-
-        if (currentChannelId.isEmpty()) {
-            return index;
-        }
-
-        final boolean isWhitelisted = ChannelWhitelist.isChannelWhitelisted(
-                type,
-                currentChannelId
-        );
-        return addFlyoutButton(
-                flyoutPanel,
-                icon,
-                type.getFlyoutTitle(isWhitelisted),
-                v -> {
-                    ChannelWhitelist.toggleChannel(
-                            type,
-                            currentChannelId,
-                            currentChannelName
-                    );
-
-                    dismissFlyout();
-                },
-                index
-        );
     }
 
     /**
@@ -645,10 +606,8 @@ public final class FlyoutUtils {
             }
 
             copyListItemTypeface(itemList);
+            AddToQueuePatch.onListBound(itemList);
 
-            if (flyoutButtonProvider != null) {
-                flyoutButtonProvider.onListBound(itemList);
-            }
         } catch (Exception ex) {
             Logger.printException(() -> "onFlyoutListBound failure", ex);
         }
@@ -753,7 +712,7 @@ public final class FlyoutUtils {
                 );
             } else {
                 if (currentInjectedItems == null) {
-                    currentInjectedItems = new InjectedItemsScrollView(context, menuContainer);
+                    currentInjectedItems = new InjectedItemsScrollView(context, menuContainer, menuInfo.popupWindow());
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,
                             LinearLayout.LayoutParams.WRAP_CONTENT
@@ -785,10 +744,6 @@ public final class FlyoutUtils {
         }
 
         return -1;
-    }
-
-    public static void setFlyoutButtonProvider(@Nullable FlyoutButtonProvider provider) {
-        flyoutButtonProvider = provider;
     }
 
     /**
@@ -926,10 +881,9 @@ public final class FlyoutUtils {
             }
         }
 
-        TypedValue ripple = new TypedValue();
-        if (context.getTheme().resolveAttribute(
-                android.R.attr.selectableItemBackground, ripple, true)) {
-            customButton.setForeground(context.getDrawable(ripple.resourceId));
+        final int ripple = ThemeUtils.getThemeResourceId(context, android.R.attr.selectableItemBackground);
+        if (ripple != 0) {
+            customButton.setForeground(context.getDrawable(ripple));
         }
 
         customButton.setOnClickListener(clickListener);
@@ -1091,7 +1045,7 @@ public final class FlyoutUtils {
                         ": " +
                         loggingParent
                 );
-                
+
                 if (parent instanceof ViewGroup viewGroupParent) {
                     CharSequence description = viewGroupParent.getContentDescription();
                     boolean descriptionNull = description == null;

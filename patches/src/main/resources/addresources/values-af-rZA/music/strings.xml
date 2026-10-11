@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Speel albumklankbane</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Speel die album-oudio-weergawe van liedjies in plaas van \'n musiekvideo. Vereis \'Vervals videostrome\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Aktiveer oudio/video-skakelaar</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Probeer om tussen die oudiosnitweergawe en die amptelike musiekvideo te wissel</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Laai musiekvideo\'s, podcasts of liedjies af met derdeparty-aflaai-programme</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_settings_music_screen_4_player_title">Speler</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Lirieke</string>
   <string name="morphe_settings_music_screen_9_misc_title">Diverse</string>
+  <string name="morphe_music_app_language_title">YouTube Music-taal</string>
+  <string name="morphe_music_app_language_summary_default">Stelseltaal</string>
+  <string name="morphe_music_app_language_summary_unsupported">Vereis Android 13 of later</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Versteek \'Kry Musiek Premium\' beskrywing</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Verberg Musiek Premium-promosies</string>
   <string name="morphe_music_hide_video_ads_title">Versteek video-advertensies</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Verberg Klank/Video-wisselknoppie</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Versteek die aflaaiknoppie</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Versteek die aflaaiknoppie in die potgooiprogram</string>
   <string name="morphe_music_hide_explore_shelf_title">Verberg Verken-rak</string>
+  <string name="morphe_music_hide_filter_bar_title">Versteek filterbalk</string>
   <string name="morphe_music_hide_grid_shelves_title">Verberg rooster-rakke</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Verberg horisontale rakke</string>
   <string name="morphe_music_hide_list_shelves_title">Verberg lys-rakke</string>
@@ -188,7 +197,6 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Verberg Vertaal-knoppie</string>
   <string name="morphe_music_hide_new_from_shelf_title">Verberg \'Nuut van\'-rak</string>
   <string name="morphe_music_hide_playlist_shelves_title">Verberg playlist-rakke</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Verberg aflaaiknoppie vir podcast-episode</string>
   <string name="morphe_music_hide_repeat_button_title">Verberg Herhaal-knoppie</string>
   <string name="morphe_music_hide_shuffle_button_title">Verberg Lukrake volgorde-knoppie</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Verberg \'Spoedskakelaar\'-rak</string>
@@ -236,32 +244,26 @@ Afgelaaide snitte verskyn hier"</string>
   <string name="morphe_music_crossfade_paused_toast">Die oorgangsvervaging is vir hierdie sessie gestop</string>
   <string name="morphe_music_crossfade_resumed_toast">Die oorgangsvervaging hervat</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoweergave is nie beskikbaar terwyl oorgangsvervaging geaktiveer is nie</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Kruisvervaging is gepouseer tydens uitsending of spiegeling van klank. Kruisvervaging oor uitsending/spieëling is onstabiel en kan moontlik nooit reggestel word nie.</string>
-  <string name="morphe_music_crossfade_about_title">Inligting</string>
-  <string name="morphe_music_crossfade_about_summary">Hoe kruisvervaging werk — en wanneer dit nie werk nie</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Kruisvervaag is af tydens SABR-afspeel</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Kruisvervaag is af terwyl jy cast</string>
   <string name="morphe_music_crossfade_about_how_title">Hoe dit werk</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Kruisvervaging oorvleuel die einde van een liedjie met die begin van die volgende, en laat een wegval terwyl die ander oor jou gekose duur en kurwe begin.
+  <string name="morphe_music_crossfade_about_how_summary">"Kruisvervaging laat die einde van een liedjie oorvleuel met die begin van die volgende, deur jou duur en kromme te gebruik
 
-Dit werk op outo-vooruitgang (wanneer 'n liedjie op sy eie eindig) en op handmatige oorslae — elkeen het sy eie skakelaar boaan. By outo-vooruitgang begin die mengsel 'n paar sekondes voor die einde van die liedjie.
+Dit werk by outomatiese vooruitgang en by handmatige oorslaan, elk met sy eie skakelaar. By outomatiese vooruitgang begin die vermenging 'n paar sekondes voordat die liedjie eindig"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Beperkings</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musiekvideo’s speel slegs as klank terwyl kruisvervaag aan is. Druk en hou die skommelknoppie om kruisvervaag te onderbreek en die video te kyk
 
-Vereis YouTube Music 9.x of nuwer."</string>
-  <string name="morphe_music_crossfade_about_best_title">Werk die beste met</string>
-  <string name="morphe_music_crossfade_about_best_summary">Normale liedjie-tot-liedjie-weergawe en outo-vooruitgang, herhaal-een (die liedjie kruisvervaag in sy eie), en plaaslike klank — foonluidspreker, bedrade oorfone, Bluetooth of USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Werk nie heeltemal reg nie</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Musiekvideo's speel as klank-alleen terwyl vervaag aan is (druk lank op skud om te pouse as jy die video wil hê)
+’n Musiekvideo wat begin speel, bly in videomodus tot die volgende liedjie
 
-Liedjies wat korter as jou vervaagduur is, kan die vervaag oorslaan
+Liedjies korter as die vervaagduur word nie kruisvervaag nie
 
-Die sluitskerm of kennisgewing kan kortliks 'n verouderde status midde-oorgang wys"</string>
-  <string name="morphe_music_crossfade_about_known_title">Bekende probleme</string>
-  <string name="morphe_music_crossfade_about_known_summary">"‘n Musiekvideo wat as die eerste liedjie gestel is — of een wat van buite die huidige lys begin is — kan kortliks as video wys voordat klank-alleen modus begin
+Die sluitskerm of kennisgewing kan kortliks ’n verouderde status tydens die oorgang wys
 
-Pauseer vervaag om ‘n musiekvideo te kyk kan sommige video's swart laat (die wat se klank van die video self kom). Pauseer vervaag voordat jy die liedjie kies om dit te vermy"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Werk glad nie</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Klank-oordra of spiegel (Chromecast, skerm- of klankspieëling) — vervaag pouseer omdat dit daar onstabiel is en moontlik nooit reggestel kan word nie.
+Om kruisvervaag te onderbreek om ’n musiekvideo te kyk, kan sommige video’s swart laat. Om kruisvervaag te onderbreek voordat jy die liedjie kies, voorkom dit"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Nie ondersteun nie</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Oudio-uitsaai of -spieëling (Chromecast, skerm- of oudiospieëling)
 
-YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
+SABR-afspeel (met nabootsing van videostrome afgeskakel)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Erkenning</string>
   <string name="morphe_music_crossfade_about_credit_summary">Vervaag-funksie deur VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Deaktiveer die afkeur-hertoekenning</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Voorkom dat na die volgende snitspring wanneer die afkeur-knoppie gedruk word</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Tikaksie vir snitlyssnit</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Speel die snitlys</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Speel net die geselekteerde snit</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Voeg die geselekteerde snit by die tou</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">By tou gevoeg</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Verberg Cast-knoppie</string>
   <string name="morphe_music_hide_history_button_title">Verberg Geskiedenis-knoppie</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_change_start_page_entry_playlists">Speellyste</string>
   <string name="morphe_change_start_page_entry_search">Soek</string>
   <string name="morphe_change_start_page_entry_subscriptions">Inskrywings</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Versteek filterbalk</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Dwing portretoriëntasie</string>
   <string name="morphe_music_force_portrait_orientation_summary">Hou die toep in portretoriëntasie wanneer die toestel gedraai word</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_music_hide_navigation_bar_title">Versteek navigasiebalk</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Versteek navigasieknoppie-etikette</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Konfigureer Last.fm en ListenBrainz integrasie</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Nie aangemeld nie. Tik om te konfigureer</string>
   <string name="morphe_music_scrobbling_log_out">Uitlog</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Uitgevoer</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Voer jou ListenBrainz Gebruikers Token in om scrobbling te aktiveer</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Kry token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Verifieer</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Voer asseblief \'n token in</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Besig met validering…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
   <string name="morphe_music_scrobbling_guess_album_title">Vul ontbrekende album in</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Wanneer die musiek nie \'n album bevat nie, slaan dit op Last.fm na sodat jou scrobble volledig is</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Oor scrobbling</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling sinkroniseer outomaties jou YouTube Music gebruik met jou Last.fm of ListenBrainz profiel
 
 Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, verseker dat YouTube Music se app-batterygebruik op \"Onbeperk\" gestel is."</string>
@@ -457,7 +460,6 @@ Om te verseker dat scrobbling tydens agtergrondweergawe gesinkroniseer word, ver
   <string name="morphe_music_lyrics_section_service_title">Lirieke-diens</string>
   <string name="morphe_music_lyrics_section_overlay_title">Oorleg</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinchronisasie</string>
-  <string name="morphe_music_lyrics_section_about_title">Oor</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alle verskaffers is gedeaktiveer — ingeboude en ingebedde lirieke</string>
   <string name="morphe_music_lyrics_source_reset_title">Verskaffervolgorde terugstel?</string>
   <string name="morphe_music_lyrics_source_reset_message">Herstel verskaffers na die standaardprioriteitsorde</string>
@@ -542,8 +544,11 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_credit_line_regex_summary">Romaniseer lirieke met verskaffer-romanisering of Google Translate […] knoppie</string>
   <string name="morphe_music_lyrics_text_size_title">Teks grootte</string>
   <string name="morphe_music_lyrics_text_size_summary">Grootte van die lirieke teks</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Tydverskuiwing</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Globale tydverskuiwing</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Raak om na die volgende liriekkandidaat te wissel; […] :\"Gestoor\"</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Gebruik SponsorBlock-segmente vir die lirieke-tydverskuiwing</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Pas sonder die segmente wat SponsorBlock oorslaan en skuif lirieke na die vrygestelde audio. Af ignoreer SponsorBlock heeltemal</string>
+  <string name="morphe_music_lyrics_sb_no_video">Hierdie snit het geen video-id om in te dien nie</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Bron: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Gereedskapsafdelings?</string>
@@ -564,6 +569,7 @@ Vereiste koekies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
   <string name="morphe_music_lyrics_refreshing">Besig om te verfris</string>
   <string name="morphe_music_lyrics_refreshed">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_about_summary">"Lirieke word volgens titel en kunstenaar gekoppel, ongewone metadata mag niks of die verkeerde weergawe vind nie. Gebruik verfris om van weergawe te wissel. Verskaffers wat met * gemerk is, vereis 'n token. Nie alle geaktiveerde verskaffers word altyd in jou volgorde aangevra nie, maar hulle reageer op grond van hul spoed."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Aktiveer slegs die verskaffers wat jy gebruik, of behou die verstek — konstante versoeke kan klein gemeenskaps-lirieke-webwerwe oorweldig</string>
   <string name="morphe_music_lyrics_hide_info_title">Lirieke-bron?</string>
   <string name="morphe_music_lyrics_hide_info_summary">Lirieke word gesoek volgens kunstenaar en titel, […] Jy kan ook die verfris-knoppie probeer om handmatig van weergawe te wissel. […] Alle verskaffers word nie altyd in die bestelling versoek nie, maar reageer op grond van hul spoed</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Lirieke-bron?</string>

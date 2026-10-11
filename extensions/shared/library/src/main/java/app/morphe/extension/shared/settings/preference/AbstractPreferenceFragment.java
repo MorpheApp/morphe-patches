@@ -334,11 +334,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      * so all app specific {@link Setting} instances are loaded before this method returns.
      */
     protected void initialize() {
-        // Must use utils modified language context if language override is active.
-        if (!BaseSettings.MORPHE_LANGUAGE.isSetToDefault()) {
-            ResourceUtils.useActivityContextIfAvailable = false;
-        }
-
         String preferenceResourceName;
         if (SharedSettings.SHOW_MENU_ICONS.get()) {
             preferenceResourceName = Utils.appIsUsingBoldIcons()
@@ -947,7 +942,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             fileButtonsContainer.setLayoutParams(fbParams);
 
             Button buttonExport = CustomDialog.createButton(context, dialogPair.first,
-                    str("morphe_debug_export_logs_file"),
+                    str("morphe_settings_export_file"),
                     () -> exportToFile(allLogs),
                     false, true);
 

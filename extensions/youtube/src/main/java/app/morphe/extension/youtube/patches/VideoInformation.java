@@ -306,7 +306,10 @@ public final class VideoInformation {
      * @return Playback pitch to use.
      */
     public static float overridePlaybackPitch(float speed, float pitch) {
-        return pitch;
+        // The app sets its own pitch every time the speed changes, which resets the selected pitch.
+        return isPlaybackAudioPitchEnabled()
+                ? playbackAudioPitch
+                : pitch;
     }
 
     /**

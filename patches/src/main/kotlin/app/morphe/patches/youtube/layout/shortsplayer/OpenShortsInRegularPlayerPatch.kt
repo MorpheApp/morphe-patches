@@ -12,9 +12,9 @@ package app.morphe.patches.youtube.layout.shortsplayer
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.youtube.interaction.reload.reloadVideoButtonPatch
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.loadvideo.loadVideoHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -36,7 +36,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         settingsPatch,
         openVideoIntentPatch,
         openVideosFullscreenHookPatch,
-        reloadVideoButtonPatch,
+        loadVideoHookPatch,
         navigationBarHookPatch,
         versionCheckPatch,
     )

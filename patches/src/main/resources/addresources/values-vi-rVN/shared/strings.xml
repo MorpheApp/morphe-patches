@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Không thể nhập: %s</string>
   <string name="morphe_settings_navigate_up">Điều hướng lên</string>
   <string name="morphe_settings_search_hint">Tìm kiếm cài đặt</string>
+  <string name="morphe_settings_screen_info_title">Giới thiệu</string>
   <string name="morphe_settings_search_no_results_title">Không tìm thấy kết quả nào cho \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Hãy thử từ khóa khác</string>
   <string name="morphe_settings_search_recent_searches">Tìm kiếm gần đây</string>
@@ -105,7 +106,6 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
 Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="morphe_debug_export_logs_title">Nhật ký gỡ lỗi</string>
   <string name="morphe_debug_export_logs_summary">Xuất nhật ký gỡ lỗi của Morphe</string>
-  <string name="morphe_debug_export_logs_file">Xuất sang tệp</string>
   <string name="morphe_debug_export_logs_success">Xuất bản nhật ký gỡ lỗi thành công</string>
   <string name="morphe_debug_export_logs_failed">Không thể xuất nhật ký gỡ lỗi</string>
   <string name="morphe_debug_logs_search_hint">Tìm kiếm nhật ký gỡ lỗi…</string>
@@ -221,4 +221,7 @@ Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể x�
 Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt;b&gt;gỡ cài đặt&lt;/b&gt; phiên bản này và  vá phiên bản đề xuất là &lt;b&gt;%2$s&lt;/b&gt; ✅"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tôi muốn thử</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Thôi ổn định vậy</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Đã lưu nhật ký sự cố vào tài liệu người dùng: %s</string>
+  <string name="morphe_crash_log_saved">Đã lưu nhật ký sự cố: %s</string>
 </resources>

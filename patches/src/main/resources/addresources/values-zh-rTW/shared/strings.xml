@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">無法匯入：%s</string>
   <string name="morphe_settings_navigate_up">向上瀏覽</string>
   <string name="morphe_settings_search_hint">搜尋設定</string>
+  <string name="morphe_settings_screen_info_title">關於</string>
   <string name="morphe_settings_search_no_results_title">沒有找到「%s」的結果</string>
   <string name="morphe_settings_search_no_results_summary">嘗試其他關鍵字</string>
   <string name="morphe_settings_search_recent_searches">最近搜尋</string>
@@ -61,7 +62,7 @@ Second \"item\" text"</string>
   <string name="morphe_show_menu_icons_title">顯示 Morphe 設定圖示</string>
   <string name="morphe_settings_menu_copy_path">已複製：%s</string>
   <string name="morphe_language_title">Morphe 語言</string>
-  <string name="morphe_language_user_dialog_message">"部分語言的翻譯可能缺少或不完整。
+  <string name="morphe_language_user_dialog_message">"部份語言的翻譯可能缺少或不完整。
 
 若要翻譯新的語言或改善現有翻譯，請前往 morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">應用程式語言</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 你將不會收到任何非預期的事件通知。"</string>
   <string name="morphe_debug_export_logs_title">匯出偵錯記錄</string>
   <string name="morphe_debug_export_logs_summary">匯出 Morphe 偵錯記錄</string>
-  <string name="morphe_debug_export_logs_file">匯出至檔案</string>
   <string name="morphe_debug_export_logs_success">Debug 記錄已成功匯出</string>
   <string name="morphe_debug_export_logs_failed">匯出 Debug 記錄失敗</string>
   <string name="morphe_debug_logs_search_hint">搜尋偵錯記錄…</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 假如您想要最穩定的體驗，請&lt;b&gt;解除安裝&lt;/b&gt;此版本，並改用 ✅ &lt;b&gt;%2$s&lt;/b&gt;應用程式的推薦版本。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要用實驗版本</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要用穩定版本</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">當機記錄已儲存至使用者文件：%s</string>
+  <string name="morphe_crash_log_saved">當機記錄已儲存：%s</string>
 </resources>

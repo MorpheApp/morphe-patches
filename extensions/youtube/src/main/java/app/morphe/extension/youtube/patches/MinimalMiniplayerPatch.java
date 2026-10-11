@@ -200,12 +200,39 @@ public final class MinimalMiniplayerPatch {
     private static final float maxDragProgress = 0.95f;
 
     /**
-     * In the event that a short would be opened and overwrites the video and channel
-     * names, these fields will save the name of the currently open video.
+     * The title and channel of the last regular video. {@link VideoInformation} holds whatever
+     * player loaded last, and a Short opened while the bar is up replaces them with its own.
      */
-    private static String previousVideoTitle = "";
-    private static String previousChannelTitle = "";
+    private static String videoTitle = "";
+    private static String channelName = "";
 
+    /**
+     * Set once the Shorts player opens, and cleared by the next video loaded with it closed.
+     * Closing it hands the video ID back to the regular player, but the title and channel stay
+     * those of the last Short until a new video is loaded.
+     * A Short opened in the regular player does not open the Shorts player, and it is what
+     * the bar is playing, so it is shown like any other video.
+     */
+    private static boolean waitingForRegularVideo;
+
+    static {
+        if (ENABLED) {
+            ShortsPlayerState.getOnChange().addObserver((Boolean isOpen) -> {
+                if (isOpen) {
+                    waitingForRegularVideo = true;
+                }
+                return Unit.INSTANCE;
+            });
+
+            // Fired right before the title and channel name of the new video are set.
+            VideoInformation.onChannelIdChange.addObserver((String channelId) -> {
+                if (!ShortsPlayerState.isOpen()) {
+                    waitingForRegularVideo = false;
+                }
+                return Unit.INSTANCE;
+            });
+        }
+    }
 
     /**
      * Injection point.
@@ -372,10 +399,17 @@ public final class MinimalMiniplayerPatch {
 
                 return currentBounds;
             }
-            if (getCurrent == PlayerType.WATCH_WHILE_MINIMIZED) {
+            
+            // While the player is up, this is only asked when the window changes, such as the
+            // keyboard closing or a rotation. What YouTube gets back is where the next collapse
+            // ends, so it is the bar for the new window, as it would be had nothing changed.
+            final boolean minimized = getCurrent == PlayerType.WATCH_WHILE_MINIMIZED;
+            if (minimized || getCurrent.isMaximizedOrFullscreen()) {
                 barBoundsFor(docked);
                 currentBounds.set(barBounds);
-                barShapeApplied = true;
+                if (minimized) {
+                    barShapeApplied = true;
+                }
                 return barBounds;
             }
 
@@ -446,14 +480,10 @@ public final class MinimalMiniplayerPatch {
             }
 
             if (getCurrentMiniplayerType() == MINIMAL_BAR) {
-                final int videoWidth = videoWidthFor(currentBounds.height());
-
+                // Always at the left edge. In a right-to-left layout YouTube mirrors the rect
+                // itself, which already puts the video at the end of the bar.
                 videoRect.set(currentBounds);
-                if (Utils.isRightToLeftLocale()) {
-                    videoRect.left = videoRect.right - videoWidth;
-                } else {
-                    videoRect.right = videoRect.left + videoWidth;
-                }
+                videoRect.right = videoRect.left + videoWidthFor(currentBounds.height());
             } else {
                 // Type 2 spans the bar with the video. YouTube fits anything that is not 16:9
                 // inside the bar instead, and the miniplayer has no background of its own, so
@@ -849,7 +879,11 @@ public final class MinimalMiniplayerPatch {
             };
 
     private static void reapplyBarBounds() {
-        if (!barShapeApplied || morphing || lastBounds.isEmpty()) return;
+        if (morphing || lastBounds.isEmpty()) return;
+        
+        // While the player is up the bar is where the next collapse ends. The keyboard closing
+        // under it moves the navigation bar only after YouTube asked where that is.
+        if (!barShapeApplied && !PlayerType.getCurrent().isMaximizedOrFullscreen()) return;
 
         MiniplayerBoundsController controller = boundsControllerRef.get();
         if (controller == null) return;
@@ -1030,15 +1064,22 @@ public final class MinimalMiniplayerPatch {
     }
 
     private static void updateText() {
-        if (!ShortsPlayerState.isOpen()) {
-            previousVideoTitle = VideoInformation.getVideoTitle();
-            previousChannelTitle = VideoInformation.getChannelName();
+        if (!waitingForRegularVideo) {
+            String title = VideoInformation.getVideoTitle();
+            if (!title.isEmpty()) {
+                videoTitle = title;
+            }
+
+            String channel = VideoInformation.getChannelName();
+            if (!channel.isEmpty()) {
+                channelName = channel;
+            }
         }
 
-        setText(titleRef.get(), previousVideoTitle);
+        setText(titleRef.get(), videoTitle);
 
         TextView subtitle = subtitleRef.get();
-        if (setText(subtitle, previousChannelTitle)) {
+        if (setText(subtitle, channelName)) {
             subtitle.setVisibility(View.VISIBLE);
         }
     }

@@ -40,8 +40,11 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.shared.openVideoIntentPatch
+import app.morphe.patches.youtube.shared.startVideoInformerPatch
 import app.morphe.patches.youtube.video.format.hookAdaptiveFormat
 import app.morphe.patches.youtube.video.format.videoFormatPatch
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
@@ -77,9 +80,12 @@ val miniplayerPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        startVideoInformerPatch,
         versionCheckPatch,
         playerOverlayButtonsHookPatch,
-        videoFormatPatch
+        videoFormatPatch,
+        openVideoIntentPatch,
+        videoInformationPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

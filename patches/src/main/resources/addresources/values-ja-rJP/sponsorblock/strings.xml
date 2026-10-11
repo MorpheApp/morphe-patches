@@ -228,8 +228,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_stats_saved_second_format">%s 秒</string>
   <string name="morphe_sb_color_opacity_label">透明度:</string>
   <string name="morphe_sb_color_dot_label">色:</string>
-  <string name="morphe_sb_about_title">SponsorBlock について</string>
-  <string name="morphe_sb_about_api_summary">"SponsorBlock API を使用してデータを取得しています
+  <string name="morphe_sb_about_api_summary">"SponsorBlockは、スポンサー、イントロ、アウトロ、チャンネル登録のリマインダーなどの動画セグメントのクラウドソースデータベースです。セグメントはコミュニティによって投稿・投票され、データベースはオープンで無料でダウンロードできます。
 
-ここをタップすると Sponsor.ajay.app を開きます。詳細の確認や、他のプラットフォーム版のダウンロードが可能です"</string>
+視聴中の動画のIDはSponsorBlock APIに送信され、そのセグメントを取得します。。
+
+視聴中の動画のIDはSponsorBlock APIに送信され、そのセグメントを取得します。,"</string>
 </resources>

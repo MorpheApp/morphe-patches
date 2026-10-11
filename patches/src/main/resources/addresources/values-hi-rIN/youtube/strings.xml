@@ -63,9 +63,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_album_cards_summary">कलाकार के विवरण के नीचे दिखने वाले एल्बम कार्ड छिपाता है</string>
   <string name="morphe_hide_artist_cards_title">कलाकार कार्ड छिपाएँ</string>
   <string name="morphe_hide_artist_cards_summary">सर्च नतीजों में सबसे ऊपर दिखने वाले कलाकार कार्ड छिपाता है</string>
-  <string name="morphe_hide_auto_dubbed_label_title">\'ऑटो-डब\' लेबल छुपाएं</string>
   <string name="morphe_hide_channel_buttons_title">चैनल बटन छिपाएँ</string>
-  <string name="morphe_hide_channel_buttons_summary">खोज परिणामों में चैनल प्रोफ़ाइल से सब्सक्राइब, चैनल देखें, कम्युनिटी और YouTube Music जैसे बटन छिपाता है</string>
+  <string name="morphe_hide_channel_buttons_summary">सर्च रिज़ल्ट में चैनल प्रोफ़ाइल से सब्सक्राइब, चैनल देखें, कम्युनिटी और YouTube Music जैसे बटन छिपाता है</string>
   <string name="morphe_hide_community_posts_title">समुदाय पोस्ट छुपाएं</string>
   <string name="morphe_hide_compact_banner_title">कॉम्पैक्ट बैनर छिपाएँ</string>
   <string name="morphe_hide_compact_banner_summary">कॉम्पैक्ट बैनर और कुछ घटकों के बीच का खाली स्पेस छिपाता है</string>
@@ -79,7 +78,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_history_shelf_title">इतिहास शेल्फ़ छिपाएँ</string>
   <string name="morphe_hide_horizontal_shelves_title">हॉरिजॉन्टल शेल्फ़ छिपाएँ</string>
   <string name="morphe_hide_horizontal_shelves_summary">ताज़ा खबरें, आपके पसंद आ सकने वाले पोस्ट, देखना जारी रखें, और चैनल एक्सप्लोर करें, और विषय एक्सप्लोर करें, आपके लिए, नए वीडियो, सबसे प्रासंगिक, क्रिएटर कम्युनिटी पोस्ट, शॉपिंग और दोबारा देखें जैसी हॉरिज़ॉन्टल शेल्फ़ छिपाता है</string>
-  <string name="morphe_hide_hyped_label_title">हाइप लेबल छिपाएँ</string>
   <string name="morphe_hide_image_shelf_title">इमेज शेल्फ़ छिपाएँ</string>
   <string name="morphe_hide_image_shelf_summary">सर्च नतीजों में इमेज शेल्फ़ छिपाता है</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -121,9 +119,9 @@ Second \"item\" text"</string>
 • शॉर्ट्स शेल्फ, चैनल पेज और खोज परिणाम अभी भी अपलोड का समय दिखा सकते हैं
 • यह सुविधा ऑटोमोटिव लेआउट के साथ काम नहीं करती है"</string>
   <string name="morphe_hide_video_thumbnail_title">वीडियो थंबनेल छुपाएं</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">छुपाएं वीडियो सिफारिश लेबल</string>
-  <string name="morphe_hide_video_recommendation_labels_summary">खोज परिणामों में \'लोग भी देखे\' और \'आपको भी पसंद आ सकते हैं\' लेबल को छुपाता है</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">वीडियो लेबल छिपाएँ</string>
+  <string name="morphe_hide_video_labels_summary">लेबल छिपाता है जैसे \'ऑटो-डब\' / \'डब\', \'कमीशन कमाता है\', \'हाइप्ड\', \'लोगों ने यह भी देखा\', \'उत्पाद(ओं)\' और \'आपको यह भी पसंद आ सकता है\'</string>
   <string name="morphe_hide_view_count_title">छुपाएं व्यू काउंट</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"सीमाएँ:
@@ -158,17 +156,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_snackbar_title">स्नैकबार छिपाएं</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">छुपाएं सदस्यगणितों की निदेशिका</string>
   <string name="morphe_hide_sync_button_title">\"सिंक टू वीडियो\" बटन छिपाएं</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">टैप और होल्ड ग्रेडिएंट छिपाएँ</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">तेज़ करने के लिए उंगली दबाकर स्लाइड करने पर प्लेयर कंट्रोल्स का ग्रेडिएंट छिपाता है</string>
   <string name="morphe_hide_timed_reactions_title">छुपाएं समयबद्ध प्रतिक्रियाएं</string>
   <string name="morphe_hide_timed_reactions_summary">टिप्पणी अनुभाग और लाइव चैट में इमोजी के साथ प्रतिक्रिया देने की अनुमति देने वाली सुविधा को छुपाता है</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">मेन्यू में \'सहायता &amp; प्रतिक्रिया\' छिपाएँ</string>
-  <string name="morphe_hide_help_feedback_menu_summary">ऐप बार के तीन-बिंदु वाले मेन्यू, जैसे खोज परिणाम मेन्यू, में \'सहायता &amp; प्रतिक्रिया\' छिपाता है</string>
+  <string name="morphe_hide_help_feedback_menu_title">\'सहायता &amp; सुझाव\' मेनू छिपाएँ</string>
+  <string name="morphe_hide_help_feedback_menu_summary">जब आप तीन-बिंदु वाले बटन का उपयोग करते हैं, जैसे कि खोज परिणामों पर, तो \'सहायता और सुझाव\' मेनू छिपा दिया जाता है</string>
   <string name="morphe_hide_handle_title">हैंडल छिपाएँ</string>
-  <string name="morphe_hide_handle_summary">\'You\' टैब में आपका चैनल हैंडल छिपाता है</string>
+  <string name="morphe_hide_handle_summary">आप टैब में आपका चैनल हैंडल छिपाता है</string>
   <string name="morphe_hide_video_title_title">छुपाएं वीडियो शीर्षक</string>
   <string name="morphe_hide_video_title_summary">फुलस्क्रीन मोड में वीडियो शीर्षक को छुपाता है</string>
   <string name="morphe_sanitize_video_subtitle_title">वीडियो उपशीर्षक को सैनिटाइज़ करें</string>
-  <string name="morphe_sanitize_video_subtitle_summary">वीडियो उपशीर्षक से \'#\', \'फंडरेज़र\', \'शॉप\', और \'उत्पाद\' जैसे वाक्यांशों को सैनिटाइज़ करता है</string>
+  <string name="morphe_sanitize_video_subtitle_summary">वीडियो सबटाइटल से \'#\', \'फंडरेज़र\', \'उत्पाद(ओं)\', और \'दुकान\' जैसे वाक्यांशों को साफ करता है</string>
   <string name="morphe_hide_description_components_screen_title">वीडियो विवरण</string>
   <string name="morphe_hide_description_components_screen_summary">वीडियो विवरण में प्रदर्शित होने वाले घटकों को चुनें</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'AI-जनित वीडियो सारांश\' अनुभाग छुपाएं</string>
@@ -327,7 +327,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stats_hidden_all_title">सभी समय के लिए छिपे हुए वीडियो</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">पिछले 24 घंटों के काउंटर को रीसेट करें?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">क्या सभी समय काउंटर रीसेट करें?</string>
-  <string name="morphe_hide_about_category_title">इसके बारे में</string>
   <string name="morphe_hide_aislist_screen_title">AI चैनल फ़िल्टर</string>
   <string name="morphe_hide_aislist_screen_summary">AiSList समुदाय सूची द्वारा AI-जनित सामग्री के रूप में चिह्नित चैनलों से वीडियो छिपाएँ</string>
   <string name="morphe_hide_aislist_blocklist_category_title">ब्लॉकसूची: उच्च आत्मविश्वास</string>
@@ -346,9 +345,9 @@ Second \"item\" text"</string>
 सीमाएँ:
 • फ़िल्टर किए गए AI शॉर्ट्स एक खाली स्थान के रूप में दिखाई दे सकते हैं
 • कुछ AI वीडियो अभी भी दिखाई दे सकते हैं"</string>
-  <string name="morphe_hide_aislist_attribution_summary">"डेटा AiSList द्वारा प्रदान किया गया है
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList एक ओपन सोर्स सूची है जिसमें YouTube चैनल शामिल हैं जो AI-जनित सामग्री प्रकाशित करते हैं, जिसे स्वयंसेवकों द्वारा बनाए रखा जाता है। चैनल उपयोगकर्ताओं द्वारा रिपोर्ट किए जाते हैं और जोड़े जाने से पहले समीक्षा की जाती है
 
-अन्य प्लेटफार्मों के लिए डाउनलोड देखने के लिए यहां टैप करें AiSlopList.com"</string>
+सूची GitHub से डाउनलोड की जाती है और वीडियो आपके डिवाइस पर फ़िल्टर किए जाते हैं"</string>
   <string name="morphe_aislist_submit_category_title">AI चैनलों की रिपोर्ट करें</string>
   <string name="morphe_aislist_submit_flyout_menu_title">वीडियो मेनू में रिपोर्ट प्रविष्टि जोड़ें</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">वीडियो मेनू में एक प्रविष्टि जोड़ें जो किसी वीडियो के चैनल की रिपोर्ट AiSList को करती है</string>
@@ -401,7 +400,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">चैनल में खोजें</string>
-  <string name="morphe_channel_search_summary">जब कोई चैनल खुला हो, तो खोज केवल उसी चैनल में होती है</string>
+  <string name="morphe_channel_search_summary">चैनल पृष्ठों पर केवल उस चैनल को खोजने के लिए एक दूसरा खोज बटन जोड़ता है</string>
   <string name="morphe_channel_search_hint">चैनल खोजें</string>
   <string name="morphe_channel_search_results">चैनल खोज परिणाम</string>
   <string name="morphe_channel_search_no_results">इस चैनल पर कुछ नहीं मिला</string>
@@ -420,6 +419,13 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">वीडियो लिंक कॉपी करने के लिए टैप करें, टाइमस्टैम्प के साथ कॉपी करने के लिए टैप करके और होल्ड करें</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">डिफ़ॉल्ट रूप से टाइमस्टैम्प कॉपी करें</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">\'कॉपी वीडियो लिंक\' बटन की टैप और टैप-एंड-होल्ड क्रियाओं को उलट देता है</string>
+  <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">वीडियो शीर्षक कॉपी करें</string>
+  <string name="morphe_copy_video_title_summary">वीडियो का शीर्षक कॉपी करने के लिए उसे देर तक दबाकर रखें</string>
+  <string name="morphe_copy_video_title_success">वीडियो का शीर्षक क्लिपबोर्ड पर कॉपी किया गया</string>
+  <string name="morphe_copy_comments_title">टिप्पणियाँ कॉपी करें</string>
+  <string name="morphe_copy_comments_summary">किसी टिप्पणी को कॉपी करने के लिए, उसे देर तक दबाकर रखें</string>
+  <string name="morphe_copy_comments_success">टिप्पणी क्लिपबोर्ड पर कॉपी की गई</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीवी पर साइन इन करें\' पॉपअप बंद करें</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'कनेक्ट आपके डिवाइस\' पॉपअप अक्षम करें</string>
@@ -436,7 +442,6 @@ Second \"item\" text"</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">वॉइस ओवर अनुवाद</string>
   <string name="morphe_vot_screen_summary">डिवाइस पर टेक्स्ट-टू-स्पीच का उपयोग करके वीडियो कैप्शन को ज़ोर से पढ़ें, जो प्लेबैक के साथ सिंक्रनाइज़ किया गया है।</string>
-  <string name="morphe_vot_enabled_title">वॉइस ओवर अनुवाद</string>
   <string name="morphe_vot_enabled_summary">वीडियो प्लेयर में एक ओवरले बटन दिखाता है। अनुवाद टॉगल करने के लिए टैप करें, त्वरित सेटिंग्स के लिए टैप करके रखें</string>
   <string name="morphe_vot_caption_language_title">भाषा</string>
   <string name="morphe_vot_translation_service_title">अनुवाद प्रदाता</string>
@@ -504,9 +509,9 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_loop_video_range_clear">खाली करें</string>
   <string name="morphe_loop_video_range_toast_on">%1$s से %2$s लूपिंग</string>
   <string name="morphe_loop_video_range_invalid_time">अमान्य समय सीमा</string>
-  <!-- interaction.pip.pipButtonPatch -->
-  <string name="morphe_pip_button_overlay_title">पिक्चर-इन-पिक्चर ओवरले बटन दिखाएं</string>
-  <string name="morphe_pip_button_flyout_title">पिक्चर-इन-पिक्चर फ़्लायआउट बटन दिखाएं</string>
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">पिक्चर-इन-पिक्चर बटन दिखाएँ</string>
+  <string name="morphe_pip_button_flyout_title">पिक्चर-इन-पिक्चर मेनू दिखाएँ</string>
   <string name="morphe_pip_button_flyout_name">पिक्चर-इन-पिक्चर पर स्विच करें</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">प्ले ऑल बटन दिखाएं</string>
@@ -716,18 +721,12 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_hide_save_button_title">सहेजें बटन छुपाएं</string>
   <string name="morphe_hide_more_button_title">अधिक बटन छिपाएं</string>
   <string name="morphe_fullscreen_buttons">फ़ुलस्क्रीन बटन</string>
-  <string name="morphe_hide_quick_actions_title">एक्शन बार छिपाएं</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">पूछें बटन छुपाएं</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">टिप्पणी बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">डिसलाइक बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_like_button_title">लाइक बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">\'लाइव चैट\' बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_mix_button_title">मिक्स बटन छुपाएं</string>
-  <string name="morphe_hide_quick_actions_more_button_title">अधिक बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">\'अधिक वीडियो\' बटन छुपाएं</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">प्लेलिस्ट बटन छुपाएं</string>
-  <string name="morphe_hide_quick_actions_save_button_title">सहेजें बटन छुपाएं</string>
-  <string name="morphe_hide_quick_actions_share_button_title">छुपाएं शेयर बटन</string>
   <string name="morphe_quick_actions_top_margin_title">त्वरित क्रियाओं का शीर्ष मार्जिन</string>
   <string name="morphe_quick_actions_top_margin_summary">त्वरित क्रियाओं बार के शीर्ष मार्जिन को सेट करें (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
@@ -741,6 +740,10 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_auto_captions_style_entry_4">म्यूट किए हुए दिखाएं</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">ऑटो कैप्शंस दिखाएं</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">ऑटो कैप्शंस छुपाएं</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">पसंदीदा कैप्शन भाषा</string>
+  <string name="morphe_preferred_caption_language_summary">पहले प्रदाता उपशीर्षक चुनता है, फिर स्वतः पसंदीदा भाषा में अनुवाद करता है</string>
+  <string name="morphe_preferred_caption_language_entry_off">बंद</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">कैप्शन कुकी सेट करें</string>
   <string name="morphe_set_caption_cookies_summary">"एक स्टॉक YouTube बग को ठीक करता है जहां ऑटो-ट्रांसलेट कैप्शन कुकीज़ की कमी के कारण उपलब्ध नहीं हो सकते हैं
@@ -795,13 +798,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_toolbar_screen_summary">टूलबार में कौन से घटक दिखाई दें, यह चुनें</string>
   <string name="morphe_hide_toolbar_cast_button_title">\'ऑडियो ट्रैक\' मेनू फ़ूटर छुपाएं</string>
   <string name="morphe_hide_toolbar_chat_button_title">चैट बटन छुपाएं</string>
-  <string name="morphe_hide_toolbar_create_button_title">छिपाएं बनाएं बटन</string>
   <string name="morphe_hide_toolbar_microphone_button_title">कैप्शन मेनू फ़ूटर छुपाएं</string>
-  <string name="morphe_hide_toolbar_notification_button_title">सूचनाएं छिपाएं</string>
   <string name="morphe_hide_toolbar_search_button_title">खोज छिपाएं</string>
-  <string name="morphe_show_toolbar_settings_button_title">सेटिंग दिखाएं</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">सेटिंग बटन की स्थिति</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">सेटिंग बटन कार्रवाई</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">जब सक्षम हो, तो टैप करने पर Morphe सेटिंग्स खुलती है और लंबे समय तक दबाने पर YouTube सेटिंग्स खुलती है, स्वैप करने के लिए अक्षम करें</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">फ्लायआउट मेनू</string>
@@ -952,6 +950,8 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">प्लेलिस्ट ऑटोप्ले अक्षम करें</string>
   <string name="morphe_disable_playlist_autoplay_summary">प्लेलिस्ट को अगले वीडियो पर स्वचालित रूप से आगे बढ़ने से रोकता है</string>
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">\'देखना जारी रखें?\' संकेत अक्षम करें</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">वीडियो के अंत पर फुलस्क्रीन मोड से बाहर निकलें</string>
   <string name="morphe_exit_fullscreen_entry_1">अक्षम</string>
@@ -1157,30 +1157,32 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_bypass_image_region_restrictions_summary">प्रतिबंधित देशों में गुम छवियों को ठीक करने के लिए थंबनेल अनुरोधों को एक वैकल्पिक सर्वर पर रीडायरेक्ट करता है</string>
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
-  <string name="morphe_dearrow_titles_title">DeArrow शीर्षक</string>
-  <string name="morphe_dearrow_titles_summary">वीडियो शीर्षकों को DeArrow पर प्रस्तुत किए गए क्राउडसोर्स शीर्षकों से बदलता है</string>
-  <string name="morphe_dearrow_titles_icon_title">DeArrow आइकन दिखाएँ</string>
-  <string name="morphe_dearrow_titles_icon_summary">क्राउडसोर्स्ड वीडियो शीर्षकों पर DeArrow आइकन दिखाता है</string>
+  <string name="morphe_dearrow_titles_title">DeArrow टाइटल</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_home_title">होम टैब के लिए</string>
+  <string name="morphe_dearrow_titles_home_title">होम टैब</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_subscription_title">सदस्यता टैब के लिए</string>
+  <string name="morphe_dearrow_titles_subscription_title">सदस्यता टैब</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_library_title">आपके लिए टैब के लिए</string>
-  <string name="morphe_dearrow_thumbnail_player_title">प्लेयर प्लेलिस्ट और सिफारिशों के लिए</string>
-  <string name="morphe_dearrow_thumbnail_search_title">खोज परिणामों के लिए</string>
+  <string name="morphe_dearrow_titles_library_title">आप टैब</string>
+  <string name="morphe_dearrow_titles_player_title">प्लेयर प्लेलिस्ट &amp; सुझाव</string>
+  <string name="morphe_dearrow_titles_search_title">खोज परिणाम</string>
+  <string name="morphe_dearrow_titles_icon_title">DeArrow आइकन दिखाएँ</string>
+  <string name="morphe_dearrow_titles_icon_summary">क्राउडसोर्स्ड वीडियो टाइटल पर DeArrow आइकन दिखाता है</string>
+  <string name="morphe_dearrow_casual_mode_title">कैज़ुअल मोड</string>
+  <string name="morphe_dearrow_casual_mode_summary">यदि DeArrow उपयोगकर्ताओं ने वोट किया है कि उन्हें मूल शीर्षक पसंद है, तो DeArrow शीर्षक के बजाय मूल शीर्षक दिखाता है</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">मूल शीर्षक दिखाने के लिए न्यूनतम कैज़ुअल वोट</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">किसी एक श्रेणी (जैसे मज़ेदार या रचनात्मक) में मूल शीर्षक दिखाने के लिए आवश्यक कैज़ुअल वोटों की संख्या</string>
+  <string name="morphe_dearrow_thumbnails_title">DeArrow थंबनेल</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">मूल थंबनेल</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; Original thumbnails</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; Still captures</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">Still captures</string>
-  <string name="morphe_dearrow_about_summary">"DeArrow YouTube वीडियो के लिए क्राउडसोर्स किए गए शीर्षक और थंबनेल प्रदान करता है। ये अक्सर YouTube द्वारा प्रदान किए गए शीर्षकों की तुलना में अधिक प्रासंगिक होते हैं
+  <string name="morphe_dearrow_about_summary">"DeArrow क्लिकबेट शीर्षकों और थंबनेल को क्राउडसोर्स किए गए शीर्षकों और थंबनेल से बदल देता है जो अधिक सटीक और कम सनसनीखेज होते हैं। शीर्षक समुदाय द्वारा लिखे और वोट किए जाते हैं, और थंबनेल वीडियो से लिए गए फ्रेम होते हैं
 
-यदि सक्षम किया जाता है, तो वीडियो यूआरएल एपीआई सर्वर को भेजे जाएँगे और कोई अन्य डेटा नहीं भेजा जाएगा। यदि किसी वीडियो में DeArrow थंबनेल नहीं हैं, तो मूल या स्थिर छवियाँ दिखाई जाती हैं
-
-DeArrow.ajay.app खोलने के लिए यहाँ टैप करें"</string>
+वीडियो हैश किए गए वीडियो आईडी के छोटे उपसर्ग द्वारा अनुरोध किए जाते हैं, इसलिए सर्वर यह नहीं बता सकता कि आप कौन सा वीडियो देख रहे हैं। यदि किसी वीडियो में DeArrow थंबनेल नहीं है, तो मूल या स्थिर कैप्चर दिखाया जाता है"</string>
   <string name="morphe_dearrow_connection_toast_title">कनेक्शन त्रुटि अलर्ट दिखाएं</string>
   <string name="morphe_dearrow_connection_toast_summary">जब DeArrow सर्वर अनुपलब्ध हो तो एक सूचना दिखाता है</string>
-  <string name="morphe_dearrow_api_url_title">DeArrow API एंडपॉइंट</string>
+  <string name="morphe_dearrow_api_url_title">API एंडपॉइंट</string>
   <string name="morphe_dearrow_api_url_summary">DeArrow थंबनेल कैश एंडपॉइंट का URL</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">अभी भी वीडियो कैप्चर</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">स्टिल कैप्चर वीडियो के शुरुआत / मिडिल / अंत से ली गई हैं। ये इमेजेज यूट्यूब में शामिल हैं और कोई बाहरी एपीआई का उपयोग नहीं किया जाता है</string>

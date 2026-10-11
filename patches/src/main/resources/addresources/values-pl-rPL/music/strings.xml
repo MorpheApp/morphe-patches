@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Odtwarzaj utwory z albumu</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Odtwarza utwory w wersji z albumu zamiast teledysków. Wymaga opcji \"Fałszowanie strumieni filmów\"</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Włącz przełącznik Utwór/Film</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Próbuje przełączać między utworem a oficjalnym teledyskiem</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Pobieraj teledyski, podcasty lub utwory za pomocą zewnętrznych aplikacji do pobierania</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_settings_music_screen_4_player_title">Odtwarzacz</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Teksty piosenek</string>
   <string name="morphe_settings_music_screen_9_misc_title">Pozostałe</string>
+  <string name="morphe_music_app_language_title">Język YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Język systemowy</string>
+  <string name="morphe_music_app_language_summary_unsupported">Wymaga Androida 13 lub nowszego</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ukryj etykietę \"Kup Music Premium\"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Ukryj promocje Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ukryj reklamy w filmach</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ukryj przełącznik Utwór / Teledysk</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Ukryj przycisk Pobierz</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Ukrywa przycisk Pobierz w podcaście</string>
   <string name="morphe_music_hide_explore_shelf_title">Ukryj sekcję Odkrywaj</string>
+  <string name="morphe_music_hide_filter_bar_title">Ukryj pasek filtrów</string>
   <string name="morphe_music_hide_grid_shelves_title">Ukryj sekcje siatki</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ukryj sekcje poziome</string>
   <string name="morphe_music_hide_list_shelves_title">Ukryj sekcje listy</string>
@@ -188,7 +197,6 @@ Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ukryj przycisk Przetłumacz</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ukryj sekcję \"Nowości od\"</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ukryj sekcje playlist</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ukryj przycisk Pobierz odcinek podcastu</string>
   <string name="morphe_music_hide_repeat_button_title">Ukryj przycisk Powtórz</string>
   <string name="morphe_music_hide_shuffle_button_title">Ukryj przycisk \"Odtwarzaj losowo\"</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ukryj sekcję \"Szybkie wybieranie\"</string>
@@ -236,32 +244,26 @@ Tutaj pojawią się pobrane utwory"</string>
   <string name="morphe_music_crossfade_paused_toast">Przenikanie wstrzymane w tej sesji</string>
   <string name="morphe_music_crossfade_resumed_toast">Przenikanie wznowione</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Tryb teledysku niedostępny podczas przenikania</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Przenikanie jest wstrzymane podczas przesyłania lub klonowaniu dźwięku. Przenikanie w tych trybach jest niestabilne i być może nigdy nie uda się tego naprawić</string>
-  <string name="morphe_music_crossfade_about_title">Informacje</string>
-  <string name="morphe_music_crossfade_about_summary">Jak działa przenikanie - i kiedy nie działa</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Przenikanie wyłączone przy odtwarzaniu SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Przenikanie wyłączone podczas przesyłania</string>
   <string name="morphe_music_crossfade_about_how_title">Jak to działa</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Przenikanie nakłada koniec jednego utworu na początek następnego, wyciszając pierwszy, podczas gdy drugi zgłaśnia się zgodnie z wybranym czasem trwania i krzywą
+  <string name="morphe_music_crossfade_about_how_summary">"Przenikanie nakłada koniec jednego utworu na początek następnego, zgodnie z ustawionym czasem i krzywą
 
-​Działa to przy automatycznym przechodzeniu (gdy utwór sam się kończy) i przy ręcznym pomijaniu - obie opcje mają własne przełączniki powyżej. Przy automatycznym przełączaniu miksowanie zaczyna się kilka sekund przed końcem utworu
+Działa przy automatycznym odtwarzaniu oraz ręcznym pomijaniu, obie opcje mają własne przełączniki. Przy automatycznym odtwarzaniu łączenie zaczyna się kilka sekund przed końcem utworu"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Ograniczenia</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Teledyski są odtwarzane tylko jako utwory, gdy przenikanie jest włączone. Przytrzymaj przycisk losowego odtwarzania, aby wstrzymać przenikanie i obejrzeć teledysk
 
-​Wymaga YouTube Music w wersji 9.x lub nowszej"</string>
-  <string name="morphe_music_crossfade_about_best_title">Działa najlepiej przy</string>
-  <string name="morphe_music_crossfade_about_best_summary">Zwykłym odtwarzaniu utwór po utworze i automatycznym przełączaniu, zapętleniu jednego utworu (utwór przenika sam w siebie) oraz przy lokalnym dźwięku - z głośnika telefonu, słuchawek przewodowych, Bluetooth lub USB</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Co nie działa idealnie</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Gdy włączone jest przenikanie, teledyski odtwarzają się tylko w formie dźwiękowej (przytrzymaj przycisk odtwarzania losowego, aby je wstrzymać, jeśli chcesz zobaczyć film)
+Teledysk, od którego rozpoczyna się odtwarzanie, pozostaje teledyskiem aż do następnego utworu
 
-Utwory krótsze niż ustawiony czas przenikania mogą pominąć ten efekt
+Utwory krótsze niż czas przenikania nie są łączone
 
-Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan w trakcie przejścia"</string>
-  <string name="morphe_music_crossfade_about_known_title">Znane problemy</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Teledysk ustawiony jako pierwszy utwór, lub odpalony spoza obecnej kolejki - może przez chwilę wyświetlać obraz, zanim wskoczy tryb samego dźwięku
+Ekran blokady lub powiadomienie może na chwilę pokazać nieaktualny stan w trakcie przejścia
 
-​Wstrzymanie przenikania, żeby obejrzeć teledysk, może skutkować czarnym ekranem w niektórych filmach (tych, w których dźwięk pochodzi bezpośrednio z filmu). Wstrzymanie przenikania przed wybraniem utworu pozwala tego uniknąć"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">W ogóle nie działa</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Przesyłanie lub klonowanie dźwięku (Chromecast, klonowanie ekranu lub dźwięku) - przenikanie jest wstrzymywane, ponieważ działa tam niestabilnie i być może nigdy nie uda się tego naprawić
+Wstrzymanie przenikania, aby obejrzeć teledysk, może skutkować czarnym ekranem w niektórych z nich. Wstrzymanie przenikania przed wybraniem utworu pozwala tego uniknąć"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Nieobsługiwane</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Przesyłanie lub klonowanie (Chromecast, klonowanie ekranu lub dźwięku)
 
-​YouTube Music 8.x - przenikanie działa tylko na wersjach 9.x i nowszych"</string>
+​Odtwarzanie SABR (wyłączone fałszowanie strumieni filmów)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Podziękowanie</string>
   <string name="morphe_music_crossfade_about_credit_summary">Funkcja przenikania autorstwa VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Wyłącz pomijanie nielubianych piosenek</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Zapobiega przechodzeniu do następnego utworu po naciśnięciu łapki w dół</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Działanie po dotknięciu utworu na playliście</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Odtwórz playlistę</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Odtwórz tylko wybrany utwór</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Dodaj wybrany utwór do kolejki</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Utwór został dodany do kolejki</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ukryj przycisk Przesyłaj</string>
   <string name="morphe_music_hide_history_button_title">Ukryj przycisk Historia</string>
@@ -351,8 +360,6 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <string name="morphe_change_start_page_entry_playlists">Playlisty</string>
   <string name="morphe_change_start_page_entry_search">Wyszukiwanie</string>
   <string name="morphe_change_start_page_entry_subscriptions">Subskrypcje</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Ukryj pasek filtrów</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Wymuś orientację pionową</string>
   <string name="morphe_music_force_portrait_orientation_summary">Utrzymuje aplikację w orientacji pionowej po obróceniu urządzenia</string>
@@ -386,7 +393,6 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <string name="morphe_music_hide_navigation_bar_title">Ukryj pasek nawigacji</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ukryj etykiety przycisków nawigacji</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Skonfiguruj integrację z Last.fm i ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Nie zalogowano. Dotknij, aby skonfigurować</string>
   <string name="morphe_music_scrobbling_log_out">Wyloguj się</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Wylogowano</string>
@@ -409,7 +415,6 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Wprowadź token użytkownika ListenBrainz, aby włączyć scrobblowanie</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Pobierz token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Zweryfikuj</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Wprowadź token</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Weryfikowanie…</string>
@@ -444,8 +449,6 @@ Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan 
   <string name="morphe_music_scrobbling_guess_album_title">Uzupełnij brakujący album</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Gdy utwór nie zawiera informacji o albumie, wyszukaj go w Last.fm, aby scrobble był kompletny</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">O scrobblowaniu</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobblowanie automatycznie synchronizuje Twoją aktywność w YouTube Music z profilem Last.fm lub ListenBrainz
 
 Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij się, że zużycie baterii dla aplikacji YouTube Music jest ustawione na \"Bez ograniczeń\""</string>
@@ -457,7 +460,6 @@ Aby zapewnić ciągłość synchronizacji podczas odtwarzania w tle, upewnij si�
   <string name="morphe_music_lyrics_section_service_title">Usługa tekstów</string>
   <string name="morphe_music_lyrics_section_overlay_title">Nakładka</string>
   <string name="morphe_music_lyrics_section_sync_title">Synchronizacja</string>
-  <string name="morphe_music_lyrics_section_about_title">Informacje</string>
   <string name="morphe_music_lyrics_source_all_disabled">Wszyscy dostawcy wyłączeni - teksty wbudowane i osadzone</string>
   <string name="morphe_music_lyrics_source_reset_title">Zresetować kolejność dostawców?</string>
   <string name="morphe_music_lyrics_source_reset_message">Przywróć domyślną kolejność priorytetów dla dostawców</string>
@@ -542,13 +544,16 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_custom_regex_title">Wyrażenie regularne dla metadanych</string>
   <string name="morphe_music_lyrics_custom_regex_summary">Wyrażenie regularne stosowane do tytułów, wykonawców i albumów przed wyszukaniem tekstu oraz podczas oceniania zgodności dwóch tytułów. Pozostaw puste, aby wyłączyć obie funkcje. Domyślne ustawienie usuwa powszechne zbędne elementy, takie jak \"Official Video\", \"Remaster\", \"【插曲】\" i \"- Topic\"</string>
   <string name="morphe_music_lyrics_text_filter_title">Wyrażenie regularne filtra tekstu</string>
-  <string name="morphe_music_lyrics_text_filter_summary">Wyrażenie regularne stosowane wyłącznie do oryginalnego tekstu piosenki (z pominięciem tłumaczeń i romanizacji). Pozostaw puste, aby wyłączyć</string>
+  <string name="morphe_music_lyrics_text_filter_summary">Wyrażenie regularne stosowane wyłącznie do oryginalnego tekstu utworu (z pominięciem tłumaczeń i romanizacji). Pozostaw puste, aby wyłączyć</string>
   <string name="morphe_music_lyrics_credit_line_regex_title">Znaczniki wierszy informacyjnych</string>
-  <string name="morphe_music_lyrics_credit_line_regex_summary">Jeśli standardowy tekst piosenki jest błędnie przenoszony na sam dół, dostosuj to pole lub je wyczyść. Znaczniki oddzielane przecinkami: wiersze zawierające znacznik, po którym następuje dwukropek, są traktowane jako informacje o twórcach i wyświetlane na dole. Pozostaw puste, aby wyłączyć</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">Jeśli standardowy tekst utworu jest błędnie przenoszony na sam dół, dostosuj to pole lub je wyczyść. Znaczniki oddzielane przecinkami: wiersze zawierające znacznik, po którym następuje dwukropek, są traktowane jako informacje o twórcach i wyświetlane na dole. Pozostaw puste, aby wyłączyć</string>
   <string name="morphe_music_lyrics_text_size_title">Rozmiar tekstu</string>
   <string name="morphe_music_lyrics_text_size_summary">Rozmiar tekstu utworu</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Przesunięcie czasowe</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Globalne przesunięcie czasowe</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Zsynchronizowane teksty podążają za odtwarzaniem. Jeśli się rozjeżdżają, dostosuj przesunięcie czasowe do przodu lub do tyłu. Użyj wartości dodatniej, jeśli tekst wyprzedza piosenkę</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Użyj segmentów SponsorBlock do przesunięcia tekstu</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Dopasowuje z pominięciem wyciętych przez SponsorBlock fragmentów i przesuwa tekst do utworu. Wyłączenie tej opcji całkowicie ignoruje SponsorBlock</string>
+  <string name="morphe_music_lyrics_sb_no_video">Ten utwór nie ma identyfikatora teledysku do przesłania</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Źródło: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Przetłumaczone przez Google</string>
@@ -569,6 +574,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_refreshing">Odświeżanie</string>
   <string name="morphe_music_lyrics_refreshed">Odświeżono</string>
   <string name="morphe_music_lyrics_about_summary">"Teksty są dopasowywane na podstawie tytułu i wykonawcy, nietypowe metadane mogą skutkować brakiem wyników lub znalezieniem niewłaściwej wersji. Użyj odświeżania, aby zmienić wersję. Dostawcy oznaczeni * wymagają tokena. Zapytania do włączonych dostawców nie zawsze są wysyłane w ustalonej przez Ciebie kolejności, odpowiadają oni w zależności od swojej szybkości"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Włącz tylko tych dostawców, z których korzystasz, lub pozostaw ustawienie domyślne. Ciągłe żądania mogą przeciążyć małe, społecznościowe strony z tekstami</string>
   <string name="morphe_music_lyrics_hide_info_title">Ukryj informacje o twórcach</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ukrywa informacje o twórcach wyświetlane pod tekstem</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamień miejscami tłumaczenie i romanizację</string>

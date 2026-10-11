@@ -108,12 +108,10 @@ Als u een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet verei
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Inloggen bij Android VR kan speelproblemen voor sommige gebruikers oplossen
 
 Om in te loggen, druk je op 'doorgaan' onderaan"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Doorgaan</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Afmelden</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructies</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activatienummer: %s\n\n1. Tik 'Open website' hieronder om de 'Apparaat verbinden' website te openen\n2. Plak vanuit het klembord het hierboven weergegeven activatienummer\n3. Log in bij Google als gevraagd. Als je meerdere accounts hebt, selecteer dan dit YouTube-account\n4. Tik 'YouTube VR toestaan' in\n5. Ga terug naar deze app na bereiking van het bericht 'Apparaat verbonden'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Website openen</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Mislukt het verstrekken van een activatienummer</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Mislukt het verstrekken van een verifikasiëringstoken</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Succesvol ingelogd</string>
@@ -192,7 +190,6 @@ Als u dit inschakelt, worden echter ook bepaalde gebruikersgegevens, zoals uw IP
   <string name="morphe_custom_filter_screen_title">Aangepaste filter</string>
   <string name="morphe_custom_filter_screen_summary">Configureer aangepaste filters om elk component te verbergen</string>
   <string name="morphe_custom_filter_title">Aangepaste filter inschakelen</string>
-  <string name="morphe_custom_filter_strings_title">Aangepaste filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Lijst met component pad builder strings om te filteren, gescheiden door nieuwe regels</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ongeldige aangepaste filter: %s</string>
@@ -255,9 +252,9 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_ryd_estimated_like_summary">Toont een geschat aantal likes op video\'s waarbij de maker likes heeft uitgeschakeld</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Toon verbindingsfoutmeldingen</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Toont een melding wanneer de Return YouTube Dislike-server niet beschikbaar is</string>
-  <string name="morphe_ryd_attribution_summary">"Data wordt geleverd door de Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike herstelt de dislike-aantallen die YouTube in 2021 verborgen heeft. De aantallen komen uit gegevens die vóór de verwijdering zijn gearchiveerd en worden voor nieuwere video's geschat op basis van de stemmen van gebruikers, dus ze zijn bij benadering en worden om de paar dagen bijgewerkt
 
-Tik hier om ReturnYouTubeDislike.com te openen"</string>
+De ID van de video die je bekijkt wordt naar de Return YouTube Dislike API gestuurd, en je likes en dislikes worden anoniem verzonden om de schattingen te verbeteren"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API-statistieken van dit apparaat</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-responstijd, gemiddelde</string>

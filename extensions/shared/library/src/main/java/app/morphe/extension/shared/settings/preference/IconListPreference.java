@@ -21,7 +21,6 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -38,9 +37,9 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.ui.Dim;
 
 /**
  * A {@link CustomDialogListPreference} that shows a full adaptive-icon preview
@@ -54,10 +53,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
 @SuppressWarnings({"unused", "deprecation"})
 public class IconListPreference extends CustomDialogListPreference {
 
-    public static final int LAYOUT_MORPHE_ICON_LIST_ITEM = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.LAYOUT, "morphe_icon_list_item");
-    public static final int ID_MORPHE_ITEM_ICON = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "morphe_item_icon");
+    public static final int ID_MORPHE_ITEM_ICON = View.generateViewId();
 
     static final float ICON_SIZE_DP = 48f;
     static final float ICON_CORNER_RADIUS_FRACTION = 0.22f;
@@ -236,7 +232,6 @@ public class IconListPreference extends CustomDialogListPreference {
 
         IconListPreferenceAdapter adapter = new IconListPreferenceAdapter(
                 context,
-                LAYOUT_MORPHE_ICON_LIST_ITEM,
                 entriesToShow,
                 entryValues,
                 getValue(),
@@ -292,6 +287,25 @@ public class IconListPreference extends CustomDialogListPreference {
     }
 
     /**
+     * The row of {@link CustomDialogListPreference#createCheckedListItem(Context)}
+     * with an icon before the text, found with {@link #ID_MORPHE_ITEM_ICON}.
+     */
+    static LinearLayout createIconListItem(Context context) {
+        LinearLayout row = createCheckedListItem(context, Dim.dp10, Dim.dp12);
+
+        ImageView itemIcon = new ImageView(context);
+        itemIcon.setId(ID_MORPHE_ITEM_ICON);
+        itemIcon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        itemIcon.setVisibility(View.INVISIBLE);
+        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(Dim.dp48, Dim.dp48);
+        iconParams.setMarginEnd(Dim.dp(14));
+        // Before the text, after the checkmark and its placeholder.
+        row.addView(itemIcon, row.getChildCount() - 1, iconParams);
+
+        return row;
+    }
+
+    /**
      * Adapter that renders each list row with a checkmark, an adaptive icon preview,
      * and a text label.
      */
@@ -304,20 +318,17 @@ public class IconListPreference extends CustomDialogListPreference {
             TextView itemText;
         }
 
-        private final int layoutResourceId;
         private final CharSequence[] entryValues;
         private final Drawable[] iconDrawables;
         private String selectedValue;
 
         public IconListPreferenceAdapter(
                 Context context,
-                int resource,
                 CharSequence[] entries,
                 CharSequence[] entryValues,
                 String selectedValue,
                 Drawable[] iconDrawables) {
-            super(context, resource, entries);
-            this.layoutResourceId = resource;
+            super(context, 0, entries);
             this.entryValues = entryValues;
             this.selectedValue = selectedValue;
             this.iconDrawables = iconDrawables;
@@ -330,14 +341,11 @@ public class IconListPreference extends CustomDialogListPreference {
             ViewHolder holder;
 
             if (view == null) {
-                view = LayoutInflater.from(getContext()).inflate(layoutResourceId, parent, false);
+                view = createIconListItem(getContext());
                 holder = new ViewHolder();
                 holder.placeholder = view.findViewById(CustomDialogListPreference.ID_MORPHE_CHECK_ICON_PLACEHOLDER);
                 holder.itemText = view.findViewById(CustomDialogListPreference.ID_MORPHE_ITEM_TEXT);
                 holder.checkIcon = view.findViewById(CustomDialogListPreference.ID_MORPHE_CHECK_ICON);
-                holder.checkIcon.setImageResource(Utils.appIsUsingBoldIcons()
-                        ? CustomDialogListPreference.DRAWABLE_CHECKMARK_BOLD
-                        : CustomDialogListPreference.DRAWABLE_CHECKMARK);
                 holder.itemIcon = view.findViewById(ID_MORPHE_ITEM_ICON);
                 view.setTag(holder);
             } else {

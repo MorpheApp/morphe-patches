@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importación fallida: %s</string>
   <string name="morphe_settings_navigate_up">Navegar hacia arriba</string>
   <string name="morphe_settings_search_hint">Buscar ajustes</string>
+  <string name="morphe_settings_screen_info_title">Acerca de</string>
   <string name="morphe_settings_search_no_results_title">No se encontraron resultados para «%s»</string>
   <string name="morphe_settings_search_no_results_summary">Prueba con otra palabra clave</string>
   <string name="morphe_settings_search_recent_searches">Búsquedas recientes</string>
@@ -105,7 +106,6 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
 No se te notificará de ningún evento inesperado."</string>
   <string name="morphe_debug_export_logs_title">Exportar registros de depuración</string>
   <string name="morphe_debug_export_logs_summary">Exporta registros de depuración de Morphe</string>
-  <string name="morphe_debug_export_logs_file">Exportar a archivo</string>
   <string name="morphe_debug_export_logs_success">Registros de depuración exportados correctamente</string>
   <string name="morphe_debug_export_logs_failed">Error al exportar los registros de depuración</string>
   <string name="morphe_debug_logs_search_hint">Buscar registros de depuración…</string>
@@ -229,4 +229,7 @@ Si no se modifican las optimizaciones de la batería, es posible que se produzca
 Si deseas disfrutar de una experiencia sin problemas, &lt;b&gt;desinstala&lt;/b&gt; esta versión y actualiza la aplicación a la versión recomendada: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quiero experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quiero estable</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Registro de fallos guardado en los documentos del usuario: %s</string>
+  <string name="morphe_crash_log_saved">Registro de fallos guardado: %s</string>
 </resources>

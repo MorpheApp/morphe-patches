@@ -228,8 +228,7 @@ Si no vas a enviar un destacado, pulsa Cancelar y marca la segunda ubicación."<
   <string name="morphe_sb_stats_saved_second_format">%s segundos</string>
   <string name="morphe_sb_color_opacity_label">Opacidad:</string>
   <string name="morphe_sb_color_dot_label">Color:</string>
-  <string name="morphe_sb_about_title">Acerca de</string>
-  <string name="morphe_sb_about_api_summary">"Los datos los proporciona la API de SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock es una base de datos colaborativa de segmentos de video, como patrocinios, intros, outros y recordatorios para suscribirse. Los segmentos son enviados y votados por la comunidad, y la base de datos es abierta y gratuita para descargar
 
-Pulsa aquí para abrir Sponsor.ajay.app y ver las descargas para otras plataformas"</string>
+El ID del video que ves se envía a la API de SponsorBlock para obtener sus segmentos"</string>
 </resources>

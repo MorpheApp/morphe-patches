@@ -108,10 +108,9 @@ Dacă ești un utilizator YouTube Premium, această setare s-ar putea să nu fie
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Apăsarea la Android VR poate rezolva problema reproducerii pentru unii utilizatori
 
 Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continua</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Dezautentificare</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instrucțiuni</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Cod de autentificare: %s
 
 1. Apasă 'Open website' de mai jos pentru a deschide site-ul 'Conectează un dispozitiv'
@@ -119,7 +118,6 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
 3. Autentifichează-te la Google dacă este cerut. Dacă ai mai multe conturi, alege acest cont YouTube
 4. Apasă 'Permite accesului YouTube VR'
 5. Înapoiază în această aplicație după apariția mesajului 'Dispozitiv conectat'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Deschide site-ul</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Eșit să emit codul de activare</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Eșit să emit codul de autentificare</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Autentificare cu succes</string>
@@ -198,7 +196,6 @@ Cu toate acestea, activarea acestei opțiuni va înregistra și unele date ale u
   <string name="morphe_custom_filter_screen_title">Filtru personalizat</string>
   <string name="morphe_custom_filter_screen_summary">Configurați filtre personalizate pentru a ascunde orice componentă</string>
   <string name="morphe_custom_filter_title">Activează filtru personalizat</string>
-  <string name="morphe_custom_filter_strings_title">Filtru personalizat</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Listă de șiruri ale constructorului de cale pentru componente pentru a filtra, separate prin linii noi</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Filtru personalizat nevalid: %s</string>
@@ -261,9 +258,9 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_ryd_estimated_like_summary">Afișează un număr estimativ de like-uri pe videoclipurile unde creatorul a dezactivat like-urile</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afișează alerte de eroare de conexiune</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Afișează o notificare atunci când serverul Return YouTube Dislike este indisponibil</string>
-  <string name="morphe_ryd_attribution_summary">"Datele sunt furnizate de API-ul Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike restabilește numărul de dislike-uri pe care YouTube le-a ascuns în 2021. Numerele provin din date arhivate înainte de eliminare și sunt estimate pentru videoclipurile mai noi pe baza voturilor utilizatorilor săi, deci sunt aproximative și se actualizează la fiecare câteva zile
 
-Atinge aici pentru a deschide ReturnYouTubeDislike.com"</string>
+ID-ul videoclipului pe care îl urmărești este trimis către API-ul Return YouTube Dislike, iar like-urile și dislike-urile tale sunt trimise anonim pentru a îmbunătăți estimările."</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statisticile API Return YouTube Dislike pentru acest dispozitiv</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Timpul de răspuns al API-ului, medie</string>

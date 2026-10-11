@@ -22,6 +22,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_1">ડિફૉલ્ટ</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- misc.settings.settingsPatch -->
@@ -30,11 +31,12 @@ Second \"item\" text"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -47,7 +49,6 @@ Second \"item\" text"</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_entry_default">ડિફૉલ્ટ</string>
   <string name="morphe_change_start_page_entry_search">શોધો</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
@@ -68,7 +69,6 @@ Second \"item\" text"</string>
   <!-- 'scrobble' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">અજ્ઞાત</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <!-- 'scrobbling' must be kept untranslated -->
   <!-- layout.lyrics.lyricsPatch -->
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->

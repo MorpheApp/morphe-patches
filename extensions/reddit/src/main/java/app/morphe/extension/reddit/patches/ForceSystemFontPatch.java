@@ -9,6 +9,8 @@ package app.morphe.extension.reddit.patches;
 
 import android.graphics.Typeface;
 
+import java.util.Locale;
+
 import app.morphe.extension.reddit.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -35,7 +37,7 @@ public final class ForceSystemFontPatch {
         }
 
         boolean italic = (style & Typeface.ITALIC) != 0
-                || (path != null && path.toLowerCase().contains("italic"));
+                || (path != null && path.toLowerCase(Locale.ROOT).contains("italic"));
 
         return Typeface.create(Typeface.DEFAULT, weight, italic);
     }
@@ -45,7 +47,7 @@ public final class ForceSystemFontPatch {
             return 400;
         }
 
-        String lowerCasePath = path.toLowerCase();
+        String lowerCasePath = path.toLowerCase(Locale.ROOT);
         if (lowerCasePath.contains("black")) {
             return 900;
         }

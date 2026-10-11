@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
-import app.morphe.extension.music.patches.lyrics.LyricsPanelInstaller;
+import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;

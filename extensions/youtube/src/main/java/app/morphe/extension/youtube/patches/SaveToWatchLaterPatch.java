@@ -25,6 +25,10 @@ public final class SaveToWatchLaterPatch {
      */
     private static volatile SaveToWatchLaterRequest saveToWatchLaterRequest;
 
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
+
     public static void saveVideo(String videoId) {
         // Prevent a new request until the previous (if exists) is not done.
         if (saveToWatchLaterRequest != null && !saveToWatchLaterRequest.fetchIsDone()) {

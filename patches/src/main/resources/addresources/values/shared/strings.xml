@@ -34,6 +34,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_import_failure_parse">Import failed: %s</string>
     <string name="morphe_settings_navigate_up">Navigate up</string>
     <string name="morphe_settings_search_hint">Search settings</string>
+    <string name="morphe_settings_screen_info_title">About</string>
     <string name="morphe_settings_search_no_results_title">No results found for \'%s\'</string>
     <string name="morphe_settings_search_no_results_summary">Try another keyword</string>
     <string name="morphe_settings_search_recent_searches">Recent searches</string>
@@ -108,7 +109,6 @@ To translate new languages or improve the existing translations, visit morphe.so
 You will not be notified of any unexpected events."</string>
     <string name="morphe_debug_export_logs_title">Export debug logs</string>
     <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
-    <string name="morphe_debug_export_logs_file">Export to file</string>
     <string name="morphe_debug_export_logs_success">Debug logs exported successfully</string>
     <string name="morphe_debug_export_logs_failed">Failed to export debug logs</string>
     <string name="morphe_debug_logs_search_hint">Search debug logs…</string>
@@ -237,4 +237,8 @@ If battery optimizations are not changed then you may experience:
 If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
     <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
     <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
+
+    <!-- misc.crashlog.crashLogPatch -->
+    <string name="morphe_crash_log_saved_documents">Crash log saved to user documents: %s</string>
+    <string name="morphe_crash_log_saved">Crash log saved: %s</string>
 </resources>

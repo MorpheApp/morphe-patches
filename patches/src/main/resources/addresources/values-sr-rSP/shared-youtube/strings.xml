@@ -108,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijavljivanje na Android VR može popraviti problema sa reprodukcijom za neke korisnike
 
 Da bi se prijavili, pritisnite nastavak ispod"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Настави</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Одјави</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкције</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Активациони код: %s
 
 1. Кликните на 'Отвори веб страницу' испод за отварање веб приступача 'Прикључи приступао'
@@ -119,7 +118,6 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
 3. Пријавите се на Google ако је упито. Ако имате више налога, изaberите овај YouTube налог
 4. Кликните на 'Дозволи приступ YouTube VR'
 5. Вратите се у ово апликацију након пролaska поруке 'Уређај је прикључен'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Отвори веб-сајт</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Неуспешно је издат активациони код</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Неуспешно је издат дозволни пречкод</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешно пријављен</string>
@@ -198,7 +196,6 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_custom_filter_screen_title">Прилагођени филтер</string>
   <string name="morphe_custom_filter_screen_summary">Конфигуришите прилагођене филтере да бисте сакрили било коју компоненту</string>
   <string name="morphe_custom_filter_title">Омогући прилагођени филтер</string>
-  <string name="morphe_custom_filter_strings_title">Прилагођени филтер</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Листа стрингова за изградњу путање компоненти за филтрирање, одвојена новим редовима</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Неважећи прилагођени филтер: %s</string>
@@ -261,9 +258,9 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_ryd_estimated_like_summary">Приказује процењену прегледаност на видео снимцима на којем је креатор искључио прегледаност</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Приказуј упозорења о грешци у вези са повезивањем</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Приказује обавештење када је сервер Return YouTube Dislike недоступан</string>
-  <string name="morphe_ryd_attribution_summary">"Подаци су пружени од стране Return YouTube Dislike API-ја
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike vraća broj dislajkova koji je YouTube sakrio 2021. Brojevi dolaze iz podataka arhiviranih pre uklanjanja i procenjeni su za novije video snimke na osnovu glasova korisnika, pa su približni i ažuriraju se svakih nekoliko dana.
 
-Додирните овде да бисте отворили ReturnYouTubeDislike.com"</string>
+ID video snimka koji gledate šalje se Return YouTube Dislike API-ju, a vaši lajkovi i dislajkovi se šalju anonimno kako bi se poboljšale procene.}],"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика Return YouTube Dislike API-ја за овај уређај</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време одговора API-ја, просек</string>

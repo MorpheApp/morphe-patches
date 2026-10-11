@@ -63,7 +63,6 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_album_cards_summary">Elrejti az albumkártyákat az előadó leírása alatt</string>
   <string name="morphe_hide_artist_cards_title">Előadó kártyák elrejtése</string>
   <string name="morphe_hide_artist_cards_summary">Elrejti az előadói kártyát a keresési találatok tetején</string>
-  <string name="morphe_hide_auto_dubbed_label_title">​„Automatikus szinkron” címke elrejtése</string>
   <string name="morphe_hide_channel_buttons_title">Csatornagombok elrejtése</string>
   <string name="morphe_hide_channel_buttons_summary">Elrejti az olyan gombokat, mint a Feliratkozás, Csatorna megtekintése, Közösség és a YouTube Music a csatornaprofilokon a keresési találatokban</string>
   <string name="morphe_hide_community_posts_title">Közösségi posztok elrejtése</string>
@@ -79,7 +78,6 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_history_shelf_title">Előzmények polc elrejtése</string>
   <string name="morphe_hide_horizontal_shelves_title">Vízszintes polcok elrejtése</string>
   <string name="morphe_hide_horizontal_shelves_summary">Olyan vízszintes polcok elrejtése, mint a Friss hírek, Közösségi bejegyzések, amik érdekelhetnek, Megtekintés folytatása, További csatornák felfedezése, További témák felfedezése, Neked, Legújabb videók, Legrelevánsabb, Bejegyzések az alkotói közösségtől, Vásárlás és Megtekintés újra</string>
-  <string name="morphe_hide_hyped_label_title">Hájpolt címke elrejtése</string>
   <string name="morphe_hide_image_shelf_title">Képpolc elrejtése</string>
   <string name="morphe_hide_image_shelf_summary">Képpolcok elrejtése a keresési találatok között</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -121,9 +119,9 @@ A változások a következőket tartalmazzák:
 • A Shorts-polcok, a csatornaoldalak és a keresési találatok továbbra is megjeleníthetik a feltöltési időket.
 • Ez a funkció nem működik az autós elrendezéssel."</string>
   <string name="morphe_hide_video_thumbnail_title">Videó bélyegkép elrejtése</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">Videóajánlások címkéinek elrejtése</string>
-  <string name="morphe_hide_video_recommendation_labels_summary">Keresési ajánlások címkéinek elrejtése</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">Videócímkék elrejtése</string>
+  <string name="morphe_hide_video_labels_summary">Elrejti az olyan címkéket, mint az \"Automatikusan szinkronizálva\" / \"Szinkronizált\", \"Jutalékot keres\", \"Felkapott\", \"Ezt mások is nézték\", \"termék(ek)\" és \"Ez is érdekelhet\"</string>
   <string name="morphe_hide_view_count_title">Megtekintések számának elrejtése</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Korlátozások:
@@ -158,17 +156,19 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_snackbar_title">Snack bár elrejtése</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Csatorna-irányelvek elrejtése</string>
   <string name="morphe_hide_sync_button_title">„Szinkronizálás videóval” gomb elrejtése</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Az érintés és nyomva tartás színátmenetének elrejtése</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Elrejti a lejátszóvezérlők színátmenetét, amikor a gyorsításhoz nyomva tartva húzza az ujját</string>
   <string name="morphe_hide_timed_reactions_title">Időzített reakciók elrejtése</string>
   <string name="morphe_hide_timed_reactions_summary">Kikapcsolja az emojikkal való reagálást a kommenteknél és az élő chaten</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">„Súgó &amp; visszajelzés” elrejtése a menükben</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Elrejti a „Súgó &amp; visszajelzés” elemet az alkalmazássáv hárompontos menüiben, például a keresési találatok menüjében</string>
+  <string name="morphe_hide_help_feedback_menu_title">\'Súgó &amp; visszajelzés\' menü elrejtése</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Elrejti a \'Súgó &amp; visszajelzés\' menüt a hárompontos gomb használatakor, például a keresési találatoknál</string>
   <string name="morphe_hide_handle_title">Handle elrejtése</string>
   <string name="morphe_hide_handle_summary">Elrejti a csatornád handle-jét a „Neked” lapon</string>
   <string name="morphe_hide_video_title_title">Videócímek elrejtése</string>
   <string name="morphe_hide_video_title_summary">Elrejti a videó címét teljes képernyős módban</string>
   <string name="morphe_sanitize_video_subtitle_title">Videofeliratok ellenőrzése</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Eltávolítja a \'#\' jel, a \'Gyűjtés\', a \'Bolt\' és a \'termékek\' kifejezéseket a videofeliratból.</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Eltávolítja a videó feliratából az olyan kifejezéseket, mint a \'#\', \'Adománygyűjtés\', \'termék(ek)\' és \'Bolt\'</string>
   <string name="morphe_hide_description_components_screen_title">Videóleírás</string>
   <string name="morphe_hide_description_components_screen_summary">Válassza ki, mely komponensek jelenjenek meg a videó leírásában</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Az „AI-al készített videó-összefoglaló” szekció elrejtése</string>
@@ -327,7 +327,6 @@ Korlátozások:
   <string name="morphe_hide_stats_hidden_all_title">Elrejtett videók, összességében</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">Visszaállítsam az elmúlt 24 óra számlálóját?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">Visszaállít minden időmérőt?</string>
-  <string name="morphe_hide_about_category_title">Névjegy</string>
   <string name="morphe_hide_aislist_screen_title">AI csatornaszűrő</string>
   <string name="morphe_hide_aislist_screen_summary">Rejtse el a csatornákból származó videókat, amelyeket az AiSList közösség AI-generált tartalomként jelölt meg</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Tiltólista: Magas megbízhatóság</string>
@@ -346,9 +345,9 @@ Korlátozások:
 Korlátozások:
 • A szűrt AI Rövid videók üres helyként jelenhetnek meg
 • Néhány AI videó még megjelenhet"</string>
-  <string name="morphe_hide_aislist_attribution_summary">"Az adatokat az AiSList biztosítja
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList egy nyílt forráskódú lista YouTube-csatornákról, amelyek AI-generált tartalmat tesznek közzé, önkéntesek karbantartják. A csatornákat a felhasználók jelentik, és a hozzáadás előtt felülvizsgálják azokat.
 
-Érintse meg ide az AiSlopList.com megnyitásához, és tekintse meg a letöltéseket más platformokra"</string>
+A lista a GitHubról töltődik le, és a videók az eszközödön kerülnek szűrésre.}{"</string>
   <string name="morphe_aislist_submit_category_title">AI-csatornák jelentése</string>
   <string name="morphe_aislist_submit_flyout_menu_title">Jelentés menüpont hozzáadása a videómenühöz</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">Menüpont hozzáadása a videómenühöz, amely a videó csatornáját jelenti az AiSListnek.</string>
@@ -401,7 +400,7 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Keresés a csatornán belül</string>
-  <string name="morphe_channel_search_summary">Ha egy csatorna nyitva van, a keresés csak abban a csatornában történik.</string>
+  <string name="morphe_channel_search_summary">Hozzáad egy második keresőgombot a csatornaoldalakhoz, hogy csak abban a csatornában lehessen keresni</string>
   <string name="morphe_channel_search_hint">Keresés a csatornában</string>
   <string name="morphe_channel_search_results">Csatornakeresési eredmények</string>
   <string name="morphe_channel_search_no_results">Nincs találat ezen a csatornán</string>
@@ -420,6 +419,13 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_copy_video_link_button_summary">Érintse meg a videolink másolásához, hosszan nyomva tartva az időbélyeggel együtt</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Alapértelmezés szerint másolja a videó URL-jét az időbélyeggel</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Megfordítja a \"Videolink másolása\" gomb megérintésének és hosszan nyomva tartásának funkcióit</string>
+  <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">Videó címének másolása</string>
+  <string name="morphe_copy_video_title_summary">Tartsd lenyomva a videó címét a másoláshoz</string>
+  <string name="morphe_copy_video_title_success">A videó címe a vágólapra lett másolva</string>
+  <string name="morphe_copy_comments_title">Hozzászólások másolása</string>
+  <string name="morphe_copy_comments_summary">Tartsd lenyomva a hozzászólást a másoláshoz</string>
+  <string name="morphe_copy_comments_success">A hozzászólás a vágólapra lett másolva</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">TV-bejelentkezési előugró ablak letiltása</string>
   <string name="morphe_disable_connect_your_devices_popup_title">A \"Csatlakoztassa eszközeit\" felugró ablak letiltása</string>
@@ -436,7 +442,6 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Hangfelirat hangos felolvasása</string>
   <string name="morphe_vot_screen_summary">Olvassa fel a videó feliratait hangosan a készüléken található szöveg-beszéddé alakító segítségével, szinkronban a lejátszással.</string>
-  <string name="morphe_vot_enabled_title">Hangfelirat hangos felolvasása</string>
   <string name="morphe_vot_enabled_summary">Overlay gombot jelenít meg a videolejátszóban. Koppintson a fordítás váltásához, tartsa lenyomva a gyorsbeállításokhoz.  </string>
   <string name="morphe_vot_caption_language_title">Nyelv</string>
   <string name="morphe_vot_translation_service_title">Fordítási szolgáltató</string>
@@ -504,9 +509,9 @@ A API kulcsodat soha nem szabad megosztani. Bárki, akinek hozzáférése van ho
   <string name="morphe_loop_video_range_clear">Törlés</string>
   <string name="morphe_loop_video_range_toast_on">%1$s - %2$s ciklusban</string>
   <string name="morphe_loop_video_range_invalid_time">Érvénytelen idő van megadva</string>
-  <!-- interaction.pip.pipButtonPatch -->
-  <string name="morphe_pip_button_overlay_title">Kép a képben átfedő gomb megjelenítése</string>
-  <string name="morphe_pip_button_flyout_title">Kép a képben kinyíló gomb megjelenítése</string>
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Kép a képben gomb megjelenítése</string>
+  <string name="morphe_pip_button_flyout_title">Kép a képben menü megjelenítése</string>
   <string name="morphe_pip_button_flyout_name">Váltás kép a képben módra</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mind lejátszási gomb megjelenítése</string>
@@ -716,18 +721,12 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_hide_save_button_title">Mentés gomb elrejtése</string>
   <string name="morphe_hide_more_button_title">Rejtse el a Továbbiak gombot</string>
   <string name="morphe_fullscreen_buttons">Teljes képernyős gombok</string>
-  <string name="morphe_hide_quick_actions_title">A műveletsáv elrejtése</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Kérdés gomb elrejtése</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Hozzászólások gomb elrejtése</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Nem tetszik gomb elrejtése</string>
   <string name="morphe_hide_quick_actions_like_button_title">Tetszik gomb elrejtése</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Élő csevegés gomb elrejtése</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Keverés gomb elrejtése</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Több gomb elrejtése</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">„További videók” gomb elrejtése</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">„Játékok” gomb elrejtése</string>
-  <string name="morphe_hide_quick_actions_save_button_title">„Hozzáadott tanfolyamok” gomb elrejtése</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Megosztás gomb elrejtése</string>
   <string name="morphe_quick_actions_top_margin_title">Gyors műveletek felső margója</string>
   <string name="morphe_quick_actions_top_margin_summary">Állítsa be a gyors műveletek sáv felső margóját (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
@@ -741,6 +740,10 @@ A javításhoz kapcsolja be a „Videostreamek meghamisítása” beállítást,
   <string name="morphe_auto_captions_style_entry_4">Mutoltáskor mutat</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Mutatja az automatikus feliratokat</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Rejtje az automatikus feliratokat</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">Feliratok előnyben részesített nyelve</string>
+  <string name="morphe_preferred_caption_language_summary">Először a szolgáltató feliratait választja ki, majd automatikusan lefordítja az előnyben részesített nyelvre</string>
+  <string name="morphe_preferred_caption_language_entry_off">Ki</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Állítsa be a feliratok sütijeit</string>
   <string name="morphe_set_caption_cookies_summary">"Javítja a YouTube egyik alapértelmezett hibáját, ahol az automatikus feliratok nem biztos, hogy elérhetők a hiányzó cookie-k miatt
@@ -795,13 +798,8 @@ A Beállítások eléréséhez engedje a Beállítások gombot a Általános →
   <string name="morphe_toolbar_screen_summary">Válassza ki, mely komponensek jelenjenek meg az eszköztáron</string>
   <string name="morphe_hide_toolbar_cast_button_title">Átküldés gomb elrejtése</string>
   <string name="morphe_hide_toolbar_chat_button_title">Csevegés gomb elrejtése</string>
-  <string name="morphe_hide_toolbar_create_button_title">Létrehozás gomb elrejtése</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon gomb elrejtése</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Értesítések gomb elrejtése</string>
   <string name="morphe_hide_toolbar_search_button_title">Keresés gomb elrejtése</string>
-  <string name="morphe_show_toolbar_settings_button_title">Beállítások gomb megjelenítése</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">Beállítások gomb pozíciója</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">Beállítások gomb művelet</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Ha be van kapcsolva, a koppintás megnyitja a Morphe beállításait és a hosszú megnyomás megnyitja a YouTube beállításait, a letiltás kicseréli őket</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Előugró menü</string>
@@ -952,6 +950,8 @@ Beállítások → Lejátszás (vagy Automatikus lejátszás) → Következő vi
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Lejátszási lista automatikus lejátszásának kikapcsolása</string>
   <string name="morphe_disable_playlist_autoplay_summary">Megakadályozza, hogy a lejátszási listák automatikusan továbblépjenek a következő videóra</string>
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">„Folytatod a nézést?” kérdés letiltása</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Kilép a teljes képernyős módból a videó befejezésekor</string>
   <string name="morphe_exit_fullscreen_entry_1">Letiltva</string>
@@ -1158,29 +1158,31 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">DeArrow-címek</string>
-  <string name="morphe_dearrow_titles_summary">A videócímeket lecseréli a DeArrow-ba beküldött közösségi címekre</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_home_title">Kezdőlap</string>
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_subscription_title">Feliratkozások fül</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_library_title">Te lap</string>
+  <string name="morphe_dearrow_titles_player_title">Lejátszó lejátszási listák &amp; ajánlások</string>
+  <string name="morphe_dearrow_titles_search_title">Keresési eredmények</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow ikon megjelenítése</string>
   <string name="morphe_dearrow_titles_icon_summary">Megjeleníti a DeArrow ikont a közösségi videócímeken</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_home_title">A Home laphoz</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_subscription_title">A Feliratkozások laphoz</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_library_title">A Te laphoz</string>
-  <string name="morphe_dearrow_thumbnail_player_title">A lejátszó lejátszási listákhoz és ajánlásokhoz</string>
-  <string name="morphe_dearrow_thumbnail_search_title">A keresési eredményekhez</string>
+  <string name="morphe_dearrow_casual_mode_title">Alkalmi mód</string>
+  <string name="morphe_dearrow_casual_mode_summary">Az eredeti címet mutatja a DeArrow-cím helyett, ha a DeArrow-felhasználók arra szavaztak, hogy az eredeti cím tetszik nekik</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Minimális alkalmi szavazatszám az eredeti cím megjelenítéséhez</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">Az eredeti cím megjelenítéséhez szükséges alkalmi szavazatok száma egy kategóriában, például vicces vagy kreatív</string>
+  <string name="morphe_dearrow_thumbnails_title">DeArrow bélyegképek</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">Eredeti indexképek</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow és eredeti indexképek</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; Állóképek</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">Pillanatképek</string>
-  <string name="morphe_dearrow_about_summary">"A DeArrow közösségi címeket és bélyegképeket biztosít a YouTube-videókhoz. Ezek gyakran relevánsabbak, mint a YouTube által biztosítottak.
+  <string name="morphe_dearrow_about_summary">"A DeArrow a kattintásvadász címeket és miniatűröket közösségi forrásból származó, pontosabb és kevésbé szenzációhajhász tartalmakra cseréli. A címeket a közösség írja és szavazza meg, a miniatűrök pedig a videóból készült képkockák.
 
-Ha engedélyezve van, a videók URL-jei elküldésre kerülnek az API-kiszolgálóra, és semmilyen más adat nem kerül elküldésre. Ha egy videónak nincs DeArrow-bélyegképe, akkor az eredeti vagy kimerevített képkockák jelennek meg.
-
-Koppintson ide a DeArrow.ajay.app megnyitásához"</string>
+A videókat a hash-elt videóazonosító rövid előtagjával kérik le, így a szerver nem tudja pontosan, hogy melyik videót nézed. Ha egy videóhoz nincs DeArrow miniatűr, akkor az eredeti vagy egy állókép jelenik meg"</string>
   <string name="morphe_dearrow_connection_toast_title">Kapcsolati hibaüzenetek megjelenítése</string>
   <string name="morphe_dearrow_connection_toast_summary">Értesítést jelenít meg, ha a DeArrow szerver nem érhető el</string>
-  <string name="morphe_dearrow_api_url_title">DeArrow API végpont</string>
+  <string name="morphe_dearrow_api_url_title">API végpont</string>
   <string name="morphe_dearrow_api_url_summary">A DeArrow bélyegkép cache végpont URL-je</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">Videó pillanatképek</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">Pillanatképek minden videó elejéről/közepéről/végéről készülnek. Ezek a képek be vannak építve a YouTube-ba és nem használnak külső API-t</string>

@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">कस्टम</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- misc.settings.settingsPatch -->
@@ -71,38 +72,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">क्रॉसफ़ेड इस सत्र के लिए रोका गया</string>
   <string name="morphe_music_crossfade_resumed_toast">क्रॉसफ़ेड फिर से शुरू हुआ</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">क्रॉसफ़ेड सक्षम होने पर वीडियो मोड उपलब्ध नहीं है</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">ऑडियो कास्टिंग या मिररिंग क दौरान क्रॉसफेड रुकि जाइत छै। कास्ट/मिरर पर क्रॉसफेड अस्थिर छै आ शायद कखनो ठीक नहि भ सकय</string>
-  <string name="morphe_music_crossfade_about_title">सेशन नियंत्रण अक्षम है</string>
-  <string name="morphe_music_crossfade_about_summary">क्रॉसफेड कोना काम करइत छै — आ जखन नहि करइत छै</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">ई कोना काम करइत छै</string>
-  <string name="morphe_music_crossfade_about_how_summary">"क्रॉसफेड एक गाना क अंत के अगिला गाना क शुरुआत सँ मिलाइत छै, अहाँक चुनल अवधि आ कर्व के अनुसार एकरा कम आ दोसररा बढेत छै।
-
-ई ऑटो-एडवांस (जखन गाना अपने समाप्त होइत छै) आ मैन्युअल स्किप पर चलइत छै — दूनू क अपन टॉगल ऊपर छै। ऑटो-एडवांस पर ब्लेंड गाना समाप्त होय सँ किछ सेकेन्ड पहिले शुरू भइत छै।
-
-YouTube Music 9.x या नय वर्जनक आवश्यकता छै।"</string>
-  <string name="morphe_music_crossfade_about_best_title">सबसँ नीक काम करइत छै</string>
-  <string name="morphe_music_crossfade_about_best_summary">सामान्य गाना-सँ-गाना प्लेबैक आ ऑटो-एडवांस, रिपीट-वन (गाना अपने में क्रॉसफेड होइत छै), आ लोकल ऑडियो — फोन स्पीकर, वायर्ड हेडफ़ोन, ब्लूटूथ, या USB।</string>
-  <string name="morphe_music_crossfade_about_quirks_title">पूरी तरह ठीक सँ काम नहि करइत छै</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"जखन क्रॉसफेड चालू छै तँ म्यूजिक वीडियो केवल ऑडियो के रूप में चलइत छै (जौ अहाँ वीडियो चाहैत छी तँ रोकय लेल शफल के देर सँ दबाऊ)
-
-अहाँक फेड अवधि सँ छोट गाना फेड के छोड़ि सकैत छै
-
-लॉक स्क्रीन या नोटिफिकेशन ट्रांज़िशन क बीच में थोड़ समय लेल पुराना स्थिति देखा सकैत छै"</string>
-  <string name="morphe_music_crossfade_about_known_title">जानल समस्या सभ</string>
-  <string name="morphe_music_crossfade_about_known_summary">"पहल गाना के रूप में सेट संगीत वीडियो — या वर्तमान कतार सँ बाहर शुरू कएल गाना — ऑडियो-ओनली मोड शुरू होय सँ पहिले थोड़ समय लेल वीडियो के रूप में देखा सकैत छै
-
-संगीत वीडियो देखय लेल क्रॉसफेड के रोकय सँ किछ वीडियो काला भ सकैत छै (ओ वीडियो जेकर ऑडियो वीडियो सँ आबय छै)। गाना चुनय सँ पहिलै क्रॉसफेड के रोकला सँ ई समस्या नहि होइत छै"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">बिल्कुल काम नहि करइत छै</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"ऑडियो कास्टिंग या मिररिंग (Chromecast, स्क्रीन या ऑडियो मिररिंग) — क्रॉसफेड रुकि जाइत छै कारण ई ओतय अस्थिर छै आ शायद कखनो ठीक नहि भ सकय।
-
-YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय वर्जन पर चलइत छै"</string>
   <string name="morphe_music_crossfade_about_credit_title">क्रेडिट</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG द्वारा क्रॉसफेड फीचर</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -124,7 +102,6 @@ YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय व�
   <string name="morphe_change_start_page_entry_playlists">प्लेलिस्ट</string>
   <string name="morphe_change_start_page_entry_search">खोज</string>
   <string name="morphe_change_start_page_entry_subscriptions">सदस्यताएं</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">मिनीप्लेयर रंग बदलें</string>
@@ -154,7 +131,6 @@ YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय व�
   <string name="morphe_music_hide_navigation_bar_title">नेविगेशन बार छिपाएं</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">नेविगेशन बटन लेबल छिपाएं</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fm आ ListenBrainz इंटीग्रेशन कॉन्फ़िगर करू</string>
   <string name="morphe_music_scrobbling_summary_logged_out">लॉग इन नहि छै। कॉन्फ़िगर करय लेल टैप करू</string>
   <string name="morphe_music_scrobbling_log_out">लॉग आउट करू</string>
   <string name="morphe_music_scrobbling_logged_out_toast">लॉग आउट कएल गेल</string>
@@ -176,7 +152,6 @@ YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय व�
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Scrobbling सक्षम करय लेल अपन ListenBrainz यूजर टोकन दर्ज करू</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">टोकन</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">टोकन प्राप्त करू</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">सत्यापित करू</string>
   <string name="morphe_music_listenbrainz_token_status_empty">कृपया टोकन दर्ज करू</string>
   <string name="morphe_music_listenbrainz_token_status_valid">मान्य टोकन! यूजर: %s</string>
@@ -205,13 +180,10 @@ YouTube Music 8.x — क्रॉसफेड केवल 9.x आ नय व�
   <string name="morphe_music_scrobbling_custom_regex_title">कस्टम regex सफाई</string>
   <string name="morphe_music_scrobbling_custom_regex_summary">गानाक शीर्षक, कलाकार, या एल्बम सँ अतिरिक्त टेक्स्ट हटाब लेल एक कस्टम नियमित अभिव्यक्ति दर्ज करू। उदाहरण: (?i)\\s*\\((clean|explicit)\\)</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Scrobbling के बारे मे</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling स्वचालित रूप सँ अहाँक YouTube Music उपयोग के अहाँक Last.fm या ListenBrainz प्रोफाइल सँ सिंक करैत छै
 
 ई सुनिश्चित करय लेल जे बैकग्राउंड प्लेबैक क दौरान scrobbling सिंक होय, ई सुनिश्चित करू जे YouTube Music क ऐप बैटरी उपयोग \"Unrestricted\" पर सेट छै"</string>
   <!-- layout.lyrics.lyricsPatch -->
-  <string name="morphe_music_lyrics_section_about_title">के बारे में</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->

@@ -108,10 +108,9 @@ Kung ikaw ay isang gumagamit ng YouTube Premium, maaaring hindi na kailanganin a
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Maaaring ayusin ng pag-sign in sa Android VR ang mga isyu sa pag-playback para sa ilang user
 
 Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Magpatuloy</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Mag-sign out</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Mga Tagubilin</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Code ng pag-activate: %s 
 
 1. Pindutin ang 'Buksan ang website' sa ibaba upang buksan ang website na 'Ikonekta ang isang device' 
@@ -119,7 +118,6 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
 3. Mag-sign in sa Google kung sinenyasan. Kung marami kang account, piliin ang YouTube account na ito 
 4. Pindutin ang 'Payagan ang YouTube VR' ng access 
 5. Bumalik sa app na ito pagkatapos maabot ang mensaheng 'Nakakonekta ang device'"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Buksan ang website</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nabigong mag-isyu ng code ng pag-activate</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Nabigong mag-isyu ng token ng pagpapatunay</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Matagumpay na na-sign in</string>
@@ -198,7 +196,6 @@ Gayunpaman, magtatala din ng ilang datos ng tagagamit ang pagpapagana nito kagay
   <string name="morphe_custom_filter_screen_title">Pasadyang filter</string>
   <string name="morphe_custom_filter_screen_summary">I-configure ang mga pasadyang filter upang itago ang anumang component</string>
   <string name="morphe_custom_filter_title">Paganahin ang pasadyang filter</string>
-  <string name="morphe_custom_filter_strings_title">Pasadyang filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Ihihiwalay ng bagong linya ang listahan ng mga component path builder string na ifi-filter</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Imbalido na pasadyang filter: %s</string>
@@ -261,9 +258,9 @@ Kung patayin ito sa kalaunan, inirerekomenda na i-clear ang data ng app upang ma
   <string name="morphe_ryd_estimated_like_summary">Ipinapakita ang tinantyang bilang ng mga like sa mga video kung saan hindi pinagana ng tagalikha ang mga like</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Ipakita ang mga alerto ng error sa koneksyon</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Ipinapakita ang isang notification kapag ang Return YouTube Dislike server ay hindi magagamit</string>
-  <string name="morphe_ryd_attribution_summary">"Ang datos ay ibinibigay ng Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Ang Return YouTube Dislike ay nagpapanumbalik ng mga bilang ng dislike na itinago ng YouTube noong 2021. Ang mga bilang ay nagmumula sa data na naka-archive bago ang pag-alis at tinatantya para sa mga mas bagong video mula sa mga boto ng mga gumagamit nito, kaya ang mga ito ay tinatayang at ina-update tuwing ilang araw
 
-I-tap dito upang buksan ang ReturnYouTubeDislike.com"</string>
+Ang ID ng video na iyong pinapanood ay ipinapadala sa Return YouTube Dislike API, at ang iyong mga like at dislike ay ipinapadala nang hindi nagpapakilala upang mapabuti ang mga pagtatantya"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Mga istatistika ng Return YouTube Dislike API ng aparatong ito</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Oras ng pagtugon ng API, average</string>

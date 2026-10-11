@@ -28,6 +28,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.clone.cloneAppPatch
 import app.morphe.patches.all.misc.clone.setOrGetFallbackPackageName
+import app.morphe.patches.all.misc.gms.gmsCorePackageQueriesPatch
 import app.morphe.patches.shared.misc.gms.Constants.ACTIONS
 import app.morphe.patches.shared.misc.gms.Constants.AUTHORITIES
 import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
@@ -524,6 +525,7 @@ fun gmsCoreSupportResourcePatch(
 ) = resourcePatch {
     dependsOn(
         cloneAppPatch,
+        gmsCorePackageQueriesPatch,
         linkHandlingPatch(fromPackageName, screen)
     )
 
@@ -578,15 +580,9 @@ fun gmsCoreSupportResourcePatch(
                 "$fromPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" to "$toPackageName.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
                 "com.google.android.c2dm" to "$GMS_CORE_VENDOR_GROUP_ID.android.c2dm",
                 "com.google.android.libraries.photos.api.mars" to "$GMS_CORE_VENDOR_GROUP_ID.android.apps.photos.api.mars",
-                // Make every known MicroG / GMS variant visible to the package manager
-                // so the extension can detect conflicting installs, and allow the app to
-                // request their uninstall on Android 14+.
-                "</queries>" to
-                        "<package android:name=\"$GMS_CORE_VENDOR_GROUP_ID.android.gms\"/>" +
-                        "<package android:name=\"com.mgoogle.android.gms\"/>" +
-                        "<package android:name=\"org.microg.gms\"/>" +
-                        "</queries>" +
-                        "<uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
+                // Allow the app to request uninstall of conflicting MicroG / GMS variants on Android 14+.
+                // The variants are made visible to the package manager by gmsCorePackageQueriesPatch.
+                "</queries>" to "</queries><uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
             )
 
             val manifest = get("AndroidManifest.xml")

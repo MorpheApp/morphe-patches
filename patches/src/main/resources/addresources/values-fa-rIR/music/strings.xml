@@ -17,10 +17,93 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- app.morphe.patches.music.interaction.jam -->
+  <string name="morphe_music_jam_update_host_controls">پچ Jam میزبان را برای استفاده از توقف و ادامه به‌روزرسانی کنید</string>
+  <string name="morphe_music_jam_probe_title">اشتراک‌گذاری صف Jam</string>
+  <string name="morphe_music_jam_probe_summary">یک Jam نزدیک را میزبانی کنید یا به آن بپیوندید و صف آن را از طریق Jam Layer ویرایش کنید</string>
+  <string name="morphe_music_jam_enabled_title">فعال‌سازی اشتراک‌گذاری صف Jam</string>
+  <string name="morphe_music_jam_enabled_summary">پس از راه‌اندازی مجدد YouTube Music، یکپارچه‌سازی Jam را فعال می‌کند</string>
+  <string name="morphe_music_jam_download_title">برای راه‌اندازی، Jam Layer را دانلود کنید</string>
+  <string name="morphe_music_jam_download_summary">آخرین نسخهٔ انتشار Jam Layer را در مرورگر خود باز کنید</string>
+  <string name="morphe_music_jam_controls_title">کنترل‌های Jam</string>
+  <string name="morphe_music_jam_controls_summary">یک Jam نزدیک را میزبانی کنید یا به آن بپیوندید و جلسه را مدیریت کنید</string>
+  <string name="morphe_music_jam_companion_package_title">بستهٔ Jam Layer</string>
+  <string name="morphe_music_jam_companion_package_summary">برنامهٔ همراه نصب‌شده را که برای اشتراک‌گذاری صف نزدیک استفاده می‌شود انتخاب کنید</string>
+  <string name="morphe_music_jam_package_message">از یک بستهٔ همراه نصب‌شده استفاده کنید. جفت‌سازی نیاز به تأیید شما و یک نشانهٔ قابلیت محلی دارد</string>
+  <string name="morphe_music_jam_wifi_title">Wi-Fi روشن شود؟</string>
+  <string name="morphe_music_jam_wifi_message">Wi-Fi را روشن کنید، سپس دوباره شروع یا پیوستن به Jam را امتحان کنید</string>
+  <string name="morphe_music_jam_wifi_settings">باز کردن تنظیمات Wi-Fi</string>
   <string name="morphe_music_jam_cancel">لغو</string>
+  <string name="morphe_music_jam_use_package">استفاده از بسته</string>
+  <string name="morphe_music_jam_invalid_package">یک نام بستهٔ معتبر Android وارد کنید</string>
+  <string name="morphe_music_jam_package_saved">بسته ذخیره شد. برای اتصال، Jam Layer را راه‌اندازی کنید</string>
+  <string name="morphe_music_jam_disconnected">Jam قطع شد</string>
+  <string name="morphe_music_jam_enable_layer_first">ابتدا Jam Layer را فعال کنید</string>
+  <string name="morphe_music_jam_enable_patch_first">اشتراک‌گذاری صف Jam را در تنظیمات فعال کنید، سپس YouTube Music را مجدداً راه‌اندازی کنید</string>
+  <string name="morphe_music_jam_install_layer_first">ابتدا بستهٔ Jam Layer انتخاب‌شده را نصب کنید</string>
+  <string name="morphe_music_jam_join_hint">کد نمایش‌داده‌شده روی میزبان را وارد کنید. Wi-Fi Aware می‌تواند دستگاه‌های نزدیک را حتی وقتی شبکه‌های محلی‌شان متفاوت است متصل کند</string>
+  <string name="morphe_music_jam_join_with_code">پیوستن با کد</string>
+  <string name="morphe_music_jam_join">پیوستن</string>
+  <string name="morphe_music_jam_scan_qr">اسکن QR</string>
+  <string name="morphe_music_jam_invalid_invite">کد هشت‌کاراکتری را وارد کنید یا یک دعوت‌نامه را جای‌گذاری کنید</string>
+  <string name="morphe_music_jam_join_your_jam">به Jam خود بپیوندید</string>
+  <string name="morphe_music_jam_copy_code">کپی کد</string>
+  <string name="morphe_music_jam_code_clip">کد Jam</string>
+  <string name="morphe_music_jam_show_qr">نمایش QR</string>
   <string name="morphe_music_jam_done">انجام شد</string>
+  <string name="morphe_music_jam_invite_title">دعوت به Jam شما</string>
+  <string name="morphe_music_jam_invite_message">برای پیوستن و ویرایش این صف اسکن کنید. پایان‌دادن Jam دعوت‌نامه را باطل می‌کند.</string>
+  <string name="morphe_music_jam_copy_link">کپی پیوند</string>
+  <string name="morphe_music_jam_invitation_clip">دعوت‌نامهٔ Jam</string>
+  <string name="morphe_music_jam_reconnecting_toast">Jam در حال اتصال مجدد است؛ کمی بعد دوباره تلاش کنید</string>
+  <string name="morphe_music_jam_added_to_jam">به Jam اضافه شد</string>
+  <string name="morphe_music_jam_unavailable_toast">Jam در دسترس نیست؛ آهنگ اضافه نشد</string>
+  <string name="morphe_music_jam_your_jam">Jam شما</string>
+  <string name="morphe_music_jam_listening_together">گوش‌دادن با هم</string>
+  <string name="morphe_music_jam_joining_jam">در حال پیوستن به Jam</string>
+  <string name="morphe_music_jam_listen_together">با هم گوش دهید</string>
+  <string name="morphe_music_jam_updating">در حال به‌روزرسانی Jam…</string>
+  <string name="morphe_music_jam_finding_host">در حال یافتن میزبان در Wi-Fi…</string>
+  <string name="morphe_music_jam_waiting_people">در انتظار افراد</string>
+  <string name="morphe_music_jam_one_connected">%d نفر متصل شد</string>
+  <string name="morphe_music_jam_many_connected">%d نفر متصل شدند</string>
+  <string name="morphe_music_jam_code_expires">این کد را در دستگاهی در نزدیکی وارد کنید. Wi-Fi Aware در صورت پشتیبانی، در شبکه‌های محلی جداگانه نیز کار می‌کند. در %d دقیقه منقضی می‌شود.</string>
+  <string name="morphe_music_jam_seek_to">پرش به %s؟</string>
+  <string name="morphe_music_jam_edits_open">ویرایش باز است</string>
+  <string name="morphe_music_jam_edits_locked">ویرایش قفل است</string>
+  <string name="morphe_music_jam_connected_aware">متصل از طریق Wi-Fi Aware</string>
+  <string name="morphe_music_jam_connected_wifi">متصل از طریق Wi-Fi</string>
+  <string name="morphe_music_jam_connected_bluetooth">متصل از طریق Bluetooth</string>
+  <string name="morphe_music_jam_unsupported">در طول Jam پشتیبانی نمی‌شود</string>
+  <string name="morphe_music_jam_cancelled">پیوستن لغو شد</string>
+  <string name="morphe_music_jam_reconnecting_host">در حال اتصال مجدد به میزبان شما…</string>
+  <string name="morphe_music_jam_share_prompt">یک صف را به اشتراک بگذارید. به همه اجازه دهید آهنگ اضافه کنند.</string>
+  <string name="morphe_music_jam_invite_people">دعوت از افراد</string>
+  <string name="morphe_music_jam_guest_edits">مهمان‌ها می‌توانند صف را ویرایش کنند</string>
+  <string name="morphe_music_jam_end_jam">پایان Jam</string>
+  <string name="morphe_music_jam_participant_help">میزبان موسیقی را پخش می‌کند. آهنگ‌ها را مستقیماً در صف YouTube Music اضافه، جابه‌جا یا حذف کنید.</string>
+  <string name="morphe_music_jam_joining_help">هر دو دستگاه را نزدیک یکدیگر نگه دارید. می‌توانید در حالی که به دنبال میزبان می‌گردیم لغو کنید.</string>
+  <string name="morphe_music_jam_cancel_joining">لغو پیوستن</string>
+  <string name="morphe_music_jam_leave_jam">ترک Jam</string>
+  <string name="morphe_music_jam_start_jam">شروع یک Jam</string>
+  <string name="morphe_music_jam_setup_layer">راه‌اندازی Jam Layer</string>
+  <string name="morphe_music_jam_manage">مدیریت</string>
   <string name="morphe_music_jam_details">جزئیات</string>
   <string name="morphe_music_jam_open">بازکردن</string>
+  <string name="morphe_music_jam_loading_song_options">در حال بارگذاری گزینه‌های آهنگ…</string>
+  <string name="morphe_music_jam_song_options_unavailable">گزینه‌های آهنگ در دسترس نیستند؛ دوباره تلاش کنید</string>
+  <string name="morphe_music_jam_song_options_failed">باز کردن گزینه‌های آهنگ ممکن نشد</string>
+  <string name="morphe_music_jam_no_browser">هیچ مرورگری برای دانلود Jam Layer در دسترس نیست</string>
+  <string name="morphe_music_jam_waiting_host_queue">در انتظار صف میزبان</string>
+  <string name="morphe_music_jam_open_song_first">ابتدا یک آهنگ را در YouTube Music باز کنید</string>
+  <string name="morphe_music_jam_play_on_host">پخش روی میزبان</string>
+  <string name="morphe_music_jam_quit_and_play">خروج از Jam و پخش محلی</string>
+  <string name="morphe_music_jam_play_next">پخش بعدی در Jam</string>
+  <string name="morphe_music_jam_add_to_queue">افزودن به صف Jam</string>
+  <string name="morphe_music_jam_play_track">پخش این آهنگ Jam</string>
+  <string name="morphe_music_jam_choose_playback">انتخاب محل پخش</string>
+  <string name="morphe_music_jam_move_host_here">انتقال میزبان به اینجا</string>
+  <string name="morphe_music_jam_seek_not_ready">آهنگ برای پرش آماده نشد</string>
+  <string name="morphe_music_jam_queue_changed_gesture">صف تغییر کرد؛ دوباره ژست را امتحان کنید</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">لوگوی سربرگ</string>
@@ -30,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">پخش آهنگ‌های صوتی آلبوم</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">نسخهٔ فقط‌صوتی آهنگ‌های آلبوم را به‌جای موزیک‌ویدئو پخش می‌کند. به «جعل جریان‌های ویدئویی» نیاز دارد</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">فعال‌سازی تعویض صدا/ویدئو</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">تلاش برای جابه‌جایی بین نسخهٔ ترک صوتی و موزیک‌ویدئوی رسمی</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">دانلود موزیک‌ویدئوها، پادکست‌ها یا آهنگ‌ها با برنامه‌های دانلودکنندهٔ شخص ثالث</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -37,18 +123,45 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_action_button_summary">به‌جای دکمهٔ دانلود اصلی، از دانلودکنندهٔ خارجی انتخاب‌شدهٔ شما استفاده می‌کند</string>
   <string name="morphe_external_downloader_flyout_menu_title">جایگزینی منوی دانلود</string>
   <string name="morphe_external_downloader_flyout_menu_summary">به‌جای منوی دانلود اصلی، از دانلودکنندهٔ خارجی انتخاب‌شدهٔ شما استفاده می‌کند</string>
+  <string name="morphe_music_in_app_downloads_title">دانلود در برنامه</string>
+  <string name="morphe_music_in_app_downloads_summary">صدا را داخل YouTube Music دانلود می‌کند به‌جای بازکردن برنامهٔ دانلودکنندهٔ خارجی</string>
+  <string name="morphe_music_in_app_downloads_user_dialog_message">"آهنگ‌ها در حافظهٔ خصوصی برنامه ذخیره می‌شوند و در صورت حذف YouTube Music پاک می‌شوند.
+
+وقتی این گزینه روشن است، تب Downloads به‌جای کتابخانهٔ آفلاین Music Premium این آهنگ‌ها را فهرست می‌کند. خاموش‌کردن آن تب را بازمی‌گرداند و دانلودهای Premium هرگز تحت تأثیر قرار نمی‌گیرند."</string>
   <string name="morphe_music_downloads_screen_title">دانلودها</string>
+  <string name="morphe_music_downloads_empty">"دانلودی وجود ندارد
+آهنگ‌های دانلودشده اینجا ظاهر می‌شوند"</string>
+  <string name="morphe_music_downloads_track_subtitle">%1$s • %2$s • %3$s مگابایت</string>
+  <string name="morphe_music_downloads_summary">%1$s آهنگ • %2$s MB</string>
+  <string name="morphe_music_downloads_search_hint">جستجو در دانلودها</string>
   <string name="morphe_music_downloads_sort">مرتب‌سازی</string>
+  <string name="morphe_music_downloads_sort_artist">مرتب‌سازی بر اساس هنرمند</string>
+  <string name="morphe_music_downloads_sort_title">مرتب‌سازی بر اساس عنوان</string>
+  <string name="morphe_music_downloads_sort_size">مرتب‌سازی بر اساس اندازه</string>
   <string name="morphe_music_downloads_delete_all">حذف همه دانلودها</string>
   <string name="morphe_music_downloads_delete_all_title">همه دانلودها حذف شود؟</string>
+  <string name="morphe_music_downloads_delete_all_message">همهٔ آهنگ‌های دانلودشده از این دستگاه حذف خواهند شد</string>
+  <string name="morphe_music_downloads_all_deleted">دانلودها حذف شدند</string>
   <string name="morphe_music_downloads_nothing_found">چیزی پیدا نشد</string>
+  <string name="morphe_music_downloads_actions_for">اقدامات برای %s</string>
   <string name="morphe_music_downloads_play">پخش</string>
   <string name="morphe_music_downloads_play_pause">پخش یا مکث</string>
+  <string name="morphe_music_downloads_previous">قبلی</string>
   <string name="morphe_music_downloads_next">بعدی</string>
   <string name="morphe_music_downloads_pause">مکث</string>
   <string name="morphe_music_downloads_close">بستن</string>
   <string name="morphe_music_downloads_delete">حذف</string>
+  <string name="morphe_music_downloads_delete_track">حذف دانلود</string>
+  <string name="morphe_music_downloads_delete_track_title">دانلود حذف شود؟</string>
+  <string name="morphe_music_downloads_delete_track_message">%s از این دستگاه حذف خواهد شد</string>
   <string name="morphe_music_downloads_track_deleted">دانلود حذف شد</string>
+  <string name="morphe_music_downloads_track_delete_failed">حذف دانلود ممکن نشد</string>
+  <string name="morphe_music_downloads_play_failed">پخش دانلود ممکن نشد</string>
+  <string name="morphe_music_downloads_notification_channel">دانلودهای صوتی</string>
+  <string name="morphe_music_downloads_playback_channel">پخش آفلاین</string>
+  <string name="morphe_music_downloads_unknown_track">شناسایی آهنگ برای دانلود ممکن نشد</string>
+  <string name="morphe_music_downloads_already_running">دانلود از قبل در حال انجام است</string>
+  <string name="morphe_music_downloads_already_saved">قبلاً دانلود شده</string>
   <string name="morphe_music_downloads_started">دانلود شروع شد</string>
   <string name="morphe_music_downloads_starting">آغاز کردن دانلود…</string>
   <string name="morphe_music_downloads_progress">درحال دانلود %s%%</string>
@@ -63,13 +176,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_player_title">پخش‌کننده</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">متن آهنگ</string>
   <string name="morphe_settings_music_screen_9_misc_title">متفرقه</string>
+  <string name="morphe_music_app_language_title">زبان YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">زبان سیستم</string>
+  <string name="morphe_music_app_language_summary_unsupported">نیازمند Android 13 یا بالاتر</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">پنهان‌کردن برچسب «دریافت Music Premium»</string>
   <string name="morphe_music_hide_music_premium_promotions_title">پنهان‌کردن تبلیغ‌های Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">مخفی کردن تبلیغات ویدیویی</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">پنهان‌کردن کلید صوتی / ویدئویی</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">پنهان‌کردن دکمهٔ دانلود</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">دکمهٔ دانلود را در نمایش پادکست پنهان می‌کند</string>
   <string name="morphe_music_hide_explore_shelf_title">پنهان‌کردن قفسهٔ کاوش</string>
+  <string name="morphe_music_hide_filter_bar_title">پنهان‌کردن نوار فیلتر</string>
   <string name="morphe_music_hide_grid_shelves_title">پنهان‌کردن قفسه‌های شبکه‌ای</string>
   <string name="morphe_music_hide_horizontal_shelves_title">پنهان‌کردن قفسه‌های افقی</string>
   <string name="morphe_music_hide_list_shelves_title">پنهان‌کردن قفسه‌های فهرستی</string>
@@ -125,32 +244,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">محو متقاطع برای این جلسه متوقف شد</string>
   <string name="morphe_music_crossfade_resumed_toast">محو متقاطع ادامه یافت</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وقتی محو متقاطع فعال است، حالت ویدئو در دسترس نیست</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">هنگام ارسال یا آینه‌کردن صدا، محو متقاطع متوقف می‌شود. محو متقاطع روی ارسال/آینه‌کردن ناپایدار است و شاید هرگز قابل اصلاح نباشد</string>
-  <string name="morphe_music_crossfade_about_title">درباره</string>
-  <string name="morphe_music_crossfade_about_summary">محو متقاطع چگونه کار می‌کند — و چه وقت کار نمی‌کند</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">کراسفید هنگام پخش SABR خاموش است</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">کراسفید هنگام Cast کردن خاموش است</string>
   <string name="morphe_music_crossfade_about_how_title">نحوهٔ کار</string>
-  <string name="morphe_music_crossfade_about_how_summary">"محو متقاطع پایان یک آهنگ را با شروع آهنگ بعدی هم‌پوشان می‌کند؛ یکی را در مدت و منحنی انتخابی شما کم‌کم محو می‌کند و دیگری را بالا می‌آورد.
+  <string name="morphe_music_crossfade_about_how_summary">"کراسفید پایان یک آهنگ را با شروع آهنگ بعدی همپوشانی می‌کند و از مدت و منحنی شما استفاده می‌کند
 
-این ویژگی هنگام رفتن خودکار (وقتی آهنگ خودبه‌خود تمام می‌شود) و هنگام ردکردن دستی اجرا می‌شود — هرکدام کلید جداگانهٔ خود را در بالا دارد. هنگام رفتن خودکار، ترکیب صدا چند ثانیه پیش از پایان آهنگ شروع می‌شود.
+روی پیشروی خودکار و رد شدن دستی اجرا می‌شود، هر کدام با کلید مخصوص خود. در پیشروی خودکار، ترکیب چند ثانیه قبل از پایان آهنگ شروع می‌شود"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">محدودیت‌ها</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"موزیک‌ویدئوها هنگام روشن بودن کراسفید فقط به‌صورت صوتی پخش می‌شوند. برای توقف کراسفید و تماشای ویدیو، دکمهٔ پخش تصادفی را فشار طولانی دهید
 
-به YouTube Music نسخهٔ ۹.x یا جدیدتر نیاز دارد."</string>
-  <string name="morphe_music_crossfade_about_best_title">بهترین عملکرد با</string>
-  <string name="morphe_music_crossfade_about_best_summary">پخش معمول آهنگ‌به‌آهنگ و رفتن خودکار، تکرار یک آهنگ (آهنگ با خودش محو متقاطع می‌شود) و صدای محلی — بلندگوی تلفن، هدفون سیمی، Bluetooth یا USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">کاملاً درست کار نمی‌کند</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"وقتی محو متقاطع روشن است، موزیک‌ویدئوها فقط به‌صورت صوتی پخش می‌شوند (اگر ویدئو را می‌خواهید، پخش تصادفی را لمس طولانی کنید تا مکث شود)
+موزیک‌ویدئویی که پخش را شروع می‌کند تا آهنگ بعدی در حالت ویدیو می‌ماند
 
-آهنگ‌هایی که از مدت محو شما کوتاه‌ترند ممکن است محو نشوند
+آهنگ‌های کوتاه‌تر از مدت محوشدگی، کراسفید نمی‌شوند
 
-صفحهٔ قفل یا اعلان ممکن است در میانهٔ انتقال، برای مدت کوتاهی وضعیت قدیمی را نشان دهد"</string>
-  <string name="morphe_music_crossfade_about_known_title">مشکلات شناخته‌شده</string>
-  <string name="morphe_music_crossfade_about_known_summary">"موزیک‌ویدئویی که آهنگ اول تنظیم شده باشد — یا از خارج صف فعلی شروع شده باشد — ممکن است پیش از فعال‌شدن حالت فقط‌صوتی، برای مدت کوتاهی به‌صورت ویدئو نمایش داده شود
+صفحهٔ قفل یا اعلان ممکن است به‌طور خلاصه وضعیت قدیمی را در میانهٔ انتقال نشان دهد
 
-مکث‌کردن محو متقاطع برای تماشای موزیک‌ویدئو ممکن است بعضی ویدئوها را سیاه کند (ویدئوهایی که صدایشان از خود ویدئو می‌آید). پیش از انتخاب آهنگ، محو متقاطع را متوقف کنید تا این مشکل پیش نیاید"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">اصلاً کار نمی‌کند</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"ارسال یا آینه‌کردن صدا (Chromecast، آینه‌کردن صفحه یا صدا) — محو متقاطع چون در این حالت ناپایدار است متوقف می‌شود و شاید هرگز قابل اصلاح نباشد.
+توقف کراسفید برای تماشای موزیک‌ویدئو ممکن است برخی ویدیوها را سیاه کند. توقف کراسفید قبل از انتخاب آهنگ از این مشکل جلوگیری می‌کند"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">پشتیبانی نمی‌شود</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"ارسال یا انعکاس صدا (Chromecast، انعکاس صفحه یا صدا)
 
-YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.x و جدیدتر اجرا می‌شود"</string>
+پخش SABR (جعل جریان‌های ویدیو خاموش است)"</string>
   <string name="morphe_music_crossfade_about_credit_title">اعتبار</string>
   <string name="morphe_music_crossfade_about_credit_summary">ویژگی محو متقاطع از VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -158,14 +271,28 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <string name="morphe_music_remember_shuffle_state_title">به‌خاطر سپردن وضعیت پخش تصادفی</string>
   <!-- video.speed.playbackSpeedPatch -->
+  <string name="morphe_music_playback_speed_title">سرعت پخش</string>
+  <string name="morphe_music_playback_speed_summary">سرعت استفاده‌شده برای همهٔ آهنگ‌ها. در ۱۰۰٪ از سرعت برنامه استفاده می‌شود، مانند سرعت پخش پادکست</string>
+  <string name="morphe_music_playback_speed_change_pitch_title">تغییر زیروبمی با سرعت</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">غیرفعال‌کردن هدایت dislike</string>
   <string name="morphe_music_disable_dislike_redirection_summary">هنگام فشردن دکمهٔ dislike، از رفتن به آهنگ بعدی جلوگیری می‌کند</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">عمل ضربه روی آهنگ فهرست پخش</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">پخش فهرست پخش</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">پخش فقط آهنگ انتخاب‌شده</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">افزودن آهنگ انتخاب‌شده به صف</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">به صف اضافه شد</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">پنهان‌کردن دکمهٔ ارسال</string>
   <string name="morphe_music_hide_history_button_title">پنهان‌کردن دکمهٔ سابقه</string>
   <string name="morphe_music_hide_notification_button_title">پنهان‌کردن دکمهٔ اعلان</string>
   <string name="morphe_music_hide_search_button_title">پنهان‌کردن دکمهٔ جست‌وجو</string>
+  <string name="morphe_music_hide_voice_search_button_title">پنهان‌کردن دکمهٔ جستجوی صوتی</string>
+  <string name="morphe_music_hide_sound_search_button_title">پنهان‌کردن دکمهٔ جستجوی صدا</string>
+  <string name="morphe_music_hide_library_new_button_title">پنهان‌کردن دکمهٔ جدید</string>
+  <string name="morphe_music_hide_library_new_button_summary">دکمهٔ جدید را در برگهٔ Library پنهان می‌کند</string>
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <string name="morphe_music_action_buttons_screen_title">دکمه‌های عملیات</string>
   <string name="morphe_music_action_buttons_screen_summary">انتخاب کنید کدام دکمه‌های عملیات زیر پخش‌کننده نمایش داده شوند</string>
@@ -233,9 +360,9 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <string name="morphe_change_start_page_entry_playlists">فهرست‌های پخش</string>
   <string name="morphe_change_start_page_entry_search">جست‌وجو</string>
   <string name="morphe_change_start_page_entry_subscriptions">عضویت‌ها</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">پنهان‌کردن نوار فیلتر</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
+  <string name="morphe_music_force_portrait_orientation_title">اجبار جهت عمودی</string>
+  <string name="morphe_music_force_portrait_orientation_summary">برنامه را هنگام چرخش دستگاه در جهت عمودی نگه می‌دارد</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">تغییر رنگ مینی‌پخش‌کننده</string>
   <string name="morphe_music_change_miniplayer_color_summary">رنگ مینی‌پخش‌کننده را با پخش‌کنندهٔ تمام‌صفحه هماهنگ می‌کند</string>
@@ -266,7 +393,6 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <string name="morphe_music_hide_navigation_bar_title">پنهان‌کردن نوار پیمایش</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">پنهان‌کردن برچسب‌های دکمه‌های پیمایش</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">یکپارچه‌سازی Last.fm و ListenBrainz را پیکربندی کنید</string>
   <string name="morphe_music_scrobbling_summary_logged_out">وارد نشده‌اید. برای پیکربندی ضربه بزنید</string>
   <string name="morphe_music_scrobbling_log_out">خروج</string>
   <string name="morphe_music_scrobbling_logged_out_toast">خارج شدید</string>
@@ -289,7 +415,6 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">برای فعال‌کردن اسکروبلینگ، توکن کاربر ListenBrainz خود را وارد کنید</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">توکن</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">دریافت توکن</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">تأیید</string>
   <string name="morphe_music_listenbrainz_token_status_empty">لطفاً یک توکن وارد کنید</string>
   <string name="morphe_music_listenbrainz_token_status_validating">در حال اعتبارسنجی…</string>
@@ -324,42 +449,153 @@ YouTube Music نسخهٔ ۸.x — محو متقاطع فقط در نسخهٔ ۹.
   <string name="morphe_music_scrobbling_guess_album_title">تکمیل آلبوم گمشده</string>
   <string name="morphe_music_scrobbling_guess_album_summary">وقتی موسیقی آلبوم ندارد، آن را در Last.fm جست‌وجو می‌کند تا اسکروبل شما کامل باشد</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">دربارهٔ اسکروبلینگ</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"اسکروبلینگ استفادهٔ شما از YouTube Music را به‌طور خودکار با نمایهٔ Last.fm یا ListenBrainz همگام می‌کند
 
 برای اطمینان از همگام‌شدن اسکروبلینگ هنگام پخش در پس‌زمینه، مصرف باتری برنامهٔ YouTube Music را روی «بدون محدودیت» تنظیم کنید"</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">استفاده از متن آهنگ شخص ثالث</string>
   <string name="morphe_music_lyrics_enabled_summary">متن آهنگ را از سرویس شخص ثالث نشان می‌دهد و اگر چیزی پیدا نشود به متن داخلی برمی‌گردد</string>
+  <string name="morphe_music_lyrics_keep_screen_on_title">روشن نگه‌داشتن صفحه هنگام مشاهدهٔ متن ترانه</string>
+  <string name="morphe_music_lyrics_keep_screen_on_summary">جلوگیری از خاموش‌شدن نمایشگر وقتی پنل متن ترانه باز است</string>
   <string name="morphe_music_lyrics_section_service_title">سرویس متن آهنگ</string>
-  <string name="morphe_music_lyrics_section_about_title">درباره</string>
+  <string name="morphe_music_lyrics_section_overlay_title">روکش</string>
+  <string name="morphe_music_lyrics_section_sync_title">همگام‌سازی</string>
+  <string name="morphe_music_lyrics_source_all_disabled">همهٔ ارائه‌دهنده‌ها غیرفعال شده‌اند — متن ترانهٔ داخلی و متن ترانهٔ تعبیه‌شده</string>
+  <string name="morphe_music_lyrics_source_reset_title">بازنشانی ترتیب ارائه‌دهنده‌ها؟</string>
+  <string name="morphe_music_lyrics_source_reset_message">بازیابی ارائه‌دهنده‌ها به ترتیب اولویت پیش‌فرض</string>
   <string name="morphe_music_token_dialog_get_token">دریافت توکن</string>
+  <string name="morphe_music_apple_music_token_title">توکن Apple Music Media-user-token</string>
+  <string name="morphe_music_apple_music_token_dialog_instruction">"کوکی media-user-token را از music.apple.com جای‌گذاری کنید
+
+مراحل:
+1. در music.apple.com به‌عنوان کاربر عضو وارد شوید
+2. DevTools → Application → Cookies → music.apple.com را باز کنید
+3. مقدار «media-user-token» را کپی کنید"</string>
+  <string name="morphe_music_apple_music_token_toast_saved">Apple Music: media-user-token ذخیره شد</string>
+  <string name="morphe_music_apple_music_token_toast_cleared">Apple Music: media-user-token پاک شد</string>
+  <string name="morphe_music_apple_music_token_toast_invalid">Apple Music: media-user-token نامعتبر است — لطفاً بررسی کنید و دوباره تلاش کنید</string>
+  <string name="morphe_music_spotify_token_title">توکن Spotify SpDc</string>
+  <string name="morphe_music_spotify_token_dialog_instruction">"کوکی sp_dc را از Spotify جای‌گذاری کنید.
+
+مراحل:
+1. در open.spotify.com وارد شوید
+2. DevTools → Application → Cookies → open.spotify.com را باز کنید
+3. مقدار «sp_dc» را کپی کنید"</string>
+  <string name="morphe_music_spotify_token_toast_saved">Spotify: sp_dc ذخیره شد</string>
+  <string name="morphe_music_spotify_token_toast_cleared">Spotify: sp_dc پاک شد</string>
+  <string name="morphe_music_spotify_token_toast_invalid">Spotify: sp_dc نامعتبر است — لطفاً بررسی کنید و دوباره تلاش کنید</string>
+  <string name="morphe_music_apple_token_optional_hint">توکن Apple Music اختیاری است. بدون آن، Lyrically به‌عنوان جایگزین استفاده خواهد شد</string>
+  <string name="morphe_music_deezer_arl_title">توکن Deezer ARL</string>
+  <string name="morphe_music_deezer_arl_dialog_instruction">"کوکی arl را از Deezer جای‌گذاری کنید.
+
+مراحل:
+1. در deezer.com وارد شوید
+2. DevTools → Application → Cookies → deezer.com را باز کنید
+3. مقدار «arl» را کپی کنید"</string>
+  <string name="morphe_music_deezer_arl_toast_saved">Deezer: arl ذخیره شد</string>
+  <string name="morphe_music_deezer_arl_toast_cleared">Deezer: arl پاک شد</string>
+  <string name="morphe_music_deezer_arl_toast_invalid">Deezer: arl نامعتبر است — لطفاً بررسی کنید و دوباره تلاش کنید</string>
+  <string name="morphe_music_musixmatch_token_title">توکن Musixmatch</string>
+  <string name="morphe_music_musixmatch_token_dialog_instruction">فقط برای استفاده از حساب خودتان توکن اضافه کنید. باید از برنامهٔ اندرویدی Musixmatch باشد: توکن‌های کپی‌شده از musixmatch.com متعلق به کلاینت دسکتاپ بازنشسته هستند و API آنها را رد می‌کند</string>
+  <string name="morphe_music_musixmatch_token_optional_hint">Musixmatch بدون توکن کار می‌کند، بنابراین این فیلد می‌تواند خالی بماند</string>
+  <string name="morphe_music_musixmatch_token_dialog_hint">توکن کاربر</string>
+  <string name="morphe_music_musixmatch_token_toast_saved">Musixmatch: توکن کاربر ذخیره شد</string>
   <string name="morphe_music_musixmatch_token_toast_cleared">Musixmatch: توکن کاربر پاک شد</string>
   <string name="morphe_music_musixmatch_token_toast_invalid">Musixmatch: توکن کاربر نامعتبر است — لطفا بررسی و دوباره تلاش کنید</string>
   <string name="morphe_music_youtube_cookies_title">کوکی‌های یوتیوب</string>
+  <string name="morphe_music_youtube_cookies_dialog_instruction">"کوکی‌های YouTube خود را برای دریافت زیرنویس‌ها و متن‌های زمان‌بندی‌شده از YouTube جای‌گذاری کنید.
+
+مراحل:
+1. youtube.com را در مرورگر باز کنید و وارد شوید
+2. DevTools (F12) → Application → Cookies → youtube.com را باز کنید
+3. رشتهٔ کامل کوکی را کپی کنید (جفت‌های key=value که با نقطه‌ویرگول جدا شده‌اند)
+
+کوکی‌های لازم: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID, LOGIN_INFO"</string>
   <string name="morphe_music_youtube_cookies_toast_saved">یوتیوب: کوکی‌ها ذخیره شدند</string>
   <string name="morphe_music_youtube_cookies_toast_cleared">یوتیوب: کوکی‌ها پاک شدند</string>
   <string name="morphe_music_youtube_cookies_toast_invalid">یوتیوب: کوکی‌ها نامعتبر است — لطفا بررسی و دوباره تلاش کنید</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">برای جست‌وجو روی یک خط ضربه بزنید</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">با ضربه‌زدن روی یک خط، به همان لحظه در آهنگ می‌روید</string>
   <string name="morphe_music_lyrics_show_copy_button_title">نمایش دکمهٔ کپی</string>
+  <string name="morphe_music_lyrics_show_copy_button_summary">برای کپی کردن متن اصلی ترانه به‌صورت متن ساده ضربه بزنید؛ برای ذخیرهٔ فایل منبع خام متن ترانه در Downloads، فشار طولانی دهید</string>
   <string name="morphe_music_lyrics_show_translate_button_title">نمایش دکمهٔ ترجمه</string>
+  <string name="morphe_music_lyrics_show_translate_button_summary">برای تغییر وضعیت ترجمه ضربه بزنید؛ برای فقط ترجمه، فشار طولانی دهید. از ترجمه‌های ارائه‌دهنده، Google Translate یا API سازگار با OpenAI استفاده می‌کند</string>
+  <string name="morphe_music_lyrics_show_romanize_button_title">نمایش دکمهٔ لاتین‌نویسی</string>
+  <string name="morphe_music_lyrics_show_romanize_button_summary">برای تغییر وضعیت لاتین‌نویسی ضربه بزنید؛ برای فقط لاتین‌نویسی، فشار طولانی دهید. از لاتین‌نویسی ارائه‌دهنده، Google Translate یا API سازگار با OpenAI استفاده می‌کند</string>
+  <string name="morphe_music_lyrics_show_refresh_button_title">نمایش دکمهٔ تازه‌سازی</string>
+  <string name="morphe_music_lyrics_show_refresh_button_summary">برای رفتن به گزینهٔ بعدی متن ترانه ضربه بزنید؛ برای جستجوی متن ترانه بر اساس عنوان آهنگ و هنرمند، فشار طولانی دهید</string>
+  <string name="morphe_music_lyrics_search_dialog_title">جستجوی متن ترانه</string>
+  <string name="morphe_music_lyrics_search_title_hint">عنوان آهنگ</string>
+  <string name="morphe_music_lyrics_search_artist_hint">هنرمند</string>
+  <string name="morphe_music_lyrics_search_empty">یک عنوان آهنگ و یک هنرمند وارد کنید</string>
+  <string name="morphe_music_lyrics_search_no_providers">هیچ‌یک از ارائه‌دهنده‌های فعال نمی‌توانند آهنگ‌های دیگر را جستجو کنند</string>
   <string name="morphe_music_lyrics_saved">ذخیره‌شده</string>
+  <string name="morphe_music_lyrics_word_sync_title">برجسته‌کردن واژه‌ها یا هجاهای همگام‌شده</string>
+  <string name="morphe_music_lyrics_word_sync_summary">اولویت دادن به متن ترانهٔ واژه‌به‌واژه در صورت وجود. وقتی متن ترانه زمان‌بندی واژه دارد، هر واژه یا هجا را هماهنگ با موسیقی برجسته می‌کند</string>
+  <string name="morphe_music_lyrics_hide_played_title">پنهان‌کردن متن ترانه‌های پخش‌شده</string>
+  <string name="morphe_music_lyrics_hide_played_summary">پنهان‌کردن خطوط متن ترانه بالای خطِ در حال پخش</string>
+  <string name="morphe_music_lyrics_hide_unplayed_title">پنهان‌کردن متن ترانه‌های پخشنشده</string>
+  <string name="morphe_music_lyrics_hide_unplayed_summary">پنهان‌کردن خطوط متن ترانه پایین خطِ در حال پخش</string>
+  <string name="morphe_music_lyrics_mediasession_title">نمایش متن ترانه در MediaSession در صفحهٔ قفل</string>
+  <string name="morphe_music_lyrics_miniplayer_title">نمایش متن ترانه در پخش‌کنندهٔ کوچک‌شده</string>
+  <string name="morphe_music_lyrics_display_artist_first_title">ترتیب نمایش هنرمند و عنوان</string>
+  <string name="morphe_music_lyrics_display_artist_first_summary">ترتیب نمایش هنرمند و عنوان را در پخش‌کنندهٔ کوچک‌شده و MediaSession تغییر دهید. روشن: «هنرمند - عنوان» و خاموش: «عنوان - هنرمند». روی جستجوی متن ترانه تأثیر نمی‌گذارد</string>
   <string name="morphe_settings_music_lyrics_metadata_title">فیلترها</string>
+  <string name="morphe_music_lyrics_custom_regex_title">عبارت باقاعدهٔ فراداده</string>
+  <string name="morphe_music_lyrics_custom_regex_summary">عبارت باقاعده روی عنوان‌ها، هنرمندان و آلبوم‌ها قبل از جستجوی متن ترانه و هنگام امتیازدهی به تطابق دو عنوان اعمال می‌شود. برای غیرفعال‌کردن هر دو خالی بگذارید. پیش‌فرض موارد رایج اضافی مثل «Official Video»، «Remaster»، «【插曲】» و «- Topic» را حذف می‌کند</string>
+  <string name="morphe_music_lyrics_text_filter_title">عبارت باقاعدهٔ فیلتر متن ترانه</string>
+  <string name="morphe_music_lyrics_text_filter_summary">عبارت باقاعده فقط روی متن اصلی ترانه اعمال می‌شود (نه ترجمه‌ها یا لاتین‌نویسی‌ها). برای غیرفعال‌کردن خالی بگذارید</string>
+  <string name="morphe_music_lyrics_credit_line_regex_title">نشانگرهای خط اطلاعات</string>
+  <string name="morphe_music_lyrics_credit_line_regex_summary">اگر متن ترانه به‌اشتباه به پایین فیلتر شد، این را تنظیم یا پاک کنید. نشانگرهای جداشده با ویرگول: خطوطی که شامل نشانگری دنبال‌شده با دونقطه هستند به‌عنوان اطلاعات اعتبار در پایین نمایش داده می‌شوند. برای غیرفعال‌کردن خالی بگذارید</string>
   <string name="morphe_music_lyrics_text_size_title">اندازهٔ متن</string>
   <string name="morphe_music_lyrics_text_size_summary">اندازهٔ متن آهنگ</string>
-  <string name="morphe_music_lyrics_offset_ms_title">تغییر زمان‌بندی</string>
+  <string name="morphe_music_lyrics_offset_ms_title">جبران زمان سراسری</string>
+  <string name="morphe_music_lyrics_offset_ms_summary">متن ترانهٔ همگام‌شده از پخش پیروی می‌کند. اگر دچار انحراف شد، جبران زمان را تنظیم کنید. متن ترانهٔ همگام‌شده را به جلو یا عقب جابه‌جا کنید. اگر متن ترانه از آهنگ جلوتر است، از مقدار مثبت استفاده کنید</string>
+  <string name="morphe_music_lyrics_sb_matching_title">استفاده از بخش‌های SponsorBlock برای جبران متن ترانه</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">مطابقت بدون بخش‌هایی که SponsorBlock رد می‌کند و جابه‌جایی متن ترانه روی صدای منتشرشده. خاموش: SponsorBlock کاملاً نادیده گرفته می‌شود</string>
+  <string name="morphe_music_lyrics_sb_no_video">این آهنگ هیچ شناسهٔ ویدیویی برای ارسال ندارد</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">منبع: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">ترجمه شده توسط گوگل</string>
+  <string name="morphe_music_lyrics_romanized_by_google">لاتین‌نویسی توسط Google</string>
+  <string name="morphe_music_lyrics_translated_by_ai">ترجمه توسط %s</string>
+  <string name="morphe_music_lyrics_romanized_by_ai">لاتین‌نویسی توسط %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <string name="morphe_music_lyrics_translate_hide">ترجمه شد</string>
+  <string name="morphe_music_lyrics_translation_language_title">زبان ترجمه</string>
   <string name="morphe_music_lyrics_translating">در حال ترجمه…</string>
   <string name="morphe_music_lyrics_translate_failed">ترجمهٔ متن آهنگ ممکن نشد</string>
+  <string name="morphe_music_lyrics_romanize_hide">لاتین‌نویسی‌شده</string>
+  <string name="morphe_music_lyrics_romanizing">در حال لاتین‌نویسی…</string>
+  <string name="morphe_music_lyrics_romanize_failed">لاتین‌نویسی متن ترانه ممکن نشد</string>
+  <string name="morphe_music_lyrics_translate_only">فقط ترجمه</string>
+  <string name="morphe_music_lyrics_romanize_only">فقط لاتین‌نویسی</string>
   <string name="morphe_music_lyrics_copied">در کلیپ‌بورد کپی شد</string>
   <string name="morphe_music_lyrics_refreshing">در حال تازه‌سازی</string>
   <string name="morphe_music_lyrics_refreshed">تازه‌سازی شد</string>
+  <string name="morphe_music_lyrics_about_summary">"متن ترانه بر اساس عنوان و هنرمند مطابقت داده می‌شود؛ فرادادهٔ غیرعادی ممکن است چیزی یا نسخهٔ اشتباهی پیدا کند. برای تغییر نسخه‌ها از تازه‌سازی استفاده کنید. ارائه‌دهنده‌های علامت‌گذاری‌شده با * به توکن نیاز دارند. همهٔ ارائه‌دهنده‌های فعال همیشه به ترتیب شما درخواست نمی‌شوند، بلکه بر اساس سرعتشان پاسخ می‌دهند"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">فقط ارائه‌دهنده‌هایی را که استفاده می‌کنید فعال کنید، یا پیش‌فرض را نگه دارید — درخواست‌های مداوم می‌تواند سایت‌های کوچک متن ترانهٔ انجمنی را تحت فشار قرار دهد</string>
+  <string name="morphe_music_lyrics_hide_info_title">پنهان‌کردن خط اعتبار</string>
+  <string name="morphe_music_lyrics_hide_info_summary">پنهان‌کردن خط اعتبار نمایش‌داده‌شده در پایین متن ترانه</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_title">جابجایی ترجمه و لاتین‌نویسی</string>
+  <string name="morphe_music_lyrics_swap_trans_roma_summary">روشن: لاتین‌نویسی زیر متن ترانه و ترجمه بالای آن قرار می‌گیرد؛ خاموش: لاتین‌نویسی بالا و ترجمه پایین می‌ماند</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">ترجمهٔ سازگار با OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">استفاده از API سفارشی سازگار با OpenAI برای ترجمه و لاتین‌نویسی به‌جای Google Translate</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">تنظیمات ترجمهٔ هوش مصنوعی</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">نقطهٔ پایان API سازگار با OpenAI را برای ترجمه و لاتین‌نویسی متن ترانه با هوش مصنوعی پیکربندی کنید.</string>
+  <string name="morphe_music_lyrics_ai_config_base_url_hint">URL نقطهٔ پایان API (مثلاً https://text.pollinations.ai/openai)</string>
+  <string name="morphe_music_lyrics_ai_config_api_token_hint">کلید API (برای دسترسی ناشناس خالی بگذارید)</string>
+  <string name="morphe_music_lyrics_ai_config_model_hint">نام مدل (مثلاً openai-fast, gpt-4o-mini)</string>
+  <string name="morphe_music_lyrics_ai_config_prompt_hint">قالب پرامپت (متغیرها: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">تنظیمات ترجمهٔ هوش مصنوعی ذخیره شد</string>
+  <string name="morphe_music_lyrics_ai_config_toast_invalid">اتصال به نقطهٔ پایان هوش مصنوعی ممکن نشد. لطفاً تنظیمات خود را بررسی کنید.</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">تنظیمات ترجمهٔ هوش مصنوعی بازنشانی شد</string>
+  <string name="morphe_music_lyrics_ai_config_status_configured">پیکربندی‌شده</string>
+  <string name="morphe_music_lyrics_ai_config_status_not_configured">برای پیکربندی ضربه بزنید</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_url">Base URL نمی‌تواند خالی باشد</string>
+  <string name="morphe_music_lyrics_ai_config_status_invalid_url">Base URL باید با http:// یا https:// شروع شود</string>
+  <string name="morphe_music_lyrics_ai_config_status_empty_model">نام مدل نمی‌تواند خالی باشد</string>
+  <string name="morphe_music_lyrics_ai_config_status_validating">در حال بررسی اعتبار اتصال…</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_music_spoof_app_version_target_entry_8_23_51">8.23.51 - غیرفعال‌کردن آیکون‌های پررنگ</string>
   <string name="morphe_music_spoof_app_version_target_entry_9_13_51">9.13.51 - بازگرداندن برگه‌های بعدی پخش‌کننده، متن آهنگ و مرتبط</string>

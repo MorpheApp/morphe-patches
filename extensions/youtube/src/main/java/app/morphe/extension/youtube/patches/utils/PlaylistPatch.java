@@ -163,18 +163,7 @@ public class PlaylistPatch {
 
     @SuppressLint("ResourceType")
     private static View createItemLayout(Context context, String title, int iconId) {
-        LinearLayout row = new LinearLayout(context);
-        row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setGravity(Gravity.CENTER_VERTICAL);
-        row.setPadding(Dim.dp16, Dim.dp16, Dim.dp16, Dim.dp16);
-        row.setClickable(true);
-        row.setFocusable(true);
-
-        TypedValue ripple = new TypedValue();
-        if (context.getTheme().resolveAttribute(
-                android.R.attr.selectableItemBackground, ripple, true)) {
-            row.setBackgroundResource(ripple.resourceId);
-        }
+        LinearLayout row = createRow(context);
 
         ImageView icon = new ImageView(context);
         icon.setImageResource(iconId);
@@ -193,6 +182,19 @@ public class PlaylistPatch {
         text.setLayoutParams(textParams);
         row.addView(text);
 
+        return row;
+    }
+
+    private static LinearLayout createRow(Context context) {
+        LinearLayout row = new LinearLayout(context);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setPadding(Dim.dp16, Dim.dp16, Dim.dp16, Dim.dp16);
+        row.setClickable(true);
+        row.setFocusable(true);
+
+        row.setBackgroundResource(ThemeUtils.getThemeResourceId(
+                context, android.R.attr.selectableItemBackground));
         return row;
     }
 

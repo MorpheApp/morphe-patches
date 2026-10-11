@@ -123,6 +123,10 @@ Second \"item\" text"</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
     <string name="morphe_music_play_album_songs_summary">Play the album audio only version of songs instead of a music video. Requires \'Spoof video streams\'</string>
 
+    <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+    <string name="morphe_music_enable_audio_video_switch_title">Enable audio/video switch</string>
+    <string name="morphe_music_enable_audio_video_switch_summary">Try to switch Audio Track Version and Official Music Video</string>
+
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_summary">Download music videos, podcasts, or songs with third-party downloading apps</string>
     <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -188,6 +192,9 @@ Downloaded tracks appear here"</string>
     <string name="morphe_settings_music_screen_7_return_youtube_dislike_title" translatable="false">Return YouTube Dislike</string>
     <string name="morphe_settings_music_screen_8_sponsorblock_title" translatable="false">SponsorBlock</string>
     <string name="morphe_settings_music_screen_9_misc_title">Miscellaneous</string>
+    <string name="morphe_music_app_language_title">YouTube Music language</string>
+    <string name="morphe_music_app_language_summary_default">System language</string>
+    <string name="morphe_music_app_language_summary_unsupported">Requires Android 13 or later</string>
 
     <!-- ad.hideAdsPatch -->
     <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
@@ -196,7 +203,10 @@ Downloaded tracks appear here"</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
     <string name="morphe_music_hide_audio_video_toggle_title">Hide Audio / Video toggle</string>
+    <string name="morphe_music_hide_podcast_episode_download_button_title">Hide Download button</string>
+    <string name="morphe_music_hide_podcast_episode_download_button_summary">Hides the Download button in podcast show</string>
     <string name="morphe_music_hide_explore_shelf_title">Hide Explore shelf</string>
+    <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
     <string name="morphe_music_hide_grid_shelves_title">Hide grid shelves</string>
     <string name="morphe_music_hide_horizontal_shelves_title">Hide horizontal shelves</string>
     <string name="morphe_music_hide_list_shelves_title">Hide list shelves</string>
@@ -205,7 +215,6 @@ Downloaded tracks appear here"</string>
     <string name="morphe_music_hide_lyrics_translate_button_title">Hide Translate button</string>
     <string name="morphe_music_hide_new_from_shelf_title">Hide \'New from\' shelf</string>
     <string name="morphe_music_hide_playlist_shelves_title">Hide playlist shelves</string>
-    <string name="morphe_music_hide_podcast_episode_download_button_title">Hide podcast episode Download button</string>
     <string name="morphe_music_hide_repeat_button_title">Hide Repeat button</string>
     <string name="morphe_music_hide_shuffle_button_title">Hide Shuffle button</string>
     <string name="morphe_music_hide_speed_dial_shelf_title">Hide \'Speed dial\' shelf</string>
@@ -256,33 +265,26 @@ Downloaded tracks appear here"</string>
     <string name="morphe_music_crossfade_paused_toast">Crossfade paused for this session</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
-    <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is paused while casting or mirroring audio. Crossfade over cast/mirror is unstable and may never be fixable</string>
-    <string name="morphe_music_crossfade_about_title">About</string>
-    <string name="morphe_music_crossfade_about_summary">How crossfade works — and when it does not</string>
-    <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
-    <string name="morphe_music_crossfade_about_banner_title" translatable="false"> </string>
+    <string name="morphe_music_crossfade_sabr_toast">Crossfade is off with SABR playback</string>
+    <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is off while casting</string>
     <string name="morphe_music_crossfade_about_how_title">How it works</string>
-    <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlaps the end of one song with the start of the next, fading one down as the other comes up over your chosen duration and curve.
+    <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlaps the end of one song with the start of the next, using your duration and curve
 
-It runs on auto-advance (when a song ends on its own) and on manual skips — each has its own toggle above. On auto-advance the blend starts a few seconds before the song ends.
+It runs on auto-advance and on manual skip, each with its own toggle. On auto-advance the blend starts a few seconds before the song ends"</string>
+    <string name="morphe_music_crossfade_about_quirks_title">Limitations</string>
+    <string name="morphe_music_crossfade_about_quirks_summary">"Music videos play as audio only while crossfade is on. Long-press shuffle to pause crossfade and watch the video
 
-Requires YouTube Music 9.x or newer."</string>
-    <string name="morphe_music_crossfade_about_best_title">Works best with</string>
-    <string name="morphe_music_crossfade_about_best_summary">Normal song-to-song playback and auto-advance, repeat-one (the song crossfades into itself), and local audio — phone speaker, wired headphones, Bluetooth, or USB.</string>
-    <string name="morphe_music_crossfade_about_quirks_title">Doesn\'t work quite right</string>
-    <string name="morphe_music_crossfade_about_quirks_summary">"Music videos play as audio-only while crossfade is on (long-press shuffle to pause if you want the video)
+A music video that starts playback stays in video mode until the next song
 
-Songs shorter than your fade duration may skip the fade
+Songs shorter than the fade duration are not crossfaded
 
-The lock screen or notification can briefly show a stale state mid-transition"</string>
-    <string name="morphe_music_crossfade_about_known_title">Known issues</string>
-    <string name="morphe_music_crossfade_about_known_summary">"A music video set as the first song — or one started from outside the current queue — may briefly show as video before audio-only mode kicks in
+The lock screen or notification can briefly show a stale state mid-transition
 
-Pausing crossfade to watch a music video can leave some videos black (the ones whose audio comes from the video itself). Pausing crossfade before you pick the song avoids it"</string>
-    <string name="morphe_music_crossfade_about_unsupported_title">Doesn\'t work at all</string>
-    <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring) — crossfade pauses because it\'s unstable there and may never be fixable.
+Pausing crossfade to watch a music video can leave some videos black. Pausing crossfade before you pick the song avoids it"</string>
+    <string name="morphe_music_crossfade_about_unsupported_title">Not supported</string>
+    <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring)
 
-YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
+SABR playback (Spoof video streams turned off)"</string>
     <string name="morphe_music_crossfade_about_credit_title">Credit</string>
     <string name="morphe_music_crossfade_about_credit_summary">Crossfade feature by VazerOG</string>
 
@@ -300,6 +302,14 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
     <string name="morphe_music_disable_dislike_redirection_title">Disable dislike redirection</string>
     <string name="morphe_music_disable_dislike_redirection_summary">Prevents skipping to the next track when the dislike button is pressed</string>
+
+    <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+    <string name="morphe_music_playlist_track_tap_action_title">Playlist track tap action</string>
+    <string name="morphe_music_playlist_track_tap_action_entry_default">Play the playlist</string>
+    <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Play only the selected track</string>
+    <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Add the selected track to the queue</string>
+    <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+    <string name="morphe_music_playlist_track_tap_added_to_queue">Added to queue</string>
 
     <!-- layout.buttons.hideButtonsPatch -->
     <string name="morphe_music_hide_cast_button_title">Hide Cast button</string>
@@ -381,9 +391,6 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_change_start_page_entry_search">Search</string>
     <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
 
-    <!-- layout.compactheader.hideFilterBarPatch -->
-    <string name="morphe_music_hide_filter_bar_title">Hide filter bar</string>
-
     <!-- layout.orientation.forcePortraitOrientationPatch -->
     <string name="morphe_music_force_portrait_orientation_title">Force portrait orientation</string>
     <string name="morphe_music_force_portrait_orientation_summary">Keeps the app in portrait orientation when the device is rotated</string>
@@ -423,8 +430,6 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_hide_navigation_bar_labels_title">Hide navigation button labels</string>
 
     <!-- interaction.scrobbling.scrobblingPatch -->
-    <string name="morphe_music_scrobbling_title" translatable="false">Scrobbling</string>
-    <string name="morphe_music_scrobbling_summary">Configure Last.fm and ListenBrainz integration</string>
     <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>
     <string name="morphe_music_scrobbling_log_out">Log out</string>
     <string name="morphe_music_scrobbling_logged_out_toast">Logged out</string>
@@ -449,7 +454,6 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- 'scrobbling' must be kept untranslated -->
     <string name="morphe_music_listenbrainz_token_dialog_instruction">Enter your ListenBrainz User Token to enable scrobbling</string>
     <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-    <string name="morphe_music_listenbrainz_token_dialog_get_token">Get token</string>
     <string name="morphe_music_listenbrainz_token_dialog_verify">Verify</string>
     <string name="morphe_music_listenbrainz_token_status_empty">Please enter a token</string>
     <string name="morphe_music_listenbrainz_token_status_validating">Validating…</string>
@@ -488,8 +492,6 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_scrobbling_guess_album_summary">When the music does not include an album, look it up on Last.fm so your scrobble is complete</string>
 
     <!-- 'scrobbling' must be kept untranslated -->
-    <string name="morphe_music_scrobbling_about_title">About scrobbling</string>
-    <!-- 'scrobbling' must be kept untranslated -->
     <string name="morphe_music_scrobbling_about_summary">"Scrobbling automatically syncs your YouTube Music usage with your Last.fm or ListenBrainz profile
 
 To ensure scrobbling is synced during background playback, ensure that YouTube Music's app battery usage is set to \"Unrestricted\""</string>
@@ -502,7 +504,6 @@ To ensure scrobbling is synced during background playback, ensure that YouTube M
     <string name="morphe_music_lyrics_section_service_title">Lyrics service</string>
     <string name="morphe_music_lyrics_section_overlay_title">Overlay</string>
     <string name="morphe_music_lyrics_section_sync_title">Synchronisation</string>
-    <string name="morphe_music_lyrics_section_about_title">About</string>
     <string name="morphe_music_lyrics_source_all_disabled">All providers disabled — built-in lyrics and embedded lyrics</string>
     <string name="morphe_music_lyrics_source_reset_title">Reset provider order?</string>
     <string name="morphe_music_lyrics_source_reset_message">Restore providers to the default priority order</string>
@@ -596,8 +597,11 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_credit_line_regex_summary">If lyrics are incorrectly filtered to the bottom, adjust or clear this. Comma-separated markers: lines containing a marker followed by a colon are shown as credit info at the bottom. Leave empty to disable</string>
     <string name="morphe_music_lyrics_text_size_title">Text size</string>
     <string name="morphe_music_lyrics_text_size_summary">Size of the lyrics text</string>
-    <string name="morphe_music_lyrics_offset_ms_title">Timing offset</string>
+    <string name="morphe_music_lyrics_offset_ms_title">Global timing offset</string>
     <string name="morphe_music_lyrics_offset_ms_summary">Synced lyrics follow playback. If they drift, adjust the timing offset. Shift synced lyrics forwards or backwards. Use a positive value if the lyrics run ahead of the song</string>
+    <string name="morphe_music_lyrics_sb_matching_title">Use SponsorBlock segments for lyrics offset</string>
+    <string name="morphe_music_lyrics_sb_matching_summary">Match without the segments SponsorBlock skips and shift lyrics onto the released audio. Off ignores SponsorBlock entirely</string>
+    <string name="morphe_music_lyrics_sb_no_video">This track has no video id to submit</string>
     <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
     <string name="morphe_music_lyrics_source_label">Source: %s</string>
     <string name="morphe_music_lyrics_translated_by_google">Translated by Google</string>
@@ -618,6 +622,7 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_refreshing">Refreshing</string>
     <string name="morphe_music_lyrics_refreshed">Refreshed</string>
     <string name="morphe_music_lyrics_about_summary">"Lyrics are matched by title and artist, unusual metadata may find nothing or the wrong version. Use refresh to switch versions. Providers marked * require a token. All enabled providers are not always requested in your order, but respond based on their speed"</string>
+    <string name="morphe_music_lyrics_source_advice_summary">Only enable the providers you use, or keep the default — constant requests can overwhelm small community lyrics sites</string>
     <string name="morphe_music_lyrics_hide_info_title">Hide credit line</string>
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>

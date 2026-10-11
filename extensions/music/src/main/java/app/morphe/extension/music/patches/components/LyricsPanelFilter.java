@@ -7,7 +7,7 @@
 
 package app.morphe.extension.music.patches.components;
 
-import app.morphe.extension.music.patches.lyrics.LyricsPanelInstaller;
+import app.morphe.extension.music.patches.lyrics.ui.LyricsPanelInstaller;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ContextInterface;
 import app.morphe.extension.shared.patches.components.Filter;

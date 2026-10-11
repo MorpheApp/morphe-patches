@@ -47,7 +47,7 @@ public class Script {
             try {
                 MessageDigest digest = MessageDigest.getInstance("SHA3-512");
                 byte[] bytes = digest.digest(code.getBytes(StandardCharsets.UTF_8));
-                StringBuilder sb = new StringBuilder();
+                StringBuilder sb = new StringBuilder(2 * bytes.length);
                 for (byte b : bytes) {
                     sb.append(String.format("%02x", b));
                 }
@@ -64,6 +64,8 @@ public class Script {
     public String toString() {
         String hash = getHash();
         String shortHash = hash.length() > 7 ? hash.substring(0, 7) : hash;
-        return "<Script " + type.getValue() + " v" + version + " (source: " + source.getValue() + ") variant=" + variant.getValue() + " size=" + code.length() + " hash=" + shortHash + "...>";
+        return "<Script " + type.getValue() + " v" + version
+                + " (source: " + source.getValue() + ") variant="
+                + variant.getValue() + " size=" + code.length() + " hash=" + shortHash + "...>";
     }
 }

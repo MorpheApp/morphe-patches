@@ -25,9 +25,11 @@ import java.security.spec.ECGenParameterSpec;
 import java.util.List;
 import java.util.Locale;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.parsers.TTMLParser;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -54,7 +56,10 @@ public final class UnisonProvider implements LyricsProvider {
         }
         final String title = track.title() != null ? track.title() : "";
         final String artist = track.artist() != null ? track.artist() : "";
-        final int duration = track.durationSeconds();
+        final long videoLengthMs = VideoInformation.getVideoLength();
+        final int duration = videoLengthMs > 0
+                ? (int) (videoLengthMs / 1000)
+                : track.durationSeconds();
         final String album = track.album();
 
         return FetchResult.of(fetchByVideoId(videoId, title, artist, duration, album));
@@ -178,9 +183,9 @@ public final class UnisonProvider implements LyricsProvider {
     private Lyrics parseLyrics(String format, String lyrics, String videoId) {
         switch (format.toLowerCase(Locale.ROOT)) {
             case "ttml":
-                return TtmlParser.ttmlToLyrics(lyrics, name(), sourceUrl(videoId));
+                return TTMLParser.ttmlToLyrics(lyrics, name(), sourceUrl(videoId));
             case "lrc":
-                LrcParser.LrcParseResult result = LrcParser.parseSyncedWithCreditLines(lyrics);
+                LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(lyrics);
                 if (result.lines.isEmpty()) {
                     return null;
                 }
@@ -188,7 +193,7 @@ public final class UnisonProvider implements LyricsProvider {
                         result.creditLines.isEmpty() ? null : result.creditLines,
                         lyrics, "lrc", sourceUrl(videoId));
             case "plain":
-                final List<LyricsLine> plain = LrcParser.parsePlain(lyrics);
+                final List<LyricsLine> plain = LRCParser.parsePlain(lyrics);
                 if (plain.isEmpty()) {
                     return null;
                 }

@@ -32,7 +32,6 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -96,14 +95,10 @@ public class ColorPickerPreference extends EditTextPreference {
     /** Whether the opacity slider is enabled. */
     private boolean opacitySliderEnabled = false;
 
-    public static final int ID_MORPHE_COLOR_PICKER_VIEW =
-            getIdentifierOrThrow(ResourceType.ID, "morphe_color_picker_view");
     public static final int ID_PREFERENCE_COLOR_DOT =
             getIdentifierOrThrow(ResourceType.ID, "preference_color_dot");
     public static final int LAYOUT_MORPHE_COLOR_DOT_WIDGET =
             getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_color_dot_widget");
-    public static final int LAYOUT_MORPHE_COLOR_PICKER =
-            getIdentifierOrThrow(ResourceType.LAYOUT, "morphe_color_picker");
 
     /**
      * Removes non-valid hex characters, converts to all uppercase,
@@ -297,12 +292,12 @@ public class ColorPickerPreference extends EditTextPreference {
         LinearLayout contentContainer = new LinearLayout(context);
         contentContainer.setOrientation(LinearLayout.VERTICAL);
 
-        // Inflate color picker view.
-        View colorPicker = LayoutInflater.from(context).inflate(LAYOUT_MORPHE_COLOR_PICKER, null);
-        dialogColorPickerView = colorPicker.findViewById(ID_MORPHE_COLOR_PICKER_VIEW);
+        // Color picker view, it measures its own height.
+        dialogColorPickerView = new ColorPickerView(context);
         dialogColorPickerView.setOpacitySliderEnabled(opacitySliderEnabled);
         dialogColorPickerView.setColor(currentColor);
-        contentContainer.addView(colorPicker);
+        contentContainer.addView(dialogColorPickerView, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0));
 
         // Horizontal layout for preview and EditText.
         LinearLayout inputLayout = new LinearLayout(context);

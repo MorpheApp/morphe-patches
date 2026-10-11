@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">تشغيل مسارات الألبوم الصوتية</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">تشغيل مسارات الألبوم الصوتية</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">تفعيل تبديل الصوت/الفيديو</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">محاولة التبديل بين إصدار المسار الصوتي والفيديو الموسيقي الرسمي</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">تنزيل مقاطع الفيديو الموسيقية أو البودكاست أو الأغاني باستخدام تطبيقات تنزيل خارجية</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_settings_music_screen_4_player_title">المشغل</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">كلمات الأغاني</string>
   <string name="morphe_settings_music_screen_9_misc_title">متنوع</string>
+  <string name="morphe_music_app_language_title">لغة YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">لغة النظام</string>
+  <string name="morphe_music_app_language_summary_unsupported">يتطلب Android 13 أو أحدث</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">إخفاء تسمية \'الحصول على Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">إخفاء عروض Premium للموسيقى</string>
   <string name="morphe_music_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">إخفاء زر تبديل الصوت/الفيديو</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">إخفاء زر التنزيل</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">يخفي زر التنزيل في عرض البودكاست</string>
   <string name="morphe_music_hide_explore_shelf_title">إخفاء رف الاستكشاف</string>
+  <string name="morphe_music_hide_filter_bar_title">إخفاء شريط التصفية</string>
   <string name="morphe_music_hide_grid_shelves_title">إخفاء رفوف الشبكة</string>
   <string name="morphe_music_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
   <string name="morphe_music_hide_list_shelves_title">إخفاء رفوف القائمة</string>
@@ -188,7 +197,6 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">إخفاء زر الترجمة</string>
   <string name="morphe_music_hide_new_from_shelf_title">إخفاء رف \'جديد من\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">إخفاء رفوف قوائم التشغيل</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">إخفاء زر تنزيل حلقة البودكاست</string>
   <string name="morphe_music_hide_repeat_button_title">إخفاء زر التكرار</string>
   <string name="morphe_music_hide_shuffle_button_title">إخفاء زر التشغيل العشوائي</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">إخفاء رف \'الاتصال السريع\'</string>
@@ -236,32 +244,26 @@ tظهر المسارات التي تم تنزيلها هنا"</string>
   <string name="morphe_music_crossfade_paused_toast">تم إيقاف التلاشي التدريجي لهذه الجلسة</string>
   <string name="morphe_music_crossfade_resumed_toast">تم استئناف التلاشي التدريجي</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وضع الفيديو غير متاح أثناء تمكين التلاشي التدريجي</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">تم إيقاف التشغيل التدريجي أثناء البث أو انعكاس الصوت. التلاشي التدريجي عبر البث/الانعكاس غير مستقر وقد لا يمكن إصلاحه أبدًا.</string>
-  <string name="morphe_music_crossfade_about_title">لمحة</string>
-  <string name="morphe_music_crossfade_about_summary">كيف يعمل التشغيل التدريجي — ومتى لا يعمل</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">التلاشي المتقاطع متوقف عند تشغيل SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">التلاشي المتقاطع متوقف أثناء الإرسال</string>
   <string name="morphe_music_crossfade_about_how_title">كيف يعمل</string>
-  <string name="morphe_music_crossfade_about_how_summary">"يؤدي التشغيل التدريجي إلى تداخل نهاية إحدى الأغاني مع بداية الأغنية التالية، مع خفض صوت الأولى تدريجيًا أثناء ارتفاع صوت الأخرى خلال المدة والمنحنى اللذين اخترتهما.
+  <string name="morphe_music_crossfade_about_how_summary">"التلاشي المتقاطع يدمج نهاية أغنية مع بداية الأغنية التالية، باستخدام المدة والمنحنى اللذين تحددهما
 
-يعمل على التقديم التلقائي (عندما تنتهي الأغنية من تلقاء نفسها) وعلى عمليات التخطي اليدوي — ولكل منهما مفتاح تشغيل/إيقاف خاص به أعلاه. في التقديم التلقائي، يبدأ المزج قبل ثوانٍ قليلة من نهاية الأغنية.
+يعمل عند الانتقال التلقائي والتخطي اليدوي، ولكل منهما مفتاح تبديل خاص به. عند الانتقال التلقائي، يبدأ المزج قبل ثوانٍ قليلة من نهاية الأغنية"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">القيود</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"تُشغَّل الفيديوهات الموسيقية كصوت فقط أثناء تفعيل التلاشي المتقاطع. اضغط مطولًا على زر الخلط لإيقاف التلاشي المتقاطع مؤقتًا ومشاهدة الفيديو
 
-يتطلب YouTube Music الإصدار 9.x أو أحدث."</string>
-  <string name="morphe_music_crossfade_about_best_title">يعمل بشكل أفضل مع</string>
-  <string name="morphe_music_crossfade_about_best_summary">التشغيل العادي للأغاني من أغنية إلى أخرى، والتقديم التلقائي، والتكرار الواحد (حيث تتلاشى الأغنية في نفسها)، والصوت المحلي — مكبر صوت الهاتف، وسماعات الرأس السلكية، والبلوتوث، أو USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">لا يعمل بشكل صحيح</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"تعمل مقاطع فيديو الموسيقى كصوت فقط أثناء تشغيل الانتقال التدريجي (اضغط مع الاستمرار على زر التشغيل العشوائي للإيقاف إذا كنت تريد الفيديو)
+أي فيديو موسيقي يبدأ تشغيله يبقى في وضع الفيديو حتى الأغنية التالية
 
-قد تتخطى الأغاني الأقصر من مدة التلاشي عملية التلاشي
+لا يتم تطبيق التلاشي المتقاطع على الأغاني الأقصر من مدة التلاشي
 
-قد يعرض شاشة القفل أو الإشعار حالة قديمة لفترة وجيزة أثناء الانتقال"</string>
-  <string name="morphe_music_crossfade_about_known_title">مشاكل معروفة</string>
-  <string name="morphe_music_crossfade_about_known_summary">"قد تظهر مقاطع فيديو الموسيقى المعينة كأول أغنية - أو التي بدأت من خارج قائمة الانتظار الحالية - كفيديو لفترة وجيزة قبل أن يبدأ وضع الصوت فقط
+قد تعرض شاشة القفل أو الإشعار حالة قديمة لفترة وجيزة في منتصف الانتقال
 
-قد يؤدي إيقاف الانتقال التدريجي لمشاهدة مقطع فيديو موسيقي إلى ظهور بعض مقاطع الفيديو باللون الأسود (تلك التي يأتي صوتها من الفيديو نفسه). تجنب ذلك عن طريق إيقاف الانتقال التدريجي قبل اختيار الأغنية"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">لا يعمل على الإطلاق</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"البث أو عكس الصوت (Chromecast، أو عكس الشاشة أو الصوت) - يتوقف الانتقال التدريجي لأنه غير مستقر هناك وقد لا يتم إصلاحه أبدًا.
+إيقاف التلاشي المتقاطع مؤقتًا لمشاهدة فيديو موسيقي قد يجعل بعض الفيديوهات سوداء. إيقاف التلاشي المتقاطع مؤقتًا قبل اختيار الأغنية يتجنب حدوث ذلك"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">غير مدعوم</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"بث الصوت أو عكسه (Chromecast، أو عكس الشاشة أو الصوت)
 
-YouTube Music 8.x - يعمل الانتقال التدريجي فقط على الإصدار 9.x والإصدارات الأحدث"</string>
+تشغيل SABR (عند إيقاف محاكاة بث الفيديو)"</string>
   <string name="morphe_music_crossfade_about_credit_title">حقوق الملكية</string>
   <string name="morphe_music_crossfade_about_credit_summary">ميزة Transitions مقدمة من VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">تعطيل إعادة توجيه الإعجاب الشديد</string>
   <string name="morphe_music_disable_dislike_redirection_summary">يمنع الانتقال إلى المقطع التالي عند الضغط على زر عدم الإعجاب</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">إجراء النقر على أغنية في قائمة التشغيل</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">تشغيل قائمة التشغيل</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">تشغيل الأغنية المحددة فقط</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">إضافة الأغنية المحددة إلى قائمة الانتظار</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">تمت الإضافة إلى قائمة الانتظار</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">إخفاء زر البث</string>
   <string name="morphe_music_hide_history_button_title">إخفاء زر السجل</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_change_start_page_entry_playlists">قوائم التشغيل</string>
   <string name="morphe_change_start_page_entry_search">البحث</string>
   <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">إخفاء شريط التصفية</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">فرض الاتجاه العمودي</string>
   <string name="morphe_music_force_portrait_orientation_summary">يحافظ على التطبيق في الاتجاه العمودي عند تدوير الجهاز</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_hide_navigation_bar_title">إخفاء شريط التنقل</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">إخفاء تسميات أزرار التنقل</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">تكوين تكامل Last.fm و ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">تسجيل خروج. اضغط للتكوين</string>
   <string name="morphe_music_scrobbling_log_out">تسجيل خروج</string>
   <string name="morphe_music_scrobbling_logged_out_toast">تم تسجيل الخروج</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">أدخل رمز مستخدم ListenBrainz الخاص بك لتمكين scrobbling</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">رمز</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">الحصول على رمز</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">تحقق</string>
   <string name="morphe_music_listenbrainz_token_status_empty">الرجاء إدخال رمز</string>
   <string name="morphe_music_listenbrainz_token_status_validating">جاري التحقق...</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_scrobbling_guess_album_title">املأ الألبوم المفقود</string>
   <string name="morphe_music_scrobbling_guess_album_summary">عندما لا تحتوي الموسيقى على ألبوم، ابحث عنه على Last.fm حتى يكتمل scrobble الخاص بك</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">حول scrobbling</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"يقوم التتبع التلقائي بمزامنة استخدامك لـ YouTube Music مع ملف تعريف Last.fm أو ListenBrainz الخاص بك.
 
 لضمان مزامنة التتبع أثناء التشغيل في الخلفية، تأكد من تعيين استخدام تطبيق YouTube Music للبطارية على \"غير مقيد\"."</string>
@@ -457,7 +460,6 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_section_service_title">خدمة الكلمات</string>
   <string name="morphe_music_lyrics_section_overlay_title">التراكب</string>
   <string name="morphe_music_lyrics_section_sync_title">المزامنة</string>
-  <string name="morphe_music_lyrics_section_about_title">لمحة</string>
   <string name="morphe_music_lyrics_source_all_disabled">إخفاء السطر الجاري تشغيله.</string>
   <string name="morphe_music_lyrics_source_reset_title">إعادة تعيين ترتيب المزوّدين؟</string>
   <string name="morphe_music_lyrics_source_reset_message">استعادة الطلب الافتراضي للمزوّدين.</string>
@@ -532,8 +534,11 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_credit_line_regex_summary">إذا تمت تصفية الكلمات بشكل غير صحيح إلى الأسفل، فاضبط هذا أو امسحه. […] اتركه فارغًا لتعطيله.</string>
   <string name="morphe_music_lyrics_text_size_title">حجم النص</string>
   <string name="morphe_music_lyrics_text_size_summary">حجم نص كلمات الأغنية</string>
-  <string name="morphe_music_lyrics_offset_ms_title">إزاحة التوقيت</string>
+  <string name="morphe_music_lyrics_offset_ms_title">إزاحة التوقيت العامة</string>
   <string name="morphe_music_lyrics_offset_ms_summary">تتبع الكلمات المتزامنة التشغيل. إذا انحرفت، فاضبط إزاحة التوقيت. […] استخدم قيمة موجبة إذا كانت الكلمات تسبق الأغنية.</string>
+  <string name="morphe_music_lyrics_sb_matching_title">استخدم مقاطع SponsorBlock لإزاحة كلمات الأغنية</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">المطابقة بدون المقاطع التي يتخطاها SponsorBlock ونقل الكلمات إلى الصوت الصادر. عند إيقاف التشغيل، يتم تجاهل SponsorBlock تمامًا</string>
+  <string name="morphe_music_lyrics_sb_no_video">لا يحتوي هذا المقطع على معرّف فيديو لإرساله</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">المصدر: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">تمت الترجمة بواسطة Google</string>
@@ -554,6 +559,7 @@ YouTube Music 8.x - يعمل الانتقال التدريجي فقط على ا�
   <string name="morphe_music_lyrics_refreshing">جارٍ التحديث</string>
   <string name="morphe_music_lyrics_refreshed">تم التحديث</string>
   <string name="morphe_music_lyrics_about_summary">"تتم مطابقة كلمات الأغاني حسب العنوان والفنان، وقد تؤدي البيانات الوصفية غير المعتادة إلى عدم العثور على شيء أو العثور على الإصدار الخاطئ. استخدم التحديث لتبديل الإصدارات. مقدمو الخدمة المعلمون بـ * يتطلبون رمزًا. لا يتم دائمًا طلب جميع مقدمي الخدمة المفعلين حسب ترتيبك، بل يستجيبون بناءً على سرعتهم."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">فعّل فقط الموفرين الذين تستخدمهم، أو أبقِ الإعداد الافتراضي — فالطلبات المستمرة قد تُثقل كاهل مواقع كلمات الأغاني المجتمعية الصغيرة</string>
   <string name="morphe_music_lyrics_hide_info_title">إخفاء سطر الإسناد</string>
   <string name="morphe_music_lyrics_hide_info_summary">إخفاء سطر الإسناد الظاهر أسفل الكلمات.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">تبديل موضع الترجمة والرومنة</string>

@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importovanie zlyhalo: %s</string>
   <string name="morphe_settings_navigate_up">Nahor</string>
   <string name="morphe_settings_search_hint">Nastavenia vyhľadávania</string>
+  <string name="morphe_settings_screen_info_title">O aplikácii</string>
   <string name="morphe_settings_search_no_results_title">Nenašli sa žiadne výsledky pre \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Skúste iné kľúčové slovo</string>
   <string name="morphe_settings_search_recent_searches">Nedávne vyhľadávania</string>
@@ -105,7 +106,6 @@ Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navšt�
 Nebudete informovaný o žiadnych nečakaných udalostiach."</string>
   <string name="morphe_debug_export_logs_title">Exportovať záznamy ladenia</string>
   <string name="morphe_debug_export_logs_summary">Exportovať záznamy ladenia Morphe</string>
-  <string name="morphe_debug_export_logs_file">Exportovať do súboru</string>
   <string name="morphe_debug_export_logs_success">Záznamy ladenia boli exportované</string>
   <string name="morphe_debug_export_logs_failed">Nepodarilo sa exportovať záznamy ladenia</string>
   <string name="morphe_debug_logs_search_hint">Vyhľadávanie v záznamoch ladenia…</string>
@@ -229,4 +229,7 @@ Ak nezmeníte optimalizácie batérie môže sa stať, že:
 Ak sa chcete vyvarovať zbytočným problémom, potom toto radšej &lt;b&gt;odinštalujte&lt;/b&gt; a zaplátajte odporúčanú verziu aplikácie ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcem experimentálnu verziu</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcem stabilnú verziu</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Protokol o páde uložený do používateľských dokumentov: %s</string>
+  <string name="morphe_crash_log_saved">Protokol o páde uložený: %s</string>
 </resources>

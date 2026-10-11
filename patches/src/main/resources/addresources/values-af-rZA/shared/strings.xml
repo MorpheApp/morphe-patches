@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Invoer misluk: %s</string>
   <string name="morphe_settings_navigate_up">Navigeer op</string>
   <string name="morphe_settings_search_hint">Soek instellings</string>
+  <string name="morphe_settings_screen_info_title">Oor</string>
   <string name="morphe_settings_search_no_results_title">Geen resultate gevind vir \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Probeer \'n ander sleutelwoord</string>
   <string name="morphe_settings_search_recent_searches">Onlangse soektogte</string>
@@ -105,7 +106,6 @@ Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.softw
 Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie."</string>
   <string name="morphe_debug_export_logs_title">Voer ontfouting protokolle uit</string>
   <string name="morphe_debug_export_logs_summary">Voer Morphe ontfouting protokolle uit</string>
-  <string name="morphe_debug_export_logs_file">Uitvoer na vyl</string>
   <string name="morphe_debug_export_logs_success">Ontfouting logboeke is suksesvol uitgevoer</string>
   <string name="morphe_debug_export_logs_failed">Ontfouting logboeke kon nie uitgevoer word nie</string>
   <string name="morphe_debug_logs_search_hint">Soek ontfouting logboeke</string>
@@ -229,4 +229,7 @@ As battery optimerings nie verander word nie dan mag jy ervaar:
 As jy die mees probleemvrye ervaring wil hê, dan &lt;b&gt;deïnstalleer&lt;/b&gt; dit en herverander die aanbevole program weergawe van ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ek wil eksperimenteel hê</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ek wil stabiel hê</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Crashlog gestoor na gebruikersdokumente: %s</string>
+  <string name="morphe_crash_log_saved">Crashlog gestoor: %s</string>
 </resources>

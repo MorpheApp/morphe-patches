@@ -11,12 +11,10 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.DRAWABLE_CHECKMARK;
-import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.DRAWABLE_CHECKMARK_BOLD;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON_PLACEHOLDER;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_ITEM_TEXT;
-import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED;
+import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.createCheckedListItem;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -24,7 +22,6 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -363,11 +360,7 @@ public class VideoQualityDialogButton {
             ViewHolder viewHolder;
 
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(
-                        LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED,
-                        parent,
-                        false
-                );
+                convertView = createCheckedListItem(getContext());
                 viewHolder = new ViewHolder();
                 viewHolder.checkIcon = convertView.findViewById(ID_MORPHE_CHECK_ICON);
                 viewHolder.placeholder = convertView.findViewById(ID_MORPHE_CHECK_ICON_PLACEHOLDER);
@@ -384,9 +377,6 @@ public class VideoQualityDialogButton {
             final boolean isSelected = position == selectedPosition;
             viewHolder.checkIcon.setVisibility(isSelected ? View.VISIBLE : View.GONE);
             viewHolder.placeholder.setVisibility(isSelected ? View.GONE : View.INVISIBLE);
-            viewHolder.checkIcon.setImageResource(Utils.appIsUsingBoldIcons()
-                    ? DRAWABLE_CHECKMARK_BOLD
-                    : DRAWABLE_CHECKMARK);
 
             return convertView;
         }

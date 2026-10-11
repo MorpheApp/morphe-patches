@@ -225,8 +225,7 @@ ID ผู้ใช้ของคุณเหมือนกับรหัส�
   <string name="morphe_sb_stats_saved_second_format">%s วินาที</string>
   <string name="morphe_sb_color_opacity_label">ความทึบ:</string>
   <string name="morphe_sb_color_dot_label">สี:</string>
-  <string name="morphe_sb_about_title">เกี่ยวกับ</string>
-  <string name="morphe_sb_about_api_summary">"ข้อมูลนี้จัดทำโดย SponsorBlock API
+  <string name="morphe_sb_about_api_summary">"SponsorBlock เป็นฐานข้อมูลที่มาจากชุมชนของช่วงวิดีโอ เช่น โฆษณา ช่วงเปิด ช่วงปิด และการแจ้งเตือนให้สมัครสมาชิก ช่วงต่างๆ ถูกส่งและโหวตโดยชุมชน และฐานข้อมูลเปิดให้ดาวน์โหลดฟรี
 
-แตะที่นี่เพื่อเปิด Sponsor.ajay.app และดูการดาวน์โหลดสำหรับแพลตฟอร์มอื่น ๆ"</string>
+ID ของวิดีโอที่คุณดูจะถูกส่งไปยัง API ของ SponsorBlock เพื่อรับช่วงต่างๆ"</string>
 </resources>

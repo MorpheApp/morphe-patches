@@ -69,10 +69,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Најавувањето во Android VR може да реши проблеми со репродукцијата за некои корисници
 
 За да се најавите, притиснете продолжете подолу"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Продолжи</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Одјави се</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Инструкции</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Код за активирање: %s
 
 1. Допрете „Отвори веб-страница“ подолу за да ја отворите веб-страницата „Поврзи уред“.
@@ -80,7 +79,6 @@ Second \"item\" text"</string>
 3. Најавете се на Google ако се побара. Ако имате повеќе сметки, изберете ја оваа YouTube сметка.
 4. Допрете „Дозволи пристап до YouTube VR“.
 5. Вратете се во оваа апликација откако ќе стигнете до пораката „Уредот е поврзан“."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Отвори веб-страница</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Неуспешно да се издаде код за активирање</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Неуспешно да се издаде токен за одобрување</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Успешно најавен</string>

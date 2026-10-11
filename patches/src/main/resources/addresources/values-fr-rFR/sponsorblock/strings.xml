@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_sb_enabled_title">Activer SponsorBlock</string>
-  <string name="morphe_sb_enabled_summary">SponsorBlock est un service d\'entraide permettant de passer des parties gênantes des vidéos YouTube</string>
+  <string name="morphe_sb_enabled_summary">SponsorBlock est un système collaboratif qui permet de passer automatiquement les passages gênants des vidéos YouTube</string>
   <string name="morphe_sb_appearance_category_title">Apparence</string>
   <string name="morphe_sb_voting_button_title">Afficher un bouton de vote</string>
   <string name="morphe_sb_voting_button_summary">Ajoute un bouton pour voter positivement ou négativement sur les segments</string>
@@ -228,8 +228,7 @@ Si vous ne soumettez pas de point clé, appuyez sur 'Annuler' et marquez le seco
   <string name="morphe_sb_stats_saved_second_format">%s secondes</string>
   <string name="morphe_sb_color_opacity_label">Opacité :</string>
   <string name="morphe_sb_color_dot_label">Couleur :</string>
-  <string name="morphe_sb_about_title">À propos</string>
-  <string name="morphe_sb_about_api_summary">"Les données sont fournies par l'API SponsorBlock.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock est une base de données collaborative de segments vidéo tels que les sponsors, les intros, les outros et les rappels invitant à s'abonner. Les segments sont soumis et votés par la communauté, et la base de données est ouverte et téléchargeable gratuitement
 
-Appuyez ici pour ouvrir Sponsor.ajay.app et voir les téléchargements disponibles pour les autres plateformes"</string>
+L'identifiant de la vidéo que vous regardez est envoyé à l'API de SponsorBlock afin d'obtenir ses segments"</string>
 </resources>

@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Reproduciraj audio pjesme s albuma</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Reproduciraj samo audio verziju pjesama s albuma umjesto glazbenog videa. Zahtijeva \'Spoof video streams\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Omogući audio/video prebacivanje</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Pokušaj prebaciti inačicu audio zapisa i službeni glazbeni spot</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Preuzmite glazbene videozapise, podcastove ili pjesme pomoću aplikacija za preuzimanje trećih strana</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Ovdje se prikazuju preuzete pjesme"</string>
   <string name="morphe_settings_music_screen_4_player_title">Player</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Tekst pjesme</string>
   <string name="morphe_settings_music_screen_9_misc_title">Razno</string>
+  <string name="morphe_music_app_language_title">Jezik aplikacije YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Jezik sustava</string>
+  <string name="morphe_music_app_language_summary_unsupported">Zahtijeva Android 13 ili noviji</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Sakrij oznaku \'Nabavi Music Premium\'</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Sakrij promocije usluge Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Sakrij video oglase</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Sakrij preklopnik Audio / Video</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Sakrij gumb za preuzimanje</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Sakriva gumb za preuzimanje u podcast emisiji</string>
   <string name="morphe_music_hide_explore_shelf_title">Sakrij policu Istraživanje</string>
+  <string name="morphe_music_hide_filter_bar_title">Sakrij traku filtra</string>
   <string name="morphe_music_hide_grid_shelves_title">Sakrij mrežne police</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Sakrij vodoravne kartice</string>
   <string name="morphe_music_hide_list_shelves_title">Sakrij popis polica</string>
@@ -188,7 +197,6 @@ Ovdje se prikazuju preuzete pjesme"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Sakrij tipku za prijevod</string>
   <string name="morphe_music_hide_new_from_shelf_title">Sakrij policu \'Novo od\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Sakrij police popisa za reprodukciju</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Sakrij gumb za preuzimanje epizode podcasta</string>
   <string name="morphe_music_hide_repeat_button_title">Sakrij tipku za ponavljanje</string>
   <string name="morphe_music_hide_shuffle_button_title">Sakrij tipku za miješanje</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Sakrij policu \'Brzi izbor\'</string>
@@ -236,32 +244,26 @@ Ovdje se prikazuju preuzete pjesme"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade je pauziran za ovu sesiju</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade nastavljen</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mod nije dostupan dok je omogućeno preklapanje</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade je pauziran tijekom emitiranja ili zrcaljenja zvuka. Crossfade putem emitiranja/zrcaljenja je nestabilan i možda se nikad neće popraviti</string>
-  <string name="morphe_music_crossfade_about_title">O aplikaciji</string>
-  <string name="morphe_music_crossfade_about_summary">Kako crossfade radi — a kada ne radi</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade je isključen kod SABR reprodukcije</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade je isključen tijekom emitiranja</string>
   <string name="morphe_music_crossfade_about_how_title">Kako radi</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Crossfade preklapa kraj jedne pjesme s početkom sljedeće, pri čemu se jedna stišava dok se druga pojačava prema odabranom trajanju i krivulji.
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade preklapa kraj jedne pjesme s početkom sljedeće, koristeći vaše trajanje i krivulju.
 
-Radi pri automatskom prijelazu (kada pjesma završi sama) i kod ručnog preskakanja — svako ima svoju skretnicu iznad. Kod automatskog prijelaza miješanje počinje nekoliko sekundi prije nego pjesma završi.
+Radi kod automatskog prelaska i ručnog preskakanja, a svaki ima vlastiti prekidač. Kod automatskog prelaska, spajanje počinje nekoliko sekundi prije kraja pjesme"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Ograničenja</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Glazbeni videozapisi reproduciraju se samo kao zvuk dok je crossfade uključen. Dugim pritiskom na gumb za nasumičnu reprodukciju pauzirajte crossfade i pogledajte videozapis
 
-Zahtijeva YouTube Music 9.x ili noviju inačicu."</string>
-  <string name="morphe_music_crossfade_about_best_title">Najbolje radi s</string>
-  <string name="morphe_music_crossfade_about_best_summary">Normalno reproduciranje pjesme i automatski prijelaz, ponavljanje jedne (pjesma se preslikava na samu sebe) i lokalni zvuk — zvučnik telefona, žičane slušalice, Bluetooth ili USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Ne radi baš kako treba</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Glazbeni videozapisi reproduciraju se samo kao zvuk dok je crossfade uključen (dugo pritisnite nasumično reproduciranje za pauziranje ako želite videozapis)
+Glazbeni videozapis koji započne reprodukciju ostaje u video načinu do sljedeće pjesme
 
-Pjesme kraće od trajanja fadea mogu preskočiti fade
+Pjesme kraće od trajanja stapanja ne koriste crossfade
 
-Zaključani zaslon ili obavijest mogu nakratko prikazati zastarjelo stanje usred prijelaza"</string>
-  <string name="morphe_music_crossfade_about_known_title">Poznati problemi</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Glazbeni videozapis postavljen kao prva pjesma — ili onaj pokrenut izvan trenutnog reda čekanja — može se nakratko prikazati kao videozapis prije nego što se uključi način samo sa zvukom
+Zaključani zaslon ili obavijest mogu nakratko prikazati zastarjelo stanje usred prijelaza
 
-Ako pauzirate crossfade za gledanje glazbenog videozapisa, neki videozapisi mogu ostati crni (oni čiji zvuk dolazi iz samog videozapisa). Pauziranje crossfadea prije odabira pjesme to izbjegava"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Uopće ne radi</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Emitiranje ili zrcaljenje zvuka (Chromecast, zrcaljenje zaslona ili zvuka) — crossfade se pauzira jer je tamo nestabilan i možda se nikad neće popraviti.
+Pauziranje crossfadea radi gledanja glazbenog videozapisa može ostaviti neke videozapise crnima. Pauziranje crossfadea prije odabira pjesme to izbjegava"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Nije podržano</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Emitiranje ili zrcaljenje zvuka (Chromecast, zrcaljenje zaslona ili zvuka)
 
-YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
+SABR reprodukcija (imitiranje video streamova je isključeno)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Zasluge</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade značajka od VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Onemogući preusmjeravanje kod ne sviđa mi se</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Sprečava preskakanje na sljedeću pjesmu kada se pritisne tipka Ne sviđa mi se</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Radnja dodira na pjesmu s popisa za reprodukciju</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Reproduciraj popis za reprodukciju</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Reproduciraj samo odabranu pjesmu</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Dodaj odabranu pjesmu u red čekanja</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Dodano u red</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Sakrij tipku za emitiranje</string>
   <string name="morphe_music_hide_history_button_title">Sakrij tipku za povijest</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <string name="morphe_change_start_page_entry_playlists">Popisi za reprodukciju</string>
   <string name="morphe_change_start_page_entry_search">Traži</string>
   <string name="morphe_change_start_page_entry_subscriptions">Pretplate</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Sakrij traku filtra</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Prisili portretnu orijentaciju</string>
   <string name="morphe_music_force_portrait_orientation_summary">Zadržava aplikaciju u portretnoj orijentaciji kada se uređaj rotira</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <string name="morphe_music_hide_navigation_bar_title">Sakrij traku navigacije</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sakrij oznake navigacijskih tipki</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Konfigurirajte integraciju usluga Last.fm i ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Niste prijavljeni. Dodirnite za konfiguraciju</string>
   <string name="morphe_music_scrobbling_log_out">Odjava</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Odjavljeno</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Unesite svoj korisnički token za ListenBrainz da biste omogućili scrobbling</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Nabavi token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Potvrdi</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Unesite token</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Provjera u tijeku…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x — crossfade radi samo na 9.x i novijim inačicama"</string>
   <string name="morphe_music_scrobbling_guess_album_title">Ispuni nedostajući album</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Kada glazba ne sadrži album, potraži ga na Last.fm kako bi tvoj scrobble bio potpun.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">O scrobblingu</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling automatski sinkronizira vaše korištenje usluge YouTube Music s vašim profilom na Last.fm ili ListenBrainzu
 
 Kako biste osigurali sinkronizaciju scrobblinga tijekom reprodukcije u pozadini, provjerite da je upotreba baterije aplikacije YouTube Music postavljena na \"Neograničeno\""</string>
@@ -457,7 +460,6 @@ Kako biste osigurali sinkronizaciju scrobblinga tijekom reprodukcije u pozadini,
   <string name="morphe_music_lyrics_section_service_title">Usluga stihova</string>
   <string name="morphe_music_lyrics_section_overlay_title">Pregač</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinkronizacija</string>
-  <string name="morphe_music_lyrics_section_about_title">O aplikaciji</string>
   <string name="morphe_music_lyrics_source_all_disabled">Svi pružatelji usluga onemogućeni — ugrađeni tekstovi pjesama i tekstovi ugrađeni u datoteku</string>
   <string name="morphe_music_lyrics_source_reset_title">Ponovno postaviti redoslijed pružatelja?</string>
   <string name="morphe_music_lyrics_source_reset_message">Vrati pružatelje na zadani redoslijed prioriteta</string>
@@ -547,8 +549,11 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_credit_line_regex_summary">Ako su tekstovi pjesama pogrešno filtrirani na dno, prilagodi ili obriši ovo. Oznake odvojene zarezom: retci koji sadrže oznaku nakon koje slijedi dvotočka prikazuju se kao podaci o zaslugama na dnu. Ostavi prazno za onemogućavanje.</string>
   <string name="morphe_music_lyrics_text_size_title">Veličina teksta</string>
   <string name="morphe_music_lyrics_text_size_summary">Veličina teksta stihova</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Vremenski pomak</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Globalni vremenski pomak</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Sinkronizirani tekstovi pjesama prate reprodukciju. Ako odstupe, prilagodi vremenski pomak. Pomakni sinkronizirane tekstove pjesama unaprijed ili unatrag. Koristi pozitivnu vrijednost ako tekstovi pjesama idu ispred pjesme.</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Koristi SponsorBlock segmente za pomak stihova</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Uskladi bez segmenata koje SponsorBlock preskače i pomakni stihove na objavljeni audio. Isključeno u potpunosti zanemaruje SponsorBlock</string>
+  <string name="morphe_music_lyrics_sb_no_video">Ova pjesma nema id videozapisa za slanje</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Izvor: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Preveo Google</string>
@@ -569,6 +574,7 @@ Potrebni kolačići: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_refreshing">Osvježavanje…</string>
   <string name="morphe_music_lyrics_refreshed">Osvježeno</string>
   <string name="morphe_music_lyrics_about_summary">"Tekstovi se usklađuju prema naslovu i izvođaču, a neuobičajeni metapodaci možda neće pronaći ništa ili pogrešnu verziju. Koristite osvježavanje za promjenu verzija. Davatelji označeni sa * zahtijevaju token. Svi omogućeni davatelji nisu uvijek pozvani vašim redoslijedom, već odgovaraju prema svojoj brzini."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Omogući samo pružatelje koje koristiš ili zadrži zadane postavke — stalni zahtjevi mogu preopteretiti male stranice zajednice sa stihovima</string>
   <string name="morphe_music_lyrics_hide_info_title">Sakrij redak sa zaslugama</string>
   <string name="morphe_music_lyrics_hide_info_summary">Sakrij redak sa zaslugama prikazan ispod tekstova pjesama.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamijeni prijevod i romanizaciju</string>

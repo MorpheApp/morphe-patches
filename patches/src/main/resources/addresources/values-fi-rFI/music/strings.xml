@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Soita albumin ääniraidat</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Soita albumin kappaleiden pelkkä ääniversio musiikkivideon sijaan. Vaatii \'Videosuoratoistojen väärentämisen\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Ota ääni-/videovaihto käyttöön</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Yritä vaihtaa ääniraidan versiota ja virallista musiikkivideota</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Lataa musiikkivideoita, podcasteja tai kappaleita kolmannen osapuolen lataussovelluksilla</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Ladatut kappaleet näkyvät tässä"</string>
   <string name="morphe_settings_music_screen_4_player_title">Soitin</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Lyriikat</string>
   <string name="morphe_settings_music_screen_9_misc_title">Sekalaiset</string>
+  <string name="morphe_music_app_language_title">YouTube Music -kieli</string>
+  <string name="morphe_music_app_language_summary_default">Järjestelmän kieli</string>
+  <string name="morphe_music_app_language_summary_unsupported">Vaatii Android 13:n tai uudemman</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Piilota \"Hanki Music Premium\" -tunniste</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Piilota Music Premium -tarjoukset</string>
   <string name="morphe_music_hide_video_ads_title">Piilota videomainokset</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Piilota äänen/videon vaihtokytkin</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Piilota latauspainike</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Piilottaa latauspainikkeen podcast-ohjelmassa</string>
   <string name="morphe_music_hide_explore_shelf_title">Piilota Tutustu-hylly</string>
+  <string name="morphe_music_hide_filter_bar_title">Piilota suodatinpalkki</string>
   <string name="morphe_music_hide_grid_shelves_title">Piilota ruudukkohyllyt</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Piilota vaakasuuntaiset hyllyt</string>
   <string name="morphe_music_hide_list_shelves_title">Piilota luettelohyllyt</string>
@@ -188,7 +197,6 @@ Ladatut kappaleet näkyvät tässä"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Piilota Käännä-painike</string>
   <string name="morphe_music_hide_new_from_shelf_title">Piilota \"Uutta\"-hylly</string>
   <string name="morphe_music_hide_playlist_shelves_title">Piilota soittolistahyllyt</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Piilota podcast-jakson latauspainike</string>
   <string name="morphe_music_hide_repeat_button_title">Piilota toistopainike</string>
   <string name="morphe_music_hide_shuffle_button_title">Piilota sekoituspainike</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Piilota \"Pikavalinta\"-hylly</string>
@@ -236,32 +244,26 @@ Ladatut kappaleet näkyvät tässä"</string>
   <string name="morphe_music_crossfade_paused_toast">Istunnon crossfade-toiminto on tauolla</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-toiminto jatkettu</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videon toimitila ei ole käytettävissä, kun crossfade on käytössä</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Äänenvoimakkuuden säätö on keskeytetty lähetyksen tai peilauksen aikana. Äänenvoimakkuuden säätö lähetyksen/peilauksen aikana on epävakaa, eikä sitä ehkä voida korjata.</string>
-  <string name="morphe_music_crossfade_about_title">Tietoja</string>
-  <string name="morphe_music_crossfade_about_summary">Miten äänenvoimakkuuden säätö toimii – ja milloin se ei toimi</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade on pois päältä SABR-toiston aikana</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade on pois päältä heiton aikana</string>
   <string name="morphe_music_crossfade_about_how_title">Miten se toimii</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Äänenvoimakkuuden säätö yhdistää yhden kappaleen lopun seuraavan kappaleen alkuun, vaimentamalla toisen samalla kun toinen vahvistuu valitsemasi keston ja käyrän mukaan.
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade limittyy yhden kappaleen lopun seuraavan alkuun käyttäen kestoasi ja käyrääsi
 
-Se toimii automaattisen toiston (kun kappale päättyy itsestään) ja manuaalisten ohitusten kanssa – molemmille on omat kytkimet yllä. Automaattisessa toistossa yhdistäminen alkaa muutama sekunti ennen kappaleen loppua.
+Se toimii automaattisessa jatkossa ja manuaalisessa ohituksessa, kummallakin on oma kytkin. Automaattisessa jatkossa sekoitus alkaa muutaman sekunnin ennen kappaleen loppua"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Rajoitukset</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Kun crossfade on päällä, musiikkivideot toistetaan vain äänenä. Pidä satunnaistoistoa painettuna keskeyttääksesi crossfaden ja katsoaksesi videon.
 
-Vaatii YouTube Music -version 9.x tai uudemman."</string>
-  <string name="morphe_music_crossfade_about_best_title">Toimii parhaiten</string>
-  <string name="morphe_music_crossfade_about_best_summary">Normaali kappaleesta toiseen -toisto ja automaattinen toisto, toista yksi (kappale yhdistyy itseensä) sekä paikallinen ääni – puhelimen kaiutin, johdolliset kuulokkeet, Bluetooth tai USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Ei toimi aivan oikein</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Musiikkivideot toistetaan ääni-vain-tilassa, kun crossfade on päällä (pidä shuffle-painiketta pohjassa pysäyttääksesi videon, jos haluat nähdä sen).
+Musiikkivideo, joka alkaa toistua, pysyy videotilassa seuraavaan kappaleeseen asti.
 
-Lyhyemmät kappaleet kuin haalistusaikasi voivat ohittaa haalistuksen.
+Kappaleita, jotka ovat lyhyempiä kuin häivytyksen kesto, ei ristihäivytetä.
 
-Lukitusnäyttö tai ilmoitus voi hetkellisesti näyttää vanhentuneen tilan siirtymän aikana."</string>
-  <string name="morphe_music_crossfade_about_known_title">Tunnetut ongelmat</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Musiikkivideo, joka on asetettu ensimmäiseksi kappaleeksi – tai joka on aloitettu jonon ulkopuolelta – saattaa hetkellisesti näkyä videon muodossa ennen kuin ääni-vain-tila aktivoituu.
+Lukitusnäyttö tai ilmoitus voi näyttää hetkellisesti vanhentuneen tilan kesken siirtymän.
 
-Crossfaden pysäyttäminen musiikkivideon katselua varten voi jättää osan videoista mustiksi (ne, joiden ääni tulee itse videosta). Vältä tätä pysäyttämällä crossfade ennen kappaleen valintaa."</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Ei toimi ollenkaan</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Äänen lähettäminen tai peilaaminen (Chromecast, näytön tai äänen peilaaminen) – crossfade pysähtyy, koska se on epävakaa ja sen korjaaminen ei välttämättä onnistu.
+Crossfaden keskeyttäminen musiikkivideon katsomiseksi voi jättää jotkin videot mustiksi. Crossfaden keskeyttäminen ennen kappaleen valitsemista välttää tämän"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Ei tuettu</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Äänen heitto tai peilaus (Chromecast, näytön peilaus tai äänen peilaus)
 
-YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</string>
+SABR-toisto (videovirtojen huijaus pois päältä)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Lähde</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-ominaisuuden on kehittänyt VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Poista epätykkäysten uudelleenohjaus</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Estää kappaleen ohittamisen, kun epätykkäyspainiketta painetaan</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Soittolistan kappaleen napautustoiminto</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Toista soittolista</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Toista vain valittu kappale</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Lisää valittu kappale jonoon</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Lisätty jonoon</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Piilota Cast-painike</string>
   <string name="morphe_music_hide_history_button_title">Piilota historia-painike</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <string name="morphe_change_start_page_entry_playlists">Soittolistat</string>
   <string name="morphe_change_start_page_entry_search">Haku</string>
   <string name="morphe_change_start_page_entry_subscriptions">Tilaukset</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Piilota suodatinpalkki</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Pakota pystysuunta</string>
   <string name="morphe_music_force_portrait_orientation_summary">Pitää sovelluksen pystyasennossa, kun laitetta käännetään</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <string name="morphe_music_hide_navigation_bar_title">Piilota navigointipalkki</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Määritä Last.fm- ja ListenBrainz-integraatio</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Kirjaudu ulos. Napauta määrittääksesi</string>
   <string name="morphe_music_scrobbling_log_out">Kirjaudu ulos</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Kirjauduttu ulos</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Syötä ListenBrainz-käyttäjätunnuksesi ottaaksesi toiston käyttöön</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Tunnus</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Hae tunnus</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Vahvista</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Anna tunnus</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Validointia…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</strin
   <string name="morphe_music_scrobbling_guess_album_title">Täytä puuttuva albumi</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Kun musiikki ei sisällä albumia, hae se Last.fm:stä, jotta scrobble on täydellinen.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Tietoa toistamisesta</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling synkronoi YouTube Music -käyttösi automaattisesti Last.fm- tai ListenBrainz-profiiliisi.
 
 Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, että YouTube Musiikin sovelluksen akun käyttö on asetettu arvoon \"Rajoittamaton\"."</string>
@@ -457,7 +460,6 @@ Varmistaaksesi, että scrobbling synkronoidaan taustatoiston aikana, varmista, e
   <string name="morphe_music_lyrics_section_service_title">Sanoituspalvelu</string>
   <string name="morphe_music_lyrics_section_overlay_title">Päällekkäisnäyttö</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronointi.</string>
-  <string name="morphe_music_lyrics_section_about_title">Tietoja</string>
   <string name="morphe_music_lyrics_source_all_disabled">Kaikki palveluntarjoajat poistettu käytöstä — sisäänrakennetut ja upotetut sanoitukset.</string>
   <string name="morphe_music_lyrics_source_reset_title">Palautetaanko palveluntarjoajien järjestys?</string>
   <string name="morphe_music_lyrics_source_reset_message">Palauta palveluntarjoajat oletusarvoiseen prioriteettijärjestykseen.</string>
@@ -542,8 +544,11 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_credit_line_regex_summary">Jos lyriikat suodatetaan virheellisesti alareunaan, säädä tai tyhjennä tämä. Pilkulla erotetut merkinnät: rivit, jotka sisältävät merkinnän ja sen jälkeen kaksoispisteen, näytetään tekijätietoina alareunassa. Jätä tyhjäksi poistaaksesi käytöstä</string>
   <string name="morphe_music_lyrics_text_size_title">Tekstin koko</string>
   <string name="morphe_music_lyrics_text_size_summary">Sanoitusten tekstin koko</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Aikasiirtymä</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Globaali ajoitussiirtymä</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Synkronoidut lyriikat seuraavat toistoa. Jos ne erkanevat, säädä ajoituksen siirtymää. Siirrä synkronoituja lyriikoita eteen- tai taaksepäin. Käytä positiivista arvoa, jos lyriikat ovat kappaletta edellä</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Käytä SponsorBlock-segmenttejä sanoitusten siirtymään</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Täsmäytä ilman SponsorBlockin ohittamia segmenttejä ja siirrä sanoitukset julkaistulle ääniraidalle. Pois käytöstä -asetus jättää SponsorBlockin kokonaan huomiotta</string>
+  <string name="morphe_music_lyrics_sb_no_video">Tällä kappaleella ei ole videotunnusta lähetettäväksi</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Lähde: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Kääntänyt Google</string>
@@ -564,6 +569,7 @@ Vaaditut evästeet: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPIS
   <string name="morphe_music_lyrics_refreshing">Päivitetään</string>
   <string name="morphe_music_lyrics_refreshed">Päivitetty</string>
   <string name="morphe_music_lyrics_about_summary">"Sanoitukset yhdistetään kappaleen nimen ja esittäjän perusteella. Epätavalliset metatiedot voivat jättää tulokset löytymättä tai tuottaa väärän version. Käytä päivitystä vaihtaaksesi versiota. Tähdellä (*) merkityt palveluntarjoajat vaativat tunnuksen. Kaikkia käytössä olevia palveluntarjoajia ei aina pyydetä haluamassasi järjestyksessä, vaan ne vastaavat nopeutensa mukaan."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Ota käyttöön vain käyttämäsi palveluntarjoajat, tai pidä oletusasetus — jatkuvat pyynnöt voivat ylikuormittaa pieniä yhteisöllisiä sanoitussivustoja</string>
   <string name="morphe_music_lyrics_hide_info_title">Piilota tekijätietorivi</string>
   <string name="morphe_music_lyrics_hide_info_summary">Piilota lyriikoiden alla näkyvä tekijätietorivi</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Vaihda käännöksen ja romanisoinnin paikkaa</string>

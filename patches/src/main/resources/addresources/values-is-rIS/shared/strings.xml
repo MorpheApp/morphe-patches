@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Innflutning mistókst: %s</string>
   <string name="morphe_settings_navigate_up">Farðu upp</string>
   <string name="morphe_settings_search_hint">Leita í stillingum</string>
+  <string name="morphe_settings_screen_info_title">Um</string>
   <string name="morphe_settings_search_no_results_title">Engin niðurstöður fundust fyrir \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Reyndu annan leitarorð</string>
   <string name="morphe_settings_search_recent_searches">Nýlegar leitar</string>
@@ -105,7 +106,6 @@ Til að þýða ný lönd eða bæta núverandi þýðingar skaltu heimsækja mo
 Þú verður ekki varað við óvæntum atburðum."</string>
   <string name="morphe_debug_export_logs_title">Útflutningur debug log</string>
   <string name="morphe_debug_export_logs_summary">Útflutningur Morphe debug log</string>
-  <string name="morphe_debug_export_logs_file">Útflutningur úr skrá</string>
   <string name="morphe_debug_export_logs_success">Debug logs successfully exported</string>
   <string name="morphe_debug_export_logs_failed">Útflutningur debug log mistókst</string>
   <string name="morphe_debug_logs_search_hint">Leita í debug skráum…</string>
@@ -229,4 +229,7 @@ Ef rafhlöðu bjargráðningar eru ekki breytt þá gætir þú upplifað:
 Ef þú vilt mest áreynslulausa reynslu, smelltu á &lt;b&gt;afnemma&lt;/b&gt; þetta og tákna mæltu app útgáfu af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ég vil tilrauna</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ég vil stabilt</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Hrunannáll vistaður í skjöl notanda: %s</string>
+  <string name="morphe_crash_log_saved">Hrunannáll vistaður: %s</string>
 </resources>

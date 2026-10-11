@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">アルバムを音声のみモードで再生</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">アルバムを再生するときに、動画モードに切り替わることなくすべての曲を音声のみモードで再生します。[動画ストリームを偽装] をオンにする必要があります</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">音声/動画切り替えを有効にする</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">音声トラックのバージョンと公式ミュージックビデオの切り替えを試みます</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">サードパーティ製のダウンロード アプリで、ミュージック ビデオ、ポッドキャスト、楽曲をダウンロードします</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_player_title">プレーヤー</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">歌詞</string>
   <string name="morphe_settings_music_screen_9_misc_title">その他</string>
+  <string name="morphe_music_app_language_title">YouTube Music の言語</string>
+  <string name="morphe_music_app_language_summary_default">システム言語</string>
+  <string name="morphe_music_app_language_summary_unsupported">Android 13 以降が必要です</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">「Music Premium に登録」ラベルを非表示</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Music Premium の広告を非表示</string>
   <string name="morphe_music_hide_video_ads_title">動画広告を非表示</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">音声と動画の切り替えスイッチを非表示</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">ダウンロード ボタンを非表示</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">ポッドキャスト内の各エピソードに表示される、ダウンロード アイコンのボタンを非表示にします</string>
   <string name="morphe_music_hide_explore_shelf_title">探索欄を非表示</string>
+  <string name="morphe_music_hide_filter_bar_title">フィルタバーを非表示</string>
   <string name="morphe_music_hide_grid_shelves_title">グリッド表示欄を非表示</string>
   <string name="morphe_music_hide_horizontal_shelves_title">横スクロール欄を非表示</string>
   <string name="morphe_music_hide_list_shelves_title">リスト表示欄を非表示</string>
@@ -188,7 +197,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">翻訳ボタンを非表示</string>
   <string name="morphe_music_hide_new_from_shelf_title">「\"アーティスト名\" の新作」欄を非表示</string>
   <string name="morphe_music_hide_playlist_shelves_title">プレイリスト欄を非表示</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">ポッドキャストのエピソード ダウンロード ボタンを非表示</string>
   <string name="morphe_music_hide_repeat_button_title">リピートボタンを非表示</string>
   <string name="morphe_music_hide_shuffle_button_title">シャッフル ボタンを非表示</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">「クイック アクセス」欄を非表示</string>
@@ -236,32 +244,26 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">このセッションでのクロスフェードを一時停止します</string>
   <string name="morphe_music_crossfade_resumed_toast">クロスフェードを再開しました</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">クロスフェードが有効になっている間は、動画モードは利用できません</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">キャストまたはミラーリング中は、動作が不安定なためクロスフェードを一時停止します。この問題は将来的にも解決できない可能があります</string>
-  <string name="morphe_music_crossfade_about_title">クロスフェードについて</string>
-  <string name="morphe_music_crossfade_about_summary">クロスフェードの仕組みと利用できない場合について</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">SABR再生中はクロスフェードがオフになります</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">キャスト中はクロスフェードがオフになります</string>
   <string name="morphe_music_crossfade_about_how_title">仕組み</string>
-  <string name="morphe_music_crossfade_about_how_summary">"クロスフェードは、ある曲の終わりと次の曲の始まりを重ね合わせ、選択した時間とカーブで一方の曲の音量を下げながら、もう一方の曲の音量を上げていきます。
+  <string name="morphe_music_crossfade_about_how_summary">"クロスフェードは、指定した時間とカーブを使用して、一曲の終わりと次の曲の始まりを重ねます。
 
-自動スキップ（曲が自動的に終了した場合）と手動スキップの両方で動作し、それぞれに上記で個別の切り替えがあります。自動スキップでは、ブレンドは曲の終了数秒前に開始されます。
+自動再生と手動スキップで動作し、それぞれに独自のトグルがあります。自動再生では、曲が終了する数秒前にブレンドが始まります"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">制限事項</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"クロスフェードがオンの間、ミュージックビデオは音声のみで再生されます。シャッフルを長押しするとクロスフェードが一時停止され、ビデオを視聴できます。
 
-YouTube Music 9.x 以降が必要です。"</string>
-  <string name="morphe_music_crossfade_about_best_title">最適な動作環境</string>
-  <string name="morphe_music_crossfade_about_best_summary">通常の曲から曲への再生、自動スキップ、リピート再生（曲が自分自身にクロスフェード）、およびローカルオーディオ（電話スピーカー、有線ヘッドホン、Bluetooth、またはUSB）で最適に動作します。</string>
-  <string name="morphe_music_crossfade_about_quirks_title">完全には機能しません</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"クロスフェードがオンのとき、音楽ビデオは音声のみで再生されます（ビデオを一時停止したい場合は、シャッフルを長押ししてください）。
+再生を開始したミュージックビデオは、次の曲までビデオモードのままになります。
 
-フェード時間より短い曲は、フェードをスキップする場合があります。
+フェード時間より短い曲はクロスフェードされません。
 
-ロック画面または通知に、移行中に古い状態が一時的に表示されることがあります。"</string>
-  <string name="morphe_music_crossfade_about_known_title">既知の問題</string>
-  <string name="morphe_music_crossfade_about_known_summary">"最初の曲として設定された音楽ビデオ、または現在のキュー外から開始された音楽ビデオは、音声のみモードに切り替わる前に、一時的にビデオとして表示されることがあります。
+ロック画面または通知に、切り替え途中の古い状態が一時的に表示されることがあります。
 
-クロスフェードを一時停止して音楽ビデオを視聴すると、一部のビデオが黒く表示されることがあります（ビデオ自体から音声が出力されるもの）。曲を選択する前にクロスフェードを一時停止すると、これを回避できます。"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">全く機能しない</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"オーディオのキャストまたはミラーリング（Chromecast、画面またはオーディオのミラーリング）—クロスフェードは不安定なため一時停止し、修正されない可能性があります。
+クロスフェードを一時停止してミュージックビデオを視聴すると、一部のビデオが黒い画面のままになることがあります。曲を選ぶ前にクロスフェードを一時停止しておけば、これを回避できます"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">非対応</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"キャストまたはオーディオミラーリング（Chromecast、画面ミラーリング、オーディオミラーリング）
 
-YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されます。"</string>
+SABR再生（動画ストリームのスプーフがオフ）"</string>
   <string name="morphe_music_crossfade_about_credit_title">クレジット</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade機能はVazerOGによるものです</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">低評価によるスキップを無効化</string>
   <string name="morphe_music_disable_dislike_redirection_summary">低評価ボタンを押したときに次の曲にスキップする機能を無効にします</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">プレイリストのトラックタップアクション</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">プレイリストを再生する</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">選択したトラックのみを再生する</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">選択したトラックをキューに追加する</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">キューに追加しました</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">キャストボタンを非表示</string>
   <string name="morphe_music_hide_history_button_title">履歴ボタンを非表示</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_change_start_page_entry_playlists">再生リスト</string>
   <string name="morphe_change_start_page_entry_search">検索</string>
   <string name="morphe_change_start_page_entry_subscriptions">登録チャンネル</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">フィルタバーを非表示</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">縦向きを強制</string>
   <string name="morphe_music_force_portrait_orientation_summary">端末を回転させても、アプリを縦向きのままにします</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ボタンをアイコンのみで表示</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fm および ListenBrainz との連携を設定します</string>
   <string name="morphe_music_scrobbling_summary_logged_out">ログインしていません。タップして設定してください</string>
   <string name="morphe_music_scrobbling_log_out">ログアウト</string>
   <string name="morphe_music_scrobbling_logged_out_toast">ログアウトしました</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Scrobble を有効にするには、ListenBrainz のユーザー トークンを入力してください</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">トークン</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">トークンを取得</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">確認</string>
   <string name="morphe_music_listenbrainz_token_status_empty">トークンを入力してください</string>
   <string name="morphe_music_listenbrainz_token_status_validating">検証中…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_scrobbling_guess_album_title">アルバム名を補完</string>
   <string name="morphe_music_scrobbling_guess_album_summary">楽曲からアルバム名を取得できない場合に、Last.fm で検索して Scrobble に登録します</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Scrobble について</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobble は、YouTube Music で再生した楽曲を Last.fm または ListenBrainz のプロフィールに記録する機能です
 
 バックグラウンドで再生した楽曲を Scrobble するには、デバイスの設定で YouTube Music を「バックグラウンド実行時に電池を使用可能」にしてください"</string>
@@ -457,7 +460,6 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_section_service_title">歌詞配信サービス</string>
   <string name="morphe_music_lyrics_section_overlay_title">オーバーレイ</string>
   <string name="morphe_music_lyrics_section_sync_title">同期</string>
-  <string name="morphe_music_lyrics_section_about_title">このフィルタについて</string>
   <string name="morphe_music_lyrics_source_all_disabled">すべてのプロバイダーが無効です — 内蔵歌詞と埋め込み歌詞</string>
   <string name="morphe_music_lyrics_source_reset_title">プロバイダーの順序をリセットしますか？</string>
   <string name="morphe_music_lyrics_source_reset_message">プロバイダーを既定の優先順位に戻します</string>
@@ -540,8 +542,11 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_credit_line_regex_summary">歌詞フィルターの正規表現</string>
   <string name="morphe_music_lyrics_text_size_title">文字サイズ</string>
   <string name="morphe_music_lyrics_text_size_summary">歌詞の文字サイズ</string>
-  <string name="morphe_music_lyrics_offset_ms_title">歌詞の遅延</string>
+  <string name="morphe_music_lyrics_offset_ms_title">全体のタイミングオフセット</string>
   <string name="morphe_music_lyrics_offset_ms_summary">再生中に現在の行をハイライトする</string>
+  <string name="morphe_music_lyrics_sb_matching_title">歌詞オフセットにSponsorBlockのセグメントを使用</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">SponsorBlockがスキップするセグメントを除いてマッチングし、歌詞をリリース版のオーディオに合わせます。オフにするとSponsorBlockを完全に無視します</string>
+  <string name="morphe_music_lyrics_sb_no_video">このトラックには送信する動画IDがありません</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">提供: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">保存済み</string>
@@ -562,6 +567,7 @@ YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されま�
   <string name="morphe_music_lyrics_refreshing">更新中</string>
   <string name="morphe_music_lyrics_refreshed">更新済み</string>
   <string name="morphe_music_lyrics_about_summary">"歌詞はタイトルとアーティストで照合されます。通常とは異なるメタデータでは、何も見つからないか、間違ったバージョンが見つかる可能性があります。更新を使用してバージョンを切り替えてください。* が付いているプロバイダーはトークンが必要です。有効なすべてのプロバイダーが常に指定された順序で要求されるわけではなく、応答速度に基づいて応答します。"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">使用するプロバイダーのみを有効にするか、デフォルトのままにしてください。常時リクエストは小規模なコミュニティ歌詞サイトに過負荷をかける可能性があります</string>
   <string name="morphe_music_lyrics_hide_info_title">この歌詞を編集</string>
   <string name="morphe_music_lyrics_hide_info_summary">この歌詞を編集</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">この歌詞を編集</string>

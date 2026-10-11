@@ -18,12 +18,18 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.youtube.innertube.BrowseResponseOuterClass.BrowseTab;
 import app.morphe.extension.youtube.innertube.BrowseResponseOuterClass.TabRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.FormattedString;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarIconOnlyItemRendererBytes;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemBytes;
 import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRenderer;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.PivotBarItemRendererBytes;
+import app.morphe.extension.youtube.innertube.GuideResponseOuterClass.TextRun;
 import app.morphe.extension.youtube.innertube.IconOuterClass.YTIconType;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
- * Disables the A/B layout that moves Subscriptions from the navigation bar to a tab of the Home feed.
+ * Disables the A/B layout that moves Subscriptions from the navigation bar to a tab of the Home feed,
+ * and the A/B layout with navigation buttons without labels.
  * The layout is set by the server, so the classic layout is restored from the server responses.
  * Responses are only read and never serialized again,
  * because the protos would be parsed without extensions and lose most of their content.
@@ -48,6 +54,9 @@ public final class ClassicSubscriptionsLayoutPatch {
     private static final String SUBSCRIPTIONS_BROWSE_ID = "FEsubscriptions";
     private static final String SHORTS_BROWSE_ID = "FEshorts";
     private static final String LIBRARY_BROWSE_ID = "FElibrary";
+
+    private static final boolean DISABLE_ICON_ONLY_NAVIGATION_BUTTONS =
+            Settings.DISABLE_ICON_ONLY_NAVIGATION_BUTTONS.get();
 
     /**
      * Icon of the Subscriptions navigation button, with the same style of the Home button.
@@ -95,6 +104,50 @@ public final class ClassicSubscriptionsLayoutPatch {
         }
 
         return tabs;
+    }
+
+    /**
+     * Injection point.
+     * The A/B layout without labels uses icon only navigation buttons, that are created with
+     * a different method and are ignored by the other navigation bar patches.
+     *
+     * @param pivotBarItem Navigation bar item proto.
+     * @return The item converted to a button with a label, or null if the item is not icon only.
+     */
+    @Nullable
+    public static byte[] convertIconOnlyPivotBarItem(MessageLite pivotBarItem) {
+        if (!DISABLE_ICON_ONLY_NAVIGATION_BUTTONS) return null;
+
+        try {
+            PivotBarItemBytes item = PivotBarItemBytes.parseFrom(pivotBarItem.toByteArray());
+            if (!item.hasPivotBarIconOnlyItemRenderer()) return null;
+
+            PivotBarIconOnlyItemRendererBytes iconOnly =
+                    PivotBarIconOnlyItemRendererBytes.parseFrom(item.getPivotBarIconOnlyItemRenderer());
+            // The label of icon only buttons is only the accessibility label.
+            String label = iconOnly.getAccessibility().getRuns().getText();
+
+            PivotBarItemRendererBytes renderer = PivotBarItemRendererBytes.newBuilder()
+                    .setPivotIdentifier(iconOnly.getPivotIdentifier())
+                    .setNavigationEndpoint(iconOnly.getNavigationEndpoint())
+                    .setTitle(FormattedString.newBuilder().addRuns(TextRun.newBuilder().setText(label)))
+                    .setIcon(iconOnly.getIcon())
+                    .setTrackingParams(iconOnly.getTrackingParams())
+                    .setTargetId(iconOnly.getTargetId())
+                    .setNavigationType(iconOnly.getNavigationType())
+                    .setThumbnail(iconOnly.getThumbnail())
+                    .build();
+
+            Logger.printDebug(() -> "Converting icon only navigation button: " + iconOnly.getPivotIdentifier());
+            return PivotBarItemBytes.newBuilder()
+                    .setPivotBarItemRenderer(renderer.toByteString())
+                    .build()
+                    .toByteArray();
+        } catch (Exception ex) {
+            Logger.printException(() -> "convertIconOnlyPivotBarItem failure", ex);
+        }
+
+        return null;
     }
 
     @Nullable

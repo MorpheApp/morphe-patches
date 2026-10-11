@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">कस्टम</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">तृतीय-पक्ष डाउनलोडिंग ॲप्स वापरून संगीत व्हिडिओ, पॉडकास्ट किंवा गाणी डाउनलोड करा</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -47,6 +48,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">ऑडिओ / व्हिडिओ टॉगल लपवा</string>
   <string name="morphe_music_hide_explore_shelf_title">एक्स्प्लोर शेल्फ लपवा</string>
+  <string name="morphe_music_hide_filter_bar_title">फिल्टर बार लपवा</string>
   <string name="morphe_music_hide_grid_shelves_title">ग्रिड शेल्फ लपवा</string>
   <string name="morphe_music_hide_horizontal_shelves_title">आडव्या रांगा लपवा</string>
   <string name="morphe_music_hide_list_shelves_title">यादी शेल्फ लपवा</string>
@@ -102,32 +104,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">या सत्रासाठी क्रॉसफेड थांबवले</string>
   <string name="morphe_music_crossfade_resumed_toast">क्रॉसफेड पुन्हा सुरू झाले</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">क्रॉसफेड सक्षम असताना व्हिडिओ मोड उपलब्ध नाही</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">गाणी किंवा ऑडिओ मिरर करताना क्रॉसफेड थांबवले जाते. कास्ट/मिररवरील क्रॉसफेड अस्थिर आहे आणि ते कदाचित कधीही ठीक होऊ शकत नाही.</string>
-  <string name="morphe_music_crossfade_about_title">बद्दल</string>
-  <string name="morphe_music_crossfade_about_summary">क्रॉसफेड कसे कार्य करते - आणि ते कधी कार्य करत नाही</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">हे कसे कार्य करते</string>
-  <string name="morphe_music_crossfade_about_how_summary">"क्रॉसफेड एका गाण्याच्या शेवटी आणि पुढील गाण्याच्या सुरुवातीला overlap करतो, एका गाण्याचा आवाज कमी करतो आणि दुसरा तुमच्या निवडलेल्या कालावधी आणि वक्रानुसार वाढवतो.
-
-हे ऑटो-ॲडव्हान्सवर (जेव्हा गाणे स्वतःच संपते) आणि मॅन्युअल स्किपवर चालते - प्रत्येकासाठी वरील स्वतंत्र टॉगल आहेत. ऑटो-ॲडव्हान्सवर, गाणे संपण्यापूर्वी काही सेकंदांपूर्वी ब्लेंडिंग सुरू होते.
-
-YouTube Music 9.x किंवा त्याहून नवीन आवृत्ती आवश्यक आहे."</string>
-  <string name="morphe_music_crossfade_about_best_title">हे कशासोबत सर्वोत्तम काम करते</string>
-  <string name="morphe_music_crossfade_about_best_summary">सामान्य गाणे-ते-गाणे प्लेबॅक आणि ऑटो-ॲडव्हान्स, रिपीट-वन (गाणे स्वतःमध्ये क्रॉसफेड होते) आणि लोकल ऑडिओ - फोन स्पीकर, वायर्ड हेडफोन, ब्लूटूथ किंवा USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">अपेक्षितप्रमाणे काम करत नाही</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"क्रॉसFade चालू असताना म्युझिक व्हिडिओ फक्त ऑडिओ म्हणून प्ले होतात (व्हिडिओ थांबवण्यासाठी शफलवर लाँग-प्रेस करा).
-
-तुमच्या फेड वेळेपेक्षा गाणी लहान असल्यास, फेड वगळले जाऊ शकते.
-
-ट्रान्झिशन दरम्यान लॉक स्क्रीन किंवा नोटिफिकेशनमध्ये थोडा वेळ जुना डेटा दिसू शकतो."</string>
-  <string name="morphe_music_crossfade_about_known_title">ज्ञात समस्या</string>
-  <string name="morphe_music_crossfade_about_known_summary">"पहिलं गाणं म्हणून सेट केलेला म्युझिक व्हिडिओ – किंवा रांगेतून बाहेरून सुरू केलेला व्हिडिओ – ऑडिओ-ओन्ली मोड सुरू होण्यापूर्वी थोडा वेळ व्हिडिओ म्हणून दिसू शकतो.
-
- म्युझिक व्हिडिओ पाहण्यासाठी क्रॉसFade थांबवल्यास काही व्हिडिओ काळे दिसू शकतात (ज्या व्हिडिओचा ऑडिओ व्हिडिओमधून येतो). गाणं निवडण्यापूर्वी क्रॉसFade थांबवल्यास हे टाळता येईल."</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">काहीच काम करत नाही</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"ऑडिओ कास्टिंग किंवा मिररिंग (Chromecast, स्क्रीन किंवा ऑडिओ मिररिंग) - क्रॉसFade अस्थिर असल्याने pause होईल आणि ते ठीक करणं शक्य नसेल.
-
-YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्यावरील आवृत्त्यांमध्ये चालते."</string>
   <string name="morphe_music_crossfade_about_credit_title">श्रेय</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade वैशिष्ट्य VazerOG द्वारे</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -138,6 +115,8 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">अनापसंद पुनर्निर्देशन अक्षम करा</string>
   <string name="morphe_music_disable_dislike_redirection_summary">अनापसंद बटण दाबल्यावर पुढील गाण्यावर जाण्यापासून प्रतिबंधित करते</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">\'कास्ट\' बटण लपवा</string>
   <string name="morphe_music_hide_history_button_title">\'इतिहास\' बटण लपवा</string>
@@ -208,8 +187,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_change_start_page_entry_playlists">प्लेलिस्ट्स</string>
   <string name="morphe_change_start_page_entry_search">शोध</string>
   <string name="morphe_change_start_page_entry_subscriptions">सबस्क्रिप्शन</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">फिल्टर बार लपवा</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">मिनीप्लेअर रंग बदला</string>
@@ -241,7 +218,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_hide_navigation_bar_title">नेव्हिगेशन बार लपवा</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">नेव्हिगेशन बटण लेबले लपवा</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">लास्ट.एफएम आणि लिसेनब्रेनझ इंटिग्रेशन कॉन्फिगर करा</string>
   <string name="morphe_music_scrobbling_summary_logged_out">लॉग इन केलेले नाही. कॉन्फिगर करण्यासाठी टॅप करा</string>
   <string name="morphe_music_scrobbling_log_out">लॉग आउट करा</string>
   <string name="morphe_music_scrobbling_logged_out_toast">लॉग आउट केले</string>
@@ -257,7 +233,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">स्क्रबलिंग सक्षम करण्यासाठी तुमचा लिसेनब्रेनझ वापरकर्ता टोकन प्रविष्ट करा</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">टोकन</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">टोकन मिळवा</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">सत्यापित करा</string>
   <string name="morphe_music_listenbrainz_token_status_empty">कृपया टोकन प्रविष्ट करा</string>
   <string name="morphe_music_listenbrainz_token_status_validating">पडताळणी करत आहे…</string>
@@ -290,8 +265,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_scrobbling_parse_title_title">शीर्षकावरून कलाकार आणि ट्रॅक पार्स करा</string>
   <string name="morphe_music_scrobbling_parse_title_summary">\" - \" विभाजकाचा वापर करून व्हिडिओ शीर्षकावरून कलाकार आणि ट्रॅकचे नाव मिळवा. चॅनेलचे नाव कलाकाराच्या रूपात वापरले जात असलेल्या पुन्हा अपलोड केलेल्या सामग्रीसाठी उपयुक्त.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">स्क्रबलिंग बद्दल</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"स्क्रोब्लिंग तुमच्या YouTube Music वापराला तुमच्या Last.fm किंवा ListenBrainz प्रोफाइलसोबत आपोआप सिंक करते.
 
 पार्श्वभूमी प्लेबॅक दरम्यान स्क्रोब्लिंग सिंक होत आहे याची खात्री करण्यासाठी, YouTube Music चा ॲप बॅटरी वापर \"अनरिस्ट्रिक्टेड\" वर सेट केला आहे याची खात्री करा."</string>
@@ -304,7 +277,6 @@ YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्य�
   <string name="morphe_music_lyrics_show_translate_button_title">भाषांतर बटण दाखवा</string>
   <string name="morphe_music_lyrics_text_size_title">टेक्स्ट आकार</string>
   <string name="morphe_music_lyrics_text_size_summary">लिरिक्स टेक्स्टचा आकार</string>
-  <string name="morphe_music_lyrics_offset_ms_title">टाइमिंग ऑफसेट</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">स्रोत: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->

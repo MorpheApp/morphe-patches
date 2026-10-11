@@ -16,7 +16,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.util.Pair;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -35,6 +35,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.ui.Dim;
 
 /**
  * A custom ListPreference that uses a styled custom dialog with a custom checkmark indicator,
@@ -43,14 +44,9 @@ import app.morphe.extension.shared.ui.CustomDialog;
 @SuppressWarnings({"unused", "deprecation"})
 public class CustomDialogListPreference extends ListPreference {
 
-    public static final int ID_MORPHE_CHECK_ICON = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "morphe_check_icon");
-    public static final int ID_MORPHE_CHECK_ICON_PLACEHOLDER = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "morphe_check_icon_placeholder");
-    public static final int ID_MORPHE_ITEM_TEXT = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.ID, "morphe_item_text");
-    public static final int LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.LAYOUT, "morphe_custom_list_item_checked");
+    public static final int ID_MORPHE_CHECK_ICON = View.generateViewId();
+    public static final int ID_MORPHE_CHECK_ICON_PLACEHOLDER = View.generateViewId();
+    public static final int ID_MORPHE_ITEM_TEXT = View.generateViewId();
     public static final int DRAWABLE_CHECKMARK = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_settings_custom_checkmark");
     public static final int DRAWABLE_CHECKMARK_BOLD = ResourceUtils.getIdentifierOrThrow(
@@ -109,6 +105,48 @@ public class CustomDialogListPreference extends ListPreference {
     }
 
     /**
+     * Creates a list row with a checkmark, a placeholder of the same size and a text.
+     * Find the children with {@link #ID_MORPHE_CHECK_ICON},
+     * {@link #ID_MORPHE_CHECK_ICON_PLACEHOLDER} and {@link #ID_MORPHE_ITEM_TEXT}.
+     */
+    public static LinearLayout createCheckedListItem(Context context) {
+        return createCheckedListItem(context, Dim.dp12, Dim.dp24);
+    }
+
+    static LinearLayout createCheckedListItem(Context context, int verticalPadding, int checkMarginEnd) {
+        LinearLayout row = new LinearLayout(context);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setPadding(Dim.dp16, verticalPadding, Dim.dp16, verticalPadding);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+
+        ImageView checkIcon = new ImageView(context);
+        checkIcon.setId(ID_MORPHE_CHECK_ICON);
+        checkIcon.setImageResource(Utils.appIsUsingBoldIcons() ? DRAWABLE_CHECKMARK_BOLD : DRAWABLE_CHECKMARK);
+        checkIcon.setVisibility(View.GONE);
+        row.addView(checkIcon, checkSizeParams(checkMarginEnd));
+
+        View placeholder = new View(context);
+        placeholder.setId(ID_MORPHE_CHECK_ICON_PLACEHOLDER);
+        placeholder.setVisibility(View.INVISIBLE);
+        row.addView(placeholder, checkSizeParams(checkMarginEnd));
+
+        TextView itemText = new TextView(context);
+        itemText.setId(ID_MORPHE_ITEM_TEXT);
+        ThemeUtils.setThemeTextStyle(itemText, android.R.attr.textAppearanceListItem,
+                android.R.attr.textColorPrimary);
+        row.addView(itemText, new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        return row;
+    }
+
+    private static LinearLayout.LayoutParams checkSizeParams(int marginEnd) {
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Dim.dp24, Dim.dp24);
+        params.setMarginEnd(marginEnd);
+        return params;
+    }
+
+    /**
      * Custom ArrayAdapter to handle checkmark visibility.
      */
     public static class ListPreferenceArrayAdapter extends ArrayAdapter<CharSequence> {
@@ -118,16 +156,14 @@ public class CustomDialogListPreference extends ListPreference {
             TextView itemText;
         }
 
-        final int layoutResourceId;
         final CharSequence[] entryValues;
         String selectedValue;
 
-        public ListPreferenceArrayAdapter(Context context, int resource,
+        public ListPreferenceArrayAdapter(Context context,
                                           CharSequence[] entries,
                                           CharSequence[] entryValues,
                                           String selectedValue) {
-            super(context, resource, entries);
-            this.layoutResourceId = resource;
+            super(context, 0, entries);
             this.entryValues = entryValues;
             this.selectedValue = selectedValue;
         }
@@ -139,16 +175,11 @@ public class CustomDialogListPreference extends ListPreference {
             SubViewDataContainer holder;
 
             if (view == null) {
-                LayoutInflater inflater = LayoutInflater.from(getContext());
-                view = inflater.inflate(layoutResourceId, parent, false);
+                view = createCheckedListItem(getContext());
                 holder = new SubViewDataContainer();
                 holder.placeholder = view.findViewById(ID_MORPHE_CHECK_ICON_PLACEHOLDER);
                 holder.itemText = view.findViewById(ID_MORPHE_ITEM_TEXT);
                 holder.checkIcon = view.findViewById(ID_MORPHE_CHECK_ICON);
-                holder.checkIcon.setImageResource(Utils.appIsUsingBoldIcons()
-                        ? DRAWABLE_CHECKMARK_BOLD
-                        : DRAWABLE_CHECKMARK
-                );
                 view.setTag(holder);
             } else {
                 holder = (SubViewDataContainer) view.getTag();
@@ -213,7 +244,6 @@ public class CustomDialogListPreference extends ListPreference {
         // Create custom adapter for the ListView.
         ListPreferenceArrayAdapter adapter = new ListPreferenceArrayAdapter(
                 context,
-                LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED,
                 entries,
                 entryValues,
                 selectedValue

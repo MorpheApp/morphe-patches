@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">インポートに失敗しました: %s</string>
   <string name="morphe_settings_navigate_up">上へ移動</string>
   <string name="morphe_settings_search_hint">設定を検索</string>
+  <string name="morphe_settings_screen_info_title">このフィルタについて</string>
   <string name="morphe_settings_search_no_results_title">「%s」に対する検索結果が見つかりませんでした</string>
   <string name="morphe_settings_search_no_results_summary">別のキーワードを試してください</string>
   <string name="morphe_settings_search_recent_searches">最近の検索</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 予期しないイベントが発生した場合でも通知されません。"</string>
   <string name="morphe_debug_export_logs_title">デバッグログのエクスポート</string>
   <string name="morphe_debug_export_logs_summary">Morphe のデバッグログをエクスポートします</string>
-  <string name="morphe_debug_export_logs_file">ファイル出力</string>
   <string name="morphe_debug_export_logs_success">デバッグログのエクスポートに成功しました</string>
   <string name="morphe_debug_export_logs_failed">デバッグログのエクスポートに失敗しました</string>
   <string name="morphe_debug_logs_search_hint">デバッグログを検索</string>
@@ -229,4 +229,7 @@ MicroG に対して電池の最適化を無効にしても、バッテリー消�
 できるだけ問題の少ない環境を希望する場合は、このアプリを &lt;b&gt;アンインストール&lt;/b&gt; して推奨アプリ バージョンである ✅ &lt;b&gt;%2$s&lt;/b&gt; にパッチを適用してください。"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 実験版にします</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 安定版にします</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">クラッシュログを Documents フォルダに保存しました: %s</string>
+  <string name="morphe_crash_log_saved">クラッシュログを保存しました: %s</string>
 </resources>

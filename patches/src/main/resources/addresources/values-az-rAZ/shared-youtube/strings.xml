@@ -108,10 +108,9 @@ YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-a daxil olmaq bəzi istifadəçilər üçün oynatma problemlərini düzəldə bilər
 
 Daxil olmaq üçün aşağıda davam et-i vurun"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Davam et</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıxış et</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Təlimatlar</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivləşdirmə kodu: %s
 
 1. \"Cihazı əlaqələndir\" veb saytını açmaq üçün aşağıda \"Veb saytı aç\"-a toxun
@@ -119,7 +118,6 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
 3. Təhrik olunduqda Google-a daxil olun. Çoxlu hesabınız varsa, sonra bu YouTube hesabını seçin
 4. \"YouTube VR-a Giriş-ə\" icazə ver-ə toxun
 5. \"Cihaz qoşuldu\" məlumatına çatandan sonra bu tətbiqə qayıdın"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Veb saytı aç</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Aktivləşdirmə şifrəsi buraxılışı alınmadı</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Təsdiqlənmə token-i buraxılış üçün alınmadı</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uğurla daxil olundu</string>
@@ -198,7 +196,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_custom_filter_screen_title">Fərdi filtr</string>
   <string name="morphe_custom_filter_screen_summary">Hər hansı elementi gizlətmək üçün fərdi filtrləri tənzimlə</string>
   <string name="morphe_custom_filter_title">Fərdi filtri aktivləşdir</string>
-  <string name="morphe_custom_filter_strings_title">Fərdi filtr</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Yeni cərgələrlə ayrılan, filtr üçün element yol qurucusu sətirlərinin siyahısı</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Etibarsız fərdi filtr: %s</string>
@@ -261,9 +258,9 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_ryd_estimated_like_summary">Müəllif bəyənmələri qapatdığı videolarda təxmini bəyənmə sayını göstərir</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Bağlantı xətası xəbərdarlıqlarını göstər</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike serveri əlçatmaz olduqda bildiriş göstərir</string>
-  <string name="morphe_ryd_attribution_summary">"Məlumat Return YouTube Dislike API tərəfindən təmin olunur
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike YouTube-un 2021-ci ildə gizlətdiyi bəyənməmə saylarını bərpa edir. Saylar silinmədən əvvəl arxivləşdirilmiş məlumatlardan götürülür, daha yeni videolar üçün isə istifadəçilərin səsverməsi əsasında təxmin edilir, buna görə də onlar təxmini xarakter daşıyır və hər bir neçə gündən bir yenilənir
 
-ReturnYouTubeDislike.com 'u açmaq üçün buraya toxun"</string>
+​Baxdığınız videonun ID-si Return YouTube Dislike API-yə göndərilir, bəyənmə və bəyənməmələriniz isə təxminləri təkmilləşdirmək üçün gizli şəkildə göndərilir"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazın Return YouTube Dislike API statistikası</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Orta hesabla API cavab müddəti</string>

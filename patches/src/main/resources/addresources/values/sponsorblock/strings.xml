@@ -227,9 +227,7 @@ If you\'re not submitting a highlight, tap Cancel and mark the second location"<
     <string name="morphe_sb_stats_saved_second_format">%s seconds</string>
     <string name="morphe_sb_color_opacity_label">Opacity:</string>
     <string name="morphe_sb_color_dot_label">Color:</string>
-    <string name="morphe_sb_about_title">About</string>
-    <string name="morphe_sb_about_api_title" translatable="false">SponsorBlock</string>
-    <string name="morphe_sb_about_api_summary">"Data is provided by the SponsorBlock API
+    <string name="morphe_sb_about_api_summary">"SponsorBlock is a crowdsourced database of video segments such as sponsors, intros, outros and reminders to subscribe. Segments are submitted and voted on by the community, and the database is open and free to download
 
-Tap here to open Sponsor.ajay.app and see downloads for other platforms"</string>
+The ID of the video you watch is sent to the SponsorBlock API to get its segments"</string>
 </resources>

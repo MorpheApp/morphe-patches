@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">%d सेटिङहरू आयात गरिए</string>
   <string name="morphe_settings_import_failure_parse">आयात असफल भयो: %s</string>
   <string name="morphe_settings_search_hint">सेटिङहरू खोज्नुहोस्</string>
+  <string name="morphe_settings_screen_info_title">के बारे में</string>
   <string name="morphe_settings_search_no_results_title">\'%s\' को लागि कुनै परिणाम फेला परेन</string>
   <string name="morphe_settings_search_no_results_summary">अर्को कीवर्ड प्रयास गर्नुहोस्</string>
   <string name="morphe_settings_search_recent_searches">हालैका खोजहरू</string>
@@ -90,7 +91,6 @@ Second \"item\" text"</string>
 तपाईंलाई कुनै अप्रत्याशित घटनाहरूको बारेमा जानकारी दिइने छैन।"</string>
   <string name="morphe_debug_export_logs_title">डिबग लगहरू निर्यात गर्नुहोस्</string>
   <string name="morphe_debug_export_logs_summary">मर्फ डिबग लगहरू निर्यात गर्नुहोस्</string>
-  <string name="morphe_debug_export_logs_file">फाइलमा निर्यात गर्नुहोस्</string>
   <string name="morphe_debug_export_logs_success">डिबग लगहरू सफलतापूर्वक निर्यात गरियो</string>
   <string name="morphe_debug_export_logs_failed">डिबग लगहरू निर्यात गर्न असफल भयो</string>
   <string name="morphe_debug_export_logs_clear">क्लियर गर्नुहोस्</string>
@@ -148,4 +148,5 @@ MicroG को लागि ब्याट्री अप्टिमाइज�
 यदि तपाईं सबैभन्दा समस्या-मुक्त अनुभव चाहनुहुन्छ भने, &lt;b&gt;अनइन्स्टल&lt;/b&gt; गर्नुहोस् र &lt;b&gt;%2$s&lt;/b&gt; को सिफारिस गरिएको एप संस्करण प्याच गर्नुहोस्।"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ म प्रयोगात्मक चाहन्छु</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ म स्थिर चाहन्छु</string>
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

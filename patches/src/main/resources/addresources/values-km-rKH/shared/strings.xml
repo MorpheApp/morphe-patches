@@ -33,6 +33,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_success">បាននាំចូលការកំណត់ %d</string>
   <string name="morphe_settings_import_failure_parse">ការនាំចូលបានបរាជ័យ៖ %s</string>
   <string name="morphe_settings_search_hint">ស្វែងរកការកំណត់</string>
+  <string name="morphe_settings_screen_info_title">អំពីកម្មវិធីនេះ</string>
   <string name="morphe_settings_search_no_results_title">គ្មានលទ្ធផលឡើយ សម្រាប់ \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">សាកល្បងពាក្យគន្លឹះដទៃ</string>
   <string name="morphe_settings_search_recent_searches">ការស្វែងរកថ្មីៗ</string>
@@ -65,4 +66,5 @@ Second \"item\" text"</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Spela albumets ljudspår</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Spela albumets ljudversion av låtarna istället för en musikvideo. Kräver \'Förfalska videoströmmar\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Aktivera ljud/videoväxling</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Försök att byta ljudspårsversion och officiell musikvideo</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Ladda ner musikvideor, poddar eller låtar med tredjeparts nedladdningsappar</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Nedladdade spår visas här"</string>
   <string name="morphe_settings_music_screen_4_player_title">Spelare</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Sångtext</string>
   <string name="morphe_settings_music_screen_9_misc_title">Övrigt</string>
+  <string name="morphe_music_app_language_title">YouTube Music-språk</string>
+  <string name="morphe_music_app_language_summary_default">Systemets språk</string>
+  <string name="morphe_music_app_language_summary_unsupported">Kräver Android 13 eller senare</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Dölj etiketten Skaffa Music Premium</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Dölj Music Premium-kampanjer</string>
   <string name="morphe_music_hide_video_ads_title">Dölj videoannonser</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Dölj ljud-/video-omkopplaren</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Dölj knappen Ladda ned</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Döljer nedladdningsknappen i poddprogrammet</string>
   <string name="morphe_music_hide_explore_shelf_title">Dölj avsnittet Utforska</string>
+  <string name="morphe_music_hide_filter_bar_title">Dölj filterfält</string>
   <string name="morphe_music_hide_grid_shelves_title">Dölj rutnätshyllor</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Dölj horisontella hyllor</string>
   <string name="morphe_music_hide_list_shelves_title">Dölj listhyllor</string>
@@ -188,7 +197,6 @@ Nedladdade spår visas här"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Dölj knappen Översätt</string>
   <string name="morphe_music_hide_new_from_shelf_title">Dölj hyllan \'Nytt från\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Dölj spellisthyllor</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Dölj nedladdningsknappen för poddavsnitt</string>
   <string name="morphe_music_hide_repeat_button_title">Dölj repeat-knappen</string>
   <string name="morphe_music_hide_shuffle_button_title">Dölj shuffle-knappen</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Dölj hyllan \'Snabbval\'</string>
@@ -236,32 +244,26 @@ Nedladdade spår visas här"</string>
   <string name="morphe_music_crossfade_paused_toast">Övertoningar pausades för den här sessionen</string>
   <string name="morphe_music_crossfade_resumed_toast">Övertoningar återupptogs</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoläge är inte tillgängligt när övertoningar är aktiverade</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade pausas vid casting eller spegling av ljud. Crossfade över cast/spegling är instabilt och kanske aldrig går att åtgärda</string>
-  <string name="morphe_music_crossfade_about_title">Om</string>
-  <string name="morphe_music_crossfade_about_summary">Hur crossfade fungerar — och när det inte gör det</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade är avstängt vid SABR-uppspelning</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade är avstängt under casting</string>
   <string name="morphe_music_crossfade_about_how_title">Hur det fungerar</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Crossfade överlappar slutet av en låt med början av nästa, tonar ner en medan den andra kommer upp under vald varaktighet och kurva.
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade överlappar slutet av en låt med början av nästa, med hjälp av din varaktighet och kurva
 
-Det fungerar vid automatisk övergång (när en låt slutar av sig själv) och vid manuella hopp — var och en har sin egen växel ovan. Vid automatisk övergång startar blandningen några sekunder innan låten slutar.
+Det körs på automatisk fortsättning och manuell överhoppning, var och en med sin egen växling. Vid automatisk fortsättning startar blandningen några sekunder innan låten slutar.  texten slutar här"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Begränsningar</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musikvideor spelas bara som ljud medan crossfade är på. Håll nedtryckt på slumpvis för att pausa crossfade och titta på videon
 
-Kräver YouTube Music 9.x eller nyare."</string>
-  <string name="morphe_music_crossfade_about_best_title">Fungerar bäst med</string>
-  <string name="morphe_music_crossfade_about_best_summary">Vanlig låt-till-låt-uppspelning och automatisk övergång, repeat-ett (låten korsfasar in i sig själv) och lokalt ljud — telefonhögtalare, trådbundna hörlurar, Bluetooth eller USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Fungerar inte riktigt som det ska</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Musikvideor spelas endast som ljud när crossfade är på (håll ned shuffle-knappen för att pausa om du vill ha videon)
+En musikvideo som börjar spelas förblir i videoläge tills nästa låt
 
-Låtar kortare än din toningsvaraktighet kan hoppa över toningen
+Låtar som är kortare än övergångstiden crossfadas inte
 
-Låsskärmen eller aviseringen kan tillfälligt visa ett inaktuellt tillstånd mitt i övergången"</string>
-  <string name="morphe_music_crossfade_about_known_title">Kända problem</string>
-  <string name="morphe_music_crossfade_about_known_summary">"En musikvideo som är inställd som första låt — eller en som startats utanför den aktuella kön — kan tillfälligt visas som video innan läget för enbart ljud aktiveras
+Låsskärmen eller aviseringen kan tillfälligt visa ett inaktuellt tillstånd mitt i övergången
 
-Att pausa crossfade för att titta på en musikvideo kan göra vissa videor svarta (de vars ljud kommer från själva videon). Att pausa crossfade innan du väljer låten undviker det"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Fungerar inte alls</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting eller spegling av ljud (Chromecast, skärm- eller ljudspegling) — crossfade pausas eftersom det är instabilt där och kanske aldrig går att åtgärda.
+Att pausa crossfade för att titta på en musikvideo kan lämna vissa videor svarta. Att pausa crossfade innan du väljer låten undviker det"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Stöds inte</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting eller spegling av ljud (Chromecast, skärmspegling eller ljudspegling)
 
-YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
+SABR-uppspelning (spoofing av videoströmmar avstängd)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Crossfade-funktion av VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Inaktivera omdirigering av ogilla</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Förhindrar att hoppa till nästa låt när ogilla-knappen trycks</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Åtgärd vid tryck på låt i spellista</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Spela spellistan</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Spela endast den valda låten</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Lägg till den valda låten i kön</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Tillagd i kön</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Dölj knappen Casta</string>
   <string name="morphe_music_hide_history_button_title">Dölj historikknappen</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <string name="morphe_change_start_page_entry_playlists">Spellistor</string>
   <string name="morphe_change_start_page_entry_search">Sök</string>
   <string name="morphe_change_start_page_entry_subscriptions">Prenumerationer</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Dölj filterfält</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Tvinga stående orientering</string>
   <string name="morphe_music_force_portrait_orientation_summary">Håller appen i stående orientering när enheten roteras</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <string name="morphe_music_hide_navigation_bar_title">Dölj navigeringsfältet</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Dölj etiketter för navigeringsknappar</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Konfigurera integration med Last.fm och ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Inte inloggad. Tryck för att konfigurera</string>
   <string name="morphe_music_scrobbling_log_out">Logga ut</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Utloggad</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Ange din ListenBrainz-användartoken för att aktivera scrobbling</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Hämta token</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Verifiera</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Ange en token</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Validerar…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x — crossfade fungerar endast på 9.x och nyare"</string>
   <string name="morphe_music_scrobbling_guess_album_title">Fyll i saknat album</string>
   <string name="morphe_music_scrobbling_guess_album_summary">När musiken inte innehåller något album, slå upp det på Last.fm så att din scrobble blir komplett</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Om scrobbling</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling synkroniserar automatiskt din YouTube Music-användning med din Last.fm- eller ListenBrainz-profil
 
 För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, se till att YouTube Musics appbatterianvändning är inställd på \"Unrestricted\""</string>
@@ -457,7 +460,6 @@ För att säkerställa att scrobbling synkroniseras under bakgrundsuppspelning, 
   <string name="morphe_music_lyrics_section_service_title">Sångtextstjänst</string>
   <string name="morphe_music_lyrics_section_overlay_title">Överlägg</string>
   <string name="morphe_music_lyrics_section_sync_title">Synkronisering</string>
-  <string name="morphe_music_lyrics_section_about_title">Om</string>
   <string name="morphe_music_lyrics_source_all_disabled">Alla leverantörer inaktiverade – inbyggda texter och inbäddade texter.</string>
   <string name="morphe_music_lyrics_source_reset_title">Återställ leverantörsordningen?</string>
   <string name="morphe_music_lyrics_source_reset_message">Återställ leverantörerna till standardprioriteringsordningen.</string>
@@ -542,8 +544,11 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_credit_line_regex_summary">Om texter filtreras felaktigt till botten, justera eller rensa detta. […] Lämna tomt för att inaktivera.</string>
   <string name="morphe_music_lyrics_text_size_title">Textstorlek</string>
   <string name="morphe_music_lyrics_text_size_summary">Storleken på sångtexten</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Tidsförskjutning</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Global tidsförskjutning</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Synkroniserade texter följer uppspelningen. Om de hamnar fel, justera tidsförskjutningen. […] Använd ett positivt värde om texten ligger före låten.</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Använd SponsorBlock-segment för sångtextförskjutning</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Matcha utan de segment som SponsorBlock hoppar över och flytta sångtexten till det utgivna ljudet. Av ignorerar SponsorBlock helt</string>
+  <string name="morphe_music_lyrics_sb_no_video">Det här spåret har inget video-ID att skicka in</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Källa: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Översatt av Google</string>
@@ -564,6 +569,7 @@ Obligatoriska cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_refreshing">Uppdaterar</string>
   <string name="morphe_music_lyrics_refreshed">Uppdaterad</string>
   <string name="morphe_music_lyrics_about_summary">"Texter matchas mot titel och artist, ovanlig metadata kan leda till att ingenting hittas eller att fel version hittas. Använd Uppdatera för att växla versioner. Leverantörer markerade med * kräver en token. Alla aktiverade leverantörer efterfrågas inte alltid i din ordning, utan svarar utifrån deras hastighet."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Aktivera bara de leverantörer du använder, eller behåll standardinställningen — ständiga förfrågningar kan överbelasta små communitysajter för sångtexter</string>
   <string name="morphe_music_lyrics_hide_info_title">Dölj kreditraden</string>
   <string name="morphe_music_lyrics_hide_info_summary">Dölj kreditraden som visas under texten.</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Växla mellan översättning och romanisering</string>

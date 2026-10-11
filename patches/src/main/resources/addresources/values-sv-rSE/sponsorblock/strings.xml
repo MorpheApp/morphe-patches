@@ -228,8 +228,7 @@ Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den a
   <string name="morphe_sb_stats_saved_second_format">%s sekunder</string>
   <string name="morphe_sb_color_opacity_label">Opacitet:</string>
   <string name="morphe_sb_color_dot_label">Färg:</string>
-  <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">"Data tillhandahålls av SponsorBlock-API:et
+  <string name="morphe_sb_about_api_summary">"SponsorBlock är en crowdsourcad databas över videosegment såsom sponsorer, intron, outron och påminnelser om att prenumerera. Segment skickas in och röstas på av communityn, och databasen är öppen och gratis att ladda ner
 
-Tryck här för att öppna Sponsor.ajay.app och se nedladdningar för andra plattformar"</string>
+ID-numret för videon du tittar på skickas till SponsorBlock API för att hämta dess segment"</string>
 </resources>

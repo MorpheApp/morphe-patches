@@ -108,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"登录Android VR可以解决一些用户的播放问题
 
 要登录，请按下面的“继续”按钮"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">继续</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">登出</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">说明</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"激活码：%s
 
 1. 点击'打开网站'访问'连接设备'页面
@@ -119,7 +118,6 @@ Second \"item\" text"</string>
 3. 如有提示，请使用 Google 登录。如果有多账户，请选择此 YouTube 账户
 4. 允许 YouTube VR 访问权限
 5. 等待显示'设备已连接'后返回应用"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">打开网站</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">无法获取激活码</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">无法获取身份验证令牌</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">登录成功</string>
@@ -198,7 +196,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">自定义过滤器</string>
   <string name="morphe_custom_filter_screen_summary">配置自定义过滤器以隐藏任何组件</string>
   <string name="morphe_custom_filter_title">启用自定义过滤器</string>
-  <string name="morphe_custom_filter_strings_title">自定义过滤器</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">用于过滤的组件路径生成器字符串列表，按换行符分隔</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">非法自定义过滤器：%s</string>
@@ -261,9 +258,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">在创作者禁用点赞的视频上显示估计的点赞数量</string>
   <string name="morphe_ryd_toast_on_connection_error_title">显示连接错误提示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">当 Return YouTube Dislike 服务器不可用时显示通知</string>
-  <string name="morphe_ryd_attribution_summary">"数据由 Return YouTube Dislike API 提供
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike 恢复了 YouTube 在 2021 年隐藏的不喜欢数量。这些数量来自移除前存档的数据，较新视频的数量则根据其用户的投票估算，因此它们只是近似值，并且每隔几天更新一次
 
-点击此处打开 ReturnYouTubeDislike.com"</string>
+您观看的视频的 ID 会发送到 Return YouTube Dislike API，您的喜欢和不喜欢信息会匿名发送以改进估算"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike 本设备的 API 统计信息</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API 响应时间，平均值</string>

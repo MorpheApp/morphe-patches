@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Şêwazî</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Vîdyoyên muzîkê, podcast an stran bi sepanên dakêşkirina sêjiyê dakêşîne</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -47,6 +48,7 @@ Second \"item\" text"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Veşartina Guhestina Deng/Vîdyoyê</string>
   <string name="morphe_music_hide_explore_shelf_title">Veşartina Refê Explore</string>
+  <string name="morphe_music_hide_filter_bar_title">Pêvekirina bara fîltreyê veke</string>
   <string name="morphe_music_hide_grid_shelves_title">Veşartina Refên Torê</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Veşartina Refên Horîzontal</string>
   <string name="morphe_music_hide_list_shelves_title">Veşartina Refên Lîsteyê</string>
@@ -102,32 +104,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Navkirina ji bo vê seseyê rawestiya</string>
   <string name="morphe_music_crossfade_resumed_toast">Navkirin dubare hat destpêkirin</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Moda vîdyoyê dema navkirinê çalak e, nayê xebitîn</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Dengê herî biçik dema ku dengê we têne vekirin an dengê we têne parvekirin, rawestîne. Têkeliya dengê parvekirî/vekirinê nehewre ye û dibe ku qet rasterast nebe.</string>
-  <string name="morphe_music_crossfade_about_title">Derbarê</string>
-  <string name="morphe_music_crossfade_about_summary">Çawa têkelîhiya dengê dixebite – û gava ku ew naxebite</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">Çawa dixebite</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Têkelîhiya dengê dawiya stranekê bi destpêka ya dinê ve dirêj dike, heya ku hûn serdemekê û hêsanîyê hilbijêrin, ya yekem kêm dibe dema ya din bilind dibe.
-
-Ew li ser pêşveçûna otomatîkî dixebite (gava ku stran bi xwe dawî dibe) û li ser derbasbûna destan – her yekam veguherîna din a serê xwe heye. Di pêşveçûna otomatîk de, tevlîbûn çend saniyeyan berî ku stran dawî bibe dest dibe.
-
-Pêdivî bi YouTube Music 9.x an nûjen e."</string>
-  <string name="morphe_music_crossfade_about_best_title">Herî baş bi</string>
-  <string name="morphe_music_crossfade_about_best_summary">Lêdanîna stranên normal û pêşveçûna otomatîkî, dubarekirina yekê (stran bi xwe re têne têkelkirin) û dengê herêmî - axêfon, gulîçeyên têkildar, Bluetooth, an USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Tewra zîde erk nake</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Vîdêoyên muzîkê tenê wekî deng lê dikin dema ku crossfade vekirî ye (bo rawirtina stranê zêde bikirtîne bo sekinîn eger hûn vîdêyo bikêxin)
-
-Stranên kurt ji weqta fadekirinê dikarin fade derbas bikin
-
-Ekranê kilîtê an agahî dikare bi demkî rewşek kevnar nîşan bide navbera veguherînê de"</string>
-  <string name="morphe_music_crossfade_about_known_title">Pirsgirêkên baş zanîn</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Vîdêoyek muzîkê wekî strana ewil hatî destnîşankirin — an ya ku ji derveyî lîsteya heyî dest pê kir — dikare bi demkî wekî vîdêyo xuya bike berî ku modê tenê deng dest pê bike
-
-Sehkirina crossfade bo temaşekirina vîdêoyek muzîkê dikare hinek vîdeo reş bihêle (yên ku dengê wan ji vîdeyoyê tê). Sehkirina crossfade berî ku hûn stranê hilbijêrin wê ji holê hêle"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Tewra erk nake</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Werzîkirin an axistina deng (Chromecast, ekran an axistina deng) — crossfade pause dike ji ber ku li wir nehewîn e û dibe ku qet rasterast nebe.
-
-YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</string>
   <string name="morphe_music_crossfade_about_credit_title">Kreya xwedî</string>
   <string name="morphe_music_crossfade_about_credit_summary">Taybeta crossfade ji aliyê VazerOG ve hatî çêkirin</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -138,6 +115,8 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Rihiya kirê destûrê da veguherandina hez kirinê</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Êdî dema butonê hez kirinê kişandinê, veguherandina stranê paşê nabe</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Butona Şîrkirinê Veşêrin</string>
   <string name="morphe_music_hide_history_button_title">Butona Dîrokê Veşêrin</string>
@@ -208,8 +187,6 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_change_start_page_entry_playlists">Lîste-yên weşangez</string>
   <string name="morphe_change_start_page_entry_search">Bigere</string>
   <string name="morphe_change_start_page_entry_subscriptions">Refqandin</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Pêvekirina bara fîltreyê veke</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Rengê miniplayer-a biguhezîne</string>
@@ -241,7 +218,6 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_music_hide_navigation_bar_title">Barê navigasyonê veşêre</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Etîketên barê navigasyonê veşêre</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Konfîgkirina entegrasyona Last.fm û ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Ne têkeve. Têke da ku konfîg bike</string>
   <string name="morphe_music_scrobbling_log_out">Derkeve</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Derketin</string>
@@ -264,7 +240,6 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Tokena bikarînerê ListenBrainz-ê têkevin da ku lêkirinê çalak bike</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Token bistîne</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Verastkirin</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Ji kerem tokenê têkevin</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Dagirxistîne…</string>
@@ -297,22 +272,18 @@ YouTube Music 8.x — crossfade tenê li 9.x û nûjenertirîn de dimeşe"</stri
   <string name="morphe_music_scrobbling_parse_title_title">Hûnerê ji sernavê de dîtin û şîrovekirin</string>
   <string name="morphe_music_scrobbling_parse_title_summary">Navê hunerê û şîrovekirinê ji sernavê vîdyoyê bi rêya vê neşê \" - \" derxin. Ji bo naverokên ku hatine barkirin lênêrîn, navê kanalê dikare wek hunerê were bikaranîn.</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Derbarê lêkirinê</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobbling bi xwezayî karanîna YouTube Music ya we bi profîla we ya Last.fm an ListenBrainz re hevdeng dike.
 
 Ji bo ku bêyî astengiyê scrobbling li ser lîstikên paşnavê were hevdengkirin, pê ewle bibin ku karanîna pîlê ya YouTube Music wek \"Nerêkûkirî\" hatî destnîşankirin."</string>
   <!-- layout.lyrics.lyricsPatch -->
   <string name="morphe_music_lyrics_enabled_title">Şarkîyên partiyê sêyemîn bikar bîne</string>
   <string name="morphe_music_lyrics_enabled_summary">Şarkîyên ji karûbarê sêyemîn yê ku dîtin, wê demê vegere şarkîyên paşnavê yên di hundirê de</string>
-  <string name="morphe_music_lyrics_section_about_title">Derbarê</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Teke rêjeyekê da ku veguhêze</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Teke rêjeyekê li ser wê dema di stranê de vediguhezîne</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Nîşanê kopîkirinê bibîne</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Nîşanê wergerandinê bibîne</string>
   <string name="morphe_music_lyrics_text_size_title">Mezinahiyê nivîsê</string>
   <string name="morphe_music_lyrics_text_size_summary">Mezinahiyê nivîsa stranê</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Veguhêztina demê</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Çavkanî: %s</string>
   <!-- Tappable label under the lyrics that turns the translation on. -->

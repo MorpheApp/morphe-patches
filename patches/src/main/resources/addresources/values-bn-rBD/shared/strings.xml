@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">আমদানি করা যায়নি: %s</string>
   <string name="morphe_settings_navigate_up">উপরে নেভিগেট করুন</string>
   <string name="morphe_settings_search_hint">অনুসন্ধান সেটিংস</string>
+  <string name="morphe_settings_screen_info_title">মর্ফ সম্পর্কে</string>
   <string name="morphe_settings_search_no_results_title">\'%s\'-এর জন্য কোন ফলাফল পাওয়া যায়নি</string>
   <string name="morphe_settings_search_no_results_summary">অন্য কোনো কীওয়ার্ড চেষ্টা করুন</string>
   <string name="morphe_settings_search_recent_searches">সাম্প্রতিক অনুসন্ধানগুলি</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 আপনি কোনও অপ্রত্যাশিত ঘটনার বিষয়ে অবহিত হবেন না।"</string>
   <string name="morphe_debug_export_logs_title">ডিবাগ লগগুলি রফতানি করুন</string>
   <string name="morphe_debug_export_logs_summary">Morphe ডিবাগ লগগুলি রফতানি করুন</string>
-  <string name="morphe_debug_export_logs_file">ফাইলে রফতানি করুন</string>
   <string name="morphe_debug_export_logs_success">সেটিং সফলভাবে আমদানি করা হয়েছে</string>
   <string name="morphe_debug_export_logs_failed">লগ এক্সপোর্ট করা যায়নি: %s</string>
   <string name="morphe_debug_logs_search_hint">ডিবাগ লগ অনুসন্ধান করুন…</string>
@@ -229,4 +229,7 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
 যদি আপনি সবচেয়ে ঝামেলা-মুক্ত অভিজ্ঞতা পেতে চান, তাহলে এই অ্যাপটি &lt;b&gt;আনইনস্টল করুন&lt;/b&gt; এবং ✅ &lt;b&gt;%2$s&lt;/b&gt; এর প্রস্তাবিত অ্যাপ সংস্করণটি ইনস্টল করুন।"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ আমি পরীক্ষামূলক চাই</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ আমি স্থিতিশীল চাই</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">ক্র্যাশ লগ ব্যবহারকারীর নথিতে সংরক্ষণ করা হয়েছে: %s</string>
+  <string name="morphe_crash_log_saved">ক্র্যাশ লগ সংরক্ষণ করা হয়েছে: %s</string>
 </resources>

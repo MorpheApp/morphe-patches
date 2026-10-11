@@ -63,7 +63,6 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_album_cards_summary">Felur albúmspjöld undir lýsingu listamannsins</string>
   <string name="morphe_hide_artist_cards_title">Fela listamannaspjöld</string>
   <string name="morphe_hide_artist_cards_summary">Felur listamannaspjaldið efst í leitarniðurstöðum</string>
-  <string name="morphe_hide_auto_dubbed_label_title">Fela merkið „Sjálfvirkt talsett“</string>
   <string name="morphe_hide_channel_buttons_title">Fela rásahnappa</string>
   <string name="morphe_hide_channel_buttons_summary">Felur hnappa eins og Gerast áskrifandi, Skoða rás, Samfélag og YouTube Music úr rásasniðum í leitarniðurstöðum</string>
   <string name="morphe_hide_community_posts_title">Fela samfélagsfærslur</string>
@@ -79,7 +78,6 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_history_shelf_title">Fela spilunarsöguhilluna</string>
   <string name="morphe_hide_horizontal_shelves_title">Fela láréttar raðir</string>
   <string name="morphe_hide_horizontal_shelves_summary">Felur láréttar raðir eins og Fréttir, Samfélagsfærslur sem þú gætir haft áhuga á, Halda áfram að horfa, Fleiri rásir, Fleiri efni, Fyrir þig, Nýjustu myndbönd, Mest viðeigandi, Samfélagsfærslur höfunda, Verslun og Horfa aftur</string>
-  <string name="morphe_hide_hyped_label_title">Fela „Hyped“ merkið</string>
   <string name="morphe_hide_image_shelf_title">Fela myndaröð</string>
   <string name="morphe_hide_image_shelf_summary">Felur myndaraðir í leitarniðurstöðum</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -121,9 +119,9 @@ Breytingarnar fela í sér:
 • Stuttar hillir, síður rásanna og leitarniðurstöður sýna enn þráhyggjuleiki uppladingartíma.
 • Virkar ekki með bílalagningum."</string>
   <string name="morphe_hide_video_thumbnail_title">Fela mynd af myndbandi</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">Fela vídeóráðanímir</string>
-  <string name="morphe_hide_video_recommendation_labels_summary">Felur af fólki horfðu líka á</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">Fela merkimiða myndbanda</string>
+  <string name="morphe_hide_video_labels_summary">Felur merkimiða eins og \'Sjálfvirkt talsett\' / \'Talsett\', \'Fær þóknun\', \'Vinsælt\', \'Fólk horfði einnig á\', \'vöru(r)\' og \'Þér gæti einnig líkað við\'</string>
   <string name="morphe_hide_view_count_title">Fela skoðunartölu</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Takmarkanir:
@@ -158,17 +156,19 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_snackbar_title">Fela snakkbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Fela reglur um áskrift</string>
   <string name="morphe_hide_sync_button_title">Fela \'Samstilla við myndband\' hnappinn</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Fela litstigul við snertingu og hald</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Felur litstigul spilunarstýringanna þegar þú rennir fingrinum á meðan þú heldur niðri til að flýta fyrir</string>
   <string name="morphe_hide_timed_reactions_title">Fela tímabilsbundnar viðbrögð</string>
   <string name="morphe_hide_timed_reactions_summary">Felur eiginleikann sem gerir notendum kleift að bregðast við með emojis í athugasmdum og lifandi streymi</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Fela \'Hjálp &amp; endurgjöf\' í valmyndum</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Felur \'Hjálp &amp; endurgjöf\' í þriggja punkta valmyndum verkstikunnar, eins og leitarniðurstöðuvalmyndinni</string>
+  <string name="morphe_hide_help_feedback_menu_title">Fela valmyndina \'Hjálp &amp; ábendingar\'</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Felur valmyndina \'Hjálp &amp; ábendingar\' þegar þrípunktahnappurinn er notaður, eins og í leitarniðurstöðum</string>
   <string name="morphe_hide_handle_title">Fela handfang</string>
   <string name="morphe_hide_handle_summary">Felur rásarhandfangið þitt í flipanum \'Þú\'</string>
   <string name="morphe_hide_video_title_title">Fela myndbandsheiti</string>
   <string name="morphe_hide_video_title_summary">Felur vídeótitilinn í fullskjástillingu</string>
   <string name="morphe_sanitize_video_subtitle_title">Hreinsa undirtitla myndbands</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Hreinsar orðasambönd eins og \'#\', \'Söfnun\', \'Verslun\' og \'vörur\' úr undirtitlum myndbands</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Hreinsar frasa eins og \'#\', \'Fjáröflun\', \'vöru(r)\' og \'Verslun\' úr myndbandstexta</string>
   <string name="morphe_hide_description_components_screen_title">Vídeó lýsing</string>
   <string name="morphe_hide_description_components_screen_summary">Veldu hvaða þættir birtast í vídeó lýsingunni</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Felur \'AI-myndað vídeó samantekningu\' hluta</string>
@@ -327,7 +327,6 @@ Takmörk:
   <string name="morphe_hide_stats_hidden_all_title">Vídeó falin, alls</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">Núllstilla síðasta sólarhrings teljar?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">Endurstilla allan tímamælinn?</string>
-  <string name="morphe_hide_about_category_title">Um</string>
   <string name="morphe_hide_aislist_screen_title">AI rannfiltrun</string>
   <string name="morphe_hide_aislist_screen_summary">Fela myndbönd frá rásum sem AiSList samfélagið hefur merkt sem AI-búin efni</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Bannlisti: Há áreiðanleiki</string>
@@ -346,9 +345,9 @@ Takmörk:
 Takmarkanir:
 • Síðar AI Shorts gæti sýnt sem tómt svæði.
 • Sum myndbönd AI gæti enn sýnt"</string>
-  <string name="morphe_hide_aislist_attribution_summary">"Gagnin eru veitt af AiSList
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList er opinn listi yfir YouTube rásir sem birta AI-búið efni, viðhaldið af sjálfboðaliðum. Rásir eru tilkynntar af notendum og skoðaðar áður en þær eru bættar við
 
-Bankaðu hér til að opna AiSlopList.com og skoða niðurhal fyrir önnur kerfi"</string>
+Listinn er sóttur af GitHub og myndbönd eru síuð á tækinu þínu"</string>
   <string name="morphe_aislist_submit_category_title">Tilkynna gervigreindarrásir</string>
   <string name="morphe_aislist_submit_flyout_menu_title">Bæta tilkynningarfærslu við myndbandsvalmynd</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">Bæta færslu við myndbandsvalmyndina sem tilkynnir rás myndbandsins til AiSList</string>
@@ -401,7 +400,7 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Leita í rásinni</string>
-  <string name="morphe_channel_search_summary">Meðan rás er opin er aðeins leitað í þeirri rás</string>
+  <string name="morphe_channel_search_summary">Bætir við öðrum leitahnappi á rásarsíðum til að leita aðeins á þeirri rás</string>
   <string name="morphe_channel_search_hint">Leita að rás</string>
   <string name="morphe_channel_search_results">Leitarniðurstöður rása</string>
   <string name="morphe_channel_search_no_results">Ekkert fannst á þessari rás</string>
@@ -420,6 +419,13 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <string name="morphe_copy_video_link_button_summary">Hnútur til að kopíera myndbandatengilinn, haltu inni til að kopíera með tímastampu</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Afrita puntktarmerkið sjálfgefið</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Snýr við hnappaðgerðunum á \'Bæta við myndbandatengil\'</string>
+  <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">Afrita titil myndbands</string>
+  <string name="morphe_copy_video_title_summary">Snertu titil myndbandsins og haltu honum til að afrita hann</string>
+  <string name="morphe_copy_video_title_success">Titill myndbands afritaður á klippiborð</string>
+  <string name="morphe_copy_comments_title">Afrita athugasemdir</string>
+  <string name="morphe_copy_comments_summary">Snertu athugasemd og haltu henni til að afrita hana</string>
+  <string name="morphe_copy_comments_success">Athugasemd afrituð á klippiborð</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Gerðu ekki birtu „Innskráningu á sjónvarpi“ á popup glugganum</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Gerðu \'Tengdu tækin þín\' kynningarglugga óvirkan</string>
@@ -436,7 +442,6 @@ Tilkynningar eru opinberar og endurskoðaðar áður en rás er bætt við lista
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Þýðing á raddsegulmagni</string>
   <string name="morphe_vot_screen_summary">Les upp undirtitla myndbandsins með texta-til-tala á tækinu, samhæmt með endursendingu</string>
-  <string name="morphe_vot_enabled_title">Þýðing á raddsegulmagni</string>
   <string name="morphe_vot_enabled_summary">Sýnir yfirlagshnapp í myndspilaranum. Snertu til að kveikja/slökkva á þýðingu, snertu og haltu fyrir flýtistillingar</string>
   <string name="morphe_vot_caption_language_title">Tungumál</string>
   <string name="morphe_vot_translation_service_title">Þýðingarveitari</string>
@@ -504,9 +509,9 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_loop_video_range_clear">Hreinsa</string>
   <string name="morphe_loop_video_range_toast_on">Hliðun %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Ógilt tímabil</string>
-  <!-- interaction.pip.pipButtonPatch -->
-  <string name="morphe_pip_button_overlay_title">Sýna mynd-í-mynd yfirlagshnapp</string>
-  <string name="morphe_pip_button_flyout_title">Sýna mynd-í-mynd sprettigluggahnapp</string>
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Sýna mynd-í-mynd-hnapp</string>
+  <string name="morphe_pip_button_flyout_title">Sýna mynd-í-mynd-valmynd</string>
   <string name="morphe_pip_button_flyout_name">Skipta yfir í mynd-í-mynd</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Sýnir Spila allt hnappinn</string>
@@ -714,18 +719,12 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_hide_save_button_title">Felur Vista hnappinn</string>
   <string name="morphe_hide_more_button_title">Fela More hnappinn</string>
   <string name="morphe_fullscreen_buttons">Hópvinnar</string>
-  <string name="morphe_hide_quick_actions_title">Fela áhrif áhnamma</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Felur Spyrja hnappinn</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Felur Athugasmdir hnappinn</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Felur Diska hnappinn</string>
   <string name="morphe_hide_quick_actions_like_button_title">Felur Like hnappinn</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Felur \'Lifandi streymi\' hnappinn</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Felur Mix hnappinn</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Felur Meira hnappinn</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">Felur \'Meiri vídeó\' hnappinn</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">Felur Spilalistasíðu hnappinn</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Felur Vista hnappinn</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Felur Deila hnappinn</string>
   <string name="morphe_quick_actions_top_margin_title">Tósskýr verka stjórnendur</string>
   <string name="morphe_quick_actions_top_margin_summary">Stilltu toppfyrirveru um hraða virkni</string>
   <!-- layout.captions.captionsPatch -->
@@ -739,6 +738,10 @@ Til að laga þetta skaltu kveikja á 'Spoofa myndstreymi' og breyta 'Sjálfgefn
   <string name="morphe_auto_captions_style_entry_4">Sýna þegar hljóðlát</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Sýna sjálfvirka undirtitla</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Fela sjálfvirka undirtitla</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">Æskilegt skjátextamál</string>
+  <string name="morphe_preferred_caption_language_summary">Velur skjátexta frá veitanda fyrst, þýðir síðan sjálfkrafa á æskilegt tungumál</string>
+  <string name="morphe_preferred_caption_language_entry_off">Slökkt</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Stilltu kökkurnar sem þurfa að vera stilltar á Timed Text API (Gögn kökkurdreifur)</string>
   <string name="morphe_set_caption_cookies_summary">"Lagfærir innbyggða YouTube villu þar sem sjálfvirku þýðingartextarnir gætu ekki verið tiltækir vegna vantaðra smákaka
@@ -793,13 +796,8 @@ Til þess að fá access til stillingarinnar skaltu koma á stillinguna í gegnu
   <string name="morphe_toolbar_screen_summary">Veldu hvaða þættir birtast á verkfærastikunni</string>
   <string name="morphe_hide_toolbar_cast_button_title">Felur Cast hnappinn</string>
   <string name="morphe_hide_toolbar_chat_button_title">Fela chat á hnappinn</string>
-  <string name="morphe_hide_toolbar_create_button_title">Felur Búa til hnappinn</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Felur Hljóðnema hnappinn</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Felur Tilkynninga hnappinn</string>
   <string name="morphe_hide_toolbar_search_button_title">Felur Leita hnappinn</string>
-  <string name="morphe_show_toolbar_settings_button_title">Sýnir Stillingar hnappinn</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">Stillingar hnappur staðsetning</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">Starfa árásnstjórnstikur</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Þegar virkt, opnar ýta á Morphe stillingar og langt ýta á YouTube stillingar, óvirkt til að skipta út</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flytandi valmynd</string>
@@ -948,6 +946,8 @@ Stillingar → Spilun (eða Sjálfvædd spilun) → Sjálfvædd næsta myndband"
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Óvirkja sjálfvirka spilun á spilunarlista</string>
   <string name="morphe_disable_playlist_autoplay_summary">Kemur í veg fyrir að spilunarlistar fari sjálfkrafa á næsta myndband</string>
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">Slökkva á \"Halda áfram að horfa?\" tilkynningunni</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Hættir fullskjástillingu á lok vídeós</string>
   <string name="morphe_exit_fullscreen_entry_1">Gerðu óvirkt </string>
@@ -1153,29 +1153,31 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">DeArrow titlar</string>
-  <string name="morphe_dearrow_titles_summary">Skiptir út myndbandstitlum fyrir hópunna titla sem lagðir hafa verið fram til DeArrow</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_home_title">Heim</string>
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_subscription_title">Áskriftir</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_library_title">Þú-flipi</string>
+  <string name="morphe_dearrow_titles_player_title">Spilunarlistar &amp; tillögur spilara</string>
+  <string name="morphe_dearrow_titles_search_title">Leitarniðurstöður</string>
   <string name="morphe_dearrow_titles_icon_title">Sýna DeArrow táknið</string>
   <string name="morphe_dearrow_titles_icon_summary">Sýnir DeArrow táknið á hópsöfnuðum myndbandstitlum</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_home_title">Fyrir valmyndina Heim</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_subscription_title">Fyrir valmyndina Áskrifenda</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_library_title">Fyrir valmyndina Þú</string>
-  <string name="morphe_dearrow_thumbnail_player_title">Fyrir spilalistar og ráðleggingar</string>
-  <string name="morphe_dearrow_thumbnail_search_title">Fyrir leitarúrslit</string>
+  <string name="morphe_dearrow_casual_mode_title">Frjálslegur hamur</string>
+  <string name="morphe_dearrow_casual_mode_summary">Sýnir upprunalega titilinn í stað DeArrow-titilsins ef DeArrow-notendur kusu að þeim líki upprunalegi titillinn</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Lágmarksfjöldi óformlegra atkvæða til að sýna upprunalega titilinn</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">Fjöldi óformlegra atkvæða í einum flokki, svo sem fyndinn eða skapandi, sem þarf til að sýna upprunalega titilinn</string>
+  <string name="morphe_dearrow_thumbnails_title">DeArrow-smámyndir</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">Upprunalega smámyndirnar</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; Upprunalegar smámyndir</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; Stillmyndir</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">Stillmyndir</string>
-  <string name="morphe_dearrow_about_summary">"DeArrow veitir titla og smámyndir sem eru hópunnin fyrir YouTube myndbönd. Þetta er oft viðeigandi en það sem YouTube veitir
+  <string name="morphe_dearrow_about_summary">"DeArrow skiptir út smelluöngrum titlum og smámyndum með notendafengnum sem eru nákvæmari og minna tilfinningaþrungnir. Titlar eru skrifaðir og kosið um af samfélaginu, og smámyndir eru rammar úr myndbandinu
 
-Ef það er virkt, verða slóðir myndbanda sendar til API-þjónsins og engin önnur gögn verða send. Ef myndband hefur engar DeArrow-smámyndir, þá eru upprunalegu myndirnar eða kyrrmyndirnar sýndar
-
-Snertið hér til að opna DeArrow.ajay.app"</string>
+Myndbönd eru beðin um með stuttu forskeyti af dulkóðaða myndbandskenni, svo þjónninn getur ekki sagt nákvæmlega hvaða myndband þú ert að horfa á. Ef myndband hefur enga DeArrow smámynd, er upprunalega myndin eða kyrrmynd sýnd"</string>
   <string name="morphe_dearrow_connection_toast_title">Sýnir tilkynningum um tengslatruflanir</string>
   <string name="morphe_dearrow_connection_toast_summary">Sýnir tilkynningu þegar DeArrow netþjónninn er óskár</string>
-  <string name="morphe_dearrow_api_url_title">DeArrow API endapunktur</string>
+  <string name="morphe_dearrow_api_url_title">API-endapunktur</string>
   <string name="morphe_dearrow_api_url_summary">URL DeArrow smámynda minnisins</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">Stillmyndum af myndböndum</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">Stöðumyndir eru teknar frá upphafi / miðju / lokum hvers vídeó. Þessar myndir eru innbyggðar í YouTube og engin utanaðkomandi API er notuð</string>

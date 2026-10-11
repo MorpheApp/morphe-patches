@@ -18,6 +18,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.theme.splashAnimationPatch -->
+  <string name="morphe_splash_screen_animation_style_title">انیمیشن راه‌اندازی</string>
   <string name="morphe_splash_screen_animation_style_entry_1">غیرفعال</string>
   <string name="morphe_splash_screen_animation_style_entry_2">رنگی</string>
   <string name="morphe_splash_screen_animation_style_entry_3">تک‌رنگ</string>
@@ -107,10 +108,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"ورود به Android VR می‌تواند مشکلات پخش را برای برخی کاربران برطرف کند
 
 برای ورود، دکمهٔ ادامه را در زیر فشار دهید"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">ادامه</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">خروج از حساب</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">دستورالعمل‌ها</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"کد فعال‌سازی: %s
 
 ۱. برای بازکردن وب‌سایت «اتصال دستگاه»، روی «بازکردن وب‌سایت» در زیر ضربه بزنید
@@ -118,7 +118,6 @@ Second \"item\" text"</string>
 ۳. اگر درخواست شد، به Google وارد شوید. اگر چند حساب دارید، این حساب YouTube را انتخاب کنید
 ۴. روی «اجازهٔ دسترسی به YouTube VR» ضربه بزنید
 ۵. پس از رسیدن به پیام «دستگاه متصل شد»، به این برنامه برگردید"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">بازکردن وب‌سایت</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">صدور کد فعال‌سازی ناموفق بود</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">صدور توکن احراز هویت ناموفق بود</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">ورود با موفقیت انجام شد</string>
@@ -150,6 +149,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">اجبار زبان صدای اصلی</string>
   <string name="morphe_force_original_audio_summary">همیشه ترک صوتی اصلی ویدئو را به‌جای نسخهٔ دوبله‌شده پخش می‌کند</string>
   <!-- misc.audio.silence.skipSilencePatch -->
+  <string name="morphe_skip_silence_title">رد کردن سکوت</string>
+  <string name="morphe_skip_silence_summary">به‌طور خودکار مکث‌های بی‌صدا در صدای ویدیو را رد می‌کند</string>
+  <string name="morphe_skip_silence_minimum_pause_title">حداقل طول مکث</string>
+  <string name="morphe_skip_silence_minimum_pause_summary">فقط مکث‌هایی که حداقل این مدت طول بکشند کوتاه‌تر می‌شوند. با شروع ویدیوی بعدی اعمال می‌شود</string>
   <!-- misc.proxy.networkProxyPatch -->
   <string name="morphe_proxy_screen_title">پروکسی شبکه</string>
   <string name="morphe_proxy_screen_summary">درخواست‌های شبکهٔ پشتیبانی‌شده را از طریق یک پروکسی هدایت کنید</string>
@@ -193,7 +196,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">فیلتر سفارشی</string>
   <string name="morphe_custom_filter_screen_summary">فیلترهای سفارشی را برای پنهان‌کردن هر مؤلفه‌ای پیکربندی کنید</string>
   <string name="morphe_custom_filter_title">فعال‌کردن فیلتر سفارشی</string>
-  <string name="morphe_custom_filter_strings_title">فیلتر سفارشی</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">رشته‌های سازندهٔ مسیر مؤلفه‌ها را برای فیلترکردن، با خطوط جدید از هم جدا کنید</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">فیلتر سفارشی نامعتبر است: %s</string>
@@ -247,6 +249,8 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_failure_generic">نپسندیدن‌ها در دسترس نیستند (%s)</string>
   <!-- Video likes have been set to hidden by the video uploader. -->
   <string name="morphe_ryd_video_likes_hidden_by_video_owner">توسط مالک پنهان شده است</string>
+  <string name="morphe_ryd_accessibility_dislike_count">این ویدیو را همراه با %s نفر دیگر دیسلایک کنید</string>
+  <string name="morphe_ryd_accessibility_dislike_percentage">این ویدیو را دیسلایک کنید؛ %s از آرا دیسلایک هستند</string>
   <string name="morphe_ryd_enabled_title">فعال‌کردن Return YouTube Dislike</string>
   <string name="morphe_ryd_dislike_percentage_title">نمایش نپسندیدن‌ها به‌صورت درصد</string>
   <string name="morphe_ryd_dislike_percentage_summary">نپسندیدن‌ها را به‌جای عدد، به‌صورت درصدی از پسندیدن‌ها نمایش می‌دهد</string>
@@ -254,9 +258,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">در ویدئوهایی که سازنده پسندیدن‌ها را غیرفعال کرده است، تعداد پسندیدن تخمینی را نمایش می‌دهد</string>
   <string name="morphe_ryd_toast_on_connection_error_title">نمایش هشدارهای خطای اتصال</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">وقتی سرور Return YouTube Dislike در دسترس نباشد، اعلانی نمایش می‌دهد</string>
-  <string name="morphe_ryd_attribution_summary">"داده‌ها توسط API سرویس Return YouTube Dislike ارائه می‌شوند
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike تعداد دیسلایک‌هایی را که YouTube در ۲۰۲۱ پنهان کرد بازیابی می‌کند. این شمارش‌ها از داده‌های بایگانی‌شده پیش از حذف به دست می‌آیند و برای ویدیوهای جدیدتر بر اساس آرای کاربران Return YouTube Dislike تخمین زده می‌شوند؛ بنابراین تقریبی هستند و هر چند روز یک‌بار به‌روزرسانی می‌شوند
 
-برای بازکردن ReturnYouTubeDislike.com، اینجا ضربه بزنید"</string>
+شناسه ویدیویی که تماشا می‌کنید به API سرویس Return YouTube Dislike ارسال می‌شود و لایک‌ها و دیسلایک‌های شما به‌صورت ناشناس برای بهبود تخمین‌ها ارسال می‌شوند"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">آمار API سرویس Return YouTube Dislike این دستگاه</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">زمان پاسخ API، میانگین</string>

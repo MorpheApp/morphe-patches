@@ -108,10 +108,9 @@ Nếu bạn đã mua gói Premium, có thể không cần thiết phải bật c
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Đăng nhập Android VR có thể sửa lỗi phát cho một số người dùng
 
 Bấm tiếp tục bên dưới để đăng nhập"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Tiếp tục</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Đăng xuất</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Hướng dẫn</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Mã kích hoạt: %s
 
 1. Bấm \"Mở trang web\" dưới đây để mở trang web \"Kết nối thiết bị\"
@@ -119,7 +118,6 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
 3. Đăng nhập vào Google nếu được yêu cầu. Nếu bạn có nhiều tài khoản thì chọn tài khoản YouTube này
 4. Bấm \"Cho phép\" YouTube VR truy cập
 5. Quay lại ứng dụng sau khi nhận được thông báo \"Kết nối thiết bị thành công\""</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Mở trang web</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Thất bại khi cấp mã kích hoạt</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Thất bại khi cấp mã xác thực</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Đã đăng nhập thành công</string>
@@ -198,7 +196,6 @@ Tuy nhiên, một số dữ liệu người dùng cũng được ghi lại như 
   <string name="morphe_custom_filter_screen_title">Bộ lọc tùy chỉnh</string>
   <string name="morphe_custom_filter_screen_summary">Cấu hình bộ lọc tùy chỉnh để ẩn bất kỳ thành phần nào</string>
   <string name="morphe_custom_filter_title">Bật bộ lọc tùy chỉnh</string>
-  <string name="morphe_custom_filter_strings_title">Bộ lọc tùy chỉnh</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Danh sách các string tạo đường dẫn thành phần mà bạn muốn lọc, mỗi dòng một string</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Bộ lọc tuỳ chỉnh không hợp lệ: %s</string>
@@ -261,9 +258,9 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_ryd_estimated_like_summary">Hiển thị số lượt thích ước tính trên các video mà nhà sáng tạo đã ẩn lượt thích</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Hiện cảnh báo lỗi kết nối</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Hiển thị thông báo khi máy chủ Return YouTube Dislike không khả dụng</string>
-  <string name="morphe_ryd_attribution_summary">"Dữ liệu được cung cấp bởi API Return YouTube Dislike
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike khôi phục số lượt không thích mà YouTube đã ẩn vào năm 2021. Số liệu đến từ dữ liệu được lưu trữ trước khi gỡ bỏ và được ước tính cho các video mới hơn dựa trên phiếu bầu của người dùng, vì vậy chúng chỉ là gần đúng và được cập nhật sau mỗi vài ngày
 
-Bấm vào đây để mở ReturnYouTubeDislike.com"</string>
+ID của video bạn xem được gửi đến API Return YouTube Dislike, và lượt thích và không thích của bạn được gửi ẩn danh để cải thiện các ước tính"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Thống kê API Return YouTube Dislike của thiết bị này</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Thời gian phản hồi API trung bình</string>

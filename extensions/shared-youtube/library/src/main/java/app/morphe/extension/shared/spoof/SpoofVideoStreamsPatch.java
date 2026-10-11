@@ -67,6 +67,8 @@ public class SpoofVideoStreamsPatch {
 
     private static volatile ClientType preferredClient = ClientType.VISIONOS_1_02;
 
+    private static volatile boolean forceAVC;
+
     /**
      * @return If this patch was included during patching.
      */
@@ -101,6 +103,17 @@ public class SpoofVideoStreamsPatch {
 
     public static ClientType getPreferredClient() {
         return preferredClient;
+    }
+
+    /**
+     * @param force If the app is set to play only AVC, so the VP9 formats of a spoofed stream are removed.
+     */
+    public static void setForceAVC(boolean force) {
+        forceAVC = force;
+    }
+
+    public static boolean getForceAVC() {
+        return forceAVC;
     }
 
     public static boolean spoofingToClientWithNoMultiAudioStreams() {

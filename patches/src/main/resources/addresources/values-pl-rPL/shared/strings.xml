@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importowanie nie powiodło się: %s</string>
   <string name="morphe_settings_navigate_up">Przejdź w górę</string>
   <string name="morphe_settings_search_hint">Szukaj w ustawieniach</string>
+  <string name="morphe_settings_screen_info_title">Informacje</string>
   <string name="morphe_settings_search_no_results_title">Brak wyników dla \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Spróbuj innego słowa</string>
   <string name="morphe_settings_search_recent_searches">Ostatnie wyszukiwania</string>
@@ -105,7 +106,6 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
 Nie dostaniesz informacji o żadnych nieoczekiwanych zdarzeniach."</string>
   <string name="morphe_debug_export_logs_title">Eksportuj logi debugowania</string>
   <string name="morphe_debug_export_logs_summary">Eksportuj logi debugowania Morphe</string>
-  <string name="morphe_debug_export_logs_file">Wyeksportuj do pliku</string>
   <string name="morphe_debug_export_logs_success">Logi debugowania wyeksportowane pomyślnie</string>
   <string name="morphe_debug_export_logs_failed">Nie udało się wyeksportować logów debugowania</string>
   <string name="morphe_debug_logs_search_hint">Szukaj w logach debugowania…</string>
@@ -229,4 +229,7 @@ Jeśli ustawienia optymalizacji baterii nie zostaną zmienione, mogą wystąpić
 Jeśli zależy Ci na stabilności, &lt;b&gt;odinstaluj&lt;/b&gt; obecną aplikację i zmodyfikuj zalecaną wersję ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Wybieram eksperymentalną</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Wybieram stabilną</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Zapisano dziennik awarii w dokumentach użytkownika: %s</string>
+  <string name="morphe_crash_log_saved">Zapisano dziennik awarii: %s</string>
 </resources>

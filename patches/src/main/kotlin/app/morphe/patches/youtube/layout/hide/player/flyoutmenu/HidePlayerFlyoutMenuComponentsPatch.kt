@@ -96,6 +96,18 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_player_flyout_watch_in_vr")
         )
 
+        PreferenceScreen.SHORTS.addPreferences(
+            SwitchPreference(
+                key = "morphe_hide_shorts_flyout_audio_track",
+                titleKey = "morphe_hide_player_flyout_audio_track_title",
+                tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
+            ),
+            SwitchPreference(
+                "morphe_hide_shorts_flyout_captions",
+                titleKey = "morphe_hide_player_flyout_captions_title"
+            )
+        )
+
         addLithoFilter(EXTENSION_FILTER)
         hookElement("$EXTENSION_CLASS->hideNativeBottomSheetHeader")
         hookTreeNodeResult(

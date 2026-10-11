@@ -108,10 +108,9 @@ Ha YouTube Premium-felhasználó vagy, ez a beállítás nem feltétlenül szük
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-ba belépéssel megoldhatók a lejátszás problémái
 
 Belépéshez nyomd meg a folytatást alul"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Folytatás</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Kijelentkezés</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Utasítások</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Engedélykód: %s
 
 1. Nyomja meg az \"Open website\" (Webhely megnyitása) lehetőséget a fenti weboldal megnyitásához, hogy a \"Connect a device\" (Eszköz kapcsolása) weboldalt nyissa meg
@@ -119,7 +118,6 @@ Belépéshez nyomd meg a folytatást alul"</string>
 3. Ha a promptot (leütöttékbirod) kérdés feltételezi, jelentkezzen be a Google be. Ha több fiókját használja, válassza ki ezt a YouTube fiókot
 4. Válaszoljon \"Allow YouTube VR\" (Engedélyezés a YouTube VR számára)
 5. A \"Device connected\" (Eszköz kapcsolva) üzenettel való visszatérés után térjen vissza ez az alkalmazás"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Webhely megnyitása</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Sikertelen volt az engedélykód kiállítása</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Sikertelen volt az elérési jogkivonat kiállítása</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Sikeresen bejelentkezett</string>
@@ -198,7 +196,6 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_custom_filter_screen_title">Egyedi szűrő</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurálja az egyedi szűrőket a komponensek elrejtéséhez</string>
   <string name="morphe_custom_filter_title">Egyéni szűrő engedélyezése</string>
-  <string name="morphe_custom_filter_strings_title">Egyedi szűrő</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Szűrendő elemek útvonal-karakterláncainak listája, új sorokkal elválasztva</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Érvénytelen egyedi szűrő: %s</string>
@@ -261,9 +258,9 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_ryd_estimated_like_summary">Becsült lájkszám megjelenítése azokon a videókon, ahol a készítő letiltotta a lájkokat</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Hálózati hibaértesítések megjelenítése</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Értesítést jelenít meg, ha a Return YouTube Dislike szerver nem érhető el</string>
-  <string name="morphe_ryd_attribution_summary">"Az adatokat a Return YouTube Dislike API biztosítja
+  <string name="morphe_ryd_attribution_summary">"A Return YouTube Dislike visszaállítja a YouTube által 2021-ben elrejtett nemtetszés-számlálókat. A számok a törlés előtt archivált adatokból származnak, az újabb videóknál pedig a felhasználók szavazatai alapján becsülik őket, így közelítőek, és néhány naponta frissülnek.
 
-Érintse meg ide a ReturnYouTubeDislike.com megnyitásához"</string>
+A megtekintett videó azonosítóját elküldjük a Return YouTube Dislike API-nak, a like-jaid és dislike-jaid pedig névtelenül kerülnek elküldésre a becslések javításához."</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">A Return YouTube Dislike API statisztikái erről az eszközről</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API válasz idő, átlag</string>

@@ -156,7 +156,7 @@ public class ListenBrainzTokenPreference extends Preference {
         LinearLayout mainLayout = dialogPair.second;
 
         Button getBtn = CustomDialog.createButton(context, null,
-                str("morphe_music_listenbrainz_token_dialog_get_token"),
+                str("morphe_music_token_dialog_get_token"),
                 () -> {
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://listenbrainz.org/profile/"));

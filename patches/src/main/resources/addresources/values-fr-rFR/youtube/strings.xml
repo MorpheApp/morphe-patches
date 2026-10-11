@@ -63,7 +63,6 @@ Les changements incluent :
   <string name="morphe_hide_album_cards_summary">Masque les cartes d\'album sous la description de l\'artiste</string>
   <string name="morphe_hide_artist_cards_title">Masquer les fiches d\'artiste</string>
   <string name="morphe_hide_artist_cards_summary">Masque la carte de l\'artiste en haut des résultats de recherche</string>
-  <string name="morphe_hide_auto_dubbed_label_title">Masquer le libellé \'Doublée automatiquement\'</string>
   <string name="morphe_hide_channel_buttons_title">Masquer les boutons des chaînes</string>
   <string name="morphe_hide_channel_buttons_summary">Masque les boutons tels que \'S\'abonner\', \'Accéder à la chaîne\', \'Communauté\' et \'YouTube Music\' des profils de chaînes dans les résultats de recherche</string>
   <string name="morphe_hide_community_posts_title">Masquer posts destinés à la communauté</string>
@@ -79,7 +78,6 @@ Les changements incluent :
   <string name="morphe_hide_history_shelf_title">Masquer l\'étagère \'Historique\'</string>
   <string name="morphe_hide_horizontal_shelves_title">Masquer les étagères horizontales</string>
   <string name="morphe_hide_horizontal_shelves_summary">Masque les étagères horizontales telles que \'Actualités de dernière minute\', \'Posts destinés à la communauté que vous pourriez aimer\', \'Continuer à regarder\', \'Découvrez d\'autres chaînes\', \'Découvrez d\'autres sujets\', \'Pour vous\', \'Vidéos les plus récentes\', \'Les plus pertinentes\', \'Posts de la communauté du créateur\', \'Shopping\' et \'Regarder à nouveau\'</string>
-  <string name="morphe_hide_hyped_label_title">Masquer le libellé \'Boostée\'</string>
   <string name="morphe_hide_image_shelf_title">Masquer l\'étagère d\'images</string>
   <string name="morphe_hide_image_shelf_summary">Masque les étagères d\'images dans les résultats de recherche</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -121,9 +119,9 @@ Les changements incluent :
 • Les étagères Shorts, les pages de chaîne et les résultats de recherche peuvent toujours afficher les dates de mise en ligne
 • Ne fonctionne pas avec la disposition automobile"</string>
   <string name="morphe_hide_video_thumbnail_title">Masquer la miniature de la vidéo</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">Masquer les libellés de vidéos recommandées</string>
-  <string name="morphe_hide_video_recommendation_labels_summary">Masque les libellés \'Les gens ont également regardé\' et \'Vous pourriez aussi aimer\' dans les résultats de recherche</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">Masquer les libellés des vidéos</string>
+  <string name="morphe_hide_video_labels_summary">Masque les libellés tels que \'Doublée automatiquement\' / \'Doublée\', \'Gagne une commission\', \'Boostée\', \'Les gens ont également regardé\', \'produit(s)\' et \'Vous aimerez peut-être aussi\'</string>
   <string name="morphe_hide_view_count_title">Masquer le nombre de vues</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"Limitations :
@@ -158,17 +156,19 @@ Les changements incluent :
   <string name="morphe_hide_snackbar_title">Masquer la barre de notification</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Masquer le règlement de la communauté</string>
   <string name="morphe_hide_sync_button_title">Masquer le bouton \'Synchroniser avec la vidéo\'</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">Masquer le dégradé en appuyant longuement</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">Masque le dégradé des commandes du lecteur lorsque vous faites glisser votre doigt tout en maintenant la pression pour accélérer</string>
   <string name="morphe_hide_timed_reactions_title">Masquer les réactions en temps réel</string>
   <string name="morphe_hide_timed_reactions_summary">Masque la fonctionnalité permettant aux utilisateurs de réagir avec des émojis dans la section des commentaires et le chat en direct</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">Masquer \'Aide et commentaires\' dans les menus</string>
-  <string name="morphe_hide_help_feedback_menu_summary">Masquer \'Aide et commentaires\' dans les menus à trois points de la barre d\'application, comme celui des résultats de recherche</string>
+  <string name="morphe_hide_help_feedback_menu_title">Masquer le menu \'Aide et commentaires\'</string>
+  <string name="morphe_hide_help_feedback_menu_summary">Masque le menu \'Aide et commentaires\' lorsque vous utilisez le bouton à trois points, par exemple dans les résultats de recherche</string>
   <string name="morphe_hide_handle_title">Masquer le pseudo</string>
   <string name="morphe_hide_handle_summary">Masque le pseudo de votre chaîne dans l\'onglet \'Vous\'</string>
   <string name="morphe_hide_video_title_title">Masquer le titre de la vidéo</string>
   <string name="morphe_hide_video_title_summary">Masque le titre de la vidéo en mode plein écran</string>
   <string name="morphe_sanitize_video_subtitle_title">Nettoyer les sous-titres de la vidéo</string>
-  <string name="morphe_sanitize_video_subtitle_summary">Nettoie des expressions comme \'#\', \'Collecte de fonds\', \'Magasin\' et \'Produits\' des sous-titres de la vidéo</string>
+  <string name="morphe_sanitize_video_subtitle_summary">Nettoie les expressions comme \'#\', \'Collecte de fonds\', \'produit(s)\' et \'Magasin\' des sous-titres vidéo</string>
   <string name="morphe_hide_description_components_screen_title">Description vidéo</string>
   <string name="morphe_hide_description_components_screen_summary">Choisissez les composants qui apparaissent dans la description de la vidéo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Masquer la section \'Résumé de la vidéo généré par IA\'</string>
@@ -327,7 +327,6 @@ Limitations :
   <string name="morphe_hide_stats_hidden_all_title">Vidéos masquées, depuis toujours</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">Réinitialiser le compteur des dernières 24 heures ?</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">Réinitialiser le compteur de temps total ?</string>
-  <string name="morphe_hide_about_category_title">À propos</string>
   <string name="morphe_hide_aislist_screen_title">Filtre des chaînes IA</string>
   <string name="morphe_hide_aislist_screen_summary">Masquer les vidéos des chaînes signalées comme diffusant du contenu généré par IA par la liste communautaire AiSList</string>
   <string name="morphe_hide_aislist_blocklist_category_title">Liste de blocage : confiance élevée</string>
@@ -346,9 +345,9 @@ Limitations :
 Limitations :
 Les Shorts IA filtrés peuvent apparaître sous la forme d'un espace vide
 Certaines vidéos générées peuvent encore apparaître"</string>
-  <string name="morphe_hide_aislist_attribution_summary">"Les données sont fournies par AiSList
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList est une liste open source de chaînes YouTube qui publient du contenu généré par IA, gérée par des bénévoles. Les chaînes sont signalées par les utilisateurs puis vérifiées avant d'être ajoutées à la liste
 
-Appuyez ici pour ouvrir AiSlopList.com et voir les téléchargements disponibles pour les autres plateformes"</string>
+La liste est téléchargée depuis GitHub et les vidéos sont filtrées sur votre appareil"</string>
   <string name="morphe_aislist_submit_category_title">Signaler les chaînes IA</string>
   <string name="morphe_aislist_submit_flyout_menu_title">Ajouter l\'option de signalement au menu vidéo</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">Ajouter une entrée au menu vidéo pour signaler la chaîne d\'une vidéo à AiSList</string>
@@ -401,7 +400,7 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">Rechercher dans la chaîne</string>
-  <string name="morphe_channel_search_summary">Lorsqu\'une recherche est effectuée alors qu\'une chaîne est ouverte les résultats concernent uniquement cette chaîne</string>
+  <string name="morphe_channel_search_summary">Ajoute un deuxième bouton de recherche sur les pages de chaînes afin d\'effectuer une recherche uniquement dans cette chaîne</string>
   <string name="morphe_channel_search_hint">Rechercher une chaîne</string>
   <string name="morphe_channel_search_results">Résultats de recherche de chaînes</string>
   <string name="morphe_channel_search_no_results">Aucun résultat trouvé sur cette chaîne</string>
@@ -420,6 +419,13 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <string name="morphe_copy_video_link_button_summary">Appuyez pour copier le lien de la vidéo, appuyez longuement pour copier avec l\'horodatage</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">Copier l\'horodatage par défaut</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">Inverse les actions d\'appui et d\'appui long du bouton \'Copier le lien de la vidéo\'</string>
+  <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">Copier le titre de la vidéo</string>
+  <string name="morphe_copy_video_title_summary">Appuyez longuement sur le titre de la vidéo pour le copier</string>
+  <string name="morphe_copy_video_title_success">Titre de la vidéo copié dans le presse-papiers</string>
+  <string name="morphe_copy_comments_title">Copier les commentaires</string>
+  <string name="morphe_copy_comments_summary">Appuyez longuement sur un commentaire pour le copier</string>
+  <string name="morphe_copy_comments_success">Commentaire copié dans le presse-papiers</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Désactiver le pop-up \'Connectez-vous à la TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Désactiver le pop-up \'Associez vos appareils\'</string>
@@ -436,7 +442,6 @@ Les signalements sont publics et sont examinés avant qu'une chaîne ne soit ajo
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">Traduction en voix off</string>
   <string name="morphe_vot_screen_summary">Lisez les sous-titres de la vidéo à voix haute à l\'aide de la synthèse vocale sur l\'appareil, synchronisée avec la lecture</string>
-  <string name="morphe_vot_enabled_title">Traduction en voix off</string>
   <string name="morphe_vot_enabled_summary">Affiche un bouton overlay dans le lecteur vidéo. Appuyez dessus pour basculer la traduction, appuyez longuement pour accéder aux paramètres rapides.</string>
   <string name="morphe_vot_caption_language_title">Langue</string>
   <string name="morphe_vot_translation_service_title">Fournisseur de traduction</string>
@@ -504,9 +509,9 @@ Votre clé API ne doit jamais être partagée. Toute personne ayant accès à ce
   <string name="morphe_loop_video_range_clear">Effacer</string>
   <string name="morphe_loop_video_range_toast_on">Lecture en boucle de %1$s à %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Plage horaire invalide</string>
-  <!-- interaction.pip.pipButtonPatch -->
-  <string name="morphe_pip_button_overlay_title">Afficher un bouton overlay \'Image dans l\'image\'</string>
-  <string name="morphe_pip_button_flyout_title">Afficher le bouton déroulant \'Image dans l\'image\'</string>
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">Afficher un bouton \'Image dans l\'image\'</string>
+  <string name="morphe_pip_button_flyout_title">Afficher un menu \'Image dans l\'image\'</string>
   <string name="morphe_pip_button_flyout_name">Passer en Image dans l\'image</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Afficher un bouton \'Lire tout\'</string>
@@ -716,18 +721,12 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_hide_save_button_title">Masquer le bouton \'Enregistrer\'</string>
   <string name="morphe_hide_more_button_title">Masquer le bouton \'Plus\'</string>
   <string name="morphe_fullscreen_buttons">Boutons en plein écran</string>
-  <string name="morphe_hide_quick_actions_title">Masquer la barre d\'action</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Masquer le bouton \'Posez une question\'</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Masquer le bouton \'Commentaires\'</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">Masquer le bouton \'Je n\'aime pas\'</string>
   <string name="morphe_hide_quick_actions_like_button_title">Masquer le bouton \'J\'aime\'</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">Masquer le bouton \'Chat en direct\'</string>
   <string name="morphe_hide_quick_actions_mix_button_title">Masquer le bouton \'Mix\'</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Masquer le bouton \'Plus\'</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">Masquer le bouton \'Plus de vidéos\'</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">Masquer le bouton \'Playlist\'</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Masquer le bouton \'Enregistrer\'</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Masquer le bouton \'Partager\'</string>
   <string name="morphe_quick_actions_top_margin_title">Marge supérieure des actions rapides</string>
   <string name="morphe_quick_actions_top_margin_summary">Définir la marge supérieure de la barre d\'actions rapides (0-32 dp)</string>
   <!-- layout.captions.captionsPatch -->
@@ -741,6 +740,10 @@ Pour corriger cela, activez 'Falsifier les flux vidéo' et définissez 'Client p
   <string name="morphe_auto_captions_style_entry_4">Afficher quand coupé</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">Afficher les sous-titres automatiques</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Masquer les sous-titres automatiques</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">Langue préférée des sous-titres</string>
+  <string name="morphe_preferred_caption_language_summary">Sélectionne d\'abord les sous-titres fournis, puis les traduit automatiquement dans la langue préférée</string>
+  <string name="morphe_preferred_caption_language_entry_off">Désactivé</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Définir des cookies de sous-titres</string>
   <string name="morphe_set_caption_cookies_summary">"Corrige un bug de YouTube où les sous-titres traduits automatiquement peuvent ne pas être disponibles en raison de cookies manquants
@@ -795,13 +798,8 @@ Pour accéder aux paramètres, activez le bouton 'Paramètres' via Général →
   <string name="morphe_toolbar_screen_summary">Choisissez les composants qui apparaissent dans la barre d\'outils</string>
   <string name="morphe_hide_toolbar_cast_button_title">Masquer le bouton \'Caster\'</string>
   <string name="morphe_hide_toolbar_chat_button_title">Masquer le bouton \'Discuter\'</string>
-  <string name="morphe_hide_toolbar_create_button_title">Masquer le bouton \'Créer\'</string>
   <string name="morphe_hide_toolbar_microphone_button_title">Masquer le bouton \'Micro\'</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Masquer le bouton \'Notifications\'</string>
   <string name="morphe_hide_toolbar_search_button_title">Masquer le bouton \'Rechercher\'</string>
-  <string name="morphe_show_toolbar_settings_button_title">Afficher un bouton \'Paramètres\'</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">Position du bouton \'Paramètres\'</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">Action du bouton \'Paramètres\'</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">Lorsqu\'elle est activée, un appui ouvre les paramètres Morphe et un appui long ouvre les paramètres YouTube, désactivez-la pour inverser le comportement</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu déroulant</string>
@@ -953,6 +951,8 @@ Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de la v
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">Désactiver la lecture automatique de la playlist</string>
   <string name="morphe_disable_playlist_autoplay_summary">Empêche les playlists de passer automatiquement à la vidéo suivante</string>
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">Désactiver l\'invite \'Continuer à regarder ?\'</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">Quitter le mode plein écran à la fin de la vidéo</string>
   <string name="morphe_exit_fullscreen_entry_1">Désactivé</string>
@@ -1159,29 +1159,31 @@ Limitation : Si 'Restaurer l'ancienne barre d'actions vidéo' est désactivé, l
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">Titres DeArrow</string>
-  <string name="morphe_dearrow_titles_summary">Remplace les titres des vidéos par les titres proposés par la communauté sur DeArrow</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_home_title">Onglet \'Accueil\'</string>
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_subscription_title">Onglet \'Abonnements\'</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_library_title">Onglet \'Vous\'</string>
+  <string name="morphe_dearrow_titles_player_title">Lecteur de playlists &amp; recommandations</string>
+  <string name="morphe_dearrow_titles_search_title">Résultats de recherche</string>
   <string name="morphe_dearrow_titles_icon_title">Afficher l\'icône DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Affiche l\'icône DeArrow sur les titres des vidéos proposés par la communauté</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_home_title">Pour l\'onglet \'Accueil\'</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_subscription_title">Pour l\'onglet \'Abonnements\'</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_library_title">Pour l\'onglet \'Vous\'</string>
-  <string name="morphe_dearrow_thumbnail_player_title">Pour les playlists du lecteur &amp; les recommandations</string>
-  <string name="morphe_dearrow_thumbnail_search_title">Pour les résultats de recherche</string>
+  <string name="morphe_dearrow_casual_mode_title">Mode décontracté</string>
+  <string name="morphe_dearrow_casual_mode_summary">Affiche le titre d\'origine à la place du titre DeArrow si les utilisateurs de DeArrow ont voté en faveur du titre d\'origine</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Nombre minimum de votes occasionnels pour afficher le titre original</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">Le nombre de votes occasionnels dans une seule catégorie, comme drôle ou créatif, nécessaire pour afficher le titre original</string>
+  <string name="morphe_dearrow_thumbnails_title">Miniatures DeArrow</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">Miniatures originales</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; miniatures originales</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; captures d\'écran</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">Captures d\'écran</string>
-  <string name="morphe_dearrow_about_summary">"DeArrow fournit des titres et des miniatures proposés par la communauté pour les vidéos YouTube. Ceux-ci sont souvent plus pertinents que ceux fournis par YouTube
+  <string name="morphe_dearrow_about_summary">"DeArrow remplace les titres et les miniatures racoleurs par des versions proposées par la communauté, plus fidèles au contenu et moins sensationnalistes. Les titres sont rédigés et soumis au vote de la communauté, tandis que les miniatures sont des images extraites de la vidéo
 
-Si activé, les URL des vidéos seront envoyées au serveur de l'API et aucune autre donnée ne sera envoyée. Si une vidéo n'a pas de miniatures DeArrow, les miniatures originales ou des captures d'écran seront affichées
-
-Appuyez ici pour ouvrir DeArrow.ajay.app"</string>
+Les vidéos sont recherchées à l'aide d'un court préfixe de l'identifiant vidéo haché, ce qui empêche le serveur de savoir précisément quelle vidéo vous regardez. Si aucune miniature DeArrow n'est disponible pour une vidéo, la miniature originale ou une capture d'écran de la vidéo est affichée"</string>
   <string name="morphe_dearrow_connection_toast_title">Afficher les alertes d\'erreur de connexion</string>
   <string name="morphe_dearrow_connection_toast_summary">Affiche une notification lorsque le serveur DeArrow est indisponible</string>
-  <string name="morphe_dearrow_api_url_title">Point de terminaison à l\'API DeArrow</string>
+  <string name="morphe_dearrow_api_url_title">Point de terminaison de l\'API</string>
   <string name="morphe_dearrow_api_url_summary">L\'URL du point de terminaison au cache des miniatures DeArrow</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">Captures d\'écran vidéo</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">Les miniatures peuvent être capturées du début, du milieu ou de la fin de chaque vidéo. Les miniatures sont intégrées à YouTube, aucune API externe n\'est utilisée</string>

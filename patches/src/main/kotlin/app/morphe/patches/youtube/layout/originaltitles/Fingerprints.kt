@@ -44,6 +44,40 @@ internal object PlaylistPanelVideoBindFingerprint : Fingerprint(
 )
 
 /**
+ * Binds the video information shown on the watch page while the video is loading,
+ * which shows the title of the element that opened the video.
+ */
+internal object LoadingVideoInformationBindFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/lang/Object;"),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "channel_navigation_container"),
+        methodCall(name = "findViewById", location = MatchAfterImmediately()),
+        resourceLiteral(ResourceType.ID, "title", location = MatchAfterWithin(8)),
+        methodCall(name = "findViewById", location = MatchAfterImmediately()),
+        checkCast("Landroid/widget/TextView;", location = MatchAfterWithin(2)),
+        resourceLiteral(ResourceType.ID, "collapsed_subtitle", location = MatchAfterWithin(8))
+    )
+)
+
+/**
+ * Creates the fullscreen engagement overlay, shown by swiping up in fullscreen.
+ */
+internal object FullscreenEngagementOverlayFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "fullscreen_engagement_overlay"),
+        resourceLiteral(ResourceType.ID, "engagement_title"),
+        methodCall(name = "findViewById", location = MatchAfterImmediately()),
+        checkCast("Landroid/widget/TextView;", location = MatchAfterWithin(2)),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/widget/TextView;",
+            location = MatchAfterImmediately()
+        )
+    )
+)
+
+/**
  * Creates the title view of the next video of a playlist, shown when the playlist panel is collapsed.
  */
 internal object NextVideoTitleViewFingerprint : Fingerprint(

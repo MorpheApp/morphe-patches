@@ -93,10 +93,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR मध्ये साइन इन केल्याने काही वापरकर्त्यांसाठी प्लेबॅक समस्या सुटू शकतात
 
 साइन इन करण्यासाठी, खाली 'सुरू ठेवा' दाबा"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">सुरू ठेवा</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">साइन आउट करा</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">सूचना</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"ॲक्टिव्हेशन कोड: %s
 
 1. 'वेबसाइट उघडा' खाली टॅप करा.
@@ -104,7 +103,6 @@ Second \"item\" text"</string>
 3. Google मध्ये साइन इन करण्यास सांगितले तर, Google खात्यात साइन इन करा.
 4. 'YouTube VR' ॲक्सेसवर टॅप करा.
 5. डिव्हाइस कनेक्ट झाल्याचा संदेश मिळाल्यानंतर या ॲपवर परत जा"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">वेबसाइट उघडा</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">ॲक्टिव्हेशन कोड जारी करण्यात अयशस्वी</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">ऑथेंटिकेशन टोकन जारी करण्यात अयशस्वी</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">सक्सेसफुली साइन इन झाले</string>
@@ -172,7 +170,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_filter_screen_title">सानुकूल फिल्टर</string>
   <string name="morphe_custom_filter_screen_summary">कोणतेही घटक लपवण्यासाठी सानुकूल फिल्टर कॉन्फिगर करा</string>
   <string name="morphe_custom_filter_title">सानुकूल फिल्टर सक्षम करा</string>
-  <string name="morphe_custom_filter_strings_title">सानुकूल फिल्टर</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">नवीन ओळींनी विभक्त केलेल्या फिल्टर करण्यासाठी घटक मार्ग बिल्डर स्ट्रिंगची सूची</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">अवैध सानुकूल फिल्टर: %s</string>
@@ -214,9 +211,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">निर्मात्याने likes अक्षम केलेल्या व्हिडिओवर अंदाजित like संख्या दर्शवते</string>
   <string name="morphe_ryd_toast_on_connection_error_title">कनेक्शन त्रुटी सूचना दर्शवा</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike सर्व्हर उपलब्ध नसल्यास सूचना दर्शवते</string>
-  <string name="morphe_ryd_attribution_summary">"डेटा Return YouTube Dislike API द्वारे प्रदान केला जातो
-
-ReturnYouTubeDislike.com उघडण्यासाठी येथे टॅप करा"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API या डिव्हाइसची आकडेवारी</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API प्रतिसाद वेळ, सरासरी</string>

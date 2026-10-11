@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Albom səs treklərini səsləndir</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Musiqi videosu əvəzinə mahnıların yalnız albom səsi versiyasını səsləndirir. \'Video yayımlarını saxtalaşdırı\' tələb edir</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Səs/video keçidini aktivləşdir</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Səs Treki Versiyasını və Rəsmi Musiqi Videosunu dəyişdirməyə çalış</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Üçüncü tərəf yükləmə tətbiqləri ilə musiqi videolarını, podkastları və ya mahnıları yüklə</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Yüklənilmiş treklər burada görünür"</string>
   <string name="morphe_settings_music_screen_4_player_title">Oynadıcı</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Mahnı Sözləri</string>
   <string name="morphe_settings_music_screen_9_misc_title">Çoxvariantlı</string>
+  <string name="morphe_music_app_language_title">YouTube Music dili</string>
+  <string name="morphe_music_app_language_summary_default">Sistem dili</string>
+  <string name="morphe_music_app_language_summary_unsupported">Android 13 və ya daha sonrakını tələb edir</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title"> \'Musiqi Premiumu Əldə et\' etiketini gizlət</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Music Premium reklamlarını gizlət</string>
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizlət</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Səs / Video keçiricisini gizlət</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Endirin düyməsini gizlət</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Podkastda göstərilən Yükləmə düyməsini gizlədir</string>
   <string name="morphe_music_hide_explore_shelf_title">Kəşf et bölməsini gizlət</string>
+  <string name="morphe_music_hide_filter_bar_title">Filtr cərgəsini gizlət</string>
   <string name="morphe_music_hide_grid_shelves_title">Şəbəkə bölmələrini gizlət</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Üfüqi hissələri gizlət</string>
   <string name="morphe_music_hide_list_shelves_title">Siyahı bölmələrini gizlət</string>
@@ -188,7 +197,6 @@ Yüklənilmiş treklər burada görünür"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Tərcümə et düyməsini gizlət</string>
   <string name="morphe_music_hide_new_from_shelf_title">\'Kanalından yeni\' bölməsini gizlət</string>
   <string name="morphe_music_hide_playlist_shelves_title">Pleylist bölmələrini gizlət</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Podkast epizodunun Endirmə düyməsini gizlət</string>
   <string name="morphe_music_hide_repeat_button_title">Təkrarlama düyməsini gizlət</string>
   <string name="morphe_music_hide_shuffle_button_title">Qarışdır düyməsini gizlət</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">\'Sürətli yığım\' bölməsini gizlət</string>
@@ -236,32 +244,26 @@ Yüklənilmiş treklər burada görünür"</string>
   <string name="morphe_music_crossfade_paused_toast">Bu sessiya üçün Çarpaz Solma dayandırıldı</string>
   <string name="morphe_music_crossfade_resumed_toast">Çarpaz Soldurma yenidən başladı</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Çarpaz Soldurma işlək olduqda video rejimi əlçatan deyil</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Səs verilərkən yaxud əks etdirilərkən çarpaz soldurma dayandırılır. Veriliş/əksetmə üzərindən çarpaz soldurma sabit deyil və heç vaxt düzəldilməyə bilər</string>
-  <string name="morphe_music_crossfade_about_title">Haqqında</string>
-  <string name="morphe_music_crossfade_about_summary">Çarpaz soldurma necə işləyir — və hansı hallarda işləmir</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">SABR oynatma ilə çarpaz soldurma qapadılır</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Yayımlanarkən çarpaz soldurma qapadılır</string>
   <string name="morphe_music_crossfade_about_how_title">Bu necə işləyir</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Çarpaz soldurma, seçdiyiniz müddət və əyri boyunca digəri yuxarı qalxdıqca o biri aşağı solarkən, bir mahnının sonunu növbətinin əvvəli ilə üst-üstə salır.
+  <string name="morphe_music_crossfade_about_how_summary">"Çarpaz soldurma müddətinizə və əyriyə əsasən bir mahnının sonunu növbəti mahnının əvvəli ilə üst-üstə salır
 
-​O, birbaşa irəliləmə (mahnı öz-özünə bitdikdə) və əl ilə keçidlərdə işləyir — hər birinin yuxarıda öz keçid açarı var. Birbaşa irəliləmədə qarışma mahnının bitməsindən bir neçə saniyə əvvəl başlayır.
+​Bu avtomatik irəliləmə və əl ilə ötürmə zamanı işləyir, hər birinin öz keçiricisi var. Avtomatik irəliləmədə qarışdırma mahnı bitməzdən bir neçə saniyə əvvəl başlayır"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Məhdudiyyətlər</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Çarpaz soldurma aktiv olduqda musiqi videoları yalnız səs rejimində səsləndirilir. Çarpaz soldurmanı dayandırmaq və videoya baxmaq üçün Qarışdıra basıb saxla
 
-​YouTube Music 9.x yaxud daha yenisi tələb olunur."</string>
-  <string name="morphe_music_crossfade_about_best_title">Ən yaxşı şəkildə işləyir</string>
-  <string name="morphe_music_crossfade_about_best_summary">Normal mahnıdan mahnıya səsləndirmə və birbaşa irəliləmə, təkrarlama (mahnı öz-özünə çarpaz solur) və yerli səs — telefon dinamiki, simli qulaqlıqlar, Bluetooth və ya USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Tamamilə düzgün işləmir</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Musiqi videoları çarpaz soldurma işlək olduqda yalnız səs kimi səsləndirilir ( videonu istəyirsinizsə, dayandırmaq üçün qarışdırmaya uzun basın)
+​Səsləndirilməyə başlayan musiqi videosu növbəti mahnıya qədər video rejimində qalır
 
-Soldurma müddətinizdən qısa olan mahnılar soldurmanı keçə bilər
+​Soldurma müddətindən daha qısa olan mahnılarda çarpaz soldurma olmur
 
-Kilid ekranı və ya bildiriş qısa müddətdə keçidin ortasında köhnəlmiş vəziyyət göstərə bilər"</string>
-  <string name="morphe_music_crossfade_about_known_title">Məlum problemlər</string>
-  <string name="morphe_music_crossfade_about_known_summary">"İlk mahnı kimi təyin edilən və ya hazırkı növbədən kənarda başlayan musiqi videosu yalnız səs rejimi işə düşməzdən əvvəl qısa müddətdə video kimi görünə bilər
+​Kilid ekranı və ya bildiriş paneli keçid anında qısa müddətlik köhnəlmiş vəziyyəti göstərə bilər
 
-Musiqi videosuna baxmaq üçün çarpaz soldurmanı dayandırmaq bəzi videoları (səsi videonun özündən gələn videoları) qara edə bilər. Siz mahnını seçməzdən əvvəl çarpaz soldurmanı dayandırmaq bunun qarşısını alır"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Heç işləmir</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Səsin verilməsi və ya əks etdirilməsi (Chromecast, ekran və ya səs əks etdirmə) — çarpaz soldurma dayandırılır, çünki orada qeyri-sabitdir və heç vaxt düzəldilməyə bilər.
+​Musiqi videosuna baxmaq üçün çarpaz soldurmanı dayandırmaq bəzi videoların qara qalmasına səbəb ola bilər. Mahnını seçməzdən əvvəl çarpaz soldurmanı dayandırmaq bunun qarşısını alır"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Dəstəklənmir</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Səs yayımlama və ya əksetdirmə (Chromecast, ekran və ya səs əksetdirmə)
 
-YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir"</string>
+​SABR oynatma (Video yayımların saxtalaşdırma qapalıdır)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Hazırladı</string>
   <string name="morphe_music_crossfade_about_credit_summary">VazerOG tərəfindən Çarpaz soldurma xüsusiyyəti</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Bəyənməmə yönləndirilməsini qapat</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Bəyənməmə düyməsi basıldıqda növbəti trekə keçməyə mane olur</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Pleylist treki toxunma hərəkəti</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Pleylisti səsləndir</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Yalnız seçilmiş treki səsləndir</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Seçilmiş treki növbəyə əlavə et</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Növbəyə əlavə edildi</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Yayımla düyməsini gizlət</string>
   <string name="morphe_music_hide_history_button_title">Tarixçə düyməsini gizlət</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_change_start_page_entry_playlists">Pleylistlər</string>
   <string name="morphe_change_start_page_entry_search">Axtarış</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abunəliklər</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Filtr cərgəsini gizlət</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Portret istiqamətinə məcbur et</string>
   <string name="morphe_music_force_portrait_orientation_summary">Cihaz fırladıldıqda tətbiqi portret istiqamətində saxlayır</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_hide_navigation_bar_title">Fəaliyyət cizgisin gizlət</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Fəaliyyət düyməsi etiketlərini gizlət</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Last.fm və ListenBrainz birləşməsini tənzimlə</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Daxil olmamısınız. Tənzimləmək üçün toxun</string>
   <string name="morphe_music_scrobbling_log_out">Çıxış et</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Çıxış edildi</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Scrobbling-i aktivləşdirmək üçün ListenBrainz İstifadəçi Tokeninizi qeyd edin</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Tokeni əldə et</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Yoxla</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Xahiş olunur, tokeni qeyd et</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Təsdiqlənir…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x — çarpaz soldurma yalnız 9.x və daha yenisində işləyir
   <string name="morphe_music_scrobbling_guess_album_title">Çatışmayan albomu doldur</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Musiqidə albom göstərilmədikdə, scrobble-un tamamlanması üçün onu Last.fm-də axtarın</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Scrobbling haqqında</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Analiz avtomatik şəkildə YouTube Music istifadənizi Last.fm və ya ListenBrainz profilinizlə sinxronlaşdırır
 
 Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün YouTube Music tətbiqinin batareya istifadəsini \"Məhdudiyyətsiz\" olaraq təyin etdiyinizə əmin olun"</string>
@@ -457,7 +460,6 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_lyrics_section_service_title">Mahnı sözləri xidməti</string>
   <string name="morphe_music_lyrics_section_overlay_title">Örtük</string>
   <string name="morphe_music_lyrics_section_sync_title">Sinxronizasiya</string>
-  <string name="morphe_music_lyrics_section_about_title">Haqqında</string>
   <string name="morphe_music_lyrics_source_all_disabled">Bütün təminatçılar qapadılıb — daxili mahnı sözləri və yerləşdirilən mahnı sözləri</string>
   <string name="morphe_music_lyrics_source_reset_title">Təminatçı sırası sıfırlansın?</string>
   <string name="morphe_music_lyrics_source_reset_message">Təminatçıları ilkin prioritet sırasına qaytar</string>
@@ -547,8 +549,11 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_lyrics_credit_line_regex_summary">Mahnı sözləri yanlışlıqla aşağıya filtrlənərsə, bunu tənzimləyin və ya təmizləyin. Vergüllə ayrılmış nişanlayıcılar: tərkibində nişanlayıcı ardınca iki nöqtə olan sətirlər aşağıda müəllif məlumatı kimi göstərilir. Qapatmaq üçün boş qoy</string>
   <string name="morphe_music_lyrics_text_size_title">Mətn ölçüsü</string>
   <string name="morphe_music_lyrics_text_size_summary">Mahnı sözlərinin mətn ölçüsü</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Vaxt dəyişikliyi</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Ümumi vaxt sürüşməsi</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Sinxronlaşdırılmış mahnı sözləri səsləndirməni izləyir. Uyğunsuzluq yarandıqda, zamanlama sürüşməsini tənzimlə. Sinxronlaşdırılmış sözləri irəli və ya geri çək. Mahnı sözləri mahnını qabaqlayırsa, müsbət dəyəri istifadə et</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Mahnı sözlərinin sürüşməsi üçün SponsorBlock bölümlərin istifadə et</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">SponsorBlock-un ötürdüyü bölümlər olmadan uyğunlaşdır və mahnı sözlərini buraxılmış səsə sürüşdür. \'Qapalı\' seçimi SponsorBlock-u tamamilə nəzərə almır</string>
+  <string name="morphe_music_lyrics_sb_no_video">Bu trekin təqdim edilməsi üçün video id yoxdur</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Mənbə: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Google tərəfindən tərcümə edilib</string>
@@ -569,6 +574,7 @@ Fon səsləndirmə zamanı analiz sinxronlaşdırılmasına əmin olmaq üçün 
   <string name="morphe_music_lyrics_refreshing">Yenilənir</string>
   <string name="morphe_music_lyrics_refreshed">Yeniləndi</string>
   <string name="morphe_music_lyrics_about_summary">"Mahnı sözləri başlığa və ifaçıya görə uyğunlaşır; qeyri-adi şərhi məlumatlar heç nə tapmaya və ya yanlış versiyanı tapa bilər. Versiyaları dəyişmək üçün yenilə düyməsin istifadə et. * işarəsi olan provayderlər token tələb edir. İşlək bütün provayderlər həmişə sizin təyin etdiyiniz ardıcıllıqla sorğulanmır, öz sürətlərinə görə cavab verirlər"</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Yalnız istifadə etdiyiniz təminatçıları aktivləşdirin və ya standartı saxlayın — fasiləsiz sorğular kiçik icma mahnı sözləri saytlarını həddindən artıq yükləyə bilər</string>
   <string name="morphe_music_lyrics_hide_info_title">Müəllif sətrini gizlət</string>
   <string name="morphe_music_lyrics_hide_info_summary">Mahnı sözlərinin altında göstərilən müəllif sətrini gizlət</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Tərcümə və transkripsiyanın yerini dəyiş</string>

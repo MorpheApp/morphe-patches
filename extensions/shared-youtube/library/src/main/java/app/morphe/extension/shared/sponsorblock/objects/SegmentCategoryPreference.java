@@ -271,10 +271,8 @@ public class SegmentCategoryPreference extends ColorPickerPreference {
             dotFrame.addView(divider, new FrameLayout.LayoutParams(
                     Dim.dp1, Dim.dp32, Gravity.START | Gravity.CENTER_VERTICAL));
 
-            TypedValue ripple = new TypedValue();
-            context.getTheme().resolveAttribute(
-                    android.R.attr.selectableItemBackgroundBorderless, ripple, true);
-            dotFrame.setBackgroundResource(ripple.resourceId);
+            dotFrame.setBackgroundResource(ThemeUtils.getThemeResourceId(
+                    context, android.R.attr.selectableItemBackgroundBorderless));
             dotFrame.setContentDescription(str("morphe_sb_color_dot_label"));
         }
         // The search results do not disable a row, so the preference itself is checked.

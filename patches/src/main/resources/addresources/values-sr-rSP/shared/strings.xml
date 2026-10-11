@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Неуспешан увоз: %s</string>
   <string name="morphe_settings_navigate_up">Иди нагоре</string>
   <string name="morphe_settings_search_hint">Претражите подешавања</string>
+  <string name="morphe_settings_screen_info_title">O programu</string>
   <string name="morphe_settings_search_no_results_title">Нису пронађени резултати за „%s”</string>
   <string name="morphe_settings_search_no_results_summary">Покушајте са другом кључном речи</string>
   <string name="morphe_settings_search_recent_searches">Недавне претраге</string>
@@ -105,7 +106,6 @@ Second \"item\" text"</string>
 Нећете бити обавештени ни о каквим неочекиваним догађајима."</string>
   <string name="morphe_debug_export_logs_title">Извези евиденције отклањања грешака</string>
   <string name="morphe_debug_export_logs_summary">Извези лог дебјуговања Morphe</string>
-  <string name="morphe_debug_export_logs_file">Извези у датотеку</string>
   <string name="morphe_debug_export_logs_success">Лог дебјуговања успешно извезен</string>
   <string name="morphe_debug_export_logs_failed">Неуспео извоз логова дебјуговања</string>
   <string name="morphe_debug_logs_search_hint">Претражи евиденције грешака…</string>
@@ -229,4 +229,7 @@ Second \"item\" text"</string>
 Ако желите најбоље искуство без проблема, онда &lt;b&gt;деинсталирајте&lt;/b&gt; ово и исправите препоручену верзију апликације ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Желим експерименталну</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Желим стабилну</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Дневник пада сачуван у корисничке документе: %s</string>
+  <string name="morphe_crash_log_saved">Дневник пада сачуван: %s</string>
 </resources>

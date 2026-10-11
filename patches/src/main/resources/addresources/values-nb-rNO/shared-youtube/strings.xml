@@ -108,10 +108,9 @@ Hvis du er en YouTube Premium-bruker, er kanskje ikke denne innstillingen nødve
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Å logge på Android VR kan fikse avspillingsproblemer for noen brukere
 
 Trykk på Fortsett nedenfor for å logge på"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Fortsett</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Logg ut</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruksjoner</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktiveringskode: %s
 
 1. Trykk på 'Åpne nettsted' nedenfor for å åpne nettstedet 'Koble til en enhet'
@@ -119,7 +118,6 @@ Trykk på Fortsett nedenfor for å logge på"</string>
 3. Logg på Google om du blir bedt om det. Hvis du har flere kontoer, velger du denne YouTube-kontoen
 4. Trykk på 'Tillat YouTube VR-tilgang'
 5. Gå tilbake til denne appen etter at meldingen 'Enhet tilkoblet' vises"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Åpne nettsted</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Kunne ikke utstede en aktiveringskode</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kunne ikke utstede et autorisasjonstoken</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Logget inn</string>
@@ -198,7 +196,6 @@ Men, hvis du aktiverer dette, vil også noe brukerdata, som for eksempel IP-adre
   <string name="morphe_custom_filter_screen_title">Egendefinert filter</string>
   <string name="morphe_custom_filter_screen_summary">Konfigurer egendefinerte filtre for å skjule alle komponenter</string>
   <string name="morphe_custom_filter_title">Aktiver egendefinert filter</string>
-  <string name="morphe_custom_filter_strings_title">Egendefinert filter</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">Liste over komponentbanebyggere som skal filtreres, separert med nye linjer</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">Ugyldig egendefinert filter: %s</string>
@@ -261,9 +258,9 @@ Hvis du slår det av senere, anbefales det å slette appdataene for å forhindre
   <string name="morphe_ryd_estimated_like_summary">Viser et estimert antall likerklikk på videoer der skaperen har deaktivert likerklikk</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Vis tilkoblingsfeilvarsler</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Viser en varsling når Return YouTube Dislike-serveren ikke er tilgjengelig</string>
-  <string name="morphe_ryd_attribution_summary">"Data er levert av Return YouTube Dislike API
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike gjenoppretter mislikertellingene som YouTube skjulte i 2021. Tellingene kommer fra data som ble arkivert før fjerningen, og er estimert for nyere videoer fra stemmene til brukerne, så de er omtrentlige og oppdateres med noen få dagers mellomrom
 
-Trykk her for å åpne ReturnYouTubeDislike.com"</string>
+ID-en til videoen du ser, sendes til Return YouTube Dislike API, og liker og misliker dine sendes anonymt for å forbedre estimatene.}],"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API-statistikk for denne enheten</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-responstid, gjennomsnitt</string>

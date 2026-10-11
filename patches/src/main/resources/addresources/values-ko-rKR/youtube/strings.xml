@@ -63,7 +63,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_album_cards_summary">아티스트 설명 아래에서 앨범 카드를 숨깁니다</string>
   <string name="morphe_hide_artist_cards_title">아티스트 카드 숨기기</string>
   <string name="morphe_hide_artist_cards_summary">검색 결과 상단에서 아티스트 카드를 숨깁니다</string>
-  <string name="morphe_hide_auto_dubbed_label_title">자동 더빙 라벨 숨기기</string>
   <string name="morphe_hide_channel_buttons_title">채널 버튼 숨기기</string>
   <string name="morphe_hide_channel_buttons_summary">검색 결과의 채널 프로필에서 구독, 채널 보기, 커뮤니티, YouTube Music 등의 버튼을 숨깁니다</string>
   <string name="morphe_hide_community_posts_title">커뮤니티 게시물 숨기기</string>
@@ -79,7 +78,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_history_shelf_title">기록 선반 숨기기</string>
   <string name="morphe_hide_horizontal_shelves_title">좌우 슬라이드 선반 숨기기</string>
   <string name="morphe_hide_horizontal_shelves_summary">다음 선반을 숨깁니다:\n뉴스 속보, 내가 좋아할 만한 커뮤니티 게시물, 이어서 시청하기, 채널 더보기, 다른 주제 더 살펴보기, 추천, 최신 동영상, 관련성, 크리에이터 커뮤니티 게시물, 라이브 쇼핑, 다시 시청하기</string>
-  <string name="morphe_hide_hyped_label_title">하이프 관련 라벨 숨기기</string>
   <string name="morphe_hide_image_shelf_title">이미지 선반 숨기기</string>
   <string name="morphe_hide_image_shelf_summary">검색 결과에서 이미지 선반을 숨깁니다</string>
   <!-- 'Invite others to message' should be translated using the same localized wording YouTube displays
@@ -121,9 +119,9 @@ Second \"item\" text"</string>
 • Shorts 선반, 채널 페이지 및 검색 결과에서 업로드 시간이 계속 표시될 수 있습니다
 • 이 기능은 오토모티브 레이아웃에서 작동하지 않습니다"</string>
   <string name="morphe_hide_video_thumbnail_title">동영상 썸네일 숨기기</string>
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">동영상 추천 라벨 숨기기</string>
-  <string name="morphe_hide_video_recommendation_labels_summary">검색 결과에서 다음 라벨을 숨깁니다:\n• 시청자가 이 동영상도 시청함\n• 내가 좋아할 만한 동영상</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
+  <string name="morphe_hide_video_labels_title">동영상 라벨 숨기기</string>
+  <string name="morphe_hide_video_labels_summary">다음 동영상 라벨이 숨겨집니다:\n자동 더빙 / 더빙, 수수료 지급, 하이프 관련 라벨, 제품 n개, 시청자가 이 동영상도 시청함, 내가 좋아할 만한 동영상</string>
   <string name="morphe_hide_view_count_title">조회수 숨기기</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_view_count_summary">"제한 사항:
@@ -158,11 +156,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_snackbar_title">스낵바 (팝업메시지바) 숨기기</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">구독자를 위한 커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
+  <string name="morphe_hide_tap_and_hold_gradient_title">길게 탭하기 그라데이션 숨기기</string>
+  <string name="morphe_hide_tap_and_hold_gradient_summary">손가락으로 화면을 탭한 상태에서 드래그하여 재생 속도를 높일 때, 플레이어 컨트롤 버튼 주변에 표시되는 그라데이션을 숨깁니다</string>
   <string name="morphe_hide_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
   <string name="morphe_hide_timed_reactions_summary">댓글 섹션 및 실시간 채팅에서 이모티콘으로 반응할 수 있는 기능을 숨깁니다</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_help_feedback_menu_title">메뉴에서 고객센터 숨기기</string>
-  <string name="morphe_hide_help_feedback_menu_summary">검색 결과 메뉴와 같은 앱 바의 3점 메뉴에서 고객센터 메뉴를 숨깁니다</string>
+  <string name="morphe_hide_help_feedback_menu_title">고객센터 메뉴 숨기기</string>
+  <string name="morphe_hide_help_feedback_menu_summary">검색 결과 등에서 점 세 개 버튼을 사용할 때 표시되는 고객센터 메뉴를 숨깁니다</string>
   <string name="morphe_hide_handle_title">핸들(@사용자 아이디) 숨기기</string>
   <string name="morphe_hide_handle_summary">\'내 페이지\' 탭에서 채널 핸들을 숨깁니다</string>
   <string name="morphe_hide_video_title_title">동영상 제목 숨기기</string>
@@ -327,7 +327,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_stats_hidden_all_title">전체 시간 동안 숨겨진 동영상</string>
   <string name="morphe_hide_stats_hidden_24h_reset_title">지난 24시간 카운터 초기화</string>
   <string name="morphe_hide_stats_hidden_all_reset_title">전체 시간 카운터 초기화</string>
-  <string name="morphe_hide_about_category_title">정보</string>
   <string name="morphe_hide_aislist_screen_title">AI 채널 필터</string>
   <string name="morphe_hide_aislist_screen_summary">AiSList 커뮤니티 목록에서 AI 생성 콘텐츠 채널로 지정된 채널의 동영상을 숨깁니다</string>
   <string name="morphe_hide_aislist_blocklist_category_title">차단 목록: 높은 신뢰도</string>
@@ -346,9 +345,9 @@ Second \"item\" text"</string>
 제한 사항:
 • 필터링된 AI Shorts는 빈 공간으로 표시될 수 있습니다
 • 일부 AI 동영상은 여전히 표시될 수 있습니다"</string>
-  <string name="morphe_hide_aislist_attribution_summary">"데이터는 AiSList에 의해 제공됩니다
+  <string name="morphe_hide_aislist_attribution_summary">"AiSList는 AI로 생성된 콘텐츠를 게시하는 YouTube 채널 목록으로, 오픈 소스로 공개되어 있으며 자원봉사자들이 관리합니다. 채널은 사용자가 제보하며, 목록에 추가되기 전에 검토 과정을 거칩니다
 
-다른 플랫폼용 다운로드를 확인하려면 여기를 탭하여 'AiSlopList.com'으로 이동하세요"</string>
+목록은 GitHub에서 다운로드되며, 동영상은 사용자 기기에서 필터링됩니다"</string>
   <string name="morphe_aislist_submit_category_title">AI 채널 신고하기</string>
   <string name="morphe_aislist_submit_flyout_menu_title">동영상 메뉴에 신고 항목 추가하기</string>
   <string name="morphe_aislist_submit_flyout_menu_summary">동영상 메뉴에 AiSList에 동영상 채널을 신고하는 항목을 추가합니다</string>
@@ -401,7 +400,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">채널 내 검색</string>
-  <string name="morphe_channel_search_summary">채널을 열어 둔 상태에서 검색하면 해당 채널 내에서만 검색합니다</string>
+  <string name="morphe_channel_search_summary">채널 페이지에 두 번째 검색 버튼을 추가하여 해당 채널 내에서만 검색할 수 있도록 합니다</string>
   <string name="morphe_channel_search_hint">채널 검색</string>
   <string name="morphe_channel_search_results">채널 검색 결과</string>
   <string name="morphe_channel_search_no_results">이 채널에서 아무것도 찾을 수 없습니다</string>
@@ -420,6 +419,13 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_link_button_summary">버튼을 탭하여 동영상 링크를 복사할 수 있고, 길게 탭하면 타임스탬프가 표기된 링크가 복사됩니다</string>
   <string name="morphe_copy_video_link_with_timestamp_button_title">기본적으로 타임스탬프 복사하기</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">동영상 링크 복사 버튼의 \'탭하기\'와 \'길게 탭하기\' 작업을 서로 변경합니다</string>
+  <!-- interaction.copytext.copyTextPatch -->
+  <string name="morphe_copy_video_title_title">동영상 제목 복사</string>
+  <string name="morphe_copy_video_title_summary">동영상 제목을 길게 탭하여 복사할 수 있도록 합니다</string>
+  <string name="morphe_copy_video_title_success">동영상 제목이 클립보드에 복사되었습니다</string>
+  <string name="morphe_copy_comments_title">댓글 복사</string>
+  <string name="morphe_copy_comments_summary">댓글을 길게 탭하여 복사할 수 있도록 합니다</string>
+  <string name="morphe_copy_comments_success">댓글이 클립보드에 복사되었습니다</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'기기 연결\' 팝업 비활성화하기</string>
@@ -436,7 +442,6 @@ Second \"item\" text"</string>
   <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
   <string name="morphe_vot_screen_title">음성 번역</string>
   <string name="morphe_vot_screen_summary">기기의 텍스트 음성 변환(TTS)을 사용하여 재생에 맞춰 동기화된 동영상 자막을 읽어줍니다</string>
-  <string name="morphe_vot_enabled_title">음성 번역</string>
   <string name="morphe_vot_enabled_summary">동영상 플레이어에 오버레이 버튼을 표시합니다. 버튼을 탭하여 번역 기능을 켜거나 끌 수 있고, 길게 탭하면 빠른 설정이 실행됩니다</string>
   <string name="morphe_vot_caption_language_title">언어</string>
   <string name="morphe_vot_translation_service_title">번역 제공자</string>
@@ -504,8 +509,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_loop_video_range_clear">지우기</string>
   <string name="morphe_loop_video_range_toast_on">\'%1$s ~ %2$s\' 연속 재생</string>
   <string name="morphe_loop_video_range_invalid_time">잘못된 시간 범위입니다</string>
-  <!-- interaction.pip.pipButtonPatch -->
-  <string name="morphe_pip_button_overlay_title">PIP 모드 오버레이 버튼 표시하기</string>
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
+  <string name="morphe_pip_button_overlay_title">PIP 모드 버튼 표시하기</string>
   <string name="morphe_pip_button_flyout_title">PIP 모드 메뉴 표시하기</string>
   <string name="morphe_pip_button_flyout_name">PIP 모드로 전환</string>
   <!-- interaction.playall.playAllButtonPatch -->
@@ -718,18 +723,12 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_hide_save_button_title">저장 버튼 숨기기</string>
   <string name="morphe_hide_more_button_title">더보기 버튼 숨기기</string>
   <string name="morphe_fullscreen_buttons">전체 화면 버튼</string>
-  <string name="morphe_hide_quick_actions_title">작업 버튼바 숨기기</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">질문하기 버튼 숨기기</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">댓글 버튼 숨기기</string>
   <string name="morphe_hide_quick_actions_dislike_button_title">싫어요 버튼 숨기기</string>
   <string name="morphe_hide_quick_actions_like_button_title">좋아요 버튼 숨기기</string>
   <string name="morphe_hide_quick_actions_live_chat_button_title">실시간 채팅 버튼 숨기기</string>
   <string name="morphe_hide_quick_actions_mix_button_title">믹스 재생목록 버튼 숨기기</string>
-  <string name="morphe_hide_quick_actions_more_button_title">\'메뉴 더보기\' 버튼 숨기기</string>
   <string name="morphe_hide_quick_actions_more_videos_button_title">\'동영상 더보기\' 버튼 숨기기</string>
   <string name="morphe_hide_quick_actions_playlist_button_title">재생목록 버튼 숨기기</string>
-  <string name="morphe_hide_quick_actions_save_button_title">저장 버튼 숨기기</string>
-  <string name="morphe_hide_quick_actions_share_button_title">공유 버튼 숨기기</string>
   <string name="morphe_quick_actions_top_margin_title">빠른 작업 상단 여백</string>
   <string name="morphe_quick_actions_top_margin_summary">재생바에서 빠른 작업 버튼바까지의 간격을 설정할 수 있습니다 (0~32 dp)</string>
   <!-- layout.captions.captionsPatch -->
@@ -743,6 +742,10 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_auto_captions_style_entry_4">음소거 시 표시</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">자동 자막을 표시</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막을 표시 안함</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_title">선호하는 자막 언어 설정</string>
+  <string name="morphe_preferred_caption_language_summary">제공자가 제공하는 자막을 먼저 선택한 다음, 선호하는 언어로 자동 번역합니다</string>
+  <string name="morphe_preferred_caption_language_entry_off">사용 안함</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">자막 쿠키 설정</string>
   <string name="morphe_set_caption_cookies_summary">"쿠키가 누락되어 자동 번역 자막을 사용할 수 없는 순정 YouTube 버그를 수정합니다
@@ -797,13 +800,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_toolbar_cast_button_title">크롬캐스트 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_chat_button_title">메시지 버튼 숨기기</string>
-  <string name="morphe_hide_toolbar_create_button_title">만들기 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_microphone_button_title">음성 검색 버튼 숨기기</string>
-  <string name="morphe_hide_toolbar_notification_button_title">알림 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_search_button_title">검색 버튼 숨기기</string>
-  <string name="morphe_show_toolbar_settings_button_title">설정 버튼 표시하기</string>
-  <string name="morphe_show_toolbar_settings_button_index_title">설정 버튼 위치</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">설정 버튼 작업</string>
   <string name="morphe_show_toolbar_settings_button_type_summary">활성화하면 버튼을 탭했을 경우에 Morphe 설정이 열리고, 길게 탭했을 경우에 YouTube 설정이 열립니다. 비활성화하면 작업이 반대로 바뀝니다</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">메뉴 구성요소</string>
@@ -954,6 +952,8 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
   <string name="morphe_disable_playlist_autoplay_title">재생목록 자동재생 비활성화하기</string>
   <string name="morphe_disable_playlist_autoplay_summary">재생목록이 다음 동영상으로 자동으로 넘어가는 것을 방지합니다</string>
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
+  <string name="morphe_disable_continue_watching_prompt_title">\'계속 시청하시겠습니까?\' 메시지 비활성화하기</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">동영상 종료 시 전체 화면 모드 나가기</string>
   <string name="morphe_exit_fullscreen_entry_1">사용 안함</string>
@@ -1160,29 +1160,31 @@ API 키는 절대로 다른 사람과 공유해서는 안 됩니다. API 키에 
   <!-- layout.dearrow.deArrowPatch -->
   <!-- "DeArrow" must be kept untranslated. -->
   <string name="morphe_dearrow_titles_title">DeArrow 제목</string>
-  <string name="morphe_dearrow_titles_summary">동영상 제목을 DeArrow에 제출된 크라우드소싱 제목으로 변경합니다</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_home_title">홈 탭</string>
+  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_subscription_title">구독 탭</string>
+  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_dearrow_titles_library_title">내 페이지 탭</string>
+  <string name="morphe_dearrow_titles_player_title">플레이어 재생목록 &amp; 추천 동영상</string>
+  <string name="morphe_dearrow_titles_search_title">검색 결과</string>
   <string name="morphe_dearrow_titles_icon_title">DeArrow 아이콘 표시하기</string>
   <string name="morphe_dearrow_titles_icon_summary">크라우드소싱된 동영상 제목에 DeArrow 아이콘을 표시합니다</string>
-  <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_home_title">홈 탭</string>
-  <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_subscription_title">구독 탭</string>
-  <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_dearrow_thumbnail_library_title">내 페이지 탭</string>
-  <string name="morphe_dearrow_thumbnail_player_title">플레이어 재생목록 &amp; 추천 동영상</string>
-  <string name="morphe_dearrow_thumbnail_search_title">검색 결과</string>
+  <string name="morphe_dearrow_casual_mode_title">캐주얼 모드</string>
+  <string name="morphe_dearrow_casual_mode_summary">DeArrow 사용자들이 원래 제목을 더 선호한다고 투표한 경우, DeArrow 제목 대신 원본 제목을 표시합니다</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">원본 제목을 표시하기 위한 최소 캐주얼 투표 수</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">원본 제목을 표시하는 데 필요한 캐주얼 투표 수입니다. 여기서 투표 수는 재미있음 또는 창의적임과 같은 하나의 항목에 대한 투표를 의미합니다</string>
+  <string name="morphe_dearrow_thumbnails_title">DeArrow 썸네일</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">원본 썸네일</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow &amp; 원본 썸네일</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; 스틸 컷 썸네일</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">스틸 컷 썸네일</string>
-  <string name="morphe_dearrow_about_summary">"DeArrow는 YouTube 동영상에 크라우드 소싱된 제목과 썸네일을 제공합니다. 이러한 제목과 썸네일은 YouTube에서 제공하는 것보다 관련성이 높은 경우가 많습니다
+  <string name="morphe_dearrow_about_summary">"DeArrow는 클릭을 유도하는 자극적인 제목과 썸네일을 보다 정확하고 덜 선정적인 크라우드소싱 콘텐츠로 대체합니다. 제목은 커뮤니티 사용자들이 작성하고 투표를 통해 선정하며, 썸네일은 동영상에서 추출한 프레임을 사용합니다
 
-이 설정을 활성화하면 동영상 URL이 API 서버로 전송되며, 다른 데이터는 전송되지 않습니다. 동영상에 DeArrow 썸네일이 없는 경우에는 원본 썸네일 또는 스틸 컷 썸네일이 표시됩니다
-
-자세한 정보를 보려면 여기를 탭하여 'DeArrow.ajay.app'으로 이동하세요"</string>
+동영상은 해시 처리된 동영상 ID의 앞부분을 이용해 요청되므로, 서버는 사용자가 정확히 어떤 동영상을 보고 있는지 알 수 없습니다. DeArrow 썸네일이 없는 동영상에는 원본 썸네일 또는 동영상에서 캡처한 정지 화면이 표시됩니다"</string>
   <string name="morphe_dearrow_connection_toast_title">연결 오류 알림 표시하기</string>
   <string name="morphe_dearrow_connection_toast_summary">DeArrow 서버를 사용할 수 없을 경우에 알림을 표시합니다</string>
-  <string name="morphe_dearrow_api_url_title">DeArrow API 엔드포인트</string>
+  <string name="morphe_dearrow_api_url_title">API 엔드포인트</string>
   <string name="morphe_dearrow_api_url_summary">DeArrow 썸네일 캐시 엔드포인트 URL입니다. 이것이 무슨 역할을 하는지 모르는 경우에는 이 URL을 변경하지 마세요</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">스틸 컷 썸네일</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">동영상 스틸 컷 썸네일은 각 동영상의 시작 / 중간 / 끝 부분에서 캡쳐된 이미지입니다. 이러한 이미지는 YouTube에 내장되어 있으며 외부 API는 사용하지 않습니다</string>

@@ -113,6 +113,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_album_songs_title">Phát các bản nhạc của album</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Phát phiên bản chỉ có âm thanh của các bài hát trong album thay vì một video âm nhạc. Yêu cầu \'Giả mạo các luồng video\'</string>
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
+  <string name="morphe_music_enable_audio_video_switch_title">Bật chuyển đổi âm thanh/video</string>
+  <string name="morphe_music_enable_audio_video_switch_summary">Thử chuyển đổi giữa Phiên bản âm thanh và Video âm nhạc chính thức</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Tải xuống video nhạc, podcast hoặc bài hát bằng các ứng dụng tải xuống của bên thứ ba</string>
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
@@ -173,13 +176,19 @@ Các bài hát đã tải sẽ xuất hiện ở đây"</string>
   <string name="morphe_settings_music_screen_4_player_title">Trình phát</string>
   <string name="morphe_settings_music_screen_5_lyrics_title">Lời nhạc</string>
   <string name="morphe_settings_music_screen_9_misc_title">Khác</string>
+  <string name="morphe_music_app_language_title">Ngôn ngữ YouTube Music</string>
+  <string name="morphe_music_app_language_summary_default">Ngôn ngữ hệ thống</string>
+  <string name="morphe_music_app_language_summary_unsupported">Yêu cầu Android 13 trở lên</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Ẩn menu \"Mua Music Premium\"</string>
   <string name="morphe_music_hide_music_premium_promotions_title">Ẩn quảng cáo khuyến mãi Music Premium</string>
   <string name="morphe_music_hide_video_ads_title">Ẩn video quảng cáo</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_music_hide_audio_video_toggle_title">Ẩn nút chuyển đổi Bài hát/Video</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_title">Ẩn nút tải xuống</string>
+  <string name="morphe_music_hide_podcast_episode_download_button_summary">Ẩn nút tải xuống trong chương trình podcast</string>
   <string name="morphe_music_hide_explore_shelf_title">Ẩn kệ Khám phá</string>
+  <string name="morphe_music_hide_filter_bar_title">Ẩn thanh bộ lọc</string>
   <string name="morphe_music_hide_grid_shelves_title">Ẩn kệ dạng lưới</string>
   <string name="morphe_music_hide_horizontal_shelves_title">Ẩn kệ cá nhân hoá</string>
   <string name="morphe_music_hide_list_shelves_title">Ẩn kệ dạng danh sách</string>
@@ -188,7 +197,6 @@ Các bài hát đã tải sẽ xuất hiện ở đây"</string>
   <string name="morphe_music_hide_lyrics_translate_button_title">Ẩn nút Dịch lời nhạc</string>
   <string name="morphe_music_hide_new_from_shelf_title">Ẩn kệ \'Mới từ\'</string>
   <string name="morphe_music_hide_playlist_shelves_title">Ẩn các kệ danh sách phát</string>
-  <string name="morphe_music_hide_podcast_episode_download_button_title">Ẩn nút Tải xuống của tập podcast</string>
   <string name="morphe_music_hide_repeat_button_title">Ẩn nút Lặp lại</string>
   <string name="morphe_music_hide_shuffle_button_title">Ẩn nút Trộn bài</string>
   <string name="morphe_music_hide_speed_dial_shelf_title">Ẩn kệ \'Phát nhanh\'</string>
@@ -236,32 +244,26 @@ Các bài hát đã tải sẽ xuất hiện ở đây"</string>
   <string name="morphe_music_crossfade_paused_toast">Hiệu ứng chuyển bài đã tạm dừng cho phiên phát này</string>
   <string name="morphe_music_crossfade_resumed_toast">Hiệu ứng chuyển bài đã được bật lại</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Không thể dùng chế độ video khi đang bật hiệu ứng chuyển bài</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Hiệu ứng chuyển bài sẽ tạm dừng khi truyền hoặc chiếu âm thanh. Trong trường hợp này, tính năng có thể không bao giờ được khắc phục hoàn toàn</string>
-  <string name="morphe_music_crossfade_about_title">Giới thiệu</string>
-  <string name="morphe_music_crossfade_about_summary">Bấm vào đây để biết khi nào hiệu ứng chuyển bài hoạt động và khi nào không</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_sabr_toast">Crossfade bị tắt khi phát SABR</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade bị tắt khi đang phát lên thiết bị khác</string>
   <string name="morphe_music_crossfade_about_how_title">Cơ chế hoạt động</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Hiệu ứng chuyển bài sẽ giảm âm lượng đoạn cuối bài hát hiện tại, sau đó ghép với đoạn đầu bài hát tiếp theo được tăng âm lượng lên, tùy theo thời lượng và hiệu ứng chuyển mà bạn đã chọn.
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade làm cho phần cuối của bài hát này chồng lên phần đầu của bài hát tiếp theo, sử dụng thời lượng và đường cong của bạn
 
-Tính năng này hoạt động khi tự động chuyển bài (lúc nghe hết bài hát) và khi bạn tự chuyển bài khác - mỗi chế độ đều có một cài đặt riêng phía trên. Khi tự động chuyển bài, hiệu ứng sẽ bắt đầu vài giây trước khi bài hát kết thúc.
+Nó chạy khi tự động chuyển tiếp và khi chuyển thủ công, mỗi chế độ có công tắc riêng. Khi tự động chuyển tiếp, quá trình pha trộn bắt đầu vài giây trước khi bài hát kết thúc"</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Hạn chế</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Video ca nhạc chỉ phát dưới dạng âm thanh khi bật crossfade. Nhấn giữ nút phát ngẫu nhiên để tạm dừng crossfade và xem video
 
-Yêu cầu YT Music 9.x hoặc mới hơn."</string>
-  <string name="morphe_music_crossfade_about_best_title">Hiệu quả nhất khi</string>
-  <string name="morphe_music_crossfade_about_best_summary">Nghe nhạc thông thường, khi tự động chuyển bài, hay đang lặp một bài hát (phát đi phát lại một bài) và nghe trực tiếp từ loa điện thoại, tai nghe có dây, Bluetooth hoặc USB.</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Chưa thực sự tốt</string>
-  <string name="morphe_music_crossfade_about_quirks_summary">"Video nhạc sẽ chỉ phát nhạc khi bật hiệu ứng chuyển bài (bấm giữ nút trộn bài để tạm dừng nếu bạn muốn xem video)
+Video ca nhạc bắt đầu phát sẽ tiếp tục ở chế độ video cho đến bài hát tiếp theo
 
-Các bài hát ngắn hơn thời lượng chuyển bài có thể bỏ qua hiệu ứng chuyển bài
+Các bài hát ngắn hơn thời lượng crossfade sẽ không được áp dụng crossfade
 
-Màn hình khóa hoặc thông báo có thể hiển thị trạng thái cũ trong quá trình chuyển bài"</string>
-  <string name="morphe_music_crossfade_about_known_title">Lỗi đã biết</string>
-  <string name="morphe_music_crossfade_about_known_summary">"Video nhạc ở đầu hàng chờ - hoặc không phát từ hàng chờ có thể xuất hiện dưới dạng video trong chốt lát trước khi chuyển sang chế độ âm thanh
+Màn hình khóa hoặc thông báo có thể hiển thị trạng thái cũ trong giây lát giữa quá trình chuyển tiếp
 
-Tạm dừng hiệu ứng chuyển bài để xem video âm nhạc có thể khiến một số video hiển thị màn hình đen (đặc biệt là những video lấy âm thanh trực tiếp từ chính luồng video). Để tránh lỗi này, hãy dừng hiệu ứng chuyển bài trước khi phát bài hát"</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Không hoạt động chút nào</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Truyền hoặc chiếu âm thanh (Chromecast, chiếu màn hình hoặc âm thanh) – hiệu ứng chuyển tiếp sẽ tạm dừng vì nó không ổn định trong trường hợp này và có thể không bao giờ được khắc phục hoàn toàn.
+Tạm dừng crossfade để xem video ca nhạc có thể khiến một số video bị màn hình đen. Tạm dừng crossfade trước khi chọn bài hát sẽ tránh được điều này"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Không hỗ trợ</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Truyền hoặc phản chiếu âm thanh (Chromecast, phản chiếu màn hình hoặc âm thanh)
 
-YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở lên"</string>
+Phát SABR (đã tắt giả lập luồng video)"</string>
   <string name="morphe_music_crossfade_about_credit_title">Đóng góp</string>
   <string name="morphe_music_crossfade_about_credit_summary">Hiệu ứng chuyển bài do VazerOG phát triển</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
@@ -275,6 +277,13 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
   <string name="morphe_music_disable_dislike_redirection_title">Tắt chuyển bài khi bấm không thích</string>
   <string name="morphe_music_disable_dislike_redirection_summary">Không chuyển sang bài tiếp theo khi bạn bấm nút Không thích</string>
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <string name="morphe_music_playlist_track_tap_action_title">Hành động khi chạm vào bài hát trong danh sách phát</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_default">Phát danh sách phát</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_play_single_track">Chỉ phát bài hát đã chọn</string>
+  <string name="morphe_music_playlist_track_tap_action_entry_add_to_queue">Thêm bài hát đã chọn vào hàng đợi</string>
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
+  <string name="morphe_music_playlist_track_tap_added_to_queue">Đã thêm vào hàng đợi</string>
   <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">Ẩn nút Truyền</string>
   <string name="morphe_music_hide_history_button_title">Ẩn nút Lịch sử</string>
@@ -351,8 +360,6 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_change_start_page_entry_playlists">Danh sách phát</string>
   <string name="morphe_change_start_page_entry_search">Tìm kiếm</string>
   <string name="morphe_change_start_page_entry_subscriptions">Kênh đăng ký</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
-  <string name="morphe_music_hide_filter_bar_title">Ẩn thanh bộ lọc</string>
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <string name="morphe_music_force_portrait_orientation_title">Luôn giữ hướng dọc</string>
   <string name="morphe_music_force_portrait_orientation_summary">Giữ ứng dụng ở hướng dọc khi thiết bị được xoay</string>
@@ -386,7 +393,6 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ẩn tên nút điều hướng</string>
   <!-- interaction.scrobbling.scrobblingPatch -->
-  <string name="morphe_music_scrobbling_summary">Cấu hình tích hợp Last.fm và ListenBrainz</string>
   <string name="morphe_music_scrobbling_summary_logged_out">Chưa đăng nhập. Chạm để cấu hình</string>
   <string name="morphe_music_scrobbling_log_out">Đăng xuất</string>
   <string name="morphe_music_scrobbling_logged_out_toast">Đã đăng xuất</string>
@@ -409,7 +415,6 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_dialog_instruction">Nhập mã thông báo người dùng ListenBrainz để bật scrobbling</string>
   <string name="morphe_music_listenbrainz_token_dialog_hint">Mã thông báo</string>
-  <string name="morphe_music_listenbrainz_token_dialog_get_token">Lấy mã thông báo</string>
   <string name="morphe_music_listenbrainz_token_dialog_verify">Xác minh</string>
   <string name="morphe_music_listenbrainz_token_status_empty">Vui lòng nhập mã thông báo</string>
   <string name="morphe_music_listenbrainz_token_status_validating">Đang xác thực…</string>
@@ -444,8 +449,6 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_scrobbling_guess_album_title">Điền vào album còn thiếu</string>
   <string name="morphe_music_scrobbling_guess_album_summary">Khi bản nhạc không có album, hãy tra cứu trên Last.fm để scrobble của bạn được hoàn tất</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <string name="morphe_music_scrobbling_about_title">Giới thiệu về scrobbling</string>
-  <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_scrobbling_about_summary">"Scrobble giúp tự động đồng bộ lịch sử nghe nhạc từ YouTube Music lên Last.fm hoặc ListenBrainz
 
 Để đảm bảo scrobbling vẫn được đồng bộ hóa khi phát nhạc trong nền, hãy đặt mức sử dụng pin của YouTube Music thành \"Không hạn chế\""</string>
@@ -457,7 +460,6 @@ YouTube Music 8.x – hiệu ứng chuyển tiếp chỉ chạy trên 9.x trở 
   <string name="morphe_music_lyrics_section_service_title">Dịch vụ lời bài hát</string>
   <string name="morphe_music_lyrics_section_overlay_title">Lớp phủ</string>
   <string name="morphe_music_lyrics_section_sync_title">Đồng bộ</string>
-  <string name="morphe_music_lyrics_section_about_title">Giới thiệu</string>
   <string name="morphe_music_lyrics_source_all_disabled">Đã tắt tất cả nguồn cung cấp — lời bài hát có sẵn và lời bài hát được nhúng.</string>
   <string name="morphe_music_lyrics_source_reset_title">Đặt lại thứ tự nguồn cung cấp?</string>
   <string name="morphe_music_lyrics_source_reset_message">Khôi phục các nguồn cung cấp về thứ tự ưu tiên mặc định.</string>
@@ -538,8 +540,11 @@ Các bước:
   <string name="morphe_music_lyrics_credit_line_regex_summary">Nếu lời bài hát bị lọc sai xuống cuối, hãy điều chỉnh hoặc xóa mục này. Các dấu hiệu phân tách bằng dấu phẩy: các dòng chứa dấu hiệu theo sau bởi dấu hai chấm sẽ được hiển thị dưới dạng thông tin ghi công ở cuối. Để trống để vô hiệu hóa</string>
   <string name="morphe_music_lyrics_text_size_title">Cỡ chữ</string>
   <string name="morphe_music_lyrics_text_size_summary">Kích thước chữ của lời bài hát</string>
-  <string name="morphe_music_lyrics_offset_ms_title">Độ trễ thời gian</string>
+  <string name="morphe_music_lyrics_offset_ms_title">Độ lệch thời gian toàn cục</string>
   <string name="morphe_music_lyrics_offset_ms_summary">Lời bài hát đồng bộ theo phát lại. Nếu chúng lệch, hãy điều chỉnh độ lệch thời gian. Dịch chuyển lời bài hát đồng bộ về trước hoặc sau. Sử dụng giá trị dương nếu lời bài hát chạy trước bài hát</string>
+  <string name="morphe_music_lyrics_sb_matching_title">Sử dụng các phân đoạn SponsorBlock cho độ lệch lời bài hát</string>
+  <string name="morphe_music_lyrics_sb_matching_summary">Khớp lời bài hát mà không dùng các phân đoạn mà SponsorBlock bỏ qua, đồng thời chuyển lời bài hát sang bản âm thanh đã phát hành. Tắt sẽ bỏ qua hoàn toàn SponsorBlock</string>
+  <string name="morphe_music_lyrics_sb_no_video">Bài hát này không có id video để gửi</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <string name="morphe_music_lyrics_source_label">Nguồn: %s</string>
   <string name="morphe_music_lyrics_translated_by_google">Được dịch bởi Google</string>
@@ -560,6 +565,7 @@ Các bước:
   <string name="morphe_music_lyrics_refreshing">Đang làm mới</string>
   <string name="morphe_music_lyrics_refreshed">Đã làm mới</string>
   <string name="morphe_music_lyrics_about_summary">"Lời bài hát được khớp theo tiêu đề và nghệ sĩ; siêu dữ liệu bất thường có thể không tìm thấy gì hoặc tìm nhầm phiên bản. Dùng nút Làm mới để chuyển phiên bản. Các nhà cung cấp được đánh dấu * yêu cầu token. Không phải tất cả các nhà cung cấp đã bật đều luôn được yêu cầu theo thứ tự bạn đặt, mà họ phản hồi dựa trên tốc độ của họ."</string>
+  <string name="morphe_music_lyrics_source_advice_summary">Chỉ bật những nhà cung cấp bạn sử dụng, hoặc giữ nguyên mặc định — các yêu cầu liên tục có thể làm quá tải các trang web lời bài hát cộng đồng nhỏ</string>
   <string name="morphe_music_lyrics_hide_info_title">Ẩn dòng ghi công</string>
   <string name="morphe_music_lyrics_hide_info_summary">Ẩn dòng ghi công hiển thị bên dưới lời bài hát</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Hoán đổi bản dịch và chuyển tự</string>

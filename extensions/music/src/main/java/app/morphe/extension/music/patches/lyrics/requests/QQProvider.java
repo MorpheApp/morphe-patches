@@ -27,11 +27,13 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
-import app.morphe.extension.music.patches.lyrics.LyricsMerge;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
-import app.morphe.extension.music.patches.lyrics.Word;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Word;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
+import app.morphe.extension.music.patches.lyrics.parsers.LyricsCrypto;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
@@ -143,7 +145,7 @@ public final class QQProvider implements LyricsProvider {
 
         List<LyricsLine> lines = parseQrcFormat(original);
         if (lines.isEmpty()) {
-            lines = LrcParser.parseSynced(original);
+            lines = LRCParser.parseSynced(original);
         }
         if (lines.isEmpty()) {
             return null;
@@ -164,7 +166,7 @@ public final class QQProvider implements LyricsProvider {
         String transPayload = decodeQqLyricPayload(data.optString("trans", ""));
         List<LyricsLine> transLines = transPayload.isEmpty() ? null : parseQrcFormat(transPayload);
         if (transLines == null || transLines.isEmpty()) {
-            transLines = LrcParser.parseSynced(transPayload);
+            transLines = LRCParser.parseSynced(transPayload);
         }
         transLines.removeIf(line -> "//".equals(line.text().trim()));
         List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, transLines);
@@ -402,7 +404,7 @@ public final class QQProvider implements LyricsProvider {
             if (line.isEmpty()) {
                 continue;
             }
-            Matcher m = LrcParser.LRC_META.matcher(line);
+            Matcher m = LRCParser.LRC_META.matcher(line);
             if (!m.matches()) {
                 continue;
             }
@@ -416,7 +418,7 @@ public final class QQProvider implements LyricsProvider {
                 }
                 continue;
             }
-            if (LrcParser.CREDIT_META_KEYS.contains(key.toLowerCase(Locale.ROOT))) {
+            if (LRCParser.CREDIT_META_KEYS.contains(key.toLowerCase(Locale.ROOT))) {
                 String trimmed = value.trim();
                 if (!trimmed.isEmpty()) {
                     metadata.add(key + ":" + trimmed);
@@ -444,7 +446,7 @@ public final class QQProvider implements LyricsProvider {
                 continue;
             }
 
-            if (LrcParser.LRC_META.matcher(line).matches()) {
+            if (LRCParser.LRC_META.matcher(line).matches()) {
                 continue;
             }
 

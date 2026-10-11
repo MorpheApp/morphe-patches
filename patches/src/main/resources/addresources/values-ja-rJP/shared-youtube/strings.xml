@@ -108,10 +108,9 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR にログインすると、動画の再生が止まる問題が一部のユーザーで解決する場合があります。
 
 ログインするには、[続行] をタップしてください"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">続行</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">ログアウト</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">操作手順</string>
-  <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <!-- "Open website" must use the same translation as gms_core_dialog_open_website_text -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"アクティベーション コード: %s
 
 1. 下記の [ウェブサイトを開く] をタップして「デバイスの接続」と表示されるウェブサイトを開く
@@ -119,7 +118,6 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
 3. Google にログイン (未ログインの場合)。複数のアカウントがある場合は、YouTube で使用するアカウントを選択する
 4. [許可] をタップして YouTube VR へのアクセスを許可する
 5. 「デバイスを接続しました」というメッセージが表示された後にこのアプリに戻る"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">ウェブサイトを開く</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">アクティベーション コードの発行に失敗しました</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">認証トークンの発行に失敗しました</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">ログインに成功しました</string>
@@ -198,7 +196,6 @@ YouTube Premium を利用している場合、この設定は必要ない場合�
   <string name="morphe_custom_filter_screen_title">カスタム フィルタ</string>
   <string name="morphe_custom_filter_screen_summary">任意のコンポーネントを非表示にするフィルタであるカスタム フィルタの設定をします</string>
   <string name="morphe_custom_filter_title">カスタム フィルタを有効化</string>
-  <string name="morphe_custom_filter_strings_title">カスタム フィルタ</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="morphe_custom_filter_strings_summary">非表示にするコンポーネントの path builder string のリスト (改行区切り)</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">無効なカスタム フィルタ: %s</string>
@@ -261,9 +258,9 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_ryd_estimated_like_summary">動画投稿者が高評価数を非公開に設定している動画で、高評価の推定値を表示します</string>
   <string name="morphe_ryd_toast_on_connection_error_title">接続エラーの通知を表示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike サーバーが利用できない場合に通知を表示します</string>
-  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike API を使用してデータを取得しています
+  <string name="morphe_ryd_attribution_summary">"Return YouTube Dislike は、2021年にYouTubeが非表示にした低評価の数を復元します。カウントは削除前にアーカイブされたデータから取得され、新しい動画についてはユーザーの投票から推定されるため、おおよその値であり、数日ごとに更新されます
 
-ここをタップすると ReturnYouTubeDislike.com を開きます"</string>
+視聴している動画のIDはReturn YouTube Dislike APIに送信され、あなたの高評価と低評価は匿名で送信され、推定の精度向上に役立てられます"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">このデバイスの Return YouTube Dislike API 統計情報</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API 応答時間 (平均)</string>

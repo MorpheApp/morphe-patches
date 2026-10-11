@@ -171,6 +171,7 @@ public final class PlayPauseIcons {
             to.setTintMode(tintMode);
         }
 
+        @Deprecated
         @Override
         public int getOpacity() {
             return PixelFormat.TRANSLUCENT;

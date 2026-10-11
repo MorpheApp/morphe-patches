@@ -68,9 +68,6 @@ fun settingsPatch (
                 "morphe_prefs_icons.xml",
                 "morphe_prefs_icons_bold.xml"
             ),
-            ResourceGroup("menu",
-                "morphe_search_menu.xml"
-            ),
             ResourceGroup("drawable",
                 // CustomListPreference resources.
                 "morphe_ic_dialog_alert.xml",
@@ -87,17 +84,13 @@ fun settingsPatch (
                 "morphe_settings_toolbar_arrow_left_bold.xml",
             ),
             ResourceGroup("layout",
-                "morphe_custom_list_item_checked.xml",
-                "morphe_icon_list_item.xml",
                 // Color picker.
                 "morphe_color_dot_widget.xml",
-                "morphe_color_picker.xml",
                 // Search.
                 "morphe_preference_search_history_item.xml",
                 "morphe_preference_search_history_screen.xml",
                 "morphe_preference_search_no_result.xml",
                 "morphe_preference_search_result_color.xml",
-                "morphe_preference_search_result_group_header.xml",
                 "morphe_preference_search_result_list.xml",
                 "morphe_preference_search_result_regular.xml",
                 "morphe_preference_search_result_switch.xml",
@@ -219,8 +212,8 @@ private class AddOnPreferences(
  * </morphe-add-on-preferences>
  * ```
  *
- * Both attributes are optional, and preferences of a screen that declares neither, or declares
- * keys that do not exist, are added to the root screen. Screens that sort their preferences do so
+ * Both attributes are optional. Preferences of a screen without either of them, or with keys
+ * that do not exist, are added to the root screen. Screens that sort their preferences do so
  * by key, so an add-on that wants to stay next to a preference must also use a key that sorts next
  * to it. Icons are not supported, since the same nodes are used for all preference file variants.
  */

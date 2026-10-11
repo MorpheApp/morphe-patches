@@ -13,7 +13,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.MediaStore;
 
 import androidx.annotation.Nullable;
@@ -25,10 +24,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
+import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 
 public final class LocalLyricsFetcher {
 
@@ -309,8 +310,8 @@ public final class LocalLyricsFetcher {
         return null;
     }
 
-    private static boolean inBounds(byte[] d, int off, int len) {
-        return off >= 0 && len > 0 && off + (long) len <= d.length;
+    private static boolean isOutOfBounds(byte[] d, int off, int len) {
+        return off < 0 || len <= 0 || off + (long) len > d.length;
     }
 
     @Nullable
@@ -349,7 +350,7 @@ public final class LocalLyricsFetcher {
             final int size = (headerLen == 6)
                     ? (((d[pos + 3] & 0xFF) << 16) | ((d[pos + 4] & 0xFF) << 8) | (d[pos + 5] & 0xFF))
                     : (syncsafeSize ? syncsafe(d[pos + 4], d[pos + 5], d[pos + 6], d[pos + 7])
-                                    : readInt32BE(d, pos + 4));
+                    : readInt32BE(d, pos + 4));
             final int bodyOff = pos + headerLen;
             if (size < 0 || bodyOff + size > d.length) {
                 break;
@@ -371,7 +372,7 @@ public final class LocalLyricsFetcher {
                     String desc = parseTxxxDescription(d, bodyOff, size);
                     if (desc != null && desc.length() >= 5
                             && (desc.regionMatches(true, 0, "LYRICS", 0, 6)
-                             || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
+                            || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
                         String s = parseTxxxValue(d, bodyOff, size);
                         if (s != null && !s.trim().isEmpty()) {
                             return s;
@@ -382,7 +383,7 @@ public final class LocalLyricsFetcher {
                     String desc = parseCommDescription(d, bodyOff, size);
                     if (desc != null && desc.length() >= 5
                             && (desc.regionMatches(true, 0, "LYRICS", 0, 6)
-                             || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
+                            || desc.regionMatches(true, 0, "LYRIC", 0, 5))) {
                         String s = parseCommBody(d, bodyOff, size);
                         if (s != null && !s.trim().isEmpty()) {
                             return s;
@@ -408,7 +409,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static String parseTxxxDescription(byte[] d, int off, int len) {
-        if (!inBounds(d, off, len) || len <= 1) return null;
+        if (isOutOfBounds(d, off, len) || len <= 1) return null;
         final int enc = d[off] & 0xFF;
         final int frameEnd = off + len;
         final int descEnd = indexOfNullTerm(d, off + 1, frameEnd, enc);
@@ -418,7 +419,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static String parseTxxxValue(byte[] d, int off, int len) {
-        if (!inBounds(d, off, len) || len <= 1) return null;
+        if (isOutOfBounds(d, off, len) || len <= 1) return null;
         final int enc = d[off] & 0xFF;
         final int frameEnd = off + len;
         final int descEnd = indexOfNullTerm(d, off + 1, frameEnd, enc);
@@ -439,7 +440,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static String parseCommDescription(byte[] d, int off, int len) {
-        if (!inBounds(d, off, len) || len <= 4) return null;
+        if (isOutOfBounds(d, off, len) || len <= 4) return null;
         final int enc = d[off] & 0xFF;
         final int frameEnd = off + len;
         final int descStart = off + 1 + 3;
@@ -450,7 +451,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static String parseCommBody(byte[] d, int off, int len) {
-        if (!inBounds(d, off, len) || len <= 4) return null;
+        if (isOutOfBounds(d, off, len) || len <= 4) return null;
         final int enc = d[off] & 0xFF;
         final int frameEnd = off + len;
         final int descStart = off + 1 + 3;
@@ -472,7 +473,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static String parseTextFrame(byte[] d, int off, int len) {
-        if (!inBounds(d, off, len) || len <= 0) {
+        if (isOutOfBounds(d, off, len) || len <= 0) {
             return null;
         }
         final int enc = d[off] & 0xFF;
@@ -507,7 +508,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static String parseSylt(byte[] d, int off, int len) {
-        if (!inBounds(d, off, len) || len < 5) {
+        if (isOutOfBounds(d, off, len) || len < 5) {
             return null;
         }
         final int enc = d[off] & 0xFF;
@@ -542,8 +543,8 @@ public final class LocalLyricsFetcher {
             if (!seg.isEmpty()) {
                 if (tsMs >= 0) {
                     sb.append('[')
-                      .append(LrcParser.formatCentiseconds(tsMs))
-                      .append(']');
+                            .append(LRCParser.formatCentiseconds(tsMs))
+                            .append(']');
                 }
                 sb.append(seg).append('\n');
             }
@@ -587,7 +588,7 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static String parseVorbisComment(byte[] d, int start, int size) {
-        if (!inBounds(d, start, size)) {
+        if (isOutOfBounds(d, start, size)) {
             return null;
         }
         final int end = start + size;
@@ -718,8 +719,6 @@ public final class LocalLyricsFetcher {
         return null;
     }
 
-    @Nullable
-    /** Container boxes nest this deeply in real files; anything further is a crafted file. */
     private static final int MAX_M4A_DEPTH = 32;
 
     private static String parseM4a(byte[] d) {
@@ -799,9 +798,6 @@ public final class LocalLyricsFetcher {
 
     @Nullable
     private static Lyrics fallbackViaMediaMetadataRetriever(Context context, Uri uri) {
-        if (Build.VERSION.SDK_INT < 30) {
-            return null;
-        }
         try (MediaMetadataRetriever retriever = new MediaMetadataRetriever()) {
             retriever.setDataSource(context, uri);
             String raw = retriever.extractMetadata(METADATA_KEY_LYRICS);
@@ -821,7 +817,7 @@ public final class LocalLyricsFetcher {
             return null;
         }
 
-        LrcParser.LrcParseResult result = LrcParser.parseSyncedWithCreditLines(raw);
+        LRCParser.LrcParseResult result = LRCParser.parseSyncedWithCreditLines(raw);
         if (!result.lines.isEmpty()) {
             boolean synced = false;
             for (LyricsLine line : result.lines) {
@@ -835,7 +831,7 @@ public final class LocalLyricsFetcher {
                     raw, "lrc", null);
         }
 
-        List<LyricsLine> plain = LrcParser.parsePlain(raw);
+        List<LyricsLine> plain = LRCParser.parsePlain(raw);
         if (!plain.isEmpty()) {
             return new Lyrics(plain, "Local", false, null, null, null, null, raw, "lrc", null);
         }

@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
   <string name="morphe_settings_navigate_up">Navigasi ke atas</string>
   <string name="morphe_settings_search_hint">Cari setelan</string>
+  <string name="morphe_settings_screen_info_title">Tentang</string>
   <string name="morphe_settings_search_no_results_title">Tidak ada hasil yang ditemukan untuk \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Coba kata kunci lain</string>
   <string name="morphe_settings_search_recent_searches">Pencarian terbaru</string>
@@ -105,7 +106,6 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
 Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
   <string name="morphe_debug_export_logs_title">Ekspor pencatatan debug</string>
   <string name="morphe_debug_export_logs_summary">Ekspor pencatatan debug Morphe</string>
-  <string name="morphe_debug_export_logs_file">Ekspor ke berkas</string>
   <string name="morphe_debug_export_logs_success">Pencatatan debug berhasil diekspor</string>
   <string name="morphe_debug_export_logs_failed">Gagal mengekspor pencatatan debug</string>
   <string name="morphe_debug_logs_search_hint">Cari pencatatan debug…</string>
@@ -229,4 +229,7 @@ Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
 Jika Anda ingin pengalaman tanpa kendala, silakan &lt;b&gt;copot&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi eksperimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Log kerusakan disimpan ke dokumen pengguna: %s</string>
+  <string name="morphe_crash_log_saved">Log kerusakan disimpan: %s</string>
 </resources>

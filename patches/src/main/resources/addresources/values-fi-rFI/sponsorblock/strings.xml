@@ -227,8 +227,7 @@ Jos et lähetä korostusta, napauta Peruuta ja merkitse toinen sijainti"</string
   <string name="morphe_sb_stats_saved_second_format">%s sekuntia</string>
   <string name="morphe_sb_color_opacity_label">Läpikuultamattomuus:</string>
   <string name="morphe_sb_color_dot_label">Väri:</string>
-  <string name="morphe_sb_about_title">Tietoja</string>
-  <string name="morphe_sb_about_api_summary">"Tiedot tarjoaa SponsorBlock API.
+  <string name="morphe_sb_about_api_summary">"SponsorBlock on joukkoistettu tietokanta videosegmenteistä, kuten sponsoreista, introista, outroista ja tilausmuistutuksista. Segmentit lähetetään ja niistä äänestetään yhteisön toimesta, ja tietokanta on avoin ja ilmainen ladattavaksi
 
-Napauta tästä avataksesi Sponsor.ajay.app ja nähdäksesi lataukset muille alustoille"</string>
+Katsomasi videon tunnus lähetetään SponsorBlock-API:lle segmenttien hakemiseksi"</string>
 </resources>

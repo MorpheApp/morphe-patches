@@ -15,6 +15,11 @@ internal object Constants {
         ),
         targets = listOf(
             AppTarget(
+                version = "2026.41.0",
+                minSdk = 29,
+                isExperimental = true
+            ),
+            AppTarget(
                 version = "2026.40.0",
                 minSdk = 29,
                 isExperimental = true
@@ -24,18 +29,9 @@ internal object Constants {
                 minSdk = 29,
                 isExperimental = true
             ),
-            AppTarget(
-                version = "2026.38.0",
-                minSdk = 29,
-                isExperimental = true
-            ),
             // 2026.33.0 has issues where replying can show an empty comment box.
             AppTarget(
                 version = "2026.24.0", // Last version with disable modern home.
-                minSdk = 29
-            ),
-            AppTarget(
-                version = "2026.14.0", // TODO: Remove this version
                 minSdk = 29
             ),
             AppTarget(

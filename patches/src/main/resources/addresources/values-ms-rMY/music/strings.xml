@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_header_logo_entry_3">Tersuai</string>
   <!-- misc.album.albumMusicVideoPatch -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
+  <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_music_downloads_sort">Isih</string>
@@ -77,24 +78,15 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Pudar silang dijedakan untuk sesi ini</string>
   <string name="morphe_music_crossfade_resumed_toast">Pudar silang disambung semula</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Mod video tidak tersedia semasa pudar silang didayakan</string>
-  <string name="morphe_music_crossfade_cast_unstable_toast">Pudar silang dikenakan apabila menyiarkan atau mencerminkan audio. Pudar silang ke atas siaran/pencerminan adalah tidak stabil dan mungkin tidak dapat dibaiki</string>
-  <string name="morphe_music_crossfade_about_title">Mengenai</string>
-  <string name="morphe_music_crossfade_about_summary">Bagaimana pudar silang berfungsi — dan bila ia tidak</string>
-  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <string name="morphe_music_crossfade_about_how_title">Bagaimana pudar silang berfungsi</string>
-  <string name="morphe_music_crossfade_about_best_title">Terbaik digunakan dengan</string>
-  <string name="morphe_music_crossfade_about_quirks_title">Tidak berapa baik digunakan</string>
-  <string name="morphe_music_crossfade_about_known_title">Isu yang diketahui</string>
-  <string name="morphe_music_crossfade_about_unsupported_title">Tidak berfungsi langsung</string>
-  <string name="morphe_music_crossfade_about_unsupported_summary">"Siaran atau pencerminan audio (Chromecast, pencerminan skrin atau audio) — pudar silang dihentikan kerana ciri itu tidak stabil dan mungkin tidak dapat dibaiki.
-
-YouTube Music 8.x — pudar silang hanya berkesan pada versi 9.x dan yang lebih baharu"</string>
   <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
   <string name="morphe_music_crossfade_about_credit_summary">Ciri pudar silang oleh VazerOG</string>
   <!-- interaction.remember.repeatstate.rememberRepeatStatePatch-->
   <!-- interaction.remember.shufflestate.rememberShuffleStatePatch -->
   <!-- video.speed.playbackSpeedPatch -->
   <!-- interaction.dislikeredirection.disableDislikeRedirectionPatch -->
+  <!-- interaction.playlisttracktap.playlistTrackTapPatch -->
+  <!-- 'Added to queue' should be translated using the same localized wording YouTube Music displays for the toast. -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.hide.actionbuttons.hideActionButtonsPatch -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube Music displays for the button. -->
@@ -116,7 +108,6 @@ YouTube Music 8.x — pudar silang hanya berkesan pada versi 9.x dan yang lebih 
   <string name="morphe_change_start_page_entry_playlists">Senarai main</string>
   <string name="morphe_change_start_page_entry_search">Carian</string>
   <string name="morphe_change_start_page_entry_subscriptions">Langganan</string>
-  <!-- layout.compactheader.hideFilterBarPatch -->
   <!-- layout.orientation.forcePortraitOrientationPatch -->
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Tukar warna pemain mini</string>
@@ -157,9 +148,7 @@ YouTube Music 8.x — pudar silang hanya berkesan pada versi 9.x dan yang lebih 
   <!-- 'scrobbling' must be kept untranslated -->
   <string name="morphe_music_listenbrainz_token_status_invalid_unknown">tidak diketahui</string>
   <!-- 'scrobbling' must be kept untranslated -->
-  <!-- 'scrobbling' must be kept untranslated -->
   <!-- layout.lyrics.lyricsPatch -->
-  <string name="morphe_music_lyrics_section_about_title">Mengenai</string>
   <!-- Shown under the lyrics. The placeholder is a service name such as LRCLIB. -->
   <!-- Tappable label under the lyrics that turns the translation on. -->
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->

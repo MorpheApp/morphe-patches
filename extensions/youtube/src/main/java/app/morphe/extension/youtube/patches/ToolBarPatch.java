@@ -16,13 +16,22 @@ import app.morphe.extension.shared.Logger;
 
 @SuppressWarnings("unused")
 public class ToolBarPatch {
+    private static final ThreadLocal<String> pendingIconEnum = new ThreadLocal<>();
 
     /**
-     * Injection point.
+     * Injection point. Called immediately after YouTube resolves the menu icon enum.
      */
-    public static void hookToolBar(@Nullable Enum<?> iconEnum, ImageView imageView) {
-        if (iconEnum != null && imageView.getParent() instanceof View parentView) {
-            String enumName = iconEnum.name();
+    public static void setToolbarIconEnum(@Nullable Enum<?> iconEnum) {
+        pendingIconEnum.set(iconEnum == null ? null : iconEnum.name());
+    }
+
+    /**
+     * Injection point. Called immediately after YouTube loads the toolbar ImageView.
+     */
+    public static void setToolbarImageView(ImageView imageView) {
+        String enumName = pendingIconEnum.get();
+        pendingIconEnum.remove();
+        if (enumName != null && imageView.getParent() instanceof View parentView) {
             Logger.printDebug(() -> "enum: " + enumName);
             hookToolBar(enumName, parentView, imageView);
         }

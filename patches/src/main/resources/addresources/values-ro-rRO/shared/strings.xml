@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Importare eșuată: %s</string>
   <string name="morphe_settings_navigate_up">Navighează în sus</string>
   <string name="morphe_settings_search_hint">Caută în setări</string>
+  <string name="morphe_settings_screen_info_title">Despre</string>
   <string name="morphe_settings_search_no_results_title">Nu s-au găsit rezultate pentru „%s”</string>
   <string name="morphe_settings_search_no_results_summary">Încearcă un alt cuvânt-cheie</string>
   <string name="morphe_settings_search_recent_searches">Căutări recente</string>
@@ -105,7 +106,6 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
 Nu veți fi notificat de niciun eveniment neașteptat."</string>
   <string name="morphe_debug_export_logs_title">Exportare jurnale de depanare</string>
   <string name="morphe_debug_export_logs_summary">Exportă jurnalele de depanare Morphe</string>
-  <string name="morphe_debug_export_logs_file">Exportă în fișier</string>
   <string name="morphe_debug_export_logs_success">Jurnalele de depanare au fost exportate cu succes</string>
   <string name="morphe_debug_export_logs_failed">Eșec la exportarea jurnalelor de depanare</string>
   <string name="morphe_debug_logs_search_hint">Caută în jurnalele de depanare…</string>
@@ -229,4 +229,7 @@ Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următo
 Dacă doriți o experiență cât mai bună, atunci &lt;b&gt;dezinstalați&lt;/b&gt; această aplicație și actualizați versiunea recomandată a aplicației ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Vreau experimental</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Vreau stabil</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Jurnal de erori salvat în documentele utilizatorului: %s</string>
+  <string name="morphe_crash_log_saved">Jurnal de erori salvat: %s</string>
 </resources>

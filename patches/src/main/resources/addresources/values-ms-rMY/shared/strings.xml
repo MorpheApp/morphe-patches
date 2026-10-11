@@ -20,6 +20,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_submenu_title">Tetapan</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Import</string>
+  <string name="morphe_settings_screen_info_title">Mengenai</string>
   <string name="morphe_settings_name_default_item">Lalai</string>
   <string name="morphe_settings_name_custom_item">Tersuai</string>
   <!-- String is also duplicated in Reddit about preference -->
@@ -42,4 +43,5 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_continue_text">Teruskan</string>
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <!-- misc.crashlog.crashLogPatch -->
 </resources>

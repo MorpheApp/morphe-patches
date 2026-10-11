@@ -7,6 +7,10 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import java.util.Collections;
+import java.util.Set;
+
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.components.BufferAsciiStrings;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroup;
 import app.morphe.extension.shared.patches.components.ByteArrayFilterGroupList;
@@ -23,6 +27,16 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public final class HorizontalShelvesFilter extends Filter {
+    /**
+     * Identifiers of the shelves hidden outside the player.
+     * <p>
+     * The feed behind the player is also reloaded while the player is open,
+     * such as when entering or exiting fullscreen. These shelves are not under the player,
+     * and must stay hidden, otherwise they show again until the feed is scrolled.
+     */
+    private static final Set<String> hiddenShelfIdentifiers = Collections.synchronizedSet(
+            Collections.newSetFromMap(Utils.createSizeRestrictedMap(100)));
+
     private final ByteArrayFilterGroupList descriptionBuffers = new ByteArrayFilterGroupList();
     private final ByteArrayFilterGroupList generalBuffers = new ByteArrayFilterGroupList();
 
@@ -70,14 +84,21 @@ public final class HorizontalShelvesFilter extends Filter {
         );
     }
 
-    private boolean hideShelves(ContextInterface contextInterface) {
-        if (!Settings.HIDE_HORIZONTAL_SHELVES.get() || isPlayerOrDescription()) {
+    private boolean hideShelves(ContextInterface contextInterface, String identifier) {
+        if (!Settings.HIDE_HORIZONTAL_SHELVES.get()) {
             return false;
         }
-        return contextInterface.isHomeFeedOrRelatedVideo()
+        if (isPlayerOrDescription()) {
+            return identifier != null && hiddenShelfIdentifiers.contains(identifier);
+        }
+        final boolean hide = contextInterface.isHomeFeedOrRelatedVideo()
                 || NavigationBar.isSearchBarActive()
                 || NavigationBar.isBackButtonVisible()
                 || NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
+        if (hide && identifier != null) {
+            hiddenShelfIdentifiers.add(identifier);
+        }
+        return hide;
     }
 
     private boolean isPlayerOrDescription() {
@@ -108,6 +129,6 @@ public final class HorizontalShelvesFilter extends Filter {
                 return true;
             }
         }
-        return hideShelves(contextInterface);
+        return hideShelves(contextInterface, identifier);
     }
 }

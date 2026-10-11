@@ -32,6 +32,7 @@ message ButtonRenderer {
     NavigationEndpoint navigationEndpoint = 9;
     optional ButtonRendererAccessibilityData buttonRendererAccessibilityData = 10;
     optional RendererAccessibilityData rendererAccessibilityData = 16;
+    optional NavigationEndpoint command = 19;
 }
 
 message TopbarButtonRenderer {
@@ -81,6 +82,46 @@ message PivotBarItemRenderer {
     string targetId = 10;
 }
 
+// Navigation bar item with the renderers as bytes, so no field is lost when the item is converted.
+message PivotBarItemBytes {
+    oneof data {
+        bytes pivotBarIconOnlyItemRenderer = 318370163;
+        bytes pivotBarItemRenderer = 117501096;
+    }
+}
+
+// Fields of PivotBarIconOnlyItemRenderer that PivotBarItemRenderer also has.
+message PivotBarIconOnlyItemRendererBytes {
+    string pivotIdentifier = 1;
+    string targetId = 2;
+    bytes navigationEndpoint = 3;
+    Title accessibility = 4;
+    bytes icon = 5;
+    int32 navigationType = 7;
+    bytes trackingParams = 9;
+    bytes thumbnail = 10;
+}
+
+// Fields of PivotBarItemRenderer that PivotBarIconOnlyItemRenderer also has.
+message PivotBarItemRendererBytes {
+    string pivotIdentifier = 1;
+    bytes navigationEndpoint = 2;
+    FormattedString title = 3;
+    bytes icon = 5;
+    bytes trackingParams = 9;
+    string targetId = 10;
+    int32 navigationType = 11;
+    bytes thumbnail = 15;
+}
+
+message FormattedString {
+    repeated TextRun runs = 1;
+}
+
+message TextRun {
+    string text = 1;
+}
+
 message PresentationStyle {
     int32 pivotBarItemStyle = 1;
 }
@@ -110,9 +151,59 @@ message NavigationEndpoint {
     optional ReelWatchEndpoint reelWatchEndpoint = 139608561;
     optional CreationEntryEndpoint creationEntryEndpoint = 324622913;
     optional SearchEndpoint searchEndpoint = 48687709;
+    optional CreationEntrySheetEndpoint creationEntrySheetEndpoint = 144891985;
+    optional ShortsCreationEndpoint shortsCreationEndpoint = 307460408;
+    optional CreationModesCommand creationModesCommand = 469274066;
 }
 
 message CreationEntryEndpoint {
+}
+
+// Bottom sheet of the create button of the Android Automotive layout, with the creation buttons.
+message CreationEntrySheetEndpoint {
+    ButtonSheetSupportedRenderers buttonSheetSupportedRenderers = 1;
+}
+
+message ButtonSheetSupportedRenderers {
+    ButtonSheetRenderer buttonSheetRenderer = 144798207;
+}
+
+message ButtonSheetRenderer {
+    repeated Buttons buttons = 1;
+}
+
+message ShortsCreationEndpoint {
+}
+
+// Opens the creation modes, such as the upload mode, as the create button of the phone layout.
+message CreationModesCommand {
+    CreationModesControlsRendererHolder creationModesControlsRenderer = 1;
+}
+
+message CreationModesControlsRendererHolder {
+    CreationModesControlsRenderer creationModesControlsRenderer = 468228182;
+}
+
+message CreationModesControlsRenderer {
+    CreationModesSwitcherRendererHolder creationModesSwitcherRenderer = 1;
+}
+
+message CreationModesSwitcherRendererHolder {
+    CreationModesSwitcherRenderer creationModesSwitcherRenderer = 466829302;
+}
+
+message CreationModesSwitcherRenderer {
+    repeated Buttons modeButtons = 1;
+    repeated CreationMode modes = 2;
+    CreationMode defaultMode = 3;
+    bool defaultToLastUsedMode = 4;
+}
+
+enum CreationMode {
+    CREATION_MODE_UNKNOWN = 0;
+    CREATION_MODE_UPLOADS = 1;
+    CREATION_MODE_SHORTS = 2;
+    CREATION_MODE_LIVE = 3;
 }
 
 message SearchEndpoint {

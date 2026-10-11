@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-import app.morphe.extension.music.patches.lyrics.Lyrics;
-import app.morphe.extension.music.patches.lyrics.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 
 /**
  * A third party lyrics backend.
@@ -68,12 +68,16 @@ public interface LyricsProvider {
 
         public int matchScore(TrackInfo track) {
             if (sourceTitle != null && !sourceTitle.isEmpty()) {
-                return LyricsRequests.evaluate(sourceTitle, sourceArtist, sourceDurationSec,
-                        track).score();
+                LyricsRequests.MatchVerdict v = LyricsRequests.evaluate(sourceTitle, sourceArtist,
+                        sourceDurationSec, track);
+                return LyricsRequests.isCustomMatchMode()
+                        ? LyricsRequests.rankScore(v) : v.score();
             }
             if (queriedVariant != null) {
-                return LyricsRequests.evaluate(queriedVariant.title(), queriedVariant.artist(),
-                        queriedVariant.durationSeconds(), track).score();
+                LyricsRequests.MatchVerdict v = LyricsRequests.evaluate(queriedVariant.title(),
+                        queriedVariant.artist(), queriedVariant.durationSeconds(), track);
+                return LyricsRequests.isCustomMatchMode()
+                        ? LyricsRequests.rankScore(v) : v.score();
             }
             return videoIdKeyed ? LyricsRequests.VIDEO_ID_TRUST : LyricsRequests.NEUTRAL;
         }
@@ -93,6 +97,40 @@ public interface LyricsProvider {
                 return LyricsRequests.isHighMatch(LyricsRequests.MatchVerdict.videoIdTrust());
             }
             return false;
+        }
+
+        public boolean isBlind() {
+            return (sourceTitle == null || sourceTitle.isEmpty())
+                    && queriedVariant == null
+                    && !videoIdKeyed;
+        }
+
+        @Nullable
+        public static FetchResult searched(@Nullable Lyrics lyrics,
+                                           @Nullable List<String> titles,
+                                           @Nullable List<String> artists,
+                                           long durationSec, TrackInfo track) {
+            if (lyrics == null) {
+                return null;
+            }
+            if (titles == null || titles.isEmpty()) {
+                return blind(lyrics);
+            }
+            final List<String> artistNames =
+                    artists == null || artists.isEmpty() ? List.of("") : artists;
+            for (String title : titles) {
+                if (title == null || title.isEmpty()) {
+                    continue;
+                }
+                for (String artist : artistNames) {
+                    FetchResult result = new FetchResult(lyrics, title,
+                            artist == null ? "" : artist, durationSec, null, false);
+                    if (result.isHighMatch(track)) {
+                        return result;
+                    }
+                }
+            }
+            return blind(lyrics);
         }
     }
 

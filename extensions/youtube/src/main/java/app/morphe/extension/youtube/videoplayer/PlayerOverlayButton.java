@@ -35,7 +35,6 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.HidePlayerOverlayButtonsPatch;
-import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 public class PlayerOverlayButton {
@@ -292,30 +291,21 @@ public class PlayerOverlayButton {
                     && sourcePaddingBottom == button.getPaddingBottom())
             ) {
                 ViewGroup.LayoutParams sourceLayoutParams = source.getLayoutParams();
-                ViewGroup.LayoutParams layoutParams;
+                // The parent requires its own LayoutParams type (ConstraintSet.clone() casts
+                // every child on 21.40+), but sharing the fullscreen button's instance breaks
+                // the layout, so the button's own instance is reused.
+                ViewGroup.LayoutParams layoutParams = button.getLayoutParams();
+                layoutParams.width = sourceLayoutParams.width;
+                layoutParams.height = sourceLayoutParams.height;
 
-                if (VersionCheckPatch.IS_21_15_OR_GREATER) {
-                    // Fullscreen button has a custom margin layout parameters class
-                    // and if used directly causes a broken layout with 21.15+
-                    // if quality and speed button are shown.
-                    layoutParams = new ViewGroup.MarginLayoutParams(sourceLayoutParams);
-                } else {
-                    // Older app versions require the parent's original LayoutParams type.
-                    // Reuse the custom button's own instance instead of sharing the
-                    // fullscreen button's LayoutParams object.
-                    layoutParams = button.getLayoutParams();
-                    layoutParams.width = sourceLayoutParams.width;
-                    layoutParams.height = sourceLayoutParams.height;
-
-                    if (layoutParams instanceof ViewGroup.MarginLayoutParams buttonMargins
-                            && sourceLayoutParams instanceof ViewGroup.MarginLayoutParams sourceMargins) {
-                        buttonMargins.leftMargin = sourceMargins.leftMargin;
-                        buttonMargins.topMargin = sourceMargins.topMargin;
-                        buttonMargins.rightMargin = sourceMargins.rightMargin;
-                        buttonMargins.bottomMargin = sourceMargins.bottomMargin;
-                        buttonMargins.setMarginStart(sourceMargins.getMarginStart());
-                        buttonMargins.setMarginEnd(sourceMargins.getMarginEnd());
-                    }
+                if (layoutParams instanceof ViewGroup.MarginLayoutParams buttonMargins
+                        && sourceLayoutParams instanceof ViewGroup.MarginLayoutParams sourceMargins) {
+                    buttonMargins.leftMargin = sourceMargins.leftMargin;
+                    buttonMargins.topMargin = sourceMargins.topMargin;
+                    buttonMargins.rightMargin = sourceMargins.rightMargin;
+                    buttonMargins.bottomMargin = sourceMargins.bottomMargin;
+                    buttonMargins.setMarginStart(sourceMargins.getMarginStart());
+                    buttonMargins.setMarginEnd(sourceMargins.getMarginEnd());
                 }
 
                 button.setLayoutParams(layoutParams);

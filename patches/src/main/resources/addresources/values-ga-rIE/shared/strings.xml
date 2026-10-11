@@ -34,6 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Theip ar allmhairiú: %s</string>
   <string name="morphe_settings_navigate_up">Nascleanúint suas</string>
   <string name="morphe_settings_search_hint">Socruithe cuardaigh</string>
+  <string name="morphe_settings_screen_info_title">Maidir</string>
   <string name="morphe_settings_search_no_results_title">Níor aimsíodh aon torthaí do \'%s\'</string>
   <string name="morphe_settings_search_no_results_summary">Bain triail as eochairfhocal eile</string>
   <string name="morphe_settings_search_recent_searches">Cuardaigh le déanaí</string>
@@ -105,7 +106,6 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
 Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
   <string name="morphe_debug_export_logs_title">Easpórtáil logaí dífhabhtaithe</string>
   <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
-  <string name="morphe_debug_export_logs_file">Easpórtáil chuig comhad</string>
   <string name="morphe_debug_export_logs_success">Easpórtáladh logaí dífhabhtaithe go rathúil</string>
   <string name="morphe_debug_export_logs_failed">Theip ar logaí dífhabhtaithe a onnmhairiú</string>
   <string name="morphe_debug_logs_search_hint">Cuardaigh logaí dífhabhtaithe…</string>
@@ -229,4 +229,7 @@ Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leana
 Más mian leat an taithí is saoire, ansin &lt;b&gt;díshuiteáil&lt;/b&gt; seo agus paisteáil an leagan molta den aip de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ba mhaith liom turgnamhach</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ba mhaith liom cobhsaíocht</string>
+  <!-- misc.crashlog.crashLogPatch -->
+  <string name="morphe_crash_log_saved_documents">Log tuairteála sábháilte i ndoiciméid an úsáideora: %s</string>
+  <string name="morphe_crash_log_saved">Log tuairteála sábháilte: %s</string>
 </resources>

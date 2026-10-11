@@ -70,8 +70,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_ticket_shelf_title">خاوێن کردنەوەی پەلیک دەبێت</string>
   <string name="morphe_hide_upload_time_title">خه‌ڵه‌ت‌نووس قایم بکه</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
-  <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_video_recommendation_labels_title">خاوێن کردنەوەی ناونیشانەکانی ڕێنمایەندی ڤیدۆ</string>
+  <!-- 'Auto-dubbed', 'Earns commission', 'Hyped', 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_view_count_title">ژمێرەی بینه‌ر قایم بکه</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
   <string name="morphe_hide_web_search_results_title">ئەنجامی گەڕانی وێب بشارەوە</string>
@@ -95,6 +94,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">خاوێن کردنەوەی ڕێنمایەکانی ئەندامەکانی</string>
   <string name="morphe_hide_timed_reactions_title">واپاسدان بۆ بەرەبەرەکانی کات‌بڕكراو</string>
   <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_help_feedback_menu_title">Hide \'Help &amp; feedback\' menu</string>
   <string name="morphe_hide_video_title_title">سەرنیشانی ڤیدۆ دەبێتە قایم</string>
   <string name="morphe_hide_description_components_screen_title"> پێشكەشەى وتە</string>
   <string name="morphe_hide_hype_points_title">خۆپاراستن بۆ خاڵە نیكەكان</string>
@@ -146,7 +146,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_length">دەستەواژە زۆر کورتە و پێویستی بە کۆتەیشن هەیە: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">دەستەواژە هەموو ڤیدیۆکان دەشارێتەوە: %s</string>
   <string name="morphe_hide_stats_category_title">دۆخ</string>
-  <string name="morphe_hide_about_category_title">دربارە</string>
   <!-- ad.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">ڕەفەی فرۆشگای دروستکەر بشارەوە</string>
   <string name="morphe_hide_end_screen_store_banner_title">شاردنەوەی بانەری فرۆشگای شاشەی کۆتایی</string>
@@ -166,6 +165,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.channelsearch.channelSearchPatch -->
   <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <!-- interaction.copytext.copyTextPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
@@ -182,7 +182,7 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_toast_off">وەڵا پێكردنەوەی ڤیدۆ نا ساراوە</string>
   <string name="morphe_loop_video_range_label_start">دەستپێکردن</string>
   <string name="morphe_loop_video_range_label_end">كۆتایـی</string>
-  <!-- interaction.pip.pipButtonPatch -->
+  <!-- interaction.pictureinpicture.pictureinPictureButtonPatch -->
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
@@ -248,11 +248,6 @@ Second \"item\" text"</string>
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">محفض دمودي</string>
-  <string name="morphe_hide_quick_actions_title">شاردنەوەی باری کردار</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">دۆزینەوەی پەیامگە دەربخۆ</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">شاردنەوەی دوگمەی کۆمێنتە</string>
-  <string name="morphe_hide_quick_actions_save_button_title">إقحيد إنبجون إلق قيمود</string>
-  <string name="morphe_hide_quick_actions_share_button_title">جفيء دسته بتونه</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">زیرەکان</string>
   <!-- layout.captions.autoCaptionsPatch -->
@@ -261,6 +256,8 @@ Second \"item\" text"</string>
   <string name="morphe_auto_captions_style_entry_4">هنگێو سڕکرێتەوە نیشانە</string>
   <string name="morphe_auto_captions_style_legacy_entry_1">نیشاندانی ژێرنووسی خۆکار</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">به‌کارھێنانی زیروکان قایم بگرە</string>
+  <!-- layout.captions.preferredCaptionLanguagePatch -->
+  <string name="morphe_preferred_caption_language_entry_off">کوژاوە</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_caption_cookies_title">کێکەکان</string>
   <string name="morphe_get_caption_cookies_title">کێکەکانی ناوی سەره‌نگ</string>
@@ -288,9 +285,6 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">ئەنیمەیشنی پەڕەکانی گەشتکردن چالاک بکە</string>
   <string name="morphe_toolbar_screen_title">بەڵتە</string>
   <string name="morphe_hide_toolbar_cast_button_title">دوگمەی پەخشکردن بشارەوە</string>
-  <string name="morphe_hide_toolbar_create_button_title">خۆزگەیەکی دروستکردن فشیۆڕە</string>
-  <string name="morphe_hide_toolbar_notification_button_title">دوگمەی ئاگاداری بشارەوە</string>
-  <string name="morphe_show_toolbar_settings_button_type_title">کرداری دوگمەی ڕێکخستنەکان</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">خەڵەتە ڕیزكارییەكە</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -379,6 +373,7 @@ Second \"item\" text"</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">خه‌مه‌كانی ڕێخه‌ڵه‌ت خه‌مه‌كان ڕه‌نگ ده‌كه‌ن.</string>
   <!-- layout.playlistautoplay.disablePlaylistAutoplayPatch -->
+  <!-- interaction.continuewatching.disableContinueWatchingPromptPatch -->
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_entry_1">نه‌كردوه‌</string>
   <!-- layout.player.fullscreen.forceFullscreenLandscapePatch -->
@@ -483,7 +478,6 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_thumbnail_options_entry_3">DeArrow &amp; پێگه‌شبونه‌وه‌کانی ثومب‌نەییل</string>
   <string name="morphe_dearrow_thumbnail_options_entry_4">پێگه‌شبونه‌وه‌کانی ثومب‌نەییل</string>
   <string name="morphe_dearrow_connection_toast_title">Show connection error alerts</string>
-  <string name="morphe_dearrow_api_url_title">بڕی سه‌رێزه‌که‌ی کۆیله‌ی DeArrow</string>
   <string name="morphe_dearrow_api_url_summary">URLی کۆیله‌کانی DeArrow ڕه‌هه‌ه‌ه‌</string>
   <string name="morphe_dearrow_thumbnail_stills_about_title">پێگه‌شبونه‌وه‌کانی ڤیدۆ</string>
   <string name="morphe_dearrow_thumbnail_stills_about_summary">ئەگەرە قجەرەکان لێ دەخرێن لە سەرەتا / نێوەڕاستی / کۆتایەکی هەر ڤیدۆیە‌ک. ئەو وێنە دەچنە یوتوب و هیچ API دەرایە‌تیش بەکارنابێت</string>

@@ -141,16 +141,25 @@ public class CustomBrandingPatch {
         // Cannot use static initialization block otherwise cyclic references exist
         // between Settings initialization and this class.
         if (notificationSmallIcon == null) {
+            final String iconName;
             if (GmsCoreSupportPatch.isPackageNameOriginal()) {
-                // A mounted install has the original icon resource replaced while patching.
-                Logger.printDebug(() -> "App is root mounted. Not overriding small notification icon");
-                return notificationSmallIcon = 0;
+                if (!mountedNotificationIconApplied()) {
+                    Logger.printDebug(() -> "App is root mounted. Not overriding small notification icon");
+                    return notificationSmallIcon = 0;
+                }
+
+                // Patching replaced the original notification icon, but playback and other
+                // notifications use other icons. A resource added by patching is missing if the
+                // status bar loads the stock APK, and an icon it can't load crashes the app,
+                // so all notifications use the replaced original.
+                iconName = originalNotificationIconName();
+            } else {
+                // Resolve the effective BrandingTheme for the notification icon.
+                NotificationIconTheme notificationTheme = SharedYouTubeSettings.CUSTOM_BRANDING_NOTIFICATION_ICON.get();
+                BrandingTheme branding = notificationTheme.resolveNotificationBrandingTheme();
+                iconName = branding.notificationIconResourceName();
             }
 
-            // Resolve the effective BrandingTheme for the notification icon.
-            NotificationIconTheme notificationTheme = SharedYouTubeSettings.CUSTOM_BRANDING_NOTIFICATION_ICON.get();
-            BrandingTheme branding = notificationTheme.resolveNotificationBrandingTheme();
-            String iconName = branding.notificationIconResourceName();
             if (iconName == null) {
                 notificationSmallIcon = 0;
             } else {

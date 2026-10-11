@@ -16,6 +16,8 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <string name="reddit_privacy_policy">Reddit privatumo politika</string>
+  <string name="morphe_google_signin_not_available_toast">Prisijungimas per „Google“ nepasiekiamas. Prisijunkite el. paštu</string>
   <string name="morphe_screen_ads_title">Reklamos</string>
   <string name="morphe_hide_post_ads_title">Paslėpti vaizdo reklamas</string>
   <string name="morphe_hide_comment_ads_title">Paslėpti komentaro reklamas</string>
@@ -32,9 +34,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Paslepti Apie lentyną</string>
   <string name="morphe_hide_resources_shelf_title">Paslepti Išteklių lentynę</string>
   <string name="morphe_screen_layout_title">Išdėstymas</string>
+  <string name="morphe_custom_font_title">Pasirinktinis šriftas</string>
+  <string name="morphe_custom_font_summary">Įkelkite pasirinktinį TTF arba OTF šrifto failą iš toliau nurodyto kelio. Įjungus šią parinktį taip pat išjungiama parinktis „Naudoti sistemos šriftą“</string>
+  <string name="morphe_custom_font_file_path_title">Pasirinktinio šrifto failas</string>
+  <string name="morphe_custom_font_file_path_summary">Bakstelėkite, kad pasirinktumėte TTF arba OTF šrifto failą</string>
+  <string name="morphe_custom_font_selected_font">Pasirinktas šriftas - %s</string>
+  <string name="morphe_custom_font_pick_file_first">Pirmiausia pasirinkite pasirinktinio šrifto failą</string>
+  <string name="morphe_custom_font_invalid_file">Pasirinkite .ttf arba .otf šrifto failą</string>
+  <string name="morphe_custom_font_failed_to_load">Nepavyko įkelti pasirinktinio šrifto. Pasirinkite kitą failą</string>
   <string name="morphe_disable_modern_home_title">Išjungti modernų namų UI</string>
   <string name="morphe_disable_screenshot_popup_title">Išjungti ekrano nuotraukos išokantį langą</string>
   <string name="morphe_disable_screenshot_popup_summary">Išjungia išokanį langą kuris pasirodo kai padarai ekrano nuotrauką</string>
+  <string name="morphe_force_system_font_title">Naudoti sistemos šriftą</string>
+  <string name="morphe_force_system_font_summary">Naudokite įrenginio sistemos šriftą vietoj „Reddit Sans“ arba „Roboto“. Įjungus šią parinktį taip pat išjungiamas pasirinktinis šriftas</string>
   <string name="morphe_hide_ask_button_title">Paslėpti Klausti mygtuką</string>
   <string name="morphe_hide_ask_button_summary">Paslepia Paklausti mygtuką paieškos juostoje</string>
   <string name="morphe_hide_communities_shelf_title">Slėpti bandruomenių skyrių</string>
@@ -57,6 +69,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_links_externally_title">Atverti nuorodas išorėje</string>
   <string name="morphe_open_links_externally_summary">Atidaryti nuorodoas jūsų naršyklėje, o ne programoje integruotoje naršyklėje</string>
   <string name="morphe_app_icon_title">Programėlės piktograma</string>
+  <string name="morphe_app_icon_choose_title">Pasirinkite programos piktogramą</string>
   <string name="morphe_app_icon_default">Numatytasis</string>
   <string name="morphe_app_icon_unknown">Nežinoma</string>
 </resources>
