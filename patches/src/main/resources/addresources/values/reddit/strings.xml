@@ -60,6 +60,10 @@ Second \"item\" text"</string>
     <string name="morphe_remove_notification_dialog_summary">Automatically dismisses the notification suggestion dialog when visiting a subreddit</string>
     <string name="morphe_show_view_count_title">Show view count on posts</string>
     <string name="morphe_show_view_count_summary">Limitation: Only available if the API response includes the view count</string>
+    <string name="morphe_flip_post_action_bar_title">Flip post action bar</string>
+    <string name="morphe_flip_post_action_bar_summary">Moves the vote and comment buttons of posts to the right side, and the crosspost and share buttons to the left side</string>
+    <string name="morphe_swap_post_vote_comment_buttons_title">Swap vote and comment buttons</string>
+    <string name="morphe_swap_post_vote_comment_buttons_summary">Shows the comment button of posts before the vote buttons</string>
     <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
     <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
 
