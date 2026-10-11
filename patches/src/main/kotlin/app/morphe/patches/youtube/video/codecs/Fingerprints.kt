@@ -34,3 +34,19 @@ internal object Vp9CapabilityFingerprint : Fingerprint(
         "video/x-vnd.on2.vp9"
     )
 )
+
+/**
+ * Codec support check in the class of [Vp9CapabilityFingerprint]. The second parameter is the mime type.
+ */
+internal object CodecSupportCheckFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Z",
+        "Ljava/util/Set;",
+        "Ljava/util/Set;",
+        "L",
+        "I"
+    )
+)
