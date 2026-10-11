@@ -169,6 +169,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_summary">全画面表示モードでの動画のタイトルを非表示にします</string>
   <string name="morphe_sanitize_video_subtitle_title">動画のタグを非表示</string>
   <string name="morphe_sanitize_video_subtitle_summary">\'#\'、\'募金\'、\'商品(s)\'、\'ショップ\' などのフレーズを動画の字幕から除去します</string>
+  <string name="morphe_hide_ask_gemini_button_title">「Gemini に質問する」ボタンを非表示</string>
+  <string name="morphe_hide_ask_gemini_button_summary">「この動画について質問する」欄の最下部に表示される「Gemini に質問する」ボタンを非表示にします</string>
   <string name="morphe_hide_description_components_screen_title">概要欄</string>
   <string name="morphe_hide_description_components_screen_summary">動画の概要欄に表示するコンポーネントを設定します</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">「AI 生成による動画の要約」セクションを非表示</string>

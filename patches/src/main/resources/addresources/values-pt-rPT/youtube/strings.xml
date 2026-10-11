@@ -169,6 +169,8 @@ As mudanças incluem:
   <string name="morphe_hide_video_title_summary">Oculta o título do vídeo no modo de tela cheia</string>
   <string name="morphe_sanitize_video_subtitle_title">Sanitizar legenda do vídeo</string>
   <string name="morphe_sanitize_video_subtitle_summary">Limpa frases como \'#\', \'Arrecadação\', \'produto(s)\' e \'Loja\' do subtítulo do vídeo</string>
+  <string name="morphe_hide_ask_gemini_button_title">Ocultar o botão \'Ask Gemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Oculta o botão \'Ask Gemini\' na parte inferior do painel \'Perguntar sobre este vídeo\'</string>
   <string name="morphe_hide_description_components_screen_title">Descrição do vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Escolha quais componentes aparecem na descrição do vídeo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar seção \'Resumo de vídeo gerado por IA\'</string>

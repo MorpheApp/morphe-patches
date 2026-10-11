@@ -35,6 +35,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_08_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_36_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_41_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -209,7 +210,7 @@ internal fun disableNewPlayerControlsFeatureFlag() {
         }
     }
 
-    if (is_21_04_or_greater) {
+    if (is_21_04_or_greater && !is_21_41_or_greater) {
         val flagMethod = NewPlayerOverlaysFeatureFlagFingerprint.matchSingle().let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,

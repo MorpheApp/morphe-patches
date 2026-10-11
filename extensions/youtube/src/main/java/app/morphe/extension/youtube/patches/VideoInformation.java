@@ -110,14 +110,30 @@ public final class VideoInformation {
      */
     private static final String SHORTS_PLAYER_PARAMETERS = "8AEB";
 
-    private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
     private static WeakReference<ExoPlayerInterface> exoPlayerImplRef = new WeakReference<>(null);
-    private static String channelId = "";
-    private static String channelName = "";
-    private static String videoTitle = "";
-    private static String videoId = "";
-    private static long videoLength = 0;
+
+    /**
+     * Information of the video loaded by one of the two players.
+     */
+    private static final class PlayerVideo {
+        WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
+        String channelId = "";
+        String channelName = "";
+        String videoTitle = "";
+        String videoId = "";
+        long videoLength = 0;
+    }
+
+    private static final PlayerVideo regularPlayerVideo = new PlayerVideo();
+    private static final PlayerVideo shortsPlayerVideo = new PlayerVideo();
+
+    /**
+     * Controller of a video started while the Shorts player is open, until the player
+     * it belongs to is known.
+     */
+    @Nullable
+    private static WeakReference<PlaybackController> pendingPlayerControllerRef;
 
     private static volatile String playerResponsePlaylistId = "";
     private static volatile String playerResponseVideoId = "";
@@ -150,6 +166,48 @@ public final class VideoInformation {
      * Fires whenever the playback audio pitch changes.
      */
     public static final Event<Float> onPlaybackAudioPitchChange = new Event<>();
+
+    /**
+     * The regular player and the Shorts player each keep their own video, so a Short opened while
+     * a regular video is minimized does not replace it once the Shorts player is closed.
+     * A Short opened in the regular player does not open the Shorts player, and a regular video
+     * opened from a Short is maximized above the Shorts player that is still open.
+     *
+     * @return The video of the Shorts player while it is open and in front, otherwise the video
+     *         of the regular player.
+     */
+    private static PlayerVideo getPlayerVideo() {
+        return ShortsPlayerState.isOpen() && !PlayerType.getCurrent().isMaximizedOrFullscreen()
+                ? shortsPlayerVideo
+                : regularPlayerVideo;
+    }
+
+    /**
+     * A regular video opened from a Short starts before the regular player is maximized,
+     * so a video started while the Shorts player is open is assigned to its player
+     * once the information of the video is set.
+     *
+     * @return The player video the information being set belongs to.
+     */
+    private static PlayerVideo getLoadingPlayerVideo() {
+        PlayerVideo playerVideo = getPlayerVideo();
+        if (pendingPlayerControllerRef != null) {
+            startPlayerVideo(playerVideo, pendingPlayerControllerRef);
+            pendingPlayerControllerRef = null;
+        }
+        return playerVideo;
+    }
+
+    private static void startPlayerVideo(
+            PlayerVideo playerVideo,
+            WeakReference<PlaybackController> playerControllerRef
+    ) {
+        playerVideo.playerControllerRef = playerControllerRef;
+        playerVideo.videoLength = 0;
+        playerVideo.channelId = "";
+        playerVideo.channelName = "";
+        playerVideo.videoTitle = "";
+    }
 
     private static boolean isPatchIncluded() {
         return false;  // Modified during patching.
@@ -230,11 +288,14 @@ public final class VideoInformation {
         try {
             Logger.printDebug(() -> "newVideoStarted");
 
-            playerControllerRef = new WeakReference<>(Objects.requireNonNull(playerController));
-            videoLength = 0;
-            channelId = "";
-            channelName = "";
-            videoTitle = "";
+            WeakReference<PlaybackController> playerControllerRef =
+                    new WeakReference<>(Objects.requireNonNull(playerController));
+            if (ShortsPlayerState.isOpen()) {
+                pendingPlayerControllerRef = playerControllerRef;
+            } else {
+                pendingPlayerControllerRef = null;
+                startPlayerVideo(regularPlayerVideo, playerControllerRef);
+            }
             // playbackSpeed = DEFAULT_PLAYBACK_SPEED; // Captured at video start, interferes otherwise.
             playbackSpeedFormattedString = "";
             final float audioPitchOverride = RememberPlaybackSpeedPatch.getPlaybackAudioPitchOverride();
@@ -316,7 +377,8 @@ public final class VideoInformation {
      * Injection point.
      */
     public static void setChannelId(String cId) {
-        channelId = cId != null ? cId : "";
+        String channelId = cId != null ? cId : "";
+        getLoadingPlayerVideo().channelId = channelId;
         Logger.printDebug(() -> "Extracted Channel ID: " + channelId);
         if (!channelId.isEmpty()) {
             onChannelIdChange.invoke(channelId);
@@ -327,27 +389,34 @@ public final class VideoInformation {
      * Injection point.
      */
     public static void setChannelName(String cName) {
-        channelName = cName != null ? cName : "";
+        String channelName = cName != null ? cName : "";
+        getLoadingPlayerVideo().channelName = channelName;
         Logger.printDebug(() -> "Extracted Channel Name: " + channelName);
     }
 
+    /**
+     * @return The channel name of the video of the player in front.
+     */
     public static String getChannelName() {
-        return channelName;
+        return getPlayerVideo().channelName;
     }
 
     /**
      * Injection point.
      */
     public static void setVideoTitle(String title) {
-        videoTitle = title != null ? title : "";
+        String videoTitle = title != null ? title : "";
+        getLoadingPlayerVideo().videoTitle = videoTitle;
         Logger.printDebug(() -> "Extracted Video Title: " + videoTitle);
     }
 
     /**
-     * @return The title of the video, or the title restored by {@link RestoreOriginalTitlesPatch} if enabled.
+     * @return The title of the video of the player in front,
+     *         or the title restored by {@link RestoreOriginalTitlesPatch} if enabled.
      */
     public static String getVideoTitle() {
-        return RestoreOriginalTitlesPatch.getTitle(getVideoId(), videoTitle);
+        PlayerVideo playerVideo = getPlayerVideo();
+        return RestoreOriginalTitlesPatch.getTitle(playerVideo.videoId, playerVideo.videoTitle);
     }
 
     /**
@@ -356,9 +425,10 @@ public final class VideoInformation {
      * @param newlyLoadedVideoId ID of the current video
      */
     public static void setVideoId(String newlyLoadedVideoId) {
-        if (!videoId.equals(newlyLoadedVideoId)) {
+        PlayerVideo playerVideo = getLoadingPlayerVideo();
+        if (!playerVideo.videoId.equals(newlyLoadedVideoId)) {
             Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
-            videoId = newlyLoadedVideoId;
+            playerVideo.videoId = newlyLoadedVideoId;
         }
     }
 
@@ -579,9 +649,20 @@ public final class VideoInformation {
      * @param length The length of the video in milliseconds.
      */
     public static void setVideoLength(final long length) {
-        if (videoLength != length) {
+        // The length is reset when a video starts, and the seekbar reports zero
+        // before the Shorts player opens.
+        if (length == 0) {
+            return;
+        }
+
+        // The seekbar also reports the length of the Short shown while the regular player
+        // is hidden, even right after the Shorts player is closed.
+        PlayerVideo playerVideo = PlayerType.getCurrent().isNoneOrHidden()
+                ? shortsPlayerVideo
+                : getPlayerVideo();
+        if (playerVideo.videoLength != length) {
             Logger.printDebug(() -> "Current video length: " + length);
-            videoLength = length;
+            playerVideo.videoLength = length;
         }
     }
 
@@ -615,7 +696,7 @@ public final class VideoInformation {
             Logger.printDebug(() -> "Seeking to: " + adjustedSeekTime);
 
             // Try regular playback controller first, and it will not succeed if casting.
-            PlaybackController controller = playerControllerRef.get();
+            PlaybackController controller = getPlayerVideo().playerControllerRef.get();
             if (controller == null) {
                 Logger.printDebug(() -> "Cannot seekTo because player controller is null");
             } else {
@@ -662,7 +743,7 @@ public final class VideoInformation {
 
             // 19.39+ does not have a boolean return type for relative seek.
             // But can call both methods, and it works correctly for both situations.
-            PlaybackController controller = playerControllerRef.get();
+            PlaybackController controller = getPlayerVideo().playerControllerRef.get();
             if (controller == null) {
                 Logger.printDebug(() -> "Cannot seek relative as player controller is null");
             } else {
@@ -690,20 +771,20 @@ public final class VideoInformation {
     }
 
     /**
-     * @return The channel ID of the current video.
+     * @return The channel ID of the video of the player in front.
      */
     public static String getChannelId() {
-        return channelId;
+        return getPlayerVideo().channelId;
     }
 
     /**
-     * ID of the last video opened. Includes Shorts.
+     * ID of the video of the player in front. Includes Shorts.
      *
      * @return The ID of the video, or an empty string if no videos have been opened yet.
      *         With 21.15+ this returns an empty string if no video is currently opened.
      */
     public static String getVideoId() {
-        return videoId;
+        return getPlayerVideo().videoId;
     }
 
     /**
@@ -717,7 +798,7 @@ public final class VideoInformation {
     }
 
     /**
-     * Differs from {@link #videoId} as this is the video ID for the
+     * Differs from {@link #getVideoId()} as this is the video ID for the
      * last player response received, which may not be the last video opened.
      * <p>
      * If Shorts are loading the background, this commonly will be
@@ -762,21 +843,21 @@ public final class VideoInformation {
     }
 
     /**
-     * Length of the current video playing.  Includes Shorts.
+     * Length of the video of the player in front.  Includes Shorts.
      *
      * @return The length of the video in milliseconds.
      *         If the video is not yet loaded, or if the video is playing in the background with no video visible,
      *         then this returns zero.
      */
     public static long getVideoLength() {
-        return videoLength;
+        return getPlayerVideo().videoLength;
     }
 
     /**
      * @return The current non casting player time. Value is zero if casting.
      */
     private static long getPlayerVideoTime() {
-        PlaybackController controller = playerControllerRef.get();
+        PlaybackController controller = getPlayerVideo().playerControllerRef.get();
         return controller != null
                 ? controller.patch_getVideoTime()
                 : -1;
@@ -823,6 +904,7 @@ public final class VideoInformation {
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isAtEndOfVideo() {
+        final long videoLength = getVideoLength();
         return getVideoTime() >= videoLength && videoLength > 0;
     }
 

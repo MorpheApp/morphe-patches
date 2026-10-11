@@ -168,6 +168,8 @@ Ví dụ:
   <string name="morphe_hide_video_title_summary">Ẩn tiêu đề video ở chế độ toàn màn hình</string>
   <string name="morphe_sanitize_video_subtitle_title">Lọc nội dung phụ đề video</string>
   <string name="morphe_sanitize_video_subtitle_summary">Xóa các cụm từ như \'#\', \'Gây quỹ\', \'sản phẩm(s)\' và \'Cửa hàng\' khỏi phụ đề video</string>
+  <string name="morphe_hide_ask_gemini_button_title">Ẩn nút \'Ask Gemini\'</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Ẩn nút \'Ask Gemini\' ở cuối bảng \'Ask about this video\'</string>
   <string name="morphe_hide_description_components_screen_title">Mô tả video</string>
   <string name="morphe_hide_description_components_screen_summary">Chọn những thành phần sẽ hiển thị trong phần mô tả video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ẩn phần \"Bản tóm tắt video do AI tạo\"</string>

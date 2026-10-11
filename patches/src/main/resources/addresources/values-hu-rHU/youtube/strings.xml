@@ -169,6 +169,8 @@ A változások a következőket tartalmazzák:
   <string name="morphe_hide_video_title_summary">Elrejti a videó címét teljes képernyős módban</string>
   <string name="morphe_sanitize_video_subtitle_title">Videofeliratok ellenőrzése</string>
   <string name="morphe_sanitize_video_subtitle_summary">Eltávolítja a videó feliratából az olyan kifejezéseket, mint a \'#\', \'Adománygyűjtés\', \'termék(ek)\' és \'Bolt\'</string>
+  <string name="morphe_hide_ask_gemini_button_title">\'Ask Gemini\' gomb elrejtése</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Elrejti az \'Ask Gemini\' gombot a \'Kérdezés erről a videóról\' panel alján</string>
   <string name="morphe_hide_description_components_screen_title">Videóleírás</string>
   <string name="morphe_hide_description_components_screen_summary">Válassza ki, mely komponensek jelenjenek meg a videó leírásában</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Az „AI-al készített videó-összefoglaló” szekció elrejtése</string>

@@ -169,6 +169,8 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_video_title_summary">Skryje názov videa v režime na celú obrazovku</string>
   <string name="morphe_sanitize_video_subtitle_title">Vyčistiť titulky videa</string>
   <string name="morphe_sanitize_video_subtitle_summary">Odstraňuje frázy ako \'#\', \'Zbierka\', \'produkt(y)\' a \'Obchod\' z titulkov videa</string>
+  <string name="morphe_hide_ask_gemini_button_title">Skryť tlačidlo „Spýtať sa Geminiho“</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Skryje tlačidlo „Spýtať sa Geminiho“ v spodnej časti panela „Spýtať sa na toto video“</string>
   <string name="morphe_hide_description_components_screen_title">Popis videa</string>
   <string name="morphe_hide_description_components_screen_summary">Vyberte, ktoré komponenty sa zobrazia v popise videa</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Skryť zhrnutie videa vygenerované pomocou AI</string>

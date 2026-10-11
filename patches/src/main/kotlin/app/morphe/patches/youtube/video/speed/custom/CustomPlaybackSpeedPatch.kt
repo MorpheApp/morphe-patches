@@ -45,11 +45,13 @@ import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.util.ResourceGroup
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -375,6 +377,26 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             methodName = "onSeekEduOverlayLoaded",
             overrideSpan = true
         )
+
+        // endregion
+
+        // region Disable audio offload if audio pitch controls are enabled.
+
+        // With audio offload, the device hardware decodes the audio
+        // and usually does not support changing the pitch, so the selected pitch is ignored.
+        AudioOffloadEnabledFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->disableAudioOffload(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
+        }
 
         // endregion
     }

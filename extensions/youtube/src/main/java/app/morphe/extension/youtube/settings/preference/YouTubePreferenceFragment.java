@@ -11,6 +11,7 @@
 package app.morphe.extension.youtube.settings.preference;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.preference.PreferenceScreen;
 import android.widget.Toolbar;
 
@@ -18,6 +19,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.patches.GmsCoreSupportPatch;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.ToolbarPreferenceFragment;
+import app.morphe.extension.youtube.patches.CustomFontPatch;
 import app.morphe.extension.youtube.patches.HideStatusBarPatch;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 
@@ -73,6 +75,14 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onStart failure", ex);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CustomFontFilePreference.PICK_FONT_REQUEST_CODE && CustomFontPatch.isPatchIncluded()) {
+            CustomFontFilePreference.handleActivityResult(getContext(), resultCode, data);
         }
     }
 

@@ -16,11 +16,13 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
+import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.VersionCheckPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.ImportExportPreference;
 import app.morphe.extension.shared.settings.preference.SortedListPreference;
@@ -39,6 +41,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
         return AppIconPatch.isPatchIncluded() ||
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
+                RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded();
     }
 
@@ -72,6 +75,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                     Settings.OPEN_LINKS_EXTERNALLY
             ));
         }
+        if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.REMEMBER_COLLAPSED_COMMENTS
+            ));
+        }
         if (SanitizeSharingLinksPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
@@ -86,5 +95,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             preference.externalURL = ResourceUtils.getString("privacy_policy_uri");
             addPreference(preference);
         }
+
+        Utils.setPreferenceTitlesToMultiLine(this);
     }
 }

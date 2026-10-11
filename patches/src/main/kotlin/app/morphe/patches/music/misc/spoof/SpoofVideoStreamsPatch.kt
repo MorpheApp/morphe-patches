@@ -14,6 +14,7 @@ import app.morphe.patches.music.misc.extension.hooks.YouTubeMusicApplicationInit
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_24_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_41_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -31,6 +32,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         MusicActivityOnCreateFingerprint,
         YouTubeMusicApplicationInitFingerprint
     ),
+    fixCronetOnesie = { is_9_41_or_greater },
     // Only 8.11 to 8.14 needed this, and those versions are no longer supported.
     fixMediaFetchHotConfigAlternative = { false },
     fixParsePlaybackResponseFeatureFlag = { !is_9_24_or_greater },

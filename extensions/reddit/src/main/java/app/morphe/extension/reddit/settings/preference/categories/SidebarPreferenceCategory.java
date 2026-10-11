@@ -13,9 +13,9 @@ import android.content.Context;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.HideSidebarComponentsPatch;
-import app.morphe.extension.reddit.patches.VersionCheckPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("deprecation")
 public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
@@ -55,5 +55,6 @@ public class SidebarPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
+        Utils.setPreferenceTitlesToMultiLine(this);
     }
 }
