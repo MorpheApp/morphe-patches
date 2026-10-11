@@ -21,6 +21,8 @@ var is_2026_18_0_or_greater: Boolean by Delegates.notNull()
     private set
 var is_2026_21_0_or_greater: Boolean by Delegates.notNull()
     private set
+var is_2026_24_0_or_greater: Boolean by Delegates.notNull()
+    private set
 var is_2026_25_0_or_greater: Boolean by Delegates.notNull()
     private set
 var is_2026_30_0_or_greater: Boolean by Delegates.notNull()
@@ -40,6 +42,7 @@ val versionCheckPatch = bytecodePatch {
         is_2026_16_0_or_greater = isEqualsOrGreaterThan("2026.16.0")
         is_2026_18_0_or_greater = isEqualsOrGreaterThan("2026.18.0")
         is_2026_21_0_or_greater = isEqualsOrGreaterThan("2026.21.0")
+        is_2026_24_0_or_greater = isEqualsOrGreaterThan("2026.24.0")
         is_2026_25_0_or_greater = isEqualsOrGreaterThan("2026.25.0")
         is_2026_30_0_or_greater = isEqualsOrGreaterThan("2026.30.0")
     }

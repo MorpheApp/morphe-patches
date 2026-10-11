@@ -9,11 +9,12 @@ package app.morphe.extension.reddit.patches;
 
 import androidx.annotation.Nullable;
 
+import com.reddit.domain.model.Link;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
@@ -32,6 +33,11 @@ public final class ShowFlairsInHomeFeedPatch {
         void patch_addHomeFlair(String flair, String community, String textColor, String backgroundColor);
     }
 
+    private static final String POST_ID_PREFIX = "t3_";
+    private static final String DEFAULT_TEXT_COLOR = "LIGHT";
+    private static final String DEFAULT_BACKGROUND_COLOR = "#3A3D40";
+    private static final int FETCH_TIMEOUT_MILLISECONDS = 4000;
+
     private static final ConcurrentMap<String, String[]> FLAIRS = new ConcurrentHashMap<>();
     private static final String[] MISSING = new String[0];
 
@@ -45,37 +51,50 @@ public final class ShowFlairsInHomeFeedPatch {
         return false;  // Modified during patching.
     }
 
-    /** Stores flair metadata exposed by Reddit's full Link model. */
-    public static void rememberFlair(String id, String kindWithId, String community, String flair,
-                                     String backgroundColor, String textColor) {
-        if (flair == null || flair.isEmpty()) return;
-        String[] data = new String[] {
-                flair,
-                community == null ? "" : community,
-                textColor == null || textColor.isEmpty() ? "LIGHT" : textColor,
-                backgroundColor == null || backgroundColor.isEmpty() ? "#3A3D40" : backgroundColor
-        };
-        remember(id, data);
-        remember(kindWithId, data);
+    /**
+     * Injection point. Stores flair metadata exposed by Reddit's full Link model.
+     */
+    public static void rememberFlair(Link link) {
+        if (!Settings.SHOW_FLAIRS_IN_HOME_FEED.get()) return;
+        try {
+            String flair = link.getLinkFlairText();
+            if (flair == null || flair.isEmpty()) return;
+
+            String community = link.getSubreddit();
+            String textColor = link.getLinkFlairTextColor();
+            String backgroundColor = link.getLinkFlairBackgroundColor();
+            String[] data = new String[] {
+                    flair,
+                    community == null ? "" : community,
+                    textColor == null || textColor.isEmpty() ? DEFAULT_TEXT_COLOR : textColor,
+                    backgroundColor == null || backgroundColor.isEmpty() ? DEFAULT_BACKGROUND_COLOR : backgroundColor
+            };
+            remember(link.getId(), data);
+            remember(link.getKindWithId(), data);
+        } catch (Exception ex) {
+            Logger.printException(() -> "rememberFlair failure", ex);
+        }
     }
 
-    private static void remember(String id, String[] data) {
+    private static void remember(@Nullable String id, String[] data) {
         if (id == null || id.isEmpty()) return;
-        String fullId = id.startsWith("t3_") ? id : "t3_" + id;
-        FLAIRS.put(fullId, data);
-        FLAIRS.put(id.startsWith("t3_") ? id.substring(3) : id, data);
+        FLAIRS.put(getFullId(id), data);
     }
 
-    /** Injection point for Reddit's common feed-element processor. */
+    private static String getFullId(String postId) {
+        return postId.startsWith(POST_ID_PREFIX) ? postId : POST_ID_PREFIX + postId;
+    }
+
+    /**
+     * Injection point for Reddit's common feed-element processor.
+     */
     public static List<?> showHomeFlairs(List<?> elements) {
         if (!Settings.SHOW_FLAIRS_IN_HOME_FEED.get() || elements == null) return elements;
         try {
             for (Object element : elements) {
-                if (!(element instanceof CachedPost post)) {
-                    continue;
+                if (element instanceof CachedPost post) {
+                    addFlair(post);
                 }
-                String[] data = getFlairData(post.patch_getLinkId());
-                if (data != null) post.patch_addHomeFlair(data[0], data[1], data[2], data[3]);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "showHomeFlairs failure", ex);
@@ -83,18 +102,26 @@ public final class ShowFlairsInHomeFeedPatch {
         return elements;
     }
 
-    /** Injection point for a single home-feed section before it enters the common processor. */
+    /**
+     * Injection point for a single home-feed section before it enters the common processor.
+     */
     public static Object showHomeFlair(Object element) {
+        if (!Settings.SHOW_FLAIRS_IN_HOME_FEED.get()) return element;
         try {
-            if (!Settings.SHOW_FLAIRS_IN_HOME_FEED.get() || !(element instanceof CachedPost post)) {
-                return element;
+            if (element instanceof CachedPost post) {
+                addFlair(post);
             }
-            String[] data = getFlairData(post.patch_getLinkId());
-            if (data != null) post.patch_addHomeFlair(data[0], data[1], data[2], data[3]);
         } catch (Exception ex) {
             Logger.printException(() -> "showHomeFlair failure", ex);
         }
         return element;
+    }
+
+    private static void addFlair(CachedPost post) {
+        String[] data = getFlairData(post.patch_getLinkId());
+        if (data != null) {
+            post.patch_addHomeFlair(data[0], data[1], data[2], data[3]);
+        }
     }
 
     /**
@@ -103,18 +130,18 @@ public final class ShowFlairsInHomeFeedPatch {
      * @return flair, community, text color and background color; or {@code null}.
      */
     @Nullable
-    private static String[] getFlairData(String postId) {
-        if (!Settings.SHOW_FLAIRS_IN_HOME_FEED.get() || postId == null || postId.isEmpty()) return null;
+    private static String[] getFlairData(@Nullable String postId) {
+        if (postId == null || postId.isEmpty()) return null;
 
-        String fullId = postId.startsWith("t3_") ? postId : "t3_" + postId;
+        String fullId = getFullId(postId);
         String[] cached = FLAIRS.get(fullId);
         if (cached != null) return cached == MISSING ? null : cached;
 
         try {
             return CompletableFuture.supplyAsync(() -> fetchFlairData(fullId))
-                    .get(4, TimeUnit.SECONDS);
+                    .get(FETCH_TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
         } catch (Exception ex) {
-            Logger.printInfo(() -> "Flair data fetch timed out", ex);
+            Logger.printInfo(() -> "Could not get flair data", ex);
             return null;
         }
     }
@@ -122,21 +149,22 @@ public final class ShowFlairsInHomeFeedPatch {
     @Nullable
     private static String[] fetchFlairData(String fullId) {
         try {
-            HttpURLConnection connection = (HttpURLConnection) new URL(
-                    "https://www.reddit.com/by_id/" + fullId + ".json?raw_json=1"
-            ).openConnection();
-            connection.setConnectTimeout(4000);
-            connection.setReadTimeout(4000);
+            HttpURLConnection connection = Requester.openConnection(
+                    "https://www.reddit.com/by_id/" + fullId + ".json?raw_json=1");
+            connection.setConnectTimeout(FETCH_TIMEOUT_MILLISECONDS);
+            connection.setReadTimeout(FETCH_TIMEOUT_MILLISECONDS);
             connection.setRequestProperty("User-Agent", "android:app.morphe.patches:" + Utils.getPatchesReleaseVersion());
             connection.setRequestProperty("Accept", "application/json");
+
             final int responseCode = connection.getResponseCode();
             if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                connection.disconnect();
                 Logger.printDebug(() -> "Could not fetch flair, response code: " + responseCode);
                 FLAIRS.put(fullId, MISSING);
                 return null;
             }
 
-            JSONObject json = Requester.parseJSONObject(connection);
+            JSONObject json = Requester.parseJSONObjectAndDisconnect(connection);
             JSONArray children = json.getJSONObject("data").getJSONArray("children");
             if (children.length() == 0) return null;
 
@@ -147,9 +175,9 @@ public final class ShowFlairsInHomeFeedPatch {
                 return null;
             }
 
-            String textColor = data.optString("link_flair_text_color", "LIGHT");
-            String backgroundColor = data.optString("link_flair_background_color", "#3A3D40");
-            if (backgroundColor.isEmpty()) backgroundColor = "#3A3D40";
+            String textColor = data.optString("link_flair_text_color", DEFAULT_TEXT_COLOR);
+            String backgroundColor = data.optString("link_flair_background_color", DEFAULT_BACKGROUND_COLOR);
+            if (backgroundColor.isEmpty()) backgroundColor = DEFAULT_BACKGROUND_COLOR;
             String[] result = new String[] {
                     flair,
                     data.optString("subreddit", ""),
