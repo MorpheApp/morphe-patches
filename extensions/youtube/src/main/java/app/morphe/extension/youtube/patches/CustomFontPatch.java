@@ -174,6 +174,11 @@ public final class CustomFontPatch {
                 Utils.setContext(context);
             }
 
+            if (!Settings.CUSTOM_FONT_FILE.get().isEmpty() && !getFontFile(context).isFile()) {
+                Logger.printInfo(() -> "Custom font file not found, clearing the file setting");
+                Settings.CUSTOM_FONT_FILE.resetToDefault();
+            }
+
             if (Settings.CUSTOM_FONT_TYPE.get() != FontType.CUSTOM) {
                 return;
             }
@@ -292,6 +297,7 @@ public final class CustomFontPatch {
     /**
      * @return If the app fonts are replaced with the custom font or the system font.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     private static boolean isFontReplaced() {
         return baseTypeface != null || isSystemFont();
     }
