@@ -498,25 +498,20 @@ val navigationBarPatch = bytecodePatch(
         // so the instruction indexes of their matches are still valid.
         PivotBarRendererFingerprint.method.apply {
             val pivotBarItemType = parameterTypes.first().toString()
-            // Non range invoke instructions, so 4-bit registers are required.
-            val freeRegisters = getFreeRegisterProvider(0, 3)
-            val bytesRegister = freeRegisters.getFreeRegister4Bit()
-            val messageRegister = freeRegisters.getFreeRegister4Bit()
-            val registryRegister = freeRegisters.getFreeRegister4Bit()
 
             addInstructionsWithLabels(
                 0,
                 """
                     # The parameter register can be higher than 15.
                     invoke-static/range { p0 .. p0 }, $EXTENSION_SUBSCRIPTIONS_CLASS->convertIconOnlyPivotBarItem(Lcom/google/protobuf/MessageLite;)[B
-                    move-result-object v$bytesRegister
-                    if-eqz v$bytesRegister, :not_icon_only
+                    move-result-object v0
+                    if-eqz v0, :not_icon_only
 
                     # The endpoints are extensions, which are lost if parsed without the registry.
-                    sget-object v$messageRegister, $pivotBarItemType->a:$pivotBarItemType
+                    sget-object v1, $pivotBarItemType->a:$pivotBarItemType
                     invoke-static { }, Lcom/google/protobuf/ExtensionRegistryLite;->getGeneratedRegistry()Lcom/google/protobuf/ExtensionRegistryLite;
-                    move-result-object v$registryRegister
-                    invoke-static { v$messageRegister, v$bytesRegister, v$registryRegister }, ${parseByteArrayWithRegistryMethodRef.get()!!}
+                    move-result-object v2
+                    invoke-static { v1, v0, v2 }, ${parseByteArrayWithRegistryMethodRef.get()!!}
                     move-result-object p0
                     check-cast p0, $pivotBarItemType
                     :not_icon_only
