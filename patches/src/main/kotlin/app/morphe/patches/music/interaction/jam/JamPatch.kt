@@ -70,10 +70,6 @@ private val jamResources = resourcePatch {
                 tabs,
             )
         }
-
-        document("res/layout/watch_while_layout.xml").use { doc ->
-            doc.documentElement.setAttribute("app:bottomSheetPeekHeight", "68dp")
-        }
     }
 }
 

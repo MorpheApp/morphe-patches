@@ -21,11 +21,13 @@ import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import kotlin.io.path.Path
 import kotlin.io.path.createTempDirectory
+import kotlin.io.path.isRegularFile
 import kotlin.io.path.readText
 import kotlin.io.path.walk
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class JamPatchRegressionTest {
@@ -225,5 +227,78 @@ class JamPatchRegressionTest {
             }
             patcher.get()
         }
+    }
+
+    @Test
+    fun `jam layout edits stay behind the enabled setting`() {
+        val root =
+            generateSequence(Path("").toAbsolutePath()) { it.parent }
+                .first { it.resolve("settings.gradle.kts").isRegularFile() }
+        val patch =
+            root.resolve(
+                "patches/src/main/kotlin/app/morphe/patches/music/interaction/jam/JamPatch.kt",
+            ).readText()
+        val bar =
+            root.resolve(
+                "extensions/music/src/main/java/app/morphe/extension/music/patches/jam/JamBar.java",
+            ).readText()
+        assertFalse(patch.contains("bottomSheetPeekHeight"))
+
+        val blocks = jamSettingBlocks(bar)
+        val disabled = blocks.filter { it.first }
+        val enabled = blocks.filter { !it.first }
+        assertTrue(disabled.any { "height = 0" in bar.slice(it.second) })
+        assertFalse(enabled.any { "height = 0" in bar.slice(it.second) })
+        assertFalse("height = 0" in bar.hiding(disabled.map { it.second }))
+        assertTrue(enabled.any { Regex("""\b68\b""").containsMatchIn(bar.slice(it.second)) })
+        assertFalse(disabled.any { Regex("""\b68\b""").containsMatchIn(bar.slice(it.second)) })
+        assertFalse(Regex("""\b68\b""").containsMatchIn(bar.hiding(enabled.map { it.second })))
+        assertTrue(enabled.any { "post(" in bar.slice(it.second) })
+        assertFalse("post(" in bar.hiding(enabled.map { it.second }))
+    }
+
+    private fun jamSettingBlocks(source: String): List<Pair<Boolean, IntRange>> {
+        val needle = "JamUI.enabled()"
+        val found = mutableListOf<Pair<Boolean, IntRange>>()
+        var from = 0
+        while (true) {
+            val at = source.indexOf(needle, from)
+            if (at < 0) return found
+            val negated = source.substring(0, at).trimEnd().endsWith("!")
+            val after = at + needle.length
+            val open = source.indexOf('{', after)
+            val semi = source.indexOf(';', after)
+            if (open < 0 || semi in 0 until open) {
+                from = after
+                continue
+            }
+            var depth = 0
+            var end = -1
+            for (i in open until source.length) {
+                when (source[i]) {
+                    '{' -> depth++
+                    '}' -> {
+                        depth--
+                        if (depth == 0) {
+                            end = i
+                            break
+                        }
+                    }
+                }
+            }
+            check(end >= 0)
+            found += negated to (open..end)
+            from = end + 1
+        }
+    }
+
+    private fun String.slice(range: IntRange) = substring(range.first, range.last + 1)
+
+    private fun String.hiding(ranges: List<IntRange>): String {
+        val chars = toCharArray()
+        for (range in ranges) {
+            for (i in range) chars[i] = ' '
+        }
+        return String(chars)
     }
 }
