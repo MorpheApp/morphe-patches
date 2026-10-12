@@ -8,10 +8,11 @@
 package app.morphe.patches.reddit.misc.redgifs
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
@@ -34,19 +35,32 @@ internal object LinkConstructorFingerprint : Fingerprint(
     )
 )
 
-private object MetadataCellToStringFingerprint : Fingerprint(
+/**
+ * Feed post header.
+ */
+internal object MetadataCellToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     filters = listOf(
+        // Media path, which is nullable.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        ),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
         string("MetadataCellFragment(id="),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;",
+            location = MatchAfterWithin(2)
+        ),
         string(", mediaPath=")
     )
 )
 
-/**
- * Feed post header.
- */
 internal object MetadataCellConstructorFingerprint : Fingerprint(
     classFingerprint = MetadataCellToStringFingerprint,
     name = "<init>",
@@ -105,8 +119,7 @@ private object VideoUrlsToStringFingerprint : Fingerprint(
 internal object VideoUrlsConstructorFingerprint : Fingerprint(
     classFingerprint = VideoUrlsToStringFingerprint,
     name = "<init>",
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
+    returnType = "V"
 )
 
 /**
@@ -137,7 +150,7 @@ private object DataSpecToStringFingerprint : Fingerprint(
  */
 internal object DataSpecConstructorFingerprint : Fingerprint(
     classFingerprint = DataSpecToStringFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    name = "<init>",
     returnType = "V",
     parameters = listOf(
         "Landroid/net/Uri;",

@@ -28,7 +28,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.reddit.settings.Settings;
@@ -76,11 +75,6 @@ public final class RedgifsAudioPatch {
 
     private static final Pattern REDGIFS_ID_PATTERN = Pattern.compile("^[a-z0-9]+$");
 
-    /**
-     * The id is base64 of "MetadataCell-" and the post id.
-     */
-    private static final Pattern METADATA_CELL_PATTERN = Pattern.compile(
-            "^MetadataCellFragment\\(id=([A-Za-z0-9+/=_-]+),.*?, mediaPath=(?:URL\\(url=)?(https?://[^,)\\s]+)");
     private static final String METADATA_CELL_ID_PREFIX = "MetadataCell-";
 
     /**
@@ -173,24 +167,22 @@ public final class RedgifsAudioPatch {
      * Injection point. Called when a feed post header is created.
      * <p>
      * The feed is not created from posts, and only the post header has the post url.
+     *
+     * @param cellId    Base64 of "MetadataCell-" and the post id.
+     * @param mediaPath Post url.
      */
-    public static void onFeedMetadataCellCreated(Object cell) {
+    public static void onFeedMetadataCellCreated(@Nullable String cellId, @Nullable String mediaPath) {
         try {
             if (!Settings.REDGIFS_AUDIO.get()) return;
+            if (cellId == null || mediaPath == null || !mediaPath.contains("redgifs.com/")) return;
 
-            String cellString = cell.toString();
-            if (!cellString.contains("redgifs.com/")) return;
-
-            Matcher matcher = METADATA_CELL_PATTERN.matcher(cellString);
-            if (!matcher.find()) return;
-
-            String id = getRedgifsId(matcher.group(2));
+            String id = getRedgifsId(mediaPath);
             if (id == null) return;
 
-            String cellId = new String(Base64.decode(matcher.group(1), Base64.DEFAULT), StandardCharsets.UTF_8);
-            if (!cellId.startsWith(METADATA_CELL_ID_PREFIX)) return;
+            String decodedCellId = new String(Base64.decode(cellId, Base64.DEFAULT), StandardCharsets.UTF_8);
+            if (!decodedCellId.startsWith(METADATA_CELL_ID_PREFIX)) return;
 
-            postIdToRedgifsId.put(cellId.substring(METADATA_CELL_ID_PREFIX.length()), id);
+            postIdToRedgifsId.put(decodedCellId.substring(METADATA_CELL_ID_PREFIX.length()), id);
             getLookup(id);
         } catch (Exception ex) {
             Logger.printException(() -> "onFeedMetadataCellCreated failure", ex);
@@ -201,11 +193,15 @@ public final class RedgifsAudioPatch {
      * Injection point. Called when a feed video is created.
      */
     public static void onFeedVideoCreated(@Nullable String postId, @Nullable String url) {
-        if (postId == null) return;
+        try {
+            if (!Settings.REDGIFS_AUDIO.get() || postId == null) return;
 
-        String id = postIdToRedgifsId.get(postId);
-        if (id != null) {
-            recordRedditVideo(url, id);
+            String id = postIdToRedgifsId.get(postId);
+            if (id != null) {
+                recordRedditVideo(url, id);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onFeedVideoCreated failure", ex);
         }
     }
 
@@ -253,7 +249,7 @@ public final class RedgifsAudioPatch {
      */
     public static Uri resolvePlaceholderUri(Uri uri) {
         try {
-            if (!PLACEHOLDER_HOST.equals(uri.getHost())) return uri;
+            if (!Settings.REDGIFS_AUDIO.get() || !PLACEHOLDER_HOST.equals(uri.getHost())) return uri;
 
             String path = uri.getPath();
             if (path == null || !path.startsWith(PLACEHOLDER_PATH) || !path.endsWith(".mp4")) return uri;
@@ -272,6 +268,7 @@ public final class RedgifsAudioPatch {
             return url == null ? uri : Uri.parse(url);
         } catch (InterruptedException ex) {
             // The player cancelled the load.
+            Logger.printDebug(() -> "Redgifs placeholder resolve interrupted: " + uri);
             Thread.currentThread().interrupt();
         } catch (Exception ex) {
             Logger.printException(() -> "resolvePlaceholderUri failure", ex);
