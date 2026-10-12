@@ -15,6 +15,8 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFreeRegister
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -24,6 +26,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
+import java.util.logging.Logger
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/CopyTextPatch;"
@@ -41,13 +44,19 @@ private const val SELECTION_CONTENT_LAMBDA_KEY = 0x4D4F5250
 val copyTextPatch = bytecodePatch(
     name = "Copy text",
     description = "Adds an option to make post and comment text selectable and copyable. " +
-        "Disables collapsing comments."
+        "Disables collapsing comments. This patch works with Reddit 2026.24.0 and newer."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
+        if (!is_2026_24_0_or_greater) {
+            return@execute Logger.getLogger(this::class.java.name).warning(
+                "'Copy text' does not work with Reddit 2026.23.0 and earlier"
+            )
+        }
+
         // region Wrap the rich text renderer in a SelectionContainer.
 
         val richTextMethod = ComposeRichTextFingerprint.method
