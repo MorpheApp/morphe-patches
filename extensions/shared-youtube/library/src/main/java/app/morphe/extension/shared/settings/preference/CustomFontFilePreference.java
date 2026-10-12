@@ -6,7 +6,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.settings.preference;
+package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
@@ -27,10 +27,9 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
-import app.morphe.extension.youtube.patches.CustomFontPatch;
-import app.morphe.extension.youtube.patches.CustomFontPatch.FontType;
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.shared.patches.CustomFontPatch;
+import app.morphe.extension.shared.patches.CustomFontPatch.FontType;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
  * Picks the custom font file and shows the name of the picked file.
@@ -72,7 +71,7 @@ public class CustomFontFilePreference extends Preference {
     }
 
     private void updateSummary() {
-        String fileName = Settings.CUSTOM_FONT_FILE.get();
+        String fileName = SharedYouTubeSettings.CUSTOM_FONT_FILE.get();
         setSummary(fileName.isEmpty()
                 ? str("morphe_custom_font_file_summary")
                 : fileName);
@@ -117,8 +116,8 @@ public class CustomFontFilePreference extends Preference {
             // The font file can also be picked when the custom font is selected without a file.
             AbstractPreferenceFragment.settingImportInProgress = true;
             try {
-                Settings.CUSTOM_FONT_FILE.save(fileName);
-                Settings.CUSTOM_FONT_TYPE.save(FontType.CUSTOM);
+                SharedYouTubeSettings.CUSTOM_FONT_FILE.save(fileName);
+                SharedYouTubeSettings.CUSTOM_FONT_TYPE.save(FontType.CUSTOM);
             } finally {
                 AbstractPreferenceFragment.settingImportInProgress = false;
             }

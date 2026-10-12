@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.patches;
+package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
@@ -28,8 +28,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
-import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"unused", "JavaReflectionMemberAccess"})
 public final class CustomFontPatch {
@@ -105,7 +105,7 @@ public final class CustomFontPatch {
      * @return If a font file was picked and is still present.
      */
     public static boolean isFontFileSet(Context context) {
-        return !Settings.CUSTOM_FONT_FILE.get().isEmpty() && getFontFile(context).isFile();
+        return !SharedYouTubeSettings.CUSTOM_FONT_FILE.get().isEmpty() && getFontFile(context).isFile();
     }
 
     @Nullable
@@ -174,12 +174,12 @@ public final class CustomFontPatch {
                 Utils.setContext(context);
             }
 
-            if (!Settings.CUSTOM_FONT_FILE.get().isEmpty() && !getFontFile(context).isFile()) {
+            if (!SharedYouTubeSettings.CUSTOM_FONT_FILE.get().isEmpty() && !getFontFile(context).isFile()) {
                 Logger.printInfo(() -> "Custom font file not found, clearing the file setting");
-                Settings.CUSTOM_FONT_FILE.resetToDefault();
+                SharedYouTubeSettings.CUSTOM_FONT_FILE.resetToDefault();
             }
 
-            if (Settings.CUSTOM_FONT_TYPE.get() != FontType.CUSTOM) {
+            if (SharedYouTubeSettings.CUSTOM_FONT_TYPE.get() != FontType.CUSTOM) {
                 return;
             }
 
@@ -201,7 +201,7 @@ public final class CustomFontPatch {
         // Do not show the restart dialog for this change.
         AbstractPreferenceFragment.settingImportInProgress = true;
         try {
-            Settings.CUSTOM_FONT_TYPE.save(FontType.DEFAULT);
+            SharedYouTubeSettings.CUSTOM_FONT_TYPE.save(FontType.DEFAULT);
         } catch (Exception ex) {
             Logger.printException(() -> "disableCustomFont failure", ex);
         } finally {
@@ -291,7 +291,7 @@ public final class CustomFontPatch {
     }
 
     private static boolean isSystemFont() {
-        return Settings.CUSTOM_FONT_TYPE.get() == FontType.SYSTEM;
+        return SharedYouTubeSettings.CUSTOM_FONT_TYPE.get() == FontType.SYSTEM;
     }
 
     /**

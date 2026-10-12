@@ -5,14 +5,13 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.youtube.settings.preference;
+package app.morphe.extension.shared.settings.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import app.morphe.extension.shared.settings.preference.CustomDialogListPreference;
-import app.morphe.extension.youtube.patches.CustomFontPatch;
-import app.morphe.extension.youtube.patches.CustomFontPatch.FontType;
+import app.morphe.extension.shared.patches.CustomFontPatch;
+import app.morphe.extension.shared.patches.CustomFontPatch.FontType;
 
 /**
  * Font type list that opens the font file picker if the custom font is selected without a file.
