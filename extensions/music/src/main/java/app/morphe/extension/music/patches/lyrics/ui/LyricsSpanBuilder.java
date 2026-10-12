@@ -9,10 +9,12 @@ package app.morphe.extension.music.patches.lyrics.ui;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.icu.text.BreakIterator;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.LineHeightSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.ReplacementSpan;
 import androidx.annotation.NonNull;
@@ -25,10 +27,9 @@ import java.util.Collections;
 import java.util.List;
 
 final class LyricsSpanBuilder {
-    /** Translation/romanization size relative to the lyrics line it belongs to. */
     private static final float TRANSLATION_RELATIVE_SIZE = 0.7f;
-    /** Per-word romanization size relative to the lyrics line it belongs to. */
     private static final float ROMAJI_RELATIVE_SIZE = 0.7f;
+    private static final float MAIN_LINE_SPACING = 1.3f;
 
 record WordTiming(int start, int end, long startMs, long endMs,
             @Nullable String romaji) {
@@ -36,6 +37,66 @@ record WordTiming(int start, int end, long startMs, long endMs,
 
     record BuildResult(Spannable text, @Nullable ForegroundColorSpan unsungSpan,
             int transStart, int transEnd, int romaStart, int romaEnd) {
+    }
+
+    private record Spacing(int mainClear, int smallClear, int boundaryClear) {
+    }
+
+    private static final class UniformLineSpacingSpan implements LineHeightSpan {
+        private final Spacing spacing;
+        private int baseDescent;
+        private int lastWritten = Integer.MIN_VALUE;
+        private int previousEnd = -1;
+
+        UniformLineSpacingSpan(Spacing spacing) {
+            this.spacing = spacing;
+        }
+
+        @Override
+        public void chooseHeight(CharSequence text, int start, int end, int spanstartv, int v,
+                Paint.FontMetricsInt fm) {
+            if (end >= text.length()) {
+                return;
+            }
+            final boolean paragraphStart = start == 0 || text.charAt(start - 1) == '\n';
+            if (paragraphStart) {
+                baseDescent = fm.descent;
+            }
+            final boolean carried = !paragraphStart && start == previousEnd
+                    && fm.descent == lastWritten;
+            final int from = carried ? baseDescent : Math.max(baseDescent, fm.descent);
+            final boolean small = isSmallAt(text, start);
+            final boolean nextSmall = isSmallAt(text, end);
+            final int clearance;
+            if (small) {
+                clearance = nextSmall ? spacing.smallClear() : spacing.boundaryClear();
+            } else {
+                clearance = nextSmall ? spacing.boundaryClear() : spacing.mainClear();
+            }
+            baseDescent = Math.max(baseDescent, from);
+            lastWritten = from + clearance;
+            fm.descent = lastWritten;
+            if (fm.bottom < fm.descent) {
+                fm.bottom = fm.descent;
+            }
+            previousEnd = end;
+        }
+    }
+
+    private static boolean isSmallAt(CharSequence text, int offset) {
+        if (!(text instanceof Spanned spanned)) {
+            return false;
+        }
+        final int window = Math.min(offset + 1, text.length());
+        final RelativeSizeSpan[] spans = spanned.getSpans(offset, window, RelativeSizeSpan.class);
+        for (RelativeSizeSpan span : spans) {
+            final int spanStart = spanned.getSpanStart(span);
+            final int spanEnd = spanned.getSpanEnd(span);
+            if (spanStart <= offset && offset < spanEnd) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static final class RomajiSpan extends ReplacementSpan {
@@ -128,22 +189,39 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
     }
 
     private static List<WordTiming> synthesizeLineChars(String text, long startMs, long endMs) {
-        final int charCount = text.codePointCount(0, text.length());
-        if (charCount < 2 || endMs <= startMs) {
+        final int[] boundaries = clusterBoundaries(text);
+        final int clusterCount = boundaries.length - 1;
+        if (clusterCount < 2 || endMs <= startMs) {
             return Collections.emptyList();
         }
-        final List<WordTiming> timings = new ArrayList<>(charCount);
-        int offset = 0;
-        for (int i = 0; i < charCount; i++) {
-            final int next = offset + Character.charCount(text.codePointAt(offset));
-            final long charStart = startMs + (endMs - startMs) * i / charCount;
-            final long charEnd = i + 1 == charCount
+        final List<WordTiming> timings = new ArrayList<>(clusterCount);
+        for (int i = 0; i < clusterCount; i++) {
+            final long clusterStart = startMs + (endMs - startMs) * i / clusterCount;
+            final long clusterEnd = i + 1 == clusterCount
                     ? endMs
-                    : startMs + (endMs - startMs) * (i + 1) / charCount;
-            timings.add(new WordTiming(offset, next, charStart, charEnd, null));
-            offset = next;
+                    : startMs + (endMs - startMs) * (i + 1) / clusterCount;
+            timings.add(new WordTiming(boundaries[i], boundaries[i + 1], clusterStart, clusterEnd, null));
         }
         return timings;
+    }
+
+    private static int[] clusterBoundaries(String text) {
+        final BreakIterator iterator = BreakIterator.getCharacterInstance();
+        iterator.setText(text);
+        final List<Integer> bounds = new ArrayList<>();
+        bounds.add(0);
+        for (int boundary = iterator.first();
+                boundary != BreakIterator.DONE;
+                boundary = iterator.next()) {
+            if (boundary > 0) {
+                bounds.add(boundary);
+            }
+        }
+        final int[] result = new int[bounds.size()];
+        for (int i = 0; i < bounds.size(); i++) {
+            result[i] = bounds.get(i);
+        }
+        return result;
     }
 
     private static boolean isSingleWord(String text) {
@@ -263,11 +341,22 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
      */
     static BuildResult buildLineText(LyricsLine line, List<WordTiming> timings, int index,
             boolean perWordRomaji, List<LyricsLine> romanizedLines, List<String> translatedLines,
-            LyricsPanelView.OnlyMode onlyMode) {
+            LyricsPanelView.OnlyMode onlyMode, Paint basePaint) {
+        final Paint.FontMetricsInt baseFm = new Paint.FontMetricsInt();
+        basePaint.getFontMetricsInt(baseFm);
         String original = line.text();
         String originalTrimmed = original.trim();
 
         final boolean usePerWord = perWordRomaji && line.hasWords() && lineHasWordRomaji(line);
+
+        final int lineHeight = baseFm.descent - baseFm.ascent;
+        final int smallHeight = (int) (lineHeight * TRANSLATION_RELATIVE_SIZE + 0.5f);
+        final int smallAscent = (int) (-baseFm.ascent * TRANSLATION_RELATIVE_SIZE + 0.5f);
+        final int mainClear = (int) (lineHeight * MAIN_LINE_SPACING + 0.5f) - lineHeight;
+        final int smallClear = 0;
+        final int boundaryClear =
+                (int) (smallHeight * MAIN_LINE_SPACING + 0.5f) - baseFm.descent - smallAscent;
+        final Spacing spacing = new Spacing(mainClear, smallClear, boundaryClear);
 
         String romanization = null;
         if (!usePerWord && romanizedLines != null && index < romanizedLines.size()) {
@@ -292,6 +381,7 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
             SpannableString text = new SpannableString(content);
             final int transStart = content.isEmpty() ? -1 : 0;
             final int transEnd = content.isEmpty() ? -1 : content.length();
+            attachUniformSpacing(text, spacing);
             return new BuildResult(text, null, transStart, transEnd, -1, -1);
         }
 
@@ -312,6 +402,7 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
             SpannableString text = new SpannableString(content);
             final int romaStart = content.isEmpty() ? -1 : 0;
             final int romaEnd = content.isEmpty() ? -1 : content.length();
+            attachUniformSpacing(text, spacing);
             return new BuildResult(text, null, -1, -1, romaStart, romaEnd);
         }
 
@@ -338,6 +429,7 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
                 romaEnd = builder.length();
             }
             SpannableString text = new SpannableString(builder.toString());
+            attachUniformSpacing(text, spacing);
             ForegroundColorSpan unsungSpan = applySpans(text, timings, originalStart, originalEnd,
                     romaStart, romaEnd, transStart, transEnd, usePerWord);
             return new BuildResult(text, unsungSpan, transStart, transEnd, romaStart, romaEnd);
@@ -345,8 +437,8 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
         if (romanization != null) {
             romaStart = 0;
             builder.append(romanization);
-            romaEnd = builder.length();
             builder.append('\n');
+            romaEnd = builder.length();
         }
         final int originalStart = builder.length();
         builder.append(original);
@@ -359,9 +451,18 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
         }
 
         SpannableString text = new SpannableString(builder.toString());
+        attachUniformSpacing(text, spacing);
         ForegroundColorSpan unsungSpan = applySpans(text, timings, originalStart, originalEnd,
                 romaStart, romaEnd, transStart, transEnd, usePerWord);
         return new BuildResult(text, unsungSpan, transStart, transEnd, romaStart, romaEnd);
+    }
+
+    private static void attachUniformSpacing(SpannableString text, Spacing spacing) {
+        if (text.length() <= 0) {
+            return;
+        }
+        text.setSpan(new UniformLineSpacingSpan(spacing), 0, text.length(),
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
     @Nullable

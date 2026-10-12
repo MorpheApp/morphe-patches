@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.translate;
+package app.morphe.extension.music.patches.lyrics.derive;
 
 import androidx.annotation.Nullable;
 
@@ -39,10 +39,7 @@ public final class LyricsTranslator {
     }
 
     private static String translationLanguage() {
-        String language = Settings.LYRICS_TRANSLATION_LANGUAGE.get();
-        return "DEFAULT".equalsIgnoreCase(language)
-                ? LyricsRequests.deviceLanguage()
-                : language.toLowerCase(Locale.ROOT);
+        return LyricsRequests.translationLanguage();
     }
 
     @Nullable
@@ -89,11 +86,7 @@ public final class LyricsTranslator {
     }
 
     private static String primarySubtag(String lang) {
-        if (lang == null) {
-            return "";
-        }
-        final int idx = lang.indexOf('-');
-        return (idx >= 0 ? lang.substring(0, idx) : lang).toLowerCase(Locale.ROOT);
+        return LyricsRequests.primarySubtag(lang);
     }
 
     public static void translate(TrackInfo track, Lyrics lyrics, String source, Callback callback) {
@@ -158,7 +151,7 @@ public final class LyricsTranslator {
     @Nullable
     private static List<String> aiTranslate(List<String> lines, String language,
             String title, String artist, String baseUrl, String apiToken, String model) {
-        String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_PROMPT.get(),
+        String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_TRANSLATION_PROMPT.get(),
                 "translation", language, title, artist, lines);
         return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, lines);
     }
