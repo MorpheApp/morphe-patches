@@ -186,11 +186,23 @@ final class FollowFlow {
             return;
         }
         String name = catalog != null && !catalog.title.isEmpty() ? catalog.title : id;
+        final long generation = RecordingPrivacy.generation();
+        PlaybackBridge.Source source = PlaybackBridge.source();
         Runnable saved = () -> {
             activity.getSharedPreferences("morphe_series_tracker_ui", Context.MODE_PRIVATE)
                     .edit()
                     .putBoolean("follow_explained", true)
                     .apply();
+            if (!startVideo.isEmpty()) {
+                // Next and previous of the current video now follow the series order.
+                service.series(id, series -> {
+                    if (source == PlaybackBridge.source()
+                            && startVideo.equals(PlaybackBridge.videoId(source))
+                            && RecordingPrivacy.acceptsManualPosition(generation)) {
+                        SeriesPlayback.activate(series, startVideo, series.cursorOrdinal);
+                    }
+                }, message -> {});
+            }
             if (active()) complete();
         };
         if (startVideo.isEmpty()) {
@@ -203,8 +215,6 @@ final class FollowFlow {
                     saved,
                     this::failure);
         } else {
-            final long generation = RecordingPrivacy.generation();
-            PlaybackBridge.Source source = PlaybackBridge.source();
             long position = RecordingPrivacy.acceptsManualPosition(generation)
                             ? FollowStart.position(source, startVideo)
                             : -1;

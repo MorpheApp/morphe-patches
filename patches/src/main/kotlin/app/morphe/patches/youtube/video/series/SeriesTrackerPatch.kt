@@ -18,6 +18,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.navigation.navigationBarPatch
+import app.morphe.patches.youtube.layout.playlistautoplay.navigationIntentHook
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
@@ -118,10 +119,17 @@ val seriesTrackerPatch = bytecodePatch(
                         tag = "$EXTENSION_PACKAGE.SyncPreference"
                     ),
                     NonInteractivePreference(
+                        "morphe_series_tracker_backup",
+                        tag = "$EXTENSION_PACKAGE.BackupPreference",
+                        selectable = true,
+                        dependency = "morphe_series_tracker"
+                    ),
+                    NonInteractivePreference(
                         "morphe_series_tracker_completion",
                         summaryKey = null,
                         tag = "$EXTENSION_PACKAGE.CompletionPreference",
-                        selectable = true
+                        selectable = true,
+                        dependency = "morphe_series_tracker"
                     )
                 )
             )
@@ -192,6 +200,7 @@ val seriesTrackerPatch = bytecodePatch(
         onCreateHook(EXTENSION_CLASS, "newVideoStarted")
         videoTimeHook(EXTENSION_CLASS, "videoTimeChanged")
         initializeTopControl(BUTTON)
+        navigationIntentHook(EXTENSION_CLASS, "navigationIntent")
     }
 }
 

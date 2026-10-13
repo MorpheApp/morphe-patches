@@ -58,6 +58,21 @@ public final class SeriesTrackerPatch {
         }
     }
 
+    /**
+     * Injection point.
+     *
+     * @return If the app navigation to another video must be skipped.
+     */
+    public static boolean navigationIntent(Enum<?> intent) {
+        if (!ENABLED) return false;
+        try {
+            return SeriesPlayback.navigate(intent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "navigationIntent failure", ex);
+            return false;
+        }
+    }
+
     private static void videoStateChanged(Enum<?> state) {
         try {
             TrackerRuntime.state(state.name());

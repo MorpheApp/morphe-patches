@@ -13,8 +13,11 @@ import static app.morphe.extension.youtube.series.TrackerModels.Series;
 import android.content.Context;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteException;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
+import android.view.accessibility.AccessibilityManager;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -31,10 +34,12 @@ import java.util.concurrent.Future;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 /** One ordered mutation stream, two bounded network workers, callbacks on the UI thread. */
@@ -57,7 +62,7 @@ public final class TrackerService {
     private final CatalogClient catalogs;
     private final PlaylistDiscovery discovery = new PlaylistDiscovery(
             CatalogClient::request,
-            android.os.SystemClock::elapsedRealtime,
+            SystemClock::elapsedRealtime,
             error -> Logger.printException(() -> "Playlist discovery", error));
     private final CopyOnWriteArrayList<Runnable> listeners = new CopyOnWriteArrayList<>();
     private final ArrayDeque<Mutation> pending = new ArrayDeque<>(); // storage thread only
@@ -65,7 +70,9 @@ public final class TrackerService {
     private final Map<String, TrackerRepository.FetchTicket> refreshTickets = new HashMap<>();
     private final ArrayDeque<String> quietQueue = new ArrayDeque<>();
     private volatile String epoch, storageError = "";
-    private volatile TrackerRepository.Undo bulkUndo;
+    private volatile TrackerRepository.Undo lastUndo;
+    private volatile long undoUntil, undoSerial;
+    private volatile String undoMessage = "";
     private long lastPrune;
     private volatile Set<String> trackedVideos = Collections.emptySet();
 
@@ -231,7 +238,44 @@ public final class TrackerService {
     }
 
     public boolean canUndo() {
-        return bulkUndo != null;
+        return lastUndo != null && SystemClock.uptimeMillis() < undoUntil;
+    }
+
+    String undoMessage() {
+        return undoMessage;
+    }
+
+    long undoSerial() {
+        return undoSerial;
+    }
+
+    private void rememberUndo(TrackerRepository.Undo value, String message) {
+        lastUndo = value;
+        long serial = ++undoSerial;
+        undoMessage = message;
+        long duration = undoDuration();
+        undoUntil = SystemClock.uptimeMillis() + duration;
+        main.postDelayed(() -> {
+            if (undoSerial == serial) {
+                // Removed progress is kept in memory only while Undo is available.
+                lastUndo = null;
+                changed();
+            }
+        }, duration + 1);
+    }
+
+    /**
+     * Accessibility users may need more time to reach the Undo button.
+     */
+    private long undoDuration() {
+        final long defaultDuration = 8000;
+        AccessibilityManager manager = (AccessibilityManager)
+                Utils.getContext().getSystemService(Context.ACCESSIBILITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return manager.getRecommendedTimeoutMillis((int) defaultDuration,
+                    AccessibilityManager.FLAG_CONTENT_TEXT | AccessibilityManager.FLAG_CONTENT_CONTROLS);
+        }
+        return manager.isEnabled() ? 20000 : defaultDuration;
     }
 
     public <T> void read(Supplier<T> work, Consumer<T> done, Consumer<String> error) {
@@ -256,13 +300,25 @@ public final class TrackerService {
 
     /** UI-thread entry point; coalesces navigation, foregrounding and Continue checks. */
     public void syncYouTube(boolean force, Runnable done) {
+        syncYouTube(force, "", done);
+    }
+
+    public void syncYouTube(String seriesId, Runnable done) {
+        syncYouTube(true, seriesId, done);
+    }
+
+    private void syncYouTube(boolean force, String selectedSeries, Runnable done) {
         if (!RecordingPrivacy.allowsSync()) {
             done.run();
             return;
         }
-        long now = android.os.SystemClock.elapsedRealtime();
+        long now = SystemClock.elapsedRealtime();
         if (syncingYouTube) {
-            syncWaiters.add(done);
+            // A foreground one-page check must not replace a selected-series catch-up.
+            syncWaiters.add(
+                    selectedSeries.isEmpty()
+                            ? done
+                            : () -> syncYouTube(true, selectedSeries, done));
             return;
         }
         if (!force && lastYouTubeAttempt > 0 && now - lastYouTubeAttempt < 30_000) {
@@ -287,7 +343,8 @@ public final class TrackerService {
                                 generation,
                                 Settings.SERIES_TRACKER_COMPLETION_PERCENT.get(),
                                 Settings.SERIES_TRACKER_COMPLETION_SECONDS.get(),
-                                force);
+                                force,
+                                selectedSeries);
                         if (!submit(() -> {
                             try {
                                 if (RecordingPrivacy.acceptsSync(generation))
@@ -553,8 +610,9 @@ public final class TrackerService {
         mutation(
                 () -> {
                     requireCurrent(s);
-                    repository.startHere(
-                            s.id, s.revision, e.ordinal, e.videoId, System.currentTimeMillis());
+                    rememberUndo(
+                            repository.startHereWithUndo(s, e, System.currentTimeMillis()),
+                            "morphe_series_tracker_start_saved");
                     updateTrackedVideos();
                 },
                 done,
@@ -589,27 +647,36 @@ public final class TrackerService {
 
     public void mark(
             String videoId, TrackerModels.Override value, Runnable done, Consumer<String> error) {
-        mutation(() -> repository.mark(videoId, value, System.currentTimeMillis()), done, error);
+        mutation(
+                () ->
+                        rememberUndo(
+                                repository.mark(videoId, value, System.currentTimeMillis()),
+                                "morphe_series_tracker_ui_status_saved"),
+                done,
+                error);
     }
 
     public void through(Series s, int ordinal, Runnable done, Consumer<String> error) {
         mutation(
                 () -> {
                     requireCurrent(s);
-                    bulkUndo = repository.markThrough(
-                            s.id, s.revision, ordinal, System.currentTimeMillis());
+                    rememberUndo(
+                            repository.markThrough(
+                                    s.id, s.revision, ordinal, System.currentTimeMillis()),
+                            "morphe_series_tracker_marked");
                 },
                 done,
                 error);
     }
 
     public void undo(Runnable done, Consumer<String> error) {
-        TrackerRepository.Undo undo = bulkUndo;
-        if (undo == null) return;
+        TrackerRepository.Undo undo = lastUndo;
+        if (undo == null || !canUndo()) return;
         mutation(
                 () -> {
                     repository.undo(undo, System.currentTimeMillis());
-                    if (bulkUndo == undo) bulkUndo = null;
+                    updateTrackedVideos();
+                    if (lastUndo == undo) lastUndo = null;
                 },
                 done,
                 error);
@@ -637,7 +704,7 @@ public final class TrackerService {
                     Future<?> job = refreshing.remove(id);
                     if (job != null) job.cancel(true);
                     quietQueue.remove(id);
-                    repository.remove(id);
+                    rememberUndo(repository.removeWithUndo(id), "morphe_series_tracker_removed");
                     updateTrackedVideos();
                 },
                 done,
@@ -652,9 +719,38 @@ public final class TrackerService {
                 () -> {
                     repository.clearHistory(newEpoch);
                     updateTrackedVideos();
-                    bulkUndo = null;
+                    lastUndo = null;
                 },
                 done,
+                error);
+    }
+
+    void exportBackup(Consumer<String> done, Consumer<String> error) {
+        TrackerRuntime.flush();
+        read(repository::backup, done, error);
+    }
+
+    void previewBackup(
+            String text, BiConsumer<LibraryBackup.Data, Integer> done, Consumer<String> error) {
+        read(
+                () -> LibraryBackup.decode(text),
+                data ->
+                        read(
+                                () -> repository.missingSeries(data),
+                                count -> done.accept(data, count),
+                                error),
+                error);
+    }
+
+    void restoreBackup(LibraryBackup.Data data, Consumer<Integer> done, Consumer<String> error) {
+        int[] added = {0};
+        mutation(
+                () -> {
+                    added[0] = repository.restoreMissing(data, System.currentTimeMillis());
+                    lastUndo = null;
+                    updateTrackedVideos();
+                },
+                () -> done.accept(added[0]),
                 error);
     }
 

@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.series;
 import static app.morphe.extension.youtube.series.TrackerModels.Episode;
 import static app.morphe.extension.youtube.series.TrackerModels.Series;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -32,14 +33,27 @@ final class NativeProgressSync {
         boolean complete = true;
     }
 
+    /**
+     * @param selectedSeries Only check this series, or all series if empty.
+     */
     static Result fetch(
-            List<Series> library, long generation, int percent, int seconds, boolean force)
+            List<Series> library,
+            long generation,
+            int percent,
+            int seconds,
+            boolean force,
+            String selectedSeries)
             throws Exception {
         Result result = new Result();
         result.account = RecordingPrivacy.syncScope(generation);
         if (result.account.isEmpty()) throw new CancellationException("Account changed");
         result.percent = percent;
         result.seconds = seconds;
+        if (!selectedSeries.isEmpty()) {
+            List<Series> focused = new ArrayList<>();
+            for (Series series : library) if (series.id.equals(selectedSeries)) focused.add(series);
+            library = focused;
+        }
         Set<String> scope = new HashSet<>();
         for (Series series : library) {
             for (Episode ep : series.episodes)
@@ -59,7 +73,8 @@ final class NativeProgressSync {
             }
         }
         if (scope.isEmpty()) return result;
-        long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(8);
+        long deadline = System.nanoTime()
+                + TimeUnit.MILLISECONDS.toNanos(selectedSeries.isEmpty() ? 8000 : 2500);
         Set<String> tokens = new HashSet<>();
         String continuation = "";
         for (int n = 0; n < (force ? 3 : 1); n++) {
