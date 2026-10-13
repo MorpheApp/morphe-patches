@@ -96,6 +96,7 @@ val customBrandingPatch = baseCustomBrandingPatch(
     mainActivityName = MUSIC_MAIN_ACTIVITY_NAME,
     activityAliasNameWithIntents = MUSIC_MAIN_ACTIVITY_NAME,
     preferenceScreen = PreferenceScreen.GENERAL,
+    appSpecificResourceRoot = "custom-branding-music",
 
     block = {
         dependsOn(

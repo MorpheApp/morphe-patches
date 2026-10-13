@@ -60,6 +60,17 @@ private val iconStyleNames = arrayOf(
     "light",
     "play",
     "play_black",
+    "vanced_light",
+)
+
+/**
+ * Raster presets. Unlike the vector styles above, their launcher art ships as
+ * mipmap-<dpi> PNGs (plus a mipmap-anydpi launcher xml and a drawable
+ * notification icon) instead of drawable vectors. Add future PNG packs here;
+ * every entry must ship the full file set described in the copy block below.
+ */
+private val pngIconStyles = setOf(
+    "vanced_light",
 )
 
 private const val ORIGINAL_USER_ICON_STYLE_NAME = "original"
@@ -126,7 +137,14 @@ internal fun baseCustomBrandingPatch(
     activityAliasNameWithIntents: String,
     preferenceScreen: BasePreferenceScreen.Screen,
     block: ResourcePatchBuilder.() -> Unit,
-    executeBlock: ResourcePatchContext.() -> Unit = {}
+    executeBlock: ResourcePatchContext.() -> Unit = {},
+    /**
+     * Optional overlay resource root with per-app files for raster presets.
+     * Same relative layout as "custom-branding"; files present here override the
+     * shared ones (e.g. a monochrome-aware launcher xml for apps whose pack
+     * ships a monochrome icon). Null means the shared tree covers the app.
+     */
+    appSpecificResourceRoot: String? = null,
 ): ResourcePatch = resourcePatch(
     name = "Custom branding",
     description = "Adds options to change the app icon and app name. " +
@@ -509,20 +527,24 @@ internal fun baseCustomBrandingPatch(
         preferenceScreen.addPreferences(noTitleUnsortedPreferenceCategory(preferences))
 
         iconStyleNames.forEach { style ->
-            copyResources(
-                "custom-branding",
-                ResourceGroup(
-                    "drawable",
-                    "$LAUNCHER_ADAPTIVE_BACKGROUND_PREFIX$style.xml",
-                    "$LAUNCHER_ADAPTIVE_FOREGROUND_PREFIX$style.xml",
-                    "${LAUNCHER_ADAPTIVE_MONOCHROME_PREFIX}_$style.xml",
-                    "${NOTIFICATION_ICON_NAME}_$style.xml",
-                ),
-                ResourceGroup(
-                    "mipmap-anydpi",
-                    "$LAUNCHER_RESOURCE_NAME_PREFIX$style.xml"
+            if (style in pngIconStyles) {
+                copyPngPreset(style, appSpecificResourceRoot)
+            } else {
+                copyResources(
+                    "custom-branding",
+                    ResourceGroup(
+                        "drawable",
+                        "$LAUNCHER_ADAPTIVE_BACKGROUND_PREFIX$style.xml",
+                        "$LAUNCHER_ADAPTIVE_FOREGROUND_PREFIX$style.xml",
+                        "${LAUNCHER_ADAPTIVE_MONOCHROME_PREFIX}_$style.xml",
+                        "${NOTIFICATION_ICON_NAME}_$style.xml",
+                    ),
+                    ResourceGroup(
+                        "mipmap-anydpi",
+                        "$LAUNCHER_RESOURCE_NAME_PREFIX$style.xml"
+                    )
                 )
-            )
+            }
         }
 
         copyResources(
@@ -660,6 +682,55 @@ internal fun baseCustomBrandingPatch(
         }
 
         executeBlock()
+    }
+}
+
+/**
+ * Copies one raster preset ([pngIconStyles]) into the decoded resources.
+ *
+ * Shared tree first, then the optional per-app overlay root (same relative
+ * paths, overriding). Every preset must ship, per density in [mipmapDirectories]:
+ * `mipmap-<dpi>/morphe_adaptive_{background,foreground}_<style>.png`,
+ * plus `mipmap-anydpi/morphe_launcher_<style>.xml` and
+ * `drawable/morphe_notification_icon_<style>.xml`.
+ * The overlay root only needs the files that differ (e.g. a launcher xml with a
+ * monochrome line plus its monochrome drawable); missing overlay files fail
+ * loudly so a half-wired preset cannot ship silently.
+ */
+private fun ResourcePatchContext.copyPngPreset(style: String, appSpecificResourceRoot: String?) {
+    mipmapDirectories.keys.forEach { dpi ->
+        copyResources(
+            "custom-branding",
+            ResourceGroup(
+                dpi,
+                "$LAUNCHER_ADAPTIVE_BACKGROUND_PREFIX$style.png",
+                "$LAUNCHER_ADAPTIVE_FOREGROUND_PREFIX$style.png",
+            )
+        )
+    }
+    copyResources(
+        "custom-branding",
+        ResourceGroup(
+            "mipmap-anydpi",
+            "$LAUNCHER_RESOURCE_NAME_PREFIX$style.xml"
+        ),
+        ResourceGroup(
+            "drawable",
+            "${NOTIFICATION_ICON_NAME}_$style.xml",
+        )
+    )
+    appSpecificResourceRoot?.let { overlay ->
+        copyResources(
+            overlay,
+            ResourceGroup(
+                "mipmap-anydpi",
+                "$LAUNCHER_RESOURCE_NAME_PREFIX$style.xml"
+            ),
+            ResourceGroup(
+                "drawable",
+                "${LAUNCHER_ADAPTIVE_MONOCHROME_PREFIX}_$style.xml",
+            )
+        )
     }
 }
 

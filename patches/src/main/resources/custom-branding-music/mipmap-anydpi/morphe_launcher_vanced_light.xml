@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@mipmap/morphe_adaptive_background_vanced_light" />
+    <foreground android:drawable="@mipmap/morphe_adaptive_foreground_vanced_light" />
+    <monochrome android:drawable="@drawable/morphe_adaptive_monochrome_vanced_light" />
+</adaptive-icon>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- White silhouette of the pack foreground, used as the notification icon.
+     The tint keeps OEM status bars white; alpha comes from the PNG itself. -->
+<bitmap
+  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@mipmap/morphe_adaptive_foreground_vanced_light"
+    android:tint="#FFFFFF"
+    android:tintMode="src_in" />
