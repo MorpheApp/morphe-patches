@@ -39,6 +39,7 @@ internal object Vp9CapabilityFingerprint : Fingerprint(
  * Codec support check in the class of [Vp9CapabilityFingerprint]. The second parameter is the mime type.
  */
 internal object CodecSupportCheckFingerprint : Fingerprint(
+    classFingerprint = Vp9CapabilityFingerprint,
     returnType = "Z",
     parameters = listOf(
         "Ljava/lang/String;",

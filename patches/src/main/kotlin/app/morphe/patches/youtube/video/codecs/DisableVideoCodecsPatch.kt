@@ -63,7 +63,7 @@ val disableVideoCodecsPatch = bytecodePatch(
             """
         )
 
-        CodecSupportCheckFingerprint.match(Vp9CapabilityFingerprint.classDef).method.addInstructionsWithLabels(
+        CodecSupportCheckFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { p2 }, $EXTENSION_CLASS->allowCodec(Ljava/lang/String;)Z
@@ -81,7 +81,8 @@ val disableVideoCodecsPatch = bytecodePatch(
 
             replaceInstruction(
                 index,
-                "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->overrideSupportedHdrTypes(Landroid/view/Display\$HdrCapabilities;)[I"
+                "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->" +
+                        "overrideSupportedHdrTypes(Landroid/view/Display\$HdrCapabilities;)[I"
             )
         }
     }
