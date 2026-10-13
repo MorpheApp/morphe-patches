@@ -13,22 +13,23 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.function.Consumer;
 import org.json.JSONObject;
 
-import app.morphe.extension.shared.Logger;
+import java.util.function.Consumer;
+
 import app.morphe.extension.shared.ResourceUtils;
 
 /** A real child of YTM's player bottom sheet, never an overlay. */
 public final class JamBar extends LinearLayout {
+
+    /** Must match the layout height the patch gives this bar. */
+    private static final int HEIGHT_DP = 48;
 
     private final TextView title, subtitle, action;
     private final ProgressBar progress;
@@ -129,21 +130,9 @@ public final class JamBar extends LinearLayout {
     }
 
     @Override
-    public void setLayoutParams(ViewGroup.LayoutParams params) {
-        if (!JamUI.enabled()) {
-            params.height = 0;
-            setVisibility(GONE);
-        }
-        super.setLayoutParams(params);
-    }
-
-    @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (JamUI.enabled()) {
-            JamUI.observe(getContext(), observer);
-            post(() -> applyPeekHeight(JamUI.dp(getContext(), 68)));
-        }
+        if (JamUI.enabled()) JamUI.observe(getContext(), observer);
     }
 
     @Override
@@ -152,28 +141,11 @@ public final class JamBar extends LinearLayout {
         super.onDetachedFromWindow();
     }
 
-    private void applyPeekHeight(int peek) {
-        View view = this;
-        while (view != null) {
-            if (setPeekHeight(view.getLayoutParams(), peek)) return;
-            ViewParent parent = view.getParent();
-            view = parent instanceof View ? (View) parent : null;
-        }
-        Logger.printException(() -> "Could not set Jam peek height");
-    }
-
-    private static boolean setPeekHeight(ViewGroup.LayoutParams params, int peek) {
-        if (params == null) return false;
-        try {
-            Object behavior = params.getClass().getMethod("getBehavior").invoke(params);
-            if (behavior == null) return false;
-            behavior.getClass().getMethod("setPeekHeight", int.class).invoke(behavior, peek);
-            return true;
-        } catch (NoSuchMethodException ignored) {
-            return false;
-        } catch (ReflectiveOperationException ex) {
-            Logger.printException(() -> "Could not set Jam peek height", ex);
-            return true;
-        }
+    /**
+     * Injection point. Makes room for this bar in the collapsed player bottom sheet.
+     */
+    public static int getBottomSheetPeekHeight(View watchWhileLayout, int original) {
+        if (!JamUI.enabled()) return original;
+        return original + JamUI.dp(watchWhileLayout.getContext(), HEIGHT_DP);
     }
 }
