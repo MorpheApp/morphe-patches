@@ -199,7 +199,8 @@ public class LyricsAiConfigPreference extends Preference {
 
         try {
             dialog.show();
-        } catch (WindowManager.BadTokenException ignored) {
+        } catch (WindowManager.BadTokenException ex) {
+            Logger.printException(() -> "Could not show the AI settings dialog", ex);
         }
     }
 

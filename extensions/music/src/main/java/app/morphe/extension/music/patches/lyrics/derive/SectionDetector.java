@@ -21,6 +21,7 @@ import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsCache;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 /**
@@ -89,7 +90,8 @@ public final class SectionDetector {
                 }
                 final List<String> result = detected;
                 Utils.runOnMainThread(() -> callback.onSections(result));
-            } catch (Throwable ignored) {
+            } catch (Exception ex) {
+                Logger.printException(() -> "detect failure", ex);
                 Utils.runOnMainThread(() -> callback.onSections(null));
             }
         });

@@ -157,7 +157,8 @@ public final class LyricsOrderedListPreference extends Preference {
                     })
                     .setNegativeButton(android.R.string.cancel, null)
                     .show();
-        } catch (WindowManager.BadTokenException ignored) {
+        } catch (WindowManager.BadTokenException ex) {
+            Logger.printException(() -> "Could not show the reset dialog", ex);
         }
     }
 

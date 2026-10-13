@@ -662,7 +662,9 @@ public final class GeniusProvider implements LyricsProvider {
         if (value != null) {
             try {
                 ms = Long.parseLong(value.trim()) * 1000L;
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException ex) {
+                // Retry-After may also be an HTTP date, which falls back to the default wait.
+                Logger.printDebug(() -> "Genius sent a Retry-After that is not seconds: " + value, ex);
                 ms = 0;
             }
         }

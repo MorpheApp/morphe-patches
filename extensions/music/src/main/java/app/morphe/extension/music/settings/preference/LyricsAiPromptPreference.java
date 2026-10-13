@@ -29,6 +29,7 @@ import java.util.concurrent.Executors;
 
 import app.morphe.extension.music.patches.lyrics.derive.OpenAIClient;
 import app.morphe.extension.music.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.StringSetting;
@@ -201,7 +202,8 @@ public class LyricsAiPromptPreference extends SwitchPreference {
 
         try {
             dialog.show();
-        } catch (WindowManager.BadTokenException ignored) {
+        } catch (WindowManager.BadTokenException ex) {
+            Logger.printException(() -> "Could not show the AI prompt dialog", ex);
             dialogShowing = false;
         }
     }

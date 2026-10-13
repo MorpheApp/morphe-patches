@@ -95,7 +95,8 @@ final class LyricsPrefetcher {
     private static void runPrefetch(String currentVideoId) {
         try {
             prefetch(currentVideoId);
-        } catch (Throwable ignored) {
+        } catch (Exception ex) {
+            Logger.printException(() -> "runPrefetch failure", ex);
         } finally {
             synchronized (LyricsPrefetcher.class) {
                 if (currentVideoId.equals(prefetchingFor)) {
