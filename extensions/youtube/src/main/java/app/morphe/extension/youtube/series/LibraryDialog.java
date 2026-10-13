@@ -420,14 +420,12 @@ final class LibraryDialog {
             undoBar.removeAllViews();
             undoBar.setVisibility(currentUndo >= 0 ? View.VISIBLE : View.GONE);
             if (currentUndo >= 0) {
-                undoBar.addView(
-                        label(null, service.undoMessage(), 14),
+                undoBar.addView(label(null, service.undoMessage(), 14),
                         new LinearLayout.LayoutParams(0, -2, 1));
-                undoBar.addView(
-                        action(
-                                "morphe_series_tracker_undo",
-                                () -> service.undo(this::reload, this::error),
-                                false));
+                undoBar.addView(action(
+                        "morphe_series_tracker_undo",
+                        () -> service.undo(this::reload, this::error),
+                        false));
             }
         }
     }
@@ -701,16 +699,19 @@ final class LibraryDialog {
                 ? "morphe_series_tracker_recovery_duplicate"
                 : "morphe_series_tracker_recovery_missing", 14);
         List<Episode> candidates = new ArrayList<>(matches);
-        if (candidates.isEmpty() && !series.recoveryId.isEmpty())
-            for (Episode e : series.episodes)
+        if (candidates.isEmpty() && !series.recoveryId.isEmpty()) {
+            for (Episode e : series.episodes) {
                 if (e.available && e.videoId.equals(series.recoveryId)) candidates.add(e);
+            }
+        }
         for (Episode e : candidates) {
             String caption = UiText.format("morphe_series_tracker_recovery_continue",
                     series.episodeNumber(e.ordinal), UiText.episodeTitle(e));
             Progress progress = series.progress(e.videoId);
             boolean watched = progress.watched();
-            button(content, caption, () ->
-                    play(series, e.videoId, e.ordinal, watched ? 0 : progress.positionMs, watched));
+            button(content, caption, () -> play(series, e.videoId, e.ordinal, watched
+                    ? 0
+                    : progress.positionMs, watched));
         }
         label(content, "morphe_series_tracker_recovery_choose", 14);
     }
@@ -720,19 +721,16 @@ final class LibraryDialog {
         List<Runnable> actions = new ArrayList<>();
         Progress p = s.progress(e.videoId);
         if (e.available) {
-            labels.add(
-                    p.watched()
-                            ? "morphe_series_tracker_ui_play_again_from_0_00"
-                            : UiText.format("morphe_series_tracker_resume_at",
-                                    ResumePlanner.time(p.positionMs)));
-            actions.add(
-                    () ->
-                            play(
-                                    s,
-                                    e.videoId,
-                                    e.ordinal,
-                                    p.watched() ? 0 : p.positionMs,
-                                    p.watched()));
+            labels.add(p.watched()
+                    ? "morphe_series_tracker_ui_play_again_from_0_00"
+                    : UiText.format("morphe_series_tracker_resume_at",
+                    ResumePlanner.time(p.positionMs)));
+            actions.add(() -> play(
+                    s,
+                    e.videoId,
+                    e.ordinal,
+                    p.watched() ? 0 : p.positionMs,
+                    p.watched()));
             if (!p.watched() && p.positionMs > 0) {
                 labels.add("morphe_series_tracker_ui_restart_from_0_00");
                 actions.add(() -> play(s, e.videoId, e.ordinal, 0, true));
@@ -740,37 +738,27 @@ final class LibraryDialog {
         }
         if (e.available) {
             labels.add("morphe_series_tracker_start_here");
-            actions.add(
-                    () -> {
-                        TrackerRuntime.flush();
-                        service.startHere(s, e, this::reload, this::error);
-                    });
+            actions.add(() -> {
+                TrackerRuntime.flush();
+                service.startHere(s, e, this::reload, this::error);
+            });
         }
-        labels.add(
-                p.watched()
-                        ? "morphe_series_tracker_ui_mark_unwatched"
-                        : "morphe_series_tracker_ui_mark_watched");
-        actions.add(
-                () ->
-                        mark(
-                                e,
-                                p.watched()
-                                        ? TrackerModels.Override.UNWATCHED
-                                        : TrackerModels.Override.WATCHED));
+        labels.add(p.watched()
+                ? "morphe_series_tracker_ui_mark_unwatched"
+                : "morphe_series_tracker_ui_mark_watched");
+        actions.add(() -> mark(e, p.watched()
+                ? TrackerModels.Override.UNWATCHED
+                : TrackerModels.Override.WATCHED));
         if (p.override != TrackerModels.Override.AUTO) {
             labels.add("morphe_series_tracker_ui_use_automatic_status");
             actions.add(() -> mark(e, TrackerModels.Override.AUTO));
         }
         labels.add("morphe_series_tracker_watched_to_here");
-        actions.add(
-                () -> {
-                    TrackerRuntime.flush();
-                    service.through(s, e.ordinal, this::reload, this::error);
-                });
-        choice(
-                s.episodeNumber(e.ordinal) + ". " + UiText.episodeTitle(e),
-                labels,
-                actions);
+        actions.add(() -> {
+            TrackerRuntime.flush();
+            service.through(s, e.ordinal, this::reload, this::error);
+        });
+        choice(s.episodeNumber(e.ordinal) + ". " + UiText.episodeTitle(e), labels, actions);
     }
 
     private void mark(Episode e, TrackerModels.Override value) {
@@ -798,8 +786,7 @@ final class LibraryDialog {
 
     private void finishContinue(String id, int token) {
         if (!alive() || !resumed || !continuation.claim(token)) return;
-        service.series(
-                id,
+        service.series(id,
                 fresh -> {
                     if (!alive() || !resumed || !continuation.current(token)) return;
                     ResumePlanner.Plan plan = ResumePlanner.plan(fresh);
@@ -851,16 +838,15 @@ final class LibraryDialog {
 
     private void openPlaylist(Series s) {
         try {
-            activity.startActivity(
-                    new Intent(
-                                    Intent.ACTION_VIEW,
-                                    new Uri.Builder()
-                                            .scheme("https")
-                                            .authority("www.youtube.com")
-                                            .path("playlist")
-                                            .appendQueryParameter("list", s.id)
-                                            .build())
-                            .setPackage(activity.getPackageName()));
+            activity.startActivity(new Intent(
+                    Intent.ACTION_VIEW,
+                    new Uri.Builder()
+                            .scheme("https")
+                            .authority("www.youtube.com")
+                            .path("playlist")
+                            .appendQueryParameter("list", s.id)
+                            .build())
+                    .setPackage(activity.getPackageName()));
         } catch (RuntimeException failure) {
             Logger.printException(() -> "Could not open playlist", failure);
             error("morphe_series_tracker_playlist_failed");
@@ -881,23 +867,22 @@ final class LibraryDialog {
                         () -> service.refresh(s.id, this::error),
                         () -> rename(s),
                         () -> openPlaylist(s),
-                        () ->
-                                service.remove(
-                                        s.id,
-                                        () -> {
-                                            selected = "";
-                                            episodeReveal.cancel();
-                                            page = 0;
-                                            reload();
-                                        },
-                                        this::error)));
+                        () -> service.remove(
+                                s.id,
+                                () -> {
+                                    selected = "";
+                                    episodeReveal.cancel();
+                                    page = 0;
+                                    reload();
+                                },
+                                this::error)));
     }
 
     private void orderMenu(Series s) {
         NativeSheet sheet = new NativeSheet(activity, "morphe_series_tracker_episode_order");
         RadioGroup options = new RadioGroup(activity);
         String[] labels = {"morphe_series_tracker_playlist_order", "morphe_series_tracker_reverse_order"};
-        for (int i = 0; i < labels.length; i++) {
+        for (int i = 0, length = labels.length; i < length; i++) {
             final boolean reverse = i == 1;
             RadioButton option = new RadioButton(activity);
             option.setText(UiText.get(labels[i]));
@@ -905,19 +890,18 @@ final class LibraryDialog {
             option.setTextSize(16);
             option.setMinHeight(HistoryUi.dp(48));
             option.setChecked(s.reverseOrder == reverse);
-            option.setOnClickListener(v ->
-                    service.seriesOptions(
-                            s,
-                            reverse,
-                            s.hideWatched,
-                            () -> {
-                                sheet.dialog.dismiss();
-                                episodeReveal.cancel();
-                                page = 0;
-                                scroll.scrollTo(0, 0);
-                                reload();
-                            },
-                            this::error));
+            option.setOnClickListener(v -> service.seriesOptions(
+                    s,
+                    reverse,
+                    s.hideWatched,
+                    () -> {
+                        sheet.dialog.dismiss();
+                        episodeReveal.cancel();
+                        page = 0;
+                        scroll.scrollTo(0, 0);
+                        reload();
+                    },
+                    this::error));
             options.addView(option, new RadioGroup.LayoutParams(-1, -2));
         }
         sheet.body.addView(options);
@@ -931,8 +915,7 @@ final class LibraryDialog {
         NativeSheet sheet = new NativeSheet(activity, "morphe_series_tracker_ui_series_name");
         EditText name = field(sheet.body, "morphe_series_tracker_ui_series_name", s.name);
         sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
-        sheet.action(
-                "morphe_series_tracker_ui_save",
+        sheet.action("morphe_series_tracker_ui_save",
                 () -> service.rename(
                         s.id,
                         name.getText().toString(),
@@ -945,8 +928,7 @@ final class LibraryDialog {
     }
 
     private void menu() {
-        choice(
-                "morphe_series_tracker_ui_library_options",
+        choice("morphe_series_tracker_ui_library_options",
                 List.of("morphe_series_tracker_ui_clear_all_local_progress"),
                 List.of(() -> confirm(
                         "morphe_series_tracker_clear_progress_title",
@@ -963,13 +945,12 @@ final class LibraryDialog {
         sheet.footer.setVisibility(View.GONE);
         for (int i = 0, labelsSize = labels.size(); i < labelsSize; i++) {
             final int index = i;
-            TextView item = action(
-                            labels.get(i),
-                            () -> {
-                                sheet.dialog.dismiss();
-                                actions.get(index).run();
-                            },
-                            false);
+            TextView item = action(labels.get(i),
+                    () -> {
+                        sheet.dialog.dismiss();
+                        actions.get(index).run();
+                    },
+                    false);
             item.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             sheet.body.addView(item, new LinearLayout.LayoutParams(-1, -2));
         }
@@ -983,8 +964,7 @@ final class LibraryDialog {
         NativeSheet sheet = new NativeSheet(activity, title);
         sheet.message(message);
         sheet.action("morphe_series_tracker_ui_cancel", sheet.dialog::dismiss, false);
-        sheet.action(
-                action,
+        sheet.action(action,
                 () -> {
                     sheet.dialog.dismiss();
                     work.run();
@@ -999,13 +979,10 @@ final class LibraryDialog {
         if (!alive()) return;
         content.removeAllViews();
         label(content, message, 16);
-        button(
-                content,
-                "morphe_series_tracker_ui_retry_saving",
-                () -> {
-                    service.retryStorage(this::error);
-                    reload();
-                });
+        button(content, "morphe_series_tracker_ui_retry_saving", () -> {
+            service.retryStorage(this::error);
+            reload();
+        });
     }
 
     private void error(String message) {
@@ -1071,8 +1048,8 @@ final class LibraryDialog {
                 HistoryUi.rounded(HistoryUi.foreground(), 24),
                 HistoryUi.rounded(Color.WHITE, 24));
         // A 36 dp visible pill keeps the full 48 dp touch target.
-        button.setBackground(
-                new InsetDrawable(pill, 0, HistoryUi.dp(6), 0, HistoryUi.dp(6)));
+        button.setBackground(new InsetDrawable(pill, 0, HistoryUi.dp(6),
+                0, HistoryUi.dp(6)));
         button.setPadding(
                 HistoryUi.dp(12),
                 HistoryUi.dp(8),
@@ -1092,32 +1069,23 @@ final class LibraryDialog {
                 || title.equals("morphe_series_tracker_add_icon")) {
             v.setText("");
             v.setPadding(HistoryUi.dp(12), 0, HistoryUi.dp(12), 0);
-            v.setCompoundDrawables(
-                    new UiIcon(
+            v.setCompoundDrawables(new UiIcon(
                             title.equals("morphe_series_tracker_add_icon") ? UiIcon.ADD : UiIcon.MORE,
                             HistoryUi.foreground(),
                             HistoryUi.dp(24)),
                     null,
                     null,
                     null);
-            v.setContentDescription(
-                    UiText.get(title.equals("morphe_series_tracker_add_icon")
-                                    ? "morphe_series_tracker_follow"
-                                    : title));
+            v.setContentDescription(UiText.get(title.equals("morphe_series_tracker_add_icon")
+                    ? "morphe_series_tracker_follow"
+                    : title));
         }
         return v;
     }
 
-    private LinearLayout mediaRow(
-            String id,
-            String title,
-            String metadata,
-            String subtitle,
-            Runnable primary,
-            Runnable more,
-            long position,
-            long duration,
-            boolean compact) {
+    private LinearLayout mediaRow(String id, String title, String metadata, String subtitle,
+                                  Runnable primary, Runnable more,
+                                  long position, long duration, boolean compact) {
         LinearLayout row = new LinearLayout(activity);
         row.setGravity(Gravity.TOP);
         row.setPadding(0, HistoryUi.dp(compact ? 8 : 12), 0, HistoryUi.dp(8));

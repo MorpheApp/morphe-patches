@@ -647,18 +647,15 @@ public final class TrackerService {
 
     public void mark(
             String videoId, TrackerModels.Override value, Runnable done, Consumer<String> error) {
-        mutation(
-                () ->
-                        rememberUndo(
-                                repository.mark(videoId, value, System.currentTimeMillis()),
-                                "morphe_series_tracker_ui_status_saved"),
+        mutation(() -> rememberUndo(
+                        repository.mark(videoId, value, System.currentTimeMillis()),
+                        "morphe_series_tracker_ui_status_saved"),
                 done,
                 error);
     }
 
     public void through(Series s, int ordinal, Runnable done, Consumer<String> error) {
-        mutation(
-                () -> {
+        mutation(() -> {
                     requireCurrent(s);
                     rememberUndo(
                             repository.markThrough(
@@ -672,8 +669,7 @@ public final class TrackerService {
     public void undo(Runnable done, Consumer<String> error) {
         TrackerRepository.Undo undo = lastUndo;
         if (undo == null || !canUndo()) return;
-        mutation(
-                () -> {
+        mutation(() -> {
                     repository.undo(undo, System.currentTimeMillis());
                     updateTrackedVideos();
                     if (lastUndo == undo) lastUndo = null;
@@ -684,8 +680,7 @@ public final class TrackerService {
 
     public void seriesOptions(
             Series s, boolean reverse, boolean hideWatched, Runnable done, Consumer<String> error) {
-        mutation(
-                () -> {
+        mutation(() -> {
                     requireCurrent(s);
                     repository.seriesOptions(s.id, s.revision, reverse, hideWatched);
                 },
@@ -698,8 +693,7 @@ public final class TrackerService {
     }
 
     public void remove(String id, Runnable done, Consumer<String> error) {
-        mutation(
-                () -> {
+        mutation(() -> {
                     refreshTickets.remove(id);
                     Future<?> job = refreshing.remove(id);
                     if (job != null) job.cancel(true);
@@ -715,8 +709,7 @@ public final class TrackerService {
         TrackerRuntime.clear();
         epoch = UUID.randomUUID().toString();
         String newEpoch = epoch;
-        mutation(
-                () -> {
+        mutation(() -> {
                     repository.clearHistory(newEpoch);
                     updateTrackedVideos();
                     lastUndo = null;
@@ -732,20 +725,16 @@ public final class TrackerService {
 
     void previewBackup(
             String text, BiConsumer<LibraryBackup.Data, Integer> done, Consumer<String> error) {
-        read(
-                () -> LibraryBackup.decode(text),
-                data ->
-                        read(
-                                () -> repository.missingSeries(data),
-                                count -> done.accept(data, count),
-                                error),
+        read(() -> LibraryBackup.decode(text),
+                data -> read(() -> repository.missingSeries(data),
+                        count -> done.accept(data, count),
+                        error),
                 error);
     }
 
     void restoreBackup(LibraryBackup.Data data, Consumer<Integer> done, Consumer<String> error) {
         int[] added = {0};
-        mutation(
-                () -> {
+        mutation(() -> {
                     added[0] = repository.restoreMissing(data, System.currentTimeMillis());
                     lastUndo = null;
                     updateTrackedVideos();
@@ -758,8 +747,9 @@ public final class TrackerService {
         Logger.printInfo(() -> "Series tracker operation failed", failure);
         String text = failure.getMessage();
         if (text != null && text.startsWith("morphe_series_tracker_error_")) return text;
-        if (failure instanceof java.io.IOException)
+        if (failure instanceof java.io.IOException) {
             return "morphe_series_tracker_error_catalog_unavailable";
+        }
         return "morphe_series_tracker_error_operation";
     }
 }
