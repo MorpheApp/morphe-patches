@@ -629,6 +629,8 @@ Required cookies: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPISID
     <string name="morphe_music_lyrics_hide_info_summary">Hide the credit line shown below the lyrics</string>
     <string name="morphe_music_lyrics_swap_trans_roma_title">Swap translation and romanization</string>
     <string name="morphe_music_lyrics_swap_trans_roma_summary">ON puts romanization below lyrics and translation above; OFF keeps romanization above and translation below</string>
+    <string name="morphe_music_lyrics_hide_main_after_romanize_title">Hide main lyrics line after romanization</string>
+    <string name="morphe_music_lyrics_hide_main_after_romanize_summary">Hide the original lyrics line when romanized lyrics are shown</string>
     <string name="morphe_music_lyrics_use_ai_title">OpenAI-compatible API</string>
     <string name="morphe_music_lyrics_use_ai_translation_title">AI Translation</string>
     <string name="morphe_music_lyrics_use_ai_translation_summary">Prefers the translation the provider ships with, then your OpenAI-compatible model, and Google Translate last</string>

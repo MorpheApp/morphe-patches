@@ -1144,7 +1144,15 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 lineView.romaReveal = prevView.romaReveal;
                 gapOrigStart = prevView.originalTextStart;
             } else {
-                lineView.setText(line.text().isEmpty() ? "♪" : line.text());
+                String initialText = line.text();
+                if (Settings.LYRICS_HIDE_MAIN_AFTER_ROMANIZE.get() && romanizedSnap != null
+                        && i < romanizedSnap.size()) {
+                    String roma = romanizedSnap.get(i).text().trim();
+                    if (!roma.isEmpty() && !roma.equalsIgnoreCase(line.text().trim())) {
+                        initialText = roma;
+                    }
+                }
+                lineView.setText(initialText.isEmpty() ? "♪" : initialText);
             }
             lineOriginalStarts.add(gapOrigStart);
             if (reusePrevious) {
@@ -1190,11 +1198,14 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 });
             }
 
+            final int lineIndex = i;
             lineView.setOnLongClickListener(v -> {
                 LyricsLineView lv = (LyricsLineView) v;
                 String textToCopy = lv.getCopyTextForTouch(lv.lastTouchY);
                 if (textToCopy == null || textToCopy.isEmpty()) {
-                    textToCopy = onlyMode != OnlyMode.NONE
+                    final boolean hideMain = Settings.LYRICS_HIDE_MAIN_AFTER_ROMANIZE.get()
+                            && LyricsSpanBuilder.hasRomanization(line, lineIndex, perWordRomaji, romanizedLines);
+                    textToCopy = (onlyMode != OnlyMode.NONE || hideMain)
                             ? String.valueOf(lv.getText())
                             : line.text();
                 }
@@ -1319,7 +1330,11 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                     }
                     try {
                         for (int i = 0; i < count; i++) {
-                            lineWordSpans.set(i, only ? Collections.emptyList() : allTimings.get(i));
+                            final boolean hideMain = Settings.LYRICS_HIDE_MAIN_AFTER_ROMANIZE.get()
+                                    && i < newLyrics.lines().size()
+                                    && LyricsSpanBuilder.hasRomanization(newLyrics.lines().get(i), i,
+                                            perWordRomajiSnap, romanizedSnap);
+                            lineWordSpans.set(i, (only || hideMain) ? Collections.emptyList() : allTimings.get(i));
                             lineOriginalStarts.set(i, only ? 0 : allOrigStarts.get(i));
                             TextView tv = lineViews.get(i);
                             if (i < newLyrics.lines().size()) {
@@ -3185,13 +3200,17 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
         }
         String original = line.text();
         String originalTrimmed = original.trim();
-        final boolean usePerWord = perWordRomajiSnap && line.hasWords() && LyricsSpanBuilder.lineHasWordRomaji(line);
+        final boolean hideMainPref = Settings.LYRICS_HIDE_MAIN_AFTER_ROMANIZE.get();
+        final boolean usePerWord = !hideMainPref && perWordRomajiSnap && line.hasWords() && LyricsSpanBuilder.lineHasWordRomaji(line);
         String romanization = null;
         if (!usePerWord && romanizedSnap != null && index < romanizedSnap.size()) {
             String roma = romanizedSnap.get(index).text().trim();
             if (!roma.isEmpty() && !roma.equalsIgnoreCase(originalTrimmed)) {
                 romanization = roma;
             }
+        }
+        if (hideMainPref && romanization == null && line.hasWords() && LyricsSpanBuilder.lineHasWordRomaji(line)) {
+            romanization = LyricsSpanBuilder.joinWordRomaji(line);
         }
         String translation = null;
         if (translatedSnap != null && index < translatedSnap.size()) {
@@ -3201,6 +3220,12 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             }
         }
         final boolean swap = Settings.LYRICS_SWAP_TRANS_ROMA.get();
+        if (hideMainPref && romanization != null) {
+            if (swap && translation != null) {
+                return translation.length() + 1;
+            }
+            return 0;
+        }
         String above = swap ? translation : romanization;
         if (above != null) {
             return above.length() + 1;

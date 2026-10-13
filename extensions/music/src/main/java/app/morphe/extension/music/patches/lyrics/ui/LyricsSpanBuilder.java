@@ -347,7 +347,8 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
         String original = line.text();
         String originalTrimmed = original.trim();
 
-        final boolean usePerWord = perWordRomaji && line.hasWords() && lineHasWordRomaji(line);
+        final boolean hideMainPref = Settings.LYRICS_HIDE_MAIN_AFTER_ROMANIZE.get();
+        final boolean usePerWord = !hideMainPref && perWordRomaji && line.hasWords() && lineHasWordRomaji(line);
 
         final int lineHeight = baseFm.descent - baseFm.ascent;
         final int smallHeight = (int) (lineHeight * TRANSLATION_RELATIVE_SIZE + 0.5f);
@@ -364,6 +365,9 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
             if (!roma.isEmpty() && !roma.equalsIgnoreCase(originalTrimmed)) {
                 romanization = roma;
             }
+        }
+        if (hideMainPref && romanization == null && line.hasWords() && lineHasWordRomaji(line)) {
+            romanization = joinWordRomaji(line);
         }
 
         List<String> translated = translatedLines;
@@ -397,13 +401,51 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
                 content = joinWordRomaji(line);
             }
             if (content == null) {
-                content = "";
+                content = original;
             }
             SpannableString text = new SpannableString(content);
             final int romaStart = content.isEmpty() ? -1 : 0;
             final int romaEnd = content.isEmpty() ? -1 : content.length();
             attachUniformSpacing(text, spacing);
             return new BuildResult(text, null, -1, -1, romaStart, romaEnd);
+        }
+
+        final boolean hideMain = hideMainPref && romanization != null;
+        if (hideMain) {
+            final boolean swap = Settings.LYRICS_SWAP_TRANS_ROMA.get();
+            StringBuilder builder = new StringBuilder();
+            int transStart = -1;
+            int transEnd = -1;
+            int originalStart;
+            int originalEnd;
+
+            if (swap) {
+                if (translation != null) {
+                    transStart = 0;
+                    builder.append(translation);
+                    builder.append('\n');
+                    transEnd = builder.length();
+                }
+                originalStart = builder.length();
+                builder.append(romanization);
+                originalEnd = builder.length();
+            } else {
+                originalStart = 0;
+                builder.append(romanization);
+                originalEnd = builder.length();
+                if (translation != null) {
+                    builder.append('\n');
+                    transStart = builder.length();
+                    builder.append(translation);
+                    transEnd = builder.length();
+                }
+            }
+
+            SpannableString text = new SpannableString(builder.toString());
+            attachUniformSpacing(text, spacing);
+            applySpans(text, Collections.emptyList(), originalStart, originalEnd,
+                    -1, -1, transStart, transEnd, false);
+            return new BuildResult(text, null, transStart, transEnd, -1, -1);
         }
 
         final boolean swap = Settings.LYRICS_SWAP_TRANS_ROMA.get();
@@ -465,8 +507,20 @@ static List<WordTiming> computeWordTimings(List<LyricsLine> lines, int index) {
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
     }
 
+    static boolean hasRomanization(LyricsLine line, int index, boolean perWordRomaji,
+            @Nullable List<LyricsLine> romanizedLines) {
+        String originalTrimmed = line.text().trim();
+        if (romanizedLines != null && index < romanizedLines.size()) {
+            String roma = romanizedLines.get(index).text().trim();
+            if (!roma.isEmpty() && !roma.equalsIgnoreCase(originalTrimmed)) {
+                return true;
+            }
+        }
+        return line.hasWords() && lineHasWordRomaji(line);
+    }
+
     @Nullable
-    private static String joinWordRomaji(LyricsLine line) {
+    static String joinWordRomaji(LyricsLine line) {
         if (!line.hasWords()) {
             return null;
         }
