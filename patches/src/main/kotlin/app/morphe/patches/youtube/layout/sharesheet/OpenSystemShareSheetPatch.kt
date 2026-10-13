@@ -10,15 +10,25 @@ package app.morphe.patches.youtube.layout.sharesheet
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.findFreeRegister
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
@@ -88,18 +98,65 @@ internal fun openSystemShareSheetPatch(
             )
         }
 
+        fun MutableMethod.openSystemShareSheet(index: Int, endpointRegister: Int, freeRegister: Int) {
+            addInstructionsWithLabels(
+                index,
+                """
+                    invoke-interface/range { v$endpointRegister .. v$endpointRegister }, Lcom/google/protobuf/MessageLite;->toByteArray()[B
+                    move-result-object v$freeRegister
+                    invoke-static/range { v$freeRegister .. v$freeRegister }, $EXTENSION_CLASS->openSystemShareSheet([B)Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :open_in_app_share_sheet
+                    return-void
+                    :open_in_app_share_sheet
+                    nop
+                """
+            )
+        }
+
+        // The endpoint is unpacked from the command with the extension descriptor,
+        // a static field of the endpoint class, and then cast to the endpoint class.
+        fun MutableMethod.indexOfEndpointCast(): Int {
+            val staticFieldClasses = mutableSetOf<String>()
+            return instructions.indexOfFirst { instruction ->
+                if (instruction.opcode == Opcode.SGET_OBJECT) {
+                    staticFieldClasses += instruction.getReference<FieldReference>()!!.definingClass
+                }
+                instruction.opcode == Opcode.CHECK_CAST &&
+                        instruction.getReference<TypeReference>()!!.type in staticFieldClasses
+            }
+        }
+
+        fun MutableMethod.openSystemShareSheetAfterEndpointCast(checkCastIndex: Int) {
+            val endpointRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+            openSystemShareSheet(
+                checkCastIndex + 1,
+                endpointRegister,
+                findFreeRegister(checkCastIndex + 1, endpointRegister)
+            )
+        }
+
         // Open the system share sheet and skip the share panel request,
         // so the in-app share sheet is never opened.
-        ShareEndpointCommandFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { }, $EXTENSION_CLASS->openSystemShareSheet()Z
-                move-result v0
-                if-eqz v0, :open_in_app_share_sheet
-                return-void
-                :open_in_app_share_sheet
-                nop
-            """
-        )
+        ShareEndpointCommandFingerprint.method.apply {
+            val checkCastIndex = indexOfEndpointCast()
+            if (checkCastIndex < 0) throw PatchException("Could not find share endpoint cast")
+
+            openSystemShareSheetAfterEndpointCast(checkCastIndex)
+        }
+
+        ShareEntityEndpointCommandFingerprint.method.apply {
+            val checkCastIndex = indexOfEndpointCast()
+            if (checkCastIndex >= 0) {
+                // 20.x unpacks the endpoint in this method.
+                openSystemShareSheetAfterEndpointCast(checkCastIndex)
+            } else {
+                // p1 is the endpoint.
+                val endpointRegister = implementation!!.registerCount - parameters.size
+
+                openSystemShareSheet(0, endpointRegister, findFreeRegister(0, endpointRegister))
+            }
+        }
     }
 }

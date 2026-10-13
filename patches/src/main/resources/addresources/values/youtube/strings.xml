@@ -1141,7 +1141,7 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
 
     <!-- misc.sharesheet.openSystemShareSheetPatch -->
     <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>
-    <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content</string>
+    <string name="morphe_open_system_share_sheet_summary">Opens the system share sheet instead of the in-app one when sharing content. The link is created on the device without contacting YouTube</string>
 
     <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
     <string name="morphe_override_youtube_music_buttons_title">Override YouTube Music buttons</string>

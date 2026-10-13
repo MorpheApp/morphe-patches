@@ -68,6 +68,18 @@ internal object ShareEndpointCommandFingerprint : Fingerprint(
 )
 
 /**
+ * Command resolver of the share entity service endpoint.
+ * Opens the share panel fragment, which sends the `share/get_share_panel` request.
+ */
+internal object ShareEntityEndpointCommandFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    filters = listOf(
+        string("Command not in share entity endpoint proto.")
+    )
+)
+
+/**
  * Action sheet controller method that handles `ShowActionSheetCommand`.
  * The share button in flyout menus opens an empty action sheet (loading spinner)
  * and then resolves the share endpoint to fill it.
