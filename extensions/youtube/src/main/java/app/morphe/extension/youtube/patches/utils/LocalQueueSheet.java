@@ -382,7 +382,13 @@ public final class LocalQueueSheet {
         Row row = new Row(videoId, index, item, root, foreground, thumbnail, titleView,
                 channelView, titleBar, channelBar);
         if (nowPlaying) {
-            row.bindText(VideoInformation.getVideoTitle(), VideoInformation.getChannelName());
+            String title = emptyToNull(VideoInformation.getVideoTitle());
+            String channel = emptyToNull(VideoInformation.getChannelName());
+            if (nowPlayingItem != null && nowPlayingItem.videoId.equals(videoId)) {
+                if (title == null) title = nowPlayingItem.title;
+                if (channel == null) channel = nowPlayingItem.author;
+            }
+            row.bindText(title, channel);
             return row;
         }
 
