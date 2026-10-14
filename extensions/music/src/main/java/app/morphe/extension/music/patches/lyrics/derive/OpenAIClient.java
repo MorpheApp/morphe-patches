@@ -7,6 +7,7 @@
 
 package app.morphe.extension.music.patches.lyrics.derive;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.json.JSONArray;
@@ -264,6 +265,12 @@ public final class OpenAIClient {
     @Nullable
     static String request(String baseUrl, String apiToken, String model,
                           String userPrompt) {
+        return request(baseUrl, apiToken, model, userPrompt, null);
+    }
+
+    @Nullable
+    static String request(String baseUrl, String apiToken, String model,
+                          String userPrompt, @Nullable String systemPrompt) {
         try {
             JSONObject body = new JSONObject();
             body.put("model", model);
@@ -273,6 +280,11 @@ public final class OpenAIClient {
             }
 
             JSONArray messages = new JSONArray();
+            if (systemPrompt != null && !systemPrompt.isEmpty()) {
+                messages.put(new JSONObject()
+                        .put("role", "system")
+                        .put("content", systemPrompt));
+            }
             messages.put(new JSONObject()
                     .put("role", "user")
                     .put("content", userPrompt));
@@ -412,9 +424,67 @@ public final class OpenAIClient {
         return !trimmed.matches(".*\\p{L}.*");
     }
 
+    @NonNull
+    public static List<String> fetchModels(String baseUrl, String apiToken) {
+        List<String> models = new ArrayList<>();
+        if (baseUrl == null || baseUrl.isEmpty()) {
+            return models;
+        }
+        try {
+            String modelsUrl = baseUrl;
+            if (modelsUrl.endsWith("/chat/completions")) {
+                modelsUrl = modelsUrl.substring(0, modelsUrl.length() - "/chat/completions".length()) + "/models";
+            } else if (modelsUrl.endsWith("/")) {
+                modelsUrl = modelsUrl + "models";
+            } else {
+                modelsUrl = modelsUrl + "/models";
+            }
+
+            URL url = new URL(modelsUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            try {
+                conn.setRequestMethod("GET");
+                conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
+                conn.setReadTimeout(READ_TIMEOUT_MS);
+                if (apiToken != null && !apiToken.isEmpty()) {
+                    conn.setRequestProperty("Authorization", "Bearer " + apiToken);
+                }
+
+                int code = conn.getResponseCode();
+                if (code != 200) {
+                    return models;
+                }
+
+                String responseStr = readResponse(conn);
+                JSONObject json = new JSONObject(responseStr);
+                JSONArray data = json.optJSONArray("data");
+                if (data != null) {
+                    for (int i = 0; i < data.length(); i++) {
+                        JSONObject m = data.getJSONObject(i);
+                        String id = m.optString("id", "");
+                        if (!id.isEmpty()) {
+                            models.add(id);
+                        }
+                    }
+                }
+            } finally {
+                conn.disconnect();
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "OpenAI fetchModels failed", ex);
+        }
+        return models;
+    }
+
     @Nullable
     static List<String> mapLines(String baseUrl, String apiToken, String model,
                                  String prompt, List<String> sourceLines) {
+        return mapLines(baseUrl, apiToken, model, prompt, null, sourceLines);
+    }
+
+    @Nullable
+    static List<String> mapLines(String baseUrl, String apiToken, String model,
+                                 String prompt, @Nullable String systemPrompt, List<String> sourceLines) {
         int totalChars = 0;
         for (String line : sourceLines) {
             totalChars += line.length() + 1;
@@ -422,45 +492,28 @@ public final class OpenAIClient {
         if (totalChars > MAX_CHARS) {
             return null;
         }
-        String response = request(baseUrl, apiToken, model, prompt);
+        String response = request(baseUrl, apiToken, model, prompt, systemPrompt);
         if (response == null) {
             return null;
         }
-        String[] result = response.split("\n", -1);
-        int end = result.length;
-        while (end > 0 && result[end - 1].trim().isEmpty()) {
-            end--;
-        }
-        if (end == 0) {
-            return null;
-        }
-        boolean allSkip = true;
-        for (int i = 0; i < end; i++) {
-            result[i] = stripLineNumber(result[i]);
-            if (!result[i].trim().equalsIgnoreCase("SKIP")) {
-                allSkip = false;
-            }
-        }
-        if (allSkip) {
-            return null;
-        }
-        if (end > sourceLines.size() + 2 || end < sourceLines.size() - 2) {
+        List<String> parsed = GeminiClient.parseNumberedLines(response, sourceLines.size());
+        if (parsed == null) {
             return null;
         }
         List<String> out = new ArrayList<>(sourceLines.size());
+        boolean anyValid = false;
         for (int i = 0; i < sourceLines.size(); i++) {
-            if (i < end) {
-                String trimmed = result[i].trim();
-                if (trimmed.equalsIgnoreCase("SKIP") || isNoteOrEmptyLine(sourceLines.get(i))) {
-                    out.add("");
-                } else {
-                    out.add(trimmed);
-                }
-            } else {
+            String trimmed = (i < parsed.size() && parsed.get(i) != null) ? parsed.get(i).trim() : "";
+            if (GeminiClient.isSkipToken(trimmed) || isNoteOrEmptyLine(sourceLines.get(i))) {
                 out.add("");
+            } else {
+                out.add(trimmed);
+                if (!trimmed.isEmpty()) {
+                    anyValid = true;
+                }
             }
         }
-        return out;
+        return anyValid ? out : null;
     }
 
     /**
@@ -526,8 +579,12 @@ public final class OpenAIClient {
             template = DEFAULT_PROMPT;
         }
         StringBuilder linesText = new StringBuilder();
-        for (String line : lines) {
-            linesText.append(Objects.requireNonNullElse(line, "")).append('\n');
+        for (int i = 0; i < lines.size(); i++) {
+            String line = Objects.requireNonNullElse(lines.get(i), "").trim();
+            if (!line.matches("^\\d+\\.\\s.*")) {
+                linesText.append(i + 1).append(". ");
+            }
+            linesText.append(line.isEmpty() ? "SKIP" : line).append('\n');
         }
         String count = String.valueOf(lines.size());
         Matcher matcher = PROMPT_VARIABLE.matcher(template);
