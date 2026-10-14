@@ -169,6 +169,12 @@ public final class AddToQueuePatch {
 
         if (FlyoutUtils.getFlyoutVideoId().isEmpty()) {
             Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
+            if (LocalQueuePatch.isEnabled() && queueButtonOriginalNames.contains(FlyoutUtils.getCurrentButtonName())) {
+                return () -> {
+                    Utils.showToastShort(str("morphe_local_queue_playlist_unsupported"));
+                    FlyoutUtils.dismissFlyout();
+                };
+            }
             return original;
         }
 
