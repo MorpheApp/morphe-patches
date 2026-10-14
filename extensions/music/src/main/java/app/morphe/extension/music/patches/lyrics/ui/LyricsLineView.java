@@ -19,6 +19,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.icu.text.BreakIterator;
+import android.os.Build;
 import android.text.Layout;
 import android.view.MotionEvent;
 import android.widget.TextView;
@@ -344,7 +345,9 @@ final class LyricsLineView extends TextView {
         final int length = text.length();
         final int[] boundaries = new int[length + 1];
         final BreakIterator iterator = BreakIterator.getCharacterInstance();
-        iterator.setText(text);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            iterator.setText(text);
+        }
         int clusterStart = iterator.first();
         while (clusterStart != BreakIterator.DONE && clusterStart <= length) {
             final int next = iterator.next();
