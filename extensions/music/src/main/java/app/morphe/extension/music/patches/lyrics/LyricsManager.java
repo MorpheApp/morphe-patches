@@ -7,16 +7,26 @@
 
 package app.morphe.extension.music.patches.lyrics;
 
+import static app.morphe.extension.shared.StringRef.str;
+
+import android.graphics.Bitmap;
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.net.Uri;
+import android.os.Looper;
 import android.os.SystemClock;
+import android.view.Choreographer;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Locale;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -32,15 +42,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
 import app.morphe.extension.music.patches.lyrics.derive.SectionDetector;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsBracketSplitter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilter;
 import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsPreference;
 import app.morphe.extension.music.patches.lyrics.model.MetadataCleaner;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
+import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
@@ -191,12 +204,104 @@ public final class LyricsManager {
      */
     private final AtomicInteger requestId = new AtomicInteger();
 
+    private boolean overrideNative;
+
     private long positionMs;
     private long positionUpdatedAtUptimeMs;
     private long lastVideoTimeSample = -1;
     private long lastPlaybackSampleUptimeMs;
     private float playbackSpeed = 1f;
     private boolean playing;
+
+    private long lastSamplePosition = -1L;
+    private long lastSampleTimeMs = 0L;
+    private long lastCorrectedSampleTimeMs = 0L;
+    private long lastFrameTimeUptimeMs = -1L;
+    private double estimate = 0.0;
+    private long smoothPosition = 0L;
+    private boolean frameCallbackScheduled = false;
+
+    private final Choreographer.FrameCallback frameCallback = new Choreographer.FrameCallback() {
+        @Override
+        public void doFrame(long frameTimeNanos) {
+            frameCallbackScheduled = false;
+            final long now = SystemClock.uptimeMillis();
+            final long videoTime = VideoInformation.getVideoTime();
+            if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
+                updateSample(videoTime, now);
+            }
+
+            if (!playing || lastSamplePosition < 0) {
+                if (Math.abs(lastSamplePosition - smoothPosition) > 1000L) {
+                    smoothPosition = Math.max(0L, lastSamplePosition);
+                }
+                return;
+            }
+
+            final long frameTimeMs = frameTimeNanos / 1_000_000L;
+            if (lastFrameTimeUptimeMs == -1L) {
+                lastFrameTimeUptimeMs = frameTimeMs;
+                estimate = (double) lastSamplePosition;
+            }
+
+            final long dtMs = Math.max(0L, Math.min(100L, frameTimeMs - lastFrameTimeUptimeMs));
+            lastFrameTimeUptimeMs = frameTimeMs;
+
+            final float speed = Math.max(0.1f, playbackSpeed);
+            estimate += dtMs * speed;
+
+            if (lastSampleTimeMs != lastCorrectedSampleTimeMs) {
+                lastCorrectedSampleTimeMs = lastSampleTimeMs;
+                final double error = (double) lastSamplePosition - estimate;
+                final double absError = Math.abs(error);
+                if (absError > 1000.0) {
+                    estimate = (double) lastSamplePosition;
+                } else if (error > 0.0) {
+                    if (absError > 500.0) {
+                        estimate += error * 0.8;
+                    } else if (absError > 100.0) {
+                        estimate += error * 0.5;
+                    } else {
+                        estimate += error * 0.3;
+                    }
+                }
+            }
+
+            if (playing && estimate < (double) smoothPosition) {
+                estimate = (double) smoothPosition;
+            }
+            smoothPosition = Math.round(estimate);
+
+            ensureFrameCallback();
+        }
+    };
+
+    private void ensureFrameCallback() {
+        if (!playing || frameCallbackScheduled) {
+            return;
+        }
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            try {
+                Choreographer.getInstance().postFrameCallback(frameCallback);
+                frameCallbackScheduled = true;
+            } catch (Exception ignored) {
+            }
+        } else {
+            Utils.runOnMainThread(this::ensureFrameCallback);
+        }
+    }
+
+    private void stopFrameCallback() {
+        frameCallbackScheduled = false;
+        if (Looper.myLooper() == Looper.getMainLooper()) {
+            try {
+                Choreographer.getInstance().removeFrameCallback(frameCallback);
+            } catch (Exception ignored) {
+            }
+        } else {
+            Utils.runOnMainThread(this::stopFrameCallback);
+        }
+    }
 
     private static final long VIDEO_REANCHOR_BEHIND_MS = 1000;
     private static final long PLAYBACK_STALE_MS = 500;
@@ -331,11 +436,32 @@ public final class LyricsManager {
         return state == State.LOADED && current != null && !current.isEmpty();
     }
     private void resetPosition() {
+        stopFrameCallback();
         positionMs = 0;
         positionUpdatedAtUptimeMs = SystemClock.uptimeMillis();
         lastVideoTimeSample = -1;
+        lastSamplePosition = -1L;
+        lastSampleTimeMs = 0L;
+        lastCorrectedSampleTimeMs = 0L;
+        lastFrameTimeUptimeMs = -1L;
+        estimate = 0.0;
+        smoothPosition = 0L;
         lastPlaybackSampleUptimeMs = 0;
         lastHighlightedIndex = -1;
+    }
+
+    private void updateSample(long newPosition, long now) {
+        if (newPosition < 0) return;
+        final long prevSample = lastSamplePosition;
+        lastSamplePosition = newPosition;
+        lastSampleTimeMs = now;
+        lastVideoTimeSample = newPosition;
+        positionMs = newPosition;
+        positionUpdatedAtUptimeMs = now;
+        if (prevSample < 0 || Math.abs(newPosition - prevSample) > 1000L) {
+            estimate = (double) newPosition;
+            smoothPosition = newPosition;
+        }
     }
 
     /**
@@ -354,33 +480,27 @@ public final class LyricsManager {
 
     private long computeExpectedPositionMs() {
         final long now = SystemClock.uptimeMillis();
-        long expected = positionMs;
-        if (playing && positionUpdatedAtUptimeMs != 0) {
-            expected += (long) ((now - positionUpdatedAtUptimeMs) * playbackSpeed);
+        final long videoTime = VideoInformation.getVideoTime();
+
+        if (videoTime >= 0 && videoTime != lastVideoTimeSample) {
+            updateSample(videoTime, now);
         }
 
-        final long videoTime = VideoInformation.getVideoTime();
-        if (videoTime > 0 && videoTime != lastVideoTimeSample) {
-            lastVideoTimeSample = videoTime;
-            if (videoTime > expected) {
-                positionMs = videoTime;
-                positionUpdatedAtUptimeMs = now;
-            } else if (expected - videoTime > VIDEO_REANCHOR_BEHIND_MS
-                    && now - lastPlaybackSampleUptimeMs > PLAYBACK_STALE_MS) {
-                positionMs = videoTime;
-                positionUpdatedAtUptimeMs = now;
-            }
-            expected = positionMs;
-            if (playing && positionUpdatedAtUptimeMs != 0) {
-                expected += (long) ((now - positionUpdatedAtUptimeMs) * playbackSpeed);
-            }
+        if (!playing || lastSamplePosition < 0) {
+            long pos = smoothPosition > 0 ? smoothPosition : (lastSamplePosition >= 0 ? lastSamplePosition : 0L);
+            return Math.max(0L, pos);
         }
-        return expected;
+
+        ensureFrameCallback();
+        return Math.max(0L, smoothPosition);
     }
 
     public int getTemporaryOffsetMs() { return temporaryOffsetMs; }
 
-    public void setTemporaryOffsetMs(int ms) { temporaryOffsetMs = ms; }
+    public void setTemporaryOffsetMs(int ms) {
+        temporaryOffsetMs = ms;
+        lastFrameTimeUptimeMs = -1L;
+    }
 
     /** Called from the panel when the track is about to change or to go away, not per drag frame. */
     public void persistTemporaryOffsetMs() {
@@ -390,6 +510,32 @@ public final class LyricsManager {
         }
         final int ms = temporaryOffsetMs;
         runOnLookupThread(() -> TrackOffsetStore.put(track, ms));
+    }
+
+    public void resetTemporaryOffsetMs() {
+        temporaryOffsetMs = 0;
+        lastFrameTimeUptimeMs = -1L;
+    }
+
+    public boolean isPlaying() { return playing; }
+
+    public float getPlaybackSpeed() { return playbackSpeed; }
+
+    @Nullable
+    public Bitmap getCurrentArtworkBitmap() {
+        MediaMetadata metadata = currentMetadata;
+        if (metadata != null) {
+            try {
+                Bitmap bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_ALBUM_ART);
+                if (bmp == null) bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_ART);
+                if (bmp == null) bmp = metadata.getBitmap(MediaMetadata.METADATA_KEY_DISPLAY_ICON);
+                if (bmp != null && !bmp.isRecycled()) {
+                    return bmp;
+                }
+            } catch (Exception ignored) {
+            }
+        }
+        return null;
     }
 
     /** Only reached on a real track change, so a loop cannot discard the offset it comes round for again. */
@@ -588,6 +734,7 @@ public final class LyricsManager {
         currentRawArtist = rawArtist;
         currentMediaUri = mediaUri;
         currentTrack = track;
+        overrideNative = false;
         currentVideoId = videoId;
         loadTemporaryOffsetMs(track);
         // A rebinding keeps the previous track's lyric, which is what makes it worth
@@ -597,6 +744,23 @@ public final class LyricsManager {
         }
         resetPosition();
         load(track, sameTrack);
+    }
+
+    /**
+     * turn off custom lyrics temporarily so native lyrics panel can show
+     */
+    public void setOverrideNative(boolean override) {
+        Utils.verifyOnMainThread();
+        overrideNative = override;
+        if (override) {
+            setState(State.IDLE, null);
+        } else if (currentTrack != null) {
+            load(currentTrack, false);
+        }
+    }
+
+    public boolean isOverrideNative() {
+        return overrideNative;
     }
 
     private void setPendingTrack(TrackInfo track, String rawTitle, String rawArtist,
@@ -641,7 +805,17 @@ public final class LyricsManager {
             return;
         }
 
-        playing = playbackState.getState() == PlaybackState.STATE_PLAYING;
+        final int state = playbackState.getState();
+        final boolean isPausedOrStopped = (state == PlaybackState.STATE_PAUSED
+                || state == PlaybackState.STATE_STOPPED
+                || state == PlaybackState.STATE_NONE
+                || state == PlaybackState.STATE_ERROR);
+        playing = !isPausedOrStopped;
+
+        final long newPosition = playbackState.getPosition();
+        if (newPosition >= 0) {
+            updateSample(newPosition, SystemClock.uptimeMillis());
+        }
         positionMs = playbackState.getPosition();
         positionUpdatedAtUptimeMs = SystemClock.uptimeMillis();
         lastPlaybackSampleUptimeMs = positionUpdatedAtUptimeMs;
@@ -651,6 +825,16 @@ public final class LyricsManager {
         // after playback resumes, so only positive speeds are kept.
         if (speed > 0) {
             playbackSpeed = speed;
+        }
+
+        if (playing) {
+            lastFrameTimeUptimeMs = -1L;
+            ensureFrameCallback();
+        } else {
+            stopFrameCallback();
+            if (Math.abs(lastSamplePosition - smoothPosition) > 1000L) {
+                smoothPosition = Math.max(0L, lastSamplePosition);
+            }
         }
         ensureLoadedForCurrentVideo();
     }
@@ -2066,6 +2250,7 @@ private void reorderQueueByRemembered() {
             if (splitBackground) {
                 lyrics = LyricsBracketSplitter.apply(lyrics);
             }
+            lyrics = sanitizeDegradedRomaji(lyrics);
             if (cacheKey != null) {
                 filteredCache.put(cacheKey, lyrics);
             }
@@ -2205,5 +2390,393 @@ private void reorderQueueByRemembered() {
     public boolean areLyricsSynced() {
         Lyrics lyrics = currentLyrics;
         return lyrics != null && lyrics.synced() && !lyrics.isEmpty();
+    }
+
+    @NonNull
+    public static List<LyricsProvider> providersInOrder(String order) {
+        return LyricsProviders.providersInOrder(order);
+    }
+
+    public static boolean isProviderEnabled(String id) {
+        return LyricsProviders.isProviderEnabled(id);
+    }
+
+    private static Lyrics sanitizeDegradedRomaji(Lyrics lyrics) {
+        if (lyrics == null || lyrics == Lyrics.NOT_FOUND || lyrics.isEmpty()) {
+            return lyrics;
+        }
+
+        List<LyricsLine> embedded = LyricsRomanizer.getEmbeddedRomanization(lyrics);
+        boolean perWord = LyricsMerge.anyWordHasRomaji(lyrics.lines());
+        if (!perWord && (embedded == null || embedded.isEmpty())) {
+            return lyrics;
+        }
+
+        boolean degraded = LyricsRomanizer.isProviderRomajiDegraded(embedded, lyrics.lines(), perWord);
+        if (!degraded) {
+            return lyrics;
+        }
+
+        Logger.printDebug(() -> "Sanitizing degraded provider romaji (mora fragments) to force Google Translate fallback.");
+
+        List<LyricsLine> origLines = lyrics.lines();
+        List<LyricsLine> cleanedLines = new ArrayList<>(origLines.size());
+        for (LyricsLine line : origLines) {
+            if (line.hasWords()) {
+                List<Word> words = new ArrayList<>(line.words().size());
+                for (Word w : line.words()) {
+                    words.add(new Word(w.startMs(), w.endMs(), w.text(), null, w.endsWithSpace()));
+                }
+                cleanedLines.add(new LyricsLine(line.startTimeMs(), line.endTimeMs(), line.text(), words,
+                        line.agentId(), line.isDuet(), line.isBG(), line.songPart()));
+            } else {
+                cleanedLines.add(line);
+            }
+        }
+
+        return new Lyrics(cleanedLines, lyrics.providerName(), lyrics.synced(),
+                null, lyrics.translations(), null,
+                lyrics.songwriters(), lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl());
+    }
+
+    public static final int STATUS_ACTIVE = 0;
+    public static final int STATUS_AVAILABLE = 1;
+    public static final int STATUS_FETCHABLE = 2;
+
+    public static final int SYNC_TYPE_WORD = 2;
+    public static final int SYNC_TYPE_LINE = 1;
+    public static final int SYNC_TYPE_PLAIN = 0;
+
+    public record ProviderInfo(
+            String id,
+            String name,
+            int syncType,
+            int statusCode,
+            boolean isCurrent,
+            boolean isEnabled) {}
+
+    /**
+     * get list of all available providers and their status
+     */
+    @NonNull
+    public List<ProviderInfo> getAvailableProvidersForCurrentTrack() {
+        TrackInfo track = currentTrack;
+        List<ProviderInfo> result = new ArrayList<>(LyricsProviders.PROVIDER_ORDER.size());
+        if (track == null) {
+            return result;
+        }
+
+        String curProviderName = (currentLyrics != null && currentLyrics != Lyrics.NOT_FOUND)
+                ? currentLyrics.providerName() : "";
+
+        Map<String, Lyrics> known = new HashMap<>();
+        if (currentLyrics != null && currentLyrics != Lyrics.NOT_FOUND) {
+            known.put(currentLyrics.providerName().toLowerCase(Locale.ROOT), currentLyrics);
+        }
+        synchronized (candidateQueue) {
+            for (ScoredCandidate sc : candidateQueue) {
+                String p = sc.lyrics().providerName().toLowerCase(Locale.ROOT);
+                if (!known.containsKey(p)) {
+                    known.put(p, sc.lyrics());
+                }
+            }
+        }
+
+        List<TrackInfo> searchVariants = getSearchTrackVariants(track, currentRawTitle);
+        List<String> enabledList = LyricsProviders.enabledProviderIds(Settings.LYRICS_SOURCE.get());
+
+        for (String id : LyricsProviders.PROVIDER_ORDER) {
+            LyricsProvider p = LyricsProviders.providerFor(id);
+            if (p == null) continue;
+            String name = p.name();
+            String nameLower = name.toLowerCase(Locale.ROOT);
+            Lyrics lyr = known.get(nameLower);
+            if (lyr == null) {
+                lyr = LyricsCache.get(track, name, preferenceVideoId);
+                if (lyr == null || lyr == Lyrics.NOT_FOUND) {
+                    for (TrackInfo v : searchVariants) {
+                        Lyrics c = LyricsCache.get(v, name, preferenceVideoId);
+                        if (c != null && c != Lyrics.NOT_FOUND) {
+                            lyr = c;
+                            break;
+                        }
+                    }
+                }
+                if (lyr == Lyrics.NOT_FOUND) lyr = null;
+            }
+
+            boolean isCurrent = !curProviderName.isEmpty() && (name.equalsIgnoreCase(curProviderName)
+                    || id.equalsIgnoreCase(curProviderName));
+            boolean isEnabled = enabledList.contains(id);
+
+            int syncType;
+            int statusCode;
+            if (lyr != null) {
+                if (LyricsRequests.syncRank(lyr) == 2) {
+                    syncType = SYNC_TYPE_WORD;
+                } else if (lyr.synced()) {
+                    syncType = SYNC_TYPE_LINE;
+                } else {
+                    syncType = SYNC_TYPE_PLAIN;
+                }
+                statusCode = isCurrent ? STATUS_ACTIVE : STATUS_AVAILABLE;
+            } else {
+                if (isWordSyncCapable(id)) {
+                    syncType = SYNC_TYPE_WORD;
+                } else if (isLineSyncCapable(id)) {
+                    syncType = SYNC_TYPE_LINE;
+                } else {
+                    syncType = SYNC_TYPE_PLAIN;
+                }
+                statusCode = STATUS_FETCHABLE;
+            }
+
+            result.add(new ProviderInfo(id, name, syncType, statusCode, isCurrent, isEnabled));
+        }
+
+        return result;
+    }
+
+    public static boolean isWordSyncCapable(String id) {
+        return "QQ".equalsIgnoreCase(id) || "KuGou".equalsIgnoreCase(id)
+                || "NetEase".equalsIgnoreCase(id) || "AMLL".equalsIgnoreCase(id)
+                || "LunaBeat".equalsIgnoreCase(id) || "Lyricify".equalsIgnoreCase(id)
+                || "Apple".equalsIgnoreCase(id) || "Spotify".equalsIgnoreCase(id)
+                || "Musixmatch".equalsIgnoreCase(id);
+    }
+
+    public static boolean isLineSyncCapable(String id) {
+        return "LRCLIB".equalsIgnoreCase(id) || "YTMusic".equalsIgnoreCase(id)
+                || "Captions".equalsIgnoreCase(id) || "SimpMusic".equalsIgnoreCase(id)
+                || "Luna".equalsIgnoreCase(id) || "bLyrics".equalsIgnoreCase(id)
+                || "BiniLyrics".equalsIgnoreCase(id) || "Unison".equalsIgnoreCase(id)
+                || "Deezer".equalsIgnoreCase(id);
+    }
+
+    /**
+     * pull out bracket text and clean title from song name
+     */
+    private static void extractBracketVariants(String text, List<String> candidates) {
+        if (text == null || text.isEmpty()) return;
+        extractOuterAndInner(text, '(', ')', candidates);
+        extractOuterAndInner(text, '（', '）', candidates);
+        extractOuterAndInner(text, '[', ']', candidates);
+        extractOuterAndInner(text, '【', '】', candidates);
+        extractOuterAndInner(text, '「', '」', candidates);
+        extractOuterAndInner(text, '『', '』', candidates);
+    }
+
+    private static void extractOuterAndInner(String text, char open, char close, List<String> candidates) {
+        int s = text.indexOf(open);
+        int e = text.lastIndexOf(close);
+        if (s >= 0 && e > s) {
+            String outer = (text.substring(0, s) + text.substring(e + 1)).trim();
+            String inner = text.substring(s + 1, e).trim();
+            if (!outer.isEmpty() && !candidates.contains(outer)) {
+                candidates.add(outer);
+            }
+            if (!inner.isEmpty() && !candidates.contains(inner)) {
+                candidates.add(inner);
+            }
+        }
+    }
+
+    /**
+     * generate title artist search variants so we can find lyrics on netease qq amll etc
+     */
+    @NonNull
+    public static List<TrackInfo> getSearchTrackVariants(@NonNull TrackInfo track, @Nullable String rawTitle) {
+        Set<TrackInfo> variants = new LinkedHashSet<>();
+        variants.add(track);
+        variants.addAll(CharactersConverter.variants(track));
+
+        String title = track.title();
+        String artist = track.artist();
+
+        List<String> titleCandidates = new ArrayList<>();
+        titleCandidates.add(title);
+
+        // split title by dash or slash for localized names
+        String[] splitDelims = title.split("\\s+(?:[-/／–—~]|//)\\s+");
+        if (splitDelims.length > 1) {
+            for (String part : splitDelims) {
+                String p = part.trim();
+                if (!p.isEmpty() && !titleCandidates.contains(p)) {
+                    titleCandidates.add(p);
+                }
+            }
+        }
+
+        // extract text in brackets
+        extractBracketVariants(title, titleCandidates);
+
+        if (rawTitle != null && !rawTitle.equals(title)) {
+            if (!titleCandidates.contains(rawTitle)) {
+                titleCandidates.add(rawTitle);
+            }
+            String[] splitRaw = rawTitle.split("\\s+(?:[-/／–—~]|//)\\s+");
+            if (splitRaw.length > 1) {
+                for (String part : splitRaw) {
+                    String p = part.trim();
+                    if (!p.isEmpty() && !titleCandidates.contains(p)) {
+                        titleCandidates.add(p);
+                    }
+                }
+            }
+            extractBracketVariants(rawTitle, titleCandidates);
+        }
+
+        // clean title using metadata cleaner
+        List<String> allTitles = new ArrayList<>(titleCandidates);
+        for (String tc : titleCandidates) {
+            String cleaned = MetadataCleaner.cleanTitle(tc);
+            if (!cleaned.isEmpty() && !allTitles.contains(cleaned)) {
+                allTitles.add(cleaned);
+            }
+        }
+
+        // get artist candidates
+        List<String> artistCandidates = new ArrayList<>();
+        artistCandidates.add(artist);
+        String[] splitArtists = MetadataCleaner.splitArtists(artist);
+        for (String a : splitArtists) {
+            String ca = a.trim();
+            if (!ca.isEmpty() && !artistCandidates.contains(ca)) {
+                artistCandidates.add(ca);
+            }
+        }
+        String cleanedArtist = MetadataCleaner.cleanArtist(artist);
+        if (!cleanedArtist.isEmpty() && !artistCandidates.contains(cleanedArtist)) {
+            artistCandidates.add(cleanedArtist);
+        }
+
+        // build track info variations
+        for (String t : allTitles) {
+            for (String a : artistCandidates) {
+                TrackInfo ti = new TrackInfo(t, a, track.album(), track.durationSeconds());
+                variants.add(ti);
+                variants.addAll(CharactersConverter.variants(ti));
+            }
+        }
+
+        // try swap artist and title
+        TrackInfo swapped = MetadataCleaner.swapTitleAndArtist(track, rawTitle);
+        if (swapped != null) {
+            variants.add(swapped);
+            variants.addAll(CharactersConverter.variants(swapped));
+        }
+
+        return new ArrayList<>(variants);
+    }
+
+    /**
+     * force load lyrics from chosen provider
+     */
+    public void fetchExplicitProvider(String providerId) {
+        Utils.verifyOnMainThread();
+        TrackInfo track = currentTrack;
+        if (track == null) {
+            return;
+        }
+
+        final Lyrics previousLyrics = currentLyrics;
+        final int id = requestId.incrementAndGet();
+
+        // keep old lyrics on screen while loading new one so no black screen
+        if (previousLyrics == null || previousLyrics.isEmpty()) {
+            setState(State.LOADING, null);
+        } else {
+            state = State.LOADING;
+            for (Listener listener : new ArrayList<>(listeners)) {
+                listener.onLyricsChanged(State.LOADING, previousLyrics);
+            }
+        }
+
+        runOnLookupThread(() -> {
+            List<TrackInfo> searchVariants = getSearchTrackVariants(track, currentRawTitle);
+
+            // check if already cached
+            for (TrackInfo variant : searchVariants) {
+                Lyrics cached = LyricsCache.get(variant, providerId, preferenceVideoId);
+                if (cached != null && cached != Lyrics.NOT_FOUND && LyricsMatch.isValidLyrics(cached, track)) {
+                    LyricsCache.put(track, providerId, cached, preferenceVideoId);
+                    publishFromLookup(id, cached);
+                    return;
+                }
+            }
+
+            // check in candidate queue
+            synchronized (candidateQueue) {
+                for (ScoredCandidate sc : candidateQueue) {
+                    if (providerId.equalsIgnoreCase(sc.lyrics().providerName())
+                            && LyricsMatch.isValidLyrics(sc.lyrics(), track)) {
+                        LyricsCache.put(track, providerId, sc.lyrics(), preferenceVideoId);
+                        publishFromLookup(id, sc.lyrics());
+                        return;
+                    }
+                }
+            }
+
+            // try fetch from provider using variants
+            LyricsProvider provider = LyricsProviders.providerFor(providerId);
+            if (provider == null) {
+                restoreOrNotFound(id, previousLyrics, providerId);
+                return;
+            }
+
+            for (TrackInfo variant : searchVariants) {
+                try {
+                    LyricsProvider.FetchResult res = provider.fetch(variant);
+                    Lyrics fetched = res != null ? res.lyrics() : null;
+                    if (fetched != null && LyricsMatch.isValidLyrics(fetched, track)) {
+                        LyricsCache.put(track, provider.name(), fetched, preferenceVideoId);
+                        publishFromLookup(id, fetched);
+                        return;
+                    }
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Explicit provider fetch failed: " + providerId + " for " + variant.title(), ex);
+                }
+            }
+
+            // try candidate search if normal fetch fail
+            if (provider.hasCandidates()) {
+                for (TrackInfo variant : searchVariants) {
+                    try {
+                        List<Lyrics.ScoredLyrics> candidates = provider.fetchCandidates(variant);
+                        if (candidates != null && !candidates.isEmpty()) {
+                            for (Lyrics.ScoredLyrics c : candidates) {
+                                Lyrics cLyr = c != null ? c.lyrics() : null;
+                                if (cLyr != null && LyricsMatch.isValidLyrics(cLyr, track)) {
+                                    LyricsCache.put(track, provider.name(), cLyr, preferenceVideoId);
+                                    publishFromLookup(id, cLyr);
+                                    return;
+                                }
+                            }
+                        }
+                    } catch (Exception ex) {
+                        Logger.printDebug(() -> "Explicit candidate fetch failed: " + providerId + " for " + variant.title(), ex);
+                    }
+                }
+            }
+
+            // restore old lyrics if provider gave nothing
+            restoreOrNotFound(id, previousLyrics, providerId);
+        });
+    }
+
+    private void restoreOrNotFound(int id, @Nullable Lyrics previousLyrics, String providerId) {
+        Utils.runOnMainThread(() -> {
+            if (id != requestId.get()) return;
+            if (previousLyrics != null && !previousLyrics.isEmpty()) {
+                currentLyrics = previousLyrics;
+                state = State.LOADED;
+                Utils.showToastShort(str("morphe_music_lyrics_not_available_on_provider", providerId));
+                for (Listener listener : new ArrayList<>(listeners)) {
+                    listener.onLyricsChanged(State.LOADED, previousLyrics);
+                }
+            } else {
+                setState(State.NOT_FOUND, null);
+            }
+        });
     }
 }
