@@ -22,6 +22,7 @@ import app.morphe.extension.music.patches.lyrics.requests.DeezerProvider;
 import app.morphe.extension.music.patches.lyrics.requests.GeniusProvider;
 import app.morphe.extension.music.patches.lyrics.requests.KuGouProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LRCLIBProvider;
+import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricifyProvider;
@@ -40,9 +41,10 @@ import app.morphe.extension.music.settings.Settings;
 public final class LyricsProviders {
 
     static final List<String> PROVIDER_ORDER = Arrays.asList(
-            "YTMusic", "Captions", "LRCLIB", "QQ", "NetEase", "KuGou",
-            "Luna", "RMM", "PetitLyrics", "bLyrics", "BiniLyrics",
-            "Unison", "SimpMusic", "AMLL", "LunaBeat", "Lyricify", "Apple", "Musixmatch", "Spotify", "Deezer", "Genius");
+            "Apple", "BiniLyrics", "LrcRed", "bLyrics", "Lyricify", "Unison",
+            "PetitLyrics", "AMLL", "QQ", "SimpMusic", "KuGou", "Musixmatch",
+            "YTMusic", "LRCLIB", "NetEase", "Luna", "LunaBeat",
+            "Captions", "Spotify", "Deezer", "RMM", "Genius");
 
     private LyricsProviders() {
     }
@@ -136,6 +138,7 @@ public final class LyricsProviders {
             case "Musixmatch" -> new MusixmatchProvider();
             case "Deezer" -> new DeezerProvider();
             case "Genius" -> new GeniusProvider();
+            case "LrcRed" -> new LrcRedProvider();
             default -> null;
         };
     }

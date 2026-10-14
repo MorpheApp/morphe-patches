@@ -56,6 +56,7 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LocalLyricsFetcher;
+import app.morphe.extension.music.patches.lyrics.requests.LrcRedProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LunaBeatProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsProvider;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
@@ -2542,7 +2543,7 @@ private void reorderQueueByRemembered() {
                 || "NetEase".equalsIgnoreCase(id) || "AMLL".equalsIgnoreCase(id)
                 || "LunaBeat".equalsIgnoreCase(id) || "Lyricify".equalsIgnoreCase(id)
                 || "Apple".equalsIgnoreCase(id) || "Spotify".equalsIgnoreCase(id)
-                || "Musixmatch".equalsIgnoreCase(id);
+                || "Musixmatch".equalsIgnoreCase(id) || "LrcRed".equalsIgnoreCase(id);
     }
 
     public static boolean isLineSyncCapable(String id) {
@@ -2550,7 +2551,7 @@ private void reorderQueueByRemembered() {
                 || "Captions".equalsIgnoreCase(id) || "SimpMusic".equalsIgnoreCase(id)
                 || "Luna".equalsIgnoreCase(id) || "bLyrics".equalsIgnoreCase(id)
                 || "BiniLyrics".equalsIgnoreCase(id) || "Unison".equalsIgnoreCase(id)
-                || "Deezer".equalsIgnoreCase(id);
+                || "Deezer".equalsIgnoreCase(id) || "LrcRed".equalsIgnoreCase(id);
     }
 
     /**

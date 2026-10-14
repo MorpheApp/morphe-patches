@@ -89,6 +89,11 @@ public final class LyricsCache {
     }
 
     @Nullable
+    public static Lyrics get(TrackInfo track, String source) {
+        return get(track, source, null);
+    }
+
+    @Nullable
     public static Lyrics get(TrackInfo track, String source, @Nullable String videoId) {
         final String key = key(track, source);
         Lyrics lyrics = memoryCache.get(key);
@@ -99,6 +104,10 @@ public final class LyricsCache {
             }
         }
         return sameVideo(videoIdByKey.get(key), videoId) ? lyrics : null;
+    }
+
+    public static void put(TrackInfo track, String source, Lyrics lyrics) {
+        put(track, source, lyrics, null);
     }
 
     public static void put(TrackInfo track, String source, Lyrics lyrics,
