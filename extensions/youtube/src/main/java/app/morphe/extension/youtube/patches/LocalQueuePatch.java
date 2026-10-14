@@ -44,7 +44,7 @@ public final class LocalQueuePatch {
         @Nullable
         public volatile String author;
 
-        Item(String videoId, @Nullable String title, @Nullable String author) {
+        public Item(String videoId, @Nullable String title, @Nullable String author) {
             this.videoId = videoId;
             this.title = title;
             this.author = author;
