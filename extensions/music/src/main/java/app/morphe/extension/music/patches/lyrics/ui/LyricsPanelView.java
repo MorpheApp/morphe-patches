@@ -31,6 +31,9 @@ import android.os.Looper;
 import android.os.SystemClock;
 import android.text.Layout;
 import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AlignmentSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -937,9 +940,11 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 }
                 TextView tag = createSectionTag(context, songPart);
                 LinearLayout dotsRow = createSectionDots(context);
+                boolean isRight = i < lineViews.size()
+                        && (lineViews.get(i).getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
                 FrameLayout tagRow = new FrameLayout(context);
-                tagRow.addView(tag, tagLayoutParams());
-                tagRow.addView(dotsRow, dotsLayoutParams(context));
+                tagRow.addView(tag, tagLayoutParams(isRight));
+                tagRow.addView(dotsRow, dotsLayoutParams(context, isRight));
                 asRow(lineRows.get(i)).addView(tagRow, 0, slotLayoutParams());
                 sectionTags.set(i, tag);
                 sectionDots.set(i, dotsRow);
@@ -979,8 +984,10 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 continue;
             }
             LinearLayout dotsRow = createSectionDots(context);
+            boolean isRight = index < lineViews.size()
+                    && (lineViews.get(index).getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END;
             FrameLayout slot = new FrameLayout(context);
-            slot.addView(dotsRow, dotsLayoutParams(context));
+            slot.addView(dotsRow, dotsLayoutParams(context, isRight));
             FrameLayout.LayoutParams params = slotLayoutParams();
             params.height = 0;
             params.topMargin = 0;
@@ -1162,9 +1169,33 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 gapAnchors[anchor] = true;
             }
         }
+        final boolean isDuetSong = newLyrics.lines() != null
+                && newLyrics.lines().stream().anyMatch(LyricsLine::isDuet);
+        boolean songHasRtl = false;
+        if (newLyrics.lines() != null) {
+            for (LyricsLine l : newLyrics.lines()) {
+                if (LyricsRomanizer.containsArabic(l.text()) || LyricsRomanizer.containsHebrew(l.text())) {
+                    songHasRtl = true;
+                    break;
+                }
+            }
+        }
+
+        final int totalLineCount = newLyrics.lines().size();
+        final boolean[] lineRightAligned = new boolean[totalLineCount];
+        for (int i = 0; i < totalLineCount; i++) {
+            LyricsLine l = newLyrics.lines().get(i);
+            final boolean isLineRtl = LyricsRomanizer.containsArabic(l.text()) || LyricsRomanizer.containsHebrew(l.text());
+            if (isDuetSong) {
+                lineRightAligned[i] = songHasRtl ? !l.isDuet() : l.isDuet();
+            } else {
+                lineRightAligned[i] = isLineRtl;
+            }
+        }
 
         for (int i = 0; i < newLyrics.lines().size(); i++) {
             LyricsLine line = newLyrics.lines().get(i);
+            final boolean isRightAligned = lineRightAligned[i];
             final LyricsLineView prevView = i < prevCount
                     && prevViews.get(i) instanceof LyricsLineView pv ? pv : null;
             final boolean reusePrevious = prevView != null && !contentInBuild;
@@ -1183,7 +1214,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 LyricsSpanBuilder.BuildResult result =
                         LyricsSpanBuilder.buildLineText(line, gapTimings, i,
                                 perWordRomaji, romanizedLines, translatedLines, onlyMode,
-                                baseLinePaint);
+                                baseLinePaint, isRightAligned);
                 lineView.setText(result.text());
                 lineView.setTranslationBounds(result.transStart(), result.transEnd());
                 lineView.setRomanizationBounds(result.romaStart(), result.romaEnd(),
@@ -1201,7 +1232,12 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 lineView.romaReveal = prevView.romaReveal;
                 gapOrigStart = prevView.originalTextStart;
             } else {
-                lineView.setText(line.text().isEmpty() ? "♪" : line.text());
+                String rawText = line.text().isEmpty() ? "♪" : line.text();
+                boolean isRtl = LyricsRomanizer.containsArabic(rawText) || LyricsRomanizer.containsHebrew(rawText);
+                SpannableString initialText = new SpannableString(rawText);
+                initialText.setSpan(new AlignmentSpan.Standard(LyricsSpanBuilder.resolveAlignment(isRtl, isRightAligned)),
+                        0, initialText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                lineView.setText(initialText);
             }
             lineOriginalStarts.add(gapOrigStart);
             if (reusePrevious) {
@@ -1270,13 +1306,24 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 });
             }
 
-            LinearLayout lineRow = new LinearLayout(context);
-            lineRow.setOrientation(LinearLayout.VERTICAL);
-
-            if (line.isDuet()) {
+            if (isRightAligned) {
                 lineView.setGravity(Gravity.END | Gravity.TOP);
             } else {
                 lineView.setGravity(Gravity.START | Gravity.TOP);
+            }
+
+            LinearLayout lineRow = new LinearLayout(context);
+            lineRow.setOrientation(LinearLayout.VERTICAL);
+
+            final int duetSideInset = Math.max(Dim.dp(48), (int) (context.getResources().getDisplayMetrics().widthPixels * 0.18f));
+            if (isDuetSong) {
+                if (isRightAligned) {
+                    lineRow.setPadding(duetSideInset, Dim.dp(2), 0, Dim.dp(2));
+                } else {
+                    lineRow.setPadding(0, Dim.dp(2), duetSideInset, Dim.dp(2));
+                }
+            } else {
+                lineRow.setPadding(0, Dim.dp(2), 0, Dim.dp(2));
             }
 
             // A background vocal sits under its lead line and carries the same label, so only a
@@ -1296,8 +1343,8 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
             if (sectionTag != null) {
                 sectionDotsRow = createSectionDots(context);
                 FrameLayout tagRow = new FrameLayout(context);
-                tagRow.addView(sectionTag, tagLayoutParams());
-                tagRow.addView(sectionDotsRow, dotsLayoutParams(context));
+                tagRow.addView(sectionTag, tagLayoutParams(isRightAligned));
+                tagRow.addView(sectionDotsRow, dotsLayoutParams(context, isRightAligned));
                 lineRow.addView(tagRow, slotLayoutParams());
                 final TextView measuredTag = sectionTag;
                 measuredTag.post(() -> {
@@ -1310,7 +1357,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                 // dots somewhere to play that matches what a label would have taken.
                 sectionDotsRow = createSectionDots(context);
                 sectionDotSlot = new FrameLayout(context);
-                sectionDotSlot.addView(sectionDotsRow, dotsLayoutParams(context));
+                sectionDotSlot.addView(sectionDotsRow, dotsLayoutParams(context, isRightAligned));
                 FrameLayout.LayoutParams slotParams = slotLayoutParams();
                 // Starts fully closed: the dots row inside must not take space until a gap opens
                 // it, and neither must the margin, which a zero-height child still occupies.
@@ -1395,7 +1442,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                                         LyricsSpanBuilder.buildLineText(newLyrics.lines().get(i),
                                                 allTimings.get(i), i,
                                                 perWordRomaji, romanizedLines, translatedLines, onlyMode,
-                                                baseLinePaint);
+                                                baseLinePaint, lineRightAligned[i]);
                                 tv.setText(result.text());
                                 lineUnsungSpans.set(i, result.unsungSpan());
                                 lineWordSpans.set(i, LyricsViewSupport.wordSpansFor(result, only,
@@ -3718,19 +3765,31 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
      * in than the dot row below it starts.
      */
     private static FrameLayout.LayoutParams tagLayoutParams() {
+        return tagLayoutParams(false);
+    }
+
+    private static FrameLayout.LayoutParams tagLayoutParams(boolean isRightAligned) {
         return new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT,
-                Gravity.START | Gravity.CENTER_VERTICAL);
+                (isRightAligned ? Gravity.END : Gravity.START) | Gravity.CENTER_VERTICAL);
+    }
+
+    private static FrameLayout.LayoutParams dotsLayoutParams(@NonNull Context context) {
+        return dotsLayoutParams(context, false);
     }
 
     /** The row sits near the line's edge, unlike the pill whose padding holds its text further in. */
-    private static FrameLayout.LayoutParams dotsLayoutParams(@NonNull Context context) {
+    private static FrameLayout.LayoutParams dotsLayoutParams(@NonNull Context context, boolean isRightAligned) {
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT,
-                Gravity.START | Gravity.CENTER_VERTICAL);
-        params.leftMargin = LyricsViewSupport.sectionDotInset(context);
+                (isRightAligned ? Gravity.END : Gravity.START) | Gravity.CENTER_VERTICAL);
+        if (isRightAligned) {
+            params.rightMargin = LyricsViewSupport.sectionDotInset(context);
+        } else {
+            params.leftMargin = LyricsViewSupport.sectionDotInset(context);
+        }
         return params;
     }
 
@@ -3740,7 +3799,7 @@ if (state == LyricsManager.State.LOADED && newLyrics == lyrics
      */
     private static FrameLayout.LayoutParams slotLayoutParams() {
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.MATCH_PARENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT);
         params.topMargin = Dim.dp24;
         return params;

@@ -334,17 +334,25 @@ final class LyricsLineView extends TextView {
                     layout.getLineRight(line));
             final float lead = Math.min(
                     Math.max(layout.getPrimaryHorizontal(snappedStart), lineLeft), lineRight);
+            final boolean isRtl = isRightToLeftLine(layout, line) || layout.isRtlCharAt(s);
             final float trail;
             if (endLine != line) {
                 // measureText reads the raw text, so a smaller size span is worth nothing to
                 // it and the word measures wider than it is drawn.
                 final float width = paint.measureText(text, s, e);
-                final float measured = layout.isRtlCharAt(s) ? lead - width : lead + width;
+                final float measured = isRtl ? lead - width : lead + width;
                 trail = Math.min(Math.max(measured, lineLeft), lineRight);
             } else {
-                trail = trailOnLine(lineLeft, lineRight, lead,
-                        layout.getPrimaryHorizontal(snappedEnd),
-                        isRightToLeftLine(layout, line));
+                final float end = layout.getPrimaryHorizontal(snappedEnd);
+                if (isRtl) {
+                    // In RTL, text runs right-to-left, so end < lead.
+                    // If end >= lead, the offset wrapped to the start of the next line,
+                    // so the word ends at the line's left boundary.
+                    trail = end >= lead ? lineLeft : Math.min(Math.max(end, lineLeft), lineRight);
+                } else {
+                    // That offset reports where the next line starts; a word ending its line ends at its right.
+                    trail = end <= lead ? lineRight : Math.min(Math.max(end, lineLeft), lineRight);
+                }
             }
             cachedWordLeadX[i] = lead;
             cachedWordTrailX[i] = trail;
@@ -362,8 +370,8 @@ final class LyricsLineView extends TextView {
         for (int ln = 0; ln < lineCount; ln++) {
             cachedLineTop[ln] = layout.getLineTop(ln);
             cachedLineBottom[ln] = layout.getLineBottom(ln);
-            cachedLineLeft[ln] = layout.getLineLeft(ln);
-            cachedLineRight[ln] = layout.getLineRight(ln);
+            cachedLineLeft[ln] = Math.min(layout.getLineLeft(ln), layout.getLineRight(ln));
+            cachedLineRight[ln] = Math.max(layout.getLineLeft(ln), layout.getLineRight(ln));
         }
     }
 
@@ -424,9 +432,7 @@ final class LyricsLineView extends TextView {
         final int length = text.length();
         final int[] boundaries = new int[length + 1];
         final BreakIterator iterator = BreakIterator.getCharacterInstance();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            iterator.setText(text);
-        }
+        iterator.setText(text.toString());
         int clusterStart = iterator.first();
         while (clusterStart != BreakIterator.DONE && clusterStart <= length) {
             final int next = iterator.next();
@@ -758,13 +764,21 @@ final class LyricsLineView extends TextView {
                     // scaled against the whole line, which lit the rest of the line with it.
                     final float lineLeft = layout.getLineLeft(ln);
                     final float lineRight = Math.max(lineLeft, layout.getLineRight(ln));
-                    final float reach = ln == wrappedEnd
-                            ? Math.min(Math.max(layout.getPrimaryHorizontal(e), lineLeft),
-                                    lineRight)
-                            : lineRight;
-                    final float lineEdge = lineLeft + (reach - lineLeft) * lineProgress;
-                    lineMaxSungX[ln] = extendSung(lineMaxSungX[ln], lineEdge,
-                            isRightToLeftLine(layout, ln));
+                    final boolean isLnRtl = isRightToLeftLine(layout, ln);
+                    final float reach;
+                    final float lineEdge;
+                    if (isLnRtl) {
+                        reach = ln == wrappedEnd
+                                ? Math.min(Math.max(layout.getPrimaryHorizontal(e), lineLeft), lineRight)
+                                : lineLeft;
+                        lineEdge = lineRight + (reach - lineRight) * lineProgress;
+                    } else {
+                        reach = ln == wrappedEnd
+                                ? Math.min(Math.max(layout.getPrimaryHorizontal(e), lineLeft), lineRight)
+                                : lineRight;
+                        lineEdge = lineLeft + (reach - lineLeft) * lineProgress;
+                    }
+                    lineMaxSungX[ln] = extendSung(lineMaxSungX[ln], lineEdge, isLnRtl);
                 }
             }
 
@@ -841,11 +855,13 @@ final class LyricsLineView extends TextView {
                 canvas.save();
                 final int clipTop = ln == 0 ? -textOriginY() : cachedLineTop[ln];
                 if (isRightToLeftLine(layout, ln)) {
-                    canvas.clipRect(edge, clipTop,
+                    final float clipLeft = Math.min(edge, cachedLineRight[ln]);
+                    canvas.clipRect(clipLeft, clipTop,
                             cachedLineRight[ln], cachedLineBottom[ln]);
                 } else {
+                    final float clipRight = Math.max(edge, cachedLineLeft[ln]);
                     canvas.clipRect(cachedLineLeft[ln], clipTop,
-                            edge, cachedLineBottom[ln]);
+                            clipRight, cachedLineBottom[ln]);
                 }
                 layout.draw(canvas);
                 canvas.restore();
@@ -875,7 +891,24 @@ final class LyricsLineView extends TextView {
     }
 
     private static boolean isRightToLeftLine(Layout layout, int line) {
-        return layout.getParagraphDirection(line) == Layout.DIR_RIGHT_TO_LEFT;
+        if (layout.getParagraphDirection(line) == Layout.DIR_RIGHT_TO_LEFT) {
+            return true;
+        }
+        if (line >= 0 && line < layout.getLineCount()) {
+            final int start = layout.getLineStart(line);
+            final int end = layout.getLineEnd(line);
+            final CharSequence text = layout.getText();
+            for (int i = start; i < end && i < text.length(); i++) {
+                byte dir = Character.getDirectionality(text.charAt(i));
+                if (dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT
+                        || dir == Character.DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC) {
+                    return true;
+                } else if (dir == Character.DIRECTIONALITY_LEFT_TO_RIGHT) {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 
     /** Right to left lines fill leftwards, so their furthest point is the smallest one. */
