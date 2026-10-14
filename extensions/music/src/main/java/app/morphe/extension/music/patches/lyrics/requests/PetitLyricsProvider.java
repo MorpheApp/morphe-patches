@@ -528,13 +528,121 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
     }
 
+    private record RawToken(String text, long startMs, long endMs) {}
+
+    private static class RawWsyLine {
+        final String text;
+        final List<Word> words;
+
+        RawWsyLine(String text, List<Word> words) {
+            this.text = text;
+            this.words = words;
+        }
+    }
+
+    private static boolean isWhitespaceToken(@Nullable String s) {
+        if (s == null || s.isEmpty()) return true;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (!Character.isWhitespace(c) && c != 0x2005 && c != 0x3000 && c != 0xA0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean hasCjk(@Nullable CharSequence s) {
+        if (s == null) return false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
+            if (block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
+                    || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+                    || block == Character.UnicodeBlock.HIRAGANA
+                    || block == Character.UnicodeBlock.KATAKANA
+                    || block == Character.UnicodeBlock.HANGUL_SYLLABLES
+                    || block == Character.UnicodeBlock.HANGUL_JAMO
+                    || block == Character.UnicodeBlock.HANGUL_COMPATIBILITY_JAMO) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasOpen(@Nullable String s) {
+        return s != null && (s.contains("(") || s.contains("（") || s.contains("["));
+    }
+
+    private static boolean hasClose(@Nullable String s) {
+        return s != null && (s.contains(")") || s.contains("）") || s.contains("]"));
+    }
+
+    private static int indexOfAny(@Nullable String s, String chars) {
+        if (s == null) return -1;
+        for (int i = 0; i < s.length(); i++) {
+            if (chars.indexOf(s.charAt(i)) >= 0) return i;
+        }
+        return -1;
+    }
+
+    private static int lastIndexOfAny(@Nullable String s, String chars) {
+        if (s == null) return -1;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (chars.indexOf(s.charAt(i)) >= 0) return i;
+        }
+        return -1;
+    }
+
+    private static void addSanitizedLine(List<LyricsLine> lines, String text, List<Word> words, boolean isBg) {
+        if (text.isEmpty() || words.isEmpty()) {
+            return;
+        }
+        if (isBg) {
+            while ((text.startsWith("(") && text.endsWith(")"))
+                    || (text.startsWith("（") && text.endsWith("）"))
+                    || (text.startsWith("[") && text.endsWith("]"))) {
+                text = text.substring(1, text.length() - 1).trim();
+            }
+            if (!words.isEmpty()) {
+                Word first = words.get(0);
+                String ft = first.text().trim();
+                if ("(".equals(ft) || "（".equals(ft) || "[".equals(ft)) {
+                    words.remove(0);
+                } else if (ft.startsWith("(") || ft.startsWith("（") || ft.startsWith("[")) {
+                    words.set(0, new Word(first.startMs(), first.endMs(), ft.substring(1).trim(), first.romaji(), first.endsWithSpace()));
+                }
+            }
+            if (!words.isEmpty()) {
+                int lastIdx = words.size() - 1;
+                Word last = words.get(lastIdx);
+                String lt = last.text().trim();
+                if (")".equals(lt) || "）".equals(lt) || "]".equals(lt)) {
+                    words.remove(lastIdx);
+                } else if (lt.endsWith(")") || lt.endsWith("）") || lt.endsWith("]")) {
+                    words.set(lastIdx, new Word(last.startMs(), last.endMs(), lt.substring(0, lt.length() - 1).trim(), last.romaji(), last.endsWithSpace()));
+                }
+            }
+        }
+        if (text.isEmpty() || words.isEmpty()) {
+            return;
+        }
+        long start = words.get(0).startMs();
+        long endMs = words.get(words.size() - 1).endMs();
+        if (endMs <= start) {
+            endMs = start + Math.max(2500L, text.length() * 200L);
+        }
+        lines.add(new LyricsLine(start, endMs, text, new ArrayList<>(words), null, false, isBg, null));
+    }
+
     private static List<LyricsLine> parseWsy(byte[] payload) {
         try {
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
             parser.setInput(new ByteArrayInputStream(payload), "UTF-8");
 
-            List<LyricsLine> lines = new ArrayList<>();
-            List<Word> words = new ArrayList<>();
+            List<RawWsyLine> rawLines = new ArrayList<>();
+            List<RawToken> rawTokens = new ArrayList<>();
             StringBuilder lineText = new StringBuilder();
             StringBuilder wordText = new StringBuilder();
             long wordStart = 0;
@@ -550,7 +658,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
                         tag = parser.getName();
                         if ("line".equals(tag)) {
                             inLine = true;
-                            words.clear();
+                            rawTokens.clear();
                             lineText.setLength(0);
                         } else if (inLine && "word".equals(tag)) {
                             inWord = true;
@@ -582,27 +690,65 @@ public final class PetitLyricsProvider implements LyricsProvider {
                             if (!text.isEmpty()) {
                                 long start = Math.max(0, wordStart);
                                 long endMs = Math.max(start, wordEnd);
-                                words.add(new Word(start, endMs, text));
+                                rawTokens.add(new RawToken(text, start, endMs));
                             }
                         } else if (inLine && "line".equals(end)) {
                             inLine = false;
-                            if (words.isEmpty()) {
+                            if (rawTokens.isEmpty()) {
                                 break;
                             }
-                            String text = lineText.toString().trim();
-                            if (text.isEmpty()) {
-                                StringBuilder joined = new StringBuilder();
-                                for (Word w : words) {
-                                    joined.append(w.text());
+                            String lineStr = lineText.toString()
+                                    .replace('\u2005', ' ')
+                                    .replace('\u3000', ' ')
+                                    .replace('\u00A0', ' ')
+                                    .trim();
+
+                            List<Word> mergedWords = new ArrayList<>();
+                            for (RawToken tok : rawTokens) {
+                                String s = tok.text();
+                                if (isWhitespaceToken(s)) {
+                                    if (!mergedWords.isEmpty()) {
+                                        Word prev = mergedWords.get(mergedWords.size() - 1);
+                                        mergedWords.set(mergedWords.size() - 1, new Word(
+                                                prev.startMs(), prev.endMs(), prev.text(), prev.romaji(), true));
+                                    }
+                                    continue;
                                 }
-                                text = joined.toString().trim();
+
+                                boolean canMerge = false;
+                                if (!mergedWords.isEmpty()) {
+                                    Word prev = mergedWords.get(mergedWords.size() - 1);
+                                    if (!prev.endsWithSpace() && !hasCjk(s) && !hasCjk(prev.text())) {
+                                        canMerge = true;
+                                    }
+                                }
+
+                                if (canMerge) {
+                                    Word prev = mergedWords.get(mergedWords.size() - 1);
+                                    mergedWords.set(mergedWords.size() - 1, new Word(
+                                            prev.startMs(), Math.max(prev.endMs(), tok.endMs()),
+                                            prev.text() + s, null, false));
+                                } else {
+                                    mergedWords.add(new Word(tok.startMs(), tok.endMs(), s, null, false));
+                                }
                             }
-                            if (text.isEmpty()) {
+
+                            if (mergedWords.isEmpty()) {
                                 break;
                             }
-                            long start = words.get(0).startMs();
-                            long endMs = words.get(words.size() - 1).endMs();
-                            lines.add(new LyricsLine(start, endMs, text, new ArrayList<>(words)));
+
+                            if (lineStr.isEmpty()) {
+                                StringBuilder joined = new StringBuilder();
+                                for (Word w : mergedWords) {
+                                    joined.append(w.text());
+                                    if (w.endsWithSpace()) {
+                                        joined.append(' ');
+                                    }
+                                }
+                                lineStr = joined.toString().trim();
+                            }
+
+                            rawLines.add(new RawWsyLine(lineStr, mergedWords));
                         }
                         tag = null;
                     }
@@ -610,7 +756,126 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 }
                 event = parser.next();
             }
+
+            List<LyricsLine> lines = new ArrayList<>();
+            int i = 0;
+            final int rawCount = rawLines.size();
+            while (i < rawCount) {
+                RawWsyLine cur = rawLines.get(i);
+                List<Word> words = new ArrayList<>(cur.words);
+                String text = cur.text;
+                if (text.isEmpty() || words.isEmpty()) {
+                    i++;
+                    continue;
+                }
+
+                // see if open bracket split into multiple lines
+                if (hasOpen(text) && !hasClose(text) && i + 1 < rawCount) {
+                    RawWsyLine nxt = rawLines.get(i + 1);
+                    List<Word> nxtWords = new ArrayList<>(nxt.words);
+                    if (hasClose(nxt.text) && !hasOpen(nxt.text)) {
+                        int pPos = indexOfAny(text, "(（[");
+                        if (pPos == 0) {
+                            List<Word> combWords = new ArrayList<>(words);
+                            combWords.addAll(nxtWords);
+                            String combText = (text + " " + nxt.text).trim();
+                            addSanitizedLine(lines, combText, combWords, true);
+                            i += 2;
+                            continue;
+                        } else {
+                            int splitWi = -1;
+                            for (int wi = 0; wi < words.size(); wi++) {
+                                if (hasOpen(words.get(wi).text())) {
+                                    splitWi = wi;
+                                    break;
+                                }
+                            }
+                            if (splitWi > 0) {
+                                List<Word> mainWords = new ArrayList<>(words.subList(0, splitWi));
+                                Word lastMain = mainWords.get(mainWords.size() - 1);
+                                mainWords.set(mainWords.size() - 1, new Word(
+                                        lastMain.startMs(), lastMain.endMs(), lastMain.text(), lastMain.romaji(), false));
+                                List<Word> secWords = new ArrayList<>(words.subList(splitWi, words.size()));
+                                secWords.addAll(nxtWords);
+                                String mainText = (pPos > 0 ? text.substring(0, pPos) : text).trim();
+                                String secText = ((pPos >= 0 ? text.substring(pPos) : "") + " " + nxt.text).trim();
+                                addSanitizedLine(lines, mainText, mainWords, false);
+                                addSanitizedLine(lines, secText, secWords, true);
+                                i += 2;
+                                continue;
+                            }
+                        }
+                    }
+                }
+
+                // check if there is inline duet or second vocal on same line
+                int pOpen = indexOfAny(text, "(（[");
+                int pClose = lastIndexOfAny(text, ")）]");
+                if (pOpen > 0 && pClose > pOpen && pClose >= text.length() - 2) {
+                    int splitWi = -1;
+                    for (int wi = 0; wi < words.size(); wi++) {
+                        if (hasOpen(words.get(wi).text())) {
+                            splitWi = wi;
+                            break;
+                        }
+                    }
+                    if (splitWi > 0) {
+                        List<Word> mainWords = new ArrayList<>(words.subList(0, splitWi));
+                        Word lastMain = mainWords.get(mainWords.size() - 1);
+                        mainWords.set(mainWords.size() - 1, new Word(
+                                lastMain.startMs(), lastMain.endMs(), lastMain.text(), lastMain.romaji(), false));
+                        List<Word> secWords = new ArrayList<>(words.subList(splitWi, words.size()));
+                        String mainText = text.substring(0, pOpen).trim();
+                        String secText = text.substring(pOpen).trim();
+                        addSanitizedLine(lines, mainText, mainWords, false);
+                        addSanitizedLine(lines, secText, secWords, true);
+                        i++;
+                        continue;
+                    }
+                } else if (pOpen == 0 && 0 < pClose && pClose < text.length() - 2) {
+                    int splitWi = -1;
+                    for (int wi = 0; wi < words.size(); wi++) {
+                        if (hasClose(words.get(wi).text())) {
+                            splitWi = wi + 1;
+                            break;
+                        }
+                    }
+                    if (splitWi > 0 && splitWi < words.size()) {
+                        List<Word> secWords = new ArrayList<>(words.subList(0, splitWi));
+                        Word lastSec = secWords.get(secWords.size() - 1);
+                        secWords.set(secWords.size() - 1, new Word(
+                                lastSec.startMs(), lastSec.endMs(), lastSec.text(), lastSec.romaji(), false));
+                        List<Word> mainWords = new ArrayList<>(words.subList(splitWi, words.size()));
+                        String secText = text.substring(0, pClose + 1).trim();
+                        String mainText = text.substring(pClose + 1).trim();
+                        addSanitizedLine(lines, secText, secWords, true);
+                        addSanitizedLine(lines, mainText, mainWords, false);
+                        i++;
+                        continue;
+                    }
+                }
+
+                boolean isBg = LRCParser.hasOuterParentheses(text);
+                addSanitizedLine(lines, text, words, isBg);
+                i++;
+            }
+
             lines.sort(Comparator.comparingLong(LyricsLine::startTimeMs));
+            for (int k = 1; k < lines.size(); k++) {
+                LyricsLine prev = lines.get(k - 1);
+                LyricsLine curr = lines.get(k);
+                if (!curr.isBG()) {
+                    long gap = curr.startTimeMs() - prev.startTimeMs();
+                    if (gap >= 0 && gap <= 3500L) {
+                        String cleanCurr = LRCParser.cleanTextForComparison(curr.text());
+                        String cleanPrev = LRCParser.cleanTextForComparison(prev.text());
+                        if (!cleanCurr.isEmpty() && cleanCurr.equals(cleanPrev)) {
+                            lines.set(k, new LyricsLine(curr.startTimeMs(), curr.endTimeMs(), curr.text(),
+                                    curr.words(), curr.agentId(), curr.isDuet(), true, curr.songPart()));
+                        }
+                    }
+                }
+            }
             return lines;
         } catch (Exception ex) {
             Logger.printDebug(() -> "PetitLyrics WSY parse failed", ex);
@@ -659,15 +924,16 @@ public final class PetitLyricsProvider implements LyricsProvider {
                 wraps++;
             }
             prev = cs;
-            out.add(cs + (long) wraps * LSY_WRAP_CS);
+            out.add((long) (cs + wraps * LSY_WRAP_CS));
         }
         return out;
     }
 
-    private static int deriveLsyKey(int k, boolean switchFlag) {
+    private static int deriveLsyKey(int protectionId, boolean switchFlag) {
         if (!switchFlag) {
-            return k;
+            return protectionId;
         }
+        int k = protectionId;
         return (k & 0x0003)
                 | ((k & 0x000c) << 2)
                 | ((k & 0x0030) >> 2)
@@ -695,7 +961,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
         }
         List<LyricsLine> lines = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
-            String row = rows[i].trim();
+            String row = rows[i].replace('\u2005', ' ').replace('\u3000', ' ').replace('\u00A0', ' ').trim();
             if (row.isEmpty()) {
                 continue;
             }
@@ -704,7 +970,29 @@ public final class PetitLyricsProvider implements LyricsProvider {
             if (endMs <= startMs) {
                 endMs = startMs + 3000;
             }
-            lines.add(new LyricsLine(startMs, endMs, row, List.of()));
+            boolean isBg = LRCParser.hasOuterParentheses(row);
+            String lineText = row;
+            if (isBg && ((row.startsWith("(") && row.endsWith(")"))
+                    || (row.startsWith("（") && row.endsWith("）"))
+                    || (row.startsWith("[") && row.endsWith("]")))) {
+                lineText = row.substring(1, row.length() - 1).trim();
+            }
+            lines.add(new LyricsLine(startMs, endMs, lineText, List.of(), null, false, isBg, null));
+        }
+        for (int i = 1; i < lines.size(); i++) {
+            LyricsLine prev = lines.get(i - 1);
+            LyricsLine curr = lines.get(i);
+            if (!curr.isBG()) {
+                long gap = curr.startTimeMs() - prev.startTimeMs();
+                if (gap >= 0 && gap <= 3500L) {
+                    String cleanCurr = LRCParser.cleanTextForComparison(curr.text());
+                    String cleanPrev = LRCParser.cleanTextForComparison(prev.text());
+                    if (!cleanCurr.isEmpty() && cleanCurr.equals(cleanPrev)) {
+                        lines.set(i, new LyricsLine(curr.startTimeMs(), curr.endTimeMs(), curr.text(),
+                                curr.words(), curr.agentId(), curr.isDuet(), true, curr.songPart()));
+                    }
+                }
+            }
         }
         return lines;
     }
@@ -712,10 +1000,7 @@ public final class PetitLyricsProvider implements LyricsProvider {
     private static String buildLrc(List<LyricsLine> lines) {
         StringBuilder sb = new StringBuilder(50 * lines.size());
         for (LyricsLine line : lines) {
-            sb.append('[')
-              .append(LRCParser.formatCentiseconds(Math.max(0, line.startTimeMs())))
-              .append(']')
-              .append(line.text())
+            sb.append(LRCParser.formatLine(line))
               .append('\n');
         }
         return sb.toString();

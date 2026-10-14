@@ -354,6 +354,24 @@ public final class DeezerProvider extends ScoredSongProvider {
 
         if (lines.isEmpty()) return null;
 
+        for (int i = 0; i < lines.size(); i++) {
+            LyricsLine cur = lines.get(i);
+            long endMs;
+            if (i + 1 < lines.size()) {
+                long nextStart = lines.get(i + 1).startTimeMs();
+                long gap = nextStart - cur.startTimeMs();
+                if (gap < 11000L) {
+                    endMs = nextStart;
+                } else {
+                    long vocalHold = Math.max(5000L, cur.text().length() * 180L);
+                    endMs = Math.min(cur.startTimeMs() + vocalHold, nextStart - 7000L);
+                }
+            } else {
+                endMs = cur.startTimeMs() + Math.max(5000L, cur.text().length() * 180L);
+            }
+            lines.set(i, new LyricsLine(cur.startTimeMs(), endMs, cur.text(), cur.words(), cur.agentId(), cur.isDuet(), cur.isBG(), cur.songPart()));
+        }
+
         String sourceUrl = "https://www.deezer.com/track/" + trackId;
         return new Lyrics(lines, name(), true, null, null, null, creditLines,
                 rawFormat, "dzr.json", sourceUrl);
