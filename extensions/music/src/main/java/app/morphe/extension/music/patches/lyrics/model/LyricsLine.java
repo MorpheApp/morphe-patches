@@ -33,8 +33,77 @@ public record LyricsLine(long startTimeMs, long endTimeMs, String text, List<Wor
     public static final long NO_TIME = -1;
 
     public LyricsLine {
-        words = words == null ? List.of() : Collections.unmodifiableList(words);
+        words = words == null ? List.of() : words;
         text = text == null ? "" : text;
+        if (words.size() > 1 && !hasCjk(text)) {
+            boolean hasEndedWithSpace = false;
+            for (Word w : words) {
+                if (w.endsWithSpace()) {
+                    hasEndedWithSpace = true;
+                    break;
+                }
+            }
+            if (text.indexOf(' ') < 0) {
+                if (hasEndedWithSpace) {
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < words.size(); i++) {
+                        Word w = words.get(i);
+                        sb.append(w.text());
+                        if (w.endsWithSpace() && i < words.size() - 1) {
+                            sb.append(' ');
+                        }
+                    }
+                    text = sb.toString();
+                } else {
+                    List<Word> updated = new java.util.ArrayList<>(words.size());
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < words.size(); i++) {
+                        Word w = words.get(i);
+                        if (i > 0) sb.append(' ');
+                        sb.append(w.text());
+                        boolean sp = (i < words.size() - 1);
+                        updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp));
+                    }
+                    words = updated;
+                    text = sb.toString();
+                }
+            } else if (!hasEndedWithSpace) {
+                List<Word> updated = new java.util.ArrayList<>(words.size());
+                int cursor = 0;
+                for (int i = 0; i < words.size(); i++) {
+                    Word w = words.get(i);
+                    int idx = text.indexOf(w.text(), cursor);
+                    boolean sp = false;
+                    if (idx >= 0) {
+                        int end = idx + w.text().length();
+                        sp = (end < text.length() && Character.isWhitespace(text.charAt(end)));
+                        cursor = end;
+                    } else {
+                        sp = (i < words.size() - 1);
+                    }
+                    updated.add(new Word(w.startMs(), w.endMs(), w.text(), w.romaji(), sp));
+                }
+                words = updated;
+            }
+        }
+        words = Collections.unmodifiableList(words);
+    }
+
+    private static boolean hasCjk(@Nullable CharSequence s) {
+        if (s == null) return false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            Character.UnicodeBlock block = Character.UnicodeBlock.of(c);
+            if (block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS
+                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_A
+                    || block == Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS_EXTENSION_B
+                    || block == Character.UnicodeBlock.CJK_COMPATIBILITY_IDEOGRAPHS
+                    || block == Character.UnicodeBlock.HIRAGANA
+                    || block == Character.UnicodeBlock.KATAKANA) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public LyricsLine(long startTimeMs, String text, List<Word> words,

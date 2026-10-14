@@ -111,11 +111,11 @@ public final class MetadataCleaner {
         return new SettingLookup(trimmed, true, resolveCache.get(trimmed));
     }
 
-    static String cleanTitle(@Nullable String title) {
+    public static String cleanTitle(@Nullable String title) {
         return cleanField(title);
     }
 
-    static String cleanArtist(@Nullable String artist) {
+    public static String cleanArtist(@Nullable String artist) {
         if (artist == null) {
             return "";
         }
@@ -263,6 +263,27 @@ public final class MetadataCleaner {
             return null;
         }
         return buildSplit(cleanTitle(sides[0]), cleanArtist(sides[1]), album, durationSeconds);
+    }
+
+    @Nullable
+    public static TrackInfo swapTitleAndArtist(TrackInfo track, @Nullable String rawTitle) {
+        if (rawTitle == null) {
+            return null;
+        }
+        int idx = rawTitle.indexOf(DASH_SEPARATOR);
+        if (idx <= 0 || idx >= rawTitle.length() - DASH_SEPARATOR.length()) {
+            return null;
+        }
+        String left = rawTitle.substring(0, idx).trim();
+        String right = rawTitle.substring(idx + DASH_SEPARATOR.length()).trim();
+        String swappedArtist = cleanArtist(right);
+        String swappedTitle = cleanTitle(left);
+        if (swappedArtist.isEmpty() || swappedTitle.isEmpty()) {
+            return null;
+        }
+        TrackInfo swapped = new TrackInfo(swappedTitle, swappedArtist, track.album(),
+                track.durationSeconds());
+        return swapped.equals(track) ? null : swapped;
     }
 
     @Nullable
