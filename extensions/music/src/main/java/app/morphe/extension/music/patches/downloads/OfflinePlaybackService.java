@@ -1,10 +1,3 @@
-/*
- * Copyright 2026 Morphe.
- * https://github.com/MorpheApp/morphe-patches/pull/2528
- *
- * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
- */
-
 package app.morphe.extension.music.patches.downloads;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -43,11 +36,14 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 import app.morphe.extension.shared.Logger;
 
-/** Foreground offline player with audio focus, MediaSession and lock-screen controls. */
 public final class OfflinePlaybackService extends Service {
     public interface PlaybackListener {
         void onPlaybackChanged(String path, String title, boolean playing, int position, int duration);
     }
+
+    public static final int REPEAT_OFF = 0;
+    public static final int REPEAT_ONE = 1;
+    public static final int REPEAT_ALL = 2;
 
     private static final Set<PlaybackListener> listeners = new CopyOnWriteArraySet<>();
     private static volatile String currentPath = "";
@@ -55,7 +51,19 @@ public final class OfflinePlaybackService extends Service {
     private static volatile boolean currentPlaying;
     private static volatile int currentPosition;
     private static volatile int currentDuration;
+    private static volatile int repeatMode = REPEAT_OFF;
     private static volatile OfflinePlaybackService instance;
+
+    public static int getRepeatMode() {
+        return repeatMode;
+    }
+
+    public static int cycleRepeatMode() {
+        repeatMode = (repeatMode + 1) % 3;
+        OfflinePlaybackService service = instance;
+        if (service != null) service.publishState();
+        return repeatMode;
+    }
 
     public static void addListener(PlaybackListener listener) {
         listeners.add(listener);
@@ -71,6 +79,7 @@ public final class OfflinePlaybackService extends Service {
     public static void skipNext(Context context) {
         context.startService(new Intent(context, OfflinePlaybackService.class).setAction(ACTION_NEXT));
     }
+
     public static void skipPrevious(Context context) {
         context.startService(new Intent(context, OfflinePlaybackService.class).setAction(ACTION_PREVIOUS));
     }
@@ -82,6 +91,7 @@ public final class OfflinePlaybackService extends Service {
             service.publishState();
         }
     }
+
     public static final String ACTION_PLAY_FILE = "app.morphe.action.PLAY_OFFLINE_FILE";
     public static final String ACTION_TOGGLE = "app.morphe.action.TOGGLE_OFFLINE_PLAYBACK";
     public static final String ACTION_STOP = "app.morphe.action.STOP_OFFLINE_PLAYBACK";
@@ -173,7 +183,6 @@ public final class OfflinePlaybackService extends Service {
         this.path = path;
         title = requestedTitle == null ? new File(path).getName() : requestedTitle;
         artist = requestedArtist == null || requestedArtist.isBlank() ? "YouTube Music" : requestedArtist;
-        // A track saved without a cover has no file, and decoding it would log an error a second.
         File artworkFile = artworkPath == null ? null : new File(artworkPath);
         artwork = artworkFile != null && artworkFile.isFile()
                 ? BitmapFactory.decodeFile(artworkPath)
@@ -189,9 +198,6 @@ public final class OfflinePlaybackService extends Service {
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                     .build());
             player.setDataSource(path);
-            // Skipping quickly leaves the previous player mid prepare. Its callbacks are
-            // cleared on release, and each one still checks that it belongs to the current
-            // track, so a discarded player can never tear down the one that replaced it.
             player.setOnPreparedListener(mp -> {
                 if (mp != player) return;
                 prepared = true;
@@ -204,8 +210,18 @@ public final class OfflinePlaybackService extends Service {
             });
             player.setOnCompletionListener(mp -> {
                 if (mp != player) return;
-                if (queueIndex >= 0 && queueIndex + 1 < queue.size()) playQueueOffset(1);
-                else stopPlayback();
+                if (repeatMode == REPEAT_ONE) {
+                    mp.seekTo(0);
+                    mp.start();
+                    publishState();
+                } else if (queueIndex >= 0 && queueIndex + 1 < queue.size()) {
+                    playQueueOffset(1);
+                } else if (repeatMode == REPEAT_ALL && !queue.isEmpty()) {
+                    queueIndex = -1;
+                    playQueueOffset(1);
+                } else {
+                    stopPlayback();
+                }
             });
             player.setOnErrorListener((mp, what, extra) -> {
                 if (mp != player) return true;
@@ -222,8 +238,13 @@ public final class OfflinePlaybackService extends Service {
     }
 
     private void playQueueOffset(int offset) {
+        if (queue.isEmpty()) return;
         int target = queueIndex + offset;
-        if (target < 0 || target >= queue.size()) return;
+        if (repeatMode == REPEAT_ALL) {
+            target = (target % queue.size() + queue.size()) % queue.size();
+        } else if (target < 0 || target >= queue.size()) {
+            return;
+        }
         queueIndex = target;
         OfflineTrack track = OfflineTrack.load(new File(queue.get(target)));
         playFile(track.audioFile().getAbsolutePath(), track.displayTitle(), track.displayArtist(),
@@ -258,10 +279,6 @@ public final class OfflinePlaybackService extends Service {
         stopSelf();
     }
 
-    /**
-     * Asking a player that is still preparing about its state is an invalid operation, which it
-     * answers with an error that stops playback, so nothing may reach it before it is ready.
-     */
     private boolean playerReady() {
         return prepared && player != null;
     }
@@ -295,8 +312,6 @@ public final class OfflinePlaybackService extends Service {
         MediaPlayer released = player;
         if (released == null) return;
 
-        // Cleared first, otherwise releasing a player that is still preparing reports an error
-        // that would stop whatever is playing by then.
         player = null;
         released.setOnPreparedListener(null);
         released.setOnCompletionListener(null);
@@ -324,15 +339,11 @@ public final class OfflinePlaybackService extends Service {
                 .build();
     }
 
-    /**
-     * @return Whether the system refused audio focus, so playback must not start.
-     */
     private boolean audioFocusDenied() {
         return audioManager == null || focusRequest == null
                 || audioManager.requestAudioFocus(focusRequest) != AudioManager.AUDIOFOCUS_REQUEST_GRANTED;
     }
 
-    /** Pause the currently routed system player before this session becomes active. */
     private void pauseOtherMedia() {
         if (audioManager == null || !audioManager.isMusicActive()) return;
         KeyEvent down = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PAUSE);
@@ -363,7 +374,6 @@ public final class OfflinePlaybackService extends Service {
         for (PlaybackListener listener : listeners) {
             listener.onPlaybackChanged(currentPath, currentTitle, currentPlaying, currentPosition, currentDuration);
         }
-        // Rebuilding the metadata copies the artwork, so only do it when the track changed.
         if (!currentPath.equals(publishedMetadataPath)) {
             publishedMetadataPath = currentPath;
             MediaMetadata.Builder metadata = new MediaMetadata.Builder()
@@ -427,7 +437,7 @@ public final class OfflinePlaybackService extends Service {
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
-    @SuppressLint("NotificationPermission") // The patch declares POST_NOTIFICATIONS.
+    @SuppressLint("NotificationPermission")
     private void notifyChanged() {
         ((NotificationManager) getSystemService(NOTIFICATION_SERVICE)).notify(NOTIFICATION_ID, notification());
     }
