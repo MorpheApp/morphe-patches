@@ -253,6 +253,15 @@ YouTube Premium を利用している場合、この設定は必要ない可能�
   <string name="morphe_app_refresh_rate_type_entry_2">縦画面再生時に適用</string>
   <string name="morphe_app_refresh_rate_type_entry_3">全画面再生時に適用</string>
   <string name="morphe_app_refresh_rate_type_entry_4">縦画面 &amp; 全画面再生時に適用</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">フォント</string>
+  <string name="morphe_custom_font_type_entry_default">デフォルト</string>
+  <string name="morphe_custom_font_type_entry_system">端末のシステム フォント</string>
+  <string name="morphe_custom_font_type_entry_custom">カスタム フォント ファイル</string>
+  <string name="morphe_custom_font_file_title">カスタム フォント ファイル</string>
+  <string name="morphe_custom_font_file_summary">TTFまたはOTFフォントファイルを選択してください</string>
+  <string name="morphe_custom_font_file_invalid">選択したファイルはTTFまたはOTFフォントではありません</string>
+  <string name="morphe_custom_font_failed_to_load">カスタムフォントを読み込めなかったため、オフになっています</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">低評価数表示は一時的に利用できません (API タイムアウト)</string>

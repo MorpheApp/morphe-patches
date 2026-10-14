@@ -253,6 +253,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">เล่นในโหมดแนวตั้ง</string>
   <string name="morphe_app_refresh_rate_type_entry_3">เล่นแบบเต็มหน้าจอ</string>
   <string name="morphe_app_refresh_rate_type_entry_4">เล่นในโหมดแนวตั้งและเต็มหน้าจอ</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">แบบอักษร</string>
+  <string name="morphe_custom_font_type_entry_default">ค่าเริ่มต้น</string>
+  <string name="morphe_custom_font_type_entry_system">แบบอักษรระบบของอุปกรณ์</string>
+  <string name="morphe_custom_font_type_entry_custom">ไฟล์แบบอักษรที่กำหนดเอง</string>
+  <string name="morphe_custom_font_file_title">ไฟล์แบบอักษรที่กำหนดเอง</string>
+  <string name="morphe_custom_font_file_summary">เลือกไฟล์แบบอักษร TTF หรือ OTF</string>
+  <string name="morphe_custom_font_file_invalid">ไฟล์ที่เลือกไม่ใช่แบบอักษร TTF หรือ OTF</string>
+  <string name="morphe_custom_font_failed_to_load">ไม่สามารถโหลดแบบอักษรที่กำหนดเองได้ และถูกปิดใช้งาน</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ไม่สามารถแสดงความไม่ชอบชั่วคราว (API หมดเวลา)</string>

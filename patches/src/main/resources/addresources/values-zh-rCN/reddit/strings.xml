@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">隐藏“关于”专栏</string>
   <string name="morphe_hide_resources_shelf_title">隐藏“资源”专栏</string>
   <string name="morphe_screen_layout_title">布局</string>
+  <string name="morphe_copy_text_title">复制文本</string>
+  <string name="morphe_copy_text_summary">允许在帖子和评论中选择和复制文本。禁用评论折叠功能</string>
+  <string name="morphe_copy_text_user_dialog_message">“复制文本”启用时，折叠评论将停止工作。</string>
   <string name="morphe_custom_font_title">自定义字体</string>
   <string name="morphe_custom_font_summary">从以下路径加载自定义 TTF 或 OTF 字体文件。启用此选项也会关闭强制系统字体。</string>
   <string name="morphe_custom_font_file_path_title">自定义字体文件</string>

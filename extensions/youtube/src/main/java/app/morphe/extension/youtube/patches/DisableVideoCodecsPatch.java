@@ -13,10 +13,23 @@ package app.morphe.extension.youtube.patches;
 import android.os.Build;
 import android.view.Display;
 
+import java.util.List;
+
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.ClientType;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"unused", "deprecation", "RedundantSuppression"})
 public class DisableVideoCodecsPatch {
+
+    public enum VideoCodec {
+        DEFAULT,
+        VP9,
+        AVC
+    }
+
+    private static final VideoCodec VIDEO_CODEC = resolveVideoCodec();
 
     private static final int[] EMPTY_ARRAY_INT = new int[0];
 
@@ -101,9 +114,43 @@ public class DisableVideoCodecsPatch {
     }
 
     /**
+     * @return If AVC can be forced, which needs spoofing to be off or a spoof client that has AVC formats.
+     */
+    public static boolean isAvcAvailable() {
+        return !SpoofVideoStreamsPatch.isPatchIncluded()
+                || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() || List.of(
+                ClientType.ANDROID_CREATOR,
+                ClientType.ANDROID_VR_DASH,
+                ClientType.ANDROID_VR_SABR,
+                ClientType.VISIONOS_1_02).contains(Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
+    }
+
+    private static VideoCodec resolveVideoCodec() {
+        VideoCodec codec = Settings.VIDEO_CODEC.get();
+        if (codec == VideoCodec.AVC && !isAvcAvailable()) {
+            return VideoCodec.VP9;
+        }
+        return codec;
+    }
+
+    /**
+     * @return The codec in use, which is VP9 if AVC is selected but cannot be forced.
+     */
+    public static VideoCodec getVideoCodec() {
+        return VIDEO_CODEC;
+    }
+
+    /**
      * Injection point.
      */
     public static boolean allowVP9() {
-        return !Settings.FORCE_AVC_CODEC.get();
+        return VIDEO_CODEC != VideoCodec.AVC;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean allowCodec(String mimeType) {
+        return !(VIDEO_CODEC == VideoCodec.VP9 && "video/av01".equals(mimeType));
     }
 }

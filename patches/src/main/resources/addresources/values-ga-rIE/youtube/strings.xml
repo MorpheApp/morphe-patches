@@ -1165,15 +1165,6 @@ Teorainn: Mura bhfuil 'Barra gníomhaíochta seanfhíseáin athchóirithe' múch
   <string name="morphe_seekbar_custom_color_accent_title">Dath béime an bharra cuardaigh</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Socraigh an dath tánaisteach den bharra dul chun cinn físe</string>
   <string name="morphe_seekbar_custom_color_invalid">Luach datha barra cuardaigh neamhbhailí</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Cló</string>
-  <string name="morphe_custom_font_type_entry_default">Réamhshocrú</string>
-  <string name="morphe_custom_font_type_entry_system">Cló córais an ghléis</string>
-  <string name="morphe_custom_font_type_entry_custom">Comhad cló saincheaptha</string>
-  <string name="morphe_custom_font_file_title">Comhad cló saincheaptha</string>
-  <string name="morphe_custom_font_file_summary">Roghnaigh comhad cló TTF nó OTF</string>
-  <string name="morphe_custom_font_file_invalid">Ní cló TTF ná OTF é an comhad roghnaithe</string>
-  <string name="morphe_custom_font_failed_to_load">Níorbh fhéidir an cló saincheaptha a lódáil agus tá sé múchta</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Lógó ceanntásca</string>
@@ -1319,18 +1310,21 @@ Teorainneacha:
 • D’fhéadfadh cuma mhícheart a bheith ar na dathanna mura féidir leis an taispeántas HDR a thaispeáint i ndáiríre
 • D’fhéadfadh teip a bheith ar an athsheinm mura féidir leis an díchódóir HDR a láimhseáil
 • Braitheann HDR fós ar an gcliant sruthanna físe bréige"</string>
-  <string name="morphe_force_avc_codec_title">Códc AVC (H.264) a fhorchur</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Sochair:
-• Féadfaidh sé saolré na ceallraí a fheabhsú
-• Féadfaidh sé réitigh físeáin atá in easnamh a chur ar ais ar ghléasanna níos sine
-
-Teorainneacha:
-• Is é 1080p an t-uasréiteach
-• Úsáidfidh athsheinm físeáin níos mó sonraí idirlín ná VP9 nó AV1
-• Ní úsáidfidh físeáin HDR AVC
-• Ní féidir le roinnt gléasanna AVC a bhrú"</string>
+  <string name="morphe_video_codec_title">Códec físeáin</string>
+  <string name="morphe_video_codec_entry_default">Réamhshocrú</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Chun an ghné seo a úsáid, socraigh \'Sruthanna físe bréige\' go \'Android VR\' nó \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Chun AVC a chur i bhfeidhm, athraigh \'Sruthanna físe a aithris\' go \'Android Studio\', \'Android VR\' nó \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Féadann sé feabhas a chur ar shaol na ceallraí agus stadaíl athsheinm a réiteach
+• Úsáideann sé níos mó sonraí idirlín ná AV1
+
+AVC (H.264)
+• Éilíonn sé 'Android Studio', 'Android VR', nó 'visionOS' mar chliant aithrise sruthanna físe
+• Féadann sé feabhas a chur ar shaol na ceallraí níos mó fós
+• Féadann sé réitigh físe atá in easnamh a chur ar ais ar ghléasanna níos sine
+• Is é 1080p an t-uasréiteach
+• Seans nach n-úsáidfidh físeáin HDR AVC
+• Ní féidir le roinnt gléasanna AVC a chur i bhfeidhm"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Oscail an roghchlár Ardchaighdeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary">Léimeann sé an roghchlár um roghnú cáilíochta agus osclaíonn sé an roghchlár Ardchaighdeán go díreach</string>
@@ -1347,6 +1341,7 @@ Teorainneacha:
 
 D’fhéadfadh sé go mbeadh stad nó go gcaillfí frámaí ag athsheinm físe le AV1."</string>
   <string name="morphe_spoof_video_streams_about_title">Fo-iarsmaí spóifithe</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Seans go dteipfidh an t-athsheinm ag 1 nóiméad</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Tá an roghchlár \'Rian Fuaime\' ar iarraidh</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Gan aon chóideic físe AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Níl mód tumtha VR 360° ar fáil</string>

@@ -1167,15 +1167,6 @@ Ograničenje: Ako je 'Vrati staru traku s radnjama za videozapise' isključeno, 
   <string name="morphe_seekbar_custom_color_accent_title">Akcentna boja trake za traženje</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Postavite sekundarnu boju trake napretka videozapisa</string>
   <string name="morphe_seekbar_custom_color_invalid">Nevažeća vrijednost obojskog seekbara</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Vrsta slova</string>
-  <string name="morphe_custom_font_type_entry_default">Zadano</string>
-  <string name="morphe_custom_font_type_entry_system">Sustavni font uređaja</string>
-  <string name="morphe_custom_font_type_entry_custom">Datoteka prilagođenog fonta</string>
-  <string name="morphe_custom_font_file_title">Datoteka prilagođenog fonta</string>
-  <string name="morphe_custom_font_file_summary">Odaberite TTF ili OTF datoteku fonta</string>
-  <string name="morphe_custom_font_file_invalid">Odabrana datoteka nije TTF ili OTF font</string>
-  <string name="morphe_custom_font_failed_to_load">Prilagođeni font se nije mogao učitati pa je isključen</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Zastavica</string>
@@ -1321,18 +1312,21 @@ Ograničenja:
 • Boje mogu izgledati pogrešno ako zaslon zapravo ne može prikazati HDR
 • Reprodukcija može propasti ako dekoder ne može obraditi HDR
 • HDR i dalje ovisi o klijentu za lažne video streamove"</string>
-  <string name="morphe_force_avc_codec_title">Forsiraj AVC (H.264) kodek</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Benefiti:
-• Može poboljati bateriju život
-• Može obnoviti nedostupne video rezolucije na stariji uređaji
-
-Ograničenja:
-• Maksimalna rezolucija je 1080p
-• Video playback će koristiti više internet podataka nego VP9 ili AV1
-• HDR video neće koristiti AVC
-• Neke uređaji ne mogu forceirati AVC"</string>
+  <string name="morphe_video_codec_title">Video kodek</string>
+  <string name="morphe_video_codec_entry_default">Zadano</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu značajku, postavite \'Parodija video streamova\' na \'Android VR\' ili \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Da biste forsirali AVC, promijenite \'Maskiranje video tokova\' u \'Android Studio\', \'Android VR\' ili \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Može poboljšati trajanje baterije i riješiti problem mucanja pri reprodukciji
+• Troši više internetskih podataka od AV1
+
+AVC (H.264)
+• Zahtijeva klijent za maskiranje video tokova postavljen na 'Android Studio', 'Android VR' ili 'visionOS'
+• Može još više poboljšati trajanje baterije
+• Može vratiti nedostajuće video rezolucije na starijim uređajima
+• Maksimalna rezolucija je 1080p
+• HDR videozapisi možda neće koristiti AVC
+• Neki uređaji ne mogu forsirati AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvori napredni izbornik kvalitete</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskače izbornik odabira kvalitete i izravno otvara napredni izbornik kvalitete</string>
@@ -1349,6 +1343,7 @@ Ograničenja:
 
 Video playback s AV1 može stutterati ili padati frame-ove."</string>
   <string name="morphe_spoof_video_streams_about_title">Simuliranje nuspojava</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Reprodukcija može prestati nakon 1 minute</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Nedostaje izbornik \'Audio zapis\'</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema AV1 video codec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni mod nije dostupan</string>

@@ -252,6 +252,15 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_app_refresh_rate_type_entry_2">Dikey oynatma</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Tam ekran oynatma</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Dikey ve tam ekran oynatma</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Yazı tipi</string>
+  <string name="morphe_custom_font_type_entry_default">Varsayılan</string>
+  <string name="morphe_custom_font_type_entry_system">Cihaz sistem yazı tipi</string>
+  <string name="morphe_custom_font_type_entry_custom">Özel yazı tipi dosyası</string>
+  <string name="morphe_custom_font_file_title">Özel yazı tipi dosyası</string>
+  <string name="morphe_custom_font_file_summary">Bir TTF veya OTF yazı tipi dosyası seçin</string>
+  <string name="morphe_custom_font_file_invalid">Seçilen dosya bir TTF veya OTF yazı tipi değil.</string>
+  <string name="morphe_custom_font_failed_to_load">Özel yazı tipi yüklenemedi ve devre dışı bırakıldı.</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Beğenmeme sayıları geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>

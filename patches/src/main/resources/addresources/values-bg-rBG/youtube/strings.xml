@@ -1165,15 +1165,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">Допълнителен цвят на лентата за търсене</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Задайте вторичния цвят на лентата за напредък на видеото</string>
   <string name="morphe_seekbar_custom_color_invalid">Редовно</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Шрифт</string>
-  <string name="morphe_custom_font_type_entry_default">По подразбиране</string>
-  <string name="morphe_custom_font_type_entry_system">Системен шрифт на устройството</string>
-  <string name="morphe_custom_font_type_entry_custom">Персонализиран файл с шрифт</string>
-  <string name="morphe_custom_font_file_title">Персонализиран файл с шрифт</string>
-  <string name="morphe_custom_font_file_summary">Изберете TTF или OTF файл с шрифт</string>
-  <string name="morphe_custom_font_file_invalid">Избраният файл не е TTF или OTF шрифт</string>
-  <string name="morphe_custom_font_failed_to_load">Персонализираният шрифт не можа да се зареди и е изключен</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Табло за Home</string>
@@ -1319,18 +1310,21 @@ Second \"item\" text"</string>
 • Цветовете може да изглеждат грешно, ако дисплеят не може реално да показва HDR
 • Възпроизвеждането може да се провали, ако декодерът не може да обработва HDR
 • HDR все още зависи от клиента за подправяне на видео потоци"</string>
-  <string name="morphe_force_avc_codec_title">Наложи кодек AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Преимущества:
-• Може да подобри трафик от батерията
-• Може да възстанови липсващите видео раздели на по-стари устройства
-
-Ограничения:
-• Максималното раздели е 1080p
-• Видео възпроизвеждането ще използва повече интернет данни от VP9 или AV1
-• HDR видеа не ще използват AVC
-• Някои устройства не могат да принудят AVC"</string>
+  <string name="morphe_video_codec_title">Видео кодек</string>
+  <string name="morphe_video_codec_entry_default">По подразбиране</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">За да използвате тази функция, променете \'Имитиране на видео потоци\' на \'Android VR\' или \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">За да наложите AVC, променете стойността на „Симулиране на видео потоци“ на „Android Studio“, „Android VR“ или „visionOS“</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Може да подобри живота на батерията и да поправи заекването при възпроизвеждане
+• Използва повече интернет трафик от AV1
+
+AVC (H.264)
+• Изисква клиентът за симулиране на видео потоци да е настроен на „Android Studio“, „Android VR“ или „visionOS“
+• Може да подобри живота на батерията още повече
+• Може да възстанови липсващите видео резолюции на по-стари устройства
+• Максималната резолюция е 1080p
+• HDR видеата може да не използват AVC
+• Някои устройства не могат да наложат AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Отвори меню за разширени настройки за качеството на видеото</string>
   <string name="morphe_advanced_video_quality_menu_summary">Прескача менюто за избор на качество и отваря директно менюто \'Разширени\' за качеството</string>
@@ -1347,6 +1341,7 @@ Second \"item\" text"</string>
 
 Видео преглед с AV1 може да се качне или да има падане на кадри."</string>
   <string name="morphe_spoof_video_streams_about_title">Манипулиране на ефекти на видео</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Възпроизвеждането може да се прекъсне на <b>1</b> минута</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Менюто \'Аудио пътека\' липсва</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Отсъства AV1 кодек на видео</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR иммерсивен режим не е наличен</string>

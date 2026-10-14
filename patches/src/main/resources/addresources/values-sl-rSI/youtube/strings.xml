@@ -1165,15 +1165,6 @@ Omejitev: Če je možnost »Ponastavi staro vrstico za videoposnetke« izkloplje
   <string name="morphe_seekbar_custom_color_accent_title">Poudarjena barva vrstice za napredovanje</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Nastavite sekundarno barvo vrstice za napredovanje videa</string>
   <string name="morphe_seekbar_custom_color_invalid">Neveljavna vrednost barvnega drsnika</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Pisava</string>
-  <string name="morphe_custom_font_type_entry_default">Privzeto</string>
-  <string name="morphe_custom_font_type_entry_system">Sistemska pisava naprave</string>
-  <string name="morphe_custom_font_type_entry_custom">Datoteka s pisavo po meri</string>
-  <string name="morphe_custom_font_file_title">Datoteka s pisavo po meri</string>
-  <string name="morphe_custom_font_file_summary">Izberite datoteko pisave v formatu TTF ali OTF</string>
-  <string name="morphe_custom_font_file_invalid">Izbrana datoteka ni pisava v formatu TTF ali OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Pisave po meri ni bilo mogoče naložiti, zato je izklopljena</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotip naslova</string>
@@ -1319,18 +1310,21 @@ Omejitve:
 • Barve so lahko videti napačne, če zaslon dejansko ne more prikazati HDR
 • Predvajanje lahko ne uspe, če dekoder ne obvlada HDR
 • HDR je še vedno odvisen od odjemalca za ponarejanje video tokov"</string>
-  <string name="morphe_force_avc_codec_title">Prisilna uporaba kodeka AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Prednosti:
-• Izboljša lahko življenjsko dobo baterije
-• Lahko obnovi manjkajoče video ločljivosti na starejših napravah
-
-Omejitve:
-• Največja ločljivost je 1080p
-• Predvajanje videa bo uporabljalo več internetnih podatkov kot VP9 ali AV1
-• HDR videoposnetki ne bodo uporabljali AVC
-• Nekatere naprave ne morejo prisiliti AVC"</string>
+  <string name="morphe_video_codec_title">Video kodek</string>
+  <string name="morphe_video_codec_entry_default">Privzeto</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Za uporabo te funkcije nastavite \'Spoofing video tokov\' na \'Android VR\' ali \'Android Studio\'.</string>
+  <string name="morphe_video_codec_avc_not_available">Če želite vsiliti AVC, spremenite \'Ponarejanje video tokov\' v \'Android Studio\', \'Android VR\' ali \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Lahko podaljša delovanje baterije in odpravi zatikanje predvajanja
+• Porabi več podatkov kot AV1
+
+AVC (H.264)
+• Zahteva odjemalca za ponarejanje video tokov, nastavljenega na 'Android Studio', 'Android VR' ali 'visionOS'
+• Lahko še bolj podaljša delovanje baterije
+• Lahko obnovi manjkajoče video ločljivosti na starejših napravah
+• Največja ločljivost je 1080p
+• HDR videoposnetki morda ne bodo uporabljali AVC
+• Nekatere naprave ne morejo vsiliti AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Odpre napredno možnost nastavitve kakovosti</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskoči meni za izbiro kakovosti in neposredno odpre napredno kakovost</string>
@@ -1347,6 +1341,7 @@ Omejitve:
 
 Predvajanje AV1 videa se lahko zamika ali izgublja okvirje."</string>
   <string name="morphe_spoof_video_streams_about_title">Stranski učinki navideznega pretakanja</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Predvajanje lahko odpove pri 1 minuti</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meni \'Zvočni posnetek\' manjka</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ni kodeka AV1 videa</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR poglobljeni način ni na voljo</string>

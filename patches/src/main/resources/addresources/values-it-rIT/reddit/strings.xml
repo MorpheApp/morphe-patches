@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Nascondi lo scaffale Informazioni</string>
   <string name="morphe_hide_resources_shelf_title">Nascondi lo scaffale Risorse</string>
   <string name="morphe_screen_layout_title">Layout</string>
+  <string name="morphe_copy_text_title">Copia testo</string>
+  <string name="morphe_copy_text_summary">Consente di selezionare e copiare il testo nei post e nei commenti. Disattiva la compressione dei commenti</string>
+  <string name="morphe_copy_text_user_dialog_message">La compressione dei commenti smetterà di funzionare mentre l\'opzione Copia testo è abilitata.</string>
   <string name="morphe_custom_font_title">Carattere personalizzato</string>
   <string name="morphe_custom_font_summary">Carica un file font TTF o OTF personalizzato dal percorso sottostante. Abilitando questa opzione, si disattiva anche l\'uso del font di sistema.</string>
   <string name="morphe_custom_font_file_path_title">File del carattere personalizzato</string>

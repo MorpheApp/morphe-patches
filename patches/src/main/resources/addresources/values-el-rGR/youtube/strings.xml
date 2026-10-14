@@ -1150,15 +1150,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">Απόχρωση χρώματος γραμμής προόδου</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Ορίστε το δευτερεύον χρώμα της γραμμής προόδου του βίντεο</string>
   <string name="morphe_seekbar_custom_color_invalid">Μη έγκυρη τιμή χρώματος γραμμής προόδου</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Γραμματοσειρά</string>
-  <string name="morphe_custom_font_type_entry_default">Προεπιλογή</string>
-  <string name="morphe_custom_font_type_entry_system">Γραμματοσειρά συστήματος συσκευής</string>
-  <string name="morphe_custom_font_type_entry_custom">Αρχείο προσαρμοσμένης γραμματοσειράς</string>
-  <string name="morphe_custom_font_file_title">Αρχείο προσαρμοσμένης γραμματοσειράς</string>
-  <string name="morphe_custom_font_file_summary">Επιλέξτε ένα αρχείο γραμματοσειράς TTF ή OTF</string>
-  <string name="morphe_custom_font_file_invalid">Το επιλεγμένο αρχείο δεν είναι γραμματοσειρά TTF ή OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Δεν ήταν δυνατή η φόρτωση της προσαρμοσμένης γραμματοσειράς και είναι απενεργοποιημένη</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Λογότυπο επικεφαλίδας</string>
@@ -1304,18 +1295,21 @@ Second \"item\" text"</string>
 • Τα χρώματα μπορεί να φαίνονται λανθασμένα αν στην πραγματικότητα η οθόνη δεν μπορεί να απεικονίσει HDR
 • Η αναπαραγωγή μπορεί να αποτύχει αν ο αποκωδικοποιητής δεν μπορεί να χειριστεί το HDR
 • Το HDR εξαρτάται και από το επιλεγμένο πρόγραμμα-πελάτη παραποίησης ροών βίντεο"</string>
-  <string name="morphe_force_avc_codec_title">Εξαναγκάζει τον κωδικοποιητή AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Οφέλη:
-• Μπορεί να βελτιώσει τη διάρκεια ζωής της μπαταρίας
-• Μπορεί να αποκαταστήσει αναλύσεις βίντεο που λείπουν σε παλαιότερες συσκευές
-
-Περιορισμοί:
-• Η μέγιστη ανάλυση είναι 1080p
-• Η αναπαραγωγή βίντεο θα χρησιμοποιεί περισσότερα δεδομένα διαδικτύου από τον VP9 ή AV1
-• Τα βίντεο HDR δεν θα χρησιμοποιούν τον κωδικοποιητή AVC
-• Ορισμένες συσκευές δεν μπορούν να επιβάλλουν τον κωδικοποιητή AVC"</string>
+  <string name="morphe_video_codec_title">Κωδικοποιητής βίντεο</string>
+  <string name="morphe_video_codec_entry_default">Προεπιλογή</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, ορίστε τη \'Παραποίηση ροών βίντεο\' σε \'Android VR\' ή \'Android Studio\'.</string>
+  <string name="morphe_video_codec_avc_not_available">Για να επιβάλετε το AVC, αλλάξτε την επιλογή \'Πλαστογράφηση ροών βίντεο\' σε \'Android Studio\', \'Android VR\' ή \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Μπορεί να βελτιώσει τη διάρκεια ζωής της μπαταρίας και να διορθώσει το τραύλισμα της αναπαραγωγής
+• Χρησιμοποιεί περισσότερα δεδομένα διαδικτύου από το AV1
+
+AVC (H.264)
+• Απαιτεί την επιλογή 'Πλαστογράφηση ροών βίντεο' να είναι 'Android Studio', 'Android VR' ή 'visionOS'
+• Μπορεί να βελτιώσει ακόμη περισσότερο τη διάρκεια ζωής της μπαταρίας
+• Μπορεί να επαναφέρει αναλύσεις βίντεο που λείπουν σε παλαιότερες συσκευές
+• Η μέγιστη ανάλυση είναι 1080p
+• Τα βίντεο HDR ενδέχεται να μην χρησιμοποιούν AVC
+• Ορισμένες συσκευές δεν μπορούν να επιβάλουν το AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Άνοιγμα μενού προηγμένης ποιότητας</string>
   <string name="morphe_advanced_video_quality_menu_summary">Παρακάμπτει το μενού επιλογής ποιότητας και ανοίγει απευθείας το μενού ποιότητας \'Προχωρημένων\'</string>
@@ -1332,6 +1326,7 @@ Second \"item\" text"</string>
 
 Η αναπαραγωγή βίντεο μπορεί να κομπιάζει ή να χάνει καρέ."</string>
   <string name="morphe_spoof_video_streams_about_title">Παρενέργειες παραποίησης</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Η αναπαραγωγή ενδέχεται να αποτύχει στο 1 λεπτό</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Το μενού «Κομμάτι ήχου» λείπει</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Δεν υπάρχει ο κωδικοποιητής βίντεο AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Η 360° VR βιωματική λειτουργία δεν είναι διαθέσιμη</string>

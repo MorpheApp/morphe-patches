@@ -985,8 +985,6 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_seekbar_custom_color_accent_title">Bo tableya We</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Bo lîstikvanê lîstikvanan &amp; pêşnîyaran</string>
   <string name="morphe_seekbar_custom_color_invalid">Qîmêya seekbarê nêrasta</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_entry_default">Bixweber</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Lokay logo</string>
@@ -1094,18 +1092,8 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Ji vegirtina vîdyoyê ya HDR qut biqevîne</string>
-  <string name="morphe_force_avc_codec_title">Koda AVC (H.264) bi zorê bikar bîne</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Feydeyên:
-• Dikare jîyana bateriyê çêbike
-• Dikare çareseriyên video yên kêrhatî li ser cîhakekî kevn darvekirin
-
-Sînergirên:
-• Çareseriya mezin sedî 1080p e
-• Lêxistina video dê daneyên interneta zêdetir bikar bîne mîna VP9 an AV1
-• Video yan HDR dê AVC bikar nebin
-• Hin alav nikarên AVC zor bike"</string>
+  <string name="morphe_video_codec_entry_default">Bixweber</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Ji bo bikaranîna vê taybetmendiyê, \'Sexandina streamên vîdyoyê\' li ser \'Android VR\' an \'Android Studio\' saz bikin.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Veke ji menuya kalîteya pêşkeftî ve bike</string>
   <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>

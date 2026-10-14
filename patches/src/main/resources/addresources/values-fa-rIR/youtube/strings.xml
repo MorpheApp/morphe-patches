@@ -1165,15 +1165,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">رنگ تأکیدی نوار جست‌وجو</string>
   <string name="morphe_seekbar_custom_color_accent_summary">رنگ ثانویهٔ نوار پیشرفت ویدئو را تنظیم کنید</string>
   <string name="morphe_seekbar_custom_color_invalid">مقدار رنگ نوار جست‌وجو نامعتبر است</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">فونت</string>
-  <string name="morphe_custom_font_type_entry_default">پیش‌فرض</string>
-  <string name="morphe_custom_font_type_entry_system">فونت سیستمی دستگاه</string>
-  <string name="morphe_custom_font_type_entry_custom">فایل قلم سفارشی</string>
-  <string name="morphe_custom_font_file_title">فایل قلم سفارشی</string>
-  <string name="morphe_custom_font_file_summary">یک فایل فونت TTF یا OTF انتخاب کنید</string>
-  <string name="morphe_custom_font_file_invalid">فایل انتخاب‌شده یک فونت TTF یا OTF نیست</string>
-  <string name="morphe_custom_font_failed_to_load">فونت سفارشی بارگذاری نشد و غیرفعال شده است</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">لوگوی سربرگ</string>
@@ -1319,18 +1310,21 @@ Second \"item\" text"</string>
 • اگر نمایشگر واقعاً نتواند HDR را نشان دهد، رنگ‌ها ممکن است نادرست به نظر برسند
 • اگر رمزگشا نتواند HDR را مدیریت کند، پخش ممکن است شکست بخورد
 • HDR همچنان به کلاینت جریان‌های ویدئویی جعلی وابسته است"</string>
-  <string name="morphe_force_avc_codec_title">اجبار کدک AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"مزایا:
-• می‌تواند عمر باتری را بهبود دهد
-• می‌تواند وضوح‌های ویدئویی ازدست‌رفته را در دستگاه‌های قدیمی بازیابی کند
-
-محدودیت‌ها:
-• بیشترین وضوح 1080p است
-• پخش ویدئو نسبت به VP9 یا AV1 از دادهٔ اینترنتی بیشتری استفاده می‌کند
-• ویدئوهای HDR از AVC استفاده نمی‌کنند
-• برخی دستگاه‌ها نمی‌توانند AVC را اجباری کنند"</string>
+  <string name="morphe_video_codec_title">کدک ویدیو</string>
+  <string name="morphe_video_codec_entry_default">پیش‌فرض</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">برای استفاده از این قابلیت، «جعل جریان‌های ویدئویی» را روی «Android VR» یا «Android Studio» تنظیم کنید</string>
+  <string name="morphe_video_codec_avc_not_available">برای اجباری کردن AVC، «جعل جریان‌های ویدیو» را به «Android Studio»، «Android VR» یا «visionOS» تغییر دهید</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• می‌تواند عمر باتری را بهبود بخشد و مشکل لکنت پخش را برطرف کند
+• نسبت به AV1 داده اینترنت بیشتری مصرف می‌کند
+
+AVC (H.264)
+• به کلاینت جعل جریان ویدیو در حالت «Android Studio»، «Android VR» یا «visionOS» نیاز دارد
+• می‌تواند عمر باتری را حتی بیشتر بهبود بخشد
+• می‌تواند رزولوشن‌های ویدیویی از دست رفته را در دستگاه‌های قدیمی‌تر بازگرداند
+• حداکثر رزولوشن 1080p است
+• ویدیوهای HDR ممکن است از AVC استفاده نکنند
+• برخی دستگاه‌ها نمی‌توانند AVC را اجباری کنند"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">بازکردن منوی کیفیت پیشرفته</string>
   <string name="morphe_advanced_video_quality_menu_summary">منوی انتخاب کیفیت را رد می‌کند و مستقیماً منوی کیفیت پیشرفته را باز می‌کند</string>
@@ -1347,6 +1341,7 @@ Second \"item\" text"</string>
 
 پخش ویدئو با AV1 ممکن است دچار لکنت شود یا فریم‌ها را از دست بدهد."</string>
   <string name="morphe_spoof_video_streams_about_title">پیامدهای جعل</string>
+  <string name="morphe_spoof_video_streams_about_failure">• ممکن است پخش در دقیقه ۱ با خطا مواجه شود</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• منوی «ترک صوتی» وجود ندارد</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• کدک ویدئویی AV1 وجود ندارد</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• حالت فراگیر واقعیت مجازی ۳۶۰° در دسترس نیست</string>

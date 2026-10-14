@@ -245,6 +245,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">Възпроизвеждане в портретен режим</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Възпроизвеждане на цял екран</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Възпроизвеждане в портретен режим и на цял екран</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Шрифт</string>
+  <string name="morphe_custom_font_type_entry_default">По подразбиране</string>
+  <string name="morphe_custom_font_type_entry_system">Системен шрифт на устройството</string>
+  <string name="morphe_custom_font_type_entry_custom">Файл с персонализиран шрифт</string>
+  <string name="morphe_custom_font_file_title">Файл с персонализиран шрифт</string>
+  <string name="morphe_custom_font_file_summary">Изберете TTF или OTF файл с шрифт</string>
+  <string name="morphe_custom_font_file_invalid">Избраният файл не е TTF или OTF шрифт</string>
+  <string name="morphe_custom_font_failed_to_load">Персонализираният шрифт не можа да бъде зареден и е изключен</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Временно недостъпни нехаресвания (изтече времето за отговор на API)</string>

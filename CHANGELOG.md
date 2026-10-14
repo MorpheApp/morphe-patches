@@ -1,3 +1,27 @@
+## [1.48.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.6...v1.48.0-dev.7) (2026-10-14)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Jam queue sharing:** Keep the YouTube Music player aligned when Jam queue sharing is off ([#3704](https://github.com/MorpheApp/morphe-patches/issues/3704)) ([fd0db0b](https://github.com/MorpheApp/morphe-patches/commit/fd0db0b04bc12f80acde7fc259d7f72dbf724b13))
+
+### ✨ New Features
+
+* **YouTube Music - Third-party lyrics:** Add new providers ([#3717](https://github.com/MorpheApp/morphe-patches/issues/3717)) ([89e31ba](https://github.com/MorpheApp/morphe-patches/commit/89e31ba6d69e26a08b5bdd97b3afb4daa927048f))
+
+## [1.48.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.5...v1.48.0-dev.6) (2026-10-13)
+
+### ✨ New Features
+
+* **YouTube - Disable video codecs:** Add "Force VP9 codec" setting ([#3578](https://github.com/MorpheApp/morphe-patches/issues/3578)) ([e1398ca](https://github.com/MorpheApp/morphe-patches/commit/e1398ca7da9dc7829aa8e9d2f798206fff26c1f6))
+
+## [1.48.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.4...v1.48.0-dev.5) (2026-10-13)
+
+### ✨ New Features
+
+* **Reddit - Full width feed media:** Make embedded video players full width ([#3696](https://github.com/MorpheApp/morphe-patches/issues/3696)) ([53b6448](https://github.com/MorpheApp/morphe-patches/commit/53b64487109e05f13d8e0bc581f86e581cd4662b))
+* **Reddit:** Add `Copy text` patch ([#3665](https://github.com/MorpheApp/morphe-patches/issues/3665)) ([3068f23](https://github.com/MorpheApp/morphe-patches/commit/3068f23e357825a77f6d67760f427634e3baee0c))
+* **YouTube Music:** Add `Custom font` patch ([#3718](https://github.com/MorpheApp/morphe-patches/issues/3718)) ([30a4b85](https://github.com/MorpheApp/morphe-patches/commit/30a4b85885e96aa8216f2b9fb26ed0ba4951e8fe))
+
 ## [1.48.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.48.0-dev.3...v1.48.0-dev.4) (2026-10-12)
 
 ### ✨ New Features

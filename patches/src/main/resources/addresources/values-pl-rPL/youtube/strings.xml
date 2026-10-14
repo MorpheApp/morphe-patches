@@ -1164,15 +1164,6 @@ Ograniczenie: Jeśli opcja \"Przywróć stary pasek akcji filmu\" jest wyłączo
   <string name="morphe_seekbar_custom_color_accent_title">Kolor akcentu paska postępu</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Ustaw dodatkowy kolor paska postępu</string>
   <string name="morphe_seekbar_custom_color_invalid">Nieprawidłowa wartość koloru</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Czcionka</string>
-  <string name="morphe_custom_font_type_entry_default">Domyślna</string>
-  <string name="morphe_custom_font_type_entry_system">Czcionka systemowa urządzenia</string>
-  <string name="morphe_custom_font_type_entry_custom">Plik własnej czcionki</string>
-  <string name="morphe_custom_font_file_title">Plik własnej czcionki</string>
-  <string name="morphe_custom_font_file_summary">Wybierz plik czcionki TTF lub OTF</string>
-  <string name="morphe_custom_font_file_invalid">Wybrany plik nie jest czcionką TTF ani OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Nie udało się wczytać własnej czcionki i została ona wyłączona</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo w nagłówku</string>
@@ -1318,18 +1309,21 @@ Ograniczenia:
 • Kolory mogą wyglądać nieprawidłowo, jeśli ekran w rzeczywistości nie potrafi wyświetlić HDR
 • Odtwarzanie może zakończyć się niepowodzeniem, jeśli dekoder nie obsługuje HDR
 • HDR nadal zależy od klienta fałszowania strumieni filmów"</string>
-  <string name="morphe_force_avc_codec_title">Wymuś kodek AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Korzyści:
-• Może wydłużyć czas pracy na baterii
-• Może przywrócić brakujące rozdzielczości filmów na starszych urządzeniach
-
-Ograniczenia:
-• Maksymalna rozdzielczość to 1080p
-• Odtwarzanie filmów zużyje więcej danych internetowych niż VP9 lub AV1
-• Filmy HDR nie będą korzystać z AVC
-• Niektóre urządzenia nie pozwalają na wymuszenie AVC"</string>
+  <string name="morphe_video_codec_title">Kodek filmu</string>
+  <string name="morphe_video_codec_entry_default">Domyślny</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Aby użyć tej funkcji, ustaw \"Fałszowanie strumieni filmów\" na \"Android VR\" lub \"Android Studio\"</string>
+  <string name="morphe_video_codec_avc_not_available">Aby wymusić AVC, zmień \"Fałszowanie strumieni filmów\" na \"Android Studio\", \"Android VR\" lub \"visionOS\"</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Może wydłużyć czas pracy baterii i wyeliminować zacinanie się odtwarzania
+• Zużywa więcej danych mobilnych niż AV1
+
+AVC (H.264)
+• Wymaga klienta ustawionego na \"Android Studio\", \"Android VR\" lub \"visionOS\" w \"Fałszowanie strumieni filmów\"
+• Może jeszcze bardziej wydłużyć czas pracy baterii
+• Może przywrócić brakujące rozdzielczości filmów na starszych urządzeniach
+• Maksymalna rozdzielczość to 1080p
+• Filmy HDR mogą nie używać AVC
+• Niektóre urządzenia nie pozwalają na wymuszenie AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otwórz menu zaawansowanej jakości</string>
   <string name="morphe_advanced_video_quality_menu_summary">Pomija podstawowe menu wyboru i od razu otwiera zaawansowane menu jakości</string>
@@ -1346,6 +1340,7 @@ Ograniczenia:
 
 Odtwarzanie filmu z użyciem AV1 może powodować zacinanie się lub gubienie klatek."</string>
   <string name="morphe_spoof_video_streams_about_title">Skutki uboczne fałszowania</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Odtwarzanie może zostać przerwane w 1 minucie</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Brakuje menu \"Ścieżka dźwiękowa\"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Brak kodeka filmu AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Tryb immersyjny 360° VR nie jest dostępny</string>

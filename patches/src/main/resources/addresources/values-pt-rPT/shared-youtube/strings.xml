@@ -253,6 +253,15 @@ Se desativado posteriormente, recomenda-se limpar os dados do aplicativo para ev
   <string name="morphe_app_refresh_rate_type_entry_2">Reprodução em retrato</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Reprodução em tela cheia</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Reprodução em retrato e tela cheia</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Fonte</string>
+  <string name="morphe_custom_font_type_entry_default">Padrão</string>
+  <string name="morphe_custom_font_type_entry_system">Fonte do sistema do dispositivo</string>
+  <string name="morphe_custom_font_type_entry_custom">Arquivo de fonte personalizada</string>
+  <string name="morphe_custom_font_file_title">Arquivo de fonte personalizada</string>
+  <string name="morphe_custom_font_file_summary">Escolha um arquivo de fonte TTF ou OTF</string>
+  <string name="morphe_custom_font_file_invalid">O arquivo escolhido não é uma fonte TTF ou OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Não foi possível carregar a fonte personalizada e ela foi desativada</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes temporariamente indisponível (API expirou)</string>

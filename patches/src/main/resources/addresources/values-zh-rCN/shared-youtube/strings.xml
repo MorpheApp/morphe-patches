@@ -253,6 +253,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">竖屏播放</string>
   <string name="morphe_app_refresh_rate_type_entry_3">全屏播放</string>
   <string name="morphe_app_refresh_rate_type_entry_4">竖屏和全屏播放</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">字体</string>
+  <string name="morphe_custom_font_type_entry_default">默认</string>
+  <string name="morphe_custom_font_type_entry_system">设备系统字体</string>
+  <string name="morphe_custom_font_type_entry_custom">自定义字体文件</string>
+  <string name="morphe_custom_font_file_title">自定义字体文件</string>
+  <string name="morphe_custom_font_file_summary">选择 TTF 或 OTF 字体文件</string>
+  <string name="morphe_custom_font_file_invalid">所选文件不是 TTF 或 OTF 字体</string>
+  <string name="morphe_custom_font_failed_to_load">自定义字体无法加载，已关闭</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">点踩数暂时不可用 (API 连接超时)</string>

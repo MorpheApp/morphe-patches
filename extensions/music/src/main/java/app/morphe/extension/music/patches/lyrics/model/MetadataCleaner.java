@@ -27,13 +27,13 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.parsers.CharactersConverter;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
 /**
  * Normalizes YouTube Music metadata into what a lyrics database expects.
  *
- * <p>All cleanup is driven by the user-configured {@link Settings#LYRICS_CUSTOM_REGEX}.
+ * <p>All cleanup is driven by the user-configured
+ * {@link LyricsFilterDefaults#LYRICS_CUSTOM_REGEX}.
  * When the regex is blank no filtering is applied.
  */
 public final class MetadataCleaner {
@@ -140,7 +140,7 @@ public final class MetadataCleaner {
             return "";
         }
         return collapseWhitespace(
-                applyRegex(value, resolveSetting(Settings.LYRICS_CUSTOM_REGEX.get())));
+                applyRegex(value, resolveSetting(LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.get())));
     }
 
     static String applyRegex(String input, String regex) {

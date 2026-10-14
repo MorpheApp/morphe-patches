@@ -253,6 +253,15 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_app_refresh_rate_type_entry_2">Uppspelning i porträttläge</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Uppspelning i helskärm</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Uppspelning i porträttläge och helskärm</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Teckensnitt</string>
+  <string name="morphe_custom_font_type_entry_default">Standard</string>
+  <string name="morphe_custom_font_type_entry_system">Enhetens systemteckensnitt</string>
+  <string name="morphe_custom_font_type_entry_custom">Egen typsnittsfil</string>
+  <string name="morphe_custom_font_file_title">Egen typsnittsfil</string>
+  <string name="morphe_custom_font_file_summary">Välj en TTF- eller OTF-teckensnittsfil</string>
+  <string name="morphe_custom_font_file_invalid">Den valda filen är inte ett TTF- eller OTF-teckensnitt</string>
+  <string name="morphe_custom_font_failed_to_load">Anpassat teckensnitt kunde inte laddas och är avstängt</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ogilla-markeringar är inte tillgängliga just nu (API-tidsgräns nådd)</string>

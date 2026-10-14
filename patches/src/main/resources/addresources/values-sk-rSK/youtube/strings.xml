@@ -1164,15 +1164,6 @@ Obmedzenie: Ak je vypnutá možnosť 'Obnoviť starú lištu akcií videa', vrst
   <string name="morphe_seekbar_custom_color_accent_title">Akcentná farba časovej osy</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Nastavte sekundárnu farbu pruhu priebehu videa</string>
   <string name="morphe_seekbar_custom_color_invalid">Neplatná farba ukazovateľa priebehu</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Písmo</string>
-  <string name="morphe_custom_font_type_entry_default">Predvolený</string>
-  <string name="morphe_custom_font_type_entry_system">Systémové písmo zariadenia</string>
-  <string name="morphe_custom_font_type_entry_custom">Vlastný súbor písma</string>
-  <string name="morphe_custom_font_file_title">Vlastný súbor písma</string>
-  <string name="morphe_custom_font_file_summary">Vyberte súbor písma TTF alebo OTF</string>
-  <string name="morphe_custom_font_file_invalid">Vybraný súbor nie je písmo TTF alebo OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Vlastné písmo sa nepodarilo načítať a je vypnuté</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo hlavičky</string>
@@ -1318,18 +1309,21 @@ Obmedzenia:
 • Farby môžu vyzerať nesprávne, ak displej v skutočnosti nedokáže zobraziť HDR
 • Prehrávanie môže zlyhať, ak dekodér nedokáže spracovať HDR
 • HDR stále závisí od klienta na spoofovanie video streamov"</string>
-  <string name="morphe_force_avc_codec_title">Vynútiť codec AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Výhody:
-• Môže zlepšiť výdrž batérie
-• Môže obnoviť chýbajúce video rozlíšenia na starších zariadeniach
-
-Obmedzenia:
-• Maximálne rozlíšenie je 1080p
-• Vyššia spotreba dát pri prehrávaní videa ako VP9 alebo AV1
-• HDR videá nebudú využívať AVC
-• Niektoré zariadenia nemôžu vynútiť AVC"</string>
+  <string name="morphe_video_codec_title">Videokodek</string>
+  <string name="morphe_video_codec_entry_default">Predvolený</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Na používanie tejto funkcie nastavte \'Falšovanie toku videa\' na \'Android VR\' alebo \'Android Studio\'.</string>
+  <string name="morphe_video_codec_avc_not_available">Ak chcete vynútiť AVC, zmeňte „Spoofovanie video streamov“ na „Android Studio“, „Android VR“ alebo „visionOS“</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Môže predĺžiť výdrž batérie a opraviť zadrhávanie prehrávania
+• Spotrebúva viac internetových dát ako AV1
+
+AVC (H.264)
+• Vyžaduje klienta na spoofovanie video streamov „Android Studio“, „Android VR“ alebo „visionOS“
+• Môže ešte viac predĺžiť výdrž batérie
+• Môže obnoviť chýbajúce rozlíšenia videa na starších zariadeniach
+• Maximálne rozlíšenie je 1080p
+• HDR videá nemusia používať AVC
+• Niektoré zariadenia nedokážu vynútiť AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvoriť menu pokročilých nastavení kvality</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskočí menu výberu kvality a otvorí priamo menu kvality \'Pokročilé\'</string>
@@ -1346,6 +1340,7 @@ Obmedzenia:
 
 Pri prehrávaní pomocou AV1 sa video môže zasekávať alebo vynechávať snímky."</string>
   <string name="morphe_spoof_video_streams_about_title">Možné následky falšovania</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Prehrávanie môže zlyhať po 1 minúte</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Chýba ponuka \'Audio Track\'.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Video kodek AV1 nie je podporovaný</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR ponorenie nie je k dispozícii</string>

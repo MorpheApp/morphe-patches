@@ -1165,15 +1165,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">进度条强调色</string>
   <string name="morphe_seekbar_custom_color_accent_summary">设置视频进度条的第二颜色</string>
   <string name="morphe_seekbar_custom_color_invalid">无效的进度条颜色值</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">字体</string>
-  <string name="morphe_custom_font_type_entry_default">默认</string>
-  <string name="morphe_custom_font_type_entry_system">设备系统字体</string>
-  <string name="morphe_custom_font_type_entry_custom">自定义字体文件</string>
-  <string name="morphe_custom_font_file_title">自定义字体文件</string>
-  <string name="morphe_custom_font_file_summary">选择 TTF 或 OTF 字体文件</string>
-  <string name="morphe_custom_font_file_invalid">所选文件不是 TTF 或 OTF 字体</string>
-  <string name="morphe_custom_font_failed_to_load">无法加载自定义字体，已将其关闭</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">标题logo</string>
@@ -1319,18 +1310,21 @@ Second \"item\" text"</string>
 • 如果显示器实际上无法显示 HDR，则颜色可能会出现错误
 • 如果解码器无法处理 HDR，则播放可能会失败
 • HDR 仍然取决于 spoof 视频流客户端"</string>
-  <string name="morphe_force_avc_codec_title">强制 AVC (H.264) 编解码器</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"优点：
-• 可延长电池续航时间
-• 可恢复旧设备上缺失的视频分辨率
-
-限制：
-• 最大分辨率为 1080p
-• 视频播放将比 VP9 或 AV1 消耗更多互联网数据
-• HDR 视频将不使用 AVC
-• 某些设备无法强制使用 AVC"</string>
+  <string name="morphe_video_codec_title">视频编解码器</string>
+  <string name="morphe_video_codec_entry_default">默认</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">要使用此功能，请将“伪造视频流”设置为“Android VR”或“Android Studio”</string>
+  <string name="morphe_video_codec_avc_not_available">若要强制使用 AVC，请将“伪装视频流”更改为“Android Studio”、“Android VR”或“visionOS”</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• 可以提升电池续航并修复播放卡顿
+• 比 AV1 消耗更多网络数据
+
+AVC (H.264)
+• 需要“Android Studio”、“Android VR”或“visionOS”伪装视频流客户端
+• 可以进一步提升电池续航
+• 可以恢复较旧设备上缺失的视频分辨率
+• 最大分辨率为 1080p
+• HDR 视频可能无法使用 AVC
+• 部分设备无法强制使用 AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">打开高级画质菜单</string>
   <string name="morphe_advanced_video_quality_menu_summary">跳过画质选择菜单，直接打开高级画质菜单</string>
@@ -1347,6 +1341,7 @@ Second \"item\" text"</string>
 
 使用 AV1 播放视频可能会卡顿或丢帧。"</string>
   <string name="morphe_spoof_video_streams_about_title">欺骗的副作用</string>
+  <string name="morphe_spoof_video_streams_about_failure">• 播放可能会在 1 分钟时失败</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• “音轨”菜单缺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 不支持 AV1 视频编解码器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360°VR全景模式不可用</string>

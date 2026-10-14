@@ -253,6 +253,15 @@ Si vous désactivez cette option par la suite, il est recommandé d'effacer les 
   <string name="morphe_app_refresh_rate_type_entry_2">Lecture en mode portrait</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Lecture en plein écran</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Lecture en mode portrait et en plein écran</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Police</string>
+  <string name="morphe_custom_font_type_entry_default">Par défaut</string>
+  <string name="morphe_custom_font_type_entry_system">Police système de l\'appareil</string>
+  <string name="morphe_custom_font_type_entry_custom">Fichier de police personnalisé</string>
+  <string name="morphe_custom_font_file_title">Fichier de police personnalisé</string>
+  <string name="morphe_custom_font_file_summary">Choisissez un fichier de police au format TTF ou OTF</string>
+  <string name="morphe_custom_font_file_invalid">Le fichier sélectionné n\'est pas une police au format TTF ou OTF</string>
+  <string name="morphe_custom_font_failed_to_load">La police personnalisée n\'a pas pu être chargée et a été désactivée</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Les \'Je n\'aime pas\' sont temporairement indisponibles (délai d\'attente de l\'API dépassé)</string>

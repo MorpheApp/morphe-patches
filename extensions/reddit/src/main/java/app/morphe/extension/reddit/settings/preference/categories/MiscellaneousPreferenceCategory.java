@@ -17,7 +17,6 @@ import app.morphe.extension.reddit.patches.AppIconPatch;
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
 import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.RedgifsAudioPatch;
-import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.patches.VersionCheckPatch;
 import app.morphe.extension.reddit.settings.Settings;
@@ -43,7 +42,6 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
                 OpenLinksDirectlyPatch.isPatchIncluded() ||
                 OpenLinksExternallyPatch.isPatchIncluded() ||
                 RedgifsAudioPatch.isPatchIncluded() ||
-                RememberCollapsedCommentsPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded();
     }
 
@@ -85,12 +83,6 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.REDGIFS_HD
-            ));
-        }
-        if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.REMEMBER_COLLAPSED_COMMENTS
             ));
         }
         if (SanitizeSharingLinksPatch.isPatchIncluded()) {

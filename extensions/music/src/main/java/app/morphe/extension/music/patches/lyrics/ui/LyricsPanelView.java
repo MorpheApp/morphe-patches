@@ -24,6 +24,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -67,6 +68,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.IntConsumer;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsRomanizer;
+import app.morphe.extension.music.patches.lyrics.derive.LyricsTranslator;
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
@@ -74,8 +77,6 @@ import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
 import app.morphe.extension.music.patches.lyrics.requests.LyricsRequests;
 import app.morphe.extension.music.patches.lyrics.storage.LyricsFileSaver;
-import app.morphe.extension.music.patches.lyrics.translate.LyricsRomanizer;
-import app.morphe.extension.music.patches.lyrics.translate.LyricsTranslator;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.music.shared.VideoInformation;
 import app.morphe.extension.shared.Logger;
@@ -128,6 +129,21 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     private static final float BUTTON_TEXT_SIZE_SP = 14;
 
+    private static final float PILL_ALPHA = 0.4f;
+
+    private static final float BACKGROUND_TEXT_SIZE_FACTOR = 0.85f;
+    private static final float SECTION_TAG_TEXT_SIZE_FACTOR = 0.45f;
+    private static final float SECTION_DOT_SIZE_FACTOR = 0.36f;
+    private static final float SECTION_DOT_GAP_FACTOR = 0.22f;
+
+    private static final long SECTION_TAG_FADE_IN_MILLIS = 250;
+
+    /**
+     * The pill's own horizontal inset, which is also how far in the dot row starts so its first dot
+     * lines up with the label's text.
+     */
+    private static final int SECTION_TAG_PADDING_HORIZONTAL = Dim.dp10;
+
     /** Background the app uses for the pill buttons under its own lyrics. */
     private static final String APP_BUTTON_BACKGROUND_COLOR = "ytm_color_white_at_10pct";
 
@@ -141,7 +157,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private static final String APP_TRANSLATE_ICON = "yt_outline_experimental_translate_vd_theme_24";
 
     /** Icon for the romanize button, showing the pronunciation above each line. */
-    private static final String APP_ROMANIZE_ICON = "yt_outline_experimental_waveform_vd_theme_24";
+    private static final String APP_ROMANIZE_ICON = "morphe_yt_romanize";
 
     private static final String REFRESH_ICON = "ic_mtrl_arrow_circle";
 
@@ -209,8 +225,39 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     /** Wrapper holding the optional romanization line above each line of lyrics. */
     private final List<View> lineRows = new ArrayList<>();
 
+    /**
+     * Section labels such as "Chorus", one per line that opens a new section, in line order.
+     * Views are {@code null} where the line has no section, so this list indexes alongside
+     * {@link #lineViews}.
+     */
+    private final List<TextView> sectionTags = new ArrayList<>();
+
+    /**
+     * The row of three dots that stands in for a section label over a long silence, one per
+     * section label, indexing alongside {@link #sectionTags}. Entries are {@code null} where the
+     * line has no label, and every row starts hidden.
+     */
+    private final List<LinearLayout> sectionDots = new ArrayList<>();
+
+    /**
+     * The slot a line without a section label opens up for the dots to play in, one per line that
+     * has no label but is preceded by a long silence, indexing alongside {@link #lineViews}. It is
+     * zero-height until its gap calls for it. Entries are {@code null} elsewhere.
+     */
+    private final List<FrameLayout> sectionDotSlots = new ArrayList<>();
+
+    /** The height a section label takes, so a slot can open up to match one. */
+    private int sectionTagHeightPx;
+
+    /** The silences long enough to play the dots, as measured on the lines currently built. */
+    private List<SectionDotsMotion.Gap> sectionDotsGaps = List.of();
+
+    /** Line index of the label whose dots are being driven right now, or -1 when none are. */
+    private int activeSectionDotsIndex = -1;
+
     private final List<List<LyricsSpanBuilder.WordTiming>> lineWordSpans = new ArrayList<>();
     private final List<Integer> lineOriginalStarts = new ArrayList<>();
+    private final List<Boolean> lineIsBackground = new ArrayList<>();
     private final List<ForegroundColorSpan> lineUnsungSpans = new ArrayList<>();
 
     private static final ExecutorService LINE_BUILDER_EXECUTOR = Executors.newSingleThreadExecutor();
@@ -360,12 +407,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         @Override
         public void run() {
             try {
+                final long positionMs = LyricsManager.getInstance().getPositionMs();
                 if (onlyMode != OnlyMode.NONE) {
                     updateOnlyHighlight();
                 } else {
                     updateHighlight();
-                    updateWordSync(LyricsManager.getInstance().getPositionMs());
+                    updateWordSync(positionMs);
                 }
+                updateSectionDots(positionMs);
 
                 // The app restores its own panel content asynchronously, and switching
                 // to another engagement panel gives no lyrics state change to react to,
@@ -664,7 +713,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     && newLyrics != null && !newLyrics.isEmpty()) {
                 return;
             }
-            if (state == LyricsManager.State.LOADED && newLyrics == lyrics
+if (state == LyricsManager.State.LOADED && newLyrics == lyrics
                     && newLyrics != null && !newLyrics.isEmpty()) {
                 if (refreshInProgress) {
                     refreshInProgress = false;
@@ -673,6 +722,13 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 }
                 return;
             }
+            if (state == LyricsManager.State.LOADED && newLyrics != null
+                    && lyrics != null && newLyrics != lyrics && !newLyrics.isEmpty()
+                    && sameLinesExceptSongPart(lyrics, newLyrics)
+                    && applySectionLabelsInPlace(newLyrics)) {
+                return;
+            }
+
             TrackInfo track = LyricsManager.getInstance().getCurrentTrack();
             if (track != lastKnownTrack) {
                 lastKnownTrack = track;
@@ -682,6 +738,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             }
             lyrics = newLyrics;
             highlightedIndex = -1;
+            resetSectionDots();
             karaokeState.resetPending();
             seekPending = false;
             userScrollUntilUptimeMs = 0;
@@ -766,6 +823,119 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onLyricsChanged failure", ex);
+        }
+    }
+
+    private static boolean sameLinesExceptSongPart(@NonNull Lyrics a, @NonNull Lyrics b) {
+        final List<LyricsLine> left = a.lines();
+        final List<LyricsLine> right = b.lines();
+        if (left.size() != right.size() || a.synced() != b.synced()) {
+            return false;
+        }
+        for (int i = 0; i < left.size(); i++) {
+            LyricsLine x = left.get(i);
+            LyricsLine y = right.get(i);
+            if (x.startTimeMs() != y.startTimeMs() || x.endTimeMs() != y.endTimeMs()
+                    || !Objects.equals(x.text(), y.text())
+                    || !Objects.equals(x.words(), y.words())
+                    || !Objects.equals(x.agentId(), y.agentId())
+                    || x.isDuet() != y.isDuet() || x.isBG() != y.isBG()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean applySectionLabelsInPlace(@NonNull Lyrics newLyrics) {
+        final List<LyricsLine> newLines = newLyrics.lines();
+        if (lineRows.size() != newLines.size() || lineViews.size() != newLines.size()
+                || sectionTags.size() != newLines.size()
+                || sectionDots.size() != newLines.size()
+                || sectionDotSlots.size() != newLines.size()) {
+            return false;
+        }
+
+        // Any label dimmed by a gap is put back, since the gaps driving it are replaced below.
+        resetSectionDots();
+
+        Context context = getContext();
+        String previousLeadSongPart = null;
+        for (int i = 0; i < newLines.size(); i++) {
+            LyricsLine line = newLines.get(i);
+            // The same rule buildLyrics applies, which it has to stay in step with.
+            final String songPart = line.songPart();
+            final boolean opensSection = !line.isBG()
+                    && songPart != null && !songPart.isEmpty()
+                    && !songPart.equals(previousLeadSongPart);
+            if (!line.isBG()) {
+                previousLeadSongPart = songPart;
+            }
+
+            final TextView builtTag = sectionTags.get(i);
+            final FrameLayout builtSlot = sectionDotSlots.get(i);
+            if (opensSection && builtTag != null) {
+                // Already carries the label this line opened; only its text can have changed.
+                builtTag.setText(songPart);
+                continue;
+            }
+            if (opensSection) {
+                // Gaining a label: drop the slot that was standing in for it and show the label.
+                if (builtSlot != null) {
+                    asRow(lineRows.get(i)).removeView(builtSlot);
+                    sectionDotSlots.set(i, null);
+                    sectionDots.set(i, null);
+                }
+                TextView tag = createSectionTag(context, songPart);
+                LinearLayout dotsRow = createSectionDots(context);
+                FrameLayout tagRow = new FrameLayout(context);
+                tagRow.addView(tag, tagLayoutParams());
+                tagRow.addView(dotsRow, dotsLayoutParams());
+                asRow(lineRows.get(i)).addView(tagRow, 0, slotLayoutParams());
+                sectionTags.set(i, tag);
+                sectionDots.set(i, dotsRow);
+                tagRow.setAlpha(0f);
+                tagRow.animate().alpha(1f).setDuration(SECTION_TAG_FADE_IN_MILLIS).start();
+            } else if (builtTag != null) {
+                // Losing a label: drop the row it was built with, then let the slot below take its
+                // turn if a silence still calls for one.
+                asRow(lineRows.get(i)).removeViewAt(0);
+                sectionTags.set(i, null);
+                sectionDots.set(i, null);
+            }
+        }
+
+        lyrics = newLyrics;
+        lastBuiltLyrics = newLyrics;
+        final List<SectionDotsMotion.Gap> newGaps = SectionDotsMotion.computeGaps(newLines);
+        sectionDotsGaps = newGaps;
+        ensureDotsSlotsExist(context, newGaps);
+        return true;
+    }
+
+    /**
+     * Gives a slot to every line a gap points at that has no label to stand in for it, so a silence
+     * that starts showing up after the rows were built still has somewhere to play.
+     */
+    private void ensureDotsSlotsExist(Context context, List<SectionDotsMotion.Gap> gaps) {
+        for (SectionDotsMotion.Gap gap : gaps) {
+            final int index = gap.tagLineIndex();
+            if (index < 0 || index >= sectionDotSlots.size()
+                    || sectionTags.get(index) != null || sectionDotSlots.get(index) != null) {
+                continue;
+            }
+            final ViewGroup existingRow = asRow(lineRows.get(index));
+            if (existingRow == null) {
+                continue;
+            }
+            LinearLayout dotsRow = createSectionDots(context);
+            FrameLayout slot = new FrameLayout(context);
+            slot.addView(dotsRow, dotsLayoutParams());
+            FrameLayout.LayoutParams params = slotLayoutParams();
+            params.height = 0;
+            params.topMargin = 0;
+            existingRow.addView(slot, 0, params);
+            sectionDotSlots.set(index, slot);
+            sectionDots.set(index, dotsRow);
         }
     }
 
@@ -917,6 +1087,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final int textSize = Settings.LYRICS_TEXT_SIZE.get();
         final int foregroundColor = LyricsColors.lineTextColor();
         final boolean tapToSeek = newLyrics.synced() && Settings.LYRICS_TAP_TO_SEEK.get();
+        final Paint baseLinePaint = new Paint();
+        baseLinePaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, textSize,
+                getResources().getDisplayMetrics()));
+        baseLinePaint.setTypeface(Typeface.DEFAULT_BOLD);
+        baseLinePaint.setElegantTextHeight(true);
 
         final int generation = buildGeneration.get();
         final OnlyMode onlySnap = onlyMode;
@@ -924,6 +1099,16 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final List<LyricsLine> romanizedSnap = romanizedLines;
         final List<String> translatedSnap = translatedLines;
         final boolean perWordRomajiSnap = perWordRomaji;
+        String previousLeadSongPart = null;
+        // Needed up front: a line without a label only gets a slot if a silence calls for one.
+        final List<SectionDotsMotion.Gap> builtGaps = SectionDotsMotion.computeGaps(newLyrics.lines());
+        final boolean[] gapAnchors = new boolean[newLyrics.lines().size()];
+        for (SectionDotsMotion.Gap gap : builtGaps) {
+            final int anchor = gap.tagLineIndex();
+            if (anchor >= 0 && anchor < gapAnchors.length) {
+                gapAnchors[anchor] = true;
+            }
+        }
 
         for (int i = 0; i < newLyrics.lines().size(); i++) {
             LyricsLine line = newLyrics.lines().get(i);
@@ -944,7 +1129,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             if (preserveHidePosition) {
                 LyricsSpanBuilder.BuildResult result =
                         LyricsSpanBuilder.buildLineText(line, gapTimings, i,
-                                perWordRomaji, romanizedLines, translatedLines, onlyMode);
+                                perWordRomaji, romanizedLines, translatedLines, onlyMode,
+                                baseLinePaint);
                 lineView.setText(result.text());
                 lineView.setTranslationBounds(result.transStart(), result.transEnd());
                 lineView.setRomanizationBounds(result.romaStart(), result.romaEnd());
@@ -963,9 +1149,11 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineOriginalStarts.add(gapOrigStart);
             if (reusePrevious) {
                 lineView.setHighlight(gapTimings, prevView.positionMs, prevView.allSung,
-                        LyricsColors.unsungWordColor(), LyricsColors.lineTextColor(), gapOrigStart);
+                        LyricsColors.unsungWordColor(), gapOrigStart);
             }
-            lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+            lineView.setActiveLine(onlySnap == OnlyMode.NONE
+                    && reusePrevious && prevView.activeLine, LyricsColors.secondaryTextColor());
+            lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, lineTextSizeSp(line.isBG(), textSize));
             lineView.setTextColor(foregroundColor);
             lineView.setAlpha(1f);
             lineView.lineAlpha = newLyrics.synced()
@@ -1032,6 +1220,46 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 lineView.setGravity(Gravity.START | Gravity.TOP);
             }
 
+            // A background vocal sits under its lead line and carries the same label, so only a
+            // lead line opens a section. The dots measure the silence on the same lines, so a
+            // label and the dots standing in for it always land on the same line.
+            final String songPart = line.songPart();
+            final boolean opensSection = !line.isBG()
+                    && songPart != null && !songPart.isEmpty()
+                    && !songPart.equals(previousLeadSongPart);
+            if (!line.isBG()) {
+                previousLeadSongPart = songPart;
+            }
+            TextView sectionTag = createSectionTag(context,
+                    opensSection ? songPart : null);
+            LinearLayout sectionDotsRow = null;
+            FrameLayout sectionDotSlot = null;
+            if (sectionTag != null) {
+                sectionDotsRow = createSectionDots(context);
+                FrameLayout tagRow = new FrameLayout(context);
+                tagRow.addView(sectionTag, tagLayoutParams());
+                tagRow.addView(sectionDotsRow, dotsLayoutParams());
+                lineRow.addView(tagRow, slotLayoutParams());
+                final TextView measuredTag = sectionTag;
+                measuredTag.post(() -> {
+                    if (measuredTag.getHeight() > 0) {
+                        sectionTagHeightPx = measuredTag.getHeight();
+                    }
+                });
+            } else if (i < gapAnchors.length && gapAnchors[i]) {
+                // No label here, but a silence runs up to this line; the slot it opens gives the
+                // dots somewhere to play that matches what a label would have taken.
+                sectionDotsRow = createSectionDots(context);
+                sectionDotSlot = new FrameLayout(context);
+                sectionDotSlot.addView(sectionDotsRow, dotsLayoutParams());
+                FrameLayout.LayoutParams slotParams = slotLayoutParams();
+                // Starts fully closed: the dots row inside must not take space until a gap opens
+                // it, and neither must the margin, which a zero-height child still occupies.
+                slotParams.height = 0;
+                slotParams.topMargin = 0;
+                lineRow.addView(sectionDotSlot, slotParams);
+            }
+
             lineRow.addView(lineView, new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -1044,8 +1272,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                             LinearLayout.LayoutParams.WRAP_CONTENT));
             lineViews.add(lineView);
             lineRows.add(lineRow);
+            sectionTags.add(sectionTag);
+            sectionDots.add(sectionDotsRow);
+            sectionDotSlots.add(sectionDotSlot);
             lineUnsungSpans.add(null);
+            lineIsBackground.add(line.isBG());
         }
+
+        sectionDotsGaps = builtGaps;
 
         LINE_BUILDER_EXECUTOR.execute(() -> {
             try {
@@ -1092,7 +1326,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                                 LyricsSpanBuilder.BuildResult result =
                                         LyricsSpanBuilder.buildLineText(newLyrics.lines().get(i),
                                                 allTimings.get(i), i,
-                                                perWordRomaji, romanizedLines, translatedLines, onlyMode);
+                                                perWordRomaji, romanizedLines, translatedLines, onlyMode,
+                                                baseLinePaint);
                                 tv.setText(result.text());
                                 lineUnsungSpans.set(i, result.unsungSpan());
                                 if (tv instanceof LyricsLineView lineView) {
@@ -1123,11 +1358,12 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                                 continue;
                             }
                             final TextView tv = lineViews.get(i);
-                            tv.measure(View.MeasureSpec.makeMeasureSpec(
-                                            lineRows.get(i).getWidth(), View.MeasureSpec.EXACTLY),
+                            final View row = lineRows.get(i);
+                            row.measure(View.MeasureSpec.makeMeasureSpec(
+                                            row.getWidth(), View.MeasureSpec.EXACTLY),
                                     View.MeasureSpec.makeMeasureSpec(0,
                                             View.MeasureSpec.UNSPECIFIED));
-                            final int newH = tv.getMeasuredHeight();
+                            final int newH = row.getMeasuredHeight();
                             if (Math.abs(newH - oldH) <= 1) {
                                 continue;
                             }
@@ -1190,11 +1426,19 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         footerView.setOnClickListener(view -> onSourceClicked());
 
         List<String> songwriters = newLyrics.songwriters();
-        if (songwriters != null && !songwriters.isEmpty()) {
+        String about = newLyrics.about();
+        boolean hasAbout = about != null && !about.isEmpty();
+        if ((songwriters != null && !songwriters.isEmpty()) || hasAbout) {
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < songwriters.size(); i++) {
-                if (i > 0) sb.append('\n');
-                sb.append(songwriters.get(i));
+            if (songwriters != null) {
+                for (int i = 0; i < songwriters.size(); i++) {
+                    if (i > 0) sb.append('\n');
+                    sb.append(songwriters.get(i));
+                }
+            }
+            if (hasAbout) {
+                if (sb.length() > 0) sb.append('\n');
+                sb.append(about);
             }
             creditView.setText(sb.toString());
             creditView.setVisibility(Settings.LYRICS_HIDE_INFO.get() ? GONE : VISIBLE);
@@ -1602,6 +1846,16 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
     private void applyOnlyModeState() {
         captureOnlyModeScrollAnchor();
         resetOnlyModeKaraokeState();
+        clearActiveLineState();
+    }
+
+    private void clearActiveLineState() {
+        final int color = LyricsColors.secondaryTextColor();
+        for (TextView lineView : lineViews) {
+            if (lineView instanceof LyricsLineView view) {
+                view.setActiveLine(false, color);
+            }
+        }
     }
 
     private void clearPendingHideAnchor() {
@@ -2300,6 +2554,29 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                 + 2 * SECONDARY_REVEAL_MILLISECONDS + 100;
     }
 
+    private static int rowHeightOutsideText(View row, View text) {
+        if (!(row instanceof ViewGroup group)) {
+            return 0;
+        }
+        int total = 0;
+        for (int i = 0; i < group.getChildCount(); i++) {
+            final View child = group.getChildAt(i);
+            if (child == text) {
+                continue;
+            }
+            int height = child.getHeight();
+            final ViewGroup.LayoutParams lp = child.getLayoutParams();
+            if (height <= 0 && lp != null && lp.height > 0) {
+                height = lp.height;
+            }
+            total += height;
+            if (lp instanceof ViewGroup.MarginLayoutParams margins) {
+                total += margins.topMargin + margins.bottomMargin;
+            }
+        }
+        return total;
+    }
+
     private void shrinkRegionRows(boolean trans, Runnable onEnd) {
         final List<RowResize> resizes = new ArrayList<>();
         for (int i = 0; i < lineViews.size() && i < lineRows.size(); i++) {
@@ -2322,8 +2599,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
                     ? layout.getHeight()
                     - layout.getLineBottom(layout.getLineForOffset(end - 1))
                     : layout.getLineTop(layout.getLineForOffset(start));
-            final int targetH =
-                    targetLayoutH + tv.getPaddingTop() + tv.getPaddingBottom();
+            final int targetH = targetLayoutH + tv.getPaddingTop() + tv.getPaddingBottom()
+                    + rowHeightOutsideText(row, tv);
             if (targetH <= 0 || targetH >= oldH - 1) {
                 continue;
             }
@@ -2358,9 +2635,15 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
         lineViews.clear();
         lineRows.clear();
+        sectionTags.clear();
+        sectionDots.clear();
+        sectionDotSlots.clear();
+        sectionDotsGaps = List.of();
+        activeSectionDotsIndex = -1;
         lineWordSpans.clear();
         lineOriginalStarts.clear();
         lineUnsungSpans.clear();
+        lineIsBackground.clear();
         highlightedIndex = -1;
         karaokeState.resetContent();
         lastOverlayIndex = -1;
@@ -2383,6 +2666,21 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
     }
 
+    private void markActiveLine(int index, Lyrics current, boolean active) {
+        if (index < 0 || current == null) {
+            return;
+        }
+        final int color = LyricsColors.secondaryTextColor();
+        if (index < lineViews.size() && lineViews.get(index) instanceof LyricsLineView view) {
+            view.setActiveLine(active, color);
+        }
+        forEachBgLine(index, current, i -> {
+            if (lineViews.get(i) instanceof LyricsLineView view) {
+                view.setActiveLine(active, color);
+            }
+        });
+    }
+
     private void updateHighlight() {
         Lyrics current = lyrics;
         if (current == null || !current.synced() || lineViews.isEmpty()) {
@@ -2395,6 +2693,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final long pos = manager.getPositionMs();
         final int index = current.indexForPosition(pos, highlightedIndex);
         if (index == highlightedIndex) {
+            markActiveLine(index, current, true);
             if (!karaokeActive && index >= 0 && index < lineViews.size()) {
                 lineViews.get(index).setTextColor(LyricsColors.lineTextColor());
                 forEachBgLine(index, current,
@@ -2408,6 +2707,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         if (highlightedIndex >= 0 && highlightedIndex < lineViews.size()) {
             final boolean keepFullOpacity = karaokeActive
                     && KaraokeHighlightState.stillLit(wordTimings, highlightedIndex, pos);
+            markActiveLine(highlightedIndex, current, false);
             if (!keepFullOpacity) {
                 fadeTo(lineViews.get(highlightedIndex), INACTIVE_LINE_ALPHA);
                 if (!karaokeActive) {
@@ -2435,6 +2735,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         applyLineOverlay(index);
 
+        markActiveLine(index, current, true);
+
         fadeTo(lineViews.get(index), 1f);
         if (!karaokeActive) {
             lineViews.get(index).setTextColor(LyricsColors.lineTextColor());
@@ -2451,6 +2753,195 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
 
         scrollAnchorIntoView(index, true);
+    }
+
+    /**
+     * Plays the dots over a silence long enough to read as an instrumental break, in place of the
+     * section label of the section that comes next.
+     *
+     * <p>Everything here is derived from the playback position rather than accumulated, so a seek
+     * into the middle of a gap simply lands on that gap's frame and a dropped tick cannot leave the
+     * label or the dots stranded.
+     */
+    private void updateSectionDots(long positionMs) {
+        List<SectionDotsMotion.Gap> gaps = sectionDotsGaps;
+        if (gaps.isEmpty() || onlyMode != OnlyMode.NONE
+                || !Settings.LYRICS_SHOW_SECTION.get()) {
+            resetSectionDots();
+            return;
+        }
+        SectionDotsMotion.Gap gap = null;
+        for (SectionDotsMotion.Gap candidate : gaps) {
+            if (positionMs >= candidate.gapStartMs() && positionMs < candidate.gapEndMs()) {
+                gap = candidate;
+                break;
+            }
+        }
+        if (gap == null) {
+            resetSectionDots();
+            return;
+        }
+        final int index = gap.tagLineIndex();
+        if (index < 0 || index >= sectionTags.size() || index >= sectionDots.size()
+                || index >= sectionDotSlots.size()) {
+            // The gaps are measured on the lines these lists were built from, so this cannot
+            // normally happen; a label left half-swapped would be worse than no motion.
+            resetSectionDots();
+            return;
+        }
+        if (activeSectionDotsIndex != index) {
+            resetSectionDots();
+            activeSectionDotsIndex = index;
+        }
+        applySectionDotsState(SectionDotsMotion.stateAt(
+                gap.gapStartMs(), gap.gapEndMs(), positionMs), index);
+    }
+
+    @NonNull
+    private static ViewGroup asRow(View row) {
+        return (ViewGroup) row;
+    }
+
+    /** Puts one label and its dot row where {@code state} says they belong. */
+    private void applySectionDotsState(SectionDotsMotion.State state, int index) {
+        TextView tag = sectionTags.get(index);
+        if (tag != null) {
+            tag.setAlpha(state.pillAlpha());
+        }
+        final FrameLayout slot = index < sectionDotSlots.size() ? sectionDotSlots.get(index) : null;
+        if (slot != null) {
+            // A line with no label gives the dots its space by opening up rather than by handing
+            // over a label, so the space is driven from the same curve the fade is.
+            applySectionSlotHeight(slot, Math.round(state.expand() * targetSectionSlotHeight()),
+                    Math.round(state.expand() * Dim.dp24));
+        }
+        LinearLayout dotsRow = sectionDots.get(index);
+        if (dotsRow == null) {
+            return;
+        }
+        dotsRow.setVisibility(state.dotsVisible() ? VISIBLE : GONE);
+        if (!state.dotsVisible()) {
+            return;
+        }
+        dotsRow.setAlpha(state.groupAlpha());
+        final float[] dotAlpha = state.dotAlpha();
+        for (int i = 0; i < dotsRow.getChildCount() && i < dotAlpha.length; i++) {
+            dotsRow.getChildAt(i).setAlpha(dotAlpha[i]);
+        }
+    }
+
+    private void applySectionSlotMargin(int lineIndex, int marginPx) {
+        if (lineIndex < 0 || lineIndex >= lineRows.size()) {
+            return;
+        }
+        final View row = lineRows.get(lineIndex);
+        if (!(row instanceof ViewGroup group) || group.getChildCount() == 0) {
+            return;
+        }
+        final View slot = group.getChildAt(0);
+        if (!(slot instanceof FrameLayout)) {
+            return;
+        }
+        final ViewGroup.MarginLayoutParams params =
+                (ViewGroup.MarginLayoutParams) slot.getLayoutParams();
+        if (params == null || params.topMargin == marginPx) {
+            return;
+        }
+        params.topMargin = marginPx;
+        slot.setLayoutParams(params);
+    }
+
+    /** Sets a slot's height, asking for a layout only when it actually moved. */
+    private void applySectionSlotHeight(FrameLayout slot, int heightPx, int marginPx) {
+        final ViewGroup.MarginLayoutParams params =
+                (ViewGroup.MarginLayoutParams) slot.getLayoutParams();
+        if (params == null
+                || (params.height == heightPx && params.topMargin == marginPx)) {
+            return;
+        }
+        params.height = heightPx;
+        params.topMargin = marginPx;
+        slot.setLayoutParams(params);
+    }
+
+    /** Restores the label and hides the dots of whichever line was animating. */
+    private void resetSectionDots() {
+        final int index = activeSectionDotsIndex;
+        if (index < 0) {
+            return;
+        }
+        activeSectionDotsIndex = -1;
+        if (index < sectionTags.size()) {
+            TextView tag = sectionTags.get(index);
+            if (tag != null) {
+                tag.setAlpha(1f);
+            }
+        }
+        if (index < sectionDotSlots.size()) {
+            FrameLayout slot = sectionDotSlots.get(index);
+            if (slot != null) {
+                applySectionSlotHeight(slot, 0, 0);
+            }
+        }
+        if (index < sectionDots.size()) {
+            LinearLayout dotsRow = sectionDots.get(index);
+            if (dotsRow != null) {
+                dotsRow.setVisibility(GONE);
+                dotsRow.setAlpha(1f);
+            }
+        }
+    }
+
+    /**
+     * The row of dots that stands in for a section label over a silence: three white discs in the
+     * label's own material, so the swap reads as one shape opening into another.
+     *
+     * @return The row, hidden until a gap drives it.
+     */
+    @Nullable
+    private static LinearLayout createSectionDots(Context context) {
+        LinearLayout row = new LinearLayout(context);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setVisibility(GONE);
+        final int size = scaledPixels(context, SECTION_DOT_SIZE_FACTOR);
+        final int gap = scaledPixels(context, SECTION_DOT_GAP_FACTOR);
+        for (int i = 0; i < SectionDotsMotion.DOT_COUNT; i++) {
+            View dot = new View(context);
+            GradientDrawable disc = new GradientDrawable();
+            disc.setShape(GradientDrawable.OVAL);
+            disc.setColor(Color.WHITE);
+            dot.setBackground(disc);
+            LinearLayout.LayoutParams dotParams = new LinearLayout.LayoutParams(size, size);
+            if (i > 0) {
+                dotParams.setMarginStart(gap);
+            }
+            row.addView(dot, dotParams);
+        }
+        return row;
+    }
+
+    private static void applySectionDotSize(@Nullable LinearLayout row) {
+        if (row == null) {
+            return;
+        }
+        final int size = scaledPixels(row.getContext(), SECTION_DOT_SIZE_FACTOR);
+        final int gap = scaledPixels(row.getContext(), SECTION_DOT_GAP_FACTOR);
+        for (int i = 0; i < row.getChildCount(); i++) {
+            final View dot = row.getChildAt(i);
+            if (dot == null) {
+                continue;
+            }
+            final LinearLayout.LayoutParams params =
+                    (LinearLayout.LayoutParams) dot.getLayoutParams();
+            if (params == null) {
+                continue;
+            }
+            params.width = size;
+            params.height = size;
+            params.setMarginStart(i == 0 ? 0 : gap);
+            dot.setLayoutParams(params);
+        }
     }
 
     private void scrollAnchorIntoView(int anchor, boolean lineChanged) {
@@ -2578,12 +3069,14 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         final long pos = LyricsManager.getInstance().getPositionMs();
         final int index = current.indexForPosition(pos, highlightedIndex);
         if (index == highlightedIndex) {
+            markActiveLine(index, current, true);
             applyLineOverlay(index);
             scrollAnchorIntoView(Math.max(index, 0), false);
             return;
         }
 
         if (highlightedIndex >= 0 && highlightedIndex < lineViews.size()) {
+            markActiveLine(highlightedIndex, current, false);
             fadeTo(lineViews.get(highlightedIndex), INACTIVE_LINE_ALPHA);
             lineViews.get(highlightedIndex).setTextColor(LyricsColors.unsungWordColor());
             forEachBgLine(highlightedIndex, current, i -> {
@@ -2604,6 +3097,8 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         }
 
         applyLineOverlay(index);
+
+        markActiveLine(index, current, true);
 
         fadeTo(lineViews.get(index), 1f);
         lineViews.get(index).setTextColor(LyricsColors.lineTextColor());
@@ -2657,7 +3152,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
             lineUnsungSpans.set(line, null);
         }
         if (lineViews.get(line) instanceof LyricsLineView lineView) {
-            lineView.setHighlight(Collections.emptyList(), 0, false, 0, 0, -1);
+            lineView.setHighlight(Collections.emptyList(), 0, false, 0, -1);
         }
     }
 
@@ -2733,7 +3228,7 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
         if (lineView instanceof LyricsLineView) {
             ((LyricsLineView) lineView).setHighlight(
-                    timings, positionMs, allSung, LyricsColors.unsungWordColor(), LyricsColors.lineTextColor(), origStart);
+                    timings, positionMs, allSung, LyricsColors.unsungWordColor(), origStart);
         }
     }
 
@@ -2775,6 +3270,146 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
         // The secondary color alone is brighter than the app draws this line, which
         // sits dimmer than even the inactive lyrics above it.
         footer.setAlpha(FOOTER_ALPHA);
+    }
+
+    /**
+     * Where the label sits inside its row: flush to the line's left edge, so the text it draws lands
+     * {@link #SECTION_TAG_PADDING_HORIZONTAL} in, right where the dot row below it starts.
+     */
+    private static FrameLayout.LayoutParams tagLayoutParams() {
+        return new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                Gravity.START | Gravity.CENTER_VERTICAL);
+    }
+
+    /**
+     * Where the dot row sits inside a label or slot. The margin lines its first dot up with the
+     * label's text, which the pill's own padding sets that far in from the pill's outer edge.
+     */
+    private static FrameLayout.LayoutParams dotsLayoutParams() {
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                Gravity.START | Gravity.CENTER_VERTICAL);
+        params.leftMargin = SECTION_TAG_PADDING_HORIZONTAL;
+        return params;
+    }
+
+    /**
+     * How the label or slot is placed in its line: wrapped to what it holds, and set off the line
+     * above by the same gap whether it is showing a label or making room for the dots.
+     */
+    private static FrameLayout.LayoutParams slotLayoutParams() {
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT);
+        params.topMargin = Dim.dp24;
+        return params;
+    }
+
+    /**
+     * The height a slot opens to, taken from a label once one has been measured and otherwise
+     * worked out from the label's own text size and padding.
+     */
+    private int targetSectionSlotHeight() {
+        if (sectionTagHeightPx > 0) {
+            return sectionTagHeightPx;
+        }
+        final float textPx = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                sectionTagTextSizeSp(), getResources().getDisplayMetrics());
+        final Paint metricsPaint = new Paint();
+        metricsPaint.setTextSize(textPx);
+        final Paint.FontMetrics fontMetrics = metricsPaint.getFontMetrics();
+        final int textHeight = Math.round(fontMetrics.descent - fontMetrics.ascent);
+        return Math.max(0, textHeight + Dim.dp4 * 2);
+    }
+
+    private static int lineTextSizeSp(boolean isBackground, int textSize) {
+        return isBackground
+                ? Math.round(textSize * BACKGROUND_TEXT_SIZE_FACTOR)
+                : textSize;
+    }
+
+    private static int sectionTagTextSizeSp() {
+        return Math.round(Settings.LYRICS_TEXT_SIZE.get() * SECTION_TAG_TEXT_SIZE_FACTOR);
+    }
+
+    private static int scaledPixels(@NonNull Context context, float factor) {
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                Settings.LYRICS_TEXT_SIZE.get() * factor,
+                context.getResources().getDisplayMetrics()));
+    }
+
+    /**
+     * Builds the small label that introduces a section, drawn as a white pill above the line it
+     * belongs to.
+     *
+     * @return {@code null} when the line opens no section. The label is always built when there
+     *         is one, so flipping the setting on can reveal it without rebuilding the lyrics;
+     *         whether it is shown is decided by its visibility.
+     */
+    @Nullable
+    private static TextView createSectionTag(Context context, @Nullable String songPart) {
+        if (songPart == null || songPart.isEmpty()) {
+            return null;
+        }
+        TextView tag = new TextView(context);
+        tag.setText(songPart);
+        tag.setTextSize(TypedValue.COMPLEX_UNIT_SP, sectionTagTextSizeSp());
+        tag.setTextColor(Color.BLACK);
+        tag.setSingleLine(true);
+        tag.setGravity(Gravity.CENTER);
+        tag.setIncludeFontPadding(false);
+        tag.setBackground(new PillDrawable());
+        tag.setPadding(SECTION_TAG_PADDING_HORIZONTAL, Dim.dp4, SECTION_TAG_PADDING_HORIZONTAL, Dim.dp4);
+        tag.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+        tag.setVisibility(Settings.LYRICS_SHOW_SECTION.get() ? VISIBLE : GONE);
+        return tag;
+    }
+
+    private static final class PillDrawable extends GradientDrawable {
+
+        PillDrawable() {
+            setColor(Color.argb(Math.round(255 * PILL_ALPHA), 255, 255, 255));
+        }
+
+        @Override
+        protected void onBoundsChange(Rect bounds) {
+            super.onBoundsChange(bounds);
+            setCornerRadius(bounds.height() / 2f);
+        }
+    }
+
+    /** Shows or hides every section label without rebuilding the lines. */
+    public void applyShowSection() {
+        final int visibility = Settings.LYRICS_SHOW_SECTION.get() ? VISIBLE : GONE;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            linesContainer.suppressLayout(true);
+        }
+        try {
+            // A label caught mid-swap would otherwise come back without its opacity, and dots
+            // belonging to a hidden label would keep breathing.
+            resetSectionDots();
+            final boolean showing = visibility == VISIBLE;
+            for (int i = 0; i < sectionTags.size(); i++) {
+                final TextView tag = sectionTags.get(i);
+                if (tag == null) {
+                    continue;
+                }
+                tag.setAlpha(1f);
+                if (tag.getVisibility() != visibility) {
+                    tag.setVisibility(visibility);
+                }
+                applySectionSlotMargin(i, showing ? Dim.dp24 : 0);
+            }
+        } finally {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                linesContainer.suppressLayout(false);
+            }
+        }
     }
 
     private void createToolbarButtons() {
@@ -2825,8 +3460,32 @@ public final class LyricsPanelView extends FrameLayout implements LyricsManager.
 
     public void applyTextSize() {
         final int textSize = Settings.LYRICS_TEXT_SIZE.get();
-        for (TextView lineView : lineViews) {
-            lineView.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
+        final int count = Math.min(lineViews.size(), lineIsBackground.size());
+        for (int i = 0; i < count; i++) {
+            final boolean isBackground = Boolean.TRUE.equals(lineIsBackground.get(i));
+            lineViews.get(i).setTextSize(TypedValue.COMPLEX_UNIT_SP,
+                    lineTextSizeSp(isBackground, textSize));
+        }
+        final int tagSize = sectionTagTextSizeSp();
+        for (TextView tag : sectionTags) {
+            if (tag != null) {
+                tag.setTextSize(TypedValue.COMPLEX_UNIT_SP, tagSize);
+            }
+        }
+        for (LinearLayout dotsRow : sectionDots) {
+            applySectionDotSize(dotsRow);
+        }
+        sectionTagHeightPx = 0;
+        for (TextView tag : sectionTags) {
+            if (tag == null || tag.getVisibility() != VISIBLE) {
+                continue;
+            }
+            final TextView measuredTag = tag;
+            measuredTag.post(() -> {
+                if (measuredTag.getHeight() > 0) {
+                    sectionTagHeightPx = measuredTag.getHeight();
+                }
+            });
         }
     }
 

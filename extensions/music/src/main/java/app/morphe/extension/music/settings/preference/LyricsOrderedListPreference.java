@@ -12,6 +12,8 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.preference.Preference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -51,8 +53,8 @@ public final class LyricsOrderedListPreference extends Preference {
     /** Canonical provider ids, in the default priority order, shown in the list. */
     private static final List<String> PROVIDER_ORDER = Arrays.asList(
             "YTMusic", "Captions", "LRCLIB", "QQ", "NetEase", "KuGou", "Luna",
-            "PetitLyrics", "bLyrics", "BiniLyrics", "Unison", "SimpMusic", "AMLL",
-            "LunaBeat", "Lyricify", "Apple", "Musixmatch", "Spotify", "Deezer");
+            "RMM", "PetitLyrics", "bLyrics", "BiniLyrics", "Unison", "SimpMusic", "AMLL",
+            "LunaBeat", "Lyricify", "Apple", "Musixmatch", "Spotify", "Deezer", "Genius");
 
     /** Friendlier labels for display; ids not present here are shown verbatim. */
     private static final Map<String, String> PROVIDER_LABELS = new HashMap<>();
@@ -60,12 +62,33 @@ public final class LyricsOrderedListPreference extends Preference {
         PROVIDER_LABELS.put("YTMusic", "YouTube Music");
         PROVIDER_LABELS.put("Captions", "YouTube Captions (Auto) *");
         PROVIDER_LABELS.put("Apple", "Apple Music");
+        PROVIDER_LABELS.put("RMM", "RMM Revival");
         PROVIDER_LABELS.put("Luna", "Soda (Luna)");
         PROVIDER_LABELS.put("bLyrics", "BetterLyrics (bLyrics)");
         PROVIDER_LABELS.put("BiniLyrics", "BiniLyrics (Binimum)");
         PROVIDER_LABELS.put("Musixmatch", "Musixmatch");
         PROVIDER_LABELS.put("Spotify", "Spotify *");
         PROVIDER_LABELS.put("Deezer", "Deezer *");
+        PROVIDER_LABELS.put("Genius", "Genius");
+    }
+
+    private static final Map<String, String> PROVIDER_URLS = new HashMap<>();
+    static {
+        PROVIDER_URLS.put("LRCLIB", "https://lrclib.net/");
+        PROVIDER_URLS.put("QQ", "https://y.qq.com/");
+        PROVIDER_URLS.put("NetEase", "https://music.163.com/");
+        PROVIDER_URLS.put("KuGou", "https://www.kugou.com/");
+        PROVIDER_URLS.put("Luna", "https://www.qishui.com/");
+        PROVIDER_URLS.put("PetitLyrics", "https://petitlyrics.com/");
+        PROVIDER_URLS.put("bLyrics", "https://betterlyrics.org/");
+        PROVIDER_URLS.put("BiniLyrics", "https://lyrics.binimum.org/");
+        PROVIDER_URLS.put("Unison", "https://unison.boidu.dev/");
+        PROVIDER_URLS.put("SimpMusic", "https://lyrics.simpmusic.org/");
+        PROVIDER_URLS.put("AMLL", "https://amlldb.bikonoo.com/");
+        PROVIDER_URLS.put("LunaBeat", "https://2755337087.github.io/ttml-hub/");
+        PROVIDER_URLS.put("Lyricify", "https://lyricify.app/");
+        PROVIDER_URLS.put("RMM", "https://rmmreviv.al/");
+        PROVIDER_URLS.put("Genius", "https://genius.com/");
     }
 
     private static String providerLabel(String id) {
@@ -134,7 +157,8 @@ public final class LyricsOrderedListPreference extends Preference {
                     })
                     .setNegativeButton(android.R.string.cancel, null)
                     .show();
-        } catch (WindowManager.BadTokenException ignored) {
+        } catch (WindowManager.BadTokenException ex) {
+            Logger.printException(() -> "Could not show the reset dialog", ex);
         }
     }
 
@@ -234,6 +258,16 @@ public final class LyricsOrderedListPreference extends Preference {
         pref.showDialog(onTokenSaved);
     }
 
+    private void openUrl(String url) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getContext().startActivity(intent);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Failed to open provider site", ex);
+        }
+    }
+
     private void rebuildRows() {
         if (rowsContainer == null) {
             return;
@@ -272,6 +306,10 @@ public final class LyricsOrderedListPreference extends Preference {
         if (!locked && hasTokenDialog(item.id)) {
             name.setClickable(true);
             name.setOnClickListener(v -> showTokenDialogFor(item.id, null));
+        } else if (!locked && PROVIDER_URLS.containsKey(item.id)) {
+            final String url = PROVIDER_URLS.get(item.id);
+            name.setClickable(true);
+            name.setOnClickListener(v -> openUrl(url));
         }
 
         Switch switchV = new Switch(context);

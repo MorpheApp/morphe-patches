@@ -560,8 +560,22 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_queue_override_flyout_menu_summary">YouTube növbəsi əvəzinə Morphe növbəsini açır</string>
   <string name="morphe_queue_add_flyout_menu_title">Axına açılan növbə menyusu elementini əlavə et</string>
   <string name="morphe_queue_add_flyout_menu_summary">Əlavə açılan elementi əlavə edir. \"Növbəyə əlavə et\" görünmürsə, bunu aktivləşdir</string>
+  <string name="morphe_local_queue_title">Premium üslubu növbəsi</string>
+  <string name="morphe_local_queue_summary">"Morphe növbəsini cihazda olan, ardıcıl oynadılan və sürüşdürərək sıralana bilən növbə ilə əvəzləyir
+​
+Məlumat: Növbədəki növbəti video yalnız YouTube ekranda olduqda başlayır"</string>
+  <string name="morphe_local_queue_sheet_title">Növbə</string>
+  <string name="morphe_local_queue_open">Növbə (%d)</string>
+  <string name="morphe_local_queue_clear">Hamısını təmizlə</string>
+  <string name="morphe_local_queue_empty">Heç nə növbələnmədi</string>
+  <string name="morphe_local_queue_empty_hint">İstənilən videoda növbədə Növbətini oynatma istifadə et</string>
+  <string name="morphe_local_queue_now_playing">İndi oynadılır</string>
+  <string name="morphe_local_queue_play_next">Növbədə növbətini oynat</string>
+  <string name="morphe_local_queue_reorder">Yenidən sırala</string>
   <string name="morphe_local_queue_remove">Sil</string>
   <string name="morphe_local_queue_added">Növbəyə əlavə edildi</string>
+  <string name="morphe_local_queue_full">Növbə doludur</string>
+  <string name="morphe_local_queue_play_failed">Videonu başlatmaq olmadı</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Açılan menyuda reklam ağ siyahısı</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Həmin videonun kanalında reklamların oynadılmasına imkan verən açılan menyu bəndi əlavə edir</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1151,15 +1165,6 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <string name="morphe_seekbar_custom_color_accent_title">İrəliləyiş cizgisi cila rəngi</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Videonun çəkmə cizgisinin ikinci dərəcəli rəngini təyin et</string>
   <string name="morphe_seekbar_custom_color_invalid">Etibarsız çevirmə cizgisi rəng dəyəri</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Şrift</string>
-  <string name="morphe_custom_font_type_entry_default">İlkin</string>
-  <string name="morphe_custom_font_type_entry_system">Cihaz sistem şrifti</string>
-  <string name="morphe_custom_font_type_entry_custom">Fərdi şrift faylı</string>
-  <string name="morphe_custom_font_file_title">Fərdi şrift faylı</string>
-  <string name="morphe_custom_font_file_summary">TTF və ya OTF şrift faylı seç</string>
-  <string name="morphe_custom_font_file_invalid">Seçilmiş fayl TTF və ya OTF şrifti deyil</string>
-  <string name="morphe_custom_font_failed_to_load">Fərdi şrift yüklənilə bilmədi və qapalıdır</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Sərlövhə simvolu</string>
@@ -1305,18 +1310,8 @@ Məhdudiyyətlər:
 • Ekran faktiki olaraq HDR göstərə bilmirsə, rənglər problemli görünə bilər
 • Dekoder HDR-i emal edə bilməsə, oynatma uğursuz ola bilər
 • HDR hələ də video yayımları saxtalaşdır qəbuledicisindən asılıdır"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) kodlayıcıya zorla</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Faydalar:
-• Batareya ömrünü uzada bilər
-• Köhnə cihazlarda çatışmayan video ayırdetmələrin bərpa edə bilər
-
-Məhdudiyyətlər:
-• Ən yüksək ayırdetmə 1080p-dir
-• Video oynatma VP9 və ya AV1-dən daha çox internet məlumatı işlədəcək
-• HDR videoları AVC istifadə etməyəcək
-• Bəzi cihazlar AVC-ni zorlaya bilməz"</string>
+  <string name="morphe_video_codec_entry_default">Varsayılan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Bu xüsusiyyəti istifadə etmək üçün \"Video yayımların saxtalaşdır\"-ı \'Android VR\'-a və ya \'Android Studio\'-ya təyin et</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Təkmil keyfiyyət menyusunu aç</string>
   <string name="morphe_advanced_video_quality_menu_summary">Keyfiyyət seçimi menyusunu ötürür və birbaşa Təkmil keyfiyyət menyusunu açır</string>

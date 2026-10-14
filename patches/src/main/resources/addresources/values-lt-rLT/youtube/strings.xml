@@ -1165,15 +1165,6 @@ Apribojimas: jei parinktis „Atkurti senąją vaizdo įrašo veiksmų juostą�
   <string name="morphe_seekbar_custom_color_accent_title">Slankiklio akcentinė spalva</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Nustatykite antrinę vaizdo įrašo eigos juostos spalvą</string>
   <string name="morphe_seekbar_custom_color_invalid">Neteisinga slankiklio spalvos reikšmė</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Šriftas</string>
-  <string name="morphe_custom_font_type_entry_default">Numatytasis</string>
-  <string name="morphe_custom_font_type_entry_system">Sistemos šriftas</string>
-  <string name="morphe_custom_font_type_entry_custom">Pasirinktinis šrifto failas</string>
-  <string name="morphe_custom_font_file_title">Pasirinktinis šrifto failas</string>
-  <string name="morphe_custom_font_file_summary">Pasirinkite TTF arba OTF šrifto failą</string>
-  <string name="morphe_custom_font_file_invalid">Pasirinktas failas nėra TTF arba OTF šriftas</string>
-  <string name="morphe_custom_font_failed_to_load">Nepavyko įkelti pasirinktinio šrifto, todėl jis išjungtas</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Antraštės logotipas</string>
@@ -1319,18 +1310,21 @@ Apribojimai:
 • Spalvos gali atrodyti neteisingai, jei ekranas iš tikrųjų negali rodyti HDR
 • Atkūrimas gali nepavykti, jei dekoderis negali apdoroti HDR
 • HDR vis tiek priklauso nuo vaizdo įrašų srautų maskavimo kliento"</string>
-  <string name="morphe_force_avc_codec_title">Priverstinai naudoti AVC (H.264) kodeką</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Privalumai:
-• Gali pagerinti baterijos veikimo laiką
-• Gali atkurti trūkstamas vaizdo raiškas senesniuose įrenginiuose
-
-Apribojimai:
-• Maksimali raiška – 1080p
-• Vaizdo įrašų atkūrimas sunaudos daugiau interneto duomenų nei VP9 arba AV1
-• HDR vaizdo įrašai nenaudos AVC
-• Kai kurie įrenginiai negali priverstinai naudoti AVC"</string>
+  <string name="morphe_video_codec_title">Vaizdo įrašų kodekas</string>
+  <string name="morphe_video_codec_entry_default">Numatytasis</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Norėdami naudoti šią funkciją, nustatykite „Maskuoti vaizdo įrašų srautus“ į „Android VR“ arba „Android Studio“</string>
+  <string name="morphe_video_codec_avc_not_available">Norėdami priverstinai naudoti AVC, pakeiskite „Maskuoti vaizdo srautus“ į „Android Studio“, „Android VR“ arba „visionOS“</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Gali prailginti akumuliatoriaus veikimą ir pašalinti vaizdo atkūrimo trikdžius.
+• Naudoja daugiau interneto duomenų nei AV1.
+
+AVC (H.264)
+• Privalomas „Android Studio“, „Android VR“ arba „visionOS“ vaizdo įrašo srauto kliento programos imitavimas.
+• Gali dar labiau pailginti akumuliatoriaus veikimą.
+• Gali atkurti trūkstamas vaizdo raiškas senesniuose įrenginiuose.
+• Maksimali raiška yra 1080p.
+• HDR vaizdo įrašams AVC negali būti naudojamas.
+• Kai kurie įrenginiai negali priversti AVC."</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Atidaryti išplėstinės kokybės meniu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Praleidžia kokybės pasirinkimo meniu ir tiesiogiai atidaro išplėstinės kokybės meniu</string>
@@ -1347,6 +1341,7 @@ Apribojimai:
 
 Atkūrus AV1 vaizdo įrašus gali trūkčioti arba kristi kadrai."</string>
   <string name="morphe_spoof_video_streams_about_title">Klastojimo šalutiniai poveikiai</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Atkūrimas gali nutrūkti po 1 minutės.</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Trūksta meniu „Garso takelis“.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nėra AV1 vaizdo kodeko</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR įtraukiančios realybės režimas nepasiekiamas</string>

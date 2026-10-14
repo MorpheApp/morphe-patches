@@ -34,6 +34,7 @@ import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutInPlayerAvailability;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
+import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
 import app.morphe.extension.youtube.patches.ForceFullscreenLandscapePatch.LargeScreenAvailability;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
@@ -91,7 +92,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_HDR_VIDEO = new BooleanSetting("morphe_force_hdr_video", FALSE, true,
             "morphe_force_hdr_video_user_dialog_message", parentNot(DISABLE_HDR_VIDEO));
-    public static final BooleanSetting FORCE_AVC_CODEC = new BooleanSetting("morphe_force_avc_codec", FALSE, true, "morphe_force_avc_codec_user_dialog_message");
+    public static final EnumSetting<VideoCodec> VIDEO_CODEC = new EnumSetting<>("morphe_video_codec", VideoCodec.DEFAULT, true, "morphe_video_codec_user_dialog_message");
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("morphe_hide_premium_video_quality", TRUE, true);
     public static final BooleanSetting VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE, true, "morphe_video_quality_prioritize_dialog");
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("morphe_video_quality_default_wifi", -2);
@@ -772,6 +773,8 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_SWIPE_SPEED = new BooleanSetting("morphe_swipe_speed", FALSE);
     private static final BooleanSetting DEPRECATED_WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
     private static final BooleanSetting DEPRECATED_FORCE_SYSTEM_FONT = new BooleanSetting("morphe_force_system_font", FALSE, true);
+    private static final BooleanSetting DEPRECATED_FORCE_AVC_CODEC = new BooleanSetting("morphe_force_avc_codec", FALSE, true);
+    private static final BooleanSetting DEPRECATED_FORCE_VP9_CODEC = new BooleanSetting("morphe_force_vp9_codec", FALSE, true);
 
     // Unified SponsorBlock keys under the morphe_sb_* namespace (previously raw sb_*).
     private static final BooleanSetting DEPRECATED_SB_ENABLED = new BooleanSetting("sb_enabled", TRUE, false, false);
@@ -865,6 +868,7 @@ public class Settings extends SharedYouTubeSettings {
 
         migrateWideSearchbarToType();
         migrateForceSystemFontToType();
+        migrateForceCodecToVideoCodec();
         migrateShortsFlyoutSettings();
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
@@ -996,6 +1000,20 @@ public class Settings extends SharedYouTubeSettings {
             CUSTOM_FONT_TYPE.save(FontType.SYSTEM);
         }
         DEPRECATED_FORCE_SYSTEM_FONT.resetToDefault();
+    }
+
+    private static void migrateForceCodecToVideoCodec() {
+        if (DEPRECATED_FORCE_AVC_CODEC.isSetToDefault() && DEPRECATED_FORCE_VP9_CODEC.isSetToDefault()) {
+            return;
+        }
+        if (VIDEO_CODEC.isSetToDefault()) {
+            // Force AVC took priority if both were on.
+            VIDEO_CODEC.save(DEPRECATED_FORCE_AVC_CODEC.get()
+                    ? VideoCodec.AVC
+                    : VideoCodec.VP9);
+        }
+        DEPRECATED_FORCE_AVC_CODEC.resetToDefault();
+        DEPRECATED_FORCE_VP9_CODEC.resetToDefault();
     }
 
     /**

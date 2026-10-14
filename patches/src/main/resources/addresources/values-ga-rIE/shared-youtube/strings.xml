@@ -253,6 +253,15 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_app_refresh_rate_type_entry_2">Portráid athsheinm</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Athsheinm lánscáileáin</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Athsheinm portráide agus lánscáileáin</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Cló</string>
+  <string name="morphe_custom_font_type_entry_default">Réamhshocrú</string>
+  <string name="morphe_custom_font_type_entry_system">Cló córais an ghléis</string>
+  <string name="morphe_custom_font_type_entry_custom">Comhad cló saincheaptha</string>
+  <string name="morphe_custom_font_file_title">Comhad cló saincheaptha</string>
+  <string name="morphe_custom_font_file_summary">Roghnaigh comhad cló TTF nó OTF</string>
+  <string name="morphe_custom_font_file_invalid">Ní cló TTF ná OTF é an comhad roghnaithe</string>
+  <string name="morphe_custom_font_failed_to_load">Níorbh fhéidir an cló saincheaptha a lódáil agus tá sé múchta</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Níl na \"dí-mhaith\" ar fáil go sealadach (tá an t-am caite ag an API)</string>

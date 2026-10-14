@@ -1165,15 +1165,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">สีเน้นแถบความคืบหน้า</string>
   <string name="morphe_seekbar_custom_color_accent_summary">ตั้งค่าสีรองของแถบความคืบหน้าของวิดีโอ</string>
   <string name="morphe_seekbar_custom_color_invalid">ค่าสีแถบเลื่อนไม่ถูกต้อง</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">แบบอักษร</string>
-  <string name="morphe_custom_font_type_entry_default">ค่าเริ่มต้นThe</string>
-  <string name="morphe_custom_font_type_entry_system">ฟอนต์ระบบของอุปกรณ์</string>
-  <string name="morphe_custom_font_type_entry_custom">ไฟล์ฟอนต์ที่กำหนดเอง</string>
-  <string name="morphe_custom_font_file_title">ไฟล์ฟอนต์ที่กำหนดเอง</string>
-  <string name="morphe_custom_font_file_summary">เลือกไฟล์ฟอนต์ TTF หรือ OTF</string>
-  <string name="morphe_custom_font_file_invalid">ไฟล์ที่เลือกไม่ใช่ฟอนต์ TTF หรือ OTF</string>
-  <string name="morphe_custom_font_failed_to_load">ไม่สามารถโหลดฟอนต์ที่กำหนดเองได้ และถูกปิดใช้งาน</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">โลโก้ส่วนหัว</string>
@@ -1319,18 +1310,21 @@ Second \"item\" text"</string>
 • สีอาจดูผิดเพี้ยนไป หากหน้าจอมิสามารถแสดง HDR ได้จริง
 • การเล่นอาจล้มเหลวหากตัวถอดรหัสไม่สามารถจัดการ HDR ได้
 • HDR ยังคงขึ้นอยู่กับสตรีมวิดีโอ \"spoof\""</string>
-  <string name="morphe_force_avc_codec_title">บังคับใช้ตัวแปลงสัญญาณ AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"ประโยชน์:
-• ช่วยยืดอายุการใช้งานแบตเตอรี่
-• สามารถกู้คืนความละเอียดวิดีโอที่หายไปบนอุปกรณ์รุ่นเก่าได้
-
-ข้อจำกัด:
-• ความละเอียดสูงสุดคือ 1080p
-• การเล่นวิดีโอจะใช้ข้อมูลอินเทอร์เน็ตมากกว่า VP9 หรือ AV1
-• วิดีโอ HDR จะไม่ใช้ AVC
-• อุปกรณ์บางรุ่นไม่สามารถบังคับใช้ AVC ได้"</string>
+  <string name="morphe_video_codec_title">ตัวแปลงสัญญาณวิดีโอ</string>
+  <string name="morphe_video_codec_entry_default">ค่าเริ่มต้นThe</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">หากต้องการใช้ฟีเจอร์นี้ ให้ตั้งค่า \'การปลอมแปลงสตรีมวิดีโอ\' เป็น \'Android VR\' หรือ \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">หากต้องการบังคับใช้ AVC ให้เปลี่ยน \'ปลอมแปลงสตรีมวิดีโอ\' เป็น \'Android Studio\', \'Android VR\' หรือ \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• ช่วยยืดอายุแบตเตอรี่และแก้ปัญหาการเล่นกระตุก
+• ใช้ดาต้ามากกว่า AV1
+
+AVC (H.264)
+• ต้องใช้ไคลเอนต์ 'Android Studio', 'Android VR' หรือ 'visionOS' สำหรับการปลอมแปลงสตรีมวิดีโอ
+• ช่วยยืดอายุแบตเตอรี่ได้มากยิ่งขึ้น
+• คืนความละเอียดวิดีโอที่หายไปบนอุปกรณ์รุ่นเก่า
+• ความละเอียดสูงสุดคือ 1080p
+• วิดีโอ HDR อาจไม่ใช้ AVC
+• อุปกรณ์บางรุ่นไม่สามารถบังคับใช้ AVC ได้"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">เปิดเมนูคุณภาพขั้นสูง</string>
   <string name="morphe_advanced_video_quality_menu_summary">ข้ามเมนูการเลือกคุณภาพและเปิดเมนูคุณภาพขั้นสูงโดยตรง</string>
@@ -1347,6 +1341,7 @@ Second \"item\" text"</string>
 
 การเล่นวิดีโอด้วย AV1 อาจกระตุกหรือเฟรมตก"</string>
   <string name="morphe_spoof_video_streams_about_title">ผลข้างเคียงของการปลอมแปลง</string>
+  <string name="morphe_spoof_video_streams_about_failure">• การเล่นอาจล้มเหลวเมื่อครบ 1 นาที</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• เมนู \'แทร็กเสียง\' หายไป</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• ไม่มีตัวแปลงสัญญาณวิดีโอ AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• รูปแบบ 360° VR Immersive ไม่พร้อมใช้งาน</string>

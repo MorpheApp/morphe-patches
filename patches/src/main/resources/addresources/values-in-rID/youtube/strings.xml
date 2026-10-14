@@ -1165,15 +1165,6 @@ Batasan: Jika 'Kembalikan bilah tindakan video lama' dinonaktifkan, hamparan 'Vi
   <string name="morphe_seekbar_custom_color_accent_title">Warna aksen bilah pencarian</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Atur warna sekunder bilah kemajuan video</string>
   <string name="morphe_seekbar_custom_color_invalid">Nilai warna bilah geser tidak sah</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Huruf</string>
-  <string name="morphe_custom_font_type_entry_default">Bawaan</string>
-  <string name="morphe_custom_font_type_entry_system">Font sistem perangkat</string>
-  <string name="morphe_custom_font_type_entry_custom">File font kustom</string>
-  <string name="morphe_custom_font_file_title">File font kustom</string>
-  <string name="morphe_custom_font_file_summary">Pilih file font TTF atau OTF</string>
-  <string name="morphe_custom_font_file_invalid">File yang dipilih bukan font TTF atau OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Font kustom tidak dapat dimuat dan dinonaktifkan</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo Header</string>
@@ -1319,18 +1310,21 @@ Batasan:
 • Warna mungkin terlihat keliru jika layar sebenarnya tidak dapat menampilkan HDR
 • Pemutaran mungkin gagal jika dekoder tidak dapat menangani HDR
 • HDR tetap bergantung pada klien palsukan aliran video"</string>
-  <string name="morphe_force_avc_codec_title">Paksa codec AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Manfaat:
-• Dapat meningkatkan daya tahan baterai
-• Dapat memulihkan resolusi video yang hilang pada perangkat lama
-
-Batasan:
-• Resolusi maksimum adalah 1080p
-• Pemutaran video akan menggunakan lebih banyak data internet dibandingkan VP9 atau AV1
-• Video HDR tidak akan menggunakan AVC
-• Beberapa perangkat tidak dapat memaksakan AVC"</string>
+  <string name="morphe_video_codec_title">Codec video</string>
+  <string name="morphe_video_codec_entry_default">Bawaan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Untuk menggunakan fitur ini, atur \'Palsukan aliran video\' ke \'Android VR\' atau \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Untuk memaksa AVC, ubah \'Tiru streaming video\' menjadi \'Android Studio\', \'Android VR\', atau \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Dapat meningkatkan daya tahan baterai dan mengatasi pemutaran yang tersendat
+• Menggunakan lebih banyak data internet daripada AV1
+
+AVC (H.264)
+• Memerlukan klien tiruan streaming video, yaitu 'Android Studio', 'Android VR', atau 'visionOS'
+• Dapat lebih meningkatkan daya tahan baterai
+• Dapat mengembalikan resolusi video yang hilang pada perangkat lama
+• Resolusi maksimum adalah 1080p
+• Video HDR mungkin tidak menggunakan AVC
+• Beberapa perangkat tidak dapat memaksa AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Buka menu kualitas Lanjutan</string>
   <string name="morphe_advanced_video_quality_menu_summary">Melewati menu pemilihan kualitas dan langsung membuka menu kualitas Lanjutan</string>
@@ -1347,6 +1341,7 @@ Batasan:
 
 Pemutaran video dengan AV1 dapat tersendat atau kehilangan frame."</string>
   <string name="morphe_spoof_video_streams_about_title">Efek samping pemalsuan</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Pemutaran dapat gagal pada menit 1</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Menu \'Trek Audio\' hilang</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Tidak ada codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Mode imersif 360° VR tidak tersedia</string>

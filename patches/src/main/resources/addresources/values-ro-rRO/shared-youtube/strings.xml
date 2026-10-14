@@ -253,6 +253,15 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_app_refresh_rate_type_entry_2">Redare în portret</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Redare pe ecran complet</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Redare în portret și pe ecran complet</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Tip de font</string>
+  <string name="morphe_custom_font_type_entry_default">Implicit</string>
+  <string name="morphe_custom_font_type_entry_system">Fontul de sistem al dispozitivului</string>
+  <string name="morphe_custom_font_type_entry_custom">Fișier font personalizat</string>
+  <string name="morphe_custom_font_file_title">Fișier font personalizat</string>
+  <string name="morphe_custom_font_file_summary">Alegeți un fișier font TTF sau OTF</string>
+  <string name="morphe_custom_font_file_invalid">Fișierul selectat nu este un font TTF sau OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Fontul personalizat nu a putut fi încărcat și este dezactivat</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike-uri temporar indisponibile (API a expirat)</string>

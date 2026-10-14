@@ -1165,15 +1165,6 @@ Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha f
   <string name="morphe_seekbar_custom_color_accent_title">İlerleme çubuğu vurgu rengi</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Video ilerleme çubuğunun ikincil rengini ayarlayın</string>
   <string name="morphe_seekbar_custom_color_invalid">İlerleme çubuğu renk değeri geçersiz</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Yazı tipi</string>
-  <string name="morphe_custom_font_type_entry_default">Varsayılan</string>
-  <string name="morphe_custom_font_type_entry_system">Cihaz sistem yazı tipi</string>
-  <string name="morphe_custom_font_type_entry_custom">Özel yazı tipi dosyası</string>
-  <string name="morphe_custom_font_file_title">Özel yazı tipi dosyası</string>
-  <string name="morphe_custom_font_file_summary">Bir TTF veya OTF yazı tipi dosyası seçin</string>
-  <string name="morphe_custom_font_file_invalid">Seçilen dosya bir TTF veya OTF yazı tipi değil</string>
-  <string name="morphe_custom_font_failed_to_load">Özel yazı tipi yüklenemedi ve kapatıldı</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Başlık logosu</string>
@@ -1319,18 +1310,22 @@ Sınırlamalar:
 • Ekran gerçekten HDR gösteremiyorsa renkler yanlış görünebilir
 • Kod çözücü HDR'yi işleyemezse oynatma başarısız olabilir
 • HDR hala spoof video akışı istemcisine bağlıdır"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) kodeğini zorla</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Faydaları:
-• Pil ömrünü iyileştirebilir
-• Eski cihazlarda eksik video çözünürlüklerini geri yükleyebilir
-
-Sınırlamalar:
-• Maksimum çözünürlük 1080p'dir
-• Video oynatma, VP9 veya AV1'den daha fazla internet verisi kullanır
-• HDR videolar AVC kullanmaz
-• Bazı cihazlar AVC'yi zorlayamaz"</string>
+  <string name="morphe_video_codec_title">Video kodek</string>
+  <string name="morphe_video_codec_entry_default">Varsayılan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\'i Android VR veya Android Studio olarak ayarlayın</string>
+  <string name="morphe_video_codec_avc_not_available">AVC\'yi zorlamak için \'Video akışlarını taklit et\' ayarını \'Android Studio\', \'Android VR\' veya \'visionOS\' olarak değiştirin</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Pil ömrünü artırabilir ve oynatmadaki takılmaları düzeltebilir
+• AV1'e göre daha fazla internet verisi tüketir
+
+AVC (H.264)
+• 'Android Studio', 'Android VR' veya 'visionOS' sahte video akışı istemcisi (Spoof video stream client) seçeneğini gerektirir
+• Pil ömrünü daha da iyileştirebilir
+• Eski cihazlarda eksik olan video çözünürlüklerini geri getirebilir
+• Maksimum çözünürlük 1080p'dir
+• HDR videolar AVC kullanamayabilir
+• Bazı cihazlar AVC kullanmaya zorlanamaz
+"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Gelişmiş kalite menüsünü aç</string>
   <string name="morphe_advanced_video_quality_menu_summary">Kalite seçim menüsünü atlar ve doğrudan Gelişmiş kalite menüsünü açar</string>
@@ -1347,6 +1342,7 @@ Sınırlamalar:
 
 AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_about_title">Taklit yan etkileri</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Oynatma 1. dakikada başarısız olabilir</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Ses Parçası menüsü eksik</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodeği yok</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersif modu mevcut değil</string>

@@ -1160,15 +1160,6 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <string name="morphe_seekbar_custom_color_accent_title">Lit á leitarstikuna</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Stilltu aukalitinn á vídeóleiðarstikunni</string>
   <string name="morphe_seekbar_custom_color_invalid">Ógild litagildi litastiku</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Leturgerð</string>
-  <string name="morphe_custom_font_type_entry_default">Sjálfgefið</string>
-  <string name="morphe_custom_font_type_entry_system">Kerfisletur tækisins</string>
-  <string name="morphe_custom_font_type_entry_custom">Sérsniðin leturskrá</string>
-  <string name="morphe_custom_font_file_title">Sérsniðin leturskrá</string>
-  <string name="morphe_custom_font_file_summary">Veldu TTF- eða OTF-leturskrá</string>
-  <string name="morphe_custom_font_file_invalid">Valda skráin er ekki TTF- eða OTF-leturskrá</string>
-  <string name="morphe_custom_font_failed_to_load">Ekki tókst að hlaða inn sérsniðnu leturskrána og hún er því óvirk</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo haus</string>
@@ -1314,18 +1305,21 @@ Takmarkanir:
 • Litir geta litið rangt út ef skjárinn getur ekki raunverulega sýnt HDR
 • Spilun getur mistekist ef afkóðarinn ræður ekki við HDR
 • HDR er enn háð spoof-biðlara fyrir vídeóstrauma"</string>
-  <string name="morphe_force_avc_codec_title">Þvinga AVC (H.264) kóðann</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Ávinningur:
-• Getur bætt rafhlöðuáfköfum
-• Getur endurheimt vantar myndbandsálausnina á eldra tæki
-
-Takmörk:
-• Hámarksálausn er 1080p
-• Myndbandsspilun mun nota meiri netgögn en VP9 eða AV1
-• HDR myndbönd munu ekki nota AVC
-• Sum tæki geta ekki neyðt AVC"</string>
+  <string name="morphe_video_codec_title">Vídeókódeki</string>
+  <string name="morphe_video_codec_entry_default">Sjálfgefið</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Til að nota þennan eiginleika skaltu stilla \'Spoofa myndbandsstrauma\' á \'Android VR\' eða \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Til að þvinga fram AVC skaltu breyta \'Falsa myndstreymi\' í \'Android Studio\', \'Android VR\' eða \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Getur bætt rafhlöðuendingu og lagað hik í spilun
+• Notar meira af internetgögnum en AV1
+
+AVC (H.264)
+• Krefst falsaðs myndstreymisbiðlara: 'Android Studio', 'Android VR' eða 'visionOS'
+• Getur bætt rafhlöðuendingu enn frekar
+• Getur endurheimt myndupplausnir sem vantar á eldri tækjum
+• Hámarksupplausn er 1080p
+• HDR myndbönd gætu ekki notað AVC
+• Sum tæki geta ekki þvingað fram AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Opnaðu Advanced gæðavalmynd</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sleppur yfir valið á gæðum og opnar \'Advanced\' gæðavalmyndina beint</string>
@@ -1342,6 +1336,7 @@ Takmörk:
 
 Myndbandsspilun með AV1 getur hakka eða orðið með rammalegsfall."</string>
   <string name="morphe_spoof_video_streams_about_title">Umráðareitur áhrifa</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Spilun gæti mistekist eftir 1 mínútu</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audio Track\' valmynd vantar</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Enginn AV1 myndbandakód</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR innlifunhamur er ekki í boði</string>

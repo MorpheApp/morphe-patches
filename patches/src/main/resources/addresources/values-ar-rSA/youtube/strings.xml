@@ -403,7 +403,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">البحث داخل القناة</string>
   <string name="morphe_channel_search_summary">يضيف زر بحث ثانٍ في صفحات القناة للبحث في تلك القناة فقط</string>
-  <string name="morphe_channel_search_hint">البحث عن قناة</string>
+  <string name="morphe_channel_search_hint">البحث في القناة</string>
   <string name="morphe_channel_search_results">نتائج البحث في القناة</string>
   <string name="morphe_channel_search_no_results">لا توجد نتائج في هذه القناة</string>
   <string name="morphe_channel_search_failed">تعذر البحث في هذه القناة</string>
@@ -1170,15 +1170,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_seekbar_custom_color_accent_title">لون تمييز شريط التقدم</string>
   <string name="morphe_seekbar_custom_color_accent_summary">تعيين اللون الثانوي لشريط تقدم الفيديو</string>
   <string name="morphe_seekbar_custom_color_invalid">لون شريط التقدم غير صالح</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">الخط</string>
-  <string name="morphe_custom_font_type_entry_default">الوضع الافتراضي</string>
-  <string name="morphe_custom_font_type_entry_system">خط نظام الجهاز</string>
-  <string name="morphe_custom_font_type_entry_custom">ملف خط مخصص</string>
-  <string name="morphe_custom_font_file_title">ملف خط مخصص</string>
-  <string name="morphe_custom_font_file_summary">اختر ملف خط TTF أو OTF</string>
-  <string name="morphe_custom_font_file_invalid">الملف المحدد ليس خط بصيغة TTF أو OTF</string>
-  <string name="morphe_custom_font_failed_to_load">تعذر تحميل الخط المخصص وتم إيقاف تشغيله</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">علامة الشعار</string>
@@ -1324,18 +1315,21 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 • قد تظهر الألوان غير دقيقة إذا كانت الشاشة لا تدعم عرض محتوى HDR فعليًا
 • قد يفشل التشغيل إذا تعذّر على وحدة فك الترميز معالجة محتوى HDR
 • يظل تشغيل HDR معتمدًا على عميل Spoof Video Streams"</string>
-  <string name="morphe_force_avc_codec_title">فرض برنامج ترميز AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"الفوائد:
-• يمكن أن يحسن عمر البطارية
-• يمكن أن يستعيد دقة الفيديو المفقودة على الأجهزة القديمة
-
-القيود:
-• أقصى دقة هي 1080p
-• تشغيل الفيديو سيستهلك المزيد من بيانات الإنترنت مقارنةً بـ VP9 أو AV1
-• لن تستخدم فيديوهات HDR ترميز AVC
-• لا يمكن لبعض الأجهزة فرض AVC"</string>
+  <string name="morphe_video_codec_title">ترميز الفيديو</string>
+  <string name="morphe_video_codec_entry_default">الافتراضي</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">لاستخدام هذه الميزة، قم بضبط \'Spoof Video Streams\' على \'Android VR\' أو \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">لفرض استخدام AVC، غيّر \'Spoof Video Streams\' إلى \'Android Studio\' أو \'Android VR\' أو \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• يمكن أن يحسّن عمر البطارية ويصلح تقطّع التشغيل
+• يستهلك بيانات إنترنت أكثر من AV1
+
+AVC (H.264)
+• يتطلب Spoof Video Streams بعميل 'Android Studio' أو 'Android VR' أو 'visionOS'
+• يمكن أن يحسّن عمر البطارية أكثر
+• يمكنه استعادة دقّات الفيديو المفقودة على الأجهزة الأقدم
+• الحد الأقصى للدقة هو 1080p
+• قد لا تستخدم فيديوهات HDR تقنية AVC
+• لا تستطيع بعض الأجهزة فرض استخدام AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">فتح قائمة \'الجودة المتقدمة\'</string>
   <string name="morphe_advanced_video_quality_menu_summary">يتخطى قائمة تحديد الجودة ويفتح قائمة الجودة المتقدمة مباشرة</string>
@@ -1352,6 +1346,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 
 قد يتسبب تشغيل الفيديو باستخدام AV1 في التقطيع أو إسقاط الإطارات."</string>
   <string name="morphe_spoof_video_streams_about_title">الآثار المترتبة على التمويه</string>
+  <string name="morphe_spoof_video_streams_about_failure">• قد يفشل التشغيل عند الدقيقة 1</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• قائمة \'المقطع الصوتي\' مفقودة</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• لا يوجد ترميز الفيديو AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• وضع 360° VR immersive غير متوفر</string>

@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.translate;
+package app.morphe.extension.music.patches.lyrics.derive;
 
 import androidx.annotation.Nullable;
 
@@ -26,6 +26,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
 public final class OpenAIClient {
@@ -33,6 +34,147 @@ public final class OpenAIClient {
     private static final int CONNECT_TIMEOUT_MS = 10_000;
     private static final int READ_TIMEOUT_MS = 45_000;
     private static final int MAX_CHARS = 3000;
+
+    private static final String MODELS_PATH_SUFFIX = "/models";
+
+    public static String[] fetchReasoningEfforts(String baseUrl, String apiToken, String model) {
+        final String url = modelsUrl(baseUrl);
+        if (url == null) {
+            return new String[0];
+        }
+        try {
+            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+            try {
+                conn.setRequestMethod("GET");
+                conn.setConnectTimeout(CONNECT_TIMEOUT_MS);
+                conn.setReadTimeout(READ_TIMEOUT_MS);
+                if (apiToken != null && !apiToken.isEmpty()) {
+                    conn.setRequestProperty("Authorization", "Bearer " + apiToken);
+                }
+                if (conn.getResponseCode() != 200) {
+                    return new String[0];
+                }
+                return parseSupportedEfforts(readResponse(conn), model);
+            } finally {
+                conn.disconnect();
+            }
+        } catch (Exception e) {
+            Logger.printDebug(() -> "Could not read supported reasoning efforts", e);
+            return new String[0];
+        }
+    }
+
+    private static String modelsUrl(String baseUrl) {
+        if (baseUrl == null) {
+            return null;
+        }
+        String base = baseUrl.trim();
+        while (base.endsWith("/")) {
+            base = base.substring(0, base.length() - 1);
+        }
+        final int scheme = base.indexOf("://");
+        final int slash = base.indexOf('/', scheme + 3);
+        if (slash < 0) {
+            return null;
+        }
+        final String host = base.substring(0, slash);
+        String path = base.substring(slash);
+        for (String chatPath : new String[]{"/chat/completions", "/completions"}) {
+            if (path.endsWith(chatPath)) {
+                path = path.substring(0, path.length() - chatPath.length());
+                break;
+            }
+        }
+        while (path.endsWith("/")) {
+            path = path.substring(0, path.length() - 1);
+        }
+        if (path.endsWith(MODELS_PATH_SUFFIX)) {
+            return base;
+        }
+        return host + path + MODELS_PATH_SUFFIX;
+    }
+
+    private static String[] parseSupportedEfforts(String json, String model) throws JSONException {
+        final String trimmed = json.trim();
+        JSONArray entries;
+        if (trimmed.startsWith("[")) {
+            entries = new JSONArray(trimmed);
+        } else {
+            final JSONObject root = new JSONObject(trimmed);
+            entries = root.optJSONArray("data");
+            if (entries == null) {
+                entries = root.optJSONArray("models");
+            }
+        }
+        if (entries == null) {
+            return new String[0];
+        }
+        for (int i = 0; i < entries.length(); i++) {
+            final JSONObject entry = entries.optJSONObject(i);
+            if (entry == null || !describesSameModel(entry, model)) {
+                continue;
+            }
+            final Object reasoning = entry.opt("reasoning");
+            if (!(reasoning instanceof JSONObject detail)) {
+                // A plain true/false says the model reasons but not how hard, so there is nothing
+                // to choose from and the parameter is not worth offering.
+                return new String[0];
+            }
+            final JSONArray efforts = detail.optJSONArray("supported_efforts");
+            if (efforts == null || efforts.length() == 0) {
+                return new String[0];
+            }
+            final List<String> values = new ArrayList<>(efforts.length());
+            for (int j = 0; j < efforts.length(); j++) {
+                final String value = efforts.optString(j, "").trim();
+                if (!value.isEmpty() && !values.contains(value)) {
+                    values.add(value);
+                }
+            }
+            return values.toArray(new String[0]);
+        }
+        return new String[0];
+    }
+
+    private static boolean describesSameModel(JSONObject entry, String model) {
+        if (model == null) {
+            return false;
+        }
+        final String wanted = model.trim();
+        for (String key : new String[]{"id", "name", "canonical_slug"}) {
+            final String candidate = entry.optString(key, "").trim();
+            if (candidate.isEmpty()) {
+                continue;
+            }
+            if (candidate.equalsIgnoreCase(wanted)
+                    || stripVariant(candidate).equalsIgnoreCase(stripVariant(wanted))) {
+                return true;
+            }
+        }
+        final JSONArray aliases = entry.optJSONArray("aliases");
+        if (aliases != null) {
+            for (int i = 0; i < aliases.length(); i++) {
+                if (aliases.optString(i, "").equalsIgnoreCase(wanted)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static String stripVariant(String id) {
+        final int colon = id.indexOf(':');
+        return colon > 0 ? id.substring(0, colon) : id;
+    }
+
+    /** The stored effort, sent as typed, or empty when nothing is stored. */
+    public static String reasoningEffort() {
+        final String configured = Settings.LYRICS_AI_REASONING_EFFORT.get();
+        if (configured != null && !configured.trim().isEmpty()) {
+            return configured.trim();
+        }
+        return "";
+    }
 
     private OpenAIClient() {
     }
@@ -43,6 +185,10 @@ public final class OpenAIClient {
         try {
             JSONObject body = new JSONObject();
             body.put("model", model);
+            final String effort = reasoningEffort();
+            if (!effort.isEmpty()) {
+                body.put("reasoning_effort", effort);
+            }
 
             JSONArray messages = new JSONArray();
             messages.put(new JSONObject()
@@ -74,8 +220,7 @@ public final class OpenAIClient {
                     return null;
                 }
 
-                String responseStr = readResponse(conn);
-                return parseContentFromChoices(responseStr);
+                return parseContentFromChoices(readResponse(conn));
             } finally {
                 conn.disconnect();
             }
@@ -262,6 +407,30 @@ public final class OpenAIClient {
             - If a line already needs no {task}, output one "SKIP" for it
             - Output ONLY the {task}. No reasoning, no explanations, no step-by-step thinking.
             
+            {lines}""";
+
+    /**
+     * The prompt template for the section task. Where {@link #DEFAULT_PROMPT} rewrites each line,
+     * this one labels it: only the line opening a section is named, every other line is skipped,
+     * so the returned list maps onto {@code LyricsLine.songPart()} without any post-processing.
+     */
+    public static final String SECTION_PROMPT = """
+            You are a music structure analyst. Analyze the lyrics below and label the song structure.
+            Song: {title} by {artist}
+
+            For every line, output the section that line opens. Only the FIRST line of a section carries its name; every other line that continues the same section is output as "SKIP".
+
+            Use these exact section names:
+            Intro, Verse, Pre-Chorus, Chorus, Hook, Refrain, Bridge, Instrumental, Transition, False-Chorus, Outro, Reprise
+
+            CRITICAL RULES:
+            - Output exactly {count} numbered lines (same as input count)
+            - Number format: "N. text" (number, period, space, text)
+            - First line of a section: its name. All other lines: "SKIP"
+            - Repeated sections are numbered in order: Verse 1, Verse 2, Chorus 1, Chorus 2
+            - Pick the most specific name from the list above
+            - Output ONLY the labels. No reasoning, no explanations.
+
             {lines}""";
 
     private static final Pattern PROMPT_VARIABLE = Pattern.compile("\\{(\\w+)\\}");

@@ -1150,15 +1150,6 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
   <string name="morphe_seekbar_custom_color_accent_title">Seekbar অ্যাকসেন্ট রঙ</string>
   <string name="morphe_seekbar_custom_color_accent_summary">ভিডিও অগ্রগতি বারের মাধ্যমিক রঙ সেট করুন</string>
   <string name="morphe_seekbar_custom_color_invalid">অবৈধ সিকবার রঙ মান</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">ফন্ট</string>
-  <string name="morphe_custom_font_type_entry_default">ডিফল্ট</string>
-  <string name="morphe_custom_font_type_entry_system">ডিভাইস সিস্টেম ফন্ট</string>
-  <string name="morphe_custom_font_type_entry_custom">কাস্টম ফন্ট ফাইল</string>
-  <string name="morphe_custom_font_file_title">কাস্টম ফন্ট ফাইল</string>
-  <string name="morphe_custom_font_file_summary">একটি TTF বা OTF ফন্ট ফাইল নির্বাচন করুন</string>
-  <string name="morphe_custom_font_file_invalid">নির্বাচিত ফাইলটি TTF বা OTF ফন্ট নয়</string>
-  <string name="morphe_custom_font_failed_to_load">কাস্টম ফন্ট লোড করা যায়নি এবং এটি বন্ধ করা হয়েছে</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">হেডার লোগো</string>
@@ -1304,18 +1295,21 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
 • রঙ ভুল দেখাতে পারে যদি ডিসপ্লে আসলে HDR দেখাতে না পারে
 • ডিকোডার HDR পরিচালনা করতে না পারলে প্লেব্যাক ব্যর্থ হতে পারে
 • HDR এখনও ভিডিও স্ট্রিম স্পুফ ক্লায়েন্টের উপর নির্ভর করে"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) কোডেক জোর করুন</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"সুবিধা:
-• ব্যাটারির আয়ু উন্নত করতে পারে
-• পুরনো ডিভাইসে অনুপস্থিত ভিডিও রেজোলিউশন পুনরুদ্ধার করতে পারে
-
-সীমাবদ্ধতা:
-• সর্বোচ্চ রেজোলিউশন 1080p
-• VP9 বা AV1 এর চেয়ে ভিডিও প্লেব্যাকে বেশি ইন্টারনেট ডেটা ব্যবহার হবে
-• HDR ভিডিও AVC ব্যবহার করবে না
-• কিছু ডিভাইস AVC জোর করে ব্যবহার করতে পারে না"</string>
+  <string name="morphe_video_codec_title">ভিডিও কোডেক</string>
+  <string name="morphe_video_codec_entry_default">ডিফল্ট</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\' কে \'Android VR\' বা \'Android Studio\' এ সেট করুন</string>
+  <string name="morphe_video_codec_avc_not_available">AVC ফোর্স করতে, \'ভিডিও স্ট্রিম স্পুফ\' বিকল্পটি \'Android Studio\', \'Android VR\' বা \'visionOS\'-এ পরিবর্তন করুন</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• ব্যাটারির আয়ু উন্নত করতে পারে এবং প্লেব্যাকের ঝাঁকুনি ঠিক করতে পারে
+• AV1-এর চেয়ে বেশি ইন্টারনেট ডেটা ব্যবহার করে
+
+AVC (H.264)
+• 'Android Studio', 'Android VR' বা 'visionOS' ভিডিও স্ট্রিম স্পুফ ক্লায়েন্ট হিসেবে প্রয়োজন
+• ব্যাটারির আয়ু আরও উন্নত করতে পারে
+• পুরোনো ডিভাইসে অনুপস্থিত ভিডিও রেজোলিউশন পুনরুদ্ধার করতে পারে
+• সর্বোচ্চ রেজোলিউশন 1080p
+• HDR ভিডিও AVC ব্যবহার নাও করতে পারে
+• কিছু ডিভাইস AVC ফোর্স করতে পারে না"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">অ্যাডভান্সড কোয়ালিটি মেনু খুলুন</string>
   <string name="morphe_advanced_video_quality_menu_summary">মানের নির্বাচন মেনু এড়িয়ে সরাসরি \"অ্যাডভান্সড\" মানের মেনু খুলুন</string>
@@ -1332,6 +1326,7 @@ OpenRouter.ai ওপেন করতে এখানে ট্যাপ কর�
 
 AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে পারে বা ফ্রেম বাদ দিতে পারে।"</string>
   <string name="morphe_spoof_video_streams_about_title">স্পুফিংয়ের পার্শ্বপ্রতিক্রিয়া</string>
+  <string name="morphe_spoof_video_streams_about_failure">• 1 মিনিটে প্লেব্যাক ব্যর্থ হতে পারে</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'অডিও ট্র্যাক\' মেনু অনুপস্থিত</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• কোনো AV1 ভিডিও কোডেক নেই</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• ৩৬০° ভিএআর ইমার্সিভ মোড উপলব্ধ নয়</string>

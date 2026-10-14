@@ -96,8 +96,8 @@ public final class HorizontalShelvesFilter extends Filter {
                 || NavigationBar.isBackButtonVisible()
                 || NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
         if (identifier != null) {
-            // Shelves of different feeds can have the same identifier, such as the History shelf of the You tab,
-            // so the last feed where the shelf was loaded decides.
+            // Shelves of different feeds can have the same identifier, such as the History shelf of
+            //  the 'You' tab, so the last feed where the shelf was loaded decides.
             if (hide) {
                 hiddenShelfIdentifiers.add(identifier);
             } else {

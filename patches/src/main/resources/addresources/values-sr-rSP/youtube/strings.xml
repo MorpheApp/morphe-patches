@@ -1148,15 +1148,6 @@ Promene uključuju:
   <string name="morphe_seekbar_custom_color_accent_title">Боја наглашавања траке за премотавање</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Подесите секундарну боју траке за напредак видеа</string>
   <string name="morphe_seekbar_custom_color_invalid">Неважећа вредност боје траке за премотавање</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Фонт</string>
-  <string name="morphe_custom_font_type_entry_default">Подразумевано</string>
-  <string name="morphe_custom_font_type_entry_system">Системски фонт уређаја</string>
-  <string name="morphe_custom_font_type_entry_custom">Датотека прилагођеног фонта</string>
-  <string name="morphe_custom_font_file_title">Датотека прилагођеног фонта</string>
-  <string name="morphe_custom_font_file_summary">Изаберите TTF или OTF датотеку фонта</string>
-  <string name="morphe_custom_font_file_invalid">Изабрана датотека није TTF или OTF фонт</string>
-  <string name="morphe_custom_font_failed_to_load">Прилагођени фонт није могао да се учита, па је искључен</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотип у заглављу</string>
@@ -1302,18 +1293,21 @@ Promene uključuju:
 • Боје могу изгледати погрешно ако екран заправо не може приказати HDR
 • Репродукција може пропасти ако декодер не може да обради HDR
 • HDR и даље зависи од spoof клијента видео стримова"</string>
-  <string name="morphe_force_avc_codec_title">Присили AVC (H.264) кодек</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Предности:
-• Може побољшати трајање батерије
-• Може вратити недостајуће резолуције видеа на старијим уређајима
-
-Ограничења:
-• Максимална резолуција је 1080p
-• Репродукција видеа ће користити више интернет података него VP9 или AV1
-• HDR видеи неће користити AVC
-• Неки уређаји не могу присилити AVC"</string>
+  <string name="morphe_video_codec_title">Видео кодек</string>
+  <string name="morphe_video_codec_entry_default">Подразумевано</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Да бисте користили ову функцију, поставите „Лажирани видео стримови” на „Android VR” или „Android Studio”.</string>
+  <string name="morphe_video_codec_avc_not_available">Да бисте форсирали AVC, промените „Лажирање видео стримова“ у „Android Studio“, „Android VR“ или „visionOS“</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Може да побољша трајање батерије и да отклони муцање при репродукцији
+• Користи више интернет података од AV1
+
+AVC (H.264)
+• Захтева клијент за лажирање видео стримова „Android Studio“, „Android VR“ или „visionOS“
+• Може још више да побољша трајање батерије
+• Може да врати недостајуће видео резолуције на старијим уређајима
+• Максимална резолуција је 1080p
+• HDR видео записи можда неће користити AVC
+• Неки уређаји не могу да форсирају AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Отвори мени за побољшани квалитет</string>
   <string name="morphe_advanced_video_quality_menu_summary">Прескаче мени за избор квалитета и директно отвара Напредне опције квалитета</string>
@@ -1330,6 +1324,7 @@ Promene uključuju:
 
 Репродукција видеа с AV1 може застајкивати или прескакати кадрове."</string>
   <string name="morphe_spoof_video_streams_about_title">Нежељени ефекти лажирања</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Репродукција може да откаже након 1 минута</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Мени „Аудио снимак” недостаје</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодека AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>

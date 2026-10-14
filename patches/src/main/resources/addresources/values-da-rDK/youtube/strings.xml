@@ -1161,15 +1161,6 @@ Begrænsning: Hvis 'Gendan gammel video-handlingslinje' er slået fra, er 'Flere
   <string name="morphe_seekbar_custom_color_accent_title">Søgelinje accentfarve</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Indstil andenfarven på videofremdriftlinjen</string>
   <string name="morphe_seekbar_custom_color_invalid">Ugyldig søgelinje farveværdi</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Skrifttype</string>
-  <string name="morphe_custom_font_type_entry_default">Standard</string>
-  <string name="morphe_custom_font_type_entry_system">Enhedens systemskrifttype</string>
-  <string name="morphe_custom_font_type_entry_custom">Brugerdefineret skrifttypefil</string>
-  <string name="morphe_custom_font_file_title">Brugerdefineret skrifttypefil</string>
-  <string name="morphe_custom_font_file_summary">Vælg en TTF- eller OTF-skrifttypefil</string>
-  <string name="morphe_custom_font_file_invalid">Den valgte fil er ikke en TTF- eller OTF-skrifttype</string>
-  <string name="morphe_custom_font_failed_to_load">Den brugerdefinerede skrifttype kunne ikke indlæses og er slået fra</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Sidehovedlogo</string>
@@ -1315,18 +1306,21 @@ Begrænsninger:
 • Farver kan se forkerte ud, hvis skærmen faktisk ikke kan vise HDR
 • Afspilning kan mislykkes, hvis afkoderen ikke kan håndtere HDR
 • HDR afhænger stadig af spoof-videostreams-klienten"</string>
-  <string name="morphe_force_avc_codec_title">Gennemtving AVC (H.264) codec</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Fordele:
-• Kan forbedre batterilevetiden
-• Kan gendanne manglende videoopløsninger på ældre enheder
-
-Begrænsninger:
-• Maksimal opløsning er 1080p
-• Videoafspilning vil bruge mere internetdata end VP9 eller AV1
-• HDR-videoer vil ikke bruge AVC
-• Nogle enheder kan ikke tvinge AVC"</string>
+  <string name="morphe_video_codec_title">Video-codec</string>
+  <string name="morphe_video_codec_entry_default">Standard</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du indstille \'Forfalsk videostreams\' til \'Android VR\' eller \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">For at fremtvinge AVC skal du skifte \'Spoofing af videostreams\' til \'Android Studio\', \'Android VR\' eller \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Kan forbedre batterilevetiden og afhjælpe hakken i afspilningen
+• Bruger mere internetdata end AV1
+
+AVC (H.264)
+• Kræver 'Android Studio', 'Android VR' eller 'visionOS' som klient til spoofing af videostreams
+• Kan forbedre batterilevetiden endnu mere
+• Kan gendanne manglende videoopløsninger på ældre enheder
+• Maksimal opløsning er 1080p
+• HDR-videoer bruger muligvis ikke AVC
+• Nogle enheder kan ikke fremtvinge AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åbn Avanceret kvalitetsmenu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Springer kvalitetsvalgsmenuen over og åbner menuen \'Avanceret\' kvalitet direkte</string>
@@ -1343,6 +1337,7 @@ Begrænsninger:
 
 Videoafspilning med AV1 kan hakke eller tabe billeder."</string>
   <string name="morphe_spoof_video_streams_about_title">Bivirkninger ved spoofing</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Afspilningen kan mislykkes efter 1 minut</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Lydspor\'-menuen mangler</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Intet AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiv tilstand er ikke tilgængelig</string>

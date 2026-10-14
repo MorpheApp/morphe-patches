@@ -1165,15 +1165,6 @@ Ograničenje: Ako je \"Vrati staru traku sa akcijama za video\" isključen, prek
   <string name="morphe_seekbar_custom_color_accent_title">Boju isticanja trake za pretraživanje</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Postavi sekundarnu boju trake za napredak videa</string>
   <string name="morphe_seekbar_custom_color_invalid">Nevažeća vrednost boje trake za premotavanje</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Vrsta fonta</string>
-  <string name="morphe_custom_font_type_entry_default">Подразумеван</string>
-  <string name="morphe_custom_font_type_entry_system">Sistemski font uređaja</string>
-  <string name="morphe_custom_font_type_entry_custom">Датотека прилагођеног фонта</string>
-  <string name="morphe_custom_font_file_title">Датотека прилагођеног фонта</string>
-  <string name="morphe_custom_font_file_summary">Izaberite TTF ili OTF datoteku fonta</string>
-  <string name="morphe_custom_font_file_invalid">Izabrana datoteka nije TTF ili OTF font</string>
-  <string name="morphe_custom_font_failed_to_load">Prilagođeni font nije mogao da se učita i isključen je</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logotip u zaglavlju</string>
@@ -1319,18 +1310,21 @@ Ograničenja:
 • Boje mogu izgledati pogrešno ako ekran zapravo ne može prikazati HDR
 • Reprodukcija može da ne uspe ako dekoder ne može da obradi HDR
 • HDR i dalje zavisi od klijenta za lažiranje video tokova"</string>
-  <string name="morphe_force_avc_codec_title">Prisiljava AVC (H.264) kodek</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Prednosti:
-• Može poboljšati trajanje baterije
-• Može vratiti nedostajuće rezolucije videa na starijim uređajima
-
-Ograničenja:
-• Maksimalna rezolucija je 1080p
-• Reprodukcija videa će koristiti više internet podataka nego VP9 ili AV1
-• HDR videi neće koristiti AVC
-• Neki uređaji ne mogu prisiliti AVC"</string>
+  <string name="morphe_video_codec_title">Video kodek</string>
+  <string name="morphe_video_codec_entry_default">Подразумеван</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu funkciju, podesite opciju „Lažirani video strimovi” na „Android VR” ili „Android Studio”</string>
+  <string name="morphe_video_codec_avc_not_available">Da biste forsirali AVC, promenite \'Lažiranje video strimova\' na \'Android Studio\', \'Android VR\' ili \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Može da poboljša trajanje baterije i reši zamuckivanje reprodukcije
+• Koristi više internet podataka od AV1
+
+AVC (H.264)
+• Zahteva 'Android Studio', 'Android VR' ili 'visionOS' kao klijent za lažiranje video strimova
+• Može još više da poboljša trajanje baterije
+• Može da vrati nedostajuće video rezolucije na starijim uređajima
+• Maksimalna rezolucija je 1080p
+• HDR video zapisi možda ne koriste AVC
+• Neki uređaji ne mogu da forsiraju AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Otvorite napredni meni kvaliteta</string>
   <string name="morphe_advanced_video_quality_menu_summary">Preskače meni za izbor kvaliteta i direktno otvara meni kvaliteta \"Napredno\"</string>
@@ -1347,6 +1341,7 @@ Ograničenja:
 
 Reprodukcija videa s AV1 može zastajkivati ili preskakati kadrove."</string>
   <string name="morphe_spoof_video_streams_about_title">Neželjeni efekti lažiranja</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Reprodukcija može da otkaže nakon 1 minuta</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Meni „Audio snimak” nedostaje</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nema video kodeka AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>

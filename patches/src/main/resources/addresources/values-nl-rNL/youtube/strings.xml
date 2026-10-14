@@ -1163,15 +1163,6 @@ Beperking: Als 'Herstel oude video acties balk' is uitgeschakeld, is de \"Meer v
   <string name="morphe_seekbar_custom_color_accent_title">Accentkleur voortgangsbalk</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Stel de secundaire kleur van de video voortgangsbalk in</string>
   <string name="morphe_seekbar_custom_color_invalid">Ongeldige waarde voor de kleur van de schuifregelaar</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Lettertype</string>
-  <string name="morphe_custom_font_type_entry_default">Standaard</string>
-  <string name="morphe_custom_font_type_entry_system">Systeemlettertype van het apparaat</string>
-  <string name="morphe_custom_font_type_entry_custom">Eigen lettertypebestand</string>
-  <string name="morphe_custom_font_file_title">Eigen lettertypebestand</string>
-  <string name="morphe_custom_font_file_summary">Kies een TTF- of OTF-lettertypebestand</string>
-  <string name="morphe_custom_font_file_invalid">Het gekozen bestand is geen TTF- of OTF-lettertypebestand</string>
-  <string name="morphe_custom_font_failed_to_load">Het eigen lettertype kon niet worden geladen en is uitgeschakeld</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Headerlogo</string>
@@ -1317,18 +1308,21 @@ Beperkingen:
 • Kleuren kunnen er verkeerd uitzien als het display daadwerkelijk geen HDR kan weergeven.
 • Afspelen kan mislukken als de decoder HDR niet aankan.
 • HDR hangt nog steeds af van de client die videostreams vervalst."</string>
-  <string name="morphe_force_avc_codec_title">Forceer AVC (H.264) codec</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Voordelen:
-• Kan de levensduur van de batterij verbeteren
-• Kan ontbrekende videoresoluties op oudere apparaten herstellen
-
-Beperkingen:
-• Maximale resolutie is 1080p
-• Het afspelen van video verbruikt meer internetdata dan VP9 of AV1
-• HDR-video's gebruiken geen AVC
-• Sommige apparaten kunnen AVC niet forceren"</string>
+  <string name="morphe_video_codec_title">Videocodec</string>
+  <string name="morphe_video_codec_entry_default">Standaard</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om deze functie te gebruiken, stel \'Videostreams spoofen\' in op \'Android VR\' of \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Om AVC te forceren, wijzig \'Videostreams vervalsen\' in \'Android Studio\', \'Android VR\' of \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Kan de batterijduur verbeteren en haperende weergave verhelpen
+• Verbruikt meer internetdata dan AV1
+
+AVC (H.264)
+• Vereist 'Android Studio', 'Android VR' of 'visionOS' als client voor 'Videostreams vervalsen'
+• Kan de batterijduur nog verder verbeteren
+• Kan ontbrekende videoresoluties op oudere apparaten herstellen
+• Maximale resolutie is 1080p
+• HDR-video's maken mogelijk geen gebruik van AVC
+• Sommige apparaten kunnen AVC niet afdwingen"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Open geavanceerd kwaliteit menu</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaat het kwaliteitsselectiemenu over en opent het Geavanceerde kwaliteitsmenu direct</string>
@@ -1345,6 +1339,7 @@ Beperkingen:
 
 Het afspelen van video met AV1 kan haperen of frames overslaan."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing-neveneffecten</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Afspelen kan na 1 minuut mislukken</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audiotrack-menu\' ontbreekt</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1-videocodec</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-ervaring is niet beschikbaar</string>

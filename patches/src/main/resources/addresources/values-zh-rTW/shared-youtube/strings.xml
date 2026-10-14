@@ -253,6 +253,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">直向播放</string>
   <string name="morphe_app_refresh_rate_type_entry_3">全螢幕播放</string>
   <string name="morphe_app_refresh_rate_type_entry_4">直向與全螢幕播放</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">字型</string>
+  <string name="morphe_custom_font_type_entry_default">預設</string>
+  <string name="morphe_custom_font_type_entry_system">裝置系統字型</string>
+  <string name="morphe_custom_font_type_entry_custom">自訂字型檔案</string>
+  <string name="morphe_custom_font_file_title">自訂字型檔案</string>
+  <string name="morphe_custom_font_file_summary">選取 TTF 或 OTF 字型檔案</string>
+  <string name="morphe_custom_font_file_invalid">所選取的檔案不是 TTF 或 OTF 字型</string>
+  <string name="morphe_custom_font_failed_to_load">無法載入自訂字型，因此已將其關閉</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">暫時無法顯示不喜歡人數（API 逾時）</string>

@@ -253,6 +253,15 @@ Se in seguito verrà disattivata, si consiglia di cancellare i dati dell'app per
   <string name="morphe_app_refresh_rate_type_entry_2">Riproduzione in verticale</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Riproduzione a schermo intero</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Riproduzione in verticale e a schermo intero</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Carattere</string>
+  <string name="morphe_custom_font_type_entry_default">Predefinita</string>
+  <string name="morphe_custom_font_type_entry_system">Font di sistema del dispositivo</string>
+  <string name="morphe_custom_font_type_entry_custom">File del carattere personalizzato</string>
+  <string name="morphe_custom_font_file_title">File del carattere personalizzato</string>
+  <string name="morphe_custom_font_file_summary">Scegli un file di font TTF o OTF</string>
+  <string name="morphe_custom_font_file_invalid">Il file selezionato non è un font TTF o OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Non è stato possibile caricare il font personalizzato ed è stato disattivato</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">I \"Non Mi Piace\" temporaneamente non disponibili (timeout API)</string>

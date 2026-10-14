@@ -241,3 +241,93 @@ internal object PostDetailGalleryFingerprint : Fingerprint(
         string("post_media_gallery_content")
     )
 )
+
+/**
+ * toString of the YouTube video section of a feed post, which logs whether the video is inset.
+ */
+internal object YouTubeVideoSectionToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("YoutubeVideoSection(width="),
+        string(", applyInset="),
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            definingClass = "this",
+            type = "Z",
+            location = MatchAfterWithin(3)
+        )
+    )
+)
+
+/**
+ * Constructor of the YouTube video section, which sets whether the video is inset.
+ */
+internal fun youTubeVideoSectionConstructorFingerprint(definingClass: String, insetField: FieldReference) = Fingerprint(
+    definingClass = definingClass,
+    name = "<init>",
+    filters = listOf(
+        fieldAccess(insetField, Opcode.IPUT_BOOLEAN)
+    )
+)
+
+/**
+ * YouTube video in the feed. It is always padded by 16dp at the sides and clipped
+ * with rounded corners and an outline. Its height is computed from the screen width
+ * minus that padding (32dp in total).
+ */
+internal fun youTubeVideoSectionContentFingerprint(definingClass: String) = Fingerprint(
+    definingClass = definingClass,
+    returnType = "V",
+    filters = listOf(
+        literal(16.0f),
+        // Horizontal padding.
+        methodCall(
+            parameters = listOf("L", "F", "F", "I"),
+            returnType = "L",
+            location = MatchAfterWithin(3)
+        ),
+        // Rounded corners and outline.
+        methodCall(
+            parameters = listOf("L"),
+            returnType = "L",
+            location = MatchAfterWithin(2)
+        )
+    ) + mediaInsetFilters()
+)
+
+/**
+ * Horizontal padding of the post details content, in dp.
+ */
+internal fun postDetailHorizontalPaddingFilter() = methodCall(
+    // '-D9Ej5fM' suffix is not obfuscation.
+    // Kotlin adds it to functions returning Dp (an inline value class).
+    smali = "Lcom/reddit/postdetail/PostDetailStyle\$HorizontalPadding;->getSize-D9Ej5fM()F"
+)
+
+/**
+ * Embedded video (YouTube, ...) in the post details: (hub, videoMedia, previewImage, modifier, ...).
+ * Its size is computed for the screen width minus the horizontal padding, it is padded by it,
+ * and it is clipped with 8dp rounded corners and an outline.
+ */
+internal object PostDetailEmbedVideoFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "Lcom/reddit/domain/model/VideoMedia;",
+        "Lcom/reddit/domain/model/Image;",
+        "L",
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        postDetailHorizontalPaddingFilter(),
+        literal(8.0f),
+        // Rounded corners and outline.
+        methodCall(
+            parameters = listOf("L", "Lkotlin/jvm/functions/Function1;", "L"),
+            returnType = "L"
+        )
+    )
+)

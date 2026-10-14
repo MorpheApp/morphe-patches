@@ -1165,15 +1165,6 @@ Beperking: Indien 'Herstel ou video-aksiebalk' afgeskakel is, mag die 'Meer vide
   <string name="morphe_seekbar_custom_color_accent_title">Seekbar-aksentkleur</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Stel die sekondêre kleur van die videovorderingsbalk</string>
   <string name="morphe_seekbar_custom_color_invalid">Ongeldige soekbalk kleurwaarde</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Lettertipe</string>
-  <string name="morphe_custom_font_type_entry_default">Verstek</string>
-  <string name="morphe_custom_font_type_entry_system">Toestelstelselfont</string>
-  <string name="morphe_custom_font_type_entry_custom">Aangepaste fontlêer</string>
-  <string name="morphe_custom_font_file_title">Aangepaste fontlêer</string>
-  <string name="morphe_custom_font_file_summary">Kies \'n TTF- of OTF-fontlêer</string>
-  <string name="morphe_custom_font_file_invalid">Die gekose lêer is nie \'n TTF- of OTF-font nie</string>
-  <string name="morphe_custom_font_failed_to_load">Die aangepaste font kon nie gelaai word nie en is afgeskakel</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Header logo</string>
@@ -1319,18 +1310,21 @@ Beperkings:
 • Kleure kan verkeerd lyk as die skerm nie werklik HDR kan vertoon nie
 • Terugspeeling kan misluk as die dekodeerder nie HDR kan hanteer nie
 • HDR hang steeds af van die spoof-videostrome-kliënt"</string>
-  <string name="morphe_force_avc_codec_title">Forseer AVC (H.264) codec</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Voordele:
-• Kan battery lewe verbeter
-• Kan ontbrekende video resolusies op ouer toestel herstel
-
-Beperkings:
-• Maksimum resolusie is 1080p
-• Videogespeel sal meer internet data gebruik as VP9 of AV1
-• HDR video's sal nie AVC gebruik nie
-• Sommige toestelle kan nie AVC forceer nie"</string>
+  <string name="morphe_video_codec_title">Video-kodek</string>
+  <string name="morphe_video_codec_entry_default">Verstek</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om hierdie funksie te gebruik, stel \'Verfraai videostrome\' in op \'Android VR\' of \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Om AVC af te dwing, verander \'Videostrome naboots\' na \'Android Studio\', \'Android VR\' of \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Kan batterylewe verbeter en hakkel tydens afspeel regstel
+• Gebruik meer internetdata as AV1
+
+AVC (H.264)
+• Vereis 'Android Studio', 'Android VR' of 'visionOS' as die kliënt vir 'Videostrome naboots'
+• Kan batterylewe selfs meer verbeter
+• Kan ontbrekende video-resolusies op ouer toestelle herstel
+• Maksimum resolusie is 1080p
+• HDR-video's gebruik dalk nie AVC nie
+• Sommige toestelle kan nie AVC afdwing nie"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Maak Gevorderde kwaliteit spyskaart oop</string>
   <string name="morphe_advanced_video_quality_menu_summary">Slaan die kwaliteitkeusemenu oor en open die Gevorderde kwaliteitmenu direk</string>
@@ -1347,6 +1341,7 @@ Beperkings:
 
 Videoweergawe met AV1 kan hakkel of rame laat val."</string>
   <string name="morphe_spoof_video_streams_about_title">Spoef-newe-effekte</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Afspeel kan op 1 minuut misluk</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audio Track\'-kieslys ontbreek</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Geen AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR meeslepende modus is nie beskikbaar nie</string>

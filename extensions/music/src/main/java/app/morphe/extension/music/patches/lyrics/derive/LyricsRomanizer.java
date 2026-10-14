@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lyrics.translate;
+package app.morphe.extension.music.patches.lyrics.derive;
 
 import androidx.annotation.Nullable;
 
@@ -66,7 +66,7 @@ public final class LyricsRomanizer {
                     return;
                 }
 
-                if (Settings.LYRICS_USE_AI_TRANSLATION.get()) {
+                if (Settings.LYRICS_USE_AI_ROMANIZATION.get()) {
                     String baseUrl = Settings.LYRICS_AI_BASE_URL.get();
                     String apiToken = Settings.LYRICS_AI_API_TOKEN.get();
                     String model = Settings.LYRICS_AI_MODEL.get();
@@ -111,7 +111,7 @@ public final class LyricsRomanizer {
     @Nullable
     private static List<String> aiRomanize(List<String> lines, String targetLanguage,
             String title, String artist, String baseUrl, String apiToken, String model) {
-        String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_PROMPT.get(),
+        String prompt = OpenAIClient.renderPrompt(Settings.LYRICS_AI_ROMANIZATION_PROMPT.get(),
                 "romanization", targetLanguage, title, artist, lines);
         return OpenAIClient.mapLines(baseUrl, apiToken, model, prompt, lines);
     }

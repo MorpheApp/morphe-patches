@@ -169,8 +169,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_summary">Приховує назву відео в повноекранному режимі</string>
   <string name="morphe_sanitize_video_subtitle_title">Очищувати підзаголовок відео</string>
   <string name="morphe_sanitize_video_subtitle_summary">Очищає з підзаголовка відео такі фрази, як \"#\", \"Збір коштів\", \"товар(и)\" та \"Магазин\"</string>
-  <string name="morphe_hide_ask_gemini_button_title">Приховати кнопку \'Ask Gemini\'</string>
-  <string name="morphe_hide_ask_gemini_button_summary">Приховує кнопку \'Ask Gemini\' внизу панелі \'Ask about this video\'</string>
+  <string name="morphe_hide_ask_gemini_button_title">Приховати кнопку \"Запитати Gemini\"</string>
+  <string name="morphe_hide_ask_gemini_button_summary">Приховує кнопку \"Запитати Gemini\" внизу панелі \"Запитати про це відео\"</string>
   <string name="morphe_hide_description_components_screen_title">Опис відео</string>
   <string name="morphe_hide_description_components_screen_summary">Виберіть, які компоненти будуть показуватися в описі відео</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Приховати секцію \"Короткий переказ від ШІ\"</string>
@@ -561,14 +561,14 @@ Second \"item\" text"</string>
   <string name="morphe_queue_add_flyout_menu_title">Додати пункт меню черги у висувне меню стрічки</string>
   <string name="morphe_queue_add_flyout_menu_summary">Додає додатковий пункт у висувне меню. Увімкніть цю опцію, якщо пункт \"Додати до черги\" не показується</string>
   <string name="morphe_local_queue_title">Черга в стилі Premium</string>
-  <string name="morphe_local_queue_summary">"Замінює чергу Morphe на ту, що зберігається на пристрої, відтворюється сама, і порядок якої можна змінювати перетягуванням
+  <string name="morphe_local_queue_summary">"Замінює чергу Morphe на таку, що зберігається на пристрої, відтворюється самостійно та може бути переупорядкована перетягуванням
 
-Інформація: наступне відео з черги запускається лише тоді, коли YouTube на екрані"</string>
+Інформація: наступне відео в черзі запускається лише поки YouTube відкрито на екрані"</string>
   <string name="morphe_local_queue_sheet_title">Черга</string>
   <string name="morphe_local_queue_open">Черга (%d)</string>
   <string name="morphe_local_queue_clear">Очистити все</string>
-  <string name="morphe_local_queue_empty">У черзі нічого немає</string>
-  <string name="morphe_local_queue_empty_hint">Скористайтеся пунктом «Відтворити наступним у черзі» на будь-якому відео</string>
+  <string name="morphe_local_queue_empty">Черга порожня</string>
+  <string name="morphe_local_queue_empty_hint">Використовуйте \"Відтворити наступним у черзі\" на будь-якому відео</string>
   <string name="morphe_local_queue_now_playing">Зараз відтворюється</string>
   <string name="morphe_local_queue_play_next">Відтворити наступним у черзі</string>
   <string name="morphe_local_queue_reorder">Змінити порядок</string>
@@ -806,8 +806,8 @@ Second \"item\" text"</string>
 Щоб отримати доступ до налаштувань, увімкніть \"Налаштування\" в розділі \"Загальні\" → \"Панель інструментів\" → Показати \"Налаштування\"."</string>
   <string name="morphe_narrow_navigation_buttons_title">Увімкнути вузькі кнопки навігації</string>
   <string name="morphe_narrow_navigation_buttons_summary">Зменшує горизонтальні відступи між кнопками</string>
-  <string name="morphe_disable_icon_only_navigation_buttons_title">Вимкнути навігаційні кнопки без підписів</string>
-  <string name="morphe_disable_icon_only_navigation_buttons_summary">Показує навігаційні кнопки з підписами, якщо YouTube надсилає їх без підписів</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_title">Вимкнути кнопки навігації без підписів</string>
+  <string name="morphe_disable_icon_only_navigation_buttons_summary">Показує кнопки навігації з підписами, якщо YouTube надсилає їх без підписів</string>
   <string name="morphe_navigation_bar_animations_title">Увімкнути анімації панелі навігації</string>
   <string name="morphe_navigation_bar_animations_summary">Анімує переходи між вкладками</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Вимкнути автоприховування панелі навігації</string>
@@ -1164,15 +1164,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">Додатковий колір смуги відтворення</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Встановлює додатковий колір смуги прогресу відтворення відео</string>
   <string name="morphe_seekbar_custom_color_invalid">Недійсне значення кольору смуги відтворення</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Шрифт</string>
-  <string name="morphe_custom_font_type_entry_default">Типова</string>
-  <string name="morphe_custom_font_type_entry_system">Системний шрифт пристрою</string>
-  <string name="morphe_custom_font_type_entry_custom">Файл власного шрифту</string>
-  <string name="morphe_custom_font_file_title">Файл власного шрифту</string>
-  <string name="morphe_custom_font_file_summary">Виберіть файл шрифту TTF або OTF</string>
-  <string name="morphe_custom_font_file_invalid">Вибраний файл не є шрифтом TTF або OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Не вдалося завантажити користувацький шрифт, тому його вимкнено</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотип заголовка</string>
@@ -1196,10 +1187,10 @@ Second \"item\" text"</string>
   <string name="morphe_dearrow_titles_search_title">Результати пошуку</string>
   <string name="morphe_dearrow_titles_icon_title">Показувати іконку DeArrow</string>
   <string name="morphe_dearrow_titles_icon_summary">Показує іконку DeArrow на краудсорсингових назвах відео</string>
-  <string name="morphe_dearrow_casual_mode_title">Казуальний режим</string>
-  <string name="morphe_dearrow_casual_mode_summary">Показує оригінальну назву замість назви DeArrow, якщо користувачі DeArrow проголосували за те, що їм подобається оригінальна назва</string>
-  <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальна кількість казуальних голосів для показу оригінальної назви</string>
-  <string name="morphe_dearrow_casual_mode_min_votes_summary">Кількість казуальних голосів в одній категорії, як-от «смішні» або «творчі», необхідна для показу оригінальної назви</string>
+  <string name="morphe_dearrow_casual_mode_title">Звичайний режим</string>
+  <string name="morphe_dearrow_casual_mode_summary">Показує оригінальну назву замість назви DeArrow, якщо користувачі DeArrow проголосували за оригінальну назву</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_title">Мінімальна кількість голосів у звичайному режимі для показу оригінальної назви</string>
+  <string name="morphe_dearrow_casual_mode_min_votes_summary">Кількість голосів у звичайному режимі в одній категорії, наприклад \"смішно\" або \"креативно\", необхідна для показу оригінальної назви</string>
   <string name="morphe_dearrow_thumbnails_title">Мініатюри DeArrow</string>
   <string name="morphe_dearrow_thumbnail_options_entry_1">Оригінальні прев\'ю</string>
   <string name="morphe_dearrow_thumbnail_options_entry_2">DeArrow та Оригінальні прев\'ю</string>
@@ -1318,18 +1309,21 @@ Second \"item\" text"</string>
 • Кольори можуть виглядати неправильно, якщо дисплей насправді не підтримує HDR
 • Відтворення може не вдатися, якщо декодер не може обробити HDR
 • HDR все ще залежить від клієнта підробки відеопотоків"</string>
-  <string name="morphe_force_avc_codec_title">Примусово використовувати кодек AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Переваги:
-• Може покращити час роботи від батареї
-• Може відновити відсутні роздільні здатності відео на старіших пристроях
-
-Обмеження:
-• Максимальна роздільна здатність - 1080p
-• Під час відтворення відео буде витрачатися більше інтернет-трафіку, ніж із VP9 чи AV1
-• HDR-відео не використовуватимуть AVC
-• Деякі пристрої не можуть примусово використовувати AVC"</string>
+  <string name="morphe_video_codec_title">Відеокодек</string>
+  <string name="morphe_video_codec_entry_default">Типовий</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Щоб використовувати цю функцію, встановіть \"Підміна відеопотоків\" на \"Android VR\" або \"Android Studio\"</string>
+  <string name="morphe_video_codec_avc_not_available">Щоб примусово використовувати AVC, змініть \"Підміна відеопотоків\" на \"Android Studio\", \"Android VR\" або \"visionOS\"</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Може подовжити час роботи від батареї та виправити заїкання відтворення
+• Використовує більше інтернет-трафіку, ніж AV1
+
+AVC (H.264)
+• Потребує клієнта підробки відеопотоку \"Android Studio\", \"Android VR\" або \"visionOS\"
+• Може ще більше подовжити час роботи від батареї
+• Може відновити відсутні роздільні здатності відео на старих пристроях
+• Максимальна роздільна здатність - 1080p
+• HDR-відео можуть не використовувати AVC
+• Деякі пристрої не можуть примусово використовувати AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Відкривати меню якості \"Розширені налаштування\"</string>
   <string name="morphe_advanced_video_quality_menu_summary">Пропускає меню вибору якості та відкриває меню \"Розширенні налаштування\" безпосередньо</string>
@@ -1346,6 +1340,7 @@ Second \"item\" text"</string>
 
 Відтворення відео з AV1 може заїкатися або мати пропуски кадрів."</string>
   <string name="morphe_spoof_video_streams_about_title">Побічні ефекти підміни</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Відтворення може перерватися на 1-й хвилині</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Пункт меню \"Звукова доріжка\" відсутній</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Відеокодек AV1 відсутній</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Режим занурення у віртуальну реальність 360° недоступний</string>

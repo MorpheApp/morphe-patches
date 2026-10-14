@@ -1165,15 +1165,6 @@ Korlátozás: Ha a „Régi videós eszköztár visszaállítása” ki van kapc
   <string name="morphe_seekbar_custom_color_accent_title">Keresősáv kiemelő színe</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Állítsa be a videó lejátszás jelzője másodlagos színét</string>
   <string name="morphe_seekbar_custom_color_invalid">Érvénytelen keresősáv színértéke</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Betűtípus</string>
-  <string name="morphe_custom_font_type_entry_default">Alapértelmezett</string>
-  <string name="morphe_custom_font_type_entry_system">Eszköz rendszerbetűtípusa</string>
-  <string name="morphe_custom_font_type_entry_custom">Egyéni betűtípusfájl</string>
-  <string name="morphe_custom_font_file_title">Egyéni betűtípusfájl</string>
-  <string name="morphe_custom_font_file_summary">Válasszon ki egy TTF vagy OTF betűtípusfájlt</string>
-  <string name="morphe_custom_font_file_invalid">A kiválasztott fájl nem TTF vagy OTF betűtípus</string>
-  <string name="morphe_custom_font_failed_to_load">Az egyéni betűtípus betöltése nem sikerült, ezért ki van kapcsolva</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Fejléclogó</string>
@@ -1319,18 +1310,21 @@ Korlátozások:
 • A színek hibásnak tűnhetnek, ha a kijelző nem tudja valóban megjeleníteni a HDR-t
 • A lejátszás meghiúsulhat, ha a dekódoló nem tudja kezelni a HDR-t
 • A HDR továbbra is a spoof video streams klienstől függ"</string>
-  <string name="morphe_force_avc_codec_title">A funkció használatához állítsa be a \'Videóstreamek hamisítását\' Android VR-re vagy Android Studióra</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Előnyök:
-• Javíthatja az akkumulátor élettartamát
-• Visszaállíthatja a hiányzó videófelbontásokat régebbi eszközökön
-
-Korlátozások:
-• A maximális felbontás 1080p
-• A videólejátszás több internetadatot fog használni, mint a VP9 vagy az AV1
-• A HDR videók nem fogják használni az AVC-t
-• Néhány eszköz nem tudja kikényszeríteni az AVC-t"</string>
+  <string name="morphe_video_codec_title">Videó kodek</string>
+  <string name="morphe_video_codec_entry_default">Alapértelmezett</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">A funkció használatához állítsa a „Videóstreamek hamisítása” beállítást „Android VR” vagy „Android Studio” értékre.</string>
+  <string name="morphe_video_codec_avc_not_available">Az AVC kényszerítéséhez módosítsd a \'Videóstreamek megszemélyesítése\' beállítás értékét a következők egyikére: \'Android Studio\', \'Android VR\' vagy \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Javíthatja az akkumulátor-üzemidőt, és megszüntetheti a lejátszás akadozását
+• Több internetes adatot használ fel, mint az AV1
+
+AVC (H.264)
+• A 'Videóstreamek megszemélyesítése' beállításnál 'Android Studio', 'Android VR' vagy 'visionOS' érték szükséges
+• Az akkumulátor-üzemidőt még jobban javíthatja
+• Régebbi eszközökön visszaállíthatja a hiányzó videófelbontásokat
+• A maximális felbontás 1080p
+• Előfordulhat, hogy a HDR-videók nem használnak AVC-t
+• Egyes eszközökön nem kényszeríthető ki az AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Nyissa meg a fejlett minőség menüt</string>
   <string name="morphe_advanced_video_quality_menu_summary">A minőségi beállítások menüt kihagyva közvetlenül megnyitja a Speciális minőségi menüt</string>
@@ -1347,6 +1341,7 @@ Korlátozások:
 
 Az AV1-es videólejátszás akadozhat vagy képkockákat ejthet."</string>
   <string name="morphe_spoof_video_streams_about_title">Hamisítás mellékhatásai</string>
+  <string name="morphe_spoof_video_streams_about_failure">• A lejátszás 1 percnél megszakadhat</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Hiányzik a „Hangsáv” menü.</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Nincs AV1 videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR merőleges mód nem elérhető</string>

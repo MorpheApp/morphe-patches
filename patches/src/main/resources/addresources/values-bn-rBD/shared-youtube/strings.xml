@@ -253,6 +253,15 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <string name="morphe_app_refresh_rate_type_entry_2">পোর্ট্রেট প্লেব্যাক</string>
   <string name="morphe_app_refresh_rate_type_entry_3">ফুলস্ক্রিন প্লেব্যাক</string>
   <string name="morphe_app_refresh_rate_type_entry_4">পোর্ট্রেট এবং ফুলস্ক্রিন প্লেব্যাক</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">ফন্ট</string>
+  <string name="morphe_custom_font_type_entry_default">ডিফল্ট</string>
+  <string name="morphe_custom_font_type_entry_system">ডিভাইস সিস্টেম ফন্ট</string>
+  <string name="morphe_custom_font_type_entry_custom">কাস্টম ফন্ট ফাইল</string>
+  <string name="morphe_custom_font_file_title">কাস্টম ফন্ট ফাইল</string>
+  <string name="morphe_custom_font_file_summary">একটি TTF বা OTF ফন্ট ফাইল নির্বাচন করুন</string>
+  <string name="morphe_custom_font_file_invalid">নির্বাচিত ফাইলটি একটি TTF বা OTF ফন্ট নয়</string>
+  <string name="morphe_custom_font_failed_to_load">কাস্টম ফন্ট লোড করা যায়নি এবং এটি বন্ধ করে দেওয়া হয়েছে</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">অপছন্দ সাময়িকভাবে উপলভ্য নয় (API সময় শেষ হয়েছে)</string>

@@ -973,8 +973,6 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_seekbar_custom_color_accent_title">Seekbar aksent rangi</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Video progress barining ikkilamchi rangini belgilash</string>
   <string name="morphe_seekbar_custom_color_invalid">Yaroqsiz sekbar rangi</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_entry_default">Standart</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Bosh logotip</string>
@@ -1085,20 +1083,8 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_force_hdr_video_title">HDR videoni majburlash</string>
   <string name="morphe_force_hdr_video_summary">Ilovani ushbu qurilmani HDR qobiliyatli deb tan olishga majbur qiladi</string>
   <string name="morphe_force_hdr_video_user_dialog_message">"Agar HDR dekodlash ishlasa, lekin YouTube HDR taklif qilmasa, masalan, HLG ni yashiradigan ba'zi HyperOS qurilmalarida, buni ishlating.\n\nCheklovlar:\n• Agar displey haqiqatan ham HDR ko'rsata olmasa, ranglar noto'g'ri ko'rinishi mumkin\n• Agar dekoder HDR bilan ishlay olmasa, ijro etish muvaffaqiyatsiz bo'lishi mumkin\n• HDR hali ham video oqimlarini soxtalashtiruvchi mijozga bog'liq"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) kodekni majburlash</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Foydalanishning afzalliklari:
-
-• Batareyaning ishlash muddati yaxshilanishi mumkin
-• Eski qurilmalarda videoning sifatini tiklash mumkin
-
-Cheklovlari:
-
-• Maksimal aniqlik 1080p
-• Video o'ynashda ko'proq internet hajmi ishlatiladi
-• HDR videolarda AVC ishlatilmaydi
-• Ba'zi qurilmalar AVCni majburlash imkoniyatiga ega emas"</string>
+  <string name="morphe_video_codec_entry_default">Standart</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Bu xususiyatdan foydalanish uchun \'Video oqimlarini soxtalashtirish\' ni \'Android VR\' yoki \'Android Studio\' ga o\'rnating</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Kengaytirilgan sifat menyusini ochish</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sifat tanlash menyusini o\'tkib uzatadi va to\'g\'ridan-to\'g\'ri ilg\'or sifat menyusini ochadi</string>

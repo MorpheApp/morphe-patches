@@ -1164,15 +1164,6 @@ Limitação: Se 'Restaurar barra de ações de vídeo antiga' estiver desativado
   <string name="morphe_seekbar_custom_color_accent_title">Cor de destaque da barra de progresso</string>
   <string name="morphe_seekbar_custom_color_accent_summary">Defina a cor secundária da barra de progresso do vídeo</string>
   <string name="morphe_seekbar_custom_color_invalid">Valor de cor da barra de progresso inválido</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">Fonte</string>
-  <string name="morphe_custom_font_type_entry_default">Padrão</string>
-  <string name="morphe_custom_font_type_entry_system">Fonte do sistema do dispositivo</string>
-  <string name="morphe_custom_font_type_entry_custom">Arquivo de fonte personalizada</string>
-  <string name="morphe_custom_font_file_title">Arquivo de fonte personalizada</string>
-  <string name="morphe_custom_font_file_summary">Selecione um arquivo de fonte TTF ou OTF</string>
-  <string name="morphe_custom_font_file_invalid">O arquivo selecionado não é uma fonte TTF ou OTF</string>
-  <string name="morphe_custom_font_failed_to_load">Não foi possível carregar a fonte personalizada e ela foi desativada</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo do cabeçalho</string>
@@ -1318,18 +1309,21 @@ Limitações:
 • As cores podem parecer incorretas se a tela não for capaz de exibir HDR
 • A reprodução pode falhar se o decodificador não suportar HDR
 • O HDR ainda depende do cliente selecionado em \"Simular streams de vídeo\""</string>
-  <string name="morphe_force_avc_codec_title">Forçar codec AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Benefícios:
-• Pode melhorar a duração da bateria
-• Pode restaurar resoluções de vídeo ausentes em dispositivos mais antigos
-
-Limitações:
-• Resolução máxima é 1080p
-• A reprodução de vídeo usará mais dados da internet do que VP9 ou AV1
-• Vídeos HDR não usarão AVC
-• Alguns dispositivos não conseguem forçar o AVC"</string>
+  <string name="morphe_video_codec_title">Codec de vídeo</string>
+  <string name="morphe_video_codec_entry_default">Padrão</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Para usar este recurso, mude \'Simular streams de vídeo\' para \'Android VR\' ou \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Para forçar AVC, altere a opção \'Falsificar streams de vídeo\' para \'Android Studio\', \'Android VR\' ou \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Pode melhorar a duração da bateria e corrigir travamentos na reprodução
+• Usa mais dados de internet do que AV1
+
+AVC (H.264)
+• Requer que o cliente de falsificação de streams de vídeo seja 'Android Studio', 'Android VR' ou 'visionOS'
+• Pode melhorar ainda mais a duração da bateria
+• Pode restaurar resoluções de vídeo ausentes em dispositivos mais antigos
+• A resolução máxima é 1080p
+• Vídeos HDR podem não usar AVC
+• Alguns dispositivos não conseguem forçar AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Abrir menu de qualidade avançada</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ignora o menu de seleção de qualidade e abre o menu de qualidade Avançado diretamente</string>
@@ -1346,6 +1340,7 @@ Limitações:
 
 A reprodução de vídeos com AV1 pode apresentar travamentos ou perda de frames."</string>
   <string name="morphe_spoof_video_streams_about_title">Efeitos colaterais da simulação</string>
+  <string name="morphe_spoof_video_streams_about_failure">• A reprodução pode falhar ao atingir 1 minuto</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• O menu \'Faixa de áudio\' não está disponível</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Sem codec de vídeo AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Modo imersivo 360° VR não está disponível</string>

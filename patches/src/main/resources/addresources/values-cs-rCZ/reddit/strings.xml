@@ -34,6 +34,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_about_shelf_title">Skrýt panel O nás</string>
   <string name="morphe_hide_resources_shelf_title">Skrýt panel Zdroje</string>
   <string name="morphe_screen_layout_title">Rozložení</string>
+  <string name="morphe_copy_text_title">Kopírovat text</string>
+  <string name="morphe_copy_text_summary">Umožňuje vybírat a kopírovat text v příspěvcích a komentářích. Zakazuje sbalování komentářů</string>
+  <string name="morphe_copy_text_user_dialog_message">Sbalování komentářů přestane fungovat, dokud je povoleno kopírování textu.</string>
   <string name="morphe_custom_font_title">Vlastní písmo</string>
   <string name="morphe_custom_font_summary">Načte vlastní soubor písma TTF nebo OTF z cesty níže. Povolení této možnosti také vypne použití systémového písma.</string>
   <string name="morphe_custom_font_file_path_title">Soubor vlastního písma</string>

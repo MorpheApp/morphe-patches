@@ -18,9 +18,8 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.icu.text.BreakIterator;
 import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.RelativeSizeSpan;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -39,7 +38,6 @@ final class LyricsLineView extends TextView {
     long positionMs = Long.MIN_VALUE;
     boolean allSung = false;
     private int unsungColor;
-    private int sungColor;
     int originalTextStart;
     private float[] lineMaxSungX;
 
@@ -83,8 +81,12 @@ final class LyricsLineView extends TextView {
     int romaEnd = -1;
     float lastTouchY;
     private final Paint layerPaint = new Paint();
+    private PorterDuffColorFilter tintFilter;
+    private int tintFilterColor;
     private int baseTextAlpha = 255;
     float lineAlpha = 1f;
+    boolean activeLine;
+    private int secondaryActiveColor;
     ValueAnimator fadeAnimator;
 
     float contentReveal = 1f;
@@ -112,6 +114,15 @@ final class LyricsLineView extends TextView {
     void setRomanizationBounds(int start, int end) {
         romaStart = start;
         romaEnd = end;
+    }
+
+    void setActiveLine(boolean active, int color) {
+        if (activeLine == active && secondaryActiveColor == color) {
+            return;
+        }
+        activeLine = active;
+        secondaryActiveColor = color;
+        invalidate();
     }
 
     void startContentIn() {
@@ -253,21 +264,20 @@ final class LyricsLineView extends TextView {
     }
 
     void setHighlight(List<LyricsSpanBuilder.WordTiming> timings, long posMs, boolean sung,
-                      int unsungCol, int sungCol, int origStart) {
+                      int unsungCol, int origStart) {
         if (this.positionMs == posMs && this.allSung == sung
-                && this.unsungColor == unsungCol && this.sungColor == sungCol
+                && this.unsungColor == unsungCol
                 && this.originalTextStart == origStart
                 && this.wordTimings == timings) {
             return;
         }
         final boolean structuralChange = this.wordTimings != timings
                 || this.originalTextStart != origStart
-                || this.unsungColor != unsungCol || this.sungColor != sungCol;
+                || this.unsungColor != unsungCol;
         this.wordTimings = timings != null ? timings : Collections.emptyList();
         this.positionMs = posMs;
         this.allSung = sung;
         this.unsungColor = unsungCol;
-        this.sungColor = sungCol;
         this.originalTextStart = origStart;
         if (structuralChange) {
             cachedLayout = null;
@@ -288,6 +298,7 @@ final class LyricsLineView extends TextView {
         cachedWordTrailX = new float[cachedWordCount];
         cachedWordLine = new int[cachedWordCount];
         cachedWordWrappedLine = new int[cachedWordCount];
+        final int[] clusters = clusterBoundaries(text);
         for (int i = 0; i < cachedWordCount; i++) {
             final LyricsSpanBuilder.WordTiming timing = timings.get(i);
             final int s = timing.start() + origStart;
@@ -296,13 +307,17 @@ final class LyricsLineView extends TextView {
                 cachedWordWrappedLine[i] = -1;
                 continue;
             }
+            final int snappedStart = snapToClusterStart(clusters, s);
+            final int snappedEnd = snapToClusterEnd(clusters, e);
             final int line = layout.getLineForOffset(s);
-            final float lead = layout.getPrimaryHorizontal(s);
-            float trail = layout.getPrimaryHorizontal(e);
             final int endLine = layout.getLineForOffset(e);
-            if (trail == lead || endLine != line) {
+            final float lead = layout.getPrimaryHorizontal(snappedStart);
+            float trail;
+            if (endLine != line) {
                 final float width = paint.measureText(text, s, e);
                 trail = layout.isRtlCharAt(s) ? lead - width : lead + width;
+            } else {
+                trail = layout.getPrimaryHorizontal(snappedEnd);
             }
             cachedWordLeadX[i] = lead;
             cachedWordTrailX[i] = trail;
@@ -323,6 +338,40 @@ final class LyricsLineView extends TextView {
             cachedLineLeft[ln] = layout.getLineLeft(ln);
             cachedLineRight[ln] = layout.getLineRight(ln);
         }
+    }
+
+    private static int[] clusterBoundaries(CharSequence text) {
+        final int length = text.length();
+        final int[] boundaries = new int[length + 1];
+        final BreakIterator iterator = BreakIterator.getCharacterInstance();
+        iterator.setText(text);
+        int clusterStart = iterator.first();
+        while (clusterStart != BreakIterator.DONE && clusterStart <= length) {
+            final int next = iterator.next();
+            final int clusterEnd = next == BreakIterator.DONE ? length : next;
+            for (int offset = clusterStart; offset <= clusterEnd && offset <= length; offset++) {
+                boundaries[offset] = clusterStart;
+            }
+            clusterStart = next;
+        }
+        return boundaries;
+    }
+
+    private static int snapToClusterStart(int[] clusters, int offset) {
+        return clusters[Math.min(Math.max(offset, 0), clusters.length - 1)];
+    }
+
+    private static int snapToClusterEnd(int[] clusters, int offset) {
+        final int index = Math.min(Math.max(offset, 0), clusters.length - 1);
+        if (clusters[index] == index) {
+            return index;
+        }
+        final int clusterStart = clusters[index];
+        int probe = index;
+        while (probe < clusters.length && clusters[probe] == clusterStart) {
+            probe++;
+        }
+        return Math.min(probe, clusters.length - 1);
     }
 
     private int textOriginX() {
@@ -356,12 +405,6 @@ final class LyricsLineView extends TextView {
         if (lastOffset < start) {
             return;
         }
-        if (!(text instanceof Spannable spannable)) {
-            return;
-        }
-        if (spannable.getSpans(start, textLength, RelativeSizeSpan.class).length == 0) {
-            return;
-        }
         final int firstLine = layout.getLineForOffset(start);
         final int lastLine = layout.getLineForOffset(lastOffset);
         for (int i = firstLine; i <= lastLine && i < flags.length; i++) {
@@ -370,7 +413,7 @@ final class LyricsLineView extends TextView {
     }
 
     private void drawTextRun(Canvas canvas, Layout layout, int firstLine, int lastLine,
-            int alpha) {
+            int alpha, int tintColor) {
         if (firstLine > lastLine || alpha <= 0) {
             return;
         }
@@ -390,6 +433,10 @@ final class LyricsLineView extends TextView {
         canvas.clipRect(0, clipTop, contentWidth, bottom);
         final Paint textPaint = getPaint();
         textPaint.setColor(getCurrentTextColor() | 0xFF000000);
+        final ColorFilter previousFilter = textPaint.getColorFilter();
+        if (tintColor != 0) {
+            textPaint.setColorFilter(tintFilter(tintColor));
+        }
         final boolean useLayer = alpha < 255;
         if (useLayer) {
             layerPaint.setColor(Color.WHITE);
@@ -401,6 +448,17 @@ final class LyricsLineView extends TextView {
             canvas.restore();
         }
         canvas.restore();
+        if (tintColor != 0) {
+            textPaint.setColorFilter(previousFilter);
+        }
+    }
+
+    private PorterDuffColorFilter tintFilter(int color) {
+        if (tintFilterColor != color) {
+            tintFilterColor = color;
+            tintFilter = new PorterDuffColorFilter(color | 0xFF000000, PorterDuff.Mode.SRC_IN);
+        }
+        return tintFilter;
     }
 
     /**
@@ -423,8 +481,9 @@ final class LyricsLineView extends TextView {
         final float contentNow = contentReveal;
         final int mainAlpha = Math.round(((unsungColor != 0 && !wordTimings.isEmpty())
                 ? LyricsColors.UNSUNG_ALPHA * 255f : baseTextAlpha) * lineAlpha * contentNow);
-        final int secondaryAlpha = Math.round(
-                Color.alpha(LyricsColors.secondaryTextColor()) * lineAlpha * contentNow);
+        final int secondaryAlpha = Math.round((activeLine
+                ? 255f
+                : Color.alpha(LyricsColors.secondaryTextColor()) * lineAlpha) * contentNow);
 
         final boolean[] secondaryLine = new boolean[lineCount];
         markSecondaryLines(layout, transStart, transEnd, secondaryLine);
@@ -438,9 +497,12 @@ final class LyricsLineView extends TextView {
             }
         }
 
-        final boolean regionRevealing = transReveal < 1f || romaReveal < 1f;
-        if (!hasSecondary || (secondaryAlpha == mainAlpha && !regionRevealing)) {
-            drawTextRun(canvas, layout, 0, lineCount - 1, mainAlpha);
+        final int textLength = layout.getText().length();
+        final boolean onlySecondaryRegion = transStart == 0 && transEnd == textLength
+                || romaStart == 0 && romaEnd == textLength;
+
+        if (!hasSecondary || onlySecondaryRegion) {
+            drawTextRun(canvas, layout, 0, lineCount - 1, mainAlpha, 0);
             return true;
         }
 
@@ -459,9 +521,10 @@ final class LyricsLineView extends TextView {
                             && runStart >= romaFirst && runLast <= romaLast;
                     final float reveal = isRoma ? romaReveal : transReveal;
                     drawTextRun(canvas, layout, runStart, runLast,
-                            Math.round(secondaryAlpha * reveal));
+                            Math.round(secondaryAlpha * reveal),
+                            activeLine ? secondaryActiveColor : 0);
                 } else {
-                    drawTextRun(canvas, layout, runStart, runLast, mainAlpha);
+                    drawTextRun(canvas, layout, runStart, runLast, mainAlpha, 0);
                 }
                 if (!end) {
                     runStart = i;
@@ -594,7 +657,7 @@ final class LyricsLineView extends TextView {
 
             final ColorFilter prevFilter = tp.getColorFilter();
             tp.setColorFilter(new PorterDuffColorFilter(
-                    sungColor | 0xFF000000, PorterDuff.Mode.SRC_IN));
+                    LyricsColors.lineTextColor() | 0xFF000000, PorterDuff.Mode.SRC_IN));
 
             canvas.save();
             if (contentReveal < 1f) {

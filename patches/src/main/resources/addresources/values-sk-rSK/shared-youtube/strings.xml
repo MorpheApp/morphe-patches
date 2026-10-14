@@ -253,6 +253,15 @@ Ak ju neskôr vypnete, odporúda sa vymazať dáta aplikácie, aby ste predišli
   <string name="morphe_app_refresh_rate_type_entry_2">Prehrávanie na výšku</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Prehrávanie na celú obrazovku</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Prehrávanie na výšku a na celú obrazovku</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Písmo</string>
+  <string name="morphe_custom_font_type_entry_default">Predvolená</string>
+  <string name="morphe_custom_font_type_entry_system">Systémové písmo zariadenia</string>
+  <string name="morphe_custom_font_type_entry_custom">Súbor vlastného písma</string>
+  <string name="morphe_custom_font_file_title">Súbor vlastného písma</string>
+  <string name="morphe_custom_font_file_summary">Vyberte súbor písma TTF alebo OTF</string>
+  <string name="morphe_custom_font_file_invalid">Vybraný súbor nie je písmo TTF alebo OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Vlastné písmo sa nepodarilo načítať, a preto je vypnuté</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nedostupné (časový limit API vypršal)</string>

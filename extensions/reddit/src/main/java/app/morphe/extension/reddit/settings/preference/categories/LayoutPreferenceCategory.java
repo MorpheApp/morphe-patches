@@ -27,6 +27,7 @@ import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
+import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.settings.Settings;
@@ -61,7 +62,9 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
-                ShowViewCountPatch.isPatchIncluded();
+                ShowViewCountPatch.isPatchIncluded() ||
+                FlipPostActionBarPatch.isPatchIncluded() ||
+                RememberCollapsedCommentsPatch.isPatchIncluded();
     }
 
     @Override
@@ -195,6 +198,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
+            ));
+        }
+
+        if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.REMEMBER_COLLAPSED_COMMENTS
             ));
         }
 

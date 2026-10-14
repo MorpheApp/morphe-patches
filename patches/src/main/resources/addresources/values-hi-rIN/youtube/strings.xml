@@ -1165,15 +1165,6 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
   <string name="morphe_seekbar_custom_color_accent_title">सीकबार एक्सेंट रंग</string>
   <string name="morphe_seekbar_custom_color_accent_summary">वीडियो प्रोग्रेस बार का माध्यमिक रंग सेट करें</string>
   <string name="morphe_seekbar_custom_color_invalid">अमान्य सर्च बार रंग मूल्य</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">फ़ॉन्ट</string>
-  <string name="morphe_custom_font_type_entry_default">डिफ़ॉल्ट</string>
-  <string name="morphe_custom_font_type_entry_system">डिवाइस सिस्टम फ़ॉन्ट</string>
-  <string name="morphe_custom_font_type_entry_custom">कस्टम फ़ॉन्ट फ़ाइल</string>
-  <string name="morphe_custom_font_file_title">कस्टम फ़ॉन्ट फ़ाइल</string>
-  <string name="morphe_custom_font_file_summary">TTF या OTF फ़ॉन्ट फ़ाइल चुनें</string>
-  <string name="morphe_custom_font_file_invalid">चुनी गई फ़ाइल TTF या OTF फ़ॉन्ट नहीं है</string>
-  <string name="morphe_custom_font_failed_to_load">कस्टम फ़ॉन्ट लोड नहीं हो सका और इसे बंद कर दिया गया है</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">हेडर लोगो</string>
@@ -1319,18 +1310,21 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 • यदि डिस्प्ले वास्तव में HDR नहीं दिखा सकता तो रंग गलत दिख सकते हैं
 • यदि डिकोडर HDR संभाल नहीं सकता तो प्लेबैक विफल हो सकता है
 • HDR अभी भी स्पूफ वीडियो स्ट्रीम क्लाइंट पर निर्भर करता है"</string>
-  <string name="morphe_force_avc_codec_title">एवीसी (H.264) कोडेक को बाध्य करें</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"लाभ:
-• बैटरी लाइफ में सुधार हो सकता है
-• पुराने डिवाइस पर गायब वीडियो रिज़ॉल्यूशन को पुनर्स्थापित कर सकता है
-
-सीमाएँ:
-• अधिकतम रिज़ॉल्यूशन 1080p है
-• VP9 या AV1 की तुलना में VP1 प्लेबैक को अधिक इंटरनेट डेटा का उपयोग करना होगा
-• HDR वीडियो AVC का उपयोग नहीं करेंगे
-• कुछ डिवाइस AVC को बल नहीं लगा सकते"</string>
+  <string name="morphe_video_codec_title">वीडियो कोडेक</string>
+  <string name="morphe_video_codec_entry_default">डिफ़ॉल्ट</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">इस सुविधा का उपयोग करने के लिए, \'वीडियो स्ट्रीम स्पूफ़िंग\' को \'Android VR\' या \'Android Studio\' पर सेट करें</string>
+  <string name="morphe_video_codec_avc_not_available">AVC को बलपूर्वक लागू करने के लिए, \'वीडियो स्ट्रीम्स स्पूफ़ करें\' को \'Android Studio\', \'Android VR\' या \'visionOS\' में बदलें</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• बैटरी जीवन में सुधार कर सकता है और प्लेबैक की रुकावट को ठीक कर सकता है
+• AV1 की तुलना में अधिक इंटरनेट डेटा का उपयोग करता है
+
+AVC (H.264)
+• इसके लिए वीडियो स्ट्रीम क्लाइंट को 'Android Studio', 'Android VR' या 'visionOS' के रूप में स्पूफ़ करना आवश्यक है
+• बैटरी जीवन में और भी सुधार कर सकता है
+• पुराने डिवाइसों पर गायब वीडियो रिज़ॉल्यूशन को वापस ला सकता है
+• अधिकतम रिज़ॉल्यूशन 1080p है
+• हो सकता है कि HDR वीडियो AVC का उपयोग न करें
+• कुछ डिवाइसों पर AVC को बलपूर्वक लागू नहीं किया जा सकता"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">उन्नत गुणवत्ता मेनू खोलें</string>
   <string name="morphe_advanced_video_quality_menu_summary">गुणवत्ता चयन मेनू को छोड़ता है और सीधे \'उन्नत\' गुणवत्ता मेनू खोलता है</string>
@@ -1347,6 +1341,7 @@ OpenRouter.ai खोलने के लिए यहां टैप करे�
 
 AV1 के साथ वीडियो प्लेबैक स्टटर या फ़्रेम छोड़ सकता है।"</string>
   <string name="morphe_spoof_video_streams_about_title">Spoofing साइड इफेक्ट</string>
+  <string name="morphe_spoof_video_streams_about_failure">• प्लेबैक 1 मिनट पर विफल हो सकता है</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'ऑडियो ट्रैक\' मेनू गायब है</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• कोई AV1 वीडियो कोडेक नहीं</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR इमर्सिव मोड उपलब्ध नहीं है।</string>

@@ -1165,15 +1165,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">צבע הדגשת סרגל החיפוש</string>
   <string name="morphe_seekbar_custom_color_accent_summary">הגדר את הצבע המשני של סרגל התקדמות הסרטון</string>
   <string name="morphe_seekbar_custom_color_invalid">ערך צבע סרגל דילוג לא חוקי</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">גופן</string>
-  <string name="morphe_custom_font_type_entry_default">ברירת מחדל</string>
-  <string name="morphe_custom_font_type_entry_system">גופן המערכת של המכשיר</string>
-  <string name="morphe_custom_font_type_entry_custom">קובץ גופן מותאם אישית</string>
-  <string name="morphe_custom_font_file_title">קובץ גופן מותאם אישית</string>
-  <string name="morphe_custom_font_file_summary">בחר קובץ גופן TTF או OTF</string>
-  <string name="morphe_custom_font_file_invalid">הקובץ שנבחר אינו קובץ גופן TTF או OTF</string>
-  <string name="morphe_custom_font_failed_to_load">לא ניתן היה לטעון את הגופן המותאם אישית ולכן הוא כובה</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">לוגו כותרת</string>
@@ -1319,18 +1310,21 @@ Second \"item\" text"</string>
 • צבעים עשויים להיראות לא נכונים אם התצוגה אינה יכולה להציג HDR בפועל
 • הפעלה עלולה להיכשל אם המפענח אינו יכול להתמודד עם HDR
 • HDR עדיין תלוי בלקוח שמזייף זרמי וידאו"</string>
-  <string name="morphe_force_avc_codec_title">כופה קידוד AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"יתרונות:
-• יכול לשפר את חיי הסוללה
-• יכול לשחזר רזולוציות וידאו חסרות במכשירים ישנים יותר
-
-מגבלות:
-• הרזולוציה המקסימלית היא 1080p
-• הפעלת וידאו תשתמש ביותר נתוני אינטרנט מאשר VP9 או AV1
-• סרטוני HDR לא ישתמשו ב-AVC
-• התקנים מסוימים אינם יכולים לאכוף AVC"</string>
+  <string name="morphe_video_codec_title">קודק וידאו</string>
+  <string name="morphe_video_codec_entry_default">ברירת מחדל</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">כדי להשתמש בתכונה זו, הגדר \'זיוף זרמי וידאו\' ל\'Android VR\' או \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">כדי לאלץ AVC, שנה את \'זיוף זרמי וידאו\' ל-\'Android Studio\', \'Android VR\' או \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• יכול לשפר את חיי הסוללה ולתקן גמגומים בהשמעה
+• צורך יותר נתוני אינטרנט מאשר AV1
+
+AVC (H.264)
+• דורש 'Android Studio', 'Android VR' או 'visionOS' כלקוח לזיוף זרמי וידאו
+• יכול לשפר את חיי הסוללה אפילו יותר
+• יכול להחזיר רזולוציות וידאו חסרות במכשירים ישנים יותר
+• הרזולוציה המקסימלית היא 1080p
+• סרטוני HDR עשויים שלא להשתמש ב-AVC
+• בחלק מהמכשירים לא ניתן לאלץ AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">פתח תפריט איכות מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary">מדלג על תפריט בחירת האיכות ופותח ישירות את תפריט האיכות המתקדם</string>
@@ -1347,6 +1341,7 @@ Second \"item\" text"</string>
 
 הפעלת וידאו עם AV1 עלולה לגרום לגמגום או לדלוג על פריימים."</string>
   <string name="morphe_spoof_video_streams_about_title">תופעות לוואי של התחזות</string>
+  <string name="morphe_spoof_video_streams_about_failure">• ההשמעה עלולה להיכשל בדקה 1</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• תפריט \'ערוץ השמע\' חסר</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• אין קודק וידאו מסוג AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• מצב 360° VR אינו זמין</string>

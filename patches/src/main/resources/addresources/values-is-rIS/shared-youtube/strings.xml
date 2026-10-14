@@ -253,6 +253,15 @@ Ef þú slökkvir þetta síðar er mælt með því að eyða gögnum appsins t
   <string name="morphe_app_refresh_rate_type_entry_2">Spilun í lóðréttri stöðu</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Spilun í fullskjá</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Spilun í lóðréttri stöðu og fullskjá</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Letur</string>
+  <string name="morphe_custom_font_type_entry_default">Sjálfgefið</string>
+  <string name="morphe_custom_font_type_entry_system">Kerfisletur tækisins</string>
+  <string name="morphe_custom_font_type_entry_custom">Sérsniðin leturskrá</string>
+  <string name="morphe_custom_font_file_title">Sérsniðin leturskrá</string>
+  <string name="morphe_custom_font_file_summary">Veldu TTF- eða OTF-leturskrá</string>
+  <string name="morphe_custom_font_file_invalid">Valda skráin er ekki TTF- eða OTF-letur</string>
+  <string name="morphe_custom_font_failed_to_load">Ekki tókst að hlaða sérsniðna letrið og það er því óvirkt</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes eru tímabundið óþægilegt (API tímdi út)</string>

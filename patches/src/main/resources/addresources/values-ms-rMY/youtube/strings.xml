@@ -319,8 +319,6 @@ Automotive layout
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Light theme background</string>
   <string name="morphe_theme_color_light_entry_2">White</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_entry_default">Lalai</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo pengepala</string>
@@ -357,6 +355,7 @@ Automotive layout
   <string name="morphe_disable_playback_speed_music_summary">Sentiasa mainkan video muzik pada kelajuan 1.0x</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
+  <string name="morphe_video_codec_entry_default">Lalai</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->

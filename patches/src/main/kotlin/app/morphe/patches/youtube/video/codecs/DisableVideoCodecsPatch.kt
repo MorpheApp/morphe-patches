@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -29,7 +30,7 @@ private const val EXTENSION_CLASS =
 @Suppress("unused")
 val disableVideoCodecsPatch = bytecodePatch(
     name = "Disable video codecs",
-    description = "Adds options to disable or force HDR, and to disable VP9 codecs.",
+    description = "Adds options to disable or force HDR, and to disable VP9 or AV1 codecs.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -44,9 +45,9 @@ val disableVideoCodecsPatch = bytecodePatch(
                 SwitchPreference("morphe_disable_hdr_video"),
                 SwitchPreference("morphe_force_hdr_video", summary = true),
             ),
-            SwitchPreference(
-                key = "morphe_force_avc_codec",
-                tag = "app.morphe.extension.youtube.settings.preference.ForceAVCSwitchPreference"
+            ListPreference(
+                key = "morphe_video_codec",
+                tag = "app.morphe.extension.youtube.settings.preference.VideoCodecListPreference"
             )
         )
 
@@ -62,13 +63,26 @@ val disableVideoCodecsPatch = bytecodePatch(
             """
         )
 
+        CodecSupportCheckFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p2 }, $EXTENSION_CLASS->allowCodec(Ljava/lang/String;)Z
+                move-result v0
+                if-nez v0, :default
+                return v0
+                :default
+                nop
+            """
+        )
+
         HDRCapabilityFingerprint.matchAllMethodIndicesForEach { index ->
             val instruction = getInstruction<FiveRegisterInstruction>(index)
             val register = instruction.registerC
 
             replaceInstruction(
                 index,
-                "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->overrideSupportedHdrTypes(Landroid/view/Display\$HdrCapabilities;)[I"
+                "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->" +
+                        "overrideSupportedHdrTypes(Landroid/view/Display\$HdrCapabilities;)[I"
             )
         }
     }

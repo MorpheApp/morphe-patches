@@ -457,7 +457,6 @@ Second \"item\" text"</string>
   <string name="morphe_gradient_loading_screen_title">सक्षम ग्रेडियेंट लोडिंग स्क्रीन</string>
   <string name="morphe_seekbar_custom_color_title">कस्टम सीकबार रंग सक्षम करी</string>
   <string name="morphe_seekbar_custom_color_invalid">अमान्य सीकबार रंग मान</string>
-  <!-- layout.font.customFontPatch -->
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">हेडर लोगो</string>
@@ -522,15 +521,6 @@ Second \"item\" text"</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR वीडियो अक्षम करी</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"लाभ:
-• बैटरी लाइफ क सुधार क सकैत अछि
-• पुरान डिवाइस पर गुम वीडियो रेजोल्यूशन क पुनर्स्थापित क सकैत अछि।
-
-सीमाएं:
-• अधिकतम रेजोल्यूशन 1080p अछि
-• वीडियो प्लेबैक VP9 या AV1 स अधिक इंटरनेट डेटा क उपयोग कएब
-• HDR वीडियो AVC क उपयोग नहि कएब
-• कुछ डिवाइस AVC क जबरदस्ती नहि क सकैत।"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->

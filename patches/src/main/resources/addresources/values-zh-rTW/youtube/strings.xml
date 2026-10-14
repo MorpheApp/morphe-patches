@@ -1165,15 +1165,6 @@ Second \"item\" text"</string>
   <string name="morphe_seekbar_custom_color_accent_title">尋找列輔色</string>
   <string name="morphe_seekbar_custom_color_accent_summary">設定影片進度條的次要顏色</string>
   <string name="morphe_seekbar_custom_color_invalid">跳轉列色彩值無效</string>
-  <!-- layout.font.customFontPatch -->
-  <string name="morphe_custom_font_type_title">字型</string>
-  <string name="morphe_custom_font_type_entry_default">預設</string>
-  <string name="morphe_custom_font_type_entry_system">裝置系統字型</string>
-  <string name="morphe_custom_font_type_entry_custom">自訂字型檔案</string>
-  <string name="morphe_custom_font_file_title">自訂字型檔案</string>
-  <string name="morphe_custom_font_file_summary">選擇 TTF 或 OTF 字型檔案</string>
-  <string name="morphe_custom_font_file_invalid">所選取的檔案不是 TTF 或 OTF 字型</string>
-  <string name="morphe_custom_font_failed_to_load">自訂字型無法載入，因此已關閉</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">標題標誌</string>
@@ -1318,18 +1309,21 @@ Second \"item\" text"</string>
 • 如果顯示器實際上無法顯示 HDR，顏色可能會看起來不正確。
 • 如果解碼器無法處理 HDR，播放可能會失敗。
 • HDR 仍然取決於 spoof 影片串流用戶端。"</string>
-  <string name="morphe_force_avc_codec_title">若要使用此功能，請將「偽造視訊串流」設定為 Android VR 或 Android Studio</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"優點：
-• 可改善電池續航力
-• 可在較舊的裝置上還原遺失的影片解析度
-
-限制：
-• 最大解析度為 1080p
-• 影片播放將比 VP9 或 AV1 消耗更多網路數據量
-• HDR 影片將不會使用 AVC
-• 部份裝置無法強制使用 AVC"</string>
+  <string name="morphe_video_codec_title">視訊編解碼器</string>
+  <string name="morphe_video_codec_entry_default">預設</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">若要使用此功能，請將「偽造視訊串流」設定為「Android VR」或「Android Studio」</string>
+  <string name="morphe_video_codec_avc_not_available">若要強制使用 AVC，請將「模擬影片串流」改為「Android Studio」、「Android VR」或「visionOS」</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• 可延長電池續航力並修正播放卡頓
+• 比 AV1 消耗更多網路流量
+
+AVC (H.264)
+• 需要將「模擬影片串流」客戶端設為「Android Studio」、「Android VR」或「visionOS」
+• 可進一步延長電池續航力
+• 可恢復較舊裝置上缺失的影片解析度
+• 最高解析度為 1080p
+• HDR 影片可能無法使用 AVC
+• 部份裝置無法強制使用 AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">開啟進階畫質選單</string>
   <string name="morphe_advanced_video_quality_menu_summary">略過畫質選單，直接開啟進階畫質選單</string>
@@ -1346,6 +1340,7 @@ Second \"item\" text"</string>
 
 AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽裝副作用</string>
+  <string name="morphe_spoof_video_streams_about_failure">• 播放可能會在 1 分鐘時失敗</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 「音軌」選單遺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 全景模式不可用</string>

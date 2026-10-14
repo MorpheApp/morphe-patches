@@ -253,6 +253,15 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_app_refresh_rate_type_entry_2">Toisto pystyasennossa</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Toisto koko näytössä</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Toisto pystyasennossa ja koko näytössä</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Fontti</string>
+  <string name="morphe_custom_font_type_entry_default">Oletus</string>
+  <string name="morphe_custom_font_type_entry_system">Laitteen järjestelmäfontti</string>
+  <string name="morphe_custom_font_type_entry_custom">Mukautettu fonttitiedosto</string>
+  <string name="morphe_custom_font_file_title">Mukautettu fonttitiedosto</string>
+  <string name="morphe_custom_font_file_summary">Valitse TTF- tai OTF-fonttitiedosto</string>
+  <string name="morphe_custom_font_file_invalid">Valittu tiedosto ei ole TTF- eikä OTF-fontti</string>
+  <string name="morphe_custom_font_failed_to_load">Mukautettua fonttia ei voitu ladata, ja se on poistettu käytöstä</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ei-tykkäykset eivät ole tilapäisesti käytettävissä (API-aikakatkaisu)</string>

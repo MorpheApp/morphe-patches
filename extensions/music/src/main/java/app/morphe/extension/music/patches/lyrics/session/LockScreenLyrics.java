@@ -257,6 +257,12 @@ public final class LockScreenLyrics {
         needsRepush = false;
     }
 
+    @Nullable
+    public static MediaSession mediaSession() {
+        WeakReference<MediaSession> reference = sessionRef;
+        return reference != null ? reference.get() : null;
+    }
+
     private static boolean lyricsMatch() {
         LyricsManager manager = LyricsManager.getInstance();
         TrackInfo track = manager.getCurrentTrack();

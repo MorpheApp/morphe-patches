@@ -249,6 +249,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">Αναπαραγωγή σε κατακόρυφη λειτουργία</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Αναπαραγωγή σε πλήρη οθόνη</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Αναπαραγωγή σε κατακόρυφη λειτουργία και σε πλήρη οθόνη</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Γραμματοσειρά</string>
+  <string name="morphe_custom_font_type_entry_default">Προεπιλεγμένη</string>
+  <string name="morphe_custom_font_type_entry_system">Γραμματοσειρά συστήματος συσκευής</string>
+  <string name="morphe_custom_font_type_entry_custom">Προσαρμοσμένο αρχείο γραμματοσειράς</string>
+  <string name="morphe_custom_font_file_title">Προσαρμοσμένο αρχείο γραμματοσειράς</string>
+  <string name="morphe_custom_font_file_summary">Επιλέξτε ένα αρχείο γραμματοσειράς TTF ή OTF</string>
+  <string name="morphe_custom_font_file_invalid">Το επιλεγμένο αρχείο δεν είναι γραμματοσειρά TTF ή OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Η προσαρμοσμένη γραμματοσειρά δεν ήταν δυνατό να φορτωθεί και είναι απενεργοποιημένη</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Τα Dislike δεν είναι προσωρινά διαθέσιμα (υπερβολικός χρόνος αναμονής της API)</string>

@@ -251,6 +251,15 @@ To bo spremenilo videz in funkcije aplikacije, vendar lahko pride do neznanih st
   <string name="morphe_app_refresh_rate_type_entry_2">Predvajanje v pokončnem načinu</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Predvajanje čez cel zaslon</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Predvajanje v pokončnem načinu in čez cel zaslon</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Pisava</string>
+  <string name="morphe_custom_font_type_entry_default">Privzeto</string>
+  <string name="morphe_custom_font_type_entry_system">Sistemska pisava naprave</string>
+  <string name="morphe_custom_font_type_entry_custom">Datoteka pisave po meri</string>
+  <string name="morphe_custom_font_file_title">Datoteka pisave po meri</string>
+  <string name="morphe_custom_font_file_summary">Izberite datoteko pisave TTF ali OTF</string>
+  <string name="morphe_custom_font_file_invalid">Izbrana datoteka ni pisava TTF ali OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Pisave po meri ni bilo mogoče naložiti, zato je izklopljena</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ne maram všeč so trenutno ni na voljo (API je prekinil povezavo)</string>
