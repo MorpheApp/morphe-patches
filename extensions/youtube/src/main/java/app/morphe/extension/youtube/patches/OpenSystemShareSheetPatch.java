@@ -9,9 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.text.TextUtils;
 import android.util.Base64;
-import android.util.Pair;
 
 import androidx.annotation.Nullable;
 
@@ -22,12 +20,8 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.patches.components.ChannelPageFlyoutFilter;
-import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.shared.PlayerType;
-import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public final class OpenSystemShareSheetPatch {
@@ -37,8 +31,12 @@ public final class OpenSystemShareSheetPatch {
         void patch_dismissActionSheet();
     }
 
-    private static final Set<Integer> SHARE_ENTITY_FIELDS = Set.of(1, 2, 6, 7, 10, 20);
+    private static final Set<Integer> SHARE_ENTITY_FIELDS = Set.of(1, 2, 3, 6, 7, 10, 12, 20);
     private static final Pattern SHARE_ENTITY_ID_PATTERN = Pattern.compile("[A-Za-z0-9_-]+");
+    /**
+     * Comment id, or the comment id of the parent and the reply id separated by a dot.
+     */
+    private static final Pattern COMMENT_ID_PATTERN = Pattern.compile("[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)?");
 
     private static WeakReference<ActionSheetControllerInterface> actionSheetControllerRef = new WeakReference<>(null);
 
@@ -66,8 +64,8 @@ public final class OpenSystemShareSheetPatch {
      * Builds the link from the serialized share entity of the share endpoint.
      * The entity is what the in-app share sheet sends to {@code share/get_share_panel}.
      * Field numbers of the entity, from observed values:
-     * 1 video id, 2 playlist id, 6 post id, 7 channel id of the post,
-     * 10 and 20 Shorts and entity type metadata that does not change the link.
+     * 1 video id, 2 playlist id, 3 channel id, 6 post id, 7 channel id of the post,
+     * 10, 12 and 20 Shorts and entity type metadata that does not change the link.
      *
      * @return The link, or null if the entity is not a type known to be shared with a plain link.
      */
@@ -86,6 +84,10 @@ public final class OpenSystemShareSheetPatch {
         if (entity == null) {
             return null;
         }
+        ProtoNode comment = ProtoNode.field(entity, 18);
+        if (comment != null) {
+            return entity.size() == 1 ? getCommentUrl(comment, longURLPrefix, videoURLPrefix) : null;
+        }
         for (ProtoNode field : entity) {
             if (!SHARE_ENTITY_FIELDS.contains(field.getFieldNumber())) {
                 // Comments, clips, timestamps and other entities link to more than the plain id.
@@ -96,9 +98,15 @@ public final class OpenSystemShareSheetPatch {
 
         final String videoId = getShareEntityId(entity, 1);
         final String playlistId = getShareEntityId(entity, 2);
+        final String channelId = getShareEntityId(entity, 3);
         final String postId = getShareEntityId(entity, 6);
         if (postId != null) {
             return longURLPrefix + "/post/" + postId;
+        }
+        if (channelId != null) {
+            return videoId == null && playlistId == null
+                    ? longURLPrefix + "/channel/" + channelId
+                    : null;
         }
         if (videoId != null && playlistId == null) {
             return videoURLPrefix + videoId;
@@ -107,6 +115,55 @@ public final class OpenSystemShareSheetPatch {
             return longURLPrefix + "/playlist?list=" + playlistId;
         }
         return null;
+    }
+
+    /**
+     * Comment entity, from observed values: 1 comment id, 2 commented item,
+     * 3 to 6 header, text, page path and avatar of the share sheet.
+     * A commented video is 2.1.1.1 video id and 2.1.2.1 channel id,
+     * a commented post is 2.2.1.1 post id and 2.2.2.1 channel id.
+     *
+     * @return The link, or null if the comment is not on a video or a post.
+     */
+    @Nullable
+    private static String getCommentUrl(ProtoNode comment, String longURLPrefix, String videoURLPrefix) {
+        List<ProtoNode> fields = comment.children;
+        ProtoNode commentId = fields == null ? null : ProtoNode.field(fields, 1);
+        ProtoNode path = fields == null ? null : ProtoNode.field(fields, 5);
+        if (commentId == null || !commentId.isText() || !COMMENT_ID_PATTERN.matcher(commentId.getText()).matches()
+                || path == null || !path.isText()) {
+            return null;
+        }
+
+        switch (path.getText()) {
+            case "/watch" -> {
+                String videoId = getShareEntityId(getChildren(fields, 2, 1, 1), 1);
+                if (videoId == null) return null;
+                String separator = videoURLPrefix.contains("?") ? "&" : "?";
+                return videoURLPrefix + videoId + separator + "lc=" + commentId.getText();
+            }
+            case "/post" -> {
+                String postId = getShareEntityId(getChildren(fields, 2, 2, 1), 1);
+                return postId == null ? null : longURLPrefix + "/post/" + postId + "?lc=" + commentId.getText();
+            }
+            default -> {
+                return null;
+            }
+        }
+    }
+
+    /**
+     * @return The fields of the message at the field numbers, or an empty list if there is no such message.
+     */
+    private static List<ProtoNode> getChildren(List<ProtoNode> message, int... fieldNumbers) {
+        for (int fieldNumber : fieldNumbers) {
+            ProtoNode field = ProtoNode.field(message, fieldNumber);
+            if (field == null || field.children == null) {
+                return List.of();
+            }
+            message = field.children;
+        }
+        return message;
     }
 
     @Nullable
@@ -134,68 +191,34 @@ public final class OpenSystemShareSheetPatch {
         if (serializedEntity == null || !serializedEntity.isText()) {
             // Community posts send a share entity endpoint without an entity. Its command opens
             // an action sheet with a share endpoint that has the entity, which is handled instead.
-            Logger.printDebug(() -> "Share endpoint has no share entity, resolving its command");
+            Logger.printDebug(() -> "Share endpoint has no share entity, resolving its command: "
+                    + Base64.encodeToString(shareEndpoint, Base64.NO_WRAP));
             return false;
         }
 
         final String longURLPrefix = "https://www.youtube.com";
-        final Pair<String, String> videoURLPrefix = !Settings.REPLACE_LINKS_WITH_SHORTENER.get()
-                ? new Pair<>(longURLPrefix + "/watch?v=", "&")
-                : new Pair<>("https://youtu.be/", "?");
+        final String videoURLPrefix = !Settings.REPLACE_LINKS_WITH_SHORTENER.get()
+                ? longURLPrefix + "/watch?v="
+                : "https://youtu.be/";
 
-        final String shareEntityUrl = getShareEntityUrl(serializedEntity.getText(), longURLPrefix, videoURLPrefix.first);
-        if (shareEntityUrl == null) {
-            Logger.printDebug(() -> "No link for share endpoint: "
+        final String intentUrl = getShareEntityUrl(serializedEntity.getText(), longURLPrefix, videoURLPrefix);
+        if (intentUrl == null) {
+            Logger.printDebug(() -> "No link for share endpoint, opening the in-app share sheet: "
                     + Base64.encodeToString(shareEndpoint, Base64.NO_WRAP));
+            return false;
         }
 
-        final String intentUrl;
-        // Make sure to check channelId at the end, since it is never reset.
-        if (shareEntityUrl != null) {
-            intentUrl = shareEntityUrl;
+        Logger.printDebug(() -> "Share link: " + intentUrl);
+        final Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, intentUrl);
+        final Intent chooserIntent = Intent.createChooser(shareIntent, "");
+        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
 
-            // A post share sets the flyout post id, which must not be used by a later share.
-            FlyoutUtils.resetFlyoutPostId();
-        } else if (!FlyoutUtils.getFlyoutPostId().isEmpty()) {
-            intentUrl = longURLPrefix + "/post/" + FlyoutUtils.getFlyoutPostId();
-
-            FlyoutUtils.resetFlyoutPostId();
-        } else if (!FlyoutUtils.getFlyoutPlaylistId().isEmpty()) {
-            intentUrl = longURLPrefix + "/playlist?list=" + FlyoutUtils.getFlyoutPlaylistId();
-        } else if (!FlyoutUtils.getFlyoutVideoId().isEmpty()) {
-            intentUrl = videoURLPrefix.first + FlyoutUtils.getFlyoutVideoId();
-        } else if (!FlyoutUtils.getFlyoutCommentId().isEmpty()) {
-            intentUrl =
-                    videoURLPrefix.first +
-                    VideoInformation.getVideoId() +
-                    videoURLPrefix.second +
-                    "lc=" +
-                    FlyoutUtils.getFlyoutCommentId();
-
-            FlyoutUtils.resetFlyoutCommentId();
-        } else if (PlayerType.getCurrent().isMaximizedOrFullscreen() ||
-                ShortsPlayerState.isOpen()) {
-            intentUrl = videoURLPrefix.first + VideoInformation.getVideoId();
-        } else if (!ChannelPageFlyoutFilter.getFlyoutChannelId().isEmpty()) {
-            intentUrl = longURLPrefix + "/channel/" + ChannelPageFlyoutFilter.getFlyoutChannelId();
-        } else {
-            intentUrl = "";
-        }
-
-        if (!TextUtils.isEmpty(intentUrl)) {
-            final Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, intentUrl);
-            final Intent chooserIntent = Intent.createChooser(shareIntent, "");
-            chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
-
-            try {
-                Utils.getContext().startActivity(chooserIntent);
-            } catch (Exception ex) {
-                Logger.printException(() -> "Can not open System Share panel: " + intentUrl, ex);
-            }
-        } else {
-            Logger.printDebug(() -> "Can not open System Share panel: no URL found");
+        try {
+            Utils.getContext().startActivity(chooserIntent);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Can not open System Share panel: " + intentUrl, ex);
         }
 
         // The in-app share sheet is never opened.

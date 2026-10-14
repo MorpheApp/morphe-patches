@@ -16,7 +16,6 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.misc.litho.filter.addLithoFilter
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -207,9 +206,6 @@ val flyoutPatch = bytecodePatch(
         hookVideoStarted("$EXTENSION_UTILS_CLASS->resetVideoMarkedAsForKids()V")
 
         hookElement("$EXTENSION_UTILS_CLASS->onCommentsLoaded")
-        addLithoFilter(
-            "Lapp/morphe/extension/youtube/patches/components/ChannelPageFlyoutFilter;"
-        )
 
         // Track and initialize flyout menu buttons generically.
         FeedFlyoutButtonsInitializerFingerprint.clearMatch() // Shared fingerprint.
