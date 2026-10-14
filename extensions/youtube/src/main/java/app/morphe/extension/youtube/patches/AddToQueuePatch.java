@@ -126,6 +126,17 @@ public final class AddToQueuePatch {
             );
         }
 
+        if (feedFlyout && FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                && !hasFlyoutButton(queueButtonOriginalNames.get(1))) {
+            index = FlyoutUtils.addFlyoutButton(
+                    flyoutPanel,
+                    queueButtonDrawable,
+                    str("morphe_local_queue_play_last"),
+                    v -> flyoutButtonClickLogic(queueButtonOriginalNames.get(1), videoId),
+                    index
+            );
+        }
+
         final int size = LocalQueuePatch.size();
         if (!feedFlyout || size > 0) {
             index = FlyoutUtils.addFlyoutButton(
