@@ -882,6 +882,7 @@ public final class FlyoutUtils {
                 ? null : bufferObject.getClass()));
 
         if (bufferObject instanceof FlyoutMenuVideoIdInterface videoIdInterface) {
+            isMyTabHistoryFlyout = false;
             String videoId = videoIdInterface.patch_getVideoId();
             if (videoId != null) {
                 flyoutVideoId = videoId;
