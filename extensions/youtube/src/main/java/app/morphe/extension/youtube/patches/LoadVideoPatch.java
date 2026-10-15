@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Method;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
@@ -152,6 +154,36 @@ public final class LoadVideoPatch {
             reloadVideoIntent.putExtra("watch", playerInterface.patch_getIntentParcelable(reloadVideoIntent));
 
             context.startActivity(reloadVideoIntent);
+        }
+    }
+
+    /**
+     * Starts a video by handing the watch intent to the running activity, which does not need the app to be on screen.
+     */
+    public static boolean deliverVideoIntentInProcess(String videoId) {
+        try {
+            PlayerInterface playerInterface = playerInterfaceRef.get();
+            Activity activity = Utils.getActivity();
+            if (playerInterface == null || activity == null) {
+                return false;
+            }
+
+            Intent intent = new Intent();
+            intent.setComponent(new ComponentName(
+                    activity,
+                    "com.google.android.apps.youtube.app.watchwhile.InternalMainActivity"
+            ));
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("android.intent.extra.inventory_identifier", new String[]{"vnd.youtube://" + videoId});
+            intent.putExtra("watch", playerInterface.patch_getIntentParcelable(intent));
+
+            Method onNewIntent = Activity.class.getDeclaredMethod("onNewIntent", Intent.class);
+            onNewIntent.setAccessible(true);
+            onNewIntent.invoke(activity, intent);
+            return true;
+        } catch (Exception ex) {
+            Logger.printException(() -> "deliverVideoIntentInProcess failure", ex);
+            return false;
         }
     }
 
