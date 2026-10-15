@@ -53,6 +53,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.LocalQueuePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.shared.PipDismissHelper;
 import app.morphe.extension.youtube.shared.PlayerType;
 
 public final class LocalQueueSheet {
@@ -161,7 +162,7 @@ public final class LocalQueueSheet {
         render();
 
         LocalQueuePatch.setListeners(changeListener, metadataListener);
-        dialog.setOnDismissListener(d -> {
+        PipDismissHelper.dismissOnPip(dialog, () -> {
             LocalQueuePatch.clearListeners(changeListener, metadataListener);
             scrollView.setOnScrollChangeListener(null);
             drag = null;
