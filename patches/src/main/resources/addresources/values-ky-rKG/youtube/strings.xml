@@ -197,7 +197,6 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
@@ -236,4 +235,5 @@ Second \"item\" text"</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_auto">Өзүнөн өзү</string>
+  <!-- video.series.seriesTrackerPatch -->
 </resources>

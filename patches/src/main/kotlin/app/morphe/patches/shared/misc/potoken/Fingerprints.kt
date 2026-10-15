@@ -32,3 +32,26 @@ internal object ServiceBindIntentUtilsFingerprint : Fingerprint(
     )
 )
 
+private const val MEDIA_INTERFACES = "Lcom/google/android/libraries/youtube/media/interfaces/"
+
+/**
+ * The app's own implementation of the media request interface, which native code calls to start a request.
+ */
+internal object NetFetchStartFetchTaskFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "${MEDIA_INTERFACES}NetFetchTask;",
+    parameters = listOf("${MEDIA_INTERFACES}HttpRequest;", "${MEDIA_INTERFACES}NetFetchCallbacks;"),
+    custom = { _, classDef ->
+        classDef.superclass == "${MEDIA_INTERFACES}NetFetch;" && !classDef.type.endsWith($$"$CppProxy;")
+    }
+)
+
+/**
+ * Receives each chunk of a media response before native code reads it.
+ * The native method it calls has the native pointer as an extra parameter.
+ */
+internal object NetFetchResponseChunkFingerprint : Fingerprint(
+    definingClass = $$"$${MEDIA_INTERFACES}NetFetchCallbacks$CppProxy;",
+    returnType = "V",
+    parameters = listOf("Ljava/nio/ByteBuffer;")
+)

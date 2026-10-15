@@ -23,6 +23,7 @@ public class Settings extends BaseSettings {
     public static final BooleanSetting HIDE_POST_ADS = new BooleanSetting("morphe_hide_post_ads", TRUE, true);
 
     // Layout
+    public static final BooleanSetting COPY_TEXT = new BooleanSetting("morphe_copy_text", FALSE, true, "morphe_copy_text_user_dialog_message");
     public static final BooleanSetting CUSTOM_FONT = new BooleanSetting("morphe_custom_font", FALSE, true);
     public static final StringSetting CUSTOM_FONT_FILE_PATH = new StringSetting("morphe_custom_font_file_path", "", true);
     public static final BooleanSetting DISABLE_MODERN_HOME = new BooleanSetting("morphe_disable_modern_home", FALSE, true);

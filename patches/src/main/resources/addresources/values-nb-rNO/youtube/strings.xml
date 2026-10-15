@@ -193,7 +193,7 @@ Endringer inkluderer:
   <string name="morphe_hide_how_this_was_made_section_title">Skjul \"Hvordan dette ble laget\"-delen</string>
   <string name="morphe_hide_hype_points_title">Skjul Hype-poeng</string>
   <string name="morphe_hide_info_cards_section_title">Skjul Info-kort-seksjon</string>
-  <string name="morphe_hide_key_concepts_section_title">Skjul «Nøkkelbegreper»-seksjon</string>
+  <string name="morphe_hide_key_concepts_section_title">Skjul delen \'Sentrale konsepter\'</string>
   <string name="morphe_hide_quizzes_section_title">Skjul Quizzer-seksjon</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Skjul seksjonen \'Søk i denne videoen\'</string>
   <string name="morphe_hide_subscribe_button_title">Skjul \'Abonner\'-knappen</string>
@@ -560,6 +560,22 @@ Info: Fungerer kanskje ikke på direktesendinger"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Åpner Morphe-køen i stedet for YouTube-køen</string>
   <string name="morphe_queue_add_flyout_menu_title">Legg til menyelement for kø i feed-undermeny</string>
   <string name="morphe_queue_add_flyout_menu_summary">Legger til et ekstra flyout-element. Aktiver dette hvis «Legg til i kø» ikke vises</string>
+  <string name="morphe_local_queue_title">Kø i Premium-stil</string>
+  <string name="morphe_local_queue_summary">"Erstatter Morphe-køen med en kø som ligger lokalt på enheten, spiller gjennom av seg selv og kan omorganiseres ved å dra
+
+Info: Den neste videoen i køen starter bare mens YouTube er på skjermen"</string>
+  <string name="morphe_local_queue_sheet_title">Kø</string>
+  <string name="morphe_local_queue_open">Kø (%d)</string>
+  <string name="morphe_local_queue_clear">Tøm alle</string>
+  <string name="morphe_local_queue_empty">Ingenting i kø</string>
+  <string name="morphe_local_queue_empty_hint">Bruk Spill neste i kø på en hvilken som helst video</string>
+  <string name="morphe_local_queue_now_playing">Spilles nå</string>
+  <string name="morphe_local_queue_play_next">Spill neste i kø</string>
+  <string name="morphe_local_queue_reorder">Endre rekkefølge</string>
+  <string name="morphe_local_queue_remove">Fjern</string>
+  <string name="morphe_local_queue_added">Lagt til i kø</string>
+  <string name="morphe_local_queue_full">Køen er full</string>
+  <string name="morphe_local_queue_play_failed">Kunne ikke starte videoen</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Annonsehviteliste i flyout-menyen</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Legger til et flyout-element som lar annonser spille på kanalen til den videoen</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1124,9 +1140,6 @@ Begrensning: Hvis 'Gjenopprett gammel videoaksjonslinje' er slått av, er det mu
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Tilbake-knappen avslutter feeden</string>
   <string name="morphe_back_button_always_exits_feed_summary">Å trykke tilbake avslutter alltid appen i stedet for å rulle til toppen av feeden</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Tving systemfont</string>
-  <string name="morphe_force_system_font_summary">Viser appen med enhetens skrifttype i stedet for YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Skjul statuslinjen</string>
   <string name="morphe_hide_status_bar_summary">Skjuler systemstatuslinjen. Sveip ned fra toppkanten for å vise den et øyeblikk</string>
@@ -1297,18 +1310,21 @@ Begrensninger:
 • Farger kan se feil ut hvis skjermen faktisk ikke kan vise HDR
 • Avspilling kan mislykkes hvis dekoderen ikke kan håndtere HDR
 • HDR avhenger fortsatt av klienten som spooffer videostrømmer"</string>
-  <string name="morphe_force_avc_codec_title">Tving AVC (H.264) kodek</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Fordeler:
-• Kan forbedre batterilevetiden
-• Kan gjenopprette manglende videooppløsninger på eldre enheter
-
-Begrensninger:
-• Maksimal oppløsning er 1080p
-• Videospilling vil bruke mer internettdata enn VP9 eller AV1
-• HDR-videoer vil ikke bruke AVC
-• Noen enheter kan ikke tvinge AVC"</string>
+  <string name="morphe_video_codec_title">Videokodek</string>
+  <string name="morphe_video_codec_entry_default">Standard</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">For å bruke denne funksjonen, sett «Forfalsk videostrømmer» til «Android VR» eller «Android Studio»</string>
+  <string name="morphe_video_codec_avc_not_available">For å tvinge AVC, endre \'Spoofing av videostrømmer\' til \'Android Studio\', \'Android VR\' eller \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Kan forbedre batterilevetiden og fikse hakkete avspilling
+• Bruker mer internettdata enn AV1
+
+AVC (H.264)
+• Krever 'Android Studio', 'Android VR' eller 'visionOS' som klient for spoofing av videostrømmer
+• Kan forbedre batterilevetiden enda mer
+• Kan gjenopprette manglende videooppløsninger på eldre enheter
+• Maksimal oppløsning er 1080p
+• HDR-videoer bruker kanskje ikke AVC
+• Noen enheter kan ikke tvinge AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Åpne avansert kvalitetsmeny</string>
   <string name="morphe_advanced_video_quality_menu_summary">Hoppover kvalitetselementvalgmenyen og åpner avansert kvalitetsmeny direkte</string>
@@ -1325,6 +1341,7 @@ Begrensninger:
 
 Videospilling med AV1 kan hakke eller miste bilder."</string>
   <string name="morphe_spoof_video_streams_about_title">Bivirkninger av forfalskning</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Avspillingen kan mislykkes etter 1 minutt</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• «Audio Track»-menyen mangler</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ingen AV1-videokodek</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-oppslukende modus er ikke tilgjengelig</string>
@@ -1351,4 +1368,158 @@ Begrensning: Går tilbake til gammel stil for 'Flere videoer'-overlegg"</string>
   <string name="morphe_player_icon_style_entry_bold">Fet</string>
   <string name="morphe_player_icon_style_entry_custom">Egendefinert</string>
   <string name="morphe_shorts_icon_style_title">Shorts-ikonstil</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Seriesporing</string>
+  <string name="morphe_series_tracker_screen_summary">Følg avspillingslister som serier og hold stedet ditt</string>
+  <string name="morphe_series_tracker_title">Aktiver seriesporing</string>
+  <string name="morphe_series_tracker_summary">Legger til en serie-side i historikken og et alternativ for å følge serier i avspillingslister</string>
+  <string name="morphe_series_tracker_show_button_title">Vis Series Tracker-knapp</string>
+  <string name="morphe_series_tracker_show_button_summary">Legger til en spillerknapp for å følge eller åpne serien fra gjeldende video</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Registrer fremgang for fulgte serier</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Registrer avspilling på denne telefonen for lagrede serier og bokmerker</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Vis Historikk i navigasjonslinjen</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Hjem, Abonnementer, varsler, Historikk og Du</string>
+  <string name="morphe_series_tracker_ui_cancel">Avbryt</string>
+  <string name="morphe_series_tracker_ui_save">Lagring</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Lagre bokmerke</string>
+  <string name="morphe_series_tracker_ui_series_name">Serienavn</string>
+  <string name="morphe_series_tracker_ui_series_options">Seriemynner</string>
+  <string name="morphe_series_tracker_ui_library_options">Bibliotekinnstillinger</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Oppdater episoder</string>
+  <string name="morphe_series_tracker_ui_rename">Gi nytt navn</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Åpne spilleliste på YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Fjern fra biblioteket</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Spillelenke eller-ID</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Tøm all lokal fremgang</string>
+  <string name="morphe_series_tracker_ui_clear_history">Tøm historikk</string>
+  <string name="morphe_series_tracker_clear_progress_title">Tøm all lokal fremgang?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Dette tilbakestiller posisjoner, tilsidesatte sett-statuser og gjenopptaksvalg for alle videoer. Lagrede serier og katalogene deres beholdes. Ny avspilling vil bli registrert hvis registrering er aktivert.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Marker som sett</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Marker som ikke sett</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Bruk automatisk status</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Start på nytt fra 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Spill på nytt fra 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Status lagret</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Prøv igjen å lagre</string>
+  <string name="morphe_series_tracker_ui_previous_100">Forrige 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Neste 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Åpnet lagret video</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Lokal fremgang slettet</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Åpne Historikk fra «Du» for å se serieoppsettet ditt</string>
+  <string name="morphe_series_tracker_ui_watch_history">Setthistorikk</string>
+  <string name="morphe_series_tracker_ui_series">Serie</string>
+  <string name="morphe_series_tracker_ui_history">Historikk</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Abonnementer</string>
+  <string name="morphe_series_tracker_ui_notifications">Varsler</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Lagrede serier lastes inn…</string>
+  <string name="morphe_series_tracker_empty_library">Følg en spilleliste for å spore episodene.</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Spillelistebokmerke</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Episoder oppdateres…</string>
+  <string name="morphe_series_tracker_ui_all_series">Alle serier</string>
+  <string name="morphe_series_tracker_watched">Sett</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Episoder lastes inn…</string>
+  <string name="morphe_series_tracker_ui_more_options">Flere alternativer</string>
+  <string name="morphe_series_tracker_record_consent">"Registrer kun fremgang for dine lagrede serier og bokmerkede videoer.
+
+Dette biblioteket er lagret på denne enheten og deles på tvers av YouTube-kontoer. YouTube-kontrollene for pauseshistorikk og tømming påvirker det ikke. Bruk Serie → Flere → Tøm lokal fremgang for å slette det.
+
+Automatisk registrering stoppes i inkognito-modus, når kontoidentitet ikke er tilgjengelig, eller når du bytter til en annen konto. Aktivéring sporing igjen for å bruke den med den kontoen."</string>
+  <string name="morphe_series_tracker_identity_unavailable">Sporing kan ikke aktiveres i inkognito-modus eller før YouTube har lastet inn gjeldende konto. Gå tilbake til Hjem og prøv igjen. Innlogging kreves ikke.</string>
+  <string name="morphe_series_tracker_enable">Aktivér lokal sporing</string>
+  <string name="morphe_series_tracker_tracking_paused">Framgangsregistrering er deaktivert</string>
+  <string name="morphe_series_tracker_resume_at">Fortsett ved %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$d / %2$d episoder sett</string>
+  <string name="morphe_series_tracker_episode_position">Episode %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Episoder %1$d–%2$d av %3$d</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Oppdater for å prøve å laste inn episoder. Private spillelister trenger kontotilgang; bokmerket deres åpnes fortsatt på YouTube.</string>
+  <string name="morphe_series_tracker_open_failed">YouTube kunne ikke åpne denne episoden.</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube kunne ikke åpne denne spillelisten.</string>
+  <string name="morphe_series_tracker_plan_open">Spillelistebokmerke</string>
+  <string name="morphe_series_tracker_plan_changed">Velg en episode</string>
+  <string name="morphe_series_tracker_plan_caught_up">Opplagt</string>
+  <string name="morphe_series_tracker_plan_none">Ingen spillebare episoder</string>
+  <string name="morphe_series_tracker_saved_position">Lagret video · %1$s</string>
+  <string name="morphe_series_tracker_follow">Følg serie</string>
+  <string name="morphe_series_tracker_view_series">Vis serie</string>
+  <string name="morphe_series_tracker_add_icon">Følg serie</string>
+  <string name="morphe_series_tracker_continue">Fortsett</string>
+  <string name="morphe_series_tracker_start_here">Start her</string>
+  <string name="morphe_series_tracker_start_saved">Startpunkt lagret</string>
+  <string name="morphe_series_tracker_watched_to_here">Se opp til her</string>
+  <string name="morphe_series_tracker_marked">Episoder markert som sett</string>
+  <string name="morphe_series_tracker_undo">Angre</string>
+  <string name="morphe_series_tracker_enable_short">Aktivér</string>
+  <string name="morphe_series_tracker_new_episode">1 ny episode</string>
+  <string name="morphe_series_tracker_new_episodes">%1$d nye episoder</string>
+  <string name="morphe_series_tracker_record_short">Registrer fremgang på denne enheten</string>
+  <string name="morphe_series_tracker_follow_consent">"Serien din og fremgangen blir værende på denne enheten, delt på tvers av YouTube-kontoer. YouTube-historikkkontrollene påvirker dem ikke. Tøm fremgang fra Seriemenyen.
+
+Automatisk registrering er valgfritt. Den stopper i inkognito-modus eller når kontoen endres."</string>
+  <string name="morphe_series_tracker_follow_unavailable">Episodene kunne ikke lastes inn. Du kan lagre spillelisten som et bokmerke.</string>
+  <string name="morphe_series_tracker_error_pending_full">For mange ulagrede endringer. Prøv igjen å lagre først.</string>
+  <string name="morphe_series_tracker_error_storage_busy">Lagring er opptatt. Prøv igjen.</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Episodelasting er opptatt. Prøv igjen.</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Lagring er utilgjengelig. De lagrede dataene dine ble beholdt.</string>
+  <string name="morphe_series_tracker_error_storage_save">Endringene kunne ikke lagres. Prøv igjen å lagre før du lukker YouTube.</string>
+  <string name="morphe_series_tracker_error_conflict">Denne serien er allerede lagret, eller spillelisten har endret seg. Åpne den igjen.</string>
+  <string name="morphe_series_tracker_error_series_changed">Denne serien har endret seg eller blitt fjernet. Åpne biblioteket på nytt.</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Spillelisten har endret seg. Velg episoden på nytt.</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Denne episoden er utilgjengelig. Velg en annen.</string>
+  <string name="morphe_series_tracker_error_name_required">Skriv inn et serienavn.</string>
+  <string name="morphe_series_tracker_error_playlist_input">Skriv inn en YouTube-spillelistelenke eller spilleliste-ID.</string>
+  <string name="morphe_series_tracker_error_retry_later">Vent litt før du oppdaterer igjen.</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Episodene kunne ikke lastes inn. Prøv igjen senere.</string>
+  <string name="morphe_series_tracker_error_operation">Endringen kunne ikke fullføres. Prøv igjen.</string>
+  <string name="morphe_series_tracker_error_resume">Gjenopptakelsen kunne ikke bekreftes. Sjekk spilleren og prøv igjen.</string>
+  <string name="morphe_series_tracker_followed">Følger serier</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Denne videoen er ikke i denne spillelisten.</string>
+  <string name="morphe_series_tracker_finding_playlists">Søk etter spillelister…</string>
+  <string name="morphe_series_tracker_paste_playlist">Lim inn spillelistelenke</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Kunne ikke finne en spilleliste</string>
+  <string name="morphe_series_tracker_no_available_episodes">Ingen episoder tilgjengelig</string>
+  <string name="morphe_series_tracker_hide_watched">Skjul sette</string>
+  <string name="morphe_series_tracker_watch_previous">Marker tidligere episoder som sett</string>
+  <string name="morphe_series_tracker_order_starts_with">Begynner med: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Episoderrekkefølge</string>
+  <string name="morphe_series_tracker_playlist_order">Spillelisterekkefølge</string>
+  <string name="morphe_series_tracker_reverse_order">Omvendt spillelisterekkefølge</string>
+  <string name="morphe_series_tracker_view_count_large">%1$s visninger</string>
+  <string name="morphe_series_tracker_view_count">%1$s visninger</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s visning</string>
+  <string name="morphe_series_tracker_completion_title">Marker episoder sett</string>
+  <string name="morphe_series_tracker_completion_summary">Minst %1$d%% sett med høyst 90 sekunder igjen, eller %2$d sekunder igjen</string>
+  <string name="morphe_series_tracker_completion_explanation">Merk automatisk en episode som sett etter terskelen er nådd. Prosentregelen krever også at det ikke er mer enn 90 sekunder igjen, så slutten av lange episoder blir ikke hoppet over. Regel for gjenværende tid gjelder videoer som er lengre enn ett minutt; angi 0 for å deaktivere den. Endringene gjelder for fremtidige fremdriftsoppdateringer. Manuelle valg for sett/uset blir beholdt.</string>
+  <string name="morphe_series_tracker_completion_percent">Prosent sett (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Sekunder igjen (0–300; 0 deaktiverer)</string>
+  <string name="morphe_series_tracker_completion_save">Lagre</string>
+  <string name="morphe_series_tracker_completion_range">Skriv inn en verdi fra %1$d til %2$d.</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Bruk YouTube-fremgang</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Fortsett fulgte serier etter å ha sett på en annen enhet</string>
+  <string name="morphe_series_tracker_sync_consent">Les sett-status og gjenopptaksposisjoner for de fulgte serieene fra den gjeldende YouTube-kontoen. Kun matchende episoder lagres på denne telefonen. Sjekker kjøres mens seriesamlingen er åpen og før Fortsett. YouTube-historikk må være aktivert på den andre enheten.</string>
+  <string name="morphe_series_tracker_sync_checking">Sjekker YouTube-fremgang…</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube-fremgang er utilgjengelig. Bruker lagret fremgang.</string>
+  <string name="morphe_series_tracker_sync_partial">Noen YouTube-fremgang er utilgjengelig. Lagrede posisjoner beholdes.</string>
+  <string name="morphe_series_tracker_backup_title">Sikkerhetskopi og gjenopprettning</string>
+  <string name="morphe_series_tracker_backup_summary">Lagre seriesamlingen til en fil eller gjenopprett en sikkerhetskopi</string>
+  <string name="morphe_series_tracker_backup_explanation">Lagrer fulgte serier, episod-posisjoner og set-valg. Tilgang for opptak og YouTube-fremgang inkluderes ikke.</string>
+  <string name="morphe_series_tracker_backup_save">Lagre sikkerhetskopi</string>
+  <string name="morphe_series_tracker_backup_restore">Gjenopprett sikkerhetskopi</string>
+  <string name="morphe_series_tracker_backup_preview">Legg til %1$d serier. %2$d serier som allerede finnes i samlingen din beholdes. Eksisterende videofremgang beholdes.</string>
+  <string name="morphe_series_tracker_backup_saved">Seriesikkerhetskopi lagret</string>
+  <string name="morphe_series_tracker_backup_restored">Gjenopprettet %1$d serier</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Denne filen er ikke en støttet seriesikkerhetskopi, eller er for stor. Samlingen din ble ikke endret.</string>
+  <string name="morphe_series_tracker_error_backup_write">Kunne ikke lagre sikkerhetskopen. Prøv et annet sted.</string>
+  <string name="morphe_series_tracker_removed">Serie fjernet</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Denne episoden vises nå flere ganger. Velg hvilken du skal fortsette fra.</string>
+  <string name="morphe_series_tracker_recovery_missing">Den lagrede episoden er ikke lenger med i denne spillelisten. Den lagrede posisjonen beholdes.</string>
+  <string name="morphe_series_tracker_recovery_continue">Fortsett med episode %1$d · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Du kan også velge enhver episode nedenfor. Tidligere episoder endres ikke.</string>
+  <string name="morphe_series_tracker_playback_changed">Denne spillelisten har blitt endret. Åpne serien for å velge hvor du skal fortsette.</string>
+  <string name="morphe_series_tracker_playback_boundary">Ingen flere episoter i denne retningen</string>
+  <string name="morphe_series_tracker_continue_series">Fortsett %1$s</string>
+  <string name="morphe_series_tracker_search_series">Søk etter serier</string>
+  <string name="morphe_series_tracker_clear_search">Tøm søk</string>
+  <string name="morphe_series_tracker_no_search_results">Ingen serier funnet</string>
+  <string name="morphe_series_tracker_untitled_episode">Episod uten tittel</string>
+  <string name="morphe_series_tracker_unavailable_episode">Utilgjengelig episode</string>
 </resources>

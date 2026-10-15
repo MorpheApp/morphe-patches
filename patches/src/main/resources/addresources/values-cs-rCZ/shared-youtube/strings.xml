@@ -93,6 +93,12 @@ Pokud chcete ikonu změnit všude, aplikujte záplatu znovu a změňte volbu zá
 
 Pokud jste uživatel YouTube Premium, toto nastavení nemusí být potřeba."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nepodařilo se načíst žádné streamy klientů</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Výchozí klient nefunguje</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s několikrát po sobě nefungoval, ale %2$s ano.
+
+Nastavit %2$s jako výchozího klienta?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Přepnout</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Vypnutí tohoto nastavení může způsobit problémy s přehráváním</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Chcete-li tuto funkci použít, vypněte 'Spoofování video streamů'."</string
   <string name="morphe_external_potoken_provider_about_summary">"Tato funkce je v současné době ve vývoji a nemusí fungovat
 
 Klepnutím sem stáhnete PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper už nefunguje</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Token obsažený v této verzi PotHelperu už nefunguje
+
+Zapněte ‚Spoofovat video streamy‘, abyste opravili přehrávání"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Zapnout</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Napodobit verzi aplikace</string>
   <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, že používáte starší verzi aplikace a tím obnovil starší prvky uživatelského rozhraní</string>
@@ -241,6 +253,15 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_app_refresh_rate_type_entry_2">Přehrávání na výšku</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Přehrávání na celou obrazovku</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Přehrávání na výšku a na celou obrazovku</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Písmo</string>
+  <string name="morphe_custom_font_type_entry_default">Výchozí</string>
+  <string name="morphe_custom_font_type_entry_system">Systémové písmo zařízení</string>
+  <string name="morphe_custom_font_type_entry_custom">Soubor vlastního písma</string>
+  <string name="morphe_custom_font_file_title">Soubor vlastního písma</string>
+  <string name="morphe_custom_font_file_summary">Vyberte soubor písma TTF nebo OTF</string>
+  <string name="morphe_custom_font_file_invalid">Vybraný soubor není písmo TTF nebo OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Vlastní písmo se nepodařilo načíst a je vypnuto</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Nelíbí se se dočasně nedají použít (časový limit API)</string>

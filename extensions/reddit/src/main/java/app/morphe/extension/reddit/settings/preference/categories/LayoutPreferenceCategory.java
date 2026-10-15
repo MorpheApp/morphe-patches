@@ -12,6 +12,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.preference.PreferenceScreen;
 
+import app.morphe.extension.reddit.patches.CopyTextPatch;
 import app.morphe.extension.reddit.patches.CustomFontPatch;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
@@ -20,12 +21,13 @@ import app.morphe.extension.reddit.patches.FlipPostActionBarPatch;
 import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
 import app.morphe.extension.reddit.patches.FullWidthFeedMediaPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
-import app.morphe.extension.reddit.patches.HideCommunitiesShelf;
+import app.morphe.extension.reddit.patches.HideCommunitiesShelfPatch;
 import app.morphe.extension.reddit.patches.HideMediaViewerComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.KeepFeedPositionPatch;
 import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
+import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
@@ -48,10 +50,11 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     public boolean getSettingsStatus() {
         return DisableModernHomePatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
+                CopyTextPatch.isPatchIncluded() ||
                 CustomFontPatch.isPatchIncluded() ||
                 ForceSystemFontPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
-                HideCommunitiesShelf.isPatchIncluded() ||
+                HideCommunitiesShelfPatch.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 FullWidthFeedMediaPatch.isPatchIncluded() ||
                 MediaViewerFadePatch.isPatchIncluded() ||
@@ -60,11 +63,20 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 HideMediaViewerComponentsPatch.isPatchIncluded() ||
                 MediaViewerBlackBackgroundPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded() ||
-                ShowViewCountPatch.isPatchIncluded();
+                ShowViewCountPatch.isPatchIncluded() ||
+                FlipPostActionBarPatch.isPatchIncluded() ||
+                RememberCollapsedCommentsPatch.isPatchIncluded();
     }
 
     @Override
     public void addPreferences(Context context) {
+        if (CopyTextPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.COPY_TEXT
+            ));
+        }
+
         if (CustomFontPatch.isPatchIncluded()) {
             addPreference(new CustomFontTogglePreference(context));
             addPreference(new CustomFontFilePreference(
@@ -98,7 +110,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (HideCommunitiesShelf.isPatchIncluded()) {
+        if (HideCommunitiesShelfPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.HIDE_COMMUNITIES_SHELF
@@ -187,6 +199,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SWAP_POST_VOTE_COMMENT_BUTTONS
+            ));
+        }
+
+        if (RememberCollapsedCommentsPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.REMEMBER_COLLAPSED_COMMENTS
             ));
         }
 

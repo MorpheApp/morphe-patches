@@ -15,6 +15,7 @@ import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.patches.CustomFontPatch.FontType;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
@@ -33,7 +34,7 @@ import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor;
 import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutInPlayerAvailability;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
-import app.morphe.extension.youtube.patches.CustomFontPatch.FontType;
+import app.morphe.extension.youtube.patches.DisableVideoCodecsPatch.VideoCodec;
 import app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
 import app.morphe.extension.youtube.patches.ForceFullscreenLandscapePatch.LargeScreenAvailability;
 import app.morphe.extension.youtube.patches.FullscreenVideoScalePatch.VideoScaleMode;
@@ -91,7 +92,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_HDR_VIDEO = new BooleanSetting("morphe_force_hdr_video", FALSE, true,
             "morphe_force_hdr_video_user_dialog_message", parentNot(DISABLE_HDR_VIDEO));
-    public static final BooleanSetting FORCE_AVC_CODEC = new BooleanSetting("morphe_force_avc_codec", FALSE, true, "morphe_force_avc_codec_user_dialog_message");
+    public static final EnumSetting<VideoCodec> VIDEO_CODEC = new EnumSetting<>("morphe_video_codec", VideoCodec.DEFAULT, true, "morphe_video_codec_user_dialog_message");
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("morphe_hide_premium_video_quality", TRUE, true);
     public static final BooleanSetting VIDEO_QUALITY_PRIORITIZE = new BooleanSetting("morphe_video_quality_prioritize", TRUE, true, "morphe_video_quality_prioritize_dialog");
     public static final IntegerSetting VIDEO_QUALITY_DEFAULT_WIFI = new IntegerSetting("morphe_video_quality_default_wifi", -2);
@@ -317,10 +318,12 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting SAVE_TO_WATCH_LATER_FLYOUT_BUTTON = new BooleanSetting("morphe_save_to_watch_later_flyout_button", FALSE);
     public static final BooleanSetting KIDS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON = new BooleanSetting("morphe_save_to_watch_later_kids_flyout_button", TRUE);
     public static final BooleanSetting SHORTS_SAVE_TO_WATCH_LATER_FLYOUT_BUTTON = new BooleanSetting("morphe_save_to_watch_later_shorts_flyout_button", TRUE);
-    public static final BooleanSetting QUEUE_RESTORE = new BooleanSetting("morphe_queue_restore", FALSE, parent(SAVE_TO_WATCH_LATER_OVERLAY_BUTTON));
+    public static final BooleanSetting LOCAL_QUEUE = new BooleanSetting("morphe_local_queue", FALSE);
+    public static final StringSetting LOCAL_QUEUE_ITEMS = new StringSetting("morphe_local_queue_items", "", false, false);
+    public static final BooleanSetting QUEUE_RESTORE = new BooleanSetting("morphe_queue_restore", FALSE, parentsAll(parent(SAVE_TO_WATCH_LATER_OVERLAY_BUTTON), parentNot(LOCAL_QUEUE)));
     public static final BooleanSetting SWAP_SAVE_AND_QUEUE_ACTIONS = new BooleanSetting("morphe_swap_save_and_queue_actions", TRUE, true, parent(SAVE_TO_WATCH_LATER_OVERLAY_BUTTON));
-    public static final BooleanSetting QUEUE_OVERRIDE_FLYOUT_MENU = new BooleanSetting("morphe_queue_override_flyout_menu", TRUE, true);
-    public static final BooleanSetting QUEUE_ADD_FLYOUT_MENU = new BooleanSetting("morphe_queue_add_flyout_menu", TRUE);
+    public static final BooleanSetting QUEUE_OVERRIDE_FLYOUT_MENU = new BooleanSetting("morphe_queue_override_flyout_menu", TRUE, true, parentNot(LOCAL_QUEUE));
+    public static final BooleanSetting QUEUE_ADD_FLYOUT_MENU = new BooleanSetting("morphe_queue_add_flyout_menu", TRUE, parentNot(LOCAL_QUEUE));
     public static final StringSetting QUEUE_PLAYLIST_ID = new StringSetting("morphe_queue_playlist_id", "");
     public static final BooleanSetting OPEN_CHANNEL_OF_LIVE_AVATAR = new BooleanSetting("morphe_open_channel_of_live_avatar", FALSE);
     public static final BooleanSetting CHANNEL_SEARCH = new BooleanSetting("morphe_channel_search", TRUE);
@@ -352,6 +355,7 @@ public class Settings extends SharedYouTubeSettings {
     // Captions
     public static final EnumSetting<AutoCaptionsStyle> AUTO_CAPTIONS_STYLE = new EnumSetting<>("morphe_auto_captions_style", AutoCaptionsStyle.BOTH_ENABLED, false);
     public static final StringSetting PREFERRED_CAPTION_LANGUAGE = new StringSetting("morphe_preferred_caption_language", "off", true);
+    public static final BooleanSetting AUTO_TRANSLATE_ADDITIONAL_LANGUAGES = new BooleanSetting("morphe_auto_translate_additional_languages", TRUE);
     public static final BooleanSetting SET_CAPTION_COOKIES = new BooleanSetting("morphe_set_caption_cookies", FALSE, true);
     public static final StringSetting CAPTION_COOKIES = new StringSetting("morphe_caption_cookies", "", true, parent(SET_CAPTION_COOKIES));
     public static final BooleanSetting FIX_TRANSCRIPT = new BooleanSetting("morphe_fix_transcript", TRUE, true);
@@ -499,8 +503,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final EnumSetting<FormFactor> CHANGE_FORM_FACTOR = new EnumSetting<>("morphe_change_form_factor", FormFactor.DEFAULT, true, "morphe_change_form_factor_user_dialog_message");
     public static final BooleanSetting TABLET_LAYOUT_IN_PLAYER = new BooleanSetting("morphe_tablet_layout_in_player", FALSE, true, "morphe_tablet_layout_in_player_user_dialog_message", new TabletLayoutInPlayerAvailability());
     public static final BooleanSetting BYPASS_IMAGE_REGION_RESTRICTIONS = new BooleanSetting("morphe_bypass_image_region_restrictions", FALSE, true);
-    public static final EnumSetting<FontType> CUSTOM_FONT_TYPE = new EnumSetting<>("morphe_custom_font_type", FontType.DEFAULT, true);
-    public static final StringSetting CUSTOM_FONT_FILE = new StringSetting("morphe_custom_font_file", "", CUSTOM_FONT_TYPE.availability(FontType.CUSTOM));
     public static final BooleanSetting GRADIENT_LOADING_SCREEN = new BooleanSetting("morphe_gradient_loading_screen", FALSE, true);
     public static final EnumSetting<HeaderLogo> HEADER_LOGO = new EnumSetting<>("morphe_header_logo", HeaderLogo.DEFAULT, true);
     public static final BooleanSetting DISABLE_SIGN_IN_TO_TV_POPUP = new BooleanSetting("morphe_disable_sign_in_to_tv_popup", FALSE);
@@ -678,6 +680,15 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting VOT_SHOW_HTTP_ERROR_DIALOG = new BooleanSetting("morphe_vot_show_http_error_dialog", TRUE);
     public static final BooleanSetting VOT_HIDE_EXPORT_WARNING = new BooleanSetting("morphe_vot_hide_export_warning", FALSE, false, false);
 
+    // Series tracking. Consent is account-bound and excluded from settings import/export.
+    public static final BooleanSetting SERIES_TRACKER = new BooleanSetting("morphe_series_tracker", FALSE, true);
+    public static final BooleanSetting SERIES_TRACKER_HISTORY_TAB = new BooleanSetting("morphe_series_tracker_show_history_tab", FALSE, true, parent(SERIES_TRACKER));
+    public static final BooleanSetting SERIES_TRACKER_BUTTON = new BooleanSetting("morphe_series_tracker_show_button", FALSE, true, parent(SERIES_TRACKER));
+    public static final BooleanSetting SERIES_TRACKER_RECORD_PROGRESS = new BooleanSetting("morphe_series_tracker_record_followed_progress", FALSE, false, false, null, parent(SERIES_TRACKER));
+    public static final BooleanSetting SERIES_TRACKER_YOUTUBE_PROGRESS = new BooleanSetting("morphe_series_tracker_youtube_progress", FALSE, false, false, null, parent(SERIES_TRACKER));
+    public static final IntegerSetting SERIES_TRACKER_COMPLETION_PERCENT = new IntegerSetting("morphe_series_tracker_completion_percent", 92, parent(SERIES_TRACKER));
+    public static final IntegerSetting SERIES_TRACKER_COMPLETION_SECONDS = new IntegerSetting("morphe_series_tracker_completion_seconds", 30, parent(SERIES_TRACKER));
+
     // ReturnYoutubeDislike settings are declared in SharedYouTubeSettings, since they are shared with YouTube Music.
 
     // SponsorBlock
@@ -772,6 +783,8 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_SWIPE_SPEED = new BooleanSetting("morphe_swipe_speed", FALSE);
     private static final BooleanSetting DEPRECATED_WIDE_SEARCHBAR = new BooleanSetting("morphe_wide_searchbar", FALSE, true);
     private static final BooleanSetting DEPRECATED_FORCE_SYSTEM_FONT = new BooleanSetting("morphe_force_system_font", FALSE, true);
+    private static final BooleanSetting DEPRECATED_FORCE_AVC_CODEC = new BooleanSetting("morphe_force_avc_codec", FALSE, true);
+    private static final BooleanSetting DEPRECATED_FORCE_VP9_CODEC = new BooleanSetting("morphe_force_vp9_codec", FALSE, true);
 
     // Unified SponsorBlock keys under the morphe_sb_* namespace (previously raw sb_*).
     private static final BooleanSetting DEPRECATED_SB_ENABLED = new BooleanSetting("sb_enabled", TRUE, false, false);
@@ -865,6 +878,7 @@ public class Settings extends SharedYouTubeSettings {
 
         migrateWideSearchbarToType();
         migrateForceSystemFontToType();
+        migrateForceCodecToVideoCodec();
         migrateShortsFlyoutSettings();
 
         // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
@@ -996,6 +1010,20 @@ public class Settings extends SharedYouTubeSettings {
             CUSTOM_FONT_TYPE.save(FontType.SYSTEM);
         }
         DEPRECATED_FORCE_SYSTEM_FONT.resetToDefault();
+    }
+
+    private static void migrateForceCodecToVideoCodec() {
+        if (DEPRECATED_FORCE_AVC_CODEC.isSetToDefault() && DEPRECATED_FORCE_VP9_CODEC.isSetToDefault()) {
+            return;
+        }
+        if (VIDEO_CODEC.isSetToDefault()) {
+            // Force AVC took priority if both were on.
+            VIDEO_CODEC.save(DEPRECATED_FORCE_AVC_CODEC.get()
+                    ? VideoCodec.AVC
+                    : VideoCodec.VP9);
+        }
+        DEPRECATED_FORCE_AVC_CODEC.resetToDefault();
+        DEPRECATED_FORCE_VP9_CODEC.resetToDefault();
     }
 
     /**

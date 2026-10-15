@@ -127,18 +127,23 @@ internal object PivotBarChangedFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Applies the system navigation bar color of the app theme to the window.
+ */
+internal object SystemNavigationBarColorFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/content/res/TypedArray;"),
+    filters = listOf(
+        methodCall(smali = "Landroid/content/res/TypedArray;->getColor(II)I"),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        methodCall(smali = "Landroid/view/Window;->getNavigationBarColor()I"),
+        methodCall(smali = "Landroid/view/Window;->setNavigationBarColor(I)V")
+    )
+)
+
 /*
  * YouTube nav buttons.
  */
-
-/**
- * Device on screen back/home/recent buttons.
- */
-internal object TranslucentNavigationButtonsSystemFeatureFlagFingerprint : Fingerprint(
-    filters = listOf(
-        literal(45632194L) // Translucent system buttons feature flag.
-    )
-)
 
 private object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

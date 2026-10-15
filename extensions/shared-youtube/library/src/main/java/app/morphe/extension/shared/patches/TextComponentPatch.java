@@ -12,6 +12,7 @@ package app.morphe.extension.shared.patches;
 
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 
 import app.morphe.extension.shared.Logger;
@@ -34,13 +35,28 @@ public final class TextComponentPatch {
     }
 
     public static SpannableString newSpanUsingStylingOfAnotherSpan(Spanned sourceStyle, CharSequence newSpanText) {
+        return newSpanUsingStylingOfAnotherSpan(sourceStyle, newSpanText, false);
+    }
+
+    /**
+     * @param onlyEntireTextStyle If only the spans that style the entire source text are used.
+     *                            Spans of part of the text and clickable spans (such as a timestamp
+     *                            link of a comment) would otherwise apply to the entire new text.
+     */
+    public static SpannableString newSpanUsingStylingOfAnotherSpan(Spanned sourceStyle, CharSequence newSpanText,
+                                                                   boolean onlyEntireTextStyle) {
         if (sourceStyle == newSpanText && sourceStyle instanceof SpannableString spannable) {
             return setSpanForegroundColor(spannable);
         }
 
         SpannableString destination = new SpannableString(newSpanText);
-        Object[] spans = sourceStyle.getSpans(0, sourceStyle.length(), Object.class);
+        final int sourceLength = sourceStyle.length();
+        Object[] spans = sourceStyle.getSpans(0, sourceLength, Object.class);
         for (Object span : spans) {
+            if (onlyEntireTextStyle && (span instanceof ClickableSpan
+                    || sourceStyle.getSpanStart(span) > 0 || sourceStyle.getSpanEnd(span) < sourceLength)) {
+                continue;
+            }
             destination.setSpan(span, 0, destination.length(), sourceStyle.getSpanFlags(span));
         }
 

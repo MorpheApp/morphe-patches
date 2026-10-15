@@ -193,7 +193,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_how_this_was_made_section_title">隱藏「此部份的製作方式」區段</string>
   <string name="morphe_hide_hype_points_title">隱藏Hype點數</string>
   <string name="morphe_hide_info_cards_section_title">隱藏資訊卡片區段</string>
-  <string name="morphe_hide_key_concepts_section_title">隱藏「重點概念」區段</string>
+  <string name="morphe_hide_key_concepts_section_title">隱藏「關鍵概念」區塊</string>
   <string name="morphe_hide_quizzes_section_title">隱藏「測驗」區段</string>
   <string name="morphe_hide_search_inside_this_video_section_title">隱藏「影片內搜尋」區段</string>
   <string name="morphe_hide_subscribe_button_title">隱藏「訂閱」按鈕</string>
@@ -560,6 +560,22 @@ Second \"item\" text"</string>
   <string name="morphe_queue_override_flyout_menu_summary">開啟 Morphe 佇列，而非 YouTube 佇列</string>
   <string name="morphe_queue_add_flyout_menu_title">新增動態消息彈出式佇列選單項目</string>
   <string name="morphe_queue_add_flyout_menu_summary">新增額外的彈出式項目。若未顯示「加入佇列」，請啟用此選項</string>
+  <string name="morphe_local_queue_title">Premium 風格佇列</string>
+  <string name="morphe_local_queue_summary">"以存在於裝置上、可自行播放且可拖曳重新排序的佇列取代 Morphe 佇列
+
+資訊：下一個佇列中的影片只會在 YouTube 位於畫面上時開始播放"</string>
+  <string name="morphe_local_queue_sheet_title">佇列</string>
+  <string name="morphe_local_queue_open">佇列 (%d)</string>
+  <string name="morphe_local_queue_clear">全部清除</string>
+  <string name="morphe_local_queue_empty">佇列為空</string>
+  <string name="morphe_local_queue_empty_hint">在任何影片上使用「播放佇列中的下一個」</string>
+  <string name="morphe_local_queue_now_playing">現正播放</string>
+  <string name="morphe_local_queue_play_next">播放佇列中的下一個</string>
+  <string name="morphe_local_queue_reorder">重新排序</string>
+  <string name="morphe_local_queue_remove">刪除</string>
+  <string name="morphe_local_queue_added">已新增至佇列</string>
+  <string name="morphe_local_queue_full">佇列已滿</string>
+  <string name="morphe_local_queue_play_failed">無法開始播放影片</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">彈出式選單中的廣告白名單</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">新增一個彈出式選單項目，讓廣告可以在該影片的頻道上播放。</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1124,9 +1140,6 @@ Second \"item\" text"</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">返回按鈕會結束動態消息</string>
   <string name="morphe_back_button_always_exits_feed_summary">按返回鍵一律結束應用程式，而不是捲動到動態消息頂端</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">強制系統字型</string>
-  <string name="morphe_force_system_font_summary">以系統字型顯示應用程式，而非 YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">隱藏狀態列</string>
   <string name="morphe_hide_status_bar_summary">隱藏系統狀態列。從頂端邊緣向下滑動可暫時顯示狀態列</string>
@@ -1296,18 +1309,21 @@ Second \"item\" text"</string>
 • 如果顯示器實際上無法顯示 HDR，顏色可能會看起來不正確。
 • 如果解碼器無法處理 HDR，播放可能會失敗。
 • HDR 仍然取決於 spoof 影片串流用戶端。"</string>
-  <string name="morphe_force_avc_codec_title">若要使用此功能，請將「偽造視訊串流」設定為 Android VR 或 Android Studio</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"優點：
-• 可改善電池續航力
-• 可在較舊的裝置上還原遺失的影片解析度
-
-限制：
-• 最大解析度為 1080p
-• 影片播放將比 VP9 或 AV1 消耗更多網路數據量
-• HDR 影片將不會使用 AVC
-• 部份裝置無法強制使用 AVC"</string>
+  <string name="morphe_video_codec_title">視訊編解碼器</string>
+  <string name="morphe_video_codec_entry_default">預設</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">若要使用此功能，請將「偽造視訊串流」設定為「Android VR」或「Android Studio」</string>
+  <string name="morphe_video_codec_avc_not_available">若要強制使用 AVC，請將「模擬影片串流」改為「Android Studio」、「Android VR」或「visionOS」</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• 可延長電池續航力並修正播放卡頓
+• 比 AV1 消耗更多網路流量
+
+AVC (H.264)
+• 需要將「模擬影片串流」客戶端設為「Android Studio」、「Android VR」或「visionOS」
+• 可進一步延長電池續航力
+• 可恢復較舊裝置上缺失的影片解析度
+• 最高解析度為 1080p
+• HDR 影片可能無法使用 AVC
+• 部份裝置無法強制使用 AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">開啟進階畫質選單</string>
   <string name="morphe_advanced_video_quality_menu_summary">略過畫質選單，直接開啟進階畫質選單</string>
@@ -1324,6 +1340,7 @@ Second \"item\" text"</string>
 
 AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽裝副作用</string>
+  <string name="morphe_spoof_video_streams_about_failure">• 播放可能會在 1 分鐘時失敗</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• 「音軌」選單遺失</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• 沒有 AV1 影片解碼器</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 全景模式不可用</string>
@@ -1350,4 +1367,158 @@ AV1 視訊播放可能會卡頓或丟格。"</string>
   <string name="morphe_player_icon_style_entry_bold">粗體</string>
   <string name="morphe_player_icon_style_entry_custom">自訂</string>
   <string name="morphe_shorts_icon_style_title">Shorts 圖示樣式</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">系列追蹤</string>
+  <string name="morphe_series_tracker_screen_summary">將播放清單視為系列並保留位置</string>
+  <string name="morphe_series_tracker_title">啟用系列追蹤</string>
+  <string name="morphe_series_tracker_summary">在「歷史記錄」中加入系列頁面，並將「追隨系列」選項新增至播放清單</string>
+  <string name="morphe_series_tracker_show_button_title">顯示系列追蹤器按鈕</string>
+  <string name="morphe_series_tracker_show_button_summary">新增一個播放器按鈕，以追蹤或開啟目前影片的系列</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">記錄已追蹤系列的進度</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">在此手機上記錄已儲存系列和書籤的播放進度</string>
+  <string name="morphe_series_tracker_show_history_tab_title">在導覽列中顯示歷史記錄</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">首頁、訂閱內容、通知、歷史記錄與您</string>
+  <string name="morphe_series_tracker_ui_cancel">取消</string>
+  <string name="morphe_series_tracker_ui_save">儲存</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">儲存書籤</string>
+  <string name="morphe_series_tracker_ui_series_name">系列名稱</string>
+  <string name="morphe_series_tracker_ui_series_options">系列選項</string>
+  <string name="morphe_series_tracker_ui_library_options">程式庫選項</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">重新整理集數</string>
+  <string name="morphe_series_tracker_ui_rename">重新命名</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">在 YouTube 中開啟播放清單</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">從程式庫中移除</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">播放清單連結或 ID</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">清除所有本機進度</string>
+  <string name="morphe_series_tracker_ui_clear_history">清除歷史記錄</string>
+  <string name="morphe_series_tracker_clear_progress_title">確定要清除所有本機進度嗎？</string>
+  <string name="morphe_series_tracker_clear_progress_message">這會清除所有影片的位置、觀看覆蓋設定和繼續播放選擇。已儲存的系列及其目錄將保留。如果啟用了記錄功能，將重新記錄新的播放進度。</string>
+  <string name="morphe_series_tracker_ui_mark_watched">標記為已觀看</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">標記為未觀看</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">使用自動狀態</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">從 0:00 開始重播</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">從 0:00 再次播放</string>
+  <string name="morphe_series_tracker_ui_status_saved">狀態已儲存</string>
+  <string name="morphe_series_tracker_ui_retry_saving">重試儲存</string>
+  <string name="morphe_series_tracker_ui_previous_100">前 100 筆</string>
+  <string name="morphe_series_tracker_ui_next_100">後 100 筆</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">開啟已儲存的影片</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">本機進度已清除</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">前往「您」頁面的歷史記錄以檢視您的系列</string>
+  <string name="morphe_series_tracker_ui_watch_history">觀看歷史記錄</string>
+  <string name="morphe_series_tracker_ui_series">系列</string>
+  <string name="morphe_series_tracker_ui_history">歷史記錄</string>
+  <string name="morphe_series_tracker_ui_subscriptions">訂閱內容</string>
+  <string name="morphe_series_tracker_ui_notifications">通知</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">正在載入已儲存的系列……</string>
+  <string name="morphe_series_tracker_empty_library">追蹤播放清單以追蹤其集數。</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">播放清單書籤</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">正在重新整理集數……</string>
+  <string name="morphe_series_tracker_ui_all_series">所有系列</string>
+  <string name="morphe_series_tracker_watched">已觀看</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">正在載入集數……</string>
+  <string name="morphe_series_tracker_ui_more_options">更多選項</string>
+  <string name="morphe_series_tracker_record_consent">"僅為您已儲存的系列和已加入書籤的影片記錄進度。
+
+此程式庫儲存在此裝置上，並跨 YouTube 帳戶共用。YouTube 的暫停和清除歷史記錄控制項不會影響此程式庫。請使用「系列」→「更多」→「清除本機進度」來刪除它。
+
+在無痕模式下、帳戶身分無法取得時或切換至其他帳戶時，自動記錄會停止。若要與該帳戶一起使用，請再次啟用追蹤功能。"</string>
+  <string name="morphe_series_tracker_identity_unavailable">在無痕模式下或在 YouTube 載入目前帳戶狀態之前，無法啟用追蹤功能。請返回首頁並再試一次。無需登入。</string>
+  <string name="morphe_series_tracker_enable">啟用本機追蹤功能</string>
+  <string name="morphe_series_tracker_tracking_paused">進度記錄已關閉</string>
+  <string name="morphe_series_tracker_resume_at">於 %1$s 繼續</string>
+  <string name="morphe_series_tracker_watched_count">已觀看 %1$d / %2$d 集</string>
+  <string name="morphe_series_tracker_episode_position">第 %1$d 集 · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">第 %1$d–%2$d 集，共 %3$d 集</string>
+  <string name="morphe_series_tracker_catalog_unavailable">重新嘗試載入集數。私人播放清單需要帳戶存取權；其書籤仍可在 YouTube 中開啟。</string>
+  <string name="morphe_series_tracker_open_failed">YouTube 無法開啟此集數。</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube 無法開啟此播放清單。</string>
+  <string name="morphe_series_tracker_plan_open">播放清單書籤</string>
+  <string name="morphe_series_tracker_plan_changed">選取一集</string>
+  <string name="morphe_series_tracker_plan_caught_up">追平了</string>
+  <string name="morphe_series_tracker_plan_none">沒有可播放的集數</string>
+  <string name="morphe_series_tracker_saved_position">已儲存的影片 · %1$s</string>
+  <string name="morphe_series_tracker_follow">追蹤系列</string>
+  <string name="morphe_series_tracker_view_series">檢視系列</string>
+  <string name="morphe_series_tracker_add_icon">追蹤系列</string>
+  <string name="morphe_series_tracker_continue">繼續</string>
+  <string name="morphe_series_tracker_start_here">從此處開始</string>
+  <string name="morphe_series_tracker_start_saved">起始點已儲存</string>
+  <string name="morphe_series_tracker_watched_to_here">觀看到這裡</string>
+  <string name="morphe_series_tracker_marked">標記為已觀看的集數</string>
+  <string name="morphe_series_tracker_undo">復原</string>
+  <string name="morphe_series_tracker_enable_short">啟用</string>
+  <string name="morphe_series_tracker_new_episode">1 集新內容</string>
+  <string name="morphe_series_tracker_new_episodes">%1$d 集新內容</string>
+  <string name="morphe_series_tracker_record_short">在此裝置上記錄進度</string>
+  <string name="morphe_series_tracker_follow_consent">"您的系列和進度保留在此裝置上，並跨 YouTube 帳戶共用。YouTube 歷史記錄控制項不會影響它們。請從系列功能表中清除進度。
+
+自動記錄是可選功能。它在無痕模式或帳戶變更時停止。"</string>
+  <string name="morphe_series_tracker_follow_unavailable">無法載入集數。您可以將播放清單儲存為書籤。</string>
+  <string name="morphe_series_tracker_error_pending_full">未儲存的變更太多。請先重試儲存。</string>
+  <string name="morphe_series_tracker_error_storage_busy">儲存繁忙。請再試一次。</string>
+  <string name="morphe_series_tracker_error_catalog_busy">集數載入繁忙。請再試一次。</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">儲存空間不可用。您的已儲存資料已保留。</string>
+  <string name="morphe_series_tracker_error_storage_save">無法儲存變更。關閉 YouTube 之前請重試儲存。</string>
+  <string name="morphe_series_tracker_error_conflict">此系列已儲存，或其播放清單已變更。請重新開啟。</string>
+  <string name="morphe_series_tracker_error_series_changed">此系列已變更或遭移除。請重新開啟程式庫。</string>
+  <string name="morphe_series_tracker_error_playlist_changed">播放清單已變更。請再次選取集數。</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">此集數不可用。請選擇其他集數。</string>
+  <string name="morphe_series_tracker_error_name_required">請輸入系列名稱。</string>
+  <string name="morphe_series_tracker_error_playlist_input">請輸入 YouTube 播放清單連結或播放清單 ID。</string>
+  <string name="morphe_series_tracker_error_retry_later">請稍候，然後再重新整理。</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">無法載入集數。請稍後再試。</string>
+  <string name="morphe_series_tracker_error_operation">無法完成變更。請再試一次。</string>
+  <string name="morphe_series_tracker_error_resume">無法確認繼續播放位置。請檢查播放器並再試一次。</string>
+  <string name="morphe_series_tracker_followed">追蹤中的系列</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">此影片不在此播放清單中。</string>
+  <string name="morphe_series_tracker_finding_playlists">正在尋找播放清單……</string>
+  <string name="morphe_series_tracker_paste_playlist">貼上播放清單連結</string>
+  <string name="morphe_series_tracker_discovery_unavailable">找不到播放清單</string>
+  <string name="morphe_series_tracker_no_available_episodes">沒有可用的集數</string>
+  <string name="morphe_series_tracker_hide_watched">隱藏已觀看</string>
+  <string name="morphe_series_tracker_watch_previous">標記之前的集數為已觀看</string>
+  <string name="morphe_series_tracker_order_starts_with">開頭為：%1$s</string>
+  <string name="morphe_series_tracker_episode_order">集數順序</string>
+  <string name="morphe_series_tracker_playlist_order">播放清單順序</string>
+  <string name="morphe_series_tracker_reverse_order">反轉播放清單順序</string>
+  <string name="morphe_series_tracker_view_count_large">%1$s 次觀看</string>
+  <string name="morphe_series_tracker_view_count">%1$s 次觀看</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s 次觀看</string>
+  <string name="morphe_series_tracker_completion_title">標記集數為已觀看</string>
+  <string name="morphe_series_tracker_completion_summary">至少觀看 %1$d%% 且剩餘時間不超過 90 秒，或剩餘 %2$d 秒</string>
+  <string name="morphe_series_tracker_completion_explanation">達到任一閾值後自動標記集數為已觀看。百分比規則還要求剩餘時間不超過 90 秒，因此不會跳過長集數的結尾。時間剩餘規則適用於超過一分鐘的影片；設為 0 即停用。這些變更僅適用於未來的進度更新。手動選擇的已觀看/未觀看狀態會保留。</string>
+  <string name="morphe_series_tracker_completion_percent">已觀看百分比 (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">剩餘秒數 (0–300；0 表示停用)</string>
+  <string name="morphe_series_tracker_completion_save">儲存</string>
+  <string name="morphe_series_tracker_completion_range">請輸入 %1$d 到 %2$d 之間的數值。</string>
+  <string name="morphe_series_tracker_youtube_progress_title">使用 YouTube 進度</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">在其他裝置上觀看後繼續追蹤系列</string>
+  <string name="morphe_series_tracker_sync_consent">從目前的 YouTube 帳戶讀取已追蹤系列的已觀看狀態和繼續播放位置。僅此手機上的相符集數會受到儲存。在開啟系列程式庫及「繼續播放」之前會進行檢查。您的其他裝置上必須啟用 YouTube 歷史記錄。</string>
+  <string name="morphe_series_tracker_sync_checking">正在檢查 YouTube 進度……</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube 進度不可用。使用已儲存的進度。</string>
+  <string name="morphe_series_tracker_sync_partial">部分 YouTube 進度不可用。已儲存的 position 會保留。</string>
+  <string name="morphe_series_tracker_backup_title">備份和還原</string>
+  <string name="morphe_series_tracker_backup_summary">將您的系列程式庫儲存至檔案或還原備份</string>
+  <string name="morphe_series_tracker_backup_explanation">儲存已追蹤系列、集數位置和已觀看選擇。不包括記錄和 YouTube 進度許可權。</string>
+  <string name="morphe_series_tracker_backup_save">儲存備份</string>
+  <string name="morphe_series_tracker_backup_restore">還原備份</string>
+  <string name="morphe_series_tracker_backup_preview">新增 %1$d 個系列。您的程式庫中已存在的 %2$d 個系列會保留。現有的影片進度也會保留。</string>
+  <string name="morphe_series_tracker_backup_saved">系列備份已儲存</string>
+  <string name="morphe_series_tracker_backup_restored">已還原 %1$d 個系列</string>
+  <string name="morphe_series_tracker_error_backup_invalid">此檔案不是支援的系列備份，或檔案太大。您的程式庫未發生變更。</string>
+  <string name="morphe_series_tracker_error_backup_write">無法儲存備份。請嘗試其他位置。</string>
+  <string name="morphe_series_tracker_removed">系列已移除</string>
+  <string name="morphe_series_tracker_recovery_duplicate">此集數現在出現多次以上。請選擇要繼續播放的那一集。</string>
+  <string name="morphe_series_tracker_recovery_missing">您儲存的集數已不再位於此播放清單中。您儲存的播放位置會保留。</string>
+  <string name="morphe_series_tracker_recovery_continue">於第 %1$d 集 · %2$s 繼續</string>
+  <string name="morphe_series_tracker_recovery_choose">您也可以選擇下方的任何集數。較早的集數不會變更。</string>
+  <string name="morphe_series_tracker_playback_changed">此播放清單已變更。開啟系列以選擇要繼續播放的位置。</string>
+  <string name="morphe_series_tracker_playback_boundary">這個方向沒有更多集數了</string>
+  <string name="morphe_series_tracker_continue_series">繼續 %1$s</string>
+  <string name="morphe_series_tracker_search_series">搜尋系列</string>
+  <string name="morphe_series_tracker_clear_search">清除搜尋</string>
+  <string name="morphe_series_tracker_no_search_results">找不到任何系列</string>
+  <string name="morphe_series_tracker_untitled_episode">未命名的集數</string>
+  <string name="morphe_series_tracker_unavailable_episode">不可用的集數</string>
 </resources>

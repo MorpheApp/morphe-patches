@@ -93,6 +93,12 @@ Second \"item\" text"</string>
 
 หากคุณเป็นผู้ใช้ YouTube Premium การตั้งค่านี้อาจไม่จำเป็น"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">ไม่สามารถดึงข้อมูลไคลเอ็นต์ทั้งหมดได้</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">ไคลเอ็นต์เริ่มต้นไม่ทำงาน</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s ไม่ทำงานหลายครั้งติดต่อกัน แต่ %2$s ทำงานได้
+
+กำหนดให้ %2$s เป็นไคลเอ็นต์เริ่มต้นหรือไม่"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">สลับ</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">การปิดการตั้งค่านี้อาจทำให้เกิดปัญหาในการเล่น</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Second \"item\" text"</string>
   <string name="morphe_external_potoken_provider_about_summary">"ฟีเจอร์นี้ยังอยู่ระหว่างการพัฒนาและอาจใช้งานไม่ได้ในขณะนี้
 
 แตะที่นี่เพื่อดาวน์โหลด PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper ใช้งานไม่ได้อีกต่อไป</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"โทเค็นที่ฝังอยู่ใน PotHelper เวอร์ชันนี้ใช้งานไม่ได้อีกต่อไป
+
+เปิดใช้ 'ปลอมแปลงสตรีมวิดีโอ' เพื่อแก้ไขการเล่น"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">เปิดใช้</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary">หลอกให้เซิร์ฟเวอร์คิดว่าคุณกำลังใช้แอปเวอร์ชันเก่าเพื่อเรียกคืนคุณสมบัติ UI แบบเดิม</string>
@@ -241,6 +253,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">เล่นในโหมดแนวตั้ง</string>
   <string name="morphe_app_refresh_rate_type_entry_3">เล่นแบบเต็มหน้าจอ</string>
   <string name="morphe_app_refresh_rate_type_entry_4">เล่นในโหมดแนวตั้งและเต็มหน้าจอ</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">แบบอักษร</string>
+  <string name="morphe_custom_font_type_entry_default">ค่าเริ่มต้น</string>
+  <string name="morphe_custom_font_type_entry_system">แบบอักษรระบบของอุปกรณ์</string>
+  <string name="morphe_custom_font_type_entry_custom">ไฟล์แบบอักษรที่กำหนดเอง</string>
+  <string name="morphe_custom_font_file_title">ไฟล์แบบอักษรที่กำหนดเอง</string>
+  <string name="morphe_custom_font_file_summary">เลือกไฟล์แบบอักษร TTF หรือ OTF</string>
+  <string name="morphe_custom_font_file_invalid">ไฟล์ที่เลือกไม่ใช่แบบอักษร TTF หรือ OTF</string>
+  <string name="morphe_custom_font_failed_to_load">ไม่สามารถโหลดแบบอักษรที่กำหนดเองได้ และถูกปิดใช้งาน</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">ไม่สามารถแสดงความไม่ชอบชั่วคราว (API หมดเวลา)</string>

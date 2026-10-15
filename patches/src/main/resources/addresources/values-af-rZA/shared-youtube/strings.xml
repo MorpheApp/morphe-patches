@@ -93,6 +93,12 @@ Om die ikoon oral te verander, pas die patch weer toe en verander die patchopsie
 
 As jy 'n YouTube Premium-gebruiker is, is hierdie instelling dalk nie vereis nie"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kon nie enige kliëntstrome ophaal nie</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Die verstekkliënt werk nie</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s het verskeie kere in 'n ry nie gewerk nie, maar %2$s het wel.
+
+Maak %2$s die verstekkliënt?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Wissel</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om hierdie instelling af te skakel, kan dit speelprobleme veroorsaak.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Om hierdie funksie te gebruik, skakel 'Vervals videostrome' af."</string>
   <string name="morphe_external_potoken_provider_about_summary">"Hierdie funksie is tans in ontwikkeling en werk dalk nie
 
 Tik hier om PotHelper af te laai"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper werk nie meer nie</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Die token wat in hierdie weergawe van PotHelper ingebou is, werk nie meer nie
+
+Skakel 'Vervals videostrome' aan om terugspeel reg te stel"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Skakel aan</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Valse weergawe van app</string>
   <string name="morphe_spoof_app_version_summary">Mislei die bediener om te dink jy gebruik \'n ouer weergawe van die app om verstoude UI-funksies te herstel</string>
@@ -241,6 +253,15 @@ Indien later afgeskakel, word dit aanbeveel om die app se data uit te vee om UI-
   <string name="morphe_app_refresh_rate_type_entry_2">Afspeel portret</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Afspeel volskerm</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Afspeel portret en volskerm</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Lettertipe</string>
+  <string name="morphe_custom_font_type_entry_default">Verstek</string>
+  <string name="morphe_custom_font_type_entry_system">Toestelstelselfont</string>
+  <string name="morphe_custom_font_type_entry_custom">Pasmaak-fontlêer</string>
+  <string name="morphe_custom_font_file_title">Pasmaak-fontlêer</string>
+  <string name="morphe_custom_font_file_summary">Kies ’n TTF- of OTF-fontlêer</string>
+  <string name="morphe_custom_font_file_invalid">Die gekose lêer is nie ’n TTF- of OTF-font nie</string>
+  <string name="morphe_custom_font_failed_to_load">Die pasmaak-font kon nie gelaai word nie en is afgeskakel</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes is tans nie beskikbaar nie (API het tyd uit)</string>

@@ -403,7 +403,7 @@ Second \"item\" text"</string>
   <!-- interaction.channelsearch.channelSearchPatch -->
   <string name="morphe_channel_search_title">البحث داخل القناة</string>
   <string name="morphe_channel_search_summary">يضيف زر بحث ثانٍ في صفحات القناة للبحث في تلك القناة فقط</string>
-  <string name="morphe_channel_search_hint">البحث عن قناة</string>
+  <string name="morphe_channel_search_hint">البحث في القناة</string>
   <string name="morphe_channel_search_results">نتائج البحث في القناة</string>
   <string name="morphe_channel_search_no_results">لا توجد نتائج في هذه القناة</string>
   <string name="morphe_channel_search_failed">تعذر البحث في هذه القناة</string>
@@ -564,6 +564,22 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_queue_override_flyout_menu_summary">يفتح قائمة انتظار Morphe بدلًا من قائمة انتظار YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">إضافة خيار قائمة الانتظار إلى قائمة الخلاصة المنبثقة</string>
   <string name="morphe_queue_add_flyout_menu_summary">يضيف خيارًا إضافيًا إلى القائمة المنبثقة. فعّل هذا الخيار إذا لم تظهر \"إضافة إلى قائمة الانتظار\"</string>
+  <string name="morphe_local_queue_title">قائمة انتظار بأسلوب Premium</string>
+  <string name="morphe_local_queue_summary">"يستبدل قائمة انتظار Morphe بقائمة موجودة على الجهاز، وتُشغَّل من تلقاء نفسها، ويمكن إعادة ترتيبها بالسحب
+
+ملاحظة: لا يبدأ الفيديو التالي في قائمة الانتظار إلا عندما يكون YouTube معروضًا على الشاشة"</string>
+  <string name="morphe_local_queue_sheet_title">قائمة الانتظار</string>
+  <string name="morphe_local_queue_open">قائمة الانتظار (%d)</string>
+  <string name="morphe_local_queue_clear">مسح الكل</string>
+  <string name="morphe_local_queue_empty">لا يوجد شيء في قائمة الانتظار</string>
+  <string name="morphe_local_queue_empty_hint">استخدم خيار تشغيل التالي في قائمة الانتظار على أي فيديو</string>
+  <string name="morphe_local_queue_now_playing">قيد التشغيل الآن</string>
+  <string name="morphe_local_queue_play_next">تشغيل التالي في قائمة الانتظار</string>
+  <string name="morphe_local_queue_reorder">إعادة ترتيب</string>
+  <string name="morphe_local_queue_remove">إزالة</string>
+  <string name="morphe_local_queue_added">تمت الإضافة إلى قائمة الانتظار</string>
+  <string name="morphe_local_queue_full">قائمة الانتظار ممتلئة</string>
+  <string name="morphe_local_queue_play_failed">تعذر تشغيل الفيديو</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">القائمة المسموح بها للإعلانات في القائمة المنبثقة</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">يضيف عنصرًا في القائمة المنبثقة يتيح تشغيل الإعلانات على قناة ذلك الفيديو</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1129,9 +1145,6 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">زر الرجوع يخرج من الخلاصة</string>
   <string name="morphe_back_button_always_exits_feed_summary">الضغط على زر الرجوع يؤدي دائمًا إلى الخروج من التطبيق بدلًا من التمرير إلى أعلى الخلاصة</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">فرض خط النظام</string>
-  <string name="morphe_force_system_font_summary">يعرض التطبيق بخط الجهاز بدلًا من خط YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">إخفاء شريط الحالة</string>
   <string name="morphe_hide_status_bar_summary">يخفي شريط حالة النظام. اسحب لأسفل من الحافة العلوية لإظهاره للحظة</string>
@@ -1302,18 +1315,21 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 • قد تظهر الألوان غير دقيقة إذا كانت الشاشة لا تدعم عرض محتوى HDR فعليًا
 • قد يفشل التشغيل إذا تعذّر على وحدة فك الترميز معالجة محتوى HDR
 • يظل تشغيل HDR معتمدًا على عميل Spoof Video Streams"</string>
-  <string name="morphe_force_avc_codec_title">فرض برنامج ترميز AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"الفوائد:
-• يمكن أن يحسن عمر البطارية
-• يمكن أن يستعيد دقة الفيديو المفقودة على الأجهزة القديمة
-
-القيود:
-• أقصى دقة هي 1080p
-• تشغيل الفيديو سيستهلك المزيد من بيانات الإنترنت مقارنةً بـ VP9 أو AV1
-• لن تستخدم فيديوهات HDR ترميز AVC
-• لا يمكن لبعض الأجهزة فرض AVC"</string>
+  <string name="morphe_video_codec_title">ترميز الفيديو</string>
+  <string name="morphe_video_codec_entry_default">الافتراضي</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">لاستخدام هذه الميزة، قم بضبط \'Spoof Video Streams\' على \'Android VR\' أو \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">لفرض استخدام AVC، غيّر \'Spoof Video Streams\' إلى \'Android Studio\' أو \'Android VR\' أو \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• يمكن أن يحسّن عمر البطارية ويصلح تقطّع التشغيل
+• يستهلك بيانات إنترنت أكثر من AV1
+
+AVC (H.264)
+• يتطلب Spoof Video Streams بعميل 'Android Studio' أو 'Android VR' أو 'visionOS'
+• يمكن أن يحسّن عمر البطارية أكثر
+• يمكنه استعادة دقّات الفيديو المفقودة على الأجهزة الأقدم
+• الحد الأقصى للدقة هو 1080p
+• قد لا تستخدم فيديوهات HDR تقنية AVC
+• لا تستطيع بعض الأجهزة فرض استخدام AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">فتح قائمة \'الجودة المتقدمة\'</string>
   <string name="morphe_advanced_video_quality_menu_summary">يتخطى قائمة تحديد الجودة ويفتح قائمة الجودة المتقدمة مباشرة</string>
@@ -1330,6 +1346,7 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
 
 قد يتسبب تشغيل الفيديو باستخدام AV1 في التقطيع أو إسقاط الإطارات."</string>
   <string name="morphe_spoof_video_streams_about_title">الآثار المترتبة على التمويه</string>
+  <string name="morphe_spoof_video_streams_about_failure">• قد يفشل التشغيل عند الدقيقة 1</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• قائمة \'المقطع الصوتي\' مفقودة</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• لا يوجد ترميز الفيديو AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• وضع 360° VR immersive غير متوفر</string>
@@ -1356,4 +1373,158 @@ Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعل
   <string name="morphe_player_icon_style_entry_bold">عريض</string>
   <string name="morphe_player_icon_style_entry_custom">مخصّص</string>
   <string name="morphe_shorts_icon_style_title">نمط أيقونة Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">متتبع السلسلات</string>
+  <string name="morphe_series_tracker_screen_summary">تابع قوائم التشغيل كمسلسل واحتفظ بمكانك</string>
+  <string name="morphe_series_tracker_title">تمكين تتبع السلسلات</string>
+  <string name="morphe_series_tracker_summary">يضيف صفحة السلسلات إلى السجلّ وخيار متابعة السلسلة إلى قوائم التشغيل</string>
+  <string name="morphe_series_tracker_show_button_title">عرض زر تتبع السلسلات</string>
+  <string name="morphe_series_tracker_show_button_summary">يضيف زر بالمشغل لمتابعة أو فتح سلسلة الفيديو الحالي</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">تسجيل تقدم متابعة السلسلة</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">تسجيل التشغيل على هذا الهاتف للسلسلات المحفوظة والعلامات المرجعية</string>
+  <string name="morphe_series_tracker_show_history_tab_title">عرض السجلّ في شريط التنقل</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">الصفحة الرئيسية، الاشتراكات، الإشعارات، السجلّ، وأنت</string>
+  <string name="morphe_series_tracker_ui_cancel">إلغاء</string>
+  <string name="morphe_series_tracker_ui_save">حفظ</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">حفظ العلامة المرجعية</string>
+  <string name="morphe_series_tracker_ui_series_name">اسم السلسلة</string>
+  <string name="morphe_series_tracker_ui_series_options">خيارات السلسلة</string>
+  <string name="morphe_series_tracker_ui_library_options">خيارات المكتبة</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">تحديث الحلقات</string>
+  <string name="morphe_series_tracker_ui_rename">إعادة تسمية</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">فتح قائمة التشغيل في YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">إزالة من المكتبة</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">رابط قائمة التشغيل أو المعرف</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">مسح كل التقدم المحلي</string>
+  <string name="morphe_series_tracker_ui_clear_history">مسح السجلّ</string>
+  <string name="morphe_series_tracker_clear_progress_title">مسح كل التقدم المحلي؟</string>
+  <string name="morphe_series_tracker_clear_progress_message">سيتم مسح المواضع وتجاوزات المشاهدة وخيارات الاستمرار لكل فيديو. تظل المسلسلات المحفوظة وقوائمها كما هي. سيتم تسجيل تشغيل جديد إذا تم تمكين التسجيل.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">تحديد كـ تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">تحديد كـ لم تتم مشاهدته</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">استخدام حالة تلقائية</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">إعادة البدء من 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">تشغيل مرة أخرى من 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">تم حفظ الحالة</string>
+  <string name="morphe_series_tracker_ui_retry_saving">إعادة المحاولة للحفظ</string>
+  <string name="morphe_series_tracker_ui_previous_100">الـ 100 السابقة</string>
+  <string name="morphe_series_tracker_ui_next_100">الـ 100 التالية</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">فتح فيديو محفوظ</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">تم مسح التقدم المحلي</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">افتح السجل من قسم \"أنت\" لعرض سلاسلك</string>
+  <string name="morphe_series_tracker_ui_watch_history">سجل المشاهدة</string>
+  <string name="morphe_series_tracker_ui_series">السلسلة</string>
+  <string name="morphe_series_tracker_ui_history">السجلّ</string>
+  <string name="morphe_series_tracker_ui_subscriptions">الاشتراكات</string>
+  <string name="morphe_series_tracker_ui_notifications">الإشعارات</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">جارٍ تحميل السلسلات المحفوظة...</string>
+  <string name="morphe_series_tracker_empty_library">تابع قائمة تشغيل لتتبع حلقاتها.</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">علامة مرجعية لقائمة التشغيل</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">جارٍ تحديث الحلقات...</string>
+  <string name="morphe_series_tracker_ui_all_series">كل السلسلات</string>
+  <string name="morphe_series_tracker_watched">تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">جارٍ تحميل الحلقات...</string>
+  <string name="morphe_series_tracker_ui_more_options">خيارات إضافية</string>
+  <string name="morphe_series_tracker_record_consent">"تسجيل التقدم فقط لسلسلاتك المحفوظة وفيديوهات العلامات المرجعية.
+
+تُخزن هذه المكتبة على هذا الجهاز ويتم مشاركتها عبر حسابات YouTube. لا تغيرها أدوات الإيقاف المؤقت والمسح في YouTube. استخدم السلسلة ← المزيد ← مسح التقدم المحلي لإزالتها.
+
+يتوقف التسجيل التلقائي في وضع التصفح المتخفي، عندما تكون هوية الحساب غير متاحة، أو عند التبديل إلى حساب مختلف. قم بتمكين التتبع مرة أخرى لاستخدامه مع ذلك الحساب."</string>
+  <string name="morphe_series_tracker_identity_unavailable">لا يمكن تمكين التتبع في وضع التصفح المتخفي أو قبل أن يتم تحميل YouTube لحالة الحساب الحالي. عد إلى الصفحة الرئيسية وحاول مرة أخرى. لا يلزم تسجيل الدخول.</string>
+  <string name="morphe_series_tracker_enable">تمكين التتبع المحلي</string>
+  <string name="morphe_series_tracker_tracking_paused">تسجيل التقدّم متوقف</string>
+  <string name="morphe_series_tracker_resume_at">الاستمرار من %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$d / %2$d حلقات تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_episode_position">حلقة %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">الحلقات %1$d–%2$d من %3$d</string>
+  <string name="morphe_series_tracker_catalog_unavailable">قم بالتحديث لمحاولة تحميل الحلقات. القوائم الخاصة تحتاج إلى الوصول بالحساب؛ ما زالت علامتها المرجعية تفتح في YouTube.</string>
+  <string name="morphe_series_tracker_open_failed">لم يتمكن YouTube من فتح هذه الحلقة.</string>
+  <string name="morphe_series_tracker_playlist_failed">لم يتمكن YouTube من فتح قائمة التشغيل هذه.</string>
+  <string name="morphe_series_tracker_plan_open">علامة مرجعية لقائمة التشغيل</string>
+  <string name="morphe_series_tracker_plan_changed">اختر حلقة</string>
+  <string name="morphe_series_tracker_plan_caught_up">محدث</string>
+  <string name="morphe_series_tracker_plan_none">لا توجد حلقات قابلة للتشغيل</string>
+  <string name="morphe_series_tracker_saved_position">فيديو محفوظ · %1$s</string>
+  <string name="morphe_series_tracker_follow">تابع السلسلة</string>
+  <string name="morphe_series_tracker_view_series">عرض السلسلة</string>
+  <string name="morphe_series_tracker_add_icon">متابعة السلسلة</string>
+  <string name="morphe_series_tracker_continue">استمرار</string>
+  <string name="morphe_series_tracker_start_here">ابدأ هنا</string>
+  <string name="morphe_series_tracker_start_saved">تم حفظ نقطة البداية</string>
+  <string name="morphe_series_tracker_watched_to_here">شاهد حتى هنا</string>
+  <string name="morphe_series_tracker_marked">تم وضع الحلقات كـ تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_undo">تراجع</string>
+  <string name="morphe_series_tracker_enable_short">تمكين</string>
+  <string name="morphe_series_tracker_new_episode">1 حلقة واحدة</string>
+  <string name="morphe_series_tracker_new_episodes">%1$d حلقات جديدة</string>
+  <string name="morphe_series_tracker_record_short">تسجيل التقدم على هذا الجهاز</string>
+  <string name="morphe_series_tracker_follow_consent">"يبقي سلسلاتك وتقدمك على هذا الجهاز، وتتم مشاركتها عبر حسابات YouTube. أدوات سجل YouTube لا تغيرهما. مسح التقدم من قائمة السلسلة.
+
+التسجيل التلقائي اختياري. يتوقف في وضع التصفح المتخفي أو عند تغيير الحساب."</string>
+  <string name="morphe_series_tracker_follow_unavailable">تعذر تحميل الحلقات. يمكنك حفظ قائمة التشغيل كعلامة مرجعية.</string>
+  <string name="morphe_series_tracker_error_pending_full">التغييرات غير المحفوظة كثيرة جدًا. حاول الحفظ أولًا</string>
+  <string name="morphe_series_tracker_error_storage_busy">عملية الحفظ مشغولة. حاول مرة أخرى.</string>
+  <string name="morphe_series_tracker_error_catalog_busy">تحميل الحلقة مشغول. حاول مرة أخرى.</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">التخزين غير متاح. تم الاحتفاظ ببياناتك المحفوظة.</string>
+  <string name="morphe_series_tracker_error_storage_save">تعذر حفظ التغييرات. أعد محاولة الحفظ قبل إغلاق YouTube.</string>
+  <string name="morphe_series_tracker_error_conflict">هذه السلسلة محفوظة بالفعل، أو تغيرت قائمة التشغيل الخاصة بها. أعد فتحها.</string>
+  <string name="morphe_series_tracker_error_series_changed">تغيرت هذه السلسلة أو تمت إزالتها. أعد فتح المكتبة.</string>
+  <string name="morphe_series_tracker_error_playlist_changed">تغيرت قائمة التشغيل. اختر الحلقة مرة أخرى.</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">هذه الحلقة غير متاحة. اختر واحدة أخرى.</string>
+  <string name="morphe_series_tracker_error_name_required">أدخل اسم سلسلة.</string>
+  <string name="morphe_series_tracker_error_playlist_input">أدخل رابط قائمة تشغيل YouTube أو معرف القائمة.</string>
+  <string name="morphe_series_tracker_error_retry_later">يرجى الانتظار قبل التحديث مرة أخرى.</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">تعذر تحميل الحلقات. حاول مرة أخرى لاحقًا.</string>
+  <string name="morphe_series_tracker_error_operation">تعذر إكمال التغيير. حاول مرة أخرى.</string>
+  <string name="morphe_series_tracker_error_resume">تعذر تأكيد الاستمرار. راجع المشغل وحاول مرة أخرى.</string>
+  <string name="morphe_series_tracker_followed">سلسلات يتم متابعتها</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">هذا الفيديو ليس في هذه قائمة التشغيل.</string>
+  <string name="morphe_series_tracker_finding_playlists">جارٍ العثور على قوائم التشغيل...</string>
+  <string name="morphe_series_tracker_paste_playlist">لصق رابط قائمة التشغيل</string>
+  <string name="morphe_series_tracker_discovery_unavailable">لم يتم العثور على قائمة تشغيل</string>
+  <string name="morphe_series_tracker_no_available_episodes">لا توجد حلقات متاحة</string>
+  <string name="morphe_series_tracker_hide_watched">إخفاء التي تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_watch_previous">وضع الحلقات السابقة كـ تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_order_starts_with">يبدأ بـ: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">ترتيب الحلقات</string>
+  <string name="morphe_series_tracker_playlist_order">ترتيب قائمة التشغيل</string>
+  <string name="morphe_series_tracker_reverse_order">عكس ترتيب قائمة التشغيل</string>
+  <string name="morphe_series_tracker_view_count_large">%1$s مشاهدة</string>
+  <string name="morphe_series_tracker_view_count">%1$s مشاهدة</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s مشاهدة</string>
+  <string name="morphe_series_tracker_completion_title">وضع الحلقات كـ تمت مشاهدتها</string>
+  <string name="morphe_series_tracker_completion_summary">على الأقل %1$d%% تمت مشاهدتها مع الأكثر 90 ثانية متبقية، أو %2$d ثانية متبقية</string>
+  <string name="morphe_series_tracker_completion_explanation">وضع علامة تلقائية على الحلقة كـ تمت مشاهدتها بعد أي من الحدين. تتطلب قاعدة النسبة المئوية أيضًا ألا يتبقى أكثر من 90 ثانية، حتى لا يتم تخطي نهاية الحلقات الطويلة. تنطبق قاعدة الوقت المتبقي على الفيديوهات الأطول من دقيقة واحدة؛ اضبطها على 0 لتعطيلها. التغييرات تطبق على تحديثات التقدم المستقبلية. يتم الاحتفاظ بالخيارات اليدوية للمشاهدة/عدم المشاهدة.</string>
+  <string name="morphe_series_tracker_completion_percent">النسبة المئوية لتمت مشاهدتها (1-100)</string>
+  <string name="morphe_series_tracker_completion_seconds">الثواني المتبقية (0-300; 0 يعطل)</string>
+  <string name="morphe_series_tracker_completion_save">حفظ</string>
+  <string name="morphe_series_tracker_completion_range">أدخل قيمة من %1$d إلى %2$d.</string>
+  <string name="morphe_series_tracker_youtube_progress_title">استخدم تقدم YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">تابع السلسلات التي تتم متابعتها بعد المشاهدة على جهاز آخر</string>
+  <string name="morphe_series_tracker_sync_consent">قراءة حالة المشاهدة ومواقع الاستمرار لسلسلاتك التي تتم متابعتها من حساب YouTube الحالي. يتم حفظ الحلقات المطابقة فقط على هذا الهاتف. تعمل الفحوصات بينما تكون مكتبة السلسلات مفتوحة وقبل \"استمرار\". يجب تمكين سجل YouTube على جهازك الآخر.</string>
+  <string name="morphe_series_tracker_sync_checking">جارٍ التحقق من تقدم YouTube...</string>
+  <string name="morphe_series_tracker_sync_failed">تقدم YouTube غير متاح. استخدام التقدم المحفوظ.</string>
+  <string name="morphe_series_tracker_sync_partial">بعض تقدم YouTube غير متاح. يتم الاحتفاظ بالمواقع المحفوظة.</string>
+  <string name="morphe_series_tracker_backup_title">النسخ الاحتياطي والاستعادة</string>
+  <string name="morphe_series_tracker_backup_summary">احفظ مكتبة سلسلاتك في ملف أو استعد نسخة احتياطية</string>
+  <string name="morphe_series_tracker_backup_explanation">يحفظ السلسلات التي يتم متابعتها ومواقع الحلقات وخيارات المشاهدة. لا تشمل صلاحيات التسجيل وتقدم YouTube.</string>
+  <string name="morphe_series_tracker_backup_save">حفظ النسخة الاحتياطية</string>
+  <string name="morphe_series_tracker_backup_restore">استعادة النسخة الاحتياطية</string>
+  <string name="morphe_series_tracker_backup_preview">إضافة %1$d سلسلة. تم الاحتفاظ بـ %2$d سلسلة موجودة بالفعل في مكتبتك. يتم الاحتفاظ بتقدم الفيديو الموجود.</string>
+  <string name="morphe_series_tracker_backup_saved">تم حفظ النسخة الاحتياطية للسلسلة</string>
+  <string name="morphe_series_tracker_backup_restored">تم استعادة %1$d سلسلة</string>
+  <string name="morphe_series_tracker_error_backup_invalid">هذا الملف ليس نسخة احتياطية لسلسلة مدعومة، أو أنه كبير جدًا. لم تتغير مكتبتك.</string>
+  <string name="morphe_series_tracker_error_backup_write">تعذر حفظ النسخة الاحتياطية. حاول موقعًا آخر.</string>
+  <string name="morphe_series_tracker_removed">تمت إزالة السلسلة</string>
+  <string name="morphe_series_tracker_recovery_duplicate">تظهر هذه الحلقة الآن أكثر من مرة. اختر واحدة للاستمرار منها.</string>
+  <string name="morphe_series_tracker_recovery_missing">حلقتك المحفوظة لم تعد في قائمة التشغيل هذه. يتم الاحتفاظ بموقعك المحفوظ.</string>
+  <string name="morphe_series_tracker_recovery_continue">استمرار في حلقة %1$d · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">يمكنك أيضًا اختيار أي حلقة أدناه. لا تتغير الحلقات السابقة.</string>
+  <string name="morphe_series_tracker_playback_changed">تغيرت قائمة التشغيل هذه. افتح السلسلة لاختيار حيث تستمر.</string>
+  <string name="morphe_series_tracker_playback_boundary">لا توجد حلقات أخرى في هذا الاتجاه</string>
+  <string name="morphe_series_tracker_continue_series">استمرار %1$s</string>
+  <string name="morphe_series_tracker_search_series">البحث في السلسلات</string>
+  <string name="morphe_series_tracker_clear_search">مسح سجل البحث</string>
+  <string name="morphe_series_tracker_no_search_results">لم يتم العثور على سلسلات</string>
+  <string name="morphe_series_tracker_untitled_episode">حلقة بدون عنوان</string>
+  <string name="morphe_series_tracker_unavailable_episode">حلقة غير متاحة</string>
 </resources>

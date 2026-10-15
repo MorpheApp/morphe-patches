@@ -193,7 +193,7 @@ Breytingarnar fela í sér:
   <string name="morphe_hide_how_this_was_made_section_title">Fela hlutann „Hvernig þetta var gert“</string>
   <string name="morphe_hide_hype_points_title">Fela Hype stig</string>
   <string name="morphe_hide_info_cards_section_title">Felur Upplýsingakort hluta</string>
-  <string name="morphe_hide_key_concepts_section_title">Felur \'Helstu hugtök\' hluta</string>
+  <string name="morphe_hide_key_concepts_section_title">Fela \'Lykilhugmyndafræði\" svæði</string>
   <string name="morphe_hide_quizzes_section_title">Felur Prófa hluta</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Fela \'Leit í þessu myndbandi\' hluta</string>
   <string name="morphe_hide_subscribe_button_title">Fela áskriftarhnapp</string>
@@ -558,6 +558,22 @@ API lykillinn þinn ætti aldrei að deila. Allir með aðgang að honum geta no
   <string name="morphe_queue_override_flyout_menu_summary">Opnar Morphe biðröðina í stað YouTube biðröðarinnar</string>
   <string name="morphe_queue_add_flyout_menu_title">Bæta við flugvalsatriði fyrir fréttastraum</string>
   <string name="morphe_queue_add_flyout_menu_summary">Bætir við auka flugvalsatriði. Virkjaðu þetta ef \"Bæta í biðröð\" er ekki sýnt</string>
+  <string name="morphe_local_queue_title">Biðröð í Premium-stíl</string>
+  <string name="morphe_local_queue_summary">"Skiptir út Morphe-biðröðinni fyrir biðröð sem er geymd á tækinu, spilast af sjálfu sér og er hægt að endurraða með því að draga
+
+Upplýsingar: Næsta myndband í biðröðinni byrjar aðeins meðan YouTube er á skjánum"</string>
+  <string name="morphe_local_queue_sheet_title">Biðröð</string>
+  <string name="morphe_local_queue_open">Biðröð (%d)</string>
+  <string name="morphe_local_queue_clear">Hreinsa allt</string>
+  <string name="morphe_local_queue_empty">Ekkert í biðröð</string>
+  <string name="morphe_local_queue_empty_hint">Notaðu Spila næst í biðröð á hvaða myndbandi sem er</string>
+  <string name="morphe_local_queue_now_playing">Nú í spilun</string>
+  <string name="morphe_local_queue_play_next">Spila næst í biðröð</string>
+  <string name="morphe_local_queue_reorder">Endurraða</string>
+  <string name="morphe_local_queue_remove">Fjarlægja</string>
+  <string name="morphe_local_queue_added">Bætt í biðröð</string>
+  <string name="morphe_local_queue_full">Biðröðin er full</string>
+  <string name="morphe_local_queue_play_failed">Ekki tókst að ræsa myndbandið</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Auglýsingahvítlisti í sprettivalmynd</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Bætir við sprettivalmyndaratriði sem leyfir auglýsingum að spilast á rás þess myndbands</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1119,9 +1135,6 @@ Takmörkun: Ef 'Endurskapa gamla stjórnbara myndbands' er slökkt, gæti 'Fleir
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Til baka-hnappur fer út úr straumnum</string>
   <string name="morphe_back_button_always_exits_feed_summary">Að ýta á til baka fer alltaf út úr appinu í stað þess að skrilla upp efst í strauminn</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Þvinga kerfisletur</string>
-  <string name="morphe_force_system_font_summary">Sýnir appið með leturgerð tækisins í stað YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Fela stöðustikuna</string>
   <string name="morphe_hide_status_bar_summary">Felur stöðustiku kerfisins. Strjúktu niður frá efri brúninni til að sýna hana í smá stund</string>
@@ -1292,18 +1305,21 @@ Takmarkanir:
 • Litir geta litið rangt út ef skjárinn getur ekki raunverulega sýnt HDR
 • Spilun getur mistekist ef afkóðarinn ræður ekki við HDR
 • HDR er enn háð spoof-biðlara fyrir vídeóstrauma"</string>
-  <string name="morphe_force_avc_codec_title">Þvinga AVC (H.264) kóðann</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Ávinningur:
-• Getur bætt rafhlöðuáfköfum
-• Getur endurheimt vantar myndbandsálausnina á eldra tæki
-
-Takmörk:
-• Hámarksálausn er 1080p
-• Myndbandsspilun mun nota meiri netgögn en VP9 eða AV1
-• HDR myndbönd munu ekki nota AVC
-• Sum tæki geta ekki neyðt AVC"</string>
+  <string name="morphe_video_codec_title">Vídeókódeki</string>
+  <string name="morphe_video_codec_entry_default">Sjálfgefið</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Til að nota þennan eiginleika skaltu stilla \'Spoofa myndbandsstrauma\' á \'Android VR\' eða \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Til að þvinga fram AVC skaltu breyta \'Falsa myndstreymi\' í \'Android Studio\', \'Android VR\' eða \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Getur bætt rafhlöðuendingu og lagað hik í spilun
+• Notar meira af internetgögnum en AV1
+
+AVC (H.264)
+• Krefst falsaðs myndstreymisbiðlara: 'Android Studio', 'Android VR' eða 'visionOS'
+• Getur bætt rafhlöðuendingu enn frekar
+• Getur endurheimt myndupplausnir sem vantar á eldri tækjum
+• Hámarksupplausn er 1080p
+• HDR myndbönd gætu ekki notað AVC
+• Sum tæki geta ekki þvingað fram AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Opnaðu Advanced gæðavalmynd</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sleppur yfir valið á gæðum og opnar \'Advanced\' gæðavalmyndina beint</string>
@@ -1320,6 +1336,7 @@ Takmörk:
 
 Myndbandsspilun með AV1 getur hakka eða orðið með rammalegsfall."</string>
   <string name="morphe_spoof_video_streams_about_title">Umráðareitur áhrifa</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Spilun gæti mistekist eftir 1 mínútu</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audio Track\' valmynd vantar</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Enginn AV1 myndbandakód</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR innlifunhamur er ekki í boði</string>
@@ -1346,4 +1363,158 @@ Takmörkun: Snýr aftur í gamla 'Fleiri myndbönd' yfirlagsstílinn"</string>
   <string name="morphe_player_icon_style_entry_bold">Feitletraður</string>
   <string name="morphe_player_icon_style_entry_custom">Sérsniðið</string>
   <string name="morphe_shorts_icon_style_title">Stíll Shorts-táknsins</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Röðumfylgjari</string>
+  <string name="morphe_series_tracker_screen_summary">Eftir spilahlöt sem þætti og haltu staðnum</string>
+  <string name="morphe_series_tracker_title">Virkja röðunarmynd</string>
+  <string name="morphe_series_tracker_summary">Bætir við síðu fyrir þætti í ferli og kost til að fylgja þáttum í spilahlutum</string>
+  <string name="morphe_series_tracker_show_button_title">Sýna hnapp fyrir röðaskjal</string>
+  <string name="morphe_series_tracker_show_button_summary">Bætir spilarahnappi til að fylgjast með eða opna röð núverandi myndbands</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Taka upp framvindu í fylgdum röðum</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Taka upp afspilun á þessu síma fyrir vistaðar röðir og bókamerki</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Sýna feril í flakstiku</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Heim, Áskriftir, Tilkynningar, Ferill og Þú</string>
+  <string name="morphe_series_tracker_ui_cancel">Hætta við</string>
+  <string name="morphe_series_tracker_ui_save">Vista</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Vista bókamerki</string>
+  <string name="morphe_series_tracker_ui_series_name">Nafn röðar</string>
+  <string name="morphe_series_tracker_ui_series_options">Valmöguleikar röðar</string>
+  <string name="morphe_series_tracker_ui_library_options">Bókasafnsvalkostir</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Endurlesa episoda</string>
+  <string name="morphe_series_tracker_ui_rename">Breyta nafni</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Opna spilunarlista í YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Fjarlægja úr bókasafni</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Slóð eða auðkenni spilunarlista</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Hreinsa alla staðbundna framvindu</string>
+  <string name="morphe_series_tracker_ui_clear_history">Hreinsa feril</string>
+  <string name="morphe_series_tracker_clear_progress_title">Hreinsa alla staðbundna framvindu?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Þetta hreynir staðsetningar, yfirlit yfir skoðað efni og endurtekningaval fyrir hvert myndband. Vistaðar röðir og skráargögn þeirra verða eftir. Ný afspilun mun vera töluð ef tölun er kveikt.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Merkja sem skoðað</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Merkja sem óskoðað</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Nota sjálfvirka stöðu</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Byrja upp frá 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Spila aftur upp frá 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Staða vistuð</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Reyna að vista aftur</string>
+  <string name="morphe_series_tracker_ui_previous_100">Fyrri 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Næstu 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Opna vistað myndband</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Staðbundin framvinda hreinsuð</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Opna feril undir Þú til að skoða röðina þína</string>
+  <string name="morphe_series_tracker_ui_watch_history">Skámatferill</string>
+  <string name="morphe_series_tracker_ui_series">Röðir</string>
+  <string name="morphe_series_tracker_ui_history">Ferill</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Áskriftir</string>
+  <string name="morphe_series_tracker_ui_notifications">Tilkynningar</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Hleður vistaðar röðir…</string>
+  <string name="morphe_series_tracker_empty_library">Fylgdu spilunarlista til að fylgjast með episódunum.</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Bókamerki spilunarlista</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Endurles episóda…</string>
+  <string name="morphe_series_tracker_ui_all_series">Allar röðir</string>
+  <string name="morphe_series_tracker_watched">Skoðað</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Hleður episóda…</string>
+  <string name="morphe_series_tracker_ui_more_options"> fleiri valkostir</string>
+  <string name="morphe_series_tracker_record_consent">"Taka upp framvindu aðeins fyrir vistaðar röðir þínar og bókmerkt myndbönd.
+
+Þetta bókasafn er geymt á þessu tæki og deilt milli YouTube reiknings. Stjórnunaraðgerðir hjá YouTube (pause/clear) hafa engin áhrif. Notaðu Röð → Aukið → Hreinsa staðbundna framvindu til að eyða því.
+
+Sjálfvirk upptök stoppar í dulhlið, þegar auðkenni reiknings er ótiltækt eða þegar skipt er yfir á annan reikning. Kveiktu á rakstri aftur til að nota hann með þeim reikning."</string>
+  <string name="morphe_series_tracker_identity_unavailable">Rekstur getur ekki verið kveiktur í dulhlið eða áður en YouTube hefur hlaðið núverandi reikningsstöðu. Veldu Heim og reyndu aftur. Engin innskráning er nauðsynleg.</string>
+  <string name="morphe_series_tracker_enable">Kveikja á staðbundnum rekstri</string>
+  <string name="morphe_series_tracker_tracking_paused">Framvundurupptaka er slökkt</string>
+  <string name="morphe_series_tracker_resume_at">Halda áfram við %1$s</string>
+  <string name="morphe_series_tracker_watched_count"> %1$d / %2$d episóður skoðaðar</string>
+  <string name="morphe_series_tracker_episode_position"> Episóða %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range"> Episóður %1$d–%2$d af %3$d</string>
+  <string name="morphe_series_tracker_catalog_unavailable"> Endurlesa til að reyna að hlaða episóður. Einkaspilunarlista krefjast reikningsaðgangs; bókamerki þeirra opnast ennþá í YouTube .</string>
+  <string name="morphe_series_tracker_open_failed">YouTube gat ekki opna þetta episod .</string>
+  <string name="morphe_series_tracker_playlist_failed"> YouTube gat ekki opna þennan spilunarlista .</string>
+  <string name="morphe_series_tracker_plan_open"> Bókamerki spillunnarlista </string>
+  <string name="morphe_series_tracker_plan_changed"> Veldu episóða </string>
+  <string name="morphe_series_tracker_plan_caught_up"> Á dagskrá </string>
+  <string name="morphe_series_tracker_plan_none"> Engir spilanlegir episóður </string>
+  <string name="morphe_series_tracker_saved_position"> Vistað myndband · %1$s</string>
+  <string name="morphe_series_tracker_follow"> Fylgja röð </string>
+  <string name="morphe_series_tracker_view_series"> Sjá röð </string>
+  <string name="morphe_series_tracker_add_icon"> Fylgja röð </string>
+  <string name="morphe_series_tracker_continue">Halda áfram</string>
+  <string name="morphe_series_tracker_start_here"> Byrja hér </string>
+  <string name="morphe_series_tracker_start_saved"> Upphafspunktur vistuður </string>
+  <string name="morphe_series_tracker_watched_to_here"> Skoðað allt að hér </string>
+  <string name="morphe_series_tracker_marked"> Episóður merktar sem skoðaðar </string>
+  <string name="morphe_series_tracker_undo">Afturkalla</string>
+  <string name="morphe_series_tracker_enable_short">Virkja</string>
+  <string name="morphe_series_tracker_new_episode"> 1 ný episóða </string>
+  <string name="morphe_series_tracker_new_episodes">%1$d nýjar episóður</string>
+  <string name="morphe_series_tracker_record_short"> Taka upp framvindu á þessu tæki </string>
+  <string name="morphe_series_tracker_follow_consent">" Röðir þínar og framvinda versta á þessu tæki , deilt milli YouTube - reiknings . Stjórnkerfi ferils YouTube breytir því ekki . Hreinsia framvindu úr röð - valmyndinni . 
+
+ Sjálfvirk upptaka er valkvætt . Hún stoppar í dulhlínum eða þegar reikningurinn breytist ."</string>
+  <string name="morphe_series_tracker_follow_unavailable"> Episóður gátu ekki verið hlaðnar . Þú getur vistað spilunarlistann sem bókamerki .</string>
+  <string name="morphe_series_tracker_error_pending_full"> Of margar óvistubreytingar . Reyndu að vista fyrst .</string>
+  <string name="morphe_series_tracker_error_storage_busy"> Vistun er í gangi . Reyndu aftur .</string>
+  <string name="morphe_series_tracker_error_catalog_busy"> Hleðsla episóða er í gangi . Reyndu aftur .</string>
+  <string name="morphe_series_tracker_error_storage_unavailable"> Geymslan er ótilbúin . Gögnin þín voru vistuð .</string>
+  <string name="morphe_series_tracker_error_storage_save"> Breytingar gátu ekki verið vistaðar . Reyndu að vista áður en þú lokar YouTube .</string>
+  <string name="morphe_series_tracker_error_conflict"> Þessi röð er þegar vistuð eða spilunarlistinn hana . Opnaðu hana aftur .</string>
+  <string name="morphe_series_tracker_error_series_changed"> Röðin breyttist eða var fjarlægð . Opnaðu bókasafnið .</string>
+  <string name="morphe_series_tracker_error_playlist_changed"> Spilunarlistinn breyttist . Veldu episóðuna aftur .</string>
+  <string name="morphe_series_tracker_error_episode_unavailable"> Þessi episod er ótiltæk . Veldu aðra .</string>
+  <string name="morphe_series_tracker_error_name_required"> Sláðu inn nafn röðar .</string>
+  <string name="morphe_series_tracker_error_playlist_input"> Sláðu inn YouTube - spilunarlista slóð eða listauðkenni .</string>
+  <string name="morphe_series_tracker_error_retry_later"> Vinsamlegast bíddu áður en þú endurlesir aftur .</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable"> Episóður gátu ekki verið hlaðnar . Reyndu aftur síðar .</string>
+  <string name="morphe_series_tracker_error_operation"> Breytingin gat ekki verið lokið . Reyndu aftur .</string>
+  <string name="morphe_series_tracker_error_resume"> Endurtekning gat ekki verið staðfest . Athugaðu spilurun og reyndu aftur .</string>
+  <string name="morphe_series_tracker_followed"> Fylgist með röðum </string>
+  <string name="morphe_series_tracker_video_not_in_playlist"> Þetta myndband er ekki í þessum lista .</string>
+  <string name="morphe_series_tracker_finding_playlists"> Finna spilunarlista…</string>
+  <string name="morphe_series_tracker_paste_playlist"> Límmiða slóð spilunarlista </string>
+  <string name="morphe_series_tracker_discovery_unavailable"> Gat ekki fundið spilunarlista </string>
+  <string name="morphe_series_tracker_no_available_episodes"> Engir episóður tiltækir </string>
+  <string name="morphe_series_tracker_hide_watched"> Fela skoðað </string>
+  <string name="morphe_series_tracker_watch_previous"> Merkja fyrrari episóður sem skoðaðar </string>
+  <string name="morphe_series_tracker_order_starts_with"> Byrjar með : %1$s</string>
+  <string name="morphe_series_tracker_episode_order"> Röð episóða </string>
+  <string name="morphe_series_tracker_playlist_order"> Rósa spillunnarlista </string>
+  <string name="morphe_series_tracker_reverse_order"> Öfug röð spilunarlista </string>
+  <string name="morphe_series_tracker_view_count_large">%1$s sýningar</string>
+  <string name="morphe_series_tracker_view_count">%1$s sýningar</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s sýning</string>
+  <string name="morphe_series_tracker_completion_title"> Merkja episóður sem skoðaðar </string>
+  <string name="morphe_series_tracker_completion_summary"> Að minnsta kosti %1$d%% skoðað með mest 90 sekúndum eftir , eða %2$d sekúndum eftir </string>
+  <string name="morphe_series_tracker_completion_explanation"> Merkja sjálfkrafa episóðu sem skoðaða eftir annað þröskuld . Reglan um prósentu krefst einnig að engar meira en 90 sekúndur séu eftir , svo ending langra episóða er ekki sleppt . Reglan um eftirstandandi tíma gildir um myndbandsmeiri en eitt mínútu ; setji það á 0 til að slökkva . Breytingar gilda fyrir framtíðar framvinderuppfærslur . Handvirkar skoðaðar/óskaðar ákvarðanir eru haldnar .</string>
+  <string name="morphe_series_tracker_completion_percent"> Prósentan skoðuð (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds"> Sekúndur eftir (0–300; 0 slökknar )</string>
+  <string name="morphe_series_tracker_completion_save">Vista</string>
+  <string name="morphe_series_tracker_completion_range"> Sláðu inn gildi frá %1$d til %2$d .</string>
+  <string name="morphe_series_tracker_youtube_progress_title"> Nota YouTube - framvindu </string>
+  <string name="morphe_series_tracker_youtube_progress_summary"> Halda áfram fylgdum röðum eftir afspilun á öðru tæki </string>
+  <string name="morphe_series_tracker_sync_consent"> Lesa skoðaða stöðu og endurstöðupunkta fyrir fylgte röðir úr núverandi YouTube - reikningi . Aðeins samsvarandi episóður eru vistaðar á þessum síma . Athuganir keyra á meðan bókasafn röðar er opið og áður en Haltu áfram . YouTube - ferill verður að vera kveiktur á hinu tækinu .</string>
+  <string name="morphe_series_tracker_sync_checking"> Athugar YouTube - framvundu…</string>
+  <string name="morphe_series_tracker_sync_failed"> YouTube - framvunda er ótiltæk . Notar vistuð framvundu .</string>
+  <string name="morphe_series_tracker_sync_partial"> Sumar YouTube - framvundur eru ótiltækar . Vistaðar staðsetningar eru haldnar .</string>
+  <string name="morphe_series_tracker_backup_title"> Afskrift og endurheimt </string>
+  <string name="morphe_series_tracker_backup_summary"> Vista bókasafn röðanna þinna í skrá eða endurheimta afskrift </string>
+  <string name="morphe_series_tracker_backup_explanation"> Vistar fylgte ræður , episóðustaðsetningar og skoðaðar ákvarðanir . Upptöku- og YouTube - framvundu leyfi eru ekki innifalin .</string>
+  <string name="morphe_series_tracker_backup_save"> Vista afskrift </string>
+  <string name="morphe_series_tracker_backup_restore"> Endurheimta afskrift </string>
+  <string name="morphe_series_tracker_backup_preview"> Bæta við %1$d röðum . %2$d röðum þegar í bókasafninu er haldið . Núverandi framvinda myndbands er haldið .</string>
+  <string name="morphe_series_tracker_backup_saved"> Afskrift röðar vistuð </string>
+  <string name="morphe_series_tracker_backup_restored"> Endurheimti %1$d röðum</string>
+  <string name="morphe_series_tracker_error_backup_invalid"> Þessi skrá er ekki stytt afskrift röðar eða of stór . Bókasafnið þitt var ekki breytt .</string>
+  <string name="morphe_series_tracker_error_backup_write"> Gat ekki vistun afskrift . Reyndu annan stað .</string>
+  <string name="morphe_series_tracker_removed"> Röð fjarlægð </string>
+  <string name="morphe_series_tracker_recovery_duplicate"> Þessi episod birtist nú meira en einu sinni . Veldu hvað á halda áfram frá .</string>
+  <string name="morphe_series_tracker_recovery_missing"> Vistað episod þín er ekki lengur í þessum lista . Vistaður staðsetning er haldið .</string>
+  <string name="morphe_series_tracker_recovery_continue"> Haltu áfram með episod %1$d · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose"> Þú getur einnig valið hvaða episod hér að neðan . Elri episóður eru ekki breyttar .</string>
+  <string name="morphe_series_tracker_playback_changed"> Spilunarlistinn breyttist . Opna röð til að velja hvar á halda áfram .</string>
+  <string name="morphe_series_tracker_playback_boundary"> Engir fleiri episóður í þessa átt </string>
+  <string name="morphe_series_tracker_continue_series"> Halda áfram %1$s</string>
+  <string name="morphe_series_tracker_search_series"> Leita að röðum </string>
+  <string name="morphe_series_tracker_clear_search"> Hreinsa leit </string>
+  <string name="morphe_series_tracker_no_search_results"> Engar raddir fundust </string>
+  <string name="morphe_series_tracker_untitled_episode"> Ritlaus episod </string>
+  <string name="morphe_series_tracker_unavailable_episode"> Ótiltæk episod </string>
 </resources>

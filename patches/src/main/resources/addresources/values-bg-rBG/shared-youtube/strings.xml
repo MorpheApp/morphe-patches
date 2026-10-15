@@ -85,6 +85,12 @@ Second \"item\" text"</string>
 
 Ако сте потребител на YouTube Premium, тази настройка може да не е необходима."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не може да се изтеглят клиентски потоци</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Клиентът по подразбиране не работи</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s не проработи няколко пъти подред, но %2$s проработи.
+
+Да направим ли %2$s клиент по подразбиране?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Превключване</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми при възпроизвеждане.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -215,6 +221,12 @@ Second \"item\" text"</string>
   <string name="morphe_external_potoken_provider_about_summary">"Тази функция в момента е в процес на разработка и може да не работи
 
 Докоснете тук, за да изтеглите PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper вече не работи</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Вграденият в тази версия на PotHelper токен вече не работи
+
+Включете „Имитиране на видеопотоците“, за да поправите възпроизвеждането"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Включи</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подменя версия на приложението</string>
   <string name="morphe_spoof_app_version_summary">Заблуждава сървъра, карайки го да мисли, че използвате по-стара версия на приложението, за да възстанови стари функции на потребителския интерфейс.</string>
@@ -233,6 +245,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">Възпроизвеждане в портретен режим</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Възпроизвеждане на цял екран</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Възпроизвеждане в портретен режим и на цял екран</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Шрифт</string>
+  <string name="morphe_custom_font_type_entry_default">По подразбиране</string>
+  <string name="morphe_custom_font_type_entry_system">Системен шрифт на устройството</string>
+  <string name="morphe_custom_font_type_entry_custom">Файл с персонализиран шрифт</string>
+  <string name="morphe_custom_font_file_title">Файл с персонализиран шрифт</string>
+  <string name="morphe_custom_font_file_summary">Изберете TTF или OTF файл с шрифт</string>
+  <string name="morphe_custom_font_file_invalid">Избраният файл не е TTF или OTF шрифт</string>
+  <string name="morphe_custom_font_failed_to_load">Персонализираният шрифт не можа да бъде зареден и е изключен</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Временно недостъпни нехаресвания (изтече времето за отговор на API)</string>

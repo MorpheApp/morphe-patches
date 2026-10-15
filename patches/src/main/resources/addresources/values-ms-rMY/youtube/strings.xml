@@ -143,6 +143,7 @@ Perubahan termasuk:
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_local_queue_remove">Keluarkan</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <string name="morphe_queue_manager_playlist_title">Baris gilir Morphe</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
@@ -314,7 +315,6 @@ Automotive layout
   <string name="morphe_miniplayer_type_entry_1">Lalai</string>
   <string name="morphe_miniplayer_opacity_summary">Melaraskan tahap kelutsinaran (0 ialah lut sinar, 100 ialah legap)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Light theme background</string>
@@ -355,6 +355,7 @@ Automotive layout
   <string name="morphe_disable_playback_speed_music_summary">Sentiasa mainkan video muzik pada kelajuan 1.0x</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
+  <string name="morphe_video_codec_entry_default">Lalai</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
@@ -368,4 +369,8 @@ Automotive layout
   <string name="morphe_player_icon_style_entry_auto">Automatik</string>
   <string name="morphe_player_icon_style_entry_default">Lalai</string>
   <string name="morphe_player_icon_style_entry_custom">Tersuai</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_history">Sejarah</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Langganan</string>
+  <string name="morphe_series_tracker_continue">Teruskan</string>
 </resources>

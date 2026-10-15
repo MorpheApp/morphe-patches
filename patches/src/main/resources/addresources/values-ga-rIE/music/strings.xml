@@ -247,7 +247,7 @@ Feictear rianta íoslódáilte anseo"</string>
   <string name="morphe_music_crossfade_sabr_toast">Tá croschéimniú as le hathsheinm SABR</string>
   <string name="morphe_music_crossfade_cast_unstable_toast">Tá croschéimniú as le linn craolta</string>
   <string name="morphe_music_crossfade_about_how_title">Conas a oibríonn sé</string>
-  <string name="morphe_music_crossfade_about_how_summary">"Forluíonn an croschéimniú deireadh amhráin amháin le tús an chéad cheann eile, ag úsáid do ré agus do chuar
+  <string name="morphe_music_crossfade_about_how_summary">"Forluíonn an crosfhádlú deireadh amhráin amháin le tús an chéad cheann eile, ag úsáid do ré agus do chuar
 
 Ritheann sé ar uathchur chun cinn agus ar scipeáil láimhe, le lasc ar leith do gach ceann. Ar uathchur chun cinn tosaíonn an meascán cúpla soicind sula gcríochnaíonn an t-amhrán"</string>
   <string name="morphe_music_crossfade_about_quirks_title">Teorainneacha</string>
@@ -516,6 +516,8 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: fianáin neamhbhailí — seiceáil iad agus déan iarracht arís, le do thoil</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Tapáil líne le cuardach</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Léimeann tapáil líne go dtí an nóiméad sin san amhrán</string>
+  <string name="morphe_music_lyrics_show_section_title">Taispeáin clibeanna rannóige</string>
+  <string name="morphe_music_lyrics_show_section_summary">Cuir clib bheag ar gach rannóg nua de na liricí, mar shampla Véarsa nó Curfá</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Taispeáin an cnaipe Cóipeála</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Tapáil chun na liricí bunaidh a chóipeáil mar ghnáth-théacs; brúigh fada chun an bunchomhad foinseach de na liricí a shábháil sa bhfillteán Íoslódálacha</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Taispeáin an cnaipe Aistrigh</string>
@@ -579,19 +581,27 @@ Fianáin riachtanacha: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PA
   <string name="morphe_music_lyrics_hide_info_summary">Folaigh an líne aitheantais a thaispeántar faoi na liricí</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Malartaigh an t-aistriúchán agus an rómánú</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Cuireann AR an rómánú faoi na liricí agus an t-aistriúchán os a gcionn; coinníonn AS an rómánú os cionn na liricí agus an t-aistriúchán fúthu</string>
-  <string name="morphe_music_lyrics_use_ai_translation_title">Aistriúchán comhoiriúnach le OpenAI</string>
-  <string name="morphe_music_lyrics_use_ai_translation_summary">Úsáid API comhoiriúnach le OpenAI saincheaptha le haghaidh aistriúcháin agus rómhánúcháin in ionad Google Translate</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">Socruithe Aistriúcháin AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Cumraigh an pointe críochta API comhoiriúnach le OpenAI le haghaidh aistriú agus rómhánú liricí faoi thiomáint AI.</string>
+  <string name="morphe_music_lyrics_use_ai_title">API atá comhoiriúnach le OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Aistriúchán AI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">Tosaigh leis an translation a sheолsann an soláthraí, ansin do mshamhól OpenAI-compatibly, agus Google Translate deireanach</string>
+  <string name="morphe_music_lyrics_use_ai_romanization_title">Rómáinization AI</string>
+  <string name="morphe_music_lyrics_use_ai_romanization_summary">Tosaíonn sé le rómhánú an sholáthraí, ansin do mhall mhisin OpenAI-comhoiriúnach, agus Google Translate i deireadh</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Rann AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Úsáidtear é seo amháin nuair nach soláthraíonn an soláthraí labels rann, cosúil le Curfáth nó Rann, a dheimhníonn do mhall mhisin OpenAI-comhoiriúnach ansin</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Socruithe AI</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Cumraigh an pointe críochta API comhoiriúnach le OpenAI le haghaidh aistriú liricí, rómhánú agus rann faoi thiomáint AI.</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">URL pointe críochta API (m.sh. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Eochair API (fág folamh le haghaidh rochtain anaithnid)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Ainm samhail (m.sh. openai-fast, gpt-4o-mini)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_hint">Teimpléad leide (athróga: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Socruithe aistriúcháin AI sábháilte</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Teimpléad Leide</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Áiteálaí: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_hint">Teimpléad leide</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Sábháiltear leide</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Atá an leide larvalta</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Sábháiltear socruithe AI</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Níorbh fhéidir ceangal le pointe críochta AI. Seiceáil do shocruithe le do thoil.</string>
-  <string name="morphe_music_lyrics_ai_config_toast_reset">Socruithe aistriúcháin AI athshocraithe</string>
-  <string name="morphe_music_lyrics_ai_config_status_configured">Cumraithe</string>
-  <string name="morphe_music_lyrics_ai_config_status_not_configured">Tapáil chun cumrú</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Larvalta socruithe AI</string>
+  <string name="morphe_music_lyrics_ai_config_summary_configured">Mhall %1$s cumraithe</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Ní féidir URL bonn a bheith folamh</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Caithfidh URL bonn tosú le http:// nó https://</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">Ní féidir ainm samhail a bheith folamh</string>

@@ -334,6 +334,7 @@ public final class SkipSegments {
         return merge(segs);
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Nullable
     private static FutureTask<List<Seg>> startFetchLocked(String videoId) {
         Long retryAfter = RETRY_AFTER.get(videoId);
@@ -347,6 +348,7 @@ public final class SkipSegments {
         return task;
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Nullable
     private static List<Seg> fetchFor(String videoId, int epoch) {
         List<Seg> result = null;

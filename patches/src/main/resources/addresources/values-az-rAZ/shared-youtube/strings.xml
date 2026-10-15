@@ -93,6 +93,12 @@ Simvolu hər yerdə dəyişdirmək üçün təkrar yamaqlayın və 'Tətbiq simv
 
 YouTube Premium istifadəçisisinizsə, bu tənzimləmə tələb olunmaya bilər"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hər hansı qəbuledici yayımları əldə etmək olmadı</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">İlkin qəbuledici işləmir</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s ardıcıl bir neçə dəfə işləmədi, amma %2$s işlədi.
+
+ %2$s ilkin qəbuledici təyin edilsin?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Keçid</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Bu xüsusiyyəti istifadə etmək üçün 'Video yayımların saxtalaşdırı' q
   <string name="morphe_external_potoken_provider_about_summary">"Bu xüsusiyyət hazırda inkişaf mərhələsindədir və işləməyə bilər
 
 PotHelper-i yükləmək üçün buraya toxun"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper artıq işləmir</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"PotHelper-in bu versiyasına daxil edilmiş token artıq işləmir
+
+​Oynatmanı düzəltmək üçün \"Video yayımların saxtalaşdırı\" aktivləşdir"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Aktivləşdir</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Tətbiq versiyasını saxtalaşdır</string>
   <string name="morphe_spoof_app_version_summary">Köhnə UI xüsusiyyətlərini qaytarmaq üçün serveri daha köhnə tətbiq versiyasını istifadə etdiyinizi düşünməyə inandırır</string>
@@ -241,6 +253,15 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_app_refresh_rate_type_entry_2">Şaquli oynatma</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Tam ekran oynatma</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Şaquli və tam ekran oynatma</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Şrift</string>
+  <string name="morphe_custom_font_type_entry_default">İlkin</string>
+  <string name="morphe_custom_font_type_entry_system">Cihaz sistem şrifti</string>
+  <string name="morphe_custom_font_type_entry_custom">Fərdi şrift faylı</string>
+  <string name="morphe_custom_font_file_title">Fərdi şrift faylı</string>
+  <string name="morphe_custom_font_file_summary">TTF və ya OTF şrift faylı seç</string>
+  <string name="morphe_custom_font_file_invalid">Seçilmiş fayl TTF və ya OTF şrifti deyil</string>
+  <string name="morphe_custom_font_failed_to_load">Fərdi şrift yüklənilə bilmədi və qapalıdır</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Bəyənməmə müvəqqəti əlçatmazdır (API zaman aşımı)</string>

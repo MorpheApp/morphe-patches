@@ -93,6 +93,12 @@ Az ikon mindenhol történő megváltoztatásához futtasd újra a javítást, �
 
 Ha YouTube Premium-felhasználó vagy, ez a beállítás nem feltétlenül szükséges."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nem találtunk ügyfelek által megosztott folyamokat</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Az alapértelmezett kliens nem működik</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s egymás után többször nem működött, de %2$s igen.
+
+Legyen %2$s az alapértelmezett kliens?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Váltás</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ A funkció használatához kapcsold ki a 'Videostream-hamisítás' opciót."</st
   <string name="morphe_external_potoken_provider_about_summary">"Ez a funkció jelenleg fejlesztés alatt áll, és lehet, hogy nem működik
 
 Koppintson ide a PotHelper letöltéséhez"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">A PotHelper már nem működik</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"A PotHelper ezen verziójába beépített token már nem működik
+
+A lejátszás javításához kapcsold be a „Videostream-ek meghamisítása” beállítást"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Bekapcsolás</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Alkalmazásverzió hamisítása</string>
   <string name="morphe_spoof_app_version_summary">A szervert tévedésbe vezeti, hogy egy régebbi alkalmazásverziót használ, ezzel helyreállítva a korábbi felhasználói felület funkcióit.</string>
@@ -241,6 +253,15 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_app_refresh_rate_type_entry_2">Álló lejátszás</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Teljes képernyős lejátszás</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Álló és teljes képernyős lejátszás</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Betűtípus</string>
+  <string name="morphe_custom_font_type_entry_default">Alapértelmezett</string>
+  <string name="morphe_custom_font_type_entry_system">Eszköz rendszerbetűtípusa</string>
+  <string name="morphe_custom_font_type_entry_custom">Egyéni betűtípusfájl</string>
+  <string name="morphe_custom_font_file_title">Egyéni betűtípusfájl</string>
+  <string name="morphe_custom_font_file_summary">Válasszon ki egy TTF vagy OTF betűtípusfájlt</string>
+  <string name="morphe_custom_font_file_invalid">A kiválasztott fájl nem TTF vagy OTF betűtípus</string>
+  <string name="morphe_custom_font_failed_to_load">Az egyéni betűtípus betöltése nem sikerült, ezért ki van kapcsolva</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">A nem tetszések jelenleg nem elérhetők (az API időtúllépése miatt)</string>

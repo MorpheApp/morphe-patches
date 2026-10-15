@@ -271,7 +271,7 @@ internal fun baseCustomBrandingPatch(
                 // block may have already run and the settings are already wrote to file.
                 // Instead, the non-functional in-app settings are removed on app startup by extension code.
                 if (isMountedInstall(originalAppPackageName)) {
-                    // A mounted install keeps the original app installed and the system parses the
+                    // A mounted installation keeps the original app installed and the system parses the
                     // manifest of the stock APK, so the launch aliases and any manifest branding
                     // attribute are never used. Resource ids are unchanged by patching and are still
                     // resolved from the mounted APK, and replacing what those ids point to is the only
@@ -563,7 +563,7 @@ internal fun baseCustomBrandingPatch(
         }
 
         // Copy the user provided icon files here and not in the finalize block, because a mounted
-        // install uses them to replace the icon of the app and that is done while finalizing.
+        // installation uses them to replace the icon of the app and that is done while finalizing.
         if (useCustomIcon) {
             // Copy user provided files
             val iconPathFile = File(customIcon!!.trim())
@@ -722,7 +722,7 @@ private fun bundledBrandingResource(resourceFile: String): ByteArray? =
  * If the app is installed by mounting (root).
  *
  * The installer type is not reported to patches, so it is inferred from the package name, which
- * only a regular install changes. Other patches change it while executing, so this is accurate
+ * only a regular installation changes. Other patches change it while executing, so this is accurate
  * only after all patches have executed.
  */
 private fun isMountedInstall(originalAppPackageName: String) =

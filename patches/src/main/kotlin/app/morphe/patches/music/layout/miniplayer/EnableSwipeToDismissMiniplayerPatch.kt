@@ -8,6 +8,7 @@
 package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -141,6 +142,11 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
             returnType = "V",
             filters = listOf(
                 opcode(Opcode.IF_NE),
+                fieldAccess(
+                    opcode = Opcode.IGET_OBJECT,
+                    type = "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;",
+                    location = MatchAfterImmediately()
+                ),
                 methodCall(
                     opcode = Opcode.INVOKE_VIRTUAL,
                     smali = MiniPlayerDefaultTextFingerprint.method.toString()

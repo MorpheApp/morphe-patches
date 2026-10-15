@@ -93,6 +93,12 @@ För att ändra ikonen överallt, applicera patchen igen och ändra patchalterna
 
 Om du är en YouTube Premium-användare kan det hända att den här inställningen inte krävs"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Det gick inte att hämta några klientströmmar</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Standardklienten fungerar inte</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s fungerade inte flera gånger i rad, men %2$s gjorde det.
+
+Gör %2$s till standardklient?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Byt</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om du stänger av den här inställningen kan det leda till problem med uppspelning.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ För att använda den här funktionen, stäng av 'Spoofa videoströmmar'"</strin
   <string name="morphe_external_potoken_provider_about_summary">"Den här funktionen är för närvarande under utveckling och kanske inte fungerar
 
 Tryck här för att ladda ner PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper fungerar inte längre</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Token inbyggd i denna version av PotHelper fungerar inte längre
+
+Aktivera 'Spoofa videoströmmar' för att åtgärda uppspelning"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Aktivera</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Förfalska appversionen</string>
   <string name="morphe_spoof_app_version_summary">Lurar servern att tro att du använder en äldre appversion för att återställa äldre funktioner i användargränssnittet</string>
@@ -241,6 +253,15 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_app_refresh_rate_type_entry_2">Uppspelning i porträttläge</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Uppspelning i helskärm</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Uppspelning i porträttläge och helskärm</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Teckensnitt</string>
+  <string name="morphe_custom_font_type_entry_default">Standard</string>
+  <string name="morphe_custom_font_type_entry_system">Enhetens systemteckensnitt</string>
+  <string name="morphe_custom_font_type_entry_custom">Egen typsnittsfil</string>
+  <string name="morphe_custom_font_file_title">Egen typsnittsfil</string>
+  <string name="morphe_custom_font_file_summary">Välj en TTF- eller OTF-teckensnittsfil</string>
+  <string name="morphe_custom_font_file_invalid">Den valda filen är inte ett TTF- eller OTF-teckensnitt</string>
+  <string name="morphe_custom_font_failed_to_load">Anpassat teckensnitt kunde inte laddas och är avstängt</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Ogilla-markeringar är inte tillgängliga just nu (API-tidsgräns nådd)</string>

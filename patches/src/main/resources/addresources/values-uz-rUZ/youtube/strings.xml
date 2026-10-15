@@ -169,7 +169,6 @@ Oʻzgarishlar:
   <string name="morphe_hide_how_this_was_made_section_title">Bu qanday yaratilgan bo\'limini yashirish</string>
   <string name="morphe_hide_hype_points_title">Hype ballarini yashirish</string>
   <string name="morphe_hide_info_cards_section_title">Maʼlumot kartalari boʻlimini yashiring</string>
-  <string name="morphe_hide_key_concepts_section_title">\'Asosiy tushunchalar\' boʻlimini yashiring</string>
   <string name="morphe_hide_quizzes_section_title">\'Savollar\' boʻlimini yashiring</string>
   <string name="morphe_hide_search_inside_this_video_section_title">\'Ushbu videodagi qidiruv\' bo\'limini yashirish</string>
   <string name="morphe_hide_subscribe_button_title">Obuna tugmasini yashirish</string>
@@ -950,7 +949,6 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Orqaga tugmasi lentadan chiqadi</string>
   <string name="morphe_back_button_always_exits_feed_summary">Orqaga qaytarish tugmasini bosganda lenta tepasiga qaytarish o\'rniga har doim ilovadan chiqib ketiladi</string>
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Yorug\' mavzu foni</string>
@@ -1084,20 +1082,8 @@ Cheklov: Agar 'Eski video harakatlar panelini tiklash' o'chirilgan bo'lsa, 'Ko'p
   <string name="morphe_force_hdr_video_title">HDR videoni majburlash</string>
   <string name="morphe_force_hdr_video_summary">Ilovani ushbu qurilmani HDR qobiliyatli deb tan olishga majbur qiladi</string>
   <string name="morphe_force_hdr_video_user_dialog_message">"Agar HDR dekodlash ishlasa, lekin YouTube HDR taklif qilmasa, masalan, HLG ni yashiradigan ba'zi HyperOS qurilmalarida, buni ishlating.\n\nCheklovlar:\n• Agar displey haqiqatan ham HDR ko'rsata olmasa, ranglar noto'g'ri ko'rinishi mumkin\n• Agar dekoder HDR bilan ishlay olmasa, ijro etish muvaffaqiyatsiz bo'lishi mumkin\n• HDR hali ham video oqimlarini soxtalashtiruvchi mijozga bog'liq"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) kodekni majburlash</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Foydalanishning afzalliklari:
-
-• Batareyaning ishlash muddati yaxshilanishi mumkin
-• Eski qurilmalarda videoning sifatini tiklash mumkin
-
-Cheklovlari:
-
-• Maksimal aniqlik 1080p
-• Video o'ynashda ko'proq internet hajmi ishlatiladi
-• HDR videolarda AVC ishlatilmaydi
-• Ba'zi qurilmalar AVCni majburlash imkoniyatiga ega emas"</string>
+  <string name="morphe_video_codec_entry_default">Standart</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Bu xususiyatdan foydalanish uchun \'Video oqimlarini soxtalashtirish\' ni \'Android VR\' yoki \'Android Studio\' ga o\'rnating</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Kengaytirilgan sifat menyusini ochish</string>
   <string name="morphe_advanced_video_quality_menu_summary">Sifat tanlash menyusini o\'tkib uzatadi va to\'g\'ridan-to\'g\'ri ilg\'or sifat menyusini ochadi</string>
@@ -1131,4 +1117,7 @@ AV1 bilan video o'ynashda lag yoki to'silishlar yuzaga kelishi mumkin."</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_default">Standart</string>
   <string name="morphe_player_icon_style_entry_custom">Maxsus</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_history">Tarix</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Obunalar</string>
 </resources>

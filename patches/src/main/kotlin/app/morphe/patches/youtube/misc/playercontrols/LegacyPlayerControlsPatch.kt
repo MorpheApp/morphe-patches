@@ -299,9 +299,19 @@ val legacyPlayerControlsPatch = bytecodePatch(
             disableNewPlayerControlsFeatureFlag()
         }
 
+        if (is_21_08_or_greater) {
+            // The elevated player shows the video metadata without a background over the
+            // ambient mode colors, so the light theme text can not be read.
+            ElevatedPlayerFeatureFlagFingerprint.matchAll().forEach {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    false
+                )
+            }
+        }
+
         // Override flags that interfere with old player icons override.
         arrayOf(
-            PlayerControlsModernAccessibilityFeatureFlagFingerprint to is_21_08_or_greater,
             PlayerCommentTeaserFeatureFlagFingerprint to is_21_15_or_greater,
             RecycleViewScrollingFlagFingerprint to is_21_15_or_greater
         ).forEach { (fingerprint, applyChanges) ->

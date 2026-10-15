@@ -205,6 +205,23 @@ val navigationBarPatch = bytecodePatch(
         // moves the whole window layout and breaks everything measuring against it.
         addBottomBarContainerHook("$EXTENSION_CLASS->setNavigationBarOpaque(Landroid/view/View;)V")
 
+        // The translucent theme hands the window a transparent color for the system navigation
+        // buttons, so an opaque one is swapped in there instead of turning off the feature flag.
+        SystemNavigationBarColorFingerprint.let {
+            it.method.apply {
+                val colorIndex = it.instructionMatches[1].index
+                val colorRegister = getInstruction<OneRegisterInstruction>(colorIndex).registerA
+
+                addInstructions(
+                    colorIndex + 1,
+                    """
+                        invoke-static { v$colorRegister }, $EXTENSION_CLASS->getSystemNavigationBarColor(I)I
+                        move-result v$colorRegister
+                    """
+                )
+            }
+        }
+
         AnimatedNavigationTabsFeatureFlagFingerprint.matchAll().forEach {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
@@ -266,13 +283,6 @@ val navigationBarPatch = bytecodePatch(
                             "searchQueryViewLoaded(Landroid/widget/TextView;)V"
                 )
             }
-        }
-
-        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.matchAll().forEach {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->useTranslucentNavigation(Z)Z"
-            )
         }
 
         PivotBarRendererFingerprint.let {

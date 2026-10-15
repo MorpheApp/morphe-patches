@@ -171,7 +171,6 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
@@ -209,4 +208,9 @@ Second \"item\" text"</string>
   <!-- Quality refers to video quality -->
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_save">محفوظ کریں</string>
+  <string name="morphe_series_tracker_plan_caught_up">تا تاریخ</string>
+  <string name="morphe_series_tracker_continue">जारी रखें</string>
+  <string name="morphe_series_tracker_completion_save">محفوظ کریں</string>
 </resources>

@@ -93,6 +93,12 @@ Second \"item\" text"</string>
 
 如果您是YouTube Premium用户，则可能不需要此设置。"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">无法获取任何客户端流</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">默认客户端无法使用</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s 连续多次无法使用，但 %2$s 可以。
+
+要将 %2$s 设为默认客户端吗？"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">切换</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">关闭此设置可能会导致播放问题。</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Second \"item\" text"</string>
   <string name="morphe_external_potoken_provider_about_summary">"此功能目前正在开发中，可能无法正常工作
 
 点击此处下载 PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper 不再可用</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"此版本 PotHelper 内置的令牌已失效
+
+打开“伪装视频流”以修复播放"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">打开</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">伪装应用版本</string>
   <string name="morphe_spoof_app_version_summary">欺骗服务器，使其认为您使用的是较旧的应用版本，以恢复遗留的 UI 功能</string>
@@ -241,6 +253,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">竖屏播放</string>
   <string name="morphe_app_refresh_rate_type_entry_3">全屏播放</string>
   <string name="morphe_app_refresh_rate_type_entry_4">竖屏和全屏播放</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">字体</string>
+  <string name="morphe_custom_font_type_entry_default">默认</string>
+  <string name="morphe_custom_font_type_entry_system">设备系统字体</string>
+  <string name="morphe_custom_font_type_entry_custom">自定义字体文件</string>
+  <string name="morphe_custom_font_file_title">自定义字体文件</string>
+  <string name="morphe_custom_font_file_summary">选择 TTF 或 OTF 字体文件</string>
+  <string name="morphe_custom_font_file_invalid">所选文件不是 TTF 或 OTF 字体</string>
+  <string name="morphe_custom_font_failed_to_load">自定义字体无法加载，已关闭</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">点踩数暂时不可用 (API 连接超时)</string>

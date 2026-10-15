@@ -93,6 +93,12 @@ Per cambiare l'icona ovunque, esegui di nuovo la patch e modifica l'opzione dell
 
 Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necessaria."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Impossibile recuperare il flusso da qualsiasi client</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Client predefinito non funziona</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s non ha funzionato diverse volte di seguito, mentre %2$s sì.
+
+Vuoi rendere %2$s il client predefinito?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Cambia</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Per utilizzare questa funzione, disattiva 'Spoof dei flussi video'"</string>
   <string name="morphe_external_potoken_provider_about_summary">"Questa funzione è attualmente in sviluppo e potrebbe non funzionare
 
 Tocca qui per scaricare PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper non funziona più</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Il token integrato in questa versione di PotHelper non funziona più
+
+Attiva 'Simula flussi video' per correggere la riproduzione"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Attiva</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Simula la versione dell\'app</string>
   <string name="morphe_spoof_app_version_summary">Inganna il server facendogli pensare di stare utilizzando una versione precedente dell\'app, per ripristinare le funzionalità dell\'interfaccia utente precedente</string>
@@ -241,6 +253,15 @@ Se in seguito verrà disattivata, si consiglia di cancellare i dati dell'app per
   <string name="morphe_app_refresh_rate_type_entry_2">Riproduzione in verticale</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Riproduzione a schermo intero</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Riproduzione in verticale e a schermo intero</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Carattere</string>
+  <string name="morphe_custom_font_type_entry_default">Predefinita</string>
+  <string name="morphe_custom_font_type_entry_system">Font di sistema del dispositivo</string>
+  <string name="morphe_custom_font_type_entry_custom">File del carattere personalizzato</string>
+  <string name="morphe_custom_font_file_title">File del carattere personalizzato</string>
+  <string name="morphe_custom_font_file_summary">Scegli un file di font TTF o OTF</string>
+  <string name="morphe_custom_font_file_invalid">Il file selezionato non è un font TTF o OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Non è stato possibile caricare il font personalizzato ed è stato disattivato</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">I \"Non Mi Piace\" temporaneamente non disponibili (timeout API)</string>

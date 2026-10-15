@@ -93,6 +93,12 @@ Chun an deilbhín a athrú i ngach áit, déan an paisteáil arís agus athraigh
 
 Mura n-úsáideoir YouTube Premium thú, b'fhéidir nach mbeidh an socrú seo ag teastáil"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Níorbh fhéidir aon sruthanna cliant a fháil</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Ní oibríonn an cliant réamhshocraithe</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"Níor oibrigh %1$s roinnt uaireanta i ndiaidh a chéile, ach d'oibrigh %2$s.
+
+An ndéanfaidh tú cliant réamhshocraithe de %2$s?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Athraigh</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">D’fhéadfadh fadhbanna athsheinm a bheith mar thoradh ar an socrú seo a mhúchadh.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Chun an ghné seo a úsáid, múch 'Sruthanna físe bréige'"</string>
   <string name="morphe_external_potoken_provider_about_summary">"Tá an ghné seo á forbairt faoi láthair agus b'fhéidir nach n-oibreoidh sí
 
 Tapáil anseo chun PotHelper a íoslódáil"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">Ní oibríonn PotHelper a thuilleadh</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Ní oibríonn an comhartha ionsuite sa leagan seo de PotHelper a thuilleadh
+
+Cuir 'Sruthanna físeáin a aithris' ar siúl chun athsheinm a dheisiú"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Cuir ar siúl</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Leagan aip bréige</string>
   <string name="morphe_spoof_app_version_summary">Meallann sé an freastalaí le go gceapfá go bhfuil tú ag úsáid seanleagan den aip chun gnéithe oidhreachta den chomhéadan úsáideora a athbhunú.</string>
@@ -241,6 +253,15 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_app_refresh_rate_type_entry_2">Portráid athsheinm</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Athsheinm lánscáileáin</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Athsheinm portráide agus lánscáileáin</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Cló</string>
+  <string name="morphe_custom_font_type_entry_default">Réamhshocrú</string>
+  <string name="morphe_custom_font_type_entry_system">Cló córais an ghléis</string>
+  <string name="morphe_custom_font_type_entry_custom">Comhad cló saincheaptha</string>
+  <string name="morphe_custom_font_file_title">Comhad cló saincheaptha</string>
+  <string name="morphe_custom_font_file_summary">Roghnaigh comhad cló TTF nó OTF</string>
+  <string name="morphe_custom_font_file_invalid">Ní cló TTF ná OTF é an comhad roghnaithe</string>
+  <string name="morphe_custom_font_failed_to_load">Níorbh fhéidir an cló saincheaptha a lódáil agus tá sé múchta</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Níl na \"dí-mhaith\" ar fáil go sealadach (tá an t-am caite ag an API)</string>

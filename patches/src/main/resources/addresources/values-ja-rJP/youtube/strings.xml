@@ -193,7 +193,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_how_this_was_made_section_title">「制作の裏側」セクションを非表示</string>
   <string name="morphe_hide_hype_points_title">ハイプポイントを非表示</string>
   <string name="morphe_hide_info_cards_section_title">チャンネル カード セクションを非表示</string>
-  <string name="morphe_hide_key_concepts_section_title">「主な概念」セクションを非表示</string>
+  <string name="morphe_hide_key_concepts_section_title">「主要な概念」セクションを非表示</string>
   <string name="morphe_hide_quizzes_section_title">クイズ セクションを非表示</string>
   <string name="morphe_hide_search_inside_this_video_section_title">「動画内を検索 」セクションを非表示</string>
   <string name="morphe_hide_subscribe_button_title">チャンネル カード セクション内のチャンネル登録ボタンを非表示</string>
@@ -561,6 +561,22 @@ APIキーは決して共有しないでください。アクセス権を持つ�
   <string name="morphe_queue_override_flyout_menu_summary">YouTube のキューの代わりに Morphe のキューを開きます</string>
   <string name="morphe_queue_add_flyout_menu_title">フィードのフライアウト メニューにキューの項目を追加</string>
   <string name="morphe_queue_add_flyout_menu_summary">フィードのフライアウト メニューにキューの項目を追加します。「キューに追加」が表示されない場合に、この機能を有効にしてください</string>
+  <string name="morphe_local_queue_title">Premium風キュー</string>
+  <string name="morphe_local_queue_summary">"Morpheキューを、端末上に存在し、自動的に再生が進み、ドラッグで並べ替え可能なキューに置き換えます。
+
+情報: 次のキュー動画が再生を開始するのは、YouTubeが画面に表示されている間だけです"</string>
+  <string name="morphe_local_queue_sheet_title">キュー</string>
+  <string name="morphe_local_queue_open">キュー (%d)</string>
+  <string name="morphe_local_queue_clear">すべて消去</string>
+  <string name="morphe_local_queue_empty">キューに入っている動画はありません</string>
+  <string name="morphe_local_queue_empty_hint">任意の動画で「キューで次に再生」を使用してください</string>
+  <string name="morphe_local_queue_now_playing">再生中</string>
+  <string name="morphe_local_queue_play_next">キューの最初に追加</string>
+  <string name="morphe_local_queue_reorder">並べ替え</string>
+  <string name="morphe_local_queue_remove">削除</string>
+  <string name="morphe_local_queue_added">キューに追加しました</string>
+  <string name="morphe_local_queue_full">キューがいっぱいです</string>
+  <string name="morphe_local_queue_play_failed">動画を再生できませんでした</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">フライアウトメニュー内の広告ホワイトリスト</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">その動画のチャンネルで広告を再生できるフライアウト項目を追加します</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1126,9 +1142,6 @@ Automotive レイアウト
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">「戻る」ボタンでアプリを終了</string>
   <string name="morphe_back_button_always_exits_feed_summary">ホームタブで「戻る」ボタンをタップしたときに、ホームフィードのスクロール位置が最上部ではない場合でも、最上部にスクロールせずに常にアプリを終了します</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">システムフォントを使用</string>
-  <string name="morphe_force_system_font_summary">YouTube Sansの代わりに端末のフォントでアプリを表示します</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">ステータスバーを非表示</string>
   <string name="morphe_hide_status_bar_summary">システムのステータスバーを非表示にします。上端から下にスワイプすると、一時的に表示できます</string>
@@ -1299,18 +1312,21 @@ Automotive レイアウト
 • ディスプレイが実際には HDR に対応していない場合、色合いが正常に表示されない場合がある
 • デコーダーが HDR に対応していない場合、動画の再生に失敗する場合がある
 • HDR は、依然として [動画ストリームを偽装] のクライアントに依存する"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) を強制的に使用</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"利点:
-• バッテリー持ちが良くなる可能性がある
-• 古いデバイスで失われた動画解像度を復元できる場合がある
-
-制限事項:
-• 最大解像度が 1080p
-• 動画再生時に VP9 または AV1 よりも多くの通信量を使用する
-• HDR 動画では AVC が使用されない
-• 一部のデバイスでは AVC を強制できない"</string>
+  <string name="morphe_video_codec_title">動画コーデック</string>
+  <string name="morphe_video_codec_entry_default">デフォルト</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを「Android VR」または「Android Studio」に設定してください</string>
+  <string name="morphe_video_codec_avc_not_available">AVCを強制するには、「動画ストリームの偽装」を「Android Studio」「Android VR」または「visionOS」に変更してください</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• バッテリーの消費を抑え、再生時のカクつきを修正できます
+• AV1よりも多くのデータ通信量を消費します
+
+AVC (H.264)
+• 動画ストリームクライアントを「Android Studio」「Android VR」または「visionOS」に偽装する必要があります
+• バッテリーの消費をさらに抑えられます
+• 古い端末では表示されない動画解像度を復元できます
+• 最大解像度は1080pです
+• HDR動画ではAVCが使用されない場合があります
+• 一部の端末ではAVCを強制できません"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを開く</string>
   <string name="morphe_advanced_video_quality_menu_summary">画質メニューをスキップして画質の「詳細設定」メニューを直接開きます</string>
@@ -1327,6 +1343,7 @@ Automotive レイアウト
 
 AV1 での動画再生は、カクつくまたはコマ落ちが発生する可能性があります。"</string>
   <string name="morphe_spoof_video_streams_about_title">偽装による副作用</string>
+  <string name="morphe_spoof_video_streams_about_failure">• 1分経過時に再生が失敗する場合があります</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• フライアウト メニューに「音声トラック」が表示されない</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 コーデックが利用できない</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR 動画では没入モードが利用できない</string>
@@ -1353,4 +1370,158 @@ AV1 での動画再生は、カクつくまたはコマ落ちが発生する可�
   <string name="morphe_player_icon_style_entry_bold">太字</string>
   <string name="morphe_player_icon_style_entry_custom">カスタム</string>
   <string name="morphe_shorts_icon_style_title">ショート アイコンのスタイル</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">シリーズトラッカー</string>
+  <string name="morphe_series_tracker_screen_summary">プレイリストをシリーズとして追跡し、現在地を維持します</string>
+  <string name="morphe_series_tracker_title">シリーズ追跡を有効化</string>
+  <string name="morphe_series_tracker_summary">履歴にシリーズページを追加し、プレイリストにシリーズフォローオプションを追加します</string>
+  <string name="morphe_series_tracker_show_button_title">シリーズトラッカーボタンを表示</string>
+  <string name="morphe_series_tracker_show_button_summary">現在の動画のシリーズを追跡または開くためのプレイヤーボタンを追加します</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">フォロー中のシリーズの進捗を記録する</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">保存されたシリーズとブックマークに対して、この電話での再生を記録します</string>
+  <string name="morphe_series_tracker_show_history_tab_title">ナビゲーションバーに履歴を表示する</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">ホーム、登録チャンネル、通知、履歴、あなた</string>
+  <string name="morphe_series_tracker_ui_cancel">キャンセル</string>
+  <string name="morphe_series_tracker_ui_save">適用</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">ブックマークを保存</string>
+  <string name="morphe_series_tracker_ui_series_name">シリーズ名</string>
+  <string name="morphe_series_tracker_ui_series_options">シリーズオプション</string>
+  <string name="morphe_series_tracker_ui_library_options">ライブラリオプション</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">エピソードを更新</string>
+  <string name="morphe_series_tracker_ui_rename">名前を変更</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">YouTubeでプレイリストを開く</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">ライブラリから削除</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">プレイリストリンクまたはID</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">すべてのローカル進捗を消去</string>
+  <string name="morphe_series_tracker_ui_clear_history">履歴を消去</string>
+  <string name="morphe_series_tracker_clear_progress_title">すべてのローカル進捗を消去しますか？</string>
+  <string name="morphe_series_tracker_clear_progress_message">これにより、すべての動画の位置、視聴上のオーバーライド、再開の選択がクリアされます。保存されたシリーズとそのカタログはそのまま残ります。記録が有効な場合、新しい再生が記録されます。</string>
+  <string name="morphe_series_tracker_ui_mark_watched">視聴済みとしてマーク</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">未視聴としてマーク</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">自動ステータスを使用</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">0:00から再起動</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">0:00から再度再生</string>
+  <string name="morphe_series_tracker_ui_status_saved">ステータスが保存されました</string>
+  <string name="morphe_series_tracker_ui_retry_saving">再試行して保存</string>
+  <string name="morphe_series_tracker_ui_previous_100">前の100件</string>
+  <string name="morphe_series_tracker_ui_next_100">次の100件</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">保存された動画を開く</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">ローカルの進捗がクリアされました</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">「あなた」から「履歴」を開いてシリーズを表示</string>
+  <string name="morphe_series_tracker_ui_watch_history">視聴履歴</string>
+  <string name="morphe_series_tracker_ui_series">シリーズ</string>
+  <string name="morphe_series_tracker_ui_history">履歴</string>
+  <string name="morphe_series_tracker_ui_subscriptions">登録チャンネル</string>
+  <string name="morphe_series_tracker_ui_notifications">通知</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">保存されたシリーズを読み込み中…</string>
+  <string name="morphe_series_tracker_empty_library">プレイリストを追跡してエピソードを追跡します。</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">プレイリストのブックマーク</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">エピソードを更新中…</string>
+  <string name="morphe_series_tracker_ui_all_series">すべてのシリーズ</string>
+  <string name="morphe_series_tracker_watched">視聴済み</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">エピソードを読み込み中…</string>
+  <string name="morphe_series_tracker_ui_more_options">その他のオプション</string>
+  <string name="morphe_series_tracker_record_consent">"保存されたシリーズとブックマークされた動画に対してのみ進捗を記録します。
+
+このライブラリはこのデバイス上に保存され、YouTubeアカウント間で共有されます。YouTubeの一時停止および履歴消去コントロールはこれに影響しません。シリーズメニューから「ローカルの進捗を消去」を使用してこれを消去してください。
+
+インキュognitoモードでは、アカウントの身元が利用できない場合、または異なるアカウントに切り替えた場合に自動記録は停止します。そのアカウントで使用するには、追跡を再度有効にしてください。"</string>
+  <string name="morphe_series_tracker_identity_unavailable">インキュognitoモードでは、またはYouTubeが現在のアカウント状態を読み込む前に、追跡を有効にすることはできません。ホームに戻ってもう一度お試しください。サインインは必要ありません。</string>
+  <string name="morphe_series_tracker_enable">ローカル追跡を有効にする</string>
+  <string name="morphe_series_tracker_tracking_paused">進捗記録はオフです</string>
+  <string name="morphe_series_tracker_resume_at">%1$s で再開</string>
+  <string name="morphe_series_tracker_watched_count">%2$d 件中 %1$d 件視聴済み</string>
+  <string name="morphe_series_tracker_episode_position">エピソード %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">合計 %3$d 件中 エピソード %1$d–%2$d</string>
+  <string name="morphe_series_tracker_catalog_unavailable">更新してエピソードの読み込みを試してください。プライベートプレイリストにはアカウントアクセスが必要です; ブックマークはまだYouTubeで開きます。</string>
+  <string name="morphe_series_tracker_open_failed">YouTubeはこのエピソードを開けませんでした。</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTubeはこのプレイリストを開けませんでした。</string>
+  <string name="morphe_series_tracker_plan_open">プレイリストのブックマーク</string>
+  <string name="morphe_series_tracker_plan_changed">エピソードを選択</string>
+  <string name="morphe_series_tracker_plan_caught_up">最新の状態です</string>
+  <string name="morphe_series_tracker_plan_none">再生可能なエピソードがありません</string>
+  <string name="morphe_series_tracker_saved_position">保存された動画 · %1$s</string>
+  <string name="morphe_series_tracker_follow">シリーズを追跡</string>
+  <string name="morphe_series_tracker_view_series">シリーズを表示</string>
+  <string name="morphe_series_tracker_add_icon">シリーズを追跡</string>
+  <string name="morphe_series_tracker_continue">続行</string>
+  <string name="morphe_series_tracker_start_here">ここから始める</string>
+  <string name="morphe_series_tracker_start_saved">開始点が保存されました</string>
+  <string name="morphe_series_tracker_watched_to_here">ここまでの視聴済み</string>
+  <string name="morphe_series_tracker_marked">視聴済みとしてマークされたエピソード</string>
+  <string name="morphe_series_tracker_undo">取り消し</string>
+  <string name="morphe_series_tracker_enable_short">有効化</string>
+  <string name="morphe_series_tracker_new_episode">新作エピソード1個</string>
+  <string name="morphe_series_tracker_new_episodes">新作エピソード %1$d 個</string>
+  <string name="morphe_series_tracker_record_short">このデバイスでの進捗記録</string>
+  <string name="morphe_series_tracker_follow_consent">"あなたのシリーズと進捗はこのデバイス上に残り、YouTubeアカウント間で共有されます。YouTubeの履歴コントロールはこれらを変更しません。シリーズメニューから進捗を消去してください。
+
+自動記録はオプションです。インキュognitoモードまたはアカウント変更時に停止します。"</string>
+  <string name="morphe_series_tracker_follow_unavailable">エピソードを読み込めませんでした。プレイリストをブックマークとして保存できます。</string>
+  <string name="morphe_series_tracker_error_pending_full">保存されていない変更が多すぎます。まず保存を再試行してください。</string>
+  <string name="morphe_series_tracker_error_storage_busy">保存処理中です。もう一度お試しください。</string>
+  <string name="morphe_series_tracker_error_catalog_busy">エピソード読み込み処理中です。もう一度お試しください。</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">ストレージが利用できません。保存されたデータは保持されました。</string>
+  <string name="morphe_series_tracker_error_storage_save">変更を保存できませんでした。YouTubeを閉じる前に保存を再試行してください。</string>
+  <string name="morphe_series_tracker_error_conflict">このシリーズはすでに保存されているか、プレイリストが変更されました。再開してください。</string>
+  <string name="morphe_series_tracker_error_series_changed">このシリーズが変更されたか、削除されました。ライブラリを再開してください。</string>
+  <string name="morphe_series_tracker_error_playlist_changed">プレイリストが変更されました。エピソードを再度選択してください。</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">このエピソードは利用できません。別のものを選んでください。</string>
+  <string name="morphe_series_tracker_error_name_required">シリーズ名を入力してください。</string>
+  <string name="morphe_series_tracker_error_playlist_input">YouTubeプレイリストのリンクまたはプレイリストIDを入力してください。</string>
+  <string name="morphe_series_tracker_error_retry_later">再度更新するまでお待ちください。</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">エピソードを読み込めませんでした。後でもう一度お試しください。</string>
+  <string name="morphe_series_tracker_error_operation">変更を完了できませんでした。もう一度お試しください。</string>
+  <string name="morphe_series_tracker_error_resume">再開を確認できませんでした。プレイヤーを確認してもう一度お試しください。</string>
+  <string name="morphe_series_tracker_followed">シリーズを追跡中</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">この動画はこのプレイリストに含まれていません。</string>
+  <string name="morphe_series_tracker_finding_playlists">プレイリストを検索中…</string>
+  <string name="morphe_series_tracker_paste_playlist">プレイリストリンクを貼り付け</string>
+  <string name="morphe_series_tracker_discovery_unavailable">プレイリストが見つかりません</string>
+  <string name="morphe_series_tracker_no_available_episodes">利用可能なエピソードがありません</string>
+  <string name="morphe_series_tracker_hide_watched">視聴済みを非表示</string>
+  <string name="morphe_series_tracker_watch_previous">前のエピソードを視聴済みとしてマーク</string>
+  <string name="morphe_series_tracker_order_starts_with">～で始まる: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">エピソード順</string>
+  <string name="morphe_series_tracker_playlist_order">プレイリスト順</string>
+  <string name="morphe_series_tracker_reverse_order">プレイリスト順序を逆にする</string>
+  <string name="morphe_series_tracker_view_count_large">%1$s 回視聴</string>
+  <string name="morphe_series_tracker_view_count">%1$s 回視聴</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s 回視聴</string>
+  <string name="morphe_series_tracker_completion_title">エピソードを視聴済みとしてマーク</string>
+  <string name="morphe_series_tracker_completion_summary">少なくとも %1$d%% が視聴され、最大90秒残っている場合、または %2$d 秒残っている場合</string>
+  <string name="morphe_series_tracker_completion_explanation">いずれかの閾値に達した後にエピソードを自動的に視聴済みとしてマークします。パーセントルールにはさらに残り時間が90秒以下であることも必要であるため、長いエピソードの最後はスキップされません。残り時間ルールは1分以上の動画に適用されます。無効にするには0に設定してください。変更は将来の進捗更新に適用されます。手動での視聴済み／未視聴の選択は維持されます。</string>
+  <string name="morphe_series_tracker_completion_percent">視聴済みパーセンテージ (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">残り秒数 (0–300; 0で無効化)</string>
+  <string name="morphe_series_tracker_completion_save">適用</string>
+  <string name="morphe_series_tracker_completion_range">%1$d から %2$d の範囲の数値を入力してください。</string>
+  <string name="morphe_series_tracker_youtube_progress_title">YouTubeの進捗を使用</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">他のデバイスで視聴した後、フォロー中のシリーズを引き継ぐ</string>
+  <string name="morphe_series_tracker_sync_consent">現在のYouTubeアカウントから、フォロー中のシリーズの視聴ステータスと再開位置を読み取ります。一致するエピソードのみがこの電話に保存されます。チェックはシリーズライブラリが開いているときと「続ける」の前に実行されます。他のデバイスでYouTubeの履歴が有効になっている必要があります。</string>
+  <string name="morphe_series_tracker_sync_checking">YouTubeの進捗を確認中…</string>
+  <string name="morphe_series_tracker_sync_failed">YouTubeの進捗が利用できません。保存された進捗を使用しています。</string>
+  <string name="morphe_series_tracker_sync_partial">一部のYouTube進捗が利用できません。保存された位置は保持されます。</string>
+  <string name="morphe_series_tracker_backup_title">バックアップと復元</string>
+  <string name="morphe_series_tracker_backup_summary">シリーズライブラリをファイルに保存するか、バックアップを復元する</string>
+  <string name="morphe_series_tracker_backup_explanation">フォロー中のシリーズ、エピソードの位置、視聴選択を保存します。記録とYouTubeの進捗権限は含まれません。</string>
+  <string name="morphe_series_tracker_backup_save">バックアップを保存</string>
+  <string name="morphe_series_tracker_backup_restore">バックアップを復元</string>
+  <string name="morphe_series_tracker_backup_preview">シリーズ %1$d 個を追加します。ライブラリにすでに存在するシリーズ %2$d 個は保持されます。既存の動画の進捗は保持されます。</string>
+  <string name="morphe_series_tracker_backup_saved">シリーズのバックアップが保存されました</string>
+  <string name="morphe_series_tracker_backup_restored">シリーズ %1$d 個を復元しました</string>
+  <string name="morphe_series_tracker_error_backup_invalid">このファイルはサポートされるシリーズバックアップではないか、大きすぎます。ライブラリは変更されませんでした。</string>
+  <string name="morphe_series_tracker_error_backup_write">バックアップを保存できませんでした。別の場所をお試しください。</string>
+  <string name="morphe_series_tracker_removed">シリーズが削除されました</string>
+  <string name="morphe_series_tracker_recovery_duplicate">このエピソードが複数回表示されるようになりました。どのエピソードから続行するか選んでください。</string>
+  <string name="morphe_series_tracker_recovery_missing">保存されたエピソードは現在このプレイリストにありません。保存された位置は保持されます。</string>
+  <string name="morphe_series_tracker_recovery_continue">エピソード %1$d · %2$s で続行</string>
+  <string name="morphe_series_tracker_recovery_choose">以下の任意のエピソードを選ぶこともできます。以前のエピソードは変更されません。</string>
+  <string name="morphe_series_tracker_playback_changed">このプレイリストが変更されました。シリーズを開いて続行箇所を選んでください。</string>
+  <string name="morphe_series_tracker_playback_boundary">この方向にはもうエピソードがありません</string>
+  <string name="morphe_series_tracker_continue_series">%1$s を続行</string>
+  <string name="morphe_series_tracker_search_series">シリーズを検索</string>
+  <string name="morphe_series_tracker_clear_search">検索をクリア</string>
+  <string name="morphe_series_tracker_no_search_results">シリーズが見つかりません</string>
+  <string name="morphe_series_tracker_untitled_episode">タイトルなしのエピソード</string>
+  <string name="morphe_series_tracker_unavailable_episode">利用不可なエピソード</string>
 </resources>

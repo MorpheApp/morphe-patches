@@ -186,6 +186,7 @@ Second \"item\" text"</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_local_queue_remove">لابردن</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
@@ -454,7 +455,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_opacity_title">شفافی پشتخاڵ</string>
   <string name="morphe_miniplayer_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">سکرینی بارکردنێکی فڕکێنەرەوە سازشە</string>
@@ -517,13 +517,7 @@ Second \"item\" text"</string>
   <string name="morphe_playback_speed_default_title">کیفیتی پیش‌نیازکراوی پێکهاتە</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
-  <string name="morphe_force_avc_codec_user_dialog_message">"خاوەن سودە:
-• دەتوانێ خێرایی خاوێنی زۆرە دەمرێت
-• دەتوانێ گیاشەی ئارتەکان دەربخات لەگەڵ پێکهاتەگەل نەگمتر
-
-دەسبه‌سەر:
-• هەرێک لە كیفیەتی نەک وەکوو 1080p بەشە
-• ڤیدیۆی به‌گوهەر كەرنیش هەتا هێنده‌ وەك ڤ‌اندئێ هی خۆئه‌سكه‌یدە پیاه‌وسه‌رى فه رمو  ڤپی نه وه• هه‌ر ڕێکه‌س شیانه‌که‌ نه‌که‌ن هه‌ی‌په‌ر ڤیه‌رودة ده‌ربخات"</string>
+  <string name="morphe_video_codec_entry_default">بنەڕەت</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
@@ -544,4 +538,10 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_auto">خۆکار</string>
   <string name="morphe_player_icon_style_entry_default">بنەڕەت</string>
   <string name="morphe_player_icon_style_entry_custom">باو</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_cancel">پاشگەز</string>
+  <string name="morphe_series_tracker_ui_history">مێژوو</string>
+  <string name="morphe_series_tracker_ui_subscriptions">بەشداربوون</string>
+  <string name="morphe_series_tracker_continue">بەردەوامبوون</string>
+  <string name="morphe_series_tracker_undo">گەڕانەوە</string>
 </resources>

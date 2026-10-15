@@ -93,6 +93,12 @@ Second \"item\" text"</string>
 
 YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">클라이언트 스트림을 가져올 수 없습니다</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">기본 클라이언트가 작동하지 않습니다</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s는 연속으로 여러 번 작동하지 않았지만, %2$s는 작동하였습니다. 
+
+%2$s를 기본 클라이언트로 설정하시겠습니까?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">스위치</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">이 설정을 비활성화하면 재생 문제가 발생할 수 있습니다.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <string name="morphe_external_potoken_provider_about_summary">"이 기능은 현재 개발 중이며 작동하지 않을 수 있습니다
 
 PotHelper를 다운로드하려면 여기를 탭하세요"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper가 더 이상 작동하지 않음</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"이 버전에 내장된 PotHelper 토큰이 더 이상 작동하지 않습니다
+
+재생 문제를 해결하려면 '동영상 스트림 속이기' 설정을 활성화하세요"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">활성화</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">앱 버전 속이기</string>
   <string name="morphe_spoof_app_version_summary">서버가 사용 중인 앱 버전을 더 오래된 버전으로 인식하도록 속여, 이전 레이아웃 기능을 다시 복원합니다</string>
@@ -241,6 +253,15 @@ PotHelper를 다운로드하려면 여기를 탭하세요"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">세로 모드 재생</string>
   <string name="morphe_app_refresh_rate_type_entry_3">전체 화면 재생</string>
   <string name="morphe_app_refresh_rate_type_entry_4">세로 모드 및 전체 화면 재생</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">글꼴</string>
+  <string name="morphe_custom_font_type_entry_default">기본값</string>
+  <string name="morphe_custom_font_type_entry_system">기기 시스템 글꼴</string>
+  <string name="morphe_custom_font_type_entry_custom">사용자 정의 글꼴 파일</string>
+  <string name="morphe_custom_font_file_title">사용자 정의 글꼴 파일</string>
+  <string name="morphe_custom_font_file_summary">TTF 또는 OTF 글꼴 파일 선택할 수 있습니다</string>
+  <string name="morphe_custom_font_file_invalid">선택한 파일은 TTF 또는 OTF 글꼴이 아닙니다</string>
+  <string name="morphe_custom_font_failed_to_load">사용자 정의 글꼴을 불러올 수 없어 사용 중지되었습니다</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">싫어요 수를 일시적으로 표시할 수 없습니다 (API 시간 초과)</string>

@@ -42,6 +42,7 @@ import app.morphe.extension.shared.patches.components.Filter;
 import app.morphe.extension.shared.patches.components.FilterGroup.FilterGroupResult;
 import app.morphe.extension.shared.patches.components.StringFilterGroup;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.utils.ProtoNode;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -637,9 +638,9 @@ public final class LayoutComponentsFilter extends Filter {
                     && notificationsMenuHeaderBuffer.check(buffer).isFiltered();
         }
 
-        // This identifier is used not only in players but also in search results:
-        // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
-        // From 2025, the medical information panel is no longer shown in the search results.
+        // This identifier is used not only in players but also in search results: Until 2024, medical
+        // information panels such as Covid-19 also used this identifier and were shown in the search
+        // results. From 2025, the medical information panel is no longer shown in the search results.
         // Therefore, this identifier does not filter when the search bar is activated.
         if (matchedGroup == searchFriction) {
             singleItemInformationPanelIndex.set(0);
@@ -666,7 +667,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == videoLabels) {
-            return videoLabelsBuffer.check(buffer).isFiltered();
+            return VersionCheckPatch.IS_20_31_OR_GREATER && videoLabelsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == videoRecommendationLabels) {

@@ -8,9 +8,12 @@
 package app.morphe.patches.reddit.layout.fullwidth
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
@@ -19,10 +22,14 @@ import app.morphe.patches.reddit.misc.version.is_2026_38_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.registersUsed
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
@@ -88,6 +95,77 @@ val fullWidthFeedMediaPatch = bytecodePatch(
                         move-result v$register
                     """
                 )
+            }
+        }
+
+        // YouTube videos in the feed are inset by their own flag and padding.
+        YouTubeVideoSectionToStringFingerprint.let { toString ->
+            val sectionClass = toString.classDef.type
+            val insetField = toString.instructionMatches.last().getFieldAccessed()
+
+            youTubeVideoSectionConstructorFingerprint(sectionClass, insetField).let { constructor ->
+                val index = constructor.instructionMatches.first().index
+                val register = constructor.method.getInstruction<TwoRegisterInstruction>(index).registerA
+                constructor.method.addInstructions(
+                    index,
+                    """
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->isMediaInsetEnabled(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
+
+            youTubeVideoSectionContentFingerprint(sectionClass).let { content ->
+                content.method.apply {
+                    // Inset used for the height. Patched first, since it is after the other changes.
+                    val insetIndex = content.instructionMatches[4].index + 1
+                    val insetRegister = getInstruction<OneRegisterInstruction>(insetIndex).registerA
+                    addInstructions(
+                        insetIndex + 1,
+                        """
+                            invoke-static/range { v$insetRegister .. v$insetRegister }, $EXTENSION_CLASS->getMediaInset(I)I
+                            move-result v$insetRegister
+                        """
+                    )
+
+                    // Both the video and its container are clipped.
+                    val shapeMethod = content.instructionMatches[2]
+                        .getInstruction<ReferenceInstruction>().reference as MethodReference
+                    findInstructionIndicesReversedOrThrow(
+                        methodCall(reference = shapeMethod)
+                    ).forEach { shapeIndex ->
+                        val shapeRegister = getInstruction<FiveRegisterInstruction>(shapeIndex).registerC
+                        val resultRegister = getInstruction<OneRegisterInstruction>(shapeIndex + 1).registerA
+                        addInstruction(shapeIndex + 2, "check-cast v$resultRegister, ${shapeMethod.returnType}")
+                        replaceInstruction(
+                            shapeIndex,
+                            "invoke-static/range { v$shapeRegister .. v$shapeRegister }, " +
+                                    "$EXTENSION_CLASS->applyMediaShape(Ljava/lang/Object;)Ljava/lang/Object;"
+                        )
+                    }
+                    Fingerprint(
+                        definingClass = EXTENSION_CLASS,
+                        name = "applyOriginalMediaShape"
+                    ).method.addInstructions(
+                        0,
+                        """
+                            check-cast p0, ${shapeMethod.parameterTypes.first()}
+                            invoke-static { p0 }, $shapeMethod
+                            move-result-object p0
+                            return-object p0
+                        """
+                    )
+
+                    val paddingIndex = content.instructionMatches.first().index
+                    val paddingRegister = getInstruction<OneRegisterInstruction>(paddingIndex).registerA
+                    addInstructions(
+                        paddingIndex + 1,
+                        """
+                            invoke-static/range { v$paddingRegister .. v$paddingRegister }, $EXTENSION_CLASS->getMediaSidePadding(F)F
+                            move-result v$paddingRegister
+                        """
+                    )
+                }
             }
         }
 
@@ -167,6 +245,52 @@ val fullWidthFeedMediaPatch = bytecodePatch(
                         move/16 p14, v0
                     """
                 )
+            }
+
+            // Embedded videos in the post details.
+            PostDetailEmbedVideoFingerprint.let { embed ->
+                embed.method.apply {
+                    // The result usually replaces the unclipped modifier in the same register,
+                    // so the call itself is replaced.
+                    val shapeMatch = embed.instructionMatches.last()
+                    val shapeIndex = shapeMatch.index
+                    val shapeMethod = shapeMatch.getInstruction<ReferenceInstruction>().reference as MethodReference
+                    val shapeRegisters = shapeMatch.instruction.registersUsed
+                    val resultRegister = getInstruction<OneRegisterInstruction>(shapeIndex + 1).registerA
+                    addInstruction(shapeIndex + 2, "check-cast v$resultRegister, ${shapeMethod.returnType}")
+                    replaceInstruction(
+                        shapeIndex,
+                        "invoke-static { ${shapeRegisters.joinToString { "v$it" }} }, " +
+                                "$EXTENSION_CLASS->applyEmbedMediaShape(" +
+                                "Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;"
+                    )
+                    Fingerprint(
+                        definingClass = EXTENSION_CLASS,
+                        name = "applyOriginalEmbedMediaShape"
+                    ).method.addInstructions(
+                        0,
+                        """
+                            check-cast p0, ${shapeMethod.parameterTypes[0]}
+                            check-cast p1, ${shapeMethod.parameterTypes[1]}
+                            check-cast p2, ${shapeMethod.parameterTypes[2]}
+                            invoke-static { p0, p1, p2 }, $shapeMethod
+                            move-result-object p0
+                            return-object p0
+                        """
+                    )
+
+                    // Used for both the size and the padding.
+                    findInstructionIndicesReversedOrThrow(postDetailHorizontalPaddingFilter()).forEach { index ->
+                        val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
+                        addInstructions(
+                            index + 2,
+                            """
+                                invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->getMediaSidePadding(F)F
+                                move-result v$register
+                            """
+                        )
+                    }
+                }
             }
         }
 

@@ -452,7 +452,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होखे के चाहिए</string>
   <string name="morphe_miniplayer_opacity_title">ओवरले अपारदर्शिता</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">सक्षम ग्रेडियेंट लोडिंग स्क्रीन</string>
@@ -522,15 +521,6 @@ Second \"item\" text"</string>
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR वीडियो अक्षम करी</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"लाभ:
-• बैटरी लाइफ क सुधार क सकैत अछि
-• पुरान डिवाइस पर गुम वीडियो रेजोल्यूशन क पुनर्स्थापित क सकैत अछि।
-
-सीमाएं:
-• अधिकतम रेजोल्यूशन 1080p अछि
-• वीडियो प्लेबैक VP9 या AV1 स अधिक इंटरनेट डेटा क उपयोग कएब
-• HDR वीडियो AVC क उपयोग नहि कएब
-• कुछ डिवाइस AVC क जबरदस्ती नहि क सकैत।"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
@@ -551,4 +541,5 @@ AV1 को साथ भिडियो प्लेब्याक स्टट
   <string name="morphe_spoof_video_streams_player_js_variant_title">प्लेयर जावास्क्रिप्ट भिन्नता</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <!-- layout.player.icons.playerIconStylePatch -->
+  <!-- video.series.seriesTrackerPatch -->
 </resources>

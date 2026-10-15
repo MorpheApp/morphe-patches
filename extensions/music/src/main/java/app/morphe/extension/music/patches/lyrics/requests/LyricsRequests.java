@@ -33,6 +33,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.zip.GZIPInputStream;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.model.Word;
@@ -72,6 +73,22 @@ public final class LyricsRequests {
 
     public static String deviceLanguage() {
         return Locale.getDefault().getLanguage();
+    }
+
+    public static String translationLanguage() {
+        String language = Settings.LYRICS_TRANSLATION_LANGUAGE.get();
+        return "DEFAULT".equalsIgnoreCase(language)
+                ? deviceLanguage()
+                : language.toLowerCase(Locale.ROOT);
+    }
+
+    /** The leading subtag of a BCP-47 tag, which is what two spellings of one language share. */
+    public static String primarySubtag(@Nullable String language) {
+        if (language == null) {
+            return "";
+        }
+        int idx = language.indexOf('-');
+        return (idx >= 0 ? language.substring(0, idx) : language).toLowerCase(Locale.ROOT);
     }
 
     public static long fractionToMs(String fraction) {
@@ -616,7 +633,7 @@ public final class LyricsRequests {
     private static volatile java.util.regex.Pattern decorationPattern;
 
     private static String stripDecorations(String s) {
-        String regex = Settings.LYRICS_CUSTOM_REGEX.get();
+        String regex = LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.get();
         if (regex.trim().isEmpty()) {
             return s;
         }

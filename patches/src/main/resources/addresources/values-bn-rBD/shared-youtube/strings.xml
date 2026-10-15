@@ -93,6 +93,12 @@ Second \"item\" text"</string>
 
 আপনি যদি YouTube Premium ব্যবহারকারী হন, তবে এই সেটিংসের প্রয়োজন নাও হতে পারে।"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">কোনো ক্লায়েন্ট স্ট্রিম আনতে পারেনি</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">ডিফল্ট ক্লায়েন্ট কাজ করে না</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s পরপর বেশ কয়েকবার কাজ করেনি, কিন্তু %2$s কাজ করেছে।
+
+%2$s-কে ডিফল্ট ক্লায়েন্ট বানাবেন?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">বদল করুন</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে।</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Second \"item\" text"</string>
   <string name="morphe_external_potoken_provider_about_summary">"এই বৈশিষ্ট্যটি বর্তমানে উন্নয়নাধীন এবং কাজ নাও করতে পারে
 
 PotHelper ডাউনলোড করতে এখানে ট্যাপ করুন।"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper আর কাজ করে না</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"PotHelper-এর এই সংস্করণে থাকা টোকেনটি আর কাজ করে না
+
+প্লেব্যাক ঠিক করতে 'স্পুফ ভিডিও স্ট্রিম' চালু করুন"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">চালু করুন</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">অ্যাপের সংস্করণ স্পুফ করুন</string>
   <string name="morphe_spoof_app_version_summary">পুরোনো ইউজার ইন্টারফেস (UI) ফিচারগুলো ফিরিয়ে আনতে সার্ভারকে এমনভাবে বিভ্রান্ত করে যেন মনে হয় আপনি অ্যাপের একটি পুরোনো সংস্করণ ব্যবহার করছেন</string>
@@ -241,6 +253,15 @@ PotHelper ডাউনলোড করতে এখানে ট্যাপ ক
   <string name="morphe_app_refresh_rate_type_entry_2">পোর্ট্রেট প্লেব্যাক</string>
   <string name="morphe_app_refresh_rate_type_entry_3">ফুলস্ক্রিন প্লেব্যাক</string>
   <string name="morphe_app_refresh_rate_type_entry_4">পোর্ট্রেট এবং ফুলস্ক্রিন প্লেব্যাক</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">ফন্ট</string>
+  <string name="morphe_custom_font_type_entry_default">ডিফল্ট</string>
+  <string name="morphe_custom_font_type_entry_system">ডিভাইস সিস্টেম ফন্ট</string>
+  <string name="morphe_custom_font_type_entry_custom">কাস্টম ফন্ট ফাইল</string>
+  <string name="morphe_custom_font_file_title">কাস্টম ফন্ট ফাইল</string>
+  <string name="morphe_custom_font_file_summary">একটি TTF বা OTF ফন্ট ফাইল নির্বাচন করুন</string>
+  <string name="morphe_custom_font_file_invalid">নির্বাচিত ফাইলটি একটি TTF বা OTF ফন্ট নয়</string>
+  <string name="morphe_custom_font_failed_to_load">কাস্টম ফন্ট লোড করা যায়নি এবং এটি বন্ধ করে দেওয়া হয়েছে</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">অপছন্দ সাময়িকভাবে উপলভ্য নয় (API সময় শেষ হয়েছে)</string>

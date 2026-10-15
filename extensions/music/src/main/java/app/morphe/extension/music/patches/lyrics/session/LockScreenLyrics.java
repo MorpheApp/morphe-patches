@@ -28,7 +28,7 @@ import app.morphe.extension.shared.Logger;
  * lock screen, Android Auto and Bluetooth displays. The artist field is rewritten to
  * {@code "artist - title"} so the track identity is preserved.
  *
- * <p>The app's {@link MediaSession#setMetadata(MediaSession)} call site is observed to
+ * <p>The app's {@link MediaSession#setMetadata(MediaMetadata)} call site is observed to
  * capture the {@link MediaSession} instance and the original metadata. Modified metadata is
  * then pushed from a ticker via the captured session. Because that push goes through the
  * framework directly, it does not re-enter the hooked app call site, so the lyrics and
@@ -255,6 +255,12 @@ public final class LockScreenLyrics {
         }
         lastPushedTitle = null;
         needsRepush = false;
+    }
+
+    @Nullable
+    public static MediaSession mediaSession() {
+        WeakReference<MediaSession> reference = sessionRef;
+        return reference != null ? reference.get() : null;
     }
 
     private static boolean lyricsMatch() {

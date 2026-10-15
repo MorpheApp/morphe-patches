@@ -93,6 +93,12 @@ Norėdami pakeisti piktogramą visur, įdiekite pataisą iš naujo ir pakeiskite
 
 Jei esate „YouTube Premium“ vartotojas, šis nustatymas gali būti nereikalingas"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nepavyko gauti jokių kliento srautų</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Numatytasis klientas neveikia</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s neveikė keletą kartų iš eilės, bet %2$s veikė.
+
+Padaryti %2$s numatytuoju klientu?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Perjungti</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Išjungus šį nustatymą gali kilti atkūrimo problemų.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Norėdami naudoti šią funkciją, išjunkite „Maskuoti vaizdo įrašų srautu
   <string name="morphe_external_potoken_provider_about_summary">"Ši funkcija šiuo metu kuriama ir gali neveikti
 
 Bakstelėkite čia, kad atsisiųstumėte PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper nebeveikia</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Šioje PotHelper versijoje įtaisytas tokenas nebeveikia
+
+Įjunkite „Klastoti vaizdo srautus“, kad pataisytumėte atkūrimą"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Įjungti</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Maskuoti programos versiją</string>
   <string name="morphe_spoof_app_version_summary">Apgauna serverį, kad jis manytų, jog naudojate senesnę programos versiją, siekiant atkurti senosios sąsajos funkcijas</string>
@@ -241,6 +253,15 @@ Jei vėliau tai išjungsite, rekomenduojama išvalyti programos duomenis, kad b�
   <string name="morphe_app_refresh_rate_type_entry_2">Atkūrimas vertikalioje padėtyje</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Atkūrimas per visą ekraną</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Atkūrimas vertikalioje padėtyje ir per visą ekraną</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Šriftas</string>
+  <string name="morphe_custom_font_type_entry_default">Numatytasis</string>
+  <string name="morphe_custom_font_type_entry_system">Įrenginio sistemos šriftas</string>
+  <string name="morphe_custom_font_type_entry_custom">Pasirinktinis šrifto failas</string>
+  <string name="morphe_custom_font_file_title">Pasirinktinis šrifto failas</string>
+  <string name="morphe_custom_font_file_summary">Pasirinkite TTF arba OTF šrifto failą</string>
+  <string name="morphe_custom_font_file_invalid">Pasirinktas failas nėra TTF arba OTF šriftas</string>
+  <string name="morphe_custom_font_failed_to_load">Nepavyko įkelti pasirinktinio šrifto, todėl jis išjungtas</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">„Nepatinka“ laikinai nepasiekiami (API laikas baigėsi)</string>

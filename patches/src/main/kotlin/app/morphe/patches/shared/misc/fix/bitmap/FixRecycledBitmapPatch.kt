@@ -38,9 +38,9 @@ val fixRecycledBitmapPatch = bytecodePatch(
 
             replaceInstruction(
                 index,
-                $"invoke-static { $registers }, $EXTENSION_CLASS->putBitmap(" +
-                        "Landroid/media/MediaMetadata\$Builder;Ljava/lang/String;Landroid/graphics/Bitmap;)" +
-                        "Landroid/media/MediaMetadata\$Builder;"
+                "invoke-static { $registers }, $EXTENSION_CLASS->putBitmap(" +
+                        $$"Landroid/media/MediaMetadata$Builder;Ljava/lang/String;Landroid/graphics/Bitmap;)" +
+                        $$"Landroid/media/MediaMetadata$Builder;"
             )
         }
     }

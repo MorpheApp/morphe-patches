@@ -40,11 +40,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_enable_layer_first">Najpierw włącz Jam Layer</string>
   <string name="morphe_music_jam_enable_patch_first">Włącz udostępnianie kolejki Jam w ustawieniach, a następnie uruchom ponownie YouTube Music</string>
   <string name="morphe_music_jam_install_layer_first">Najpierw zainstaluj wybrany pakiet Jam Layer</string>
-  <string name="morphe_music_jam_join_hint">Wpisz kod widoczny u gospodarza. Wi-Fi Aware może połączyć pobliskie urządzenia nawet w różnych sieciach LAN</string>
+  <string name="morphe_music_jam_join_hint">Wprowadź kod widoczny u gospodarza. Wi-Fi Aware może połączyć pobliskie urządzenia nawet w różnych sieciach LAN</string>
   <string name="morphe_music_jam_join_with_code">Dołącz za pomocą kodu</string>
   <string name="morphe_music_jam_join">Dołącz</string>
   <string name="morphe_music_jam_scan_qr">Zeskanuj kod QR</string>
-  <string name="morphe_music_jam_invalid_invite">Wpisz ośmioznakowy kod lub wklej zaproszenie</string>
+  <string name="morphe_music_jam_invalid_invite">Wprowadź ośmioznakowy kod lub wklej zaproszenie</string>
   <string name="morphe_music_jam_join_your_jam">Dołącz do swojego Jam</string>
   <string name="morphe_music_jam_copy_code">Skopiuj kod</string>
   <string name="morphe_music_jam_code_clip">Kod Jam</string>
@@ -66,7 +66,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_jam_waiting_people">Oczekiwanie na uczestników</string>
   <string name="morphe_music_jam_one_connected">%d połączona osoba</string>
   <string name="morphe_music_jam_many_connected">Połączone osoby: %d</string>
-  <string name="morphe_music_jam_code_expires">Wpisz ten kod na pobliskim urządzeniu. Wi-Fi Aware działa w różnych sieciach LAN, jeśli jest obsługiwane. Wygasa za %d min.</string>
+  <string name="morphe_music_jam_code_expires">Wprowadź ten kod na pobliskim urządzeniu. Wi-Fi Aware działa w różnych sieciach LAN, jeśli jest obsługiwane. Wygasa za %d min.</string>
   <string name="morphe_music_jam_seek_to">Przewinąć do %s?</string>
   <string name="morphe_music_jam_edits_open">Edycja odblokowana</string>
   <string name="morphe_music_jam_edits_locked">Edycja zablokowana</string>
@@ -114,7 +114,7 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title' -->
   <string name="morphe_music_play_album_songs_summary">Odtwarza utwory w wersji z albumu zamiast teledysków. Wymaga opcji \"Fałszowanie strumieni filmów\"</string>
   <!-- misc.audiovideoswitch.enableAudioVideoSwitchPatch -->
-  <string name="morphe_music_enable_audio_video_switch_title">Włącz przełącznik Utwór/Film</string>
+  <string name="morphe_music_enable_audio_video_switch_title">Włącz przełącznik Utwór/Teledysk</string>
   <string name="morphe_music_enable_audio_video_switch_summary">Próbuje przełączać między utworem a oficjalnym teledyskiem</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_summary">Pobieraj teledyski, podcasty lub utwory za pomocą zewnętrznych aplikacji do pobierania</string>
@@ -516,6 +516,8 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_youtube_cookies_toast_invalid">YouTube: nieprawidłowe ciasteczka - sprawdź i spróbuj ponownie</string>
   <string name="morphe_music_lyrics_tap_to_seek_title">Dotknij linijki, aby przewinąć</string>
   <string name="morphe_music_lyrics_tap_to_seek_summary">Dotknięcie linijki przeskakuje do tego momentu w utworze</string>
+  <string name="morphe_music_lyrics_show_section_title">Pokaż etykiety sekcji</string>
+  <string name="morphe_music_lyrics_show_section_summary">Oznacza każdą nową sekcję tekstu małą etykietą, taką jak Zwrotka lub Refren</string>
   <string name="morphe_music_lyrics_show_copy_button_title">Pokaż przycisk Kopiuj</string>
   <string name="morphe_music_lyrics_show_copy_button_summary">Dotknij, aby skopiować oryginalny tekst jako zwykły tekst. Przytrzymaj, aby zapisać surowy plik źródłowy z tekstem w folderze Pobrane</string>
   <string name="morphe_music_lyrics_show_translate_button_title">Pokaż przycisk Przetłumacz</string>
@@ -527,7 +529,7 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_search_dialog_title">Wyszukaj tekst</string>
   <string name="morphe_music_lyrics_search_title_hint">Tytuł utworu</string>
   <string name="morphe_music_lyrics_search_artist_hint">Wykonawca</string>
-  <string name="morphe_music_lyrics_search_empty">Wpisz tytuł utworu i wykonawcę</string>
+  <string name="morphe_music_lyrics_search_empty">Wprowadź tytuł utworu i wykonawcę</string>
   <string name="morphe_music_lyrics_search_no_providers">Żaden z włączonych dostawców nie obsługuje wyszukiwania innych utworów</string>
   <string name="morphe_music_lyrics_saved">Zapisano</string>
   <string name="morphe_music_lyrics_word_sync_title">Podświetlaj zsynchronizowane słowa lub sylaby</string>
@@ -579,19 +581,27 @@ Wymagane ciasteczka: SID, HSID, SSID, SAPISID, __Secure-3PAPISID, __Secure-1PAPI
   <string name="morphe_music_lyrics_hide_info_summary">Ukrywa informacje o twórcach wyświetlane pod tekstem</string>
   <string name="morphe_music_lyrics_swap_trans_roma_title">Zamień miejscami tłumaczenie i romanizację</string>
   <string name="morphe_music_lyrics_swap_trans_roma_summary">Włączone: romanizacja znajduje się pod tekstem, a tłumaczenie nad nim. Wyłączone: romanizacja nad tekstem, a tłumaczenie pod nim</string>
-  <string name="morphe_music_lyrics_use_ai_translation_title">Tłumaczenie zgodne z OpenAI</string>
-  <string name="morphe_music_lyrics_use_ai_translation_summary">Użyj niestandardowego API zgodnego z OpenAI do tłumaczenia i romanizacji zamiast Tłumacza Google</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_title">Ustawienia tłumaczenia AI</string>
-  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Skonfiguruj punkt końcowy API zgodny z OpenAI do tłumaczenia i romanizacji tekstów piosenek za pomocą AI.</string>
+  <string name="morphe_music_lyrics_use_ai_title">API zgodne z OpenAI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_title">Tłumaczenie AI</string>
+  <string name="morphe_music_lyrics_use_ai_translation_summary">W pierwszej kolejności wybiera tłumaczenie dostawcy, następnie Twój model zgodny z OpenAI, a na końcu Tłumacza Google</string>
+  <string name="morphe_music_lyrics_use_ai_romanization_title">Romanizacja AI</string>
+  <string name="morphe_music_lyrics_use_ai_romanization_summary">W pierwszej kolejności wybiera romanizację dostawcy, następnie Twój model zgodny z OpenAI, a na końcu Tłumacza Google</string>
+  <string name="morphe_music_lyrics_use_ai_section_title">Sekcje AI</string>
+  <string name="morphe_music_lyrics_use_ai_section_summary">Używane tylko wtedy, gdy dostawca nie udostępnia etykiet sekcji, takich jak Zwrotka lub Refren. W takim przypadku wykryje je Twój model zgodny z OpenAI</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_title">Ustawienia AI</string>
+  <string name="morphe_music_lyrics_ai_config_dialog_instruction">Skonfiguruj punkt końcowy API zgodny z OpenAI do tłumaczenia, romanizacji i rozpoznawania sekcji w tekście piosenki za pomocą AI</string>
   <string name="morphe_music_lyrics_ai_config_base_url_hint">Adres punktu końcowego API (np. https://text.pollinations.ai/openai)</string>
   <string name="morphe_music_lyrics_ai_config_api_token_hint">Klucz API (pozostaw puste dla dostępu anonimowego)</string>
   <string name="morphe_music_lyrics_ai_config_model_hint">Nazwa modelu (np. openai-fast, gpt-4o-mini)</string>
-  <string name="morphe_music_lyrics_ai_config_prompt_hint">Szablon promptu (zmienne: {language}, {task}, {title}, {artist}, {count}, {lines})</string>
-  <string name="morphe_music_lyrics_ai_config_toast_saved">Zapisano ustawienia tłumaczenia AI</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_title">Szablon polecenia</string>
+  <string name="morphe_music_lyrics_ai_prompt_dialog_hint">Zmienne: {language}, {task}, {title}, {artist}, {count}, {lines}</string>
+  <string name="morphe_music_lyrics_ai_prompt_hint">Szablon polecenia</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_saved">Zapisano polecenie</string>
+  <string name="morphe_music_lyrics_ai_prompt_toast_reset">Zresetowano polecenie</string>
+  <string name="morphe_music_lyrics_ai_config_toast_saved">Zapisano ustawienia AI</string>
   <string name="morphe_music_lyrics_ai_config_toast_invalid">Nie udało się połączyć z punktem końcowym AI. Sprawdź swoje ustawienia.</string>
-  <string name="morphe_music_lyrics_ai_config_toast_reset">Zresetowano ustawienia tłumaczenia AI</string>
-  <string name="morphe_music_lyrics_ai_config_status_configured">Skonfigurowano</string>
-  <string name="morphe_music_lyrics_ai_config_status_not_configured">Dotknij, aby skonfigurować</string>
+  <string name="morphe_music_lyrics_ai_config_toast_reset">Zresetowano ustawienia AI</string>
+  <string name="morphe_music_lyrics_ai_config_summary_configured">Skonfigurowano model %1$s</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_url">Bazowy adres nie może być pusty</string>
   <string name="morphe_music_lyrics_ai_config_status_invalid_url">Bazowy adres musi zaczynać się od http:// lub https://</string>
   <string name="morphe_music_lyrics_ai_config_status_empty_model">Nazwa modelu nie może być pusta</string>

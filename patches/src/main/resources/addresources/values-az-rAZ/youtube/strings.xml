@@ -193,7 +193,7 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_how_this_was_made_section_title">\"Bu necə hazırlanıb\" bölməsini gizlət</string>
   <string name="morphe_hide_hype_points_title">Dəstək xalların gizlət</string>
   <string name="morphe_hide_info_cards_section_title">Məlumat kartları bölməsini gizlət</string>
-  <string name="morphe_hide_key_concepts_section_title">\'Əsas konseptlər\' bölməsini gizlət</string>
+  <string name="morphe_hide_key_concepts_section_title">\'Əsas Konseptlər\' bölməsini gizlət</string>
   <string name="morphe_hide_quizzes_section_title">Testlər bölməsini gizlət</string>
   <string name="morphe_hide_search_inside_this_video_section_title">\'Bu videoda axtarın\' bölməsini gizlət</string>
   <string name="morphe_hide_subscribe_button_title">Abunə ol düyməsini gizlət</string>
@@ -560,6 +560,22 @@ Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_queue_override_flyout_menu_summary">YouTube növbəsi əvəzinə Morphe növbəsini açır</string>
   <string name="morphe_queue_add_flyout_menu_title">Axına açılan növbə menyusu elementini əlavə et</string>
   <string name="morphe_queue_add_flyout_menu_summary">Əlavə açılan elementi əlavə edir. \"Növbəyə əlavə et\" görünmürsə, bunu aktivləşdir</string>
+  <string name="morphe_local_queue_title">Premium üslubu növbəsi</string>
+  <string name="morphe_local_queue_summary">"Morphe növbəsini cihazda olan, ardıcıl oynadılan və sürüşdürərək sıralana bilən növbə ilə əvəzləyir
+​
+Məlumat: Növbədəki növbəti video yalnız YouTube ekranda olduqda başlayır"</string>
+  <string name="morphe_local_queue_sheet_title">Növbə</string>
+  <string name="morphe_local_queue_open">Növbə (%d)</string>
+  <string name="morphe_local_queue_clear">Hamısını təmizlə</string>
+  <string name="morphe_local_queue_empty">Heç nə növbələnmədi</string>
+  <string name="morphe_local_queue_empty_hint">İstənilən videoda növbədə Növbətini oynatma istifadə et</string>
+  <string name="morphe_local_queue_now_playing">İndi oynadılır</string>
+  <string name="morphe_local_queue_play_next">Növbədə növbətini oynat</string>
+  <string name="morphe_local_queue_reorder">Yenidən sırala</string>
+  <string name="morphe_local_queue_remove">Sil</string>
+  <string name="morphe_local_queue_added">Növbəyə əlavə edildi</string>
+  <string name="morphe_local_queue_full">Növbə doludur</string>
+  <string name="morphe_local_queue_play_failed">Videonu başlatmaq olmadı</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Açılan menyuda reklam ağ siyahısı</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Həmin videonun kanalında reklamların oynadılmasına imkan verən açılan menyu bəndi əlavə edir</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1124,9 +1140,6 @@ Məhdudiyyət: 'Köhnə video fəaliyyət cizgisini bərpa et' qapadılıbsa, 'D
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Geri düyməsi axından çıxarır</string>
   <string name="morphe_back_button_always_exits_feed_summary">Geriyə basmaq, axının yuxarısına sürüşdürmək əvəzinə, həmişə tətbiqdən çıxır</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Sistem şriftinə zorla</string>
-  <string name="morphe_force_system_font_summary">Tətbiqi YouTube Sans əvəzinə cihaz şrifti ilə göstərir</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Status panelini gizlət</string>
   <string name="morphe_hide_status_bar_summary">Sistem status panelini gizlədir. Onu bir anlıq göstərmək üçün yuxarı kənardan aşağı sürüşdür</string>
@@ -1297,18 +1310,21 @@ Məhdudiyyətlər:
 • Ekran faktiki olaraq HDR göstərə bilmirsə, rənglər problemli görünə bilər
 • Dekoder HDR-i emal edə bilməsə, oynatma uğursuz ola bilər
 • HDR hələ də video yayımları saxtalaşdır qəbuledicisindən asılıdır"</string>
-  <string name="morphe_force_avc_codec_title">AVC (H.264) kodlayıcıya zorla</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Faydalar:
-• Batareya ömrünü uzada bilər
-• Köhnə cihazlarda çatışmayan video ayırdetmələrin bərpa edə bilər
-
-Məhdudiyyətlər:
-• Ən yüksək ayırdetmə 1080p-dir
-• Video oynatma VP9 və ya AV1-dən daha çox internet məlumatı işlədəcək
-• HDR videoları AVC istifadə etməyəcək
-• Bəzi cihazlar AVC-ni zorlaya bilməz"</string>
+  <string name="morphe_video_codec_title">Video kodlayıcı</string>
+  <string name="morphe_video_codec_entry_default">İlkin</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Bu xüsusiyyəti istifadə etmək üçün \"Video yayımların saxtalaşdır\"-ı \'Android VR\'-a və ya \'Android Studio\'-ya təyin et</string>
+  <string name="morphe_video_codec_avc_not_available">AVC-yə məcbur etmək üçün \'Video yayımlarını saxtalaşdırı\' \'Android Studio\', \'Android VR\' və ya \'visionOS\' olaraq dəyiş</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Batareya ömrünü yaxşılaşdıra və oynatma donmalarını düzəldə bilər
+• AV1-dən daha çox internet datası istifadə edir
+
+​AVC (H.264)
+• 'Android Studio', 'Android VR' və ya 'visionOS' video yayımı qəbuledicisinin saxtalaşdırılmasını tələb edir
+• Batareya ömrünü daha da yaxşılaşdıra bilər
+• Daha köhnə cihazlarda çatışmayan video görüntü imkanlarını bərpa edə bilər
+• Ən yüksək görüntü imkanı 1080p-dir
+• HDR videolar AVC istifadə etməyə bilər
+• Bəzi cihazlar AVC-yə məcbur edilə bilməz"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Təkmil keyfiyyət menyusunu aç</string>
   <string name="morphe_advanced_video_quality_menu_summary">Keyfiyyət seçimi menyusunu ötürür və birbaşa Təkmil keyfiyyət menyusunu açır</string>
@@ -1325,6 +1341,7 @@ Məhdudiyyətlər:
 
 Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
   <string name="morphe_spoof_video_streams_about_title">Saxtakarlıq yan təsirləri</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Oynatma 1 dəqiqədən sonra uğursuz ola bilər</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Audio Trek\' menyusu çatışmır</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodlayıcı yoxdur</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR geniş rejimi əlçatan deyil</string>
@@ -1351,4 +1368,143 @@ Məhdudiyyət: Köhnə üslub üçün \"Daha çox video\" örtüyünə qayıdır
   <string name="morphe_player_icon_style_entry_bold">Qalın</string>
   <string name="morphe_player_icon_style_entry_custom">Fərdi</string>
   <string name="morphe_shorts_icon_style_title">Shorts simvol üslubu</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Seriya İzləyicisi</string>
+  <string name="morphe_series_tracker_screen_summary">Pleylistləri seriya kimi izləyin və yeri saxlayın</string>
+  <string name="morphe_series_tracker_title">Seriya izləməsini aktivləşdir</string>
+  <string name="morphe_series_tracker_summary">Tarixçəyə Seriya səhifəsi və pleylistlərə Seriyanı izlə seçimini əlavə edir</string>
+  <string name="morphe_series_tracker_show_button_title">Seriya İzləyicisi düyməsini göstər</string>
+  <string name="morphe_series_tracker_show_button_summary">Cari videonun seriyasını izləmək və ya açmaq üçün oynadıcı düyməsi əlavə edir</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">İzlənilən seriyaların gedişatını qeydə al</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Bu telefonda saxlanılan seriyalar və əlfəcinlər üçün oynatmanı qeydə al</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Fəaliyyət cərgəsində Tarixçəni göstər</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Ev, Abunəliklər, Bildirişlər, Tarixçə və Siz</string>
+  <string name="morphe_series_tracker_ui_cancel">Ləğv et</string>
+  <string name="morphe_series_tracker_ui_save">Saxla</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Əlfəcini saxla</string>
+  <string name="morphe_series_tracker_ui_series_name">Seriyanın adı</string>
+  <string name="morphe_series_tracker_ui_series_options">Seriya seçimləri</string>
+  <string name="morphe_series_tracker_ui_library_options">Kitabxana seçimləri</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Epizodları yenilə</string>
+  <string name="morphe_series_tracker_ui_rename">Təkrar adlandır</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Pleylisti YouTube-da aç</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Kitabxanadan sil</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Pleylist linki və ya ID</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Bütün yerli gedişatı təmizlə</string>
+  <string name="morphe_series_tracker_ui_clear_history">Tarixçəni təmizlə</string>
+  <string name="morphe_series_tracker_clear_progress_title">Bütün yerli gedişat təmizlənsin?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Bu, hər video üçün mövqeləri, baxış dəyişikliklərini və davam etdirmə seçimlərini təmizləyir. Saxlanılan seriyalar və onların kataloqları qalır. Qeydəalınma aktivdirsə, yeni oynatma qeydə alınacaq.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Baxılmış qeyd et</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Baxılmamış qeyd et</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Avtomatik statusu istifadə et</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">0:00-dan yenidən başlat</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">0:00-dan təkrar oynat</string>
+  <string name="morphe_series_tracker_ui_status_saved">Status saxlanıldı</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Yenidən saxlamağa cəhd et</string>
+  <string name="morphe_series_tracker_ui_previous_100">Əvvəlki 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Növbəti 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Saxlanılmış videonu aç</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Yerli gedişat təmizləndi</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Seriyanıza baxmaq üçün \"Siz\"-dən Tarixçəni açın</string>
+  <string name="morphe_series_tracker_ui_watch_history">Baxış tarixçəsi</string>
+  <string name="morphe_series_tracker_ui_series">Seriyalar</string>
+  <string name="morphe_series_tracker_ui_history">Tarixçə</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Abunəliklər</string>
+  <string name="morphe_series_tracker_ui_notifications">Bildirişlər</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Saxlanılan seriyalar yüklənilir…</string>
+  <string name="morphe_series_tracker_empty_library">Epizodu izləmək üçün pleylisti izlə.</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Pleylist əlfəcini</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Epizodları yeniləyir…</string>
+  <string name="morphe_series_tracker_ui_all_series">Bütün seriyalar</string>
+  <string name="morphe_series_tracker_watched">Baxıldı</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Epizodları yükləyir…</string>
+  <string name="morphe_series_tracker_ui_more_options">Daha çox seçim</string>
+  <string name="morphe_series_tracker_record_consent">"Gedişatı yalnız saxlanılan seriyalarınız və əlfəcinlənmiş videolarınız üçün qeydə alın.
+
+​Bu kitabxana bu cihazda saxlanılır və YouTube hesabları arasında paylaşılır. YouTube-un tarixçəni dayandırmaq və təmizləmək idarəetmələri bunu dəyişmir. Onu silmək üçün Seriya → Daha çox → Yerli gedişatı təmizlə seçimin istifadə et.
+
+​Avtomatik qeydəalma gizli rejimdə, hesab kimliyi əlçatmaz olduqda və ya başqa bir hesaba keçdiyinizdə dayanır. Onu həmin hesabda istifadə etmək üçün izləməni təkrar aktivləşdirin."</string>
+  <string name="morphe_series_tracker_identity_unavailable">İzləmə gizli rejimdə və ya YouTube cari hesab vəziyyətini yükləməzdən əvvəl aktivləşdirilə bilməz. Əsas səhifəyə qayıdın və təkrar cəhd edin. Daxil olmaq tələb olunmur.</string>
+  <string name="morphe_series_tracker_enable">Yerli izləməni aktivləşdir</string>
+  <string name="morphe_series_tracker_tracking_paused">Gedişatı qeydəalma qapadılıb</string>
+  <string name="morphe_series_tracker_resume_at">%1$s mövqeyindən davam et</string>
+  <string name="morphe_series_tracker_watched_count">%1$d / %2$d epizod izlənildi</string>
+  <string name="morphe_series_tracker_episode_position">Epizod %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">%3$d-dən %1$d–%2$d epizodları</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Epizodları yükləməyə cəhd etmək üçün yenilə. Gizli pleylistlər hesab girişi tələb edir; onların əlfəcini hələ də YouTube-da açılır.</string>
+  <string name="morphe_series_tracker_open_failed">YouTube bu epizodu aça bilmədi.</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube bu pleylisti aça bilmədi.</string>
+  <string name="morphe_series_tracker_plan_open">Pleylist əlfəcini</string>
+  <string name="morphe_series_tracker_plan_changed">Epizodu seç</string>
+  <string name="morphe_series_tracker_plan_caught_up">Yenilənib</string>
+  <string name="morphe_series_tracker_plan_none">Oynadıla bilən epizodlar yoxdur</string>
+  <string name="morphe_series_tracker_saved_position">Saxlanılan video · %1$s</string>
+  <string name="morphe_series_tracker_follow">Seriyanı izlə</string>
+  <string name="morphe_series_tracker_view_series">Seriyaya bax</string>
+  <string name="morphe_series_tracker_add_icon">Seriyanı izlə</string>
+  <string name="morphe_series_tracker_continue">Davam et</string>
+  <string name="morphe_series_tracker_start_here">Burada başla</string>
+  <string name="morphe_series_tracker_start_saved">Başlanğıc nöqtəsi saxlanıldı</string>
+  <string name="morphe_series_tracker_watched_to_here">Bura qədər baxıldı</string>
+  <string name="morphe_series_tracker_marked">Epizodlar baxılmış qeyd edildi</string>
+  <string name="morphe_series_tracker_undo">Geri qaytar</string>
+  <string name="morphe_series_tracker_enable_short">Aktivləşdir</string>
+  <string name="morphe_series_tracker_new_episode">1 yeni epizod</string>
+  <string name="morphe_series_tracker_new_episodes">%1$d yeni epizod</string>
+  <string name="morphe_series_tracker_record_short">Bu cihazda gedişatı qeydə al</string>
+  <string name="morphe_series_tracker_follow_consent">"Seriyalarınız və gedişatınız bu cihazda qalır, YouTube hesabları arasında paylaşılır. YouTube tarixçə idarəetmələri onları dəyişdirmir. Gedişatı Seriya menyusundan təmizləyin.
+
+​Avtomatik qeydəalma istəyə bağlıdır. Bu gizli rejimdə və ya hesab dəyişdikdə dayanır."</string>
+  <string name="morphe_series_tracker_follow_unavailable">Epizodlar yüklənə bilmədi. Pleylisti əlfəcin kimi saxlaya bilərsiniz.</string>
+  <string name="morphe_series_tracker_error_pending_full">Çoxlu saxlanılmamış dəyişiklik var. Əvvəlcə saxlamağa təkrar cəhd et.</string>
+  <string name="morphe_series_tracker_error_storage_busy">Saxlama məşğuldur. Təkrar cəhd et.</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Epizodların yüklənməsi məşğuldur. Təkrar cəhd et.</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Yaddaş əlçatmazdır. Saxlanılan məlumatlarınız qorundu.</string>
+  <string name="morphe_series_tracker_error_storage_save">Dəyişikliklər saxlanıla bilmədi. YouTube-u bağlamazdan əvvəl yenidən saxlamağa cəhd et.</string>
+  <string name="morphe_series_tracker_error_conflict">Bu seriya artıq saxlanılıb və ya pleylisti dəyişdirilib. Bunu yenidən aç.</string>
+  <string name="morphe_series_tracker_error_series_changed">Bu seriya dəyişdirildi və ya silindi. Kitabxananı yenidən aç.</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Pleylist dəyişdi. Epizodu təkrar seç.</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Bu epizod əlçatmazdır. Başqasını seç.</string>
+  <string name="morphe_series_tracker_error_name_required">Seriya adını daxil et.</string>
+  <string name="morphe_series_tracker_error_playlist_input">YouTube pleylist linkini və ya pleylist ID-sini daxil et.</string>
+  <string name="morphe_series_tracker_error_retry_later">Xahiş olunur, təkrar yeniləməzdən əvvəl gözlə.</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Epizodlar yüklənilə bilmədi. Daha sonra təkrar cəhd et.</string>
+  <string name="morphe_series_tracker_error_operation">Dəyişiklik tamamlana bilmədi. Təkrar cəhd et.</string>
+  <string name="morphe_series_tracker_error_resume">Davam etdirilmə təsdiqlənmədi. Oynadıcını yoxla və təkrar cəhd et.</string>
+  <string name="morphe_series_tracker_followed">Seriyanı izləyir</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Bu video bu pleylistdə yoxdur.</string>
+  <string name="morphe_series_tracker_finding_playlists">Pleylistləri tapır…</string>
+  <string name="morphe_series_tracker_paste_playlist">Pleylist linkini yapışdır</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Pleylisti tapmaq olmadı</string>
+  <string name="morphe_series_tracker_no_available_episodes">Əlçatan epizod yoxdur</string>
+  <string name="morphe_series_tracker_hide_watched">İzlənilənləri gizlət</string>
+  <string name="morphe_series_tracker_watch_previous">Əvvəlki epizodları baxılmış qeyd et</string>
+  <string name="morphe_series_tracker_order_starts_with">Başlayır: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Epizod sırası</string>
+  <string name="morphe_series_tracker_playlist_order">Pleylist sırası</string>
+  <string name="morphe_series_tracker_reverse_order">Pleylist sırasını tərs çevir</string>
+  <string name="morphe_series_tracker_view_count_large">%1$s baxış</string>
+  <string name="morphe_series_tracker_view_count">%1$s baxış</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s baxış</string>
+  <string name="morphe_series_tracker_completion_title">Epizodları baxılmış qeyd et</string>
+  <string name="morphe_series_tracker_completion_summary">Ən çox 90 saniyə qalmaqla ən azı %1$d%% izlənilib və ya %2$d saniyə qalıb</string>
+  <string name="morphe_series_tracker_completion_percent">İzlənilənlərin faiz nisbəti (1–100)</string>
+  <string name="morphe_series_tracker_completion_save">Saxla</string>
+  <string name="morphe_series_tracker_backup_title">Nüsxələ və bərpa et</string>
+  <string name="morphe_series_tracker_backup_restored">%1$d seriya bərpa edildi</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Bu fayl dəstəklənən seriya nüsxəsi deyil və ya həddən artıq böyükdür. Kitabxananız dəyişdirilmədi.</string>
+  <string name="morphe_series_tracker_error_backup_write">Nüsxəni saxlamaq olmadı. Başqa bir yeri sınayın.</string>
+  <string name="morphe_series_tracker_removed">Seriyalar silindi</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Bu epizod indi bir dəfədən çox görünür. Hansı birindən davam edəcəyinizi seçin.</string>
+  <string name="morphe_series_tracker_recovery_missing">Saxlanılan epizodunuz artıq bu pleylistdə yoxdur. Saxlanılan mövqeyiniz qorunur.</string>
+  <string name="morphe_series_tracker_recovery_continue">%1$d · %2$s epizodu ilə davam et</string>
+  <string name="morphe_series_tracker_recovery_choose">Aşağıda istənilən epizodu da seçə bilərsiniz. Əvvəlki epizodlar dəyişdirilmir.</string>
+  <string name="morphe_series_tracker_playback_changed">Bu pleylist dəyişdirildi. Harada davam edəcəyini seçmək üçün seriyanı aç.</string>
+  <string name="morphe_series_tracker_playback_boundary">Bu istiqamətdə başqa epizod yoxdur</string>
+  <string name="morphe_series_tracker_continue_series">%1$s-a davam et</string>
+  <string name="morphe_series_tracker_search_series">Seriya axtar</string>
+  <string name="morphe_series_tracker_clear_search">Axtarışı təmizlə</string>
+  <string name="morphe_series_tracker_no_search_results">Seriya tapılmadı</string>
+  <string name="morphe_series_tracker_untitled_episode">Başlıqsız epizod</string>
+  <string name="morphe_series_tracker_unavailable_episode">Əlçatmaz epizod</string>
 </resources>

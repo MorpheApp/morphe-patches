@@ -93,6 +93,12 @@ Second \"item\" text"</string>
 
 אם אתה משתמש YouTube Premium, ייתכן שהגדרת אפשרות זו לא תהיה נחוצה"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не удалось получить доступ к потокам клиента</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">לקוח ברירת המחדל לא עובד</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s לא עבד כמה פעמים ברציפות, אבל %2$s עבד.
+
+להפוך את %2$s ללקוח ברירת המחדל?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">החלף</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Second \"item\" text"</string>
   <string name="morphe_external_potoken_provider_about_summary">"תכונה זו נמצאת כרגע בפיתוח וייתכן שלא תעבוד
 
 הקש כאן להורדת PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper כבר לא עובד</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"הטוקן המובנה בגרסה זו של PotHelper כבר לא עובד
+
+הפעל את 'זיוף הזרמות וידאו' כדי לתקן את ההשמעה"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">הפעל</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">זייף גרסת אפליקציה</string>
   <string name="morphe_spoof_app_version_summary">מרמה את השרת לחשוב שאתה משתמש בגרסת אפליקציה ישנה יותר כדי לשחזר תכונות ממשק משתמש מדור קודם</string>
@@ -241,6 +253,15 @@ Second \"item\" text"</string>
   <string name="morphe_app_refresh_rate_type_entry_2">נגינה בפורטרט</string>
   <string name="morphe_app_refresh_rate_type_entry_3">נגינה במסך מלא</string>
   <string name="morphe_app_refresh_rate_type_entry_4">נגינה בפורטרט ומסך מלא</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">גופן</string>
+  <string name="morphe_custom_font_type_entry_default">ברירת מחדל</string>
+  <string name="morphe_custom_font_type_entry_system">גופן מערכת המכשיר</string>
+  <string name="morphe_custom_font_type_entry_custom">קובץ גופן מותאם אישית</string>
+  <string name="morphe_custom_font_file_title">קובץ גופן מותאם אישית</string>
+  <string name="morphe_custom_font_file_summary">בחר קובץ גופן TTF או OTF</string>
+  <string name="morphe_custom_font_file_invalid">הקובץ שנבחר אינו גופן TTF או OTF</string>
+  <string name="morphe_custom_font_failed_to_load">לא ניתן היה לטעון את הגופן המותאם אישית ולכן הוא כבוי</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">דיסלייקים אינם זמינים באופן זמני (תם פסק הזמן של ה-API)</string>

@@ -93,6 +93,12 @@ Cài đặt này sẽ không thay đổi biểu tượng ở bất kỳ vị tr�
 
 Nếu bạn đã mua gói Premium, có thể không cần thiết phải bật cài đặt này"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Không thể lấy bất kỳ luồng phát nào</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Máy khách mặc định không hoạt động</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s đã không hoạt động vài lần liên tiếp, nhưng %2$s thì hoạt động.
+
+Đặt %2$s làm máy khách mặc định?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Chuyển</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tắt cài đặt này có thể gây ra lỗi khi phát.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Nếu bạn là người dùng YouTube Premium, cài đặt này có thể khôn
   <string name="morphe_external_potoken_provider_about_summary">"Tính năng này hiện đang được phát triển và có thể không hoạt động
 
 Nhấn vào đây để tải xuống PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper không còn hoạt động</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Token được tích hợp trong phiên bản PotHelper này không còn hiệu lực
+
+Bật 'Giả mạo luồng video' để sửa lỗi phát lại"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Bật</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Giả mạo phiên bản ứng dụng</string>
   <string name="morphe_spoof_app_version_summary">Khiến server nghĩ rằng bạn đang sử dụng phiên bản cũ để khôi phục giao diện cũ</string>
@@ -241,6 +253,15 @@ Nếu muốn tắt tính năng này sau đó, bạn nên xóa dữ liệu ứng 
   <string name="morphe_app_refresh_rate_type_entry_2">Phát lại dọc</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Phát lại toàn màn hình</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Phát lại dọc và toàn màn hình</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Phông chữ</string>
+  <string name="morphe_custom_font_type_entry_default">Mặc định</string>
+  <string name="morphe_custom_font_type_entry_system">Phông chữ hệ thống của thiết bị</string>
+  <string name="morphe_custom_font_type_entry_custom">Tệp phông chữ tùy chỉnh</string>
+  <string name="morphe_custom_font_file_title">Tệp phông chữ tùy chỉnh</string>
+  <string name="morphe_custom_font_file_summary">Chọn tệp phông chữ TTF hoặc OTF</string>
+  <string name="morphe_custom_font_file_invalid">Tệp đã chọn không phải là phông chữ TTF hoặc OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Không thể tải phông chữ tùy chỉnh và phông chữ này đã bị tắt</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Tạm thời không thể tải số lượt không thích (hết thời gian chờ API)</string>

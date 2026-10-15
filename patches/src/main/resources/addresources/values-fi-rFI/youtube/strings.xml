@@ -560,6 +560,22 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Avaa Morphe-jono YouTuben jonon sijaan</string>
   <string name="morphe_queue_add_flyout_menu_title">Lisää valikkokohta syötejonon ponnahdusvalikkoon</string>
   <string name="morphe_queue_add_flyout_menu_summary">Lisää lisäponnahdusvalikkokohdan. Ota tämä käyttöön, jos \"Lisää jonoon\" ei näy.</string>
+  <string name="morphe_local_queue_title">Premium-tyylinen jono</string>
+  <string name="morphe_local_queue_summary">"Korvaa Morphe-jonon laitteessa olevalla jonolla, joka toistaa itsestään ja jonka järjestystä voi muuttaa vetämällä
+
+Info: Seuraava jonossa oleva video käynnistyy vain silloin, kun YouTube on näytöllä"</string>
+  <string name="morphe_local_queue_sheet_title">Jono</string>
+  <string name="morphe_local_queue_open">Jono (%d)</string>
+  <string name="morphe_local_queue_clear">Tyhjennä kaikki</string>
+  <string name="morphe_local_queue_empty">Jonossa ei ole mitään</string>
+  <string name="morphe_local_queue_empty_hint">Käytä Toista seuraavaksi jonossa -toimintoa missä tahansa videossa</string>
+  <string name="morphe_local_queue_now_playing">Nyt toistetaan</string>
+  <string name="morphe_local_queue_play_next">Toista seuraavaksi jonossa</string>
+  <string name="morphe_local_queue_reorder">Järjestä uudelleen</string>
+  <string name="morphe_local_queue_remove">Poista</string>
+  <string name="morphe_local_queue_added">Lisätty jonoon</string>
+  <string name="morphe_local_queue_full">Jono on täynnä</string>
+  <string name="morphe_local_queue_play_failed">Videota ei voitu käynnistää</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Mainosten sallittujen luettelo ponnahdusvalikossa</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Lisää ponnahdusvalikkoon kohde, joka sallii mainosten toiston kyseisen videon kanavalla</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1124,9 +1140,6 @@ Rajoitus: Jos \"Palauta vanha videotoimintopalkki\" on poissa käytöstä, \"Lis
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Takaisin-painike sulkee syötteen</string>
   <string name="morphe_back_button_always_exits_feed_summary">Takaisin-painikkeen painaminen sulkee aina sovelluksen sen sijaan, että se vierittäisi syötteen alkuun</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Pakota järjestelmän fontti</string>
-  <string name="morphe_force_system_font_summary">Näyttää sovelluksen laitteen fontilla YouTube Sansin sijaan</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Piilota tilapalkki</string>
   <string name="morphe_hide_status_bar_summary">Piilottaa järjestelmän tilapalkin. Pyyhkäise yläreunasta alaspäin, niin se näkyy hetkeksi</string>
@@ -1297,18 +1310,21 @@ Rajoitukset:
 • Värit voivat näyttää vääriltä, jos näyttö ei oikeasti pysty näyttämään HDR:ää
 • Toisto voi epäonnistua, jos dekooderi ei pysty käsittelemään HDR:ää
 • HDR riippuu edelleen videovirtoja huijaavasta asiakasohjelmasta"</string>
-  <string name="morphe_force_avc_codec_title">Pakota AVC (H.264) -koodekki</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Hyödyt:
-• Voi parantaa akunkestoa
-• Voi palauttaa puuttuvia videoresoluutioita vanhemmilla laitteilla
-
-Rajoitukset:
-• Suurin resoluutio on 1080p
-• Videon toisto kuluttaa enemmän mobiilidataa kuin VP9 tai AV1
-• HDR-videot eivät käytä AVC:tä
-• Jotkin laitteet eivät voi pakottaa AVC:tä"</string>
+  <string name="morphe_video_codec_title">Videokoodekki</string>
+  <string name="morphe_video_codec_entry_default">Oletus</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Käyttääksesi tätä ominaisuutta, aseta \'Naamioi videovirrat\' arvoksi \'Android VR\' tai \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Pakottaaksesi AVC:n, muuta \'Videovirtojen emulointi\' arvoksi \'Android Studio\', \'Android VR\' tai \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Voi parantaa akun kestoa ja korjata toiston pätkimisen
+• Käyttää enemmän internet-dataa kuin AV1
+
+AVC (H.264)
+• Vaatii videovirtojen emulointiasiakkaan, jona on 'Android Studio', 'Android VR' tai 'visionOS'
+• Voi parantaa akun kestoa entisestään
+• Voi palauttaa puuttuvat videotarkkuudet vanhemmissa laitteissa
+• Maksimitarkkuus on 1080p
+• HDR-videot eivät välttämättä käytä AVC:tä
+• Jotkin laitteet eivät voi pakottaa AVC:tä"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Avaa parannetun laadun valikko</string>
   <string name="morphe_advanced_video_quality_menu_summary">Ohittaa laadunvalintavalikon ja avaa Laatu-valikon lisääsetukset suoraan</string>
@@ -1325,6 +1341,7 @@ Rajoitukset:
 
 AV1-videon toisto saattaa pätkiä."</string>
   <string name="morphe_spoof_video_streams_about_title">Naamioimisen sivuvaikutukset</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Toisto voi epäonnistua 1 minuutin kohdalla</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• \'Ääniraitavalikko\' puuttuu</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Ei AV1-videokoodekkia</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR-immersiivinen tila ei ole käytettävissä</string>
@@ -1351,4 +1368,158 @@ Rajoitus: Palauttaa vanhan tyylin 'Lisää videoita' -peittokuvan"</string>
   <string name="morphe_player_icon_style_entry_bold">Lihavoitu</string>
   <string name="morphe_player_icon_style_entry_custom">Mukautettu</string>
   <string name="morphe_shorts_icon_style_title">Shorts-kuvakkeen tyyli</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Sarjaseuranta</string>
+  <string name="morphe_series_tracker_screen_summary">Seuraa soittolistia sarjoina ja säilytä paikkasi</string>
+  <string name="morphe_series_tracker_title">Ota sarjaseuranta käyttöön</string>
+  <string name="morphe_series_tracker_summary">Lisää historian Sarjat-sivun ja soittolistojen Seuraa sarja -vaihtoehdon</string>
+  <string name="morphe_series_tracker_show_button_title">Näytä sarjaseurannan painike</string>
+  <string name="morphe_series_tracker_show_button_summary">Lisää soittopainikkeen, jolla voi seurata tai avata nykyisen videon sarjan</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Tallenna seurattavien sarjojen edistyminen</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Kirjaa tämän puhelimen toistohistoria tallennetuille sarjoille ja kirjanmerkeille</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Näytä Historia-sivu navigointipalkissa</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Koti, Tilaukset, Ilmoitukset, Historia ja Sinä</string>
+  <string name="morphe_series_tracker_ui_cancel">Peruuta</string>
+  <string name="morphe_series_tracker_ui_save">Tallenna</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Tallenna kirjanmerkki</string>
+  <string name="morphe_series_tracker_ui_series_name">Sarjan nimi</string>
+  <string name="morphe_series_tracker_ui_series_options">Sarjan asetukset</string>
+  <string name="morphe_series_tracker_ui_library_options">Kirjaston asetukset</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Päivitä jaksot</string>
+  <string name="morphe_series_tracker_ui_rename">Nimeä uudelleen</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Avaa soittolista YouTubessa</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Poista kirjastosta</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Soittolistan linkki tai ID</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Tyhjennä kaikki paikallinen edistyminen</string>
+  <string name="morphe_series_tracker_ui_clear_history">Tyhjennä historia</string>
+  <string name="morphe_series_tracker_clear_progress_title">Tyhjentäisikö kaikki paikallinen edistyminen?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Tämä tyhjentää sijainnit, katsottu-ylivoimat ja jatkovalinnat jokaiselle videolle. Tallennetut sarjat ja niiden luettelot säilyvät. Uusi toisto kirjataan, jos tallennus on käytössä.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Merkitse katsotuksi</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Merkitse katsoamattomaksi</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Käytä automaattista tilaa</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Uudelleen 0:00 alkaen</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Soita uudelleen 0:00 alkaen</string>
+  <string name="morphe_series_tracker_ui_status_saved">Tila tallennettu</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Yritä tallentamista uudelleen</string>
+  <string name="morphe_series_tracker_ui_previous_100">Edelliset 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Seuraavat 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Avaa tallennettu video</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Paikallinen edistyminen tyhjennetty</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Avaa Historiasta kohdasta Sinä nähdäksesi sarjasi</string>
+  <string name="morphe_series_tracker_ui_watch_history">Katsohistoria</string>
+  <string name="morphe_series_tracker_ui_series">Sarjat</string>
+  <string name="morphe_series_tracker_ui_history">Historia</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Tilaukset</string>
+  <string name="morphe_series_tracker_ui_notifications">Ilmoitukset</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Ladataan tallennettuja sarjoja…</string>
+  <string name="morphe_series_tracker_empty_library">Seuraa soittolistaa seurataksesi sen jaksoja.</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Soittolistan kirjanmerkki</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Päivitetään jaksoja…</string>
+  <string name="morphe_series_tracker_ui_all_series">Kaikki sarjat</string>
+  <string name="morphe_series_tracker_watched">Katsottu</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Ladataan jaksoja…</string>
+  <string name="morphe_series_tracker_ui_more_options">Lisää vaihtoehtoja</string>
+  <string name="morphe_series_tracker_record_consent">"Kirjaa edistymistä vain sinun tallennamiisi sarjoihin ja kirjanmerkillisiin视频ihin.
+
+Tämä kirjasto tallennetaan tähän laitteeseen ja sitä jaetaan YouTuben tilien kesken. YouTuben pysäytys- ja tyhjennyskäsittelijät eivät vaikuta siihen. Poista se käyttämällä Sarjat → Lisää → Tyhjennä paikallinen edistyminen -komentoa.
+
+Automaattinen tallennus pysyy poissa yksityisessä selailussa, kun tilitunnus ei ole saatavilla, tai kun vaihdat eri tiliin. Ota seuranta uudelleen käyttöön käyttääksesi sitä kyseisen tilin kanssa."</string>
+  <string name="morphe_series_tracker_identity_unavailable">Seurantaa ei voida ottaa käyttöön yksityisessä selailussa tai ennen kuin YouTube on ladannut nykyisen tilin tilan. Palaa Kotiin ja yritä uudelleen. Kirjautumista ei vaadita.</string>
+  <string name="morphe_series_tracker_enable">Ota paikallinen seuranta käyttöön</string>
+  <string name="morphe_series_tracker_tracking_paused">Edistymisen tallennus on pois päältä</string>
+  <string name="morphe_series_tracker_resume_at">Jatka kohdasta %1$s</string>
+  <string name="morphe_series_tracker_watched_count">Katsottu %1$d / %2$d jaksoa</string>
+  <string name="morphe_series_tracker_episode_position">Jakso %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Jaksot %1$d–%2$d / %3$d</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Päivitä yrittääksesi ladata jaksoja. Yksityiset soittolistat tarvitsevat tilin pääsyn; niiden kirjanmerkki avataan silti YouTubessa.</string>
+  <string name="morphe_series_tracker_open_failed">YouTube ei voinut avata tätä jaksoa.</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube ei voinut avata tätä soittolistaa.</string>
+  <string name="morphe_series_tracker_plan_open">Soittolistan kirjanmerkki</string>
+  <string name="morphe_series_tracker_plan_changed">Valitse jakso</string>
+  <string name="morphe_series_tracker_plan_caught_up">Ajantasalla</string>
+  <string name="morphe_series_tracker_plan_none">Ei toistokelpoisia jaksoja</string>
+  <string name="morphe_series_tracker_saved_position">Tallennettu video · %1$s</string>
+  <string name="morphe_series_tracker_follow">Seuraa sarjaa</string>
+  <string name="morphe_series_tracker_view_series">Näytä sarja</string>
+  <string name="morphe_series_tracker_add_icon">Seuraa sarjaa</string>
+  <string name="morphe_series_tracker_continue">Jatka</string>
+  <string name="morphe_series_tracker_start_here">Aloita tästä</string>
+  <string name="morphe_series_tracker_start_saved">Aloituspiste tallennettu</string>
+  <string name="morphe_series_tracker_watched_to_here">Katsottu tähän asti</string>
+  <string name="morphe_series_tracker_marked">Jaksot merkitty katsotuiksi</string>
+  <string name="morphe_series_tracker_undo">Kumoa</string>
+  <string name="morphe_series_tracker_enable_short">Ota käyttöön</string>
+  <string name="morphe_series_tracker_new_episode">1 uusi jakso</string>
+  <string name="morphe_series_tracker_new_episodes">%1$d uutta jaksoa</string>
+  <string name="morphe_series_tracker_record_short">Kirjaa edistyminen tälle laitteelle</string>
+  <string name="morphe_series_tracker_follow_consent">"Sarjasi ja edistyminen säilyvät tällä laitteella, ja niitä jaetaan YouTuben tilien kesken. YouTuben historian käsittelijät eivät vaikuta niihin. Tyhjennä edistyminen Sarjat-valikosta.
+
+Automaattinen tallennus on valinnainen. Se pysyy poissa yksityisessä selailussa tai kun tilillä tapahtuu muutos."</string>
+  <string name="morphe_series_tracker_follow_unavailable">Jaksoja ei voitu ladata. Voit tallentaa soittolistan kirjanmerkkinä.</string>
+  <string name="morphe_series_tracker_error_pending_full">Liian monta tallentamatonta muutosta. Yritä tallentamista ensin uudelleen.</string>
+  <string name="morphe_series_tracker_error_storage_busy">Tallennus on käynnissä. Yritä uudelleen.</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Jaksojen lataus on käynnissä. Yritä uudelleen.</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Tallennustila ei ole saatavilla. Tallennetut tietosi on säilytetty.</string>
+  <string name="morphe_series_tracker_error_storage_save">Muutoksia ei voitu tallentaa. Yritä tallentamista uudelleen ennen YouTuben sulkemista.</string>
+  <string name="morphe_series_tracker_error_conflict">Tämä sarja on jo tallennettu tai sen soittolista on muuttunut. Avaa se uudelleen.</string>
+  <string name="morphe_series_tracker_error_series_changed">Tämä sarja on muuttunut tai poistettu. Avaa kirjasto uudelleen.</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Soittolista on muuttunut. Valitse jakso uudelleen.</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Tämä jakso ei ole saatavilla. Valitse toinen.</string>
+  <string name="morphe_series_tracker_error_name_required">Syötä sarjan nimi.</string>
+  <string name="morphe_series_tracker_error_playlist_input">Syötä YouTube-soittolistan linkki tai soittolistan ID.</string>
+  <string name="morphe_series_tracker_error_retry_later">Odota hetki ennen seuraavaa päivitystä.</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Jaksoja ei voitu ladata. Yritä myöhemmin uudelleen.</string>
+  <string name="morphe_series_tracker_error_operation">Muutosta ei voitu suorittaa. Yritä uudelleen.</string>
+  <string name="morphe_series_tracker_error_resume">Jatkamista ei voitu vahvistaa. Tarkista soitin ja yritä uudelleen.</string>
+  <string name="morphe_series_tracker_followed">Seuratut sarjat</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Tämä video ei ole tässä soittolistassa.</string>
+  <string name="morphe_series_tracker_finding_playlists">Etsitään soittolistoja…</string>
+  <string name="morphe_series_tracker_paste_playlist">Liitä soittolistan linkki</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Soittolistaa ei löytynyt</string>
+  <string name="morphe_series_tracker_no_available_episodes">Jaksoja ei ole saatavilla</string>
+  <string name="morphe_series_tracker_hide_watched">Piilota katsotut</string>
+  <string name="morphe_series_tracker_watch_previous">Merkitse aiemmat jaksot katsotuiksi</string>
+  <string name="morphe_series_tracker_order_starts_with">Alkaa: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Jakojen järjestys</string>
+  <string name="morphe_series_tracker_playlist_order">Soittolistan järjestys</string>
+  <string name="morphe_series_tracker_reverse_order">Käännä soittolistan järjestys</string>
+  <string name="morphe_series_tracker_view_count_large">%1$s katselukertaa</string>
+  <string name="morphe_series_tracker_view_count">%1$s katselukertaa</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s katselu kerran</string>
+  <string name="morphe_series_tracker_completion_title">Merkitse jaksot katsotuiksi</string>
+  <string name="morphe_series_tracker_completion_summary">Vähintään %1$d %% katsottu enintään 90 sekuntia jäljellä, tai %2$d sekuntia jäljellä</string>
+  <string name="morphe_series_tracker_completion_explanation">Merkitse jakso automaattisesti katsotuksi minkä tahansa rajan ylittyessä. Prosenttisääntö vaatii myös enintään 90 sekuntia jäljellä, joten pitkien jaksujen lopputa ei ohiteta. Jäljellä olevan ajan sääntö koskee yli yhden minuutin pituisia videoita; aseta arvoksi 0 poistaaksesi sen käytöstä. Muutokset tulevat voimaan tuleviin edistymispäivityksiin. Manuaaliset katsottu/katsoamaton-valinnat säilyvät.</string>
+  <string name="morphe_series_tracker_completion_percent">Katsottu prosentti (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Sekunteja jäljellä (0–300; 0 poistaa käytöstä)</string>
+  <string name="morphe_series_tracker_completion_save">Tallenna</string>
+  <string name="morphe_series_tracker_completion_range">Syötä arvo väliltä %1$d – %2$d.</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Käytä YouTube-edistymistä</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Jatka seurattavia sarjoja toiston jälkeen toisella laitteella</string>
+  <string name="morphe_series_tracker_sync_consent">Lue seurattavien sarjojesi katsottu tila ja jatkosisijainnit nykyisestä YouTube-tilistä. Vain vastaavat jaksot tallennetaan tähän puhelimeen. Tarkistukset suoritetaan, kun sarjakirjasto on auki ja ennen Jatka-toimintoa. YouTube-historia on oltava käytössä muulla laitteellasi.</string>
+  <string name="morphe_series_tracker_sync_checking">Tarkistetaan YouTube-edistymistä…</string>
+  <string name="morphe_series_tracker_sync_failed">YouTube-edistyminen ei ole saatavilla. Käytetään tallennettua edistymistä.</string>
+  <string name="morphe_series_tracker_sync_partial">Osa YouTuben edistymistä ei ole saatavilla. Tallennetut sijainnit säilyvät.</string>
+  <string name="morphe_series_tracker_backup_title">Varmuuskopiointi ja palauttaminen</string>
+  <string name="morphe_series_tracker_backup_summary">Tallenna sarjakirjastosi tiedostoon tai palauta varmuuskopio</string>
+  <string name="morphe_series_tracker_backup_explanation">Tallentaa seurattavat sarjat, jakson sijainnit ja katsottu-valinnat. Tallennus- ja YouTube-edistymislupia ei sisällytetä.</string>
+  <string name="morphe_series_tracker_backup_save">Tallenna varmuuskopio</string>
+  <string name="morphe_series_tracker_backup_restore">Palauta varmuuskopio</string>
+  <string name="morphe_series_tracker_backup_preview">Lisää %1$d sarjaa. %2$d sarjaa jo kirjastossasi säilytetään. Olemassa oleva videoiden edistyminen säilytetään.</string>
+  <string name="morphe_series_tracker_backup_saved">Sarjavarmuuskopio tallennettu</string>
+  <string name="morphe_series_tracker_backup_restored">%1$d sarjaa palautettu</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Tämä tiedosto ei ole tuettu sarjavarmuuskopio tai se on liian suuri. Kirjastosi ei muuttunut.</string>
+  <string name="morphe_series_tracker_error_backup_write">Varmuuskopian tallentaminen epäonnistui. Kokeile toista sijaintia.</string>
+  <string name="morphe_series_tracker_removed">Sarja poistettu</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Tämä jakso ilmestyy nyt useammin kuin kerran. Valitse, mistä haluat jatkaa.</string>
+  <string name="morphe_series_tracker_recovery_missing">Tallennettu jaksesi ei enää ole tässä soittolistassa. Tallennettu sijaintisi säilytetään.</string>
+  <string name="morphe_series_tracker_recovery_continue">Jatka jaksoon %1$d · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Voit myös valita minkä tahansa alla olevan jakson. Aiemmat jaksot eivät muutu.</string>
+  <string name="morphe_series_tracker_playback_changed">Tämä soittolista on muuttunut. Avaa sarja valitaksesi, mistä haluat jatkaa.</string>
+  <string name="morphe_series_tracker_playback_boundary">Ei enempää jaksoja tähän suuntaan</string>
+  <string name="morphe_series_tracker_continue_series">Jatka: %1$s</string>
+  <string name="morphe_series_tracker_search_series">Hae sarjoja</string>
+  <string name="morphe_series_tracker_clear_search">Tyhjennä haku</string>
+  <string name="morphe_series_tracker_no_search_results">Sarjoja ei löytynyt</string>
+  <string name="morphe_series_tracker_untitled_episode">Nimetön jakso</string>
+  <string name="morphe_series_tracker_unavailable_episode">Ei saatavilla oleva jakso</string>
 </resources>

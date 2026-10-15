@@ -23,6 +23,7 @@ import java.lang.ref.WeakReference;
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.lyrics.LyricsManager;
+import app.morphe.extension.music.patches.lyrics.model.LyricsFilterDefaults;
 import app.morphe.extension.music.patches.lyrics.session.MiniplayerLyrics;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -108,9 +109,9 @@ public final class LyricsPanelInstaller {
                 return;
             }
             if (Settings.LYRICS_SOURCE.key.equals(key)
-                    || Settings.LYRICS_CUSTOM_REGEX.key.equals(key)
-                    || Settings.LYRICS_TEXT_FILTER.key.equals(key)
-                    || Settings.LYRICS_CREDIT_LINE_REGEX.key.equals(key)) {
+                    || LyricsFilterDefaults.LYRICS_CUSTOM_REGEX.key.equals(key)
+                    || LyricsFilterDefaults.LYRICS_TEXT_FILTER.key.equals(key)
+                    || LyricsFilterDefaults.LYRICS_CREDIT_LINE_REGEX.key.equals(key)) {
                 LyricsManager.getInstance().reloadAfterSettingsChange();
                 return;
             }
@@ -136,6 +137,8 @@ public final class LyricsPanelInstaller {
                 panelView.applyTextSize();
             } else if (Settings.LYRICS_HIDE_INFO.key.equals(key)) {
                 panelView.applyHideInfo();
+            } else if (Settings.LYRICS_SHOW_SECTION.key.equals(key)) {
+                panelView.applyShowSection();
             } else if (Settings.LYRICS_HIDE_PLAYED.key.equals(key)
                     || Settings.LYRICS_HIDE_UNPLAYED.key.equals(key)) {
                 panelView.applyLineOverlaySettings();

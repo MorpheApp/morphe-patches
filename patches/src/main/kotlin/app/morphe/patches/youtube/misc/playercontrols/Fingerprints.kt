@@ -100,9 +100,12 @@ internal object PlayerControlsButtonStrokeFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-internal object PlayerControlsModernAccessibilityFeatureFlagFingerprint : Fingerprint(
+/**
+ * Elevated player, which shows the video metadata in a player overlay.
+ */
+internal object ElevatedPlayerFeatureFlagFingerprint : Fingerprint(
     filters = listOf(
-        literal(45757309) // Not completely clear what this flag does.
+        literal(45757309)
     )
 )
 

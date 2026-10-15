@@ -414,7 +414,7 @@ internal fun spoofVideoStreamsPatch(
                     Opcode.RETURN_OBJECT,
                 ),
                 custom = { method, _ ->
-                    !method.parameterTypes.isEmpty()
+                    method.parameterTypes.isNotEmpty()
                 }
             ).method.addInstructionsWithLabels(
                 0,

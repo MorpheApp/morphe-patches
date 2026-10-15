@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.JavaExec
-
 group = "app.morphe"
 
 patches {
@@ -32,8 +30,8 @@ dependencies {
     compileOnly(project(":patches:stub"))
 
     testImplementation(kotlin("test"))
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
+    testImplementation(libs.kotlinx.coroutines.core)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 tasks {

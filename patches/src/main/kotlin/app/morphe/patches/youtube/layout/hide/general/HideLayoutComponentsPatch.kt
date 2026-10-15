@@ -62,8 +62,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.ModernRelateVideoOverlayFingerprint
 import app.morphe.patches.youtube.shared.RelateVideoOverlayLayoutParamFingerprint
-import app.morphe.patches.youtube.shared.hookVideoIntent
-import app.morphe.patches.youtube.shared.openVideoIntentPatch
 import app.morphe.patches.youtube.video.speed.custom.TapAndHoldSpeedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
@@ -119,8 +117,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         treeNodeElementHookPatch,
         inclusiveSpanPatch,
         textComponentPatch,
-        lithoSpannableStringPatch,
-        openVideoIntentPatch
+        lithoSpannableStringPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -559,7 +556,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide comment preview
 
         hookLithoSpannableString(COMMENTS_FILTER)
-        hookVideoIntent(COMMENTS_FILTER, detectVideo = true, detectShorts = false)
 
         // endregion
 

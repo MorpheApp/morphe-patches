@@ -193,7 +193,7 @@ Promene uključuju:
   <string name="morphe_hide_how_this_was_made_section_title">Сакриј одељак „Како је ово направљено“</string>
   <string name="morphe_hide_hype_points_title">Сакриј хајп поене</string>
   <string name="morphe_hide_info_cards_section_title">Саскриј одељак „Инфо картице”</string>
-  <string name="morphe_hide_key_concepts_section_title">Саскриј одељак „Кључни концепти”</string>
+  <string name="morphe_hide_key_concepts_section_title">Сакриј одељак „Кључни концепти”</string>
   <string name="morphe_hide_quizzes_section_title">Саскриј одељак „Квизови”</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Сакриј одељак \"Претражи у овом видеу\"</string>
   <string name="morphe_hide_subscribe_button_title">Сакриј дугме „Запрати”</string>
@@ -560,6 +560,22 @@ Promene uključuju:
   <string name="morphe_queue_override_flyout_menu_summary">Отвара се редица са Морфе уместо YouTube редице</string>
   <string name="morphe_queue_add_flyout_menu_title">Додај ставку менија за искачући ред фида</string>
   <string name="morphe_queue_add_flyout_menu_summary">Додаје додатну искачућу ставку. Омогућите ово ако се \"Додај у ред\" не приказује.</string>
+  <string name="morphe_local_queue_title">Ред у премијум стилу</string>
+  <string name="morphe_local_queue_summary">"Замењује Morphe ред оним који се налази на уређају, сам се пушта и може да се преуређује превлачењем
+
+Инфо: Следећи видео у реду се покреће само док је YouTube на екрану"</string>
+  <string name="morphe_local_queue_sheet_title">Ред</string>
+  <string name="morphe_local_queue_open">Ред (%d)</string>
+  <string name="morphe_local_queue_clear">Очисти све</string>
+  <string name="morphe_local_queue_empty">Нема ставки у реду</string>
+  <string name="morphe_local_queue_empty_hint">Користи опцију „Пусти следеће у реду“ на било ком видео-снимку</string>
+  <string name="morphe_local_queue_now_playing">Тренутно се репродукује</string>
+  <string name="morphe_local_queue_play_next">Пусти следеће у реду</string>
+  <string name="morphe_local_queue_reorder">Преуреди</string>
+  <string name="morphe_local_queue_remove">Уклони</string>
+  <string name="morphe_local_queue_added">Додато у ред</string>
+  <string name="morphe_local_queue_full">Ред је пун</string>
+  <string name="morphe_local_queue_play_failed">Није могуће покренути видео-снимак</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Бела листа за огласе у искачућем менију</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Додаје ставку у искачући мени која омогућава да се огласи репродукују на каналу тог видеа</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1107,9 +1123,6 @@ Promene uključuju:
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Дугме назад излази из фида</string>
   <string name="morphe_back_button_always_exits_feed_summary">Притискање назад увек излази из апликације уместо да се помера на врх фида</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Принуди системски фонт</string>
-  <string name="morphe_force_system_font_summary">Приказује апликацију са системским фонтом уместо YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Сакриј статусну траку</string>
   <string name="morphe_hide_status_bar_summary">Сакрива системску статусну траку. Превуците прстом надоле са горње ивице да бисте је накратко приказали</string>
@@ -1280,18 +1293,21 @@ Promene uključuju:
 • Боје могу изгледати погрешно ако екран заправо не може приказати HDR
 • Репродукција може пропасти ако декодер не може да обради HDR
 • HDR и даље зависи од spoof клијента видео стримова"</string>
-  <string name="morphe_force_avc_codec_title">Присили AVC (H.264) кодек</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Предности:
-• Може побољшати трајање батерије
-• Може вратити недостајуће резолуције видеа на старијим уређајима
-
-Ограничења:
-• Максимална резолуција је 1080p
-• Репродукција видеа ће користити више интернет података него VP9 или AV1
-• HDR видеи неће користити AVC
-• Неки уређаји не могу присилити AVC"</string>
+  <string name="morphe_video_codec_title">Видео кодек</string>
+  <string name="morphe_video_codec_entry_default">Подразумевано</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Да бисте користили ову функцију, поставите „Лажирани видео стримови” на „Android VR” или „Android Studio”.</string>
+  <string name="morphe_video_codec_avc_not_available">Да бисте форсирали AVC, промените „Лажирање видео стримова“ у „Android Studio“, „Android VR“ или „visionOS“</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Може да побољша трајање батерије и да отклони муцање при репродукцији
+• Користи више интернет података од AV1
+
+AVC (H.264)
+• Захтева клијент за лажирање видео стримова „Android Studio“, „Android VR“ или „visionOS“
+• Може још више да побољша трајање батерије
+• Може да врати недостајуће видео резолуције на старијим уређајима
+• Максимална резолуција је 1080p
+• HDR видео записи можда неће користити AVC
+• Неки уређаји не могу да форсирају AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Отвори мени за побољшани квалитет</string>
   <string name="morphe_advanced_video_quality_menu_summary">Прескаче мени за избор квалитета и директно отвара Напредне опције квалитета</string>
@@ -1308,6 +1324,7 @@ Promene uključuju:
 
 Репродукција видеа с AV1 може застајкивати или прескакати кадрове."</string>
   <string name="morphe_spoof_video_streams_about_title">Нежељени ефекти лажирања</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Репродукција може да откаже након 1 минута</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Мени „Аудио снимак” недостаје</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Нема видео кодека AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR imersivni režim nije dostupan</string>
@@ -1334,4 +1351,158 @@ Promene uključuju:
   <string name="morphe_player_icon_style_entry_bold">Подебљано</string>
   <string name="morphe_player_icon_style_entry_custom">Обичај</string>
   <string name="morphe_shorts_icon_style_title">Стил икона за Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Праћење серија</string>
+  <string name="morphe_series_tracker_screen_summary">Прати плейлисте као серије и задржи свој положај</string>
+  <string name="morphe_series_tracker_title">Омогући праћење серија</string>
+  <string name="morphe_series_tracker_summary">Додаје страницу серија у историју и опцију пратења серија у плейлистама</string>
+  <string name="morphe_series_tracker_show_button_title">Прикажи дугме Праћена серија</string>
+  <string name="morphe_series_tracker_show_button_summary">Додаје дугче за плејер да пратите или отворите серију тренутног видеа</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Евиденција напредка у пратењим серијама</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Бележи репродукцију на овом телефону за сачуване серије и обележиваче</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Прикажи Историју у навигационој траци</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Почетна страна, Претплате, Обавештења, Историја и Ви</string>
+  <string name="morphe_series_tracker_ui_cancel">Откажи</string>
+  <string name="morphe_series_tracker_ui_save">Сачувај</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Сачувај обележивач</string>
+  <string name="morphe_series_tracker_ui_series_name">Име серије</string>
+  <string name="morphe_series_tracker_ui_series_options">Опције серије</string>
+  <string name="morphe_series_tracker_ui_library_options">Опције библиотеке</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Освежи епизоде</string>
+  <string name="morphe_series_tracker_ui_rename">Преименуј</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Отвори плейлист на YouTube-у</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Уклони из библиотеке</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Веза или ID плейлистаa</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Обриши sav св localni naпредак</string>
+  <string name="morphe_series_tracker_ui_clear_history">Обриши историју</string>
+  <string name="morphe_series_tracker_clear_progress_title">Обрисати sav локални напредак?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Ово брише позиције, прегласавања за гледање и селекције за наставак за сваки видео. Сачуване серије и њихови каталози остају. Нова репродукција ће бити евидентирана ако је евидентирање омогућено.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Обележи као одгледао</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Обележи као неодгледао</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Користи аутоматски статус</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Поново покренути од 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Пусти поново од 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Статус сачуван</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Покушај поновно сачувавање</string>
+  <string name="morphe_series_tracker_ui_previous_100">Претходних 100</string>
+  <string name="morphe_series_tracker_ui_next_100">Следећих 100</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Отвори сачувани видео</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Локални напредак обрисан</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Отвori Историју из „Vi</string>
+  <string name="morphe_series_tracker_ui_watch_history">Историја гледања</string>
+  <string name="morphe_series_tracker_ui_series">Серије</string>
+  <string name="morphe_series_tracker_ui_history">Историја</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Праћења</string>
+  <string name="morphe_series_tracker_ui_notifications">Обавештења</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Учитавање сачуваних серија…</string>
+  <string name="morphe_series_tracker_empty_library">Праћењем плейлиста пратите његове епизоде.</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Обележивач плейлиста</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Освежавање епизода…</string>
+  <string name="morphe_series_tracker_ui_all_series">Sve serije</string>
+  <string name="morphe_series_tracker_watched">Odglеdано</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Učitavanje epizoda...</string>
+  <string name="morphe_series_tracker_ui_more_options">Више опција</string>
+  <string name="morphe_series_tracker_record_consent">"Забележите напредак само за ваше сачуване серије и обележене видео снимке.
+
+Ova biblioteka je sačuvana na ovom uređaju i deli se između YouTube naloga. YouTube kontrole za pauziranje i brisanje istorije ne utiču na njih. Koristite Serija → Više → Obriši lokalni napredak da biste ih izbrisali.
+
+Аутоматско снимање се зауставља у инкогнито режиму, када идентитет налога није доступан или када се пребаците на други налог. Омогућите праћење поново да бисте га користили са тим налогом."</string>
+  <string name="morphe_series_tracker_identity_unavailable">Праћење се не може омогућити у инкогнито режиму или пре него што YouTube учита тренутно стање налога. Вратите се на Почетну страну и покушајте поново. Није потребно пријављивање.</string>
+  <string name="morphe_series_tracker_enable">Омогући локално праћење</string>
+  <string name="morphe_series_tracker_tracking_paused">Снимање напредка је искључено</string>
+  <string name="morphe_series_tracker_resume_at">Настави на %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$d / %2$d епизода одгледао</string>
+  <string name="morphe_series_tracker_episode_position">Епизода %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Епизоде %1$d–%2$d од %3$d</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Освежити да покушате учитати епизоде. Приватни плейлисти захтевају приступ налогу; њихов обележивач се још увек отвара на YouTube-у.</string>
+  <string name="morphe_series_tracker_open_failed">YouTube nije uspeo da otvori ovu epizodu.</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube nije uspeo da otvori ovaj plejlist.</string>
+  <string name="morphe_series_tracker_plan_open">Obеleživач pleylista</string>
+  <string name="morphe_series_tracker_plan_changed">Izaberite epizodu</string>
+  <string name="morphe_series_tracker_plan_caught_up">Nе ažurirano</string>
+  <string name="morphe_series_tracker_plan_none">Nema dostupnih epizoda</string>
+  <string name="morphe_series_tracker_saved_position">Sačuvan video · %1$s</string>
+  <string name="morphe_series_tracker_follow">Prati seriju</string>
+  <string name="morphe_series_tracker_view_series">Pregledaj seriju</string>
+  <string name="morphe_series_tracker_add_icon">Prati seriju</string>
+  <string name="morphe_series_tracker_continue">Настави</string>
+  <string name="morphe_series_tracker_start_here">Započni ovde</string>
+  <string name="morphe_series_tracker_start_saved">Startna tačka sačuvana</string>
+  <string name="morphe_series_tracker_watched_to_here">Odglеdavаno до оvоg места</string>
+  <string name="morphe_series_tracker_marked">Epizode označene kao odglеdаne</string>
+  <string name="morphe_series_tracker_undo">Поништи</string>
+  <string name="morphe_series_tracker_enable_short">Омогући</string>
+  <string name="morphe_series_tracker_new_episode">1 nova epizoda</string>
+  <string name="morphe_series_tracker_new_episodes">%1$d novih epizoda</string>
+  <string name="morphe_series_tracker_record_short">Evidentiraj naпредаk па ovom uređaju</string>
+  <string name="morphe_series_tracker_follow_consent">"Vaše serije i napredak ostaju na ovom uređaju, deljeni među YouTube nalozima. YouTube kontrole istorije ne menjaju njih. Obrišite napredak iz menija Serija.
+
+Automatsko snimanje je opcionalno. Zaustavlja se u inkognito režimu ili kada se nalog promeni."</string>
+  <string name="morphe_series_tracker_follow_unavailable">Не могу да учитају епизоде. Можете сачувати плейлист као обележивач.</string>
+  <string name="morphe_series_tracker_error_pending_full">Првише измене без чувања. Прво покушајте поновно сачувавање.</string>
+  <string name="morphe_series_tracker_error_storage_busy">Чување је заузето. Покушајте поново.</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Учитавање епизода је заузето. Покушајте поново.</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Складиште није доступно. Вашe сачуване подаци су задржани.</string>
+  <string name="morphe_series_tracker_error_storage_save">Измене нису могле бити сачуване. Покушајте поново сачувавање пре затварања YouTube-а.</string>
+  <string name="morphe_series_tracker_error_conflict">Ova serija je već sačuvana ili se njen plejlist promenio. Ponovo je otvorite.</string>
+  <string name="morphe_series_tracker_error_series_changed">Ova serija je promenjena ili uklonjena. Otvorite ponovo biblioteku.</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Plejlist se promenio. Ponovo izaberite epizodu.</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Ova epizoda nije dostupna. Izaberite drugu.</string>
+  <string name="morphe_series_tracker_error_name_required">Unesite ime serije.</string>
+  <string name="morphe_series_tracker_error_playlist_input">Unesite vezu ili ID YouTube plejlsta.</string>
+  <string name="morphe_series_tracker_error_retry_later">Molim vas sačekajte pre osvežavanja ponovo.</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Ne mogu da učitaepizode. Pokušajte kasnije ponovo.</string>
+  <string name="morphe_series_tracker_error_operation">Promena nije mogla biti dovršena. Pokušajte poнова.</string>
+  <string name="morphe_series_tracker_error_resume">Нastavaк ni moze biti potvrđen. Proverite плеyer и покyшайтe понова.</string>
+  <string name="morphe_series_tracker_followed">Praćenje serije</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Оvaj video nije u ovom plejlistu.</string>
+  <string name="morphe_series_tracker_finding_playlists">Traženje plejlista…</string>
+  <string name="morphe_series_tracker_paste_playlist">Залепите везу плејлиста</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Ne može se pronaći plejlist</string>
+  <string name="morphe_series_tracker_no_available_episodes">Нема dostуpnih epizodа</string>
+  <string name="morphe_series_tracker_hide_watched">Prikrіti odglеdanе</string>
+  <string name="morphe_series_tracker_watch_previous">Označi prethodne epizode kao odglеdanе</string>
+  <string name="morphe_series_tracker_order_starts_with">Počinje sa: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Redosled epizoda</string>
+  <string name="morphe_series_tracker_playlist_order">Redosled plejlsta</string>
+  <string name="morphe_series_tracker_reverse_order">Reverz redosled plejlsta</string>
+  <string name="morphe_series_tracker_view_count_large">Pogledi %1$s</string>
+  <string name="morphe_series_tracker_view_count">Pogledi %1$s</string>
+  <string name="morphe_series_tracker_view_count_one">Pogled %1$s</string>
+  <string name="morphe_series_tracker_completion_title">Označi epizode kao odglеdanе</string>
+  <string name="morphe_series_tracker_completion_summary">Bar %1$d%% odglеdаno sа najviше 90 sekundi рreostalo, ili %2$d sekunde preostalo</string>
+  <string name="morphe_series_tracker_completion_explanation">Аутоматски означите епизоду као одгледао након што било која граница буде исцрпљена. Правило процента такође захтева да преостало време није више од 90 секунди, тако крајеви дугих епизода није прескочен. Правилo преосталог времена примењује се на видео дуље од једног минута; поставите на 0 да искључите. Промене важе за будуће актуелизације напредка. Ручни избори одгледао/неодгледао се задржавају.</string>
+  <string name="morphe_series_tracker_completion_percent">Процент одгледао (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Преостале секунде (0–300; 0 искључује)</string>
+  <string name="morphe_series_tracker_completion_save">Сачувај</string>
+  <string name="morphe_series_tracker_completion_range">Унесите вредност од %1$d до %2$d.</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Користи YouTube напредак</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Нastavіte praćenje serija nakon gledanja na drugom uređaju</string>
+  <string name="morphe_series_tracker_sync_consent">Читање статуса одгледао и позиција наставака за ваше праћене серије из тренутног YouTube налога. Само одговарајуће епизоде се чувају на овом телефону. Провере се врше док је библиотека серија отворена и пре „Настави“. Историја YouTube-а мора бити омогућена на вашем другом уређају.</string>
+  <string name="morphe_series_tracker_sync_checking">Проверавање YouTube напредка…</string>
+  <string name="morphe_series_tracker_sync_failed">Напредак YouTube-а недоступан. Користи се сачувани напредак.</string>
+  <string name="morphe_series_tracker_sync_partial">Неки напредак YouTube-а недоступан. Сачуване позиције задржане.</string>
+  <string name="morphe_series_tracker_backup_title">Бекап и ресинхронизација</string>
+  <string name="morphe_series_tracker_backup_summary">Сачувајте вашу библиотеку серије у фајл или вратите бекап</string>
+  <string name="morphe_series_tracker_backup_explanation">Чува пратеће серије, позиције епизода и изворе гледања. Дозволе за снимање и напредак YouTube-а нису укључене.</string>
+  <string name="morphe_series_tracker_backup_save">Сачувај бекап</string>
+  <string name="morphe_series_tracker_backup_restore">Врати бекап</string>
+  <string name="morphe_series_tracker_backup_preview">Додај %1$d серије. %2$d серије већ у вашoj библиотеци су задржане. Постоећи напредак видеа је задржан.</string>
+  <string name="morphe_series_tracker_backup_saved">Бекап серије сачуван</string>
+  <string name="morphe_series_tracker_backup_restored">Враћено %1$d серија</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Овај фајл није подржана резервна копија серије, или је превелика. Ваша библиотека није промењена.</string>
+  <string name="morphe_series_tracker_error_backup_write">Није успело чување бекапа. Покушајте другу локацију.</string>
+  <string name="morphe_series_tracker_removed">Серија уклоњена</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Ова епизода сада изгледа чешће једном. Изаберите коју ћете наставити.</string>
+  <string name="morphe_series_tracker_recovery_missing">Ваша сачувана епизода више није у овом плейлисту. Ваша сачувана позиција је задржана.</string>
+  <string name="morphe_series_tracker_recovery_continue">Настави са епизодом %1$d · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Може также избрати любую epizodu нижe. Ранje эпизоды не изменяются.</string>
+  <string name="morphe_series_tracker_playback_changed">Plejlist se promenio. Otvorite seriju da izaberete gde ćete nastaviti.</string>
+  <string name="morphe_series_tracker_playback_boundary">Nema više epizoda u ovom smeru</string>
+  <string name="morphe_series_tracker_continue_series">Nastavi %1$s</string>
+  <string name="morphe_series_tracker_search_series">Pretraga serija</string>
+  <string name="morphe_series_tracker_clear_search">Obriši pretragu</string>
+  <string name="morphe_series_tracker_no_search_results">Ne pronađene serije</string>
+  <string name="morphe_series_tracker_untitled_episode">Bez naziva epizode</string>
+  <string name="morphe_series_tracker_unavailable_episode">Neдоступna epizoda</string>
 </resources>

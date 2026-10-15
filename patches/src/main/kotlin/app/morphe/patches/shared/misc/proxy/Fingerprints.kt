@@ -11,10 +11,10 @@ import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal const val CRONET_ENGINE_CLASS = "Lorg/chromium/net/CronetEngine;"
-internal const val CRONET_BUILDER_CLASS = "Lorg/chromium/net/CronetEngine\$Builder;"
+internal const val CRONET_BUILDER_CLASS = $$"Lorg/chromium/net/CronetEngine$Builder;"
 
 private const val PROXY_CLASS = "Lorg/chromium/net/Proxy;"
-private const val PROXY_HTTP_CONNECT_CALLBACK_CLASS = "Lorg/chromium/net/Proxy\$HttpConnectCallback;"
+private const val PROXY_HTTP_CONNECT_CALLBACK_CLASS = $$"Lorg/chromium/net/Proxy$HttpConnectCallback;"
 private const val PROXY_OPTIONS_CLASS = "Lorg/chromium/net/ProxyOptions;"
 
 internal object BuildExperimentalFingerprint : Fingerprint(

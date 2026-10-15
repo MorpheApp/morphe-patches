@@ -93,6 +93,12 @@ Um das Symbol überall zu ändern, patche erneut und ändere die Patch-Option 'A
 
 Als Nutzer von YouTube Premium ist diese Einstellung möglicherweise nicht erforderlich."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Es konnten keine Client-Streams abgerufen werden</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Standard-Client funktioniert nicht</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s hat mehrmals hintereinander nicht funktioniert, aber %2$s schon.
+
+Soll %2$s als Standard-Client festgelegt werden?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Wechseln</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Um diese Funktion zu nutzen, deaktiviere 'Video-Streams spoofen'.originalText"</
   <string name="morphe_external_potoken_provider_about_summary">"Diese Funktion befindet sich derzeit in der Entwicklung und funktioniert möglicherweise nicht
 
 Tippe hier, um PotHelper herunterzuladen."</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper funktioniert nicht mehr</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Das in dieser Version von PotHelper enthaltene Token funktioniert nicht mehr
+
+Aktivieren Sie „Video-Streams vortäuschen“, um die Wiedergabe zu reparieren"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Aktivieren</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">App-Version spoofen</string>
   <string name="morphe_spoof_app_version_summary">Täuscht dem Server eine ältere App-Version vor, um ältere UI-Funktionen wiederherzustellen</string>
@@ -241,6 +253,15 @@ Sollte die Funktion später deaktiviert werden, wird empfohlen, die App-Daten zu
   <string name="morphe_app_refresh_rate_type_entry_2">Wiedergabe im Hochformat</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Wiedergabe im Vollbild</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Wiedergabe im Hochformat und Vollbild</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Schriftart</string>
+  <string name="morphe_custom_font_type_entry_default">Standard</string>
+  <string name="morphe_custom_font_type_entry_system">Systemschriftart des Geräts</string>
+  <string name="morphe_custom_font_type_entry_custom">Benutzerdefinierte Schriftartdatei</string>
+  <string name="morphe_custom_font_file_title">Benutzerdefinierte Schriftartdatei</string>
+  <string name="morphe_custom_font_file_summary">Wählen Sie eine TTF- oder OTF-Schriftdatei aus</string>
+  <string name="morphe_custom_font_file_invalid">Die ausgewählte Datei ist keine TTF- oder OTF-Schriftdatei</string>
+  <string name="morphe_custom_font_failed_to_load">Die benutzerdefinierte Schriftartdatei konnte nicht geladen werden und ist deaktiviert</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislikes sind vorübergehend nicht verfügbar (API Timeout)</string>

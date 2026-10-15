@@ -170,7 +170,6 @@ Guherînan têne xistine:
   <string name="morphe_hide_how_this_was_made_section_title">Beşa \'Çawa ev hatiye çêkirin\' veşêre</string>
   <string name="morphe_hide_hype_points_title">Zorîyên Heyecan ve nebînîne.</string>
   <string name="morphe_hide_info_cards_section_title">Bêjeya \'Dîtinên sereke\' veşêrin</string>
-  <string name="morphe_hide_key_concepts_section_title">Bêjeya Muzîk veşêrin</string>
   <string name="morphe_hide_quizzes_section_title">Bêjeya Transkrîpsiyon veşêrin</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Vê beşa \'Li vê vîdyoyê têkeve\' veşêrin</string>
   <string name="morphe_hide_subscribe_button_title">Bişîniya butona \'Subscribe\' veşêrin</string>
@@ -467,6 +466,7 @@ Info: May not work on live streams"</string>
   <string name="morphe_queue_override_flyout_menu_summary">Lihevîneya Morphe li şûna hejmara YouTube\'yê vekirin</string>
   <string name="morphe_queue_add_flyout_menu_title">Bendeleya rêza flyout-a feed-ê zêde bike</string>
   <string name="morphe_queue_add_flyout_menu_summary">Bendeleya flyout-ê ya zêde zêde dike. Heke \"Zêde bikeye rêzê\" nîşan neyê, vê çalak bike.</string>
+  <string name="morphe_local_queue_remove">Lêkirin</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <string name="morphe_queue_manager_check_failed_auth">Tewrê nîşanî dayî ne</string>
   <string name="morphe_queue_manager_check_failed_playlist_id">Îd-a lîsteyê tune ye</string>
@@ -962,7 +962,6 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <string name="morphe_miniplayer_opacity_title">Astê dorpelê</string>
   <string name="morphe_miniplayer_opacity_summary">Rengê têkildar ê Sebarê</string>
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <string name="morphe_theme_color_light_title">Paşxaneya temaya ronî</string>
@@ -1092,18 +1091,8 @@ Sînordarî: Ger 'Restore old video action bar' veqetandibe, 'More videos' dîti
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Ji vegirtina vîdyoyê ya HDR qut biqevîne</string>
-  <string name="morphe_force_avc_codec_title">Koda AVC (H.264) bi zorê bikar bîne</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Feydeyên:
-• Dikare jîyana bateriyê çêbike
-• Dikare çareseriyên video yên kêrhatî li ser cîhakekî kevn darvekirin
-
-Sînergirên:
-• Çareseriya mezin sedî 1080p e
-• Lêxistina video dê daneyên interneta zêdetir bikar bîne mîna VP9 an AV1
-• Video yan HDR dê AVC bikar nebin
-• Hin alav nikarên AVC zor bike"</string>
+  <string name="morphe_video_codec_entry_default">Bixweber</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Ji bo bikaranîna vê taybetmendiyê, \'Sexandina streamên vîdyoyê\' li ser \'Android VR\' an \'Android Studio\' saz bikin.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Veke ji menuya kalîteya pêşkeftî ve bike</string>
   <string name="morphe_advanced_video_quality_menu_summary">Dibe menuya hilbijartina kalîteyê derbas dike û rasterast menuya kalîteya Pêşkeftî vekirin</string>
@@ -1137,4 +1126,5 @@ Lêxistina video bi AV1 dikare kîzbirin an kêmuçêkî framean bike."</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_auto">Otomatîk</string>
   <string name="morphe_player_icon_style_entry_default">Bixweber</string>
+  <!-- video.series.seriesTrackerPatch -->
 </resources>

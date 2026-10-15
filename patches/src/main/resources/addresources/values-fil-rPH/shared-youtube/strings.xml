@@ -93,6 +93,12 @@ Para mabago ang icon sa lahat ng dako, mag-patch muli at baguhin ang opsyon sa p
 
 Kung ikaw ay isang gumagamit ng YouTube Premium, maaaring hindi na kailanganin ang setting na ito."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hindi makuha ang anumang mga stream ng kliyente</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Hindi gumagana ang default na kliyente</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"Hindi gumana ang %1$s nang ilang magkakasunod na beses, ngunit gumana ang %2$s.
+
+Gawing default na kliyente ang %2$s?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Lumipat</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng isyu sa playback kung pinatay mo ang pagpipilian na ito</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Upang gamitin ang feature na ito, i-off ang 'Pekeng video streams'"</string>
   <string name="morphe_external_potoken_provider_about_summary">"Kasalukuyang nasa ilalim ng pag-unlad ang tampok na ito at maaaring hindi gumana
 
 Pindutin dito upang i-download ang PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">Hindi na gumagana ang PotHelper</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Ang token na nakapaloob sa bersyong ito ng PotHelper ay hindi na gumagana
+
+I-on ang 'Gayahin ang mga video stream' upang ayusin ang pag-playback"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">I-on</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Pekein ang bersyon ng app</string>
   <string name="morphe_spoof_app_version_summary">Niloloko nito ang server para isipin na gumagamit ka ng mas lumang bersyon ng app upang maibalik ang mga dating feature ng UI</string>
@@ -241,6 +253,15 @@ Kung patayin ito sa kalaunan, inirerekomenda na i-clear ang data ng app upang ma
   <string name="morphe_app_refresh_rate_type_entry_2">Pag-playback sa portrait</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Pag-playback sa fullscreen</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Pag-playback sa portrait at fullscreen</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Tipo ng letra</string>
+  <string name="morphe_custom_font_type_entry_default">Awtomatiko</string>
+  <string name="morphe_custom_font_type_entry_system">System font ng device</string>
+  <string name="morphe_custom_font_type_entry_custom">Custom na font file</string>
+  <string name="morphe_custom_font_file_title">Custom na font file</string>
+  <string name="morphe_custom_font_file_summary">Pumili ng TTF o OTF na font file</string>
+  <string name="morphe_custom_font_file_invalid">Ang napiling file ay hindi isang TTF o OTF na font</string>
+  <string name="morphe_custom_font_failed_to_load">Hindi ma-load ang custom na font at naka-off ito</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Pansamantalang hindi magagamit ang mga dislike (Nag-time out ang API)</string>

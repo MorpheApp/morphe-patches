@@ -93,6 +93,12 @@ Pentru a schimba pictograma peste tot, aplicați patch-ul din nou și modificaț
 
 Dacă ești un utilizator YouTube Premium, această setare s-ar putea să nu fie necesară"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nu s-a putut încărca nicio client stream</string>
+  <!-- 'Default client' must use the same translation as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_client_failing_dialog_title">Clientul implicit nu funcționează</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_message">"%1$s nu a funcționat de mai multe ori la rând, dar %2$s a funcționat.
+
+Faci din %2$s clientul implicit?"</string>
+  <string name="morphe_spoof_video_streams_client_failing_dialog_switch">Comută</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dezactivarea acestei setări poate cauza probleme de redare.</string>
   <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
@@ -223,6 +229,12 @@ Pentru a utiliza această funcție, dezactivați 'Spoof video streams'"</string>
   <string name="morphe_external_potoken_provider_about_summary">"Această funcție este în curs de dezvoltare și poate să nu funcționeze
 
 Atinge aici pentru a descărca PotHelper"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_title">PotHelper nu mai funcționează</string>
+  <!-- 'Spoof video streams' must use the same translation as morphe_spoof_video_streams_title -->
+  <string name="morphe_external_potoken_provider_expired_dialog_message">"Tokenul încorporat în această versiune de PotHelper nu mai funcționează
+
+Activează „Simulare fluxuri video” pentru a remedia redarea"</string>
+  <string name="morphe_external_potoken_provider_expired_dialog_turn_on">Activează</string>
   <!-- misc.spoof.appversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că folosești o versiune mai veche a aplicației pentru a restabili funcționalități UI vechi</string>
@@ -241,6 +253,15 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_app_refresh_rate_type_entry_2">Redare în portret</string>
   <string name="morphe_app_refresh_rate_type_entry_3">Redare pe ecran complet</string>
   <string name="morphe_app_refresh_rate_type_entry_4">Redare în portret și pe ecran complet</string>
+  <!-- layout.font.baseCustomFontPatch -->
+  <string name="morphe_custom_font_type_title">Tip de font</string>
+  <string name="morphe_custom_font_type_entry_default">Implicit</string>
+  <string name="morphe_custom_font_type_entry_system">Fontul de sistem al dispozitivului</string>
+  <string name="morphe_custom_font_type_entry_custom">Fișier font personalizat</string>
+  <string name="morphe_custom_font_file_title">Fișier font personalizat</string>
+  <string name="morphe_custom_font_file_summary">Alegeți un fișier font TTF sau OTF</string>
+  <string name="morphe_custom_font_file_invalid">Fișierul selectat nu este un font TTF sau OTF</string>
+  <string name="morphe_custom_font_failed_to_load">Fontul personalizat nu a putut fi încărcat și este dezactivat</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_ryd_failure_connection_timeout">Dislike-uri temporar indisponibile (API a expirat)</string>

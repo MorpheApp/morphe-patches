@@ -192,7 +192,7 @@ Ví dụ:
   <string name="morphe_hide_how_this_was_made_section_title">Ẩn phần \'Cách mà điều này được tạo ra\'</string>
   <string name="morphe_hide_hype_points_title">Ẩn Điểm khuấy động</string>
   <string name="morphe_hide_info_cards_section_title">Ẩn phần Thẻ thông tin</string>
-  <string name="morphe_hide_key_concepts_section_title">Ẩn phần \"Khái niệm chính\"</string>
+  <string name="morphe_hide_key_concepts_section_title">Ẩn \"Khái niệm chính\"</string>
   <string name="morphe_hide_quizzes_section_title">Ẩn phần Câu hỏi</string>
   <string name="morphe_hide_search_inside_this_video_section_title">Ẩn phần \'Tìm kiếm trong video này\'</string>
   <string name="morphe_hide_subscribe_button_title">Ẩn nút Đăng ký</string>
@@ -559,6 +559,22 @@ Lưu ý: Có thể không hoạt động với video phát trực tiếp"</strin
   <string name="morphe_queue_override_flyout_menu_summary">Mở hàng chờ Morphe thay vì hàng chờ YouTube</string>
   <string name="morphe_queue_add_flyout_menu_title">Thêm menu hàng chờ trên trang video</string>
   <string name="morphe_queue_add_flyout_menu_summary">Thêm tùy chọn vào menu bổ sung. Bật tùy chọn này nếu không thấy \"Thêm vào hàng chờ\"</string>
+  <string name="morphe_local_queue_title">Hàng đợi kiểu Premium</string>
+  <string name="morphe_local_queue_summary">"Thay thế hàng đợi Morphe bằng hàng đợi được lưu trên thiết bị, tự động phát liên tục và có thể sắp xếp lại bằng cách kéo
+
+Thông tin: Video tiếp theo trong hàng đợi chỉ bắt đầu phát khi YouTube đang hiển thị trên màn hình"</string>
+  <string name="morphe_local_queue_sheet_title">Hàng đợi</string>
+  <string name="morphe_local_queue_open">Hàng đợi (%d)</string>
+  <string name="morphe_local_queue_clear">Xóa tất cả</string>
+  <string name="morphe_local_queue_empty">Không có gì trong hàng đợi</string>
+  <string name="morphe_local_queue_empty_hint">Sử dụng Phát tiếp theo trong hàng đợi trên bất kỳ video nào</string>
+  <string name="morphe_local_queue_now_playing">Đang phát</string>
+  <string name="morphe_local_queue_play_next">Phát tiếp theo trong hàng đợi</string>
+  <string name="morphe_local_queue_reorder">Sắp xếp lại</string>
+  <string name="morphe_local_queue_remove">Xóa</string>
+  <string name="morphe_local_queue_added">Đã thêm vào hàng đợi</string>
+  <string name="morphe_local_queue_full">Hàng đợi đã đầy</string>
+  <string name="morphe_local_queue_play_failed">Không thể phát video</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_title">Danh sách trắng quảng cáo trong menu bật lên</string>
   <string name="morphe_ads_channel_whitelist_flyout_menu_summary">Thêm một mục trong menu bật lên cho phép quảng cáo phát trên kênh của video đó</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
@@ -1123,9 +1139,6 @@ Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị t
   <!-- misc.fix.fixBackToExitGesturePatch -->
   <string name="morphe_back_button_always_exits_feed_title">Bấm quay lại để thoát trang video</string>
   <string name="morphe_back_button_always_exits_feed_summary">Bấm nút quay lại sẽ luôn luôn thoát ứng dụng thay vì lướt lên đầu trang video</string>
-  <!-- layout.font.forceSystemFontPatch -->
-  <string name="morphe_force_system_font_title">Luôn dùng phông chữ hệ thống</string>
-  <string name="morphe_force_system_font_summary">Hiển thị ứng dụng với phông chữ của thiết bị thay vì YouTube Sans</string>
   <!-- layout.statusbar.hideStatusBarPatch -->
   <string name="morphe_hide_status_bar_title">Ẩn thanh trạng thái</string>
   <string name="morphe_hide_status_bar_summary">Ẩn thanh trạng thái hệ thống. Vuốt xuống từ mép trên để hiện thanh trạng thái trong giây lát</string>
@@ -1296,18 +1309,21 @@ Hạn chế:
 • Màu sắc có thể hiển thị sai nếu màn hình không thực sự hỗ trợ HDR
 • Phát lại có thể thất bại nếu bộ giải mã không xử lý được HDR
 • HDR vẫn phụ thuộc vào ứng dụng khách giả lập luồng video"</string>
-  <string name="morphe_force_avc_codec_title">Buộc codec AVC (H.264)</string>
-  <string name="morphe_force_avc_codec_user_dialog_message">"Lợi ích:
-• Có thể cải thiện thời lượng pin
-• Có thể khôi phục độ phân giải video bị thiếu trên thiết bị cũ
-
-Hạn chế:
-• Độ phân giải tối đa là 1080p
-• Phát video sẽ sử dụng nhiều dữ liệu internet hơn VP9 hoặc AV1
-• Video HDR sẽ không sử dụng AVC
-• Một số thiết bị không thể buộc sử dụng AVC"</string>
+  <string name="morphe_video_codec_title">Codec video</string>
+  <string name="morphe_video_codec_entry_default">Mặc định</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Để dùng tính năng này, hãy đặt \'Giả mạo luồng phát video\' thành \'Android VR\' hoặc \'Android Studio\'</string>
+  <string name="morphe_video_codec_avc_not_available">Để buộc dùng AVC, hãy đổi \'Giả mạo luồng video\' thành \'Android Studio\', \'Android VR\' hoặc \'visionOS\'</string>
+  <string name="morphe_video_codec_user_dialog_message">"VP9
+• Có thể cải thiện thời lượng pin và khắc phục tình trạng phát lại bị giật
+• Sử dụng nhiều dữ liệu internet hơn AV1
+
+AVC (H.264)
+• Yêu cầu máy khách giả mạo luồng video phải là 'Android Studio', 'Android VR' hoặc 'visionOS'
+• Có thể cải thiện thời lượng pin nhiều hơn nữa
+• Có thể khôi phục các độ phân giải video bị thiếu trên các thiết bị cũ
+• Độ phân giải tối đa là 1080p
+• Video HDR có thể không sử dụng AVC
+• Một số thiết bị không thể buộc dùng AVC"</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Mở menu Chất lượng nâng cao</string>
   <string name="morphe_advanced_video_quality_menu_summary">Bỏ qua menu chọn chất lượng và mở trực tiếp menu chất lượng nâng cao</string>
@@ -1324,6 +1340,7 @@ Hạn chế:
 
 Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_about_title">Hạn chế khi giả mạo</string>
+  <string name="morphe_spoof_video_streams_about_failure">• Phát lại có thể bị lỗi sau 1 phút</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Thiếu menu \"Bản âm thanh\"</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• Không có codec video AV1</string>
   <string name="morphe_spoof_video_streams_about_no_immersive_mode">• Không hỗ trợ chế độ trải nhiệm VR 360°</string>
@@ -1350,4 +1367,158 @@ Hạn chế: Trở về lớp phủ 'Xem thêm video' kiểu cũ"</string>
   <string name="morphe_player_icon_style_entry_bold">Đậm</string>
   <string name="morphe_player_icon_style_entry_custom">Tùy chỉnh</string>
   <string name="morphe_shorts_icon_style_title">Kiểu biểu tượng Shorts</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_screen_title">Theo dõi loạt phim</string>
+  <string name="morphe_series_tracker_screen_summary">Theo dõi danh sách phát như các loạt phim và giữ vị trí hiện tại</string>
+  <string name="morphe_series_tracker_title">Bật theo dõi loạt phim</string>
+  <string name="morphe_series_tracker_summary">Thêm trang Loạt phim vào Lịch sử và tùy chọn Theo dõi loạt phim cho danh sách phát</string>
+  <string name="morphe_series_tracker_show_button_title">Hiện nút Theo dõi Loạt tập</string>
+  <string name="morphe_series_tracker_show_button_summary">Thêm một nút trình phát để theo dõi hoặc mở loạt tập của video hiện tại</string>
+  <string name="morphe_series_tracker_record_followed_progress_title">Ghi lại tiến độ của loạt tập đang theo dõi</string>
+  <string name="morphe_series_tracker_record_followed_progress_summary">Ghi lại việc phát trên thiết bị này cho các loạt tập đã lưu và dấu trang</string>
+  <string name="morphe_series_tracker_show_history_tab_title">Hiển thị Lịch sử trong thanh điều hướng</string>
+  <string name="morphe_series_tracker_show_history_tab_summary">Trang chủ, Đăng ký, Thông báo, Lịch sử và Bạn</string>
+  <string name="morphe_series_tracker_ui_cancel">Thôi</string>
+  <string name="morphe_series_tracker_ui_save">Lưu</string>
+  <string name="morphe_series_tracker_ui_save_bookmark">Lưu dấu trang</string>
+  <string name="morphe_series_tracker_ui_series_name">Tên loạt tập</string>
+  <string name="morphe_series_tracker_ui_series_options">Tùy chọn loạt tập</string>
+  <string name="morphe_series_tracker_ui_library_options">Tùy chọn thư viện</string>
+  <string name="morphe_series_tracker_ui_refresh_episodes">Làm mới tập</string>
+  <string name="morphe_series_tracker_ui_rename">Đổi tên</string>
+  <string name="morphe_series_tracker_ui_open_playlist_in_youtube">Mở danh sách phát trên YouTube</string>
+  <string name="morphe_series_tracker_ui_remove_from_library">Xóa khỏi thư viện</string>
+  <string name="morphe_series_tracker_ui_playlist_link_or_id">Liên kết hoặc ID danh sách phát</string>
+  <string name="morphe_series_tracker_ui_clear_all_local_progress">Xóa tất cả tiến độ cục bộ</string>
+  <string name="morphe_series_tracker_ui_clear_history">Xóa lịch sử</string>
+  <string name="morphe_series_tracker_clear_progress_title">Xóa tất cả tiến độ cục bộ?</string>
+  <string name="morphe_series_tracker_clear_progress_message">Điều này sẽ xóa vị trí, ghi đè trạng thái đã xem và lựa chọn tiếp tục đối với mọi video. Các loạt tập đã lưu và danh mục mục lục của chúng vẫn được giữ nguyên. Việc phát lại sẽ được ghi nếu tính năng ghi được bật.</string>
+  <string name="morphe_series_tracker_ui_mark_watched">Đánh dấu đã xem</string>
+  <string name="morphe_series_tracker_ui_mark_unwatched">Đánh dấu chưa xem</string>
+  <string name="morphe_series_tracker_ui_use_automatic_status">Sử dụng trạng thái tự động</string>
+  <string name="morphe_series_tracker_ui_restart_from_0_00">Khởi động lại từ 0:00</string>
+  <string name="morphe_series_tracker_ui_play_again_from_0_00">Phát lại từ 0:00</string>
+  <string name="morphe_series_tracker_ui_status_saved">Đã lưu trạng thái</string>
+  <string name="morphe_series_tracker_ui_retry_saving">Thử lại lưu</string>
+  <string name="morphe_series_tracker_ui_previous_100">100 mục trước</string>
+  <string name="morphe_series_tracker_ui_next_100">100 mục sau</string>
+  <string name="morphe_series_tracker_ui_open_saved_video">Mở video đã lưu</string>
+  <string name="morphe_series_tracker_ui_local_progress_cleared">Tiến độ cục bộ đã được xóa</string>
+  <string name="morphe_series_tracker_ui_open_history_from_you_to_view_your_series">Mở Lịch sử từ Bạn để xem loạt tập của bạn</string>
+  <string name="morphe_series_tracker_ui_watch_history">Lịch sử đã xem</string>
+  <string name="morphe_series_tracker_ui_series">Loạt tập</string>
+  <string name="morphe_series_tracker_ui_history">Lịch sử</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Kênh đăng ký</string>
+  <string name="morphe_series_tracker_ui_notifications">Thông báo</string>
+  <string name="morphe_series_tracker_ui_loading_saved_series">Đang tải loạt tập đã lưu…</string>
+  <string name="morphe_series_tracker_empty_library">Theo dõi một danh sách phát để kiểm tra các tập của nó.</string>
+  <string name="morphe_series_tracker_ui_playlist_bookmark">Dấu trang danh sách phát</string>
+  <string name="morphe_series_tracker_ui_refreshing_episodes">Đang làm mới các tập…</string>
+  <string name="morphe_series_tracker_ui_all_series">Tất cả loạt tập</string>
+  <string name="morphe_series_tracker_watched">Đã xem</string>
+  <string name="morphe_series_tracker_ui_loading_episodes">Đang tải các tập…</string>
+  <string name="morphe_series_tracker_ui_more_options">Nhiều tuỳ chọn hơn</string>
+  <string name="morphe_series_tracker_record_consent">"Chỉ ghi tiến độ cho các loạt tập đã lưu và video đã đánh dấu dấu trang của bạn.
+
+Thư viện này được lưu trữ trên thiết bị này và chia sẻ giữa các tài khoản YouTube. Các lệnh tạm dừng và xóa lịch sử của YouTube không thay đổi nó. Sử dụng Loạt tập → Thêm → Xóa tiến độ cục bộ để xóa nó.
+
+Quá trình ghi tự động dừng ở chế độ ẩn danh, khi danh tính tài khoản không khả dụng hoặc khi bạn chuyển sang tài khoản khác. Bật tính năng theo dõi lại để sử dụng với tài khoản đó."</string>
+  <string name="morphe_series_tracker_identity_unavailable">Không thể kích hoạt tính năng theo dõi ở chế độ ẩn danh hoặc trước khi YouTube tải trạng thái tài khoản hiện tại. Quay lại Trang chủ và thử lại. Không cần đăng nhập.</string>
+  <string name="morphe_series_tracker_enable">Bật theo dõi cục bộ</string>
+  <string name="morphe_series_tracker_tracking_paused">Tính năng ghi tiến độ đang tắt</string>
+  <string name="morphe_series_tracker_resume_at">Tiếp tục lúc %1$s</string>
+  <string name="morphe_series_tracker_watched_count">%1$d / %2$d tập đã xem</string>
+  <string name="morphe_series_tracker_episode_position">Tập %1$d · %2$s</string>
+  <string name="morphe_series_tracker_episode_range">Các tập %1$d–%2$d trong tổng số %3$d</string>
+  <string name="morphe_series_tracker_catalog_unavailable">Làm mới để thử tải các tập. Danh sách phát riêng tư cần quyền truy cập tài khoản; dấu trang của chúng vẫn mở trên YouTube.</string>
+  <string name="morphe_series_tracker_open_failed">YouTube không thể mở tập này.</string>
+  <string name="morphe_series_tracker_playlist_failed">YouTube không thể mở danh sách phát này.</string>
+  <string name="morphe_series_tracker_plan_open">Dấu trang danh sách phát</string>
+  <string name="morphe_series_tracker_plan_changed">Chọn một tập</string>
+  <string name="morphe_series_tracker_plan_caught_up">Cập nhật</string>
+  <string name="morphe_series_tracker_plan_none">Không có tập nào có thể phát</string>
+  <string name="morphe_series_tracker_saved_position">Video đã lưu · %1$s</string>
+  <string name="morphe_series_tracker_follow">Theo dõi loạt tập</string>
+  <string name="morphe_series_tracker_view_series">Xem loạt tập</string>
+  <string name="morphe_series_tracker_add_icon">Theo dõi loạt tập</string>
+  <string name="morphe_series_tracker_continue">Tiếp</string>
+  <string name="morphe_series_tracker_start_here">Bắt đầu tại đây</string>
+  <string name="morphe_series_tracker_start_saved">Điểm bắt đầu đã được lưu</string>
+  <string name="morphe_series_tracker_watched_to_here">Đã xem đến đây</string>
+  <string name="morphe_series_tracker_marked">Các tập được đánh dấu là đã xem</string>
+  <string name="morphe_series_tracker_undo">Hoàn tác</string>
+  <string name="morphe_series_tracker_enable_short">Không sợ</string>
+  <string name="morphe_series_tracker_new_episode">1 tập mới</string>
+  <string name="morphe_series_tracker_new_episodes">%1$d tập mới</string>
+  <string name="morphe_series_tracker_record_short">Ghi tiến độ trên thiết bị này</string>
+  <string name="morphe_series_tracker_follow_consent">"Loạt tập và tiến độ của bạn vẫn nằm trên thiết bị này, chia sẻ giữa các tài khoản YouTube. Các lệnh lịch sử của YouTube không thay đổi chúng. Xóa tiến độ từ menu Loạt tập.
+
+Việc ghi tự động là tùy chọn. Nó dừng ở chế độ ẩn danh hoặc khi tài khoản thay đổi."</string>
+  <string name="morphe_series_tracker_follow_unavailable">Không thể tải các tập. Bạn có thể lưu danh sách phát dưới dạng dấu trang.</string>
+  <string name="morphe_series_tracker_error_pending_full">Quá nhiều thay đổi chưa được lưu. Hãy thử lại lưu trước.</string>
+  <string name="morphe_series_tracker_error_storage_busy">Đang lưu bận. Thử lại.</string>
+  <string name="morphe_series_tracker_error_catalog_busy">Đang tải tập bận. Thử lại.</string>
+  <string name="morphe_series_tracker_error_storage_unavailable">Bộ nhớ không khả dụng. Dữ liệu đã lưu của bạn đã được giữ nguyên.</string>
+  <string name="morphe_series_tracker_error_storage_save">Không thể lưu các thay đổi. Hãy thử lại lưu trước khi đóng YouTube.</string>
+  <string name="morphe_series_tracker_error_conflict">Loạt tập này đã được lưu hoặc danh sách phát của nó đã thay đổi. Mở lại nó.</string>
+  <string name="morphe_series_tracker_error_series_changed">Loạt tập này đã thay đổi hoặc bị xóa. Mở lại thư viện.</string>
+  <string name="morphe_series_tracker_error_playlist_changed">Danh sách phát đã thay đổi. Chọn lại tập.</string>
+  <string name="morphe_series_tracker_error_episode_unavailable">Tập này không khả dụng. Hãy chọn cái khác.</string>
+  <string name="morphe_series_tracker_error_name_required">Nhập tên loạt tập.</string>
+  <string name="morphe_series_tracker_error_playlist_input">Nhập liên kết danh sách phát YouTube hoặc ID danh sách phát.</string>
+  <string name="morphe_series_tracker_error_retry_later">Vui lòng chờ trước khi làm mới lại.</string>
+  <string name="morphe_series_tracker_error_catalog_unavailable">Không thể tải các tập. Thử lại sau.</string>
+  <string name="morphe_series_tracker_error_operation">Không thể hoàn tất thay đổi. Thử lại.</string>
+  <string name="morphe_series_tracker_error_resume">Không thể xác nhận việc tiếp tục. Kiểm tra trình phát và thử lại.</string>
+  <string name="morphe_series_tracker_followed">Đang theo dõi loạt tập</string>
+  <string name="morphe_series_tracker_video_not_in_playlist">Video này không nằm trong danh sách phát này.</string>
+  <string name="morphe_series_tracker_finding_playlists">Đang tìm danh sách phát…</string>
+  <string name="morphe_series_tracker_paste_playlist">Dán liên kết danh sách phát</string>
+  <string name="morphe_series_tracker_discovery_unavailable">Không tìm thấy danh sách phát</string>
+  <string name="morphe_series_tracker_no_available_episodes">Không có tập nào khả dụng</string>
+  <string name="morphe_series_tracker_hide_watched">Ẩn những tập đã xem</string>
+  <string name="morphe_series_tracker_watch_previous">Đánh dấu các tập trước đó là đã xem</string>
+  <string name="morphe_series_tracker_order_starts_with">Bắt đầu bằng: %1$s</string>
+  <string name="morphe_series_tracker_episode_order">Thứ tự các tập</string>
+  <string name="morphe_series_tracker_playlist_order">Thứ tự danh sách phát</string>
+  <string name="morphe_series_tracker_reverse_order">Đảo ngược thứ tự danh sách phát</string>
+  <string name="morphe_series_tracker_view_count_large">%1$s lượt xem</string>
+  <string name="morphe_series_tracker_view_count">%1$s lượt xem</string>
+  <string name="morphe_series_tracker_view_count_one">%1$s lượt xem</string>
+  <string name="morphe_series_tracker_completion_title">Đánh dấu các tập là đã xem</string>
+  <string name="morphe_series_tracker_completion_summary">Ít nhất %1$d%% đã xem với tối đa 90 giây còn lại, hoặc còn lại %2$d giây</string>
+  <string name="morphe_series_tracker_completion_explanation">Tự động đánh dấu một tập là đã xem sau khi vượt qua bất kỳ ngưỡng nào. Quy tắc phần trăm cũng yêu cầu không quá 90 giây còn lại, vì vậy phần cuối của các tập dài không bị bỏ qua. Quy tắc thời gian còn lại áp dụng cho các video dài hơn một phút; hãy đặt thành 0 để tắt nó. Các thay đổi áp dụng cho các bản cập nhật tiến độ trong tương lai. Các lựa chọn đã xem/chưa xem thủ công được giữ nguyên.</string>
+  <string name="morphe_series_tracker_completion_percent">Phần trăm đã xem (1–100)</string>
+  <string name="morphe_series_tracker_completion_seconds">Giây còn lại (0–300; 0 để tắt)</string>
+  <string name="morphe_series_tracker_completion_save">Lưu</string>
+  <string name="morphe_series_tracker_completion_range">Nhập giá trị từ %1$d đến %2$d.</string>
+  <string name="morphe_series_tracker_youtube_progress_title">Sử dụng tiến độ từ YouTube</string>
+  <string name="morphe_series_tracker_youtube_progress_summary">Tiếp tục các loạt tập đã theo dõi sau khi xem trên thiết bị khác</string>
+  <string name="morphe_series_tracker_sync_consent">Đọc trạng thái đã xem và vị trí tiếp tục cho các loạt tập đã theo dõi của bạn từ tài khoản YouTube hiện tại. Chỉ các tập phù hợp được lưu trên điện thoại này. Các lần kiểm tra chạy khi thư viện loạt tập đang mở và trước khi Tiếp tục. Lịch sử YouTube phải được bật trên thiết bị khác của bạn.</string>
+  <string name="morphe_series_tracker_sync_checking">Đang kiểm tra tiến độ YouTube…</string>
+  <string name="morphe_series_tracker_sync_failed">Tiến độ YouTube không khả dụng. Đang sử dụng tiến độ đã lưu.</string>
+  <string name="morphe_series_tracker_sync_partial">Một số tiến độ YouTube không khả dụng. Các vị trí đã lưu được giữ nguyên.</string>
+  <string name="morphe_series_tracker_backup_title">Sao lưu và khôi phục</string>
+  <string name="morphe_series_tracker_backup_summary">Lưu thư viện loạt tập của bạn vào tệp hoặc khôi phục bản sao lưu</string>
+  <string name="morphe_series_tracker_backup_explanation">Lưu các loạt tập đang theo dõi, vị trí tập và lựa chọn đã xem. Quyền ghi tiến độ và tiến độ YouTube không được bao gồm.</string>
+  <string name="morphe_series_tracker_backup_save">Lưu bản sao lưu</string>
+  <string name="morphe_series_tracker_backup_restore">Khôi phục bản sao lưu</string>
+  <string name="morphe_series_tracker_backup_preview">Thêm %1$d loạt tập. %2$d loạt tập đã có trong thư viện của bạn được giữ nguyên. Tiến độ video hiện có được giữ nguyên.</string>
+  <string name="morphe_series_tracker_backup_saved">Đã lưu bản sao lưu loạt tập</string>
+  <string name="morphe_series_tracker_backup_restored">Đã khôi phục %1$d loạt tập</string>
+  <string name="morphe_series_tracker_error_backup_invalid">Tệp này không phải là bản sao lưu loạt tập được hỗ trợ hoặc quá lớn. Thư viện của bạn không bị thay đổi.</string>
+  <string name="morphe_series_tracker_error_backup_write">Không thể lưu bản sao lưu. Hãy thử vị trí khác.</string>
+  <string name="morphe_series_tracker_removed">Đã xóa loạt tập</string>
+  <string name="morphe_series_tracker_recovery_duplicate">Tập này bây giờ xuất hiện nhiều hơn một lần. Hãy chọn tập nào để tiếp tục.</string>
+  <string name="morphe_series_tracker_recovery_missing">Tập đã lưu của bạn không còn nằm trong danh sách phát này. Vị trí đã lưu của bạn được giữ nguyên.</string>
+  <string name="morphe_series_tracker_recovery_continue">Tiếp tục với tập %1$d · %2$s</string>
+  <string name="morphe_series_tracker_recovery_choose">Bạn cũng có thể chọn bất kỳ tập nào bên dưới. Các tập trước đó không bị thay đổi.</string>
+  <string name="morphe_series_tracker_playback_changed">Danh sách phát này đã thay đổi. Mở loạt tập để chọn nơi tiếp tục.</string>
+  <string name="morphe_series_tracker_playback_boundary">Không còn tập nào theo hướng này</string>
+  <string name="morphe_series_tracker_continue_series">Tiếp tục %1$s</string>
+  <string name="morphe_series_tracker_search_series">Tìm kiếm loạt tập</string>
+  <string name="morphe_series_tracker_clear_search">Xóa tìm kiếm</string>
+  <string name="morphe_series_tracker_no_search_results">Không tìm thấy loạt tập nào</string>
+  <string name="morphe_series_tracker_untitled_episode">Tập không tiêu đề</string>
+  <string name="morphe_series_tracker_unavailable_episode">Tập không khả dụng</string>
 </resources>

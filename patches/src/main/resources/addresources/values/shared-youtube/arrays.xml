@@ -92,6 +92,18 @@
         <item>PORTRAIT_FULLSCREEN</item>
     </string-array>
     
+    <!-- layout.font.baseCustomFontPatch -->
+    <string-array name="morphe_custom_font_type_entries">
+        <item>@string/morphe_custom_font_type_entry_default</item>
+        <item>@string/morphe_custom_font_type_entry_system</item>
+        <item>@string/morphe_custom_font_type_entry_custom</item>
+    </string-array>
+    <string-array name="morphe_custom_font_type_entry_values">
+        <item>DEFAULT</item>
+        <item>SYSTEM</item>
+        <item>CUSTOM</item>
+    </string-array>
+
     <!-- misc.audio.silence.skipSilencePatch -->
     <string-array name="morphe_skip_silence_minimum_pause_entries" translatable="false">
         <item>0.5 seconds</item>

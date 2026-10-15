@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches.utils.requests;
 import android.util.Base64;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,10 +18,12 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 
@@ -35,6 +38,11 @@ public final class ChannelSearchRoutes {
     private static final String YT_API_URL = "https://youtubei.googleapis.com/youtubei/v1/";
 
     private static final String CLIENT_NAME = "MWEB";
+    /**
+     * Lists the uploads of a channel as a list of 100 uploads per page. The mobile web client lists
+     * 20 per page, and lists only the 20 newest uploads if the newest one is a Short.
+     */
+    private static final String UPLOADS_CLIENT_NAME = "WEB";
     private static final String CLIENT_VERSION = "2.20250101.00.00";
     private static final String USER_AGENT = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 " +
             "(KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36";
@@ -71,6 +79,22 @@ public final class ChannelSearchRoutes {
             "next" +
                     "?prettyPrint=false" +
                     "&fields=playerOverlays.playerOverlayRenderer.videoDetails.playerOverlayVideoDetailsRenderer.title"
+    ).compile();
+
+    /**
+     * The exact publish date and view count of a video, for search results that are not in
+     * the listed uploads of the channel. The search only shows these rounded, such as
+     * "3 years ago" or "1.2M views", which is not enough to sort by them. The length is shown
+     * for every video but live streams and premieres.
+     * The description and tags tell whether a video matches a search by more than its title.
+     */
+    public static final Route.CompiledRoute GET_VIDEO_DETAILS = new Route(
+            Route.Method.POST,
+            "player" +
+                    "?prettyPrint=false" +
+                    "&fields=microformat.playerMicroformatRenderer.publishDate" +
+                    ",videoDetails.viewCount,videoDetails.lengthSeconds" +
+                    ",videoDetails.shortDescription,videoDetails.keywords"
     ).compile();
 
     private static final String SEARCH_RESULT_VIDEO_FIELD =
@@ -156,6 +180,36 @@ public final class ChannelSearchRoutes {
         return new byte[0];
     }
 
+    /**
+     * The uploads playlist of a channel is its id with the "UC" prefix replaced,
+     * and is browsed like a channel.
+     */
+    public static byte[] createUploadsBody(String channelId, Locale locale) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", createContext(UPLOADS_CLIENT_NAME, locale));
+            body.put("browseId", "VLUU" + channelId.substring(2));
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createUploadsBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    public static byte[] createUploadsContinuationBody(String continuationToken, Locale locale) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", createContext(UPLOADS_CLIENT_NAME, locale));
+            body.put("continuation", continuationToken);
+
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "createUploadsContinuationBody failed", ex);
+        }
+        return new byte[0];
+    }
+
     public static byte[] createBody(String channelId, String query, Locale locale) {
         try {
             JSONObject body = new JSONObject();
@@ -185,8 +239,12 @@ public final class ChannelSearchRoutes {
     }
 
     private static JSONObject createContext(Locale locale) throws JSONException {
+        return createContext(CLIENT_NAME, locale);
+    }
+
+    private static JSONObject createContext(String clientName, Locale locale) throws JSONException {
         JSONObject client = new JSONObject();
-        client.put("clientName", CLIENT_NAME);
+        client.put("clientName", clientName);
         client.put("clientVersion", CLIENT_VERSION);
         client.put("hl", orDefault(locale.getLanguage(), DEFAULT_LANGUAGE));
         client.put("gl", orDefault(locale.getCountry(), DEFAULT_COUNTRY));
@@ -239,6 +297,37 @@ public final class ChannelSearchRoutes {
             value >>>= 7;
         }
         out.write(value);
+    }
+
+    /**
+     * @return The response, or null if the request failed.
+     */
+    @Nullable
+    public static JSONObject fetch(Route.CompiledRoute route, byte[] requestBody) {
+        Utils.verifyOffMainThread();
+
+        try {
+            HttpURLConnection connection = getConnection(route);
+            connection.setFixedLengthStreamingMode(requestBody.length);
+            connection.getOutputStream().write(requestBody);
+
+            final int responseCode = connection.getResponseCode();
+            if (responseCode != Requester.HTTP_STATUS_CODE_SUCCESS) {
+                String error = Requester.parseErrorStringAndDisconnect(connection);
+                Logger.printDebug(() -> route.getCompiledRoute() + " failed with code: "
+                        + responseCode + " error: " + error);
+                return null;
+            }
+
+            return Requester.parseJSONObject(connection);
+        } catch (SocketTimeoutException ex) {
+            Logger.printInfo(() -> "Connection timeout", ex);
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "Network error", ex);
+        } catch (Exception ex) {
+            Logger.printException(() -> "fetch failure", ex);
+        }
+        return null;
     }
 
     public static HttpURLConnection getConnection(Route.CompiledRoute route) throws IOException {

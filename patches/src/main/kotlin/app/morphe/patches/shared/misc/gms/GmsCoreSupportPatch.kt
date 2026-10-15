@@ -582,7 +582,8 @@ fun gmsCoreSupportResourcePatch(
                 "com.google.android.libraries.photos.api.mars" to "$GMS_CORE_VENDOR_GROUP_ID.android.apps.photos.api.mars",
                 // Allow the app to request uninstall of conflicting MicroG / GMS variants on Android 14+.
                 // The variants are made visible to the package manager by gmsCorePackageQueriesPatch.
-                "</queries>" to "</queries><uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
+                // Also add the external PoToken provider app to the queries.
+                "</queries>" to "<package android:name=\"app.morphe.pot.helper\"/></queries><uses-permission android:name=\"android.permission.REQUEST_DELETE_PACKAGES\"/>",
             )
 
             val manifest = get("AndroidManifest.xml")

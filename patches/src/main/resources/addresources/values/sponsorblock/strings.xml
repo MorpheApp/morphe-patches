@@ -88,7 +88,7 @@ This includes your private user ID. Be sure to share this wisely"</string>
     <string name="morphe_sb_settings_export_failed">Failed to export: %s</string>
     <string name="morphe_sb_settings_morphe_export_user_id_warning">"Your settings contain a private SponsorBlock user ID.
 
-Your user ID is like a password, and it should never be shared."</string>
+Your user ID is like a password, and it should never be shared"</string>
     <string name="morphe_sb_settings_morphe_export_user_id_warning_dismiss">Do not show again</string>
     <string name="morphe_sb_diff_segments_title">Change segment behavior</string>
     <string name="morphe_sb_segments_sponsor">Sponsor</string>
@@ -151,7 +151,7 @@ Your user ID is like a password, and it should never be shared."</string>
     <string name="morphe_sb_skip_ignore">Disable</string>
     <string name="morphe_sb_submit_failed_invalid">Unable to submit segment: %s</string>
     <string name="morphe_sb_submit_failed_timeout">SponsorBlock is temporarily down</string>
-    <string name="morphe_sb_submit_failed_unknown_error">Unable to submit segment (status: %1$d %2$s)</string>
+    <string name="morphe_sb_submit_failed_unknown_error">Unable to submit segment (status: %1$s %2$s)</string>
     <string name="morphe_sb_submit_failed_rate_limit">Unable to submit segment. Rate Limited (too many from the same user or IP)</string>
     <string name="morphe_sb_submit_failed_forbidden">Cannot submit the segment: %s</string>
     <string name="morphe_sb_submit_failed_duplicate">"Cannot submit the segment.
@@ -159,10 +159,10 @@ Already exists"</string>
     <string name="morphe_sb_submit_succeeded">Segment submitted successfully</string>
     <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
     <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock is temporarily not available (API timed out)</string>
-    <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock is temporarily not available (status %d)</string>
+    <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock is temporarily not available (status %s)</string>
     <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock is temporarily not available</string>
     <string name="morphe_sb_vote_failed_timeout">Unable to vote for segment (API timed out)</string>
-    <string name="morphe_sb_vote_failed_unknown_error">Unable to vote for segment (status: %1$d %2$s)</string>
+    <string name="morphe_sb_vote_failed_unknown_error">Unable to vote for segment (status: %1$s %2$s)</string>
     <string name="morphe_sb_vote_failed_forbidden">Unable to vote for segment: %s</string>
     <string name="morphe_sb_vote_upvote">Upvote</string>
     <string name="morphe_sb_vote_downvote">Downvote</string>
@@ -171,7 +171,7 @@ Already exists"</string>
     <!-- A segment start and end time, such as "02:10 to 03:40". -->
     <string name="morphe_sb_vote_segment_time_to_from">%1$s to %2$s</string>
     <string name="morphe_sb_new_segment_choose_category">Choose the segment category</string>
-    <string name="morphe_sb_new_segment_disabled_category">Category is disabled in settings. Enable category to submit.</string>
+    <string name="morphe_sb_new_segment_disabled_category">Category is disabled in settings. Enable category to submit</string>
     <string name="morphe_sb_new_segment_title">New SponsorBlock segment</string>
     <string name="morphe_sb_new_segment_mark_time_as_question">Set %s as the start or end of a new segment?</string>
     <string name="morphe_sb_new_segment_mark_start">Start</string>
@@ -210,7 +210,7 @@ If you\'re not submitting a highlight, tap Cancel and mark the second location"<
     <string name="morphe_sb_stats_sb_disabled">SponsorBlock is disabled</string>
     <string name="morphe_sb_stats_username">Your username: &lt;b>%s&lt;/b></string>
     <string name="morphe_sb_stats_username_change">Tap here to change your username</string>
-    <string name="morphe_sb_stats_username_change_unknown_error">Unable to change username: Status: %1$d %2$s</string>
+    <string name="morphe_sb_stats_username_change_unknown_error">Unable to change username: Status: %1$s %2$s</string>
     <string name="morphe_sb_stats_username_changed">Username successfully changed</string>
     <string name="morphe_sb_stats_reputation">Your reputation is &lt;b>%.2f&lt;/b></string>
     <string name="morphe_sb_stats_submissions">You\'ve created &lt;b>%s&lt;/b> segments</string>

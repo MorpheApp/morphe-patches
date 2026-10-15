@@ -69,6 +69,7 @@ final class KaraokeHighlightState {
      * sync setting. Actions are appended to {@code out} in the order the view has to
      * run them; the caller owns the list and clears it after execution.
      */
+    @SuppressWarnings("ConstantValue")
     void advance(long pos, int active, boolean enabled, Lines lines, List<Action> out) {
         if (enabled != wasEnabled) {
             if (!enabled) {

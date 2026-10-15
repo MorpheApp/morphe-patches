@@ -66,6 +66,21 @@ final class OpaqueSystemBars {
     }
 
     /**
+     * The system draws its navigation buttons over this color until Android 15, after which
+     * the window always stays transparent there and the views painted here show through.
+     *
+     * @return An opaque color, if the app theme made the system navigation buttons translucent.
+     */
+    @ColorInt
+    static int systemNavigationBarColor(@ColorInt int original) {
+        if (Color.alpha(original) == 255) {
+            return original;
+        }
+
+        return ShortsPlayerState.isOpen() ? Color.BLACK : ThemeUtils.getAppBackgroundColor();
+    }
+
+    /**
      * @return The background the app itself uses for a navigation bar that is not translucent,
      *         which is the app background under a separator along the top edge.
      */

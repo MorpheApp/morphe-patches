@@ -83,6 +83,7 @@ Second \"item\" text"</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_local_queue_remove">ដកចេញ</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
@@ -193,7 +194,6 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
@@ -234,4 +234,10 @@ Second \"item\" text"</string>
   <!-- layout.player.icons.playerIconStylePatch -->
   <string name="morphe_player_icon_style_entry_auto">ស្វ័យប្រវត្តិ</string>
   <string name="morphe_player_icon_style_entry_custom">ផ្ទាល់ខ្លួន</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_cancel">បោះបង់</string>
+  <string name="morphe_series_tracker_ui_save">រក្សាទុក</string>
+  <string name="morphe_series_tracker_ui_rename">ប្ដូរឈ្មោះ</string>
+  <string name="morphe_series_tracker_undo">អាន់ឌូ</string>
+  <string name="morphe_series_tracker_completion_save">រក្សាទុក</string>
 </resources>

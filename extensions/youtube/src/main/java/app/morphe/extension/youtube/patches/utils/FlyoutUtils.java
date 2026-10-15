@@ -18,7 +18,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -38,11 +37,9 @@ import androidx.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -58,9 +55,6 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRequest;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.shared.EngagementPanel;
-import app.morphe.extension.youtube.shared.PlayerType;
-import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.videoplayer.PictureinPictureButton;
 import app.morphe.extension.youtube.videoplayer.SaveToWatchLaterButton;
 import app.morphe.extension.youtube.whitelist.ChannelWhitelist;
@@ -258,13 +252,8 @@ public final class FlyoutUtils {
     }
 
     private static final int VIDEO_ID_LENGTH = 11;
-    public static final int CHANNEL_ID_LENGTH = 24;
-    private static final byte[] POST_ID_PREFIX_BYTES =
-            getAsciiBytes("post-comments-");
     private static final byte[] PLAYLIST_ID_PREFIX_BYTES =
             getAsciiBytes("playlist?list=");
-    private static final byte[] HEADER_DESCRIPTION_PLAYLIST_ID_PREFIX_BYTES =
-            getAsciiBytes("VL");
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
             getAsciiBytes(".ytimg.com/vi/"),
             getAsciiBytes("youtube.com/watch?v=")
@@ -282,17 +271,6 @@ public final class FlyoutUtils {
             getAsciiBytes("horizontal_shelf.e"),
             getAsciiBytes("FEhistory")
     );
-    private static final List<byte[]> HEADER_DESCRIPTION_BYTES = List.of(
-            getAsciiBytes("page_header.e"),
-            getAsciiBytes("engagement-panel-page-headers-description")
-    );
-    private static final List<byte[]> LIST_ITEM_SHARE_BYTES = List.of(
-            getAsciiBytes("list_item.e"),
-            getAsciiBytes("yt_outline_experimental_share")
-    );
-
-    private static final Pattern COMMENT_ID_CLEANUP_PATTERN =
-            Pattern.compile("[^A-Za-z0-9_.-]");
 
     // 20.21 has no container, and its secondary views are direct children of the item.
     private static final List<Integer> SECONDARY_VIEW_IDS = List.of(
@@ -321,14 +299,8 @@ public final class FlyoutUtils {
     private static PopupWindow flyoutPopupWindow;
     private static String flyoutVideoId = "";
     private static String flyoutPlaylistId = "";
-    private static String flyoutCommentId = "";
-    private static String flyoutPostId = "";
     private static String flyoutChannelId = "";
     private static String flyoutChannelName = "";
-    private static final List<String> commentsPanelNames = List.of(
-            "comment-item-section",
-            "shorts-comments-panel"
-    );
 
     private static boolean videoMarkedAsForKids;
     private static boolean isMyTabHistoryFlyout;
@@ -347,28 +319,12 @@ public final class FlyoutUtils {
         return flyoutPlaylistId;
     }
 
-    public static String getFlyoutCommentId() {
-        return flyoutCommentId;
-    }
-
-    public static String getFlyoutPostId() {
-        return flyoutPostId;
-    }
-
     public static String getFlyoutChannelId() {
         return flyoutChannelId;
     }
 
     public static String getFlyoutChannelName() {
         return flyoutChannelName;
-    }
-
-    public static void resetFlyoutPostId() {
-        flyoutPostId = "";
-    }
-
-    public static void resetFlyoutCommentId() {
-        flyoutCommentId = "";
     }
 
     /**
@@ -490,34 +446,25 @@ public final class FlyoutUtils {
                                 isDialogClosed && isPopupWindowClosed;
 
                         if (blockFlyoutIdsResetHandler) {
-                            // Give a delay to wait for the system sharing panel to be called.
-                            Utils.runOnMainThreadDelayed(
-                                    () -> {
-                                        visibleFlyoutButtons.clear();
-                                        currentButtonIndex = 0;
-                                        flyoutVideoId = "";
-                                        flyoutPlaylistId = "";
-                                        flyoutPostId = "";
-                                        flyoutChannelId = "";
-                                        flyoutChannelName = "";
-                                        isMyTabHistoryFlyout = false;
-                                        isShortFlyout = false;
+                            resetFlyoutIds();
 
-                                        flyoutVisibilityHandlerRunning = false;
-                                        flyoutIdsResetHandlerRunning = false;
-                                    },
-                                    // The delay used to prevent the system share sheet from failing to
-                                    // display, sometimes causes the injected buttons to appear in the
-                                    // YouTube share sheet. For this reason, the delay is set to zero
-                                    // when the setting to display the system share sheet is disabled.
-                                    Settings.OPEN_SYSTEM_SHARE_SHEET.get() ? 100 : 0
-                            );
+                            flyoutVisibilityHandlerRunning = false;
+                            flyoutIdsResetHandlerRunning = false;
                         } else {
                             flyoutIdsResetHandler.postDelayed(this, 10);
                         }
                     }
                 }
         );
+    }
+
+    private static void resetFlyoutIds() {
+        visibleFlyoutButtons.clear();
+        currentButtonIndex = 0;
+        flyoutVideoId = "";
+        flyoutPlaylistId = "";
+        flyoutChannelId = "";
+        flyoutChannelName = "";
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
@@ -911,52 +858,6 @@ public final class FlyoutUtils {
     /**
      * Injection point.
      */
-    public static void extractFlyoutIdFromLithoButton(Map<?, ?> map) {
-        try {
-            if ((PlayerType.getCurrent().isMaximizedOrFullscreen() || ShortsPlayerState.isOpen()) &&
-                    EngagementPanel.checkIdsInQueue(commentsPanelNames)) {
-                extractFlyoutIdFromMap(map);
-            }
-
-            final byte[] flyoutBuffer =
-                    getFlyoutBuffer(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
-            if (flyoutBuffer == null) {
-                return;
-            }
-            List<Integer> headerDescriptionBytesIndexes =
-                    byteIndexesOf(flyoutBuffer, HEADER_DESCRIPTION_BYTES);
-            if (!headerDescriptionBytesIndexes.isEmpty() &&
-                    headerDescriptionBytesIndexes.size() == HEADER_DESCRIPTION_BYTES.size()) {
-                if (byteIndexInStartRange(headerDescriptionBytesIndexes.get(0))) {
-                    // Buttons that do not open a flyout, such as the share button of community posts
-                    // and of the playlist page header. The buttons that open a flyout are also called
-                    // before the flyout, which then finds the ids with its sender view.
-                    senderViewRef = new WeakReference<>(null);
-                    setFlyoutPlaylistId(
-                            flyoutBuffer,
-                            HEADER_DESCRIPTION_PLAYLIST_ID_PREFIX_BYTES,
-                            false
-                    );
-                    // Reset the ids after the share button is pressed, to prevent unintended usage.
-                    Utils.runOnMainThreadDelayed(() -> {
-                        if ((flyoutDialog == null || !flyoutDialog.isShowing())
-                                && (flyoutPopupWindow == null || !flyoutPopupWindow.isShowing())) {
-                            flyoutPostId = "";
-                            flyoutPlaylistId = "";
-                            isMyTabHistoryFlyout = false;
-                            isShortFlyout = false;
-                        }
-                    }, 500);
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "extractFlyoutIdFromLithoButton failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
     public static void extractFlyoutIdFromMap(Map<?, ?> map) {
         try {
             senderViewRef = new WeakReference<>(
@@ -994,35 +895,17 @@ public final class FlyoutUtils {
             Logger.printDebug(() -> "Flyout buffer: " + new BufferAsciiStrings(flyoutBuffer).getStrings());
         }
 
-        // Check whether the buffer contains the specified IDs within a certain initial
-        // range of the buffer, to avoid matching with false positives when share
-        // button is called from a comment flyout.
-        List<Integer> listItemShareBytesIndexes = byteIndexesOf(flyoutBuffer, LIST_ITEM_SHARE_BYTES);
-        if (!listItemShareBytesIndexes.isEmpty() &&
-                listItemShareBytesIndexes.size() == LIST_ITEM_SHARE_BYTES.size()) {
-            if (byteIndexInStartRange(listItemShareBytesIndexes.get(0))) {
-                setFlyoutCommentId(flyoutBuffer);
-                return;
-            }
-        }
-
         List<Integer> horizontalShelfHistoryBytesIndexes = byteIndexesOf(flyoutBuffer, HORIZONTAL_SHELF_HISTORY_BYTES);
-        if (!horizontalShelfHistoryBytesIndexes.isEmpty() &&
-                horizontalShelfHistoryBytesIndexes.size() == HORIZONTAL_SHELF_HISTORY_BYTES.size()) {
-            if (byteIndexInStartRange(horizontalShelfHistoryBytesIndexes.get(0))) {
-                isMyTabHistoryFlyout = true;
-            }
-        }
+        isMyTabHistoryFlyout =
+                !horizontalShelfHistoryBytesIndexes.isEmpty() &&
+                        horizontalShelfHistoryBytesIndexes.size() == HORIZONTAL_SHELF_HISTORY_BYTES.size() &&
+                        byteIndexInStartRange(horizontalShelfHistoryBytesIndexes.get(0));
 
         // Check if Shorts flyout is triggered only in the feed or on channels.
         List<Integer> shortsVideoElementsBytesIndexes = byteIndexesOf(flyoutBuffer, SHORTS_VIDEO_ELEMENT_BYTES);
-        if (shortsVideoElementsBytesIndexes.size() == 1) {
-            isShortFlyout = true;
-        }
+        isShortFlyout = shortsVideoElementsBytesIndexes.size() == 1;
 
-        setCommunityPostId(flyoutBuffer);
-
-        setFlyoutPlaylistId(flyoutBuffer, PLAYLIST_ID_PREFIX_BYTES, true);
+        setFlyoutPlaylistId(flyoutBuffer);
 
         View senderView = senderViewRef.get();
         Logger.printDebug(() -> "Flyout sender view object: " + (senderView != null));
@@ -1186,70 +1069,12 @@ public final class FlyoutUtils {
         }
     }
 
-    /**
-     * Channel ids are always 24 characters long and start with "UC", and the remaining
-     * 22 characters are URL safe Base64.
-     *
-     * @param buffer The buffer to check.
-     * @param index  The start index of the "UC" prefix.
-     * @return If the buffer holds a valid channel id at the given index.
-     */
-    public static boolean isValidChannelId(byte[] buffer, int index) {
-        final int lastIndex = index + CHANNEL_ID_LENGTH;
-        if (index < 0 || lastIndex > buffer.length || !(buffer[index] == 'U' && buffer[index + 1] == 'C')) {
-            return false;
-        }
-
-        if ((index > 0 && isByteAlphanumeric(buffer[index - 1])) ||
-                (lastIndex < buffer.length && isByteAlphanumeric(buffer[lastIndex]))) {
-            return false;
-        }
-
-        for (int i = index + 2; i < lastIndex; i++) {
-            final byte b = buffer[i];
-            if (!isByteAlphanumeric(b) && b != '-' && b != '_') {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private static void setCommunityPostId(byte[] flyoutBuffer) {
-        final int postIdIndex = byteIndexOf(flyoutBuffer, POST_ID_PREFIX_BYTES);
-        if (postIdIndex >= 0) {
-            final int postIdStartIndex = postIdIndex + POST_ID_PREFIX_BYTES.length;
-            int postIdEndIndex = postIdStartIndex;
-            while (postIdEndIndex < flyoutBuffer.length &&
-                    (isByteAlphanumeric(
-                            flyoutBuffer[postIdEndIndex]) ||
-                            flyoutBuffer[postIdEndIndex] == '-' ||
-                            flyoutBuffer[postIdEndIndex] == '_')) {
-                postIdEndIndex++;
-            }
-            final String postId = new String(
-                    flyoutBuffer,
-                    postIdStartIndex,
-                    postIdEndIndex - postIdStartIndex,
-                    StandardCharsets.US_ASCII
-            );
-            if (!postId.isEmpty()) {
-                flyoutPostId = postId;
-                Logger.printDebug(() -> "Flyout Post ID found: " + postId);
-            }
-        }
-    }
-
     @SuppressWarnings("ExtractMethodRecommender")
-    private static void setFlyoutPlaylistId(
-            byte[] flyoutBuffer,
-            byte[] playlistIdPrefix,
-            boolean truncateLastChar
-    ) {
-        final int index = byteIndexOf(flyoutBuffer, playlistIdPrefix);
+    private static void setFlyoutPlaylistId(byte[] flyoutBuffer) {
+        final int index = byteIndexOf(flyoutBuffer, PLAYLIST_ID_PREFIX_BYTES);
 
         if (index >= 0) {
-            final int playlistIdStart = index + playlistIdPrefix.length;
+            final int playlistIdStart = index + PLAYLIST_ID_PREFIX_BYTES.length;
 
             int playlistIdEnd = playlistIdStart;
             while (playlistIdEnd < flyoutBuffer.length) {
@@ -1264,10 +1089,7 @@ public final class FlyoutUtils {
             // "playlist?list=" always ends with a character extraneous to the
             // playlist ID, so verify that the current index of being
             // searched bytes does not belong to this element.
-            final int playlistLength =
-                    playlistIdEnd -
-                            playlistIdStart -
-                            (truncateLastChar ? 1 : 0);
+            final int playlistLength = playlistIdEnd - playlistIdStart - 1;
 
             if (playlistLength >= 18) {
                 flyoutPlaylistId = new String(
@@ -1280,86 +1102,6 @@ public final class FlyoutUtils {
                         flyoutPlaylistId
                 );
             }
-        }
-    }
-
-    private static void setFlyoutCommentId(byte[] buffer) {
-        try {
-            int bestStart = -1;
-            int bestEnd = -1;
-            int maxLen = 0;
-            int curr = 0;
-
-            final int bufferLength = buffer.length;
-            // Ensure the string is a base64 value and not a false-positive.
-            while (curr < bufferLength) {
-                final int start = curr;
-
-                while (curr < bufferLength) {
-                    final byte b = buffer[curr];
-                    final boolean isBase64 =
-                            (isByteAlphanumeric(b)) ||
-                                    b == '+' ||
-                                    b == '/' ||
-                                    b == '=' ||
-                                    b == '-' ||
-                                    b == '_';
-
-                    if (isBase64) {
-                        curr++;
-                    } else {
-                        break;
-                    }
-                }
-
-                final int len = curr - start;
-                if (len > maxLen) {
-                    maxLen = len;
-                    bestStart = start;
-                    bestEnd = curr;
-                }
-                if (len == 0) {
-                    curr++;
-                }
-            }
-            if (maxLen < 150) {
-                Logger.printException(() -> "setCommentId failure: No base64 string found!");
-                return;
-            }
-
-            // Get the Comment ID from the fetched base64 decoded buffer.
-            byte[] byteBase64 = Base64.decode(
-                    Arrays.copyOfRange(buffer, bestStart, bestEnd), Base64.URL_SAFE
-            );
-            final int base64VideoIdIndex = byteIndexOf(
-                    byteBase64,
-                    VideoInformation.getVideoId().getBytes(StandardCharsets.UTF_8)
-            );
-            if (base64VideoIdIndex < 0) {
-                Logger.printException(() -> "setCommentId failure: No videoId found in the decoded base64 string!");
-                return;
-            }
-
-            byte[] rawCommentId = Arrays.copyOfRange(byteBase64, 0, base64VideoIdIndex);
-            String cleanedCommentId = COMMENT_ID_CLEANUP_PATTERN.matcher(
-                            new String(rawCommentId, StandardCharsets.UTF_8)
-                    ).replaceAll(" ")
-                    .trim();
-
-            final int spaceIndex = cleanedCommentId.indexOf(' ');
-            flyoutCommentId =
-                    spaceIndex == -1
-                            ? cleanedCommentId
-                            : cleanedCommentId.substring(0, spaceIndex);
-            Logger.printDebug(() -> "Flyout Comment ID found: " +
-                    flyoutCommentId
-            );
-
-            // Reset 'flyoutCommentId' immediately after its fetching (when the comment
-            // share flyout button is pressed), to prevent unintended usage.
-            Utils.runOnMainThreadDelayed(() -> flyoutCommentId = "", 500);
-        } catch (Exception ex) {
-            Logger.printException(() -> "setCommentId failure", ex);
         }
     }
 

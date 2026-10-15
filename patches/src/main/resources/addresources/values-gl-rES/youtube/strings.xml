@@ -72,6 +72,7 @@ Second \"item\" text"</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_local_queue_remove">Eliminar</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_screen_title -->
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
@@ -185,7 +186,6 @@ Second \"item\" text"</string>
   <!-- layout.feedrefresh.disableAutoFeedRefreshPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- misc.fix.fixBackToExitGesturePatch -->
-  <!-- layout.font.forceSystemFontPatch -->
   <!-- layout.statusbar.hideStatusBarPatch -->
   <!-- layout.theme.themePatch -->
   <!-- layout.branding.customBrandingPatch -->
@@ -216,6 +216,7 @@ Second \"item\" text"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <!-- video.livestream.rememberLiveStreamPositionPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
+  <string name="morphe_video_codec_entry_default">Predefinido</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
@@ -228,4 +229,13 @@ Second \"item\" text"</string>
   <string name="morphe_player_icon_style_entry_auto">Automático</string>
   <string name="morphe_player_icon_style_entry_default">Predefinido</string>
   <string name="morphe_player_icon_style_entry_custom">Personalizado</string>
+  <!-- video.series.seriesTrackerPatch -->
+  <string name="morphe_series_tracker_ui_cancel">Cancelar</string>
+  <string name="morphe_series_tracker_ui_save">Gardar</string>
+  <string name="morphe_series_tracker_ui_history">Historial</string>
+  <string name="morphe_series_tracker_ui_subscriptions">Subscripcións</string>
+  <string name="morphe_series_tracker_plan_caught_up">Ao día</string>
+  <string name="morphe_series_tracker_continue">Continuar</string>
+  <string name="morphe_series_tracker_undo">Anular</string>
+  <string name="morphe_series_tracker_completion_save">Gardar</string>
 </resources>

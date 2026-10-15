@@ -259,6 +259,20 @@ public final class ProtoNode {
         return null;
     }
 
+    /**
+     * @return The fields of the message at the field number path, or an empty list if there is no such message.
+     */
+    public static List<ProtoNode> message(List<ProtoNode> message, int... path) {
+        for (int fieldNumber : path) {
+            ProtoNode field = field(message, fieldNumber);
+            if (field == null || field.children == null) {
+                return List.of();
+            }
+            message = field.children;
+        }
+        return message;
+    }
+
     public static byte[] write(List<ProtoNode> message) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         CodedOutputStream output = CodedOutputStream.newInstance(bytes);
