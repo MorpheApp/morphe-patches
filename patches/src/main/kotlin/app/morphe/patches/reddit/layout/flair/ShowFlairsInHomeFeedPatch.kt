@@ -17,6 +17,7 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_24_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.p0Register
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -259,6 +260,22 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
                 """
                     invoke-static/range { v$elementsRegister .. v$elementsRegister }, $EXTENSION_CLASS->showHomeFlairs(Ljava/util/List;)Ljava/util/List;
                     move-result-object v$elementsRegister
+                """
+            )
+        }
+
+        // After a feed page is shown, Reddit loads the full posts of the page in the background,
+        // and the full posts include the flairs. Post previews are only loaded if a feature flag
+        // is enabled for the feed type. Load them too, so their flairs are available.
+        postsToLoadFingerprint(postPreviewType).let {
+            val flagMatch = it.instructionMatches.last()
+            val flagRegister = flagMatch.getInstruction<OneRegisterInstruction>().registerA
+
+            it.method.addInstructionsAtControlFlowLabel(
+                flagMatch.index,
+                """
+                    invoke-static { v$flagRegister }, $EXTENSION_CLASS->loadFullPostPreviews(Z)Z
+                    move-result v$flagRegister
                 """
             )
         }

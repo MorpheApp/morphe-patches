@@ -9,6 +9,10 @@ public final class Link extends ILink {
         throw new UnsupportedOperationException("Stub");
     }
 
+    public String getTitle() {
+        throw new UnsupportedOperationException("Stub");
+    }
+
     public String getSubreddit() {
         throw new UnsupportedOperationException("Stub");
     }

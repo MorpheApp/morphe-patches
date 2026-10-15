@@ -10,6 +10,7 @@ package app.morphe.patches.reddit.layout.flair
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.instanceOf
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -232,5 +233,29 @@ internal fun feedPostSectionMapperFingerprint(feedPostSectionType: String) = Fin
             name = "<init>"
         ),
         opcode(Opcode.RETURN_OBJECT, MatchAfterImmediately())
+    )
+)
+
+/**
+ * Selects the feed posts that Reddit loads in full after a feed page is shown.
+ * Post previews are only selected if a feature flag is enabled for the feed type.
+ */
+internal fun postsToLoadFingerprint(postPreviewFeedElementType: String) = Fingerprint(
+    returnType = "Ljava/util/ArrayList;",
+    parameters = listOf(
+        "Ljava/util/List;",
+        "Lcom/reddit/feeds/data/FeedType;"
+    ),
+    filters = listOf(
+        instanceOf(postPreviewFeedElementType),
+        opcode(Opcode.IF_EQZ, MatchAfterImmediately()),
+        // Feature flag of one group of feed types.
+        methodCall(smali = "Ljava/lang/Boolean;->booleanValue()Z"),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.GOTO, MatchAfterImmediately()),
+        // Feature flag of the other group of feed types.
+        methodCall(smali = "Ljava/lang/Boolean;->booleanValue()Z"),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, MatchAfterImmediately())
     )
 )
