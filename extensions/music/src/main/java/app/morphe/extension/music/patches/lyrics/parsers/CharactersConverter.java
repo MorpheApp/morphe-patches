@@ -92,19 +92,8 @@ public final class CharactersConverter {
     }
 
     /**
-     * Normalizes text for string matching by converting various character variants to their
-     * standard forms. The chain is intentionally ordered:
-     * <ol>
-     *   <li>Fullwidth → Halfwidth (letters, numbers, punctuation)</li>
-     *   <li>Any-Lower (case folding)</li>
-     *   <li>NFKC Unicode normalization (compatibility decomposition)</li>
-     *   <li>Latin → ASCII (removes diacritics, e.g. Beyoncé → Beyonce)</li>
-     *   <li>Whitespace collapsing (trim + collapse runs to single space)</li>
-     * </ol>
-     * Unlike the per-variant transforms in {@link #variants(TrackInfo)}, this method chains
-     * all normalization steps into a single pass. It is designed for use in metadata regex
-     * cleaning and lyrics text filtering so that user-configured patterns always match
-     * regardless of the character variant used in the source text.
+     * Folds text to one form so a user's regex matches whatever variant the source used.
+     * Order matters: fullwidth and case before NFKC, then diacritics, then whitespace.
      */
     @NonNull
     public static String normalize(@NonNull String text) {
@@ -128,20 +117,9 @@ public final class CharactersConverter {
     }
 
     /**
-     * Generates character variants of the track metadata to broaden lyrics search coverage.
-     * Each variant applies a single character transformation to the title, artist and album fields:
-     * <ul>
-     *   <li>Simplified ↔ Traditional Chinese</li>
-     *   <li>Fullwidth → Halfwidth (Japanese, Korean, Chinese punctuation)</li>
-     *   <li>NFKC Unicode normalization</li>
-     *   <li>Latin → ASCII (removes diacritics, e.g. Beyoncé → Beyonce)</li>
-     *   <li>Hiragana ↔ Katakana (Japanese)</li>
-     * </ul>
-     * Variants are generated independently of the original (not chained) to keep the number
-     * manageable. Variants identical to the original or to each other are omitted.
-     * <p>
-     * The order follows expected usefulness: CJK script variants first, then normalization,
-     * then Latin and Japanese script variants.
+     * Single-transform variants of the track metadata, to broaden search coverage: Simplified and
+     * Traditional Chinese, fullwidth, NFKC, Latin to ASCII, Hiragana to Katakana. Applied
+     * independently rather than chained, to keep the count manageable; duplicates dropped.
      */
     @NonNull
     public static List<TrackInfo> variants(@NonNull TrackInfo track) {

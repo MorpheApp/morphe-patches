@@ -163,15 +163,19 @@ public final class QQProvider implements LyricsProvider {
         List<LyricsLine> romaLines = romaPayload.isEmpty() ? null : parseQrcFormat(romaPayload);
         List<LyricsLine> romanization = LyricsMerge.mergeRomanization(lines, romaLines);
 
-        String transPayload = decodeQqLyricPayload(data.optString("trans", ""));
-        List<LyricsLine> transLines = transPayload.isEmpty() ? null : parseQrcFormat(transPayload);
-        if (transLines == null || transLines.isEmpty()) {
-            transLines = LRCParser.parseSynced(transPayload);
+        // QQ writes this translation itself, in the Chinese the mainland uses.
+        Map<String, List<LyricsLine>> translations = null;
+        if (LyricsRequests.isSimplifiedChinese()) {
+            String transPayload = decodeQqLyricPayload(data.optString("trans", ""));
+            List<LyricsLine> transLines = transPayload.isEmpty() ? null : parseQrcFormat(transPayload);
+            if (transLines == null || transLines.isEmpty()) {
+                transLines = LRCParser.parseSynced(transPayload);
+            }
+            transLines.removeIf(line -> "//".equals(line.text().trim()));
+            List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, transLines);
+            translations = LyricsMerge.singleLanguageTranslations(
+                    translation, LyricsRequests.SIMPLIFIED_CHINESE);
         }
-        transLines.removeIf(line -> "//".equals(line.text().trim()));
-        List<LyricsLine> translation = LyricsMerge.mergeRomanization(lines, transLines);
-        Map<String, List<LyricsLine>> translations =
-                LyricsMerge.singleLanguageTranslations(translation, "zh");
 
         return new Lyrics(lines, name(), true, romanization, translations, null,
                 qrcMetadata.isEmpty() ? null : qrcMetadata, original, "qrc", sourceUrl);

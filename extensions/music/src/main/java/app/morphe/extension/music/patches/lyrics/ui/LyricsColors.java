@@ -13,14 +13,16 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.theme.ThemeUtils;
 
 final class LyricsColors {
-    /** Color the app uses for primary text. */
     static final String APP_PRIMARY_TEXT_COLOR = "ytm_text_color_primary";
 
-    /** Color the app uses for secondary text, applied to the translation. */
+    /** The app's secondary text color, which is what the translation is drawn in. */
     static final String APP_SECONDARY_TEXT_COLOR = "ytm_text_color_secondary";
 
-    /** Alpha channel for the unsung (not-yet-sung) word color. */
+    /** Dimmed until the word is sung. */
     static final float UNSUNG_ALPHA = 0.4f;
+
+    /** Smaller than the lyric it reads, so at the same weight the two would read as one line. */
+    static final float ACTIVE_READING_ALPHA = 0.4f;
 
     static int secondaryTextColor() {
         ensureColorCache();
@@ -56,9 +58,7 @@ final class LyricsColors {
         return cachedUnsungColor;
     }
 
-    /**
-     * Color the app uses for lyrics text, falling back to the generic foreground color.
-     */
+    /** Falls back to the generic foreground color when the app ships no lyrics text color. */
     static int lineTextColor() {
         ensureColorCache();
         return cachedLineColor;

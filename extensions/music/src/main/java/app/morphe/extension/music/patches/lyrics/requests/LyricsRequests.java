@@ -71,6 +71,8 @@ public final class LyricsRequests {
                 + " https://github.com/MorpheApp/morphe-patches";
     }
 
+    public static final String SIMPLIFIED_CHINESE = "zh-Hans";
+
     public static String deviceLanguage() {
         return Locale.getDefault().getLanguage();
     }
@@ -82,6 +84,19 @@ public final class LyricsRequests {
                 : language.toLowerCase(Locale.ROOT);
     }
 
+    /** "Automatic" resolves to the device language, the way {@link #translationLanguage()} does. */
+    public static String romanizationLanguage() {
+        String language = Settings.LYRICS_ROMANIZE_LANGUAGE.get();
+        return "DEFAULT".equalsIgnoreCase(language)
+                ? deviceLanguage()
+                : language.toLowerCase(Locale.ROOT);
+    }
+
+    /** Whether romanization is left on "Automatic", which reads the lyrics instead. */
+    public static boolean isDefaultRomanizationLanguage() {
+        return "DEFAULT".equalsIgnoreCase(Settings.LYRICS_ROMANIZE_LANGUAGE.get());
+    }
+
     /** The leading subtag of a BCP-47 tag, which is what two spellings of one language share. */
     public static String primarySubtag(@Nullable String language) {
         if (language == null) {
@@ -89,6 +104,89 @@ public final class LyricsRequests {
         }
         int idx = language.indexOf('-');
         return (idx >= 0 ? language.substring(0, idx) : language).toLowerCase(Locale.ROOT);
+    }
+
+    @NonNull
+    public static String resolvedScript(@Nullable String language) {
+        final String declared = declaredScript(language);
+        if (!declared.isEmpty()) {
+            return declared;
+        }
+        if (!"zh".equals(primarySubtag(language))) {
+            return "";
+        }
+        final String region = chineseScriptOfRegion(regionSubtag(language));
+        if (!region.isEmpty()) {
+            return region;
+        }
+        final Locale device = Locale.getDefault();
+        final String script = device.getScript();
+        if (script != null && !script.isEmpty()) {
+            return script;
+        }
+        final String country = chineseScriptOfRegion(device.getCountry());
+        // Chinese with no region settles is read as the mainland writes it.
+        return country.isEmpty() ? "Hans" : country;
+    }
+
+    /** Whether the user reads Chinese as the mainland writes it. */
+    public static boolean isSimplifiedChinese() {
+        return "Hans".equals(resolvedScript(translationLanguage()));
+    }
+
+    @NonNull
+    private static String declaredScript(@Nullable String language) {
+        if (language == null) {
+            return "";
+        }
+        for (String part : language.split("[-_]")) {
+            // Tags arrive spelled both ways round, so the shape counts, not the casing.
+            if (part.length() == 4 && isScriptSpelling(part)) {
+                return Character.toUpperCase(part.charAt(0))
+                        + part.substring(1).toLowerCase(Locale.ROOT);
+            }
+        }
+        return "";
+    }
+
+    private static boolean isScriptSpelling(String part) {
+        for (int i = 0; i < part.length(); i++) {
+            if (!Character.isLetter(part.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @NonNull
+    private static String regionSubtag(@Nullable String language) {
+        if (language == null) {
+            return "";
+        }
+        // The leading subtag is the language, so it is skipped.
+        final String[] parts = language.split("[-_]");
+        for (int i = 1; i < parts.length; i++) {
+            final String part = parts[i];
+            if (part.length() == 2 && Character.isLetter(part.charAt(0))
+                    && Character.isLetter(part.charAt(1))) {
+                return part.toUpperCase(Locale.ROOT);
+            }
+        }
+        return "";
+    }
+
+    @NonNull
+    private static String chineseScriptOfRegion(@Nullable String region) {
+        if (region == null) {
+            return "";
+        }
+        if ("TW".equals(region) || "HK".equals(region) || "MO".equals(region)) {
+            return "Hant";
+        }
+        if ("CN".equals(region) || "SG".equals(region) || "MY".equals(region)) {
+            return "Hans";
+        }
+        return "";
     }
 
     public static long fractionToMs(String fraction) {
@@ -133,7 +231,7 @@ public final class LyricsRequests {
      * User-Agent header, and rate limits requests that do not.
      */
     static HttpURLConnection openConnection(String url) throws IOException {
-        // A canceled provider may finish one blocking request and try the next one.
+        // A cancelled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -148,10 +246,9 @@ public final class LyricsRequests {
     /**
      * Opens a GET connection with configurable timeouts and extra headers.
      */
-    @SuppressWarnings("unused")
     static HttpURLConnection openConnection(String url,
                                             Map<String, String> headers) throws IOException {
-        // A canceled provider may finish one blocking request and try the next one.
+        // A cancelled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -197,7 +294,7 @@ public final class LyricsRequests {
 
     private static HttpURLConnection postConnection(String url, String body, String contentType,
                                                     Map<String, String> headers) throws IOException {
-        // A canceled provider may finish one blocking request and try the next one.
+        // A cancelled lookup may still be finishing one blocking request.
         if (Thread.currentThread().isInterrupted()) {
             throw new InterruptedIOException("Lyrics lookup cancelled");
         }
@@ -620,8 +717,8 @@ public final class LyricsRequests {
         }
         s = java.text.Normalizer.normalize(s, java.text.Normalizer.Form.NFKC);
         s = s.toLowerCase(Locale.ROOT);
-        // Compare metadata across Traditional/Simplified spellings used by different providers.
-        // ICU does not map 妳 to 你, so fold this observed title variant explicitly for matching.
+        // Providers spell metadata Traditional or Simplified, so both are compared. ICU does
+        // not map 妳 to 你, so that observed title variant is folded explicitly.
         s = CharactersConverter.toSimplified(s).replace('妳', '你');
         s = stripDecorations(s);
         s = foldPunctuation(s);
@@ -781,8 +878,8 @@ public final class LyricsRequests {
 
     public static int scoreTrackCandidate(String title, String artist, long durationSec,
                                           @Nullable String album, TrackInfo track) {
-        // Reject counter-evidence before adapters replace candidate metadata with the
-        // query metadata in FetchResult.of(lyrics, track).
+        // Evaluated before adapters swap the candidate metadata for the query metadata
+        // through FetchResult.of(lyrics, track), so a counter-matching title is still rejected.
         MatchVerdict verdict = prepare(track).evaluate(title, artist, durationSec, album);
         if (customMatchMode) {
             return rankScore(verdict);

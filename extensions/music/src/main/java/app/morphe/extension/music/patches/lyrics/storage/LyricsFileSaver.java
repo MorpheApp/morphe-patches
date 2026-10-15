@@ -229,7 +229,6 @@ public final class LyricsFileSaver {
     }
 
     private static String sanitizeFileName(String name) {
-        // Remove characters illegal in file names on most filesystems.
         return name.replaceAll("[\\\\/:*?\"<>|]", "_").replaceAll("\\s+", " ").trim();
     }
 

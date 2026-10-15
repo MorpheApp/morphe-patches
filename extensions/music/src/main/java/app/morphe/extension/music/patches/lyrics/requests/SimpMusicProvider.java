@@ -22,6 +22,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
+import app.morphe.extension.music.patches.lyrics.model.LyricsMerge;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
 import app.morphe.extension.music.patches.lyrics.model.TrackInfo;
 import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
@@ -138,26 +139,6 @@ public final class SimpMusicProvider implements LyricsProvider {
         return null;
     }
 
-    private static Lyrics withContributor(@Nullable Lyrics lyrics, @Nullable String contributor) {
-        if (lyrics == null || contributor == null) {
-            return lyrics;
-        }
-        final String line = "Submitted by " + contributor;
-        final List<String> songwriters = new ArrayList<>();
-        final List<String> existing = lyrics.songwriters();
-        if (existing != null) {
-            songwriters.addAll(existing);
-        }
-        if (songwriters.contains(line)) {
-            return lyrics;
-        }
-        songwriters.add(line);
-        return new Lyrics(lyrics.lines(), lyrics.providerName(), lyrics.synced(),
-                lyrics.romanization(), lyrics.translations(), lyrics.romanizations(),
-                songwriters, lyrics.rawFormat(), lyrics.formatType(), lyrics.sourceUrl(),
-                lyrics.about());
-    }
-
     @Nullable
     private Lyrics parseLrc(String lrc, String videoId) {
         final long[] offsetHolder = {0};
@@ -243,5 +224,10 @@ public final class SimpMusicProvider implements LyricsProvider {
             }
         }
         return result;
+    }
+
+    private static Lyrics withContributor(@Nullable Lyrics lyrics, @Nullable String contributor) {
+        return LyricsMerge.addSongwriter(lyrics,
+                contributor == null ? null : "Submitted by " + contributor);
     }
 }

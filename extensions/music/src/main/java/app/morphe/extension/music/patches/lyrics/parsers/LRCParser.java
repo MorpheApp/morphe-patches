@@ -193,7 +193,6 @@ public final class LRCParser {
 
     private static BodyParse parseBody(String body, long lineStartMs) {
         if (body.indexOf('<') < 0 && body.indexOf('[') < 0) {
-            // No word-level tags, so this is a plain line.
             return new BodyParse(body, List.of());
         }
 
@@ -213,7 +212,7 @@ public final class LRCParser {
                 final char close = (c == '<') ? '>' : ']';
                 final int end = body.indexOf(close, index);
                 if (end < 0) {
-                    // Unterminated tag: keep the remainder as literal text.
+                    // Unterminated tag: the rest is text, not a tag.
                     full.append(body, index, length);
                     pending.append(body, index, length);
                     break;
@@ -221,7 +220,6 @@ public final class LRCParser {
                 final long time = parseTimestamp(body.substring(index + 1, end));
                 if (time != LyricsLine.NO_TIME) {
                     if (pendingStart == LyricsLine.NO_TIME) {
-                        // First word tag: text accumulated so far precedes any timed word.
                         prefix = pending.toString();
                     } else {
                         String word = pending.toString();
@@ -233,7 +231,7 @@ public final class LRCParser {
                     hasToken = true;
                     pending.setLength(0);
                 } else {
-                    // Not a timestamp (e.g. [chorus]): keep as literal text.
+                    // Not a timestamp, so a section bracket like [chorus] stays in the text.
                     full.append(body, index, end + 1);
                     pending.append(body, index, end + 1);
                 }
@@ -246,7 +244,6 @@ public final class LRCParser {
         }
 
         if (!hasToken) {
-            // No valid word tag was found; treat the whole body as a plain line.
             return new BodyParse(body, List.of());
         }
 
@@ -378,7 +375,6 @@ public final class LRCParser {
         for (int i = 0; i < raw.length; i++) {
             String trimmed = raw[i].trim();
             if (isSectionHeader(trimmed)) {
-                // Consecutive headings collapse onto the content they introduce.
                 pendingPart = sectionLabel(trimmed);
                 continue;
             }
