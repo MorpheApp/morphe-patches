@@ -151,7 +151,7 @@ public final class AddToQueuePatch {
         }
 
         final int size = LocalQueuePatch.size();
-        if (!feedFlyout || size > 0) {
+        if (feedFlyout && size > 0) {
             index = FlyoutUtils.addFlyoutButton(
                     flyoutPanel,
                     queueButtonDrawable,
