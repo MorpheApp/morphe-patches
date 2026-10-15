@@ -75,18 +75,20 @@ message VideoWithContextData {
     string menuAccessibilityText = 3;
     bytes onTap = 4;
     bytes menuOnTap = 5;
-    string menuTargetId = 21;
 }
 
 message VideoData {
     VideoThumbnail thumbnail = 1;
     ChannelAvatar avatar = 3;
     LockupMetadata lockupMetadata = 21;
+    LockupImage decoratedAvatar = 23; // Avatar with a ring, such as the avatar of live channels.
+    LockupImage avatarStack = 24; // Avatars of the channels of a collaboration.
 }
 
 message VideoThumbnail {
     bytes image = 1;
     string timestampText = 2;
+    string videoCountText = 6; // Playlists.
     string timestampAccessibilityText = 11;
 }
 
@@ -288,6 +290,7 @@ message InnertubeCommand {
 }
 
 message BrowseEndpoint {
+    string browseId = 2;
 }
 
 message LikeEndpoint {

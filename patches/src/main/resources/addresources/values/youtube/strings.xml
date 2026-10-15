@@ -1216,8 +1216,10 @@ Limitation: If \'Restore old video action bar\' is turned off, \'More videos\' o
 
     <!-- layout.feedcards.feedCardLayoutPatch -->
     <string name="morphe_feed_card_layout_title">Feed card layout</string>
-    <string name="morphe_feed_card_layout_summary_on">Feed videos are shown as cards with like, comment and save buttons</string>
-    <string name="morphe_feed_card_layout_summary_off">Feed videos are shown with the classic layout</string>
+    <string name="morphe_feed_card_layout_entry_1">Classic</string>
+    <string name="morphe_feed_card_layout_entry_2">Cards</string>
+    <string name="morphe_feed_card_layout_entry_3">Cards with like, comment and save buttons</string>
+    <string name="morphe_feed_card_layout_comments">Comments</string>
 
     <!-- layout.miniplayer.miniplayerPatch -->
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
