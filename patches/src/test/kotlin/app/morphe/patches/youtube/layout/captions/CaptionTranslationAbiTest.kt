@@ -44,7 +44,15 @@ class CaptionTranslationAbiTest {
     }
 
     private fun fixture(getters: Boolean = false, ambiguous: Boolean = false,
-                        builderFlags: Int = public, labelFlags: Int = public): CaptionTranslationAbi {
+                        builderFlags: Int = public, labelFlags: Int = public,
+                        defaultPackage: Boolean = false): CaptionTranslationAbi {
+        val trackType = if (defaultPackage) "LTrack;" else this.trackType
+        val builderType = if (defaultPackage) "LBuilder;" else this.builderType
+        val language = ImmutableFieldReference(trackType, "language", string)
+        val vss = ImmutableFieldReference(trackType, "vss", string)
+        val url = ImmutableFieldReference(trackType, "url", string)
+        val label = ImmutableFieldReference(trackType, "label", labelType)
+        fun getter(name: String, type: String) = ImmutableMethodReference(trackType, name, emptyList(), type)
         val reads = if (getters) listOf(getter("language", string), getter("vss", string), getter("url", string), getter("label", labelType))
             else listOf(language, vss, url, label)
         val factory = method(trackType, "builder", emptyList(), builderType,
@@ -101,6 +109,11 @@ class CaptionTranslationAbiTest {
         assertThrows(IllegalStateException::class.java) { fixture(builderFlags = public or AccessFlags.ABSTRACT.value) }
         assertThrows(IllegalStateException::class.java) { fixture(labelFlags = public or AccessFlags.FINAL.value) }
         assertThrows(IllegalStateException::class.java) { fixture(labelFlags = public or AccessFlags.STATIC.value) }
+        assertThrows(IllegalStateException::class.java) { fixture(builderFlags = AccessFlags.PRIVATE.value) }
+    }
+
+    @Test fun `package private default package builders remain accessible to their tracks`() {
+        assertEquals("LBuilder;", fixture(builderFlags = 0, defaultPackage = true).builder.type)
     }
 
     @Test fun `supplied clean APK resolves the complete translation bridge`() {

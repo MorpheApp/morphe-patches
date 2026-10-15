@@ -107,7 +107,7 @@ internal fun resolveCaptionTranslationAbi(
     }
     check(!AccessFlags.PRIVATE.isSet(builder.accessFlags) &&
             (AccessFlags.PUBLIC.isSet(builder.accessFlags) ||
-                    builder.type.substringBeforeLast('/') == track.type.substringBeforeLast('/'))) {
+                    builder.type.substringBeforeLast('/', "") == track.type.substringBeforeLast('/', ""))) {
         "Caption translations: builder is inaccessible from track: ${builder.type}"
     }
     val copy = builder.methods.filter {
