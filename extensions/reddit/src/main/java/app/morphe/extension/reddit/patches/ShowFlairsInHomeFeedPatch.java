@@ -66,13 +66,12 @@ public final class ShowFlairsInHomeFeedPatch {
     /**
      * Injection point.
      * <p>
-     * After a feed page is shown, Reddit loads the full posts of the page. Post previews are
-     * only loaded if a feature flag is enabled for the feed type. Load them so they have flairs.
+     * After a feed page is shown, Reddit loads the full posts of the page. A feature flag
+     * removes this secondary fetch for post previews (text posts), and then the post previews
+     * never get flair data. Keep the secondary fetch so they have flairs.
      */
-    public static boolean loadFullPostPreviews(boolean original) {
-        final boolean load = original || Settings.SHOW_FLAIRS_IN_HOME_FEED.get();
-        Logger.printDebug(() -> "Post preview full load, feature flag: " + original + " load: " + load);
-        return load;
+    public static boolean isPostPreviewSecondaryFetchRemoved(boolean original) {
+        return original && !Settings.SHOW_FLAIRS_IN_HOME_FEED.get();
     }
 
     /**
@@ -88,18 +87,7 @@ public final class ShowFlairsInHomeFeedPatch {
             final String fullId = getFullId(postId);
 
             String flair = link.getLinkFlairText();
-            if (flair == null || flair.isEmpty()) {
-                if (WAITING_POSTS.containsKey(fullId)) {
-                    Logger.printDebug(() -> "Link created without flair: " + fullId
-                            + " r/" + link.getSubreddit() + " \"" + link.getTitle()
-                            + "\" created by: " + getLinkCreator());
-                }
-                return;
-            }
-
-            if (WAITING_POSTS.containsKey(fullId)) {
-                Logger.printDebug(() -> "Link created with flair: " + fullId + " created by: " + getLinkCreator());
-            }
+            if (flair == null || flair.isEmpty()) return;
 
             String community = link.getSubreddit();
             String textColor = link.getLinkFlairTextColor();
@@ -166,7 +154,6 @@ public final class ShowFlairsInHomeFeedPatch {
         }
         WAITING_POSTS.computeIfAbsent(fullId, id -> new CopyOnWriteArrayList<>())
                 .add(new WeakReference<>(post));
-        Logger.printDebug(() -> source + ": " + fullId + " waiting for flair data");
     }
 
     private static void removeCollectedPosts() {
@@ -198,24 +185,6 @@ public final class ShowFlairsInHomeFeedPatch {
         Logger.printDebug(() -> source + ": " + fullId + (added
                 ? " flair added: " + data[0]
                 : " already has flairs, not added: " + data[0]));
-    }
-
-    /**
-     * @return The app methods that created a Link, for debug logging.
-     */
-    private static String getLinkCreator() {
-        StringBuilder creator = new StringBuilder();
-        int count = 0;
-        for (StackTraceElement element : new Throwable().getStackTrace()) {
-            String className = element.getClassName();
-            if (className.startsWith("app.morphe.") || className.startsWith("com.reddit.domain.model.Link")) {
-                continue;
-            }
-            if (count > 0) creator.append(" <- ");
-            creator.append(className).append('.').append(element.getMethodName());
-            if (++count == 5) break;
-        }
-        return creator.toString();
     }
 
     private static String getFullId(String postId) {

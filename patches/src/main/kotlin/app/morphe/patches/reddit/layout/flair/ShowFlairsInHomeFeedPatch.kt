@@ -265,8 +265,8 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
         }
 
         // After a feed page is shown, Reddit loads the full posts of the page in the background,
-        // and the full posts include the flairs. Post previews are only loaded if a feature flag
-        // is enabled for the feed type. Load them too, so their flairs are available.
+        // and the full posts include the flairs. A feature flag removes this secondary fetch
+        // for post previews. Keep the fetch, so their flairs are available.
         postsToLoadFingerprint(postPreviewType).let {
             val flagMatch = it.instructionMatches.last()
             val flagRegister = flagMatch.getInstruction<OneRegisterInstruction>().registerA
@@ -274,7 +274,7 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
             it.method.addInstructionsAtControlFlowLabel(
                 flagMatch.index,
                 """
-                    invoke-static { v$flagRegister }, $EXTENSION_CLASS->loadFullPostPreviews(Z)Z
+                    invoke-static { v$flagRegister }, $EXTENSION_CLASS->isPostPreviewSecondaryFetchRemoved(Z)Z
                     move-result v$flagRegister
                 """
             )
