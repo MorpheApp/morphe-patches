@@ -19,7 +19,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.proto.hookElement
 import app.morphe.patches.youtube.layout.hide.general.ContextualMenuItemBuilderFingerprint
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.shared.hookVideoStarted
 import app.morphe.patches.youtube.shared.startVideoInformerPatch
@@ -53,7 +52,6 @@ val flyoutPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        lithoFilterPatch,
         startVideoInformerPatch,
         videoInformationPatch,
         elementProtoParserHookPatch,
@@ -153,18 +151,6 @@ val flyoutPatch = bytecodePatch(
             "invoke-static/range { p2 .. p2 }, $EXTENSION_UTILS_CLASS->" +
                     "extractFlyoutIdFromMap(Ljava/util/Map;)V"
         )
-
-        OnClickLithoButtonBufferObjectFingerprint.let {
-            val match = it.instructionMatches[3]
-            val index = match.index
-            val register = match.getInstruction<FiveRegisterInstruction>().registerC
-
-            it.method.addInstruction(
-                index + 1,
-                "invoke-static { v$register }, $EXTENSION_UTILS_CLASS->" +
-                        "extractFlyoutIdFromLithoButton(Ljava/util/Map;)V"
-            )
-        }
 
         FullHistoryFlyoutBufferObjectFingerprint.let {
             val match = it.instructionMatches[2]

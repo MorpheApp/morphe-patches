@@ -31,7 +31,41 @@ public final class OpenSystemShareSheetPatch {
         void patch_dismissActionSheet();
     }
 
-    private static final Set<Integer> SHARE_ENTITY_FIELDS = Set.of(1, 2, 3, 6, 7, 10, 12, 20);
+    private static final int SHARE_ENDPOINT_ENTITY_FIELD = 1;
+
+    // Share entity fields, from observed values.
+    private static final int ENTITY_VIDEO_ID_FIELD = 1;
+    private static final int ENTITY_PLAYLIST_ID_FIELD = 2;
+    private static final int ENTITY_CHANNEL_ID_FIELD = 3;
+    private static final int ENTITY_POST_ID_FIELD = 6;
+    private static final int ENTITY_POST_CHANNEL_ID_FIELD = 7;
+    private static final int ENTITY_COMMENT_FIELD = 18;
+    /**
+     * Fields of the entities shared with a plain link.
+     * 10, 12 and 20 are Shorts and entity type metadata that does not change the link.
+     */
+    private static final Set<Integer> SHARE_ENTITY_FIELDS = Set.of(
+            ENTITY_VIDEO_ID_FIELD,
+            ENTITY_PLAYLIST_ID_FIELD,
+            ENTITY_CHANNEL_ID_FIELD,
+            ENTITY_POST_ID_FIELD,
+            ENTITY_POST_CHANNEL_ID_FIELD,
+            10, 12, 20
+    );
+
+    // Comment entity fields. 3, 4 and 6 are the header, text and avatar of the share sheet.
+    private static final int COMMENT_ID_FIELD = 1;
+    private static final int COMMENT_PAGE_PATH_FIELD = 5;
+    /**
+     * Commented video id, from the commented item (field 2) of the comment entity.
+     */
+    private static final int[] COMMENT_VIDEO_PATH = {2, 1, 1};
+    /**
+     * Commented post id, from the commented item (field 2) of the comment entity.
+     */
+    private static final int[] COMMENT_POST_PATH = {2, 2, 1};
+    private static final int COMMENT_ITEM_ID_FIELD = 1;
+
     private static final Pattern SHARE_ENTITY_ID_PATTERN = Pattern.compile("[A-Za-z0-9_-]+");
     /**
      * Comment id, or the comment id of the parent and the reply id separated by a dot.
@@ -63,9 +97,6 @@ public final class OpenSystemShareSheetPatch {
     /**
      * Builds the link from the serialized share entity of the share endpoint.
      * The entity is what the in-app share sheet sends to {@code share/get_share_panel}.
-     * Field numbers of the entity, from observed values:
-     * 1 video id, 2 playlist id, 3 channel id, 6 post id, 7 channel id of the post,
-     * 10, 12 and 20 Shorts and entity type metadata that does not change the link.
      *
      * @return The link, or null if the entity is not a type known to be shared with a plain link.
      */
@@ -84,7 +115,7 @@ public final class OpenSystemShareSheetPatch {
         if (entity == null) {
             return null;
         }
-        ProtoNode comment = ProtoNode.field(entity, 18);
+        ProtoNode comment = ProtoNode.field(entity, ENTITY_COMMENT_FIELD);
         if (comment != null) {
             return entity.size() == 1 ? getCommentUrl(comment, longURLPrefix, videoURLPrefix) : null;
         }
@@ -96,10 +127,10 @@ public final class OpenSystemShareSheetPatch {
             }
         }
 
-        final String videoId = getShareEntityId(entity, 1);
-        final String playlistId = getShareEntityId(entity, 2);
-        final String channelId = getShareEntityId(entity, 3);
-        final String postId = getShareEntityId(entity, 6);
+        final String videoId = getShareEntityId(entity, ENTITY_VIDEO_ID_FIELD);
+        final String playlistId = getShareEntityId(entity, ENTITY_PLAYLIST_ID_FIELD);
+        final String channelId = getShareEntityId(entity, ENTITY_CHANNEL_ID_FIELD);
+        final String postId = getShareEntityId(entity, ENTITY_POST_ID_FIELD);
         if (postId != null) {
             return longURLPrefix + "/post/" + postId;
         }
@@ -118,18 +149,13 @@ public final class OpenSystemShareSheetPatch {
     }
 
     /**
-     * Comment entity, from observed values: 1 comment id, 2 commented item,
-     * 3 to 6 header, text, page path and avatar of the share sheet.
-     * A commented video is 2.1.1.1 video id and 2.1.2.1 channel id,
-     * a commented post is 2.2.1.1 post id and 2.2.2.1 channel id.
-     *
      * @return The link, or null if the comment is not on a video or a post.
      */
     @Nullable
     private static String getCommentUrl(ProtoNode comment, String longURLPrefix, String videoURLPrefix) {
         List<ProtoNode> fields = comment.children;
-        ProtoNode commentId = fields == null ? null : ProtoNode.field(fields, 1);
-        ProtoNode path = fields == null ? null : ProtoNode.field(fields, 5);
+        ProtoNode commentId = fields == null ? null : ProtoNode.field(fields, COMMENT_ID_FIELD);
+        ProtoNode path = fields == null ? null : ProtoNode.field(fields, COMMENT_PAGE_PATH_FIELD);
         if (commentId == null || !commentId.isText() || !COMMENT_ID_PATTERN.matcher(commentId.getText()).matches()
                 || path == null || !path.isText()) {
             return null;
@@ -137,33 +163,19 @@ public final class OpenSystemShareSheetPatch {
 
         switch (path.getText()) {
             case "/watch" -> {
-                String videoId = getShareEntityId(getChildren(fields, 2, 1, 1), 1);
+                String videoId = getShareEntityId(ProtoNode.message(fields, COMMENT_VIDEO_PATH), COMMENT_ITEM_ID_FIELD);
                 if (videoId == null) return null;
                 String separator = videoURLPrefix.contains("?") ? "&" : "?";
                 return videoURLPrefix + videoId + separator + "lc=" + commentId.getText();
             }
             case "/post" -> {
-                String postId = getShareEntityId(getChildren(fields, 2, 2, 1), 1);
+                String postId = getShareEntityId(ProtoNode.message(fields, COMMENT_POST_PATH), COMMENT_ITEM_ID_FIELD);
                 return postId == null ? null : longURLPrefix + "/post/" + postId + "?lc=" + commentId.getText();
             }
             default -> {
                 return null;
             }
         }
-    }
-
-    /**
-     * @return The fields of the message at the field numbers, or an empty list if there is no such message.
-     */
-    private static List<ProtoNode> getChildren(List<ProtoNode> message, int... fieldNumbers) {
-        for (int fieldNumber : fieldNumbers) {
-            ProtoNode field = ProtoNode.field(message, fieldNumber);
-            if (field == null || field.children == null) {
-                return List.of();
-            }
-            message = field.children;
-        }
-        return message;
     }
 
     @Nullable
@@ -187,7 +199,7 @@ public final class OpenSystemShareSheetPatch {
         }
 
         List<ProtoNode> endpoint = ProtoNode.parse(shareEndpoint);
-        ProtoNode serializedEntity = endpoint == null ? null : ProtoNode.field(endpoint, 1);
+        ProtoNode serializedEntity = endpoint == null ? null : ProtoNode.field(endpoint, SHARE_ENDPOINT_ENTITY_FIELD);
         if (serializedEntity == null || !serializedEntity.isText()) {
             // Community posts send a share entity endpoint without an entity. Its command opens
             // an action sheet with a share endpoint that has the entity, which is handled instead.

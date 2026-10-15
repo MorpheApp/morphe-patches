@@ -252,11 +252,8 @@ public final class FlyoutUtils {
     }
 
     private static final int VIDEO_ID_LENGTH = 11;
-    public static final int CHANNEL_ID_LENGTH = 24;
     private static final byte[] PLAYLIST_ID_PREFIX_BYTES =
             getAsciiBytes("playlist?list=");
-    private static final byte[] HEADER_DESCRIPTION_PLAYLIST_ID_PREFIX_BYTES =
-            getAsciiBytes("VL");
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
             getAsciiBytes(".ytimg.com/vi/"),
             getAsciiBytes("youtube.com/watch?v=")
@@ -273,14 +270,6 @@ public final class FlyoutUtils {
     private static final List<byte[]> HORIZONTAL_SHELF_HISTORY_BYTES = List.of(
             getAsciiBytes("horizontal_shelf.e"),
             getAsciiBytes("FEhistory")
-    );
-    private static final List<byte[]> HEADER_DESCRIPTION_BYTES = List.of(
-            getAsciiBytes("page_header.e"),
-            getAsciiBytes("engagement-panel-page-headers-description")
-    );
-    private static final List<byte[]> LIST_ITEM_SHARE_BYTES = List.of(
-            getAsciiBytes("list_item.e"),
-            getAsciiBytes("yt_outline_experimental_share")
     );
 
     // 20.21 has no container, and its secondary views are direct children of the item.
@@ -470,17 +459,12 @@ public final class FlyoutUtils {
     }
 
     private static void resetFlyoutIds() {
-        Utils.runOnMainThreadDelayed(
-                () -> {
-                    visibleFlyoutButtons.clear();
-                    currentButtonIndex = 0;
-                    flyoutVideoId = "";
-                    flyoutPlaylistId = "";
-                    flyoutChannelId = "";
-                    flyoutChannelName = "";
-                },
-                0
-        );
+        visibleFlyoutButtons.clear();
+        currentButtonIndex = 0;
+        flyoutVideoId = "";
+        flyoutPlaylistId = "";
+        flyoutChannelId = "";
+        flyoutChannelName = "";
     }
 
     private static void addFlyoutElements(Object flyoutPanel) {
@@ -874,38 +858,6 @@ public final class FlyoutUtils {
     /**
      * Injection point.
      */
-    public static void extractFlyoutIdFromLithoButton(Map<?, ?> map) {
-        try {
-            final byte[] flyoutBuffer =
-                    getFlyoutBuffer(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
-            if (flyoutBuffer == null) {
-                return;
-            }
-            List<Integer> headerDescriptionBytesIndexes =
-                    byteIndexesOf(flyoutBuffer, HEADER_DESCRIPTION_BYTES);
-            if (!headerDescriptionBytesIndexes.isEmpty() &&
-                    headerDescriptionBytesIndexes.size() == HEADER_DESCRIPTION_BYTES.size()) {
-                if (byteIndexInStartRange(headerDescriptionBytesIndexes.get(0))) {
-                    // Buttons that do not open a flyout, such as the share button of community posts
-                    // and of the playlist page header. The buttons that open a flyout are also called
-                    // before the flyout, which then finds the ids with its sender view.
-                    senderViewRef = new WeakReference<>(null);
-                    setFlyoutPlaylistId(
-                            flyoutBuffer,
-                            HEADER_DESCRIPTION_PLAYLIST_ID_PREFIX_BYTES,
-                            false
-                    );
-                    resetFlyoutIds();
-                }
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "extractFlyoutIdFromLithoButton failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
     public static void extractFlyoutIdFromMap(Map<?, ?> map) {
         try {
             senderViewRef = new WeakReference<>(
@@ -943,15 +895,6 @@ public final class FlyoutUtils {
             Logger.printDebug(() -> "Flyout buffer: " + new BufferAsciiStrings(flyoutBuffer).getStrings());
         }
 
-        // A comment flyout has the ids of the video, which must not be used as the ids of the flyout.
-        List<Integer> listItemShareBytesIndexes = byteIndexesOf(flyoutBuffer, LIST_ITEM_SHARE_BYTES);
-        if (!listItemShareBytesIndexes.isEmpty() &&
-                listItemShareBytesIndexes.size() == LIST_ITEM_SHARE_BYTES.size()) {
-            if (byteIndexInStartRange(listItemShareBytesIndexes.get(0))) {
-                return;
-            }
-        }
-
         List<Integer> horizontalShelfHistoryBytesIndexes = byteIndexesOf(flyoutBuffer, HORIZONTAL_SHELF_HISTORY_BYTES);
         isMyTabHistoryFlyout =
                 !horizontalShelfHistoryBytesIndexes.isEmpty() &&
@@ -962,7 +905,7 @@ public final class FlyoutUtils {
         List<Integer> shortsVideoElementsBytesIndexes = byteIndexesOf(flyoutBuffer, SHORTS_VIDEO_ELEMENT_BYTES);
         isShortFlyout = shortsVideoElementsBytesIndexes.size() == 1;
 
-        setFlyoutPlaylistId(flyoutBuffer, PLAYLIST_ID_PREFIX_BYTES, true);
+        setFlyoutPlaylistId(flyoutBuffer);
 
         View senderView = senderViewRef.get();
         Logger.printDebug(() -> "Flyout sender view object: " + (senderView != null));
@@ -1126,45 +1069,12 @@ public final class FlyoutUtils {
         }
     }
 
-    /**
-     * Channel ids are always 24 characters long and start with "UC", and the remaining
-     * 22 characters are URL safe Base64.
-     *
-     * @param buffer The buffer to check.
-     * @param index  The start index of the "UC" prefix.
-     * @return If the buffer holds a valid channel id at the given index.
-     */
-    public static boolean isValidChannelId(byte[] buffer, int index) {
-        final int lastIndex = index + CHANNEL_ID_LENGTH;
-        if (index < 0 || lastIndex > buffer.length || !(buffer[index] == 'U' && buffer[index + 1] == 'C')) {
-            return false;
-        }
-
-        if ((index > 0 && isByteAlphanumeric(buffer[index - 1])) ||
-                (lastIndex < buffer.length && isByteAlphanumeric(buffer[lastIndex]))) {
-            return false;
-        }
-
-        for (int i = index + 2; i < lastIndex; i++) {
-            final byte b = buffer[i];
-            if (!isByteAlphanumeric(b) && b != '-' && b != '_') {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     @SuppressWarnings("ExtractMethodRecommender")
-    private static void setFlyoutPlaylistId(
-            byte[] flyoutBuffer,
-            byte[] playlistIdPrefix,
-            boolean truncateLastChar
-    ) {
-        final int index = byteIndexOf(flyoutBuffer, playlistIdPrefix);
+    private static void setFlyoutPlaylistId(byte[] flyoutBuffer) {
+        final int index = byteIndexOf(flyoutBuffer, PLAYLIST_ID_PREFIX_BYTES);
 
         if (index >= 0) {
-            final int playlistIdStart = index + playlistIdPrefix.length;
+            final int playlistIdStart = index + PLAYLIST_ID_PREFIX_BYTES.length;
 
             int playlistIdEnd = playlistIdStart;
             while (playlistIdEnd < flyoutBuffer.length) {
@@ -1179,10 +1089,7 @@ public final class FlyoutUtils {
             // "playlist?list=" always ends with a character extraneous to the
             // playlist ID, so verify that the current index of being
             // searched bytes does not belong to this element.
-            final int playlistLength =
-                    playlistIdEnd -
-                            playlistIdStart -
-                            (truncateLastChar ? 1 : 0);
+            final int playlistLength = playlistIdEnd - playlistIdStart - 1;
 
             if (playlistLength >= 18) {
                 flyoutPlaylistId = new String(
