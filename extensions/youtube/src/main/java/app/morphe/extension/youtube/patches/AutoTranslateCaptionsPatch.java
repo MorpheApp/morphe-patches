@@ -17,6 +17,7 @@ import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class AutoTranslateCaptionsPatch {
@@ -56,6 +57,10 @@ public final class AutoTranslateCaptionsPatch {
      * Injection point: Called after the auto-translated caption tracks are created.
      */
     public static List<CaptionTrackInterface> addTranslationLanguages(List<CaptionTrackInterface> tracks) {
+        if (!Settings.AUTO_TRANSLATE_ADDITIONAL_LANGUAGES.get()) {
+            return tracks;
+        }
+
         try {
             return addTranslationLanguages(tracks, Requester.getAppLocale());
         } catch (Exception ex) {

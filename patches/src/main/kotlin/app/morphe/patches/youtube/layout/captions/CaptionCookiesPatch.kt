@@ -56,7 +56,7 @@ internal val captionCookiesPatch = bytecodePatch(
                     ),
                     "V",
                     AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                    annotations,
+                    null,
                     null,
                     MutableMethodImplementation(4),
                 ).toMutable().apply {
@@ -89,10 +89,10 @@ internal val captionCookiesPatch = bytecodePatch(
 
                 it.classDef.methods.add(helperMethod)
 
-                val urlIndex = it.instructionMatches.first().index
+                val urlIndex = it.instructionMatches[0].index
                 val urlRegister =
                     getInstruction<FiveRegisterInstruction>(urlIndex).registerD
-                val buildIndex = urlIndex + 1
+                val buildIndex = it.instructionMatches[1].index
                 val buildRegister =
                     getInstruction<OneRegisterInstruction>(buildIndex).registerA
 

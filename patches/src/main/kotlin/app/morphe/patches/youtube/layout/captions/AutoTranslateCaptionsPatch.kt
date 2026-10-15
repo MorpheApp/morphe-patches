@@ -10,6 +10,9 @@ package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
@@ -23,11 +26,19 @@ private const val EXTENSION_CAPTION_TRACK_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/AutoTranslateCaptionsPatch$CaptionTrackInterface;"
 
 internal val autoTranslateCaptionsPatch = bytecodePatch(
-    description = "Adds more native auto-translate languages and sorts their displayed names.",
+    description = "Adds an option to add more auto-translate languages and sort the languages by name."
 ) {
-    dependsOn(preferredCaptionLanguagePatch)
+    dependsOn(
+        sharedExtensionPatch,
+        settingsPatch,
+        preferredCaptionLanguagePatch
+    )
 
     execute {
+        settingsMenuCaptionGroup.add(
+            SwitchPreference("morphe_auto_translate_additional_languages", summary = true)
+        )
+
         val labelField = CaptionTrackBuilderBuildFingerprint.instructionMatches[0]
             .instruction.getReference<FieldReference>()!!
         val urlField = CaptionTracksManagerAutoTranslateTracksFingerprint.instructionMatches[0]
@@ -38,14 +49,14 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
         val setVssIdMethod = CaptionTrackBuilderSetterFingerprint("Null vssId").method
 
         // Add interface and helper methods to allow extension code to call obfuscated code.
-        CaptionTrackIsDisableOptionFingerprint.classDef.apply {
+        mutableClassDefBy(CaptionTrackBuilderBuildFingerprint.method.returnType).apply {
             interfaces.add(EXTENSION_CAPTION_TRACK_INTERFACE)
 
             // 20.x tracks are an abstract class, and the url field is in the subclass.
             addHelperMethod(
                 "patch_getUrl",
                 "Ljava/lang/String;",
-                """
+                smali = """
                     move-object v0, p0
                     check-cast v0, ${urlField.definingClass}
                     iget-object v0, v0, $urlField
@@ -56,7 +67,13 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
             addHelperMethod(
                 "patch_copyTranslation",
                 EXTENSION_CAPTION_TRACK_INTERFACE,
-                """
+                listOf(
+                    "Ljava/lang/String;",
+                    "Ljava/lang/String;",
+                    "Ljava/lang/String;",
+                    "Ljava/lang/CharSequence;"
+                ),
+                smali = """
                     new-instance v0, ${CaptionTrackBuilderBuildFingerprint.classDef.type}
                     invoke-direct { v0, p0 }, ${CaptionTrackBuilderCopyConstructorFingerprint.method}
                     invoke-virtual { v0, p1 }, $setLanguageCodeMethod
@@ -66,13 +83,7 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
                     invoke-virtual { v0 }, ${CaptionTrackBuilderBuildFingerprint.method}
                     move-result-object v0
                     return-object v0
-                """,
-                listOf(
-                    "Ljava/lang/String;",
-                    "Ljava/lang/String;",
-                    "Ljava/lang/String;",
-                    "Ljava/lang/CharSequence;"
-                )
+                """
             )
         }
 
