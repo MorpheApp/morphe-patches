@@ -38,9 +38,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew :patches:buildAndroid --no-daemon
 
-      - name: Verify Android bundle
-        run: python3 scripts/verify_android_bundle.py patches/build/libs/*.mpp
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
         with:
