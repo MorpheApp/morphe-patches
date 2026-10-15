@@ -100,11 +100,13 @@ public final class LyricsRomanizer {
                 }
 
                 List<LyricsLine> romanized = LyricsCache.getRomanization(track, source, lines);
+                boolean online = romanized != null;
                 if (romanized == null) {
                     List<String> romanizedText = romanizeOnline(lines);
                     if (romanizedText != null) {
                         romanized = toLines(romanizedText);
                         LyricsCache.putRomanization(track, source, lines, romanized);
+                        online = true;
                     }
                 }
 
@@ -115,8 +117,9 @@ public final class LyricsRomanizer {
                         ? LocalRomanizer.romanize(lines) : null;
 
                 List<LyricsLine> result = local != null ? toLines(local.lines) : romanized;
+                final boolean fromGoogle = online && local == null && result != null;
                 Utils.runOnMainThread(() -> callback.onRomanized(
-                        result, result != null, false, null, false,
+                        result, fromGoogle, false, null, false,
                         local != null ? local.dictionary : null));
             } catch (Throwable ignored) {
                 Utils.runOnMainThread(

@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 
 final class LyricsLineView extends TextView {
@@ -503,7 +504,7 @@ final class LyricsLineView extends TextView {
         final float secondaryWeight = lineAlpha
                 * (activeLine ? 255f : Color.alpha(LyricsColors.secondaryTextColor()));
         final int secondaryAlpha = Math.round(secondaryWeight * contentNow);
-        final int romaAlpha = activeLine && perWordReading
+        final int romaAlpha = activeLine && perWordReading && Settings.LYRICS_WORD_SYNC.get()
                 ? Math.round(secondaryWeight * LyricsColors.ACTIVE_READING_ALPHA * contentNow)
                 : secondaryAlpha;
 
