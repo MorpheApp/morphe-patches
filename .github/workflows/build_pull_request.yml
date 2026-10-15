@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - dev
-      - feat/expanded-caption-languages
   pull_request:
     branches:
       - dev
@@ -13,7 +12,7 @@ on:
 jobs:
   release:
     name: Build
-    runs-on: ${{ github.ref == 'refs/heads/feat/expanded-caption-languages' && 'ubuntu-24.04' || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7
