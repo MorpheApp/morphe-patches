@@ -33,6 +33,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.Reference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch;"
@@ -42,19 +43,29 @@ private const val EXTENSION_CAPTION_TRACK_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch$CaptionTrackInterface;"
 
 /**
- * Adds a public final method with no parameters.
+ * Adds a public final method.
+ *
+ * @param parameters Object parameter types.
+ * @param freeRegisters Number of free registers, starting at v0.
  */
-private fun MutableClass.addHelperMethod(name: String, returnType: String, smali: String) {
+internal fun MutableClass.addHelperMethod(
+    name: String,
+    returnType: String,
+    smali: String,
+    parameters: List<String> = listOf(),
+    freeRegisters: Int = 1,
+) {
     methods.add(
         ImmutableMethod(
             type,
             name,
-            listOf(),
+            parameters.map { ImmutableMethodParameter(it, null, null) },
             returnType,
             AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
             null,
             null,
-            MutableMethodImplementation(2),
+            // Parameter registers are p0 (this) and one for each parameter.
+            MutableMethodImplementation(freeRegisters + 1 + parameters.size),
         ).toMutable().apply {
             addInstructions(0, smali)
         }

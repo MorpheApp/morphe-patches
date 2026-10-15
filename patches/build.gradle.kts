@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.JavaExec
-
 group = "app.morphe"
 
 patches {
@@ -19,7 +17,6 @@ patches {
 val patchListGeneratorClasspath = configurations.create("patchListGeneratorClasspath")
 val jamApk = providers.gradleProperty("jamApk")
 val jamOutput = providers.gradleProperty("jamOutput")
-val captionsApk = providers.environmentVariable("YOUTUBE_CAPTIONS_APK")
 
 dependencies {
     // Required due to smali, or build fails. Can be removed once smali is bumped.
@@ -33,18 +30,14 @@ dependencies {
     compileOnly(project(":patches:stub"))
 
     testImplementation(kotlin("test"))
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
+    testImplementation(libs.kotlinx.coroutines.core)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 tasks {
     test {
         useJUnitPlatform()
         jamApk.orNull?.let { systemProperty("jamApk", it) }
-        inputs.property("captionsApkPath", captionsApk.orElse(""))
-        captionsApk.orNull?.let {
-            inputs.file(it).withPropertyName("captionsApk").withPathSensitivity(PathSensitivity.NONE)
-        }
     }
 
     register<JavaExec>("checkStringResources") {

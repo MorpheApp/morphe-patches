@@ -14,7 +14,8 @@ internal val settingsMenuCaptionGroup = mutableSetOf<BasePreference>()
 @Suppress("unused")
 val captionsPatch = bytecodePatch(
     name = "Captions",
-    description = "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
+    description = "Adds an option to disable captions from being automatically enabled or to set caption cookies, " +
+            "and adds additional auto translation language options.",
 ) {
     dependsOn(
         autoCaptionsPatch,

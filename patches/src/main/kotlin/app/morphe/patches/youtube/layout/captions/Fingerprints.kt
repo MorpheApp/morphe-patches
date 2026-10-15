@@ -145,7 +145,62 @@ internal object CaptionTracksManagerAutoTranslateTracksFingerprint : Fingerprint
     returnType = "Ljava/util/List;",
     parameters = listOf(),
     filters = listOf(
-        string("&tlang=")
+        // Url of the source caption track.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            smali = "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+            location = MatchAfterImmediately()
+        ),
+        string("&tlang=", location = MatchAfterImmediately())
+    )
+)
+
+/**
+ * Resolves to the caption track builder class.
+ */
+internal object CaptionTrackBuilderBuildFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "L",
+    parameters = listOf(),
+    filters = listOf(
+        // Display name.
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/CharSequence;"
+        ),
+        string(" languageCode"),
+        string(" vssId"),
+        string(" url")
+    )
+)
+
+internal object CaptionTrackBuilderCopyConstructorFingerprint : Fingerprint(
+    classFingerprint = CaptionTrackBuilderBuildFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("L"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/CharSequence;"
+        )
+    )
+)
+
+/**
+ * @param nullValueMessage Exception message of the setter, such as "Null url".
+ */
+internal class CaptionTrackBuilderSetterFingerprint(nullValueMessage: String) : Fingerprint(
+    classFingerprint = CaptionTrackBuilderBuildFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        string(nullValueMessage)
     )
 )
 
