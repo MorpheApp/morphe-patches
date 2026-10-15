@@ -74,29 +74,42 @@ public final class AddToQueuePatch {
     }
 
     public static void onListBound(ViewGroup itemList) {
-        if (!isPatchIncluded() || !isFlyoutOverrideEnabled()
-                || SECONDARY_CONTAINER_ID == 0) {
+        if (!isPatchIncluded() || !isFlyoutOverrideEnabled()) {
             return;
         }
 
-        int itemIndex = -1;
+        final String videoId = FlyoutUtils.getFlyoutVideoId();
         for (var button : FlyoutUtils.getVisibleFlyoutButtons()) {
-            if (queueButtonOriginalNames.contains(button.first)) {
-                itemIndex = button.second - 1;
-                break;
+            final String buttonName = button.first;
+            if (!queueButtonOriginalNames.contains(buttonName)) {
+                continue;
             }
-        }
 
-        if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
-            return;
-        }
+            final int itemIndex = button.second - 1;
+            if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
+                continue;
+            }
 
-        var badge = itemList.getChildAt(itemIndex)
-                .findViewById(SECONDARY_CONTAINER_ID);
+            android.view.View item = itemList.getChildAt(itemIndex);
+            var badge = SECONDARY_CONTAINER_ID == 0 ? null : item.findViewById(SECONDARY_CONTAINER_ID);
+            if (badge != null && badge.getVisibility() != android.view.View.GONE) {
+                Logger.printDebug(() -> "Hiding the menu item secondary icon");
+                badge.setVisibility(android.view.View.GONE);
+            }
 
-        if (badge != null && badge.getVisibility() != android.view.View.GONE) {
-            Logger.printDebug(() -> "Hiding the menu item secondary icon");
-            badge.setVisibility(android.view.View.GONE);
+            if (LocalQueuePatch.isEnabled()) {
+                Logger.printDebug(() -> "Queue row " + buttonName + " video id: '" + videoId + "'");
+                item.setOnClickListener(v -> {
+                    if (videoId.isEmpty()) {
+                        Utils.showToastShort(str(FlyoutUtils.getFlyoutPlaylistId().isEmpty()
+                                ? "morphe_local_queue_unavailable"
+                                : "morphe_local_queue_playlist_unsupported"));
+                        FlyoutUtils.dismissFlyout();
+                    } else {
+                        flyoutButtonClickLogic(buttonName, videoId);
+                    }
+                });
+            }
         }
     }
 
