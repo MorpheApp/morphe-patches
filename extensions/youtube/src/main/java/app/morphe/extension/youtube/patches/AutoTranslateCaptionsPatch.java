@@ -1,5 +1,6 @@
 /*
  * Copyright 2026 itolkien.
+ * https://github.com/MorpheApp/morphe-patches/pull/3754
  * Adapted from https://github.com/itolkien/morphe-universal-captions
  *
  * See the included NOTICE file for GPLv3 Section 7 terms that apply to this code.
