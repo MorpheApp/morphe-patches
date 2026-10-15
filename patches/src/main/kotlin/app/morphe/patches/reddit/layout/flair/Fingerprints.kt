@@ -24,11 +24,6 @@ internal object FeedElementProcessorFingerprint : Fingerprint(
         "Ljava/util/List;"
     ),
     filters = listOf(
-        fieldAccess(
-            opcode = Opcode.SGET_OBJECT,
-            definingClass = "Lcom/reddit/feeds/data/FeedType;",
-            type = "Lcom/reddit/feeds/data/FeedType;",
-        ),
         methodCall(
             smali = "Lkotlin/Pair;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V"
         )

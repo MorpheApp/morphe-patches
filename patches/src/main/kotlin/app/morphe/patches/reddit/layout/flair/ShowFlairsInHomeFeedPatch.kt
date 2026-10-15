@@ -161,9 +161,13 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
                 iget-object v1, v1, $previewChildrenField
                 iput-object v14, v0, $previewFlairsField
                 iput-object v1, v0, $previewChildrenField
+                const/4 v1, 0x1
+                return v1
 
+                # The post already has a flairs element.
                 :return
-                return-void
+                const/4 v1, 0x0
+                return v1
             """
         )
 
@@ -223,9 +227,13 @@ val showFlairsInHomeFeedPatch = bytecodePatch(
                 invoke-static { v2 }, $persistentListOfMethod
                 move-result-object v2
                 iput-object v2, v0, $sectionSectionsField
+                const/4 v1, 0x1
+                return v1
 
+                # The post already has a flairs section.
                 :return
-                return-void
+                const/4 v1, 0x0
+                return v1
             """
         )
 
@@ -302,7 +310,7 @@ private fun MutableClass.addCachedPostMethods(
                 ImmutableMethodParameter("Ljava/lang/String;", emptySet(), "textColor"),
                 ImmutableMethodParameter("Ljava/lang/String;", emptySet(), "backgroundColor")
             ),
-            "V",
+            "Z",
             AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
             emptySet(),
             null,
