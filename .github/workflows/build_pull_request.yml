@@ -26,10 +26,10 @@ jobs:
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v3
 
-      - name: Build
+      - name: Test and build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :patches:buildAndroid --no-daemon
+        run: ./gradlew :patches:test :extensions:youtube:testDebugUnitTest :patches:buildAndroid --no-daemon
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7

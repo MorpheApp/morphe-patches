@@ -19,6 +19,7 @@ val captionsPatch = bytecodePatch(
     dependsOn(
         autoCaptionsPatch,
         preferredCaptionLanguagePatch,
+        autoTranslateCaptionsPatch,
         captionCookiesPatch,
         transcriptPatch,
     )
