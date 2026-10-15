@@ -26,10 +26,20 @@ jobs:
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v3
 
-      - name: Test and build
+      - name: Test
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :patches:test :extensions:youtube:testDebugUnitTest :patches:buildAndroid --no-daemon
+        run: ./gradlew :patches:test :extensions:youtube:testDebugUnitTest --no-daemon
+
+      # buildAndroid adds DEX to the jar in place. A later JVM task can recreate
+      # that same archive without DEX, so Android packaging must run last.
+      - name: Build Android bundle
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :patches:buildAndroid --no-daemon
+
+      - name: Verify Android bundle
+        run: python3 scripts/verify_android_bundle.py patches/build/libs/*.mpp
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
