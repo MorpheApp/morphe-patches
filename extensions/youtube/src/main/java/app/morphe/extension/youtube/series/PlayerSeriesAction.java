@@ -38,7 +38,7 @@ final class PlayerSeriesAction {
         }
         String playlist = playlist(
                 video,
-                VideoInformation.getPlayerResponseVideoId(),
+                VideoInformation.getStartingOrPlayingVideoId(),
                 VideoInformation.getPlaylistId());
         pending = new WeakReference<>(activity);
         TrackerService.get(activity).library(rows -> {

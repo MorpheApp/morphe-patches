@@ -122,7 +122,12 @@ public final class VideoInformation {
         String channelName = "";
         String videoTitle = "";
         String videoId = "";
+        String playlistId = "";
         long videoLength = 0;
+        /**
+         * If the video ID of the video started by the player controller has been set.
+         */
+        boolean videoIdSet;
     }
 
     private static final PlayerVideo regularPlayerVideo = new PlayerVideo();
@@ -207,6 +212,8 @@ public final class VideoInformation {
         playerVideo.channelId = "";
         playerVideo.channelName = "";
         playerVideo.videoTitle = "";
+        playerVideo.playlistId = "";
+        playerVideo.videoIdSet = false;
     }
 
     private static boolean isPatchIncluded() {
@@ -426,6 +433,12 @@ public final class VideoInformation {
      */
     public static void setVideoId(String newlyLoadedVideoId) {
         PlayerVideo playerVideo = getLoadingPlayerVideo();
+        playerVideo.videoIdSet = true;
+        // The playlist ID hook is called after the video ID hook of the same player response,
+        // and is skipped for Shorts.
+        if (!playerResponseVideoIdIsShort && newlyLoadedVideoId.equals(playerResponseVideoId)) {
+            playerVideo.playlistId = playerResponsePlaylistId;
+        }
         if (!playerVideo.videoId.equals(newlyLoadedVideoId)) {
             Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
             playerVideo.videoId = newlyLoadedVideoId;
@@ -788,13 +801,32 @@ public final class VideoInformation {
     }
 
     /**
-     * This is the playlistId of the player response, but since Shorts does not support playlists,
-     * it is the same as the current playlistId.
+     * The player response video ID changes with any video loaded in the background,
+     * such as the feed videos loaded while scrolling with the miniplayer open,
+     * so it is used only while the video of the player in front has not started yet.
      *
-     * @return The playlist id of the video.
+     * @return The ID of the video of the player in front, or the ID of the last
+     *         player response if that video is still starting.
+     */
+    public static String getStartingOrPlayingVideoId() {
+        PlayerVideo playerVideo = getPlayerVideo();
+        return playerVideo.videoIdSet || playerResponseVideoIdIsShort
+                ? playerVideo.videoId // Player response may be a Short in the feed.
+                : playerResponseVideoId;
+    }
+
+    /**
+     * Like {@link #getStartingOrPlayingVideoId()}, the playlist ID of the player response is used
+     * only while the video of the player in front has not started yet.
+     *
+     * @return The playlist ID of the video of the player in front, or the playlist ID of the last
+     *         player response if that video is still starting.
      */
     public static String getPlaylistId() {
-        return playerResponsePlaylistId;
+        PlayerVideo playerVideo = getPlayerVideo();
+        return playerVideo.videoIdSet || playerResponseVideoIdIsShort
+                ? playerVideo.playlistId
+                : playerResponsePlaylistId;
     }
 
     /**
@@ -1089,16 +1121,19 @@ public final class VideoInformation {
      * Injection point. Fixes bad data used by YouTube.
      * Issue can be reproduced by selecting 480p quality on any Short,
      * and occasionally with random regular videos.
+     * <p>
+     * Only the resolution returned by {@link VideoQualityInterface#patch_getResolution()} is fixed.
+     * The quality object keeps the YouTube resolution, because the player and the SABR requests
+     * use it to match the stream formats. With a fixed resolution in the quality object,
+     * some VP9 streams restart in a loop when the quality is set.
      */
-    public static int fixVideoQualityResolution(String name, int quality) {
+    public static int fixVideoQualityResolution(@Nullable String name, int quality) {
         try {
-            if (!name.startsWith(Integer.toString(quality))) {
+            if (name != null && quality != AUTOMATIC_VIDEO_QUALITY_VALUE
+                    && !name.startsWith(Integer.toString(quality))) {
                 final int suffixIndex = name.indexOf('p');
                 if (suffixIndex > 0) {
-                    final int fixedQuality = Integer.parseInt(name.substring(0, suffixIndex));
-                    Logger.printDebug(() -> "Fixing wrong quality resolution from: " +
-                            name + "(" + quality + ") to: " + name + "(" + fixedQuality + ")");
-                    return fixedQuality;
+                    return Integer.parseInt(name.substring(0, suffixIndex));
                 }
             }
         } catch (Exception ex) {

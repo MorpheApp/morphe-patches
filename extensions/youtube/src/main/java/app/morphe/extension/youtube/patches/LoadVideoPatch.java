@@ -65,12 +65,7 @@ public final class LoadVideoPatch {
                 return;
             }
 
-            // Must use player response video id, otherwise reloading a video that isn't opening
-            // can use the wrong video id. Response video id may be a feed Short that was scrolled
-            // past but not opened.
-            String videoId = VideoInformation.lastPlayerResponseIsShort()
-                    ? VideoInformation.getVideoId() // Player response may be a Short in the feed.
-                    : VideoInformation.getPlayerResponseVideoId();
+            String videoId = VideoInformation.getStartingOrPlayingVideoId();
             String playlistId = VideoInformation.getPlaylistId();
             final long videoTime = VideoInformation.getVideoTime();
             String parameterSeparator = "&";

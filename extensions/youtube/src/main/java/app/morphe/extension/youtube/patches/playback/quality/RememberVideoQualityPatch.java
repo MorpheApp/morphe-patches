@@ -139,6 +139,13 @@ public class RememberVideoQualityPatch {
 
     /**
      * Injection point.  Regular videos.
+     * @param quality Quality selected by the user.
+     */
+    public static void userChangedQuality(VideoQualityInterface quality) {
+        userChangedQuality(quality.patch_getResolution());
+    }
+
+    /**
      * @param videoResolution Human-readable resolution: 480, 720, 1080.
      */
     public static void userChangedQuality(int videoResolution) {

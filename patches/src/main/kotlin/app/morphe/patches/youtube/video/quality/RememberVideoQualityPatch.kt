@@ -21,10 +21,12 @@ import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
+import app.morphe.patches.youtube.video.information.EXTENSION_VIDEO_QUALITY_INTERFACE
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -95,14 +97,18 @@ val rememberVideoQualityPatch = bytecodePatch {
         )
 
         // Inject a call to remember the user selected quality for regular videos.
+        // The quality object is used, as its name is needed to get the fixed resolution.
         VideoQualityChangedFingerprint.let {
             it.method.apply {
-                val index = it.instructionMatches.last().index
-                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+                val qualityRegister = getInstruction<OneRegisterInstruction>(
+                    it.instructionMatches[3].index
+                ).registerA
+                val constructorIndex = it.instructionMatches.last().index
 
                 addInstruction(
-                    index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->userChangedQuality(I)V",
+                    constructorIndex + 1,
+                    "invoke-static/range { v$qualityRegister .. v$qualityRegister }, " +
+                            "$EXTENSION_CLASS->userChangedQuality($EXTENSION_VIDEO_QUALITY_INTERFACE)V",
                 )
             }
         }

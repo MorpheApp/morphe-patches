@@ -307,6 +307,10 @@ internal object VideoQualityChangedFingerprint : Fingerprint(
             opcode = Opcode.IGET,
             type = "I",
             location = MatchAfterImmediately()
+        ),
+        methodCall( // VideoQuality constructor.
+            name = "<init>",
+            opcodes = listOf(Opcode.INVOKE_DIRECT, Opcode.INVOKE_DIRECT_RANGE)
         )
     )
 )

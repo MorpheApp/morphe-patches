@@ -369,17 +369,13 @@ val videoInformationPatch = bytecodePatch(
         VideoQualityFingerprint.let {
             videoQualityClassType = it.classDef.type
 
-            // Fix bad data used by YouTube.
-            it.method.addInstructions(
-                0,
-                """
-                    invoke-static { p3, p1 }, $EXTENSION_CLASS->fixVideoQualityResolution(Ljava/lang/String;I)I    
-                    move-result p1
-                """
-            )
-
             // Add methods to access obfuscated quality fields.
             it.classDef.apply {
+                // Only one string field.
+                val qualityNameField = fields.single { field ->
+                    field.type == "Ljava/lang/String;"
+                }
+
                 // Add interface and helper methods to allow extension code to call obfuscated methods.
                 interfaces.add(EXTENSION_VIDEO_QUALITY_INTERFACE)
                 methods.add(
@@ -393,11 +389,6 @@ val videoInformationPatch = bytecodePatch(
                         null,
                         MutableMethodImplementation(2),
                     ).toMutable().apply {
-                        // Only one string field.
-                        val qualityNameField = fields.single { field ->
-                            field.type == "Ljava/lang/String;"
-                        }
-
                         addInstructions(
                             0,
                             """
@@ -417,16 +408,21 @@ val videoInformationPatch = bytecodePatch(
                         AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
                         null,
                         null,
-                        MutableMethodImplementation(2),
+                        MutableMethodImplementation(3),
                     ).toMutable().apply {
                         val resolutionField = fields.single { field ->
                             field.type == "I"
                         }
 
+                        // The field keeps the resolution set by YouTube, as the player and
+                        // SABR requests use it to match the formats of the stream.
                         addInstructions(
                             0,
                             """
                                 iget v0, p0, $resolutionField
+                                iget-object v1, p0, $qualityNameField
+                                invoke-static { v1, v0 }, $EXTENSION_CLASS->fixVideoQualityResolution(Ljava/lang/String;I)I
+                                move-result v0
                                 return v0
                             """
                         )
