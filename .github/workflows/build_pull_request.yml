@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - dev
+      - feat/expanded-caption-languages
   pull_request:
     branches:
       - dev
