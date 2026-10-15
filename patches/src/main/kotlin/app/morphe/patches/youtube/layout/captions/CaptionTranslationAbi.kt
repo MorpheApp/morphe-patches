@@ -102,6 +102,14 @@ internal fun resolveCaptionTranslationAbi(
         builder.methods.any { it.name == "<init>" && it.parameterTypes.toList() == listOf(track.type) }
     }
     val builder = builders.unique("copy builder")
+    check(!AccessFlags.ABSTRACT.isSet(builder.accessFlags) && !AccessFlags.INTERFACE.isSet(builder.accessFlags)) {
+        "Caption translations: builder is not concrete: ${builder.type}"
+    }
+    check(!AccessFlags.PRIVATE.isSet(builder.accessFlags) &&
+            (AccessFlags.PUBLIC.isSet(builder.accessFlags) ||
+                    builder.type.substringBeforeLast('/') == track.type.substringBeforeLast('/'))) {
+        "Caption translations: builder is inaccessible from track: ${builder.type}"
+    }
     val copy = builder.methods.filter {
         it.name == "<init>" && it.parameterTypes.toList() == listOf(track.type) &&
                 AccessFlags.PUBLIC.isSet(it.accessFlags)
@@ -131,6 +139,12 @@ internal fun resolveCaptionTranslationAbi(
         it.parameterTypes.isEmpty() && it.returnType == track.type &&
                 AccessFlags.PUBLIC.isSet(it.accessFlags) && !AccessFlags.STATIC.isSet(it.accessFlags)
     }.unique("build track")
+    val labelField = builderField(label)
+    val declaration = builder.fields.filter { it.name == labelField.name && it.type == labelField.type }
+        .unique("builder label field declaration")
+    check(!AccessFlags.FINAL.isSet(declaration.accessFlags) && !AccessFlags.STATIC.isSet(declaration.accessFlags)) {
+        "Caption translations: builder label field is not writable: $labelField"
+    }
     return CaptionTranslationAbi(url, label, builder, copy, setter(language, "language"),
-        setter(url, "URL"), setter(vss, "vss"), builderField(label), build)
+        setter(url, "URL"), setter(vss, "vss"), labelField, build)
 }

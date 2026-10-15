@@ -43,7 +43,8 @@ class CaptionTranslationAbiTest {
             ImmutableInstruction11x(Opcode.MOVE_RESULT_OBJECT, register))
     }
 
-    private fun fixture(getters: Boolean = false, ambiguous: Boolean = false): CaptionTranslationAbi {
+    private fun fixture(getters: Boolean = false, ambiguous: Boolean = false,
+                        builderFlags: Int = public, labelFlags: Int = public): CaptionTranslationAbi {
         val reads = if (getters) listOf(getter("language", string), getter("vss", string), getter("url", string), getter("label", labelType))
             else listOf(language, vss, url, label)
         val factory = method(trackType, "builder", emptyList(), builderType,
@@ -60,7 +61,8 @@ class CaptionTranslationAbiTest {
                 ImmutableInstruction10x(Opcode.RETURN_VOID))) }
         val build = method(builderType, "build", emptyList(), trackType, listOf(ImmutableInstruction11x(Opcode.RETURN_OBJECT, 0)))
         val methods = listOf(copy, build) + setters + if (ambiguous) listOf(method(builderType, "other", listOf(string), "V", setters[0].implementation!!.instructions.toList())) else emptyList()
-        val builder = ImmutableClassDef(builderType, public, "Ljava/lang/Object;", emptyList(), null, emptySet(), emptyList(), methods)
+        val builder = ImmutableClassDef(builderType, builderFlags, "Ljava/lang/Object;", emptyList(), null, emptySet(),
+            listOf(ImmutableField(builderType, "f3", labelType, labelFlags, null, emptySet(), emptySet())), methods)
         val append = ImmutableMethodReference("Ljava/lang/StringBuilder;", "append", listOf(string), "Ljava/lang/StringBuilder;")
         val translated = method("Lfixture/Model;", "translated", emptyList(), "Ljava/util/List;",
             read(reads[2], 4) + listOf(ImmutableInstruction10x(Opcode.NOP),
@@ -93,6 +95,12 @@ class CaptionTranslationAbiTest {
     @Test fun `ambiguous builder setters fail before any bytecode is changed`() {
         val error = assertThrows(IllegalStateException::class.java) { fixture(ambiguous = true) }
         assertTrue(error.message!!.contains("language setter"), error.message)
+    }
+
+    @Test fun `abstract builders and final or static label fields are rejected`() {
+        assertThrows(IllegalStateException::class.java) { fixture(builderFlags = public or AccessFlags.ABSTRACT.value) }
+        assertThrows(IllegalStateException::class.java) { fixture(labelFlags = public or AccessFlags.FINAL.value) }
+        assertThrows(IllegalStateException::class.java) { fixture(labelFlags = public or AccessFlags.STATIC.value) }
     }
 
     @Test fun `supplied clean APK resolves the complete translation bridge`() {
