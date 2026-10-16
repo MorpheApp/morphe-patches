@@ -126,6 +126,18 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
             addTracksGetter("patch_getDirectCaptionTracks", CaptionTracksManagerDirectTracksFingerprint)
             addTracksGetter("patch_getAutoTranslateCaptionTracks", CaptionTracksManagerAutoTranslateTracksFingerprint)
+            addHelperMethod(
+                "patch_getDefaultCaptionSource",
+                EXTENSION_CAPTION_TRACK_INTERFACE,
+                smali = """
+                    iget-object v0, p0, $tracksManagerField
+                    if-eqz v0, :null
+                    invoke-virtual { v0 }, ${CaptionTracksManagerDefaultSourceFingerprint(CaptionTrackBuilderBuildFingerprint.method.returnType).method}
+                    move-result-object v0
+                    :null
+                    return-object v0
+                """
+            )
         }
 
         // Override the default caption track.

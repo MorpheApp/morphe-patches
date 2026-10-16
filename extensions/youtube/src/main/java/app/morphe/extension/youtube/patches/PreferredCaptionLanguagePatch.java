@@ -39,6 +39,10 @@ public class PreferredCaptionLanguagePatch {
          */
         @Nullable
         List<CaptionTrackInterface> patch_getAutoTranslateCaptionTracks();
+
+        /** @return YouTube's default original caption source for the current audio, if available. */
+        @Nullable
+        CaptionTrackInterface patch_getDefaultCaptionSource();
     }
 
     /**
@@ -141,10 +145,11 @@ public class PreferredCaptionLanguagePatch {
                 return recordProgrammaticSelection(nativeTrack);
             }
 
-            // Priority 2: Existing translation, then a validated single-source fallback.
+            // Priority 2: Existing translation, then a validated current-audio source fallback.
             // A missing menu row does not mean the backend cannot translate the source.
             CaptionTrackInterface translated = findAutoTranslatedTrack(directTracks,
-                    subtitleManager.patch_getAutoTranslateCaptionTracks(), targetLang, Requester.getAppLocale());
+                    subtitleManager.patch_getAutoTranslateCaptionTracks(),
+                    subtitleManager.patch_getDefaultCaptionSource(), targetLang, Requester.getAppLocale());
             if (translated != null) return recordProgrammaticSelection(translated);
 
             // Priority 3: Fallback to the original YouTube selection.
@@ -158,13 +163,14 @@ public class PreferredCaptionLanguagePatch {
 
     @Nullable
     static CaptionTrackInterface findAutoTranslatedTrack(@Nullable List<CaptionTrackInterface> directTracks,
-            @Nullable List<CaptionTrackInterface> translatedTracks, String targetLanguage, Locale locale) {
+            @Nullable List<CaptionTrackInterface> translatedTracks, @Nullable CaptionTrackInterface defaultSource,
+            String targetLanguage, Locale locale) {
         if (translatedTracks != null) for (CaptionTrackInterface track : translatedTracks) {
             if (matchesLanguage(track.patch_getLanguageCode(), targetLanguage)) return track;
         }
         String language = AutoTranslateCaptionsPatch.translationLanguage(targetLanguage);
         return language == null ? null : AutoTranslateCaptionsPatch.createTranslation(
-                AutoTranslateCaptionsPatch.findFallbackSource(directTracks), language, locale);
+                AutoTranslateCaptionsPatch.findFallbackSource(directTracks, defaultSource), language, locale);
     }
 
     /**

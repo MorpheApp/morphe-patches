@@ -198,6 +198,14 @@ internal object CaptionTracksManagerAutoTranslateTracksFingerprint : Fingerprint
     )
 )
 
+/** The track manager's default source, without subtitle preference or CC state overrides. */
+internal class CaptionTracksManagerDefaultSourceFingerprint(captionTrackType: String) : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = captionTrackType,
+    parameters = listOf(),
+)
+
 /**
  * Resolves to the caption track builder class.
  */

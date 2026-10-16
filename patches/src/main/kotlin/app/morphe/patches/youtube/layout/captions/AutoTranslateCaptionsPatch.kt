@@ -29,6 +29,8 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AutoTranslateCaptionsPatch;"
 private const val EXTENSION_CAPTION_TRACK_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/AutoTranslateCaptionsPatch$CaptionTrackInterface;"
+private const val PREFERRED_CAPTION_TRACK_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/PreferredCaptionLanguagePatch$CaptionTrackInterface;"
 
 internal val autoTranslateCaptionsPatch = bytecodePatch(
     description = "Adds an option to add more auto-translate languages and sort the languages by name."
@@ -94,16 +96,21 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
 
         val directTracks = CaptionTracksManagerDirectTracksFingerprint.method
         val autoTracks = CaptionTracksManagerAutoTranslateTracksFingerprint.method
+        val defaultSource = CaptionTracksManagerDefaultSourceFingerprint(
+            CaptionTrackBuilderBuildFingerprint.method.returnType
+        ).method
         val adapter = "${directTracks.definingClass}->patch_getAutoTranslateTracks()Ljava/util/List;"
         // Keep both original getters intact. The adapter calls them once and cannot call itself.
         CaptionTracksManagerDirectTracksFingerprint.classDef.addHelperMethod(
-            "patch_getAutoTranslateTracks", "Ljava/util/List;", freeRegisters = 2,
+            "patch_getAutoTranslateTracks", "Ljava/util/List;", freeRegisters = 3,
             smali = """
                 invoke-virtual { p0 }, $autoTracks
                 move-result-object v0
                 invoke-virtual { p0 }, $directTracks
                 move-result-object v1
-                invoke-static { v0, v1 }, $EXTENSION_CLASS->restoreTranslationTracks(Ljava/util/List;Ljava/util/List;)Ljava/util/List;
+                invoke-virtual { p0 }, $defaultSource
+                move-result-object v2
+                invoke-static { v0, v1, v2 }, $EXTENSION_CLASS->restoreTranslationTracks(Ljava/util/List;Ljava/util/List;$PREFERRED_CAPTION_TRACK_INTERFACE)Ljava/util/List;
                 move-result-object v0
                 return-object v0
             """
