@@ -7,6 +7,10 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -19,6 +23,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
+import android.view.ViewParent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -120,7 +126,58 @@ public final class FeedEngagementCountsPatch {
         return percentFormat.format(fraction);
     }
 
+    @Nullable
+    private static Activity findActivity(Context context) {
+        while (context instanceof ContextWrapper wrapper) {
+            if (context instanceof Activity activity) {
+                return activity;
+            }
+            context = wrapper.getBaseContext();
+        }
+        return null;
+    }
+
+    /**
+     * The share sheet and other bottom sheets are dialogs that can show the thumbnail and the texts
+     * of the opened video, so they look like a card. Feeds are in the window of the activity.
+     */
+    private static boolean isInDialog(ComponentHost host) {
+        Activity activity = findActivity(host.getContext());
+        if (activity != null && activity.getWindow() != null) {
+            View decorView = activity.getWindow().peekDecorView();
+            if (decorView != null && host.getRootView() != decorView) {
+                return true;
+            }
+        }
+        return isInBottomSheet(host);
+    }
+
+    /**
+     * Bottom sheets that are shown in the window of the activity.
+     */
+    private static boolean isInBottomSheet(View view) {
+        ViewParent parent = view.getParent();
+        while (parent instanceof View parentView) {
+            final int id = parentView.getId();
+            if (id != View.NO_ID) {
+                try {
+                    String name = parentView.getResources().getResourceEntryName(id);
+                    if (name.contains("bottom_sheet")) {
+                        return true;
+                    }
+                } catch (Resources.NotFoundException ignored) {
+                    // A generated id.
+                }
+            }
+            parent = parentView.getParent();
+        }
+        return false;
+    }
+
     private static void onCardLaidOut(ComponentHost host, @Nullable String videoId) {
+        if (videoId != null && isInDialog(host)) {
+            videoId = null;
+        }
         CountsBadge badge = badges.get(host);
         if (videoId == null) {
             if (badge != null) {
