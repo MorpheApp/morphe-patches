@@ -368,6 +368,10 @@ public final class LocalQueuePatch {
         return -1;
     }
 
+    public static void onVideoChanged() {
+        notifyChanged();
+    }
+
     private static void notifyChanged() {
         Runnable listener = changeListener;
         if (listener != null) {
