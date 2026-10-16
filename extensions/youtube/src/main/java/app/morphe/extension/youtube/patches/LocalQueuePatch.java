@@ -32,6 +32,7 @@ import java.util.function.Consumer;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.youtube.patches.utils.LocalQueueSheet;
 import app.morphe.extension.youtube.patches.utils.requests.ChannelIdRoutes;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -369,6 +370,13 @@ public final class LocalQueuePatch {
 
     public static void onVideoChanged() {
         notifyChanged();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void onUserLeaveHint() {
+        LocalQueueSheet.dismissImmediately();
     }
 
     private static void notifyChanged() {
