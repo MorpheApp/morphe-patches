@@ -501,6 +501,10 @@ public final class LocalQueuePatch {
             connection.disconnect();
             return null;
         }
-        return Requester.parseJSONObjectAndDisconnect(connection).optJSONObject("videoDetails");
+        JSONObject videoDetails = Requester.parseJSONObjectAndDisconnect(connection).optJSONObject("videoDetails");
+        if (videoDetails == null) {
+            Logger.printDebug(() -> "Player response has no video details for: " + videoId);
+        }
+        return videoDetails;
     }
 }
