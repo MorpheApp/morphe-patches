@@ -9,6 +9,8 @@
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -18,6 +20,9 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS =
@@ -85,6 +90,47 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
                     return-object v0
                 """
             )
+        }
+
+        val directTracks = CaptionTracksManagerDirectTracksFingerprint.method
+        val autoTracks = CaptionTracksManagerAutoTranslateTracksFingerprint.method
+        val adapter = "${directTracks.definingClass}->patch_getAutoTranslateTracks()Ljava/util/List;"
+        // Keep both original getters intact. The adapter calls them once and cannot call itself.
+        CaptionTracksManagerDirectTracksFingerprint.classDef.addHelperMethod(
+            "patch_getAutoTranslateTracks", "Ljava/util/List;", freeRegisters = 2,
+            smali = """
+                invoke-virtual { p0 }, $autoTracks
+                move-result-object v0
+                invoke-virtual { p0 }, $directTracks
+                move-result-object v1
+                invoke-static { v0, v1 }, $EXTENSION_CLASS->restoreTranslationTracks(Ljava/util/List;Ljava/util/List;)Ljava/util/List;
+                move-result-object v0
+                return-object v0
+            """
+        )
+        // Route the UI getter and the existing preferred-language interface getter through it.
+        DefaultCaptionTrackFingerprint.classDef.methods.forEach { method ->
+            method.implementation?.instructions?.toList()?.forEachIndexed { index, instruction ->
+                if (instruction.getReference<MethodReference>() == autoTracks) {
+                    val register = when (instruction) {
+                        is FiveRegisterInstruction -> instruction.registerC
+                        is RegisterRangeInstruction -> instruction.startRegister
+                        else -> error("Unexpected auto-translate getter call")
+                    }
+                    method.replaceInstruction(index, "invoke-virtual/range { v$register .. v$register }, $adapter")
+                }
+            }
+        }
+
+        // Reuse YouTube's localized option factory and preserve its remaining native checks.
+        CaptionTracksManagerTranslationCountFingerprint.matchOrNull()?.let { fingerprint ->
+            val count = fingerprint.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
+            val result = directTracks.implementation!!.instructions.filter { it.opcode == Opcode.RETURN_OBJECT }
+                .map { (it as OneRegisterInstruction).registerA }.distinct().singleOrNull() ?: return@let
+            directTracks.addInstructions(fingerprint.instructionMatches[1].index + 1, """
+                invoke-static { v$count, v$result }, $EXTENSION_CLASS->getTranslationCount(ILjava/util/List;)I
+                move-result v$count
+            """)
         }
 
         CaptionTracksManagerAutoTranslateTracksFingerprint.method.apply {

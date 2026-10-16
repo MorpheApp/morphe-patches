@@ -286,3 +286,19 @@ internal object SetSubtitleTrackFingerprint : Fingerprint(
     )
 )
 
+
+/** The final translation-count check before YouTube builds its own Auto-translate row. */
+internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
+    classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
+    parameters = listOf(),
+    returnType = "Ljava/util/List;",
+    filters = listOf(
+        methodCall(name = "size", parameters = listOf(), returnType = "I"),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_LEZ, location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z",
+            location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        string("AUTO_TRANSLATE_CAPTIONS_OPTION", location = InstructionLocation.MatchAfterAnywhere())
+    )
+)

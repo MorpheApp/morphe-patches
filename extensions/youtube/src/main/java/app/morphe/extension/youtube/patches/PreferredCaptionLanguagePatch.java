@@ -108,7 +108,6 @@ public class PreferredCaptionLanguagePatch {
 
             // Priority 1: Direct tracks (provider subtitle, or native language subtitle).
             CaptionTrackInterface nativeTrack = null;
-            boolean autoTranslateAvailable = false;
 
             List<CaptionTrackInterface> directTracks = subtitleManager.patch_getDirectCaptionTracks();
             if (directTracks != null) {
@@ -116,7 +115,6 @@ public class PreferredCaptionLanguagePatch {
                     String lang = track.patch_getLanguageCode();
 
                     if (AUTO_TRANSLATE_OPTION.equals(lang)) {
-                        autoTranslateAvailable = true;
                         continue;
                     }
 
@@ -143,21 +141,11 @@ public class PreferredCaptionLanguagePatch {
                 return recordProgrammaticSelection(nativeTrack);
             }
 
-            // Priority 2: Auto-translate to target language.
-            // Only evaluate if YouTube actually offers auto-translation on this video.
-            if (autoTranslateAvailable) {
-                List<CaptionTrackInterface> autoTracks = subtitleManager.patch_getAutoTranslateCaptionTracks();
-                if (autoTracks != null) {
-                    for (CaptionTrackInterface track : autoTracks) {
-                        if (matchesLanguage(track.patch_getLanguageCode(), targetLang)) {
-                            Logger.printDebug(() -> "Selected priority 2 (auto-translated subtitle): " + track);
-                            return recordProgrammaticSelection(track);
-                        }
-                    }
-                }
-            } else {
-                Logger.printDebug(() -> "Auto-translation not available for this video, skipping priority 2");
-            }
+            // Priority 2: Existing translation, then a validated single-source fallback.
+            // A missing menu row does not mean the backend cannot translate the source.
+            CaptionTrackInterface translated = findAutoTranslatedTrack(directTracks,
+                    subtitleManager.patch_getAutoTranslateCaptionTracks(), targetLang, Requester.getAppLocale());
+            if (translated != null) return recordProgrammaticSelection(translated);
 
             // Priority 3: Fallback to the original YouTube selection.
             Logger.printDebug(() -> "Falling back to original track: " + originalTrack);
@@ -166,6 +154,17 @@ public class PreferredCaptionLanguagePatch {
             Logger.printException(() -> "getPreferredCaptionTrack failure", ex);
             return originalTrack;
         }
+    }
+
+    @Nullable
+    static CaptionTrackInterface findAutoTranslatedTrack(@Nullable List<CaptionTrackInterface> directTracks,
+            @Nullable List<CaptionTrackInterface> translatedTracks, String targetLanguage, Locale locale) {
+        if (translatedTracks != null) for (CaptionTrackInterface track : translatedTracks) {
+            if (matchesLanguage(track.patch_getLanguageCode(), targetLanguage)) return track;
+        }
+        String language = AutoTranslateCaptionsPatch.translationLanguage(targetLanguage);
+        return language == null ? null : AutoTranslateCaptionsPatch.createTranslation(
+                AutoTranslateCaptionsPatch.findFallbackSource(directTracks), language, locale);
     }
 
     /**

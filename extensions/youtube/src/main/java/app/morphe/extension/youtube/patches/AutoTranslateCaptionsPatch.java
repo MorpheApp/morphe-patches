@@ -9,6 +9,10 @@
 package app.morphe.extension.youtube.patches;
 
 import java.text.Collator;
+import java.net.URI;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -98,6 +102,10 @@ public final class AutoTranslateCaptionsPatch {
             }
         }
 
+        return sortTranslationTracks(result, locale);
+    }
+
+    private static List<CaptionTrackInterface> sortTranslationTracks(List<CaptionTrackInterface> result, Locale locale) {
         Collator collator = Collator.getInstance(locale);
         collator.setStrength(Collator.SECONDARY);
         collator.setDecomposition(Collator.CANONICAL_DECOMPOSITION);
@@ -105,6 +113,119 @@ public final class AutoTranslateCaptionsPatch {
         result.sort((a, b) -> collator.compare(a.toString(), b.toString()));
 
         return result;
+    }
+
+    /** Keep YouTube's native menu construction and its other availability checks. */
+    public static int getTranslationCount(int nativeCount,
+            List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> directTracks) {
+        return nativeCount > 0 || !Settings.AUTO_TRANSLATE_ADDITIONAL_LANGUAGES.get()
+                || findFallbackSource(directTracks) == null ? nativeCount : 1;
+    }
+
+    /** Called by the manager adapter, not recursively from either native list getter. */
+    public static List<CaptionTrackInterface> restoreTranslationTracks(List<CaptionTrackInterface> tracks,
+            List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> directTracks) {
+        if (!Settings.AUTO_TRANSLATE_ADDITIONAL_LANGUAGES.get()) return tracks;
+        try {
+            return restoreTranslationTracks(tracks, directTracks, Requester.getAppLocale());
+        } catch (Exception ex) {
+            Logger.printException(() -> "restoreTranslationTracks failure", ex);
+            return tracks;
+        }
+    }
+
+    static List<CaptionTrackInterface> restoreTranslationTracks(List<CaptionTrackInterface> tracks,
+            List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> directTracks, Locale locale) {
+        if (tracks == null || !tracks.isEmpty()) return tracks;
+        CaptionTrackInterface source = findFallbackSource(directTracks);
+        if (source == null) return tracks;
+        List<CaptionTrackInterface> result = new ArrayList<>();
+        for (String language : TRANSLATION_LANGUAGES) {
+            CaptionTrackInterface translated = createTranslation(source, language, locale);
+            if (translated != null) result.add(translated);
+        }
+        return result.isEmpty() ? tracks : sortTranslationTracks(result, locale);
+    }
+
+    /** Single original source only; direct tracks already belong to the current audio. */
+    static CaptionTrackInterface findFallbackSource(
+            List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> tracks) {
+        if (tracks == null) return null;
+        CaptionTrackInterface source = null;
+        for (PreferredCaptionLanguagePatch.CaptionTrackInterface track : tracks) {
+            if (track == null) return null;
+            String code = track.patch_getLanguageCode();
+            if ("DISABLE_CAPTIONS_OPTION".equals(code) || "AUTO_TRANSLATE_CAPTIONS_OPTION".equals(code)) continue;
+            if (source != null || !(track instanceof CaptionTrackInterface candidate)
+                    || originalUri(candidate) == null) return null;
+            source = candidate;
+        }
+        return source;
+    }
+
+    static String translationLanguage(String language) {
+        if (language == null || !language.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")) return null;
+        for (String code : TRANSLATION_LANGUAGES) {
+            if (code.equalsIgnoreCase(language)) return code;
+        }
+        for (String code : TRANSLATION_LANGUAGES) {
+            if (getLanguageKey(code).equals(getLanguageKey(language))) return code;
+        }
+        return null;
+    }
+
+    static CaptionTrackInterface createTranslation(CaptionTrackInterface source, String language, Locale locale) {
+        if (source == null || language == null || !language.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")
+                || originalUri(source) == null
+                || getLanguageKey(language).equals(getLanguageKey(source.patch_getLanguageCode()))) return null;
+        String url = source.patch_getUrl();
+        int fragment = url.indexOf('#');
+        if (fragment < 0) fragment = url.length();
+        String name = Locale.forLanguageTag(language).getDisplayName(locale);
+        return source.patch_copyTranslation(language,
+                url.substring(0, fragment) + "&tlang=" + language + url.substring(fragment),
+                "t" + source.patch_getVssId() + "." + language, name.isEmpty() ? language : name);
+    }
+
+    /** Validate identity without decoding/re-encoding signed URL bytes. */
+    private static URI originalUri(CaptionTrackInterface source) {
+        String language = source.patch_getLanguageCode();
+        if (language == null || !language.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")) return null;
+        String vss = source.patch_getVssId();
+        boolean asr = originalVss(vss, "a." + language);
+        if (!asr && !originalVss(vss, "." + language)) return null;
+        try {
+            URI uri = URI.create(source.patch_getUrl());
+            String host = uri.getHost();
+            if (!"https".equalsIgnoreCase(uri.getScheme()) || host == null
+                    || !("youtube.com".equalsIgnoreCase(host) || host.toLowerCase(Locale.ROOT).endsWith(".youtube.com"))
+                    || uri.getUserInfo() != null || (uri.getPort() != -1 && uri.getPort() != 443)
+                    || !"/api/timedtext".equals(uri.getRawPath()) || uri.getRawQuery() == null) return null;
+            Map<String, String> parameters = new HashMap<>();
+            for (String part : uri.getRawQuery().split("&", -1)) {
+                int split = part.indexOf('=');
+                String rawKey = split < 0 ? part : part.substring(0, split);
+                String key = URLDecoder.decode(rawKey, "UTF-8");
+                if (!List.of("v", "lang", "kind", "name", "tlang").contains(key)) continue;
+                if (!key.equals(rawKey) || parameters.containsKey(key) || key.equals("tlang")) return null;
+                parameters.put(key, URLDecoder.decode(split < 0 ? "" : part.substring(split + 1), "UTF-8"));
+            }
+            String video = parameters.get("v");
+            String sourceLanguage = parameters.get("lang");
+            String kind = parameters.get("kind");
+            if (video == null || !video.matches("[A-Za-z0-9_-]{11}") || sourceLanguage == null
+                    || !sourceLanguage.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")
+                    || !getLanguageKey(language).equals(getLanguageKey(sourceLanguage))
+                    || (asr ? !"asr".equals(kind) : kind != null && !kind.isEmpty())) return null;
+            return uri;
+        } catch (IllegalArgumentException | NullPointerException | java.io.UnsupportedEncodingException ex) {
+            return null;
+        }
+    }
+
+    private static boolean originalVss(String value, String prefix) {
+        return value != null && (value.equals(prefix) || value.startsWith(prefix + ".")
+                && value.substring(prefix.length() + 1).matches("[A-Za-z0-9_-]{1,128}"));
     }
 
     private static String removeSuffix(String value, int suffixLength) {

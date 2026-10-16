@@ -101,4 +101,64 @@ public class AutoTranslateCaptionsPatchTest {
         List<CaptionTrackInterface> empty = List.of();
         assertSame(empty, add(empty, Locale.ENGLISH));
     }
+    @Test public void synthesizesNamedAndAsrSourcesWithoutLanguageOrVideoAllowlists() {
+        for (String language : List.of("ar", "en", "el", "ja")) {
+            for (boolean asr : List.of(false, true)) {
+                String url = "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=" + language
+                        + (asr ? "&kind=asr" : "&name=uploaded%20track") + "&sig=a%2Bb#opaque";
+                String vss = (asr ? "a." : ".") + language + ".named";
+                Track source = new Track(language, url, vss, "Original");
+                CaptionTrackInterface target = AutoTranslateCaptionsPatch.createTranslation(source, "bn", Locale.ENGLISH);
+                assertEquals(url.replace("#opaque", "&tlang=bn#opaque"), target.patch_getUrl());
+                assertEquals("t" + vss + ".bn", target.patch_getVssId());
+                assertEquals(Locale.forLanguageTag("bn").getDisplayName(Locale.ENGLISH), target.toString());
+            }
+        }
+    }
+
+    @Test public void rejectsTranslatedUnsafeAndAmbiguousSources() {
+        Track source = new Track("ar", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=ar&kind=asr", "a.ar", "Arabic");
+        org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.createTranslation(source, "ar", Locale.ENGLISH));
+        org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.createTranslation(source, "bn&extra=1", Locale.ENGLISH));
+        for (String url : List.of(source.url + "&tlang=de", source.url + "&lang=ar",
+                source.url + "&%74lang=de", source.url.replace("youtube.com", "youtube.com.evil.test"),
+                source.url.replace("lang=ar", "lang=en"))) {
+            org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.createTranslation(
+                    new Track("ar", url, "a.ar", "Arabic"), "bn", Locale.ENGLISH));
+        }
+        org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.findFallbackSource(List.of(source, source)));
+        org.junit.Assert.assertNull(AutoTranslateCaptionsPatch.findFallbackSource(List.of(new Track("de", "German"))));
+        assertSame(source, AutoTranslateCaptionsPatch.findFallbackSource(List.of(
+                new Track("DISABLE_CAPTIONS_OPTION", "", "-", "Off"), source,
+                new Track("AUTO_TRANSLATE_CAPTIONS_OPTION", "", "", "Auto-translate"))));
+    }
+
+    @Test public void fallbackPreservesNativeListsAndAddsAllExistingCoreTargets() {
+        Track source = new Track("en", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&name=named", ".en.uploaded", "English");
+        List<CaptionTrackInterface> nativeList = List.of(new Track("de", "German"));
+        assertSame(nativeList, AutoTranslateCaptionsPatch.restoreTranslationTracks(nativeList, List.of(source), Locale.ENGLISH));
+        List<CaptionTrackInterface> result = AutoTranslateCaptionsPatch.restoreTranslationTracks(List.of(), List.of(source), Locale.ENGLISH);
+        find(result, "bn"); find(result, "el");
+        assertFalse(result.stream().anyMatch(t -> "en".equals(t.patch_getLanguageCode())));
+        assertSame(result, AutoTranslateCaptionsPatch.restoreTranslationTracks(result, List.of(source), Locale.ENGLISH));
+    }
+
+    @Test public void preferredFallbackWorksWithoutAnAutoTranslateMenuAndReusesExistingTracks() {
+        Track source = new Track("ar", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=ar&kind=asr", "a.ar", "Arabic");
+        var selected = PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source), List.of(), "bn", Locale.ENGLISH);
+        assertEquals("bn", selected.patch_getLanguageCode());
+        assertEquals("ta.ar.bn", selected.patch_getVssId());
+        Track existing = new Track("bn", "Bengali");
+        assertSame(existing, PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source), List.of(existing), "bn", Locale.ENGLISH));
+        org.junit.Assert.assertNull(PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source, source), List.of(), "bn", Locale.ENGLISH));
+    }
+
+    @Test public void preferredFallbackNormalizesLocaleTargetsAndRejectsUnknownLanguages() {
+        Track source = new Track("ar", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=ar&kind=asr", "a.ar", "Arabic");
+        assertEquals("en", PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source), List.of(), "en-us", Locale.ENGLISH).patch_getLanguageCode());
+        assertEquals("he", PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source), List.of(), "iw", Locale.ENGLISH).patch_getLanguageCode());
+        assertEquals("zh-Hant", PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source), List.of(), "zh-tw", Locale.ENGLISH).patch_getLanguageCode());
+        org.junit.Assert.assertNull(PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(source), List.of(), "qaa", Locale.ENGLISH));
+    }
+
 }
