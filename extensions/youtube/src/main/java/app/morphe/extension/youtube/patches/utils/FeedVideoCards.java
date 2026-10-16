@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -62,7 +63,8 @@ public final class FeedVideoCards {
         void onCardLaidOut(ComponentHost host, @Nullable String videoId);
     }
 
-    private static final boolean ENABLED = Settings.FEED_WATCH_LATER_BUTTON.get();
+    private static final boolean ENABLED = FeedEngagementCountsPatch.ENABLED
+            || Settings.FEED_WATCH_LATER_BUTTON.get();
 
     /** A card must be almost as wide as the screen. Shelves and grids are not used. */
     private static final float MIN_WIDTH_OF_SCREEN = 0.7f;
@@ -115,6 +117,9 @@ public final class FeedVideoCards {
     private static final Map<ComponentHost, String> cardVideoIds = new WeakHashMap<>();
 
     static {
+        if (FeedEngagementCountsPatch.ENABLED) {
+            listeners.add(FeedEngagementCountsPatch.LISTENER);
+        }
         if (ENABLED) {
             // The inline player shows its buttons over the thumbnail, so what is drawn
             // on the thumbnail is hidden while the video of the card plays in the feed.
