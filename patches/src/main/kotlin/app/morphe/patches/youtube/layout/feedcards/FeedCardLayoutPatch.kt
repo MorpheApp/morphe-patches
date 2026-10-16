@@ -148,6 +148,41 @@ val feedCardLayoutPatch = bytecodePatch(
             }
         )
 
+        // The Shorts shelf and the horizontal shelves have the background of the cards, which the list draws
+        // below its items, because the views of the elements reset their own background.
+        mutableClassDefBy(RECYCLER_VIEW_CLASS).apply {
+            val onListDraw = "$EXTENSION_CLASS->onListDraw(${RECYCLER_VIEW_CLASS}Landroid/graphics/Canvas;)V"
+            val onDrawMethod = methods.firstOrNull { method ->
+                method.name == "onDraw" && method.parameterTypes == listOf("Landroid/graphics/Canvas;")
+            }
+
+            if (onDrawMethod != null) {
+                onDrawMethod.addInstruction(0, "invoke-static { p0, p1 }, $onListDraw")
+            } else {
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "onDraw",
+                        listOf(ImmutableMethodParameter("Landroid/graphics/Canvas;", null, null)),
+                        "V",
+                        AccessFlags.PUBLIC.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                invoke-super { p0, p1 }, Landroid/view/ViewGroup;->onDraw(Landroid/graphics/Canvas;)V
+                                invoke-static { p0, p1 }, $onListDraw
+                                return-void
+                            """
+                        )
+                    }
+                )
+            }
+        }
+
         // Some lists, such as the Subscriptions feed, add a vertical spacing between all the items,
         // also around the hidden items.
         FlowLayoutManagerConstructorFingerprint.matchOrNull()?.let {
