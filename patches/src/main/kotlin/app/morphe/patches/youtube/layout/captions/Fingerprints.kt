@@ -285,4 +285,3 @@ internal object SetSubtitleTrackFingerprint : Fingerprint(
         newInstance("Ljava/lang/Throwable;")
     )
 )
-

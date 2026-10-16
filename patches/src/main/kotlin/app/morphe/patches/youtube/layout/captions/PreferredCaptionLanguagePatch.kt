@@ -53,6 +53,15 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             ListPreference("morphe_preferred_caption_language")
         )
 
+        val labelField = CaptionTrackBuilderBuildFingerprint.instructionMatches[0]
+            .instruction.getReference<FieldReference>()!!
+        val urlField = CaptionTracksManagerAutoTranslateTracksFingerprint.instructionMatches[0]
+            .instruction.getReference<FieldReference>()!!
+
+        val setLanguageCodeMethod = CaptionTrackBuilderSetterFingerprint("Null languageCode").method
+        val setUrlMethod = CaptionTrackBuilderSetterFingerprint("Null url").method
+        val setVssIdMethod = CaptionTrackBuilderSetterFingerprint("Null vssId").method
+
         // Add interfaces and helper methods to allow extension code to call obfuscated code.
 
         val isDisableOptionFingerprint: Fingerprint
@@ -81,11 +90,13 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
                 }
             }
 
-            interfaces.add(EXTENSION_CAPTION_TRACK_INTERFACE)
+            if (!interfaces.contains(EXTENSION_CAPTION_TRACK_INTERFACE)) {
+                interfaces.add(EXTENSION_CAPTION_TRACK_INTERFACE)
+            }
 
             addHelperMethod(
-                "patch_getLanguageCode",
-                "Ljava/lang/String;",
+                name = "patch_getLanguageCode",
+                returnType = "Ljava/lang/String;",
                 smali = """
                     ${getterSmali(isDisableOptionFingerprint, 1)}
                     return-object v0
@@ -93,10 +104,44 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
             )
 
             addHelperMethod(
-                "patch_getVssId",
-                "Ljava/lang/String;",
+                name = "patch_getVssId",
+                returnType = "Ljava/lang/String;",
                 smali = """
                     ${getterSmali(isAutoTranslatedFingerprint, 0)}
+                    return-object v0
+                """
+            )
+
+            // 20.x tracks are an abstract class, and the url field is in the subclass.
+            addHelperMethod(
+                name = "patch_getUrl",
+                returnType = "Ljava/lang/String;",
+                smali = """
+                    move-object v0, p0
+                    check-cast v0, ${urlField.definingClass}
+                    iget-object v0, v0, $urlField
+                    return-object v0
+                """
+            )
+
+            addHelperMethod(
+                name = "patch_copyTranslation",
+                returnType = EXTENSION_CAPTION_TRACK_INTERFACE,
+                parameters = listOf(
+                    "Ljava/lang/String;",
+                    "Ljava/lang/String;",
+                    "Ljava/lang/String;",
+                    "Ljava/lang/CharSequence;"
+                ),
+                smali = """
+                    new-instance v0, ${CaptionTrackBuilderBuildFingerprint.classDef.type}
+                    invoke-direct { v0, p0 }, ${CaptionTrackBuilderCopyConstructorFingerprint.method}
+                    invoke-virtual { v0, p1 }, $setLanguageCodeMethod
+                    invoke-virtual { v0, p2 }, $setUrlMethod
+                    invoke-virtual { v0, p3 }, $setVssIdMethod
+                    iput-object p4, v0, $labelField
+                    invoke-virtual { v0 }, ${CaptionTrackBuilderBuildFingerprint.method}
+                    move-result-object v0
                     return-object v0
                 """
             )
@@ -111,8 +156,8 @@ internal val preferredCaptionLanguagePatch = bytecodePatch(
 
             fun addTracksGetter(name: String, tracksFingerprint: Fingerprint) {
                 addHelperMethod(
-                    name,
-                    "Ljava/util/List;",
+                    name = name,
+                    returnType = "Ljava/util/List;",
                     smali = """
                         iget-object v0, p0, $tracksManagerField
                         if-eqz v0, :null

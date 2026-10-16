@@ -56,6 +56,18 @@ public class PreferredCaptionLanguagePatch {
          * @return Track vss id (e.g. ".ko", "a.en", "t.ko"), or "-" for the disable option.
          */
         String patch_getVssId();
+
+        /**
+         * @return Track URL or null if not available.
+         */
+        @Nullable
+        String patch_getUrl();
+
+        /**
+         * @return A copy of this track with the given values for auto-translation.
+         */
+        CaptionTrackInterface patch_copyTranslation(String languageCode, String url,
+                                                    String vssId, CharSequence label);
     }
 
     private static final String DISABLE_OPTION = "DISABLE_CAPTIONS_OPTION";
@@ -69,6 +81,7 @@ public class PreferredCaptionLanguagePatch {
 
     private static final AtomicBoolean userSelectedTrack = new AtomicBoolean(false);
     private static final AtomicBoolean userInteractionAllowed = new AtomicBoolean(false);
+    private static final AtomicBoolean captionsCurrentlyActive = new AtomicBoolean(false);
     private static volatile long videoStartTime;
 
     @Nullable
@@ -108,6 +121,7 @@ public class PreferredCaptionLanguagePatch {
 
             // Priority 1: Direct tracks (provider subtitle, or native language subtitle).
             CaptionTrackInterface nativeTrack = null;
+            CaptionTrackInterface fallbackSourceTrack = null;
             boolean autoTranslateAvailable = false;
 
             List<CaptionTrackInterface> directTracks = subtitleManager.patch_getDirectCaptionTracks();
@@ -120,7 +134,15 @@ public class PreferredCaptionLanguagePatch {
                         continue;
                     }
 
-                    if (DISABLE_OPTION.equals(lang) || !matchesLanguage(lang, targetLang)) {
+                    if (DISABLE_OPTION.equals(lang)) {
+                        continue;
+                    }
+
+                    if (fallbackSourceTrack == null && !"-".equals(track.patch_getVssId())) {
+                        fallbackSourceTrack = track;
+                    }
+
+                    if (!matchesLanguage(lang, targetLang)) {
                         continue;
                     }
 
@@ -144,19 +166,37 @@ public class PreferredCaptionLanguagePatch {
             }
 
             // Priority 2: Auto-translate to target language.
-            // Only evaluate if YouTube actually offers auto-translation on this video.
+            // Check native auto-translation tracks if YouTube offers them.
             if (autoTranslateAvailable) {
                 List<CaptionTrackInterface> autoTracks = subtitleManager.patch_getAutoTranslateCaptionTracks();
                 if (autoTracks != null) {
                     for (CaptionTrackInterface track : autoTracks) {
                         if (matchesLanguage(track.patch_getLanguageCode(), targetLang)) {
-                            Logger.printDebug(() -> "Selected priority 2 (auto-translated subtitle): " + track);
+                            Logger.printDebug(() -> "Selected priority 2 (native auto-translated subtitle): " + track);
                             return recordProgrammaticSelection(track);
                         }
                     }
                 }
-            } else {
-                Logger.printDebug(() -> "Auto-translation not available for this video, skipping priority 2");
+            }
+
+            // Priority 2b: If no native translated track exists (e.g. single-caption video where YouTube
+            // did not pre-populate auto-translation), synthesize an auto-translate track from the available source track.
+            CaptionTrackInterface candidateSource = (originalTrack != null && !isExplicitlyDisabled(originalTrack))
+                    ? originalTrack
+                    : fallbackSourceTrack;
+
+            String candidateVss = candidateSource != null ? candidateSource.patch_getVssId() : null;
+            boolean isCandidateTranslated = candidateVss != null && (candidateVss.startsWith("ta.") || candidateVss.startsWith("t."));
+
+            if (candidateSource != null && !isExplicitlyDisabled(candidateSource)
+                    && !isCandidateTranslated
+                    && !matchesLanguage(candidateSource.patch_getLanguageCode(), targetLang)) {
+                CaptionTrackInterface syntheticTrack = synthesizeAutoTranslateTrack(
+                        candidateSource, targetLang, Requester.getAppLocale());
+                if (syntheticTrack != null) {
+                    Logger.printDebug(() -> "Selected priority 2b (synthesized auto-translate subtitle): " + syntheticTrack);
+                    return recordProgrammaticSelection(syntheticTrack);
+                }
             }
 
             // Priority 3: Fallback to the original YouTube selection.
@@ -177,13 +217,25 @@ public class PreferredCaptionLanguagePatch {
                                                            @Nullable Enum<?> selectType) {
         try {
             final boolean interactionAllowed = userInteractionAllowed.get();
+            final boolean wasActive = captionsCurrentlyActive.get();
             Logger.printDebug(() -> "onSetSubtitleTrack track: " + track
                     + " selectType: " + selectType
                     + " interactionAllowed: " + interactionAllowed
+                    + " wasActive: " + wasActive
                     + " userSelectedTrack: " + userSelectedTrack.get());
 
-            // Respect explicit user selection only after the initial video load window.
-            if (interactionAllowed
+            // 1. Explicit disable: user turned captions OFF or video has no captions.
+            if (track == null || isExplicitlyDisabled(track)) {
+                captionsCurrentlyActive.set(false);
+                if (interactionAllowed && selectType != null && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())) {
+                    userSelectedTrack.set(true);
+                    Logger.printDebug(() -> "User explicitly turned captions OFF");
+                }
+                return track;
+            }
+
+            // 2. Already active captions + user explicitly selected a new track from the menu/dialog.
+            if (wasActive && interactionAllowed
                     && selectType != null && PREFERRED_TRACK_SELECT_TYPE.equals(selectType.name())
                     && System.currentTimeMillis() - videoStartTime > USER_SELECTION_GRACE_PERIOD_MILLISECONDS) {
                 if (isSameTrack(track, lastProgrammaticTrackLang, lastProgrammaticTrackVss)) {
@@ -192,25 +244,27 @@ public class PreferredCaptionLanguagePatch {
                 }
 
                 userSelectedTrack.set(true);
-                Logger.printDebug(() -> "User explicitly selected subtitle track: " + track);
+                Logger.printDebug(() -> "User explicitly changed subtitle track from menu: " + track);
                 return track;
             }
 
+            // 3. User already made an explicit manual track selection previously.
             if (userSelectedTrack.get()) {
                 Logger.printDebug(() -> "User manually selected caption track previously, preserving: " + track);
+                captionsCurrentlyActive.set(true);
                 return track;
             }
 
-            if (track == null || isExplicitlyDisabled(track)) {
-                Logger.printDebug(() -> "Track is disable option or null, preserving: " + track);
-                return track;
-            }
-
+            // 4. Captions turning ON (either via CC button tap when OFF, or initial video load).
+            // Policy A: Automatically convert the incoming track to the preferred language (auto-translation if needed).
             CaptionTrackInterface preferred = getPreferredCaptionTrack(subtitleManager, track);
             if (preferred != null) {
                 Logger.printDebug(() -> "Overriding subtitle track with preferred track: " + preferred);
+                captionsCurrentlyActive.set(true);
                 return preferred;
             }
+
+            captionsCurrentlyActive.set(true);
         } catch (Exception ex) {
             Logger.printException(() -> "onSetSubtitleTrack failure", ex);
         }
@@ -219,11 +273,58 @@ public class PreferredCaptionLanguagePatch {
     }
 
     /**
+     * Synthesizes an auto-translated CaptionTrack directly from a source track URL and parameters.
+     */
+    @Nullable
+    private static CaptionTrackInterface synthesizeAutoTranslateTrack(
+            @Nullable CaptionTrackInterface sourceTrack, String targetLang, Locale displayLocale) {
+        if (sourceTrack == null) {
+            return null;
+        }
+
+        try {
+            String sourceUrl = sourceTrack.patch_getUrl();
+            String sourceVss = sourceTrack.patch_getVssId();
+            String sourceLang = sourceTrack.patch_getLanguageCode();
+
+            if (sourceUrl == null || sourceUrl.isEmpty() || sourceLang == null || sourceLang.isEmpty()) {
+                return null;
+            }
+
+            String tlang = toTranslationLanguageCode(targetLang);
+            if (tlang.isEmpty()) {
+                return null;
+            }
+
+            // Construct translated URL: replace or append &tlang=
+            String newUrl;
+            if (sourceUrl.contains("&tlang=") || sourceUrl.contains("?tlang=")) {
+                newUrl = sourceUrl.replaceAll("([?&])tlang=[^&#]+", "$1tlang=" + tlang);
+            } else {
+                newUrl = sourceUrl + "&tlang=" + tlang;
+            }
+
+            // Construct VSS ID: "ta." + sourceLang + "." + tlang (standard YouTube translation VSS format)
+            String newVss = "ta." + sourceLang + "." + tlang;
+
+            // Localized display name
+            String langName = Locale.forLanguageTag(tlang).getDisplayName(displayLocale);
+            String label = (langName != null && !langName.isEmpty()) ? langName : tlang;
+
+            return sourceTrack.patch_copyTranslation(tlang, newUrl, newVss, label);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Could not synthesize auto-translate track", ex);
+            return null;
+        }
+    }
+
+    /**
      * Injection point: Video start hook.
      */
     public static void newVideoStarted(VideoInformation.PlaybackController ignoredController) {
         userInteractionAllowed.set(false);
         userSelectedTrack.set(false);
+        captionsCurrentlyActive.set(false);
         recordProgrammaticSelection(null);
         videoStartTime = System.currentTimeMillis();
         Logger.printDebug(() -> "newVideoStarted, user interaction locked startTime: " + videoStartTime);
@@ -300,6 +401,25 @@ public class PreferredCaptionLanguagePatch {
             return "yi" + s.substring(2);
         }
         return s;
+    }
+
+    /**
+     * Converts a language tag into the exact format expected by YouTube's timedtext `tlang` parameter.
+     */
+    private static String toTranslationLanguageCode(String code) {
+        String norm = normalizeLanguageCode(code);
+        if (norm.isEmpty()) return "";
+
+        String primary = getPrimaryLanguage(norm);
+        if ("zh".equals(primary)) {
+            return isTraditionalChinese(norm) ? "zh-Hant" : "zh-Hans";
+        }
+
+        // Preserve regional subtags that YouTube timedtext explicitly distinguishes.
+        if ("pt-pt".equals(norm)) return "pt-PT";
+        if ("he".equals(primary) || "iw".equals(primary)) return "iw";
+
+        return primary;
     }
 
     private static boolean matchesLanguage(@Nullable String trackLang, String targetLang) {
