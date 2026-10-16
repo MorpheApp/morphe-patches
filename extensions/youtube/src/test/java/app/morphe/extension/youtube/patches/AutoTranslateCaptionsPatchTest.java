@@ -240,4 +240,39 @@ public class AutoTranslateCaptionsPatchTest {
         assertSame(bengali, PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(english, french), List.of(bengali), french, "bn", Locale.ENGLISH));
     }
 
+    @Test public void preferredFallbackPreservesPortugalPortuguese() {
+        Track english = new Track("en", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&sig=a%2Bb#opaque", ".en.named", "English");
+        for (String preference : List.of("pt-PT", "pt-pt")) {
+            var selected = PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(english), List.of(), null, preference, Locale.ENGLISH);
+            assertEquals("pt-PT", selected.patch_getLanguageCode());
+            assertEquals("t.en.named.pt-PT", selected.patch_getVssId());
+            assertEquals("https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&sig=a%2Bb&tlang=pt-PT#opaque", ((CaptionTrackInterface) selected).patch_getUrl());
+        }
+        assertEquals("pt", PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(english), List.of(), null, "pt-BR", Locale.ENGLISH).patch_getLanguageCode());
+    }
+
+    @Test public void preferredFallbackSupportsExistingInuktitutPreference() {
+        Track english = new Track("en", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en", ".en", "English");
+        var selected = PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(english), List.of(), null, "iu", Locale.ENGLISH);
+        org.junit.Assert.assertNotNull(selected);
+        assertEquals("iu", selected.patch_getLanguageCode());
+        assertEquals("https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en&tlang=iu", ((CaptionTrackInterface) selected).patch_getUrl());
+    }
+
+    @Test public void restoredMenuAndPreferredTrackKeepRegionalTargetsDistinct() {
+        Track english = new Track("en", "https://www.youtube.com/api/timedtext?v=abcdefghijk&lang=en", ".en", "English");
+        List<CaptionTrackInterface> menu = AutoTranslateCaptionsPatch.restoreTranslationTracks(List.of(), List.of(english), null, Locale.ENGLISH);
+        CaptionTrackInterface portugal = find(menu, "pt-PT");
+        find(menu, "pt"); find(menu, "iu");
+        assertSame(portugal, PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(english), List.copyOf(menu), null, "pt-PT", Locale.ENGLISH));
+        assertEquals("pt", PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(english), List.copyOf(menu), null, "pt-BR", Locale.ENGLISH).patch_getLanguageCode());
+    }
+
+    @Test public void exactExistingTranslationWinsBeforeBroaderLanguageMatch() {
+        Track portuguese = new Track("pt", "Portuguese");
+        Track portugal = new Track("pt-PT", "Portuguese (Portugal)");
+        assertSame(portugal, PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(), List.of(portuguese, portugal), null, "pt-PT", Locale.ENGLISH));
+        assertSame(portuguese, PreferredCaptionLanguagePatch.findAutoTranslatedTrack(List.of(), List.of(portuguese), null, "pt-PT", Locale.ENGLISH));
+    }
+
 }

@@ -165,8 +165,15 @@ public class PreferredCaptionLanguagePatch {
     static CaptionTrackInterface findAutoTranslatedTrack(@Nullable List<CaptionTrackInterface> directTracks,
             @Nullable List<CaptionTrackInterface> translatedTracks, @Nullable CaptionTrackInterface defaultSource,
             String targetLanguage, Locale locale) {
-        if (translatedTracks != null) for (CaptionTrackInterface track : translatedTracks) {
-            if (matchesLanguage(track.patch_getLanguageCode(), targetLanguage)) return track;
+        if (translatedTracks != null) {
+            // Prefer the requested region when both regional and generic translations exist.
+            String normalizedTarget = normalizeLanguageCode(targetLanguage);
+            for (CaptionTrackInterface track : translatedTracks) {
+                if (normalizedTarget.equals(normalizeLanguageCode(track.patch_getLanguageCode()))) return track;
+            }
+            for (CaptionTrackInterface track : translatedTracks) {
+                if (matchesLanguage(track.patch_getLanguageCode(), targetLanguage)) return track;
+            }
         }
         String language = AutoTranslateCaptionsPatch.translationLanguage(targetLanguage);
         return language == null ? null : AutoTranslateCaptionsPatch.createTranslation(
