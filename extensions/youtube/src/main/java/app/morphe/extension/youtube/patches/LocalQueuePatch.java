@@ -228,6 +228,7 @@ public final class LocalQueuePatch {
             }
 
             final String name = navigationIntent.name();
+            Logger.printDebug(() -> "Navigation intent: " + name);
             final boolean next = "NEXT".equals(name);
             if (!next && !"AUTOPLAY".equals(name) && !"AUTONAV".equals(name)) {
                 return false;
