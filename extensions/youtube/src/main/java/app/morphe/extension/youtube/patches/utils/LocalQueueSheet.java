@@ -58,6 +58,19 @@ import app.morphe.extension.youtube.shared.PlayerType;
 
 public final class LocalQueueSheet {
 
+    @Nullable
+    private static LocalQueueSheet current;
+
+    /**
+     * Closes the sheet without the slide animation, so it is not on screen when the player enters Picture-in-Picture.
+     */
+    public static void dismissImmediately() {
+        LocalQueueSheet sheet = current;
+        if (sheet != null && sheet.dialog.isShowing()) {
+            sheet.dialog.dismissImmediately();
+        }
+    }
+
     public static void show(Context context) {
         try {
             new LocalQueueSheet(context).show();
@@ -162,7 +175,9 @@ public final class LocalQueueSheet {
         render();
 
         LocalQueuePatch.setListeners(changeListener, metadataListener);
+        current = this;
         PipDismissHelper.dismissOnPip(dialog, () -> {
+            if (current == this) current = null;
             LocalQueuePatch.clearListeners(changeListener, metadataListener);
             scrollView.setOnScrollChangeListener(null);
             drag = null;

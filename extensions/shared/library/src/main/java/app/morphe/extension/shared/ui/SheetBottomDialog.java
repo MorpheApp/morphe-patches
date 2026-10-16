@@ -423,6 +423,17 @@ public class SheetBottomDialog {
         }
 
         /**
+         * Dismisses the dialog at once, without the slide animation.
+         */
+        public void dismissImmediately() {
+            if (animView != null) {
+                animView.animate().cancel();
+            }
+            isDismissing = false;
+            super.dismiss();
+        }
+
+        /**
          * Dismisses the dialog by sliding the content downward.
          * Ensures that dismissal is not triggered multiple times concurrently.
          */
