@@ -452,6 +452,14 @@ public final class LocalQueueSheet {
             }
         }
 
+        // A video that starts playing was requested already as a row of the queue.
+        if (row == nowPlayingRow && (nowPlayingItem == null || !nowPlayingItem.videoId.equals(row.videoId))) {
+            nowPlayingItem = new LocalQueuePatch.Item(row.videoId,
+                    emptyToNull(VideoInformation.getVideoTitle()),
+                    emptyToNull(VideoInformation.getChannelName()));
+            LocalQueuePatch.fetchMetadataIfNeeded(nowPlayingItem);
+        }
+
         if (!requestedVideoIds.add(row.videoId)) return;
 
         if (row.thumbnail.getDrawable() == null) {
@@ -459,11 +467,6 @@ public final class LocalQueueSheet {
         }
         if (row.item != null) {
             LocalQueuePatch.fetchMetadataIfNeeded(row.item);
-        } else if (row == nowPlayingRow) {
-            nowPlayingItem = new LocalQueuePatch.Item(row.videoId,
-                    emptyToNull(VideoInformation.getVideoTitle()),
-                    emptyToNull(VideoInformation.getChannelName()));
-            LocalQueuePatch.fetchMetadataIfNeeded(nowPlayingItem);
         }
     }
 
