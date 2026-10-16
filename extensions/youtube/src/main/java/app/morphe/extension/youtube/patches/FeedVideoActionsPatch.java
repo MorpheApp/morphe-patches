@@ -16,9 +16,12 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.HapticFeedbackConstants;
@@ -48,6 +51,7 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
+import app.morphe.extension.youtube.patches.utils.FeedVideoCards;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -95,6 +99,8 @@ public final class FeedVideoActionsPatch {
     private static final int BADGE_SIZE_DP = 34;
     private static final int BADGE_ICON_DP = 20;
     private static final int BADGE_MARGIN_DP = 10;
+    /** Same as the duration badge of the thumbnail, so their right edges line up. */
+    public static final int BADGE_RIGHT_MARGIN_DP = 8;
     private static final int BADGE_TOUCH_SLOP_DP = 8;
     private static final int BADGE_COLOR = 0xB3000000;
     private static final int BADGE_ALPHA = 0xB3;
@@ -154,12 +160,17 @@ public final class FeedVideoActionsPatch {
     private static boolean dispatchingCancel;
 
     private static final Runnable longPressRunnable = FeedVideoActionsPatch::onLongPressTimeout;
+    /** Shorter than a normal long press, but longer than any tap. */
+    private static final long BADGE_LONG_PRESS_TIMEOUT_MS = 300;
+    private static final Runnable badgeLongPressRunnable = FeedVideoActionsPatch::onBadgeLongPressTimeout;
 
     /** Sender of the last menu, which is learned once the menu really opens for a video. */
     private static WeakReference<View> lastSenderRef = new WeakReference<>(null);
 
     private static WeakReference<View> pendingMenuButtonRef = new WeakReference<>(null);
     private static long pendingWatchLaterUptime;
+    /** If the pending menu item is Save to playlist instead of Watch later. */
+    private static boolean pendingSaveToPlaylist;
     private static String pendingVideoId = "";
     /** Menu that is hidden until its Watch later item is clicked. */
     private static WeakReference<Object> pendingFlyoutRef = new WeakReference<>(null);
@@ -187,8 +198,9 @@ public final class FeedVideoActionsPatch {
         void placeBadge(ComponentHost host) {
             final int size = dp(host, BADGE_SIZE_DP);
             final int margin = dp(host, BADGE_MARGIN_DP);
-            final int right = host.getWidth() - margin;
+            final int right = host.getWidth() - dp(host, BADGE_RIGHT_MARGIN_DP);
             badge.setBounds(right - size, margin, right, margin + size);
+            badge.hostRef = new WeakReference<>(host);
             if (!badgeAdded) {
                 host.getOverlay().add(badge);
                 badgeAdded = true;
@@ -203,7 +215,8 @@ public final class FeedVideoActionsPatch {
         }
 
         boolean isBadgeHit(ComponentHost host, float x, float y) {
-            if (!badgeAdded) {
+            if (!badgeAdded || FeedVideoCards.isCardPlayingInline(host)
+                    || FeedVideoCards.isPlaylistCard(host)) {
                 return false;
             }
             Rect bounds = badge.getBounds();
@@ -219,6 +232,7 @@ public final class FeedVideoActionsPatch {
     private static final class WatchLaterBadge extends Drawable {
         private final Paint backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         private boolean pressed;
+        WeakReference<ComponentHost> hostRef = new WeakReference<>(null);
 
         WatchLaterBadge() {
             backgroundPaint.setColor(BADGE_COLOR);
@@ -233,6 +247,12 @@ public final class FeedVideoActionsPatch {
 
         @Override
         public void draw(@NonNull Canvas canvas) {
+            ComponentHost host = hostRef.get();
+            if (host != null && (FeedVideoCards.isCardPlayingInline(host)
+                    || FeedVideoCards.isPlaylistCard(host))) {
+                // The mute button of the inline player is here, or the card is a playlist or a mix.
+                return;
+            }
             Rect bounds = getBounds();
             backgroundPaint.setAlpha(pressed ? BADGE_PRESSED_ALPHA : BADGE_ALPHA);
             canvas.drawCircle(bounds.exactCenterX(), bounds.exactCenterY(),
@@ -587,6 +607,14 @@ public final class FeedVideoActionsPatch {
             switch (gestureMode) {
                 case GESTURE_BADGE -> {
                     VideoCard card = cards.get(host);
+                    if (action == MotionEvent.ACTION_MOVE && card != null
+                            && !card.isBadgeHit(host, event.getX(), event.getY())) {
+                        // Leaving the button cancels the tap and the long press.
+                        card.badge.setPressed(false);
+                        gestureMode = GESTURE_CONSUMED;
+                        handler.removeCallbacks(badgeLongPressRunnable);
+                        return true;
+                    }
                     if (gestureEnded) {
                         if (card != null) {
                             card.badge.setPressed(false);
@@ -643,6 +671,8 @@ public final class FeedVideoActionsPatch {
         if (WATCH_LATER_BUTTON && card.isBadgeHit(host, downX, downY)) {
             gestureMode = GESTURE_BADGE;
             card.badge.setPressed(true);
+            // Tapping and holding the button opens the Save to playlist panel.
+            handler.postDelayed(badgeLongPressRunnable, BADGE_LONG_PRESS_TIMEOUT_MS);
             return true;
         }
 
@@ -675,6 +705,7 @@ public final class FeedVideoActionsPatch {
 
     private static void resetGesture() {
         handler.removeCallbacks(longPressRunnable);
+        handler.removeCallbacks(badgeLongPressRunnable);
         gestureMode = GESTURE_NONE;
         gestureHostRef = new WeakReference<>(null);
     }
@@ -721,18 +752,76 @@ public final class FeedVideoActionsPatch {
         }
     }
 
+    private static void onBadgeLongPressTimeout() {
+        try {
+            ComponentHost host = gestureHostRef.get();
+            if (host == null || gestureMode != GESTURE_BADGE) {
+                return;
+            }
+            VideoCard card = cards.get(host);
+            // The rest of the gesture is consumed, so lifting the finger does not also save to Watch later.
+            gestureMode = GESTURE_CONSUMED;
+            if (card == null) {
+                return;
+            }
+            card.badge.setPressed(false);
+            vibrate(host, true);
+            openMenuItem(card, true);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onBadgeLongPressTimeout failure", ex);
+            resetGesture();
+        }
+    }
+
+    /**
+     * The Litho host can have haptic feedback turned off, so the vibrator is used when possible.
+     */
+    private static void vibrate(View view, boolean longPress) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                Vibrator vibrator = view.getContext().getSystemService(Vibrator.class);
+                if (vibrator != null && vibrator.hasVibrator()) {
+                    vibrator.vibrate(VibrationEffect.createPredefined(longPress
+                            ? VibrationEffect.EFFECT_HEAVY_CLICK
+                            : VibrationEffect.EFFECT_CLICK));
+                    return;
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Vibrator not available: " + ex);
+        }
+        view.performHapticFeedback(longPress
+                        ? HapticFeedbackConstants.LONG_PRESS
+                        : HapticFeedbackConstants.VIRTUAL_KEY,
+                HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+    }
+
     private static void saveToWatchLater(ComponentHost host, VideoCard card) {
+        if (card.getMenuButton() == null) {
+            return;
+        }
+        vibrate(host, false);
+        openMenuItem(card, false);
+    }
+
+    /**
+     * Opens the menu of the video without showing it, and clicks its own item.
+     *
+     * @param saveToPlaylist If the item is Save to playlist, which opens the panel of the app.
+     *                       Otherwise the item is Watch later.
+     */
+    private static void openMenuItem(VideoCard card, boolean saveToPlaylist) {
         View menuButton = card.getMenuButton();
         if (menuButton == null) {
             return;
         }
-        host.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
         // The menu of the video is opened without showing it, and its own Watch later item
         // is clicked, so the app saves the video and shows its own message.
         pendingMenuButtonRef = new WeakReference<>(menuButton);
         pendingVideoId = "";
         pendingWatchLaterUptime = SystemClock.uptimeMillis();
+        pendingSaveToPlaylist = saveToPlaylist;
         pendingItemClicked = false;
         menuButton.performClick();
     }
@@ -750,11 +839,14 @@ public final class FeedVideoActionsPatch {
 
     private static void clearPendingWatchLater() {
         pendingWatchLaterUptime = 0;
+        pendingSaveToPlaylist = false;
         pendingVideoId = "";
         pendingMenuButtonRef = new WeakReference<>(null);
         pendingFlyoutRef = new WeakReference<>(null);
         pendingItemClicked = false;
         handler.removeCallbacks(pendingFallbackRunnable);
+        handler.removeCallbacks(pendingItemCheckRunnable);
+        pendingItemListRef = new WeakReference<>(null);
     }
 
     /**
@@ -863,9 +955,55 @@ public final class FeedVideoActionsPatch {
 
     private static void startPendingFlyout(Object flyout) {
         pendingFlyoutRef = new WeakReference<>(flyout);
+        pendingItemListRef = new WeakReference<>(null);
         handler.removeCallbacks(pendingFallbackRunnable);
+        handler.removeCallbacks(pendingItemCheckRunnable);
         handler.postDelayed(pendingFallbackRunnable, NATIVE_ITEM_TIMEOUT_MS);
+        handler.postDelayed(pendingItemCheckRunnable, PENDING_ITEM_CHECK_MS);
     }
+
+    @Nullable
+    private static ViewGroup getFlyoutRootView(@Nullable Object flyout) {
+        View root = null;
+        if (flyout instanceof Dialog dialog && dialog.getWindow() != null) {
+            root = dialog.getWindow().getDecorView();
+        } else if (flyout instanceof PopupWindow popupWindow) {
+            root = popupWindow.getContentView();
+        }
+        return root instanceof ViewGroup group ? group : null;
+    }
+
+    /** Items of the hidden menu, which can be bound before all their names are known. */
+    private static WeakReference<ViewGroup> pendingItemListRef = new WeakReference<>(null);
+    private static final long PENDING_ITEM_CHECK_MS = 50;
+
+    /**
+     * The items are checked again until the item is clicked or the fallback runs,
+     * because the menu does not always bind its items again after the names are known.
+     */
+    private static final Runnable pendingItemCheckRunnable = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                if (pendingItemClicked || pendingFlyoutRef.get() == null || !isWatchLaterPending()) {
+                    return;
+                }
+                ViewGroup itemList = pendingItemListRef.get();
+                if (itemList == null) {
+                    // The list was not reported, so the items are searched in the menu itself.
+                    itemList = getFlyoutRootView(pendingFlyoutRef.get());
+                }
+                if (itemList != null) {
+                    onFlyoutListBound(itemList);
+                }
+                if (!pendingItemClicked && pendingFlyoutRef.get() != null) {
+                    handler.postDelayed(this, PENDING_ITEM_CHECK_MS);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "pendingItemCheck failure", ex);
+            }
+        }
+    };
 
     /**
      * Called by {@link FlyoutUtils} each time the items of a menu are bound.
@@ -875,29 +1013,44 @@ public final class FeedVideoActionsPatch {
             return;
         }
         try {
-            if (pendingItemClicked || pendingFlyoutRef.get() == null || !isWatchLaterPending()) {
+            if (pendingItemClicked || !isWatchLaterPending()) {
+                return;
+            }
+            // Kept even before the menu is known, so the item check can use it later.
+            pendingItemListRef = new WeakReference<>(itemList);
+            if (pendingFlyoutRef.get() == null) {
                 return;
             }
 
-            final int itemIndex = findWatchLaterItemIndex();
-            if (itemIndex < 0 || itemIndex >= itemList.getChildCount()) {
+            final int itemIndex = pendingSaveToPlaylist ? findSaveToPlaylistItemIndex() : findWatchLaterItemIndex();
+            ViewGroup items = itemIndex < 0 ? null : findItemGroup(itemList, itemIndex);
+            if (items == null) {
                 // The items may not be bound yet. The fallback runs if they never are.
                 return;
             }
 
             pendingItemClicked = true;
-            View item = itemList.getChildAt(itemIndex);
-            Logger.printDebug(() -> "Clicking the Watch later item of the hidden menu");
-            // The app saves the video, shows its own message and closes the menu.
+            View item = items.getChildAt(itemIndex);
+            Logger.printDebug(() -> "Clicking the " + (pendingSaveToPlaylist ? "Save to playlist" : "Watch later")
+                    + " item of the hidden menu");
+            final boolean saveToPlaylist = pendingSaveToPlaylist;
+            // Watch later: the app saves the video, shows its own message and closes the menu.
+            // Save to playlist: the app closes the menu and opens its own panel.
             handler.post(() -> {
                 try {
                     item.performClick();
                 } catch (Exception ex) {
-                    Logger.printException(() -> "Watch later item click failure", ex);
+                    Logger.printException(() -> "Menu item click failure", ex);
                 }
                 Object flyout = pendingFlyoutRef.get();
                 clearPendingWatchLater();
-                dismissSoon(flyout);
+                if (saveToPlaylist) {
+                    // If the panel is shown in the same sheet as the menu, the sheet must be visible again.
+                    // A menu that the app closed is not shown again.
+                    showHiddenMenu(flyout);
+                } else {
+                    dismissSoon(flyout);
+                }
             });
         } catch (Exception ex) {
             Logger.printException(() -> "onFlyoutListBound failure", ex);
@@ -919,6 +1072,96 @@ public final class FeedVideoActionsPatch {
     }
 
     /**
+     * @return The view group of the menu items: the list itself, or in some layouts
+     *         the view group inside it with the most children.
+     */
+    @Nullable
+    private static ViewGroup findItemGroup(ViewGroup itemList, int itemIndex) {
+        if (itemList.getChildCount() > itemIndex) {
+            return itemList;
+        }
+        ViewGroup best = null;
+        List<ViewGroup> groups = new ArrayList<>();
+        groups.add(itemList);
+        for (int g = 0; g < groups.size(); g++) {
+            ViewGroup group = groups.get(g);
+            if (group.getChildCount() > itemIndex
+                    && (best == null || group.getChildCount() > best.getChildCount())) {
+                best = group;
+            }
+            for (int i = 0, count = group.getChildCount(); i < count; i++) {
+                if (group.getChildAt(i) instanceof ViewGroup child) {
+                    groups.add(child);
+                }
+            }
+        }
+        if (best != null) {
+            ViewGroup found = best;
+            Logger.printDebug(() -> "Menu items found in a nested group: " + found.getClass().getName()
+                    + " (" + found.getChildCount() + " items)");
+        } else {
+            Logger.printDebug(() -> "Menu items not bound yet: " + itemList.getChildCount() + " children");
+        }
+        return best;
+    }
+
+    /**
+     * The icon names of the Save to playlist item, by preference.
+     * The item uses the icon of a playlist or of a bookmark, depending on the app version.
+     */
+    private static final String[] SAVE_TO_PLAYLIST_ICON_NAMES = {"PLAYLIST_ADD", "ADD_TO_PLAYLIST", "BOOKMARK", "SAVE"};
+
+    private static final Pattern NOT_SAVE_ITEM_PATTERN =
+            Pattern.compile("DOWNLOAD|OFFLINE|SHARE|QUEUE|NOT_INTERESTED|DISMISS|FLAG|REPORT|CAST");
+
+    private static int findSaveToPlaylistItemIndex() {
+        List<Pair<String, Integer>> buttons = FlyoutUtils.getVisibleFlyoutButtons();
+        for (String iconName : SAVE_TO_PLAYLIST_ICON_NAMES) {
+            for (Pair<String, Integer> button : buttons) {
+                String name = button.first;
+                if (name.contains(iconName) && !name.contains("WATCH_LATER") && !name.contains("REMOVE")) {
+                    return button.second - 1;
+                }
+            }
+        }
+        // The item is right after the Watch later item, if its icon has another name.
+        for (int i = 0, size = buttons.size(); i < size - 1; i++) {
+            String name = buttons.get(i).first;
+            if (name.contains("WATCH_LATER") && !name.contains("REMOVE")) {
+                Pair<String, Integer> next = buttons.get(i + 1);
+                if (!NOT_SAVE_ITEM_PATTERN.matcher(next.first).find()) {
+                    Logger.printDebug(() -> "Using the item after Watch later as Save to playlist: " + next.first);
+                    return next.second - 1;
+                }
+                break;
+            }
+        }
+        Logger.printDebug(() -> "No Save to playlist item in: " + buttons);
+        return -1;
+    }
+
+    /**
+     * The Save to playlist item was not found, so the hidden menu is shown,
+     * and the item can be chosen from it.
+     */
+    private static void showHiddenMenu(@Nullable Object flyout) {
+        if (flyout instanceof Dialog dialog && dialog.isShowing()) {
+            Window window = dialog.getWindow();
+            if (window != null) {
+                window.setDimAmount(0.5f);
+                WindowManager.LayoutParams params = window.getAttributes();
+                params.alpha = 1f;
+                window.setAttributes(params);
+            }
+        } else if (flyout instanceof PopupWindow popupWindow && popupWindow.isShowing()) {
+            View content = popupWindow.getContentView();
+            if (content != null) {
+                content.setAlpha(1f);
+            }
+        }
+    }
+
+    /**
      * The Watch later item was not found, such as when the video is already saved,
      * so the video is saved with the same request as the player button.
      */
@@ -929,7 +1172,12 @@ public final class FeedVideoActionsPatch {
             }
             Object flyout = pendingFlyoutRef.get();
             String videoId = pendingVideoId;
+            final boolean saveToPlaylist = pendingSaveToPlaylist;
             clearPendingWatchLater();
+            if (saveToPlaylist) {
+                showHiddenMenu(flyout);
+                return;
+            }
             dismissSoon(flyout);
 
             // Shows a toast if the id is not found.

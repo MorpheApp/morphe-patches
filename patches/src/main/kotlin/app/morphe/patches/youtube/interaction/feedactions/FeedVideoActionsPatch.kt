@@ -15,6 +15,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
 import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.feedcards.feedVideoCardsHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -39,6 +40,8 @@ val feedVideoActionsPatch = bytecodePatch(
         flyoutPatch,
         // Account header for the Watch later request.
         authHookPatch,
+        // Finds the video of each card, to hide the button while it plays in the feed.
+        feedVideoCardsHookPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
