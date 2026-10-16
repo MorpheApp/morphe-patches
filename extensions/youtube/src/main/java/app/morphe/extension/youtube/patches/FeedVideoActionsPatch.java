@@ -47,6 +47,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.spoof.SpoofAppVersionPatch;
 import app.morphe.extension.youtube.patches.utils.FlyoutUtils;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -73,21 +74,53 @@ public final class FeedVideoActionsPatch {
 
     private static final boolean LONG_PRESS_MENU = Settings.FEED_LONG_PRESS_MENU.get();
     private static final boolean WATCH_LATER_BUTTON = Settings.FEED_WATCH_LATER_BUTTON.get();
-    private static final boolean ENABLED = LONG_PRESS_MENU || WATCH_LATER_BUTTON;
+    private static final boolean ENABLED = isPatchIncluded() && (LONG_PRESS_MENU || WATCH_LATER_BUTTON);
+
+    private static final boolean USE_EXPERIMENTAL_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
+            && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
 
     /** A video must be almost as wide as the screen. Shelves and grids are not changed. */
     private static final float MIN_WIDTH_OF_SCREEN = 0.7f;
     private static final float THUMBNAIL_RATIO = 9f / 16f;
     private static final int MIN_WIDTH_DP = 240;
+    /** Minimum height of the video details below the thumbnail. */
+    private static final int MIN_DETAILS_HEIGHT_DP = 40;
+    /** Allowed overlap of the video details and the thumbnail. */
+    private static final int THUMBNAIL_OVERLAP_DP = 8;
     private static final int MENU_BUTTON_MIN_DP = 20;
     private static final int MENU_BUTTON_MAX_DP = 72;
+    /** The menu button is in the right part of the video. */
+    private static final float MENU_BUTTON_MIN_CENTER_X = 0.8f;
+
     private static final int BADGE_SIZE_DP = 34;
     private static final int BADGE_ICON_DP = 20;
     private static final int BADGE_MARGIN_DP = 10;
     private static final int BADGE_TOUCH_SLOP_DP = 8;
+    private static final int BADGE_COLOR = 0xB3000000;
+    private static final int BADGE_ALPHA = 0xB3;
+    private static final int BADGE_PRESSED_ALPHA = 0xFF;
+    private static final int BADGE_ICON_COLOR = 0xFFFFFFFF;
+
+    /** Movement of the video on the screen that cancels a long press. */
+    private static final int HOST_MOVE_TOLERANCE_DP = 2;
+
+    /** Video texts shorter than this are not removed from the menu button description. */
+    private static final int MIN_VIDEO_TEXT_LENGTH = 3;
+    /** Length of the fixed start or end a description must share with the learned one. */
+    private static final int MIN_SHARED_LENGTH = 6;
+
+    /** Duration of a video, such as 4:05 or 1:02:33. */
+    private static final Pattern DURATION_PATTERN = Pattern.compile("^\\d{1,2}([:.]\\d{2}){1,2}$");
+    /** A short badge in capital letters, such as the live badge. */
+    private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
+    private static final Pattern NOT_LETTERS_PATTERN = Pattern.compile("[^\\p{L}]+");
 
     /** Time the menu click has to open the menu, before a Watch later tap is forgotten. */
     private static final long PENDING_WATCH_LATER_TIMEOUT_MS = 2000;
+    /** Time the hidden menu has to bind its items, before the request is used instead. */
+    private static final long NATIVE_ITEM_TIMEOUT_MS = 700;
+    /** The menu may be created before it is shown, so it is closed after each of these delays. */
+    private static final long[] DISMISS_DELAYS_MS = {50, 300};
 
     private static final int GESTURE_NONE = 0;
     private static final int GESTURE_LONG_PRESS_PENDING = 1;
@@ -98,6 +131,15 @@ public final class FeedVideoActionsPatch {
 
     /** Root hosts that currently show a video. Used only on the main thread. */
     private static final Map<ComponentHost, VideoCard> cards = new WeakHashMap<>();
+
+    /**
+     * Root hosts with a layout change, which are checked once the layout pass is done.
+     * The root host is a LithoView, which may not call the layout method of its super class,
+     * so the layout of any host schedules its root host.
+     */
+    private static final Map<ComponentHost, Boolean> rootsToUpdate = new WeakHashMap<>();
+    private static boolean rootsUpdateScheduled;
+    private static final Runnable updateRootsRunnable = FeedVideoActionsPatch::updateRoots;
 
     private static WeakReference<ComponentHost> gestureHostRef = new WeakReference<>(null);
     private static int gestureMode = GESTURE_NONE;
@@ -113,12 +155,23 @@ public final class FeedVideoActionsPatch {
 
     private static final Runnable longPressRunnable = FeedVideoActionsPatch::onLongPressTimeout;
 
+    /** Sender of the last menu, which is learned once the menu really opens for a video. */
+    private static WeakReference<View> lastSenderRef = new WeakReference<>(null);
+
     private static WeakReference<View> pendingMenuButtonRef = new WeakReference<>(null);
     private static long pendingWatchLaterUptime;
     private static String pendingVideoId = "";
+    /** Menu that is hidden until its Watch later item is clicked. */
+    private static WeakReference<Object> pendingFlyoutRef = new WeakReference<>(null);
+    private static boolean pendingItemClicked;
+    private static final Runnable pendingFallbackRunnable = FeedVideoActionsPatch::onPendingFallback;
 
     @Nullable
     private static Drawable clockIcon;
+
+    public static boolean isPatchIncluded() {
+        return false; // Modified during patching.
+    }
 
     private static final class VideoCard {
         WeakReference<View> menuButtonRef = new WeakReference<>(null);
@@ -168,7 +221,7 @@ public final class FeedVideoActionsPatch {
         private boolean pressed;
 
         WatchLaterBadge() {
-            backgroundPaint.setColor(0xB3000000);
+            backgroundPaint.setColor(BADGE_COLOR);
         }
 
         void setPressed(boolean pressed) {
@@ -181,7 +234,7 @@ public final class FeedVideoActionsPatch {
         @Override
         public void draw(@NonNull Canvas canvas) {
             Rect bounds = getBounds();
-            backgroundPaint.setAlpha(pressed ? 0xFF : 0xB3);
+            backgroundPaint.setAlpha(pressed ? BADGE_PRESSED_ALPHA : BADGE_ALPHA);
             canvas.drawCircle(bounds.exactCenterX(), bounds.exactCenterY(),
                     bounds.width() / 2f, backgroundPaint);
 
@@ -212,13 +265,12 @@ public final class FeedVideoActionsPatch {
     @Nullable
     private static Drawable getClockIcon() {
         if (clockIcon == null) {
-            Drawable icon = ResourceUtils.getDrawable("yt_outline_experimental_clock_vd_theme_24");
-            if (icon == null) {
-                icon = ResourceUtils.getDrawable("yt_outline_clock_black_24");
-            }
+            Drawable icon = ResourceUtils.getDrawable(USE_EXPERIMENTAL_ICONS
+                    ? "yt_outline_experimental_clock_vd_theme_24"
+                    : "yt_outline_clock_black_24");
             if (icon != null) {
                 icon = icon.mutate();
-                icon.setColorFilter(new PorterDuffColorFilter(0xFFFFFFFF, PorterDuff.Mode.SRC_IN));
+                icon.setColorFilter(new PorterDuffColorFilter(BADGE_ICON_COLOR, PorterDuff.Mode.SRC_IN));
             }
             clockIcon = icon;
         }
@@ -249,7 +301,7 @@ public final class FeedVideoActionsPatch {
         final int screenWidth = host.getResources().getDisplayMetrics().widthPixels;
         return width >= dp(host, MIN_WIDTH_DP)
                 && width >= screenWidth * MIN_WIDTH_OF_SCREEN
-                && host.getHeight() >= width * THUMBNAIL_RATIO + dp(host, 40);
+                && host.getHeight() >= width * THUMBNAIL_RATIO + dp(host, MIN_DETAILS_HEIGHT_DP);
     }
 
     /**
@@ -265,26 +317,16 @@ public final class FeedVideoActionsPatch {
         final int width = root.getWidth();
         return rect.width() >= min && rect.width() <= max
                 && rect.height() >= min && rect.height() <= max
-                && rect.centerX() >= width * 0.8f
-                && rect.top >= width * THUMBNAIL_RATIO - dp(root, 8);
+                && rect.centerX() >= width * MENU_BUTTON_MIN_CENTER_X
+                && rect.top >= width * THUMBNAIL_RATIO - dp(root, THUMBNAIL_OVERLAP_DP);
     }
-
-    /**
-     * Duration of a video, such as 4:05 or 1:02:33.
-     */
-    private static final Pattern DURATION_PATTERN = Pattern.compile("^\\d{1,2}([:.]\\d{2}){1,2}$");
-
-    /**
-     * A short badge in capital letters, such as the live badge.
-     */
-    private static final Pattern BADGE_PATTERN = Pattern.compile("^\\p{Lu}{2,12}$");
 
     /**
      * Posts are shaped like videos when they have an image, and their buttons below the image
      * are not the menu. Only videos show a duration (or a live badge) on the thumbnail.
      */
     private static boolean hasVideoBadge(ComponentHost root) {
-        final int thumbnailBottom = Math.round(root.getWidth() * THUMBNAIL_RATIO) + dp(root, 8);
+        final int thumbnailBottom = Math.round(root.getWidth() * THUMBNAIL_RATIO) + dp(root, THUMBNAIL_OVERLAP_DP);
         return hasVideoBadge(root, root, thumbnailBottom, new Rect());
     }
 
@@ -345,9 +387,6 @@ public final class FeedVideoActionsPatch {
         return NOT_LETTERS_PATTERN.matcher(pattern).replaceAll(" ").trim();
     }
 
-    private static final Pattern NOT_LETTERS_PATTERN = Pattern.compile("[^\\p{L}]+");
-    private static final int MIN_SHARED_LENGTH = 6;
-
     /**
      * If a text of the video is not drawn by Litho, it is still in the description.
      * The fixed part of the description is then at its start or at its end.
@@ -391,7 +430,7 @@ public final class FeedVideoActionsPatch {
             for (CharSequence text : textContent.getTextItems()) {
                 if (text != null) {
                     String item = text.toString().trim();
-                    if (item.length() >= 3 && !texts.contains(item)) {
+                    if (item.length() >= MIN_VIDEO_TEXT_LENGTH && !texts.contains(item)) {
                         texts.add(item);
                     }
                 }
@@ -481,15 +520,7 @@ public final class FeedVideoActionsPatch {
         return card;
     }
 
-    /**
-     * Root hosts with a layout change, which are checked once the layout pass is done.
-     * The root host is a LithoView, which may not call the layout method of its super class,
-     * so the layout of any host schedules its root host.
-     */
-    private static final Map<ComponentHost, Boolean> rootsToUpdate = new WeakHashMap<>();
-    private static boolean rootsUpdateScheduled;
-
-    private static final Runnable updateRootsRunnable = () -> {
+    private static void updateRoots() {
         rootsUpdateScheduled = false;
         try {
             ComponentHost[] roots = rootsToUpdate.keySet().toArray(new ComponentHost[0]);
@@ -502,7 +533,7 @@ public final class FeedVideoActionsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "updateRoots failure", ex);
         }
-    };
+    }
 
     /**
      * Injection point.
@@ -637,7 +668,7 @@ public final class FeedVideoActionsPatch {
 
     private static boolean hasHostMoved(ComponentHost host) {
         host.getLocationOnScreen(currentLocation);
-        final int tolerance = dp(host, 2);
+        final int tolerance = dp(host, HOST_MOVE_TOLERANCE_DP);
         return Math.abs(currentLocation[0] - downLocation[0]) > tolerance
                 || Math.abs(currentLocation[1] - downLocation[1]) > tolerance;
     }
@@ -726,18 +757,6 @@ public final class FeedVideoActionsPatch {
         handler.removeCallbacks(pendingFallbackRunnable);
     }
 
-    /** Menu that is hidden until its Watch later item is clicked. */
-    private static WeakReference<Object> pendingFlyoutRef = new WeakReference<>(null);
-    private static boolean pendingItemClicked;
-
-    /** Time the hidden menu has to bind its items, before the request is used instead. */
-    private static final long NATIVE_ITEM_TIMEOUT_MS = 700;
-
-    private static final Runnable pendingFallbackRunnable = FeedVideoActionsPatch::onPendingFallback;
-
-    /** Sender of the last menu, which is learned once the menu really opens for a video. */
-    private static WeakReference<View> lastSenderRef = new WeakReference<>(null);
-
     /**
      * Called by {@link FlyoutUtils} when a feed button is clicked, after the ids are found.
      * Not every such button opens a menu, such as the comment button of posts.
@@ -797,6 +816,9 @@ public final class FeedVideoActionsPatch {
      * Called by {@link FlyoutUtils} when a feed menu dialog is created.
      */
     public static void onBottomSheetFlyout(Dialog dialog) {
+        if (!ENABLED) {
+            return;
+        }
         try {
             learnMenuButtonDescription();
             if (!isWatchLaterPending()) {
@@ -820,6 +842,9 @@ public final class FeedVideoActionsPatch {
      * Called by {@link FlyoutUtils} when a feed menu popup is about to be shown.
      */
     public static void onPopupWindowFlyout(PopupWindow popupWindow) {
+        if (!ENABLED) {
+            return;
+        }
         try {
             learnMenuButtonDescription();
             if (!isWatchLaterPending()) {
@@ -846,6 +871,9 @@ public final class FeedVideoActionsPatch {
      * Called by {@link FlyoutUtils} each time the items of a menu are bound.
      */
     public static void onFlyoutListBound(ViewGroup itemList) {
+        if (!WATCH_LATER_BUTTON || !ENABLED) {
+            return;
+        }
         try {
             if (pendingItemClicked || pendingFlyoutRef.get() == null || !isWatchLaterPending()) {
                 return;
@@ -929,7 +957,8 @@ public final class FeedVideoActionsPatch {
                 Logger.printException(() -> "dismiss failure", ex);
             }
         };
-        handler.postDelayed(dismissIfShowing, 50);
-        handler.postDelayed(dismissIfShowing, 300);
+        for (long delay : DISMISS_DELAYS_MS) {
+            handler.postDelayed(dismissIfShowing, delay);
+        }
     }
 }

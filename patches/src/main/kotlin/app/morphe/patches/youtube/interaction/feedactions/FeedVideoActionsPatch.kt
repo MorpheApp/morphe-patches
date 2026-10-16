@@ -9,10 +9,7 @@ package app.morphe.patches.youtube.interaction.feedactions
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.flyout.flyoutPatch
@@ -22,6 +19,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
@@ -66,23 +64,18 @@ val feedVideoActionsPatch = bytecodePatch(
 
         // The touches of the root host decide the long press and the Watch later button.
         // When the extension handles the touch, it is not given to the children.
-        FeedComponentHostTouchFingerprint.method.apply {
-            val freeRegisters = implementation!!.registerCount - parameters.size - 1
-            if (freeRegisters < 1) {
-                throw PatchException("dispatchTouchEvent has no free register")
-            }
+        FeedComponentHostTouchFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
+                move-result v0
+                if-eqz v0, :original
+                return v0
+                :original
+                nop
+            """
+        )
 
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { p0, p1 }, $EXTENSION_CLASS->onComponentHostTouch(Lcom/facebook/litho/ComponentHost;Landroid/view/MotionEvent;)Z
-                    move-result v0
-                    if-eqz v0, :original
-                    const/4 v0, 0x1
-                    return v0
-                """,
-                ExternalLabel("original", getInstruction(0)),
-            )
-        }
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }
