@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.series;
 
+import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.youtube.series.TrackerModels.Episode;
 import static app.morphe.extension.youtube.series.TrackerModels.Progress;
 import static app.morphe.extension.youtube.series.TrackerModels.Series;
@@ -62,6 +63,7 @@ import app.morphe.extension.shared.Utils;
 /** Activity-scoped native UI. Catalog pages contain at most 100 views. */
 final class LibraryDialog {
     private final Activity activity;
+    private final boolean seriesOnly;
     private final TrackerService service;
     private final LinearLayout root;
     private final TextView heading, addAction, moreAction;
@@ -123,8 +125,8 @@ final class LibraryDialog {
                 public void onActivitySaveInstanceState(@NonNull Activity a, @NonNull Bundle b) {}
             };
 
-    static LibraryDialog embedded(Activity activity) {
-        return new LibraryDialog(activity);
+    static LibraryDialog embedded(Activity activity, boolean seriesOnly) {
+        return new LibraryDialog(activity, seriesOnly);
     }
 
     View view() {
@@ -199,8 +201,9 @@ final class LibraryDialog {
         return true;
     }
 
-    private LibraryDialog(Activity activity) {
+    private LibraryDialog(Activity activity, boolean seriesOnly) {
         this.activity = activity;
+        this.seriesOnly = seriesOnly;
         service = TrackerService.get(activity);
         TrackerRuntime.flush();
         root = new LinearLayout(activity);
@@ -218,7 +221,7 @@ final class LibraryDialog {
                 new UiIcon(
                         UiIcon.BACK, HistoryUi.foreground(), HistoryUi.dp(24)));
         backAction.setBackground(HistoryUi.ripple(false));
-        backAction.setOnClickListener(v -> HistoryUi.onBack());
+        backAction.setOnClickListener(v -> HistoryUi.navigateUp(activity));
         toolbar.addView(
                 backAction,
                 new LinearLayout.LayoutParams(
@@ -398,10 +401,9 @@ final class LibraryDialog {
         heading.setText(title);
         searchBar.setVisibility(selected.isEmpty() ? View.VISIBLE : View.GONE);
         heading.setTextSize(20);
-        backAction.setContentDescription(
-                UiText.get(selected.isEmpty()
-                                ? "morphe_series_tracker_ui_watch_history"
-                                : "morphe_series_tracker_ui_all_series"));
+        backAction.setContentDescription(str(!selected.isEmpty()
+                ? "morphe_series_tracker_ui_all_series"
+                : seriesOnly ? "morphe_settings_navigate_up" : "morphe_series_tracker_ui_watch_history"));
         addAction.setVisibility(selected.isEmpty() ? View.VISIBLE : View.GONE);
         moreAction.setVisibility(selected.isEmpty() ? View.VISIBLE : View.GONE);
         episodeReveal.restoreAfterLayout(scroll, y, renderGeneration);
