@@ -126,7 +126,7 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        navigationIntentHook(EXTENSION_LOCAL_QUEUE_CLASS, "shouldCancelNavigation")
+        navigationIntentHook(EXTENSION_LOCAL_QUEUE_CLASS, "shouldCancelNavigation", includePlayerButtons = true)
 
         playerStatusOverrideHook(EXTENSION_LOCAL_QUEUE_CLASS, "shouldCancelEndOfVideo")
 
