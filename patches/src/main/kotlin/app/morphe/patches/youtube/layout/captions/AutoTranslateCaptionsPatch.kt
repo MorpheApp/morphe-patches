@@ -22,6 +22,7 @@ import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AutoTranslateCaptionsPatch;"
@@ -116,12 +117,15 @@ internal val autoTranslateCaptionsPatch = bytecodePatch(
         val adapter = "${directTracks.definingClass}->patch_getAutoTranslateTracks()Ljava/util/List;"
         // Route the UI getter and the existing preferred-language interface getter through it.
         AutoTranslateTracksCallFingerprint(autoTracks).matchAll().forEach {
-            val firstFilterMatch = it.instructionMatches[0]
-            val register = firstFilterMatch.instruction.registersUsed[0]
-            it.method.replaceInstruction(
-                firstFilterMatch.index,
-                "invoke-virtual/range { v$register .. v$register }, $adapter"
-            )
+            // A matched method can read the translation list more than once.
+            it.method.apply {
+                findInstructionIndicesReversedOrThrow {
+                    getReference<MethodReference>() == autoTracks
+                }.forEach { index ->
+                    val register = getInstruction(index).registersUsed[0]
+                    replaceInstruction(index, "invoke-virtual/range { v$register .. v$register }, $adapter")
+                }
+            }
         }
 
         // Reuse YouTube's localized option factory and preserve its remaining native checks.
