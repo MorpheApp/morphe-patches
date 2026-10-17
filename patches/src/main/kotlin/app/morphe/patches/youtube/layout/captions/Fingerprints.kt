@@ -207,6 +207,16 @@ internal class CaptionTracksManagerDefaultSourceFingerprint(captionTrackType: St
 )
 
 /**
+ * Calls of the caption tracks manager auto-translate getter inside the subtitle manager.
+ */
+internal class AutoTranslateTracksCallFingerprint(autoTranslateTracksMethod: MethodReference) : Fingerprint(
+    classFingerprint = DefaultCaptionTrackFingerprint,
+    filters = listOf(
+        methodCall(reference = autoTranslateTracksMethod)
+    )
+)
+
+/**
  * Resolves to the caption track builder class.
  */
 internal object CaptionTrackBuilderBuildFingerprint : Fingerprint(
@@ -294,7 +304,6 @@ internal object SetSubtitleTrackFingerprint : Fingerprint(
     )
 )
 
-
 /** The final translation-count check before YouTube builds its own Auto-translate row. */
 internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
     classFingerprint = CaptionTracksManagerDirectTracksFingerprint,
@@ -307,6 +316,8 @@ internal object CaptionTracksManagerTranslationCountFingerprint : Fingerprint(
         fieldAccess(opcode = Opcode.IGET_BOOLEAN, definingClass = "this", type = "Z",
             location = MatchAfterImmediately()),
         opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
-        string("AUTO_TRANSLATE_CAPTIONS_OPTION", location = InstructionLocation.MatchAfterAnywhere())
+        string("AUTO_TRANSLATE_CAPTIONS_OPTION", location = InstructionLocation.MatchAfterAnywhere()),
+        // Register holding the returned tracks list.
+        opcode(Opcode.RETURN_OBJECT, location = InstructionLocation.MatchAfterAnywhere())
     )
 )

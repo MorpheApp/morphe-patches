@@ -62,8 +62,8 @@ public class PreferredCaptionLanguagePatch {
         String patch_getVssId();
     }
 
-    private static final String DISABLE_OPTION = "DISABLE_CAPTIONS_OPTION";
-    private static final String AUTO_TRANSLATE_OPTION = "AUTO_TRANSLATE_CAPTIONS_OPTION";
+    static final String DISABLE_OPTION = "DISABLE_CAPTIONS_OPTION";
+    static final String AUTO_TRANSLATE_OPTION = "AUTO_TRANSLATE_CAPTIONS_OPTION";
     private static final String PREFERRED_TRACK_SELECT_TYPE = "PREFERRED_TRACK";
 
     /**

@@ -8,16 +8,18 @@
 
 package app.morphe.extension.youtube.patches;
 
-import java.text.Collator;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.Collator;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
@@ -40,6 +42,10 @@ public final class AutoTranslateCaptionsPatch {
         CaptionTrackInterface patch_copyTranslation(String languageCode, String url,
                                                     String vssId, CharSequence label);
     }
+
+    private static final Pattern LANGUAGE_CODE_PATTERN = Pattern.compile("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*");
+    private static final Pattern VIDEO_ID_PATTERN = Pattern.compile("[A-Za-z0-9_-]{11}");
+    private static final Pattern VSS_ID_SUFFIX_PATTERN = Pattern.compile("[A-Za-z0-9_-]{1,128}");
 
     /**
      * Translation languages added if YouTube does not offer them.
@@ -118,8 +124,13 @@ public final class AutoTranslateCaptionsPatch {
     /** Keep YouTube's native menu construction and its other availability checks. */
     public static int getTranslationCount(int nativeCount,
             List<? extends PreferredCaptionLanguagePatch.CaptionTrackInterface> directTracks) {
-        return nativeCount > 0 || !Settings.AUTO_TRANSLATE_ADDITIONAL_LANGUAGES.get()
-                || findFallbackSource(directTracks, null) == null ? nativeCount : 1;
+        try {
+            return nativeCount > 0 || !Settings.AUTO_TRANSLATE_ADDITIONAL_LANGUAGES.get()
+                    || findFallbackSource(directTracks, null) == null ? nativeCount : 1;
+        } catch (Exception ex) {
+            Logger.printException(() -> "getTranslationCount failure", ex);
+            return nativeCount;
+        }
     }
 
     /** Called by the manager adapter, not recursively from either native list getter. */
@@ -159,7 +170,8 @@ public final class AutoTranslateCaptionsPatch {
         for (PreferredCaptionLanguagePatch.CaptionTrackInterface track : tracks) {
             if (track == null) return null;
             String code = track.patch_getLanguageCode();
-            if ("DISABLE_CAPTIONS_OPTION".equals(code) || "AUTO_TRANSLATE_CAPTIONS_OPTION".equals(code)) continue;
+            if (PreferredCaptionLanguagePatch.DISABLE_OPTION.equals(code)
+                    || PreferredCaptionLanguagePatch.AUTO_TRANSLATE_OPTION.equals(code)) continue;
             if (!(track instanceof CaptionTrackInterface candidate)) return null;
             String identity = originalVideoId(candidate);
             if (identity == null || video != null && !video.equals(identity)) return null;
@@ -173,7 +185,7 @@ public final class AutoTranslateCaptionsPatch {
     }
 
     static String translationLanguage(String language) {
-        if (language == null || !language.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")) return null;
+        if (language == null || !LANGUAGE_CODE_PATTERN.matcher(language).matches()) return null;
         for (String code : TRANSLATION_LANGUAGES) {
             if (code.equalsIgnoreCase(language)) return code;
         }
@@ -184,7 +196,7 @@ public final class AutoTranslateCaptionsPatch {
     }
 
     static CaptionTrackInterface createTranslation(CaptionTrackInterface source, String language, Locale locale) {
-        if (source == null || language == null || !language.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")
+        if (source == null || language == null || !LANGUAGE_CODE_PATTERN.matcher(language).matches()
                 || originalVideoId(source) == null
                 || getLanguageKey(language).equals(getLanguageKey(source.patch_getLanguageCode()))) return null;
         String url = source.patch_getUrl();
@@ -199,7 +211,7 @@ public final class AutoTranslateCaptionsPatch {
     /** Validate identity without decoding/re-encoding signed URL bytes. */
     private static String originalVideoId(CaptionTrackInterface source) {
         String language = source.patch_getLanguageCode();
-        if (language == null || !language.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")) return null;
+        if (language == null || !LANGUAGE_CODE_PATTERN.matcher(language).matches()) return null;
         String vss = source.patch_getVssId();
         boolean asr = originalVss(vss, "a." + language);
         if (!asr && !originalVss(vss, "." + language)) return null;
@@ -222,19 +234,20 @@ public final class AutoTranslateCaptionsPatch {
             String video = parameters.get("v");
             String sourceLanguage = parameters.get("lang");
             String kind = parameters.get("kind");
-            if (video == null || !video.matches("[A-Za-z0-9_-]{11}") || sourceLanguage == null
-                    || !sourceLanguage.matches("[a-z]{2,8}(-[A-Za-z0-9]{2,8})*")
+            if (video == null || !VIDEO_ID_PATTERN.matcher(video).matches() || sourceLanguage == null
+                    || !LANGUAGE_CODE_PATTERN.matcher(sourceLanguage).matches()
                     || !getLanguageKey(language).equals(getLanguageKey(sourceLanguage))
                     || (asr ? !"asr".equals(kind) : kind != null && !kind.isEmpty())) return null;
             return video;
-        } catch (IllegalArgumentException | NullPointerException | java.io.UnsupportedEncodingException ex) {
+        } catch (IllegalArgumentException | UnsupportedEncodingException ex) {
+            Logger.printDebug(() -> "originalVideoId rejected track url", ex);
             return null;
         }
     }
 
     private static boolean originalVss(String value, String prefix) {
         return value != null && (value.equals(prefix) || value.startsWith(prefix + ".")
-                && value.substring(prefix.length() + 1).matches("[A-Za-z0-9_-]{1,128}"));
+                && VSS_ID_SUFFIX_PATTERN.matcher(value.substring(prefix.length() + 1)).matches());
     }
 
     private static String removeSuffix(String value, int suffixLength) {
