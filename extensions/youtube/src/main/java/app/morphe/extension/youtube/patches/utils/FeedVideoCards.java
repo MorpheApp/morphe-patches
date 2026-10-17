@@ -30,6 +30,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.FeedEngagementCountsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -51,7 +52,21 @@ import kotlin.Unit;
 @SuppressWarnings("unused")
 public final class FeedVideoCards {
 
-    private static final boolean ENABLED = Settings.FEED_WATCH_LATER_BUTTON.get();
+    /**
+     * Receives the video cards once they are laid out.
+     */
+    public interface Listener {
+        /**
+         * Called on the main thread after a root host is laid out.
+         *
+         * @param videoId The video of the card, or null if the host is not a video card
+         *                or its video is not known.
+         */
+        void onCardLaidOut(ComponentHost host, @Nullable String videoId);
+    }
+
+    private static final boolean ENABLED = FeedEngagementCountsPatch.ENABLED
+            || Settings.FEED_WATCH_LATER_BUTTON.get();
 
     /** A card must be almost as wide as the screen. Shelves and grids are not used. */
     private static final float MIN_WIDTH_OF_SCREEN = 0.7f;
@@ -77,8 +92,8 @@ public final class FeedVideoCards {
 
     /**
      * Result of {@link #findVideoId(ComponentHost)} for a video card whose texts are not drawn yet,
-     * such as while the app returns from the background. The card keeps its last known video
-     * until its texts are drawn.
+     * such as while the app returns from the background. The listeners are not called for it,
+     * so what they drew on the card is kept until its texts are drawn.
      */
     private static final String NOT_READY = "not_ready";
 
@@ -103,11 +118,16 @@ public final class FeedVideoCards {
     private static final Map<String, String> textVideoIds = Utils
             .createSizeRestrictedMap(MAX_TEXTS, true);
 
+    private static final List<Listener> listeners = new ArrayList<>();
+
     /** Root host -> video of the card, of the cards laid out last. Used only on the main thread. */
     private static final Map<ComponentHost, String> cardVideoIds = Collections.synchronizedMap(
             new WeakHashMap<>());
 
     static {
+        if (FeedEngagementCountsPatch.ENABLED) {
+            listeners.add(FeedEngagementCountsPatch.LISTENER);
+        }
         if (ENABLED) {
             // The inline player shows its buttons over the thumbnail, so what is drawn
             // on the thumbnail is hidden while the video of the card plays in the feed.
@@ -492,6 +512,10 @@ public final class FeedVideoCards {
                     cardVideoIds.remove(root);
                 } else {
                     cardVideoIds.put(root, videoId);
+                }
+                final String cardVideoId = PLAYLIST.equals(videoId) ? null : videoId;
+                for (Listener listener : listeners) {
+                    listener.onCardLaidOut(root, cardVideoId);
                 }
             }
         } catch (Exception ex) {
