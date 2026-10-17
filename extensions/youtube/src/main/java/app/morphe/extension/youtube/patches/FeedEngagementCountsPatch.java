@@ -79,7 +79,8 @@ public final class FeedEngagementCountsPatch {
     private static final float COUNT_TEXT_SP = 11f;
     private static final float RATIO_TEXT_SP = 10f;
 
-    private static final int BACKGROUND_COLOR = 0xB3000000;
+    /** Same as the duration badge of YouTube. */
+    private static final int BACKGROUND_COLOR = 0x99000000;
     private static final int TEXT_COLOR = 0xFFFFFFFF;
     private static final int LIKE_BAR_COLOR = 0xFF2BA640;
     private static final int DISLIKE_BAR_COLOR = 0xFFE53935;
