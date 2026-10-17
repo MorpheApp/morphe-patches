@@ -102,7 +102,7 @@ public final class FeedVideoActionsPatch {
     /** Same as the duration badge of the thumbnail, so their right edges line up. */
     public static final int BADGE_RIGHT_MARGIN_DP = 8;
     private static final int BADGE_TOUCH_SLOP_DP = 8;
-    private static final int BADGE_COLOR = 0x99000000;
+    private static final int BADGE_COLOR = 0xA6000000;
     private static final int BADGE_ALPHA = 0xB3;
     private static final int BADGE_PRESSED_ALPHA = 0xFF;
     private static final int BADGE_ICON_COLOR = 0xFFFFFFFF;

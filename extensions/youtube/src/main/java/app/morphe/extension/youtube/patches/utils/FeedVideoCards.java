@@ -9,6 +9,8 @@ package app.morphe.extension.youtube.patches.utils;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.annotation.Nullable;
@@ -360,11 +362,39 @@ public final class FeedVideoCards {
     }
 
     /**
+     * @return If the view is a list that scrolls sideways, such as a shelf of videos.
+     */
+    public static boolean isHorizontalList(View view) {
+        if (view instanceof ComponentHost) {
+            return false;
+        }
+        String name = view.getClass().getName();
+        return name.contains("RecyclerView") || name.contains("HorizontalScrollView")
+                || name.contains("ViewPager")
+                || view.canScrollHorizontally(1) || view.canScrollHorizontally(-1);
+    }
+
+    /**
+     * A shelf shows many videos, and is shaped like a single video. The texts of its first video
+     * would decide the video of the whole shelf, and stay when the shelf is scrolled.
+     */
+    private static boolean hasHorizontalList(ViewGroup group) {
+        for (int i = 0, count = group.getChildCount(); i < count; i++) {
+            View child = group.getChildAt(i);
+            if (isHorizontalList(child)
+                    || (child instanceof ViewGroup childGroup && hasHorizontalList(childGroup))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * @return The video of a full width video card, or null if it is not known.
      */
     @Nullable
     public static String findVideoId(ComponentHost root) {
-        if (!isVideoShaped(root)) {
+        if (!isVideoShaped(root) || hasHorizontalList(root)) {
             return null;
         }
         List<String> texts = new ArrayList<>();
