@@ -29,6 +29,7 @@ import app.morphe.extension.reddit.patches.MediaViewerBlackBackgroundPatch;
 import app.morphe.extension.reddit.patches.MediaViewerFadePatch;
 import app.morphe.extension.reddit.patches.RememberCollapsedCommentsPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
+import app.morphe.extension.reddit.patches.ShowFlairsInHomeFeedPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -209,5 +210,12 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         }
 
         Utils.setPreferenceTitlesToMultiLine(this);
+
+        if (ShowFlairsInHomeFeedPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.SHOW_FLAIRS_IN_HOME_FEED
+            ));
+        }
     }
 }

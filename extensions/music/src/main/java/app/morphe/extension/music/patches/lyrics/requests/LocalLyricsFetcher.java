@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.IntPredicate;
 
 import app.morphe.extension.music.patches.lyrics.model.Lyrics;
 import app.morphe.extension.music.patches.lyrics.model.LyricsLine;
@@ -1001,72 +1002,31 @@ public final class LocalLyricsFetcher {
     }
 
     private static boolean isLikelyGbk(byte[] b) {
-        int i = 0;
-        int pairs = 0;
-        while (i < b.length) {
-            int b0 = b[i] & 0xFF;
-            if (b0 <= 0x7F) {
-                i++;
-                continue;
-            }
-            if (b0 >= 0x81 && b0 <= 0xFE && i + 1 < b.length) {
-                int b1 = b[i + 1] & 0xFF;
-                if (b1 >= 0x40 && b1 <= 0xFE && b1 != 0x7F) {
-                    pairs++;
-                    i += 2;
-                    continue;
-                }
-            }
-            return false;
-        }
-        return pairs > 0;
+        return isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
+                c -> c >= 0x40 && c <= 0xFE && c != 0x7F);
     }
 
     private static boolean isLikelyBig5(byte[] b) {
-        int i = 0;
-        int pairs = 0;
-        while (i < b.length) {
-            int b0 = b[i] & 0xFF;
-            if (b0 <= 0x7F) {
-                i++;
-                continue;
-            }
-            if (b0 >= 0x81 && b0 <= 0xFE && i + 1 < b.length) {
-                int b1 = b[i + 1] & 0xFF;
-                if ((b1 >= 0x40 && b1 <= 0x7E) || (b1 >= 0xA1 && b1 <= 0xFE)) {
-                    pairs++;
-                    i += 2;
-                    continue;
-                }
-            }
-            return false;
-        }
-        return pairs > 0;
+        return isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
+                c -> (c >= 0x40 && c <= 0x7E) || (c >= 0xA1 && c <= 0xFE));
     }
 
     private static boolean isLikelyShiftJis(byte[] b) {
-        int i = 0;
-        int pairs = 0;
-        while (i < b.length) {
-            int b0 = b[i] & 0xFF;
-            if (b0 <= 0x7F) {
-                i++;
-                continue;
-            }
-            if (((b0 >= 0x81 && b0 <= 0x9F) || (b0 >= 0xE0 && b0 <= 0xEF)) && i + 1 < b.length) {
-                int b1 = b[i + 1] & 0xFF;
-                if ((b1 >= 0x40 && b1 <= 0x7E) || (b1 >= 0x80 && b1 <= 0xFC)) {
-                    pairs++;
-                    i += 2;
-                    continue;
-                }
-            }
-            return false;
-        }
-        return pairs > 0;
+        return isLikelyDoubleByte(b, c -> (c >= 0x81 && c <= 0x9F) || (c >= 0xE0 && c <= 0xEF),
+                c -> (c >= 0x40 && c <= 0x7E) || (c >= 0x80 && c <= 0xFC));
     }
 
     private static boolean isLikelyEucKr(byte[] b) {
+        return isLikelyDoubleByte(b, c -> c >= 0x81 && c <= 0xFE,
+                c -> c >= 0x41 && c <= 0xFE);
+    }
+
+    /**
+     * Whether every non-ASCII byte belongs to a two-byte character of the encoding described by
+     * its lead and trail byte ranges, and at least one does. A lead byte with nothing usable
+     * after it means the text is not in this encoding, which is what tells the next one its turn.
+     */
+    private static boolean isLikelyDoubleByte(byte[] b, IntPredicate lead, IntPredicate trail) {
         int i = 0;
         int pairs = 0;
         while (i < b.length) {
@@ -1075,9 +1035,9 @@ public final class LocalLyricsFetcher {
                 i++;
                 continue;
             }
-            if (b0 >= 0x81 && b0 <= 0xFE && i + 1 < b.length) {
+            if (lead.test(b0) && i + 1 < b.length) {
                 int b1 = b[i + 1] & 0xFF;
-                if (b1 >= 0x41 && b1 <= 0xFE) {
+                if (trail.test(b1)) {
                     pairs++;
                     i += 2;
                     continue;

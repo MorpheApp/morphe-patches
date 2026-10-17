@@ -111,6 +111,18 @@ val playlistTrackTapPatch = bytecodePatch(
             )
 
             addInterfaceMethod(
+                "patch_serializeWatchEndpoint",
+                registerCount = 1,
+                """
+                    # MessageLite.toByteArray() is not obfuscated.
+                    check-cast p1, $messageClass
+                    invoke-virtual { p1 }, $messageClass->toByteArray()[B
+                    move-result-object v0
+                    return-object v0
+                """
+            )
+
+            addInterfaceMethod(
                 "patch_createSingleTrackCommand",
                 registerCount = 3,
                 """

@@ -150,7 +150,7 @@ final class LyricsPrefetcher {
                 Lyrics lyrics = result.lyrics();
                 if (!LyricsManager.isValidLyrics(lyrics, track)) continue;
 
-                LyricsCache.put(track, LyricsManager.cacheSourceFor(lyrics), lyrics);
+                LyricsCache.put(track, LyricsManager.cacheSourceFor(lyrics), lyrics, null);
                 Logger.printDebug(() -> "Lyrics prefetched: " + track + " via " + provider.name());
                 return;
             } catch (InterruptedException ex) {
@@ -165,7 +165,7 @@ final class LyricsPrefetcher {
     /** Whether every provider that could answer already has an answer stored. */
     private static boolean allKnown(TrackInfo track, List<LyricsProvider> providers) {
         for (LyricsProvider provider : providers) {
-            if (LyricsCache.get(track, provider.name()) == null) return false;
+            if (LyricsCache.get(track, provider.name(), null) == null) return false;
         }
         return true;
     }

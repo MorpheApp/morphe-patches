@@ -31,7 +31,7 @@ import app.morphe.extension.music.patches.lyrics.parsers.LRCParser;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 
-public final class LunaProvider implements LyricsProvider {
+public final class LunaProvider extends ScoredSongProvider {
 
     private static final String SEARCH_URL = "https://api.qishui.com/luna/search/track";
     private static final String DETAIL_URL = "https://beta-luna.douyin.com/luna/h5/seo_track";
@@ -50,35 +50,7 @@ public final class LunaProvider implements LyricsProvider {
     }
 
     @Override
-    public boolean hasCandidates() {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public FetchResult fetch(TrackInfo track) throws Exception {
-        List<ScoredSong> candidates = fetchScoredSongs(track);
-        if (candidates.isEmpty()) {
-            return null;
-        }
-        ScoredSong top = candidates.get(0);
-        return FetchResult.of(top.lyrics(), top.title(), top.artist(),
-                top.durationSec(), track);
-    }
-
-    @Override
-    public List<Lyrics.ScoredLyrics> fetchCandidates(TrackInfo track) throws Exception {
-        List<Lyrics.ScoredLyrics> scored = new ArrayList<>();
-        for (ScoredSong candidate : fetchScoredSongs(track)) {
-            scored.add(new Lyrics.ScoredLyrics(candidate.score(), candidate.lyrics()));
-        }
-        return scored;
-    }
-
-    private record ScoredSong(int score, Lyrics lyrics, String title, String artist,
-                              long durationSec) {}
-
-    private List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
+    protected List<ScoredSong> fetchScoredSongs(TrackInfo track) throws Exception {
         List<JSONObject> tracks = searchTracks(track);
         if (tracks.isEmpty()) {
             return Collections.emptyList();
@@ -331,19 +303,16 @@ public final class LunaProvider implements LyricsProvider {
             }
         }
 
-        if (result.isEmpty()) {
-            String sysLang = LyricsRequests.deviceLanguage();
-            if ("zh".equals(sysLang)) {
-                JSONObject translations = lyricInfo.optJSONObject("translations");
-                if (translations != null) {
-                    String cnContent = LyricsRequests.optString(translations, "cn");
-                    if (cnContent != null && !cnContent.isEmpty()) {
-                        List<LyricsLine> cnLines = LRCParser.parseSynced(cnContent);
-                        if (!cnLines.isEmpty()) {
-                            List<LyricsLine> merged = LyricsMerge.mergeRomanization(original, cnLines);
-                            if (LyricsMerge.hasText(merged)) {
-                                result.put("zh", merged);
-                            }
+        if (result.isEmpty() && LyricsRequests.isSimplifiedChinese()) {
+            JSONObject translations = lyricInfo.optJSONObject("translations");
+            if (translations != null) {
+                String cnContent = LyricsRequests.optString(translations, "cn");
+                if (cnContent != null && !cnContent.isEmpty()) {
+                    List<LyricsLine> cnLines = LRCParser.parseSynced(cnContent);
+                    if (!cnLines.isEmpty()) {
+                        List<LyricsLine> merged = LyricsMerge.mergeRomanization(original, cnLines);
+                        if (LyricsMerge.hasText(merged)) {
+                            result.put(LyricsRequests.SIMPLIFIED_CHINESE, merged);
                         }
                     }
                 }

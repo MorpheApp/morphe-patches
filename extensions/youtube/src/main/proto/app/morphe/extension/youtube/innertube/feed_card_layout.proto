@@ -34,6 +34,45 @@ message ElementModel {
     VideoWithContextModel videoWithContextModel = 232954548;
     // Feed card video (lockup.eml).
     LockupModel lockupModel = 413471385;
+    // Header of the shelves, such as the Shorts shelf (shelf_header.eml).
+    ShelfHeaderModel shelfHeaderModel = 229393850;
+    // Horizontal shelf of videos, with its header (horizontal_shelf.eml).
+    HorizontalShelfModel horizontalShelfModel = 312131490;
+    // Short of the Shorts shelf (shorts_video_cell.eml).
+    ShortsVideoCellModel shortsVideoCellModel = 519005951;
+}
+
+message ShortsVideoCellModel {
+    ShortsVideoCellData data = 17;
+}
+
+message ShortsVideoCellData {
+    string accessibilityText = 4;
+}
+
+message HorizontalShelfModel {
+    HorizontalShelfData data = 20;
+}
+
+message HorizontalShelfData {
+    // Data of the shelf header, which horizontal_shelf_content.eml shows with shelf_header.eml.
+    ShelfHeaderData header = 1;
+}
+
+message ShelfHeaderModel {
+    ShelfHeaderData data = 1;
+}
+
+message ShelfHeaderData {
+    bytes icon = 1;
+    string title = 20;
+    string accessibilityText = 26;
+    ShelfHeaderStyle style = 57;
+}
+
+message ShelfHeaderStyle {
+    // Header of the card layout (modern_type_shelf_header_content.eml), with a bigger title and without the icon.
+    bool modernType = 1;
 }
 
 // Fills the theme and the capabilities of the model when the element is bound.
@@ -75,19 +114,27 @@ message VideoWithContextData {
     string menuAccessibilityText = 3;
     bytes onTap = 4;
     bytes menuOnTap = 5;
-    string menuTargetId = 21;
+    bytes inlinePlayback = 6; // Commands that start and stop the inline playback (feed autoplay).
+    bool compact = 22; // Thumbnail beside the title, such as the videos of the playlists and the rows of the library.
+    bytes attachment = 43; // Content below the video, such as the description and the 'Buy or rent' button of the movies.
+    bool horizontal = 57; // Thumbnail beside the title and the metadata, such as the search results on tablets.
 }
 
 message VideoData {
     VideoThumbnail thumbnail = 1;
     ChannelAvatar avatar = 3;
     LockupMetadata lockupMetadata = 21;
+    LockupImage decoratedAvatar = 23; // Avatar with a ring, such as the avatar of live channels.
+    LockupImage avatarStack = 24; // Avatars of the channels of a collaboration.
 }
 
 message VideoThumbnail {
     bytes image = 1;
     string timestampText = 2;
+    int32 badgeStyle = 4; // Same values of the badge style of the cards.
+    string videoCountText = 6; // Playlists.
     string timestampAccessibilityText = 11;
+    string badgeIcon = 19; // Drawable name, such as the live icon.
 }
 
 message ChannelAvatar {
@@ -105,10 +152,11 @@ message LockupModel {
     LockupPadding padding = 1376;
 }
 
+// Padding of the card, in dp. Without it the card has the default horizontal margins.
 message LockupPadding {
     float start = 1;
-    float top = 2;
-    float end = 3;
+    float end = 2;
+    float top = 3;
     float bottom = 4;
 }
 
@@ -121,7 +169,13 @@ message LockupViewModel {
     LockupMetadata metadata = 3;
     string contentId = 4;
     int32 contentType = 5;
+    LockupInlinePlayback inlinePlayback = 6;
     RendererContext rendererContext = 997;
+}
+
+// Inline playback of the thumbnail (feed autoplay), read by lockup_thumbnail.eml.
+message LockupInlinePlayback {
+    bytes inlinePlayback = 1; // Same message of the inline playback of the classic layout.
 }
 
 message ContentImage {
@@ -146,9 +200,23 @@ message ThumbnailBadge {
 }
 
 message ThumbnailBadgeViewModel {
+    ThumbnailBadgeIcon icon = 1;
     string text = 2;
     int32 badgeStyle = 3;
     RendererContext rendererContext = 997;
+}
+
+message ThumbnailBadgeIcon {
+    repeated ThumbnailBadgeIconSource sources = 1;
+}
+
+message ThumbnailBadgeIconSource {
+    ClientResource clientResource = 3;
+}
+
+// Icon of the app, by its drawable name.
+message ClientResource {
+    string imageName = 2;
 }
 
 message RendererContext {
@@ -288,6 +356,7 @@ message InnertubeCommand {
 }
 
 message BrowseEndpoint {
+    string browseId = 2;
 }
 
 message LikeEndpoint {

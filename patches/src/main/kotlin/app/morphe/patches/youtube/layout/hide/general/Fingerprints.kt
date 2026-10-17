@@ -316,7 +316,12 @@ internal object HideViewCountFingerprint : Fingerprint(
     filters = listOf(
         string("Has attachmentRuns but drawableRequester is missing."),
         methodCall(smali = "Landroid/util/TypedValue;->applyDimension(IFLandroid/util/DisplayMetrics;)F"),
-        opcode(Opcode.RETURN_OBJECT)
+        methodCall( // Sets the span of the returned string.
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("Landroid/text/SpannableString;", "Ljava/lang/Object;", "I", "Z", "I"),
+            returnType = "V",
+            location = MatchAfterWithin(10)
+        )
     )
 )
 

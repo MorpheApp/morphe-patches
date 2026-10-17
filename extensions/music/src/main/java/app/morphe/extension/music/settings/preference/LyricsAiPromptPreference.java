@@ -138,7 +138,7 @@ public class LyricsAiPromptPreference extends SwitchPreference {
         promptInput.setMinLines(4);
         promptInput.setMaxLines(8);
         promptInput.setVerticalScrollBarEnabled(true);
-        promptInput.setHint(str("morphe_music_lyrics_ai_prompt_hint"));
+        promptInput.setHint(str("morphe_music_lyrics_ai_prompt_dialog_title"));
         String currentPrompt = promptSetting.get();
         if (!currentPrompt.isEmpty()) {
             promptInput.setText(currentPrompt);
@@ -172,10 +172,10 @@ public class LyricsAiPromptPreference extends SwitchPreference {
                         promptSetting.resetToDefault();
                         prompt = promptSetting.get();
                     }
+                    // Saved before anything is asked of the network, so a feature that cannot run
+                    // yet does not cost the user the prompt they just wrote.
                     promptSetting.save(prompt);
-                    switchSetting.save(true);
-                    setCheckedSilently(true);
-                    Utils.showToastShort(str("morphe_music_lyrics_ai_prompt_toast_saved"));
+                    enableAfterValidation(switchSetting);
                 },
                 null,
                 str("morphe_settings_reset"),
@@ -207,6 +207,38 @@ public class LyricsAiPromptPreference extends SwitchPreference {
             dialogShowing = false;
         }
     }
+
+    /**
+     * <p>An AI feature pointed at an endpoint that rejects requests produces nothing at
+     * all, and it fails silently at playback time where nothing says why. Refusing here
+     * turns that into something the user can act on.
+     */
+    private void enableAfterValidation(BooleanSetting switchSetting) {
+        Utils.showToastShort(str("morphe_music_lyrics_ai_config_status_validating"));
+        VALIDATION.execute(() -> {
+            final boolean valid = OpenAIClient.validateConfig(
+                    Settings.LYRICS_AI_BASE_URL.get(),
+                    Settings.LYRICS_AI_API_TOKEN.get(),
+                    Settings.LYRICS_AI_MODEL.get());
+            Utils.runOnMainThread(() -> {
+                if (!valid) {
+                    setCheckedSilently(switchSetting.get());
+                    Utils.showToastShort(str("morphe_music_lyrics_ai_prompt_toast_endpoint_invalid"));
+                    return;
+                }
+                switchSetting.save(true);
+                setCheckedSilently(true);
+                Utils.showToastShort(str("morphe_music_lyrics_ai_prompt_toast_saved"));
+            });
+        });
+    }
+
+    private static final ExecutorService VALIDATION = Executors.newSingleThreadExecutor(
+            runnable -> {
+                final Thread thread = new Thread(runnable, "lyrics-ai-validate");
+                thread.setDaemon(true);
+                return thread;
+            });
 
     /**
      * The reasoning effort sent with each request. Which levels exist belongs to the endpoint, so the

@@ -163,5 +163,66 @@
         <item>8.23.51</item>
         <item>9.13.51</item>
     </string-array>
-
+    <!-- Kept apart from the translation list above: only these scripts can be romanized,
+             and YUE picks Jyutping where ZH picks Pinyin. -->
+    <string-array name="morphe_music_lyrics_romanize_language_entries">
+        <item>@string/morphe_romanize_language_DEFAULT</item>
+        <item>አማርኛ</item>
+        <item>العربية</item>
+        <item>Беларуская</item>
+        <item>বাংলা</item>
+        <item>Ελληνικά</item>
+        <item>فارسی</item>
+        <item>ગુજરાતી</item>
+        <item>हिन्दी</item>
+        <item>日本語</item>
+        <item>ಕನ್ನಡ</item>
+        <item>മലയാളം</item>
+        <item>मराठी</item>
+        <item>မြန်မာစာ</item>
+        <item>नेपाली</item>
+        <item>ଓଡ଼ିଆ</item>
+        <item>ਪੰਜਾਬੀ</item>
+        <item>Русский</item>
+        <item>संस्कृतम्</item>
+        <item>සිංහල</item>
+        <item>Српски</item>
+        <item>தமிழ்</item>
+        <item>తెలుగు</item>
+        <item>ትግርኛ</item>
+        <item>Українська</item>
+        <item>اردو</item>
+        <item>中文</item>
+        <item>粤语</item>
+    </string-array>
+    <string-array name="morphe_music_lyrics_romanize_language_entry_values">
+        <item>DEFAULT</item>
+        <item>AM</item>
+        <item>AR</item>
+        <item>BE</item>
+        <item>BN</item>
+        <item>EL</item>
+        <item>FA</item>
+        <item>GU</item>
+        <item>HI</item>
+        <item>JA</item>
+        <item>KN</item>
+        <item>ML</item>
+        <item>MR</item>
+        <item>MY</item>
+        <item>NE</item>
+        <item>OR</item>
+        <item>PA</item>
+        <item>RU</item>
+        <item>SA</item>
+        <item>SI</item>
+        <item>SR</item>
+        <item>TA</item>
+        <item>TE</item>
+        <item>TI</item>
+        <item>UK</item>
+        <item>UR</item>
+        <item>ZH</item>
+        <item>YUE</item>
+    </string-array>
 </resources>

@@ -14,6 +14,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -124,6 +125,21 @@ internal object PivotBarChangedFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT
+    )
+)
+
+internal object TranslucentNavigationBarFeatureFlagsFingerprint : Fingerprint(
+    filters = listOf(
+        /**
+        * Feature flags of the translucent navigation bar. 21.29 and older read each of them with a single
+        * accessor method, newer targets read them inline in many classes, sometimes more than once in
+        * the same method.
+        */
+        anyInstruction(
+            literal(45630927L), // Blurred, translucent background of the navigation bar.
+            literal(45632194L), // Navigation bar also covers the system navigation buttons.
+            literal(45631257L)  // Feed laid out behind the navigation bar instead of above it.
+        )
     )
 )
 

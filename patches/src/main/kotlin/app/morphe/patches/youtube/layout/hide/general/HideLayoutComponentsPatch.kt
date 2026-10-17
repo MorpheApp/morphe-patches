@@ -679,18 +679,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide view count
 
         HideViewCountFingerprint.method.apply {
-            val startIndex = HideViewCountFingerprint.instructionMatches.last().index
-            var returnStringRegister = getInstruction<OneRegisterInstruction>(startIndex).registerA
+            // The string passed to the span method is the returned string.
+            // 21.42+ jumps to a shared return, so the register of a return instruction can't be used.
+            val returnStringRegister = HideViewCountFingerprint.instructionMatches.last()
+                .getInstruction<FiveRegisterInstruction>().registerC
 
-            // Find the instruction where the text dimension is retrieved.
-            val applyDimensionIndex = indexOfFirstInstructionReversedOrThrow {
-                val reference = getReference<MethodReference>()
-                opcode == Opcode.INVOKE_STATIC &&
-                        reference?.definingClass == "Landroid/util/TypedValue;" &&
-                        reference.returnType == "F" &&
-                        reference.name == "applyDimension" &&
-                        reference.parameterTypes == listOf("I", "F", "Landroid/util/DisplayMetrics;")
-            }
+            // The instruction where the text dimension is retrieved.
+            val applyDimensionIndex = HideViewCountFingerprint.instructionMatches[1].index
 
             // A float value is passed which is used to determine subtitle text size.
             val floatDimensionRegister = getInstruction<OneRegisterInstruction>(

@@ -318,6 +318,18 @@
         <item>HIDE_ALL</item>
     </string-array>
 
+    <!-- layout.feedcards.feedCardLayoutPatch -->
+    <string-array name="morphe_feed_card_layout_entries">
+        <item>@string/morphe_feed_card_layout_entry_1</item>
+        <item>@string/morphe_feed_card_layout_entry_2</item>
+        <item>@string/morphe_feed_card_layout_entry_3</item>
+    </string-array>
+    <string-array name="morphe_feed_card_layout_entry_values">
+        <item>CLASSIC</item>
+        <item>CARDS</item>
+        <item>CARDS_WITH_ACTION_BUTTONS</item>
+    </string-array>
+
     <!-- layout.captions.autoCaptionsPatch -->
     <string-array name="morphe_auto_captions_style_entries">
         <item>@string/morphe_auto_captions_style_entry_1</item>
