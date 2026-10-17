@@ -443,6 +443,7 @@ public final class VideoInformation {
         if (!playerVideo.videoId.equals(newlyLoadedVideoId)) {
             Logger.printDebug(() -> "New video ID: " + newlyLoadedVideoId);
             playerVideo.videoId = newlyLoadedVideoId;
+            LocalQueuePatch.onVideoChanged();
         }
     }
 
