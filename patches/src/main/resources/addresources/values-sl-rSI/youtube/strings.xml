@@ -428,6 +428,11 @@ Prijave so javne in so pregledane, preden je kanal dodan na seznam. Odstranitev 
   <string name="morphe_copy_comments_title">Kopiraj komentarje</string>
   <string name="morphe_copy_comments_summary">Tapnite in pridržite komentar, da ga kopirate</string>
   <string name="morphe_copy_comments_success">Komentar je kopiran v odložišče</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Dotaknite se in držite za odpiranje menija videa</string>
+  <string name="morphe_feed_long_press_menu_summary">Če povsod na videu v toku dotaknete se in držite, se odpre njegov meni</string>
+  <string name="morphe_feed_watch_later_button_title">Prikaži gumb »Ogled kasneje« na sličicah</string>
+  <string name="morphe_feed_watch_later_button_summary">Na sličicah video posnetkov v toku je prikazan gumb Ogled kasneje. Z dotikom in držanjem odprete Shrani v seznam predvajanja</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Onemogoči pojavni gumb \'Prijava na TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Onemogoči pojavno okno \'Povečite svoje naprave\'</string>

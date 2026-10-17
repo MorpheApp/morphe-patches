@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">댓글 복사</string>
   <string name="morphe_copy_comments_summary">댓글을 길게 탭하여 복사할 수 있도록 합니다</string>
   <string name="morphe_copy_comments_success">댓글이 클립보드에 복사되었습니다</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">동영상을 길게 누르면 메뉴가 열립니다</string>
+  <string name="morphe_feed_long_press_menu_summary">피드 동영상의 아무 곳이나 길게 누르면 해당 동영상의 메뉴가 열립니다</string>
+  <string name="morphe_feed_watch_later_button_title">썸네일에 \'나중에 볼 목록\' 버튼 표시</string>
+  <string name="morphe_feed_watch_later_button_summary">피드 동영상의 썸네일에 \'나중에 볼 목록\' 버튼이 표시됩니다. 버튼을 길게 누르면 플레이리스트에 저장됩니다</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'기기 연결\' 팝업 비활성화하기</string>

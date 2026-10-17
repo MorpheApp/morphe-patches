@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">複製留言</string>
   <string name="morphe_copy_comments_summary">長按留言即可複製</string>
   <string name="morphe_copy_comments_success">留言已複製到剪貼簿</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">輕觸並按住以開啟影片選單</string>
+  <string name="morphe_feed_long_press_menu_summary">在資訊流影片的任意位置輕觸並按住，即可開啟其選單</string>
+  <string name="morphe_feed_watch_later_button_title">在縮圖上顯示稍後觀看按鈕</string>
+  <string name="morphe_feed_watch_later_button_summary">資訊流影片的縮圖上會顯示「稍後觀看」按鈕。輕觸並按住該按鈕可進入「新增至播放清單」功能</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">停用「登入電視」彈出視窗</string>
   <string name="morphe_disable_connect_your_devices_popup_title">停用「連接您的裝置」快顯視窗</string>

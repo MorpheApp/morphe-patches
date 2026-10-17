@@ -428,6 +428,11 @@ Pranešimai yra vieši ir peržiūrimi prieš pridedant kanalą į sąrašą. Pa
   <string name="morphe_copy_comments_title">Kopijuoti komentarus</string>
   <string name="morphe_copy_comments_summary">Palieskite ir palaikykite komentarą, kad jį nukopijuotumėte</string>
   <string name="morphe_copy_comments_success">Komentaras nukopijuotas į iškarpinę</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Paspauskite ir palaikykite, kad atidarytumėte video meniu</string>
+  <string name="morphe_feed_long_press_menu_summary">Paspaudus ir palaikius bet kuria feed video vieta, atidaromas jo meniu</string>
+  <string name="morphe_feed_watch_later_button_title">Rodyti „Pažiūrėti vėliau“ mygtuką prie miniatiūrų</string>
+  <string name="morphe_feed_watch_later_button_summary">Ant nuotykų srauto vaizdo įrašų miniatiūrų rodomas mygtukas „Pažiūrėti vėliau“. Paspaudus ir laikant jį, atidaroma parinktis „Įtraukti į grojaraštį“</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Išjungti iššokantįjį langą „Prisijungti prie TV“</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Išjungti iššokantįjį langą „Prijunkite savo įrenginius“</string>

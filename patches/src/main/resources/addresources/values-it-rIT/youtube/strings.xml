@@ -428,6 +428,11 @@ Le segnalazioni sono pubbliche e vengono esaminate prima che un canale venga agg
   <string name="morphe_copy_comments_title">Copia commenti</string>
   <string name="morphe_copy_comments_summary">Tocca e tieni premuto un commento per copiarlo</string>
   <string name="morphe_copy_comments_success">Commento copiato negli appunti</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tocca e tieni premuto per aprire il menu video</string>
+  <string name="morphe_feed_long_press_menu_summary">Toccare e tenere premuto ovunque su un video nel feed apre il relativo menu</string>
+  <string name="morphe_feed_watch_later_button_title">Mostra il pulsante Guarda più tardi sulle miniature</string>
+  <string name="morphe_feed_watch_later_button_summary">Un pulsante Guarda più tardi viene visualizzato sulle miniature dei video nel feed. Toccare e tenere premuto su di esso per Salva in playlist</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Disabilita il popup \"Accedi alla TV\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Disattiva il popup \"Connetti i tuoi dispositivi\"</string>

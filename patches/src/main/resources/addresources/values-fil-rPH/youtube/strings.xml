@@ -428,6 +428,11 @@ Pampubliko ang mga ulat at sinusuri ang mga ito bago idagdag ang isang channel s
   <string name="morphe_copy_comments_title">Kopyahin ang mga komento</string>
   <string name="morphe_copy_comments_summary">Pindutin nang matagal ang isang komento upang kopyahin ito</string>
   <string name="morphe_copy_comments_success">Nakopya ang komento sa clipboard</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">I-tap at hawakan ng matagal upang buksan ang menu ng video</string>
+  <string name="morphe_feed_long_press_menu_summary">Ang pagtatakbo at paghawak ng matagal sa kahit saan sa isang feed video ay nagbubukas ng kanyang menu</string>
+  <string name="morphe_feed_watch_later_button_title">Ipakita ang Watch later button sa mga thumbnail</string>
+  <string name="morphe_feed_watch_later_button_summary">Isang Watch later button ay ipinapakita sa mga thumbnail ng feed videos. Ang pag-tap at paghawak nito ay nagbubukas ng Save to playlist</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Patayin ang popup na \'Mag-sign in sa TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Huwag paganahin ang popup na \'Ikonekta ang iyong mga device\'</string>

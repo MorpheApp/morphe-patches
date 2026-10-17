@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">复制评论</string>
   <string name="morphe_copy_comments_summary">点按并按住评论即可复制</string>
   <string name="morphe_copy_comments_success">评论已复制到剪贴板</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">长按打开视频菜单</string>
+  <string name="morphe_feed_long_press_menu_summary">在信息流视频中任意位置长按可打开其菜单</string>
+  <string name="morphe_feed_watch_later_button_title">在缩略图上显示稍后观看按钮</string>
+  <string name="morphe_feed_watch_later_button_summary">信息流视频的缩略图上会显示“稍后观看”按钮，点击并长按该按钮可将其保存到播放列表</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">禁用登录电视弹出窗口</string>
   <string name="morphe_disable_connect_your_devices_popup_title">禁用“连接您的设备”弹出窗口</string>

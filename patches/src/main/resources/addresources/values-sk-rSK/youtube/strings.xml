@@ -428,6 +428,11 @@ Hlásenia sú verejné a pred pridaním kanála do zoznamu sa posudzujú. Odstr�
   <string name="morphe_copy_comments_title">Kopírovať komentáre</string>
   <string name="morphe_copy_comments_summary">Ak chcete skopírovať komentár, ťuknite naň a podržte ho</string>
   <string name="morphe_copy_comments_success">Komentár bol skopírovaný do schránky</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Klepnutím a podrž otvorte ponuku videa</string>
+  <string name="morphe_feed_long_press_menu_summary">Klepnutím a podrž kdekoľvek na videu v feedi sa otvorí jeho ponuka</string>
+  <string name="morphe_feed_watch_later_button_title">Zobraziť tlačidlo „Pozrieť neskôr“ na miniatúrach</string>
+  <string name="morphe_feed_watch_later_button_summary">Na miniatúrach videí vo feedi sa zobrazuje tlačidlo Pozrieť neskôr. Klepnutím a podrž ho otvoríš Uloženie do playlistu</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Zakázať vyskakovacie okno \'Prihlásiť sa do TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Zakázať kontextové okno \'Pripojte svoje zariadenia\'</string>

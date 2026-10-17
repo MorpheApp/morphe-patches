@@ -428,6 +428,11 @@ Zgłoszenia są publiczne i podlegają weryfikacji przed dodaniem kanału do lis
   <string name="morphe_copy_comments_title">Kopiuj komentarze</string>
   <string name="morphe_copy_comments_summary">Przytrzymaj komentarz, aby go skopiować</string>
   <string name="morphe_copy_comments_success">Skopiowano komentarz do schowka</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Naciśnij i przytrzymaj, aby otworzyć menu wideo</string>
+  <string name="morphe_feed_long_press_menu_summary">Dotknięcie i przytrzymanie w dowolnym miejscu filmu na kanałach otwiera jego menu</string>
+  <string name="morphe_feed_watch_later_button_title">Pokaż przycisk „Zobacz później” na miniaturkach</string>
+  <string name="morphe_feed_watch_later_button_summary">Przycisk „Zobacz później” jest wyświetlany na miniaturkach filmów z kanałów. Dotknięcie i przytrzymanie go otwiera opcję „Zapisz do playlisty”</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Wyłącz komunikat o zalogowaniu się do TV</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Wyłącz wyskakujące okienko \"Połącz swoje urządzenia\"</string>

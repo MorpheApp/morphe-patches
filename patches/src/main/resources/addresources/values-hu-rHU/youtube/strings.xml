@@ -428,6 +428,11 @@ A jelentések nyilvánosak, és felülvizsgálják őket, mielőtt egy csatorna 
   <string name="morphe_copy_comments_title">Hozzászólások másolása</string>
   <string name="morphe_copy_comments_summary">Tartsd lenyomva a hozzászólást a másoláshoz</string>
   <string name="morphe_copy_comments_success">A hozzászólás a vágólapra lett másolva</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Koppints és nyomd meg hosszan a videómenü megnyitásához</string>
+  <string name="morphe_feed_long_press_menu_summary">A posztfolyamat videóján bárhol koppintás és hosszú nyomás nyitja meg annak menüt</string>
+  <string name="morphe_feed_watch_later_button_title">Mutassa a Néssebb később gombot a képkockákon</string>
+  <string name="morphe_feed_watch_later_button_summary">A Néssebb később gomb megjelenik a posztfolyamati videók képkockáján. Koppintás és hosszú nyomása esetén Megnyitás listában lehetőséget nyújt</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">TV-bejelentkezési előugró ablak letiltása</string>
   <string name="morphe_disable_connect_your_devices_popup_title">A \"Csatlakoztassa eszközeit\" felugró ablak letiltása</string>

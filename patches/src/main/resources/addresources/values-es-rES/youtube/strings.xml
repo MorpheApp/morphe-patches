@@ -428,6 +428,11 @@ Los reportes son públicos y se revisan antes de añadir un canal a una lista. L
   <string name="morphe_copy_comments_title">Copiar comentarios</string>
   <string name="morphe_copy_comments_summary">Mantén pulsado un comentario para copiarlo</string>
   <string name="morphe_copy_comments_success">Comentario copiado al portapapeles</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Toca y mantén pulsado para abrir el menú de vídeo</string>
+  <string name="morphe_feed_long_press_menu_summary">Tocar y mantener pulsado en cualquier parte de un vídeo del feed abre su menú</string>
+  <string name="morphe_feed_watch_later_button_title">Mostrar botón \"Ver más tarde\" en las miniaturas</string>
+  <string name="morphe_feed_watch_later_button_summary">Se muestra un botón \"Ver más tarde\" en las miniaturas de los vídeos del feed. Tocar y mantener pulsado abre Guardar en lista</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Desactivar ventana emergente \'Iniciar sesión en TV\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Desactivar ventana emergente \'Conecta tus dispositivos\'</string>

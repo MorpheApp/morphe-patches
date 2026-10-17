@@ -429,6 +429,11 @@ Raporlar herkese açıktır ve bir kanal listeye eklenmeden önce incelenir. Kal
   <string name="morphe_copy_comments_title">Yorumları kopyala</string>
   <string name="morphe_copy_comments_summary">Bir yorumu kopyalamak için dokunup basılı tutun</string>
   <string name="morphe_copy_comments_success">Yorum panoya kopyalandı</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Video menüsünü açmak için dokunun ve basılı tutun</string>
+  <string name="morphe_feed_long_press_menu_summary">Akış video üzerinde herhangi bir yere dokunup basılı tutmak, menüyü açar</string>
+  <string name="morphe_feed_watch_later_button_title">Küçük resimlerde Daha Sonra İzle düğmesini göster</string>
+  <string name="morphe_feed_watch_later_button_summary">Akış videolarının küçük resimlerinde bir Daha Sonra İzle düğmesi gösterilir. Dokunulup basılı tutulduğunda Çalma listesine kaydet açılır</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\"TV\'ye oturum aç\" penceresini devre dışı bırak</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Cihazlarınızı bağlayın\' açılır penceresini devre dışı bırak</string>

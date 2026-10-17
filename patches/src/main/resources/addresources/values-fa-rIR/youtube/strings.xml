@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">کپی کردن نظرات</string>
   <string name="morphe_copy_comments_summary">برای کپی کردن نظر، آن را لمس کنید و نگه دارید</string>
   <string name="morphe_copy_comments_success">نظر در کلیپ‌بورد کپی شد</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">ضربه بزنید و نگه دارید تا منوی ویدیو باز شود</string>
+  <string name="morphe_feed_long_press_menu_summary">ضربه زدن و نگه داشتن در هر جایی از یک ویدیوی فید، منوی آن را باز می‌کند</string>
+  <string name="morphe_feed_watch_later_button_title">نمایش دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی</string>
+  <string name="morphe_feed_watch_later_button_summary">یک دکمه \"تماشا بعداً\" روی تصاویر بندانگشتی ویدیوهای فید نمایش داده می‌شود. ضربه زدن و نگه داشتن آن گزینه ذخیره در لیست پخش را باز می‌کند</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «ورود به تلویزیون»</string>
   <string name="morphe_disable_connect_your_devices_popup_title">غیرفعال‌کردن پنجرهٔ بازشوی «اتصال دستگاه‌ها»</string>

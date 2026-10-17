@@ -428,6 +428,11 @@ Báo cáo được công khai và được xem xét trước khi một kênh đ�
   <string name="morphe_copy_comments_title">Sao chép bình luận</string>
   <string name="morphe_copy_comments_summary">Chạm và giữ một bình luận để sao chép</string>
   <string name="morphe_copy_comments_success">Đã sao chép bình luận vào bảng tạm</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Chạm và giữ để mở menu video</string>
+  <string name="morphe_feed_long_press_menu_summary">Chạm và giữ ở bất kỳ đâu trên video nguồn sẽ mở menu của video đó</string>
+  <string name="morphe_feed_watch_later_button_title">Hiển thị nút Xem sau trên hình thu nhỏ</string>
+  <string name="morphe_feed_watch_later_button_summary">Nút Xem sau được hiển thị trên hình thu nhỏ của các video nguồn. Chạm và giữ vào nút này để lưu vào danh sách phát</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Tắt cửa sổ \"Đăng nhập vào TV\"</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Tắt cửa sổ \"Kết nối thiết bị của bạn\"</string>

@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">Αντιγραφή σχολίων</string>
   <string name="morphe_copy_comments_summary">Πατήστε παρατεταμένα ένα σχόλιο για να το αντιγράψετε</string>
   <string name="morphe_copy_comments_success">Το σχόλιο αντιγράφηκε στο πρόχειρο</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Πατήστε και κρατήστε πατημένο για να ανοίξετε το μενού βίντεο</string>
+  <string name="morphe_feed_long_press_menu_summary">Το πάτημα και το κράτημα πατημένο οπουδήποτε σε ένα βίντεο feed ανοίγει το μενού του</string>
+  <string name="morphe_feed_watch_later_button_title">Εμφάνιση κουμπιού προβολής αργότερα στα μικρογραφίες</string>
+  <string name="morphe_feed_watch_later_button_summary">Ένα κουμπί προβολής αργότερα εμφανίζεται στις μικρογραφίες των βίντεο feed. Το πάτημα και το κράτημα πατημένο το ανοίγει την αποθήκευση στη λίστα αναπαραγωγής</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου σύνδεσης στην τηλεόραση</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Απενεργοποίηση αναδυτικού παραθύρου \'Συνδέστε τις συσκευές σας\'</string>

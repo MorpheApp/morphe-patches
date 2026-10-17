@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">نسخ التعليقات</string>
   <string name="morphe_copy_comments_summary">اضغط مع الاستمرار على تعليق لنسخه</string>
   <string name="morphe_copy_comments_success">تم نسخ التعليق إلى الحافظة</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">الضغط مع الاستمرار لفتح قائمة الفيديو</string>
+  <string name="morphe_feed_long_press_menu_summary">يؤدي الضغط مع الاستمرار في أي مكان على فيديو في الخلاصة إلى فتح قائمته</string>
+  <string name="morphe_feed_watch_later_button_title">عرض زر \"المشاهدة لاحقًا\" على المصغرات</string>
+  <string name="morphe_feed_watch_later_button_summary">يتم عرض زر المشاهدة لاحقًا على مصغرات فيديوهات الخلاصة. يؤدي الضغط مع الاستمرار عليه إلى فتح الحفظ في قوائم التشغيل</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
   <string name="morphe_disable_connect_your_devices_popup_title">تعطيل نافذة \'توصيل أجهزتك\'</string>

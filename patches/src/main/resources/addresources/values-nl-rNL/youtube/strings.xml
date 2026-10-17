@@ -428,6 +428,11 @@ Rapporten zijn openbaar en worden beoordeeld voordat een kanaal aan een lijst wo
   <string name="morphe_copy_comments_title">Reacties kopiëren</string>
   <string name="morphe_copy_comments_summary">Tik en houd een reactie ingedrukt om deze te kopiëren</string>
   <string name="morphe_copy_comments_success">Reactie gekopieerd naar klembord</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tik en houd ingedrukt om het videoclipmenu te openen</string>
+  <string name="morphe_feed_long_press_menu_summary">Korte of lange aanraking ergens op een feedvideo opent het menu</string>
+  <string name="morphe_feed_watch_later_button_title">Button \"Later bekijken\" weergeven op miniatuurafbeeldingen</string>
+  <string name="morphe_feed_watch_later_button_summary">Er wordt een knop \"Later bekijken\" weergegeven op de miniatuurafbeeldingen van feedvideo\'s. Tikken en vasthouden opent Opslaan in afspeellijst</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up \'Inloggen op tv\' uitschakelen</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Schakel de pop-up \'Verbind je apparaten\' uit</string>

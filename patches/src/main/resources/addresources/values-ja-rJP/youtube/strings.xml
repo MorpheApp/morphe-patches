@@ -429,6 +429,11 @@ AI について扱っているだけのチャンネルや、動画の一部に A
   <string name="morphe_copy_comments_title">コメントをコピー</string>
   <string name="morphe_copy_comments_summary">コメントを長押しするとコピーできます</string>
   <string name="morphe_copy_comments_success">コメントをクリップボードにコピーしました</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">長押ししてビデオメニューを開きます</string>
+  <string name="morphe_feed_long_press_menu_summary">フィード動画の任意の場所をタップして長押しすると、その動画のメニューが開きます</string>
+  <string name="morphe_feed_watch_later_button_title">サムネイルに「後で見る」ボタンを表示する</string>
+  <string name="morphe_feed_watch_later_button_summary">フィード動画のサムネイルに「後で見る」ボタンが表示され、それをタップして長押しすると「プレイリストに保存」が開きます</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
   <string name="morphe_disable_connect_your_devices_popup_title">「デバイスの接続」ポップアップを無効化</string>

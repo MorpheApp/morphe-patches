@@ -429,6 +429,11 @@ Meldungen sind öffentlich und werden überprüft, bevor ein Kanal zu einer List
   <string name="morphe_copy_comments_title">Kommentare kopieren</string>
   <string name="morphe_copy_comments_summary">Tippe und halte einen Kommentar, um ihn zu kopieren</string>
   <string name="morphe_copy_comments_success">Kommentar in die Zwischenablage kopiert</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tippen und gedrückt halten, um das Videomenü zu öffnen</string>
+  <string name="morphe_feed_long_press_menu_summary">Das Tippen und Gedrückthalten irgendwo auf einem Feed-Video öffnet dessen Menü</string>
+  <string name="morphe_feed_watch_later_button_title">Schaltfläche \"Später ansehen\" auf Vorschaubildern anzeigen</string>
+  <string name="morphe_feed_watch_later_button_summary">Auf den Vorschaubildern von Feed-Videos wird eine Schaltfläche \"Später ansehen\" angezeigt. Durch Tippen und Gedrückthalten wird \"In Wiedergachelste speichern\" geöffnet</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Pop-up „Auf dem Fernseher anmelden“ deaktivieren</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'Geräte verbinden\'-Pop-up deaktivieren</string>

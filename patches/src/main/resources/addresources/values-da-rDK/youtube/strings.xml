@@ -426,6 +426,11 @@ Rapporter er offentlige og gennemgås, før en kanal tilføjes til en liste. Fje
   <string name="morphe_copy_comments_title">Kopiér kommentarer</string>
   <string name="morphe_copy_comments_summary">Tryk og hold på en kommentar for at kopiere den</string>
   <string name="morphe_copy_comments_success">Kommentar kopieret til udklipsholderen</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">Tryk og hold for at åbne video menu</string>
+  <string name="morphe_feed_long_press_menu_summary">At trykke og holde et vilkårligt sted på en feed-video åbner dens menu</string>
+  <string name="morphe_feed_watch_later_button_title">Vis \'Se senere\'-knap på miniaturebilleder</string>
+  <string name="morphe_feed_watch_later_button_summary">En \"Se senere\"-knap vises på miniaturebillederne for feed-videoer. Tryk og hold for at gemme i afspilningsliste</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">Deaktiver \'Log ind på TV\' popup</string>
   <string name="morphe_disable_connect_your_devices_popup_title">Deaktiver pop op-vinduet \'Tilslut dine enheder\'</string>

@@ -428,6 +428,11 @@ Second \"item\" text"</string>
   <string name="morphe_copy_comments_title">टिप्पणियाँ कॉपी करें</string>
   <string name="morphe_copy_comments_summary">किसी टिप्पणी को कॉपी करने के लिए, उसे देर तक दबाकर रखें</string>
   <string name="morphe_copy_comments_success">टिप्पणी क्लिपबोर्ड पर कॉपी की गई</string>
+  <!-- interaction.feedactions.feedVideoActionsPatch -->
+  <string name="morphe_feed_long_press_menu_title">वीडियो मेनू खोलने के लिए टैप करें और दबाए रखें</string>
+  <string name="morphe_feed_long_press_menu_summary">फीड वीडियो पर कहीं भी टैप करके और दबाकर उसका मेनू खोला जा सकता है</string>
+  <string name="morphe_feed_watch_later_button_title">थंबनेल पर \'फिर से देखें\' बटन दिखाएं</string>
+  <string name="morphe_feed_watch_later_button_summary">फीड वीडियो की थंबनेल पर \'फिर से देखें\' बटन दिखाया जाता है। इसे टैप करके और दबाकर प्लेलिस्ट में सहेजें खोला जाता है</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'टीवी पर साइन इन करें\' पॉपअप बंद करें</string>
   <string name="morphe_disable_connect_your_devices_popup_title">\'कनेक्ट आपके डिवाइस\' पॉपअप अक्षम करें</string>
